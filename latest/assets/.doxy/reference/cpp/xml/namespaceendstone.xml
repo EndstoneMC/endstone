@@ -62,6 +62,7 @@
     <innerclass refid="classendstone_1_1Inventory" prot="public">endstone::Inventory</innerclass>
     <innerclass refid="classendstone_1_1IpBanEntry" prot="public">endstone::IpBanEntry</innerclass>
     <innerclass refid="classendstone_1_1IpBanList" prot="public">endstone::IpBanList</innerclass>
+    <innerclass refid="classendstone_1_1IRegistry" prot="public">endstone::IRegistry</innerclass>
     <innerclass refid="classendstone_1_1Item" prot="public">endstone::Item</innerclass>
     <innerclass refid="classendstone_1_1ItemFactory" prot="public">endstone::ItemFactory</innerclass>
     <innerclass refid="classendstone_1_1ItemMeta" prot="public">endstone::ItemMeta</innerclass>

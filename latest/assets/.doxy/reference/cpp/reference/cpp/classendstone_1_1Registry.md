@@ -16,6 +16,27 @@ _Abstract registry interface for keyed objects._ [More...](#detailed-description
 
 
 
+Inherits the following classes: [endstone::IRegistry](classendstone_1_1IRegistry.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -59,7 +80,41 @@ _Abstract registry interface for keyed objects._ [More...](#detailed-description
 | virtual const T \* | [**get**](#function-get-22) (const std::string & key) noexcept const = 0<br>_Get the object by its key._  |
 | virtual T & | [**getOrThrow**](#function-getorthrow-12) (const std::string & key) <br>_Get the object by its key or throw if missing._  |
 | virtual const T & | [**getOrThrow**](#function-getorthrow-22) (const std::string & key) const<br>_Get the object by its key or throw if missing._  |
-| virtual  | [**~Registry**](#function-registry) () = default<br> |
+
+
+## Public Functions inherited from endstone::IRegistry
+
+See [endstone::IRegistry](classendstone_1_1IRegistry.md)
+
+| Type | Name |
+| ---: | :--- |
+| virtual  | [**~IRegistry**](classendstone_1_1IRegistry.md#function-iregistry) () = default<br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -291,19 +346,6 @@ const T& Const reference to the object with the given key.
 
 
         
-
-<hr>
-
-
-
-### function ~Registry 
-
-```C++
-virtual endstone::Registry::~Registry () = default
-```
-
-
-
 
 <hr>
 

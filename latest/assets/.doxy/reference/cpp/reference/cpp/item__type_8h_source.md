@@ -30,6 +30,8 @@
 namespace endstone {
 class ItemType {
 public:
+    ENDSTONE_REGISTRY_TYPE(ItemType)
+
     virtual ~ItemType() = default;
     [[nodiscard]] virtual std::string getId() const = 0;
 
@@ -40,11 +42,6 @@ public:
     [[nodiscard]] virtual int getMaxStackSize() const = 0;
 
     [[nodiscard]] virtual int getMaxDurability() const = 0;
-
-    static const ItemType *get(const std::string &name)
-    {
-        return Endstone::getServer().getItemRegistry().get(name);
-    }
 
     bool operator==(const std::string_view other) const
     {

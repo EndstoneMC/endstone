@@ -38,6 +38,9 @@ class Enchantment {
     }
 
 public:
+    ENDSTONE_REGISTRY_TYPE(Enchantment)
+
+    
     inline static const std::string Protection = getEnchantment("protection");
 
     inline static const std::string FireProtection = getEnchantment("fire_protection");
@@ -133,11 +136,6 @@ public:
     [[nodiscard]] virtual bool conflictsWith(const Enchantment &other) const = 0;
 
     [[nodiscard]] virtual bool canEnchantItem(const ItemStack &item) const = 0;
-
-    static const Enchantment *get(const std::string &name)
-    {
-        return Endstone::getServer().getEnchantmentRegistry().get(name);
-    }
 };
 }  // namespace endstone
 ```

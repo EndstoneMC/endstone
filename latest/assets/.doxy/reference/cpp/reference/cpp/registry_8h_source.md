@@ -30,11 +30,14 @@
 #include <fmt/format.h>
 
 namespace endstone {
-template <typename T>
-class Registry {
+class IRegistry {
 public:
-    virtual ~Registry() = default;
+    virtual ~IRegistry() = default;
+};
 
+template <typename T>
+class Registry : public IRegistry {
+public:
     virtual T *get(const std::string &key) noexcept = 0;
 
     virtual const T *get(const std::string &key) const noexcept = 0;
@@ -58,6 +61,14 @@ public:
     virtual void forEach(std::function<bool(const T &)> func) const = 0;
 };
 }  // namespace endstone
+
+#define ENDSTONE_REGISTRY_TYPE(type)                                \
+    static constexpr auto RegistryType = #type;                     \
+                                                                    \
+    static const type *get(const std::string &name)                 \
+    {                                                               \
+        return Endstone::getServer().getRegistry<type>().get(name); \
+    }
 ```
 
 

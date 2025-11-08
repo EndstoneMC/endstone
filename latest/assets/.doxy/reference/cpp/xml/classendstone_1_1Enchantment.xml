@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="34" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="34" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="36" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="36" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a603f1ff3531ba50b470bb6723fcaff33" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="39" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="39" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="41" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1afd0538d221079a4e306ef68c76395114" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="44" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="44" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="46" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a33e22046536f14fe52517c2231f9e3e9" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="49" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="49" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="51" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a8fe4c607d8f99f823bbf2c2c12c0102c" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="54" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="54" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="56" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="56" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a57049e0f81d37387ad83ad0c7a69a6be" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="59" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="59" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="61" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ab5c1b475d7b938e1d7a3f807e6019378" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="64" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="64" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="66" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1af1c7e007b6435165eb45740fce0cc683" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="69" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="69" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="71" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a0c24bbd41bf4afe5444cd3b9d7b54452" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="74" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="74" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="76" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aa822ad1465f023f3968bf896ad4e86ae" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -161,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="79" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="79" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="81" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="81" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a3067f0269bade2ac079c6db7e1ae309b" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -177,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="84" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="84" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="86" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aa0ac2c30febd9db5d648453529a22553" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -193,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="89" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="89" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="91" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a1d8b0ee51e2b63af5fa92434ab4ff8fb" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -209,7 +209,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="94" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="94" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="96" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a5ee507280fca638b4cb63d97384df437" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -225,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="99" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="99" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="101" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ab832d331b4a1bb64a9396182115412f3" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -241,7 +241,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="104" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="104" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="106" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a2bb3e8d904040328dd5f08adb5a1c6f7" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -257,7 +257,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="109" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="109" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="111" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a37122cf5b2f6c6adea4ea25cf94ac47d" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -273,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="114" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="114" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="116" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a73c32f0550929fca8128ee56577a04a4" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -289,7 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="119" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="119" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="121" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ac86988b6702e58c5f8bec1778e5d7424" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -305,7 +305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="124" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="124" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="126" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ac114920606cc904cb17ff3e9a1133f1f" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -321,7 +321,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="129" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="129" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="131" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ac480f39a284bc1b29ead6b5ddd5a62fb" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -337,7 +337,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="134" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="134" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="136" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="136" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a71df09047092134a3d8a7bbba087e434" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -353,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="139" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="139" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="141" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a4523ab35640cc93ac028b8f0ba611c54" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -369,7 +369,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="144" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="144" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="146" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a541256e08ea3498976f16af938cf3d97" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -385,7 +385,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="149" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="149" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="151" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="151" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a6f1a563a10d8c177304e332da682b39f" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -401,7 +401,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="154" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="154" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="156" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="156" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a01eb7d453a9768c4a04f880e990a3be2" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -417,7 +417,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="159" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="159" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="161" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="161" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a528c18b4cba870f4300892091d62fc80" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -433,7 +433,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="164" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="164" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="166" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1abea8e1204d9dd0e195c4100582e527e0" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -449,7 +449,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="169" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="169" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="171" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="171" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ac0111184546680976bc4dc9a03ba9271" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -465,7 +465,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="174" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="174" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="176" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="176" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1af72cdba0bee7268d803fe6831c8eb806" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -481,7 +481,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="179" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="179" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="181" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="181" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a55add57223e3eb1e44312cfd6e6af07e" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -497,7 +497,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="184" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="184" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="186" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="186" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a5b9a2a157735ca0e27a7c175b734e6c1" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -513,7 +513,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="189" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="189" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="191" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="191" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ae73bf51010fa7ff8c7de2dd350122b34" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -529,7 +529,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="194" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="194" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="196" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="196" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a1ab9b4a512344cd9528accfbafd489a8" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -545,7 +545,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="199" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="199" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="201" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="201" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1afe6c192301d88c4b0e0ef7e0f2449e59" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -561,7 +561,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="204" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="204" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="206" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="206" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a2faf0209df882021c58ed270b7225f33" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -577,7 +577,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="209" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="209" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="211" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="211" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a69557571deb2bf6a5fc6600d7bcc0acd" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -593,7 +593,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="214" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="214" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="216" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="216" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a062964625f266c0c9aa306fa485418fe" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -609,7 +609,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="219" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="219" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="221" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="221" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a80ed327b5f9784464514a6032af502a2" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -625,7 +625,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="224" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="224" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="226" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="226" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aeb91e4768e20b469d5d33f72b7e1f418" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -641,7 +641,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="229" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="229" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="231" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="231" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ad94a1826b30a03ac8535cd0bfa1b06db" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -657,7 +657,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="234" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="234" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="236" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="236" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -693,7 +693,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="236" column="13"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="238" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1ab02562f0e0585d106bb3fc904bd32b14" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -711,7 +711,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="243" column="26"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="245" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a2c9d36d8189de57bcff77586591e9c05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -729,7 +729,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="250" column="26"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="252" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -747,7 +747,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="257" column="18"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="259" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -765,7 +765,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="264" column="18"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="266" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -796,7 +796,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="272" column="19"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="274" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -828,49 +828,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="282" column="19"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classendstone_1_1Enchantment_1a498add7a48a4da156a9fe51df51b21a0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> *</type>
-        <definition>static const Enchantment * endstone::Enchantment::get</definition>
-        <argsstring>(const std::string &amp;name)</argsstring>
-        <name>get</name>
-        <qualifiedname>endstone::Enchantment::get</qualifiedname>
-        <param>
-          <type>const std::string &amp;</type>
-          <declname>name</declname>
-        </param>
-        <briefdescription>
-<para>Attempts to get the <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> with the given name. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>This is a normal lookup, names must be the precise name.</para>
-</simplesect>
-<parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>name</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Name of the <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> to get</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para><ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> if found, or nullptr </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="293" column="30" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="293" bodyend="296"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="284" column="19"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/enchantments/enchantment.h" line="24" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="24" bodyend="297"/>
+    <location file="include/endstone/enchantments/enchantment.h" line="24" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="24" bodyend="285"/>
     <listofallmembers>
       <member refid="classendstone_1_1Enchantment_1a0c24bbd41bf4afe5444cd3b9d7b54452" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>AquaAffinity</name></member>
       <member refid="classendstone_1_1Enchantment_1aa0ac2c30febd9db5d648453529a22553" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>BaneOfArthropods</name></member>
@@ -890,7 +855,6 @@
       <member refid="classendstone_1_1Enchantment_1a71df09047092134a3d8a7bbba087e434" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Flame</name></member>
       <member refid="classendstone_1_1Enchantment_1ac86988b6702e58c5f8bec1778e5d7424" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Fortune</name></member>
       <member refid="classendstone_1_1Enchantment_1a01eb7d453a9768c4a04f880e990a3be2" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>FrostWalker</name></member>
-      <member refid="classendstone_1_1Enchantment_1a498add7a48a4da156a9fe51df51b21a0" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>get</name></member>
       <member refid="classendstone_1_1Enchantment_1a81b7325cc72ab15d18aee538040089c6" prot="private" virt="non-virtual"><scope>endstone::Enchantment</scope><name>getEnchantment</name></member>
       <member refid="classendstone_1_1Enchantment_1ab02562f0e0585d106bb3fc904bd32b14" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getId</name></member>
       <member refid="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getMaxLevel</name></member>

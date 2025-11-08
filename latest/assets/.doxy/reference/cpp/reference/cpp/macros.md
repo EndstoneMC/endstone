@@ -11,6 +11,7 @@
 * **ENDSTONE\_CHECK** ([**result.h**](result_8h.md))
 * **ENDSTONE\_CHECKF** ([**result.h**](result_8h.md))
 * **ENDSTONE\_CHECK\_RESULT** ([**result.h**](result_8h.md))
+* **ENDSTONE\_REGISTRY\_TYPE** ([**registry.h**](registry_8h.md))
 
 
 

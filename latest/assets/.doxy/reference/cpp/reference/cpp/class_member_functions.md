@@ -242,7 +242,6 @@
 * **getDefaultIndex** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **getLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Header**](classendstone_1_1Header.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **getOptions** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
-* **get** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md), [**endstone::ItemType**](classendstone_1_1ItemType.md), [**endstone::Registry**](classendstone_1_1Registry.md), [**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **getEnchantment** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **getMaxLevel** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **getStartLevel** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
@@ -377,6 +376,7 @@
 * **getPermissionSubscriptions** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPotionType** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
+* **get** ([**endstone::Registry**](classendstone_1_1Registry.md), [**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **getOrThrow** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **getPendingTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **getEntry** ([**endstone::Score**](classendstone_1_1Score.md))
@@ -394,10 +394,8 @@
 * **getCurrentMillisecondsPerTick** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getCurrentTickUsage** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getCurrentTicksPerSecond** ([**endstone::Server**](classendstone_1_1Server.md))
-* **getEnchantmentRegistry** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getIpBanList** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getItemFactory** ([**endstone::Server**](classendstone_1_1Server.md))
-* **getItemRegistry** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getLanguage** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getMaxPlayers** ([**endstone::Server**](classendstone_1_1Server.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getMinecraftVersion** ([**endstone::Server**](classendstone_1_1Server.md))
@@ -408,6 +406,7 @@
 * **getPort** ([**endstone::Server**](classendstone_1_1Server.md), [**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 * **getPortV6** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getProtocolVersion** ([**endstone::Server**](classendstone_1_1Server.md))
+* **getRegistry** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getScheduler** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getServiceManager** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getStartTime** ([**endstone::Server**](classendstone_1_1Server.md))
@@ -876,6 +875,7 @@
 * **~Enchantment** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **~Event** ([**endstone::Event**](classendstone_1_1Event.md))
 * **~ICancellable** ([**endstone::ICancellable**](classendstone_1_1ICancellable.md))
+* **~IRegistry** ([**endstone::IRegistry**](classendstone_1_1IRegistry.md))
 * **~Inventory** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **~IpBanList** ([**endstone::IpBanList**](classendstone_1_1IpBanList.md))
 * **~ItemFactory** ([**endstone::ItemFactory**](classendstone_1_1ItemFactory.md))
@@ -904,7 +904,6 @@
 * **~PluginLoader** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **~PluginManager** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **~Recipe** ([**endstone::Recipe**](classendstone_1_1Recipe.md))
-* **~Registry** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **~Scheduler** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **~Score** ([**endstone::Score**](classendstone_1_1Score.md))
 * **~Scoreboard** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
@@ -915,6 +914,11 @@
 * **~ThunderChangeEvent** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
 * **~WeatherChangeEvent** ([**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **~WeatherEvent** ([**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
+
+
+## _
+
+* **\_getRegistry** ([**endstone::Server**](classendstone_1_1Server.md))
 
 
 

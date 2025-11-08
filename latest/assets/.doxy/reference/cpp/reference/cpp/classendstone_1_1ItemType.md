@@ -64,11 +64,6 @@ _Represents an item type._
 | virtual  | [**~ItemType**](#function-itemtype) () = default<br> |
 
 
-## Public Static Functions
-
-| Type | Name |
-| ---: | :--- |
-|  const [**ItemType**](classendstone_1_1ItemType.md) \* | [**get**](#function-get) (const std::string & name) <br>_Attempts to get the_ [_**ItemType**_](classendstone_1_1ItemType.md) _with the given name._ |
 
 
 
@@ -302,49 +297,6 @@ virtual endstone::ItemType::~ItemType () = default
 
 
 
-
-<hr>
-## Public Static Functions Documentation
-
-
-
-
-### function get 
-
-_Attempts to get the_ [_**ItemType**_](classendstone_1_1ItemType.md) _with the given name._
-```C++
-static inline const ItemType * endstone::ItemType::get (
-    const std::string & name
-) 
-```
-
-
-
-
-
-**Note:**
-
-This is a normal lookup, names must be the precise name.
-
-
-
-
-**Parameters:**
-
-
-* `name` Name of the [**ItemType**](classendstone_1_1ItemType.md) to get
-
-
-
-**Returns:**
-
-[**ItemType**](classendstone_1_1ItemType.md) if found, or nullptr 
-
-
-
-
-
-        
 
 <hr>
 

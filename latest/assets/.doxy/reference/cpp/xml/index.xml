@@ -642,7 +642,6 @@
     <member refid="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" kind="function"><name>getStartLevel</name></member>
     <member refid="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" kind="function"><name>conflictsWith</name></member>
     <member refid="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" kind="function"><name>canEnchantItem</name></member>
-    <member refid="classendstone_1_1Enchantment_1a498add7a48a4da156a9fe51df51b21a0" kind="function"><name>get</name></member>
   </compound>
   <compound refid="classendstone_1_1Event" kind="class"><name>endstone::Event</name>
     <member refid="classendstone_1_1Event_1a7f434d804d3d19ce4876be9b2a540fcf" kind="friend"><name>Cancellable</name></member>
@@ -823,6 +822,9 @@
     <member refid="classendstone_1_1IpBanList_1a65ab85f06f3522ee90ec267859db0054" kind="function"><name>isBanned</name></member>
     <member refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" kind="function"><name>removeBan</name></member>
   </compound>
+  <compound refid="classendstone_1_1IRegistry" kind="class"><name>endstone::IRegistry</name>
+    <member refid="classendstone_1_1IRegistry_1a06d066c86d938e8ab986cb51eadae54f" kind="function"><name>~IRegistry</name></member>
+  </compound>
   <compound refid="classendstone_1_1Item" kind="class"><name>endstone::Item</name>
     <member refid="classendstone_1_1Item_1a7a898259f1715a166bfdd5ac7300cab8" kind="function"><name>getItemStack</name></member>
     <member refid="classendstone_1_1Item_1af161f37341629c74503408f7ebfeb0e1" kind="function"><name>setItemStack</name></member>
@@ -919,7 +921,6 @@
     <member refid="classendstone_1_1ItemType_1af744ff14c9521369c6935eb8993d640f" kind="function"><name>operator!=</name></member>
     <member refid="classendstone_1_1ItemType_1af875aee911c2b3f95b2efb7dfd2dc8fd" kind="function"><name>operator==</name></member>
     <member refid="classendstone_1_1ItemType_1a81b1aeb108d98457a98c801207b92f21" kind="function"><name>operator!=</name></member>
-    <member refid="classendstone_1_1ItemType_1a339c385d024ffd1881d31fa552f3cf6a" kind="function"><name>get</name></member>
   </compound>
   <compound refid="classendstone_1_1Label" kind="class"><name>endstone::Label</name>
     <member refid="classendstone_1_1Label_1ab06f2fe28f2fd41931cf10fa9810d2d4" kind="variable"><name>text_</name></member>
@@ -1787,7 +1788,6 @@
     <member refid="classendstone_1_1Recipe_1a9aa7cfa8bcb947ef1a0ad139ee68df1e" kind="function"><name>getResult</name></member>
   </compound>
   <compound refid="classendstone_1_1Registry" kind="class"><name>endstone::Registry</name>
-    <member refid="classendstone_1_1Registry_1a9396db9d9eea6543c7ed9d6162e9822a" kind="function"><name>~Registry</name></member>
     <member refid="classendstone_1_1Registry_1a62de53f9a1af2cfde7b0ff98bd5187a2" kind="function"><name>get</name></member>
     <member refid="classendstone_1_1Registry_1a9f8ee4924a4f789666536537bec689c5" kind="function"><name>get</name></member>
     <member refid="classendstone_1_1Registry_1a810eb72599f3fc7b2d48ef3be2cacd6f" kind="function"><name>getOrThrow</name></member>
@@ -1893,8 +1893,8 @@
     <member refid="classendstone_1_1Server_1a6aabbee05ed99ba41702ae926c6374b2" kind="function"><name>getBanList</name></member>
     <member refid="classendstone_1_1Server_1a8ab4971ec939f666bf3b98d1a80c7af3" kind="function"><name>getIpBanList</name></member>
     <member refid="classendstone_1_1Server_1a846007f57bf27a84e78f49b218c2fa7c" kind="function"><name>getServiceManager</name></member>
-    <member refid="classendstone_1_1Server_1a7c61c7491de9bf768a0b7bb7ede40fc8" kind="function"><name>getEnchantmentRegistry</name></member>
-    <member refid="classendstone_1_1Server_1a606ca501b46d441693be1117087fce47" kind="function"><name>getItemRegistry</name></member>
+    <member refid="classendstone_1_1Server_1a9ea05521ca2c068fb9acf07dd7af2eeb" kind="function"><name>_getRegistry</name></member>
+    <member refid="classendstone_1_1Server_1a767171af5232bcf5c1d1502f4903edea" kind="function"><name>getRegistry</name></member>
     <member refid="classendstone_1_1Server_1a1934abd049be85a1a3bf8170a0c56d49" kind="function"><name>getMap</name></member>
     <member refid="classendstone_1_1Server_1a4d65ff2e2b62f582c1615497bb8b5d83" kind="function"><name>createMap</name></member>
   </compound>
@@ -2526,6 +2526,7 @@
   <compound refid="potion__type_8h" kind="file"><name>potion_type.h</name>
   </compound>
   <compound refid="registry_8h" kind="file"><name>registry.h</name>
+    <member refid="registry_8h_1afdb56fce672f84a423d8c9d0501a34e1" kind="define"><name>ENDSTONE_REGISTRY_TYPE</name></member>
   </compound>
   <compound refid="scheduler_8h" kind="file"><name>scheduler.h</name>
   </compound>

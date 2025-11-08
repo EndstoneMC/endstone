@@ -77,6 +77,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
 * **class** [**endstone::HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers. Should be instantiated on a per-event basis._ 
 * **class** [**endstone::Header**](classendstone_1_1Header.md) _Represents a header with a label._ 
+* **class** [**endstone::IRegistry**](classendstone_1_1IRegistry.md)     
+    * **class** [**endstone::Registry**](classendstone_1_1Registry.md) _Abstract registry interface for keyed objects._ 
 * **class** [**endstone::Image**](classendstone_1_1Image.md) _Represents an RGBA image._ 
 * **class** [**endstone::Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
     * **class** [**endstone::PlayerInventory**](classendstone_1_1PlayerInventory.md) _Interface to the inventory of a_ [_**Player**_](classendstone_1_1Player.md) _, including the four armor slots and any extra slots._
@@ -107,7 +109,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::PluginManager**](classendstone_1_1PluginManager.md) _Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._
 * **class** [**endstone::PotionType**](classendstone_1_1PotionType.md) _All potion types._ 
 * **class** [**endstone::Recipe**](classendstone_1_1Recipe.md) _Represents some type of crafting recipe._ 
-* **class** [**endstone::Registry**](classendstone_1_1Registry.md) _Abstract registry interface for keyed objects._ 
 * **class** [**endstone::Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._ 
 * **class** [**endstone::Score**](classendstone_1_1Score.md) _Represents a score for an objective on a scoreboard._ 
 * **class** [**endstone::Server**](classendstone_1_1Server.md) _Represents a server implementation._ 

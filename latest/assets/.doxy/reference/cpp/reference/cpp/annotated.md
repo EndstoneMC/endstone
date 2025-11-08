@@ -61,6 +61,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers. Should be instantiated on a per-event basis._     
     * **class** [**Header**](classendstone_1_1Header.md) _Represents a header with a label._     
     * **class** [**ICancellable**](classendstone_1_1ICancellable.md)     
+    * **class** [**IRegistry**](classendstone_1_1IRegistry.md)     
     * **class** [**Image**](classendstone_1_1Image.md) _Represents an RGBA image._     
     * **class** [**Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
     * **class** [**IpBanEntry**](classendstone_1_1IpBanEntry.md)     

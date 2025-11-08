@@ -181,6 +181,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**IpBanList**](classendstone_1_1IpBanList.md)
 ([**endstone**](namespaceendstone.md))
+* [**IRegistry**](classendstone_1_1IRegistry.md)
+([**endstone**](namespaceendstone.md))
 * [**Item**](classendstone_1_1Item.md)
 ([**endstone**](namespaceendstone.md))
 * [**ItemFactory**](classendstone_1_1ItemFactory.md)

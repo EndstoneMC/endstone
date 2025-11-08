@@ -60,6 +60,7 @@ _Represents a server implementation._
 | ---: | :--- |
 |   | [**Server**](#function-server-12) () = default<br> |
 |   | [**Server**](#function-server-22) (const [**Server**](classendstone_1_1Server.md) &) = delete<br> |
+| virtual [**IRegistry**](classendstone_1_1IRegistry.md) \* | [**\_getRegistry**](#function-_getregistry) (const std::string & type) const = 0<br>_Returns the registry for the given type._  |
 | virtual void | [**broadcast**](#function-broadcast) (const Message & message, const std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
 | virtual void | [**broadcastMessage**](#function-broadcastmessage-12) (const Message & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
 |  void | [**broadcastMessage**](#function-broadcastmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
@@ -78,10 +79,8 @@ _Represents a server implementation._
 | virtual float | [**getCurrentMillisecondsPerTick**](#function-getcurrentmillisecondspertick) () = 0<br>_Gets the current milliseconds per tick (MSPT)._  |
 | virtual float | [**getCurrentTickUsage**](#function-getcurrenttickusage) () = 0<br>_Gets the current tick usage of the server._  |
 | virtual float | [**getCurrentTicksPerSecond**](#function-getcurrenttickspersecond) () = 0<br>_Gets the current ticks per second (TPS)._  |
-| virtual [**Registry**](classendstone_1_1Registry.md)&lt; [**Enchantment**](classendstone_1_1Enchantment.md) &gt; & | [**getEnchantmentRegistry**](#function-getenchantmentregistry) () const = 0<br> |
 | virtual [**IpBanList**](classendstone_1_1IpBanList.md) & | [**getIpBanList**](#function-getipbanlist) () const = 0<br> |
 | virtual [**ItemFactory**](classendstone_1_1ItemFactory.md) & | [**getItemFactory**](#function-getitemfactory) () const = 0<br> |
-| virtual [**Registry**](classendstone_1_1Registry.md)&lt; [**ItemType**](classendstone_1_1ItemType.md) &gt; & | [**getItemRegistry**](#function-getitemregistry) () const = 0<br> |
 | virtual [**Language**](classendstone_1_1Language.md) & | [**getLanguage**](#function-getlanguage) () const = 0<br>_Gets the current language interface used by the server._  |
 | virtual [**Level**](classendstone_1_1Level.md) \* | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the server level._  |
 | virtual [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const = 0<br>_Returns the primary logger associated with this server instance._  |
@@ -98,6 +97,7 @@ _Represents a server implementation._
 | virtual int | [**getPort**](#function-getport) () const = 0<br>_Get the game port that the server runs on._  |
 | virtual int | [**getPortV6**](#function-getportv6) () const = 0<br>_Get the game port (IPv6) that the server runs on._  |
 | virtual int | [**getProtocolVersion**](#function-getprotocolversion) () const = 0<br>_Gets the network protocol version that this server supports._  |
+|  const [**Registry**](classendstone_1_1Registry.md)&lt; T &gt; & | [**getRegistry**](#function-getregistry) () const<br> |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) \* | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the primary_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _controlled by the server._ |
 | virtual [**ServiceManager**](classendstone_1_1ServiceManager.md) & | [**getServiceManager**](#function-getservicemanager) () const = 0<br> |
@@ -196,6 +196,43 @@ endstone::Server::Server (
 
 
 
+
+<hr>
+
+
+
+### function \_getRegistry 
+
+_Returns the registry for the given type._ 
+```C++
+virtual IRegistry * endstone::Server::_getRegistry (
+    const std::string & type
+) const = 0
+```
+
+
+
+If no registry is present for the given type null will be returned.
+
+
+
+
+**Parameters:**
+
+
+* `type` of the registry to get
+
+
+
+**Returns:**
+
+the corresponding registry or null if not present 
+
+
+
+
+
+        
 
 <hr>
 
@@ -722,33 +759,6 @@ The current ticks per second
 
 
 
-### function getEnchantmentRegistry 
-
-```C++
-virtual Registry < Enchantment > & endstone::Server::getEnchantmentRegistry () const = 0
-```
-
-
-
-Returns the registry for all the enchantments.
-
-
-
-
-**Returns:**
-
-the enchantment registry. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function getIpBanList 
 
 ```C++
@@ -797,33 +807,6 @@ the item factory
 
 
 **See also:** [**ItemFactory**](classendstone_1_1ItemFactory.md) 
-
-
-
-        
-
-<hr>
-
-
-
-### function getItemRegistry 
-
-```C++
-virtual Registry < ItemType > & endstone::Server::getItemRegistry () const = 0
-```
-
-
-
-Returns the registry for all the item types.
-
-
-
-
-**Returns:**
-
-the item registry. 
-
-
 
 
 
@@ -1264,6 +1247,20 @@ version of network protocol
 
 
         
+
+<hr>
+
+
+
+### function getRegistry 
+
+```C++
+template<typename T>
+inline const Registry < T > & endstone::Server::getRegistry () const
+```
+
+
+
 
 <hr>
 

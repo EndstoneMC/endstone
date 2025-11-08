@@ -33,6 +33,10 @@
          <lastmod>2025-11-08</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/python/attribute/</loc>
+         <lastmod>2025-11-08</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/python/ban/</loc>
          <lastmod>2025-11-08</lastmod>
     </url>
@@ -77,6 +81,10 @@
          <lastmod>2025-11-08</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/python/map/</loc>
+         <lastmod>2025-11-08</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/python/misc/</loc>
          <lastmod>2025-11-08</lastmod>
     </url>
@@ -90,6 +98,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/plugin/</loc>
+         <lastmod>2025-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/python/potion/</loc>
          <lastmod>2025-11-08</lastmod>
     </url>
     <url>
@@ -366,6 +378,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ICancellable/</loc>
+         <lastmod>2025-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1IRegistry/</loc>
          <lastmod>2025-11-08</lastmod>
     </url>
     <url>

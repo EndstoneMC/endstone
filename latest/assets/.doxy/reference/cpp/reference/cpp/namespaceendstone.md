@@ -91,6 +91,7 @@ _Represents a button with text and an optional icon._
 | class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers. Should be instantiated on a per-event basis._  |
 | class | [**Header**](classendstone_1_1Header.md) <br>_Represents a header with a label._  |
 | class | [**ICancellable**](classendstone_1_1ICancellable.md) <br> |
+| class | [**IRegistry**](classendstone_1_1IRegistry.md) <br> |
 | class | [**Image**](classendstone_1_1Image.md) <br>_Represents an RGBA image._  |
 | class | [**Inventory**](classendstone_1_1Inventory.md) <br>_Interface to the various inventories._  |
 | class | [**IpBanEntry**](classendstone_1_1IpBanEntry.md) <br> |

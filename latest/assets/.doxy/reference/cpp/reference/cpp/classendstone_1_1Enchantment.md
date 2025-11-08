@@ -105,11 +105,6 @@
 | virtual  | [**~Enchantment**](#function-enchantment) () = default<br> |
 
 
-## Public Static Functions
-
-| Type | Name |
-| ---: | :--- |
-|  const [**Enchantment**](classendstone_1_1Enchantment.md) \* | [**get**](#function-get) (const std::string & name) <br>_Attempts to get the_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _with the given name._ |
 
 
 
@@ -896,49 +891,6 @@ virtual endstone::Enchantment::~Enchantment () = default
 
 
 
-
-<hr>
-## Public Static Functions Documentation
-
-
-
-
-### function get 
-
-_Attempts to get the_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _with the given name._
-```C++
-static inline const Enchantment * endstone::Enchantment::get (
-    const std::string & name
-) 
-```
-
-
-
-
-
-**Note:**
-
-This is a normal lookup, names must be the precise name.
-
-
-
-
-**Parameters:**
-
-
-* `name` Name of the [**Enchantment**](classendstone_1_1Enchantment.md) to get
-
-
-
-**Returns:**
-
-[**ItemType**](classendstone_1_1ItemType.md) if found, or nullptr 
-
-
-
-
-
-        
 
 <hr>
 
