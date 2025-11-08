@@ -34,9 +34,8 @@ from .ban import IpBanList, PlayerBanList
 from .block import BlockData
 from .boss import BarColor, BarFlag, BarStyle, BossBar
 from .command import CommandSender, ConsoleCommandSender
-from .enchantments import Enchantment
 from .form import ActionForm, MessageForm, ModalForm
-from .inventory import Inventory, ItemFactory, ItemType, PlayerInventory
+from .inventory import Inventory, ItemFactory, PlayerInventory
 from .lang import Language, Translatable
 from .level import Dimension, Level, Location
 from .map import MapView
@@ -49,12 +48,11 @@ __all__ = [
     "__version__",
     "__minecraft_version__",
     "ColorFormat",
-    "EnchantmentRegistry",
     "GameMode",
-    "ItemTypeRegistry",
     "Logger",
     "OfflinePlayer",
     "Player",
+    "Registry",
     "Server",
     "Skin",
     "actor",
@@ -153,7 +151,7 @@ class Server:
         Gets the service manager.
         """
         ...
-    def get_registry(self, type: type) -> object:
+    def get_registry(self, type: typing.Type[T]) -> Registry[T]:
         """
         Returns the registry for all the enchantments.
         """
@@ -767,39 +765,23 @@ class Skin:
         """
         ...
 
-class EnchantmentRegistry:
-    """
-    Server enchantments.
-    """
-    def get(self, key: str) -> Enchantment:
-        """
-        Get the object by its key.
-        """
-        ...
-    def get_or_throw(self, key: str) -> Enchantment:
-        """
-        Get the object by its key or throw if missing.
-        """
-        ...
-    def __getitem__(self, key: str) -> Enchantment: ...
-    def __iter__(self) -> list: ...
-    def __contains__(self, key: str) -> bool: ...
+T = typing.TypeVar("T")
 
-class ItemTypeRegistry:
+class Registry(typing.Generic[T]):
     """
-    Server item types。
+    Presents a registry
     """
-    def get(self, key: str) -> ItemType:
+    def get(self, key: str) -> T | None:
         """
         Get the object by its key.
         """
         ...
-    def get_or_throw(self, key: str) -> ItemType:
+    def get_or_throw(self, key: str) -> T:
         """
         Get the object by its key or throw if missing.
         """
         ...
-    def __getitem__(self, key: str) -> ItemType: ...
+    def __getitem__(self, key: str) -> T: ...
     def __iter__(self) -> list: ...
     def __contains__(self, key: str) -> bool: ...
 
