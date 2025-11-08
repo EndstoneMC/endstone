@@ -204,6 +204,7 @@ nav:
           - Server: reference/python/server.md
           - Player: reference/python/player.md
           - Actor: reference/python/actor.md
+          - Attribute: reference/python/attribute.md
           - Ban: reference/python/ban.md
           - Block: reference/python/block.md
           - Boss: reference/python/boss.md
@@ -215,8 +216,10 @@ nav:
           - Language: reference/python/lang.md
           - Level: reference/python/level.md
           - Inventory: reference/python/inventory.md
+          - Map: reference/python/map.md
           - Permissions: reference/python/permissions.md
           - Plugin: reference/python/plugin.md
+          - Potion: reference/python/potion.md
           - Scoreboard: reference/python/scoreboard.md
           - Scheduler: reference/python/scheduler.md
           - Miscellaneous: reference/python/misc.md
