@@ -9,9 +9,20 @@ def main():
     module_name = "endstone._python"
     stubs_path = Path(__file__).parent.parent / "stubs"
     module = load(module_name)
+    package = module.package
+
+    # Generic types (i.e., Registry[T])
+    module.set_member("T", package.get_member("T"))
+    for member in list(module.members.keys()):
+        if member.endswith("Registry"):
+            module.members.pop(member)
+            module.exports.remove(member)
+    module.set_member("Registry", package.get_member("Registry"))
+    module.exports.append("Registry")
+    module.exports = sorted(module.exports)
+    module["Server.get_registry"] = package["Server.get_registry"]
 
     # Inject extras
-    package = module.package
     module.set_member("__version__", package.get_member("__version__"))
     module.set_member("__minecraft_version__", package.get_member("__minecraft_version__"))
     module.imports.setdefault("__version__", package.imports.get("__version__"))
