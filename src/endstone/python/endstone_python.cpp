@@ -267,8 +267,8 @@ void init_logger(py::module &m)
 
 void init_registry(py::module_ &m)
 {
-    python::registry<Enchantment>(m, "EnchantmentRegistry", "Server enchantments.");
-    python::registry<ItemType>(m, "ItemRegistry", "Server item types。");
+    python::registry<Enchantment>(m, "Server enchantments.");
+    python::registry<ItemType>(m, "Server item types。");
 }
 
 void init_server(py::class_<Server> &server)
@@ -295,10 +295,23 @@ void init_server(py::class_<Server> &server)
                                "Gets the scheduler for managing scheduled events.")
         .def_property_readonly("service_manager", &Server::getServiceManager, py::return_value_policy::reference,
                                "Gets the service manager.")
-        .def_property_readonly("enchantment_registry", &Server::getEnchantmentRegistry,
-                               py::return_value_policy::reference, "Returns the registry for all the enchantments.")
-        .def_property_readonly("item_registry", &Server::getItemRegistry, py::return_value_policy::reference,
-                               "Returns the registry for all the item types.")
+        .def(
+            "get_registry",
+            [](Server &self, py::type cls) -> py::object {
+                const auto type = cls.attr("__name__").cast<std::string>();
+                auto *registry = self._getRegistry(type);
+                if (!registry) {
+                    return py::none();
+                }
+                if (type == "Enchantment") {
+                    return py::cast(&self.getRegistry<Enchantment>());
+                }
+                if (type == "ItemType") {
+                    return py::cast(&self.getRegistry<ItemType>());
+                }
+                return py::none();
+            },
+            py::arg("type"), py::return_value_policy::reference, "Returns the registry for all the enchantments.")
         .def_property_readonly("level", &Server::getLevel, py::return_value_policy::reference_internal,
                                "Gets the server level.")
         .def_property_readonly("online_players", &Server::getOnlinePlayers, py::return_value_policy::reference_internal,

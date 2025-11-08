@@ -20,6 +20,11 @@
 #include <fmt/format.h>
 
 namespace endstone {
+class IRegistry {
+public:
+    virtual ~IRegistry() = default;
+};
+
 /**
  * @brief Abstract registry interface for keyed objects.
  *
@@ -28,10 +33,8 @@ namespace endstone {
  * @tparam T Must satisfy Keyed, i.e. implement getKey().
  */
 template <typename T>
-class Registry {
+class Registry : public IRegistry {
 public:
-    virtual ~Registry() = default;
-
     /**
      * @brief Get the object by its key.
      *
@@ -95,3 +98,11 @@ public:
     virtual void forEach(std::function<bool(const T &)> func) const = 0;
 };
 }  // namespace endstone
+
+#define ENDSTONE_REGISTRY_TYPE(type)                                \
+    static constexpr auto RegistryType = #type;                     \
+                                                                    \
+    static const type *get(const std::string &name)                 \
+    {                                                               \
+        return Endstone::getServer().getRegistry<type>().get(name); \
+    }

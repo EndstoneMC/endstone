@@ -51,7 +51,7 @@ __all__ = [
     "ColorFormat",
     "EnchantmentRegistry",
     "GameMode",
-    "ItemRegistry",
+    "ItemTypeRegistry",
     "Logger",
     "OfflinePlayer",
     "Player",
@@ -153,16 +153,9 @@ class Server:
         Gets the service manager.
         """
         ...
-    @property
-    def enchantment_registry(self) -> EnchantmentRegistry:
+    def get_registry(self, type: type) -> object:
         """
         Returns the registry for all the enchantments.
-        """
-        ...
-    @property
-    def item_registry(self) -> ItemRegistry:
-        """
-        Returns the registry for all the item types.
         """
         ...
     @property
@@ -792,7 +785,7 @@ class EnchantmentRegistry:
     def __iter__(self) -> list: ...
     def __contains__(self, key: str) -> bool: ...
 
-class ItemRegistry:
+class ItemTypeRegistry:
     """
     Server item types。
     """

@@ -40,6 +40,7 @@ class ConsoleCommandSender;
 class Enchantment;
 class ItemFactory;
 class ItemType;
+class IRegistry;
 class Scheduler;
 class PluginCommand;
 class PluginManager;
@@ -393,18 +394,21 @@ public:
     [[nodiscard]] virtual ServiceManager &getServiceManager() const = 0;
 
     /**
-     * Returns the registry for all the enchantments.
-
-     * @return the enchantment registry.
+     * @brief Returns the registry for the given type.
+     *
+     * If no registry is present for the given type null will be returned.
+     *
+     * @param type of the registry to get
+     *
+     * @return the corresponding registry or null if not present
      */
-    [[nodiscard]] virtual Registry<Enchantment> &getEnchantmentRegistry() const = 0;
+    [[nodiscard]] virtual IRegistry *_getRegistry(const std::string &type) const = 0;
 
-    /**
-      * Returns the registry for all the item types.
-
-      * @return the item registry.
-      */
-    [[nodiscard]] virtual Registry<ItemType> &getItemRegistry() const = 0;
+    template <typename T>
+    [[nodiscard]] const Registry<T> &getRegistry() const
+    {
+        return *static_cast<Registry<T> *>(_getRegistry(T::RegistryType));
+    }
 
     /**
      * @brief Gets the map from the given item ID.

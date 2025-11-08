@@ -26,9 +26,9 @@ namespace py = pybind11;
 
 namespace endstone::python {
 template <typename T, typename... Args>
-void registry(py::module &m, const std::string &name, Args &&...args)
+void registry(py::module &m, Args &&...args)
 {
-    py::class_<Registry<T>>(m, name.c_str(), std::forward<Args>(args)...)
+    py::class_<Registry<T>>(m, (std::string(T::RegistryType) + "Registry").c_str(), std::forward<Args>(args)...)
         .def("get", py::overload_cast<const std::string &>(&Registry<T>::get), py::arg("key"),
              py::return_value_policy::reference, "Get the object by its key.")
         .def(

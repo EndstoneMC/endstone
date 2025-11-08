@@ -185,8 +185,8 @@ void EndstoneServer::setLevel(::Level &level)
 
 void EndstoneServer::initRegistries()
 {
-    enchantment_registry_ = EndstoneRegistry<Enchantment, ::Enchant>::createRegistry();
-    item_registry_ = EndstoneRegistry<ItemType, ::Item>::createRegistry();
+    registries_["Enchantment"] = EndstoneRegistry<Enchantment, ::Enchant>::createRegistry();
+    registries_["ItemType"] = EndstoneRegistry<ItemType, ::Item>::createRegistry();
     BlockStateRegistry::get().unregisterBlockStates();
     ::BlockState::forEachState([](const auto &state) {
         BlockStateRegistry::get().registerBlockState(state);
@@ -620,14 +620,13 @@ ServiceManager &EndstoneServer::getServiceManager() const
     return *service_manager_;
 }
 
-Registry<Enchantment> &EndstoneServer::getEnchantmentRegistry() const
+IRegistry *EndstoneServer::_getRegistry(const std::string &type) const
 {
-    return *enchantment_registry_;
-}
-
-Registry<ItemType> &EndstoneServer::getItemRegistry() const
-{
-    return *item_registry_;
+    const auto it = registries_.find(type);
+    if (registries_.end() == it) {
+        return nullptr;
+    }
+    return it->second.get();
 }
 
 MapView *EndstoneServer::getMap(std::int64_t id) const

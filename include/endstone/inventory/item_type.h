@@ -23,6 +23,8 @@ namespace endstone {
  */
 class ItemType {
 public:
+    ENDSTONE_REGISTRY_TYPE(ItemType)
+
     virtual ~ItemType() = default;
     /**
      * @brief Return the identifier of this item type.
@@ -60,20 +62,6 @@ public:
      * @return Maximum durability for this item type
      */
     [[nodiscard]] virtual int getMaxDurability() const = 0;
-
-    /**
-     * @brief Attempts to get the ItemType with the given name.
-     *
-     * @note This is a normal lookup, names must be the precise name.
-     *
-     * @param name Name of the ItemType to get
-     *
-     * @return ItemType if found, or nullptr
-     */
-    static const ItemType *get(const std::string &name)
-    {
-        return Endstone::getServer().getItemRegistry().get(name);
-    }
 
     bool operator==(const std::string_view other) const
     {

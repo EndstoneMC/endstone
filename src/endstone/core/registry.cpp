@@ -42,7 +42,7 @@ template <>
 std::unique_ptr<Registry<Enchantment>> EndstoneRegistry<Enchantment, Enchant>::createRegistry()
 {
     return std::make_unique<EndstoneRegistry>(
-        [](auto key, const auto &handle) { return std::make_unique<EndstoneEnchantment>(key, handle); });
+        [](const auto &key, const auto &handle) { return std::make_unique<EndstoneEnchantment>(key, handle); });
 }
 
 template <>
@@ -56,7 +56,7 @@ template <>
 std::vector<std::string> MinecraftRegistry<::Item>::keys() const
 {
     std::vector<std::string> keys;
-    for (const auto &[name, _] : ItemRegistryManager::getItemRegistry().getNameToItemMap()) {
+    for (const auto &name : ItemRegistryManager::getItemRegistry().getNameToItemMap() | std::views::keys) {
         keys.emplace_back(name.getString());
     }
     return keys;
@@ -66,7 +66,7 @@ template <>
 std::unique_ptr<Registry<ItemType>> EndstoneRegistry<ItemType, ::Item>::createRegistry()
 {
     return std::make_unique<EndstoneRegistry>(
-        [](auto key, const auto &handle) { return std::make_unique<EndstoneItemType>(handle); });
+        [](auto _, const auto &handle) { return std::make_unique<EndstoneItemType>(handle); });
 }
 
 }  // namespace endstone::core

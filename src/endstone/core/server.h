@@ -109,8 +109,7 @@ public:
     [[nodiscard]] PlayerBanList &getBanList() const override;
     [[nodiscard]] IpBanList &getIpBanList() const override;
     [[nodiscard]] ServiceManager &getServiceManager() const override;
-    [[nodiscard]] Registry<Enchantment> &getEnchantmentRegistry() const override;
-    [[nodiscard]] Registry<ItemType> &getItemRegistry() const override;
+    [[nodiscard]] IRegistry *_getRegistry(const std::string &type) const override;
     [[nodiscard]] MapView *getMap(std::int64_t id) const override;
     [[nodiscard]] MapView &createMap(const Dimension &dimension) const override;
 
@@ -151,8 +150,7 @@ private:
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstoneLevel> level_;
-    std::unique_ptr<Registry<Enchantment>> enchantment_registry_;
-    std::unique_ptr<Registry<ItemType>> item_registry_;
+    std::unordered_map<std::string, std::unique_ptr<IRegistry>> registries_;
     std::shared_ptr<EndstoneScoreboard> scoreboard_;
     std::unique_ptr<EndstoneMetrics> metrics_;
     std::unordered_map<UUID, std::shared_ptr<EndstoneScoreboard>> player_boards_;
