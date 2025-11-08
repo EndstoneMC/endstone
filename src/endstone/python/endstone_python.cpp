@@ -300,16 +300,11 @@ void init_server(py::class_<Server> &server)
                                "Gets the service manager.")
         .def(
             "get_registry",
-            [](Server &self, py::type cls) -> py::object {
-                const auto type = cls.attr("__name__").cast<std::string>();
-                auto *registry = self._getRegistry(type);
-                if (!registry) {
-                    return py::none();
-                }
-                if (type == "Enchantment") {
+            [](const Server &self, py::type t) -> py::object {
+                if (t.is(py::type::of<Enchantment>())) {
                     return py::cast(&self.getRegistry<Enchantment>());
                 }
-                if (type == "ItemType") {
+                if (t.is(py::type::of<ItemType>())) {
                     return py::cast(&self.getRegistry<ItemType>());
                 }
                 return py::none();
