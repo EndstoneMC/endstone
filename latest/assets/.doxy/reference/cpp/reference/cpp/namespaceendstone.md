@@ -116,6 +116,7 @@ _Represents a button with text and an optional icon._
 | class | [**MessageForm**](classendstone_1_1MessageForm.md) <br>_Represents a form with two buttons._  |
 | class | [**Mob**](classendstone_1_1Mob.md) <br>_Represents a mobile entity (i.e. living entity), such as a monster or player._  |
 | class | [**ModalForm**](classendstone_1_1ModalForm.md) <br>_Represents a modal form with controls._  |
+| class | [**NamespacedKey**](classendstone_1_1NamespacedKey.md) <br> |
 | class | [**Objective**](classendstone_1_1Objective.md) <br>_Represents an objective on a scoreboard that can show scores specific to entries._  |
 | class | [**OfflinePlayer**](classendstone_1_1OfflinePlayer.md) <br>_Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online._  |
 | class | [**PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md) <br>_Called when the server receives a packet from a connected client._  |

@@ -22,6 +22,8 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
       </node>
       <node id="4">
         <label>endstone/inventory/item_factory.h</label>
@@ -38,19 +40,19 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="16">
         <label>endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -70,22 +72,26 @@
         </childnode>
       </node>
       <node id="11">
+        <label>endstone/namespaced_key.h</label>
+        <link refid="namespaced__key_8h_source"/>
+      </node>
+      <node id="12">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="3">
         <label>endstone/detail/endstone.h</label>
       </node>
-      <node id="14">
+      <node id="15">
         <label>fmt/format.h</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>functional</label>
       </node>
       <node id="2">
@@ -94,7 +100,7 @@
       <node id="6">
         <label>optional</label>
       </node>
-      <node id="13">
+      <node id="14">
         <label>stdexcept</label>
       </node>
       <node id="7">

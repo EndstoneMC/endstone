@@ -233,6 +233,12 @@
 ([**endstone**](namespaceendstone.md))
 
 
+## n
+
+* [**NamespacedKey**](classendstone_1_1NamespacedKey.md)
+([**endstone**](namespaceendstone.md))
+
+
 ## o
 
 * [**Objective**](classendstone_1_1Objective.md)

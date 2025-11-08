@@ -4,710 +4,730 @@
     <compoundname>endstone::PotionType</compoundname>
     <includes refid="potion__type_8h" local="no">endstone/potion/potion_type.h</includes>
     <sectiondef kind="public-static-attrib">
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a77a19e9c22f0a157d1d27a7746e8e6ae" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Water</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1aa82078f51ad76d78ed63250fc9b14ae0" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Water</definition>
         <argsstring></argsstring>
         <name>Water</name>
         <qualifiedname>endstone::PotionType::Water</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:water&quot;</initializer>
+        <initializer>= getPotionType(&quot;water&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="23" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="23" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="28" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="28" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a5c4173f361a39c3a7890a1a5428360df" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Mundane</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a8f50d06d61e23b8804334998ca5b4f41" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Mundane</definition>
         <argsstring></argsstring>
         <name>Mundane</name>
         <qualifiedname>endstone::PotionType::Mundane</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:mundane&quot;</initializer>
+        <initializer>= getPotionType(&quot;mundane&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="24" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="24" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="29" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="29" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a4b32a039a27f7e5a79f18194cc60f0c8" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongMundane</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1aa325df25837a2e72d8fdc6e5994a698b" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongMundane</definition>
         <argsstring></argsstring>
         <name>LongMundane</name>
         <qualifiedname>endstone::PotionType::LongMundane</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_mundane&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_mundane&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="25" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="25" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="30" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="30" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1aa5520644f7545208e07e22adbfabe39b" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Thick</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a30f7c1e909f2d88a5a09ae62ac2a2341" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Thick</definition>
         <argsstring></argsstring>
         <name>Thick</name>
         <qualifiedname>endstone::PotionType::Thick</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:thick&quot;</initializer>
+        <initializer>= getPotionType(&quot;thick&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="26" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="26" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="31" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="31" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a4f7fe8d09ab5aaac2f4f25ee336d3e31" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Awkward</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a72fae37b682808052e787e180b7c6e03" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Awkward</definition>
         <argsstring></argsstring>
         <name>Awkward</name>
         <qualifiedname>endstone::PotionType::Awkward</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:awkward&quot;</initializer>
+        <initializer>= getPotionType(&quot;awkward&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="27" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="27" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="32" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="32" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a93a39c64e8f91812bc53db71714ff553" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Nightvision</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a526143f39d5696da3e305866ebbc3195" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Nightvision</definition>
         <argsstring></argsstring>
         <name>Nightvision</name>
         <qualifiedname>endstone::PotionType::Nightvision</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:nightvision&quot;</initializer>
+        <initializer>= getPotionType(&quot;nightvision&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="28" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="28" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="33" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="33" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a49d21e14965728648a8fa3ab34cd7519" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongNightvision</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ad0e7ebbc95f5d165a8b5faff86a3e1dd" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongNightvision</definition>
         <argsstring></argsstring>
         <name>LongNightvision</name>
         <qualifiedname>endstone::PotionType::LongNightvision</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_nightvision&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_nightvision&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="29" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="29" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="34" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="34" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a5abbc600380f7e83a05db80023d4a607" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Invisibility</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1aa7a461b1973196673f124293ef6a34f1" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Invisibility</definition>
         <argsstring></argsstring>
         <name>Invisibility</name>
         <qualifiedname>endstone::PotionType::Invisibility</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:invisibility&quot;</initializer>
+        <initializer>= getPotionType(&quot;invisibility&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="30" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="30" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="35" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="35" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a7cc2634171c47f0d1d908eb59323187f" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongInvisibility</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a05c54b041ba6f1ce1b52aea3282faad7" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongInvisibility</definition>
         <argsstring></argsstring>
         <name>LongInvisibility</name>
         <qualifiedname>endstone::PotionType::LongInvisibility</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_invisibility&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_invisibility&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="31" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="31" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="36" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="36" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1acebb9f84c787f7cf9343dc59a7b9123a" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Leaping</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a1460d069a58dcf6c529e7c3695de7084" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Leaping</definition>
         <argsstring></argsstring>
         <name>Leaping</name>
         <qualifiedname>endstone::PotionType::Leaping</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:leaping&quot;</initializer>
+        <initializer>= getPotionType(&quot;leaping&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="32" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="32" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="37" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="37" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a26db0cf7aa365f370b7c57d7bd7529b8" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongLeaping</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a414114b9b86222160203c1c588f6a96e" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongLeaping</definition>
         <argsstring></argsstring>
         <name>LongLeaping</name>
         <qualifiedname>endstone::PotionType::LongLeaping</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_leaping&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_leaping&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="33" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="33" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="38" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="38" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1af5fc05bd4062ec0cc3e616269cc69de7" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::StrongLeaping</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a167cb5749d8c7d91480abfcf1f326195" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::StrongLeaping</definition>
         <argsstring></argsstring>
         <name>StrongLeaping</name>
         <qualifiedname>endstone::PotionType::StrongLeaping</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:strong_leaping&quot;</initializer>
+        <initializer>= getPotionType(&quot;strong_leaping&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="34" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="34" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="39" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="39" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a7e40bdb9d81862ef1d5ed86dcc494b49" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::FireResistance</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a086127beafe5c94bd49fd3550685272c" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::FireResistance</definition>
         <argsstring></argsstring>
         <name>FireResistance</name>
         <qualifiedname>endstone::PotionType::FireResistance</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:fire_resistance&quot;</initializer>
+        <initializer>= getPotionType(&quot;fire_resistance&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="35" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="35" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="40" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="40" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a11f644547e47f4f09c191c1c711c6635" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongFireResistance</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a98fa1dc7dcc8998864826d9fe7409a36" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongFireResistance</definition>
         <argsstring></argsstring>
         <name>LongFireResistance</name>
         <qualifiedname>endstone::PotionType::LongFireResistance</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_fire_resistance&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_fire_resistance&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="36" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="36" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="41" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="41" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1ad37258c87237eb8d014e529d7ac0ab05" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Swiftness</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a7b31e7c9f5ececaa7b96e395b87bccde" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Swiftness</definition>
         <argsstring></argsstring>
         <name>Swiftness</name>
         <qualifiedname>endstone::PotionType::Swiftness</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:swiftness&quot;</initializer>
+        <initializer>= getPotionType(&quot;swiftness&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="37" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="37" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="42" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="42" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a03850905ed0b442c5711234fc83197e1" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongSwiftness</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1abd8fa8b47a83646cf7daa63731921f7a" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongSwiftness</definition>
         <argsstring></argsstring>
         <name>LongSwiftness</name>
         <qualifiedname>endstone::PotionType::LongSwiftness</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_swiftness&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_swiftness&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="38" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="38" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="43" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="43" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1ab58728367ea3e8c77eca181cde7cd768" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::StrongSwiftness</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a731438e59a32871cea002bbea1f0363d" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::StrongSwiftness</definition>
         <argsstring></argsstring>
         <name>StrongSwiftness</name>
         <qualifiedname>endstone::PotionType::StrongSwiftness</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:strong_swiftness&quot;</initializer>
+        <initializer>= getPotionType(&quot;strong_swiftness&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="39" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="39" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="44" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="44" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a11fb7655c9387921adbf4db8ecf8defc" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Slowness</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1aa4a55a6b54945004385c8a128bad3ade" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Slowness</definition>
         <argsstring></argsstring>
         <name>Slowness</name>
         <qualifiedname>endstone::PotionType::Slowness</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:slowness&quot;</initializer>
+        <initializer>= getPotionType(&quot;slowness&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="40" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="40" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="45" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="45" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a0ffd4d3bbd226e34f3177a014a75545b" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongSlowness</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1acd3598dbae3db442826cc840302111f0" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongSlowness</definition>
         <argsstring></argsstring>
         <name>LongSlowness</name>
         <qualifiedname>endstone::PotionType::LongSlowness</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_slowness&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_slowness&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="41" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="41" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="46" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="46" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a2f146a5ac7d48a7324e960c097c0ef25" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::StrongSlowness</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1abcff8e94ac881862a41d405c43956773" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::StrongSlowness</definition>
         <argsstring></argsstring>
         <name>StrongSlowness</name>
         <qualifiedname>endstone::PotionType::StrongSlowness</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:strong_slowness&quot;</initializer>
+        <initializer>= getPotionType(&quot;strong_slowness&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="42" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="42" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="47" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="47" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1ad5cb63dd71421e6b8c736cb5eb2c430b" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::WaterBreathing</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a314311999adb28b0bdc613c39dfd569c" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::WaterBreathing</definition>
         <argsstring></argsstring>
         <name>WaterBreathing</name>
         <qualifiedname>endstone::PotionType::WaterBreathing</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:water_breathing&quot;</initializer>
+        <initializer>= getPotionType(&quot;water_breathing&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="43" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="43" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="48" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="48" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a33a965a80f44034941d1e1e91e643cf7" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongWaterBreathing</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a3e987767fda20bde1c6410c4e66472ea" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongWaterBreathing</definition>
         <argsstring></argsstring>
         <name>LongWaterBreathing</name>
         <qualifiedname>endstone::PotionType::LongWaterBreathing</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_water_breathing&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_water_breathing&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="44" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="44" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="49" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="49" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a7982bae6f7c1b30459849a01b799d83e" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Healing</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1af8ba61925b821378c90fabaf2b8a9959" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Healing</definition>
         <argsstring></argsstring>
         <name>Healing</name>
         <qualifiedname>endstone::PotionType::Healing</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:healing&quot;</initializer>
+        <initializer>= getPotionType(&quot;healing&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="45" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="45" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="50" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="50" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1ac16e9b346ab50ef2611c8e004659c812" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::StrongHealing</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a22b5e6e4a6091d903c9f3b95bae0dd2b" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::StrongHealing</definition>
         <argsstring></argsstring>
         <name>StrongHealing</name>
         <qualifiedname>endstone::PotionType::StrongHealing</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:strong_healing&quot;</initializer>
+        <initializer>= getPotionType(&quot;strong_healing&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="46" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="46" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="51" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="51" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a838c8a9c37fee62a63f493b1b9f34a57" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Harming</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a52bb217e8be25977a61acc6419553248" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Harming</definition>
         <argsstring></argsstring>
         <name>Harming</name>
         <qualifiedname>endstone::PotionType::Harming</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:harming&quot;</initializer>
+        <initializer>= getPotionType(&quot;harming&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="47" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="47" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="52" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="52" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1ad327f66a8eb82516f61e73425281379b" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::StrongHarming</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1af8897f51c3488b7e655cd0fdc0ca5cab" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::StrongHarming</definition>
         <argsstring></argsstring>
         <name>StrongHarming</name>
         <qualifiedname>endstone::PotionType::StrongHarming</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:strong_harming&quot;</initializer>
+        <initializer>= getPotionType(&quot;strong_harming&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="48" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="48" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="53" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="53" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1aa05a4e15cea6c21fcf45ef888b7a5351" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Poison</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ace7deab9c4255f5cdbe68c8b035ac3f5" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Poison</definition>
         <argsstring></argsstring>
         <name>Poison</name>
         <qualifiedname>endstone::PotionType::Poison</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:poison&quot;</initializer>
+        <initializer>= getPotionType(&quot;poison&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="49" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="49" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="54" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="54" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1ae1b15c18b6cac2ef912801e2fa1a60d0" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongPoison</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1af4bfac974ffa454cc97fe13ee3f09aef" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongPoison</definition>
         <argsstring></argsstring>
         <name>LongPoison</name>
         <qualifiedname>endstone::PotionType::LongPoison</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_poison&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_poison&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="50" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="50" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="55" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="55" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1aa5c09fec6f63f36ff3bde8b578d5aaff" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::StrongPoison</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a6ba471808ff8acf71080b4c04672c9d1" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::StrongPoison</definition>
         <argsstring></argsstring>
         <name>StrongPoison</name>
         <qualifiedname>endstone::PotionType::StrongPoison</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:strong_poison&quot;</initializer>
+        <initializer>= getPotionType(&quot;strong_poison&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="51" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="51" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="56" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="56" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a60067fe84368102bfb9411f1ad05d241" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Regeneration</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ad37d835f385e2f18d18691d28d64e620" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Regeneration</definition>
         <argsstring></argsstring>
         <name>Regeneration</name>
         <qualifiedname>endstone::PotionType::Regeneration</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:regeneration&quot;</initializer>
+        <initializer>= getPotionType(&quot;regeneration&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="52" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="52" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="57" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="57" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a57b3053014fcf5e985824486a27fc40b" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongRegeneration</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ab6622999f060a77c5d0d2f6340ca2b91" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongRegeneration</definition>
         <argsstring></argsstring>
         <name>LongRegeneration</name>
         <qualifiedname>endstone::PotionType::LongRegeneration</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_regeneration&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_regeneration&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="53" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="53" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="58" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="58" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a4436d3fe4d1ad2e84c5667c51727a1b5" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::StrongRegeneration</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a1ba5b00194f790d746fd9e5fed222720" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::StrongRegeneration</definition>
         <argsstring></argsstring>
         <name>StrongRegeneration</name>
         <qualifiedname>endstone::PotionType::StrongRegeneration</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:strong_regeneration&quot;</initializer>
+        <initializer>= getPotionType(&quot;strong_regeneration&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="54" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="54" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="59" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="59" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a5e537c4cd8fcf87bb92f854aedc5e92e" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Strength</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a6cffe5374450f9c7bf64fb7d9c9eb914" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Strength</definition>
         <argsstring></argsstring>
         <name>Strength</name>
         <qualifiedname>endstone::PotionType::Strength</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:strength&quot;</initializer>
+        <initializer>= getPotionType(&quot;strength&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="55" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="55" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="60" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="60" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a1025e9607fb0056052cb4da9f06d712f" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongStrength</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a9cfcb3bef548385e7694cb52fc2485f5" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongStrength</definition>
         <argsstring></argsstring>
         <name>LongStrength</name>
         <qualifiedname>endstone::PotionType::LongStrength</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_strength&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_strength&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="56" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="56" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="61" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="61" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1aefc477a54874d3a7540b514edb809194" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::StrongStrength</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a362f0e4441cff73875f8ffdc147b1c0c" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::StrongStrength</definition>
         <argsstring></argsstring>
         <name>StrongStrength</name>
         <qualifiedname>endstone::PotionType::StrongStrength</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:strong_strength&quot;</initializer>
+        <initializer>= getPotionType(&quot;strong_strength&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="57" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="57" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="62" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="62" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a65288559aa48f823a871430f493f38e9" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Weakness</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1acb04a15126ee370980e8dae2ce9c94fd" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Weakness</definition>
         <argsstring></argsstring>
         <name>Weakness</name>
         <qualifiedname>endstone::PotionType::Weakness</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:weakness&quot;</initializer>
+        <initializer>= getPotionType(&quot;weakness&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="58" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="58" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="63" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="63" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a8f55ea065bf431943f9293e27874cf94" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongWeakness</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1adbb31ef91ad407f5bb57a2dc290f038d" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongWeakness</definition>
         <argsstring></argsstring>
         <name>LongWeakness</name>
         <qualifiedname>endstone::PotionType::LongWeakness</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_weakness&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_weakness&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="59" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="59" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="64" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="64" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a4bc447d8a0a13272d84bfded78246745" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Wither</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1aab3cc96892589c663102ba216de916b0" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Wither</definition>
         <argsstring></argsstring>
         <name>Wither</name>
         <qualifiedname>endstone::PotionType::Wither</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:wither&quot;</initializer>
+        <initializer>= getPotionType(&quot;wither&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="60" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="60" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="65" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="65" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a4c934236481d624050bc623e50f6d8b7" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::TurtleMaster</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1aa3240bd53533c3369143f671b5480368" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::TurtleMaster</definition>
         <argsstring></argsstring>
         <name>TurtleMaster</name>
         <qualifiedname>endstone::PotionType::TurtleMaster</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:turtle_master&quot;</initializer>
+        <initializer>= getPotionType(&quot;turtle_master&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="61" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="61" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="66" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="66" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1ae17586039c64ccf5b8f1c13e260206dc" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongTurtleMaster</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a697e501e8a29294aaeafaa017a389c5d" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongTurtleMaster</definition>
         <argsstring></argsstring>
         <name>LongTurtleMaster</name>
         <qualifiedname>endstone::PotionType::LongTurtleMaster</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_turtle_master&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_turtle_master&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="62" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="62" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="67" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="67" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a97bd31501a03f03624e65e1c545a57fa" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::StrongTurtleMaster</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1acecdc4ff412d4789c7c833e1735ceadd" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::StrongTurtleMaster</definition>
         <argsstring></argsstring>
         <name>StrongTurtleMaster</name>
         <qualifiedname>endstone::PotionType::StrongTurtleMaster</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:strong_turtle_master&quot;</initializer>
+        <initializer>= getPotionType(&quot;strong_turtle_master&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="63" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="63" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="68" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="68" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1aab8bb25575451fbe4c2b574b01a0743d" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::SlowFalling</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ae712173f3b755454d335dcb51c29b630" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::SlowFalling</definition>
         <argsstring></argsstring>
         <name>SlowFalling</name>
         <qualifiedname>endstone::PotionType::SlowFalling</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:slow_falling&quot;</initializer>
+        <initializer>= getPotionType(&quot;slow_falling&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="64" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="64" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="69" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="69" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1ac45dc028075d1667a9ea32c91fec0d6a" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::LongSlowFalling</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a84bc9b8a67f3cfa498fbafc46262f7bb" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::LongSlowFalling</definition>
         <argsstring></argsstring>
         <name>LongSlowFalling</name>
         <qualifiedname>endstone::PotionType::LongSlowFalling</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:long_slow_falling&quot;</initializer>
+        <initializer>= getPotionType(&quot;long_slow_falling&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="65" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="65" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="70" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="70" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a43bc4fce2b62a7e70a3acef6d819f467" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::WindCharged</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a78b081657053d280420d61701aa4620c" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::WindCharged</definition>
         <argsstring></argsstring>
         <name>WindCharged</name>
         <qualifiedname>endstone::PotionType::WindCharged</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:wind_charged&quot;</initializer>
+        <initializer>= getPotionType(&quot;wind_charged&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="66" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="66" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="71" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="71" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1aff99c156ff8f4af8cfda57de786342b0" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Weaving</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a7e1d70e5be5dbe7a8c4ec06f7e046881" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Weaving</definition>
         <argsstring></argsstring>
         <name>Weaving</name>
         <qualifiedname>endstone::PotionType::Weaving</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:weaving&quot;</initializer>
+        <initializer>= getPotionType(&quot;weaving&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="67" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="67" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="72" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="72" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a4991a0e9513cc1f192bd4dc9e1c55d32" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Oozing</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ac9556dbb07ec629c1683db9a6d404b3f" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Oozing</definition>
         <argsstring></argsstring>
         <name>Oozing</name>
         <qualifiedname>endstone::PotionType::Oozing</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:oozing&quot;</initializer>
+        <initializer>= getPotionType(&quot;oozing&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="68" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="68" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="73" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="73" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1PotionType_1a92ee0bb3172990318f2347457af647ab" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr std::string_view</type>
-        <definition>constexpr std::string_view endstone::PotionType::Infested</definition>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a735f90cc4b73e9839ba4bc2eaa568222" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PotionType::Infested</definition>
         <argsstring></argsstring>
         <name>Infested</name>
         <qualifiedname>endstone::PotionType::Infested</qualifiedname>
-        <initializer>= &quot;minecraft:potion_type:infested&quot;</initializer>
+        <initializer>= getPotionType(&quot;infested&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/potion/potion_type.h" line="69" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="69" bodyend="-1"/>
+        <location file="include/endstone/potion/potion_type.h" line="74" column="37" bodyfile="include/endstone/potion/potion_type.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classendstone_1_1PotionType_1aa4b7e7c44359ff358f1c2bdff4cfb143" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string endstone::PotionType::getPotionType</definition>
+        <argsstring>(const std::string &amp;key)</argsstring>
+        <name>getPotionType</name>
+        <qualifiedname>endstone::PotionType::getPotionType</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="22" column="24" bodyfile="include/endstone/potion/potion_type.h" bodystart="22" bodyend="25"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -715,55 +735,56 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/potion/potion_type.h" line="21" column="1" bodyfile="include/endstone/potion/potion_type.h" bodystart="21" bodyend="70"/>
+    <location file="include/endstone/potion/potion_type.h" line="21" column="1" bodyfile="include/endstone/potion/potion_type.h" bodystart="21" bodyend="75"/>
     <listofallmembers>
-      <member refid="classendstone_1_1PotionType_1a4f7fe8d09ab5aaac2f4f25ee336d3e31" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Awkward</name></member>
-      <member refid="classendstone_1_1PotionType_1a7e40bdb9d81862ef1d5ed86dcc494b49" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>FireResistance</name></member>
-      <member refid="classendstone_1_1PotionType_1a838c8a9c37fee62a63f493b1b9f34a57" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Harming</name></member>
-      <member refid="classendstone_1_1PotionType_1a7982bae6f7c1b30459849a01b799d83e" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Healing</name></member>
-      <member refid="classendstone_1_1PotionType_1a92ee0bb3172990318f2347457af647ab" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Infested</name></member>
-      <member refid="classendstone_1_1PotionType_1a5abbc600380f7e83a05db80023d4a607" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Invisibility</name></member>
-      <member refid="classendstone_1_1PotionType_1acebb9f84c787f7cf9343dc59a7b9123a" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Leaping</name></member>
-      <member refid="classendstone_1_1PotionType_1a11f644547e47f4f09c191c1c711c6635" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongFireResistance</name></member>
-      <member refid="classendstone_1_1PotionType_1a7cc2634171c47f0d1d908eb59323187f" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongInvisibility</name></member>
-      <member refid="classendstone_1_1PotionType_1a26db0cf7aa365f370b7c57d7bd7529b8" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongLeaping</name></member>
-      <member refid="classendstone_1_1PotionType_1a4b32a039a27f7e5a79f18194cc60f0c8" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongMundane</name></member>
-      <member refid="classendstone_1_1PotionType_1a49d21e14965728648a8fa3ab34cd7519" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongNightvision</name></member>
-      <member refid="classendstone_1_1PotionType_1ae1b15c18b6cac2ef912801e2fa1a60d0" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongPoison</name></member>
-      <member refid="classendstone_1_1PotionType_1a57b3053014fcf5e985824486a27fc40b" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongRegeneration</name></member>
-      <member refid="classendstone_1_1PotionType_1ac45dc028075d1667a9ea32c91fec0d6a" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongSlowFalling</name></member>
-      <member refid="classendstone_1_1PotionType_1a0ffd4d3bbd226e34f3177a014a75545b" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongSlowness</name></member>
-      <member refid="classendstone_1_1PotionType_1a1025e9607fb0056052cb4da9f06d712f" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongStrength</name></member>
-      <member refid="classendstone_1_1PotionType_1a03850905ed0b442c5711234fc83197e1" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongSwiftness</name></member>
-      <member refid="classendstone_1_1PotionType_1ae17586039c64ccf5b8f1c13e260206dc" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongTurtleMaster</name></member>
-      <member refid="classendstone_1_1PotionType_1a33a965a80f44034941d1e1e91e643cf7" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongWaterBreathing</name></member>
-      <member refid="classendstone_1_1PotionType_1a8f55ea065bf431943f9293e27874cf94" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongWeakness</name></member>
-      <member refid="classendstone_1_1PotionType_1a5c4173f361a39c3a7890a1a5428360df" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Mundane</name></member>
-      <member refid="classendstone_1_1PotionType_1a93a39c64e8f91812bc53db71714ff553" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Nightvision</name></member>
-      <member refid="classendstone_1_1PotionType_1a4991a0e9513cc1f192bd4dc9e1c55d32" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Oozing</name></member>
-      <member refid="classendstone_1_1PotionType_1aa05a4e15cea6c21fcf45ef888b7a5351" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Poison</name></member>
-      <member refid="classendstone_1_1PotionType_1a60067fe84368102bfb9411f1ad05d241" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Regeneration</name></member>
-      <member refid="classendstone_1_1PotionType_1aab8bb25575451fbe4c2b574b01a0743d" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>SlowFalling</name></member>
-      <member refid="classendstone_1_1PotionType_1a11fb7655c9387921adbf4db8ecf8defc" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Slowness</name></member>
-      <member refid="classendstone_1_1PotionType_1a5e537c4cd8fcf87bb92f854aedc5e92e" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Strength</name></member>
-      <member refid="classendstone_1_1PotionType_1ad327f66a8eb82516f61e73425281379b" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongHarming</name></member>
-      <member refid="classendstone_1_1PotionType_1ac16e9b346ab50ef2611c8e004659c812" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongHealing</name></member>
-      <member refid="classendstone_1_1PotionType_1af5fc05bd4062ec0cc3e616269cc69de7" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongLeaping</name></member>
-      <member refid="classendstone_1_1PotionType_1aa5c09fec6f63f36ff3bde8b578d5aaff" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongPoison</name></member>
-      <member refid="classendstone_1_1PotionType_1a4436d3fe4d1ad2e84c5667c51727a1b5" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongRegeneration</name></member>
-      <member refid="classendstone_1_1PotionType_1a2f146a5ac7d48a7324e960c097c0ef25" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongSlowness</name></member>
-      <member refid="classendstone_1_1PotionType_1aefc477a54874d3a7540b514edb809194" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongStrength</name></member>
-      <member refid="classendstone_1_1PotionType_1ab58728367ea3e8c77eca181cde7cd768" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongSwiftness</name></member>
-      <member refid="classendstone_1_1PotionType_1a97bd31501a03f03624e65e1c545a57fa" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongTurtleMaster</name></member>
-      <member refid="classendstone_1_1PotionType_1ad37258c87237eb8d014e529d7ac0ab05" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Swiftness</name></member>
-      <member refid="classendstone_1_1PotionType_1aa5520644f7545208e07e22adbfabe39b" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Thick</name></member>
-      <member refid="classendstone_1_1PotionType_1a4c934236481d624050bc623e50f6d8b7" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>TurtleMaster</name></member>
-      <member refid="classendstone_1_1PotionType_1a77a19e9c22f0a157d1d27a7746e8e6ae" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Water</name></member>
-      <member refid="classendstone_1_1PotionType_1ad5cb63dd71421e6b8c736cb5eb2c430b" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>WaterBreathing</name></member>
-      <member refid="classendstone_1_1PotionType_1a65288559aa48f823a871430f493f38e9" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Weakness</name></member>
-      <member refid="classendstone_1_1PotionType_1aff99c156ff8f4af8cfda57de786342b0" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Weaving</name></member>
-      <member refid="classendstone_1_1PotionType_1a43bc4fce2b62a7e70a3acef6d819f467" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>WindCharged</name></member>
-      <member refid="classendstone_1_1PotionType_1a4bc447d8a0a13272d84bfded78246745" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Wither</name></member>
+      <member refid="classendstone_1_1PotionType_1a72fae37b682808052e787e180b7c6e03" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Awkward</name></member>
+      <member refid="classendstone_1_1PotionType_1a086127beafe5c94bd49fd3550685272c" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>FireResistance</name></member>
+      <member refid="classendstone_1_1PotionType_1aa4b7e7c44359ff358f1c2bdff4cfb143" prot="private" virt="non-virtual"><scope>endstone::PotionType</scope><name>getPotionType</name></member>
+      <member refid="classendstone_1_1PotionType_1a52bb217e8be25977a61acc6419553248" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Harming</name></member>
+      <member refid="classendstone_1_1PotionType_1af8ba61925b821378c90fabaf2b8a9959" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Healing</name></member>
+      <member refid="classendstone_1_1PotionType_1a735f90cc4b73e9839ba4bc2eaa568222" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Infested</name></member>
+      <member refid="classendstone_1_1PotionType_1aa7a461b1973196673f124293ef6a34f1" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Invisibility</name></member>
+      <member refid="classendstone_1_1PotionType_1a1460d069a58dcf6c529e7c3695de7084" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Leaping</name></member>
+      <member refid="classendstone_1_1PotionType_1a98fa1dc7dcc8998864826d9fe7409a36" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongFireResistance</name></member>
+      <member refid="classendstone_1_1PotionType_1a05c54b041ba6f1ce1b52aea3282faad7" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongInvisibility</name></member>
+      <member refid="classendstone_1_1PotionType_1a414114b9b86222160203c1c588f6a96e" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongLeaping</name></member>
+      <member refid="classendstone_1_1PotionType_1aa325df25837a2e72d8fdc6e5994a698b" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongMundane</name></member>
+      <member refid="classendstone_1_1PotionType_1ad0e7ebbc95f5d165a8b5faff86a3e1dd" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongNightvision</name></member>
+      <member refid="classendstone_1_1PotionType_1af4bfac974ffa454cc97fe13ee3f09aef" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongPoison</name></member>
+      <member refid="classendstone_1_1PotionType_1ab6622999f060a77c5d0d2f6340ca2b91" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongRegeneration</name></member>
+      <member refid="classendstone_1_1PotionType_1a84bc9b8a67f3cfa498fbafc46262f7bb" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongSlowFalling</name></member>
+      <member refid="classendstone_1_1PotionType_1acd3598dbae3db442826cc840302111f0" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongSlowness</name></member>
+      <member refid="classendstone_1_1PotionType_1a9cfcb3bef548385e7694cb52fc2485f5" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongStrength</name></member>
+      <member refid="classendstone_1_1PotionType_1abd8fa8b47a83646cf7daa63731921f7a" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongSwiftness</name></member>
+      <member refid="classendstone_1_1PotionType_1a697e501e8a29294aaeafaa017a389c5d" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongTurtleMaster</name></member>
+      <member refid="classendstone_1_1PotionType_1a3e987767fda20bde1c6410c4e66472ea" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongWaterBreathing</name></member>
+      <member refid="classendstone_1_1PotionType_1adbb31ef91ad407f5bb57a2dc290f038d" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongWeakness</name></member>
+      <member refid="classendstone_1_1PotionType_1a8f50d06d61e23b8804334998ca5b4f41" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Mundane</name></member>
+      <member refid="classendstone_1_1PotionType_1a526143f39d5696da3e305866ebbc3195" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Nightvision</name></member>
+      <member refid="classendstone_1_1PotionType_1ac9556dbb07ec629c1683db9a6d404b3f" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Oozing</name></member>
+      <member refid="classendstone_1_1PotionType_1ace7deab9c4255f5cdbe68c8b035ac3f5" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Poison</name></member>
+      <member refid="classendstone_1_1PotionType_1ad37d835f385e2f18d18691d28d64e620" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Regeneration</name></member>
+      <member refid="classendstone_1_1PotionType_1ae712173f3b755454d335dcb51c29b630" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>SlowFalling</name></member>
+      <member refid="classendstone_1_1PotionType_1aa4a55a6b54945004385c8a128bad3ade" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Slowness</name></member>
+      <member refid="classendstone_1_1PotionType_1a6cffe5374450f9c7bf64fb7d9c9eb914" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Strength</name></member>
+      <member refid="classendstone_1_1PotionType_1af8897f51c3488b7e655cd0fdc0ca5cab" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongHarming</name></member>
+      <member refid="classendstone_1_1PotionType_1a22b5e6e4a6091d903c9f3b95bae0dd2b" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongHealing</name></member>
+      <member refid="classendstone_1_1PotionType_1a167cb5749d8c7d91480abfcf1f326195" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongLeaping</name></member>
+      <member refid="classendstone_1_1PotionType_1a6ba471808ff8acf71080b4c04672c9d1" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongPoison</name></member>
+      <member refid="classendstone_1_1PotionType_1a1ba5b00194f790d746fd9e5fed222720" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongRegeneration</name></member>
+      <member refid="classendstone_1_1PotionType_1abcff8e94ac881862a41d405c43956773" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongSlowness</name></member>
+      <member refid="classendstone_1_1PotionType_1a362f0e4441cff73875f8ffdc147b1c0c" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongStrength</name></member>
+      <member refid="classendstone_1_1PotionType_1a731438e59a32871cea002bbea1f0363d" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongSwiftness</name></member>
+      <member refid="classendstone_1_1PotionType_1acecdc4ff412d4789c7c833e1735ceadd" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongTurtleMaster</name></member>
+      <member refid="classendstone_1_1PotionType_1a7b31e7c9f5ececaa7b96e395b87bccde" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Swiftness</name></member>
+      <member refid="classendstone_1_1PotionType_1a30f7c1e909f2d88a5a09ae62ac2a2341" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Thick</name></member>
+      <member refid="classendstone_1_1PotionType_1aa3240bd53533c3369143f671b5480368" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>TurtleMaster</name></member>
+      <member refid="classendstone_1_1PotionType_1aa82078f51ad76d78ed63250fc9b14ae0" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Water</name></member>
+      <member refid="classendstone_1_1PotionType_1a314311999adb28b0bdc613c39dfd569c" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>WaterBreathing</name></member>
+      <member refid="classendstone_1_1PotionType_1acb04a15126ee370980e8dae2ce9c94fd" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Weakness</name></member>
+      <member refid="classendstone_1_1PotionType_1a7e1d70e5be5dbe7a8c4ec06f7e046881" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Weaving</name></member>
+      <member refid="classendstone_1_1PotionType_1a78b081657053d280420d61701aa4620c" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>WindCharged</name></member>
+      <member refid="classendstone_1_1PotionType_1aab3cc96892589c663102ba216de916b0" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Wither</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

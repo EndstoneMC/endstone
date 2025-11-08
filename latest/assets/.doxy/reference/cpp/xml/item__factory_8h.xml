@@ -12,6 +12,8 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/inventory/item_factory.h</label>
@@ -36,22 +38,26 @@
         </childnode>
       </node>
       <node id="10">
+        <label>endstone/namespaced_key.h</label>
+        <link refid="namespaced__key_8h_source"/>
+      </node>
+      <node id="11">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
-        <childnode refid="11" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="9">
         <label>endstone/detail/endstone.h</label>
       </node>
-      <node id="13">
+      <node id="14">
         <label>fmt/format.h</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>functional</label>
       </node>
       <node id="3">
@@ -60,7 +66,7 @@
       <node id="4">
         <label>optional</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>stdexcept</label>
       </node>
       <node id="5">

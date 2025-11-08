@@ -12,6 +12,7 @@
 * **alpha\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Aqua** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **aliases\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
+* **AquaAffinity** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **async\_** ([**endstone::Event**](classendstone_1_1Event.md))
 * **address\_** ([**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md), [**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md))
 * **attachment\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
@@ -32,6 +33,9 @@
 * **Blue** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Bold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **BLACK** ([**endstone::Colors**](classendstone_1_1Colors.md))
+* **BaneOfArthropods** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **BlastProtection** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **Breach** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **baked\_handlers\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **button1\_text\_** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **button2\_text\_** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
@@ -49,6 +53,9 @@
 * **created\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **chunk\_** ([**endstone::ChunkEvent**](classendstone_1_1ChunkEvent.md))
 * **command\_map\_** ([**endstone::Command**](classendstone_1_1Command.md))
+* **Channeling** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **CurseOfBinding** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **CurseOfVanishing** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **cancelled\_** ([**endstone::Event**](classendstone_1_1Event.md))
 * **caption\_** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **children\_** ([**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
@@ -79,6 +86,8 @@
 * **description\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **dimension\_** ([**endstone::DimensionEvent**](classendstone_1_1DimensionEvent.md), [**endstone::Location**](classendstone_1_1Location.md))
 * **default\_index\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
+* **Density** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **DepthStrider** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **data\_** ([**endstone::Image**](classendstone_1_1Image.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **display\_name\_** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **DefaultPermission** ([**endstone::Permission**](classendstone_1_1Permission.md))
@@ -99,6 +108,7 @@
 
 * **expiration\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **Escape** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **Efficiency** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **event\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **executor\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **enchantments\_** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
@@ -110,6 +120,12 @@
 
 * **from\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
 * **FollowRange** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
+* **FeatherFalling** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **FireAspect** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **FireProtection** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **Flame** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **Fortune** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **FrostWalker** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **format\_** ([**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **full\_name\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **FireResistance** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
@@ -139,6 +155,8 @@
 
 * **icon\_** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **Italic** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **Impaling** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **Infinity** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **is\_contextual\_** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
 * **item\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md))
@@ -158,6 +176,7 @@
 
 * **knockback\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
 * **KnockbackResistance** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
+* **Knockback** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 
 
 ## l
@@ -167,6 +186,10 @@
 * **Luck** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **LightPurple** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **label\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Header**](classendstone_1_1Header.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **Looting** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **Loyalty** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **LuckOfTheSea** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **Lure** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **lore\_** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **level\_** ([**endstone::LevelEvent**](classendstone_1_1LevelEvent.md), [**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
 * **loader\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
@@ -212,10 +235,13 @@
 * **MaterialRedstone** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **MaterialResin** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **MinecoinGold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **Mending** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **Multishot** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **mtx\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **meta\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **map\_** ([**endstone::MapInitializeEvent**](classendstone_1_1MapInitializeEvent.md))
 * **map\_id\_** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
+* **Minecraft** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **muted\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **Mundane** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **message\_id\_** ([**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))
@@ -264,6 +290,11 @@
 * **placed\_against\_** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
 * **placed\_block\_** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
 * **permissions\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
+* **Piercing** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **Power** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **ProjectileProtection** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **Protection** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **Punch** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **plugin\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md))
 * **priority\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **pitch\_** ([**endstone::Location**](classendstone_1_1Location.md))
@@ -287,6 +318,7 @@
 
 ## q
 
+* **QuickCharge** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **quit\_message\_** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))
 
 
@@ -299,6 +331,8 @@
 * **red\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Red** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Reset** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **Respiration** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **Riptide** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **repair\_cost\_** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **removed\_** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **Regeneration** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
@@ -310,6 +344,11 @@
 
 * **source\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md), [**endstone::BanEntry**](classendstone_1_1BanEntry.md), [**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md))
 * **sender\_** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
+* **Sharpness** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **SilkTouch** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **Smite** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **SoulSpeed** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **SwiftSneak** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **submit\_button\_text\_** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **sub\_client\_id\_** ([**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md))
 * **server\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
@@ -336,6 +375,7 @@
 
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **text\_** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
+* **Thorns** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **title\_** ([**endstone::Form**](classendstone_1_1Form.md))
 * **type\_** ([**endstone::Image**](classendstone_1_1Image.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
 * **TYPE** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
@@ -348,6 +388,7 @@
 * **UnderwaterMovementSpeed** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **uuid\_** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md), [**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md))
 * **usages\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
+* **Unbreaking** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **unbreakable\_** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 
 
@@ -363,6 +404,7 @@
 
 * **White** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **WHITE** ([**endstone::Colors**](classendstone_1_1Colors.md))
+* **WindBurst** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **width\_** ([**endstone::Image**](classendstone_1_1Image.md))
 * **website\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **Water** ([**endstone::PotionType**](classendstone_1_1PotionType.md))

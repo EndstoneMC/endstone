@@ -70,13 +70,15 @@
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/event/chunk/chunk_event.h</label>
         <link refid="chunk__event_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -118,19 +120,19 @@
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="43">
         <label>endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
       </node>
       <node id="37">
@@ -159,7 +161,7 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="44">
         <label>endstone/level/chunk.h</label>
         <link refid="chunk_8h_source"/>
         <childnode refid="9" relation="include">
@@ -172,7 +174,7 @@
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
@@ -209,6 +211,10 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
+      <node id="40">
+        <label>endstone/namespaced_key.h</label>
+        <link refid="namespaced__key_8h_source"/>
+      </node>
       <node id="17">
         <label>endstone/permissions/permissible.h</label>
         <link refid="permissible_8h_source"/>
@@ -237,10 +243,10 @@
         <label>endstone/permissions/permission_level.h</label>
         <link refid="permission__level_8h_source"/>
       </node>
-      <node id="40">
+      <node id="41">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -277,7 +283,7 @@
       <node id="31">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="41">
+      <node id="42">
         <label>functional</label>
       </node>
       <node id="8">

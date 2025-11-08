@@ -41,6 +41,8 @@
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
       </node>
       <node id="24">
         <label>endstone/inventory/item_factory.h</label>
@@ -57,19 +59,19 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="33">
         <label>endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="25">
@@ -120,6 +122,10 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
+      <node id="29">
+        <label>endstone/namespaced_key.h</label>
+        <link refid="namespaced__key_8h_source"/>
+      </node>
       <node id="11">
         <label>endstone/permissions/permissible.h</label>
         <link refid="permissible_8h_source"/>
@@ -148,12 +154,12 @@
         <label>endstone/permissions/permission_level.h</label>
         <link refid="permission__level_8h_source"/>
       </node>
-      <node id="29">
+      <node id="30">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
-        <childnode refid="30" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -181,7 +187,7 @@
       <node id="5">
         <label>fmt/format.h</label>
       </node>
-      <node id="30">
+      <node id="31">
         <label>functional</label>
       </node>
       <node id="12">
@@ -196,7 +202,7 @@
       <node id="26">
         <label>optional</label>
       </node>
-      <node id="31">
+      <node id="32">
         <label>stdexcept</label>
       </node>
       <node id="4">

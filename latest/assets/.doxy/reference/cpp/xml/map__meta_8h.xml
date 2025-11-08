@@ -13,6 +13,8 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>endstone/inventory/meta/item_meta.h</label>
@@ -37,88 +39,92 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>endstone/map/map_canvas.h</label>
-        <link refid="map__canvas_8h_source"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>endstone/map/map_cursor.h</label>
-        <link refid="map__cursor_8h_source"/>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>endstone/map/map_renderer.h</label>
-        <link refid="map__renderer_8h_source"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>endstone/map/map_view.h</label>
-        <link refid="map__view_8h_source"/>
         <childnode refid="15" relation="include">
         </childnode>
       </node>
+      <node id="17">
+        <label>endstone/map/map_canvas.h</label>
+        <link refid="map__canvas_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>endstone/map/map_cursor.h</label>
+        <link refid="map__cursor_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>endstone/map/map_renderer.h</label>
+        <link refid="map__renderer_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>endstone/map/map_view.h</label>
+        <link refid="map__view_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
       <node id="10">
+        <label>endstone/namespaced_key.h</label>
+        <link refid="namespaced__key_8h_source"/>
+      </node>
+      <node id="11">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
-        <childnode refid="11" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-      </node>
-      <node id="20">
-        <label>endstone/util/color.h</label>
-        <link refid="color_8h_source"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="21">
+        <label>endstone/util/color.h</label>
+        <link refid="color_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
         <label>endstone/util/image.h</label>
         <link refid="image_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="19">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="13" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="2">
         <label>endstone/detail/endstone.h</label>
       </node>
-      <node id="13">
+      <node id="14">
         <label>fmt/format.h</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>functional</label>
       </node>
       <node id="4">
         <label>memory</label>
       </node>
-      <node id="19">
+      <node id="20">
         <label>nonstd/expected.hpp</label>
       </node>
       <node id="5">
         <label>optional</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>stdexcept</label>
       </node>
       <node id="6">

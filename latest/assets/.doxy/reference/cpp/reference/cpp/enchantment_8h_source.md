@@ -25,13 +25,101 @@
 #pragma once
 
 #include "endstone/detail/endstone.h"
+#include "endstone/namespaced_key.h"
 #include "endstone/registry.h"
 
 namespace endstone {
 class ItemStack;
 
 class Enchantment {
+    static std::string getEnchantment(const std::string &key)
+    {
+        return NamespacedKey::minecraft(key);
+    }
+
 public:
+    inline static const std::string Protection = getEnchantment("protection");
+
+    inline static const std::string FireProtection = getEnchantment("fire_protection");
+
+    inline static const std::string FeatherFalling = getEnchantment("feather_falling");
+
+    inline static const std::string BlastProtection = getEnchantment("blast_protection");
+
+    inline static const std::string ProjectileProtection = getEnchantment("projectile_protection");
+
+    inline static const std::string Thorns = getEnchantment("thorns");
+
+    inline static const std::string Respiration = getEnchantment("respiration");
+
+    inline static const std::string DepthStrider = getEnchantment("depth_strider");
+
+    inline static const std::string AquaAffinity = getEnchantment("aqua_affinity");
+
+    inline static const std::string Sharpness = getEnchantment("sharpness");
+
+    inline static const std::string Smite = getEnchantment("smite");
+
+    inline static const std::string BaneOfArthropods = getEnchantment("bane_of_arthropods");
+
+    inline static const std::string Knockback = getEnchantment("knockback");
+
+    inline static const std::string FireAspect = getEnchantment("fire_aspect");
+
+    inline static const std::string Looting = getEnchantment("looting");
+
+    inline static const std::string Efficiency = getEnchantment("efficiency");
+
+    inline static const std::string SilkTouch = getEnchantment("silk_touch");
+
+    inline static const std::string Unbreaking = getEnchantment("unbreaking");
+
+    inline static const std::string Fortune = getEnchantment("fortune");
+
+    inline static const std::string Power = getEnchantment("power");
+
+    inline static const std::string Punch = getEnchantment("punch");
+
+    inline static const std::string Flame = getEnchantment("flame");
+
+    inline static const std::string Infinity = getEnchantment("infinity");
+
+    inline static const std::string LuckOfTheSea = getEnchantment("luck_of_the_sea");
+
+    inline static const std::string Lure = getEnchantment("lure");
+
+    inline static const std::string FrostWalker = getEnchantment("frost_walker");
+
+    inline static const std::string Mending = getEnchantment("mending");
+
+    inline static const std::string CurseOfBinding = getEnchantment("binding");
+
+    inline static const std::string CurseOfVanishing = getEnchantment("vanishing");
+
+    inline static const std::string Impaling = getEnchantment("impaling");
+
+    inline static const std::string Riptide = getEnchantment("riptide");
+
+    inline static const std::string Loyalty = getEnchantment("loyalty");
+
+    inline static const std::string Channeling = getEnchantment("channeling");
+
+    inline static const std::string Multishot = getEnchantment("multishot");
+
+    inline static const std::string Piercing = getEnchantment("piercing");
+
+    inline static const std::string QuickCharge = getEnchantment("quick_charge");
+
+    inline static const std::string SoulSpeed = getEnchantment("soul_speed");
+
+    inline static const std::string SwiftSneak = getEnchantment("swift_sneak");
+
+    inline static const std::string WindBurst = getEnchantment("wind_burst");
+
+    inline static const std::string Density = getEnchantment("density");
+
+    inline static const std::string Breach = getEnchantment("breach");
+
     virtual ~Enchantment() = default;
 
     [[nodiscard]] virtual std::string getId() const = 0;

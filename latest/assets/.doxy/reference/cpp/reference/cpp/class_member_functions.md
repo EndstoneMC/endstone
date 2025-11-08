@@ -178,6 +178,7 @@
 * **getSource** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md), [**endstone::BanEntry**](classendstone_1_1BanEntry.md), [**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md))
 * **getFrom** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
 * **getTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
+* **getAttribute** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **getBaseMaxValue** ([**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md))
 * **getBaseMinValue** ([**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md))
 * **getBaseValue** ([**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md))
@@ -242,6 +243,7 @@
 * **getLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Header**](classendstone_1_1Header.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **getOptions** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **get** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md), [**endstone::ItemType**](classendstone_1_1ItemType.md), [**endstone::Registry**](classendstone_1_1Registry.md), [**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
+* **getEnchantment** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **getMaxLevel** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **getStartLevel** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **getTranslationKey** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ItemType**](classendstone_1_1ItemType.md))
@@ -293,6 +295,8 @@
 * **getButton1** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getButton2** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getSubmitButton** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
+* **getKey** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
+* **getNamespace** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **getCriteria** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getDisplaySlot** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getRenderType** ([**endstone::Objective**](classendstone_1_1Objective.md))
@@ -372,6 +376,7 @@
 * **getDefaultPermissions** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPermissionSubscriptions** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **getPotionType** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **getOrThrow** ([**endstone::Registry**](classendstone_1_1Registry.md))
 * **getPendingTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **getEntry** ([**endstone::Score**](classendstone_1_1Score.md))
@@ -531,6 +536,7 @@
 * **MapInitializeEvent** ([**endstone::MapInitializeEvent**](classendstone_1_1MapInitializeEvent.md))
 * **MapMeta** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **MapRenderer** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
+* **minecraft** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 
 
 ## n

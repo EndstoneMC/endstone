@@ -40,6 +40,8 @@
         </childnode>
         <childnode refid="71" relation="include">
         </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>endstone/event/cancellable.h</label>
@@ -270,19 +272,19 @@
         </childnode>
         <childnode refid="67" relation="include">
         </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="73" relation="include">
         </childnode>
         <childnode refid="68" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
       </node>
-      <node id="72">
+      <node id="73">
         <label>endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="66" relation="include">
         </childnode>
-        <childnode refid="71" relation="include">
+        <childnode refid="72" relation="include">
         </childnode>
       </node>
       <node id="68">
@@ -338,6 +340,10 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
+      </node>
+      <node id="71">
+        <label>endstone/namespaced_key.h</label>
+        <link refid="namespaced__key_8h_source"/>
       </node>
       <node id="47">
         <label>endstone/offline_player.h</label>
@@ -403,7 +409,7 @@
         <childnode refid="48" relation="include">
         </childnode>
       </node>
-      <node id="71">
+      <node id="72">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
         <childnode refid="36" relation="include">

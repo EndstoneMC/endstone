@@ -2,6 +2,684 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Enchantment" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Enchantment</compoundname>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a77f68b71735935a36c6fbcf1bad9a9f6" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Protection</definition>
+        <argsstring></argsstring>
+        <name>Protection</name>
+        <qualifiedname>endstone::Enchantment::Protection</qualifiedname>
+        <initializer>= getEnchantment(&quot;protection&quot;)</initializer>
+        <briefdescription>
+<para>Provides protection against environmental damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="34" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a603f1ff3531ba50b470bb6723fcaff33" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::FireProtection</definition>
+        <argsstring></argsstring>
+        <name>FireProtection</name>
+        <qualifiedname>endstone::Enchantment::FireProtection</qualifiedname>
+        <initializer>= getEnchantment(&quot;fire_protection&quot;)</initializer>
+        <briefdescription>
+<para>Provides protection against fire damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="39" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1afd0538d221079a4e306ef68c76395114" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::FeatherFalling</definition>
+        <argsstring></argsstring>
+        <name>FeatherFalling</name>
+        <qualifiedname>endstone::Enchantment::FeatherFalling</qualifiedname>
+        <initializer>= getEnchantment(&quot;feather_falling&quot;)</initializer>
+        <briefdescription>
+<para>Provides protection against fall damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="44" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a33e22046536f14fe52517c2231f9e3e9" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::BlastProtection</definition>
+        <argsstring></argsstring>
+        <name>BlastProtection</name>
+        <qualifiedname>endstone::Enchantment::BlastProtection</qualifiedname>
+        <initializer>= getEnchantment(&quot;blast_protection&quot;)</initializer>
+        <briefdescription>
+<para>Provides protection against explosive damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="49" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a8fe4c607d8f99f823bbf2c2c12c0102c" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::ProjectileProtection</definition>
+        <argsstring></argsstring>
+        <name>ProjectileProtection</name>
+        <qualifiedname>endstone::Enchantment::ProjectileProtection</qualifiedname>
+        <initializer>= getEnchantment(&quot;projectile_protection&quot;)</initializer>
+        <briefdescription>
+<para>Provides protection against projectile damage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="54" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a57049e0f81d37387ad83ad0c7a69a6be" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Thorns</definition>
+        <argsstring></argsstring>
+        <name>Thorns</name>
+        <qualifiedname>endstone::Enchantment::Thorns</qualifiedname>
+        <initializer>= getEnchantment(&quot;thorns&quot;)</initializer>
+        <briefdescription>
+<para>Damages the attacker. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="59" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1ab5c1b475d7b938e1d7a3f807e6019378" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Respiration</definition>
+        <argsstring></argsstring>
+        <name>Respiration</name>
+        <qualifiedname>endstone::Enchantment::Respiration</qualifiedname>
+        <initializer>= getEnchantment(&quot;respiration&quot;)</initializer>
+        <briefdescription>
+<para>Decreases the rate of air loss whilst underwater. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="64" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1af1c7e007b6435165eb45740fce0cc683" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::DepthStrider</definition>
+        <argsstring></argsstring>
+        <name>DepthStrider</name>
+        <qualifiedname>endstone::Enchantment::DepthStrider</qualifiedname>
+        <initializer>= getEnchantment(&quot;depth_strider&quot;)</initializer>
+        <briefdescription>
+<para>Increases walking speed while in water. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="69" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a0c24bbd41bf4afe5444cd3b9d7b54452" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::AquaAffinity</definition>
+        <argsstring></argsstring>
+        <name>AquaAffinity</name>
+        <qualifiedname>endstone::Enchantment::AquaAffinity</qualifiedname>
+        <initializer>= getEnchantment(&quot;aqua_affinity&quot;)</initializer>
+        <briefdescription>
+<para>Increases the speed at which a player may mine underwater. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="74" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1aa822ad1465f023f3968bf896ad4e86ae" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Sharpness</definition>
+        <argsstring></argsstring>
+        <name>Sharpness</name>
+        <qualifiedname>endstone::Enchantment::Sharpness</qualifiedname>
+        <initializer>= getEnchantment(&quot;sharpness&quot;)</initializer>
+        <briefdescription>
+<para>Increases damage against all targets. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="79" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a3067f0269bade2ac079c6db7e1ae309b" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Smite</definition>
+        <argsstring></argsstring>
+        <name>Smite</name>
+        <qualifiedname>endstone::Enchantment::Smite</qualifiedname>
+        <initializer>= getEnchantment(&quot;smite&quot;)</initializer>
+        <briefdescription>
+<para>Increases damage against undead targets. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="84" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1aa0ac2c30febd9db5d648453529a22553" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::BaneOfArthropods</definition>
+        <argsstring></argsstring>
+        <name>BaneOfArthropods</name>
+        <qualifiedname>endstone::Enchantment::BaneOfArthropods</qualifiedname>
+        <initializer>= getEnchantment(&quot;bane_of_arthropods&quot;)</initializer>
+        <briefdescription>
+<para>Increases damage against arthropod targets. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="89" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a1d8b0ee51e2b63af5fa92434ab4ff8fb" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Knockback</definition>
+        <argsstring></argsstring>
+        <name>Knockback</name>
+        <qualifiedname>endstone::Enchantment::Knockback</qualifiedname>
+        <initializer>= getEnchantment(&quot;knockback&quot;)</initializer>
+        <briefdescription>
+<para>All damage to other targets will knock them back when hit. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="94" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a5ee507280fca638b4cb63d97384df437" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::FireAspect</definition>
+        <argsstring></argsstring>
+        <name>FireAspect</name>
+        <qualifiedname>endstone::Enchantment::FireAspect</qualifiedname>
+        <initializer>= getEnchantment(&quot;fire_aspect&quot;)</initializer>
+        <briefdescription>
+<para>When attacking a target, has a chance to set them on fire. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="99" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1ab832d331b4a1bb64a9396182115412f3" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Looting</definition>
+        <argsstring></argsstring>
+        <name>Looting</name>
+        <qualifiedname>endstone::Enchantment::Looting</qualifiedname>
+        <initializer>= getEnchantment(&quot;looting&quot;)</initializer>
+        <briefdescription>
+<para>Provides a chance of gaining extra loot when killing monsters. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="104" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a2bb3e8d904040328dd5f08adb5a1c6f7" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Efficiency</definition>
+        <argsstring></argsstring>
+        <name>Efficiency</name>
+        <qualifiedname>endstone::Enchantment::Efficiency</qualifiedname>
+        <initializer>= getEnchantment(&quot;efficiency&quot;)</initializer>
+        <briefdescription>
+<para>Increases the rate at which you mine/dig. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="109" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a37122cf5b2f6c6adea4ea25cf94ac47d" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::SilkTouch</definition>
+        <argsstring></argsstring>
+        <name>SilkTouch</name>
+        <qualifiedname>endstone::Enchantment::SilkTouch</qualifiedname>
+        <initializer>= getEnchantment(&quot;silk_touch&quot;)</initializer>
+        <briefdescription>
+<para>Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="114" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a73c32f0550929fca8128ee56577a04a4" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Unbreaking</definition>
+        <argsstring></argsstring>
+        <name>Unbreaking</name>
+        <qualifiedname>endstone::Enchantment::Unbreaking</qualifiedname>
+        <initializer>= getEnchantment(&quot;unbreaking&quot;)</initializer>
+        <briefdescription>
+<para>Decreases the rate at which a tool looses durability. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="119" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1ac86988b6702e58c5f8bec1778e5d7424" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Fortune</definition>
+        <argsstring></argsstring>
+        <name>Fortune</name>
+        <qualifiedname>endstone::Enchantment::Fortune</qualifiedname>
+        <initializer>= getEnchantment(&quot;fortune&quot;)</initializer>
+        <briefdescription>
+<para>Provides a chance of gaining extra loot when destroying blocks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="124" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1ac114920606cc904cb17ff3e9a1133f1f" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Power</definition>
+        <argsstring></argsstring>
+        <name>Power</name>
+        <qualifiedname>endstone::Enchantment::Power</qualifiedname>
+        <initializer>= getEnchantment(&quot;power&quot;)</initializer>
+        <briefdescription>
+<para>Provides extra damage when shooting arrows from bows. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="129" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1ac480f39a284bc1b29ead6b5ddd5a62fb" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Punch</definition>
+        <argsstring></argsstring>
+        <name>Punch</name>
+        <qualifiedname>endstone::Enchantment::Punch</qualifiedname>
+        <initializer>= getEnchantment(&quot;punch&quot;)</initializer>
+        <briefdescription>
+<para>Provides a knockback when an entity is hit by an arrow from a bow. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="134" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a71df09047092134a3d8a7bbba087e434" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Flame</definition>
+        <argsstring></argsstring>
+        <name>Flame</name>
+        <qualifiedname>endstone::Enchantment::Flame</qualifiedname>
+        <initializer>= getEnchantment(&quot;flame&quot;)</initializer>
+        <briefdescription>
+<para>Sets entities on fire when hit by arrows shot from a bow. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="139" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a4523ab35640cc93ac028b8f0ba611c54" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Infinity</definition>
+        <argsstring></argsstring>
+        <name>Infinity</name>
+        <qualifiedname>endstone::Enchantment::Infinity</qualifiedname>
+        <initializer>= getEnchantment(&quot;infinity&quot;)</initializer>
+        <briefdescription>
+<para>Provides infinite arrows when shooting a bow. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="144" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a541256e08ea3498976f16af938cf3d97" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::LuckOfTheSea</definition>
+        <argsstring></argsstring>
+        <name>LuckOfTheSea</name>
+        <qualifiedname>endstone::Enchantment::LuckOfTheSea</qualifiedname>
+        <initializer>= getEnchantment(&quot;luck_of_the_sea&quot;)</initializer>
+        <briefdescription>
+<para>Decreases odds of catching worthless junk. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="149" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a6f1a563a10d8c177304e332da682b39f" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Lure</definition>
+        <argsstring></argsstring>
+        <name>Lure</name>
+        <qualifiedname>endstone::Enchantment::Lure</qualifiedname>
+        <initializer>= getEnchantment(&quot;lure&quot;)</initializer>
+        <briefdescription>
+<para>Increases rate of fish biting your hook. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="154" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a01eb7d453a9768c4a04f880e990a3be2" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::FrostWalker</definition>
+        <argsstring></argsstring>
+        <name>FrostWalker</name>
+        <qualifiedname>endstone::Enchantment::FrostWalker</qualifiedname>
+        <initializer>= getEnchantment(&quot;frost_walker&quot;)</initializer>
+        <briefdescription>
+<para>Freezes any still water adjacent to ice / frost which player is walking on. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="159" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a528c18b4cba870f4300892091d62fc80" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Mending</definition>
+        <argsstring></argsstring>
+        <name>Mending</name>
+        <qualifiedname>endstone::Enchantment::Mending</qualifiedname>
+        <initializer>= getEnchantment(&quot;mending&quot;)</initializer>
+        <briefdescription>
+<para>Allows mending the item using experience orbs. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="164" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1abea8e1204d9dd0e195c4100582e527e0" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::CurseOfBinding</definition>
+        <argsstring></argsstring>
+        <name>CurseOfBinding</name>
+        <qualifiedname>endstone::Enchantment::CurseOfBinding</qualifiedname>
+        <initializer>= getEnchantment(&quot;binding&quot;)</initializer>
+        <briefdescription>
+<para><ref refid="classendstone_1_1Item" kindref="compound">Item</ref> cannot be removed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="169" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1ac0111184546680976bc4dc9a03ba9271" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::CurseOfVanishing</definition>
+        <argsstring></argsstring>
+        <name>CurseOfVanishing</name>
+        <qualifiedname>endstone::Enchantment::CurseOfVanishing</qualifiedname>
+        <initializer>= getEnchantment(&quot;vanishing&quot;)</initializer>
+        <briefdescription>
+<para><ref refid="classendstone_1_1Item" kindref="compound">Item</ref> disappears instead of dropping. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="174" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1af72cdba0bee7268d803fe6831c8eb806" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Impaling</definition>
+        <argsstring></argsstring>
+        <name>Impaling</name>
+        <qualifiedname>endstone::Enchantment::Impaling</qualifiedname>
+        <initializer>= getEnchantment(&quot;impaling&quot;)</initializer>
+        <briefdescription>
+<para>Deals more damage to mobs that live in the ocean. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="179" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a55add57223e3eb1e44312cfd6e6af07e" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Riptide</definition>
+        <argsstring></argsstring>
+        <name>Riptide</name>
+        <qualifiedname>endstone::Enchantment::Riptide</qualifiedname>
+        <initializer>= getEnchantment(&quot;riptide&quot;)</initializer>
+        <briefdescription>
+<para>When it is rainy, launches the player in the direction their trident is thrown. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="184" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a5b9a2a157735ca0e27a7c175b734e6c1" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Loyalty</definition>
+        <argsstring></argsstring>
+        <name>Loyalty</name>
+        <qualifiedname>endstone::Enchantment::Loyalty</qualifiedname>
+        <initializer>= getEnchantment(&quot;loyalty&quot;)</initializer>
+        <briefdescription>
+<para>Causes a thrown trident to return to the player who threw it. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="189" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1ae73bf51010fa7ff8c7de2dd350122b34" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Channeling</definition>
+        <argsstring></argsstring>
+        <name>Channeling</name>
+        <qualifiedname>endstone::Enchantment::Channeling</qualifiedname>
+        <initializer>= getEnchantment(&quot;channeling&quot;)</initializer>
+        <briefdescription>
+<para>Strikes lightning when a mob is hit with a trident if conditions are stormy. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="194" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a1ab9b4a512344cd9528accfbafd489a8" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Multishot</definition>
+        <argsstring></argsstring>
+        <name>Multishot</name>
+        <qualifiedname>endstone::Enchantment::Multishot</qualifiedname>
+        <initializer>= getEnchantment(&quot;multishot&quot;)</initializer>
+        <briefdescription>
+<para>Shoot multiple arrows from crossbows. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="199" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1afe6c192301d88c4b0e0ef7e0f2449e59" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Piercing</definition>
+        <argsstring></argsstring>
+        <name>Piercing</name>
+        <qualifiedname>endstone::Enchantment::Piercing</qualifiedname>
+        <initializer>= getEnchantment(&quot;piercing&quot;)</initializer>
+        <briefdescription>
+<para>Crossbow projectiles pierce entities. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="204" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a2faf0209df882021c58ed270b7225f33" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::QuickCharge</definition>
+        <argsstring></argsstring>
+        <name>QuickCharge</name>
+        <qualifiedname>endstone::Enchantment::QuickCharge</qualifiedname>
+        <initializer>= getEnchantment(&quot;quick_charge&quot;)</initializer>
+        <briefdescription>
+<para>Charges crossbows quickly. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="209" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a69557571deb2bf6a5fc6600d7bcc0acd" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::SoulSpeed</definition>
+        <argsstring></argsstring>
+        <name>SoulSpeed</name>
+        <qualifiedname>endstone::Enchantment::SoulSpeed</qualifiedname>
+        <initializer>= getEnchantment(&quot;soul_speed&quot;)</initializer>
+        <briefdescription>
+<para>Walk quicker on soul blocks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="214" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a062964625f266c0c9aa306fa485418fe" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::SwiftSneak</definition>
+        <argsstring></argsstring>
+        <name>SwiftSneak</name>
+        <qualifiedname>endstone::Enchantment::SwiftSneak</qualifiedname>
+        <initializer>= getEnchantment(&quot;swift_sneak&quot;)</initializer>
+        <briefdescription>
+<para>Walk quicker while sneaking. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="219" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1a80ed327b5f9784464514a6032af502a2" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::WindBurst</definition>
+        <argsstring></argsstring>
+        <name>WindBurst</name>
+        <qualifiedname>endstone::Enchantment::WindBurst</qualifiedname>
+        <initializer>= getEnchantment(&quot;wind_burst&quot;)</initializer>
+        <briefdescription>
+<para>Emits wind burst upon hitting enemy. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="224" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1aeb91e4768e20b469d5d33f72b7e1f418" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Density</definition>
+        <argsstring></argsstring>
+        <name>Density</name>
+        <qualifiedname>endstone::Enchantment::Density</qualifiedname>
+        <initializer>= getEnchantment(&quot;density&quot;)</initializer>
+        <briefdescription>
+<para>Increases fall damage of maces. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="229" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Enchantment_1ad94a1826b30a03ac8535cd0bfa1b06db" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Enchantment::Breach</definition>
+        <argsstring></argsstring>
+        <name>Breach</name>
+        <qualifiedname>endstone::Enchantment::Breach</qualifiedname>
+        <initializer>= getEnchantment(&quot;breach&quot;)</initializer>
+        <briefdescription>
+<para>Reduces armor effectiveness against maces. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="234" column="37" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="234" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1a81b7325cc72ab15d18aee538040089c6" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string endstone::Enchantment::getEnchantment</definition>
+        <argsstring>(const std::string &amp;key)</argsstring>
+        <name>getEnchantment</name>
+        <qualifiedname>endstone::Enchantment::getEnchantment</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="25" column="24" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="25" bodyend="28"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a52f4acd21d110aa3cf5ca3e41815310c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -15,7 +693,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="25" column="13"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="236" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1ab02562f0e0585d106bb3fc904bd32b14" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -33,7 +711,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="32" column="26"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="243" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a2c9d36d8189de57bcff77586591e9c05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -51,7 +729,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="39" column="26"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="250" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -69,7 +747,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="46" column="18"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="257" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -87,7 +765,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="53" column="18"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="264" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -118,7 +796,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="61" column="19"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="272" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -150,7 +828,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="71" column="19"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="282" column="19"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -185,22 +863,64 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="82" column="30" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="82" bodyend="85"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="293" column="30" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="293" bodyend="296"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/enchantments/enchantment.h" line="23" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="23" bodyend="86"/>
+    <location file="include/endstone/enchantments/enchantment.h" line="24" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="24" bodyend="297"/>
     <listofallmembers>
+      <member refid="classendstone_1_1Enchantment_1a0c24bbd41bf4afe5444cd3b9d7b54452" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>AquaAffinity</name></member>
+      <member refid="classendstone_1_1Enchantment_1aa0ac2c30febd9db5d648453529a22553" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>BaneOfArthropods</name></member>
+      <member refid="classendstone_1_1Enchantment_1a33e22046536f14fe52517c2231f9e3e9" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>BlastProtection</name></member>
+      <member refid="classendstone_1_1Enchantment_1ad94a1826b30a03ac8535cd0bfa1b06db" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Breach</name></member>
       <member refid="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>canEnchantItem</name></member>
+      <member refid="classendstone_1_1Enchantment_1ae73bf51010fa7ff8c7de2dd350122b34" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Channeling</name></member>
       <member refid="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>conflictsWith</name></member>
+      <member refid="classendstone_1_1Enchantment_1abea8e1204d9dd0e195c4100582e527e0" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>CurseOfBinding</name></member>
+      <member refid="classendstone_1_1Enchantment_1ac0111184546680976bc4dc9a03ba9271" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>CurseOfVanishing</name></member>
+      <member refid="classendstone_1_1Enchantment_1aeb91e4768e20b469d5d33f72b7e1f418" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Density</name></member>
+      <member refid="classendstone_1_1Enchantment_1af1c7e007b6435165eb45740fce0cc683" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>DepthStrider</name></member>
+      <member refid="classendstone_1_1Enchantment_1a2bb3e8d904040328dd5f08adb5a1c6f7" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Efficiency</name></member>
+      <member refid="classendstone_1_1Enchantment_1afd0538d221079a4e306ef68c76395114" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>FeatherFalling</name></member>
+      <member refid="classendstone_1_1Enchantment_1a5ee507280fca638b4cb63d97384df437" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>FireAspect</name></member>
+      <member refid="classendstone_1_1Enchantment_1a603f1ff3531ba50b470bb6723fcaff33" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>FireProtection</name></member>
+      <member refid="classendstone_1_1Enchantment_1a71df09047092134a3d8a7bbba087e434" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Flame</name></member>
+      <member refid="classendstone_1_1Enchantment_1ac86988b6702e58c5f8bec1778e5d7424" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Fortune</name></member>
+      <member refid="classendstone_1_1Enchantment_1a01eb7d453a9768c4a04f880e990a3be2" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>FrostWalker</name></member>
       <member refid="classendstone_1_1Enchantment_1a498add7a48a4da156a9fe51df51b21a0" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>get</name></member>
+      <member refid="classendstone_1_1Enchantment_1a81b7325cc72ab15d18aee538040089c6" prot="private" virt="non-virtual"><scope>endstone::Enchantment</scope><name>getEnchantment</name></member>
       <member refid="classendstone_1_1Enchantment_1ab02562f0e0585d106bb3fc904bd32b14" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getId</name></member>
       <member refid="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getMaxLevel</name></member>
       <member refid="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getStartLevel</name></member>
       <member refid="classendstone_1_1Enchantment_1a2c9d36d8189de57bcff77586591e9c05" prot="public" virt="pure-virtual"><scope>endstone::Enchantment</scope><name>getTranslationKey</name></member>
+      <member refid="classendstone_1_1Enchantment_1af72cdba0bee7268d803fe6831c8eb806" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Impaling</name></member>
+      <member refid="classendstone_1_1Enchantment_1a4523ab35640cc93ac028b8f0ba611c54" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Infinity</name></member>
+      <member refid="classendstone_1_1Enchantment_1a1d8b0ee51e2b63af5fa92434ab4ff8fb" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Knockback</name></member>
+      <member refid="classendstone_1_1Enchantment_1ab832d331b4a1bb64a9396182115412f3" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Looting</name></member>
+      <member refid="classendstone_1_1Enchantment_1a5b9a2a157735ca0e27a7c175b734e6c1" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Loyalty</name></member>
+      <member refid="classendstone_1_1Enchantment_1a541256e08ea3498976f16af938cf3d97" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>LuckOfTheSea</name></member>
+      <member refid="classendstone_1_1Enchantment_1a6f1a563a10d8c177304e332da682b39f" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Lure</name></member>
+      <member refid="classendstone_1_1Enchantment_1a528c18b4cba870f4300892091d62fc80" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Mending</name></member>
+      <member refid="classendstone_1_1Enchantment_1a1ab9b4a512344cd9528accfbafd489a8" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Multishot</name></member>
+      <member refid="classendstone_1_1Enchantment_1afe6c192301d88c4b0e0ef7e0f2449e59" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Piercing</name></member>
+      <member refid="classendstone_1_1Enchantment_1ac114920606cc904cb17ff3e9a1133f1f" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Power</name></member>
+      <member refid="classendstone_1_1Enchantment_1a8fe4c607d8f99f823bbf2c2c12c0102c" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>ProjectileProtection</name></member>
+      <member refid="classendstone_1_1Enchantment_1a77f68b71735935a36c6fbcf1bad9a9f6" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Protection</name></member>
+      <member refid="classendstone_1_1Enchantment_1ac480f39a284bc1b29ead6b5ddd5a62fb" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Punch</name></member>
+      <member refid="classendstone_1_1Enchantment_1a2faf0209df882021c58ed270b7225f33" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>QuickCharge</name></member>
+      <member refid="classendstone_1_1Enchantment_1ab5c1b475d7b938e1d7a3f807e6019378" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Respiration</name></member>
+      <member refid="classendstone_1_1Enchantment_1a55add57223e3eb1e44312cfd6e6af07e" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Riptide</name></member>
+      <member refid="classendstone_1_1Enchantment_1aa822ad1465f023f3968bf896ad4e86ae" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Sharpness</name></member>
+      <member refid="classendstone_1_1Enchantment_1a37122cf5b2f6c6adea4ea25cf94ac47d" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>SilkTouch</name></member>
+      <member refid="classendstone_1_1Enchantment_1a3067f0269bade2ac079c6db7e1ae309b" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Smite</name></member>
+      <member refid="classendstone_1_1Enchantment_1a69557571deb2bf6a5fc6600d7bcc0acd" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>SoulSpeed</name></member>
+      <member refid="classendstone_1_1Enchantment_1a062964625f266c0c9aa306fa485418fe" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>SwiftSneak</name></member>
+      <member refid="classendstone_1_1Enchantment_1a57049e0f81d37387ad83ad0c7a69a6be" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Thorns</name></member>
+      <member refid="classendstone_1_1Enchantment_1a73c32f0550929fca8128ee56577a04a4" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Unbreaking</name></member>
+      <member refid="classendstone_1_1Enchantment_1a80ed327b5f9784464514a6032af502a2" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>WindBurst</name></member>
       <member refid="classendstone_1_1Enchantment_1a52f4acd21d110aa3cf5ca3e41815310c" prot="public" virt="virtual"><scope>endstone::Enchantment</scope><name>~Enchantment</name></member>
     </listofallmembers>
   </compounddef>
