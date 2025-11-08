@@ -1,6 +1,6 @@
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
-// Licensed under the Apache License, Version 2.0 (the "License";
+// Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
@@ -14,64 +14,67 @@
 
 #pragma once
 
-#include <functional>
 #include <string>
 
-#include "endstone/detail/endstone.h"
-#include "endstone/registry.h"
+#include "endstone/namespaced_key.h"
 
 namespace endstone {
 /**
  * @brief All attribute types.
  */
 class Attribute {
+    static std::string getAttribute(const std::string &key)
+    {
+        return NamespacedKey::minecraft(key);
+    }
+
 public:
     /** @brief Health of an entity. */
-    static constexpr std::string_view Health = "minecraft:health";
+    inline static const std::string Health = getAttribute("health");
 
     /** @brief Range at which an entity will follow others. */
-    static constexpr std::string_view FollowRange = "minecraft:follow_range";
+    inline static const std::string FollowRange = getAttribute("follow_range");
 
     /** @brief Resistance of an entity to knockback. */
-    static constexpr std::string_view KnockbackResistance = "minecraft:knockback_resistance";
+    inline static const std::string KnockbackResistance = getAttribute("knockback_resistance");
 
     /** @brief Movement speed of an entity. */
-    static constexpr std::string_view MovementSpeed = "minecraft:movement";
+    inline static const std::string MovementSpeed = getAttribute("movement");
 
     /** @brief Movement speed of an entity underwater. */
-    static constexpr std::string_view UnderwaterMovementSpeed = "minecraft:underwater_movement";
+    inline static const std::string UnderwaterMovementSpeed = getAttribute("underwater_movement");
 
     /** @brief Movement speed of an entity in lava. */
-    static constexpr std::string_view LavaMovementSpeed = "minecraft:lava_movement";
+    inline static const std::string LavaMovementSpeed = getAttribute("lava_movement");
 
     /** @brief Attack damage of an entity. */
-    static constexpr std::string_view AttackDamage = "minecraft:attack_damage";
+    inline static const std::string AttackDamage = getAttribute("attack_damage");
 
     /** @brief Absorption of an entity. */
-    static constexpr std::string_view Absorption = "minecraft:absorption";
+    inline static const std::string Absorption = getAttribute("absorption");
 
     /** @brief Luck bonus of an entity. */
-    static constexpr std::string_view Luck = "minecraft:luck";
+    inline static const std::string Luck = getAttribute("luck");
 
     /** @brief Strength with which an entity will jump. */
-    static constexpr std::string_view JumpStrength = "minecraft:jump_strength";
+    inline static const std::string JumpStrength = getAttribute("jump_strength");
 
     /** @brief Hunger level of a player. */
-    static constexpr std::string_view PlayerHunger = "minecraft:player.hunger";
+    inline static const std::string PlayerHunger = getAttribute("player.hunger");
 
     /** @brief Saturation level of a player. */
-    static constexpr std::string_view PlayerSaturation = "minecraft:player.saturation";
+    inline static const std::string PlayerSaturation = getAttribute("player.saturation");
 
     /** @brief Exhaustion level of a player. */
-    static constexpr std::string_view PlayerExhaustion = "minecraft:player.exhaustion";
+    inline static const std::string PlayerExhaustion = getAttribute("player.exhaustion");
 
     /** @brief Experience level of a player. */
-    static constexpr std::string_view PlayerLevel = "minecraft:player.level";
+    inline static const std::string PlayerLevel = getAttribute("player.level");
 
     /** @brief Progress toward the next experience level of a player. */
-    static constexpr std::string_view PlayerExperience = "minecraft:player.experience";
+    inline static const std::string PlayerExperience = getAttribute("player.experience");
 
     /** @brief Chance of a zombie to spawn reinforcements. */
-    static constexpr std::string_view ZombieSpawnReinforcements = "minecraft:zombie.spawn_reinforcements";
+    inline static const std::string ZombieSpawnReinforcements = getAttribute("zombie.spawn_reinforcements");
 };
 }  // namespace endstone
