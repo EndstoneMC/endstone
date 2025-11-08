@@ -33,37 +33,37 @@
 namespace endstone {
 class Attribute {
 public:
-    static constexpr auto Health = "minecraft:health";
+    static constexpr std::string_view Health = "minecraft:health";
 
-    static constexpr auto FollowRange = "minecraft:follow_range";
+    static constexpr std::string_view FollowRange = "minecraft:follow_range";
 
-    static constexpr auto KnockbackResistance = "minecraft:knockback_resistance";
+    static constexpr std::string_view KnockbackResistance = "minecraft:knockback_resistance";
 
-    static constexpr auto MovementSpeed = "minecraft:movement";
+    static constexpr std::string_view MovementSpeed = "minecraft:movement";
 
-    static constexpr auto UnderwaterMovementSpeed = "minecraft:underwater_movement";
+    static constexpr std::string_view UnderwaterMovementSpeed = "minecraft:underwater_movement";
 
-    static constexpr auto LavaMovementSpeed = "minecraft:lava_movement";
+    static constexpr std::string_view LavaMovementSpeed = "minecraft:lava_movement";
 
-    static constexpr auto AttackDamage = "minecraft:attack_damage";
+    static constexpr std::string_view AttackDamage = "minecraft:attack_damage";
 
-    static constexpr auto Absorption = "minecraft:absorption";
+    static constexpr std::string_view Absorption = "minecraft:absorption";
 
-    static constexpr auto Luck = "minecraft:luck";
+    static constexpr std::string_view Luck = "minecraft:luck";
 
-    static constexpr auto JumpStrength = "minecraft:jump_strength";
+    static constexpr std::string_view JumpStrength = "minecraft:jump_strength";
 
-    static constexpr auto PlayerHunger = "minecraft:player.hunger";
+    static constexpr std::string_view PlayerHunger = "minecraft:player.hunger";
 
-    static constexpr auto PlayerSaturation = "minecraft:player.saturation";
+    static constexpr std::string_view PlayerSaturation = "minecraft:player.saturation";
 
-    static constexpr auto PlayerExhaustion = "minecraft:player.exhaustion";
+    static constexpr std::string_view PlayerExhaustion = "minecraft:player.exhaustion";
 
-    static constexpr auto PlayerLevel = "minecraft:player.level";
+    static constexpr std::string_view PlayerLevel = "minecraft:player.level";
 
-    static constexpr auto PlayerExperience = "minecraft:player.experience";
+    static constexpr std::string_view PlayerExperience = "minecraft:player.experience";
 
-    static constexpr auto ZombieSpawnReinforcements = "minecraft:zombie.spawn_reinforcements";
+    static constexpr std::string_view ZombieSpawnReinforcements = "minecraft:zombie.spawn_reinforcements";
 };
 }  // namespace endstone
 ```
