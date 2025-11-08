@@ -27,51 +27,51 @@ namespace endstone {
 class Attribute {
 public:
     /** @brief Health of an entity. */
-    static constexpr auto Health = "minecraft:health";
+    static constexpr std::string_view Health = "minecraft:health";
 
     /** @brief Range at which an entity will follow others. */
-    static constexpr auto FollowRange = "minecraft:follow_range";
+    static constexpr std::string_view FollowRange = "minecraft:follow_range";
 
     /** @brief Resistance of an entity to knockback. */
-    static constexpr auto KnockbackResistance = "minecraft:knockback_resistance";
+    static constexpr std::string_view KnockbackResistance = "minecraft:knockback_resistance";
 
     /** @brief Movement speed of an entity. */
-    static constexpr auto MovementSpeed = "minecraft:movement";
+    static constexpr std::string_view MovementSpeed = "minecraft:movement";
 
     /** @brief Movement speed of an entity underwater. */
-    static constexpr auto UnderwaterMovementSpeed = "minecraft:underwater_movement";
+    static constexpr std::string_view UnderwaterMovementSpeed = "minecraft:underwater_movement";
 
     /** @brief Movement speed of an entity in lava. */
-    static constexpr auto LavaMovementSpeed = "minecraft:lava_movement";
+    static constexpr std::string_view LavaMovementSpeed = "minecraft:lava_movement";
 
     /** @brief Attack damage of an entity. */
-    static constexpr auto AttackDamage = "minecraft:attack_damage";
+    static constexpr std::string_view AttackDamage = "minecraft:attack_damage";
 
     /** @brief Absorption of an entity. */
-    static constexpr auto Absorption = "minecraft:absorption";
+    static constexpr std::string_view Absorption = "minecraft:absorption";
 
     /** @brief Luck bonus of an entity. */
-    static constexpr auto Luck = "minecraft:luck";
+    static constexpr std::string_view Luck = "minecraft:luck";
 
     /** @brief Strength with which an entity will jump. */
-    static constexpr auto JumpStrength = "minecraft:jump_strength";
+    static constexpr std::string_view JumpStrength = "minecraft:jump_strength";
 
     /** @brief Hunger level of a player. */
-    static constexpr auto PlayerHunger = "minecraft:player.hunger";
+    static constexpr std::string_view PlayerHunger = "minecraft:player.hunger";
 
     /** @brief Saturation level of a player. */
-    static constexpr auto PlayerSaturation = "minecraft:player.saturation";
+    static constexpr std::string_view PlayerSaturation = "minecraft:player.saturation";
 
     /** @brief Exhaustion level of a player. */
-    static constexpr auto PlayerExhaustion = "minecraft:player.exhaustion";
+    static constexpr std::string_view PlayerExhaustion = "minecraft:player.exhaustion";
 
     /** @brief Experience level of a player. */
-    static constexpr auto PlayerLevel = "minecraft:player.level";
+    static constexpr std::string_view PlayerLevel = "minecraft:player.level";
 
     /** @brief Progress toward the next experience level of a player. */
-    static constexpr auto PlayerExperience = "minecraft:player.experience";
+    static constexpr std::string_view PlayerExperience = "minecraft:player.experience";
 
     /** @brief Chance of a zombie to spawn reinforcements. */
-    static constexpr auto ZombieSpawnReinforcements = "minecraft:zombie.spawn_reinforcements";
+    static constexpr std::string_view ZombieSpawnReinforcements = "minecraft:zombie.spawn_reinforcements";
 };
 }  // namespace endstone
