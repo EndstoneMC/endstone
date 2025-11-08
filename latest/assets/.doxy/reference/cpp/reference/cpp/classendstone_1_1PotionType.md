@@ -38,47 +38,53 @@ _All potion types._
 
 | Type | Name |
 | ---: | :--- |
-|  constexpr auto | [**Awkward**](#variable-awkward)  <br> |
-|  constexpr auto | [**FireResistance**](#variable-fireresistance)  <br> |
-|  constexpr auto | [**Harming**](#variable-harming)  <br> |
-|  constexpr auto | [**Healing**](#variable-healing)  <br> |
-|  constexpr auto | [**Invisibility**](#variable-invisibility)  <br> |
-|  constexpr auto | [**Leaping**](#variable-leaping)  <br> |
-|  constexpr auto | [**LongFireResistance**](#variable-longfireresistance)  <br> |
-|  constexpr auto | [**LongInvisibility**](#variable-longinvisibility)  <br> |
-|  constexpr auto | [**LongLeaping**](#variable-longleaping)  <br> |
-|  constexpr auto | [**LongMundane**](#variable-longmundane)  <br> |
-|  constexpr auto | [**LongNightvision**](#variable-longnightvision)  <br> |
-|  constexpr auto | [**LongPoison**](#variable-longpoison)  <br> |
-|  constexpr auto | [**LongRegeneration**](#variable-longregeneration)  <br> |
-|  constexpr auto | [**LongSlowness**](#variable-longslowness)  <br> |
-|  constexpr auto | [**LongStrength**](#variable-longstrength)  <br> |
-|  constexpr auto | [**LongSwiftness**](#variable-longswiftness)  <br> |
-|  constexpr auto | [**LongTurtleMaster**](#variable-longturtlemaster)  <br> |
-|  constexpr auto | [**LongWaterBreathing**](#variable-longwaterbreathing)  <br> |
-|  constexpr auto | [**LongWeakness**](#variable-longweakness)  <br> |
-|  constexpr auto | [**Mundane**](#variable-mundane)  <br> |
-|  constexpr auto | [**Nightvision**](#variable-nightvision)  <br> |
-|  constexpr auto | [**Poison**](#variable-poison)  <br> |
-|  constexpr auto | [**Regeneration**](#variable-regeneration)  <br> |
-|  constexpr auto | [**SlowFalling**](#variable-slowfalling)  <br> |
-|  constexpr auto | [**Slowness**](#variable-slowness)  <br> |
-|  constexpr auto | [**Strength**](#variable-strength)  <br> |
-|  constexpr auto | [**StrongHarming**](#variable-strongharming)  <br> |
-|  constexpr auto | [**StrongHealing**](#variable-stronghealing)  <br> |
-|  constexpr auto | [**StrongLeaping**](#variable-strongleaping)  <br> |
-|  constexpr auto | [**StrongPoison**](#variable-strongpoison)  <br> |
-|  constexpr auto | [**StrongRegeneration**](#variable-strongregeneration)  <br> |
-|  constexpr auto | [**StrongStrength**](#variable-strongstrength)  <br> |
-|  constexpr auto | [**StrongSwiftness**](#variable-strongswiftness)  <br> |
-|  constexpr auto | [**StrongTurtleMaster**](#variable-strongturtlemaster)  <br> |
-|  constexpr auto | [**Swiftness**](#variable-swiftness)  <br> |
-|  constexpr auto | [**Thick**](#variable-thick)  <br> |
-|  constexpr auto | [**TurtleMaster**](#variable-turtlemaster)  <br> |
+|  constexpr auto | [**Awkward**](#variable-awkward)   = `"minecraft:potion\_type:awkward"`<br> |
+|  constexpr auto | [**FireResistance**](#variable-fireresistance)   = `"minecraft:potion\_type:fire\_resistance"`<br> |
+|  constexpr auto | [**Harming**](#variable-harming)   = `"minecraft:potion\_type:harming"`<br> |
+|  constexpr auto | [**Healing**](#variable-healing)   = `"minecraft:potion\_type:healing"`<br> |
+|  constexpr auto | [**Infested**](#variable-infested)   = `"minecraft:potion\_type:infested"`<br> |
+|  constexpr auto | [**Invisibility**](#variable-invisibility)   = `"minecraft:potion\_type:invisibility"`<br> |
+|  constexpr auto | [**Leaping**](#variable-leaping)   = `"minecraft:potion\_type:leaping"`<br> |
+|  constexpr auto | [**LongFireResistance**](#variable-longfireresistance)   = `"minecraft:potion\_type:long\_fire\_resistance"`<br> |
+|  constexpr auto | [**LongInvisibility**](#variable-longinvisibility)   = `"minecraft:potion\_type:long\_invisibility"`<br> |
+|  constexpr auto | [**LongLeaping**](#variable-longleaping)   = `"minecraft:potion\_type:long\_leaping"`<br> |
+|  constexpr auto | [**LongMundane**](#variable-longmundane)   = `"minecraft:potion\_type:long\_mundane"`<br> |
+|  constexpr auto | [**LongNightvision**](#variable-longnightvision)   = `"minecraft:potion\_type:long\_nightvision"`<br> |
+|  constexpr auto | [**LongPoison**](#variable-longpoison)   = `"minecraft:potion\_type:long\_poison"`<br> |
+|  constexpr auto | [**LongRegeneration**](#variable-longregeneration)   = `"minecraft:potion\_type:long\_regeneration"`<br> |
+|  constexpr auto | [**LongSlowFalling**](#variable-longslowfalling)   = `"minecraft:potion\_type:long\_slow\_falling"`<br> |
+|  constexpr auto | [**LongSlowness**](#variable-longslowness)   = `"minecraft:potion\_type:long\_slowness"`<br> |
+|  constexpr auto | [**LongStrength**](#variable-longstrength)   = `"minecraft:potion\_type:long\_strength"`<br> |
+|  constexpr auto | [**LongSwiftness**](#variable-longswiftness)   = `"minecraft:potion\_type:long\_swiftness"`<br> |
+|  constexpr auto | [**LongTurtleMaster**](#variable-longturtlemaster)   = `"minecraft:potion\_type:long\_turtle\_master"`<br> |
+|  constexpr auto | [**LongWaterBreathing**](#variable-longwaterbreathing)   = `"minecraft:potion\_type:long\_water\_breathing"`<br> |
+|  constexpr auto | [**LongWeakness**](#variable-longweakness)   = `"minecraft:potion\_type:long\_weakness"`<br> |
+|  constexpr auto | [**Mundane**](#variable-mundane)   = `"minecraft:potion\_type:mundane"`<br> |
+|  constexpr auto | [**Nightvision**](#variable-nightvision)   = `"minecraft:potion\_type:nightvision"`<br> |
+|  constexpr auto | [**Oozing**](#variable-oozing)   = `"minecraft:potion\_type:oozing"`<br> |
+|  constexpr auto | [**Poison**](#variable-poison)   = `"minecraft:potion\_type:poison"`<br> |
+|  constexpr auto | [**Regeneration**](#variable-regeneration)   = `"minecraft:potion\_type:regeneration"`<br> |
+|  constexpr auto | [**SlowFalling**](#variable-slowfalling)   = `"minecraft:potion\_type:slow\_falling"`<br> |
+|  constexpr auto | [**Slowness**](#variable-slowness)   = `"minecraft:potion\_type:slowness"`<br> |
+|  constexpr auto | [**Strength**](#variable-strength)   = `"minecraft:potion\_type:strength"`<br> |
+|  constexpr auto | [**StrongHarming**](#variable-strongharming)   = `"minecraft:potion\_type:strong\_harming"`<br> |
+|  constexpr auto | [**StrongHealing**](#variable-stronghealing)   = `"minecraft:potion\_type:strong\_healing"`<br> |
+|  constexpr auto | [**StrongLeaping**](#variable-strongleaping)   = `"minecraft:potion\_type:strong\_leaping"`<br> |
+|  constexpr auto | [**StrongPoison**](#variable-strongpoison)   = `"minecraft:potion\_type:strong\_poison"`<br> |
+|  constexpr auto | [**StrongRegeneration**](#variable-strongregeneration)   = `"minecraft:potion\_type:strong\_regeneration"`<br> |
+|  constexpr auto | [**StrongSlowness**](#variable-strongslowness)   = `"minecraft:potion\_type:strong\_slowness"`<br> |
+|  constexpr auto | [**StrongStrength**](#variable-strongstrength)   = `"minecraft:potion\_type:strong\_strength"`<br> |
+|  constexpr auto | [**StrongSwiftness**](#variable-strongswiftness)   = `"minecraft:potion\_type:strong\_swiftness"`<br> |
+|  constexpr auto | [**StrongTurtleMaster**](#variable-strongturtlemaster)   = `"minecraft:potion\_type:strong\_turtle\_master"`<br> |
+|  constexpr auto | [**Swiftness**](#variable-swiftness)   = `"minecraft:potion\_type:swiftness"`<br> |
+|  constexpr auto | [**Thick**](#variable-thick)   = `"minecraft:potion\_type:thick"`<br> |
+|  constexpr auto | [**TurtleMaster**](#variable-turtlemaster)   = `"minecraft:potion\_type:turtle\_master"`<br> |
 |  constexpr auto | [**Water**](#variable-water)   = `"minecraft:potion\_type:water"`<br> |
-|  constexpr auto | [**WaterBreathing**](#variable-waterbreathing)  <br> |
-|  constexpr auto | [**Weakness**](#variable-weakness)  <br> |
-|  constexpr auto | [**Wither**](#variable-wither)  <br> |
+|  constexpr auto | [**WaterBreathing**](#variable-waterbreathing)   = `"minecraft:potion\_type:water\_breathing"`<br> |
+|  constexpr auto | [**Weakness**](#variable-weakness)   = `"minecraft:potion\_type:weakness"`<br> |
+|  constexpr auto | [**Weaving**](#variable-weaving)   = `"minecraft:potion\_type:weaving"`<br> |
+|  constexpr auto | [**WindCharged**](#variable-windcharged)   = `"minecraft:potion\_type:wind\_charged"`<br> |
+|  constexpr auto | [**Wither**](#variable-wither)   = `"minecraft:potion\_type:wither"`<br> |
 
 
 
@@ -169,6 +175,19 @@ constexpr auto endstone::PotionType::Harming;
 
 ```C++
 constexpr auto endstone::PotionType::Healing;
+```
+
+
+
+
+<hr>
+
+
+
+### variable Infested 
+
+```C++
+constexpr auto endstone::PotionType::Infested;
 ```
 
 
@@ -295,6 +314,19 @@ constexpr auto endstone::PotionType::LongRegeneration;
 
 
 
+### variable LongSlowFalling 
+
+```C++
+constexpr auto endstone::PotionType::LongSlowFalling;
+```
+
+
+
+
+<hr>
+
+
+
 ### variable LongSlowness 
 
 ```C++
@@ -390,6 +422,19 @@ constexpr auto endstone::PotionType::Mundane;
 
 ```C++
 constexpr auto endstone::PotionType::Nightvision;
+```
+
+
+
+
+<hr>
+
+
+
+### variable Oozing 
+
+```C++
+constexpr auto endstone::PotionType::Oozing;
 ```
 
 
@@ -529,6 +574,19 @@ constexpr auto endstone::PotionType::StrongRegeneration;
 
 
 
+### variable StrongSlowness 
+
+```C++
+constexpr auto endstone::PotionType::StrongSlowness;
+```
+
+
+
+
+<hr>
+
+
+
 ### variable StrongStrength 
 
 ```C++
@@ -637,6 +695,32 @@ constexpr auto endstone::PotionType::WaterBreathing;
 
 ```C++
 constexpr auto endstone::PotionType::Weakness;
+```
+
+
+
+
+<hr>
+
+
+
+### variable Weaving 
+
+```C++
+constexpr auto endstone::PotionType::Weaving;
+```
+
+
+
+
+<hr>
+
+
+
+### variable WindCharged 
+
+```C++
+constexpr auto endstone::PotionType::WindCharged;
 ```
 
 

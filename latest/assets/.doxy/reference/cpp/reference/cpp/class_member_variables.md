@@ -142,6 +142,7 @@
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **is\_contextual\_** ([**endstone::MapRenderer**](classendstone_1_1MapRenderer.md))
 * **item\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerItemConsumeEvent**](classendstone_1_1PlayerItemConsumeEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md))
+* **Infested** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **Invisibility** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **id\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **image\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
@@ -180,6 +181,7 @@
 * **LongNightvision** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **LongPoison** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **LongRegeneration** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
+* **LongSlowFalling** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **LongSlowness** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **LongStrength** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **LongSwiftness** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
@@ -248,6 +250,7 @@
 * **on\_close\_** ([**endstone::Form**](classendstone_1_1Form.md))
 * **owned\_payload\_** ([**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md))
 * **owner\_** ([**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
+* **Oozing** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 
 
 ## p
@@ -319,6 +322,7 @@
 * **StrongLeaping** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **StrongPoison** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **StrongRegeneration** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
+* **StrongSlowness** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **StrongStrength** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **StrongSwiftness** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **StrongTurtleMaster** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
@@ -364,6 +368,8 @@
 * **Water** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **WaterBreathing** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **Weakness** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
+* **Weaving** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
+* **WindCharged** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **Wither** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **website** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 

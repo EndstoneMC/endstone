@@ -1703,6 +1703,7 @@
     <member refid="classendstone_1_1PotionType_1a1581a974eed694438fa1d00489d9050d" kind="variable"><name>StrongSwiftness</name></member>
     <member refid="classendstone_1_1PotionType_1a1551a2caf362a91a1dfd81f9fa2e3726" kind="variable"><name>Slowness</name></member>
     <member refid="classendstone_1_1PotionType_1a71e4c65417a374a809d5fe3306eca358" kind="variable"><name>LongSlowness</name></member>
+    <member refid="classendstone_1_1PotionType_1acc5c6ad888dcb9dac1c40e546e242c34" kind="variable"><name>StrongSlowness</name></member>
     <member refid="classendstone_1_1PotionType_1ace66f2f54600a9d3b59c9895d6cbe21f" kind="variable"><name>WaterBreathing</name></member>
     <member refid="classendstone_1_1PotionType_1a1c6d84c930df4d76627fd81a7ed127cc" kind="variable"><name>LongWaterBreathing</name></member>
     <member refid="classendstone_1_1PotionType_1a66fffb2ec05a62c6efeb828517bfe575" kind="variable"><name>Healing</name></member>
@@ -1725,6 +1726,11 @@
     <member refid="classendstone_1_1PotionType_1a2ac345546d5a4809c511cbaa95264f2e" kind="variable"><name>LongTurtleMaster</name></member>
     <member refid="classendstone_1_1PotionType_1ae26fbdaa7c876e4962ab806b55f3aa74" kind="variable"><name>StrongTurtleMaster</name></member>
     <member refid="classendstone_1_1PotionType_1a61c7675bf28f2ab7a07c1475463391fe" kind="variable"><name>SlowFalling</name></member>
+    <member refid="classendstone_1_1PotionType_1a0f874f24c04561c244d61cc4b5eb6995" kind="variable"><name>LongSlowFalling</name></member>
+    <member refid="classendstone_1_1PotionType_1ac8c7d8143bcb385b60d5731eeaad0bda" kind="variable"><name>WindCharged</name></member>
+    <member refid="classendstone_1_1PotionType_1a0595aaf16ef833f606fd5fb1bb0b7a5d" kind="variable"><name>Weaving</name></member>
+    <member refid="classendstone_1_1PotionType_1add3039d4d2969b8c684abac9f9c3d9cd" kind="variable"><name>Oozing</name></member>
+    <member refid="classendstone_1_1PotionType_1af75f7c3da68f94e50cddb8d1661aac01" kind="variable"><name>Infested</name></member>
   </compound>
   <compound refid="classendstone_1_1Recipe" kind="class"><name>endstone::Recipe</name>
     <member refid="classendstone_1_1Recipe_1a7c54e5660b82baa721fa86ebb1e55638" kind="function"><name>~Recipe</name></member>
