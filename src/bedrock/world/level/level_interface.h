@@ -63,6 +63,7 @@
 #include "bedrock/world/level/chunk/level_chunk_event_manager.h"
 #include "bedrock/world/level/difficulty.h"
 #include "bedrock/world/level/dimension/dimension.h"
+#include "bedrock/world/level/dimension_manager.h"
 #include "bedrock/world/level/explosion.h"
 #include "bedrock/world/level/game_type.h"
 #include "bedrock/world/level/gameplay_user_manager.h"
@@ -90,7 +91,7 @@ public:
     [[nodiscard]] virtual DimensionType getLastOrDefaultSpawnDimensionId(DimensionType) const = 0;
     virtual void forEachDimension(std::function<bool(Dimension &)>) = 0;
     virtual void forEachDimension(std::function<bool(Dimension const &)>) const = 0;
-    virtual DimensionManager const &getDimensionManager() = 0;
+    virtual DimensionManager &getDimensionManager() = 0;
     [[nodiscard]] virtual DimensionManager const &getDimensionManager() const = 0;
     [[nodiscard]] virtual std::uint32_t getChunkTickRange() const = 0;
     [[nodiscard]] virtual ChunkTickRangeManager const &getChunkTickRangeManager() const = 0;

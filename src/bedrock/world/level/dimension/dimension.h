@@ -75,6 +75,7 @@ public:
     CircuitSystem &getCircuitSystem();
     [[nodiscard]] bool isRedstoneTick() const;
     [[nodiscard]] const std::string &getName() const;
+    WeakRef<Dimension> getWeakRef();
     [[nodiscard]] endstone::Dimension &getEndstoneDimension() const;  // Endstone
 
 private:
