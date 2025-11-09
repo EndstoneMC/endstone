@@ -103,5 +103,5 @@ std::vector<std::unique_ptr<Chunk>> EndstoneDimension::getLoadedChunks()
 endstone::Dimension &Dimension::getEndstoneDimension() const
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    return *server.getLevel()->getDimension(getName());
+    return *server.getEndstoneLevel()->getDimension(getDimensionId().runtime_id);
 }

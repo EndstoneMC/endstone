@@ -71,13 +71,12 @@ void EndstoneMapView::setCenterZ(const int z)
 
 Dimension *EndstoneMapView::getDimension() const
 {
-    const auto &server = EndstoneServer::getInstance();
-    const auto &level = *static_cast<EndstoneLevel *>(server.getLevel());
-    const auto dimension = level.getHandle().getDimension(map_.getDimensionId());
+    const auto *level = EndstoneServer::getInstance().getEndstoneLevel();
+    const auto dimension = level->getHandle().getDimension(map_.getDimensionId());
     if (!dimension.isSet()) {
         return nullptr;
     }
-    return level.getDimension(dimension.unwrap()->getName());
+    return level->getDimension(dimension.unwrap()->getName());
 }
 
 void EndstoneMapView::setDimension(const Dimension &dimension)
