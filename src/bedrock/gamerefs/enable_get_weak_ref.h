@@ -14,5 +14,5 @@
 
 #pragma once
 
-template<typename T>
+template<typename Type>
 class EnableGetWeakRef{};
