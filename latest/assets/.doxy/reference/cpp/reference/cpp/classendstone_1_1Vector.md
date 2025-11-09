@@ -16,7 +16,6 @@ _Represents a 3-dimensional vector._
 
 
 
-Inherited by the following classes: [endstone::Location](classendstone_1_1Location.md)
 
 
 
@@ -100,9 +99,9 @@ Inherited by the following classes: [endstone::Location](classendstone_1_1Locati
 |  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundX**](#function-rotatearoundx) (float angle) <br>_Rotates the vector around the x-axis._  |
 |  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundY**](#function-rotatearoundy) (float angle) <br>_Rotates the vector around the y-axis._  |
 |  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundZ**](#function-rotatearoundz) (float angle) <br>_Rotates the vector around the z-axis._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**setX**](#function-setx) (float x) <br>_Set the X component._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**setY**](#function-sety) (float y) <br>_Set the Y component._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**setZ**](#function-setz) (float z) <br>_Set the Z component._  |
+|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**setX**](#function-setx) (T x) <br>_Set the X component._  |
+|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**setY**](#function-sety) (T y) <br>_Set the Y component._  |
+|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**setZ**](#function-setz) (T z) <br>_Set the Z component._  |
 |  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**zero**](#function-zero) () <br>_Zero this vector's components._  |
 
 
@@ -162,7 +161,7 @@ constexpr endstone::Vector::Vector () = default
 
 _Construct the vector with provided components._ 
 ```C++
-template<typename T>
+template<std::convertible_to< float > T>
 inline constexpr endstone::Vector::Vector (
     T x,
     T y,
@@ -1317,8 +1316,9 @@ the same vector
 
 _Set the X component._ 
 ```C++
+template<std::convertible_to< float > T>
 inline constexpr Vector & endstone::Vector::setX (
-    float x
+    T x
 ) 
 ```
 
@@ -1351,8 +1351,9 @@ This vector.
 
 _Set the Y component._ 
 ```C++
+template<std::convertible_to< float > T>
 inline constexpr Vector & endstone::Vector::setY (
-    float y
+    T y
 ) 
 ```
 
@@ -1385,8 +1386,9 @@ This vector.
 
 _Set the Z component._ 
 ```C++
+template<std::convertible_to< float > T>
 inline constexpr Vector & endstone::Vector::setZ (
-    float z
+    T z
 ) 
 ```
 

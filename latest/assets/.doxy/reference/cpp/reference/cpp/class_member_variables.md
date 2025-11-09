@@ -118,7 +118,6 @@
 * **enchantments\_** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **emote\_id\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **enabled\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
-* **Epsilon** ([**endstone::Vector**](classendstone_1_1Vector.md))
 
 
 ## f
@@ -440,21 +439,21 @@
 
 ## x
 
-* **x\_** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::Vector**](classendstone_1_1Vector.md))
+* **x\_** ([**endstone::Location**](classendstone_1_1Location.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **xuid\_** ([**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md))
 
 
 ## y
 
 * **Yellow** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **y\_** ([**endstone::Location**](classendstone_1_1Location.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **yaw\_** ([**endstone::Location**](classendstone_1_1Location.md))
-* **y\_** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 
 
 ## z
 
 * **ZombieSpawnReinforcements** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
-* **z\_** ([**endstone::Vector**](classendstone_1_1Vector.md))
+* **z\_** ([**endstone::Location**](classendstone_1_1Location.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 
 
 

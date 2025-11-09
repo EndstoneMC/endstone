@@ -104,8 +104,8 @@ Inherited by the following classes: [endstone::PlayerJumpEvent](classendstone_1_
 |   | [**PlayerMoveEvent**](#function-playermoveevent) ([**Player**](classendstone_1_1Player.md) & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
 |  const [**Location**](classendstone_1_1Location.md) & | [**getFrom**](#function-getfrom) () const<br>_Gets the location this player moved from._  |
 |  const [**Location**](classendstone_1_1Location.md) & | [**getTo**](#function-getto) () const<br>_Gets the location this player moved to._  |
-|  Result&lt; void &gt; | [**setFrom**](#function-setfrom) (const [**Location**](classendstone_1_1Location.md) & from) <br>_Sets the location to mark as where the player moved from._  |
-|  Result&lt; void &gt; | [**setTo**](#function-setto) (const [**Location**](classendstone_1_1Location.md) & to) <br>_Sets the location that this player will move to._  |
+|  void | [**setFrom**](#function-setfrom) (const [**Location**](classendstone_1_1Location.md) & from) <br>_Sets the location to mark as where the player moved from._  |
+|  void | [**setTo**](#function-setto) (const [**Location**](classendstone_1_1Location.md) & to) <br>_Sets the location that this player will move to._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -328,7 +328,7 @@ inline const Location & endstone::PlayerMoveEvent::getTo () const
 
 _Sets the location to mark as where the player moved from._ 
 ```C++
-inline Result< void > endstone::PlayerMoveEvent::setFrom (
+inline void endstone::PlayerMoveEvent::setFrom (
     const Location & from
 ) 
 ```
@@ -355,7 +355,7 @@ inline Result< void > endstone::PlayerMoveEvent::setFrom (
 
 _Sets the location that this player will move to._ 
 ```C++
-inline Result< void > endstone::PlayerMoveEvent::setTo (
+inline void endstone::PlayerMoveEvent::setTo (
     const Location & to
 ) 
 ```

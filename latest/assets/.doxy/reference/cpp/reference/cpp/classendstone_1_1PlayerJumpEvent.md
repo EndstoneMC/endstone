@@ -135,8 +135,8 @@ See [endstone::PlayerMoveEvent](classendstone_1_1PlayerMoveEvent.md)
 |   | [**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md#function-playermoveevent) ([**Player**](classendstone_1_1Player.md) & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
 |  const [**Location**](classendstone_1_1Location.md) & | [**getFrom**](classendstone_1_1PlayerMoveEvent.md#function-getfrom) () const<br>_Gets the location this player moved from._  |
 |  const [**Location**](classendstone_1_1Location.md) & | [**getTo**](classendstone_1_1PlayerMoveEvent.md#function-getto) () const<br>_Gets the location this player moved to._  |
-|  Result&lt; void &gt; | [**setFrom**](classendstone_1_1PlayerMoveEvent.md#function-setfrom) (const [**Location**](classendstone_1_1Location.md) & from) <br>_Sets the location to mark as where the player moved from._  |
-|  Result&lt; void &gt; | [**setTo**](classendstone_1_1PlayerMoveEvent.md#function-setto) (const [**Location**](classendstone_1_1Location.md) & to) <br>_Sets the location that this player will move to._  |
+|  void | [**setFrom**](classendstone_1_1PlayerMoveEvent.md#function-setfrom) (const [**Location**](classendstone_1_1Location.md) & from) <br>_Sets the location to mark as where the player moved from._  |
+|  void | [**setTo**](classendstone_1_1PlayerMoveEvent.md#function-setto) (const [**Location**](classendstone_1_1Location.md) & to) <br>_Sets the location that this player will move to._  |
 
 
 ## Public Functions inherited from endstone::Cancellable

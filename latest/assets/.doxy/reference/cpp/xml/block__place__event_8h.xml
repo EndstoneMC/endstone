@@ -34,7 +34,7 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -64,7 +64,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="28">
@@ -282,7 +282,7 @@
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="53">
@@ -309,6 +309,8 @@
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="29">
@@ -342,7 +344,7 @@
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="35">
@@ -406,7 +408,7 @@
         </childnode>
         <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="64">
@@ -422,7 +424,7 @@
         <link refid="score_8h_source"/>
         <childnode refid="66" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="66">
@@ -448,7 +450,7 @@
         </childnode>
         <childnode refid="66" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="67">
@@ -466,7 +468,7 @@
       <node id="69">
         <label>endstone/util/color.h</label>
         <link refid="color_8h_source"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="68">
@@ -477,12 +479,12 @@
         <childnode refid="69" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="16">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="70">
@@ -496,7 +498,7 @@
       <node id="56">
         <label>endstone/util/uuid.h</label>
         <link refid="uuid_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
@@ -505,10 +507,10 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="18">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -519,7 +521,7 @@
         <label>endstone/variant.h</label>
         <link refid="variant_8h_source"/>
       </node>
-      <node id="17">
+      <node id="19">
         <label>algorithm</label>
       </node>
       <node id="25">
@@ -546,7 +548,7 @@
       <node id="5">
         <label>memory</label>
       </node>
-      <node id="19">
+      <node id="17">
         <label>nonstd/expected.hpp</label>
       </node>
       <node id="15">

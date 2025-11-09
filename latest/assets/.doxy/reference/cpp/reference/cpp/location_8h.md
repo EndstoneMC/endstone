@@ -12,6 +12,7 @@
 
 * `#include <cmath>`
 * `#include <numbers>`
+* `#include "endstone/util/result.h"`
 * `#include "endstone/util/vector.h"`
 
 

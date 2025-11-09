@@ -70,6 +70,8 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
         <childnode refid="23" relation="include">
         </childnode>
       </node>

@@ -66,6 +66,19 @@ public:
 
     [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
 };
+
+inline std::unique_ptr<Block> Location::getBlock() const
+{
+    return getDimension().getBlockAt(*this);
+}
+
+inline Result<float> Location::distanceSquared(const Location &other) const
+{
+    ENDSTONE_CHECKF(dimension_ == other.dimension_, "Cannot measure distance between {} and {}.", dimension_->getName(),
+                    other.dimension_->getName());
+    return ((x_ - other.x_) * (x_ - other.x_)) + ((y_ - other.y_) * (y_ - other.y_)) +
+           ((z_ - other.z_) * (z_ - other.z_));
+}
 }  // namespace endstone
 
 template <>

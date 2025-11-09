@@ -27,34 +27,81 @@
 #include <cmath>
 #include <numbers>
 
+#include "endstone/util/result.h"
 #include "endstone/util/vector.h"
 
 namespace endstone {
-
+class Block;
+class Chunk;
 class Dimension;
 
-class Location : public Vector {
+class Location {
 public:
-    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
-    Location(T x, T y, T z, const float pitch = 0.0, const float yaw = 0.0)
-        : Vector(x, y, z), dimension_(nullptr), pitch_(pitch), yaw_(yaw)
+    template <std::convertible_to<float> T>
+    Location(Dimension &dimension, T x, T y, T z, const float pitch = 0.0, const float yaw = 0.0)
+        : dimension_(&dimension), x_(static_cast<float>(x)), y_(static_cast<float>(y)), z_(static_cast<float>(z)),
+          pitch_(pitch), yaw_(yaw)
     {
     }
 
-    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
-    Location(T x, T y, T z, Dimension &dimension) : Location(x, y, z, 0.0, dimension)
+    void setDimension(Dimension &dimension)
     {
+        dimension_ = &dimension;
     }
 
-    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
-    Location(T x, T y, T z, const float pitch, Dimension &dimension) : Location(x, y, z, pitch, 0.0, dimension)
+    [[nodiscard]] Dimension &getDimension() const
     {
+        return *dimension_;
     }
 
-    template <typename T, typename = std::enable_if_t<std::is_convertible_v<T, float>>>
-    Location(T x, T y, T z, const float pitch, const float yaw, Dimension &dimension)
-        : Vector(x, y, z), dimension_(&dimension), pitch_(pitch), yaw_(yaw)
+    [[nodiscard]] std::unique_ptr<Block> getBlock() const;
+
+    template <std::convertible_to<float> T>
+    constexpr void setX(T x)
     {
+        x_ = static_cast<float>(x);
+    }
+
+    [[nodiscard]] constexpr float getX() const
+    {
+        return x_;
+    }
+
+    [[nodiscard]] int getBlockX() const
+    {
+        return static_cast<int>(std::floorf(x_));
+    }
+
+    template <std::convertible_to<float> T>
+    constexpr void setY(T y)
+    {
+        y_ = static_cast<float>(y);
+    }
+
+    [[nodiscard]] constexpr float getY() const
+    {
+        return y_;
+    }
+
+    [[nodiscard]] int getBlockY() const
+    {
+        return static_cast<int>(std::floorf(y_));
+    }
+
+    template <std::convertible_to<float> T>
+    constexpr void setZ(T z)
+    {
+        z_ = static_cast<float>(z);
+    }
+
+    [[nodiscard]] constexpr float getZ() const
+    {
+        return z_;
+    }
+
+    [[nodiscard]] int getBlockZ() const
+    {
+        return static_cast<int>(std::floorf(z_));
     }
 
     [[nodiscard]] float getPitch() const
@@ -77,31 +124,6 @@ public:
         yaw_ = yaw;
     }
 
-    [[nodiscard]] Dimension *getDimension() const
-    {
-        return dimension_;
-    }
-
-    void setDimension(Dimension &dimension)
-    {
-        dimension_ = &dimension;
-    }
-
-    [[nodiscard]] int getBlockX() const
-    {
-        return static_cast<int>(std::floorf(x_));
-    }
-
-    [[nodiscard]] int getBlockY() const
-    {
-        return static_cast<int>(std::floorf(y_));
-    }
-
-    [[nodiscard]] int getBlockZ() const
-    {
-        return static_cast<int>(std::floorf(z_));
-    }
-
     [[nodiscard]] Vector getDirection() const
     {
         Vector vector;
@@ -114,10 +136,140 @@ public:
         return vector;
     }
 
+    Location &setDirection(const Vector &vector)
+    {
+        const auto x = vector.getX();
+        const auto z = vector.getZ();
+        if (x == 0 && z == 0) {
+            pitch_ = vector.getY() > 0 ? -90 : 90;
+            return *this;
+        }
+
+        const auto theta = std::atan2(-x, z);
+        yaw_ = std::fmod(theta + 2 * std::numbers::pi, 2 * std::numbers::pi) * 180.0F / std::numbers::pi;
+        const auto xz = std::sqrt((x * x) + (z * z));
+        pitch_ = std::atan(-vector.getY() / xz) * 180.0F / std::numbers::pi;
+
+        return *this;
+    }
+
+    [[nodiscard]] float length() const
+    {
+        return std::sqrt(lengthSquared());
+    }
+
+    [[nodiscard]] constexpr float lengthSquared() const
+    {
+        return (x_ * x_) + (y_ * y_) + (z_ * z_);
+    }
+
+    [[nodiscard]] Result<float> distance(const Location &other) const
+    {
+        auto distance_squared = distanceSquared(other);
+        ENDSTONE_CHECK_RESULT(distance_squared);
+        return std::sqrt(*distance_squared);
+    }
+
+    [[nodiscard]] Result<float> distanceSquared(const Location &other) const;
+
+    Location &operator+=(const Location &other)
+    {
+        x_ += other.x_;
+        y_ += other.y_;
+        z_ += other.z_;
+        return *this;
+    }
+
+    Location &operator+=(const Vector &other)
+    {
+        x_ += other.getX();
+        y_ += other.getY();
+        z_ += other.getZ();
+        return *this;
+    }
+
+    Location &operator-=(const Location &other)
+    {
+        x_ -= other.x_;
+        y_ -= other.y_;
+        z_ -= other.z_;
+        return *this;
+    }
+
+    Location &operator-=(const Vector &other)
+    {
+        x_ -= other.getX();
+        y_ -= other.getY();
+        z_ -= other.getZ();
+        return *this;
+    }
+
+    template <std::convertible_to<float> T>
+    Location &operator*=(T scalar)
+    {
+        const auto s = static_cast<float>(scalar);
+        x_ *= s;
+        y_ *= s;
+        z_ *= s;
+        return *this;
+    }
+
+    constexpr Location &zero()
+    {
+        x_ = 0;
+        y_ = 0;
+        z_ = 0;
+        return *this;
+    }
+
+    bool operator==(const Location &other) const noexcept
+    {
+        constexpr static float eps = 1e-6F;
+        return dimension_ == other.dimension_ && (std::fabs(x_ - other.x_) <= eps) &&
+               (std::fabs(y_ - other.y_) <= eps) && (std::fabs(z_ - other.z_) <= eps) &&
+               (std::fabs(pitch_ - other.pitch_) <= eps) && (std::fabs(yaw_ - other.yaw_) <= eps);
+    }
+
+    bool operator!=(const Location &other) const noexcept
+    {
+        return !(*this == other);
+    }
+
+    operator Vector() const noexcept
+    {
+        return {x_, y_, z_};
+    }
+
+    static float normalizeYaw(float yaw)
+    {
+        yaw = std::fmod(yaw, 360.0F);
+        if (yaw >= 180.0F) {
+            yaw -= 360.0F;
+        }
+        else if (yaw < -180.0F) {
+            yaw += 360.0F;
+        }
+        return yaw;
+    }
+
+    static float normalizePitch(float pitch)
+    {
+        if (pitch > 90.0F) {
+            pitch = 90.0F;
+        }
+        else if (pitch < -90.0F) {
+            pitch = -90.0F;
+        }
+        return pitch;
+    }
+
 private:
+    Dimension *dimension_;
+    float x_;
+    float y_;
+    float z_;
     float pitch_;  // Rotation around the right axis (around X axis).
     float yaw_;    // Rotation around the up axis (around Y axis)
-    Dimension *dimension_;
 };
 }  // namespace endstone
 
@@ -126,15 +278,8 @@ struct fmt::formatter<endstone::Location> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const endstone::Location &self, FormatContext &ctx) const -> format_context::iterator
     {
-        auto out = ctx.out();
-        if (self.getDimension()) {
-            out = fmt::format_to(out, "Location(dimension={},", *self.getDimension());
-        }
-        else {
-            out = fmt::format_to(out, "Location(dimension=null,");
-        }
-        return fmt::format_to(out, "x={},y={},z={},pitch={},yaw={})", self.getX(), self.getY(), self.getZ(),
-                              self.getPitch(), self.getYaw());
+        return fmt::format_to(ctx.out(), "Location(dimension={},x={},y={},z={},pitch={},yaw={})", self.getDimension(),
+                              self.getX(), self.getY(), self.getZ(), self.getPitch(), self.getYaw());
     }
 };
 ```
