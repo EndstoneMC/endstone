@@ -35,9 +35,12 @@ void init_util(py::module &m, py::class_<Vector> &vector)
 
     vector.def(py::init<>())
         .def(py::init<float, float, float>(), py::arg("x"), py::arg("y"), py::arg("z"))
-        .def_property("x", &Vector::getX, &Vector::setX, "The X component of the vector")
-        .def_property("y", &Vector::getY, &Vector::setY, "The Y component of the vector")
-        .def_property("z", &Vector::getZ, &Vector::setZ, "The Z component of the vector")
+        .def_property(
+            "x", &Vector::getX, [](Vector &self, float x) { self.setX(x); }, "The X component of the vector")
+        .def_property(
+            "y", &Vector::getY, [](Vector &self, float y) { self.setY(y); }, "The Y component of the vector")
+        .def_property(
+            "z", &Vector::getZ, [](Vector &self, float z) { self.setZ(z); }, "The Z component of the vector")
         .def_property_readonly(
             "block_x", &Vector::getBlockX,
             "Gets the floored value of the X component, indicating the block that this vector is contained with.")

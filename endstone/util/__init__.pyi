@@ -2,7 +2,6 @@
 Multi and single purpose classes.
 """
 
-import collections
 import typing
 
 __all__ = ["SocketAddress", "Vector"]
@@ -22,7 +21,7 @@ class Vector:
         """
         ...
     @x.setter
-    def x(self, arg1: float) -> Vector: ...
+    def x(self, arg1: float) -> None: ...
     @property
     def y(self) -> float:
         """
@@ -30,7 +29,7 @@ class Vector:
         """
         ...
     @y.setter
-    def y(self, arg1: float) -> Vector: ...
+    def y(self, arg1: float) -> None: ...
     @property
     def z(self) -> float:
         """
@@ -38,7 +37,7 @@ class Vector:
         """
         ...
     @z.setter
-    def z(self, arg1: float) -> Vector: ...
+    def z(self, arg1: float) -> None: ...
     @property
     def block_x(self) -> int:
         """

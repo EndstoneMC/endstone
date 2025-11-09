@@ -18,17 +18,14 @@ namespace py = pybind11;
 
 namespace endstone::python {
 namespace {
-Location create_location(float x, float y, float z, float pitch, float yaw, Dimension *dimension)
+Location create_location(Dimension &dimension, float x, float y, float z, float pitch, float yaw)
 {
-    if (dimension == nullptr) {
-        return Location(x, y, z, pitch, yaw);
-    }
-    return Location(x, y, z, pitch, yaw, *dimension);
+    return {dimension, x, y, z, pitch, yaw};
 }
 }  // namespace
 
 void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> &dimension,
-                py::class_<Location, Vector> &location)
+                py::class_<Location> &location)
 {
     py::class_<Chunk>(m, "Chunk", "Represents a chunk of blocks.")
         .def_property_readonly("x", &Chunk::getX, "Gets the X-coordinate of this chunk")
@@ -80,14 +77,9 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
              py::return_value_policy::reference)
         .def_property_readonly("seed", &Level::getSeed, "Gets the Seed for this level.");
 
-    auto location_to_string = [](const Location &l) {
-        return fmt::format("Location(dimension={}, x={}, y={}, z={}, pitch={}, yaw={})",
-                           l.getDimension() ? l.getDimension()->getName() : "None", l.getX(), l.getY(), l.getZ(),
-                           l.getPitch(), l.getYaw());
-    };
     location
-        .def(py::init(&create_location), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("pitch") = 0.0,
-             py::arg("yaw") = 0.0, py::arg("dimension") = nullptr)
+        .def(py::init(&create_location), py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"),
+             py::arg("pitch") = 0.0, py::arg("yaw") = 0.0)
         .def_property("pitch", &Location::getPitch, &Location::setPitch,
                       "The pitch of this location, measured in degrees.")
         .def_property("yaw", &Location::getYaw, &Location::setYaw, "The yaw of this location, measured in degrees.")
@@ -102,8 +94,7 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         .def_property_readonly(
             "block_z", &Location::getBlockZ,
             "Gets the floored value of the Z component, indicating the block that this location is contained with.")
-        .def("__repr__", location_to_string)
-        .def("__str__", location_to_string);
+        .def("__repr__", [](const Location &self) { return fmt::format("{}", self); })
+        .def("__str__", [](const Location &self) { return fmt::format("{}", self); });
 }
-
 }  // namespace endstone::python

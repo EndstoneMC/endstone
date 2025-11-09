@@ -28,7 +28,10 @@ class PlayerMoveEvent : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerMoveEvent);
 
-    explicit PlayerMoveEvent(Player &player, Location from, Location to) : Cancellable(player), from_(from), to_(to) {}
+    explicit PlayerMoveEvent(Player &player, Location from, Location to)
+        : Cancellable(player), from_(std::move(from)), to_(std::move(to))
+    {
+    }
 
     /**
      * @brief Gets the location this player moved from
@@ -45,11 +48,9 @@ public:
      *
      * @param from New location to mark as the players previous location
      */
-    Result<void> setFrom(const Location &from)
+    void setFrom(const Location &from)
     {
-        ENDSTONE_CHECKF(from.getDimension() != nullptr, "Cannot set a location with no associated dimension!")
         from_ = from;
-        return {};
     }
 
     /**
@@ -67,11 +68,9 @@ public:
      *
      * @param to New Location this player will move to
      */
-    Result<void> setTo(const Location &to)
+    void setTo(const Location &to)
     {
-        ENDSTONE_CHECKF(to.getDimension() != nullptr, "Cannot set a location with no associated dimension!")
         to_ = to;
-        return {};
     }
 
     Location from_;

@@ -4,7 +4,6 @@ import typing
 from endstone.actor import Actor, Item
 from endstone.block import Block
 from endstone.inventory import ItemStack
-from endstone.util import Vector
 
 __all__ = ["Chunk", "Dimension", "Level", "Location"]
 
@@ -135,12 +134,12 @@ class Dimension:
         """
         ...
 
-class Location(Vector):
+class Location:
     """
     Represents a 3-dimensional location in a dimension within a level.
     """
     def __init__(
-        self, x: float, y: float, z: float, pitch: float = 0.0, yaw: float = 0.0, dimension: Dimension = None
+        self, dimension: Dimension, x: float, y: float, z: float, pitch: float = 0.0, yaw: float = 0.0
     ) -> None: ...
     @property
     def pitch(self) -> float:

@@ -39,7 +39,7 @@ void init_game_mode(py::module_ &);
 void init_inventory(py::module_ &, py::class_<ItemStack> &item_stack);
 void init_lang(py::module_ &);
 void init_level(py::module_ &, py::class_<Level> &level, py::class_<Dimension> &dimension,
-                py::class_<Location, Vector> &location);
+                py::class_<Location> &location);
 void init_logger(py::module_ &);
 void init_map(py::module_ &);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission);
@@ -145,8 +145,8 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto level = py::class_<Level>(m_level, "Level");
     auto dimension = py::class_<Dimension>(m_level, "Dimension", "Represents a dimension within a Level.");
     auto vector = py::class_<Vector>(m_util, "Vector", "Represents a 3-dimensional vector.");
-    auto location = py::class_<Location, Vector>(m_level, "Location",
-                                                 "Represents a 3-dimensional location in a dimension within a level.");
+    auto location =
+        py::class_<Location>(m_level, "Location", "Represents a 3-dimensional location in a dimension within a level.");
 
     init_attribute(m_attribute);
     init_color_format(m);

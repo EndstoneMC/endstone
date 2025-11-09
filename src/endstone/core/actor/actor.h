@@ -162,7 +162,7 @@ public:
         auto [x, y, z] = getHandle().getPosition();
         y -= ActorOffset::getHeightOffset(getHandle().getEntity());
         const auto &[pitch, yaw] = getHandle().getRotation();
-        return {x, y, z, pitch, yaw, getDimension()};
+        return {getDimension(), x, y, z, pitch, yaw};
     }
 
     [[nodiscard]] Vector getVelocity() const override
@@ -215,10 +215,8 @@ public:
 
     void teleport(Location location) override
     {
-        DimensionType destination_dimension = VanillaDimensions::Undefined;
-        if (auto *dimension = location.getDimension(); dimension) {
-            destination_dimension = static_cast<EndstoneDimension *>(dimension)->getHandle().getDimensionId();
-        }
+        DimensionType destination_dimension =
+            static_cast<EndstoneDimension &>(location.getDimension()).getHandle().getDimensionId();
 
         auto rotation = RotationCommandUtils::RotationData{RelativeFloat{location.getPitch(), false},
                                                            RelativeFloat{location.getYaw(), false}, std::nullopt};

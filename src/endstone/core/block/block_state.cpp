@@ -87,7 +87,7 @@ int EndstoneBlockState::getZ() const
 
 Location EndstoneBlockState::getLocation() const
 {
-    return Location{getX(), getY(), getZ(), getDimension()};
+    return Location{getDimension(), getX(), getY(), getZ()};
 }
 
 bool EndstoneBlockState::update()

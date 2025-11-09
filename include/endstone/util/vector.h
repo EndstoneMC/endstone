@@ -25,8 +25,6 @@ namespace endstone {
  * @brief Represents a 3-dimensional vector.
  */
 class Vector {
-    static constexpr float Epsilon = 0.000001;
-
 public:
     /**
      * @brief Construct the vector with all components as 0.
@@ -40,10 +38,8 @@ public:
      * @param y Y component
      * @param z Z component
      */
-    template <typename T>
-    constexpr Vector(T x, T y, T z)
-        requires(std::is_convertible_v<T, float>)
-        : x_(static_cast<float>(x)), y_(static_cast<float>(y)), z_(static_cast<float>(z))
+    template <std::convertible_to<float> T>
+    constexpr Vector(T x, T y, T z) : x_(static_cast<float>(x)), y_(static_cast<float>(y)), z_(static_cast<float>(z))
     {
     }
 
@@ -68,9 +64,10 @@ public:
      * @param x The new X component.
      * @return This vector.
      */
-    constexpr Vector &setX(float x)
+    template <std::convertible_to<float> T>
+    constexpr Vector &setX(T x)
     {
-        x_ = x;
+        x_ = static_cast<float>(x);
         return *this;
     }
 
@@ -90,9 +87,10 @@ public:
      * @param y The new Y component.
      * @return This vector.
      */
-    constexpr Vector &setY(float y)
+    template <std::convertible_to<float> T>
+    constexpr Vector &setY(T y)
     {
-        y_ = y;
+        y_ = static_cast<float>(y);
         return *this;
     }
 
@@ -112,9 +110,10 @@ public:
      * @param z The new Z component.
      * @return This vector.
      */
-    constexpr Vector &setZ(float z)
+    template <std::convertible_to<float> T>
+    constexpr Vector &setZ(T z)
     {
-        z_ = z;
+        z_ = static_cast<float>(z);
         return *this;
     }
 
@@ -262,8 +261,9 @@ public:
 
     bool operator==(const Vector &other) const noexcept
     {
-        return (std::fabs(x_ - other.x_) <= Epsilon) && (std::fabs(y_ - other.y_) <= Epsilon) &&
-               (std::fabs(z_ - other.z_) <= Epsilon);
+        constexpr static float eps = 1e-6f;
+        return (std::fabs(x_ - other.x_) <= eps) && (std::fabs(y_ - other.y_) <= eps) &&
+               (std::fabs(z_ - other.z_) <= eps);
     }
 
     bool operator!=(const Vector &other) const noexcept
@@ -499,7 +499,8 @@ public:
      */
     [[nodiscard]] bool isNormalized() const
     {
-        return std::abs(lengthSquared() - 1) < Epsilon;
+        constexpr static float eps = 1e-6f;
+        return std::abs(lengthSquared() - 1) < eps;
     }
 
     /**
