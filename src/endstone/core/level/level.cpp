@@ -34,7 +34,6 @@ EndstoneLevel::EndstoneLevel(::Level &level) : server_(EndstoneServer::getInstan
     level.getDimensionManager().getOnNewDimensionCreatedConnector().connect(
         [this](::Dimension &dimension) {
             // TODO(event): add DimensionLoadEvent here
-            server_.getLogger().info("Loading dimension '{}'.", dimension.getName());
             dimensions_[dimension.getDimensionId().runtime_id] =
                 std::make_unique<EndstoneDimension>(dimension.getWeakRef(), *this);
         },
