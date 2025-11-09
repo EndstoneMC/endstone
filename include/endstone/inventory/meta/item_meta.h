@@ -32,20 +32,6 @@ public:
         Item,
         Map,
     };
-
-    explicit ItemMeta(const ItemMeta *meta)
-    {
-        if (meta == nullptr) {
-            return;
-        }
-        display_name_ = meta->display_name_;
-        lore_ = meta->lore_;
-        enchantments_ = meta->enchantments_;
-        repair_cost_ = meta->repair_cost_;
-        damage_ = meta->damage_;
-        unbreakable_ = meta->unbreakable_;
-    }
-
     virtual ~ItemMeta() = default;
 
     /**
@@ -59,128 +45,53 @@ public:
     }
 
     /**
-     * @brief Checks if the item metadata is empty.
-     *
-     * @return true if the metadata is empty, false otherwise.
-     */
-    [[nodiscard]] virtual bool isEmpty() const
-    {
-        return !(hasDisplayName() || hasLore() || hasEnchants() || hasRepairCost() || isUnbreakable() || hasDamage());
-    }
-
-    /**
-     * @brief Creates a clone of the current metadata.
-     * @return A copy of the metadata containing the same state as the original.
-     */
-    [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const
-    {
-        return std::make_unique<ItemMeta>(this);
-    }
-
-    /**
      * @brief Checks for existence of a display name.
      *
      * @return true if this has a display name
      */
-    [[nodiscard]] bool hasDisplayName() const
-    {
-        return !display_name_.empty();
-    }
+    [[nodiscard]] virtual bool hasDisplayName() const = 0;
 
     /**
      * @brief Gets the display name that is set.
      *
      * @return the display name that is set
      */
-    [[nodiscard]] std::string getDisplayName() const
-    {
-        return display_name_;
-    }
+    [[nodiscard]] virtual std::string getDisplayName() const = 0;
 
     /**
      * @brief Sets the display name.
      *
      * @param name the name to set
      */
-    void setDisplayName(std::optional<std::string> name)
-    {
-        display_name_ = std::move(name.value_or(""));
-    }
+    virtual void setDisplayName(std::optional<std::string> name) = 0;
 
     /**
      * @brief Checks for existence of lore.
      *
      * @return true if this has lore
      */
-    [[nodiscard]] bool hasLore() const
-    {
-        return !lore_.empty();
-    }
+    [[nodiscard]] virtual bool hasLore() const = 0;
 
     /**
      * @brief Gets the lore that is set.
      *
      * @return a list of lore that is set
      */
-    [[nodiscard]] std::vector<std::string> getLore() const
-    {
-        return lore_;
-    }
+    [[nodiscard]] virtual std::vector<std::string> getLore() const = 0;
 
     /**
-     * @brief Sets the lore for this item or removes lore when given std::nullopt.
+     * @brief Sets the lore for this item or removes lore when given <code>std::nullopt</code>.
      *
      * @param lore the lore that will be set
      */
-    void setLore(std::optional<std::vector<std::string>> lore)
-    {
-        if (!lore.has_value() || lore.value().empty()) {
-            lore_.clear();
-        }
-        else {
-            lore_ = std::move(lore.value());
-        }
-    }
-
-    /**
-     * @brief Checks to see if this item has damage
-     *
-     * @return true if this has damage
-     */
-    [[nodiscard]] bool hasDamage() const
-    {
-        return damage_ > 0;
-    }
-
-    /**
-     * @brief Gets the damage
-     *
-     * @return the damage
-     */
-    [[nodiscard]] int getDamage() const
-    {
-        return damage_;
-    }
-
-    /**
-     * @brief Sets the damage
-     *
-     * @param damage item damage
-     */
-    void setDamage(int damage)
-    {
-        damage_ = damage;
-    }
+    virtual void setLore(std::optional<std::vector<std::string>> lore) = 0;
 
     /**
      * @brief Checks for the existence of any enchantments.
      *
      * @return true if an enchantment exists on this meta
      */
-    [[nodiscard]] bool hasEnchants() const
-    {
-        return !enchantments_.empty();
-    }
+    [[nodiscard]] virtual bool hasEnchants() const = 0;
 
     /**
      * @brief Checks for existence of the specified enchantment.
@@ -188,10 +99,7 @@ public:
      * @param id enchantment id to check
      * @return true if this enchantment exists for this meta
      */
-    [[nodiscard]] bool hasEnchant(const std::string &id) const
-    {
-        return hasEnchants() && enchantments_.contains(id);
-    }
+    [[nodiscard]] virtual bool hasEnchant(const std::string &id) const = 0;
 
     /**
      * @brief Checks for the level of the specified enchantment.
@@ -199,13 +107,7 @@ public:
      * @param id enchantment id to check
      * @return The level that the specified enchantment has, or 0 if none
      */
-    [[nodiscard]] int getEnchantLevel(const std::string &id) const
-    {
-        if (!hasEnchant(id)) {
-            return 0;
-        }
-        return enchantments_.at(id);
-    }
+    [[nodiscard]] virtual int getEnchantLevel(const std::string &id) const = 0;
 
     /**
      * @brief Returns a copy the enchantments in this ItemMeta.
@@ -214,13 +116,7 @@ public:
      *
      * @return An immutable copy of the enchantments
      */
-    [[nodiscard]] std::unordered_map<std::string, int> getEnchants() const
-    {
-        if (hasEnchants()) {
-            return enchantments_;
-        }
-        return {};
-    }
+    [[nodiscard]] virtual std::unordered_map<std::string, int> getEnchants() const = 0;
 
     /**
      * @brief Adds the specified enchantment to this item meta.
@@ -230,19 +126,7 @@ public:
      * @param force this indicates the enchantment should be applied, ignoring the level limit
      * @return true if the item meta changed as a result of this call, false otherwise
      */
-    bool addEnchant(const std::string &id, int level, bool force = false)
-    {
-        const auto *ench = Enchantment::get(id);
-        if (!ench) {
-            return false;
-        }
-        if (force || level >= ench->getStartLevel() && level <= ench->getMaxLevel()) {
-            const auto old = getEnchantLevel(id);
-            enchantments_[id] = level;
-            return old == 0 || old != level;
-        }
-        return false;
-    }
+    [[nodiscard]] virtual bool addEnchant(const std::string &id, int level, bool force) const = 0;
 
     /**
      * @brief Removes the specified enchantment from this item meta.
@@ -251,73 +135,87 @@ public:
      * @return true if the item meta changed as a result of this call, false
      *     otherwise
      */
-    bool removeEnchant(const std::string &id)
-    {
-        return enchantments_.erase(id) > 0;
-    }
+    virtual bool removeEnchant(const std::string &id) = 0;
 
     /**
      * @brief Removes all enchantments from this item meta.
      */
-    void removeEnchants()
-    {
-        enchantments_.clear();
-    }
+    virtual void removeEnchants() = 0;
 
     /**
-     * @brief Checks to see if this has a repair penalty
+     * Checks if the specified enchantment conflicts with any enchantments in
+     * this ItemMeta.
      *
-     * @return true if this has a repair penalty
+     * @param id Enchantment id to test
+     * @return true if the enchantment conflicts, false otherwise
      */
-    [[nodiscard]] bool hasRepairCost() const
-    {
-        return repair_cost_ > 0;
-    }
-
-    /**
-     * @brief Gets the repair penalty
-     *
-     * @return the repair penalty
-     */
-    [[nodiscard]] int getRepairCost() const
-    {
-        return repair_cost_;
-    }
-
-    /**
-     * @brief Sets the repair penalty
-     *
-     * @param cost repair penalty
-     */
-    void setRepairCost(int cost)
-    {
-        repair_cost_ = cost;
-    }
+    [[nodiscard]] virtual bool hasConflictingEnchant(const std::string &id) const = 0;
 
     /**
      * @brief Return if the unbreakable tag is true. An unbreakable item will not lose durability.
      *
      * @return true if the unbreakable tag is true
      */
-    [[nodiscard]] bool isUnbreakable() const
-    {
-        return unbreakable_;
-    }
+    [[nodiscard]] virtual bool isUnbreakable() const = 0;
 
     /**
      * @brief Sets the unbreakable tag. An unbreakable item will not lose durability.
      *
      * @param unbreakable true if set unbreakable
      */
-    void setUnbreakable(bool unbreakable)
-    {
-        unbreakable_ = unbreakable;
-    }
+    virtual void setUnbreakable(bool unbreakable) = 0;
+
+    /**
+     * @brief Checks to see if this item has damage
+     *
+     * @return true if this has damage
+     */
+    [[nodiscard]] virtual bool hasDamage() const = 0;
+
+    /**
+     * @brief Gets the damage
+     *
+     * @return the damage
+     */
+    [[nodiscard]] virtual int getDamage() const = 0;
+
+    /**
+     * @brief Sets the damage
+     *
+     * @param damage item damage
+     */
+    virtual void setDamage(int damage) = 0;
+    /**
+     * @brief Checks to see if this has a repair penalty
+     *
+     * @return true if this has a repair penalty
+     */
+    [[nodiscard]] virtual bool hasRepairCost() const = 0;
+
+    /**
+     * @brief Gets the repair penalty
+     *
+     * @return the repair penalty
+     */
+    [[nodiscard]] virtual int getRepairCost() const = 0;
+
+    /**
+     * @brief Sets the repair penalty
+     *
+     * @param cost repair penalty
+     */
+    virtual void setRepairCost(int cost) = 0;
+
+    /**
+     * @brief Creates a clone of the current metadata.
+     * @return A copy of the metadata containing the same state as the original.
+     */
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const = 0;
 
     template <typename T>
     T *as()
     {
-        if (getType() == T::TYPE) {
+        if (getType() == T::MetaType) {
             return static_cast<T *>(this);
         }
         return nullptr;
@@ -326,7 +224,7 @@ public:
     template <typename T>
     const T *as() const
     {
-        if (getType() == T::TYPE) {
+        if (getType() == T::MetaType) {
             return static_cast<const T *>(this);
         }
         return nullptr;
@@ -340,4 +238,11 @@ private:
     int damage_ = 0;
     bool unbreakable_ = false;
 };
+
+#define ENDSTONE_ITEM_META(type)                 \
+    static constexpr auto MetaType = Type::type; \
+    [[nodiscard]] Type getType() const override  \
+    {                                            \
+        return MetaType;                         \
+    }
 }  // namespace endstone
