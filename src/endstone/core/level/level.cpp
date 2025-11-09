@@ -27,14 +27,18 @@
 
 namespace endstone::core {
 
-EndstoneLevel::EndstoneLevel(::Level &level) : server_(entt::locator<EndstoneServer>::value()), level_(level)
+EndstoneLevel::EndstoneLevel(::Level &level) : server_(EndstoneServer::getInstance()), level_(level)
 {
-    // Load all dimensions when the level is loaded
+    // Load all vanilla dimensions on start up
     static constexpr AutomaticID<::Dimension, int> dimension_ids[] = {
         VanillaDimensions::Overworld, VanillaDimensions::Nether, VanillaDimensions::TheEnd};
     for (const auto &dimension_id : dimension_ids) {
         auto dimension = level.getOrCreateDimension(dimension_id);
-        addDimension(std::make_unique<EndstoneDimension>(*dimension.unwrap(), *this));
+        if (!dimension.isSet()) {
+            server_.getLogger().error("Unable to load dimension '{}'", VanillaDimensions::toString(dimension_id));
+            continue;
+        }
+        addDimension(std::make_unique<EndstoneDimension>(dimension, *this));
     }
 }
 
@@ -90,6 +94,12 @@ Dimension *EndstoneLevel::getDimension(std::string name) const
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     const auto it = dimensions_.find(name);
     if (it == dimensions_.end()) {
+        level_.forEachDimension([&](const ::Dimension &dimension) {
+            if (dimension.getName() == name) {
+                return false;
+            }
+            return true;
+        });
         return nullptr;
     }
     return it->second.get();

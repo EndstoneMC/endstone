@@ -22,4 +22,9 @@ public:
     constexpr static DimensionType Nether{1};
     constexpr static DimensionType TheEnd{2};
     constexpr static DimensionType Undefined{3};
+    static DimensionType fromString(const std::string &name);
+    static const std::string toString(const DimensionType &type);
+
+protected:
+    static const BidirectionalUnorderedMap<std::string, AutomaticID<Dimension, int>> DimensionMap;
 };
