@@ -104,8 +104,7 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
 
 std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(CommandSender &sender)
 {
-    const auto &server = entt::locator<EndstoneServer>::value();
-    const auto *level = static_cast<EndstoneLevel *>(server.getLevel());
+    const auto *level = EndstoneServer::getInstance().getEndstoneLevel();
     if (const auto *console = sender.asConsole(); console) {
         CompoundTag tag;
         {

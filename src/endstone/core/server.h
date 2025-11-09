@@ -70,6 +70,7 @@ public:
     [[nodiscard]] EndstoneScheduler &getEndstoneScheduler() const;
 
     [[nodiscard]] Level *getLevel() const override;
+    [[nodiscard]] EndstoneLevel *getEndstoneLevel() const;
 
     [[nodiscard]] std::vector<Player *> getOnlinePlayers() const override;
     [[nodiscard]] int getMaxPlayers() const override;

@@ -399,6 +399,11 @@ Level *EndstoneServer::getLevel() const
     return level_.get();
 }
 
+EndstoneLevel *EndstoneServer::getEndstoneLevel() const
+{
+    return level_.get();
+}
+
 std::vector<Player *> EndstoneServer::getOnlinePlayers() const
 {
     std::vector<Player *> result;

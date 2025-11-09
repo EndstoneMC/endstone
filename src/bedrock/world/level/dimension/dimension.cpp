@@ -53,3 +53,8 @@ const std::string &Dimension::getName() const
 {
     return name_;
 }
+
+WeakRef<Dimension> Dimension::getWeakRef()
+{
+    return WeakRef<Dimension>(weak_from_this());
+}

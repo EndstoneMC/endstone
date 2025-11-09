@@ -91,7 +91,6 @@ class DataLoadHelper;
 class DeathTickingComponent;
 class DimensionBrightnessRamp;
 class DimensionConversionData;
-class DimensionManager;
 class DynamicContainerTracker;
 class EducationLevelSettings;
 class EducationOptions;

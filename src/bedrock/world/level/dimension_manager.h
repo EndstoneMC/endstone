@@ -14,5 +14,16 @@
 
 #pragma once
 
-template<typename Type>
-class EnableGetWeakRef{};
+#include "bedrock/core/utility/pub_sub/connector.h"
+#include "bedrock/world/level/dimension/dimension.h"
+
+class IDimensionManagerConnector {
+public:
+    virtual Bedrock::PubSub::Connector<void(Dimension &)> &getOnNewDimensionCreatedConnector() = 0;
+};
+
+class DimensionManager : public IDimensionManagerConnector {
+public:
+    virtual ~DimensionManager();
+    Bedrock::PubSub::Connector<void(Dimension &)> &getOnNewDimensionCreatedConnector() override;
+};

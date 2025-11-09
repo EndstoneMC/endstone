@@ -37,6 +37,10 @@ enum class SubChunkInitMode : int {
     ReplaceWithAllAir = 4,
 };
 
+namespace LevelChunkTicking {
+enum class Entity : uint32_t;
+}  // namespace LevelChunkTicking
+
 class LevelChunk {
 public:
     LevelChunk(Dimension &, const ChunkPos &, bool, SubChunkInitMode, bool);
@@ -61,6 +65,7 @@ private:
     std::atomic<bool> lighting_task_active_;
     bool read_only_;
     ChunkSource *generator_;
+    LevelChunkTicking::Entity tmp_ticking_entity_;
     std::optional<LevelChunkFormat> loaded_format_;
     std::string serialized_entities_buffer_;
     std::string failed_serialized_entities_buffer_;
