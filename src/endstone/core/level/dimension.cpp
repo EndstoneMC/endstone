@@ -110,7 +110,8 @@ Actor *EndstoneDimension::spawnActor(Location location, std::string type)
     const auto id = ActorDefinitionIdentifier(type);
     auto entity = actor_factory.createSpawnedActor(id, nullptr, {location.getX(), location.getY(), location.getZ()},
                                                    {location.getPitch(), location.getYaw()});
-    const auto *actor = level_.getHandle().addEntity(dimension_.getBlockSourceFromMainChunkSource(), std::move(entity));
+    const auto *actor =
+        level_.getHandle().addEntity(getHandle().getBlockSourceFromMainChunkSource(), std::move(entity));
     if (!actor) {
         return nullptr;
     }
