@@ -24,11 +24,21 @@
       <node id="4">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>algorithm</label>
       </node>
       <node id="2">
         <label>cmath</label>
+      </node>
+      <node id="6">
+        <label>fmt/format.h</label>
       </node>
       <node id="3">
         <label>numbers</label>
@@ -653,10 +663,10 @@
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref><sp/>vector;</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rot_x<sp/>=<sp/><ref refid="classendstone_1_1Location_1a15b337fd56d6e8e4cb24ba1b6b745a41" kindref="member">getYaw</ref>()<sp/>*<sp/>std::numbers::pi<sp/>/<sp/>180.0F;</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rot_y<sp/>=<sp/><ref refid="classendstone_1_1Location_1a8d5d7508809220f179abd3aab4432272" kindref="member">getPitch</ref>()<sp/>*<sp/>std::numbers::pi<sp/>/<sp/>180.0F;</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector.<ref refid="classendstone_1_1Vector_1ac40bfd6d36d2029ef4df0b596dcc9f72" kindref="member">setY</ref>(-std::sin(rot_y));</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector.<ref refid="classendstone_1_1Vector_1ae3c75b0afa0e4a9fa8059f65db6ca41b" kindref="member">setY</ref>(-std::sin(rot_y));</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>xz<sp/>=<sp/>std::cos(rot_y);</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector.<ref refid="classendstone_1_1Vector_1a9f24d508018450af08152b7a040247eb" kindref="member">setX</ref>(-xz<sp/>*<sp/>std::sin(rot_x));</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector.<ref refid="classendstone_1_1Vector_1afbbc3cd292ed3e86b8dd6a6692db69c3" kindref="member">setZ</ref>(xz<sp/>*<sp/>std::cos(rot_x));</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector.<ref refid="classendstone_1_1Vector_1aedf1fbecc8a3ce6c72fccd8296585ce1" kindref="member">setX</ref>(-xz<sp/>*<sp/>std::sin(rot_x));</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector.<ref refid="classendstone_1_1Vector_1af3f7be32801a0611622ccce1880f399e" kindref="member">setZ</ref>(xz<sp/>*<sp/>std::cos(rot_x));</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>vector;</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"></highlight></codeline>

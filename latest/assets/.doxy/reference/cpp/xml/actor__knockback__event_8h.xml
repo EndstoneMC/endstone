@@ -32,12 +32,12 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="24">
         <label>endstone/event/actor/actor_event.h</label>
         <link refid="actor__event_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -45,19 +45,19 @@
         <link refid="actor__knockback__event_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>endstone/event/cancellable.h</label>
         <link refid="cancellable_8h_source"/>
       </node>
-      <node id="24">
+      <node id="25">
         <label>endstone/event/event.h</label>
         <link refid="event_8h_source"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -133,8 +133,15 @@
       <node id="22">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
+        <childnode refid="23" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>algorithm</label>
       </node>
       <node id="20">
         <label>cmath</label>
@@ -151,7 +158,7 @@
       <node id="21">
         <label>numbers</label>
       </node>
-      <node id="25">
+      <node id="26">
         <label>stdexcept</label>
       </node>
       <node id="5">

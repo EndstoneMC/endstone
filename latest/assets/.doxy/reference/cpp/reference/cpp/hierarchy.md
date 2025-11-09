@@ -186,4 +186,5 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **struct** [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md) 
+    * **struct** [**fmt::formatter&lt; endstone::Vector &gt;**](structfmt_1_1formatter_3_01endstone_1_1Vector_01_4.md) 
 

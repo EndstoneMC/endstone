@@ -178,6 +178,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **struct** [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md)     
     * **struct** [**formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md)     
     * **struct** [**formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md)     
+    * **struct** [**formatter&lt; endstone::Vector &gt;**](structfmt_1_1formatter_3_01endstone_1_1Vector_01_4.md)     
 * **namespace** [**std**](namespacestd.md)     
     * **struct** [**hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md)     
 

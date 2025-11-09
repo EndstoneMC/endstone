@@ -767,6 +767,9 @@
   <compound refid="structfmt_1_1formatter_3_01endstone_1_1Location_01_4" kind="struct"><name>fmt::formatter&lt; endstone::Location &gt;</name>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1Location_01_4_1aacd1087e93588052d3587935edd93eab" kind="function"><name>format</name></member>
   </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1Vector_01_4" kind="struct"><name>fmt::formatter&lt; endstone::Vector &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1Vector_01_4_1ada76ff058ce72d900b4ae30232a4eb99" kind="function"><name>format</name></member>
+  </compound>
   <compound refid="classendstone_1_1HandlerList" kind="class"><name>endstone::HandlerList</name>
     <member refid="classendstone_1_1HandlerList_1ab763f006b235b0de384c00307a837f67" kind="variable"><name>mtx_</name></member>
     <member refid="classendstone_1_1HandlerList_1aeb44cef7cd2c841d804cd2a42f266660" kind="variable"><name>handlers_</name></member>
@@ -2116,17 +2119,25 @@
     <member refid="classendstone_1_1UUID_1a887f4ce97cfcceb75784345c13c691ed" kind="function"><name>size</name></member>
   </compound>
   <compound refid="classendstone_1_1Vector" kind="class"><name>endstone::Vector</name>
+    <member refid="classendstone_1_1Vector_1a9656e29835e791bd89cc1630dddf2498" kind="variable"><name>Epsilon</name></member>
     <member refid="classendstone_1_1Vector_1abb54ac14a247bb8e4fb904840afa40d2" kind="variable"><name>x_</name></member>
     <member refid="classendstone_1_1Vector_1ab1fd7c168b44802d8065c597475386ee" kind="variable"><name>y_</name></member>
     <member refid="classendstone_1_1Vector_1a17331592c0714b78a81cb9942ffe2015" kind="variable"><name>z_</name></member>
     <member refid="classendstone_1_1Vector_1a06b451a6dbf11011d49f9a2e0e5da6e9" kind="function"><name>Vector</name></member>
     <member refid="classendstone_1_1Vector_1aa8ef45946d06e8118975496a9177ce75" kind="function"><name>Vector</name></member>
+    <member refid="classendstone_1_1Vector_1a1a2d6e1d50444d3f9e2ffb9234960e2d" kind="function"><name>Vector</name></member>
+    <member refid="classendstone_1_1Vector_1ab6f5be439ef2d694beefa8f72dcb40f3" kind="function"><name>Vector</name></member>
+    <member refid="classendstone_1_1Vector_1a672e1bca61d7163ac230c7db00aadaf5" kind="function"><name>operator=</name></member>
+    <member refid="classendstone_1_1Vector_1a5987a0b5cc7201e3f4c6343b6b43b518" kind="function"><name>operator=</name></member>
     <member refid="classendstone_1_1Vector_1ade1fd8a70070c4058ad8da7d69afb388" kind="function"><name>getX</name></member>
-    <member refid="classendstone_1_1Vector_1a9f24d508018450af08152b7a040247eb" kind="function"><name>setX</name></member>
+    <member refid="classendstone_1_1Vector_1aedf1fbecc8a3ce6c72fccd8296585ce1" kind="function"><name>setX</name></member>
     <member refid="classendstone_1_1Vector_1adcd8a60875bbb547e5304f40fa4aaabf" kind="function"><name>getY</name></member>
-    <member refid="classendstone_1_1Vector_1ac40bfd6d36d2029ef4df0b596dcc9f72" kind="function"><name>setY</name></member>
+    <member refid="classendstone_1_1Vector_1ae3c75b0afa0e4a9fa8059f65db6ca41b" kind="function"><name>setY</name></member>
     <member refid="classendstone_1_1Vector_1a2c9b701560462a7c015a6cae44d4841c" kind="function"><name>getZ</name></member>
-    <member refid="classendstone_1_1Vector_1afbbc3cd292ed3e86b8dd6a6692db69c3" kind="function"><name>setZ</name></member>
+    <member refid="classendstone_1_1Vector_1af3f7be32801a0611622ccce1880f399e" kind="function"><name>setZ</name></member>
+    <member refid="classendstone_1_1Vector_1adac00ea988bf21097fdb12bf7b249663" kind="function"><name>getBlockX</name></member>
+    <member refid="classendstone_1_1Vector_1a8b94ba16b189f220722d2c1c4a07c57d" kind="function"><name>getBlockY</name></member>
+    <member refid="classendstone_1_1Vector_1ad04cbacaf9f9f2e59a8690469c368450" kind="function"><name>getBlockZ</name></member>
     <member refid="classendstone_1_1Vector_1aded8bc272c79ee7b70e892da401cda0a" kind="function"><name>operator+</name></member>
     <member refid="classendstone_1_1Vector_1a4d354598ba6f721c3a994469bd50043c" kind="function"><name>operator-</name></member>
     <member refid="classendstone_1_1Vector_1abceb4a257ceb299245c7737c44159e4c" kind="function"><name>operator*</name></member>
@@ -2135,20 +2146,38 @@
     <member refid="classendstone_1_1Vector_1a4a01f066025009fbeb4c9d2c40ea5378" kind="function"><name>operator-=</name></member>
     <member refid="classendstone_1_1Vector_1a3dd3035751d05bb4f98fa7a7c9b3ef5e" kind="function"><name>operator*=</name></member>
     <member refid="classendstone_1_1Vector_1a8df35aa6df3a420c0e403f0d1830cfed" kind="function"><name>operator/=</name></member>
-    <member refid="classendstone_1_1Vector_1a08a349f66fe0363600945cfcf528b903" kind="function"><name>operator+</name></member>
-    <member refid="classendstone_1_1Vector_1a311da896ebbb713e5489033ff9bf863b" kind="function"><name>operator-</name></member>
-    <member refid="classendstone_1_1Vector_1ac78a76a5f365c9b9f2f9c47971c6d00b" kind="function"><name>operator*</name></member>
-    <member refid="classendstone_1_1Vector_1a73e086f08d293096482b61dd6a120890" kind="function"><name>operator/</name></member>
-    <member refid="classendstone_1_1Vector_1a19c9c8f92755a15b36794f61d1ca8d87" kind="function"><name>operator==</name></member>
+    <member refid="classendstone_1_1Vector_1a8d9e64d0da33884ed8efc3ad92df0213" kind="function"><name>operator+</name></member>
+    <member refid="classendstone_1_1Vector_1ad242054c1236d91bb57f3c252251039e" kind="function"><name>operator-</name></member>
+    <member refid="classendstone_1_1Vector_1a4476f60526db1f3ffb4dd7f2df4f62a9" kind="function"><name>operator*</name></member>
+    <member refid="classendstone_1_1Vector_1a602be11767e8dd72bdb9992e9750236e" kind="function"><name>operator/</name></member>
+    <member refid="classendstone_1_1Vector_1a0598c7cb7cf12e9c0af010d8993fd814" kind="function"><name>operator==</name></member>
+    <member refid="classendstone_1_1Vector_1a96ff865a96e7487a68d6fd71eecf3bf9" kind="function"><name>operator!=</name></member>
     <member refid="classendstone_1_1Vector_1a6fcb3db759e3d9b99509819223fdda36" kind="function"><name>length</name></member>
     <member refid="classendstone_1_1Vector_1a90a69a99836fd742075e7fb633199ab4" kind="function"><name>lengthSquared</name></member>
     <member refid="classendstone_1_1Vector_1a496ea3fa87a3890ab011c9f1c9724309" kind="function"><name>distance</name></member>
     <member refid="classendstone_1_1Vector_1a3c880f6fe455bf2e064c54b408f61ab7" kind="function"><name>distanceSquared</name></member>
+    <member refid="classendstone_1_1Vector_1a535cc5347d7bf44f944e661f04161b3f" kind="function"><name>angle</name></member>
+    <member refid="classendstone_1_1Vector_1aaaae2d7af23641afd6a3c2be07b56e32" kind="function"><name>midpoint</name></member>
+    <member refid="classendstone_1_1Vector_1a4169c456a0a2e46e294920127e35be4d" kind="function"><name>getMidpoint</name></member>
+    <member refid="classendstone_1_1Vector_1ad6520ae584514364caa411a4b005ac6c" kind="function"><name>dot</name></member>
+    <member refid="classendstone_1_1Vector_1abda3da0f6fb3eb443f5891000e54e14d" kind="function"><name>crossProduct</name></member>
+    <member refid="classendstone_1_1Vector_1a02c6c4d72ce3531f554df7a19bcfc552" kind="function"><name>getCrossProduct</name></member>
     <member refid="classendstone_1_1Vector_1a4ee335f45978f4538c3828f238db4529" kind="function"><name>normalize</name></member>
-    <member refid="classendstone_1_1Vector_1a50250b059677e80ac0b24926be8b5b34" kind="friend"><name>operator+</name></member>
-    <member refid="classendstone_1_1Vector_1adf0cef5abccc11e3e82f3f4b332f3373" kind="friend"><name>operator-</name></member>
-    <member refid="classendstone_1_1Vector_1a24215e72e9c6caae9839722b6070d477" kind="friend"><name>operator*</name></member>
-    <member refid="classendstone_1_1Vector_1a0f735c65f3296c1824eea9d9d372939e" kind="friend"><name>operator/</name></member>
+    <member refid="classendstone_1_1Vector_1a26421a1fe19d49b3e2bd72f10dea50b3" kind="function"><name>zero</name></member>
+    <member refid="classendstone_1_1Vector_1aec784233412e23885adc14c06b15ae37" kind="function"><name>isZero</name></member>
+    <member refid="classendstone_1_1Vector_1ad346b2a05bd085e2cc450bec1514606f" kind="function"><name>normalizeZeros</name></member>
+    <member refid="classendstone_1_1Vector_1aa118da1a7206f0d5b50fd5e1afa7de3d" kind="function"><name>isInAABB</name></member>
+    <member refid="classendstone_1_1Vector_1a3e2bba49e51ff18ee733ee53630df286" kind="function"><name>isInSphere</name></member>
+    <member refid="classendstone_1_1Vector_1a22f7a34e30e48f8cb79e4bf044ccb0ef" kind="function"><name>isNormalized</name></member>
+    <member refid="classendstone_1_1Vector_1ab8fedea6d19e827ad713411d31ad4185" kind="function"><name>rotateAroundX</name></member>
+    <member refid="classendstone_1_1Vector_1a9e4100b8395fa5f07bf06d6c372b5985" kind="function"><name>rotateAroundY</name></member>
+    <member refid="classendstone_1_1Vector_1a331ee16da6598240b3afa5b44bd1c2c3" kind="function"><name>rotateAroundZ</name></member>
+    <member refid="classendstone_1_1Vector_1ac0474cf85b54344844b39891cb6302cc" kind="function"><name>rotateAroundAxis</name></member>
+    <member refid="classendstone_1_1Vector_1abfecaf052e634c51da2b53b78540b186" kind="function"><name>rotateAroundNonUnitAxis</name></member>
+    <member refid="classendstone_1_1Vector_1a485bac37939dbf6d16757b366b91d109" kind="friend"><name>operator+</name></member>
+    <member refid="classendstone_1_1Vector_1afc20f47de21b481d32754052db6f6234" kind="friend"><name>operator-</name></member>
+    <member refid="classendstone_1_1Vector_1abc0df9acf91bd86b670a8274ff26ee6b" kind="friend"><name>operator*</name></member>
+    <member refid="classendstone_1_1Vector_1a605a6f29d321741a9b85c030f0d641d8" kind="friend"><name>operator/</name></member>
   </compound>
   <compound refid="classendstone_1_1WeatherChangeEvent" kind="class"><name>endstone::WeatherChangeEvent</name>
     <member refid="classendstone_1_1WeatherChangeEvent_1af684c3b39e6a91f4453f14e46ade558e" kind="variable"><name>NAME</name></member>

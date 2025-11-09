@@ -118,6 +118,7 @@
 * **enchantments\_** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **emote\_id\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **enabled\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
+* **Epsilon** ([**endstone::Vector**](classendstone_1_1Vector.md))
 
 
 ## f

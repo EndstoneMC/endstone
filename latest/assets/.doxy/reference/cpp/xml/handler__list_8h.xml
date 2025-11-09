@@ -853,7 +853,11 @@
       <node id="65">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
         <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="54">

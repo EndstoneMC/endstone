@@ -2535,19 +2535,59 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">constexpr</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-vector-12"><strong>Vector</strong></a> () = default<br><em>Construct the vector with all components as 0.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-vector-14"><strong>Vector</strong></a> () = default<br><em>Construct the vector with all components as 0.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-vector-22"><strong>Vector</strong></a> (T x, T y, T z) <br><em>Construct the vector with provided components.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-vector-24"><strong>Vector</strong></a> (T x, T y, T z) <br><em>Construct the vector with provided components.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-vector-34"><strong>Vector</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) = default<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-vector-44"><strong>Vector</strong></a> (<a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;&amp; other) noexcept<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">float</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-distance"><strong>distance</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-angle"><strong>angle</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br><em>Gets the angle between this vector and another in radians.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-crossproduct"><strong>crossProduct</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) <br><em>Calculates the cross-product of this vector with another.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">float</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-distance"><strong>distance</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br><em>Get the distance between this vector and another.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr float</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-distancesquared"><strong>distanceSquared</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-distancesquared"><strong>distanceSquared</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br><em>Get the squared distance between this vector and another.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">constexpr float</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-dot"><strong>dot</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br><em>Calculates the dot product of this vector with another. The dot product is defined as x1*x2+y1*y2+z1*z2. The returned value is a scalar.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">int</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-getblockx"><strong>getBlockX</strong></a> () const<br><em>Gets the floored value of the X component, indicating the block that this vector is contained with.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">int</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-getblocky"><strong>getBlockY</strong></a> () const<br><em>Gets the floored value of the Y component, indicating the block that this vector is contained with.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">int</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-getblockz"><strong>getBlockZ</strong></a> () const<br><em>Gets the floored value of the Z component, indicating the block that this vector is contained with.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-getcrossproduct"><strong>getCrossProduct</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br><em>Calculates the cross-product of this vector with another without mutating the original.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-getmidpoint"><strong>getMidpoint</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br><em>Gets a new midpoint vector between this vector and another.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr float</td>
@@ -2562,6 +2602,22 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-getz"><strong>getZ</strong></a> () const<br><em>Gets the Z component.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;">constexpr bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-isinaabb"><strong>isInAABB</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; min, const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; max) const<br><em>Returns whether this vector is in an axis-aligned bounding box.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">constexpr bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-isinsphere"><strong>isInSphere</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; origin, float radius) const<br><em>Returns whether this vector is within a sphere.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-isnormalized"><strong>isNormalized</strong></a> () const<br><em>Returns if a vector is normalized.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">constexpr bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-iszero"><strong>isZero</strong></a> () const<br><em>Check whether or not each component of this vector is equal to 0.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">float</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-length"><strong>length</strong></a> () const<br><em>Gets the magnitude of the vector, defined as sqrt(x<sup>2+y</sup>2+z^2).</em></td>
 </tr>
@@ -2570,40 +2626,52 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-lengthsquared"><strong>lengthSquared</strong></a> () const<br><em>Gets the magnitude of the vector squared.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-midpoint"><strong>midpoint</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) <br><em>Sets this vector to the midpoint between this vector and another.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-normalize"><strong>normalize</strong></a> () <br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-normalize"><strong>normalize</strong></a> () <br><em>Converts this vector to a unit vector (a vector with length of 1).</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-normalizezeros"><strong>normalizeZeros</strong></a> () <br><em>Converts each component of value</em> <code>-0.0</code> <em>to</em><code>0.0</code> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator"><strong>operator!=</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) noexcept const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator"><strong>operator*</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_1"><strong>operator*</strong></a> (float scalar) const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_2"><strong>operator*=</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) <br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_1"><strong>operator*</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_3"><strong>operator+</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_4"><strong>operator+</strong></a> (float scalar) const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_2"><strong>operator*</strong></a> (T scalar) const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_5"><strong>operator+=</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) <br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_3"><strong>operator*=</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) <br></td>
+</tr>
+<tr>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_4"><strong>operator+</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_5"><strong>operator+</strong></a> (T scalar) const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_6"><strong>operator+=</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator-"><strong>operator-</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator-_1"><strong>operator-</strong></a> (float scalar) const<br></td>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator-_1"><strong>operator-</strong></a> (T scalar) const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
@@ -2611,31 +2679,63 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_6"><strong>operator/</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_7"><strong>operator/</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_7"><strong>operator/</strong></a> (float scalar) const<br></td>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_8"><strong>operator/</strong></a> (T scalar) const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_8"><strong>operator/=</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) <br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_9"><strong>operator/=</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">constexpr bool</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_9"><strong>operator==</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) const<br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_10"><strong>operator=</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) = default<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">constexpr void</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_11"><strong>operator=</strong></a> (<a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;&amp; other) noexcept<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-operator_12"><strong>operator==</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; other) noexcept const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-rotatearoundaxis"><strong>rotateAroundAxis</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; axis, float angle) <br><em>Rotates the vector around a given arbitrary axis in 3-dimensional space.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-rotatearoundnonunitaxis"><strong>rotateAroundNonUnitAxis</strong></a> (const <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp; axis, float angle) <br><em>Rotates the vector around a given arbitrary axis in 3-dimensional space.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-rotatearoundx"><strong>rotateAroundX</strong></a> (float angle) <br><em>Rotates the vector around the x-axis.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-rotatearoundy"><strong>rotateAroundY</strong></a> (float angle) <br><em>Rotates the vector around the y-axis.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-rotatearoundz"><strong>rotateAroundZ</strong></a> (float angle) <br><em>Rotates the vector around the z-axis.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-setx"><strong>setX</strong></a> (float x) <br><em>Set the X component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">constexpr void</td>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-sety"><strong>setY</strong></a> (float y) <br><em>Set the Y component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">constexpr void</td>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-setz"><strong>setZ</strong></a> (float z) <br><em>Set the Z component.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-zero"><strong>zero</strong></a> () <br><em>Zero this vector's components.</em></td>
 </tr>
 </tbody>
 </table>
