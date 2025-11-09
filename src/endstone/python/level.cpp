@@ -80,11 +80,18 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
     location
         .def(py::init(&create_location), py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"),
              py::arg("pitch") = 0.0, py::arg("yaw") = 0.0)
+        .def_property("dimension", &Location::getDimension, &Location::setDimension, py::return_value_policy::reference,
+                      "The Dimension that contains this position")
+        .def_property_readonly("block", &Location::getBlock, "Gets the block at the represented location")
         .def_property("pitch", &Location::getPitch, &Location::setPitch,
                       "The pitch of this location, measured in degrees.")
         .def_property("yaw", &Location::getYaw, &Location::setYaw, "The yaw of this location, measured in degrees.")
-        .def_property("dimension", &Location::getDimension, &Location::setDimension, py::return_value_policy::reference,
-                      "The Dimension that contains this position")
+        .def_property(
+            "x", &Location::getX, [](Location &self, float x) { self.setX(x); }, "The x-coordinate of this location")
+        .def_property(
+            "y", &Location::getY, [](Location &self, float y) { self.setY(y); }, "The y-coordinate of this location")
+        .def_property(
+            "z", &Location::getZ, [](Location &self, float z) { self.setZ(z); }, "The z-coordinate of this location")
         .def_property_readonly(
             "block_x", &Location::getBlockX,
             "Gets the floored value of the X component, indicating the block that this location is contained with.")
@@ -94,7 +101,26 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         .def_property_readonly(
             "block_z", &Location::getBlockZ,
             "Gets the floored value of the Z component, indicating the block that this location is contained with.")
+        .def_property("direction", &Location::getDirection, &Location::setDirection,
+                      "Gets or sets a vector of yaw and pitch that points in the direction of the vector")
+        .def_property_readonly("length", &Location::length, "The magnitude of the Location")
+        .def_property_readonly("length_squared", &Location::lengthSquared, "The squared magnitude of the Location")
+        .def("distance", &Location::distance, py::arg("other"), "The distance between this Location and another")
+        .def("distance_squared", &Location::distanceSquared, py::arg("other"),
+             "The squared distance between this Location and another")
+        .def(py::self += py::self)
+        .def(py::self += Vector())
+        .def(py::self -= py::self)
+        .def(py::self -= Vector())
+        .def(py::self *= float())
+        .def("zero", &Location::zero, "Zero this vector's components.", py::return_value_policy::reference)
+        .def(py::self == py::self)
+        .def(py::self != py::self)
         .def("__repr__", [](const Location &self) { return fmt::format("{}", self); })
-        .def("__str__", [](const Location &self) { return fmt::format("{}", self); });
+        .def("__str__", [](const Location &self) { return fmt::format("{}", self); })
+        .def_static("normalize_yaw", &Location::normalizeYaw, py::arg("yaw"),
+                    "Normalizes the given yaw angle to a value between `+/-180` degrees.")
+        .def_static("normalize_pitch", &Location::normalizePitch, py::arg("pitch"),
+                    "Normalizes the given pitch angle to a value between `+/-90` degrees.");
 }
 }  // namespace endstone::python

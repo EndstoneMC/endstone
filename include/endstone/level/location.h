@@ -17,6 +17,7 @@
 #include <cmath>
 #include <numbers>
 
+#include "endstone/util/result.h"
 #include "endstone/util/vector.h"
 
 namespace endstone {
@@ -47,9 +48,9 @@ public:
     }
 
     /**
-     * @brief Gets the world that this location resides in
+     * @brief Gets the dimension that this location resides in
      *
-     * @return World that contains this location, or nullptr if it is not set or the dimension has been unloaded.
+     * @return Dimension that contains this location
      */
     [[nodiscard]] Dimension &getDimension() const
     {
@@ -229,6 +230,129 @@ public:
         return vector;
     }
 
+    /**
+     * @brief Sets the yaw and pitch to point in the direction of the vector.
+     *
+     * @param vector the direction vector
+     * @return the same location
+     */
+    Location &setDirection(const Vector &vector)
+    {
+        const auto x = vector.getX();
+        const auto z = vector.getZ();
+        if (x == 0 && z == 0) {
+            pitch_ = vector.getY() > 0 ? -90 : 90;
+            return *this;
+        }
+
+        const auto theta = std::atan2(-x, z);
+        yaw_ = std::fmod(theta + 2 * std::numbers::pi, 2 * std::numbers::pi) * 180.0F / std::numbers::pi;
+        const auto xz = std::sqrt((x * x) + (z * z));
+        pitch_ = std::atan(-vector.getY() / xz) * 180.0F / std::numbers::pi;
+
+        return *this;
+    }
+
+    /**
+     * @brief Gets the magnitude of the location, defined as sqrt(x^2+y^2+z^2).
+     *
+     * Not world-aware and orientation independent.
+     *
+     * @return the magnitude
+     */
+    [[nodiscard]] float length() const
+    {
+        return std::sqrt(lengthSquared());
+    }
+
+    /**
+     * @brief Gets the magnitude of the location squared.
+     *
+     * Not world-aware and orientation independent.
+     *
+     * @return the magnitude
+     */
+    [[nodiscard]] constexpr float lengthSquared() const
+    {
+        return (x_ * x_) + (y_ * y_) + (z_ * z_);
+    }
+
+    /**
+     * @brief Get the distance between this location and another.
+     *
+     * @param other The other location
+     * @return the distance
+     */
+    [[nodiscard]] Result<float> distance(const Location &other) const
+    {
+        auto distance_squared = distanceSquared(other);
+        ENDSTONE_CHECK_RESULT(distance_squared);
+        return std::sqrt(*distance_squared);
+    }
+
+    /**
+     * @brief Get the squared distance between this location and another.
+     *
+     * @param other The other location
+     * @return the distance
+     */
+    [[nodiscard]] Result<float> distanceSquared(const Location &other) const;
+
+    Location &operator+=(const Location &other)
+    {
+        x_ += other.x_;
+        y_ += other.y_;
+        z_ += other.z_;
+        return *this;
+    }
+
+    Location &operator+=(const Vector &other)
+    {
+        x_ += other.getX();
+        y_ += other.getY();
+        z_ += other.getZ();
+        return *this;
+    }
+
+    Location &operator-=(const Location &other)
+    {
+        x_ -= other.x_;
+        y_ -= other.y_;
+        z_ -= other.z_;
+        return *this;
+    }
+
+    Location &operator-=(const Vector &other)
+    {
+        x_ -= other.getX();
+        y_ -= other.getY();
+        z_ -= other.getZ();
+        return *this;
+    }
+
+    template <std::convertible_to<float> T>
+    Location &operator*=(T scalar)
+    {
+        const auto s = static_cast<float>(scalar);
+        x_ *= s;
+        y_ *= s;
+        z_ *= s;
+        return *this;
+    }
+
+    /**
+     * @brief Zero this vector's components. Not world-aware.
+     *
+     * @return the same location
+     */
+    constexpr Location &zero()
+    {
+        x_ = 0;
+        y_ = 0;
+        z_ = 0;
+        return *this;
+    }
+
     bool operator==(const Location &other) const noexcept
     {
         constexpr static float eps = 1e-6F;
@@ -240,6 +364,46 @@ public:
     bool operator!=(const Location &other) const noexcept
     {
         return !(*this == other);
+    }
+
+    operator Vector() const noexcept
+    {
+        return {x_, y_, z_};
+    }
+
+    /**
+     * @brief Normalizes the given yaw angle to a value between <code>+/-180</code> degrees.
+     *
+     * @param yaw the yaw in degrees
+     * @return the normalized yaw in degrees
+     */
+    static float normalizeYaw(float yaw)
+    {
+        yaw = std::fmod(yaw, 360.0F);
+        if (yaw >= 180.0F) {
+            yaw -= 360.0F;
+        }
+        else if (yaw < -180.0F) {
+            yaw += 360.0F;
+        }
+        return yaw;
+    }
+
+    /**
+     * @brief Normalizes the given pitch angle to a value between <code>+/-90</code> degrees.
+     *
+     * @param pitch the pitch in degrees
+     * @return the normalized pitch in degrees
+     */
+    static float normalizePitch(float pitch)
+    {
+        if (pitch > 90.0F) {
+            pitch = 90.0F;
+        }
+        else if (pitch < -90.0F) {
+            pitch = -90.0F;
+        }
+        return pitch;
     }
 
 private:

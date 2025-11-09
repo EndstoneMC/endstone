@@ -100,42 +100,6 @@ void init_util(py::module &m, py::class_<Vector> &vector)
             },
             py::arg("axis"), py::arg("angle"), py::arg("normalize") = true,
             "Rotates the vector around a given arbitrary axis in 3-dimensional space.")
-        .def("__len__", [](const Vector &) { return 3; })
-        .def("__getitem__",
-             [](const Vector &v, py::ssize_t i) {
-                 if (i < 0) {
-                     i += 3;
-                 }
-                 switch (i) {
-                 case 0:
-                     return v.getX();
-                 case 1:
-                     return v.getY();
-                 case 2:
-                     return v.getZ();
-                 default:
-                     throw py::index_error();
-                 }
-             })
-        .def("__setitem__",
-             [](Vector &v, py::ssize_t i, float val) {
-                 if (i < 0) {
-                     i += 3;
-                 }
-                 switch (i) {
-                 case 0:
-                     v.setX(val);
-                     return;
-                 case 1:
-                     v.setY(val);
-                     return;
-                 case 2:
-                     v.setZ(val);
-                     return;
-                 default:
-                     throw py::index_error();
-                 }
-             })
         .def("__matmul__", &Vector::dot, py::arg("other"), "Dot product (v @ u).")
         .def("__repr__",
              [](const Vector &v) { return fmt::format("Vector(x={}, y={}, z={})", v.getX(), v.getY(), v.getZ()); })

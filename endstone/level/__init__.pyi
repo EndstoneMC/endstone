@@ -4,6 +4,7 @@ import typing
 from endstone.actor import Actor, Item
 from endstone.block import Block
 from endstone.inventory import ItemStack
+from endstone.util import Vector
 
 __all__ = ["Chunk", "Dimension", "Level", "Location"]
 
@@ -142,6 +143,20 @@ class Location:
         self, dimension: Dimension, x: float, y: float, z: float, pitch: float = 0.0, yaw: float = 0.0
     ) -> None: ...
     @property
+    def dimension(self) -> Dimension:
+        """
+        The Dimension that contains this position
+        """
+        ...
+    @dimension.setter
+    def dimension(self, arg1: Dimension) -> None: ...
+    @property
+    def block(self) -> Block:
+        """
+        Gets the block at the represented location
+        """
+        ...
+    @property
     def pitch(self) -> float:
         """
         The pitch of this location, measured in degrees.
@@ -158,13 +173,29 @@ class Location:
     @yaw.setter
     def yaw(self, arg1: float) -> None: ...
     @property
-    def dimension(self) -> Dimension:
+    def x(self) -> float:
         """
-        The Dimension that contains this position
+        The x-coordinate of this location
         """
         ...
-    @dimension.setter
-    def dimension(self, arg1: Dimension) -> None: ...
+    @x.setter
+    def x(self, arg1: float) -> None: ...
+    @property
+    def y(self) -> float:
+        """
+        The y-coordinate of this location
+        """
+        ...
+    @y.setter
+    def y(self, arg1: float) -> None: ...
+    @property
+    def z(self) -> float:
+        """
+        The z-coordinate of this location
+        """
+        ...
+    @z.setter
+    def z(self, arg1: float) -> None: ...
     @property
     def block_x(self) -> int:
         """
@@ -183,8 +214,66 @@ class Location:
         Gets the floored value of the Z component, indicating the block that this location is contained with.
         """
         ...
+    @property
+    def direction(self) -> Vector:
+        """
+        Gets or sets a vector of yaw and pitch that points in the direction of the vector
+        """
+        ...
+    @direction.setter
+    def direction(self, arg1: Vector) -> Location: ...
+    @property
+    def length(self) -> float:
+        """
+        The magnitude of the Location
+        """
+        ...
+    @property
+    def length_squared(self) -> float:
+        """
+        The squared magnitude of the Location
+        """
+        ...
+    def distance(self, other: Location) -> float:
+        """
+        The distance between this Location and another
+        """
+        ...
+    def distance_squared(self, other: Location) -> float:
+        """
+        The squared distance between this Location and another
+        """
+        ...
+    @typing.overload
+    def __iadd__(self, arg0: Location) -> Location: ...
+    @typing.overload
+    def __iadd__(self, arg0: Vector) -> Location: ...
+    @typing.overload
+    def __isub__(self, arg0: Location) -> Location: ...
+    @typing.overload
+    def __isub__(self, arg0: Vector) -> Location: ...
+    def __imul__(self, arg0: float) -> Location: ...
+    def zero(self) -> Location:
+        """
+        Zero this vector's components.
+        """
+        ...
+    def __eq__(self, arg0: Location) -> bool: ...
+    def __ne__(self, arg0: Location) -> bool: ...
     def __repr__(self) -> str: ...
     def __str__(self) -> str: ...
+    @staticmethod
+    def normalize_yaw(yaw: float) -> float:
+        """
+        Normalizes the given yaw angle to a value between `+/-180` degrees.
+        """
+        ...
+    @staticmethod
+    def normalize_pitch(pitch: float) -> float:
+        """
+        Normalizes the given pitch angle to a value between `+/-90` degrees.
+        """
+        ...
 
 class Chunk:
     """
