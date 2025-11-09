@@ -37,7 +37,7 @@ public:
     void setTime(int time) override;
     [[nodiscard]] std::vector<Dimension *> getDimensions() const override;
     [[nodiscard]] Dimension *getDimension(std::string name) const override;
-    void addDimension(std::unique_ptr<Dimension> dimension);
+    [[nodiscard]] Dimension *getDimension(int id) const;  // TODO(fixme): make it virtual
     [[nodiscard]] std::int64_t getSeed() const override;
 
     [[nodiscard]] EndstoneServer &getServer() const;
@@ -46,7 +46,7 @@ public:
 private:
     EndstoneServer &server_;
     ::Level &level_;
-    std::unordered_map<std::string, std::unique_ptr<Dimension>> dimensions_;
+    std::map<int, std::unique_ptr<Dimension>> dimensions_;
 };
 
 }  // namespace endstone::core
