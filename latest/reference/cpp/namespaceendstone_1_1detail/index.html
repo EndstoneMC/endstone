@@ -2179,6 +2179,122 @@ For latest updates join the chat on
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+    <a href="#public-attributes" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Attributes
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#public-functions" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Functions
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#public-attributes-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Attributes Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Public Attributes Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#variable-fp_cast" class="md-nav__link">
+      <span class="md-ellipsis">
+        variable fp_cast
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#public-functions-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Functions Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Public Functions Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-fp_cast" class="md-nav__link">
+      <span class="md-ellipsis">
+        function fp_cast
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-fp_cast_1" class="md-nav__link">
+      <span class="md-ellipsis">
+        function fp_cast
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getserver" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getServer
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2211,8 +2327,115 @@ For latest updates join the chat on
 
 <h1 id="namespace-endstonedetail">Namespace endstone::detail<a class="headerlink" href="#namespace-endstonedetail" title="Permanent link">&para;</a></h1>
 <p><a href="../namespaces/"><strong>Namespace List</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>detail</strong></a></p>
+<h2 id="public-attributes">Public Attributes<a class="headerlink" href="#public-attributes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">Return(*)(Arg...)</td>
+<td style="text-align: left;"><a href="#variable-fp_cast"><strong>fp_cast</strong></a>  <br><em>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">void *</td>
+<td style="text-align: left;"><a href="#function-fp_cast"><strong>fp_cast</strong></a> (Return(*)(Args...) fp) <br><em>Cast a function pointer to void pointer.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">void *</td>
+<td style="text-align: left;"><a href="#function-fp_cast"><strong>fp_cast</strong></a> (Return(Class::*)(Args...) fp) <br><em>Cast a member function pointer to void pointer.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Server/"><strong>Server</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-getserver"><strong>getServer</strong></a> () <br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-attributes-documentation">Public Attributes Documentation<a class="headerlink" href="#public-attributes-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="variable-fp_cast">variable fp_cast<a class="headerlink" href="#variable-fp_cast" title="Permanent link">&para;</a></h3>
+<p><em>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Return</span><span class="p">(</span><span class="n">Class</span><span class="o">::*</span><span class="p">)(</span><span class="n">Arg</span><span class="p">...)</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">fp_cast</span><span class="p">(</span><span class="n">Return</span><span class="p">(</span><span class="n">Class</span><span class="o">::*</span><span class="n">fp</span><span class="p">)(</span><span class="n">Arg</span><span class="p">...)</span><span class="w"> </span><span class="k">const</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">address</span><span class="p">);</span>
+</span></code></pre></div></p>
+<hr>
+<h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-fp_cast">function fp_cast<a class="headerlink" href="#function-fp_cast" title="Permanent link">&para;</a></h3>
+<p><em>Cast a function pointer to void pointer.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Return</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">fp_cast</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Return</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="n">Args</span><span class="p">...)</span><span class="w"> </span><span class="n">fp</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>Return</code> The return type of the function. </li>
+<li><code>Args</code> The argument types of the function.</li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>fp</code> The function pointer to be casted.</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>A void pointer to the function. </p>
+<hr>
+
+<h3 id="function-fp_cast_1">function fp_cast<a class="headerlink" href="#function-fp_cast_1" title="Permanent link">&para;</a></h3>
+<p><em>Cast a member function pointer to void pointer.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Return</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">Class</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">fp_cast</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">Return</span><span class="p">(</span><span class="n">Class</span><span class="o">::*</span><span class="p">)(</span><span class="n">Args</span><span class="p">...)</span><span class="w"> </span><span class="n">fp</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p>Cast a constant member function pointer to void pointer.</p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>Return</code> The return type of the member function. </li>
+<li><code>Class</code> The class type that the member function belongs to. </li>
+<li><code>Args</code> The argument types of the member function.</li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>fp</code> Pointer to the member function to be casted.</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>A void pointer to the member function.</p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>Return</code> The return type of the constant member function. </li>
+<li><code>Class</code> The class type that the constant member function belongs to. </li>
+<li><code>Args</code> The argument types of the constant member function.</li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>fp</code> Pointer to the constant member function to be casted.</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>A void pointer to the constant member function. </p>
+<hr>
+
+<h3 id="function-getserver">function getServer<a class="headerlink" href="#function-getserver" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">getServer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+</span></code></pre></div>
+<p>Gets the current <a href="../classendstone_1_1Server/"><strong>Server</strong></a> singleton</p>
+<p><strong>Returns:</strong></p>
+<p><a href="../classendstone_1_1Server/"><strong>Server</strong></a> instance being run </p>
+<hr>
+
 <hr />
-<p>The documentation for this class was generated from the following file <code>include/endstone/plugin/plugin.h</code></p>
+<p>The documentation for this class was generated from the following file <code>include/endstone/detail.h</code></p>
 
 
 

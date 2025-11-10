@@ -159,7 +159,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) _Called when the weather (rain) state in a world is changing._     
     * **class** [**WeatherEvent**](classendstone_1_1WeatherEvent.md) _Represents a Weather-related event._     
     * **namespace** [**core**](namespaceendstone_1_1core.md) 
-    * **namespace** [**detail**](namespaceendstone_1_1detail.md) 
+    * **namespace** [**detail**](namespaceendstone_1_1detail.md)     
     * **struct** [**overloaded**](structendstone_1_1overloaded.md) _Helper type for visitors._ 
 * **class** [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md)     
 * **class** [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md)     

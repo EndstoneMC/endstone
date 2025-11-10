@@ -2313,6 +2313,10 @@
   <compound refid="namespaceendstone_1_1core" kind="namespace"><name>endstone::core</name>
   </compound>
   <compound refid="namespaceendstone_1_1detail" kind="namespace"><name>endstone::detail</name>
+    <member refid="detail_8h_1af3be710d43440fb182f40428a8ed98dc" kind="variable"><name>fp_cast</name></member>
+    <member refid="detail_8h_1a299e6b6b258696a822a5df0b72a3fa37" kind="function"><name>fp_cast</name></member>
+    <member refid="detail_8h_1acf4444f81858c5237ba18a115b01108e" kind="function"><name>fp_cast</name></member>
+    <member refid="detail_8h_1aecf7182420334f85f53fac02ff6ca4c6" kind="function"><name>getServer</name></member>
   </compound>
   <compound refid="namespacefmt" kind="namespace"><name>fmt</name>
   </compound>
@@ -2377,6 +2381,16 @@
   <compound refid="plugin__command_8h" kind="file"><name>plugin_command.h</name>
   </compound>
   <compound refid="damage__source_8h" kind="file"><name>damage_source.h</name>
+  </compound>
+  <compound refid="detail_8h" kind="file"><name>detail.h</name>
+    <member refid="detail_8h_1a5293e6d0f7cb888f6ac099548191fc09" kind="define"><name>ENDSTONE_STRINGIFY</name></member>
+    <member refid="detail_8h_1a8eef1a1b39f5be9d7fdb63f61f6e6f41" kind="define"><name>ENDSTONE_TOSTRING</name></member>
+    <member refid="detail_8h_1ad775ac2522a4205f4c0defcd1015c422" kind="define"><name>ENDSTONE_VERSION_MAJOR</name></member>
+    <member refid="detail_8h_1a47af324054528678a066e32d3b2c8d0c" kind="define"><name>ENDSTONE_VERSION_MINOR</name></member>
+    <member refid="detail_8h_1a1a384214544c4bcb200df812e5ac2bc9" kind="define"><name>ENDSTONE_VERSION_PATCH</name></member>
+    <member refid="detail_8h_1a7b84625b64bb02bf3d457c00053d4037" kind="define"><name>NETWORK_PROTOCOL_VERSION</name></member>
+    <member refid="detail_8h_1a4b2c4ab328be64dd58f83fcfca8cc2e0" kind="define"><name>ENDSTONE_API_VERSION</name></member>
+    <member refid="detail_8h_1a76f9d8327a86f30b035bd7638c69ae92" kind="define"><name>ENDSTONE_VERSION</name></member>
   </compound>
   <compound refid="effect__type_8h" kind="file"><name>effect_type.h</name>
   </compound>

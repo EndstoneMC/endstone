@@ -67,7 +67,7 @@ public:
                                                                     \
     static const type *get(const std::string &name)                 \
     {                                                               \
-        return Endstone::getServer().getRegistry<type>().get(name); \
+        return detail::getServer().getRegistry<type>().get(name); \
     }
 ```
 

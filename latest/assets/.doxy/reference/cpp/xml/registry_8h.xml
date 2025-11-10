@@ -154,7 +154,7 @@
                                                                     \
     static const type *get(const std::string &amp;name)                 \
     {                                                               \
-        return Endstone::getServer().getRegistry&lt;type&gt;().get(name); \
+        return detail::getServer().getRegistry&lt;type&gt;().get(name); \
     }</initializer>
         <briefdescription>
         </briefdescription>
@@ -229,7 +229,7 @@
 <codeline lineno="104"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="105"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>static<sp/>const<sp/>type<sp/>*get(const<sp/>std::string<sp/>&amp;name)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="106"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="107"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>Endstone::getServer().getRegistry&lt;type&gt;().get(name);<sp/>\</highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>detail::getServer().getRegistry&lt;type&gt;().get(name);<sp/>\</highlight></codeline>
 <codeline lineno="108"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight></codeline>
     </programlisting>
     <location file="include/endstone/registry.h"/>

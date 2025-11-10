@@ -24,9 +24,15 @@
 * **EventResult** ([**endstone**](namespaceendstone.md))
 
 
+## f
+
+* **fp\_cast** ([**endstone::detail**](namespaceendstone_1_1detail.md))
+
+
 ## g
 
 * **GameMode** ([**endstone**](namespaceendstone.md))
+* **getServer** ([**endstone::detail**](namespaceendstone_1_1detail.md))
 
 
 ## h
