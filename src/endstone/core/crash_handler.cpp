@@ -39,8 +39,8 @@
 #include <fmt/std.h>
 #include <spdlog/spdlog.h>
 
+#include "endstone/detail.h"
 #include "endstone/core/platform.h"
-#include "endstone/detail/common.h"
 
 namespace fs = std::filesystem;
 

@@ -25,7 +25,7 @@
 #include "bedrock/scripting/event_handlers/script_scripting_event_handler.h"
 #include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
 #include "endstone/core/server.h"
-#include "endstone/detail/cast.h"
+#include "endstone/detail.h"
 #include "endstone/runtime/hook.h"
 #include "endstone/runtime/vtable_hook.h"
 

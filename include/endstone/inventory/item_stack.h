@@ -16,11 +16,12 @@
 
 #include <memory>
 
-#include "endstone/detail/endstone.h"
+#include "endstone/detail.h"
 #include "endstone/inventory/item_factory.h"
 #include "endstone/inventory/item_type.h"
 #include "endstone/inventory/meta/item_meta.h"
 #include "endstone/registry.h"
+#include "endstone/server.h"
 
 namespace endstone {
 
@@ -91,7 +92,7 @@ public:
         ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
         type_ = type;
         if (meta_ != nullptr) {
-            meta_ = Endstone::getServer().getItemFactory().asMetaFor(meta_.get(), type);
+            meta_ = detail::getServer().getItemFactory().asMetaFor(meta_.get(), type);
         }
         return {};
     }
@@ -192,7 +193,7 @@ public:
         }
         return getType() == other.getType() && hasItemMeta() == other.hasItemMeta() &&
                (hasItemMeta()
-                    ? Endstone::getServer().getItemFactory().equals(getItemMeta().get(), other.getItemMeta().get())
+                    ? detail::getServer().getItemFactory().equals(getItemMeta().get(), other.getItemMeta().get())
                     : true);
     }
 
@@ -203,7 +204,7 @@ public:
      */
     [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta() const
     {
-        return meta_ == nullptr ? Endstone::getServer().getItemFactory().getItemMeta(type_) : meta_->clone();
+        return meta_ == nullptr ? detail::getServer().getItemFactory().getItemMeta(type_) : meta_->clone();
     }
 
     /**
@@ -213,7 +214,7 @@ public:
      */
     [[nodiscard]] virtual bool hasItemMeta() const
     {
-        return !Endstone::getServer().getItemFactory().equals(meta_.get(), nullptr);
+        return !detail::getServer().getItemFactory().equals(meta_.get(), nullptr);
     }
 
     /**
@@ -240,7 +241,7 @@ private:
             return true;
         }
 
-        const auto &item_factory = Endstone::getServer().getItemFactory();
+        const auto &item_factory = detail::getServer().getItemFactory();
         if (!item_factory.isApplicable(meta, type)) {
             return false;
         }

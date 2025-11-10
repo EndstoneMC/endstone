@@ -24,7 +24,7 @@
 #include <entt/entt.hpp>
 #include <fmt/format.h>
 
-#include "endstone/detail/cast.h"
+#include "endstone/detail.h"
 
 namespace endstone::runtime {
 #include "bedrock_symbols.generated.h"
@@ -77,7 +77,7 @@ void (*get_ctor())(Class *, Args...)
 }  // namespace endstone::runtime
 
 #define BEDROCK_CALL(fp, ...)                                                                         \
-    endstone::runtime::invoke(                                                                         \
+    endstone::runtime::invoke(                                                                        \
         __FUNCDNAME__,                                                                                \
         endstone::detail::fp_cast(fp, static_cast<char *>(endstone::runtime::get_executable_base()) + \
                                           endstone::runtime::get_symbol(__FUNCDNAME__)),              \

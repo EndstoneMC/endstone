@@ -19,7 +19,7 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/symbol.h"
-#include "endstone/detail/cast.h"
+#include "endstone/detail.h"
 
 namespace endstone::runtime::hook {
 namespace details {

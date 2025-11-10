@@ -14,8 +14,37 @@
 
 #pragma once
 
-namespace endstone::detail {
+#include <stdexcept>
 
+#if defined(_WIN32) || defined(_WIN64)
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+#else
+#include <dlfcn.h>
+#endif
+
+#define ENDSTONE_STRINGIFY(x) #x
+#define ENDSTONE_TOSTRING(x)  ENDSTONE_STRINGIFY(x)
+
+#define ENDSTONE_VERSION_MAJOR 0
+#define ENDSTONE_VERSION_MINOR 11
+#define ENDSTONE_VERSION_PATCH 0
+
+#define NETWORK_PROTOCOL_VERSION 859
+
+#define ENDSTONE_API_VERSION ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)
+
+#ifndef ENDSTONE_VERSION
+#define ENDSTONE_VERSION                      \
+    ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) \
+    "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_PATCH)
+#endif
+
+namespace endstone {
+class Server;
+
+namespace detail {
 /**
  * @brief Cast a function pointer to void pointer
  *
@@ -112,4 +141,40 @@ Return (Class::*fp_cast(Return (Class::*fp)(Arg...) const, void *address))(Arg..
     return *reinterpret_cast<decltype(&fp)>(&temp);
 }
 
-}  // namespace endstone::detail
+/**
+ * Gets the current Server singleton
+ *
+ * @return Server instance being run
+ */
+inline Server &getServer()
+{
+    static Server *server;
+    if (server == nullptr) {
+#ifdef _WIN32
+        auto handle = GetModuleHandle("endstone_runtime.dll");
+#else
+        auto handle = dlopen("libendstone_runtime.so", RTLD_LAZY);
+#endif
+        if (!handle) {
+            throw std::runtime_error("Failed to load endstone runtime.");
+        }
+
+        using GetterFn = Server &(*)();
+#ifdef _WIN32
+        auto fn = reinterpret_cast<GetterFn>(GetProcAddress(handle, "endstone_get_server"));
+#else
+        auto fn = reinterpret_cast<GetterFn>(dlsym(handle, "endstone_get_server"));
+#endif
+        if (!fn) {
+            throw std::runtime_error("Failed to find symbol endstone_get_server");
+        }
+
+        server = &fn();
+        if (!server) {
+            throw std::runtime_error("Failed to get server instance.");
+        }
+    }
+    return *server;
+}
+}  // namespace detail
+}  // namespace endstone
