@@ -32,6 +32,8 @@
 
 #include "endstone/enchantments/enchantment.h"
 
+#define ENDSTONE_ITEM_META_TYPE(type) static constexpr auto MetaType = Type::type;
+
 namespace endstone {
 class ItemMeta {
 public:
@@ -40,186 +42,76 @@ public:
         Map,
     };
 
-    explicit ItemMeta(const ItemMeta *meta)
-    {
-        if (meta == nullptr) {
-            return;
-        }
-        display_name_ = meta->display_name_;
-        lore_ = meta->lore_;
-        enchantments_ = meta->enchantments_;
-        repair_cost_ = meta->repair_cost_;
-        damage_ = meta->damage_;
-        unbreakable_ = meta->unbreakable_;
-    }
+    ENDSTONE_ITEM_META_TYPE(Item)
 
     virtual ~ItemMeta() = default;
 
-    [[nodiscard]] virtual Type getType() const
-    {
-        return Type::Item;
-    }
+    [[nodiscard]] virtual Type getType() const = 0;
 
-    [[nodiscard]] virtual bool isEmpty() const
-    {
-        return !(hasDisplayName() || hasLore() || hasEnchants() || hasRepairCost() || isUnbreakable() || hasDamage());
-    }
+    [[nodiscard]] virtual bool hasDisplayName() const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const
-    {
-        return std::make_unique<ItemMeta>(this);
-    }
+    [[nodiscard]] virtual std::string getDisplayName() const = 0;
 
-    [[nodiscard]] bool hasDisplayName() const
-    {
-        return !display_name_.empty();
-    }
+    virtual void setDisplayName(std::optional<std::string> name) = 0;
 
-    [[nodiscard]] std::string getDisplayName() const
-    {
-        return display_name_;
-    }
+    [[nodiscard]] virtual bool hasLore() const = 0;
 
-    void setDisplayName(std::optional<std::string> name)
-    {
-        display_name_ = std::move(name.value_or(""));
-    }
+    [[nodiscard]] virtual std::vector<std::string> getLore() const = 0;
 
-    [[nodiscard]] bool hasLore() const
-    {
-        return !lore_.empty();
-    }
+    virtual void setLore(std::optional<std::vector<std::string>> lore) = 0;
 
-    [[nodiscard]] std::vector<std::string> getLore() const
-    {
-        return lore_;
-    }
+    [[nodiscard]] virtual bool hasEnchants() const = 0;
 
-    void setLore(std::optional<std::vector<std::string>> lore)
-    {
-        if (!lore.has_value() || lore.value().empty()) {
-            lore_.clear();
-        }
-        else {
-            lore_ = std::move(lore.value());
-        }
-    }
+    [[nodiscard]] virtual bool hasEnchant(const std::string &id) const = 0;
 
-    [[nodiscard]] bool hasDamage() const
-    {
-        return damage_ > 0;
-    }
+    [[nodiscard]] virtual int getEnchantLevel(const std::string &id) const = 0;
 
-    [[nodiscard]] int getDamage() const
-    {
-        return damage_;
-    }
+    [[nodiscard]] virtual std::unordered_map<std::string, int> getEnchants() const = 0;
 
-    void setDamage(int damage)
-    {
-        damage_ = damage;
-    }
+    [[nodiscard]] virtual bool addEnchant(const std::string &id, int level, bool force) = 0;
 
-    [[nodiscard]] bool hasEnchants() const
-    {
-        return !enchantments_.empty();
-    }
+    virtual bool removeEnchant(const std::string &id) = 0;
 
-    [[nodiscard]] bool hasEnchant(const std::string &id) const
-    {
-        return hasEnchants() && enchantments_.contains(id);
-    }
+    virtual void removeEnchants() = 0;
 
-    [[nodiscard]] int getEnchantLevel(const std::string &id) const
-    {
-        if (!hasEnchant(id)) {
-            return 0;
-        }
-        return enchantments_.at(id);
-    }
+    [[nodiscard]] virtual bool hasConflictingEnchant(const std::string &id) const = 0;
 
-    [[nodiscard]] std::unordered_map<std::string, int> getEnchants() const
-    {
-        if (hasEnchants()) {
-            return enchantments_;
-        }
-        return {};
-    }
+    [[nodiscard]] virtual bool isUnbreakable() const = 0;
 
-    bool addEnchant(const std::string &id, int level, bool force = false)
-    {
-        const auto *ench = Enchantment::get(id);
-        if (!ench) {
-            return false;
-        }
-        if (force || level >= ench->getStartLevel() && level <= ench->getMaxLevel()) {
-            const auto old = getEnchantLevel(id);
-            enchantments_[id] = level;
-            return old == 0 || old != level;
-        }
-        return false;
-    }
+    virtual void setUnbreakable(bool unbreakable) = 0;
 
-    bool removeEnchant(const std::string &id)
-    {
-        return enchantments_.erase(id) > 0;
-    }
+    [[nodiscard]] virtual bool hasDamage() const = 0;
 
-    void removeEnchants()
-    {
-        enchantments_.clear();
-    }
+    [[nodiscard]] virtual int getDamage() const = 0;
 
-    [[nodiscard]] bool hasRepairCost() const
-    {
-        return repair_cost_ > 0;
-    }
+    virtual void setDamage(int damage) = 0;
+    [[nodiscard]] virtual bool hasRepairCost() const = 0;
 
-    [[nodiscard]] int getRepairCost() const
-    {
-        return repair_cost_;
-    }
+    [[nodiscard]] virtual int getRepairCost() const = 0;
 
-    void setRepairCost(int cost)
-    {
-        repair_cost_ = cost;
-    }
+    virtual void setRepairCost(int cost) = 0;
 
-    [[nodiscard]] bool isUnbreakable() const
-    {
-        return unbreakable_;
-    }
-
-    void setUnbreakable(bool unbreakable)
-    {
-        unbreakable_ = unbreakable;
-    }
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const = 0;
 
     template <typename T>
+        requires std::is_base_of_v<ItemMeta, T>
     T *as()
     {
-        if (getType() == T::TYPE) {
+        if (this->getType() == T::MetaType) {
             return static_cast<T *>(this);
         }
         return nullptr;
     }
 
     template <typename T>
+        requires std::is_base_of_v<ItemMeta, T>
     const T *as() const
     {
-        if (getType() == T::TYPE) {
+        if (this->getType() == T::MetaType) {
             return static_cast<const T *>(this);
         }
         return nullptr;
     }
-
-private:
-    std::string display_name_;
-    std::vector<std::string> lore_;
-    std::unordered_map<std::string, int> enchantments_;
-    int repair_cost_ = 0;
-    int damage_ = 0;
-    bool unbreakable_ = false;
 };
 }  // namespace endstone
 ```

@@ -888,40 +888,33 @@
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" kind="enum"><name>Type</name></member>
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a7d74f3b92b19da5e606d737d339a9679" kind="enumvalue"><name>Item</name></member>
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a46f3ea056caa3126b91f3f70beea068c" kind="enumvalue"><name>Map</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a41832eb03a4b382da9123c0e387eb533" kind="variable"><name>display_name_</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a1f13d1157dad83d18d873ceaf0a91f4f" kind="variable"><name>lore_</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a921a8f040ce632f93a9307b514c97820" kind="variable"><name>enchantments_</name></member>
-    <member refid="classendstone_1_1ItemMeta_1af1d979eba5d8b623944b28432bb346c8" kind="variable"><name>repair_cost_</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a2ade8bcb7e8addc9d938f64a9b954a0d" kind="variable"><name>damage_</name></member>
-    <member refid="classendstone_1_1ItemMeta_1ae2d3791c74a7645c5aaf815d718b3857" kind="variable"><name>unbreakable_</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a2c6052a2979b6de85b5385c48b213792" kind="function"><name>ItemMeta</name></member>
     <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" kind="function"><name>~ItemMeta</name></member>
-    <member refid="classendstone_1_1ItemMeta_1aa625bf685038240c41c94de7b7d90081" kind="function"><name>getType</name></member>
-    <member refid="classendstone_1_1ItemMeta_1ad6bbacae4d9f4009d6e60ee16a20f41f" kind="function"><name>isEmpty</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a1b76f24868a6af2aa987bfb263e73dc8" kind="function"><name>clone</name></member>
-    <member refid="classendstone_1_1ItemMeta_1aad7b37b721286d4064fc17e11847e29c" kind="function"><name>hasDisplayName</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a38854e1c931291615248a0e9b2f4ce9c" kind="function"><name>getDisplayName</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a7577959d1f52c955fdbecc0a265b76b3" kind="function"><name>setDisplayName</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a08a013f9f0114eaf76bee3f0ec7a745b" kind="function"><name>hasLore</name></member>
-    <member refid="classendstone_1_1ItemMeta_1acc55029aeb9b27b6316300e9da2449f7" kind="function"><name>getLore</name></member>
-    <member refid="classendstone_1_1ItemMeta_1ae3c863fcc59b1a79ce64e14d47536bbb" kind="function"><name>setLore</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a076242f0f0b9820e1b6a39af52559c9d" kind="function"><name>hasDamage</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a7e041aecd46e6051f718aaf2960a1462" kind="function"><name>getDamage</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a56d3e101e45c690d6a8837ff6d25bfe9" kind="function"><name>setDamage</name></member>
-    <member refid="classendstone_1_1ItemMeta_1ac8726650184f818673627b3fb3f9b1d6" kind="function"><name>hasEnchants</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a66110049c0bdf1bf1c7f349f7818bc50" kind="function"><name>hasEnchant</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a092d71ac4aa4ae12b745b189bc88de04" kind="function"><name>getEnchantLevel</name></member>
-    <member refid="classendstone_1_1ItemMeta_1aaa26e672e14a7ccba8b047a256430e70" kind="function"><name>getEnchants</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a5b5d701e9b9a365981b853d5cc1ad259" kind="function"><name>addEnchant</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a4d0ed585437dcc7f7cb04bf22c7a429b" kind="function"><name>removeEnchant</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a644d546e7e47ead63597d57b5713c65a" kind="function"><name>removeEnchants</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a76eed81fb70ea79adf5e046ad3761536" kind="function"><name>hasRepairCost</name></member>
-    <member refid="classendstone_1_1ItemMeta_1ae9f37e31feb7d9c4dcd4cc7dc967dbb7" kind="function"><name>getRepairCost</name></member>
-    <member refid="classendstone_1_1ItemMeta_1ab9c310a4f9c330ae20cb524687c588f0" kind="function"><name>setRepairCost</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a4d4036c00165a6935c8f016f4b4bbdf4" kind="function"><name>isUnbreakable</name></member>
-    <member refid="classendstone_1_1ItemMeta_1ad5bcdce570d891609e16482308ee052d" kind="function"><name>setUnbreakable</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a27248f2767a7d4374849e382d0fa89a2" kind="function"><name>as</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a8fc29a3a020f98c110a362b9a068ca81" kind="function"><name>as</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" kind="function"><name>hasDisplayName</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" kind="function"><name>getDisplayName</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" kind="function"><name>setDisplayName</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" kind="function"><name>hasLore</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a170ca4e3a87a7a590ba03019129793d1" kind="function"><name>getLore</name></member>
+    <member refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" kind="function"><name>setLore</name></member>
+    <member refid="classendstone_1_1ItemMeta_1ac43230ac05adb1a16d1d6d60049dc010" kind="function"><name>hasEnchants</name></member>
+    <member refid="classendstone_1_1ItemMeta_1aea1b811b5bbed2237fe390ef5048e2f2" kind="function"><name>hasEnchant</name></member>
+    <member refid="classendstone_1_1ItemMeta_1ad09d9608afdae3454a7c9c57fd382924" kind="function"><name>getEnchantLevel</name></member>
+    <member refid="classendstone_1_1ItemMeta_1ae56eecf8308719f9a2571088c956981f" kind="function"><name>getEnchants</name></member>
+    <member refid="classendstone_1_1ItemMeta_1afb4069c0b6aa2dfd4780a9b149c8d858" kind="function"><name>addEnchant</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a2349b16d2c1414811c1c8f36dc19452c" kind="function"><name>removeEnchant</name></member>
+    <member refid="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" kind="function"><name>removeEnchants</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a4a9777bfa8c5e7d0da82e1e405444f2b" kind="function"><name>hasConflictingEnchant</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" kind="function"><name>isUnbreakable</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" kind="function"><name>setUnbreakable</name></member>
+    <member refid="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" kind="function"><name>hasDamage</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" kind="function"><name>getDamage</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a65cb98d0b4ad3842775aeea2fb7900cc" kind="function"><name>setDamage</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" kind="function"><name>hasRepairCost</name></member>
+    <member refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" kind="function"><name>getRepairCost</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" kind="function"><name>setRepairCost</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" kind="function"><name>clone</name></member>
+    <member refid="classendstone_1_1ItemMeta_1af179bd7b745731e3d0f1e66828e45149" kind="function"><name>as</name></member>
+    <member refid="classendstone_1_1ItemMeta_1af5d8b132d9add8051466b9b19e3bfa61" kind="function"><name>as</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
     <member refid="classendstone_1_1ItemStack_1a71f2c93560b6bc5092a50098ceccd3fc" kind="friend"><name>core::EndstoneItemStack</name></member>
@@ -1135,19 +1128,13 @@
     <member refid="classendstone_1_1MapInitializeEvent_1ab82614a939a5a9a0ec1bd7ed24007994" kind="function"><name>getMap</name></member>
   </compound>
   <compound refid="classendstone_1_1MapMeta" kind="class"><name>endstone::MapMeta</name>
-    <member refid="classendstone_1_1MapMeta_1a373d55ca5e77c44bc37cf30560c9c9cb" kind="variable"><name>TYPE</name></member>
-    <member refid="classendstone_1_1MapMeta_1a8e3068cd9c3ca94dbc6f7dd93d7c41ca" kind="variable"><name>map_id_</name></member>
-    <member refid="classendstone_1_1MapMeta_1a207b8741d5657065aa126a2425a07b4f" kind="function"><name>MapMeta</name></member>
-    <member refid="classendstone_1_1MapMeta_1a2a8ceb9bf21b37f27f5feef4ba3e3982" kind="function"><name>getType</name></member>
-    <member refid="classendstone_1_1MapMeta_1af27099c2fc92a1b01af85649f902125b" kind="function"><name>isEmpty</name></member>
-    <member refid="classendstone_1_1MapMeta_1af0b98024806dc794e0006453fc468f8c" kind="function"><name>clone</name></member>
-    <member refid="classendstone_1_1MapMeta_1ad532a5306e9bf084b1ca5728bacef48f" kind="function"><name>hasMapId</name></member>
-    <member refid="classendstone_1_1MapMeta_1a82252e7c9c88a536dca7db89c5ac5438" kind="function"><name>getMapId</name></member>
-    <member refid="classendstone_1_1MapMeta_1a50d3686aa1c3720d395428d9ca69ca7d" kind="function"><name>setMapId</name></member>
-    <member refid="classendstone_1_1MapMeta_1a509f115b40074e9de18bdcbf5d565576" kind="function"><name>hasMapView</name></member>
-    <member refid="classendstone_1_1MapMeta_1a4bbee56bb97be6620f4110672b3a9559" kind="function"><name>getMapView</name></member>
-    <member refid="classendstone_1_1MapMeta_1a9cc1efc031fa2f18e805452a332ff739" kind="function"><name>setMapView</name></member>
-    <member refid="classendstone_1_1MapMeta_1aabb184357818fecc383378693a2153dd" kind="function"><name>isMapEmpty</name></member>
+    <member refid="classendstone_1_1MapMeta_1a0c1d1fc1447dcd87b0a57fc76769a209" kind="typedef"><name>MapId</name></member>
+    <member refid="classendstone_1_1MapMeta_1a428e86f59dd0a3ebd353c63f5420834e" kind="function"><name>hasMapId</name></member>
+    <member refid="classendstone_1_1MapMeta_1a7061bbab491883854847dba81ca9b858" kind="function"><name>getMapId</name></member>
+    <member refid="classendstone_1_1MapMeta_1aef8d3210e296dfbfcab867466c16af9f" kind="function"><name>setMapId</name></member>
+    <member refid="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" kind="function"><name>hasMapView</name></member>
+    <member refid="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" kind="function"><name>getMapView</name></member>
+    <member refid="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" kind="function"><name>setMapView</name></member>
   </compound>
   <compound refid="classendstone_1_1MapRenderer" kind="class"><name>endstone::MapRenderer</name>
     <member refid="classendstone_1_1MapRenderer_1a241417d1788753148454dc43c62db045" kind="friend"><name>core::EndstoneMapView</name></member>
@@ -2562,6 +2549,7 @@
   <compound refid="item__type_8h" kind="file"><name>item_type.h</name>
   </compound>
   <compound refid="item__meta_8h" kind="file"><name>item_meta.h</name>
+    <member refid="item__meta_8h_1a7c2989b6ef2b0f3dc96626220c05596d" kind="define"><name>ENDSTONE_ITEM_META_TYPE</name></member>
   </compound>
   <compound refid="map__meta_8h" kind="file"><name>map_meta.h</name>
   </compound>

@@ -90,7 +90,30 @@
 
 
 
+## Macros
 
+| Type | Name |
+| ---: | :--- |
+| define  | [**ENDSTONE\_ITEM\_META\_TYPE**](item__meta_8h.md#define-endstone_item_meta_type) (type) `static constexpr auto MetaType = Type::type;`<br> |
+
+## Macro Definition Documentation
+
+
+
+
+
+### define ENDSTONE\_ITEM\_META\_TYPE 
+
+```C++
+#define ENDSTONE_ITEM_META_TYPE (
+    type
+) `static constexpr auto MetaType = Type::type;`
+```
+
+
+
+
+<hr>
 
 ------------------------------
 The documentation for this class was generated from the following file `include/endstone/inventory/meta/item_meta.h`

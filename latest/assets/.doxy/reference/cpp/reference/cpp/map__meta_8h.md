@@ -10,7 +10,6 @@
 
 
 
-* `#include "endstone/detail.h"`
 * `#include "endstone/inventory/meta/item_meta.h"`
 * `#include "endstone/map/map_view.h"`
 

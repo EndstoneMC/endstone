@@ -2877,7 +2877,7 @@ For latest updates join the chat on
 <h2 id="c">c<a class="headerlink" href="#c" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>captureState</strong> (<a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>)</li>
-<li><strong>clone</strong> (<a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a>)</li>
+<li><strong>clone</strong> (<a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>
 <li><strong>cancel</strong> (<a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a>, <a href="../classendstone_1_1ICancellable/"><strong>endstone::ICancellable</strong></a>, <a href="../classendstone_1_1Task/"><strong>endstone::Task</strong></a>)</li>
 <li><strong>ChunkEvent</strong> (<a href="../classendstone_1_1ChunkEvent/"><strong>endstone::ChunkEvent</strong></a>)</li>
 <li><strong>ChunkLoadEvent</strong> (<a href="../classendstone_1_1ChunkLoadEvent/"><strong>endstone::ChunkLoadEvent</strong></a>)</li>
@@ -2970,7 +2970,7 @@ For latest updates join the chat on
 <li><strong>getRuntimeId</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1BlockData/"><strong>endstone::BlockData</strong></a>)</li>
 <li><strong>getScoreTag</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>getScoreboardTags</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
-<li><strong>getType</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>, <a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1BlockData/"><strong>endstone::BlockData</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>, <a href="../classendstone_1_1DamageSource/"><strong>endstone::DamageSource</strong></a>, <a href="../classendstone_1_1Dimension/"><strong>endstone::Dimension</strong></a>, <a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1MapCursor/"><strong>endstone::MapCursor</strong></a>, <a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a>, <a href="../classendstone_1_1ServerLoadEvent/"><strong>endstone::ServerLoadEvent</strong></a>)</li>
+<li><strong>getType</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>, <a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1BlockData/"><strong>endstone::BlockData</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>, <a href="../classendstone_1_1DamageSource/"><strong>endstone::DamageSource</strong></a>, <a href="../classendstone_1_1Dimension/"><strong>endstone::Dimension</strong></a>, <a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1MapCursor/"><strong>endstone::MapCursor</strong></a>, <a href="../classendstone_1_1ServerLoadEvent/"><strong>endstone::ServerLoadEvent</strong></a>)</li>
 <li><strong>getVelocity</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>getDamage</strong> (<a href="../classendstone_1_1ActorDamageEvent/"><strong>endstone::ActorDamageEvent</strong></a>, <a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>getDamageSource</strong> (<a href="../classendstone_1_1ActorDamageEvent/"><strong>endstone::ActorDamageEvent</strong></a>, <a href="../classendstone_1_1ActorDeathEvent/"><strong>endstone::ActorDeathEvent</strong></a>)</li>
@@ -3245,6 +3245,7 @@ For latest updates join the chat on
 <li><strong>hasPermission</strong> (<a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a>, <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
 <li><strong>HandlerList</strong> (<a href="../classendstone_1_1HandlerList/"><strong>endstone::HandlerList</strong></a>)</li>
 <li><strong>Header</strong> (<a href="../classendstone_1_1Header/"><strong>endstone::Header</strong></a>)</li>
+<li><strong>hasConflictingEnchant</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>hasDamage</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>hasDisplayName</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>hasEnchant</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
@@ -3277,18 +3278,16 @@ For latest updates join the chat on
 <li><strong>isAsynchronous</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
 <li><strong>isIgnoreCancelled</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
 <li><strong>Image</strong> (<a href="../classendstone_1_1Image/"><strong>endstone::Image</strong></a>)</li>
-<li><strong>isEmpty</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>, <a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>, <a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a>)</li>
+<li><strong>isEmpty</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
 <li><strong>IpBanEntry</strong> (<a href="../classendstone_1_1IpBanEntry/"><strong>endstone::IpBanEntry</strong></a>)</li>
 <li><strong>isUnlimitedLifetime</strong> (<a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a>)</li>
 <li><strong>isApplicable</strong> (<a href="../classendstone_1_1ItemFactory/"><strong>endstone::ItemFactory</strong></a>)</li>
-<li><strong>ItemMeta</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>isUnbreakable</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>ItemStack</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>
 <li><strong>isEndstoneItemStack</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>
 <li><strong>isSimilar</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>
 <li><strong>info</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
 <li><strong>isEnabledFor</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
-<li><strong>isMapEmpty</strong> (<a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a>)</li>
 <li><strong>initialize</strong> (<a href="../classendstone_1_1MapRenderer/"><strong>endstone::MapRenderer</strong></a>)</li>
 <li><strong>isContextual</strong> (<a href="../classendstone_1_1MapRenderer/"><strong>endstone::MapRenderer</strong></a>)</li>
 <li><strong>isEndstoneMapRenderer</strong> (<a href="../classendstone_1_1MapRenderer/"><strong>endstone::MapRenderer</strong></a>)</li>
@@ -3338,7 +3337,6 @@ For latest updates join the chat on
 <ul>
 <li><strong>MapCursor</strong> (<a href="../classendstone_1_1MapCursor/"><strong>endstone::MapCursor</strong></a>)</li>
 <li><strong>MapInitializeEvent</strong> (<a href="../classendstone_1_1MapInitializeEvent/"><strong>endstone::MapInitializeEvent</strong></a>)</li>
-<li><strong>MapMeta</strong> (<a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a>)</li>
 <li><strong>MapRenderer</strong> (<a href="../classendstone_1_1MapRenderer/"><strong>endstone::MapRenderer</strong></a>)</li>
 <li><strong>minecraft</strong> (<a href="../classendstone_1_1NamespacedKey/"><strong>endstone::NamespacedKey</strong></a>)</li>
 <li><strong>midpoint</strong> (<a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
