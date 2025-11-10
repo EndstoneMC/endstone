@@ -22,6 +22,8 @@
 
 #include "endstone/enchantments/enchantment.h"
 
+#define ENDSTONE_ITEM_META_TYPE(type) static constexpr auto MetaType = Type::type;
+
 namespace endstone {
 /**
  * @brief Represents the metadata of a generic item.
@@ -32,6 +34,9 @@ public:
         Item,
         Map,
     };
+
+    ENDSTONE_ITEM_META_TYPE(Item)
+
     virtual ~ItemMeta() = default;
 
     /**
@@ -39,10 +44,7 @@ public:
      *
      * @return type of this item meta
      */
-    [[nodiscard]] virtual Type getType() const
-    {
-        return Type::Item;
-    }
+    [[nodiscard]] virtual Type getType() const = 0;
 
     /**
      * @brief Checks for existence of a display name.
@@ -126,7 +128,7 @@ public:
      * @param force this indicates the enchantment should be applied, ignoring the level limit
      * @return true if the item meta changed as a result of this call, false otherwise
      */
-    [[nodiscard]] virtual bool addEnchant(const std::string &id, int level, bool force) const = 0;
+    [[nodiscard]] virtual bool addEnchant(const std::string &id, int level, bool force) = 0;
 
     /**
      * @brief Removes the specified enchantment from this item meta.
@@ -213,36 +215,23 @@ public:
     [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const = 0;
 
     template <typename T>
+        requires std::is_base_of_v<ItemMeta, T>
     T *as()
     {
-        if (getType() == T::MetaType) {
+        if (this->getType() == T::MetaType) {
             return static_cast<T *>(this);
         }
         return nullptr;
     }
 
     template <typename T>
+        requires std::is_base_of_v<ItemMeta, T>
     const T *as() const
     {
-        if (getType() == T::MetaType) {
+        if (this->getType() == T::MetaType) {
             return static_cast<const T *>(this);
         }
         return nullptr;
     }
-
-private:
-    std::string display_name_;
-    std::vector<std::string> lore_;
-    std::unordered_map<std::string, int> enchantments_;
-    int repair_cost_ = 0;
-    int damage_ = 0;
-    bool unbreakable_ = false;
 };
-
-#define ENDSTONE_ITEM_META(type)                 \
-    static constexpr auto MetaType = Type::type; \
-    [[nodiscard]] Type getType() const override  \
-    {                                            \
-        return MetaType;                         \
-    }
 }  // namespace endstone

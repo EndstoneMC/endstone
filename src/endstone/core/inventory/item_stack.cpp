@@ -17,6 +17,7 @@
 #include "bedrock/world/item/item.h"
 #include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/inventory/item_metas.h"
+#include "endstone/core/inventory/meta/item_meta.h"
 
 namespace endstone::core {
 
@@ -186,18 +187,22 @@ bool EndstoneItemStack::setItemMeta(ItemStackBase *item, const ItemMeta *meta)
         return true;
     }
 
-    if (!EndstoneItemFactory::instance().isApplicable(meta, getType(item))) {
+    auto type = getType(item);
+    if (!EndstoneItemFactory::instance().isApplicable(meta, type)) {
         return false;
     }
 
-    const auto item_meta = EndstoneItemFactory::instance().asMetaFor(meta, getType(item));
+    const auto item_meta = EndstoneItemFactory::instance().asMetaFor(meta, type);
     if (!item_meta) {
         return true;
     }
 
-    auto tag = item->hasUserData() ? item->getUserData()->clone() : std::make_unique<CompoundTag>();
-    EndstoneItemMetas::getItemMetaDetails(item_meta->getType()).applyToItem(*item_meta, *tag);
-    item->setUserData(std::move(tag));
+    if (const auto &m = static_cast<EndstoneItemMeta &>(*item_meta); !m.isEmpty()) {
+        auto tag = item->hasUserData() ? item->getUserData()->clone() : std::make_unique<CompoundTag>();
+        m.applyToItem(*tag);
+        item->setUserData(std::move(tag));
+    }
+
     return true;
 }
 

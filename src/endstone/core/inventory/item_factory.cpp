@@ -15,7 +15,7 @@
 #include "endstone/core/inventory/item_factory.h"
 
 #include "endstone/core/inventory/item_metas.h"
-#include "endstone/core/inventory/item_type.h"
+#include "endstone/core/inventory/meta/item_meta.h"
 
 namespace endstone::core {
 EndstoneItemFactory &EndstoneItemFactory::instance()
@@ -34,8 +34,12 @@ bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, const std::string &
     if (meta == nullptr) {
         return false;
     }
-    const auto &details = EndstoneItemMetas::getItemMetaDetails(meta->getType());
-    return details.applicableTo(type);
+    return static_cast<const EndstoneItemMeta &>(*meta).applicableTo(type);
+}
+
+static bool equals0(const EndstoneItemMeta &meta1, const EndstoneItemMeta &meta2)
+{
+    return meta1.equalsCommon(meta2) && meta1.notUncommon(meta2) && meta2.notUncommon(meta1);
 }
 
 bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) const
@@ -43,19 +47,13 @@ bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) c
     if (meta1 == meta2 || (meta1 == nullptr && meta2 == nullptr)) {
         return true;
     }
-
     if (meta1 == nullptr) {
-        return meta2->isEmpty();
+        return static_cast<const EndstoneItemMeta *>(meta2)->isEmpty();
     }
-
     if (meta2 == nullptr) {
-        return meta1->isEmpty();
+        return static_cast<const EndstoneItemMeta *>(meta1)->isEmpty();
     }
-
-    const auto &details1 = EndstoneItemMetas::getItemMetaDetails(meta1->getType());
-    const auto &details2 = EndstoneItemMetas::getItemMetaDetails(meta2->getType());
-    return details1.equalsCommon(*meta1, *meta2) && details1.notUncommon(*meta1, *meta2) &&
-           details2.notUncommon(*meta2, *meta1);
+    return equals0(static_cast<const EndstoneItemMeta &>(*meta1), static_cast<const EndstoneItemMeta &>(*meta2));
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, const std::string &type) const
@@ -65,7 +63,6 @@ std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, c
 
 std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const std::string &type, const ItemMeta *meta) const
 {
-    const auto &details = EndstoneItemMetas::getItemMetaDetails(type);
-    return details.fromItemMeta(type, meta);
+    return EndstoneItemMetas::getItemMetaDetails(type).fromItemMeta(type, meta);
 }
 }  // namespace endstone::core

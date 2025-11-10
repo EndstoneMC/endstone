@@ -14,11 +14,11 @@
 
 #include "endstone/core/inventory/item_metas.h"
 
-#include "endstone/inventory/meta/item_meta.h"
-#include "endstone/inventory/meta/map_meta.h"
+#include "endstone/core/inventory/meta/item_meta.h"
+#include "endstone/core/inventory/meta/map_meta.h"
 
 namespace endstone::core {
-EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::EMPTY = ItemMetaDetails::create<void>();
-EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::ITEM = ItemMetaDetails::create<ItemMeta>();
-EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::MAP = ItemMetaDetails::create<MapMeta>();
+EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::Empty = ItemMetaDetails::create<void>();
+EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::Item = ItemMetaDetails::create<EndstoneItemMeta>();
+EndstoneItemMetas::ItemMetaDetails EndstoneItemMetas::Map = ItemMetaDetails::create<EndstoneMapMeta>();
 }  // namespace endstone::core
