@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "endstone/detail/endstone.h"
+#include "endstone/detail.h"
 #include "endstone/inventory/meta/item_meta.h"
 #include "endstone/map/map_view.h"
 
@@ -98,7 +98,7 @@ public:
      */
     [[nodiscard]] MapView *getMapView() const
     {
-        return Endstone::getServer().getMap(getMapId());
+        return detail::getServer().getMap(getMapId());
     }
 
     /**

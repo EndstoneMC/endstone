@@ -26,6 +26,7 @@
 #include <GLFW/glfw3.h>
 #include <entt/entt.hpp>
 
+#include "endstone/detail.h"
 #include "bedrock/nbt/nbt_io.h"
 #include "bedrock/util/string_byte_output.h"
 #include "endstone/color_format.h"
@@ -35,7 +36,6 @@
 #include "endstone/core/devtools/imgui_json.h"
 #include "endstone/core/devtools/vanilla_data.h"
 #include "endstone/core/logger_factory.h"
-#include "endstone/detail/common.h"
 #include "endstone/runtime/runtime.h"
 #include "endstone/variant.h"
 

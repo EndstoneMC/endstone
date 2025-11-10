@@ -16,7 +16,7 @@
 
 #include <mutex>
 
-#include "endstone/detail/cast.h"
+#include "endstone/detail.h"
 
 namespace endstone::runtime::vhook {
 namespace details {

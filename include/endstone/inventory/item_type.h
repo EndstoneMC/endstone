@@ -14,8 +14,9 @@
 
 #pragma once
 
-#include "endstone/detail/endstone.h"
+#include "endstone/detail.h"
 #include "endstone/registry.h"
+#include "endstone/server.h"
 
 namespace endstone {
 /**
