@@ -102,10 +102,12 @@ struct polymorphic_type_hook<endstone::ItemMeta> {
         case endstone::ItemMeta::Type::Map:
             type = &typeid(endstone::MapMeta);
             return static_cast<const endstone::MapMeta *>(src);
+        case endstone::ItemMeta::Type::Item:
         default:
-            type = &typeid(endstone::ItemMeta);
-            return src;
+            break;
         }
+        type = &typeid(endstone::ItemMeta);
+        return src;
     }
 };
 }  // namespace PYBIND11_NAMESPACE
