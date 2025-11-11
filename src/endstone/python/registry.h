@@ -48,7 +48,7 @@ void registry(py::module &m, Args &&...args)
                 }
                 throw py::key_error(fmt::format("No registry entry found for identifier: {}", id));
             },
-            py::arg(";"), py::return_value_policy::reference)
+            py::arg("id"), py::return_value_policy::reference)
         .def(
             "__iter__",
             [](const Registry<T> &self) {

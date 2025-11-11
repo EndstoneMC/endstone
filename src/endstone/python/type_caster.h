@@ -130,7 +130,7 @@ public:
     bool load(handle src, bool)
     {
         // Ensure the object is a NumPy array of uint8
-        auto array = pybind11::array_t<uint8_t, pybind11::array::c_style | pybind11::array::forcecast>::ensure(src);
+        auto array = pybind11::array_t < uint8_t, pybind11::array::c_style | pybind11::array::forcecast > ::ensure(src);
         if (!array) {
             PyErr_SetString(PyExc_TypeError, "TypeError: expected a numpy.ndarray of uint8");
             return false;
@@ -265,6 +265,38 @@ public:
     }
 
     PYBIND11_TYPE_CASTER(endstone::Color, const_name("tuple[int, ...]"));
+};
+
+template <typename T>
+class type_caster<endstone::Identifier<T>> {
+public:
+    explicit type_caster() : value("") {}
+    // Python -> C++
+    bool load(handle src, bool convert)
+    {
+        make_caster<std::string> str_caster;
+        if (!str_caster.load(src, convert)) {
+            return false;
+        }
+        try {
+            const std::string &s = static_cast<std::string &>(str_caster);
+            value = s;
+            return true;
+        }
+        catch (const std::exception &e) {
+            PyErr_SetString(PyExc_ValueError, e.what());
+            return false;
+        }
+    }
+
+    // C++ -> Python
+    static handle cast(endstone::Identifier<T> src, return_value_policy policy, handle parent)
+    {
+        make_caster<std::string> str_caster;
+        return str_caster.cast(src, policy, parent);
+    }
+
+    PYBIND11_TYPE_CASTER(endstone::Identifier<T>, const_name(PYBIND11_STRING_NAME));
 };
 
 }  // namespace pybind11::detail

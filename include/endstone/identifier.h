@@ -74,6 +74,9 @@ public:
 
     operator std::string() const
     {
+        if (key_.empty()) {
+            return "";
+        }
         return fmt::format("{}:{}", namespace_, key_);
     }
 

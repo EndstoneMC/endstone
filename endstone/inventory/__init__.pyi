@@ -24,7 +24,7 @@ class ItemStack:
     """
     def __init__(self, type: str, amount: int = 1, data: int = 0) -> None: ...
     @property
-    def type(self) -> str:
+    def type(self) -> ItemType:
         """
         Gets or sets the type of this item.
         """
