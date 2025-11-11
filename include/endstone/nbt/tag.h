@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "endstone/nbt/array.h"
 #include "endstone/nbt/value.h"
 
 namespace endstone {
@@ -24,7 +25,9 @@ using IntTag = nbt::ValueTag<std::int32_t>;
 using LongTag = nbt::ValueTag<std::int64_t>;
 using FloatTag = nbt::ValueTag<float>;
 using DoubleTag = nbt::ValueTag<double>;
+using ByteArrayTag = nbt::ArrayTag<std::uint8_t>;
 using StringTag = nbt::ValueTag<std::string>;
+using IntArrayTag = nbt::ArrayTag<std::int32_t>;
 
 namespace nbt {
 class Tag {
