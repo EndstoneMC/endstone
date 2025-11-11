@@ -32,6 +32,8 @@ public:
 
     constexpr Identifier(const char *s) noexcept : Identifier(std::string_view{s}) {}
 
+    constexpr Identifier(const std::string &s) noexcept : Identifier(std::string_view{s}) {}
+
     constexpr Identifier(const std::string_view &identifier) noexcept
     {
         const auto pos = identifier.rfind(':');
