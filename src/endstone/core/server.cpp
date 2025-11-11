@@ -185,8 +185,8 @@ void EndstoneServer::setLevel(::Level &level)
 
 void EndstoneServer::initRegistries()
 {
-    registries_["Enchantment"] = EndstoneRegistry<Enchantment, ::Enchant>::createRegistry();
-    registries_["ItemType"] = EndstoneRegistry<ItemType, ::Item>::createRegistry();
+    registries_["Enchantment"] = EndstoneRegistry<Enchantment, ::Enchant>::create();
+    registries_["ItemType"] = EndstoneRegistry<ItemType, ::Item>::create();
     BlockStateRegistry::get().unregisterBlockStates();
     ::BlockState::forEachState([](const auto &state) {
         BlockStateRegistry::get().registerBlockState(state);

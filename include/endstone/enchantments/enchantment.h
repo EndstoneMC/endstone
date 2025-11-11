@@ -21,11 +21,10 @@
 
 namespace endstone {
 class ItemStack;
-
+using EnchantmentId = Identifier<class Enchantment>;
 class Enchantment {
 public:
     ENDSTONE_REGISTRY_TYPE(Enchantment)
-    using EnchantmentId = Identifier<Enchantment>;
     /**
      * @brief Provides protection against environmental damage
      */

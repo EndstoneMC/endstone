@@ -19,6 +19,8 @@
 
 #include <fmt/format.h>
 
+#include "identifier.h"
+
 namespace endstone {
 class IRegistry {
 public:
@@ -26,63 +28,63 @@ public:
 };
 
 /**
- * @brief Abstract registry interface for keyed objects.
+ * @brief Abstract registry interface for objects with identifiers.
  *
- * Provides lookup by key (nullable or exception-throwing) and iteration.
+ * Provides lookup by identifier (nullable or exception-throwing) and iteration.
  *
- * @tparam T Must satisfy Keyed, i.e. implement getKey().
+ * @tparam T Must implement getId().
  */
 template <typename T>
 class Registry : public IRegistry {
 public:
     /**
-     * @brief Get the object by its key.
+     * @brief Get the object by its identifier.
      *
      * Returns a raw pointer to the object, or nullptr if not found.
      *
-     * @param key Non-null key to look up.
+     * @param id Identifier to look up.
      * @return T* Pointer to the object, or nullptr if it does not exist.
      */
-    virtual T *get(const std::string &key) noexcept = 0;
+    virtual T *get(Identifier<T> id) noexcept = 0;
 
     /**
-     * @brief Get the object by its key.
+     * @brief Get the object by its identifier.
      *
      * Returns a raw pointer to the object, or nullptr if not found.
      *
-     * @param key Non-null key to look up.
+     * @param id Non-null identifier to look up.
      * @return const T* Pointer to the object, or nullptr if it does not exist.
      */
-    virtual const T *get(const std::string &key) const noexcept = 0;
+    virtual const T *get(Identifier<T> id) const noexcept = 0;
 
     /**
-     * @brief Get the object by its key or throw if missing.
+     * @brief Get the object by its identifier or throw if missing.
      *
-     * @param key Key of the object to retrieve.
-     * @return T& Reference to the object with the given key.
-     * @throws std::invalid_argument if no object with the given key exists.
+     * @param id identifier of the object to retrieve.
+     * @return T& Reference to the object with the given identifier.
+     * @throws std::invalid_argument if no object with the given identifier exists.
      */
-    virtual T &getOrThrow(const std::string &key)
+    virtual T &getOrThrow(Identifier<T> id)
     {
-        if (auto *p = get(key)) {
+        if (auto *p = get(id)) {
             return *p;
         }
-        throw std::invalid_argument(fmt::format("No registry entry found for key: {}", key));
+        throw std::invalid_argument(fmt::format("No registry entry found for identifier: {}", id));
     }
 
     /**
-     * @brief Get the object by its key or throw if missing.
+     * @brief Get the object by its identifier or throw if missing.
      *
-     * @param key Key of the object to retrieve.
-     * @return const T& Const reference to the object with the given key.
-     * @throws std::invalid_argument if no object with the given key exists.
+     * @param id identifier of the object to retrieve.
+     * @return const T& Const reference to the object with the given identifier.
+     * @throws std::invalid_argument if no object with the given identifier exists.
      */
-    virtual const T &getOrThrow(const std::string &key) const
+    virtual const T &getOrThrow(Identifier<T> id) const
     {
-        if (auto *p = get(key)) {
+        if (auto *p = get(id)) {
             return *p;
         }
-        throw std::invalid_argument(fmt::format("No registry entry found for key: {}", key));
+        throw std::invalid_argument(fmt::format("No registry entry found for identifier: {}", id));
     }
 
     /**
@@ -99,10 +101,10 @@ public:
 };
 }  // namespace endstone
 
-#define ENDSTONE_REGISTRY_TYPE(type)                                \
-    static constexpr auto RegistryType = #type;                     \
-                                                                    \
-    static const type *get(const std::string &name)                 \
-    {                                                               \
-        return detail::getServer().getRegistry<type>().get(name); \
+#define ENDSTONE_REGISTRY_TYPE(type)                            \
+    static constexpr auto RegistryType = #type;                 \
+                                                                \
+    static const type *get(Identifier<type> id)                 \
+    {                                                           \
+        return detail::getServer().getRegistry<type>().get(id); \
     }

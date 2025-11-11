@@ -23,7 +23,7 @@ namespace endstone::core {
 class EndstoneItemType : public ItemType {
 public:
     explicit EndstoneItemType(const ::Item &item);
-    [[nodiscard]] std::string getId() const override;
+    [[nodiscard]] ItemId getId() const override;
     [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] std::string getTranslationKey(int data) const override;
     [[nodiscard]] int getMaxStackSize() const override;

@@ -17,13 +17,12 @@
 #include "endstone/identifier.h"
 
 namespace endstone {
+using AttributeId = Identifier<class Attribute>;
 /**
  * @brief All attribute types.
  */
 class Attribute {
 public:
-    using AttributeId = Identifier<Attribute>;
-
     /** @brief Health of an entity. */
     static constexpr auto Health = AttributeId::minecraft("health");
 

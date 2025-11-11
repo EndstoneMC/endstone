@@ -18,14 +18,6 @@
 #include "endstone/server.h"
 
 namespace endstone::core {
-
-template <typename T>
-class MinecraftRegistry {
-public:
-    [[nodiscard]] const T *get(const std::string &key) const;
-    [[nodiscard]] std::vector<std::string> keys() const;
-};
-
 template <typename E, typename M>
 class EndstoneRegistry final : public Registry<E> {
 public:
@@ -36,79 +28,81 @@ public:
     {
     }
 
-    E *get(const std::string & key) noexcept override
+    E *get(Identifier<E> id) noexcept override
     {
-        auto it = cache_.find(key);
+        auto it = cache_.find(id);
         if (it != cache_.end()) {
             return it->second.get();
         }
 
-        auto endstone = createEndstone(key, minecraft_registry_.get(key));
+        auto endstone = create(id, getMinecraft(id));
         if (!endstone) {
             return nullptr;
         }
 
         E *raw = endstone.get();
-        cache_.emplace(key, std::move(endstone));
+        cache_.emplace(id, std::move(endstone));
         return raw;
     }
 
-    const E *get(const std::string & key) const noexcept override
+    const E *get(Identifier<E> id) const noexcept override
     {
-        auto it = cache_.find(key);
+        auto it = cache_.find(id);
         if (it != cache_.end()) {
             return it->second.get();
         }
 
-        auto endstone = createEndstone(key, minecraft_registry_.get(key));
+        auto endstone = create(id, getMinecraft(id));
         if (!endstone) {
             return nullptr;
         }
 
         E *raw = endstone.get();
-        cache_.emplace(key, std::move(endstone));
+        cache_.emplace(id, std::move(endstone));
         return raw;
     }
 
-    E &getOrThrow(const std::string & key) override
+    E &getOrThrow(Identifier<E> id) override
     {
-        E *result = get(key);
+        E *result = get(id);
         if (!result) {
-            throw std::out_of_range{fmt::format("EndstoneRegistry: key not found: {}", key)};
+            throw std::out_of_range{fmt::format("EndstoneRegistry: identifier not found: {}", id)};
         }
         return *result;
     }
 
-    const E &getOrThrow(const std::string & key) const override
+    const E &getOrThrow(Identifier<E> id) const override
     {
-        const E *result = get(key);
+        const E *result = get(id);
         if (!result) {
-            throw std::out_of_range{fmt::format("EndstoneRegistry: key not found: {}", key)};
+            throw std::out_of_range{fmt::format("EndstoneRegistry: identifier not found: {}", id)};
         }
         return *result;
     }
 
     void forEach(std::function<bool(const E &)> func) const override
     {
-        for (const auto &key : minecraft_registry_.keys()) {
-            if (!func(getOrThrow(key))) {
+        for (const auto &identifier : identifiers()) {
+            if (!func(getOrThrow(identifier))) {
                 break;
             }
         }
     }
 
-    static std::unique_ptr<Registry<E>> createRegistry();
+    [[nodiscard]] std::vector<Identifier<E>> identifiers() const;
+    static std::unique_ptr<Registry<E>> create();
 
 private:
-    std::unique_ptr<E> createEndstone(const std::string & key, const M *minecraft) const
+    std::unique_ptr<E> create(Identifier<E> id, const M *minecraft) const
     {
         if (minecraft == nullptr) {
             return nullptr;
         }
-        return minecraft_to_endstone_(key, *minecraft);
+        return minecraft_to_endstone_(id, *minecraft);
     }
 
-    MinecraftRegistry<M> minecraft_registry_;
+    [[nodiscard]] const M *getMinecraft(Identifier<E> id) const;
+
     mutable std::unordered_map<std::string, std::unique_ptr<E>> cache_;
     MinecraftToEndstoneFunc minecraft_to_endstone_;
 };

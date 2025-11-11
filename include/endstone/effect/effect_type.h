@@ -19,12 +19,12 @@
 #include "endstone/identifier.h"
 
 namespace endstone {
+using EffectId = Identifier<class EffectType>;
 /**
  * @brief All effect types.
  */
 class EffectType {
 public:
-    using EffectId = Identifier<EffectType>;
     /**
      * Increases movement speed.
      */

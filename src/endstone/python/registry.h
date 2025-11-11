@@ -29,26 +29,26 @@ template <typename T, typename... Args>
 void registry(py::module &m, Args &&...args)
 {
     py::class_<Registry<T>>(m, (std::string(T::RegistryType) + "Registry").c_str(), std::forward<Args>(args)...)
-        .def("get", py::overload_cast<const std::string &>(&Registry<T>::get), py::arg("key"),
-             py::return_value_policy::reference, "Get the object by its key.")
+        .def("get", py::overload_cast<Identifier<T>>(&Registry<T>::get, py::const_), py::arg("id"),
+             py::return_value_policy::reference, "Get the object by its identifier.")
         .def(
             "get_or_throw",
-            [](const Registry<T> &self, const std::string &key) -> const T & {
-                if (auto *p = self.get(key)) {
+            [](const Registry<T> &self, const Identifier<T> id) -> const T & {
+                if (auto *p = self.get(id)) {
                     return *p;
                 }
-                throw py::key_error(fmt::format("No registry entry found for key: {}", key));
+                throw py::key_error(fmt::format("No registry entry found for identifier: {}", id));
             },
-            py::arg("key"), py::return_value_policy::reference, "Get the object by its key or throw if missing.")
+            py::arg("id"), py::return_value_policy::reference, "Get the object by its identifier or throw if missing.")
         .def(
             "__getitem__",
-            [](const Registry<T> &self, const std::string &key) -> const T & {
-                if (auto *p = self.get(key)) {
+            [](const Registry<T> &self, const Identifier<T> id) -> const T & {
+                if (auto *p = self.get(id)) {
                     return *p;
                 }
-                throw py::key_error(fmt::format("No registry entry found for key: {}", key));
+                throw py::key_error(fmt::format("No registry entry found for identifier: {}", id));
             },
-            py::arg("key"), py::return_value_policy::reference)
+            py::arg(";"), py::return_value_policy::reference)
         .def(
             "__iter__",
             [](const Registry<T> &self) {
@@ -61,7 +61,7 @@ void registry(py::module &m, Args &&...args)
             },
             py::return_value_policy::reference_internal)
         .def(
-            "__contains__", [](const Registry<T> &self, const std::string &key) { return self.get(key) != nullptr; },
-            py::arg("key"));
+            "__contains__", [](const Registry<T> &self, const Identifier<T> id) { return self.get(id) != nullptr; },
+            py::arg("id"));
 }
 };  // namespace endstone::python

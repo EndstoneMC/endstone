@@ -22,17 +22,17 @@ namespace endstone {
 /**
  * @brief Represents an item type.
  */
+using ItemId = Identifier<ItemType>;
 class ItemType {
 public:
     ENDSTONE_REGISTRY_TYPE(ItemType)
-
     virtual ~ItemType() = default;
     /**
      * @brief Return the identifier of this item type.
      *
      * @return this item's identifier
      */
-    [[nodiscard]] virtual std::string getId() const = 0;
+    [[nodiscard]] virtual ItemId getId() const = 0;
 
     /**
      * @brief Get the translation key, suitable for use in a translation component.

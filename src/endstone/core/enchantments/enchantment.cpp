@@ -20,7 +20,7 @@
 namespace endstone::core {
 EndstoneEnchantment::EndstoneEnchantment(std::string id, const Enchant &handle) : id_(std::move(id)), handle_(handle) {}
 
-Enchantment::EnchantmentId EndstoneEnchantment::getId() const
+EnchantmentId EndstoneEnchantment::getId() const
 {
     return id_;
 }

@@ -23,39 +23,32 @@
 namespace endstone::core {
 
 template <>
-const Enchant *MinecraftRegistry<Enchant>::get(const std::string &key) const
+std::vector<Identifier<Enchantment>> EndstoneRegistry<Enchantment, Enchant>::identifiers() const
 {
-    return Enchant::getEnchantFromName(NamespacedKey::getKey(key));
-}
-
-template <>
-std::vector<std::string> MinecraftRegistry<Enchant>::keys() const
-{
-    std::vector<std::string> keys;
+    std::vector<Identifier<Enchantment>> keys;
     for (const auto &enchant : Enchant::getEnchants()) {
-        keys.emplace_back(NamespacedKey::minecraft(enchant->getStringId().getString()));
+        keys.emplace_back(EnchantmentId::minecraft(enchant->getStringId().getString()));
     }
     return keys;
 }
 
 template <>
-std::unique_ptr<Registry<Enchantment>> EndstoneRegistry<Enchantment, Enchant>::createRegistry()
+const Enchant *EndstoneRegistry<Enchantment, Enchant>::getMinecraft(Identifier<Enchantment> id) const
+{
+    return Enchant::getEnchantFromName(std::string(id.getKey()));
+}
+
+template <>
+std::unique_ptr<Registry<Enchantment>> EndstoneRegistry<Enchantment, Enchant>::create()
 {
     return std::make_unique<EndstoneRegistry>(
         [](const auto &key, const auto &handle) { return std::make_unique<EndstoneEnchantment>(key, handle); });
 }
 
 template <>
-const ::Item *MinecraftRegistry<::Item>::get(const std::string &key) const
+std::vector<Identifier<ItemType>> EndstoneRegistry<ItemType, ::Item>::identifiers() const
 {
-    const auto item = ItemRegistryManager::getItemRegistry().getItem(key);
-    return item.get();
-}
-
-template <>
-std::vector<std::string> MinecraftRegistry<::Item>::keys() const
-{
-    std::vector<std::string> keys;
+    std::vector<Identifier<ItemType>> keys;
     for (const auto &name : ItemRegistryManager::getItemRegistry().getNameToItemMap() | std::views::keys) {
         keys.emplace_back(name.getString());
     }
@@ -63,7 +56,14 @@ std::vector<std::string> MinecraftRegistry<::Item>::keys() const
 }
 
 template <>
-std::unique_ptr<Registry<ItemType>> EndstoneRegistry<ItemType, ::Item>::createRegistry()
+const ::Item *EndstoneRegistry<ItemType, ::Item>::getMinecraft(Identifier<ItemType> id) const
+{
+    const auto item = ItemRegistryManager::getItemRegistry().getItem(std::string(id));
+    return item.get();
+}
+
+template <>
+std::unique_ptr<Registry<ItemType>> EndstoneRegistry<ItemType, ::Item>::create()
 {
     return std::make_unique<EndstoneRegistry>(
         [](auto _, const auto &handle) { return std::make_unique<EndstoneItemType>(handle); });

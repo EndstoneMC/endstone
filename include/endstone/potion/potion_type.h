@@ -14,7 +14,10 @@
 
 #pragma once
 
+#include "endstone/identifier.h"
+
 namespace endstone {
+using PotionId = Identifier<class PotionType>;
 /**
  * @brief All potion types.
  */
@@ -22,7 +25,6 @@ class PotionType {
     static constexpr std::string_view Minecraft = "minecraft:potion_type";
 
 public:
-    using PotionId = Identifier<PotionType>;
     static constexpr auto Water = PotionId(Minecraft, "water");
     static constexpr auto Mundane = PotionId(Minecraft, "mundane");
     static constexpr auto LongMundane = PotionId(Minecraft, "long_mundane");
