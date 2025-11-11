@@ -30,9 +30,9 @@ public:
      */
     static constexpr std::string_view Minecraft = "minecraft";
 
-    Identifier(const std::string &s) noexcept : Identifier(std::string_view{s}) {}
+    constexpr Identifier(const char *s) noexcept : Identifier(std::string_view{s}) {}
 
-    constexpr Identifier(const std::string_view identifier) noexcept
+    constexpr Identifier(const std::string_view &identifier) noexcept
     {
         const auto pos = identifier.rfind(':');
         if (pos == std::string::npos) {
@@ -45,7 +45,7 @@ public:
         }
     }
 
-    constexpr Identifier(const std::string_view namespace_, const std::string_view key) noexcept
+    constexpr Identifier(const std::string_view &namespace_, const std::string_view &key) noexcept
         : namespace_(namespace_), key_(key)
     {
     }
@@ -66,16 +66,6 @@ public:
     }
 
     constexpr bool operator!=(const Identifier &other) const noexcept
-    {
-        return !(*this == other);
-    }
-
-    constexpr bool operator==(std::string_view other) const noexcept
-    {
-        return *this == Identifier{other};
-    }
-
-    constexpr bool operator!=(std::string_view other) const noexcept
     {
         return !(*this == other);
     }
