@@ -3010,7 +3010,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-addenchant"><strong>addEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; id, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> level, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> force) = 0<br><em>Adds the specified enchantment to this item meta.</em></td>
+<td style="text-align: left;"><a href="#function-addenchant"><strong>addEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> level, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> force) = 0<br><em>Adds the specified enchantment to this item meta.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>T</strong></a> *</td>
@@ -3034,7 +3034,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="#function-getenchantlevel"><strong>getEnchantLevel</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; id) const = 0<br><em>Checks for the level of the specified enchantment.</em></td>
+<td style="text-align: left;"><a href="#function-getenchantlevel"><strong>getEnchantLevel</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id) const = 0<br><em>Checks for the level of the specified enchantment.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unordered_map&lt; std::string, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> &gt;</td>
@@ -3054,7 +3054,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-hasconflictingenchant"><strong>hasConflictingEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; id) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-hasconflictingenchant"><strong>hasConflictingEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id) const = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -3066,7 +3066,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-hasenchant"><strong>hasEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; id) const = 0<br><em>Checks for existence of the specified enchantment.</em></td>
+<td style="text-align: left;"><a href="#function-hasenchant"><strong>hasEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id) const = 0<br><em>Checks for existence of the specified enchantment.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -3086,7 +3086,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-removeenchant"><strong>removeEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; id) = 0<br><em>Removes the specified enchantment from this item meta.</em></td>
+<td style="text-align: left;"><a href="#function-removeenchant"><strong>removeEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id) = 0<br><em>Removes the specified enchantment from this item meta.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -3130,7 +3130,7 @@ For latest updates join the chat on
 <h3 id="function-addenchant">function addEnchant<a class="headerlink" href="#function-addenchant" title="Permanent link">&para;</a></h3>
 <p><em>Adds the specified enchantment to this item meta.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">addEnchant</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">EnchantmentId</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span><span class="p">,</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">force</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
@@ -3184,7 +3184,7 @@ For latest updates join the chat on
 <h3 id="function-getenchantlevel">function getEnchantLevel<a class="headerlink" href="#function-getenchantlevel" title="Permanent link">&para;</a></h3>
 <p><em>Checks for the level of the specified enchantment.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">getEnchantLevel</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">id</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">EnchantmentId</span><span class="w"> </span><span class="n">id</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -3230,7 +3230,7 @@ For latest updates join the chat on
 
 <h3 id="function-hasconflictingenchant">function hasConflictingEnchant<a class="headerlink" href="#function-hasconflictingenchant" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">hasConflictingEnchant</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">id</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">EnchantmentId</span><span class="w"> </span><span class="n">id</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div>
 <p>Checks if the specified enchantment conflicts with any enchantments in this <a href="./"><strong>ItemMeta</strong></a>.</p>
@@ -3261,7 +3261,7 @@ For latest updates join the chat on
 <h3 id="function-hasenchant">function hasEnchant<a class="headerlink" href="#function-hasenchant" title="Permanent link">&para;</a></h3>
 <p><em>Checks for existence of the specified enchantment.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">hasEnchant</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">id</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="n">EnchantmentId</span><span class="w"> </span><span class="n">id</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -3307,7 +3307,7 @@ For latest updates join the chat on
 <h3 id="function-removeenchant">function removeEnchant<a class="headerlink" href="#function-removeenchant" title="Permanent link">&para;</a></h3>
 <p><em>Removes the specified enchantment from this item meta.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">removeEnchant</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">id</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="n">EnchantmentId</span><span class="w"> </span><span class="n">id</span>
 </span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

@@ -413,8 +413,9 @@
 
 * **valid\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **visible\_** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
-* **value\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
+* **value\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md), [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md))
 * **version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
+* **v\_** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 
 
 ## w

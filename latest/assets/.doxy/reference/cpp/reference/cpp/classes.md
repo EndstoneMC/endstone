@@ -24,6 +24,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md)
+([**endstone::nbt**](namespaceendstone_1_1nbt.md))
 * [**Attribute**](classendstone_1_1Attribute.md)
 ([**endstone**](namespaceendstone.md))
 * [**AttributeInstance**](classendstone_1_1AttributeInstance.md)
@@ -160,6 +162,8 @@
 * [**formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md)
 ([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md)
+([**fmt**](namespacefmt.md))
+* [**formatter&lt; endstone::nbt::ValueTag&lt; T &gt; &gt;**](structfmt_1_1formatter_3_01endstone_1_1nbt_1_1ValueTag_3_01T_01_4_01_4.md)
 ([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::Vector &gt;**](structfmt_1_1formatter_3_01endstone_1_1Vector_01_4.md)
 ([**fmt**](namespacefmt.md))
@@ -385,6 +389,8 @@
 
 ## t
 
+* [**Tag**](classendstone_1_1nbt_1_1Tag.md)
+([**endstone::nbt**](namespaceendstone_1_1nbt.md))
 * [**Task**](classendstone_1_1Task.md)
 ([**endstone**](namespaceendstone.md))
 * [**TextInput**](classendstone_1_1TextInput.md)
@@ -405,6 +411,8 @@
 
 ## v
 
+* [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)
+([**endstone::nbt**](namespaceendstone_1_1nbt.md))
 * [**Vector**](classendstone_1_1Vector.md)
 ([**endstone**](namespaceendstone.md))
 

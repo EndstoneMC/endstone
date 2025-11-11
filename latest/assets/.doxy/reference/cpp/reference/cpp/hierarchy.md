@@ -122,6 +122,9 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Translatable**](classendstone_1_1Translatable.md) _Represents an object with a text representation that can be translated by the Minecraft client._ 
 * **class** [**endstone::UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)_
 * **class** [**endstone::Vector**](classendstone_1_1Vector.md) _Represents a 3-dimensional vector._ 
+* **class** [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) 
+* **class** [**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) 
+* **class** [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) 
 * **class** [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) 
 * **class** [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) 
 * **struct** [**endstone::ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._ 
@@ -188,4 +191,5 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **struct** [**fmt::formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::Vector &gt;**](structfmt_1_1formatter_3_01endstone_1_1Vector_01_4.md) 
+    * **struct** [**fmt::formatter&lt; endstone::nbt::ValueTag&lt; T &gt; &gt;**](structfmt_1_1formatter_3_01endstone_1_1nbt_1_1ValueTag_3_01T_01_4_01_4.md) 
 

@@ -160,6 +160,10 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**WeatherEvent**](classendstone_1_1WeatherEvent.md) _Represents a Weather-related event._     
     * **namespace** [**core**](namespaceendstone_1_1core.md) 
     * **namespace** [**detail**](namespaceendstone_1_1detail.md)     
+    * **namespace** [**nbt**](namespaceendstone_1_1nbt.md)     
+        * **class** [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md)     
+        * **class** [**Tag**](classendstone_1_1nbt_1_1Tag.md)     
+        * **class** [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)     
     * **struct** [**overloaded**](structendstone_1_1overloaded.md) _Helper type for visitors._ 
 * **class** [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md)     
 * **class** [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md)     
@@ -180,6 +184,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **struct** [**formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md)     
     * **struct** [**formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md)     
     * **struct** [**formatter&lt; endstone::Vector &gt;**](structfmt_1_1formatter_3_01endstone_1_1Vector_01_4.md)     
+    * **struct** [**formatter&lt; endstone::nbt::ValueTag&lt; T &gt; &gt;**](structfmt_1_1formatter_3_01endstone_1_1nbt_1_1ValueTag_3_01T_01_4_01_4.md)     
 * **namespace** [**std**](namespacestd.md)     
     * **struct** [**hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md)     
 

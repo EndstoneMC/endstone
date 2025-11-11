@@ -49,6 +49,9 @@
 * **addPermission** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **addObjective** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **angle** ([**endstone::Vector**](classendstone_1_1Vector.md))
+* **ArrayTag** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **assign** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **at** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **aliases** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
 
 
@@ -64,7 +67,7 @@
 * **bake** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **broadcast** ([**endstone::Server**](classendstone_1_1Server.md))
 * **broadcastMessage** ([**endstone::Server**](classendstone_1_1Server.md))
-* **begin** ([**endstone::UUID**](classendstone_1_1UUID.md))
+* **begin** ([**endstone::UUID**](classendstone_1_1UUID.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **build** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md), [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **buildCommands** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **buildPermissions** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
@@ -86,7 +89,7 @@
 * **canEnchantItem** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **conflictsWith** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **callEvent** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
-* **clear** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
+* **clear** ([**endstone::Inventory**](classendstone_1_1Inventory.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **contains** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **containsAtLeast** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **critical** ([**endstone::Logger**](classendstone_1_1Logger.md))
@@ -100,6 +103,8 @@
 * **createMap** ([**endstone::Server**](classendstone_1_1Server.md))
 * **createScoreboard** ([**endstone::Server**](classendstone_1_1Server.md))
 * **crossProduct** ([**endstone::Vector**](classendstone_1_1Vector.md))
+* **cbegin** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **cend** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **CommandBuilder** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
 * **children** ([**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **command** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
@@ -121,6 +126,7 @@
 * **dispatchCommand** ([**endstone::Server**](classendstone_1_1Server.md))
 * **deserialize** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **dot** ([**endstone::Vector**](classendstone_1_1Vector.md))
+* **data** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **description** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **default\_** ([**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 
@@ -135,8 +141,9 @@
 * **error** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **enablePlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **enablePlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
-* **empty** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
-* **end** ([**endstone::UUID**](classendstone_1_1UUID.md))
+* **empty** ([**endstone::Translatable**](classendstone_1_1Translatable.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **end** ([**endstone::UUID**](classendstone_1_1UUID.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **erase** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 
 
 ## f
@@ -151,7 +158,7 @@
 * **first** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **firstEmpty** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **forEach** ([**endstone::Registry**](classendstone_1_1Registry.md))
-* **format** ([**fmt::formatter&lt; endstone::Actor &gt;**](structfmt_1_1formatter_3_01endstone_1_1Actor_01_4.md), [**fmt::formatter&lt; endstone::Block &gt;**](structfmt_1_1formatter_3_01endstone_1_1Block_01_4.md), [**fmt::formatter&lt; endstone::BlockData &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4.md), [**fmt::formatter&lt; endstone::BlockState &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4.md), [**fmt::formatter&lt; endstone::BlockStates &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::mapped\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md), [**fmt::formatter&lt; endstone::Chunk &gt;**](structfmt_1_1formatter_3_01endstone_1_1Chunk_01_4.md), [**fmt::formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md), [**fmt::formatter&lt; endstone::Dimension &gt;**](structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4.md), [**fmt::formatter&lt; endstone::Identifier&lt; T &gt; &gt;**](structfmt_1_1formatter_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md), [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md), [**fmt::formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md), [**fmt::formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md), [**fmt::formatter&lt; endstone::Vector &gt;**](structfmt_1_1formatter_3_01endstone_1_1Vector_01_4.md))
+* **format** ([**fmt::formatter&lt; endstone::Actor &gt;**](structfmt_1_1formatter_3_01endstone_1_1Actor_01_4.md), [**fmt::formatter&lt; endstone::Block &gt;**](structfmt_1_1formatter_3_01endstone_1_1Block_01_4.md), [**fmt::formatter&lt; endstone::BlockData &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4.md), [**fmt::formatter&lt; endstone::BlockState &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4.md), [**fmt::formatter&lt; endstone::BlockStates &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::mapped\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md), [**fmt::formatter&lt; endstone::Chunk &gt;**](structfmt_1_1formatter_3_01endstone_1_1Chunk_01_4.md), [**fmt::formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md), [**fmt::formatter&lt; endstone::Dimension &gt;**](structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4.md), [**fmt::formatter&lt; endstone::Identifier&lt; T &gt; &gt;**](structfmt_1_1formatter_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md), [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md), [**fmt::formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md), [**fmt::formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md), [**fmt::formatter&lt; endstone::Vector &gt;**](structfmt_1_1formatter_3_01endstone_1_1Vector_01_4.md), [**fmt::formatter&lt; endstone::nbt::ValueTag&lt; T &gt; &gt;**](structfmt_1_1formatter_3_01endstone_1_1nbt_1_1ValueTag_3_01T_01_4_01_4.md))
 
 
 ## g
@@ -270,6 +277,7 @@
 * **getEnchants** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **getLore** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
 * **getRepairCost** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
+* **getItemType** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **getMaxDurability** ([**endstone::ItemType**](classendstone_1_1ItemType.md))
 * **getLocale** ([**endstone::Language**](classendstone_1_1Language.md), [**endstone::Player**](classendstone_1_1Player.md))
 * **getDimensions** ([**endstone::Level**](classendstone_1_1Level.md))
@@ -513,6 +521,7 @@
 * **isInSphere** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **isNormalized** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **isZero** ([**endstone::Vector**](classendstone_1_1Vector.md))
+* **insert** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 
 
 ## k
@@ -570,6 +579,8 @@
 * **operator-** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **operator/** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **operator/=** ([**endstone::Vector**](classendstone_1_1Vector.md))
+* **operator[]** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **operator const T &** ([**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md))
 * **operator()** ([**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md))
 
 
@@ -611,6 +622,7 @@
 * **PluginEnableEvent** ([**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md))
 * **PluginLoader** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **PluginManager** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **push\_back** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **permissions** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
 * **PermissionBuilder** ([**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **permission** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
@@ -817,7 +829,7 @@
 * **setStep** ([**endstone::Slider**](classendstone_1_1Slider.md))
 * **SocketAddress** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 * **setPlaceholder** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
-* **size** ([**endstone::UUID**](classendstone_1_1UUID.md))
+* **size** ([**endstone::UUID**](classendstone_1_1UUID.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **str** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **swap** ([**endstone::UUID**](classendstone_1_1UUID.md))
 
@@ -855,6 +867,8 @@
 
 * **version** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **Vector** ([**endstone::Vector**](classendstone_1_1Vector.md))
+* **ValueTag** ([**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md))
+* **value** ([**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md))
 
 
 ## w

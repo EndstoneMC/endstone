@@ -29,6 +29,7 @@ _Represents a button with text and an optional icon._
 | ---: | :--- |
 | namespace | [**core**](namespaceendstone_1_1core.md) <br> |
 | namespace | [**detail**](namespaceendstone_1_1detail.md) <br> |
+| namespace | [**nbt**](namespaceendstone_1_1nbt.md) <br> |
 
 
 ## Classes
@@ -201,14 +202,21 @@ _Represents a button with text and an optional icon._
 | enum  | [**BarStyle**](#enum-barstyle)  <br> |
 | enum  | [**BlockFace**](#enum-blockface)  <br> |
 | typedef std::unordered\_map&lt; std::string, std::variant&lt; [**bool**](classendstone_1_1Identifier.md), std::string, [**int**](classendstone_1_1Identifier.md) &gt; &gt; | [**BlockStates**](#typedef-blockstates)  <br> |
+| typedef [**nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md)&lt; std::uint8\_t &gt; | [**ByteArrayTag**](#typedef-bytearraytag)  <br> |
+| typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::uint8\_t &gt; | [**ByteTag**](#typedef-bytetag)  <br> |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
+| typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; [**double**](classendstone_1_1Identifier.md) &gt; | [**DoubleTag**](#typedef-doubletag)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**EffectType**](classendstone_1_1EffectType.md) &gt; | [**EffectId**](#typedef-effectid)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**Enchantment**](classendstone_1_1Enchantment.md) &gt; | [**EnchantmentId**](#typedef-enchantmentid)  <br> |
 | enum  | [**EquipmentSlot**](#enum-equipmentslot)  <br> |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
 | enum  | [**EventResult**](#enum-eventresult)  <br> |
+| typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; [**float**](classendstone_1_1Identifier.md) &gt; | [**FloatTag**](#typedef-floattag)  <br> |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
+| typedef [**nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md)&lt; std::int32\_t &gt; | [**IntArrayTag**](#typedef-intarraytag)  <br> |
+| typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::int32\_t &gt; | [**IntTag**](#typedef-inttag)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**ItemType**](classendstone_1_1ItemType.md) &gt; | [**ItemId**](#typedef-itemid)  <br>_Represents an item type._  |
+| typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::int64\_t &gt; | [**LongTag**](#typedef-longtag)  <br> |
 | typedef std::variant&lt; std::string, [**Translatable**](classendstone_1_1Translatable.md) &gt; | [**Message**](#typedef-message)  <br> |
 | enum  | [**ObjectiveSortOrder**](#enum-objectivesortorder)  <br>_Represents the sort order of objectives on a DisplaySlot._  |
 | enum  | [**PermissionDefault**](#enum-permissiondefault)  <br>_Represents the possible default values for permissions._  |
@@ -220,6 +228,8 @@ _Represents a button with text and an optional icon._
 | typedef nonstd::expected&lt; [**T**](classendstone_1_1Identifier.md), std::string &gt; | [**Result**](#typedef-result)  <br> |
 | typedef std::variant&lt; [**Player**](classendstone_1_1Player.md) \*, [**Actor**](classendstone_1_1Actor.md) \*, std::string &gt; | [**ScoreEntry**](#typedef-scoreentry)  <br> |
 | enum  | [**ServicePriority**](#enum-servicepriority)  <br>_Represents various priorities of a provider._  |
+| typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::int16\_t &gt; | [**ShortTag**](#typedef-shorttag)  <br> |
+| typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::string &gt; | [**StringTag**](#typedef-stringtag)  <br> |
 | typedef std::uint32\_t | [**TaskId**](#typedef-taskid)  <br> |
 
 
@@ -390,6 +400,32 @@ using endstone::BlockStates = typedef std::unordered_map<std::string, std::varia
 
 
 
+### typedef ByteArrayTag 
+
+```C++
+using endstone::ByteArrayTag = typedef nbt::ArrayTag<std::uint8_t>;
+```
+
+
+
+
+<hr>
+
+
+
+### typedef ByteTag 
+
+```C++
+using endstone::ByteTag = typedef nbt::ValueTag<std::uint8_t>;
+```
+
+
+
+
+<hr>
+
+
+
 ### enum DisplaySlot 
 
 _Locations for displaying objectives to the player._ 
@@ -399,6 +435,19 @@ enum endstone::DisplaySlot {
     PlayerList,
     SideBar
 };
+```
+
+
+
+
+<hr>
+
+
+
+### typedef DoubleTag 
+
+```C++
+using endstone::DoubleTag = typedef nbt::ValueTag<double>;
 ```
 
 
@@ -497,6 +546,19 @@ enum endstone::EventResult {
 
 
 
+### typedef FloatTag 
+
+```C++
+using endstone::FloatTag = typedef nbt::ValueTag<float>;
+```
+
+
+
+
+<hr>
+
+
+
 ### enum GameMode 
 
 _Represents the various type of game modes that Players may have._ 
@@ -516,11 +578,50 @@ enum endstone::GameMode {
 
 
 
+### typedef IntArrayTag 
+
+```C++
+using endstone::IntArrayTag = typedef nbt::ArrayTag<std::int32_t>;
+```
+
+
+
+
+<hr>
+
+
+
+### typedef IntTag 
+
+```C++
+using endstone::IntTag = typedef nbt::ValueTag<std::int32_t>;
+```
+
+
+
+
+<hr>
+
+
+
 ### typedef ItemId 
 
 _Represents an item type._ 
 ```C++
 using endstone::ItemId = typedef Identifier<ItemType>;
+```
+
+
+
+
+<hr>
+
+
+
+### typedef LongTag 
+
+```C++
+using endstone::LongTag = typedef nbt::ValueTag<std::int64_t>;
 ```
 
 
@@ -698,6 +799,32 @@ enum endstone::ServicePriority {
     High,
     Highest
 };
+```
+
+
+
+
+<hr>
+
+
+
+### typedef ShortTag 
+
+```C++
+using endstone::ShortTag = typedef nbt::ValueTag<std::int16_t>;
+```
+
+
+
+
+<hr>
+
+
+
+### typedef StringTag 
+
+```C++
+using endstone::StringTag = typedef nbt::ValueTag<std::string>;
 ```
 
 

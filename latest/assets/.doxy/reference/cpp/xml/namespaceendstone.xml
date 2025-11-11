@@ -158,6 +158,7 @@
     <innerclass refid="classendstone_1_1WeatherEvent" prot="public">endstone::WeatherEvent</innerclass>
     <innernamespace refid="namespaceendstone_1_1core">endstone::core</innernamespace>
     <innernamespace refid="namespaceendstone_1_1detail">endstone::detail</innernamespace>
+    <innernamespace refid="namespaceendstone_1_1nbt">endstone::nbt</innernamespace>
     <sectiondef kind="enum">
       <memberdef kind="enum" id="namespaceendstone_1aec620d05bd961a002c83b008e178a785" prot="public" static="no" strong="yes">
         <type></type>
@@ -927,6 +928,132 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/message.h" line="25" column="1" bodyfile="include/endstone/message.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a33e1574322a8aca1ebab711faea30a4a" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::uint8_t &gt;</type>
+        <definition>using endstone::ByteTag = typedef nbt::ValueTag&lt;std::uint8_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>ByteTag</name>
+        <qualifiedname>endstone::ByteTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="22" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1acb2bf69099c0af04c6c085cb2b3241c8" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::int16_t &gt;</type>
+        <definition>using endstone::ShortTag = typedef nbt::ValueTag&lt;std::int16_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>ShortTag</name>
+        <qualifiedname>endstone::ShortTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="23" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1ac3fa2364d5a39f92bac2643e995aef4f" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::int32_t &gt;</type>
+        <definition>using endstone::IntTag = typedef nbt::ValueTag&lt;std::int32_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>IntTag</name>
+        <qualifiedname>endstone::IntTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="24" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a461a40b18afe2f2f141107df466d3f23" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::int64_t &gt;</type>
+        <definition>using endstone::LongTag = typedef nbt::ValueTag&lt;std::int64_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>LongTag</name>
+        <qualifiedname>endstone::LongTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="25" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1aad298a7519bf969fb5c39873086bb6a6" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+        <definition>using endstone::FloatTag = typedef nbt::ValueTag&lt;float&gt;</definition>
+        <argsstring></argsstring>
+        <name>FloatTag</name>
+        <qualifiedname>endstone::FloatTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="26" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1abc87a5b4504a532abbacdec96b88f91d" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">double</ref> &gt;</type>
+        <definition>using endstone::DoubleTag = typedef nbt::ValueTag&lt;double&gt;</definition>
+        <argsstring></argsstring>
+        <name>DoubleTag</name>
+        <qualifiedname>endstone::DoubleTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="27" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a3dfcef30e05aaccd7b8316021b9b43dd" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">nbt::ArrayTag</ref>&lt; std::uint8_t &gt;</type>
+        <definition>using endstone::ByteArrayTag = typedef nbt::ArrayTag&lt;std::uint8_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>ByteArrayTag</name>
+        <qualifiedname>endstone::ByteArrayTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="28" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a9f9696219c347f4a15b1e1495af99f66" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::string &gt;</type>
+        <definition>using endstone::StringTag = typedef nbt::ValueTag&lt;std::string&gt;</definition>
+        <argsstring></argsstring>
+        <name>StringTag</name>
+        <qualifiedname>endstone::StringTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="29" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a32ff16a28255aeb30f8d6905e6100a2b" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">nbt::ArrayTag</ref>&lt; std::int32_t &gt;</type>
+        <definition>using endstone::IntArrayTag = typedef nbt::ArrayTag&lt;std::int32_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>IntArrayTag</name>
+        <qualifiedname>endstone::IntArrayTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="30" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1afe5c52ae8db67deff2df8c157cd1c71e" prot="public" static="no">
         <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;)&gt;</type>

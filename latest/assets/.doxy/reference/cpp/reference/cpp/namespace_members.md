@@ -15,11 +15,14 @@
 * **BarStyle** ([**endstone**](namespaceendstone.md))
 * **BlockFace** ([**endstone**](namespaceendstone.md))
 * **BlockStates** ([**endstone**](namespaceendstone.md))
+* **ByteArrayTag** ([**endstone**](namespaceendstone.md))
+* **ByteTag** ([**endstone**](namespaceendstone.md))
 
 
 ## d
 
 * **DisplaySlot** ([**endstone**](namespaceendstone.md))
+* **DoubleTag** ([**endstone**](namespaceendstone.md))
 
 
 ## e
@@ -33,6 +36,7 @@
 
 ## f
 
+* **FloatTag** ([**endstone**](namespaceendstone.md))
 * **fp\_cast** ([**endstone::detail**](namespaceendstone_1_1detail.md))
 
 
@@ -49,7 +53,14 @@
 
 ## i
 
+* **IntArrayTag** ([**endstone**](namespaceendstone.md))
+* **IntTag** ([**endstone**](namespaceendstone.md))
 * **ItemId** ([**endstone**](namespaceendstone.md))
+
+
+## l
+
+* **LongTag** ([**endstone**](namespaceendstone.md))
 
 
 ## m
@@ -88,6 +99,8 @@
 
 * **ScoreEntry** ([**endstone**](namespaceendstone.md))
 * **ServicePriority** ([**endstone**](namespaceendstone.md))
+* **ShortTag** ([**endstone**](namespaceendstone.md))
+* **StringTag** ([**endstone**](namespaceendstone.md))
 * **swap** ([**endstone**](namespaceendstone.md))
 
 

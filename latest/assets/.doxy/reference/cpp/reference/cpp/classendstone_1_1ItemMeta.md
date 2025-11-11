@@ -58,26 +58,26 @@ Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**addEnchant**](#function-addenchant) ([**const**](classendstone_1_1Identifier.md) std::string & id, [**int**](classendstone_1_1Identifier.md) level, [**bool**](classendstone_1_1Identifier.md) force) = 0<br>_Adds the specified enchantment to this item meta._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**addEnchant**](#function-addenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id, [**int**](classendstone_1_1Identifier.md) level, [**bool**](classendstone_1_1Identifier.md) force) = 0<br>_Adds the specified enchantment to this item meta._  |
 |  [**T**](classendstone_1_1Identifier.md) \* | [**as**](#function-as-12) () <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**as**](#function-as-22) () const<br> |
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](#function-clone) () const = 0<br>_Creates a clone of the current metadata._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getDamage**](#function-getdamage) () const = 0<br>_Gets the damage._  |
 | virtual std::string | [**getDisplayName**](#function-getdisplayname) () const = 0<br>_Gets the display name that is set._  |
-| virtual [**int**](classendstone_1_1Identifier.md) | [**getEnchantLevel**](#function-getenchantlevel) ([**const**](classendstone_1_1Identifier.md) std::string & id) const = 0<br>_Checks for the level of the specified enchantment._  |
+| virtual [**int**](classendstone_1_1Identifier.md) | [**getEnchantLevel**](#function-getenchantlevel) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br>_Checks for the level of the specified enchantment._  |
 | virtual std::unordered\_map&lt; std::string, [**int**](classendstone_1_1Identifier.md) &gt; | [**getEnchants**](#function-getenchants) () const = 0<br>_Returns a copy the enchantments in this_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
 | virtual std::vector&lt; std::string &gt; | [**getLore**](#function-getlore) () const = 0<br>_Gets the lore that is set._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getRepairCost**](#function-getrepaircost) () const = 0<br>_Gets the repair penalty._  |
 | virtual Type | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this item meta._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasConflictingEnchant**](#function-hasconflictingenchant) ([**const**](classendstone_1_1Identifier.md) std::string & id) const = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasConflictingEnchant**](#function-hasconflictingenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br> |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasDamage**](#function-hasdamage) () const = 0<br>_Checks to see if this item has damage._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasDisplayName**](#function-hasdisplayname) () const = 0<br>_Checks for existence of a display name._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasEnchant**](#function-hasenchant) ([**const**](classendstone_1_1Identifier.md) std::string & id) const = 0<br>_Checks for existence of the specified enchantment._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasEnchant**](#function-hasenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br>_Checks for existence of the specified enchantment._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasEnchants**](#function-hasenchants) () const = 0<br>_Checks for the existence of any enchantments._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasLore**](#function-haslore) () const = 0<br>_Checks for existence of lore._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasRepairCost**](#function-hasrepaircost) () const = 0<br>_Checks to see if this has a repair penalty._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isUnbreakable**](#function-isunbreakable) () const = 0<br>_Return if the unbreakable tag is true. An unbreakable item will not lose durability._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**removeEnchant**](#function-removeenchant) ([**const**](classendstone_1_1Identifier.md) std::string & id) = 0<br>_Removes the specified enchantment from this item meta._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**removeEnchant**](#function-removeenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) = 0<br>_Removes the specified enchantment from this item meta._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**removeEnchants**](#function-removeenchants) () = 0<br>_Removes all enchantments from this item meta._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setDamage**](#function-setdamage) ([**int**](classendstone_1_1Identifier.md) damage) = 0<br>_Sets the damage._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setDisplayName**](#function-setdisplayname) (std::optional&lt; std::string &gt; name) = 0<br>_Sets the display name._  |
@@ -141,7 +141,7 @@ enum endstone::ItemMeta::Type {
 _Adds the specified enchantment to this item meta._ 
 ```C++
 virtual bool endstone::ItemMeta::addEnchant (
-    const std::string & id,
+    EnchantmentId id,
     int level,
     bool force
 ) = 0
@@ -282,7 +282,7 @@ the display name that is set
 _Checks for the level of the specified enchantment._ 
 ```C++
 virtual int endstone::ItemMeta::getEnchantLevel (
-    const std::string & id
+    EnchantmentId id
 ) const = 0
 ```
 
@@ -418,7 +418,7 @@ type of this item meta
 
 ```C++
 virtual bool endstone::ItemMeta::hasConflictingEnchant (
-    const std::string & id
+    EnchantmentId id
 ) const = 0
 ```
 
@@ -505,7 +505,7 @@ true if this has a display name
 _Checks for existence of the specified enchantment._ 
 ```C++
 virtual bool endstone::ItemMeta::hasEnchant (
-    const std::string & id
+    EnchantmentId id
 ) const = 0
 ```
 
@@ -639,7 +639,7 @@ true if the unbreakable tag is true
 _Removes the specified enchantment from this item meta._ 
 ```C++
 virtual bool endstone::ItemMeta::removeEnchant (
-    const std::string & id
+    EnchantmentId id
 ) = 0
 ```
 

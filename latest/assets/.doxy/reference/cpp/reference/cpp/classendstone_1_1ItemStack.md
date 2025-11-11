@@ -60,7 +60,7 @@ _Represents a stack of items._
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxStackSize**](#function-getmaxstacksize) () const<br>_Get the maximum stack size for this item._  |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const<br>_Get the translation key, suitable for use in a translation component._  |
-| virtual [**const**](classendstone_1_1Identifier.md) [**ItemType**](classendstone_1_1ItemType.md) & | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
+| virtual [**ItemId**](namespaceendstone.md#typedef-itemid) | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasItemMeta**](#function-hasitemmeta) () const<br>_Checks to see if any metadata has been defined._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isSimilar**](#function-issimilar) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br>_Checks if the two stacks are equal, but does not consider stack size (amount)._  |
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br> |
@@ -282,7 +282,7 @@ the translation key
 
 _Gets the type of this item._ 
 ```C++
-inline virtual const  ItemType & endstone::ItemStack::getType () const
+inline virtual ItemId endstone::ItemStack::getType () const
 ```
 
 

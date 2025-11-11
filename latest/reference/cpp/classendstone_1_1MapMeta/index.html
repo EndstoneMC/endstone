@@ -2811,7 +2811,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-addenchant"><strong>addEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; id, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> level, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> force) = 0<br><em>Adds the specified enchantment to this item meta.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-addenchant"><strong>addEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> level, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> force) = 0<br><em>Adds the specified enchantment to this item meta.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>T</strong></a> *</td>
@@ -2835,7 +2835,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-getenchantlevel"><strong>getEnchantLevel</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; id) const = 0<br><em>Checks for the level of the specified enchantment.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-getenchantlevel"><strong>getEnchantLevel</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id) const = 0<br><em>Checks for the level of the specified enchantment.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unordered_map&lt; std::string, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> &gt;</td>
@@ -2855,7 +2855,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-hasconflictingenchant"><strong>hasConflictingEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; id) const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-hasconflictingenchant"><strong>hasConflictingEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id) const = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -2867,7 +2867,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-hasenchant"><strong>hasEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; id) const = 0<br><em>Checks for existence of the specified enchantment.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-hasenchant"><strong>hasEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id) const = 0<br><em>Checks for existence of the specified enchantment.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -2887,7 +2887,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-removeenchant"><strong>removeEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; id) = 0<br><em>Removes the specified enchantment from this item meta.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-removeenchant"><strong>removeEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id) = 0<br><em>Removes the specified enchantment from this item meta.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>

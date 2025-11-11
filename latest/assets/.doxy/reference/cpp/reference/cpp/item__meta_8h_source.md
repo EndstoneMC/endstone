@@ -62,19 +62,19 @@ public:
 
     [[nodiscard]] virtual bool hasEnchants() const = 0;
 
-    [[nodiscard]] virtual bool hasEnchant(const std::string &id) const = 0;
+    [[nodiscard]] virtual bool hasEnchant(EnchantmentId id) const = 0;
 
-    [[nodiscard]] virtual int getEnchantLevel(const std::string &id) const = 0;
+    [[nodiscard]] virtual int getEnchantLevel(EnchantmentId id) const = 0;
 
     [[nodiscard]] virtual std::unordered_map<std::string, int> getEnchants() const = 0;
 
-    [[nodiscard]] virtual bool addEnchant(const std::string &id, int level, bool force) = 0;
+    [[nodiscard]] virtual bool addEnchant(EnchantmentId id, int level, bool force) = 0;
 
-    virtual bool removeEnchant(const std::string &id) = 0;
+    virtual bool removeEnchant(EnchantmentId id) = 0;
 
     virtual void removeEnchants() = 0;
 
-    [[nodiscard]] virtual bool hasConflictingEnchant(const std::string &id) const = 0;
+    [[nodiscard]] virtual bool hasConflictingEnchant(EnchantmentId id) const = 0;
 
     [[nodiscard]] virtual bool isUnbreakable() const = 0;
 
