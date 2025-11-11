@@ -124,7 +124,7 @@ public:
         return !enchantments_.empty();
     }
 
-    [[nodiscard]] bool hasEnchant(const std::string &id) const override
+    [[nodiscard]] bool hasEnchant(EnchantmentId id) const override
     {
         if (!hasEnchants()) {
             return false;
@@ -132,7 +132,7 @@ public:
         return enchantments_.contains(id);
     }
 
-    [[nodiscard]] int getEnchantLevel(const std::string &id) const override
+    [[nodiscard]] int getEnchantLevel(EnchantmentId id) const override
     {
         if (!hasEnchant(id)) {
             return 0;
@@ -148,7 +148,7 @@ public:
         return {};
     }
 
-    bool addEnchant(const std::string &id, int level, bool force) override
+    bool addEnchant(EnchantmentId id, int level, bool force) override
     {
         const auto *ench = Enchantment::get(id);
         if (!ench) {
@@ -162,7 +162,7 @@ public:
         return false;
     }
 
-    bool removeEnchant(const std::string &id) override
+    bool removeEnchant(EnchantmentId id) override
     {
         return enchantments_.erase(id) > 0;
     }
@@ -172,7 +172,7 @@ public:
         enchantments_.clear();
     }
 
-    [[nodiscard]] bool hasConflictingEnchant(const std::string &id) const override
+    [[nodiscard]] bool hasConflictingEnchant(EnchantmentId id) const override
     {
         const auto *ench = Enchantment::get(id);
         if (!ench || enchantments_.empty()) {
@@ -312,7 +312,7 @@ private:
             auto lvl = enchant_tag.getShort("lvl") & 0xffff;
             const auto *enchant = Enchant::getEnchant(static_cast<Enchant::Type>(id));
             if (enchant) {
-                enchantments[enchant->getStringId().getString()] = lvl;
+                enchantments[EnchantmentId(enchant->getStringId().getString())] = lvl;
             }
         });
         return enchantments;
@@ -326,9 +326,9 @@ private:
         }
 
         auto list = std::make_unique<ListTag>();
-        for (const auto &[key, lvl] : enchantments) {
+        for (const auto &[id, lvl] : enchantments) {
             auto subtag = std::make_unique<CompoundTag>();
-            const auto *enchant = Enchant::getEnchantFromName(key);
+            const auto *enchant = Enchant::getEnchantFromName(std::string(id));
             if (!enchant) {
                 continue;
             }

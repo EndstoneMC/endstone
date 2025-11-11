@@ -101,7 +101,7 @@ public:
      * @param id enchantment id to check
      * @return true if this enchantment exists for this meta
      */
-    [[nodiscard]] virtual bool hasEnchant(const std::string &id) const = 0;
+    [[nodiscard]] virtual bool hasEnchant(EnchantmentId id) const = 0;
 
     /**
      * @brief Checks for the level of the specified enchantment.
@@ -109,7 +109,7 @@ public:
      * @param id enchantment id to check
      * @return The level that the specified enchantment has, or 0 if none
      */
-    [[nodiscard]] virtual int getEnchantLevel(const std::string &id) const = 0;
+    [[nodiscard]] virtual int getEnchantLevel(EnchantmentId id) const = 0;
 
     /**
      * @brief Returns a copy the enchantments in this ItemMeta.
@@ -128,7 +128,7 @@ public:
      * @param force this indicates the enchantment should be applied, ignoring the level limit
      * @return true if the item meta changed as a result of this call, false otherwise
      */
-    [[nodiscard]] virtual bool addEnchant(const std::string &id, int level, bool force) = 0;
+    [[nodiscard]] virtual bool addEnchant(EnchantmentId id, int level, bool force) = 0;
 
     /**
      * @brief Removes the specified enchantment from this item meta.
@@ -137,7 +137,7 @@ public:
      * @return true if the item meta changed as a result of this call, false
      *     otherwise
      */
-    virtual bool removeEnchant(const std::string &id) = 0;
+    virtual bool removeEnchant(EnchantmentId id) = 0;
 
     /**
      * @brief Removes all enchantments from this item meta.
@@ -151,7 +151,7 @@ public:
      * @param id Enchantment id to test
      * @return true if the enchantment conflicts, false otherwise
      */
-    [[nodiscard]] virtual bool hasConflictingEnchant(const std::string &id) const = 0;
+    [[nodiscard]] virtual bool hasConflictingEnchant(EnchantmentId id) const = 0;
 
     /**
      * @brief Return if the unbreakable tag is true. An unbreakable item will not lose durability.
