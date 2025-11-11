@@ -30,6 +30,8 @@ public:
      */
     static constexpr std::string_view Minecraft = "minecraft";
 
+    Identifier(const std::string &s) noexcept : Identifier(std::string_view{s}) {}
+
     constexpr Identifier(const std::string_view identifier) noexcept
     {
         const auto pos = identifier.rfind(':');
@@ -83,3 +85,12 @@ private:
     std::string_view key_;
 };
 }  // namespace endstone
+
+template <typename T>
+struct fmt::formatter<endstone::Identifier<T>> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::Identifier<T> &id, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "{}:{}", id.getNamespace(), id.getKey());
+    }
+};
