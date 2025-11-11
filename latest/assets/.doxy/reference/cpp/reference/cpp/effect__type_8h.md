@@ -11,7 +11,7 @@
 
 
 * `#include <string>`
-* `#include "endstone/namespaced_key.h"`
+* `#include "endstone/identifier.h"`
 
 
 

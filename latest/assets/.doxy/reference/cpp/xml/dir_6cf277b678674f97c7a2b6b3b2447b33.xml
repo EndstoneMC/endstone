@@ -26,9 +26,9 @@
     <innerfile refid="color__format_8h">color_format.h</innerfile>
     <innerfile refid="detail_8h">detail.h</innerfile>
     <innerfile refid="game__mode_8h">game_mode.h</innerfile>
+    <innerfile refid="identifier_8h">identifier.h</innerfile>
     <innerfile refid="logger_8h">logger.h</innerfile>
     <innerfile refid="message_8h">message.h</innerfile>
-    <innerfile refid="namespaced__key_8h">namespaced_key.h</innerfile>
     <innerfile refid="offline__player_8h">offline_player.h</innerfile>
     <innerfile refid="player_8h">player.h</innerfile>
     <innerfile refid="registry_8h">registry.h</innerfile>

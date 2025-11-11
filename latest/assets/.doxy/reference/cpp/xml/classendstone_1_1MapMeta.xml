@@ -22,7 +22,7 @@
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1MapMeta_1a428e86f59dd0a3ebd353c63f5420834e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::MapMeta::hasMapId</definition>
         <argsstring>() const =0</argsstring>
         <name>hasMapId</name>
@@ -58,7 +58,7 @@
         <location file="include/endstone/inventory/meta/map_meta.h" line="41" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapMeta_1aef8d3210e296dfbfcab867466c16af9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::MapMeta::setMapId</definition>
         <argsstring>(MapId id)=0</argsstring>
         <name>setMapId</name>
@@ -87,7 +87,7 @@
         <location file="include/endstone/inventory/meta/map_meta.h" line="48" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::MapMeta::hasMapView</definition>
         <argsstring>() const =0</argsstring>
         <name>hasMapView</name>
@@ -125,13 +125,13 @@
         <location file="include/endstone/inventory/meta/map_meta.h" line="64" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::MapMeta::setMapView</definition>
         <argsstring>(const MapView *map)=0</argsstring>
         <name>setMapView</name>
         <qualifiedname>endstone::MapMeta::setMapView</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> *</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> *</type>
           <declname>map</declname>
         </param>
         <briefdescription>

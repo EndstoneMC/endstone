@@ -106,7 +106,7 @@
         <location file="include/endstone/attribute/attribute_modifier.h" line="115" column="10" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1AttributeModifier_1af426b1b9feca243b95fbbfd48e2b0c38" prot="private" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>float endstone::AttributeModifier::amount_</definition>
         <argsstring></argsstring>
         <name>amount_</name>
@@ -160,7 +160,7 @@
           <declname>name</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
           <declname>amount</declname>
         </param>
         <param>
@@ -195,7 +195,7 @@
           <declname>uuid</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
           <declname>amount</declname>
         </param>
         <param>
@@ -252,7 +252,7 @@
         <location file="include/endstone/attribute/attribute_modifier.h" line="78" column="18" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="78" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeModifier_1a64fd4cca69b16a3a740e0ee4aec93bb3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>float endstone::AttributeModifier::getAmount</definition>
         <argsstring>() const</argsstring>
         <name>getAmount</name>

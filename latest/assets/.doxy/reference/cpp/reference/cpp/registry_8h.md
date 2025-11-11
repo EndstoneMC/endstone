@@ -13,6 +13,7 @@
 * `#include <functional>`
 * `#include <stdexcept>`
 * `#include <fmt/format.h>`
+* `#include "identifier.h"`
 
 
 
@@ -38,7 +39,7 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**IRegistry**](classendstone_1_1IRegistry.md) <br> |
-| class | [**Registry**](classendstone_1_1Registry.md) &lt;typename T&gt;<br>_Abstract registry interface for keyed objects._  |
+| class | [**Registry**](classendstone_1_1Registry.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Abstract registry interface for objects with identifiers._  |
 
 
 

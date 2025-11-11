@@ -38,53 +38,53 @@ _All potion types._
 
 | Type | Name |
 | ---: | :--- |
-|  const std::string | [**Awkward**](#variable-awkward)   = `getPotionType("awkward")`<br> |
-|  const std::string | [**FireResistance**](#variable-fireresistance)   = `getPotionType("fire\_resistance")`<br> |
-|  const std::string | [**Harming**](#variable-harming)   = `getPotionType("harming")`<br> |
-|  const std::string | [**Healing**](#variable-healing)   = `getPotionType("healing")`<br> |
-|  const std::string | [**Infested**](#variable-infested)   = `getPotionType("infested")`<br> |
-|  const std::string | [**Invisibility**](#variable-invisibility)   = `getPotionType("invisibility")`<br> |
-|  const std::string | [**Leaping**](#variable-leaping)   = `getPotionType("leaping")`<br> |
-|  const std::string | [**LongFireResistance**](#variable-longfireresistance)   = `getPotionType("long\_fire\_resistance")`<br> |
-|  const std::string | [**LongInvisibility**](#variable-longinvisibility)   = `getPotionType("long\_invisibility")`<br> |
-|  const std::string | [**LongLeaping**](#variable-longleaping)   = `getPotionType("long\_leaping")`<br> |
-|  const std::string | [**LongMundane**](#variable-longmundane)   = `getPotionType("long\_mundane")`<br> |
-|  const std::string | [**LongNightvision**](#variable-longnightvision)   = `getPotionType("long\_nightvision")`<br> |
-|  const std::string | [**LongPoison**](#variable-longpoison)   = `getPotionType("long\_poison")`<br> |
-|  const std::string | [**LongRegeneration**](#variable-longregeneration)   = `getPotionType("long\_regeneration")`<br> |
-|  const std::string | [**LongSlowFalling**](#variable-longslowfalling)   = `getPotionType("long\_slow\_falling")`<br> |
-|  const std::string | [**LongSlowness**](#variable-longslowness)   = `getPotionType("long\_slowness")`<br> |
-|  const std::string | [**LongStrength**](#variable-longstrength)   = `getPotionType("long\_strength")`<br> |
-|  const std::string | [**LongSwiftness**](#variable-longswiftness)   = `getPotionType("long\_swiftness")`<br> |
-|  const std::string | [**LongTurtleMaster**](#variable-longturtlemaster)   = `getPotionType("long\_turtle\_master")`<br> |
-|  const std::string | [**LongWaterBreathing**](#variable-longwaterbreathing)   = `getPotionType("long\_water\_breathing")`<br> |
-|  const std::string | [**LongWeakness**](#variable-longweakness)   = `getPotionType("long\_weakness")`<br> |
-|  const std::string | [**Mundane**](#variable-mundane)   = `getPotionType("mundane")`<br> |
-|  const std::string | [**Nightvision**](#variable-nightvision)   = `getPotionType("nightvision")`<br> |
-|  const std::string | [**Oozing**](#variable-oozing)   = `getPotionType("oozing")`<br> |
-|  const std::string | [**Poison**](#variable-poison)   = `getPotionType("poison")`<br> |
-|  const std::string | [**Regeneration**](#variable-regeneration)   = `getPotionType("regeneration")`<br> |
-|  const std::string | [**SlowFalling**](#variable-slowfalling)   = `getPotionType("slow\_falling")`<br> |
-|  const std::string | [**Slowness**](#variable-slowness)   = `getPotionType("slowness")`<br> |
-|  const std::string | [**Strength**](#variable-strength)   = `getPotionType("strength")`<br> |
-|  const std::string | [**StrongHarming**](#variable-strongharming)   = `getPotionType("strong\_harming")`<br> |
-|  const std::string | [**StrongHealing**](#variable-stronghealing)   = `getPotionType("strong\_healing")`<br> |
-|  const std::string | [**StrongLeaping**](#variable-strongleaping)   = `getPotionType("strong\_leaping")`<br> |
-|  const std::string | [**StrongPoison**](#variable-strongpoison)   = `getPotionType("strong\_poison")`<br> |
-|  const std::string | [**StrongRegeneration**](#variable-strongregeneration)   = `getPotionType("strong\_regeneration")`<br> |
-|  const std::string | [**StrongSlowness**](#variable-strongslowness)   = `getPotionType("strong\_slowness")`<br> |
-|  const std::string | [**StrongStrength**](#variable-strongstrength)   = `getPotionType("strong\_strength")`<br> |
-|  const std::string | [**StrongSwiftness**](#variable-strongswiftness)   = `getPotionType("strong\_swiftness")`<br> |
-|  const std::string | [**StrongTurtleMaster**](#variable-strongturtlemaster)   = `getPotionType("strong\_turtle\_master")`<br> |
-|  const std::string | [**Swiftness**](#variable-swiftness)   = `getPotionType("swiftness")`<br> |
-|  const std::string | [**Thick**](#variable-thick)   = `getPotionType("thick")`<br> |
-|  const std::string | [**TurtleMaster**](#variable-turtlemaster)   = `getPotionType("turtle\_master")`<br> |
-|  const std::string | [**Water**](#variable-water)   = `getPotionType("water")`<br> |
-|  const std::string | [**WaterBreathing**](#variable-waterbreathing)   = `getPotionType("water\_breathing")`<br> |
-|  const std::string | [**Weakness**](#variable-weakness)   = `getPotionType("weakness")`<br> |
-|  const std::string | [**Weaving**](#variable-weaving)   = `getPotionType("weaving")`<br> |
-|  const std::string | [**WindCharged**](#variable-windcharged)   = `getPotionType("wind\_charged")`<br> |
-|  const std::string | [**Wither**](#variable-wither)   = `getPotionType("wither")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Awkward**](#variable-awkward)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "awkward")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FireResistance**](#variable-fireresistance)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "fire\_resistance")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Harming**](#variable-harming)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "harming")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Healing**](#variable-healing)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "healing")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Infested**](#variable-infested)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "infested")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Invisibility**](#variable-invisibility)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "invisibility")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Leaping**](#variable-leaping)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "leaping")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongFireResistance**](#variable-longfireresistance)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_fire\_resistance")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongInvisibility**](#variable-longinvisibility)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_invisibility")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongLeaping**](#variable-longleaping)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_leaping")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongMundane**](#variable-longmundane)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_mundane")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongNightvision**](#variable-longnightvision)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_nightvision")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongPoison**](#variable-longpoison)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_poison")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongRegeneration**](#variable-longregeneration)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_regeneration")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongSlowFalling**](#variable-longslowfalling)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_slow\_falling")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongSlowness**](#variable-longslowness)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_slowness")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongStrength**](#variable-longstrength)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_strength")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongSwiftness**](#variable-longswiftness)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_swiftness")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongTurtleMaster**](#variable-longturtlemaster)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_turtle\_master")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongWaterBreathing**](#variable-longwaterbreathing)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_water\_breathing")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LongWeakness**](#variable-longweakness)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "long\_weakness")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Mundane**](#variable-mundane)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "mundane")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Nightvision**](#variable-nightvision)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "nightvision")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Oozing**](#variable-oozing)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "oozing")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Poison**](#variable-poison)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "poison")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Regeneration**](#variable-regeneration)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "regeneration")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SlowFalling**](#variable-slowfalling)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "slow\_falling")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Slowness**](#variable-slowness)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "slowness")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Strength**](#variable-strength)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "strength")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**StrongHarming**](#variable-strongharming)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "strong\_harming")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**StrongHealing**](#variable-stronghealing)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "strong\_healing")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**StrongLeaping**](#variable-strongleaping)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "strong\_leaping")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**StrongPoison**](#variable-strongpoison)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "strong\_poison")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**StrongRegeneration**](#variable-strongregeneration)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "strong\_regeneration")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**StrongSlowness**](#variable-strongslowness)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "strong\_slowness")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**StrongStrength**](#variable-strongstrength)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "strong\_strength")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**StrongSwiftness**](#variable-strongswiftness)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "strong\_swiftness")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**StrongTurtleMaster**](#variable-strongturtlemaster)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "strong\_turtle\_master")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Swiftness**](#variable-swiftness)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "swiftness")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Thick**](#variable-thick)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "thick")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TurtleMaster**](#variable-turtlemaster)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "turtle\_master")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Water**](#variable-water)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "water")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WaterBreathing**](#variable-waterbreathing)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "water\_breathing")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Weakness**](#variable-weakness)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "weakness")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Weaving**](#variable-weaving)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "weaving")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WindCharged**](#variable-windcharged)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "wind\_charged")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Wither**](#variable-wither)   = `[**PotionId**](classendstone_1_1Identifier.md)(Minecraft, "wither")`<br> |
 
 
 
@@ -135,7 +135,7 @@ _All potion types._
 ### variable Awkward 
 
 ```C++
-const std::string endstone::PotionType::Awkward;
+constexpr auto endstone::PotionType::Awkward;
 ```
 
 
@@ -148,7 +148,7 @@ const std::string endstone::PotionType::Awkward;
 ### variable FireResistance 
 
 ```C++
-const std::string endstone::PotionType::FireResistance;
+constexpr auto endstone::PotionType::FireResistance;
 ```
 
 
@@ -161,7 +161,7 @@ const std::string endstone::PotionType::FireResistance;
 ### variable Harming 
 
 ```C++
-const std::string endstone::PotionType::Harming;
+constexpr auto endstone::PotionType::Harming;
 ```
 
 
@@ -174,7 +174,7 @@ const std::string endstone::PotionType::Harming;
 ### variable Healing 
 
 ```C++
-const std::string endstone::PotionType::Healing;
+constexpr auto endstone::PotionType::Healing;
 ```
 
 
@@ -187,7 +187,7 @@ const std::string endstone::PotionType::Healing;
 ### variable Infested 
 
 ```C++
-const std::string endstone::PotionType::Infested;
+constexpr auto endstone::PotionType::Infested;
 ```
 
 
@@ -200,7 +200,7 @@ const std::string endstone::PotionType::Infested;
 ### variable Invisibility 
 
 ```C++
-const std::string endstone::PotionType::Invisibility;
+constexpr auto endstone::PotionType::Invisibility;
 ```
 
 
@@ -213,7 +213,7 @@ const std::string endstone::PotionType::Invisibility;
 ### variable Leaping 
 
 ```C++
-const std::string endstone::PotionType::Leaping;
+constexpr auto endstone::PotionType::Leaping;
 ```
 
 
@@ -226,7 +226,7 @@ const std::string endstone::PotionType::Leaping;
 ### variable LongFireResistance 
 
 ```C++
-const std::string endstone::PotionType::LongFireResistance;
+constexpr auto endstone::PotionType::LongFireResistance;
 ```
 
 
@@ -239,7 +239,7 @@ const std::string endstone::PotionType::LongFireResistance;
 ### variable LongInvisibility 
 
 ```C++
-const std::string endstone::PotionType::LongInvisibility;
+constexpr auto endstone::PotionType::LongInvisibility;
 ```
 
 
@@ -252,7 +252,7 @@ const std::string endstone::PotionType::LongInvisibility;
 ### variable LongLeaping 
 
 ```C++
-const std::string endstone::PotionType::LongLeaping;
+constexpr auto endstone::PotionType::LongLeaping;
 ```
 
 
@@ -265,7 +265,7 @@ const std::string endstone::PotionType::LongLeaping;
 ### variable LongMundane 
 
 ```C++
-const std::string endstone::PotionType::LongMundane;
+constexpr auto endstone::PotionType::LongMundane;
 ```
 
 
@@ -278,7 +278,7 @@ const std::string endstone::PotionType::LongMundane;
 ### variable LongNightvision 
 
 ```C++
-const std::string endstone::PotionType::LongNightvision;
+constexpr auto endstone::PotionType::LongNightvision;
 ```
 
 
@@ -291,7 +291,7 @@ const std::string endstone::PotionType::LongNightvision;
 ### variable LongPoison 
 
 ```C++
-const std::string endstone::PotionType::LongPoison;
+constexpr auto endstone::PotionType::LongPoison;
 ```
 
 
@@ -304,7 +304,7 @@ const std::string endstone::PotionType::LongPoison;
 ### variable LongRegeneration 
 
 ```C++
-const std::string endstone::PotionType::LongRegeneration;
+constexpr auto endstone::PotionType::LongRegeneration;
 ```
 
 
@@ -317,7 +317,7 @@ const std::string endstone::PotionType::LongRegeneration;
 ### variable LongSlowFalling 
 
 ```C++
-const std::string endstone::PotionType::LongSlowFalling;
+constexpr auto endstone::PotionType::LongSlowFalling;
 ```
 
 
@@ -330,7 +330,7 @@ const std::string endstone::PotionType::LongSlowFalling;
 ### variable LongSlowness 
 
 ```C++
-const std::string endstone::PotionType::LongSlowness;
+constexpr auto endstone::PotionType::LongSlowness;
 ```
 
 
@@ -343,7 +343,7 @@ const std::string endstone::PotionType::LongSlowness;
 ### variable LongStrength 
 
 ```C++
-const std::string endstone::PotionType::LongStrength;
+constexpr auto endstone::PotionType::LongStrength;
 ```
 
 
@@ -356,7 +356,7 @@ const std::string endstone::PotionType::LongStrength;
 ### variable LongSwiftness 
 
 ```C++
-const std::string endstone::PotionType::LongSwiftness;
+constexpr auto endstone::PotionType::LongSwiftness;
 ```
 
 
@@ -369,7 +369,7 @@ const std::string endstone::PotionType::LongSwiftness;
 ### variable LongTurtleMaster 
 
 ```C++
-const std::string endstone::PotionType::LongTurtleMaster;
+constexpr auto endstone::PotionType::LongTurtleMaster;
 ```
 
 
@@ -382,7 +382,7 @@ const std::string endstone::PotionType::LongTurtleMaster;
 ### variable LongWaterBreathing 
 
 ```C++
-const std::string endstone::PotionType::LongWaterBreathing;
+constexpr auto endstone::PotionType::LongWaterBreathing;
 ```
 
 
@@ -395,7 +395,7 @@ const std::string endstone::PotionType::LongWaterBreathing;
 ### variable LongWeakness 
 
 ```C++
-const std::string endstone::PotionType::LongWeakness;
+constexpr auto endstone::PotionType::LongWeakness;
 ```
 
 
@@ -408,7 +408,7 @@ const std::string endstone::PotionType::LongWeakness;
 ### variable Mundane 
 
 ```C++
-const std::string endstone::PotionType::Mundane;
+constexpr auto endstone::PotionType::Mundane;
 ```
 
 
@@ -421,7 +421,7 @@ const std::string endstone::PotionType::Mundane;
 ### variable Nightvision 
 
 ```C++
-const std::string endstone::PotionType::Nightvision;
+constexpr auto endstone::PotionType::Nightvision;
 ```
 
 
@@ -434,7 +434,7 @@ const std::string endstone::PotionType::Nightvision;
 ### variable Oozing 
 
 ```C++
-const std::string endstone::PotionType::Oozing;
+constexpr auto endstone::PotionType::Oozing;
 ```
 
 
@@ -447,7 +447,7 @@ const std::string endstone::PotionType::Oozing;
 ### variable Poison 
 
 ```C++
-const std::string endstone::PotionType::Poison;
+constexpr auto endstone::PotionType::Poison;
 ```
 
 
@@ -460,7 +460,7 @@ const std::string endstone::PotionType::Poison;
 ### variable Regeneration 
 
 ```C++
-const std::string endstone::PotionType::Regeneration;
+constexpr auto endstone::PotionType::Regeneration;
 ```
 
 
@@ -473,7 +473,7 @@ const std::string endstone::PotionType::Regeneration;
 ### variable SlowFalling 
 
 ```C++
-const std::string endstone::PotionType::SlowFalling;
+constexpr auto endstone::PotionType::SlowFalling;
 ```
 
 
@@ -486,7 +486,7 @@ const std::string endstone::PotionType::SlowFalling;
 ### variable Slowness 
 
 ```C++
-const std::string endstone::PotionType::Slowness;
+constexpr auto endstone::PotionType::Slowness;
 ```
 
 
@@ -499,7 +499,7 @@ const std::string endstone::PotionType::Slowness;
 ### variable Strength 
 
 ```C++
-const std::string endstone::PotionType::Strength;
+constexpr auto endstone::PotionType::Strength;
 ```
 
 
@@ -512,7 +512,7 @@ const std::string endstone::PotionType::Strength;
 ### variable StrongHarming 
 
 ```C++
-const std::string endstone::PotionType::StrongHarming;
+constexpr auto endstone::PotionType::StrongHarming;
 ```
 
 
@@ -525,7 +525,7 @@ const std::string endstone::PotionType::StrongHarming;
 ### variable StrongHealing 
 
 ```C++
-const std::string endstone::PotionType::StrongHealing;
+constexpr auto endstone::PotionType::StrongHealing;
 ```
 
 
@@ -538,7 +538,7 @@ const std::string endstone::PotionType::StrongHealing;
 ### variable StrongLeaping 
 
 ```C++
-const std::string endstone::PotionType::StrongLeaping;
+constexpr auto endstone::PotionType::StrongLeaping;
 ```
 
 
@@ -551,7 +551,7 @@ const std::string endstone::PotionType::StrongLeaping;
 ### variable StrongPoison 
 
 ```C++
-const std::string endstone::PotionType::StrongPoison;
+constexpr auto endstone::PotionType::StrongPoison;
 ```
 
 
@@ -564,7 +564,7 @@ const std::string endstone::PotionType::StrongPoison;
 ### variable StrongRegeneration 
 
 ```C++
-const std::string endstone::PotionType::StrongRegeneration;
+constexpr auto endstone::PotionType::StrongRegeneration;
 ```
 
 
@@ -577,7 +577,7 @@ const std::string endstone::PotionType::StrongRegeneration;
 ### variable StrongSlowness 
 
 ```C++
-const std::string endstone::PotionType::StrongSlowness;
+constexpr auto endstone::PotionType::StrongSlowness;
 ```
 
 
@@ -590,7 +590,7 @@ const std::string endstone::PotionType::StrongSlowness;
 ### variable StrongStrength 
 
 ```C++
-const std::string endstone::PotionType::StrongStrength;
+constexpr auto endstone::PotionType::StrongStrength;
 ```
 
 
@@ -603,7 +603,7 @@ const std::string endstone::PotionType::StrongStrength;
 ### variable StrongSwiftness 
 
 ```C++
-const std::string endstone::PotionType::StrongSwiftness;
+constexpr auto endstone::PotionType::StrongSwiftness;
 ```
 
 
@@ -616,7 +616,7 @@ const std::string endstone::PotionType::StrongSwiftness;
 ### variable StrongTurtleMaster 
 
 ```C++
-const std::string endstone::PotionType::StrongTurtleMaster;
+constexpr auto endstone::PotionType::StrongTurtleMaster;
 ```
 
 
@@ -629,7 +629,7 @@ const std::string endstone::PotionType::StrongTurtleMaster;
 ### variable Swiftness 
 
 ```C++
-const std::string endstone::PotionType::Swiftness;
+constexpr auto endstone::PotionType::Swiftness;
 ```
 
 
@@ -642,7 +642,7 @@ const std::string endstone::PotionType::Swiftness;
 ### variable Thick 
 
 ```C++
-const std::string endstone::PotionType::Thick;
+constexpr auto endstone::PotionType::Thick;
 ```
 
 
@@ -655,7 +655,7 @@ const std::string endstone::PotionType::Thick;
 ### variable TurtleMaster 
 
 ```C++
-const std::string endstone::PotionType::TurtleMaster;
+constexpr auto endstone::PotionType::TurtleMaster;
 ```
 
 
@@ -668,7 +668,7 @@ const std::string endstone::PotionType::TurtleMaster;
 ### variable Water 
 
 ```C++
-const std::string endstone::PotionType::Water;
+constexpr auto endstone::PotionType::Water;
 ```
 
 
@@ -681,7 +681,7 @@ const std::string endstone::PotionType::Water;
 ### variable WaterBreathing 
 
 ```C++
-const std::string endstone::PotionType::WaterBreathing;
+constexpr auto endstone::PotionType::WaterBreathing;
 ```
 
 
@@ -694,7 +694,7 @@ const std::string endstone::PotionType::WaterBreathing;
 ### variable Weakness 
 
 ```C++
-const std::string endstone::PotionType::Weakness;
+constexpr auto endstone::PotionType::Weakness;
 ```
 
 
@@ -707,7 +707,7 @@ const std::string endstone::PotionType::Weakness;
 ### variable Weaving 
 
 ```C++
-const std::string endstone::PotionType::Weaving;
+constexpr auto endstone::PotionType::Weaving;
 ```
 
 
@@ -720,7 +720,7 @@ const std::string endstone::PotionType::Weaving;
 ### variable WindCharged 
 
 ```C++
-const std::string endstone::PotionType::WindCharged;
+constexpr auto endstone::PotionType::WindCharged;
 ```
 
 
@@ -733,7 +733,7 @@ const std::string endstone::PotionType::WindCharged;
 ### variable Wither 
 
 ```C++
-const std::string endstone::PotionType::Wither;
+constexpr auto endstone::PotionType::Wither;
 ```
 
 

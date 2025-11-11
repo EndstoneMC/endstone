@@ -37,47 +37,47 @@
 
 | Type | Name |
 | ---: | :--- |
-|  const std::string | [**AquaAffinity**](#variable-aquaaffinity)   = `getEnchantment("aqua\_affinity")`<br>_Increases the speed at which a player may mine underwater._  |
-|  const std::string | [**BaneOfArthropods**](#variable-baneofarthropods)   = `getEnchantment("bane\_of\_arthropods")`<br>_Increases damage against arthropod targets._  |
-|  const std::string | [**BlastProtection**](#variable-blastprotection)   = `getEnchantment("blast\_protection")`<br>_Provides protection against explosive damage._  |
-|  const std::string | [**Breach**](#variable-breach)   = `getEnchantment("breach")`<br>_Reduces armor effectiveness against maces._  |
-|  const std::string | [**Channeling**](#variable-channeling)   = `getEnchantment("channeling")`<br>_Strikes lightning when a mob is hit with a trident if conditions are stormy._  |
-|  const std::string | [**CurseOfBinding**](#variable-curseofbinding)   = `getEnchantment("binding")`<br>[_**Item**_](classendstone_1_1Item.md) _cannot be removed._ |
-|  const std::string | [**CurseOfVanishing**](#variable-curseofvanishing)   = `getEnchantment("vanishing")`<br>[_**Item**_](classendstone_1_1Item.md) _disappears instead of dropping._ |
-|  const std::string | [**Density**](#variable-density)   = `getEnchantment("density")`<br>_Increases fall damage of maces._  |
-|  const std::string | [**DepthStrider**](#variable-depthstrider)   = `getEnchantment("depth\_strider")`<br>_Increases walking speed while in water._  |
-|  const std::string | [**Efficiency**](#variable-efficiency)   = `getEnchantment("efficiency")`<br>_Increases the rate at which you mine/dig._  |
-|  const std::string | [**FeatherFalling**](#variable-featherfalling)   = `getEnchantment("feather\_falling")`<br>_Provides protection against fall damage._  |
-|  const std::string | [**FireAspect**](#variable-fireaspect)   = `getEnchantment("fire\_aspect")`<br>_When attacking a target, has a chance to set them on fire._  |
-|  const std::string | [**FireProtection**](#variable-fireprotection)   = `getEnchantment("fire\_protection")`<br>_Provides protection against fire damage._  |
-|  const std::string | [**Flame**](#variable-flame)   = `getEnchantment("flame")`<br>_Sets entities on fire when hit by arrows shot from a bow._  |
-|  const std::string | [**Fortune**](#variable-fortune)   = `getEnchantment("fortune")`<br>_Provides a chance of gaining extra loot when destroying blocks._  |
-|  const std::string | [**FrostWalker**](#variable-frostwalker)   = `getEnchantment("frost\_walker")`<br>_Freezes any still water adjacent to ice / frost which player is walking on._  |
-|  const std::string | [**Impaling**](#variable-impaling)   = `getEnchantment("impaling")`<br>_Deals more damage to mobs that live in the ocean._  |
-|  const std::string | [**Infinity**](#variable-infinity)   = `getEnchantment("infinity")`<br>_Provides infinite arrows when shooting a bow._  |
-|  const std::string | [**Knockback**](#variable-knockback)   = `getEnchantment("knockback")`<br>_All damage to other targets will knock them back when hit._  |
-|  const std::string | [**Looting**](#variable-looting)   = `getEnchantment("looting")`<br>_Provides a chance of gaining extra loot when killing monsters._  |
-|  const std::string | [**Loyalty**](#variable-loyalty)   = `getEnchantment("loyalty")`<br>_Causes a thrown trident to return to the player who threw it._  |
-|  const std::string | [**LuckOfTheSea**](#variable-luckofthesea)   = `getEnchantment("luck\_of\_the\_sea")`<br>_Decreases odds of catching worthless junk._  |
-|  const std::string | [**Lure**](#variable-lure)   = `getEnchantment("lure")`<br>_Increases rate of fish biting your hook._  |
-|  const std::string | [**Mending**](#variable-mending)   = `getEnchantment("mending")`<br>_Allows mending the item using experience orbs._  |
-|  const std::string | [**Multishot**](#variable-multishot)   = `getEnchantment("multishot")`<br>_Shoot multiple arrows from crossbows._  |
-|  const std::string | [**Piercing**](#variable-piercing)   = `getEnchantment("piercing")`<br>_Crossbow projectiles pierce entities._  |
-|  const std::string | [**Power**](#variable-power)   = `getEnchantment("power")`<br>_Provides extra damage when shooting arrows from bows._  |
-|  const std::string | [**ProjectileProtection**](#variable-projectileprotection)   = `getEnchantment("projectile\_protection")`<br>_Provides protection against projectile damage._  |
-|  const std::string | [**Protection**](#variable-protection)   = `getEnchantment("protection")`<br>_Provides protection against environmental damage._  |
-|  const std::string | [**Punch**](#variable-punch)   = `getEnchantment("punch")`<br>_Provides a knockback when an entity is hit by an arrow from a bow._  |
-|  const std::string | [**QuickCharge**](#variable-quickcharge)   = `getEnchantment("quick\_charge")`<br>_Charges crossbows quickly._  |
-|  const std::string | [**Respiration**](#variable-respiration)   = `getEnchantment("respiration")`<br>_Decreases the rate of air loss whilst underwater._  |
-|  const std::string | [**Riptide**](#variable-riptide)   = `getEnchantment("riptide")`<br>_When it is rainy, launches the player in the direction their trident is thrown._  |
-|  const std::string | [**Sharpness**](#variable-sharpness)   = `getEnchantment("sharpness")`<br>_Increases damage against all targets._  |
-|  const std::string | [**SilkTouch**](#variable-silktouch)   = `getEnchantment("silk\_touch")`<br>_Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone)_  |
-|  const std::string | [**Smite**](#variable-smite)   = `getEnchantment("smite")`<br>_Increases damage against undead targets._  |
-|  const std::string | [**SoulSpeed**](#variable-soulspeed)   = `getEnchantment("soul\_speed")`<br>_Walk quicker on soul blocks._  |
-|  const std::string | [**SwiftSneak**](#variable-swiftsneak)   = `getEnchantment("swift\_sneak")`<br>_Walk quicker while sneaking._  |
-|  const std::string | [**Thorns**](#variable-thorns)   = `getEnchantment("thorns")`<br>_Damages the attacker._  |
-|  const std::string | [**Unbreaking**](#variable-unbreaking)   = `getEnchantment("unbreaking")`<br>_Decreases the rate at which a tool looses durability._  |
-|  const std::string | [**WindBurst**](#variable-windburst)   = `getEnchantment("wind\_burst")`<br>_Emits wind burst upon hitting enemy._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**AquaAffinity**](#variable-aquaaffinity)   = `EnchantmentId::minecraft("aqua\_affinity")`<br>_Increases the speed at which a player may mine underwater._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**BaneOfArthropods**](#variable-baneofarthropods)   = `EnchantmentId::minecraft("bane\_of\_arthropods")`<br>_Increases damage against arthropod targets._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**BlastProtection**](#variable-blastprotection)   = `EnchantmentId::minecraft("blast\_protection")`<br>_Provides protection against explosive damage._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Breach**](#variable-breach)   = `EnchantmentId::minecraft("breach")`<br>_Reduces armor effectiveness against maces._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Channeling**](#variable-channeling)   = `EnchantmentId::minecraft("channeling")`<br>_Strikes lightning when a mob is hit with a trident if conditions are stormy._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**CurseOfBinding**](#variable-curseofbinding)   = `EnchantmentId::minecraft("binding")`<br>[_**Item**_](classendstone_1_1Item.md) _cannot be removed._ |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**CurseOfVanishing**](#variable-curseofvanishing)   = `EnchantmentId::minecraft("vanishing")`<br>[_**Item**_](classendstone_1_1Item.md) _disappears instead of dropping._ |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Density**](#variable-density)   = `EnchantmentId::minecraft("density")`<br>_Increases fall damage of maces._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**DepthStrider**](#variable-depthstrider)   = `EnchantmentId::minecraft("depth\_strider")`<br>_Increases walking speed while in water._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Efficiency**](#variable-efficiency)   = `EnchantmentId::minecraft("efficiency")`<br>_Increases the rate at which you mine/dig._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FeatherFalling**](#variable-featherfalling)   = `EnchantmentId::minecraft("feather\_falling")`<br>_Provides protection against fall damage._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FireAspect**](#variable-fireaspect)   = `EnchantmentId::minecraft("fire\_aspect")`<br>_When attacking a target, has a chance to set them on fire._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FireProtection**](#variable-fireprotection)   = `EnchantmentId::minecraft("fire\_protection")`<br>_Provides protection against fire damage._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Flame**](#variable-flame)   = `EnchantmentId::minecraft("flame")`<br>_Sets entities on fire when hit by arrows shot from a bow._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Fortune**](#variable-fortune)   = `EnchantmentId::minecraft("fortune")`<br>_Provides a chance of gaining extra loot when destroying blocks._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FrostWalker**](#variable-frostwalker)   = `EnchantmentId::minecraft("frost\_walker")`<br>_Freezes any still water adjacent to ice / frost which player is walking on._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Impaling**](#variable-impaling)   = `EnchantmentId::minecraft("impaling")`<br>_Deals more damage to mobs that live in the ocean._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Infinity**](#variable-infinity)   = `EnchantmentId::minecraft("infinity")`<br>_Provides infinite arrows when shooting a bow._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Knockback**](#variable-knockback)   = `EnchantmentId::minecraft("knockback")`<br>_All damage to other targets will knock them back when hit._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Looting**](#variable-looting)   = `EnchantmentId::minecraft("looting")`<br>_Provides a chance of gaining extra loot when killing monsters._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Loyalty**](#variable-loyalty)   = `EnchantmentId::minecraft("loyalty")`<br>_Causes a thrown trident to return to the player who threw it._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LuckOfTheSea**](#variable-luckofthesea)   = `EnchantmentId::minecraft("luck\_of\_the\_sea")`<br>_Decreases odds of catching worthless junk._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Lure**](#variable-lure)   = `EnchantmentId::minecraft("lure")`<br>_Increases rate of fish biting your hook._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Mending**](#variable-mending)   = `EnchantmentId::minecraft("mending")`<br>_Allows mending the item using experience orbs._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Multishot**](#variable-multishot)   = `EnchantmentId::minecraft("multishot")`<br>_Shoot multiple arrows from crossbows._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Piercing**](#variable-piercing)   = `EnchantmentId::minecraft("piercing")`<br>_Crossbow projectiles pierce entities._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Power**](#variable-power)   = `EnchantmentId::minecraft("power")`<br>_Provides extra damage when shooting arrows from bows._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ProjectileProtection**](#variable-projectileprotection)   = `EnchantmentId::minecraft("projectile\_protection")`<br>_Provides protection against projectile damage._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Protection**](#variable-protection)   = `EnchantmentId::minecraft("protection")`<br>_Provides protection against environmental damage._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Punch**](#variable-punch)   = `EnchantmentId::minecraft("punch")`<br>_Provides a knockback when an entity is hit by an arrow from a bow._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**QuickCharge**](#variable-quickcharge)   = `EnchantmentId::minecraft("quick\_charge")`<br>_Charges crossbows quickly._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Respiration**](#variable-respiration)   = `EnchantmentId::minecraft("respiration")`<br>_Decreases the rate of air loss whilst underwater._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Riptide**](#variable-riptide)   = `EnchantmentId::minecraft("riptide")`<br>_When it is rainy, launches the player in the direction their trident is thrown._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Sharpness**](#variable-sharpness)   = `EnchantmentId::minecraft("sharpness")`<br>_Increases damage against all targets._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SilkTouch**](#variable-silktouch)   = `EnchantmentId::minecraft("silk\_touch")`<br>_Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone)_  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Smite**](#variable-smite)   = `EnchantmentId::minecraft("smite")`<br>_Increases damage against undead targets._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SoulSpeed**](#variable-soulspeed)   = `EnchantmentId::minecraft("soul\_speed")`<br>_Walk quicker on soul blocks._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SwiftSneak**](#variable-swiftsneak)   = `EnchantmentId::minecraft("swift\_sneak")`<br>_Walk quicker while sneaking._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Thorns**](#variable-thorns)   = `EnchantmentId::minecraft("thorns")`<br>_Damages the attacker._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Unbreaking**](#variable-unbreaking)   = `EnchantmentId::minecraft("unbreaking")`<br>_Decreases the rate at which a tool looses durability._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WindBurst**](#variable-windburst)   = `EnchantmentId::minecraft("wind\_burst")`<br>_Emits wind burst upon hitting enemy._  |
 
 
 
@@ -96,11 +96,11 @@
 
 | Type | Name |
 | ---: | :--- |
-| virtual bool | [**canEnchantItem**](#function-canenchantitem) (const [**ItemStack**](classendstone_1_1ItemStack.md) & item) const = 0<br>_Checks if this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may be applied to the given_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
-| virtual bool | [**conflictsWith**](#function-conflictswith) (const [**Enchantment**](classendstone_1_1Enchantment.md) & other) const = 0<br>_Check if this enchantment conflicts with another enchantment._  |
-| virtual std::string | [**getId**](#function-getid) () const = 0<br>_Return the identifier for this enchantment._  |
-| virtual int | [**getMaxLevel**](#function-getmaxlevel) () const = 0<br>_Gets the maximum level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may become._ |
-| virtual int | [**getStartLevel**](#function-getstartlevel) () const = 0<br>_Gets the level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _should start at (also known as minimum level)._ |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**canEnchantItem**](#function-canenchantitem) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) const = 0<br>_Checks if this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may be applied to the given_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**conflictsWith**](#function-conflictswith) ([**const**](classendstone_1_1Identifier.md) [**Enchantment**](classendstone_1_1Enchantment.md) & other) const = 0<br>_Check if this enchantment conflicts with another enchantment._  |
+| virtual [**EnchantmentId**](classendstone_1_1Identifier.md) | [**getId**](#function-getid) () const = 0<br>_Return the identifier for this enchantment._  |
+| virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxLevel**](#function-getmaxlevel) () const = 0<br>_Gets the maximum level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may become._ |
+| virtual [**int**](classendstone_1_1Identifier.md) | [**getStartLevel**](#function-getstartlevel) () const = 0<br>_Gets the level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _should start at (also known as minimum level)._ |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
 | virtual  | [**~Enchantment**](#function-enchantment) () = default<br> |
 
@@ -140,7 +140,7 @@
 
 _Increases the speed at which a player may mine underwater._ 
 ```C++
-const std::string endstone::Enchantment::AquaAffinity;
+constexpr auto endstone::Enchantment::AquaAffinity;
 ```
 
 
@@ -154,7 +154,7 @@ const std::string endstone::Enchantment::AquaAffinity;
 
 _Increases damage against arthropod targets._ 
 ```C++
-const std::string endstone::Enchantment::BaneOfArthropods;
+constexpr auto endstone::Enchantment::BaneOfArthropods;
 ```
 
 
@@ -168,7 +168,7 @@ const std::string endstone::Enchantment::BaneOfArthropods;
 
 _Provides protection against explosive damage._ 
 ```C++
-const std::string endstone::Enchantment::BlastProtection;
+constexpr auto endstone::Enchantment::BlastProtection;
 ```
 
 
@@ -182,7 +182,7 @@ const std::string endstone::Enchantment::BlastProtection;
 
 _Reduces armor effectiveness against maces._ 
 ```C++
-const std::string endstone::Enchantment::Breach;
+constexpr auto endstone::Enchantment::Breach;
 ```
 
 
@@ -196,7 +196,7 @@ const std::string endstone::Enchantment::Breach;
 
 _Strikes lightning when a mob is hit with a trident if conditions are stormy._ 
 ```C++
-const std::string endstone::Enchantment::Channeling;
+constexpr auto endstone::Enchantment::Channeling;
 ```
 
 
@@ -210,7 +210,7 @@ const std::string endstone::Enchantment::Channeling;
 
 [_**Item**_](classendstone_1_1Item.md) _cannot be removed._
 ```C++
-const std::string endstone::Enchantment::CurseOfBinding;
+constexpr auto endstone::Enchantment::CurseOfBinding;
 ```
 
 
@@ -224,7 +224,7 @@ const std::string endstone::Enchantment::CurseOfBinding;
 
 [_**Item**_](classendstone_1_1Item.md) _disappears instead of dropping._
 ```C++
-const std::string endstone::Enchantment::CurseOfVanishing;
+constexpr auto endstone::Enchantment::CurseOfVanishing;
 ```
 
 
@@ -238,7 +238,7 @@ const std::string endstone::Enchantment::CurseOfVanishing;
 
 _Increases fall damage of maces._ 
 ```C++
-const std::string endstone::Enchantment::Density;
+constexpr auto endstone::Enchantment::Density;
 ```
 
 
@@ -252,7 +252,7 @@ const std::string endstone::Enchantment::Density;
 
 _Increases walking speed while in water._ 
 ```C++
-const std::string endstone::Enchantment::DepthStrider;
+constexpr auto endstone::Enchantment::DepthStrider;
 ```
 
 
@@ -266,7 +266,7 @@ const std::string endstone::Enchantment::DepthStrider;
 
 _Increases the rate at which you mine/dig._ 
 ```C++
-const std::string endstone::Enchantment::Efficiency;
+constexpr auto endstone::Enchantment::Efficiency;
 ```
 
 
@@ -280,7 +280,7 @@ const std::string endstone::Enchantment::Efficiency;
 
 _Provides protection against fall damage._ 
 ```C++
-const std::string endstone::Enchantment::FeatherFalling;
+constexpr auto endstone::Enchantment::FeatherFalling;
 ```
 
 
@@ -294,7 +294,7 @@ const std::string endstone::Enchantment::FeatherFalling;
 
 _When attacking a target, has a chance to set them on fire._ 
 ```C++
-const std::string endstone::Enchantment::FireAspect;
+constexpr auto endstone::Enchantment::FireAspect;
 ```
 
 
@@ -308,7 +308,7 @@ const std::string endstone::Enchantment::FireAspect;
 
 _Provides protection against fire damage._ 
 ```C++
-const std::string endstone::Enchantment::FireProtection;
+constexpr auto endstone::Enchantment::FireProtection;
 ```
 
 
@@ -322,7 +322,7 @@ const std::string endstone::Enchantment::FireProtection;
 
 _Sets entities on fire when hit by arrows shot from a bow._ 
 ```C++
-const std::string endstone::Enchantment::Flame;
+constexpr auto endstone::Enchantment::Flame;
 ```
 
 
@@ -336,7 +336,7 @@ const std::string endstone::Enchantment::Flame;
 
 _Provides a chance of gaining extra loot when destroying blocks._ 
 ```C++
-const std::string endstone::Enchantment::Fortune;
+constexpr auto endstone::Enchantment::Fortune;
 ```
 
 
@@ -350,7 +350,7 @@ const std::string endstone::Enchantment::Fortune;
 
 _Freezes any still water adjacent to ice / frost which player is walking on._ 
 ```C++
-const std::string endstone::Enchantment::FrostWalker;
+constexpr auto endstone::Enchantment::FrostWalker;
 ```
 
 
@@ -364,7 +364,7 @@ const std::string endstone::Enchantment::FrostWalker;
 
 _Deals more damage to mobs that live in the ocean._ 
 ```C++
-const std::string endstone::Enchantment::Impaling;
+constexpr auto endstone::Enchantment::Impaling;
 ```
 
 
@@ -378,7 +378,7 @@ const std::string endstone::Enchantment::Impaling;
 
 _Provides infinite arrows when shooting a bow._ 
 ```C++
-const std::string endstone::Enchantment::Infinity;
+constexpr auto endstone::Enchantment::Infinity;
 ```
 
 
@@ -392,7 +392,7 @@ const std::string endstone::Enchantment::Infinity;
 
 _All damage to other targets will knock them back when hit._ 
 ```C++
-const std::string endstone::Enchantment::Knockback;
+constexpr auto endstone::Enchantment::Knockback;
 ```
 
 
@@ -406,7 +406,7 @@ const std::string endstone::Enchantment::Knockback;
 
 _Provides a chance of gaining extra loot when killing monsters._ 
 ```C++
-const std::string endstone::Enchantment::Looting;
+constexpr auto endstone::Enchantment::Looting;
 ```
 
 
@@ -420,7 +420,7 @@ const std::string endstone::Enchantment::Looting;
 
 _Causes a thrown trident to return to the player who threw it._ 
 ```C++
-const std::string endstone::Enchantment::Loyalty;
+constexpr auto endstone::Enchantment::Loyalty;
 ```
 
 
@@ -434,7 +434,7 @@ const std::string endstone::Enchantment::Loyalty;
 
 _Decreases odds of catching worthless junk._ 
 ```C++
-const std::string endstone::Enchantment::LuckOfTheSea;
+constexpr auto endstone::Enchantment::LuckOfTheSea;
 ```
 
 
@@ -448,7 +448,7 @@ const std::string endstone::Enchantment::LuckOfTheSea;
 
 _Increases rate of fish biting your hook._ 
 ```C++
-const std::string endstone::Enchantment::Lure;
+constexpr auto endstone::Enchantment::Lure;
 ```
 
 
@@ -462,7 +462,7 @@ const std::string endstone::Enchantment::Lure;
 
 _Allows mending the item using experience orbs._ 
 ```C++
-const std::string endstone::Enchantment::Mending;
+constexpr auto endstone::Enchantment::Mending;
 ```
 
 
@@ -476,7 +476,7 @@ const std::string endstone::Enchantment::Mending;
 
 _Shoot multiple arrows from crossbows._ 
 ```C++
-const std::string endstone::Enchantment::Multishot;
+constexpr auto endstone::Enchantment::Multishot;
 ```
 
 
@@ -490,7 +490,7 @@ const std::string endstone::Enchantment::Multishot;
 
 _Crossbow projectiles pierce entities._ 
 ```C++
-const std::string endstone::Enchantment::Piercing;
+constexpr auto endstone::Enchantment::Piercing;
 ```
 
 
@@ -504,7 +504,7 @@ const std::string endstone::Enchantment::Piercing;
 
 _Provides extra damage when shooting arrows from bows._ 
 ```C++
-const std::string endstone::Enchantment::Power;
+constexpr auto endstone::Enchantment::Power;
 ```
 
 
@@ -518,7 +518,7 @@ const std::string endstone::Enchantment::Power;
 
 _Provides protection against projectile damage._ 
 ```C++
-const std::string endstone::Enchantment::ProjectileProtection;
+constexpr auto endstone::Enchantment::ProjectileProtection;
 ```
 
 
@@ -532,7 +532,7 @@ const std::string endstone::Enchantment::ProjectileProtection;
 
 _Provides protection against environmental damage._ 
 ```C++
-const std::string endstone::Enchantment::Protection;
+constexpr auto endstone::Enchantment::Protection;
 ```
 
 
@@ -546,7 +546,7 @@ const std::string endstone::Enchantment::Protection;
 
 _Provides a knockback when an entity is hit by an arrow from a bow._ 
 ```C++
-const std::string endstone::Enchantment::Punch;
+constexpr auto endstone::Enchantment::Punch;
 ```
 
 
@@ -560,7 +560,7 @@ const std::string endstone::Enchantment::Punch;
 
 _Charges crossbows quickly._ 
 ```C++
-const std::string endstone::Enchantment::QuickCharge;
+constexpr auto endstone::Enchantment::QuickCharge;
 ```
 
 
@@ -574,7 +574,7 @@ const std::string endstone::Enchantment::QuickCharge;
 
 _Decreases the rate of air loss whilst underwater._ 
 ```C++
-const std::string endstone::Enchantment::Respiration;
+constexpr auto endstone::Enchantment::Respiration;
 ```
 
 
@@ -588,7 +588,7 @@ const std::string endstone::Enchantment::Respiration;
 
 _When it is rainy, launches the player in the direction their trident is thrown._ 
 ```C++
-const std::string endstone::Enchantment::Riptide;
+constexpr auto endstone::Enchantment::Riptide;
 ```
 
 
@@ -602,7 +602,7 @@ const std::string endstone::Enchantment::Riptide;
 
 _Increases damage against all targets._ 
 ```C++
-const std::string endstone::Enchantment::Sharpness;
+constexpr auto endstone::Enchantment::Sharpness;
 ```
 
 
@@ -616,7 +616,7 @@ const std::string endstone::Enchantment::Sharpness;
 
 _Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone)_ 
 ```C++
-const std::string endstone::Enchantment::SilkTouch;
+constexpr auto endstone::Enchantment::SilkTouch;
 ```
 
 
@@ -630,7 +630,7 @@ const std::string endstone::Enchantment::SilkTouch;
 
 _Increases damage against undead targets._ 
 ```C++
-const std::string endstone::Enchantment::Smite;
+constexpr auto endstone::Enchantment::Smite;
 ```
 
 
@@ -644,7 +644,7 @@ const std::string endstone::Enchantment::Smite;
 
 _Walk quicker on soul blocks._ 
 ```C++
-const std::string endstone::Enchantment::SoulSpeed;
+constexpr auto endstone::Enchantment::SoulSpeed;
 ```
 
 
@@ -658,7 +658,7 @@ const std::string endstone::Enchantment::SoulSpeed;
 
 _Walk quicker while sneaking._ 
 ```C++
-const std::string endstone::Enchantment::SwiftSneak;
+constexpr auto endstone::Enchantment::SwiftSneak;
 ```
 
 
@@ -672,7 +672,7 @@ const std::string endstone::Enchantment::SwiftSneak;
 
 _Damages the attacker._ 
 ```C++
-const std::string endstone::Enchantment::Thorns;
+constexpr auto endstone::Enchantment::Thorns;
 ```
 
 
@@ -686,7 +686,7 @@ const std::string endstone::Enchantment::Thorns;
 
 _Decreases the rate at which a tool looses durability._ 
 ```C++
-const std::string endstone::Enchantment::Unbreaking;
+constexpr auto endstone::Enchantment::Unbreaking;
 ```
 
 
@@ -700,7 +700,7 @@ const std::string endstone::Enchantment::Unbreaking;
 
 _Emits wind burst upon hitting enemy._ 
 ```C++
-const std::string endstone::Enchantment::WindBurst;
+constexpr auto endstone::Enchantment::WindBurst;
 ```
 
 
@@ -717,7 +717,7 @@ const std::string endstone::Enchantment::WindBurst;
 _Checks if this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may be applied to the given_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._
 ```C++
 virtual bool endstone::Enchantment::canEnchantItem (
-    const ItemStack & item
+    const  ItemStack & item
 ) const = 0
 ```
 
@@ -754,7 +754,7 @@ True if the enchantment may be applied, otherwise False
 _Check if this enchantment conflicts with another enchantment._ 
 ```C++
 virtual bool endstone::Enchantment::conflictsWith (
-    const Enchantment & other
+    const  Enchantment & other
 ) const = 0
 ```
 
@@ -787,7 +787,7 @@ True if there is a conflict.
 
 _Return the identifier for this enchantment._ 
 ```C++
-virtual std::string endstone::Enchantment::getId () const = 0
+virtual EnchantmentId endstone::Enchantment::getId () const = 0
 ```
 
 

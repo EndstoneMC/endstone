@@ -101,7 +101,7 @@
         <location file="include/endstone/event/actor/player_death_event.h" line="48" column="20" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="48" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDeathEvent_1a6a243db2fbf5bdcb6163b39b151338a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::PlayerDeathEvent::setDeathMessage</definition>
         <argsstring>(std::optional&lt; Message &gt; death_message)</argsstring>
         <name>setDeathMessage</name>

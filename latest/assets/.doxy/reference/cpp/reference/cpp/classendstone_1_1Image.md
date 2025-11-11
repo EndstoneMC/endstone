@@ -57,22 +57,22 @@ _Represents an RGBA image._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Image**](#function-image-12) (const [**Type**](classendstone_1_1Image.md#enum-type) type, const int width, const int height) <br>_Create an empty image (all pixels transparent black)._  |
-|   | [**Image**](#function-image-22) ([**Type**](classendstone_1_1Image.md#enum-type) type, int width, int height, const T & data) <br> |
-|  [**Color**](classendstone_1_1Color.md) | [**getColor**](#function-getcolor) (const int x, const int y) const<br>_Get the color of a pixel._  |
+|   | [**Image**](#function-image-12) ([**const**](classendstone_1_1Identifier.md) [**Type**](classendstone_1_1Image.md#enum-type) type, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) width, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) height) <br>_Create an empty image (all pixels transparent black)._  |
+|   | [**Image**](#function-image-22) ([**Type**](classendstone_1_1Image.md#enum-type) type, [**int**](classendstone_1_1Identifier.md) width, [**int**](classendstone_1_1Identifier.md) height, [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & data) <br> |
+|  [**Color**](classendstone_1_1Color.md) | [**getColor**](#function-getcolor) ([**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) x, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) y) const<br>_Get the color of a pixel._  |
 |  std::string\_view | [**getData**](#function-getdata) () const<br>_Gets the raw pixel buffer (row-major, H x W x D)._  |
-|  int | [**getDepth**](#function-getdepth) () const<br>_Get the image depth._  |
-|  int | [**getHeight**](#function-getheight) () const<br>_Get the image height._  |
-|  int | [**getWidth**](#function-getwidth) () const<br>_Get the image width._  |
-|  void | [**setColor**](#function-setcolor) (const int x, const int y, const [**Color**](classendstone_1_1Color.md) color) <br>_Set the color of a pixel._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getDepth**](#function-getdepth) () const<br>_Get the image depth._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getHeight**](#function-getheight) () const<br>_Get the image height._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getWidth**](#function-getwidth) () const<br>_Get the image width._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setColor**](#function-setcolor) ([**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) x, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) y, [**const**](classendstone_1_1Identifier.md) [**Color**](classendstone_1_1Color.md) color) <br>_Set the color of a pixel._  |
 
 
 ## Public Static Functions
 
 | Type | Name |
 | ---: | :--- |
-|  Result&lt; [**Image**](classendstone_1_1Image.md) &gt; | [**fromArray**](#function-fromarray) ([**Type**](classendstone_1_1Image.md#enum-type) type, const int width, const int height, const std::vector&lt; unsigned char &gt; & array) <br>_Creates an image from the pixel data in a byte array._  |
-|  Result&lt; [**Image**](classendstone_1_1Image.md) &gt; | [**fromBuffer**](#function-frombuffer) ([**Type**](classendstone_1_1Image.md#enum-type) type, const int width, const int height, std::string\_view buffer) <br>_Creates an image from the pixel data in a byte buffer._  |
+|  Result&lt; [**Image**](classendstone_1_1Image.md) &gt; | [**fromArray**](#function-fromarray) ([**Type**](classendstone_1_1Image.md#enum-type) type, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) width, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) height, [**const**](classendstone_1_1Identifier.md) std::vector&lt; [**unsigned**](classendstone_1_1Identifier.md) [**char**](classendstone_1_1Identifier.md) &gt; & array) <br>_Creates an image from the pixel data in a byte array._  |
+|  Result&lt; [**Image**](classendstone_1_1Image.md) &gt; | [**fromBuffer**](#function-frombuffer) ([**Type**](classendstone_1_1Image.md#enum-type) type, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) width, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) height, std::string\_view buffer) <br>_Creates an image from the pixel data in a byte buffer._  |
 
 
 
@@ -136,9 +136,9 @@ enum endstone::Image::Type {
 _Create an empty image (all pixels transparent black)._ 
 ```C++
 inline explicit endstone::Image::Image (
-    const Type type,
-    const int width,
-    const int height
+    const  Type type,
+    const  int width,
+    const  int height
 ) 
 ```
 
@@ -165,12 +165,12 @@ inline explicit endstone::Image::Image (
 ### function Image [2/2]
 
 ```C++
-template<typename T>
+template<typename  T>
 inline endstone::Image::Image (
     Type type,
     int width,
     int height,
-    const T & data
+    const  T & data
 ) 
 ```
 
@@ -186,8 +186,8 @@ inline endstone::Image::Image (
 _Get the color of a pixel._ 
 ```C++
 inline Color endstone::Image::getColor (
-    const int x,
-    const int y
+    const  int x,
+    const  int y
 ) const
 ```
 
@@ -322,9 +322,9 @@ inline int endstone::Image::getWidth () const
 _Set the color of a pixel._ 
 ```C++
 inline void endstone::Image::setColor (
-    const int x,
-    const int y,
-    const Color color
+    const  int x,
+    const  int y,
+    const  Color color
 ) 
 ```
 
@@ -356,9 +356,9 @@ _Creates an image from the pixel data in a byte array._
 ```C++
 static inline Result< Image > endstone::Image::fromArray (
     Type type,
-    const int width,
-    const int height,
-    const std::vector< unsigned char > & array
+    const  int width,
+    const  int height,
+    const std::vector< unsigned  char > & array
 ) 
 ```
 
@@ -396,8 +396,8 @@ _Creates an image from the pixel data in a byte buffer._
 ```C++
 static inline Result< Image > endstone::Image::fromBuffer (
     Type type,
-    const int width,
-    const int height,
+    const  int width,
+    const  int height,
     std::string_view buffer
 ) 
 ```

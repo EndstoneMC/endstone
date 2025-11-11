@@ -58,9 +58,9 @@ _Represents an attribute modifier._
 
 | Type | Name |
 | ---: | :--- |
-|   | [**AttributeModifier**](#function-attributemodifier-12) (std::string name, float amount, [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) operation, [**Operand**](classendstone_1_1AttributeModifier.md#enum-operand) operand=Operand::Value) <br> |
-|   | [**AttributeModifier**](#function-attributemodifier-22) (std::string name, [**UUID**](classendstone_1_1UUID.md) uuid, float amount, [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) operation, [**Operand**](classendstone_1_1AttributeModifier.md#enum-operand) operand=Operand::Value) <br> |
-|  float | [**getAmount**](#function-getamount) () const<br>_Get the amount by which this modifier will apply the operation._  |
+|   | [**AttributeModifier**](#function-attributemodifier-12) (std::string name, [**float**](classendstone_1_1Identifier.md) amount, [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) operation, [**Operand**](classendstone_1_1AttributeModifier.md#enum-operand) operand=Operand::Value) <br> |
+|   | [**AttributeModifier**](#function-attributemodifier-22) (std::string name, [**UUID**](classendstone_1_1UUID.md) uuid, [**float**](classendstone_1_1Identifier.md) amount, [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) operation, [**Operand**](classendstone_1_1AttributeModifier.md#enum-operand) operand=Operand::Value) <br> |
+|  [**float**](classendstone_1_1Identifier.md) | [**getAmount**](#function-getamount) () const<br>_Get the amount by which this modifier will apply the operation._  |
 |  std::string | [**getName**](#function-getname) () const<br>_Get the name of this modifier._  |
 |  [**Operand**](classendstone_1_1AttributeModifier.md#enum-operand) | [**getOperand**](#function-getoperand) () const<br>_Get the operand this modifier will apply._  |
 |  [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) | [**getOperation**](#function-getoperation) () const<br>_Get the operation this modifier will apply._  |

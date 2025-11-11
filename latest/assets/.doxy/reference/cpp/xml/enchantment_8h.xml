@@ -3,7 +3,7 @@
   <compounddef id="enchantment_8h" kind="file" language="C++">
     <compoundname>enchantment.h</compoundname>
     <includes refid="detail_8h" local="yes">endstone/detail.h</includes>
-    <includes refid="namespaced__key_8h" local="yes">endstone/namespaced_key.h</includes>
+    <includes refid="identifier_8h" local="yes">endstone/identifier.h</includes>
     <includes refid="registry_8h" local="yes">endstone/registry.h</includes>
     <includes refid="server_8h" local="yes">endstone/server.h</includes>
     <includedby refid="item__meta_8h" local="yes">include/endstone/inventory/meta/item_meta.h</includedby>
@@ -25,11 +25,11 @@
       <node id="18">
         <label>endstone/ban/ban_entry.h</label>
         <link refid="ban__entry_8h_source"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -37,11 +37,11 @@
       <node id="17">
         <label>endstone/ban/ban_list.h</label>
         <link refid="ban__list_8h_source"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -59,11 +59,11 @@
       <node id="15">
         <label>endstone/ban/ip_ban_list.h</label>
         <link refid="ip__ban__list_8h_source"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -85,11 +85,11 @@
       <node id="21">
         <label>endstone/ban/player_ban_list.h</label>
         <link refid="player__ban__list_8h_source"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -101,13 +101,13 @@
       <node id="27">
         <label>endstone/block/block_data.h</label>
         <link refid="block__data_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
@@ -129,7 +129,7 @@
       <node id="32">
         <label>endstone/boss/boss_bar.h</label>
         <link refid="boss__bar_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -145,9 +145,9 @@
       <node id="42">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
@@ -169,9 +169,9 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="61">
@@ -179,7 +179,7 @@
         <link refid="action__form_8h_source"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
@@ -203,7 +203,7 @@
         <link refid="divider_8h_source"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -215,7 +215,7 @@
         <link refid="dropdown_8h_source"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -229,7 +229,7 @@
         <link refid="header_8h_source"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -241,7 +241,7 @@
         <link refid="label_8h_source"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -253,7 +253,7 @@
         <link refid="slider_8h_source"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -271,7 +271,7 @@
         <link refid="text__input_8h_source"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -283,7 +283,7 @@
         <link refid="toggle_8h_source"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -293,7 +293,7 @@
       <node id="66">
         <label>endstone/form/form.h</label>
         <link refid="form_8h_source"/>
-        <childnode refid="7" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
@@ -311,7 +311,7 @@
         <link refid="modal__form_8h_source"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -338,10 +338,18 @@
         <label>endstone/game_mode.h</label>
         <link refid="game__mode_8h_source"/>
       </node>
+      <node id="5">
+        <label>endstone/identifier.h</label>
+        <link refid="identifier_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
       <node id="76">
         <label>endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
-        <childnode refid="11" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -357,7 +365,7 @@
       <node id="38">
         <label>endstone/lang/language.h</label>
         <link refid="language_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -367,7 +375,7 @@
       <node id="39">
         <label>endstone/lang/translatable.h</label>
         <link refid="translatable_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -377,9 +385,9 @@
       <node id="40">
         <label>endstone/level/level.h</label>
         <link refid="level_8h_source"/>
-        <childnode refid="11" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -399,11 +407,11 @@
       <node id="52">
         <label>endstone/logger.h</label>
         <link refid="logger_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="55">
@@ -437,7 +445,7 @@
       <node id="43">
         <label>endstone/message.h</label>
         <link refid="message_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -445,10 +453,6 @@
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
-      </node>
-      <node id="5">
-        <label>endstone/namespaced_key.h</label>
-        <link refid="namespaced__key_8h_source"/>
       </node>
       <node id="77">
         <label>endstone/offline_player.h</label>
@@ -459,9 +463,9 @@
       <node id="44">
         <label>endstone/permissions/permissible.h</label>
         <link refid="permissible_8h_source"/>
-        <childnode refid="11" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
@@ -475,7 +479,7 @@
       <node id="46">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -487,7 +491,7 @@
       <node id="59">
         <label>endstone/player.h</label>
         <link refid="player_8h_source"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
@@ -530,14 +534,16 @@
         <label>endstone/plugin/service_priority.h</label>
         <link refid="service__priority_8h_source"/>
       </node>
-      <node id="6">
+      <node id="8">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
-        <childnode refid="7" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="79">
@@ -553,7 +559,7 @@
       <node id="82">
         <label>endstone/scoreboard/objective.h</label>
         <link refid="objective_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="83" relation="include">
         </childnode>
@@ -581,7 +587,7 @@
       <node id="85">
         <label>endstone/scoreboard/score_entry.h</label>
         <link refid="score__entry_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
@@ -591,7 +597,7 @@
       <node id="78">
         <label>endstone/scoreboard/scoreboard.h</label>
         <link refid="scoreboard_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="79" relation="include">
         </childnode>
@@ -604,16 +610,16 @@
         <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="10">
         <label>endstone/server.h</label>
         <link refid="server_8h_source"/>
-        <childnode refid="10" relation="include">
-        </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -649,7 +655,7 @@
         <link refid="skin_8h_source"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -665,7 +671,7 @@
       <node id="58">
         <label>endstone/util/image.h</label>
         <link refid="image_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
@@ -673,7 +679,7 @@
       <node id="36">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
@@ -683,7 +689,7 @@
         <link refid="socket__address_8h_source"/>
         <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="23">
@@ -695,7 +701,7 @@
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="51">
@@ -705,7 +711,7 @@
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="31">
@@ -715,7 +721,7 @@
       <node id="24">
         <label>algorithm</label>
       </node>
-      <node id="10">
+      <node id="11">
         <label>chrono</label>
       </node>
       <node id="49">
@@ -730,16 +736,16 @@
       <node id="4">
         <label>dlfcn.h</label>
       </node>
-      <node id="8">
+      <node id="7">
         <label>fmt/format.h</label>
       </node>
       <node id="30">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="7">
+      <node id="9">
         <label>functional</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>memory</label>
       </node>
       <node id="37">
@@ -754,10 +760,10 @@
       <node id="3">
         <label>stdexcept</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>string</label>
       </node>
-      <node id="13">
+      <node id="6">
         <label>string_view</label>
       </node>
       <node id="28">
@@ -898,120 +904,113 @@
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/detail.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/namespaced_key.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/identifier.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/registry.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/server.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ItemStack;</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">EnchantmentId<sp/>=<sp/>Identifier&lt;class<sp/>Enchantment&gt;;</highlight></codeline>
 <codeline lineno="25" refid="classendstone_1_1Enchantment" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref><sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>getEnchantment(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;key)</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1NamespacedKey_1ae621db542765701d654082fbf8ca2f18" kindref="member">NamespacedKey::minecraft</ref>(key);</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_REGISTRY_TYPE(<ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref>)</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="37" refid="classendstone_1_1Enchantment_1a77f68b71735935a36c6fbcf1bad9a9f6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a77f68b71735935a36c6fbcf1bad9a9f6" kindref="member">Protection</ref><sp/>=<sp/>getEnchantment(&quot;protection&quot;);</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42" refid="classendstone_1_1Enchantment_1a603f1ff3531ba50b470bb6723fcaff33" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a603f1ff3531ba50b470bb6723fcaff33" kindref="member">FireProtection</ref><sp/>=<sp/>getEnchantment(&quot;fire_protection&quot;);</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47" refid="classendstone_1_1Enchantment_1afd0538d221079a4e306ef68c76395114" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1afd0538d221079a4e306ef68c76395114" kindref="member">FeatherFalling</ref><sp/>=<sp/>getEnchantment(&quot;feather_falling&quot;);</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52" refid="classendstone_1_1Enchantment_1a33e22046536f14fe52517c2231f9e3e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a33e22046536f14fe52517c2231f9e3e9" kindref="member">BlastProtection</ref><sp/>=<sp/>getEnchantment(&quot;blast_protection&quot;);</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57" refid="classendstone_1_1Enchantment_1a8fe4c607d8f99f823bbf2c2c12c0102c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a8fe4c607d8f99f823bbf2c2c12c0102c" kindref="member">ProjectileProtection</ref><sp/>=<sp/>getEnchantment(&quot;projectile_protection&quot;);</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62" refid="classendstone_1_1Enchantment_1a57049e0f81d37387ad83ad0c7a69a6be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a57049e0f81d37387ad83ad0c7a69a6be" kindref="member">Thorns</ref><sp/>=<sp/>getEnchantment(&quot;thorns&quot;);</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67" refid="classendstone_1_1Enchantment_1ab5c1b475d7b938e1d7a3f807e6019378" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1ab5c1b475d7b938e1d7a3f807e6019378" kindref="member">Respiration</ref><sp/>=<sp/>getEnchantment(&quot;respiration&quot;);</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72" refid="classendstone_1_1Enchantment_1af1c7e007b6435165eb45740fce0cc683" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1af1c7e007b6435165eb45740fce0cc683" kindref="member">DepthStrider</ref><sp/>=<sp/>getEnchantment(&quot;depth_strider&quot;);</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77" refid="classendstone_1_1Enchantment_1a0c24bbd41bf4afe5444cd3b9d7b54452" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a0c24bbd41bf4afe5444cd3b9d7b54452" kindref="member">AquaAffinity</ref><sp/>=<sp/>getEnchantment(&quot;aqua_affinity&quot;);</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82" refid="classendstone_1_1Enchantment_1aa822ad1465f023f3968bf896ad4e86ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1aa822ad1465f023f3968bf896ad4e86ae" kindref="member">Sharpness</ref><sp/>=<sp/>getEnchantment(&quot;sharpness&quot;);</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87" refid="classendstone_1_1Enchantment_1a3067f0269bade2ac079c6db7e1ae309b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a3067f0269bade2ac079c6db7e1ae309b" kindref="member">Smite</ref><sp/>=<sp/>getEnchantment(&quot;smite&quot;);</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92" refid="classendstone_1_1Enchantment_1aa0ac2c30febd9db5d648453529a22553" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1aa0ac2c30febd9db5d648453529a22553" kindref="member">BaneOfArthropods</ref><sp/>=<sp/>getEnchantment(&quot;bane_of_arthropods&quot;);</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97" refid="classendstone_1_1Enchantment_1a1d8b0ee51e2b63af5fa92434ab4ff8fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a1d8b0ee51e2b63af5fa92434ab4ff8fb" kindref="member">Knockback</ref><sp/>=<sp/>getEnchantment(&quot;knockback&quot;);</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102" refid="classendstone_1_1Enchantment_1a5ee507280fca638b4cb63d97384df437" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a5ee507280fca638b4cb63d97384df437" kindref="member">FireAspect</ref><sp/>=<sp/>getEnchantment(&quot;fire_aspect&quot;);</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107" refid="classendstone_1_1Enchantment_1ab832d331b4a1bb64a9396182115412f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1ab832d331b4a1bb64a9396182115412f3" kindref="member">Looting</ref><sp/>=<sp/>getEnchantment(&quot;looting&quot;);</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="112" refid="classendstone_1_1Enchantment_1a2bb3e8d904040328dd5f08adb5a1c6f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a2bb3e8d904040328dd5f08adb5a1c6f7" kindref="member">Efficiency</ref><sp/>=<sp/>getEnchantment(&quot;efficiency&quot;);</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117" refid="classendstone_1_1Enchantment_1a37122cf5b2f6c6adea4ea25cf94ac47d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a37122cf5b2f6c6adea4ea25cf94ac47d" kindref="member">SilkTouch</ref><sp/>=<sp/>getEnchantment(&quot;silk_touch&quot;);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122" refid="classendstone_1_1Enchantment_1a73c32f0550929fca8128ee56577a04a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a73c32f0550929fca8128ee56577a04a4" kindref="member">Unbreaking</ref><sp/>=<sp/>getEnchantment(&quot;unbreaking&quot;);</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127" refid="classendstone_1_1Enchantment_1ac86988b6702e58c5f8bec1778e5d7424" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1ac86988b6702e58c5f8bec1778e5d7424" kindref="member">Fortune</ref><sp/>=<sp/>getEnchantment(&quot;fortune&quot;);</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132" refid="classendstone_1_1Enchantment_1ac114920606cc904cb17ff3e9a1133f1f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1ac114920606cc904cb17ff3e9a1133f1f" kindref="member">Power</ref><sp/>=<sp/>getEnchantment(&quot;power&quot;);</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137" refid="classendstone_1_1Enchantment_1ac480f39a284bc1b29ead6b5ddd5a62fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1ac480f39a284bc1b29ead6b5ddd5a62fb" kindref="member">Punch</ref><sp/>=<sp/>getEnchantment(&quot;punch&quot;);</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142" refid="classendstone_1_1Enchantment_1a71df09047092134a3d8a7bbba087e434" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a71df09047092134a3d8a7bbba087e434" kindref="member">Flame</ref><sp/>=<sp/>getEnchantment(&quot;flame&quot;);</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="147" refid="classendstone_1_1Enchantment_1a4523ab35640cc93ac028b8f0ba611c54" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a4523ab35640cc93ac028b8f0ba611c54" kindref="member">Infinity</ref><sp/>=<sp/>getEnchantment(&quot;infinity&quot;);</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152" refid="classendstone_1_1Enchantment_1a541256e08ea3498976f16af938cf3d97" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a541256e08ea3498976f16af938cf3d97" kindref="member">LuckOfTheSea</ref><sp/>=<sp/>getEnchantment(&quot;luck_of_the_sea&quot;);</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157" refid="classendstone_1_1Enchantment_1a6f1a563a10d8c177304e332da682b39f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a6f1a563a10d8c177304e332da682b39f" kindref="member">Lure</ref><sp/>=<sp/>getEnchantment(&quot;lure&quot;);</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<codeline lineno="162" refid="classendstone_1_1Enchantment_1a01eb7d453a9768c4a04f880e990a3be2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a01eb7d453a9768c4a04f880e990a3be2" kindref="member">FrostWalker</ref><sp/>=<sp/>getEnchantment(&quot;frost_walker&quot;);</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight></codeline>
-<codeline lineno="167" refid="classendstone_1_1Enchantment_1a528c18b4cba870f4300892091d62fc80" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a528c18b4cba870f4300892091d62fc80" kindref="member">Mending</ref><sp/>=<sp/>getEnchantment(&quot;mending&quot;);</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172" refid="classendstone_1_1Enchantment_1abea8e1204d9dd0e195c4100582e527e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1abea8e1204d9dd0e195c4100582e527e0" kindref="member">CurseOfBinding</ref><sp/>=<sp/>getEnchantment(&quot;binding&quot;);</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177" refid="classendstone_1_1Enchantment_1ac0111184546680976bc4dc9a03ba9271" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1ac0111184546680976bc4dc9a03ba9271" kindref="member">CurseOfVanishing</ref><sp/>=<sp/>getEnchantment(&quot;vanishing&quot;);</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"></highlight></codeline>
-<codeline lineno="182" refid="classendstone_1_1Enchantment_1af72cdba0bee7268d803fe6831c8eb806" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1af72cdba0bee7268d803fe6831c8eb806" kindref="member">Impaling</ref><sp/>=<sp/>getEnchantment(&quot;impaling&quot;);</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187" refid="classendstone_1_1Enchantment_1a55add57223e3eb1e44312cfd6e6af07e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a55add57223e3eb1e44312cfd6e6af07e" kindref="member">Riptide</ref><sp/>=<sp/>getEnchantment(&quot;riptide&quot;);</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"></highlight></codeline>
-<codeline lineno="192" refid="classendstone_1_1Enchantment_1a5b9a2a157735ca0e27a7c175b734e6c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a5b9a2a157735ca0e27a7c175b734e6c1" kindref="member">Loyalty</ref><sp/>=<sp/>getEnchantment(&quot;loyalty&quot;);</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"></highlight></codeline>
-<codeline lineno="197" refid="classendstone_1_1Enchantment_1ae73bf51010fa7ff8c7de2dd350122b34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1ae73bf51010fa7ff8c7de2dd350122b34" kindref="member">Channeling</ref><sp/>=<sp/>getEnchantment(&quot;channeling&quot;);</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"></highlight></codeline>
-<codeline lineno="202" refid="classendstone_1_1Enchantment_1a1ab9b4a512344cd9528accfbafd489a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a1ab9b4a512344cd9528accfbafd489a8" kindref="member">Multishot</ref><sp/>=<sp/>getEnchantment(&quot;multishot&quot;);</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"></highlight></codeline>
-<codeline lineno="207" refid="classendstone_1_1Enchantment_1afe6c192301d88c4b0e0ef7e0f2449e59" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1afe6c192301d88c4b0e0ef7e0f2449e59" kindref="member">Piercing</ref><sp/>=<sp/>getEnchantment(&quot;piercing&quot;);</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"></highlight></codeline>
-<codeline lineno="212" refid="classendstone_1_1Enchantment_1a2faf0209df882021c58ed270b7225f33" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a2faf0209df882021c58ed270b7225f33" kindref="member">QuickCharge</ref><sp/>=<sp/>getEnchantment(&quot;quick_charge&quot;);</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"></highlight></codeline>
-<codeline lineno="217" refid="classendstone_1_1Enchantment_1a69557571deb2bf6a5fc6600d7bcc0acd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a69557571deb2bf6a5fc6600d7bcc0acd" kindref="member">SoulSpeed</ref><sp/>=<sp/>getEnchantment(&quot;soul_speed&quot;);</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"></highlight></codeline>
-<codeline lineno="222" refid="classendstone_1_1Enchantment_1a062964625f266c0c9aa306fa485418fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a062964625f266c0c9aa306fa485418fe" kindref="member">SwiftSneak</ref><sp/>=<sp/>getEnchantment(&quot;swift_sneak&quot;);</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"></highlight></codeline>
-<codeline lineno="227" refid="classendstone_1_1Enchantment_1a80ed327b5f9784464514a6032af502a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a80ed327b5f9784464514a6032af502a2" kindref="member">WindBurst</ref><sp/>=<sp/>getEnchantment(&quot;wind_burst&quot;);</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"></highlight></codeline>
-<codeline lineno="232" refid="classendstone_1_1Enchantment_1aeb91e4768e20b469d5d33f72b7e1f418" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1aeb91e4768e20b469d5d33f72b7e1f418" kindref="member">Density</ref><sp/>=<sp/>getEnchantment(&quot;density&quot;);</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"></highlight></codeline>
-<codeline lineno="237" refid="classendstone_1_1Enchantment_1ad94a1826b30a03ac8535cd0bfa1b06db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>inline<sp/>static<sp/>const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1ad94a1826b30a03ac8535cd0bfa1b06db" kindref="member">Breach</ref><sp/>=<sp/>getEnchantment(&quot;breach&quot;);</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"></highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/>~<ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref>()<sp/>=<sp/>default;</highlight></codeline>
-<codeline lineno="240"><highlight class="normal"></highlight></codeline>
-<codeline lineno="246" refid="classendstone_1_1Enchantment_1ab02562f0e0585d106bb3fc904bd32b14" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>virtual<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1ab02562f0e0585d106bb3fc904bd32b14" kindref="member">getId</ref>()<sp/>const<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"></highlight></codeline>
-<codeline lineno="253" refid="classendstone_1_1Enchantment_1a2c9d36d8189de57bcff77586591e9c05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>virtual<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a2c9d36d8189de57bcff77586591e9c05" kindref="member">getTranslationKey</ref>()<sp/>const<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"></highlight></codeline>
-<codeline lineno="260" refid="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>virtual<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" kindref="member">getMaxLevel</ref>()<sp/>const<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"></highlight></codeline>
-<codeline lineno="267" refid="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>virtual<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" kindref="member">getStartLevel</ref>()<sp/>const<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="268"><highlight class="normal"></highlight></codeline>
-<codeline lineno="275" refid="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" kindref="member">conflictsWith</ref>(const<sp/><ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref><sp/>&amp;other)<sp/>const<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"></highlight></codeline>
-<codeline lineno="285" refid="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" kindref="member">canEnchantItem</ref>(const<sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;item)<sp/>const<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="286"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="287"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_REGISTRY_TYPE(<ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref>)</highlight></codeline>
+<codeline lineno="31" refid="classendstone_1_1Enchantment_1ac7918f3e3cab412ff65c436a05b85889" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1ac7918f3e3cab412ff65c436a05b85889" kindref="member">Protection</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">protection</ref>&quot;);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="classendstone_1_1Enchantment_1acaea890abfefd73050a4cf0edee110e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1acaea890abfefd73050a4cf0edee110e3" kindref="member">FireProtection</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">fire_protection</ref>&quot;);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classendstone_1_1Enchantment_1ab2074a3f3553a44007dc4c063ac9c13e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1ab2074a3f3553a44007dc4c063ac9c13e" kindref="member">FeatherFalling</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">feather_falling</ref>&quot;);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classendstone_1_1Enchantment_1aaf7ba432745dd23f545fdd5903d24b99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1aaf7ba432745dd23f545fdd5903d24b99" kindref="member">BlastProtection</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">blast_protection</ref>&quot;);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classendstone_1_1Enchantment_1a4cd9bf3365fcfe936485603a35c190a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a4cd9bf3365fcfe936485603a35c190a8" kindref="member">ProjectileProtection</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">projectile_protection</ref>&quot;);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classendstone_1_1Enchantment_1ad73ef8fb1ba8e9a764a10cffd9d8cfd8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1ad73ef8fb1ba8e9a764a10cffd9d8cfd8" kindref="member">Thorns</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">thorns</ref>&quot;);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classendstone_1_1Enchantment_1ab5d4bfd41a822904898c7cc1f0a36fe7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1ab5d4bfd41a822904898c7cc1f0a36fe7" kindref="member">Respiration</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">respiration</ref>&quot;);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classendstone_1_1Enchantment_1a373f86003904932ed3a62bb52e795273" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a373f86003904932ed3a62bb52e795273" kindref="member">DepthStrider</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">depth_strider</ref>&quot;);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classendstone_1_1Enchantment_1a42951020e8e528fe120e6e33b3fcd6de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a42951020e8e528fe120e6e33b3fcd6de" kindref="member">AquaAffinity</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">aqua_affinity</ref>&quot;);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classendstone_1_1Enchantment_1aee48de274b3bd83def274e5a40a1b136" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1aee48de274b3bd83def274e5a40a1b136" kindref="member">Sharpness</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">sharpness</ref>&quot;);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classendstone_1_1Enchantment_1a9ea3c26bb9d6f4f053f280aba3d7b62b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a9ea3c26bb9d6f4f053f280aba3d7b62b" kindref="member">Smite</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">smite</ref>&quot;);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classendstone_1_1Enchantment_1a0fdbd9dc57cb3132b60edf77206dd392" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a0fdbd9dc57cb3132b60edf77206dd392" kindref="member">BaneOfArthropods</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">bane_of_arthropods</ref>&quot;);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classendstone_1_1Enchantment_1a57e30cdc84b6a98c63b1176492ec91d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a57e30cdc84b6a98c63b1176492ec91d1" kindref="member">Knockback</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">knockback</ref>&quot;);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classendstone_1_1Enchantment_1a90c315ec1e40433fed2d0decd2489b8d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a90c315ec1e40433fed2d0decd2489b8d" kindref="member">FireAspect</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">fire_aspect</ref>&quot;);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classendstone_1_1Enchantment_1a2aa552f6157d47f02488e9222dc49a36" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a2aa552f6157d47f02488e9222dc49a36" kindref="member">Looting</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">looting</ref>&quot;);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classendstone_1_1Enchantment_1a3c9103b8d052cd17fce10e2dd6af2a10" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a3c9103b8d052cd17fce10e2dd6af2a10" kindref="member">Efficiency</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">efficiency</ref>&quot;);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classendstone_1_1Enchantment_1abd056d3405bbfca06914bbcfe13255f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1abd056d3405bbfca06914bbcfe13255f8" kindref="member">SilkTouch</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">silk_touch</ref>&quot;);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classendstone_1_1Enchantment_1afd8d1c7a403e5d937083adb4cd3927c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1afd8d1c7a403e5d937083adb4cd3927c1" kindref="member">Unbreaking</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">unbreaking</ref>&quot;);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classendstone_1_1Enchantment_1a77cbd7b93fbfcc75fb8afcfb7b33b6cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a77cbd7b93fbfcc75fb8afcfb7b33b6cb" kindref="member">Fortune</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">fortune</ref>&quot;);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classendstone_1_1Enchantment_1aaeb31319b930697876162d77036cf711" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1aaeb31319b930697876162d77036cf711" kindref="member">Power</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">power</ref>&quot;);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="classendstone_1_1Enchantment_1a1dc5996465eee694835cabee30cad131" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a1dc5996465eee694835cabee30cad131" kindref="member">Punch</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">punch</ref>&quot;);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="classendstone_1_1Enchantment_1a39447ccc523ab709f9aad17dd6dfba06" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a39447ccc523ab709f9aad17dd6dfba06" kindref="member">Flame</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">flame</ref>&quot;);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="classendstone_1_1Enchantment_1a7e9b6f58f298705ddc3ed1563f358e6f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a7e9b6f58f298705ddc3ed1563f358e6f" kindref="member">Infinity</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">infinity</ref>&quot;);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="classendstone_1_1Enchantment_1a226dfe99a6d5f65ef9e944aeedf0252a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a226dfe99a6d5f65ef9e944aeedf0252a" kindref="member">LuckOfTheSea</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">luck_of_the_sea</ref>&quot;);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="classendstone_1_1Enchantment_1ac0116f71196e9d556d8ec3ec31ee6dde" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1ac0116f71196e9d556d8ec3ec31ee6dde" kindref="member">Lure</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">lure</ref>&quot;);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="classendstone_1_1Enchantment_1a4d2377f98184f466cfe11b4e4b931d2d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a4d2377f98184f466cfe11b4e4b931d2d" kindref="member">FrostWalker</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">frost_walker</ref>&quot;);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="classendstone_1_1Enchantment_1aa6585b6679cde360f39eec335a1dea5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1aa6585b6679cde360f39eec335a1dea5f" kindref="member">Mending</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">mending</ref>&quot;);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="classendstone_1_1Enchantment_1afa3ddb9920176f9ae34c0365ce2fb678" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1afa3ddb9920176f9ae34c0365ce2fb678" kindref="member">CurseOfBinding</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">binding</ref>&quot;);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="classendstone_1_1Enchantment_1ab225e12bdf8a6349260ca6364997eb4f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1ab225e12bdf8a6349260ca6364997eb4f" kindref="member">CurseOfVanishing</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">vanishing</ref>&quot;);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176" refid="classendstone_1_1Enchantment_1aab652fd5d6b61b4c8603dcf77277b27b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1aab652fd5d6b61b4c8603dcf77277b27b" kindref="member">Impaling</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">impaling</ref>&quot;);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="classendstone_1_1Enchantment_1a05e9349874f0a9f9d346f7f9f4d3da0f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a05e9349874f0a9f9d346f7f9f4d3da0f" kindref="member">Riptide</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">riptide</ref>&quot;);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186" refid="classendstone_1_1Enchantment_1af880cae983ce48ce9db53be0bf179575" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1af880cae983ce48ce9db53be0bf179575" kindref="member">Loyalty</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">loyalty</ref>&quot;);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191" refid="classendstone_1_1Enchantment_1a8d0b2beb68bd080060160e20991f0db2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a8d0b2beb68bd080060160e20991f0db2" kindref="member">Channeling</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">channeling</ref>&quot;);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196" refid="classendstone_1_1Enchantment_1ab6cdd60f5254e0f6c09fc0d9809541fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1ab6cdd60f5254e0f6c09fc0d9809541fe" kindref="member">Multishot</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">multishot</ref>&quot;);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="classendstone_1_1Enchantment_1a515c9a244378f0c8ed5ddc4ba0cf78a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a515c9a244378f0c8ed5ddc4ba0cf78a6" kindref="member">Piercing</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">piercing</ref>&quot;);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="classendstone_1_1Enchantment_1ae7c1ce0070b7ce7a3e658468baafef60" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1ae7c1ce0070b7ce7a3e658468baafef60" kindref="member">QuickCharge</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">quick_charge</ref>&quot;);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211" refid="classendstone_1_1Enchantment_1a7a7a32218950752913898d3ca937400d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a7a7a32218950752913898d3ca937400d" kindref="member">SoulSpeed</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">soul_speed</ref>&quot;);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216" refid="classendstone_1_1Enchantment_1a50546b69e92f614ef004d1e75b539a52" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a50546b69e92f614ef004d1e75b539a52" kindref="member">SwiftSneak</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">swift_sneak</ref>&quot;);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221" refid="classendstone_1_1Enchantment_1a94d6dbb5f544f8b1ac328dcd02c9bc1c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a94d6dbb5f544f8b1ac328dcd02c9bc1c" kindref="member">WindBurst</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">wind_burst</ref>&quot;);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226" refid="classendstone_1_1Enchantment_1a72cc616fb733110b6e50e0aea44858b3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a72cc616fb733110b6e50e0aea44858b3" kindref="member">Density</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">density</ref>&quot;);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="classendstone_1_1Enchantment_1a940db5ad3f732d219e93c15790e1dcda" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">static</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref><sp/><ref refid="classendstone_1_1Enchantment_1a940db5ad3f732d219e93c15790e1dcda" kindref="member">Breach</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref>::minecraft(&quot;<ref refid="classendstone_1_1Identifier" kindref="compound">breach</ref>&quot;);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">virtual</ref><sp/>~<ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref>()<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">default</ref>;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="classendstone_1_1Enchantment_1a4e877f661219c78647b888f3c5b41a9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">virtual</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref><sp/><ref refid="classendstone_1_1Enchantment_1a4e877f661219c78647b888f3c5b41a9a" kindref="member">getId</ref>()<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="classendstone_1_1Enchantment_1a2c9d36d8189de57bcff77586591e9c05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">virtual</ref><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a2c9d36d8189de57bcff77586591e9c05" kindref="member">getTranslationKey</ref>()<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254" refid="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">virtual</ref><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" kindref="member">getMaxLevel</ref>()<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261" refid="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">virtual</ref><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" kindref="member">getStartLevel</ref>()<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269" refid="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">virtual</ref><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" kindref="member">conflictsWith</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref><sp/><ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279" refid="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">virtual</ref><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" kindref="member">canEnchantItem</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">item</ref>)<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="281"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/enchantments/enchantment.h"/>
   </compounddef>

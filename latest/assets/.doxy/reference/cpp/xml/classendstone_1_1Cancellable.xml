@@ -7,12 +7,12 @@
     <includes refid="cancellable_8h" local="no">endstone/event/cancellable.h</includes>
     <templateparamlist>
       <param>
-        <type>typename EventType</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> EventType</type>
       </param>
     </templateparamlist>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::Cancellable&lt; EventType &gt;::isCancelled</definition>
         <argsstring>() const override</argsstring>
         <name>isCancelled</name>
@@ -31,14 +31,14 @@
         <location file="include/endstone/event/cancellable.h" line="41" column="11" bodyfile="include/endstone/event/cancellable.h" bodystart="41" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::Cancellable&lt; EventType &gt;::setCancelled</definition>
         <argsstring>(bool cancel) override</argsstring>
         <name>setCancelled</name>
         <qualifiedname>endstone::Cancellable::setCancelled</qualifiedname>
         <reimplements refid="classendstone_1_1ICancellable_1a348a8d847632c98e42510134d82086ef">setCancelled</reimplements>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
           <declname>cancel</declname>
         </param>
         <briefdescription>
@@ -61,7 +61,7 @@
         <location file="include/endstone/event/cancellable.h" line="52" column="10" bodyfile="include/endstone/event/cancellable.h" bodystart="52" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" static="no" const="no" explicit="no" inline="yes" final="yes" virt="virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::Cancellable&lt; EventType &gt;::cancel</definition>
         <argsstring>() final</argsstring>
         <name>cancel</name>
@@ -79,7 +79,7 @@
     </sectiondef>
     <sectiondef kind="private-func">
       <memberdef kind="function" id="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418" prot="private" static="no" const="yes" explicit="no" inline="yes" final="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::Cancellable&lt; EventType &gt;::isCancellable</definition>
         <argsstring>() const final</argsstring>
         <name>isCancellable</name>

@@ -24,49 +24,43 @@
 
 #pragma once
 
-#include <string>
-
-#include "endstone/namespaced_key.h"
+#include "endstone/identifier.h"
 
 namespace endstone {
+using AttributeId = Identifier<class Attribute>;
 class Attribute {
-    static std::string getAttribute(const std::string &key)
-    {
-        return NamespacedKey::minecraft(key);
-    }
-
 public:
-    inline static const std::string Health = getAttribute("health");
+    static constexpr auto Health = AttributeId::minecraft("health");
 
-    inline static const std::string FollowRange = getAttribute("follow_range");
+    static constexpr auto FollowRange = AttributeId::minecraft("follow_range");
 
-    inline static const std::string KnockbackResistance = getAttribute("knockback_resistance");
+    static constexpr auto KnockbackResistance = AttributeId::minecraft("knockback_resistance");
 
-    inline static const std::string MovementSpeed = getAttribute("movement");
+    static constexpr auto MovementSpeed = AttributeId::minecraft("movement");
 
-    inline static const std::string UnderwaterMovementSpeed = getAttribute("underwater_movement");
+    static constexpr auto UnderwaterMovementSpeed = AttributeId::minecraft("underwater_movement");
 
-    inline static const std::string LavaMovementSpeed = getAttribute("lava_movement");
+    static constexpr auto LavaMovementSpeed = AttributeId::minecraft("lava_movement");
 
-    inline static const std::string AttackDamage = getAttribute("attack_damage");
+    static constexpr auto AttackDamage = AttributeId::minecraft("attack_damage");
 
-    inline static const std::string Absorption = getAttribute("absorption");
+    static constexpr auto Absorption = AttributeId::minecraft("absorption");
 
-    inline static const std::string Luck = getAttribute("luck");
+    static constexpr auto Luck = AttributeId::minecraft("luck");
 
-    inline static const std::string JumpStrength = getAttribute("jump_strength");
+    static constexpr auto JumpStrength = AttributeId::minecraft("jump_strength");
 
-    inline static const std::string PlayerHunger = getAttribute("player.hunger");
+    static constexpr auto PlayerHunger = AttributeId::minecraft("player.hunger");
 
-    inline static const std::string PlayerSaturation = getAttribute("player.saturation");
+    static constexpr auto PlayerSaturation = AttributeId::minecraft("player.saturation");
 
-    inline static const std::string PlayerExhaustion = getAttribute("player.exhaustion");
+    static constexpr auto PlayerExhaustion = AttributeId::minecraft("player.exhaustion");
 
-    inline static const std::string PlayerLevel = getAttribute("player.level");
+    static constexpr auto PlayerLevel = AttributeId::minecraft("player.level");
 
-    inline static const std::string PlayerExperience = getAttribute("player.experience");
+    static constexpr auto PlayerExperience = AttributeId::minecraft("player.experience");
 
-    inline static const std::string ZombieSpawnReinforcements = getAttribute("zombie.spawn_reinforcements");
+    static constexpr auto ZombieSpawnReinforcements = AttributeId::minecraft("zombie.spawn_reinforcements");
 };
 }  // namespace endstone
 ```

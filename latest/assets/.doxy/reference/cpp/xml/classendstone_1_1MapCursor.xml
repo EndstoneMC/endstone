@@ -254,7 +254,7 @@
         <location file="include/endstone/map/map_cursor.h" line="196" column="17" bodyfile="include/endstone/map/map_cursor.h" bodystart="196" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1MapCursor_1adc46bac110c927e3ab55e60bf2449a69" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::MapCursor::visible_</definition>
         <argsstring></argsstring>
         <name>visible_</name>
@@ -320,7 +320,7 @@
           <declname>type</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
           <declname>visible</declname>
         </param>
         <param>
@@ -460,7 +460,7 @@
         <location file="include/endstone/map/map_cursor.h" line="106" column="11" bodyfile="include/endstone/map/map_cursor.h" bodystart="106" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1ae9506f2c0559118d4144b5e346a40c14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::MapCursor::isVisible</definition>
         <argsstring>() const</argsstring>
         <name>isVisible</name>
@@ -478,13 +478,13 @@
         <location file="include/endstone/map/map_cursor.h" line="116" column="11" bodyfile="include/endstone/map/map_cursor.h" bodystart="116" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a29380088da25b4084b81606e6b5d508f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::MapCursor::setX</definition>
         <argsstring>(const std::int8_t x)</argsstring>
         <name>setX</name>
         <qualifiedname>endstone::MapCursor::setX</qualifiedname>
         <param>
-          <type>const std::int8_t</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::int8_t</type>
           <declname>x</declname>
         </param>
         <briefdescription>
@@ -507,13 +507,13 @@
         <location file="include/endstone/map/map_cursor.h" line="126" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="126" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a484cc2ed2c6de8debc8972f6c8c0988f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::MapCursor::setY</definition>
         <argsstring>(const std::int8_t y)</argsstring>
         <name>setY</name>
         <qualifiedname>endstone::MapCursor::setY</qualifiedname>
         <param>
-          <type>const std::int8_t</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::int8_t</type>
           <declname>y</declname>
         </param>
         <briefdescription>
@@ -536,7 +536,7 @@
         <location file="include/endstone/map/map_cursor.h" line="136" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="136" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a0de703b52edf0754d5592be8e581ecee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>Result&lt; void &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
         <definition>Result&lt; void &gt; endstone::MapCursor::setDirection</definition>
         <argsstring>(std::int8_t direction)</argsstring>
         <name>setDirection</name>
@@ -565,7 +565,7 @@
         <location file="include/endstone/map/map_cursor.h" line="146" column="12" bodyfile="include/endstone/map/map_cursor.h" bodystart="146" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a500aa39db9566ee384d1e532aac1ea8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::MapCursor::setType</definition>
         <argsstring>(Type type)</argsstring>
         <name>setType</name>
@@ -594,13 +594,13 @@
         <location file="include/endstone/map/map_cursor.h" line="158" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="158" bodyend="161"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a5428ea761c7426c0f42597f4b2ebbdb4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::MapCursor::setVisible</definition>
         <argsstring>(bool visible)</argsstring>
         <name>setVisible</name>
         <qualifiedname>endstone::MapCursor::setVisible</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
           <declname>visible</declname>
         </param>
         <briefdescription>
@@ -641,7 +641,7 @@
         <location file="include/endstone/map/map_cursor.h" line="179" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="179" bodyend="182"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a5dca61d7f87cb3113256b691645467c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::MapCursor::setCaption</definition>
         <argsstring>(std::string caption)</argsstring>
         <name>setCaption</name>

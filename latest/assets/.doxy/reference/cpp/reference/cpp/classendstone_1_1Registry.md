@@ -2,7 +2,7 @@
 
 # Class endstone::Registry
 
-**template &lt;typename T&gt;**
+**template &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;**
 
 
 
@@ -10,7 +10,7 @@
 
 
 
-_Abstract registry interface for keyed objects._ [More...](#detailed-description)
+_Abstract registry interface for objects with identifiers._ [More...](#detailed-description)
 
 * `#include <endstone/registry.h>`
 
@@ -75,11 +75,11 @@ Inherits the following classes: [endstone::IRegistry](classendstone_1_1IRegistry
 
 | Type | Name |
 | ---: | :--- |
-| virtual void | [**forEach**](#function-foreach) (std::function&lt; bool(const T &)&gt; func) const = 0<br>_Apply a function to each stored element._  |
-| virtual T \* | [**get**](#function-get-12) (const std::string & key) noexcept = 0<br>_Get the object by its key._  |
-| virtual const T \* | [**get**](#function-get-22) (const std::string & key) noexcept const = 0<br>_Get the object by its key._  |
-| virtual T & | [**getOrThrow**](#function-getorthrow-12) (const std::string & key) <br>_Get the object by its key or throw if missing._  |
-| virtual const T & | [**getOrThrow**](#function-getorthrow-22) (const std::string & key) const<br>_Get the object by its key or throw if missing._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**forEach**](#function-foreach) (std::function&lt; [**bool**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) &)&gt; func) const = 0<br>_Apply a function to each stored element._  |
+| virtual [**T**](classendstone_1_1Identifier.md) \* | [**get**](#function-get-12) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; id) noexcept = 0<br>_Get the object by its identifier._  |
+| virtual [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**get**](#function-get-22) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; id) noexcept const = 0<br>_Get the object by its identifier._  |
+| virtual [**T**](classendstone_1_1Identifier.md) & | [**getOrThrow**](#function-getorthrow-12) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; id) <br>_Get the object by its identifier or throw if missing._  |
+| virtual [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & | [**getOrThrow**](#function-getorthrow-22) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; id) const<br>_Get the object by its identifier or throw if missing._  |
 
 
 ## Public Functions inherited from endstone::IRegistry
@@ -146,7 +146,7 @@ See [endstone::IRegistry](classendstone_1_1IRegistry.md)
 ## Detailed Description
 
 
-Provides lookup by key (nullable or exception-throwing) and iteration.
+Provides lookup by identifier (nullable or exception-throwing) and iteration.
 
 
 
@@ -154,7 +154,7 @@ Provides lookup by key (nullable or exception-throwing) and iteration.
 **Template parameters:**
 
 
-* `T` Must satisfy Keyed, i.e. implement getKey(). 
+* `T` Must implement getId(). 
 
 
 
@@ -170,7 +170,7 @@ Provides lookup by key (nullable or exception-throwing) and iteration.
 _Apply a function to each stored element._ 
 ```C++
 virtual void endstone::Registry::forEach (
-    std::function< bool(const T &)> func
+    std::function< bool ( const  T &)> func
 ) const = 0
 ```
 
@@ -197,10 +197,10 @@ Iterates over all stored elements and applies the provided function to them. The
 
 ### function get [1/2]
 
-_Get the object by its key._ 
+_Get the object by its identifier._ 
 ```C++
 virtual T * endstone::Registry::get (
-    const std::string & key
+    Identifier < T > id
 ) noexcept = 0
 ```
 
@@ -214,7 +214,7 @@ Returns a raw pointer to the object, or nullptr if not found.
 **Parameters:**
 
 
-* `key` Non-null key to look up. 
+* `id` [**Identifier**](classendstone_1_1Identifier.md) to look up. 
 
 
 
@@ -234,10 +234,10 @@ T\* Pointer to the object, or nullptr if it does not exist.
 
 ### function get [2/2]
 
-_Get the object by its key._ 
+_Get the object by its identifier._ 
 ```C++
-virtual const T * endstone::Registry::get (
-    const std::string & key
+virtual const  T * endstone::Registry::get (
+    Identifier < T > id
 ) noexcept const = 0
 ```
 
@@ -251,7 +251,7 @@ Returns a raw pointer to the object, or nullptr if not found.
 **Parameters:**
 
 
-* `key` Non-null key to look up. 
+* `id` Non-null identifier to look up. 
 
 
 
@@ -271,10 +271,10 @@ const T\* Pointer to the object, or nullptr if it does not exist.
 
 ### function getOrThrow [1/2]
 
-_Get the object by its key or throw if missing._ 
+_Get the object by its identifier or throw if missing._ 
 ```C++
 inline virtual T & endstone::Registry::getOrThrow (
-    const std::string & key
+    Identifier < T > id
 ) 
 ```
 
@@ -285,13 +285,13 @@ inline virtual T & endstone::Registry::getOrThrow (
 **Parameters:**
 
 
-* `key` Key of the object to retrieve. 
+* `id` identifier of the object to retrieve. 
 
 
 
 **Returns:**
 
-T& Reference to the object with the given key. 
+T& Reference to the object with the given identifier. 
 
 
 
@@ -299,7 +299,7 @@ T& Reference to the object with the given key.
 **Exception:**
 
 
-* `std::invalid_argument` if no object with the given key exists. 
+* `std::invalid_argument` if no object with the given identifier exists. 
 
 
 
@@ -312,10 +312,10 @@ T& Reference to the object with the given key.
 
 ### function getOrThrow [2/2]
 
-_Get the object by its key or throw if missing._ 
+_Get the object by its identifier or throw if missing._ 
 ```C++
-inline virtual const T & endstone::Registry::getOrThrow (
-    const std::string & key
+inline virtual const  T & endstone::Registry::getOrThrow (
+    Identifier < T > id
 ) const
 ```
 
@@ -326,13 +326,13 @@ inline virtual const T & endstone::Registry::getOrThrow (
 **Parameters:**
 
 
-* `key` Key of the object to retrieve. 
+* `id` identifier of the object to retrieve. 
 
 
 
 **Returns:**
 
-const T& Const reference to the object with the given key. 
+const T& Const reference to the object with the given identifier. 
 
 
 
@@ -340,7 +340,7 @@ const T& Const reference to the object with the given key.
 **Exception:**
 
 
-* `std::invalid_argument` if no object with the given key exists. 
+* `std::invalid_argument` if no object with the given identifier exists. 
 
 
 

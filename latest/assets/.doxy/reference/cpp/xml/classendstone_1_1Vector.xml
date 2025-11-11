@@ -5,7 +5,7 @@
     <includes refid="vector_8h" local="no">endstone/util/vector.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classendstone_1_1Vector_1abb54ac14a247bb8e4fb904840afa40d2" prot="protected" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>float endstone::Vector::x_</definition>
         <argsstring></argsstring>
         <name>x_</name>
@@ -20,7 +20,7 @@
         <location file="include/endstone/util/vector.h" line="614" column="11" bodyfile="include/endstone/util/vector.h" bodystart="614" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Vector_1ab1fd7c168b44802d8065c597475386ee" prot="protected" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>float endstone::Vector::y_</definition>
         <argsstring></argsstring>
         <name>y_</name>
@@ -35,7 +35,7 @@
         <location file="include/endstone/util/vector.h" line="615" column="11" bodyfile="include/endstone/util/vector.h" bodystart="615" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Vector_1a17331592c0714b78a81cb9942ffe2015" prot="protected" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>float endstone::Vector::z_</definition>
         <argsstring></argsstring>
         <name>z_</name>
@@ -52,7 +52,7 @@
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Vector_1a06b451a6dbf11011d49f9a2e0e5da6e9" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>constexpr</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
         <definition>constexpr endstone::Vector::Vector</definition>
         <argsstring>()=default</argsstring>
         <name>Vector</name>
@@ -69,26 +69,26 @@
       <memberdef kind="function" id="classendstone_1_1Vector_1a17879333a2378988fcdfe405036caefa" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; float &gt;</type>
+            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type>constexpr</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
         <definition>constexpr endstone::Vector::Vector</definition>
         <argsstring>(T x, T y, T z)</argsstring>
         <name>Vector</name>
         <qualifiedname>endstone::Vector::Vector</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>y</declname>
         </param>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -133,7 +133,7 @@
         <name>Vector</name>
         <qualifiedname>endstone::Vector::Vector</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -169,7 +169,7 @@
         <name>operator=</name>
         <qualifiedname>endstone::Vector::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -199,7 +199,7 @@
         <location file="include/endstone/util/vector.h" line="49" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ade1fd8a70070c4058ad8da7d69afb388" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>constexpr float endstone::Vector::getX</definition>
         <argsstring>() const</argsstring>
         <name>getX</name>
@@ -219,18 +219,18 @@
       <memberdef kind="function" id="classendstone_1_1Vector_1ad6fe1c73bc113b810234d2bfada8ca0e" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; float &gt;</type>
+            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
         <definition>constexpr Vector &amp; endstone::Vector::setX</definition>
         <argsstring>(T x)</argsstring>
         <name>setX</name>
         <qualifiedname>endstone::Vector::setX</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>x</declname>
         </param>
         <briefdescription>
@@ -255,7 +255,7 @@
         <location file="include/endstone/util/vector.h" line="68" column="22" bodyfile="include/endstone/util/vector.h" bodystart="68" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1adcd8a60875bbb547e5304f40fa4aaabf" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>constexpr float endstone::Vector::getY</definition>
         <argsstring>() const</argsstring>
         <name>getY</name>
@@ -275,18 +275,18 @@
       <memberdef kind="function" id="classendstone_1_1Vector_1a61f1e552c8964108c6dea9d25df1d10f" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; float &gt;</type>
+            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
         <definition>constexpr Vector &amp; endstone::Vector::setY</definition>
         <argsstring>(T y)</argsstring>
         <name>setY</name>
         <qualifiedname>endstone::Vector::setY</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>y</declname>
         </param>
         <briefdescription>
@@ -311,7 +311,7 @@
         <location file="include/endstone/util/vector.h" line="91" column="22" bodyfile="include/endstone/util/vector.h" bodystart="91" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a2c9b701560462a7c015a6cae44d4841c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>constexpr float endstone::Vector::getZ</definition>
         <argsstring>() const</argsstring>
         <name>getZ</name>
@@ -331,18 +331,18 @@
       <memberdef kind="function" id="classendstone_1_1Vector_1afa0231f4530a2b23dd51e7a1f976cfa5" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; float &gt;</type>
+            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
         <definition>constexpr Vector &amp; endstone::Vector::setZ</definition>
         <argsstring>(T z)</argsstring>
         <name>setZ</name>
         <qualifiedname>endstone::Vector::setZ</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>z</declname>
         </param>
         <briefdescription>
@@ -367,7 +367,7 @@
         <location file="include/endstone/util/vector.h" line="114" column="22" bodyfile="include/endstone/util/vector.h" bodystart="114" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1adac00ea988bf21097fdb12bf7b249663" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
         <definition>int endstone::Vector::getBlockX</definition>
         <argsstring>() const</argsstring>
         <name>getBlockX</name>
@@ -385,7 +385,7 @@
         <location file="include/endstone/util/vector.h" line="125" column="10" bodyfile="include/endstone/util/vector.h" bodystart="125" bodyend="128"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a8b94ba16b189f220722d2c1c4a07c57d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
         <definition>int endstone::Vector::getBlockY</definition>
         <argsstring>() const</argsstring>
         <name>getBlockY</name>
@@ -403,7 +403,7 @@
         <location file="include/endstone/util/vector.h" line="135" column="10" bodyfile="include/endstone/util/vector.h" bodystart="135" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ad04cbacaf9f9f2e59a8690469c368450" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
         <definition>int endstone::Vector::getBlockZ</definition>
         <argsstring>() const</argsstring>
         <name>getBlockZ</name>
@@ -421,13 +421,13 @@
         <location file="include/endstone/util/vector.h" line="145" column="10" bodyfile="include/endstone/util/vector.h" bodystart="145" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1aded8bc272c79ee7b70e892da401cda0a" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
         <definition>constexpr Vector endstone::Vector::operator+</definition>
         <argsstring>(const Vector &amp;other) const</argsstring>
         <name>operator+</name>
         <qualifiedname>endstone::Vector::operator+</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -439,13 +439,13 @@
         <location file="include/endstone/util/vector.h" line="150" column="22" bodyfile="include/endstone/util/vector.h" bodystart="150" bodyend="153"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a4d354598ba6f721c3a994469bd50043c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
         <definition>constexpr Vector endstone::Vector::operator-</definition>
         <argsstring>(const Vector &amp;other) const</argsstring>
         <name>operator-</name>
         <qualifiedname>endstone::Vector::operator-</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -457,13 +457,13 @@
         <location file="include/endstone/util/vector.h" line="155" column="22" bodyfile="include/endstone/util/vector.h" bodystart="155" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1abceb4a257ceb299245c7737c44159e4c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
         <definition>constexpr Vector endstone::Vector::operator*</definition>
         <argsstring>(const Vector &amp;other) const</argsstring>
         <name>operator*</name>
         <qualifiedname>endstone::Vector::operator*</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -475,13 +475,13 @@
         <location file="include/endstone/util/vector.h" line="160" column="22" bodyfile="include/endstone/util/vector.h" bodystart="160" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a317abf2bd377bd115d9804c7977dbc47" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
         <definition>constexpr Vector endstone::Vector::operator/</definition>
         <argsstring>(const Vector &amp;other) const</argsstring>
         <name>operator/</name>
         <qualifiedname>endstone::Vector::operator/</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -499,7 +499,7 @@
         <name>operator+=</name>
         <qualifiedname>endstone::Vector::operator+=</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -517,7 +517,7 @@
         <name>operator-=</name>
         <qualifiedname>endstone::Vector::operator-=</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -535,7 +535,7 @@
         <name>operator*=</name>
         <qualifiedname>endstone::Vector::operator*=</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -553,7 +553,7 @@
         <name>operator/=</name>
         <qualifiedname>endstone::Vector::operator/=</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -567,18 +567,18 @@
       <memberdef kind="function" id="classendstone_1_1Vector_1a8d9e64d0da33884ed8efc3ad92df0213" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; float &gt;</type>
+            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
         <definition>constexpr Vector endstone::Vector::operator+</definition>
         <argsstring>(T scalar) const</argsstring>
         <name>operator+</name>
         <qualifiedname>endstone::Vector::operator+</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>scalar</declname>
         </param>
         <briefdescription>
@@ -592,18 +592,18 @@
       <memberdef kind="function" id="classendstone_1_1Vector_1ad242054c1236d91bb57f3c252251039e" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; float &gt;</type>
+            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
         <definition>constexpr Vector endstone::Vector::operator-</definition>
         <argsstring>(T scalar) const</argsstring>
         <name>operator-</name>
         <qualifiedname>endstone::Vector::operator-</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>scalar</declname>
         </param>
         <briefdescription>
@@ -617,18 +617,18 @@
       <memberdef kind="function" id="classendstone_1_1Vector_1a4476f60526db1f3ffb4dd7f2df4f62a9" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; float &gt;</type>
+            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
         <definition>constexpr Vector endstone::Vector::operator*</definition>
         <argsstring>(T scalar) const</argsstring>
         <name>operator*</name>
         <qualifiedname>endstone::Vector::operator*</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>scalar</declname>
         </param>
         <briefdescription>
@@ -642,18 +642,18 @@
       <memberdef kind="function" id="classendstone_1_1Vector_1a602be11767e8dd72bdb9992e9750236e" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>std::convertible_to&lt; float &gt;</type>
+            <type>std::convertible_to&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
             <declname>T</declname>
             <defname>T</defname>
           </param>
         </templateparamlist>
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
         <definition>constexpr Vector endstone::Vector::operator/</definition>
         <argsstring>(T scalar) const</argsstring>
         <name>operator/</name>
         <qualifiedname>endstone::Vector::operator/</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>scalar</declname>
         </param>
         <briefdescription>
@@ -665,13 +665,13 @@
         <location file="include/endstone/util/vector.h" line="224" column="22" bodyfile="include/endstone/util/vector.h" bodystart="224" bodyend="228"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a0598c7cb7cf12e9c0af010d8993fd814" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::Vector::operator==</definition>
         <argsstring>(const Vector &amp;other) const noexcept</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::Vector::operator==</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -683,13 +683,13 @@
         <location file="include/endstone/util/vector.h" line="262" column="10" bodyfile="include/endstone/util/vector.h" bodystart="262" bodyend="267"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a96ff865a96e7487a68d6fd71eecf3bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::Vector::operator!=</definition>
         <argsstring>(const Vector &amp;other) const noexcept</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::Vector::operator!=</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -701,7 +701,7 @@
         <location file="include/endstone/util/vector.h" line="269" column="10" bodyfile="include/endstone/util/vector.h" bodystart="269" bodyend="272"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a6fcb3db759e3d9b99509819223fdda36" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>float endstone::Vector::length</definition>
         <argsstring>() const</argsstring>
         <name>length</name>
@@ -719,7 +719,7 @@
         <location file="include/endstone/util/vector.h" line="279" column="12" bodyfile="include/endstone/util/vector.h" bodystart="279" bodyend="282"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a90a69a99836fd742075e7fb633199ab4" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>constexpr float endstone::Vector::lengthSquared</definition>
         <argsstring>() const</argsstring>
         <name>lengthSquared</name>
@@ -737,13 +737,13 @@
         <location file="include/endstone/util/vector.h" line="289" column="22" bodyfile="include/endstone/util/vector.h" bodystart="289" bodyend="292"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a496ea3fa87a3890ab011c9f1c9724309" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>float endstone::Vector::distance</definition>
         <argsstring>(const Vector &amp;other) const</argsstring>
         <name>distance</name>
         <qualifiedname>endstone::Vector::distance</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -768,13 +768,13 @@
         <location file="include/endstone/util/vector.h" line="300" column="12" bodyfile="include/endstone/util/vector.h" bodystart="300" bodyend="303"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a3c880f6fe455bf2e064c54b408f61ab7" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>constexpr float endstone::Vector::distanceSquared</definition>
         <argsstring>(const Vector &amp;other) const</argsstring>
         <name>distanceSquared</name>
         <qualifiedname>endstone::Vector::distanceSquared</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -799,13 +799,13 @@
         <location file="include/endstone/util/vector.h" line="311" column="22" bodyfile="include/endstone/util/vector.h" bodystart="311" bodyend="315"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a535cc5347d7bf44f944e661f04161b3f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>float endstone::Vector::angle</definition>
         <argsstring>(const Vector &amp;other) const</argsstring>
         <name>angle</name>
         <qualifiedname>endstone::Vector::angle</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -830,13 +830,13 @@
         <location file="include/endstone/util/vector.h" line="323" column="12" bodyfile="include/endstone/util/vector.h" bodystart="323" bodyend="327"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1aaaae2d7af23641afd6a3c2be07b56e32" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
         <definition>constexpr Vector &amp; endstone::Vector::midpoint</definition>
         <argsstring>(const Vector &amp;other)</argsstring>
         <name>midpoint</name>
         <qualifiedname>endstone::Vector::midpoint</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -861,13 +861,13 @@
         <location file="include/endstone/util/vector.h" line="335" column="22" bodyfile="include/endstone/util/vector.h" bodystart="335" bodyend="341"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a4169c456a0a2e46e294920127e35be4d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
         <definition>constexpr Vector endstone::Vector::getMidpoint</definition>
         <argsstring>(const Vector &amp;other) const</argsstring>
         <name>getMidpoint</name>
         <qualifiedname>endstone::Vector::getMidpoint</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -892,13 +892,13 @@
         <location file="include/endstone/util/vector.h" line="349" column="23" bodyfile="include/endstone/util/vector.h" bodystart="349" bodyend="355"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ad6520ae584514364caa411a4b005ac6c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>constexpr float endstone::Vector::dot</definition>
         <argsstring>(const Vector &amp;other) const</argsstring>
         <name>dot</name>
         <qualifiedname>endstone::Vector::dot</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -923,13 +923,13 @@
         <location file="include/endstone/util/vector.h" line="364" column="22" bodyfile="include/endstone/util/vector.h" bodystart="364" bodyend="367"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1abda3da0f6fb3eb443f5891000e54e14d" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
         <definition>constexpr Vector &amp; endstone::Vector::crossProduct</definition>
         <argsstring>(const Vector &amp;other)</argsstring>
         <name>crossProduct</name>
         <qualifiedname>endstone::Vector::crossProduct</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -960,13 +960,13 @@
         <location file="include/endstone/util/vector.h" line="380" column="22" bodyfile="include/endstone/util/vector.h" bodystart="380" bodyend="389"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a02c6c4d72ce3531f554df7a19bcfc552" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
         <definition>constexpr Vector endstone::Vector::getCrossProduct</definition>
         <argsstring>(const Vector &amp;other) const</argsstring>
         <name>getCrossProduct</name>
         <qualifiedname>endstone::Vector::getCrossProduct</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -1015,7 +1015,7 @@
         <location file="include/endstone/util/vector.h" line="415" column="12" bodyfile="include/endstone/util/vector.h" bodystart="415" bodyend="422"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a26421a1fe19d49b3e2bd72f10dea50b3" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
         <definition>constexpr Vector &amp; endstone::Vector::zero</definition>
         <argsstring>()</argsstring>
         <name>zero</name>
@@ -1033,7 +1033,7 @@
         <location file="include/endstone/util/vector.h" line="429" column="22" bodyfile="include/endstone/util/vector.h" bodystart="429" bodyend="435"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1aec784233412e23885adc14c06b15ae37" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>constexpr bool endstone::Vector::isZero</definition>
         <argsstring>() const</argsstring>
         <name>isZero</name>
@@ -1051,7 +1051,7 @@
         <location file="include/endstone/util/vector.h" line="442" column="21" bodyfile="include/endstone/util/vector.h" bodystart="442" bodyend="445"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ad346b2a05bd085e2cc450bec1514606f" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
         <definition>constexpr Vector &amp; endstone::Vector::normalizeZeros</definition>
         <argsstring>()</argsstring>
         <name>normalizeZeros</name>
@@ -1069,17 +1069,17 @@
         <location file="include/endstone/util/vector.h" line="452" column="22" bodyfile="include/endstone/util/vector.h" bodystart="452" bodyend="464"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1aa118da1a7206f0d5b50fd5e1afa7de3d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>constexpr bool endstone::Vector::isInAABB</definition>
         <argsstring>(const Vector &amp;min, const Vector &amp;max) const</argsstring>
         <name>isInAABB</name>
         <qualifiedname>endstone::Vector::isInAABB</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>min</declname>
         </param>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>max</declname>
         </param>
         <briefdescription>
@@ -1113,17 +1113,17 @@
         <location file="include/endstone/util/vector.h" line="476" column="21" bodyfile="include/endstone/util/vector.h" bodystart="476" bodyend="479"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a3e2bba49e51ff18ee733ee53630df286" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>constexpr bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>constexpr bool endstone::Vector::isInSphere</definition>
         <argsstring>(const Vector &amp;origin, float radius) const</argsstring>
         <name>isInSphere</name>
         <qualifiedname>endstone::Vector::isInSphere</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>origin</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
           <declname>radius</declname>
         </param>
         <briefdescription>
@@ -1156,7 +1156,7 @@
         <location file="include/endstone/util/vector.h" line="489" column="21" bodyfile="include/endstone/util/vector.h" bodystart="489" bodyend="493"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a22f7a34e30e48f8cb79e4bf044ccb0ef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::Vector::isNormalized</definition>
         <argsstring>() const</argsstring>
         <name>isNormalized</name>
@@ -1180,7 +1180,7 @@
         <name>rotateAroundX</name>
         <qualifiedname>endstone::Vector::rotateAroundX</qualifiedname>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
           <declname>angle</declname>
         </param>
         <briefdescription>
@@ -1211,7 +1211,7 @@
         <name>rotateAroundY</name>
         <qualifiedname>endstone::Vector::rotateAroundY</qualifiedname>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
           <declname>angle</declname>
         </param>
         <briefdescription>
@@ -1242,7 +1242,7 @@
         <name>rotateAroundZ</name>
         <qualifiedname>endstone::Vector::rotateAroundZ</qualifiedname>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
           <declname>angle</declname>
         </param>
         <briefdescription>
@@ -1273,11 +1273,11 @@
         <name>rotateAroundAxis</name>
         <qualifiedname>endstone::Vector::rotateAroundAxis</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>axis</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
           <declname>angle</declname>
         </param>
         <briefdescription>
@@ -1318,11 +1318,11 @@
         <name>rotateAroundNonUnitAxis</name>
         <qualifiedname>endstone::Vector::rotateAroundNonUnitAxis</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>axis</declname>
         </param>
         <param>
-          <type>float</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
           <declname>angle</declname>
         </param>
         <briefdescription>
@@ -1361,7 +1361,7 @@
       <memberdef kind="friend" id="classendstone_1_1Vector_1a485bac37939dbf6d16757b366b91d109" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename T</type>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           </param>
         </templateparamlist>
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -1370,11 +1370,11 @@
         <name>operator+</name>
         <qualifiedname>endstone::Vector::operator+</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>scalar</declname>
         </param>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>v</declname>
         </param>
     <requiresclause>std::convertible_to&lt;T, float&gt;    </requiresclause>
@@ -1389,7 +1389,7 @@
       <memberdef kind="friend" id="classendstone_1_1Vector_1afc20f47de21b481d32754052db6f6234" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename T</type>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           </param>
         </templateparamlist>
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -1398,11 +1398,11 @@
         <name>operator-</name>
         <qualifiedname>endstone::Vector::operator-</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>scalar</declname>
         </param>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>v</declname>
         </param>
     <requiresclause>std::convertible_to&lt;T, float&gt;    </requiresclause>
@@ -1417,7 +1417,7 @@
       <memberdef kind="friend" id="classendstone_1_1Vector_1abc0df9acf91bd86b670a8274ff26ee6b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename T</type>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           </param>
         </templateparamlist>
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -1426,11 +1426,11 @@
         <name>operator*</name>
         <qualifiedname>endstone::Vector::operator*</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>scalar</declname>
         </param>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>v</declname>
         </param>
     <requiresclause>std::convertible_to&lt;T, float&gt;    </requiresclause>
@@ -1445,7 +1445,7 @@
       <memberdef kind="friend" id="classendstone_1_1Vector_1a605a6f29d321741a9b85c030f0d641d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
-            <type>typename T</type>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           </param>
         </templateparamlist>
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -1454,11 +1454,11 @@
         <name>operator/</name>
         <qualifiedname>endstone::Vector::operator/</qualifiedname>
         <param>
-          <type>T</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
           <declname>scalar</declname>
         </param>
         <param>
-          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
           <declname>v</declname>
         </param>
     <requiresclause>std::convertible_to&lt;T, float&gt;    </requiresclause>

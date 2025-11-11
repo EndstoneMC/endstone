@@ -29,7 +29,7 @@
       <node id="20">
         <label>endstone/ban/ban_entry.h</label>
         <link refid="ban__entry_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -41,7 +41,7 @@
       <node id="19">
         <label>endstone/ban/ban_list.h</label>
         <link refid="ban__list_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -63,7 +63,7 @@
       <node id="18">
         <label>endstone/ban/ip_ban_list.h</label>
         <link refid="ip__ban__list_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -89,7 +89,7 @@
       <node id="23">
         <label>endstone/ban/player_ban_list.h</label>
         <link refid="player__ban__list_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -111,7 +111,7 @@
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
@@ -151,7 +151,7 @@
         <link refid="command__sender_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
@@ -173,9 +173,9 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="62">
@@ -297,7 +297,7 @@
       <node id="67">
         <label>endstone/form/form.h</label>
         <link refid="form_8h_source"/>
-        <childnode refid="13" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
@@ -341,6 +341,14 @@
       <node id="75">
         <label>endstone/game_mode.h</label>
         <link refid="game__mode_8h_source"/>
+      </node>
+      <node id="11">
+        <label>endstone/identifier.h</label>
+        <link refid="identifier_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
       </node>
       <node id="77">
         <label>endstone/inventory/inventory.h</label>
@@ -423,7 +431,7 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="56">
@@ -466,10 +474,6 @@
         <childnode refid="40" relation="include">
         </childnode>
       </node>
-      <node id="11">
-        <label>endstone/namespaced_key.h</label>
-        <link refid="namespaced__key_8h_source"/>
-      </node>
       <node id="78">
         <label>endstone/offline_player.h</label>
         <link refid="offline__player_8h_source"/>
@@ -507,7 +511,7 @@
       <node id="60">
         <label>endstone/player.h</label>
         <link refid="player_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
@@ -550,14 +554,16 @@
         <label>endstone/plugin/service_priority.h</label>
         <link refid="service__priority_8h_source"/>
       </node>
-      <node id="12">
+      <node id="14">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
-        <childnode refid="13" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
       <node id="80">
@@ -624,16 +630,16 @@
         <childnode refid="37" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="16">
         <label>endstone/server.h</label>
         <link refid="server_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -693,7 +699,7 @@
       <node id="37">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
@@ -725,7 +731,7 @@
         </childnode>
         <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="32">
@@ -735,7 +741,7 @@
       <node id="26">
         <label>algorithm</label>
       </node>
-      <node id="16">
+      <node id="17">
         <label>chrono</label>
       </node>
       <node id="50">
@@ -750,13 +756,13 @@
       <node id="10">
         <label>dlfcn.h</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>fmt/format.h</label>
       </node>
       <node id="31">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="13">
+      <node id="15">
         <label>functional</label>
       </node>
       <node id="2">
@@ -777,7 +783,7 @@
       <node id="4">
         <label>string</label>
       </node>
-      <node id="17">
+      <node id="12">
         <label>string_view</label>
       </node>
       <node id="5">
@@ -947,69 +953,69 @@
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta" kindref="compound">~ItemMeta</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47" refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Type<sp/><ref refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="47" refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Type<sp/><ref refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54" refid="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" kindref="member">hasDisplayName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="54" refid="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" kindref="member">hasDisplayName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61" refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" kindref="member">getDisplayName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="61" refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" kindref="member">getDisplayName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68" refid="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" kindref="member">setDisplayName</ref>(std::optional&lt;std::string&gt;<sp/>name)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="68" refid="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" kindref="member">setDisplayName</ref>(std::optional&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75" refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" kindref="member">hasLore</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="75" refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" kindref="member">hasLore</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82" refid="classendstone_1_1ItemMeta_1a170ca4e3a87a7a590ba03019129793d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1ItemMeta_1a170ca4e3a87a7a590ba03019129793d1" kindref="member">getLore</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="82" refid="classendstone_1_1ItemMeta_1a170ca4e3a87a7a590ba03019129793d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1ItemMeta_1a170ca4e3a87a7a590ba03019129793d1" kindref="member">getLore</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="89" refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" kindref="member">setLore</ref>(std::optional&lt;std::vector&lt;std::string&gt;&gt;<sp/>lore)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="89" refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" kindref="member">setLore</ref>(std::optional&lt;std::vector&lt;std::string&gt;&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">lore</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96" refid="classendstone_1_1ItemMeta_1ac43230ac05adb1a16d1d6d60049dc010" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ac43230ac05adb1a16d1d6d60049dc010" kindref="member">hasEnchants</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="96" refid="classendstone_1_1ItemMeta_1ac43230ac05adb1a16d1d6d60049dc010" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ac43230ac05adb1a16d1d6d60049dc010" kindref="member">hasEnchants</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104" refid="classendstone_1_1ItemMeta_1aea1b811b5bbed2237fe390ef5048e2f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1aea1b811b5bbed2237fe390ef5048e2f2" kindref="member">hasEnchant</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="104" refid="classendstone_1_1ItemMeta_1aea1b811b5bbed2237fe390ef5048e2f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1aea1b811b5bbed2237fe390ef5048e2f2" kindref="member">hasEnchant</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="112" refid="classendstone_1_1ItemMeta_1ad09d9608afdae3454a7c9c57fd382924" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ad09d9608afdae3454a7c9c57fd382924" kindref="member">getEnchantLevel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="112" refid="classendstone_1_1ItemMeta_1ad09d9608afdae3454a7c9c57fd382924" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ad09d9608afdae3454a7c9c57fd382924" kindref="member">getEnchantLevel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121" refid="classendstone_1_1ItemMeta_1ae56eecf8308719f9a2571088c956981f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unordered_map&lt;std::string,<sp/>int&gt;<sp/><ref refid="classendstone_1_1ItemMeta_1ae56eecf8308719f9a2571088c956981f" kindref="member">getEnchants</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="121" refid="classendstone_1_1ItemMeta_1ae56eecf8308719f9a2571088c956981f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unordered_map&lt;std::string,<sp/>int&gt;<sp/><ref refid="classendstone_1_1ItemMeta_1ae56eecf8308719f9a2571088c956981f" kindref="member">getEnchants</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131" refid="classendstone_1_1ItemMeta_1afb4069c0b6aa2dfd4780a9b149c8d858" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1afb4069c0b6aa2dfd4780a9b149c8d858" kindref="member">addEnchant</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>force)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="131" refid="classendstone_1_1ItemMeta_1afb4069c0b6aa2dfd4780a9b149c8d858" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1afb4069c0b6aa2dfd4780a9b149c8d858" kindref="member">addEnchant</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">level</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">force</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"></highlight></codeline>
 <codeline lineno="140" refid="classendstone_1_1ItemMeta_1a2349b16d2c1414811c1c8f36dc19452c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a2349b16d2c1414811c1c8f36dc19452c" kindref="member">removeEnchant</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"></highlight></codeline>
 <codeline lineno="145" refid="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" kindref="member">removeEnchants</ref>()<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
-<codeline lineno="154" refid="classendstone_1_1ItemMeta_1a4a9777bfa8c5e7d0da82e1e405444f2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a4a9777bfa8c5e7d0da82e1e405444f2b" kindref="member">hasConflictingEnchant</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="154" refid="classendstone_1_1ItemMeta_1a4a9777bfa8c5e7d0da82e1e405444f2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a4a9777bfa8c5e7d0da82e1e405444f2b" kindref="member">hasConflictingEnchant</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="161" refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" kindref="member">isUnbreakable</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="161" refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" kindref="member">isUnbreakable</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="168" refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" kindref="member">setUnbreakable</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>unbreakable)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="168" refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" kindref="member">setUnbreakable</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">unbreakable</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175" refid="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" kindref="member">hasDamage</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="175" refid="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" kindref="member">hasDamage</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="182" refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" kindref="member">getDamage</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="182" refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" kindref="member">getDamage</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="183"><highlight class="normal"></highlight></codeline>
-<codeline lineno="189" refid="classendstone_1_1ItemMeta_1a65cb98d0b4ad3842775aeea2fb7900cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a65cb98d0b4ad3842775aeea2fb7900cc" kindref="member">setDamage</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>damage)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="195" refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" kindref="member">hasRepairCost</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="189" refid="classendstone_1_1ItemMeta_1a65cb98d0b4ad3842775aeea2fb7900cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a65cb98d0b4ad3842775aeea2fb7900cc" kindref="member">setDamage</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">damage</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="195" refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" kindref="member">hasRepairCost</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"></highlight></codeline>
-<codeline lineno="202" refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" kindref="member">getRepairCost</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="202" refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" kindref="member">getRepairCost</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"></highlight></codeline>
-<codeline lineno="209" refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" kindref="member">setRepairCost</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cost)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="209" refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" kindref="member">setRepairCost</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">cost</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"></highlight></codeline>
-<codeline lineno="215" refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;ItemMeta&gt;<sp/><ref refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="215" refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;ItemMeta&gt;<sp/><ref refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" kindref="member">clone</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="216"><highlight class="normal"></highlight></codeline>
 <codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal"><sp/>std::is_base_of_v&lt;ItemMeta,<sp/>T&gt;</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*as()</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*as()</highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" kindref="member">getType</ref>()<sp/>==<sp/>T::MetaType)<sp/>{</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">T<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"></highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
 <codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal"><sp/>std::is_base_of_v&lt;ItemMeta,<sp/>T&gt;</highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>*as()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*as()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="230"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" kindref="member">getType</ref>()<sp/>==<sp/>T::MetaType)<sp/>{</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">T<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

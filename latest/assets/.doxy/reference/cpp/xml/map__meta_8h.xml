@@ -22,7 +22,7 @@
       <node id="21">
         <label>endstone/ban/ban_entry.h</label>
         <link refid="ban__entry_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -34,7 +34,7 @@
       <node id="20">
         <label>endstone/ban/ban_list.h</label>
         <link refid="ban__list_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -56,7 +56,7 @@
       <node id="19">
         <label>endstone/ban/ip_ban_list.h</label>
         <link refid="ip__ban__list_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -82,7 +82,7 @@
       <node id="24">
         <label>endstone/ban/player_ban_list.h</label>
         <link refid="player__ban__list_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -104,7 +104,7 @@
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
@@ -144,7 +144,7 @@
         <link refid="command__sender_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
@@ -166,9 +166,9 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="63">
@@ -290,7 +290,7 @@
       <node id="68">
         <label>endstone/form/form.h</label>
         <link refid="form_8h_source"/>
-        <childnode refid="14" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
@@ -334,6 +334,14 @@
       <node id="76">
         <label>endstone/game_mode.h</label>
         <link refid="game__mode_8h_source"/>
+      </node>
+      <node id="12">
+        <label>endstone/identifier.h</label>
+        <link refid="identifier_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
       </node>
       <node id="78">
         <label>endstone/inventory/inventory.h</label>
@@ -424,7 +432,7 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="57">
@@ -467,10 +475,6 @@
         <childnode refid="41" relation="include">
         </childnode>
       </node>
-      <node id="12">
-        <label>endstone/namespaced_key.h</label>
-        <link refid="namespaced__key_8h_source"/>
-      </node>
       <node id="79">
         <label>endstone/offline_player.h</label>
         <link refid="offline__player_8h_source"/>
@@ -508,7 +512,7 @@
       <node id="61">
         <label>endstone/player.h</label>
         <link refid="player_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
@@ -551,14 +555,16 @@
         <label>endstone/plugin/service_priority.h</label>
         <link refid="service__priority_8h_source"/>
       </node>
-      <node id="13">
+      <node id="15">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
-        <childnode refid="14" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="81">
@@ -625,16 +631,16 @@
         <childnode refid="38" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="17">
         <label>endstone/server.h</label>
         <link refid="server_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -694,7 +700,7 @@
       <node id="38">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
@@ -726,7 +732,7 @@
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="33">
@@ -736,7 +742,7 @@
       <node id="27">
         <label>algorithm</label>
       </node>
-      <node id="17">
+      <node id="18">
         <label>chrono</label>
       </node>
       <node id="51">
@@ -751,13 +757,13 @@
       <node id="11">
         <label>dlfcn.h</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>fmt/format.h</label>
       </node>
       <node id="32">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="14">
+      <node id="16">
         <label>functional</label>
       </node>
       <node id="3">
@@ -778,7 +784,7 @@
       <node id="5">
         <label>string</label>
       </node>
-      <node id="18">
+      <node id="13">
         <label>string_view</label>
       </node>
       <node id="6">
@@ -829,17 +835,17 @@
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_ITEM_META_TYPE(Map)</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">MapId<sp/>=<sp/>std::int64_t;</highlight></codeline>
-<codeline lineno="34" refid="classendstone_1_1MapMeta_1a428e86f59dd0a3ebd353c63f5420834e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapMeta_1a428e86f59dd0a3ebd353c63f5420834e" kindref="member">hasMapId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="34" refid="classendstone_1_1MapMeta_1a428e86f59dd0a3ebd353c63f5420834e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapMeta_1a428e86f59dd0a3ebd353c63f5420834e" kindref="member">hasMapId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="classendstone_1_1MapMeta_1a7061bbab491883854847dba81ca9b858" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>MapId<sp/><ref refid="classendstone_1_1MapMeta_1a7061bbab491883854847dba81ca9b858" kindref="member">getMapId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="41" refid="classendstone_1_1MapMeta_1a7061bbab491883854847dba81ca9b858" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>MapId<sp/><ref refid="classendstone_1_1MapMeta_1a7061bbab491883854847dba81ca9b858" kindref="member">getMapId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="48" refid="classendstone_1_1MapMeta_1aef8d3210e296dfbfcab867466c16af9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapMeta_1aef8d3210e296dfbfcab867466c16af9f" kindref="member">setMapId</ref>(MapId<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55" refid="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" kindref="member">hasMapView</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="55" refid="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" kindref="member">hasMapView</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64" refid="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref><sp/>*<ref refid="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" kindref="member">getMapView</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="64" refid="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref><sp/>*<ref refid="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" kindref="member">getMapView</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71" refid="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" kindref="member">setMapView</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref><sp/>*map)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="71" refid="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" kindref="member">setMapView</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">map</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="72"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="73"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>

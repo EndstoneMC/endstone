@@ -55,13 +55,13 @@
         <location file="include/endstone/map/map_canvas.h" line="46" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1abc7a84ff2147636d451c6e9a87294d31" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::MapCanvas::setCursors</definition>
         <argsstring>(const std::vector&lt; MapCursor &gt; &amp;cursors)=0</argsstring>
         <name>setCursors</name>
         <qualifiedname>endstone::MapCanvas::setCursors</qualifiedname>
         <param>
-          <type>const std::vector&lt; <ref refid="classendstone_1_1MapCursor" kindref="compound">MapCursor</ref> &gt; &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::vector&lt; <ref refid="classendstone_1_1MapCursor" kindref="compound">MapCursor</ref> &gt; &amp;</type>
           <declname>cursors</declname>
         </param>
         <briefdescription>
@@ -84,17 +84,17 @@
         <location file="include/endstone/map/map_canvas.h" line="53" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1ab9a56206d8bb2728a78f500059c805ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::MapCanvas::setPixelColor</definition>
         <argsstring>(int x, int y, Color color)=0</argsstring>
         <name>setPixelColor</name>
         <qualifiedname>endstone::MapCanvas::setPixelColor</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>y</declname>
         </param>
         <param>
@@ -143,11 +143,11 @@
         <name>getPixelColor</name>
         <qualifiedname>endstone::MapCanvas::getPixelColor</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>y</declname>
         </param>
         <briefdescription>
@@ -186,11 +186,11 @@
         <name>getBasePixelColor</name>
         <qualifiedname>endstone::MapCanvas::getBasePixelColor</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>y</declname>
         </param>
         <briefdescription>
@@ -223,17 +223,17 @@
         <location file="include/endstone/map/map_canvas.h" line="82" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1a938c0200e58bd6e6ad4a47f27a8c6120" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::MapCanvas::setPixel</definition>
         <argsstring>(int x, int y, std::uint32_t color)=0</argsstring>
         <name>setPixel</name>
         <qualifiedname>endstone::MapCanvas::setPixel</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>y</declname>
         </param>
         <param>
@@ -282,11 +282,11 @@
         <name>getPixel</name>
         <qualifiedname>endstone::MapCanvas::getPixel</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>y</declname>
         </param>
         <briefdescription>
@@ -325,11 +325,11 @@
         <name>getBasePixel</name>
         <qualifiedname>endstone::MapCanvas::getBasePixel</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>y</declname>
         </param>
         <briefdescription>
@@ -362,21 +362,21 @@
         <location file="include/endstone/map/map_canvas.h" line="109" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1a6baa558e589385df3cdd52691c4628a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::MapCanvas::drawImage</definition>
         <argsstring>(int x, int y, const Image &amp;image)=0</argsstring>
         <name>drawImage</name>
         <qualifiedname>endstone::MapCanvas::drawImage</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>x</declname>
         </param>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>y</declname>
         </param>
         <param>
-          <type>const <ref refid="classendstone_1_1Image" kindref="compound">Image</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Image" kindref="compound">Image</ref> &amp;</type>
           <declname>image</declname>
         </param>
         <briefdescription>

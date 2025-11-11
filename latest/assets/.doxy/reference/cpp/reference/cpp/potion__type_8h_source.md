@@ -24,61 +24,61 @@
 
 #pragma once
 
+#include "endstone/identifier.h"
+
 namespace endstone {
+using PotionId = Identifier<class PotionType>;
 class PotionType {
-    static std::string getPotionType(const std::string &key)
-    {
-        return NamespacedKey::minecraft("potion_type:" + key);
-    }
+    static constexpr std::string_view Minecraft = "minecraft:potion_type";
 
 public:
-    inline static const std::string Water = getPotionType("water");
-    inline static const std::string Mundane = getPotionType("mundane");
-    inline static const std::string LongMundane = getPotionType("long_mundane");
-    inline static const std::string Thick = getPotionType("thick");
-    inline static const std::string Awkward = getPotionType("awkward");
-    inline static const std::string Nightvision = getPotionType("nightvision");
-    inline static const std::string LongNightvision = getPotionType("long_nightvision");
-    inline static const std::string Invisibility = getPotionType("invisibility");
-    inline static const std::string LongInvisibility = getPotionType("long_invisibility");
-    inline static const std::string Leaping = getPotionType("leaping");
-    inline static const std::string LongLeaping = getPotionType("long_leaping");
-    inline static const std::string StrongLeaping = getPotionType("strong_leaping");
-    inline static const std::string FireResistance = getPotionType("fire_resistance");
-    inline static const std::string LongFireResistance = getPotionType("long_fire_resistance");
-    inline static const std::string Swiftness = getPotionType("swiftness");
-    inline static const std::string LongSwiftness = getPotionType("long_swiftness");
-    inline static const std::string StrongSwiftness = getPotionType("strong_swiftness");
-    inline static const std::string Slowness = getPotionType("slowness");
-    inline static const std::string LongSlowness = getPotionType("long_slowness");
-    inline static const std::string StrongSlowness = getPotionType("strong_slowness");
-    inline static const std::string WaterBreathing = getPotionType("water_breathing");
-    inline static const std::string LongWaterBreathing = getPotionType("long_water_breathing");
-    inline static const std::string Healing = getPotionType("healing");
-    inline static const std::string StrongHealing = getPotionType("strong_healing");
-    inline static const std::string Harming = getPotionType("harming");
-    inline static const std::string StrongHarming = getPotionType("strong_harming");
-    inline static const std::string Poison = getPotionType("poison");
-    inline static const std::string LongPoison = getPotionType("long_poison");
-    inline static const std::string StrongPoison = getPotionType("strong_poison");
-    inline static const std::string Regeneration = getPotionType("regeneration");
-    inline static const std::string LongRegeneration = getPotionType("long_regeneration");
-    inline static const std::string StrongRegeneration = getPotionType("strong_regeneration");
-    inline static const std::string Strength = getPotionType("strength");
-    inline static const std::string LongStrength = getPotionType("long_strength");
-    inline static const std::string StrongStrength = getPotionType("strong_strength");
-    inline static const std::string Weakness = getPotionType("weakness");
-    inline static const std::string LongWeakness = getPotionType("long_weakness");
-    inline static const std::string Wither = getPotionType("wither");
-    inline static const std::string TurtleMaster = getPotionType("turtle_master");
-    inline static const std::string LongTurtleMaster = getPotionType("long_turtle_master");
-    inline static const std::string StrongTurtleMaster = getPotionType("strong_turtle_master");
-    inline static const std::string SlowFalling = getPotionType("slow_falling");
-    inline static const std::string LongSlowFalling = getPotionType("long_slow_falling");
-    inline static const std::string WindCharged = getPotionType("wind_charged");
-    inline static const std::string Weaving = getPotionType("weaving");
-    inline static const std::string Oozing = getPotionType("oozing");
-    inline static const std::string Infested = getPotionType("infested");
+    static constexpr auto Water = PotionId(Minecraft, "water");
+    static constexpr auto Mundane = PotionId(Minecraft, "mundane");
+    static constexpr auto LongMundane = PotionId(Minecraft, "long_mundane");
+    static constexpr auto Thick = PotionId(Minecraft, "thick");
+    static constexpr auto Awkward = PotionId(Minecraft, "awkward");
+    static constexpr auto Nightvision = PotionId(Minecraft, "nightvision");
+    static constexpr auto LongNightvision = PotionId(Minecraft, "long_nightvision");
+    static constexpr auto Invisibility = PotionId(Minecraft, "invisibility");
+    static constexpr auto LongInvisibility = PotionId(Minecraft, "long_invisibility");
+    static constexpr auto Leaping = PotionId(Minecraft, "leaping");
+    static constexpr auto LongLeaping = PotionId(Minecraft, "long_leaping");
+    static constexpr auto StrongLeaping = PotionId(Minecraft, "strong_leaping");
+    static constexpr auto FireResistance = PotionId(Minecraft, "fire_resistance");
+    static constexpr auto LongFireResistance = PotionId(Minecraft, "long_fire_resistance");
+    static constexpr auto Swiftness = PotionId(Minecraft, "swiftness");
+    static constexpr auto LongSwiftness = PotionId(Minecraft, "long_swiftness");
+    static constexpr auto StrongSwiftness = PotionId(Minecraft, "strong_swiftness");
+    static constexpr auto Slowness = PotionId(Minecraft, "slowness");
+    static constexpr auto LongSlowness = PotionId(Minecraft, "long_slowness");
+    static constexpr auto StrongSlowness = PotionId(Minecraft, "strong_slowness");
+    static constexpr auto WaterBreathing = PotionId(Minecraft, "water_breathing");
+    static constexpr auto LongWaterBreathing = PotionId(Minecraft, "long_water_breathing");
+    static constexpr auto Healing = PotionId(Minecraft, "healing");
+    static constexpr auto StrongHealing = PotionId(Minecraft, "strong_healing");
+    static constexpr auto Harming = PotionId(Minecraft, "harming");
+    static constexpr auto StrongHarming = PotionId(Minecraft, "strong_harming");
+    static constexpr auto Poison = PotionId(Minecraft, "poison");
+    static constexpr auto LongPoison = PotionId(Minecraft, "long_poison");
+    static constexpr auto StrongPoison = PotionId(Minecraft, "strong_poison");
+    static constexpr auto Regeneration = PotionId(Minecraft, "regeneration");
+    static constexpr auto LongRegeneration = PotionId(Minecraft, "long_regeneration");
+    static constexpr auto StrongRegeneration = PotionId(Minecraft, "strong_regeneration");
+    static constexpr auto Strength = PotionId(Minecraft, "strength");
+    static constexpr auto LongStrength = PotionId(Minecraft, "long_strength");
+    static constexpr auto StrongStrength = PotionId(Minecraft, "strong_strength");
+    static constexpr auto Weakness = PotionId(Minecraft, "weakness");
+    static constexpr auto LongWeakness = PotionId(Minecraft, "long_weakness");
+    static constexpr auto Wither = PotionId(Minecraft, "wither");
+    static constexpr auto TurtleMaster = PotionId(Minecraft, "turtle_master");
+    static constexpr auto LongTurtleMaster = PotionId(Minecraft, "long_turtle_master");
+    static constexpr auto StrongTurtleMaster = PotionId(Minecraft, "strong_turtle_master");
+    static constexpr auto SlowFalling = PotionId(Minecraft, "slow_falling");
+    static constexpr auto LongSlowFalling = PotionId(Minecraft, "long_slow_falling");
+    static constexpr auto WindCharged = PotionId(Minecraft, "wind_charged");
+    static constexpr auto Weaving = PotionId(Minecraft, "weaving");
+    static constexpr auto Oozing = PotionId(Minecraft, "oozing");
+    static constexpr auto Infested = PotionId(Minecraft, "infested");
 };
 }  // namespace endstone
 ```

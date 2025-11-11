@@ -35,7 +35,7 @@
 
 | Type | Name |
 | ---: | :--- |
-|  Return(\*)(Arg...) | [**fp\_cast**](#variable-fp_cast)  <br>_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)_  |
+|  [**Return**](classendstone_1_1Identifier.md)(\*)(Arg...) | [**fp\_cast**](#variable-fp_cast)  <br>_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)_  |
 
 
 
@@ -56,8 +56,8 @@
 
 | Type | Name |
 | ---: | :--- |
-|  void \* | [**fp\_cast**](#function-fp_cast) (Return(\*)(Args...) fp) <br>_Cast a function pointer to void pointer._  |
-|  void \* | [**fp\_cast**](#function-fp_cast) (Return(Class::\*)(Args...) fp) <br>_Cast a member function pointer to void pointer._  |
+|  [**void**](classendstone_1_1Identifier.md) \* | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(\*)(Args...) fp) <br>_Cast a function pointer to void pointer._  |
+|  [**void**](classendstone_1_1Identifier.md) \* | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(Class::\*)(Args...) fp) <br>_Cast a member function pointer to void pointer._  |
 |  [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () <br> |
 
 
@@ -114,7 +114,7 @@ _Cast a function pointer to void pointer._
 ```C++
 template<typename Return, typename... Args>
 void * endstone::detail::fp_cast (
-    Return(*)(Args...) fp
+    Return (*)(Args...) fp
 ) 
 ```
 
@@ -157,7 +157,7 @@ _Cast a member function pointer to void pointer._
 ```C++
 template<typename Return, typename Class, typename... Args>
 void * endstone::detail::fp_cast (
-    Return(Class::*)(Args...) fp
+    Return (Class::*)(Args...) fp
 ) 
 ```
 

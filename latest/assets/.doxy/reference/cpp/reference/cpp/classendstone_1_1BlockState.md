@@ -57,14 +57,14 @@ _Represents a captured state of a block, which will not update automatically._ [
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains the block represented by this block state._  |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the location of this block state._  |
 | virtual std::string | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this block state._  |
-| virtual int | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block state._  |
-| virtual int | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block state._  |
-| virtual int | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block state._  |
-| virtual Result&lt; void &gt; | [**setData**](#function-setdata) (const [**BlockData**](classendstone_1_1BlockData.md) & data) = 0<br>_Sets the data for this block state._  |
-| virtual Result&lt; void &gt; | [**setType**](#function-settype) (std::string type) = 0<br>_Sets the type of this block state._  |
-| virtual bool | [**update**](#function-update-13) () = 0<br>_Attempts to update the block represented by this state, setting it to yhe new values as defined by this state._  |
-| virtual bool | [**update**](#function-update-23) (bool force) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
-| virtual bool | [**update**](#function-update-33) (bool force, bool apply\_physics) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
+| virtual [**int**](classendstone_1_1Identifier.md) | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block state._  |
+| virtual [**int**](classendstone_1_1Identifier.md) | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block state._  |
+| virtual [**int**](classendstone_1_1Identifier.md) | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block state._  |
+| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setData**](#function-setdata) ([**const**](classendstone_1_1Identifier.md) [**BlockData**](classendstone_1_1BlockData.md) & data) = 0<br>_Sets the data for this block state._  |
+| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setType**](#function-settype) (std::string type) = 0<br>_Sets the type of this block state._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**update**](#function-update-13) () = 0<br>_Attempts to update the block represented by this state, setting it to yhe new values as defined by this state._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**update**](#function-update-23) ([**bool**](classendstone_1_1Identifier.md) force) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**update**](#function-update-33) ([**bool**](classendstone_1_1Identifier.md) force, [**bool**](classendstone_1_1Identifier.md) apply\_physics) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
 | virtual  | [**~BlockState**](#function-blockstate) () = default<br> |
 
 
@@ -311,7 +311,7 @@ z-coordinate
 _Sets the data for this block state._ 
 ```C++
 virtual Result< void > endstone::BlockState::setData (
-    const BlockData & data
+    const  BlockData & data
 ) = 0
 ```
 
@@ -369,7 +369,7 @@ virtual bool endstone::BlockState::update () = 0
 
 
 
-This has the same effect as calling update(false). That is to say, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return false in this eventuality.
+This has the same effect as calling [**update(false)**](classendstone_1_1BlockState.md#function-update-23). That is to say, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return false in this eventuality.
 
 
 
@@ -399,7 +399,7 @@ virtual bool endstone::BlockState::update (
 
 
 
-This has the same effect as calling update(force, true). That is to say, this will trigger a physics update to surrounding blocks.
+This has the same effect as calling [**update(force, true)**](classendstone_1_1BlockState.md#function-update-33). That is to say, this will trigger a physics update to surrounding blocks.
 
 
 

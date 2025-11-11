@@ -29,6 +29,8 @@
 
 #include <fmt/format.h>
 
+#include "identifier.h"
+
 namespace endstone {
 class IRegistry {
 public:
@@ -38,36 +40,36 @@ public:
 template <typename T>
 class Registry : public IRegistry {
 public:
-    virtual T *get(const std::string &key) noexcept = 0;
+    virtual T *get(Identifier<T> id) noexcept = 0;
 
-    virtual const T *get(const std::string &key) const noexcept = 0;
+    virtual const T *get(Identifier<T> id) const noexcept = 0;
 
-    virtual T &getOrThrow(const std::string &key)
+    virtual T &getOrThrow(Identifier<T> id)
     {
-        if (auto *p = get(key)) {
+        if (auto *p = get(id)) {
             return *p;
         }
-        throw std::invalid_argument(fmt::format("No registry entry found for key: {}", key));
+        throw std::invalid_argument(fmt::format("No registry entry found for identifier: {}", id));
     }
 
-    virtual const T &getOrThrow(const std::string &key) const
+    virtual const T &getOrThrow(Identifier<T> id) const
     {
-        if (auto *p = get(key)) {
+        if (auto *p = get(id)) {
             return *p;
         }
-        throw std::invalid_argument(fmt::format("No registry entry found for key: {}", key));
+        throw std::invalid_argument(fmt::format("No registry entry found for identifier: {}", id));
     }
 
     virtual void forEach(std::function<bool(const T &)> func) const = 0;
 };
 }  // namespace endstone
 
-#define ENDSTONE_REGISTRY_TYPE(type)                                \
-    static constexpr auto RegistryType = #type;                     \
-                                                                    \
-    static const type *get(const std::string &name)                 \
-    {                                                               \
-        return detail::getServer().getRegistry<type>().get(name); \
+#define ENDSTONE_REGISTRY_TYPE(type)                            \
+    static constexpr auto RegistryType = #type;                 \
+                                                                \
+    static const type *get(Identifier<type> id)                 \
+    {                                                           \
+        return detail::getServer().getRegistry<type>().get(id); \
     }
 ```
 

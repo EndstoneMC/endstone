@@ -6,7 +6,7 @@
     <includes refid="player__emote__event_8h" local="no">endstone/event/player/player_emote_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerEmoteEvent_1a74ecb4319b65d01b406f8c591d3aff18" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string</type>
         <definition>const std::string endstone::PlayerEmoteEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -37,7 +37,7 @@
         <location file="include/endstone/event/player/player_emote_event.h" line="74" column="17" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerEmoteEvent_1a21d26ae7e9b87b41ffe4defd24162dc6" prot="private" static="no" mutable="no">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::PlayerEmoteEvent::muted_</definition>
         <argsstring></argsstring>
         <name>muted_</name>
@@ -67,7 +67,7 @@
           <declname>emote_id</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
           <declname>muted</declname>
         </param>
         <briefdescription>
@@ -130,7 +130,7 @@
         <location file="include/endstone/event/player/player_emote_event.h" line="44" column="18" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a44bd292db6e8d2326ac16126cadfcf1a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::PlayerEmoteEvent::isMuted</definition>
         <argsstring>() const</argsstring>
         <name>isMuted</name>
@@ -149,13 +149,13 @@
         <location file="include/endstone/event/player/player_emote_event.h" line="56" column="11" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="56" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a8b3923ba2a6d0867d03ea8ec89ab299a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::PlayerEmoteEvent::setMuted</definition>
         <argsstring>(bool muted)</argsstring>
         <name>setMuted</name>
         <qualifiedname>endstone::PlayerEmoteEvent::setMuted</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
           <declname>muted</declname>
         </param>
         <briefdescription>

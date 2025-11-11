@@ -52,57 +52,57 @@ _Represents a 3-dimensional vector._
 
 | Type | Name |
 | ---: | :--- |
-|  constexpr | [**Vector**](#function-vector-14) () = default<br>_Construct the vector with all components as 0._  |
-|  constexpr | [**Vector**](#function-vector-24) (T x, T y, T z) <br>_Construct the vector with provided components._  |
-|   | [**Vector**](#function-vector-34) (const [**Vector**](classendstone_1_1Vector.md) & other) = default<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) | [**Vector**](#function-vector-14) () = default<br>_Construct the vector with all components as 0._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) | [**Vector**](#function-vector-24) ([**T**](classendstone_1_1Identifier.md) x, [**T**](classendstone_1_1Identifier.md) y, [**T**](classendstone_1_1Identifier.md) z) <br>_Construct the vector with provided components._  |
+|   | [**Vector**](#function-vector-34) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) = default<br> |
 |   | [**Vector**](#function-vector-44) ([**Vector**](classendstone_1_1Vector.md) && other) noexcept<br> |
-|  float | [**angle**](#function-angle) (const [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Gets the angle between this vector and another in radians._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**crossProduct**](#function-crossproduct) (const [**Vector**](classendstone_1_1Vector.md) & other) <br>_Calculates the cross-product of this vector with another._  |
-|  float | [**distance**](#function-distance) (const [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Get the distance between this vector and another._  |
-|  constexpr float | [**distanceSquared**](#function-distancesquared) (const [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Get the squared distance between this vector and another._  |
-|  constexpr float | [**dot**](#function-dot) (const [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Calculates the dot product of this vector with another. The dot product is defined as x1\*x2+y1\*y2+z1\*z2. The returned value is a scalar._  |
-|  int | [**getBlockX**](#function-getblockx) () const<br>_Gets the floored value of the X component, indicating the block that this vector is contained with._  |
-|  int | [**getBlockY**](#function-getblocky) () const<br>_Gets the floored value of the Y component, indicating the block that this vector is contained with._  |
-|  int | [**getBlockZ**](#function-getblockz) () const<br>_Gets the floored value of the Z component, indicating the block that this vector is contained with._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) | [**getCrossProduct**](#function-getcrossproduct) (const [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Calculates the cross-product of this vector with another without mutating the original._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) | [**getMidpoint**](#function-getmidpoint) (const [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Gets a new midpoint vector between this vector and another._  |
-|  constexpr float | [**getX**](#function-getx) () const<br>_Gets the X component._  |
-|  constexpr float | [**getY**](#function-gety) () const<br>_Gets the Y component._  |
-|  constexpr float | [**getZ**](#function-getz) () const<br>_Gets the Z component._  |
-|  constexpr bool | [**isInAABB**](#function-isinaabb) (const [**Vector**](classendstone_1_1Vector.md) & min, const [**Vector**](classendstone_1_1Vector.md) & max) const<br>_Returns whether this vector is in an axis-aligned bounding box._  |
-|  constexpr bool | [**isInSphere**](#function-isinsphere) (const [**Vector**](classendstone_1_1Vector.md) & origin, float radius) const<br>_Returns whether this vector is within a sphere._  |
-|  bool | [**isNormalized**](#function-isnormalized) () const<br>_Returns if a vector is normalized._  |
-|  constexpr bool | [**isZero**](#function-iszero) () const<br>_Check whether or not each component of this vector is equal to 0._  |
-|  float | [**length**](#function-length) () const<br>_Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2)._  |
-|  constexpr float | [**lengthSquared**](#function-lengthsquared) () const<br>_Gets the magnitude of the vector squared._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**midpoint**](#function-midpoint) (const [**Vector**](classendstone_1_1Vector.md) & other) <br>_Sets this vector to the midpoint between this vector and another._  |
+|  [**float**](classendstone_1_1Identifier.md) | [**angle**](#function-angle) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Gets the angle between this vector and another in radians._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & | [**crossProduct**](#function-crossproduct) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) <br>_Calculates the cross-product of this vector with another._  |
+|  [**float**](classendstone_1_1Identifier.md) | [**distance**](#function-distance) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Get the distance between this vector and another._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**distanceSquared**](#function-distancesquared) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Get the squared distance between this vector and another._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**dot**](#function-dot) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Calculates the dot product of this vector with another. The dot product is defined as x1\*x2+y1\*y2+z1\*z2. The returned value is a scalar._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getBlockX**](#function-getblockx) () const<br>_Gets the floored value of the X component, indicating the block that this vector is contained with._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getBlockY**](#function-getblocky) () const<br>_Gets the floored value of the Y component, indicating the block that this vector is contained with._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getBlockZ**](#function-getblockz) () const<br>_Gets the floored value of the Z component, indicating the block that this vector is contained with._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) | [**getCrossProduct**](#function-getcrossproduct) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Calculates the cross-product of this vector with another without mutating the original._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) | [**getMidpoint**](#function-getmidpoint) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Gets a new midpoint vector between this vector and another._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**getX**](#function-getx) () const<br>_Gets the X component._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**getY**](#function-gety) () const<br>_Gets the Y component._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**getZ**](#function-getz) () const<br>_Gets the Z component._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) | [**isInAABB**](#function-isinaabb) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & min, [**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & max) const<br>_Returns whether this vector is in an axis-aligned bounding box._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) | [**isInSphere**](#function-isinsphere) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & origin, [**float**](classendstone_1_1Identifier.md) radius) const<br>_Returns whether this vector is within a sphere._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**isNormalized**](#function-isnormalized) () const<br>_Returns if a vector is normalized._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) | [**isZero**](#function-iszero) () const<br>_Check whether or not each component of this vector is equal to 0._  |
+|  [**float**](classendstone_1_1Identifier.md) | [**length**](#function-length) () const<br>_Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2)._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**lengthSquared**](#function-lengthsquared) () const<br>_Gets the magnitude of the vector squared._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & | [**midpoint**](#function-midpoint) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) <br>_Sets this vector to the midpoint between this vector and another._  |
 |  [**Vector**](classendstone_1_1Vector.md) & | [**normalize**](#function-normalize) () <br>_Converts this vector to a unit vector (a vector with length of 1)._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**normalizeZeros**](#function-normalizezeros) () <br>_Converts each component of value_ `-0.0` _to_`0.0` _._ |
-|  bool | [**operator!=**](#function-operator) (const [**Vector**](classendstone_1_1Vector.md) & other) noexcept const<br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) | [**operator\***](#function-operator_1) (const [**Vector**](classendstone_1_1Vector.md) & other) const<br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) | [**operator\***](#function-operator_2) (T scalar) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md) & | [**operator\*=**](#function-operator_3) (const [**Vector**](classendstone_1_1Vector.md) & other) <br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) | [**operator+**](#function-operator_4) (const [**Vector**](classendstone_1_1Vector.md) & other) const<br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) | [**operator+**](#function-operator_5) (T scalar) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md) & | [**operator+=**](#function-operator_6) (const [**Vector**](classendstone_1_1Vector.md) & other) <br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) | [**operator-**](#function-operator-) (const [**Vector**](classendstone_1_1Vector.md) & other) const<br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) | [**operator-**](#function-operator-_1) (T scalar) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md) & | [**operator-=**](#function-operator-_2) (const [**Vector**](classendstone_1_1Vector.md) & other) <br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) | [**operator/**](#function-operator_7) (const [**Vector**](classendstone_1_1Vector.md) & other) const<br> |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) | [**operator/**](#function-operator_8) (T scalar) const<br> |
-|  [**Vector**](classendstone_1_1Vector.md) & | [**operator/=**](#function-operator_9) (const [**Vector**](classendstone_1_1Vector.md) & other) <br> |
-|  [**Vector**](classendstone_1_1Vector.md) & | [**operator=**](#function-operator_10) (const [**Vector**](classendstone_1_1Vector.md) & other) = default<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & | [**normalizeZeros**](#function-normalizezeros) () <br>_Converts each component of value_ `-0.0` _to_`0.0` _._ |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) noexcept const<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) | [**operator\***](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) | [**operator\***](#function-operator_2) ([**T**](classendstone_1_1Identifier.md) scalar) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md) & | [**operator\*=**](#function-operator_3) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) <br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) | [**operator+**](#function-operator_4) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) | [**operator+**](#function-operator_5) ([**T**](classendstone_1_1Identifier.md) scalar) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md) & | [**operator+=**](#function-operator_6) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) <br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) | [**operator-**](#function-operator-) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) | [**operator-**](#function-operator-_1) ([**T**](classendstone_1_1Identifier.md) scalar) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md) & | [**operator-=**](#function-operator-_2) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) <br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) | [**operator/**](#function-operator_7) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) | [**operator/**](#function-operator_8) ([**T**](classendstone_1_1Identifier.md) scalar) const<br> |
+|  [**Vector**](classendstone_1_1Vector.md) & | [**operator/=**](#function-operator_9) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) <br> |
+|  [**Vector**](classendstone_1_1Vector.md) & | [**operator=**](#function-operator_10) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) = default<br> |
 |  [**Vector**](classendstone_1_1Vector.md) & | [**operator=**](#function-operator_11) ([**Vector**](classendstone_1_1Vector.md) && other) noexcept<br> |
-|  bool | [**operator==**](#function-operator_12) (const [**Vector**](classendstone_1_1Vector.md) & other) noexcept const<br> |
-|  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundAxis**](#function-rotatearoundaxis) (const [**Vector**](classendstone_1_1Vector.md) & axis, float angle) <br>_Rotates the vector around a given arbitrary axis in 3-dimensional space._  |
-|  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundNonUnitAxis**](#function-rotatearoundnonunitaxis) (const [**Vector**](classendstone_1_1Vector.md) & axis, float angle) <br>_Rotates the vector around a given arbitrary axis in 3-dimensional space._  |
-|  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundX**](#function-rotatearoundx) (float angle) <br>_Rotates the vector around the x-axis._  |
-|  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundY**](#function-rotatearoundy) (float angle) <br>_Rotates the vector around the y-axis._  |
-|  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundZ**](#function-rotatearoundz) (float angle) <br>_Rotates the vector around the z-axis._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**setX**](#function-setx) (T x) <br>_Set the X component._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**setY**](#function-sety) (T y) <br>_Set the Y component._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**setZ**](#function-setz) (T z) <br>_Set the Z component._  |
-|  constexpr [**Vector**](classendstone_1_1Vector.md) & | [**zero**](#function-zero) () <br>_Zero this vector's components._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_12) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) noexcept const<br> |
+|  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundAxis**](#function-rotatearoundaxis) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & axis, [**float**](classendstone_1_1Identifier.md) angle) <br>_Rotates the vector around a given arbitrary axis in 3-dimensional space._  |
+|  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundNonUnitAxis**](#function-rotatearoundnonunitaxis) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & axis, [**float**](classendstone_1_1Identifier.md) angle) <br>_Rotates the vector around a given arbitrary axis in 3-dimensional space._  |
+|  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundX**](#function-rotatearoundx) ([**float**](classendstone_1_1Identifier.md) angle) <br>_Rotates the vector around the x-axis._  |
+|  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundY**](#function-rotatearoundy) ([**float**](classendstone_1_1Identifier.md) angle) <br>_Rotates the vector around the y-axis._  |
+|  [**Vector**](classendstone_1_1Vector.md) & | [**rotateAroundZ**](#function-rotatearoundz) ([**float**](classendstone_1_1Identifier.md) angle) <br>_Rotates the vector around the z-axis._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & | [**setX**](#function-setx) ([**T**](classendstone_1_1Identifier.md) x) <br>_Set the X component._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & | [**setY**](#function-sety) ([**T**](classendstone_1_1Identifier.md) y) <br>_Set the Y component._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & | [**setZ**](#function-setz) ([**T**](classendstone_1_1Identifier.md) z) <br>_Set the Z component._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & | [**zero**](#function-zero) () <br>_Zero this vector's components._  |
 
 
 
@@ -115,9 +115,9 @@ _Represents a 3-dimensional vector._
 
 | Type | Name |
 | ---: | :--- |
-|  float | [**x\_**](#variable-x_)   = `0.0`<br> |
-|  float | [**y\_**](#variable-y_)   = `0.0`<br> |
-|  float | [**z\_**](#variable-z_)   = `0.0`<br> |
+|  [**float**](classendstone_1_1Identifier.md) | [**x\_**](#variable-x_)   = `0.0`<br> |
+|  [**float**](classendstone_1_1Identifier.md) | [**y\_**](#variable-y_)   = `0.0`<br> |
+|  [**float**](classendstone_1_1Identifier.md) | [**z\_**](#variable-z_)   = `0.0`<br> |
 
 
 
@@ -193,7 +193,7 @@ inline constexpr endstone::Vector::Vector (
 
 ```C++
 endstone::Vector::Vector (
-    const Vector & other
+    const  Vector & other
 ) = default
 ```
 
@@ -224,7 +224,7 @@ endstone::Vector::Vector (
 _Gets the angle between this vector and another in radians._ 
 ```C++
 inline float endstone::Vector::angle (
-    const Vector & other
+    const  Vector & other
 ) const
 ```
 
@@ -257,8 +257,8 @@ angle in radians
 
 _Calculates the cross-product of this vector with another._ 
 ```C++
-inline constexpr Vector & endstone::Vector::crossProduct (
-    const Vector & other
+inline constexpr  Vector & endstone::Vector::crossProduct (
+    const  Vector & other
 ) 
 ```
 
@@ -300,7 +300,7 @@ the same vector
 _Get the distance between this vector and another._ 
 ```C++
 inline float endstone::Vector::distance (
-    const Vector & other
+    const  Vector & other
 ) const
 ```
 
@@ -333,8 +333,8 @@ the distance
 
 _Get the squared distance between this vector and another._ 
 ```C++
-inline constexpr float endstone::Vector::distanceSquared (
-    const Vector & other
+inline constexpr  float endstone::Vector::distanceSquared (
+    const  Vector & other
 ) const
 ```
 
@@ -367,8 +367,8 @@ the distance
 
 _Calculates the dot product of this vector with another. The dot product is defined as x1\*x2+y1\*y2+z1\*z2. The returned value is a scalar._ 
 ```C++
-inline constexpr float endstone::Vector::dot (
-    const Vector & other
+inline constexpr  float endstone::Vector::dot (
+    const  Vector & other
 ) const
 ```
 
@@ -476,8 +476,8 @@ block z
 
 _Calculates the cross-product of this vector with another without mutating the original._ 
 ```C++
-inline constexpr Vector endstone::Vector::getCrossProduct (
-    const Vector & other
+inline constexpr  Vector endstone::Vector::getCrossProduct (
+    const  Vector & other
 ) const
 ```
 
@@ -518,8 +518,8 @@ a new vector
 
 _Gets a new midpoint vector between this vector and another._ 
 ```C++
-inline constexpr Vector endstone::Vector::getMidpoint (
-    const Vector & other
+inline constexpr  Vector endstone::Vector::getMidpoint (
+    const  Vector & other
 ) const
 ```
 
@@ -552,7 +552,7 @@ a new midpoint vector
 
 _Gets the X component._ 
 ```C++
-inline constexpr float endstone::Vector::getX () const
+inline constexpr  float endstone::Vector::getX () const
 ```
 
 
@@ -577,7 +577,7 @@ The X component.
 
 _Gets the Y component._ 
 ```C++
-inline constexpr float endstone::Vector::getY () const
+inline constexpr  float endstone::Vector::getY () const
 ```
 
 
@@ -602,7 +602,7 @@ The Y component.
 
 _Gets the Z component._ 
 ```C++
-inline constexpr float endstone::Vector::getZ () const
+inline constexpr  float endstone::Vector::getZ () const
 ```
 
 
@@ -627,9 +627,9 @@ The Z component.
 
 _Returns whether this vector is in an axis-aligned bounding box._ 
 ```C++
-inline constexpr bool endstone::Vector::isInAABB (
-    const Vector & min,
-    const Vector & max
+inline constexpr  bool endstone::Vector::isInAABB (
+    const  Vector & min,
+    const  Vector & max
 ) const
 ```
 
@@ -666,8 +666,8 @@ whether this vector is in the AABB
 
 _Returns whether this vector is within a sphere._ 
 ```C++
-inline constexpr bool endstone::Vector::isInSphere (
-    const Vector & origin,
+inline constexpr  bool endstone::Vector::isInSphere (
+    const  Vector & origin,
     float radius
 ) const
 ```
@@ -727,7 +727,7 @@ whether the vector is normalized
 
 _Check whether or not each component of this vector is equal to 0._ 
 ```C++
-inline constexpr bool endstone::Vector::isZero () const
+inline constexpr  bool endstone::Vector::isZero () const
 ```
 
 
@@ -777,7 +777,7 @@ the magnitude
 
 _Gets the magnitude of the vector squared._ 
 ```C++
-inline constexpr float endstone::Vector::lengthSquared () const
+inline constexpr  float endstone::Vector::lengthSquared () const
 ```
 
 
@@ -802,8 +802,8 @@ the magnitude
 
 _Sets this vector to the midpoint between this vector and another._ 
 ```C++
-inline constexpr Vector & endstone::Vector::midpoint (
-    const Vector & other
+inline constexpr  Vector & endstone::Vector::midpoint (
+    const  Vector & other
 ) 
 ```
 
@@ -861,7 +861,7 @@ the same vector
 
 _Converts each component of value_ `-0.0` _to_`0.0` _._
 ```C++
-inline constexpr Vector & endstone::Vector::normalizeZeros () 
+inline constexpr  Vector & endstone::Vector::normalizeZeros () 
 ```
 
 
@@ -886,7 +886,7 @@ This vector.
 
 ```C++
 inline bool endstone::Vector::operator!= (
-    const Vector & other
+    const  Vector & other
 ) noexcept const
 ```
 
@@ -900,8 +900,8 @@ inline bool endstone::Vector::operator!= (
 ### function operator\* 
 
 ```C++
-inline constexpr Vector endstone::Vector::operator* (
-    const Vector & other
+inline constexpr  Vector endstone::Vector::operator* (
+    const  Vector & other
 ) const
 ```
 
@@ -916,7 +916,7 @@ inline constexpr Vector endstone::Vector::operator* (
 
 ```C++
 template<std::convertible_to< float > T>
-inline constexpr Vector endstone::Vector::operator* (
+inline constexpr  Vector endstone::Vector::operator* (
     T scalar
 ) const
 ```
@@ -932,7 +932,7 @@ inline constexpr Vector endstone::Vector::operator* (
 
 ```C++
 inline Vector & endstone::Vector::operator*= (
-    const Vector & other
+    const  Vector & other
 ) 
 ```
 
@@ -946,8 +946,8 @@ inline Vector & endstone::Vector::operator*= (
 ### function operator+ 
 
 ```C++
-inline constexpr Vector endstone::Vector::operator+ (
-    const Vector & other
+inline constexpr  Vector endstone::Vector::operator+ (
+    const  Vector & other
 ) const
 ```
 
@@ -962,7 +962,7 @@ inline constexpr Vector endstone::Vector::operator+ (
 
 ```C++
 template<std::convertible_to< float > T>
-inline constexpr Vector endstone::Vector::operator+ (
+inline constexpr  Vector endstone::Vector::operator+ (
     T scalar
 ) const
 ```
@@ -978,7 +978,7 @@ inline constexpr Vector endstone::Vector::operator+ (
 
 ```C++
 inline Vector & endstone::Vector::operator+= (
-    const Vector & other
+    const  Vector & other
 ) 
 ```
 
@@ -992,8 +992,8 @@ inline Vector & endstone::Vector::operator+= (
 ### function operator- 
 
 ```C++
-inline constexpr Vector endstone::Vector::operator- (
-    const Vector & other
+inline constexpr  Vector endstone::Vector::operator- (
+    const  Vector & other
 ) const
 ```
 
@@ -1008,7 +1008,7 @@ inline constexpr Vector endstone::Vector::operator- (
 
 ```C++
 template<std::convertible_to< float > T>
-inline constexpr Vector endstone::Vector::operator- (
+inline constexpr  Vector endstone::Vector::operator- (
     T scalar
 ) const
 ```
@@ -1024,7 +1024,7 @@ inline constexpr Vector endstone::Vector::operator- (
 
 ```C++
 inline Vector & endstone::Vector::operator-= (
-    const Vector & other
+    const  Vector & other
 ) 
 ```
 
@@ -1038,8 +1038,8 @@ inline Vector & endstone::Vector::operator-= (
 ### function operator/ 
 
 ```C++
-inline constexpr Vector endstone::Vector::operator/ (
-    const Vector & other
+inline constexpr  Vector endstone::Vector::operator/ (
+    const  Vector & other
 ) const
 ```
 
@@ -1054,7 +1054,7 @@ inline constexpr Vector endstone::Vector::operator/ (
 
 ```C++
 template<std::convertible_to< float > T>
-inline constexpr Vector endstone::Vector::operator/ (
+inline constexpr  Vector endstone::Vector::operator/ (
     T scalar
 ) const
 ```
@@ -1070,7 +1070,7 @@ inline constexpr Vector endstone::Vector::operator/ (
 
 ```C++
 inline Vector & endstone::Vector::operator/= (
-    const Vector & other
+    const  Vector & other
 ) 
 ```
 
@@ -1085,7 +1085,7 @@ inline Vector & endstone::Vector::operator/= (
 
 ```C++
 Vector & endstone::Vector::operator= (
-    const Vector & other
+    const  Vector & other
 ) = default
 ```
 
@@ -1115,7 +1115,7 @@ Vector & endstone::Vector::operator= (
 
 ```C++
 inline bool endstone::Vector::operator== (
-    const Vector & other
+    const  Vector & other
 ) noexcept const
 ```
 
@@ -1131,7 +1131,7 @@ inline bool endstone::Vector::operator== (
 _Rotates the vector around a given arbitrary axis in 3-dimensional space._ 
 ```C++
 inline Vector & endstone::Vector::rotateAroundAxis (
-    const Vector & axis,
+    const  Vector & axis,
     float angle
 ) 
 ```
@@ -1173,7 +1173,7 @@ the same vector
 _Rotates the vector around a given arbitrary axis in 3-dimensional space._ 
 ```C++
 inline Vector & endstone::Vector::rotateAroundNonUnitAxis (
-    const Vector & axis,
+    const  Vector & axis,
     float angle
 ) 
 ```
@@ -1317,7 +1317,7 @@ the same vector
 _Set the X component._ 
 ```C++
 template<std::convertible_to< float > T>
-inline constexpr Vector & endstone::Vector::setX (
+inline constexpr  Vector & endstone::Vector::setX (
     T x
 ) 
 ```
@@ -1352,7 +1352,7 @@ This vector.
 _Set the Y component._ 
 ```C++
 template<std::convertible_to< float > T>
-inline constexpr Vector & endstone::Vector::setY (
+inline constexpr  Vector & endstone::Vector::setY (
     T y
 ) 
 ```
@@ -1387,7 +1387,7 @@ This vector.
 _Set the Z component._ 
 ```C++
 template<std::convertible_to< float > T>
-inline constexpr Vector & endstone::Vector::setZ (
+inline constexpr  Vector & endstone::Vector::setZ (
     T z
 ) 
 ```
@@ -1421,7 +1421,7 @@ This vector.
 
 _Zero this vector's components._ 
 ```C++
-inline constexpr Vector & endstone::Vector::zero () 
+inline constexpr  Vector & endstone::Vector::zero () 
 ```
 
 
@@ -1488,10 +1488,10 @@ float endstone::Vector::z_;
 ### friend operator\* 
 
 ```C++
-template<typename T>
+template<typename  T>
 inline Vector endstone::Vector::operator* (
     T scalar,
-    const Vector & v
+    const  Vector & v
 ) 
 ```
 
@@ -1505,10 +1505,10 @@ inline Vector endstone::Vector::operator* (
 ### friend operator+ 
 
 ```C++
-template<typename T>
+template<typename  T>
 inline Vector endstone::Vector::operator+ (
     T scalar,
-    const Vector & v
+    const  Vector & v
 ) 
 ```
 
@@ -1522,10 +1522,10 @@ inline Vector endstone::Vector::operator+ (
 ### friend operator- 
 
 ```C++
-template<typename T>
+template<typename  T>
 inline Vector endstone::Vector::operator- (
     T scalar,
-    const Vector & v
+    const  Vector & v
 ) 
 ```
 
@@ -1539,10 +1539,10 @@ inline Vector endstone::Vector::operator- (
 ### friend operator/ 
 
 ```C++
-template<typename T>
+template<typename  T>
 inline Vector endstone::Vector::operator/ (
     T scalar,
-    const Vector & v
+    const  Vector & v
 ) 
 ```
 

@@ -17,7 +17,7 @@
             <defname>Arg</defname>
           </param>
         </templateparamlist>
-        <type>Return(*)(Arg...)</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Return</ref>(*)(Arg...)</type>
         <definition>Return(Class::*)(Arg...) endstone::detail::fp_cast(Return(Class::*fp)(Arg...) const, void *address)</definition>
         <argsstring>(Return(*fp)(Arg...), void *func)</argsstring>
         <name>fp_cast</name>
@@ -44,13 +44,13 @@
             <defname>Args</defname>
           </param>
         </templateparamlist>
-        <type>void *</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> *</type>
         <definition>void * endstone::detail::fp_cast</definition>
         <argsstring>(Return(*fp)(Args...))</argsstring>
         <name>fp_cast</name>
         <qualifiedname>endstone::detail::fp_cast</qualifiedname>
         <param>
-          <type>Return(*)(Args...)</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Return</ref>(*)(Args...)</type>
           <declname>fp</declname>
         </param>
         <briefdescription>
@@ -105,13 +105,13 @@
             <defname>Args</defname>
           </param>
         </templateparamlist>
-        <type>void *</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> *</type>
         <definition>void * endstone::detail::fp_cast</definition>
         <argsstring>(Return(Class::*fp)(Args...))</argsstring>
         <name>fp_cast</name>
         <qualifiedname>endstone::detail::fp_cast</qualifiedname>
         <param>
-          <type>Return(Class::*)(Args...)</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Return</ref>(Class::*)(Args...)</type>
           <declname>fp</declname>
         </param>
         <briefdescription>

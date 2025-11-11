@@ -6,7 +6,7 @@
     <includes refid="actor__damage__event_8h" local="no">endstone/event/actor/actor_damage_event.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1ActorDamageEvent_1a319f71e214cfbb92d77667fc03583b2a" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string</type>
         <definition>const std::string endstone::ActorDamageEvent::NAME</definition>
         <argsstring></argsstring>
         <name>NAME</name>
@@ -37,7 +37,7 @@
         <location file="include/endstone/event/actor/actor_damage_event.h" line="70" column="21" bodyfile="include/endstone/event/actor/actor_damage_event.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorDamageEvent_1a867187c57a779cad0f19459222377320" prot="private" static="no" mutable="no">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>float endstone::ActorDamageEvent::damage_</definition>
         <argsstring></argsstring>
         <name>damage_</name>
@@ -67,7 +67,7 @@
           <declname>damage_source</declname>
         </param>
         <param>
-          <type>const float</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
           <declname>damage</declname>
         </param>
         <briefdescription>
@@ -98,7 +98,7 @@
         <location file="include/endstone/event/actor/actor_damage_event.h" line="34" column="18" bodyfile="include/endstone/event/actor/actor_damage_event.h" bodystart="34" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorDamageEvent_1a44564e018ef4caa37965500a468026e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>float</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>float endstone::ActorDamageEvent::getDamage</definition>
         <argsstring>() const</argsstring>
         <name>getDamage</name>
@@ -116,13 +116,13 @@
         <location file="include/endstone/event/actor/actor_damage_event.h" line="44" column="12" bodyfile="include/endstone/event/actor/actor_damage_event.h" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorDamageEvent_1a077458e25c7329f2cb4c02a2b0ed0bde" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::ActorDamageEvent::setDamage</definition>
         <argsstring>(const float damage)</argsstring>
         <name>setDamage</name>
         <qualifiedname>endstone::ActorDamageEvent::setDamage</qualifiedname>
         <param>
-          <type>const float</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
           <declname>damage</declname>
         </param>
         <briefdescription>

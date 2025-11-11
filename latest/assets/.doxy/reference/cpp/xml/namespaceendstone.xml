@@ -59,6 +59,7 @@
     <innerclass refid="classendstone_1_1HandlerList" prot="public">endstone::HandlerList</innerclass>
     <innerclass refid="classendstone_1_1Header" prot="public">endstone::Header</innerclass>
     <innerclass refid="classendstone_1_1ICancellable" prot="public">endstone::ICancellable</innerclass>
+    <innerclass refid="classendstone_1_1Identifier" prot="public">endstone::Identifier</innerclass>
     <innerclass refid="classendstone_1_1Image" prot="public">endstone::Image</innerclass>
     <innerclass refid="classendstone_1_1Inventory" prot="public">endstone::Inventory</innerclass>
     <innerclass refid="classendstone_1_1IpBanEntry" prot="public">endstone::IpBanEntry</innerclass>
@@ -85,7 +86,6 @@
     <innerclass refid="classendstone_1_1MessageForm" prot="public">endstone::MessageForm</innerclass>
     <innerclass refid="classendstone_1_1Mob" prot="public">endstone::Mob</innerclass>
     <innerclass refid="classendstone_1_1ModalForm" prot="public">endstone::ModalForm</innerclass>
-    <innerclass refid="classendstone_1_1NamespacedKey" prot="public">endstone::NamespacedKey</innerclass>
     <innerclass refid="classendstone_1_1Objective" prot="public">endstone::Objective</innerclass>
     <innerclass refid="classendstone_1_1OfflinePlayer" prot="public">endstone::OfflinePlayer</innerclass>
     <innerclass refid="structendstone_1_1overloaded" prot="public">endstone::overloaded</innerclass>
@@ -843,8 +843,22 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceendstone_1ac2d399872c391e7ce2ec1896ba62e669" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Attribute" kindref="compound">Attribute</ref> &gt;</type>
+        <definition>using endstone::AttributeId = typedef Identifier&lt;class Attribute&gt;</definition>
+        <argsstring></argsstring>
+        <name>AttributeId</name>
+        <qualifiedname>endstone::AttributeId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/attribute/attribute.h" line="20" column="1" bodyfile="include/endstone/attribute/attribute.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1a688abbe501a61374454a55553d25e08f" prot="public" static="no">
-        <type>std::unordered_map&lt; std::string, std::variant&lt; bool, std::string, int &gt; &gt;</type>
+        <type>std::unordered_map&lt; std::string, std::variant&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>, std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt; &gt;</type>
         <definition>using endstone::BlockStates = typedef std::unordered_map&lt;std::string, std::variant&lt;bool, std::string, int&gt; &gt;</definition>
         <argsstring></argsstring>
         <name>BlockStates</name>
@@ -856,6 +870,49 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/block/block_data.h" line="28" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1EffectType" kindref="compound">EffectType</ref> &gt;</type>
+        <definition>using endstone::EffectId = typedef Identifier&lt;class EffectType&gt;</definition>
+        <argsstring></argsstring>
+        <name>EffectId</name>
+        <qualifiedname>endstone::EffectId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="22" column="1" bodyfile="include/endstone/effect/effect_type.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a996c90f609bfd792a8245bb60fd3e4ea" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> &gt;</type>
+        <definition>using endstone::EnchantmentId = typedef Identifier&lt;class Enchantment&gt;</definition>
+        <argsstring></argsstring>
+        <name>EnchantmentId</name>
+        <qualifiedname>endstone::EnchantmentId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="24" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1ad7cf0bc557f516d17d39097140ee9588" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> &gt;</type>
+        <definition>using endstone::ItemId = typedef Identifier&lt;ItemType&gt;</definition>
+        <argsstring></argsstring>
+        <name>ItemId</name>
+        <qualifiedname>endstone::ItemId</qualifiedname>
+        <briefdescription>
+<para>Represents an item type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_type.h" line="25" column="1" bodyfile="include/endstone/inventory/item_type.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" prot="public" static="no">
         <type>std::variant&lt; std::string, <ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref> &gt;</type>
@@ -872,7 +929,7 @@
         <location file="include/endstone/message.h" line="25" column="1" bodyfile="include/endstone/message.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1afe5c52ae8db67deff2df8c157cd1c71e" prot="public" static="no">
-        <type>std::function&lt; void(const <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;)&gt;</type>
+        <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;)&gt;</type>
         <definition>using endstone::PermissionRemovedExecutor = typedef std::function&lt;void(const PermissionAttachment &amp;)&gt;</definition>
         <argsstring></argsstring>
         <name>PermissionRemovedExecutor</name>
@@ -884,6 +941,20 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/permissions/permission_attachment.h" line="28" column="1" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a752231e730d011e08a0c9329945d4d6f" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1PotionType" kindref="compound">PotionType</ref> &gt;</type>
+        <definition>using endstone::PotionId = typedef Identifier&lt;class PotionType&gt;</definition>
+        <argsstring></argsstring>
+        <name>PotionId</name>
+        <qualifiedname>endstone::PotionId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="20" column="1" bodyfile="include/endstone/potion/potion_type.h" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1ae2ff6d706eb4d7bdf8062917bb90ac29" prot="public" static="no">
         <type>std::uint32_t</type>
@@ -920,7 +991,7 @@
             <type>typename T</type>
           </param>
         </templateparamlist>
-        <type>nonstd::expected&lt; T, std::string &gt;</type>
+        <type>nonstd::expected&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref>, std::string &gt;</type>
         <definition>using endstone::Result = typedef nonstd::expected&lt;T, std::string&gt;</definition>
         <argsstring></argsstring>
         <name>Result</name>
@@ -936,17 +1007,17 @@
     </sectiondef>
     <sectiondef kind="func">
       <memberdef kind="function" id="namespaceendstone_1ad7d0fbae7e1dd31cae1c84965a2f65a8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::operator==</definition>
         <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::operator==</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -958,17 +1029,17 @@
         <location file="include/endstone/util/uuid.h" line="111" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="111" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1ac40f4f96efb610d56f90c6541fc8b400" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::operator&lt;</definition>
         <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
         <name>operator&lt;</name>
         <qualifiedname>endstone::operator&lt;</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -980,17 +1051,17 @@
         <location file="include/endstone/util/uuid.h" line="116" column="8" bodyfile="include/endstone/util/uuid.h" bodystart="116" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1a96fb3e11970608db1df12feb7a3a829e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::operator!=</definition>
         <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::operator!=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -1002,17 +1073,17 @@
         <location file="include/endstone/util/uuid.h" line="121" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="121" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1aba0d90c3040dfe93ee11500a1923dfad" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::operator&gt;</definition>
         <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
         <name>operator&gt;</name>
         <qualifiedname>endstone::operator&gt;</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -1024,17 +1095,17 @@
         <location file="include/endstone/util/uuid.h" line="126" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="126" bodyend="129"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1a467aa3012a4c69958f16d9e0d713bf3a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::operator&lt;=</definition>
         <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
         <name>operator&lt;=</name>
         <qualifiedname>endstone::operator&lt;=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -1046,17 +1117,17 @@
         <location file="include/endstone/util/uuid.h" line="130" column="8" bodyfile="include/endstone/util/uuid.h" bodystart="130" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1af337ccd795abe8d4ca38aeffcd6066e7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>bool endstone::operator&gt;=</definition>
         <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
         <name>operator&gt;=</name>
         <qualifiedname>endstone::operator&gt;=</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>lhs</declname>
         </param>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>rhs</declname>
         </param>
         <briefdescription>
@@ -1068,7 +1139,7 @@
         <location file="include/endstone/util/uuid.h" line="135" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="135" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1af2cf5277faf4607f09dbd0060c401d53" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::swap</definition>
         <argsstring>(UUID &amp;lhs, UUID &amp;rhs) noexcept</argsstring>
         <name>swap</name>
@@ -1096,7 +1167,7 @@
         <name>hash_value</name>
         <qualifiedname>endstone::hash_value</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> const &amp;</type>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
           <declname>u</declname>
         </param>
         <briefdescription>

@@ -144,7 +144,7 @@
         <location file="include/endstone/event/actor/actor_knockback_event.h" line="53" column="13" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="53" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorKnockbackEvent_1a4d0589c39958cc0b744f76ba1d6e7714" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::ActorKnockbackEvent::setKnockback</definition>
         <argsstring>(Vector knockback)</argsstring>
         <name>setKnockback</name>

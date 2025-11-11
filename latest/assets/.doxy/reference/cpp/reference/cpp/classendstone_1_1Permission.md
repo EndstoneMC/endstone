@@ -38,7 +38,7 @@ _Represents a unique permission that may be attached to a_ [_**Permissible**_](c
 
 | Type | Name |
 | ---: | :--- |
-|  const [**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) | [**DefaultPermission**](#variable-defaultpermission)   = `PermissionDefault::Operator`<br> |
+|  [**const**](classendstone_1_1Identifier.md) [**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) | [**DefaultPermission**](#variable-defaultpermission)   = `PermissionDefault::Operator`<br> |
 
 
 
@@ -57,18 +57,18 @@ _Represents a unique permission that may be attached to a_ [_**Permissible**_](c
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Permission**](#function-permission) (std::string name, std::string description="", [**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) default\_value=DefaultPermission, std::unordered\_map&lt; std::string, bool &gt; children={}) <br> |
-|  [**Permission**](classendstone_1_1Permission.md) \* | [**addParent**](#function-addparent-12) (std::string name, bool value) <br> |
-|  void | [**addParent**](#function-addparent-22) ([**Permission**](classendstone_1_1Permission.md) & perm, bool value) const<br> |
-|  std::unordered\_map&lt; std::string, bool &gt; & | [**getChildren**](#function-getchildren) () <br> |
+|   | [**Permission**](#function-permission) (std::string name, std::string description="", [**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) default\_value=DefaultPermission, std::unordered\_map&lt; std::string, [**bool**](classendstone_1_1Identifier.md) &gt; children={}) <br> |
+|  [**Permission**](classendstone_1_1Permission.md) \* | [**addParent**](#function-addparent-12) (std::string name, [**bool**](classendstone_1_1Identifier.md) value) <br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**addParent**](#function-addparent-22) ([**Permission**](classendstone_1_1Permission.md) & perm, [**bool**](classendstone_1_1Identifier.md) value) const<br> |
+|  std::unordered\_map&lt; std::string, [**bool**](classendstone_1_1Identifier.md) &gt; & | [**getChildren**](#function-getchildren) () <br> |
 |  [**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) | [**getDefault**](#function-getdefault) () const<br> |
 |  std::string | [**getDescription**](#function-getdescription) () const<br> |
 |  std::string | [**getName**](#function-getname) () const<br> |
 |  std::unordered\_set&lt; [**Permissible**](classendstone_1_1Permissible.md) \* &gt; | [**getPermissibles**](#function-getpermissibles) () const<br> |
-|  void | [**init**](#function-init) ([**PluginManager**](classendstone_1_1PluginManager.md) & plugin\_manager) <br> |
-|  void | [**recalculatePermissibles**](#function-recalculatepermissibles) () <br> |
-|  void | [**setDefault**](#function-setdefault) ([**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) value) <br> |
-|  void | [**setDescription**](#function-setdescription) (std::string value) <br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**init**](#function-init) ([**PluginManager**](classendstone_1_1PluginManager.md) & plugin\_manager) <br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**recalculatePermissibles**](#function-recalculatepermissibles) () <br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**setDefault**](#function-setdefault) ([**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) value) <br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**setDescription**](#function-setdescription) (std::string value) <br> |
 
 
 

@@ -55,7 +55,7 @@
         <location file="include/endstone/block/block_state.h" line="48" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a54629f4faa893e30d1ef4d4ac15bf147" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; void &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::BlockState::setType</definition>
         <argsstring>(std::string type)=0</argsstring>
         <name>setType</name>
@@ -102,13 +102,13 @@
         <location file="include/endstone/block/block_state.h" line="62" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a97427ac349aacfcc0d617ec52fb33ff8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; void &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::BlockState::setData</definition>
         <argsstring>(const BlockData &amp;data)=0</argsstring>
         <name>setData</name>
         <qualifiedname>endstone::BlockState::setData</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &amp;</type>
           <declname>data</declname>
         </param>
         <briefdescription>
@@ -149,7 +149,7 @@
         <location file="include/endstone/block/block_state.h" line="76" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
         <definition>virtual int endstone::BlockState::getX</definition>
         <argsstring>() const =0</argsstring>
         <name>getX</name>
@@ -167,7 +167,7 @@
         <location file="include/endstone/block/block_state.h" line="83" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
         <definition>virtual int endstone::BlockState::getY</definition>
         <argsstring>() const =0</argsstring>
         <name>getY</name>
@@ -185,7 +185,7 @@
         <location file="include/endstone/block/block_state.h" line="90" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
         <definition>virtual int endstone::BlockState::getZ</definition>
         <argsstring>() const =0</argsstring>
         <name>getZ</name>
@@ -221,7 +221,7 @@
         <location file="include/endstone/block/block_state.h" line="104" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::BlockState::update</definition>
         <argsstring>()=0</argsstring>
         <name>update</name>
@@ -230,7 +230,7 @@
 <para>Attempts to update the block represented by this state, setting it to yhe new values as defined by this state. </para>
         </briefdescription>
         <detaileddescription>
-<para>This has the same effect as calling update(false). That is to say, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return false in this eventuality.</para>
+<para>This has the same effect as calling <ref refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" kindref="member">update(false)</ref>. That is to say, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return false in this eventuality.</para>
 <para><simplesect kind="return"><para>true if the update was successful, otherwise false </para>
 </simplesect>
 </para>
@@ -240,20 +240,20 @@
         <location file="include/endstone/block/block_state.h" line="114" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::BlockState::update</definition>
         <argsstring>(bool force)=0</argsstring>
         <name>update</name>
         <qualifiedname>endstone::BlockState::update</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
           <declname>force</declname>
         </param>
         <briefdescription>
 <para>Attempts to update the block represented by this state, setting it to the new values as defined by this state. </para>
         </briefdescription>
         <detaileddescription>
-<para>This has the same effect as calling update(force, true). That is to say, this will trigger a physics update to surrounding blocks.</para>
+<para>This has the same effect as calling <ref refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" kindref="member">update(force, true)</ref>. That is to say, this will trigger a physics update to surrounding blocks.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>force</parametername>
@@ -272,17 +272,17 @@
         <location file="include/endstone/block/block_state.h" line="124" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::BlockState::update</definition>
         <argsstring>(bool force, bool apply_physics)=0</argsstring>
         <name>update</name>
         <qualifiedname>endstone::BlockState::update</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
           <declname>force</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
           <declname>apply_physics</declname>
         </param>
         <briefdescription>

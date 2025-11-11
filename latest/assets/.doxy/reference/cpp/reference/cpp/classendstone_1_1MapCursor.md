@@ -57,19 +57,19 @@ _Represents a cursor on a map._
 
 | Type | Name |
 | ---: | :--- |
-|   | [**MapCursor**](#function-mapcursor) (std::int8\_t x, std::int8\_t y, std::int8\_t direction, [**Type**](classendstone_1_1MapCursor.md#enum-type) type, bool visible, std::string caption="") <br>_Initialize the map cursor._  |
+|   | [**MapCursor**](#function-mapcursor) (std::int8\_t x, std::int8\_t y, std::int8\_t direction, [**Type**](classendstone_1_1MapCursor.md#enum-type) type, [**bool**](classendstone_1_1Identifier.md) visible, std::string caption="") <br>_Initialize the map cursor._  |
 |  std::string | [**getCaption**](#function-getcaption) () const<br>_Gets the caption on this cursor._  |
 |  std::int8\_t | [**getDirection**](#function-getdirection) () const<br>_Get the direction of this cursor._  |
 |  [**Type**](classendstone_1_1MapCursor.md#enum-type) | [**getType**](#function-gettype) () const<br>_Get the type of this cursor._  |
 |  std::int8\_t | [**getX**](#function-getx) () const<br>_Get the X position of this cursor._  |
 |  std::int8\_t | [**getY**](#function-gety) () const<br>_Get the Y position of this cursor._  |
-|  bool | [**isVisible**](#function-isvisible) () const<br>_Get the visibility status of this cursor._  |
-|  void | [**setCaption**](#function-setcaption) (std::string caption) <br>_Sets the caption on this cursor._  |
-|  Result&lt; void &gt; | [**setDirection**](#function-setdirection) (std::int8\_t direction) <br>_Set the direction of this cursor._  |
-|  void | [**setType**](#function-settype) ([**Type**](classendstone_1_1MapCursor.md#enum-type) type) <br>_Set the type of this cursor._  |
-|  void | [**setVisible**](#function-setvisible) (bool visible) <br> |
-|  void | [**setX**](#function-setx) (const std::int8\_t x) <br>_Set the X position of this cursor._  |
-|  void | [**setY**](#function-sety) (const std::int8\_t y) <br>_Set the Y position of this cursor._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**isVisible**](#function-isvisible) () const<br>_Get the visibility status of this cursor._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setCaption**](#function-setcaption) (std::string caption) <br>_Sets the caption on this cursor._  |
+|  Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setDirection**](#function-setdirection) (std::int8\_t direction) <br>_Set the direction of this cursor._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype) ([**Type**](classendstone_1_1MapCursor.md#enum-type) type) <br>_Set the type of this cursor._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setVisible**](#function-setvisible) ([**bool**](classendstone_1_1Identifier.md) visible) <br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**setX**](#function-setx) ([**const**](classendstone_1_1Identifier.md) std::int8\_t x) <br>_Set the X position of this cursor._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setY**](#function-sety) ([**const**](classendstone_1_1Identifier.md) std::int8\_t y) <br>_Set the Y position of this cursor._  |
 
 
 

@@ -15,6 +15,7 @@
 * **AquaAffinity** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **async\_** ([**endstone::Event**](classendstone_1_1Event.md))
 * **address\_** ([**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md), [**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md))
+* **Air** ([**endstone::ItemType**](classendstone_1_1ItemType.md))
 * **attachment\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **action\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **api\_version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -187,6 +188,7 @@
 * **knockback\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
 * **KnockbackResistance** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **Knockback** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
+* **key\_** ([**endstone::Identifier**](classendstone_1_1Identifier.md))
 
 
 ## l
@@ -249,9 +251,9 @@
 * **Mending** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **Multishot** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **mtx\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
+* **Minecraft** ([**endstone::Identifier**](classendstone_1_1Identifier.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **meta\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **map\_** ([**endstone::MapInitializeEvent**](classendstone_1_1MapInitializeEvent.md))
-* **Minecraft** ([**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md))
 * **muted\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **Mundane** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **message\_id\_** ([**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))
@@ -268,6 +270,7 @@
 * **name\_** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md), [**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **Nausea** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **NightVision** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
+* **namespace\_** ([**endstone::Identifier**](classendstone_1_1Identifier.md))
 * **new\_game\_mode\_** ([**endstone::PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md))
 * **new\_skin\_** ([**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md))
 * **Nightvision** ([**endstone::PotionType**](classendstone_1_1PotionType.md))

@@ -25,108 +25,101 @@
 #pragma once
 
 #include "endstone/detail.h"
-#include "endstone/namespaced_key.h"
+#include "endstone/identifier.h"
 #include "endstone/registry.h"
 #include "endstone/server.h"
 
 namespace endstone {
 class ItemStack;
-
+using EnchantmentId = Identifier<class Enchantment>;
 class Enchantment {
-    static std::string getEnchantment(const std::string &key)
-    {
-        return NamespacedKey::minecraft(key);
-    }
-
 public:
     ENDSTONE_REGISTRY_TYPE(Enchantment)
+    static constexpr auto Protection = EnchantmentId::minecraft("protection");
 
-    
-    inline static const std::string Protection = getEnchantment("protection");
+    static constexpr auto FireProtection = EnchantmentId::minecraft("fire_protection");
 
-    inline static const std::string FireProtection = getEnchantment("fire_protection");
+    static constexpr auto FeatherFalling = EnchantmentId::minecraft("feather_falling");
 
-    inline static const std::string FeatherFalling = getEnchantment("feather_falling");
+    static constexpr auto BlastProtection = EnchantmentId::minecraft("blast_protection");
 
-    inline static const std::string BlastProtection = getEnchantment("blast_protection");
+    static constexpr auto ProjectileProtection = EnchantmentId::minecraft("projectile_protection");
 
-    inline static const std::string ProjectileProtection = getEnchantment("projectile_protection");
+    static constexpr auto Thorns = EnchantmentId::minecraft("thorns");
 
-    inline static const std::string Thorns = getEnchantment("thorns");
+    static constexpr auto Respiration = EnchantmentId::minecraft("respiration");
 
-    inline static const std::string Respiration = getEnchantment("respiration");
+    static constexpr auto DepthStrider = EnchantmentId::minecraft("depth_strider");
 
-    inline static const std::string DepthStrider = getEnchantment("depth_strider");
+    static constexpr auto AquaAffinity = EnchantmentId::minecraft("aqua_affinity");
 
-    inline static const std::string AquaAffinity = getEnchantment("aqua_affinity");
+    static constexpr auto Sharpness = EnchantmentId::minecraft("sharpness");
 
-    inline static const std::string Sharpness = getEnchantment("sharpness");
+    static constexpr auto Smite = EnchantmentId::minecraft("smite");
 
-    inline static const std::string Smite = getEnchantment("smite");
+    static constexpr auto BaneOfArthropods = EnchantmentId::minecraft("bane_of_arthropods");
 
-    inline static const std::string BaneOfArthropods = getEnchantment("bane_of_arthropods");
+    static constexpr auto Knockback = EnchantmentId::minecraft("knockback");
 
-    inline static const std::string Knockback = getEnchantment("knockback");
+    static constexpr auto FireAspect = EnchantmentId::minecraft("fire_aspect");
 
-    inline static const std::string FireAspect = getEnchantment("fire_aspect");
+    static constexpr auto Looting = EnchantmentId::minecraft("looting");
 
-    inline static const std::string Looting = getEnchantment("looting");
+    static constexpr auto Efficiency = EnchantmentId::minecraft("efficiency");
 
-    inline static const std::string Efficiency = getEnchantment("efficiency");
+    static constexpr auto SilkTouch = EnchantmentId::minecraft("silk_touch");
 
-    inline static const std::string SilkTouch = getEnchantment("silk_touch");
+    static constexpr auto Unbreaking = EnchantmentId::minecraft("unbreaking");
 
-    inline static const std::string Unbreaking = getEnchantment("unbreaking");
+    static constexpr auto Fortune = EnchantmentId::minecraft("fortune");
 
-    inline static const std::string Fortune = getEnchantment("fortune");
+    static constexpr auto Power = EnchantmentId::minecraft("power");
 
-    inline static const std::string Power = getEnchantment("power");
+    static constexpr auto Punch = EnchantmentId::minecraft("punch");
 
-    inline static const std::string Punch = getEnchantment("punch");
+    static constexpr auto Flame = EnchantmentId::minecraft("flame");
 
-    inline static const std::string Flame = getEnchantment("flame");
+    static constexpr auto Infinity = EnchantmentId::minecraft("infinity");
 
-    inline static const std::string Infinity = getEnchantment("infinity");
+    static constexpr auto LuckOfTheSea = EnchantmentId::minecraft("luck_of_the_sea");
 
-    inline static const std::string LuckOfTheSea = getEnchantment("luck_of_the_sea");
+    static constexpr auto Lure = EnchantmentId::minecraft("lure");
 
-    inline static const std::string Lure = getEnchantment("lure");
+    static constexpr auto FrostWalker = EnchantmentId::minecraft("frost_walker");
 
-    inline static const std::string FrostWalker = getEnchantment("frost_walker");
+    static constexpr auto Mending = EnchantmentId::minecraft("mending");
 
-    inline static const std::string Mending = getEnchantment("mending");
+    static constexpr auto CurseOfBinding = EnchantmentId::minecraft("binding");
 
-    inline static const std::string CurseOfBinding = getEnchantment("binding");
+    static constexpr auto CurseOfVanishing = EnchantmentId::minecraft("vanishing");
 
-    inline static const std::string CurseOfVanishing = getEnchantment("vanishing");
+    static constexpr auto Impaling = EnchantmentId::minecraft("impaling");
 
-    inline static const std::string Impaling = getEnchantment("impaling");
+    static constexpr auto Riptide = EnchantmentId::minecraft("riptide");
 
-    inline static const std::string Riptide = getEnchantment("riptide");
+    static constexpr auto Loyalty = EnchantmentId::minecraft("loyalty");
 
-    inline static const std::string Loyalty = getEnchantment("loyalty");
+    static constexpr auto Channeling = EnchantmentId::minecraft("channeling");
 
-    inline static const std::string Channeling = getEnchantment("channeling");
+    static constexpr auto Multishot = EnchantmentId::minecraft("multishot");
 
-    inline static const std::string Multishot = getEnchantment("multishot");
+    static constexpr auto Piercing = EnchantmentId::minecraft("piercing");
 
-    inline static const std::string Piercing = getEnchantment("piercing");
+    static constexpr auto QuickCharge = EnchantmentId::minecraft("quick_charge");
 
-    inline static const std::string QuickCharge = getEnchantment("quick_charge");
+    static constexpr auto SoulSpeed = EnchantmentId::minecraft("soul_speed");
 
-    inline static const std::string SoulSpeed = getEnchantment("soul_speed");
+    static constexpr auto SwiftSneak = EnchantmentId::minecraft("swift_sneak");
 
-    inline static const std::string SwiftSneak = getEnchantment("swift_sneak");
+    static constexpr auto WindBurst = EnchantmentId::minecraft("wind_burst");
 
-    inline static const std::string WindBurst = getEnchantment("wind_burst");
+    static constexpr auto Density = EnchantmentId::minecraft("density");
 
-    inline static const std::string Density = getEnchantment("density");
-
-    inline static const std::string Breach = getEnchantment("breach");
+    static constexpr auto Breach = EnchantmentId::minecraft("breach");
 
     virtual ~Enchantment() = default;
 
-    [[nodiscard]] virtual std::string getId() const = 0;
+    [[nodiscard]] virtual EnchantmentId getId() const = 0;
 
     [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 

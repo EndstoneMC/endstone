@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**ActorEvent**](classendstone_1_1ActorEvent.md) &lt;typename ActorType&gt;<br>_Represents an Actor-related event._  |
+| class | [**ActorEvent**](classendstone_1_1ActorEvent.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**ActorType**](classendstone_1_1Identifier.md)&gt;<br>_Represents an Actor-related event._  |
 
 
 

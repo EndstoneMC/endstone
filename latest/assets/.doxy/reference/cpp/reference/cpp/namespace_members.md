@@ -3,6 +3,11 @@
 
 
 
+## a
+
+* **AttributeId** ([**endstone**](namespaceendstone.md))
+
+
 ## b
 
 * **BarColor** ([**endstone**](namespaceendstone.md))
@@ -19,6 +24,8 @@
 
 ## e
 
+* **EffectId** ([**endstone**](namespaceendstone.md))
+* **EnchantmentId** ([**endstone**](namespaceendstone.md))
 * **EquipmentSlot** ([**endstone**](namespaceendstone.md))
 * **EventPriority** ([**endstone**](namespaceendstone.md))
 * **EventResult** ([**endstone**](namespaceendstone.md))
@@ -38,6 +45,11 @@
 ## h
 
 * **hash\_value** ([**endstone**](namespaceendstone.md))
+
+
+## i
+
+* **ItemId** ([**endstone**](namespaceendstone.md))
 
 
 ## m
@@ -63,6 +75,7 @@
 * **PermissionLevel** ([**endstone**](namespaceendstone.md))
 * **PermissionRemovedExecutor** ([**endstone**](namespaceendstone.md))
 * **PluginLoadOrder** ([**endstone**](namespaceendstone.md))
+* **PotionId** ([**endstone**](namespaceendstone.md))
 
 
 ## r

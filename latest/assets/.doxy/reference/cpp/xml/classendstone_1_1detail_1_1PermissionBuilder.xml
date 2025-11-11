@@ -47,7 +47,7 @@
         <location file="include/endstone/plugin/plugin.h" line="279" column="23" bodyfile="include/endstone/plugin/plugin.h" bodystart="279" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1detail_1_1PermissionBuilder_1aaea36e51d398fef9a6bbe851a2e6af71" prot="private" static="no" mutable="no">
-        <type>std::unordered_map&lt; std::string, bool &gt;</type>
+        <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt;</type>
         <definition>std::unordered_map&lt;std::string, bool&gt; endstone::detail::PermissionBuilder::children_</definition>
         <argsstring></argsstring>
         <name>children_</name>
@@ -124,11 +124,11 @@
         <name>children</name>
         <qualifiedname>endstone::detail::PermissionBuilder::children</qualifiedname>
         <param>
-          <type>const std::string &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
           <declname>name</declname>
         </param>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
           <declname>value</declname>
         </param>
         <briefdescription>

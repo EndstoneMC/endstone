@@ -153,6 +153,8 @@
 ([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::Dimension &gt;**](structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4.md)
 ([**fmt**](namespacefmt.md))
+* [**formatter&lt; endstone::Identifier&lt; T &gt; &gt;**](structfmt_1_1formatter_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md)
+([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md)
 ([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md)
@@ -176,6 +178,8 @@
 ## i
 
 * [**ICancellable**](classendstone_1_1ICancellable.md)
+([**endstone**](namespaceendstone.md))
+* [**Identifier**](classendstone_1_1Identifier.md)
 ([**endstone**](namespaceendstone.md))
 * [**Image**](classendstone_1_1Image.md)
 ([**endstone**](namespaceendstone.md))
@@ -236,12 +240,6 @@
 * [**Mob**](classendstone_1_1Mob.md)
 ([**endstone**](namespaceendstone.md))
 * [**ModalForm**](classendstone_1_1ModalForm.md)
-([**endstone**](namespaceendstone.md))
-
-
-## n
-
-* [**NamespacedKey**](classendstone_1_1NamespacedKey.md)
 ([**endstone**](namespaceendstone.md))
 
 

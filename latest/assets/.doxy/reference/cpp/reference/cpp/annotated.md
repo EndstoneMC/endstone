@@ -63,6 +63,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Header**](classendstone_1_1Header.md) _Represents a header with a label._     
     * **class** [**ICancellable**](classendstone_1_1ICancellable.md)     
     * **class** [**IRegistry**](classendstone_1_1IRegistry.md)     
+    * **class** [**Identifier**](classendstone_1_1Identifier.md) _Represents a identifier consisting of two components: a namespace and a key._     
     * **class** [**Image**](classendstone_1_1Image.md) _Represents an RGBA image._     
     * **class** [**Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
     * **class** [**IpBanEntry**](classendstone_1_1IpBanEntry.md)     
@@ -71,7 +72,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ItemFactory**](classendstone_1_1ItemFactory.md)     
     * **class** [**ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
     * **class** [**ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._     
-    * **class** [**ItemType**](classendstone_1_1ItemType.md) _Represents an item type._     
+    * **class** [**ItemType**](classendstone_1_1ItemType.md)     
     * **class** [**Label**](classendstone_1_1Label.md) _Represents a text label._     
     * **class** [**Language**](classendstone_1_1Language.md) _Represents the interface for translating text into different languages._     
     * **class** [**LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md) _Called when leaves are decaying naturally._     
@@ -88,7 +89,6 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**MessageForm**](classendstone_1_1MessageForm.md) _Represents a form with two buttons._     
     * **class** [**Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
     * **class** [**ModalForm**](classendstone_1_1ModalForm.md) _Represents a modal form with controls._     
-    * **class** [**NamespacedKey**](classendstone_1_1NamespacedKey.md)     
     * **class** [**Objective**](classendstone_1_1Objective.md) _Represents an objective on a scoreboard that can show scores specific to entries._     
     * **class** [**OfflinePlayer**](classendstone_1_1OfflinePlayer.md) _Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online._     
     * **class** [**PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md) _Called when the server receives a packet from a connected client._     
@@ -133,7 +133,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PluginManager**](classendstone_1_1PluginManager.md) _Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._    
     * **class** [**PotionType**](classendstone_1_1PotionType.md) _All potion types._     
     * **class** [**Recipe**](classendstone_1_1Recipe.md) _Represents some type of crafting recipe._     
-    * **class** [**Registry**](classendstone_1_1Registry.md) _Abstract registry interface for keyed objects._     
+    * **class** [**Registry**](classendstone_1_1Registry.md) _Abstract registry interface for objects with identifiers._     
     * **class** [**Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._     
     * **class** [**Score**](classendstone_1_1Score.md) _Represents a score for an objective on a scoreboard._     
     * **class** [**Scoreboard**](classendstone_1_1Scoreboard.md) _Represents a scoreboard._     
@@ -154,7 +154,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md) _Called when the thunder state in a world is changing._     
     * **class** [**Toggle**](classendstone_1_1Toggle.md) _Represents a toggle button with a label._     
     * **class** [**Translatable**](classendstone_1_1Translatable.md) _Represents an object with a text representation that can be translated by the Minecraft client._     
-    * **class** [**UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1_1UUID.md) _)_    
+    * **class** [**UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)_    
     * **class** [**Vector**](classendstone_1_1Vector.md) _Represents a 3-dimensional vector._     
     * **class** [**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) _Called when the weather (rain) state in a world is changing._     
     * **class** [**WeatherEvent**](classendstone_1_1WeatherEvent.md) _Represents a Weather-related event._     
@@ -175,6 +175,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **struct** [**formatter&lt; endstone::Chunk &gt;**](structfmt_1_1formatter_3_01endstone_1_1Chunk_01_4.md)     
     * **struct** [**formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md)     
     * **struct** [**formatter&lt; endstone::Dimension &gt;**](structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4.md)     
+    * **struct** [**formatter&lt; endstone::Identifier&lt; T &gt; &gt;**](structfmt_1_1formatter_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md)     
     * **struct** [**formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md)     
     * **struct** [**formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md)     
     * **struct** [**formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md)     

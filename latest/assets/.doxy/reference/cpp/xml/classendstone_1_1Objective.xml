@@ -55,7 +55,7 @@
         <location file="include/endstone/scoreboard/objective.h" line="46" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a15982b68232d9cbaf16d4172c4bff1b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; void &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Objective::setDisplayName</definition>
         <argsstring>(std::string display_name)=0</argsstring>
         <name>setDisplayName</name>
@@ -84,7 +84,7 @@
         <location file="include/endstone/scoreboard/objective.h" line="53" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a2262338b77cfa7f9d6462857bf94fed2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; const <ref refid="classendstone_1_1Criteria" kindref="compound">Criteria</ref> * &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Criteria" kindref="compound">Criteria</ref> * &gt;</type>
         <definition>virtual Result&lt; const Criteria * &gt; endstone::Objective::getCriteria</definition>
         <argsstring>() const =0</argsstring>
         <name>getCriteria</name>
@@ -102,7 +102,7 @@
         <location file="include/endstone/scoreboard/objective.h" line="60" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a8a5034991d4713d86a242ca0a78f063d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; bool &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt;</type>
         <definition>virtual Result&lt; bool &gt; endstone::Objective::isModifiable</definition>
         <argsstring>() const =0</argsstring>
         <name>isModifiable</name>
@@ -138,7 +138,7 @@
         <location file="include/endstone/scoreboard/objective.h" line="74" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a4edbc25888e5f914ee03379b9db15fe7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; void &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Objective::unregister</definition>
         <argsstring>() const =0</argsstring>
         <name>unregister</name>
@@ -153,7 +153,7 @@
         <location file="include/endstone/scoreboard/objective.h" line="79" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a0611f9cc4ba7aaa5039c7a82b85c37ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; bool &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt;</type>
         <definition>virtual Result&lt; bool &gt; endstone::Objective::isDisplayed</definition>
         <argsstring>() const =0</argsstring>
         <name>isDisplayed</name>
@@ -207,7 +207,7 @@
         <location file="include/endstone/scoreboard/objective.h" line="100" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a5c68bd98d41d5d3caa69f50e3f7c3fd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; void &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Objective::setDisplaySlot</definition>
         <argsstring>(std::optional&lt; DisplaySlot &gt; slot)=0</argsstring>
         <name>setDisplaySlot</name>
@@ -236,7 +236,7 @@
         <location file="include/endstone/scoreboard/objective.h" line="108" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a1d3b73d4809a54546966668c08b72245" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; void &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Objective::setSortOrder</definition>
         <argsstring>(ObjectiveSortOrder order)=0</argsstring>
         <name>setSortOrder</name>
@@ -265,7 +265,7 @@
         <location file="include/endstone/scoreboard/objective.h" line="115" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a42b677651015bc3e39519974f4fdac56" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; void &gt;</type>
+        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
         <definition>virtual Result&lt; void &gt; endstone::Objective::setDisplay</definition>
         <argsstring>(std::optional&lt; DisplaySlot &gt; slot, ObjectiveSortOrder order)=0</argsstring>
         <name>setDisplay</name>
@@ -365,13 +365,13 @@ Gets an entry&apos;s <ref refid="classendstone_1_1Score" kindref="compound">Scor
         <location file="include/endstone/scoreboard/objective.h" line="146" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a8a41679213a22450c756fd1c14edbc36" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::Objective::operator==</definition>
         <argsstring>(const Objective &amp;other) const =0</argsstring>
         <name>operator==</name>
         <qualifiedname>endstone::Objective::operator==</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -383,13 +383,13 @@ Gets an entry&apos;s <ref refid="classendstone_1_1Score" kindref="compound">Scor
         <location file="include/endstone/scoreboard/objective.h" line="148" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1abfd8c61ab066baec27ba92445cc6ce3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::Objective::operator!=</definition>
         <argsstring>(const Objective &amp;other) const =0</argsstring>
         <name>operator!=</name>
         <qualifiedname>endstone::Objective::operator!=</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>

@@ -97,7 +97,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 |   | [**PlayerSkinChangeEvent**](#function-playerskinchangeevent) ([**Player**](classendstone_1_1Player.md) & player, [**Skin**](classendstone_1_1Skin.md) new\_skin, std::optional&lt; Message &gt; message) <br> |
 |  [**Skin**](classendstone_1_1Skin.md) | [**getNewSkin**](#function-getnewskin) () const<br>_Gets the player's new skin._  |
 |  std::optional&lt; Message &gt; | [**getSkinChangeMessage**](#function-getskinchangemessage) () const<br>_Gets the message to send to all online players for this skin change._  |
-|  void | [**setSkinChangeMessage**](#function-setskinchangemessage) (std::optional&lt; Message &gt; message) <br>_Sets the message to send to all online players for this skin change._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setSkinChangeMessage**](#function-setskinchangemessage) (std::optional&lt; Message &gt; message) <br>_Sets the message to send to all online players for this skin change._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -106,9 +106,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual void | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual bool | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual void | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) (bool cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -117,9 +117,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual void | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual bool | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual void | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) (bool cancel) = 0<br> |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) = 0<br> |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 

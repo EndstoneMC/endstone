@@ -79,7 +79,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers. Should be instantiated on a per-event basis._ 
 * **class** [**endstone::Header**](classendstone_1_1Header.md) _Represents a header with a label._ 
 * **class** [**endstone::IRegistry**](classendstone_1_1IRegistry.md)     
-    * **class** [**endstone::Registry**](classendstone_1_1Registry.md) _Abstract registry interface for keyed objects._ 
+    * **class** [**endstone::Registry**](classendstone_1_1Registry.md) _Abstract registry interface for objects with identifiers._ 
+* **class** [**endstone::Identifier**](classendstone_1_1Identifier.md) _Represents a identifier consisting of two components: a namespace and a key._ 
 * **class** [**endstone::Image**](classendstone_1_1Image.md) _Represents an RGBA image._ 
 * **class** [**endstone::Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
     * **class** [**endstone::PlayerInventory**](classendstone_1_1PlayerInventory.md) _Interface to the inventory of a_ [_**Player**_](classendstone_1_1Player.md) _, including the four armor slots and any extra slots._
@@ -87,7 +88,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
     * **class** [**endstone::MapMeta**](classendstone_1_1MapMeta.md) _Represents the metadata for a map item._ 
 * **class** [**endstone::ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._ 
-* **class** [**endstone::ItemType**](classendstone_1_1ItemType.md) _Represents an item type._ 
+* **class** [**endstone::ItemType**](classendstone_1_1ItemType.md) 
 * **class** [**endstone::Label**](classendstone_1_1Label.md) _Represents a text label._ 
 * **class** [**endstone::Language**](classendstone_1_1Language.md) _Represents the interface for translating text into different languages._ 
 * **class** [**endstone::Level**](classendstone_1_1Level.md) _Represents a level, which may contain actors, chunks and blocks._ 
@@ -97,7 +98,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::MapCursor**](classendstone_1_1MapCursor.md) _Represents a cursor on a map._ 
 * **class** [**endstone::MapRenderer**](classendstone_1_1MapRenderer.md) _Represents a renderer for a map._ 
 * **class** [**endstone::MapView**](classendstone_1_1MapView.md) _Represents a map item._ 
-* **class** [**endstone::NamespacedKey**](classendstone_1_1NamespacedKey.md) 
 * **class** [**endstone::Objective**](classendstone_1_1Objective.md) _Represents an objective on a scoreboard that can show scores specific to entries._ 
 * **class** [**endstone::OfflinePlayer**](classendstone_1_1OfflinePlayer.md) _Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online._     
     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
@@ -120,7 +120,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::TextInput**](classendstone_1_1TextInput.md) _Represents a text input field._ 
 * **class** [**endstone::Toggle**](classendstone_1_1Toggle.md) _Represents a toggle button with a label._ 
 * **class** [**endstone::Translatable**](classendstone_1_1Translatable.md) _Represents an object with a text representation that can be translated by the Minecraft client._ 
-* **class** [**endstone::UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1_1UUID.md) _)_
+* **class** [**endstone::UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)_
 * **class** [**endstone::Vector**](classendstone_1_1Vector.md) _Represents a 3-dimensional vector._ 
 * **class** [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) 
 * **class** [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) 
@@ -183,6 +183,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **struct** [**fmt::formatter&lt; endstone::Chunk &gt;**](structfmt_1_1formatter_3_01endstone_1_1Chunk_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::Dimension &gt;**](structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4.md) 
+    * **struct** [**fmt::formatter&lt; endstone::Identifier&lt; T &gt; &gt;**](structfmt_1_1formatter_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::ItemType &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4.md) 
     * **struct** [**fmt::formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md) 

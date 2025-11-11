@@ -53,7 +53,7 @@
 | ---: | :--- |
 |   | [**PermissionBuilder**](#function-permissionbuilder) (std::string name) <br> |
 |  [**Permission**](classendstone_1_1Permission.md) | [**build**](#function-build) () const<br> |
-|  PermissionBuilder & | [**children**](#function-children) (const std::string & name, bool value) <br> |
+|  PermissionBuilder & | [**children**](#function-children) ([**const**](classendstone_1_1Identifier.md) std::string & name, [**bool**](classendstone_1_1Identifier.md) value) <br> |
 |  PermissionBuilder & | [**default\_**](#function-default_) ([**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) default\_value) <br> |
 |  PermissionBuilder & | [**description**](#function-description) (std::string description) <br> |
 

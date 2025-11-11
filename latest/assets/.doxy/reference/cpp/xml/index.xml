@@ -121,23 +121,22 @@
     <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" kind="function"><name>setTo</name></member>
   </compound>
   <compound refid="classendstone_1_1Attribute" kind="class"><name>endstone::Attribute</name>
-    <member refid="classendstone_1_1Attribute_1aeee461f13bba29f7fa19a4cc4da9101c" kind="variable"><name>Health</name></member>
-    <member refid="classendstone_1_1Attribute_1a11bb9ab2afba2ad0845ce4d6ae9c9f92" kind="variable"><name>FollowRange</name></member>
-    <member refid="classendstone_1_1Attribute_1abad5e6429361dd0eec3f1041e4de7c71" kind="variable"><name>KnockbackResistance</name></member>
-    <member refid="classendstone_1_1Attribute_1a143bae00467eca12222f5e2468e2d1b8" kind="variable"><name>MovementSpeed</name></member>
-    <member refid="classendstone_1_1Attribute_1aabdb7f29bea80c489bda195776e5e7f1" kind="variable"><name>UnderwaterMovementSpeed</name></member>
-    <member refid="classendstone_1_1Attribute_1a67bccb025d6bf23d4940961e1c18f46c" kind="variable"><name>LavaMovementSpeed</name></member>
-    <member refid="classendstone_1_1Attribute_1a2cbd8b2d3515c572b0ef135e8a887fa5" kind="variable"><name>AttackDamage</name></member>
-    <member refid="classendstone_1_1Attribute_1ae4121fd771a937cb3f16db88903a6fbd" kind="variable"><name>Absorption</name></member>
-    <member refid="classendstone_1_1Attribute_1abf8652b1244bf44ed8a9c5eff192c14e" kind="variable"><name>Luck</name></member>
-    <member refid="classendstone_1_1Attribute_1a94c4b1990af6620e649307b844cc6517" kind="variable"><name>JumpStrength</name></member>
-    <member refid="classendstone_1_1Attribute_1a6d4879f481a1c5d3b6753c8bcc1851a1" kind="variable"><name>PlayerHunger</name></member>
-    <member refid="classendstone_1_1Attribute_1a03c2123910f0da85fd6da82cc218306c" kind="variable"><name>PlayerSaturation</name></member>
-    <member refid="classendstone_1_1Attribute_1ae0f139825128702da90860d2f5ebfb05" kind="variable"><name>PlayerExhaustion</name></member>
-    <member refid="classendstone_1_1Attribute_1acd0d9ea8ff986934def2a92e025a8fe0" kind="variable"><name>PlayerLevel</name></member>
-    <member refid="classendstone_1_1Attribute_1ad6bef4df1cb51c396f34c0cb41461f52" kind="variable"><name>PlayerExperience</name></member>
-    <member refid="classendstone_1_1Attribute_1af7b13b343bc6a13a93f7613381a9e98a" kind="variable"><name>ZombieSpawnReinforcements</name></member>
-    <member refid="classendstone_1_1Attribute_1aab95a3fee9fe3fb4946437bf9759e647" kind="function"><name>getAttribute</name></member>
+    <member refid="classendstone_1_1Attribute_1a0a08b7a3c41aeea1e8f99c01c0b7ad0e" kind="variable"><name>Health</name></member>
+    <member refid="classendstone_1_1Attribute_1a8948c8f94cc2c3f77f182bcd96cbddcd" kind="variable"><name>FollowRange</name></member>
+    <member refid="classendstone_1_1Attribute_1aadc9e5baf72fd7361563deea2eca4453" kind="variable"><name>KnockbackResistance</name></member>
+    <member refid="classendstone_1_1Attribute_1abda74e2d60abbda6c84fdc7d8f5faf74" kind="variable"><name>MovementSpeed</name></member>
+    <member refid="classendstone_1_1Attribute_1ae5331621bb7909b957cfd19d567801bf" kind="variable"><name>UnderwaterMovementSpeed</name></member>
+    <member refid="classendstone_1_1Attribute_1a1edce1a17770df3b5d929389a51dd8ef" kind="variable"><name>LavaMovementSpeed</name></member>
+    <member refid="classendstone_1_1Attribute_1aa31e02509a3604d26a5367f7cfca6927" kind="variable"><name>AttackDamage</name></member>
+    <member refid="classendstone_1_1Attribute_1a8d0083b7980c70038a8cf9b03811a3a9" kind="variable"><name>Absorption</name></member>
+    <member refid="classendstone_1_1Attribute_1a362c652498582fb951aacd8d71d41255" kind="variable"><name>Luck</name></member>
+    <member refid="classendstone_1_1Attribute_1aea378ff4925943117d40a6de5bef47a3" kind="variable"><name>JumpStrength</name></member>
+    <member refid="classendstone_1_1Attribute_1aac9546c578a22405f09b32d9fa989518" kind="variable"><name>PlayerHunger</name></member>
+    <member refid="classendstone_1_1Attribute_1a4e4ec132134eb3e7a4c30fd292b2fff9" kind="variable"><name>PlayerSaturation</name></member>
+    <member refid="classendstone_1_1Attribute_1ac06d7f7380120e587e71e6c1fb993101" kind="variable"><name>PlayerExhaustion</name></member>
+    <member refid="classendstone_1_1Attribute_1add534a7ac8619e4533e5df7341cb65e3" kind="variable"><name>PlayerLevel</name></member>
+    <member refid="classendstone_1_1Attribute_1a169db16643b6a7dea438ecedc8ddcae0" kind="variable"><name>PlayerExperience</name></member>
+    <member refid="classendstone_1_1Attribute_1a3040e0ce928371139d0f12e97b9a4d49" kind="variable"><name>ZombieSpawnReinforcements</name></member>
   </compound>
   <compound refid="classendstone_1_1AttributeInstance" kind="class"><name>endstone::AttributeInstance</name>
     <member refid="classendstone_1_1AttributeInstance_1a2c760ef86dbaff64b27215bee0a64d2e" kind="function"><name>~AttributeInstance</name></member>
@@ -593,89 +592,87 @@
     <member refid="classendstone_1_1Dropdown_1a370ff769dafb86ac4ed83ddef6e3b4b4" kind="function"><name>setDefaultIndex</name></member>
   </compound>
   <compound refid="classendstone_1_1EffectType" kind="class"><name>endstone::EffectType</name>
-    <member refid="classendstone_1_1EffectType_1a0edb6c0ffc0d258c0bf73cc406fcf36d" kind="variable"><name>Speed</name></member>
-    <member refid="classendstone_1_1EffectType_1ae7ff89cef56b3c088a0cb04c59824318" kind="variable"><name>Slowness</name></member>
-    <member refid="classendstone_1_1EffectType_1ace34fdac89593096af519b55e5e07aaa" kind="variable"><name>Haste</name></member>
-    <member refid="classendstone_1_1EffectType_1ad12456c87b72295bcdfcdaecf3cb549f" kind="variable"><name>MiningFatigue</name></member>
-    <member refid="classendstone_1_1EffectType_1a131a015cb4caf77914e847d73f80d3e7" kind="variable"><name>Strength</name></member>
-    <member refid="classendstone_1_1EffectType_1a8e7df6c5cf7edd1de10fc058867c27c0" kind="variable"><name>InstantHealth</name></member>
-    <member refid="classendstone_1_1EffectType_1a0f85ee53ebfc961a73d4f3522ec06f47" kind="variable"><name>InstantDamage</name></member>
-    <member refid="classendstone_1_1EffectType_1ab6b81a5bab0c2f0a44ac936bf98d7b14" kind="variable"><name>JumpBoost</name></member>
-    <member refid="classendstone_1_1EffectType_1a5775abe1f24ce0353f83b58146d6da28" kind="variable"><name>Nausea</name></member>
-    <member refid="classendstone_1_1EffectType_1a4243b93a3b30d4885415fde43de62e2c" kind="variable"><name>Regeneration</name></member>
-    <member refid="classendstone_1_1EffectType_1a429343b8bd0373f56dc1842998dbd647" kind="variable"><name>Resistance</name></member>
-    <member refid="classendstone_1_1EffectType_1ab4dd3d6e9c0a328a28508ad741a36cab" kind="variable"><name>FireResistance</name></member>
-    <member refid="classendstone_1_1EffectType_1ab5e4a5a9729395c68b25f1aa00774018" kind="variable"><name>WaterBreathing</name></member>
-    <member refid="classendstone_1_1EffectType_1af8dfb14543ec5a0156b2130fb5428de5" kind="variable"><name>Invisibility</name></member>
-    <member refid="classendstone_1_1EffectType_1a4a0a915b1f54b2db5c14d1acd7f9f126" kind="variable"><name>Blindness</name></member>
-    <member refid="classendstone_1_1EffectType_1a95fbf0ce737ee098368f415262cd206f" kind="variable"><name>NightVision</name></member>
-    <member refid="classendstone_1_1EffectType_1abab9c99570d6b2d300538238c1236023" kind="variable"><name>Hunger</name></member>
-    <member refid="classendstone_1_1EffectType_1a89e71ed8b05139b171cd72be6482dbc1" kind="variable"><name>Weakness</name></member>
-    <member refid="classendstone_1_1EffectType_1a2900bf9ac5414674aa7ca8603f4e3acc" kind="variable"><name>Poison</name></member>
-    <member refid="classendstone_1_1EffectType_1a09787e5505d49122a7ee5b47eba61c68" kind="variable"><name>Wither</name></member>
-    <member refid="classendstone_1_1EffectType_1a6b2aaec69245679e7d85fcd766cb5232" kind="variable"><name>HealthBoost</name></member>
-    <member refid="classendstone_1_1EffectType_1a31bf6ab9da53b70b3c6fbd239efb3d63" kind="variable"><name>Absorption</name></member>
-    <member refid="classendstone_1_1EffectType_1aecbd26087ffcba4dc1ba1873a9326c49" kind="variable"><name>Saturation</name></member>
-    <member refid="classendstone_1_1EffectType_1a240f34b649162d2322caea45d7b41fd8" kind="variable"><name>Levitation</name></member>
-    <member refid="classendstone_1_1EffectType_1ab7425b3fa3f62b9ff602418301d79f3b" kind="variable"><name>FatalPoison</name></member>
-    <member refid="classendstone_1_1EffectType_1a22eff781cf7c5ec4c27103b7133bef35" kind="variable"><name>ConduitPower</name></member>
-    <member refid="classendstone_1_1EffectType_1a6eaaf3aef81e3c829496ed973400ca65" kind="variable"><name>SlowFalling</name></member>
-    <member refid="classendstone_1_1EffectType_1afd571d2c1744540c4fa1ee11dc371980" kind="variable"><name>BadOmen</name></member>
-    <member refid="classendstone_1_1EffectType_1af6b5ad04eaa26791853638928f8bb538" kind="variable"><name>HeroOfTheVillage</name></member>
-    <member refid="classendstone_1_1EffectType_1ae3e16443e431969b1e6787dd81549bfb" kind="variable"><name>Darkness</name></member>
-    <member refid="classendstone_1_1EffectType_1a3733620d33b976f3522e65a0f1fbedd9" kind="variable"><name>TrialOmen</name></member>
-    <member refid="classendstone_1_1EffectType_1ae6367d8fb10511c417aa26716121856b" kind="variable"><name>WindCharged</name></member>
-    <member refid="classendstone_1_1EffectType_1a95c3ef30260b849d4f8eb6a01fde7134" kind="variable"><name>Weaving</name></member>
-    <member refid="classendstone_1_1EffectType_1a327f7dec9ed9b578e5250ba6e2e15d7d" kind="variable"><name>Oozing</name></member>
-    <member refid="classendstone_1_1EffectType_1ab29f0cd3886f1c19ae0399bde24ab2bf" kind="variable"><name>Infested</name></member>
-    <member refid="classendstone_1_1EffectType_1abda9edc6db36eb6a4431ef37e0a34736" kind="variable"><name>RaidOmen</name></member>
-    <member refid="classendstone_1_1EffectType_1a099e77cf32a51f151e1aba4f05bfdc51" kind="function"><name>getEffectType</name></member>
+    <member refid="classendstone_1_1EffectType_1a1bc785783704de4311b5dd145b80f0a1" kind="variable"><name>Speed</name></member>
+    <member refid="classendstone_1_1EffectType_1a81907192deb4d3e74681ddf020e4630f" kind="variable"><name>Slowness</name></member>
+    <member refid="classendstone_1_1EffectType_1aa2e24d50b86bc4934e057fbb0d53dff9" kind="variable"><name>Haste</name></member>
+    <member refid="classendstone_1_1EffectType_1a6638743a7d4be40c9ee266e15e25f93b" kind="variable"><name>MiningFatigue</name></member>
+    <member refid="classendstone_1_1EffectType_1a4acca2261fea494a4292d69479ef45b5" kind="variable"><name>Strength</name></member>
+    <member refid="classendstone_1_1EffectType_1aae3d5346cf5c46e21468651f0da2f8d5" kind="variable"><name>InstantHealth</name></member>
+    <member refid="classendstone_1_1EffectType_1aab73d0d5c7198ef6d17385db632c88e0" kind="variable"><name>InstantDamage</name></member>
+    <member refid="classendstone_1_1EffectType_1a8ea76a75b56c41d9d2125d5490713af5" kind="variable"><name>JumpBoost</name></member>
+    <member refid="classendstone_1_1EffectType_1ac14fbf24addd6a1239a7fdf2cd6f3cde" kind="variable"><name>Nausea</name></member>
+    <member refid="classendstone_1_1EffectType_1af17c18310a5fa824fe27c619d27b7f89" kind="variable"><name>Regeneration</name></member>
+    <member refid="classendstone_1_1EffectType_1a0ac3b6bbf396d4e8a2da382fb0e56dde" kind="variable"><name>Resistance</name></member>
+    <member refid="classendstone_1_1EffectType_1acf8a9eda57ed368aae6d0d2ba2b3081c" kind="variable"><name>FireResistance</name></member>
+    <member refid="classendstone_1_1EffectType_1a12e3952816ecb830987c9c1abbd86a35" kind="variable"><name>WaterBreathing</name></member>
+    <member refid="classendstone_1_1EffectType_1ae9fe9b76e44f7f0c9bd91a3d7aa852bb" kind="variable"><name>Invisibility</name></member>
+    <member refid="classendstone_1_1EffectType_1a7466229104baf254bd422d8b97154c89" kind="variable"><name>Blindness</name></member>
+    <member refid="classendstone_1_1EffectType_1a6fa594813d66f0df40de0cbec3a765ba" kind="variable"><name>NightVision</name></member>
+    <member refid="classendstone_1_1EffectType_1a0e59560b01d97c9a89ab950951bfb7f9" kind="variable"><name>Hunger</name></member>
+    <member refid="classendstone_1_1EffectType_1a3ac3c89e8f6c9bb014f2c794d3c7294e" kind="variable"><name>Weakness</name></member>
+    <member refid="classendstone_1_1EffectType_1a11e4181e2a92e9ab02ea29b2f1c74f0b" kind="variable"><name>Poison</name></member>
+    <member refid="classendstone_1_1EffectType_1a6c0d8825ed3b3c8fc2b0bf73c87b1ab3" kind="variable"><name>Wither</name></member>
+    <member refid="classendstone_1_1EffectType_1a842baa92f96d10eefa227f7d5a746da5" kind="variable"><name>HealthBoost</name></member>
+    <member refid="classendstone_1_1EffectType_1a8acfe94b560a8febb2f485e578f45159" kind="variable"><name>Absorption</name></member>
+    <member refid="classendstone_1_1EffectType_1a86bd2d6ed5e06af4f0ee40a9c72d51df" kind="variable"><name>Saturation</name></member>
+    <member refid="classendstone_1_1EffectType_1add358e7b276aba39ac1643c8e86ebd3c" kind="variable"><name>Levitation</name></member>
+    <member refid="classendstone_1_1EffectType_1aaeee81973d333a71beaf4ced6399594a" kind="variable"><name>FatalPoison</name></member>
+    <member refid="classendstone_1_1EffectType_1a5efdff0153d27ddd3079fa1547c0b9c4" kind="variable"><name>ConduitPower</name></member>
+    <member refid="classendstone_1_1EffectType_1aedcd635847309a74e8c3d55c96ab81dd" kind="variable"><name>SlowFalling</name></member>
+    <member refid="classendstone_1_1EffectType_1ad05807d9a795e264c221a562fff43ea2" kind="variable"><name>BadOmen</name></member>
+    <member refid="classendstone_1_1EffectType_1a50ac6f6133315aa41d6ce621b882e7fb" kind="variable"><name>HeroOfTheVillage</name></member>
+    <member refid="classendstone_1_1EffectType_1a8e1a95df98b75ee68797075094ae2ba7" kind="variable"><name>Darkness</name></member>
+    <member refid="classendstone_1_1EffectType_1aa5638d778e9ecc4793cd4b17cb295ed4" kind="variable"><name>TrialOmen</name></member>
+    <member refid="classendstone_1_1EffectType_1a900d76af4a5c87a1c223e8a63fb70d13" kind="variable"><name>WindCharged</name></member>
+    <member refid="classendstone_1_1EffectType_1a8355b66ddcd485b67d62934d68f44243" kind="variable"><name>Weaving</name></member>
+    <member refid="classendstone_1_1EffectType_1a71d76c66a98a9f6f038186c8a47d379f" kind="variable"><name>Oozing</name></member>
+    <member refid="classendstone_1_1EffectType_1a99c1d88dc16a4c3e25af259303b6d45f" kind="variable"><name>Infested</name></member>
+    <member refid="classendstone_1_1EffectType_1a455ec17fee0ef6334c2231c509df34f0" kind="variable"><name>RaidOmen</name></member>
   </compound>
   <compound refid="classendstone_1_1Enchantment" kind="class"><name>endstone::Enchantment</name>
-    <member refid="classendstone_1_1Enchantment_1a77f68b71735935a36c6fbcf1bad9a9f6" kind="variable"><name>Protection</name></member>
-    <member refid="classendstone_1_1Enchantment_1a603f1ff3531ba50b470bb6723fcaff33" kind="variable"><name>FireProtection</name></member>
-    <member refid="classendstone_1_1Enchantment_1afd0538d221079a4e306ef68c76395114" kind="variable"><name>FeatherFalling</name></member>
-    <member refid="classendstone_1_1Enchantment_1a33e22046536f14fe52517c2231f9e3e9" kind="variable"><name>BlastProtection</name></member>
-    <member refid="classendstone_1_1Enchantment_1a8fe4c607d8f99f823bbf2c2c12c0102c" kind="variable"><name>ProjectileProtection</name></member>
-    <member refid="classendstone_1_1Enchantment_1a57049e0f81d37387ad83ad0c7a69a6be" kind="variable"><name>Thorns</name></member>
-    <member refid="classendstone_1_1Enchantment_1ab5c1b475d7b938e1d7a3f807e6019378" kind="variable"><name>Respiration</name></member>
-    <member refid="classendstone_1_1Enchantment_1af1c7e007b6435165eb45740fce0cc683" kind="variable"><name>DepthStrider</name></member>
-    <member refid="classendstone_1_1Enchantment_1a0c24bbd41bf4afe5444cd3b9d7b54452" kind="variable"><name>AquaAffinity</name></member>
-    <member refid="classendstone_1_1Enchantment_1aa822ad1465f023f3968bf896ad4e86ae" kind="variable"><name>Sharpness</name></member>
-    <member refid="classendstone_1_1Enchantment_1a3067f0269bade2ac079c6db7e1ae309b" kind="variable"><name>Smite</name></member>
-    <member refid="classendstone_1_1Enchantment_1aa0ac2c30febd9db5d648453529a22553" kind="variable"><name>BaneOfArthropods</name></member>
-    <member refid="classendstone_1_1Enchantment_1a1d8b0ee51e2b63af5fa92434ab4ff8fb" kind="variable"><name>Knockback</name></member>
-    <member refid="classendstone_1_1Enchantment_1a5ee507280fca638b4cb63d97384df437" kind="variable"><name>FireAspect</name></member>
-    <member refid="classendstone_1_1Enchantment_1ab832d331b4a1bb64a9396182115412f3" kind="variable"><name>Looting</name></member>
-    <member refid="classendstone_1_1Enchantment_1a2bb3e8d904040328dd5f08adb5a1c6f7" kind="variable"><name>Efficiency</name></member>
-    <member refid="classendstone_1_1Enchantment_1a37122cf5b2f6c6adea4ea25cf94ac47d" kind="variable"><name>SilkTouch</name></member>
-    <member refid="classendstone_1_1Enchantment_1a73c32f0550929fca8128ee56577a04a4" kind="variable"><name>Unbreaking</name></member>
-    <member refid="classendstone_1_1Enchantment_1ac86988b6702e58c5f8bec1778e5d7424" kind="variable"><name>Fortune</name></member>
-    <member refid="classendstone_1_1Enchantment_1ac114920606cc904cb17ff3e9a1133f1f" kind="variable"><name>Power</name></member>
-    <member refid="classendstone_1_1Enchantment_1ac480f39a284bc1b29ead6b5ddd5a62fb" kind="variable"><name>Punch</name></member>
-    <member refid="classendstone_1_1Enchantment_1a71df09047092134a3d8a7bbba087e434" kind="variable"><name>Flame</name></member>
-    <member refid="classendstone_1_1Enchantment_1a4523ab35640cc93ac028b8f0ba611c54" kind="variable"><name>Infinity</name></member>
-    <member refid="classendstone_1_1Enchantment_1a541256e08ea3498976f16af938cf3d97" kind="variable"><name>LuckOfTheSea</name></member>
-    <member refid="classendstone_1_1Enchantment_1a6f1a563a10d8c177304e332da682b39f" kind="variable"><name>Lure</name></member>
-    <member refid="classendstone_1_1Enchantment_1a01eb7d453a9768c4a04f880e990a3be2" kind="variable"><name>FrostWalker</name></member>
-    <member refid="classendstone_1_1Enchantment_1a528c18b4cba870f4300892091d62fc80" kind="variable"><name>Mending</name></member>
-    <member refid="classendstone_1_1Enchantment_1abea8e1204d9dd0e195c4100582e527e0" kind="variable"><name>CurseOfBinding</name></member>
-    <member refid="classendstone_1_1Enchantment_1ac0111184546680976bc4dc9a03ba9271" kind="variable"><name>CurseOfVanishing</name></member>
-    <member refid="classendstone_1_1Enchantment_1af72cdba0bee7268d803fe6831c8eb806" kind="variable"><name>Impaling</name></member>
-    <member refid="classendstone_1_1Enchantment_1a55add57223e3eb1e44312cfd6e6af07e" kind="variable"><name>Riptide</name></member>
-    <member refid="classendstone_1_1Enchantment_1a5b9a2a157735ca0e27a7c175b734e6c1" kind="variable"><name>Loyalty</name></member>
-    <member refid="classendstone_1_1Enchantment_1ae73bf51010fa7ff8c7de2dd350122b34" kind="variable"><name>Channeling</name></member>
-    <member refid="classendstone_1_1Enchantment_1a1ab9b4a512344cd9528accfbafd489a8" kind="variable"><name>Multishot</name></member>
-    <member refid="classendstone_1_1Enchantment_1afe6c192301d88c4b0e0ef7e0f2449e59" kind="variable"><name>Piercing</name></member>
-    <member refid="classendstone_1_1Enchantment_1a2faf0209df882021c58ed270b7225f33" kind="variable"><name>QuickCharge</name></member>
-    <member refid="classendstone_1_1Enchantment_1a69557571deb2bf6a5fc6600d7bcc0acd" kind="variable"><name>SoulSpeed</name></member>
-    <member refid="classendstone_1_1Enchantment_1a062964625f266c0c9aa306fa485418fe" kind="variable"><name>SwiftSneak</name></member>
-    <member refid="classendstone_1_1Enchantment_1a80ed327b5f9784464514a6032af502a2" kind="variable"><name>WindBurst</name></member>
-    <member refid="classendstone_1_1Enchantment_1aeb91e4768e20b469d5d33f72b7e1f418" kind="variable"><name>Density</name></member>
-    <member refid="classendstone_1_1Enchantment_1ad94a1826b30a03ac8535cd0bfa1b06db" kind="variable"><name>Breach</name></member>
-    <member refid="classendstone_1_1Enchantment_1a81b7325cc72ab15d18aee538040089c6" kind="function"><name>getEnchantment</name></member>
+    <member refid="classendstone_1_1Enchantment_1ac7918f3e3cab412ff65c436a05b85889" kind="variable"><name>Protection</name></member>
+    <member refid="classendstone_1_1Enchantment_1acaea890abfefd73050a4cf0edee110e3" kind="variable"><name>FireProtection</name></member>
+    <member refid="classendstone_1_1Enchantment_1ab2074a3f3553a44007dc4c063ac9c13e" kind="variable"><name>FeatherFalling</name></member>
+    <member refid="classendstone_1_1Enchantment_1aaf7ba432745dd23f545fdd5903d24b99" kind="variable"><name>BlastProtection</name></member>
+    <member refid="classendstone_1_1Enchantment_1a4cd9bf3365fcfe936485603a35c190a8" kind="variable"><name>ProjectileProtection</name></member>
+    <member refid="classendstone_1_1Enchantment_1ad73ef8fb1ba8e9a764a10cffd9d8cfd8" kind="variable"><name>Thorns</name></member>
+    <member refid="classendstone_1_1Enchantment_1ab5d4bfd41a822904898c7cc1f0a36fe7" kind="variable"><name>Respiration</name></member>
+    <member refid="classendstone_1_1Enchantment_1a373f86003904932ed3a62bb52e795273" kind="variable"><name>DepthStrider</name></member>
+    <member refid="classendstone_1_1Enchantment_1a42951020e8e528fe120e6e33b3fcd6de" kind="variable"><name>AquaAffinity</name></member>
+    <member refid="classendstone_1_1Enchantment_1aee48de274b3bd83def274e5a40a1b136" kind="variable"><name>Sharpness</name></member>
+    <member refid="classendstone_1_1Enchantment_1a9ea3c26bb9d6f4f053f280aba3d7b62b" kind="variable"><name>Smite</name></member>
+    <member refid="classendstone_1_1Enchantment_1a0fdbd9dc57cb3132b60edf77206dd392" kind="variable"><name>BaneOfArthropods</name></member>
+    <member refid="classendstone_1_1Enchantment_1a57e30cdc84b6a98c63b1176492ec91d1" kind="variable"><name>Knockback</name></member>
+    <member refid="classendstone_1_1Enchantment_1a90c315ec1e40433fed2d0decd2489b8d" kind="variable"><name>FireAspect</name></member>
+    <member refid="classendstone_1_1Enchantment_1a2aa552f6157d47f02488e9222dc49a36" kind="variable"><name>Looting</name></member>
+    <member refid="classendstone_1_1Enchantment_1a3c9103b8d052cd17fce10e2dd6af2a10" kind="variable"><name>Efficiency</name></member>
+    <member refid="classendstone_1_1Enchantment_1abd056d3405bbfca06914bbcfe13255f8" kind="variable"><name>SilkTouch</name></member>
+    <member refid="classendstone_1_1Enchantment_1afd8d1c7a403e5d937083adb4cd3927c1" kind="variable"><name>Unbreaking</name></member>
+    <member refid="classendstone_1_1Enchantment_1a77cbd7b93fbfcc75fb8afcfb7b33b6cb" kind="variable"><name>Fortune</name></member>
+    <member refid="classendstone_1_1Enchantment_1aaeb31319b930697876162d77036cf711" kind="variable"><name>Power</name></member>
+    <member refid="classendstone_1_1Enchantment_1a1dc5996465eee694835cabee30cad131" kind="variable"><name>Punch</name></member>
+    <member refid="classendstone_1_1Enchantment_1a39447ccc523ab709f9aad17dd6dfba06" kind="variable"><name>Flame</name></member>
+    <member refid="classendstone_1_1Enchantment_1a7e9b6f58f298705ddc3ed1563f358e6f" kind="variable"><name>Infinity</name></member>
+    <member refid="classendstone_1_1Enchantment_1a226dfe99a6d5f65ef9e944aeedf0252a" kind="variable"><name>LuckOfTheSea</name></member>
+    <member refid="classendstone_1_1Enchantment_1ac0116f71196e9d556d8ec3ec31ee6dde" kind="variable"><name>Lure</name></member>
+    <member refid="classendstone_1_1Enchantment_1a4d2377f98184f466cfe11b4e4b931d2d" kind="variable"><name>FrostWalker</name></member>
+    <member refid="classendstone_1_1Enchantment_1aa6585b6679cde360f39eec335a1dea5f" kind="variable"><name>Mending</name></member>
+    <member refid="classendstone_1_1Enchantment_1afa3ddb9920176f9ae34c0365ce2fb678" kind="variable"><name>CurseOfBinding</name></member>
+    <member refid="classendstone_1_1Enchantment_1ab225e12bdf8a6349260ca6364997eb4f" kind="variable"><name>CurseOfVanishing</name></member>
+    <member refid="classendstone_1_1Enchantment_1aab652fd5d6b61b4c8603dcf77277b27b" kind="variable"><name>Impaling</name></member>
+    <member refid="classendstone_1_1Enchantment_1a05e9349874f0a9f9d346f7f9f4d3da0f" kind="variable"><name>Riptide</name></member>
+    <member refid="classendstone_1_1Enchantment_1af880cae983ce48ce9db53be0bf179575" kind="variable"><name>Loyalty</name></member>
+    <member refid="classendstone_1_1Enchantment_1a8d0b2beb68bd080060160e20991f0db2" kind="variable"><name>Channeling</name></member>
+    <member refid="classendstone_1_1Enchantment_1ab6cdd60f5254e0f6c09fc0d9809541fe" kind="variable"><name>Multishot</name></member>
+    <member refid="classendstone_1_1Enchantment_1a515c9a244378f0c8ed5ddc4ba0cf78a6" kind="variable"><name>Piercing</name></member>
+    <member refid="classendstone_1_1Enchantment_1ae7c1ce0070b7ce7a3e658468baafef60" kind="variable"><name>QuickCharge</name></member>
+    <member refid="classendstone_1_1Enchantment_1a7a7a32218950752913898d3ca937400d" kind="variable"><name>SoulSpeed</name></member>
+    <member refid="classendstone_1_1Enchantment_1a50546b69e92f614ef004d1e75b539a52" kind="variable"><name>SwiftSneak</name></member>
+    <member refid="classendstone_1_1Enchantment_1a94d6dbb5f544f8b1ac328dcd02c9bc1c" kind="variable"><name>WindBurst</name></member>
+    <member refid="classendstone_1_1Enchantment_1a72cc616fb733110b6e50e0aea44858b3" kind="variable"><name>Density</name></member>
+    <member refid="classendstone_1_1Enchantment_1a940db5ad3f732d219e93c15790e1dcda" kind="variable"><name>Breach</name></member>
     <member refid="classendstone_1_1Enchantment_1a52f4acd21d110aa3cf5ca3e41815310c" kind="function"><name>~Enchantment</name></member>
-    <member refid="classendstone_1_1Enchantment_1ab02562f0e0585d106bb3fc904bd32b14" kind="function"><name>getId</name></member>
+    <member refid="classendstone_1_1Enchantment_1a4e877f661219c78647b888f3c5b41a9a" kind="function"><name>getId</name></member>
     <member refid="classendstone_1_1Enchantment_1a2c9d36d8189de57bcff77586591e9c05" kind="function"><name>getTranslationKey</name></member>
     <member refid="classendstone_1_1Enchantment_1a136c9d559081586af3d83318c1934b34" kind="function"><name>getMaxLevel</name></member>
     <member refid="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" kind="function"><name>getStartLevel</name></member>
@@ -756,6 +753,9 @@
   <compound refid="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4" kind="struct"><name>fmt::formatter&lt; endstone::Dimension &gt;</name>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4_1abeecaceec6db778e76499dcd635ba82a" kind="function"><name>format</name></member>
   </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1Identifier_3_01T_01_4_01_4" kind="struct"><name>fmt::formatter&lt; endstone::Identifier&lt; T &gt; &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1Identifier_3_01T_01_4_01_4_1a935e825a2e2de72a67701ec2da0804af" kind="function"><name>format</name></member>
+  </compound>
   <compound refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4" kind="struct"><name>fmt::formatter&lt; endstone::ItemStack &gt;</name>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1ad78d75e07f93f63fc0413cee2954d7f0" kind="typedef"><name>Type</name></member>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1a6116802aa2eb42ae63921aa2f140c160" kind="function"><name>format</name></member>
@@ -798,6 +798,21 @@
     <member refid="classendstone_1_1ICancellable_1ad7d9998d26e5339233a01cf718a779ef" kind="function"><name>isCancelled</name></member>
     <member refid="classendstone_1_1ICancellable_1a348a8d847632c98e42510134d82086ef" kind="function"><name>setCancelled</name></member>
     <member refid="classendstone_1_1ICancellable_1a65036acf5f2520cb11d833b4a4daee29" kind="function"><name>cancel</name></member>
+  </compound>
+  <compound refid="classendstone_1_1Identifier" kind="class"><name>endstone::Identifier</name>
+    <member refid="classendstone_1_1Identifier_1a1d08ebf05277cab89f84c39867903da5" kind="variable"><name>Minecraft</name></member>
+    <member refid="classendstone_1_1Identifier_1aaa50c36a2aa82726c6a14c15084e31de" kind="variable"><name>namespace_</name></member>
+    <member refid="classendstone_1_1Identifier_1aef160f0e4f36db6cc3deded474484265" kind="variable"><name>key_</name></member>
+    <member refid="classendstone_1_1Identifier_1a8fb79d1d92931c86800559f3cb1dc442" kind="function"><name>Identifier</name></member>
+    <member refid="classendstone_1_1Identifier_1a188a3d0cc50fa80ea6176183740fe007" kind="function"><name>Identifier</name></member>
+    <member refid="classendstone_1_1Identifier_1a1433ff65a2a925be18f2537224160137" kind="function"><name>Identifier</name></member>
+    <member refid="classendstone_1_1Identifier_1ad7a0a327a55eed2cae97237160b022a4" kind="function"><name>Identifier</name></member>
+    <member refid="classendstone_1_1Identifier_1af3574ba3a17f608f124f2d0315c3f21b" kind="function"><name>getNamespace</name></member>
+    <member refid="classendstone_1_1Identifier_1a43556ba00f67a5ff4e92555e86eda788" kind="function"><name>getKey</name></member>
+    <member refid="classendstone_1_1Identifier_1abf2ac66c2abfc0dcfcedd8fe17fefcca" kind="function"><name>operator==</name></member>
+    <member refid="classendstone_1_1Identifier_1ae5dbb768ecac7d06848cde156e55f304" kind="function"><name>operator!=</name></member>
+    <member refid="classendstone_1_1Identifier_1af1a4a37a0a78e947b786cd6a39d7417a" kind="function"><name>operator std::string</name></member>
+    <member refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kind="function"><name>minecraft</name></member>
   </compound>
   <compound refid="classendstone_1_1Image" kind="class"><name>endstone::Image</name>
     <member refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kind="enum"><name>Type</name></member>
@@ -879,10 +894,10 @@
   </compound>
   <compound refid="classendstone_1_1ItemFactory" kind="class"><name>endstone::ItemFactory</name>
     <member refid="classendstone_1_1ItemFactory_1aad09d9483ab4cada38c27ef7b735f6da" kind="function"><name>~ItemFactory</name></member>
-    <member refid="classendstone_1_1ItemFactory_1afb7e6bf34ea8428da0faa4b49ec70f6e" kind="function"><name>getItemMeta</name></member>
-    <member refid="classendstone_1_1ItemFactory_1ad23cc36994459bd2182ff507d30e760c" kind="function"><name>isApplicable</name></member>
+    <member refid="classendstone_1_1ItemFactory_1a2d6931c74c5579b592647537aba9e44f" kind="function"><name>getItemMeta</name></member>
+    <member refid="classendstone_1_1ItemFactory_1a1f37e11d2cc0433f42c14b6910499b4e" kind="function"><name>isApplicable</name></member>
     <member refid="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" kind="function"><name>equals</name></member>
-    <member refid="classendstone_1_1ItemFactory_1ae0dbbe25981c64f3d65e770cc72bf6c5" kind="function"><name>asMetaFor</name></member>
+    <member refid="classendstone_1_1ItemFactory_1aea4500ec890b832a8af6bd107afe2d56" kind="function"><name>asMetaFor</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemMeta" kind="class"><name>endstone::ItemMeta</name>
     <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" kind="enum"><name>Type</name></member>
@@ -922,12 +937,13 @@
     <member refid="classendstone_1_1ItemStack_1aca0b4d279429247412e0e0d0b37d46a9" kind="variable"><name>amount_</name></member>
     <member refid="classendstone_1_1ItemStack_1a5446d005144db4818e2fce96da70bd9d" kind="variable"><name>data_</name></member>
     <member refid="classendstone_1_1ItemStack_1a1c1edec51e5963fb5f4c054466bfa6c7" kind="variable"><name>meta_</name></member>
-    <member refid="classendstone_1_1ItemStack_1a461336ebca90be761e3d5316621ec234" kind="function"><name>ItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1a7593f4108fb7f234050fd70abd7d2957" kind="function"><name>ItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1ad18900f0c9460bb45556111d41e4e09c" kind="function"><name>setItemMeta0</name></member>
+    <member refid="classendstone_1_1ItemStack_1a7038a8166cc1674bb6ad31a39257e6da" kind="function"><name>ItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1ad3c33286ebce8800dcf0285a6f0e301a" kind="function"><name>ItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1a3d5879ba64ad7afe47d3c7726f276d52" kind="function"><name>~ItemStack</name></member>
-    <member refid="classendstone_1_1ItemStack_1afe762ec02731da9569f15eb3ecc4e0f8" kind="function"><name>getType</name></member>
-    <member refid="classendstone_1_1ItemStack_1afb1703adc41138ff6a9ddb0c1b67af26" kind="function"><name>setType</name></member>
+    <member refid="classendstone_1_1ItemStack_1a4d1f557b53cb2a5fafdd6e2793922f10" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1ItemStack_1acbc21c8686a40101d348550bc5974456" kind="function"><name>setType</name></member>
     <member refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kind="function"><name>getAmount</name></member>
     <member refid="classendstone_1_1ItemStack_1afcf062a1f118ac761cb23dd139dc4f4f" kind="function"><name>setAmount</name></member>
     <member refid="classendstone_1_1ItemStack_1a3f2c4792c2ddb697945ad8458a41e319" kind="function"><name>getData</name></member>
@@ -941,21 +957,21 @@
     <member refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" kind="function"><name>hasItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1a71ae31684a695fc854a2df838cefa02b" kind="function"><name>setItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1a2c8607d72960a4ac9189ad25eb1fd8a0" kind="function"><name>clone</name></member>
-    <member refid="classendstone_1_1ItemStack_1a0e3f9ff0530fdc155e79360af582157f" kind="function"><name>create</name></member>
-    <member refid="classendstone_1_1ItemStack_1afb6bac113f7368ac64d9d152af0d55e2" kind="function"><name>create</name></member>
     <member refid="classendstone_1_1ItemStack_1a98d56b0907d2e07d3ccdb8f0b4639f0d" kind="function"><name>isEndstoneItemStack</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemType" kind="class"><name>endstone::ItemType</name>
+    <member refid="classendstone_1_1ItemType_1aee73c12bf0391b460432889b55496e59" kind="variable"><name>Air</name></member>
     <member refid="classendstone_1_1ItemType_1a0d214cfa5e07bd5310b1ad134f873bc7" kind="function"><name>~ItemType</name></member>
-    <member refid="classendstone_1_1ItemType_1aac2fc561eb00013f4cebf61b4a4fbd19" kind="function"><name>getId</name></member>
+    <member refid="classendstone_1_1ItemType_1a331bc393d387232529772efa890c2682" kind="function"><name>getId</name></member>
     <member refid="classendstone_1_1ItemType_1a2e673b2a8d514e0d5697d5c15bee9e3c" kind="function"><name>getTranslationKey</name></member>
     <member refid="classendstone_1_1ItemType_1a56354993700b0b0b130b2c891400c264" kind="function"><name>getTranslationKey</name></member>
     <member refid="classendstone_1_1ItemType_1a0ed5eae24345de2c756b00eb6da0cdb9" kind="function"><name>getMaxStackSize</name></member>
     <member refid="classendstone_1_1ItemType_1ad6e45d72ee92f575f9913674f3beacd9" kind="function"><name>getMaxDurability</name></member>
-    <member refid="classendstone_1_1ItemType_1a30a71758b6797ce64715172fbc187e7f" kind="function"><name>operator==</name></member>
-    <member refid="classendstone_1_1ItemType_1af744ff14c9521369c6935eb8993d640f" kind="function"><name>operator!=</name></member>
+    <member refid="classendstone_1_1ItemType_1a5a3fef1c3a07814748ec5f5615943ae7" kind="function"><name>operator==</name></member>
+    <member refid="classendstone_1_1ItemType_1abf302ab3995220964d92dbf50a117e5f" kind="function"><name>operator!=</name></member>
     <member refid="classendstone_1_1ItemType_1af875aee911c2b3f95b2efb7dfd2dc8fd" kind="function"><name>operator==</name></member>
     <member refid="classendstone_1_1ItemType_1a81b1aeb108d98457a98c801207b92f21" kind="function"><name>operator!=</name></member>
+    <member refid="classendstone_1_1ItemType_1a04429c7e001f9478bb6a217d5fe61020" kind="function"><name>operator ItemId</name></member>
   </compound>
   <compound refid="classendstone_1_1Label" kind="class"><name>endstone::Label</name>
     <member refid="classendstone_1_1Label_1ab06f2fe28f2fd41931cf10fa9810d2d4" kind="variable"><name>text_</name></member>
@@ -1206,12 +1222,6 @@
     <member refid="classendstone_1_1ModalForm_1a4192a3d22178a35987c77ce2a4cee2e2" kind="function"><name>setIcon</name></member>
     <member refid="classendstone_1_1ModalForm_1afb79d3eda590aca8e014c5db99715e70" kind="function"><name>getOnSubmit</name></member>
     <member refid="classendstone_1_1ModalForm_1a9b0b97dfd47eb028a0dda6b1229bacec" kind="function"><name>setOnSubmit</name></member>
-  </compound>
-  <compound refid="classendstone_1_1NamespacedKey" kind="class"><name>endstone::NamespacedKey</name>
-    <member refid="classendstone_1_1NamespacedKey_1a32b52528d03b8d1176b3c2a7818fcfd0" kind="variable"><name>Minecraft</name></member>
-    <member refid="classendstone_1_1NamespacedKey_1ae621db542765701d654082fbf8ca2f18" kind="function"><name>minecraft</name></member>
-    <member refid="classendstone_1_1NamespacedKey_1a6e9363d08c354df568ca000ea4d9b1cf" kind="function"><name>getNamespace</name></member>
-    <member refid="classendstone_1_1NamespacedKey_1a6765cf67f17f14dc178c6e3da1221d38" kind="function"><name>getKey</name></member>
   </compound>
   <compound refid="classendstone_1_1Objective" kind="class"><name>endstone::Objective</name>
     <member refid="classendstone_1_1Objective_1aa8fe81958a62274b81fe7d9d8ff515fd" kind="function"><name>~Objective</name></member>
@@ -1786,64 +1796,64 @@
     <member refid="classendstone_1_1PluginManager_1ad2545d188bff41477fe3fd5264251cfc" kind="function"><name>getPermissions</name></member>
   </compound>
   <compound refid="classendstone_1_1PotionType" kind="class"><name>endstone::PotionType</name>
-    <member refid="classendstone_1_1PotionType_1aa82078f51ad76d78ed63250fc9b14ae0" kind="variable"><name>Water</name></member>
-    <member refid="classendstone_1_1PotionType_1a8f50d06d61e23b8804334998ca5b4f41" kind="variable"><name>Mundane</name></member>
-    <member refid="classendstone_1_1PotionType_1aa325df25837a2e72d8fdc6e5994a698b" kind="variable"><name>LongMundane</name></member>
-    <member refid="classendstone_1_1PotionType_1a30f7c1e909f2d88a5a09ae62ac2a2341" kind="variable"><name>Thick</name></member>
-    <member refid="classendstone_1_1PotionType_1a72fae37b682808052e787e180b7c6e03" kind="variable"><name>Awkward</name></member>
-    <member refid="classendstone_1_1PotionType_1a526143f39d5696da3e305866ebbc3195" kind="variable"><name>Nightvision</name></member>
-    <member refid="classendstone_1_1PotionType_1ad0e7ebbc95f5d165a8b5faff86a3e1dd" kind="variable"><name>LongNightvision</name></member>
-    <member refid="classendstone_1_1PotionType_1aa7a461b1973196673f124293ef6a34f1" kind="variable"><name>Invisibility</name></member>
-    <member refid="classendstone_1_1PotionType_1a05c54b041ba6f1ce1b52aea3282faad7" kind="variable"><name>LongInvisibility</name></member>
-    <member refid="classendstone_1_1PotionType_1a1460d069a58dcf6c529e7c3695de7084" kind="variable"><name>Leaping</name></member>
-    <member refid="classendstone_1_1PotionType_1a414114b9b86222160203c1c588f6a96e" kind="variable"><name>LongLeaping</name></member>
-    <member refid="classendstone_1_1PotionType_1a167cb5749d8c7d91480abfcf1f326195" kind="variable"><name>StrongLeaping</name></member>
-    <member refid="classendstone_1_1PotionType_1a086127beafe5c94bd49fd3550685272c" kind="variable"><name>FireResistance</name></member>
-    <member refid="classendstone_1_1PotionType_1a98fa1dc7dcc8998864826d9fe7409a36" kind="variable"><name>LongFireResistance</name></member>
-    <member refid="classendstone_1_1PotionType_1a7b31e7c9f5ececaa7b96e395b87bccde" kind="variable"><name>Swiftness</name></member>
-    <member refid="classendstone_1_1PotionType_1abd8fa8b47a83646cf7daa63731921f7a" kind="variable"><name>LongSwiftness</name></member>
-    <member refid="classendstone_1_1PotionType_1a731438e59a32871cea002bbea1f0363d" kind="variable"><name>StrongSwiftness</name></member>
-    <member refid="classendstone_1_1PotionType_1aa4a55a6b54945004385c8a128bad3ade" kind="variable"><name>Slowness</name></member>
-    <member refid="classendstone_1_1PotionType_1acd3598dbae3db442826cc840302111f0" kind="variable"><name>LongSlowness</name></member>
-    <member refid="classendstone_1_1PotionType_1abcff8e94ac881862a41d405c43956773" kind="variable"><name>StrongSlowness</name></member>
-    <member refid="classendstone_1_1PotionType_1a314311999adb28b0bdc613c39dfd569c" kind="variable"><name>WaterBreathing</name></member>
-    <member refid="classendstone_1_1PotionType_1a3e987767fda20bde1c6410c4e66472ea" kind="variable"><name>LongWaterBreathing</name></member>
-    <member refid="classendstone_1_1PotionType_1af8ba61925b821378c90fabaf2b8a9959" kind="variable"><name>Healing</name></member>
-    <member refid="classendstone_1_1PotionType_1a22b5e6e4a6091d903c9f3b95bae0dd2b" kind="variable"><name>StrongHealing</name></member>
-    <member refid="classendstone_1_1PotionType_1a52bb217e8be25977a61acc6419553248" kind="variable"><name>Harming</name></member>
-    <member refid="classendstone_1_1PotionType_1af8897f51c3488b7e655cd0fdc0ca5cab" kind="variable"><name>StrongHarming</name></member>
-    <member refid="classendstone_1_1PotionType_1ace7deab9c4255f5cdbe68c8b035ac3f5" kind="variable"><name>Poison</name></member>
-    <member refid="classendstone_1_1PotionType_1af4bfac974ffa454cc97fe13ee3f09aef" kind="variable"><name>LongPoison</name></member>
-    <member refid="classendstone_1_1PotionType_1a6ba471808ff8acf71080b4c04672c9d1" kind="variable"><name>StrongPoison</name></member>
-    <member refid="classendstone_1_1PotionType_1ad37d835f385e2f18d18691d28d64e620" kind="variable"><name>Regeneration</name></member>
-    <member refid="classendstone_1_1PotionType_1ab6622999f060a77c5d0d2f6340ca2b91" kind="variable"><name>LongRegeneration</name></member>
-    <member refid="classendstone_1_1PotionType_1a1ba5b00194f790d746fd9e5fed222720" kind="variable"><name>StrongRegeneration</name></member>
-    <member refid="classendstone_1_1PotionType_1a6cffe5374450f9c7bf64fb7d9c9eb914" kind="variable"><name>Strength</name></member>
-    <member refid="classendstone_1_1PotionType_1a9cfcb3bef548385e7694cb52fc2485f5" kind="variable"><name>LongStrength</name></member>
-    <member refid="classendstone_1_1PotionType_1a362f0e4441cff73875f8ffdc147b1c0c" kind="variable"><name>StrongStrength</name></member>
-    <member refid="classendstone_1_1PotionType_1acb04a15126ee370980e8dae2ce9c94fd" kind="variable"><name>Weakness</name></member>
-    <member refid="classendstone_1_1PotionType_1adbb31ef91ad407f5bb57a2dc290f038d" kind="variable"><name>LongWeakness</name></member>
-    <member refid="classendstone_1_1PotionType_1aab3cc96892589c663102ba216de916b0" kind="variable"><name>Wither</name></member>
-    <member refid="classendstone_1_1PotionType_1aa3240bd53533c3369143f671b5480368" kind="variable"><name>TurtleMaster</name></member>
-    <member refid="classendstone_1_1PotionType_1a697e501e8a29294aaeafaa017a389c5d" kind="variable"><name>LongTurtleMaster</name></member>
-    <member refid="classendstone_1_1PotionType_1acecdc4ff412d4789c7c833e1735ceadd" kind="variable"><name>StrongTurtleMaster</name></member>
-    <member refid="classendstone_1_1PotionType_1ae712173f3b755454d335dcb51c29b630" kind="variable"><name>SlowFalling</name></member>
-    <member refid="classendstone_1_1PotionType_1a84bc9b8a67f3cfa498fbafc46262f7bb" kind="variable"><name>LongSlowFalling</name></member>
-    <member refid="classendstone_1_1PotionType_1a78b081657053d280420d61701aa4620c" kind="variable"><name>WindCharged</name></member>
-    <member refid="classendstone_1_1PotionType_1a7e1d70e5be5dbe7a8c4ec06f7e046881" kind="variable"><name>Weaving</name></member>
-    <member refid="classendstone_1_1PotionType_1ac9556dbb07ec629c1683db9a6d404b3f" kind="variable"><name>Oozing</name></member>
-    <member refid="classendstone_1_1PotionType_1a735f90cc4b73e9839ba4bc2eaa568222" kind="variable"><name>Infested</name></member>
-    <member refid="classendstone_1_1PotionType_1aa4b7e7c44359ff358f1c2bdff4cfb143" kind="function"><name>getPotionType</name></member>
+    <member refid="classendstone_1_1PotionType_1a94815c4a6de78565094e9a9fc2917ac2" kind="variable"><name>Minecraft</name></member>
+    <member refid="classendstone_1_1PotionType_1a82f5fefbd3fbca555cc3de232735f27e" kind="variable"><name>Water</name></member>
+    <member refid="classendstone_1_1PotionType_1a2e42a17c9960477de466c12c74ea4d69" kind="variable"><name>Mundane</name></member>
+    <member refid="classendstone_1_1PotionType_1ae36b681f6c4552b3ee2f7bea5cfe0795" kind="variable"><name>LongMundane</name></member>
+    <member refid="classendstone_1_1PotionType_1a801f61e5678ed0836abbc44f6edc8056" kind="variable"><name>Thick</name></member>
+    <member refid="classendstone_1_1PotionType_1a934a4efc0c60904aa69e6dd875f1cd7e" kind="variable"><name>Awkward</name></member>
+    <member refid="classendstone_1_1PotionType_1ace8f4629639d2b1c523320205494c27e" kind="variable"><name>Nightvision</name></member>
+    <member refid="classendstone_1_1PotionType_1a53ff99d5732b77f5b181404047616cbd" kind="variable"><name>LongNightvision</name></member>
+    <member refid="classendstone_1_1PotionType_1acc44b7274cb6f20e2bbe02599b6d7e87" kind="variable"><name>Invisibility</name></member>
+    <member refid="classendstone_1_1PotionType_1a09a7a37a6ade2e8952a4678232134fa1" kind="variable"><name>LongInvisibility</name></member>
+    <member refid="classendstone_1_1PotionType_1aba6f1f93f0ac476af383b587a6c74ed8" kind="variable"><name>Leaping</name></member>
+    <member refid="classendstone_1_1PotionType_1a36f3881be53c96e429de099807afd0c2" kind="variable"><name>LongLeaping</name></member>
+    <member refid="classendstone_1_1PotionType_1a6dc284fe1840039c8ef8a2cc712188d4" kind="variable"><name>StrongLeaping</name></member>
+    <member refid="classendstone_1_1PotionType_1aec1eb44f513e34f339af932d64ffee8a" kind="variable"><name>FireResistance</name></member>
+    <member refid="classendstone_1_1PotionType_1aa438cb3ca3ee81ddb3b7858ee4877036" kind="variable"><name>LongFireResistance</name></member>
+    <member refid="classendstone_1_1PotionType_1a91dbe1465d0d788db72f2304d8b21892" kind="variable"><name>Swiftness</name></member>
+    <member refid="classendstone_1_1PotionType_1a5fc403b2603683ac91076569d7a23115" kind="variable"><name>LongSwiftness</name></member>
+    <member refid="classendstone_1_1PotionType_1a1581a974eed694438fa1d00489d9050d" kind="variable"><name>StrongSwiftness</name></member>
+    <member refid="classendstone_1_1PotionType_1a1551a2caf362a91a1dfd81f9fa2e3726" kind="variable"><name>Slowness</name></member>
+    <member refid="classendstone_1_1PotionType_1a71e4c65417a374a809d5fe3306eca358" kind="variable"><name>LongSlowness</name></member>
+    <member refid="classendstone_1_1PotionType_1acc5c6ad888dcb9dac1c40e546e242c34" kind="variable"><name>StrongSlowness</name></member>
+    <member refid="classendstone_1_1PotionType_1ace66f2f54600a9d3b59c9895d6cbe21f" kind="variable"><name>WaterBreathing</name></member>
+    <member refid="classendstone_1_1PotionType_1a1c6d84c930df4d76627fd81a7ed127cc" kind="variable"><name>LongWaterBreathing</name></member>
+    <member refid="classendstone_1_1PotionType_1a66fffb2ec05a62c6efeb828517bfe575" kind="variable"><name>Healing</name></member>
+    <member refid="classendstone_1_1PotionType_1a7a6cd07d904eb6a7a0d1bae3bdfe0c45" kind="variable"><name>StrongHealing</name></member>
+    <member refid="classendstone_1_1PotionType_1a707bbab37945163a2ac4c6f34bed9372" kind="variable"><name>Harming</name></member>
+    <member refid="classendstone_1_1PotionType_1a98c8cb9774dbf5ce65f7874d81a80185" kind="variable"><name>StrongHarming</name></member>
+    <member refid="classendstone_1_1PotionType_1ae06515a190dbd97e6064a974578be9e2" kind="variable"><name>Poison</name></member>
+    <member refid="classendstone_1_1PotionType_1a19968831e3b8455f366ade3b3ca11279" kind="variable"><name>LongPoison</name></member>
+    <member refid="classendstone_1_1PotionType_1ac5b96d18de11e99756ac9168b882eb94" kind="variable"><name>StrongPoison</name></member>
+    <member refid="classendstone_1_1PotionType_1a3cbd106a8e61957786636c5005089697" kind="variable"><name>Regeneration</name></member>
+    <member refid="classendstone_1_1PotionType_1a45d48d3ccb90eef2e260dadd78dc8c45" kind="variable"><name>LongRegeneration</name></member>
+    <member refid="classendstone_1_1PotionType_1a295b5f41c2b87b3568ba66feda45042e" kind="variable"><name>StrongRegeneration</name></member>
+    <member refid="classendstone_1_1PotionType_1a7d494218a9889e2f3c6bd53385d4dd2d" kind="variable"><name>Strength</name></member>
+    <member refid="classendstone_1_1PotionType_1ad7bb3897ee2a96c3465827a8701c10ba" kind="variable"><name>LongStrength</name></member>
+    <member refid="classendstone_1_1PotionType_1a9a5d59579dec55740e51f926d21218df" kind="variable"><name>StrongStrength</name></member>
+    <member refid="classendstone_1_1PotionType_1ae474688a67d93bd0b256d2e6e8be72e1" kind="variable"><name>Weakness</name></member>
+    <member refid="classendstone_1_1PotionType_1a8bcb20c1075d56f4f42dca573cce6b13" kind="variable"><name>LongWeakness</name></member>
+    <member refid="classendstone_1_1PotionType_1a754e358e88cee9f01ab363a78cf50456" kind="variable"><name>Wither</name></member>
+    <member refid="classendstone_1_1PotionType_1a67d039e139115f7984a08aa1f8757cfe" kind="variable"><name>TurtleMaster</name></member>
+    <member refid="classendstone_1_1PotionType_1a2ac345546d5a4809c511cbaa95264f2e" kind="variable"><name>LongTurtleMaster</name></member>
+    <member refid="classendstone_1_1PotionType_1ae26fbdaa7c876e4962ab806b55f3aa74" kind="variable"><name>StrongTurtleMaster</name></member>
+    <member refid="classendstone_1_1PotionType_1a61c7675bf28f2ab7a07c1475463391fe" kind="variable"><name>SlowFalling</name></member>
+    <member refid="classendstone_1_1PotionType_1a0f874f24c04561c244d61cc4b5eb6995" kind="variable"><name>LongSlowFalling</name></member>
+    <member refid="classendstone_1_1PotionType_1ac8c7d8143bcb385b60d5731eeaad0bda" kind="variable"><name>WindCharged</name></member>
+    <member refid="classendstone_1_1PotionType_1a0595aaf16ef833f606fd5fb1bb0b7a5d" kind="variable"><name>Weaving</name></member>
+    <member refid="classendstone_1_1PotionType_1add3039d4d2969b8c684abac9f9c3d9cd" kind="variable"><name>Oozing</name></member>
+    <member refid="classendstone_1_1PotionType_1af75f7c3da68f94e50cddb8d1661aac01" kind="variable"><name>Infested</name></member>
   </compound>
   <compound refid="classendstone_1_1Recipe" kind="class"><name>endstone::Recipe</name>
     <member refid="classendstone_1_1Recipe_1a7c54e5660b82baa721fa86ebb1e55638" kind="function"><name>~Recipe</name></member>
     <member refid="classendstone_1_1Recipe_1a9aa7cfa8bcb947ef1a0ad139ee68df1e" kind="function"><name>getResult</name></member>
   </compound>
   <compound refid="classendstone_1_1Registry" kind="class"><name>endstone::Registry</name>
-    <member refid="classendstone_1_1Registry_1a62de53f9a1af2cfde7b0ff98bd5187a2" kind="function"><name>get</name></member>
-    <member refid="classendstone_1_1Registry_1a9f8ee4924a4f789666536537bec689c5" kind="function"><name>get</name></member>
-    <member refid="classendstone_1_1Registry_1a810eb72599f3fc7b2d48ef3be2cacd6f" kind="function"><name>getOrThrow</name></member>
-    <member refid="classendstone_1_1Registry_1a96ea1a8193696a2da85d8b765512a915" kind="function"><name>getOrThrow</name></member>
+    <member refid="classendstone_1_1Registry_1a97c2758ea2a49ded5abeae90e02a31a0" kind="function"><name>get</name></member>
+    <member refid="classendstone_1_1Registry_1a1e7e2da1521bc7755ca57cbf5bd41fda" kind="function"><name>get</name></member>
+    <member refid="classendstone_1_1Registry_1a3c9abfdf664a59b267798fd1dfc1a884" kind="function"><name>getOrThrow</name></member>
+    <member refid="classendstone_1_1Registry_1a341f0a7dbb53815740f1c23b47ccddec" kind="function"><name>getOrThrow</name></member>
     <member refid="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" kind="function"><name>forEach</name></member>
   </compound>
   <compound refid="classendstone_1_1Scheduler" kind="class"><name>endstone::Scheduler</name>
@@ -2281,9 +2291,14 @@
     <member refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" kind="enum"><name>RenderType</name></member>
     <member refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9aa0faef0851b4294c06f2b94bb1cb2044" kind="enumvalue"><name>Integer</name></member>
     <member refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9a6af4bf214d6cf054f9528da5b6054817" kind="enumvalue"><name>Hearts</name></member>
+    <member refid="namespaceendstone_1ac2d399872c391e7ce2ec1896ba62e669" kind="typedef"><name>AttributeId</name></member>
     <member refid="namespaceendstone_1a688abbe501a61374454a55553d25e08f" kind="typedef"><name>BlockStates</name></member>
+    <member refid="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" kind="typedef"><name>EffectId</name></member>
+    <member refid="namespaceendstone_1a996c90f609bfd792a8245bb60fd3e4ea" kind="typedef"><name>EnchantmentId</name></member>
+    <member refid="namespaceendstone_1ad7cf0bc557f516d17d39097140ee9588" kind="typedef"><name>ItemId</name></member>
     <member refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kind="typedef"><name>Message</name></member>
     <member refid="namespaceendstone_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
+    <member refid="namespaceendstone_1a752231e730d011e08a0c9329945d4d6f" kind="typedef"><name>PotionId</name></member>
     <member refid="namespaceendstone_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kind="typedef"><name>ScoreEntry</name></member>
     <member refid="namespaceendstone_1abc54c88a21352cadabe5992bea8976d6" kind="typedef"><name>Result</name></member>
@@ -2538,6 +2553,8 @@
   </compound>
   <compound refid="game__mode_8h" kind="file"><name>game_mode.h</name>
   </compound>
+  <compound refid="identifier_8h" kind="file"><name>identifier.h</name>
+  </compound>
   <compound refid="equipment__slot_8h" kind="file"><name>equipment_slot.h</name>
   </compound>
   <compound refid="inventory_8h" kind="file"><name>inventory.h</name>
@@ -2580,8 +2597,6 @@
   <compound refid="map__view_8h" kind="file"><name>map_view.h</name>
   </compound>
   <compound refid="message_8h" kind="file"><name>message.h</name>
-  </compound>
-  <compound refid="namespaced__key_8h" kind="file"><name>namespaced_key.h</name>
   </compound>
   <compound refid="offline__player_8h" kind="file"><name>offline_player.h</name>
   </compound>

@@ -52,16 +52,16 @@ _Represents a canvas for drawing to a map._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-| virtual void | [**drawImage**](#function-drawimage) (int x, int y, const [**Image**](classendstone_1_1Image.md) & image) = 0<br>_Draw an image to the map. The image will be clipped if necessary._  |
-| virtual std::uint32\_t | [**getBasePixel**](#function-getbasepixel) (int x, int y) const = 0<br>_Get a pixel from the layers below this canvas._  |
-| virtual Result&lt; [**Color**](classendstone_1_1Color.md) &gt; | [**getBasePixelColor**](#function-getbasepixelcolor) (int x, int y) const = 0<br>_Get a pixel from the layers below this canvas._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**drawImage**](#function-drawimage) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) y, [**const**](classendstone_1_1Identifier.md) [**Image**](classendstone_1_1Image.md) & image) = 0<br>_Draw an image to the map. The image will be clipped if necessary._  |
+| virtual std::uint32\_t | [**getBasePixel**](#function-getbasepixel) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) y) const = 0<br>_Get a pixel from the layers below this canvas._  |
+| virtual Result&lt; [**Color**](classendstone_1_1Color.md) &gt; | [**getBasePixelColor**](#function-getbasepixelcolor) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) y) const = 0<br>_Get a pixel from the layers below this canvas._  |
 | virtual std::vector&lt; [**MapCursor**](classendstone_1_1MapCursor.md) &gt; | [**getCursors**](#function-getcursors) () const = 0<br>_Get the cursors associated with this canvas._  |
 | virtual [**MapView**](classendstone_1_1MapView.md) & | [**getMapView**](#function-getmapview) () const = 0<br>_Get the map this canvas is attached to._  |
-| virtual std::uint32\_t | [**getPixel**](#function-getpixel) (int x, int y) const = 0<br>_Get a pixel from the canvas._  |
-| virtual Result&lt; [**Color**](classendstone_1_1Color.md) &gt; | [**getPixelColor**](#function-getpixelcolor) (int x, int y) const = 0<br>_Get a pixel from the canvas._  |
-| virtual void | [**setCursors**](#function-setcursors) (const std::vector&lt; [**MapCursor**](classendstone_1_1MapCursor.md) &gt; & cursors) = 0<br>_Set the cursors associated with this canvas._  |
-| virtual void | [**setPixel**](#function-setpixel) (int x, int y, std::uint32\_t color) = 0<br>_Draw a pixel to the canvas._  |
-| virtual void | [**setPixelColor**](#function-setpixelcolor) (int x, int y, [**Color**](classendstone_1_1Color.md) color) = 0<br>_Draw a pixel to the canvas._  |
+| virtual std::uint32\_t | [**getPixel**](#function-getpixel) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) y) const = 0<br>_Get a pixel from the canvas._  |
+| virtual Result&lt; [**Color**](classendstone_1_1Color.md) &gt; | [**getPixelColor**](#function-getpixelcolor) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) y) const = 0<br>_Get a pixel from the canvas._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCursors**](#function-setcursors) ([**const**](classendstone_1_1Identifier.md) std::vector&lt; [**MapCursor**](classendstone_1_1MapCursor.md) &gt; & cursors) = 0<br>_Set the cursors associated with this canvas._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setPixel**](#function-setpixel) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) y, std::uint32\_t color) = 0<br>_Draw a pixel to the canvas._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setPixelColor**](#function-setpixelcolor) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) y, [**Color**](classendstone_1_1Color.md) color) = 0<br>_Draw a pixel to the canvas._  |
 | virtual  | [**~MapCanvas**](#function-mapcanvas) () = default<br> |
 
 
@@ -117,7 +117,7 @@ _Draw an image to the map. The image will be clipped if necessary._
 virtual void endstone::MapCanvas::drawImage (
     int x,
     int y,
-    const Image & image
+    const  Image & image
 ) = 0
 ```
 

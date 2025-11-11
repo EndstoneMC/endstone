@@ -25,19 +25,20 @@
 #pragma once
 
 #include "endstone/inventory/meta/item_meta.h"
+#include "item_type.h"
 
 namespace endstone {
 class ItemFactory {
 public:
     virtual ~ItemFactory() = default;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta(const std::string &type) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta(ItemId type) const = 0;
 
-    [[nodiscard]] virtual bool isApplicable(const ItemMeta *meta, const std::string &type) const = 0;
+    [[nodiscard]] virtual bool isApplicable(const ItemMeta *meta, ItemId type) const = 0;
 
     [[nodiscard]] virtual bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, const std::string &type) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, ItemId type) const = 0;
 };
 }  // namespace endstone
 ```

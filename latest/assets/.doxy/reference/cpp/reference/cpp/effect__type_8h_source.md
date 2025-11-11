@@ -26,87 +26,83 @@
 
 #include <string>
 
-#include "endstone/namespaced_key.h"
+#include "endstone/identifier.h"
 
 namespace endstone {
+using EffectId = Identifier<class EffectType>;
 class EffectType {
-    static std::string getEffectType(const std::string &key)
-    {
-        return NamespacedKey::minecraft(key);
-    }
-
 public:
-    inline static const auto Speed = getEffectType("speed");
+    static constexpr auto Speed = EffectId::minecraft("speed");
 
-    inline static const auto Slowness = getEffectType("slowness");
+    static constexpr auto Slowness = EffectId::minecraft("slowness");
 
-    inline static const auto Haste = getEffectType("haste");
+    static constexpr auto Haste = EffectId::minecraft("haste");
 
-    inline static const auto MiningFatigue = getEffectType("mining_fatigue");
+    static constexpr auto MiningFatigue = EffectId::minecraft("mining_fatigue");
 
-    inline static const auto Strength = getEffectType("strength");
+    static constexpr auto Strength = EffectId::minecraft("strength");
 
-    inline static const auto InstantHealth = getEffectType("instant_health");
+    static constexpr auto InstantHealth = EffectId::minecraft("instant_health");
 
-    inline static const auto InstantDamage = getEffectType("instant_damage");
+    static constexpr auto InstantDamage = EffectId::minecraft("instant_damage");
 
-    inline static const auto JumpBoost = getEffectType("jump_boost");
+    static constexpr auto JumpBoost = EffectId::minecraft("jump_boost");
 
-    inline static const auto Nausea = getEffectType("nausea");
+    static constexpr auto Nausea = EffectId::minecraft("nausea");
 
-    inline static const auto Regeneration = getEffectType("regeneration");
+    static constexpr auto Regeneration = EffectId::minecraft("regeneration");
 
-    inline static const auto Resistance = getEffectType("resistance");
+    static constexpr auto Resistance = EffectId::minecraft("resistance");
 
-    inline static const auto FireResistance = getEffectType("fire_resistance");
+    static constexpr auto FireResistance = EffectId::minecraft("fire_resistance");
 
-    inline static const auto WaterBreathing = getEffectType("water_breathing");
+    static constexpr auto WaterBreathing = EffectId::minecraft("water_breathing");
 
-    inline static const auto Invisibility = getEffectType("invisibility");
+    static constexpr auto Invisibility = EffectId::minecraft("invisibility");
 
-    inline static const auto Blindness = getEffectType("blindness");
+    static constexpr auto Blindness = EffectId::minecraft("blindness");
 
-    inline static const auto NightVision = getEffectType("night_vision");
+    static constexpr auto NightVision = EffectId::minecraft("night_vision");
 
-    inline static const auto Hunger = getEffectType("hunger");
+    static constexpr auto Hunger = EffectId::minecraft("hunger");
 
-    inline static const auto Weakness = getEffectType("weakness");
+    static constexpr auto Weakness = EffectId::minecraft("weakness");
 
-    inline static const auto Poison = getEffectType("poison");
+    static constexpr auto Poison = EffectId::minecraft("poison");
 
-    inline static const auto Wither = getEffectType("wither");
+    static constexpr auto Wither = EffectId::minecraft("wither");
 
-    inline static const auto HealthBoost = getEffectType("health_boost");
+    static constexpr auto HealthBoost = EffectId::minecraft("health_boost");
 
-    inline static const auto Absorption = getEffectType("absorption");
+    static constexpr auto Absorption = EffectId::minecraft("absorption");
 
-    inline static const auto Saturation = getEffectType("saturation");
+    static constexpr auto Saturation = EffectId::minecraft("saturation");
 
-    inline static const auto Levitation = getEffectType("levitation");
+    static constexpr auto Levitation = EffectId::minecraft("levitation");
 
-    inline static const auto FatalPoison = getEffectType("fatal_poison");
+    static constexpr auto FatalPoison = EffectId::minecraft("fatal_poison");
 
-    inline static const auto ConduitPower = getEffectType("conduit_power");
+    static constexpr auto ConduitPower = EffectId::minecraft("conduit_power");
 
-    inline static const auto SlowFalling = getEffectType("slow_falling");
+    static constexpr auto SlowFalling = EffectId::minecraft("slow_falling");
 
-    inline static const auto BadOmen = getEffectType("bad_omen");
+    static constexpr auto BadOmen = EffectId::minecraft("bad_omen");
 
-    inline static const auto HeroOfTheVillage = getEffectType("hero_of_the_village");
+    static constexpr auto HeroOfTheVillage = EffectId::minecraft("hero_of_the_village");
 
-    inline static const auto Darkness = getEffectType("darkness");
+    static constexpr auto Darkness = EffectId::minecraft("darkness");
 
-    inline static const auto TrialOmen = getEffectType("trial_omen");
+    static constexpr auto TrialOmen = EffectId::minecraft("trial_omen");
 
-    inline static const auto WindCharged = getEffectType("wind_charged");
+    static constexpr auto WindCharged = EffectId::minecraft("wind_charged");
 
-    inline static const auto Weaving = getEffectType("weaving");
+    static constexpr auto Weaving = EffectId::minecraft("weaving");
 
-    inline static const auto Oozing = getEffectType("oozing");
+    static constexpr auto Oozing = EffectId::minecraft("oozing");
 
-    inline static const auto Infested = getEffectType("infested");
+    static constexpr auto Infested = EffectId::minecraft("infested");
 
-    inline static const auto RaidOmen = getEffectType("raid_omen");
+    static constexpr auto RaidOmen = EffectId::minecraft("raid_omen");
 };
 }  // namespace endstone
 ```

@@ -4,13 +4,13 @@
     <compoundname>endstone::Attribute</compoundname>
     <includes refid="attribute_8h" local="no">endstone/attribute/attribute.h</includes>
     <sectiondef kind="public-static-attrib">
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1aeee461f13bba29f7fa19a4cc4da9101c" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::Health</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1a0a08b7a3c41aeea1e8f99c01c0b7ad0e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::Health</definition>
         <argsstring></argsstring>
         <name>Health</name>
         <qualifiedname>endstone::Attribute::Health</qualifiedname>
-        <initializer>= getAttribute(&quot;health&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;health&quot;)</initializer>
         <briefdescription>
 <para>Health of an entity. </para>
         </briefdescription>
@@ -18,15 +18,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="33" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="33" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="27" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="27" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1a11bb9ab2afba2ad0845ce4d6ae9c9f92" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::FollowRange</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1a8948c8f94cc2c3f77f182bcd96cbddcd" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::FollowRange</definition>
         <argsstring></argsstring>
         <name>FollowRange</name>
         <qualifiedname>endstone::Attribute::FollowRange</qualifiedname>
-        <initializer>= getAttribute(&quot;follow_range&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;follow_range&quot;)</initializer>
         <briefdescription>
 <para>Range at which an entity will follow others. </para>
         </briefdescription>
@@ -34,15 +34,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="36" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="36" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="30" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="30" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1abad5e6429361dd0eec3f1041e4de7c71" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::KnockbackResistance</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1aadc9e5baf72fd7361563deea2eca4453" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::KnockbackResistance</definition>
         <argsstring></argsstring>
         <name>KnockbackResistance</name>
         <qualifiedname>endstone::Attribute::KnockbackResistance</qualifiedname>
-        <initializer>= getAttribute(&quot;knockback_resistance&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;knockback_resistance&quot;)</initializer>
         <briefdescription>
 <para>Resistance of an entity to knockback. </para>
         </briefdescription>
@@ -50,15 +50,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="39" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="39" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="33" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="33" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1a143bae00467eca12222f5e2468e2d1b8" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::MovementSpeed</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1abda74e2d60abbda6c84fdc7d8f5faf74" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::MovementSpeed</definition>
         <argsstring></argsstring>
         <name>MovementSpeed</name>
         <qualifiedname>endstone::Attribute::MovementSpeed</qualifiedname>
-        <initializer>= getAttribute(&quot;movement&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;movement&quot;)</initializer>
         <briefdescription>
 <para>Movement speed of an entity. </para>
         </briefdescription>
@@ -66,15 +66,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="42" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="42" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="36" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="36" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1aabdb7f29bea80c489bda195776e5e7f1" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::UnderwaterMovementSpeed</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1ae5331621bb7909b957cfd19d567801bf" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::UnderwaterMovementSpeed</definition>
         <argsstring></argsstring>
         <name>UnderwaterMovementSpeed</name>
         <qualifiedname>endstone::Attribute::UnderwaterMovementSpeed</qualifiedname>
-        <initializer>= getAttribute(&quot;underwater_movement&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;underwater_movement&quot;)</initializer>
         <briefdescription>
 <para>Movement speed of an entity underwater. </para>
         </briefdescription>
@@ -82,15 +82,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="45" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="45" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="39" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="39" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1a67bccb025d6bf23d4940961e1c18f46c" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::LavaMovementSpeed</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1a1edce1a17770df3b5d929389a51dd8ef" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::LavaMovementSpeed</definition>
         <argsstring></argsstring>
         <name>LavaMovementSpeed</name>
         <qualifiedname>endstone::Attribute::LavaMovementSpeed</qualifiedname>
-        <initializer>= getAttribute(&quot;lava_movement&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;lava_movement&quot;)</initializer>
         <briefdescription>
 <para>Movement speed of an entity in lava. </para>
         </briefdescription>
@@ -98,15 +98,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="48" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="48" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="42" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="42" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1a2cbd8b2d3515c572b0ef135e8a887fa5" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::AttackDamage</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1aa31e02509a3604d26a5367f7cfca6927" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::AttackDamage</definition>
         <argsstring></argsstring>
         <name>AttackDamage</name>
         <qualifiedname>endstone::Attribute::AttackDamage</qualifiedname>
-        <initializer>= getAttribute(&quot;attack_damage&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;attack_damage&quot;)</initializer>
         <briefdescription>
 <para>Attack damage of an entity. </para>
         </briefdescription>
@@ -114,15 +114,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="51" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="51" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="45" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="45" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1ae4121fd771a937cb3f16db88903a6fbd" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::Absorption</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1a8d0083b7980c70038a8cf9b03811a3a9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::Absorption</definition>
         <argsstring></argsstring>
         <name>Absorption</name>
         <qualifiedname>endstone::Attribute::Absorption</qualifiedname>
-        <initializer>= getAttribute(&quot;absorption&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;absorption&quot;)</initializer>
         <briefdescription>
 <para>Absorption of an entity. </para>
         </briefdescription>
@@ -130,15 +130,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="54" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="54" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="48" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="48" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1abf8652b1244bf44ed8a9c5eff192c14e" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::Luck</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1a362c652498582fb951aacd8d71d41255" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::Luck</definition>
         <argsstring></argsstring>
         <name>Luck</name>
         <qualifiedname>endstone::Attribute::Luck</qualifiedname>
-        <initializer>= getAttribute(&quot;luck&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;luck&quot;)</initializer>
         <briefdescription>
 <para>Luck bonus of an entity. </para>
         </briefdescription>
@@ -146,15 +146,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="57" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="57" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="51" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="51" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1a94c4b1990af6620e649307b844cc6517" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::JumpStrength</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1aea378ff4925943117d40a6de5bef47a3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::JumpStrength</definition>
         <argsstring></argsstring>
         <name>JumpStrength</name>
         <qualifiedname>endstone::Attribute::JumpStrength</qualifiedname>
-        <initializer>= getAttribute(&quot;jump_strength&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;jump_strength&quot;)</initializer>
         <briefdescription>
 <para>Strength with which an entity will jump. </para>
         </briefdescription>
@@ -162,15 +162,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="60" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="60" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="54" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="54" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1a6d4879f481a1c5d3b6753c8bcc1851a1" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::PlayerHunger</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1aac9546c578a22405f09b32d9fa989518" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::PlayerHunger</definition>
         <argsstring></argsstring>
         <name>PlayerHunger</name>
         <qualifiedname>endstone::Attribute::PlayerHunger</qualifiedname>
-        <initializer>= getAttribute(&quot;player.hunger&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;player.hunger&quot;)</initializer>
         <briefdescription>
 <para>Hunger level of a player. </para>
         </briefdescription>
@@ -178,15 +178,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="63" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="63" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="57" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="57" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1a03c2123910f0da85fd6da82cc218306c" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::PlayerSaturation</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1a4e4ec132134eb3e7a4c30fd292b2fff9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::PlayerSaturation</definition>
         <argsstring></argsstring>
         <name>PlayerSaturation</name>
         <qualifiedname>endstone::Attribute::PlayerSaturation</qualifiedname>
-        <initializer>= getAttribute(&quot;player.saturation&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;player.saturation&quot;)</initializer>
         <briefdescription>
 <para>Saturation level of a player. </para>
         </briefdescription>
@@ -194,15 +194,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="66" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="66" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="60" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="60" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1ae0f139825128702da90860d2f5ebfb05" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::PlayerExhaustion</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1ac06d7f7380120e587e71e6c1fb993101" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::PlayerExhaustion</definition>
         <argsstring></argsstring>
         <name>PlayerExhaustion</name>
         <qualifiedname>endstone::Attribute::PlayerExhaustion</qualifiedname>
-        <initializer>= getAttribute(&quot;player.exhaustion&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;player.exhaustion&quot;)</initializer>
         <briefdescription>
 <para>Exhaustion level of a player. </para>
         </briefdescription>
@@ -210,15 +210,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="69" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="69" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="63" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="63" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1acd0d9ea8ff986934def2a92e025a8fe0" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::PlayerLevel</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1add534a7ac8619e4533e5df7341cb65e3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::PlayerLevel</definition>
         <argsstring></argsstring>
         <name>PlayerLevel</name>
         <qualifiedname>endstone::Attribute::PlayerLevel</qualifiedname>
-        <initializer>= getAttribute(&quot;player.level&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;player.level&quot;)</initializer>
         <briefdescription>
 <para>Experience level of a player. </para>
         </briefdescription>
@@ -226,15 +226,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="72" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="72" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="66" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="66" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1ad6bef4df1cb51c396f34c0cb41461f52" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::PlayerExperience</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1a169db16643b6a7dea438ecedc8ddcae0" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::PlayerExperience</definition>
         <argsstring></argsstring>
         <name>PlayerExperience</name>
         <qualifiedname>endstone::Attribute::PlayerExperience</qualifiedname>
-        <initializer>= getAttribute(&quot;player.experience&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;player.experience&quot;)</initializer>
         <briefdescription>
 <para>Progress toward the next experience level of a player. </para>
         </briefdescription>
@@ -242,15 +242,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="75" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="75" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute.h" line="69" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="69" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Attribute_1af7b13b343bc6a13a93f7613381a9e98a" prot="public" static="yes" mutable="no">
-        <type>const std::string</type>
-        <definition>const std::string endstone::Attribute::ZombieSpawnReinforcements</definition>
+      <memberdef kind="variable" id="classendstone_1_1Attribute_1a3040e0ce928371139d0f12e97b9a4d49" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::Attribute::ZombieSpawnReinforcements</definition>
         <argsstring></argsstring>
         <name>ZombieSpawnReinforcements</name>
         <qualifiedname>endstone::Attribute::ZombieSpawnReinforcements</qualifiedname>
-        <initializer>= getAttribute(&quot;zombie.spawn_reinforcements&quot;)</initializer>
+        <initializer>= AttributeId::minecraft(&quot;zombie.spawn_reinforcements&quot;)</initializer>
         <briefdescription>
 <para>Chance of a zombie to spawn reinforcements. </para>
         </briefdescription>
@@ -258,27 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="78" column="37" bodyfile="include/endstone/attribute/attribute.h" bodystart="78" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="classendstone_1_1Attribute_1aab95a3fee9fe3fb4946437bf9759e647" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::string</type>
-        <definition>static std::string endstone::Attribute::getAttribute</definition>
-        <argsstring>(const std::string &amp;key)</argsstring>
-        <name>getAttribute</name>
-        <qualifiedname>endstone::Attribute::getAttribute</qualifiedname>
-        <param>
-          <type>const std::string &amp;</type>
-          <declname>key</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/attribute/attribute.h" line="26" column="24" bodyfile="include/endstone/attribute/attribute.h" bodystart="26" bodyend="29"/>
+        <location file="include/endstone/attribute/attribute.h" line="72" column="27" bodyfile="include/endstone/attribute/attribute.h" bodystart="72" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -286,25 +266,24 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/attribute/attribute.h" line="25" column="1" bodyfile="include/endstone/attribute/attribute.h" bodystart="25" bodyend="79"/>
+    <location file="include/endstone/attribute/attribute.h" line="24" column="1" bodyfile="include/endstone/attribute/attribute.h" bodystart="24" bodyend="73"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Attribute_1ae4121fd771a937cb3f16db88903a6fbd" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>Absorption</name></member>
-      <member refid="classendstone_1_1Attribute_1a2cbd8b2d3515c572b0ef135e8a887fa5" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>AttackDamage</name></member>
-      <member refid="classendstone_1_1Attribute_1a11bb9ab2afba2ad0845ce4d6ae9c9f92" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>FollowRange</name></member>
-      <member refid="classendstone_1_1Attribute_1aab95a3fee9fe3fb4946437bf9759e647" prot="private" virt="non-virtual"><scope>endstone::Attribute</scope><name>getAttribute</name></member>
-      <member refid="classendstone_1_1Attribute_1aeee461f13bba29f7fa19a4cc4da9101c" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>Health</name></member>
-      <member refid="classendstone_1_1Attribute_1a94c4b1990af6620e649307b844cc6517" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>JumpStrength</name></member>
-      <member refid="classendstone_1_1Attribute_1abad5e6429361dd0eec3f1041e4de7c71" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>KnockbackResistance</name></member>
-      <member refid="classendstone_1_1Attribute_1a67bccb025d6bf23d4940961e1c18f46c" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>LavaMovementSpeed</name></member>
-      <member refid="classendstone_1_1Attribute_1abf8652b1244bf44ed8a9c5eff192c14e" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>Luck</name></member>
-      <member refid="classendstone_1_1Attribute_1a143bae00467eca12222f5e2468e2d1b8" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>MovementSpeed</name></member>
-      <member refid="classendstone_1_1Attribute_1ae0f139825128702da90860d2f5ebfb05" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>PlayerExhaustion</name></member>
-      <member refid="classendstone_1_1Attribute_1ad6bef4df1cb51c396f34c0cb41461f52" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>PlayerExperience</name></member>
-      <member refid="classendstone_1_1Attribute_1a6d4879f481a1c5d3b6753c8bcc1851a1" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>PlayerHunger</name></member>
-      <member refid="classendstone_1_1Attribute_1acd0d9ea8ff986934def2a92e025a8fe0" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>PlayerLevel</name></member>
-      <member refid="classendstone_1_1Attribute_1a03c2123910f0da85fd6da82cc218306c" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>PlayerSaturation</name></member>
-      <member refid="classendstone_1_1Attribute_1aabdb7f29bea80c489bda195776e5e7f1" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>UnderwaterMovementSpeed</name></member>
-      <member refid="classendstone_1_1Attribute_1af7b13b343bc6a13a93f7613381a9e98a" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>ZombieSpawnReinforcements</name></member>
+      <member refid="classendstone_1_1Attribute_1a8d0083b7980c70038a8cf9b03811a3a9" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>Absorption</name></member>
+      <member refid="classendstone_1_1Attribute_1aa31e02509a3604d26a5367f7cfca6927" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>AttackDamage</name></member>
+      <member refid="classendstone_1_1Attribute_1a8948c8f94cc2c3f77f182bcd96cbddcd" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>FollowRange</name></member>
+      <member refid="classendstone_1_1Attribute_1a0a08b7a3c41aeea1e8f99c01c0b7ad0e" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>Health</name></member>
+      <member refid="classendstone_1_1Attribute_1aea378ff4925943117d40a6de5bef47a3" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>JumpStrength</name></member>
+      <member refid="classendstone_1_1Attribute_1aadc9e5baf72fd7361563deea2eca4453" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>KnockbackResistance</name></member>
+      <member refid="classendstone_1_1Attribute_1a1edce1a17770df3b5d929389a51dd8ef" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>LavaMovementSpeed</name></member>
+      <member refid="classendstone_1_1Attribute_1a362c652498582fb951aacd8d71d41255" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>Luck</name></member>
+      <member refid="classendstone_1_1Attribute_1abda74e2d60abbda6c84fdc7d8f5faf74" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>MovementSpeed</name></member>
+      <member refid="classendstone_1_1Attribute_1ac06d7f7380120e587e71e6c1fb993101" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>PlayerExhaustion</name></member>
+      <member refid="classendstone_1_1Attribute_1a169db16643b6a7dea438ecedc8ddcae0" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>PlayerExperience</name></member>
+      <member refid="classendstone_1_1Attribute_1aac9546c578a22405f09b32d9fa989518" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>PlayerHunger</name></member>
+      <member refid="classendstone_1_1Attribute_1add534a7ac8619e4533e5df7341cb65e3" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>PlayerLevel</name></member>
+      <member refid="classendstone_1_1Attribute_1a4e4ec132134eb3e7a4c30fd292b2fff9" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>PlayerSaturation</name></member>
+      <member refid="classendstone_1_1Attribute_1ae5331621bb7909b957cfd19d567801bf" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>UnderwaterMovementSpeed</name></member>
+      <member refid="classendstone_1_1Attribute_1a3040e0ce928371139d0f12e97b9a4d49" prot="public" virt="non-virtual"><scope>endstone::Attribute</scope><name>ZombieSpawnReinforcements</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

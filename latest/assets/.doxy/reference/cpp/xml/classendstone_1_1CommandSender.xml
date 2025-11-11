@@ -105,14 +105,14 @@
         <location file="include/endstone/command/command_sender.h" line="70" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::CommandSender::sendMessage</definition>
         <argsstring>(const Message &amp;message) const =0</argsstring>
         <name>sendMessage</name>
         <qualifiedname>endstone::CommandSender::sendMessage</qualifiedname>
         <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a46ff186c06fed5c771888c5d9167852c">sendMessage</reimplementedby>
         <param>
-          <type>const Message &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> Message &amp;</type>
           <declname>message</declname>
         </param>
         <briefdescription>
@@ -142,17 +142,17 @@
             <defname>Args</defname>
           </param>
         </templateparamlist>
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::CommandSender::sendMessage</definition>
         <argsstring>(const fmt::format_string&lt; Args... &gt; format, Args &amp;&amp;...args) const</argsstring>
         <name>sendMessage</name>
         <qualifiedname>endstone::CommandSender::sendMessage</qualifiedname>
         <param>
-          <type>const fmt::format_string&lt; Args... &gt;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> fmt::format_string&lt; Args... &gt;</type>
           <declname>format</declname>
         </param>
         <param>
-          <type>Args &amp;&amp;...</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Args</ref> &amp;&amp;...</type>
           <declname>args</declname>
         </param>
         <briefdescription>
@@ -164,14 +164,14 @@
         <location file="include/endstone/command/command_sender.h" line="80" column="10" bodyfile="include/endstone/command/command_sender.h" bodystart="80" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::CommandSender::sendErrorMessage</definition>
         <argsstring>(const Message &amp;message) const =0</argsstring>
         <name>sendErrorMessage</name>
         <qualifiedname>endstone::CommandSender::sendErrorMessage</qualifiedname>
         <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1aeb7bc0ed994ee4aacd4834f5c97c5bdf">sendErrorMessage</reimplementedby>
         <param>
-          <type>const Message &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> Message &amp;</type>
           <declname>message</declname>
         </param>
         <briefdescription>
@@ -201,17 +201,17 @@
             <defname>Args</defname>
           </param>
         </templateparamlist>
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::CommandSender::sendErrorMessage</definition>
         <argsstring>(const fmt::format_string&lt; Args... &gt; format, Args &amp;&amp;...args) const</argsstring>
         <name>sendErrorMessage</name>
         <qualifiedname>endstone::CommandSender::sendErrorMessage</qualifiedname>
         <param>
-          <type>const fmt::format_string&lt; Args... &gt;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> fmt::format_string&lt; Args... &gt;</type>
           <declname>format</declname>
         </param>
         <param>
-          <type>Args &amp;&amp;...</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Args</ref> &amp;&amp;...</type>
           <declname>args</declname>
         </param>
         <briefdescription>

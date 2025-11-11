@@ -3,9 +3,25 @@
 
 
 
+## a
+
+* **AttributeId** ([**endstone**](namespaceendstone.md))
+
+
 ## b
 
 * **BlockStates** ([**endstone**](namespaceendstone.md))
+
+
+## e
+
+* **EffectId** ([**endstone**](namespaceendstone.md))
+* **EnchantmentId** ([**endstone**](namespaceendstone.md))
+
+
+## i
+
+* **ItemId** ([**endstone**](namespaceendstone.md))
 
 
 ## m
@@ -16,6 +32,7 @@
 ## p
 
 * **PermissionRemovedExecutor** ([**endstone**](namespaceendstone.md))
+* **PotionId** ([**endstone**](namespaceendstone.md))
 
 
 ## r

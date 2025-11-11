@@ -24,13 +24,13 @@
         <location file="include/endstone/actor/item.h" line="31" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1af161f37341629c74503408f7ebfeb0e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::Item::setItemStack</definition>
         <argsstring>(const ItemStack &amp;stack)=0</argsstring>
         <name>setItemStack</name>
         <qualifiedname>endstone::Item::setItemStack</qualifiedname>
         <param>
-          <type>const <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
           <declname>stack</declname>
         </param>
         <briefdescription>
@@ -53,7 +53,7 @@
         <location file="include/endstone/actor/item.h" line="38" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1a3256b7b25cc3a2e8a59a18ea471c386d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>int</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
         <definition>virtual int endstone::Item::getPickupDelay</definition>
         <argsstring>() const =0</argsstring>
         <name>getPickupDelay</name>
@@ -71,13 +71,13 @@
         <location file="include/endstone/actor/item.h" line="45" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1a9ecb3d011f118920d313d406b0e1f7cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::Item::setPickupDelay</definition>
         <argsstring>(int delay)=0</argsstring>
         <name>setPickupDelay</name>
         <qualifiedname>endstone::Item::setPickupDelay</qualifiedname>
         <param>
-          <type>int</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
           <declname>delay</declname>
         </param>
         <briefdescription>
@@ -100,13 +100,13 @@
         <location file="include/endstone/actor/item.h" line="52" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1aa75743e9275be2335852f72f8e77a879" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::Item::setUnlimitedLifetime</definition>
         <argsstring>(bool unlimited)=0</argsstring>
         <name>setUnlimitedLifetime</name>
         <qualifiedname>endstone::Item::setUnlimitedLifetime</qualifiedname>
         <param>
-          <type>bool</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
           <declname>unlimited</declname>
         </param>
         <briefdescription>
@@ -129,7 +129,7 @@
         <location file="include/endstone/actor/item.h" line="59" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1ae9d1acdd426e2abdaa9a7d0772e013a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
         <definition>virtual bool endstone::Item::isUnlimitedLifetime</definition>
         <argsstring>() const =0</argsstring>
         <name>isUnlimitedLifetime</name>
@@ -147,7 +147,7 @@
         <location file="include/endstone/actor/item.h" line="66" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1a76a67449432660c8c549c9e578fbf549" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>virtual void endstone::Item::setThrower</definition>
         <argsstring>(std::optional&lt; std::int64_t &gt; thrower)=0</argsstring>
         <name>setThrower</name>

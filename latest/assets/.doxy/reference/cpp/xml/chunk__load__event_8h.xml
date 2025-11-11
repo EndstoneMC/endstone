@@ -21,7 +21,7 @@
       <node id="51">
         <label>endstone/ban/ban_entry.h</label>
         <link refid="ban__entry_8h_source"/>
-        <childnode refid="47" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -33,7 +33,7 @@
       <node id="50">
         <label>endstone/ban/ban_list.h</label>
         <link refid="ban__list_8h_source"/>
-        <childnode refid="47" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -55,7 +55,7 @@
       <node id="49">
         <label>endstone/ban/ip_ban_list.h</label>
         <link refid="ip__ban__list_8h_source"/>
-        <childnode refid="47" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -81,7 +81,7 @@
       <node id="53">
         <label>endstone/ban/player_ban_list.h</label>
         <link refid="player__ban__list_8h_source"/>
-        <childnode refid="47" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -185,9 +185,9 @@
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -347,7 +347,7 @@
       <node id="77">
         <label>endstone/form/form.h</label>
         <link refid="form_8h_source"/>
-        <childnode refid="45" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -392,6 +392,14 @@
         <label>endstone/game_mode.h</label>
         <link refid="game__mode_8h_source"/>
       </node>
+      <node id="43">
+        <label>endstone/identifier.h</label>
+        <link refid="identifier_8h_source"/>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
       <node id="87">
         <label>endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
@@ -407,6 +415,8 @@
         <link refid="item__factory_8h_source"/>
         <childnode refid="40" relation="include">
         </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
       </node>
       <node id="36">
         <label>endstone/inventory/item_stack.h</label>
@@ -421,19 +431,19 @@
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
       <node id="102">
-        <label>endstone/inventory/item_type.h</label>
+        <label>item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
       <node id="40">
@@ -568,10 +578,6 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="43">
-        <label>endstone/namespaced_key.h</label>
-        <link refid="namespaced__key_8h_source"/>
-      </node>
       <node id="88">
         <label>endstone/offline_player.h</label>
         <link refid="offline__player_8h_source"/>
@@ -609,7 +615,7 @@
       <node id="70">
         <label>endstone/player.h</label>
         <link refid="player_8h_source"/>
-        <childnode refid="47" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
@@ -652,14 +658,16 @@
         <label>endstone/plugin/service_priority.h</label>
         <link refid="service__priority_8h_source"/>
       </node>
-      <node id="44">
+      <node id="45">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
-        <childnode refid="45" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
         </childnode>
       </node>
       <node id="90">
@@ -726,16 +734,16 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="46">
+      <node id="47">
         <label>endstone/server.h</label>
         <link refid="server_8h_source"/>
-        <childnode refid="47" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -837,7 +845,7 @@
       <node id="28">
         <label>algorithm</label>
       </node>
-      <node id="47">
+      <node id="48">
         <label>chrono</label>
       </node>
       <node id="25">
@@ -858,7 +866,7 @@
       <node id="33">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="45">
+      <node id="46">
         <label>functional</label>
       </node>
       <node id="9">
@@ -879,7 +887,7 @@
       <node id="7">
         <label>string</label>
       </node>
-      <node id="48">
+      <node id="44">
         <label>string_view</label>
       </node>
       <node id="32">
@@ -929,7 +937,7 @@
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_EVENT(<ref refid="classendstone_1_1ChunkLoadEvent" kindref="compound">ChunkLoadEvent</ref>);</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ChunkLoadEvent" kindref="compound">ChunkLoadEvent</ref>(<ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref><sp/>&amp;chunk)<sp/>:<sp/><ref refid="classendstone_1_1ChunkEvent" kindref="compound">ChunkEvent</ref>(chunk)<sp/>{}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ChunkLoadEvent" kindref="compound">ChunkLoadEvent</ref>(<ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">chunk</ref>)<sp/>:<sp/><ref refid="classendstone_1_1ChunkEvent" kindref="compound">ChunkEvent</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">chunk</ref>)<sp/>{}</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ChunkLoadEvent" kindref="compound">~ChunkLoadEvent</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="30"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>

@@ -168,9 +168,9 @@
         </childnode>
         <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
-        </childnode>
         <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -369,6 +369,14 @@
         <label>endstone/game_mode.h</label>
         <link refid="game__mode_8h_source"/>
       </node>
+      <node id="72">
+        <label>endstone/identifier.h</label>
+        <link refid="identifier_8h_source"/>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
       <node id="64">
         <label>endstone/inventory/equipment_slot.h</label>
         <link refid="equipment__slot_8h_source"/>
@@ -392,6 +400,8 @@
         <link refid="item__factory_8h_source"/>
         <childnode refid="69" relation="include">
         </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
       </node>
       <node id="65">
         <label>endstone/inventory/item_stack.h</label>
@@ -406,19 +416,19 @@
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
-        </childnode>
         <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
         </childnode>
       </node>
       <node id="99">
-        <label>endstone/inventory/item_type.h</label>
+        <label>item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="66" relation="include">
         </childnode>
-        <childnode refid="73" relation="include">
-        </childnode>
         <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
         </childnode>
       </node>
       <node id="69">
@@ -535,10 +545,6 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="72">
-        <label>endstone/namespaced_key.h</label>
-        <link refid="namespaced__key_8h_source"/>
-      </node>
       <node id="48">
         <label>endstone/offline_player.h</label>
         <link refid="offline__player_8h_source"/>
@@ -619,7 +625,7 @@
         <label>endstone/plugin/service_priority.h</label>
         <link refid="service__priority_8h_source"/>
       </node>
-      <node id="73">
+      <node id="74">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
         <childnode refid="37" relation="include">
@@ -627,6 +633,8 @@
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
         </childnode>
       </node>
       <node id="53">
@@ -693,7 +701,7 @@
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="74">
+      <node id="75">
         <label>endstone/server.h</label>
         <link refid="server_8h_source"/>
         <childnode refid="8" relation="include">
@@ -702,7 +710,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
+        <childnode refid="73" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -846,7 +854,7 @@
       <node id="6">
         <label>string</label>
       </node>
-      <node id="75">
+      <node id="73">
         <label>string_view</label>
       </node>
       <node id="70">
@@ -894,13 +902,13 @@
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/inventory/item_stack.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
-<codeline lineno="26" refid="classendstone_1_1PlayerDropItemEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PlayerDropItemEvent" kindref="compound">PlayerDropItemEvent</ref><sp/>final<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>&lt;PlayerEvent&gt;<sp/>{</highlight></codeline>
+<codeline lineno="26" refid="classendstone_1_1PlayerDropItemEvent" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PlayerDropItemEvent" kindref="compound">PlayerDropItemEvent</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">final</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>&lt;PlayerEvent&gt;<sp/>{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_EVENT(<ref refid="classendstone_1_1PlayerDropItemEvent" kindref="compound">PlayerDropItemEvent</ref>)</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerDropItemEvent" kindref="compound">PlayerDropItemEvent</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;player,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;drop)<sp/>:<sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>(player),<sp/>drop_(drop)<sp/>{}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerDropItemEvent" kindref="compound">PlayerDropItemEvent</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">drop</ref>)<sp/>:<sp/><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>),<sp/>drop_(<ref refid="classendstone_1_1Identifier" kindref="compound">drop</ref>)<sp/>{}</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37" refid="classendstone_1_1PlayerDropItemEvent_1a40ad469ac2c8a5035ba526833ca3c638" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1PlayerDropItemEvent_1a40ad469ac2c8a5035ba526833ca3c638" kindref="member">getItem</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="37" refid="classendstone_1_1PlayerDropItemEvent_1a40ad469ac2c8a5035ba526833ca3c638" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1PlayerDropItemEvent_1a40ad469ac2c8a5035ba526833ca3c638" kindref="member">getItem</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="38"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>drop_;</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

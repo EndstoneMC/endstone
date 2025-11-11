@@ -8,7 +8,7 @@
 
 
 
-_Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1_1UUID.md) _)_[More...](#detailed-description)
+_Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)_[More...](#detailed-description)
 
 * `#include <endstone/util/uuid.h>`
 
@@ -58,20 +58,20 @@ _Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1
 | Type | Name |
 | ---: | :--- |
 |  std::uint8\_t \* | [**begin**](#function-begin-12) () noexcept<br> |
-|  const uint8\_t \* | [**begin**](#function-begin-22) () noexcept const<br> |
+|  [**const**](classendstone_1_1Identifier.md) [**uint8\_t**](classendstone_1_1Identifier.md) \* | [**begin**](#function-begin-22) () noexcept const<br> |
 |  std::uint8\_t \* | [**end**](#function-end-12) () noexcept<br> |
-|  const uint8\_t \* | [**end**](#function-end-22) () noexcept const<br> |
-|  bool | [**isNil**](#function-isnil) () noexcept const<br> |
+|  [**const**](classendstone_1_1Identifier.md) [**uint8\_t**](classendstone_1_1Identifier.md) \* | [**end**](#function-end-22) () noexcept const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**isNil**](#function-isnil) () noexcept const<br> |
 |  std::string | [**str**](#function-str) () const<br> |
-|  void | [**swap**](#function-swap) ([**UUID**](classendstone_1_1UUID.md) & rhs) noexcept<br> |
-|  int | [**version**](#function-version) () noexcept const<br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**swap**](#function-swap) ([**UUID**](classendstone_1_1UUID.md) & rhs) noexcept<br> |
+|  [**int**](classendstone_1_1Identifier.md) | [**version**](#function-version) () noexcept const<br> |
 
 
 ## Public Static Functions
 
 | Type | Name |
 | ---: | :--- |
-|  constexpr std::size\_t | [**size**](#function-size) () noexcept<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) std::size\_t | [**size**](#function-size) () noexcept<br> |
 
 
 
@@ -141,7 +141,7 @@ inline std::uint8_t * endstone::UUID::begin () noexcept
 ### function begin [2/2]
 
 ```C++
-inline const uint8_t * endstone::UUID::begin () noexcept const
+inline const  uint8_t * endstone::UUID::begin () noexcept const
 ```
 
 
@@ -167,7 +167,7 @@ inline std::uint8_t * endstone::UUID::end () noexcept
 ### function end [2/2]
 
 ```C++
-inline const uint8_t * endstone::UUID::end () noexcept const
+inline const  uint8_t * endstone::UUID::end () noexcept const
 ```
 
 

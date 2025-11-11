@@ -239,6 +239,8 @@
       <node id="32">
         <label>include/endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
+        <childnode refid="24" relation="include">
+        </childnode>
         <childnode refid="25" relation="include">
         </childnode>
       </node>
@@ -356,11 +358,11 @@
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockData" kindref="compound">~BlockData</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42" refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="42" refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50" refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>BlockStates<sp/><ref refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" kindref="member">getBlockStates</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="50" refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>BlockStates<sp/><ref refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" kindref="member">getBlockStates</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57" refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::uint32_t<sp/><ref refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" kindref="member">getRuntimeId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="57" refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::uint32_t<sp/><ref refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" kindref="member">getRuntimeId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="58"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
