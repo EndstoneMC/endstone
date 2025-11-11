@@ -21,7 +21,7 @@ namespace endstone::core {
 class EndstoneEnchantment : public Enchantment {
 public:
     EndstoneEnchantment(std::string id, const Enchant &handle);
-    [[nodiscard]] std::string getId() const override;
+    [[nodiscard]] EnchantmentId getId() const override;
     [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] int getMaxLevel() const override;
     [[nodiscard]] int getStartLevel() const override;

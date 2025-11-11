@@ -14,67 +14,62 @@
 
 #pragma once
 
-#include <string>
-
-#include "endstone/namespaced_key.h"
+#include "endstone/identifier.h"
 
 namespace endstone {
 /**
  * @brief All attribute types.
  */
 class Attribute {
-    static std::string getAttribute(const std::string &key)
-    {
-        return NamespacedKey::minecraft(key);
-    }
-
 public:
+    using AttributeId = Identifier<Attribute>;
+
     /** @brief Health of an entity. */
-    inline static const std::string Health = getAttribute("health");
+    static constexpr auto Health = AttributeId::minecraft("health");
 
     /** @brief Range at which an entity will follow others. */
-    inline static const std::string FollowRange = getAttribute("follow_range");
+    static constexpr auto FollowRange = AttributeId::minecraft("follow_range");
 
     /** @brief Resistance of an entity to knockback. */
-    inline static const std::string KnockbackResistance = getAttribute("knockback_resistance");
+    static constexpr auto KnockbackResistance = AttributeId::minecraft("knockback_resistance");
 
     /** @brief Movement speed of an entity. */
-    inline static const std::string MovementSpeed = getAttribute("movement");
+    static constexpr auto MovementSpeed = AttributeId::minecraft("movement");
 
     /** @brief Movement speed of an entity underwater. */
-    inline static const std::string UnderwaterMovementSpeed = getAttribute("underwater_movement");
+    static constexpr auto UnderwaterMovementSpeed = AttributeId::minecraft("underwater_movement");
 
     /** @brief Movement speed of an entity in lava. */
-    inline static const std::string LavaMovementSpeed = getAttribute("lava_movement");
+    static constexpr auto LavaMovementSpeed = AttributeId::minecraft("lava_movement");
 
     /** @brief Attack damage of an entity. */
-    inline static const std::string AttackDamage = getAttribute("attack_damage");
+    static constexpr auto AttackDamage = AttributeId::minecraft("attack_damage");
 
     /** @brief Absorption of an entity. */
-    inline static const std::string Absorption = getAttribute("absorption");
+    static constexpr auto Absorption = AttributeId::minecraft("absorption");
 
     /** @brief Luck bonus of an entity. */
-    inline static const std::string Luck = getAttribute("luck");
+    static constexpr auto Luck = AttributeId::minecraft("luck");
 
     /** @brief Strength with which an entity will jump. */
-    inline static const std::string JumpStrength = getAttribute("jump_strength");
+    static constexpr auto JumpStrength = AttributeId::minecraft("jump_strength");
 
     /** @brief Hunger level of a player. */
-    inline static const std::string PlayerHunger = getAttribute("player.hunger");
+    static constexpr auto PlayerHunger = AttributeId::minecraft("player.hunger");
 
     /** @brief Saturation level of a player. */
-    inline static const std::string PlayerSaturation = getAttribute("player.saturation");
+    static constexpr auto PlayerSaturation = AttributeId::minecraft("player.saturation");
 
     /** @brief Exhaustion level of a player. */
-    inline static const std::string PlayerExhaustion = getAttribute("player.exhaustion");
+    static constexpr auto PlayerExhaustion = AttributeId::minecraft("player.exhaustion");
 
     /** @brief Experience level of a player. */
-    inline static const std::string PlayerLevel = getAttribute("player.level");
+    static constexpr auto PlayerLevel = AttributeId::minecraft("player.level");
 
     /** @brief Progress toward the next experience level of a player. */
-    inline static const std::string PlayerExperience = getAttribute("player.experience");
+    static constexpr auto PlayerExperience = AttributeId::minecraft("player.experience");
 
     /** @brief Chance of a zombie to spawn reinforcements. */
-    inline static const std::string ZombieSpawnReinforcements = getAttribute("zombie.spawn_reinforcements");
+    static constexpr auto ZombieSpawnReinforcements = AttributeId::minecraft("zombie.spawn_reinforcements");
 };
 }  // namespace endstone

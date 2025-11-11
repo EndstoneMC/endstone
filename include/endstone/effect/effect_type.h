@@ -16,201 +16,197 @@
 
 #include <string>
 
-#include "endstone/namespaced_key.h"
+#include "endstone/identifier.h"
 
 namespace endstone {
 /**
  * @brief All effect types.
  */
 class EffectType {
-    static std::string getEffectType(const std::string &key)
-    {
-        return NamespacedKey::minecraft(key);
-    }
-
 public:
+    using EffectId = Identifier<EffectType>;
     /**
      * Increases movement speed.
      */
-    inline static const auto Speed = getEffectType("speed");
+    static constexpr auto Speed = EffectId::minecraft("speed");
 
     /**
      * Decreases movement speed.
      */
-    inline static const auto Slowness = getEffectType("slowness");
+    static constexpr auto Slowness = EffectId::minecraft("slowness");
 
     /**
      * Increases dig speed.
      */
-    inline static const auto Haste = getEffectType("haste");
+    static constexpr auto Haste = EffectId::minecraft("haste");
 
     /**
      * Decreases dig speed.
      */
-    inline static const auto MiningFatigue = getEffectType("mining_fatigue");
+    static constexpr auto MiningFatigue = EffectId::minecraft("mining_fatigue");
 
     /**
      * Increases damage dealt.
      */
-    inline static const auto Strength = getEffectType("strength");
+    static constexpr auto Strength = EffectId::minecraft("strength");
 
     /**
      * Heals an entity.
      */
-    inline static const auto InstantHealth = getEffectType("instant_health");
+    static constexpr auto InstantHealth = EffectId::minecraft("instant_health");
 
     /**
      * Hurts an entity.
      */
-    inline static const auto InstantDamage = getEffectType("instant_damage");
+    static constexpr auto InstantDamage = EffectId::minecraft("instant_damage");
 
     /**
      * Increases jump height.
      */
-    inline static const auto JumpBoost = getEffectType("jump_boost");
+    static constexpr auto JumpBoost = EffectId::minecraft("jump_boost");
 
     /**
      * Warps vision on the client.
      */
-    inline static const auto Nausea = getEffectType("nausea");
+    static constexpr auto Nausea = EffectId::minecraft("nausea");
 
     /**
      * Regenerates health.
      */
-    inline static const auto Regeneration = getEffectType("regeneration");
+    static constexpr auto Regeneration = EffectId::minecraft("regeneration");
 
     /**
      * Decreases damage dealt to an entity.
      */
-    inline static const auto Resistance = getEffectType("resistance");
+    static constexpr auto Resistance = EffectId::minecraft("resistance");
 
     /**
      * Stops fire damage.
      */
-    inline static const auto FireResistance = getEffectType("fire_resistance");
+    static constexpr auto FireResistance = EffectId::minecraft("fire_resistance");
 
     /**
      * Allows breathing underwater.
      */
-    inline static const auto WaterBreathing = getEffectType("water_breathing");
+    static constexpr auto WaterBreathing = EffectId::minecraft("water_breathing");
 
     /**
      * Grants invisibility.
      */
-    inline static const auto Invisibility = getEffectType("invisibility");
+    static constexpr auto Invisibility = EffectId::minecraft("invisibility");
 
     /**
      * Blinds an entity.
      */
-    inline static const auto Blindness = getEffectType("blindness");
+    static constexpr auto Blindness = EffectId::minecraft("blindness");
 
     /**
      * Allows an entity to see in the dark.
      */
-    inline static const auto NightVision = getEffectType("night_vision");
+    static constexpr auto NightVision = EffectId::minecraft("night_vision");
 
     /**
      * Increases hunger.
      */
-    inline static const auto Hunger = getEffectType("hunger");
+    static constexpr auto Hunger = EffectId::minecraft("hunger");
 
     /**
      * Decreases damage dealt by an entity.
      */
-    inline static const auto Weakness = getEffectType("weakness");
+    static constexpr auto Weakness = EffectId::minecraft("weakness");
 
     /**
      * Deals damage to an entity over time.
      */
-    inline static const auto Poison = getEffectType("poison");
+    static constexpr auto Poison = EffectId::minecraft("poison");
 
     /**
      * Deals damage to an entity over time and gives the health to the
      * shooter.
      */
-    inline static const auto Wither = getEffectType("wither");
+    static constexpr auto Wither = EffectId::minecraft("wither");
 
     /**
      * Increases the maximum health of an entity.
      */
-    inline static const auto HealthBoost = getEffectType("health_boost");
+    static constexpr auto HealthBoost = EffectId::minecraft("health_boost");
 
     /**
      * Increases the maximum health of an entity with health that cannot be
      * regenerated, but is refilled every 30 seconds.
      */
-    inline static const auto Absorption = getEffectType("absorption");
+    static constexpr auto Absorption = EffectId::minecraft("absorption");
 
     /**
      * Increases the food level of an entity each tick.
      */
-    inline static const auto Saturation = getEffectType("saturation");
+    static constexpr auto Saturation = EffectId::minecraft("saturation");
 
     /**
      * Causes the entity to float into the air.
      */
-    inline static const auto Levitation = getEffectType("levitation");
+    static constexpr auto Levitation = EffectId::minecraft("levitation");
 
     /**
      * Inflicts damage to the entity over time, and can kill both undead and non-undead mobs, similar to Wither
      */
-    inline static const auto FatalPoison = getEffectType("fatal_poison");
+    static constexpr auto FatalPoison = EffectId::minecraft("fatal_poison");
 
     /**
      * Effects granted by a nearby conduit. Includes enhanced underwater abilities.
      */
-    inline static const auto ConduitPower = getEffectType("conduit_power");
+    static constexpr auto ConduitPower = EffectId::minecraft("conduit_power");
 
     /**
      * Slows entity fall rate.
      */
-    inline static const auto SlowFalling = getEffectType("slow_falling");
+    static constexpr auto SlowFalling = EffectId::minecraft("slow_falling");
 
     /**
      * Triggers an ominous event when the player enters a village or trial chambers.<br>
      * oof.
      */
-    inline static const auto BadOmen = getEffectType("bad_omen");
+    static constexpr auto BadOmen = EffectId::minecraft("bad_omen");
 
     /**
      * Reduces the cost of villager trades.<br>
      * \o/.
      */
-    inline static const auto HeroOfTheVillage = getEffectType("hero_of_the_village");
+    static constexpr auto HeroOfTheVillage = EffectId::minecraft("hero_of_the_village");
 
     /**
      * Causes the player's vision to dim occasionally.
      */
-    inline static const auto Darkness = getEffectType("darkness");
+    static constexpr auto Darkness = EffectId::minecraft("darkness");
 
     /**
      * Causes trial spawners to become ominous.
      */
-    inline static const auto TrialOmen = getEffectType("trial_omen");
+    static constexpr auto TrialOmen = EffectId::minecraft("trial_omen");
 
     /**
      * Emits a wind burst upon death.
      */
-    inline static const auto WindCharged = getEffectType("wind_charged");
+    static constexpr auto WindCharged = EffectId::minecraft("wind_charged");
 
     /**
      * Creates cobwebs upon death.
      */
-    inline static const auto Weaving = getEffectType("weaving");
+    static constexpr auto Weaving = EffectId::minecraft("weaving");
 
     /**
      * Causes slimes to spawn upon death.
      */
-    inline static const auto Oozing = getEffectType("oozing");
+    static constexpr auto Oozing = EffectId::minecraft("oozing");
 
     /**
      * Chance of spawning silverfish when hurt.
      */
-    inline static const auto Infested = getEffectType("infested");
+    static constexpr auto Infested = EffectId::minecraft("infested");
 
     /**
      * Triggers a raid when a player enters a village.
      */
-    inline static const auto RaidOmen = getEffectType("raid_omen");
+    static constexpr auto RaidOmen = EffectId::minecraft("raid_omen");
 };
 }  // namespace endstone

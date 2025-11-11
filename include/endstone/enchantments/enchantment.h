@@ -15,7 +15,7 @@
 #pragma once
 
 #include "endstone/detail.h"
-#include "endstone/namespaced_key.h"
+#include "endstone/identifier.h"
 #include "endstone/registry.h"
 #include "endstone/server.h"
 
@@ -23,218 +23,213 @@ namespace endstone {
 class ItemStack;
 
 class Enchantment {
-    static std::string getEnchantment(const std::string &key)
-    {
-        return NamespacedKey::minecraft(key);
-    }
-
 public:
     ENDSTONE_REGISTRY_TYPE(Enchantment)
-
+    using EnchantmentId = Identifier<Enchantment>;
     /**
      * @brief Provides protection against environmental damage
      */
-    inline static const std::string Protection = getEnchantment("protection");
+    static constexpr auto Protection = EnchantmentId::minecraft("protection");
 
     /**
      * @brief Provides protection against fire damage
      */
-    inline static const std::string FireProtection = getEnchantment("fire_protection");
+    static constexpr auto FireProtection = EnchantmentId::minecraft("fire_protection");
 
     /**
      * @brief Provides protection against fall damage
      */
-    inline static const std::string FeatherFalling = getEnchantment("feather_falling");
+    static constexpr auto FeatherFalling = EnchantmentId::minecraft("feather_falling");
 
     /**
      * @brief Provides protection against explosive damage
      */
-    inline static const std::string BlastProtection = getEnchantment("blast_protection");
+    static constexpr auto BlastProtection = EnchantmentId::minecraft("blast_protection");
 
     /**
      * @brief Provides protection against projectile damage
      */
-    inline static const std::string ProjectileProtection = getEnchantment("projectile_protection");
+    static constexpr auto ProjectileProtection = EnchantmentId::minecraft("projectile_protection");
 
     /**
      * @brief Damages the attacker
      */
-    inline static const std::string Thorns = getEnchantment("thorns");
+    static constexpr auto Thorns = EnchantmentId::minecraft("thorns");
 
     /**
      * @brief Decreases the rate of air loss whilst underwater
      */
-    inline static const std::string Respiration = getEnchantment("respiration");
+    static constexpr auto Respiration = EnchantmentId::minecraft("respiration");
 
     /**
      * @brief Increases walking speed while in water
      */
-    inline static const std::string DepthStrider = getEnchantment("depth_strider");
+    static constexpr auto DepthStrider = EnchantmentId::minecraft("depth_strider");
 
     /**
      * @brief Increases the speed at which a player may mine underwater
      */
-    inline static const std::string AquaAffinity = getEnchantment("aqua_affinity");
+    static constexpr auto AquaAffinity = EnchantmentId::minecraft("aqua_affinity");
 
     /**
      * @brief Increases damage against all targets
      */
-    inline static const std::string Sharpness = getEnchantment("sharpness");
+    static constexpr auto Sharpness = EnchantmentId::minecraft("sharpness");
 
     /**
      * @brief Increases damage against undead targets
      */
-    inline static const std::string Smite = getEnchantment("smite");
+    static constexpr auto Smite = EnchantmentId::minecraft("smite");
 
     /**
      * @brief Increases damage against arthropod targets
      */
-    inline static const std::string BaneOfArthropods = getEnchantment("bane_of_arthropods");
+    static constexpr auto BaneOfArthropods = EnchantmentId::minecraft("bane_of_arthropods");
 
     /**
      * @brief All damage to other targets will knock them back when hit
      */
-    inline static const std::string Knockback = getEnchantment("knockback");
+    static constexpr auto Knockback = EnchantmentId::minecraft("knockback");
 
     /**
      * @brief When attacking a target, has a chance to set them on fire
      */
-    inline static const std::string FireAspect = getEnchantment("fire_aspect");
+    static constexpr auto FireAspect = EnchantmentId::minecraft("fire_aspect");
 
     /**
      * @brief Provides a chance of gaining extra loot when killing monsters
      */
-    inline static const std::string Looting = getEnchantment("looting");
+    static constexpr auto Looting = EnchantmentId::minecraft("looting");
 
     /**
      * @brief Increases the rate at which you mine/dig
      */
-    inline static const std::string Efficiency = getEnchantment("efficiency");
+    static constexpr auto Efficiency = EnchantmentId::minecraft("efficiency");
 
     /**
      * @brief Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone)
      */
-    inline static const std::string SilkTouch = getEnchantment("silk_touch");
+    static constexpr auto SilkTouch = EnchantmentId::minecraft("silk_touch");
 
     /**
      * @brief Decreases the rate at which a tool looses durability
      */
-    inline static const std::string Unbreaking = getEnchantment("unbreaking");
+    static constexpr auto Unbreaking = EnchantmentId::minecraft("unbreaking");
 
     /**
      * @brief Provides a chance of gaining extra loot when destroying blocks
      */
-    inline static const std::string Fortune = getEnchantment("fortune");
+    static constexpr auto Fortune = EnchantmentId::minecraft("fortune");
 
     /**
      * @brief Provides extra damage when shooting arrows from bows
      */
-    inline static const std::string Power = getEnchantment("power");
+    static constexpr auto Power = EnchantmentId::minecraft("power");
 
     /**
      * @brief Provides a knockback when an entity is hit by an arrow from a bow
      */
-    inline static const std::string Punch = getEnchantment("punch");
+    static constexpr auto Punch = EnchantmentId::minecraft("punch");
 
     /**
      * @brief Sets entities on fire when hit by arrows shot from a bow
      */
-    inline static const std::string Flame = getEnchantment("flame");
+    static constexpr auto Flame = EnchantmentId::minecraft("flame");
 
     /**
      * @brief Provides infinite arrows when shooting a bow
      */
-    inline static const std::string Infinity = getEnchantment("infinity");
+    static constexpr auto Infinity = EnchantmentId::minecraft("infinity");
 
     /**
      * @brief Decreases odds of catching worthless junk
      */
-    inline static const std::string LuckOfTheSea = getEnchantment("luck_of_the_sea");
+    static constexpr auto LuckOfTheSea = EnchantmentId::minecraft("luck_of_the_sea");
 
     /**
      * @brief Increases rate of fish biting your hook
      */
-    inline static const std::string Lure = getEnchantment("lure");
+    static constexpr auto Lure = EnchantmentId::minecraft("lure");
 
     /**
      * @brief Freezes any still water adjacent to ice / frost which player is walking on
      */
-    inline static const std::string FrostWalker = getEnchantment("frost_walker");
+    static constexpr auto FrostWalker = EnchantmentId::minecraft("frost_walker");
 
     /**
      * @brief Allows mending the item using experience orbs
      */
-    inline static const std::string Mending = getEnchantment("mending");
+    static constexpr auto Mending = EnchantmentId::minecraft("mending");
 
     /**
      * @brief Item cannot be removed
      */
-    inline static const std::string CurseOfBinding = getEnchantment("binding");
+    static constexpr auto CurseOfBinding = EnchantmentId::minecraft("binding");
 
     /**
      * @brief Item disappears instead of dropping
      */
-    inline static const std::string CurseOfVanishing = getEnchantment("vanishing");
+    static constexpr auto CurseOfVanishing = EnchantmentId::minecraft("vanishing");
 
     /**
      * @brief Deals more damage to mobs that live in the ocean
      */
-    inline static const std::string Impaling = getEnchantment("impaling");
+    static constexpr auto Impaling = EnchantmentId::minecraft("impaling");
 
     /**
      * @brief When it is rainy, launches the player in the direction their trident is thrown
      */
-    inline static const std::string Riptide = getEnchantment("riptide");
+    static constexpr auto Riptide = EnchantmentId::minecraft("riptide");
 
     /**
      * @brief Causes a thrown trident to return to the player who threw it
      */
-    inline static const std::string Loyalty = getEnchantment("loyalty");
+    static constexpr auto Loyalty = EnchantmentId::minecraft("loyalty");
 
     /**
      * @brief Strikes lightning when a mob is hit with a trident if conditions are stormy
      */
-    inline static const std::string Channeling = getEnchantment("channeling");
+    static constexpr auto Channeling = EnchantmentId::minecraft("channeling");
 
     /**
      * @brief Shoot multiple arrows from crossbows
      */
-    inline static const std::string Multishot = getEnchantment("multishot");
+    static constexpr auto Multishot = EnchantmentId::minecraft("multishot");
 
     /**
      * @brief Crossbow projectiles pierce entities
      */
-    inline static const std::string Piercing = getEnchantment("piercing");
+    static constexpr auto Piercing = EnchantmentId::minecraft("piercing");
 
     /**
      * @brief Charges crossbows quickly
      */
-    inline static const std::string QuickCharge = getEnchantment("quick_charge");
+    static constexpr auto QuickCharge = EnchantmentId::minecraft("quick_charge");
 
     /**
      * @brief Walk quicker on soul blocks
      */
-    inline static const std::string SoulSpeed = getEnchantment("soul_speed");
+    static constexpr auto SoulSpeed = EnchantmentId::minecraft("soul_speed");
 
     /**
      * @brief Walk quicker while sneaking
      */
-    inline static const std::string SwiftSneak = getEnchantment("swift_sneak");
+    static constexpr auto SwiftSneak = EnchantmentId::minecraft("swift_sneak");
 
     /**
      * @brief Emits wind burst upon hitting enemy
      */
-    inline static const std::string WindBurst = getEnchantment("wind_burst");
+    static constexpr auto WindBurst = EnchantmentId::minecraft("wind_burst");
 
     /**
      * @brief Increases fall damage of maces
      */
-    inline static const std::string Density = getEnchantment("density");
+    static constexpr auto Density = EnchantmentId::minecraft("density");
 
     /**
      * @brief Reduces armor effectiveness against maces
      */
-    inline static const std::string Breach = getEnchantment("breach");
+    static constexpr auto Breach = EnchantmentId::minecraft("breach");
 
     virtual ~Enchantment() = default;
 
@@ -243,7 +238,7 @@ public:
      *
      * @return this enchantment's id
      */
-    [[nodiscard]] virtual std::string getId() const = 0;
+    [[nodiscard]] virtual EnchantmentId getId() const = 0;
 
     /**
      * @brief Get the translation key, suitable for use in a translation component.
