@@ -78,6 +78,7 @@ _Represents a button with text and an optional icon._
 | class | [**CommandMap**](classendstone_1_1CommandMap.md) <br>_Represents a command map that manages all commands of the_ [_**Server**_](classendstone_1_1Server.md) _._ |
 | class | [**CommandSender**](classendstone_1_1CommandSender.md) <br>_Represents a command sender._  |
 | class | [**CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) <br>_Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._ |
+| class | [**CompoundTag**](classendstone_1_1CompoundTag.md) <br> |
 | class | [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) <br>_Represents a console command sender._  |
 | class | [**Criteria**](classendstone_1_1Criteria.md) <br>_Represents a scoreboard criteria._  |
 | class | [**DamageSource**](classendstone_1_1DamageSource.md) <br>_Represents a source of damage._  |
@@ -109,6 +110,7 @@ _Represents a button with text and an optional icon._
 | class | [**LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md) <br>_Called when leaves are decaying naturally._  |
 | class | [**Level**](classendstone_1_1Level.md) <br>_Represents a level, which may contain actors, chunks and blocks._  |
 | class | [**LevelEvent**](classendstone_1_1LevelEvent.md) <br>_Represents events within a level._  |
+| class | [**ListTag**](classendstone_1_1ListTag.md) <br> |
 | class | [**Location**](classendstone_1_1Location.md) <br>_Represents a 3-dimensional location in a dimension within a level._  |
 | class | [**Logger**](classendstone_1_1Logger.md) <br>[_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._ |
 | class | [**MapCanvas**](classendstone_1_1MapCanvas.md) <br>_Represents a canvas for drawing to a map._  |
@@ -256,12 +258,14 @@ _Represents a button with text and an optional icon._
 | Type | Name |
 | ---: | :--- |
 |  std::size\_t | [**hash\_value**](#function-hash_value) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & u) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator&lt;**](#function-operator_1) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator&lt;=**](#function-operator_2) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_3) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator&gt;**](#function-operator_4) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator&gt;=**](#function-operator_5) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & a, [**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & b) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator_1) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator&lt;**](#function-operator_2) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator&lt;=**](#function-operator_3) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_4) ([**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & a, [**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & b) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_5) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator&gt;**](#function-operator_6) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator&gt;=**](#function-operator_7) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
 |   | [**overloaded**](#function-overloaded) (Func...) <br>_Deduction guide._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**swap**](#function-swap) ([**UUID**](classendstone_1_1UUID.md) & lhs, [**UUID**](classendstone_1_1UUID.md) & rhs) noexcept<br> |
 
@@ -868,6 +872,22 @@ inline std::size_t endstone::hash_value (
 
 ```C++
 inline bool endstone::operator!= (
+    const  ListTag & a,
+    const  ListTag & b
+) noexcept
+```
+
+
+
+
+<hr>
+
+
+
+### function operator!= 
+
+```C++
+inline bool endstone::operator!= (
     UUID  const & lhs,
     UUID  const & rhs
 ) noexcept
@@ -902,6 +922,22 @@ inline bool endstone::operator< (
 inline bool endstone::operator<= (
     UUID  const & lhs,
     UUID  const & rhs
+) noexcept
+```
+
+
+
+
+<hr>
+
+
+
+### function operator== 
+
+```C++
+inline bool endstone::operator== (
+    const  ListTag & a,
+    const  ListTag & b
 ) noexcept
 ```
 

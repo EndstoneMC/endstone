@@ -47,6 +47,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**CommandMap**](classendstone_1_1CommandMap.md) _Represents a command map that manages all commands of the_ [_**Server**_](classendstone_1_1Server.md) _._    
     * **class** [**CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
     * **class** [**CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._    
+    * **class** [**CompoundTag**](classendstone_1_1CompoundTag.md)     
     * **class** [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
     * **class** [**Criteria**](classendstone_1_1Criteria.md) _Represents a scoreboard criteria._     
     * **class** [**DamageSource**](classendstone_1_1DamageSource.md) _Represents a source of damage._     
@@ -78,6 +79,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md) _Called when leaves are decaying naturally._     
     * **class** [**Level**](classendstone_1_1Level.md) _Represents a level, which may contain actors, chunks and blocks._     
     * **class** [**LevelEvent**](classendstone_1_1LevelEvent.md) _Represents events within a level._     
+    * **class** [**ListTag**](classendstone_1_1ListTag.md)     
     * **class** [**Location**](classendstone_1_1Location.md) _Represents a 3-dimensional location in a dimension within a level._     
     * **class** [**Logger**](classendstone_1_1Logger.md) [_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._    
     * **class** [**MapCanvas**](classendstone_1_1MapCanvas.md) _Represents a canvas for drawing to a map._     

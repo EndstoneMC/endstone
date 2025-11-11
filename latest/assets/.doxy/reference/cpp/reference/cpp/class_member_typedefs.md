@@ -12,7 +12,8 @@
 
 * **Control** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **Callback** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
-* **const\_iterator** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **const\_iterator** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md), [**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **container\_type** ([**endstone::ListTag**](classendstone_1_1ListTag.md))
 
 
 ## d
@@ -28,11 +29,17 @@
 
 ## i
 
-* **iterator** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **iterator** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md), [**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+
+
+## k
+
+* **key\_type** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md))
 
 
 ## m
 
+* **map\_type** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md))
 * **MapId** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 
 
@@ -45,8 +52,9 @@
 
 ## s
 
-* **size\_type** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **size\_type** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md), [**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **storage\_type** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **Storage** ([**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
 
 
 ## t
@@ -56,7 +64,7 @@
 
 ## v
 
-* **value\_type** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md), [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md))
+* **value\_type** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md), [**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md), [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md))
 
 
 

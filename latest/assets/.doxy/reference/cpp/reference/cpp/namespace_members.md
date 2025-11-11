@@ -107,6 +107,7 @@
 ## t
 
 * **TaskId** ([**endstone**](namespaceendstone.md))
+* **Type** ([**endstone::nbt**](namespaceendstone_1_1nbt.md))
 
 
 

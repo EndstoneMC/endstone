@@ -22,7 +22,10 @@
 | Type | Name |
 | ---: | :--- |
 | file | [**array.h**](array_8h.md) <br> |
+| file | [**compound.h**](compound_8h.md) <br> |
+| file | [**list.h**](list_8h.md) <br> |
 | file | [**tag.h**](tag_8h.md) <br> |
+| file | [**type.h**](type_8h.md) <br> |
 | file | [**value.h**](value_8h.md) <br> |
 
 

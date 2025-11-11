@@ -1,0 +1,721 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1CompoundTag" kind="class" language="C++" prot="public">
+    <compoundname>endstone::CompoundTag</compoundname>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classendstone_1_1CompoundTag_1afda677b68ae8b9344ceda952fbb75d67" prot="public" static="no">
+        <type>std::string</type>
+        <definition>using endstone::CompoundTag::key_type =  std::string</definition>
+        <argsstring></argsstring>
+        <name>key_type</name>
+        <qualifiedname>endstone::CompoundTag::key_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="30" column="5" bodyfile="include/endstone/nbt/compound.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classendstone_1_1CompoundTag_1ae595ad1781cf4d0d7c4211c798fe5881" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">nbt::Tag</ref></type>
+        <definition>using endstone::CompoundTag::value_type =  nbt::Tag</definition>
+        <argsstring></argsstring>
+        <name>value_type</name>
+        <qualifiedname>endstone::CompoundTag::value_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="31" column="5" bodyfile="include/endstone/nbt/compound.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classendstone_1_1CompoundTag_1aaa16bc110b557d981188f94008abb74f" prot="public" static="no">
+        <type>std::map&lt; key_type, <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">value_type</ref> &gt;</type>
+        <definition>using endstone::CompoundTag::map_type =  std::map&lt;key_type, value_type&gt;</definition>
+        <argsstring></argsstring>
+        <name>map_type</name>
+        <qualifiedname>endstone::CompoundTag::map_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="32" column="5" bodyfile="include/endstone/nbt/compound.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classendstone_1_1CompoundTag_1aef612c34ad5be6a1aeeab310e2acb42a" prot="public" static="no">
+        <type>std::size_t</type>
+        <definition>using endstone::CompoundTag::size_type =  std::size_t</definition>
+        <argsstring></argsstring>
+        <name>size_type</name>
+        <qualifiedname>endstone::CompoundTag::size_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="33" column="5" bodyfile="include/endstone/nbt/compound.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classendstone_1_1CompoundTag_1a8fd8e6bcc38011aa5c41cb521fc38daf" prot="public" static="no">
+        <type>map_type::iterator</type>
+        <definition>using endstone::CompoundTag::iterator =  map_type::iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <qualifiedname>endstone::CompoundTag::iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="34" column="5" bodyfile="include/endstone/nbt/compound.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classendstone_1_1CompoundTag_1ae585a24a746235a486097743424a78ca" prot="public" static="no">
+        <type>map_type::const_iterator</type>
+        <definition>using endstone::CompoundTag::const_iterator =  map_type::const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <qualifiedname>endstone::CompoundTag::const_iterator</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="35" column="5" bodyfile="include/endstone/nbt/compound.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1CompoundTag_1a0ac14f3e8034deffcb0569165a4109e1" prot="private" static="no" mutable="no">
+        <type>map_type</type>
+        <definition>map_type endstone::CompoundTag::entries_</definition>
+        <argsstring></argsstring>
+        <name>entries_</name>
+        <qualifiedname>endstone::CompoundTag::entries_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="85" column="14" bodyfile="include/endstone/nbt/compound.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a78670340ce5134699b3bcebd6c2ffc72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::CompoundTag::CompoundTag</definition>
+        <argsstring>()</argsstring>
+        <name>CompoundTag</name>
+        <qualifiedname>endstone::CompoundTag::CompoundTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="38" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a5818644125102463416611098528d926" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::CompoundTag::CompoundTag</definition>
+        <argsstring>(std::initializer_list&lt; std::pair&lt; std::string, nbt::Tag &gt; &gt; init)</argsstring>
+        <name>CompoundTag</name>
+        <qualifiedname>endstone::CompoundTag::CompoundTag</qualifiedname>
+        <param>
+          <type>std::initializer_list&lt; std::pair&lt; std::string, <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">nbt::Tag</ref> &gt; &gt;</type>
+          <declname>init</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="39" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1aa43ab9d4eccaf8361b374590417c2ff8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>endstone::CompoundTag::CompoundTag</definition>
+        <argsstring>(It first, It last)</argsstring>
+        <name>CompoundTag</name>
+        <qualifiedname>endstone::CompoundTag::CompoundTag</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">It</ref></type>
+          <declname>last</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="41" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a3faad90ef2a0bb82f6d1da5a3eca5328" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::CompoundTag::empty</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>empty</name>
+        <qualifiedname>endstone::CompoundTag::empty</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="44" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a2a7aaca5569ee9581d5aaaa08c25bddd" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>size_type</type>
+        <definition>size_type endstone::CompoundTag::size</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>size</name>
+        <qualifiedname>endstone::CompoundTag::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="45" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a2b148a5a10db845ffd55c958037584fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">nbt::Tag</ref> &amp;</type>
+        <definition>nbt::Tag &amp; endstone::CompoundTag::at</definition>
+        <argsstring>(std::string_view key)</argsstring>
+        <name>at</name>
+        <qualifiedname>endstone::CompoundTag::at</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="48" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a16884c4c46244e1f78504a1718b70a55" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">nbt::Tag</ref> &amp;</type>
+        <definition>const nbt::Tag &amp; endstone::CompoundTag::at</definition>
+        <argsstring>(std::string_view key) const</argsstring>
+        <name>at</name>
+        <qualifiedname>endstone::CompoundTag::at</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="49" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a2f542b58ad4cbdf9effceed30373498b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">nbt::Tag</ref> &amp;</type>
+        <definition>nbt::Tag &amp; endstone::CompoundTag::operator[]</definition>
+        <argsstring>(const std::string &amp;key)</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>endstone::CompoundTag::operator[]</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="50" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1add858c6d20bfc98ec7d67894a80dfeb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">nbt::Tag</ref> &amp;</type>
+        <definition>nbt::Tag &amp; endstone::CompoundTag::operator[]</definition>
+        <argsstring>(std::string &amp;&amp;key)</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>endstone::CompoundTag::operator[]</qualifiedname>
+        <param>
+          <type>std::string &amp;&amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="51" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1afdfb756c8cb3d72468f756b1f04148bb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::CompoundTag::contains</definition>
+        <argsstring>(std::string_view key) const noexcept</argsstring>
+        <name>contains</name>
+        <qualifiedname>endstone::CompoundTag::contains</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="52" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1abcdfb98501f2120f14f17d57d5bd723c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>size_type</type>
+        <definition>size_type endstone::CompoundTag::count</definition>
+        <argsstring>(std::string_view key) const noexcept</argsstring>
+        <name>count</name>
+        <qualifiedname>endstone::CompoundTag::count</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="53" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1ab95d29c1f8e2b3bff756e44f4533e90d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::CompoundTag::clear</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>clear</name>
+        <qualifiedname>endstone::CompoundTag::clear</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="56" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a5a1ee35dd0fde64ee35a7fa3c90c8a04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::pair&lt; iterator, <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt;</type>
+        <definition>std::pair&lt; iterator, bool &gt; endstone::CompoundTag::insert</definition>
+        <argsstring>(const std::pair&lt; const std::string, nbt::Tag &gt; &amp;v)</argsstring>
+        <name>insert</name>
+        <qualifiedname>endstone::CompoundTag::insert</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::pair&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string, <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">nbt::Tag</ref> &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="57" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a3a5d0dd9400b68cfb01f84dbecfa8760" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::pair&lt; iterator, <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt;</type>
+        <definition>std::pair&lt; iterator, bool &gt; endstone::CompoundTag::insert</definition>
+        <argsstring>(std::pair&lt; const std::string, nbt::Tag &gt; &amp;&amp;v)</argsstring>
+        <name>insert</name>
+        <qualifiedname>endstone::CompoundTag::insert</qualifiedname>
+        <param>
+          <type>std::pair&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string, <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">nbt::Tag</ref> &gt; &amp;&amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="58" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a56d40a0fba5bcd7aecc540bbd6229427" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">P</ref></type>
+          </param>
+        </templateparamlist>
+        <type>std::pair&lt; iterator, <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt;</type>
+        <definition>std::pair&lt; iterator, bool &gt; endstone::CompoundTag::insert</definition>
+        <argsstring>(P &amp;&amp;v)</argsstring>
+        <name>insert</name>
+        <qualifiedname>endstone::CompoundTag::insert</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">P</ref> &amp;&amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="60" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1ab46421d8baefcd031c9e622f69906880" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::pair&lt; iterator, <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt;</type>
+        <definition>std::pair&lt; iterator, bool &gt; endstone::CompoundTag::try_emplace</definition>
+        <argsstring>(std::string key, Args &amp;&amp;...ctor_args)</argsstring>
+        <name>try_emplace</name>
+        <qualifiedname>endstone::CompoundTag::try_emplace</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Args</ref> &amp;&amp;...</type>
+          <declname>ctor_args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="62" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a2d45e8fdecac535ce1455448a7472697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">M</ref></type>
+          </param>
+        </templateparamlist>
+        <type>std::pair&lt; iterator, <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt;</type>
+        <definition>std::pair&lt; iterator, bool &gt; endstone::CompoundTag::insert_or_assign</definition>
+        <argsstring>(std::string key, M &amp;&amp;obj)</argsstring>
+        <name>insert_or_assign</name>
+        <qualifiedname>endstone::CompoundTag::insert_or_assign</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">M</ref> &amp;&amp;</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="64" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a6bb395f1f9f3c46e30f7610e48117ed0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>iterator</type>
+        <definition>iterator endstone::CompoundTag::erase</definition>
+        <argsstring>(const_iterator pos)</argsstring>
+        <name>erase</name>
+        <qualifiedname>endstone::CompoundTag::erase</qualifiedname>
+        <param>
+          <type>const_iterator</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="65" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1add37abd7440d2f5ae81462a78ac9a1ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_type</type>
+        <definition>size_type endstone::CompoundTag::erase</definition>
+        <argsstring>(std::string_view key)</argsstring>
+        <name>erase</name>
+        <qualifiedname>endstone::CompoundTag::erase</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="66" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1ade60f10e4a0143791ab6703cebab6726" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>iterator</type>
+        <definition>iterator endstone::CompoundTag::erase</definition>
+        <argsstring>(const_iterator first, const_iterator last)</argsstring>
+        <name>erase</name>
+        <qualifiedname>endstone::CompoundTag::erase</qualifiedname>
+        <param>
+          <type>const_iterator</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type>const_iterator</type>
+          <declname>last</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="67" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a181e00043ac0e2543b4bfbe2bb6a4ea7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::CompoundTag::swap</definition>
+        <argsstring>(CompoundTag &amp;other) noexcept</argsstring>
+        <name>swap</name>
+        <qualifiedname>endstone::CompoundTag::swap</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="68" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1aabf9ebbb2e657ba4b886df6439f2c415" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::CompoundTag::merge</definition>
+        <argsstring>(CompoundTag &amp;source)</argsstring>
+        <name>merge</name>
+        <qualifiedname>endstone::CompoundTag::merge</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &amp;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="69" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a2ec371ccfb87ec67861cbb97906b1e2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::CompoundTag::merge</definition>
+        <argsstring>(CompoundTag &amp;&amp;source)</argsstring>
+        <name>merge</name>
+        <qualifiedname>endstone::CompoundTag::merge</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &amp;&amp;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="70" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a299eb0a183ac721261a010d5ee9a15c3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>iterator</type>
+        <definition>iterator endstone::CompoundTag::begin</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>begin</name>
+        <qualifiedname>endstone::CompoundTag::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="73" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a18910123b2d7db026bd7c802c83c99e1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>iterator</type>
+        <definition>iterator endstone::CompoundTag::end</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>end</name>
+        <qualifiedname>endstone::CompoundTag::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="74" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a50096d8451cef095623279eb8d39ef7d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator endstone::CompoundTag::begin</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>begin</name>
+        <qualifiedname>endstone::CompoundTag::begin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="75" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a89f01af50e321831742fa1a09e8ca0d9" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator endstone::CompoundTag::end</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>end</name>
+        <qualifiedname>endstone::CompoundTag::end</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="76" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1a363b23410174653cc1410359de060c5e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator endstone::CompoundTag::cbegin</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>cbegin</name>
+        <qualifiedname>endstone::CompoundTag::cbegin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="77" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CompoundTag_1af12495948be5c2ae3083294043bdc4e8" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const_iterator</type>
+        <definition>const_iterator endstone::CompoundTag::cend</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>cend</name>
+        <qualifiedname>endstone::CompoundTag::cend</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="78" column="20"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classendstone_1_1CompoundTag_1af8963cd361024622447f9aea53c023b3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool operator==</definition>
+        <argsstring>(const CompoundTag &amp;a, const CompoundTag &amp;b) noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::CompoundTag::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="81" column="17"/>
+      </memberdef>
+      <memberdef kind="friend" id="classendstone_1_1CompoundTag_1a404460491f274507de8f3386c3d86946" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool operator!=</definition>
+        <argsstring>(const CompoundTag &amp;a, const CompoundTag &amp;b) noexcept</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>endstone::CompoundTag::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/compound.h" line="82" column="17"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/nbt/compound.h" line="28" column="1" bodyfile="include/endstone/nbt/compound.h" bodystart="28" bodyend="86"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1CompoundTag_1a2b148a5a10db845ffd55c958037584fc" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>at</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a16884c4c46244e1f78504a1718b70a55" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>at</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a299eb0a183ac721261a010d5ee9a15c3" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>begin</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a50096d8451cef095623279eb8d39ef7d" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>begin</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a363b23410174653cc1410359de060c5e" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>cbegin</name></member>
+      <member refid="classendstone_1_1CompoundTag_1af12495948be5c2ae3083294043bdc4e8" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>cend</name></member>
+      <member refid="classendstone_1_1CompoundTag_1ab95d29c1f8e2b3bff756e44f4533e90d" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>clear</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a78670340ce5134699b3bcebd6c2ffc72" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>CompoundTag</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a5818644125102463416611098528d926" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>CompoundTag</name></member>
+      <member refid="classendstone_1_1CompoundTag_1aa43ab9d4eccaf8361b374590417c2ff8" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>CompoundTag</name></member>
+      <member refid="classendstone_1_1CompoundTag_1ae585a24a746235a486097743424a78ca" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>const_iterator</name></member>
+      <member refid="classendstone_1_1CompoundTag_1afdfb756c8cb3d72468f756b1f04148bb" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>contains</name></member>
+      <member refid="classendstone_1_1CompoundTag_1abcdfb98501f2120f14f17d57d5bd723c" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>count</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a3faad90ef2a0bb82f6d1da5a3eca5328" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>empty</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a18910123b2d7db026bd7c802c83c99e1" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>end</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a89f01af50e321831742fa1a09e8ca0d9" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>end</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a0ac14f3e8034deffcb0569165a4109e1" prot="private" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>entries_</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a6bb395f1f9f3c46e30f7610e48117ed0" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>erase</name></member>
+      <member refid="classendstone_1_1CompoundTag_1add37abd7440d2f5ae81462a78ac9a1ac" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>erase</name></member>
+      <member refid="classendstone_1_1CompoundTag_1ade60f10e4a0143791ab6703cebab6726" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>erase</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a5a1ee35dd0fde64ee35a7fa3c90c8a04" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>insert</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a3a5d0dd9400b68cfb01f84dbecfa8760" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>insert</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a56d40a0fba5bcd7aecc540bbd6229427" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>insert</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a2d45e8fdecac535ce1455448a7472697" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>insert_or_assign</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a8fd8e6bcc38011aa5c41cb521fc38daf" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>iterator</name></member>
+      <member refid="classendstone_1_1CompoundTag_1afda677b68ae8b9344ceda952fbb75d67" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>key_type</name></member>
+      <member refid="classendstone_1_1CompoundTag_1aaa16bc110b557d981188f94008abb74f" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>map_type</name></member>
+      <member refid="classendstone_1_1CompoundTag_1aabf9ebbb2e657ba4b886df6439f2c415" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>merge</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a2ec371ccfb87ec67861cbb97906b1e2d" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>merge</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a404460491f274507de8f3386c3d86946" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1CompoundTag_1af8963cd361024622447f9aea53c023b3" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a2f542b58ad4cbdf9effceed30373498b" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>operator[]</name></member>
+      <member refid="classendstone_1_1CompoundTag_1add858c6d20bfc98ec7d67894a80dfeb6" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>operator[]</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a2a7aaca5569ee9581d5aaaa08c25bddd" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>size</name></member>
+      <member refid="classendstone_1_1CompoundTag_1aef612c34ad5be6a1aeeab310e2acb42a" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>size_type</name></member>
+      <member refid="classendstone_1_1CompoundTag_1a181e00043ac0e2543b4bfbe2bb6a4ea7" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>swap</name></member>
+      <member refid="classendstone_1_1CompoundTag_1ab46421d8baefcd031c9e622f69906880" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>try_emplace</name></member>
+      <member refid="classendstone_1_1CompoundTag_1ae595ad1781cf4d0d7c4211c798fe5881" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>value_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

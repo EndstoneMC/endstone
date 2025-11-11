@@ -210,7 +210,7 @@
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Reload</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ServerLoadEvent" kindref="compound">ServerLoadEvent</ref>(LoadType<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">type</ref>)<sp/>:<sp/>type_(<ref refid="classendstone_1_1Identifier" kindref="compound">type</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ServerLoadEvent" kindref="compound">ServerLoadEvent</ref>(LoadType<sp/>type)<sp/>:<sp/>type_(type)<sp/>{}</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>LoadType<sp/>getType()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="38"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>

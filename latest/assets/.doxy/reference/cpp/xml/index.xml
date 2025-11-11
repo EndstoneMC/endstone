@@ -570,6 +570,46 @@
     <member refid="classendstone_1_1CommandSenderWrapper_1ae4c0dbf8ed831f306f660688e294dcce" kind="function"><name>getServer</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642" kind="function"><name>getName</name></member>
   </compound>
+  <compound refid="classendstone_1_1CompoundTag" kind="class"><name>endstone::CompoundTag</name>
+    <member refid="classendstone_1_1CompoundTag_1afda677b68ae8b9344ceda952fbb75d67" kind="typedef"><name>key_type</name></member>
+    <member refid="classendstone_1_1CompoundTag_1ae595ad1781cf4d0d7c4211c798fe5881" kind="typedef"><name>value_type</name></member>
+    <member refid="classendstone_1_1CompoundTag_1aaa16bc110b557d981188f94008abb74f" kind="typedef"><name>map_type</name></member>
+    <member refid="classendstone_1_1CompoundTag_1aef612c34ad5be6a1aeeab310e2acb42a" kind="typedef"><name>size_type</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a8fd8e6bcc38011aa5c41cb521fc38daf" kind="typedef"><name>iterator</name></member>
+    <member refid="classendstone_1_1CompoundTag_1ae585a24a746235a486097743424a78ca" kind="typedef"><name>const_iterator</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a0ac14f3e8034deffcb0569165a4109e1" kind="variable"><name>entries_</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a78670340ce5134699b3bcebd6c2ffc72" kind="function"><name>CompoundTag</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a5818644125102463416611098528d926" kind="function"><name>CompoundTag</name></member>
+    <member refid="classendstone_1_1CompoundTag_1aa43ab9d4eccaf8361b374590417c2ff8" kind="function"><name>CompoundTag</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a3faad90ef2a0bb82f6d1da5a3eca5328" kind="function"><name>empty</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a2a7aaca5569ee9581d5aaaa08c25bddd" kind="function"><name>size</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a2b148a5a10db845ffd55c958037584fc" kind="function"><name>at</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a16884c4c46244e1f78504a1718b70a55" kind="function"><name>at</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a2f542b58ad4cbdf9effceed30373498b" kind="function"><name>operator[]</name></member>
+    <member refid="classendstone_1_1CompoundTag_1add858c6d20bfc98ec7d67894a80dfeb6" kind="function"><name>operator[]</name></member>
+    <member refid="classendstone_1_1CompoundTag_1afdfb756c8cb3d72468f756b1f04148bb" kind="function"><name>contains</name></member>
+    <member refid="classendstone_1_1CompoundTag_1abcdfb98501f2120f14f17d57d5bd723c" kind="function"><name>count</name></member>
+    <member refid="classendstone_1_1CompoundTag_1ab95d29c1f8e2b3bff756e44f4533e90d" kind="function"><name>clear</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a5a1ee35dd0fde64ee35a7fa3c90c8a04" kind="function"><name>insert</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a3a5d0dd9400b68cfb01f84dbecfa8760" kind="function"><name>insert</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a56d40a0fba5bcd7aecc540bbd6229427" kind="function"><name>insert</name></member>
+    <member refid="classendstone_1_1CompoundTag_1ab46421d8baefcd031c9e622f69906880" kind="function"><name>try_emplace</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a2d45e8fdecac535ce1455448a7472697" kind="function"><name>insert_or_assign</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a6bb395f1f9f3c46e30f7610e48117ed0" kind="function"><name>erase</name></member>
+    <member refid="classendstone_1_1CompoundTag_1add37abd7440d2f5ae81462a78ac9a1ac" kind="function"><name>erase</name></member>
+    <member refid="classendstone_1_1CompoundTag_1ade60f10e4a0143791ab6703cebab6726" kind="function"><name>erase</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a181e00043ac0e2543b4bfbe2bb6a4ea7" kind="function"><name>swap</name></member>
+    <member refid="classendstone_1_1CompoundTag_1aabf9ebbb2e657ba4b886df6439f2c415" kind="function"><name>merge</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a2ec371ccfb87ec67861cbb97906b1e2d" kind="function"><name>merge</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a299eb0a183ac721261a010d5ee9a15c3" kind="function"><name>begin</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a18910123b2d7db026bd7c802c83c99e1" kind="function"><name>end</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a50096d8451cef095623279eb8d39ef7d" kind="function"><name>begin</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a89f01af50e321831742fa1a09e8ca0d9" kind="function"><name>end</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a363b23410174653cc1410359de060c5e" kind="function"><name>cbegin</name></member>
+    <member refid="classendstone_1_1CompoundTag_1af12495948be5c2ae3083294043bdc4e8" kind="function"><name>cend</name></member>
+    <member refid="classendstone_1_1CompoundTag_1af8963cd361024622447f9aea53c023b3" kind="friend"><name>operator==</name></member>
+    <member refid="classendstone_1_1CompoundTag_1a404460491f274507de8f3386c3d86946" kind="friend"><name>operator!=</name></member>
+  </compound>
   <compound refid="classendstone_1_1ConsoleCommandSender" kind="class"><name>endstone::ConsoleCommandSender</name>
   </compound>
   <compound refid="classendstone_1_1Criteria" kind="class"><name>endstone::Criteria</name>
@@ -1049,6 +1089,38 @@
     <member refid="classendstone_1_1LevelEvent_1ab3a3f5c2858709f045ea2195567b7892" kind="variable"><name>level_</name></member>
     <member refid="classendstone_1_1LevelEvent_1a75f2817cfb11480dedbf70c1d3ddc162" kind="function"><name>LevelEvent</name></member>
     <member refid="classendstone_1_1LevelEvent_1ac3be77ffb5a5416fe0c6b138ac01a709" kind="function"><name>getLevel</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ListTag" kind="class"><name>endstone::ListTag</name>
+    <member refid="classendstone_1_1ListTag_1a74f3034e0b1eee2fc7b34bf78e93cbba" kind="typedef"><name>value_type</name></member>
+    <member refid="classendstone_1_1ListTag_1a56bf98e823ea2c41d1d9ca021c37ec6e" kind="typedef"><name>size_type</name></member>
+    <member refid="classendstone_1_1ListTag_1ad936cfccfe69362a70fc4f421d996940" kind="typedef"><name>container_type</name></member>
+    <member refid="classendstone_1_1ListTag_1ac6a4b29aa6e058f369795e7ab22b10c6" kind="typedef"><name>iterator</name></member>
+    <member refid="classendstone_1_1ListTag_1abb88e5d5b44db44376450c2b0ad9376b" kind="typedef"><name>const_iterator</name></member>
+    <member refid="classendstone_1_1ListTag_1a26e4da026064b6e52d4307d07b4aca76" kind="variable"><name>type_</name></member>
+    <member refid="classendstone_1_1ListTag_1ad199e3b3d988c8efea6e71c3356f4dfe" kind="variable"><name>elements_</name></member>
+    <member refid="classendstone_1_1ListTag_1a867d1c77ca82dde7720473979323b542" kind="function"><name>ListTag</name></member>
+    <member refid="classendstone_1_1ListTag_1ac162c489716a3dd1f59337d67cd22f45" kind="function"><name>ListTag</name></member>
+    <member refid="classendstone_1_1ListTag_1a718549f74978bb7e5d9025d6043571c9" kind="function"><name>empty</name></member>
+    <member refid="classendstone_1_1ListTag_1ad10dbe3b2cde91732e8b1f31e80bc943" kind="function"><name>size</name></member>
+    <member refid="classendstone_1_1ListTag_1a172692170a553c3b948411136d95af93" kind="function"><name>type</name></member>
+    <member refid="classendstone_1_1ListTag_1a750393fbdd39bfe89f3c165dbf416d1f" kind="function"><name>at</name></member>
+    <member refid="classendstone_1_1ListTag_1a2973f22418924532f109235002c1e5ea" kind="function"><name>at</name></member>
+    <member refid="classendstone_1_1ListTag_1abf565c486b9c39788e243eab4514a5af" kind="function"><name>operator[]</name></member>
+    <member refid="classendstone_1_1ListTag_1a239a79da08935a2fffcc20b2b17d740b" kind="function"><name>operator[]</name></member>
+    <member refid="classendstone_1_1ListTag_1a3dd24f1adff324f779b0aedb160b9db8" kind="function"><name>clear</name></member>
+    <member refid="classendstone_1_1ListTag_1a19776e479a624c6d534cf964ff2e3911" kind="function"><name>push_back</name></member>
+    <member refid="classendstone_1_1ListTag_1a11c4efdada91ac1ebbca5bbbb7f7e369" kind="function"><name>push_back</name></member>
+    <member refid="classendstone_1_1ListTag_1a6c81abc48676b70510409386559f2924" kind="function"><name>emplace_back</name></member>
+    <member refid="classendstone_1_1ListTag_1ab7861677cde19f6e0846cdb99043d4f9" kind="function"><name>erase</name></member>
+    <member refid="classendstone_1_1ListTag_1a75d1c0c041658b4ee2af2308b5e07077" kind="function"><name>erase</name></member>
+    <member refid="classendstone_1_1ListTag_1aa10529c4365836ad673a77c4930caf97" kind="function"><name>begin</name></member>
+    <member refid="classendstone_1_1ListTag_1a9b0ae16ce1cba52f6b3ccb0b7bc72626" kind="function"><name>end</name></member>
+    <member refid="classendstone_1_1ListTag_1af0e73a8940ff09517d9c38293d0514ea" kind="function"><name>begin</name></member>
+    <member refid="classendstone_1_1ListTag_1a9cfe741a58abf0da27a5e0a53678bae6" kind="function"><name>end</name></member>
+    <member refid="classendstone_1_1ListTag_1a3fc5e5990361b7f0a50643eb347d828b" kind="function"><name>cbegin</name></member>
+    <member refid="classendstone_1_1ListTag_1aad8be59fbf04a12cc7248dbfdb390add" kind="function"><name>cend</name></member>
+    <member refid="classendstone_1_1ListTag_1a38aa073ef00c121ca8152ff472e1cf01" kind="friend"><name>operator==</name></member>
+    <member refid="classendstone_1_1ListTag_1a2d8db30e5002fde2c145da8e81a1edaa" kind="friend"><name>operator!=</name></member>
   </compound>
   <compound refid="classendstone_1_1Location" kind="class"><name>endstone::Location</name>
     <member refid="classendstone_1_1Location_1acaf254c9147c8657abe7df69d946456f" kind="variable"><name>dimension_</name></member>
@@ -2122,19 +2194,36 @@
     <member refid="classendstone_1_1StepSlider_1ac91f43ee6f2a4a562564a4fa09d4090a" kind="function"><name>Dropdown</name></member>
   </compound>
   <compound refid="classendstone_1_1nbt_1_1Tag" kind="class"><name>endstone::nbt::Tag</name>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15e" kind="enum"><name>Type</name></member>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15ea87557f11575c0ad78e4e28abedc13b6e" kind="enumvalue"><name>End</name></member>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15eaa245c3230debe5c956484ecc6fa93877" kind="enumvalue"><name>Byte</name></member>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15ea30bb747c98bccdd11b3f89e644c4d0ad" kind="enumvalue"><name>Short</name></member>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15ea1686a6c336b71b36d77354cea19a8b52" kind="enumvalue"><name>Int</name></member>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15ea8394f0347c184cf156ac5924dccb773b" kind="enumvalue"><name>Long</name></member>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15ea22ae0e2b89e5e3d477f988cc36d3272b" kind="enumvalue"><name>Float</name></member>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15ead909d38d705ce75386dd86e611a82f5b" kind="enumvalue"><name>Double</name></member>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15ea29d83f0080e24c1f4b3975dc9ff9e868" kind="enumvalue"><name>ByteArray</name></member>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15ea27118326006d3829667a400ad23d5d98" kind="enumvalue"><name>String</name></member>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15ea4ee29ca12c7d126654bd0e5275de6135" kind="enumvalue"><name>List</name></member>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15ea26154ea007c65f860de5333a555a56cf" kind="enumvalue"><name>Compound</name></member>
-    <member refid="classendstone_1_1nbt_1_1Tag_1afcbb86d1c0ce69e2807a022df70fa15eaa4cf98abdafab708d30b8d2ae8d57be8" kind="enumvalue"><name>IntArray</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a65420eb0cb900ced2c3de8f8254e97dc" kind="typedef"><name>Storage</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1ab04c2950dae23c1a425c7a4585a937a6" kind="variable"><name>storage_</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1abedf62ed302d3cf47acb7941b9fe27bb" kind="function"><name>Tag</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1affafc53be384e45710193720784a39bb" kind="function"><name>Tag</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1ae3c0767173c3f44eda9072965a6f19a7" kind="function"><name>Tag</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1ae77e6a4db899d7b55c37c1864fe8e41f" kind="function"><name>Tag</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1ac10bcf4ab1892e6855856f5c66989fca" kind="function"><name>Tag</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a2555bccf836f3f3946057702a7674e09" kind="function"><name>Tag</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1aec4f8c3bc4792fb393b19f2ce40f3308" kind="function"><name>Tag</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a23652c58f712d3345e0d195ee1a7788e" kind="function"><name>Tag</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a786ad7553217c35835ddbfde6945165d" kind="function"><name>Tag</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a31e8e9338f8a467e4202f65709741235" kind="function"><name>Tag</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a90525dab2ed6d71682f6ebb0f289447d" kind="function"><name>Tag</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a2016f7f766a9ddd109b7725089aecf2f" kind="function"><name>Tag</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1aba0d5feb9ff784f93ceb4800d7ef12ff" kind="function"><name>type</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a26db240afe64881bc025116ca2d55fa6" kind="function"><name>size</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1aeb19a5459ba7bc4776803729e469185a" kind="function"><name>empty</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1ac3f32f62da173630cbb6b73a67b8b931" kind="function"><name>operator[]</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a8349c0a0cf78f2b111d6be17e497aa53" kind="function"><name>operator[]</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a0fab9542a18eac97d60c75656af0b9ae" kind="function"><name>at</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a6e81b6621dc59412cabce0eb19b2efe7" kind="function"><name>at</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1ac8a9c057f0ecf10c78ef8f37b14ab39b" kind="function"><name>at</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a3e8551954ca4cb61dcb485d25744f1dc" kind="function"><name>at</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a05c00d12448c140e97eb5739c56b7fd3" kind="function"><name>contains</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1adc4ab8c987a9cfb340183a3fdbc95d27" kind="function"><name>get</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a83f398e2c07c505b2b0459f2674b99b2" kind="function"><name>get</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a49a898f3551c9799890922bcbb3fb09a" kind="function"><name>get_if</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a8df34ad15f6774c092a3150d59ceaa4d" kind="function"><name>get_if</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a2c3640f9a0f98e5029c9b2905322784e" kind="friend"><name>operator==</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a7ed7ce4f905d733b1977d9e1d6f60ba1" kind="friend"><name>operator!=</name></member>
   </compound>
   <compound refid="classendstone_1_1Task" kind="class"><name>endstone::Task</name>
     <member refid="classendstone_1_1Task_1ae40a9449683399a480b757911fb30ef4" kind="function"><name>~Task</name></member>
@@ -2383,6 +2472,8 @@
     <member refid="namespaceendstone_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kind="typedef"><name>ScoreEntry</name></member>
     <member refid="namespaceendstone_1abc54c88a21352cadabe5992bea8976d6" kind="typedef"><name>Result</name></member>
+    <member refid="namespaceendstone_1a7b7ab9b56a4154ad3a009298e60619e0" kind="function"><name>operator==</name></member>
+    <member refid="namespaceendstone_1a34cad5224fa76351c8c972f96d3714d4" kind="function"><name>operator!=</name></member>
     <member refid="namespaceendstone_1ad7d0fbae7e1dd31cae1c84965a2f65a8" kind="function"><name>operator==</name></member>
     <member refid="namespaceendstone_1ac40f4f96efb610d56f90c6541fc8b400" kind="function"><name>operator&lt;</name></member>
     <member refid="namespaceendstone_1a96fb3e11970608db1df12feb7a3a829e" kind="function"><name>operator!=</name></member>
@@ -2402,6 +2493,19 @@
     <member refid="detail_8h_1aecf7182420334f85f53fac02ff6ca4c6" kind="function"><name>getServer</name></member>
   </compound>
   <compound refid="namespaceendstone_1_1nbt" kind="namespace"><name>endstone::nbt</name>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28c" kind="enum"><name>Type</name></member>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca87557f11575c0ad78e4e28abedc13b6e" kind="enumvalue"><name>End</name></member>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28caa245c3230debe5c956484ecc6fa93877" kind="enumvalue"><name>Byte</name></member>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca30bb747c98bccdd11b3f89e644c4d0ad" kind="enumvalue"><name>Short</name></member>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca1686a6c336b71b36d77354cea19a8b52" kind="enumvalue"><name>Int</name></member>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca8394f0347c184cf156ac5924dccb773b" kind="enumvalue"><name>Long</name></member>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca22ae0e2b89e5e3d477f988cc36d3272b" kind="enumvalue"><name>Float</name></member>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28cad909d38d705ce75386dd86e611a82f5b" kind="enumvalue"><name>Double</name></member>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca29d83f0080e24c1f4b3975dc9ff9e868" kind="enumvalue"><name>ByteArray</name></member>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca27118326006d3829667a400ad23d5d98" kind="enumvalue"><name>String</name></member>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca4ee29ca12c7d126654bd0e5275de6135" kind="enumvalue"><name>List</name></member>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca26154ea007c65f860de5333a555a56cf" kind="enumvalue"><name>Compound</name></member>
+    <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28caa4cf98abdafab708d30b8d2ae8d57be8" kind="enumvalue"><name>IntArray</name></member>
   </compound>
   <compound refid="namespacefmt" kind="namespace"><name>fmt</name>
   </compound>
@@ -2683,7 +2787,13 @@
   </compound>
   <compound refid="array_8h" kind="file"><name>array.h</name>
   </compound>
+  <compound refid="compound_8h" kind="file"><name>compound.h</name>
+  </compound>
+  <compound refid="list_8h" kind="file"><name>list.h</name>
+  </compound>
   <compound refid="tag_8h" kind="file"><name>tag.h</name>
+  </compound>
+  <compound refid="type_8h" kind="file"><name>type.h</name>
   </compound>
   <compound refid="value_8h" kind="file"><name>value.h</name>
   </compound>

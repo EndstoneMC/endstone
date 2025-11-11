@@ -50,5 +50,10 @@
 * **ServicePriority** ([**endstone**](namespaceendstone.md))
 
 
+## t
+
+* **Type** ([**endstone::nbt**](namespaceendstone_1_1nbt.md))
+
+
 
 

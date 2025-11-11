@@ -11,6 +11,9 @@
 
 
 * `#include "endstone/nbt/array.h"`
+* `#include "endstone/nbt/compound.h"`
+* `#include "endstone/nbt/list.h"`
+* `#include "endstone/nbt/type.h"`
 * `#include "endstone/nbt/value.h"`
 
 

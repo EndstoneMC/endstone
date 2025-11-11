@@ -7,6 +7,7 @@
     <includes local="no">vector</includes>
     <includes local="no">fmt/format.h</includes>
     <includedby refid="tag_8h" local="yes">include/endstone/nbt/tag.h</includedby>
+    <includedby refid="type_8h" local="yes">include/endstone/nbt/type.h</includedby>
     <incdepgraph>
       <node id="1">
         <label>include/endstone/nbt/array.h</label>
@@ -39,10 +40,34 @@
         <link refid="array_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/endstone/nbt/compound.h</label>
+        <link refid="compound_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/endstone/nbt/list.h</label>
+        <link refid="list_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>include/endstone/nbt/tag.h</label>
         <link refid="tag_8h_source"/>
+      </node>
+      <node id="3">
+        <label>include/endstone/nbt/type.h</label>
+        <link refid="type_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1nbt_1_1ArrayTag" prot="public">endstone::nbt::ArrayTag</innerclass>

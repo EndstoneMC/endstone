@@ -112,9 +112,11 @@
 
 * **expiration\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **Escape** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **entries\_** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md))
 * **Efficiency** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **event\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **executor\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
+* **elements\_** ([**endstone::ListTag**](classendstone_1_1ListTag.md))
 * **emote\_id\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **enabled\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 
@@ -386,6 +388,7 @@
 * **Swiftness** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **server\_guid\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **step\_** ([**endstone::Slider**](classendstone_1_1Slider.md))
+* **storage\_** ([**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
 * **soft\_depend** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 
 
@@ -396,7 +399,7 @@
 * **TrialOmen** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **Thorns** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **title\_** ([**endstone::Form**](classendstone_1_1Form.md))
-* **type\_** ([**endstone::Image**](classendstone_1_1Image.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
+* **type\_** ([**endstone::Image**](classendstone_1_1Image.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
 * **Thick** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **TurtleMaster** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 
