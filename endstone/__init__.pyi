@@ -767,23 +767,23 @@ class Skin:
         """
         ...
 
-T = typing.TypeVar("T")
+_T = typing.TypeVar("_T")
 
-class Registry(typing.Generic[T]):
+class Registry(typing.Generic[_T]):
     """
     Presents a registry
     """
-    def get(self, key: str) -> T | None:
+    def get(self, key: str) -> _T | None:
         """
         Get the object by its key.
         """
         ...
-    def get_or_throw(self, key: str) -> T:
+    def get_or_throw(self, key: str) -> _T:
         """
         Get the object by its key or throw if missing.
         """
         ...
-    def __getitem__(self, key: str) -> T: ...
+    def __getitem__(self, key: str) -> _T: ...
     def __iter__(self) -> list: ...
     def __contains__(self, key: str) -> bool: ...
 
