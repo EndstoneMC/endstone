@@ -24,7 +24,7 @@ static_assert(Enchantment::Protection.getNamespace() == "minecraft");
 static_assert(Enchantment::Protection.getKey() == "protection");
 static_assert(Enchantment::Protection == "minecraft:protection");
 
-TEST(Identifier, ParsesWithExplicitNamespace)
+TEST(IdentifierTest, ParsesWithExplicitNamespace)
 {
     constexpr auto id = ItemId{"endstone:custom"};
     EXPECT_EQ(id.getNamespace(), "endstone");
@@ -33,7 +33,7 @@ TEST(Identifier, ParsesWithExplicitNamespace)
     EXPECT_FALSE(id != "endstone:custom");
 }
 
-TEST(Identifier, DefaultsToMinecraftNamespace)
+TEST(IdentifierTest, DefaultsToMinecraftNamespace)
 {
     constexpr auto id = Enchantment::Sharpness;
     EXPECT_EQ(id.getNamespace(), "minecraft");
@@ -43,7 +43,7 @@ TEST(Identifier, DefaultsToMinecraftNamespace)
     EXPECT_FALSE(id == "minecraft:smite");
 }
 
-TEST(Identifier, TwoArgConstructor)
+TEST(IdentifierTest, TwoArgConstructor)
 {
     constexpr auto id = EnchantmentId{"minecraft", "thorns"};
     EXPECT_EQ(id.getNamespace(), "minecraft");
@@ -51,7 +51,7 @@ TEST(Identifier, TwoArgConstructor)
     EXPECT_TRUE(id == "minecraft:thorns");
 }
 
-TEST(Identifier, EqualityAndInequalityBetweenIdentifiers)
+TEST(IdentifierTest, EqualityAndInequalityBetweenIdentifiers)
 {
     constexpr EnchantmentId a{"minecraft", "mending"};
     constexpr EnchantmentId b{"minecraft:mending"};
@@ -61,7 +61,7 @@ TEST(Identifier, EqualityAndInequalityBetweenIdentifiers)
     EXPECT_NE(a, c);
 }
 
-TEST(Identifier, ToStdStringRoundTrip)
+TEST(IdentifierTest, ToStdStringRoundTrip)
 {
     constexpr auto id = Enchantment::SilkTouch;
     std::string s = id;
