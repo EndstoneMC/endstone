@@ -20,6 +20,7 @@
 #include <utility>
 
 #include "bedrock/world/item/item_stack.h"
+#include "endstone/inventory/item_type.h"
 #include "endstone/inventory/meta/item_meta.h"
 
 namespace endstone::core {
@@ -33,9 +34,7 @@ public:
             ItemMetaDetails details;
             if constexpr (std::is_same_v<T, void>) {
                 details.from_item_stack_ = [](const ::ItemStackBase &) -> std::unique_ptr<ItemMeta> { return nullptr; };
-                details.from_item_meta_ = [](const std::string &, const ItemMeta *) -> std::unique_ptr<ItemMeta> {
-                    return nullptr;
-                };
+                details.from_item_meta_ = [](ItemId, const ItemMeta *) -> std::unique_ptr<ItemMeta> { return nullptr; };
             }
             else {
                 details.from_item_stack_ = [](const ::ItemStackBase &stack) -> std::unique_ptr<ItemMeta> {
@@ -43,7 +42,7 @@ public:
                     const auto *tag = stack.hasUserData() ? stack.getUserData() : empty_tag.get();
                     return std::make_unique<T>(*tag);
                 };
-                details.from_item_meta_ = [](const std::string &, const ItemMeta *meta) -> std::unique_ptr<ItemMeta> {
+                details.from_item_meta_ = [](ItemId, const ItemMeta *meta) -> std::unique_ptr<ItemMeta> {
                     return std::make_unique<T>(meta);
                 };
             }
@@ -55,17 +54,17 @@ public:
             return from_item_stack_(item);
         }
 
-        [[nodiscard]] std::unique_ptr<ItemMeta> fromItemMeta(const std::string &type, const ItemMeta *meta) const
+        [[nodiscard]] std::unique_ptr<ItemMeta> fromItemMeta(const ItemId &type, const ItemMeta *meta) const
         {
             return from_item_meta_(type, meta);
         }
 
     private:
         std::function<std::unique_ptr<ItemMeta>(const ::ItemStackBase &)> from_item_stack_;
-        std::function<std::unique_ptr<ItemMeta>(const std::string &, const ItemMeta *)> from_item_meta_;
+        std::function<std::unique_ptr<ItemMeta>(ItemId, const ItemMeta *)> from_item_meta_;
     };
 
-    static ItemMetaDetails &getItemMetaDetails(const std::string &type)
+    static ItemMetaDetails &getItemMetaDetails(const ItemId &type)
     {
         static std::unordered_map<std::string, ItemMetaDetails *> look_up = {
             {"minecraft:air", &Empty},

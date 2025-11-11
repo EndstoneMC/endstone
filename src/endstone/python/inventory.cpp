@@ -94,12 +94,11 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
              "Returns an appropriate item meta for the specified item type.");
 
     item_stack
-        .def(py::init([](const std::string &type, const int amount, const int data) {
-                 auto result = ItemStack::create(type, amount, data);
-                 if (!result) {
-                     throw std::runtime_error(result.error());
+        .def(py::init([](ItemId type, const int amount, const int data) {
+                 if (const auto *item = ItemType::get(type); !item) {
+                     throw std::runtime_error(fmt::format("Invalid item type: {}", type));
                  }
-                 return result.value();
+                 return ItemStack(type, amount, data);
              }),
              py::arg("type"), py::arg("amount") = 1, py::arg("data") = 0)
         .def_property(

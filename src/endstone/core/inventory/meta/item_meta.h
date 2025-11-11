@@ -20,6 +20,7 @@
 
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/item/item.h"
+#include "endstone/inventory/item_type.h"
 #include "endstone/inventory/meta/item_meta.h"
 
 namespace endstone::core {
@@ -28,7 +29,7 @@ public:
     virtual ~ItemMetaExtras() = default;
     [[nodiscard]] virtual bool isEmpty() const = 0;
     virtual void applyToItem(CompoundTag &tag) const = 0;
-    [[nodiscard]] virtual bool applicableTo(const std::string &type) const = 0;
+    [[nodiscard]] virtual bool applicableTo(ItemId type) const = 0;
     [[nodiscard]] virtual bool equalsCommon(const ItemMeta &meta) const = 0;
     [[nodiscard]] virtual bool notUncommon(const ItemMeta &meta) const = 0;
 };
@@ -262,9 +263,9 @@ public:
         }
     }
 
-    [[nodiscard]] bool applicableTo(const std::string &type) const override
+    [[nodiscard]] bool applicableTo(ItemId type) const override
     {
-        return type != "minecraft:air";
+        return type != ItemType::Air;
     }
 
     [[nodiscard]] bool equalsCommon(const ItemMeta &meta) const override

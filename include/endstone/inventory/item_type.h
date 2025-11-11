@@ -86,6 +86,11 @@ public:
     {
         return !(*this == other);
     }
+
+    operator ItemId() const
+    {
+        return getId();
+    }
 };
 }  // namespace endstone
 
