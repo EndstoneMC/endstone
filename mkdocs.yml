@@ -217,6 +217,7 @@ nav:
           - Level: reference/python/level.md
           - Inventory: reference/python/inventory.md
           - Map: reference/python/map.md
+          - Named Binary Tag (NBT): reference/python/nbt.md
           - Permissions: reference/python/permissions.md
           - Plugin: reference/python/plugin.md
           - Potion: reference/python/potion.md

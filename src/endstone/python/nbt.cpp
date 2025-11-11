@@ -162,7 +162,5 @@ void init_nbt(py::module_ &m)
     array_tag<ByteArrayTag>(m, "ByteArrayTag", py::buffer_protocol());
     value_tag<StringTag>(m, "StringTag");
     array_tag<IntArrayTag>(m, "IntArrayTag");
-
-    auto tag = py::class_<nbt::Tag>(m, "Tag");
 }
 }  // namespace endstone::python
