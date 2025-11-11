@@ -25,8 +25,11 @@ namespace endstone {
 using ItemId = Identifier<ItemType>;
 class ItemType {
 public:
+    static constexpr auto Air = ItemId::minecraft("air");
+
     ENDSTONE_REGISTRY_TYPE(ItemType)
     virtual ~ItemType() = default;
+
     /**
      * @brief Return the identifier of this item type.
      *
@@ -64,12 +67,12 @@ public:
      */
     [[nodiscard]] virtual int getMaxDurability() const = 0;
 
-    bool operator==(const std::string_view other) const
+    bool operator==(const ItemId &other) const
     {
         return getId() == other;
     }
 
-    bool operator!=(const std::string_view other) const
+    bool operator!=(const ItemId &other) const
     {
         return !(*this == other);
     }
