@@ -153,23 +153,6 @@ static void array_tag(py::module_ &m, const char *name, Args &&...args)
 
 void init_nbt(py::module_ &m)
 {
-    auto tag = py::class_<nbt::Tag>(m, "Tag");
-    py::native_enum<nbt::Tag::Type>(tag, "Type", "enum.IntEnum")
-        .value("END", nbt::Tag::Type::End)
-        .value("BYTE", nbt::Tag::Type::Byte)
-        .value("SHORT", nbt::Tag::Type::Short)
-        .value("INT", nbt::Tag::Type::Int)
-        .value("LONG", nbt::Tag::Type::Long)
-        .value("FLOAT", nbt::Tag::Type::Float)
-        .value("DOUBLE", nbt::Tag::Type::Double)
-        .value("BYTE_ARRAY", nbt::Tag::Type::ByteArray)
-        .value("STRING", nbt::Tag::Type::String)
-        .value("LIST", nbt::Tag::Type::List)
-        .value("COMPOUND", nbt::Tag::Type::Compound)
-        .value("INT_ARRAY", nbt::Tag::Type::IntArray)
-        .export_values()
-        .finalize();
-
     value_tag<ByteTag>(m, "ByteTag");
     value_tag<ShortTag>(m, "ShortTag");
     value_tag<IntTag>(m, "IntTag");
@@ -179,5 +162,7 @@ void init_nbt(py::module_ &m)
     array_tag<ByteArrayTag>(m, "ByteArrayTag", py::buffer_protocol());
     value_tag<StringTag>(m, "StringTag");
     array_tag<IntArrayTag>(m, "IntArrayTag");
+
+    auto tag = py::class_<nbt::Tag>(m, "Tag");
 }
 }  // namespace endstone::python
