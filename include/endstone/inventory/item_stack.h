@@ -45,8 +45,7 @@ public:
         }
     }
 
-    ItemStack(const ItemStack &stack)
-        : type_(stack.getType().getId()), amount_(stack.getAmount()), data_(stack.getData())
+    ItemStack(const ItemStack &stack) : type_(stack.getType()), amount_(stack.getAmount()), data_(stack.getData())
     {
         if (stack.hasItemMeta()) {
             ItemStack::setItemMeta(stack.getItemMeta().get());
@@ -68,12 +67,9 @@ public:
      *
      * @return Type of the items in this stack
      */
-    [[nodiscard]] virtual const ItemType &getType() const
+    [[nodiscard]] virtual ItemId getType() const
     {
-        if (const auto *item = ItemType::get(type_); item != nullptr) {
-            return *item;
-        }
-        return *ItemType::get(ItemType::Air);
+        return type_;
     }
 
     /**
@@ -141,7 +137,7 @@ public:
      */
     [[nodiscard]] virtual std::string getTranslationKey() const
     {
-        return getType().getTranslationKey(getData());
+        return getItemType().getTranslationKey(getData());
     }
 
     /**
@@ -151,7 +147,7 @@ public:
      */
     [[nodiscard]] virtual int getMaxStackSize() const
     {
-        return getType().getMaxStackSize();
+        return getItemType().getMaxStackSize();
     }
 
     bool operator==(const ItemStack &other) const
@@ -221,6 +217,15 @@ public:
     }
 
 private:
+    const ItemType &getItemType() const
+    {
+        const auto *type = ItemType::get(getType());
+        if (type == nullptr) {
+            type = ItemType::get(ItemType::Air);
+        }
+        return *type;
+    }
+
     bool setItemMeta0(const ItemMeta *meta, const std::string &type)
     {
         if (!meta) {
@@ -242,7 +247,6 @@ private:
     int data_ = 0;
     std::unique_ptr<ItemMeta> meta_ = nullptr;
 };
-
 }  // namespace endstone
 
 template <>

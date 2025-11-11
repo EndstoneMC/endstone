@@ -29,7 +29,7 @@ protected:
     [[nodiscard]] bool isEndstoneItemStack() const override;
 
 public:
-    [[nodiscard]] const ItemType &getType() const override;
+    [[nodiscard]] ItemId getType() const override;
     Result<void> setType(ItemId type) override;
     [[nodiscard]] int getAmount() const override;
     Result<void> setAmount(int amount) override;
@@ -45,7 +45,7 @@ public:
 
     static ::ItemStack toMinecraft(const ItemStack *item);
     static std::unique_ptr<EndstoneItemStack> fromMinecraft(const ::ItemStack &item);
-    static const ItemType &getType(const ItemStackBase *item);
+    static ItemId getType(const ItemStackBase *item);
     static std::unique_ptr<ItemMeta> getItemMeta(const ItemStackBase *item);
     static bool hasItemMeta(const ItemStackBase *item);
     static bool setItemMeta(ItemStackBase *item, const ItemMeta *meta);
