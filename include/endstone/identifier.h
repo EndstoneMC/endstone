@@ -70,6 +70,16 @@ public:
         return !(*this == other);
     }
 
+    constexpr bool operator==(std::string_view other) const noexcept
+    {
+        return *this == Identifier{other};
+    }
+
+    constexpr bool operator!=(std::string_view other) const noexcept
+    {
+        return !(*this == other);
+    }
+
     operator std::string() const
     {
         return fmt::format("{}:{}", namespace_, key_);
