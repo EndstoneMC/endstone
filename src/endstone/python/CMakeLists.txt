@@ -21,6 +21,7 @@ pybind11_add_module(_python MODULE
         lang.cpp
         level.cpp
         map.cpp
+        nbt.cpp
         permissions.cpp
         plugin.cpp
         potion.cpp

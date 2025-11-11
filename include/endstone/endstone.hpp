@@ -153,6 +153,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "map/map_renderer.h"
 #include "map/map_view.h"
 #include "message.h"
+#include "nbt/tag.h"
 #include "offline_player.h"
 #include "permissions/permissible.h"
 #include "permissions/permission.h"
