@@ -96,7 +96,11 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     item_stack
         .def(py::init([](ItemId type, const int amount, const int data) {
                  if (const auto *item = ItemType::get(type); !item) {
-                     throw std::runtime_error(fmt::format("Invalid item type: {}", type));
+                     throw std::runtime_error(fmt::format("Unknown item type: {}", type));
+                 }
+                 if (amount < 1 || amount > 0xff) {
+                     throw std::runtime_error(
+                         fmt::format("Item stack amount must be between 1 to 255, got {}.", amount));
                  }
                  return ItemStack(type, amount, data);
              }),

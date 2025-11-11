@@ -274,13 +274,12 @@ public:
     // Python -> C++
     bool load(handle src, bool convert)
     {
-        make_caster<std::string> str_caster;
+        make_caster<std::string_view> str_caster;
         if (!str_caster.load(src, convert)) {
             return false;
         }
         try {
-            const std::string &s = static_cast<std::string &>(str_caster);
-            value = s;
+            value = static_cast<std::string_view &>(str_caster);
             return true;
         }
         catch (const std::exception &e) {
