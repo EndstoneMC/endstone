@@ -17,6 +17,35 @@
 namespace py = pybind11;
 
 namespace endstone::python {
+template <typename T, typename... Args>
+auto value_tag(py::module &m, const char *name, Args &&...args)
+{
+    using value_type = T::value_type;
+    auto cls = py::class_<T>(m, name, std::forward<Args>(args)...)
+                   .def(py::init<>())
+                   .def(py::init<const value_type &>(), py::arg("value"))
+                   .def_property_readonly("value", &T::value)
+                   .def(py::self == py::self)
+                   .def(py::self != py::self)
+                   .def(py::self == value_type())
+                   .def(py::self != value_type())
+                   .def(value_type() == py::self)
+                   .def(value_type() != py::self)
+                   .def("__str__", [](const T &self) { return fmt::format("{}", self); })
+                   .def("__repr__", [](const py::object &self) {
+                       auto name = py::str(py::type::of(self).attr("__name__"));
+                       return fmt::format("{}({})", name.cast<std::string>(), self.cast<const T &>().value());
+                   });
+
+    if constexpr (std::is_integral_v<value_type>) {
+        cls.def("__int__", [](const T &self) { return static_cast<py::int_>(self.value()); });
+    }
+    if constexpr (std::is_floating_point_v<value_type>) {
+        cls.def("__float__", [](const T &self) { return static_cast<py::float_>(self.value()); });
+    }
+    return cls;
+}
+
 void init_nbt(py::module_ &m)
 {
     auto tag = py::class_<nbt::Tag>(m, "Tag");
@@ -35,5 +64,13 @@ void init_nbt(py::module_ &m)
         .value("INT_ARRAY", nbt::Tag::Type::IntArray)
         .export_values()
         .finalize();
+
+    value_tag<ByteTag>(m, "ByteTag");
+    value_tag<ShortTag>(m, "ShortTag");
+    value_tag<IntTag>(m, "IntTag");
+    value_tag<LongTag>(m, "LongTag");
+    value_tag<FloatTag>(m, "FloatTag");
+    value_tag<DoubleTag>(m, "DoubleTag");
+    value_tag<StringTag>(m, "StringTag");
 }
 }  // namespace endstone::python

@@ -14,7 +14,19 @@
 
 #pragma once
 
-namespace endstone::nbt {
+#include "endstone/nbt/value.h"
+
+namespace endstone {
+
+using ByteTag = nbt::ValueTag<std::uint8_t>;
+using ShortTag = nbt::ValueTag<std::int16_t>;
+using IntTag = nbt::ValueTag<std::int32_t>;
+using LongTag = nbt::ValueTag<std::int64_t>;
+using FloatTag = nbt::ValueTag<float>;
+using DoubleTag = nbt::ValueTag<double>;
+using StringTag = nbt::ValueTag<std::string>;
+
+namespace nbt {
 class Tag {
 public:
     enum class Type : std::uint8_t {
@@ -32,4 +44,5 @@ public:
         IntArray = 11,
     };
 };
-}  // namespace endstone::nbt
+}  // namespace nbt
+}  // namespace endstone
