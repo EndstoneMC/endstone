@@ -30,7 +30,7 @@ static std::size_t normalize_index(py::ssize_t i, std::size_t n)
 }
 
 template <typename T, typename... Args>
-auto value_tag(py::module &m, const char *name, Args &&...args)
+auto bind_value_tag(py::module &m, const char *name, Args &&...args)
 {
     using value_type = T::value_type;
     auto cls = py::class_<T, nbt::TagBase>(m, name, std::forward<Args>(args)...)
@@ -59,7 +59,7 @@ auto value_tag(py::module &m, const char *name, Args &&...args)
 }
 
 template <typename T, typename... Args>
-static void array_tag(py::module_ &m, const char *name, Args &&...args)
+static void bind_array_tag(py::module_ &m, const char *name, Args &&...args)
 {
     auto cls = py::class_<T, nbt::TagBase>(m, name, std::forward<Args>(args)...);
     using value_type = T::value_type;
@@ -109,6 +109,7 @@ static void array_tag(py::module_ &m, const char *name, Args &&...args)
 
     // --- Python sequence protocol ---
     cls.def("__len__", [](const T &self) { return self.size(); })
+        .def("__bool__", [](const T &self) { return !self.empty(); })
         .def("__getitem__",
              [=](const T &self, py::ssize_t i) -> value_type {
                  auto n = self.size();
@@ -154,19 +155,8 @@ static void array_tag(py::module_ &m, const char *name, Args &&...args)
     }
 }
 
-void init_nbt(py::module_ &m)
+static void bind_list_tag(py::module &m)
 {
-    py::class_<nbt::TagBase>(m, "Tag");
-    value_tag<ByteTag>(m, "ByteTag");
-    value_tag<ShortTag>(m, "ShortTag");
-    value_tag<IntTag>(m, "IntTag");
-    value_tag<LongTag>(m, "LongTag");
-    value_tag<FloatTag>(m, "FloatTag");
-    value_tag<DoubleTag>(m, "DoubleTag");
-    array_tag<ByteArrayTag>(m, "ByteArrayTag", py::buffer_protocol());
-    value_tag<StringTag>(m, "StringTag");
-    array_tag<IntArrayTag>(m, "IntArrayTag");
-
     py::class_<ListTag, nbt::TagBase>(m, "ListTag")
         .def(py::init<>())
         .def(py::init([](py::iterable iter) {
@@ -233,7 +223,89 @@ void init_nbt(py::module_ &m)
         .def("empty", &ListTag::empty)
         .def(py::self == py::self)
         .def(py::self != py::self);
+}
 
-    py::class_<CompoundTag, nbt::TagBase>(m, "CompoundTag");
+static void bind_compound_tag(py::module &m)
+{
+    py::class_<CompoundTag, nbt::TagBase>(m, "CompoundTag")
+        .def(py::init<>())
+        .def(py::init([](py::dict d) {
+                 CompoundTag c;
+                 for (auto item : d) {
+                     auto key = py::cast<std::string>(item.first);
+                     auto val = py::cast<nbt::Tag>(item.second);
+                     c.insert_or_assign(key, std::move(val));
+                 }
+                 return c;
+             }),
+             py::arg("mapping "))
+        .def("__len__", &CompoundTag::size)
+        .def("__bool__", [](const CompoundTag &self) { return !self.empty(); })
+        .def("__contains__", &CompoundTag::contains, py::arg("key"))
+        .def(
+            "__getitem__", [](CompoundTag &self, const std::string &key) -> nbt::Tag & { return self.at(key); },
+            py::return_value_policy::reference_internal)
+        .def("__setitem__", [](CompoundTag &self, const std::string &key,
+                               const nbt::Tag &value) { self.insert_or_assign(key, value); })
+        .def(
+            "setdefault",
+            [](CompoundTag &self, const std::string &key, const nbt::Tag &default_value) -> nbt::Tag & {
+                if (!self.contains(key)) {
+                    self.insert_or_assign(key, default_value);
+                }
+                return self.at(key);
+            },
+            py::return_value_policy::reference_internal, py::arg("key"), py::arg("default"))
+        .def("clear", &CompoundTag::clear)
+        .def(
+            "pop",
+            [](CompoundTag &self, const std::string &key) -> py::object {
+                if (self.contains(key)) {
+                    return py::cast(self.erase(key));
+                }
+                throw py::key_error("key not found: " + key);
+            },
+            py::arg("key"))
+        .def(
+            "pop",
+            [](CompoundTag &self, const std::string &key, py::object default_value) -> py::object {
+                if (self.contains(key)) {
+                    return py::cast(self.erase(key));
+                }
+                return default_value;
+            },
+            py::arg("key"), py::arg("default") = py::none())
+        .def(
+            "__iter__", [](CompoundTag &self) { return py::make_key_iterator(self.begin(), self.end()); },
+            py::keep_alive<0, 1>())
+        .def(
+            "keys", [](CompoundTag &self) { return py::make_key_iterator(self.begin(), self.end()); },
+            py::keep_alive<0, 1>())
+        .def(
+            "values", [](CompoundTag &self) { return py::make_value_iterator(self.begin(), self.end()); },
+            py::keep_alive<0, 1>())
+        .def(
+            "items", [](CompoundTag &self) { return py::make_iterator(self.begin(), self.end()); },
+            py::keep_alive<0, 1>())
+        .def(py::self == py::self)
+        .def(py::self != py::self)
+        .def("__str__", [](const CompoundTag &self) { return fmt::format("{}", self); })
+        .def("__repr__", [](const CompoundTag &self) { return fmt::format("CompoundTag({})", self); });
+}
+
+void init_nbt(py::module_ &m)
+{
+    (void)py::class_<nbt::TagBase>(m, "Tag");
+    bind_value_tag<ByteTag>(m, "ByteTag");
+    bind_value_tag<ShortTag>(m, "ShortTag");
+    bind_value_tag<IntTag>(m, "IntTag");
+    bind_value_tag<LongTag>(m, "LongTag");
+    bind_value_tag<FloatTag>(m, "FloatTag");
+    bind_value_tag<DoubleTag>(m, "DoubleTag");
+    bind_array_tag<ByteArrayTag>(m, "ByteArrayTag", py::buffer_protocol());
+    bind_value_tag<StringTag>(m, "StringTag");
+    bind_array_tag<IntArrayTag>(m, "IntArrayTag");
+    bind_list_tag(m);
+    bind_compound_tag(m);
 }
 }  // namespace endstone::python

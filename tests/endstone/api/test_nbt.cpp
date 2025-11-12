@@ -88,7 +88,7 @@ TEST(NbtArrayTag, BracedInitAndMutationAndEquality)
     EXPECT_FALSE(i1 == i3);
 }
 
-TEST(NbtListTag, HomogeneityAndRetroFillAndGrowth)
+TEST(NbtListTag, Homogeneity)
 {
     // Start as empty list
     nbt::Tag lst = ListTag{};
