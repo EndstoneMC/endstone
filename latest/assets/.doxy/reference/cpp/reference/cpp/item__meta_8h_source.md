@@ -66,7 +66,7 @@ public:
 
     [[nodiscard]] virtual int getEnchantLevel(EnchantmentId id) const = 0;
 
-    [[nodiscard]] virtual std::unordered_map<std::string, int> getEnchants() const = 0;
+    [[nodiscard]] virtual std::unordered_map<const Enchantment *, int> getEnchants() const = 0;
 
     [[nodiscard]] virtual bool addEnchant(EnchantmentId id, int level, bool force) = 0;
 

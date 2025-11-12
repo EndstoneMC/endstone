@@ -10,6 +10,7 @@
 
 
 
+* `#include <iostream>`
 * `#include "endstone/nbt/array.h"`
 * `#include "endstone/nbt/compound.h"`
 * `#include "endstone/nbt/list.h"`
@@ -41,6 +42,7 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Tag**](classendstone_1_1nbt_1_1Tag.md) <br> |
+| struct | [**formatter&lt; endstone::nbt::Tag &gt;**](structfmt_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4.md) &lt;&gt;<br> |
 
 
 

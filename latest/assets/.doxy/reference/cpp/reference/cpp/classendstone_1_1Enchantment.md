@@ -102,6 +102,11 @@
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxLevel**](#function-getmaxlevel) () const = 0<br>_Gets the maximum level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _may become._ |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getStartLevel**](#function-getstartlevel) () const = 0<br>_Gets the level that this_ [_**Enchantment**_](classendstone_1_1Enchantment.md) _should start at (also known as minimum level)._ |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
+|   | [**operator EnchantmentId**](#function-operator-enchantmentid) () const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**EnchantmentId**](classendstone_1_1Identifier.md) & other) const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**Enchantment**](classendstone_1_1Enchantment.md) & other) const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_2) ([**const**](classendstone_1_1Identifier.md) [**EnchantmentId**](classendstone_1_1Identifier.md) & other) const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_3) ([**const**](classendstone_1_1Identifier.md) [**Enchantment**](classendstone_1_1Enchantment.md) & other) const<br> |
 | virtual  | [**~Enchantment**](#function-enchantment) () = default<br> |
 
 
@@ -878,6 +883,79 @@ the translation key
 
 
         
+
+<hr>
+
+
+
+### function operator EnchantmentId 
+
+```C++
+inline endstone::Enchantment::operator EnchantmentId () const
+```
+
+
+
+
+<hr>
+
+
+
+### function operator!= 
+
+```C++
+inline bool endstone::Enchantment::operator!= (
+    const  EnchantmentId & other
+) const
+```
+
+
+
+
+<hr>
+
+
+
+### function operator!= 
+
+```C++
+inline bool endstone::Enchantment::operator!= (
+    const  Enchantment & other
+) const
+```
+
+
+
+
+<hr>
+
+
+
+### function operator== 
+
+```C++
+inline bool endstone::Enchantment::operator== (
+    const  EnchantmentId & other
+) const
+```
+
+
+
+
+<hr>
+
+
+
+### function operator== 
+
+```C++
+inline bool endstone::Enchantment::operator== (
+    const  Enchantment & other
+) const
+```
+
+
+
 
 <hr>
 

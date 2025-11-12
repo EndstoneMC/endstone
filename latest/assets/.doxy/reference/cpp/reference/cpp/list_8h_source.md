@@ -45,7 +45,8 @@ public:
 
     // ---- ctors ----
     ListTag() = default;
-    template<typename T>
+    template <typename T>
+        requires(!std::is_same_v<std::remove_cvref_t<T>, nbt::Tag>)
     ListTag(std::initializer_list<T> init);
 
     // ---- capacity ----
@@ -57,7 +58,7 @@ public:
 
     // ---- element access ----
     value_type &at(size_type i);
-    const value_type &at(size_type i) const;
+    [[nodiscard]] const value_type &at(size_type i) const;
     value_type &operator[](size_type i);
     const value_type &operator[](size_type i) const;
 
@@ -74,10 +75,10 @@ public:
     // ---- iteration ----
     iterator begin() noexcept;
     iterator end() noexcept;
-    const_iterator begin() const noexcept;
-    const_iterator end() const noexcept;
-    const_iterator cbegin() const noexcept;
-    const_iterator cend() const noexcept;
+    [[nodiscard]] const_iterator begin() const noexcept;
+    [[nodiscard]] const_iterator end() const noexcept;
+    [[nodiscard]] const_iterator cbegin() const noexcept;
+    [[nodiscard]] const_iterator cend() const noexcept;
 
     // ---- equality ----
     friend bool operator==(const ListTag &a, const ListTag &b) noexcept;

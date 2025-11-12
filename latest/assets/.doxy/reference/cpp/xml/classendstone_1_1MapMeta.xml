@@ -192,7 +192,7 @@
       <member refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getDamage</name></member>
       <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getDisplayName</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4ada54133ca59faa19c55d38b3be845f" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getEnchantLevel</name></member>
-      <member refid="classendstone_1_1ItemMeta_1ae56eecf8308719f9a2571088c956981f" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getEnchants</name></member>
+      <member refid="classendstone_1_1ItemMeta_1afe5fbc4ed421b33e455d1e2e679d76e5" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getEnchants</name></member>
       <member refid="classendstone_1_1ItemMeta_1a170ca4e3a87a7a590ba03019129793d1" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getLore</name></member>
       <member refid="classendstone_1_1MapMeta_1a7061bbab491883854847dba81ca9b858" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getMapId</name></member>
       <member refid="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getMapView</name></member>

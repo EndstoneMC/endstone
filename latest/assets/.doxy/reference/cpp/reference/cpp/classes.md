@@ -165,6 +165,8 @@
 ([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::Location &gt;**](structfmt_1_1formatter_3_01endstone_1_1Location_01_4.md)
 ([**fmt**](namespacefmt.md))
+* [**formatter&lt; endstone::nbt::Tag &gt;**](structfmt_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4.md)
+([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::nbt::ValueTag&lt; T &gt; &gt;**](structfmt_1_1formatter_3_01endstone_1_1nbt_1_1ValueTag_3_01T_01_4_01_4.md)
 ([**fmt**](namespacefmt.md))
 * [**formatter&lt; endstone::Vector &gt;**](structfmt_1_1formatter_3_01endstone_1_1Vector_01_4.md)

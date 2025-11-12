@@ -61,35 +61,31 @@
 
 | Type | Name |
 | ---: | :--- |
-|   | [**CompoundTag**](#function-compoundtag-13) () <br> |
-|   | [**CompoundTag**](#function-compoundtag-23) (std::initializer\_list&lt; std::pair&lt; std::string, [**nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) &gt; &gt; init) <br> |
-|   | [**CompoundTag**](#function-compoundtag-33) ([**It**](classendstone_1_1Identifier.md) first, [**It**](classendstone_1_1Identifier.md) last) <br> |
-|  [**nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-12) (std::string\_view key) <br> |
-|  [**const**](classendstone_1_1Identifier.md) [**nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-22) (std::string\_view key) const<br> |
+|   | [**CompoundTag**](#function-compoundtag-12) () = default<br> |
+|   | [**CompoundTag**](#function-compoundtag-22) (std::initializer\_list&lt; std::pair&lt; key\_type, [**value\_type**](classendstone_1_1nbt_1_1Tag.md) &gt; &gt; init) <br> |
+|  [**value\_type**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-12) ([**const**](classendstone_1_1Identifier.md) key\_type & key) <br> |
+|  [**const**](classendstone_1_1Identifier.md) [**value\_type**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-22) (key\_type key) const<br> |
 |  iterator | [**begin**](#function-begin-12) () noexcept<br> |
 |  const\_iterator | [**begin**](#function-begin-22) () noexcept const<br> |
 |  const\_iterator | [**cbegin**](#function-cbegin) () noexcept const<br> |
 |  const\_iterator | [**cend**](#function-cend) () noexcept const<br> |
 |  [**void**](classendstone_1_1Identifier.md) | [**clear**](#function-clear) () noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**contains**](#function-contains) (std::string\_view key) noexcept const<br> |
-|  size\_type | [**count**](#function-count) (std::string\_view key) noexcept const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**contains**](#function-contains) ([**const**](classendstone_1_1Identifier.md) key\_type & key) noexcept const<br> |
+|  std::pair&lt; iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**emplace**](#function-emplace) ([**Args**](classendstone_1_1Identifier.md) &&... args) <br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**empty**](#function-empty) () noexcept const<br> |
 |  iterator | [**end**](#function-end-12) () noexcept<br> |
 |  const\_iterator | [**end**](#function-end-22) () noexcept const<br> |
 |  iterator | [**erase**](#function-erase-13) (const\_iterator pos) <br> |
-|  size\_type | [**erase**](#function-erase-23) (std::string\_view key) <br> |
+|  size\_type | [**erase**](#function-erase-23) ([**const**](classendstone_1_1Identifier.md) key\_type & key) <br> |
 |  iterator | [**erase**](#function-erase-33) (const\_iterator first, const\_iterator last) <br> |
-|  std::pair&lt; iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**insert**](#function-insert-13) ([**const**](classendstone_1_1Identifier.md) std::pair&lt; [**const**](classendstone_1_1Identifier.md) std::string, [**nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) &gt; & v) <br> |
-|  std::pair&lt; iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**insert**](#function-insert-23) (std::pair&lt; [**const**](classendstone_1_1Identifier.md) std::string, [**nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) &gt; && v) <br> |
-|  std::pair&lt; iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**insert**](#function-insert-33) ([**P**](classendstone_1_1Identifier.md) && v) <br> |
-|  std::pair&lt; iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**insert\_or\_assign**](#function-insert_or_assign) (std::string key, [**M**](classendstone_1_1Identifier.md) && obj) <br> |
+|  std::pair&lt; iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**insert**](#function-insert) ([**P**](classendstone_1_1Identifier.md) && v) <br> |
+|  std::pair&lt; iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**insert\_or\_assign**](#function-insert_or_assign) ([**const**](classendstone_1_1Identifier.md) key\_type & key, [**M**](classendstone_1_1Identifier.md) && obj) <br> |
 |  [**void**](classendstone_1_1Identifier.md) | [**merge**](#function-merge-12) ([**CompoundTag**](classendstone_1_1CompoundTag.md) & source) <br> |
 |  [**void**](classendstone_1_1Identifier.md) | [**merge**](#function-merge-22) ([**CompoundTag**](classendstone_1_1CompoundTag.md) && source) <br> |
-|  [**nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**operator[]**](#function-operator) ([**const**](classendstone_1_1Identifier.md) std::string & key) <br> |
-|  [**nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**operator[]**](#function-operator_1) (std::string && key) <br> |
+|  [**value\_type**](classendstone_1_1nbt_1_1Tag.md) & | [**operator[]**](#function-operator) ([**const**](classendstone_1_1Identifier.md) key\_type & key) <br> |
 |  size\_type | [**size**](#function-size) () noexcept const<br> |
 |  [**void**](classendstone_1_1Identifier.md) | [**swap**](#function-swap) ([**CompoundTag**](classendstone_1_1CompoundTag.md) & other) noexcept<br> |
-|  std::pair&lt; iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**try\_emplace**](#function-try_emplace) (std::string key, [**Args**](classendstone_1_1Identifier.md) &&... ctor\_args) <br> |
+|  std::pair&lt; iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**try\_emplace**](#function-try_emplace) ([**const**](classendstone_1_1Identifier.md) key\_type & key, [**Args**](classendstone_1_1Identifier.md) &&... args) <br> |
 
 
 
@@ -203,10 +199,10 @@ using endstone::CompoundTag::value_type =  nbt::Tag;
 
 
 
-### function CompoundTag [1/3]
+### function CompoundTag [1/2]
 
 ```C++
-endstone::CompoundTag::CompoundTag () 
+endstone::CompoundTag::CompoundTag () = default
 ```
 
 
@@ -216,28 +212,11 @@ endstone::CompoundTag::CompoundTag ()
 
 
 
-### function CompoundTag [2/3]
+### function CompoundTag [2/2]
 
 ```C++
 endstone::CompoundTag::CompoundTag (
-    std::initializer_list< std::pair< std::string, nbt::Tag > > init
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function CompoundTag [3/3]
-
-```C++
-template<class  It>
-endstone::CompoundTag::CompoundTag (
-    It first,
-    It last
+    std::initializer_list< std::pair< key_type, value_type > > init
 ) 
 ```
 
@@ -251,8 +230,8 @@ endstone::CompoundTag::CompoundTag (
 ### function at [1/2]
 
 ```C++
-nbt::Tag & endstone::CompoundTag::at (
-    std::string_view key
+inline value_type & endstone::CompoundTag::at (
+    const key_type & key
 ) 
 ```
 
@@ -266,8 +245,8 @@ nbt::Tag & endstone::CompoundTag::at (
 ### function at [2/2]
 
 ```C++
-const  nbt::Tag & endstone::CompoundTag::at (
-    std::string_view key
+inline const  value_type & endstone::CompoundTag::at (
+    key_type key
 ) const
 ```
 
@@ -281,7 +260,7 @@ const  nbt::Tag & endstone::CompoundTag::at (
 ### function begin [1/2]
 
 ```C++
-iterator endstone::CompoundTag::begin () noexcept
+inline iterator endstone::CompoundTag::begin () noexcept
 ```
 
 
@@ -294,7 +273,7 @@ iterator endstone::CompoundTag::begin () noexcept
 ### function begin [2/2]
 
 ```C++
-const_iterator endstone::CompoundTag::begin () noexcept const
+inline const_iterator endstone::CompoundTag::begin () noexcept const
 ```
 
 
@@ -307,7 +286,7 @@ const_iterator endstone::CompoundTag::begin () noexcept const
 ### function cbegin 
 
 ```C++
-const_iterator endstone::CompoundTag::cbegin () noexcept const
+inline const_iterator endstone::CompoundTag::cbegin () noexcept const
 ```
 
 
@@ -320,7 +299,7 @@ const_iterator endstone::CompoundTag::cbegin () noexcept const
 ### function cend 
 
 ```C++
-const_iterator endstone::CompoundTag::cend () noexcept const
+inline const_iterator endstone::CompoundTag::cend () noexcept const
 ```
 
 
@@ -333,7 +312,7 @@ const_iterator endstone::CompoundTag::cend () noexcept const
 ### function clear 
 
 ```C++
-void endstone::CompoundTag::clear () noexcept
+inline void endstone::CompoundTag::clear () noexcept
 ```
 
 
@@ -346,8 +325,8 @@ void endstone::CompoundTag::clear () noexcept
 ### function contains 
 
 ```C++
-bool endstone::CompoundTag::contains (
-    std::string_view key
+inline bool endstone::CompoundTag::contains (
+    const key_type & key
 ) noexcept const
 ```
 
@@ -358,12 +337,13 @@ bool endstone::CompoundTag::contains (
 
 
 
-### function count 
+### function emplace 
 
 ```C++
-size_type endstone::CompoundTag::count (
-    std::string_view key
-) noexcept const
+template<class... Args>
+std::pair< iterator, bool > endstone::CompoundTag::emplace (
+    Args &&... args
+) 
 ```
 
 
@@ -376,7 +356,7 @@ size_type endstone::CompoundTag::count (
 ### function empty 
 
 ```C++
-bool endstone::CompoundTag::empty () noexcept const
+inline bool endstone::CompoundTag::empty () noexcept const
 ```
 
 
@@ -389,7 +369,7 @@ bool endstone::CompoundTag::empty () noexcept const
 ### function end [1/2]
 
 ```C++
-iterator endstone::CompoundTag::end () noexcept
+inline iterator endstone::CompoundTag::end () noexcept
 ```
 
 
@@ -402,7 +382,7 @@ iterator endstone::CompoundTag::end () noexcept
 ### function end [2/2]
 
 ```C++
-const_iterator endstone::CompoundTag::end () noexcept const
+inline const_iterator endstone::CompoundTag::end () noexcept const
 ```
 
 
@@ -415,7 +395,7 @@ const_iterator endstone::CompoundTag::end () noexcept const
 ### function erase [1/3]
 
 ```C++
-iterator endstone::CompoundTag::erase (
+inline iterator endstone::CompoundTag::erase (
     const_iterator pos
 ) 
 ```
@@ -430,8 +410,8 @@ iterator endstone::CompoundTag::erase (
 ### function erase [2/3]
 
 ```C++
-size_type endstone::CompoundTag::erase (
-    std::string_view key
+inline size_type endstone::CompoundTag::erase (
+    const key_type & key
 ) 
 ```
 
@@ -445,7 +425,7 @@ size_type endstone::CompoundTag::erase (
 ### function erase [3/3]
 
 ```C++
-iterator endstone::CompoundTag::erase (
+inline iterator endstone::CompoundTag::erase (
     const_iterator first,
     const_iterator last
 ) 
@@ -458,37 +438,7 @@ iterator endstone::CompoundTag::erase (
 
 
 
-### function insert [1/3]
-
-```C++
-std::pair< iterator, bool > endstone::CompoundTag::insert (
-    const std::pair< const std::string, nbt::Tag > & v
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function insert [2/3]
-
-```C++
-std::pair< iterator, bool > endstone::CompoundTag::insert (
-    std::pair< const std::string, nbt::Tag > && v
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function insert [3/3]
+### function insert 
 
 ```C++
 template<class  P>
@@ -509,7 +459,7 @@ std::pair< iterator, bool > endstone::CompoundTag::insert (
 ```C++
 template<class  M>
 std::pair< iterator, bool > endstone::CompoundTag::insert_or_assign (
-    std::string key,
+    const key_type & key,
     M && obj
 ) 
 ```
@@ -524,7 +474,7 @@ std::pair< iterator, bool > endstone::CompoundTag::insert_or_assign (
 ### function merge [1/2]
 
 ```C++
-void endstone::CompoundTag::merge (
+inline void endstone::CompoundTag::merge (
     CompoundTag & source
 ) 
 ```
@@ -539,7 +489,7 @@ void endstone::CompoundTag::merge (
 ### function merge [2/2]
 
 ```C++
-void endstone::CompoundTag::merge (
+inline void endstone::CompoundTag::merge (
     CompoundTag && source
 ) 
 ```
@@ -554,23 +504,8 @@ void endstone::CompoundTag::merge (
 ### function operator[] 
 
 ```C++
-nbt::Tag & endstone::CompoundTag::operator[] (
-    const std::string & key
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function operator[] 
-
-```C++
-nbt::Tag & endstone::CompoundTag::operator[] (
-    std::string && key
+inline value_type & endstone::CompoundTag::operator[] (
+    const key_type & key
 ) 
 ```
 
@@ -584,7 +519,7 @@ nbt::Tag & endstone::CompoundTag::operator[] (
 ### function size 
 
 ```C++
-size_type endstone::CompoundTag::size () noexcept const
+inline size_type endstone::CompoundTag::size () noexcept const
 ```
 
 
@@ -597,7 +532,7 @@ size_type endstone::CompoundTag::size () noexcept const
 ### function swap 
 
 ```C++
-void endstone::CompoundTag::swap (
+inline void endstone::CompoundTag::swap (
     CompoundTag & other
 ) noexcept
 ```
@@ -614,8 +549,8 @@ void endstone::CompoundTag::swap (
 ```C++
 template<class... Args>
 std::pair< iterator, bool > endstone::CompoundTag::try_emplace (
-    std::string key,
-    Args &&... ctor_args
+    const key_type & key,
+    Args &&... args
 ) 
 ```
 

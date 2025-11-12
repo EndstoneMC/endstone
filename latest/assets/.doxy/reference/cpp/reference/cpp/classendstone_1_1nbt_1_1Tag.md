@@ -56,32 +56,47 @@
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Tag**](#function-tag-112) () noexcept<br> |
-|   | [**Tag**](#function-tag-212) ([**ByteTag**](classendstone_1_1nbt_1_1ValueTag.md) v) <br> |
-|   | [**Tag**](#function-tag-312) ([**ShortTag**](classendstone_1_1nbt_1_1ValueTag.md) v) <br> |
-|   | [**Tag**](#function-tag-412) ([**IntTag**](classendstone_1_1nbt_1_1ValueTag.md) v) <br> |
-|   | [**Tag**](#function-tag-512) ([**LongTag**](classendstone_1_1nbt_1_1ValueTag.md) v) <br> |
-|   | [**Tag**](#function-tag-612) ([**FloatTag**](classendstone_1_1nbt_1_1ValueTag.md) v) <br> |
-|   | [**Tag**](#function-tag-712) ([**DoubleTag**](classendstone_1_1nbt_1_1ValueTag.md) v) <br> |
-|   | [**Tag**](#function-tag-812) ([**StringTag**](classendstone_1_1nbt_1_1ValueTag.md) v) <br> |
-|   | [**Tag**](#function-tag-912) ([**ByteArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) v) <br> |
-|   | [**Tag**](#function-tag-1012) ([**IntArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) v) <br> |
-|   | [**Tag**](#function-tag-1112) ([**ListTag**](classendstone_1_1ListTag.md) v) <br> |
-|   | [**Tag**](#function-tag-1212) ([**CompoundTag**](classendstone_1_1CompoundTag.md) v) <br> |
-|  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-14) (std::string\_view key) <br> |
-|  [**const**](classendstone_1_1Identifier.md) [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-24) (std::string\_view key) const<br> |
+|   | [**Tag**](#function-tag-123) () noexcept<br> |
+|   | [**Tag**](#function-tag-223) ([**const**](classendstone_1_1Identifier.md) [**ByteTag**](classendstone_1_1nbt_1_1ValueTag.md) & v) <br> |
+|   | [**Tag**](#function-tag-323) ([**ByteTag**](classendstone_1_1nbt_1_1ValueTag.md) && v) <br> |
+|   | [**Tag**](#function-tag-423) ([**const**](classendstone_1_1Identifier.md) [**ShortTag**](classendstone_1_1nbt_1_1ValueTag.md) & v) <br> |
+|   | [**Tag**](#function-tag-523) ([**ShortTag**](classendstone_1_1nbt_1_1ValueTag.md) && v) <br> |
+|   | [**Tag**](#function-tag-623) ([**const**](classendstone_1_1Identifier.md) [**IntTag**](classendstone_1_1nbt_1_1ValueTag.md) & v) <br> |
+|   | [**Tag**](#function-tag-723) ([**IntTag**](classendstone_1_1nbt_1_1ValueTag.md) && v) <br> |
+|   | [**Tag**](#function-tag-823) ([**const**](classendstone_1_1Identifier.md) [**LongTag**](classendstone_1_1nbt_1_1ValueTag.md) & v) <br> |
+|   | [**Tag**](#function-tag-923) ([**LongTag**](classendstone_1_1nbt_1_1ValueTag.md) && v) <br> |
+|   | [**Tag**](#function-tag-1023) ([**const**](classendstone_1_1Identifier.md) [**FloatTag**](classendstone_1_1nbt_1_1ValueTag.md) & v) <br> |
+|   | [**Tag**](#function-tag-1123) ([**FloatTag**](classendstone_1_1nbt_1_1ValueTag.md) && v) <br> |
+|   | [**Tag**](#function-tag-1223) ([**const**](classendstone_1_1Identifier.md) [**DoubleTag**](classendstone_1_1nbt_1_1ValueTag.md) & v) <br> |
+|   | [**Tag**](#function-tag-1323) ([**DoubleTag**](classendstone_1_1nbt_1_1ValueTag.md) && v) <br> |
+|   | [**Tag**](#function-tag-1423) ([**const**](classendstone_1_1Identifier.md) [**StringTag**](classendstone_1_1nbt_1_1ValueTag.md) & v) <br> |
+|   | [**Tag**](#function-tag-1523) ([**StringTag**](classendstone_1_1nbt_1_1ValueTag.md) && v) <br> |
+|   | [**Tag**](#function-tag-1623) ([**const**](classendstone_1_1Identifier.md) [**ByteArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) & v) <br> |
+|   | [**Tag**](#function-tag-1723) ([**ByteArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) && v) <br> |
+|   | [**Tag**](#function-tag-1823) ([**const**](classendstone_1_1Identifier.md) [**IntArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) & v) <br> |
+|   | [**Tag**](#function-tag-1923) ([**IntArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) && v) <br> |
+|   | [**Tag**](#function-tag-2023) ([**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & v) <br> |
+|   | [**Tag**](#function-tag-2123) ([**ListTag**](classendstone_1_1ListTag.md) && v) <br> |
+|   | [**Tag**](#function-tag-2223) ([**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & v) <br> |
+|   | [**Tag**](#function-tag-2323) ([**CompoundTag**](classendstone_1_1CompoundTag.md) && v) <br> |
+|  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-14) ([**const**](classendstone_1_1Identifier.md) std::string & key) <br> |
+|  [**const**](classendstone_1_1Identifier.md) [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-24) ([**const**](classendstone_1_1Identifier.md) std::string & key) const<br> |
 |  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-34) (std::size\_t index) <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-44) (std::size\_t index) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**contains**](#function-contains) (std::string\_view key) noexcept const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**contains**](#function-contains) ([**const**](classendstone_1_1Identifier.md) std::string & key) noexcept const<br> |
+|  std::pair&lt; CompoundTag::iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**emplace**](#function-emplace) ([**Args**](classendstone_1_1Identifier.md) &&... args) <br> |
+|  [**ListTag**](classendstone_1_1ListTag.md) & | [**emplace\_back**](#function-emplace_back) ([**Args**](classendstone_1_1Identifier.md) &&... args) <br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**empty**](#function-empty) () noexcept const<br> |
-|  [**decltype**](classendstone_1_1Identifier.md)([**auto**](classendstone_1_1Identifier.md)) | [**get**](#function-get-12) () <br> |
-|  [**decltype**](classendstone_1_1Identifier.md)([**auto**](classendstone_1_1Identifier.md)) | [**get**](#function-get-22) () const<br> |
-|  [**auto**](classendstone_1_1Identifier.md) | [**get\_if**](#function-get_if-12) () noexcept<br> |
+|  [**T**](classendstone_1_1Identifier.md) & | [**get**](#function-get-12) () <br> |
+|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & | [**get**](#function-get-22) () const<br> |
+|  [**T**](classendstone_1_1Identifier.md) \* | [**get\_if**](#function-get_if-12) () noexcept<br> |
 |  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**get\_if**](#function-get_if-22) () noexcept const<br> |
-|  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**operator[]**](#function-operator) (std::string\_view key) <br> |
+|  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**operator[]**](#function-operator) ([**const**](classendstone_1_1Identifier.md) std::string & key) <br> |
 |  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**operator[]**](#function-operator_1) (std::size\_t index) <br> |
 |  std::size\_t | [**size**](#function-size) () noexcept const<br> |
 |  Type | [**type**](#function-type) () noexcept const<br> |
+|  [**decltype**](classendstone_1_1Identifier.md)([**auto**](classendstone_1_1Identifier.md)) | [**visit**](#function-visit-12) ([**Fn**](classendstone_1_1Identifier.md) && visitor) const<br> |
+|  [**decltype**](classendstone_1_1Identifier.md)([**auto**](classendstone_1_1Identifier.md)) | [**visit**](#function-visit-22) ([**Fn**](classendstone_1_1Identifier.md) && visitor) <br> |
 
 
 
@@ -130,7 +145,7 @@ using endstone::nbt::Tag::Storage =  std::variant<std::monostate, ByteTag, Short
 
 
 
-### function Tag [1/12]
+### function Tag [1/23]
 
 ```C++
 inline endstone::nbt::Tag::Tag () noexcept
@@ -143,11 +158,11 @@ inline endstone::nbt::Tag::Tag () noexcept
 
 
 
-### function Tag [2/12]
+### function Tag [2/23]
 
 ```C++
-inline explicit endstone::nbt::Tag::Tag (
-    ByteTag v
+inline endstone::nbt::Tag::Tag (
+    const  ByteTag & v
 ) 
 ```
 
@@ -158,11 +173,11 @@ inline explicit endstone::nbt::Tag::Tag (
 
 
 
-### function Tag [3/12]
+### function Tag [3/23]
 
 ```C++
-inline explicit endstone::nbt::Tag::Tag (
-    ShortTag v
+inline endstone::nbt::Tag::Tag (
+    ByteTag && v
 ) 
 ```
 
@@ -173,11 +188,11 @@ inline explicit endstone::nbt::Tag::Tag (
 
 
 
-### function Tag [4/12]
+### function Tag [4/23]
 
 ```C++
-inline explicit endstone::nbt::Tag::Tag (
-    IntTag v
+inline endstone::nbt::Tag::Tag (
+    const  ShortTag & v
 ) 
 ```
 
@@ -188,11 +203,11 @@ inline explicit endstone::nbt::Tag::Tag (
 
 
 
-### function Tag [5/12]
+### function Tag [5/23]
 
 ```C++
-inline explicit endstone::nbt::Tag::Tag (
-    LongTag v
+inline endstone::nbt::Tag::Tag (
+    ShortTag && v
 ) 
 ```
 
@@ -203,11 +218,11 @@ inline explicit endstone::nbt::Tag::Tag (
 
 
 
-### function Tag [6/12]
+### function Tag [6/23]
 
 ```C++
-inline explicit endstone::nbt::Tag::Tag (
-    FloatTag v
+inline endstone::nbt::Tag::Tag (
+    const  IntTag & v
 ) 
 ```
 
@@ -218,11 +233,11 @@ inline explicit endstone::nbt::Tag::Tag (
 
 
 
-### function Tag [7/12]
+### function Tag [7/23]
 
 ```C++
-inline explicit endstone::nbt::Tag::Tag (
-    DoubleTag v
+inline endstone::nbt::Tag::Tag (
+    IntTag && v
 ) 
 ```
 
@@ -233,11 +248,11 @@ inline explicit endstone::nbt::Tag::Tag (
 
 
 
-### function Tag [8/12]
+### function Tag [8/23]
 
 ```C++
-inline explicit endstone::nbt::Tag::Tag (
-    StringTag v
+inline endstone::nbt::Tag::Tag (
+    const  LongTag & v
 ) 
 ```
 
@@ -248,11 +263,11 @@ inline explicit endstone::nbt::Tag::Tag (
 
 
 
-### function Tag [9/12]
+### function Tag [9/23]
 
 ```C++
-inline explicit endstone::nbt::Tag::Tag (
-    ByteArrayTag v
+inline endstone::nbt::Tag::Tag (
+    LongTag && v
 ) 
 ```
 
@@ -263,11 +278,11 @@ inline explicit endstone::nbt::Tag::Tag (
 
 
 
-### function Tag [10/12]
+### function Tag [10/23]
 
 ```C++
-inline explicit endstone::nbt::Tag::Tag (
-    IntArrayTag v
+inline endstone::nbt::Tag::Tag (
+    const  FloatTag & v
 ) 
 ```
 
@@ -278,11 +293,11 @@ inline explicit endstone::nbt::Tag::Tag (
 
 
 
-### function Tag [11/12]
+### function Tag [11/23]
 
 ```C++
-inline explicit endstone::nbt::Tag::Tag (
-    ListTag v
+inline endstone::nbt::Tag::Tag (
+    FloatTag && v
 ) 
 ```
 
@@ -293,11 +308,176 @@ inline explicit endstone::nbt::Tag::Tag (
 
 
 
-### function Tag [12/12]
+### function Tag [12/23]
 
 ```C++
-inline explicit endstone::nbt::Tag::Tag (
-    CompoundTag v
+inline endstone::nbt::Tag::Tag (
+    const  DoubleTag & v
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Tag [13/23]
+
+```C++
+inline endstone::nbt::Tag::Tag (
+    DoubleTag && v
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Tag [14/23]
+
+```C++
+inline endstone::nbt::Tag::Tag (
+    const  StringTag & v
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Tag [15/23]
+
+```C++
+inline endstone::nbt::Tag::Tag (
+    StringTag && v
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Tag [16/23]
+
+```C++
+inline endstone::nbt::Tag::Tag (
+    const  ByteArrayTag & v
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Tag [17/23]
+
+```C++
+inline endstone::nbt::Tag::Tag (
+    ByteArrayTag && v
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Tag [18/23]
+
+```C++
+inline endstone::nbt::Tag::Tag (
+    const  IntArrayTag & v
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Tag [19/23]
+
+```C++
+inline endstone::nbt::Tag::Tag (
+    IntArrayTag && v
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Tag [20/23]
+
+```C++
+inline endstone::nbt::Tag::Tag (
+    const  ListTag & v
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Tag [21/23]
+
+```C++
+inline endstone::nbt::Tag::Tag (
+    ListTag && v
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Tag [22/23]
+
+```C++
+inline endstone::nbt::Tag::Tag (
+    const  CompoundTag & v
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Tag [23/23]
+
+```C++
+inline endstone::nbt::Tag::Tag (
+    CompoundTag && v
 ) 
 ```
 
@@ -311,8 +491,8 @@ inline explicit endstone::nbt::Tag::Tag (
 ### function at [1/4]
 
 ```C++
-Tag & endstone::nbt::Tag::at (
-    std::string_view key
+inline Tag & endstone::nbt::Tag::at (
+    const std::string & key
 ) 
 ```
 
@@ -326,8 +506,8 @@ Tag & endstone::nbt::Tag::at (
 ### function at [2/4]
 
 ```C++
-const  Tag & endstone::nbt::Tag::at (
-    std::string_view key
+inline const  Tag & endstone::nbt::Tag::at (
+    const std::string & key
 ) const
 ```
 
@@ -341,7 +521,7 @@ const  Tag & endstone::nbt::Tag::at (
 ### function at [3/4]
 
 ```C++
-Tag & endstone::nbt::Tag::at (
+inline Tag & endstone::nbt::Tag::at (
     std::size_t index
 ) 
 ```
@@ -356,7 +536,7 @@ Tag & endstone::nbt::Tag::at (
 ### function at [4/4]
 
 ```C++
-const  Tag & endstone::nbt::Tag::at (
+inline const  Tag & endstone::nbt::Tag::at (
     std::size_t index
 ) const
 ```
@@ -371,9 +551,41 @@ const  Tag & endstone::nbt::Tag::at (
 ### function contains 
 
 ```C++
-bool endstone::nbt::Tag::contains (
-    std::string_view key
+inline bool endstone::nbt::Tag::contains (
+    const std::string & key
 ) noexcept const
+```
+
+
+
+
+<hr>
+
+
+
+### function emplace 
+
+```C++
+template<class... Args>
+inline std::pair< CompoundTag::iterator, bool > endstone::nbt::Tag::emplace (
+    Args &&... args
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function emplace\_back 
+
+```C++
+template<class... Args>
+inline ListTag & endstone::nbt::Tag::emplace_back (
+    Args &&... args
+) 
 ```
 
 
@@ -386,7 +598,7 @@ bool endstone::nbt::Tag::contains (
 ### function empty 
 
 ```C++
-bool endstone::nbt::Tag::empty () noexcept const
+inline bool endstone::nbt::Tag::empty () noexcept const
 ```
 
 
@@ -400,7 +612,7 @@ bool endstone::nbt::Tag::empty () noexcept const
 
 ```C++
 template<typename  T>
-inline decltype ( auto ) endstone::nbt::Tag::get () 
+inline T & endstone::nbt::Tag::get () 
 ```
 
 
@@ -414,7 +626,7 @@ inline decltype ( auto ) endstone::nbt::Tag::get ()
 
 ```C++
 template<typename  T>
-inline decltype ( auto ) endstone::nbt::Tag::get () const
+inline const  T & endstone::nbt::Tag::get () const
 ```
 
 
@@ -428,7 +640,7 @@ inline decltype ( auto ) endstone::nbt::Tag::get () const
 
 ```C++
 template<typename  T>
-inline auto endstone::nbt::Tag::get_if () noexcept
+inline T * endstone::nbt::Tag::get_if () noexcept
 ```
 
 
@@ -455,8 +667,8 @@ inline const  T * endstone::nbt::Tag::get_if () noexcept const
 ### function operator[] 
 
 ```C++
-Tag & endstone::nbt::Tag::operator[] (
-    std::string_view key
+inline Tag & endstone::nbt::Tag::operator[] (
+    const std::string & key
 ) 
 ```
 
@@ -470,7 +682,7 @@ Tag & endstone::nbt::Tag::operator[] (
 ### function operator[] 
 
 ```C++
-Tag & endstone::nbt::Tag::operator[] (
+inline Tag & endstone::nbt::Tag::operator[] (
     std::size_t index
 ) 
 ```
@@ -485,7 +697,7 @@ Tag & endstone::nbt::Tag::operator[] (
 ### function size 
 
 ```C++
-std::size_t endstone::nbt::Tag::size () noexcept const
+inline std::size_t endstone::nbt::Tag::size () noexcept const
 ```
 
 
@@ -498,7 +710,39 @@ std::size_t endstone::nbt::Tag::size () noexcept const
 ### function type 
 
 ```C++
-Type endstone::nbt::Tag::type () noexcept const
+inline Type endstone::nbt::Tag::type () noexcept const
+```
+
+
+
+
+<hr>
+
+
+
+### function visit [1/2]
+
+```C++
+template<typename  Fn>
+inline decltype ( auto ) endstone::nbt::Tag::visit (
+    Fn && visitor
+) const
+```
+
+
+
+
+<hr>
+
+
+
+### function visit [2/2]
+
+```C++
+template<typename  Fn>
+inline decltype ( auto ) endstone::nbt::Tag::visit (
+    Fn && visitor
+) 
 ```
 
 

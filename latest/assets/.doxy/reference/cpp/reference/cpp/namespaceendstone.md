@@ -259,13 +259,15 @@ _Represents a button with text and an optional icon._
 | ---: | :--- |
 |  std::size\_t | [**hash\_value**](#function-hash_value) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & u) noexcept<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & a, [**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & b) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator_1) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator&lt;**](#function-operator_2) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator&lt;=**](#function-operator_3) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_4) ([**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & a, [**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & b) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_5) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator&gt;**](#function-operator_6) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator&gt;=**](#function-operator_7) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & a, [**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & b) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator_2) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator&lt;**](#function-operator_3) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator&lt;=**](#function-operator_4) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_5) ([**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & a, [**const**](classendstone_1_1Identifier.md) [**ListTag**](classendstone_1_1ListTag.md) & b) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_6) ([**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & a, [**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & b) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_7) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator&gt;**](#function-operator_8) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator&gt;=**](#function-operator_9) ([**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & lhs, [**UUID**](classendstone_1_1UUID.md) [**const**](classendstone_1_1Identifier.md) & rhs) noexcept<br> |
 |   | [**overloaded**](#function-overloaded) (Func...) <br>_Deduction guide._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**swap**](#function-swap) ([**UUID**](classendstone_1_1UUID.md) & lhs, [**UUID**](classendstone_1_1UUID.md) & rhs) noexcept<br> |
 
@@ -888,6 +890,22 @@ inline bool endstone::operator!= (
 
 ```C++
 inline bool endstone::operator!= (
+    const  CompoundTag & a,
+    const  CompoundTag & b
+) noexcept
+```
+
+
+
+
+<hr>
+
+
+
+### function operator!= 
+
+```C++
+inline bool endstone::operator!= (
     UUID  const & lhs,
     UUID  const & rhs
 ) noexcept
@@ -938,6 +956,22 @@ inline bool endstone::operator<= (
 inline bool endstone::operator== (
     const  ListTag & a,
     const  ListTag & b
+) noexcept
+```
+
+
+
+
+<hr>
+
+
+
+### function operator== 
+
+```C++
+inline bool endstone::operator== (
+    const  CompoundTag & a,
+    const  CompoundTag & b
 ) noexcept
 ```
 

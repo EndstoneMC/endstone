@@ -810,12 +810,98 @@
         </inbodydescription>
         <location file="include/endstone/enchantments/enchantment.h" line="279" column="19"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1a5a82b31334b0928b4a85acfbb4a1904f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Enchantment::operator==</definition>
+        <argsstring>(const EnchantmentId &amp;other) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::Enchantment::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="281" column="10" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="281" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1ace641b3d9fa0c6e89e9bd52b547a5d02" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Enchantment::operator!=</definition>
+        <argsstring>(const EnchantmentId &amp;other) const</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>endstone::Enchantment::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">EnchantmentId</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="286" column="10" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="286" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1a162c71d3ff9118533b2620d83b3b4144" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Enchantment::operator==</definition>
+        <argsstring>(const Enchantment &amp;other) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::Enchantment::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="291" column="10" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="291" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1a611ac0f1d0bb8cba0551075df1d162ed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Enchantment::operator!=</definition>
+        <argsstring>(const Enchantment &amp;other) const</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>endstone::Enchantment::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="296" column="10" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="296" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Enchantment_1a8e7db8ef056cd17e3f409b8332b2157a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Enchantment::operator EnchantmentId</definition>
+        <argsstring>() const</argsstring>
+        <name>operator EnchantmentId</name>
+        <qualifiedname>endstone::Enchantment::operator EnchantmentId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="301" column="5" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="301" bodyend="304"/>
+      </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/enchantments/enchantment.h" line="25" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="25" bodyend="280"/>
+    <location file="include/endstone/enchantments/enchantment.h" line="25" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="25" bodyend="305"/>
     <listofallmembers>
       <member refid="classendstone_1_1Enchantment_1a42951020e8e528fe120e6e33b3fcd6de" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>AquaAffinity</name></member>
       <member refid="classendstone_1_1Enchantment_1a0fdbd9dc57cb3132b60edf77206dd392" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>BaneOfArthropods</name></member>
@@ -848,6 +934,11 @@
       <member refid="classendstone_1_1Enchantment_1ac0116f71196e9d556d8ec3ec31ee6dde" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Lure</name></member>
       <member refid="classendstone_1_1Enchantment_1aa6585b6679cde360f39eec335a1dea5f" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Mending</name></member>
       <member refid="classendstone_1_1Enchantment_1ab6cdd60f5254e0f6c09fc0d9809541fe" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Multishot</name></member>
+      <member refid="classendstone_1_1Enchantment_1a8e7db8ef056cd17e3f409b8332b2157a" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>operator EnchantmentId</name></member>
+      <member refid="classendstone_1_1Enchantment_1ace641b3d9fa0c6e89e9bd52b547a5d02" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Enchantment_1a611ac0f1d0bb8cba0551075df1d162ed" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Enchantment_1a5a82b31334b0928b4a85acfbb4a1904f" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1Enchantment_1a162c71d3ff9118533b2620d83b3b4144" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>operator==</name></member>
       <member refid="classendstone_1_1Enchantment_1a515c9a244378f0c8ed5ddc4ba0cf78a6" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Piercing</name></member>
       <member refid="classendstone_1_1Enchantment_1aaeb31319b930697876162d77036cf711" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>Power</name></member>
       <member refid="classendstone_1_1Enchantment_1a4cd9bf3365fcfe936485603a35c190a8" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>ProjectileProtection</name></member>

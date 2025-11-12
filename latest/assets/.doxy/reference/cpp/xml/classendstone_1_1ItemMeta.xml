@@ -275,9 +275,9 @@
         </inbodydescription>
         <location file="include/endstone/inventory/meta/item_meta.h" line="112" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemMeta_1ae56eecf8308719f9a2571088c956981f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
-        <definition>virtual std::unordered_map&lt; std::string, int &gt; endstone::ItemMeta::getEnchants</definition>
+      <memberdef kind="function" id="classendstone_1_1ItemMeta_1afe5fbc4ed421b33e455d1e2e679d76e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unordered_map&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> *, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
+        <definition>virtual std::unordered_map&lt; const Enchantment *, int &gt; endstone::ItemMeta::getEnchants</definition>
         <argsstring>() const =0</argsstring>
         <name>getEnchants</name>
         <qualifiedname>endstone::ItemMeta::getEnchants</qualifiedname>
@@ -688,7 +688,7 @@
       <member refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getDamage</name></member>
       <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getDisplayName</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4ada54133ca59faa19c55d38b3be845f" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getEnchantLevel</name></member>
-      <member refid="classendstone_1_1ItemMeta_1ae56eecf8308719f9a2571088c956981f" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getEnchants</name></member>
+      <member refid="classendstone_1_1ItemMeta_1afe5fbc4ed421b33e455d1e2e679d76e5" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getEnchants</name></member>
       <member refid="classendstone_1_1ItemMeta_1a170ca4e3a87a7a590ba03019129793d1" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getLore</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getRepairCost</name></member>
       <member refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" prot="public" virt="pure-virtual"><scope>endstone::ItemMeta</scope><name>getType</name></member>

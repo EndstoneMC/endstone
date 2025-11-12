@@ -65,7 +65,7 @@ Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getDamage**](#function-getdamage) () const = 0<br>_Gets the damage._  |
 | virtual std::string | [**getDisplayName**](#function-getdisplayname) () const = 0<br>_Gets the display name that is set._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getEnchantLevel**](#function-getenchantlevel) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br>_Checks for the level of the specified enchantment._  |
-| virtual std::unordered\_map&lt; std::string, [**int**](classendstone_1_1Identifier.md) &gt; | [**getEnchants**](#function-getenchants) () const = 0<br>_Returns a copy the enchantments in this_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
+| virtual std::unordered\_map&lt; [**const**](classendstone_1_1Identifier.md) [**Enchantment**](classendstone_1_1Enchantment.md) \*, [**int**](classendstone_1_1Identifier.md) &gt; | [**getEnchants**](#function-getenchants) () const = 0<br>_Returns a copy the enchantments in this_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
 | virtual std::vector&lt; std::string &gt; | [**getLore**](#function-getlore) () const = 0<br>_Gets the lore that is set._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getRepairCost**](#function-getrepaircost) () const = 0<br>_Gets the repair penalty._  |
 | virtual Type | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this item meta._  |
@@ -315,7 +315,7 @@ The level that the specified enchantment has, or 0 if none
 
 _Returns a copy the enchantments in this_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._
 ```C++
-virtual std::unordered_map< std::string, int > endstone::ItemMeta::getEnchants () const = 0
+virtual std::unordered_map< const  Enchantment *, int > endstone::ItemMeta::getEnchants () const = 0
 ```
 
 
