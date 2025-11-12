@@ -10,8 +10,6 @@
 
 
 
-* `#include "endstone/nbt/array.h"`
-* `#include "endstone/nbt/value.h"`
 
 
 
@@ -33,6 +31,11 @@
 | namespace | [**nbt**](namespaceendstone_1_1nbt.md) <br> |
 
 
+## Classes
+
+| Type | Name |
+| ---: | :--- |
+| struct | [**TagBase**](structendstone_1_1nbt_1_1TagBase.md) <br> |
 
 
 

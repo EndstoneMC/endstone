@@ -31,6 +31,7 @@
 | ---: | :--- |
 | class | [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
 | class | [**Tag**](classendstone_1_1nbt_1_1Tag.md) <br> |
+| struct | [**TagBase**](structendstone_1_1nbt_1_1TagBase.md) <br> |
 | class | [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
 
 

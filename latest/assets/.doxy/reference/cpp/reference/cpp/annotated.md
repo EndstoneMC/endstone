@@ -165,6 +165,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **namespace** [**nbt**](namespaceendstone_1_1nbt.md)     
         * **class** [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md)     
         * **class** [**Tag**](classendstone_1_1nbt_1_1Tag.md)     
+        * **struct** [**TagBase**](structendstone_1_1nbt_1_1TagBase.md) 
         * **class** [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)     
     * **struct** [**overloaded**](structendstone_1_1overloaded.md) _Helper type for visitors._ 
 * **class** [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md)     

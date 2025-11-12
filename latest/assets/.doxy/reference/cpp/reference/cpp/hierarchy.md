@@ -67,7 +67,11 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md) _Represents a class which contains a single method for executing commands._     
     * **class** [**endstone::Plugin**](classendstone_1_1Plugin.md) _Represents a_ [_**Plugin**_](classendstone_1_1Plugin.md) _._
 * **class** [**endstone::CommandMap**](classendstone_1_1CommandMap.md) _Represents a command map that manages all commands of the_ [_**Server**_](classendstone_1_1Server.md) _._
-* **class** [**endstone::CompoundTag**](classendstone_1_1CompoundTag.md) 
+* **struct** [**endstone::nbt::TagBase**](structendstone_1_1nbt_1_1TagBase.md)     
+    * **class** [**endstone::CompoundTag**](classendstone_1_1CompoundTag.md) 
+    * **class** [**endstone::ListTag**](classendstone_1_1ListTag.md) 
+    * **class** [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) 
+    * **class** [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) 
 * **class** [**endstone::Criteria**](classendstone_1_1Criteria.md) _Represents a scoreboard criteria._ 
 * **class** [**endstone::DamageSource**](classendstone_1_1DamageSource.md) _Represents a source of damage._ 
 * **class** [**endstone::Dimension**](classendstone_1_1Dimension.md) _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
@@ -93,7 +97,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Label**](classendstone_1_1Label.md) _Represents a text label._ 
 * **class** [**endstone::Language**](classendstone_1_1Language.md) _Represents the interface for translating text into different languages._ 
 * **class** [**endstone::Level**](classendstone_1_1Level.md) _Represents a level, which may contain actors, chunks and blocks._ 
-* **class** [**endstone::ListTag**](classendstone_1_1ListTag.md) 
 * **class** [**endstone::Location**](classendstone_1_1Location.md) _Represents a 3-dimensional location in a dimension within a level._ 
 * **class** [**endstone::Logger**](classendstone_1_1Logger.md) [_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._
 * **class** [**endstone::MapCanvas**](classendstone_1_1MapCanvas.md) _Represents a canvas for drawing to a map._ 
@@ -124,9 +127,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Translatable**](classendstone_1_1Translatable.md) _Represents an object with a text representation that can be translated by the Minecraft client._ 
 * **class** [**endstone::UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)_
 * **class** [**endstone::Vector**](classendstone_1_1Vector.md) _Represents a 3-dimensional vector._ 
-* **class** [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) 
 * **class** [**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) 
-* **class** [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) 
 * **class** [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) 
 * **class** [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) 
 * **struct** [**endstone::ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._ 

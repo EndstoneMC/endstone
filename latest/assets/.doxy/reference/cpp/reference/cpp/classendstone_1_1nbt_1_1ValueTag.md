@@ -15,6 +15,7 @@
 
 
 
+Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1_1TagBase.md)
 
 
 
@@ -54,6 +55,26 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Public Functions
 
 | Type | Name |
@@ -63,6 +84,34 @@
 |  [**constexpr**](classendstone_1_1Identifier.md) | [**ValueTag**](#function-valuetag-33) ([**T**](classendstone_1_1Identifier.md) && v) <br> |
 |   | [**operator const T &**](#function-operator-const-t-&) () noexcept const<br> |
 |  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & | [**value**](#function-value) () noexcept const<br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

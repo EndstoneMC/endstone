@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1CompoundTag" kind="class" language="C++" prot="public">
     <compoundname>endstone::CompoundTag</compoundname>
+    <basecompoundref refid="structendstone_1_1nbt_1_1TagBase" prot="public" virt="non-virtual">endstone::nbt::TagBase</basecompoundref>
     <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classendstone_1_1CompoundTag_1afda677b68ae8b9344ceda952fbb75d67" prot="public" static="no">
         <type>std::string</type>
@@ -602,6 +603,30 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::CompoundTag</label>
+        <link refid="classendstone_1_1CompoundTag"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::nbt::TagBase</label>
+        <link refid="structendstone_1_1nbt_1_1TagBase"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::CompoundTag</label>
+        <link refid="classendstone_1_1CompoundTag"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::nbt::TagBase</label>
+        <link refid="structendstone_1_1nbt_1_1TagBase"/>
+      </node>
+    </collaborationgraph>
     <location file="include/endstone/nbt/compound.h" line="28" column="1" bodyfile="include/endstone/nbt/compound.h" bodystart="28" bodyend="82"/>
     <listofallmembers>
       <member refid="classendstone_1_1CompoundTag_1a1d60198b39e8c8b8232f27806d52209b" prot="public" virt="non-virtual"><scope>endstone::CompoundTag</scope><name>at</name></member>

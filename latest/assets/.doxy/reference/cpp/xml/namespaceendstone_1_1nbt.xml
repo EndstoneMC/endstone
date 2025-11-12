@@ -4,6 +4,7 @@
     <compoundname>endstone::nbt</compoundname>
     <innerclass refid="classendstone_1_1nbt_1_1ArrayTag" prot="public">endstone::nbt::ArrayTag</innerclass>
     <innerclass refid="classendstone_1_1nbt_1_1Tag" prot="public">endstone::nbt::Tag</innerclass>
+    <innerclass refid="structendstone_1_1nbt_1_1TagBase" prot="public">endstone::nbt::TagBase</innerclass>
     <innerclass refid="classendstone_1_1nbt_1_1ValueTag" prot="public">endstone::nbt::ValueTag</innerclass>
     <sectiondef kind="enum">
       <memberdef kind="enum" id="type_8h_1a4ad7d0adad58bd6416997ecb276da28c" prot="public" static="no" strong="yes">
@@ -112,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/type.h" line="21" column="1" bodyfile="include/endstone/nbt/type.h" bodystart="21" bodyend="34"/>
+        <location file="include/endstone/nbt/type.h" line="19" column="1" bodyfile="include/endstone/nbt/type.h" bodystart="19" bodyend="32"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

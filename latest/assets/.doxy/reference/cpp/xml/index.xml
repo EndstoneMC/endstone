@@ -2244,6 +2244,8 @@
     <member refid="classendstone_1_1nbt_1_1Tag_1a2c3640f9a0f98e5029c9b2905322784e" kind="friend"><name>operator==</name></member>
     <member refid="classendstone_1_1nbt_1_1Tag_1a7ed7ce4f905d733b1977d9e1d6f60ba1" kind="friend"><name>operator!=</name></member>
   </compound>
+  <compound refid="structendstone_1_1nbt_1_1TagBase" kind="struct"><name>endstone::nbt::TagBase</name>
+  </compound>
   <compound refid="classendstone_1_1Task" kind="class"><name>endstone::Task</name>
     <member refid="classendstone_1_1Task_1ae40a9449683399a480b757911fb30ef4" kind="function"><name>~Task</name></member>
     <member refid="classendstone_1_1Task_1ab08c9a5deee528abf87f8e827c420e30" kind="function"><name>getTaskId</name></member>

@@ -26,10 +26,14 @@
 
 #include <algorithm>
 
+#include <fmt/format.h>
+
+#include "endstone/nbt/type.h"
+
 namespace endstone::nbt {
 class Tag;
 template <typename T>
-class ValueTag {
+class ValueTag : public TagBase {
 public:
     using value_type = T;
 

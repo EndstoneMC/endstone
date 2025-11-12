@@ -15,6 +15,7 @@
 
 
 
+Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1_1TagBase.md)
 
 
 
@@ -39,6 +40,26 @@
 | typedef std::size\_t | [**size\_type**](#typedef-size_type)  <br> |
 | typedef std::vector&lt; [**value\_type**](classendstone_1_1Identifier.md) &gt; | [**storage\_type**](#typedef-storage_type)  <br> |
 | typedef [**T**](classendstone_1_1Identifier.md) | [**value\_type**](#typedef-value_type)  <br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -86,6 +107,34 @@
 |  [**const**](classendstone_1_1Identifier.md) [**value\_type**](classendstone_1_1Identifier.md) & | [**operator[]**](#function-operator_1) (size\_type i) const<br> |
 |  [**void**](classendstone_1_1Identifier.md) | [**push\_back**](#function-push_back) ([**value\_type**](classendstone_1_1Identifier.md) v) <br> |
 |  size\_type | [**size**](#function-size) () noexcept const<br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

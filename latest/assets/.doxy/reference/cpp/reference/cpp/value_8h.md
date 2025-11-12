@@ -11,6 +11,8 @@
 
 
 * `#include <algorithm>`
+* `#include <fmt/format.h>`
+* `#include "endstone/nbt/type.h"`
 
 
 

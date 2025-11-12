@@ -397,6 +397,8 @@
 
 * [**Tag**](classendstone_1_1nbt_1_1Tag.md)
 ([**endstone::nbt**](namespaceendstone_1_1nbt.md))
+* [**TagBase**](structendstone_1_1nbt_1_1TagBase.md)
+([**endstone::nbt**](namespaceendstone_1_1nbt.md))
 * [**Task**](classendstone_1_1Task.md)
 ([**endstone**](namespaceendstone.md))
 * [**TextInput**](classendstone_1_1TextInput.md)

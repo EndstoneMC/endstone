@@ -13,6 +13,7 @@
 
 
 
+Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1_1TagBase.md)
 
 
 
@@ -36,6 +37,26 @@
 | typedef container\_type::iterator | [**iterator**](#typedef-iterator)  <br> |
 | typedef std::size\_t | [**size\_type**](#typedef-size_type)  <br> |
 | typedef [**nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) | [**value\_type**](#typedef-value_type)  <br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -81,6 +102,34 @@
 |  [**void**](classendstone_1_1Identifier.md) | [**push\_back**](#function-push_back-22) ([**value\_type**](classendstone_1_1nbt_1_1Tag.md) && v) <br> |
 |  size\_type | [**size**](#function-size) () noexcept const<br> |
 |  nbt::Type | [**type**](#function-type) () noexcept const<br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -13,6 +13,7 @@
 
 
 
+Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1_1TagBase.md)
 
 
 
@@ -37,6 +38,26 @@
 | typedef std::map&lt; key\_type, [**value\_type**](classendstone_1_1nbt_1_1Tag.md) &gt; | [**map\_type**](#typedef-map_type)  <br> |
 | typedef std::size\_t | [**size\_type**](#typedef-size_type)  <br> |
 | typedef [**nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) | [**value\_type**](#typedef-value_type)  <br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -86,6 +107,34 @@
 |  size\_type | [**size**](#function-size) () noexcept const<br> |
 |  [**void**](classendstone_1_1Identifier.md) | [**swap**](#function-swap) ([**CompoundTag**](classendstone_1_1CompoundTag.md) & other) noexcept<br> |
 |  std::pair&lt; iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**try\_emplace**](#function-try_emplace) ([**const**](classendstone_1_1Identifier.md) key\_type & key, [**Args**](classendstone_1_1Identifier.md) &&... args) <br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
