@@ -81,6 +81,8 @@ __all__ = [
     "util",
 ]
 
+_T = typing.TypeVar("_T")
+
 class Server:
     """
     Represents a server implementation.
@@ -155,7 +157,7 @@ class Server:
         Gets the service manager.
         """
         ...
-    def get_registry(self, type: typing.Type[T]) -> Registry[T]:
+    def get_registry(self, type: typing.Type[_T]) -> Registry[_T]:
         """
         Returns the registry for the given type.
         """
@@ -768,8 +770,6 @@ class Skin:
         Get the Cape image.
         """
         ...
-
-_T = typing.TypeVar("_T")
 
 class Registry(typing.Generic[_T]):
     """

@@ -6,6 +6,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
         "nbt": [
             "ByteArrayTag",
             "ByteTag",
+            "CompoundTag",
             "DoubleTag",
             "FloatTag",
             "IntArrayTag",

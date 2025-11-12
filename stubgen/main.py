@@ -12,7 +12,7 @@ def main():
     package = module.package
 
     # Generic types (i.e., Registry[T])
-    module.set_member("_T", package.get_member("_T"))
+    module.members = {"_T": package.get_member("_T"), **module.members}
     for member in list(module.members.keys()):
         if member.endswith("Registry"):
             module.members.pop(member)
