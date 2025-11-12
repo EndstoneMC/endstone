@@ -36,7 +36,7 @@ public:
     // ---- ctors ----
     ListTag() = default;
     template <typename T>
-        requires(!std::is_same_v<T, nbt::Tag>)
+        requires(!std::is_same_v<std::remove_cvref_t<T>, nbt::Tag>)
     ListTag(std::initializer_list<T> init);
 
     // ---- capacity ----

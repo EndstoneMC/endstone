@@ -171,8 +171,8 @@ void init_nbt(py::module_ &m)
         .def(py::init([](py::iterable iter) {
                  ListTag lt;
                  for (py::handle h : iter) {
-                     nbt::Tag v = py::cast<nbt::Tag>(h);
-                     lt.push_back(std::move(v));
+                     auto v = py::cast<nbt::Tag>(h);
+                     lt.emplace_back(v);
                  }
                  return lt;
              }),
@@ -210,12 +210,12 @@ void init_nbt(py::module_ &m)
             py::keep_alive<0, 1>())
         .def("clear", &ListTag::clear)
         .def(
-            "append", [](ListTag &self, const nbt::Tag &v) { self.push_back(v); }, py::arg("tag"))
+            "append", [](ListTag &self, const nbt::Tag &v) { self.emplace_back(v); }, py::arg("tag"))
         .def(
             "extend",
             [](ListTag &self, py::iterable it) {
                 for (py::handle h : it) {
-                    self.push_back(py::cast<nbt::Tag>(h));
+                    self.emplace_back(py::cast<nbt::Tag>(h));
                 }
             },
             py::arg("iterable"))

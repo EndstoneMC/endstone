@@ -40,17 +40,28 @@ public:
                                  ByteArrayTag, IntArrayTag, ListTag, CompoundTag>;
 
     Tag() noexcept : storage_(std::monostate()) {}
-    explicit Tag(ByteTag v) : storage_(std::move(v)) {}
-    explicit Tag(ShortTag v) : storage_(std::move(v)) {}
-    explicit Tag(IntTag v) : storage_(std::move(v)) {}
-    explicit Tag(LongTag v) : storage_(std::move(v)) {}
-    explicit Tag(FloatTag v) : storage_(std::move(v)) {}
-    explicit Tag(DoubleTag v) : storage_(std::move(v)) {}
-    explicit Tag(StringTag v) : storage_(std::move(v)) {}
-    explicit Tag(ByteArrayTag v) : storage_(std::move(v)) {}
-    explicit Tag(IntArrayTag v) : storage_(std::move(v)) {}
-    explicit Tag(ListTag v) : storage_(std::move(v)) {}
-    explicit Tag(CompoundTag v) : storage_(std::move(v)) {}
+    Tag(const ByteTag &v) : storage_(v) {}
+    Tag(ByteTag &&v) : storage_(std::move(v)) {}
+    Tag(const ShortTag &v) : storage_(v) {}
+    Tag(ShortTag &&v) : storage_(std::move(v)) {}
+    Tag(const IntTag &v) : storage_(v) {}
+    Tag(IntTag &&v) : storage_(std::move(v)) {}
+    Tag(const LongTag &v) : storage_(v) {}
+    Tag(LongTag &&v) : storage_(std::move(v)) {}
+    Tag(const FloatTag &v) : storage_(v) {}
+    Tag(FloatTag &&v) : storage_(std::move(v)) {}
+    Tag(const DoubleTag &v) : storage_(v) {}
+    Tag(DoubleTag &&v) : storage_(std::move(v)) {}
+    Tag(const StringTag &v) : storage_(v) {}
+    Tag(StringTag &&v) : storage_(std::move(v)) {}
+    Tag(const ByteArrayTag &v) : storage_(v) {}
+    Tag(ByteArrayTag &&v) : storage_(std::move(v)) {}
+    Tag(const IntArrayTag &v) : storage_(v) {}
+    Tag(IntArrayTag &&v) : storage_(std::move(v)) {}
+    Tag(const ListTag &v) : storage_(v) {}
+    Tag(ListTag &&v) : storage_(std::move(v)) {}
+    Tag(const CompoundTag &v) : storage_(v) {}
+    Tag(CompoundTag &&v) : storage_(std::move(v)) {}
 
     Type type() const noexcept
     {
@@ -186,8 +197,35 @@ public:
         return comp->contains(key);
     }
 
+    template <class... Args>
+    ListTag &emplace_back(Args &&...args)
+    {
+        if (std::holds_alternative<std::monostate>(storage_)) {
+            storage_.emplace<ListTag>();
+        }
+        auto list = std::get_if<ListTag>(&storage_);
+        if (!list) {
+            throw std::runtime_error("Tag::emplace_back requires ListTag");
+        }
+        list->emplace_back(std::forward<Args>(args)...);
+        return *list;
+    }
+
+    template <class... Args>
+    std::pair<CompoundTag::iterator, bool> emplace(Args &&...args)
+    {
+        if (std::holds_alternative<std::monostate>(storage_)) {
+            storage_.emplace<CompoundTag>();
+        }
+        auto comp = std::get_if<CompoundTag>(&storage_);
+        if (!comp) {
+            throw std::runtime_error("Tag::emplace requires CompoundTag");
+        }
+        return comp->emplace(std::forward<Args>(args)...);
+    }
+
     template <typename T>
-    decltype(auto) get()
+    T &get()
     {
         if (auto p = std::get_if<T>(&storage_)) {
             return *p;
@@ -196,16 +234,16 @@ public:
     }
 
     template <typename T>
-    decltype(auto) get() const
+    const T &get() const
     {
         if (auto p = std::get_if<T>(&storage_)) {
-            return static_cast<const T &>(*p);
+            return *p;
         }
         throw std::runtime_error("Tag::get<T>() kind mismatch");
     }
 
     template <typename T>
-    auto get_if() noexcept
+    T *get_if() noexcept
     {
         if (auto p = std::get_if<T>(&storage_)) {
             return p;
@@ -248,7 +286,7 @@ private:
 
 // --- ListTag ---
 template <typename T>
-    requires(!std::is_same_v<T, nbt::Tag>)
+    requires(!std::is_same_v<std::remove_cvref_t<T>, nbt::Tag>)
 ListTag::ListTag(std::initializer_list<T> init)
 {
     for (const auto &item : init) {
@@ -306,36 +344,6 @@ inline void ListTag::clear() noexcept
 {
     elements_.clear();
     type_ = nbt::Type::End;
-}
-
-inline void ListTag::push_back(const value_type &v)
-{
-    const auto t = v.type();
-    if (t == nbt::Type::End) {
-        throw std::invalid_argument("ListTag cannot contain End tags.");
-    }
-    if (type_ == nbt::Type::End) {
-        type_ = t;
-    }
-    else if (t != type_) {
-        throw std::invalid_argument("ListTag elements must have the same type.");
-    }
-    elements_.push_back(v);
-}
-
-inline void ListTag::push_back(value_type &&v)
-{
-    const auto t = v.type();
-    if (t == nbt::Type::End) {
-        throw std::invalid_argument("ListTag cannot contain End tags.");
-    }
-    if (type_ == nbt::Type::End) {
-        type_ = t;
-    }
-    else if (t != type_) {
-        throw std::invalid_argument("ListTag elements must have the same type.");
-    }
-    elements_.push_back(v);
 }
 
 template <class... Args>
@@ -451,6 +459,12 @@ template <class P>
 std::pair<CompoundTag::iterator, bool> CompoundTag::insert(P &&v)
 {
     return entries_.insert(std::forward<P>(v));
+}
+
+template <class... Args>
+std::pair<CompoundTag::iterator, bool> CompoundTag::emplace(Args &&...args)
+{
+    return entries_.emplace(std::forward<Args>(args)...);
 }
 
 template <class... Args>

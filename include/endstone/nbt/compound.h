@@ -53,6 +53,8 @@ public:
     template <class P>
     std::pair<iterator, bool> insert(P &&v);
     template <class... Args>
+    std::pair<iterator, bool> emplace(Args &&...args);
+    template <class... Args>
     std::pair<iterator, bool> try_emplace(const key_type &key, Args &&...args);
     template <class M>
     std::pair<iterator, bool> insert_or_assign(const key_type &key, M &&obj);

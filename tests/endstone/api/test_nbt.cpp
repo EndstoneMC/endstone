@@ -30,7 +30,7 @@ TEST(NbtValueTag, EqualityAndImplicitReadConversion)
     EXPECT_TRUE(s1 == "hi");
     EXPECT_TRUE("hi" == s1);
     EXPECT_TRUE(s1 != s2);
-    const std::string sv = s1;  // implicit conversion to std::string
+    const std::string &sv = s1;  // implicit conversion to std::string
     EXPECT_EQ(sv, "hi");
 }
 
@@ -62,19 +62,17 @@ TEST(NbtArrayTag, BracedInitAndMutationAndEquality)
         {"ba", ByteArrayTag{1, 2, 3}},
         {"ia", IntArrayTag{1, 2, 3, 4}},
     };
-    {
-        auto &ba = t["ba"].get<ByteArrayTag>();
-        ASSERT_EQ(ba.size(), 3);
-        EXPECT_EQ(ba[0], 1);
-        EXPECT_EQ(ba[1], 2);
-        EXPECT_EQ(ba[2], 3);
+    auto &ba = t["ba"].get<ByteArrayTag>();
+    ASSERT_EQ(ba.size(), 3);
+    EXPECT_EQ(ba[0], 1);
+    EXPECT_EQ(ba[1], 2);
+    EXPECT_EQ(ba[2], 3);
 
-        ba.push_back(255);
-        EXPECT_EQ(ba.size(), 4);
-        EXPECT_EQ(ba[3], 255);
-        ba[1] = 7;
-        EXPECT_EQ(ba[1], 7);
-    }
+    ba.push_back(255);
+    EXPECT_EQ(ba.size(), 4);
+    EXPECT_EQ(ba[3], 255);
+    ba[1] = 7;
+    EXPECT_EQ(ba[1], 7);
 
     // Equality
     ByteArrayTag a{1, 2, 3, 255}, b{1, 2, 3, 255}, c{3, 2, 1};
@@ -93,13 +91,13 @@ TEST(NbtArrayTag, BracedInitAndMutationAndEquality)
 TEST(NbtListTag, HomogeneityAndRetroFillAndGrowth)
 {
     // Start as empty list
-    auto lst = ListTag{};
+    nbt::Tag lst = ListTag{};
     EXPECT_EQ(lst.type(), nbt::Type::List);
     EXPECT_TRUE(lst.empty());
 
     // First non-End fixes type
     lst.emplace_back(DoubleTag{1.0});
-    EXPECT_EQ(lst.type(), nbt::Type::Double);
+    EXPECT_EQ(lst.get<ListTag>().type(), nbt::Type::Double);
     ASSERT_EQ(lst.size(), 1);
     EXPECT_DOUBLE_EQ(lst.at(0).get<DoubleTag>(), 1.0);
 
@@ -109,7 +107,7 @@ TEST(NbtListTag, HomogeneityAndRetroFillAndGrowth)
     EXPECT_DOUBLE_EQ(lst.at(1).get<DoubleTag>(), 2.5);
 
     // Inserting a mismatched kind should throw (heterogeneous list disallowed)
-    EXPECT_THROW(lst.emplace_back(IntTag{1}), std::runtime_error);
+    EXPECT_THROW(lst.emplace_back(IntTag{1}), std::invalid_argument);
 }
 
 TEST(NbtCompoundTag, BasicOpsAndDeterminism)
@@ -124,11 +122,11 @@ TEST(NbtCompoundTag, BasicOpsAndDeterminism)
     // explicit assignment replaces node (kind reassignment allowed)
     c["Damage"] = ShortTag{5};
     EXPECT_EQ(c.at("Damage").type(), nbt::Type::Short);
-    EXPECT_EQ(static_cast<int>(c.at("Damage").get<ShortTag>()), 5);
+    EXPECT_EQ(c.at("Damage").get<ShortTag>(), static_cast<short>(5));
 
     c["Damage"] = IntTag{6};
     EXPECT_EQ(c.at("Damage").type(), nbt::Type::Int);
-    EXPECT_EQ(static_cast<int>(c.at("Damage").get<IntTag>()), 6);
+    EXPECT_EQ(c.at("Damage").get<IntTag>(), 6);
 
     // contains/count
     EXPECT_TRUE(c.contains("Damage"));
@@ -137,7 +135,7 @@ TEST(NbtCompoundTag, BasicOpsAndDeterminism)
     // insert_or_assign
     auto [it, inserted] = c.insert_or_assign("Name", StringTag{"Sword"});
     EXPECT_TRUE(inserted || it->first == "Name");
-    EXPECT_EQ(static_cast<std::string>(it->second.get<StringTag>()), "Sword");
+    EXPECT_EQ(it->second.get<StringTag>(), "Sword");
 
     // merge (move non-conflicting), conflicting key should be kept from 'c'
     CompoundTag other{
@@ -146,8 +144,8 @@ TEST(NbtCompoundTag, BasicOpsAndDeterminism)
     };
     c.merge(other);
     EXPECT_TRUE(c.contains("Owner"));
-    EXPECT_EQ(static_cast<std::string>(c.at("Owner").get<StringTag>()), "Alex");
-    EXPECT_EQ(static_cast<int>(c.at("Damage").get<IntTag>()), 6);  // unchanged
+    EXPECT_EQ(c.at("Owner").get<StringTag>(), "Alex");
+    EXPECT_EQ(c.at("Damage").get<IntTag>(), 6);  // unchanged
 }
 
 TEST(NbtTag, SelfShapingAndGetConstnessAndEquality)
@@ -156,7 +154,7 @@ TEST(NbtTag, SelfShapingAndGetConstnessAndEquality)
     EXPECT_EQ(t.type(), nbt::Type::End);
 
     // Self-shape to compound on key write
-    t["name"] = StringTag{std::string("Beacon")};
+    t["name"] = StringTag{"Beacon"};
     EXPECT_EQ(t.type(), nbt::Type::Compound);
 
     // Self-shape to list on index write
@@ -164,7 +162,7 @@ TEST(NbtTag, SelfShapingAndGetConstnessAndEquality)
     arr.emplace_back(IntTag{5});
     EXPECT_EQ(arr.type(), nbt::Type::List);
     EXPECT_EQ(arr.get<ListTag>().size(), 1);
-    EXPECT_EQ(static_cast<int>(arr.get<ListTag>().at(0).get<IntTag>()), 5);
+    EXPECT_EQ(arr.get<ListTag>().at(0).get<IntTag>(), 5);
 
     {
         auto &&ref = t["name"].get<StringTag>();
@@ -236,12 +234,12 @@ TEST(NbtExamples, NestedCompound)
     // Quick structure checks
     auto &display = root["display"].get<CompoundTag>();
     EXPECT_TRUE(display.contains("Name"));
-    EXPECT_EQ(std::string(display.at("Name").get<StringTag>()), "Sword");
+    EXPECT_EQ(display.at("Name").get<StringTag>(), "Sword");
 
     auto &lore = display.at("Lore").get<ListTag>();
     ASSERT_EQ(lore.size(), 2);
-    EXPECT_EQ(std::string(lore.at(0).get<StringTag>()), "Sharp");
-    EXPECT_EQ(std::string(lore.at(1).get<StringTag>()), "Ancient");
+    EXPECT_EQ(lore.at(0).get<StringTag>(), "Sharp");
+    EXPECT_EQ(lore.at(1).get<StringTag>(), "Ancient");
 
     auto &matrix = root["matrix"].get<ListTag>();
     ASSERT_EQ(matrix.size(), 2);
@@ -249,8 +247,8 @@ TEST(NbtExamples, NestedCompound)
     auto &row1 = matrix.at(1).get<ListTag>();
     ASSERT_EQ(row0.size(), 3);
     ASSERT_EQ(row1.size(), 3);
-    EXPECT_EQ(static_cast<int>(row0.at(0).get<IntTag>()), 1);
-    EXPECT_EQ(static_cast<int>(row1.at(2).get<IntTag>()), 6);
+    EXPECT_EQ(row0.at(0).get<IntTag>(), 1);
+    EXPECT_EQ(row1.at(2).get<IntTag>(), 6);
 }
 
 TEST(NbtTag, GetIfReturnsNullptrOnMismatch)

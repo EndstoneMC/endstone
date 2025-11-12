@@ -17,6 +17,7 @@
 #include <algorithm>
 
 namespace endstone::nbt {
+class Tag;
 template <typename T>
 class ValueTag {
 public:
