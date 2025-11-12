@@ -367,8 +367,7 @@ public:
         });
     }
 
-public:
-    PYBIND11_TYPE_CASTER(endstone::nbt::Tag, const_name("Tag"));
+    PYBIND11_TYPE_CASTER(endstone::nbt::Tag, const_name("endstone.nbt.Tag"));
 };
 
 }  // namespace pybind11::detail

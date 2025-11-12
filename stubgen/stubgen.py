@@ -51,6 +51,8 @@ def render(mod: griffe.Module, output_dir: Path):
         pkg_dir.mkdir(parents=True, exist_ok=True)
         (pkg_dir / "__init__.pyi").write_text(result, encoding="utf-8")
         for child in mod.modules.values():
+            if child.is_alias:
+                continue
             _do_render(env, child, output_dir)
 
     templates_dir = Path(__file__).parent / "templates"
