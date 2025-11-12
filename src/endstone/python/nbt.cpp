@@ -17,6 +17,18 @@
 namespace py = pybind11;
 
 namespace endstone::python {
+
+static std::size_t normalize_index(py::ssize_t i, std::size_t n)
+{
+    if (i < 0) {
+        i += static_cast<py::ssize_t>(n);
+    }
+    if (i < 0 || static_cast<std::size_t>(i) >= n) {
+        throw py::index_error("ListTag index out of range");
+    }
+    return static_cast<std::size_t>(i);
+}
+
 template <typename T, typename... Args>
 auto value_tag(py::module &m, const char *name, Args &&...args)
 {
@@ -52,15 +64,6 @@ static void array_tag(py::module_ &m, const char *name, Args &&...args)
     auto cls = py::class_<T>(m, name, std::forward<Args>(args)...);
     using value_type = T::value_type;
     using storage_type = T::storage_type;
-    auto norm_index = [](py::ssize_t i, py::ssize_t n) -> py::ssize_t {
-        if (i < 0) {
-            i += n;
-        }
-        if (i < 0 || i >= n) {
-            throw py::index_error("index out of range");
-        }
-        return i;
-    };
 
     // --- Constructors ---
     cls.def(py::init<>())
@@ -108,13 +111,13 @@ static void array_tag(py::module_ &m, const char *name, Args &&...args)
     cls.def("__len__", [](const T &self) { return self.size(); })
         .def("__getitem__",
              [=](const T &self, py::ssize_t i) -> value_type {
-                 auto n = static_cast<py::ssize_t>(self.size());
-                 return self[static_cast<size_t>(norm_index(i, n))];
+                 auto n = self.size();
+                 return self[normalize_index(i, n)];
              })
         .def("__setitem__",
              [=](T &self, py::ssize_t i, const value_type &val) {
-                 auto n = static_cast<py::ssize_t>(self.size());
-                 self[static_cast<size_t>(norm_index(i, n))] = val;
+                 auto n = self.size();
+                 self[normalize_index(i, n)] = val;
              })
         .def("__iter__", [](T &self) { return py::make_iterator(self.begin(), self.end()); }, py::keep_alive<0, 1>());
 
@@ -127,10 +130,10 @@ static void array_tag(py::module_ &m, const char *name, Args &&...args)
         .def(storage_type() != py::self);
 
     // --- __repr__ ---
-    cls.def("__str__", [](const T &self) { return fmt::format("{}", self); });
+    cls.def("__str__", [](const T &self) { return fmt::format("[{}]", self); });
     cls.def("__repr__", [](const py::object &self) {
         auto name = py::type::of(self).attr("__name__").cast<std::string>();
-        return fmt::format("{}({})", name, self.cast<const T &>());
+        return fmt::format("{}([{}])", name, self.cast<const T &>());
     });
 
     // --- Byte-array niceties: bytes() and buffer protocol ---
@@ -162,5 +165,72 @@ void init_nbt(py::module_ &m)
     array_tag<ByteArrayTag>(m, "ByteArrayTag", py::buffer_protocol());
     value_tag<StringTag>(m, "StringTag");
     array_tag<IntArrayTag>(m, "IntArrayTag");
+
+    py::class_<ListTag>(m, "ListTag")
+        .def(py::init<>())
+        .def(py::init([](py::iterable iter) {
+                 ListTag lt;
+                 for (py::handle h : iter) {
+                     nbt::Tag v = py::cast<nbt::Tag>(h);
+                     lt.push_back(std::move(v));
+                 }
+                 return lt;
+             }),
+             py::arg("iterable"))
+        .def("__len__", [](const ListTag &self) { return static_cast<py::ssize_t>(self.size()); })
+        .def("__bool__", [](const ListTag &self) { return !self.empty(); })
+        .def("__str__", [](const ListTag &self) { return fmt::format("[{}]", self); })
+        .def("__repr__", [](const ListTag &self) { return fmt::format("ListTag([{}])", self); })
+        .def(
+            "__getitem__",
+            [](ListTag &self, py::ssize_t i) -> nbt::Tag & {
+                auto idx = normalize_index(i, self.size());
+                return self.at(idx);
+            },
+            py::return_value_policy::reference_internal)
+        .def("__setitem__",
+             [](ListTag &self, py::ssize_t i, const nbt::Tag &value) {
+                 if (value.type() == nbt::Type::End) {
+                     throw std::invalid_argument("ListTag cannot contain End tags.");
+                 }
+                 const auto n = self.size();
+                 auto idx = normalize_index(i, n);
+                 if (self.type() != nbt::Type::End && value.type() != self.type()) {
+                     throw std::invalid_argument("ListTag elements must have the same type.");
+                 }
+                 self.at(idx) = value;
+             })
+        .def("__delitem__",
+             [](ListTag &self, py::ssize_t i) {
+                 auto idx = normalize_index(i, self.size());
+                 self.erase(self.cbegin() + static_cast<std::ptrdiff_t>(idx));
+             })
+        .def(
+            "__iter__", [](ListTag &self) { return py::make_iterator(self.begin(), self.end()); },
+            py::keep_alive<0, 1>())
+        .def("clear", &ListTag::clear)
+        .def(
+            "append", [](ListTag &self, const nbt::Tag &v) { self.push_back(v); }, py::arg("tag"))
+        .def(
+            "extend",
+            [](ListTag &self, py::iterable it) {
+                for (py::handle h : it) {
+                    self.push_back(py::cast<nbt::Tag>(h));
+                }
+            },
+            py::arg("iterable"))
+        .def(
+            "pop",
+            [](ListTag &self, py::ssize_t index) {
+                auto idx = normalize_index(index, self.size());
+                nbt::Tag out = self.at(index);  // copy out
+                self.erase(self.cbegin() + static_cast<std::ptrdiff_t>(idx));
+                return out;
+            },
+            py::arg("index") = -1)
+        .def("size", &ListTag::size)
+        .def("empty", &ListTag::empty)
+        .def(py::self == py::self)
+        .def(py::self != py::self);
 }
 }  // namespace endstone::python

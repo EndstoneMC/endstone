@@ -35,35 +35,29 @@ public:
     using const_iterator = map_type::const_iterator;
 
     // Constructors
-    CompoundTag();
-    CompoundTag(std::initializer_list<std::pair<std::string, nbt::Tag>> init);
-    template <class It>
-    CompoundTag(It first, It last);
+    CompoundTag() = default;
+    CompoundTag(std::initializer_list<std::pair<key_type, value_type>> init);
 
     // Capacity
-    bool empty() const noexcept;
-    size_type size() const noexcept;
+    [[nodiscard]] bool empty() const noexcept;
+    [[nodiscard]] size_type size() const noexcept;
 
     // Lookup / element access
-    nbt::Tag &at(std::string_view key);
-    const nbt::Tag &at(std::string_view key) const;
-    nbt::Tag &operator[](const std::string &key);  // inserts End if absent
-    nbt::Tag &operator[](std::string &&key);
-    bool contains(std::string_view key) const noexcept;
-    size_type count(std::string_view key) const noexcept;
+    value_type &at(const key_type &key);
+    [[nodiscard]] const value_type &at(key_type key) const;
+    value_type &operator[](const key_type &key);
+    [[nodiscard]] bool contains(const key_type &key) const noexcept;
 
     // Modifiers
     void clear() noexcept;
-    std::pair<iterator, bool> insert(const std::pair<const std::string, nbt::Tag> &v);
-    std::pair<iterator, bool> insert(std::pair<const std::string, nbt::Tag> &&v);
     template <class P>
     std::pair<iterator, bool> insert(P &&v);
     template <class... Args>
-    std::pair<iterator, bool> try_emplace(std::string key, Args &&...ctor_args);
+    std::pair<iterator, bool> try_emplace(const key_type &key, Args &&...args);
     template <class M>
-    std::pair<iterator, bool> insert_or_assign(std::string key, M &&obj);
+    std::pair<iterator, bool> insert_or_assign(const key_type &key, M &&obj);
     iterator erase(const_iterator pos);
-    size_type erase(std::string_view key);
+    size_type erase(const key_type &key);
     iterator erase(const_iterator first, const_iterator last);
     void swap(CompoundTag &other) noexcept;
     void merge(CompoundTag &source);
@@ -72,10 +66,10 @@ public:
     // Iteration
     iterator begin() noexcept;
     iterator end() noexcept;
-    const_iterator begin() const noexcept;
-    const_iterator end() const noexcept;
-    const_iterator cbegin() const noexcept;
-    const_iterator cend() const noexcept;
+    [[nodiscard]] const_iterator begin() const noexcept;
+    [[nodiscard]] const_iterator end() const noexcept;
+    [[nodiscard]] const_iterator cbegin() const noexcept;
+    [[nodiscard]] const_iterator cend() const noexcept;
 
     // Equality
     friend bool operator==(const CompoundTag &a, const CompoundTag &b) noexcept;
