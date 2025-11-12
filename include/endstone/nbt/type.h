@@ -14,10 +14,8 @@
 
 #pragma once
 
-#include "endstone/nbt/array.h"
-#include "endstone/nbt/value.h"
-
 namespace endstone::nbt {
+struct TagBase {};
 enum class Type : std::uint8_t {
     End = 0,
     Byte = 1,

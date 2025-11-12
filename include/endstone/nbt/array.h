@@ -18,11 +18,11 @@
 #include <stdexcept>
 #include <vector>
 
-#include <fmt/format.h>
+#include "endstone/nbt/type.h"
 
 namespace endstone::nbt {
 template <typename T>
-class ArrayTag {
+class ArrayTag : public TagBase {
 public:
     using value_type = T;
     using size_type = std::size_t;
@@ -161,4 +161,3 @@ private:
     storage_type v_;
 };
 }  // namespace endstone::nbt
-

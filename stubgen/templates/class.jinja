@@ -12,5 +12,5 @@ class {{ obj.name }}
             {%- include "{}.jinja".format(obj.kind.value) with context -%}
         {%- endwith -%}
     {%- endfor -%}
+    {{- "...\n" if not obj.members and not obj.docstring -}}
 {%- endfilter -%}
-{{- "pass\n" if not obj.members -}}

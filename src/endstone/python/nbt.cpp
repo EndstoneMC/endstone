@@ -33,7 +33,7 @@ template <typename T, typename... Args>
 auto value_tag(py::module &m, const char *name, Args &&...args)
 {
     using value_type = T::value_type;
-    auto cls = py::class_<T>(m, name, std::forward<Args>(args)...)
+    auto cls = py::class_<T, nbt::TagBase>(m, name, std::forward<Args>(args)...)
                    .def(py::init<>())
                    .def(py::init<const value_type &>(), py::arg("value"))
                    .def_property_readonly("value", &T::value)
@@ -61,7 +61,7 @@ auto value_tag(py::module &m, const char *name, Args &&...args)
 template <typename T, typename... Args>
 static void array_tag(py::module_ &m, const char *name, Args &&...args)
 {
-    auto cls = py::class_<T>(m, name, std::forward<Args>(args)...);
+    auto cls = py::class_<T, nbt::TagBase>(m, name, std::forward<Args>(args)...);
     using value_type = T::value_type;
     using storage_type = T::storage_type;
 
@@ -156,6 +156,7 @@ static void array_tag(py::module_ &m, const char *name, Args &&...args)
 
 void init_nbt(py::module_ &m)
 {
+    py::class_<nbt::TagBase>(m, "Tag");
     value_tag<ByteTag>(m, "ByteTag");
     value_tag<ShortTag>(m, "ShortTag");
     value_tag<IntTag>(m, "IntTag");
@@ -166,7 +167,7 @@ void init_nbt(py::module_ &m)
     value_tag<StringTag>(m, "StringTag");
     array_tag<IntArrayTag>(m, "IntArrayTag");
 
-    py::class_<ListTag>(m, "ListTag")
+    py::class_<ListTag, nbt::TagBase>(m, "ListTag")
         .def(py::init<>())
         .def(py::init([](py::iterable iter) {
                  ListTag lt;

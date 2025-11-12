@@ -25,7 +25,7 @@ namespace nbt {
 class Tag;
 }
 
-class ListTag {
+class ListTag : public nbt::TagBase {
 public:
     using value_type = nbt::Tag;
     using size_type = std::size_t;

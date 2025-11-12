@@ -25,7 +25,7 @@ namespace nbt {
 class Tag;
 }
 
-class CompoundTag {
+class CompoundTag : public nbt::TagBase {
 public:
     using key_type = std::string;
     using value_type = nbt::Tag;
