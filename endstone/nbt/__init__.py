@@ -10,9 +10,11 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "FloatTag",
             "IntArrayTag",
             "IntTag",
+            "ListTag",
             "LongTag",
             "ShortTag",
             "StringTag",
+            "Tag",
         ],
     },
 )

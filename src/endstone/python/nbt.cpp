@@ -233,5 +233,7 @@ void init_nbt(py::module_ &m)
         .def("empty", &ListTag::empty)
         .def(py::self == py::self)
         .def(py::self != py::self);
+
+    py::class_<CompoundTag, nbt::TagBase>(m, "CompoundTag");
 }
 }  // namespace endstone::python

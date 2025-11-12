@@ -298,4 +298,77 @@ public:
     PYBIND11_TYPE_CASTER(endstone::Identifier<T>, const_name(PYBIND11_STRING_NAME));
 };
 
+template <>
+class type_caster<endstone::nbt::Tag> {
+public:
+    bool load(handle src, bool)
+    {
+        if (!src) {
+            return false;
+        }
+        auto type = type::of(src);
+        if (type.is(type::of<endstone::ByteTag>())) {
+            value = src.cast<endstone::ByteTag>();
+            return true;
+        }
+        if (type.is(type::of<endstone::ShortTag>())) {
+            value = src.cast<endstone::ShortTag>();
+            return true;
+        }
+        if (type.is(type::of<endstone::IntTag>())) {
+            value = src.cast<endstone::IntTag>();
+            return true;
+        }
+        if (type.is(type::of<endstone::LongTag>())) {
+            value = src.cast<endstone::LongTag>();
+            return true;
+        }
+        if (type.is(type::of<endstone::FloatTag>())) {
+            value = src.cast<endstone::FloatTag>();
+            return true;
+        }
+        if (type.is(type::of<endstone::DoubleTag>())) {
+            value = src.cast<endstone::DoubleTag>();
+            return true;
+        }
+        if (type.is(type::of<endstone::ByteArrayTag>())) {
+            value = src.cast<endstone::ByteArrayTag>();
+            return true;
+        }
+        if (type.is(type::of<endstone::StringTag>())) {
+            value = src.cast<endstone::StringTag>();
+            return true;
+        }
+        if (type.is(type::of<endstone::ListTag>())) {
+            value = src.cast<endstone::ListTag>();
+            return true;
+        }
+        if (type.is(type::of<endstone::CompoundTag>())) {
+            value = src.cast<endstone::CompoundTag>();
+            return true;
+        }
+        if (type.is(type::of<endstone::IntArrayTag>())) {
+            value = src.cast<endstone::IntArrayTag>();
+            return true;
+        }
+        return false;
+    }
+
+    static handle cast(endstone::nbt::Tag src, return_value_policy /*policy*/, handle /*parent*/)
+    {
+        return src.visit([&](auto &&args) {
+            using T = std::decay_t<decltype(args)>;
+            if constexpr (std::is_same_v<T, std::monostate>) {
+                return none().release();
+            }
+            else {
+                return pybind11::cast(args).release();
+            }
+        });
+    }
+
+public:
+    PYBIND11_TYPE_CASTER(endstone::nbt::Tag, const_name("Tag"));
+};
+
 }  // namespace pybind11::detail
