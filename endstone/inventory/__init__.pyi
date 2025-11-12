@@ -5,6 +5,7 @@ Classes relating to player inventories and item interactions.
 import enum
 import typing
 
+from endstone.enchantments import Enchantment
 from endstone.map import MapView
 
 __all__ = [
@@ -208,7 +209,7 @@ class ItemMeta:
         """
         ...
     @property
-    def enchants(self) -> dict[str, int]:
+    def enchants(self) -> dict[Enchantment, int]:
         """
         Returns a copy the enchantments in this ItemMeta.
         """

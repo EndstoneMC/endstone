@@ -140,10 +140,14 @@ public:
         return enchantments_.at(id);
     }
 
-    [[nodiscard]] std::unordered_map<std::string, int> getEnchants() const override
+    [[nodiscard]] std::unordered_map<const Enchantment *, int> getEnchants() const override
     {
         if (hasEnchants()) {
-            return enchantments_;
+            std::unordered_map<const Enchantment *, int> enchants;
+            for (const auto &[id, lvl] : enchantments_) {
+                enchants.emplace(Enchantment::get(id), lvl);
+            }
+            return enchants;
         }
         return {};
     }
@@ -245,7 +249,7 @@ public:
             setDisplayTag(tag, ItemStackBase::TAG_LORE, createStringList(getLore()));
         }
 
-        applyEnchantments(getEnchants(), tag);
+        applyEnchantments(enchantments_, tag);
 
         tag.remove(ItemStackBase::TAG_REPAIR_COST);
         if (hasRepairCost()) {

@@ -82,7 +82,12 @@ void init_enchantments(py::module_ &m)
              "Checks if this Enchantment may be applied to the given ItemStack.\n\nThis does not check if it conflicts "
              "with any enchantments already applied to the item.")
         .def_static("get", &Enchantment::get, py::arg("name"), "Attempts to get the Enchantment with the given name.",
-                    py::return_value_policy::reference);
+                    py::return_value_policy::reference)
+        .def("__str__", &Enchantment::getId)
+        .def(py::self == py::self)
+        .def(py::self != py::self)
+        .def(py::self == std::string_view())
+        .def(py::self != std::string_view());
 }
 
 }  // namespace endstone::python

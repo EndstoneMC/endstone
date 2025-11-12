@@ -2,6 +2,8 @@
 Classes relating to the specialized enhancements to ItemStacks.
 """
 
+import typing
+
 from endstone.inventory import ItemStack
 
 __all__ = ["Enchantment"]
@@ -89,3 +91,12 @@ class Enchantment:
         Attempts to get the Enchantment with the given name.
         """
         ...
+    def __str__(self) -> str: ...
+    @typing.overload
+    def __eq__(self, arg0: Enchantment) -> bool: ...
+    @typing.overload
+    def __eq__(self, arg0: str) -> bool: ...
+    @typing.overload
+    def __ne__(self, arg0: Enchantment) -> bool: ...
+    @typing.overload
+    def __ne__(self, arg0: str) -> bool: ...

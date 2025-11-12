@@ -277,5 +277,30 @@ public:
      * @return True if the enchantment may be applied, otherwise False
      */
     [[nodiscard]] virtual bool canEnchantItem(const ItemStack &item) const = 0;
+
+    bool operator==(const EnchantmentId &other) const
+    {
+        return getId() == other;
+    }
+
+    bool operator!=(const EnchantmentId &other) const
+    {
+        return !(*this == other);
+    }
+
+    bool operator==(const Enchantment &other) const
+    {
+        return getId() == other.getId();
+    }
+
+    bool operator!=(const Enchantment &other) const
+    {
+        return !(*this == other);
+    }
+
+    operator EnchantmentId() const
+    {
+        return getId();
+    }
 };
 }  // namespace endstone

@@ -118,7 +118,7 @@ public:
      *
      * @return An immutable copy of the enchantments
      */
-    [[nodiscard]] virtual std::unordered_map<std::string, int> getEnchants() const = 0;
+    [[nodiscard]] virtual std::unordered_map<const Enchantment *, int> getEnchants() const = 0;
 
     /**
      * @brief Adds the specified enchantment to this item meta.
