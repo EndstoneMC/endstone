@@ -13,3 +13,4 @@ class {{ obj.name }}
         {%- endwith -%}
     {%- endfor -%}
 {%- endfilter -%}
+{{- "pass\n" if not obj.members -}}
