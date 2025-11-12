@@ -41,13 +41,18 @@ def main():
 
     source_path = stubs_path / "endstone" / "_python"
     for pyi in stubs_path.rglob("*.pyi"):
+        relative_path = pyi.relative_to(source_path)
         text = pyi.read_text(encoding="utf-8")
         text = text.replace("endstone._python", "endstone")
-        text = text.replace("from endstone._version import __version__", "from ._version import __version__")
         text = text.replace("collections.abc.Sequence", "list")
         text = text.replace("typing.SupportsFloat", "float")
         text = text.replace("typing.SupportsInt", "int")
-        relative_path = pyi.relative_to(source_path)
+        if relative_path == Path(".") / "__init__.pyi":
+            text = text.replace("from endstone._version import __version__", "from ._version import __version__")
+
+        if relative_path == Path("nbt") / "__init__.pyi":
+            text = text.replace("endstone.nbt.", "")
+
         output_file = output_path / relative_path
         output_file.parent.mkdir(parents=True, exist_ok=True)
         output_file.write_text(text, encoding="utf-8")
