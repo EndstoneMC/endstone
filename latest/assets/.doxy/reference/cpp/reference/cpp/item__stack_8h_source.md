@@ -162,7 +162,7 @@ public:
     }
 
 private:
-    const ItemType &getItemType() const
+    [[nodiscard]] const ItemType &getItemType() const
     {
         const auto *type = ItemType::get(getType());
         if (type == nullptr) {

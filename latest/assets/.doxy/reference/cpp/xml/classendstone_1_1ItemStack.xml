@@ -111,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_stack.h" line="220" column="20" bodyfile="include/endstone/inventory/item_stack.h" bodystart="220" bodyend="227"/>
+        <location file="include/endstone/inventory/item_stack.h" line="220" column="21" bodyfile="include/endstone/inventory/item_stack.h" bodystart="220" bodyend="227"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemStack_1ad18900f0c9460bb45556111d41e4e09c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
