@@ -16,8 +16,6 @@
 
 #include <algorithm>
 
-#include <fmt/format.h>
-
 #include "endstone/nbt/type.h"
 
 namespace endstone::nbt {
@@ -75,12 +73,3 @@ private:
     T value_;
 };
 }  // namespace endstone::nbt
-
-template <typename T>
-struct fmt::formatter<endstone::nbt::ValueTag<T>> : formatter<string_view> {
-    template <typename FormatContext>
-    auto format(const endstone::nbt::ValueTag<T> &tag, FormatContext &ctx) const -> format_context::iterator
-    {
-        return fmt::format_to(ctx.out(), "{}", tag.value());
-    }
-};

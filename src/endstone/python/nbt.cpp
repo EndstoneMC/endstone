@@ -131,10 +131,10 @@ static void bind_array_tag(py::module_ &m, const char *name, Args &&...args)
         .def(storage_type() != py::self);
 
     // --- __repr__ ---
-    cls.def("__str__", [](const T &self) { return fmt::format("[{}]", self); });
+    cls.def("__str__", [](const T &self) { return fmt::format("{}", self); });
     cls.def("__repr__", [](const py::object &self) {
         auto name = py::type::of(self).attr("__name__").cast<std::string>();
-        return fmt::format("{}([{}])", name, self.cast<const T &>());
+        return fmt::format("{}({})", name, self.cast<const T &>());
     });
 
     // --- Byte-array niceties: bytes() and buffer protocol ---
@@ -170,8 +170,8 @@ static void bind_list_tag(py::module &m)
              py::arg("iterable"))
         .def("__len__", [](const ListTag &self) { return static_cast<py::ssize_t>(self.size()); })
         .def("__bool__", [](const ListTag &self) { return !self.empty(); })
-        .def("__str__", [](const ListTag &self) { return fmt::format("[{}]", self); })
-        .def("__repr__", [](const ListTag &self) { return fmt::format("ListTag([{}])", self); })
+        .def("__str__", [](const ListTag &self) { return fmt::format("{}", self); })
+        .def("__repr__", [](const ListTag &self) { return fmt::format("ListTag({})", self); })
         .def(
             "__getitem__",
             [](ListTag &self, py::ssize_t i) -> nbt::Tag & {
@@ -214,7 +214,7 @@ static void bind_list_tag(py::module &m)
             "pop",
             [](ListTag &self, py::ssize_t index) {
                 auto idx = normalize_index(index, self.size());
-                nbt::Tag out = self.at(index);  // copy out
+                auto out = self.at(idx);  // copy out
                 self.erase(self.cbegin() + static_cast<std::ptrdiff_t>(idx));
                 return out;
             },
@@ -259,9 +259,11 @@ static void bind_compound_tag(py::module &m)
         .def("clear", &CompoundTag::clear)
         .def(
             "pop",
-            [](CompoundTag &self, const std::string &key) -> py::object {
+            [](CompoundTag &self, const std::string &key) {
                 if (self.contains(key)) {
-                    return py::cast(self.erase(key));
+                    auto removed = self.at(key);
+                    self.erase(key);
+                    return removed;
                 }
                 throw py::key_error("key not found: " + key);
             },
@@ -270,7 +272,9 @@ static void bind_compound_tag(py::module &m)
             "pop",
             [](CompoundTag &self, const std::string &key, py::object default_value) -> py::object {
                 if (self.contains(key)) {
-                    return py::cast(self.erase(key));
+                    auto removed = self.at(key);
+                    self.erase(key);
+                    return py::cast(removed);
                 }
                 return default_value;
             },
