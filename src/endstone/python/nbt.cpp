@@ -45,8 +45,8 @@ auto bind_value_tag(py::module &m, const char *name, Args &&...args)
                    .def(value_type() != py::self)
                    .def("__str__", [](const T &self) { return fmt::format("{}", self); })
                    .def("__repr__", [](const py::object &self) {
-                       auto name = py::type::of(self).attr("__name__").cast<std::string>();
-                       return fmt::format("{}({})", name, self.cast<const T &>().value());
+                       auto tag_name = py::type::of(self).attr("__name__").cast<std::string>();
+                       return py::str("{}({})").format(tag_name, py::repr(self.attr("value")));
                    });
 
     if constexpr (std::is_integral_v<value_type>) {
@@ -133,8 +133,12 @@ static void bind_array_tag(py::module_ &m, const char *name, Args &&...args)
     // --- __repr__ ---
     cls.def("__str__", [](const T &self) { return fmt::format("{}", self); });
     cls.def("__repr__", [](const py::object &self) {
-        auto name = py::type::of(self).attr("__name__").cast<std::string>();
-        return fmt::format("{}({})", name, self.cast<const T &>());
+        auto tag_name = py::type::of(self).attr("__name__").cast<std::string>();
+        py::list lst;
+        for (const auto &value : self) {
+            lst.append(value);
+        }
+        return py::str("{}({})").format(tag_name, py::repr(lst));
     });
 
     // --- Byte-array niceties: bytes() and buffer protocol ---
@@ -171,7 +175,14 @@ static void bind_list_tag(py::module &m)
         .def("__len__", [](const ListTag &self) { return static_cast<py::ssize_t>(self.size()); })
         .def("__bool__", [](const ListTag &self) { return !self.empty(); })
         .def("__str__", [](const ListTag &self) { return fmt::format("{}", self); })
-        .def("__repr__", [](const ListTag &self) { return fmt::format("ListTag({})", self); })
+        .def("__repr__",
+             [](const ListTag &self) {
+                 py::list lst;
+                 for (const auto &tag : self) {
+                     lst.append(py::cast(tag));
+                 }
+                 return py::str("ListTag({})").format(py::repr(lst));
+             })
         .def(
             "__getitem__",
             [](ListTag &self, py::ssize_t i) -> nbt::Tag & {
@@ -294,7 +305,13 @@ static void bind_compound_tag(py::module &m)
         .def(py::self == py::self)
         .def(py::self != py::self)
         .def("__str__", [](const CompoundTag &self) { return fmt::format("{}", self); })
-        .def("__repr__", [](const CompoundTag &self) { return fmt::format("CompoundTag({})", self); });
+        .def("__repr__", [](const CompoundTag &self) {
+            py::dict d;
+            for (const auto &[k, v] : self) {
+                d[py::str(k)] = py::cast(v);
+            }
+            return py::str("CompoundTag({})").format(py::repr(d));
+        });
 }
 
 void init_nbt(py::module_ &m)

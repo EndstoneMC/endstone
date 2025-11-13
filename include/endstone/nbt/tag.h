@@ -626,7 +626,11 @@ struct fmt::formatter<endstone::FloatTag> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const endstone::FloatTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}f", tag.value());
+        std::string s = fmt::format("{:g}", tag.value());
+        if (s.find('.') == std::string::npos && s.find('e') == std::string::npos) {
+            s += ".0";
+        }
+        return fmt::format_to(ctx.out(), "{}f", s);
     }
 };
 
@@ -635,7 +639,11 @@ struct fmt::formatter<endstone::DoubleTag> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const endstone::DoubleTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}d", tag.value());
+        std::string s = fmt::format("{:g}", tag.value());
+        if (s.find('.') == std::string::npos && s.find('e') == std::string::npos) {
+            s += ".0";
+        }
+        return fmt::format_to(ctx.out(), "{}d", s);
     }
 };
 
