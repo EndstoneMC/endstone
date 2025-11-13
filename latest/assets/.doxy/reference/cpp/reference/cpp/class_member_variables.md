@@ -419,6 +419,7 @@
 * **value\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md), [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md))
 * **version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **v\_** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **value** ([**endstone::nbt::escape\_view**](structendstone_1_1nbt_1_1escape__view.md))
 
 
 ## w

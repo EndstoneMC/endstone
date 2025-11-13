@@ -11,7 +11,6 @@
 
 
 * `#include <algorithm>`
-* `#include <fmt/format.h>`
 * `#include "endstone/nbt/type.h"`
 
 
@@ -39,7 +38,6 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
-| struct | [**formatter&lt; endstone::nbt::ValueTag&lt; T &gt; &gt;**](structfmt_1_1formatter_3_01endstone_1_1nbt_1_1ValueTag_3_01T_01_4_01_4.md) &lt;typename T&gt;<br> |
 
 
 

@@ -24,8 +24,12 @@
 
 #pragma once
 
-#include <iostream>
+#include <regex>
 
+#include <fmt/format.h>
+#include <fmt/ranges.h>
+
+#include "endstone/detail.h"
 #include "endstone/nbt/array.h"
 #include "endstone/nbt/compound.h"
 #include "endstone/nbt/list.h"
@@ -562,6 +566,16 @@ inline bool operator!=(const CompoundTag &a, const CompoundTag &b) noexcept
 {
     return !(a == b);
 }
+
+namespace nbt {
+struct escape_view {
+    std::string_view value;
+};
+inline escape_view escaped(std::string_view value)
+{
+    return {value};
+}
+}  // namespace nbt
 }  // namespace endstone
 
 template <>
@@ -578,6 +592,188 @@ struct fmt::formatter<endstone::nbt::Tag> : formatter<string_view> {
                 return fmt::format_to(ctx.out(), "{}", arg);
             }
         });
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::ByteTag> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::ByteTag &tag, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "{}b", tag.value());
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::ShortTag> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::ShortTag &tag, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "{}s", tag.value());
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::IntTag> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::IntTag &tag, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "{}", tag.value());
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::LongTag> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::LongTag &tag, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "{}L", tag.value());
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::FloatTag> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::FloatTag &tag, FormatContext &ctx) const -> format_context::iterator
+    {
+        std::string s = fmt::format("{:g}", tag.value());
+        if (s.find('.') == std::string::npos && s.find('e') == std::string::npos) {
+            s += ".0";
+        }
+        return fmt::format_to(ctx.out(), "{}f", s);
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::DoubleTag> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::DoubleTag &tag, FormatContext &ctx) const -> format_context::iterator
+    {
+        std::string s = fmt::format("{:g}", tag.value());
+        if (s.find('.') == std::string::npos && s.find('e') == std::string::npos) {
+            s += ".0";
+        }
+        return fmt::format_to(ctx.out(), "{}d", s);
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::ByteArrayTag> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::ByteArrayTag &tag, FormatContext &ctx) const -> format_context::iterator
+    {
+        auto out = ctx.out();
+        out = fmt::format_to(out, "[B;");
+        auto it = tag.begin();
+        out = fmt::format_to(out, "{}b", *it);
+        ++it;
+        while (it != tag.end()) {
+            fmt::format_to(out, ",{}b", *it);
+            ++it;
+        }
+        out = fmt::format_to(out, "]");
+        return out;
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::StringTag> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::StringTag &tag, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "{}", endstone::nbt::escaped(tag.value()));
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::IntArrayTag> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::IntArrayTag &tag, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "[I;{}]", fmt::join(tag.begin(), tag.end(), ","));
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::ListTag> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::ListTag &tag, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "[{}]", fmt::join(tag.begin(), tag.end(), ","));
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::CompoundTag::map_type::value_type> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::CompoundTag::map_type::value_type &pair, FormatContext &ctx) const
+        -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "{}:{}", endstone::nbt::escaped(pair.first), pair.second);
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::CompoundTag> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::CompoundTag &tag, FormatContext &ctx) const -> format_context::iterator
+    {
+        return fmt::format_to(ctx.out(), "{{{}}}", fmt::join(tag.begin(), tag.end(), ","));
+    }
+};
+
+template <>
+struct fmt::formatter<endstone::nbt::escape_view> : formatter<string_view> {
+    template <typename FormatContext>
+    auto format(const endstone::nbt::escape_view &v, FormatContext &ctx) const -> format_context::iterator
+    {
+        static const std::regex simple_value("[A-Za-z0-9._+-]+");
+        if (std::regex_match(v.value.begin(), v.value.end(), simple_value)) {
+            return fmt::format_to(ctx.out(), "{}", v.value);
+        }
+
+        std::string out = " ";  // placeholder for chosen quote char
+        char quote = 0;
+        for (const char c : v.value) {
+            switch (c) {
+            case '\\':
+                out.push_back('\\');
+                out.push_back('\\');
+                break;
+
+            case '{':
+                out += "{{";  // fmt escape
+                break;
+
+            case '}':
+                out += "}}";  // fmt escape
+                break;
+
+            case '"':
+            case '\'':
+                if (quote == 0) {
+                    // choose opposite quote
+                    quote = (c == '"') ? '\'' : '"';
+                }
+                if (c == quote) {
+                    out.push_back('\\');
+                }
+                out.push_back(c);
+                break;
+
+            default:
+                out.push_back(c);
+                break;
+            }
+        }
+
+        if (quote == 0) {
+            quote = '"';
+        }
+
+        out[0] = quote;
+        out.push_back(quote);
+        return fmt::format_to(ctx.out(), "{}", out);
     }
 };
 ```

@@ -32,6 +32,7 @@
 * **EquipmentSlot** ([**endstone**](namespaceendstone.md))
 * **EventPriority** ([**endstone**](namespaceendstone.md))
 * **EventResult** ([**endstone**](namespaceendstone.md))
+* **escaped** ([**endstone::nbt**](namespaceendstone_1_1nbt.md))
 
 
 ## f

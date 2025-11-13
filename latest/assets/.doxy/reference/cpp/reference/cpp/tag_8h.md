@@ -10,7 +10,10 @@
 
 
 
-* `#include <iostream>`
+* `#include <regex>`
+* `#include <fmt/format.h>`
+* `#include <fmt/ranges.h>`
+* `#include "endstone/detail.h"`
 * `#include "endstone/nbt/array.h"`
 * `#include "endstone/nbt/compound.h"`
 * `#include "endstone/nbt/list.h"`
@@ -42,7 +45,20 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Tag**](classendstone_1_1nbt_1_1Tag.md) <br> |
+| struct | [**formatter&lt; endstone::ByteArrayTag &gt;**](structfmt_1_1formatter_3_01endstone_1_1ByteArrayTag_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::ByteTag &gt;**](structfmt_1_1formatter_3_01endstone_1_1ByteTag_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::CompoundTag &gt;**](structfmt_1_1formatter_3_01endstone_1_1CompoundTag_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::CompoundTag::map\_type::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1CompoundTag_1_1map__type_1_1value__type_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::DoubleTag &gt;**](structfmt_1_1formatter_3_01endstone_1_1DoubleTag_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::FloatTag &gt;**](structfmt_1_1formatter_3_01endstone_1_1FloatTag_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::IntArrayTag &gt;**](structfmt_1_1formatter_3_01endstone_1_1IntArrayTag_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::IntTag &gt;**](structfmt_1_1formatter_3_01endstone_1_1IntTag_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::ListTag &gt;**](structfmt_1_1formatter_3_01endstone_1_1ListTag_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::LongTag &gt;**](structfmt_1_1formatter_3_01endstone_1_1LongTag_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::ShortTag &gt;**](structfmt_1_1formatter_3_01endstone_1_1ShortTag_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::StringTag &gt;**](structfmt_1_1formatter_3_01endstone_1_1StringTag_01_4.md) &lt;&gt;<br> |
 | struct | [**formatter&lt; endstone::nbt::Tag &gt;**](structfmt_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::nbt::escape\_view &gt;**](structfmt_1_1formatter_3_01endstone_1_1nbt_1_1escape__view_01_4.md) &lt;&gt;<br> |
 
 
 

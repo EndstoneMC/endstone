@@ -3,6 +3,7 @@
   <compounddef id="namespaceendstone_1_1nbt" kind="namespace" language="C++">
     <compoundname>endstone::nbt</compoundname>
     <innerclass refid="classendstone_1_1nbt_1_1ArrayTag" prot="public">endstone::nbt::ArrayTag</innerclass>
+    <innerclass refid="structendstone_1_1nbt_1_1escape__view" prot="private">endstone::nbt::escape_view</innerclass>
     <innerclass refid="classendstone_1_1nbt_1_1Tag" prot="public">endstone::nbt::Tag</innerclass>
     <innerclass refid="structendstone_1_1nbt_1_1TagBase" prot="public">endstone::nbt::TagBase</innerclass>
     <innerclass refid="classendstone_1_1nbt_1_1ValueTag" prot="public">endstone::nbt::ValueTag</innerclass>
@@ -114,6 +115,26 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/nbt/type.h" line="19" column="1" bodyfile="include/endstone/nbt/type.h" bodystart="19" bodyend="32"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="tag_8h_1a3311af8ab3020c12798741271ff1aca8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>escape_view</type>
+        <definition>escape_view endstone::nbt::escaped</definition>
+        <argsstring>(std::string_view value)</argsstring>
+        <name>escaped</name>
+        <qualifiedname>endstone::nbt::escaped</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="564" column="20" bodyfile="include/endstone/nbt/tag.h" bodystart="564" bodyend="567"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

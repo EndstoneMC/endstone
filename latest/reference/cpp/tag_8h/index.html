@@ -2613,7 +2613,10 @@ For latest updates join the chat on
 <p><a href="../files/"><strong>FileList</strong></a> <strong>&gt;</strong> <a href="../dir_6cf277b678674f97c7a2b6b3b2447b33/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="../dir_777e494cd9d9b9aeedcd0556d83eeb02/"><strong>nbt</strong></a> <strong>&gt;</strong> <a href="./"><strong>tag.h</strong></a></p>
 <p><a href="../tag_8h_source/">Go to the source code of this file</a></p>
 <ul>
-<li><code>#include &lt;iostream&gt;</code></li>
+<li><code>#include &lt;regex&gt;</code></li>
+<li><code>#include &lt;fmt/format.h&gt;</code></li>
+<li><code>#include &lt;fmt/ranges.h&gt;</code></li>
+<li><code>#include "endstone/detail.h"</code></li>
 <li><code>#include "endstone/nbt/array.h"</code></li>
 <li><code>#include "endstone/nbt/compound.h"</code></li>
 <li><code>#include "endstone/nbt/list.h"</code></li>
@@ -2654,7 +2657,59 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1ByteArrayTag_01_4/"><strong>formatter&lt; endstone::ByteArrayTag &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1ByteTag_01_4/"><strong>formatter&lt; endstone::ByteTag &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1CompoundTag_01_4/"><strong>formatter&lt; endstone::CompoundTag &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1CompoundTag_1_1map__type_1_1value__type_01_4/"><strong>formatter&lt; endstone::CompoundTag::map_type::value_type &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1DoubleTag_01_4/"><strong>formatter&lt; endstone::DoubleTag &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1FloatTag_01_4/"><strong>formatter&lt; endstone::FloatTag &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1IntArrayTag_01_4/"><strong>formatter&lt; endstone::IntArrayTag &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1IntTag_01_4/"><strong>formatter&lt; endstone::IntTag &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1ListTag_01_4/"><strong>formatter&lt; endstone::ListTag &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1LongTag_01_4/"><strong>formatter&lt; endstone::LongTag &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1ShortTag_01_4/"><strong>formatter&lt; endstone::ShortTag &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1StringTag_01_4/"><strong>formatter&lt; endstone::StringTag &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
 <td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4/"><strong>formatter&lt; endstone::nbt::Tag &gt;</strong></a> &lt;&gt;<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structfmt_1_1formatter_3_01endstone_1_1nbt_1_1escape__view_01_4/"><strong>formatter&lt; endstone::nbt::escape_view &gt;</strong></a> &lt;&gt;<br></td>
 </tr>
 </tbody>
 </table>
