@@ -354,7 +354,7 @@ public:
         return false;
     }
 
-    static handle cast(endstone::nbt::Tag src, return_value_policy /*policy*/, handle /*parent*/)
+    static handle cast(const endstone::nbt::Tag &src, return_value_policy policy, handle parent)
     {
         return src.visit([&](auto &&args) {
             using T = std::decay_t<decltype(args)>;
@@ -362,7 +362,7 @@ public:
                 return none().release();
             }
             else {
-                return pybind11::cast(args).release();
+                return pybind11::cast(args, policy, parent).release();
             }
         });
     }
