@@ -494,6 +494,21 @@ std::uint8_t ItemStackBase::getCount() const
     return count_;
 }
 
+const std::vector<const BlockType *> &ItemStackBase::getCanPlaceOn() const
+{
+    return can_place_on_;
+}
+
+const std::vector<const BlockType *> &ItemStackBase::getCanDestroy() const
+{
+    return can_destroy_;
+}
+
+bool ItemStackBase::getWasPickedUp() const
+{
+    return was_picked_up_;
+}
+
 void ItemStackBase::init(const BlockType &block, const int count)
 {
     init(block.getBlockItemId(), count, 0, true);
@@ -583,7 +598,9 @@ void ItemStackBase::_checkForItemWorldCompatibility()
 const std::string ItemStackBase::TAG_DISPLAY = "display";
 const std::string ItemStackBase::TAG_DISPLAY_NAME = "Name";
 const std::string ItemStackBase::TAG_LORE = "Lore";
-const std::string ItemStackBase::TAG_CHARGED_ITEM = "chargedItem";
 const std::string ItemStackBase::TAG_REPAIR_COST = "RepairCost";
 const std::string ItemStackBase::TAG_ENCHANTS = "ench";
 const std::string ItemStackBase::TAG_UNBREAKABLE = "Unbreakable";
+const std::string ItemStackBase::TAG_STORE_CAN_PLACE_ON = "CanPlaceOn";
+const std::string ItemStackBase::TAG_STORE_CAN_DESTROY = "CanDestroy";
+const std::string ItemStackBase::TAG_CHARGED_ITEM = "chargedItem";

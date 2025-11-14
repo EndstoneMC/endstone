@@ -78,6 +78,14 @@ public:
     [[nodiscard]] std::string getCustomName() const;
     [[nodiscard]] bool hasCustomHoverName() const;
     [[nodiscard]] std::uint8_t getCount() const;  // Endstone
+    [[nodiscard]] bool canPlaceOn(const Block *block) const;
+    [[nodiscard]] bool canDestroy(const Block *block) const;
+    bool setCanPlaceOn(const std::vector<std::string> &block_ids);
+    bool setCanDestroy(const std::vector<std::string> &block_ids);
+    [[nodiscard]] const std::vector<const BlockType *> &getCanPlaceOn() const;
+    [[nodiscard]] const std::vector<const BlockType *> &getCanDestroy() const;
+    void setWasPickedUp(bool was_picked_up);
+    [[nodiscard]] bool getWasPickedUp() const;
 
     static const std::string TAG_DISPLAY;
     static const std::string TAG_DISPLAY_NAME;
@@ -85,6 +93,9 @@ public:
     static const std::string TAG_REPAIR_COST;
     static const std::string TAG_ENCHANTS;
     static const std::string TAG_UNBREAKABLE;
+    static const std::string TAG_STORE_CAN_PLACE_ON;
+    static const std::string TAG_STORE_CAN_DESTROY;
+    static const std::string TAG_CHARGED_ITEM;
     static constexpr int ID_MASK = 0xffff;
     static constexpr int ENCHANT_MASK = 0x8000;
     static constexpr int AUX_VALUE_MASK = 0x7fff;
@@ -94,7 +105,6 @@ protected:
     void init(const Item &item, int count, int aux_value, const CompoundTag *user_data, bool do_remap);
     void init(int id, int count, int aux_value, bool do_remap);
 
-    static const std::string TAG_CHARGED_ITEM;
     WeakPtr<Item> item_{nullptr};                      // +8
     std::unique_ptr<CompoundTag> user_data_{nullptr};  // +16
     const Block *block_{nullptr};                      // +24

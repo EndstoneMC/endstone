@@ -44,6 +44,15 @@ const HashedString &Item::getFullNameHash() const
     return full_name_;
 }
 
+std::string Item::getSerializedName() const
+{
+    std::string_view raw_name = raw_name_id_.getString();
+    if (raw_name.ends_with(".tile")) {
+        raw_name.remove_suffix(5);
+    }
+    return namespace_ + ":" + std::string(raw_name);
+}
+
 const BaseGameVersion &Item::getRequiredBaseGameVersion() const
 {
     return min_required_base_game_version_;

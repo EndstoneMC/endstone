@@ -131,12 +131,30 @@ std::unique_ptr<ItemStack> EndstoneItemStack::clone() const
 CompoundTag EndstoneItemStack::toNbt() const
 {
     CompoundTag tag;
-    auto *item = item_.getItem();
-    tag["Name"] = StringTag(item == nullptr ? "" : item->getFullItemName());
+    const auto *item = item_.getItem();
+    tag["Name"] = StringTag(item == nullptr ? "" : item->getSerializedName());
     tag["Count"] = ByteTag(item_.getCount());
     tag["Damage"] = ShortTag(item_.getAuxValue());
-    if (item_.hasUserData()) {
-        tag["tag"] = nbt::fromMinecraft(*item_.getUserData());
+    tag["WasPickedUp"] = ByteTag(item_.getWasPickedUp());
+    if (const auto *block = item_.getBlock()) {
+        tag["Block"] = nbt::fromMinecraft(block->getSerializationId());
+    }
+    if (const auto *user_data = item_.getUserData()) {
+        tag["tag"] = nbt::fromMinecraft(*user_data);
+    }
+    if (auto &can_place_on = item_.getCanPlaceOn(); !can_place_on.empty()) {
+        ListTag list;
+        for (const auto &block : can_place_on) {
+            list.emplace_back(StringTag(block->getName().getString()));
+        }
+        tag[ItemStackBase::TAG_STORE_CAN_PLACE_ON] = list;
+    }
+    if (auto &can_destroy = item_.getCanDestroy(); !can_destroy.empty()) {
+        ListTag list;
+        for (const auto &block : can_destroy) {
+            list.emplace_back(StringTag(block->getName().getString()));
+        }
+        tag[ItemStackBase::TAG_STORE_CAN_DESTROY] = list;
     }
     return tag;
 }
