@@ -354,6 +354,12 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                 data.enum_name_or_postfix = "Block";
                 data.enum_or_postfix_symbol = CommandRegistry::Symbol::fromEnumIndex(enum_index).value();
             }
+            else if (parameter.type == "entity_type") {
+                static auto enum_index = registry.enum_lookup_.at("EntityType");
+                data.param_type = CommandParameterDataType::Enum;
+                data.enum_name_or_postfix = "EntityType";
+                data.enum_or_postfix_symbol = CommandRegistry::Symbol::fromEnumIndex(enum_index).value();
+            }
             else {
                 if (parameter.type == "message" && (&parameter != &parameters.back())) {
                     server_.getLogger().error(

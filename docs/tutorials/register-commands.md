@@ -308,6 +308,7 @@ Here is a full list of all built-in types currently supported.
 | `json`         |                             | Represents a JSON string                               | `{"key": "value"}`                          |
 | `block`        |                             | Represents a block type                                | `wood`                                      |
 | `block_states` |                             | Represents the block states                            | `["wood_type"="birch","stripped_bit"=true]` |
+| `entity_type`  |                             | Represents a entity type                               | `minecraft:creeper`                         |
 
 ### User-defined enum types
 
