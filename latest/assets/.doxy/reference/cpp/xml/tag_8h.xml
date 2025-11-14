@@ -184,6 +184,14 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
+      <node id="19">
+        <label>include/endstone/inventory/meta/book_meta.h</label>
+        <link refid="book__meta_8h_source"/>
+      </node>
+      <node id="16">
+        <label>include/endstone/inventory/meta/crossbow_meta.h</label>
+        <link refid="crossbow__meta_8h_source"/>
+      </node>
       <node id="14">
         <label>include/endstone/inventory/meta/item_meta.h</label>
         <link refid="item__meta_8h_source"/>
@@ -193,10 +201,20 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
       </node>
-      <node id="16">
+      <node id="17">
         <label>include/endstone/inventory/meta/map_meta.h</label>
         <link refid="map__meta_8h_source"/>
+      </node>
+      <node id="18">
+        <label>include/endstone/inventory/meta/writable_book_meta.h</label>
+        <link refid="writable__book__meta_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
       </node>
       <node id="8">
         <label>include/endstone/inventory/recipe.h</label>

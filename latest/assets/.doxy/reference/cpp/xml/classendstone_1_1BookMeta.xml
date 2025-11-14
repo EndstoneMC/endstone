@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1BookMeta" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::BookMeta</compoundname>
+    <basecompoundref refid="classendstone_1_1WritableBookMeta" prot="public" virt="non-virtual">endstone::WritableBookMeta</basecompoundref>
+    <includes refid="book__meta_8h" local="no">endstone/inventory/meta/book_meta.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Generation</name>
+        <qualifiedname>endstone::BookMeta::Generation</qualifiedname>
+        <enumvalue id="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737a0a52da7a03a6de3beefe54f8c03ad80d" prot="public">
+          <name>Original</name>
+          <briefdescription>
+<para>Book written into a book-and-quill. Can be copied. (Default value) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737ab028302606d3dcce368a38da653d1d3b" prot="public">
+          <name>CopyOfOriginal</name>
+          <briefdescription>
+<para>Book that was copied from an original. Can be copied. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737a85ea8fafde61a221012d107d97171871" prot="public">
+          <name>CopyOfCopy</name>
+          <briefdescription>
+<para>Book that was copied from a copy of an original. Can&apos;t be copied. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents the generation (or level of copying) of a written book. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="30" column="5" bodyfile="include/endstone/inventory/meta/book_meta.h" bodystart="30" bodyend="43"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1a8ecca25a84dbcdcc05131d5aa52b0792" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::BookMeta::hasTitle</definition>
+        <argsstring>() const =0</argsstring>
+        <name>hasTitle</name>
+        <qualifiedname>endstone::BookMeta::hasTitle</qualifiedname>
+        <briefdescription>
+<para>Checks for the existence of a title in the book. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the book has a title </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="50" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1ad3ccd6d94c0ccca6f27161bd66a7865d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::BookMeta::getTitle</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getTitle</name>
+        <qualifiedname>endstone::BookMeta::getTitle</qualifiedname>
+        <briefdescription>
+<para>Gets the title of the book. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Plugins should check that <ref refid="classendstone_1_1BookMeta_1a8ecca25a84dbcdcc05131d5aa52b0792" kindref="member">hasTitle()</ref> returns true before calling this method.</para>
+</simplesect>
+<simplesect kind="return"><para>the title of the book </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="59" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1aaf83599af609f13ffcff2529058f82a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::BookMeta::setTitle</definition>
+        <argsstring>(std::optional&lt; std::string &gt; title)=0</argsstring>
+        <name>setTitle</name>
+        <qualifiedname>endstone::BookMeta::setTitle</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>title</declname>
+        </param>
+        <briefdescription>
+<para>Sets the title of the book. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Limited to 32 characters. Removes title when given std::nullopt.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the title to set</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the title was successfully set </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="70" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1a998af616da38d1fae1540ed543a50858" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::BookMeta::hasAuthor</definition>
+        <argsstring>() const =0</argsstring>
+        <name>hasAuthor</name>
+        <qualifiedname>endstone::BookMeta::hasAuthor</qualifiedname>
+        <briefdescription>
+<para>Checks for the existence of an author in the book. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the book has an author </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="77" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1a04ea1998ed105347d0c6424104963835" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::BookMeta::getAuthor</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getAuthor</name>
+        <qualifiedname>endstone::BookMeta::getAuthor</qualifiedname>
+        <briefdescription>
+<para>Gets the author of the book. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Plugins should check that <ref refid="classendstone_1_1BookMeta_1a998af616da38d1fae1540ed543a50858" kindref="member">hasAuthor()</ref> returns true before calling this method.</para>
+</simplesect>
+<simplesect kind="return"><para>the author of the book </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="86" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1a23263421a05082ce203afb1e454f8a30" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::BookMeta::setAuthor</definition>
+        <argsstring>(std::optional&lt; std::string &gt; author)=0</argsstring>
+        <name>setAuthor</name>
+        <qualifiedname>endstone::BookMeta::setAuthor</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>author</declname>
+        </param>
+        <briefdescription>
+<para>Sets the author of the book. Removes author when given std::nullopt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>author</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the author to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="93" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1a8c94e32c426cf5b285e89cfd752db167" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::BookMeta::hasGeneration</definition>
+        <argsstring>() const =0</argsstring>
+        <name>hasGeneration</name>
+        <qualifiedname>endstone::BookMeta::hasGeneration</qualifiedname>
+        <briefdescription>
+<para>Checks for the existence of generation level in the book. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the book has a generation level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="100" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1af1d15866a2ba5d5a3465ef4cb7720468" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; <ref refid="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737" kindref="member">Generation</ref> &gt;</type>
+        <definition>virtual std::optional&lt; Generation &gt; endstone::BookMeta::getGeneration</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getGeneration</name>
+        <qualifiedname>endstone::BookMeta::getGeneration</qualifiedname>
+        <briefdescription>
+<para>Gets the generation of the book. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Plugins should check that <ref refid="classendstone_1_1BookMeta_1a8c94e32c426cf5b285e89cfd752db167" kindref="member">hasGeneration()</ref> returns true before calling this method.</para>
+</simplesect>
+<simplesect kind="return"><para>the generation of the book </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="109" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BookMeta_1a4dce971cb64a6ad8ed115498bedce599" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::BookMeta::setGeneration</definition>
+        <argsstring>(std::optional&lt; Generation &gt; generation)=0</argsstring>
+        <name>setGeneration</name>
+        <qualifiedname>endstone::BookMeta::setGeneration</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737" kindref="member">Generation</ref> &gt;</type>
+          <declname>generation</declname>
+        </param>
+        <briefdescription>
+<para>Sets the generation of the book. Removes generation when given std::nullopt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>generation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the generation to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="116" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents the meta for a written book that can have a title, an author, and pages. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::BookMeta</label>
+        <link refid="classendstone_1_1BookMeta"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::ItemMeta</label>
+        <link refid="classendstone_1_1ItemMeta"/>
+      </node>
+      <node id="2">
+        <label>endstone::WritableBookMeta</label>
+        <link refid="classendstone_1_1WritableBookMeta"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::BookMeta</label>
+        <link refid="classendstone_1_1BookMeta"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::ItemMeta</label>
+        <link refid="classendstone_1_1ItemMeta"/>
+      </node>
+      <node id="2">
+        <label>endstone::WritableBookMeta</label>
+        <link refid="classendstone_1_1WritableBookMeta"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/inventory/meta/book_meta.h" line="23" column="1" bodyfile="include/endstone/inventory/meta/book_meta.h" bodystart="23" bodyend="117"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ItemMeta_1ac1ee49d00e1cdd56816e0e775bff4241" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>addEnchant</name></member>
+      <member refid="classendstone_1_1WritableBookMeta_1a40c40653c9f6d88d170e9aa5b9838df8" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>addPage</name></member>
+      <member refid="classendstone_1_1WritableBookMeta_1a8c6bbef3da6c8cf8005b7d6c1ca9ac15" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>addPage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1af179bd7b745731e3d0f1e66828e45149" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>as</name></member>
+      <member refid="classendstone_1_1ItemMeta_1af5d8b132d9add8051466b9b19e3bfa61" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>as</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>clone</name></member>
+      <member refid="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>Generation</name></member>
+      <member refid="classendstone_1_1BookMeta_1a04ea1998ed105347d0c6424104963835" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getAuthor</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getDamage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getDisplayName</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a4ada54133ca59faa19c55d38b3be845f" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getEnchantLevel</name></member>
+      <member refid="classendstone_1_1ItemMeta_1afe5fbc4ed421b33e455d1e2e679d76e5" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getEnchants</name></member>
+      <member refid="classendstone_1_1BookMeta_1af1d15866a2ba5d5a3465ef4cb7720468" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getGeneration</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a170ca4e3a87a7a590ba03019129793d1" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getLore</name></member>
+      <member refid="classendstone_1_1WritableBookMeta_1a88f4642c54fda6ad370504b494050db0" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getPage</name></member>
+      <member refid="classendstone_1_1WritableBookMeta_1a207196509c31e42333531d547b0f1af0" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getPageCount</name></member>
+      <member refid="classendstone_1_1WritableBookMeta_1a488476c1a3cd831188fdeb8f8ae26d3d" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getPages</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getRepairCost</name></member>
+      <member refid="classendstone_1_1BookMeta_1ad3ccd6d94c0ccca6f27161bd66a7865d" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getTitle</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getType</name></member>
+      <member refid="classendstone_1_1BookMeta_1a998af616da38d1fae1540ed543a50858" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasAuthor</name></member>
+      <member refid="classendstone_1_1ItemMeta_1af5939a3ac6202136120dcab179c8e9d6" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasConflictingEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasDamage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasDisplayName</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ade351771a140fed5f755067c9fa8d6e3" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ac43230ac05adb1a16d1d6d60049dc010" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasEnchants</name></member>
+      <member refid="classendstone_1_1BookMeta_1a8c94e32c426cf5b285e89cfd752db167" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasGeneration</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasLore</name></member>
+      <member refid="classendstone_1_1WritableBookMeta_1a778ade876436bcd7dc30d4d2a44729bf" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasPages</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasRepairCost</name></member>
+      <member refid="classendstone_1_1BookMeta_1a8ecca25a84dbcdcc05131d5aa52b0792" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasTitle</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>isUnbreakable</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ad00a6e480dbda4f8e054f48cd318756f" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>removeEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>removeEnchants</name></member>
+      <member refid="classendstone_1_1BookMeta_1a23263421a05082ce203afb1e454f8a30" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setAuthor</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a65cb98d0b4ad3842775aeea2fb7900cc" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setDamage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setDisplayName</name></member>
+      <member refid="classendstone_1_1BookMeta_1a4dce971cb64a6ad8ed115498bedce599" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setGeneration</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setLore</name></member>
+      <member refid="classendstone_1_1WritableBookMeta_1ac40efd712c8fe6ecc7bb8c7fd503de97" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setPage</name></member>
+      <member refid="classendstone_1_1WritableBookMeta_1a8ac8922569392b56172011e714c38b37" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>setPages</name></member>
+      <member refid="classendstone_1_1WritableBookMeta_1af78248585a392637bb362107854f5d87" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setPages</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setRepairCost</name></member>
+      <member refid="classendstone_1_1BookMeta_1aaf83599af609f13ffcff2529058f82a5" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setTitle</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setUnbreakable</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a4e9ad277734acb0df17559a70ca8ed78" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>toNbt</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>Type</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" prot="public" virt="virtual"><scope>endstone::BookMeta</scope><name>~ItemMeta</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

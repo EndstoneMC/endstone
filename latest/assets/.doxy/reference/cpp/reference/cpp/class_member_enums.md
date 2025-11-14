@@ -8,6 +8,11 @@
 * **Action** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 
 
+## g
+
+* **Generation** ([**endstone::BookMeta**](classendstone_1_1BookMeta.md))
+
+
 ## l
 
 * **Level** ([**endstone::Logger**](classendstone_1_1Logger.md))

@@ -28,6 +28,7 @@
     <innerclass refid="classendstone_1_1BlockPistonRetractEvent" prot="public">endstone::BlockPistonRetractEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockPlaceEvent" prot="public">endstone::BlockPlaceEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockState" prot="public">endstone::BlockState</innerclass>
+    <innerclass refid="classendstone_1_1BookMeta" prot="public">endstone::BookMeta</innerclass>
     <innerclass refid="classendstone_1_1BossBar" prot="public">endstone::BossBar</innerclass>
     <innerclass refid="classendstone_1_1BroadcastMessageEvent" prot="public">endstone::BroadcastMessageEvent</innerclass>
     <innerclass refid="classendstone_1_1Button" prot="public">endstone::Button</innerclass>
@@ -47,6 +48,7 @@
     <innerclass refid="classendstone_1_1CompoundTag" prot="public">endstone::CompoundTag</innerclass>
     <innerclass refid="classendstone_1_1ConsoleCommandSender" prot="public">endstone::ConsoleCommandSender</innerclass>
     <innerclass refid="classendstone_1_1Criteria" prot="public">endstone::Criteria</innerclass>
+    <innerclass refid="classendstone_1_1CrossbowMeta" prot="public">endstone::CrossbowMeta</innerclass>
     <innerclass refid="classendstone_1_1DamageSource" prot="public">endstone::DamageSource</innerclass>
     <innerclass refid="classendstone_1_1Dimension" prot="public">endstone::Dimension</innerclass>
     <innerclass refid="classendstone_1_1DimensionEvent" prot="public">endstone::DimensionEvent</innerclass>
@@ -158,6 +160,7 @@
     <innerclass refid="classendstone_1_1Vector" prot="public">endstone::Vector</innerclass>
     <innerclass refid="classendstone_1_1WeatherChangeEvent" prot="public">endstone::WeatherChangeEvent</innerclass>
     <innerclass refid="classendstone_1_1WeatherEvent" prot="public">endstone::WeatherEvent</innerclass>
+    <innerclass refid="classendstone_1_1WritableBookMeta" prot="public">endstone::WritableBookMeta</innerclass>
     <innernamespace refid="namespaceendstone_1_1core">endstone::core</innernamespace>
     <innernamespace refid="namespaceendstone_1_1detail">endstone::detail</innernamespace>
     <innernamespace refid="namespaceendstone_1_1nbt">endstone::nbt</innernamespace>

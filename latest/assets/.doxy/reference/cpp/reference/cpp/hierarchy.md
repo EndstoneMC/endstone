@@ -57,6 +57,11 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Block**](classendstone_1_1Block.md) _Represents a block._ 
 * **class** [**endstone::BlockData**](classendstone_1_1BlockData.md) _Represents the data related to a live block._ 
 * **class** [**endstone::BlockState**](classendstone_1_1BlockState.md) _Represents a captured state of a block, which will not update automatically._ 
+* **class** [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
+    * **class** [**endstone::CrossbowMeta**](classendstone_1_1CrossbowMeta.md) _Represents the meta for a crossbow that can have charged projectiles._ 
+    * **class** [**endstone::MapMeta**](classendstone_1_1MapMeta.md) _Represents the metadata for a map item._ 
+    * **class** [**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md) _Represents the meta for a writable book that can have pages._     
+        * **class** [**endstone::BookMeta**](classendstone_1_1BookMeta.md) _Represents the meta for a written book that can have a title, an author, and pages._ 
 * **class** [**endstone::BossBar**](classendstone_1_1BossBar.md) _Represents a boss bar that is displayed to players._ 
 * **class** [**endstone::Button**](classendstone_1_1Button.md) _Represents a button with text and an optional icon._ 
 * **class** [**endstone::Chunk**](classendstone_1_1Chunk.md) _Represents a chunk of blocks._ 
@@ -90,8 +95,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
     * **class** [**endstone::PlayerInventory**](classendstone_1_1PlayerInventory.md) _Interface to the inventory of a_ [_**Player**_](classendstone_1_1Player.md) _, including the four armor slots and any extra slots._
 * **class** [**endstone::ItemFactory**](classendstone_1_1ItemFactory.md) 
-* **class** [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
-    * **class** [**endstone::MapMeta**](classendstone_1_1MapMeta.md) _Represents the metadata for a map item._ 
 * **class** [**endstone::ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._ 
 * **class** [**endstone::ItemType**](classendstone_1_1ItemType.md) 
 * **class** [**endstone::Label**](classendstone_1_1Label.md) _Represents a text label._ 

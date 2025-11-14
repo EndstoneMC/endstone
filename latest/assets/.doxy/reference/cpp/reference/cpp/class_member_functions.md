@@ -38,6 +38,7 @@
 * **asPlayer** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **addAttachment** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **at** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md), [**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md), [**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
+* **addChargedProjectile** ([**endstone::CrossbowMeta**](classendstone_1_1CrossbowMeta.md))
 * **addOption** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **addItem** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **all** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
@@ -50,6 +51,7 @@
 * **addPermission** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **addObjective** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **angle** ([**endstone::Vector**](classendstone_1_1Vector.md))
+* **addPage** ([**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md))
 * **ArrayTag** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **assign** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **aliases** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
@@ -222,11 +224,13 @@
 * **getBlockAgainst** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
 * **getBlockPlacedState** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
 * **getBlockReplaced** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
+* **getAuthor** ([**endstone::BookMeta**](classendstone_1_1BookMeta.md))
+* **getGeneration** ([**endstone::BookMeta**](classendstone_1_1BookMeta.md))
+* **getTitle** ([**endstone::BookMeta**](classendstone_1_1BookMeta.md), [**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::Form**](classendstone_1_1Form.md))
 * **getColor** ([**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::Image**](classendstone_1_1Image.md))
 * **getPlayers** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **getProgress** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **getStyle** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
-* **getTitle** ([**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::Form**](classendstone_1_1Form.md))
 * **getMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))
 * **getRecipients** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **getIcon** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
@@ -246,6 +250,7 @@
 * **getEffectivePermissions** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **getPermissionLevel** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **getDefaultRenderType** ([**endstone::Criteria**](classendstone_1_1Criteria.md))
+* **getChargedProjectiles** ([**endstone::CrossbowMeta**](classendstone_1_1CrossbowMeta.md))
 * **getDamagingActor** ([**endstone::DamageSource**](classendstone_1_1DamageSource.md))
 * **getActors** ([**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::Level**](classendstone_1_1Level.md))
 * **getBlockAt** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
@@ -446,13 +451,20 @@
 * **getParameters** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **getCrossProduct** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **getMidpoint** ([**endstone::Vector**](classendstone_1_1Vector.md))
+* **getPage** ([**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md))
+* **getPageCount** ([**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md))
+* **getPages** ([**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md))
 * **get\_if** ([**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
 
 
 ## h
 
+* **hasAuthor** ([**endstone::BookMeta**](classendstone_1_1BookMeta.md))
+* **hasGeneration** ([**endstone::BookMeta**](classendstone_1_1BookMeta.md))
+* **hasTitle** ([**endstone::BookMeta**](classendstone_1_1BookMeta.md))
 * **hasFlag** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **hasPermission** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
+* **hasChargedProjectiles** ([**endstone::CrossbowMeta**](classendstone_1_1CrossbowMeta.md))
 * **HandlerList** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **Header** ([**endstone::Header**](classendstone_1_1Header.md))
 * **hasConflictingEnchant** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md))
@@ -467,6 +479,7 @@
 * **hasMapView** ([**endstone::MapMeta**](classendstone_1_1MapMeta.md))
 * **hasBlock** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **hasItem** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
+* **hasPages** ([**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md))
 
 
 ## i
@@ -705,10 +718,12 @@
 * **setData** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **setType** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **setResult** ([**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md))
+* **setAuthor** ([**endstone::BookMeta**](classendstone_1_1BookMeta.md))
+* **setGeneration** ([**endstone::BookMeta**](classendstone_1_1BookMeta.md))
+* **setTitle** ([**endstone::BookMeta**](classendstone_1_1BookMeta.md), [**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::Form**](classendstone_1_1Form.md))
 * **setColor** ([**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::Image**](classendstone_1_1Image.md))
 * **setProgress** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **setStyle** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
-* **setTitle** ([**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::Form**](classendstone_1_1Form.md))
 * **setVisible** ([**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **setMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **setIcon** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
@@ -728,6 +743,7 @@
 * **sendMessage** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **size** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md), [**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::UUID**](classendstone_1_1UUID.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md), [**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
 * **swap** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md), [**endstone::UUID**](classendstone_1_1UUID.md))
+* **setChargedProjectiles** ([**endstone::CrossbowMeta**](classendstone_1_1CrossbowMeta.md))
 * **spawnActor** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **setDefaultIndex** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **setLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Header**](classendstone_1_1Header.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
@@ -842,6 +858,8 @@
 * **SocketAddress** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 * **setPlaceholder** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 * **str** ([**endstone::UUID**](classendstone_1_1UUID.md))
+* **setPage** ([**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md))
+* **setPages** ([**endstone::WritableBookMeta**](classendstone_1_1WritableBookMeta.md))
 
 
 ## t

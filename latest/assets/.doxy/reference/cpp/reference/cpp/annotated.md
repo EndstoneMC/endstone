@@ -31,6 +31,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**BlockPistonRetractEvent**](classendstone_1_1BlockPistonRetractEvent.md) _Called when a piston retracts._     
     * **class** [**BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md) _Called when a block is placed by a player._     
     * **class** [**BlockState**](classendstone_1_1BlockState.md) _Represents a captured state of a block, which will not update automatically._     
+    * **class** [**BookMeta**](classendstone_1_1BookMeta.md) _Represents the meta for a written book that can have a title, an author, and pages._     
     * **class** [**BossBar**](classendstone_1_1BossBar.md) _Represents a boss bar that is displayed to players._     
     * **class** [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) [_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._    
     * **class** [**Button**](classendstone_1_1Button.md) _Represents a button with text and an optional icon._     
@@ -50,6 +51,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**CompoundTag**](classendstone_1_1CompoundTag.md)     
     * **class** [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
     * **class** [**Criteria**](classendstone_1_1Criteria.md) _Represents a scoreboard criteria._     
+    * **class** [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) _Represents the meta for a crossbow that can have charged projectiles._     
     * **class** [**DamageSource**](classendstone_1_1DamageSource.md) _Represents a source of damage._     
     * **class** [**Dimension**](classendstone_1_1Dimension.md) _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._    
     * **class** [**DimensionEvent**](classendstone_1_1DimensionEvent.md) _Represents events within a level._     
@@ -160,6 +162,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Vector**](classendstone_1_1Vector.md) _Represents a 3-dimensional vector._     
     * **class** [**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) _Called when the weather (rain) state in a world is changing._     
     * **class** [**WeatherEvent**](classendstone_1_1WeatherEvent.md) _Represents a Weather-related event._     
+    * **class** [**WritableBookMeta**](classendstone_1_1WritableBookMeta.md) _Represents the meta for a writable book that can have pages._     
     * **namespace** [**core**](namespaceendstone_1_1core.md) 
     * **namespace** [**detail**](namespaceendstone_1_1detail.md)     
     * **namespace** [**nbt**](namespaceendstone_1_1nbt.md)     

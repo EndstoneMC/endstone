@@ -265,6 +265,10 @@
          <lastmod>2025-11-14</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BookMeta/</loc>
+         <lastmod>2025-11-14</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BossBar/</loc>
          <lastmod>2025-11-14</lastmod>
     </url>
@@ -338,6 +342,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Criteria/</loc>
+         <lastmod>2025-11-14</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1CrossbowMeta/</loc>
          <lastmod>2025-11-14</lastmod>
     </url>
     <url>
@@ -778,6 +786,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1WeatherEvent/</loc>
+         <lastmod>2025-11-14</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1WritableBookMeta/</loc>
          <lastmod>2025-11-14</lastmod>
     </url>
     <url>
@@ -1945,6 +1957,22 @@
          <lastmod>2025-11-14</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/book__meta_8h/</loc>
+         <lastmod>2025-11-14</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/book__meta_8h_source/</loc>
+         <lastmod>2025-11-14</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/crossbow__meta_8h/</loc>
+         <lastmod>2025-11-14</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/crossbow__meta_8h_source/</loc>
+         <lastmod>2025-11-14</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/item__meta_8h/</loc>
          <lastmod>2025-11-14</lastmod>
     </url>
@@ -1958,6 +1986,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/map__meta_8h_source/</loc>
+         <lastmod>2025-11-14</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/writable__book__meta_8h/</loc>
+         <lastmod>2025-11-14</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/writable__book__meta_8h_source/</loc>
          <lastmod>2025-11-14</lastmod>
     </url>
     <url>

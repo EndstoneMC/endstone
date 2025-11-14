@@ -62,6 +62,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**BlockState**](classendstone_1_1BlockState.md)
 ([**endstone**](namespaceendstone.md))
+* [**BookMeta**](classendstone_1_1BookMeta.md)
+([**endstone**](namespaceendstone.md))
 * [**BossBar**](classendstone_1_1BossBar.md)
 ([**endstone**](namespaceendstone.md))
 * [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md)
@@ -104,6 +106,8 @@
 * [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md)
 ([**endstone**](namespaceendstone.md))
 * [**Criteria**](classendstone_1_1Criteria.md)
+([**endstone**](namespaceendstone.md))
+* [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md)
 ([**endstone**](namespaceendstone.md))
 
 
@@ -455,6 +459,8 @@
 * [**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**WeatherEvent**](classendstone_1_1WeatherEvent.md)
+([**endstone**](namespaceendstone.md))
+* [**WritableBookMeta**](classendstone_1_1WritableBookMeta.md)
 ([**endstone**](namespaceendstone.md))
 
 

@@ -40,7 +40,10 @@ class ItemMeta {
 public:
     enum class Type {
         Item,
+        Book,
+        CrossBow,
         Map,
+        WritableBook,
     };
 
     ENDSTONE_ITEM_META_TYPE(Item)

@@ -16,7 +16,7 @@ _Represents the metadata of a generic item._
 
 
 
-Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta.md)
+Inherited by the following classes: [endstone::CrossbowMeta](classendstone_1_1CrossbowMeta.md),  [endstone::MapMeta](classendstone_1_1MapMeta.md),  [endstone::WritableBookMeta](classendstone_1_1WritableBookMeta.md)
 
 
 
@@ -124,7 +124,10 @@ Inherited by the following classes: [endstone::MapMeta](classendstone_1_1MapMeta
 ```C++
 enum endstone::ItemMeta::Type {
     Item,
-    Map
+    Book,
+    CrossBow,
+    Map,
+    WritableBook
 };
 ```
 
