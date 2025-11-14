@@ -14,7 +14,9 @@
 
 #include "endstone/core/inventory/item_factory.h"
 
+#include "bedrock/world/item/item_instance.h"
 #include "endstone/core/inventory/item_metas.h"
+#include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/inventory/meta/item_meta.h"
 
 namespace endstone::core {
@@ -59,6 +61,12 @@ bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) c
 std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, ItemId type) const
 {
     return getItemMeta(type, meta);
+}
+
+std::unique_ptr<ItemStack> EndstoneItemFactory::createItemStack(const CompoundTag &tag) const
+{
+    auto item = ItemInstance::fromTag(static_cast<::CompoundTag &>(*nbt::toMinecraft(tag)));
+    return std::make_unique<EndstoneItemStack>(item);
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemId &type, const ItemMeta *meta) const

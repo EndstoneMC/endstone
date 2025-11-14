@@ -21,6 +21,7 @@ public:
     static const ItemInstance EMPTY_ITEM;
     ItemInstance() = default;
     explicit ItemInstance(const ItemStackBase &);
+    static ItemInstance fromTag(const CompoundTag & tag);
 };
 
 struct SortItemInstanceIdAux {

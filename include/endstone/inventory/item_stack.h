@@ -218,9 +218,9 @@ public:
     }
 
     /**
-     * @brief Serializes this ItemStack into an Named Binary Tag (NBT)
+     * @brief Serializes this ItemStack into a Named Binary Tag (NBT)
      *
-     * @return A CompoundTag containing the NBT representation of this ItemStack.
+     * @return A CompoundTag containing the NBT of this ItemStack.
      */
     [[nodiscard]] virtual CompoundTag toNbt() const
     {
@@ -232,6 +232,18 @@ public:
             tag["tag"] = getItemMeta()->toNbt();
         }
         return tag;
+    }
+
+    /**
+     * @brief Deserializes an ItemStack from a Named Binary Tag (NBT).
+     *
+     * @param tag The CompoundTag used to deserialize the ItemStack.
+     *
+     * @return The ItemStack created from the provided NBT.
+     */
+    static std::unique_ptr<ItemStack> fromNbt(const CompoundTag &tag)
+    {
+        return detail::getServer().getItemFactory().createItemStack(tag);
     }
 
 private:

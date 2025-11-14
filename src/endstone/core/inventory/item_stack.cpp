@@ -21,7 +21,7 @@
 
 namespace endstone::core {
 
-EndstoneItemStack::EndstoneItemStack(const ::ItemStack &item) : item_(item) {}
+EndstoneItemStack::EndstoneItemStack(const ::ItemStackBase &item) : item_(item) {}
 
 EndstoneItemStack::EndstoneItemStack(const EndstoneItemStack &rhs) : ItemStack(rhs), item_(rhs.item_)
 {

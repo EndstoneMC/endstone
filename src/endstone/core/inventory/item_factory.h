@@ -27,6 +27,7 @@ public:
     [[nodiscard]] bool isApplicable(const ItemMeta *meta, ItemId type) const override;
     [[nodiscard]] bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const override;
     [[nodiscard]] std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, ItemId type) const override;
+    [[nodiscard]] std::unique_ptr<ItemStack> createItemStack(const CompoundTag &tag) const override;
 
 private:
     [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta(const ItemId &type, const ItemMeta *meta) const;

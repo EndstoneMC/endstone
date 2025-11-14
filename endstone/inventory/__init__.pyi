@@ -79,7 +79,13 @@ class ItemStack:
         ...
     def to_nbt(self) -> CompoundTag:
         """
-        Serializes this ItemStack into an Named Binary Tag (NBT).
+        Serializes this ItemStack into a Named Binary Tag (NBT).
+        """
+        ...
+    @staticmethod
+    def from_nbt(arg0: CompoundTag) -> ItemStack:
+        """
+        Deserializes an ItemStack from a Named Binary Tag (NBT).
         """
         ...
     def __eq__(self, arg0: ItemStack) -> bool: ...
@@ -310,6 +316,11 @@ class ItemFactory:
     def as_meta_for(self, meta: ItemMeta, type: str) -> ItemMeta:
         """
         Returns an appropriate item meta for the specified item type.
+        """
+        ...
+    def create_item_stack(self, tag: CompoundTag) -> ItemStack:
+        """
+        Create a new ItemStack given the NBT.
         """
         ...
 

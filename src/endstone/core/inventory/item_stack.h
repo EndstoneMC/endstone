@@ -22,7 +22,7 @@ namespace endstone::core {
 
 class EndstoneItemStack : public ItemStack {
 public:
-    explicit EndstoneItemStack(const ::ItemStack &item);
+    explicit EndstoneItemStack(const ::ItemStackBase &item);
     EndstoneItemStack(const EndstoneItemStack &item);
 
 protected:
