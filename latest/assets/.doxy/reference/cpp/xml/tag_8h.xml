@@ -11,6 +11,8 @@
     <includes refid="list_8h" local="yes">endstone/nbt/list.h</includes>
     <includes refid="type_8h" local="yes">endstone/nbt/type.h</includes>
     <includes refid="value_8h" local="yes">endstone/nbt/value.h</includes>
+    <includedby refid="item__stack_8h" local="yes">include/endstone/inventory/item_stack.h</includedby>
+    <includedby refid="item__meta_8h" local="yes">include/endstone/inventory/meta/item_meta.h</includedby>
     <incdepgraph>
       <node id="5">
         <label>endstone/detail.h</label>
@@ -39,12 +41,12 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="14">
         <label>endstone/nbt/list.h</label>
         <link refid="list_8h_source"/>
         <childnode refid="9" relation="include">
@@ -71,18 +73,18 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="11">
         <label>endstone/nbt/type.h</label>
         <link refid="type_8h_source"/>
       </node>
-      <node id="14">
+      <node id="15">
         <label>endstone/nbt/value.h</label>
         <link refid="value_8h_source"/>
         <childnode refid="9" relation="include">
@@ -102,6 +104,9 @@
       <node id="4">
         <label>fmt/ranges.h</label>
       </node>
+      <node id="13">
+        <label>map</label>
+      </node>
       <node id="2">
         <label>regex</label>
       </node>
@@ -112,6 +117,106 @@
         <label>vector</label>
       </node>
     </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>include/endstone/actor/item.h</label>
+        <link refid="item_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/endstone/event/block/block_cook_event.h</label>
+        <link refid="block__cook__event_8h_source"/>
+      </node>
+      <node id="11">
+        <label>include/endstone/event/chunk/chunk_event.h</label>
+        <link refid="chunk__event_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>include/endstone/event/chunk/chunk_load_event.h</label>
+        <link refid="chunk__load__event_8h_source"/>
+      </node>
+      <node id="13">
+        <label>include/endstone/event/chunk/chunk_unload_event.h</label>
+        <link refid="chunk__unload__event_8h_source"/>
+      </node>
+      <node id="10">
+        <label>include/endstone/event/level/dimension_event.h</label>
+        <link refid="dimension__event_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/endstone/event/player/player_drop_item_event.h</label>
+        <link refid="player__drop__item__event_8h_source"/>
+      </node>
+      <node id="7">
+        <label>include/endstone/event/player/player_item_consume_event.h</label>
+        <link refid="player__item__consume__event_8h_source"/>
+      </node>
+      <node id="4">
+        <label>include/endstone/event/player/player_pickup_item_event.h</label>
+        <link refid="player__pickup__item__event_8h_source"/>
+      </node>
+      <node id="15">
+        <label>include/endstone/inventory/item_factory.h</label>
+        <link refid="item__factory_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/endstone/inventory/item_stack.h</label>
+        <link refid="item__stack_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>include/endstone/inventory/meta/item_meta.h</label>
+        <link refid="item__meta_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>include/endstone/inventory/meta/map_meta.h</label>
+        <link refid="map__meta_8h_source"/>
+      </node>
+      <node id="8">
+        <label>include/endstone/inventory/recipe.h</label>
+        <link refid="recipe_8h_source"/>
+      </node>
+      <node id="9">
+        <label>include/endstone/level/dimension.h</label>
+        <link refid="dimension_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/endstone/nbt/tag.h</label>
+        <link refid="tag_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
     <innerclass refid="classendstone_1_1nbt_1_1Tag" prot="public">endstone::nbt::Tag</innerclass>
     <innerclass refid="structendstone_1_1nbt_1_1escape__view" prot="private">endstone::nbt::escape_view</innerclass>
     <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4" prot="public">fmt::formatter&lt; endstone::nbt::Tag &gt;</innerclass>

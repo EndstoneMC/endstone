@@ -381,7 +381,7 @@
         <link refid="item__factory_8h_source"/>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="97" relation="include">
+        <childnode refid="105" relation="include">
         </childnode>
       </node>
       <node id="19">
@@ -393,16 +393,18 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="97" relation="include">
+        <childnode refid="105" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="97">
+      <node id="105">
         <label>item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="20" relation="include">
@@ -426,6 +428,8 @@
         <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
         </childnode>
       </node>
       <node id="81">
@@ -454,7 +458,7 @@
         <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="98">
+      <node id="106">
         <label>endstone/level/chunk.h</label>
         <link refid="chunk_8h_source"/>
         <childnode refid="51" relation="include">
@@ -467,7 +471,7 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="98" relation="include">
+        <childnode refid="106" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
@@ -542,6 +546,76 @@
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>endstone/nbt/array.h</label>
+        <link refid="array_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+      </node>
+      <node id="101">
+        <label>endstone/nbt/compound.h</label>
+        <link refid="compound_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+      </node>
+      <node id="103">
+        <label>endstone/nbt/list.h</label>
+        <link refid="list_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+      </node>
+      <node id="97">
+        <label>endstone/nbt/tag.h</label>
+        <link refid="tag_8h_source"/>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+        <childnode refid="104" relation="include">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>endstone/nbt/type.h</label>
+        <link refid="type_8h_source"/>
+      </node>
+      <node id="104">
+        <label>endstone/nbt/value.h</label>
+        <link refid="value_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
         </childnode>
       </node>
       <node id="83">
@@ -835,6 +909,9 @@
       <node id="31">
         <label>functional</label>
       </node>
+      <node id="102">
+        <label>map</label>
+      </node>
       <node id="3">
         <label>memory</label>
       </node>
@@ -846,6 +923,9 @@
       </node>
       <node id="25">
         <label>optional</label>
+      </node>
+      <node id="98">
+        <label>regex</label>
       </node>
       <node id="21">
         <label>stdexcept</label>

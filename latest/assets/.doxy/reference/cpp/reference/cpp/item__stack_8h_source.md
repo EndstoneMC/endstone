@@ -30,6 +30,7 @@
 #include "endstone/inventory/item_factory.h"
 #include "endstone/inventory/item_type.h"
 #include "endstone/inventory/meta/item_meta.h"
+#include "endstone/nbt/tag.h"
 #include "endstone/registry.h"
 #include "endstone/server.h"
 
@@ -159,6 +160,18 @@ public:
     [[nodiscard]] virtual std::unique_ptr<ItemStack> clone() const
     {
         return std::make_unique<ItemStack>(*this);
+    }
+
+    [[nodiscard]] virtual CompoundTag toNbt() const
+    {
+        CompoundTag tag;
+        tag["Name"] = StringTag(type_);
+        tag["Count"] = ByteTag(amount_);
+        tag["Damage"] = ShortTag(data_);
+        if (hasItemMeta()) {
+            tag["tag"] = getItemMeta()->toNbt();
+        }
+        return tag;
     }
 
 private:

@@ -1052,6 +1052,7 @@
     <member refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" kind="function"><name>getRepairCost</name></member>
     <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" kind="function"><name>setRepairCost</name></member>
     <member refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" kind="function"><name>clone</name></member>
+    <member refid="classendstone_1_1ItemMeta_1a4e9ad277734acb0df17559a70ca8ed78" kind="function"><name>toNbt</name></member>
     <member refid="classendstone_1_1ItemMeta_1af179bd7b745731e3d0f1e66828e45149" kind="function"><name>as</name></member>
     <member refid="classendstone_1_1ItemMeta_1af5d8b132d9add8051466b9b19e3bfa61" kind="function"><name>as</name></member>
   </compound>
@@ -1082,6 +1083,7 @@
     <member refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" kind="function"><name>hasItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1a71ae31684a695fc854a2df838cefa02b" kind="function"><name>setItemMeta</name></member>
     <member refid="classendstone_1_1ItemStack_1a2c8607d72960a4ac9189ad25eb1fd8a0" kind="function"><name>clone</name></member>
+    <member refid="classendstone_1_1ItemStack_1ab5b0ec4312de538ebd8ffc50903dafe1" kind="function"><name>toNbt</name></member>
     <member refid="classendstone_1_1ItemStack_1a98d56b0907d2e07d3ccdb8f0b4639f0d" kind="function"><name>isEndstoneItemStack</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemType" kind="class"><name>endstone::ItemType</name>

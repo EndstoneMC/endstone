@@ -69,6 +69,7 @@ _Represents a stack of items._
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setData**](#function-setdata) ([**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) data) <br>_Sets the data for this stack of items._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**setItemMeta**](#function-setitemmeta) ([**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br>_Set the_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _of this_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
 | virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setType**](#function-settype) ([**ItemId**](namespaceendstone.md#typedef-itemid) type) <br>_Sets the type of this item._  |
+| virtual [**CompoundTag**](classendstone_1_1CompoundTag.md) | [**toNbt**](#function-tonbt) () const<br>_Serializes this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into an Named Binary Tag (NBT)_ |
 | virtual  | [**~ItemStack**](#function-itemstack) () = default<br> |
 
 
@@ -497,6 +498,31 @@ inline virtual Result< void > endstone::ItemStack::setType (
 
 
 * `type` New type to set the items in this stack to 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function toNbt 
+
+_Serializes this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into an Named Binary Tag (NBT)_
+```C++
+inline virtual CompoundTag endstone::ItemStack::toNbt () const
+```
+
+
+
+
+
+**Returns:**
+
+A [**CompoundTag**](classendstone_1_1CompoundTag.md) containing the NBT representation of this [**ItemStack**](classendstone_1_1ItemStack.md). 
+
 
 
 

@@ -1196,6 +1196,7 @@
 * **Thorns** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **title\_** ([**endstone::Form**](classendstone_1_1Form.md))
 * **type\_** ([**endstone::Image**](classendstone_1_1Image.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
+* **toNbt** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **translate** ([**endstone::Language**](classendstone_1_1Language.md))
 * **type** ([**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
 * **trace** ([**endstone::Logger**](classendstone_1_1Logger.md))

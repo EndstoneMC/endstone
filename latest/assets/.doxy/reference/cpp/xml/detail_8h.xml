@@ -173,6 +173,10 @@
       <node id="19">
         <label>include/endstone/nbt/tag.h</label>
         <link refid="tag_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
       <node id="21">
         <label>include/endstone/plugin/plugin.h</label>

@@ -848,6 +848,7 @@
 * **testPermission** ([**endstone::Command**](classendstone_1_1Command.md))
 * **testPermissionSilently** ([**endstone::Command**](classendstone_1_1Command.md))
 * **try\_emplace** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md))
+* **toNbt** ([**endstone::ItemMeta**](classendstone_1_1ItemMeta.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **translate** ([**endstone::Language**](classendstone_1_1Language.md))
 * **type** ([**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
 * **trace** ([**endstone::Logger**](classendstone_1_1Logger.md))

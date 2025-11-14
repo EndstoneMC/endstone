@@ -31,6 +31,7 @@
 #include <vector>
 
 #include "endstone/enchantments/enchantment.h"
+#include "endstone/nbt/tag.h"
 
 #define ENDSTONE_ITEM_META_TYPE(type) static constexpr auto MetaType = Type::type;
 
@@ -92,6 +93,8 @@ public:
     virtual void setRepairCost(int cost) = 0;
 
     [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const = 0;
+
+    [[nodiscard]] virtual CompoundTag toNbt() const = 0;
 
     template <typename T>
         requires std::is_base_of_v<ItemMeta, T>

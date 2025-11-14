@@ -218,6 +218,7 @@
       <member refid="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setMapView</name></member>
       <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setRepairCost</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setUnbreakable</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a4e9ad277734acb0df17559a70ca8ed78" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>toNbt</name></member>
       <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>Type</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" prot="public" virt="virtual"><scope>endstone::MapMeta</scope><name>~ItemMeta</name></member>
     </listofallmembers>

@@ -16,6 +16,7 @@
 * `#include <unordered_map>`
 * `#include <vector>`
 * `#include "endstone/enchantments/enchantment.h"`
+* `#include "endstone/nbt/tag.h"`
 
 
 
