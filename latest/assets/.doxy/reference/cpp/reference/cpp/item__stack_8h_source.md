@@ -174,6 +174,11 @@ public:
         return tag;
     }
 
+    static std::unique_ptr<ItemStack> fromNbt(const CompoundTag &tag)
+    {
+        return detail::getServer().getItemFactory().createItemStack(tag);
+    }
+
 private:
     [[nodiscard]] const ItemType &getItemType() const
     {

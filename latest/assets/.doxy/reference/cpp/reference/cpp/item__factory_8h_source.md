@@ -39,6 +39,8 @@ public:
     [[nodiscard]] virtual bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const = 0;
 
     [[nodiscard]] virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, ItemId type) const = 0;
+
+    [[nodiscard]] virtual std::unique_ptr<ItemStack> createItemStack(const CompoundTag &tag) const = 0;
 };
 }  // namespace endstone
 ```

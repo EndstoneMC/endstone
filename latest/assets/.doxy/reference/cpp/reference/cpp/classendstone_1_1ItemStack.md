@@ -69,10 +69,15 @@ _Represents a stack of items._
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setData**](#function-setdata) ([**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) data) <br>_Sets the data for this stack of items._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**setItemMeta**](#function-setitemmeta) ([**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br>_Set the_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _of this_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
 | virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setType**](#function-settype) ([**ItemId**](namespaceendstone.md#typedef-itemid) type) <br>_Sets the type of this item._  |
-| virtual [**CompoundTag**](classendstone_1_1CompoundTag.md) | [**toNbt**](#function-tonbt) () const<br>_Serializes this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into an Named Binary Tag (NBT)_ |
+| virtual [**CompoundTag**](classendstone_1_1CompoundTag.md) | [**toNbt**](#function-tonbt) () const<br>_Serializes this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into a Named Binary Tag (NBT)_ |
 | virtual  | [**~ItemStack**](#function-itemstack) () = default<br> |
 
 
+## Public Static Functions
+
+| Type | Name |
+| ---: | :--- |
+|  std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**fromNbt**](#function-fromnbt) ([**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & tag) <br>_Deserializes an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _from a Named Binary Tag (NBT)._ |
 
 
 
@@ -510,7 +515,7 @@ inline virtual Result< void > endstone::ItemStack::setType (
 
 ### function toNbt 
 
-_Serializes this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into an Named Binary Tag (NBT)_
+_Serializes this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into a Named Binary Tag (NBT)_
 ```C++
 inline virtual CompoundTag endstone::ItemStack::toNbt () const
 ```
@@ -521,7 +526,7 @@ inline virtual CompoundTag endstone::ItemStack::toNbt () const
 
 **Returns:**
 
-A [**CompoundTag**](classendstone_1_1CompoundTag.md) containing the NBT representation of this [**ItemStack**](classendstone_1_1ItemStack.md). 
+A [**CompoundTag**](classendstone_1_1CompoundTag.md) containing the NBT of this [**ItemStack**](classendstone_1_1ItemStack.md). 
 
 
 
@@ -541,6 +546,42 @@ virtual endstone::ItemStack::~ItemStack () = default
 
 
 
+
+<hr>
+## Public Static Functions Documentation
+
+
+
+
+### function fromNbt 
+
+_Deserializes an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _from a Named Binary Tag (NBT)._
+```C++
+static inline std::unique_ptr< ItemStack > endstone::ItemStack::fromNbt (
+    const  CompoundTag & tag
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `tag` The [**CompoundTag**](classendstone_1_1CompoundTag.md) used to deserialize the [**ItemStack**](classendstone_1_1ItemStack.md).
+
+
+
+**Returns:**
+
+The [**ItemStack**](classendstone_1_1ItemStack.md) created from the provided NBT. 
+
+
+
+
+
+        
 
 <hr>
 ## Protected Functions Documentation

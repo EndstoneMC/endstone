@@ -2566,6 +2566,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#public-static-functions" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Static Functions
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#protected-functions" class="md-nav__link">
       <span class="md-ellipsis">
         Protected Functions
@@ -2841,6 +2852,36 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#public-static-functions-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Static Functions Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Public Static Functions Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-fromnbt" class="md-nav__link">
+      <span class="md-ellipsis">
+        function fromNbt
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#protected-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Protected Functions Documentation
@@ -3018,11 +3059,26 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1CompoundTag/"><strong>CompoundTag</strong></a></td>
-<td style="text-align: left;"><a href="#function-tonbt"><strong>toNbt</strong></a> () const<br><em>Serializes this</em> <a href="./"><em><strong>ItemStack</strong></em></a> <em>into an Named Binary Tag (NBT)</em></td>
+<td style="text-align: left;"><a href="#function-tonbt"><strong>toNbt</strong></a> () const<br><em>Serializes this</em> <a href="./"><em><strong>ItemStack</strong></em></a> <em>into a Named Binary Tag (NBT)</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
 <td style="text-align: left;"><a href="#function-itemstack"><strong>~ItemStack</strong></a> () = default<br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-static-functions">Public Static Functions<a class="headerlink" href="#public-static-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">std::unique_ptr&lt; <a href="./"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-fromnbt"><strong>fromNbt</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1CompoundTag/"><strong>CompoundTag</strong></a> &amp; tag) <br><em>Deserializes an</em> <a href="./"><em><strong>ItemStack</strong></em></a> <em>from a Named Binary Tag (NBT).</em></td>
 </tr>
 </tbody>
 </table>
@@ -3198,27 +3254,41 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-tonbt">function toNbt<a class="headerlink" href="#function-tonbt" title="Permanent link">&para;</a></h3>
-<p><em>Serializes this</em> <a href="./"><em><strong>ItemStack</strong></em></a> <em>into an Named Binary Tag (NBT)</em>
+<p><em>Serializes this</em> <a href="./"><em><strong>ItemStack</strong></em></a> <em>into a Named Binary Tag (NBT)</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">CompoundTag</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">toNbt</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>A <a href="../classendstone_1_1CompoundTag/"><strong>CompoundTag</strong></a> containing the NBT representation of this <a href="./"><strong>ItemStack</strong></a>. </p>
+<p>A <a href="../classendstone_1_1CompoundTag/"><strong>CompoundTag</strong></a> containing the NBT of this <a href="./"><strong>ItemStack</strong></a>. </p>
 <hr>
 
 <h3 id="function-itemstack">function ~ItemStack<a class="headerlink" href="#function-itemstack" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::~</span><span class="n">ItemStack</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
+<h2 id="public-static-functions-documentation">Public Static Functions Documentation<a class="headerlink" href="#public-static-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-fromnbt">function fromNbt<a class="headerlink" href="#function-fromnbt" title="Permanent link">&para;</a></h3>
+<p><em>Deserializes an</em> <a href="./"><em><strong>ItemStack</strong></em></a> <em>from a Named Binary Tag (NBT).</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">fromNbt</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">CompoundTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">tag</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>tag</code> The <a href="../classendstone_1_1CompoundTag/"><strong>CompoundTag</strong></a> used to deserialize the <a href="./"><strong>ItemStack</strong></a>.</li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>The <a href="./"><strong>ItemStack</strong></a> created from the provided NBT. </p>
+<hr>
 <h2 id="protected-functions-documentation">Protected Functions Documentation<a class="headerlink" href="#protected-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-isendstoneitemstack">function isEndstoneItemStack<a class="headerlink" href="#function-isendstoneitemstack" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">isEndstoneItemStack</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">isEndstoneItemStack</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <hr>
 <h2 id="friends-documentation">Friends Documentation<a class="headerlink" href="#friends-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="friend-endstoneitemstack">friend EndstoneItemStack<a class="headerlink" href="#friend-endstoneitemstack" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">EndstoneItemStack</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="n">core</span><span class="o">::</span><span class="n">EndstoneItemStack</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">EndstoneItemStack</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="n">core</span><span class="o">::</span><span class="n">EndstoneItemStack</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
