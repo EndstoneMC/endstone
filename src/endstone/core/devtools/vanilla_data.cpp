@@ -147,7 +147,7 @@ void dumpItemData(VanillaData &data, const ::Level &level)
                             {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)}};
 
         if (const auto components = item->buildNetworkTag()) {
-            CompoundTag tag;
+            ::CompoundTag tag;
             tag.putCompound("components", components->clone());
             tag.putBoolean("isComponentBased", item->isComponentBased());
             tag.putInt("version", static_cast<std::int32_t>(item->item_parse_version));
@@ -163,7 +163,7 @@ void dumpItemData(VanillaData &data, const ::Level &level)
     for (const auto &creative_item_entry : creative_item_registry->getCreativeItemEntries()) {
         const ItemInstance &item_instance = creative_item_entry.getItemInstance();
 
-        CompoundTag tag;
+        ::CompoundTag tag;
         tag.putString("name", item_instance.getItem()->getFullItemName());
         tag.putInt64("groupIndex", creative_item_entry.getGroup()->getIndex());
         tag.putShort("damage", static_cast<std::int16_t>(item_instance.getAuxValue()));

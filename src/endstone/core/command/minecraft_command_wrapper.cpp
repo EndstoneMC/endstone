@@ -106,7 +106,7 @@ std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(Command
 {
     const auto *level = EndstoneServer::getInstance().getEndstoneLevel();
     if (const auto *console = sender.asConsole(); console) {
-        CompoundTag tag;
+        ::CompoundTag tag;
         {
             tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::DedicatedServer));
             tag.putString("RequestId", mce::UUID::EMPTY.asString());
@@ -117,7 +117,7 @@ std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(Command
     }
 
     if (const auto *player = sender.asPlayer(); player) {
-        CompoundTag tag;
+        ::CompoundTag tag;
         {
             tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Player));
             tag.putInt64("PlayerId", player->getId());
@@ -126,7 +126,7 @@ std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(Command
     }
 
     if (const auto *actor = sender.asActor(); actor) {
-        CompoundTag tag;
+        ::CompoundTag tag;
         {
             tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Entity));
             tag.putInt64("EntityId", actor->getId());

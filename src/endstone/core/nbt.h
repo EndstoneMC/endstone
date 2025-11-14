@@ -18,6 +18,6 @@
 #include "endstone/nbt/tag.h"
 
 namespace endstone::core::nbt {
-[[nodiscard]] static endstone::nbt::Tag fromMinecraft(const ::Tag &tag);
-[[nodiscard]] static std::unique_ptr<Tag> toMinecraft(const endstone::nbt::Tag &tag);
+endstone::nbt::Tag fromMinecraft(const ::Tag &tag);
+std::unique_ptr<::Tag> toMinecraft(const endstone::nbt::Tag &tag);
 }  // namespace endstone::core::nbt

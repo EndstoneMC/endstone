@@ -20,6 +20,7 @@
 
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/item/item.h"
+#include "endstone/core/nbt.h"
 #include "endstone/inventory/item_type.h"
 #include "endstone/inventory/meta/item_meta.h"
 
@@ -28,7 +29,7 @@ class ItemMetaExtras {
 public:
     virtual ~ItemMetaExtras() = default;
     [[nodiscard]] virtual bool isEmpty() const = 0;
-    virtual void applyToItem(CompoundTag &tag) const = 0;
+    virtual void applyToItem(::CompoundTag &tag) const = 0;
     [[nodiscard]] virtual bool applicableTo(ItemId type) const = 0;
     [[nodiscard]] virtual bool equalsCommon(const ItemMeta &meta) const = 0;
     [[nodiscard]] virtual bool notUncommon(const ItemMeta &meta) const = 0;
@@ -231,19 +232,26 @@ public:
         repair_cost_ = cost;
     }
 
+    [[nodiscard]] CompoundTag toNbt() const override
+    {
+        auto tag = std::make_unique<::CompoundTag>();
+        applyToItem(*tag);
+        return nbt::fromMinecraft(*tag).get<CompoundTag>();
+    }
+
     [[nodiscard]] bool isEmpty() const override
     {
         return !(hasDisplayName() || hasLore() || hasEnchants() || hasRepairCost() || isUnbreakable() || hasDamage());
     }
 
-    void applyToItem(CompoundTag &tag) const override
+    void applyToItem(::CompoundTag &tag) const override
     {
         if (auto *display = tag.getCompound(ItemStackBase::TAG_DISPLAY)) {
             display->remove(ItemStackBase::TAG_DISPLAY_NAME);
             display->remove(ItemStackBase::TAG_LORE);
         }
         if (hasDisplayName()) {
-            setDisplayTag(tag, ItemStackBase::TAG_DISPLAY_NAME, std::make_unique<StringTag>(getDisplayName()));
+            setDisplayTag(tag, ItemStackBase::TAG_DISPLAY_NAME, std::make_unique<::StringTag>(getDisplayName()));
         }
         if (hasLore()) {
             setDisplayTag(tag, ItemStackBase::TAG_LORE, createStringList(getLore()));
@@ -290,20 +298,20 @@ public:
     }
 
 private:
-    static std::unique_ptr<ListTag> createStringList(const std::vector<std::string> &list)
+    static std::unique_ptr<::ListTag> createStringList(const std::vector<std::string> &list)
     {
-        auto list_tag = std::make_unique<ListTag>();
+        auto list_tag = std::make_unique<::ListTag>();
         for (const auto &value : list) {
-            list_tag->add(std::make_unique<StringTag>(value));
+            list_tag->add(std::make_unique<::StringTag>(value));
         }
         return list_tag;
     }
 
-    static void setDisplayTag(::CompoundTag &tag, std::string key, std::unique_ptr<Tag> value)
+    static void setDisplayTag(::CompoundTag &tag, std::string key, std::unique_ptr<::Tag> value)
     {
         auto *display = tag.getCompound(ItemStackBase::TAG_DISPLAY);
         if (!display) {
-            display = tag.putCompound(ItemStackBase::TAG_DISPLAY, std::make_unique<CompoundTag>());
+            display = tag.putCompound(ItemStackBase::TAG_DISPLAY, std::make_unique<::CompoundTag>());
         }
         display->put(std::move(key), std::move(value));
     }
@@ -311,7 +319,7 @@ private:
     static std::unordered_map<std::string, int> buildEnchantments(const ::ListTag &tag)
     {
         std::unordered_map<std::string, int> enchantments;
-        tag.forEachCompoundTag([&](const CompoundTag &enchant_tag) {
+        tag.forEachCompoundTag([&](const ::CompoundTag &enchant_tag) {
             auto id = enchant_tag.getShort("id");
             auto lvl = enchant_tag.getShort("lvl") & 0xffff;
             const auto *enchant = Enchant::getEnchant(static_cast<Enchant::Type>(id));
@@ -329,9 +337,9 @@ private:
             return;
         }
 
-        auto list = std::make_unique<ListTag>();
+        auto list = std::make_unique<::ListTag>();
         for (const auto &[id, lvl] : enchantments) {
-            auto subtag = std::make_unique<CompoundTag>();
+            auto subtag = std::make_unique<::CompoundTag>();
             const auto *enchant = Enchant::getEnchantFromName(std::string(id));
             if (!enchant) {
                 continue;

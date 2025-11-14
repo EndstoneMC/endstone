@@ -29,7 +29,7 @@ public:
     [[nodiscard]] MapView *getMapView() const override;
     void setMapView(const MapView *map) override;
 
-    void applyToItem(CompoundTag &tag) const override;
+    void applyToItem(::CompoundTag &tag) const override;
     [[nodiscard]] bool isEmpty() const override;
     [[nodiscard]] bool equalsCommon(const ItemMeta &meta) const override;
     [[nodiscard]] bool notUncommon(const ItemMeta &meta) const override;

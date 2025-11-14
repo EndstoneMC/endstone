@@ -28,7 +28,7 @@ EndstoneMapMeta::EndstoneMapMeta(const ItemMeta *meta) : EndstoneItemMetaBase(me
     map_id_ = m->map_id_;
 }
 
-EndstoneMapMeta::EndstoneMapMeta(const CompoundTag &tag) : EndstoneItemMetaBase(tag)
+EndstoneMapMeta::EndstoneMapMeta(const ::CompoundTag &tag) : EndstoneItemMetaBase(tag)
 {
     if (const auto map_id = tag.getInt64(MapItem::TAG_MAP_UUID)) {
         map_id_ = map_id;
@@ -68,7 +68,7 @@ void EndstoneMapMeta::setMapView(const MapView *map)
     map_id_ = map ? map->getId() : InvalidMapId;
 }
 
-void EndstoneMapMeta::applyToItem(CompoundTag &tag) const
+void EndstoneMapMeta::applyToItem(::CompoundTag &tag) const
 {
     EndstoneItemMetaBase::applyToItem(tag);
     tag.remove(MapItem::TAG_MAP_UUID);

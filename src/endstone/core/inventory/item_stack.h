@@ -42,6 +42,7 @@ public:
     [[nodiscard]] bool hasItemMeta() const override;
     bool setItemMeta(ItemMeta *meta) override;
     [[nodiscard]] std::unique_ptr<ItemStack> clone() const override;
+    [[nodiscard]] CompoundTag toNbt() const override;
 
     static ::ItemStack toMinecraft(const ItemStack *item);
     static std::unique_ptr<EndstoneItemStack> fromMinecraft(const ::ItemStack &item);

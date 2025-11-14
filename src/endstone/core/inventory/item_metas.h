@@ -38,7 +38,7 @@ public:
             }
             else {
                 details.from_item_stack_ = [](const ::ItemStackBase &stack) -> std::unique_ptr<ItemMeta> {
-                    static auto empty_tag = std::make_unique<CompoundTag>();
+                    static auto empty_tag = std::make_unique<::CompoundTag>();
                     const auto *tag = stack.hasUserData() ? stack.getUserData() : empty_tag.get();
                     return std::make_unique<T>(*tag);
                 };

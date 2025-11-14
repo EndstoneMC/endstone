@@ -128,6 +128,19 @@ std::unique_ptr<ItemStack> EndstoneItemStack::clone() const
     return std::make_unique<EndstoneItemStack>(*this);
 }
 
+CompoundTag EndstoneItemStack::toNbt() const
+{
+    CompoundTag tag;
+    auto *item = item_.getItem();
+    tag["Name"] = StringTag(item == nullptr ? "" : item->getFullItemName());
+    tag["Count"] = ByteTag(item_.getCount());
+    tag["Damage"] = ShortTag(item_.getAuxValue());
+    if (item_.hasUserData()) {
+        tag["tag"] = nbt::fromMinecraft(*item_.getUserData());
+    }
+    return tag;
+}
+
 ::ItemStack EndstoneItemStack::toMinecraft(const ItemStack *item)
 {
     if (item == nullptr || item->getType() == ItemType::Air) {
@@ -201,7 +214,7 @@ bool EndstoneItemStack::setItemMeta(ItemStackBase *item, const ItemMeta *meta)
     }
 
     if (const auto &m = static_cast<EndstoneItemMeta &>(*item_meta); !m.isEmpty()) {
-        auto tag = item->hasUserData() ? item->getUserData()->clone() : std::make_unique<CompoundTag>();
+        auto tag = item->hasUserData() ? item->getUserData()->clone() : std::make_unique<::CompoundTag>();
         m.applyToItem(*tag);
         item->setUserData(std::move(tag));
     }

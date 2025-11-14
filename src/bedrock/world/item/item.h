@@ -181,6 +181,7 @@ public:
     [[nodiscard]] std::int16_t getId() const;
     [[nodiscard]] const std::string &getFullItemName() const;
     [[nodiscard]] const HashedString &getFullNameHash() const;
+    [[nodiscard]] std::string getSerializedName() const;
     [[nodiscard]] const BaseGameVersion &getRequiredBaseGameVersion() const;
     [[nodiscard]] const WeakPtr<BlockType> &getBlockType() const;
     [[nodiscard]] bool hasTag(const ItemTag &tag) const;
