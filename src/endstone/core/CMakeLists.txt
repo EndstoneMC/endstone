@@ -22,6 +22,7 @@ add_library(endstone_core
         logger_factory.cpp
         message.cpp
         metrics.cpp
+        nbt.cpp
         platform_linux.cpp
         platform_windows.cpp
         player.cpp
