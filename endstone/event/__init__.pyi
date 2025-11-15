@@ -52,6 +52,7 @@ __all__ = [
     "PlayerChatEvent",
     "PlayerCommandEvent",
     "PlayerDeathEvent",
+    "PlayerDimensionChangeEvent",
     "PlayerDropItemEvent",
     "PlayerEmoteEvent",
     "PlayerEvent",
@@ -521,6 +522,23 @@ class PlayerCommandEvent(PlayerEvent, Cancellable):
         ...
     @command.setter
     def command(self, arg1: str) -> None: ...
+
+class PlayerDimensionChangeEvent(PlayerEvent):
+    """
+    Called when a player switches to another dimension.
+    """
+    @property
+    def from_dimension(self) -> Dimension:
+        """
+        Gets the dimension the player is switching from.
+        """
+        ...
+    @property
+    def to_dimension(self) -> Dimension:
+        """
+        Gets the dimension the player is switching to.
+        """
+        ...
 
 class PlayerDropItemEvent(PlayerEvent, Cancellable):
     """

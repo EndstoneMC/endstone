@@ -176,20 +176,9 @@ void init_event(py::module_ &m, py::class_<Event> &event)
                                "Returns the player involved in this event.");
     auto player_bed_enter_event = py::class_<PlayerBedEnterEvent, PlayerEvent, ICancellable>(
         m, "PlayerBedEnterEvent", "Called when a player is almost about to enter the bed.");
-    // py::enum_<PlayerBedEnterEvent::BedEnterResult>(player_bed_enter_event, "BedEnterResult")
-    //     .value("OK", PlayerBedEnterEvent::BedEnterResult::Ok)
-    //     .value("NOT_POSSIBLE_HERE", PlayerBedEnterEvent::BedEnterResult::NotPossibleHere)
-    //     .value("NOT_POSSIBLE_NOW", PlayerBedEnterEvent::BedEnterResult::NotPossibleNow)
-    //     .value("TOO_FAR_AWAY", PlayerBedEnterEvent::BedEnterResult::TooFarAway)
-    //     .value("NOT_SAFE", PlayerBedEnterEvent::BedEnterResult::NotSafe)
-    //     .value("OTHER_PROBLEM", PlayerBedEnterEvent::BedEnterResult::OtherProblem);
     player_bed_enter_event.def_property_readonly("bed", &PlayerBedEnterEvent::getBed,
                                                  py::return_value_policy::reference,
                                                  "Returns the bed block involved in this event.");
-    // .def_property_readonly("bed_enter_result", &PlayerBedEnterEvent::getBedEnterResult,
-    //                        "Returns the outcome of this event")
-    // .def_property("use_bed", &PlayerBedEnterEvent::useBed, &PlayerBedEnterEvent::setUseBed,
-    //               "Gets or sets the action to take with the bed that was clicked on.");
 
     py::class_<PlayerBedLeaveEvent, PlayerEvent>(m, "PlayerBedLeaveEvent", "Called when a player is leaving a bed.")
         .def_property_readonly("bed", &PlayerBedLeaveEvent::getBed, py::return_value_policy::reference,
@@ -209,6 +198,12 @@ void init_event(py::module_ &m, py::class_<Event> &event)
                                                               "Called whenever a player runs a command.")
         .def_property("command", &PlayerCommandEvent::getCommand, &PlayerCommandEvent::setCommand,
                       "Gets or sets the command that the player will send.");
+    py::class_<PlayerDimensionChangeEvent, PlayerEvent>(m, "PlayerDimensionChangeEvent",
+                                                        "Called when a player switches to another dimension.")
+        .def_property_readonly("from_dimension", &PlayerDimensionChangeEvent::getFrom,
+                               py::return_value_policy::reference, "Gets the dimension the player is switching from.")
+        .def_property_readonly("to_dimension", &PlayerDimensionChangeEvent::getTo, py::return_value_policy::reference,
+                               "Gets the dimension the player is switching to.");
     py::class_<PlayerDropItemEvent, PlayerEvent, ICancellable>(
         m, "PlayerDropItemEvent", "Called when a player drops an item from their inventory")
         .def_property_readonly("item", &PlayerDropItemEvent::getItem, py::return_value_policy::reference,

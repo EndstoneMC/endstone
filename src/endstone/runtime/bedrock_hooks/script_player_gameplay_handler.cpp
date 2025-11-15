@@ -32,6 +32,7 @@
 #include "endstone/core/message.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/player/player_dimension_change_event.h"
 #include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_emote_event.h"
 #include "endstone/event/player/player_game_mode_change_event.h"
@@ -45,7 +46,7 @@ namespace {
 bool handleEvent(const PlayerDamageEvent &event)
 {
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        auto &server = endstone::core::EndstoneServer::getInstance();
         auto &endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
 
         if (!player->isAlive()) {
@@ -83,7 +84,7 @@ bool handleEvent(const PlayerDamageEvent &event)
 bool handleEvent(const PlayerDisconnectEvent &event)
 {
     if (auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        const auto &server = endstone::core::EndstoneServer::getInstance();
         auto &endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
         endstone_player.disconnect();
 
@@ -121,8 +122,22 @@ bool handleEvent(const PlayerFormCloseEvent &event)
 bool handleEvent(const ::PlayerRespawnEvent &event)
 {
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        const auto &server = endstone::core::EndstoneServer::getInstance();
         endstone::PlayerRespawnEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>()};
+        server.getPluginManager().callEvent(e);
+    }
+    return true;
+}
+
+bool handleEvent(const PlayerDimensionChangeAfterEvent &event)
+{
+    if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
+        const auto &server = endstone::core::EndstoneServer::getInstance();
+        endstone::PlayerDimensionChangeEvent e{
+            player->getEndstoneActor<endstone::core::EndstonePlayer>(),
+            *server.getEndstoneLevel()->getDimension(event.from_dimension.runtime_id),
+            *server.getEndstoneLevel()->getDimension(event.to_dimension.runtime_id),
+        };
         server.getPluginManager().callEvent(e);
     }
     return true;
@@ -159,7 +174,7 @@ bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
     const auto *target = WeakEntityRef(event.target_entity).tryUnwrap<::Actor>();
 
     if (player && target) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        const auto &server = endstone::core::EndstoneServer::getInstance();
         endstone::PlayerInteractActorEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
                                              target->getEndstoneActor()};
         server.getPluginManager().callEvent(e);
@@ -173,7 +188,7 @@ bool handleEvent(const PlayerInteractWithEntityBeforeEvent &event)
 bool handleEvent(::PlayerGameModeChangeEvent &event)
 {
     if (auto *player = event.player.tryUnwrap<::Player>(); player) {
-        const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+        const auto &server = endstone::core::EndstoneServer::getInstance();
         endstone::PlayerGameModeChangeEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(),
                                               endstone::core::EndstoneGameMode::fromMinecraft(event.to_game_mode)};
         server.getPluginManager().callEvent(e);
@@ -202,7 +217,8 @@ HandlerResult ScriptPlayerGameplayHandler::handleEvent1(const PlayerGameplayEven
                       std::is_same_v<T, Details::ValueOrRef<const PlayerDisconnectEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormResponseEvent>> ||
                       std::is_same_v<T, Details::ValueOrRef<const PlayerFormCloseEvent>> ||
-                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>>) {
+                      std::is_same_v<T, Details::ValueOrRef<const ::PlayerRespawnEvent>> ||
+                      std::is_same_v<T, Details::ValueOrRef<const PlayerDimensionChangeAfterEvent>>) {
             if (!handleEvent(arg.value())) {
                 return HandlerResult::BypassListeners;
             }
