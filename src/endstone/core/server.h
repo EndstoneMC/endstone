@@ -66,6 +66,7 @@ public:
     void disablePlugins() const;
 
     [[nodiscard]] Scheduler &getScheduler() const override;
+    [[nodiscard]] EndstoneScheduler &getEndstoneScheduler() const;
 
     [[nodiscard]] Level *getLevel() const override;
     [[nodiscard]] EndstoneLevel *getEndstoneLevel() const;
@@ -165,8 +166,9 @@ private:
     // TODO(config): move the following the a separate class/struct
     bool allow_client_packs_ = false;
     bool log_commands_ = true;
-    ::Bedrock::PubSub::Subscription on_chunk_load_subscription_;
-    ::Bedrock::PubSub::Subscription on_chunk_unload_subscription_;
+    ::Bedrock::PubSub::Subscription on_gameplay_user_removed_;
+    ::Bedrock::PubSub::Subscription on_chunk_load_;
+    ::Bedrock::PubSub::Subscription on_chunk_unload_;
 };
 
 }  // namespace endstone::core

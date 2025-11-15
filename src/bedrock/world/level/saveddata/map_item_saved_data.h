@@ -68,7 +68,7 @@ public:
     void tickByBlock(const BlockPos &, BlockSource &);
     std::shared_ptr<MapItemTrackedActor> addTrackedMapEntity(Actor &, MapDecoration::Type);
     std::shared_ptr<MapItemTrackedActor> addTrackedMapEntity(const BlockPos &, BlockSource &, MapDecoration::Type);
-    void removeTrackedMapEntity(Actor &);
+    void removeTrackedMapEntity(Actor &player);
     void removeTrackedMapEntity(const BlockPos &);
     [[nodiscard]] std::unique_ptr<Packet> getUpdatePacket(const ItemStack &, Level &, Actor &) const;
     [[nodiscard]] std::unique_ptr<Packet> getUpdatePacket(Level &, const BlockPos &) const;
@@ -114,6 +114,10 @@ public:
 
 private:
     friend class endstone::core::EndstoneMapView;
+
+    void _removeTrackedMapEntity(const MapItemTrackedActor::UniqueId &key);
+    void _removeDecoration(const MapItemTrackedActor::UniqueId &id);
+    void _setDirtyForDecoration(const MapDecoration &added_or_removed);
 
     ActorUniqueID map_id_;
     ActorUniqueID parent_map_id_;

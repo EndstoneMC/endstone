@@ -14,4 +14,15 @@
 
 #pragma once
 
-class GameplayUserManager {};
+#include "bedrock/world/level/gameplay_user_manager_connector.h"
+
+class GameplayUserManager : public IGameplayUserManagerConnector {
+public:
+    virtual ~GameplayUserManager() = default;
+    Bedrock::PubSub::Connector<void(EntityContext &)> &getGameplayUserAddedConnector() override;
+    Bedrock::PubSub::Connector<void(const EntityContext &)> &getGameplayUserResumedConnector() override;
+    Bedrock::PubSub::Connector<void(const EntityContext &)> &getGameplayUserSuspendedConnector() override;
+    Bedrock::PubSub::Connector<void(const Player &)> &getPlayerRenamedConnector() override;
+    Bedrock::PubSub::Connector<void(EntityContext &)> &getGameplayUserRemovedConnector() override;
+    Bedrock::PubSub::Connector<void()> &getAnyGameplayUsersRemovedConnector() override;
+};

@@ -69,6 +69,7 @@
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/level_settings.h"
+#include "bedrock/world/level/map_data_manager.h"
 #include "bedrock/world/level/player_death_manager.h"
 #include "bedrock/world/level/saveddata/map_item_saved_data.h"
 #include "bedrock/world/level/spawner.h"
@@ -469,7 +470,7 @@ public:
     [[nodiscard]] virtual bool use3DBiomeMaps() const = 0;
     virtual void *getChunkGenerationManager() = 0;
     [[nodiscard]] virtual void *getChunkGenerationManager() const = 0;
-    [[nodiscard]] virtual void *getMapDataManager() const = 0;
+    [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<MapDataManager> getMapDataManager() const = 0;
     virtual Level *asLevel() = 0;
     virtual void *asMultiPlayerLevel() = 0;
     [[nodiscard]] virtual void *getCameraRegistry() const = 0;

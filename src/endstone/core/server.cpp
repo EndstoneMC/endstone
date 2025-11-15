@@ -25,6 +25,7 @@
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/threading/assigned_thread.h"
 #include "bedrock/server/dedicated_server.h"
+#include "bedrock/server/server_map_data_manager.h"
 #include "bedrock/shared_constants.h"
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/level/block/block_descriptor.h"
@@ -39,8 +40,10 @@
 #include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/inventory/item_type.h"
 #include "endstone/core/level/chunk.h"
+#include "endstone/core/level/dimension.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/logger_factory.h"
+#include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/player.h"
@@ -134,7 +137,25 @@ void EndstoneServer::setLevel(::Level &level)
     loadResourcePacks();
     initRegistries();
     level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message
-    on_chunk_load_subscription_ = level.getLevelChunkEventManager()->getOnChunkLoadedConnector().connect(
+
+    // #blameMojang
+    // MapItemSavedData never removes disconnected players from its
+    // tracked-entity list. Each stale tracker holds a ChunkViewSource that
+    // keeps a 256×256 chunk area permanently loaded, causing massive memory
+    // retention as players spread out.
+    // Fix: when a gameplay user is removed, purge them from all maps.
+    on_gameplay_user_removed_ = level.getGameplayUserManager()->getGameplayUserRemovedConnector().connect(
+        [&](EntityContext &entity) {
+            if (auto *player = ::Player::tryGetFromEntity(entity, true); player) {
+                printf("removeTrackedMapEntity\n");
+                for (const auto &data : level.getMapDataManager()->getMapDataMap() | std::ranges::views::values) {
+                    data->removeTrackedMapEntity(*player);
+                }
+            }
+        },
+        Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
+
+    on_chunk_load_ = level.getLevelChunkEventManager()->getOnChunkLoadedConnector().connect(
         [&](ChunkSource & /*chunk_source*/, LevelChunk &lc, int /*closest_player_distance_squared*/) -> void {
             if (lc.getState() >= ChunkState::Loaded) {
                 const auto chunk = std::make_unique<EndstoneChunk>(lc);
@@ -142,14 +163,14 @@ void EndstoneServer::setLevel(::Level &level)
                 getPluginManager().callEvent(e);
             }
         },
-        Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
-    on_chunk_unload_subscription_ = level.getLevelChunkEventManager()->getOnChunkDiscardedConnector().connect(
+        Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
+    on_chunk_unload_ = level.getLevelChunkEventManager()->getOnChunkDiscardedConnector().connect(
         [&](LevelChunk &lc) -> void {
             const auto chunk = std::make_unique<EndstoneChunk>(lc);
             ChunkUnloadEvent e(*chunk);
             getPluginManager().callEvent(e);
         },
-        Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
+        Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
 
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
@@ -362,6 +383,11 @@ Scheduler &EndstoneServer::getScheduler() const
     return *scheduler_;
 }
 
+EndstoneScheduler &EndstoneServer::getEndstoneScheduler() const
+{
+    return *scheduler_;
+}
+
 Level *EndstoneServer::getLevel() const
 {
     return level_.get();
@@ -568,10 +594,7 @@ Result<std::unique_ptr<BlockData>> EndstoneServer::createBlockData(std::string t
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
-        std::visit(overloaded{[&](auto &&arg) {
-                       states.emplace(state.first, arg);
-                   }},
-                   state.second);
+        std::visit(overloaded{[&](auto &&arg) { states.emplace(state.first, arg); }}, state.second);
     }
 
     const auto block_descriptor = ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(type, states);
