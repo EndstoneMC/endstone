@@ -40,6 +40,10 @@ public:
     void setPacketSender(PacketSender &packet_sender);
     void onStartLeaveGame();
     void tick();
+    std::unordered_map<ActorUniqueID, std::unique_ptr<MapItemSavedData>> &getMapDataMap()  // Endstone
+    {
+        return map_data_;
+    }
 
 protected:
     virtual void _copyAndLockMap(const ActorUniqueID original_map_uuid, const ActorUniqueID new_map_uuid);

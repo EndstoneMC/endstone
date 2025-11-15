@@ -36,9 +36,18 @@ public:
         Type type;
         ActorUniqueID key_entity_id;
         BlockPos key_block_pos;
-        UniqueId();
-        UniqueId(const ActorUniqueID &);
-        UniqueId(const BlockPos &);
+        UniqueId() = default;
+        UniqueId(const UniqueId &) = default;
+        UniqueId(const ActorUniqueID &entity_id) : type(Type::Entity), key_entity_id(entity_id) {}
+        UniqueId(const BlockPos &block_pos) : type(Type::BlockEntity), key_block_pos(block_pos) {}
+        UniqueId &operator=(const UniqueId &) = default;
+        bool operator==(const UniqueId &other) const
+        {
+            if (type == Type::BlockEntity) {
+                return key_block_pos == other.key_block_pos;
+            }
+            return key_entity_id == other.key_entity_id;
+        }
     };
     static_assert(sizeof(UniqueId) == 32);
 

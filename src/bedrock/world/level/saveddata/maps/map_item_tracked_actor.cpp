@@ -40,3 +40,8 @@ Actor *MapItemTrackedActor::getEntity(BlockSource &region)
     }
     return region.getLevel().fetchEntity(unique_id_.key_entity_id, false);
 }
+
+const MapItemTrackedActor::UniqueId &MapItemTrackedActor::getUniqueId() const
+{
+    return unique_id_;
+}

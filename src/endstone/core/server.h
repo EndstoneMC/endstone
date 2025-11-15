@@ -168,8 +168,9 @@ private:
     // TODO(config): move the following the a separate class/struct
     bool allow_client_packs_ = false;
     bool log_commands_ = true;
-    ::Bedrock::PubSub::Subscription on_chunk_load_subscription_;
-    ::Bedrock::PubSub::Subscription on_chunk_unload_subscription_;
+    ::Bedrock::PubSub::Subscription on_gameplay_user_removed_;
+    ::Bedrock::PubSub::Subscription on_chunk_load_;
+    ::Bedrock::PubSub::Subscription on_chunk_unload_;
     ::Bedrock::PubSub::Subscription on_map_created_;
 };
 

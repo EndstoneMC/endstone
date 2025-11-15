@@ -141,7 +141,25 @@ void EndstoneServer::setLevel(::Level &level)
     loadResourcePacks();
     initRegistries();
     level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message
-    on_chunk_load_subscription_ = level.getLevelChunkEventManager()->getOnChunkLoadedConnector().connect(
+
+    // #blameMojang
+    // MapItemSavedData never removes disconnected players from its
+    // tracked-entity list. Each stale tracker holds a ChunkViewSource that
+    // keeps a 256×256 chunk area permanently loaded, causing massive memory
+    // retention as players spread out.
+    // Fix: when a gameplay user is removed, purge them from all maps.
+    on_gameplay_user_removed_ = level.getGameplayUserManager()->getGameplayUserRemovedConnector().connect(
+        [&](EntityContext &entity) {
+            if (auto *player = ::Player::tryGetFromEntity(entity, true); player) {
+                printf("removeTrackedMapEntity\n");
+                for (const auto &data : level.getMapDataManager()->getMapDataMap() | std::ranges::views::values) {
+                    data->removeTrackedMapEntity(*player);
+                }
+            }
+        },
+        Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
+
+    on_chunk_load_ = level.getLevelChunkEventManager()->getOnChunkLoadedConnector().connect(
         [&](ChunkSource & /*chunk_source*/, LevelChunk &lc, int /*closest_player_distance_squared*/) -> void {
             if (lc.getState() >= ChunkState::Loaded) {
                 const auto chunk = std::make_unique<EndstoneChunk>(lc);
@@ -149,15 +167,14 @@ void EndstoneServer::setLevel(::Level &level)
                 getPluginManager().callEvent(e);
             }
         },
-        Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
-
-    on_chunk_unload_subscription_ = level.getLevelChunkEventManager()->getOnChunkDiscardedConnector().connect(
+        Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
+    on_chunk_unload_ = level.getLevelChunkEventManager()->getOnChunkDiscardedConnector().connect(
         [&](LevelChunk &lc) -> void {
             const auto chunk = std::make_unique<EndstoneChunk>(lc);
             ChunkUnloadEvent e(*chunk);
             getPluginManager().callEvent(e);
         },
-        Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
+        Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
 
     on_map_created_ = static_cast<ServerMapDataManager *>(level.getMapDataManager().get().access())
                           ->getOnCreateMapSavedDataConnector()
@@ -171,7 +188,7 @@ void EndstoneServer::setLevel(::Level &level)
                                       getPluginManager().callEvent(e);
                                   });
                               },
-                              Bedrock::PubSub::ConnectPosition::AtFront, nullptr);
+                              Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
 
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
