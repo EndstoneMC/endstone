@@ -123,7 +123,7 @@
 
 ## f
 
-* **from\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
+* **from\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
 * **FollowRange** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **FatalPoison** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **FireResistance** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
@@ -394,7 +394,7 @@
 
 ## t
 
-* **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
+* **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **text\_** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **TrialOmen** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **Thorns** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))

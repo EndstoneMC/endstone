@@ -10,7 +10,7 @@
         <meta name="author" content="Vincent Wu">
       
       
-        <link rel="canonical" href="https://endstone.dev/latest/reference/cpp/dir_7c05c37b25e9c9eccd9c63c2d313ba28/">
+        <link rel="canonical" href="https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerDimensionChangeEvent/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Dir include/endstone/event/player - Endstone</title>
+        <title>Class endstone::PlayerDimensionChangeEvent - Endstone</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dir-includeendstoneeventplayer" class="md-skip">
+        <a href="#class-endstoneplayerdimensionchangeevent" class="md-skip">
           Skip to content
         </a>
       
@@ -138,7 +138,7 @@ For latest updates join the chat on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dir include/endstone/event/player
+              Class endstone::PlayerDimensionChangeEvent
             
           </span>
         </div>
@@ -2555,13 +2555,115 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#files" class="md-nav__link">
+    <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
-        Files
+        Public Functions
       </span>
     </a>
 
     <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#public-functions-inherited-from-endstoneplayerevent" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Functions inherited from endstone::PlayerEvent
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#public-functions-inherited-from-endstoneevent" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Functions inherited from endstone::Event
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#protected-attributes-inherited-from-endstoneplayerevent" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Attributes inherited from endstone::PlayerEvent
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#public-functions-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Functions Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Public Functions Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-endstone_event" class="md-nav__link">
+      <span class="md-ellipsis">
+        function ENDSTONE_EVENT
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-playerdimensionchangeevent" class="md-nav__link">
+      <span class="md-ellipsis">
+        function PlayerDimensionChangeEvent
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getfrom" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getFrom
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getto" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getTo
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
     
 </li>
       
@@ -2582,7 +2684,7 @@ For latest updates join the chat on
 
 
   
-    <a href="https://github.com/EndstoneMC/endstone/edit/main/docs/reference/cpp/dir_7c05c37b25e9c9eccd9c63c2d313ba28.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/EndstoneMC/endstone/edit/main/docs/reference/cpp/classendstone_1_1PlayerDimensionChangeEvent.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2591,16 +2693,21 @@ For latest updates join the chat on
     
       
     
-    <a href="https://github.com/EndstoneMC/endstone/raw/main/docs/reference/cpp/dir_7c05c37b25e9c9eccd9c63c2d313ba28.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/EndstoneMC/endstone/raw/main/docs/reference/cpp/classendstone_1_1PlayerDimensionChangeEvent.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="dir-includeendstoneeventplayer">Dir include/endstone/event/player<a class="headerlink" href="#dir-includeendstoneeventplayer" title="Permanent link">&para;</a></h1>
-<p><a href="../files/"><strong>FileList</strong></a> <strong>&gt;</strong> <a href="../dir_6cf277b678674f97c7a2b6b3b2447b33/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="../dir_f1d783c0ad83ee143d16e768ebca51c8/"><strong>event</strong></a> <strong>&gt;</strong> <a href="./"><strong>player</strong></a></p>
-<h2 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h2>
+<h1 id="class-endstoneplayerdimensionchangeevent">Class endstone::PlayerDimensionChangeEvent<a class="headerlink" href="#class-endstoneplayerdimensionchangeevent" title="Permanent link">&para;</a></h1>
+<p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>PlayerDimensionChangeEvent</strong></a></p>
+<p><em>Called when a player switches to another dimension.</em> </p>
+<ul>
+<li><code>#include &lt;endstone/event/player/player_dimension_change_event.h&gt;</code></li>
+</ul>
+<p>Inherits the following classes: <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
+<h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2610,101 +2717,134 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__bed__enter__event_8h/"><strong>player_bed_enter_event.h</strong></a> <br></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="#function-endstone_event"><strong>ENDSTONE_EVENT</strong></a> (<a href="./"><strong>PlayerDimensionChangeEvent</strong></a>) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__bed__leave__event_8h/"><strong>player_bed_leave_event.h</strong></a> <br></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="#function-playerdimensionchangeevent"><strong>PlayerDimensionChangeEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp; from, <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp; to) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__chat__event_8h/"><strong>player_chat_event.h</strong></a> <br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-getfrom"><strong>getFrom</strong></a> () const<br><em>Gets the dimension the player is switching from.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__command__event_8h/"><strong>player_command_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__dimension__change__event_8h/"><strong>player_dimension_change_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__drop__item__event_8h/"><strong>player_drop_item_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__emote__event_8h/"><strong>player_emote_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__event_8h/"><strong>player_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__game__mode__change__event_8h/"><strong>player_game_mode_change_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__interact__actor__event_8h/"><strong>player_interact_actor_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__interact__event_8h/"><strong>player_interact_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__item__consume__event_8h/"><strong>player_item_consume_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__item__held__event_8h/"><strong>player_item_held_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__join__event_8h/"><strong>player_join_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__jump__event_8h/"><strong>player_jump_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__kick__event_8h/"><strong>player_kick_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__login__event_8h/"><strong>player_login_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__move__event_8h/"><strong>player_move_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__pickup__item__event_8h/"><strong>player_pickup_item_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__quit__event_8h/"><strong>player_quit_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__respawn__event_8h/"><strong>player_respawn_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__skin__change__event_8h/"><strong>player_skin_change_event.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../player__teleport__event_8h/"><strong>player_teleport_event.h</strong></a> <br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-getto"><strong>getTo</strong></a> () const<br><em>Gets the dimension the player is switching to.</em></td>
 </tr>
 </tbody>
 </table>
+<h2 id="public-functions-inherited-from-endstoneplayerevent">Public Functions inherited from endstone::PlayerEvent<a class="headerlink" href="#public-functions-inherited-from-endstoneplayerevent" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-playerevent"><strong>PlayerEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player) <br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-getplayer"><strong>getPlayer</strong></a> () const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#function-playerevent"><strong>~PlayerEvent</strong></a> () override<br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions-inherited-from-endstoneevent">Public Functions inherited from endstone::Event<a class="headerlink" href="#public-functions-inherited-from-endstoneevent" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1Event/">endstone::Event</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-12"><strong>Event</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> async=<a href="../classendstone_1_1Identifier/"><strong>false</strong></a>) <br></td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event-22"><strong>Event</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::string</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-geteventname"><strong>getEventName</strong></a> () const = 0<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-isasynchronous"><strong>isAsynchronous</strong></a> () const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-operator"><strong>operator=</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;) = delete<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-event"><strong>~Event</strong></a> () = default<br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="protected-attributes-inherited-from-endstoneplayerevent">Protected Attributes inherited from endstone::PlayerEvent<a class="headerlink" href="#protected-attributes-inherited-from-endstoneplayerevent" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1PlayerEvent/">endstone::PlayerEvent</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">std::reference_wrapper&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1PlayerEvent/#variable-player_"><strong>player_</strong></a>  <br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-endstone_event">function ENDSTONE_EVENT<a class="headerlink" href="#function-endstone_event" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDimensionChangeEvent</span><span class="o">::</span><span class="n">ENDSTONE_EVENT</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">PlayerDimensionChangeEvent</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="function-playerdimensionchangeevent">function PlayerDimensionChangeEvent<a class="headerlink" href="#function-playerdimensionchangeevent" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDimensionChangeEvent</span><span class="o">::</span><span class="n">PlayerDimensionChangeEvent</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">from</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="function-getfrom">function getFrom<a class="headerlink" href="#function-getfrom" title="Permanent link">&para;</a></h3>
+<p><em>Gets the dimension the player is switching from.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDimensionChangeEvent</span><span class="o">::</span><span class="n">getFrom</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>player's previous dimension </p>
+<hr>
+
+<h3 id="function-getto">function getTo<a class="headerlink" href="#function-getto" title="Permanent link">&para;</a></h3>
+<p><em>Gets the dimension the player is switching to.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDimensionChangeEvent</span><span class="o">::</span><span class="n">getTo</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>player's new dimension </p>
+<hr>
+
 <hr />
-<p>The documentation for this class was generated from the following file <code>include/endstone/event/player/</code></p>
+<p>The documentation for this class was generated from the following file <code>include/endstone/event/player/player_dimension_change_event.h</code></p>
 
 
 

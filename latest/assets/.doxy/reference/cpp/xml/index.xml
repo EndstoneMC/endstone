@@ -1667,6 +1667,14 @@
     <member refid="classendstone_1_1PlayerDeathEvent_1ac10543a6ddb7eb32aed23e72c94b7d61" kind="function"><name>getDeathMessage</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a6a243db2fbf5bdcb6163b39b151338a5" kind="function"><name>setDeathMessage</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerDimensionChangeEvent" kind="class"><name>endstone::PlayerDimensionChangeEvent</name>
+    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1a8ccd365034bf854e02777b79f4b00312" kind="variable"><name>from_</name></member>
+    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1af8722bb0c87b4df64a92628c134d7657" kind="variable"><name>to_</name></member>
+    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1af8ebc15049381181867a6a0bd2db3668" kind="function"><name>ENDSTONE_EVENT</name></member>
+    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1aca862ce9713f483abbb1a0b6150b3373" kind="function"><name>PlayerDimensionChangeEvent</name></member>
+    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1a9fe866587b790b24d5b811b70a2e9d19" kind="function"><name>getFrom</name></member>
+    <member refid="classendstone_1_1PlayerDimensionChangeEvent_1a6fc95e56eba0598121273b95006ead5a" kind="function"><name>getTo</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerDropItemEvent" kind="class"><name>endstone::PlayerDropItemEvent</name>
     <member refid="classendstone_1_1PlayerDropItemEvent_1a21dea382f8e0ffcea0b348b6834dfe85" kind="variable"><name>drop_</name></member>
     <member refid="classendstone_1_1PlayerDropItemEvent_1a01a17624816e0ff3d957f3f10102b433" kind="function"><name>PlayerDropItemEvent</name></member>
@@ -2749,6 +2757,8 @@
   <compound refid="player__chat__event_8h" kind="file"><name>player_chat_event.h</name>
   </compound>
   <compound refid="player__command__event_8h" kind="file"><name>player_command_event.h</name>
+  </compound>
+  <compound refid="player__dimension__change__event_8h" kind="file"><name>player_dimension_change_event.h</name>
   </compound>
   <compound refid="player__drop__item__event_8h" kind="file"><name>player_drop_item_event.h</name>
   </compound>

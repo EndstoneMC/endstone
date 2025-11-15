@@ -232,7 +232,7 @@
 
 ## e
 
-* **ENDSTONE\_EVENT** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md), [**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md), [**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md), [**endstone::BlockPistonExtendEvent**](classendstone_1_1BlockPistonExtendEvent.md), [**endstone::BlockPistonRetractEvent**](classendstone_1_1BlockPistonRetractEvent.md), [**endstone::ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md), [**endstone::ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md), [**endstone::LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md), [**endstone::PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md), [**endstone::PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md), [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md), [**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
+* **ENDSTONE\_EVENT** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md), [**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md), [**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md), [**endstone::BlockPistonExtendEvent**](classendstone_1_1BlockPistonExtendEvent.md), [**endstone::BlockPistonRetractEvent**](classendstone_1_1BlockPistonRetractEvent.md), [**endstone::ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md), [**endstone::ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md), [**endstone::LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md), [**endstone::PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md), [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md), [**endstone::PlayerJumpEvent**](classendstone_1_1PlayerJumpEvent.md), [**endstone::PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md), [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md), [**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
 * **expiration\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **Escape** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **execute** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
@@ -258,7 +258,7 @@
 
 ## f
 
-* **from\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
+* **from\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
 * **FollowRange** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **fromABGR** ([**endstone::Color**](classendstone_1_1Color.md))
 * **fromBGR** ([**endstone::Color**](classendstone_1_1Color.md))
@@ -309,8 +309,8 @@
 * **getBlockList** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
 * **getKnockback** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
 * **getSource** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md), [**endstone::BanEntry**](classendstone_1_1BanEntry.md), [**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md))
-* **getFrom** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
-* **getTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
+* **getFrom** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
+* **getTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
 * **getBaseMaxValue** ([**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md))
 * **getBaseMinValue** ([**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md))
 * **getBaseValue** ([**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md))
@@ -901,6 +901,7 @@
 * **PlayerChatEvent** ([**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **PlayerCommandEvent** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md))
 * **PlayerDeathEvent** ([**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md))
+* **PlayerDimensionChangeEvent** ([**endstone::PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md))
 * **PlayerDropItemEvent** ([**endstone::PlayerDropItemEvent**](classendstone_1_1PlayerDropItemEvent.md))
 * **PlayerEmoteEvent** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **PlayerEvent** ([**endstone::PlayerEvent**](classendstone_1_1PlayerEvent.md))
@@ -1207,7 +1208,7 @@
 ## t
 
 * **teleport** ([**endstone::Actor**](classendstone_1_1Actor.md))
-* **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
+* **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **text\_** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **testPermission** ([**endstone::Command**](classendstone_1_1Command.md))
 * **testPermissionSilently** ([**endstone::Command**](classendstone_1_1Command.md))

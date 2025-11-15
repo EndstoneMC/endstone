@@ -140,6 +140,7 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md) <br>_Called when a player sends a chat message._  |
 | class | [**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md) <br>_Called whenever a player runs a command._  |
 | class | [**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md) <br>_Called when a_ [_**Player**_](classendstone_1_1Player.md) _dies._ |
+| class | [**PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md) <br>_Called when a player switches to another dimension._  |
 | class | [**PlayerDropItemEvent**](classendstone_1_1PlayerDropItemEvent.md) <br>_Called when a player drops an item from their inventory._  |
 | class | [**PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md) <br>_Called when a player uses an emote._  |
 | class | [**PlayerEvent**](classendstone_1_1PlayerEvent.md) <br>_Represents a player related event._  |
