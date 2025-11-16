@@ -21,4 +21,5 @@ static const HashedString ExplodeBit = "explode_bit";
 static const HashedString Extinguished = "extinguished";
 static const HashedString FacingDirection = "facing_direction";
 static const HashedString HeadPieceBit = "head_piece_bit";
+static const HashedString PortalAxis = "portal_axis";
 }  // namespace VanillaStateIds

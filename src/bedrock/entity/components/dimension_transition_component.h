@@ -14,16 +14,21 @@
 
 #pragma once
 
-#include <vector>
+#include "bedrock/world/level/block/portal_axis.h"
+#include "bedrock/world/level/change_dimension_request.h"
 
-#include "bedrock/core/string/string_hash.h"
+struct PlayerChangeDimensionRequestComponent {
+    enum class State : uint8_t {
+        AwaitingECSTick = 0,
+        ECSTransferComplete = 1,
+    };
+    PlayerChangeDimensionRequestComponent::State mState;
+    ChangeDimensionRequest mRequest;
+};
 
-namespace VanillaStateIds {
-extern const HashedString Age;
-extern const HashedString Direction;
-extern const HashedString ExplodeBit;
-extern const HashedString Extinguished;
-extern const HashedString FacingDirection;
-extern const HashedString HeadPieceBit;
-extern const HashedString PortalAxis;
-}  // namespace VanillaStateIds
+struct DimensionTransitionComponent {
+    Vec3 portal_entrance_position;
+    DimensionType portal_entrance_dimension;
+    PortalAxis portal_entrance_axis;
+    std::optional<Vec3> existing_target_position;
+};

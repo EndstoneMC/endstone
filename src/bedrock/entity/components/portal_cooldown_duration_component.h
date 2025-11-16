@@ -14,16 +14,14 @@
 
 #pragma once
 
-#include <vector>
+#include "bedrock/world/level/block_pos.h"
 
-#include "bedrock/core/string/string_hash.h"
-
-namespace VanillaStateIds {
-extern const HashedString Age;
-extern const HashedString Direction;
-extern const HashedString ExplodeBit;
-extern const HashedString Extinguished;
-extern const HashedString FacingDirection;
-extern const HashedString HeadPieceBit;
-extern const HashedString PortalAxis;
-}  // namespace VanillaStateIds
+struct PortalCooldownDurationComponent {
+    static constexpr int PLAYER_NON_INVULNERABLE_WAIT_TICKS = 80;
+    void resetCurrentPortalCooldown();
+    BlockPos portal_block_pos;
+    int max_portal_cooldown_ticks;
+    int current_portal_cooldown_ticks;
+    int inside_portal_time_ticks;
+    int max_portal_wait_time;
+};

@@ -24,15 +24,15 @@
 
 class BlockPos {
 public:
-    static const BlockPos MIN;
+    static const BlockPos MIN, MAX;
     static const BlockPos ZERO;
 
     explicit constexpr BlockPos(int v) : x(v), y(v), z(v) {}
     constexpr BlockPos() = default;
-    constexpr BlockPos(int x, int y, int z) : x(x), y(y), z(z){};
+    constexpr BlockPos(int x, int y, int z) : x(x), y(y), z(z) {};
     BlockPos(const Vec3 &vec)
         : x(static_cast<int>(std::floorf(vec.x))), y(static_cast<int>(std::floorf(vec.y))),
-          z(static_cast<int>(std::floorf(vec.z))){};
+          z(static_cast<int>(std::floorf(vec.z))) {};
     BlockPos(double x, double y, double z) : x(std::floor(x)), y(std::floor(y)), z(std::floor(z)) {}
 
     BlockPos operator*(int scalar) const
@@ -243,6 +243,7 @@ public:
 
 inline const BlockPos BlockPos::ZERO(0);
 inline const BlockPos BlockPos::MIN(std::numeric_limits<int>::min());
+inline const BlockPos BlockPos::MAX(std::numeric_limits<int>::max());
 
 template <>
 struct std::hash<BlockPos> {

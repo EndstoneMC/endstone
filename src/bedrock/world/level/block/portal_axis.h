@@ -14,16 +14,11 @@
 
 #pragma once
 
-#include <vector>
+#include <cstdint>
 
-#include "bedrock/core/string/string_hash.h"
-
-namespace VanillaStateIds {
-extern const HashedString Age;
-extern const HashedString Direction;
-extern const HashedString ExplodeBit;
-extern const HashedString Extinguished;
-extern const HashedString FacingDirection;
-extern const HashedString HeadPieceBit;
-extern const HashedString PortalAxis;
-}  // namespace VanillaStateIds
+enum class PortalAxis : int {
+    Unknown = 0,
+    X = 1,
+    Z = 2,
+    _count = 3,
+};

@@ -20,11 +20,13 @@
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/components/actor_type_flag_component.h"
 #include "bedrock/entity/components/actor_unique_id_component.h"
+#include "bedrock/entity/components/dimension_transition_component.h"
 #include "bedrock/entity/components/dimension_type_component.h"
 #include "bedrock/entity/components/fall_distance_component.h"
 #include "bedrock/entity/components/is_dead_flag_component.h"
 #include "bedrock/entity/components/passenger_component.h"
 #include "bedrock/entity/components/player_component.h"
+#include "bedrock/entity/components/portal_cooldown_duration_component.h"
 #include "bedrock/entity/components/runtime_id_component.h"
 #include "bedrock/entity/components/should_update_bounding_box_request_component.h"
 #include "bedrock/entity/components/tags_component.h"
@@ -39,6 +41,8 @@
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/actor/provider/actor_riding.h"
+#include "bedrock/world/level/block/states/vanilla_block_states.h"
+#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 
 bool Actor::getStatusFlag(ActorFlags flag) const
@@ -291,7 +295,19 @@ void Actor::setLastHurtDamage(float damage)
 
 void Actor::_setDimensionTransitionComponent(DimensionType from_id, DimensionType to_id, int portal_cooldown)
 {
-
+    auto axis = PortalAxis::Unknown;
+    if ((from_id == VanillaDimensions::Nether || to_id == VanillaDimensions::Nether) &&
+        from_id != VanillaDimensions::TheEnd) {
+        const auto component = getPersistentComponent<PortalCooldownDurationComponent>();
+        component->current_portal_cooldown_ticks = portal_cooldown;
+        if (component->portal_block_pos != BlockPos::MAX) {
+            const auto &portal = getDimensionBlockSource().getBlock(component->portal_block_pos);
+            axis = portal.getState<PortalAxis>(VanillaStateIds::PortalAxis);
+        }
+    }
+    auto &component = entity_context_.getOrAddComponent<DimensionTransitionComponent>();
+    component.portal_entrance_position = getPosition();
+    component.portal_entrance_axis = axis;
 }
 
 // void Actor::_setHeightOffset(float offset)

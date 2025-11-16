@@ -300,7 +300,7 @@ public:
     [[nodiscard]] bool hasState(const BlockState &block_state) const;
     [[nodiscard]] bool hasState(const HashedString &name) const;
     template <typename T>
-    int getState(const BlockState &block_state, DataID data) const
+    T getState(const BlockState &block_state, DataID data) const
     {
         return getState<T>(block_state.getID(), data);
     }
@@ -311,7 +311,7 @@ public:
         if (const auto it = states_.find(id); it != states_.end()) {
             return it->second.get<T>(data);
         }
-        return _tryLookupAlteredStateCollection(id, data).value_or(0);
+        return static_cast<T>(_tryLookupAlteredStateCollection(id, data).value_or(0));
     }
 
     template <typename T>
