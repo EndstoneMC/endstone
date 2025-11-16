@@ -217,7 +217,10 @@ See [endstone::Mob](classendstone_1_1Mob.md)
 
 | Type | Name |
 | ---: | :--- |
+| virtual [**int**](classendstone_1_1Identifier.md) | [**getHealth**](classendstone_1_1Mob.md#function-gethealth) () const = 0<br>_Gets the entity's health from 0 to its max possible value, where 0 is dead._  |
+| virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxHealth**](classendstone_1_1Mob.md#function-getmaxhealth) () const = 0<br>_Gets the maximum health this entity has._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isGliding**](classendstone_1_1Mob.md#function-isgliding) () const = 0<br>_Checks to see if an actor is gliding, such as using an Elytra._  |
+| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setHealth**](classendstone_1_1Mob.md#function-sethealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br> |
 
 
 ## Public Functions inherited from endstone::Actor
@@ -230,11 +233,9 @@ See [endstone::Actor](classendstone_1_1Actor.md)
 | virtual [**Item**](classendstone_1_1Item.md) \* | [**asItem**](classendstone_1_1Actor.md#function-asitem) () const = 0<br>_Gets an_ [_**Actor**_](classendstone_1_1Actor.md) _as_[_**Item**_](classendstone_1_1Item.md) _._ |
 | virtual [**Mob**](classendstone_1_1Mob.md) \* | [**asMob**](classendstone_1_1Actor.md#function-asmob) () const = 0<br>_Gets an_ [_**Actor**_](classendstone_1_1Actor.md) _as_[_**Mob**_](classendstone_1_1Mob.md) _._ |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](classendstone_1_1Actor.md#function-getdimension) () const = 0<br> |
-| virtual [**int**](classendstone_1_1Identifier.md) | [**getHealth**](classendstone_1_1Actor.md#function-gethealth) () const = 0<br>_Gets the entity's health from 0 to its max possible value, where 0 is dead._  |
 | virtual std::int64\_t | [**getId**](classendstone_1_1Actor.md#function-getid) () const = 0<br>_Returns a unique id for this actor._  |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](classendstone_1_1Actor.md#function-getlevel) () const = 0<br> |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](classendstone_1_1Actor.md#function-getlocation) () const = 0<br> |
-| virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxHealth**](classendstone_1_1Actor.md#function-getmaxhealth) () const = 0<br>_Gets the maximum health this entity has._  |
 | virtual std::string | [**getNameTag**](classendstone_1_1Actor.md#function-getnametag) () const = 0<br>_Gets the current name tag of the actor._  |
 | virtual std::uint64\_t | [**getRuntimeId**](classendstone_1_1Actor.md#function-getruntimeid) () const = 0<br> |
 | virtual std::string | [**getScoreTag**](classendstone_1_1Actor.md#function-getscoretag) () const = 0<br>_Gets the current score tag of the actor._  |
@@ -250,14 +251,13 @@ See [endstone::Actor](classendstone_1_1Actor.md)
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isValid**](classendstone_1_1Actor.md#function-isvalid) () const = 0<br> |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**remove**](classendstone_1_1Actor.md#function-remove) () = 0<br> |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**removeScoreboardTag**](classendstone_1_1Actor.md#function-removescoreboardtag) (std::string tag) const = 0<br>_Removes a given tag from this actor._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setHealth**](classendstone_1_1Actor.md#function-sethealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br> |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setNameTag**](classendstone_1_1Actor.md#function-setnametag) (std::string name) = 0<br>_Sets the name tag for the actor._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setNameTagAlwaysVisible**](classendstone_1_1Actor.md#function-setnametagalwaysvisible) ([**bool**](classendstone_1_1Identifier.md) visible) = 0<br>_Sets whether the actor's name tag should always be visible._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setNameTagVisible**](classendstone_1_1Actor.md#function-setnametagvisible) ([**bool**](classendstone_1_1Identifier.md) visible) = 0<br>_Sets if the actor's name tag is visible or not._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setRotation**](classendstone_1_1Actor.md#function-setrotation) ([**float**](classendstone_1_1Identifier.md) yaw, [**float**](classendstone_1_1Identifier.md) pitch) = 0<br> |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setScoreTag**](classendstone_1_1Actor.md#function-setscoretag) (std::string score) = 0<br>_Sets the score tag for the actor._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**teleport**](classendstone_1_1Actor.md#function-teleport-12) ([**Location**](classendstone_1_1Location.md) location) = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**teleport**](classendstone_1_1Actor.md#function-teleport-22) ([**Actor**](classendstone_1_1Actor.md) & target) = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**teleport**](classendstone_1_1Actor.md#function-teleport-12) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & location) = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**teleport**](classendstone_1_1Actor.md#function-teleport-22) ([**const**](classendstone_1_1Identifier.md) [**Actor**](classendstone_1_1Actor.md) & target) = 0<br> |
 
 
 ## Public Functions inherited from endstone::CommandSender

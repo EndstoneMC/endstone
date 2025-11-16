@@ -98,11 +98,9 @@ Inherited by the following classes: [endstone::Item](classendstone_1_1Item.md), 
 | virtual [**Item**](classendstone_1_1Item.md) \* | [**asItem**](#function-asitem) () const = 0<br>_Gets an_ [_**Actor**_](classendstone_1_1Actor.md) _as_[_**Item**_](classendstone_1_1Item.md) _._ |
 | virtual [**Mob**](classendstone_1_1Mob.md) \* | [**asMob**](#function-asmob) () const = 0<br>_Gets an_ [_**Actor**_](classendstone_1_1Actor.md) _as_[_**Mob**_](classendstone_1_1Mob.md) _._ |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br> |
-| virtual [**int**](classendstone_1_1Identifier.md) | [**getHealth**](#function-gethealth) () const = 0<br>_Gets the entity's health from 0 to its max possible value, where 0 is dead._  |
 | virtual std::int64\_t | [**getId**](#function-getid) () const = 0<br>_Returns a unique id for this actor._  |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br> |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br> |
-| virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxHealth**](#function-getmaxhealth) () const = 0<br>_Gets the maximum health this entity has._  |
 | virtual std::string | [**getNameTag**](#function-getnametag) () const = 0<br>_Gets the current name tag of the actor._  |
 | virtual std::uint64\_t | [**getRuntimeId**](#function-getruntimeid) () const = 0<br> |
 | virtual std::string | [**getScoreTag**](#function-getscoretag) () const = 0<br>_Gets the current score tag of the actor._  |
@@ -118,14 +116,13 @@ Inherited by the following classes: [endstone::Item](classendstone_1_1Item.md), 
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isValid**](#function-isvalid) () const = 0<br> |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**remove**](#function-remove) () = 0<br> |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**removeScoreboardTag**](#function-removescoreboardtag) (std::string tag) const = 0<br>_Removes a given tag from this actor._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setHealth**](#function-sethealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br> |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setNameTag**](#function-setnametag) (std::string name) = 0<br>_Sets the name tag for the actor._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setNameTagAlwaysVisible**](#function-setnametagalwaysvisible) ([**bool**](classendstone_1_1Identifier.md) visible) = 0<br>_Sets whether the actor's name tag should always be visible._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setNameTagVisible**](#function-setnametagvisible) ([**bool**](classendstone_1_1Identifier.md) visible) = 0<br>_Sets if the actor's name tag is visible or not._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setRotation**](#function-setrotation) ([**float**](classendstone_1_1Identifier.md) yaw, [**float**](classendstone_1_1Identifier.md) pitch) = 0<br> |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setScoreTag**](#function-setscoretag) (std::string score) = 0<br>_Sets the score tag for the actor._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**teleport**](#function-teleport-12) ([**Location**](classendstone_1_1Location.md) location) = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**teleport**](#function-teleport-22) ([**Actor**](classendstone_1_1Actor.md) & target) = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**teleport**](#function-teleport-12) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & location) = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**teleport**](#function-teleport-22) ([**const**](classendstone_1_1Identifier.md) [**Actor**](classendstone_1_1Actor.md) & target) = 0<br> |
 
 
 ## Public Functions inherited from endstone::CommandSender
@@ -361,31 +358,6 @@ The current [**Dimension**](classendstone_1_1Dimension.md) this actor resides in
 
 
 
-### function getHealth 
-
-_Gets the entity's health from 0 to its max possible value, where 0 is dead._ 
-```C++
-virtual int endstone::Actor::getHealth () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-Health represented from 0 to max 
-
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function getId 
 
 _Returns a unique id for this actor._ 
@@ -454,31 +426,6 @@ Gets the actor's current position
 **Returns:**
 
 a new copy of [**Location**](classendstone_1_1Location.md) containing the position of this actor 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getMaxHealth 
-
-_Gets the maximum health this entity has._ 
-```C++
-virtual int endstone::Actor::getMaxHealth () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-Maximum health 
 
 
 
@@ -884,35 +831,6 @@ true if the tag was successfully removed, false if the tag does not exist.
 
 
 
-### function setHealth 
-
-```C++
-virtual Result< void > endstone::Actor::setHealth (
-    int health
-) const = 0
-```
-
-
-
-Sets the entity's health from 0 to its possible value, where 0 is dead.
-
-
-
-
-**Parameters:**
-
-
-* `health` New health represented from 0 to max 
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function setNameTag 
 
 _Sets the name tag for the actor._ 
@@ -1062,8 +980,8 @@ virtual void endstone::Actor::setScoreTag (
 ### function teleport [1/2]
 
 ```C++
-virtual void endstone::Actor::teleport (
-    Location location
+virtual bool endstone::Actor::teleport (
+    const  Location & location
 ) = 0
 ```
 
@@ -1095,8 +1013,8 @@ Teleports this actor to the given location.
 ### function teleport [2/2]
 
 ```C++
-virtual void endstone::Actor::teleport (
-    Actor & target
+virtual bool endstone::Actor::teleport (
+    const  Actor & target
 ) = 0
 ```
 

@@ -3692,8 +3692,20 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Mob/#function-gethealth"><strong>getHealth</strong></a> () const = 0<br><em>Gets the entity's health from 0 to its max possible value, where 0 is dead.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Mob/#function-getmaxhealth"><strong>getMaxHealth</strong></a> () const = 0<br><em>Gets the maximum health this entity has.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Mob/#function-isgliding"><strong>isGliding</strong></a> () const = 0<br><em>Checks to see if an actor is gliding, such as using an Elytra.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Mob/#function-sethealth"><strong>setHealth</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> health) const = 0<br></td>
 </tr>
 </tbody>
 </table>
@@ -3724,10 +3736,6 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getdimension"><strong>getDimension</strong></a> () const = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-gethealth"><strong>getHealth</strong></a> () const = 0<br><em>Gets the entity's health from 0 to its max possible value, where 0 is dead.</em></td>
-</tr>
-<tr>
 <td style="text-align: right;">virtual std::int64_t</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getid"><strong>getId</strong></a> () const = 0<br><em>Returns a unique id for this actor.</em></td>
 </tr>
@@ -3738,10 +3746,6 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Location/"><strong>Location</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getlocation"><strong>getLocation</strong></a> () const = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getmaxhealth"><strong>getMaxHealth</strong></a> () const = 0<br><em>Gets the maximum health this entity has.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
@@ -3804,10 +3808,6 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-removescoreboardtag"><strong>removeScoreboardTag</strong></a> (std::string tag) const = 0<br><em>Removes a given tag from this actor.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-sethealth"><strong>setHealth</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> health) const = 0<br></td>
-</tr>
-<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-setnametag"><strong>setNameTag</strong></a> (std::string name) = 0<br><em>Sets the name tag for the actor.</em></td>
 </tr>
@@ -3828,12 +3828,12 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-setscoretag"><strong>setScoreTag</strong></a> (std::string score) = 0<br><em>Sets the score tag for the actor.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-teleport-12"><strong>teleport</strong></a> (<a href="../classendstone_1_1Location/"><strong>Location</strong></a> location) = 0<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-teleport-12"><strong>teleport</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp; location) = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-teleport-22"><strong>teleport</strong></a> (<a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &amp; target) = 0<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-teleport-22"><strong>teleport</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &amp; target) = 0<br></td>
 </tr>
 </tbody>
 </table>

@@ -57,9 +57,9 @@ public:
 
     virtual void setRotation(float yaw, float pitch) = 0;
 
-    virtual void teleport(Location location) = 0;
+    virtual bool teleport(const Location &location) = 0;
 
-    virtual void teleport(Actor &target) = 0;
+    virtual bool teleport(const Actor &target) = 0;
 
     [[nodiscard]] virtual std::int64_t getId() const = 0;
 
@@ -68,12 +68,6 @@ public:
     [[nodiscard]] virtual bool isDead() const = 0;
 
     [[nodiscard]] virtual bool isValid() const = 0;
-
-    [[nodiscard]] virtual int getHealth() const = 0;
-
-    [[nodiscard]] virtual Result<void> setHealth(int health) const = 0;
-
-    [[nodiscard]] virtual int getMaxHealth() const = 0;
 
     [[nodiscard]] virtual std::vector<std::string> getScoreboardTags() const = 0;
 

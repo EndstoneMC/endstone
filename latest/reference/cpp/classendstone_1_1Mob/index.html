@@ -2612,9 +2612,48 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-gethealth" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getHealth
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getmaxhealth" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getMaxHealth
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-isgliding" class="md-nav__link">
       <span class="md-ellipsis">
         function isGliding
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-sethealth" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setHealth
       </span>
     </a>
 
@@ -2679,8 +2718,20 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
+<td style="text-align: left;"><a href="#function-gethealth"><strong>getHealth</strong></a> () const = 0<br><em>Gets the entity's health from 0 to its max possible value, where 0 is dead.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
+<td style="text-align: left;"><a href="#function-getmaxhealth"><strong>getMaxHealth</strong></a> () const = 0<br><em>Gets the maximum health this entity has.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
 <td style="text-align: left;"><a href="#function-isgliding"><strong>isGliding</strong></a> () const = 0<br><em>Checks to see if an actor is gliding, such as using an Elytra.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-sethealth"><strong>setHealth</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> health) const = 0<br></td>
 </tr>
 </tbody>
 </table>
@@ -2711,10 +2762,6 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getdimension"><strong>getDimension</strong></a> () const = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-gethealth"><strong>getHealth</strong></a> () const = 0<br><em>Gets the entity's health from 0 to its max possible value, where 0 is dead.</em></td>
-</tr>
-<tr>
 <td style="text-align: right;">virtual std::int64_t</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getid"><strong>getId</strong></a> () const = 0<br><em>Returns a unique id for this actor.</em></td>
 </tr>
@@ -2725,10 +2772,6 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Location/"><strong>Location</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getlocation"><strong>getLocation</strong></a> () const = 0<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getmaxhealth"><strong>getMaxHealth</strong></a> () const = 0<br><em>Gets the maximum health this entity has.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
@@ -2791,10 +2834,6 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-removescoreboardtag"><strong>removeScoreboardTag</strong></a> (std::string tag) const = 0<br><em>Removes a given tag from this actor.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-sethealth"><strong>setHealth</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> health) const = 0<br></td>
-</tr>
-<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-setnametag"><strong>setNameTag</strong></a> (std::string name) = 0<br><em>Sets the name tag for the actor.</em></td>
 </tr>
@@ -2815,12 +2854,12 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-setscoretag"><strong>setScoreTag</strong></a> (std::string score) = 0<br><em>Sets the score tag for the actor.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-teleport-12"><strong>teleport</strong></a> (<a href="../classendstone_1_1Location/"><strong>Location</strong></a> location) = 0<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-teleport-12"><strong>teleport</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp; location) = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-teleport-22"><strong>teleport</strong></a> (<a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &amp; target) = 0<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-teleport-22"><strong>teleport</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &amp; target) = 0<br></td>
 </tr>
 </tbody>
 </table>
@@ -2941,12 +2980,40 @@ For latest updates join the chat on
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-gethealth">function getHealth<a class="headerlink" href="#function-gethealth" title="Permanent link">&para;</a></h3>
+<p><em>Gets the entity's health from 0 to its max possible value, where 0 is dead.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">getHealth</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>Health represented from 0 to max </p>
+<hr>
+
+<h3 id="function-getmaxhealth">function getMaxHealth<a class="headerlink" href="#function-getmaxhealth" title="Permanent link">&para;</a></h3>
+<p><em>Gets the maximum health this entity has.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">getMaxHealth</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>Maximum health </p>
+<hr>
+
 <h3 id="function-isgliding">function isGliding<a class="headerlink" href="#function-isgliding" title="Permanent link">&para;</a></h3>
 <p><em>Checks to see if an actor is gliding, such as using an Elytra.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">isGliding</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">isGliding</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>True if this actor is gliding. </p>
+<hr>
+
+<h3 id="function-sethealth">function setHealth<a class="headerlink" href="#function-sethealth" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">setHealth</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">health</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div>
+<p>Sets the entity's health from 0 to its possible value, where 0 is dead.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>health</code> New health represented from 0 to max </li>
+</ul>
 <hr>
 
 <hr />
