@@ -3,6 +3,7 @@
   <compounddef id="classendstone_1_1PlayerTeleportEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerTeleportEvent</compoundname>
     <basecompoundref refid="classendstone_1_1PlayerMoveEvent" prot="public" virt="non-virtual">endstone::PlayerMoveEvent</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1PlayerPortalEvent" prot="public" virt="non-virtual">endstone::PlayerPortalEvent</derivedcompoundref>
     <includes refid="player__teleport__event_8h" local="no">endstone/event/player/player_teleport_event.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1PlayerTeleportEvent_1a43539d2448ad4540de9a2be61bbe47e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -81,6 +82,12 @@
         <label>endstone::PlayerMoveEvent</label>
         <link refid="classendstone_1_1PlayerMoveEvent"/>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::PlayerPortalEvent</label>
+        <link refid="classendstone_1_1PlayerPortalEvent"/>
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="1">

@@ -156,6 +156,7 @@ _Represents a button with text and an optional icon._
 | class | [**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md) <br>_Called when a player attempts to login in._  |
 | class | [**PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md) <br>_Called when a player moves._  |
 | class | [**PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md) <br>_Called when a player picks an item up from the ground._  |
+| class | [**PlayerPortalEvent**](classendstone_1_1PlayerPortalEvent.md) <br>_Called when a player is about to teleport because it is in contact with a portal._  |
 | class | [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) <br>_Called when a player leaves a server._  |
 | class | [**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md) <br>_Called when a player respawns._  |
 | class | [**PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md) <br>_Called when a player changes their skin._  |

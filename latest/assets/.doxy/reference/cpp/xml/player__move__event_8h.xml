@@ -538,9 +538,15 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
+      <node id="4">
+        <label>include/endstone/event/player/player_portal_event.h</label>
+        <link refid="player__portal__event_8h_source"/>
+      </node>
       <node id="3">
         <label>include/endstone/event/player/player_teleport_event.h</label>
         <link refid="player__teleport__event_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1PlayerMoveEvent" prot="public">endstone::PlayerMoveEvent</innerclass>

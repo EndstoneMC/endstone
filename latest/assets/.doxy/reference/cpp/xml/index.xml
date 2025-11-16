@@ -1807,6 +1807,9 @@
     <member refid="classendstone_1_1PlayerPickupItemEvent_1a2ffe5a51d8b0c22799ba4db466fc6f91" kind="function"><name>PlayerPickupItemEvent</name></member>
     <member refid="classendstone_1_1PlayerPickupItemEvent_1af2e2a3c35dde44219709a5303569979c" kind="function"><name>getItem</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerPortalEvent" kind="class"><name>endstone::PlayerPortalEvent</name>
+    <member refid="classendstone_1_1PlayerPortalEvent_1ab052d941b6709d8539b4a1274ef02e4f" kind="function"><name>ENDSTONE_EVENT</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerQuitEvent" kind="class"><name>endstone::PlayerQuitEvent</name>
     <member refid="classendstone_1_1PlayerQuitEvent_1ae70ebd19593a4a08fee645106ba8678a" kind="variable"><name>quit_message_</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1a4cafa40ad32d17a9df4dd202ca3bb58c" kind="function"><name>ENDSTONE_EVENT</name></member>
@@ -2787,6 +2790,8 @@
   <compound refid="player__move__event_8h" kind="file"><name>player_move_event.h</name>
   </compound>
   <compound refid="player__pickup__item__event_8h" kind="file"><name>player_pickup_item_event.h</name>
+  </compound>
+  <compound refid="player__portal__event_8h" kind="file"><name>player_portal_event.h</name>
   </compound>
   <compound refid="player__quit__event_8h" kind="file"><name>player_quit_event.h</name>
   </compound>

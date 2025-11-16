@@ -355,6 +355,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerPickupItemEvent**](classendstone_1_1PlayerPickupItemEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerPortalEvent**](classendstone_1_1PlayerPortalEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md)

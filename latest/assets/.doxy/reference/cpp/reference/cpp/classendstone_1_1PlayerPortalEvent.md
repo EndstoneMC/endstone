@@ -1,23 +1,28 @@
 
 
-# Class endstone::PlayerTeleportEvent
+# Class endstone::PlayerPortalEvent
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md)
+[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**PlayerPortalEvent**](classendstone_1_1PlayerPortalEvent.md)
 
 
 
-_Called when a player is teleported from one location to another._ 
+_Called when a player is about to teleport because it is in contact with a portal._ 
 
-* `#include <endstone/event/player/player_teleport_event.h>`
-
-
-
-Inherits the following classes: [endstone::PlayerMoveEvent](classendstone_1_1PlayerMoveEvent.md)
+* `#include <endstone/event/player/player_portal_event.h>`
 
 
-Inherited by the following classes: [endstone::PlayerPortalEvent](classendstone_1_1PlayerPortalEvent.md)
+
+Inherits the following classes: [endstone::PlayerTeleportEvent](classendstone_1_1PlayerTeleportEvent.md)
+
+
+
+
+
+
+
+
 
 
 
@@ -118,12 +123,35 @@ See [endstone::PlayerMoveEvent](classendstone_1_1PlayerMoveEvent.md)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Public Functions
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md)) <br> |
-|   | [**PlayerMoveEvent**](#function-playermoveevent) ([**Player**](classendstone_1_1Player.md) & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerPortalEvent**](classendstone_1_1PlayerPortalEvent.md)) <br> |
+
+
+## Public Functions inherited from endstone::PlayerTeleportEvent
+
+See [endstone::PlayerTeleportEvent](classendstone_1_1PlayerTeleportEvent.md)
+
+| Type | Name |
+| ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](classendstone_1_1PlayerTeleportEvent.md#function-endstone_event) ([**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md)) <br> |
+|   | [**PlayerMoveEvent**](classendstone_1_1PlayerTeleportEvent.md#function-playermoveevent) ([**Player**](classendstone_1_1Player.md) & player, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
 
 
 ## Public Functions inherited from endstone::PlayerMoveEvent
@@ -267,6 +295,32 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Public Functions Documentation
 
 
@@ -275,25 +329,8 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 ### function ENDSTONE\_EVENT 
 
 ```C++
-endstone::PlayerTeleportEvent::ENDSTONE_EVENT (
-    PlayerTeleportEvent
-) 
-```
-
-
-
-
-<hr>
-
-
-
-### function PlayerMoveEvent 
-
-```C++
-inline explicit endstone::PlayerTeleportEvent::PlayerMoveEvent (
-    Player & player,
-    Location from,
-    Location to
+endstone::PlayerPortalEvent::ENDSTONE_EVENT (
+    PlayerPortalEvent
 ) 
 ```
 
@@ -303,5 +340,5 @@ inline explicit endstone::PlayerTeleportEvent::PlayerMoveEvent (
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/event/player/player_teleport_event.h`
+The documentation for this class was generated from the following file `include/endstone/event/player/player_portal_event.h`
 

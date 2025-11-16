@@ -100,7 +100,7 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="21">
+      <node id="22">
         <label>endstone::PlayerBedLeaveEvent</label>
         <link refid="classendstone_1_1PlayerBedLeaveEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -118,7 +118,7 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="22">
+      <node id="23">
         <label>endstone::PlayerDimensionChangeEvent</label>
         <link refid="classendstone_1_1PlayerDimensionChangeEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -172,7 +172,7 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="23">
+      <node id="24">
         <label>endstone::PlayerJoinEvent</label>
         <link refid="classendstone_1_1PlayerJoinEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -202,25 +202,31 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="19">
+      <node id="20">
         <label>endstone::PlayerPickupItemEvent</label>
         <link refid="classendstone_1_1PlayerPickupItemEvent"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="24">
+      <node id="19">
+        <label>endstone::PlayerPortalEvent</label>
+        <link refid="classendstone_1_1PlayerPortalEvent"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="25">
         <label>endstone::PlayerQuitEvent</label>
         <link refid="classendstone_1_1PlayerQuitEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="25">
+      <node id="26">
         <label>endstone::PlayerRespawnEvent</label>
         <link refid="classendstone_1_1PlayerRespawnEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="20">
+      <node id="21">
         <label>endstone::PlayerSkinChangeEvent</label>
         <link refid="classendstone_1_1PlayerSkinChangeEvent"/>
         <childnode refid="3" relation="public-inheritance">
