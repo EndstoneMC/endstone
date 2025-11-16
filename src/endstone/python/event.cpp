@@ -281,6 +281,8 @@ void init_event(py::module_ &m, py::class_<Event> &event)
                       "Gets or sets the message to send to all online players for this skin change.");
     py::class_<PlayerTeleportEvent, PlayerMoveEvent>(
         m, "PlayerTeleportEvent", "Called when a player is teleported from one location to another.");
+    py::class_<PlayerPortalEvent, PlayerTeleportEvent>(
+        m, "PlayerPortalEvent", "Called when a player is about to teleport because it is in contact with a portal.");
     py::class_<PlayerPickupItemEvent, PlayerEvent, ICancellable>(
         m, "PlayerPickupItemEvent", "Called when a player picks an item up from the ground.")
         .def_property_readonly("item", &PlayerPickupItemEvent::getItem, py::return_value_policy::reference,

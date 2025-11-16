@@ -67,6 +67,7 @@ __all__ = [
     "PlayerLoginEvent",
     "PlayerMoveEvent",
     "PlayerPickupItemEvent",
+    "PlayerPortalEvent",
     "PlayerQuitEvent",
     "PlayerRespawnEvent",
     "PlayerSkinChangeEvent",
@@ -788,6 +789,11 @@ class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
 class PlayerTeleportEvent(PlayerMoveEvent):
     """
     Called when a player is teleported from one location to another.
+    """
+
+class PlayerPortalEvent(PlayerTeleportEvent):
+    """
+    Called when a player is about to teleport because it is in contact with a portal.
     """
 
 class PlayerPickupItemEvent(PlayerEvent, Cancellable):
