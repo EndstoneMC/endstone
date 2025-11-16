@@ -37,9 +37,36 @@ public:
         Base::getHandle().setYBodyRotation(yaw);
     }
 
+    bool teleport(const Location &location) override
+    {
+        if (getHealth() == 0) {
+            return false;
+        }
+        return Base::teleport(location);
+    }
+
     [[nodiscard]] bool isGliding() const override
     {
         return Base::getHandle().isGliding();
+    }
+
+    [[nodiscard]] int getHealth() const override
+    {
+        return Base::getHandle().getHealth();
+    }
+
+    [[nodiscard]] Result<void> setHealth(int health) const override
+    {
+        ENDSTONE_CHECKF(health >= 0 && health <= getMaxHealth(),  //
+                        "Health value ({}) must be between 0 and {}.", health, getMaxHealth())
+        auto mutable_attr = Base::getHandle().getMutableAttribute("minecraft:health");
+        mutable_attr->setCurrentValue(static_cast<float>(health));
+        return {};
+    }
+
+    [[nodiscard]] int getMaxHealth() const override
+    {
+        return Base::getHandle().getMaxHealth();
     }
 };
 

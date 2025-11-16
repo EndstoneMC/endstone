@@ -33,19 +33,16 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
         .def_property_readonly("dimension", &Actor::getDimension, "Gets the current Dimension this actor resides in.",
                                py::return_value_policy::reference)
         .def("set_rotation", &Actor::setRotation, "Sets the actor's rotation.", py::arg("yaw"), py::arg("pitch"))
-        .def("teleport", py::overload_cast<Location>(&Actor::teleport), "Teleports this actor to the given location.",
-             py::arg("location"))
-        .def("teleport", py::overload_cast<Actor &>(&Actor::teleport), "Teleports this actor to the target Actor.",
-             py::arg("target"))
+        .def("teleport", py::overload_cast<const Location &>(&Actor::teleport),
+             "Teleports this actor to the given location.", py::arg("location"))
+        .def("teleport", py::overload_cast<const Actor &>(&Actor::teleport),
+             "Teleports this actor to the target Actor.", py::arg("target"))
         .def_property_readonly("id", &Actor::getId, "Returns a unique id for this actor.")
         .def("remove", &Actor::remove, "Remove this actor from the level.")
         .def_property_readonly("is_valid", &Actor::isValid,
                                "Returns false if the entity has died, been despawned for some other reason, or has not "
                                "been added to the level.")
         .def_property_readonly("is_dead", &Actor::isDead, "Returns true if this actor has been marked for removal.")
-        .def_property("health", &Actor::getHealth, &Actor::setHealth,
-                      "Gets or sets the entity's health from 0 to its max possible value, where 0 is dead.")
-        .def_property_readonly("max_health", &Actor::getMaxHealth, "Gets the maximum health this entity has.")
         .def_property_readonly("scoreboard_tags", &Actor::getScoreboardTags,
                                "Returns a list of scoreboard tags for this actor.")
         .def("add_scoreboard_tag", &Actor::addScoreboardTag, "Adds a tag to this actor.", py::arg("tag"))
@@ -61,7 +58,10 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
                       "Gets or sets the current score tag of the actor.");
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
-                              "Checks to see if an actor is gliding, such as using an Elytra.");
+                              "Checks to see if an actor is gliding, such as using an Elytra.")
+        .def_property("health", &Mob::getHealth, &Mob::setHealth,
+                      "Gets or sets the entity's health from 0 to its max possible value, where 0 is dead.")
+        .def_property_readonly("max_health", &Mob::getMaxHealth, "Gets the maximum health this entity has.");
 
     py::class_<Item, Actor>(m, "Item", "Represents a base actor in the level.")
         .def_property("item_stack", &Item::getItemStack, &Item::setItemStack,

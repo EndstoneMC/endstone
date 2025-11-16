@@ -25,6 +25,13 @@ public:
         WaitingForChunks,
         WaitingForRespawn,
     };
+    ChangeDimensionRequest() = default;
+    ChangeDimensionRequest(DimensionType from_id, DimensionType to_id, Vec3 from_location, Vec3 to_location,
+                           bool use_portal, bool respawn)
+        : from_dimension(from_id), to_dimension(to_id), from_position(from_location), to_position(to_location),
+          use_portal(use_portal), respawn(respawn)
+    {
+    }
     State state;
     DimensionType from_dimension;
     DimensionType to_dimension;

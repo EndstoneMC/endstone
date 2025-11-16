@@ -56,6 +56,7 @@ public:
 
     // Actor
     void remove() override;
+    bool teleport(const Location &location) override;
 
     // OfflinePlayer
     [[nodiscard]] UUID getUniqueId() const override;

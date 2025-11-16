@@ -142,7 +142,8 @@ public:
     [[nodiscard]] virtual bool isFireImmune() const = 0;
     virtual void blockedByShield(ActorDamageSource const &, Actor &) = 0;
     virtual bool canDisableShield() = 0;
-    ENDSTONE_HOOK virtual void teleportTo(Vec3 const &, bool, int, int, bool) = 0;
+    ENDSTONE_HOOK virtual void teleportTo(Vec3 const &pos, bool should_stop_riding, int cause, int source_entity_type,
+                                          bool keep_velocity) = 0;
     virtual Vec3 lerpMotion(Vec3 const &) = 0;
     virtual std::unique_ptr<Packet> tryCreateAddActorPacket() = 0;
     virtual void normalTick() = 0;

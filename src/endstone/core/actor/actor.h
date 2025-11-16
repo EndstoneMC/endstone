@@ -213,28 +213,28 @@ public:
         getHandle().setRotationWrapped({pitch, yaw});
     }
 
-    void teleport(Location location) override
+    bool teleport(const Location &location) override
     {
-        DimensionType destination_dimension =
-            static_cast<EndstoneDimension &>(location.getDimension()).getHandle().getDimensionId();
+        if (getHandle().isRemoved()) {
+            return false;
+        }
 
-        auto rotation = RotationCommandUtils::RotationData{RelativeFloat{location.getPitch(), false},
-                                                           RelativeFloat{location.getYaw(), false}, std::nullopt};
-
-        auto target =
-            TeleportCommand::computeTarget(getHandle(),                                          // victim
-                                           {location.getX(), location.getY(), location.getZ()},  // destination
-                                           nullptr,                                              // facing
-                                           destination_dimension,                                //  dimension
-                                           rotation,                                             // rotation
-                                           CommandVersion::CurrentVersion);
-
-        TeleportCommand::applyTarget(getHandle(), std::move(target), /*keep_velocity*/ false);
+        setRotation(location.getYaw(), location.getPitch());
+        Vec3 to_location{location.getX(), location.getY(), location.getZ()};
+        if (&location.getDimension() != &getDimension()) {
+            const auto to_dimension =
+                static_cast<EndstoneDimension &>(location.getDimension()).getHandle().getDimensionId();
+            getHandle().getLevel().entityChangeDimension(getHandle(), to_dimension, to_location);
+        }
+        else {
+            getHandle().teleportTo(to_location, true, 3, 1, false);
+        }
+        return true;
     }
 
-    void teleport(Actor &target) override
+    bool teleport(const Actor &target) override
     {
-        teleport(target.getLocation());
+        return teleport(target.getLocation());
     }
 
     [[nodiscard]] std::int64_t getId() const override
@@ -259,25 +259,6 @@ public:
             return false;
         }
         return handle->isAlive();
-    }
-
-    [[nodiscard]] int getHealth() const override
-    {
-        return getHandle().getHealth();
-    }
-
-    [[nodiscard]] Result<void> setHealth(int health) const override
-    {
-        ENDSTONE_CHECKF(health >= 0 && health <= getMaxHealth(),  //
-                        "Health value ({}) must be between 0 and {}.", health, getMaxHealth())
-        auto mutable_attr = getHandle().getMutableAttribute("minecraft:health");
-        mutable_attr->setCurrentValue(static_cast<float>(health));
-        return {};
-    }
-
-    [[nodiscard]] int getMaxHealth() const override
-    {
-        return getHandle().getMaxHealth();
     }
 
     [[nodiscard]] std::vector<std::string> getScoreboardTags() const override

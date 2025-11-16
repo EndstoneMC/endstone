@@ -75,13 +75,13 @@ class Actor(CommandSender):
         """
         ...
     @typing.overload
-    def teleport(self, location: Location) -> None:
+    def teleport(self, location: Location) -> bool:
         """
         Teleports this actor to the given location.
         """
         ...
     @typing.overload
-    def teleport(self, target: Actor) -> None:
+    def teleport(self, target: Actor) -> bool:
         """
         Teleports this actor to the target Actor.
         """
@@ -107,20 +107,6 @@ class Actor(CommandSender):
     def is_dead(self) -> bool:
         """
         Returns true if this actor has been marked for removal.
-        """
-        ...
-    @property
-    def health(self) -> int:
-        """
-        Gets or sets the entity's health from 0 to its max possible value, where 0 is dead.
-        """
-        ...
-    @health.setter
-    def health(self, arg1: int) -> None: ...
-    @property
-    def max_health(self) -> int:
-        """
-        Gets the maximum health this entity has.
         """
         ...
     @property
@@ -180,6 +166,20 @@ class Mob(Actor):
     def is_gliding(self) -> bool:
         """
         Checks to see if an actor is gliding, such as using an Elytra.
+        """
+        ...
+    @property
+    def health(self) -> int:
+        """
+        Gets or sets the entity's health from 0 to its max possible value, where 0 is dead.
+        """
+        ...
+    @health.setter
+    def health(self, arg1: int) -> None: ...
+    @property
+    def max_health(self) -> int:
+        """
+        Gets the maximum health this entity has.
         """
         ...
 
