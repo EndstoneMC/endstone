@@ -72,6 +72,7 @@
 #include "bedrock/world/level/level_settings.h"
 #include "bedrock/world/level/map_data_manager.h"
 #include "bedrock/world/level/player_death_manager.h"
+#include "bedrock/world/level/player_dimension_transfer_manager.h"
 #include "bedrock/world/level/saveddata/map_item_saved_data.h"
 #include "bedrock/world/level/spawner.h"
 #include "bedrock/world/level/storage/game_rules.h"
@@ -99,7 +100,7 @@ public:
     [[nodiscard]] virtual ChunkTickRangeManager const &getChunkTickRangeManager() const = 0;
     virtual PortalForcer &getPortalForcer() = 0;
     virtual void requestPlayerChangeDimension(Player &, ChangeDimensionRequest &&) = 0;
-    virtual void *getPlayerDimensionTransferManager() = 0;
+    virtual  Bedrock::NotNullNonOwnerPtr<PlayerDimensionTransferManager> getPlayerDimensionTransferManager() = 0;
     virtual void entityChangeDimension(Actor &, DimensionType, std::optional<Vec3>) = 0;
     virtual void *getActorDimensionTransferManager() = 0;
     [[nodiscard]] virtual Spawner &getSpawner() const = 0;

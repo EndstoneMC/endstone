@@ -32,12 +32,12 @@ public:
           use_portal(use_portal), respawn(respawn)
     {
     }
-    State state;
+    State state = State::PrepareRegion;
     DimensionType from_dimension;
     DimensionType to_dimension;
     Vec3 from_position;
     Vec3 to_position;
     bool use_portal;
     bool respawn;
-    std::unique_ptr<CompoundTag> agent_tag;
+    std::unique_ptr<CompoundTag> agent_tag = nullptr;
 };

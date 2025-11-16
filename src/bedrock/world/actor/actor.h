@@ -287,6 +287,7 @@ public:
     BlockSource &getDimensionBlockSource() const;
     [[nodiscard]] const BlockSource &getDimensionBlockSourceConst() const;
     [[nodiscard]] Dimension &getDimension() const;
+    [[nodiscard]] DimensionType getDimensionId() const;
     [[nodiscard]] Level &getLevel();
     [[nodiscard]] const Level &getLevel() const;
     void setAABB(const AABB &bb);
@@ -369,6 +370,7 @@ public:
 protected:
     void _setHeightOffset(float offset);
     void _moveHitboxTo(const Vec3 &position);
+    void _setDimensionTransitionComponent(DimensionType from_id, DimensionType to_id, int portal_cooldown);
 
 private:
     mutable EntityContext entity_context_;  // +8

@@ -40,7 +40,6 @@ CheckOptions:
   readability-identifier-naming.ClassMemberPrefix: 'm'
   readability-identifier-naming.ClassMethodCase: camelBack
   readability-identifier-naming.ConstantMemberCase: lower_case
-  readability-identifier-naming.ConstantMemberSuffix: ''
   readability-identifier-naming.ConstantParameterCase: lower_case
   readability-identifier-naming.ConstantPointerParameterCase: lower_case
   readability-identifier-naming.EnumCase: CamelCase

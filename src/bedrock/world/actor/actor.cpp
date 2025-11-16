@@ -20,6 +20,7 @@
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/components/actor_type_flag_component.h"
 #include "bedrock/entity/components/actor_unique_id_component.h"
+#include "bedrock/entity/components/dimension_type_component.h"
 #include "bedrock/entity/components/fall_distance_component.h"
 #include "bedrock/entity/components/is_dead_flag_component.h"
 #include "bedrock/entity/components/passenger_component.h"
@@ -132,6 +133,11 @@ BlockSource &Actor::getDimensionBlockSource() const
 Dimension &Actor::getDimension() const
 {
     return *dimension_.unwrap();
+}
+
+DimensionType Actor::getDimensionId() const
+{
+    return getPersistentComponent<DimensionTypeComponent>()->type;
 }
 
 Level &Actor::getLevel()
@@ -281,6 +287,11 @@ Actor *Actor::tryGetFromEntity(StackRefResult<EntityContext> entity, bool includ
 void Actor::setLastHurtDamage(float damage)
 {
     last_hurt_ = damage;
+}
+
+void Actor::_setDimensionTransitionComponent(DimensionType from_id, DimensionType to_id, int portal_cooldown)
+{
+
 }
 
 // void Actor::_setHeightOffset(float offset)

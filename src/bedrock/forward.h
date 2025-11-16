@@ -116,6 +116,7 @@ class IFoodItemComponent;
 class IGameModuleShared;
 class IInPackagePacks;
 class ILevelChunkEventManagerProxy {};
+class ILevelCrashDumpManager;
 class ILevelRandom;
 class ILevelStorageManagerConnector;
 class IMinecraftEventing;
@@ -124,6 +125,7 @@ class IUnknownBlockTypeRegistry;
 class InternalComponentRegistry;
 class InvalidPacks {};
 class IPackLoadContext;
+class IPlayerDimensionTransferConnector;
 class IServerNetworkController;
 class ItemComponent;
 class ItemComponentPacket;
@@ -170,6 +172,7 @@ class PackedItemUseLegacyInventoryTransaction {};
 class PlayerPermissionsManager;
 class PlayerPermissionsSynchroniser;
 class PlayerDestroyProgressCacheComponent;
+class PlayerLimboActorManager;
 class PlayerListener;
 class PlayerListEntry;
 class PlayerLocationReceiver;
@@ -275,7 +278,7 @@ class AutomationClient;
 namespace br::worldgen {
 struct SpawnerData;
 class StructureSetRegistry;
-}
+}  // namespace br::worldgen
 namespace cereal {
 class ReflectionCtx;
 }

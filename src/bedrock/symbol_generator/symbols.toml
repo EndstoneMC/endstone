@@ -1,4 +1,4 @@
-timestamp = 1763318036
+timestamp = 1763318843
 version = "1.21.123"
 
 [windows]
@@ -101,6 +101,8 @@ version = "1.21.123"
 "?disconnectClientWithMessage@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@_N@Z" = 20494352
 "?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z" = 20569216
 "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 20611760
+# ServerPlayer
+"?changeDimension@ServerPlayer@@UEAAXV?$AutomaticID@VDimension@@H@@@Z" = 49383376
 # ServerPlayerMovementCorrectionSystem
 "?_afterMovementSimulation@ServerPlayerMovementCorrectionSystem@@YAXAEBVUserEntityIdentifierComponent@@AEAVActor@@AEBVPlayerAuthInputPacket@@AEAVReplayStateComponent@@PEBUActorRotationComponent@@AEAUServerPlayerMovementComponent@@AEAUStateVectorComponent@@PEBUBoatMovementComponent@@@Z" = 17125552
 # ServerScoreboard
@@ -208,6 +210,8 @@ version = "1.21.123"
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 119162080
 "_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EEb" = 119130560
 "_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 119162880
+# ServerPlayer
+"_ZN12ServerPlayer15changeDimensionE11AutomaticIDI9DimensioniE" = 147702848
 # ServerPlayerMovementCorrectionSystem
 "_ZN36ServerPlayerMovementCorrectionSystem24_afterMovementSimulationERK29UserEntityIdentifierComponentR5ActorRK21PlayerAuthInputPacketR20ReplayStateComponentPK22ActorRotationComponentR29ServerPlayerMovementComponentR20StateVectorComponentPK21BoatMovementComponent" = 104290544
 # ServerScoreboard

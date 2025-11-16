@@ -13,3 +13,36 @@
 // limitations under the License.
 
 #include "bedrock/server/server_player.h"
+
+#include "endstone/core/actor/actor.h"
+#include "endstone/core/level/location.h"
+#include "endstone/core/player.h"
+#include "endstone/event/player/player_portal_event.h"
+
+void ServerPlayer::changeDimension(DimensionType to_id)
+{
+    auto to_dimension = getLevel().getOrCreateDimension(to_id);
+    if (!to_dimension.isSet()) {
+        return;
+    }
+
+    auto &server = endstone::core::EndstoneServer::getInstance();
+    auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
+    ChangeDimensionRequest request(getDimensionId(), to_id, getPosition(), Vec3::ZERO, true, false);
+    static_cast<IPlayerDimensionTransferer &>(
+        getLevel().getPlayerDimensionTransferManager()->getPlayerDimensionTransferConnector())
+        .setTransitionLocation(*this, request, *to_dimension.unwrap());
+
+    const auto from_location =
+        endstone::core::EndstoneLocation::toEndstone(request.from_position, request.from_dimension);
+    const auto to_location = endstone::core::EndstoneLocation::toEndstone(request.to_position, request.to_dimension);
+    endstone::PlayerPortalEvent e(player, from_location, to_location);
+    server.getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        return;
+    }
+    request.to_position = {e.getTo().getX(), e.getTo().getY(), e.getTo().getZ()};
+
+    _setDimensionTransitionComponent(getDimensionId(), to_id, 300);
+    getLevel().requestPlayerChangeDimension(*this, std::move(request));
+}
