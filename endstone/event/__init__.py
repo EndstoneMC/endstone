@@ -54,6 +54,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "PlayerChatEvent",
             "PlayerCommandEvent",
             "PlayerDeathEvent",
+            "PlayerDimensionChangeEvent",
             "PlayerDropItemEvent",
             "PlayerEmoteEvent",
             "PlayerEvent",
