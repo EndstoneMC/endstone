@@ -13,19 +13,3 @@
 // limitations under the License.
 
 #include "bedrock/server/commands/standard/teleport_command.h"
-
-#include "bedrock/symbol.h"
-
-TeleportTarget TeleportCommand::computeTarget(Actor &victim, Vec3 destination, Vec3 *facing_position,
-                                              AutomaticID<Dimension, int> destination_dimension,
-                                              std::optional<RotationCommandUtils::RotationData> const &rotation_data,
-                                              int command_version)
-{
-    return BEDROCK_CALL(&TeleportCommand::computeTarget, victim, destination, facing_position, destination_dimension,
-                        rotation_data, command_version);
-}
-
-void TeleportCommand::applyTarget(Actor &victim, TeleportTarget target, bool keep_velocity)
-{
-    BEDROCK_CALL(&TeleportCommand::applyTarget, victim, std::move(target), keep_velocity);
-}

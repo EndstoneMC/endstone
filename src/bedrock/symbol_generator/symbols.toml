@@ -1,4 +1,4 @@
-timestamp = 1763149711
+timestamp = 1763318036
 version = "1.21.123"
 
 [windows]
@@ -107,9 +107,6 @@ version = "1.21.123"
 "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z" = 73517712
 # ServerScriptManager
 "?_runPlugins@ServerScriptManager@@AEAAXW4PluginExecutionGroup@@AEAVServerInstance@@@Z" = 34021952
-# TeleportCommand
-"?applyTarget@TeleportCommand@@SAXAEAVActor@@VTeleportTarget@@_N@Z" = 51806800
-"?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 51807424
 
 [linux]
 "BlockState::StateListNode::mHead" = 221391800
@@ -217,6 +214,3 @@ version = "1.21.123"
 "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE" = 183484800
 # ServerScriptManager
 "_ZN19ServerScriptManager11_runPluginsE20PluginExecutionGroupR14ServerInstance" = 140473920
-# TeleportCommand
-"_ZN15TeleportCommand11applyTargetER5Actor14TeleportTargetb" = 145971600
-"_ZN15TeleportCommand13computeTargetER5Actor4Vec3PS2_11AutomaticIDI9DimensioniERKNSt3__18optionalIN20RotationCommandUtils12RotationDataEEEi" = 145971984
