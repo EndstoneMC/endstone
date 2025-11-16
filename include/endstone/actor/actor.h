@@ -120,14 +120,14 @@ public:
      *
      * @param location New location to teleport this actor to
      */
-    virtual void teleport(Location location) = 0;
+    virtual bool teleport(const Location &location) = 0;
 
     /**
      * Teleports this actor to the target Actor.
      *
      * @param target Actor to teleport this actor to
      */
-    virtual void teleport(Actor &target) = 0;
+    virtual bool teleport(const Actor &target) = 0;
 
     /**
      * @brief Returns a unique id for this actor
@@ -156,27 +156,6 @@ public:
      * @return True if valid.
      */
     [[nodiscard]] virtual bool isValid() const = 0;
-
-    /**
-     * @brief Gets the entity's health from 0 to its max possible value, where 0 is dead.
-     *
-     * @return Health represented from 0 to max
-     */
-    [[nodiscard]] virtual int getHealth() const = 0;
-
-    /**
-     * Sets the entity's health from 0 to its possible value, where 0 is dead.
-     *
-     * @param health New health represented from 0 to max
-     */
-    [[nodiscard]] virtual Result<void> setHealth(int health) const = 0;
-
-    /**
-     * @brief Gets the maximum health this entity has.
-     *
-     * @return Maximum health
-     */
-    [[nodiscard]] virtual int getMaxHealth() const = 0;
 
     /**
      * @brief Returns a list of scoreboard tags for this actor.
