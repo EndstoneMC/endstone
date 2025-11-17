@@ -20,16 +20,18 @@
 
 UnverifiedCertificate UnverifiedCertificate::fromString(const std::string &input)
 {
-    try {
-        auto json = nlohmann::json::parse(input);
-        if (json.is_object()) {
-            auto &chain = json["chain"];
-            if (chain.is_array() && chain.size() <= 3) {
-                return ENDSTONE_HOOK_CALL_ORIGINAL(&UnverifiedCertificate::fromString, input);
+    if (input.size() <= 0x300000) {
+        try {
+            auto json = nlohmann::json::parse(input);
+            if (json.is_object()) {
+                auto &chain = json["chain"];
+                if (chain.is_array() && chain.size() <= 3) {
+                    return ENDSTONE_HOOK_CALL_ORIGINAL(&UnverifiedCertificate::fromString, input);
+                }
             }
         }
-    }
-    catch (...) {
+        catch (...) {
+        }
     }
     return {WebToken(), nullptr};
 }
