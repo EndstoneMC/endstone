@@ -147,7 +147,6 @@ void EndstoneServer::setLevel(::Level &level)
     on_gameplay_user_removed_ = level.getGameplayUserManager()->getGameplayUserRemovedConnector().connect(
         [&](EntityContext &entity) {
             if (auto *player = ::Player::tryGetFromEntity(entity, true); player) {
-                printf("removeTrackedMapEntity\n");
                 for (const auto &data : level.getMapDataManager()->getMapDataMap() | std::ranges::views::values) {
                     data->removeTrackedMapEntity(*player);
                 }

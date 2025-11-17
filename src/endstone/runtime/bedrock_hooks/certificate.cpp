@@ -12,20 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/certificates/certificate.h"
 
-#include "bedrock/deps/json/value.h"
+#include <nlohmann/json.hpp>
 
-class WebToken {
-public:
-    explicit WebToken() = default;
-    [[nodiscard]] const Json::Value &getHeader() const;
-    [[nodiscard]] const Json::Value &getData() const;
+#include "endstone/runtime/hook.h"
 
-private:
-    std::string header_;       // +0
-    Json::Value header_info_;  // +32
-    std::string data_;         // +48
-    Json::Value data_info_;    // +80
-    std::string signature_;    // +96
-};
+UnverifiedCertificate UnverifiedCertificate::fromString(const std::string &input)
+{
+    try {
+        auto json = nlohmann::json::parse(input);
+        if (json.is_object()) {
+            auto &chain = json["chain"];
+            if (chain.is_array() && chain.size() <= 3) {
+                return ENDSTONE_HOOK_CALL_ORIGINAL(&UnverifiedCertificate::fromString, input);
+            }
+        }
+    }
+    catch (...) {
+    }
+    return {WebToken(), nullptr};
+}
