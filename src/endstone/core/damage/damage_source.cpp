@@ -31,8 +31,7 @@ std::string_view EndstoneDamageSource::getType() const
 
 Actor *EndstoneDamageSource::getActor() const
 {
-    const auto &server = entt::locator<EndstoneServer>::value();
-    const auto *level = static_cast<EndstoneLevel *>(server.getLevel());
+    const auto *level = EndstoneServer::getInstance().getEndstoneLevel();
     if (const auto *actor = level->getHandle().fetchEntity(damage_source_.getEntityUniqueID(), false); actor) {
         return &actor->getEndstoneActor();
     }
@@ -41,8 +40,7 @@ Actor *EndstoneDamageSource::getActor() const
 
 Actor *EndstoneDamageSource::getDamagingActor() const
 {
-    const auto &server = entt::locator<EndstoneServer>::value();
-    const auto *level = static_cast<EndstoneLevel *>(server.getLevel());
+    const auto *level = EndstoneServer::getInstance().getEndstoneLevel();
     if (const auto *actor = level->getHandle().fetchEntity(damage_source_.getDamagingEntityUniqueID(), false); actor) {
         return &actor->getEndstoneActor();
     }

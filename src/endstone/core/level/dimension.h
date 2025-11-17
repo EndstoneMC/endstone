@@ -20,10 +20,9 @@
 #include "endstone/level/dimension.h"
 
 namespace endstone::core {
-
 class EndstoneDimension : public Dimension {
 public:
-    explicit EndstoneDimension(::Dimension &dimension, EndstoneLevel &level);
+    explicit EndstoneDimension( WeakRef<::Dimension> dimension, EndstoneLevel &level);
     ~EndstoneDimension() override = default;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] Type getType() const override;
@@ -38,8 +37,7 @@ public:
     [[nodiscard]] ::Dimension &getHandle() const;
 
 private:
-    ::Dimension &dimension_;
+    WeakRef<::Dimension> dimension_;
     EndstoneLevel &level_;
 };
-
 }  // namespace endstone::core

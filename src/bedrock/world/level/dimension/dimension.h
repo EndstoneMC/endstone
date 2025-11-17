@@ -45,7 +45,7 @@ class IDimension {
 public:
     virtual ~IDimension() = 0;
     [[nodiscard]] virtual bool isNaturalDimension() const = 0;
-    virtual AutomaticID<Dimension, int> getDimensionId() = 0;
+    virtual AutomaticID<Dimension, int> getDimensionId() const = 0;
     virtual void sendPacketForPosition(BlockPos const &, Packet const &, Player const *) = 0;
     virtual void sendPacketForEntity(Actor const &actor, Packet const &packet, Player const *except) = 0;
     virtual void flushLevelChunkGarbageCollector() = 0;
@@ -75,6 +75,7 @@ public:
     CircuitSystem &getCircuitSystem();
     [[nodiscard]] bool isRedstoneTick() const;
     [[nodiscard]] const std::string &getName() const;
+    WeakRef<Dimension> getWeakRef();
     [[nodiscard]] endstone::Dimension &getEndstoneDimension() const;  // Endstone
 
 private:

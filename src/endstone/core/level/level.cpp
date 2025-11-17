@@ -14,6 +14,7 @@
 
 #include "endstone/core/level/level.h"
 
+#include <boost/algorithm/string.hpp>
 #include <entt/entt.hpp>
 
 #include "bedrock/core/utility/automatic_id.h"
@@ -27,15 +28,19 @@
 
 namespace endstone::core {
 
-EndstoneLevel::EndstoneLevel(::Level &level) : server_(entt::locator<EndstoneServer>::value()), level_(level)
+EndstoneLevel::EndstoneLevel(::Level &level) : server_(EndstoneServer::getInstance()), level_(level)
 {
-    // Load all dimensions when the level is loaded
-    static constexpr AutomaticID<::Dimension, int> dimension_ids[] = {
-        VanillaDimensions::Overworld, VanillaDimensions::Nether, VanillaDimensions::TheEnd};
-    for (const auto &dimension_id : dimension_ids) {
-        auto dimension = level.getOrCreateDimension(dimension_id);
-        addDimension(std::make_unique<EndstoneDimension>(*dimension.unwrap(), *this));
-    }
+    // Load all vanilla dimensions on start up
+    level.getDimensionManager().getOnNewDimensionCreatedConnector().connect(
+        [this](::Dimension &dimension) {
+            // TODO(event): add DimensionLoadEvent here
+            dimensions_[dimension.getDimensionId().runtime_id] =
+                std::make_unique<EndstoneDimension>(dimension.getWeakRef(), *this);
+        },
+        Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
+    level.getOrCreateDimension(VanillaDimensions::Overworld);
+    level.getOrCreateDimension(VanillaDimensions::Nether);
+    level.getOrCreateDimension(VanillaDimensions::TheEnd);
 }
 
 std::string EndstoneLevel::getName() const
@@ -76,8 +81,8 @@ std::vector<Dimension *> EndstoneLevel::getDimensions() const
 {
     std::vector<Dimension *> dimensions;
     dimensions.reserve(dimensions_.size());
-    for (const auto &it : dimensions_) {
-        dimensions.push_back(it.second.get());
+    for (const auto &val : dimensions_ | std::views::values) {
+        dimensions.push_back(val.get());
     }
     return dimensions;
 }
@@ -87,25 +92,20 @@ Dimension *EndstoneLevel::getDimension(std::string name) const
     if (name == "the_end") {
         name = "TheEnd";
     }
-    std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
-    const auto it = dimensions_.find(name);
-    if (it == dimensions_.end()) {
-        return nullptr;
+    for (const auto &dimension : dimensions_ | std::views::values) {
+        if (boost::iequals(dimension->getName(), name)) {
+            return dimension.get();
+        }
     }
-    return it->second.get();
+    return nullptr;
 }
 
-void EndstoneLevel::addDimension(std::unique_ptr<Dimension> dimension)
+Dimension *EndstoneLevel::getDimension(int id) const
 {
-    auto name = dimension->getName();
-    std::ranges::transform(name, name.begin(), ::tolower);
-    if (dimensions_.contains(name)) {
-        server_.getLogger().error(
-            "Dimension {} is a duplicate of another dimension and has been prevented from loading.",
-            dimension->getName());
-        return;
+    if (const auto it = dimensions_.find(id); it != dimensions_.end()) {
+        return it->second.get();
     }
-    dimensions_[name] = std::move(dimension);
+    return nullptr;
 }
 
 std::int64_t EndstoneLevel::getSeed() const

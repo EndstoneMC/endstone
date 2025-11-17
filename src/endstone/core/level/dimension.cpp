@@ -21,20 +21,19 @@
 #include "endstone/core/level/level.h"
 
 namespace endstone::core {
-
-EndstoneDimension::EndstoneDimension(::Dimension &dimension, EndstoneLevel &level)
-    : dimension_(dimension), level_(level)
+EndstoneDimension::EndstoneDimension(WeakRef<::Dimension> dimension, EndstoneLevel &level)
+    : dimension_(std::move(dimension)), level_(level)
 {
 }
 
 std::string EndstoneDimension::getName() const
 {
-    return dimension_.getName();
+    return getHandle().getName();
 }
 
 Dimension::Type EndstoneDimension::getType() const
 {
-    switch (dimension_.getDimensionId().runtime_id) {
+    switch (getHandle().getDimensionId().runtime_id) {
     case VanillaDimensions::Overworld.runtime_id:
         return Type::Overworld;
     case VanillaDimensions::Nether.runtime_id:
@@ -81,7 +80,7 @@ std::unique_ptr<Block> EndstoneDimension::getHighestBlockAt(Location location) c
 std::vector<std::unique_ptr<Chunk>> EndstoneDimension::getLoadedChunks()
 {
     std::vector<std::unique_ptr<Chunk>> chunks;
-    for (const auto &[pos, weak_lc] : dimension_.getChunkSource().getStorage()) {
+    for (const auto &weak_lc : getHandle().getChunkSource().getStorage() | std::views::values) {
         if (weak_lc.expired()) {
             continue;
         }
@@ -94,14 +93,15 @@ std::vector<std::unique_ptr<Chunk>> EndstoneDimension::getLoadedChunks()
 
 ::Dimension &EndstoneDimension::getHandle() const
 {
-    return dimension_;
+    if (!dimension_.isSet()) {
+        throw std::runtime_error("Trying to access a dimension that is no longer valid.");
+    }
+    return *dimension_.unwrap();
 }
-
 }  // namespace endstone::core
 
 endstone::Dimension &Dimension::getEndstoneDimension() const
 {
-    using endstone::core::EndstoneServer;
-    auto &server = entt::locator<EndstoneServer>::value();
-    return *server.getLevel()->getDimension(getName());
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    return *server.getEndstoneLevel()->getDimension(getDimensionId().runtime_id);
 }

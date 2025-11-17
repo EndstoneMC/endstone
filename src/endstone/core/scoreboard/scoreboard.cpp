@@ -42,8 +42,8 @@ EndstoneScoreboard::EndstoneScoreboard(std::unique_ptr<::Scoreboard> board) : bo
 
 void EndstoneScoreboard::init()
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto *level = static_cast<EndstoneLevel *>(server.getLevel());
+    auto &server = EndstoneServer::getInstance();
+    const auto *level = server.getEndstoneLevel();
     packet_sender_ = std::make_unique<ScoreboardPacketSender>(server, *this, *level->getHandle().getPacketSender());
     board_.setPacketSender(packet_sender_.get());
 }
