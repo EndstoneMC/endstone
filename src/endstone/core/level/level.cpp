@@ -31,16 +31,19 @@ namespace endstone::core {
 EndstoneLevel::EndstoneLevel(::Level &level) : server_(EndstoneServer::getInstance()), level_(level)
 {
     // Load all vanilla dimensions on start up
-    level.getDimensionManager().getOnNewDimensionCreatedConnector().connect(
-        [this](::Dimension &dimension) {
-            // TODO(event): add DimensionLoadEvent here
-            dimensions_[dimension.getDimensionId().runtime_id] =
-                std::make_unique<EndstoneDimension>(dimension.getWeakRef(), *this);
-        },
-        Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
     level.getOrCreateDimension(VanillaDimensions::Overworld);
     level.getOrCreateDimension(VanillaDimensions::Nether);
     level.getOrCreateDimension(VanillaDimensions::TheEnd);
+    auto add_dimension = [this](::Dimension &dimension) {
+        dimensions_[dimension.getDimensionId().runtime_id] =
+            std::make_unique<EndstoneDimension>(dimension.getWeakRef(), *this);
+    };
+    level.getDimensionManager().forEachDimension([&](::Dimension &dimension) {
+        add_dimension(dimension);
+        return true;
+    });
+    level.getDimensionManager().getOnNewDimensionCreatedConnector().connect(
+        [&](::Dimension &dimension) { add_dimension(dimension); }, Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
 }
 
 std::string EndstoneLevel::getName() const

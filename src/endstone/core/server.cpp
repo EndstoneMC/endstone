@@ -140,7 +140,8 @@ void EndstoneServer::setLevel(::Level &level)
     metrics_ = std::make_unique<EndstoneMetrics>(*this);  // start metrics
     loadResourcePacks();
     initRegistries();
-    level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message
+    level._getPlayerDeathManager()->sender_.reset();                       // prevent BDS from sending the death message
+    (void)dispatchCommand(getCommandSender(), "reloadpacketlimitconfig");  // enable packet rate limiter
 
     // #blameMojang
     // MapItemSavedData never removes disconnected players from its
@@ -167,6 +168,7 @@ void EndstoneServer::setLevel(::Level &level)
             }
         },
         Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
+
     on_chunk_unload_ = level.getLevelChunkEventManager()->getOnChunkDiscardedConnector().connect(
         [&](LevelChunk &lc) -> void {
             const auto chunk = std::make_unique<EndstoneChunk>(lc);
@@ -616,7 +618,10 @@ Result<std::unique_ptr<BlockData>> EndstoneServer::createBlockData(std::string t
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
-        std::visit(overloaded{[&](auto &&arg) { states.emplace(state.first, arg); }}, state.second);
+        std::visit(overloaded{[&](auto &&arg) {
+                       states.emplace(state.first, arg);
+                   }},
+                   state.second);
     }
 
     const auto block_descriptor = ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(type, states);

@@ -29,6 +29,10 @@ NetworkPeer::DataStatus NetworkConnection::receivePacket(std::string &receive_bu
     auto &network = server.getServer().getNetwork();
 
     while (true) {
+        if (disconnected_) {
+            return NetworkPeer::DataStatus::NoData;
+        }
+
         const auto status =
             ENDSTONE_HOOK_CALL_ORIGINAL(&NetworkConnection::receivePacket, this, receive_buffer, timepoint_ptr);
         if (status != NetworkPeer::DataStatus::HasData) {

@@ -24,6 +24,8 @@ RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer,
 {
     auto new_def = def;
     new_def.max_num_connections = SharedConstants::NetworkDefaultMaxConnections;
-
+    if (peer && purpose == PeerPurpose::Gameplay) {
+        peer->SetLimitIPConnectionFrequency(true);  // limit connections from the same ip in 100 milliseconds.
+    }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, new_def, purpose);
 }

@@ -35,7 +35,10 @@ public:
     [[nodiscard]] ENDSTONE_HOOK NetworkPeer::DataStatus receivePacket(
         std::string &receive_buffer, const NetworkPeer::PacketRecvTimepointPtr &timepoint_ptr);
     void update();
-    void disconnect();
+    void disconnect()
+    {
+        disconnected_ = true;
+    }
     [[nodiscard]] bool shouldCloseConnection() const
     {
         return should_close_connection_;
