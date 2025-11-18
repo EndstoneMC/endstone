@@ -21,11 +21,11 @@ else ()
     message(FATAL_ERROR "Endstone: ${CMAKE_SYSTEM_NAME} (${CMAKE_SYSTEM_PROCESSOR}) is not supported.")
 endif ()
 
-# 设置目标架构和优化标志
+# Optimize settings
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native -O1" CACHE STRING "" FORCE)  # 使用本地架构最大化优化
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2" CACHE STRING "" FORCE)  # 02 Optimization
 elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    add_compile_options(/O1 /arch:AVX)  # 使用 AVX 指令集进行优化
+    add_compile_options(/O2)  # MSVC 02 Optimization
 endif ()
 
 # Options
