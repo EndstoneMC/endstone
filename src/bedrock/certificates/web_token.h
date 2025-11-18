@@ -18,6 +18,7 @@
 
 class WebToken {
 public:
+    explicit WebToken() = default;
     [[nodiscard]] const Json::Value &getHeader() const;
     [[nodiscard]] const Json::Value &getData() const;
 

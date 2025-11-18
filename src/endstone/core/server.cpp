@@ -188,6 +188,7 @@ void EndstoneServer::setLevel(::Level &level)
                                   });
                               },
                               Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
+        Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
 
     enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};

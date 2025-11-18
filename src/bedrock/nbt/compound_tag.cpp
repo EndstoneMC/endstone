@@ -37,6 +37,9 @@ Bedrock::Result<void> CompoundTag::load(IDataInput &input)
         if (!tag_result.ignoreError()) {
             return BEDROCK_RETHROW(tag_result);
         }
+        if (tag_result.discardError().value()->getId() == Type::End) {
+            break;
+        }
         put(name, std::move(tag_result.discardError().value()));
     }
 
