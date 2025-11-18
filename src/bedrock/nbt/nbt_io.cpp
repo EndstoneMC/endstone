@@ -43,6 +43,29 @@ Bedrock::Result<std::unique_ptr<Tag>> NbtIo::readNamedTag(IDataInput &dis, std::
     return std::move(tag_result.discardError().value());
 }
 
+Bedrock::Result<std::unique_ptr<CompoundTag>> NbtIo::readNamedCompoundTag(IDataInput &dis, std::string &name)
+{
+    auto type_result = dis.readByteResult();
+    if (!type_result.ignoreError()) {
+        return BEDROCK_RETHROW(type_result);
+    }
+
+    auto type = static_cast<Tag::Type>(type_result.discardError().value());
+    if (type != Tag::Type::Compound) {
+        return BEDROCK_NEW_ERROR(std::errc::bad_message);
+    }
+
+    auto name_result = dis.readStringResult();
+    if (!name_result.ignoreError()) {
+        return BEDROCK_RETHROW(name_result);
+    }
+    name = name_result.discardError().value();
+
+    auto tag = std::make_unique<CompoundTag>();
+    tag->load(dis);
+    return std::move(tag);
+}
+
 void NbtIo::writeNamedTag(const std::string &name, const Tag &tag, IDataOutput &output)
 {
     auto type = tag.getId();
@@ -51,4 +74,14 @@ void NbtIo::writeNamedTag(const std::string &name, const Tag &tag, IDataOutput &
         output.writeString(name);
         tag.write(output);
     }
+}
+
+std::unique_ptr<CompoundTag> NbtIo::readOrGetEmpty(IDataInput &dis)
+{
+    std::string name;
+    auto result = readNamedCompoundTag(dis, name);
+    if (!result.logError()) {
+        return std::make_unique<CompoundTag>();
+    }
+    return std::move(result.discardError().value());
 }
