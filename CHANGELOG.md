@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 * Enable packet rate limiting by default to prevent packet flooding.
+* Enable RakNet's connection frequency limiting.
 
 ### Fixed
 
