@@ -163,6 +163,7 @@ void EndstoneServer::setLevel(::Level &level)
             }
         },
         Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
+
     on_chunk_unload_ = level.getLevelChunkEventManager()->getOnChunkDiscardedConnector().connect(
         [&](LevelChunk &lc) -> void {
             const auto chunk = std::make_unique<EndstoneChunk>(lc);
