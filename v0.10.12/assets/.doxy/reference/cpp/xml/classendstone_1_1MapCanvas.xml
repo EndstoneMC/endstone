@@ -1,0 +1,391 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1MapCanvas" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::MapCanvas</compoundname>
+    <includes refid="map__canvas_8h" local="no">endstone/map/map_canvas.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1MapCanvas_1a5130d9187ef7596b7fa535241dd0b8d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::MapCanvas::~MapCanvas</definition>
+        <argsstring>()=default</argsstring>
+        <name>~MapCanvas</name>
+        <qualifiedname>endstone::MapCanvas::~MapCanvas</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_canvas.h" line="30" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCanvas_1a49128d914ad9dd72f7c10231ea91b613" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> &amp;</type>
+        <definition>virtual MapView &amp; endstone::MapCanvas::getMapView</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getMapView</name>
+        <qualifiedname>endstone::MapCanvas::getMapView</qualifiedname>
+        <briefdescription>
+<para>Get the map this canvas is attached to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The <ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> this canvas is attached to. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_canvas.h" line="37" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCanvas_1a78d8511f22478ee4d575b2386dd04f2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::MapCanvas::setPixelColor</definition>
+        <argsstring>(int x, int y, std::optional&lt; Color &gt; color)=0</argsstring>
+        <name>setPixelColor</name>
+        <qualifiedname>endstone::MapCanvas::setPixelColor</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Draw a pixel to the canvas. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If std::nullopt is used as color, then the color returned by <ref refid="classendstone_1_1MapCanvas_1a90d6935c9d5923cadaec20284eefd1ee" kindref="member">getBasePixelColor()</ref> is shown on the map.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate, from 0 to 127. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate, from 0 to 127. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The color, or std::nullopt for base color. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_canvas.h" line="48" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCanvas_1a62449e7abb0b7fe0fb4c6913aba65409" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
+        <definition>virtual std::optional&lt; Color &gt; endstone::MapCanvas::getPixelColor</definition>
+        <argsstring>(int x, int y) const =0</argsstring>
+        <name>getPixelColor</name>
+        <qualifiedname>endstone::MapCanvas::getPixelColor</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Get a pixel from the canvas. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If no color is set at the given position for this canvas, then std::nullopt is returned and the color returned by <ref refid="classendstone_1_1MapCanvas_1a90d6935c9d5923cadaec20284eefd1ee" kindref="member">getBasePixelColor()</ref> is shown on the map.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate, from 0 to 127. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate, from 0 to 127. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The color, or std::nullopt if no color is set. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_canvas.h" line="60" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCanvas_1a90d6935c9d5923cadaec20284eefd1ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
+        <definition>virtual Color endstone::MapCanvas::getBasePixelColor</definition>
+        <argsstring>(int x, int y) const =0</argsstring>
+        <name>getBasePixelColor</name>
+        <qualifiedname>endstone::MapCanvas::getBasePixelColor</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Get a pixel from the layers below this canvas. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate, from 0 to 127.</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate, from 0 to 127. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The color. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_canvas.h" line="69" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCanvas_1aeda347adb5b53f59d6a06288fecd8e03" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::MapCanvas::setPixel</definition>
+        <argsstring>(int x, int y, int color)=0</argsstring>
+        <name>setPixel</name>
+        <qualifiedname>endstone::MapCanvas::setPixel</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Draw a pixel to the canvas. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate, from 0 to 127. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate, from 0 to 127. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The color. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_canvas.h" line="78" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCanvas_1ac89828d05275822fc1d4f22abb556f76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int endstone::MapCanvas::getPixel</definition>
+        <argsstring>(int x, int y) const =0</argsstring>
+        <name>getPixel</name>
+        <qualifiedname>endstone::MapCanvas::getPixel</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Get a pixel from the canvas. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate, from 0 to 127. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate, from 0 to 127. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The color. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_canvas.h" line="87" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCanvas_1a6fa7b6cbe5a37fc5784491b64f83c3cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int endstone::MapCanvas::getBasePixel</definition>
+        <argsstring>(int x, int y) const =0</argsstring>
+        <name>getBasePixel</name>
+        <qualifiedname>endstone::MapCanvas::getBasePixel</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Get a pixel from the layers below this canvas. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate, from 0 to 127. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate, from 0 to 127. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The color. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_canvas.h" line="96" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCanvas_1a6baa558e589385df3cdd52691c4628a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::MapCanvas::drawImage</definition>
+        <argsstring>(int x, int y, const Image &amp;image)=0</argsstring>
+        <name>drawImage</name>
+        <qualifiedname>endstone::MapCanvas::drawImage</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classendstone_1_1Image" kindref="compound">Image</ref> &amp;</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+<para>Draw an image to the map. The image will be clipped if necessary. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate of the image. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate of the image. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1Image" kindref="compound">Image</ref> to draw. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_canvas.h" line="105" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a canvas for drawing to a map. Each canvas is associated with a specific <ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref> and represents that renderer&apos;s layer on the map. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/map/map_canvas.h" line="28" column="1" bodyfile="include/endstone/map/map_canvas.h" bodystart="28" bodyend="108"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1MapCanvas_1a6baa558e589385df3cdd52691c4628a6" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>drawImage</name></member>
+      <member refid="classendstone_1_1MapCanvas_1a6fa7b6cbe5a37fc5784491b64f83c3cb" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getBasePixel</name></member>
+      <member refid="classendstone_1_1MapCanvas_1a90d6935c9d5923cadaec20284eefd1ee" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getBasePixelColor</name></member>
+      <member refid="classendstone_1_1MapCanvas_1a49128d914ad9dd72f7c10231ea91b613" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getMapView</name></member>
+      <member refid="classendstone_1_1MapCanvas_1ac89828d05275822fc1d4f22abb556f76" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getPixel</name></member>
+      <member refid="classendstone_1_1MapCanvas_1a62449e7abb0b7fe0fb4c6913aba65409" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getPixelColor</name></member>
+      <member refid="classendstone_1_1MapCanvas_1aeda347adb5b53f59d6a06288fecd8e03" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>setPixel</name></member>
+      <member refid="classendstone_1_1MapCanvas_1a78d8511f22478ee4d575b2386dd04f2b" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>setPixelColor</name></member>
+      <member refid="classendstone_1_1MapCanvas_1a5130d9187ef7596b7fa535241dd0b8d6" prot="public" virt="virtual"><scope>endstone::MapCanvas</scope><name>~MapCanvas</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
