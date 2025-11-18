@@ -76,7 +76,7 @@ public:
     [[nodiscard]] std::string getName() const;
     [[nodiscard]] std::string getCustomName() const;
     [[nodiscard]] bool hasCustomHoverName() const;
-    void deserializeComponents(IDataInput & input);
+    void deserializeComponents(IDataInput &input);
     [[nodiscard]] std::uint8_t getCount() const;  // Endstone
 
     static const std::string TAG_DISPLAY;
@@ -120,5 +120,7 @@ private:
     friend class Item;
     void _updateCompareHashes();
     void _checkForItemWorldCompatibility();
+    static bool _loadBlocksForCanPlaceOnCanDestroy(std::vector<const BlockType *> &block_list,
+                                                   const std::string &block_name);
 };
 BEDROCK_STATIC_ASSERT_SIZE(ItemStackBase, 128, 128);
