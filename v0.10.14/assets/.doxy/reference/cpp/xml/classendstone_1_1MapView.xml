@@ -1,0 +1,502 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1MapView" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::MapView</compoundname>
+    <includes refid="map__view_8h" local="no">endstone/map/map_view.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3c" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>Scale</name>
+        <qualifiedname>endstone::MapView::Scale</qualifiedname>
+        <enumvalue id="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3ca0c89b66f6bdfb128781e2c68d43364d8" prot="public">
+          <name>Closest</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3cad3d2e617335f08df83599665eef8a418" prot="public">
+          <name>Close</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3ca960b44c579bc2f6818d2daaf9e4c16f0" prot="public">
+          <name>Normal</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3cacfcd41f0c1804fb7778f8f01301223f6" prot="public">
+          <name>Far</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3caa9c048415b4a7ac134a962963ddb23cb" prot="public">
+          <name>Farthest</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>An enum representing all possible scales a map can be set to. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="31" column="5" bodyfile="include/endstone/map/map_view.h" bodystart="31" bodyend="37"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1MapView_1afd118d375700e3fe7699498c00a7ec2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::MapView::~MapView</definition>
+        <argsstring>()=default</argsstring>
+        <name>~MapView</name>
+        <qualifiedname>endstone::MapView::~MapView</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="39" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1aaa13aa08f9e1c8b15797a9ea8af70951" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::int64_t</type>
+        <definition>virtual std::int64_t endstone::MapView::getId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getId</name>
+        <qualifiedname>endstone::MapView::getId</qualifiedname>
+        <briefdescription>
+<para>Get the ID of this map item for use with <ref refid="classendstone_1_1MapMeta" kindref="compound">MapMeta</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The unique ID of the map. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="46" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1a358de6be116c02c479df672b7d115fb1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::MapView::isVirtual</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isVirtual</name>
+        <qualifiedname>endstone::MapView::isVirtual</qualifiedname>
+        <briefdescription>
+<para>Check whether this map is virtual. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A map is virtual if its lowermost <ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref> is plugin-provided.</para>
+<para><simplesect kind="return"><para>True if the map is virtual. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="55" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1aeadc8818f79ee31f6068b7e57c1eebee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3c" kindref="member">Scale</ref></type>
+        <definition>virtual Scale endstone::MapView::getScale</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getScale</name>
+        <qualifiedname>endstone::MapView::getScale</qualifiedname>
+        <briefdescription>
+<para>Get the scale of this map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The scale of the map. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="62" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1ac539ec1fa7f4055f8a662b6897f25073" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::MapView::setScale</definition>
+        <argsstring>(Scale scale)=0</argsstring>
+        <name>setScale</name>
+        <qualifiedname>endstone::MapView::setScale</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3c" kindref="member">Scale</ref></type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+<para>Set the scale of this map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>scale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The scale to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="69" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1a9a42abd0ee68d6d858f29b313d334d99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int endstone::MapView::getCenterX</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getCenterX</name>
+        <qualifiedname>endstone::MapView::getCenterX</qualifiedname>
+        <briefdescription>
+<para>Get the center X position of this map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The center X position. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="76" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1a730857d1da98ce90d93e6ef1da89af2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int endstone::MapView::getCenterZ</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getCenterZ</name>
+        <qualifiedname>endstone::MapView::getCenterZ</qualifiedname>
+        <briefdescription>
+<para>Get the center Z position of this map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The center Z position. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="83" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1a909106f650cd8d8755bca25a7b5c76aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::MapView::setCenterX</definition>
+        <argsstring>(int x)=0</argsstring>
+        <name>setCenterX</name>
+        <qualifiedname>endstone::MapView::setCenterX</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>Set the center X position of this map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The center X position. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="90" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1ae4875770b34a02497ccdcc081e3d71ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::MapView::setCenterZ</definition>
+        <argsstring>(int z)=0</argsstring>
+        <name>setCenterZ</name>
+        <qualifiedname>endstone::MapView::setCenterZ</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Set the center Z position of this map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The center Z position. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="97" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1ab739c4252289cfd9ca7436a537cf62d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> *</type>
+        <definition>virtual Dimension * endstone::MapView::getDimension</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getDimension</name>
+        <qualifiedname>endstone::MapView::getDimension</qualifiedname>
+        <briefdescription>
+<para>Get the dimension that this map is associated with. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to the World this map is associated with, or nullptr. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="104" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1a0ff3209db49eb4585652c8ca104cf7c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::MapView::setDimension</definition>
+        <argsstring>(const Dimension &amp;dimension)=0</argsstring>
+        <name>setDimension</name>
+        <qualifiedname>endstone::MapView::setDimension</qualifiedname>
+        <param>
+          <type>const <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
+          <declname>dimension</declname>
+        </param>
+        <briefdescription>
+<para>Set the dimension that this map is associated with. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dimension</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> to associate this map with. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="111" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1a52315e1700520e9d14a3daf5b6503be0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref> * &gt;</type>
+        <definition>virtual std::vector&lt; MapRenderer * &gt; endstone::MapView::getRenderers</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getRenderers</name>
+        <qualifiedname>endstone::MapView::getRenderers</qualifiedname>
+        <briefdescription>
+<para>Get a list of MapRenderers currently in effect. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A list of references to each <ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="118" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1a759c2ca352b140a77f6aec185c1f2561" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::MapView::addRenderer</definition>
+        <argsstring>(std::shared_ptr&lt; MapRenderer &gt; renderer)=0</argsstring>
+        <name>addRenderer</name>
+        <qualifiedname>endstone::MapView::addRenderer</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref> &gt;</type>
+          <declname>renderer</declname>
+        </param>
+        <briefdescription>
+<para>Add a renderer to this map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>renderer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref> to add. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="125" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1adee2dbf26ac61d7d598415bf93ba780c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::MapView::removeRenderer</definition>
+        <argsstring>(MapRenderer *renderer)=0</argsstring>
+        <name>removeRenderer</name>
+        <qualifiedname>endstone::MapView::removeRenderer</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref> *</type>
+          <declname>renderer</declname>
+        </param>
+        <briefdescription>
+<para>Remove a renderer from this map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>renderer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref> to remove.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the renderer was successfully removed. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="134" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1ab94f8ff90f7ecef5e313f40696a993b8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::MapView::isUnlimitedTracking</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isUnlimitedTracking</name>
+        <qualifiedname>endstone::MapView::isUnlimitedTracking</qualifiedname>
+        <briefdescription>
+<para>Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map&apos;s range. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if unlimited tracking is enabled. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="142" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1a279570bf134982e89afa46b9ceeb81a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::MapView::setUnlimitedTracking</definition>
+        <argsstring>(bool unlimited)=0</argsstring>
+        <name>setUnlimitedTracking</name>
+        <qualifiedname>endstone::MapView::setUnlimitedTracking</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>unlimited</declname>
+        </param>
+        <briefdescription>
+<para>Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map&apos;s range. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unlimited</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True to enable unlimited tracking. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="150" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1afde755089e4f1bcb1849fe27a56323fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::MapView::isLocked</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isLocked</name>
+        <qualifiedname>endstone::MapView::isLocked</qualifiedname>
+        <briefdescription>
+<para>Gets whether the map is locked or not. A locked map may not be explored further. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the map is locked. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="157" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapView_1ae265a39be350ec1e782a8035f867bda9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::MapView::setLocked</definition>
+        <argsstring>(bool locked)=0</argsstring>
+        <name>setLocked</name>
+        <qualifiedname>endstone::MapView::setLocked</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>locked</declname>
+        </param>
+        <briefdescription>
+<para>Sets whether the map is locked or not. A locked map may not be explored further. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>locked</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True to lock the map. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_view.h" line="164" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a map item. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/map/map_view.h" line="26" column="1" bodyfile="include/endstone/map/map_view.h" bodystart="26" bodyend="165"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1MapView_1a759c2ca352b140a77f6aec185c1f2561" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>addRenderer</name></member>
+      <member refid="classendstone_1_1MapView_1a9a42abd0ee68d6d858f29b313d334d99" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>getCenterX</name></member>
+      <member refid="classendstone_1_1MapView_1a730857d1da98ce90d93e6ef1da89af2d" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>getCenterZ</name></member>
+      <member refid="classendstone_1_1MapView_1ab739c4252289cfd9ca7436a537cf62d9" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1MapView_1aaa13aa08f9e1c8b15797a9ea8af70951" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>getId</name></member>
+      <member refid="classendstone_1_1MapView_1a52315e1700520e9d14a3daf5b6503be0" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>getRenderers</name></member>
+      <member refid="classendstone_1_1MapView_1aeadc8818f79ee31f6068b7e57c1eebee" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>getScale</name></member>
+      <member refid="classendstone_1_1MapView_1afde755089e4f1bcb1849fe27a56323fa" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>isLocked</name></member>
+      <member refid="classendstone_1_1MapView_1ab94f8ff90f7ecef5e313f40696a993b8" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>isUnlimitedTracking</name></member>
+      <member refid="classendstone_1_1MapView_1a358de6be116c02c479df672b7d115fb1" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>isVirtual</name></member>
+      <member refid="classendstone_1_1MapView_1adee2dbf26ac61d7d598415bf93ba780c" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>removeRenderer</name></member>
+      <member refid="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3c" prot="public" virt="non-virtual"><scope>endstone::MapView</scope><name>Scale</name></member>
+      <member refid="classendstone_1_1MapView_1a909106f650cd8d8755bca25a7b5c76aa" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setCenterX</name></member>
+      <member refid="classendstone_1_1MapView_1ae4875770b34a02497ccdcc081e3d71ec" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setCenterZ</name></member>
+      <member refid="classendstone_1_1MapView_1a0ff3209db49eb4585652c8ca104cf7c6" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setDimension</name></member>
+      <member refid="classendstone_1_1MapView_1ae265a39be350ec1e782a8035f867bda9" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setLocked</name></member>
+      <member refid="classendstone_1_1MapView_1ac539ec1fa7f4055f8a662b6897f25073" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setScale</name></member>
+      <member refid="classendstone_1_1MapView_1a279570bf134982e89afa46b9ceeb81a7" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>setUnlimitedTracking</name></member>
+      <member refid="classendstone_1_1MapView_1afd118d375700e3fe7699498c00a7ec2e" prot="public" virt="virtual"><scope>endstone::MapView</scope><name>~MapView</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
