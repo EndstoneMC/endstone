@@ -598,34 +598,35 @@ void ItemStackBase::_checkForItemWorldCompatibility()
 bool ItemStackBase::_loadBlocksForCanPlaceOnCanDestroy(std::vector<const BlockType *> &block_list,
                                                        const std::string &block_name)
 {
-    std::string block_full_name;
-    if (block_name.find(':') == std::string::npos) {
-        block_full_name = "minecraft:" + block_name;
-    }
-    else {
-        block_full_name = block_name;
-    }
-
-    auto &registry = BlockTypeRegistry::get();
-    auto load_block = [&](const std::string &name) {
-        const auto block_type = registry.lookupByName(name, true);
-        if (block_type.isNull()) {
-            return false;
-        }
-        block_list.emplace_back(block_type.get());
-        return true;
-    };
-
-    if (registry.isComplexAliasBlock(block_full_name)) {
-        const auto &names = registry.getComplexAliasPostSplitBlockNames(block_full_name);
-        for (const auto &post_split_name : names) {
-            if (!load_block(post_split_name.get().getString())) {
-                return false;
-            }
-        }
-        return true;
-    }
-    return load_block(block_full_name);
+    return BEDROCK_CALL(&ItemStackBase::_loadBlocksForCanPlaceOnCanDestroy, block_list, block_name);
+    // std::string block_full_name;
+    // if (block_name.find(':') == std::string::npos) {
+    //     block_full_name = "minecraft:" + block_name;
+    // }
+    // else {
+    //     block_full_name = block_name;
+    // }
+    //
+    // auto &registry = BlockTypeRegistry::get();
+    // auto load_block = [&](const std::string &name) {
+    //     const auto block_type = registry.lookupByName(name, true);
+    //     if (block_type.isNull()) {
+    //         return false;
+    //     }
+    //     block_list.emplace_back(block_type.get());
+    //     return true;
+    // };
+    //
+    // if (registry.isComplexAliasBlock(block_full_name)) {
+    //     const auto &names = registry.getComplexAliasPostSplitBlockNames(block_full_name);
+    //     for (const auto &post_split_name : names) {
+    //         if (!load_block(post_split_name.get().getString())) {
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+    // return load_block(block_full_name);
 }
 
 const std::string ItemStackBase::TAG_DISPLAY = "display";
