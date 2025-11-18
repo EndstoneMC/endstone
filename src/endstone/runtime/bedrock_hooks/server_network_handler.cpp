@@ -48,8 +48,18 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
             }
         }
     }
+
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClientWithMessage, this, id, sub_id, reason,
                                 disconnect_message, std::move(filtered_message), skip_message);
+
+    // BUGFIX:
+    // Forcibly mark the connection as disconnected immediately so no further packets from this client are accepted or
+    // processed. The original code sends a disconnection notification to the client, but a malicious client may ignore
+    // it and keep sending packets. The system still processes incoming packets afterward, which leaves the server
+    // vulnerable to continued packet spam.
+    if (auto *connection = network_._getConnectionFromId(id); connection) {
+        connection->disconnect();
+    }
 }
 
 bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request)
