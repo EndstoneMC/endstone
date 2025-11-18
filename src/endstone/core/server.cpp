@@ -136,7 +136,8 @@ void EndstoneServer::setLevel(::Level &level)
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     loadResourcePacks();
     initRegistries();
-    level._getPlayerDeathManager()->sender_.reset();  // prevent BDS from sending the death message
+    level._getPlayerDeathManager()->sender_.reset();                       // prevent BDS from sending the death message
+    (void)dispatchCommand(getCommandSender(), "reloadpacketlimitconfig");  // enable packet rate limiter
 
     // #blameMojang
     // MapItemSavedData never removes disconnected players from its
@@ -594,7 +595,10 @@ Result<std::unique_ptr<BlockData>> EndstoneServer::createBlockData(std::string t
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
-        std::visit(overloaded{[&](auto &&arg) { states.emplace(state.first, arg); }}, state.second);
+        std::visit(overloaded{[&](auto &&arg) {
+                       states.emplace(state.first, arg);
+                   }},
+                   state.second);
     }
 
     const auto block_descriptor = ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(type, states);
