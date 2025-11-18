@@ -48,6 +48,9 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
             }
         }
     }
+    else {
+        server.getLogger().info("Connection closed: {}", message.empty() ? magic_enum::enum_name(reason) : message);
+    }
 
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClientWithMessage, this, id, sub_id, reason,
                                 disconnect_message, std::move(filtered_message), skip_message);
