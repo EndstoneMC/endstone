@@ -76,6 +76,7 @@ public:
     [[nodiscard]] std::string getName() const;
     [[nodiscard]] std::string getCustomName() const;
     [[nodiscard]] bool hasCustomHoverName() const;
+    void deserializeComponents(IDataInput & input);
     [[nodiscard]] std::uint8_t getCount() const;  // Endstone
 
     static const std::string TAG_DISPLAY;
@@ -116,6 +117,7 @@ protected:
     std::unique_ptr<ItemInstance> charged_item_{nullptr};  // +128
 
 private:
+    friend class Item;
     void _updateCompareHashes();
     void _checkForItemWorldCompatibility();
 };

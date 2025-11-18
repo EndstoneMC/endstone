@@ -1,4 +1,4 @@
-timestamp = 1763408973
+timestamp = 1763425722
 version = "1.21.123"
 
 [windows]
@@ -45,6 +45,8 @@ version = "1.21.123"
 "?change@HealthAttributeDelegate@@UEAAMMMAEBVAttributeBuff@@@Z" = 61331008
 # InventoryTransaction
 "?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z" = 63535040
+# Item
+"?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z" = 62810000
 # ItemRegistry
 "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z" = 61514288
 # ItemStackBase
@@ -156,6 +158,8 @@ version = "1.21.123"
 "_ZN23HealthAttributeDelegate6changeEffRK13AttributeBuff" = 164892016
 # InventoryTransaction
 "_ZNK20InventoryTransaction11executeFullER6Playerb" = 173689728
+# Item
+"_ZNK4Item12readUserDataER13ItemStackBaseR10IDataInputR20ReadOnlyBinaryStream" = 173381392
 # ItemRegistry
 "_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE" = 167924448
 # ItemStackBase
