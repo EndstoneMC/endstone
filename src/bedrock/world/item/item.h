@@ -125,8 +125,8 @@ public:
     virtual int buildIdAux(std::int16_t, CompoundTag const *) const = 0;
     virtual bool canUseOnSimTick() const = 0;
     virtual ItemStack &use(ItemStack &, Player &) const = 0;
-    virtual bool canUseAsAttack() const=0;
-    virtual ItemStack & useAsAttack(ItemStack & itemStack, Player &) const=0;
+    virtual bool canUseAsAttack() const = 0;
+    virtual ItemStack &useAsAttack(ItemStack &itemStack, Player &) const = 0;
     virtual Actor *createProjectileActor(BlockSource &, ItemStack const &, Vec3 const &, Vec3 const &) const = 0;
     virtual bool dispense(BlockSource &, Container &, int slot, Vec3 const &, FacingID face) const = 0;
     virtual ItemUseMethod useTimeDepleted(ItemStack &, Level *, Player *) const = 0;
@@ -139,7 +139,8 @@ public:
     virtual Bedrock::Safety::RedactableString const buildRedactedDescriptionName(ItemStackBase const &) const = 0;
     virtual std::string buildDescriptionId(ItemDescriptor const &, CompoundTag const *) const = 0;
     virtual std::string buildEffectDescriptionName(ItemStackBase const &) const = 0;
-    virtual void readUserData(ItemStackBase &, IDataInput &, ReadOnlyBinaryStream &) const = 0;
+    ENDSTONE_HOOK virtual void readUserData(ItemStackBase &stack, IDataInput &input,
+                                            ReadOnlyBinaryStream &underlying_stream) const;
     virtual void writeUserData(ItemStackBase const &, IDataOutput &) const = 0;
     virtual std::uint8_t getMaxStackSize(ItemDescriptor const &) const = 0;
     virtual bool inventoryTick(ItemStack &, Level &, Actor &, int, bool) const = 0;

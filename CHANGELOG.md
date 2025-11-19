@@ -5,7 +5,44 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.10.11](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.10) - 2025-11-06
+## [0.10.14](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.14) - 2025-11-18
+
+<small>[Compare with 0.10.12](https://github.com/EndstoneMC/endstone/compare/v0.10.13...v0.10.14)</small>
+
+### Added
+
+* Enable packet rate limiting by default to prevent packet flooding.
+* Enable RakNet's connection frequency limiting.
+
+### Fixed
+
+* Patched a vulnerability that allows malicious clients to continue sending packets after the connection is closed.
+
+## [0.10.13](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.13) - 2025-11-18
+
+<small>[Compare with 0.10.12](https://github.com/EndstoneMC/endstone/compare/v0.10.12...v0.10.13)</small>
+
+### Fixed
+
+* Resolved a crash that could occur with certain worlds.
+
+## [0.10.12](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.12) - 2025-11-18
+
+<small>[Compare with 0.10.11](https://github.com/EndstoneMC/endstone/compare/v0.10.11...v0.10.12)</small>
+
+### Added
+
+* Added support for BDS version 1.21.123.2.
+
+### Fixed
+
+* Resolved a memory leak caused by chunks not unloading properly.
+* Patched a vulnerability where a crafted LoginPacket with an excessively long certificate chain could crash the server.
+* Patched a vulnerability where a malformed InventoryTransactionPacket could freeze the server.
+* Fixed a crash related to custom dimensions (LeviStone).
+* IP bans are now checked before the server processes player login.
+
+## [0.10.11](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.11) - 2025-11-06
 
 <small>[Compare with 0.10.10](https://github.com/EndstoneMC/endstone/compare/v0.10.10...v0.10.11)</small>
 

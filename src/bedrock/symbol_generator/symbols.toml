@@ -1,4 +1,4 @@
-timestamp = 1763318843
+timestamp = 1763428253
 version = "1.21.123"
 
 [windows]
@@ -45,11 +45,14 @@ version = "1.21.123"
 "?change@HealthAttributeDelegate@@UEAAMMMAEBVAttributeBuff@@@Z" = 61331008
 # InventoryTransaction
 "?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z" = 63535040
+# Item
+"?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z" = 62810000
 # ItemInstance
 "?fromTag@ItemInstance@@SA?AV1@AEBVCompoundTag@@@Z" = 61610048
 # ItemRegistry
 "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z" = 61514288
 # ItemStackBase
+"?_loadBlocksForCanPlaceOnCanDestroy@ItemStackBase@@CA_NAEAV?$vector@PEBVBlockType@@V?$allocator@PEBVBlockType@@@std@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z" = 61670512
 "?init@ItemStackBase@@IEAAXHHH_N@Z" = 61628656
 # LeavesBlock
 "?_die@LeavesBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@@Z" = 68285664
@@ -109,6 +112,8 @@ version = "1.21.123"
 "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z" = 73517712
 # ServerScriptManager
 "?_runPlugins@ServerScriptManager@@AEAAXW4PluginExecutionGroup@@AEAVServerInstance@@@Z" = 34021952
+# UnverifiedCertificate
+"?fromString@UnverifiedCertificate@@SA?AV1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z" = 9484752
 
 [linux]
 "BlockState::StateListNode::mHead" = 221391800
@@ -154,11 +159,14 @@ version = "1.21.123"
 "_ZN23HealthAttributeDelegate6changeEffRK13AttributeBuff" = 164892016
 # InventoryTransaction
 "_ZNK20InventoryTransaction11executeFullER6Playerb" = 173689728
+# Item
+"_ZNK4Item12readUserDataER13ItemStackBaseR10IDataInputR20ReadOnlyBinaryStream" = 173381392
 # ItemInstance
 "_ZN12ItemInstance7fromTagERK11CompoundTag" = 173108576
 # ItemRegistry
 "_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE" = 167924448
 # ItemStackBase
+"_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE" = 173174400
 "_ZN13ItemStackBase4initEiiib" = 173132528
 # LeavesBlock
 "_ZNK11LeavesBlock4_dieER11BlockSourceRK8BlockPos" = 174572288
@@ -218,3 +226,5 @@ version = "1.21.123"
 "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE" = 183484800
 # ServerScriptManager
 "_ZN19ServerScriptManager11_runPluginsE20PluginExecutionGroupR14ServerInstance" = 140473920
+# UnverifiedCertificate
+"_ZN21UnverifiedCertificate10fromStringERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE" = 84003168

@@ -29,10 +29,7 @@ public:
     void handle(const NetworkIdentifier &network_id, NetEventCallback &callback,
                 std::shared_ptr<Packet> &packet) const override
     {
-        // Run the original logics first so invalid login attempts will be rejected right away.
-        original_.handle(network_id, callback, packet);
-
-        // Endstone begins: additional checks e.g. ban / ban-ip
+        // Check for IP-bans
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto address = endstone::core::EndstoneSocketAddress::fromNetworkIdentifier(network_id);
         if (server.getIpBanList().isBanned(address.getHostname())) {
@@ -46,11 +43,14 @@ public:
             return;
         }
 
-        auto &connection_request = pk.payload.connection_request;
+        // Run the original logics first so invalid login attempts will be rejected right away.
+        original_.handle(network_id, callback, packet);
+
+        const auto &connection_request = pk.payload.connection_request;
         const auto &info = connection_request->getAuthenticationInfo();
-        const auto name = info.xuid.empty() ? connection_request->getClientThirdPartyName() : info.xbox_live_name;
+        const auto &name = info.xuid.empty() ? connection_request->getClientThirdPartyName() : info.xbox_live_name;
         const auto uuid = endstone::core::EndstoneUUID::fromMinecraft(info.authenticated_uuid);
-        const auto xuid = info.xuid;
+        const auto &xuid = info.xuid;
         if (server.getBanList().isBanned(name, uuid, xuid)) {
             const gsl::not_null ban_entry = server.getBanList().getBanEntry(name, uuid, xuid);
             if (const auto reason = ban_entry->getReason(); !reason.empty()) {

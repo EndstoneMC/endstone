@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include "bedrock/world/level/map_data_manager.h"
+#include "bedrock/world/level/map_data_manager_options.h"
+
 class IServerMapDataManagerConnector {
 public:
     virtual Bedrock::PubSub::Connector<void(MapItemSavedData &)> &getOnCreateMapSavedDataConnector() = 0;
@@ -32,8 +35,6 @@ public:
     void requestMapInfo(const ActorUniqueID, bool) override;
 
 private:
-    void _copyAndLockMap(const ActorUniqueID originalMapUuid, const ActorUniqueID newMapUuid) override;
-    void _onGameplayUserAdded(EntityContext &entity);
     Bedrock::PubSub::Publisher<void(MapItemSavedData &), Bedrock::PubSub::ThreadModel::MultiThreaded>
         on_create_map_saved_data_;
     Bedrock::PubSub::Subscription on_gameplay_user_added_;

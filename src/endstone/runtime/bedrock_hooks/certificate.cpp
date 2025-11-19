@@ -12,20 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/rak_peer_helper.h"
+#include "bedrock/certificates/certificate.h"
 
-#include <entt/entt.hpp>
+#include <nlohmann/json.hpp>
 
-#include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
-RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer, const ConnectionDefinition &def,
-                                                 PeerPurpose purpose)
+UnverifiedCertificate UnverifiedCertificate::fromString(const std::string &input)
 {
-    auto new_def = def;
-    new_def.max_num_connections = SharedConstants::NetworkDefaultMaxConnections;
-    if (peer && purpose == PeerPurpose::Gameplay) {
-        peer->SetLimitIPConnectionFrequency(true);  // limit connections from the same ip in 100 milliseconds.
+    if (input.size() <= 0x300000) {
+        try {
+            auto json = nlohmann::json::parse(input);
+            if (json.is_object()) {
+                auto &chain = json["chain"];
+                if (chain.is_array() && chain.size() <= 3) {
+                    return ENDSTONE_HOOK_CALL_ORIGINAL(&UnverifiedCertificate::fromString, input);
+                }
+            }
+        }
+        catch (...) {
+        }
     }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, new_def, purpose);
+    return {WebToken(), nullptr};
 }

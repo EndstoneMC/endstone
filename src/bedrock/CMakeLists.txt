@@ -71,6 +71,7 @@ add_library(bedrock STATIC
         textobject/text_object.cpp
         util/data_io.cpp
         util/index_set.cpp
+        util/string_byte_input.cpp
         util/string_byte_output.cpp
         world/game_session.cpp
         world/minecraft.cpp

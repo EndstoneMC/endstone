@@ -48,6 +48,9 @@ Bedrock::Result<void> ListTag::load(IDataInput &input)
         return BEDROCK_RETHROW(byte_result);
     }
     type_ = static_cast<Type>(byte_result.asExpected().value());
+    if (type_ >= Type::NumTagTypes) {
+        return BEDROCK_NEW_ERROR(std::errc::bad_message);
+    }
 
     auto int_result = input.readIntResult();
     if (!int_result.ignoreError()) {
@@ -56,6 +59,11 @@ Bedrock::Result<void> ListTag::load(IDataInput &input)
 
     const auto size = int_result.asExpected().value();
     list_.clear();
+
+    if (size == 0 || type_ == Type::End) {
+        return BEDROCK_NEW_ERROR(std::errc::bad_message);
+    }
+
     list_.reserve(size);
     for (int i = 0; i < size; ++i) {
         auto tag_result = newTag(type_);

@@ -16,11 +16,20 @@
 
 #include <memory>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/certificates/web_token.h"
 
 class UnverifiedCertificate {
+public:
+    ENDSTONE_HOOK static UnverifiedCertificate fromString(const std::string &input);
     friend class Certificate;
 
+private:
+    UnverifiedCertificate(const WebToken &raw_token,
+                          std::unique_ptr<UnverifiedCertificate> parent_unverified_certificate)
+        : raw_token_(raw_token), parent_unverified_certificate_(std::move(parent_unverified_certificate))
+    {
+    }
     WebToken raw_token_;                                                    // +0
     std::unique_ptr<UnverifiedCertificate> parent_unverified_certificate_;  // +128
 };

@@ -496,6 +496,34 @@ bool ItemStackBase::hasCustomHoverName() const
     return tag->contains(TAG_DISPLAY_NAME);
 }
 
+void ItemStackBase::deserializeComponents(IDataInput &input)
+{
+    auto int_result = input.readIntResult();
+    if (!int_result.ignoreError()) {
+        return;
+    }
+    for (auto i = 0; i < int_result.discardError().value(); ++i) {
+        auto block_name_result = input.readStringResult();
+        if (!block_name_result.ignoreError()) {
+            return;
+        }
+        _loadBlocksForCanPlaceOnCanDestroy(can_place_on_, block_name_result.discardError().value());
+    }
+
+    int_result = input.readIntResult();
+    if (!int_result.ignoreError()) {
+        return;
+    }
+    for (auto i = 0; i < int_result.discardError().value(); ++i) {
+        auto block_name_result = input.readStringResult();
+        if (!block_name_result.ignoreError()) {
+            return;
+        }
+        _loadBlocksForCanPlaceOnCanDestroy(can_destroy_, block_name_result.discardError().value());
+    }
+    _updateCompareHashes();
+}
+
 std::uint8_t ItemStackBase::getCount() const
 {
     return count_;
@@ -600,6 +628,40 @@ void ItemStackBase::_checkForItemWorldCompatibility()
     if (!compatible) {
         setNull("Item is not compatible with the base game version.");
     }
+}
+
+bool ItemStackBase::_loadBlocksForCanPlaceOnCanDestroy(std::vector<const BlockType *> &block_list,
+                                                       const std::string &block_name)
+{
+    return BEDROCK_CALL(&ItemStackBase::_loadBlocksForCanPlaceOnCanDestroy, block_list, block_name);
+    // std::string block_full_name;
+    // if (block_name.find(':') == std::string::npos) {
+    //     block_full_name = "minecraft:" + block_name;
+    // }
+    // else {
+    //     block_full_name = block_name;
+    // }
+    //
+    // auto &registry = BlockTypeRegistry::get();
+    // auto load_block = [&](const std::string &name) {
+    //     const auto block_type = registry.lookupByName(name, true);
+    //     if (block_type.isNull()) {
+    //         return false;
+    //     }
+    //     block_list.emplace_back(block_type.get());
+    //     return true;
+    // };
+    //
+    // if (registry.isComplexAliasBlock(block_full_name)) {
+    //     const auto &names = registry.getComplexAliasPostSplitBlockNames(block_full_name);
+    //     for (const auto &post_split_name : names) {
+    //         if (!load_block(post_split_name.get().getString())) {
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+    // return load_block(block_full_name);
 }
 
 const std::string ItemStackBase::TAG_DISPLAY = "display";
