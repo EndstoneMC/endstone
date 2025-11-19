@@ -45,12 +45,6 @@ jobs:
       - name: Set up CMake and Ninja
         uses: lukka/get-cmake@latest
 
-      - name: Configure the project
-        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-O3"  # 设置最高优化
-      
-      - name: Build the project
-        run: cmake --build build --config Release  # 使用 Release 配置构建项目
-      
       - name: Build wheels
         uses: pypa/cibuildwheel@v3.2.1
         env:
