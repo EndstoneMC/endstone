@@ -18,6 +18,7 @@
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/locale/i18n.h"
+#include "bedrock/network/packet/disconnect_packet.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
@@ -58,9 +59,14 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
     // BUGFIX:
     // Forcibly mark the connection as disconnected immediately so no further packets from this client are accepted or
     // processed. The original code sends a disconnection notification to the client, but a malicious client may ignore
-    // it and keep sending packets. The system still processes incoming packets afterward, which leaves the server
-    // vulnerable to continued packet spam.
+    // it and keep sending packets, leaving the server exposed to packet spam.
     if (auto *connection = network_._getConnectionFromId(id); connection) {
+        // Do not rely on the client to send DisconnectPacket,
+        // Instead, force a local disconnect and then trigger the full cleanup logic ourselves using a DisconnectPacket.
+        auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Disconnect);
+        auto &pk = static_cast<DisconnectPacket &>(*packet);
+        pk.setSenderSubId(sub_id);
+        pk.handle(id, *this, packet);
         connection->disconnect();
     }
 }

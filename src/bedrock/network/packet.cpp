@@ -95,6 +95,11 @@ SubClientId Packet::getSenderSubId() const
     return sender_sub_id_;
 }
 
+void Packet::setSenderSubId(SubClientId sender_sub_id)
+{
+    sender_sub_id_ = sender_sub_id;
+}
+
 Compressibility Packet::getCompressible() const
 {
     return compressible_;
