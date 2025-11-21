@@ -61,7 +61,7 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
     // processed. The original code sends a disconnection notification to the client, but a malicious client may ignore
     // it and keep sending packets, leaving the server exposed to packet spam.
     if (sub_id == SubClientId::PrimaryClient) {
-        network_.closeConnection(id, reason, message);
+        // server.getServer().getNetwork().closeConnection(id, reason, message);
     }
 }
 
