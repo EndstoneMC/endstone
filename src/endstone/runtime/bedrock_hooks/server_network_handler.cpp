@@ -60,11 +60,9 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
     // Forcibly mark the connection as disconnected immediately so no further packets from this client are accepted or
     // processed. The original code sends a disconnection notification to the client, but a malicious client may ignore
     // it and keep sending packets, leaving the server exposed to packet spam.
-    // We force a local disconnect and trigger the full cleanup logic ourselves using a DisconnectPacket.
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Disconnect);
-    auto &pk = static_cast<DisconnectPacket &>(*packet);
-    pk.setSenderSubId(sub_id);
-    pk.handle(id, *this, packet);
+    if (sub_id == SubClientId::PrimaryClient) {
+        network_.closeConnection(id, reason, message);
+    }
 }
 
 bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request)
