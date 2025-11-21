@@ -9,15 +9,17 @@
 void LiquidBlock::_trySpreadTo(BlockSource &region, BlockPos const &pos, int neighbor, BlockPos const &flow_from_pos,
                                unsigned char flow_from_direction) const
 {
-    if (!_canSpreadTo(region, pos, flow_from_pos, flow_from_direction)) {
-        return;
-    }
-    endstone::BlockFormToEvent event(endstone::core::EndstoneBlock::at(region, flow_from_pos),
-                                     endstone::core::EndstoneBlock::at(region, pos));
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    server.getPluginManager().callEvent(event);
-    if (event.isCancelled()) {
-        return;
+    if (server.isPrimaryThread()) {
+        if (!_canSpreadTo(region, pos, flow_from_pos, flow_from_direction)) {
+            return;
+        }
+        endstone::BlockFormToEvent event(endstone::core::EndstoneBlock::at(region, flow_from_pos),
+                                         endstone::core::EndstoneBlock::at(region, pos));
+        server.getPluginManager().callEvent(event);
+        if (event.isCancelled()) {
+            return;
+        }
     }
     ENDSTONE_HOOK_CALL_ORIGINAL(&LiquidBlock::_trySpreadTo, this, region, pos, neighbor, flow_from_pos,
                                 flow_from_direction);
