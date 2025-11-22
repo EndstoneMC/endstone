@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1LevelEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::LevelEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Event" prot="public" virt="non-virtual">endstone::Event</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1DimensionEvent" prot="public" virt="non-virtual">endstone::DimensionEvent</derivedcompoundref>
+    <includes refid="level__event_8h" local="no">endstone/event/level/level_event.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1LevelEvent_1ab3a3f5c2858709f045ea2195567b7892" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> &amp;</type>
+        <definition>Level&amp; endstone::LevelEvent::level_</definition>
+        <argsstring></argsstring>
+        <name>level_</name>
+        <qualifiedname>endstone::LevelEvent::level_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/level/level_event.h" line="40" column="11" bodyfile="include/endstone/event/level/level_event.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1LevelEvent_1a75f2817cfb11480dedbf70c1d3ddc162" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::LevelEvent::LevelEvent</definition>
+        <argsstring>(Level &amp;level)</argsstring>
+        <name>LevelEvent</name>
+        <qualifiedname>endstone::LevelEvent::LevelEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> &amp;</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/level/level_event.h" line="27" column="14" bodyfile="include/endstone/event/level/level_event.h" bodystart="27" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1LevelEvent_1ac3be77ffb5a5416fe0c6b138ac01a709" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> &amp;</type>
+        <definition>Level &amp; endstone::LevelEvent::getLevel</definition>
+        <argsstring>() const</argsstring>
+        <name>getLevel</name>
+        <qualifiedname>endstone::LevelEvent::getLevel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the level primarily involved with this event</para>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> which caused this event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/level/level_event.h" line="34" column="12" bodyfile="include/endstone/event/level/level_event.h" bodystart="34" bodyend="37"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents events within a level. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4">
+        <label>endstone::ChunkEvent</label>
+        <link refid="classendstone_1_1ChunkEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::ChunkLoadEvent</label>
+        <link refid="classendstone_1_1ChunkLoadEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::ChunkUnloadEvent</label>
+        <link refid="classendstone_1_1ChunkUnloadEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::DimensionEvent</label>
+        <link refid="classendstone_1_1DimensionEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="1">
+        <label>endstone::LevelEvent</label>
+        <link refid="classendstone_1_1LevelEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="1">
+        <label>endstone::LevelEvent</label>
+        <link refid="classendstone_1_1LevelEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/level/level_event.h" line="25" column="1" bodyfile="include/endstone/event/level/level_event.h" bodystart="25" bodyend="41"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::LevelEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::LevelEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::LevelEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1LevelEvent_1ac3be77ffb5a5416fe0c6b138ac01a709" prot="public" virt="non-virtual"><scope>endstone::LevelEvent</scope><name>getLevel</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::LevelEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1LevelEvent_1ab3a3f5c2858709f045ea2195567b7892" prot="private" virt="non-virtual"><scope>endstone::LevelEvent</scope><name>level_</name></member>
+      <member refid="classendstone_1_1LevelEvent_1a75f2817cfb11480dedbf70c1d3ddc162" prot="public" virt="non-virtual"><scope>endstone::LevelEvent</scope><name>LevelEvent</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::LevelEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::LevelEvent</scope><name>~Event</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
