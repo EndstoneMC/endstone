@@ -23,7 +23,7 @@ public:
         virtual bool onNewIncomingConnection(NetworkIdentifier const &, std::shared_ptr<::NetworkPeer> &&) = 0;
         virtual bool onNewOutgoingConnection(NetworkIdentifier const &, std::shared_ptr<::NetworkPeer> &&) = 0;
         virtual void onConnectionClosed(NetworkIdentifier const &, Connection::DisconnectFailReason,
-                                        std::string const &, bool) = 0;
+                                        std::string const &, bool, const Json::Value &session_summary) = 0;
     };
 
     Connector(ConnectionCallbacks &);

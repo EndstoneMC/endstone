@@ -27,7 +27,7 @@ Bedrock::NotNullNonOwnerPtr<const RemoteConnector> NetworkSystem::getRemoteConne
 void NetworkSystem::closeConnection(const NetworkIdentifier &id, const Connection::DisconnectFailReason reason,
                                     const std::string &reason_message)
 {
-    onConnectionClosed(id, reason, reason_message, false);
+    onConnectionClosed(id, reason, reason_message, false, {});
     getRemoteConnector()->closeNetworkConnection(id);
 }
 
