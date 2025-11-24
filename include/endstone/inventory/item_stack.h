@@ -37,7 +37,7 @@ class ItemStack {
     ItemStack() = default;
 
 public:
-    explicit ItemStack(ItemId type, const int amount = 1, const int data = 0)
+    explicit ItemStack(const ItemTypeId &type, const int amount = 1, const int data = 0)
     {
         if (const auto *item = ItemType::get(type); item != nullptr) {
             type_ = type;
@@ -68,9 +68,12 @@ public:
      *
      * @return Type of the items in this stack
      */
-    [[nodiscard]] virtual ItemId getType() const
+    [[nodiscard]] virtual const ItemType &getType() const
     {
-        return type_;
+        if (const auto *item = ItemType::get(type_); item != nullptr) {
+            return *item;
+        }
+        return *ItemType::get(ItemType::Air);
     }
 
     /**
@@ -78,7 +81,7 @@ public:
      *
      * @param type New type to set the items in this stack to
      */
-    virtual Result<void> setType(ItemId type)
+    virtual Result<void> setType(ItemTypeId type)
     {
         const auto *item_type = ItemType::get(type);
         ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
@@ -227,7 +230,7 @@ public:
         CompoundTag tag;
         tag["Name"] = StringTag(type_);
         tag["Count"] = ByteTag(amount_);
-        tag["Damage"] = ShortTag(data_);
+        tag["Damage"] = ShortTag(static_cast<short>(data_));
         if (hasItemMeta()) {
             tag["tag"] = getItemMeta()->toNbt();
         }
@@ -272,7 +275,7 @@ private:
         return true;
     }
 
-    std::string type_ = ItemType::Air;
+    ItemTypeId type_ = ItemType::Air;
     int amount_ = 0;
     int data_ = 0;
     std::unique_ptr<ItemMeta> meta_ = nullptr;

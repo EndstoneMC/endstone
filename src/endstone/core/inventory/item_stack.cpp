@@ -33,12 +33,12 @@ bool EndstoneItemStack::isEndstoneItemStack() const
     return true;
 }
 
-ItemId EndstoneItemStack::getType() const
+const ItemType &EndstoneItemStack::getType() const
 {
     return getType(&item_);
 }
 
-Result<void> EndstoneItemStack::setType(ItemId type)
+Result<void> EndstoneItemStack::setType(ItemTypeId type)
 {
     const auto *item_type = ItemType::get(type);
     ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
@@ -173,7 +173,7 @@ CompoundTag EndstoneItemStack::toNbt() const
         return ::ItemStack(stack->item_);  // Call the copy constructor to make a copy
     }
 
-    auto stack = ::ItemStack(std::string(item->getType()), item->getAmount(), item->getData());
+    auto stack = ::ItemStack(std::string(item->getType().getId()), item->getAmount(), item->getData());
     if (item->hasItemMeta()) {
         setItemMeta(&stack, item->getItemMeta().get());
     }
@@ -188,12 +188,9 @@ std::unique_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(const ::Item
     return std::make_unique<EndstoneItemStack>(item);
 }
 
-ItemId EndstoneItemStack::getType(const ItemStackBase *item)
+const ItemType &EndstoneItemStack::getType(const ItemStackBase *item)
 {
-    if (item && *item) {
-        return item->getItem()->getFullItemName();
-    }
-    return ItemType::Air;
+    return (item && *item) ? *ItemType::get(item->getItem()->getFullItemName()) : *ItemType::get(ItemType::Air);
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta(const ItemStackBase *item)
@@ -221,7 +218,7 @@ bool EndstoneItemStack::setItemMeta(ItemStackBase *item, const ItemMeta *meta)
         return true;
     }
 
-    const auto type = getType(item);
+    const auto &type = getType(item);
     if (!EndstoneItemFactory::instance().isApplicable(meta, type)) {
         return false;
     }

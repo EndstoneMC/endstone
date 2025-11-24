@@ -28,7 +28,7 @@ public:
      * @param type The item type to consider as base for the meta
      * @return a new ItemMeta that could be applied to an item stack of the specified item type
      */
-    [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta(ItemId type) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta(ItemTypeId type) const = 0;
 
     /**
      * @brief This method checks the item meta to confirm that it is applicable (no data lost if applied) to the
@@ -38,7 +38,7 @@ public:
      * @param type The item type that meta will be applied to
      * @return true if the meta can be applied without losing data, false otherwise
      */
-    [[nodiscard]] virtual bool isApplicable(const ItemMeta *meta, ItemId type) const = 0;
+    [[nodiscard]] virtual bool isApplicable(const ItemMeta *meta, ItemTypeId type) const = 0;
 
     /**
      * @brief This method is used to compare two ItemMeta objects.
@@ -60,7 +60,7 @@ public:
      * @param type the item type to convert the meta for
      * @return An appropriate item meta for the specified item type.
      */
-    [[nodiscard]] virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, ItemId type) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, ItemTypeId type) const = 0;
 
     /**
      * Create a new ItemStack given the NBT.

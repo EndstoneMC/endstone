@@ -30,7 +30,7 @@ public:
     virtual ~ItemMetaExtras() = default;
     [[nodiscard]] virtual bool isEmpty() const = 0;
     virtual void applyToItem(::CompoundTag &tag) const = 0;
-    [[nodiscard]] virtual bool applicableTo(ItemId type) const = 0;
+    [[nodiscard]] virtual bool applicableTo(ItemTypeId type) const = 0;
     [[nodiscard]] virtual bool equalsCommon(const ItemMeta &meta) const = 0;
     [[nodiscard]] virtual bool notUncommon(const ItemMeta &meta) const = 0;
 };
@@ -275,7 +275,7 @@ public:
         }
     }
 
-    [[nodiscard]] bool applicableTo(ItemId type) const override
+    [[nodiscard]] bool applicableTo(ItemTypeId type) const override
     {
         return type != ItemType::Air;
     }
