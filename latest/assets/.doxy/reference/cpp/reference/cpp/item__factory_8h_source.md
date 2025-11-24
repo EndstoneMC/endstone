@@ -32,13 +32,13 @@ class ItemFactory {
 public:
     virtual ~ItemFactory() = default;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta(ItemId type) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta(ItemTypeId type) const = 0;
 
-    [[nodiscard]] virtual bool isApplicable(const ItemMeta *meta, ItemId type) const = 0;
+    [[nodiscard]] virtual bool isApplicable(const ItemMeta *meta, ItemTypeId type) const = 0;
 
     [[nodiscard]] virtual bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, ItemId type) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, ItemTypeId type) const = 0;
 
     [[nodiscard]] virtual std::unique_ptr<ItemStack> createItemStack(const CompoundTag &tag) const = 0;
 };

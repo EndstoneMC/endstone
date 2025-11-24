@@ -121,9 +121,9 @@ enum endstone::AttributeModifier::Operand {
 _Operation to be applied._ 
 ```C++
 enum endstone::AttributeModifier::Operation {
-    AddNumber,
-    AddScalar,
-    MultiplyScalar1
+    Add,
+    MultiplyBase,
+    Multiply
 };
 ```
 

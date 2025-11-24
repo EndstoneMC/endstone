@@ -221,6 +221,7 @@ See [endstone::Mob](classendstone_1_1Mob.md)
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxHealth**](classendstone_1_1Mob.md#function-getmaxhealth) () const = 0<br>_Gets the maximum health this entity has._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isGliding**](classendstone_1_1Mob.md#function-isgliding) () const = 0<br>_Checks to see if an actor is gliding, such as using an Elytra._  |
 | virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setHealth**](classendstone_1_1Mob.md#function-sethealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br> |
+| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setMaxHealth**](classendstone_1_1Mob.md#function-setmaxhealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br>_Sets the maximum health this entity can have._  |
 
 
 ## Public Functions inherited from endstone::Actor

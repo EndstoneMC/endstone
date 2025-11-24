@@ -118,6 +118,7 @@ Inherited by the following classes: [endstone::Player](classendstone_1_1Player.m
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxHealth**](#function-getmaxhealth) () const = 0<br>_Gets the maximum health this entity has._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isGliding**](#function-isgliding) () const = 0<br>_Checks to see if an actor is gliding, such as using an Elytra._  |
 | virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setHealth**](#function-sethealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br> |
+| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setMaxHealth**](#function-setmaxhealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br>_Sets the maximum health this entity can have._  |
 
 
 ## Public Functions inherited from endstone::Actor
@@ -399,6 +400,43 @@ Sets the entity's health from 0 to its possible value, where 0 is dead.
 
 
 * `health` New health represented from 0 to max 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setMaxHealth 
+
+_Sets the maximum health this entity can have._ 
+```C++
+virtual Result< void > endstone::Mob::setMaxHealth (
+    int health
+) const = 0
+```
+
+
+
+If the health of the entity is above the value provided, it will be set to that value.
+
+
+
+
+**Note:**
+
+An entity with a health bar e.g., [**Player**](classendstone_1_1Player.md), EnderDragon, Wither, etc. will have their bar scaled accordingly.
+
+
+
+
+**Parameters:**
+
+
+* `health` amount of health to set the maximum to 
 
 
 

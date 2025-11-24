@@ -37,9 +37,9 @@ public:
     };
 
     enum class Operation {
-        AddNumber,
-        AddScalar,
-        MultiplyScalar1
+        Add,
+        MultiplyBase,
+        Multiply
     };
 
     AttributeModifier(std::string name, float amount, Operation operation, Operand operand = Operand::Value)

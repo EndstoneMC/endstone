@@ -29,15 +29,15 @@
 #include "endstone/server.h"
 
 namespace endstone {
-using ItemId = Identifier<ItemType>;
+using ItemTypeId = Identifier<ItemType>;
 class ItemType {
 public:
-    static constexpr auto Air = ItemId::minecraft("air");
+    static constexpr auto Air = ItemTypeId::minecraft("air");
 
     ENDSTONE_REGISTRY_TYPE(ItemType)
     virtual ~ItemType() = default;
 
-    [[nodiscard]] virtual ItemId getId() const = 0;
+    [[nodiscard]] virtual ItemTypeId getId() const = 0;
 
     [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
@@ -47,12 +47,12 @@ public:
 
     [[nodiscard]] virtual int getMaxDurability() const = 0;
 
-    bool operator==(const ItemId &other) const
+    bool operator==(const ItemTypeId &other) const
     {
         return getId() == other;
     }
 
-    bool operator!=(const ItemId &other) const
+    bool operator!=(const ItemTypeId &other) const
     {
         return !(*this == other);
     }
@@ -67,7 +67,7 @@ public:
         return !(*this == other);
     }
 
-    operator ItemId() const
+    operator ItemTypeId() const
     {
         return getId();
     }

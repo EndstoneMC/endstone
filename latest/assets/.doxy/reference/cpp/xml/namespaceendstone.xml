@@ -907,12 +907,12 @@
         </inbodydescription>
         <location file="include/endstone/enchantments/enchantment.h" line="24" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="24" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1ad7cf0bc557f516d17d39097140ee9588" prot="public" static="no">
+      <memberdef kind="typedef" id="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" prot="public" static="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> &gt;</type>
-        <definition>using endstone::ItemId = typedef Identifier&lt;ItemType&gt;</definition>
+        <definition>using endstone::ItemTypeId = typedef Identifier&lt;ItemType&gt;</definition>
         <argsstring></argsstring>
-        <name>ItemId</name>
-        <qualifiedname>endstone::ItemId</qualifiedname>
+        <name>ItemTypeId</name>
+        <qualifiedname>endstone::ItemTypeId</qualifiedname>
         <briefdescription>
 <para>Represents an item type. </para>
         </briefdescription>

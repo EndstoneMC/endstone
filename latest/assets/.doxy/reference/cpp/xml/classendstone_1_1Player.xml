@@ -1767,6 +1767,7 @@
       <member refid="classendstone_1_1Player_1a36fe0a887b27ac602c0392cc0154001b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setFlySpeed</name></member>
       <member refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setGameMode</name></member>
       <member refid="classendstone_1_1Mob_1a4b3c43aab95c17aa638a4c2ad510bfa4" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setHealth</name></member>
+      <member refid="classendstone_1_1Mob_1a90d33d382e5fabde14feea1092ad5ff0" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setMaxHealth</name></member>
       <member refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setNameTag</name></member>
       <member refid="classendstone_1_1Actor_1a6c7dc2e5a9b99db8b000e84e4eba5822" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setNameTagAlwaysVisible</name></member>
       <member refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setNameTagVisible</name></member>

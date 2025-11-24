@@ -89,6 +89,38 @@
         </inbodydescription>
         <location file="include/endstone/actor/mob.h" line="50" column="18"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Mob_1a90d33d382e5fabde14feea1092ad5ff0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
+        <definition>virtual Result&lt; void &gt; endstone::Mob::setMaxHealth</definition>
+        <argsstring>(int health) const =0</argsstring>
+        <name>setMaxHealth</name>
+        <qualifiedname>endstone::Mob::setMaxHealth</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>health</declname>
+        </param>
+        <briefdescription>
+<para>Sets the maximum health this entity can have. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If the health of the entity is above the value provided, it will be set to that value.</para>
+<para><simplesect kind="note"><para>An entity with a health bar e.g., <ref refid="classendstone_1_1Player" kindref="compound">Player</ref>, EnderDragon, Wither, etc. will have their bar scaled accordingly.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>health</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>amount of health to set the maximum to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/mob.h" line="61" column="21"/>
+      </memberdef>
     </sectiondef>
     <briefdescription>
 <para>Represents a mobile entity (i.e. living entity), such as a monster or player. </para>
@@ -149,7 +181,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/actor/mob.h" line="23" column="1" bodyfile="include/endstone/actor/mob.h" bodystart="23" bodyend="51"/>
+    <location file="include/endstone/actor/mob.h" line="23" column="1" bodyfile="include/endstone/actor/mob.h" bodystart="23" bodyend="62"/>
     <listofallmembers>
       <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>addAttachment</name></member>
@@ -198,6 +230,7 @@
       <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Mob_1a4b3c43aab95c17aa638a4c2ad510bfa4" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setHealth</name></member>
+      <member refid="classendstone_1_1Mob_1a90d33d382e5fabde14feea1092ad5ff0" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setMaxHealth</name></member>
       <member refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setNameTag</name></member>
       <member refid="classendstone_1_1Actor_1a6c7dc2e5a9b99db8b000e84e4eba5822" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setNameTagAlwaysVisible</name></member>
       <member refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setNameTagVisible</name></member>

@@ -2706,7 +2706,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-asmetafor"><strong>asMetaFor</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> * meta, <a href="../namespaceendstone/#typedef-itemid"><strong>ItemId</strong></a> type) const = 0<br><em>Returns an appropriate item meta for the specified item type.</em></td>
+<td style="text-align: left;"><a href="#function-asmetafor"><strong>asMetaFor</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> * meta, <a href="../namespaceendstone/#typedef-itemtypeid"><strong>ItemTypeId</strong></a> type) const = 0<br><em>Returns an appropriate item meta for the specified item type.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
@@ -2718,11 +2718,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-getitemmeta"><strong>getItemMeta</strong></a> (<a href="../namespaceendstone/#typedef-itemid"><strong>ItemId</strong></a> type) const = 0<br><em>This creates a new item meta for the item type.</em></td>
+<td style="text-align: left;"><a href="#function-getitemmeta"><strong>getItemMeta</strong></a> (<a href="../namespaceendstone/#typedef-itemtypeid"><strong>ItemTypeId</strong></a> type) const = 0<br><em>This creates a new item meta for the item type.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-isapplicable"><strong>isApplicable</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> * meta, <a href="../namespaceendstone/#typedef-itemid"><strong>ItemId</strong></a> type) const = 0<br><em>This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="#function-isapplicable"><strong>isApplicable</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemMeta/"><strong>ItemMeta</strong></a> * meta, <a href="../namespaceendstone/#typedef-itemtypeid"><strong>ItemTypeId</strong></a> type) const = 0<br><em>This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2735,7 +2735,7 @@ For latest updates join the chat on
 <p><em>Returns an appropriate item meta for the specified item type.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemMeta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemFactory</span><span class="o">::</span><span class="n">asMetaFor</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemMeta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">meta</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">ItemId</span><span class="w"> </span><span class="n">type</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">ItemTypeId</span><span class="w"> </span><span class="n">type</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>The item meta returned will always be a valid meta for a given <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> of the specified item type. It may be a more or less specific meta, and could also be the same meta or meta type as the parameter. The item meta returned will also always be the most appropriate meta.</p>
@@ -2781,7 +2781,7 @@ For latest updates join the chat on
 <h3 id="function-getitemmeta">function getItemMeta<a class="headerlink" href="#function-getitemmeta" title="Permanent link">&para;</a></h3>
 <p><em>This creates a new item meta for the item type.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemMeta</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemFactory</span><span class="o">::</span><span class="n">getItemMeta</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">ItemId</span><span class="w"> </span><span class="n">type</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">ItemTypeId</span><span class="w"> </span><span class="n">type</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2796,7 +2796,7 @@ For latest updates join the chat on
 <p><em>This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemFactory</span><span class="o">::</span><span class="n">isApplicable</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemMeta</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">meta</span><span class="p">,</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">ItemId</span><span class="w"> </span><span class="n">type</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">ItemTypeId</span><span class="w"> </span><span class="n">type</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

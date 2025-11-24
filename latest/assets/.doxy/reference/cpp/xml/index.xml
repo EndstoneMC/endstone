@@ -195,9 +195,9 @@
     <member refid="classendstone_1_1AttributeModifier_1ac599b22e706b6706a2807be972ab2ce4aacbf6a529c5ebfe1089dd9d99cc6277b" kind="enumvalue"><name>MaxValue</name></member>
     <member refid="classendstone_1_1AttributeModifier_1ac599b22e706b6706a2807be972ab2ce4a16f44636d92735a35fbc952abaefc71a" kind="enumvalue"><name>MinValue</name></member>
     <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170" kind="enum"><name>Operation</name></member>
-    <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170a9865fd6fe2a47af47eee9c3bc3e46956" kind="enumvalue"><name>AddNumber</name></member>
-    <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170ace6129b1e2d848abb4e45baf22a998c9" kind="enumvalue"><name>AddScalar</name></member>
-    <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170a6dfce3aa7f2cac190b1c278f33cb75e2" kind="enumvalue"><name>MultiplyScalar1</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170aec211f7c20af43e742bf2570c3cb84f9" kind="enumvalue"><name>Add</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170aa628faa951168de439b8cec76f62b73b" kind="enumvalue"><name>MultiplyBase</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170ae257376d913f3b53cbb4a9b19d770648" kind="enumvalue"><name>Multiply</name></member>
     <member refid="classendstone_1_1AttributeModifier_1a418ee3df70b3aa734b3aaaa94a4ab6ff" kind="variable"><name>name_</name></member>
     <member refid="classendstone_1_1AttributeModifier_1a5880929fc276e39a791a721e86bcad31" kind="variable"><name>uuid_</name></member>
     <member refid="classendstone_1_1AttributeModifier_1af426b1b9feca243b95fbbfd48e2b0c38" kind="variable"><name>amount_</name></member>
@@ -1036,10 +1036,10 @@
   </compound>
   <compound refid="classendstone_1_1ItemFactory" kind="class"><name>endstone::ItemFactory</name>
     <member refid="classendstone_1_1ItemFactory_1aad09d9483ab4cada38c27ef7b735f6da" kind="function"><name>~ItemFactory</name></member>
-    <member refid="classendstone_1_1ItemFactory_1a2d6931c74c5579b592647537aba9e44f" kind="function"><name>getItemMeta</name></member>
-    <member refid="classendstone_1_1ItemFactory_1a1f37e11d2cc0433f42c14b6910499b4e" kind="function"><name>isApplicable</name></member>
+    <member refid="classendstone_1_1ItemFactory_1a5d15dd0ea9a08da85abf2ef211f9efd5" kind="function"><name>getItemMeta</name></member>
+    <member refid="classendstone_1_1ItemFactory_1aff21b0ec47bc64201a7626ad14ff1b2b" kind="function"><name>isApplicable</name></member>
     <member refid="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" kind="function"><name>equals</name></member>
-    <member refid="classendstone_1_1ItemFactory_1aea4500ec890b832a8af6bd107afe2d56" kind="function"><name>asMetaFor</name></member>
+    <member refid="classendstone_1_1ItemFactory_1a084aacc2614dd8e9cc3b29ff499fddd3" kind="function"><name>asMetaFor</name></member>
     <member refid="classendstone_1_1ItemFactory_1a8a12dd4736a6e5478397f561ab6a6045" kind="function"><name>createItemStack</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemMeta" kind="class"><name>endstone::ItemMeta</name>
@@ -1080,18 +1080,18 @@
   </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
     <member refid="classendstone_1_1ItemStack_1a71f2c93560b6bc5092a50098ceccd3fc" kind="friend"><name>core::EndstoneItemStack</name></member>
-    <member refid="classendstone_1_1ItemStack_1a88b7ec0244561b1406e8229dc46dad3b" kind="variable"><name>type_</name></member>
+    <member refid="classendstone_1_1ItemStack_1aff8075a6f2de17b2249b1f293bae56a6" kind="variable"><name>type_</name></member>
     <member refid="classendstone_1_1ItemStack_1aca0b4d279429247412e0e0d0b37d46a9" kind="variable"><name>amount_</name></member>
     <member refid="classendstone_1_1ItemStack_1a5446d005144db4818e2fce96da70bd9d" kind="variable"><name>data_</name></member>
     <member refid="classendstone_1_1ItemStack_1a1c1edec51e5963fb5f4c054466bfa6c7" kind="variable"><name>meta_</name></member>
     <member refid="classendstone_1_1ItemStack_1a7593f4108fb7f234050fd70abd7d2957" kind="function"><name>ItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1a7ac8502d39cf2ce0c9579e860d46c7a7" kind="function"><name>getItemType</name></member>
     <member refid="classendstone_1_1ItemStack_1ad18900f0c9460bb45556111d41e4e09c" kind="function"><name>setItemMeta0</name></member>
-    <member refid="classendstone_1_1ItemStack_1a7038a8166cc1674bb6ad31a39257e6da" kind="function"><name>ItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1a78cccf1412dadaecc6ee4603e9e9a6af" kind="function"><name>ItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1ad3c33286ebce8800dcf0285a6f0e301a" kind="function"><name>ItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1a3d5879ba64ad7afe47d3c7726f276d52" kind="function"><name>~ItemStack</name></member>
-    <member refid="classendstone_1_1ItemStack_1a8befd0736b2625b8faaff3ecdeaf9209" kind="function"><name>getType</name></member>
-    <member refid="classendstone_1_1ItemStack_1acbc21c8686a40101d348550bc5974456" kind="function"><name>setType</name></member>
+    <member refid="classendstone_1_1ItemStack_1a4d1f557b53cb2a5fafdd6e2793922f10" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1ItemStack_1acd8ed5a597d0ca301f1b5d17cca29b34" kind="function"><name>setType</name></member>
     <member refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kind="function"><name>getAmount</name></member>
     <member refid="classendstone_1_1ItemStack_1afcf062a1f118ac761cb23dd139dc4f4f" kind="function"><name>setAmount</name></member>
     <member refid="classendstone_1_1ItemStack_1a3f2c4792c2ddb697945ad8458a41e319" kind="function"><name>getData</name></member>
@@ -1112,16 +1112,16 @@
   <compound refid="classendstone_1_1ItemType" kind="class"><name>endstone::ItemType</name>
     <member refid="classendstone_1_1ItemType_1aee73c12bf0391b460432889b55496e59" kind="variable"><name>Air</name></member>
     <member refid="classendstone_1_1ItemType_1a0d214cfa5e07bd5310b1ad134f873bc7" kind="function"><name>~ItemType</name></member>
-    <member refid="classendstone_1_1ItemType_1a331bc393d387232529772efa890c2682" kind="function"><name>getId</name></member>
+    <member refid="classendstone_1_1ItemType_1aa0b17f850e6ca640667a0a844539d494" kind="function"><name>getId</name></member>
     <member refid="classendstone_1_1ItemType_1a2e673b2a8d514e0d5697d5c15bee9e3c" kind="function"><name>getTranslationKey</name></member>
     <member refid="classendstone_1_1ItemType_1a56354993700b0b0b130b2c891400c264" kind="function"><name>getTranslationKey</name></member>
     <member refid="classendstone_1_1ItemType_1a0ed5eae24345de2c756b00eb6da0cdb9" kind="function"><name>getMaxStackSize</name></member>
     <member refid="classendstone_1_1ItemType_1ad6e45d72ee92f575f9913674f3beacd9" kind="function"><name>getMaxDurability</name></member>
-    <member refid="classendstone_1_1ItemType_1a5a3fef1c3a07814748ec5f5615943ae7" kind="function"><name>operator==</name></member>
-    <member refid="classendstone_1_1ItemType_1abf302ab3995220964d92dbf50a117e5f" kind="function"><name>operator!=</name></member>
+    <member refid="classendstone_1_1ItemType_1aa393a6ea6060af52befb825be7a883f2" kind="function"><name>operator==</name></member>
+    <member refid="classendstone_1_1ItemType_1a49842a784c26b432168a9e431c73475b" kind="function"><name>operator!=</name></member>
     <member refid="classendstone_1_1ItemType_1af875aee911c2b3f95b2efb7dfd2dc8fd" kind="function"><name>operator==</name></member>
     <member refid="classendstone_1_1ItemType_1a81b1aeb108d98457a98c801207b92f21" kind="function"><name>operator!=</name></member>
-    <member refid="classendstone_1_1ItemType_1a04429c7e001f9478bb6a217d5fe61020" kind="function"><name>operator ItemId</name></member>
+    <member refid="classendstone_1_1ItemType_1a28f9a07c91492df133d2a5e3e4ee7c0a" kind="function"><name>operator ItemTypeId</name></member>
   </compound>
   <compound refid="classendstone_1_1Label" kind="class"><name>endstone::Label</name>
     <member refid="classendstone_1_1Label_1ab06f2fe28f2fd41931cf10fa9810d2d4" kind="variable"><name>text_</name></member>
@@ -1390,6 +1390,7 @@
     <member refid="classendstone_1_1Mob_1a082c0e3f266fc07386b6892b8af08b5f" kind="function"><name>getHealth</name></member>
     <member refid="classendstone_1_1Mob_1a4b3c43aab95c17aa638a4c2ad510bfa4" kind="function"><name>setHealth</name></member>
     <member refid="classendstone_1_1Mob_1a4efbe682a6adc265c113e1ef77b752fb" kind="function"><name>getMaxHealth</name></member>
+    <member refid="classendstone_1_1Mob_1a90d33d382e5fabde14feea1092ad5ff0" kind="function"><name>setMaxHealth</name></member>
   </compound>
   <compound refid="classendstone_1_1ModalForm" kind="class"><name>endstone::ModalForm</name>
     <member refid="classendstone_1_1ModalForm_1a8e10f5a1239c36f705b0a61711efa6ef" kind="typedef"><name>Control</name></member>
@@ -2566,7 +2567,7 @@
     <member refid="namespaceendstone_1a688abbe501a61374454a55553d25e08f" kind="typedef"><name>BlockStates</name></member>
     <member refid="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" kind="typedef"><name>EffectId</name></member>
     <member refid="namespaceendstone_1a996c90f609bfd792a8245bb60fd3e4ea" kind="typedef"><name>EnchantmentId</name></member>
-    <member refid="namespaceendstone_1ad7cf0bc557f516d17d39097140ee9588" kind="typedef"><name>ItemId</name></member>
+    <member refid="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" kind="typedef"><name>ItemTypeId</name></member>
     <member refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kind="typedef"><name>Message</name></member>
     <member refid="namespaceendstone_1a33e1574322a8aca1ebab711faea30a4a" kind="typedef"><name>ByteTag</name></member>
     <member refid="namespaceendstone_1acb2bf69099c0af04c6c085cb2b3241c8" kind="typedef"><name>ShortTag</name></member>

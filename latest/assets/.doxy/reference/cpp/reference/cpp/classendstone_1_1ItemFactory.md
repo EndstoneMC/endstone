@@ -51,11 +51,11 @@
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**asMetaFor**](#function-asmetafor) ([**const**](classendstone_1_1Identifier.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta, [**ItemId**](namespaceendstone.md#typedef-itemid) type) const = 0<br>_Returns an appropriate item meta for the specified item type._  |
+| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**asMetaFor**](#function-asmetafor) ([**const**](classendstone_1_1Identifier.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta, [**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type) const = 0<br>_Returns an appropriate item meta for the specified item type._  |
 | virtual std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**createItemStack**](#function-createitemstack) ([**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & tag) const = 0<br> |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**equals**](#function-equals) ([**const**](classendstone_1_1Identifier.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta1, [**const**](classendstone_1_1Identifier.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta2) const = 0<br>_This method is used to compare two_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _objects._ |
-| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) ([**ItemId**](namespaceendstone.md#typedef-itemid) type) const = 0<br>_This creates a new item meta for the item type._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isApplicable**](#function-isapplicable) ([**const**](classendstone_1_1Identifier.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta, [**ItemId**](namespaceendstone.md#typedef-itemid) type) const = 0<br>_This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
+| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) ([**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type) const = 0<br>_This creates a new item meta for the item type._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isApplicable**](#function-isapplicable) ([**const**](classendstone_1_1Identifier.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta, [**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type) const = 0<br>_This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
 | virtual  | [**~ItemFactory**](#function-itemfactory) () = default<br> |
 
 
@@ -96,7 +96,7 @@ _Returns an appropriate item meta for the specified item type._
 ```C++
 virtual std::unique_ptr< ItemMeta > endstone::ItemFactory::asMetaFor (
     const  ItemMeta * meta,
-    ItemId type
+    ItemTypeId type
 ) const = 0
 ```
 
@@ -206,7 +206,7 @@ false if one of the meta has data the other does not, otherwise true
 _This creates a new item meta for the item type._ 
 ```C++
 virtual std::unique_ptr< ItemMeta > endstone::ItemFactory::getItemMeta (
-    ItemId type
+    ItemTypeId type
 ) const = 0
 ```
 
@@ -241,7 +241,7 @@ _This method checks the item meta to confirm that it is applicable (no data lost
 ```C++
 virtual bool endstone::ItemFactory::isApplicable (
     const  ItemMeta * meta,
-    ItemId type
+    ItemTypeId type
 ) const = 0
 ```
 

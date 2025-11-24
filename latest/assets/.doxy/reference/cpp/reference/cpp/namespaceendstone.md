@@ -222,7 +222,7 @@ _Represents a button with text and an optional icon._
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
 | typedef [**nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md)&lt; std::int32\_t &gt; | [**IntArrayTag**](#typedef-intarraytag)  <br> |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::int32\_t &gt; | [**IntTag**](#typedef-inttag)  <br> |
-| typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**ItemType**](classendstone_1_1ItemType.md) &gt; | [**ItemId**](#typedef-itemid)  <br>_Represents an item type._  |
+| typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**ItemType**](classendstone_1_1ItemType.md) &gt; | [**ItemTypeId**](#typedef-itemtypeid)  <br>_Represents an item type._  |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::int64\_t &gt; | [**LongTag**](#typedef-longtag)  <br> |
 | typedef std::variant&lt; std::string, [**Translatable**](classendstone_1_1Translatable.md) &gt; | [**Message**](#typedef-message)  <br> |
 | enum  | [**ObjectiveSortOrder**](#enum-objectivesortorder)  <br>_Represents the sort order of objectives on a DisplaySlot._  |
@@ -615,11 +615,11 @@ using endstone::IntTag = typedef nbt::ValueTag<std::int32_t>;
 
 
 
-### typedef ItemId 
+### typedef ItemTypeId 
 
 _Represents an item type._ 
 ```C++
-using endstone::ItemId = typedef Identifier<ItemType>;
+using endstone::ItemTypeId = typedef Identifier<ItemType>;
 ```
 
 

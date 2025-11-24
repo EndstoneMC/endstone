@@ -37,7 +37,7 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Air**](#variable-air)   = `ItemId::minecraft("air")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Air**](#variable-air)   = `ItemTypeId::minecraft("air")`<br> |
 
 
 
@@ -56,15 +56,15 @@
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**ItemId**](namespaceendstone.md#typedef-itemid) | [**getId**](#function-getid) () const = 0<br>_Return the identifier of this item type._  |
+| virtual [**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) | [**getId**](#function-getid) () const = 0<br>_Return the identifier of this item type._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxDurability**](#function-getmaxdurability) () const = 0<br>_Gets the maximum durability of this item type._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br>_Gets the maximum amount of this item type that can be held in a stack._  |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey-12) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey-22) ([**int**](classendstone_1_1Identifier.md) data) const = 0<br>_Get the translation key, suitable for use in a translation component._  |
-|   | [**operator ItemId**](#function-operator-itemid) () const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**ItemId**](namespaceendstone.md#typedef-itemid) & other) const<br> |
+|   | [**operator ItemTypeId**](#function-operator-itemtypeid) () const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) & other) const<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**ItemType**](classendstone_1_1ItemType.md) & other) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_2) ([**const**](classendstone_1_1Identifier.md) [**ItemId**](namespaceendstone.md#typedef-itemid) & other) const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_2) ([**const**](classendstone_1_1Identifier.md) [**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) & other) const<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_3) ([**const**](classendstone_1_1Identifier.md) [**ItemType**](classendstone_1_1ItemType.md) & other) const<br> |
 | virtual  | [**~ItemType**](#function-itemtype) () = default<br> |
 
@@ -119,7 +119,7 @@ constexpr auto endstone::ItemType::Air;
 
 _Return the identifier of this item type._ 
 ```C++
-virtual ItemId endstone::ItemType::getId () const = 0
+virtual ItemTypeId endstone::ItemType::getId () const = 0
 ```
 
 
@@ -249,10 +249,10 @@ the translation key
 
 
 
-### function operator ItemId 
+### function operator ItemTypeId 
 
 ```C++
-inline endstone::ItemType::operator ItemId () const
+inline endstone::ItemType::operator ItemTypeId () const
 ```
 
 
@@ -266,7 +266,7 @@ inline endstone::ItemType::operator ItemId () const
 
 ```C++
 inline bool endstone::ItemType::operator!= (
-    const  ItemId & other
+    const  ItemTypeId & other
 ) const
 ```
 
@@ -296,7 +296,7 @@ inline bool endstone::ItemType::operator!= (
 
 ```C++
 inline bool endstone::ItemType::operator== (
-    const  ItemId & other
+    const  ItemTypeId & other
 ) const
 ```
 

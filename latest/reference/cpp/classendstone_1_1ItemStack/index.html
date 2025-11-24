@@ -2991,7 +2991,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-itemstack-23"><strong>ItemStack</strong></a> (<a href="../namespaceendstone/#typedef-itemid"><strong>ItemId</strong></a> type, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> amount=1, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> data=0) <br></td>
+<td style="text-align: left;"><a href="#function-itemstack-23"><strong>ItemStack</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../namespaceendstone/#typedef-itemtypeid"><strong>ItemTypeId</strong></a> &amp; type, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> amount=1, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> data=0) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -3022,7 +3022,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-gettranslationkey"><strong>getTranslationKey</strong></a> () const<br><em>Get the translation key, suitable for use in a translation component.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../namespaceendstone/#typedef-itemid"><strong>ItemId</strong></a></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemType/"><strong>ItemType</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-gettype"><strong>getType</strong></a> () const<br><em>Gets the type of this item.</em></td>
 </tr>
 <tr>
@@ -3055,7 +3055,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-settype"><strong>setType</strong></a> (<a href="../namespaceendstone/#typedef-itemid"><strong>ItemId</strong></a> type) <br><em>Sets the type of this item.</em></td>
+<td style="text-align: left;"><a href="#function-settype"><strong>setType</strong></a> (<a href="../namespaceendstone/#typedef-itemtypeid"><strong>ItemTypeId</strong></a> type) <br><em>Sets the type of this item.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1CompoundTag/"><strong>CompoundTag</strong></a></td>
@@ -3100,7 +3100,7 @@ For latest updates join the chat on
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-itemstack-23">function ItemStack [&#8532;]<a class="headerlink" href="#function-itemstack-23" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">ItemStack</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">ItemId</span><span class="w"> </span><span class="n">type</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemTypeId</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">type</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="mi">0</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span><span class="w"> </span>
@@ -3161,7 +3161,7 @@ For latest updates join the chat on
 
 <h3 id="function-gettype">function getType<a class="headerlink" href="#function-gettype" title="Permanent link">&para;</a></h3>
 <p><em>Gets the type of this item.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">ItemId</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">ItemType</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Type of the items in this stack </p>
@@ -3244,7 +3244,7 @@ For latest updates join the chat on
 <h3 id="function-settype">function setType<a class="headerlink" href="#function-settype" title="Permanent link">&para;</a></h3>
 <p><em>Sets the type of this item.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemStack</span><span class="o">::</span><span class="n">setType</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="n">ItemId</span><span class="w"> </span><span class="n">type</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="n">ItemTypeId</span><span class="w"> </span><span class="n">type</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

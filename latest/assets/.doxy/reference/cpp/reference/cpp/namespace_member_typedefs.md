@@ -35,7 +35,7 @@
 
 * **IntArrayTag** ([**endstone**](namespaceendstone.md))
 * **IntTag** ([**endstone**](namespaceendstone.md))
-* **ItemId** ([**endstone**](namespaceendstone.md))
+* **ItemTypeId** ([**endstone**](namespaceendstone.md))
 
 
 ## l
