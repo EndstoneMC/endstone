@@ -61,7 +61,8 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
                               "Checks to see if an actor is gliding, such as using an Elytra.")
         .def_property("health", &Mob::getHealth, &Mob::setHealth,
                       "Gets or sets the entity's health from 0 to its max possible value, where 0 is dead.")
-        .def_property_readonly("max_health", &Mob::getMaxHealth, "Gets the maximum health this entity has.");
+        .def_property("max_health", &Mob::getMaxHealth, &Mob::setMaxHealth,
+                      "Gets or sets the maximum health this entity has.");
 
     py::class_<Item, Actor>(m, "Item", "Represents a base actor in the level.")
         .def_property("item_stack", &Item::getItemStack, &Item::setItemStack,

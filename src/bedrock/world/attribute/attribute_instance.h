@@ -36,6 +36,8 @@ public:
     void setDefaultValue(float default_value, int operand, AttributeModificationContext context);
     void setDefaultValueOnly(float new_default_value, AttributeModificationContext context);
     [[nodiscard]] float getCurrentValue() const;
+    void setMaxValue(float max, AttributeModificationContext context);
+    void setMinValue(float min, AttributeModificationContext context);
     void setCurrentValue(float value, AttributeModificationContext context);
     void addBuff(const AttributeBuff &, AttributeModificationContext);
 

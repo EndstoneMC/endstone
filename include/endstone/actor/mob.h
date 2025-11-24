@@ -48,5 +48,16 @@ public:
      * @return Maximum health
      */
     [[nodiscard]] virtual int getMaxHealth() const = 0;
+
+    /**
+     * @brief Sets the maximum health this entity can have.
+     *
+     * If the health of the entity is above the value provided, it will be set to that value.
+     *
+     * @note An entity with a health bar e.g., Player, EnderDragon, Wither, etc. will have their bar scaled accordingly.
+     *
+     * @param health amount of health to set the maximum to
+     */
+    [[nodiscard]] virtual Result<void> setMaxHealth(int health) const = 0;
 };
 }  // namespace endstone

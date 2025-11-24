@@ -68,6 +68,14 @@ public:
     {
         return Base::getHandle().getMaxHealth();
     }
+
+    [[nodiscard]] Result<void> setMaxHealth(int health) const override
+    {
+        ENDSTONE_CHECKF(health > 0, "Max health amount ({}) must be greater than 0", health)
+        auto mutable_attr = Base::getHandle().getMutableAttribute("minecraft:health");
+        mutable_attr->setMaxValue(static_cast<float>(health));
+        return {};
+    }
 };
 
 class EndstoneMob : public EndstoneMobBase<Mob, ::Mob> {
