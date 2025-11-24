@@ -18,6 +18,7 @@
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/locale/i18n.h"
+#include "bedrock/network/packet/disconnect_packet.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
@@ -48,20 +49,16 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
             }
         }
     }
-    else {
-        server.getLogger().info("Connection closed: {}", message.empty() ? magic_enum::enum_name(reason) : message);
-    }
 
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClientWithMessage, this, id, sub_id, reason,
                                 disconnect_message, std::move(filtered_message), skip_message);
 
     // BUGFIX:
-    // Forcibly mark the connection as disconnected immediately so no further packets from this client are accepted or
-    // processed. The original code sends a disconnection notification to the client, but a malicious client may ignore
-    // it and keep sending packets. The system still processes incoming packets afterward, which leaves the server
-    // vulnerable to continued packet spam.
-    if (auto *connection = network_._getConnectionFromId(id); connection) {
-        connection->disconnect();
+    // Close the connection immediately so no further packets from this client can be processed.
+    // The original code sends a disconnection packet to the client and waits for the client to confirm.
+    // A malicious client may ignore it and keep sending packets, making the server vulnerable to packet spam.
+    if (sub_id == SubClientId::PrimaryClient) {
+        server.getServer().getNetwork().closeConnection(id, reason, message);
     }
 }
 
