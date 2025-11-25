@@ -296,7 +296,7 @@ public:
      * @param other The other location
      * @return the distance
      */
-    [[nodiscard]] Result<float> distanceSquared(const Location &other) const;
+    [[nodiscard]] float distanceSquared(const Location &other) const;
 
     Location &operator+=(const Location &other)
     {
