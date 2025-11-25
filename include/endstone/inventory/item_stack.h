@@ -46,7 +46,8 @@ public:
         }
     }
 
-    ItemStack(const ItemStack &stack) : type_(stack.getType().getId()), amount_(stack.getAmount()), data_(stack.getData())
+    ItemStack(const ItemStack &stack)
+        : type_(stack.getType().getId()), amount_(stack.getAmount()), data_(stack.getData())
     {
         if (stack.hasItemMeta()) {
             ItemStack::setItemMeta(stack.getItemMeta().get());
@@ -81,15 +82,14 @@ public:
      *
      * @param type New type to set the items in this stack to
      */
-    virtual Result<void> setType(ItemTypeId type)
+    virtual void setType(ItemTypeId type)
     {
         const auto *item_type = ItemType::get(type);
-        ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
+        Preconditions::checkArgument(item_type != nullptr, "Unknown item type: {}", type);
         type_ = type;
         if (meta_ != nullptr) {
             meta_ = detail::getServer().getItemFactory().asMetaFor(meta_.get(), type);
         }
-        return {};
     }
 
     /**
@@ -107,11 +107,11 @@ public:
      *
      * @param amount New amount of items in this stack
      */
-    virtual Result<void> setAmount(const int amount)
+    virtual void setAmount(const int amount)
     {
-        ENDSTONE_CHECKF(amount >= 1 && amount <= 0xff, "Item stack amount must be between 1 to 255, got {}.", amount);
+        Preconditions::checkArgument(amount >= 1 && amount <= 0xff,
+                                     "Item stack amount must be between 1 to 255, got {}.", amount);
         amount_ = amount;
-        return {};
     }
 
     /**

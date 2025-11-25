@@ -30,9 +30,9 @@ protected:
 
 public:
     [[nodiscard]] const ItemType &getType() const override;
-    Result<void> setType(ItemTypeId type) override;
+    void setType(ItemTypeId type) override;
     [[nodiscard]] int getAmount() const override;
-    Result<void> setAmount(int amount) override;
+    void setAmount(int amount) override;
     [[nodiscard]] int getData() const override;
     void setData(int data) override;
     [[nodiscard]] std::string getTranslationKey() const override;
