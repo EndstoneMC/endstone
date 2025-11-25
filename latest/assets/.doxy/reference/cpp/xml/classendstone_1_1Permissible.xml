@@ -254,13 +254,13 @@
         </inbodydescription>
         <location file="include/endstone/permissions/permissible.h" line="96" column="34"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Permissible_1a29dd5407f2c750a9b267f335d47aad29" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
-        <definition>virtual Result&lt; void &gt; endstone::Permissible::removeAttachment</definition>
+      <memberdef kind="function" id="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Permissible::removeAttachment</definition>
         <argsstring>(PermissionAttachment &amp;attachment)=0</argsstring>
         <name>removeAttachment</name>
         <qualifiedname>endstone::Permissible::removeAttachment</qualifiedname>
-        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1ab8a7effdb0ad25b4da6a202093ceb2d0">removeAttachment</reimplementedby>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a281c847b554cf4a5c6f6e22052bd3293">removeAttachment</reimplementedby>
         <param>
           <type><ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;</type>
           <declname>attachment</declname>
@@ -284,7 +284,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permissible.h" line="104" column="20"/>
+        <location file="include/endstone/permissions/permissible.h" line="104" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -412,7 +412,7 @@
       <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>recalculatePermissions</name></member>
-      <member refid="classendstone_1_1Permissible_1a29dd5407f2c750a9b267f335d47aad29" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>removeAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>removeAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::Permissible</scope><name>~Permissible</name></member>
     </listofallmembers>
   </compounddef>

@@ -24,6 +24,7 @@
     <innerdir refid="dir_3a50fadda3c7cdc27c965a478a3f7d27">include/endstone/scheduler</innerdir>
     <innerdir refid="dir_19c52f9ea81a2cf7449c80dcee80d6f0">include/endstone/scoreboard</innerdir>
     <innerdir refid="dir_89b85071337bf933dea6c29b4c6a4410">include/endstone/util</innerdir>
+    <innerfile refid="check_8h">check.h</innerfile>
     <innerfile refid="color__format_8h">color_format.h</innerfile>
     <innerfile refid="detail_8h">detail.h</innerfile>
     <innerfile refid="game__mode_8h">game_mode.h</innerfile>

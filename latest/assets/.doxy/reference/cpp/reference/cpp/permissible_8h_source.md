@@ -57,7 +57,7 @@ public:
 
     virtual PermissionAttachment *addAttachment(Plugin &plugin) = 0;
 
-    virtual Result<void> removeAttachment(PermissionAttachment &attachment) = 0;
+    virtual bool removeAttachment(PermissionAttachment &attachment) = 0;
 
     virtual void recalculatePermissions() = 0;
 

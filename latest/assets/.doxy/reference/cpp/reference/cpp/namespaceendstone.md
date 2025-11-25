@@ -169,6 +169,7 @@ _Represents a button with text and an optional icon._
 | class | [**PluginLoader**](classendstone_1_1PluginLoader.md) <br>_Represents a plugin loader, which handles direct access to specific types of plugins._  |
 | class | [**PluginManager**](classendstone_1_1PluginManager.md) <br>_Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._ |
 | class | [**PotionType**](classendstone_1_1PotionType.md) <br>_All potion types._  |
+| class | [**Preconditions**](classendstone_1_1Preconditions.md) <br> |
 | class | [**Recipe**](classendstone_1_1Recipe.md) <br>_Represents some type of crafting recipe._  |
 | class | [**Registry**](classendstone_1_1Registry.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Abstract registry interface for objects with identifiers._  |
 | class | [**Scheduler**](classendstone_1_1Scheduler.md) <br>_Represents a scheduler that executes various tasks._  |

@@ -2,28 +2,33 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="map__cursor_8h" kind="file" language="C++">
     <compoundname>map_cursor.h</compoundname>
-    <includes refid="result_8h" local="yes">endstone/util/result.h</includes>
+    <includes refid="check_8h" local="yes">endstone/check.h</includes>
     <includedby refid="map__canvas_8h" local="yes">include/endstone/map/map_canvas.h</includedby>
     <incdepgraph>
+      <node id="2">
+        <label>endstone/check.h</label>
+        <link refid="check_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>include/endstone/map/map_cursor.h</label>
         <link refid="map__cursor_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>endstone/util/result.h</label>
-        <link refid="result_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
+      <node id="5">
         <label>fmt/format.h</label>
       </node>
+      <node id="3">
+        <label>source_location</label>
+      </node>
       <node id="4">
-        <label>nonstd/expected.hpp</label>
+        <label>stdexcept</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -275,7 +280,7 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/util/result.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/check.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
 <codeline lineno="23" refid="classendstone_1_1MapCursor" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1MapCursor" kindref="compound">MapCursor</ref><sp/>{</highlight></codeline>
@@ -348,11 +353,11 @@
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y_<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>;</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="146" refid="classendstone_1_1MapCursor_1a0de703b52edf0754d5592be8e581ecee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Result&lt;void&gt;</ref><sp/><ref refid="classendstone_1_1MapCursor_1a0de703b52edf0754d5592be8e581ecee" kindref="member">setDirection</ref>(std::int8_t<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">direction</ref>)</highlight></codeline>
+<codeline lineno="146" refid="classendstone_1_1MapCursor_1a071c1c4a3031390fc42737975f2b6f2a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapCursor_1a071c1c4a3031390fc42737975f2b6f2a" kindref="member">setDirection</ref>(std::int8_t<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">direction</ref>)</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ENDSTONE_CHECKF(<ref refid="classendstone_1_1Identifier" kindref="compound">direction</ref><sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">direction</ref><sp/>&lt;=<sp/>15,<sp/></highlight><highlight class="stringliteral">&quot;direction<sp/>must<sp/>be<sp/>between<sp/>0<sp/>and<sp/>15<sp/>but<sp/>is<sp/>{}&quot;</highlight><highlight class="normal">,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">direction</ref>);</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>direction_<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">direction</ref>;</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{};</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Preconditions::checkArgument(<ref refid="classendstone_1_1Identifier" kindref="compound">direction</ref><sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">direction</ref><sp/>&lt;=<sp/>15,<sp/></highlight><highlight class="stringliteral">&quot;direction<sp/>must<sp/>be<sp/>between<sp/>0<sp/>and<sp/>15<sp/>but<sp/>is<sp/>{}&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">direction</ref>);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>direction_<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">direction</ref>;</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight></codeline>
 <codeline lineno="158" refid="classendstone_1_1MapCursor_1a500aa39db9566ee384d1e532aac1ea8b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapCursor_1a500aa39db9566ee384d1e532aac1ea8b" kindref="member">setType</ref>(<ref refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1" kindref="member">Type</ref><sp/>type)</highlight></codeline>

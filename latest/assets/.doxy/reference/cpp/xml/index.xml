@@ -427,26 +427,26 @@
     <member refid="classendstone_1_1Color_1ab466f486228d182461f45e7edf7df72a" kind="variable"><name>alpha_</name></member>
     <member refid="classendstone_1_1Color_1a17541893a7122663b91e49f77f828475" kind="function"><name>Color</name></member>
     <member refid="classendstone_1_1Color_1a0ba516557cf1a2286149c620d95e00c4" kind="function"><name>getRed</name></member>
-    <member refid="classendstone_1_1Color_1ad40dfce4204a27c04c55b5ea0de9cc73" kind="function"><name>setRed</name></member>
+    <member refid="classendstone_1_1Color_1a7d26234561ee9fddae879d6478eb499a" kind="function"><name>setRed</name></member>
     <member refid="classendstone_1_1Color_1a301d32f39f8cffa44020cc9a62212ea1" kind="function"><name>getGreen</name></member>
-    <member refid="classendstone_1_1Color_1add7da4ae942f6368453e8136b4a08d96" kind="function"><name>setGreen</name></member>
+    <member refid="classendstone_1_1Color_1a36434953290e46e9ddd28c601d5bb2a1" kind="function"><name>setGreen</name></member>
     <member refid="classendstone_1_1Color_1a9ed18343f473ed0a5b69a34040c9c6ce" kind="function"><name>getBlue</name></member>
-    <member refid="classendstone_1_1Color_1af05e9817b91e4f72624a42f42cbe055f" kind="function"><name>setBlue</name></member>
+    <member refid="classendstone_1_1Color_1af81f642c487f131432314f199d87a3f7" kind="function"><name>setBlue</name></member>
     <member refid="classendstone_1_1Color_1a6696f9d17391d894745ddc0c202707b1" kind="function"><name>getAlpha</name></member>
-    <member refid="classendstone_1_1Color_1a90d9dc03bed7fd437a864b5a3a2e597e" kind="function"><name>setAlpha</name></member>
+    <member refid="classendstone_1_1Color_1a46bc2c368b9aa77c3ce4203a5634df09" kind="function"><name>setAlpha</name></member>
     <member refid="classendstone_1_1Color_1aafd4045f6c816b868c35dc494c2713b0" kind="function"><name>asRGBA</name></member>
     <member refid="classendstone_1_1Color_1a1fa78483f74d710d98d3114ce46eab57" kind="function"><name>asABGR</name></member>
     <member refid="classendstone_1_1Color_1ae79fd7ce5bc89837d82073ffdb7fab65" kind="function"><name>asRGB</name></member>
     <member refid="classendstone_1_1Color_1a49132ac0dcd6eb30d0c88b060e2145aa" kind="function"><name>asBGR</name></member>
     <member refid="classendstone_1_1Color_1aba327588593d6e8fd59114d831fb0b60" kind="function"><name>operator==</name></member>
     <member refid="classendstone_1_1Color_1a4748a2087280419ccb2fda334d14c1a7" kind="function"><name>operator!=</name></member>
-    <member refid="classendstone_1_1Color_1aa2f1bbfb5aa8fc939583d9d7c454651b" kind="function"><name>fromRGBA</name></member>
-    <member refid="classendstone_1_1Color_1ab5bdb830e17b94e429c36e519ba5d08f" kind="function"><name>fromRGB</name></member>
-    <member refid="classendstone_1_1Color_1a9e54364845addf34dbc1641265479a50" kind="function"><name>fromBGR</name></member>
-    <member refid="classendstone_1_1Color_1a09bbf9dd83f827588692890fe9d4ebf7" kind="function"><name>fromRGBA</name></member>
-    <member refid="classendstone_1_1Color_1ab2bfc5c270a350790950c0014059098a" kind="function"><name>fromABGR</name></member>
-    <member refid="classendstone_1_1Color_1a9bdf55abfb01aabe84e04b3e72da5ebe" kind="function"><name>fromRGB</name></member>
-    <member refid="classendstone_1_1Color_1a15c60c7b1d2e5c368c9595a83429f1fd" kind="function"><name>fromBGR</name></member>
+    <member refid="classendstone_1_1Color_1ac8226c98f8e9389c3f76dbdc4b25a76b" kind="function"><name>fromRGBA</name></member>
+    <member refid="classendstone_1_1Color_1a3f965d8636ea47e5a62530307c04014c" kind="function"><name>fromRGB</name></member>
+    <member refid="classendstone_1_1Color_1a00ae30f8b06d51e5e8ab5110bfcf1cf4" kind="function"><name>fromBGR</name></member>
+    <member refid="classendstone_1_1Color_1a8628bd7f2a35f86ee5f6094adf709062" kind="function"><name>fromRGBA</name></member>
+    <member refid="classendstone_1_1Color_1a1686c805a67696bc39ed6249afc3aa64" kind="function"><name>fromABGR</name></member>
+    <member refid="classendstone_1_1Color_1a4e2df47fd025c918c1792618126441b8" kind="function"><name>fromRGB</name></member>
+    <member refid="classendstone_1_1Color_1ae402c9d9efd5c7c77b8719332519c210" kind="function"><name>fromBGR</name></member>
   </compound>
   <compound refid="structendstone_1_1ColorFormat" kind="struct"><name>endstone::ColorFormat</name>
     <member refid="structendstone_1_1ColorFormat_1ae88506debc45287385eae171aa061154" kind="variable"><name>Escape</name></member>
@@ -572,7 +572,7 @@
     <member refid="classendstone_1_1CommandSenderWrapper_1a47a9cae3fa4ac1c4cb19a39d3f716a7c" kind="function"><name>hasPermission</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1af0a7a00e451cb930b2f1f61cdf7f2db5" kind="function"><name>addAttachment</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a1c6684fab3293ddb3bc6b4edce8ebdd3" kind="function"><name>addAttachment</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1ab8a7effdb0ad25b4da6a202093ceb2d0" kind="function"><name>removeAttachment</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a281c847b554cf4a5c6f6e22052bd3293" kind="function"><name>removeAttachment</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a02337d177f390cee414977a16b3e07bd" kind="function"><name>recalculatePermissions</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1aeeb41c929000b7f74f64d289d509edba" kind="function"><name>getEffectivePermissions</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a1ad4a226bbf1e73d89839d743585b678" kind="function"><name>asConsole</name></member>
@@ -1267,8 +1267,8 @@
     <member refid="classendstone_1_1MapCanvas_1a1b9ebc993a915ba2eb8998b428a847a5" kind="function"><name>getCursors</name></member>
     <member refid="classendstone_1_1MapCanvas_1abc7a84ff2147636d451c6e9a87294d31" kind="function"><name>setCursors</name></member>
     <member refid="classendstone_1_1MapCanvas_1ab9a56206d8bb2728a78f500059c805ae" kind="function"><name>setPixelColor</name></member>
-    <member refid="classendstone_1_1MapCanvas_1a8d2c16a90382c6616234c9b7420ad317" kind="function"><name>getPixelColor</name></member>
-    <member refid="classendstone_1_1MapCanvas_1ae923292f488d32883b7b73a361284da0" kind="function"><name>getBasePixelColor</name></member>
+    <member refid="classendstone_1_1MapCanvas_1a20b00b40d085f19b92454dd171816c51" kind="function"><name>getPixelColor</name></member>
+    <member refid="classendstone_1_1MapCanvas_1a90d6935c9d5923cadaec20284eefd1ee" kind="function"><name>getBasePixelColor</name></member>
     <member refid="classendstone_1_1MapCanvas_1a938c0200e58bd6e6ad4a47f27a8c6120" kind="function"><name>setPixel</name></member>
     <member refid="classendstone_1_1MapCanvas_1a6974d7ff1ddbebb681a2b49d37534a23" kind="function"><name>getPixel</name></member>
     <member refid="classendstone_1_1MapCanvas_1a3cbade71dec5ec2ead328d6ebebcff97" kind="function"><name>getBasePixel</name></member>
@@ -1314,7 +1314,7 @@
     <member refid="classendstone_1_1MapCursor_1ae9506f2c0559118d4144b5e346a40c14" kind="function"><name>isVisible</name></member>
     <member refid="classendstone_1_1MapCursor_1a29380088da25b4084b81606e6b5d508f" kind="function"><name>setX</name></member>
     <member refid="classendstone_1_1MapCursor_1a484cc2ed2c6de8debc8972f6c8c0988f" kind="function"><name>setY</name></member>
-    <member refid="classendstone_1_1MapCursor_1a0de703b52edf0754d5592be8e581ecee" kind="function"><name>setDirection</name></member>
+    <member refid="classendstone_1_1MapCursor_1a071c1c4a3031390fc42737975f2b6f2a" kind="function"><name>setDirection</name></member>
     <member refid="classendstone_1_1MapCursor_1a500aa39db9566ee384d1e532aac1ea8b" kind="function"><name>setType</name></member>
     <member refid="classendstone_1_1MapCursor_1a5428ea761c7426c0f42597f4b2ebbdb4" kind="function"><name>setVisible</name></member>
     <member refid="classendstone_1_1MapCursor_1a502289582909400265906211368ee2fe" kind="function"><name>getCaption</name></member>
@@ -1478,7 +1478,7 @@
     <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" kind="function"><name>hasPermission</name></member>
     <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" kind="function"><name>addAttachment</name></member>
     <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" kind="function"><name>addAttachment</name></member>
-    <member refid="classendstone_1_1Permissible_1a29dd5407f2c750a9b267f335d47aad29" kind="function"><name>removeAttachment</name></member>
+    <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" kind="function"><name>removeAttachment</name></member>
     <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" kind="function"><name>recalculatePermissions</name></member>
     <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" kind="function"><name>getEffectivePermissions</name></member>
     <member refid="classendstone_1_1Permissible_1a49323c37f310044720678e27513b44dc" kind="function"><name>asCommandSender</name></member>
@@ -2041,6 +2041,9 @@
     <member refid="classendstone_1_1PotionType_1a0595aaf16ef833f606fd5fb1bb0b7a5d" kind="variable"><name>Weaving</name></member>
     <member refid="classendstone_1_1PotionType_1add3039d4d2969b8c684abac9f9c3d9cd" kind="variable"><name>Oozing</name></member>
     <member refid="classendstone_1_1PotionType_1af75f7c3da68f94e50cddb8d1661aac01" kind="variable"><name>Infested</name></member>
+  </compound>
+  <compound refid="classendstone_1_1Preconditions" kind="class"><name>endstone::Preconditions</name>
+    <member refid="classendstone_1_1Preconditions_1afa34146371395492185fbf2f29f9ac6f" kind="function"><name>checkArgument</name></member>
   </compound>
   <compound refid="classendstone_1_1Recipe" kind="class"><name>endstone::Recipe</name>
     <member refid="classendstone_1_1Recipe_1a7c54e5660b82baa721fa86ebb1e55638" kind="function"><name>~Recipe</name></member>
@@ -2664,6 +2667,8 @@
   <compound refid="bar__style_8h" kind="file"><name>bar_style.h</name>
   </compound>
   <compound refid="boss__bar_8h" kind="file"><name>boss_bar.h</name>
+  </compound>
+  <compound refid="check_8h" kind="file"><name>check.h</name>
   </compound>
   <compound refid="color__format_8h" kind="file"><name>color_format.h</name>
   </compound>

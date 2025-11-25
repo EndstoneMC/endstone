@@ -136,9 +136,9 @@
         </inbodydescription>
         <location file="include/endstone/map/map_canvas.h" line="62" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1MapCanvas_1a8d2c16a90382c6616234c9b7420ad317" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
-        <definition>virtual Result&lt; Color &gt; endstone::MapCanvas::getPixelColor</definition>
+      <memberdef kind="function" id="classendstone_1_1MapCanvas_1a20b00b40d085f19b92454dd171816c51" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
+        <definition>virtual Color endstone::MapCanvas::getPixelColor</definition>
         <argsstring>(int x, int y) const =0</argsstring>
         <name>getPixelColor</name>
         <qualifiedname>endstone::MapCanvas::getPixelColor</qualifiedname>
@@ -177,11 +177,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="72" column="21"/>
+        <location file="include/endstone/map/map_canvas.h" line="72" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1MapCanvas_1ae923292f488d32883b7b73a361284da0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> &gt;</type>
-        <definition>virtual Result&lt; Color &gt; endstone::MapCanvas::getBasePixelColor</definition>
+      <memberdef kind="function" id="classendstone_1_1MapCanvas_1a90d6935c9d5923cadaec20284eefd1ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
+        <definition>virtual Color endstone::MapCanvas::getBasePixelColor</definition>
         <argsstring>(int x, int y) const =0</argsstring>
         <name>getBasePixelColor</name>
         <qualifiedname>endstone::MapCanvas::getBasePixelColor</qualifiedname>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="82" column="21"/>
+        <location file="include/endstone/map/map_canvas.h" line="82" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1a938c0200e58bd6e6ad4a47f27a8c6120" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -427,11 +427,11 @@
     <listofallmembers>
       <member refid="classendstone_1_1MapCanvas_1a6baa558e589385df3cdd52691c4628a6" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>drawImage</name></member>
       <member refid="classendstone_1_1MapCanvas_1a3cbade71dec5ec2ead328d6ebebcff97" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getBasePixel</name></member>
-      <member refid="classendstone_1_1MapCanvas_1ae923292f488d32883b7b73a361284da0" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getBasePixelColor</name></member>
+      <member refid="classendstone_1_1MapCanvas_1a90d6935c9d5923cadaec20284eefd1ee" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getBasePixelColor</name></member>
       <member refid="classendstone_1_1MapCanvas_1a1b9ebc993a915ba2eb8998b428a847a5" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getCursors</name></member>
       <member refid="classendstone_1_1MapCanvas_1a49128d914ad9dd72f7c10231ea91b613" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getMapView</name></member>
       <member refid="classendstone_1_1MapCanvas_1a6974d7ff1ddbebb681a2b49d37534a23" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getPixel</name></member>
-      <member refid="classendstone_1_1MapCanvas_1a8d2c16a90382c6616234c9b7420ad317" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getPixelColor</name></member>
+      <member refid="classendstone_1_1MapCanvas_1a20b00b40d085f19b92454dd171816c51" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getPixelColor</name></member>
       <member refid="classendstone_1_1MapCanvas_1abc7a84ff2147636d451c6e9a87294d31" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>setCursors</name></member>
       <member refid="classendstone_1_1MapCanvas_1a938c0200e58bd6e6ad4a47f27a8c6120" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>setPixel</name></member>
       <member refid="classendstone_1_1MapCanvas_1ab9a56206d8bb2728a78f500059c805ae" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>setPixelColor</name></member>

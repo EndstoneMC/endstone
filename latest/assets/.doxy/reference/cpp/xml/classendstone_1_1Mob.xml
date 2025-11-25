@@ -223,7 +223,7 @@
       <member refid="classendstone_1_1Actor_1a5b744893654143e1d8a1f03b1d3cc459" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isValid</name></member>
       <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>recalculatePermissions</name></member>
       <member refid="classendstone_1_1Actor_1a896dcb16d037d3591b0d39480521a193" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>remove</name></member>
-      <member refid="classendstone_1_1Permissible_1a29dd5407f2c750a9b267f335d47aad29" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>removeAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>removeAttachment</name></member>
       <member refid="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>removeScoreboardTag</name></member>
       <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>sendErrorMessage</name></member>

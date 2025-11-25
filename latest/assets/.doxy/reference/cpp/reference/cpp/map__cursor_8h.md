@@ -10,7 +10,7 @@
 
 
 
-* `#include "endstone/util/result.h"`
+* `#include "endstone/check.h"`
 
 
 

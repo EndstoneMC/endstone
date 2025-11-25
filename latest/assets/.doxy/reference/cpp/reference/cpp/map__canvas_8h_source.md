@@ -44,9 +44,9 @@ public:
 
     virtual void setPixelColor(int x, int y, Color color) = 0;
 
-    [[nodiscard]] virtual Result<Color> getPixelColor(int x, int y) const = 0;
+    [[nodiscard]] virtual Color getPixelColor(int x, int y) const = 0;
 
-    [[nodiscard]] virtual Result<Color> getBasePixelColor(int x, int y) const = 0;
+    [[nodiscard]] virtual Color getBasePixelColor(int x, int y) const = 0;
 
     virtual void setPixel(int x, int y, std::uint32_t color) = 0;
 

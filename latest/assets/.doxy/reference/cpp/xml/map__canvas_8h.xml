@@ -7,14 +7,24 @@
     <includes refid="image_8h" local="yes">endstone/util/image.h</includes>
     <includedby refid="map__renderer_8h" local="yes">include/endstone/map/map_renderer.h</includedby>
     <incdepgraph>
+      <node id="3">
+        <label>endstone/check.h</label>
+        <link refid="check_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>include/endstone/map/map_canvas.h</label>
         <link refid="map__canvas_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
         <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -23,35 +33,41 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="6">
+      <node id="7">
         <label>endstone/util/color.h</label>
         <link refid="color_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>endstone/util/image.h</label>
-        <link refid="image_8h_source"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>endstone/util/result.h</label>
-        <link refid="result_8h_source"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>fmt/format.h</label>
-      </node>
-      <node id="5">
-        <label>nonstd/expected.hpp</label>
       </node>
       <node id="8">
+        <label>endstone/util/image.h</label>
+        <link refid="image_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>endstone/util/result.h</label>
+        <link refid="result_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="11">
+        <label>nonstd/expected.hpp</label>
+      </node>
+      <node id="4">
+        <label>source_location</label>
+      </node>
+      <node id="5">
+        <label>stdexcept</label>
+      </node>
+      <node id="9">
         <label>string</label>
       </node>
     </incdepgraph>
@@ -318,9 +334,9 @@
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
 <codeline lineno="62" refid="classendstone_1_1MapCanvas_1ab9a56206d8bb2728a78f500059c805ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapCanvas_1ab9a56206d8bb2728a78f500059c805ae" kindref="member">setPixelColor</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>,<sp/><ref refid="classendstone_1_1Color" kindref="compound">Color</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72" refid="classendstone_1_1MapCanvas_1a8d2c16a90382c6616234c9b7420ad317" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Result&lt;Color&gt;</ref><sp/><ref refid="classendstone_1_1MapCanvas_1a8d2c16a90382c6616234c9b7420ad317" kindref="member">getPixelColor</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="72" refid="classendstone_1_1MapCanvas_1a20b00b40d085f19b92454dd171816c51" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Color" kindref="compound">Color</ref><sp/><ref refid="classendstone_1_1MapCanvas_1a20b00b40d085f19b92454dd171816c51" kindref="member">getPixelColor</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82" refid="classendstone_1_1MapCanvas_1ae923292f488d32883b7b73a361284da0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Result&lt;Color&gt;</ref><sp/><ref refid="classendstone_1_1MapCanvas_1ae923292f488d32883b7b73a361284da0" kindref="member">getBasePixelColor</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="82" refid="classendstone_1_1MapCanvas_1a90d6935c9d5923cadaec20284eefd1ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Color" kindref="compound">Color</ref><sp/><ref refid="classendstone_1_1MapCanvas_1a90d6935c9d5923cadaec20284eefd1ee" kindref="member">getBasePixelColor</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"></highlight></codeline>
 <codeline lineno="91" refid="classendstone_1_1MapCanvas_1a938c0200e58bd6e6ad4a47f27a8c6120" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1MapCanvas_1a938c0200e58bd6e6ad4a47f27a8c6120" kindref="member">setPixel</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>,<sp/>std::uint32_t<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>

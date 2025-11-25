@@ -138,6 +138,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PluginLoader**](classendstone_1_1PluginLoader.md) _Represents a plugin loader, which handles direct access to specific types of plugins._     
     * **class** [**PluginManager**](classendstone_1_1PluginManager.md) _Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._    
     * **class** [**PotionType**](classendstone_1_1PotionType.md) _All potion types._     
+    * **class** [**Preconditions**](classendstone_1_1Preconditions.md)     
     * **class** [**Recipe**](classendstone_1_1Recipe.md) _Represents some type of crafting recipe._     
     * **class** [**Registry**](classendstone_1_1Registry.md) _Abstract registry interface for objects with identifiers._     
     * **class** [**Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._     

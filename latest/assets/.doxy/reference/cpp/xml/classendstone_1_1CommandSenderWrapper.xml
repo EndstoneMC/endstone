@@ -388,13 +388,13 @@
         </inbodydescription>
         <location file="include/endstone/command/command_sender_wrapper.h" line="73" column="26" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="73" bodyend="76"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1ab8a7effdb0ad25b4da6a202093ceb2d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
-        <definition>Result&lt; void &gt; endstone::CommandSenderWrapper::removeAttachment</definition>
+      <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a281c847b554cf4a5c6f6e22052bd3293" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::CommandSenderWrapper::removeAttachment</definition>
         <argsstring>(PermissionAttachment &amp;attachment) override</argsstring>
         <name>removeAttachment</name>
         <qualifiedname>endstone::CommandSenderWrapper::removeAttachment</qualifiedname>
-        <reimplements refid="classendstone_1_1Permissible_1a29dd5407f2c750a9b267f335d47aad29">removeAttachment</reimplements>
+        <reimplements refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47">removeAttachment</reimplements>
         <param>
           <type><ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;</type>
           <declname>attachment</declname>
@@ -418,7 +418,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_sender_wrapper.h" line="78" column="12" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="78" bodyend="81"/>
+        <location file="include/endstone/command/command_sender_wrapper.h" line="78" column="10" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="78" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandSenderWrapper_1a02337d177f390cee414977a16b3e07bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -633,7 +633,7 @@
       <member refid="classendstone_1_1CommandSenderWrapper_1a90e1149cfbcb7b6e36a73c4172f84dc5" prot="private" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>on_error_</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1ab9681dee5565195c3f25dcb2e5f25d43" prot="private" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>on_message_</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a02337d177f390cee414977a16b3e07bd" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>recalculatePermissions</name></member>
-      <member refid="classendstone_1_1CommandSenderWrapper_1ab8a7effdb0ad25b4da6a202093ceb2d0" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>removeAttachment</name></member>
+      <member refid="classendstone_1_1CommandSenderWrapper_1a281c847b554cf4a5c6f6e22052bd3293" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>removeAttachment</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a41ad90af25dd6fb6255edf5ff2c099b5" prot="private" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>sender_</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1aeb7bc0ed994ee4aacd4834f5c97c5bdf" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual" ambiguityscope="endstone::CommandSender::"><scope>endstone::CommandSenderWrapper</scope><name>sendErrorMessage</name></member>

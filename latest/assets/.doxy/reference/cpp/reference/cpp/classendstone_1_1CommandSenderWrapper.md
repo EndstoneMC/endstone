@@ -114,7 +114,7 @@ Inherits the following classes: [endstone::CommandSender](classendstone_1_1Comma
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isPermissionSet**](#function-ispermissionset-12) (std::string name) override const<br>_Checks if this object contains an override for the specified permission, by fully qualified name._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isPermissionSet**](#function-ispermissionset-22) ([**const**](classendstone_1_1Identifier.md) [**Permission**](classendstone_1_1Permission.md) & perm) override const<br>_Checks if this object contains an override for the specified_ [_**Permission**_](classendstone_1_1Permission.md) _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**recalculatePermissions**](#function-recalculatepermissions) () override<br>_Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**removeAttachment**](#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) override<br>_Removes the given_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _from this object._ |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**removeAttachment**](#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) override<br>_Removes the given_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _from this object._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendErrorMessage**](#function-senderrormessage) ([**const**](classendstone_1_1Identifier.md) Message & message) override const<br>_Sends this sender a error message._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendMessage**](#function-sendmessage) ([**const**](classendstone_1_1Identifier.md) Message & message) override const<br>_Sends this sender a message._  |
 
@@ -154,7 +154,7 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isPermissionSet**](classendstone_1_1Permissible.md#function-ispermissionset-12) (std::string name) const = 0<br>_Checks if this object contains an override for the specified permission, by fully qualified name._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isPermissionSet**](classendstone_1_1Permissible.md#function-ispermissionset-22) ([**const**](classendstone_1_1Identifier.md) [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br>_Checks if this object contains an override for the specified_ [_**Permission**_](classendstone_1_1Permission.md) _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**recalculatePermissions**](classendstone_1_1Permissible.md#function-recalculatepermissions) () = 0<br>_Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**removeAttachment**](classendstone_1_1Permissible.md#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br>_Removes the given_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _from this object._ |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**removeAttachment**](classendstone_1_1Permissible.md#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br>_Removes the given_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _from this object._ |
 | virtual  | [**~Permissible**](classendstone_1_1Permissible.md#function-permissible) () = default<br> |
 
 
@@ -729,7 +729,7 @@ Implements [*endstone::Permissible::recalculatePermissions*](classendstone_1_1Pe
 
 _Removes the given_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _from this object._
 ```C++
-inline virtual Result< void > endstone::CommandSenderWrapper::removeAttachment (
+inline virtual bool endstone::CommandSenderWrapper::removeAttachment (
     PermissionAttachment & attachment
 ) override
 ```

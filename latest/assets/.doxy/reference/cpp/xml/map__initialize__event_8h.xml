@@ -15,6 +15,16 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
+      <node id="30">
+        <label>endstone/check.h</label>
+        <link refid="check_8h_source"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
       <node id="7">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
@@ -82,15 +92,15 @@
         <link refid="map__canvas_8h_source"/>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="29">
         <label>endstone/map/map_cursor.h</label>
         <link refid="map__cursor_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="27">
@@ -145,18 +155,18 @@
         <label>endstone/permissions/permission_level.h</label>
         <link refid="permission__level_8h_source"/>
       </node>
-      <node id="30">
+      <node id="32">
         <label>endstone/util/color.h</label>
         <link refid="color_8h_source"/>
-        <childnode refid="19" relation="include">
-        </childnode>
       </node>
-      <node id="31">
+      <node id="33">
         <label>endstone/util/image.h</label>
         <link refid="image_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
       <node id="19">
@@ -194,6 +204,9 @@
       </node>
       <node id="23">
         <label>numbers</label>
+      </node>
+      <node id="31">
+        <label>source_location</label>
       </node>
       <node id="4">
         <label>stdexcept</label>

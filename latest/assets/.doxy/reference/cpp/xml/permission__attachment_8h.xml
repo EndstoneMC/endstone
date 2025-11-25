@@ -243,7 +243,7 @@
 <codeline lineno="136"><highlight class="normal"></highlight></codeline>
 <codeline lineno="142" refid="classendstone_1_1PermissionAttachment_1ae05dac79b46d01cbb836267045cac38e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PermissionAttachment_1ae05dac79b46d01cbb836267045cac38e" kindref="member">remove</ref>()</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>permissible_.<ref refid="classendstone_1_1Permissible_1a29dd5407f2c750a9b267f335d47aad29" kindref="member">removeAttachment</ref>(*this).has_value();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>permissible_.<ref refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" kindref="member">removeAttachment</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
 <codeline lineno="147"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>

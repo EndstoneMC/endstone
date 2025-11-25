@@ -382,6 +382,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PotionType**](classendstone_1_1PotionType.md)
 ([**endstone**](namespaceendstone.md))
+* [**Preconditions**](classendstone_1_1Preconditions.md)
+([**endstone**](namespaceendstone.md))
 
 
 ## r

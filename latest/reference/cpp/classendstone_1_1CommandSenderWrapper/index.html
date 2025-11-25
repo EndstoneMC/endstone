@@ -3021,7 +3021,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-recalculatepermissions"><strong>recalculatePermissions</strong></a> () override<br><em>Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a> &gt;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
 <td style="text-align: left;"><a href="#function-removeattachment"><strong>removeAttachment</strong></a> (<a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &amp; attachment) override<br><em>Removes the given</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>from this object.</em></td>
 </tr>
 <tr>
@@ -3141,7 +3141,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-recalculatepermissions"><strong>recalculatePermissions</strong></a> () = 0<br><em>Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a> &gt;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-removeattachment"><strong>removeAttachment</strong></a> (<a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &amp; attachment) = 0<br><em>Removes the given</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>from this object.</em></td>
 </tr>
 <tr>
@@ -3340,7 +3340,7 @@ For latest updates join the chat on
 
 <h3 id="function-removeattachment">function removeAttachment<a class="headerlink" href="#function-removeattachment" title="Permanent link">&para;</a></h3>
 <p><em>Removes the given</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>from this object.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">removeAttachment</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSenderWrapper</span><span class="o">::</span><span class="n">removeAttachment</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">attachment</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div></p>

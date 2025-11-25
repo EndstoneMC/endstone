@@ -425,8 +425,6 @@
       <node id="63">
         <label>endstone/util/color.h</label>
         <link refid="color_8h_source"/>
-        <childnode refid="24" relation="include">
-        </childnode>
       </node>
       <node id="62">
         <label>endstone/util/image.h</label>
@@ -434,6 +432,8 @@
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="24">

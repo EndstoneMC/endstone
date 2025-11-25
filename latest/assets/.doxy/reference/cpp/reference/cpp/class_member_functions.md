@@ -101,6 +101,7 @@
 * **critical** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **closeForm** ([**endstone::Player**](classendstone_1_1Player.md))
 * **clearPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **checkArgument** ([**endstone::Preconditions**](classendstone_1_1Preconditions.md))
 * **cancelTask** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **cancelTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **clearSlot** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))

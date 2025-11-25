@@ -27,6 +27,7 @@
 #include <string>
 
 #include "endstone/util/color.h"
+#include "endstone/util/result.h"
 
 namespace endstone {
 class Image {

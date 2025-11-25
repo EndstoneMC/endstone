@@ -24,7 +24,7 @@
 
 #pragma once
 
-#include "endstone/util/result.h"
+#include "endstone/check.h"
 
 namespace endstone {
 class MapCursor {
@@ -97,11 +97,11 @@ public:
         y_ = y;
     }
 
-    Result<void> setDirection(std::int8_t direction)
+    void setDirection(std::int8_t direction)
     {
-        ENDSTONE_CHECKF(direction >= 0 && direction <= 15, "direction must be between 0 and 15 but is {}", direction);
+        Preconditions::checkArgument(direction >= 0 && direction <= 15, "direction must be between 0 and 15 but is {}",
+                                     direction);
         direction_ = direction;
-        return {};
     }
 
     void setType(Type type)
