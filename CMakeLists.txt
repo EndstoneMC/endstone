@@ -10,22 +10,13 @@ if (WIN32)
         message(FATAL_ERROR "Endstone: MSVC is required on Windows.")
     endif ()
 elseif (UNIX)
-    if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-        # Clang specific settings
-    elseif (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-        # GNU specific settings
-    else ()
-        message(FATAL_ERROR "Endstone: Clang or GCC is required on Linux.")
+    if (NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+        message(FATAL_ERROR "Endstone: Clang is required on Linux.")
     endif ()
+    # Force use libc++ for ABI compatibility with BDS
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -fPIC" CACHE STRING "" FORCE)
 else ()
-    message(FATAL_ERROR "Endstone: ${CMAKE_SYSTEM_NAME} (${CMAKE_SYSTEM_PROCESSOR}) is not supported.")
-endif ()
-
-# Optimize settings
-if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2" CACHE STRING "" FORCE)  # 02 Optimization
-elseif (CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-    add_compile_options(/O2)  # MSVC 02 Optimization
+    message(FATAL_ERROR "Endstone: ${CMAKE_SYSTEM_NAME} (${CMAKE_SYSTEM_PROCESSOR}) is not supported")
 endif ()
 
 # Options
@@ -35,7 +26,6 @@ option(ENDSTONE_SEPARATE_DEBUG_INFO "Separate debug info into .dbg files on Linu
 
 # Endstone header-only API
 add_subdirectory(include)
-
 if (NOT CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
     return()
 endif ()
@@ -54,7 +44,6 @@ if (NOT BUILD_TESTING STREQUAL OFF)
     if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "(GNU|Clang)")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g --coverage")
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g --coverage")
-        message(STATUS "Code coverage is enabled.")
     endif ()
 
     find_package(GTest REQUIRED)
