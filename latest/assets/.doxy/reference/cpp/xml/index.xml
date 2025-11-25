@@ -358,7 +358,7 @@
     <member refid="classendstone_1_1BossBar_1a7620a5bbf2fe2e260ffd981ed812b233" kind="function"><name>addFlag</name></member>
     <member refid="classendstone_1_1BossBar_1a1300817a31f861f6ec11094ab4d39a40" kind="function"><name>removeFlag</name></member>
     <member refid="classendstone_1_1BossBar_1a26fd77e91731b0d93a1053251c551cd0" kind="function"><name>getProgress</name></member>
-    <member refid="classendstone_1_1BossBar_1af9af318e8026186174ae0b729ab964f7" kind="function"><name>setProgress</name></member>
+    <member refid="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" kind="function"><name>setProgress</name></member>
     <member refid="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" kind="function"><name>isVisible</name></member>
     <member refid="classendstone_1_1BossBar_1ac037275aadff9ea427432063ffeca138" kind="function"><name>setVisible</name></member>
     <member refid="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" kind="function"><name>addPlayer</name></member>

@@ -137,8 +137,6 @@
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
       </node>
       <node id="13">
         <label>endstone/command/command.h</label>
