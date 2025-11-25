@@ -28,9 +28,9 @@ class EndstoneScore : public Score {
 public:
     EndstoneScore(std::unique_ptr<EndstoneObjective> objective, ScoreEntry entry);
     [[nodiscard]] ScoreEntry getEntry() const override;
-    [[nodiscard]] Result<int> getValue() const override;
-    Result<void> setValue(int score) override;
-    [[nodiscard]] Result<bool> isScoreSet() const override;
+    [[nodiscard]] int getValue() const override;
+    void setValue(int score) override;
+    [[nodiscard]] bool isScoreSet() const override;
     [[nodiscard]] Objective &getObjective() const override;
     [[nodiscard]] Scoreboard &getScoreboard() const override;
 
