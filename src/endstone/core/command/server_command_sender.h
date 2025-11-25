@@ -69,7 +69,7 @@ public:
         return perm_->addAttachment(plugin);
     }
 
-    Result<void> removeAttachment(PermissionAttachment &attachment) override
+    bool removeAttachment(PermissionAttachment &attachment) override
     {
         return perm_->removeAttachment(attachment);
     }

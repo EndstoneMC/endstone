@@ -105,7 +105,7 @@ PermissionAttachment *EndstonePlayer::addAttachment(Plugin &plugin)
     return perm_->addAttachment(plugin);
 }
 
-Result<void> EndstonePlayer::removeAttachment(PermissionAttachment &attachment)
+bool EndstonePlayer::removeAttachment(PermissionAttachment &attachment)
 {
     return perm_->removeAttachment(attachment);
 }

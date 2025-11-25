@@ -123,22 +123,19 @@ PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin)
     return result;
 }
 
-Result<void> PermissibleBase::removeAttachment(PermissionAttachment &attachment)
+bool PermissibleBase::removeAttachment(PermissionAttachment &attachment)
 {
     const auto it =
         std::ranges::find_if(attachments_, [&attachment](const auto &item) { return item.get() == &attachment; });
-
     if (it != attachments_.end()) {
-        if (auto callback = it->get()->getRemovalCallback()) {
+        if (const auto callback = it->get()->getRemovalCallback()) {
             callback(attachment);
         }
-
         attachments_.erase(it);
         recalculatePermissions();
-        return {};
+        return true;
     }
-
-    return nonstd::make_unexpected("Given attachment is not part of Permissible object.");
+    return false;
 }
 
 void PermissibleBase::recalculatePermissions()

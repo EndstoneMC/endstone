@@ -44,7 +44,7 @@ public:
     [[nodiscard]] bool hasPermission(const Permission &perm) const override;
     PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
     PermissionAttachment *addAttachment(Plugin &plugin) override;
-    Result<void> removeAttachment(PermissionAttachment &attachment) override;
+    bool removeAttachment(PermissionAttachment &attachment) override;
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
 

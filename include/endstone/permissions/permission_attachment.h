@@ -141,7 +141,7 @@ public:
      */
     bool remove()
     {
-        return permissible_.removeAttachment(*this).has_value();
+        return permissible_.removeAttachment(*this);
     }
 
 private:
