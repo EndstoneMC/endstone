@@ -40,7 +40,7 @@ public:
      *
      * @param health New health represented from 0 to max
      */
-    [[nodiscard]] virtual Result<void> setHealth(int health) const = 0;
+    virtual void setHealth(int health) const = 0;
 
     /**
      * @brief Gets the maximum health this entity has.
@@ -58,6 +58,6 @@ public:
      *
      * @param health amount of health to set the maximum to
      */
-    [[nodiscard]] virtual Result<void> setMaxHealth(int health) const = 0;
+    virtual void setMaxHealth(int health) const = 0;
 };
 }  // namespace endstone
