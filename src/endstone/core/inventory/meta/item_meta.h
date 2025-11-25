@@ -324,7 +324,7 @@ private:
             auto lvl = enchant_tag.getShort("lvl") & 0xffff;
             const auto *enchant = Enchant::getEnchant(static_cast<Enchant::Type>(id));
             if (enchant) {
-                enchantments[EnchantmentId(enchant->getStringId().getString())] = lvl;
+                enchantments[enchant->getStringId().getString()] = lvl;
             }
         });
         return enchantments;
@@ -340,7 +340,7 @@ private:
         auto list = std::make_unique<::ListTag>();
         for (const auto &[id, lvl] : enchantments) {
             auto subtag = std::make_unique<::CompoundTag>();
-            const auto *enchant = Enchant::getEnchantFromName(std::string(id));
+            const auto *enchant = Enchant::getEnchantFromName(std::string(EnchantmentId(id).getKey()));
             if (!enchant) {
                 continue;
             }
