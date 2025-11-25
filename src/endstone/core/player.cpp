@@ -298,13 +298,12 @@ float EndstonePlayer::getExpProgress() const
     return getHandle().getLevelProgress();
 }
 
-Result<void> EndstonePlayer::setExpProgress(float progress)
+void EndstonePlayer::setExpProgress(float progress)
 {
-    ENDSTONE_CHECKF(progress >= 0.0 && progress <= 1.0,  //
-                    "Experience progress must be between 0.0 and 1.0 ({})", progress);
+    Preconditions::checkArgument(progress >= 0.0 && progress <= 1.0,
+                                 "Experience progress must be between 0.0 and 1.0 ({})", progress);
     auto mutable_attr = getHandle().getMutableAttribute("minecraft:player.experience");
     mutable_attr->setCurrentValue(progress);
-    return {};
 }
 
 int EndstonePlayer::getExpLevel() const
@@ -312,11 +311,10 @@ int EndstonePlayer::getExpLevel() const
     return getHandle().getPlayerLevel();
 }
 
-Result<void> EndstonePlayer::setExpLevel(int level)
+void EndstonePlayer::setExpLevel(int level)
 {
-    ENDSTONE_CHECKF(level >= 0, "Experience level must not be negative ({})", level);
+    Preconditions::checkArgument(level >= 0, "Experience level must not be negative ({})", level);
     giveExpLevels(level - getExpLevel());
-    return {};
 }
 
 int EndstonePlayer::getTotalExp() const
@@ -347,15 +345,14 @@ bool EndstonePlayer::isFlying() const
     return getHandle().isFlying();
 }
 
-Result<void> EndstonePlayer::setFlying(bool value)
+void EndstonePlayer::setFlying(bool value)
 {
     if (!getAllowFlight()) {
-        ENDSTONE_CHECKF(!value, "Player {} is not allowed to fly.", getName());
+        Preconditions::checkArgument(!value, "Player {} is not allowed to fly (check getAllowFlight())", getName());
     }
 
     getHandle().getAbilities().setAbility(AbilitiesIndex::Flying, value);
     updateAbilities();
-    return {};
 }
 
 float EndstonePlayer::getFlySpeed() const

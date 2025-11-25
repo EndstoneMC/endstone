@@ -79,14 +79,14 @@ public:
     void giveExp(int amount) override;
     void giveExpLevels(int amount) override;
     [[nodiscard]] float getExpProgress() const override;
-    Result<void> setExpProgress(float progress) override;
+    void setExpProgress(float progress) override;
     [[nodiscard]] int getExpLevel() const override;
-    Result<void> setExpLevel(int level) override;
+    void setExpLevel(int level) override;
     [[nodiscard]] int getTotalExp() const override;
     [[nodiscard]] bool getAllowFlight() const override;
     void setAllowFlight(bool flight) override;
     [[nodiscard]] bool isFlying() const override;
-    Result<void> setFlying(bool value) override;
+    void setFlying(bool value) override;
     [[nodiscard]] float getFlySpeed() const override;
     void setFlySpeed(float value) const override;
     [[nodiscard]] float getWalkSpeed() const override;

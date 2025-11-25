@@ -437,11 +437,10 @@ int EndstoneServer::getMaxPlayers() const
     return getServer().getMinecraft()->getServerNetworkHandler()->getMaxNumPlayers();
 }
 
-Result<void> EndstoneServer::setMaxPlayers(int max_players)
+void EndstoneServer::setMaxPlayers(int max_players)
 {
-    ENDSTONE_CHECK(max_players >= 0, "Max number of players must be >= 0");
+    Preconditions::checkArgument(max_players >= 0, "Max number of players must be >= 0");
     getServer().getMinecraft()->getServerNetworkHandler()->setMaxNumPlayers(max_players);
-    return {};
 }
 
 Player *EndstoneServer::getPlayer(UUID id) const
@@ -609,25 +608,20 @@ std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarCol
     return std::make_unique<EndstoneBossBar>(std::move(title), color, style, flags);
 }
 
-Result<std::unique_ptr<BlockData>> EndstoneServer::createBlockData(std::string type) const
+std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type) const
 {
     return createBlockData(type, {});
 }
 
-Result<std::unique_ptr<BlockData>> EndstoneServer::createBlockData(std::string type, BlockStates block_states) const
+std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type, BlockStates block_states) const
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
-        std::visit(overloaded{[&](auto &&arg) {
-                       states.emplace(state.first, arg);
-                   }},
-                   state.second);
+        std::visit(overloaded{[&](auto &&arg) { states.emplace(state.first, arg); }}, state.second);
     }
-
     const auto block_descriptor = ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(type, states);
     const auto *block = block_descriptor.tryGetBlockNoLogging();
-    ENDSTONE_CHECKF(block, "Block type {} cannot be found in the registry.", type);
-
+    Preconditions::checkArgument(block != nullptr, "Block type {} cannot be found in the registry.", type);
     return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(*block));
 }
 
