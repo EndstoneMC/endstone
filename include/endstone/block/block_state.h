@@ -52,7 +52,7 @@ public:
      *
      * @param type Block type to change this block state to
      */
-    virtual Result<void> setType(std::string type) = 0;
+    virtual void setType(std::string type) = 0;
 
     /**
      * @brief Gets the data for this block state.
@@ -66,7 +66,7 @@ public:
      *
      * @param data New block specific data
      */
-    virtual Result<void> setData(const BlockData& data) = 0;
+    virtual void setData(const BlockData& data) = 0;
 
     /**
      * @brief Gets the dimension which contains the block represented by this block state.
