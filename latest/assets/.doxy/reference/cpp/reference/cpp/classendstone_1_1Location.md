@@ -53,8 +53,8 @@ _Represents a 3-dimensional location in a dimension within a level._
 | Type | Name |
 | ---: | :--- |
 |   | [**Location**](#function-location) ([**Dimension**](classendstone_1_1Dimension.md) & dimension, [**T**](classendstone_1_1Identifier.md) x, [**T**](classendstone_1_1Identifier.md) y, [**T**](classendstone_1_1Identifier.md) z, [**const**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) pitch=0.0, [**const**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) yaw=0.0) <br> |
-|  Result&lt; [**float**](classendstone_1_1Identifier.md) &gt; | [**distance**](#function-distance) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) const<br>_Get the distance between this location and another._  |
-|  Result&lt; [**float**](classendstone_1_1Identifier.md) &gt; | [**distanceSquared**](#function-distancesquared) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) const<br>_Get the squared distance between this location and another._  |
+|  [**float**](classendstone_1_1Identifier.md) | [**distance**](#function-distance) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) const<br>_Get the distance between this location and another._  |
+|  [**float**](classendstone_1_1Identifier.md) | [**distanceSquared**](#function-distancesquared) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) const<br>_Get the squared distance between this location and another._  |
 |  std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlock**](#function-getblock) () const<br>_Gets the block at the represented location._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getBlockX**](#function-getblockx) () const<br>_Gets the floored value of the X component, indicating the block that this location is contained with._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getBlockY**](#function-getblocky) () const<br>_Gets the floored value of the Y component, indicating the block that this location is contained with._  |
@@ -148,7 +148,7 @@ inline endstone::Location::Location (
 
 _Get the distance between this location and another._ 
 ```C++
-inline Result< float > endstone::Location::distance (
+inline float endstone::Location::distance (
     const  Location & other
 ) const
 ```
@@ -182,7 +182,7 @@ the distance
 
 _Get the squared distance between this location and another._ 
 ```C++
-inline Result< float > endstone::Location::distanceSquared (
+inline float endstone::Location::distanceSquared (
     const  Location & other
 ) const
 ```

@@ -76,7 +76,7 @@ Inherited by the following classes: [endstone::PlayerInventory](classendstone_1_
 | virtual [**void**](classendstone_1_1Identifier.md) | [**remove**](#function-remove-22) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Removes all stacks in the inventory matching the given stack._  |
 | virtual std::unordered\_map&lt; [**int**](classendstone_1_1Identifier.md), [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; | [**removeItem**](#function-removeitem-12) (std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; items) = 0<br>_Removes the given ItemStacks from the inventory._  |
 |  std::unordered\_map&lt; [**int**](classendstone_1_1Identifier.md), [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; | [**removeItem**](#function-removeitem-22) ([**Args**](classendstone_1_1Identifier.md) &&... items) <br>_Removes the given ItemStacks from the inventory._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setContents**](#function-setcontents) (std::vector&lt; [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; items) = 0<br>_Completely replaces the inventory's contents. Removes all existing contents and replaces it with the ItemStacks given in the array._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setContents**](#function-setcontents) (std::vector&lt; [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; items) = 0<br>_Completely replaces the inventory's contents. Removes all existing contents and replaces it with the ItemStacks given in the array._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setItem**](#function-setitem) ([**int**](classendstone_1_1Identifier.md) index, [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) \* item) = 0<br>_Stores the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _at the given index of the inventory._ |
 | virtual  | [**~Inventory**](#function-inventory) () = default<br> |
 
@@ -910,7 +910,7 @@ A map containing items that couldn't be removed.
 
 _Completely replaces the inventory's contents. Removes all existing contents and replaces it with the ItemStacks given in the array._ 
 ```C++
-virtual Result< void > endstone::Inventory::setContents (
+virtual void endstone::Inventory::setContents (
     std::vector< const  ItemStack * > items
 ) = 0
 ```

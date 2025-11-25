@@ -12,8 +12,6 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/map/map_cursor.h</label>
@@ -21,13 +19,10 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="4">
         <label>fmt/format.h</label>
       </node>
       <node id="3">
-        <label>source_location</label>
-      </node>
-      <node id="4">
         <label>stdexcept</label>
       </node>
     </incdepgraph>

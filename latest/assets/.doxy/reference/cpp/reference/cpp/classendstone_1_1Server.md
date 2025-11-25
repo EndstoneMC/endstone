@@ -64,8 +64,8 @@ _Represents a server implementation._
 | virtual [**void**](classendstone_1_1Identifier.md) | [**broadcast**](#function-broadcast) ([**const**](classendstone_1_1Identifier.md) Message & message, [**const**](classendstone_1_1Identifier.md) std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-12) ([**const**](classendstone_1_1Identifier.md) Message & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-22) ([**const**](classendstone_1_1Identifier.md) fmt::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
-| virtual Result&lt; std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; &gt; | [**createBlockData**](#function-createblockdata-12) (std::string type) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._ |
-| virtual Result&lt; std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; &gt; | [**createBlockData**](#function-createblockdata-22) (std::string type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
+| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) (std::string type) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._ |
+| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) (std::string type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, BarColor color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, BarColor color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style, std::vector&lt; [**BarFlag**](namespaceendstone.md#enum-barflag) &gt; flags) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
 | virtual [**MapView**](classendstone_1_1MapView.md) & | [**createMap**](#function-createmap) ([**const**](classendstone_1_1Identifier.md) [**Dimension**](classendstone_1_1Dimension.md) & dimension) const = 0<br>_Create a new map with an automatically assigned ID._  |
@@ -107,7 +107,7 @@ _Represents a server implementation._
 |  [**Server**](classendstone_1_1Server.md) & | [**operator=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Server**](classendstone_1_1Server.md) &) = delete<br> |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**reload**](#function-reload) () = 0<br>_Reloads the server configuration, functions, scripts and plugins._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**reloadData**](#function-reloaddata) () = 0<br>_Reload only the Minecraft data for the server._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setMaxPlayers**](#function-setmaxplayers) ([**int**](classendstone_1_1Identifier.md) max\_players) = 0<br>_Set the maximum amount of players allowed to be logged in at once._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setMaxPlayers**](#function-setmaxplayers) ([**int**](classendstone_1_1Identifier.md) max\_players) = 0<br>_Set the maximum amount of players allowed to be logged in at once._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**shutdown**](#function-shutdown) () = 0<br>_Shutdowns the server, stopping everything._  |
 | virtual  | [**~Server**](#function-server) () = default<br> |
 
@@ -315,7 +315,7 @@ inline void endstone::Server::broadcastMessage (
 
 _Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._
 ```C++
-virtual Result< std::unique_ptr< BlockData > > endstone::Server::createBlockData (
+virtual std::unique_ptr< BlockData > endstone::Server::createBlockData (
     std::string type
 ) const = 0
 ```
@@ -349,7 +349,7 @@ new data instance
 
 _Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._
 ```C++
-virtual Result< std::unique_ptr< BlockData > > endstone::Server::createBlockData (
+virtual std::unique_ptr< BlockData > endstone::Server::createBlockData (
     std::string type,
     BlockStates block_states
 ) const = 0
@@ -1472,7 +1472,7 @@ This includes functions and script files from all behaviour packs.
 
 _Set the maximum amount of players allowed to be logged in at once._ 
 ```C++
-virtual Result< void > endstone::Server::setMaxPlayers (
+virtual void endstone::Server::setMaxPlayers (
     int max_players
 ) = 0
 ```

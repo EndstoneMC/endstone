@@ -39,11 +39,11 @@ public:
 
     [[nodiscard]] virtual std::string getType() const = 0;
 
-    virtual Result<void> setType(std::string type) = 0;
+    virtual void setType(std::string type) = 0;
 
     [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
 
-    virtual Result<void> setData(const BlockData& data) = 0;
+    virtual void setData(const BlockData& data) = 0;
 
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
 

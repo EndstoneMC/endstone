@@ -3404,11 +3404,11 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-broadcastmessage-22"><strong>broadcastMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> fmt::format_string&lt; Args... &gt; format, <a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) const<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; std::unique_ptr&lt; <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-createblockdata-12"><strong>createBlockData</strong></a> (std::string type) const = 0<br><em>Creates a new</em> <a href="../classendstone_1_1BlockData/"><em><strong>BlockData</strong></em></a> <em>instance for the specified block type, with all properties initialized to defaults.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; std::unique_ptr&lt; <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-createblockdata-22"><strong>createBlockData</strong></a> (std::string type, BlockStates block_states) const = 0<br><em>Creates a new</em> <a href="../classendstone_1_1BlockData/"><em><strong>BlockData</strong></em></a> <em>instance for the specified block type, with all properties initialized to defaults, except for those provided in data.</em></td>
 </tr>
 <tr>
@@ -3576,7 +3576,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-reloaddata"><strong>reloadData</strong></a> () = 0<br><em>Reload only the Minecraft data for the server.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a> &gt;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="#function-setmaxplayers"><strong>setMaxPlayers</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> max_players) = 0<br><em>Set the maximum amount of players allowed to be logged in at once.</em></td>
 </tr>
 <tr>
@@ -3666,7 +3666,7 @@ For latest updates join the chat on
 
 <h3 id="function-createblockdata-12">function createBlockData [&frac12;]<a class="headerlink" href="#function-createblockdata-12" title="Permanent link">&para;</a></h3>
 <p><em>Creates a new</em> <a href="../classendstone_1_1BlockData/"><em><strong>BlockData</strong></em></a> <em>instance for the specified block type, with all properties initialized to defaults.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">createBlockData</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">createBlockData</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">type</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
@@ -3680,7 +3680,7 @@ For latest updates join the chat on
 
 <h3 id="function-createblockdata-22">function createBlockData [2/2]<a class="headerlink" href="#function-createblockdata-22" title="Permanent link">&para;</a></h3>
 <p><em>Creates a new</em> <a href="../classendstone_1_1BlockData/"><em><strong>BlockData</strong></em></a> <em>instance for the specified block type, with all properties initialized to defaults, except for those provided in data.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">createBlockData</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">createBlockData</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">type</span><span class="p">,</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">BlockStates</span><span class="w"> </span><span class="n">block_states</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
@@ -4081,7 +4081,7 @@ For latest updates join the chat on
 
 <h3 id="function-setmaxplayers">function setMaxPlayers<a class="headerlink" href="#function-setmaxplayers" title="Permanent link">&para;</a></h3>
 <p><em>Set the maximum amount of players allowed to be logged in at once.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">setMaxPlayers</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">setMaxPlayers</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max_players</span>
 </span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>

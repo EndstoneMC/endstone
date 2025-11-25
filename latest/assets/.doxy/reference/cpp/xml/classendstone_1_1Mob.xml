@@ -42,9 +42,9 @@
         </inbodydescription>
         <location file="include/endstone/actor/mob.h" line="36" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Mob_1a4b3c43aab95c17aa638a4c2ad510bfa4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
-        <definition>virtual Result&lt; void &gt; endstone::Mob::setHealth</definition>
+      <memberdef kind="function" id="classendstone_1_1Mob_1addd7c205b763c7a9a6b1bf8ec1c811fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Mob::setHealth</definition>
         <argsstring>(int health) const =0</argsstring>
         <name>setHealth</name>
         <qualifiedname>endstone::Mob::setHealth</qualifiedname>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="43" column="21"/>
+        <location file="include/endstone/actor/mob.h" line="43" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Mob_1a4efbe682a6adc265c113e1ef77b752fb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -89,9 +89,9 @@
         </inbodydescription>
         <location file="include/endstone/actor/mob.h" line="50" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Mob_1a90d33d382e5fabde14feea1092ad5ff0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
-        <definition>virtual Result&lt; void &gt; endstone::Mob::setMaxHealth</definition>
+      <memberdef kind="function" id="classendstone_1_1Mob_1ae54b4e6eb8b5509bec9c330dfc5b46be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Mob::setMaxHealth</definition>
         <argsstring>(int health) const =0</argsstring>
         <name>setMaxHealth</name>
         <qualifiedname>endstone::Mob::setMaxHealth</qualifiedname>
@@ -119,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/mob.h" line="61" column="21"/>
+        <location file="include/endstone/actor/mob.h" line="61" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -229,8 +229,8 @@
       <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>sendMessage</name></member>
-      <member refid="classendstone_1_1Mob_1a4b3c43aab95c17aa638a4c2ad510bfa4" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setHealth</name></member>
-      <member refid="classendstone_1_1Mob_1a90d33d382e5fabde14feea1092ad5ff0" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setMaxHealth</name></member>
+      <member refid="classendstone_1_1Mob_1addd7c205b763c7a9a6b1bf8ec1c811fd" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setHealth</name></member>
+      <member refid="classendstone_1_1Mob_1ae54b4e6eb8b5509bec9c330dfc5b46be" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setMaxHealth</name></member>
       <member refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setNameTag</name></member>
       <member refid="classendstone_1_1Actor_1a6c7dc2e5a9b99db8b000e84e4eba5822" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setNameTagAlwaysVisible</name></member>
       <member refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setNameTagVisible</name></member>

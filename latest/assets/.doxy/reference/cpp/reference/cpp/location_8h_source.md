@@ -163,14 +163,12 @@ public:
         return (x_ * x_) + (y_ * y_) + (z_ * z_);
     }
 
-    [[nodiscard]] Result<float> distance(const Location &other) const
+    [[nodiscard]] float distance(const Location &other) const
     {
-        auto distance_squared = distanceSquared(other);
-        ENDSTONE_CHECK_RESULT(distance_squared);
-        return std::sqrt(*distance_squared);
+        return std::sqrt(distanceSquared(other));
     }
 
-    [[nodiscard]] Result<float> distanceSquared(const Location &other) const;
+    [[nodiscard]] float distanceSquared(const Location &other) const;
 
     Location &operator+=(const Location &other)
     {

@@ -307,9 +307,9 @@
         </inbodydescription>
         <location file="include/endstone/inventory/inventory.h" line="130" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Inventory_1a44f969fa5f94ddd9c44a94ea7b1643d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
-        <definition>virtual Result&lt; void &gt; endstone::Inventory::setContents</definition>
+      <memberdef kind="function" id="classendstone_1_1Inventory_1a3a263621705395100b8e74c080c959e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Inventory::setContents</definition>
         <argsstring>(std::vector&lt; const ItemStack * &gt; items)=0</argsstring>
         <name>setContents</name>
         <qualifiedname>endstone::Inventory::setContents</qualifiedname>
@@ -334,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="138" column="20"/>
+        <location file="include/endstone/inventory/inventory.h" line="138" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1a621dd957d66ba16baf072ccc5e3ac55a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -842,7 +842,7 @@ The returned map contains entries where, the key is the slot index, and the valu
       <member refid="classendstone_1_1Inventory_1af3402b278d0775d48a56593bf49ee52e" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>remove</name></member>
       <member refid="classendstone_1_1Inventory_1a7cc5b3f5922baff4b878398a21ded738" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>removeItem</name></member>
       <member refid="classendstone_1_1Inventory_1a2f4af3f93e53605d1c1540084305fdf4" prot="public" virt="non-virtual"><scope>endstone::Inventory</scope><name>removeItem</name></member>
-      <member refid="classendstone_1_1Inventory_1a44f969fa5f94ddd9c44a94ea7b1643d8" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>setContents</name></member>
+      <member refid="classendstone_1_1Inventory_1a3a263621705395100b8e74c080c959e3" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>setContents</name></member>
       <member refid="classendstone_1_1Inventory_1ad1d02b72943819764794ebc3ccb66e4c" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>setItem</name></member>
       <member refid="classendstone_1_1Inventory_1ae4195380f173c841a5df5ddea12087ae" prot="public" virt="virtual"><scope>endstone::Inventory</scope><name>~Inventory</name></member>
     </listofallmembers>

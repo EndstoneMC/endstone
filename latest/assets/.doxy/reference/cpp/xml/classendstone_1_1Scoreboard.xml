@@ -19,9 +19,9 @@
         </inbodydescription>
         <location file="include/endstone/scoreboard/scoreboard.h" line="32" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Scoreboard_1a976b553199b897c81f0a4bf94c1b6d87" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &gt; &gt;</type>
-        <definition>virtual Result&lt; std::unique_ptr&lt; Objective &gt; &gt; endstone::Scoreboard::addObjective</definition>
+      <memberdef kind="function" id="classendstone_1_1Scoreboard_1ae2be847c936676d3e44864f906cb4a4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; Objective &gt; endstone::Scoreboard::addObjective</definition>
         <argsstring>(std::string name, Criteria::Type criteria)=0</argsstring>
         <name>addObjective</name>
         <qualifiedname>endstone::Scoreboard::addObjective</qualifiedname>
@@ -60,11 +60,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/scoreboard.h" line="41" column="20"/>
+        <location file="include/endstone/scoreboard/scoreboard.h" line="41" column="29"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Scoreboard_1ab92d0159661bb6de8a205e4103ffd6df" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &gt; &gt;</type>
-        <definition>virtual Result&lt; std::unique_ptr&lt; Objective &gt; &gt; endstone::Scoreboard::addObjective</definition>
+      <memberdef kind="function" id="classendstone_1_1Scoreboard_1a574c29b514a425226121cb60cdf3f5be" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; Objective &gt; endstone::Scoreboard::addObjective</definition>
         <argsstring>(std::string name, Criteria::Type criteria, std::string display_name)=0</argsstring>
         <name>addObjective</name>
         <qualifiedname>endstone::Scoreboard::addObjective</qualifiedname>
@@ -115,11 +115,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/scoreboard.h" line="51" column="20"/>
+        <location file="include/endstone/scoreboard/scoreboard.h" line="51" column="29"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Scoreboard_1ac5629c3d5278cce109f3ed84264d0b8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &gt; &gt;</type>
-        <definition>virtual Result&lt; std::unique_ptr&lt; Objective &gt; &gt; endstone::Scoreboard::addObjective</definition>
+      <memberdef kind="function" id="classendstone_1_1Scoreboard_1a30cffc1b8602681175d5ca17579cf78b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; Objective &gt; endstone::Scoreboard::addObjective</definition>
         <argsstring>(std::string name, Criteria::Type criteria, std::string display_name, RenderType render_type)=0</argsstring>
         <name>addObjective</name>
         <qualifiedname>endstone::Scoreboard::addObjective</qualifiedname>
@@ -182,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/scoreboard.h" line="63" column="20"/>
+        <location file="include/endstone/scoreboard/scoreboard.h" line="63" column="29"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scoreboard_1a357630b4e626f6f2d9901760321afcf4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &gt;</type>
@@ -432,9 +432,9 @@
     </collaborationgraph>
     <location file="include/endstone/scoreboard/scoreboard.h" line="30" column="1" bodyfile="include/endstone/scoreboard/scoreboard.h" bodystart="30" bodyend="126"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Scoreboard_1a976b553199b897c81f0a4bf94c1b6d87" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>addObjective</name></member>
-      <member refid="classendstone_1_1Scoreboard_1ab92d0159661bb6de8a205e4103ffd6df" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>addObjective</name></member>
-      <member refid="classendstone_1_1Scoreboard_1ac5629c3d5278cce109f3ed84264d0b8b" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>addObjective</name></member>
+      <member refid="classendstone_1_1Scoreboard_1ae2be847c936676d3e44864f906cb4a4a" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>addObjective</name></member>
+      <member refid="classendstone_1_1Scoreboard_1a574c29b514a425226121cb60cdf3f5be" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>addObjective</name></member>
+      <member refid="classendstone_1_1Scoreboard_1a30cffc1b8602681175d5ca17579cf78b" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>addObjective</name></member>
       <member refid="classendstone_1_1Scoreboard_1ab2486b647e947f8f0a87350fda36a786" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>clearSlot</name></member>
       <member refid="classendstone_1_1Scoreboard_1a22601ed4eb51f01df4d0548a0c4f872a" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>getEntries</name></member>
       <member refid="classendstone_1_1Scoreboard_1a357630b4e626f6f2d9901760321afcf4" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>getObjective</name></member>

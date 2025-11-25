@@ -10,7 +10,6 @@
 
 
 
-* `#include <source_location>`
 * `#include <stdexcept>`
 * `#include <fmt/format.h>`
 

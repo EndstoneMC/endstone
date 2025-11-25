@@ -53,9 +53,9 @@ Inherits the following classes: std::enable_shared_from_this< Scoreboard >
 
 | Type | Name |
 | ---: | :--- |
-| virtual Result&lt; std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; &gt; | [**addObjective**](#function-addobjective-13) (std::string name, [**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
-| virtual Result&lt; std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; &gt; | [**addObjective**](#function-addobjective-23) (std::string name, [**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria, std::string display\_name) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
-| virtual Result&lt; std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; &gt; | [**addObjective**](#function-addobjective-33) (std::string name, [**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria, std::string display\_name, [**RenderType**](namespaceendstone.md#enum-rendertype) render\_type) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; | [**addObjective**](#function-addobjective-13) (std::string name, [**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; | [**addObjective**](#function-addobjective-23) (std::string name, [**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria, std::string display\_name) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; | [**addObjective**](#function-addobjective-33) (std::string name, [**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria, std::string display\_name, [**RenderType**](namespaceendstone.md#enum-rendertype) render\_type) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**clearSlot**](#function-clearslot) ([**DisplaySlot**](namespaceendstone.md#enum-displayslot) slot) = 0<br>_Clears any objective in the specified slot._  |
 | virtual std::vector&lt; [**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) &gt; | [**getEntries**](#function-getentries) () const = 0<br>_Gets all entries tracked by this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual std::unique\_ptr&lt; [**Objective**](classendstone_1_1Objective.md) &gt; | [**getObjective**](#function-getobjective-12) (std::string name) const = 0<br>_Gets an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _by name._ |
@@ -102,7 +102,7 @@ Inherits the following classes: std::enable_shared_from_this< Scoreboard >
 
 _Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
 ```C++
-virtual Result< std::unique_ptr< Objective > > endstone::Scoreboard::addObjective (
+virtual std::unique_ptr< Objective > endstone::Scoreboard::addObjective (
     std::string name,
     Criteria::Type criteria
 ) = 0
@@ -138,7 +138,7 @@ A reference to the newly registered [**Objective**](classendstone_1_1Objective.m
 
 _Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
 ```C++
-virtual Result< std::unique_ptr< Objective > > endstone::Scoreboard::addObjective (
+virtual std::unique_ptr< Objective > endstone::Scoreboard::addObjective (
     std::string name,
     Criteria::Type criteria,
     std::string display_name
@@ -176,7 +176,7 @@ A reference to the newly registered [**Objective**](classendstone_1_1Objective.m
 
 _Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
 ```C++
-virtual Result< std::unique_ptr< Objective > > endstone::Scoreboard::addObjective (
+virtual std::unique_ptr< Objective > endstone::Scoreboard::addObjective (
     std::string name,
     Criteria::Type criteria,
     std::string display_name,

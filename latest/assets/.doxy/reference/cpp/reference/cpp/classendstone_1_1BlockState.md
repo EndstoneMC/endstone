@@ -60,8 +60,8 @@ _Represents a captured state of a block, which will not update automatically._ [
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block state._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block state._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block state._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setData**](#function-setdata) ([**const**](classendstone_1_1Identifier.md) [**BlockData**](classendstone_1_1BlockData.md) & data) = 0<br>_Sets the data for this block state._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setType**](#function-settype) (std::string type) = 0<br>_Sets the type of this block state._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setData**](#function-setdata) ([**const**](classendstone_1_1Identifier.md) [**BlockData**](classendstone_1_1BlockData.md) & data) = 0<br>_Sets the data for this block state._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype) (std::string type) = 0<br>_Sets the type of this block state._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**update**](#function-update-13) () = 0<br>_Attempts to update the block represented by this state, setting it to yhe new values as defined by this state._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**update**](#function-update-23) ([**bool**](classendstone_1_1Identifier.md) force) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**update**](#function-update-33) ([**bool**](classendstone_1_1Identifier.md) force, [**bool**](classendstone_1_1Identifier.md) apply\_physics) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
@@ -310,7 +310,7 @@ z-coordinate
 
 _Sets the data for this block state._ 
 ```C++
-virtual Result< void > endstone::BlockState::setData (
+virtual void endstone::BlockState::setData (
     const  BlockData & data
 ) = 0
 ```
@@ -337,7 +337,7 @@ virtual Result< void > endstone::BlockState::setData (
 
 _Sets the type of this block state._ 
 ```C++
-virtual Result< void > endstone::BlockState::setType (
+virtual void endstone::BlockState::setType (
     std::string type
 ) = 0
 ```

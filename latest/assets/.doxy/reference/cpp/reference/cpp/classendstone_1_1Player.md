@@ -191,10 +191,10 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendTitle**](#function-sendtitle-22) (std::string title, std::string subtitle, [**int**](classendstone_1_1Identifier.md) fade\_in, [**int**](classendstone_1_1Identifier.md) stay, [**int**](classendstone_1_1Identifier.md) fade\_out) const = 0<br>_Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendToast**](#function-sendtoast) (std::string title, std::string content) const = 0<br>_Sends this player a toast notification._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setAllowFlight**](#function-setallowflight) ([**bool**](classendstone_1_1Identifier.md) flight) = 0<br>_Sets if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setExpLevel**](#function-setexplevel) ([**int**](classendstone_1_1Identifier.md) level) = 0<br>_Sets the players current experience level._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setExpProgress**](#function-setexpprogress) ([**float**](classendstone_1_1Identifier.md) progress) = 0<br>_Sets the players current experience progress towards the next level._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setExpLevel**](#function-setexplevel) ([**int**](classendstone_1_1Identifier.md) level) = 0<br>_Sets the players current experience level._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setExpProgress**](#function-setexpprogress) ([**float**](classendstone_1_1Identifier.md) progress) = 0<br>_Sets the players current experience progress towards the next level._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setFlySpeed**](#function-setflyspeed) ([**float**](classendstone_1_1Identifier.md) value) const = 0<br> |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setFlying**](#function-setflying) ([**bool**](classendstone_1_1Identifier.md) value) = 0<br>_Makes this player start or stop flying._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setFlying**](#function-setflying) ([**bool**](classendstone_1_1Identifier.md) value) = 0<br>_Makes this player start or stop flying._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setGameMode**](#function-setgamemode) ([**GameMode**](namespaceendstone.md#enum-gamemode) mode) = 0<br>_Sets this player's current GameMode._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setOp**](#function-setop) ([**bool**](classendstone_1_1Identifier.md) value) = 0<br>_Sets the operator status of this player._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setScoreboard**](#function-setscoreboard) ([**Scoreboard**](classendstone_1_1Scoreboard.md) & scoreboard) = 0<br> |
@@ -220,8 +220,8 @@ See [endstone::Mob](classendstone_1_1Mob.md)
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getHealth**](classendstone_1_1Mob.md#function-gethealth) () const = 0<br>_Gets the entity's health from 0 to its max possible value, where 0 is dead._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxHealth**](classendstone_1_1Mob.md#function-getmaxhealth) () const = 0<br>_Gets the maximum health this entity has._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isGliding**](classendstone_1_1Mob.md#function-isgliding) () const = 0<br>_Checks to see if an actor is gliding, such as using an Elytra._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setHealth**](classendstone_1_1Mob.md#function-sethealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br> |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setMaxHealth**](classendstone_1_1Mob.md#function-setmaxhealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br>_Sets the maximum health this entity can have._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setHealth**](classendstone_1_1Mob.md#function-sethealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br> |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setMaxHealth**](classendstone_1_1Mob.md#function-setmaxhealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br>_Sets the maximum health this entity can have._  |
 
 
 ## Public Functions inherited from endstone::Actor
@@ -1470,7 +1470,7 @@ virtual void endstone::Player::setAllowFlight (
 
 _Sets the players current experience level._ 
 ```C++
-virtual Result< void > endstone::Player::setExpLevel (
+virtual void endstone::Player::setExpLevel (
     int level
 ) = 0
 ```
@@ -1497,7 +1497,7 @@ virtual Result< void > endstone::Player::setExpLevel (
 
 _Sets the players current experience progress towards the next level._ 
 ```C++
-virtual Result< void > endstone::Player::setExpProgress (
+virtual void endstone::Player::setExpProgress (
     float progress
 ) = 0
 ```
@@ -1556,7 +1556,7 @@ Sets the speed at which a client will fly.
 
 _Makes this player start or stop flying._ 
 ```C++
-virtual Result< void > endstone::Player::setFlying (
+virtual void endstone::Player::setFlying (
     bool value
 ) = 0
 ```

@@ -309,9 +309,9 @@
         </inbodydescription>
         <location file="include/endstone/inventory/player_inventory.h" line="123" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a0d7b635b4d5b4711a0c3f7bdd3f2e4e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
-        <definition>virtual Result&lt; void &gt; endstone::PlayerInventory::setHeldItemSlot</definition>
+      <memberdef kind="function" id="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::PlayerInventory::setHeldItemSlot</definition>
         <argsstring>(int slot)=0</argsstring>
         <name>setHeldItemSlot</name>
         <qualifiedname>endstone::PlayerInventory::setHeldItemSlot</qualifiedname>
@@ -337,7 +337,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/player_inventory.h" line="132" column="20"/>
+        <location file="include/endstone/inventory/player_inventory.h" line="132" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -403,8 +403,8 @@
       <member refid="classendstone_1_1Inventory_1a2f4af3f93e53605d1c1540084305fdf4" prot="public" virt="non-virtual"><scope>endstone::PlayerInventory</scope><name>removeItem</name></member>
       <member refid="classendstone_1_1PlayerInventory_1a3d2a8c9ccdfe6e6d668a5c64305c0d44" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setBoots</name></member>
       <member refid="classendstone_1_1PlayerInventory_1a50825fd18b6f9ec27b6043081edd39e7" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setChestplate</name></member>
-      <member refid="classendstone_1_1Inventory_1a44f969fa5f94ddd9c44a94ea7b1643d8" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setContents</name></member>
-      <member refid="classendstone_1_1PlayerInventory_1a0d7b635b4d5b4711a0c3f7bdd3f2e4e8" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setHeldItemSlot</name></member>
+      <member refid="classendstone_1_1Inventory_1a3a263621705395100b8e74c080c959e3" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setContents</name></member>
+      <member refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setHeldItemSlot</name></member>
       <member refid="classendstone_1_1PlayerInventory_1a811b329ef42ce228d737e4228aade626" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setHelmet</name></member>
       <member refid="classendstone_1_1Inventory_1ad1d02b72943819764794ebc3ccb66e4c" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setItem</name></member>
       <member refid="classendstone_1_1PlayerInventory_1a13913ac8928251b4078bc8b7599db44f" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>setItemInMainHand</name></member>

@@ -37,9 +37,9 @@
         </inbodydescription>
         <location file="include/endstone/block/block.h" line="48" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Block_1afc6493c7fae9703684a17ebcc6c92a32" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
-        <definition>virtual Result&lt; void &gt; endstone::Block::setType</definition>
+      <memberdef kind="function" id="classendstone_1_1Block_1a14bfc4111312b3f9355f0d0f56205242" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Block::setType</definition>
         <argsstring>(std::string type)=0</argsstring>
         <name>setType</name>
         <qualifiedname>endstone::Block::setType</qualifiedname>
@@ -64,11 +64,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block.h" line="55" column="20"/>
+        <location file="include/endstone/block/block.h" line="55" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Block_1a6235d565c41138ea5ed584250d84617f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
-        <definition>virtual Result&lt; void &gt; endstone::Block::setType</definition>
+      <memberdef kind="function" id="classendstone_1_1Block_1a2dc49fca3aceebd374fefa0c1744a9fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Block::setType</definition>
         <argsstring>(std::string type, bool apply_physics)=0</argsstring>
         <name>setType</name>
         <qualifiedname>endstone::Block::setType</qualifiedname>
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block.h" line="63" column="20"/>
+        <location file="include/endstone/block/block.h" line="63" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Block_1a5293fd07d6c423a5a7132944eec13282" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
@@ -125,9 +125,9 @@
         </inbodydescription>
         <location file="include/endstone/block/block.h" line="70" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Block_1a7f24c60e47c3bcd49f0b1122b80b7b47" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
-        <definition>virtual Result&lt; void &gt; endstone::Block::setData</definition>
+      <memberdef kind="function" id="classendstone_1_1Block_1a6748189136ea7daf91f4eb02c8b9cbea" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Block::setData</definition>
         <argsstring>(const BlockData &amp;data)=0</argsstring>
         <name>setData</name>
         <qualifiedname>endstone::Block::setData</qualifiedname>
@@ -152,11 +152,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block.h" line="77" column="20"/>
+        <location file="include/endstone/block/block.h" line="77" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Block_1a4dbd6ae72829e456925cc5a86d93ea42" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>Result&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> &gt;</type>
-        <definition>virtual Result&lt; void &gt; endstone::Block::setData</definition>
+      <memberdef kind="function" id="classendstone_1_1Block_1af96ad69e1b31b403559e95535a1619cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Block::setData</definition>
         <argsstring>(const BlockData &amp;data, bool apply_physics)=0</argsstring>
         <name>setData</name>
         <qualifiedname>endstone::Block::setData</qualifiedname>
@@ -193,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block.h" line="85" column="20"/>
+        <location file="include/endstone/block/block.h" line="85" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Block_1ade7ede2f68266c797efbb8b5a237304b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
@@ -473,10 +473,10 @@
       <member refid="classendstone_1_1Block_1a1ec1fc7c6fe1aab63db232b0f0684c76" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getX</name></member>
       <member refid="classendstone_1_1Block_1a390b31ef485c4b5176842bd3a59b01bc" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getY</name></member>
       <member refid="classendstone_1_1Block_1a9509b72c86339e30a4b50567f6d5279c" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getZ</name></member>
-      <member refid="classendstone_1_1Block_1a7f24c60e47c3bcd49f0b1122b80b7b47" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>setData</name></member>
-      <member refid="classendstone_1_1Block_1a4dbd6ae72829e456925cc5a86d93ea42" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>setData</name></member>
-      <member refid="classendstone_1_1Block_1afc6493c7fae9703684a17ebcc6c92a32" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>setType</name></member>
-      <member refid="classendstone_1_1Block_1a6235d565c41138ea5ed584250d84617f" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>setType</name></member>
+      <member refid="classendstone_1_1Block_1a6748189136ea7daf91f4eb02c8b9cbea" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>setData</name></member>
+      <member refid="classendstone_1_1Block_1af96ad69e1b31b403559e95535a1619cc" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>setData</name></member>
+      <member refid="classendstone_1_1Block_1a14bfc4111312b3f9355f0d0f56205242" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>setType</name></member>
+      <member refid="classendstone_1_1Block_1a2dc49fca3aceebd374fefa0c1744a9fd" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>setType</name></member>
       <member refid="classendstone_1_1Block_1a8a7ea0b990c4c610f75cf53bd5c6647b" prot="public" virt="virtual"><scope>endstone::Block</scope><name>~Block</name></member>
     </listofallmembers>
   </compounddef>

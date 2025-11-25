@@ -24,7 +24,6 @@
 
 #pragma once
 
-#include <source_location>
 #include <stdexcept>
 
 #include <fmt/format.h>
@@ -38,6 +37,15 @@ public:
         if (!condition) {
             auto message = fmt::format(format, std::forward<Args>(args)...);
             throw std::invalid_argument(message);
+        }
+    }
+
+    template <typename... Args>
+    static void checkState(bool condition, fmt::format_string<Args...> format, Args &&...args)
+    {
+        if (!condition) {
+            auto message = fmt::format(format, std::forward<Args>(args)...);
+            throw std::runtime_error(message);
         }
     }
 };

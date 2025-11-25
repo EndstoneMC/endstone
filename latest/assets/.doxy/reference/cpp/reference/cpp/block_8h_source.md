@@ -44,15 +44,15 @@ public:
 
     [[nodiscard]] virtual std::string getType() const = 0;
 
-    virtual Result<void> setType(std::string type) = 0;
+    virtual void setType(std::string type) = 0;
 
-    virtual Result<void> setType(std::string type, bool apply_physics) = 0;
+    virtual void setType(std::string type, bool apply_physics) = 0;
 
     [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
 
-    virtual Result<void> setData(const BlockData &data) = 0;
+    virtual void setData(const BlockData &data) = 0;
 
-    virtual Result<void> setData(const BlockData &data, bool apply_physics) = 0;
+    virtual void setData(const BlockData &data, bool apply_physics) = 0;
 
     virtual std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
 

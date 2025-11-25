@@ -61,7 +61,7 @@ public:
 
     [[nodiscard]] virtual std::vector<std::unique_ptr<ItemStack>> getContents() const = 0;
 
-    virtual Result<void> setContents(std::vector<const ItemStack *> items) = 0;
+    virtual void setContents(std::vector<const ItemStack *> items) = 0;
 
     [[nodiscard]] virtual bool contains(const std::string &type) const = 0;
 

@@ -64,10 +64,10 @@ _Represents a block._ [More...](#detailed-description)
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setData**](#function-setdata-12) ([**const**](classendstone_1_1Identifier.md) [**BlockData**](classendstone_1_1BlockData.md) & data) = 0<br>_Sets the complete data for this block._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setData**](#function-setdata-22) ([**const**](classendstone_1_1Identifier.md) [**BlockData**](classendstone_1_1BlockData.md) & data, [**bool**](classendstone_1_1Identifier.md) apply\_physics) = 0<br>_Sets the complete data for this block._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setType**](#function-settype-12) (std::string type) = 0<br>_Sets the type of this block._  |
-| virtual Result&lt; [**void**](classendstone_1_1Identifier.md) &gt; | [**setType**](#function-settype-22) (std::string type, [**bool**](classendstone_1_1Identifier.md) apply\_physics) = 0<br>_Sets the type of this block._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setData**](#function-setdata-12) ([**const**](classendstone_1_1Identifier.md) [**BlockData**](classendstone_1_1BlockData.md) & data) = 0<br>_Sets the complete data for this block._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setData**](#function-setdata-22) ([**const**](classendstone_1_1Identifier.md) [**BlockData**](classendstone_1_1BlockData.md) & data, [**bool**](classendstone_1_1Identifier.md) apply\_physics) = 0<br>_Sets the complete data for this block._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype-12) (std::string type) = 0<br>_Sets the type of this block._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype-22) (std::string type, [**bool**](classendstone_1_1Identifier.md) apply\_physics) = 0<br>_Sets the type of this block._  |
 | virtual  | [**~Block**](#function-block) () = default<br> |
 
 
@@ -455,7 +455,7 @@ x-coordinate
 
 _Sets the complete data for this block._ 
 ```C++
-virtual Result< void > endstone::Block::setData (
+virtual void endstone::Block::setData (
     const  BlockData & data
 ) = 0
 ```
@@ -482,7 +482,7 @@ virtual Result< void > endstone::Block::setData (
 
 _Sets the complete data for this block._ 
 ```C++
-virtual Result< void > endstone::Block::setData (
+virtual void endstone::Block::setData (
     const  BlockData & data,
     bool apply_physics
 ) = 0
@@ -511,7 +511,7 @@ virtual Result< void > endstone::Block::setData (
 
 _Sets the type of this block._ 
 ```C++
-virtual Result< void > endstone::Block::setType (
+virtual void endstone::Block::setType (
     std::string type
 ) = 0
 ```
@@ -538,7 +538,7 @@ virtual Result< void > endstone::Block::setType (
 
 _Sets the type of this block._ 
 ```C++
-virtual Result< void > endstone::Block::setType (
+virtual void endstone::Block::setType (
     std::string type,
     bool apply_physics
 ) = 0
