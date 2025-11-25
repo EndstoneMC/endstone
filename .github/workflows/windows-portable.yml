@@ -49,7 +49,7 @@ jobs:
         uses: pypa/cibuildwheel@v3.3.0
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          CIBW_BUILD: cp312-win_amd64
+          CIBW_BUILD: cp313-win_amd64
           CIBW_BUILD_VERBOSITY: 1
 
       - name: Install Winpython
