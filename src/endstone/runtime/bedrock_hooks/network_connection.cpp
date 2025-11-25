@@ -21,6 +21,16 @@
 #include "endstone/event/server/packet_receive_event.h"
 #include "endstone/runtime/hook.h"
 
+bool NetworkConnection::isChannelPaused(uint32_t channel) const
+{
+    return paused_channels_.test(channel);
+}
+
+void NetworkConnection::setChannelPaused(uint32_t channel, bool paused)
+{
+    paused_channels_.set(channel, paused);
+}
+
 NetworkPeer::DataStatus NetworkConnection::receivePacket(std::string &receive_buffer,
                                                          const NetworkPeer::PacketRecvTimepointPtr &timepoint_ptr)
 {
@@ -29,10 +39,6 @@ NetworkPeer::DataStatus NetworkConnection::receivePacket(std::string &receive_bu
     auto &network = server.getServer().getNetwork();
 
     while (true) {
-        if (disconnected_) {
-            return NetworkPeer::DataStatus::NoData;
-        }
-
         const auto status =
             ENDSTONE_HOOK_CALL_ORIGINAL(&NetworkConnection::receivePacket, this, receive_buffer, timepoint_ptr);
         if (status != NetworkPeer::DataStatus::HasData) {
@@ -93,4 +99,9 @@ NetworkPeer::DataStatus NetworkConnection::receivePacket(std::string &receive_bu
 
         packet->handle(id, *network_handler, packet);
     }
+}
+
+bool NetworkConnection::shouldCloseConnection() const
+{
+    return should_close_connection_;
 }

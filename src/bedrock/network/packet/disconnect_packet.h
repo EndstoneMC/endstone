@@ -14,23 +14,20 @@
 
 #pragma once
 
-#include "bedrock/world/item/item.h"
-#include "endstone/inventory/item_type.h"
-#include "endstone/inventory/meta/item_meta.h"
+#include "bedrock/network/packet.h"
 
-namespace endstone::core {
-
-class EndstoneItemType : public ItemType {
+class DisconnectPacket : public Packet {
 public:
-    explicit EndstoneItemType(const ::Item &item);
-    [[nodiscard]] ItemTypeId getId() const override;
-    [[nodiscard]] std::string getTranslationKey() const override;
-    [[nodiscard]] std::string getTranslationKey(int data) const override;
-    [[nodiscard]] int getMaxStackSize() const override;
-    [[nodiscard]] int getMaxDurability() const override;
+    bool skip_message;
+    std::string message;
+    std::optional<std::string> filtered_message;
+    Connection::DisconnectFailReason reason;
+    DisconnectPacket(Connection::DisconnectFailReason reason, const std::string &message,
+                     std::optional<std::string> filtered_message, bool skip_message);
+    [[nodiscard]] MinecraftPacketIds getId() const override;
+    [[nodiscard]] std::string getName() const override;
+    void write(BinaryStream &stream) const override;
 
 private:
-    const ::Item &item_;
+    Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override;
 };
-
-}  // namespace endstone::core

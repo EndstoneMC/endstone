@@ -33,6 +33,11 @@ void AttributeInstanceForwarder::setDefaultValueOnly(float new_default_value)
     instance->setDefaultValueOnly(new_default_value, context);
 }
 
+void AttributeInstanceForwarder::setMaxValue(float max)
+{
+    instance->setMaxValue(max, context);
+}
+
 void AttributeInstanceForwarder::setCurrentValue(float value)
 {
     instance->setCurrentValue(value, context);

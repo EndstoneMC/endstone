@@ -74,11 +74,13 @@ void init_attribute(py::module_ &m)
         .finalize();
 
     py::native_enum<AttributeModifier::Operation>(modifier, "Operation", "enum.Enum", "Operation to be applied.")
-        .value("ADD_NUMBER", AttributeModifier::Operation::AddNumber,
-               "Adds (or subtracts) the specified amount to the base value.")
-        .value("ADD_SCALAR", AttributeModifier::Operation::AddScalar, "Adds this scalar of amount to the base value.")
-        .value("MULTIPLY_SCALAR_1", AttributeModifier::Operation::MultiplyScalar1,
-               "Multiply amount by this value, after adding 1 to it.")
+        .value("ADD", AttributeModifier::Operation::Add, "Adds (or subtracts) the specified amount to the base value.")
+        .value("MULTIPLY_BASE", AttributeModifier::Operation::MultiplyBase,
+               "Multiplies the current value of the attribute by (1 + x), "
+               "where x is the sum of the modifiers' amounts.")
+        .value("MULTIPLY", AttributeModifier::Operation::Multiply,
+               "For every modifier, multiplies the current value of the attribute by (1 + x), "
+               "where x is the amount of the particular modifier.")
         .export_values()
         .finalize();
 
