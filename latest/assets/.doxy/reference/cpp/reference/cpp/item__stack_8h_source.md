@@ -53,7 +53,7 @@ public:
         }
     }
 
-    ItemStack(const ItemStack &stack) : type_(stack.getType()), amount_(stack.getAmount()), data_(stack.getData())
+    ItemStack(const ItemStack &stack) : type_(stack.getType().getId()), amount_(stack.getAmount()), data_(stack.getData())
     {
         if (stack.hasItemMeta()) {
             ItemStack::setItemMeta(stack.getItemMeta().get());
@@ -208,7 +208,7 @@ private:
         return true;
     }
 
-    ItemTypeId type_ = ItemType::Air;
+    std::string type_ = ItemType::Air;
     int amount_ = 0;
     int data_ = 0;
     std::unique_ptr<ItemMeta> meta_ = nullptr;

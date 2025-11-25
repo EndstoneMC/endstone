@@ -23,9 +23,9 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classendstone_1_1ItemStack_1aff8075a6f2de17b2249b1f293bae56a6" prot="private" static="no" mutable="no">
-        <type><ref refid="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" kindref="member">ItemTypeId</ref></type>
-        <definition>ItemTypeId endstone::ItemStack::type_</definition>
+      <memberdef kind="variable" id="classendstone_1_1ItemStack_1a88b7ec0244561b1406e8229dc46dad3b" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::ItemStack::type_</definition>
         <argsstring></argsstring>
         <name>type_</name>
         <qualifiedname>endstone::ItemStack::type_</qualifiedname>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_stack.h" line="278" column="16" bodyfile="include/endstone/inventory/item_stack.h" bodystart="278" bodyend="-1"/>
+        <location file="include/endstone/inventory/item_stack.h" line="278" column="17" bodyfile="include/endstone/inventory/item_stack.h" bodystart="278" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ItemStack_1aca0b4d279429247412e0e0d0b37d46a9" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -624,7 +624,7 @@
       <member refid="classendstone_1_1ItemStack_1ad18900f0c9460bb45556111d41e4e09c" prot="private" virt="non-virtual"><scope>endstone::ItemStack</scope><name>setItemMeta0</name></member>
       <member refid="classendstone_1_1ItemStack_1acd8ed5a597d0ca301f1b5d17cca29b34" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>setType</name></member>
       <member refid="classendstone_1_1ItemStack_1ab5b0ec4312de538ebd8ffc50903dafe1" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>toNbt</name></member>
-      <member refid="classendstone_1_1ItemStack_1aff8075a6f2de17b2249b1f293bae56a6" prot="private" virt="non-virtual"><scope>endstone::ItemStack</scope><name>type_</name></member>
+      <member refid="classendstone_1_1ItemStack_1a88b7ec0244561b1406e8229dc46dad3b" prot="private" virt="non-virtual"><scope>endstone::ItemStack</scope><name>type_</name></member>
       <member refid="classendstone_1_1ItemStack_1a3d5879ba64ad7afe47d3c7726f276d52" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>~ItemStack</name></member>
     </listofallmembers>
   </compounddef>
