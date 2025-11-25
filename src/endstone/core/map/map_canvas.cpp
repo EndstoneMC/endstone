@@ -43,12 +43,12 @@ void EndstoneMapCanvas::setPixelColor(int x, int y, Color color)
     setPixel(x, y, color.asABGR());
 }
 
-Result<Color> EndstoneMapCanvas::getPixelColor(int x, int y) const
+Color EndstoneMapCanvas::getPixelColor(int x, int y) const
 {
     return Color::fromABGR(static_cast<std::int32_t>(getPixel(x, y)));
 }
 
-Result<Color> EndstoneMapCanvas::getBasePixelColor(int x, int y) const
+Color EndstoneMapCanvas::getBasePixelColor(int x, int y) const
 {
     return Color::fromABGR(static_cast<std::int32_t>(getBasePixel(x, y)));
 }

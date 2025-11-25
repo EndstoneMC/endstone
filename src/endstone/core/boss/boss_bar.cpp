@@ -16,8 +16,8 @@
 
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/boss_event_packet.h"
+#include "endstone/check.h"
 #include "endstone/core/player.h"
-#include "endstone/core/preconditions.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {

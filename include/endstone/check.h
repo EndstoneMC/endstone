@@ -16,7 +16,6 @@
 
 #include <source_location>
 #include <stdexcept>
-#include <string_view>
 
 #include <fmt/format.h>
 
@@ -24,13 +23,11 @@ namespace endstone {
 class Preconditions {
 public:
     template <typename... Args>
-    static void checkArgument(bool condition, fmt::format_string<Args...> format, Args &&...args,
-                              const std::source_location loc = std::source_location::current())
+    static void checkArgument(bool condition, fmt::format_string<Args...> format, Args &&...args)
     {
         if (!condition) {
             auto message = fmt::format(format, std::forward<Args>(args)...);
-            auto full = fmt::format("{} [{}:{}]", message, loc.file_name(), loc.line());
-            throw std::invalid_argument(full);
+            throw std::invalid_argument(message);
         }
     }
 };
