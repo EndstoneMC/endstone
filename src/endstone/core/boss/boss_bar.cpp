@@ -17,6 +17,7 @@
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/boss_event_packet.h"
 #include "endstone/core/player.h"
+#include "endstone/core/preconditions.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {
@@ -86,14 +87,13 @@ float EndstoneBossBar::getProgress() const
     return progress_;
 }
 
-Result<void> EndstoneBossBar::setProgress(float progress)
+void EndstoneBossBar::setProgress(float progress)
 {
-    ENDSTONE_CHECK(progress >= 0.0 && progress <= 1.0, "Progress must be between 0.0 and 1.0");
+    Preconditions::checkArgument(progress >= 0.0 && progress <= 1.0, "Progress must be between 0.0 and 1.0");
     if (progress_ != progress) {
         progress_ = progress;
         broadcast(BossEventUpdateType::UpdatePercent);
     }
-    return {};
 }
 
 bool EndstoneBossBar::isVisible() const
