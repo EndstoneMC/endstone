@@ -26,3 +26,6 @@
 #include "endstone/endstone.hpp"
 #include "poly.h"
 #include "type_caster.h"
+
+template <typename... Ts>
+struct type_list {};

@@ -52,7 +52,7 @@ public:
      *
      * @param type Material to change this block to
      */
-    virtual Result<void> setType(std::string type) = 0;
+    virtual void setType(std::string type) = 0;
 
     /**
      * @brief Sets the type of this block
@@ -60,7 +60,7 @@ public:
      * @param type Material to change this block to
      * @param apply_physics False to cancel physics on the changed block.
      */
-    virtual Result<void> setType(std::string type, bool apply_physics) = 0;
+    virtual void setType(std::string type, bool apply_physics) = 0;
 
     /**
      * @brief Gets the complete block data for this block
@@ -74,7 +74,7 @@ public:
      *
      * @param data new block specific data
      */
-    virtual Result<void> setData(const BlockData &data) = 0;
+    virtual void setData(const BlockData &data) = 0;
 
     /**
      * @brief Sets the complete data for this block
@@ -82,7 +82,7 @@ public:
      * @param data new block specific data
      * @param apply_physics False to cancel physics on the changed block.
      */
-    virtual Result<void> setData(const BlockData &data, bool apply_physics) = 0;
+    virtual void setData(const BlockData &data, bool apply_physics) = 0;
 
     /**
      * @brief Gets the block at the given offsets

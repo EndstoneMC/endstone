@@ -273,8 +273,7 @@ void init_logger(py::module &m)
 
 void init_registry(py::module_ &m)
 {
-    python::registry<Enchantment>(m, "Server enchantments.");
-    python::registry<ItemType>(m, "Server item types。");
+    bind_registries(m, RegistryTypes{});
 }
 
 void init_server(py::class_<Server> &server)
@@ -303,15 +302,7 @@ void init_server(py::class_<Server> &server)
                                "Gets the service manager.")
         .def(
             "get_registry",
-            [](const Server &self, py::type t) -> py::object {
-                if (t.is(py::type::of<Enchantment>())) {
-                    return py::cast(&self.getRegistry<Enchantment>());
-                }
-                if (t.is(py::type::of<ItemType>())) {
-                    return py::cast(&self.getRegistry<ItemType>());
-                }
-                return py::none();
-            },
+            [](const Server &self, const py::type &t) -> py::object { return get_registry(self, t, RegistryTypes{}); },
             py::arg("type"), py::return_value_policy::reference, "Returns the registry for all the enchantments.")
         .def_property_readonly("level", &Server::getLevel, py::return_value_policy::reference_internal,
                                "Gets the server level.")

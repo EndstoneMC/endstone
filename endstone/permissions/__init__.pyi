@@ -79,7 +79,7 @@ class Permissible:
         Adds a new PermissionAttachment.
         """
         ...
-    def remove_attachment(self, attachment: PermissionAttachment) -> None:
+    def remove_attachment(self, attachment: PermissionAttachment) -> bool:
         """
         Removes a given PermissionAttachment.
         """

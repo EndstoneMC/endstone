@@ -29,37 +29,34 @@ class EndstoneScoreboard;
 
 class EndstoneObjective : public Objective {
 public:
-    explicit EndstoneObjective(EndstoneScoreboard &scoreboard, ::Objective &objective);
+    explicit EndstoneObjective(EndstoneScoreboard &scoreboard, Bedrock::NonOwnerPointer<::Objective> objective);
 
-    [[nodiscard]] Result<std::string> getName() const override;
-    [[nodiscard]] Result<std::string> getDisplayName() const override;
-    Result<void> setDisplayName(std::string display_name) override;
-    [[nodiscard]] Result<const Criteria *> getCriteria() const override;
-    [[nodiscard]] Result<bool> isModifiable() const override;
+    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] std::string getDisplayName() const override;
+    void setDisplayName(std::string display_name) override;
+    [[nodiscard]] const Criteria &getCriteria() const override;
+    [[nodiscard]] bool isModifiable() const override;
     [[nodiscard]] Scoreboard &getScoreboard() const override;
-    [[nodiscard]] Result<void> unregister() const override;
-    [[nodiscard]] Result<bool> isDisplayed() const override;
-    [[nodiscard]] Result<DisplaySlot> getDisplaySlot() const override;
-    [[nodiscard]] Result<ObjectiveSortOrder> getSortOrder() const override;
-    Result<void> setDisplaySlot(std::optional<DisplaySlot> slot) override;
-    Result<void> setSortOrder(ObjectiveSortOrder order) override;
-    Result<void> setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order) override;
-    [[nodiscard]] Result<RenderType> getRenderType() const override;
+    void unregister() const override;
+    [[nodiscard]] bool isDisplayed() const override;
+    [[nodiscard]] std::optional<DisplaySlot> getDisplaySlot() const override;
+    [[nodiscard]] std::optional<ObjectiveSortOrder> getSortOrder() const override;
+    void setDisplaySlot(std::optional<DisplaySlot> slot) override;
+    void setSortOrder(ObjectiveSortOrder order) override;
+    void setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order) override;
+    [[nodiscard]] RenderType getRenderType() const override;
     // Result<void> setRenderType(RenderType render_type) override;
-    [[nodiscard]] Result<std::unique_ptr<Score>> getScore(ScoreEntry entry) const override;
+    [[nodiscard]] std::unique_ptr<Score> getScore(ScoreEntry entry) const override;
     bool operator==(const Objective &other) const override;
     bool operator!=(const Objective &other) const override;
 
-    [[nodiscard]] Result<EndstoneScoreboard *> checkState() const;
-
+    EndstoneScoreboard &checkState() const;
     [[nodiscard]] std::unique_ptr<EndstoneObjective> copy() const;
 
 private:
     friend class EndstoneScore;
-    std::string name_;
     EndstoneScoreboard &scoreboard_;
-    ::Objective &objective_;
+    Bedrock::NonOwnerPointer<::Objective> objective_;
     EndstoneCriteria criteria_;
 };
-
 }  // namespace endstone::core

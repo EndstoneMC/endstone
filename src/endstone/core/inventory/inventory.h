@@ -29,7 +29,7 @@ public:
     std::unordered_map<int, ItemStack *> addItem(std::vector<ItemStack *> items) override;
     std::unordered_map<int, ItemStack *> removeItem(std::vector<ItemStack *> items) override;
     [[nodiscard]] std::vector<std::unique_ptr<ItemStack>> getContents() const override;
-    Result<void> setContents(std::vector<ItemStack const *> items) override;
+    void setContents(std::vector<ItemStack const *> items) override;
     [[nodiscard]] bool contains(const std::string &type) const override;
     [[nodiscard]] bool contains(const ItemStack &item) const override;
     [[nodiscard]] bool contains(const ItemStack &item, int amount) const override;

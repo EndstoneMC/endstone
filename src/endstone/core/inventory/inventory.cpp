@@ -149,10 +149,10 @@ std::vector<std::unique_ptr<ItemStack>> EndstoneInventory::getContents() const
     return contents;
 }
 
-Result<void> EndstoneInventory::setContents(std::vector<const ItemStack *> items)
+void EndstoneInventory::setContents(std::vector<const ItemStack *> items)
 {
-    ENDSTONE_CHECKF(items.size() <= getSize(), "Invalid inventory size ({}); expected {} or less", items.size(),
-                    getSize());
+    Preconditions::checkArgument(items.size() <= getSize(), "Invalid inventory size ({}); expected {} or less",
+                                 items.size(), getSize());
     for (auto i = 0; i < getSize(); i++) {
         if (i >= items.size()) {
             setItem(i, nullptr);
@@ -161,7 +161,6 @@ Result<void> EndstoneInventory::setContents(std::vector<const ItemStack *> items
             setItem(i, items[i]);
         }
     }
-    return {};
 }
 
 bool EndstoneInventory::contains(const std::string &type) const
