@@ -39,6 +39,8 @@ public:
     [[nodiscard]] Dimension *getDimension(std::string name) const override;
     [[nodiscard]] Dimension *getDimension(int id) const;  // TODO(fixme): make it virtual
     [[nodiscard]] std::int64_t getSeed() const override;
+    [[nodiscard]] std::variant<bool, int, float> getGameRuleValue(const GameRule &rule) const override;
+    [[nodiscard]] bool setGameRuleValue(const GameRule &rule, const std::variant<bool, int, float> &value) override;
 
     [[nodiscard]] EndstoneServer &getServer() const;
     [[nodiscard]] ::Level &getHandle() const;

@@ -114,6 +114,8 @@ version = "1.21.124"
 "?_runPlugins@ServerScriptManager@@AEAAXW4PluginExecutionGroup@@AEAVServerInstance@@@Z" = 34021952
 # UnverifiedCertificate
 "?fromString@UnverifiedCertificate@@SA?AV1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z" = 9484752
+# GameRules
+"?_setGameRule@GameRules@@AEAA?AV?$unique_ptr@VGameRulesChangedPacket@@U?$default_delete@VGameRulesChangedPacket@@@std@@@std@@PEAVGameRule@@V?$variant@Umonostate@std@@_NHM@3@W4Type@4@_NPEA_N4PEAVValidationError@4@@Z" = 73277792
 
 [linux]
 "BlockState::StateListNode::mHead" = 221392056
