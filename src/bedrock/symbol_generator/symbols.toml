@@ -115,8 +115,8 @@ version = "1.21.123"
 # UnverifiedCertificate
 "?fromString@UnverifiedCertificate@@SA?AV1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z" = 9484752
 # LiquidBlock
-"?_trySpreadTo@LiquidBlock@@AEBAXAEAVBlockSource@@AEBVBlockPos@@H1E@Z" = 68306960
-"?_isLiquidBlocking@LiquidBlock@@AEBA_NAEAVBlockSource@@AEBVBlockPos@@1E@Z" = 68311216
+"?_trySpreadTo@LiquidBlock@@AEBAXAEAVBlockSource@@AEBVBlockPos@@H1E@Z" = 68306928
+"?_isLiquidBlocking@LiquidBlock@@AEBA_NAEAVBlockSource@@AEBVBlockPos@@1E@Z" = 68311184
 
 [linux]
 "BlockState::StateListNode::mHead" = 221391800
