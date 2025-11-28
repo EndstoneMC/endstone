@@ -18,7 +18,7 @@
 
 namespace endstone {
 
-class BlockFormEvent final : public BlockGrowEvent {
+class BlockFromEvent final : public BlockGrowEvent {
 public:
     ENDSTONE_EVENT(BlockFormEvent)
     using BlockGrowEvent::BlockGrowEvent;
