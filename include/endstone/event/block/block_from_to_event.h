@@ -19,15 +19,15 @@
 
 namespace endstone {
 
-class BlockFormToEvent : public Cancellable<BlockEvent> {
+class BlockFromToEvent : public Cancellable<BlockEvent> {
 public:
-    explicit BlockFormToEvent(std::unique_ptr<Block> block, std::unique_ptr<Block> to_block)
+    explicit BlockFromToEvent(std::unique_ptr<Block> block, std::unique_ptr<Block> to_block)
         : Cancellable(std::move(block)), to_block_(std::move(to_block))
     {
     }
-    ~BlockFormToEvent() override = default;
+    ~BlockFromToEvent() override = default;
 
-    inline static const std::string NAME = "BlockFormToEvent";
+    inline static const std::string NAME = "BlockFromToEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
