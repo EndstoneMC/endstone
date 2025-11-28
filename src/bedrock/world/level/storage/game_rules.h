@@ -23,6 +23,7 @@
 #include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/core/utility/pub_sub/publisher.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/game_rules_changed_packet.h"
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/util/new_type.h"
 
@@ -69,7 +70,7 @@ public:
             return false;
         }
         *p_validated = true;
-        if (type_ == Type::Bool && value != getBool()) {
+        if (type == Type::Bool && value != getBool()) {
             is_default_set_ = false;
             value_ = value;
             return true;
@@ -85,7 +86,7 @@ public:
             return false;
         }
         *p_validated = true;
-        if (type_ == Type::Int && value != getInt()) {
+        if (type == Type::Int && value != getInt()) {
             is_default_set_ = false;
             value_ = value;
             return true;
@@ -101,7 +102,7 @@ public:
             return false;
         }
         *p_validated = true;
-        if (type_ == Type::Float && value != getFloat()) {
+        if (type == Type::Float && value != getFloat()) {
             is_default_set_ = false;
             value_ = value;
             return true;
@@ -112,7 +113,11 @@ public:
 
 private:
     bool should_save_;
-    GameRule::Type type_;
+
+public:
+    GameRule::Type type;
+
+private:
     std::variant<::std::monostate, bool, int, float> value_;
     ::std::string name_;
     bool allow_use_in_command_;
@@ -141,62 +146,56 @@ class GameRules : public Bedrock::EnableNonOwnerReferences {
 public:
     [[nodiscard]] bool getBool(GameRuleId id, bool default_value) const
     {
-        if (id >= 0 && id < game_rules_.size()) {
-            return game_rules_[id].getBool();
+        if (id >= 0 && id < game_rules.size()) {
+            return game_rules[id].getBool();
         }
         return default_value;
     }
     [[nodiscard]] int getInt(GameRuleId id, int default_value) const
     {
-        if (id >= 0 && id < game_rules_.size()) {
-            return game_rules_[id].getInt();
+        if (id >= 0 && id < game_rules.size()) {
+            return game_rules[id].getInt();
         }
         return default_value;
     }
     [[nodiscard]] float getFloat(GameRuleId id, float default_value) const
     {
-        if (id >= 0 && id < game_rules_.size()) {
-            return game_rules_[id].getFloat();
+        if (id >= 0 && id < game_rules.size()) {
+            return game_rules[id].getFloat();
         }
         return default_value;
     }
-    std::unique_ptr<Packet> /*std::unique_ptr<GameRulesChangedPacket>*/ setRule(GameRuleId rule, bool value,
-                                                                                bool return_packet,
-                                                                                bool *p_value_validated,
-                                                                                bool *p_value_changed,
-                                                                                GameRule::ValidationError *error_output)
+    std::unique_ptr<GameRulesChangedPacket> setRule(GameRuleId rule, bool value, bool return_packet,
+                                                    bool *p_value_validated, bool *p_value_changed,
+                                                    GameRule::ValidationError *error_output)
     {
-        if (rule < 0 || rule >= game_rules_.size()) {
+        if (rule < 0 || rule >= game_rules.size()) {
             return nullptr;
         }
-        GameRule *game_rule = &game_rules_[rule];
+        GameRule *game_rule = &game_rules[rule];
         return _setGameRule(game_rule, value, GameRule::Type::Bool, return_packet, p_value_validated, p_value_changed,
                             error_output);
     }
-    std::unique_ptr<Packet> /*std::unique_ptr<GameRulesChangedPacket>*/ setRule(GameRuleId rule, int value,
-                                                                                bool return_packet,
-                                                                                bool *p_value_validated,
-                                                                                bool *p_value_changed,
-                                                                                GameRule::ValidationError *error_output)
+    std::unique_ptr<GameRulesChangedPacket> setRule(GameRuleId rule, int value, bool return_packet,
+                                                    bool *p_value_validated, bool *p_value_changed,
+                                                    GameRule::ValidationError *error_output)
     {
-        if (rule < 0 || rule >= game_rules_.size()) {
+        if (rule < 0 || rule >= game_rules.size()) {
             return nullptr;
         }
-        GameRule *game_rule = &game_rules_[rule];
+        GameRule *game_rule = &game_rules[rule];
         return _setGameRule(game_rule, value, GameRule::Type::Int, return_packet, p_value_validated, p_value_changed,
                             error_output);
     }
 
-    std::unique_ptr<Packet> /*std::unique_ptr<GameRulesChangedPacket>*/ setRule(GameRuleId rule, float value,
-                                                                                bool return_packet,
-                                                                                bool *p_value_validated,
-                                                                                bool *p_value_changed,
-                                                                                GameRule::ValidationError *error_output)
+    std::unique_ptr<GameRulesChangedPacket> setRule(GameRuleId rule, float value, bool return_packet,
+                                                    bool *p_value_validated, bool *p_value_changed,
+                                                    GameRule::ValidationError *error_output)
     {
-        if (rule < 0 || rule >= game_rules_.size()) {
+        if (rule < 0 || rule >= game_rules.size()) {
             return nullptr;
         }
-        GameRule *game_rule = &game_rules_[rule];
+        GameRule *game_rule = &game_rules[rule];
         return _setGameRule(game_rule, value, GameRule::Type::Float, return_packet, p_value_validated, p_value_changed,
                             error_output);
     }
@@ -252,10 +251,14 @@ public:
     };  // NOLINTEND
 
 private:
-    std::unique_ptr<Packet> /*std::unique_ptr<GameRulesChangedPacket>*/ _setGameRule(
+    ENDSTONE_HOOK std::unique_ptr<GameRulesChangedPacket> _setGameRule(
         GameRule *game_rule, std::variant<std::monostate, bool, int, float> value, GameRule::Type type,
         bool return_packet, bool *p_value_validated, bool *p_value_changed, GameRule::ValidationError *error_output);
-    GameRuleMap game_rules_;
+
+public:
+    GameRuleMap game_rules;
+
+private:
     WorldPolicyMap world_policies_;
     Bedrock::PubSub::Publisher<void(const GameRules &, const GameRuleId &), Bedrock::PubSub::ThreadModel::MultiThreaded>
         game_rule_change_publisher_;

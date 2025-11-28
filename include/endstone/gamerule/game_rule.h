@@ -7,14 +7,16 @@ namespace endstone {
 using GameRuleId = Identifier<class GameRule>;
 class GameRule {
 public:
+    ENDSTONE_REGISTRY_TYPE(GameRule)
     enum class Type {
+        Invalid,
         Boolean,
         Integer,
         Float,
     };
-    ENDSTONE_REGISTRY_TYPE(GameRule)
     [[nodiscard]] virtual GameRuleId getId() const = 0;
     [[nodiscard]] virtual Type getType() const = 0;
+    virtual ~GameRule() = default;
 
     bool operator==(const GameRuleId &other) const
     {
