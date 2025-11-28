@@ -74,7 +74,7 @@ public:
 
     [[nodiscard]] std::vector<Player *> getOnlinePlayers() const override;
     [[nodiscard]] int getMaxPlayers() const override;
-    Result<void> setMaxPlayers(int max_players) override;
+    void setMaxPlayers(int max_players) override;
     [[nodiscard]] Player *getPlayer(UUID id) const override;
     [[nodiscard]] Player *getPlayer(std::string name) const override;
 
@@ -104,8 +104,8 @@ public:
                                                          BarStyle style) const override;
     [[nodiscard]] std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
                                                          std::vector<BarFlag> flags) const override;
-    [[nodiscard]] Result<std::unique_ptr<BlockData>> createBlockData(std::string type) const override;
-    [[nodiscard]] Result<std::unique_ptr<BlockData>> createBlockData(std::string type,
+    [[nodiscard]] std::unique_ptr<BlockData> createBlockData(std::string type) const override;
+    [[nodiscard]] std::unique_ptr<BlockData> createBlockData(std::string type,
                                                                      BlockStates block_states) const override;
     [[nodiscard]] PlayerBanList &getBanList() const override;
     [[nodiscard]] IpBanList &getIpBanList() const override;

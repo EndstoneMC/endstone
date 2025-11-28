@@ -101,7 +101,7 @@ public:
      * @param attachment Attachment to remove
      * @return true if the specified attachment was removed successfully, false when it isn't part of this object
      */
-    virtual Result<void> removeAttachment(PermissionAttachment &attachment) = 0;
+    virtual bool removeAttachment(PermissionAttachment &attachment) = 0;
 
     /**
      * @brief Recalculates the permissions for this object, if the attachments have changed values.

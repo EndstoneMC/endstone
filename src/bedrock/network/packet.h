@@ -313,6 +313,7 @@ public:
     Bedrock::Result<void> readNoHeader(ReadOnlyBinaryStream &stream, const cereal::ReflectionCtx &reflection_ctx,
                                        const SubClientId &sub_id);
     [[nodiscard]] SubClientId getSenderSubId() const;
+    void setSenderSubId(SubClientId sender_sub_id);
     [[nodiscard]] Compressibility getCompressible() const;
     [[nodiscard]] NetworkPeer::Reliability getReliability() const;
     void setReceiveTimestamp(const NetworkPeer::PacketRecvTimepoint &recv_timepoint);

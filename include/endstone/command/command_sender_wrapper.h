@@ -75,7 +75,7 @@ public:
         return sender_.addAttachment(plugin);
     }
 
-    Result<void> removeAttachment(PermissionAttachment &attachment) override
+    bool removeAttachment(PermissionAttachment &attachment) override
     {
         return sender_.removeAttachment(attachment);
     }

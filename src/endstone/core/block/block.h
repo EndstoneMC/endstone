@@ -24,11 +24,11 @@ class EndstoneBlock : public Block {
 public:
     EndstoneBlock(BlockSource &block_source, BlockPos block_pos);
     [[nodiscard]] std::string getType() const override;
-    Result<void> setType(std::string type) override;
-    Result<void> setType(std::string type, bool apply_physics) override;
+    void setType(std::string type) override;
+    void setType(std::string type, bool apply_physics) override;
     [[nodiscard]] std::unique_ptr<BlockData> getData() const override;
-    Result<void> setData(const BlockData &data) override;
-    Result<void> setData(const BlockData &data, bool apply_physics) override;
+    void setData(const BlockData &data) override;
+    void setData(const BlockData &data, bool apply_physics) override;
     std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) override;
     std::unique_ptr<Block> getRelative(BlockFace face) override;
     std::unique_ptr<Block> getRelative(BlockFace face, int distance) override;

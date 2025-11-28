@@ -25,8 +25,50 @@
 namespace py = pybind11;
 
 namespace endstone::python {
+using RegistryTypes = type_list<Enchantment, ItemType>;
+
+template <typename List>
+struct registry_getter;
+
+template <typename... Ts>
+struct registry_getter<type_list<Ts...>> {
+    static py::object get(Server &self, const py::type &t)
+    {
+        py::object result = py::none();
+        bool matched = false;
+
+        (
+            [&] {
+                if (!matched && t.is(py::type::of<Ts>())) {
+                    matched = true;
+                    result =
+                        py::cast(&self.getRegistry<Ts>(), py::return_value_policy::reference_internal, py::cast(self));
+                }
+            }(),
+            ...);
+
+        return result;
+    }
+};
+
+template <typename... Ts>
+py::object get_registry(const Server &self, const py::type &t, type_list<Ts...>)
+{
+    py::object result = py::none();
+    bool matched = false;
+    (
+        [&] {
+            if (!matched && t.is(py::type::of<Ts>())) {
+                matched = true;
+                result = py::cast(&self.getRegistry<Ts>(), py::return_value_policy::reference);
+            }
+        }(),
+        ...);
+    return result;
+}
+
 template <typename T, typename... Args>
-void registry(py::module &m, Args &&...args)
+void bind_registry(py::module &m, Args &&...args)
 {
     py::class_<Registry<T>>(m, (std::string(T::RegistryType) + "Registry").c_str(), std::forward<Args>(args)...)
         .def("get", py::overload_cast<Identifier<T>>(&Registry<T>::get, py::const_), py::arg("id"),
@@ -63,5 +105,11 @@ void registry(py::module &m, Args &&...args)
         .def(
             "__contains__", [](const Registry<T> &self, const Identifier<T> id) { return self.get(id) != nullptr; },
             py::arg("id"));
+}
+
+template <typename... Ts>
+void bind_registries(py::module_ &m, type_list<Ts...>)
+{
+    (bind_registry<Ts>(m), ...);
 }
 };  // namespace endstone::python

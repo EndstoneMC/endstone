@@ -42,16 +42,15 @@ std::string EndstoneBlockState::getType() const
     return block_->getName().getString();
 }
 
-Result<void> EndstoneBlockState::setType(std::string type)
+void EndstoneBlockState::setType(std::string type)
 {
     if (getType() != type) {
         using ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor;
         const auto block_descriptor = createBlockDescriptor(type, std::nullopt);
         auto *block = const_cast<::Block *>(block_descriptor.tryGetBlockNoLogging());
-        ENDSTONE_CHECKF(block, "BlockState::setType failed: unknown block type {}.", type);
+        Preconditions::checkArgument(block != nullptr, "BlockState::setType failed: unknown block type {}.", type);
         block_ = block;
     }
-    return {};
 }
 
 std::unique_ptr<BlockData> EndstoneBlockState::getData() const
@@ -59,10 +58,9 @@ std::unique_ptr<BlockData> EndstoneBlockState::getData() const
     return std::make_unique<EndstoneBlockData>(*block_);
 }
 
-Result<void> EndstoneBlockState::setData(const BlockData &data)
+void EndstoneBlockState::setData(const BlockData &data)
 {
     block_ = &static_cast<const EndstoneBlockData &>(data).getHandle();
-    return {};
 }
 
 Dimension &EndstoneBlockState::getDimension() const

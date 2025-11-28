@@ -96,7 +96,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
              "Create a new ItemStack given the NBT.");
 
     item_stack
-        .def(py::init([](ItemId type, const int amount, const int data) {
+        .def(py::init([](ItemTypeId type, const int amount, const int data) {
                  if (const auto *item = ItemType::get(type); !item) {
                      throw std::runtime_error(fmt::format("Unknown item type: {}", type));
                  }

@@ -26,7 +26,7 @@ static_assert(Enchantment::Protection == "minecraft:protection");
 
 TEST(IdentifierTest, ParsesWithExplicitNamespace)
 {
-    constexpr auto id = ItemId{"endstone:custom"};
+    constexpr auto id = ItemTypeId{"endstone:custom"};
     EXPECT_EQ(id.getNamespace(), "endstone");
     EXPECT_EQ(id.getKey(), "custom");
     EXPECT_TRUE(id == "endstone:custom");

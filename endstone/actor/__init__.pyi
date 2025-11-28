@@ -179,9 +179,11 @@ class Mob(Actor):
     @property
     def max_health(self) -> int:
         """
-        Gets the maximum health this entity has.
+        Gets or sets the maximum health this entity has.
         """
         ...
+    @max_health.setter
+    def max_health(self, arg1: int) -> None: ...
 
 class Item(Actor):
     """

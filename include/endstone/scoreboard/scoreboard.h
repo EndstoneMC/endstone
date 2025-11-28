@@ -38,7 +38,7 @@ public:
      * @param criteria Criteria for the Objective
      * @return A reference to the newly registered Objective.
      */
-    virtual Result<std::unique_ptr<Objective>> addObjective(std::string name, Criteria::Type criteria) = 0;
+    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) = 0;
 
     /**
      * @brief Registers an Objective on this Scoreboard
@@ -48,8 +48,8 @@ public:
      * @param display_name Name displayed to players for the Objective.
      * @return A reference to the newly registered Objective.
      */
-    virtual Result<std::unique_ptr<Objective>> addObjective(std::string name, Criteria::Type criteria,
-                                                            std::string display_name) = 0;
+    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
+                                                    std::string display_name) = 0;
 
     /**
      * @brief Registers an Objective on this Scoreboard
@@ -60,8 +60,8 @@ public:
      * @param render_type Manner of rendering the Objective
      * @return A reference to the newly registered Objective.
      */
-    virtual Result<std::unique_ptr<Objective>> addObjective(std::string name, Criteria::Type criteria,
-                                                            std::string display_name, RenderType render_type) = 0;
+    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+                                                    RenderType render_type) = 0;
 
     /**
      * @brief Gets an Objective on this Scoreboard by name

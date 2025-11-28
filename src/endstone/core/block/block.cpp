@@ -33,19 +33,15 @@ std::string EndstoneBlock::getType() const
     return block_source_.get().getBlock(block_pos_).getName().getString();
 }
 
-Result<void> EndstoneBlock::setType(std::string type)
+void EndstoneBlock::setType(std::string type)
 {
     return setType(type, true);
 }
 
-Result<void> EndstoneBlock::setType(std::string type, bool apply_physics)
+void EndstoneBlock::setType(std::string type, bool apply_physics)
 {
-    const auto &server = entt::locator<EndstoneServer>::value();
-    auto result = server.createBlockData(type);
-    if (!result) {
-        return nonstd::make_unexpected(result.error());
-    }
-    return setData(*result.value(), apply_physics);
+    const auto &server = EndstoneServer::getInstance();
+    return setData(*server.createBlockData(type), apply_physics);
 }
 
 std::unique_ptr<BlockData> EndstoneBlock::getData() const
@@ -53,12 +49,12 @@ std::unique_ptr<BlockData> EndstoneBlock::getData() const
     return std::make_unique<EndstoneBlockData>(getMinecraftBlock());
 }
 
-Result<void> EndstoneBlock::setData(const BlockData &data)
+void EndstoneBlock::setData(const BlockData &data)
 {
     return setData(std::move(data), true);
 }
 
-Result<void> EndstoneBlock::setData(const BlockData &data, bool apply_physics)
+void EndstoneBlock::setData(const BlockData &data, bool apply_physics)
 {
     const ::Block &block = static_cast<const EndstoneBlockData &>(data).getHandle();
     if (apply_physics) {
@@ -68,7 +64,6 @@ Result<void> EndstoneBlock::setData(const BlockData &data, bool apply_physics)
     else {
         block_source_.get().setBlock(block_pos_, block, BlockType::UPDATE_CLIENTS, nullptr, nullptr);  // NETWORK
     }
-    return {};
 }
 
 std::unique_ptr<Block> EndstoneBlock::getRelative(int offset_x, int offset_y, int offset_z)

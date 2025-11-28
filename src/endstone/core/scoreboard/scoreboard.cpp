@@ -48,27 +48,24 @@ void EndstoneScoreboard::init()
     board_.setPacketSender(packet_sender_.get());
 }
 
-Result<std::unique_ptr<Objective>> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria)
+std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria)
 {
     return addObjective(name, criteria, name);
 }
 
-Result<std::unique_ptr<Objective>> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
-                                                                    std::string display_name)
+std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
+                                                            std::string display_name)
 {
     return addObjective(name, criteria, name, RenderType::Integer);
 }
 
-Result<std::unique_ptr<Objective>> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
-                                                                    std::string display_name, RenderType render_type)
+std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
+                                                            std::string display_name, RenderType render_type)
 {
     const auto *cr = board_.getCriteria(getCriteriaName(criteria));
-    if (!cr) {
-        throw std::runtime_error("getCriteria returns null!");
-    }
-
+    Preconditions::checkState(cr, "Criteria does not exist.");
     auto *objective = board_.addObjective(name, display_name, *cr);
-    ENDSTONE_CHECKF(objective, "Objective {} already exists.", name)
+    Preconditions::checkState(objective == nullptr, "Objective {} already exists.", name);
     return std::make_unique<EndstoneObjective>(*this, *objective);
 }
 
@@ -204,22 +201,21 @@ DisplaySlot EndstoneScoreboard::fromMinecraftSlot(std::string slot)
 
 const ::ScoreboardId &EndstoneScoreboard::getScoreboardId(ScoreEntry entry) const
 {
-    return std::visit(overloaded{[&](Player *player) -> const ::ScoreboardId & {
-                                     if (!player) {
-                                         return ScoreboardId::INVALID;
-                                     }
-                                     return board_.getScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());
-                                 },
-                                 [&](Actor *actor) -> const ::ScoreboardId & {
-                                     if (!actor) {
-                                         return ScoreboardId::INVALID;
-                                     }
-                                     return board_.getScoreboardId(static_cast<EndstoneActor *>(actor)->getHandle());
-                                 },
-                                 [&](const std::string &fake) -> const ::ScoreboardId & {
-                                     return board_.getScoreboardId(fake);
-                                 }},
-                      entry);
+    return std::visit(
+        overloaded{[&](Player *player) -> const ::ScoreboardId & {
+                       if (!player) {
+                           return ScoreboardId::INVALID;
+                       }
+                       return board_.getScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());
+                   },
+                   [&](Actor *actor) -> const ::ScoreboardId & {
+                       if (!actor) {
+                           return ScoreboardId::INVALID;
+                       }
+                       return board_.getScoreboardId(static_cast<EndstoneActor *>(actor)->getHandle());
+                   },
+                   [&](const std::string &fake) -> const ::ScoreboardId & { return board_.getScoreboardId(fake); }},
+        entry);
 }
 
 const ::ScoreboardId &EndstoneScoreboard::getOrCreateScoreboardId(ScoreEntry entry)
@@ -229,23 +225,21 @@ const ::ScoreboardId &EndstoneScoreboard::getOrCreateScoreboardId(ScoreEntry ent
         return scoreboard_id;
     }
 
-    return std::visit(overloaded{[&](Player *player) -> const ::ScoreboardId & {
-                                     if (!player) {
-                                         return ScoreboardId::INVALID;
-                                     }
-                                     return board_.createScoreboardId(
-                                         static_cast<EndstonePlayer *>(player)->getHandle());
-                                 },
-                                 [&](Actor *actor) -> const ::ScoreboardId & {
-                                     if (!actor) {
-                                         return ScoreboardId::INVALID;
-                                     }
-                                     return board_.createScoreboardId(static_cast<EndstoneActor *>(actor)->getHandle());
-                                 },
-                                 [&](const std::string &fake) -> const ::ScoreboardId & {
-                                     return board_.createScoreboardId(fake);
-                                 }},
-                      entry);
+    return std::visit(
+        overloaded{[&](Player *player) -> const ::ScoreboardId & {
+                       if (!player) {
+                           return ScoreboardId::INVALID;
+                       }
+                       return board_.createScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());
+                   },
+                   [&](Actor *actor) -> const ::ScoreboardId & {
+                       if (!actor) {
+                           return ScoreboardId::INVALID;
+                       }
+                       return board_.createScoreboardId(static_cast<EndstoneActor *>(actor)->getHandle());
+                   },
+                   [&](const std::string &fake) -> const ::ScoreboardId & { return board_.createScoreboardId(fake); }},
+        entry);
 }
 
 ::Scoreboard &EndstoneScoreboard::getHandle() const

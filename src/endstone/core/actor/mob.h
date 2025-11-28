@@ -55,18 +55,24 @@ public:
         return Base::getHandle().getHealth();
     }
 
-    [[nodiscard]] Result<void> setHealth(int health) const override
+    [[nodiscard]] void setHealth(int health) const override
     {
-        ENDSTONE_CHECKF(health >= 0 && health <= getMaxHealth(),  //
-                        "Health value ({}) must be between 0 and {}.", health, getMaxHealth())
+        Preconditions::checkArgument(health >= 0 && health <= getMaxHealth(),  //
+                                     "Health value ({}) must be between 0 and {}.", health, getMaxHealth());
         auto mutable_attr = Base::getHandle().getMutableAttribute("minecraft:health");
         mutable_attr->setCurrentValue(static_cast<float>(health));
-        return {};
     }
 
     [[nodiscard]] int getMaxHealth() const override
     {
         return Base::getHandle().getMaxHealth();
+    }
+
+    [[nodiscard]] void setMaxHealth(int health) const override
+    {
+        Preconditions::checkArgument(health > 0, "Max health amount ({}) must be greater than 0", health);
+        auto mutable_attr = Base::getHandle().getMutableAttribute("minecraft:health");
+        mutable_attr->setMaxValue(static_cast<float>(health));
     }
 };
 

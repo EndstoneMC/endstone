@@ -14,18 +14,20 @@
 
 #pragma once
 
-#include <pybind11/chrono.h>
-#include <pybind11/functional.h>
-#include <pybind11/native_enum.h>
-#include <pybind11/operators.h>
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
-#include <pybind11/stl/filesystem.h>
-#include <pybind11/stl_bind.h>
+#include "bedrock/network/packet.h"
 
-#include "endstone/endstone.hpp"
-#include "poly.h"
-#include "type_caster.h"
+class DisconnectPacket : public Packet {
+public:
+    bool skip_message;
+    std::string message;
+    std::optional<std::string> filtered_message;
+    Connection::DisconnectFailReason reason;
+    DisconnectPacket(Connection::DisconnectFailReason reason, const std::string &message,
+                     std::optional<std::string> filtered_message, bool skip_message);
+    [[nodiscard]] MinecraftPacketIds getId() const override;
+    [[nodiscard]] std::string getName() const override;
+    void write(BinaryStream &stream) const override;
 
-template <typename... Ts>
-struct type_list {};
+private:
+    Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override;
+};

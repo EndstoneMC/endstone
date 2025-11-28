@@ -45,7 +45,7 @@ public:
     void addFlag(BarFlag flag) override;
     void removeFlag(BarFlag flag) override;
     [[nodiscard]] float getProgress() const override;
-    Result<void> setProgress(float progress) override;
+    void setProgress(float progress) override;
     [[nodiscard]] bool isVisible() const override;
     void setVisible(bool visible) override;
     void addPlayer(Player &player) override;

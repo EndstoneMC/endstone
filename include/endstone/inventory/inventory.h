@@ -135,7 +135,7 @@ public:
      *
      * @param items A complete replacement for the contents; the length must be less than or equal to getSize().
      */
-    virtual Result<void> setContents(std::vector<const ItemStack *> items) = 0;
+    virtual void setContents(std::vector<const ItemStack *> items) = 0;
 
     /**
      * @brief Checks if the inventory contains any ItemStacks with the given ItemType.

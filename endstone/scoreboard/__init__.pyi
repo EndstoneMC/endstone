@@ -173,7 +173,7 @@ class Objective:
         ...
     @sort_order.setter
     def sort_order(self, arg1: ObjectiveSortOrder) -> None: ...
-    def set_display(self, slot: DisplaySlot | None, order: ObjectiveSortOrder | None = None) -> None:
+    def set_display(self, slot: DisplaySlot | None, order: ObjectiveSortOrder = ObjectiveSortOrder.ASCENDING) -> None:
         """
         Sets the display slot and sort order for this objective. This will remove it from any other display slot.
         """

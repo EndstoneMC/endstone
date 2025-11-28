@@ -25,39 +25,38 @@
 
 namespace endstone::core {
 
-EndstoneObjective::EndstoneObjective(EndstoneScoreboard &scoreboard, ::Objective &objective)
-    : name_(objective.getName()), scoreboard_(scoreboard), objective_(objective), criteria_(objective.getCriteria())
+EndstoneObjective::EndstoneObjective(EndstoneScoreboard &scoreboard, Bedrock::NonOwnerPointer<::Objective> objective)
+    : scoreboard_(scoreboard), objective_(objective), criteria_(objective->getCriteria())
 {
 }
 
-Result<std::string> EndstoneObjective::getName() const
+std::string EndstoneObjective::getName() const
 {
-    ENDSTONE_CHECK_RESULT(checkState());
-    return objective_.getName();
+    checkState();
+    return objective_->getName();
 }
 
-Result<std::string> EndstoneObjective::getDisplayName() const
+std::string EndstoneObjective::getDisplayName() const
 {
-    ENDSTONE_CHECK_RESULT(checkState());
-    return objective_.getDisplayName();
+    checkState();
+    return objective_->getDisplayName();
 }
 
-Result<void> EndstoneObjective::setDisplayName(std::string display_name)
+void EndstoneObjective::setDisplayName(std::string display_name)
 {
-    ENDSTONE_CHECK_RESULT(checkState());
-    objective_.setDisplayName(display_name);
-    return {};
+    checkState();
+    objective_->setDisplayName(display_name);
 }
 
-Result<const Criteria *> EndstoneObjective::getCriteria() const
+const Criteria &EndstoneObjective::getCriteria() const
 {
-    ENDSTONE_CHECK_RESULT(checkState());
-    return &criteria_;
+    checkState();
+    return criteria_;
 }
 
-Result<bool> EndstoneObjective::isModifiable() const
+bool EndstoneObjective::isModifiable() const
 {
-    ENDSTONE_CHECK_RESULT(checkState());
+    checkState();
     return !criteria_.isReadOnly();
 }
 
@@ -66,22 +65,19 @@ Scoreboard &EndstoneObjective::getScoreboard() const
     return scoreboard_;
 }
 
-Result<void> EndstoneObjective::unregister() const
+void EndstoneObjective::unregister() const
 {
-    auto board = checkState();
-    ENDSTONE_CHECK_RESULT(board);
-    board.value()->board_.removeObjective(&objective_);
-    return {};
+    auto &board = checkState();
+    board.board_.removeObjective(objective_.access());
 }
 
-Result<bool> EndstoneObjective::isDisplayed() const
+bool EndstoneObjective::isDisplayed() const
 {
-    auto scoreboard = checkState();
-    ENDSTONE_CHECK_RESULT(scoreboard);
-    auto &board = scoreboard.value()->board_;
+    auto &scoreboard = checkState();
+    auto &board = scoreboard.board_;
     for (const auto &i : board.getDisplayObjectiveSlotNames()) {
         if (const auto *display_objective = board.getDisplayObjective(i)) {
-            if (display_objective->isDisplaying(objective_)) {
+            if (display_objective->isDisplaying(*objective_)) {
                 return true;
             }
         }
@@ -89,47 +85,42 @@ Result<bool> EndstoneObjective::isDisplayed() const
     return false;
 }
 
-Result<DisplaySlot> EndstoneObjective::getDisplaySlot() const
+std::optional<DisplaySlot> EndstoneObjective::getDisplaySlot() const
 {
-
-    auto scoreboard = checkState();
-    ENDSTONE_CHECK_RESULT(scoreboard);
-    auto &board = scoreboard.value()->board_;
+    auto &scoreboard = checkState();
+    auto &board = scoreboard.board_;
     for (const auto &i : board.getDisplayObjectiveSlotNames()) {
         if (const auto *display_objective = board.getDisplayObjective(i)) {
-            if (display_objective->isDisplaying(objective_)) {
+            if (display_objective->isDisplaying(*objective_)) {
                 return EndstoneScoreboard::fromMinecraftSlot(i);
             }
         }
     }
-    return nonstd::make_unexpected("Object is not displayed.");
+    return std::nullopt;
 }
 
-Result<ObjectiveSortOrder> EndstoneObjective::getSortOrder() const
+std::optional<ObjectiveSortOrder> EndstoneObjective::getSortOrder() const
 {
-    auto scoreboard = checkState();
-    ENDSTONE_CHECK_RESULT(scoreboard);
-    auto &board = scoreboard.value()->board_;
+    auto &scoreboard = checkState();
+    auto &board = scoreboard.board_;
     for (const auto &i : board.getDisplayObjectiveSlotNames()) {
         if (const auto *display_objective = board.getDisplayObjective(i)) {
-            if (display_objective->isDisplaying(objective_)) {
+            if (display_objective->isDisplaying(*objective_)) {
                 return static_cast<ObjectiveSortOrder>(display_objective->getSortOrder());
             }
         }
     }
-    return nonstd::make_unexpected("Object is not displayed.");
+    return std::nullopt;
 }
 
-Result<void> EndstoneObjective::setDisplaySlot(std::optional<DisplaySlot> slot)
+void EndstoneObjective::setDisplaySlot(std::optional<DisplaySlot> slot)
 {
-    auto scoreboard = checkState();
-    ENDSTONE_CHECK_RESULT(scoreboard);
-    auto &board = scoreboard.value()->board_;
-
+    auto &scoreboard = checkState();
+    auto &board = scoreboard.board_;
     std::optional<::ObjectiveSortOrder> order;
     for (const auto &i : board.getDisplayObjectiveSlotNames()) {
         if (const auto *display_objective = board.getDisplayObjective(i)) {
-            if (display_objective->isDisplaying(objective_)) {
+            if (display_objective->isDisplaying(*objective_)) {
                 if (!order.has_value()) {
                     order = display_objective->getSortOrder();
                 }
@@ -137,24 +128,20 @@ Result<void> EndstoneObjective::setDisplaySlot(std::optional<DisplaySlot> slot)
             }
         }
     }
-
     if (slot.has_value()) {
-        board.setDisplayObjective(EndstoneScoreboard::toMinecraftSlot(slot.value()), objective_,
+        board.setDisplayObjective(EndstoneScoreboard::toMinecraftSlot(slot.value()), *objective_,
                                   order.value_or(::ObjectiveSortOrder::Ascending));
     }
-    return {};
 }
 
-Result<void> EndstoneObjective::setSortOrder(ObjectiveSortOrder order)
+void EndstoneObjective::setSortOrder(ObjectiveSortOrder order)
 {
-    auto scoreboard = checkState();
-    ENDSTONE_CHECK_RESULT(scoreboard);
-    auto &board = scoreboard.value()->board_;
-
+    auto &scoreboard = checkState();
+    auto &board = scoreboard.board_;
     std::optional<std::string> slot;
     for (const auto &i : board.getDisplayObjectiveSlotNames()) {
         if (const auto *display_objective = board.getDisplayObjective(i)) {
-            if (display_objective->isDisplaying(objective_)) {
+            if (display_objective->isDisplaying(*objective_)) {
                 if (!slot.has_value()) {
                     slot = i;
                 }
@@ -162,52 +149,44 @@ Result<void> EndstoneObjective::setSortOrder(ObjectiveSortOrder order)
             }
         }
     }
-
     if (slot.has_value()) {
-        board.setDisplayObjective(slot.value(), objective_, static_cast<::ObjectiveSortOrder>(order));
+        board.setDisplayObjective(slot.value(), *objective_, static_cast<::ObjectiveSortOrder>(order));
     }
-    return nonstd::make_unexpected("Object is not displayed.");
 }
 
-Result<void> EndstoneObjective::setDisplay(const std::optional<DisplaySlot> slot, ObjectiveSortOrder order)
+void EndstoneObjective::setDisplay(const std::optional<DisplaySlot> slot, ObjectiveSortOrder order)
 {
-    auto scoreboard = checkState();
-    ENDSTONE_CHECK_RESULT(scoreboard);
-    auto &board = scoreboard.value()->board_;
-
+    auto &scoreboard = checkState();
+    auto &board = scoreboard.board_;
     for (const auto &i : board.getDisplayObjectiveSlotNames()) {
         if (const auto *display_objective = board.getDisplayObjective(i)) {
-            if (display_objective->isDisplaying(objective_)) {
+            if (display_objective->isDisplaying(*objective_)) {
                 board.clearDisplayObjective(i);
             }
         }
     }
-
     if (slot.has_value()) {
-        board.setDisplayObjective(EndstoneScoreboard::toMinecraftSlot(slot.value()), objective_,
+        board.setDisplayObjective(EndstoneScoreboard::toMinecraftSlot(slot.value()), *objective_,
                                   static_cast<::ObjectiveSortOrder>(order));
     }
-    return {};
 }
 
-Result<RenderType> EndstoneObjective::getRenderType() const
+RenderType EndstoneObjective::getRenderType() const
 {
-    ENDSTONE_CHECK_RESULT(checkState());
-    return static_cast<RenderType>(objective_.getRenderType());
+    checkState();
+    return static_cast<RenderType>(objective_->getRenderType());
 }
 
-Result<std::unique_ptr<Score>> EndstoneObjective::getScore(ScoreEntry entry) const
+std::unique_ptr<Score> EndstoneObjective::getScore(ScoreEntry entry) const
 {
-    ENDSTONE_CHECK_RESULT(checkState());
+    checkState();
     return std::make_unique<EndstoneScore>(copy(), entry);
 }
 
-Result<EndstoneScoreboard *> EndstoneObjective::checkState() const
+EndstoneScoreboard &EndstoneObjective::checkState() const
 {
-    if (scoreboard_.board_.getObjective(name_) == nullptr) {
-        return nonstd::make_unexpected(fmt::format("Objective '{}' is unregistered from the scoreboard.", name_));
-    }
-    return &scoreboard_;
+    Preconditions::checkState(objective_.isValid(), "Unregistered scoreboard objective.");
+    return scoreboard_;
 }
 
 std::unique_ptr<EndstoneObjective> EndstoneObjective::copy() const
