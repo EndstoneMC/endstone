@@ -15,69 +15,115 @@
 #pragma once
 
 #include <functional>
+#include <map>
+#include <variant>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/core/string/string_hash.h"
+#include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/core/utility/pub_sub/publisher.h"
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/util/new_type.h"
 
 class GameRule {
 public:
-    enum class Type : uint8_t {
+    enum class Type : unsigned char {
         Invalid = 0,
         Bool = 1,
         Int = 2,
         Float = 3,
     };
 
-    union Value {
-        bool bool_val;
-        int int_val;
-        float float_val;
-        Value() = default;
-        Value(const bool val) : bool_val(val) {}
-        Value(const int val) : int_val(val) {}
-        Value(const float val) : float_val(val) {}
-        Value &operator=(const bool val)
-        {
-            bool_val = val;
-            return *this;
-        }
-        Value &operator=(const int val)
-        {
-            int_val = val;
-            return *this;
-        }
-        Value &operator=(const float val)
-        {
-            float_val = val;
-            return *this;
-        }
+    using Value = ::std::variant<::std::monostate, bool, int, float>;
+
+    class ValidationError {
+    private:
+        bool success_;
+        std::string error_description_;
+        std::vector<::std::string> error_parameters_;
     };
 
-    using TagDataNotFoundCallback = std::function<void(GameRule &, const BaseGameVersion &)>;
-    using ValidateValueCallback = std::function<bool(const Value &, class ValidationError *)>;
+    using TagDataNotFoundCallback = ::std::function<void(::GameRule &, ::BaseGameVersion const &)>;
 
-    GameRule();
+    using ValidateValueCallback = ::std::function<bool(::std::variant<::std::monostate, bool, int, float> const &,
+                                                       ::GameRule::ValidationError *)>;
     [[nodiscard]] bool getBool() const
     {
-        return value_.bool_val;
+        return std::get<bool>(value_);
     }
+    [[nodiscard]] int getInt() const
+    {
+        return std::get<int>(value_);
+    }
+    [[nodiscard]] float getFloat() const
+    {
+        return std::get<float>(value_);
+    }
+    bool setBool(bool value, bool *p_validated, GameRule::ValidationError *error_output)
+    {
+        if (validate_value_callback_ && !validate_value_callback_(value, error_output)) {
+            if (p_validated) {
+                *p_validated = false;
+            }
+            return false;
+        }
+        *p_validated = true;
+        if (type_ == Type::Bool && value != getBool()) {
+            is_default_set_ = false;
+            value_ = value;
+            return true;
+        }
+        return false;
+    }
+    bool setInt(int value, bool *p_validated, GameRule::ValidationError *error_output)
+    {
+        if (validate_value_callback_ && !validate_value_callback_(value, error_output)) {
+            if (p_validated) {
+                *p_validated = false;
+            }
+            return false;
+        }
+        *p_validated = true;
+        if (type_ == Type::Int && value != getInt()) {
+            is_default_set_ = false;
+            value_ = value;
+            return true;
+        }
+        return false;
+    }
+    bool setFloat(float value, bool *p_validated, GameRule::ValidationError *error_output)
+    {
+        if (validate_value_callback_ && !validate_value_callback_(value, error_output)) {
+            if (p_validated) {
+                *p_validated = false;
+            }
+            return false;
+        }
+        *p_validated = true;
+        if (type_ == Type::Float && value != getFloat()) {
+            is_default_set_ = false;
+            value_ = value;
+            return true;
+        }
+        return false;
+    }
+    GameRule();
 
 private:
     bool should_save_;
-    Type type_;
-    Value value_;
-    std::string name_;
+    GameRule::Type type_;
+    std::variant<::std::monostate, bool, int, float> value_;
+    ::std::string name_;
     bool allow_use_in_command_;
     bool allow_use_in_scripting_;
     bool is_default_set_;
-    bool requires_cheat_;
+    bool requires_cheats_;
     bool can_be_modified_by_player_;
-    TagDataNotFoundCallback tag_not_found_callback_;
-    ValidateValueCallback validate_value_callback_;
+    std::function<void(::GameRule &, ::BaseGameVersion const &)> tag_not_found_callback_;
+    std::function<bool(::std::variant<::std::monostate, bool, int, float> const &, GameRule::ValidationError *)>
+        validate_value_callback_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(GameRule, 176, 144);
+BEDROCK_STATIC_ASSERT_SIZE(GameRule, 184, 144);
 
 struct GameRuleId : NewType<int> {
     GameRuleId() = default;
@@ -99,6 +145,30 @@ public:
         }
         return default_value;
     }
+    [[nodiscard]] int getInt(GameRuleId id, int default_value) const
+    {
+        if (id >= 0 && id < game_rules_.size()) {
+            return game_rules_[id].getInt();
+        }
+        return default_value;
+    }
+    [[nodiscard]] float getFloat(GameRuleId id, float default_value) const
+    {
+        if (id >= 0 && id < game_rules_.size()) {
+            return game_rules_[id].getFloat();
+        }
+        return default_value;
+    }
+    std::unique_ptr<GameRulesChangedPacket> setRule(GameRuleId rule, bool value, bool return_packet,
+                                                    bool *p_value_validated, bool *p_value_changed,
+                                                    GameRule::ValidationError *error_output);
+
+    std::unique_ptr<GameRulesChangedPacket> setRule(GameRuleId rule, int value, bool return_packet,
+                                                    bool *p_value_validated, bool *p_value_changed,
+                                                    GameRule::ValidationError *error_output);
+    std::unique_ptr<GameRulesChangedPacket> setRule(GameRuleId rule, float value, bool return_packet,
+                                                    bool *p_value_validated, bool *p_value_changed,
+                                                    GameRule::ValidationError *error_output);
 
     enum GameRulesIndex : int {  // NOLINTBEGIN
         INVALID_GAME_RULE = -1,
@@ -151,6 +221,11 @@ public:
     };  // NOLINTEND
 
 private:
+    ::std::unique_ptr<::GameRulesChangedPacket> _setGameRule(GameRule *game_rule,
+                                                             std::variant<std::monostate, bool, int, float> value,
+                                                             GameRule::Type type, bool return_packet,
+                                                             bool *p_value_validated, bool *p_value_changed,
+                                                             GameRule::ValidationError *error_output);
     GameRuleMap game_rules_;
     WorldPolicyMap world_policies_;
     Bedrock::PubSub::Publisher<void(const GameRules &, const GameRuleId &), Bedrock::PubSub::ThreadModel::MultiThreaded>
