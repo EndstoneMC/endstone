@@ -30,7 +30,7 @@ public:
     virtual ~ItemMetaExtras() = default;
     [[nodiscard]] virtual bool isEmpty() const = 0;
     virtual void applyToItem(::CompoundTag &tag) const = 0;
-    [[nodiscard]] virtual bool applicableTo(ItemId type) const = 0;
+    [[nodiscard]] virtual bool applicableTo(ItemTypeId type) const = 0;
     [[nodiscard]] virtual bool equalsCommon(const ItemMeta &meta) const = 0;
     [[nodiscard]] virtual bool notUncommon(const ItemMeta &meta) const = 0;
 };
@@ -275,7 +275,7 @@ public:
         }
     }
 
-    [[nodiscard]] bool applicableTo(ItemId type) const override
+    [[nodiscard]] bool applicableTo(ItemTypeId type) const override
     {
         return type != ItemType::Air;
     }
@@ -324,7 +324,7 @@ private:
             auto lvl = enchant_tag.getShort("lvl") & 0xffff;
             const auto *enchant = Enchant::getEnchant(static_cast<Enchant::Type>(id));
             if (enchant) {
-                enchantments[EnchantmentId(enchant->getStringId().getString())] = lvl;
+                enchantments[enchant->getStringId().getString()] = lvl;
             }
         });
         return enchantments;
@@ -340,7 +340,7 @@ private:
         auto list = std::make_unique<::ListTag>();
         for (const auto &[id, lvl] : enchantments) {
             auto subtag = std::make_unique<::CompoundTag>();
-            const auto *enchant = Enchant::getEnchantFromName(std::string(id));
+            const auto *enchant = Enchant::getEnchantFromName(std::string(EnchantmentId(id).getKey()));
             if (!enchant) {
                 continue;
             }

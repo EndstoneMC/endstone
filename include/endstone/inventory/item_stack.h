@@ -37,7 +37,7 @@ class ItemStack {
     ItemStack() = default;
 
 public:
-    explicit ItemStack(ItemId type, const int amount = 1, const int data = 0)
+    explicit ItemStack(const ItemTypeId &type, const int amount = 1, const int data = 0)
     {
         if (const auto *item = ItemType::get(type); item != nullptr) {
             type_ = type;
@@ -46,7 +46,8 @@ public:
         }
     }
 
-    ItemStack(const ItemStack &stack) : type_(stack.getType()), amount_(stack.getAmount()), data_(stack.getData())
+    ItemStack(const ItemStack &stack)
+        : type_(stack.getType().getId()), amount_(stack.getAmount()), data_(stack.getData())
     {
         if (stack.hasItemMeta()) {
             ItemStack::setItemMeta(stack.getItemMeta().get());
@@ -68,9 +69,12 @@ public:
      *
      * @return Type of the items in this stack
      */
-    [[nodiscard]] virtual ItemId getType() const
+    [[nodiscard]] virtual const ItemType &getType() const
     {
-        return type_;
+        if (const auto *item = ItemType::get(type_); item != nullptr) {
+            return *item;
+        }
+        return *ItemType::get(ItemType::Air);
     }
 
     /**
@@ -78,15 +82,14 @@ public:
      *
      * @param type New type to set the items in this stack to
      */
-    virtual Result<void> setType(ItemId type)
+    virtual void setType(ItemTypeId type)
     {
         const auto *item_type = ItemType::get(type);
-        ENDSTONE_CHECKF(item_type != nullptr, "Unknown item type: {}", type);
+        Preconditions::checkArgument(item_type != nullptr, "Unknown item type: {}", type);
         type_ = type;
         if (meta_ != nullptr) {
             meta_ = detail::getServer().getItemFactory().asMetaFor(meta_.get(), type);
         }
-        return {};
     }
 
     /**
@@ -104,11 +107,11 @@ public:
      *
      * @param amount New amount of items in this stack
      */
-    virtual Result<void> setAmount(const int amount)
+    virtual void setAmount(const int amount)
     {
-        ENDSTONE_CHECKF(amount >= 1 && amount <= 0xff, "Item stack amount must be between 1 to 255, got {}.", amount);
+        Preconditions::checkArgument(amount >= 1 && amount <= 0xff,
+                                     "Item stack amount must be between 1 to 255, got {}.", amount);
         amount_ = amount;
-        return {};
     }
 
     /**
@@ -227,7 +230,7 @@ public:
         CompoundTag tag;
         tag["Name"] = StringTag(type_);
         tag["Count"] = ByteTag(amount_);
-        tag["Damage"] = ShortTag(data_);
+        tag["Damage"] = ShortTag(static_cast<short>(data_));
         if (hasItemMeta()) {
             tag["tag"] = getItemMeta()->toNbt();
         }

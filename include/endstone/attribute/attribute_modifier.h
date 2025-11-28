@@ -39,15 +39,20 @@ public:
         /**
          * @brief Adds (or subtracts) the specified amount to the base value.
          */
-        AddNumber,
+        Add,
         /**
-         * @brief Adds this scalar of amount to the base value.
+         * @brief Multiplies the current value of the attribute by (1 + x),
+         *        where x is the sum of the modifiers' amounts.
          */
-        AddScalar,
+        MultiplyBase,
         /**
-         * @brief Multiply amount by this value, after adding 1 to it.
+         * @brief For every modifier, multiplies the current value of the attribute by (1 + x),
+         *        where x is the amount of the particular modifier.
+         *
+         * @note Functions the same as MultiplyBase if there is only a single modifier.
+         *       However, for multiple modifiers it multiplies the modifiers rather than adding them.
          */
-        MultiplyScalar1
+        Multiply
     };
 
     AttributeModifier(std::string name, float amount, Operation operation, Operand operand = Operand::Value)

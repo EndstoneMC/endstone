@@ -242,14 +242,10 @@ public:
 
         // Cast elements to int
         try {
-            auto result =
+            auto color =
                 endstone::Color::fromRGBA(seq[0].cast<uint8_t>(), seq[1].cast<uint8_t>(), seq[2].cast<uint8_t>(),
                                           static_cast<uint8_t>(len == 4 ? seq[3].cast<uint8_t>() : 255));
-            if (!result) {
-                PyErr_SetString(PyExc_ValueError, result.error().c_str());
-                return false;
-            }
-            value = std::move(result.value());
+            value = std::move(color);
         }
         catch (const cast_error &) {
             PyErr_SetString(PyExc_ValueError, "Color elements must be integers");

@@ -26,12 +26,12 @@ EndstoneItemFactory &EndstoneItemFactory::instance()
     return factory;
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemId type) const
+std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemTypeId type) const
 {
     return getItemMeta(type, nullptr);
 }
 
-bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, const ItemId type) const
+bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, const ItemTypeId type) const
 {
     if (meta == nullptr) {
         return false;
@@ -58,7 +58,7 @@ bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) c
     return equals0(static_cast<const EndstoneItemMeta &>(*meta1), static_cast<const EndstoneItemMeta &>(*meta2));
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, ItemId type) const
+std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, ItemTypeId type) const
 {
     return getItemMeta(type, meta);
 }
@@ -69,7 +69,7 @@ std::unique_ptr<ItemStack> EndstoneItemFactory::createItemStack(const CompoundTa
     return std::make_unique<EndstoneItemStack>(item);
 }
 
-std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemId &type, const ItemMeta *meta) const
+std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemTypeId &type, const ItemMeta *meta) const
 {
     return EndstoneItemMetas::getItemMetaDetails(type).fromItemMeta(type, meta);
 }

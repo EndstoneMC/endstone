@@ -33,42 +33,39 @@ ScoreEntry EndstoneScore::getEntry() const
     return entry_;
 }
 
-Result<int> EndstoneScore::getValue() const
+int EndstoneScore::getValue() const
 {
-    auto board = objective_->checkState();
-    ENDSTONE_CHECK_RESULT(board);
-    const auto &id = board.value()->getScoreboardId(entry_);
-    if (id.isValid() && objective_->objective_.hasScore(id)) {
-        return objective_->objective_.getPlayerScore(id).value;
+    auto &board = objective_->checkState();
+    const auto &id = board.getScoreboardId(entry_);
+    if (id.isValid() && objective_->objective_->hasScore(id)) {
+        return objective_->objective_->getPlayerScore(id).value;
     }
     return 0;
 }
 
-Result<void> EndstoneScore::setValue(int score)
+void EndstoneScore::setValue(int score)
 {
-    auto board = objective_->checkState();
-    ENDSTONE_CHECK_RESULT(board);
-    const auto &id = board.value()->getOrCreateScoreboardId(entry_);
-    ENDSTONE_CHECK(id.isValid(), "Unable to create scoreboard id for entry.");
+    auto &board = objective_->checkState();
+    const auto &id = board.getOrCreateScoreboardId(entry_);
+    Preconditions::checkState(id.isValid(), "Unable to create scoreboard id for entry.");
 
     ScoreboardOperationResult result;
-    board.value()->board_.modifyPlayerScore(result, id, objective_->objective_, score, PlayerScoreSetFunction::Set);
+    board.board_.modifyPlayerScore(result, id, *objective_->objective_, score, PlayerScoreSetFunction::Set);
     switch (result) {
     case ScoreboardOperationResult::ReadOnlyCriteria:
-        return nonstd::make_unexpected("Cannot modify read-only score.");
+        throw std::runtime_error("Cannot modify read-only score.");
     case ScoreboardOperationResult::Success:
-        return {};
+        return;
     default:
-        return nonstd::make_unexpected("Unable to modify score.");
+        throw std::runtime_error("Unable to modify score.");
     }
 }
 
-Result<bool> EndstoneScore::isScoreSet() const
+bool EndstoneScore::isScoreSet() const
 {
-    auto board = objective_->checkState();
-    ENDSTONE_CHECK_RESULT(board);
-    const auto &id = board.value()->getScoreboardId(entry_);
-    return id.isValid() && objective_->objective_.hasScore(id);
+    auto &board = objective_->checkState();
+    const auto &id = board.getScoreboardId(entry_);
+    return id.isValid() && objective_->objective_->hasScore(id);
 }
 
 Objective &EndstoneScore::getObjective() const

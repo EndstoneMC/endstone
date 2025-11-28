@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "endstone/util/result.h"
+#include "endstone/check.h"
 
 namespace endstone {
 /**
@@ -143,11 +143,11 @@ public:
      *
      * @param direction The facing of the cursor, from 0 to 15.
      */
-    Result<void> setDirection(std::int8_t direction)
+    void setDirection(std::int8_t direction)
     {
-        ENDSTONE_CHECKF(direction >= 0 && direction <= 15, "direction must be between 0 and 15 but is {}", direction);
+        Preconditions::checkArgument(direction >= 0 && direction <= 15, "direction must be between 0 and 15 but is {}",
+                                     direction);
         direction_ = direction;
-        return {};
     }
 
     /**

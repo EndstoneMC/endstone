@@ -24,6 +24,13 @@ Bedrock::NotNullNonOwnerPtr<const RemoteConnector> NetworkSystem::getRemoteConne
     return remote_connector_.get();
 }
 
+void NetworkSystem::closeConnection(const NetworkIdentifier &id, const Connection::DisconnectFailReason reason,
+                                    const std::string &reason_message)
+{
+    onConnectionClosed(id, reason, reason_message, false, {});
+    getRemoteConnector()->closeNetworkConnection(id);
+}
+
 const cereal::ReflectionCtx &NetworkSystem::getPacketReflectionCtx() const
 {
     return *reflection_ctx_.get();

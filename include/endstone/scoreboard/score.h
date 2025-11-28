@@ -41,14 +41,14 @@ public:
      *
      * @return the current score
      */
-    [[nodiscard]] virtual Result<int> getValue() const = 0;
+    [[nodiscard]] virtual int getValue() const = 0;
 
     /**
      * @brief Sets the current score.
      *
      * @param score New score
      */
-    virtual Result<void> setValue(int score) = 0;
+    virtual void setValue(int score) = 0;
 
     /**
      * @brief Shows if this score has been set at any point in time.
@@ -56,7 +56,7 @@ public:
      * @return if this score has been set before
      */
 
-    [[nodiscard]] virtual Result<bool> isScoreSet() const = 0;
+    [[nodiscard]] virtual bool isScoreSet() const = 0;
 
     /**
      * @brief Gets the Objective being tracked by this Score.

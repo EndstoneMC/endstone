@@ -25,8 +25,8 @@ public:
     [[nodiscard]] std::vector<MapCursor> getCursors() const override;
     void setCursors(const std::vector<MapCursor> &cursors) override;
     void setPixelColor(int x, int y, Color color) override;
-    [[nodiscard]] Result<Color> getPixelColor(int x, int y) const override;
-    [[nodiscard]] Result<Color> getBasePixelColor(int x, int y) const override;
+    [[nodiscard]] Color getPixelColor(int x, int y) const override;
+    [[nodiscard]] Color getBasePixelColor(int x, int y) const override;
     void setPixel(int x, int y, std::uint32_t color) override;
     [[nodiscard]] std::uint32_t getPixel(int x, int y) const override;
     [[nodiscard]] std::uint32_t getBasePixel(int x, int y) const override;

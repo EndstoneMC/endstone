@@ -69,7 +69,7 @@ public:
      *
      * @return The color
      */
-    [[nodiscard]] virtual Result<Color> getPixelColor(int x, int y) const = 0;
+    [[nodiscard]] virtual Color getPixelColor(int x, int y) const = 0;
 
     /**
      * @brief Get a pixel from the layers below this canvas.
@@ -79,7 +79,7 @@ public:
      *
      * @return The color
      */
-    [[nodiscard]] virtual Result<Color> getBasePixelColor(int x, int y) const = 0;
+    [[nodiscard]] virtual Color getBasePixelColor(int x, int y) const = 0;
 
     /**
      * @brief Draw a pixel to the canvas.

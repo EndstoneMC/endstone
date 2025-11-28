@@ -86,7 +86,7 @@ public:
         return ActorPermissibleBase::get().addAttachment(plugin);
     }
 
-    Result<void> removeAttachment(PermissionAttachment &attachment) override
+    bool removeAttachment(PermissionAttachment &attachment) override
     {
         return ActorPermissibleBase::get().removeAttachment(attachment);
     }

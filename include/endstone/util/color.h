@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include "endstone/util/result.h"
-
 namespace endstone {
 /**
  * @brief Represents a color with red, green, blue, and alpha components.
@@ -41,12 +39,8 @@ public:
      *
      * @return a new Color object for the red, green, blue, alpha
      */
-    static Result<Color> fromRGBA(int red, int green, int blue, int alpha)
+    static Color fromRGBA(int red, int green, int blue, int alpha)
     {
-        ENDSTONE_CHECKF(red >= 0 && red <= BIT_MASK, "Red[{}] must be between 0-255", red);
-        ENDSTONE_CHECKF(green >= 0 && green <= BIT_MASK, "Green[{}] must be between 0-255", green);
-        ENDSTONE_CHECKF(blue >= 0 && blue <= BIT_MASK, "Blue[{}] must be between 0-255", blue);
-        ENDSTONE_CHECKF(alpha >= 0 && alpha <= BIT_MASK, "Alpha[{}] must be between 0-255", alpha);
         return Color(static_cast<std::uint8_t>(red), static_cast<std::uint8_t>(green), static_cast<std::uint8_t>(blue),
                      static_cast<std::uint8_t>(alpha));
     }
@@ -60,7 +54,7 @@ public:
      *
      * @return a new Color object for the red, green, blue
      */
-    static Result<Color> fromRGB(const int red, const int green, const int blue)
+    static Color fromRGB(const int red, const int green, const int blue)
     {
         return fromRGBA(red, green, blue, DEFAULT_ALPHA);
     }
@@ -74,7 +68,7 @@ public:
      *
      * @return a new Color object for the red, green, blue
      */
-    static Result<Color> fromBGR(const int blue, const int green, const int red)
+    static Color fromBGR(const int blue, const int green, const int red)
     {
         return fromRGBA(red, green, blue, DEFAULT_ALPHA);
     }
@@ -86,7 +80,7 @@ public:
      *
      * @return a new color object for specified values
      */
-    static Result<Color> fromRGBA(const int rgba)
+    static Color fromRGBA(const int rgba)
     {
         return fromRGBA(rgba >> 24 & BIT_MASK, rgba >> 16 & BIT_MASK, rgba >> 8 & BIT_MASK, rgba & BIT_MASK);
     }
@@ -98,7 +92,7 @@ public:
      *
      * @return a new color object for specified values
      */
-    static Result<Color> fromABGR(const int abgr)
+    static Color fromABGR(const int abgr)
     {
         return fromRGBA(abgr & BIT_MASK, abgr >> 8 & BIT_MASK, abgr >> 16 & BIT_MASK, abgr >> 24 & BIT_MASK);
     }
@@ -111,15 +105,13 @@ public:
      *
      * @return a new color object for specified values
      */
-    static Result<Color> fromRGB(const int rgb)
+    static Color fromRGB(const int rgb)
     {
-        ENDSTONE_CHECKF((rgb >> 24) == 0, "Extraneous data in: {}", rgb);
         return fromRGB(rgb >> 16 & BIT_MASK, rgb >> 8 & BIT_MASK, rgb & BIT_MASK);
     }
 
-    static Result<Color> fromBGR(const int bgr)
+    static Color fromBGR(const int bgr)
     {
-        ENDSTONE_CHECKF((bgr >> 24) == 0, "Extraneous data in: {}", bgr);
         return fromBGR(bgr >> 16 & BIT_MASK, bgr >> 8 & BIT_MASK, bgr & BIT_MASK);
     }
 
@@ -140,7 +132,7 @@ public:
      *
      * @return a new color object with the red component
      */
-    [[nodiscard]] Result<Color> setRed(const int red) const
+    [[nodiscard]] Color setRed(const int red) const
     {
         return fromRGBA(red, getGreen(), getBlue(), getAlpha());
     }
@@ -162,7 +154,7 @@ public:
      *
      * @return a new color object with the green component
      */
-    [[nodiscard]] Result<Color> setGreen(const int green) const
+    [[nodiscard]] Color setGreen(const int green) const
     {
         return fromRGBA(getRed(), green, getBlue(), getAlpha());
     }
@@ -184,7 +176,7 @@ public:
      *
      * @return a new color object with the blue component
      */
-    [[nodiscard]] Result<Color> setBlue(const int blue) const
+    [[nodiscard]] Color setBlue(const int blue) const
     {
         return fromRGBA(getRed(), getGreen(), blue, getAlpha());
     }
@@ -206,7 +198,7 @@ public:
      *
      * @return a new color object with the alpha component
      */
-    [[nodiscard]] Result<Color> setAlpha(const int alpha) const
+    [[nodiscard]] Color setAlpha(const int alpha) const
     {
         return fromRGBA(getRed(), getGreen(), getBlue(), alpha);
     }

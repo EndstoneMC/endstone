@@ -51,22 +51,22 @@ class AttributeModifier:
         Operation to be applied.
         """
 
-        ADD_NUMBER = 0
+        ADD = 0
         """
         Adds (or subtracts) the specified amount to the base value.
         """
-        ADD_SCALAR = 1
+        MULTIPLY_BASE = 1
         """
-        Adds this scalar of amount to the base value.
+        Multiplies the current value of the attribute by (1 + x), where x is the sum of the modifiers' amounts.
         """
-        MULTIPLY_SCALAR_1 = 2
+        MULTIPLY = 2
         """
-        Multiply amount by this value, after adding 1 to it.
+        For every modifier, multiplies the current value of the attribute by (1 + x), where x is the amount of the particular modifier.
         """
 
-    ADD_NUMBER = Operation.ADD_NUMBER
-    ADD_SCALAR = Operation.ADD_SCALAR
-    MULTIPLY_SCALAR_1 = Operation.MULTIPLY_SCALAR_1
+    ADD = Operation.ADD
+    MULTIPLY_BASE = Operation.MULTIPLY_BASE
+    MULTIPLY = Operation.MULTIPLY
     @property
     def unique_id(self) -> uuid.UUID:
         """

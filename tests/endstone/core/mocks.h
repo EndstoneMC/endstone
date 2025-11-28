@@ -32,13 +32,13 @@ public:
     MOCK_METHOD(bool, dispatchCommand, (endstone::CommandSender &, std::string), (const, override));
     MOCK_METHOD(endstone::Scheduler &, getScheduler, (), (const, override));
     MOCK_METHOD(endstone::ServiceManager &, getServiceManager, (), (const, override));
-    MOCK_METHOD(endstone::IRegistry *, _getRegistry, (const std::string&), (const, override));
+    MOCK_METHOD(endstone::IRegistry *, _getRegistry, (const std::string &), (const, override));
     MOCK_METHOD(endstone::MapView *, getMap, (std::int64_t), (const, override));
     MOCK_METHOD(endstone::MapView &, createMap, (const endstone::Dimension &), (const, override));
     MOCK_METHOD(endstone::Level *, getLevel, (), (const, override));
     MOCK_METHOD(std::vector<endstone::Player *>, getOnlinePlayers, (), (const, override));
     MOCK_METHOD(int, getMaxPlayers, (), (const, override));
-    MOCK_METHOD(endstone::Result<void>, setMaxPlayers, (int), (override));
+    MOCK_METHOD(void, setMaxPlayers, (int), (override));
     MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID), (const, override));
     MOCK_METHOD(endstone::Player *, getPlayer, (std::string), (const, override));
     MOCK_METHOD(int, getPort, (), (const, override));
@@ -65,10 +65,9 @@ public:
     MOCK_METHOD(std::unique_ptr<endstone::BossBar>, createBossBar,
                 (std::string, endstone::BarColor, endstone::BarStyle, std::vector<endstone::BarFlag>),
                 (const, override));
-    MOCK_METHOD(endstone::Result<std::unique_ptr<endstone::BlockData>>, createBlockData, (std::string),
+    MOCK_METHOD(std::unique_ptr<endstone::BlockData>, createBlockData, (std::string), (const, override));
+    MOCK_METHOD(std::unique_ptr<endstone::BlockData>, createBlockData, (std::string, endstone::BlockStates),
                 (const, override));
-    MOCK_METHOD(endstone::Result<std::unique_ptr<endstone::BlockData>>, createBlockData,
-                (std::string, endstone::BlockStates), (const, override));
     MOCK_METHOD(endstone::PlayerBanList &, getBanList, (), (const, override));
     MOCK_METHOD(endstone::IpBanList &, getIpBanList, (), (const, override));
 };

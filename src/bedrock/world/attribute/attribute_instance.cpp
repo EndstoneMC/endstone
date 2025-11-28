@@ -61,6 +61,18 @@ float AttributeInstance::getCurrentValue() const
     return current_value_;
 }
 
+void AttributeInstance::setMaxValue(float max, AttributeModificationContext context)
+{
+    current_max_value_ = max;
+    _setDirty(context);
+}
+
+void AttributeInstance::setMinValue(float min, AttributeModificationContext context)
+{
+    current_min_value_ = min;
+    _setDirty(context);
+}
+
 void AttributeInstance::setCurrentValue(float value, AttributeModificationContext context)
 {
     current_value_ = value;

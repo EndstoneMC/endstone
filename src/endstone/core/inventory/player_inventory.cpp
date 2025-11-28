@@ -54,7 +54,7 @@ std::vector<std::unique_ptr<ItemStack>> EndstonePlayerInventory::getContents() c
     return EndstoneInventory::getContents();
 }
 
-Result<void> EndstonePlayerInventory::setContents(std::vector<ItemStack const *> items)
+void EndstonePlayerInventory::setContents(std::vector<ItemStack const *> items)
 {
     return EndstoneInventory::setContents(items);
 }
@@ -199,12 +199,12 @@ int EndstonePlayerInventory::getHeldItemSlot() const
     return holder_.getSelectedItemSlot();
 }
 
-Result<void> EndstonePlayerInventory::setHeldItemSlot(int slot)
+void EndstonePlayerInventory::setHeldItemSlot(int slot)
 {
-    ENDSTONE_CHECKF(slot >= 0 && slot < FillingContainer::HOTBAR_SIZE, "Slot ({}) is not between 0 and {} inclusive",
-                    slot, FillingContainer::HOTBAR_SIZE - 1)
+    Preconditions::checkArgument(slot >= 0 && slot < FillingContainer::HOTBAR_SIZE,
+                                 "Slot ({}) is not between 0 and {} inclusive", slot,
+                                 FillingContainer::HOTBAR_SIZE - 1);
     holder_.setSelectedSlot(slot);
-    return {};
 }
 
 }  // namespace endstone::core

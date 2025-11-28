@@ -76,40 +76,14 @@ void init_scoreboard(py::module_ &m)
         .def("unregister", &Objective::unregister, "Unregisters this objective from the associated Scoreboard.")
         .def_property_readonly("is_displayed", &Objective::isDisplayed,
                                "Gets if the objective is currently displayed in a slot.")
-        .def_property(
-            "display_slot",
-            [](const Objective &self) -> std::optional<DisplaySlot> {
-                auto result = self.isDisplayed();
-                if (result) {
-                    if (result.value()) {
-                        return self.getDisplaySlot().value();
-                    }
-                    return std::nullopt;
-                }
-                throw std::runtime_error(result.error());
-            },
-            &Objective::setDisplaySlot, "Gets or sets the display slot this objective is displayed at")
-        .def_property(
-            "sort_order",
-            [](const Objective &self) -> std::optional<ObjectiveSortOrder> {
-                auto result = self.isDisplayed();
-                if (result) {
-                    if (result.value()) {
-                        return self.getSortOrder().value();
-                    }
-                    return std::nullopt;
-                }
-                throw std::runtime_error(result.error());
-            },
-            &Objective::setSortOrder, "Gets or sets the sort order for this objective")
+        .def_property("display_slot", &Objective::getDisplaySlot, &Objective::setDisplaySlot,
+                      "Gets or sets the display slot this objective is displayed at")
+        .def_property("sort_order", &Objective::getSortOrder, &Objective::setSortOrder,
+                      "Gets or sets the sort order for this objective")
         .def(
-            "set_display",
-            [](Objective &self, std::optional<DisplaySlot> slot, std::optional<ObjectiveSortOrder> order) {
-                self.setDisplay(slot, order.value_or(ObjectiveSortOrder::Ascending));
-            },
+            "set_display", &Objective::setDisplay,
             "Sets the display slot and sort order for this objective. This will remove it from any other display slot.",
-            py::arg("slot"), py::arg("order") = std::nullopt)
-
+            py::arg("slot"), py::arg("order") = ObjectiveSortOrder::Ascending)
         .def_property_readonly("render_type", &Objective::getRenderType,
                                "Gets the manner in which this objective will be rendered.")
         .def("get_score", &Objective::getScore, "Gets an entry's Score for this objective", py::arg("entry"))
