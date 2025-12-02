@@ -30,19 +30,15 @@ const std::unordered_map<std::string, void *> &get_detours();
 }  // namespace details
 
 void install();
-template <std::size_t RVA>
-void *get_original()
+
+inline void *get_original(std::size_t offset)
 {
-    static void **original = nullptr;
-    if (!original) {
-        original = &details::get_original(static_cast<char *>(get_executable_base()) + RVA);
-    }
-    return *original;
+    return details::get_original(static_cast<char *>(get_executable_base()) + offset);
 }
 }  // namespace endstone::runtime::hook
 
 #define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, __FUNCDNAME__, ##__VA_ARGS__)
-#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...)                                                              \
-    std::invoke(                                                                                                     \
-        endstone::detail::fp_cast(fp, endstone::runtime::hook::get_original<endstone::runtime::get_symbol(name)>()), \
+#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...)                                                         \
+    std::invoke(                                                                                                \
+        endstone::detail::fp_cast(fp, endstone::runtime::hook::get_original(endstone::runtime::get_symbol(name))), \
         ##__VA_ARGS__)

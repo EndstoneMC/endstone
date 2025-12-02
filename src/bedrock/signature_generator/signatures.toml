@@ -1,0 +1,1007 @@
+timestamp = 1764680754
+version = "1.21.124"
+
+[[windows.signatures]]
+name = "getI18n::result"
+relative = false
+extra = 0
+pattern = "41 B8 88 01 00 00 48 8D 0D ? ? ? ?"
+rip_relative = true
+rip_offset = 9
+
+[[windows.signatures]]
+name = "BlockState::StateListNode::mHead"
+relative = false
+extra = 0
+pattern = "48 89 0D ? ? ? ? 48 8D 05 ? ? ? ? 48 89 05 "
+rip_relative = true
+rip_offset = 3
+
+[[windows.signatures]]
+name = "Enchant::mEnchants"
+relative = false
+extra = 0
+pattern = "48 8B 0D ? ? ? ? 48 83 C1 ? 48 8B D0 E8 ? ? ? ? 48 8D 4D"
+rip_relative = true
+rip_offset = 3
+
+[[windows.signatures]]
+name = "?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B 8B ? ? ? ? ? ? ? 48 8B 80 ? ? ? ? FF 15 ? ? ? ? 8B 7D"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 90 8B 7D"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? EB ? 48 8B 74 24 ? 84 DB"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z"
+relative = false
+extra = 0
+pattern = "40 0F B6 D6 48 8B CF E8 ? ? ? ? 90 48 8B 7B"
+rip_relative = true
+rip_offset = 8
+
+[[windows.signatures]]
+name = "?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 85 C0 74 ? 44 0F B7 45"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?forEachBlockType@BlockTypeRegistry@@QEAAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 49 8B 86 ? ? ? ? 4C 8B 78"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? ? ? ? ? BA ? ? ? ? 49 8B CC 48 8B 40 ? FF 15 ? ? ? ? F3 44 0F 10 0D"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 83 7D ? ? 41 0F 95 C6"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?load@CommandOriginLoader@@SA?AV?$unique_ptr@VCommandOrigin@@U?$default_delete@VCommandOrigin@@@std@@@std@@AEBVCompoundTag@@AEAVServerLevel@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 90 48 89 75 ? 4C 8B C7"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?addEnumValues@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 4C 8D 43 ? 49 8B 40"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?describe@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVCommandParameterData@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 90 3B FE"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?registerAlias@CommandRegistry@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z"
+relative = false
+extra = 0
+pattern = "90 4C 8D 44 24 ? 48 8D 54 24 ? 48 8B CB E8 ? ? ? ? 48 8D 44 24"
+rip_relative = true
+rip_offset = 15
+
+[[windows.signatures]]
+name = "?registerCommand@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBDW4CommandPermissionLevel@@UCommandFlag@@3@Z"
+relative = false
+extra = 0
+pattern = "66 C7 44 24 ? 80 00 66 C7 44 24 ? 40 00 ? ? ? 4C 8D 05 ? ? ? ? 48 8D 55 ? E8"
+rip_relative = true
+rip_offset = 29
+
+[[windows.signatures]]
+name = "?registerOverloadInternal@CommandRegistry@@AEAAXAEAUSignature@1@AEAUOverload@1@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 90 ? ? ? 48 85 C0 74 ? 49 8B CE 48 8B 40 ? FF 15 ? ? ? ? 90 48 8D 43"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?serializeAvailableCommands@CommandRegistry@@QEBA?AVAvailableCommandsPacket@@XZ"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 90 45 33 C9 4C 8B C0 49 8B D6"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?symbolToString@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VSymbol@1@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 90 48 8B F0 48 83 78 ? ? 76 ? ? ? ? 4C 8B 60"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z"
+relative = false
+extra = 0
+pattern = "49 8B ? 48 8D 4D ? E8 ? ? ? ? 4C 8B ? 48 8D 54 24"
+rip_relative = true
+rip_offset = 8
+
+[[windows.signatures]]
+name = "?getGameVersionString@Common@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B F8 48 83 78 ? ? 76 ? ? ? ? 48 8D 0D"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z"
+relative = false
+extra = 0
+pattern = "48 89 5C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 55 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 45 0F B6 E8"
+
+[[windows.signatures]]
+name = "?start@DedicatedServer@@QEAA?AW4StartResult@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 44 8B F0 48 8D 8D ? ? ? ? E8 ? ? ? ? 48 8D 8D"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z"
+relative = false
+extra = 0
+pattern = "40 57 48 83 EC ? 80 79 ? ? 48 8B F9 0F 29 74 24"
+
+[[windows.signatures]]
+name = "?change@HealthAttributeDelegate@@UEAAMMMAEBVAttributeBuff@@@Z"
+relative = false
+extra = 0
+pattern = "48 8B C4 55 53 56 57 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78 ? 44 0F 29 40 ? 44 0F 29 48"
+
+[[windows.signatures]]
+name = "?fromTag@ItemInstance@@SA?AV1@AEBVCompoundTag@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 90 48 8D 8E ? ? ? ? 48 8B D0 E8 ? ? ? ? 90 48 8D 4D"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
+relative = false
+extra = 0
+pattern = "4C 8D 8D ? ? ? ? 4C 8D 44 24 ? 48 8D 54 24 ? E8"
+rip_relative = true
+rip_offset = 18
+
+[[windows.signatures]]
+name = "?init@ItemStackBase@@IEAAXHHH_N@Z"
+relative = false
+extra = 0
+pattern = "C6 44 24 ? 00 E8 ? ? ? ? 48 8B 4D"
+rip_relative = true
+rip_offset = 6
+
+[[windows.signatures]]
+name = "?executeFull@InventoryTransaction@@QEBA?AW4InventoryTransactionError@@AEAVPlayer@@_N@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 83 F8 ? 75 ? 41 39 45"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?_die@LeavesBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 4C 8B B4 24 ? ? ? ? 48 8B B4 24 ? ? ? ? 4C 8B BC 24 ? ? ? ? 48 8B 8D"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?tick@Level@@UEAAXXZ"
+relative = false
+extra = 0
+pattern = "48 8B 4B 40 E8 ? ? ? ? 48 8B 4B 48 48"
+rip_relative = true
+rip_offset = 5
+
+[[windows.signatures]]
+name = "?_loadMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B 4C 24 ? 48 33 CC E8 ? ? ? ? 48 81 C4 ? ? ? ? 41 5F C3"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 89 45 ? 48 85 C0 74 ? 48 8D 4F"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B 4B ? 48 85 C9 74 ? ? ? 48 8D 54 24"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 90 48 83 BD ? ? ? ? ? 0F 84 ? ? ? ? FF 15"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z"
+relative = false
+extra = 0
+pattern = "48 8B C4 48 89 58 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78 ? 44 0F 29 40 ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4C 8B F2 48 8B F1"
+
+[[windows.signatures]]
+name = "?completeUsingItem@Player@@QEAAXXZ"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? EB ? 48 8B CE E8 ? ? ? ? 48 8B CE"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?drop@Player@@UEAA_NAEBVItemStack@@_N@Z"
+relative = false
+extra = 0
+pattern = "48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 45 0F B6 E0 4C 8B F2 48 8B F1"
+
+[[windows.signatures]]
+name = "?take@Player@@QEAA_NAEAVActor@@HH@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 84 C0 74 ? ? ? ? 48 8B CB 48 8B 40 ? FF 15 ? ? ? ? 48 8B 74 24"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z"
+relative = false
+extra = 0
+pattern = "40 55 53 56 57 41 56 48 8D 6C 24 ? 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 45 ? 41 8B F1 45 0F B6 F0"
+
+[[windows.signatures]]
+name = "?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@@Z"
+relative = false
+extra = 0
+pattern = "48 8B C4 48 89 58 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 68 ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78 ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 45 ? 4C 8B F2 48 8B F1 33 FF"
+
+[[windows.signatures]]
+name = "?stopSleepInBed@Player@@UEAAX_N0@Z"
+relative = false
+extra = 0
+pattern = "40 0F B6 D6 48 8B CB E8 ? ? ? ? 48 8B 4C 24"
+rip_relative = true
+rip_offset = 8
+
+[[windows.signatures]]
+name = "?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z"
+relative = false
+extra = 0
+pattern = "F3 0F 11 4C 24 ? E8 ? ? ? ? 48 8D 4B ? 48 83 C4"
+rip_relative = true
+rip_offset = 7
+
+[[windows.signatures]]
+name = "?_hurt@Mob@@MEAA_NAEBVActorDamageSource@@M_N1@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 0F B6 D8 48 8B 8D ? ? ? ? 48 85 C9 74 ? ? ? ? BA"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?receivePacket@NetworkConnection@@QEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z"
+relative = false
+extra = 0
+pattern = "48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 45 ? 4D 8B D0 4C 89 44 24 ? 4C 8B FA"
+
+[[windows.signatures]]
+name = "?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z"
+relative = false
+extra = 0
+pattern = "45 33 C9 4C 8B C7 48 8D 94 24 ? ? ? ? E8 ? ? ? ? 48"
+rip_relative = true
+rip_offset = 15
+
+[[windows.signatures]]
+name = "?sendToMultiple@NetworkSystem@@QEAAXAEBV?$vector@UNetworkIdentifierWithSubId@@V?$allocator@UNetworkIdentifierWithSubId@@@std@@@std@@AEBVPacket@@@Z"
+relative = false
+extra = 0
+pattern = "48 8B D6 48 8B 5C 24 ? 48 8B 74 24 ? 48 83 C4 ? 5F E9 ? ? ? ? E8"
+rip_relative = true
+rip_offset = 19
+
+[[windows.signatures]]
+name = "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z"
+relative = false
+extra = 0
+pattern = "40 55 53 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 45 0F B6 F1 44 88 4C 24"
+
+[[windows.signatures]]
+name = "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z"
+relative = false
+extra = 0
+pattern = "8B 8F ? ? ? ? 48 8B D3 E8 ? ? ? ? 48 8B 5C 24 ? 48 83 C4"
+rip_relative = true
+rip_offset = 10
+
+[[windows.signatures]]
+name = "?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 8B D8 EB ? 33 DB ? ? ? 48 8B 8F"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?deserialize@ResourcePackStack@@SA?AV?$unique_ptr@VResourcePackStack@@U?$default_delete@VResourcePackStack@@@std@@@std@@AEAV?$basic_istream@DU?$char_traits@D@std@@@3@AEBV?$not_null@V?$NonOwnerPointer@$$CBVIResourcePackRepository@@@Bedrock@@@gsl@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 90 48 8D 8D ? ? ? ? E8 ? ? ? ? 48 8B 85 ? ? ? ? 4C 8B 78"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?createSources@RepositoryFactory@@UEBA?AV?$shared_ptr@VRepositorySources@@@std@@AEBVIResourcePackRepository@@@Z"
+relative = false
+extra = 0
+pattern = "48 89 5C 24 ? 55 56 57 41 56 41 57 48 81 EC ? ? ? ? 49 8B D8 48 8B F2"
+
+[[windows.signatures]]
+name = "?initializePackSource@RepositorySources@@QEAAXAEAVPackSourceFactory@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 0F 57 C0 0F 11 45 ? 48 8B 8F"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8D 45 ? 48 89 45 ? 4C 89 75 ? B9"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?createBlockDescriptor@ScriptBlockUtils@ScriptModuleMinecraft@@YA?AVBlockDescriptor@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$unordered_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@U?$hash@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@U?$equal_to@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@@std@@@2@@std@@@5@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 90 49 8B 4E ? ? ? ? 49 8D 56"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?disconnectClientWithMessage@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@_N@Z"
+relative = false
+extra = 0
+pattern = "45 8B C8 45 33 C0 E8 ? ? ? ? 90 48 8B 54 24"
+rip_relative = true
+rip_offset = 7
+
+[[windows.signatures]]
+name = "?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 44 0F B6 E0 84 C0 75 ? 48 8B 8B"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B 8F ? ? ? ? ? ? ? 8B 97"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@W4SubClientId@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B F8 48 8B CE E8 ? ? ? ? 80 3D"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?_isServerTextEnabled@ServerNetworkHandler@@AEBA_NAEBW4ServerTextEvent@@@Z"
+relative = false
+extra = 0
+pattern = "C6 44 24 ? 02 48 8D 54 24 ? E8 ? ? ? ? 84"
+rip_relative = true
+rip_offset = 11
+
+[[windows.signatures]]
+name = "?_afterMovementSimulation@ServerPlayerMovementCorrectionSystem@@YAXAEBVUserEntityIdentifierComponent@@AEAVActor@@AEBVPlayerAuthInputPacket@@AEAVReplayStateComponent@@PEBUActorRotationComponent@@AEAUServerPlayerMovementComponent@@AEAUStateVectorComponent@@PEBUBoatMovementComponent@@@Z"
+relative = false
+extra = 0
+pattern = "48 8B C4 48 89 58 ? 48 89 50 ? 48 89 48 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 68 ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78"
+
+[[windows.signatures]]
+name = "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z"
+relative = false
+extra = 0
+pattern = "48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 4D 8B F1"
+
+[[windows.signatures]]
+name = "?_runPlugins@ServerScriptManager@@AEAAXW4PluginExecutionGroup@@AEAVServerInstance@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B 86 ? ? ? ? 48 8D 0D"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?changeDimension@ServerPlayer@@UEAAXV?$AutomaticID@VDimension@@H@@@Z"
+relative = false
+extra = 0
+pattern = "48 89 5C 24 ? 57 48 83 EC ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 44 24 ? 8B DA 48 8B F9 8B 41"
+
+[[windows.signatures]]
+name = "?fromString@UnverifiedCertificate@@SA?AV1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 90 48 8B D0 48 8D 4C 24 ? E8 ? ? ? ? ? ? ? ? ? ? 48 8B 5E"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B CB E8 ? ? ? ? 48 8B 5C 24 ? 48 89 47 ? 48 83 C4"
+rip_relative = true
+rip_offset = 1
+
+[[windows.signatures]]
+name = "?_loadBlocksForCanPlaceOnCanDestroy@ItemStackBase@@CA_NAEAV?$vector@PEBVBlockType@@V?$allocator@PEBVBlockType@@@std@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B 55 ? FF C6"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "BlockState::StateListNode::mHead"
+relative = false
+extra = 0
+pattern = "48 8D 1D ? ? ? ? 66 90 ? ? ? 48 85 DB"
+rip_relative = true
+rip_offset = 3
+
+[[linux.signatures]]
+name = "Enchant::mEnchants"
+relative = false
+extra = 0
+pattern = "48 8B 1D ? ? ? ? 48 8B 2D ? ? ? ? 48 39 EB 75"
+rip_relative = true
+rip_offset = 10
+
+[[linux.signatures]]
+name = "_Z7getI18nv"
+relative = false
+extra = 0
+pattern = "FF 51 30 E8 ? ? ? ? 48"
+rip_relative = true
+rip_offset = 4
+
+[[linux.signatures]]
+name = "_ZN6Player4takeER5Actorii"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 84 C0 0F 85 ? ? ? ? E9 ? ? ? ? 48 89 C7"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN5Actor10teleportToERK4Vec3biib"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 89 DF E8 ? ? ? ? F3 0F 10 40 ? E8 ? ? ? ? C7 84 24"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 89 EF E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 48 89 EF E8 ? ? ? ? 48 89 C7"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 83 C4 ? ? ? ? ? 48 83 C0"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN15BlockDescriptor13ResolveHelper7resolveEb"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 89 EF E8 ? ? ? ? 44 8B 7B"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZNK9BlockType25tryGetStateFromLegacyDataEt"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 41 89 F4 49 89 FD 66 44 89 64 24"
+
+[[linux.signatures]]
+name = "_ZN17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? ? ? ? 4C 8B BB ? ? ? ? 48 89 DF"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 49 8B 45 ? 4C 89 EF BE"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZNK7Command3runERK13CommandOriginR13CommandOutput"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? E9 ? ? ? ? 0F 29 54 24"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN19CommandOriginLoader4loadERK11CompoundTagR11ServerLevel"
+relative = false
+extra = 0
+pattern = "48 89 EE 4C 89 ? E8 ? ? ? ? 48 8D 7C 24 ? 4C 89 ? 4C 89"
+rip_relative = true
+rip_offset = 7
+
+[[linux.signatures]]
+name = "_ZN15CommandRegistry13addEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorIS6_NS4_IS6_EEEE"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 D5 48 89 74 24 ? 0F 57 C0"
+
+[[linux.signatures]]
+name = "_ZNK15CommandRegistry8describeERK20CommandParameterData"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 83 ED ? 73"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN15CommandRegistry13registerAliasENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES6_"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 D3 49 89 F4 49 89 FE ? ? ? A8"
+
+[[linux.signatures]]
+name = "_ZN15CommandRegistry15registerCommandERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEPKc22CommandPermissionLevel11CommandFlagSC_"
+relative = false
+extra = 0
+pattern = "41 B8 40 00 00 00 41 B9 80 00 00 00 E8 ? ? ? ? F6 44 24"
+rip_relative = true
+rip_offset = 13
+
+[[linux.signatures]]
+name = "_ZN15CommandRegistry24registerOverloadInternalERNS_9SignatureERNS_8OverloadE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 4C 89 FF 4C 89 E6 48 89 DA E8 ? ? ? ? 48 89 D8"
+rip_relative = true
+rip_offset = 15
+
+[[linux.signatures]]
+name = "_ZNK15CommandRegistry26serializeAvailableCommandsEv"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? ? ? ? 41 0F B6 CE 48 89 DF"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZNK15CommandRegistry14symbolToStringENS_6SymbolE"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F7 49 89 FE ? ? ? 89 5C 24"
+
+[[linux.signatures]]
+name = "_ZN12CommandUtils12getActorNameERK5Actor"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 4C 89 E7 4C 89 F6 E8 ? ? ? ? ? ? ? ? 74"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN6Common20getGameVersionStringEv"
+relative = false
+extra = 0
+pattern = "41 56 53 48 83 EC ? 48 89 FB 49 89 E6 4C 89 F7 E8 ? ? ? ? 48 8D 15 ? ? ? ? B9 ? 00 00 00"
+rip_relative = true
+rip_offset = 17
+
+[[linux.signatures]]
+name = "_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 41 89 D7 49 89 F4 48 89 FB BF"
+
+[[linux.signatures]]
+name = "_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 89 C5 48 8D BC 24 ? ? ? ? E8 ? ? ? ? ? ? ? 48 89 DF"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef"
+relative = false
+extra = 0
+pattern = "41 56 53 50 0F 57 C9"
+
+[[linux.signatures]]
+name = "_ZN23HealthAttributeDelegate6changeEffRK13AttributeBuff"
+relative = false
+extra = 0
+pattern = "41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 F6 49 89 FD F3 0F 11 44 24"
+
+[[linux.signatures]]
+name = "_ZN12ItemInstance7fromTagERK11CompoundTag"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 49 8D BE ? ? ? ? 48 89 DE E8 ? ? ? ? 48 8D 7C 24"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 FE 4D 85 C0"
+
+[[linux.signatures]]
+name = "_ZN13ItemStackBase4initEiiib"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 4D 85 F6 74 ? 48 8D 7C 24 ? 4C 89 F6"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZNK11LeavesBlock4_dieER11BlockSourceRK8BlockPos"
+relative = false
+extra = 0
+pattern = "41 56 53 48 83 EC ? 49 89 D6 48 89 F3 ? ? ? 48 89 F7 FF 90 ? ? ? ? ? ? ? 48 89 C7 FF 91 ? ? ? ? 48 8D 7C 24"
+
+[[linux.signatures]]
+name = "_ZN5Level4tickEv"
+relative = false
+extra = 0
+pattern = "48 8B 7B 40 E8 ? ? ? ? 48 8B 7B ? 48 85 FF 74 ? ? ? ? FF 90"
+rip_relative = true
+rip_offset = 5
+
+[[linux.signatures]]
+name = "_ZNK20InventoryTransaction11executeFullER6Playerb"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 89 C3 83 F8 ? 75 ? BB"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN14MapDataManager12_loadMapDataERK13ActorUniqueID"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 59 C3 48 8B 41"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 49 89 C4 48 8B 7C 24 ? 48 39 DF"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZNK17MinecraftCommands14executeCommandER14CommandContextb"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? ? ? ? 89 C7 E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 49 8B 77"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8D 44 24 ? 48 85 DB"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN3Mob9knockbackEP5Actorifffff"
+relative = false
+extra = 0
+pattern = "41 56 53 48 81 EC ? ? ? ? F3 0F 11 64 24"
+
+[[linux.signatures]]
+name = "_ZN3Mob5_hurtERK17ActorDamageSourcefbb"
+relative = false
+extra = 0
+pattern = "48 89 EF 4C 89 E6 F3 0F 10 44 24 ? E8 ? ? ? ? 89 C3"
+rip_relative = true
+rip_offset = 13
+
+[[linux.signatures]]
+name = "_ZN17NetworkConnection13receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 85 C0 0F 85 ? ? ? ? 41 0F B6 ? ? ? ? ? F6 C2"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? E9 ? ? ? ? 41 83 FE ? 0F 82"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN13NetworkSystem14sendToMultipleERKNSt3__16vectorI26NetworkIdentifierWithSubIdNS0_9allocatorIS2_EEEERK6Packet"
+relative = false
+extra = 0
+pattern = "4C 89 FE 4C 89 F2 5B 41 5E 41 5F E9 ? ? ? ? E8"
+rip_relative = true
+rip_offset = 12
+
+[[linux.signatures]]
+name = "_ZN4Pack10createPackERK15IPackIOProviderRK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEP16PackSourceReportRKN4Core4PathE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 83 C4 ? F6 44 24 ? ? 4C 8B 74 24"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN16PistonBlockActor4tickER11BlockSource"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 F6 49 89 FC E8 ? ? ? ? 4C 89 E7"
+
+[[linux.signatures]]
+name = "_ZN6Player17completeUsingItemEv"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 FD 48 8D AF"
+# hint: find the constructor of InteractPacket and xref
+
+[[linux.signatures]]
+name = "_ZN6Player4dropERK9ItemStackb"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 D5 49 89 F6 48 89 FB E8 ? ? ? ? 84 C0"
+
+[[linux.signatures]]
+name = "_ZN6Player10teleportToERK4Vec3biib"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 45 89 CC 45 89 C6 41 89 CF 41 89 D5"
+
+[[linux.signatures]]
+name = "_ZN6Player15startSleepInBedERK8BlockPos"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 54 53 48 83 EC ? 49 89 F6 49 89 FC 48 8D 35"
+
+[[linux.signatures]]
+name = "_ZN6Player14stopSleepInBedEbb"
+relative = false
+extra = 0
+pattern = "41 0F B6 D6 48 89 DF E8 ? ? ? ? 48 83 C4"
+rip_relative = true
+rip_offset = 8
+
+[[linux.signatures]]
+name = "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 41 89 FF"
+
+[[linux.signatures]]
+name = "_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 83 F8 ? 40 0F 92 C5"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN17ResourcePackStack11deserializeERNSt3__113basic_istreamIcNS0_11char_traitsIcEEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK23IResourcePackRepositoryEEEENS0_8optionalINS0_12basic_stringIcS3_NS0_9allocatorIcEEEEEE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B 84 24 ? ? ? ? 48 C7 84 24 ? ? ? ? ? ? ? ? 48 8B BC 24 ? ? ? ? 48 89 84 24 ? ? ? ? 48 85 FF 74 ? ? ? ? FF 50 ? 48 8B BC 24"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZNK17RepositoryFactory13createSourcesERK23IResourcePackRepository"
+relative = false
+extra = 0
+pattern = "41 57 41 56 53 48 81 EC ? ? ? ? 49 89 D7 49 89 FE 48 8D 1D"
+
+[[linux.signatures]]
+name = "_ZN17RepositorySources20initializePackSourceER17PackSourceFactory"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B 93 ? ? ? ? 48 8B B3 ? ? ? ? 48 8D 7C 24 ? E8"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 41 F6 C4 ? 75 ? 48 8B 44 24"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN21ScriptModuleMinecraft16ScriptBlockUtils21createBlockDescriptorENSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEENS1_8optionalINS1_13unordered_mapIS7_NS1_7variantIJiS7_bEEENS1_4hashIS7_EENS1_8equal_toIS7_EENS5_INS1_4pairIKS7_SB_EEEEEEEE"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 49 89 FF 80 7A"
+
+[[linux.signatures]]
+name = "_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EEb"
+relative = false
+extra = 0
+pattern = "4C 89 EE B9 ? ? ? ? E8 ? ? ? ? 0F B6 84 24"
+rip_relative = true
+rip_offset = 9
+
+[[linux.signatures]]
+name = "_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 54 53 48 81 EC ? ? ? ? 49 89 D7 49 89 F4 48 89 FD"
+
+[[linux.signatures]]
+name = "_ZN20ServerNetworkHandler24updateServerAnnouncementEv"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 89 C3 48 89 EF E8 ? ? ? ? 48 8D 05 ? ? ? ? 80 78"
+rip_relative = true
+rip_offset = 12
+
+[[linux.signatures]]
+name = "_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 89 C3 48 89 EF E8 ? ? ? ? 48 8D 05 ? ? ? ? 80 78"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 84 C0 74 ? 48 8D BC 24 ? ? ? ? 48 8D 74 24 ? 48 89 E2"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN36ServerPlayerMovementCorrectionSystem24_afterMovementSimulationERK29UserEntityIdentifierComponentR5ActorRK21PlayerAuthInputPacketR20ReplayStateComponentPK22ActorRotationComponentR29ServerPlayerMovementComponentR20StateVectorComponentPK21BoatMovementComponent"
+relative = false
+extra = 0
+pattern = "4D 89 F1 53 41 55 E8 ? ? ? ? 48 83 C4"
+rip_relative = true
+rip_offset = 7
+
+[[linux.signatures]]
+name = "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE"
+relative = false
+extra = 0
+pattern = "0F 84 ? ? ? ? 48 8D 74 24 ? 48 8D 4C 24 ? 4C 89 F7 31 D2 E8"
+rip_relative = true
+rip_offset = 22
+
+[[linux.signatures]]
+name = "_ZN19ServerScriptManager11_runPluginsE20PluginExecutionGroupR14ServerInstance"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 53 48 83 EC ? 41 89 F7 48 89 FB 4C 8B B2"
+
+[[linux.signatures]]
+name = "_ZN12ServerPlayer15changeDimensionE11AutomaticIDI9DimensioniE"
+relative = false
+extra = 0
+pattern = "55 41 56 53 48 83 EC ? 41 89 F6 48 89 FB E8 ? ? ? ? 89 C5"
+
+[[linux.signatures]]
+name = "_ZN21UnverifiedCertificate10fromStringERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? BF ? ? ? ? E8 ? ? ? ? 49 89 C4 48 8D 74 24"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZNK4Item12readUserDataER13ItemStackBaseR10IDataInputR20ReadOnlyBinaryStream"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 89 DF E8 ? ? ? ? 4C 89 F7 48 89 C6 48 83 C4"
+rip_relative = true
+rip_offset = 1
+
+[[linux.signatures]]
+name = "_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? F6 44 24 ? ? 74 ? 48 8B 7C 24 ? E8 ? ? ? ? EB ? 48 89 DF E8 ? ? ? ? 89 C5"
+rip_relative = true
+rip_offset = 1

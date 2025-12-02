@@ -182,6 +182,27 @@ std::string get_executable_pathname()
     return module_info.pathname;
 }
 
+std::size_t get_executable_size()
+{
+    std::ifstream file("/proc/self/maps");
+    if (!file.is_open()) {
+        throw std::runtime_error("Failed to open /proc/self/maps");
+    }
+    for (std::string line; std::getline(file, line);) {
+        MmapRegion region;
+        int r = sscanf(line.c_str(), "%lx-%lx %4s %lx %10s %ld %s", &region.begin, &region.end, region.perms,
+                       &region.offset, region.device, &region.inode, region.pathname);
+        if (r != 7) continue;
+        auto pathname = std::string(region.pathname);
+        std::size_t pos = pathname.find_last_of('/');
+        if (pos != std::string::npos) pathname = pathname.substr(pos + 1);
+        if (pathname == std::string(get_executable_pathname()).substr(std::string(get_executable_pathname()).find_last_of('/')+1)) {
+            return region.end - region.begin;
+        }
+    }
+    throw std::runtime_error("Executable region not found");
+}
+
 namespace {
 int stdin_fd = -1;
 int null_fd = -1;
