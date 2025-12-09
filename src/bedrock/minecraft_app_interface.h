@@ -29,5 +29,5 @@ public:
     [[nodiscard]] virtual bool isDedicatedServer() const = 0;
     virtual void onNetworkMaxPlayersChanged(std::uint32_t) = 0;
     [[nodiscard]] virtual IGameModuleShared &getGameModuleShared() const = 0;
-    virtual void requestServerShutdown(std::string const &) = 0;
+    virtual void requestServerShutdown() = 0;
 };
