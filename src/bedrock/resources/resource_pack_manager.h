@@ -27,7 +27,7 @@ public:
 
 private:
     std::unordered_set<gsl::not_null<ResourcePackListener *>> listeners_set_;      // +88
-    std::unique_ptr<ResourcePackStack> addon_stack_;                               // +152
+    // std::unique_ptr<ResourcePackStack> addon_stack_;                               // +152
     std::unique_ptr<ResourcePackStack> level_stack_;                               // +160
     std::unique_ptr<ResourcePackStack> global_stack_;                              // +168
     std::unique_ptr<ResourcePackStack> treatment_stack_;                           // +176
