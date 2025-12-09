@@ -64,6 +64,9 @@ struct ScriptingWorldInitializeEvent {
     Scripting::WeakLifetimeScope scope;
     bool final_event;
 };
+struct LevelTickingAreaFinishedLoadingEvent {
+    mce::UUID id;
+};
 struct LevelStartLeaveGameEvent {
     gsl::not_null<Bedrock::NonOwnerPointer<Level>> level;
 };
@@ -73,8 +76,9 @@ struct LevelGameplayEvent;
 
 template <>
 struct LevelGameplayEvent<void>
-    : ConstEventVariant<LevelAddedActorEvent, LevelBroadcastEvent, LevelSoundBroadcastEvent, LevelDayCycleEvent,
-                        LevelStartLeaveGameEvent, LevelGameRuleChangeEvent, ScriptingWorldInitializeEvent> {};
+    : ConstEventVariant<LevelTickingAreaFinishedLoadingEvent, LevelAddedActorEvent, LevelBroadcastEvent,
+                        LevelSoundBroadcastEvent, LevelDayCycleEvent, LevelStartLeaveGameEvent,
+                        LevelGameRuleChangeEvent, ScriptingWorldInitializeEvent> {};
 
 template <typename Return>
 struct MutableLevelGameplayEvent;
