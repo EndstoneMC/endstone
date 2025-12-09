@@ -20,7 +20,7 @@ class GameCallbacks {
 public:
     virtual ~GameCallbacks() = 0;
     virtual void onLevelCorrupt() = 0;
-    virtual void onCriticalScriptError(char const *, char const *) = 0;
+    // virtual void onCriticalScriptError(char const *, char const *) = 0;
     virtual void onGameModeChanged() = 0;
     virtual void onBeforeSimTick() = 0;
     virtual void onTick() = 0;
