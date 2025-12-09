@@ -21,7 +21,7 @@
 
 class UnverifiedCertificate {
 public:
-    ENDSTONE_HOOK static UnverifiedCertificate fromString(const std::string &input);
+    static UnverifiedCertificate fromString(const std::string &input);
     friend class Certificate;
 
 private:
