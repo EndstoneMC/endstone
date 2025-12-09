@@ -75,12 +75,9 @@ public:
     [[nodiscard]] bool isTrustedSkin() const;
     [[nodiscard]] bool isOverrideSkin() const;
     [[nodiscard]] bool isCapeOnClassicSkin() const;
-    [[nodiscard]] bool isVerified() const;
-    bool verifySelfSigned(bool);
     [[nodiscard]] bool isCompatibleWithClientSideChunkGen() const;
     [[nodiscard]] PlatformType getPlatformType() const;
     [[nodiscard]] SyncedClientOptionsComponent getClientOptions() const;
-    [[nodiscard]] bool isValid() const;
 
     [[nodiscard]] std::string getLanguageCode() const;  // Endstone
 
