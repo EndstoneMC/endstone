@@ -83,6 +83,11 @@ std::string ConnectionRequest::getDeviceId() const
     return getData("DeviceId").asString();
 }
 
+const WebToken &ConnectionRequest::_getRawRequest() const
+{
+    return *raw_token_;
+}
+
 std::string ConnectionRequest::getLanguageCode() const
 {
     return getData("LanguageCode").asString();

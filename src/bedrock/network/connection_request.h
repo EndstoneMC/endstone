@@ -78,6 +78,10 @@ public:
     [[nodiscard]] bool isCompatibleWithClientSideChunkGen() const;
     [[nodiscard]] PlatformType getPlatformType() const;
     [[nodiscard]] SyncedClientOptionsComponent getClientOptions() const;
+    [[nodiscard]] bool isWellFormed() const;
+    [[nodiscard]] const UnverifiedCertificate *_getLegacyCertificate() const;
+    [[nodiscard]] const RawGameServerToken &_getGameServerToken() const;
+    [[nodiscard]] const WebToken &_getRawRequest() const;
 
     [[nodiscard]] std::string getLanguageCode() const;  // Endstone
 
