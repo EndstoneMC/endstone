@@ -18,8 +18,9 @@
 
 namespace endstone::core {
 
-DevToolsCommand::DevToolsCommand() : EndstoneCommand("devtools")
+DevToolsCommand::DevToolsCommand() : EndstoneCommand("devtools"), thread_(&devtools::render)
 {
+    thread_.detach();
     setDescription("Opens the DevTools.");
     setUsages("/devtools");
     setAliases("dev");
