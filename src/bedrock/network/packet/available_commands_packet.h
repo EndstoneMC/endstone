@@ -65,6 +65,14 @@ public:
         std::vector<std::uint32_t> chained_subcommands_indexes;  // +96
         int alias_enum = -1;                                     // +120
     };
+    std::vector<std::string> enum_values;
+    std::vector<std::string> postfixes;
+    std::vector<EnumData> enums;
+    std::vector<std::string> chained_subcommand_values;
+    std::vector<ChainedSubcommandData> chained_subcommands;
+    std::vector<CommandData> commands;
+    std::vector<SoftEnumData> soft_enums;
+    std::vector<ConstrainedValueData> constraints;
 };
 
 class AvailableCommandsPacket : public Packet {
