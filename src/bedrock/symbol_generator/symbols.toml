@@ -1,4 +1,4 @@
-timestamp = 1765301959
+timestamp = 1765312469
 version = "1.21.130"
 
 [windows]
@@ -174,7 +174,7 @@ version = "1.21.130"
 "_ZN14MapDataManager12_loadMapDataERK13ActorUniqueID" = 161724112
 # MinecraftCommands
 "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE" = 134711280
-"_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 0
+"_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 134678688
 # MinecraftPackets
 "_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 113859152
 # Mob
@@ -191,9 +191,9 @@ version = "1.21.130"
 "_ZN16PistonBlockActor4tickER11BlockSource" = 165999056
 # Player
 "_ZN6Player10teleportToERK4Vec3biib" = 150948544
-"_ZN6Player14stopSleepInBedEbb" = 0
+"_ZN6Player14stopSleepInBedEbb" = 150955488
 "_ZN6Player15startSleepInBedERK8BlockPos" = 150952304
-"_ZN6Player17completeUsingItemEv" = 0
+"_ZN6Player17completeUsingItemEv" = 151065184
 "_ZN6Player4dropERK9ItemStackb" = 151041360
 "_ZN6Player4takeER5Actorii" = 151000432
 # RakNet::RNS2_Windows_Linux_360
@@ -203,7 +203,7 @@ version = "1.21.130"
 # RepositoryFactory
 "_ZNK17RepositoryFactory13createSourcesERK23IResourcePackRepository" = 130194400
 # RepositorySources
-"_ZN17RepositorySources20initializePackSourceER17PackSourceFactory" = 0
+"_ZN17RepositorySources20initializePackSourceER17PackSourceFactory" = 129756864
 # ResourcePackStack
 "_ZN17ResourcePackStack11deserializeERNSt3__113basic_istreamIcNS0_11char_traitsIcEEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK23IResourcePackRepositoryEEEENS0_8optionalINS0_12basic_stringIcS3_NS0_9allocatorIcEEEEEE" = 129867760
 # SayCommand
@@ -211,16 +211,14 @@ version = "1.21.130"
 # ScriptModuleMinecraft::ScriptBlockUtils
 "_ZN21ScriptModuleMinecraft16ScriptBlockUtils21createBlockDescriptorENSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEENS1_8optionalINS1_13unordered_mapIS7_NS1_7variantIJiS7_bEEENS1_4hashIS7_EENS1_8equal_toIS7_EENS5_INS1_4pairIKS7_SB_EEEEEEEE" = 119577120
 # ServerNetworkHandler
-"_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest" = 0
-"_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId" = 114088544
+"_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequestRK24PlayerAuthenticationInfo" = 114050912
+"_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequestRK24PlayerAuthenticationInfo11SubClientId" = 114088544
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 113998384
 "_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EEb" = 113966656
-"_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 0
+"_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 113999184
 # ServerPlayerMovementCorrectionSystem
 "_ZN36ServerPlayerMovementCorrectionSystem24_afterMovementSimulationERK29UserEntityIdentifierComponentR5ActorRK21PlayerAuthInputPacketR20ReplayStateComponentPK22ActorRotationComponentR29ServerPlayerMovementComponentR20StateVectorComponentPK21BoatMovementComponent" = 101002048
 # ServerScoreboard
 "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE" = 167812112
 # ServerScriptManager
 "_ZN19ServerScriptManager11_runPluginsE20PluginExecutionGroupR14ServerInstance" = 129098352
-# UnverifiedCertificate
-"_ZN21UnverifiedCertificate10fromStringERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE" = 0
