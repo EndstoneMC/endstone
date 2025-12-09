@@ -21,7 +21,7 @@ namespace endstone::core {
 
 class EndstoneSkin {
 public:
-    static Skin fromMinecraft(const SerializedSkin &skin);
+    static Skin fromMinecraft(const SerializedSkinRef &skin);
 };
 
 }  // namespace endstone::core

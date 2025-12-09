@@ -398,7 +398,7 @@ public:
     [[nodiscard]] virtual void *getPlayerMovementSettingsManager() const = 0;
     [[nodiscard]] virtual const TickDeathSettings &getTickDeathSettings() const = 0;
     virtual void setTickDeathSettings(const TickDeathSettings &) = 0;
-    [[nodiscard]] virtual bool canUseSkin(SerializedSkin const &, NetworkIdentifier const &,
+    [[nodiscard]] virtual bool canUseSkin(SerializedSkinRef const &, NetworkIdentifier const &,
                                           ActorUniqueID const &) const = 0;
     [[nodiscard]] virtual void *getTrustedSkinHelper() const = 0;
     [[nodiscard]] virtual PositionTrackingDB::PositionTrackingDBClient *getPositionTrackerDBClient() const = 0;

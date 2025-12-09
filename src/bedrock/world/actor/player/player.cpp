@@ -182,12 +182,12 @@ void Player::stopGliding()
     }
 }
 
-const SerializedSkin &Player::getSkin() const
+const SerializedSkinRef &Player::getSkin() const
 {
     return *skin_;
 }
 
-SerializedSkin &Player::getSkin()
+SerializedSkinRef &Player::getSkin()
 {
     return *skin_;
 }
