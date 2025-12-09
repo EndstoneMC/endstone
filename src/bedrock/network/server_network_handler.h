@@ -64,7 +64,8 @@ public:
     [[nodiscard]] int getMaxNumPlayers() const;
     int setMaxNumPlayers(int max_players);
     void updateServerAnnouncement();
-    ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
+    ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &,
+                                      const PlayerAuthenticationInfo &player_info);
 
     ServerPlayer *getServerPlayer(const NetworkIdentifier &, SubClientId);  // Endstone
     void disconnect(NetworkIdentifier const &network_id, SubClientId sub_client_id,
@@ -74,20 +75,24 @@ private:
     friend class endstone::core::EndstoneServer;
     friend class NetworkConnection;
     friend class NetworkSystem;
-    ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &, SubClientConnectionRequest const &,
-                                                 SubClientId);
+    ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &source,
+                                                 SubClientConnectionRequest const &connection_request,
+                                                 const PlayerAuthenticationInfo &player_info, SubClientId subid);
     [[nodiscard]] ENDSTONE_HOOK bool _isServerTextEnabled(ServerTextEvent const &) const;
 
 protected:
     class Client {
     public:
         [[nodiscard]] ConnectionRequest const &getPrimaryRequest() const;
-        [[nodiscard]] std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> const &
-        getSubClientRequests() const;
+        PlayerAuthenticationInfo getPrimaryPlayerInfo() const;
+        const std::unordered_map<SubClientId, PlayerAuthenticationInfo> &getSubClientsPlayerInfo() const;
+        void addSubClientPlayerInfo(SubClientId subClientId, PlayerAuthenticationInfo playerInfo);
+        void removeSubClientPlayerInfo(SubClientId subClientId);
 
     private:
         std::unique_ptr<ConnectionRequest> primary_request_;
-        std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> sub_client_requests_;
+        PlayerAuthenticationInfo primary_player_info_;
+        std::unordered_map<SubClientId, PlayerAuthenticationInfo> sub_client_player_info_;
     };
     std::unordered_map<NetworkIdentifier, std::unique_ptr<Client>> clients_;  // +80
 
@@ -96,7 +101,6 @@ private:
     Bedrock::NonOwnerPointer<ILevel> level_;
     ServerNetworkSystem &network_;
     PrivateKeyManager &server_keys_;
-    Bedrock::NotNullNonOwnerPtr<MinecraftServiceKeyManager> minecraft_service_keys_;
     ServerLocator &server_locator_;
     gsl::not_null<PacketSender *> packet_sender_;  // +200
     bool use_allow_list_;
@@ -118,7 +122,6 @@ private:
     bool allow_incoming_;
     std::unique_ptr<IServerNetworkController> server_network_controller_;
     std::string server_name_;
-    std::vector<std::string> trusted_keys_;
     int max_num_players_;  // +872
     std::unordered_set<mce::UUID> known_emote_piece_id_lookup_;
     std::vector<mce::UUID> known_emote_piece_ids_;
@@ -126,6 +129,7 @@ private:
         resource_upload_managers_;
     gsl::not_null<std::shared_ptr<Bedrock::Threading::SharedAsync<void>>> previous_upload_;
     gsl::not_null<std::unique_ptr<ResourcePackPathLifetimeHelpers::ResourcePackPathCache>> resource_pack_path_cache_;
+    gsl::not_null<std::unique_ptr<ServerConnectionAuthValidator>> connection_auth_validator_;
     gsl::not_null<std::unique_ptr<TaskGroup>> async_join_task_group_;
     gsl::not_null<std::unique_ptr<AsyncJoinTaskManager>> async_join_task_manager_;
     std::unique_ptr<TaskGroup> io_task_group_;

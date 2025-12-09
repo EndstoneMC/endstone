@@ -201,6 +201,7 @@ class ScreenSetupCleanupHelper;
 class ScreenshotOptions;
 class SearchQuery;
 class Seasons {};
+class ServerConnectionAuthValidator;
 class ServerInstanceEventHandler;
 class ServerLocator;
 class ServerMetrics;
