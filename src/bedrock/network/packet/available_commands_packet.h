@@ -21,7 +21,7 @@
 #include "bedrock/server/commands/command_flag.h"
 #include "bedrock/server/commands/command_permission_level.h"
 
-class AvailableCommandsPacket : public Packet {
+class AvailableCommandsPacketPayload {
 public:
     struct EnumData {
         std::string name;
@@ -65,8 +65,9 @@ public:
         std::vector<std::uint32_t> chained_subcommands_indexes;  // +96
         int alias_enum = -1;                                     // +120
     };
+};
 
-    ~AvailableCommandsPacket() override = default;
+class AvailableCommandsPacket : public Packet {
     [[nodiscard]] MinecraftPacketIds getId() const override
     {
         return MinecraftPacketIds::AvailableCommands;
@@ -87,12 +88,6 @@ protected:
     }
 
 public:
-    std::vector<std::string> enum_values;
-    std::vector<std::string> postfixes;
-    std::vector<EnumData> enums;
-    std::vector<std::string> chained_subcommand_values;
-    std::vector<ChainedSubcommandData> chained_subcommands;
-    std::vector<CommandData> commands;
-    std::vector<SoftEnumData> soft_enums;
-    std::vector<ConstrainedValueData> constraints;
+    AvailableCommandsPacketPayload payload;
+    SerializationMode serialization_mode;
 };
