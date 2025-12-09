@@ -47,6 +47,7 @@
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/actor/actor_initialization_method.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
+#include "bedrock/world/actor/actor_swing_source.h"
 #include "bedrock/world/actor/actor_terrain_interlock_data.h"
 #include "bedrock/world/actor/actor_types.h"
 #include "bedrock/world/actor/actor_unique_id.h"
@@ -233,7 +234,7 @@ public:
     [[nodiscard]] virtual bool canObstructSpawningAndBlockPlacement() const = 0;
     virtual AnimationComponent &getAnimationComponent() = 0;
     virtual void openContainerComponent(Player &) = 0;
-    virtual bool swing() = 0;
+    virtual bool swing(ActorSwingSource swing_source) = 0;
     virtual void useItem(ItemStackBase &, ItemUseMethod, bool) = 0;
     virtual void getDebugText(std::vector<std::string> &) = 0;
     [[nodiscard]] virtual float getMapDecorationRotation() const = 0;
