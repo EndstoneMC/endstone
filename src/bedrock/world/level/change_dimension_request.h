@@ -19,19 +19,25 @@
 #include "bedrock/util/rotation_command_utils.h"
 
 class ChangeDimensionRequest {
-    enum class State : int {
-        PrepareRegion = 0,
-        WaitingForChunks = 0x1,
-        WaitingForRespawn = 0x2,
-    };
-
 public:
-    State state;                             // +0
-    DimensionType from_dimension;            // +4
-    DimensionType to_dimension;              // +8
-    Vec3 from_position;                      // +12
-    Vec3 to_position;                        // +24
-    bool use_portal;                         // +36
-    bool respawn;                            // +37
-    std::unique_ptr<CompoundTag> agent_tag;  // +40 std::unique_ptr
+    enum class State : int {
+        PrepareRegion,
+        WaitingForChunks,
+        WaitingForRespawn,
+    };
+    ChangeDimensionRequest() = default;
+    ChangeDimensionRequest(DimensionType from_id, DimensionType to_id, Vec3 from_location, Vec3 to_location,
+                           bool use_portal, bool respawn)
+        : from_dimension(from_id), to_dimension(to_id), from_position(from_location), to_position(to_location),
+          use_portal(use_portal), respawn(respawn)
+    {
+    }
+    State state = State::PrepareRegion;
+    DimensionType from_dimension;
+    DimensionType to_dimension;
+    Vec3 from_position;
+    Vec3 to_position;
+    bool use_portal;
+    bool respawn;
+    std::unique_ptr<CompoundTag> agent_tag = nullptr;
 };

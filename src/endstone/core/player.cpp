@@ -158,6 +158,29 @@ void EndstonePlayer::remove()
     getServer().getLogger().error("Cannot remove player {}, use Player::kick instead.", getName());
 }
 
+void EndstonePlayer::teleport(Location location)
+{
+    if (getHealth() == 0 || getHandle().isRemoved()) {
+        return;
+    }
+
+    setRotation(location.getYaw(), location.getPitch());
+    Vec3 to_location{location.getX(), location.getY(), location.getZ()};
+    if (location.getDimension() != nullptr && location.getDimension() != &getDimension()) {
+        auto current_location = getLocation();
+        Vec3 from_location{current_location.getX(), current_location.getY(), current_location.getZ()};
+        const auto from_dimension = static_cast<EndstoneDimension &>(getDimension()).getHandle().getDimensionId();
+        const auto to_dimension =
+            static_cast<EndstoneDimension &>(*location.getDimension()).getHandle().getDimensionId();
+        getHandle().getLevel().requestPlayerChangeDimension(
+            getHandle(),
+            ChangeDimensionRequest{from_dimension, to_dimension, from_location, to_location, false, false});
+    }
+    else {
+        getHandle().teleportTo(to_location, true, 3, 1, false);
+    }
+}
+
 UUID EndstonePlayer::getUniqueId() const
 {
     return uuid_;

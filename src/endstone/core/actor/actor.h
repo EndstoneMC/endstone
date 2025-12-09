@@ -215,23 +215,20 @@ public:
 
     void teleport(Location location) override
     {
-        DimensionType destination_dimension = VanillaDimensions::Undefined;
-        if (auto *dimension = location.getDimension(); dimension) {
-            destination_dimension = static_cast<EndstoneDimension *>(dimension)->getHandle().getDimensionId();
+        if (getHandle().isRemoved()) {
+            return;
         }
 
-        auto rotation = RotationCommandUtils::RotationData{RelativeFloat{location.getPitch(), false},
-                                                           RelativeFloat{location.getYaw(), false}, std::nullopt};
-
-        auto target =
-            TeleportCommand::computeTarget(getHandle(),                                          // victim
-                                           {location.getX(), location.getY(), location.getZ()},  // destination
-                                           nullptr,                                              // facing
-                                           destination_dimension,                                //  dimension
-                                           rotation,                                             // rotation
-                                           CommandVersion::CurrentVersion);
-
-        TeleportCommand::applyTarget(getHandle(), std::move(target), /*keep_velocity*/ false);
+        setRotation(location.getYaw(), location.getPitch());
+        Vec3 to_location{location.getX(), location.getY(), location.getZ()};
+        if (&location.getDimension() != nullptr && location.getDimension() != &getDimension()) {
+            const auto to_dimension =
+                static_cast<EndstoneDimension &>(*location.getDimension()).getHandle().getDimensionId();
+            getHandle().getLevel().entityChangeDimension(getHandle(), to_dimension, to_location);
+        }
+        else {
+            getHandle().teleportTo(to_location, true, 3, 1, false);
+        }
     }
 
     void teleport(Actor &target) override
