@@ -55,7 +55,7 @@ struct TextPacketPayload {
         std::string message;
         std::vector<std::string> params;
     };
-    bool localize;
+    bool localize = false;
     std::string xuid;
     std::string platform_id;
     std::optional<std::string> filtered_message;
@@ -89,11 +89,15 @@ struct TextPacketPayload {
     static TextPacket createTranslatedAnnouncement(const std::string &author, const std::string &message,
                                                    const std::string &xuid, const std::string &platform_id);
     static TextPacket createJukeboxPopup(const std::string &message, const std::vector<std::string> &params);
+
+    static TextPacket createPopup(const std::string &message, const std::vector<std::string> &params);  // Endstone
+    static TextPacket createTip(const std::string &message);                                            // Endstone
 };
 
 class TextPacket : public Packet {
 public:
     TextPacket() = default;
+    TextPacket(TextPacketPayload payload);
     ~TextPacket() override = default;
     [[nodiscard]] MinecraftPacketIds getId() const override;
     [[nodiscard]] std::string getName() const override;
@@ -104,6 +108,5 @@ public:
 
 private:
     Bedrock::Result<void> _read(ReadOnlyBinaryStream &) override;
-    TextPacket(TextPacketPayload payload);
 };
 // static_assert(sizeof(TextPacket) == 216);
