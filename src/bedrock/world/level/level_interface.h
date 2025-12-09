@@ -383,6 +383,9 @@ public:
     virtual void *getActorInfoRegistry() = 0;
     [[nodiscard]] virtual StackRefResult<EntityRegistry const> getEntityRegistry() const = 0;
     virtual StackRefResult<EntityRegistry> getEntityRegistry() = 0;
+    virtual gsl::not_null<StackRefResult<IContainerRegistryAccess>> getContainerRegistryAccess() const = 0;
+    virtual gsl::not_null<StackRefResult<IContainerRegistryTracker>> getContainerRegistryTracker() const = 0;
+    virtual gsl::not_null<StackRefResult<IDynamicContainerSerialization>> getDynamicContainerSerialization() const = 0;
     virtual EntitySystems &getEntitySystems() = 0;
     virtual WeakRef<EntityContext> getLevelEntity() = 0;
     [[nodiscard]] virtual WeakRef<const EntityContext> getLevelEntity() const = 0;
