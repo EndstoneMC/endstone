@@ -58,11 +58,6 @@ uint16_t SubClientConnectionRequest::getCapeImageHeight() const
     return getData("CapeImageHeight").asInt();
 }
 
-bool SubClientConnectionRequest::isVerified() const
-{
-    return is_verified_ && raw_token_ != nullptr;
-}
-
 std::string SubClientConnectionRequest::getGameVersionString() const
 {
     return getData("GameVersion").asString();
@@ -81,12 +76,4 @@ std::string SubClientConnectionRequest::getDeviceId() const
 std::string SubClientConnectionRequest::getLanguageCode() const
 {
     return getData("LanguageCode").asString();
-}
-
-Json::Value SubClientConnectionRequest::getData(const std::string &key) const
-{
-    if (isVerified()) {
-        return raw_token_->getData().get(key, Json::nullValue);
-    }
-    return Json::nullValue;
 }
