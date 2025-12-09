@@ -14,12 +14,11 @@
 
 #include "bedrock/network/packet.h"
 
-#include <endstone/core/util/uuid.h>
-
 #include "bedrock/network/packet/login_packet.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
+#include "endstone/core/util/uuid.h"
 #include "endstone/runtime/hook.h"
 
 namespace {
