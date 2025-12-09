@@ -62,10 +62,11 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
     }
 }
 
-bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request)
+bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request,
+                                          const PlayerAuthenticationInfo &player_info)
 {
-    const auto new_player =
-        ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::trytLoadPlayer, this, server_player, connection_request);
+    const auto new_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::trytLoadPlayer, this, server_player,
+                                                        connection_request, player_info);
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto &endstone_player = server_player.getEndstoneActor<endstone::core::EndstonePlayer>();
     endstone_player.initFromConnectionRequest(&connection_request);
@@ -81,10 +82,11 @@ bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const Con
 
 ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &network_id,
                                                      const SubClientConnectionRequest &sub_client_connection_request,
+                                                     const PlayerAuthenticationInfo &player_info,
                                                      SubClientId sub_client_id)
 {
     auto &server_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_createNewPlayer, this, network_id,
-                                                      sub_client_connection_request, sub_client_id);
+                                                      sub_client_connection_request, player_info, sub_client_id);
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto &endstone_player = server_player.getEndstoneActor<endstone::core::EndstonePlayer>();
     endstone_player.initFromConnectionRequest(&sub_client_connection_request);
