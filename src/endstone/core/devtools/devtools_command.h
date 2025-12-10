@@ -24,9 +24,6 @@ class DevToolsCommand : public core::EndstoneCommand {
 public:
     DevToolsCommand();
     bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
-
-private:
-    std::thread thread_;
 };
 
 }  // namespace endstone::core

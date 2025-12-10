@@ -16,6 +16,7 @@
 
 #include <pybind11/embed.h>
 
+#include "endstone/core/devtools/devtools.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/runtime/hook.h"
 
@@ -58,6 +59,10 @@ DedicatedServer::StartResult DedicatedServer::start(const std::string &session_i
     std::fflush(stdin);
     DUP2(old_stdin, FILENO(stdin));
     CLOSE(old_stdin);
+
+    // DevTools
+    std::thread thread(&endstone::devtools::render);
+    thread.detach();
 
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::start, this, session_id, args);
 
