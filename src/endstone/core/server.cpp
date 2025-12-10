@@ -206,12 +206,7 @@ void EndstoneServer::initPackSource(const PackSourceFactory &pack_source_factory
         throw std::runtime_error(
             "Resource pack repository not set. Check the hook for RepositoryFactory::createSources.");
     }
-    printf("createPackIOProvider begin\n");
     auto io = pack_source_factory.createPackIOProvider();
-    printf("createPackIOProvider end\n");
-    printf("getResourcePacksPath begin\n");
-    (void)resource_pack_repository_->getResourcePacksPath().getContainer();
-    printf("getResourcePacksPath end\n");
     resource_pack_source_ = std::make_unique<EndstonePackSource>(EndstonePackSourceOptions(
         PackSourceOptions(std::move(io)), resource_pack_repository_->getResourcePacksPath().getContainer(),
         PackType::Resources));
