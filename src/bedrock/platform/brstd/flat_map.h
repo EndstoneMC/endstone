@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <vector>
+
 #include "bedrock/platform/brstd/associative_adapter.h"
 
 namespace brstd {

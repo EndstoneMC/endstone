@@ -1,4 +1,4 @@
-timestamp = 1765386039
+timestamp = 1765404583
 version = "1.21.130"
 
 [windows]
@@ -212,6 +212,7 @@ version = "1.21.130"
 # ServerNetworkHandler
 "_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequestRK24PlayerAuthenticationInfo" = 114050912
 "_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequestRK24PlayerAuthenticationInfo11SubClientId" = 114088544
+"_ZN20ServerNetworkHandler20_validateLoginPacketERK17NetworkIdentifierRK11LoginPacket" = 114007680
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 113998384
 "_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EEb" = 113966656
 "_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 113999184

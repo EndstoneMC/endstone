@@ -60,9 +60,11 @@ DedicatedServer::StartResult DedicatedServer::start(const std::string &session_i
     DUP2(old_stdin, FILENO(stdin));
     CLOSE(old_stdin);
 
+#ifdef ENDSTONE_WITH_DEVTOOLS
     // DevTools
     std::thread thread(&endstone::devtools::render);
     thread.detach();
+#endif
 
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::start, this, session_id, args);
 

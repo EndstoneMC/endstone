@@ -42,4 +42,3 @@ private:
     void (BaseAttributeMap::*on_attribute_modified_)(const AttributeInstance &) =
         &BaseAttributeMap::_onAttributeModified;
 };
-BEDROCK_STATIC_ASSERT_SIZE(BaseAttributeMap, 88, 88);

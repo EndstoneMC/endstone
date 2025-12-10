@@ -36,7 +36,7 @@ public:
     virtual void onConnect(const NetworkIdentifier &) = 0;
     virtual void onUnableToConnect(Connection::DisconnectFailReason, const std::string &) = 0;
     virtual void onTick() = 0;
-    virtual void onOutgoingPacket(const NetworkIdentifier &, MinecraftPacketIds, SubClientId, SubClientId);
+    virtual void onOutgoingPacket(const NetworkIdentifier &, MinecraftPacketIds, SubClientId, SubClientId) = 0;
     virtual void onValidPacketReceived(const NetworkIdentifier &, MinecraftPacketIds, SubClientId, SubClientId) = 0;
     virtual void onStoreOfferReceive(ShowStoreOfferRedirectType, const std::string &) = 0;
     virtual void onDisconnect(const NetworkIdentifier &, Connection::DisconnectFailReason,
