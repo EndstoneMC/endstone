@@ -1,4 +1,4 @@
-timestamp = 1765325720
+timestamp = 1765384388
 version = "1.21.130"
 
 [windows]
@@ -99,10 +99,11 @@ version = "1.21.130"
 # ScriptModuleMinecraft::ScriptBlockUtils
 "?createBlockDescriptor@ScriptBlockUtils@ScriptModuleMinecraft@@YA?AVBlockDescriptor@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$unordered_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@U?$hash@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@U?$equal_to@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@@std@@@2@@std@@@5@@Z" = 40458368
 # ServerNetworkHandler
-"?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@AEBVPlayerAuthenticationInfo@@W4SubClientId@@@Z" = 25663184
+"?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@AEBUPlayerAuthenticationInfo@@W4SubClientId@@@Z" = 25663184
 "?_isServerTextEnabled@ServerNetworkHandler@@AEBA_NAEBW4ServerTextEvent@@@Z" = 25672688
+"?_validateLoginPacket@ServerNetworkHandler@@EEAA?AV?$optional@UPlayerAuthenticationInfo@@@std@@AEBVNetworkIdentifier@@AEBVLoginPacket@@@Z" = 25566544
 "?disconnectClientWithMessage@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@_N@Z" = 25523504
-"?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@AEBVPlayerAuthenticationInfo@@@Z" = 25597136
+"?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@AEBUPlayerAuthenticationInfo@@@Z" = 25597136
 "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 25640928
 # ServerPlayerMovementCorrectionSystem
 "?_afterMovementSimulation@ServerPlayerMovementCorrectionSystem@@YAXAEBVUserEntityIdentifierComponent@@AEAVActor@@AEBVPlayerAuthInputPacket@@AEAVReplayStateComponent@@PEBUActorRotationComponent@@AEAUServerPlayerMovementComponent@@AEAUStateVectorComponent@@PEBUBoatMovementComponent@@@Z" = 23071248

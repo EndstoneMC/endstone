@@ -28,6 +28,7 @@
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/network_server_config.h"
+#include "bedrock/network/packet/login_packet.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/network/sub_client_connection_request.h"
 #include "bedrock/network/xbox_live_user_observer.h"
@@ -64,6 +65,8 @@ public:
     [[nodiscard]] int getMaxNumPlayers() const;
     int setMaxNumPlayers(int max_players);
     void updateServerAnnouncement();
+    const ConnectionRequest &fetchConnectionRequest(const NetworkIdentifier &source);
+    [[nodiscard]] PlayerAuthenticationInfo fetchPlayerAuthenticationInfo(const NetworkIdentifier &source);
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &,
                                       const PlayerAuthenticationInfo &player_info);
 
@@ -75,6 +78,8 @@ private:
     friend class endstone::core::EndstoneServer;
     friend class NetworkConnection;
     friend class NetworkSystem;
+    ENDSTONE_HOOK virtual std::optional<PlayerAuthenticationInfo> _validateLoginPacket(const NetworkIdentifier &source,
+                                                                                       const LoginPacket &packet);
     ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &source,
                                                  SubClientConnectionRequest const &connection_request,
                                                  const PlayerAuthenticationInfo &player_info, SubClientId subid);

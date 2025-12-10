@@ -221,7 +221,7 @@ public:
 
         setRotation(location.getYaw(), location.getPitch());
         Vec3 to_location{location.getX(), location.getY(), location.getZ()};
-        if (&location.getDimension() != nullptr && location.getDimension() != &getDimension()) {
+        if (location.getDimension() != nullptr && location.getDimension() != &getDimension()) {
             const auto to_dimension =
                 static_cast<EndstoneDimension &>(*location.getDimension()).getHandle().getDimensionId();
             getHandle().getLevel().entityChangeDimension(getHandle(), to_dimension, to_location);
