@@ -77,3 +77,8 @@ std::string SubClientConnectionRequest::getLanguageCode() const
 {
     return getData("LanguageCode").asString();
 }
+
+Json::Value SubClientConnectionRequest::getData(const std::string &key) const
+{
+    return raw_token_->getData().get(key, Json::nullValue);
+}

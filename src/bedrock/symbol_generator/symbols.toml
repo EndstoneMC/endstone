@@ -1,4 +1,4 @@
-timestamp = 1765384388
+timestamp = 1765386039
 version = "1.21.130"
 
 [windows]
@@ -89,7 +89,7 @@ version = "1.21.130"
 # RakPeerHelper
 "?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z" = 25489440
 # RepositoryFactory
-"?createSources@RepositoryFactory@@UEBA?AV?$shared_ptr@VRepositorySources@@@std@@AEBVIResourcePackRepository@@@Z" = 25773936
+"?createSources@RepositoryFactory@@UEBA?AV?$shared_ptr@VRepositorySources@@@std@@AEBVIResourcePackRepository@@@Z" = 37146384
 # RepositorySources
 "?initializePackSource@RepositorySources@@QEAAXAEAVPackSourceFactory@@@Z" = 37109792
 # ResourcePackStack
