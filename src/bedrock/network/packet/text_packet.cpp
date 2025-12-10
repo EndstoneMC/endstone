@@ -51,9 +51,52 @@ std::string TextPacket::getName() const
     return "TextPacket";
 }
 
+void TextPacket::write(BinaryStream &stream) const
+{
+    std::visit(
+        [&](auto &&arg) {  //
+            stream.writeByte(static_cast<std::uint8_t>(arg.type), "Message Type", nullptr);
+        },
+        payload.body);
+    stream.writeBool(payload.localize, "Localize?", nullptr);
+    std::visit(
+        [&](auto &&arg) {  //
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr (std::is_same_v<T, TextPacketPayload::MessageOnly>) {
+                stream.writeString(arg.message, "Message", nullptr);
+            }
+            else if constexpr (std::is_same_v<T, TextPacketPayload::AuthorAndMessage>) {
+                stream.writeString(arg.author, "Player Name", nullptr);
+                stream.writeString(arg.message, "Message", nullptr);
+            }
+            else if constexpr (std::is_same_v<T, TextPacketPayload::MessageAndParams>) {
+                stream.writeString(arg.message, "Message", nullptr);
+                stream.writeVectorList(arg.params, "Parameter", nullptr, "Parameter List", nullptr);
+            }
+        },
+        payload.body);
+    stream.writeString(payload.xuid, "Sender's XUID", nullptr);
+    stream.writeString(payload.platform_id, "Platform Id", nullptr);
+    stream.writeString(payload.filtered_message.value_or(""), "Filtered Message", nullptr);
+}
+
 Bedrock::Result<void> TextPacket::_read(ReadOnlyBinaryStream &)
 {
     throw std::runtime_error("Not implemented");
+}
+
+TextPacket TextPacketPayload::createPopup(const std::string &message, const std::vector<std::string> &params)
+{
+    return TextPacketPayload{
+        .body = MessageAndParams{TextPacketType::Popup, message, params},
+    };
+}
+
+TextPacket TextPacketPayload::createTip(const std::string &message)
+{
+    return TextPacketPayload{
+        .body = MessageOnly{TextPacketType::Tip, message},
+    };
 }
 
 TextPacket::TextPacket(TextPacketPayload payload) : payload(std::move(payload)) {}
