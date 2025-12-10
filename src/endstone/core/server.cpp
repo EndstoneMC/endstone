@@ -486,7 +486,7 @@ void EndstoneServer::reload()
 
 void EndstoneServer::reloadData()
 {
-    server_instance_->getMinecraft()->requestResourceReload();
+    server_instance_->onRequestResourceReload();
     level_->getHandle().loadFunctionManager();
     initRegistries();
 }
