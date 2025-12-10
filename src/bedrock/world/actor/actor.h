@@ -321,7 +321,7 @@ public:
     void setNameTag(const std::string &);
     [[nodiscard]] const std::string &getScoreTag() const;
     void setScoreTag(const std::string &);
-    [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;      // Endstone
+    [[nodiscard]] const AttributeInstance *getAttribute(const HashedString &name) const;      // Endstone
     [[nodiscard]] MutableAttributeWithContext getMutableAttribute(const HashedString &name);  // Endstone
     [[nodiscard]] float getFallDistance() const;
     void setFallDistance(float);

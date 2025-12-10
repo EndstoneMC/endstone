@@ -30,7 +30,7 @@ public:
     [[nodiscard]] const AttributeInstance &getInstance(std::uint32_t id_value) const;
     void onAttributeModified(AttributeInstance const &instance);
 
-    [[nodiscard]] const AttributeInstance &getInstance(const HashedString &name) const;                 // Endstone
+    [[nodiscard]] const AttributeInstance *getInstance(const HashedString &name) const;                 // Endstone
     [[nodiscard]] MutableAttributeWithContext getMutableInstanceWithContext(const HashedString &name);  // Endstone
 
 private:
