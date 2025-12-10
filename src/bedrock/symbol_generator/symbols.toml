@@ -192,7 +192,7 @@ version = "1.21.130"
 "_ZN6Player10teleportToERK4Vec3biib" = 150948544
 "_ZN6Player14stopSleepInBedEbb" = 150955488
 "_ZN6Player15startSleepInBedERK8BlockPos" = 150952304
-"_ZN6Player17completeUsingItemEv" = 151065184
+"_ZN6Player17completeUsingItemEv" = 150966864
 "_ZN6Player4dropERK9ItemStackb" = 151041360
 "_ZN6Player4takeER5Actorii" = 151000432
 # RakNet::RNS2_Windows_Linux_360
