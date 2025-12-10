@@ -134,6 +134,7 @@ class ItemComponentPacket;
 class ItemData;
 class ItemStackNetManagerBase;
 class ItemStackRequestData {};
+class ITickingSystem;
 class IWorldRegistriesProvider;
 class JigsawStructureRegistry;
 class LevelChunkBuilderData;

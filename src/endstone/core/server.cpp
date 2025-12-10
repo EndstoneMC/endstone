@@ -461,7 +461,7 @@ bool EndstoneServer::getOnlineMode() const
 void EndstoneServer::shutdown()
 {
     static_cast<EndstoneScheduler &>(getScheduler()).runTask([this]() {
-        server_instance_->getMinecraft()->requestServerShutdown("");
+        server_instance_->getMinecraft()->requestServerShutdown();
     });
 }
 
