@@ -92,8 +92,13 @@ std::string_view EndstoneDamageSource::toEndstone(ActorDamageCause cause)
         {ActorDamageCause::Campfire, "campfire"},
         {ActorDamageCause::SoulCampfire, "soul_campfire"},
         {ActorDamageCause::MaceSmash, "mace_smash"},
+        {ActorDamageCause::Dehydration, "dehydration"},
         {ActorDamageCause::All, "all"},
     };
+    if (!causes.contains(cause)) {
+        throw std::runtime_error("Unknown damage cause: " +
+                                 std::to_string(static_cast<std::underlying_type_t<ActorDamageCause>>(cause)));
+    }
     return causes.at(cause);
 }
 
