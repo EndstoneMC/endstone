@@ -383,6 +383,9 @@ public:
     virtual void *getActorInfoRegistry() = 0;
     [[nodiscard]] virtual StackRefResult<EntityRegistry const> getEntityRegistry() const = 0;
     virtual StackRefResult<EntityRegistry> getEntityRegistry() = 0;
+    virtual gsl::not_null<StackRefResult<IContainerRegistryAccess>> getContainerRegistryAccess() const = 0;
+    virtual gsl::not_null<StackRefResult<IContainerRegistryTracker>> getContainerRegistryTracker() const = 0;
+    virtual gsl::not_null<StackRefResult<IDynamicContainerSerialization>> getDynamicContainerSerialization() const = 0;
     virtual EntitySystems &getEntitySystems() = 0;
     virtual WeakRef<EntityContext> getLevelEntity() = 0;
     [[nodiscard]] virtual WeakRef<const EntityContext> getLevelEntity() const = 0;
@@ -396,9 +399,9 @@ public:
     virtual void setPlayerMovementSettings(PlayerMovementSettings const &) = 0;
     [[nodiscard]] virtual void *getPlayerMovementSettingsManager() = 0;
     [[nodiscard]] virtual void *getPlayerMovementSettingsManager() const = 0;
-    [[nodiscard]] virtual const TickDeathSettings &getTickDeathSettings() const = 0;
-    virtual void setTickDeathSettings(const TickDeathSettings &) = 0;
-    [[nodiscard]] virtual bool canUseSkin(SerializedSkin const &, NetworkIdentifier const &,
+    // [[nodiscard]] virtual const TickDeathSettings &getTickDeathSettings() const = 0;
+    // virtual void setTickDeathSettings(const TickDeathSettings &) = 0;
+    [[nodiscard]] virtual bool canUseSkin(SerializedSkinRef const &, NetworkIdentifier const &,
                                           ActorUniqueID const &) const = 0;
     [[nodiscard]] virtual void *getTrustedSkinHelper() const = 0;
     [[nodiscard]] virtual PositionTrackingDB::PositionTrackingDBClient *getPositionTrackerDBClient() const = 0;
@@ -458,7 +461,7 @@ public:
     virtual Bedrock::NotNullNonOwnerPtr<PlayerAbilitiesManager> getPlayerAbilitiesManager() = 0;
     virtual Bedrock::NotNullNonOwnerPtr<PlayerPermissionsManager> getPlayerPermissionsManager() = 0;
     virtual Bedrock::NotNullNonOwnerPtr<PlayerPermissionsSynchroniser> getPlayerPermissionsSynchroniser() = 0;
-    virtual MolangPackSettingsCache *getMolangPackSettingsCache() = 0;
+    virtual const MolangPackSettingsCache *getMolangPackSettingsCache() const = 0;
     [[nodiscard]] virtual Recipes &getRecipes() const = 0;
     [[nodiscard]] virtual BlockReducer *getBlockReducer() const = 0;
     [[nodiscard]] virtual std::weak_ptr<TrimPatternRegistry const> getTrimPatternRegistry() const = 0;
@@ -470,6 +473,7 @@ public:
     [[nodiscard]] virtual bool use3DBiomeMaps() const = 0;
     virtual void *getChunkGenerationManager() = 0;
     [[nodiscard]] virtual void *getChunkGenerationManager() const = 0;
+    virtual void clearAllGenerationRequests(const NetworkIdentifier &, SubClientId) = 0;
     [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<MapDataManager> getMapDataManager() const = 0;
     virtual Level *asLevel() = 0;
     virtual void *asMultiPlayerLevel() = 0;

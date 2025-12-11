@@ -45,7 +45,7 @@ private:
     void onNetworkMaxPlayersChanged(uint32_t newMaxPlayerCount) override;
     virtual IGameModuleShared &getGameModuleShared();
     void teardownHttp();
-    void requestServerShutdown(const std::string &) override;
+    void requestServerShutdown() override;
     virtual bool requestInGamePause(const SubClientId &, bool);
 
     Bedrock::NonOwnerPointer<Minecraft> minecraft_;

@@ -14,7 +14,10 @@
 
 #pragma once
 
+#include <thread>
+
 #include "endstone/core/command/endstone_command.h"
+#include "endstone/core/devtools/devtools.h"
 
 namespace endstone::core {
 class DevToolsCommand : public core::EndstoneCommand {

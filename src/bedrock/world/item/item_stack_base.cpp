@@ -336,7 +336,14 @@ bool ItemStackBase::hasSameUserData(const ItemStackBase &other) const
 
 void ItemStackBase::setUserData(std::unique_ptr<CompoundTag> tag)
 {
-    BEDROCK_CALL(&ItemStackBase::setUserData, this, std::move(tag));
+    user_data_ = std::move(tag);
+    if (user_data_) {
+        if (auto *charged_item = user_data_->getCompound(TAG_CHARGED_ITEM)) {
+            charged_item_ = std::make_unique<ItemInstance>(ItemInstance::fromTag(*charged_item));
+            return;
+        }
+    }
+    charged_item_.reset();
 }
 
 const CompoundTag *ItemStackBase::getUserData() const

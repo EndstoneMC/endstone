@@ -14,21 +14,31 @@
 
 #include "bedrock/network/packet/text_packet.h"
 
-TextPacket TextPacket::createRaw(const std::string &message)
+TextPacket TextPacketPayload::createRaw(const std::string &message)
 {
-    return {TextPacketType::Raw, "", message, std::nullopt, {}, false, "", ""};
+    return TextPacketPayload{
+        .body = MessageOnly{TextPacketType::Raw, message},
+    };
 }
 
-TextPacket TextPacket::createChat(const std::string &author, const std::string &message,
-                                  std::optional<std::string> filtered_message, const std::string &xuid,
-                                  const std::string &platform_id)
+TextPacket TextPacketPayload::createChat(const std::string &author, const std::string &message,
+                                         std::optional<std::string> filtered_message, const std::string &xuid,
+                                         const std::string &platform_id)
 {
-    return {TextPacketType::Chat, author, message, std::move(filtered_message), {}, false, xuid, platform_id};
+    return TextPacketPayload{
+        .xuid = xuid,
+        .platform_id = platform_id,
+        .filtered_message = std::move(filtered_message),
+        .body = AuthorAndMessage{TextPacketType::Chat, author, message},
+    };
 }
 
-TextPacket TextPacket::createTranslated(const std::string &message, const std::vector<std::string> &params)
+TextPacket TextPacketPayload::createTranslated(const std::string &message, const std::vector<std::string> &params)
 {
-    return {TextPacketType::Translate, "", message, std::nullopt, params, true, "", ""};
+    return TextPacketPayload{
+        .localize = true,
+        .body = MessageAndParams{TextPacketType::Translate, message, params},
+    };
 }
 
 MinecraftPacketIds TextPacket::getId() const
@@ -43,81 +53,49 @@ std::string TextPacket::getName() const
 
 void TextPacket::write(BinaryStream &stream) const
 {
-    stream.writeByte(static_cast<std::uint8_t>(type), "Message Type", nullptr);
-    stream.writeBool(localize, "Localize?", nullptr);
-    stream.writeConditional("Message Type",
-                            {
-                                {type == TextPacketType::Raw,
-                                 [&](BinaryStream &s) {  //
-                                     s.writeString(message, "Message", nullptr);
-                                 },
-                                 "Raw"},
-                                {type == TextPacketType::Chat,
-                                 [&](BinaryStream &s) {
-                                     s.writeString(author, "Player Name", nullptr);
-                                     s.writeString(message, "Message", nullptr);
-                                 },
-                                 "Chat"},
-                                {type == TextPacketType::Translate,
-                                 [&](BinaryStream &s) {
-                                     s.writeString(message, "Message", nullptr);
-                                     s.writeVectorList(params, "Parameter", nullptr, "Parameter List", nullptr);
-                                 },
-                                 "Translate"},
-                                {type == TextPacketType::Popup,
-                                 [&](BinaryStream &s) {
-                                     s.writeString(message, "Message", nullptr);
-                                     s.writeVectorList(params, "Parameter", nullptr, "Parameter List", nullptr);
-                                 },
-                                 "Popup"},
-                                {type == TextPacketType::JukeboxPopup,
-                                 [&](BinaryStream &s) {
-                                     s.writeString(message, "Message", nullptr);
-                                     s.writeVectorList(params, "Parameter", nullptr, "Parameter List", nullptr);
-                                 },
-                                 "Jukebox Popup"},
-                                {type == TextPacketType::Tip,
-                                 [&](BinaryStream &s) {  //
-                                     s.writeString(message, "Message", nullptr);
-                                 },
-                                 "Tip"},
-                                {type == TextPacketType::SystemMessage,
-                                 [&](BinaryStream &s) {  //
-                                     s.writeString(message, "Message", nullptr);
-                                 },
-                                 "System Message"},
-                                {type == TextPacketType::Whisper,
-                                 [&](BinaryStream &s) {  //
-                                     s.writeString(author, "Player Name", nullptr);
-                                     s.writeString(message, "Message", nullptr);
-                                 },
-                                 "Whisper"},
-                                {type == TextPacketType::Announcement,
-                                 [&](BinaryStream &s) {  //
-                                     s.writeString(author, "Player Name", nullptr);
-                                     s.writeString(message, "Message", nullptr);
-                                 },
-                                 "Announcement"},
-                                {type == TextPacketType::TextObjectWhisper,
-                                 [&](BinaryStream &s) {  //
-                                     s.writeString(message, "Message", nullptr);
-                                 },
-                                 "Text Object Whisper"},
-                                {type == TextPacketType::TextObject,
-                                 [&](BinaryStream &s) {  //
-                                     s.writeString(message, "Message", nullptr);
-                                 },
-                                 "Text Object"},
-                                {type == TextPacketType::TextObjectAnnouncement,
-                                 [&](BinaryStream &s) {  //
-                                     s.writeString(message, "Message", nullptr);
-                                 },
-                                 "Text Object Announcement"},
-                            },
-                            std::nullopt);
-    stream.writeString(xuid, "Sender's XUID", nullptr);
-    stream.writeString(platform_id, "Platform Id", nullptr);
-    stream.writeString(filtered_message.value_or(""), "Filtered Message", nullptr);
+    // TODO(wtf): this doesn't look right, why would we transmit a list of TextPacketType(s) in string to the client?
+    stream.writeBool(payload.localize, "Localize?", nullptr);
+    stream.writeUnsignedVarInt(payload.body.index(), "Message content (variant based on message type)", nullptr);
+    std::visit(
+        [&](auto &&arg) {  //
+            using T = std::decay_t<decltype(arg)>;
+            if constexpr (std::is_same_v<T, TextPacketPayload::MessageOnly>) {
+                stream.writeString("raw", "raw", nullptr);
+                stream.writeString("tip", "tip", nullptr);
+                stream.writeString("systemMessage", "systemMessage", nullptr);
+                stream.writeString("textObjectWhisper", "textObjectWhisper", nullptr);
+                stream.writeString("textObjectAnnouncement", "textObjectAnnouncement", nullptr);
+                stream.writeString("textObject", "textObject", nullptr);
+                stream.writeByte(static_cast<std::uint8_t>(arg.type), "Message Type", nullptr);
+                stream.writeString(arg.message, "Message", nullptr);
+            }
+            else if constexpr (std::is_same_v<T, TextPacketPayload::AuthorAndMessage>) {
+                stream.writeString("chat", "chat", nullptr);
+                stream.writeString("whisper", "whisper", nullptr);
+                stream.writeString("announcement", "announcement", nullptr);
+                stream.writeByte(static_cast<std::uint8_t>(arg.type), "Message Type", nullptr);
+                stream.writeString(arg.author, "Player Name", nullptr);
+                stream.writeString(arg.message, "Message", nullptr);
+            }
+            else if constexpr (std::is_same_v<T, TextPacketPayload::MessageAndParams>) {
+                stream.writeString("translate", "translate", nullptr);
+                stream.writeString("popup", "popup", nullptr);
+                stream.writeString("jukeboxPopup", "jukeboxPopup", nullptr);
+                stream.writeByte(static_cast<std::uint8_t>(arg.type), "Message Type", nullptr);
+                stream.writeString(arg.message, "Message", nullptr);
+                stream.writeVectorList(arg.params, "Parameter", nullptr, "Parameter List", nullptr);
+            }
+        },
+        payload.body);
+    stream.writeString(payload.xuid, "Sender's XUID", nullptr);
+    stream.writeString(payload.platform_id, "Platform Id", nullptr);
+    if (payload.filtered_message.has_value()) {
+        stream.writeBool(true, "Has Filtered Message", nullptr);
+        stream.writeString(payload.filtered_message.value(), "Filtered Message", nullptr);
+    }
+    else {
+        stream.writeBool(false, "Has Filtered Message", nullptr);
+    }
 }
 
 Bedrock::Result<void> TextPacket::_read(ReadOnlyBinaryStream &)
@@ -125,10 +103,18 @@ Bedrock::Result<void> TextPacket::_read(ReadOnlyBinaryStream &)
     throw std::runtime_error("Not implemented");
 }
 
-TextPacket::TextPacket(TextPacketType type, const std::string &author, const std::string &message,
-                       std::optional<std::string> filtered_message, const std::vector<std::string> &params,
-                       const bool localize, const std::string &xuid, const std::string &platform_id)
-    : type(type), author(author), message(message), filtered_message(std::move(filtered_message)), params(params),
-      localize(localize), xuid(xuid), platform_id(platform_id)
+TextPacket TextPacketPayload::createPopup(const std::string &message, const std::vector<std::string> &params)
 {
+    return TextPacketPayload{
+        .body = MessageAndParams{TextPacketType::Popup, message, params},
+    };
 }
+
+TextPacket TextPacketPayload::createTip(const std::string &message)
+{
+    return TextPacketPayload{
+        .body = MessageOnly{TextPacketType::Tip, message},
+    };
+}
+
+TextPacket::TextPacket(TextPacketPayload payload) : payload(std::move(payload)) {}

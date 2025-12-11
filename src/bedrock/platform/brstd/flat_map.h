@@ -14,17 +14,14 @@
 
 #pragma once
 
-#include "bedrock/world/item/item_stack_base.h"
+#include <vector>
 
-class ItemInstance final : public ItemStackBase {
-public:
-    static const ItemInstance EMPTY_ITEM;
-    ItemInstance() = default;
-    explicit ItemInstance(const ItemStackBase &);
-    static ItemInstance fromTag(const CompoundTag &tag);
-};
+#include "bedrock/platform/brstd/associative_adapter.h"
 
-struct SortItemInstanceIdAux {
-    bool operator()(const ItemInstance &lhs, const ItemInstance &rhs) const;
-};
-static_assert(sizeof(SortItemInstanceIdAux) == 1);
+namespace brstd {
+template <typename Key, typename T, typename Compare = std::less<Key>, typename KeyContainer = std::vector<Key>,
+          typename MappedContainer = std::vector<T>>
+class flat_map : public associative_adapter<Key, T, Compare, KeyContainer, MappedContainer> {};
+
+static_assert(flat_map<int, int>::no_mapped_container == false);
+};  // namespace brstd

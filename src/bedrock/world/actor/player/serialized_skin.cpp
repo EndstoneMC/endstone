@@ -78,27 +78,27 @@ private:
     bool overrides_player_appearance_;
 };
 
-const mce::Image &SerializedSkin::getImageData() const
+const mce::Image &SerializedSkinRef::getImageData() const
 {
     return skin_impl_->get().getImageData();
 }
 
-const mce::Image &SerializedSkin::getCapeImageData() const
+const mce::Image &SerializedSkinRef::getCapeImageData() const
 {
     return skin_impl_->get().getCapeImageData();
 }
 
-bool SerializedSkin::getIsPersona() const
+bool SerializedSkinRef::getIsPersona() const
 {
     return skin_impl_->get().getIsPersona();
 }
 
-const std::string &SerializedSkin::getId() const
+const std::string &SerializedSkinRef::getId() const
 {
     return skin_impl_->get().getId();
 }
 
-const std::string &SerializedSkin::getCapeId() const
+const std::string &SerializedSkinRef::getCapeId() const
 {
     return skin_impl_->get().getCapeId();
 }

@@ -56,6 +56,7 @@ private:
     std::unique_ptr<void *> subpack_info_pack_;  // SubpackInfoCollection
     std::unique_ptr<void *> metadata_;           // PackMetadata
     std::unique_ptr<const LegacyDependenciesUpgrade> dependencies_upgrade_;
+    std::uint8_t revision_;
 };
 
 using NotNullPack = gsl::not_null<std::shared_ptr<Pack>>;

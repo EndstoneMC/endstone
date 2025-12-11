@@ -17,3 +17,8 @@
 const ItemInstance ItemInstance::EMPTY_ITEM{};
 
 ItemInstance::ItemInstance(const ItemStackBase &item) : ItemStackBase(item) {}
+
+ItemInstance ItemInstance::fromTag(const CompoundTag &tag)
+{
+    return BEDROCK_CALL(&ItemInstance::fromTag, tag);
+}

@@ -65,8 +65,9 @@ public:
         WindBurst = 38,
         Density = 39,
         Breach = 40,
-        NumEnchantments = 41,
-        InvalidEnchantment = 42,
+        Lunge = 41,
+        NumEnchantments,
+        InvalidEnchantment,
     };
 
     enum class Frequency : int {
@@ -102,6 +103,7 @@ public:
         MUSHROOM_STICK = 1U << 20,
         BRUSH = 1U << 21,
         HEAVY_WEAPON = 1U << 22,
+        MELEE_SPEAR = 1U << 23,
 
         G_ARMOR = ARMOR_HEAD | ARMOR_TORSO | ARMOR_FEET | ARMOR_LEGS,
         G_TOOL = HOE | SHEARS | FLINTSTEEL | SHIELD,
@@ -121,9 +123,9 @@ public:
         DAMAGE = 1,
         GATHERING = 2,
         PROTECTION = 3,
-        FROSTSTRIDER = 4,
-        MENDFINITY = 5,
-        LOYALRIPTIDE = 6,
+        FROST_STRIDER = 4,
+        MENDING_INFINITY = 5,
+        LOYALTY_RIPTIDE = 6,
     };  // NOLINTEND
 
     enum class VillagerTrading : int {
@@ -144,6 +146,7 @@ public:
     [[nodiscard]] virtual float getAfterBreachArmorFraction(int, float) const = 0;
     [[nodiscard]] virtual float getDamageBonus(int, const Actor &, const Actor &) const = 0;
     virtual void doPostAttack(Actor &, Actor &, int) const = 0;
+    virtual void doPostPiercingAttack(Actor &, int) const=0;
     virtual void doPostItemHurtActor(Actor &, Actor &, int) const = 0;
     virtual void doPostHurt(ItemInstance &, Actor &, Actor &, int) const = 0;
     [[nodiscard]] virtual bool isMeleeDamageEnchant() const = 0;

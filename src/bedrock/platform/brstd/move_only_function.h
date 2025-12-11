@@ -21,6 +21,7 @@ template <class Signature>
 class move_only_function
     : public detail::function::function_invoke<detail::function::DerivedType::MoveOnly, Signature, false> {
 public:
+    using detail::function::function_invoke<detail::function::DerivedType::MoveOnly, Signature, false>::operator();
     template <typename F>
     move_only_function(F &&f)
         requires(!std::is_same_v<move_only_function, std::remove_cvref_t<F>>)
@@ -28,5 +29,4 @@ public:
         this->template construct_from_function<brstd::move_only_function, F>(std::forward<F>(f));
     }
 };
-
 }  // namespace brstd

@@ -39,6 +39,15 @@ class ItemStackBase;
 class Level;
 class Mob;
 
+struct NoItemTintStrategy {};
+struct ActorItemTintStrategy {
+    const ActorDefinitionIdentifier &identifier;
+};
+struct ItemTintStrategy {
+    using Variant = std::variant<NoItemTintStrategy, ActorItemTintStrategy>;
+    Variant data;
+};
+
 class Item {
 public:
     static const std::uint8_t MAX_STACK_SIZE = 64;
@@ -70,6 +79,7 @@ public:
     virtual bool isThrowable() const = 0;
     virtual bool isUseable() const = 0;
     virtual bool isTrimAllowed() const = 0;
+    virtual bool isBodyArmor() const = 0;
     virtual ItemComponent *getComponent(HashedString const &) const = 0;
     virtual IFoodItemComponent *getFood() const = 0;
     virtual Item &setMaxDamage(int) = 0;
@@ -106,21 +116,26 @@ public:
     virtual int getEnchantValue() const = 0;
     virtual int getArmorValue() const = 0;
     virtual int getToughnessValue() const = 0;
+    virtual float getKnockbackResistanceValue() const;
+    virtual std::optional<SharedTypes::Legacy::LevelSoundEvent> getAttackMissSound() const;
+    virtual std::optional<SharedTypes::Legacy::LevelSoundEvent> getAttackHitSound() const;
+    virtual std::optional<SharedTypes::Legacy::LevelSoundEvent> getAttackCriticalHitSound() const;
     virtual LevelSoundEvent getBreakSound() const = 0;
+    virtual LevelSoundEvent getEquipSound() const;
     virtual bool isComplex() const = 0;
     virtual bool isValidAuxValue(int) const = 0;
     virtual int getDamageChance(int) const = 0;
     virtual float getViewDamping() const = 0;
     virtual bool uniqueAuxValues() const = 0;
     virtual bool isActorPlacerItem() const = 0;
-    virtual bool isMultiColorTinted(ItemStack const &) const = 0;
+    virtual ItemTintStrategy getTintStrategy() const;
     virtual mce::Color getColor(CompoundTag const *, ItemDescriptor const &) const = 0;
     virtual bool hasCustomColor(ItemStackBase const &) const = 0;
     virtual bool hasCustomColor(CompoundTag const *) const = 0;
     virtual void clearColor(ItemStackBase &) const = 0;
     virtual void setColor(ItemStackBase &, mce::Color const &) const = 0;
-    virtual mce::Color getBaseColor(ItemStack const &) const = 0;
-    virtual mce::Color getSecondaryColor(ItemStack const &) const = 0;
+    // virtual mce::Color getBaseColor(ItemStack const &) const = 0;
+    // virtual mce::Color getSecondaryColor(ItemStack const &) const = 0;
     virtual ActorDefinitionIdentifier getActorIdentifier(ItemStack const &) const = 0;
     virtual int buildIdAux(std::int16_t, CompoundTag const *) const = 0;
     virtual bool canUseOnSimTick() const = 0;
@@ -147,6 +162,7 @@ public:
     virtual void refreshedInContainer(ItemStackBase const &, Level &) const = 0;
     virtual HashedString const &getCooldownCategory() const = 0;
     virtual int getCooldownDuration() const = 0;
+    virtual ItemCooldownType getCooldownType() const;
     virtual void fixupCommon(ItemStackBase &) const = 0;
     virtual void fixupCommon(ItemStackBase &, Level &) const = 0;
     virtual InHandUpdateType getInHandUpdateType(Player const &, ItemStack const &, ItemStack const &, bool,
@@ -154,7 +170,6 @@ public:
     virtual bool validFishInteraction(int) const = 0;
     virtual void enchantProjectile(ItemStackBase const &, Actor &) const = 0;
     virtual ActorLocation getEquipLocation() const = 0;
-    virtual LevelSoundEvent getEquipSound() const = 0;
     virtual bool shouldEmitInUseGameEvents() const = 0;
     virtual bool useInterruptedByAttacking() const = 0;
     virtual bool hasSameRelevantUserData(ItemStackBase const &, ItemStackBase const &) const = 0;

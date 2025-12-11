@@ -128,11 +128,11 @@ Player *EndstonePlayer::asPlayer() const
 void EndstonePlayer::sendMessage(const Message &message) const
 {
     std::visit(overloaded{[this](const std::string &msg) {
-                              auto packet = TextPacket::createRaw(msg);
+                              auto packet = TextPacketPayload::createRaw(msg);
                               getHandle().sendNetworkPacket(packet);
                           },
                           [this](const Translatable &msg) {
-                              auto packet = TextPacket::createTranslated(msg.getText(), msg.getParameters());
+                              auto packet = TextPacketPayload::createTranslated(msg.getText(), msg.getParameters());
                               getHandle().sendNetworkPacket(packet);
                           }},
                message);
@@ -156,6 +156,29 @@ std::string EndstonePlayer::getName() const
 void EndstonePlayer::remove()
 {
     getServer().getLogger().error("Cannot remove player {}, use Player::kick instead.", getName());
+}
+
+void EndstonePlayer::teleport(Location location)
+{
+    if (getHealth() == 0 || getHandle().isRemoved()) {
+        return;
+    }
+
+    setRotation(location.getYaw(), location.getPitch());
+    Vec3 to_location{location.getX(), location.getY(), location.getZ()};
+    if (location.getDimension() != nullptr && location.getDimension() != &getDimension()) {
+        auto current_location = getLocation();
+        Vec3 from_location{current_location.getX(), current_location.getY(), current_location.getZ()};
+        const auto from_dimension = static_cast<EndstoneDimension &>(getDimension()).getHandle().getDimensionId();
+        const auto to_dimension =
+            static_cast<EndstoneDimension &>(*location.getDimension()).getHandle().getDimensionId();
+        getHandle().getLevel().requestPlayerChangeDimension(
+            getHandle(),
+            ChangeDimensionRequest{from_dimension, to_dimension, from_location, to_location, false, false});
+    }
+    else {
+        getHandle().teleportTo(to_location, true, 3, 1, false);
+    }
 }
 
 UUID EndstonePlayer::getUniqueId() const
@@ -370,17 +393,13 @@ void EndstonePlayer::setScoreboard(Scoreboard &scoreboard)
 
 void EndstonePlayer::sendPopup(std::string message) const
 {
-    TextPacket packet;
-    packet.type = TextPacketType::Popup;
-    packet.message = std::move(message);
+    TextPacket packet = TextPacketPayload::createPopup(message, {});
     getHandle().sendNetworkPacket(packet);
 }
 
 void EndstonePlayer::sendTip(std::string message) const
 {
-    TextPacket packet;
-    packet.type = TextPacketType::Tip;
-    packet.message = std::move(message);
+    TextPacket packet = TextPacketPayload::createTip(message);
     getHandle().sendNetworkPacket(packet);
 }
 
@@ -484,7 +503,7 @@ void EndstonePlayer::updateCommands() const
     AvailableCommandsPacket packet = registry.serializeAvailableCommands();
 
     std::unordered_map<std::uint32_t, SemanticConstraint> constraints_to_remove;
-    for (auto it = packet.commands.begin(); it != packet.commands.end();) {
+    for (auto it = packet.payload.commands.begin(); it != packet.payload.commands.end();) {
         const auto &name = it->name;
         const auto command = command_map.getCommand(name);
         if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this))) {
@@ -501,13 +520,13 @@ void EndstonePlayer::updateCommands() const
             ++it;
         }
         else {
-            it = packet.commands.erase(it);
+            it = packet.payload.commands.erase(it);
         }
     }
 
     // Remove semantic constraints
     const auto enum_index = registry.findEnum("CommandName").toIndex();
-    for (auto &data : packet.constraints) {
+    for (auto &data : packet.payload.constraints) {
         if (constraints_to_remove.contains(data.enum_value_symbol) && data.enum_symbol == enum_index) {
             auto constraint = constraints_to_remove.at(data.enum_value_symbol);
             std::erase(data.constraints, registry.semantic_constraint_lookup_.at(constraint));

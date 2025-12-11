@@ -14,17 +14,14 @@
 
 #pragma once
 
-#include "bedrock/world/item/item_stack_base.h"
-
-class ItemInstance final : public ItemStackBase {
-public:
-    static const ItemInstance EMPTY_ITEM;
-    ItemInstance() = default;
-    explicit ItemInstance(const ItemStackBase &);
-    static ItemInstance fromTag(const CompoundTag &tag);
+enum class ActorSwingSource : std::uint8_t {
+    None = 0,
+    Build = 1,
+    Mine = 2,
+    Interact = 3,
+    Attack = 4,
+    UseItem = 5,
+    ThrowItem = 6,
+    DropItem = 7,
+    Event = 8,
 };
-
-struct SortItemInstanceIdAux {
-    bool operator()(const ItemInstance &lhs, const ItemInstance &rhs) const;
-};
-static_assert(sizeof(SortItemInstanceIdAux) == 1);

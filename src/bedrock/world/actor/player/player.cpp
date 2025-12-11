@@ -182,12 +182,12 @@ void Player::stopGliding()
     }
 }
 
-const SerializedSkin &Player::getSkin() const
+const SerializedSkinRef &Player::getSkin() const
 {
     return *skin_;
 }
 
-SerializedSkin &Player::getSkin()
+SerializedSkinRef &Player::getSkin()
 {
     return *skin_;
 }
@@ -233,12 +233,12 @@ bool Player::isFlying() const
 
 int Player::getPlayerLevel() const
 {
-    return static_cast<int>(getAttribute("minecraft:player.level").getCurrentValue());
+    return static_cast<int>(getAttribute("minecraft:player.level")->getCurrentValue());
 }
 
 float Player::getLevelProgress() const
 {
-    return getAttribute("minecraft:player.experience").getCurrentValue();
+    return getAttribute("minecraft:player.experience")->getCurrentValue();
 }
 
 int Player::getXpNeededForLevelRange(int start, int end)

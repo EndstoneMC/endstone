@@ -202,6 +202,10 @@ void EndstoneServer::initPackSource(const PackSourceFactory &pack_source_factory
     if (resource_pack_source_) {
         throw std::runtime_error("Resource pack source already created.");
     }
+    if (!resource_pack_repository_) {
+        throw std::runtime_error(
+            "Resource pack repository not set. Check the hook for RepositoryFactory::createSources.");
+    }
     auto io = pack_source_factory.createPackIOProvider();
     resource_pack_source_ = std::make_unique<EndstonePackSource>(EndstonePackSourceOptions(
         PackSourceOptions(std::move(io)), resource_pack_repository_->getResourcePacksPath().getContainer(),
@@ -457,7 +461,7 @@ bool EndstoneServer::getOnlineMode() const
 void EndstoneServer::shutdown()
 {
     static_cast<EndstoneScheduler &>(getScheduler()).runTask([this]() {
-        server_instance_->getMinecraft()->requestServerShutdown("");
+        server_instance_->getMinecraft()->requestServerShutdown();
     });
 }
 
@@ -482,7 +486,7 @@ void EndstoneServer::reload()
 
 void EndstoneServer::reloadData()
 {
-    server_instance_->getMinecraft()->requestResourceReload();
+    server_instance_->onRequestResourceReload();
     level_->getHandle().loadFunctionManager();
     initRegistries();
 }

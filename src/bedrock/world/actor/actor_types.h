@@ -169,6 +169,10 @@ enum class ActorType : int {
     Creaking = 146 | Monster,
     HappyGhast = 147 | Animal,
     CopperGolem = 148 | PathfinderMob,
+    Nautilus = 149 | WaterAnimal,
+    ZombieNautilus = 150 | WaterAnimal | UndeadMob,
+    Parched = 151 | SkeletonMonster,
+    CamelHusk = 152 | UndeadMob,
 };
 
 constexpr ActorType operator&(const ActorType lhs, const ActorType rhs)

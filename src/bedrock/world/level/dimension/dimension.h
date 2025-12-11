@@ -91,7 +91,7 @@ private:
     float mobs_per_chunk_surface_[7];
     float mobs_per_chunk_underground_[7];
     BrightnessPair default_brightness_;  // +316
-    std::unique_ptr<BaseLightTextureImageBuilder> base_light_texture_image_builder_;
+    // std::unique_ptr<BaseLightTextureImageBuilder> base_light_texture_image_builder_;
     std::unique_ptr<DimensionBrightnessRamp> dimension_brightness_ramp_;
     std::shared_ptr<LevelChunkMetaData> target_metadata_;
     std::unique_ptr<RuntimeLightingManager> runtime_lighting_manager_;
