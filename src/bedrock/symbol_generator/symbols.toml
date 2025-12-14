@@ -1,4 +1,4 @@
-timestamp = 1765404583
+timestamp = 1765733304
 version = "1.21.130"
 
 [windows]
@@ -111,6 +111,8 @@ version = "1.21.130"
 "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z" = 73721728
 # ServerScriptManager
 "?_runPlugins@ServerScriptManager@@AEAAXW4PluginExecutionGroup@@AEAVServerInstance@@@Z" = 37417584
+# UnverifiedCertificate
+"?fromString@UnverifiedCertificate@@SA?AV1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z" = 9413424
 
 [linux]
 "BlockState::StateListNode::mHead" = 202698760
@@ -222,3 +224,5 @@ version = "1.21.130"
 "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE" = 167812112
 # ServerScriptManager
 "_ZN19ServerScriptManager11_runPluginsE20PluginExecutionGroupR14ServerInstance" = 129098352
+# UnverifiedCertificate
+"_ZN21UnverifiedCertificate10fromStringERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE" = 90937568
