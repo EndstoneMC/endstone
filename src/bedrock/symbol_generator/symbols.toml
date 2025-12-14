@@ -1,4 +1,4 @@
-timestamp = 1765733304
+timestamp = 1765735057
 version = "1.21.130"
 
 [windows]
@@ -19,6 +19,8 @@ version = "1.21.130"
 "?forEachBlockType@BlockTypeRegistry@@QEAAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z" = 70862560
 # CampfireBlockActor
 "?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z" = 70609472
+# Certificate
+"?validate@Certificate@@QEAA_N_J_N1@Z" = 9416816
 # Command
 "?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z" = 50959760
 # CommandOriginLoader
@@ -132,6 +134,8 @@ version = "1.21.130"
 "_ZN17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE" = 164238624
 # CampfireBlockActor
 "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei" = 166878240
+# Certificate
+"_ZN11Certificate8validateElbb" = 90945216
 # Command
 "_ZNK7Command3runERK13CommandOriginR13CommandOutput" = 135057184
 # CommandOriginLoader

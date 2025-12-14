@@ -35,3 +35,12 @@ UnverifiedCertificate UnverifiedCertificate::fromString(const std::string &input
     }
     return {WebToken(), nullptr};
 }
+
+bool Certificate::validate(std::time_t current_time, bool is_self_signed, bool check_expired)
+{
+    auto* self = std::launder(this);
+    if (self == nullptr) {
+        return false;
+    }
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Certificate::validate, this, current_time, is_self_signed, check_expired);
+}
