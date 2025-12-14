@@ -36,14 +36,6 @@ UnverifiedCertificate UnverifiedCertificate::fromString(const std::string &input
     return {WebToken(), nullptr};
 }
 
-namespace {
-template <typename T>
-bool validate_ptr(T *ptr)
-{
-    return ptr != nullptr;
-}
-}  // namespace
-
 bool Certificate::validate(std::time_t current_time, bool is_self_signed, bool check_expired)
 {
     if (std::launder(this) == nullptr) {
