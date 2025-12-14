@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.10.18](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.18) - 2025-12-11
+
+<small>[Compare with 0.10.17](https://github.com/EndstoneMC/endstone/compare/v0.10.17...v0.10.18)</small>
+
+### Fixed
+
+- Patched a new vulnerability in BDS where a bad LoginPacket could crash the server (well done mojang, well done).
+
 ## [0.10.17](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.17) - 2025-12-11
 
 <small>[Compare with 0.10.16](https://github.com/EndstoneMC/endstone/compare/v0.10.16...v0.10.17)</small>
@@ -23,7 +31,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.130.4.
+- Added support for BDS version 1.21.130.4.
 
 ## [0.10.15](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.15) - 2025-11-21
 
@@ -31,7 +39,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.124.2.
+- Added support for BDS version 1.21.124.2.
 
 ## [0.10.14](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.14) - 2025-11-18
 
@@ -39,12 +47,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Enable packet rate limiting by default to prevent packet flooding.
-* Enable RakNet's connection frequency limiting.
+- Enable packet rate limiting by default to prevent packet flooding.
+- Enable RakNet's connection frequency limiting.
 
 ### Fixed
 
-* Patched a vulnerability that allows malicious clients to continue sending packets after the connection is closed.
+- Patched a vulnerability that allows malicious clients to continue sending packets after the connection is closed.
 
 ## [0.10.13](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.13) - 2025-11-18
 
@@ -52,7 +60,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-* Resolved a crash that could occur with certain worlds.
+- Resolved a crash that could occur with certain worlds.
 
 ## [0.10.12](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.12) - 2025-11-18
 
@@ -60,15 +68,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.123.2.
+- Added support for BDS version 1.21.123.2.
 
 ### Fixed
 
-* Resolved a memory leak caused by chunks not unloading properly.
-* Patched a vulnerability where a crafted LoginPacket with an excessively long certificate chain could crash the server.
-* Patched a vulnerability where a malformed InventoryTransactionPacket could freeze the server.
-* Fixed a crash related to custom dimensions (LeviStone).
-* IP bans are now checked before the server processes player login.
+- Resolved a memory leak caused by chunks not unloading properly.
+- Patched a vulnerability where a crafted LoginPacket with an excessively long certificate chain could crash the server.
+- Patched a vulnerability where a malformed InventoryTransactionPacket could freeze the server.
+- Fixed a crash related to custom dimensions (LeviStone).
+- IP bans are now checked before the server processes player login.
 
 ## [0.10.11](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.11) - 2025-11-06
 
@@ -76,17 +84,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.121.1.
+- Added support for BDS version 1.21.121.1.
 
 ### Fixed
 
-* Resolved a crash that could occur when updating the scoreboard of an entity.
-* `Player::setWalkSpeed` now correctly sets the player's walk speed.
+- Resolved a crash that could occur when updating the scoreboard of an entity.
+- `Player::setWalkSpeed` now correctly sets the player's walk speed.
 
 ### Changed
 
-* `PlayerChatEvent` is now triggered before Script API's `ChatSendBeforeEvent`.
-* Verbose database logs (e.g. `Running AutoCompaction...`) are now suppressed.
+- `PlayerChatEvent` is now triggered before Script API's `ChatSendBeforeEvent`.
+- Verbose database logs (e.g. `Running AutoCompaction...`) are now suppressed.
 
 ## [0.10.10](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.10) - 2025-11-01
 
@@ -94,7 +102,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-* `PlayerItemHeldEvent` is no longer triggered when the `from` slot is the same as the `to` slot.
+- `PlayerItemHeldEvent` is no longer triggered when the `from` slot is the same as the `to` slot.
 
 ## [0.10.9](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.9) - 2025-10-30
 
@@ -102,11 +110,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-* Resolved crashes in the chunk-related API.
-* Stack traces are no longer shown when the server fails to start due to a port conflict on Windows.
-* Fixed an issue where `CommandSenderWrapper` could not capture the output of custom commands.
-* Fixed an issue in the `/status` command where permission checks were not performed.
-* Fixed a crash that could occur when the Minecraft service was unavailable.
+- Resolved crashes in the chunk-related API.
+- Stack traces are no longer shown when the server fails to start due to a port conflict on Windows.
+- Fixed an issue where `CommandSenderWrapper` could not capture the output of custom commands.
+- Fixed an issue in the `/status` command where permission checks were not performed.
+- Fixed a crash that could occur when the Minecraft service was unavailable.
 
 ## [0.10.8](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.8) - 2025-10-28
 
@@ -114,7 +122,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.120.4.
+- Added support for BDS version 1.21.120.4.
 
 ## [0.10.7](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.7) - 2025-10-14
 
@@ -122,12 +130,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.113.1.
+- Added support for BDS version 1.21.113.1.
 
 ### Fixed
 
-* Resolve a crash when joining a server using a grayscale skin with an alpha channel.
-* Resolve an issue where item stacks containing blocks could not be given to players.
+- Resolve a crash when joining a server using a grayscale skin with an alpha channel.
+- Resolve an issue where item stacks containing blocks could not be given to players.
 
 ## [0.10.6](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.6) - 2025-10-02
 
@@ -135,7 +143,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.111.1.
+- Added support for BDS version 1.21.111.1.
 
 ## [0.10.5](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.5) - 2025-09-26
 
@@ -143,24 +151,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added support for BDS version 1.21.102.1.
-* Added `Level::getSeed` to retrieve the seed of the current level.
-* Added the `/seed` command to display the current level's seed.
-* Added `PlayerChatEvent::getFormat` and `PlayerChatEvent::setFormat` to customize the message format.
+- Added support for BDS version 1.21.102.1.
+- Added `Level::getSeed` to retrieve the seed of the current level.
+- Added the `/seed` command to display the current level's seed.
+- Added `PlayerChatEvent::getFormat` and `PlayerChatEvent::setFormat` to customize the message format.
 
 ### Fixed
 
-* Fixed a crash that could occur when a sub-client joined.
-* Ensured `Inventory::setItem` properly updates the client.
-* Item data is now handled correctly during `ItemStack` construction.
-* `ItemStack::setCount` now correctly updates the item count instead of clearing the entire stack.
-* `PlayerChatEvent::setMessage` now correctly displays the updated message to the client.
+- Fixed a crash that could occur when a sub-client joined.
+- Ensured `Inventory::setItem` properly updates the client.
+- Item data is now handled correctly during `ItemStack` construction.
+- `ItemStack::setCount` now correctly updates the item count instead of clearing the entire stack.
+- `PlayerChatEvent::setMessage` now correctly displays the updated message to the client.
 
 ### Changed
 
-* If a command usage includes a parameter of type `message`, it must be the final parameter. No additional parameters
+- If a command usage includes a parameter of type `message`, it must be the final parameter. No additional parameters
   are allowed after it.
-* On Windows, if the automatic loopback exemption fails, a warning will be shown, but the server will no longer stop
+- On Windows, if the automatic loopback exemption fails, a warning will be shown, but the server will no longer stop
   running.
 
 ## [0.10.4](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.4) - 2025-08-10
