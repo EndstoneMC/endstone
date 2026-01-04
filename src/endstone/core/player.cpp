@@ -368,6 +368,28 @@ void EndstonePlayer::setFlySpeed(float value) const
     updateAbilities();
 }
 
+float EndstonePlayer::getVerticalFlySpeed() const
+{
+    return getHandle().getAbilities().getFloat(AbilitiesIndex::VerticalFlySpeed);
+}
+
+void EndstonePlayer::setVerticalFlySpeed(float value) const
+{
+    getHandle().getAbilities().setAbility(AbilitiesIndex::VerticalFlySpeed, value);
+    updateAbilities();
+}
+
+bool EndstonePlayer::getNoClip() const
+{
+    return getHandle().getAbilities().getBool(AbilitiesIndex::NoClip);
+}
+
+void EndstonePlayer::setNoClip(bool noclip) const
+{
+    getHandle().getAbilities().setAbility(AbilitiesIndex::NoClip, noclip);
+    updateAbilities();
+}
+
 float EndstonePlayer::getWalkSpeed() const
 {
     return getHandle().getAbilities().getFloat(AbilitiesIndex::WalkSpeed);
