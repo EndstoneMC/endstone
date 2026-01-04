@@ -252,6 +252,35 @@ public:
     virtual void setFlySpeed(float value) const = 0;
 
     /**
+     * @brief Gets the current allowed speed that a client can fly up and down.
+     *
+     * @return The current allowed speed, default is 1.
+     */
+    [[nodiscard]] virtual float getVerticalFlySpeed() const = 0;
+
+    
+    /**
+     * Sets the speed at which a client will fly up and down.
+     *
+     * @param value The new speed.
+     */
+    virtual void setVerticalFlySpeed(float value) const = 0;
+
+    /**
+    * @brief Determines if the Player has noclip ability enabled
+    *
+    * @return True if player has noclip enabled
+    */
+    [[nodiscard]] virtual bool getNoClip() const = 0;
+
+    /**
+     * @brief Sets if the Player has noclip or not.
+     *
+     * @param noclip If noclip should be enabled.
+     */
+    virtual void setNoClip(bool noclip) const = 0;
+
+    /**
      * @brief Gets the current allowed speed that a client can walk.
      *
      * @return The current allowed speed, default is 0.10.

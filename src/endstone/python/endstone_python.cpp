@@ -375,6 +375,10 @@ void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
                       "If the Player is allowed to fly via jump key double-tap.")
         .def_property("fly_speed", &Player::getFlySpeed, &Player::setFlySpeed,
                       "Gets or sets the current allowed speed that a client can fly.")
+        .def_property("vertical_fly_speed", &Player::getVerticalFlySpeed, &Player::setVerticalFlySpeed,
+                      "Gets or sets the current allowed speed that a client can fly up and down.")
+        .def_property("noclip", &Player::getNoClip, &Player::getNoClip,
+                        "Gets or sets if client has noclip ability enabled.")
         .def_property("walk_speed", &Player::getWalkSpeed, &Player::setWalkSpeed,
                       "Gets or sets the current allowed speed that a client can walk.")
         .def_property("scoreboard", &Player::getScoreboard, &Player::setScoreboard,

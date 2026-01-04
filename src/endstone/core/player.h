@@ -89,6 +89,10 @@ public:
     Result<void> setFlying(bool value) override;
     [[nodiscard]] float getFlySpeed() const override;
     void setFlySpeed(float value) const override;
+    [[nodiscard]] float getVerticalFlySpeed() const override;
+    void setVerticalFlySpeed(float value) const override;
+    [[nodiscard]] bool getNoClip() const override;
+    void setNoClip(bool noclip) const override;
     [[nodiscard]] float getWalkSpeed() const override;
     void setWalkSpeed(float value) const override;
     [[nodiscard]] Scoreboard &getScoreboard() const override;
