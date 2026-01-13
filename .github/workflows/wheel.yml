@@ -69,7 +69,7 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo chown -R $USER:$USER ~/.conan2
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: endstone-wheels-${{ matrix.python-tag }}-${{ matrix.platform }}
           path: ./wheelhouse/*.whl
