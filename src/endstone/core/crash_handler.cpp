@@ -163,9 +163,6 @@ sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event
     }
 
     const auto stacktrace = cpptrace::generate_trace();
-    auto &stream = std::cerr;
-    print_crash_message(stream, ctx);
-    print_stacktrace(stream, stacktrace);
     print_crash_message(std::cerr, ctx);
     print_stacktrace(std::cerr, stacktrace);
 
