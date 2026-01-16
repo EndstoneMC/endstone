@@ -23,6 +23,7 @@
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/core/actor/actor.h"
+#include "endstone/core/gamerule/game_rule.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/level/dimension.h"
 
@@ -114,6 +115,61 @@ Dimension *EndstoneLevel::getDimension(int id) const
 std::int64_t EndstoneLevel::getSeed() const
 {
     return level_.getLevelSeed64();
+}
+
+std::variant<bool, int, float> EndstoneLevel::getGameRuleValue(const GameRule &rule) const
+{
+    ::GameRuleId index(static_cast<const EndstoneGameRule &>(rule).index);
+    const auto &rules = getHandle().getGameRules().game_rules;
+    if (index < 0 || index >= rules.size()) {
+        throw std::out_of_range("");
+    }
+    const auto &result = rules[index];
+    switch (result.type) {
+    case ::GameRule::Type::Invalid:
+        throw std::logic_error("");
+    case ::GameRule::Type::Bool:
+        return result.getBool();
+    case ::GameRule::Type::Int:
+        return result.getInt();
+    case ::GameRule::Type::Float:
+        return result.getFloat();
+    }
+}
+bool EndstoneLevel::setGameRuleValue(const GameRule &rule, const std::variant<bool, int, float> &value)
+{
+    ::GameRuleId index(static_cast<const EndstoneGameRule &>(rule).index);
+    auto &rules = getHandle().getGameRules().game_rules;
+    if (index < 0 || index >= rules.size()) {
+        return false;
+    }
+    auto &result = rules[index];
+    switch (result.type) {
+    case ::GameRule::Type::Invalid:
+        return false;
+    case ::GameRule::Type::Bool:
+        if (std::holds_alternative<bool>(value)) {
+            auto packet =
+                getHandle().getGameRules().setRule(index, std::get<bool>(value), true, nullptr, nullptr, nullptr);
+            getHandle().getPacketSender()->sendBroadcast(*packet);
+            return true;
+        }
+    case ::GameRule::Type::Int:
+        if (std::holds_alternative<int>(value)) {
+            auto packet =
+                getHandle().getGameRules().setRule(index, std::get<bool>(value), true, nullptr, nullptr, nullptr);
+            getHandle().getPacketSender()->sendBroadcast(*packet);
+            return true;
+        }
+    case ::GameRule::Type::Float:
+        if (std::holds_alternative<float>(value)) {
+            auto packet =
+                getHandle().getGameRules().setRule(index, std::get<bool>(value), true, nullptr, nullptr, nullptr);
+            getHandle().getPacketSender()->sendBroadcast(*packet);
+            return true;
+        }
+    }
+    return false;
 }
 
 EndstoneServer &EndstoneLevel::getServer() const

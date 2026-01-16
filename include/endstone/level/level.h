@@ -20,7 +20,7 @@
 #include "endstone/actor/actor.h"
 
 namespace endstone {
-
+class GameRule;
 /**
  * @brief Represents a level, which may contain actors, chunks and blocks
  */
@@ -78,6 +78,8 @@ public:
      * @return This level's Seed
      */
     [[nodiscard]] virtual std::int64_t getSeed() const = 0;
+    [[nodiscard]] virtual std::variant<bool, int, float> getGameRuleValue(const GameRule &rule) const = 0;
+    [[nodiscard]] virtual bool setGameRuleValue(const GameRule &rule, const std::variant<bool, int, float> &value) = 0;
 };
 
 }  // namespace endstone
