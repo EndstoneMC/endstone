@@ -49,14 +49,16 @@ DedicatedServer::StartResult DedicatedServer::start(const std::string &session_i
 
 #ifdef ENDSTONE_WITH_DEVTOOLS
     // DevTools
-    std::thread thread(&endstone::devtools::render);
+    std::thread thread(&endstone::core::devtools::render);
     thread.detach();
 #endif
 
     // Start the dedicated server (call origin)
+    entt::locator<DedicatedServer *>::emplace(this);
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::start, this, session_id, args);
 
     // Clean up
     entt::locator<endstone::core::EndstoneServer>::reset();
+    entt::locator<DedicatedServer>::reset();
     return result;
 }
