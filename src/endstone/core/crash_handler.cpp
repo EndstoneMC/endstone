@@ -14,6 +14,9 @@
 
 #include "endstone/core/crash_handler.h"
 
+#include <algorithm>
+#include <unordered_set>
+
 #ifdef _WIN32
 #define NOMINMAX
 #define WIN32_LEAN_AND_MEAN
@@ -50,16 +53,34 @@ namespace {
 
 const cpptrace::formatter &get_formatter()
 {
-    static auto formatter = cpptrace::formatter{}  //
-                                .transform([](cpptrace::stacktrace_frame frame) {
-                                    if (frame.filename.empty()) {
-                                        frame.filename = frame.get_object_info().object_path;
-                                    }
-                                    return frame;
-                                })
-                                .addresses(cpptrace::formatter::address_mode::object)
-                                .paths(cpptrace::formatter::path_mode::basename)
-                                .snippets(true);
+    static auto formatter =
+        cpptrace::formatter{}  //
+            .transform([](cpptrace::stacktrace_frame frame) {
+                if (frame.filename.empty()) {
+                    frame.filename = frame.get_object_info().object_path;
+                }
+                return frame;
+            })
+            .filter([](const cpptrace::stacktrace_frame &frame) {
+                auto filename = cpptrace::basename(frame.filename);
+                if (filename.starts_with("sentry_") || filename.starts_with("crashpad_")) {
+                    return false;
+                }
+#ifdef _WIN32
+                std::ranges::transform(filename, filename.begin(), ::tolower);
+                static const std::unordered_set<std::string_view> ignored_modules = {
+                    "crash_handler.cpp", "ntdll.dll", "kernel32.dll", "kernelbase.dll", "ucrtbase.dll"};
+#elif __linux__
+#endif
+                if (ignored_modules.contains(filename)) {
+                    return false;
+                }
+                return true;
+            })
+            .filtered_frame_placeholders(false)
+            .addresses(cpptrace::formatter::address_mode::object)
+            .paths(cpptrace::formatter::path_mode::basename)
+            .snippets(true);
     return formatter;
 }
 
