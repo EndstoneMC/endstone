@@ -19,23 +19,6 @@ else ()
     message(FATAL_ERROR "Endstone: ${CMAKE_SYSTEM_NAME} (${CMAKE_SYSTEM_PROCESSOR}) is not supported")
 endif ()
 
-if(CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
-    if(ENDSTONE_ARCH_OPTIMIZE AND ENDSTONE_TARGET_X86_64_V1)
-        if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-            # Clang: 
-            set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -march=x86-64-v1 -O2")
-            set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -march=x86-64-v1 -O2")
-        elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-            # GCC:
-            set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -march=x86-64-v1 -O2")
-            set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -march=x86-64-v1 -O2")
-        elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-            # MSVC
-            set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2 /arch:SSE3")
-            set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} /O2 /arch:SSE3")
-        endif()
-    endif()
-endif()
 # Options
 option(CODE_COVERAGE "Enable code coverage reporting" OFF)
 option(ENDSTONE_ENABLE_DEVTOOLS "Build Endstone with DevTools enabled." OFF)
