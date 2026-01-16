@@ -39,6 +39,7 @@ public:
     [[nodiscard]] Json::Value getExtraData(const std::string &key, const Json::Value &default_value) const;
     [[nodiscard]] bool isValid() const;
     [[nodiscard]] bool isSelfSigned() const;
+    ENDSTONE_HOOK bool validate(std::time_t current_time, bool is_self_signed, bool check_expired);
 
 private:
     UnverifiedCertificate unverified_certificate_;     // +0

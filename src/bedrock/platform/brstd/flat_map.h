@@ -14,14 +14,14 @@
 
 #pragma once
 
-#include "bedrock/world/actor/player/serialized_skin.h"
-#include "endstone/skin.h"
+#include <vector>
 
-namespace endstone::core {
+#include "bedrock/platform/brstd/associative_adapter.h"
 
-class EndstoneSkin {
-public:
-    static Skin fromMinecraft(const SerializedSkinRef &skin);
-};
+namespace brstd {
+template <typename Key, typename T, typename Compare = std::less<Key>, typename KeyContainer = std::vector<Key>,
+          typename MappedContainer = std::vector<T>>
+class flat_map : public associative_adapter<Key, T, Compare, KeyContainer, MappedContainer> {};
 
-}  // namespace endstone::core
+static_assert(flat_map<int, int>::no_mapped_container == false);
+};  // namespace brstd

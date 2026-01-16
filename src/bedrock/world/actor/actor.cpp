@@ -373,7 +373,7 @@ int Actor::getHealth() const
 {
     if (const auto *component = entity_context_.tryGetComponent<AttributesComponent>(); component) {
         const auto &instance = component->attributes.getInstance("minecraft:health");
-        const auto current_value = instance.getCurrentValue();
+        const auto current_value = instance->getCurrentValue();
         return static_cast<int>(std::ceilf(current_value));
     }
     return 0;
@@ -383,7 +383,7 @@ int Actor::getMaxHealth() const
 {
     if (const auto *component = entity_context_.tryGetComponent<AttributesComponent>(); component) {
         const auto &instance = component->attributes.getInstance("minecraft:health");
-        const auto current_value = instance.getMaxValue();
+        const auto current_value = instance->getMaxValue();
         return static_cast<int>(std::ceilf(current_value));
     }
     return 0;
@@ -415,7 +415,7 @@ void Actor::setScoreTag(const std::string &score)
     entity_data.set(static_cast<SynchedActorData::ID>(ActorDataIDs::SCORE), score);
 }
 
-const AttributeInstance &Actor::getAttribute(const HashedString &name) const
+const AttributeInstance *Actor::getAttribute(const HashedString &name) const
 {
     auto component = getPersistentComponent<AttributesComponent>();
     return component->attributes.getInstance(name);

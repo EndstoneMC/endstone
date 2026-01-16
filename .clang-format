@@ -3,8 +3,8 @@ AccessModifierOffset: -4
 AlignConsecutiveMacros: Consecutive
 AlignEscapedNewlines: Left
 AlignOperands: AlignAfterOperator
-AllowShortFunctionsOnASingleLine: Empty
-AllowShortLambdasOnASingleLine: All
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortLambdasOnASingleLine: Inline
 AlwaysBreakTemplateDeclarations: Yes
 BreakBeforeBraces: Stroustrup
 IncludeBlocks: Regroup

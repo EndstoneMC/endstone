@@ -17,19 +17,20 @@
 #include <unordered_map>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/platform/brstd/flat_map.h"
 #include "bedrock/world/attribute/attribute.h"
 #include "bedrock/world/attribute/attribute_instance.h"
 #include "bedrock/world/attribute/attribute_instance_handle.h"
 
 class BaseAttributeMap {
-    using UnderlyingMapContainer = std::unordered_map<std::uint32_t, AttributeInstance>;
+    using UnderlyingMapContainer = brstd::flat_map<std::uint32_t, AttributeInstance>;
 
 public:
     [[nodiscard]] const AttributeInstance &getInstance(const Attribute &attribute) const;
     [[nodiscard]] const AttributeInstance &getInstance(std::uint32_t id_value) const;
     void onAttributeModified(AttributeInstance const &instance);
 
-    [[nodiscard]] const AttributeInstance &getInstance(const HashedString &name) const;                 // Endstone
+    [[nodiscard]] const AttributeInstance *getInstance(const HashedString &name) const;                 // Endstone
     [[nodiscard]] MutableAttributeWithContext getMutableInstanceWithContext(const HashedString &name);  // Endstone
 
 private:
@@ -41,4 +42,3 @@ private:
     void (BaseAttributeMap::*on_attribute_modified_)(const AttributeInstance &) =
         &BaseAttributeMap::_onAttributeModified;
 };
-BEDROCK_STATIC_ASSERT_SIZE(BaseAttributeMap, 96, 80);

@@ -70,7 +70,7 @@ public:
     virtual AABB getTallestCollisionShape(AABB const &, float *, bool,
                                           optional_ref<GetCollisionShapeInterface const>) const = 0;
     [[nodiscard]] virtual float getBrightness(BlockPos const &) const = 0;
-    [[nodiscard]] virtual float getVisualLiquidHeight(const Vec3 &) const = 0;
+    // [[nodiscard]] virtual float getVisualLiquidHeight(const Vec3 &) const = 0;
 };
 
 class IBlockSource : public IConstBlockSource {
@@ -120,6 +120,7 @@ public:
     [[nodiscard]] virtual bool canDoBlockDrops() const = 0;
     [[nodiscard]] virtual bool canDoContainedItemDrops() const = 0;
     [[nodiscard]] virtual bool isInstaticking(BlockPos const &) const = 0;
+    virtual bool checkBlockDestroyPermissions(Actor &, const BlockPos &, const ItemStackBase &, bool) = 0;
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
     virtual void postGameEvent(Actor *, const GameEvent &, const BlockPos &, const Block *) = 0;
     virtual void fireBlockChanged(const BlockPos &, uint32_t, const Block &, const Block &, int,

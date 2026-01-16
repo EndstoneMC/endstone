@@ -23,12 +23,6 @@ ConnectionRequest const &ServerNetworkHandler::Client::getPrimaryRequest() const
     return *primary_request_;
 }
 
-std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> const &ServerNetworkHandler::Client::
-    getSubClientRequests() const
-{
-    return sub_client_requests_;
-}
-
 int ServerNetworkHandler::getMaxNumPlayers() const
 {
     return max_num_players_;

@@ -28,16 +28,17 @@
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/game_session.h"
 
+struct MinecraftArguments {
+    using RequestServerShutdownCallback = brstd::move_only_function<void() const>;
+};
+
 class Minecraft : public IEntityRegistryOwner {
 public:
-    Minecraft(IMinecraftApp &, GameCallbacks &, AllowList &, PermissionsFile *,
-              const Bedrock::NotNullNonOwnerPtr<Core::FilePathManager> &, std::chrono::seconds, IMinecraftEventing &,
-              ClientOrServerNetworkSystemRef, PacketSender &, SubClientId, Timer &, Timer &,
-              const Bedrock::NotNullNonOwnerPtr<const IContentTierManager> &, ServerMetrics *);
+    Minecraft(MinecraftArguments &&args);
     ~Minecraft() override = default;
     MinecraftCommands &getCommands();
     [[nodiscard]] Bedrock::NonOwnerPointer<ServerNetworkHandler> getServerNetworkHandler() const;
-    void requestServerShutdown(const std::string &message);
+    void requestServerShutdown();
     void requestResourceReload();
     [[nodiscard]] ResourcePackManager &getResourceLoader() const;
     [[nodiscard]] Level *getLevel() const;
@@ -48,13 +49,14 @@ private:
     std::unique_ptr<ResourcePackManager> resource_loader_;
     std::unique_ptr<StructureManager> structure_manager_;
     std::shared_ptr<GameModuleServer> game_module_server_;
-    AllowList &allow_list_;
+    // AllowList &allow_list_;
     PermissionsFile *permissions_file_;
     std::unique_ptr<PrivateKeyManager> server_keys_;
     std::unique_ptr<MinecraftServiceKeyManager> minecraft_service_keys_;
     std::string save_game_path_;
-    Bedrock::NonOwnerPointer<Core::FilePathManager> file_path_manager_;
+    // Bedrock::NonOwnerPointer<Core::FilePathManager> file_path_manager_;
     ServerMetrics *server_metrics_;
+    const bool is_dedicated_server_;
     bool corruption_detected_;
     bool fire_on_level_corrupt_;
     double frame_duration_;
@@ -69,8 +71,10 @@ private:
     void *real_timer_;
     ClientOrServerNetworkSystemRef network_;
     PacketSender *packet_sender_;
-    IMinecraftApp *app_;
     SubClientId client_sub_id_;
     OwnerPtr<EntityRegistry> entity_registry_;
-    // ...
+    std::unique_ptr<ITickingSystem> add_movement_tick_for_catchup_;
+    Bedrock::PubSub::PublisherPtr<void(Level *), Bedrock::PubSub::ThreadModel::SingleThreaded> level_subscribers_;
+    MinecraftArguments::RequestServerShutdownCallback request_server_shutdown_;
+    //...
 };

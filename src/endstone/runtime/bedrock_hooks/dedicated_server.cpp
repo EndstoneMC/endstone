@@ -18,6 +18,7 @@
 
 #include <pybind11/embed.h>
 
+#include "endstone/core/devtools/devtools.h"
 #include "endstone/core/logger_factory.h"
 #include "endstone/runtime/hook.h"
 #include "endstone/runtime/runtime.h"
@@ -45,6 +46,12 @@ DedicatedServer::StartResult DedicatedServer::start(const std::string &session_i
 
     // Close stdin so that the ConsoleInputReader thread exits as soon as it begins
     endstone::runtime::stdin_close();
+
+#ifdef ENDSTONE_WITH_DEVTOOLS
+    // DevTools
+    std::thread thread(&endstone::devtools::render);
+    thread.detach();
+#endif
 
     // Start the dedicated server (call origin)
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::start, this, session_id, args);

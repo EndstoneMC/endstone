@@ -160,7 +160,7 @@ public:
     [[nodiscard]] virtual Block const &getStrippedBlock(Block const &) const = 0;
     [[nodiscard]] virtual bool canProvideSupport(Block const &, FacingID, BlockSupportType type) const = 0;
     [[nodiscard]] virtual bool canProvideMultifaceSupport(Block const &, FacingID) const = 0;
-    [[nodiscard]] virtual bool canConnect(Block const &, FacingID, Block const &) const = 0;
+    // [[nodiscard]] virtual bool canConnect(Block const &, FacingID, Block const &) const = 0;
     [[nodiscard]] virtual bool isMovingBlock() const = 0;
     [[nodiscard]] virtual CopperBehavior const *tryGetCopperBehavior() const = 0;
     [[nodiscard]] virtual bool isStemBlock() const = 0;
@@ -231,21 +231,19 @@ public:
     [[nodiscard]] virtual ItemInstance asItemInstance(Block const &, BlockActor const *) const = 0;
     virtual void spawnAfterBreak(BlockSource &, Block const &, BlockPos const &,
                                  ResourceDropsContext const &) const = 0;
-    [[nodiscard]] virtual Block const &getPlacementBlock(Actor const &by, BlockPos const &, FacingID,
-                                                         Vec3 const &clickPos, int itemValue) const = 0;
-    [[nodiscard]] virtual int calcVariant(BlockSource &, BlockPos const &, mce::Color const &baseColor) const = 0;
-    [[nodiscard]] virtual bool isAttachedTo(BlockSource &, BlockPos const &, BlockPos &outAttachedTo) const = 0;
+    [[nodiscard]] virtual Block const &getPlacementBlock(Actor const &, BlockPos const &, FacingID, Vec3 const &,
+                                                         int) const = 0;
+    [[nodiscard]] virtual int calcVariant(BlockSource &, BlockPos const &, mce::Color const &) const = 0;
+    [[nodiscard]] virtual bool isAttachedTo(BlockSource &, BlockPos const &, BlockPos &) const = 0;
     [[nodiscard]] virtual bool attack(Player *player, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool shouldTriggerEntityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
     [[nodiscard]] virtual bool canBeBuiltOver(const Block &, BlockSource &, BlockPos const &,
-                                              BlockItem const &newItem) const = 0;
+                                              BlockType const &) const = 0;
     [[nodiscard]] virtual bool canBeBuiltOver(const Block &, BlockSource &, BlockPos const &) const = 0;
     virtual void triggerEvent(BlockSource &, BlockPos const &, int b0, int b1) const = 0;
-    virtual void executeEvent(BlockSource &, BlockPos const &, Block const &, std::string const &eventName,
-                              Actor &sourceEntity) const = 0;
+    virtual void executeEvent(BlockSource &, BlockPos const &, Block const &, std::string const &, Actor &) const = 0;
     [[nodiscard]] virtual bool hasTag(BlockSource &, BlockPos const &, Block const &, std::string const &) const = 0;
-    [[nodiscard]] virtual MobSpawnerData const *getMobToSpawn(SpawnConditions const &conditions,
-                                                              BlockSource &) const = 0;
+    [[nodiscard]] virtual MobSpawnerData const *getMobToSpawn(SpawnConditions const &, BlockSource &) const = 0;
     [[nodiscard]] virtual bool shouldStopFalling(Actor &) const = 0;
     [[nodiscard]] virtual bool pushesUpFallingBlocks() const = 0;
     [[nodiscard]] virtual bool canHaveExtraData() const = 0;
@@ -365,7 +363,7 @@ private:
     float thickness_;
     bool can_slide_;
     bool can_react_to_neighbors_during_instatick_;
-    bool is_interaction_;
+    // bool is_interaction_;
     float gravity_;
     const Material &material_;
     bool falling_;

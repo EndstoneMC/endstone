@@ -20,7 +20,6 @@ class ResourcePackStackPacket : public Packet {
 public:
     ResourcePackStackPacket();
 
-    std::vector<PackInstanceId> addon_ids_and_versions;
     std::vector<PackInstanceId> texture_pack_ids_and_versions;
     BaseGameVersion base_game_version;
     bool texture_pack_required;

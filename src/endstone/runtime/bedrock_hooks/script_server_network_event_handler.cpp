@@ -95,8 +95,8 @@ GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &event,
     if (e.getMessage() != event.message) {
         player = &static_cast<endstone::core::EndstonePlayer &>(e.getPlayer()).getHandle();
         for (const auto &recipient : e.getRecipients()) {
-            auto packet = TextPacket::createChat(player->getName(), e.getMessage(), std::nullopt, player->getXuid(),
-                                                 player->getPlatformOnlineId());
+            auto packet = TextPacketPayload::createChat(player->getName(), e.getMessage(), std::nullopt,
+                                                        player->getXuid(), player->getPlatformOnlineId());
             static_cast<endstone::core::EndstonePlayer *>(recipient)->getHandle().sendNetworkPacket(packet);
         }
         return CANCEL;

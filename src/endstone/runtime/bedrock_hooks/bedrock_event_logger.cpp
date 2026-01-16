@@ -27,8 +27,8 @@
 void BedrockLog::LogDetails::_log_va(LogAreaID area, unsigned int priority, const char * /*function*/, int /*line*/,
                                      MessasgeId /*message_id*/, const char *format, va_list args)
 {
-    if (area == LogAreaID::Database && priority <= Bedrock::LogLevel::Info) {
-        // Suppress logs from DBStorage (e.g. Running AutoCompaction...)
+    if ((area == LogAreaID::Database || area == LogAreaID::System) && priority <= Bedrock::LogLevel::Info) {
+        // Suppress logs from DBStorage and from ContentLog with unknown area (mapped to System)
         return;
     }
 

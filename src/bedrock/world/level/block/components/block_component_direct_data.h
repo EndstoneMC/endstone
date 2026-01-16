@@ -36,8 +36,8 @@ struct BlockComponentDirectData {
     class BlockSelectionBoxComponent const *block_selection_box_component;
     class BlockRedstoneComponent const *block_redstone_component;
     class BlockGeometryComponent const *block_geometry_component;
-    class BlockBakedMaterialDataComponent const *block_baked_material_data_component;
-    class BlockItemVisualComponent const *block_item_visual_component;
+    // class BlockBakedMaterialDataComponent const *block_baked_material_data_component;
+    // class BlockItemVisualComponent const *block_item_visual_component;
     bool is_full_block_geometry;
     bool use_new_tessellation;
     bool needs_legacy_top_rotation;
@@ -52,7 +52,7 @@ struct BlockComponentDirectData {
     float destroy_speed;
     DetectionRule water_detection_rule;
     VoxelShapes::RegistryHandle occlusion_shape_handle;
-    BlockComponentDirectData::FaceShapeHandles occlusion_shape_handles_by_face;
+    FaceShapeHandles occlusion_shape_handles_by_face;
     LayerBitMask finalized;
     class BlockDestructibleByMiningComponent const *destructible_by_mining_component;
 };

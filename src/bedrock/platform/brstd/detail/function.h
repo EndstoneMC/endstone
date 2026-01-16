@@ -36,6 +36,11 @@ public:
         return storage_.vfptr != nullptr;
     }
 
+    Return call(Xs &&...args) const
+    {
+        return storage_.vfptr->invoke(storage_, std::forward<Xs>(args)...);
+    }
+
 private:
     struct vtable;
 
@@ -202,12 +207,26 @@ class function_invoke_base;
 template <typename Return, typename... Xs, bool OverrideCallOperatorModifiers>
 class function_invoke_base<DerivedType::MoveOnly, Return(Xs...), OverrideCallOperatorModifiers>
     : public function_base<DerivedType::MoveOnly,
-                           function_base_impl<DerivedType::MoveOnly, Return, OverrideCallOperatorModifiers, Xs...>> {};
+                           function_base_impl<DerivedType::MoveOnly, Return, OverrideCallOperatorModifiers, Xs...>> {
+public:
+    Return operator()(Xs &&...args)
+    {
+        return function_base_impl<DerivedType::MoveOnly, Return, OverrideCallOperatorModifiers, Xs...>::call(
+            std::forward<Xs>(args)...);
+    }
+};
 
 template <typename Return, typename... Xs, bool OverrideCallOperatorModifiers>
 class function_invoke_base<DerivedType::MoveOnly, Return(Xs...) const, OverrideCallOperatorModifiers>
     : public function_base<DerivedType::MoveOnly,
-                           function_base_impl<DerivedType::MoveOnly, Return, OverrideCallOperatorModifiers, Xs...>> {};
+                           function_base_impl<DerivedType::MoveOnly, Return, OverrideCallOperatorModifiers, Xs...>> {
+public:
+    Return operator()(Xs &&...args) const
+    {
+        return function_base_impl<DerivedType::MoveOnly, Return, OverrideCallOperatorModifiers, Xs...>::call(
+            std::forward<Xs>(args)...);
+    }
+};
 
 template <typename Return, typename... Xs, bool OverrideCallOperatorModifiers>
 class function_invoke_base<DerivedType::Copyable, Return(Xs...), OverrideCallOperatorModifiers>

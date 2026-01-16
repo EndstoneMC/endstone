@@ -61,13 +61,13 @@ public:
 };
 
 class SerializedSkinImpl;
-class SerializedSkin {
+class SerializedSkinRef {
 public:
-    SerializedSkin();
-    SerializedSkin(bool);
-    SerializedSkin(const ConnectionRequest &);
-    SerializedSkin(const SubClientConnectionRequest &);
-    SerializedSkin(const std::string &, const std::string &, const std::string &, const mce::Image &, const uint16_t &,
+    SerializedSkinRef();
+    SerializedSkinRef(bool);
+    SerializedSkinRef(const ConnectionRequest &);
+    SerializedSkinRef(const SubClientConnectionRequest &);
+    SerializedSkinRef(const std::string &, const std::string &, const std::string &, const mce::Image &, const uint16_t &,
                    const uint16_t &, const mce::Image &, const uint16_t &, const uint16_t &, Json::Value &&,
                    const MinEngineVersion &, const std::string &, const std::string &, bool, bool, bool, bool,
                    const bool, bool);
@@ -84,4 +84,4 @@ public:
 private:
     std::shared_ptr<Bedrock::Application::ThreadOwner<SerializedSkinImpl>> skin_impl_;
 };
-static_assert(sizeof(SerializedSkin) == 16);
+static_assert(sizeof(SerializedSkinRef) == 16);
