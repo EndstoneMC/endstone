@@ -39,8 +39,8 @@
 #include <fmt/std.h>
 #include <spdlog/spdlog.h>
 
-#include "endstone/detail.h"
 #include "endstone/core/platform.h"
+#include "endstone/detail.h"
 
 namespace fs = std::filesystem;
 
@@ -51,6 +51,12 @@ namespace {
 const cpptrace::formatter &get_formatter()
 {
     static auto formatter = cpptrace::formatter{}  //
+                                .transform([](cpptrace::stacktrace_frame frame) {
+                                    if (frame.filename.empty()) {
+                                        frame.filename = frame.get_object_info().object_path;
+                                    }
+                                    return frame;
+                                })
                                 .addresses(cpptrace::formatter::address_mode::object)
                                 .paths(cpptrace::formatter::path_mode::basename)
                                 .snippets(true);
