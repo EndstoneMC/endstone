@@ -14,9 +14,14 @@
 
 #include "bedrock/network/packet.h"
 
+#include "bedrock/network/packet/login_packet.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/core/util/socket_address.h"
+#include "endstone/core/util/uuid.h"
 #include "endstone/runtime/hook.h"
 
+namespace {
 class PlayerPacketHandler : public IPacketHandlerDispatcher {
 public:
     explicit PlayerPacketHandler(const IPacketHandlerDispatcher &original) : original_(original) {}
@@ -25,7 +30,7 @@ public:
     {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         const auto network_handler = server.getServer().getMinecraft()->getServerNetworkHandler();
-        if (const auto *p = network_handler->getServerPlayer(network_id, packet->getClientSubId())) {
+        if (const auto *p = network_handler->getServerPlayer(network_id, packet->getSenderSubId())) {
             if (p->getEndstoneActor<endstone::core::EndstonePlayer>().handlePacket(*packet)) {
                 original_.handle(network_id, callback, packet);
             }
@@ -35,6 +40,7 @@ public:
 private:
     const IPacketHandlerDispatcher &original_;
 };
+}  // namespace
 
 std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
 {
@@ -42,8 +48,10 @@ std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
     switch (id) {
     case MinecraftPacketIds::PlayerEquipment:
     case MinecraftPacketIds::PlayerAction:
+    case MinecraftPacketIds::PlayerSkin:
     case MinecraftPacketIds::SetLocalPlayerAsInit:
-    case MinecraftPacketIds::PlayerAuthInputPacket: {
+    case MinecraftPacketIds::PlayerAuthInputPacket:
+    case MinecraftPacketIds::Emote: {
         static std::unordered_map<MinecraftPacketIds, std::unique_ptr<PlayerPacketHandler>> handlers;
         if (packet->handler_) {
             handlers.emplace(id, std::make_unique<PlayerPacketHandler>(*packet->handler_));
