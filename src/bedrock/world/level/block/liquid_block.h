@@ -19,7 +19,7 @@
 class LiquidBlockBase : public ::BlockType {};
 
 class LiquidBlock : public LiquidBlockBase {
-private:
+protected:
     ENDSTONE_HOOK void _trySpreadTo(BlockSource &region, BlockPos const &pos, int neighbor,
                                         BlockPos const &flow_from_pos, FacingID flow_from_direction) const;
     bool _canSpreadTo(BlockSource &region, BlockPos const &pos, BlockPos const &flow_from_pos,
