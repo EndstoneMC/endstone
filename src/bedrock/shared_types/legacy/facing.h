@@ -38,5 +38,8 @@ enum Name : FacingID {
     NOT_DEFINED = MAX,
     NUM_CULLING_IDS = MAX + 1,
 };
+constexpr std::array<FacingID, 6> FACINGMASK = {
+    1 << DOWN, 1 << UP, 1 << NORTH, 1 << SOUTH, 1 << WEST, 1 << EAST,
+};
 inline constexpr FacingID OPPOSITE_FACING[] = {UP, DOWN, SOUTH, NORTH, EAST, WEST, MAX};
 }  // namespace Facing
