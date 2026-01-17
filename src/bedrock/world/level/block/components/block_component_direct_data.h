@@ -28,6 +28,7 @@ struct BlockComponentDirectData {
         INIT = 0x1,
         RENDERING = 0x2,
     };
+    [[nodiscard]] DetectionRule getWaterDetectionRule() const { return water_detection_rule; }
 
     using FaceShapeHandles =
         Bedrock::DenseEnumMap<SharedTypes::Facing, VoxelShapes::RegistryHandle, SharedTypes::Facing::MAX>;
