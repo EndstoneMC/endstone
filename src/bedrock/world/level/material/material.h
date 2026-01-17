@@ -67,7 +67,6 @@ public:
     {
         return type_;
     }
-    bool operator==(const Material &) const = default;
 
 private:
     MaterialType type_;
