@@ -148,7 +148,6 @@ public:
     [[nodiscard]] virtual AABB const &getUIShape(Block const &, AABB &) const = 0;
     [[nodiscard]] virtual bool getLiquidClipVolume(Block const &, BlockSource &, BlockPos const &, AABB &) const = 0;
     [[nodiscard]] virtual bool isObstructingChests(BlockSource &, BlockPos const &, Block const &) const = 0;
-    [[nodiscard]] virtual Vec3 randomlyModifyPosition(BlockPos const &, int &) const = 0;
     [[nodiscard]] virtual Vec3 randomlyModifyPosition(BlockPos const &) const = 0;
     virtual void onProjectileHit(BlockSource &, BlockPos const &, Actor const &) const = 0;
     virtual void onLightningHit(BlockSource &, BlockPos const &) const = 0;
@@ -202,7 +201,6 @@ public:
     [[nodiscard]] virtual bool detachesOnPistonMove(BlockSource &, BlockPos const &) const = 0;
     virtual void movedByPiston(BlockSource &, BlockPos const &) const = 0;
     virtual void onStructureBlockPlace(BlockSource &, BlockPos const &) const = 0;
-    // virtual void onStructureNeighborBlockPlace(BlockSource &, BlockPos const &) const = 0;
     virtual void setupRedstoneComponent(BlockSource &, BlockPos const &) const = 0;
     virtual void updateEntityAfterFallOn(BlockPos const &, UpdateEntityAfterFallOnInterface &) const = 0;
     [[nodiscard]] virtual bool isBounceBlock() const = 0;
@@ -287,6 +285,7 @@ public:
     [[nodiscard]] virtual bool canSurvive(BlockSource &, BlockPos const &) const = 0;
     [[nodiscard]] virtual BlockRenderLayer getRenderLayer(Block const &, BlockSource &, BlockPos const &) const = 0;
     [[nodiscard]] virtual int getExtraRenderLayers() const = 0;
+    [[nodiscard]] virtual const HashedString &getCullingLayer() const = 0;
     [[nodiscard]] virtual Brightness getLight(Block const &) const = 0;
     [[nodiscard]] virtual Brightness getEmissiveBrightness(Block const &) const = 0;
     [[nodiscard]] virtual mce::Color getMapColor(BlockSource &, BlockPos const &, Block const &) const = 0;
@@ -424,10 +423,7 @@ private:
 
 public:
     struct AlteredStateCollection {
-        [[nodiscard]] const BlockState &getBlockState() const
-        {
-            return block_state_;
-        }
+        [[nodiscard]] const BlockState &getBlockState() const { return block_state_; }
         [[nodiscard]] virtual std::optional<int> getState(const BlockType &, int) const = 0;
         [[nodiscard]] virtual const Block *setState(const BlockType &, int, int) const = 0;
 
