@@ -12,8 +12,8 @@ bool LiquidBlock::_canSpreadTo(BlockSource &region, BlockPos const &pos, BlockPo
     if (!region.hasBlock(pos)) {
         return false;
     }
-    const auto &block = region.getLiquidBlock(pos);
-    if (block.getMaterial() == getMaterial() || block.getMaterial().isType(MaterialType::Lava)) {
+    const auto &material = region.getLiquidBlock(pos).getMaterial();
+    if (material == getMaterial() || material.isType(MaterialType::Lava)) {
         return false;
     }
     return !_isLiquidBlocking(region, pos, flow_from_pos, flow_from_direction);
@@ -22,17 +22,17 @@ bool LiquidBlock::_canSpreadTo(BlockSource &region, BlockPos const &pos, BlockPo
 bool LiquidBlock::_isLiquidBlocking(BlockSource &region, BlockPos const &pos, BlockPos const &flow_from_pos,
                                     FacingID flow_from_direction) const
 {
+    const auto &to_block = region.getBlock(pos);
     if (region.getLiquidBlock(flow_from_pos).getMaterial().isType(MaterialType::Lava)) {
-        return region.getBlock(pos).isLavaBlocking();
+        return to_block.isLavaBlocking();
+    }
+    if (BlockLiquidDetectionComponent::isLiquidBlocking(to_block)) {
+        return true;
     }
     auto get_block = [&region](const BlockPos &block_pos) -> const Block & {
         return region.getBlock(block_pos);
     };
-    if (BlockLiquidDetectionComponent::isLiquidBlocking(region.getBlock(pos))) {
-        return true;
-    }
-    if (!BlockLiquidDetectionComponent::liquidCanFlowIntoFromDirection(region.getBlock(pos), flow_from_direction,
-                                                                       get_block, flow_from_pos)) {
+    if (!BlockLiquidDetectionComponent::liquidCanFlowIntoFromDirection(to_block, flow_from_direction, get_block, pos)) {
         return true;
     }
     return !BlockLiquidDetectionComponent::liquidCanFlowIntoFromDirection(
