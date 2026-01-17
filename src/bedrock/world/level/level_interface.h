@@ -413,6 +413,7 @@ public:
     virtual void initializeBlockDefinitionGroup() = 0;
     virtual Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry> getUnknownBlockTypeRegistry() = 0;
     [[nodiscard]] virtual bool isClientSide() const = 0;
+    [[nodiscard]] virtual SubClientId getSubId() const = 0; // TODO(fixme): check the function name
     [[nodiscard]] virtual std::unordered_map<mce::UUID, PlayerListEntry> const &getPlayerList() const = 0;
     [[nodiscard]] virtual std::string const &getPlayerXUID(mce::UUID const &) const = 0;
     [[nodiscard]] virtual std::string const &getPlayerPlatformOnlineId(mce::UUID const &) const = 0;
