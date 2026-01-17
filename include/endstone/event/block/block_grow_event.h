@@ -18,7 +18,6 @@
 #include "endstone/event/cancellable.h"
 
 namespace endstone {
-
 /**
  * @brief Called when a block grows naturally in the world.
  *
