@@ -10,6 +10,7 @@ import subprocess
 import sys
 import traceback
 import warnings
+from pathlib import Path
 
 import pkginfo
 from importlib_metadata import EntryPoint, distribution, entry_points, metadata
@@ -24,7 +25,7 @@ __all__ = ["PythonPluginLoader"]
 warnings.simplefilter(action="always", category=FutureWarning)
 
 
-def find_python():
+def find_python() -> Path:
     paths = []
     if os.environ.get("ENDSTONE_PYTHON_EXECUTABLE", None) is not None:
         paths.append(os.environ["ENDSTONE_PYTHON_EXECUTABLE"])
@@ -38,12 +39,20 @@ def find_python():
         paths.append(os.path.join(sys.base_prefix, "bin", "python" + f"{sys.version_info.major}"))
         paths.append(os.path.join(sys.base_prefix, "bin", "python"))
 
-    paths = set(paths)
+    # Dedup while preserving order
+    seen = set()
+    ordered = []
     for path in paths:
-        if os.path.isfile(path):
+        path = Path(path).resolve()
+        if path not in seen:
+            seen.add(path)
+            ordered.append(path)
+
+    for path in ordered:
+        if path.is_file():
             return path
 
-    raise RuntimeError(f"Unable to find Python executable. Attempted paths: {paths}")
+    raise RuntimeError(f"Unable to find Python executable. Attempted paths: {ordered}")
 
 
 def _build_commands(commands: dict) -> list[Command]:
@@ -71,7 +80,7 @@ def _build_permissions(permissions: dict) -> list[Permission]:
     return results
 
 
-sys.executable = find_python()
+sys.executable = str(find_python())
 sys._base_executable = sys.executable
 
 
