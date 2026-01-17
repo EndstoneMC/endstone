@@ -71,6 +71,7 @@ public:
     const AABB &getVisualShape(AABB &buffer) const;
     const AABB &getUIShape(AABB &buffer) const;
     bool getLiquidClipVolume(BlockSource &region, BlockPos const &pos, AABB &include_box) const;
+    [[nodiscard]] bool isLavaBlocking() const;
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] float getThickness() const;
     bool getSecondPart(const BlockSource &region, const BlockPos &pos, BlockPos &out) const;
