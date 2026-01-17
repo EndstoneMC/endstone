@@ -25,7 +25,7 @@ class Material {
 
 public:
     explicit Material(MaterialType, Material::Settings);
-    bool operator==(const Material &rhs) const { return type_ == rhs.type_; }
+    bool operator==(const Material &rhs) const { return this == &rhs; }
     bool operator!=(const Material &rhs) const { return !(*this == rhs); }
     [[nodiscard]] bool isType(MaterialType type) const { return type == type_; }
     [[nodiscard]] bool isSolidBlocking() const { return !never_buildable_ && blocks_motions_; }
