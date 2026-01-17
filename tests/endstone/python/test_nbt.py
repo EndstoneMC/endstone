@@ -441,13 +441,17 @@ def test_compound_tag_clear_and_equality():
 
 
 def test_nested_compound_tags():
-    c1 = CompoundTag({
-        "pos": CompoundTag({
-            "x": IntTag(1),
-            "y": IntTag(2),
-        }),
-        "name": StringTag("Player"),
-    })
+    c1 = CompoundTag(
+        {
+            "pos": CompoundTag(
+                {
+                    "x": IntTag(1),
+                    "y": IntTag(2),
+                }
+            ),
+            "name": StringTag("Player"),
+        }
+    )
 
     c2 = CompoundTag()
     c2["pos"] = CompoundTag()
@@ -478,27 +482,31 @@ def test_nested_compound_tags():
         (ByteArrayTag([1, 2, 3]), "[B;1b,2b,3b]"),
         (StringTag("hello"), "hello"),
         (StringTag('Call me "Ishmael"'), "'Call me \"Ishmael\"'"),
-        (StringTag("Call me 'Ishmael'"), '"Call me \'Ishmael\'"'),
+        (StringTag("Call me 'Ishmael'"), "\"Call me 'Ishmael'\""),
         (IntArrayTag([1]), "[I;1]"),
         (IntArrayTag([1, 2, 3]), "[I;1,2,3]"),
         (ListTag([IntTag(1), IntTag(2)]), "[1,2]"),
         (
-                ListTag([
+            ListTag(
+                [
                     CompoundTag({"id": IntTag(1)}),
                     CompoundTag({"id": IntTag(2)}),
-                ]),
-                '[{id:1},{id:2}]',
+                ]
+            ),
+            "[{id:1},{id:2}]",
         ),
         (
-                CompoundTag({"x": IntTag(1), "y": StringTag("a")}),
-                '{x:1,y:a}',
+            CompoundTag({"x": IntTag(1), "y": StringTag("a")}),
+            "{x:1,y:a}",
         ),
         (
-                CompoundTag({
+            CompoundTag(
+                {
                     "pos": ListTag([IntTag(1), IntTag(2), IntTag(3)]),
                     "name": StringTag("Alex"),
-                }),
-                '{name:Alex,pos:[1,2,3]}',
+                }
+            ),
+            "{name:Alex,pos:[1,2,3]}",
         ),
     ],
 )
@@ -520,8 +528,8 @@ def test_str_tags(tag, expected):
         (IntArrayTag([1, 2, 3]), "IntArrayTag([1, 2, 3])"),
         (ListTag([IntTag(1), IntTag(2)]), "ListTag([IntTag(1), IntTag(2)])"),
         (
-                CompoundTag({"x": IntTag(1)}),
-                "CompoundTag({'x': IntTag(1)})",
+            CompoundTag({"x": IntTag(1)}),
+            "CompoundTag({'x': IntTag(1)})",
         ),
     ],
 )
