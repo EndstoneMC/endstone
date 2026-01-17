@@ -1,4 +1,4 @@
-timestamp = 1768671493
+timestamp = 1768677902
 version = "1.21.132"
 
 [windows]
@@ -60,6 +60,8 @@ version = "1.21.132"
 "?_die@LeavesBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@@Z" = 69307200
 # Level
 "?tick@Level@@UEAAXXZ" = 68011136
+# LiquidBlock
+"?_trySpreadTo@LiquidBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@H1E@Z" = 69326496
 # MapDataManager
 "?_loadMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@@Z" = 68202416
 # MinecraftCommands
@@ -176,6 +178,8 @@ version = "1.21.132"
 "_ZNK11LeavesBlock4_dieER11BlockSourceRK8BlockPos" = 159395584
 # Level
 "_ZN5Level4tickEv" = 162054848
+# LiquidBlock
+"_ZNK11LiquidBlock12_trySpreadToER11BlockSourceRK8BlockPosiS4_h" = 159415104
 # MapDataManager
 "_ZN14MapDataManager12_loadMapDataERK13ActorUniqueID" = 161734976
 # MinecraftCommands
