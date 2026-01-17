@@ -19,6 +19,7 @@
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/gamerefs/weak_ref.h"
+#include "bedrock/platform/uuid.h"
 #include "bedrock/scripting/lifetime_registry/lifetime_scope.h"
 #include "bedrock/scripting/lifetime_registry/smart_object_handle.h"
 #include "bedrock/shared_types/legacy/level_sound_event.h"
@@ -64,6 +65,9 @@ struct ScriptingWorldInitializeEvent {
     Scripting::WeakLifetimeScope scope;
     bool final_event;
 };
+struct LevelTickingAreaFinishedLoadingEvent {
+    mce::UUID id;
+};
 struct LevelStartLeaveGameEvent {
     gsl::not_null<Bedrock::NonOwnerPointer<Level>> level;
 };
@@ -73,8 +77,9 @@ struct LevelGameplayEvent;
 
 template <>
 struct LevelGameplayEvent<void>
-    : ConstEventVariant<LevelAddedActorEvent, LevelBroadcastEvent, LevelSoundBroadcastEvent, LevelDayCycleEvent,
-                        LevelStartLeaveGameEvent, LevelGameRuleChangeEvent, ScriptingWorldInitializeEvent> {};
+    : ConstEventVariant<LevelTickingAreaFinishedLoadingEvent, LevelAddedActorEvent, LevelBroadcastEvent,
+                        LevelSoundBroadcastEvent, LevelDayCycleEvent, LevelStartLeaveGameEvent,
+                        LevelGameRuleChangeEvent, ScriptingWorldInitializeEvent> {};
 
 template <typename Return>
 struct MutableLevelGameplayEvent;

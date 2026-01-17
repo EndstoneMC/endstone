@@ -23,4 +23,5 @@ class flat_set : public associative_adapter<Key, no_value_t, Compare, KeyContain
     using container_type = KeyContainer;
 };
 
+static_assert(flat_set<int>::no_mapped_container == true);
 };  // namespace brstd

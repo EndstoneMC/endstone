@@ -45,6 +45,7 @@ private:
     NotNullResourcePack pack_;
     PackStats stats_{};
     int subpack_index_;
+    std::uint8_t revision_;
 };
 
 class ResourcePackStack {

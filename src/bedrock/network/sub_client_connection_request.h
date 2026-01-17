@@ -40,7 +40,6 @@ public:
     [[nodiscard]] std::string getPlatformOnlineId() const;
     [[nodiscard]] std::string getPlatformOfflineId() const;
     [[nodiscard]] std::string getSkinId() const;
-    [[nodiscard]] std::string getPlayFabId() const;
     [[nodiscard]] std::vector<unsigned char> getSkinData() const;
     [[nodiscard]] uint16_t getSkinImageWidth() const;
     [[nodiscard]] uint16_t getSkinImageHeight() const;
@@ -67,10 +66,7 @@ public:
     [[nodiscard]] bool isPrimaryUser() const;
     [[nodiscard]] InputMode getCurrentInputMode() const;
     [[nodiscard]] std::string getThirdPartyName() const;
-    [[nodiscard]] bool isVerified() const;
     [[nodiscard]] bool isWellFormed() const;
-    bool verifySelfSigned();
-    void invalidate();
     [[nodiscard]] bool isCompatibleWithClientSideChunkGen() const;
     [[nodiscard]] PlatformType getPlatformType() const;
     [[nodiscard]] SyncedClientOptionsComponent getClientOptions() const;
@@ -81,12 +77,8 @@ public:
 private:
     [[nodiscard]] Json::Value getData(const std::string &key) const;
 
-    bool is_verified_;
     std::unique_ptr<WebToken> raw_token_;
     std::unique_ptr<UnverifiedCertificate> certificate_data_;
-    LegacyMultiplayerToken legacy_multiplayer_token_;
     RawGameServerToken game_server_token_;
-    GameServerToken verified_game_server_token_;
     PlayerAuthenticationType authentication_type_;
-    PlayerAuthenticationInfo authentication_info_;
 };

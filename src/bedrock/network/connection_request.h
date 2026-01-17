@@ -31,7 +31,6 @@
 
 class ConnectionRequest {
 public:
-    [[nodiscard]] const PlayerAuthenticationInfo &getAuthenticationInfo() const;
     [[nodiscard]] PlayerAuthenticationType getAuthenticationType() const;
     [[nodiscard]] std::string getSelfSignedId() const;
     [[nodiscard]] std::string getServerAddress() const;
@@ -41,7 +40,6 @@ public:
     [[nodiscard]] std::string getClientPlatformOnlineId() const;
     [[nodiscard]] std::string getClientPlatformOfflineId() const;
     [[nodiscard]] std::string getSkinId() const;
-    [[nodiscard]] std::string getPlayFabId() const;
     [[nodiscard]] std::string getCapeId() const;
     [[nodiscard]] std::vector<unsigned char> getSkinData() const;
     [[nodiscard]] std::string getSkinDataAsString() const;
@@ -77,24 +75,21 @@ public:
     [[nodiscard]] bool isTrustedSkin() const;
     [[nodiscard]] bool isOverrideSkin() const;
     [[nodiscard]] bool isCapeOnClassicSkin() const;
-    [[nodiscard]] bool isVerified() const;
-    bool verifySelfSigned(bool);
     [[nodiscard]] bool isCompatibleWithClientSideChunkGen() const;
     [[nodiscard]] PlatformType getPlatformType() const;
     [[nodiscard]] SyncedClientOptionsComponent getClientOptions() const;
-    [[nodiscard]] bool isValid() const;
+    [[nodiscard]] bool isWellFormed() const;
+    [[nodiscard]] const UnverifiedCertificate *_getLegacyCertificate() const;
+    [[nodiscard]] const RawGameServerToken &_getGameServerToken() const;
+    [[nodiscard]] const WebToken &_getRawRequest() const;
 
     [[nodiscard]] std::string getLanguageCode() const;  // Endstone
 
 private:
     [[nodiscard]] Json::Value getData(const std::string &key) const;
 
-    bool is_verified_;
     std::unique_ptr<WebToken> raw_token_;
     std::unique_ptr<UnverifiedCertificate> certificate_data_;
-    LegacyMultiplayerToken legacy_multiplayer_token_;
     RawGameServerToken unverified_game_server_token_;
-    GameServerToken verified_game_server_token_;
     PlayerAuthenticationType authentication_type_;
-    PlayerAuthenticationInfo authentication_info_;
 };

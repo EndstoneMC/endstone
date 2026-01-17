@@ -37,7 +37,7 @@ jobs:
           submodules: true
 
       - name: Cache Conan
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.conan2/p
           key: ${{ runner.os }}-conan-RelWithDebInfo-${{ hashFiles('conanfile.py') }}
@@ -58,7 +58,7 @@ jobs:
         run: echo "CONAN_HOME=/host${HOME}/.conan2" >> $GITHUB_ENV
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v3.3.0
+        uses: pypa/cibuildwheel@v3.3.1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           CIBW_BUILD: ${{ matrix.python-tag }}-${{ matrix.platform }}
@@ -69,7 +69,7 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo chown -R $USER:$USER ~/.conan2
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: endstone-wheels-${{ matrix.python-tag }}-${{ matrix.platform }}
           path: ./wheelhouse/*.whl
@@ -86,7 +86,7 @@ jobs:
 
     steps:
       - name: Restore Artifacts
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           pattern: endstone-wheels-*
           path: dist

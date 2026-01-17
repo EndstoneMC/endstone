@@ -14,14 +14,14 @@
 
 #pragma once
 
-#include "bedrock/world/actor/player/serialized_skin.h"
-#include "endstone/skin.h"
-
-namespace endstone::core {
-
-class EndstoneSkin {
-public:
-    static Skin fromMinecraft(const SerializedSkinRef &skin);
+enum class ActorSwingSource : std::uint8_t {
+    None = 0,
+    Build = 1,
+    Mine = 2,
+    Interact = 3,
+    Attack = 4,
+    UseItem = 5,
+    ThrowItem = 6,
+    DropItem = 7,
+    Event = 8,
 };
-
-}  // namespace endstone::core

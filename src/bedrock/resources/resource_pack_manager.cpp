@@ -19,8 +19,8 @@ ResourcePackStack const &ResourcePackManager::getStack(ResourcePackStackType sta
     switch (stack_type) {
     case ResourcePackStackType::LEVEL:
         return *level_stack_;
-    case ResourcePackStackType::ADDON:
-        return *addon_stack_;
+    // case ResourcePackStackType::ADDON:
+    //     return *addon_stack_;
     case ResourcePackStackType::GLOBAL:
         return *global_stack_;
     case ResourcePackStackType::TREATMENT:
@@ -39,9 +39,9 @@ bool ResourcePackManager::setStack(std::unique_ptr<ResourcePackStack> stack, Res
     case ResourcePackStackType::LEVEL:
         level_stack_ = std::move(stack);
         break;
-    case ResourcePackStackType::ADDON:
-        addon_stack_ = std::move(stack);
-        break;
+    // case ResourcePackStackType::ADDON:
+    //     addon_stack_ = std::move(stack);
+    //     break;
     case ResourcePackStackType::GLOBAL:
         global_stack_ = std::move(stack);
         break;

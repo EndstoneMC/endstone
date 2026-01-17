@@ -24,13 +24,13 @@ from endstone import __minecraft_version__ as minecraft_version
 
 
 class Bootstrap:
-    def __init__(self, server_folder: str, no_confirm: bool, remote: str, no_interactive: bool) -> None:
+    def __init__(self, server_folder: str, no_confirm: bool, remote: str, interactive: bool) -> None:
         self._server_path = Path(server_folder).absolute()
         self._no_confirm = no_confirm
         self._remote = remote
         self._logger = logging.getLogger(self.name)
         self._process: subprocess.Popen
-        self._no_interactive = no_interactive
+        self._interactive = interactive
 
     @property
     def name(self) -> str:
@@ -277,25 +277,14 @@ class Bootstrap:
         return p.resolve().absolute()
 
     @property
-    def _should_disable_interactive(self) -> bool:
-        if self._no_interactive:
-            return True
-
-        # disable interactive console when running in Pterodactyl Panels for backward compatibility
-        if any(var in os.environ for var in {"P_SERVER_LOCATION", "P_SERVER_UUID", "P_SERVER_ALLOCATION_LIMIT"}):
-            return True
-
-        return False
-
-    @property
     def _endstone_runtime_env(self) -> dict[str, str]:
         env = os.environ.copy()
         env["PATH"] = os.pathsep.join(sys.path)
         env["PYTHONPATH"] = os.pathsep.join(sys.path)
         env["PYTHONIOENCODING"] = "UTF-8"
         env["ENDSTONE_PYTHON_EXECUTABLE"] = sys.executable
-        if self._should_disable_interactive:
-            env["ENDSTONE_NO_INTERACTIVE"] = "1"
+        if self._interactive:
+            env["ENDSTONE_USE_INTERACTIVE_CONSOLE"] = "1"
         return env
 
     def _run(self, *args, **kwargs) -> int:

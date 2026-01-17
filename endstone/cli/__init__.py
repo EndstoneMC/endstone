@@ -67,14 +67,14 @@ def catch_exceptions(func):
     help="The remote URL to retrieve bedrock server data from.",
 )
 @click.option(
-    "--no-interactive",
-    is_flag=True,
-    envvar="ENDSTONE_NO_INTERACTIVE",
-    help="Disable interactive console.",
+    "-i",
+    "--interactive/--no-interactive",
+    default=platform.system().lower() == "windows",
+    help="Enable interactive console (default on Windows, disabled on Linux).",
 )
 @click.version_option(__version__)
 @catch_exceptions
-def main(server_folder: str, no_confirm: bool, remote: str, no_interactive: bool) -> None:
+def main(server_folder: str, no_confirm: bool, remote: str, interactive: bool) -> None:
     system = platform.system()
     if system == "Windows":
         from .windows import WindowsBootstrap
@@ -88,7 +88,7 @@ def main(server_folder: str, no_confirm: bool, remote: str, no_interactive: bool
     else:
         raise NotImplementedError(f"{system} is not supported.")
 
-    bootstrap = cls(server_folder=server_folder, no_confirm=no_confirm, remote=remote, no_interactive=no_interactive)
+    bootstrap = cls(server_folder=server_folder, no_confirm=no_confirm, remote=remote, interactive=interactive)
     exit_code = bootstrap.run()
     if exit_code != 0:
         logger.error(f"Server exited with non-zero code {exit_code}.")

@@ -25,7 +25,7 @@ UnverifiedCertificate UnverifiedCertificate::fromString(const std::string &input
             auto json = nlohmann::json::parse(input);
             if (json.is_object()) {
                 auto &chain = json["chain"];
-                if (chain.is_array() && chain.size() <= 3) {
+                if (chain.is_array() && chain.size() <= 10) {
                     return ENDSTONE_HOOK_CALL_ORIGINAL(&UnverifiedCertificate::fromString, input);
                 }
             }
@@ -34,4 +34,12 @@ UnverifiedCertificate UnverifiedCertificate::fromString(const std::string &input
         }
     }
     return {WebToken(), nullptr};
+}
+
+bool Certificate::validate(std::time_t current_time, bool is_self_signed, bool check_expired)
+{
+    if (std::launder(this) == nullptr) {
+        return false;
+    }
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Certificate::validate, this, current_time, is_self_signed, check_expired);
 }

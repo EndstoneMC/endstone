@@ -170,8 +170,8 @@ public:
     bool setSpawnBlockRespawnPosition(const BlockPos &, DimensionType);
     bool canSleep() const;
     void stopGliding();
-    [[nodiscard]] const SerializedSkin &getSkin() const;
-    SerializedSkin &getSkin();
+    [[nodiscard]] const SerializedSkinRef &getSkin() const;
+    SerializedSkinRef &getSkin();
 
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] PlayerPermissionLevel getPlayerPermissionLevel() const;
@@ -297,7 +297,7 @@ protected:
     InventoryTransactionManager transaction_manager_;  // +2648
     std::unique_ptr<GameMode> game_mode_;
     std::unique_ptr<PlayerRespawnRandomizer> spawn_randomizer_;
-    std::unique_ptr<SerializedSkin> skin_;
+    std::unique_ptr<SerializedSkinRef> skin_;
     std::unique_ptr<ItemStackNetManagerBase> item_stack_net_manager_;
     std::shared_ptr<AnimationComponent> ui_animation_component_;
     std::shared_ptr<AnimationComponent> map_animation_component_;

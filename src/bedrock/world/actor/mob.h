@@ -44,7 +44,7 @@ public:
     ENDSTONE_HOOK virtual void knockback(Actor *, int, float, float, float, float, float);
     virtual void spawnAnim() = 0;
     virtual void setSprinting(bool) = 0;
-    virtual LevelSoundEvent getDeathSound() = 0;
+    // virtual LevelSoundEvent getDeathSound() = 0;
     [[nodiscard]] virtual float getSpeed() const = 0;
     virtual void setSpeed(float) = 0;
     virtual void hurtEffects(ActorDamageSource const &, float, bool, bool) = 0;
@@ -86,7 +86,7 @@ protected:
     virtual std::unique_ptr<BodyControl> initBodyControl() = 0;
     ENDSTONE_HOOK bool _hurt(const ActorDamageSource &source, float damage, bool knock, bool ignite) override;
     virtual void newServerAiStep() = 0;
-    virtual void tickDeath() = 0;
+    // virtual void tickDeath() = 0;
     [[nodiscard]] virtual AABB _getAdjustedAABBForSpawnCheck(AABB const &, Vec3 const &) const = 0;
 
 public:

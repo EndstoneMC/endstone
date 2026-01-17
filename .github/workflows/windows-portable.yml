@@ -18,9 +18,9 @@ jobs:
   build:
     runs-on: windows-2022
     env:
-      WP_URL: https://github.com/winpython/winpython/releases/download/11.2.20241228final/Winpython64-3.12.8.0dot.exe
-      WP_SHA256: 2727f61b2702232337a46e39c006f24bd1084395cdf27d076c55d39756c406cc
-      WP_BINARY_DIR: WPy64-31280\python
+      WP_URL: https://github.com/winpython/winpython/releases/download/17.2.20250920final/WinPython64-3.13.7.0dot.exe
+      WP_SHA256: 75001c40e8507db4c408f298ce8f49d483efb5ebfa9bdfb50a0509d31bd028f5
+      WP_BINARY_DIR: WPy64-31700\python
 
     steps:
       - name: Checkout Code
@@ -30,7 +30,7 @@ jobs:
           submodules: true
 
       - name: Cache Conan
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.conan2/p
           key: ${{ runner.os }}-conan-RelWithDebInfo-${{ hashFiles('conanfile.py') }}
@@ -46,10 +46,10 @@ jobs:
         uses: lukka/get-cmake@latest
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v3.3.0
+        uses: pypa/cibuildwheel@v3.3.1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          CIBW_BUILD: cp312-win_amd64
+          CIBW_BUILD: cp313-win_amd64
           CIBW_BUILD_VERBOSITY: 1
 
       - name: Install Winpython
@@ -82,7 +82,7 @@ jobs:
         run: 7z a endstone-win_amd64-portable.zip .\dist\endstone-win_amd64-portable\*
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           path: endstone-win_amd64-portable.zip
           name: endstone-win_amd64-portable.zip
@@ -97,7 +97,7 @@ jobs:
 
     steps:
       - name: Restore Artifacts
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           pattern: endstone-*
           path: dist

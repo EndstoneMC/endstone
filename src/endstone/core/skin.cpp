@@ -16,7 +16,7 @@
 
 namespace endstone::core {
 
-Skin EndstoneSkin::fromMinecraft(const SerializedSkin &skin)
+Skin EndstoneSkin::fromMinecraft(const SerializedSkinRef &skin)
 {
     const auto &data = skin.getImageData();
     auto image = Image(Image::Type::RGBA, data.width, data.height, data.image_bytes);

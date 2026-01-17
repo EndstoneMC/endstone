@@ -23,6 +23,7 @@
 #include "bedrock/input/input_mode.h"
 #include "bedrock/input/scripting_input_button.h"
 #include "bedrock/world/actor/actor_damage_source.h"
+#include "bedrock/world/actor/actor_swing_source.h"
 #include "bedrock/world/actor/armor_slot.h"
 #include "bedrock/world/container.h"
 #include "bedrock/world/events/event_variant.h"
@@ -101,6 +102,7 @@ struct PlayerShootArrowEvent {
 struct PlayerSwingStartEvent {
     WeakEntityRef player;
     ItemStack held_item;
+    ActorSwingSource swing_source;
 };
 struct PlayerInitialSpawnEvent {
     WeakRef<EntityContext> player;

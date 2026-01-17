@@ -23,7 +23,7 @@
 class PlayerSkinPacket : public Packet {
 public:
     mce::UUID uuid;
-    SerializedSkin skin;
+    SerializedSkinRef skin;
     std::string localized_new_skin_name;
     std::string localized_old_skin_name;
 };

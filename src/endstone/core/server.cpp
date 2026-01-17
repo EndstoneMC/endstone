@@ -197,8 +197,8 @@ void EndstoneServer::setLevel(::Level &level)
 
     // start accepting input
     runtime::stdin_restore();
-    auto &server = static_cast<DedicatedServer &>(server_instance_->app_);
-    server.console_input_reader_->startEndstone();
+    auto *server = entt::locator<DedicatedServer *>::value();
+    server->console_input_reader_->startEndstone();
 }
 
 void EndstoneServer::initRegistries()
@@ -224,6 +224,10 @@ void EndstoneServer::initPackSource(const PackSourceFactory &pack_source_factory
 {
     if (resource_pack_source_) {
         throw std::runtime_error("Resource pack source already created.");
+    }
+    if (!resource_pack_repository_) {
+        throw std::runtime_error(
+            "Resource pack repository not set. Check the hook for RepositoryFactory::createSources.");
     }
     auto io = pack_source_factory.createPackIOProvider();
     resource_pack_source_ = std::make_unique<EndstonePackSource>(EndstonePackSourceOptions(
@@ -479,7 +483,7 @@ bool EndstoneServer::getOnlineMode() const
 void EndstoneServer::shutdown()
 {
     static_cast<EndstoneScheduler &>(getScheduler()).runTask([this]() {
-        server_instance_->getMinecraft()->requestServerShutdown("");
+        server_instance_->getMinecraft()->requestServerShutdown();
     });
 }
 
@@ -504,7 +508,7 @@ void EndstoneServer::reload()
 
 void EndstoneServer::reloadData()
 {
-    server_instance_->getMinecraft()->requestResourceReload();
+    server_instance_->onRequestResourceReload();
     level_->getHandle().loadFunctionManager();
     initRegistries();
 }
@@ -617,7 +621,10 @@ std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type, Blo
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
-        std::visit(overloaded{[&](auto &&arg) { states.emplace(state.first, arg); }}, state.second);
+        std::visit(overloaded{[&](auto &&arg) {
+                       states.emplace(state.first, arg);
+                   }},
+                   state.second);
     }
     const auto block_descriptor = ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(type, states);
     const auto *block = block_descriptor.tryGetBlockNoLogging();
