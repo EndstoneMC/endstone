@@ -24,6 +24,6 @@ private:
                                     BlockPos const &flow_from_pos, FacingID flow_from_direction) const;
     bool _canSpreadTo(BlockSource &region, BlockPos const &pos, BlockPos const &flow_from_pos,
                       FacingID flow_from_direction) const;
-    ENDSTONE_HOOK bool _isLiquidBlocking(BlockSource &region, BlockPos const &pos, BlockPos const &flow_from_pos,
-                                         FacingID flow_from_direction) const;
+    bool _isLiquidBlocking(BlockSource &region, BlockPos const &pos, BlockPos const &flow_from_pos,
+                           FacingID flow_from_direction) const;
 };
