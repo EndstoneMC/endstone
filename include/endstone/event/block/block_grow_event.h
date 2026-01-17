@@ -19,24 +19,25 @@
 
 namespace endstone {
 
+/**
+ * @brief Called when a block grows naturally in the world.
+ *
+ * If a Block Grow event is cancelled, the block will not grow.
+ */
 class BlockGrowEvent : public Cancellable<BlockEvent> {
 public:
+    ENDSTONE_EVENT(BlockGrowEvent);
     explicit BlockGrowEvent(std::unique_ptr<Block> block, std::unique_ptr<BlockState> new_state)
         : Cancellable(std::move(block)), new_state_(std::move(new_state))
     {
     }
-    ~BlockGrowEvent() override = default;
 
-    inline static const std::string NAME = "BlockGrowEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
-
-    [[nodiscard]] BlockState &getToBlock() const
-    {
-        return *new_state_;
-    }
+    /**
+     * @brief Gets the state of the block where it will form or spread to.
+     *
+     * @return The block state for this events block
+     */
+    [[nodiscard]] BlockState &getNewState() const { return *new_state_; }
 
 private:
     std::unique_ptr<BlockState> new_state_;
