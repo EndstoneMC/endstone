@@ -14,27 +14,16 @@
 
 #pragma once
 
-#include "endstone/block/block.h"
-#include "endstone/event/event.h"
+#include "bedrock/world/level/block/block_type.h"
 
-namespace endstone {
+class LiquidBlockBase : public ::BlockType {};
 
-/**
- * @brief Represents an Block-related event
- */
-class BlockEvent : public Event {
-public:
-    explicit BlockEvent(std::unique_ptr<Block> block) : block_(std::move(block)) {};
-
-    /**
-     * @brief Gets the block involved in this event.
-     *
-     * @return The Block which block is involved in this event
-     */
-    [[nodiscard]] Block &getBlock() const { return *block_; }
-
+class LiquidBlock : public LiquidBlockBase {
 protected:
-    std::unique_ptr<Block> block_;
+    ENDSTONE_HOOK void _trySpreadTo(BlockSource &region, BlockPos const &pos, int neighbor,
+                                        BlockPos const &flow_from_pos, FacingID flow_from_direction) const;
+    bool _canSpreadTo(BlockSource &region, BlockPos const &pos, BlockPos const &flow_from_pos,
+                      FacingID flow_from_direction) const;
+    bool _isLiquidBlocking(BlockSource &region, BlockPos const &pos, BlockPos const &flow_from_pos,
+                           FacingID flow_from_direction) const;
 };
-
-}  // namespace endstone

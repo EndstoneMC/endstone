@@ -14,27 +14,32 @@
 
 #pragma once
 
-#include "endstone/block/block.h"
-#include "endstone/event/event.h"
+#include "endstone/event/block/block_event.h"
+#include "endstone/event/cancellable.h"
 
 namespace endstone {
-
 /**
- * @brief Represents an Block-related event
+ * @brief Called when a block grows naturally in the world.
+ *
+ * If a Block Grow event is cancelled, the block will not grow.
  */
-class BlockEvent : public Event {
+class BlockGrowEvent : public Cancellable<BlockEvent> {
 public:
-    explicit BlockEvent(std::unique_ptr<Block> block) : block_(std::move(block)) {};
+    ENDSTONE_EVENT(BlockGrowEvent);
+    explicit BlockGrowEvent(std::unique_ptr<Block> block, std::unique_ptr<BlockState> new_state)
+        : Cancellable(std::move(block)), new_state_(std::move(new_state))
+    {
+    }
 
     /**
-     * @brief Gets the block involved in this event.
+     * @brief Gets the state of the block where it will form or spread to.
      *
-     * @return The Block which block is involved in this event
+     * @return The block state for this events block
      */
-    [[nodiscard]] Block &getBlock() const { return *block_; }
+    [[nodiscard]] BlockState &getNewState() const { return *new_state_; }
 
-protected:
-    std::unique_ptr<Block> block_;
+private:
+    std::unique_ptr<BlockState> new_state_;
 };
 
 }  // namespace endstone

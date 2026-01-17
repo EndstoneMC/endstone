@@ -104,6 +104,11 @@ bool Block::getLiquidClipVolume(BlockSource &region, BlockPos const &pos, AABB &
     return block_type_->getLiquidClipVolume(*this, region, pos, include_box);
 }
 
+bool Block::isLavaBlocking() const
+{
+    return block_type_->isLavaBlocking();
+}
+
 bool Block::requiresCorrectToolForDrops() const
 {
     return block_type_->requiresCorrectToolForDrops();

@@ -16,12 +16,30 @@
 
 namespace SharedTypes {
 enum class Facing : short {
-    DOWN = 0,
-    UP = 1,
-    NORTH = 2,
-    SOUTH = 3,
-    WEST = 4,
-    EAST = 5,
-    MAX = 6,
+    DOWN,
+    UP,
+    NORTH,
+    SOUTH,
+    WEST,
+    EAST,
+    MAX,
 };
-} // namespace SharedTypes
+}  // namespace SharedTypes
+
+namespace Facing {
+enum Name : FacingID {
+    DOWN,
+    UP,
+    NORTH,
+    SOUTH,
+    WEST,
+    EAST,
+    MAX,
+    NOT_DEFINED = MAX,
+    NUM_CULLING_IDS = MAX + 1,
+};
+constexpr std::array<FacingID, 6> FACINGMASK = {
+    1 << DOWN, 1 << UP, 1 << NORTH, 1 << SOUTH, 1 << WEST, 1 << EAST,
+};
+inline constexpr FacingID OPPOSITE_FACING[] = {UP, DOWN, SOUTH, NORTH, EAST, WEST, MAX};
+}  // namespace Facing

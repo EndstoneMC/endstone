@@ -25,6 +25,8 @@ class Material {
 
 public:
     explicit Material(MaterialType, Material::Settings);
+    bool operator==(const Material & rhs) const = default;
+    bool operator!=(const Material &) const = default;
     [[nodiscard]] bool isType(MaterialType type) const
     {
         return type == type_;
