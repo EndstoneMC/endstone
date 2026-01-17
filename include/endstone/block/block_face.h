@@ -15,7 +15,9 @@
 #pragma once
 
 namespace endstone {
-
+/**
+ * @brief Represents the face of a block
+ */
 enum class BlockFace {
     Down,
     Up,
@@ -24,5 +26,4 @@ enum class BlockFace {
     West,
     East,
 };
-
 }  // namespace endstone

@@ -18,28 +18,29 @@
 #include "endstone/event/cancellable.h"
 
 namespace endstone {
-
+/**
+ * @brief Represents events with a source block and a destination block, currently only applies to
+ * liquid (lava and water) and teleporting dragon eggs.
+ *
+ * If a Block From To event is cancelled, the block will not move (the liquid will not flow).
+ */
 class BlockFromToEvent : public Cancellable<BlockEvent> {
 public:
+    ENDSTONE_EVENT(BlockFromToEvent);
     explicit BlockFromToEvent(std::unique_ptr<Block> block, std::unique_ptr<Block> to_block)
-        : Cancellable(std::move(block)), to_block_(std::move(to_block))
+        : Cancellable(std::move(block)), to_(std::move(to_block))
     {
     }
-    ~BlockFromToEvent() override = default;
 
-    inline static const std::string NAME = "BlockFromToEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    /**
+     * @brief Convenience method for getting the faced Block.
+     *
+     * @return The faced Block
+     */
+    [[nodiscard]] Block &getToBlock() const { return *to_; }
 
-    [[nodiscard]] Block &getToBlock() const
-    {
-        return *to_block_;
-    }
-
-private:
-    std::unique_ptr<Block> to_block_;
+protected:
+    std::unique_ptr<Block> to_;
 };
 
 }  // namespace endstone

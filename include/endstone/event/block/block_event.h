@@ -24,20 +24,16 @@ namespace endstone {
  */
 class BlockEvent : public Event {
 public:
-    explicit BlockEvent(std::unique_ptr<Block> block) : block_(std::move(block)){};
-    ~BlockEvent() override = default;
+    explicit BlockEvent(std::unique_ptr<Block> block) : block_(std::move(block)) {};
 
     /**
      * @brief Gets the block involved in this event.
      *
      * @return The Block which block is involved in this event
      */
-    [[nodiscard]] Block &getBlock() const
-    {
-        return *block_;
-    }
+    [[nodiscard]] Block &getBlock() const { return *block_; }
 
-private:
+protected:
     std::unique_ptr<Block> block_;
 };
 
