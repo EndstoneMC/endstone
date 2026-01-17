@@ -25,36 +25,15 @@ class Material {
 
 public:
     explicit Material(MaterialType, Material::Settings);
-    bool operator==(const Material & rhs) const = default;
-    bool operator!=(const Material &) const = default;
-    [[nodiscard]] bool isType(MaterialType type) const
-    {
-        return type == type_;
-    }
-    [[nodiscard]] bool isSolidBlocking() const
-    {
-        return !never_buildable_ && blocks_motions_;
-    }
-    [[nodiscard]] bool isLiquid() const
-    {
-        return liquid_;
-    }
-    [[nodiscard]] bool getBlocksMotion() const
-    {
-        return blocks_motions_;
-    }
-    [[nodiscard]] bool getBlocksPrecipitation() const
-    {
-        return blocks_precipitation_;
-    }
-    [[nodiscard]] bool isSolid() const
-    {
-        return solid_;
-    }
-    [[nodiscard]] bool isSuperHot() const
-    {
-        return super_hot_;
-    }
+    bool operator==(const Material &rhs) const { return type_ == rhs.type_; }
+    bool operator!=(const Material &rhs) const { return !(*this == rhs); }
+    [[nodiscard]] bool isType(MaterialType type) const { return type == type_; }
+    [[nodiscard]] bool isSolidBlocking() const { return !never_buildable_ && blocks_motions_; }
+    [[nodiscard]] bool isLiquid() const { return liquid_; }
+    [[nodiscard]] bool getBlocksMotion() const { return blocks_motions_; }
+    [[nodiscard]] bool getBlocksPrecipitation() const { return blocks_precipitation_; }
+    [[nodiscard]] bool isSolid() const { return solid_; }
+    [[nodiscard]] bool isSuperHot() const { return super_hot_; }
     [[nodiscard]] bool isTopSolid(bool flag1, bool flag2) const
     {
         if (isType(MaterialType::Leaves)) {
@@ -65,10 +44,7 @@ public:
         }
         return true;
     }
-    [[nodiscard]] MaterialType getType() const
-    {
-        return type_;
-    }
+    [[nodiscard]] MaterialType getType() const { return type_; }
 
 private:
     MaterialType type_;

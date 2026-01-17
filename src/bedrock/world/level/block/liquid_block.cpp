@@ -16,14 +16,14 @@ bool LiquidBlock::_canSpreadTo(BlockSource &region, BlockPos const &pos, BlockPo
     if (block.getMaterial() == getMaterial() || block.getMaterial().isType(MaterialType::Lava)) {
         return false;
     }
-    return _isLiquidBlocking(region, pos, flow_from_pos, flow_from_direction);
+    return !_isLiquidBlocking(region, pos, flow_from_pos, flow_from_direction);
 }
 
 bool LiquidBlock::_isLiquidBlocking(BlockSource &region, BlockPos const &pos, BlockPos const &flow_from_pos,
                                     FacingID flow_from_direction) const
 {
-    if (auto &block = region.getLiquidBlock(flow_from_pos); block.getMaterial().isType(MaterialType::Lava)) {
-        return block.isLavaBlocking();
+    if (region.getLiquidBlock(flow_from_pos).getMaterial().isType(MaterialType::Lava)) {
+        return region.getBlock(pos).isLavaBlocking();
     }
     auto get_block = [&region](const BlockPos &block_pos) -> const Block & {
         return region.getBlock(block_pos);
