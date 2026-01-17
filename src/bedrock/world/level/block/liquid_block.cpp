@@ -3,15 +3,17 @@
 #include "bedrock/world/level/block_source.h"
 
 bool LiquidBlock::_canSpreadTo(BlockSource &region, BlockPos const &pos, BlockPos const &flow_from_pos,
-                               unsigned char flow_from_direction) const
+                               FacingID flow_from_direction) const
 {
     if (pos.y < region.getMinHeight()) {
         return false;
     }
-    if (const auto &block = region.getLiquidBlock(pos);
-        block.getMaterial() == getMaterial() || block.getMaterial().isType(MaterialType::Lava) ||
-        _isLiquidBlocking(region, pos, flow_from_pos, flow_from_direction)) {
+    if (!region.hasBlock(pos)) {
         return false;
     }
-    return true;
+    const auto &block = region.getLiquidBlock(pos);
+    if (block.getMaterial() == getMaterial() || block.getMaterial().isType(MaterialType::Lava)) {
+        return false;
+    }
+    return _isLiquidBlocking(region, pos, flow_from_pos, flow_from_direction);
 }
