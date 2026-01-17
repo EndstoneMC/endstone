@@ -30,7 +30,7 @@ public:
                  const PlayerAuthenticationInfo &, int, bool, EntityContext &, PlatformType, InputMode,
                  SyncedClientOptionsComponent);
     ~ServerPlayer() override = 0;
-    void changeDimension(DimensionType toId) override; // TODO(fixme): enable the hook
+    ENDSTONE_HOOK void changeDimension(DimensionType toId) override; // TODO(fixme): enable the hook
 
 protected:
     PlatformType platform_type_;

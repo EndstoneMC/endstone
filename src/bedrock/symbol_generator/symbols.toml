@@ -1,4 +1,4 @@
-timestamp = 1768579059
+timestamp = 1768671493
 version = "1.21.132"
 
 [windows]
@@ -108,7 +108,7 @@ version = "1.21.132"
 "?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@AEBUPlayerAuthenticationInfo@@@Z" = 26797568
 "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 26841360
 # ServerPlayer
-"?changeDimension@ServerPlayer@@UEAAXV?$AutomaticID@VDimension@@H@@@Z" = 0
+"?changeDimension@ServerPlayer@@UEAAXV?$AutomaticID@VDimension@@H@@@Z" = 50924384
 # ServerPlayerMovementCorrectionSystem
 "?_afterMovementSimulation@ServerPlayerMovementCorrectionSystem@@YAXAEBVUserEntityIdentifierComponent@@AEAVActor@@AEBVPlayerAuthInputPacket@@AEAVReplayStateComponent@@PEBUActorRotationComponent@@AEAUServerPlayerMovementComponent@@AEAUStateVectorComponent@@PEBUBoatMovementComponent@@@Z" = 23064160
 # ServerScoreboard
