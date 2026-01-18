@@ -81,7 +81,6 @@ Permission &CommandPermissions::registerPermission(std::string_view name, std::s
     else if (signature.permission_level > CommandPermissionLevel::Any) {
         def = PermissionDefault::Operator;
     }
-    server.getLogger().warning("{}: {}", name, magic_enum::enum_name(def));
     return DefaultPermissions::registerPermission(name, desc, def, parent);
 }
 
