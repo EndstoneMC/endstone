@@ -50,7 +50,7 @@ conan profile detect
 
 **Windows:**
 
-```bash
+```shell
 conan install . --build=missing -s compiler.cppstd=20 -c tools.cmake.cmaketoolchain:generator=Ninja
 ```
 
@@ -64,13 +64,13 @@ conan install . --build=missing -s compiler.cppstd=20 -s compiler.libcxx=libc++ 
 
 **Windows (cmd):**
 
-```cmd
+```shell
 .\build\Release\generators\conanbuild.bat
 ```
 
 **Windows (PowerShell):**
 
-```powershell
+```shell
 .\build\Release\generators\conanbuild.ps1
 ```
 
