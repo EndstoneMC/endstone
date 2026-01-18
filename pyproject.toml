@@ -89,7 +89,7 @@ local_scheme = "no-local-version"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-ignore = ["tests/endstone_test"]
+addopts = ["--ignore=tests/endstone_test"]
 
 [tool.ruff]
 line-length = 120

@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "endstone-test"
+version = "0.11.0"
+dependencies = ["babel", "pillow", "pytest"]
+authors = [
+    { name = "Vincent Wu", email = "magicdroidx@gmail.com" },
+]
+description = "Endstone plugin that tests the functionality of APIs."
+keywords = ["endstone", "plugin", "test"]
+
+[project.entry-points."endstone"]
+test = "endstone_test:EndstoneTest"
+
+[tool.ruff.lint]
+extend-select = ["I", "F"]
