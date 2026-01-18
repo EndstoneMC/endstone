@@ -2,8 +2,10 @@ import asyncio
 import concurrent.futures
 import threading
 
-import endstone.asyncio
 import pytest
+
+import endstone.asyncio
+
 
 # =============================================================================
 # Section 1: get_loop Tests
@@ -105,12 +107,16 @@ def test_submit_propagates_exception() -> None:
 
 def test_submit_multiple_concurrent_tasks() -> None:
     """Verify multiple coroutines can run concurrently."""
+    import time
+
     results = []
 
     async def task(value, delay):
         await asyncio.sleep(delay)
         results.append(value)
         return value
+
+    start_time = time.monotonic()
 
     future1 = endstone.asyncio.submit(task(1, 0.2))
     future2 = endstone.asyncio.submit(task(2, 0.1))
@@ -121,11 +127,16 @@ def test_submit_multiple_concurrent_tasks() -> None:
     result2 = future2.result(timeout=5)
     result3 = future3.result(timeout=5)
 
+    elapsed = time.monotonic() - start_time
+
     assert result1 == 1
     assert result2 == 2
     assert result3 == 3
     # Due to different delays, order should be 3, 2, 1
     assert results == [3, 2, 1]
+    # If concurrent, elapsed should be ~0.2s (longest delay)
+    # If sequential, it would be ~0.35s (0.2 + 0.1 + 0.05)
+    assert elapsed < 0.3, f"Tasks should run concurrently, but took {elapsed:.2f}s"
 
 
 def test_submit_rejects_non_coroutine() -> None:
@@ -135,7 +146,7 @@ def test_submit_rejects_non_coroutine() -> None:
         return 42
 
     with pytest.raises(TypeError):
-        endstone.asyncio.submit(regular_function())
+        endstone.asyncio.submit(regular_function())  # noqa
 
 
 def test_submit_with_awaited_coroutines() -> None:
