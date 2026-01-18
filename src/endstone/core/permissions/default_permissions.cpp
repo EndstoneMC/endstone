@@ -47,52 +47,52 @@ void DefaultPermissions::registerCorePermissions()
     registerBroadcastPermissions(root);
     root->recalculatePermissibles();
 }
-.
+
 void DefaultPermissions::registerMinecraftPermissions()
 {
-    auto *root =
-        registerPermission("minecraft", nullptr, "Gives the user the ability to use all vanilla utilities and commands",
-                           PermissionDefault::False);
+    auto *root = registerPermission("minecraft", nullptr,  //
+                                    "Gives the user the ability to use all vanilla utilities and commands",
+                                    PermissionDefault::False);
     auto *parent = registerPermission(root->getName() + ".command", root,
                                       "Gives the user the ability to use all vanilla minecraft commands",
                                       PermissionDefault::False);
-    registerPermission(parent->getName() + ".help", parent, "Allows the user to access Vanilla command help.",
-                       PermissionDefault::True);
-    registerPermission(parent->getName() + ".list", parent, "Allows the user to list all online players.",
-                       PermissionDefault::True);
-    registerPermission(parent->getName() + ".me", parent, "Allows the user to perform a chat action.",
-                       PermissionDefault::True);
-    registerPermission(parent->getName() + ".tell", parent, "Allows the user to privately message another player.",
-                       PermissionDefault::True);
+    registerPermission(parent->getName() + ".help", parent,  //
+                       "Allows the user to access Vanilla command help.", PermissionDefault::True);
+    registerPermission(parent->getName() + ".list", parent,  //
+                       "Allows the user to list all online players.", PermissionDefault::True);
+    registerPermission(parent->getName() + ".me", parent,  //
+                       "Allows the user to perform a chat action.", PermissionDefault::True);
+    registerPermission(parent->getName() + ".tell", parent,  //
+                       "Allows the user to privately message another player.", PermissionDefault::True);
 }
 
 void DefaultPermissions::registerCommandPermissions(Permission *parent)
 {
-    auto *root = registerPermission(parent->getName() + ".command", parent,
+    auto *root = registerPermission(parent->getName() + ".command", parent,  //
                                     "Gives the user the ability to use all Endstone command", PermissionDefault::False);
 
-    registerPermission(root->getName() + ".ban", root, "Allows the user to ban players.", PermissionDefault::Operator);
-    registerPermission(root->getName() + ".banip", root, "Allows the user to ban IP addresses.",
-                       PermissionDefault::Operator);
-    registerPermission(root->getName() + ".banlist", root, "Allows the user to list all the banned ips or players.",
-                       PermissionDefault::Operator);
+    registerPermission(root->getName() + ".ban", root,  //
+                       "Allows the user to ban players.", PermissionDefault::Operator);
+    registerPermission(root->getName() + ".banip", root,  //
+                       "Allows the user to ban IP addresses.", PermissionDefault::Operator);
+    registerPermission(root->getName() + ".banlist", root,  //
+                       "Allows the user to list all the banned ips or players.", PermissionDefault::Operator);
 
-    registerPermission(root->getName() + ".unban", root, "Allows the user to unban players.",
-                       PermissionDefault::Operator);
-    registerPermission(root->getName() + ".unbanip", root, "Allows the user to unban IP addresses.",
-                       PermissionDefault::Operator);
-
-    registerPermission(root->getName() + ".plugins", root,
+    registerPermission(root->getName() + ".unban", root,  //
+                       "Allows the user to unban players.", PermissionDefault::Operator);
+    registerPermission(root->getName() + ".unbanip", root,  //
+                       "Allows the user to unban IP addresses.", PermissionDefault::Operator);
+    registerPermission(root->getName() + ".plugins", root,  //
                        "Allows the user to view the list of plugins running on this server", PermissionDefault::True);
-    registerPermission(root->getName() + ".reload", root,
+    registerPermission(root->getName() + ".reload", root,  //
                        "Allows the user to reload the configuration and plugins of the server",
                        PermissionDefault::Operator);
-    registerPermission(root->getName() + ".seed", root, "Allows the user to view the seed of the level.",
-                       PermissionDefault::Operator);
-    registerPermission(root->getName() + ".status", root, "Allows the user to view the status of the server",
-                       PermissionDefault::Operator);
-    registerPermission(root->getName() + ".version", root, "Allows the user to view the version of the server",
-                       PermissionDefault::True);
+    registerPermission(root->getName() + ".seed", root,  //
+                       "Allows the user to view the seed of the level.", PermissionDefault::Operator);
+    registerPermission(root->getName() + ".status", root,  //
+                       "Allows the user to view the status of the server", PermissionDefault::Operator);
+    registerPermission(root->getName() + ".version", root,  //
+                       "Allows the user to view the version of the server", PermissionDefault::True);
 
 #ifdef ENDSTONE_WITH_DEVTOOLS
     registerPermission(root->getName() + ".devtools", root, "Allows the user to open the DevTools.",
