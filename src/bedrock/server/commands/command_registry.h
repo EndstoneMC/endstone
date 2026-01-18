@@ -41,6 +41,7 @@ class CommandParameterData;
 class CommandRunStats;
 
 namespace endstone::core {
+class CommandPermissions;
 class EndstoneCommandMap;
 class EndstonePlayer;
 }  // namespace endstone::core
@@ -66,8 +67,6 @@ class CommandRegistry {
 public:
     friend class Command;
     friend class CommandParameterData;
-    friend class endstone::core::EndstoneCommandMap;
-    friend class endstone::core::EndstonePlayer;
 
     using CustomStorageGetFn = void *(*)(Command *, int);
     using CustomStorageIsSetFn = bool *(*)(Command *, int);
@@ -194,25 +193,13 @@ public:
         Symbol() = default;
         Symbol(size_t value) : value_(static_cast<int>(value)) {};
         Symbol(HardNonTerminal value) : value_(static_cast<int>(value)) {};
-        Symbol(const Symbol &other)
-        {
-            value_ = other.value_;
-        }
+        Symbol(const Symbol &other) { value_ = other.value_; }
 
-        bool operator==(const Symbol &other) const
-        {
-            return value_ == other.value_;
-        }
+        bool operator==(const Symbol &other) const { return value_ == other.value_; }
 
-        [[nodiscard]] int value() const
-        {
-            return value_;
-        }
+        [[nodiscard]] int value() const { return value_; }
 
-        [[nodiscard]] std::size_t toIndex() const
-        {
-            return value_ & 0xE00FFFFF;
-        }
+        [[nodiscard]] std::size_t toIndex() const { return value_ & 0xE00FFFFF; }
 
         [[nodiscard]] bool isTerminal() const;
         [[nodiscard]] bool isEnum() const;
@@ -223,17 +210,11 @@ public:
         [[nodiscard]] bool isEnumValue() const;
         [[nodiscard]] bool isChainedSubcommandValue() const;
         [[nodiscard]] bool isSoftEnum() const;
-        static Symbol fromEnumIndex(size_t index)
-        {
-            return {index | EnumBit | NonTerminalBit};
-        }
+        static Symbol fromEnumIndex(size_t index) { return {index | EnumBit | NonTerminalBit}; }
         static Symbol fromOptionalIndex(size_t index);
         static Symbol fromFactorizationIndex(size_t index);
         static Symbol fromPostfixIndex(size_t index);
-        static Symbol fromEnumValueIndex(size_t index)
-        {
-            return {index | EnumValueBit};
-        }
+        static Symbol fromEnumValueIndex(size_t index) { return {index | EnumValueBit}; }
         static Symbol fromSoftEnumIndex(size_t index);
         static Symbol fromChainedSubcommandIndex(size_t index);
         static Symbol fromChainedSubcommandValueIndex(size_t index);
@@ -349,7 +330,10 @@ public:
     struct RegistryState;
 
     // Endstone begins
+    friend class endstone::core::CommandPermissions;
     friend class endstone::core::EndstoneCommandMap;
+    friend class endstone::core::EndstonePlayer;
+
     [[nodiscard]] std::string describe(const Signature &signature, const Overload &overload) const
     {
         return describe(signature, signature.name, overload, 0, nullptr, nullptr);
