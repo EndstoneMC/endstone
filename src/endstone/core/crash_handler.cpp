@@ -71,6 +71,11 @@ const cpptrace::formatter &get_formatter()
                 static const std::unordered_set<std::string_view> ignored_modules = {
                     "crash_handler.cpp", "ntdll.dll", "kernel32.dll", "kernelbase.dll", "ucrtbase.dll"};
 #elif __linux__
+                if (filename.starts_with("libc.so") || filename.starts_with("libc++.so")) {
+                    return false;
+                }
+                static const std::unordered_set<std::string_view> ignored_modules = {"crash_handler.cpp",
+                                                                                     "pthread_create.c", "clone3.S"};
 #endif
                 if (ignored_modules.contains(filename)) {
                     return false;
@@ -80,6 +85,7 @@ const cpptrace::formatter &get_formatter()
             .filtered_frame_placeholders(false)
             .addresses(cpptrace::formatter::address_mode::object)
             .paths(cpptrace::formatter::path_mode::basename)
+            .break_before_filename(true)
             .snippets(true);
     return formatter;
 }
