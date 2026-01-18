@@ -14,26 +14,56 @@
 
 #pragma once
 
-#include <memory>
 #include <string>
-#include <unordered_map>
+#include <string_view>
 
 #include "endstone/core/server.h"
 #include "endstone/permissions/permission.h"
 
 namespace endstone::core {
-
 class DefaultPermissions {
-public:
-    static Permission *registerPermission(std::unique_ptr<Permission> perm, Permission *parent = nullptr);
+    constexpr static std::string_view ROOT = "endstone";
 
-    static Permission *registerPermission(const std::string &name, Permission *parent, const std::string &desc,
-                                          PermissionDefault default_value,
-                                          const std::unordered_map<std::string, bool> &children = {});
+public:
+    static Permission &registerPermission(std::unique_ptr<Permission> perm);
+    static Permission &registerPermission(std::unique_ptr<Permission> perm, Permission &parent);
+    static Permission &registerPermission(std::string_view name, std::string_view desc);
+    static Permission &registerPermission(std::string_view name, std::string_view desc, Permission &parent);
+    static Permission &registerPermission(std::string_view name, std::string_view desc, PermissionDefault def,
+                                          Permission &parent);
+
     static void registerCorePermissions();
-    static void registerMinecraftPermissions();
-    static void registerCommandPermissions(Permission *parent);
-    static void registerBroadcastPermissions(Permission *parent);
 };
 
+class CommandPermissions {
+    constexpr static std::string_view ROOT = "endstone.command";
+
+public:
+    static Permission &registerPermission(std::string_view prefix, std::string_view name, std::string_view desc,
+                                          Permission &parent);
+    static Permission &registerPermission(std::string_view prefix, std::string_view name, std::string_view desc,
+                                          PermissionDefault def, Permission &parent);
+    static Permission &registerPermissions(Permission &parent);
+};
+
+class BroadcastPermissions {
+    constexpr static std::string_view ROOT = "endstone.broadcast";
+
+public:
+    static Permission &registerPermissions(Permission &parent);
+};
+
+class MinecraftDefaultPermissions {
+    constexpr static std::string_view ROOT = "minecraft";
+
+public:
+    static void registerCorePermissions();
+};
+
+class MinecraftCommandPermissions {
+    constexpr static std::string_view ROOT = "minecraft.command";
+
+public:
+    static Permission &registerPermissions(Permission &parent);
+};
 }  // namespace endstone::core

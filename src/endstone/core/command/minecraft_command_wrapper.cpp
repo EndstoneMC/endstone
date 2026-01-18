@@ -41,22 +41,7 @@ MinecraftCommandWrapper::MinecraftCommandWrapper(MinecraftCommands &minecraft_co
     setUsages(std::move(usages));
 
     // Permissions
-    const auto &server = EndstoneServer::getInstance();
-    const auto permission = getPermission(signature);
-    setPermissions(permission);
-    auto permission_default = PermissionDefault::True;
-    if (signature.permission_level >= CommandPermissionLevel::Internal) {
-        permission_default = PermissionDefault::False;
-    }
-    else if (signature.permission_level >= CommandPermissionLevel::Host) {
-        permission_default = PermissionDefault::Console;
-    }
-    else if (signature.permission_level > CommandPermissionLevel::Any) {
-        permission_default = PermissionDefault::Operator;
-    }
-    DefaultPermissions::registerPermission(permission, server.getPluginManager().getPermission("minecraft.command"),
-                                           "Gives the user the ability to use the /" + getName() + " command",
-                                           permission_default);
+    setPermissions(getPermission(signature));
 }
 
 bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<std::string> &args) const

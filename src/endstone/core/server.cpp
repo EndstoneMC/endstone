@@ -375,7 +375,7 @@ void EndstoneServer::enablePlugins(PluginLoadOrder type)
     if (type == PluginLoadOrder::PostWorld) {
         command_map_->setPluginCommands();
         DefaultPermissions::registerCorePermissions();
-        DefaultPermissions::registerMinecraftPermissions();
+        MinecraftDefaultPermissions::registerCorePermissions();
     }
 
     auto plugins = plugin_manager_->getPlugins();
@@ -390,9 +390,12 @@ void EndstoneServer::enablePlugin(Plugin &plugin)
 {
     auto perms = plugin.getDescription().getPermissions();
     for (const auto &perm : perms) {
-        if (plugin_manager_->addPermission(std::make_unique<Permission>(perm)) == nullptr) {
-            getLogger().warning("Plugin {} tried to register permission '{}' that was already registered.",
-                                plugin.getDescription().getFullName(), perm.getName());
+        if (plugin_manager_->getPermission(perm.getName()) == nullptr) {
+            plugin_manager_->addPermission(std::make_unique<Permission>(perm));
+        }
+        else {
+            getLogger().error("Plugin {} tried to register permission '{}' that was already registered.",
+                              plugin.getDescription().getFullName(), perm.getName());
         }
     }
     plugin_manager_->dirtyPermissibles(PermissionLevel::Default);

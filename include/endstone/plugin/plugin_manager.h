@@ -171,7 +171,7 @@ public:
      * @param perm Permission to add
      * @return Permission, or nullptr if a permission is already defined with the given name of the new permission
      */
-    virtual Permission *addPermission(std::unique_ptr<Permission> perm) = 0;
+    virtual Permission &addPermission(std::unique_ptr<Permission> perm) = 0;
 
     /**
      * Removes a Permission registration from this plugin manager.

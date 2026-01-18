@@ -551,24 +551,18 @@ Permission *EndstonePluginManager::getPermission(std::string name) const
     return it->second.get();
 }
 
-Permission *EndstonePluginManager::addPermission(std::unique_ptr<Permission> perm)
+Permission &EndstonePluginManager::addPermission(std::unique_ptr<Permission> perm)
 {
-    if (perm == nullptr) {
-        server_.getLogger().error("The permission cannot be nullptr");
-        return nullptr;
-    }
-
     auto name = perm->getName();
     std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
-    if (getPermission(name) != nullptr) {
-        server_.getLogger().error("The permission {} is already defined!", name);
-        return nullptr;
+    if (permissions_.contains(name)) {
+        throw std::runtime_error("The permission '" + name + "' is already defined.");
     }
 
     perm->init(*this);
     const auto it = permissions_.emplace(name, std::move(perm)).first;
     calculatePermissionDefault(*it->second);
-    return it->second.get();
+    return *it->second.get();
 }
 
 void EndstonePluginManager::removePermission(Permission &perm)
