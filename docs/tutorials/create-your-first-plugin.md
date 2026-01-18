@@ -12,7 +12,7 @@ toc_depth: 2
     To develop your first plugin with the Python API, you will have to install the following prerequisites:
     
     -   [JetBrains PyCharm]
-    -   [Python] (>= 3.9)
+    -   [Python] (>= 3.10)
     -   [endstone Python package]
 
 === ":simple-cplusplus: C++"
