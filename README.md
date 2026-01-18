@@ -21,7 +21,10 @@
 
 ## Why Endstone?
 
-Bedrock's official addon and script APIs let you add content, but fall short when it comes to modifying core gameplay. Most events can't be cancelled or changed. Endstone breaks through these limits with cancellable events, full packet control, and deep access to gameplay logic. Think of it as Paper for Bedrock. If you've ever wished Bedrock servers had the same modding power as Java Edition, this is it.
+Bedrock's official addon and script APIs let you add content, but can hardly modify core gameplay. Custom servers like
+PocketMine and Nukkit offer that control, but sacrifice vanilla features. Endstone gives you both: cancellable events,
+packet control, and deep gameplay access with full vanilla compatibility. Think of it as Paper for Bedrock. If you've
+ever wished Bedrock servers had the same modding power as Java Edition, this is it.
 
 ## Quick Start
 
@@ -51,7 +54,7 @@ class MyPlugin(Plugin):
         event.player.send_message(f"Welcome, {event.player.name}!")
 ```
 
-**Get started faster with our templates:** 
+**Get started faster with our templates:**
 [Python](https://github.com/EndstoneMC/python-plugin-template) | [C++](https://github.com/EndstoneMC/cpp-plugin-template)
 
 ## Features
