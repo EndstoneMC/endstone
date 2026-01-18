@@ -45,7 +45,10 @@ MinecraftCommandWrapper::MinecraftCommandWrapper(MinecraftCommands &minecraft_co
     const auto permission = getPermission(signature);
     setPermissions(permission);
     auto permission_default = PermissionDefault::True;
-    if (signature.permission_level >= CommandPermissionLevel::Host) {
+    if (signature.permission_level >= CommandPermissionLevel::Internal) {
+        permission_default = PermissionDefault::False;
+    }
+    else if (signature.permission_level >= CommandPermissionLevel::Host) {
         permission_default = PermissionDefault::Console;
     }
     else if (signature.permission_level > CommandPermissionLevel::Any) {
