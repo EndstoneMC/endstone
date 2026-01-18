@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📚 Documentation
+    url: https://endstone.dev/
+    about: Check our documentation for guides, API reference, and tutorials
+  - name: 💬 Discord Community
+    url: https://discord.gg/xxgPuc2XN9
+    about: Chat with other Endstone users and developers
+  - name: 🐍 Python Plugin Template
+    url: https://github.com/EndstoneMC/python-plugin-template
+    about: Get started quickly with a Python plugin template
+  - name: 🔧 C++ Plugin Template
+    url: https://github.com/EndstoneMC/cpp-plugin-template
+    about: Get started quickly with a C++ plugin template
