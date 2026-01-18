@@ -175,12 +175,11 @@ class Bootstrap:
                     raise RuntimeError(f"Failed to copy {s} -> {d}: {e}")
 
         # create or update the config file
+        ref = importlib_resources.files("endstone") / "config" / "endstone.default.toml"
         if not self.config_path.exists():
-            ref = importlib_resources.files("endstone") / "config" / "endstone.toml"
             with importlib_resources.as_file(ref) as path:
                 shutil.copy(path, self.config_path)
         else:
-            ref = importlib_resources.files("endstone") / "config" / "endstone.toml"
             with importlib_resources.as_file(ref) as path:
                 with open(path, "r", encoding="utf-8") as f:
                     default_config = tomlkit.load(f)
