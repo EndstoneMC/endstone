@@ -39,9 +39,9 @@ class CommandPermissions {
     constexpr static std::string_view ROOT = "endstone.command";
 
 public:
-    static Permission &registerPermission(std::string_view prefix, std::string_view name, std::string_view desc,
+    static Permission &registerPermission(std::string_view name, std::string_view cmd, std::string_view desc,
                                           Permission &parent);
-    static Permission &registerPermission(std::string_view prefix, std::string_view name, std::string_view desc,
+    static Permission &registerPermission(std::string_view name, std::string_view cmd, std::string_view desc,
                                           PermissionDefault def, Permission &parent);
     static Permission &registerPermissions(Permission &parent);
 };

@@ -44,6 +44,7 @@ namespace endstone::core {
 class CommandPermissions;
 class EndstoneCommandMap;
 class EndstonePlayer;
+class MinecraftCommandPermissions;
 }  // namespace endstone::core
 
 enum class CommandParameterDataType : int {
@@ -333,6 +334,7 @@ public:
     friend class endstone::core::CommandPermissions;
     friend class endstone::core::EndstoneCommandMap;
     friend class endstone::core::EndstonePlayer;
+    friend class endstone::core::MinecraftCommandPermissions;
 
     [[nodiscard]] std::string describe(const Signature &signature, const Overload &overload) const
     {

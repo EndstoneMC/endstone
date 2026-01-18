@@ -60,18 +60,18 @@ void DefaultPermissions::registerCorePermissions()
     parent.recalculatePermissibles();
 }
 
-Permission &CommandPermissions::registerPermission(std::string_view prefix, std::string_view name,
-                                                   std::string_view desc, Permission &parent)
+Permission &CommandPermissions::registerPermission(std::string_view name, std::string_view cmd, std::string_view desc,
+                                                   Permission &parent)
 {
-    return registerPermission(prefix, name, desc, PermissionDefault::True, parent);
+    return registerPermission(name, cmd, desc, PermissionDefault::True, parent);
 }
 
-Permission &CommandPermissions::registerPermission(std::string_view prefix, std::string_view name,
-                                                   std::string_view desc, PermissionDefault def, Permission &parent)
+Permission &CommandPermissions::registerPermission(std::string_view name, std::string_view cmd, std::string_view desc,
+                                                   PermissionDefault def, Permission &parent)
 {
     const auto &server = EndstoneServer::getInstance();
     const auto &registry = server.getServer().getMinecraft()->getCommands().getRegistry();
-    const auto &signature = *registry.findCommand(name.data());
+    const auto &signature = *registry.findCommand(std::string(cmd));
     if (signature.permission_level >= CommandPermissionLevel::Internal) {
         def = PermissionDefault::False;
     }
@@ -81,35 +81,40 @@ Permission &CommandPermissions::registerPermission(std::string_view prefix, std:
     else if (signature.permission_level > CommandPermissionLevel::Any) {
         def = PermissionDefault::Operator;
     }
-    return DefaultPermissions::registerPermission(fmt::format("{}.{}", prefix, name), desc, def, parent);
+    server.getLogger().warning("{}: {}", name, magic_enum::enum_name(def));
+    return DefaultPermissions::registerPermission(name, desc, def, parent);
 }
 
 Permission &CommandPermissions::registerPermissions(Permission &parent)
 {
-    static std::string PREFIX = std::string(ROOT) + ".";
+    const static std::string PREFIX = std::string(ROOT) + ".";
     auto &commands =
-        DefaultPermissions::registerPermission(ROOT, "Gives the user the ability to use all Endstone command");
-    registerPermission(PREFIX, "ban", "Allows the user to ban players.", PermissionDefault::Operator, commands);
-    registerPermission(PREFIX, "banip", "Allows the user to ban IP addresses.", PermissionDefault::Operator, commands);
-    registerPermission(PREFIX, "banlist", "Allows the user to list all the banned ips or players.",
+        DefaultPermissions::registerPermission(ROOT, "Gives the user the ability to use all Endstone command", parent);
+    registerPermission(PREFIX + "ban", "ban", "Allows the user to ban players.", PermissionDefault::Operator, commands);
+    registerPermission(PREFIX + "banip", "ban-ip", "Allows the user to ban IP addresses.", PermissionDefault::Operator,
+                       commands);
+    registerPermission(PREFIX + "banlist", "banlist", "Allows the user to list all the banned ips or players.",
                        PermissionDefault::Operator, commands);
 
-    registerPermission(PREFIX, "unban", "Allows the user to unban players.", PermissionDefault::Operator, commands);
-    registerPermission(PREFIX, "unbanip", "Allows the user to unban IP addresses.", PermissionDefault::Operator,
+    registerPermission(PREFIX + "unban", "pardon", "Allows the user to unban players.", PermissionDefault::Operator,
                        commands);
-    registerPermission(PREFIX, "plugins", "Allows the user to view the list of plugins running on this server",
+    registerPermission(PREFIX + "unbanip", "pardon-ip", "Allows the user to unban IP addresses.",
+                       PermissionDefault::Operator, commands);
+    registerPermission(PREFIX + "plugins", "plugins",
+                       "Allows the user to view the list of plugins running on this server", PermissionDefault::True,
+                       commands);
+    registerPermission(PREFIX + "reload", "reload",
+                       "Allows the user to reload the configuration and plugins of the server",
+                       PermissionDefault::Operator, commands);
+    registerPermission(PREFIX + "seed", "seed", "Allows the user to view the seed of the level.",
+                       PermissionDefault::Operator, commands);
+    registerPermission(PREFIX + "status", "status", "Allows the user to view the status of the server",
+                       PermissionDefault::Operator, commands);
+    registerPermission(PREFIX + "version", "version", "Allows the user to view the version of the server",
                        PermissionDefault::True, commands);
-    registerPermission(PREFIX, "reload", "Allows the user to reload the configuration and plugins of the server",
-                       PermissionDefault::Operator, commands);
-    registerPermission(PREFIX, "seed", "Allows the user to view the seed of the level.", PermissionDefault::Operator,
-                       commands);
-    registerPermission(PREFIX, "status", "Allows the user to view the status of the server",
-                       PermissionDefault::Operator, commands);
-    registerPermission(PREFIX, "version", "Allows the user to view the version of the server", PermissionDefault::True,
-                       commands);
 #ifdef ENDSTONE_WITH_DEVTOOLS
-    registerPermission(PREFIX, "devtools", "Allows the user to open the DevTools.", PermissionDefault::Console,
-                       commands);
+    registerPermission(PREFIX + "devtools", "devtools", "Allows the user to open the DevTools.",
+                       PermissionDefault::Console, commands);
 #endif
     commands.recalculatePermissibles();
     return commands;
@@ -117,7 +122,7 @@ Permission &CommandPermissions::registerPermissions(Permission &parent)
 
 Permission &BroadcastPermissions::registerPermissions(Permission &parent)
 {
-    static std::string PREFIX = std::string(ROOT) + ".";
+    const static std::string PREFIX = std::string(ROOT) + ".";
     auto &broadcasts =
         DefaultPermissions::registerPermission(ROOT, "Allows the user to receive all broadcast messages");
     DefaultPermissions::registerPermission(PREFIX + "admin", "Allows the user to receive administrative broadcasts",
@@ -138,13 +143,29 @@ void MinecraftDefaultPermissions::registerCorePermissions()
 
 Permission &MinecraftCommandPermissions::registerPermissions(Permission &parent)
 {
+    const static std::string PREFIX = std::string(ROOT) + ".";
     Permission &commands = DefaultPermissions::registerPermission(
         ROOT, "Gives the user the ability to use all vanilla minecraft commands", parent);
-    CommandPermissions::registerPermission(ROOT, "help", "Allows the user to access Vanilla command help.", commands);
-    CommandPermissions::registerPermission(ROOT, "list", "Allows the user to list all online players.", commands);
-    CommandPermissions::registerPermission(ROOT, "me", "Allows the user to perform a chat action.", commands);
-    CommandPermissions::registerPermission(ROOT, "tell", "Allows the user to privately message another player.",
+    CommandPermissions::registerPermission(PREFIX + "help", "help", "Allows the user to access Vanilla command help.",
                                            commands);
+    CommandPermissions::registerPermission(PREFIX + "list", "list", "Allows the user to list all online players.",
+                                           commands);
+    CommandPermissions::registerPermission(PREFIX + "me", "me", "Allows the user to perform a chat action.", commands);
+    CommandPermissions::registerPermission(PREFIX + "tell", "tell",
+                                           "Allows the user to privately message another player.", commands);
+    const auto &server = EndstoneServer::getInstance();
+    const auto &registry = server.getServer().getMinecraft()->getCommands().getRegistry();
+    for (const auto &[name, signature] : registry.signatures_) {
+        auto command = server.getCommandMap().getCommand(name);
+        auto permissions = command->getPermissions();
+        auto perm = PREFIX + signature.name;
+        if (permissions.size() != 1 || permissions.at(0) != perm) {
+            continue;
+        }
+        CommandPermissions::registerPermission(
+            perm, signature.name,
+            fmt::format("Allows the user to use the /{} command provided by mojang.", signature.name), commands);
+    }
     commands.recalculatePermissibles();
     return commands;
 }
