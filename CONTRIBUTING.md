@@ -106,13 +106,30 @@ ctest --test-dir build/Release
 ### Python Tests
 
 ```bash
-pytest tests/endstone/python
+pytest
 ```
+
+### Runtime Tests
+
+Runtime tests verify the API works correctly within a live Bedrock Dedicated Server. These tests are essential for validating functionality that depends on the server environment.
+
+**Install the test plugin:**
+
+```bash
+pip install -e tests/endstone_test
+```
+
+**Run runtime tests:**
+
+1. Start a Bedrock Dedicated Server with Endstone
+2. The `endstone_test` plugin will load automatically
+3. Run `/test` in-game or from the console to execute the test suite
 
 Before submitting a PR, please ensure:
 
 - All C++ tests pass
 - All Python tests pass
+- Runtime tests pass (if your changes affect the API)
 - The project builds successfully on your target platform
 
 ## Generating Type Stubs
@@ -275,7 +292,8 @@ endstone/
 │       └── python/           # Python bindings via pybind11
 ├── endstone/                  # Python package (CLI, plugin loader, metrics)
 ├── tests/                     # Test files
-│   ├── endstone/python/      # Python tests
+│   ├── endstone/python/      # Python unit tests
+│   ├── endstone_test/        # Runtime test plugin (pip install -e tests/endstone_test)
 │   └── [C++ test files]
 └── conanfile.py              # Dependency management
 ```
