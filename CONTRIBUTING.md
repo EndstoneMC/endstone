@@ -292,9 +292,10 @@ endstone/
 │       └── python/           # Python bindings via pybind11
 ├── endstone/                  # Python package (CLI, plugin loader, metrics)
 ├── tests/                     # Test files
-│   ├── endstone/python/      # Python unit tests
+│   ├── bedrock/              # C++ tests for bedrock layer
 │   ├── endstone_test/        # Runtime test plugin (pip install -e tests/endstone_test)
-│   └── [C++ test files]
+│   ├── *.cpp                 # C++ unit tests
+│   └── *.py                  # Python unit tests
 └── conanfile.py              # Dependency management
 ```
 

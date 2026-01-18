@@ -4,10 +4,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import pytest
-
 from endstone import Server
 from endstone.plugin import Plugin
-
 
 # =============================================================================
 # Fixtures
