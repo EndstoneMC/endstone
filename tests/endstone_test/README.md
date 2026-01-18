@@ -33,6 +33,7 @@ tests/endstone_test/
         └── tests/
             ├── __init__.py
             ├── conftest.py           # Pytest fixtures (server, plugin)
+            ├── test_asyncio.py       # Async module tests
             └── test_server.py        # Server API tests
 ```
 
@@ -57,6 +58,7 @@ def test_server_name(server: Server) -> None:
 
 Current test coverage includes:
 
+- **Async Module** - Background event loop, coroutine submission, scheduler integration
 - **Server Information** - Version, protocol, and metadata
 - **Server Components** - Logger, language, plugin manager, scheduler
 - **Level Access** - World/dimension access
