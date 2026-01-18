@@ -42,20 +42,20 @@ void DefaultPermissions::registerCorePermissions()
 {
     auto *root =
         registerPermission("endstone", nullptr, "Gives the user the ability to use all Endstone utilities and commands",
-                           PermissionDefault::Console);
+                           PermissionDefault::False);
     registerCommandPermissions(root);
     registerBroadcastPermissions(root);
     root->recalculatePermissibles();
 }
-
+.
 void DefaultPermissions::registerMinecraftPermissions()
 {
     auto *root =
         registerPermission("minecraft", nullptr, "Gives the user the ability to use all vanilla utilities and commands",
-                           PermissionDefault::Console);
+                           PermissionDefault::False);
     auto *parent = registerPermission(root->getName() + ".command", root,
                                       "Gives the user the ability to use all vanilla minecraft commands",
-                                      PermissionDefault::Console);
+                                      PermissionDefault::False);
     registerPermission(parent->getName() + ".help", parent, "Allows the user to access Vanilla command help.",
                        PermissionDefault::True);
     registerPermission(parent->getName() + ".list", parent, "Allows the user to list all online players.",
@@ -68,9 +68,8 @@ void DefaultPermissions::registerMinecraftPermissions()
 
 void DefaultPermissions::registerCommandPermissions(Permission *parent)
 {
-    auto *root =
-        registerPermission(parent->getName() + ".command", parent,
-                           "Gives the user the ability to use all Endstone command", PermissionDefault::Console);
+    auto *root = registerPermission(parent->getName() + ".command", parent,
+                                    "Gives the user the ability to use all Endstone command", PermissionDefault::False);
 
     registerPermission(root->getName() + ".ban", root, "Allows the user to ban players.", PermissionDefault::Operator);
     registerPermission(root->getName() + ".banip", root, "Allows the user to ban IP addresses.",
