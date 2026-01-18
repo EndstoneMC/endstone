@@ -24,7 +24,10 @@ class NotNull {
 public:
     using pointer_type = std::shared_ptr<T>;
     NotNull() = delete;
-    NotNull(std::shared_ptr<T> ptr) : ptr_(std::move(ptr)) { Preconditions::check(ptr_, "object must not be null."); }
+    NotNull(std::shared_ptr<T> ptr) : ptr_(std::move(ptr))
+    {
+        Preconditions::checkArgument(ptr_ != nullptr, "object must not be null.");
+    }
     NotNull(const NotNull &other) = default;
     NotNull &operator=(const NotNull &other) = default;
     const pointer_type &get() const noexcept { return ptr_; }
@@ -51,10 +54,18 @@ class Nullable {
 public:
     Nullable() = default;
     Nullable(std::nullptr_t) {}
-    Nullable(std::shared_ptr<T> p) : p_(std::move(p)) {}
-    const std::shared_ptr<T> &get() const noexcept { return p_; }
+    Nullable(std::shared_ptr<T> ptr) : ptr_(std::move(ptr)) {}
+    Nullable(const NotNull<T> &other) : ptr_(other.get()) {}
+    const std::shared_ptr<T> &get() const noexcept { return ptr_; }
+    T *operator->() const noexcept { return ptr_.get(); }
+    T &operator*() const noexcept { return *get(); }
+    explicit operator bool() const noexcept { return ptr_ != nullptr; }
+    bool operator==(const Nullable &) const = default;
+    bool operator!=(const Nullable &) const = default;
+    bool operator==(std::nullptr_t) const noexcept { return ptr_ == nullptr; }
+    bool operator!=(std::nullptr_t) const noexcept { return ptr_ != nullptr; }
 
 private:
-    std::shared_ptr<T> p_;
+    std::shared_ptr<T> ptr_;
 };
 }  // namespace endstone

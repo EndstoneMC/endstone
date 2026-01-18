@@ -30,50 +30,38 @@
 namespace fs = std::filesystem;
 
 namespace endstone::core {
-
-template <typename T, typename Matcher>
-class EndstoneBanList : public BanList<T> {
+template <typename Interface, typename Matcher>
+class EndstoneBanList : public Interface {
 public:
-    explicit EndstoneBanList(fs::path file) : file_(std::move(file)){};
+    using T = Interface::EntryType;
+    explicit EndstoneBanList(fs::path file) : file_(std::move(file)) {};
 
     ~EndstoneBanList() override = default;
 
-    [[nodiscard]] const T *getBanEntry(std::string target) const override
+    [[nodiscard]] Nullable<T> getBanEntry(std::string target) const override
     {
-        const auto it =
-            std::find_if(entries_.begin(), entries_.end(), [&](const T &entry) { return matcher_(entry, target); });
-
+        const auto it = std::find_if(entries_.begin(), entries_.end(),
+                                     [&](const NotNull<T> &entry) { return matcher_(*entry, target); });
         if (it != entries_.end()) {
-            return &(*it);
+            return *it;
         }
         return nullptr;
     }
 
-    [[nodiscard]] T *getBanEntry(std::string target) override
+    NotNull<T> addBan(std::string target, std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
+                      std::optional<std::string> source) override
     {
-        const auto it =
-            std::find_if(entries_.begin(), entries_.end(), [&](T &entry) { return matcher_(entry, target); });
+        entries_.erase(std::remove_if(entries_.begin(), entries_.end(),
+                                      [&](NotNull<T> &entry) { return matcher_(*entry, target); }),
+                       entries_.end());
 
-        if (it != entries_.end()) {
-            return &(*it);
-        }
-        return nullptr;
-    }
-
-    T &addBan(std::string target, std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
-              std::optional<std::string> source) override
-    {
-        entries_.erase(
-            std::remove_if(entries_.begin(), entries_.end(), [&](T &entry) { return matcher_(entry, target); }),
-            entries_.end());
-
-        T new_entry{target};
+        auto new_entry = std::make_shared<T>(target);
         if (reason.has_value()) {
-            new_entry.setReason(reason.value());
+            new_entry->setReason(reason.value());
         }
-        new_entry.setExpiration(expires);
+        new_entry->setExpiration(expires);
         if (source.has_value()) {
-            new_entry.setSource(source.value());
+            new_entry->setSource(source.value());
         }
         auto &entry = entries_.emplace_back(new_entry);
         save();
@@ -81,31 +69,13 @@ public:
         return entry;
     }
 
-    T &addBan(std::string target, std::optional<std::string> reason, std::chrono::seconds duration,
-              std::optional<std::string> source) override
+    NotNull<T> addBan(std::string target, std::optional<std::string> reason, std::chrono::seconds duration,
+                      std::optional<std::string> source) override
     {
         return addBan(target, reason, std::chrono::system_clock::now() + duration, source);
     }
 
-    [[nodiscard]] std::vector<const T *> getEntries() const override
-    {
-        std::vector<const T *> entries;
-        entries.reserve(entries_.size());
-        for (auto &entry : entries_) {
-            entries.push_back(&entry);
-        }
-        return entries;
-    }
-
-    [[nodiscard]] std::vector<T *> getEntries() override
-    {
-        std::vector<T *> entries;
-        entries.reserve(entries_.size());
-        for (auto &entry : entries_) {
-            entries.push_back(&entry);
-        }
-        return entries;
-    }
+    [[nodiscard]] std::vector<NotNull<T>> getEntries() const override { return entries_; }
 
     [[nodiscard]] bool isBanned(std::string target) const override
     {
@@ -116,7 +86,7 @@ public:
     void removeBan(std::string target) override
     {
         const auto it =
-            std::find_if(entries_.begin(), entries_.end(), [&](T &entry) { return matcher_(entry, target); });
+            std::find_if(entries_.begin(), entries_.end(), [&](NotNull<T> &entry) { return matcher_(*entry, target); });
         if (it != entries_.end()) {
             entries_.erase(it);
             save();
@@ -127,17 +97,18 @@ public:
     {
         nlohmann::json array = nlohmann::json::array();
         for (const auto &entry : entries_) {
-            nlohmann::json json = entry;
-            json["created"] = date::format(BanEntry::DateFormat, date::floor<std::chrono::seconds>(entry.getCreated()));
-            json["source"] = entry.getSource();
-            if (entry.getExpiration().has_value()) {
+            nlohmann::json json = *entry;
+            json["created"] =
+                date::format(BanEntry::DateFormat, date::floor<std::chrono::seconds>(entry->getCreated()));
+            json["source"] = entry->getSource();
+            if (entry->getExpiration().has_value()) {
                 json["expires"] = date::format(BanEntry::DateFormat,
-                                               date::floor<std::chrono::seconds>(entry.getExpiration().value()));
+                                               date::floor<std::chrono::seconds>(entry->getExpiration().value()));
             }
             else {
                 json["expires"] = "forever";
             }
-            json["reason"] = entry.getReason();
+            json["reason"] = entry->getReason();
             array.push_back(json);
         }
 
@@ -196,7 +167,7 @@ public:
                 if (json.contains("reason")) {
                     entry.setReason(json["reason"]);
                 }
-                entries_.emplace_back(entry);
+                entries_.emplace_back(std::make_shared<T>(entry));
             }
             return {};
         }
@@ -210,7 +181,9 @@ protected:
     {
         auto it = entries_.begin();
         while (it != entries_.end()) {
-            if (it->getExpiration().has_value() && it->getExpiration().value() < std::chrono::system_clock::now()) {
+            auto &entry = *it;
+            if (entry->getExpiration().has_value() &&
+                entry->getExpiration().value() < std::chrono::system_clock::now()) {
                 it = entries_.erase(it);
             }
             else {
@@ -219,7 +192,7 @@ protected:
         }
     }
 
-    std::vector<T> entries_;
+    std::vector<NotNull<T>> entries_;
     fs::path file_;
     Matcher matcher_;
 };

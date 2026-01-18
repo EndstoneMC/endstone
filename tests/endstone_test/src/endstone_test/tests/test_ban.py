@@ -24,6 +24,7 @@ def player_ban_list(server: Server) -> Generator[PlayerBanList, Any, None]:
     # Clean up after test
     for entry in list(ban_list.entries):
         ban_list.remove_ban(entry.name)
+    assert len(ban_list.entries) == 0
 
 
 @pytest.fixture
@@ -37,6 +38,7 @@ def ip_ban_list(server: Server) -> Generator[IpBanList, Any, None]:
     # Clean up after test
     for entry in list(ban_list.entries):
         ban_list.remove_ban(entry.address)
+    assert len(ban_list.entries) == 0
 
 
 # =============================================================================

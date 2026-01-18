@@ -32,10 +32,7 @@ protected:
 
     void SetUp() override {}
 
-    void TearDown() override
-    {
-        std::remove(file_.c_str());
-    }
+    void TearDown() override { std::remove(file_.c_str()); }
 };
 
 TEST_F(PlayerBanListTest, AddBanEntry)
@@ -44,7 +41,7 @@ TEST_F(PlayerBanListTest, AddBanEntry)
 
     ban_list.addBan("player11", "Misconduct", std::nullopt, "Moderator");
 
-    auto *entry = ban_list.getBanEntry("player11");
+    auto entry = ban_list.getBanEntry("player11");
     ASSERT_NE(entry, nullptr);
     EXPECT_EQ(entry->getName(), "player11");
     EXPECT_EQ(entry->getReason(), "Misconduct");
@@ -52,7 +49,7 @@ TEST_F(PlayerBanListTest, AddBanEntry)
     EXPECT_FALSE(entry->getExpiration());
 
     const auto &const_ref = ban_list;
-    const auto *const_entry = const_ref.getBanEntry("player11");
+    const auto const_entry = const_ref.getBanEntry("player11");
     ASSERT_EQ(entry, const_entry);
 }
 
@@ -61,7 +58,7 @@ TEST_F(PlayerBanListTest, AddBanEntryWithOptionalFields)
     EndstonePlayerBanList ban_list{file_};
     ban_list.addBan("player11", uuid_, xuid_, "Misconduct", std::nullopt, "Moderator");
 
-    auto *entry = ban_list.getBanEntry("player11", uuid_, xuid_);
+    auto entry = ban_list.getBanEntry("player11", uuid_, xuid_);
 
     ASSERT_NE(entry, nullptr);
     EXPECT_EQ(entry->getName(), "player11");
@@ -78,7 +75,7 @@ TEST_F(PlayerBanListTest, UpdateBanEntry)
 
     ban_list.addBan("player11", "Misconduct", std::nullopt, "Moderator");
 
-    auto *entry = ban_list.getBanEntry("player11");
+    auto entry = ban_list.getBanEntry("player11");
     ASSERT_NE(entry, nullptr);
     EXPECT_EQ(entry->getName(), "player11");
     EXPECT_EQ(entry->getReason(), "Misconduct");
@@ -116,7 +113,7 @@ TEST_F(PlayerBanListTest, RemoveBanEntry)
     ban_list.removeBan("player11", uuid_, xuid_);
 
     EXPECT_FALSE(ban_list.isBanned("player11", uuid_, xuid_));
-    auto *entry = ban_list.getBanEntry("player11", uuid_, xuid_);
+    auto entry = ban_list.getBanEntry("player11", uuid_, xuid_);
     EXPECT_EQ(entry, nullptr);
 }
 
@@ -127,7 +124,7 @@ TEST_F(PlayerBanListTest, RemoveBanEntryByName)
     ban_list.removeBan("player11");
 
     EXPECT_FALSE(ban_list.isBanned("player11"));
-    auto *entry = ban_list.getBanEntry("player11");
+    auto entry = ban_list.getBanEntry("player11");
     EXPECT_EQ(entry, nullptr);
 }
 
@@ -136,7 +133,7 @@ TEST_F(PlayerBanListTest, AddBanWithDuration)
     EndstonePlayerBanList ban_list{file_};
 
     ban_list.addBan("player11", "Misconduct", std::chrono::hours(1), "Moderator");
-    auto *entry = ban_list.getBanEntry("player11");
+    auto entry = ban_list.getBanEntry("player11");
     ASSERT_NE(entry, nullptr);
     EXPECT_EQ(entry->getName(), "player11");
     EXPECT_EQ(entry->getReason(), "Misconduct");
@@ -147,7 +144,7 @@ TEST_F(PlayerBanListTest, AddBanWithDuration)
 TEST_F(PlayerBanListTest, SaveBanList)
 {
     EndstonePlayerBanList ban_list{file_};
-    auto &entry = ban_list.addBan("player11", uuid_, xuid_, "Misconduct", std::nullopt, "Moderator");
+    auto entry = ban_list.addBan("player11", uuid_, xuid_, "Misconduct", std::nullopt, "Moderator");
 
     auto result = ban_list.save();
     EXPECT_TRUE(result) << result.error();
@@ -160,7 +157,7 @@ TEST_F(PlayerBanListTest, SaveBanList)
     ASSERT_EQ(array.size(), 1);
     auto json = array.front();
     EXPECT_EQ(json["created"],
-              date::format(BanEntry::DateFormat, date::floor<std::chrono::seconds>(entry.getCreated())));
+              date::format(BanEntry::DateFormat, date::floor<std::chrono::seconds>(entry->getCreated())));
     EXPECT_EQ(json["name"], "player11");
     EXPECT_EQ(json["uuid"], uuid_.str());
     EXPECT_EQ(json["xuid"], xuid_);
@@ -225,7 +222,7 @@ TEST_F(PlayerBanListTest, LoadBanList)
     EXPECT_TRUE(result) << result.error();
 
     EXPECT_EQ(ban_list.getEntries().size(), 1);
-    auto *entry = ban_list.getBanEntry("player11");
+    auto entry = ban_list.getBanEntry("player11");
     ASSERT_NE(entry, nullptr);
     EXPECT_EQ(date::format("%FT%T%Ez", date::floor<std::chrono::seconds>(entry->getCreated())),
               "2024-11-27T10:34:01+00:00");

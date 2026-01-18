@@ -59,40 +59,32 @@ struct adl_serializer<endstone::PlayerBanEntry> {
 }  // namespace nlohmann
 
 namespace endstone::core {
-
 struct PlayerBanEntryMatcher {
     bool operator()(const PlayerBanEntry &entry, const std::string &name,
                     const std::optional<UUID> &uuid = std::nullopt,
                     const std::optional<std::string> &xuid = std::nullopt) const;
 };
 
-class EndstonePlayerBanList : public PlayerBanList, public EndstoneBanList<PlayerBanEntry, PlayerBanEntryMatcher> {
+class EndstonePlayerBanList : public EndstoneBanList<PlayerBanList, PlayerBanEntryMatcher> {
 public:
     using EndstoneBanList::EndstoneBanList;
-
-    [[nodiscard]] const PlayerBanEntry *getBanEntry(std::string name) const override;
-    [[nodiscard]] PlayerBanEntry *getBanEntry(std::string name) override;
-    [[nodiscard]] const PlayerBanEntry *getBanEntry(std::string name, std::optional<UUID> uuid,
-                                                    std::optional<std::string> xuid) const override;
-    [[nodiscard]] PlayerBanEntry *getBanEntry(std::string name, std::optional<UUID> uuid,
-                                              std::optional<std::string> xuid) override;
-    PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
-                           std::optional<std::string> source) override;
-    PlayerBanEntry &addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
-                           std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
-                           std::optional<std::string> source) override;
-    PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason, std::chrono::seconds duration,
-                           std::optional<std::string> source) override;
-    PlayerBanEntry &addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
-                           std::optional<std::string> reason, std::chrono::seconds duration,
-                           std::optional<std::string> source) override;
-    [[nodiscard]] std::vector<const PlayerBanEntry *> getEntries() const override;
-    [[nodiscard]] std::vector<PlayerBanEntry *> getEntries() override;
+    [[nodiscard]] Nullable<PlayerBanEntry> getBanEntry(std::string name) const override;
+    [[nodiscard]] Nullable<PlayerBanEntry> getBanEntry(std::string name, std::optional<UUID> uuid,
+                                                       std::optional<std::string> xuid) const override;
+    NotNull<PlayerBanEntry> addBan(std::string name, std::optional<std::string> reason,
+                                   std::optional<BanEntry::Date> expires, std::optional<std::string> source) override;
+    NotNull<PlayerBanEntry> addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
+                                   std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
+                                   std::optional<std::string> source) override;
+    NotNull<PlayerBanEntry> addBan(std::string name, std::optional<std::string> reason, std::chrono::seconds duration,
+                                   std::optional<std::string> source) override;
+    NotNull<PlayerBanEntry> addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
+                                   std::optional<std::string> reason, std::chrono::seconds duration,
+                                   std::optional<std::string> source) override;
     [[nodiscard]] bool isBanned(std::string name) const override;
     [[nodiscard]] bool isBanned(std::string name, std::optional<UUID> uuid,
                                 std::optional<std::string> xuid) const override;
     void removeBan(std::string name) override;
     void removeBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid) override;
 };
-
 }  // namespace endstone::core

@@ -55,7 +55,7 @@ bool PardonIpCommand::execute(CommandSender &sender, const std::vector<std::stri
         return true;
     }
 
-    const auto *entry = ban_list.getBanEntry(address);
+    const auto entry = ban_list.getBanEntry(address);
     if (!entry) {
         sender.sendErrorMessage("Nothing changed. That IP is not banned.");
         return true;

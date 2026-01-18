@@ -20,7 +20,7 @@ namespace endstone::python {
 
 void init_ban(py::module_ &m)
 {
-    py::class_<BanEntry>(m, "BanEntry", "A single entry from a ban list.")
+    py::class_<BanEntry, py::smart_holder>(m, "BanEntry", "A single entry from a ban list.")
         .def_property("created", &BanEntry::getCreated, &BanEntry::setCreated,
                       "Gets or sets the date this ban entry was created.")
         .def_property("source", &BanEntry::getSource, &BanEntry::setSource, "Gets or sets the source of this ban.")
@@ -28,27 +28,26 @@ void init_ban(py::module_ &m)
                       "Gets or sets the date this ban expires on.")
         .def_property("reason", &BanEntry::getReason, &BanEntry::setReason, "Gets or sets the reason for this ban.");
 
-    py::class_<IpBanEntry, BanEntry>(m, "IpBanEntry", "Represents a ban entry for an IP address.")
+    py::class_<IpBanEntry, BanEntry, py::smart_holder>(m, "IpBanEntry", "Represents a ban entry for an IP address.")
         .def(py::init<std::string>(), py::arg("address"))
         .def_property_readonly("address", &IpBanEntry::getAddress, "Gets the banned IP address.");
 
     py::class_<IpBanList>(m, "IpBanList", "Represents a ban list containing banned IP addresses.")
-        .def("get_ban_entry", py::overload_cast<std::string>(&IpBanList::getBanEntry),
-             py::return_value_policy::reference, py::arg("address"), "Gets a BanEntry by IP address.")
+        .def("get_ban_entry", &IpBanList::getBanEntry, py::return_value_policy::reference, py::arg("address"),
+             "Gets a BanEntry by IP address.")
         .def("add_ban",
              py::overload_cast<std::string, std::optional<std::string>, std::optional<BanEntry::Date>,
                                std::optional<std::string>>(&IpBanList::addBan),
              py::return_value_policy::reference, py::arg("address"), py::arg("reason") = std::nullopt,
              py::arg("expires") = std::nullopt, py::arg("source") = std::nullopt,
              "Adds a ban to this list, or updates an existing one.")
-        .def("is_banned", py::overload_cast<std::string>(&IpBanList::isBanned, py::const_), py::arg("address"),
+        .def("is_banned", &IpBanList::isBanned, py::arg("address"),
              "Checks if a BanEntry exists for the target by IP address.")
         .def("remove_ban", &IpBanList::removeBan, py::arg("address"), "Removes an IP address from the ban list.")
-        .def_property_readonly("entries", py::overload_cast<>(&IpBanList::getEntries, py::const_),
-                               py::return_value_policy::reference_internal,
+        .def_property_readonly("entries", &IpBanList::getEntries,
                                "Gets a vector of pointers to entries in the ban list.");
 
-    py::class_<PlayerBanEntry, BanEntry>(m, "PlayerBanEntry", "Represents a ban entry for a player.")
+    py::class_<PlayerBanEntry, BanEntry, py::smart_holder>(m, "PlayerBanEntry", "Represents a ban entry for a player.")
         .def(py::init<std::string, std::optional<UUID>, std::optional<std::string>>(), py::arg("name"),
              py::arg("uuid") = std::nullopt, py::arg("xuid") = std::nullopt)
         .def_property_readonly("name", &PlayerBanEntry::getName, "Gets the banned player's name.")
@@ -60,7 +59,7 @@ void init_ban(py::module_ &m)
     py::class_<PlayerBanList>(m, "PlayerBanList", "Represents a ban list containing banned players.")
         .def("get_ban_entry",
              py::overload_cast<std::string, std::optional<UUID>, std::optional<std::string>>(
-                 &PlayerBanList::getBanEntry),
+                 &PlayerBanList::getBanEntry, py::const_),
              py::return_value_policy::reference, py::arg("name"), py::arg("uuid") = std::nullopt,
              py::arg("xuid") = std::nullopt, "Gets a BanEntry by player name, UUID, or XUID.")
         .def("add_ban",
@@ -78,8 +77,7 @@ void init_ban(py::module_ &m)
              py::overload_cast<std::string, std::optional<UUID>, std::optional<std::string>>(&PlayerBanList::removeBan),
              py::arg("name"), py::arg("uuid") = std::nullopt, py::arg("xuid") = std::nullopt,
              "Removes a player from the ban list by name, UUID, or XUID.")
-        .def_property_readonly("entries", py::overload_cast<>(&PlayerBanList::getEntries, py::const_),
-                               py::return_value_policy::reference_internal,
+        .def_property_readonly("entries", &PlayerBanList::getEntries,
                                "Gets a vector of pointers to entries in the ban list.");
 }
 

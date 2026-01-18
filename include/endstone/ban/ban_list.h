@@ -16,6 +16,7 @@ namespace endstone {
 template <typename T>
 class BanList {
 public:
+    using EntryType = T;
     virtual ~BanList() = default;
 
     /**

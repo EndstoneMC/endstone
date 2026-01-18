@@ -33,27 +33,14 @@ struct adl_serializer<endstone::IpBanEntry> {
 }  // namespace nlohmann
 
 namespace endstone::core {
-
 bool match(const IpBanEntry &entry, const std::string &address);
 
 struct IpBanEntryMatcher {
     bool operator()(const IpBanEntry &entry, const std::string &address) const;
 };
 
-class EndstoneIpBanList : public IpBanList, public EndstoneBanList<IpBanEntry, IpBanEntryMatcher> {
+class EndstoneIpBanList : public EndstoneBanList<IpBanList, IpBanEntryMatcher> {
 public:
     using EndstoneBanList::EndstoneBanList;
-
-    [[nodiscard]] const IpBanEntry *getBanEntry(std::string address) const override;
-    [[nodiscard]] IpBanEntry *getBanEntry(std::string address) override;
-    IpBanEntry &addBan(std::string address, std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
-                       std::optional<std::string> source) override;
-    IpBanEntry &addBan(std::string address, std::optional<std::string> reason, std::chrono::seconds duration,
-                       std::optional<std::string> source) override;
-    [[nodiscard]] std::vector<const IpBanEntry *> getEntries() const override;
-    [[nodiscard]] std::vector<IpBanEntry *> getEntries() override;
-    [[nodiscard]] bool isBanned(std::string address) const override;
-    void removeBan(std::string address) override;
 };
-
 }  // namespace endstone::core

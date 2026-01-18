@@ -17,7 +17,6 @@
 #include <boost/algorithm/string.hpp>
 
 namespace endstone::core {
-
 bool PlayerBanEntryMatcher::operator()(const PlayerBanEntry &entry, const std::string &name,
                                        const std::optional<UUID> &uuid, const std::optional<std::string> &xuid) const
 {
@@ -31,61 +30,43 @@ bool PlayerBanEntryMatcher::operator()(const PlayerBanEntry &entry, const std::s
     return name_match && uuid_match && xuid_match;
 }
 
-const PlayerBanEntry *EndstonePlayerBanList::getBanEntry(std::string name) const
+Nullable<PlayerBanEntry> EndstonePlayerBanList::getBanEntry(std::string name) const
 {
     return getBanEntry(name, std::nullopt, std::nullopt);
 }
 
-PlayerBanEntry *EndstonePlayerBanList::getBanEntry(std::string name)
+Nullable<PlayerBanEntry> EndstonePlayerBanList::getBanEntry(std::string name, std::optional<UUID> uuid,
+                                                            std::optional<std::string> xuid) const
 {
-    return getBanEntry(name, std::nullopt, std::nullopt);
-}
-
-const PlayerBanEntry *EndstonePlayerBanList::getBanEntry(std::string name, std::optional<UUID> uuid,
-                                                         std::optional<std::string> xuid) const
-{
-    const auto it = std::find_if(entries_.begin(), entries_.end(),
-                                 [&](const PlayerBanEntry &entry) { return matcher_(entry, name, uuid, xuid); });
-
+    const auto it = std::ranges::find_if(
+        entries_, [&](const NotNull<PlayerBanEntry> &entry) { return matcher_(*entry, name, uuid, xuid); });
     if (it != entries_.end()) {
-        return &(*it);
+        return *it;
     }
     return nullptr;
 }
 
-PlayerBanEntry *EndstonePlayerBanList::getBanEntry(std::string name, std::optional<UUID> uuid,
-                                                   std::optional<std::string> xuid)
-{
-    const auto it = std::find_if(entries_.begin(), entries_.end(),
-                                 [&](PlayerBanEntry &entry) { return matcher_(entry, name, uuid, xuid); });
-
-    if (it != entries_.end()) {
-        return &(*it);
-    }
-    return nullptr;
-}
-
-PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<std::string> reason,
-                                              std::optional<BanEntry::Date> expires, std::optional<std::string> source)
+NotNull<PlayerBanEntry> EndstonePlayerBanList::addBan(std::string name, std::optional<std::string> reason,
+                                                      std::optional<BanEntry::Date> expires,
+                                                      std::optional<std::string> source)
 {
     return addBan(name, std::nullopt, std::nullopt, reason, expires, source);
 }
 
-PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<UUID> uuid,
-                                              std::optional<std::string> xuid, std::optional<std::string> reason,
-                                              std::optional<BanEntry::Date> expires, std::optional<std::string> source)
+NotNull<PlayerBanEntry> EndstonePlayerBanList::addBan(std::string name, std::optional<UUID> uuid,
+                                                      std::optional<std::string> xuid,
+                                                      std::optional<std::string> reason,
+                                                      std::optional<BanEntry::Date> expires,
+                                                      std::optional<std::string> source)
 {
-    entries_.erase(std::remove_if(entries_.begin(), entries_.end(),
-                                  [&](PlayerBanEntry &entry) { return matcher_(entry, name, uuid, xuid); }),
-                   entries_.end());
-
-    PlayerBanEntry new_entry{name, uuid, xuid};
+    std::erase_if(entries_, [&](const NotNull<PlayerBanEntry> &entry) { return matcher_(*entry, name, uuid, xuid); });
+    auto new_entry = std::make_shared<PlayerBanEntry>(name, uuid, xuid);
     if (reason.has_value()) {
-        new_entry.setReason(reason.value());
+        new_entry->setReason(reason.value());
     }
-    new_entry.setExpiration(expires);
+    new_entry->setExpiration(expires);
     if (source.has_value()) {
-        new_entry.setSource(source.value());
+        new_entry->setSource(source.value());
     }
     auto &entry = entries_.emplace_back(new_entry);
     save();
@@ -93,27 +74,18 @@ PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<UU
     return entry;
 }
 
-PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<std::string> reason,
-                                              std::chrono::seconds duration, std::optional<std::string> source)
+NotNull<PlayerBanEntry> EndstonePlayerBanList::addBan(std::string name, std::optional<std::string> reason,
+                                                      std::chrono::seconds duration, std::optional<std::string> source)
 {
     return addBan(name, std::nullopt, std::nullopt, reason, duration, source);
 }
 
-PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<UUID> uuid,
-                                              std::optional<std::string> xuid, std::optional<std::string> reason,
-                                              std::chrono::seconds duration, std::optional<std::string> source)
+NotNull<PlayerBanEntry> EndstonePlayerBanList::addBan(std::string name, std::optional<UUID> uuid,
+                                                      std::optional<std::string> xuid,
+                                                      std::optional<std::string> reason, std::chrono::seconds duration,
+                                                      std::optional<std::string> source)
 {
     return addBan(name, uuid, xuid, reason, std::chrono::system_clock::now() + duration, source);
-}
-
-std::vector<const PlayerBanEntry *> EndstonePlayerBanList::getEntries() const
-{
-    return EndstoneBanList::getEntries();
-}
-
-std::vector<PlayerBanEntry *> EndstonePlayerBanList::getEntries()
-{
-    return EndstoneBanList::getEntries();
 }
 
 bool EndstonePlayerBanList::isBanned(std::string name) const
@@ -134,12 +106,11 @@ void EndstonePlayerBanList::removeBan(std::string name)
 
 void EndstonePlayerBanList::removeBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid)
 {
-    const auto it = std::find_if(entries_.begin(), entries_.end(),
-                                 [&](PlayerBanEntry &entry) { return matcher_(entry, name, uuid, xuid); });
+    const auto it = std::ranges::find_if(
+        entries_, [&](const NotNull<PlayerBanEntry> &entry) { return matcher_(*entry, name, uuid, xuid); });
     if (it != entries_.end()) {
         entries_.erase(it);
         save();
     }
 }
-
 }  // namespace endstone::core
