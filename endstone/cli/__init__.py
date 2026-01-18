@@ -8,6 +8,7 @@ import click
 import colorlog
 
 from endstone._version import __version__
+from .commands import stubgen
 
 handler = colorlog.StreamHandler()
 handler.setFormatter(
@@ -44,7 +45,7 @@ def catch_exceptions(func):
     return wrapper
 
 
-@click.command(help="Starts an endstone server.")
+@click.group(invoke_without_command=True, help="Starts an endstone server.")
 @click.option(
     "-s",
     "--server-folder",
@@ -73,8 +74,12 @@ def catch_exceptions(func):
     help="Enable interactive console (default on Windows, disabled on Linux).",
 )
 @click.version_option(__version__)
+@click.pass_context
 @catch_exceptions
-def main(server_folder: str, no_confirm: bool, remote: str, interactive: bool) -> None:
+def main(ctx, server_folder: str, no_confirm: bool, remote: str, interactive: bool) -> None:
+    if ctx.invoked_subcommand is not None:
+        return
+
     system = platform.system()
     if system == "Windows":
         from .windows import WindowsBootstrap
@@ -95,3 +100,6 @@ def main(server_folder: str, no_confirm: bool, remote: str, interactive: bool) -
         time.sleep(2)
 
     sys.exit(exit_code)
+
+
+main.add_command(stubgen.stubgen)

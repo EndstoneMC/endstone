@@ -1,17 +1,23 @@
 import subprocess
+import sys
 from pathlib import Path
 
-from stubgen import load, render
+import click
 
 
-def main():
-    # Load the module
+@click.command(help="Generate Python type stubs.")
+def stubgen() -> None:
+    try:
+        from endstone_stubgen import load, render
+    except ImportError:
+        click.echo("Error: endstone-stubgen not installed. Install with: pip install endstone-stubgen")
+        sys.exit(1)
+
     module_name = "endstone._python"
-    stubs_path = Path(__file__).parent.parent / "stubs"
+    stubs_path = Path.cwd() / "stubs"
     module = load(module_name)
     package = module.package
 
-    # Generic types (i.e., Registry[T])
     module.members = {"_T": package.get_member("_T"), **module.members}
     for member in list(module.members.keys()):
         if member.endswith("Registry"):
@@ -22,7 +28,6 @@ def main():
     module.exports = sorted(module.exports)
     module["Server.get_registry"] = package["Server.get_registry"]
 
-    # Inject extras
     module.set_member("__version__", package.get_member("__version__"))
     module.set_member("__minecraft_version__", package.get_member("__minecraft_version__"))
     module.imports.setdefault("__version__", package.imports.get("__version__"))
@@ -33,10 +38,9 @@ def main():
     module["plugin.Plugin"].bases = None
     module["plugin.Plugin"].members.pop("_get_description")
 
-    # Render the stubs
     render(module, stubs_path)
 
-    output_path = Path(__file__).parent.parent / "endstone"
+    output_path = Path.cwd() / "endstone"
     output_path.mkdir(parents=True, exist_ok=True)
 
     source_path = stubs_path / "endstone" / "_python"
@@ -62,13 +66,9 @@ def main():
         ["ruff", "check", "--select", "I,E,F", "--ignore", "E501", "--fix", str(output_path)],
     ]
     for cmd in cmds:
-        print(f"Running: {' '.join(cmd)}")
+        click.echo(f"Running: {' '.join(cmd)}")
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode == 0:
-            print(result.stdout)
+            click.echo(result.stdout)
         else:
-            print(result.stderr)
-
-
-if __name__ == "__main__":
-    main()
+            click.echo(result.stderr)

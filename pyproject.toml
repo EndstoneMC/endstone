@@ -48,6 +48,7 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 test = ["pytest"]
+dev = ["endstone-stubgen"]
 
 [project.urls]
 Changelog = "https://endstone.readthedocs.io/en/latest/changelog"
