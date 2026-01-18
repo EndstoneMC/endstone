@@ -8,6 +8,7 @@ import click
 import colorlog
 
 from endstone._version import __version__
+
 from .commands import stubgen
 
 handler = colorlog.StreamHandler()

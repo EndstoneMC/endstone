@@ -87,6 +87,10 @@ write_to = "endstone/_version.py"
 version_scheme = "guess-next-dev"
 local_scheme = "no-local-version"
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+ignore = ["tests/endstone_test"]
+
 [tool.ruff]
 line-length = 120
 lint.extend-select = ["I", "F"]
