@@ -24,7 +24,6 @@ namespace endstone {
  * @brief A single entry from a ban list.
  */
 class BanEntry {
-
 public:
     using Date = std::chrono::system_clock::time_point;
 
@@ -35,10 +34,7 @@ public:
      *
      * @return the creation date
      */
-    [[nodiscard]] Date getCreated() const
-    {
-        return created_;
-    }
+    [[nodiscard]] Date getCreated() const { return created_; }
 
     /**
      * @brief Sets the date this ban entry was created.
@@ -46,20 +42,14 @@ public:
      * @param created the new created date
      * @see save() saving changes
      */
-    void setCreated(Date created)
-    {
-        created_ = created;
-    }
+    void setCreated(Date created) { created_ = created; }
 
     /**
      * @brief Gets the source of this ban.
      *
      * @return the source of the ban
      */
-    [[nodiscard]] std::string getSource() const
-    {
-        return source_;
-    }
+    [[nodiscard]] std::string getSource() const { return source_; }
 
     /**
      * @brief Sets the source of this ban.
@@ -67,40 +57,28 @@ public:
      * @param source the new source
      * @see save() saving changes
      */
-    void setSource(std::string source)
-    {
-        source_ = std::move(source);
-    }
+    void setSource(std::string source) { source_ = std::move(source); }
 
     /**
      * @brief Gets the date this ban expires on, or std::nullopt for no defined end date.
      *
      * @return the expiration date
      */
-    [[nodiscard]] std::optional<Date> getExpiration() const
-    {
-        return expiration_;
-    }
+    [[nodiscard]] std::optional<Date> getExpiration() const { return expiration_; }
 
     /**
      * @brief Sets the date this ban expires on. std::nullopt values are considered "infinite" bans.
      *
      * @param expiration the new expiration date, or std::nullopt to indicate an infinite ban
      */
-    void setExpiration(std::optional<Date> expiration)
-    {
-        expiration_ = expiration;
-    }
+    void setExpiration(std::optional<Date> expiration) { expiration_ = expiration; }
 
     /**
      * @brief Gets the reason for this ban.
      *
      * @return the ban reason
      */
-    [[nodiscard]] std::string getReason() const
-    {
-        return reason_;
-    }
+    [[nodiscard]] std::string getReason() const { return reason_; }
 
     /**
      * @brief Sets the reason for this ban.
@@ -108,10 +86,7 @@ public:
      * @param reason the new reason, empty values assume the implementation default
      * @see save() saving changes
      */
-    void setReason(std::string reason)
-    {
-        reason_ = std::move(reason);
-    }
+    void setReason(std::string reason) { reason_ = std::move(reason); }
 
 private:
     Date created_ = std::chrono::system_clock::now();

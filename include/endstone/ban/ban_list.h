@@ -6,9 +6,9 @@
 #include <vector>
 
 #include "endstone/ban/ban_entry.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
-
 /**
  * @brief Represents a ban list, containing bans.
  * @tparam T The ban target
@@ -24,15 +24,7 @@ public:
      * @param target The entry parameter to search for.
      * @return T* The corresponding entry, or nullptr if none found.
      */
-    [[nodiscard]] virtual const T *getBanEntry(std::string target) const = 0;
-
-    /**
-     * @brief Gets a BanEntry by target.
-     *
-     * @param target The entry parameter to search for.
-     * @return T* The corresponding entry, or nullptr if none found.
-     */
-    [[nodiscard]] virtual T *getBanEntry(std::string target) = 0;
+    [[nodiscard]] virtual Nullable<T> getBanEntry(std::string target) const = 0;
 
     /**
      * @brief Adds a ban to this list. If a previous ban exists, this will update the previous entry.
@@ -43,8 +35,8 @@ public:
      * @param source The source of the ban, std::nullopt indicates implementation default.
      * @return T& The entry for the newly created ban, or the entry for the (updated) previous ban.
      */
-    virtual T &addBan(std::string target, std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
-                      std::optional<std::string> source) = 0;
+    virtual NotNull<T> addBan(std::string target, std::optional<std::string> reason,
+                              std::optional<BanEntry::Date> expires, std::optional<std::string> source) = 0;
 
     /**
      * @brief Adds a ban to this list. If a previous ban exists, this will update the previous entry.
@@ -55,22 +47,15 @@ public:
      * @param source The source of the ban, std::nullopt indicates implementation default.
      * @return T& The entry for the newly created ban, or the entry for the (updated) previous ban.
      */
-    virtual T &addBan(std::string target, std::optional<std::string> reason, std::chrono::seconds duration,
-                      std::optional<std::string> source) = 0;
+    virtual NotNull<T> addBan(std::string target, std::optional<std::string> reason, std::chrono::seconds duration,
+                              std::optional<std::string> source) = 0;
 
     /**
      * @brief Gets a vector containing pointers to every BanEntry in this list.
      *
      * @return A vector containing pointers to every entry tracked by this list.
      */
-    [[nodiscard]] virtual std::vector<const T *> getEntries() const = 0;
-
-    /**
-     * @brief Gets a vector containing pointers to every BanEntry in this list.
-     *
-     * @return  A vector containing pointers to every entry tracked by this list.
-     */
-    [[nodiscard]] virtual std::vector<T *> getEntries() = 0;
+    [[nodiscard]] virtual std::vector<NotNull<T>> getEntries() const = 0;
 
     /**
      * @brief Checks if a BanEntry exists for the target, indicating an active ban status.
