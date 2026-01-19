@@ -86,7 +86,7 @@ public:
 };
 }  // namespace
 
-EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
+EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
 {
     EndstoneServer::getLogger().info("{}This server is running {} version: {} (Minecraft: {})",
                                      ColorFormat::DarkAqua + ColorFormat::Bold, EndstoneServer::getName(),

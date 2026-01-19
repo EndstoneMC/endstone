@@ -12,7 +12,7 @@ from endstone._version import __version__
 handler = colorlog.StreamHandler()
 handler.setFormatter(
     colorlog.ColoredFormatter(
-        fmt="%(log_color)s[%(asctime)s %(levelname)s]: [%(name)s] %(message)s",
+        fmt="%(log_color)s[%(asctime)s %(levelname)s]: %(message)s",
         datefmt="%H:%M:%S",
         reset=True,
         log_colors={
