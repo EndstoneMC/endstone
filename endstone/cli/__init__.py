@@ -9,8 +9,6 @@ import colorlog
 
 from endstone._version import __version__
 
-from .commands import stubgen
-
 handler = colorlog.StreamHandler()
 handler.setFormatter(
     colorlog.ColoredFormatter(
@@ -101,6 +99,3 @@ def main(ctx, server_folder: str, no_confirm: bool, remote: str, interactive: bo
         time.sleep(2)
 
     sys.exit(exit_code)
-
-
-main.add_command(stubgen.stubgen)

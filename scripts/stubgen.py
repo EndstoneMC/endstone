@@ -2,15 +2,12 @@ import subprocess
 import sys
 from pathlib import Path
 
-import click
 
-
-@click.command(help="Generate Python type stubs.")
-def stubgen() -> None:
+def main() -> None:
     try:
         from endstone_stubgen import load, render
     except ImportError:
-        click.echo("Error: endstone-stubgen not installed. Install with: pip install endstone-stubgen")
+        print("Error: endstone-stubgen not installed. Install with: pip install endstone-stubgen")
         sys.exit(1)
 
     module_name = "endstone._python"
@@ -66,9 +63,13 @@ def stubgen() -> None:
         ["ruff", "check", "--select", "I,E,F", "--ignore", "E501", "--fix", str(output_path)],
     ]
     for cmd in cmds:
-        click.echo(f"Running: {' '.join(cmd)}")
+        print(f"Running: {' '.join(cmd)}")
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode == 0:
-            click.echo(result.stdout)
+            print(result.stdout)
         else:
-            click.echo(result.stderr)
+            print(result.stderr)
+
+
+if __name__ == "__main__":
+    main()

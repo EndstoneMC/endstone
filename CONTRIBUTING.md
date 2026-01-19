@@ -159,10 +159,10 @@ You should regenerate stubs after:
    pip install endstone-stubgen
    ```
 
-3. **Run the stubgen command**:
+3. **Run the stubgen script**:
 
    ```bash
-   endstone stubgen
+   python scripts/stubgen.py
    ```
 
    This will:
@@ -190,7 +190,7 @@ You should regenerate stubs after:
 pip install -U .
 
 # 3. Generate stubs
-endstone stubgen
+python scripts/stubgen.py
 
 # 4. Verify
 git status  # Check the generated .pyi files
@@ -202,7 +202,7 @@ git commit -m "docs: update type stubs for new bindings"
 
 ### Troubleshooting
 
-If you encounter errors running `endstone stubgen`:
+If you encounter errors running the stubgen script:
 
 - **"endstone-stubgen not installed"**: Install it with `pip install endstone-stubgen`
 - **Module not found errors**: Make sure you've installed the wheel with `pip install .`
