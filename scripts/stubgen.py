@@ -2,6 +2,10 @@ import subprocess
 import sys
 from pathlib import Path
 
+# Remove project directory from sys.path to ensure imports come from site-packages rather than the local endstone/ folder
+_project_root = Path(__file__).resolve().parent.parent
+sys.path = [p for p in sys.path if Path(p).resolve() != _project_root]
+
 
 def main() -> None:
     try:
@@ -42,7 +46,11 @@ def main() -> None:
 
     source_path = stubs_path / "endstone" / "_python"
     for pyi in stubs_path.rglob("*.pyi"):
-        relative_path = pyi.relative_to(source_path)
+        if pyi == source_path.with_suffix(".pyi"):
+            relative_path = Path(".") / "__init__.pyi"
+        else:
+            relative_path = pyi.relative_to(source_path).with_suffix("") / "__init__.pyi"
+
         text = pyi.read_text(encoding="utf-8")
         text = text.replace("endstone._python", "endstone")
         text = text.replace("collections.abc.Sequence", "list")
