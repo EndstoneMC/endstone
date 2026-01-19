@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <string>
+#include <vector>
 
 #include "endstone/attribute/attribute_modifier.h"
 
@@ -31,7 +31,7 @@ public:
      *
      * @return the attribute type
      */
-    [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual AttributeId getType() const = 0;
 
     /**
      * @brief Base value of this instance before modifiers are applied.
@@ -48,53 +48,11 @@ public:
     virtual void setBaseValue(float value) = 0;
 
     /**
-     * @brief Base max value of this instance before modifiers are applied.
-     *
-     * @return base max value
-     */
-    [[nodiscard]] virtual float getBaseMaxValue() const = 0;
-
-    /**
-     * @brief Set the base max value of this instance.
-     *
-     * @param value new base max value
-     */
-    virtual void setBaseMaxValue(float value) = 0;
-
-    /**
-     * @brief Base min value of this instance before modifiers are applied.
-     *
-     * @return base max value
-     */
-    [[nodiscard]] virtual float getBaseMinValue() const = 0;
-
-    /**
-     * @brief Set the base min value of this instance.
-     *
-     * @param value new base min value
-     */
-    virtual void setBaseMinValue(float value) = 0;
-
-    /**
      * @brief Get the value of this instance after all associated modifiers have been applied.
      *
      * @return the total attribute value
      */
     [[nodiscard]] virtual float getValue() const = 0;
-
-    /**
-     * @brief Get the max value of this instance after all associated modifiers have been applied.
-     *
-     * @return the max attribute value
-     */
-    [[nodiscard]] virtual float getMaxValue() const = 0;
-
-    /**
-     * @brief Get the min value of this instance after all associated modifiers have been applied.
-     *
-     * @return the min attribute value
-     */
-    [[nodiscard]] virtual float getMinValue() const = 0;
 
     /**
      * @brief Get all modifiers present on this instance.
