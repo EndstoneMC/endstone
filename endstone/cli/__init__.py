@@ -12,8 +12,8 @@ from endstone._version import __version__
 handler = colorlog.StreamHandler()
 handler.setFormatter(
     colorlog.ColoredFormatter(
-        fmt="%(log_color)s[%(asctime)s.%(msecs)03d %(levelname)s] [%(name)s] %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S",
+        fmt="%(log_color)s[%(asctime)s %(levelname)s]: [%(name)s] %(message)s",
+        datefmt="%H:%M:%S",
         reset=True,
         log_colors={
             "DEBUG": "cyan",
