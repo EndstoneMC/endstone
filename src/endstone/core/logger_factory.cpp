@@ -39,7 +39,7 @@ Logger &LoggerFactory::getLogger(const std::string &name)
 
     static std::vector<spdlog::sink_ptr> sinks = {
         std::make_shared<ConsoleLogSink>(stdout),
-        std::make_shared<FileLogSink>("logs/latest.log", "logs/{:%Y-%m-%d}-{}.log", 1000)};
+        std::make_shared<FileLogSink>("logs/latest.log", "logs/{:%Y-%m-%d}-{}.log.gz", 1000)};
 
     auto console = std::make_shared<spdlog::logger>(name, std::begin(sinks), std::end(sinks));
     it = loggers.emplace(name, SpdLogAdapter(console)).first;

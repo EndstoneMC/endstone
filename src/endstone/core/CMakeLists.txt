@@ -15,6 +15,7 @@ find_package(replxx REQUIRED)
 find_package(sentry REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(tomlplusplus REQUIRED)
+find_package(zstr CONFIG REQUIRED)
 
 add_library(endstone_core
         crash_handler.cpp
@@ -120,7 +121,8 @@ target_link_libraries(endstone_core PUBLIC
         replxx::replxx
         sentry::sentry
         spdlog::spdlog
-        tomlplusplus::tomlplusplus)
+        tomlplusplus::tomlplusplus
+        zstr::zstr)
 target_compile_definitions(endstone_core PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
 if (ENDSTONE_ENABLE_DEVTOOLS)
     add_subdirectory(devtools)

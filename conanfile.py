@@ -73,6 +73,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("sentry-native/0.7.17")
         self.requires("spdlog/1.15.3")
         self.requires("tomlplusplus/3.3.0")
+        self.requires("zstr/1.0.7")
 
         if self.settings.os == "Linux":
             self.requires("libelf/0.8.13")
@@ -80,7 +81,6 @@ class EndstoneRecipe(ConanFile):
         if self._with_devtools:
             self.requires("glfw/3.4")
             self.requires("imgui/1.91.8-docking")
-            self.requires("zstr/1.0.7")
 
         self.test_requires("gtest/1.16.0")
 

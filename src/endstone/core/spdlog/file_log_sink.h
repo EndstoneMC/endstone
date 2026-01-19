@@ -44,6 +44,7 @@ protected:
 private:
     void rotate();
     static bool rename(const spdlog::filename_t &src_filename, const spdlog::filename_t &target_filename);
+    static bool compress(const spdlog::filename_t &src_filename, const spdlog::filename_t &target_filename);
 
     static std::tm localtime(spdlog::log_clock::time_point tp);
     static spdlog::log_clock::time_point nextRotation();
