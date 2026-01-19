@@ -40,10 +40,12 @@ FileLogSink::FileLogSink(spdlog::filename_t base_filename, spdlog::filename_t fi
     }
     rotation_tp_ = nextRotation();
 
-    auto *formatter = static_cast<spdlog::pattern_formatter *>(formatter_.get());
-    formatter->add_flag<LevelFormatter>('L');
-    formatter->add_flag<TextFormatter>('v', false);
-    formatter->set_pattern("%^[%Y-%m-%d %H:%M:%S.%e %L] [%n] %v%$");
+    for (auto &formatter : formatters_) {
+        formatter.add_flag<LevelFormatter>('L');
+        formatter.add_flag<TextFormatter>('v', false);
+    }
+    formatters_[0].set_pattern("%^[%H:%M:%S] [%t/%L]: [%n] %v%$");
+    formatters_[1].set_pattern("%^[%H:%M:%S] [%t/%L]: %v%$");
 }
 
 spdlog::filename_t FileLogSink::filename()
@@ -71,7 +73,8 @@ void FileLogSink::sink_it_(const spdlog::details::log_msg &msg)
     }
 
     spdlog::memory_buf_t formatted;
-    formatter_->format(msg, formatted);
+    auto &formatter = msg.logger_name.size() > 0 ? formatters_[0] : formatters_[1];
+    formatter.format(msg, formatted);
     file_helper_.write(formatted);
 }
 

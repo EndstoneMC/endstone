@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <array>
 #include <cstdint>
 #include <ctime>
 #include <iomanip>
@@ -22,6 +23,7 @@
 
 #include <spdlog/details/file_helper.h>
 #include <spdlog/details/os.h>
+#include <spdlog/pattern_formatter.h>
 #include <spdlog/sinks/base_sink.h>
 #include <spdlog/spdlog.h>
 
@@ -51,6 +53,7 @@ private:
     spdlog::log_clock::time_point rotation_tp_;
     spdlog::details::file_helper file_helper_;
     uint16_t max_files_;
+    std::array<spdlog::pattern_formatter, 2> formatters_;
 };
 
 }  // namespace endstone::core
