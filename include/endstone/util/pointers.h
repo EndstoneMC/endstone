@@ -14,7 +14,9 @@
 
 #pragma once
 
+#include <cstddef>
 #include <memory>
+#include <utility>
 
 #include "endstone/check.h"
 
@@ -26,7 +28,7 @@ public:
     NotNull() = delete;
     NotNull(std::shared_ptr<T> ptr) : ptr_(std::move(ptr))
     {
-        Preconditions::checkArgument(ptr_ != nullptr, "object must not be null.");
+        Preconditions::checkArgument(ptr_ != nullptr, "pointer must not be null.");
     }
     NotNull(const NotNull &other) = default;
     NotNull &operator=(const NotNull &other) = default;
@@ -52,8 +54,8 @@ private:
 template <class T>
 class Nullable {
 public:
-    Nullable() = default;
-    Nullable(std::nullptr_t) {}
+    constexpr Nullable() noexcept = default;
+    constexpr Nullable(std::nullptr_t) noexcept {}
     Nullable(std::shared_ptr<T> ptr) : ptr_(std::move(ptr)) {}
     Nullable(const NotNull<T> &other) : ptr_(other.get()) {}
     const std::shared_ptr<T> &get() const noexcept { return ptr_; }

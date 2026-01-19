@@ -33,14 +33,12 @@ void init_ban(py::module_ &m)
         .def_property_readonly("address", &IpBanEntry::getAddress, "Gets the banned IP address.");
 
     py::class_<IpBanList>(m, "IpBanList", "Represents a ban list containing banned IP addresses.")
-        .def("get_ban_entry", &IpBanList::getBanEntry, py::return_value_policy::reference, py::arg("address"),
-             "Gets a BanEntry by IP address.")
+        .def("get_ban_entry", &IpBanList::getBanEntry, py::arg("address"), "Gets a BanEntry by IP address.")
         .def("add_ban",
              py::overload_cast<std::string, std::optional<std::string>, std::optional<BanEntry::Date>,
                                std::optional<std::string>>(&IpBanList::addBan),
-             py::return_value_policy::reference, py::arg("address"), py::arg("reason") = std::nullopt,
-             py::arg("expires") = std::nullopt, py::arg("source") = std::nullopt,
-             "Adds a ban to this list, or updates an existing one.")
+             py::arg("address"), py::arg("reason") = std::nullopt, py::arg("expires") = std::nullopt,
+             py::arg("source") = std::nullopt, "Adds a ban to this list, or updates an existing one.")
         .def("is_banned", &IpBanList::isBanned, py::arg("address"),
              "Checks if a BanEntry exists for the target by IP address.")
         .def("remove_ban", &IpBanList::removeBan, py::arg("address"), "Removes an IP address from the ban list.")
@@ -60,14 +58,14 @@ void init_ban(py::module_ &m)
         .def("get_ban_entry",
              py::overload_cast<std::string, std::optional<UUID>, std::optional<std::string>>(
                  &PlayerBanList::getBanEntry, py::const_),
-             py::return_value_policy::reference, py::arg("name"), py::arg("uuid") = std::nullopt,
-             py::arg("xuid") = std::nullopt, "Gets a BanEntry by player name, UUID, or XUID.")
+             py::arg("name"), py::arg("uuid") = std::nullopt, py::arg("xuid") = std::nullopt,
+             "Gets a BanEntry by player name, UUID, or XUID.")
         .def("add_ban",
              py::overload_cast<std::string, std::optional<UUID>, std::optional<std::string>, std::optional<std::string>,
                                std::optional<BanEntry::Date>, std::optional<std::string>>(&PlayerBanList::addBan),
-             py::return_value_policy::reference, py::arg("name"), py::arg("uuid") = std::nullopt,
-             py::arg("xuid") = std::nullopt, py::arg("reason") = std::nullopt, py::arg("expires") = std::nullopt,
-             py::arg("source") = std::nullopt, "Adds a ban to this list, or updates an existing one.")
+             py::arg("name"), py::arg("uuid") = std::nullopt, py::arg("xuid") = std::nullopt,
+             py::arg("reason") = std::nullopt, py::arg("expires") = std::nullopt, py::arg("source") = std::nullopt,
+             "Adds a ban to this list, or updates an existing one.")
         .def("is_banned",
              py::overload_cast<std::string, std::optional<UUID>, std::optional<std::string>>(&PlayerBanList::isBanned,
                                                                                              py::const_),

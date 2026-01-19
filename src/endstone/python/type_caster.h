@@ -366,4 +366,57 @@ public:
     PYBIND11_TYPE_CASTER(endstone::nbt::Tag, const_name("endstone.nbt.Tag"));
 };
 
+template <typename T>
+class type_caster<endstone::NotNull<T>> {
+public:
+    using value_conv = make_caster<std::shared_ptr<T>>;
+    bool load(handle src, bool convert)
+    {
+        if (!src) {
+            return false;
+        }
+        if (src.is_none()) {
+            return false;
+        }
+        value_conv caster;
+        if (!caster.load(src, convert)) {
+            return false;
+        }
+        value = cast_op<std::shared_ptr<T>>(std::move(caster));
+        return true;
+    }
+
+    static handle cast(const endstone::NotNull<T> &src, return_value_policy policy, handle parent)
+    {
+        return value_conv::cast(src.get(), policy, parent);
+    }
+    PYBIND11_TYPE_CASTER(endstone::NotNull<T>, value_conv::name);
+};
+
+template <typename T>
+class type_caster<endstone::Nullable<T>> {
+public:
+    using value_conv = make_caster<std::shared_ptr<T>>;
+    bool load(handle src, bool convert)
+    {
+        if (!src) {
+            return false;
+        }
+        if (src.is_none()) {
+            return true;
+        }
+        value_conv caster;
+        if (!caster.load(src, convert)) {
+            return false;
+        }
+        value = cast_op<std::shared_ptr<T>>(std::move(caster));
+        return true;
+    }
+
+    static handle cast(const endstone::Nullable<T> &src, return_value_policy policy, handle parent)
+    {
+        return value_conv::cast(src.get(), policy, parent);
+    }
+    PYBIND11_TYPE_CASTER(endstone::Nullable<T>, value_conv::name | make_caster<none>::name);
+};
 }  // namespace pybind11::detail
