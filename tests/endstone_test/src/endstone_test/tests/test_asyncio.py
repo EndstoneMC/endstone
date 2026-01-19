@@ -2,10 +2,8 @@ import asyncio
 import concurrent.futures
 import threading
 
-import pytest
-
 import endstone.asyncio
-
+import pytest
 
 # =============================================================================
 # Section 1: get_loop Tests

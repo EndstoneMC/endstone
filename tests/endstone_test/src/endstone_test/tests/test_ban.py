@@ -3,10 +3,8 @@ from datetime import datetime, timedelta, timezone
 from typing import Any, Generator
 
 import pytest
-
 from endstone import Server
 from endstone.ban import IpBanList, PlayerBanList
-
 
 # =============================================================================
 # Fixtures
@@ -114,7 +112,7 @@ class TestPlayerBanListBasicOperations:
         assert entry.expiration is not None
 
     def test_is_banned_returns_false_for_unbanned_player(
-            self, player_ban_list: PlayerBanList
+        self, player_ban_list: PlayerBanList
     ) -> None:
         """Test is_banned returns False for a player not in the ban list."""
         assert not player_ban_list.is_banned("nonexistent_player")
@@ -256,7 +254,7 @@ class TestPlayerBanListEntries:
             assert name in entry_names
 
     def test_entries_updated_after_removal(
-            self, player_ban_list: PlayerBanList
+        self, player_ban_list: PlayerBanList
     ) -> None:
         """Test that entries list is updated after ban removal."""
         names = ["remove_entry_1", "remove_entry_2"]
@@ -363,7 +361,7 @@ class TestIpBanListBasicOperations:
         assert entry.expiration is not None
 
     def test_is_ip_banned_returns_false_for_unbanned(
-            self, ip_ban_list: IpBanList
+        self, ip_ban_list: IpBanList
     ) -> None:
         """Test is_banned returns False for an unbanned IP."""
         assert not ip_ban_list.is_banned("10.0.0.1")
@@ -538,7 +536,7 @@ class TestPlayerBanEntryProperties:
         assert entry.unique_id == player_uuid
 
     def test_unique_id_property_when_not_set(
-            self, player_ban_list: PlayerBanList
+        self, player_ban_list: PlayerBanList
     ) -> None:
         """Test the unique_id property when UUID is not provided."""
         entry = player_ban_list.add_ban("no_uuid_test")
@@ -580,7 +578,7 @@ class TestBanCommandIntegration:
     """Tests for ban/unban command integration."""
 
     def test_ban_via_api_unban_via_command(
-            self, server: Server, player_ban_list: PlayerBanList
+        self, server: Server, player_ban_list: PlayerBanList
     ) -> None:
         """Test banning via API and unbanning via command."""
         player_name = "api_ban_cmd_unban"
@@ -591,7 +589,7 @@ class TestBanCommandIntegration:
         assert not player_ban_list.is_banned(player_name)
 
     def test_ban_via_command_unban_via_api(
-            self, server: Server, player_ban_list: PlayerBanList
+        self, server: Server, player_ban_list: PlayerBanList
     ) -> None:
         """Test banning via command and unbanning via API."""
         player_name = "cmd_ban_api_unban"
@@ -604,7 +602,7 @@ class TestBanCommandIntegration:
         assert not player_ban_list.is_banned(player_name)
 
     def test_ban_command_with_special_characters(
-            self, server: Server, player_ban_list: PlayerBanList
+        self, server: Server, player_ban_list: PlayerBanList
     ) -> None:
         """Test ban command with special characters in reason."""
         player_name = "special_char_test"
@@ -632,7 +630,7 @@ class TestBanEdgeCases:
         # Empty reason should be allowed or use default
 
     def test_ban_player_with_spaces_in_name(
-            self, player_ban_list: PlayerBanList
+        self, player_ban_list: PlayerBanList
     ) -> None:
         """Test banning a player with spaces in their name."""
         player_name = "player with spaces"
