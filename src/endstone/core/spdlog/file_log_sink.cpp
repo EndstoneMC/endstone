@@ -106,10 +106,11 @@ void FileLogSink::rotate()
             if (!func(src, target)) {
                 fmt::print(fmt::fg(fmt::color::red), "FileLogSink: failed rotating {} to {}\n", filename_to_str(src),
                            filename_to_str(target));
+                break;
             }
         }
     }
-    file_helper_.reopen(true);
+    file_helper_.reopen(false);
 }
 
 std::tm FileLogSink::localtime(spdlog::log_clock::time_point tp)
