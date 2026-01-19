@@ -65,14 +65,6 @@ void init_attribute(py::module_ &m)
 
     auto modifier = py::class_<AttributeModifier>(m, "AttributeModifier", "Represents an attribute modifier.");
 
-    py::native_enum<AttributeModifier::Operand>(modifier, "Operand", "enum.Enum",
-                                                "Value on which operation to be applied.")
-        .value("VALUE", AttributeModifier::Operand::Value)
-        .value("MAX_VALUE", AttributeModifier::Operand::MaxValue)
-        .value("MIN_VALUE", AttributeModifier::Operand::MinValue)
-        .export_values()
-        .finalize();
-
     py::native_enum<AttributeModifier::Operation>(modifier, "Operation", "enum.Enum", "Operation to be applied.")
         .value("ADD", AttributeModifier::Operation::Add, "Adds (or subtracts) the specified amount to the base value.")
         .value("MULTIPLY_BASE", AttributeModifier::Operation::MultiplyBase,
@@ -85,13 +77,12 @@ void init_attribute(py::module_ &m)
         .finalize();
 
     modifier
-        .def(py::init<std::string, float, AttributeModifier::Operation, AttributeModifier::Operand>(), py::arg("name"),
-             py::arg("amount"), py::arg("operation"), py::arg("operand") = AttributeModifier::Operand::Value)
+        .def(py::init<std::string, float, AttributeModifier::Operation>(), py::arg("name"), py::arg("amount"),
+             py::arg("operation"))
         .def_property_readonly("unique_id", &AttributeModifier::getUniqueId, "Get the unique ID for this modifier.")
         .def_property_readonly("name", &AttributeModifier::getName, "Get the name of this modifier.")
         .def_property_readonly("amount", &AttributeModifier::getAmount,
                                "Get the amount by which this modifier will apply the operation.")
-        .def_property_readonly("operand", &AttributeModifier::getOperand, "Get the operand this modifier will apply.")
         .def_property_readonly("operation", &AttributeModifier::getOperation,
                                "Get the operation this modifier will apply.");
 

@@ -24,15 +24,6 @@ namespace endstone {
 class AttributeModifier {
 public:
     /**
-     * @brief Value on which operation to be applied.
-     */
-    enum class Operand {
-        Value,
-        MaxValue,
-        MinValue,
-    };
-
-    /**
      * @brief Operation to be applied.
      */
     enum class Operation {
@@ -55,13 +46,13 @@ public:
         Multiply
     };
 
-    AttributeModifier(std::string name, float amount, Operation operation, Operand operand = Operand::Value)
-        : name_(std::move(name)), amount_(amount), operand_(operand), operation_(operation)
+    AttributeModifier(std::string name, float amount, Operation operation)
+        : name_(std::move(name)), amount_(amount), operation_(operation)
     {
     }
 
-    AttributeModifier(std::string name, UUID uuid, float amount, Operation operation, Operand operand = Operand::Value)
-        : name_(std::move(name)), uuid_(uuid), amount_(amount), operand_(operand), operation_(operation)
+    AttributeModifier(std::string name, UUID uuid, float amount, Operation operation)
+        : name_(std::move(name)), uuid_(uuid), amount_(amount), operation_(operation)
     {
     }
 
@@ -87,13 +78,6 @@ public:
     [[nodiscard]] float getAmount() const { return amount_; }
 
     /**
-     * @brief Get the operand this modifier will apply.
-     *
-     * @return operand
-     */
-    [[nodiscard]] Operand getOperand() const { return operand_; }
-
-    /**
      * @brief Get the operation this modifier will apply.
      *
      * @return operation
@@ -104,7 +88,6 @@ private:
     std::string name_;
     UUID uuid_;
     float amount_;
-    Operand operand_;
     Operation operation_;
 };
 }  // namespace endstone
