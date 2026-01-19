@@ -73,70 +73,49 @@ public:
      *
      * @return The X coordinate.
      */
-    [[nodiscard]] std::int8_t getX() const
-    {
-        return x_;
-    }
+    [[nodiscard]] std::int8_t getX() const { return x_; }
 
     /**
      * @brief Get the Y position of this cursor.
      *
      * @return The Y coordinate.
      */
-    [[nodiscard]] std::int8_t getY() const
-    {
-        return y_;
-    }
+    [[nodiscard]] std::int8_t getY() const { return y_; }
 
     /**
      * @brief Get the direction of this cursor.
      *
      * @return The facing of the cursor, from 0 to 15.
      */
-    [[nodiscard]] std::int8_t getDirection() const
-    {
-        return direction_;
-    }
+    [[nodiscard]] std::int8_t getDirection() const { return direction_; }
 
     /**
      * @brief Get the type of this cursor.
      *
      * @return The type (color/style) of the map cursor.
      */
-    [[nodiscard]] Type getType() const
-    {
-        return type_;
-    }
+    [[nodiscard]] Type getType() const { return type_; }
 
     /**
      * @brief Get the visibility status of this cursor.
      *
      * @return True if visible, false otherwise.
      */
-    [[nodiscard]] bool isVisible() const
-    {
-        return visible_;
-    }
+    [[nodiscard]] bool isVisible() const { return visible_; }
 
     /**
      * @brief Set the X position of this cursor.
      *
      * @param x The X coordinate.
      */
-    void setX(const std::int8_t x)
-    {
-        x_ = x;
-    }
+    void setX(const std::int8_t x) { x_ = x; }
 
     /**
      * @brief Set the Y position of this cursor.
      *
      * @param y The Y coordinate.
      */
-    void setY(const std::int8_t y)
-    {
-        y_ = y;
-    }
+    void setY(const std::int8_t y) { y_ = y; }
 
     /**
      * @brief Set the direction of this cursor.
@@ -155,20 +134,14 @@ public:
      *
      * @param type The type (color/style) of the map cursor.
      */
-    void setType(Type type)
-    {
-        type_ = type;
-    }
+    void setType(Type type) { type_ = type; }
 
     /**
      * Set the visibility status of this cursor.
      *
      * @param visible True if visible.
      */
-    void setVisible(bool visible)
-    {
-        visible_ = visible;
-    }
+    void setVisible(bool visible) { visible_ = visible; }
 
     /**
      * @brief Gets the caption on this cursor.
@@ -176,20 +149,14 @@ public:
      * @return caption
      */
 
-    [[nodiscard]] std::string getCaption() const
-    {
-        return caption_;
-    }
+    [[nodiscard]] std::string getCaption() const { return caption_; }
 
     /**
      * @brief Sets the caption on this cursor.
      *
      * @param caption new caption
      */
-    void setCaption(std::string caption)
-    {
-        caption_ = std::move(caption);
-    }
+    void setCaption(std::string caption) { caption_ = std::move(caption); }
 
 private:
     std::int8_t x_, y_;

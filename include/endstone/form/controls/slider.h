@@ -38,10 +38,7 @@ public:
      *
      * @return The label of the toggle.
      */
-    [[nodiscard]] Message getLabel() const
-    {
-        return label_;
-    }
+    [[nodiscard]] Message getLabel() const { return label_; }
 
     /**
      * @brief Sets the label of the toggle.
@@ -60,10 +57,7 @@ public:
      *
      * @return The minimum value of the slider.
      */
-    [[nodiscard]] float getMin() const
-    {
-        return min_;
-    }
+    [[nodiscard]] float getMin() const { return min_; }
 
     /**
      * @brief Sets the minimum value of the slider.
@@ -82,10 +76,7 @@ public:
      *
      * @return The maximum value of the slider.
      */
-    [[nodiscard]] float getMax() const
-    {
-        return max_;
-    }
+    [[nodiscard]] float getMax() const { return max_; }
 
     /**
      * @brief Sets the maximum value of the slider.
@@ -104,10 +95,7 @@ public:
      *
      * @return The step size of the slider.
      */
-    [[nodiscard]] float getStep() const
-    {
-        return step_;
-    }
+    [[nodiscard]] float getStep() const { return step_; }
 
     /**
      * @brief Sets the step size of the slider.
@@ -126,10 +114,7 @@ public:
      *
      * @return The default value of the slider.
      */
-    [[nodiscard]] std::optional<float> getDefaultValue() const
-    {
-        return default_value_;
-    }
+    [[nodiscard]] std::optional<float> getDefaultValue() const { return default_value_; }
 
     /**
      * @brief Sets the default value of the slider.

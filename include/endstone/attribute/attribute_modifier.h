@@ -70,50 +70,35 @@ public:
      *
      * @return unique id
      */
-    [[nodiscard]] UUID getUniqueId() const
-    {
-        return uuid_;
-    }
+    [[nodiscard]] UUID getUniqueId() const { return uuid_; }
 
     /**
      * @brief Get the name of this modifier.
      *
      * @return name
      */
-    [[nodiscard]] std::string getName() const
-    {
-        return name_;
-    }
+    [[nodiscard]] std::string getName() const { return name_; }
 
     /**
      * @brief Get the amount by which this modifier will apply the operation.
      *
      * @return modification amount
      */
-    [[nodiscard]] float getAmount() const
-    {
-        return amount_;
-    }
+    [[nodiscard]] float getAmount() const { return amount_; }
 
     /**
      * @brief Get the operand this modifier will apply.
      *
      * @return operand
      */
-    [[nodiscard]] Operand getOperand() const
-    {
-        return operand_;
-    }
+    [[nodiscard]] Operand getOperand() const { return operand_; }
 
     /**
      * @brief Get the operation this modifier will apply.
      *
      * @return operation
      */
-    [[nodiscard]] Operation getOperation() const
-    {
-        return operation_;
-    }
+    [[nodiscard]] Operation getOperation() const { return operation_; }
 
 private:
     std::string name_;

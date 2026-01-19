@@ -35,10 +35,7 @@ public:
      *
      * @return direction of the piston
      */
-    [[nodiscard]] BlockFace getDirection() const
-    {
-        return direction_;
-    }
+    [[nodiscard]] BlockFace getDirection() const { return direction_; }
 
 private:
     BlockFace direction_;

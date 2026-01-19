@@ -38,40 +38,28 @@ public:
      *
      * @return the skin id.
      */
-    [[nodiscard]] const std::string &getId() const
-    {
-        return id_;
-    }
+    [[nodiscard]] const std::string &getId() const { return id_; }
 
     /**
      * @brief Gets the skin image.
      *
      * @return the skin image.
      */
-    [[nodiscard]] const Image &getImage() const
-    {
-        return image_;
-    }
+    [[nodiscard]] const Image &getImage() const { return image_; }
 
     /**
      * @brief Gets the cape id.
      *
      * @return the cape id.
      */
-    [[nodiscard]] const std::optional<std::string> &getCapeId() const
-    {
-        return cape_id_;
-    }
+    [[nodiscard]] const std::optional<std::string> &getCapeId() const { return cape_id_; }
 
     /**
      * @brief Gets the cape image.
      *
      * @return the cape image.
      */
-    [[nodiscard]] const Image *getCapeImage() const
-    {
-        return cape_image_.has_value() ? &cape_image_.value() : nullptr;
-    }
+    [[nodiscard]] const Image *getCapeImage() const { return cape_image_.has_value() ? &cape_image_.value() : nullptr; }
 
 private:
     std::string id_;

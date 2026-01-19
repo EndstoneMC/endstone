@@ -36,10 +36,7 @@ class Player;
 class CommandSender : public Permissible {
 public:
     // Permissible
-    [[nodiscard]] CommandSender *asCommandSender() const override
-    {
-        return const_cast<CommandSender *>(this);
-    }
+    [[nodiscard]] CommandSender *asCommandSender() const override { return const_cast<CommandSender *>(this); }
 
     /**
      * @brief Gets a CommandSender as ConsoleCommandSender

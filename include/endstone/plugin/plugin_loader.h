@@ -149,10 +149,7 @@ public:
      *
      * @return The Server reference.
      */
-    [[nodiscard]] Server &getServer() const
-    {
-        return server_;
-    }
+    [[nodiscard]] Server &getServer() const { return server_; }
 
 protected:
     Server &server_;

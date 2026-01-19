@@ -37,10 +37,7 @@ public:
      *
      * @return actor that caused knockback, or nullptr if the knockback is not caused by an actor.
      */
-    [[nodiscard]] Actor *getSource() const
-    {
-        return source_;
-    }
+    [[nodiscard]] Actor *getSource() const { return source_; }
 
     /**
      * Gets the knockback that will be applied to the entity.
@@ -50,20 +47,14 @@ public:
      *
      * @return the knockback
      */
-    [[nodiscard]] Vector getKnockback() const
-    {
-        return knockback_;
-    }
+    [[nodiscard]] Vector getKnockback() const { return knockback_; }
 
     /**
      * @brief Sets the knockback that will be applied to the entity.
      *
      * @param knockback the knockback to apply
      */
-    void setKnockback(Vector knockback)
-    {
-        knockback_ = knockback;
-    }
+    void setKnockback(Vector knockback) { knockback_ = knockback; }
 
 private:
     Mob &mob_;

@@ -31,20 +31,14 @@ public:
      *
      * @return The hostname of this socket address
      */
-    [[nodiscard]] const std::string &getHostname() const
-    {
-        return hostname_;
-    }
+    [[nodiscard]] const std::string &getHostname() const { return hostname_; }
 
     /**
      * Gets the port number.
      *
      * @return The port number of this socket address
      */
-    [[nodiscard]] std::uint32_t getPort() const
-    {
-        return port_;
-    }
+    [[nodiscard]] std::uint32_t getPort() const { return port_; }
 
 private:
     std::string hostname_;

@@ -136,10 +136,7 @@ public:
      *
      * @return The bed block involved in this event.
      */
-    [[nodiscard]] Block &getBed() const
-    {
-        return bed_;
-    }
+    [[nodiscard]] Block &getBed() const { return bed_; }
 
 private:
     Block &bed_;

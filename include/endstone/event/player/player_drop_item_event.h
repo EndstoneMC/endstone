@@ -34,10 +34,7 @@ public:
      *
      * @return ItemDrop dropped by the player
      */
-    [[nodiscard]] const ItemStack &getItem() const
-    {
-        return drop_;
-    }
+    [[nodiscard]] const ItemStack &getItem() const { return drop_; }
 
 private:
     const ItemStack &drop_;

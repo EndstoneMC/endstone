@@ -32,10 +32,7 @@ public:
      *
      * @return The content of the form.
      */
-    [[nodiscard]] Message getContent() const
-    {
-        return content_;
-    }
+    [[nodiscard]] Message getContent() const { return content_; }
 
     /**
      * @brief Set the content of the form.
@@ -54,10 +51,7 @@ public:
      *
      * @return The text of button1.
      */
-    [[nodiscard]] Message getButton1() const
-    {
-        return button1_text_;
-    }
+    [[nodiscard]] Message getButton1() const { return button1_text_; }
 
     /**
      * @brief Set the text of button1.
@@ -76,10 +70,7 @@ public:
      *
      * @return The text of button2.
      */
-    [[nodiscard]] Message getButton2() const
-    {
-        return button2_text_;
-    }
+    [[nodiscard]] Message getButton2() const { return button2_text_; }
 
     /**
      * @brief Set the text of button2.
@@ -98,10 +89,7 @@ public:
      *
      * @return The on submit callback of the form.
      */
-    [[nodiscard]] OnSubmitCallback getOnSubmit() const
-    {
-        return on_submit_;
-    }
+    [[nodiscard]] OnSubmitCallback getOnSubmit() const { return on_submit_; }
 
     /**
      * @brief Sets the on submit callback of the form.

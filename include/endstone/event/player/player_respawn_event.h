@@ -27,10 +27,7 @@ public:
     ~PlayerRespawnEvent() override = default;
 
     inline static const std::string NAME = "PlayerRespawnEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 };
 
 }  // namespace endstone

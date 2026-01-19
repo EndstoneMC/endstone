@@ -76,7 +76,8 @@ public:
      * @param delay the ticks to wait before running the task
      * @return a Task that contains the id number (nullptr if task is empty)
      */
-    virtual std::shared_ptr<Task> runTaskLaterAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay) = 0;
+    virtual std::shared_ptr<Task> runTaskLaterAsync(Plugin &plugin, std::function<void()> task,
+                                                    std::uint64_t delay) = 0;
 
     /**
      * @brief Returns a task that will be executed repeatedly (and asynchronously) until cancelled, starting after the
@@ -90,7 +91,7 @@ public:
      * @return a Task that contains the id number (nullptr if task is empty)
      */
     virtual std::shared_ptr<Task> runTaskTimerAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
-                                               std::uint64_t period) = 0;
+                                                    std::uint64_t period) = 0;
 
     /**
      * Removes task from scheduler.

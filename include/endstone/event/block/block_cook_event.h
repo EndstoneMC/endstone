@@ -36,30 +36,21 @@ public:
      *
      * @return smelting source ItemStack
      */
-    [[nodiscard]] const ItemStack &getSource() const
-    {
-        return *source_;
-    }
+    [[nodiscard]] const ItemStack &getSource() const { return *source_; }
 
     /**
      * @brief Gets the resultant ItemStack for this event
      *
      * @return smelting result ItemStack
      */
-    [[nodiscard]] const ItemStack &getResult() const
-    {
-        return *result_;
-    }
+    [[nodiscard]] const ItemStack &getResult() const { return *result_; }
 
     /**
      * @brief Sets the resultant ItemStack for this event
      *
      * @param result new result ItemStack
      */
-    void setResult(std::unique_ptr<ItemStack> result)
-    {
-        result_ = std::move(result);
-    }
+    void setResult(std::unique_ptr<ItemStack> result) { result_ = std::move(result); }
 
 private:
     std::unique_ptr<ItemStack> source_;

@@ -53,10 +53,7 @@ public:
      *
      * @return The X component.
      */
-    [[nodiscard]] constexpr float getX() const
-    {
-        return x_;
-    }
+    [[nodiscard]] constexpr float getX() const { return x_; }
 
     /**
      * @brief Set the X component.
@@ -76,10 +73,7 @@ public:
      *
      * @return The Y component.
      */
-    [[nodiscard]] constexpr float getY() const
-    {
-        return y_;
-    }
+    [[nodiscard]] constexpr float getY() const { return y_; }
 
     /**
      * @brief Set the Y component.
@@ -99,10 +93,7 @@ public:
      *
      * @return The Z component.
      */
-    [[nodiscard]] constexpr float getZ() const
-    {
-        return z_;
-    }
+    [[nodiscard]] constexpr float getZ() const { return z_; }
 
     /**
      * @brief Set the Z component.
@@ -122,50 +113,29 @@ public:
      *
      * @return block X
      */
-    [[nodiscard]] int getBlockX() const
-    {
-        return static_cast<int>(std::floor(x_));
-    }
+    [[nodiscard]] int getBlockX() const { return static_cast<int>(std::floor(x_)); }
 
     /**
      * @brief Gets the floored value of the Y component, indicating the block that this vector is contained with.
      *
      * @return block y
      */
-    [[nodiscard]] int getBlockY() const
-    {
-        return static_cast<int>(std::floor(y_));
-    }
+    [[nodiscard]] int getBlockY() const { return static_cast<int>(std::floor(y_)); }
 
     /**
      * @brief Gets the floored value of the Z component, indicating the block that this vector is contained with.
      *
      * @return block z
      */
-    [[nodiscard]] int getBlockZ() const
-    {
-        return static_cast<int>(std::floor(z_));
-    }
+    [[nodiscard]] int getBlockZ() const { return static_cast<int>(std::floor(z_)); }
 
-    constexpr Vector operator+(const Vector &other) const
-    {
-        return {x_ + other.x_, y_ + other.y_, z_ + other.z_};
-    }
+    constexpr Vector operator+(const Vector &other) const { return {x_ + other.x_, y_ + other.y_, z_ + other.z_}; }
 
-    constexpr Vector operator-(const Vector &other) const
-    {
-        return {x_ - other.x_, y_ - other.y_, z_ - other.z_};
-    }
+    constexpr Vector operator-(const Vector &other) const { return {x_ - other.x_, y_ - other.y_, z_ - other.z_}; }
 
-    constexpr Vector operator*(const Vector &other) const
-    {
-        return {x_ * other.x_, y_ * other.y_, z_ * other.z_};
-    }
+    constexpr Vector operator*(const Vector &other) const { return {x_ * other.x_, y_ * other.y_, z_ * other.z_}; }
 
-    constexpr Vector operator/(const Vector &other) const
-    {
-        return {x_ / other.x_, y_ / other.y_, z_ / other.z_};
-    }
+    constexpr Vector operator/(const Vector &other) const { return {x_ / other.x_, y_ / other.y_, z_ / other.z_}; }
 
     Vector &operator+=(const Vector &other)
     {
@@ -266,30 +236,21 @@ public:
                (std::fabs(z_ - other.z_) <= eps);
     }
 
-    bool operator!=(const Vector &other) const noexcept
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const Vector &other) const noexcept { return !(*this == other); }
 
     /**
      * @brief Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2).
      *
      * @return the magnitude
      */
-    [[nodiscard]] float length() const
-    {
-        return std::sqrt(lengthSquared());
-    }
+    [[nodiscard]] float length() const { return std::sqrt(lengthSquared()); }
 
     /**
      * @brief Gets the magnitude of the vector squared.
      *
      * @return the magnitude
      */
-    [[nodiscard]] constexpr float lengthSquared() const
-    {
-        return (x_ * x_) + (y_ * y_) + (z_ * z_);
-    }
+    [[nodiscard]] constexpr float lengthSquared() const { return (x_ * x_) + (y_ * y_) + (z_ * z_); }
 
     /**
      * @brief Get the distance between this vector and another.
@@ -297,10 +258,7 @@ public:
      * @param other The other vector
      * @return the distance
      */
-    [[nodiscard]] float distance(const Vector &other) const
-    {
-        return std::sqrt(distanceSquared(other));
-    }
+    [[nodiscard]] float distance(const Vector &other) const { return std::sqrt(distanceSquared(other)); }
 
     /**
      * @brief Get the squared distance between this vector and another.
@@ -439,10 +397,7 @@ public:
      *
      * @return true if equal to zero, false if at least one component is non-zero
      */
-    [[nodiscard]] constexpr bool isZero() const
-    {
-        return x_ == 0 && y_ == 0 && z_ == 0;
-    }
+    [[nodiscard]] constexpr bool isZero() const { return x_ == 0 && y_ == 0 && z_ == 0; }
 
     /**
      * @brief Converts each component of value <code>-0.0</code> to <code>0.0</code>.

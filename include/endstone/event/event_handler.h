@@ -43,29 +43,20 @@ public:
      *
      * @return Registered Plugin
      */
-    [[nodiscard]] Plugin &getPlugin() const
-    {
-        return plugin_;
-    }
+    [[nodiscard]] Plugin &getPlugin() const { return plugin_; }
     /**
      * Gets the priority for this registration
      *
      * @return Registered Priority
      */
-    [[nodiscard]] EventPriority getPriority() const
-    {
-        return priority_;
-    }
+    [[nodiscard]] EventPriority getPriority() const { return priority_; }
 
     /**
      * Whether this listener accepts cancelled events
      *
      * @return True when ignoring cancelled events
      */
-    [[nodiscard]] bool isIgnoreCancelled() const
-    {
-        return ignore_cancelled_;
-    }
+    [[nodiscard]] bool isIgnoreCancelled() const { return ignore_cancelled_; }
 
     /**
      * Calls the event executor
@@ -88,10 +79,7 @@ public:
      *
      * @return Registered event type
      */
-    [[nodiscard]] std::string getEventType() const
-    {
-        return event_;
-    }
+    [[nodiscard]] std::string getEventType() const { return event_; }
 
 private:
     std::string event_;

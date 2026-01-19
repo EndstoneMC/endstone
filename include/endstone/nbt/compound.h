@@ -15,8 +15,8 @@
 #pragma once
 
 #include <algorithm>
-#include <stdexcept>
 #include <map>
+#include <stdexcept>
 
 #include "endstone/nbt/type.h"
 

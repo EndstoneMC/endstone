@@ -36,20 +36,14 @@ public:
      *
      * @return player's previous dimension
      */
-    [[nodiscard]] Dimension &getFrom() const
-    {
-        return from_;
-    }
+    [[nodiscard]] Dimension &getFrom() const { return from_; }
 
     /**
      * @brief Gets the dimension the player is switching to.
      *
      * @return player's new dimension
      */
-    [[nodiscard]] Dimension &getTo() const
-    {
-        return to_;
-    }
+    [[nodiscard]] Dimension &getTo() const { return to_; }
 
 private:
     Dimension &from_;

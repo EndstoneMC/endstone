@@ -39,20 +39,14 @@ public:
      *
      * @return Plugin responsible for this permission attachment
      */
-    [[nodiscard]] Plugin &getPlugin() const
-    {
-        return plugin_;
-    }
+    [[nodiscard]] Plugin &getPlugin() const { return plugin_; }
 
     /**
      * Sets an executor to be called for when this attachment is removed from a Permissible. May be empty.
      *
      * @param ex Executor to be called when this is removed
      */
-    void setRemovalCallback(PermissionRemovedExecutor ex)
-    {
-        removed_ = std::move(ex);
-    }
+    void setRemovalCallback(PermissionRemovedExecutor ex) { removed_ = std::move(ex); }
 
     /**
      * Gets the class that was previously set to be called when this attachment was removed from a Permissible. May be
@@ -60,20 +54,14 @@ public:
      *
      * @return Executor to be called when this is removed
      */
-    [[nodiscard]] PermissionRemovedExecutor getRemovalCallback() const
-    {
-        return removed_;
-    }
+    [[nodiscard]] PermissionRemovedExecutor getRemovalCallback() const { return removed_; }
 
     /**
      * Gets the Permissible that this is attached to
      *
      * @return Permissible containing this attachment
      */
-    [[nodiscard]] Permissible &getPermissible() const
-    {
-        return permissible_;
-    }
+    [[nodiscard]] Permissible &getPermissible() const { return permissible_; }
 
     /**
      * Gets a copy of all set permissions and values contained within this attachment.
@@ -81,10 +69,7 @@ public:
      *
      * @return Copy of all permissions and values expressed by this attachment
      */
-    [[nodiscard]] std::unordered_map<std::string, bool> getPermissions() const
-    {
-        return permissions_;
-    }
+    [[nodiscard]] std::unordered_map<std::string, bool> getPermissions() const { return permissions_; }
 
     /**
      * Sets a permission to the given value, by its fully qualified name
@@ -105,10 +90,7 @@ public:
      * @param perm Permission to set
      * @param value New value of the permission
      */
-    void setPermission(Permission &perm, bool value)
-    {
-        setPermission(perm.getName(), value);
-    }
+    void setPermission(Permission &perm, bool value) { setPermission(perm.getName(), value); }
 
     /**
      * Removes the specified permission from this attachment.
@@ -129,20 +111,14 @@ public:
      *
      * @param perm Permission to remove
      */
-    void unsetPermission(Permission &perm)
-    {
-        unsetPermission(perm.getName());
-    }
+    void unsetPermission(Permission &perm) { unsetPermission(perm.getName()); }
 
     /**
      * Removes this attachment from its registered Permissible
      *
      * @return true if the permissible was removed successfully, false if it did not exist
      */
-    bool remove()
-    {
-        return permissible_.removeAttachment(*this);
-    }
+    bool remove() { return permissible_.removeAttachment(*this); }
 
 private:
     PermissionRemovedExecutor removed_;

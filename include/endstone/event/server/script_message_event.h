@@ -30,40 +30,28 @@ public:
     }
 
     inline static const std::string NAME = "ScriptMessageEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * Get the message id to send.
      *
      * @return Message id to send
      */
-    [[nodiscard]] const std::string &getMessageId() const
-    {
-        return message_id_;
-    }
+    [[nodiscard]] const std::string &getMessageId() const { return message_id_; }
 
     /**
      * Get the message to send.
      *
      * @return Message to send
      */
-    [[nodiscard]] const std::string &getMessage() const
-    {
-        return message_;
-    }
+    [[nodiscard]] const std::string &getMessage() const { return message_; }
 
     /**
      * Gets the command sender who initiated the command
      *
      * @return Command sender who initiated the command
      */
-    [[nodiscard]] const CommandSender &getSender() const
-    {
-        return sender_;
-    }
+    [[nodiscard]] const CommandSender &getSender() const { return sender_; }
 
 private:
     std::string message_id_;

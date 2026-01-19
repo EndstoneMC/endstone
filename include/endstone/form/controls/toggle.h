@@ -37,10 +37,7 @@ public:
      *
      * @return The label of the toggle.
      */
-    [[nodiscard]] Message getLabel() const
-    {
-        return label_;
-    }
+    [[nodiscard]] Message getLabel() const { return label_; }
 
     /**
      * @brief Sets the label of the toggle.
@@ -59,10 +56,7 @@ public:
      *
      * @return The default value of the toggle.
      */
-    [[nodiscard]] bool getDefaultValue() const
-    {
-        return default_value_;
-    }
+    [[nodiscard]] bool getDefaultValue() const { return default_value_; }
 
     /**
      * @brief Sets the default value of the toggle.

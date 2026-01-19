@@ -40,10 +40,7 @@ public:
      *
      * @return The title of the form.
      */
-    [[nodiscard]] Message getTitle() const
-    {
-        return title_;
-    }
+    [[nodiscard]] Message getTitle() const { return title_; }
 
     /**
      * @brief Sets the title of the form.
@@ -74,10 +71,7 @@ public:
      *
      * @return The on close callback of the form.
      */
-    [[nodiscard]] OnCloseCallback getOnClose() const
-    {
-        return on_close_;
-    }
+    [[nodiscard]] OnCloseCallback getOnClose() const { return on_close_; }
 
 protected:
     Message title_;

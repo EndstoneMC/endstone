@@ -36,20 +36,14 @@ public:
      *
      * @return string kick reason
      */
-    [[nodiscard]] std::string getReason() const
-    {
-        return reason_;
-    }
+    [[nodiscard]] std::string getReason() const { return reason_; }
 
     /**
      * @brief Sets the reason why the player is getting kicked
      *
      * @param reason kick reason
      */
-    void setReason(std::string reason)
-    {
-        reason_ = std::move(reason);
-    }
+    void setReason(std::string reason) { reason_ = std::move(reason); }
 
 private:
     std::string reason_;

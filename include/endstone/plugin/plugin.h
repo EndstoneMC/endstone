@@ -78,10 +78,7 @@ public:
      *
      * @return Logger associated with this plugin
      */
-    [[nodiscard]] Logger &getLogger() const
-    {
-        return *logger_;
-    }
+    [[nodiscard]] Logger &getLogger() const { return *logger_; }
 
     /**
      * @brief Returns a value indicating whether this plugin is currently
@@ -89,30 +86,21 @@ public:
      *
      * @return true if this plugin is enabled, otherwise false
      */
-    [[nodiscard]] bool isEnabled() const
-    {
-        return enabled_;
-    }
+    [[nodiscard]] bool isEnabled() const { return enabled_; }
 
     /**
      * @brief Gets the associated PluginLoader responsible for this plugin
      *
      * @return PluginLoader that controls this plugin
      */
-    [[nodiscard]] PluginLoader &getPluginLoader() const
-    {
-        return *loader_;
-    }
+    [[nodiscard]] PluginLoader &getPluginLoader() const { return *loader_; }
 
     /**
      * @brief Returns the Server instance currently running this plugin
      *
      * @return Server running this plugin
      */
-    [[nodiscard]] Server &getServer() const
-    {
-        return *server_;
-    }
+    [[nodiscard]] Server &getServer() const { return *server_; }
 
     /**
      * @brief Returns the name of the plugin.
@@ -122,10 +110,7 @@ public:
      *
      * @return name of the plugin
      */
-    [[nodiscard]] std::string getName() const
-    {
-        return getDescription().getName();
-    };
+    [[nodiscard]] std::string getName() const { return getDescription().getName(); };
 
     /**
      * @brief Gets the command with the given name, specific to this plugin.
@@ -145,18 +130,15 @@ public:
      *
      * @return The folder
      */
-    [[nodiscard]] const std::filesystem::path &getDataFolder() const
-    {
-        return data_folder_;
-    }
+    [[nodiscard]] const std::filesystem::path &getDataFolder() const { return data_folder_; }
 
     template <typename EventType, typename T>
     void registerEvent(void (T::*func)(EventType &), T &instance, EventPriority priority = EventPriority::Normal,
                        bool ignore_cancelled = false)
     {
         getServer().getPluginManager().registerEvent(
-            EventType::NAME, [func, &instance](Event &e) { (instance.*func)(static_cast<EventType &>(e)); },
-            priority, *this, ignore_cancelled);
+            EventType::NAME, [func, &instance](Event &e) { (instance.*func)(static_cast<EventType &>(e)); }, priority,
+            *this, ignore_cancelled);
     }
 
     template <typename EventType>
@@ -268,10 +250,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] Permission build() const
-    {
-        return Permission(name_, description_, default_value_, children_);
-    }
+    [[nodiscard]] Permission build() const { return Permission(name_, description_, default_value_, children_); }
 
 private:
     std::string name_;

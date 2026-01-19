@@ -55,10 +55,7 @@ public:
      *
      * @param executor New executor to run
      */
-    virtual void setExecutor(std::shared_ptr<CommandExecutor> executor)
-    {
-        executor_ = std::move(executor);
-    }
+    virtual void setExecutor(std::shared_ptr<CommandExecutor> executor) { executor_ = std::move(executor); }
 
     /**
      * Gets the CommandExecutor associated with this command
@@ -78,15 +75,9 @@ public:
      *
      * @return Plugin that owns this command
      */
-    [[maybe_unused]] [[nodiscard]] Plugin &getPlugin() const
-    {
-        return owner_;
-    }
+    [[maybe_unused]] [[nodiscard]] Plugin &getPlugin() const { return owner_; }
 
-    [[nodiscard]] PluginCommand *asPluginCommand() const override
-    {
-        return const_cast<PluginCommand *>(this);
-    }
+    [[nodiscard]] PluginCommand *asPluginCommand() const override { return const_cast<PluginCommand *>(this); }
 
 private:
     Plugin &owner_;

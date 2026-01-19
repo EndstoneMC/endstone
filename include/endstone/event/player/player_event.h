@@ -32,10 +32,7 @@ public:
      *
      * @return Player who is involved in this event
      */
-    [[nodiscard]] Player &getPlayer() const
-    {
-        return player_;
-    }
+    [[nodiscard]] Player &getPlayer() const { return player_; }
 
 protected:
     std::reference_wrapper<Player> player_;

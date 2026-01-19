@@ -35,30 +35,21 @@ public:
      *
      * @return Player which is involved in this event
      */
-    [[nodiscard]] Player &getPlayer() const
-    {
-        return static_cast<Player &>(getActor());
-    }
+    [[nodiscard]] Player &getPlayer() const { return static_cast<Player &>(getActor()); }
 
     /**
      * @brief Get the death message that will appear to everyone on the server.
      *
      * @return Message to appear to other players on the server.
      */
-    [[nodiscard]] std::optional<Message> getDeathMessage() const
-    {
-        return death_message_;
-    }
+    [[nodiscard]] std::optional<Message> getDeathMessage() const { return death_message_; }
 
     /**
      * @brief Set the death message that will appear to everyone on the server.
      *
      * @param death_message Message to appear to other players on the server.
      */
-    void setDeathMessage(std::optional<Message> death_message)
-    {
-        death_message_ = std::move(death_message);
-    }
+    void setDeathMessage(std::optional<Message> death_message) { death_message_ = std::move(death_message); }
 
 private:
     std::optional<Message> death_message_;

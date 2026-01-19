@@ -39,10 +39,7 @@ public:
      *
      * @return The label of the dropdown.
      */
-    [[nodiscard]] Message getLabel() const
-    {
-        return label_;
-    }
+    [[nodiscard]] Message getLabel() const { return label_; }
 
     /**
      * @brief Sets the label of the dropdown.
@@ -73,10 +70,7 @@ public:
      *
      * @return The options of the dropdown.
      */
-    [[nodiscard]] std::vector<std::string> getOptions() const
-    {
-        return options_;
-    }
+    [[nodiscard]] std::vector<std::string> getOptions() const { return options_; }
 
     /**
      * @brief Sets the options of the dropdown.
@@ -95,10 +89,7 @@ public:
      *
      * @return The default index of the dropdown.
      */
-    [[nodiscard]] std::optional<int> getDefaultIndex() const
-    {
-        return default_index_;
-    }
+    [[nodiscard]] std::optional<int> getDefaultIndex() const { return default_index_; }
 
     /**
      * @brief Sets the default index of the dropdown.

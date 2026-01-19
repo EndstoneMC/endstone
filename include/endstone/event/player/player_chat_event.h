@@ -37,30 +37,21 @@ public:
      *
      * @return Message the player is attempting to send
      */
-    [[nodiscard]] std::string getMessage() const
-    {
-        return message_;
-    }
+    [[nodiscard]] std::string getMessage() const { return message_; }
 
     /**
      * @brief Sets the message that the player will send.
      *
      * @param message New message that the player will send
      */
-    void setMessage(std::string message)
-    {
-        message_ = std::move(message);
-    }
+    void setMessage(std::string message) { message_ = std::move(message); }
 
     /**
      * @brief Sets the player that this message will display as
      *
      * @param player New player which this event will execute as
      */
-    void setPlayer(Player &player)
-    {
-        player_ = player;
-    }
+    void setPlayer(Player &player) { player_ = player; }
 
     /**
      * @brief Gets the format to use to display this chat message
@@ -69,10 +60,7 @@ public:
      *
      * @return format string
      */
-    [[nodiscard]] std::string getFormat() const
-    {
-        return format_;
-    }
+    [[nodiscard]] std::string getFormat() const { return format_; }
 
     /**
      * @brief Sets the format to use to display this chat message
@@ -80,10 +68,7 @@ public:
      * @param format format string
      */
 
-    void setFormat(std::string format)
-    {
-        format_ = std::move(format);
-    }
+    void setFormat(std::string format) { format_ = std::move(format); }
 
     /**
      * @brief Gets a set of recipients that this chat message will be displayed to

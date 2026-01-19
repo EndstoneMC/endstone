@@ -18,14 +18,14 @@
 #include <string>
 #include <utility>
 
+#include "endstone/form/controls/divider.h"
 #include "endstone/form/controls/dropdown.h"
+#include "endstone/form/controls/header.h"
 #include "endstone/form/controls/label.h"
 #include "endstone/form/controls/slider.h"
 #include "endstone/form/controls/step_slider.h"
 #include "endstone/form/controls/text_input.h"
 #include "endstone/form/controls/toggle.h"
-#include "endstone/form/controls/divider.h"
-#include "endstone/form/controls/header.h"
 #include "endstone/form/form.h"
 
 namespace endstone {
@@ -55,10 +55,7 @@ public:
      *
      * @return A list of controls in the modal form.
      */
-    [[nodiscard]] std::vector<Control> getControls() const
-    {
-        return controls_;
-    }
+    [[nodiscard]] std::vector<Control> getControls() const { return controls_; }
 
     /**
      * @brief Sets the controls of the modal form.
@@ -77,10 +74,7 @@ public:
      *
      * @return The submit button text of the form.
      */
-    [[nodiscard]] std::optional<Message> getSubmitButton() const
-    {
-        return submit_button_text_;
-    }
+    [[nodiscard]] std::optional<Message> getSubmitButton() const { return submit_button_text_; }
 
     /**
      * @brief Sets the submit button text of the form.
@@ -99,10 +93,7 @@ public:
      *
      * @return The path or URL to the icon file
      */
-    [[nodiscard]] std::optional<std::string> getIcon() const
-    {
-        return icon_;
-    }
+    [[nodiscard]] std::optional<std::string> getIcon() const { return icon_; }
 
     /**
      * @brief Sets the icon of the form.
@@ -121,10 +112,7 @@ public:
      *
      * @return The on submit callback of the form.
      */
-    [[nodiscard]] OnSubmitCallback getOnSubmit() const
-    {
-        return on_submit_;
-    }
+    [[nodiscard]] OnSubmitCallback getOnSubmit() const { return on_submit_; }
 
     /**
      * @brief Sets the on submit callback of the form.

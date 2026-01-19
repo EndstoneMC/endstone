@@ -105,25 +105,16 @@ public:
      *
      * @return a new color object for specified values
      */
-    static Color fromRGB(const int rgb)
-    {
-        return fromRGB(rgb >> 16 & BIT_MASK, rgb >> 8 & BIT_MASK, rgb & BIT_MASK);
-    }
+    static Color fromRGB(const int rgb) { return fromRGB(rgb >> 16 & BIT_MASK, rgb >> 8 & BIT_MASK, rgb & BIT_MASK); }
 
-    static Color fromBGR(const int bgr)
-    {
-        return fromBGR(bgr >> 16 & BIT_MASK, bgr >> 8 & BIT_MASK, bgr & BIT_MASK);
-    }
+    static Color fromBGR(const int bgr) { return fromBGR(bgr >> 16 & BIT_MASK, bgr >> 8 & BIT_MASK, bgr & BIT_MASK); }
 
     /**
      * @brief Gets the red component of the color.
      *
      * @return The red component (0–255) of the color.
      */
-    [[nodiscard]] int getRed() const
-    {
-        return BIT_MASK & red_;
-    }
+    [[nodiscard]] int getRed() const { return BIT_MASK & red_; }
 
     /**
      * @brief Creates a new Color object with specified component
@@ -132,20 +123,14 @@ public:
      *
      * @return a new color object with the red component
      */
-    [[nodiscard]] Color setRed(const int red) const
-    {
-        return fromRGBA(red, getGreen(), getBlue(), getAlpha());
-    }
+    [[nodiscard]] Color setRed(const int red) const { return fromRGBA(red, getGreen(), getBlue(), getAlpha()); }
 
     /**
      * @brief Gets the green component of the color.
      *
      * @return The green component (0–255) of the color.
      */
-    [[nodiscard]] int getGreen() const
-    {
-        return BIT_MASK & green_;
-    }
+    [[nodiscard]] int getGreen() const { return BIT_MASK & green_; }
 
     /**
      * @brief Creates a new Color object with specified component
@@ -154,20 +139,14 @@ public:
      *
      * @return a new color object with the green component
      */
-    [[nodiscard]] Color setGreen(const int green) const
-    {
-        return fromRGBA(getRed(), green, getBlue(), getAlpha());
-    }
+    [[nodiscard]] Color setGreen(const int green) const { return fromRGBA(getRed(), green, getBlue(), getAlpha()); }
 
     /**
      * @brief Gets the blue component of the color.
      *
      * @return The blue component (0–255) of the color.
      */
-    [[nodiscard]] int getBlue() const
-    {
-        return BIT_MASK & blue_;
-    }
+    [[nodiscard]] int getBlue() const { return BIT_MASK & blue_; }
 
     /**
      * @brief Creates a new Color object with specified component
@@ -176,20 +155,14 @@ public:
      *
      * @return a new color object with the blue component
      */
-    [[nodiscard]] Color setBlue(const int blue) const
-    {
-        return fromRGBA(getRed(), getGreen(), blue, getAlpha());
-    }
+    [[nodiscard]] Color setBlue(const int blue) const { return fromRGBA(getRed(), getGreen(), blue, getAlpha()); }
 
     /**
      * @brief Gets the alpha component of the color.
      *
      * @return The alpha component (0–255) of the color.
      */
-    [[nodiscard]] int getAlpha() const
-    {
-        return BIT_MASK & alpha_;
-    }
+    [[nodiscard]] int getAlpha() const { return BIT_MASK & alpha_; }
 
     /**
      * @brief Creates a new Color object with specified component
@@ -198,60 +171,42 @@ public:
      *
      * @return a new color object with the alpha component
      */
-    [[nodiscard]] Color setAlpha(const int alpha) const
-    {
-        return fromRGBA(getRed(), getGreen(), getBlue(), alpha);
-    }
+    [[nodiscard]] Color setAlpha(const int alpha) const { return fromRGBA(getRed(), getGreen(), getBlue(), alpha); }
 
     /**
      * @brief Gets the color as an RGBA integer.
      *
      * @return An integer representation of this color, as 0xRRGGBBAA
      */
-    [[nodiscard]] int asRGBA() const
-    {
-        return getRed() << 24 | getGreen() << 16 | getBlue() << 8 | getAlpha();
-    }
+    [[nodiscard]] int asRGBA() const { return getRed() << 24 | getGreen() << 16 | getBlue() << 8 | getAlpha(); }
 
     /**
      * @brief Gets the color as an ABGR integer.
      *
      * @return An integer representation of this color, as 0xAABBGGRR
      */
-    [[nodiscard]] int asABGR() const
-    {
-        return getAlpha() << 24 | getBlue() << 16 | getGreen() << 8 | getRed();
-    }
+    [[nodiscard]] int asABGR() const { return getAlpha() << 24 | getBlue() << 16 | getGreen() << 8 | getRed(); }
 
     /**
      * @brief Gets the color as an RGB integer.
      *
      * @return An integer representation of this color, as 0xRRGGBB
      */
-    [[nodiscard]] int asRGB() const
-    {
-        return getRed() << 16 | getGreen() << 8 | getBlue();
-    }
+    [[nodiscard]] int asRGB() const { return getRed() << 16 | getGreen() << 8 | getBlue(); }
 
     /**
      * @brief Gets the color as an BGR integer.
      *
      * @return An integer representation of this color, as 0xBBGGRR
      */
-    [[nodiscard]] int asBGR() const
-    {
-        return getBlue() << 16 | getGreen() << 8 | getRed();
-    }
+    [[nodiscard]] int asBGR() const { return getBlue() << 16 | getGreen() << 8 | getRed(); }
 
     bool operator==(const Color &other) const
     {
         return alpha_ == other.alpha_ && red_ == other.red_ && green_ == other.green_ && blue_ == other.blue_;
     }
 
-    bool operator!=(const Color &other) const
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const Color &other) const { return !(*this == other); }
 
 private:
     std::uint8_t red_, green_, blue_, alpha_;

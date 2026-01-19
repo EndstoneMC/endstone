@@ -52,25 +52,16 @@ public:
     {
     }
 
-    [[nodiscard]] constexpr std::string_view getNamespace() const noexcept
-    {
-        return namespace_;
-    }
+    [[nodiscard]] constexpr std::string_view getNamespace() const noexcept { return namespace_; }
 
-    [[nodiscard]] constexpr std::string_view getKey() const noexcept
-    {
-        return key_;
-    }
+    [[nodiscard]] constexpr std::string_view getKey() const noexcept { return key_; }
 
     constexpr bool operator==(const Identifier &other) const noexcept
     {
         return namespace_ == other.namespace_ && key_ == other.key_;
     }
 
-    constexpr bool operator!=(const Identifier &other) const noexcept
-    {
-        return !(*this == other);
-    }
+    constexpr bool operator!=(const Identifier &other) const noexcept { return !(*this == other); }
 
     operator std::string() const
     {
@@ -80,10 +71,7 @@ public:
         return fmt::format("{}:{}", namespace_, key_);
     }
 
-    static constexpr Identifier minecraft(const std::string_view key) noexcept
-    {
-        return {Minecraft, key};
-    }
+    static constexpr Identifier minecraft(const std::string_view key) noexcept { return {Minecraft, key}; }
 
 private:
     std::string_view namespace_;

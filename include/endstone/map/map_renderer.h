@@ -41,10 +41,7 @@ public:
 
 private:
     friend class core::EndstoneMapView;
-    [[nodiscard]] virtual bool isEndstoneMapRenderer() const
-    {
-        return false;
-    }
+    [[nodiscard]] virtual bool isEndstoneMapRenderer() const { return false; }
 
 public:
     /**
@@ -52,10 +49,7 @@ public:
      *
      * @return true if contextual, false otherwise.
      */
-    [[nodiscard]] bool isContextual() const
-    {
-        return is_contextual_;
-    }
+    [[nodiscard]] bool isContextual() const { return is_contextual_; }
 
     /**
      * @brief Initialize this MapRenderer for the given map.

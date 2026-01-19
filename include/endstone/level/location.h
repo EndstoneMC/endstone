@@ -42,20 +42,14 @@ public:
      *
      * @param dimension New dimension that this position resides in
      */
-    void setDimension(Dimension &dimension)
-    {
-        dimension_ = &dimension;
-    }
+    void setDimension(Dimension &dimension) { dimension_ = &dimension; }
 
     /**
      * @brief Gets the dimension that this location resides in
      *
      * @return Dimension that contains this location
      */
-    [[nodiscard]] Dimension &getDimension() const
-    {
-        return *dimension_;
-    }
+    [[nodiscard]] Dimension &getDimension() const { return *dimension_; }
 
     /**
      * @brief Gets the block at the represented location
@@ -80,20 +74,14 @@ public:
      *
      * @return x-coordinate
      */
-    [[nodiscard]] constexpr float getX() const
-    {
-        return x_;
-    }
+    [[nodiscard]] constexpr float getX() const { return x_; }
 
     /**
      * @brief Gets the floored value of the X component, indicating the block that this location is contained with.
      *
      * @return block X
      */
-    [[nodiscard]] int getBlockX() const
-    {
-        return static_cast<int>(std::floorf(x_));
-    }
+    [[nodiscard]] int getBlockX() const { return static_cast<int>(std::floorf(x_)); }
 
     /**
      * @brief Sets the y-coordinate of this location
@@ -111,20 +99,14 @@ public:
      *
      * @return y-coordinate
      */
-    [[nodiscard]] constexpr float getY() const
-    {
-        return y_;
-    }
+    [[nodiscard]] constexpr float getY() const { return y_; }
 
     /**
      * @brief Gets the floored value of the Y component, indicating the block that this location is contained with.
      *
      * @return block Y
      */
-    [[nodiscard]] int getBlockY() const
-    {
-        return static_cast<int>(std::floorf(y_));
-    }
+    [[nodiscard]] int getBlockY() const { return static_cast<int>(std::floorf(y_)); }
 
     /**
      * @brief Sets the z-coordinate of this location
@@ -142,30 +124,21 @@ public:
      *
      * @return z-coordinate
      */
-    [[nodiscard]] constexpr float getZ() const
-    {
-        return z_;
-    }
+    [[nodiscard]] constexpr float getZ() const { return z_; }
 
     /**
      * @brief Gets the floored value of the Z component, indicating the block that this location is contained with.
      *
      * @return block Z
      */
-    [[nodiscard]] int getBlockZ() const
-    {
-        return static_cast<int>(std::floorf(z_));
-    }
+    [[nodiscard]] int getBlockZ() const { return static_cast<int>(std::floorf(z_)); }
 
     /**
      * @brief Gets the pitch of this location, measured in degrees.
      *
      * @return the incline's pitch
      */
-    [[nodiscard]] float getPitch() const
-    {
-        return pitch_;
-    }
+    [[nodiscard]] float getPitch() const { return pitch_; }
 
     /**
      * @brief Sets the pitch of this location, measured in degrees.
@@ -179,20 +152,14 @@ public:
      *
      * @param pitch new incline's pitch
      */
-    void setPitch(float pitch)
-    {
-        pitch_ = pitch;
-    }
+    void setPitch(float pitch) { pitch_ = pitch; }
 
     /**
      * @brief Gets the yaw of this location, measured in degrees.
      *
      * @return the rotation's yaw
      */
-    [[nodiscard]] float getYaw() const
-    {
-        return yaw_;
-    }
+    [[nodiscard]] float getYaw() const { return yaw_; }
 
     /**
      * @brief Sets the yaw of this location, measured in degrees.
@@ -208,10 +175,7 @@ public:
      *
      * @param yaw new rotation's yaw
      */
-    void setYaw(float yaw)
-    {
-        yaw_ = yaw;
-    }
+    void setYaw(float yaw) { yaw_ = yaw; }
 
     /**
      * @brief Gets a unit-vector pointing in the direction that this Location is facing.
@@ -260,10 +224,7 @@ public:
      *
      * @return the magnitude
      */
-    [[nodiscard]] float length() const
-    {
-        return std::sqrt(lengthSquared());
-    }
+    [[nodiscard]] float length() const { return std::sqrt(lengthSquared()); }
 
     /**
      * @brief Gets the magnitude of the location squared.
@@ -272,10 +233,7 @@ public:
      *
      * @return the magnitude
      */
-    [[nodiscard]] constexpr float lengthSquared() const
-    {
-        return (x_ * x_) + (y_ * y_) + (z_ * z_);
-    }
+    [[nodiscard]] constexpr float lengthSquared() const { return (x_ * x_) + (y_ * y_) + (z_ * z_); }
 
     /**
      * @brief Get the distance between this location and another.
@@ -283,10 +241,7 @@ public:
      * @param other The other location
      * @return the distance
      */
-    [[nodiscard]] float distance(const Location &other) const
-    {
-        return std::sqrt(distanceSquared(other));
-    }
+    [[nodiscard]] float distance(const Location &other) const { return std::sqrt(distanceSquared(other)); }
 
     /**
      * @brief Get the squared distance between this location and another.
@@ -359,15 +314,9 @@ public:
                (std::fabs(pitch_ - other.pitch_) <= eps) && (std::fabs(yaw_ - other.yaw_) <= eps);
     }
 
-    bool operator!=(const Location &other) const noexcept
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const Location &other) const noexcept { return !(*this == other); }
 
-    operator Vector() const noexcept
-    {
-        return {x_, y_, z_};
-    }
+    operator Vector() const noexcept { return {x_, y_, z_}; }
 
     /**
      * @brief Normalizes the given yaw angle to a value between <code>+/-180</code> degrees.

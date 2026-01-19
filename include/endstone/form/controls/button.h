@@ -41,10 +41,7 @@ public:
      *
      * @return The text.
      */
-    [[nodiscard]] Message getText() const
-    {
-        return text_;
-    }
+    [[nodiscard]] Message getText() const { return text_; }
 
     /**
      * @brief Sets the text of the button.
@@ -63,10 +60,7 @@ public:
      *
      * @return The path or URL to the icon file
      */
-    [[nodiscard]] std::optional<std::string> getIcon() const
-    {
-        return icon_;
-    }
+    [[nodiscard]] std::optional<std::string> getIcon() const { return icon_; }
 
     /**
      * @brief Sets the icon for the button.
@@ -85,10 +79,7 @@ public:
      *
      * @return The on click callback of the button.
      */
-    [[nodiscard]] OnClickCallback getOnClick() const
-    {
-        return on_click_;
-    }
+    [[nodiscard]] OnClickCallback getOnClick() const { return on_click_; }
 
     /**
      * @brief Sets the on click callback of the button.

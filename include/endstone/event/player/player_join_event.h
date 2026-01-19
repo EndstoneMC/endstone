@@ -35,20 +35,14 @@ public:
      *
      * @return Message to appear to other players on the server.
      */
-    [[nodiscard]] std::optional<Message> getJoinMessage() const
-    {
-        return join_message_;
-    }
+    [[nodiscard]] std::optional<Message> getJoinMessage() const { return join_message_; }
 
     /**
      * @brief Sets the join message to send to all online players.
      *
      * @param message Message to appear to other players on the server.
      */
-    void setJoinMessage(std::optional<Message> message)
-    {
-        join_message_ = std::move(message);
-    }
+    void setJoinMessage(std::optional<Message> message) { join_message_ = std::move(message); }
 
 private:
     std::optional<Message> join_message_;

@@ -24,17 +24,14 @@ namespace endstone {
  */
 class LevelEvent : public Event {
 public:
-    explicit LevelEvent(Level &level) : level_(level){};
+    explicit LevelEvent(Level &level) : level_(level) {};
 
     /**
      * Gets the level primarily involved with this event
      *
      * @return Level which caused this event
      */
-    [[nodiscard]] Level &getLevel() const
-    {
-        return level_;
-    }
+    [[nodiscard]] Level &getLevel() const { return level_; }
 
 private:
     Level &level_;

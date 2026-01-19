@@ -34,20 +34,14 @@ public:
     ~BlockBreakEvent() override = default;
 
     inline static const std::string NAME = "BlockBreakEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * @brief Gets the Player that is breaking the block involved in this event.
      *
      * @return The Player that is breaking the block involved in this event
      */
-    [[nodiscard]] Player &getPlayer() const
-    {
-        return player_;
-    }
+    [[nodiscard]] Player &getPlayer() const { return player_; }
 
 private:
     Player &player_;

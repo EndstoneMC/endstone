@@ -35,20 +35,14 @@ public:
      *
      * @return Previous slot index
      */
-    [[nodiscard]] int getPreviousSlot() const
-    {
-        return previous_;
-    }
+    [[nodiscard]] int getPreviousSlot() const { return previous_; }
 
     /**
      * @brief Gets the new held slot index.
      *
      * @return New slot index
      */
-    [[nodiscard]] int getNewSlot() const
-    {
-        return current_;
-    }
+    [[nodiscard]] int getNewSlot() const { return current_; }
 
 private:
     int previous_;

@@ -83,10 +83,7 @@ public:
         }
     }
 
-    void trace(const std::string_view message) const
-    {
-        log(Trace, message);
-    }
+    void trace(const std::string_view message) const { log(Trace, message); }
 
     template <typename... Args, std::enable_if_t<(sizeof...(Args) > 0), int> = 0>
     void trace(const fmt::format_string<Args...> format, Args &&...args) const
@@ -94,10 +91,7 @@ public:
         log(Trace, format, std::forward<Args>(args)...);
     }
 
-    void debug(const std::string_view message) const
-    {
-        log(Debug, message);
-    }
+    void debug(const std::string_view message) const { log(Debug, message); }
 
     template <typename... Args, std::enable_if_t<(sizeof...(Args) > 0), int> = 0>
     void debug(const fmt::format_string<Args...> format, Args &&...args) const
@@ -105,10 +99,7 @@ public:
         log(Debug, format, std::forward<Args>(args)...);
     }
 
-    void info(const std::string_view message) const
-    {
-        log(Info, message);
-    }
+    void info(const std::string_view message) const { log(Info, message); }
 
     template <typename... Args, std::enable_if_t<(sizeof...(Args) > 0), int> = 0>
     void info(const fmt::format_string<Args...> format, Args &&...args) const
@@ -116,10 +107,7 @@ public:
         log(Info, format, std::forward<Args>(args)...);
     }
 
-    void warning(const std::string_view message) const
-    {
-        log(Warning, message);
-    }
+    void warning(const std::string_view message) const { log(Warning, message); }
 
     template <typename... Args, std::enable_if_t<(sizeof...(Args) > 0), int> = 0>
     void warning(const fmt::format_string<Args...> format, Args &&...args) const
@@ -127,10 +115,7 @@ public:
         log(Warning, format, std::forward<Args>(args)...);
     }
 
-    void error(const std::string_view message) const
-    {
-        log(Error, message);
-    }
+    void error(const std::string_view message) const { log(Error, message); }
 
     template <typename... Args, std::enable_if_t<(sizeof...(Args) > 0), int> = 0>
     void error(const fmt::format_string<Args...> format, Args &&...args) const
@@ -138,10 +123,7 @@ public:
         log(Error, format, std::forward<Args>(args)...);
     }
 
-    void critical(const std::string_view message) const
-    {
-        log(Critical, message);
-    }
+    void critical(const std::string_view message) const { log(Critical, message); }
 
     template <typename... Args, std::enable_if_t<(sizeof...(Args) > 0), int> = 0>
     void critical(const fmt::format_string<Args...> format, Args &&...args) const

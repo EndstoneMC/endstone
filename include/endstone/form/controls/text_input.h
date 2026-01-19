@@ -38,10 +38,7 @@ public:
      *
      * @return The label of the text input field.
      */
-    [[nodiscard]] Message getLabel() const
-    {
-        return label_;
-    }
+    [[nodiscard]] Message getLabel() const { return label_; }
 
     /**
      * @brief Sets the label of the text input field.
@@ -60,10 +57,7 @@ public:
      *
      * @return The placeholder of the text input field.
      */
-    [[nodiscard]] Message getPlaceholder() const
-    {
-        return placeholder_;
-    }
+    [[nodiscard]] Message getPlaceholder() const { return placeholder_; }
 
     /**
      * @brief Sets the placeholder of the text input field.
@@ -82,10 +76,7 @@ public:
      *
      * @return The default text of the text input field.
      */
-    [[nodiscard]] std::optional<std::string> getDefaultValue() const
-    {
-        return default_text_;
-    }
+    [[nodiscard]] std::optional<std::string> getDefaultValue() const { return default_text_; }
 
     /**
      * @brief Sets the default text of the text input field.

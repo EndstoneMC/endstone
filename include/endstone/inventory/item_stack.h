@@ -58,10 +58,7 @@ public:
 
 protected:
     friend class core::EndstoneItemStack;
-    [[nodiscard]] virtual bool isEndstoneItemStack() const
-    {
-        return false;
-    }
+    [[nodiscard]] virtual bool isEndstoneItemStack() const { return false; }
 
 public:
     /**
@@ -97,10 +94,7 @@ public:
      *
      * @return Amount of items in this stack
      */
-    [[nodiscard]] virtual int getAmount() const
-    {
-        return amount_;
-    }
+    [[nodiscard]] virtual int getAmount() const { return amount_; }
 
     /**
      * @brief Sets the amount of items in this stack
@@ -119,40 +113,28 @@ public:
      *
      * @return Data for this item
      */
-    [[nodiscard]] virtual int getData() const
-    {
-        return data_;
-    }
+    [[nodiscard]] virtual int getData() const { return data_; }
 
     /**
      * @brief Sets the data for this stack of items
      *
      * @param data New data for this item
      */
-    virtual void setData(const int data)
-    {
-        data_ = data;
-    }
+    virtual void setData(const int data) { data_ = data; }
 
     /**
      * @brief Get the translation key, suitable for use in a translation component.
      *
      * @return the translation key
      */
-    [[nodiscard]] virtual std::string getTranslationKey() const
-    {
-        return getItemType().getTranslationKey(getData());
-    }
+    [[nodiscard]] virtual std::string getTranslationKey() const { return getItemType().getTranslationKey(getData()); }
 
     /**
      * @brief Get the maximum stack size for this item.
      *
      * @return The maximum you can stack this item to.
      */
-    [[nodiscard]] virtual int getMaxStackSize() const
-    {
-        return getItemType().getMaxStackSize();
-    }
+    [[nodiscard]] virtual int getMaxStackSize() const { return getItemType().getMaxStackSize(); }
 
     bool operator==(const ItemStack &other) const
     {
@@ -162,10 +144,7 @@ public:
         return getAmount() == other.getAmount() && isSimilar(other);
     }
 
-    bool operator!=(const ItemStack &other) const
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const ItemStack &other) const { return !(*this == other); }
 
     /**
      * @brief Checks if the two stacks are equal, but does not consider stack size (amount).
@@ -210,15 +189,9 @@ public:
      * @param meta new ItemMeta, or null to indicate meta data be cleared.
      * @return True if successfully applied ItemMeta
      */
-    virtual bool setItemMeta(ItemMeta *meta)
-    {
-        return setItemMeta0(meta, type_);
-    }
+    virtual bool setItemMeta(ItemMeta *meta) { return setItemMeta0(meta, type_); }
 
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> clone() const
-    {
-        return std::make_unique<ItemStack>(*this);
-    }
+    [[nodiscard]] virtual std::unique_ptr<ItemStack> clone() const { return std::make_unique<ItemStack>(*this); }
 
     /**
      * @brief Serializes this ItemStack into a Named Binary Tag (NBT)

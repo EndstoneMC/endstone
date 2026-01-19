@@ -32,30 +32,21 @@ public:
     }
 
     inline static const std::string NAME = "PacketReceiveEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * @brief Gets the ID of the packet.
      *
      * @return The packet ID.
      */
-    [[nodiscard]] int getPacketId() const
-    {
-        return packet_id_;
-    }
+    [[nodiscard]] int getPacketId() const { return packet_id_; }
 
     /**
      * @brief Gets the raw packet data **excluding** the header.
      *
      * @return The packet payload data.
      */
-    [[nodiscard]] std::string_view getPayload() const
-    {
-        return payload_;
-    }
+    [[nodiscard]] std::string_view getPayload() const { return payload_; }
 
     /**
      * @brief Sets the raw packet data **excluding** the header.
@@ -75,20 +66,14 @@ public:
      *
      * @return Player who is involved in this event
      */
-    [[nodiscard]] Player *getPlayer() const
-    {
-        return player_;
-    }
+    [[nodiscard]] Player *getPlayer() const { return player_; }
 
     /**
      * @brief Gets the network address to which this packet is being sent.
      *
      * @return The SocketAddress of the destination client.
      */
-    [[nodiscard]] SocketAddress getAddress() const
-    {
-        return address_;
-    }
+    [[nodiscard]] SocketAddress getAddress() const { return address_; }
 
     /**
      * @brief Gets the SubClient ID.
@@ -97,10 +82,7 @@ public:
      *
      * @return The SubClient ID.
      */
-    [[nodiscard]] int getSubClientId() const
-    {
-        return sub_client_id_;
-    }
+    [[nodiscard]] int getSubClientId() const { return sub_client_id_; }
 
 private:
     Player *player_;

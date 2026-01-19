@@ -31,20 +31,14 @@ public:
     ~PlayerEmoteEvent() override = default;
 
     inline static const std::string NAME = "PlayerEmoteEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * @brief Gets the emote piece ID
      *
      * @return The emote piece ID
      */
-    [[nodiscard]] std::string getEmoteId() const
-    {
-        return emote_id_;
-    }
+    [[nodiscard]] std::string getEmoteId() const { return emote_id_; }
 
     /**
      * @brief Gets the muted state for the emote.
@@ -53,10 +47,7 @@ public:
      *
      * @return true if the emote is muted, false otherwise.
      */
-    [[nodiscard]] bool isMuted() const
-    {
-        return muted_;
-    }
+    [[nodiscard]] bool isMuted() const { return muted_; }
 
     /**
      * @brief Sets the muted state for the emote.
@@ -65,10 +56,7 @@ public:
      *
      * @param muted true to mute the emote and disable chat messages, false to unmute it.
      */
-    void setMuted(bool muted)
-    {
-        muted_ = muted;
-    }
+    void setMuted(bool muted) { muted_ = muted; }
 
 private:
     std::string emote_id_;

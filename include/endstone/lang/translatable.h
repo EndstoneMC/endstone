@@ -35,30 +35,21 @@ public:
      *
      * @return the text to be translated
      */
-    [[nodiscard]] const std::string &getText() const
-    {
-        return text_;
-    }
+    [[nodiscard]] const std::string &getText() const { return text_; }
 
     /**
      * @brief Get the translation parameters.
      *
      * @return the translation parameters
      */
-    [[nodiscard]] const std::vector<std::string> &getParameters() const
-    {
-        return params_;
-    }
+    [[nodiscard]] const std::vector<std::string> &getParameters() const { return params_; }
 
     /**
      * @brief Check if the message to be translated is empty
      *
      * @return true if the message to be translated is empty, false otherwise
      */
-    [[nodiscard]] bool empty() const
-    {
-        return text_.empty();
-    }
+    [[nodiscard]] bool empty() const { return text_.empty(); }
 
 private:
     std::string text_;

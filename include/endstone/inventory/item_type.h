@@ -67,30 +67,15 @@ public:
      */
     [[nodiscard]] virtual int getMaxDurability() const = 0;
 
-    bool operator==(const ItemTypeId &other) const
-    {
-        return getId() == other;
-    }
+    bool operator==(const ItemTypeId &other) const { return getId() == other; }
 
-    bool operator!=(const ItemTypeId &other) const
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const ItemTypeId &other) const { return !(*this == other); }
 
-    bool operator==(const ItemType &other) const
-    {
-        return getId() == other.getId();
-    }
+    bool operator==(const ItemType &other) const { return getId() == other.getId(); }
 
-    bool operator!=(const ItemType &other) const
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const ItemType &other) const { return !(*this == other); }
 
-    operator ItemTypeId() const
-    {
-        return getId();
-    }
+    operator ItemTypeId() const { return getId(); }
 };
 }  // namespace endstone
 

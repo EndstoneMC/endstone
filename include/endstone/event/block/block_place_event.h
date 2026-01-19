@@ -37,50 +37,35 @@ public:
     ~BlockPlaceEvent() override = default;
 
     inline static const std::string NAME = "BlockPlaceEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * @brief Gets the player who placed the block involved in this event.
      *
      * @return The Player who placed the block involved in this event
      */
-    [[nodiscard]] Player &getPlayer() const
-    {
-        return player_;
-    }
+    [[nodiscard]] Player &getPlayer() const { return player_; }
 
     /**
      * @brief Gets the BlockState for the block which was placed.
      *
      * @return The BlockState for the block which was placed.
      */
-    [[nodiscard]] BlockState &getBlockPlacedState() const
-    {
-        return *placed_block_;
-    }
+    [[nodiscard]] BlockState &getBlockPlacedState() const { return *placed_block_; }
 
     /**
      * @brief Gets the block which was replaced.
      *
      * @return The Block which was replaced.
      */
-    [[nodiscard]] Block &getBlockReplaced() const
-    {
-        return getBlock();
-    }
+    [[nodiscard]] Block &getBlockReplaced() const { return getBlock(); }
 
     /**
      * @brief Gets the block that this block was placed against
      *
      * @return Block the block that the new block was placed against
      */
-    [[nodiscard]] Block &getBlockAgainst() const
-    {
-        return *placed_against_;
-    }
+    [[nodiscard]] Block &getBlockAgainst() const { return *placed_against_; }
 
 private:
     std::unique_ptr<BlockState> placed_block_;

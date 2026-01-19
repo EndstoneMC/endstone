@@ -36,30 +36,21 @@ public:
      *
      * @return The skin that will be applied.
      */
-    [[nodiscard]] Skin getNewSkin() const
-    {
-        return new_skin_;
-    }
+    [[nodiscard]] Skin getNewSkin() const { return new_skin_; }
 
     /**
      * @brief Gets the message to send to all online players for this skin change.
      *
      * @return Message to appear to other players on the server.
      */
-    [[nodiscard]] std::optional<Message> getSkinChangeMessage() const
-    {
-        return message_;
-    }
+    [[nodiscard]] std::optional<Message> getSkinChangeMessage() const { return message_; }
 
     /**
      * @brief Sets the message to send to all online players for this skin change.
      *
      * @param message Message to appear to other players on the server.
      */
-    void setSkinChangeMessage(std::optional<Message> message)
-    {
-        message_ = std::move(message);
-    }
+    void setSkinChangeMessage(std::optional<Message> message) { message_ = std::move(message); }
 
 private:
     Skin new_skin_;

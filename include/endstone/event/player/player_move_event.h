@@ -38,40 +38,28 @@ public:
      *
      * @return Location the player moved from
      */
-    [[nodiscard]] const Location &getFrom() const
-    {
-        return from_;
-    }
+    [[nodiscard]] const Location &getFrom() const { return from_; }
 
     /**
      * @brief Sets the location to mark as where the player moved from
      *
      * @param from New location to mark as the players previous location
      */
-    void setFrom(const Location &from)
-    {
-        from_ = from;
-    }
+    void setFrom(const Location &from) { from_ = from; }
 
     /**
      * @brief Gets the location this player moved to
      *
      * @return Location the player moved to
      */
-    [[nodiscard]] const Location &getTo() const
-    {
-        return to_;
-    }
+    [[nodiscard]] const Location &getTo() const { return to_; }
 
     /**
      * @brief Sets the location that this player will move to
      *
      * @param to New Location this player will move to
      */
-    void setTo(const Location &to)
-    {
-        to_ = to;
-    }
+    void setTo(const Location &to) { to_ = to; }
 
     Location from_;
     Location to_;

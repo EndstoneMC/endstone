@@ -24,17 +24,14 @@ namespace endstone {
  */
 class ChunkEvent : public DimensionEvent {
 public:
-    explicit ChunkEvent(Chunk &chunk) : DimensionEvent(chunk.getDimension()), chunk_(chunk){};
+    explicit ChunkEvent(Chunk &chunk) : DimensionEvent(chunk.getDimension()), chunk_(chunk) {};
 
     /**
      * Gets the chunk being loaded/unloaded
      *
      * @return Chunk that triggered this event
      */
-    [[nodiscard]] Chunk &getChunk() const
-    {
-        return chunk_;
-    }
+    [[nodiscard]] Chunk &getChunk() const { return chunk_; }
 
 private:
     Chunk &chunk_;

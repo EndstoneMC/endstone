@@ -32,10 +32,7 @@ public:
      *
      * @return Actor which is involved in this event
      */
-    [[nodiscard]] ActorType &getActor() const
-    {
-        return actor_;
-    }
+    [[nodiscard]] ActorType &getActor() const { return actor_; }
 
     // TODO(event): add getActorType method
 

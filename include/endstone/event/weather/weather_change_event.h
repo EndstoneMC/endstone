@@ -32,16 +32,10 @@ public:
      *
      * @return true if the weather is being set to raining, false otherwise
      */
-    [[nodiscard]] bool toWeatherState() const
-    {
-        return to_;
-    }
+    [[nodiscard]] bool toWeatherState() const { return to_; }
 
     inline static const std::string NAME = "WeatherChangeEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
 private:
     bool to_;

@@ -45,20 +45,14 @@ public:
      *
      * @return an ItemStack for the item being consumed
      */
-    [[nodiscard]] std::unique_ptr<ItemStack> getItem() const
-    {
-        return item_.clone();
-    }
+    [[nodiscard]] std::unique_ptr<ItemStack> getItem() const { return item_.clone(); }
 
     /**
      * @brief Get the hand used to consume the item.
      *
      * @return the hand
      */
-    [[nodiscard]] EquipmentSlot getHand() const
-    {
-        return hand_;
-    }
+    [[nodiscard]] EquipmentSlot getHand() const { return hand_; }
 
 private:
     const ItemStack &item_;

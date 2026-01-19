@@ -30,30 +30,21 @@ public:
     ~PlayerCommandEvent() override = default;
 
     inline static const std::string NAME = "PlayerCommandEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * Gets the command that the player is attempting to send.
      *
      * @return Command the player is attempting to send
      */
-    [[nodiscard]] std::string getCommand() const
-    {
-        return command_;
-    }
+    [[nodiscard]] std::string getCommand() const { return command_; }
 
     /**
      * Sets the command that the player will send.
      *
      * @param command New command that the player will send
      */
-    void setCommand(std::string command)
-    {
-        command_ = std::move(command);
-    }
+    void setCommand(std::string command) { command_ = std::move(command); }
 
 private:
     std::string command_;

@@ -38,10 +38,7 @@ public:
      *
      * @return true if this event is cancelled
      */
-    [[nodiscard]] bool isCancelled() const override
-    {
-        return EventType::cancelled_;
-    }
+    [[nodiscard]] bool isCancelled() const override { return EventType::cancelled_; }
 
     /**
      * @brief Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will
@@ -49,24 +46,15 @@ public:
      *
      * @param cancel true if you wish to cancel this event
      */
-    void setCancelled(bool cancel) override
-    {
-        EventType::cancelled_ = cancel;
-    }
+    void setCancelled(bool cancel) override { EventType::cancelled_ = cancel; }
 
     /**
      * @brief Cancel this event. A cancelled event will not be executed in the server, but will still pass to other
      * plugins.
      */
-    void cancel() final
-    {
-        setCancelled(true);
-    }
+    void cancel() final { setCancelled(true); }
 
 private:
-    [[nodiscard]] bool isCancellable() const final
-    {
-        return true;
-    }
+    [[nodiscard]] bool isCancellable() const final { return true; }
 };
 }  // namespace endstone

@@ -35,10 +35,7 @@ public:
      *
      * @return The text of the label.
      */
-    [[nodiscard]] Message getText() const
-    {
-        return text_;
-    }
+    [[nodiscard]] Message getText() const { return text_; }
 
     /**
      * @brief Sets the text of the label.
