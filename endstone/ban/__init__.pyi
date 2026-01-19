@@ -60,7 +60,7 @@ class IpBanList:
     """
     Represents a ban list containing banned IP addresses.
     """
-    def get_ban_entry(self, address: str) -> IpBanEntry:
+    def get_ban_entry(self, address: str) -> IpBanEntry | None:
         """
         Gets a BanEntry by IP address.
         """
@@ -121,7 +121,7 @@ class PlayerBanList:
     """
     Represents a ban list containing banned players.
     """
-    def get_ban_entry(self, name: str, uuid: uuid.UUID | None = None, xuid: str | None = None) -> PlayerBanEntry:
+    def get_ban_entry(self, name: str, uuid: uuid.UUID | None = None, xuid: str | None = None) -> PlayerBanEntry | None:
         """
         Gets a BanEntry by player name, UUID, or XUID.
         """
