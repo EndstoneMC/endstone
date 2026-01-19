@@ -32,8 +32,7 @@ void BedrockLog::LogDetails::_log_va(LogAreaID area, unsigned int priority, cons
         return;
     }
 
-    const auto name = magic_enum::enum_name(area);
-    const auto &logger = endstone::core::LoggerFactory::getLogger(std::string(name));
+    static auto &logger = endstone::core::LoggerFactory::getLogger("");
     endstone::Logger::Level log_level;
     switch (priority) {
     case Bedrock::LogLevel::Verbose:
