@@ -25,7 +25,7 @@ def test_get_loop_returns_running_loop() -> None:
 def test_get_loop_runs_on_background_thread() -> None:
     """Verify the event loop runs on a separate thread, not the main thread."""
     main_thread_id = threading.current_thread().ident
-    loop = endstone.asyncio.get_loop()
+    endstone.asyncio.get_loop()  # ensure loop is created
 
     captured_thread_id = None
 

@@ -1,8 +1,6 @@
 import pytest
-
 from endstone import Server
 from endstone.lang import Language, Translatable
-
 
 # =============================================================================
 # Section 1: Translatable Construction Tests

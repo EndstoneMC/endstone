@@ -648,8 +648,8 @@ class TestBanEdgeCases:
     def test_ban_same_player_twice(self, player_ban_list: PlayerBanList) -> None:
         """Test banning the same player twice updates the entry."""
         player_name = "double_ban_test"
-        entry1 = player_ban_list.add_ban(player_name, reason="First ban")
-        entry2 = player_ban_list.add_ban(player_name, reason="Second ban")
+        player_ban_list.add_ban(player_name, reason="First ban")
+        player_ban_list.add_ban(player_name, reason="Second ban")
 
         # Should update existing entry
         entry = player_ban_list.get_ban_entry(player_name)
