@@ -163,6 +163,7 @@ void EndstoneBossBar::send(BossEventUpdateType event_type, Player &player)
     pk->color = static_cast<BossBarColor>(color_);
     pk->overlay = static_cast<BossBarOverlay>(style_);
     pk->darken_screen = hasFlag(BarFlag::DarkenSky);
+    pk->create_world_fog = hasFlag(BarFlag::CreateFog);
     handle.sendNetworkPacket(*packet);
 }
 

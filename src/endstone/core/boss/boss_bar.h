@@ -61,7 +61,7 @@ private:
     float progress_{1.0F};
     BarColor color_;
     BarStyle style_;
-    std::bitset<static_cast<int>(BarFlag::Count)> flags_;
+    std::bitset<2> flags_;
     bool visible_{true};
     mutable std::unordered_set<UUID> players_;
 };

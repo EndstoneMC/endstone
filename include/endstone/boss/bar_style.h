@@ -15,7 +15,6 @@
 #pragma once
 
 namespace endstone {
-
 enum class BarStyle {
     /**
      * @brief Makes the boss bar solid (no segments)
@@ -38,5 +37,4 @@ enum class BarStyle {
      */
     Segmented20,
 };
-
 }  // namespace endstone

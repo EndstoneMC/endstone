@@ -15,7 +15,6 @@
 #pragma once
 
 namespace endstone {
-
 enum class BarColor {
     Pink = 0,
     Blue = 1,
@@ -26,5 +25,4 @@ enum class BarColor {
     RebeccaPurple = 6,
     White = 7,
 };
-
 }  // namespace endstone

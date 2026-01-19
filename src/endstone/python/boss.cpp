@@ -32,15 +32,16 @@ void init_boss(py::module_ &m)
         .finalize();
 
     py::native_enum<BarFlag>(m, "BarFlag", "enum.Enum")  //
-        .value("DARKEN_SKY", BarFlag::DarkenSky)
+        .value("DARKEN_SKY", BarFlag::DarkenSky, "Darkens the sky like during fighting a wither.")
+        .value("CREATE_FOG", BarFlag::CreateFog, "Creates fog around the world.")
         .finalize();
 
     py::native_enum<BarStyle>(m, "BarStyle", "enum.Enum")  //
-        .value("SOLID", BarStyle::Solid)
-        .value("SEGMENTED_6", BarStyle::Segmented6)
-        .value("SEGMENTED_10", BarStyle::Segmented10)
-        .value("SEGMENTED_12", BarStyle::Segmented12)
-        .value("SEGMENTED_20", BarStyle::Segmented20)
+        .value("SOLID", BarStyle::Solid, "Makes the boss bar solid (no segments)")
+        .value("SEGMENTED_6", BarStyle::Segmented6, "Splits the boss bar into 6 segments")
+        .value("SEGMENTED_10", BarStyle::Segmented10, "Splits the boss bar into 10 segments")
+        .value("SEGMENTED_12", BarStyle::Segmented12, "Splits the boss bar into 12 segments")
+        .value("SEGMENTED_20", BarStyle::Segmented20, "Splits the boss bar into 20 segments")
         .finalize();
 
     py::class_<BossBar>(m, "BossBar", "Represents a boss bar that is displayed to players.")

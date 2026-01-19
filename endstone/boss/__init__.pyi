@@ -20,13 +20,35 @@ class BarColor(enum.Enum):
 
 class BarFlag(enum.Enum):
     DARKEN_SKY = 0
+    """
+    Darkens the sky like during fighting a wither.
+    """
+    CREATE_FOG = 1
+    """
+    Creates fog around the world.
+    """
 
 class BarStyle(enum.Enum):
     SOLID = 0
+    """
+    Makes the boss bar solid (no segments)
+    """
     SEGMENTED_6 = 1
+    """
+    Splits the boss bar into 6 segments
+    """
     SEGMENTED_10 = 2
+    """
+    Splits the boss bar into 10 segments
+    """
     SEGMENTED_12 = 3
+    """
+    Splits the boss bar into 12 segments
+    """
     SEGMENTED_20 = 4
+    """
+    Splits the boss bar into 20 segments
+    """
 
 class BossBar:
     """

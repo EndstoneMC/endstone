@@ -22,9 +22,7 @@
 #include "endstone/boss/bar_style.h"
 
 namespace endstone {
-
 class Player;
-
 /**
  * @brief Represents a boss bar that is displayed to players.
  **/

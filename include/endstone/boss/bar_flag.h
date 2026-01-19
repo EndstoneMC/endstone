@@ -15,13 +15,14 @@
 #pragma once
 
 namespace endstone {
-
 enum class BarFlag {
     /**
      * @brief Darkens the sky like during fighting a wither.
      */
     DarkenSky,
-    Count,
+    /**
+     * @brief Creates fog around the world.
+     */
+    CreateFog,
 };
-
 }  // namespace endstone
