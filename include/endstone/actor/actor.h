@@ -247,6 +247,31 @@ protected:
 
 private:
     std::weak_ptr<core::EndstoneActor> impl_;
+
+public:
+    // Permissible
+    [[nodiscard]] PermissionLevel getPermissionLevel() const override { return impl().getPermissionLevel(); }
+    [[nodiscard]] bool isPermissionSet(std::string name) const override { return impl().isPermissionSet(name); }
+    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override { return impl().isPermissionSet(perm); }
+    [[nodiscard]] bool hasPermission(std::string name) const override { return impl().hasPermission(name); }
+    [[nodiscard]] bool hasPermission(const Permission &perm) const override { return impl().hasPermission(perm); }
+    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override
+    {
+        return impl().addAttachment(plugin, name, value);
+    }
+    PermissionAttachment *addAttachment(Plugin &plugin) override { return impl().addAttachment(plugin); }
+    bool removeAttachment(PermissionAttachment &attachment) override { return impl().removeAttachment(attachment); }
+    void recalculatePermissions() override { impl().recalculatePermissions(); }
+    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override
+    {
+        return impl().getEffectivePermissions();
+    }
+
+    // CommandSender
+    void sendMessage(const Message &message) const override { impl().sendMessage(message); }
+    void sendErrorMessage(const Message &message) const override { impl().sendErrorMessage(message); }
+    [[nodiscard]] Server &getServer() const override { return impl().getServer(); }
+    [[nodiscard]] std::string getName() const override { return impl().getName(); }
 };
 }  // namespace endstone
 
