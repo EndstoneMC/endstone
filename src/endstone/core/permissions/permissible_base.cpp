@@ -94,31 +94,21 @@ bool PermissibleBase::hasPermission(PermissionDefault default_value, PermissionL
     }
 }
 
-PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin, const std::string &name, bool value)
+PermissionAttachment &PermissibleBase::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
-    if (name.empty()) {
-        plugin.getLogger().error("Could not add PermissionAttachment: Permission name cannot be empty");
-        return nullptr;
-    }
-
-    auto *result = addAttachment(plugin);
-    if (result) {
-        result->setPermission(name, value);
-        recalculatePermissions();
-    }
-
+    Preconditions::checkArgument(!name.empty(), "Permission name cannot be empty");
+    Preconditions::checkArgument(plugin.isEnabled(), "Plugin {} is disabled", plugin.getDescription().getFullName());
+    auto &result = addAttachment(plugin);
+    result.setPermission(name, value);
+    recalculatePermissions();
     return result;
 }
 
-PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin)
+PermissionAttachment &PermissibleBase::addAttachment(Plugin &plugin)
 {
-    if (!plugin.isEnabled()) {
-        plugin.getLogger().error("Could not add PermissionAttachment: Plugin is disabled");
-        return nullptr;
-    }
-
+    Preconditions::checkArgument(plugin.isEnabled(), "Plugin {} is disabled", plugin.getDescription().getFullName());
     const auto &it = attachments_.emplace_back(std::make_unique<PermissionAttachment>(plugin, parent_));
-    auto *result = it.get();
+    auto &result = *it.get();
     recalculatePermissions();
     return result;
 }
