@@ -93,6 +93,7 @@ struct PlayerOpenContainerEvent {
     ActorUniqueID entity_unique_id;
 };
 struct PlayerCloseContainerEvent {};
+struct PlayerHasInvalidContainerEvent {};
 struct PlayerShootArrowEvent {
     WeakRef<EntityContext> player;
     WeakRef<EntityContext> arrow;
@@ -246,12 +247,12 @@ struct PlayerGameplayEvent<void>
           PlayerSkinLoadedClientEvent, PlayerAddEvent, PlayerAddExpEvent, PlayerAddLevelEvent, PlayerArmorExchangeEvent,
           PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent, PlayerEatFoodEvent, PlayerDamageEvent,
           PlayerDisconnectEvent, PlayerFormCloseEvent, PlayerFormResponseEvent, PlayerInputModeChangeEvent,
-          PlayerInitialSpawnEvent, PlayerOpenContainerEvent, PlayerCloseContainerEvent, PlayerShootArrowEvent,
-          PlayerSwingStartEvent, PlayerRespawnEvent, PlayerSleepStateChangeEvent, PlayerStopLoadingEvent,
-          PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
-          PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent, PlayerInteractWithBlockAfterEvent,
-          PlayerEmoteEvent, PlayerScriptInputEvent, PlayerInventoryItemChangeEvent, PlayerHotbarSelectedSlotChangeEvent,
-          PlayerInputPermissionCategoryChangeEvent> {};
+          PlayerInitialSpawnEvent, PlayerOpenContainerEvent, PlayerCloseContainerEvent, PlayerHasInvalidContainerEvent,
+          PlayerShootArrowEvent, PlayerSwingStartEvent, PlayerRespawnEvent, PlayerSleepStateChangeEvent,
+          PlayerStopLoadingEvent, PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent,
+          PlayerDimensionChangeBeforeEvent, PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent,
+          PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, PlayerScriptInputEvent, PlayerInventoryItemChangeEvent,
+          PlayerHotbarSelectedSlotChangeEvent, PlayerInputPermissionCategoryChangeEvent> {};
 static_assert(sizeof(PlayerGameplayEvent<void>) == 384);
 
 template <>

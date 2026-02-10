@@ -19,6 +19,7 @@
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/world/actor/actor_damage_source.h"
 #include "bedrock/world/actor/actor_definition_event.h"
+#include "bedrock/world/actor/actor_heal_cause.h"
 #include "bedrock/world/actor/armor_slot.h"
 #include "bedrock/world/effect/mob_effect_instance.h"
 #include "bedrock/world/events/block_source_handle.h"
@@ -28,12 +29,32 @@
 #include "bedrock/world/item/item_instance.h"
 #include "bedrock/world/phys/hit_result.h"
 
+struct ActorBeforeAcquireItemEvent {
+    Actor &actor;
+    Actor &item;
+    int amount_acquired;
+    ItemAcquisitionMethod acquire_method;
+    WeakEntityRef secondary_actor_context;
+};
+
 struct ActorAcquiredItemEvent {
     Actor &actor;
     const ItemInstance item;
     int amount_acquired;
     ItemAcquisitionMethod acquire_method;
     WeakEntityRef secondary_actor_context;
+};
+
+struct ActorBeforeHurtEvent {
+    const Actor &mEntity;
+    const ActorDamageSource &mSource;
+    float mDamage;
+};
+
+struct ActorBeforeHealEvent {
+    const Actor &mEntity;
+    ActorHealCause mCause;
+    float mHealing;
 };
 
 struct ActorAddEffectEvent {
@@ -76,6 +97,12 @@ struct ActorHurtEvent {
     std::shared_ptr<ActorDamageSource> source;
     float damage;
     int absorbed_damage;
+};
+
+struct ActorHealEvent {
+    WeakEntityRef mEntity;
+    ActorHealCause mCause;
+    float mHealing;
 };
 
 struct ActorHealthChangedEvent {
@@ -149,6 +176,7 @@ struct ActorPlacedItemEvent {
 struct ActorDroppedItemEvent {
     WeakEntityRef entity;
     const ItemInstance item;
+    WeakEntityRef item_entity;
 };
 
 struct ActorCarriedItemChangedEvent {
@@ -191,7 +219,7 @@ template <>
 struct ActorGameplayEvent<void>
     : ConstEventVariant<ActorAcquiredItemEvent, ActorAnimationChangedEvent, ActorAttackEvent,
                         ActorCarriedItemChangedEvent, ActorDefinitionTriggeredEvent, ActorDefinitionEndedEvent,
-                        ActorDiedEvent, ActorDroppedItemEvent, ActorEquippedArmorEvent, ActorHurtEvent,
+                        ActorDiedEvent, ActorDroppedItemEvent, ActorEquippedArmorEvent, ActorHurtEvent, ActorHealEvent,
                         ActorHealthChangedEvent, ActorKilledEvent, ActorPlacedItemEvent, ActorRemovedEvent,
                         ActorRemoveEffectEvent, ActorStartRidingEvent, ActorUseItemEvent, KnockBackEvent,
                         MountTamingEvent, ActorItemEventAfterDroppedItem> {};
@@ -208,4 +236,5 @@ struct MutableActorGameplayEvent<void> : MutableEventVariant<ActorItemEventBefor
 
 template <>
 struct MutableActorGameplayEvent<CoordinatorResult>
-    : MutableEventVariant<ActorDefinitionStartedEvent, ActorAddEffectEvent> {};
+    : MutableEventVariant<ActorDefinitionStartedEvent, ActorAddEffectEvent, ActorBeforeAcquireItemEvent,
+                          ActorBeforeHealEvent, ActorBeforeHurtEvent> {};

@@ -26,6 +26,7 @@
 
 std::optional<float> HealthAttributeDelegate::change(float old_value, float new_value, const AttributeBuff &buff)
 {
+    // TODO(refactor): use ActorBeforeHurtEvent?
     const auto damage = old_value - new_value;
     if (damage <= 0) {
         return ENDSTONE_HOOK_CALL_ORIGINAL(&HealthAttributeDelegate::change, this, old_value, new_value, buff);
