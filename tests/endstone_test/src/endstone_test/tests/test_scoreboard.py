@@ -58,7 +58,7 @@ def test_list_objectives(server: Server, scoreboard: Scoreboard) -> None:
     )
     objective = scoreboard.get_objective("test_objective")
     assert objective is not None
-    assert objective in scoreboard.objectives
+    assert objective.name in [o.name for o in scoreboard.objectives]
 
 
 def test_scoreboard_value(server: Server, scoreboard: Scoreboard) -> None:
