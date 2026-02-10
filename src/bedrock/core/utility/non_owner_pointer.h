@@ -49,9 +49,6 @@ public:
 
     void reset()
     {
-        if (control_block_ && !control_block_->is_valid) {
-            throw std::runtime_error("Resetting a dangling pointer!");
-        }
         control_block_.reset();
         pointer_ = nullptr;
     }
