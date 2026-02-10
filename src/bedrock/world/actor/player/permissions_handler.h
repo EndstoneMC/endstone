@@ -21,4 +21,6 @@ class PermissionsHandler {
 public:
     CommandPermissionLevel command_permissions{CommandPermissionLevel::Any};
     PlayerPermissionLevel player_permissions{PlayerPermissionLevel::Member};
+    std::shared_ptr<Bedrock::PubSub::Publisher<void(), Bedrock::PubSub::ThreadModel::SingleThreaded>>
+        client_player_permissions_publisher;
 };

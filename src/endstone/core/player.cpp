@@ -887,6 +887,7 @@ void EndstonePlayer::updateAbilities() const
 
 void EndstonePlayer::checkOpStatus()
 {
+    // TODO(fixme): replace me with client_player_permissions_publisher in PermissionsHandler
     if (last_op_status_ != isOp()) {
         recalculatePermissions();
         updateCommands();
