@@ -1,5 +1,4 @@
 import pytest
-
 from endstone import Server
 from endstone.command import (
     Command,
@@ -10,7 +9,6 @@ from endstone.command import (
 )
 from endstone.permissions import PermissionLevel
 from endstone.plugin import Plugin
-
 
 # =============================================================================
 # Fixtures
