@@ -56,6 +56,7 @@
 #include "bedrock/world/events/scripting_event_coordinator.h"
 #include "bedrock/world/events/server_network_event_coordinator.h"
 #include "bedrock/world/events/server_player_event_coordinator.h"
+#include "bedrock/world/gamemode/game_mode_messager.h"
 #include "bedrock/world/item/crafting/recipes.h"
 #include "bedrock/world/item/registry/item_registry_ref.h"
 #include "bedrock/world/level/biome/registry/biome_registry.h"
@@ -224,7 +225,7 @@ public:
     virtual void setDefaultGameType(GameType) = 0;
     [[nodiscard]] virtual GameType getDefaultGameType() const = 0;
     virtual void setDifficulty(Difficulty) = 0;
-    virtual GameModeExt::MessengerFactory createMessengerFactory() const = 0;
+    [[nodiscard]] virtual GameModeExt::MessengerFactory createMessengerFactory() const = 0;
     virtual void setMultiplayerGameIntent(bool) = 0;
     [[nodiscard]] virtual bool getMultiplayerGameIntent() const = 0;
     virtual void setMultiplayerGame(bool) = 0;

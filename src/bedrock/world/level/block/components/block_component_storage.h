@@ -19,6 +19,7 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/core/utility/type_id.h"
 #include "bedrock/platform/brstd/flat_set.h"
+#include "bedrock/platform/brstd/flat_map.h"
 
 class BlockComponentStorage {
 public:

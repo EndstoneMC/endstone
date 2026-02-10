@@ -46,15 +46,15 @@ struct ActorAcquiredItemEvent {
 };
 
 struct ActorBeforeHurtEvent {
-    const Actor &mEntity;
-    const ActorDamageSource &mSource;
-    float mDamage;
+    const Actor &entity;
+    const ActorDamageSource &source;
+    float damage;
 };
 
 struct ActorBeforeHealEvent {
-    const Actor &mEntity;
-    ActorHealCause mCause;
-    float mHealing;
+    const Actor &entity;
+    ActorHealCause cause;
+    float healing;
 };
 
 struct ActorAddEffectEvent {

@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <memory>
+
+#include "bedrock/core/utility/pub_sub/publisher.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/server/commands/player_permission_level.h"
 

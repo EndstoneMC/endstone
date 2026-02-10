@@ -128,6 +128,7 @@ class InternalComponentRegistry;
 class InvalidPacks {};
 class IOptionsReader;
 class IServerNetworkController;
+class ISubChunkLighter {};
 class ItemComponent;
 class ItemComponentPacket;
 class ItemData;

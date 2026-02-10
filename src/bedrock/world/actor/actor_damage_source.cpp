@@ -18,7 +18,10 @@
 
 #include "actor.h"
 
-ActorDamageSource::ActorDamageSource(ActorDamageCause cause) : cause_(cause) {}
+ActorDamageSource::ActorDamageSource(ActorDamageCause cause, std::string death_message_override)
+    : cause_(cause), death_message_override_(std::move(death_message_override))
+{
+}
 
 ActorDamageCause ActorDamageSource::getCause() const
 {
