@@ -15,7 +15,6 @@
 #pragma once
 
 #include "bedrock/shared_types/legacy/actor/deals_damage.h"
-#include "bedrock/symbol.h"
 
 using DealsDamage = SharedTypes::Legacy::DealsDamage;
 

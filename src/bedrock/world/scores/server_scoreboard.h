@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include "bedrock/symbol.h"
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"

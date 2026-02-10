@@ -16,7 +16,6 @@
 
 #include <charconv>
 
-#include "bedrock/symbol.h"
 #include "bedrock/world/actor/player/player.h"
 
 const std::string Scoreboard::DISPLAY_SLOT_LIST = "list";
