@@ -186,6 +186,7 @@ class PositionTrackingDBClient;
 class PositionTrackingDBServer;
 class PostprocessingManager;
 class PrivateKeyManager;
+class ProfilingManager;
 class PropertyGroupManager;
 class PropertiesSettings;
 class ProjectileFactory;
