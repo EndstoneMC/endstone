@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #pragma once
+
 #include "bedrock/world/actor/actor_damage_cause.h"
 #include "bedrock/world/actor/actor_damage_source.h"
 #include "bedrock/world/attribute/amplifier.h"
