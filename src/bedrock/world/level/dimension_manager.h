@@ -31,6 +31,7 @@ public:
     WeakRef<Dimension> getOrCreateDimension(DimensionType dimensionType);
     WeakRef<Dimension> getDimension(DimensionType dimensionType) const;
     bool hasDimensions() const;
+    int getNumDimensions() const;
     void forEachDimension(std::function<bool(Dimension &)> callback)
     {
         for (auto &dimension : dimensions_ | std::views::values) {
