@@ -388,22 +388,17 @@ private:
 protected:
     Brightness light_block_;
     Brightness light_emission_;
-    Color map_color_;
+    Color map_color_; // +400
     float friction_;
     NoteBlockInstrument note_block_instrument_;
     TintMethod tint_method_;
     bool return_default_block_on_unidentified_block_state_;
 
 private:
-    NewBlockID id_;  // +450
+    NewBlockID id_;  // +426
     BaseGameVersion min_required_game_version_;
     bool is_vanilla_;
     std::vector<HashedString> tags_;
-
-public:
-    std::unordered_map<std::string, void *> event_handlers;
-
-private:
     bool data_driven_vanilla_blocks_and_items_enabled_;
     AABB visual_shape_;
     std::int32_t bits_used_;
