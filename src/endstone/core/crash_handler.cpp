@@ -85,7 +85,6 @@ const cpptrace::formatter &get_formatter()
             .filtered_frame_placeholders(false)
             .addresses(cpptrace::formatter::address_mode::object)
             .paths(cpptrace::formatter::path_mode::basename)
-            .break_before_filename(true)
             .snippets(true);
     return formatter;
 }
