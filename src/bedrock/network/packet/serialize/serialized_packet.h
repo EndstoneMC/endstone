@@ -31,7 +31,7 @@ public:
     {
         return PacketInfo_T::PACKET_ID;
     }
-    [[nodiscard]] virtual std::string getName() const
+    [[nodiscard]] virtual std::string_view getName() const
     {
         return PacketInfo_T::PACKET_NAME;
     }

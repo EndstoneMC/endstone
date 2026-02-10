@@ -34,7 +34,7 @@ public:
     ModalFormRequestPacket(ModalFormRequestPacketPayload);
 
     [[nodiscard]] MinecraftPacketIds getId() const override;
-    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] std::string_view getName() const override;
     [[nodiscard]] SerializationMode getSerializationMode() const override;
     void setSerializationMode(SerializationMode) override;
     void writeWithSerializationMode(BinaryStream &, const cereal::ReflectionCtx &,

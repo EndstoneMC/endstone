@@ -46,7 +46,7 @@ MinecraftPacketIds TextPacket::getId() const
     return MinecraftPacketIds::Text;
 }
 
-std::string TextPacket::getName() const
+std::string_view TextPacket::getName() const
 {
     return "TextPacket";
 }

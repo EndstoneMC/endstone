@@ -28,7 +28,7 @@ public:
     MobEquipmentPacket(ActorRuntimeID, const NetworkItemStackDescriptor &, int, int, ContainerID);
 
     [[nodiscard]] MinecraftPacketIds getId() const override;
-    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] std::string_view getName() const override;
     void handle(ServerPlayer &, BlockPalette &, const MoveInputComponent &, ActorRotationComponent &,
                 bool) const override;
     [[nodiscard]] const ComplexInventoryTransaction *getComplexInventoryTransaction() const override;

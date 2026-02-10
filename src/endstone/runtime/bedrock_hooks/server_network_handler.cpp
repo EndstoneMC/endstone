@@ -63,10 +63,10 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
     }
 }
 
-bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request,
+bool ServerNetworkHandler::tryToLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request,
                                           const PlayerAuthenticationInfo &player_info)
 {
-    const auto new_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::trytLoadPlayer, this, server_player,
+    const auto new_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::tryToLoadPlayer, this, server_player,
                                                         connection_request, player_info);
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto &endstone_player = server_player.getEndstoneActor<endstone::core::EndstonePlayer>();

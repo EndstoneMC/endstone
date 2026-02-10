@@ -36,7 +36,7 @@ public:
     ENDSTONE_HOOK void sendToMultiple(const std::vector<NetworkIdentifierWithSubId> &recipients, const Packet &packet);
     void setCloseConnection(const NetworkIdentifier &id);
     void closeConnection(const NetworkIdentifier &id, const Connection::DisconnectFailReason reason,
-                         const std::string &reason_message);
+                         const std::string &message_from_server);
     [[nodiscard]] const cereal::ReflectionCtx &getPacketReflectionCtx() const;
 
 protected:

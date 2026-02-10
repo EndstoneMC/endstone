@@ -30,7 +30,7 @@ public:
     InventorySlotPacket(ContainerID id, std::uint32_t slot, const ItemStack &item,
                         const FullContainerName &full_container_name, const ItemStack &storage_item);
     [[nodiscard]] MinecraftPacketIds getId() const override;
-    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] std::string_view getName() const override;
     void write(BinaryStream &stream) const override;
 
     ContainerID inventory_id;

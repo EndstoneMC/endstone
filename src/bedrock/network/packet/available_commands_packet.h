@@ -80,7 +80,7 @@ class AvailableCommandsPacket : public Packet {
     {
         return MinecraftPacketIds::AvailableCommands;
     }
-    [[nodiscard]] std::string getName() const override
+    [[nodiscard]] std::string_view getName() const override
     {
         return "AvailableCommandsPacket";
     }
