@@ -64,6 +64,7 @@ bool handleEvent(const PlayerDamageEvent &event)
             death_message = e.getDeathMessage().value_or("");
 
             // Send death info
+            // TODO(refactor): use ActorDamageSource::setDeathMessageOverride
             const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);
             auto &pk = static_cast<DeathInfoPacket &>(*packet);
             auto death_message_tr = endstone::core::EndstoneMessage::toTranslatable(death_message);

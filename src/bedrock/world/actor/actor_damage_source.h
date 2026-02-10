@@ -27,9 +27,12 @@ class Actor;
 
 class ActorDamageSource {
 public:
-    ActorDamageSource(ActorDamageCause cause);
+    ActorDamageSource(const std::string &name, std::string death_message_override);
+    ActorDamageSource(ActorDamageCause cause, std::string death_message_override);
     [[nodiscard]] ActorDamageCause getCause() const;
     void setCause(ActorDamageCause cause);
+    [[nodiscard]] const std::string &getDeathMessageOverride() const;
+    void setDeathMessageOverride(const std::string &death_message_override);
 
     virtual ~ActorDamageSource() = default;
     [[nodiscard]] virtual bool isEntitySource() const;
@@ -56,6 +59,7 @@ public:
 
 private:
     ActorDamageCause cause_;
+    std::string death_message_override_;
 };
 
 class ActorDamageByBlockSource : public ActorDamageSource {
