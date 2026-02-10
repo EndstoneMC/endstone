@@ -24,41 +24,41 @@
 #include "endstone/event/actor/actor_damage_event.h"
 #include "endstone/runtime/hook.h"
 
-std::optional<float> HealthAttributeDelegate::change(float old_value, float new_value, const AttributeBuff &buff)
-{
-    // TODO(refactor): use ActorBeforeHurtEvent?
-    const auto damage = old_value - new_value;
-    if (damage <= 0) {
-        return ENDSTONE_HOOK_CALL_ORIGINAL(&HealthAttributeDelegate::change, this, old_value, new_value, buff);
-    }
-
-    // Calculate last hurt damage independently of the final damage set in the ActorDamageEvent.
-    // This ensures that during the invulnerable window, damage tracking is accurate.
-    // Without this, if the damage is reduced in ActorDamageEvent, the server might incorrectly
-    // allow further damage during the invulnerability period, effectively bypassing it.
-    auto last_hurt = mob_->getLastHurtDamage();
-    if (mob_->invulnerable_time <= 0) {
-        last_hurt = damage;
-    }
-    else {
-        last_hurt += damage;
-    }
-
-    const auto &source = buff.getSource();
-    const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    auto &mob = mob_->getEndstoneActor<endstone::core::EndstoneMob>();
-    endstone::ActorDamageEvent e{mob, std::make_unique<endstone::core::EndstoneDamageSource>(source), damage};
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
-        // Remove the flag to signal the damage is cancelled
-        // See also: Mob::_hurt
-        mob_->addOrRemoveComponent<endstone::core::MobHurtFlagComponent>(false);
-        return old_value;
-    }
-    new_value = ENDSTONE_HOOK_CALL_ORIGINAL(&HealthAttributeDelegate::change,  //
-                                            this, old_value, old_value - e.getDamage(), buff);
-
-    // Make sure the correct value of last hurt damage is set (see notes above)
-    mob_->setLastHurtDamage(last_hurt);
-    return new_value;
-}
+// std::optional<float> HealthAttributeDelegate::change(float old_value, float new_value, const AttributeBuff &buff)
+// {
+//     // TODO(refactor): use ActorBeforeHurtEvent?
+//     const auto damage = old_value - new_value;
+//     if (damage <= 0) {
+//         return ENDSTONE_HOOK_CALL_ORIGINAL(&HealthAttributeDelegate::change, this, old_value, new_value, buff);
+//     }
+//
+//     // Calculate last hurt damage independently of the final damage set in the ActorDamageEvent.
+//     // This ensures that during the invulnerable window, damage tracking is accurate.
+//     // Without this, if the damage is reduced in ActorDamageEvent, the server might incorrectly
+//     // allow further damage during the invulnerability period, effectively bypassing it.
+//     auto last_hurt = mob_->getLastHurtDamage();
+//     if (mob_->invulnerable_time <= 0) {
+//         last_hurt = damage;
+//     }
+//     else {
+//         last_hurt += damage;
+//     }
+//
+//     const auto &source = buff.getSource();
+//     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
+//     auto &mob = mob_->getEndstoneActor<endstone::core::EndstoneMob>();
+//     endstone::ActorDamageEvent e{mob, std::make_unique<endstone::core::EndstoneDamageSource>(source), damage};
+//     server.getPluginManager().callEvent(e);
+//     if (e.isCancelled()) {
+//         // Remove the flag to signal the damage is cancelled
+//         // See also: Mob::_hurt
+//         mob_->addOrRemoveComponent<endstone::core::MobHurtFlagComponent>(false);
+//         return old_value;
+//     }
+//     new_value = ENDSTONE_HOOK_CALL_ORIGINAL(&HealthAttributeDelegate::change,  //
+//                                             this, old_value, old_value - e.getDamage(), buff);
+//
+//     // Make sure the correct value of last hurt damage is set (see notes above)
+//     mob_->setLastHurtDamage(last_hurt);
+//     return new_value;
+// }

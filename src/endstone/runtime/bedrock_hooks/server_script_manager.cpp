@@ -39,8 +39,10 @@ void hookEventHandler(ActorGameplayHandler &handler)
 {
 #ifdef _WIN32
     vhook::create<4>(&handler, &ScriptActorGameplayHandler::handleEvent1);
+    vhook::create<1>(&handler, &ScriptBlockGameplayHandler::handleEvent4);
 #else
     vhook::create<2>(&handler, &ScriptActorGameplayHandler::handleEvent1);
+    vhook::create<5>(&handler, &ScriptBlockGameplayHandler::handleEvent4);
 #endif
 }
 

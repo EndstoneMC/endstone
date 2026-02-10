@@ -84,7 +84,7 @@ public:
 
 protected:
     virtual std::unique_ptr<BodyControl> initBodyControl() = 0;
-    ENDSTONE_HOOK bool _hurt(const ActorDamageSource &source, float damage, bool knock, bool ignite) override;
+    bool _hurt(const ActorDamageSource &source, float damage, bool knock, bool ignite) override;
     virtual void newServerAiStep() = 0;
     // virtual void tickDeath() = 0;
     [[nodiscard]] virtual AABB _getAdjustedAABBForSpawnCheck(AABB const &, Vec3 const &) const = 0;
