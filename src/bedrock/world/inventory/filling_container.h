@@ -18,6 +18,7 @@
 #include "bedrock/world/item/save_context.h"
 
 class FillingContainer : public Container {
+protected:
     using ItemList = std::vector<ItemStack>;
 
 public:
@@ -45,10 +46,7 @@ public:
     void startOpen(Actor &) override;
     void serverInitItemStackIds(int, int, ItemStackNetIdChangedCallback) override;
 
-    [[nodiscard]] int getHotbarSize() const
-    {
-        return HOTBAR_SIZE;
-    }
+    [[nodiscard]] int getHotbarSize() const { return HOTBAR_SIZE; }
 
 private:
     virtual void _trySetInSlot(ItemStack &, const int &, const int &, int &);

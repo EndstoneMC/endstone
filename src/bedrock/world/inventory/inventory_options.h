@@ -16,9 +16,9 @@
 
 enum class InventoryLayout : int {
     None = 0,
-    Survival = 1,
-    RecipeBook = 2,
-    Creative = 3,
+    InventoryOnly = 1,
+    Default = 2,
+    RecipeBookOnly = 3,
     Count = 4,
 };
 
