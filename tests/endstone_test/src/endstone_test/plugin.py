@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from endstone import Player
 from endstone.command import Command, CommandSender
@@ -31,7 +33,9 @@ class EndstoneTest(Plugin):
         self.logger.info("on_enable is called!")
         self.run_tests()
 
-    def on_command(self, sender: CommandSender, command: Command, args: list[str]) -> bool:
+    def on_command(
+        self, sender: CommandSender, command: Command, args: list[str]
+    ) -> bool:
         if command.name == "test" and isinstance(sender, Player):
             self.run_tests(player=sender)
             return True

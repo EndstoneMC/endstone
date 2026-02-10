@@ -22,7 +22,9 @@ def _make_fixture(name):
 
 
 def pytest_configure(config):
-    config.addinivalue_line("markers", "player: tests that require a player to be connected")
+    config.addinivalue_line(
+        "markers", "player: tests that require a player to be connected"
+    )
 
 
 server = _make_fixture("server")
