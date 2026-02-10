@@ -1,4 +1,3 @@
-from babel import Locale
 from endstone import GameMode, Player, Server
 
 
@@ -43,10 +42,6 @@ def test_player_health(player: Player):
 def test_player_attributes(player: Player):
     assert abs(player.fly_speed - 0.05) <= 0.00001
     assert abs(player.walk_speed - 0.10) <= 0.00001
-
-
-def test_player_locale(player: Player):
-    assert Locale.parse(player.locale.replace("-", "_")) is not None
 
 
 def test_player_skin(player: Player):

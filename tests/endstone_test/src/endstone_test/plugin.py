@@ -1,4 +1,3 @@
-import time
 
 import pytest
 from endstone import Player
