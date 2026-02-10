@@ -17,6 +17,8 @@
 #include <cstdint>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/utility/type_id.h"
+#include "bedrock/platform/brstd/flat_set.h"
 
 class BlockComponentStorage {
 public:
@@ -25,7 +27,8 @@ public:
     };
 
 private:
-    std::size_t padding_[12];                            // +0
+    brstd::flat_map<Bedrock::typeid_t<void>, std::unique_ptr<ComponentBase>> components_;
+    brstd::flat_set<Bedrock::typeid_t<void>> stateless_components_;
     bool allow_adding_components_;                       // +96
     bool allow_replacement_components_;                  // +97
     bool allow_try_get_components_before_finalization_;  // +98
