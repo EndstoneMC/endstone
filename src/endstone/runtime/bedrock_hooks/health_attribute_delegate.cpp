@@ -24,7 +24,7 @@
 #include "endstone/event/actor/actor_damage_event.h"
 #include "endstone/runtime/hook.h"
 
-float HealthAttributeDelegate::change(float old_value, float new_value, const AttributeBuff &buff)
+std::optional<float> HealthAttributeDelegate::change(float old_value, float new_value, const AttributeBuff &buff)
 {
     const auto damage = old_value - new_value;
     if (damage <= 0) {
