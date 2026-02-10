@@ -157,7 +157,6 @@ public:
     [[nodiscard]] virtual std::string getEntityLocNameString() const = 0;
     [[nodiscard]] virtual bool isInvisible() const = 0;
     [[nodiscard]] virtual bool canShowNameTag() const = 0;
-    [[nodiscard]] virtual std::string getFilteredNameTag() const = 0;
     [[nodiscard]] virtual mce::Color getNameTagTextColor() const = 0;
     [[nodiscard]] virtual float getShadowRadius() const = 0;
     [[nodiscard]] virtual Vec3 getHeadLookVector(float) const = 0;
