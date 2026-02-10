@@ -51,6 +51,6 @@ enum class ActorDamageCause : int {
     Campfire = 32,
     SoulCampfire = 33,
     MaceSmash = 34,
-    Dehydration = 35,
+    // Dehydration = 35,
     All
 };

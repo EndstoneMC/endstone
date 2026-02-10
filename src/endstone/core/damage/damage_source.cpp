@@ -92,7 +92,7 @@ std::string_view EndstoneDamageSource::toEndstone(ActorDamageCause cause)
         {ActorDamageCause::Campfire, "campfire"},
         {ActorDamageCause::SoulCampfire, "soul_campfire"},
         {ActorDamageCause::MaceSmash, "mace_smash"},
-        {ActorDamageCause::Dehydration, "dehydration"},
+        // {ActorDamageCause::Dehydration, "dehydration"},
         {ActorDamageCause::All, "all"},
     };
     if (!causes.contains(cause)) {
