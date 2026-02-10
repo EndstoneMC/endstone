@@ -196,7 +196,7 @@ public:
     [[nodiscard]] virtual bool shouldDispense(BlockSource &, Container &) const = 0;
     [[nodiscard]] virtual bool dispense(BlockSource &, Container &, int, Vec3 const &, FacingID) const = 0;
     virtual void transformOnFall(BlockSource &, BlockPos const &, Actor *, float) const = 0;
-    virtual void onRedstoneUpdate(BlockSource &, BlockPos const &, int, bool) const = 0;
+    // virtual void onRedstoneUpdate(BlockSource &, BlockPos const &, int, bool) const = 0;
     virtual void onMove(BlockSource &, BlockPos const &, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool detachesOnPistonMove(BlockSource &, BlockPos const &) const = 0;
     virtual void movedByPiston(BlockSource &, BlockPos const &) const = 0;
@@ -239,7 +239,7 @@ public:
                                               BlockType const &) const = 0;
     [[nodiscard]] virtual bool canBeBuiltOver(const Block &, BlockSource &, BlockPos const &) const = 0;
     virtual void triggerEvent(BlockSource &, BlockPos const &, int b0, int b1) const = 0;
-    virtual void executeEvent(BlockSource &, BlockPos const &, Block const &, std::string const &, Actor &) const = 0;
+    // virtual void executeEvent(BlockSource &, BlockPos const &, Block const &, std::string const &, Actor &) const = 0;
     [[nodiscard]] virtual bool hasTag(BlockSource &, BlockPos const &, Block const &, std::string const &) const = 0;
     [[nodiscard]] virtual MobSpawnerData const *getMobToSpawn(SpawnConditions const &, BlockSource &) const = 0;
     [[nodiscard]] virtual bool shouldStopFalling(Actor &) const = 0;
