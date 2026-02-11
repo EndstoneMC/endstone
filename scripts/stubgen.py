@@ -31,6 +31,7 @@ def main() -> None:
 
     module.set_member("__version__", package.get_member("__version__"))
     module.set_member("__minecraft_version__", package.get_member("__minecraft_version__"))
+    module.get_member("__minecraft_version__").value = None
     module.imports.setdefault("__version__", package.imports.get("__version__"))
     module.exports = ["__version__", "__minecraft_version__"] + module.exports
     module.set_member("event.event_handler", package.get_member("event.event_handler"))
