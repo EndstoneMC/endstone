@@ -15,6 +15,13 @@
 #pragma once
 
 namespace brstd {
+
+#ifdef _MSC_VER
+#define NO_UNIQUE_ADDRESS [[msvc::no_unique_address]]
+#else
+#define NO_UNIQUE_ADDRESS [[no_unique_address]]
+#endif
+
 struct no_value_t {};
 
 struct no_mapped_container_t {
@@ -37,14 +44,14 @@ struct no_mapped_container_t {
     };
     using const_iterator = iterator;
     std::strong_ordering operator<=>(const no_mapped_container_t &) const = default;
-    iterator begin() const { return iterator(); }
-    iterator end() const { return iterator(); }
-    iterator rbegin() const { return iterator(); }
-    iterator rend() const { return iterator(); }
-    iterator cbegin() const { return iterator(); }
-    iterator cend() const { return iterator(); }
-    iterator crbegin() const { return iterator(); }
-    iterator crend() const { return iterator(); }
+    [[nodiscard]] iterator begin() const { return iterator(); }
+    [[nodiscard]] iterator end() const { return iterator(); }
+    [[nodiscard]] iterator rbegin() const { return iterator(); }
+    [[nodiscard]] iterator rend() const { return iterator(); }
+    [[nodiscard]] iterator cbegin() const { return iterator(); }
+    [[nodiscard]] iterator cend() const { return iterator(); }
+    [[nodiscard]] iterator crbegin() const { return iterator(); }
+    [[nodiscard]] iterator crend() const { return iterator(); }
 };
 
 template <typename Key, typename T, typename Compare, typename KeyContainer, typename MappedContainer>
@@ -163,20 +170,23 @@ private:
 
 public:
     struct containers {
-        key_container_type keys;       // +0
-        mapped_container_type values;  // +24
+        key_container_type keys;
+        NO_UNIQUE_ADDRESS mapped_container_type values;
     };
 
     iterator begin() noexcept { return iterator(containers_.keys.begin(), containers_.values.begin()); }
 
-    const_iterator begin() const noexcept
+    [[nodiscard]] const_iterator begin() const noexcept
     {
         return const_iterator(containers_.keys.begin(), containers_.values.begin());
     }
 
     iterator end() noexcept { return iterator(containers_.keys.end(), containers_.values.end()); }
 
-    const_iterator end() const noexcept { return const_iterator(containers_.keys.end(), containers_.values.end()); }
+    [[nodiscard]] const_iterator end() const noexcept
+    {
+        return const_iterator(containers_.keys.end(), containers_.values.end());
+    }
 
     iterator find(const key_type &key)
     {
@@ -203,7 +213,7 @@ public:
     }
 
 private:
-    containers containers_;  // +0
-    key_compare compare_;    // +32
+    containers containers_;
+    NO_UNIQUE_ADDRESS key_compare compare_;
 };
 };  // namespace brstd
