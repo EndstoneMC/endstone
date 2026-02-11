@@ -92,8 +92,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
              "This method is used to compare two ItemMeta objects.")
         .def("as_meta_for", &ItemFactory::asMetaFor, py::arg("meta"), py::arg("type"),
              "Returns an appropriate item meta for the specified item type.")
-        .def("create_item_stack", &ItemFactory::createItemStack, py::arg("tag"),
-             "Create a new ItemStack given the NBT.");
+;
 
     item_stack
         .def(py::init([](ItemTypeId type, const int amount, const int data) {
@@ -122,8 +121,6 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
              "Checks if the two stacks are equal, but does not consider stack size (amount).")
         .def_property_readonly("item_meta", &ItemStack::getItemMeta, "Gets a copy of the ItemMeta of this ItemStack.")
         .def("set_item_meta", &ItemStack::setItemMeta, py::arg("meta"), "Set the ItemMeta of this ItemStack.")
-        .def("to_nbt", &ItemStack::toNbt, "Serializes this ItemStack into a Named Binary Tag (NBT).")
-        .def_static("from_nbt", &ItemStack::fromNbt, "Deserializes an ItemStack from a Named Binary Tag (NBT).")
         .def(py::self == py::self)
         .def(py::self != py::self)
         .def("__str__", [](const ItemStack &self) { return fmt::format("{}", self); });
@@ -139,12 +136,12 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def(
             "add_item",
             [](Inventory &self, const py::args &item) {
-                std::vector<ItemStack *> items;
+                std::vector<ItemStack> items;
                 items.reserve(item.size());
                 for (auto obj : item) {
-                    items.push_back(&obj.cast<ItemStack &>());
+                    items.push_back(obj.cast<ItemStack>());
                 }
-                return self.addItem(items);
+                return self.addItem(std::move(items));
             },
             "Stores the given ItemStacks in the inventory.\n"
             "This will try to fill existing stacks and empty slots as well as it can.\n\n"
@@ -153,12 +150,12 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def(
             "remove_item",
             [](Inventory &self, const py::args &item) {
-                std::vector<ItemStack *> items;
+                std::vector<ItemStack> items;
                 items.reserve(item.size());
                 for (auto obj : item) {
-                    items.push_back(&obj.cast<ItemStack &>());
+                    items.push_back(obj.cast<ItemStack>());
                 }
-                return self.removeItem(items);
+                return self.removeItem(std::move(items));
             },
             "Removes the given ItemStacks from the inventory.\n"
             "It will try to remove 'as much as possible' from the types and amounts you give as arguments.\n\n"

@@ -129,10 +129,8 @@ void init_event(py::module_ &m, py::class_<Event> &event)
                                                          "Called when an ItemStack is successfully cooked in a block.")
         .def_property_readonly("source", &BlockCookEvent::getSource, py::return_value_policy::reference,
                                "Gets the smelted ItemStack for this event")
-        .def_property(
-            "result", &BlockCookEvent::getResult,
-            [](BlockCookEvent &self, const ItemStack &result) { self.setResult(result.clone()); },
-            py::return_value_policy::reference, "Gets or sets the resultant ItemStack for this event");
+        .def_property("result", &BlockCookEvent::getResult, &BlockCookEvent::setResult,
+                      "Gets or sets the resultant ItemStack for this event");
     py::class_<BlockPistonEvent, BlockEvent, ICancellable>(m, "BlockPistonEvent",
                                                            "Called when a piston block is triggered")
         .def_property_readonly("direction", &BlockPistonEvent::getDirection,
@@ -229,7 +227,7 @@ void init_event(py::module_ &m, py::class_<Event> &event)
     player_interact_event
         .def_property_readonly("action", &PlayerInteractEvent::getAction, "Returns the action type of interaction")
         .def_property_readonly("has_item", &PlayerInteractEvent::hasItem, "Check if this event involved an item")
-        .def_property_readonly("item", &PlayerInteractEvent::getItem, py::return_value_policy::reference,
+        .def_property_readonly("item", &PlayerInteractEvent::getItem,
                                "Returns the item in hand represented by this event")
         .def_property_readonly("has_block", &PlayerInteractEvent::hasBlock, "Check if this event involved a block")
         .def_property_readonly("block", &PlayerInteractEvent::getBlock, py::return_value_policy::reference,
@@ -244,8 +242,7 @@ void init_event(py::module_ &m, py::class_<Event> &event)
                                "Gets the actor that was right-clicked by the player.");
     py::class_<PlayerItemConsumeEvent, PlayerEvent, ICancellable>(
         m, "PlayerItemConsumeEvent", "Called when a player is finishing consuming an item (food, potion, milk bucket).")
-        .def_property_readonly("item", &PlayerItemConsumeEvent::getItem, py::return_value_policy::reference,
-                               "Gets or sets the item that is being consumed.")
+        .def_property_readonly("item", &PlayerItemConsumeEvent::getItem, "Gets the item that is being consumed.")
         .def_property_readonly("hand", &PlayerItemConsumeEvent::getHand, "Get the hand used to consume the item.");
     py::class_<PlayerItemHeldEvent, PlayerEvent, ICancellable>(
         m, "PlayerItemHeldEvent", "Called when a player changes their currently held item.")
