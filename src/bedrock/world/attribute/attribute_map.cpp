@@ -32,9 +32,7 @@ const AttributeInstance &BaseAttributeMap::getInstance(std::uint32_t id_value) c
 
 void BaseAttributeMap::onAttributeModified(AttributeInstance const &instance)
 {
-    if (on_attribute_modified_) {
-        std::invoke(on_attribute_modified_, this, instance);
-    }
+    std::invoke(on_attribute_modified_, this, instance);
 }
 
 const AttributeInstance *BaseAttributeMap::getInstance(const HashedString &name) const
@@ -60,7 +58,7 @@ MutableAttributeWithContext BaseAttributeMap::getMutableInstanceWithContext(cons
 void BaseAttributeMap::_onAttributeModified(AttributeInstance const &instance)
 {
     const auto *attribute = instance.getAttribute();
-    if (!attribute) {
+    if (!attribute || !attribute->isClientSyncable()) {
         return;
     }
     dirty_attributes_.push_back({attribute->getIDValue()});
