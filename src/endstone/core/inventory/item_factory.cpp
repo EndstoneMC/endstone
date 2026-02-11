@@ -63,12 +63,6 @@ std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, I
     return getItemMeta(type, meta);
 }
 
-std::unique_ptr<ItemStack> EndstoneItemFactory::createItemStack(const CompoundTag &tag) const
-{
-    auto item = ItemInstance::fromTag(static_cast<::CompoundTag &>(*nbt::toMinecraft(tag)));
-    return std::make_unique<EndstoneItemStack>(item);
-}
-
 std::unique_ptr<ItemMeta> EndstoneItemFactory::getItemMeta(const ItemTypeId &type, const ItemMeta *meta) const
 {
     return EndstoneItemMetas::getItemMetaDetails(type).fromItemMeta(type, meta);
