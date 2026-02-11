@@ -28,9 +28,8 @@ public:
     };
 
 private:
-    std::size_t padding_[9];
-    // brstd::flat_map<Bedrock::typeid_t<void>, std::unique_ptr<ComponentBase>> components_;
-    // brstd::flat_set<Bedrock::typeid_t<void>> stateless_components_;
+    brstd::flat_map<Bedrock::typeid_t<void>, std::unique_ptr<ComponentBase>> components_;
+    brstd::flat_set<Bedrock::typeid_t<void>> stateless_components_;
     bool allow_adding_components_;  // +72
     bool allow_replacement_components_;
     bool allow_try_get_components_before_finalization_;
