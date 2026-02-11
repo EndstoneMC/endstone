@@ -48,7 +48,7 @@ plugins:
         python:
           paths: [ python/src ]
           load_external_modules: true
-          import:
+          inventories:
             - https://docs.python.org/3/objects.inv
             - https://numpy.org/doc/stable/objects.inv
           options:
