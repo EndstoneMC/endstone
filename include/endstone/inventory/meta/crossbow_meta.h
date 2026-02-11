@@ -36,14 +36,14 @@ public:
      *
      * @return charged projectiles
      */
-    [[nodiscard]] virtual std::vector<std::unique_ptr<ItemStack>> getChargedProjectiles() const = 0;
+    [[nodiscard]] virtual std::vector<ItemStack> getChargedProjectiles() const = 0;
 
     /**
      * @brief Sets the projectiles charged on this item.
      *
      * @param projectiles the projectiles to set
      */
-    virtual void setChargedProjectiles(std::vector<ItemStack *> projectiles) = 0;
+    virtual void setChargedProjectiles(std::vector<ItemStack> projectiles) = 0;
 
     /**
      * @brief Adds a charged projectile to this item.

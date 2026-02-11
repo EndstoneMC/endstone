@@ -26,7 +26,7 @@ class BlockCookEvent : public Cancellable<BlockEvent> {
 public:
     ENDSTONE_EVENT(BlockCookEvent);
 
-    BlockCookEvent(std::unique_ptr<Block> block, std::unique_ptr<ItemStack> source, std::unique_ptr<ItemStack> result)
+    BlockCookEvent(std::unique_ptr<Block> block, ItemStack source, ItemStack result)
         : Cancellable(std::move(block)), source_(std::move(source)), result_(std::move(result))
     {
     }
@@ -36,24 +36,24 @@ public:
      *
      * @return smelting source ItemStack
      */
-    [[nodiscard]] const ItemStack &getSource() const { return *source_; }
+    [[nodiscard]] const ItemStack &getSource() const { return source_; }
 
     /**
      * @brief Gets the resultant ItemStack for this event
      *
      * @return smelting result ItemStack
      */
-    [[nodiscard]] const ItemStack &getResult() const { return *result_; }
+    [[nodiscard]] const ItemStack &getResult() const { return result_; }
 
     /**
      * @brief Sets the resultant ItemStack for this event
      *
      * @param result new result ItemStack
      */
-    void setResult(std::unique_ptr<ItemStack> result) { result_ = std::move(result); }
+    void setResult(ItemStack result) { result_ = std::move(result); }
 
 private:
-    std::unique_ptr<ItemStack> source_;
-    std::unique_ptr<ItemStack> result_;
+    ItemStack source_;
+    ItemStack result_;
 };
 }  // namespace endstone

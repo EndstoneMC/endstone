@@ -66,7 +66,7 @@ void Player::completeUsingItem()
     const auto hand = inventory_->getSelectedSlot().container_id == CONTAINER_ID_INVENTORY
                         ? endstone::EquipmentSlot::Hand
                         : endstone::EquipmentSlot::OffHand;
-    endstone::PlayerItemConsumeEvent e{getEndstoneActor<endstone::core::EndstonePlayer>(), *item, hand};
+    endstone::PlayerItemConsumeEvent e{getEndstoneActor<endstone::core::EndstonePlayer>(), std::move(item), hand};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
         setStatusFlag(ActorFlags::USINGITEM, false);
@@ -83,7 +83,7 @@ bool Player::drop(const ItemStack &item, bool randomly)
     auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
     if (isAlive()) {
         const auto drop = endstone::core::EndstoneItemStack::fromMinecraft(item);
-        endstone::PlayerDropItemEvent e(player, *drop);
+        endstone::PlayerDropItemEvent e(player, drop);
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;

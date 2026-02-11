@@ -609,7 +609,7 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
         """
         ...
     @property
-    def item(self) -> ItemStack:
+    def item(self) -> ItemStack | None:
         """
         Returns the item in hand represented by this event
         """
@@ -657,7 +657,7 @@ class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
     @property
     def item(self) -> ItemStack:
         """
-        Gets or sets the item that is being consumed.
+        Gets the item that is being consumed.
         """
         ...
     @property

@@ -27,12 +27,10 @@ bool handleEvent(ItemUseEvent &event)
     if (const auto *player = WeakEntityRef(event.actor).tryUnwrap<::Player>(); player) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         const auto item = ItemStack(event.item_instance);
-        const auto item_stack = endstone::core::EndstoneItemStack::fromMinecraft(item);
-
         endstone::PlayerInteractEvent e{
             player->getEndstoneActor<endstone::core::EndstonePlayer>(),
             endstone::PlayerInteractEvent::Action::RightClickAir,
-            item_stack.get(),
+            endstone::core::EndstoneItemStack::fromMinecraft(item),
             nullptr,
             endstone::BlockFace::South,
             std::nullopt,

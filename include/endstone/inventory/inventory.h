@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <memory>
+#include <optional>
 #include <vector>
 
 #include "endstone/util/result.h"
@@ -49,7 +49,7 @@ public:
      *
      * @return The ItemStack in the slot
      */
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> getItem(int index) const = 0;
+    [[nodiscard]] virtual std::optional<ItemStack> getItem(int index) const = 0;
 
     /**
      * @brief Stores the ItemStack at the given index of the inventory.
@@ -57,7 +57,7 @@ public:
      * @param index The index where to put the ItemStack
      * @param item The ItemStack to set
      */
-    virtual void setItem(int index, const ItemStack *item) = 0;
+    virtual void setItem(int index, std::optional<ItemStack> item) = 0;
 
     /**
      * @brief Stores the given ItemStacks in the inventory.
@@ -71,7 +71,7 @@ public:
      *
      * @return A map containing items that couldn't be added.
      */
-    virtual std::unordered_map<int, ItemStack *> addItem(std::vector<ItemStack *> items) = 0;
+    virtual std::unordered_map<int, ItemStack> addItem(std::vector<ItemStack> items) = 0;
 
     /**
      * @brief Removes the given ItemStacks from the inventory.
@@ -85,7 +85,7 @@ public:
      *
      * @return A map containing items that couldn't be removed.
      */
-    virtual std::unordered_map<int, ItemStack *> removeItem(std::vector<ItemStack *> items) = 0;
+    virtual std::unordered_map<int, ItemStack> removeItem(std::vector<ItemStack> items) = 0;
 
     /**
      * @brief Stores the given ItemStacks in the inventory.
@@ -99,10 +99,10 @@ public:
      *
      * @return A map containing items that couldn't be added.
      */
-    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, ItemStack &> && ...)>>
-    std::unordered_map<int, ItemStack *> addItem(Args &&...items)
+    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, ItemStack> && ...)>>
+    std::unordered_map<int, ItemStack> addItem(Args &&...items)
     {
-        return addItem(std::vector<ItemStack *>{&items...});
+        return addItem(std::vector<ItemStack>{std::forward<Args>(items)...});
     }
 
     /**
@@ -116,18 +116,18 @@ public:
      * @param items The ItemStacks to remove
      * @return A map containing items that couldn't be removed.
      */
-    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, ItemStack &> && ...)>>
-    std::unordered_map<int, ItemStack *> removeItem(Args &&...items)
+    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, ItemStack> && ...)>>
+    std::unordered_map<int, ItemStack> removeItem(Args &&...items)
     {
-        return removeItem(std::vector<ItemStack *>{&items...});
+        return removeItem(std::vector<ItemStack>{std::forward<Args>(items)...});
     }
 
     /**
      * @brief Returns all ItemStacks from the inventory
      *
-     * @return An array of ItemStacks from the inventory. Individual items may be null.
+     * @return An array of ItemStacks from the inventory. Empty slots are represented as std::nullopt.
      */
-    [[nodiscard]] virtual std::vector<std::unique_ptr<ItemStack>> getContents() const = 0;
+    [[nodiscard]] virtual std::vector<std::optional<ItemStack>> getContents() const = 0;
 
     /**
      * @brief Completely replaces the inventory's contents. Removes all existing contents and replaces it with the
@@ -135,7 +135,7 @@ public:
      *
      * @param items A complete replacement for the contents; the length must be less than or equal to getSize().
      */
-    virtual void setContents(std::vector<const ItemStack *> items) = 0;
+    virtual void setContents(std::vector<std::optional<ItemStack>> items) = 0;
 
     /**
      * @brief Checks if the inventory contains any ItemStacks with the given ItemType.
@@ -200,7 +200,7 @@ public:
      *
      * @return A map from slot indexes to item at index
      */
-    [[nodiscard]] virtual std::unordered_map<int, std::unique_ptr<ItemStack>> all(const std::string &type) const = 0;
+    [[nodiscard]] virtual std::unordered_map<int, ItemStack> all(const std::string &type) const = 0;
 
     /**
      * @brief Finds all slots in the inventory containing any ItemStacks with the given ItemStack.
@@ -214,7 +214,7 @@ public:
      *
      * @return A map from slot indexes to item at index
      */
-    [[nodiscard]] virtual std::unordered_map<int, std::unique_ptr<ItemStack>> all(const ItemStack &item) const = 0;
+    [[nodiscard]] virtual std::unordered_map<int, ItemStack> all(const ItemStack &item) const = 0;
 
     /**
      * @brief Finds the first slot in the inventory containing an ItemStack with the given ItemType

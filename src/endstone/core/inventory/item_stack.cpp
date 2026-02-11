@@ -18,19 +18,24 @@
 #include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/inventory/item_metas.h"
 #include "endstone/core/inventory/meta/item_meta.h"
+#include "endstone/core/nbt.h"
 
 namespace endstone::core {
-
 EndstoneItemStack::EndstoneItemStack(const ::ItemStackBase &item) : item_(item) {}
 
-EndstoneItemStack::EndstoneItemStack(const EndstoneItemStack &rhs) : ItemStack(rhs), item_(rhs.item_)
+EndstoneItemStack::EndstoneItemStack(const EndstoneItemStack &other) : item_(other.item_) {}
+
+EndstoneItemStack &EndstoneItemStack::operator=(const EndstoneItemStack &other)
 {
-    EndstoneItemStack::setItemMeta(rhs.getItemMeta().get());
+    if (this != &other) {
+        item_ = ItemInstance(other.item_);
+    }
+    return *this;
 }
 
-bool EndstoneItemStack::isEndstoneItemStack() const
+std::unique_ptr<ItemStack::Impl> EndstoneItemStack::clone() const
 {
-    return true;
+    return std::make_unique<EndstoneItemStack>(*this);
 }
 
 const ItemType &EndstoneItemStack::getType() const
@@ -87,24 +92,20 @@ int EndstoneItemStack::getMaxStackSize() const
     return item_.getMaxStackSize();
 }
 
-bool EndstoneItemStack::isSimilar(const ItemStack &other) const
+bool EndstoneItemStack::isSimilar(const Impl &other) const
 {
     if (&other == this) {
         return true;
     }
-    if (!other.isEndstoneItemStack()) {
-        return other.isSimilar(*this);
-    }
-
-    const auto &that = static_cast<const EndstoneItemStack &>(other);
-    if (&item_ == &that.item_) {
+    const auto &rhs = static_cast<const EndstoneItemStack &>(other);
+    if (&item_ == &rhs.item_) {
         return true;
     }
-    if (getType() != that.getType()) {
+    if (getType() != rhs.getType()) {
         return false;
     }
-    return hasItemMeta() ? that.hasItemMeta() && item_.getUserData()->equals(*that.item_.getUserData())
-                         : !that.hasItemMeta();
+    return hasItemMeta() ? rhs.hasItemMeta() && item_.getUserData()->equals(*rhs.item_.getUserData())
+                         : !rhs.hasItemMeta();
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemStack::getItemMeta() const
@@ -117,74 +118,46 @@ bool EndstoneItemStack::hasItemMeta() const
     return hasItemMeta(&item_) && !EndstoneItemFactory::instance().equals(getItemMeta().get(), nullptr);
 }
 
-bool EndstoneItemStack::setItemMeta(ItemMeta *meta)
+bool EndstoneItemStack::setItemMeta(const ItemMeta *meta)
 {
     return setItemMeta(&item_, meta);
 }
 
-std::unique_ptr<ItemStack> EndstoneItemStack::clone() const
+CompoundTag EndstoneItemStack::getNbt() const
 {
-    return std::make_unique<EndstoneItemStack>(*this);
+    const auto *tag = item_.getUserData();
+    if (!tag) {
+        return {};
+    }
+    auto result = nbt::fromMinecraft(*tag);
+    return result.get<CompoundTag>();
 }
 
-CompoundTag EndstoneItemStack::toNbt() const
+void EndstoneItemStack::setNbt(const CompoundTag &nbt)
 {
-    CompoundTag tag;
-    const auto *item = item_.getItem();
-    tag["Name"] = StringTag(item == nullptr ? "" : item->getSerializedName());
-    tag["Count"] = ByteTag(item_.getCount());
-    tag["Damage"] = ShortTag(item_.getAuxValue());
-    tag["WasPickedUp"] = ByteTag(item_.getWasPickedUp());
-    if (const auto *block = item_.getBlock()) {
-        tag["Block"] = nbt::fromMinecraft(block->getSerializationId());
+    if (item_.isNull()) {
+        return;
     }
-    if (const auto *user_data = item_.getUserData()) {
-        tag["tag"] = nbt::fromMinecraft(*user_data);
+    if (nbt.empty()) {
+        item_.setUserData(nullptr);
+        return;
     }
-    if (auto &can_place_on = item_.getCanPlaceOn(); !can_place_on.empty()) {
-        ListTag list;
-        for (const auto &block : can_place_on) {
-            list.emplace_back(StringTag(block->getName().getString()));
-        }
-        tag[ItemStackBase::TAG_STORE_CAN_PLACE_ON] = list;
-    }
-    if (auto &can_destroy = item_.getCanDestroy(); !can_destroy.empty()) {
-        ListTag list;
-        for (const auto &block : can_destroy) {
-            list.emplace_back(StringTag(block->getName().getString()));
-        }
-        tag[ItemStackBase::TAG_STORE_CAN_DESTROY] = list;
-    }
-    return tag;
+    auto tag = nbt::toMinecraft(endstone::nbt::Tag{nbt});
+    item_.setUserData(std::unique_ptr<::CompoundTag>(static_cast<::CompoundTag *>(tag.release())));
 }
 
-::ItemStack EndstoneItemStack::toMinecraft(const ItemStack *item)
+::ItemStack EndstoneItemStack::toMinecraft(const ItemStack &item)
 {
-    if (item == nullptr || item->getType() == ItemType::Air) {
+    const auto &impl = static_cast<const EndstoneItemStack &>(*item.impl_);
+    if (impl.item_.isNull()) {
         return ::ItemStack::EMPTY_ITEM;
     }
-
-    if (item->isEndstoneItemStack()) {
-        auto *stack = static_cast<const EndstoneItemStack *>(item);
-        if (stack->item_.isNull()) {
-            return ::ItemStack::EMPTY_ITEM;
-        }
-        return ::ItemStack(stack->item_);  // Call the copy constructor to make a copy
-    }
-
-    auto stack = ::ItemStack(std::string(item->getType().getId()), item->getAmount(), item->getData());
-    if (item->hasItemMeta()) {
-        setItemMeta(&stack, item->getItemMeta().get());
-    }
-    return stack;
+    return ::ItemStack(impl.item_);
 }
 
-std::unique_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(const ::ItemStack &item)
+ItemStack EndstoneItemStack::fromMinecraft(const ::ItemStackBase &item)
 {
-    if (item.isNull()) {
-        return nullptr;
-    }
-    return std::make_unique<EndstoneItemStack>(item);
+    return ItemStack(std::make_unique<EndstoneItemStack>(item));
 }
 
 const ItemType &EndstoneItemStack::getType(const ItemStackBase *item)
@@ -235,5 +208,4 @@ bool EndstoneItemStack::setItemMeta(ItemStackBase *item, const ItemMeta *meta)
 
     return true;
 }
-
 }  // namespace endstone::core

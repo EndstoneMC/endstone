@@ -118,7 +118,7 @@ public:
      *
      * @return Item entity created as a result of this method
      */
-    [[nodiscard]] virtual Item &dropItem(Location location, ItemStack &item) = 0;
+    [[nodiscard]] virtual Item &dropItem(Location location, const ItemStack &item) = 0;
 
     /**
      * @brief Creates an actor at the given Location

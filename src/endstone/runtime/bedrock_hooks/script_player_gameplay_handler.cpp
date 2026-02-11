@@ -150,13 +150,14 @@ bool handleEvent(const PlayerInteractWithBlockBeforeEvent &event)
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
         const auto block = endstone::core::EndstoneBlock::at(block_source, BlockPos(event.block_location));
-        const auto item_stack =
-            event.item.isNull() ? nullptr : endstone::core::EndstoneItemStack::fromMinecraft(event.item);
-
+        std::optional<endstone::ItemStack> item_stack;
+        if (!event.item.isNull()) {
+            item_stack = endstone::core::EndstoneItemStack::fromMinecraft(event.item);
+        }
         endstone::PlayerInteractEvent e{
             player->getEndstoneActor<endstone::core::EndstonePlayer>(),
             endstone::PlayerInteractEvent::Action::RightClickBlock,
-            item_stack.get(),
+            std::move(item_stack),
             block.get(),
             static_cast<endstone::BlockFace>(event.block_face),
             endstone::Vector{event.face_location.x, event.face_location.y, event.face_location.z},

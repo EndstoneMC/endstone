@@ -77,17 +77,14 @@ class ItemStack:
         Set the ItemMeta of this ItemStack.
         """
         ...
-    def to_nbt(self) -> CompoundTag:
+    @property
+    def nbt(self) -> CompoundTag:
         """
-        Serializes this ItemStack into a Named Binary Tag (NBT).
-        """
-        ...
-    @staticmethod
-    def from_nbt(arg0: CompoundTag) -> ItemStack:
-        """
-        Deserializes an ItemStack from a Named Binary Tag (NBT).
+        Gets or sets the NBT compound tag of this item stack.
         """
         ...
+    @nbt.setter
+    def nbt(self, arg1: CompoundTag) -> None: ...
     def __eq__(self, arg0: ItemStack) -> bool: ...
     def __ne__(self, arg0: ItemStack) -> bool: ...
     def __str__(self) -> str: ...
@@ -135,6 +132,11 @@ class ItemType:
     def max_durability(self) -> int:
         """
         Gets the maximum durability of this item type
+        """
+        ...
+    def create_item_stack(self, amount: int = 1) -> ItemStack:
+        """
+        Constructs a new ItemStack with this item type.
         """
         ...
     @staticmethod
@@ -318,11 +320,6 @@ class ItemFactory:
         Returns an appropriate item meta for the specified item type.
         """
         ...
-    def create_item_stack(self, tag: CompoundTag) -> ItemStack:
-        """
-        Create a new ItemStack given the NBT.
-        """
-        ...
 
 class Inventory:
     """
@@ -340,12 +337,12 @@ class Inventory:
         Returns the maximum stack size for an ItemStack in this inventory.
         """
         ...
-    def get_item(self, index: int) -> ItemStack:
+    def get_item(self, index: int) -> ItemStack | None:
         """
         Returns the ItemStack found in the slot at the given index
         """
         ...
-    def set_item(self, index: int, item: ItemStack) -> None:
+    def set_item(self, index: int, item: ItemStack | None) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
         """
@@ -369,13 +366,13 @@ class Inventory:
         """
         ...
     @property
-    def contents(self) -> list[ItemStack]:
+    def contents(self) -> list[ItemStack | None]:
         """
         Returns all ItemStacks from the inventory
         """
         ...
     @contents.setter
-    def contents(self, arg1: list[ItemStack]) -> None: ...
+    def contents(self, arg1: list[ItemStack | None]) -> None: ...
     @typing.overload
     def contains(self, item: ItemStack, amount: int) -> bool:
         """
@@ -480,12 +477,12 @@ class Inventory:
         Returns the size of the inventory
         """
         ...
-    def __getitem__(self, index: int) -> ItemStack:
+    def __getitem__(self, index: int) -> ItemStack | None:
         """
         Returns the ItemStack found in the slot at the given index
         """
         ...
-    def __setitem__(self, index: int, item: ItemStack) -> None:
+    def __setitem__(self, index: int, item: ItemStack | None) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
         """
@@ -508,53 +505,53 @@ class PlayerInventory(Inventory):
     Interface to the inventory of a Player, including the four armor slots and any extra slots.
     """
     @property
-    def helmet(self) -> ItemStack:
+    def helmet(self) -> ItemStack | None:
         """
         Gets or sets the ItemStack in the helmet slot
         """
         ...
     @helmet.setter
-    def helmet(self, arg1: ItemStack) -> None: ...
+    def helmet(self, arg1: ItemStack | None) -> None: ...
     @property
-    def chestplate(self) -> ItemStack:
+    def chestplate(self) -> ItemStack | None:
         """
         Gets or sets the ItemStack in the chestplate slot
         """
         ...
     @chestplate.setter
-    def chestplate(self, arg1: ItemStack) -> None: ...
+    def chestplate(self, arg1: ItemStack | None) -> None: ...
     @property
-    def leggings(self) -> ItemStack:
+    def leggings(self) -> ItemStack | None:
         """
         Gets or sets the ItemStack in the leg slot
         """
         ...
     @leggings.setter
-    def leggings(self, arg1: ItemStack) -> None: ...
+    def leggings(self, arg1: ItemStack | None) -> None: ...
     @property
-    def boots(self) -> ItemStack:
+    def boots(self) -> ItemStack | None:
         """
         Gets or sets the ItemStack in the boots slot
         """
         ...
     @boots.setter
-    def boots(self, arg1: ItemStack) -> None: ...
+    def boots(self, arg1: ItemStack | None) -> None: ...
     @property
-    def item_in_main_hand(self) -> ItemStack:
+    def item_in_main_hand(self) -> ItemStack | None:
         """
         Gets or sets the item the player is currently holding in their main hand.
         """
         ...
     @item_in_main_hand.setter
-    def item_in_main_hand(self, arg1: ItemStack) -> None: ...
+    def item_in_main_hand(self, arg1: ItemStack | None) -> None: ...
     @property
-    def item_in_off_hand(self) -> ItemStack:
+    def item_in_off_hand(self) -> ItemStack | None:
         """
         Gets or sets the item the player is currently holding in their off hand.
         """
         ...
     @item_in_off_hand.setter
-    def item_in_off_hand(self, arg1: ItemStack) -> None: ...
+    def item_in_off_hand(self, arg1: ItemStack | None) -> None: ...
     @property
     def held_item_slot(self) -> int:
         """

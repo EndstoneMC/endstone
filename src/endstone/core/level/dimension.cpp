@@ -95,9 +95,9 @@ std::vector<std::unique_ptr<Chunk>> EndstoneDimension::getLoadedChunks()
     return chunks;
 }
 
-Item &EndstoneDimension::dropItem(const Location location, ItemStack &item)
+Item &EndstoneDimension::dropItem(const Location location, const ItemStack &item)
 {
-    auto item_stack = EndstoneItemStack::toMinecraft(&item);
+    auto item_stack = EndstoneItemStack::toMinecraft(item);
     auto *actor = getHandle().getLevel().getSpawner().spawnItem(
         getHandle().getBlockSourceFromMainChunkSource(), item_stack, nullptr,
         Vec3{location.getX(), location.getY(), location.getZ()}, 10);

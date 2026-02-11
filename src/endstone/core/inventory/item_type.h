@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/world/item/item.h"
+#include "endstone/inventory/item_stack.h"
 #include "endstone/inventory/item_type.h"
 #include "endstone/inventory/meta/item_meta.h"
 
@@ -28,6 +29,8 @@ public:
     [[nodiscard]] std::string getTranslationKey(int data) const override;
     [[nodiscard]] int getMaxStackSize() const override;
     [[nodiscard]] int getMaxDurability() const override;
+    [[nodiscard]] ItemStack createItemStack() const override;
+    [[nodiscard]] ItemStack createItemStack(int amount) const override;
 
 private:
     const ::Item &item_;
