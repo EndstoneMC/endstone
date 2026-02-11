@@ -36,7 +36,7 @@ void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
         if (event.isCancelled()) {
             return;
         }
-        result = endstone::core::EndstoneItemStack::toMinecraft(&event.getResult());
+        result = endstone::core::EndstoneItemStack::toMinecraft(event.getResult());
         // Endstone end
 
         region.getLevel().getSpawner().spawnItem(region, result, nullptr, Vec3(position_) + 0.5, 10);
