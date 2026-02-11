@@ -32,7 +32,7 @@ MinecraftPacketIds InventorySlotPacket::getId() const
     return MinecraftPacketIds::InventorySlot;
 }
 
-std::string InventorySlotPacket::getName() const
+std::string_view InventorySlotPacket::getName() const
 {
     return "InventorySlotPacket";
 }

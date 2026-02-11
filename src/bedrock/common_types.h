@@ -25,6 +25,7 @@
 
 using ActorList = std::vector<class Actor *>;
 using BlockActorList = std::vector<class BlockActor *>;
+using RuntimeActorList = std::vector<Actor *>;
 using MobList = std::vector<std::shared_ptr<class MobSpawnerData>>;
 using MobCategoryMap = std::array<WeightedRandomList<br::worldgen::SpawnerData>, 8UL>;
 

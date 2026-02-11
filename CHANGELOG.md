@@ -11,14 +11,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Added support for BDS 1.21.132.
+- Added support for BDS 1.26.0.
 - **NBT API**: Plugins can now read, create, and manipulate NBT data directly. All 11 standard tag types are supported (`ByteTag` through `CompoundTag`), with full Python bindings. `CompoundTag` works like a dictionary and `ListTag` like a list. Tags can be printed in SNBT format for debugging.
 - **ItemStack NBT serialization**: Convert items to and from NBT using `ItemStack.to_nbt()` and `ItemStack.from_nbt()`. Useful for saving items to storage or exchanging item data between plugins.
 - **Enchantment API**: All 33 vanilla enchantments are available as named constants. Plugins can check max level, conflicts between enchantments, and whether an enchantment can be applied to a given item. Accessible via the new Registry system.
 - **Map API**: Plugins can now create and customise in-game maps. Draw pixels and images on the map canvas, add map cursors (24 types including Player, Mansion, Monument, and TrialChambers), control scale and center position, and listen for `MapInitializeEvent` when a new map is created.
 - **New events**:
-  - `BlockFromToEvent`: fires on liquid flow and dragon egg teleportation. Cancellable.
-  - `PlayerPortalEvent`: fires when a player enters a portal, with access to source and destination locations.
+  - `BlockFromToEvent`: fires on liquid flow teleportation. Cancellable.
+  - `PlayerPortalEvent`: fires when a player enters a portal, with access to source and destination locations. Cancellable.
   - `PlayerDimensionChangeEvent`: fires when a player moves between dimensions (Overworld, Nether, The End).
 - **New ItemMeta types**:
   - `BookMeta`: read and write signed book title, author, generation, and pages.
@@ -35,8 +35,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - **Logging**: Rotated log files are now gzip-compressed to save disk space.
 - **`ItemStack.translation_key`** property for getting an item's localisation key.
 - Added support for Python 3.14.
-- Python enums now use native `enum.Enum` types, improving IDE autocompletion and type checking.
-- Improved C++/Python interop safety to prevent use-after-free when C++ objects are accessed from Python.
 
 ### Changed
 

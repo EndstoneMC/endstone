@@ -23,9 +23,9 @@ class RakNetConnector : public RemoteConnector {
 
 public:
     struct ConnectionCallbacks : Connector::ConnectionCallbacks {
-        virtual void onAllConnectionsClosed(Connection::DisconnectFailReason, const std::string &, bool) = 0;
-        virtual void onAllRemoteConnectionsClosed(Connection::DisconnectFailReason, const std::string &, bool) = 0;
-        virtual void onOutgoingConnectionFailed(Connection::DisconnectFailReason, const std::string &) = 0;
+        virtual void onAllConnectionsClosed(Connection::DisconnectFailReason, bool) = 0;
+        virtual void onAllRemoteConnectionsClosed(Connection::DisconnectFailReason, bool) = 0;
+        virtual void onOutgoingConnectionFailed(Connection::DisconnectFailReason) = 0;
         virtual void onWebsocketRequest(const std::string &, const std::string &, std::function<void()>) = 0;
     };
 

@@ -25,7 +25,7 @@ public:
     DisconnectPacket(Connection::DisconnectFailReason reason, const std::string &message,
                      std::optional<std::string> filtered_message, bool skip_message);
     [[nodiscard]] MinecraftPacketIds getId() const override;
-    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] std::string_view getName() const override;
     void write(BinaryStream &stream) const override;
 
 private:

@@ -100,7 +100,7 @@ public:
     TextPacket(TextPacketPayload payload);
     ~TextPacket() override = default;
     [[nodiscard]] MinecraftPacketIds getId() const override;
-    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] std::string_view getName() const override;
     void write(BinaryStream &) const override;
 
     TextPacketPayload payload;

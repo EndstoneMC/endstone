@@ -48,15 +48,15 @@ void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizon
     setPosDelta(before + diff);
 }
 
-bool Mob::_hurt(const ActorDamageSource &source, float damage, bool knock, bool ignite)
-{
-    addOrRemoveComponent<endstone::core::MobHurtFlagComponent>(true);
-    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::_hurt, this, source, damage, knock, ignite);
-    if (!hasComponent<endstone::core::MobHurtFlagComponent>()) {
-        // A related ActorDamageEvent is triggered and cancelled, propagate the result to the caller to prevent kb
-        // See also: HealthAttributeDelegate::change
-        return false;
-    }
-    addOrRemoveComponent<endstone::core::MobHurtFlagComponent>(false);
-    return result;
-}
+// bool Mob::_hurt(const ActorDamageSource &source, float damage, bool knock, bool ignite)
+// {
+//     addOrRemoveComponent<endstone::core::MobHurtFlagComponent>(true);
+//     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::_hurt, this, source, damage, knock, ignite);
+//     if (!hasComponent<endstone::core::MobHurtFlagComponent>()) {
+//         // A related ActorDamageEvent is triggered and cancelled, propagate the result to the caller to prevent kb
+//         // See also: HealthAttributeDelegate::change
+//         return false;
+//     }
+//     addOrRemoveComponent<endstone::core::MobHurtFlagComponent>(false);
+//     return result;
+// }

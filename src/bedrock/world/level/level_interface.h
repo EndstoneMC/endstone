@@ -56,6 +56,7 @@
 #include "bedrock/world/events/scripting_event_coordinator.h"
 #include "bedrock/world/events/server_network_event_coordinator.h"
 #include "bedrock/world/events/server_player_event_coordinator.h"
+#include "bedrock/world/gamemode/game_mode_messager.h"
 #include "bedrock/world/item/crafting/recipes.h"
 #include "bedrock/world/item/registry/item_registry_ref.h"
 #include "bedrock/world/level/biome/registry/biome_registry.h"
@@ -100,7 +101,7 @@ public:
     [[nodiscard]] virtual ChunkTickRangeManager const &getChunkTickRangeManager() const = 0;
     virtual PortalForcer &getPortalForcer() = 0;
     virtual void requestPlayerChangeDimension(Player &, ChangeDimensionRequest &&) = 0;
-    virtual  Bedrock::NotNullNonOwnerPtr<PlayerDimensionTransferManager> getPlayerDimensionTransferManager() = 0;
+    virtual Bedrock::NotNullNonOwnerPtr<PlayerDimensionTransferManager> getPlayerDimensionTransferManager() = 0;
     virtual void entityChangeDimension(Actor &, DimensionType, std::optional<Vec3>) = 0;
     virtual void *getActorDimensionTransferManager() = 0;
     [[nodiscard]] virtual Spawner &getSpawner() const = 0;
@@ -165,7 +166,8 @@ public:
     [[nodiscard]] virtual Tick const &getCurrentTick() const = 0;
     [[nodiscard]] virtual Tick getCurrentServerTick() const = 0;
     [[nodiscard]] virtual void *getTickDeltaTimeManager() const = 0;
-    virtual const VoxelShapes::VoxelShapeRegistry *getShapeRegistry() = 0;
+    virtual std::shared_ptr<const VoxelShapes::VoxelShapeRegistry> getShapeRegistry() const = 0;
+    virtual std::shared_ptr<VoxelShapes::VoxelShapeRegistry> getMutableShapeRegistry() const = 0;
     [[nodiscard]] virtual BiomeRegistry const &getBiomeRegistry() const = 0;
     virtual BiomeRegistry &getBiomeRegistry() = 0;
     [[nodiscard]] virtual BlockPalette const &getBlockPalette() const = 0;
@@ -223,6 +225,7 @@ public:
     virtual void setDefaultGameType(GameType) = 0;
     [[nodiscard]] virtual GameType getDefaultGameType() const = 0;
     virtual void setDifficulty(Difficulty) = 0;
+    [[nodiscard]] virtual GameModeExt::MessengerFactory createMessengerFactory() const = 0;
     virtual void setMultiplayerGameIntent(bool) = 0;
     [[nodiscard]] virtual bool getMultiplayerGameIntent() const = 0;
     virtual void setMultiplayerGame(bool) = 0;
@@ -409,11 +412,12 @@ public:
     [[nodiscard]] virtual PositionTrackingDB::PositionTrackingDBClient *getPositionTrackerDBClient() const = 0;
     [[nodiscard]] virtual PositionTrackingDB::PositionTrackingDBServer *getPositionTrackerDBServer() const = 0;
     virtual void flushRunTimeLighting() = 0;
+    virtual std::weak_ptr<ISubChunkLighter> getSubChunkLighter() const = 0;
     virtual void loadBlockDefinitionGroup(Experiments const &) = 0;
     virtual void initializeBlockDefinitionGroup() = 0;
     virtual Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry> getUnknownBlockTypeRegistry() = 0;
     [[nodiscard]] virtual bool isClientSide() const = 0;
-    [[nodiscard]] virtual SubClientId getSubId() const = 0; // TODO(fixme): check the function name
+    virtual SubClientId getSubClientId() const = 0;
     [[nodiscard]] virtual std::unordered_map<mce::UUID, PlayerListEntry> const &getPlayerList() const = 0;
     [[nodiscard]] virtual std::string const &getPlayerXUID(mce::UUID const &) const = 0;
     [[nodiscard]] virtual std::string const &getPlayerPlatformOnlineId(mce::UUID const &) const = 0;
@@ -450,7 +454,7 @@ public:
     virtual LevelSoundManager &getLevelSoundManager() = 0;
     [[nodiscard]] virtual Bedrock::NonOwnerPointer<SoundPlayerInterface> getSoundPlayer() const = 0;
     virtual void setSimPaused(bool) = 0;
-    virtual bool getSimPaused() = 0;
+    virtual bool getSimPaused() const = 0;
     virtual void setFinishedInitializing() = 0;
     virtual LootTables &getLootTables() = 0;
     virtual void updateWeather(float, int, float, int) = 0;

@@ -14,22 +14,11 @@
 
 #pragma once
 
-#include "bedrock/shared_types/legacy/actor/deals_damage.h"
-
-using DealsDamage = SharedTypes::Legacy::DealsDamage;
-
-struct DamageSensorTrigger {};
-
-class DamageSensorComponent {
-public:
-    DamageSensorComponent();
-    DealsDamage recordGenericDamageAndCheckIfDealt(Actor &owner, const ActorDamageSource &source, float damage,
-                                                   float pre_damage_health, VariantParameterList parameters,
-                                                   bool will_trigger);
-
-private:
-    int damage_amount_;
-    bool damage_is_fatal_;
-    int damage_cause_;
-    std::vector<DamageSensorTrigger> triggers_;
+enum class AttributeBuffType;
+enum class ActorHealCause : std::uint8_t {
+    None = 0,
+    Regeneration = 1,
+    Heal = 2,
+    SelfHeal = 3,
 };
+ActorHealCause getActorHealCause(AttributeBuffType buffType);

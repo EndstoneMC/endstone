@@ -50,5 +50,9 @@ struct WellKnownBiomeTags {
     WellKnownTagID FOREST_GEN_TAG_ID;
     WellKnownTagID PALE_GARDEN_TAG_ID;
     WellKnownTagID MEADOW_TAG_ID;
+    WellKnownTagID SLIME_TAG_ID;
+    WellKnownTagID SWAMP_WATER_HUGE_MUSHROOM_TAG_ID;
+    WellKnownTagID FAST_FISHING_TAG_ID;
+    WellKnownTagID HIGH_SEAS_TAG_ID;
+    WellKnownTagID SURFACE_MINESHAFT_TAG_ID;
 };
-static_assert(sizeof(WellKnownBiomeTags) == 600);

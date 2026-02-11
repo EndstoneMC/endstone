@@ -34,13 +34,15 @@ public:
     virtual void onPlayerReady(Player &) = 0;
     ~NetEventCallback() override = default;
     virtual void onConnect(const NetworkIdentifier &) = 0;
-    virtual void onUnableToConnect(Connection::DisconnectFailReason, const std::string &) = 0;
+    virtual void onUnableToConnect(Connection::DisconnectFailReason, const std::string &, const std::string &) = 0;
     virtual void onTick() = 0;
     virtual void onOutgoingPacket(const NetworkIdentifier &, MinecraftPacketIds, SubClientId, SubClientId) = 0;
     virtual void onValidPacketReceived(const NetworkIdentifier &, MinecraftPacketIds, SubClientId, SubClientId) = 0;
     virtual void onStoreOfferReceive(ShowStoreOfferRedirectType, const std::string &) = 0;
-    virtual void onDisconnect(const NetworkIdentifier &, Connection::DisconnectFailReason,
-                              Connection::DisconnectionStage, const std::string &, bool, const std::string &) = 0;
+    virtual void onDisconnect(const NetworkIdentifier &, const Connection::DisconnectFailReason,
+                              const Connection::DisconnectionStage, const std::string &message_from_server,
+                              const std::string &message_body_override, bool skip_message,
+                              const std::string &telemetryOverride) = 0;
     virtual IncomingPacketFilterResult allowIncomingPacketId(const NetworkIdentifierWithSubId &, MinecraftPacketIds,
                                                              size_t) = 0;
     virtual OutgoingPacketFilterResult allowOutgoingPacket(const std::vector<NetworkIdentifierWithSubId> &,

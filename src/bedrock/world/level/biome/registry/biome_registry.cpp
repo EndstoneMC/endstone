@@ -16,8 +16,8 @@
 
 void BiomeRegistry::forEachBiome(std::function<void(Biome const &)> callback) const
 {
-    for (const auto &biome : biomes_by_id_) {
-        if (biome && biome != empty_biome_) {
+    for (const auto &biome : biomes_by_id) {
+        if (biome && biome != empty_biome) {
             callback(*biome);
         }
     }
@@ -25,8 +25,8 @@ void BiomeRegistry::forEachBiome(std::function<void(Biome const &)> callback) co
 
 void BiomeRegistry::forEachNonConstBiome(std::function<void(Biome &)> callback)
 {
-    for (const auto &biome : biomes_by_id_) {
-        if (biome && biome != empty_biome_) {
+    for (const auto &biome : biomes_by_id) {
+        if (biome && biome != empty_biome) {
             callback(*biome);
         }
     }

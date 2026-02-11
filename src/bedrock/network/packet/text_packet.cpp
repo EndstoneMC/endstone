@@ -46,42 +46,27 @@ MinecraftPacketIds TextPacket::getId() const
     return MinecraftPacketIds::Text;
 }
 
-std::string TextPacket::getName() const
+std::string_view TextPacket::getName() const
 {
     return "TextPacket";
 }
 
 void TextPacket::write(BinaryStream &stream) const
 {
-    // TODO(wtf): this doesn't look right, why would we transmit a list of TextPacketType(s) in string to the client?
     stream.writeBool(payload.localize, "Localize?", nullptr);
     stream.writeUnsignedVarInt(payload.body.index(), "Message content (variant based on message type)", nullptr);
     std::visit(
         [&](auto &&arg) {  //
+            stream.writeByte(static_cast<std::underlying_type_t<TextPacketType>>(arg.type), "Message Type", nullptr);
             using T = std::decay_t<decltype(arg)>;
             if constexpr (std::is_same_v<T, TextPacketPayload::MessageOnly>) {
-                stream.writeString("raw", "raw", nullptr);
-                stream.writeString("tip", "tip", nullptr);
-                stream.writeString("systemMessage", "systemMessage", nullptr);
-                stream.writeString("textObjectWhisper", "textObjectWhisper", nullptr);
-                stream.writeString("textObjectAnnouncement", "textObjectAnnouncement", nullptr);
-                stream.writeString("textObject", "textObject", nullptr);
-                stream.writeByte(static_cast<std::uint8_t>(arg.type), "Message Type", nullptr);
                 stream.writeString(arg.message, "Message", nullptr);
             }
             else if constexpr (std::is_same_v<T, TextPacketPayload::AuthorAndMessage>) {
-                stream.writeString("chat", "chat", nullptr);
-                stream.writeString("whisper", "whisper", nullptr);
-                stream.writeString("announcement", "announcement", nullptr);
-                stream.writeByte(static_cast<std::uint8_t>(arg.type), "Message Type", nullptr);
                 stream.writeString(arg.author, "Player Name", nullptr);
                 stream.writeString(arg.message, "Message", nullptr);
             }
             else if constexpr (std::is_same_v<T, TextPacketPayload::MessageAndParams>) {
-                stream.writeString("translate", "translate", nullptr);
-                stream.writeString("popup", "popup", nullptr);
-                stream.writeString("jukeboxPopup", "jukeboxPopup", nullptr);
-                stream.writeByte(static_cast<std::uint8_t>(arg.type), "Message Type", nullptr);
                 stream.writeString(arg.message, "Message", nullptr);
                 stream.writeVectorList(arg.params, "Parameter", nullptr, "Parameter List", nullptr);
             }
@@ -89,13 +74,7 @@ void TextPacket::write(BinaryStream &stream) const
         payload.body);
     stream.writeString(payload.xuid, "Sender's XUID", nullptr);
     stream.writeString(payload.platform_id, "Platform Id", nullptr);
-    if (payload.filtered_message.has_value()) {
-        stream.writeBool(true, "Has Filtered Message", nullptr);
-        stream.writeString(payload.filtered_message.value(), "Filtered Message", nullptr);
-    }
-    else {
-        stream.writeBool(false, "Has Filtered Message", nullptr);
-    }
+    stream.writeString(payload.filtered_message.value_or(""), "Filtered Message", nullptr);
 }
 
 Bedrock::Result<void> TextPacket::_read(ReadOnlyBinaryStream &)

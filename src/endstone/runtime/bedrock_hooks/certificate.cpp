@@ -38,6 +38,10 @@ UnverifiedCertificate UnverifiedCertificate::fromString(const std::string &input
 
 bool Certificate::validate(std::time_t current_time, bool is_self_signed, bool check_expired)
 {
+    // Fix: #blamemojang
+    // ServerConnectionAuthValidatorAnon::ConnectionRequest_verify does not check
+    // the result of UnverifiedCertificate::verify, this will crash the server if the client
+    // sends an invalid certificate.
     if (std::launder(this) == nullptr) {
         return false;
     }

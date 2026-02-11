@@ -42,17 +42,19 @@ private:
     using BiomeNameLookupMap = std::unordered_map<HashType64, std::unique_ptr<Biome>>;
     struct BiomeComparator {};
 
-    WellKnownBiomeTags well_known_biome_tags_;
-    bool surface_builders_resolved;
-    bool client_initialized_;
-    BiomeNameLookupMap biomes_by_name_;
-    brstd::flat_set<gsl::not_null<Biome *>, BiomeComparator> biomes_by_id_;  // +1080
-    std::vector<std::pair<const BiomeIdType, const std::string &>> removed_biomes_id_and_full_name_;
-    std::uint32_t next_custom_biome_id_;
-    std::atomic<bool> closed_for_registration_;
     BiomeTagRegistry tag_registry_;
-    Biome *empty_biome_;  // +1256
-    Bedrock::PubSub::Subscription on_save_subscription_;
-    Bedrock::PubSub::Subscription on_level_storage_manager_start_leave_game_subscription_;
-    std::vector<SeasonTextureRowSettings> season_texture_row_settings_;
+
+public:
+    const WellKnownBiomeTags well_known_biome_tags;
+    bool surface_builders_resolved;
+    bool client_initialized;
+    BiomeNameLookupMap biomes_by_name;
+    brstd::flat_set<gsl::not_null<Biome *>, BiomeComparator> biomes_by_id;  // +1080
+    std::vector<std::pair<const BiomeIdType, const std::string &>> removed_biomes_id_and_full_name;
+    std::uint32_t next_custom_biome_id;
+    std::atomic<bool> closed_for_registration;
+    Biome *empty_biome;  // +1256
+    Bedrock::PubSub::Subscription on_save_subscription;
+    Bedrock::PubSub::Subscription on_level_storage_manager_start_leave_game_subscription;
+    std::vector<SeasonTextureRowSettings> season_texture_row_settings;
 };

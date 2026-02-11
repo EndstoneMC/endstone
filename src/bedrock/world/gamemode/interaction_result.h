@@ -16,49 +16,35 @@
 
 class InteractionResult {
 
-    enum Result : unsigned int {
-        FAILURE = 0,
-        SUCCESS = 1,
-        SWING = 2,
-    };
-
 public:
     InteractionResult() = default;
-    explicit InteractionResult(std::underlying_type_t<Result> result) : result_(result) {}
+    explicit InteractionResult(const bool success, const bool swing) : success_(success), swing_(swing) {}
 
-    [[nodiscard]] bool shouldSwing() const
-    {
-        return result_ == SWING;
-    }
+    [[nodiscard]] bool shouldSwing() const { return swing_; }
 
-    [[nodiscard]] bool isSuccessful() const
-    {
-        return result_ == SUCCESS || result_ == SWING;
-    }
+    [[nodiscard]] bool isSuccessful() const { return success_; }
 
-    operator bool() const
-    {
-        return isSuccessful();
-    }
+    operator bool() const { return isSuccessful(); }
 
     static InteractionResult Success()
     {
-        static InteractionResult result{SWING};
+        static InteractionResult result{true, true};
         return result;
     }
 
     static InteractionResult SuccessNoSwing()
     {
-        static InteractionResult result{SUCCESS};
+        static InteractionResult result{true, false};
         return result;
     }
 
     static InteractionResult Failure()
     {
-        static InteractionResult result{FAILURE};
+        static InteractionResult result;
         return result;
     }
 
 private:
-    std::underlying_type_t<Result> result_;
+    bool success_ : 1;
+    bool swing_ : 1;
 };

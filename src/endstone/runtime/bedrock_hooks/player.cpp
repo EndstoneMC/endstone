@@ -98,6 +98,7 @@ bool Player::take(Actor &actor, int unknown, int favored_slot)
         return false;
     }
 
+    // TODO(refactor): replace with SAPI's ActorBeforeAcquireItemEvent?
     if (actor.hasCategory(ActorCategory::Item)) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
         auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();

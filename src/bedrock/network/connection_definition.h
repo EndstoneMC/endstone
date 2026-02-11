@@ -29,4 +29,5 @@ struct ConnectionDefinition {
     std::uint32_t max_num_connections;        // +12
     bool is_server_visible_to_lan_discovery;  // +16
     bool allow_unconnected_pongs;             // +17
+    bool disable_trickle_ice;
 };

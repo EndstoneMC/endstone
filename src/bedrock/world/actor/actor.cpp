@@ -308,6 +308,7 @@ void Actor::_setDimensionTransitionComponent(DimensionType from_id, DimensionTyp
     auto &component = entity_context_.getOrAddComponent<DimensionTransitionComponent>();
     component.portal_entrance_position = getPosition();
     component.portal_entrance_axis = axis;
+    component.existing_target_position.reset();
 }
 
 // void Actor::_setHeightOffset(float offset)

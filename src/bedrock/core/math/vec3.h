@@ -18,34 +18,21 @@
 
 class Vec3 {
 public:
-    float x;
-    float y;
-    float z;
+    static const Vec3 ZERO;
 
-    constexpr Vec3 operator+(const Vec3 &other) const
-    {
-        return {x + other.x, y + other.y, z + other.z};
-    }
+    constexpr Vec3() = default;
 
-    constexpr Vec3 operator+(float val) const
-    {
-        return {this->x + val, this->y + val, this->z + val};
-    }
+    constexpr Vec3(float x_, float y_, float z_) : x(x_), y(y_), z(z_) {}
 
-    constexpr Vec3 operator-(const Vec3 &other) const
-    {
-        return {x - other.x, y - other.y, z - other.z};
-    }
+    constexpr Vec3 operator+(const Vec3 &other) const { return {x + other.x, y + other.y, z + other.z}; }
 
-    constexpr Vec3 operator*(const Vec3 &other) const
-    {
-        return {x * other.x, y * other.y, z * other.z};
-    }
+    constexpr Vec3 operator+(float val) const { return {this->x + val, this->y + val, this->z + val}; }
 
-    constexpr Vec3 operator/(const Vec3 &other) const
-    {
-        return {x / other.x, y / other.y, z / other.z};
-    }
+    constexpr Vec3 operator-(const Vec3 &other) const { return {x - other.x, y - other.y, z - other.z}; }
+
+    constexpr Vec3 operator*(const Vec3 &other) const { return {x * other.x, y * other.y, z * other.z}; }
+
+    constexpr Vec3 operator/(const Vec3 &other) const { return {x / other.x, y / other.y, z / other.z}; }
 
     constexpr Vec3 &operator+=(const Vec3 &other)
     {
@@ -55,12 +42,11 @@ public:
         return *this;
     }
 
-    [[nodiscard]] float lengthSquared() const
-    {
-        return x * x + y * y + z * z;
-    }
+    [[nodiscard]] float lengthSquared() const { return x * x + y * y + z * z; }
 
-    static const Vec3 ZERO;
+    float x;
+    float y;
+    float z;
 };
 BEDROCK_STATIC_ASSERT_SIZE(Vec3, 12, 12);
 

@@ -16,7 +16,7 @@
 
 class MobEffect {
 public:
-    static constexpr std::size_t NUM_EFFECTS = 37;
+    static constexpr std::size_t NUM_EFFECTS = 38;
     static constexpr int UNKNOWN_EFFECT = 0;
     static constexpr int DARKNESS_EFFECT_FACTOR_PADDING_DURATION = 22;
     struct FactorCalculationData {

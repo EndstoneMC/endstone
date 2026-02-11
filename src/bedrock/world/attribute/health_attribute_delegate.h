@@ -21,7 +21,7 @@ class Mob;
 class HealthAttributeDelegate : public AttributeInstanceDelegate {
 public:
     HealthAttributeDelegate(const AttributeInstance &, Mob *);
-    ENDSTONE_HOOK float change(float old_value, float new_value, const AttributeBuff &buff) override;
+    std::optional<float> change(float old_value, float new_value, const AttributeBuff &buff) override;
 
 private:
     std::int32_t tick_counter_;

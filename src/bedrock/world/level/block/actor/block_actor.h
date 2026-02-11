@@ -49,20 +49,11 @@ public:
     [[nodiscard]] virtual bool isWithinRenderDistance(const Vec3 &) const = 0;
     virtual void tick(BlockSource &) = 0;
 
-    void setChanged()
-    {
-        properties_.insert(Property::Changed);
-    }
+    void setChanged() { properties_.insert(Property::Changed); }
 
-    [[nodiscard]] bool isChanged() const
-    {
-        return properties_.contains(Property::Changed);
-    }
+    [[nodiscard]] bool isChanged() const { return properties_.contains(Property::Changed); }
 
-    [[nodiscard]] BlockActorType getType() const
-    {
-        return type_;
-    }
+    [[nodiscard]] BlockActorType getType() const { return type_; }
 
     int tick_count;
 
@@ -74,9 +65,10 @@ protected:
     const BlockActorType type_;
     Properties properties_;
     Bedrock::Safety::RedactableString custom_name_;
+    std::string filtered_custom_name_;
     ActorTerrainInterlockData terrain_interlock_data_;
 
     // private:
     //     bool changed_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 152, 136);
+BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 184, 160);

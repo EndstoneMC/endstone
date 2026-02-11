@@ -535,3 +535,19 @@ def test_str_tags(tag, expected):
 )
 def test_repr_tags(tag, expected):
     assert repr(tag) == expected
+
+
+def test_compound_tag_self_assignment():
+    a = CompoundTag({"a": IntTag(1)})
+    a["b"] = a
+
+    # a now has two keys
+    assert len(a) == 2
+    assert "a" in a and "b" in a
+    assert a["a"] == 1
+
+    # a["b"] is a CompoundTag (deep copy snapshot taken BEFORE insertion)
+    assert isinstance(a["b"], CompoundTag)
+    inner = a["b"]
+    assert len(inner) == 1
+    assert inner["a"] == 1

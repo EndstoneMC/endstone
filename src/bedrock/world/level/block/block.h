@@ -132,4 +132,4 @@ private:
     BlockRuntimeId network_id_;                        // +300
     bool has_runtime_id_;                              //
 };
-BEDROCK_STATIC_ASSERT_SIZE(Block, 304, 312);
+BEDROCK_STATIC_ASSERT_SIZE(Block, 280, 288);

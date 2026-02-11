@@ -19,6 +19,7 @@
 #include "endstone/core/damage/damage_source.h"
 #include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/server.h"
+#include "endstone/event/actor/actor_damage_event.h"
 #include "endstone/event/actor/actor_death_event.h"
 #include "endstone/event/actor/actor_remove_event.h"
 #include "endstone/runtime/vtable_hook.h"
@@ -54,6 +55,20 @@ bool handleEvent(const ActorRemovedEvent &event)
     }
     return true;
 }
+
+bool handleEvent(::ActorBeforeHurtEvent &event)
+{
+    const auto &source = event.source;
+    const auto &server = endstone::core::EndstoneServer::getInstance();
+    auto &mob = event.entity.getEndstoneActor<endstone::core::EndstoneMob>();
+    endstone::ActorDamageEvent e{mob, std::make_unique<endstone::core::EndstoneDamageSource>(source), event.damage};
+    server.getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        return false;
+    }
+    event.damage = e.getDamage();
+    return true;
+}
 }  // namespace
 
 HandlerResult ScriptActorGameplayHandler::handleEvent1(const ActorGameplayEvent<void> &event)
@@ -67,6 +82,21 @@ HandlerResult ScriptActorGameplayHandler::handleEvent1(const ActorGameplayEvent<
             }
         }
         return ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptActorGameplayHandler::handleEvent1, this, event);
+    };
+    return event.visit(visitor);
+}
+
+GameplayHandlerResult<CoordinatorResult> ScriptActorGameplayHandler::handleEvent4(
+    MutableActorGameplayEvent<CoordinatorResult> &event)
+{
+    auto visitor = [&](auto &&arg) -> GameplayHandlerResult<CoordinatorResult> {
+        using T = std::decay_t<decltype(arg)>;
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<::ActorBeforeHurtEvent>>) {
+            if (!handleEvent(arg.value())) {
+                return {HandlerResult::BypassListeners, CoordinatorResult::Cancel};
+            }
+        }
+        return ENDSTONE_VHOOK_CALL_ORIGINAL(&ScriptActorGameplayHandler::handleEvent4, this, event);
     };
     return event.visit(visitor);
 }

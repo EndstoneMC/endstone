@@ -1,5 +1,3 @@
-import time
-
 import pytest
 from endstone import Player
 from endstone.command import Command, CommandSender
@@ -48,6 +46,14 @@ class EndstoneTest(Plugin):
         marker = "player" if "player" in kwargs else "not player"
         set_runtime_context(server=self.server, plugin=self, **kwargs)
         try:
-            return pytest.main(["-s", "-m", marker, "--pyargs", "endstone_test.tests"])
+            return pytest.main(
+                [
+                    "-s",
+                    "-m",
+                    marker,
+                    "--pyargs",
+                    "endstone_test.tests",
+                ]
+            )
         finally:
             clear_runtime_context()

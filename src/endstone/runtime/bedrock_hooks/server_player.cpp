@@ -18,6 +18,7 @@
 #include "endstone/core/level/location.h"
 #include "endstone/core/player.h"
 #include "endstone/event/player/player_portal_event.h"
+#include "endstone/runtime/hook.h"
 
 void ServerPlayer::changeDimension(DimensionType to_id)
 {
@@ -41,8 +42,9 @@ void ServerPlayer::changeDimension(DimensionType to_id)
     if (e.isCancelled()) {
         return;
     }
-    request.to_position = {e.getTo().getX(), e.getTo().getY(), e.getTo().getZ()};
 
-    _setDimensionTransitionComponent(getDimensionId(), to_id, 300);
-    getLevel().requestPlayerChangeDimension(*this, std::move(request));
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::changeDimension, this, to_id);
+    // request.to_position = Vec3::ZERO;
+    // _setDimensionTransitionComponent(getDimensionId(), to_id, 300);
+    // getLevel().requestPlayerChangeDimension(*this, std::move(request));
 }

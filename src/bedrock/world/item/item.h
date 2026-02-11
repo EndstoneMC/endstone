@@ -57,7 +57,7 @@ public:
     Item(const std::string &, short);
 
     virtual ~Item() = 0;
-    virtual bool initServer(Json::Value const &, SemVersion const &, IPackLoadContext &, JsonBetaState) = 0;
+    virtual bool initServer(Json::Value const &, SemVersion const &, PackLoadContext &, JsonBetaState) = 0;
     virtual void tearDown() = 0;
     virtual Item &setDescriptionId(std::string const &) = 0;
     virtual std::string const &getDescriptionId() const = 0;
@@ -153,6 +153,8 @@ public:
     virtual std::string buildDescriptionName(ItemStackBase const &) const = 0;
     virtual Bedrock::Safety::RedactableString const buildRedactedDescriptionName(ItemStackBase const &) const = 0;
     virtual std::string buildDescriptionId(ItemDescriptor const &, CompoundTag const *) const = 0;
+    virtual Bedrock::Safety::RedactableString getRedactedCustomName(const ItemStackBase &stack) const = 0;
+    virtual bool hasCustomHoverName(const ItemStackBase &stack) const = 0;
     virtual std::string buildEffectDescriptionName(ItemStackBase const &) const = 0;
     ENDSTONE_HOOK virtual void readUserData(ItemStackBase &stack, IDataInput &input,
                                             ReadOnlyBinaryStream &underlying_stream) const;
@@ -173,7 +175,7 @@ public:
     virtual bool shouldEmitInUseGameEvents() const = 0;
     virtual bool useInterruptedByAttacking() const = 0;
     virtual bool hasSameRelevantUserData(ItemStackBase const &, ItemStackBase const &) const = 0;
-    virtual void initClient(Json::Value const &, SemVersion const &, JsonBetaState, IPackLoadContext &) = 0;
+    virtual void initClient(Json::Value const &, SemVersion const &, JsonBetaState, PackLoadContext &) = 0;
     virtual Item &setIconInfo(std::string const &, int) = 0;
     virtual ResolvedItemIconInfo getIconInfo(ItemStackBase const &, int, bool) const = 0;
     virtual std::string getInteractText(Player const &) const = 0;

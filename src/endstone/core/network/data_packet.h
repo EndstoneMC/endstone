@@ -23,7 +23,7 @@ class DataPacket : public Packet {
 public:
     DataPacket(int packet_id, std::string_view payload);
     [[nodiscard]] MinecraftPacketIds getId() const override;
-    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] std::string_view getName() const override;
     void write(BinaryStream &stream) const override;
     [[nodiscard]] int getPacketId() const;
     [[nodiscard]] std::string_view getPayload() const;

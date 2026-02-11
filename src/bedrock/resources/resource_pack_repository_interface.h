@@ -53,6 +53,7 @@ public:
     [[nodiscard]] virtual Core::HeapPathBuffer getResourcePacksPath() const = 0;
     [[nodiscard]] virtual Core::HeapPathBuffer getBehaviorPacksPath() const = 0;
     [[nodiscard]] virtual Core::HeapPathBuffer getSkinPacksPath() const = 0;
+    [[nodiscard]] virtual Core::HeapPathBuffer getCustomSkinDirectoryPath() const = 0;
     [[nodiscard]] virtual Core::HeapPathBuffer getDevelopmentResourcePacksPath() const = 0;
     [[nodiscard]] virtual Core::HeapPathBuffer getDevelopmentBehaviorPacksPath() const = 0;
     [[nodiscard]] virtual Core::HeapPathBuffer getDevelopmentSkinPacksPath() const = 0;

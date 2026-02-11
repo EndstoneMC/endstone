@@ -24,7 +24,7 @@ public:
     virtual void tick(AttributeInstance &, AttributeModificationContext &) = 0;
     virtual void notify(AttributeMessageType, AttributeModificationContext &) = 0;
     virtual bool willChange(float, float, const AttributeBuff &) = 0;
-    virtual float change(float, float, const AttributeBuff &) = 0;
+    virtual std::optional<float> change(float, float, const AttributeBuff &) = 0;
     [[nodiscard]] virtual float getBuffValueWithModifiers(const AttributeBuff &) const = 0;
 
 protected:

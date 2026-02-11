@@ -289,3 +289,21 @@ TEST(NbtEquality, DeepStructural)
     EXPECT_FALSE(a == b);
     EXPECT_TRUE(a != b);
 }
+
+TEST(NbtCompoundTag, SelfAssignment)
+{
+    CompoundTag a{{"a", IntTag{1}}};
+    a["b"] = a;
+
+    // a now has two keys
+    EXPECT_EQ(a.size(), 2);
+    EXPECT_TRUE(a.contains("a"));
+    EXPECT_TRUE(a.contains("b"));
+    EXPECT_EQ(a.at("a").get<IntTag>(), 1);
+
+    // a["b"] is a CompoundTag (deep copy snapshot taken BEFORE insertion)
+    EXPECT_EQ(a.at("b").type(), nbt::Type::Compound);
+    auto &inner = a.at("b").get<CompoundTag>();
+    EXPECT_EQ(inner.size(), 1);
+    EXPECT_EQ(inner.at("a").get<IntTag>(), 1);
+}

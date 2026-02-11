@@ -22,7 +22,7 @@ MinecraftPacketIds DataPacket::getId() const
     return static_cast<MinecraftPacketIds>(packet_id_);
 }
 
-std::string DataPacket::getName() const
+std::string_view DataPacket::getName() const
 {
     return "DataPacket";
 }

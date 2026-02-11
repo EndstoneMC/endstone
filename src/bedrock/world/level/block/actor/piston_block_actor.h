@@ -30,7 +30,7 @@ public:
 private:
     void _tryFixupStickyPistonArm(BlockSource &region);
 
-    bool sticky_;
+    bool sticky_;  // +184
     float progress_;
     float last_progress_;
     bool was_pushed_backward_by_a_non_sticky_piston_;
@@ -39,7 +39,7 @@ private:
     PistonState state_;
     PistonState new_state_;
     bool verify_arm_;
-    bool should_verify_arm_type_; // +178
+    bool should_verify_arm_type_;  // +202
     std::vector<BlockPos> attached_blocks_;
     std::optional<std::vector<BlockPos>> future_client_attached_blocks_;
     std::vector<BlockPos> break_blocks_;

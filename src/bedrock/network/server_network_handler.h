@@ -67,7 +67,7 @@ public:
     void updateServerAnnouncement();
     const ConnectionRequest &fetchConnectionRequest(const NetworkIdentifier &source);
     [[nodiscard]] PlayerAuthenticationInfo fetchPlayerAuthenticationInfo(const NetworkIdentifier &source);
-    ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &,
+    ENDSTONE_HOOK bool tryToLoadPlayer(ServerPlayer &, ConnectionRequest const &,
                                       const PlayerAuthenticationInfo &player_info);
 
     ServerPlayer *getServerPlayer(const NetworkIdentifier &, SubClientId);  // Endstone
