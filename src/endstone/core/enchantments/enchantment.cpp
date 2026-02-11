@@ -47,7 +47,7 @@ bool EndstoneEnchantment::conflictsWith(const Enchantment &other) const
 
 bool EndstoneEnchantment::canEnchantItem(const ItemStack &item) const
 {
-    const auto stack = EndstoneItemStack::toMinecraft(&item);
+    const auto stack = EndstoneItemStack::toMinecraft(item);
     return getHandle().canEnchant(stack.getItem()->getEnchantSlot(), false);
 }
 

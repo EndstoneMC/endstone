@@ -23,7 +23,7 @@ class EndstoneItem : public EndstoneActorBase<Item, ::ItemActor> {
 public:
     using EndstoneActorBase::EndstoneActorBase;
     [[nodiscard]] Item *asItem() const override;
-    [[nodiscard]] std::unique_ptr<ItemStack> getItemStack() const override;
+    [[nodiscard]] ItemStack getItemStack() const override;
     void setItemStack(const ItemStack &stack) override;
     [[nodiscard]] int getPickupDelay() const override;
     void setPickupDelay(int delay) override;

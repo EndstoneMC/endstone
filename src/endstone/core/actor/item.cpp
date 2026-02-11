@@ -23,14 +23,14 @@ Item *EndstoneItem::asItem() const
     return const_cast<EndstoneItem *>(this);
 }
 
-std::unique_ptr<ItemStack> EndstoneItem::getItemStack() const
+ItemStack EndstoneItem::getItemStack() const
 {
     return EndstoneItemStack::fromMinecraft(getHandle().getItemStack());
 }
 
 void EndstoneItem::setItemStack(const ItemStack &stack)
 {
-    getHandle().setItemStack(EndstoneItemStack::toMinecraft(&stack));
+    getHandle().setItemStack(EndstoneItemStack::toMinecraft(stack));
 }
 
 int EndstoneItem::getPickupDelay() const
