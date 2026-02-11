@@ -80,35 +80,17 @@ public:
         }
     }
 
-    [[nodiscard]] ItemMeta::Type getType() const override
-    {
-        return Interface::MetaType;
-    }
+    [[nodiscard]] ItemMeta::Type getType() const override { return Interface::MetaType; }
 
-    [[nodiscard]] bool hasDisplayName() const override
-    {
-        return !display_name_.empty();
-    }
+    [[nodiscard]] bool hasDisplayName() const override { return !display_name_.empty(); }
 
-    [[nodiscard]] std::string getDisplayName() const override
-    {
-        return display_name_;
-    }
+    [[nodiscard]] std::string getDisplayName() const override { return display_name_; }
 
-    void setDisplayName(std::optional<std::string> name) override
-    {
-        display_name_ = std::move(name.value_or(""));
-    }
+    void setDisplayName(std::optional<std::string> name) override { display_name_ = std::move(name.value_or("")); }
 
-    [[nodiscard]] bool hasLore() const override
-    {
-        return !lore_.empty();
-    }
+    [[nodiscard]] bool hasLore() const override { return !lore_.empty(); }
 
-    [[nodiscard]] std::vector<std::string> getLore() const override
-    {
-        return lore_;
-    }
+    [[nodiscard]] std::vector<std::string> getLore() const override { return lore_; }
 
     void setLore(std::optional<std::vector<std::string>> lore) override
     {
@@ -120,10 +102,7 @@ public:
         }
     }
 
-    [[nodiscard]] bool hasEnchants() const override
-    {
-        return !enchantments_.empty();
-    }
+    [[nodiscard]] bool hasEnchants() const override { return !enchantments_.empty(); }
 
     [[nodiscard]] bool hasEnchant(EnchantmentId id) const override
     {
@@ -167,15 +146,9 @@ public:
         return false;
     }
 
-    bool removeEnchant(EnchantmentId id) override
-    {
-        return enchantments_.erase(id) > 0;
-    }
+    bool removeEnchant(EnchantmentId id) override { return enchantments_.erase(id) > 0; }
 
-    void removeEnchants() override
-    {
-        enchantments_.clear();
-    }
+    void removeEnchants() override { enchantments_.clear(); }
 
     [[nodiscard]] bool hasConflictingEnchant(EnchantmentId id) const override
     {
@@ -192,45 +165,21 @@ public:
         return false;
     }
 
-    [[nodiscard]] bool isUnbreakable() const override
-    {
-        return unbreakable_;
-    }
+    [[nodiscard]] bool isUnbreakable() const override { return unbreakable_; }
 
-    void setUnbreakable(bool unbreakable) override
-    {
-        unbreakable_ = unbreakable;
-    }
+    void setUnbreakable(bool unbreakable) override { unbreakable_ = unbreakable; }
 
-    [[nodiscard]] bool hasDamage() const override
-    {
-        return damage_ > 0;
-    }
+    [[nodiscard]] bool hasDamage() const override { return damage_ > 0; }
 
-    [[nodiscard]] int getDamage() const override
-    {
-        return damage_;
-    }
+    [[nodiscard]] int getDamage() const override { return damage_; }
 
-    void setDamage(int damage) override
-    {
-        damage_ = damage;
-    }
+    void setDamage(int damage) override { damage_ = damage; }
 
-    [[nodiscard]] bool hasRepairCost() const override
-    {
-        return repair_cost_ > 0;
-    }
+    [[nodiscard]] bool hasRepairCost() const override { return repair_cost_ > 0; }
 
-    [[nodiscard]] int getRepairCost() const override
-    {
-        return repair_cost_;
-    }
+    [[nodiscard]] int getRepairCost() const override { return repair_cost_; }
 
-    void setRepairCost(int cost) override
-    {
-        repair_cost_ = cost;
-    }
+    void setRepairCost(int cost) override { repair_cost_ = cost; }
 
     [[nodiscard]] CompoundTag toNbt() const override
     {
@@ -275,10 +224,7 @@ public:
         }
     }
 
-    [[nodiscard]] bool applicableTo(ItemTypeId type) const override
-    {
-        return type != ItemType::Air;
-    }
+    [[nodiscard]] bool applicableTo(ItemTypeId type) const override { return type != ItemType::Air; }
 
     [[nodiscard]] bool equalsCommon(const ItemMeta &meta) const override
     {
@@ -292,10 +238,7 @@ public:
             && (hasDamage() ? that.hasDamage() && damage_ == that.damage_ : !that.hasDamage());                       //
     }
 
-    [[nodiscard]] bool notUncommon(const ItemMeta &meta) const override
-    {
-        return true;
-    }
+    [[nodiscard]] bool notUncommon(const ItemMeta &meta) const override { return true; }
 
 private:
     static std::unique_ptr<::ListTag> createStringList(const std::vector<std::string> &list)
@@ -316,9 +259,9 @@ private:
         display->put(std::move(key), std::move(value));
     }
 
-    static std::unordered_map<std::string, int> buildEnchantments(const ::ListTag &tag)
+    static std::unordered_map<EnchantmentId, int> buildEnchantments(const ::ListTag &tag)
     {
-        std::unordered_map<std::string, int> enchantments;
+        std::unordered_map<EnchantmentId, int> enchantments;
         tag.forEachCompoundTag([&](const ::CompoundTag &enchant_tag) {
             auto id = enchant_tag.getShort("id");
             auto lvl = enchant_tag.getShort("lvl") & 0xffff;
@@ -330,7 +273,7 @@ private:
         return enchantments;
     }
 
-    static void applyEnchantments(const std::unordered_map<std::string, int> &enchantments, ::CompoundTag &tag)
+    static void applyEnchantments(const std::unordered_map<EnchantmentId, int> &enchantments, ::CompoundTag &tag)
     {
         tag.remove(ItemStackBase::TAG_ENCHANTS);
         if (enchantments.empty()) {
@@ -353,7 +296,7 @@ private:
 
     std::string display_name_;
     std::vector<std::string> lore_;
-    std::unordered_map<std::string, int> enchantments_;
+    std::unordered_map<EnchantmentId, int> enchantments_;
     int repair_cost_ = 0;
     int damage_ = 0;
     bool unbreakable_ = false;
@@ -364,9 +307,6 @@ public:
     using Base = EndstoneItemMetaBase;
     using Base::Base;
 
-    [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override
-    {
-        return std::make_unique<EndstoneItemMeta>(*this);
-    }
+    [[nodiscard]] std::unique_ptr<ItemMeta> clone() const override { return std::make_unique<EndstoneItemMeta>(*this); }
 };
 }  // namespace endstone::core
