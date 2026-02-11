@@ -20,15 +20,13 @@
 
 namespace endstone::core {
 
-class EndstoneItemStack : public ItemStack {
+class EndstoneItemStack : public ItemStack::Impl {
 public:
     explicit EndstoneItemStack(const ::ItemStackBase &item);
-    EndstoneItemStack(const EndstoneItemStack &item);
+    EndstoneItemStack(const EndstoneItemStack &other);
+    EndstoneItemStack &operator=(const EndstoneItemStack &other);
 
-protected:
-    [[nodiscard]] bool isEndstoneItemStack() const override;
-
-public:
+    [[nodiscard]] std::unique_ptr<Impl> clone() const override;
     [[nodiscard]] const ItemType &getType() const override;
     void setType(ItemTypeId type) override;
     [[nodiscard]] int getAmount() const override;
@@ -37,15 +35,13 @@ public:
     void setData(int data) override;
     [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] int getMaxStackSize() const override;
-    [[nodiscard]] bool isSimilar(const ItemStack &other) const override;
+    [[nodiscard]] bool isSimilar(const Impl &other) const override;
     [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta() const override;
     [[nodiscard]] bool hasItemMeta() const override;
-    bool setItemMeta(ItemMeta *meta) override;
-    [[nodiscard]] std::unique_ptr<ItemStack> clone() const override;
-    [[nodiscard]] CompoundTag toNbt() const override;
+    bool setItemMeta(const ItemMeta *meta) override;
 
-    static ::ItemStack toMinecraft(const ItemStack *item);
-    static std::unique_ptr<EndstoneItemStack> fromMinecraft(const ::ItemStack &item);
+    static ::ItemStack toMinecraft(const ItemStack &item);
+    static ItemStack fromMinecraft(const ::ItemStackBase &item);
     static const ItemType &getType(const ItemStackBase *item);
     static std::unique_ptr<ItemMeta> getItemMeta(const ItemStackBase *item);
     static bool hasItemMeta(const ItemStackBase *item);
