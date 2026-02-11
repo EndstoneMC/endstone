@@ -657,7 +657,7 @@ class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
     @property
     def item(self) -> ItemStack:
         """
-        Gets or sets the item that is being consumed.
+        Gets the item that is being consumed.
         """
         ...
     @property

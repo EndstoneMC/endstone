@@ -230,7 +230,7 @@ std::unordered_map<int, ItemStack> EndstoneInventory::all(const std::string &typ
     for (auto i = 0; i < inventory.size(); i++) {
         auto &item = inventory[i];
         if (item.has_value() && item->getType() == type) {
-            slots[i] = std::move(item.value());
+            slots.emplace(i, std::move(item.value()));
         }
     }
     return slots;
@@ -243,7 +243,7 @@ std::unordered_map<int, ItemStack> EndstoneInventory::all(const ItemStack &item)
     for (auto i = 0; i < inventory.size(); i++) {
         auto &it = inventory[i];
         if (it.has_value() && item == it.value()) {
-            slots[i] = std::move(it.value());
+            slots.emplace(i, std::move(it.value()));
         }
     }
     return slots;

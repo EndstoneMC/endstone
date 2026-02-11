@@ -83,7 +83,7 @@ bool Player::drop(const ItemStack &item, bool randomly)
     auto &player = getEndstoneActor<endstone::core::EndstonePlayer>();
     if (isAlive()) {
         const auto drop = endstone::core::EndstoneItemStack::fromMinecraft(item);
-        endstone::PlayerDropItemEvent e(player, *drop);
+        endstone::PlayerDropItemEvent e(player, drop);
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return false;

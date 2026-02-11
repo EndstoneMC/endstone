@@ -38,13 +38,21 @@ public:
      * @param amount the amount in the stack
      * @param data the data value
      */
-    explicit ItemStack(ItemTypeId type, int amount = 1, int data = 0);
-    ItemStack(const ItemStack &other) : impl_(other.impl_ ? other.impl_->clone() : nullptr) {}
+    explicit ItemStack(ItemTypeId type, int amount = 1, int data = 0)
+    {
+        auto *item_type = ItemType::get(type);
+        if (!item_type) {
+            throw std::invalid_argument(fmt::format("Unknown item type: {}", type));
+        }
+        *this = item_type->createItemStack(amount);
+        impl_->setData(data);
+    }
+    ItemStack(const ItemStack &other) : impl_(other.impl_->clone()) {}
     ItemStack(ItemStack &&other) noexcept = default;
     ItemStack &operator=(const ItemStack &other)
     {
         if (this != &other) {
-            impl_ = other.impl_ ? other.impl_->clone() : nullptr;
+            impl_ = other.impl_->clone();
         }
         return *this;
     }

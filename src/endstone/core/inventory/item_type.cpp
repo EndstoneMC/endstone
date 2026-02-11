@@ -14,6 +14,8 @@
 
 #include "endstone/core/inventory/item_type.h"
 
+#include "endstone/core/inventory/item_stack.h"
+
 namespace endstone::core {
 
 EndstoneItemType::EndstoneItemType(const ::Item &item) : item_(item) {}
@@ -43,4 +45,13 @@ int EndstoneItemType::getMaxDurability() const
     return item_.getMaxDamage();
 }
 
+ItemStack EndstoneItemType::createItemStack() const
+{
+    return createItemStack(1);
+}
+
+ItemStack EndstoneItemType::createItemStack(int amount) const
+{
+    return EndstoneItemStack::fromMinecraft(::ItemStack(item_, amount));
+}
 }  // namespace endstone::core

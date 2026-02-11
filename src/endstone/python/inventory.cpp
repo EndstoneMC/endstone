@@ -40,6 +40,8 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
                                "Gets the maximum amount of this item type that can be held in a stack.")
         .def_property_readonly("max_durability", &ItemType::getMaxDurability,
                                "Gets the maximum durability of this item type")
+        .def("create_item_stack", py::overload_cast<int>(&ItemType::createItemStack, py::const_), py::arg("amount") = 1,
+             "Constructs a new ItemStack with this item type.")
         .def_static("get", &ItemType::get, py::arg("name"), "Attempts to get the ItemType with the given name.",
                     py::return_value_policy::reference)
         .def("__str__", &ItemType::getId)
@@ -91,8 +93,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def("equals", &ItemFactory::equals, py::arg("meta1"), py::arg("meta2"),
              "This method is used to compare two ItemMeta objects.")
         .def("as_meta_for", &ItemFactory::asMetaFor, py::arg("meta"), py::arg("type"),
-             "Returns an appropriate item meta for the specified item type.")
-;
+             "Returns an appropriate item meta for the specified item type.");
 
     item_stack
         .def(py::init([](ItemTypeId type, const int amount, const int data) {

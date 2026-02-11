@@ -7,7 +7,6 @@ import typing
 
 from endstone.enchantments import Enchantment
 from endstone.map import MapView
-from endstone.nbt import CompoundTag
 
 __all__ = [
     "EquipmentSlot",
@@ -124,6 +123,11 @@ class ItemType:
     def max_durability(self) -> int:
         """
         Gets the maximum durability of this item type
+        """
+        ...
+    def create_item_stack(self, amount: int = 1) -> ItemStack:
+        """
+        Constructs a new ItemStack with this item type.
         """
         ...
     @staticmethod
@@ -307,6 +311,7 @@ class ItemFactory:
         Returns an appropriate item meta for the specified item type.
         """
         ...
+
 class Inventory:
     """
     Interface to the various inventories.
