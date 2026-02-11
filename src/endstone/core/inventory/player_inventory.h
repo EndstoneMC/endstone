@@ -22,23 +22,23 @@ namespace endstone::core {
 
 class EndstonePlayerInventory : public EndstoneInventory, public PlayerInventory {
 public:
-    explicit EndstonePlayerInventory(::Player &holder) : EndstoneInventory(holder.getInventory()), holder_(holder){};
+    explicit EndstonePlayerInventory(::Player &holder) : EndstoneInventory(holder.getInventory()), holder_(holder) {};
 
     [[nodiscard]] int getSize() const override;
     [[nodiscard]] int getMaxStackSize() const override;
-    [[nodiscard]] std::unique_ptr<ItemStack> getItem(int index) const override;
-    void setItem(int index, const ItemStack *item) override;
-    std::unordered_map<int, ItemStack *> addItem(std::vector<ItemStack *> items) override;
-    std::unordered_map<int, ItemStack *> removeItem(std::vector<ItemStack *> items) override;
-    [[nodiscard]] std::vector<std::unique_ptr<ItemStack>> getContents() const override;
-    void setContents(std::vector<ItemStack const *> items) override;
+    [[nodiscard]] std::optional<ItemStack> getItem(int index) const override;
+    void setItem(int index, std::optional<ItemStack> item) override;
+    std::unordered_map<int, ItemStack> addItem(std::vector<ItemStack> items) override;
+    std::unordered_map<int, ItemStack> removeItem(std::vector<ItemStack> items) override;
+    [[nodiscard]] std::vector<std::optional<ItemStack>> getContents() const override;
+    void setContents(std::vector<std::optional<ItemStack>> items) override;
     [[nodiscard]] bool contains(const std::string &type) const override;
     [[nodiscard]] bool contains(const ItemStack &item) const override;
     [[nodiscard]] bool contains(const ItemStack &item, int amount) const override;
     [[nodiscard]] bool containsAtLeast(const std::string &type, int amount) const override;
     [[nodiscard]] bool containsAtLeast(const ItemStack &item, int amount) const override;
-    [[nodiscard]] std::unordered_map<int, std::unique_ptr<ItemStack>> all(const std::string &type) const override;
-    [[nodiscard]] std::unordered_map<int, std::unique_ptr<ItemStack>> all(const ItemStack &item) const override;
+    [[nodiscard]] std::unordered_map<int, ItemStack> all(const std::string &type) const override;
+    [[nodiscard]] std::unordered_map<int, ItemStack> all(const ItemStack &item) const override;
     [[nodiscard]] int first(const std::string &type) const override;
     [[nodiscard]] int first(const ItemStack &item) const override;
     [[nodiscard]] int firstEmpty() const override;
@@ -48,22 +48,25 @@ public:
     void clear(int index) override;
     void clear() override;
 
-    [[nodiscard]] std::unique_ptr<ItemStack> getHelmet() const override;
-    [[nodiscard]] std::unique_ptr<ItemStack> getChestplate() const override;
-    [[nodiscard]] std::unique_ptr<ItemStack> getLeggings() const override;
-    [[nodiscard]] std::unique_ptr<ItemStack> getBoots() const override;
-    void setHelmet(const ItemStack *helmet) override;
-    void setChestplate(const ItemStack *chestplate) override;
-    void setLeggings(const ItemStack *leggings) override;
-    void setBoots(const ItemStack *boots) override;
-    [[nodiscard]] std::unique_ptr<ItemStack> getItemInMainHand() const override;
-    void setItemInMainHand(const ItemStack *item) override;
-    [[nodiscard]] std::unique_ptr<ItemStack> getItemInOffHand() const override;
-    void setItemInOffHand(const ItemStack *item) override;
+    [[nodiscard]] std::optional<ItemStack> getHelmet() const override;
+    [[nodiscard]] std::optional<ItemStack> getChestplate() const override;
+    [[nodiscard]] std::optional<ItemStack> getLeggings() const override;
+    [[nodiscard]] std::optional<ItemStack> getBoots() const override;
+    void setHelmet(std::optional<ItemStack> helmet) override;
+    void setChestplate(std::optional<ItemStack> chestplate) override;
+    void setLeggings(std::optional<ItemStack> leggings) override;
+    void setBoots(std::optional<ItemStack> boots) override;
+    [[nodiscard]] std::optional<ItemStack> getItemInMainHand() const override;
+    void setItemInMainHand(std::optional<ItemStack> item) override;
+    [[nodiscard]] std::optional<ItemStack> getItemInOffHand() const override;
+    void setItemInOffHand(std::optional<ItemStack> item) override;
     [[nodiscard]] int getHeldItemSlot() const override;
     void setHeldItemSlot(int slot) override;
 
 private:
+    [[nodiscard]] std::optional<ItemStack> getArmor(ArmorSlot slot) const;
+    void setArmor(ArmorSlot slot, std::optional<ItemStack> armor);
+
     ::Player &holder_;
 };
 
