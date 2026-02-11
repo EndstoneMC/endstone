@@ -80,6 +80,16 @@ private:
 }  // namespace endstone
 
 template <typename T>
+struct std::hash<endstone::Identifier<T>> {
+    std::size_t operator()(const endstone::Identifier<T> &id) const noexcept
+    {
+        auto seed = std::hash<std::string_view>{}(id.getNamespace());
+        seed ^= std::hash<std::string_view>{}(id.getKey()) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        return seed;
+    }
+};
+
+template <typename T>
 struct fmt::formatter<endstone::Identifier<T>> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const endstone::Identifier<T> &id, FormatContext &ctx) const -> format_context::iterator
