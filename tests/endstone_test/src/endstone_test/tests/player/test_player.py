@@ -4,7 +4,6 @@ import uuid
 import pytest
 from endstone import GameMode, Player, Server
 
-
 # =============================================================================
 # Section 1: Identity & Online Status
 # =============================================================================

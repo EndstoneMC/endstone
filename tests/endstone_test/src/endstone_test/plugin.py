@@ -53,8 +53,6 @@ class EndstoneTest(Plugin):
                     marker,
                     "--pyargs",
                     "endstone_test.tests",
-                    "-c",
-                    "../tests/endstone_test/pytest.toml",
                 ]
             )
         finally:

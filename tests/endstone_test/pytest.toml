@@ -1,2 +1,0 @@
-[pytest]
-markers = ["player: mark a test that requires a player object."]

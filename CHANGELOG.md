@@ -35,8 +35,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - **Logging**: Rotated log files are now gzip-compressed to save disk space.
 - **`ItemStack.translation_key`** property for getting an item's localisation key.
 - Added support for Python 3.14.
-- Python enums now use native `enum.Enum` types, improving IDE autocompletion and type checking.
-- Improved C++/Python interop safety to prevent use-after-free when C++ objects are accessed from Python.
 
 ### Changed
 
