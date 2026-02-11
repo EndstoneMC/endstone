@@ -39,6 +39,8 @@ public:
     [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta() const override;
     [[nodiscard]] bool hasItemMeta() const override;
     bool setItemMeta(const ItemMeta *meta) override;
+    [[nodiscard]] CompoundTag getNbt() const override;
+    void setNbt(const CompoundTag &nbt) override;
 
     static ::ItemStack toMinecraft(const ItemStack &item);
     static ItemStack fromMinecraft(const ::ItemStackBase &item);

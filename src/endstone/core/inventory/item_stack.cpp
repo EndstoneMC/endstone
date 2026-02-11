@@ -18,6 +18,7 @@
 #include "endstone/core/inventory/item_factory.h"
 #include "endstone/core/inventory/item_metas.h"
 #include "endstone/core/inventory/meta/item_meta.h"
+#include "endstone/core/nbt.h"
 
 namespace endstone::core {
 EndstoneItemStack::EndstoneItemStack(const ::ItemStackBase &item) : item_(item) {}
@@ -120,6 +121,29 @@ bool EndstoneItemStack::hasItemMeta() const
 bool EndstoneItemStack::setItemMeta(const ItemMeta *meta)
 {
     return setItemMeta(&item_, meta);
+}
+
+CompoundTag EndstoneItemStack::getNbt() const
+{
+    const auto *tag = item_.getUserData();
+    if (!tag) {
+        return {};
+    }
+    auto result = nbt::fromMinecraft(*tag);
+    return result.get<CompoundTag>();
+}
+
+void EndstoneItemStack::setNbt(const CompoundTag &nbt)
+{
+    if (item_.isNull()) {
+        return;
+    }
+    if (nbt.empty()) {
+        item_.setUserData(nullptr);
+        return;
+    }
+    auto tag = nbt::toMinecraft(endstone::nbt::Tag{nbt});
+    item_.setUserData(std::unique_ptr<::CompoundTag>(static_cast<::CompoundTag *>(tag.release())));
 }
 
 ::ItemStack EndstoneItemStack::toMinecraft(const ItemStack &item)

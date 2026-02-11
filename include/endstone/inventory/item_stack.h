@@ -19,6 +19,7 @@
 
 #include "endstone/inventory/item_type.h"
 #include "endstone/inventory/meta/item_meta.h"
+#include "endstone/nbt/tag.h"
 
 namespace endstone {
 
@@ -115,6 +116,20 @@ public:
      */
     [[nodiscard]] int getMaxStackSize() const { return impl_->getMaxStackSize(); }
 
+    /**
+     * @brief Gets the NBT compound tag of this item stack.
+     *
+     * @return the NBT compound tag
+     */
+    [[nodiscard]] CompoundTag getNbt() const { return impl_->getNbt(); }
+
+    /**
+     * @brief Sets the NBT compound tag of this item stack.
+     *
+     * @param nbt the NBT compound tag to set
+     */
+    void setNbt(const CompoundTag &nbt) { impl_->setNbt(nbt); }
+
     bool operator==(const ItemStack &other) const
     {
         if (&other == this) {
@@ -180,6 +195,8 @@ private:
         [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta() const = 0;
         [[nodiscard]] virtual bool hasItemMeta() const = 0;
         virtual bool setItemMeta(const ItemMeta *meta) = 0;
+        [[nodiscard]] virtual CompoundTag getNbt() const = 0;
+        virtual void setNbt(const CompoundTag &nbt) = 0;
     };
 
     explicit ItemStack(std::unique_ptr<Impl> impl) : impl_(std::move(impl)) {}

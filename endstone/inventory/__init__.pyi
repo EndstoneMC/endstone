@@ -7,6 +7,7 @@ import typing
 
 from endstone.enchantments import Enchantment
 from endstone.map import MapView
+from endstone.nbt import CompoundTag
 
 __all__ = [
     "EquipmentSlot",
@@ -76,6 +77,14 @@ class ItemStack:
         Set the ItemMeta of this ItemStack.
         """
         ...
+    @property
+    def nbt(self) -> CompoundTag:
+        """
+        Gets or sets the NBT compound tag of this item stack.
+        """
+        ...
+    @nbt.setter
+    def nbt(self, arg1: CompoundTag) -> None: ...
     def __eq__(self, arg0: ItemStack) -> bool: ...
     def __ne__(self, arg0: ItemStack) -> bool: ...
     def __str__(self) -> str: ...

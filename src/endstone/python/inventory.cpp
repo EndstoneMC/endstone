@@ -122,6 +122,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
              "Checks if the two stacks are equal, but does not consider stack size (amount).")
         .def_property_readonly("item_meta", &ItemStack::getItemMeta, "Gets a copy of the ItemMeta of this ItemStack.")
         .def("set_item_meta", &ItemStack::setItemMeta, py::arg("meta"), "Set the ItemMeta of this ItemStack.")
+        .def_property("nbt", &ItemStack::getNbt, &ItemStack::setNbt, "Gets or sets the NBT compound tag of this item stack.")
         .def(py::self == py::self)
         .def(py::self != py::self)
         .def("__str__", [](const ItemStack &self) { return fmt::format("{}", self); });
