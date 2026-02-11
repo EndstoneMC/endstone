@@ -609,7 +609,7 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
         """
         ...
     @property
-    def item(self) -> ItemStack:
+    def item(self) -> ItemStack | None:
         """
         Returns the item in hand represented by this event
         """

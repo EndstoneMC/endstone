@@ -33,19 +33,17 @@ class PlayerItemConsumeEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerItemConsumeEvent)
 
-    explicit PlayerItemConsumeEvent(Player &player, const ItemStack &item, EquipmentSlot hand)
-        : Cancellable(player), item_(item), hand_(hand)
+    explicit PlayerItemConsumeEvent(Player &player, ItemStack item, EquipmentSlot hand)
+        : Cancellable(player), item_(std::move(item)), hand_(hand)
     {
     }
 
     /**
      * @brief Gets the item that is being consumed.
      *
-     * @note Modifying the returned item will have no effect, you must use setItem(ItemStack) instead.
-     *
      * @return an ItemStack for the item being consumed
      */
-    [[nodiscard]] std::unique_ptr<ItemStack> getItem() const { return item_.clone(); }
+    [[nodiscard]] const ItemStack &getItem() const { return item_; }
 
     /**
      * @brief Get the hand used to consume the item.
@@ -55,7 +53,7 @@ public:
     [[nodiscard]] EquipmentSlot getHand() const { return hand_; }
 
 private:
-    const ItemStack &item_;
+    ItemStack item_;
     EquipmentSlot hand_;
 };
 }  // namespace endstone

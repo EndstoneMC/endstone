@@ -28,7 +28,7 @@ public:
      *
      * @return An item stack.
      */
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> getItemStack() const = 0;
+    [[nodiscard]] virtual ItemStack getItemStack() const = 0;
 
     /**
      * @brief Sets the item stack associated with this item drop.
