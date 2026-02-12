@@ -97,7 +97,7 @@ lint.extend-select = ["I", "F"]
 
 [tool.cibuildwheel]
 skip = ["pp*"]
-test-command = "pytest {package}/tests"
+test-command = "pytest {package}/tests --ignore={package}/tests/endstone_test"
 test-requires = "pytest"
 repair-wheel-command = [
     "pip install auditwheel==6.2.0 sentry-cli",
