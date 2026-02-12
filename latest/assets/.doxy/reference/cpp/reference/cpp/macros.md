@@ -22,6 +22,14 @@
 * **ENDSTONE\_REGISTRY\_TYPE** ([**registry.h**](registry_8h.md))
 
 
+## m
+
+* **MINECRAFT\_VERSION** ([**detail.h**](detail_8h.md))
+* **MINECRAFT\_VERSION\_MAJOR** ([**detail.h**](detail_8h.md))
+* **MINECRAFT\_VERSION\_MINOR** ([**detail.h**](detail_8h.md))
+* **MINECRAFT\_VERSION\_PATCH** ([**detail.h**](detail_8h.md))
+
+
 ## n
 
 * **NETWORK\_PROTOCOL\_VERSION** ([**detail.h**](detail_8h.md))

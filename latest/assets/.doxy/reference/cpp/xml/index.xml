@@ -2750,6 +2750,10 @@
     <member refid="detail_8h_1a7b84625b64bb02bf3d457c00053d4037" kind="define"><name>NETWORK_PROTOCOL_VERSION</name></member>
     <member refid="detail_8h_1a4b2c4ab328be64dd58f83fcfca8cc2e0" kind="define"><name>ENDSTONE_API_VERSION</name></member>
     <member refid="detail_8h_1a76f9d8327a86f30b035bd7638c69ae92" kind="define"><name>ENDSTONE_VERSION</name></member>
+    <member refid="detail_8h_1a39152d3820ea011eabb0fab37be187f1" kind="define"><name>MINECRAFT_VERSION_MAJOR</name></member>
+    <member refid="detail_8h_1a46e1c4a8288cedb15ba0b66506e3cbcc" kind="define"><name>MINECRAFT_VERSION_MINOR</name></member>
+    <member refid="detail_8h_1ab5ab678dbebc4266524cc369b4cf7634" kind="define"><name>MINECRAFT_VERSION_PATCH</name></member>
+    <member refid="detail_8h_1a3c68e4ff339423244580011bee4b7e0f" kind="define"><name>MINECRAFT_VERSION</name></member>
   </compound>
   <compound refid="effect__type_8h" kind="file"><name>effect_type.h</name>
   </compound>

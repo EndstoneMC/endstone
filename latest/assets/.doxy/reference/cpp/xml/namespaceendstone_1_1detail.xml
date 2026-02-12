@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/detail.h" line="114" column="1" bodyfile="include/endstone/detail.h" bodystart="114" bodyend="117"/>
+        <location file="include/endstone/detail.h" line="122" column="1" bodyfile="include/endstone/detail.h" bodystart="122" bodyend="125"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/detail.h" line="59" column="6" bodyfile="include/endstone/detail.h" bodystart="59" bodyend="67"/>
+        <location file="include/endstone/detail.h" line="67" column="6" bodyfile="include/endstone/detail.h" bodystart="67" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="detail_8h_1acf4444f81858c5237ba18a115b01108e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -195,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/detail.h" line="81" column="6" bodyfile="include/endstone/detail.h" bodystart="81" bodyend="89"/>
+        <location file="include/endstone/detail.h" line="89" column="6" bodyfile="include/endstone/detail.h" bodystart="89" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="detail_8h_1aecf7182420334f85f53fac02ff6ca4c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
@@ -213,13 +213,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/detail.h" line="149" column="15" bodyfile="include/endstone/detail.h" bodystart="149" bodyend="178"/>
+        <location file="include/endstone/detail.h" line="157" column="15" bodyfile="include/endstone/detail.h" bodystart="157" bodyend="186"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/detail.h" line="47" column="1"/>
+    <location file="include/endstone/detail.h" line="55" column="1"/>
   </compounddef>
 </doxygen>

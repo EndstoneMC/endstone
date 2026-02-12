@@ -93,6 +93,10 @@
 | define  | [**ENDSTONE\_VERSION\_MAJOR**](detail_8h.md#define-endstone_version_major)  `0`<br> |
 | define  | [**ENDSTONE\_VERSION\_MINOR**](detail_8h.md#define-endstone_version_minor)  `11`<br> |
 | define  | [**ENDSTONE\_VERSION\_PATCH**](detail_8h.md#define-endstone_version_patch)  `0`<br> |
+| define  | [**MINECRAFT\_VERSION**](detail_8h.md#define-minecraft_version)  `ENDSTONE\_TOSTRING(MINECRAFT\_VERSION\_MINOR) "." ENDSTONE\_TOSTRING(MINECRAFT\_VERSION\_PATCH)`<br> |
+| define  | [**MINECRAFT\_VERSION\_MAJOR**](detail_8h.md#define-minecraft_version_major)  `1`<br> |
+| define  | [**MINECRAFT\_VERSION\_MINOR**](detail_8h.md#define-minecraft_version_minor)  `26`<br> |
+| define  | [**MINECRAFT\_VERSION\_PATCH**](detail_8h.md#define-minecraft_version_patch)  `0`<br> |
 | define  | [**NETWORK\_PROTOCOL\_VERSION**](detail_8h.md#define-network_protocol_version)  `924`<br> |
 
 ## Macro Definition Documentation
@@ -187,6 +191,58 @@
 
 ```C++
 #define ENDSTONE_VERSION_PATCH `0`
+```
+
+
+
+
+<hr>
+
+
+
+### define MINECRAFT\_VERSION 
+
+```C++
+#define MINECRAFT_VERSION `ENDSTONE_TOSTRING(MINECRAFT_VERSION_MINOR) "." ENDSTONE_TOSTRING(MINECRAFT_VERSION_PATCH)`
+```
+
+
+
+
+<hr>
+
+
+
+### define MINECRAFT\_VERSION\_MAJOR 
+
+```C++
+#define MINECRAFT_VERSION_MAJOR `1`
+```
+
+
+
+
+<hr>
+
+
+
+### define MINECRAFT\_VERSION\_MINOR 
+
+```C++
+#define MINECRAFT_VERSION_MINOR `26`
+```
+
+
+
+
+<hr>
+
+
+
+### define MINECRAFT\_VERSION\_PATCH 
+
+```C++
+#define MINECRAFT_VERSION_PATCH `0`
 ```
 
 
