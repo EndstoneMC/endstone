@@ -297,14 +297,7 @@ std::string EndstoneServer::getVersion() const
 
 std::string EndstoneServer::getMinecraftVersion() const
 {
-    static auto minecraft_version = [] {
-        auto game_version = Common::getGameVersionString();
-        if (game_version[0] == 'v') {
-            game_version = game_version.substr(1);  // Removes the initial 'v'
-        }
-        return game_version;
-    }();
-    return minecraft_version;
+    return MINECRAFT_VERSION;
 }
 
 int EndstoneServer::getProtocolVersion() const

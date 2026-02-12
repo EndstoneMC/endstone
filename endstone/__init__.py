@@ -1,11 +1,10 @@
 import lazy_loader as lazy
 
-__minecraft_version__ = "1.26.0"
-
 __getattr__, __dir__, __all__ = lazy.attach(
     __name__,
     submod_attrs={
         "_python": [
+            "__minecraft_version__",
             "ColorFormat",
             "EnchantmentRegistry",
             "GameMode",
@@ -37,5 +36,3 @@ __getattr__, __dir__, __all__ = lazy.attach(
         "_version": ["__version__"],
     },
 )
-
-__all__.extend(["__minecraft_version__"])
