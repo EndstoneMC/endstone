@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_actor_event.h" line="47" column="11" bodyfile="include/endstone/event/player/player_interact_actor_event.h" bodystart="47" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_interact_actor_event.h" line="41" column="11" bodyfile="include/endstone/event/player/player_interact_actor_event.h" bodystart="41" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_actor_event.h" line="31" column="18" bodyfile="include/endstone/event/player/player_interact_actor_event.h" bodystart="31" bodyend="34"/>
+        <location file="include/endstone/event/player/player_interact_actor_event.h" line="31" column="18" bodyfile="include/endstone/event/player/player_interact_actor_event.h" bodystart="31" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInteractActorEvent_1ac803fcee5b9b5980b8d1db566b1f3a29" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;</type>
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_actor_event.h" line="41" column="12" bodyfile="include/endstone/event/player/player_interact_actor_event.h" bodystart="41" bodyend="44"/>
+        <location file="include/endstone/event/player/player_interact_actor_event.h" line="38" column="12" bodyfile="include/endstone/event/player/player_interact_actor_event.h" bodystart="38" bodyend="38"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -177,7 +177,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_interact_actor_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_interact_actor_event.h" bodystart="25" bodyend="48"/>
+    <location file="include/endstone/event/player/player_interact_actor_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_interact_actor_event.h" bodystart="25" bodyend="42"/>
     <listofallmembers>
       <member refid="classendstone_1_1PlayerInteractActorEvent_1a26c386e9a320b585013cd97d0ded093a" prot="private" virt="non-virtual"><scope>endstone::PlayerInteractActorEvent</scope><name>actor_</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerInteractActorEvent</scope><name>cancel</name></member>

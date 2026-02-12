@@ -31,13 +31,10 @@ namespace endstone {
 
 class WeatherEvent : public Event {
 public:
-    explicit WeatherEvent(Level &level) : level_(level){};
+    explicit WeatherEvent(Level &level) : level_(level) {};
     ~WeatherEvent() override = default;
 
-    [[nodiscard]] Level &getLevel() const
-    {
-        return level_;
-    }
+    [[nodiscard]] Level &getLevel() const { return level_; }
 
 private:
     Level &level_;

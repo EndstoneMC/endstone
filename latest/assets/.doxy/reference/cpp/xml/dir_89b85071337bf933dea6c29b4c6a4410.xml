@@ -4,6 +4,7 @@
     <compoundname>include/endstone/util</compoundname>
     <innerfile refid="color_8h">color.h</innerfile>
     <innerfile refid="image_8h">image.h</innerfile>
+    <innerfile refid="pointers_8h">pointers.h</innerfile>
     <innerfile refid="result_8h">result.h</innerfile>
     <innerfile refid="socket__address_8h">socket_address.h</innerfile>
     <innerfile refid="uuid_8h">uuid.h</innerfile>

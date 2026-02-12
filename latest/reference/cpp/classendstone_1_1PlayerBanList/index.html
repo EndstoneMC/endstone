@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2555,6 +2555,17 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+    <a href="#public-types-inherited-from-endstonebanlist" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Types inherited from endstone::BanList
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions
@@ -2642,9 +2653,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getbanentry-14" class="md-nav__link">
+    <a href="#function-getbanentry-12" class="md-nav__link">
       <span class="md-ellipsis">
-        function getBanEntry [&frac14;]
+        function getBanEntry [&frac12;]
       </span>
     </a>
 
@@ -2655,9 +2666,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getbanentry-24" class="md-nav__link">
+    <a href="#function-getbanentry-22" class="md-nav__link">
       <span class="md-ellipsis">
-        function getBanEntry [2/4]
+        function getBanEntry [2/2]
       </span>
     </a>
 
@@ -2668,48 +2679,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getbanentry-34" class="md-nav__link">
+    <a href="#function-getentries" class="md-nav__link">
       <span class="md-ellipsis">
-        function getBanEntry [&frac34;]
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-getbanentry-44" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getBanEntry [4/4]
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-getentries-12" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getEntries [&frac12;]
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-getentries-22" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getEntries [2/2]
+        function getEntries
       </span>
     </a>
 
@@ -2770,19 +2742,6 @@ For latest updates join the chat on
 </li>
                 
             
-                
-                    <li class="md-nav__item">
-    <a href="#function-playerbanlist" class="md-nav__link">
-      <span class="md-ellipsis">
-        function ~PlayerBanList
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
         </ul>
     </nav>
     
@@ -2828,6 +2787,22 @@ For latest updates join the chat on
 <li><code>#include &lt;endstone/ban/player_ban_list.h&gt;</code></li>
 </ul>
 <p>Inherits the following classes: <a href="../classendstone_1_1BanList/">endstone::BanList</a></p>
+<h2 id="public-types-inherited-from-endstonebanlist">Public Types inherited from endstone::BanList<a class="headerlink" href="#public-types-inherited-from-endstonebanlist" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1BanList/">endstone::BanList</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>T</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/#typedef-entrytype"><strong>EntryType</strong></a>  <br></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2838,48 +2813,36 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-addban-14"><strong>addBan</strong></a> (std::string name, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-addban-14"><strong>addBan</strong></a> (std::string name, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) override = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> &amp;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-addban-24"><strong>addBan</strong></a> (std::string name, std::optional&lt; <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-addban-34"><strong>addBan</strong></a> (std::string name, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-addban-34"><strong>addBan</strong></a> (std::string name, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) override = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> &amp;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-addban-44"><strong>addBan</strong></a> (std::string name, std::optional&lt; <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-getbanentry-14"><strong>getBanEntry</strong></a> (std::string name) const = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by player name.</em></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getbanentry-12"><strong>getBanEntry</strong></a> (std::string name) override const = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by player name.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-getbanentry-24"><strong>getBanEntry</strong></a> (std::string name) = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by player name.</em></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getbanentry-22"><strong>getBanEntry</strong></a> (std::string name, std::optional&lt; <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> &gt; uuid, std::optional&lt; std::string &gt; xuid) const = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by player name,</em><a href="../classendstone_1_1UUID/"><em><strong>UUID</strong></em></a> <em>, or XUID.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-getbanentry-34"><strong>getBanEntry</strong></a> (std::string name, std::optional&lt; <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> &gt; uuid, std::optional&lt; std::string &gt; xuid) const = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by player name,</em><a href="../classendstone_1_1UUID/"><em><strong>UUID</strong></em></a> <em>, or XUID.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-getbanentry-44"><strong>getBanEntry</strong></a> (std::string name, std::optional&lt; <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> &gt; uuid, std::optional&lt; std::string &gt; xuid) = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by player name,</em><a href="../classendstone_1_1UUID/"><em><strong>UUID</strong></em></a> <em>, or XUID.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-getentries-12"><strong>getEntries</strong></a> () const = 0<br><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-getentries-22"><strong>getEntries</strong></a> () = 0<br><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em></td>
+<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> &gt; &gt;</td>
+<td style="text-align: left;"><a href="#function-getentries"><strong>getEntries</strong></a> () override const = 0<br><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-isbanned-12"><strong>isBanned</strong></a> (std::string name) const = 0<br><em>Checks if a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>exists for the target, indicating an active ban status.</em></td>
+<td style="text-align: left;"><a href="#function-isbanned-12"><strong>isBanned</strong></a> (std::string name) override const = 0<br><em>Checks if a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>exists for the target, indicating an active ban status.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -2887,15 +2850,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-removeban-12"><strong>removeBan</strong></a> (std::string name) = 0<br><em>Removes the specified player from this list, therefore indicating a "not banned" status.</em></td>
+<td style="text-align: left;"><a href="#function-removeban-12"><strong>removeBan</strong></a> (std::string name) override = 0<br><em>Removes the specified player from this list, therefore indicating a "not banned" status.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
 <td style="text-align: left;"><a href="#function-removeban-22"><strong>removeBan</strong></a> (std::string name, std::optional&lt; <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> &gt; uuid, std::optional&lt; std::string &gt; xuid) = 0<br><em>Removes the specified player from this list, therefore indicating a "not banned" status.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual</td>
-<td style="text-align: left;"><a href="#function-playerbanlist"><strong>~PlayerBanList</strong></a> () = default<br></td>
 </tr>
 </tbody>
 </table>
@@ -2910,28 +2869,20 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &amp;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-addban-12"><strong>addBan</strong></a> (std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &amp;</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-addban-22"><strong>addBan</strong></a> (std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-getbanentry-12"><strong>getBanEntry</strong></a> (std::string target) const = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by target.</em></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-getbanentry"><strong>getBanEntry</strong></a> (std::string target) const = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by target.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-getbanentry-22"><strong>getBanEntry</strong></a> (std::string target) = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by target.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-getentries-12"><strong>getEntries</strong></a> () const = 0<br><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-getentries-22"><strong>getEntries</strong></a> () = 0<br><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em></td>
+<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1NotNull/"><strong>NotNull</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt; &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-getentries"><strong>getEntries</strong></a> () const = 0<br><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -2950,12 +2901,12 @@ For latest updates join the chat on
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-addban-14">function addBan [&frac14;]<a class="headerlink" href="#function-addban-14" title="Permanent link">&para;</a></h3>
 <p><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">addBan</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">addBan</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">BanEntry</span><span class="o">::</span><span class="n">Date</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">expires</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">source</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2965,13 +2916,13 @@ For latest updates join the chat on
 <li><code>source</code> The source of the ban, std::nullopt indicates implementation default. </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a>&amp; The entry for the newly created ban, or the entry for the (updated) previous ban. </p>
+<p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> The entry for the newly created ban, or the entry for the (updated) previous ban. </p>
 <p>Implements <a href="../classendstone_1_1BanList/#function-addban-12"><em>endstone::BanList::addBan</em></a></p>
 <hr>
 
 <h3 id="function-addban-24">function addBan [2/4]<a class="headerlink" href="#function-addban-24" title="Permanent link">&para;</a></h3>
 <p><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">addBan</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">addBan</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xuid</span><span class="p">,</span>
@@ -2990,17 +2941,17 @@ For latest updates join the chat on
 <li><code>source</code> The source of the ban, std::nullopt indicates implementation default. </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a>&amp; The entry for the newly created ban, or the entry for the (updated) previous ban. </p>
+<p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> The entry for the newly created ban, or the entry for the (updated) previous ban. </p>
 <hr>
 
 <h3 id="function-addban-34">function addBan [&frac34;]<a class="headerlink" href="#function-addban-34" title="Permanent link">&para;</a></h3>
 <p><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">addBan</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">addBan</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">seconds</span><span class="w"> </span><span class="n">duration</span><span class="p">,</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">source</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3010,13 +2961,13 @@ For latest updates join the chat on
 <li><code>source</code> The source of the ban, std::nullopt indicates implementation default. </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a>&amp; The entry for the newly created ban, or the entry for the (updated) previous ban. </p>
+<p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> The entry for the newly created ban, or the entry for the (updated) previous ban. </p>
 <p>Implements <a href="../classendstone_1_1BanList/#function-addban-22"><em>endstone::BanList::addBan</em></a></p>
 <hr>
 
 <h3 id="function-addban-44">function addBan [4/4]<a class="headerlink" href="#function-addban-44" title="Permanent link">&para;</a></h3>
 <p><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">addBan</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">addBan</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xuid</span><span class="p">,</span>
@@ -3035,46 +2986,31 @@ For latest updates join the chat on
 <li><code>source</code> The source of the ban, std::nullopt indicates implementation default. </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a>&amp; The entry for the newly created ban, or the entry for the (updated) previous ban. </p>
+<p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> The entry for the newly created ban, or the entry for the (updated) previous ban. </p>
 <hr>
 
-<h3 id="function-getbanentry-14">function getBanEntry [&frac14;]<a class="headerlink" href="#function-getbanentry-14" title="Permanent link">&para;</a></h3>
+<h3 id="function-getbanentry-12">function getBanEntry [&frac12;]<a class="headerlink" href="#function-getbanentry-12" title="Permanent link">&para;</a></h3>
 <p><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by player name.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">getBanEntry</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">getBanEntry</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>name</code> The player name to search for. </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p>PlayerBanEntry* The corresponding entry, or nullptr if none found. </p>
-<p>Implements <a href="../classendstone_1_1BanList/#function-getbanentry-12"><em>endstone::BanList::getBanEntry</em></a></p>
+<p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> The corresponding entry, or nullptr if none found. </p>
+<p>Implements <a href="../classendstone_1_1BanList/#function-getbanentry"><em>endstone::BanList::getBanEntry</em></a></p>
 <hr>
 
-<h3 id="function-getbanentry-24">function getBanEntry [2/4]<a class="headerlink" href="#function-getbanentry-24" title="Permanent link">&para;</a></h3>
-<p><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by player name.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">getBanEntry</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>name</code> The player name to search for. </li>
-</ul>
-<p><strong>Returns:</strong></p>
-<p>PlayerBanEntry* The corresponding entry, or nullptr if none found. </p>
-<p>Implements <a href="../classendstone_1_1BanList/#function-getbanentry-22"><em>endstone::BanList::getBanEntry</em></a></p>
-<hr>
-
-<h3 id="function-getbanentry-34">function getBanEntry [&frac34;]<a class="headerlink" href="#function-getbanentry-34" title="Permanent link">&para;</a></h3>
+<h3 id="function-getbanentry-22">function getBanEntry [2/2]<a class="headerlink" href="#function-getbanentry-22" title="Permanent link">&para;</a></h3>
 <p><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by player name,</em><a href="../classendstone_1_1UUID/"><em><strong>UUID</strong></em></a> <em>, or XUID.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">getBanEntry</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xuid</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">getBanEntry</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xuid</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3083,50 +3019,23 @@ For latest updates join the chat on
 <li><code>xuid</code> The XUID of the player to search for, std::nullopt if not used. </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p>PlayerBanEntry* The corresponding entry, or nullptr if none found. </p>
+<p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a> The corresponding entry, or nullptr if none found. </p>
 <hr>
 
-<h3 id="function-getbanentry-44">function getBanEntry [4/4]<a class="headerlink" href="#function-getbanentry-44" title="Permanent link">&para;</a></h3>
-<p><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by player name,</em><a href="../classendstone_1_1UUID/"><em><strong>UUID</strong></em></a> <em>, or XUID.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">getBanEntry</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xuid</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>name</code> The player name to search for. </li>
-<li><code>uuid</code> The <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> of the player to search for, std::nullopt if not used. </li>
-<li><code>xuid</code> The XUID of the player to search for, std::nullopt if not used. </li>
-</ul>
-<p><strong>Returns:</strong></p>
-<p>PlayerBanEntry* The corresponding entry, or nullptr if none found. </p>
-<hr>
-
-<h3 id="function-getentries-12">function getEntries [&frac12;]<a class="headerlink" href="#function-getentries-12" title="Permanent link">&para;</a></h3>
+<h3 id="function-getentries">function getEntries<a class="headerlink" href="#function-getentries" title="Permanent link">&para;</a></h3>
 <p><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">getEntries</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">NotNull</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">getEntries</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A vector containing pointers to every entry tracked by this list. </p>
-<p>Implements <a href="../classendstone_1_1BanList/#function-getentries-12"><em>endstone::BanList::getEntries</em></a></p>
-<hr>
-
-<h3 id="function-getentries-22">function getEntries [2/2]<a class="headerlink" href="#function-getentries-22" title="Permanent link">&para;</a></h3>
-<p><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">PlayerBanEntry</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">getEntries</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>A vector containing pointers to every entry tracked by this list. </p>
-<p>Implements <a href="../classendstone_1_1BanList/#function-getentries-22"><em>endstone::BanList::getEntries</em></a></p>
+<p>Implements <a href="../classendstone_1_1BanList/#function-getentries"><em>endstone::BanList::getEntries</em></a></p>
 <hr>
 
 <h3 id="function-isbanned-12">function isBanned [&frac12;]<a class="headerlink" href="#function-isbanned-12" title="Permanent link">&para;</a></h3>
 <p><em>Checks if a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>exists for the target, indicating an active ban status.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">isBanned</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">isBanned</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3141,11 +3050,11 @@ For latest updates join the chat on
 
 <h3 id="function-isbanned-22">function isBanned [2/2]<a class="headerlink" href="#function-isbanned-22" title="Permanent link">&para;</a></h3>
 <p><em>Checks if a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>exists for the target, indicating an active ban status.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">isBanned</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xuid</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">isBanned</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xuid</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3161,9 +3070,9 @@ For latest updates join the chat on
 
 <h3 id="function-removeban-12">function removeBan [&frac12;]<a class="headerlink" href="#function-removeban-12" title="Permanent link">&para;</a></h3>
 <p><em>Removes the specified player from this list, therefore indicating a "not banned" status.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">removeBan</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">removeBan</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3174,11 +3083,11 @@ For latest updates join the chat on
 
 <h3 id="function-removeban-22">function removeBan [2/2]<a class="headerlink" href="#function-removeban-22" title="Permanent link">&para;</a></h3>
 <p><em>Removes the specified player from this list, therefore indicating a "not banned" status.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">removeBan</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xuid</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::</span><span class="n">removeBan</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">xuid</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3186,11 +3095,6 @@ For latest updates join the chat on
 <li><code>uuid</code> The unique id of the player, std::nullopt if not used. </li>
 <li><code>xuid</code> The xbox user id (xuid) of the player, std::nullopt if not used. </li>
 </ul>
-<hr>
-
-<h3 id="function-playerbanlist">function ~PlayerBanList<a class="headerlink" href="#function-playerbanlist" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanList</span><span class="o">::~</span><span class="n">PlayerBanList</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
-</span></code></pre></div>
 <hr>
 
 <hr />
@@ -3318,10 +3222,10 @@ For latest updates join the chat on
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

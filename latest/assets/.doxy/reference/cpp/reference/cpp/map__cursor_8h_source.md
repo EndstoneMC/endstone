@@ -62,40 +62,19 @@ public:
     {
     }
 
-    [[nodiscard]] std::int8_t getX() const
-    {
-        return x_;
-    }
+    [[nodiscard]] std::int8_t getX() const { return x_; }
 
-    [[nodiscard]] std::int8_t getY() const
-    {
-        return y_;
-    }
+    [[nodiscard]] std::int8_t getY() const { return y_; }
 
-    [[nodiscard]] std::int8_t getDirection() const
-    {
-        return direction_;
-    }
+    [[nodiscard]] std::int8_t getDirection() const { return direction_; }
 
-    [[nodiscard]] Type getType() const
-    {
-        return type_;
-    }
+    [[nodiscard]] Type getType() const { return type_; }
 
-    [[nodiscard]] bool isVisible() const
-    {
-        return visible_;
-    }
+    [[nodiscard]] bool isVisible() const { return visible_; }
 
-    void setX(const std::int8_t x)
-    {
-        x_ = x;
-    }
+    void setX(const std::int8_t x) { x_ = x; }
 
-    void setY(const std::int8_t y)
-    {
-        y_ = y;
-    }
+    void setY(const std::int8_t y) { y_ = y; }
 
     void setDirection(std::int8_t direction)
     {
@@ -104,25 +83,13 @@ public:
         direction_ = direction;
     }
 
-    void setType(Type type)
-    {
-        type_ = type;
-    }
+    void setType(Type type) { type_ = type; }
 
-    void setVisible(bool visible)
-    {
-        visible_ = visible;
-    }
+    void setVisible(bool visible) { visible_ = visible; }
 
-    [[nodiscard]] std::string getCaption() const
-    {
-        return caption_;
-    }
+    [[nodiscard]] std::string getCaption() const { return caption_; }
 
-    void setCaption(std::string caption)
-    {
-        caption_ = std::move(caption);
-    }
+    void setCaption(std::string caption) { caption_ = std::move(caption); }
 
 private:
     std::int8_t x_, y_;

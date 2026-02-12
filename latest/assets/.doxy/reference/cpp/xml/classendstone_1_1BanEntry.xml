@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="29" column="5" bodyfile="include/endstone/ban/ban_entry.h" bodystart="29" bodyend="-1"/>
+        <location file="include/endstone/ban/ban_entry.h" line="28" column="5" bodyfile="include/endstone/ban/ban_entry.h" bodystart="28" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-attrib">
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="31" column="37" bodyfile="include/endstone/ban/ban_entry.h" bodystart="31" bodyend="-1"/>
+        <location file="include/endstone/ban/ban_entry.h" line="30" column="37" bodyfile="include/endstone/ban/ban_entry.h" bodystart="30" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="117" column="10" bodyfile="include/endstone/ban/ban_entry.h" bodystart="117" bodyend="-1"/>
+        <location file="include/endstone/ban/ban_entry.h" line="92" column="10" bodyfile="include/endstone/ban/ban_entry.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1BanEntry_1abf7c2480ec91e2691f15dcfa7b38a208" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="118" column="17" bodyfile="include/endstone/ban/ban_entry.h" bodystart="118" bodyend="-1"/>
+        <location file="include/endstone/ban/ban_entry.h" line="93" column="17" bodyfile="include/endstone/ban/ban_entry.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1BanEntry_1a2ee4c7b3dbb27eaad5fe46e71562cbc5" prot="private" static="no" mutable="no">
         <type>std::optional&lt; Date &gt;</type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="119" column="19" bodyfile="include/endstone/ban/ban_entry.h" bodystart="119" bodyend="-1"/>
+        <location file="include/endstone/ban/ban_entry.h" line="94" column="19" bodyfile="include/endstone/ban/ban_entry.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1BanEntry_1aed66fafb3434a1cae32c560f75713b3b" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="120" column="17" bodyfile="include/endstone/ban/ban_entry.h" bodystart="120" bodyend="-1"/>
+        <location file="include/endstone/ban/ban_entry.h" line="95" column="17" bodyfile="include/endstone/ban/ban_entry.h" bodystart="95" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="38" column="11" bodyfile="include/endstone/ban/ban_entry.h" bodystart="38" bodyend="41"/>
+        <location file="include/endstone/ban/ban_entry.h" line="37" column="11" bodyfile="include/endstone/ban/ban_entry.h" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanEntry_1a25928ad6ec89d5a53291fac94de08af2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="49" column="10" bodyfile="include/endstone/ban/ban_entry.h" bodystart="49" bodyend="52"/>
+        <location file="include/endstone/ban/ban_entry.h" line="45" column="10" bodyfile="include/endstone/ban/ban_entry.h" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanEntry_1ad72c12362e0b7d4d5f4fcc9874f4f375" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="59" column="18" bodyfile="include/endstone/ban/ban_entry.h" bodystart="59" bodyend="62"/>
+        <location file="include/endstone/ban/ban_entry.h" line="52" column="18" bodyfile="include/endstone/ban/ban_entry.h" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanEntry_1a475b96ed193e395608804f4d31fb96d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -197,7 +197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="70" column="10" bodyfile="include/endstone/ban/ban_entry.h" bodystart="70" bodyend="73"/>
+        <location file="include/endstone/ban/ban_entry.h" line="60" column="10" bodyfile="include/endstone/ban/ban_entry.h" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanEntry_1a62dd29dd801c12d3c99e283924c83246" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; Date &gt;</type>
@@ -215,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="80" column="20" bodyfile="include/endstone/ban/ban_entry.h" bodystart="80" bodyend="83"/>
+        <location file="include/endstone/ban/ban_entry.h" line="67" column="20" bodyfile="include/endstone/ban/ban_entry.h" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanEntry_1a034fd3be01a6210a5be8b1436df544e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -244,7 +244,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="90" column="10" bodyfile="include/endstone/ban/ban_entry.h" bodystart="90" bodyend="93"/>
+        <location file="include/endstone/ban/ban_entry.h" line="74" column="10" bodyfile="include/endstone/ban/ban_entry.h" bodystart="74" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanEntry_1ae64cc8ac600a8a35f2420ddc0709ade0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -262,7 +262,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="100" column="18" bodyfile="include/endstone/ban/ban_entry.h" bodystart="100" bodyend="103"/>
+        <location file="include/endstone/ban/ban_entry.h" line="81" column="18" bodyfile="include/endstone/ban/ban_entry.h" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanEntry_1a59ff6c4f71850c5f1d006199d987d049" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -293,7 +293,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="111" column="10" bodyfile="include/endstone/ban/ban_entry.h" bodystart="111" bodyend="114"/>
+        <location file="include/endstone/ban/ban_entry.h" line="89" column="10" bodyfile="include/endstone/ban/ban_entry.h" bodystart="89" bodyend="89"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -319,7 +319,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/ban/ban_entry.h" line="26" column="1" bodyfile="include/endstone/ban/ban_entry.h" bodystart="26" bodyend="121"/>
+    <location file="include/endstone/ban/ban_entry.h" line="26" column="1" bodyfile="include/endstone/ban/ban_entry.h" bodystart="26" bodyend="96"/>
     <listofallmembers>
       <member refid="classendstone_1_1BanEntry_1a3f858c5afab3a1d2beb3db993f361142" prot="private" virt="non-virtual"><scope>endstone::BanEntry</scope><name>created_</name></member>
       <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" prot="public" virt="non-virtual"><scope>endstone::BanEntry</scope><name>Date</name></member>

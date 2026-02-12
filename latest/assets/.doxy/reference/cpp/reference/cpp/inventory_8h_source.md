@@ -24,7 +24,7 @@
 
 #pragma once
 
-#include <memory>
+#include <optional>
 #include <vector>
 
 #include "endstone/util/result.h"
@@ -39,29 +39,29 @@ public:
 
     [[nodiscard]] virtual int getMaxStackSize() const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> getItem(int index) const = 0;
+    [[nodiscard]] virtual std::optional<ItemStack> getItem(int index) const = 0;
 
-    virtual void setItem(int index, const ItemStack *item) = 0;
+    virtual void setItem(int index, std::optional<ItemStack> item) = 0;
 
-    virtual std::unordered_map<int, ItemStack *> addItem(std::vector<ItemStack *> items) = 0;
+    virtual std::unordered_map<int, ItemStack> addItem(std::vector<ItemStack> items) = 0;
 
-    virtual std::unordered_map<int, ItemStack *> removeItem(std::vector<ItemStack *> items) = 0;
+    virtual std::unordered_map<int, ItemStack> removeItem(std::vector<ItemStack> items) = 0;
 
-    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, ItemStack &> && ...)>>
-    std::unordered_map<int, ItemStack *> addItem(Args &&...items)
+    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, ItemStack> && ...)>>
+    std::unordered_map<int, ItemStack> addItem(Args &&...items)
     {
-        return addItem(std::vector<ItemStack *>{&items...});
+        return addItem(std::vector<ItemStack>{std::forward<Args>(items)...});
     }
 
-    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, ItemStack &> && ...)>>
-    std::unordered_map<int, ItemStack *> removeItem(Args &&...items)
+    template <typename... Args, typename = std::enable_if_t<(std::is_convertible_v<Args, ItemStack> && ...)>>
+    std::unordered_map<int, ItemStack> removeItem(Args &&...items)
     {
-        return removeItem(std::vector<ItemStack *>{&items...});
+        return removeItem(std::vector<ItemStack>{std::forward<Args>(items)...});
     }
 
-    [[nodiscard]] virtual std::vector<std::unique_ptr<ItemStack>> getContents() const = 0;
+    [[nodiscard]] virtual std::vector<std::optional<ItemStack>> getContents() const = 0;
 
-    virtual void setContents(std::vector<const ItemStack *> items) = 0;
+    virtual void setContents(std::vector<std::optional<ItemStack>> items) = 0;
 
     [[nodiscard]] virtual bool contains(const std::string &type) const = 0;
 
@@ -73,9 +73,9 @@ public:
 
     [[nodiscard]] virtual bool containsAtLeast(const ItemStack &item, int amount) const = 0;
 
-    [[nodiscard]] virtual std::unordered_map<int, std::unique_ptr<ItemStack>> all(const std::string &type) const = 0;
+    [[nodiscard]] virtual std::unordered_map<int, ItemStack> all(const std::string &type) const = 0;
 
-    [[nodiscard]] virtual std::unordered_map<int, std::unique_ptr<ItemStack>> all(const ItemStack &item) const = 0;
+    [[nodiscard]] virtual std::unordered_map<int, ItemStack> all(const ItemStack &item) const = 0;
 
     [[nodiscard]] virtual int first(const std::string &type) const = 0;
 

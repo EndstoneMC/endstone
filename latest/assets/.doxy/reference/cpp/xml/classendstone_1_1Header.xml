@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/header.h" line="57" column="13" bodyfile="include/endstone/form/controls/header.h" bodystart="57" bodyend="-1"/>
+        <location file="include/endstone/form/controls/header.h" line="53" column="13" bodyfile="include/endstone/form/controls/header.h" bodystart="53" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/header.h" line="31" column="14" bodyfile="include/endstone/form/controls/header.h" bodystart="31" bodyend="33"/>
+        <location file="include/endstone/form/controls/header.h" line="31" column="14" bodyfile="include/endstone/form/controls/header.h" bodystart="31" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Header_1a7fbe4814c5ff46425f28d46fc89e7042" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Message</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/header.h" line="40" column="14" bodyfile="include/endstone/form/controls/header.h" bodystart="40" bodyend="43"/>
+        <location file="include/endstone/form/controls/header.h" line="38" column="14" bodyfile="include/endstone/form/controls/header.h" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Header_1a4fe365b58872e118382981c82f925742" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Header" kindref="compound">Header</ref> &amp;</type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/header.h" line="51" column="12" bodyfile="include/endstone/form/controls/header.h" bodystart="51" bodyend="55"/>
+        <location file="include/endstone/form/controls/header.h" line="46" column="12" bodyfile="include/endstone/form/controls/header.h" bodystart="46" bodyend="50"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -107,7 +107,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/form/controls/header.h" line="28" column="1" bodyfile="include/endstone/form/controls/header.h" bodystart="28" bodyend="58"/>
+    <location file="include/endstone/form/controls/header.h" line="28" column="1" bodyfile="include/endstone/form/controls/header.h" bodystart="28" bodyend="54"/>
     <listofallmembers>
       <member refid="classendstone_1_1Header_1a7fbe4814c5ff46425f28d46fc89e7042" prot="public" virt="non-virtual"><scope>endstone::Header</scope><name>getLabel</name></member>
       <member refid="classendstone_1_1Header_1aceac5ab5dccb454e4e6a3c1c601cc291" prot="public" virt="non-virtual"><scope>endstone::Header</scope><name>Header</name></member>

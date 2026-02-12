@@ -33,26 +33,26 @@
         <label>include/endstone/event/block/block_cook_event.h</label>
         <link refid="block__cook__event_8h_source"/>
       </node>
-      <node id="12">
+      <node id="13">
         <label>include/endstone/event/chunk/chunk_event.h</label>
         <link refid="chunk__event_8h_source"/>
-        <childnode refid="13" relation="include">
-        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
       </node>
-      <node id="13">
+      <node id="14">
         <label>include/endstone/event/chunk/chunk_load_event.h</label>
         <link refid="chunk__load__event_8h_source"/>
       </node>
-      <node id="14">
+      <node id="15">
         <label>include/endstone/event/chunk/chunk_unload_event.h</label>
         <link refid="chunk__unload__event_8h_source"/>
       </node>
-      <node id="11">
+      <node id="12">
         <label>include/endstone/event/level/dimension_event.h</label>
         <link refid="dimension__event_8h_source"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -60,6 +60,10 @@
         <link refid="player__drop__item__event_8h_source"/>
       </node>
       <node id="8">
+        <label>include/endstone/event/player/player_interact_event.h</label>
+        <link refid="player__interact__event_8h_source"/>
+      </node>
+      <node id="9">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
@@ -67,11 +71,9 @@
         <label>include/endstone/event/player/player_pickup_item_event.h</label>
         <link refid="player__pickup__item__event_8h_source"/>
       </node>
-      <node id="16">
+      <node id="17">
         <label>include/endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
       </node>
       <node id="3">
         <label>include/endstone/inventory/item_stack.h</label>
@@ -88,47 +90,49 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
       </node>
-      <node id="20">
+      <node id="21">
         <label>include/endstone/inventory/meta/book_meta.h</label>
         <link refid="book__meta_8h_source"/>
       </node>
-      <node id="17">
+      <node id="18">
         <label>include/endstone/inventory/meta/crossbow_meta.h</label>
         <link refid="crossbow__meta_8h_source"/>
       </node>
-      <node id="15">
+      <node id="16">
         <label>include/endstone/inventory/meta/item_meta.h</label>
         <link refid="item__meta_8h_source"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-      </node>
-      <node id="18">
-        <label>include/endstone/inventory/meta/map_meta.h</label>
-        <link refid="map__meta_8h_source"/>
-      </node>
-      <node id="19">
-        <label>include/endstone/inventory/meta/writable_book_meta.h</label>
-        <link refid="writable__book__meta_8h_source"/>
         <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="19">
+        <label>include/endstone/inventory/meta/map_meta.h</label>
+        <link refid="map__meta_8h_source"/>
+      </node>
+      <node id="20">
+        <label>include/endstone/inventory/meta/writable_book_meta.h</label>
+        <link refid="writable__book__meta_8h_source"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>
-      <node id="10">
+      <node id="11">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
-        <childnode refid="11" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -136,7 +140,7 @@
         <link refid="tag_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -186,49 +190,25 @@
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">v</ref>)<sp/>:<sp/>value_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">v</ref>))<sp/>{}</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read-only<sp/>implicit<sp/>conversion<sp/>to<sp/>payload</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value_;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;value()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value_;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Equality<sp/>with<sp/>same<sp/>wrapper</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>.value_<sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>.value_;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref><sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>);</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Equality<sp/>with<sp/>underlying<sp/>payload</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>.value_<sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">a</ref><sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>.value_;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref><sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>);</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref><sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>);</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>value_;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="75"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone::nbt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value_;<sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;value()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>value_;<sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Equality<sp/>with<sp/>same<sp/>wrapper</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>.value_<sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>.value_;<sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref><sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Equality<sp/>with<sp/>underlying<sp/>payload</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>.value_<sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">a</ref><sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>.value_;<sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref><sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ValueTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(<ref refid="classendstone_1_1Identifier" kindref="compound">a</ref><sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>value_;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone::nbt</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/nbt/value.h"/>
   </compounddef>

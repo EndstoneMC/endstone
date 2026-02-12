@@ -60,7 +60,7 @@ public:
 
     [[nodiscard]] virtual std::vector<std::unique_ptr<Chunk>> getLoadedChunks() = 0;
 
-    [[nodiscard]] virtual Item &dropItem(Location location, ItemStack &item) = 0;
+    [[nodiscard]] virtual Item &dropItem(Location location, const ItemStack &item) = 0;
 
     [[nodiscard]] virtual Actor *spawnActor(Location location, std::string type) = 0;
 

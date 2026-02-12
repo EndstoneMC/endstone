@@ -45,10 +45,7 @@ public:
     Vector &operator=(const Vector &other) = default;
     Vector &operator=(Vector &&other) noexcept = default;
 
-    [[nodiscard]] constexpr float getX() const
-    {
-        return x_;
-    }
+    [[nodiscard]] constexpr float getX() const { return x_; }
 
     template <std::convertible_to<float> T>
     constexpr Vector &setX(T x)
@@ -57,10 +54,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] constexpr float getY() const
-    {
-        return y_;
-    }
+    [[nodiscard]] constexpr float getY() const { return y_; }
 
     template <std::convertible_to<float> T>
     constexpr Vector &setY(T y)
@@ -69,10 +63,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] constexpr float getZ() const
-    {
-        return z_;
-    }
+    [[nodiscard]] constexpr float getZ() const { return z_; }
 
     template <std::convertible_to<float> T>
     constexpr Vector &setZ(T z)
@@ -81,40 +72,19 @@ public:
         return *this;
     }
 
-    [[nodiscard]] int getBlockX() const
-    {
-        return static_cast<int>(std::floor(x_));
-    }
+    [[nodiscard]] int getBlockX() const { return static_cast<int>(std::floor(x_)); }
 
-    [[nodiscard]] int getBlockY() const
-    {
-        return static_cast<int>(std::floor(y_));
-    }
+    [[nodiscard]] int getBlockY() const { return static_cast<int>(std::floor(y_)); }
 
-    [[nodiscard]] int getBlockZ() const
-    {
-        return static_cast<int>(std::floor(z_));
-    }
+    [[nodiscard]] int getBlockZ() const { return static_cast<int>(std::floor(z_)); }
 
-    constexpr Vector operator+(const Vector &other) const
-    {
-        return {x_ + other.x_, y_ + other.y_, z_ + other.z_};
-    }
+    constexpr Vector operator+(const Vector &other) const { return {x_ + other.x_, y_ + other.y_, z_ + other.z_}; }
 
-    constexpr Vector operator-(const Vector &other) const
-    {
-        return {x_ - other.x_, y_ - other.y_, z_ - other.z_};
-    }
+    constexpr Vector operator-(const Vector &other) const { return {x_ - other.x_, y_ - other.y_, z_ - other.z_}; }
 
-    constexpr Vector operator*(const Vector &other) const
-    {
-        return {x_ * other.x_, y_ * other.y_, z_ * other.z_};
-    }
+    constexpr Vector operator*(const Vector &other) const { return {x_ * other.x_, y_ * other.y_, z_ * other.z_}; }
 
-    constexpr Vector operator/(const Vector &other) const
-    {
-        return {x_ / other.x_, y_ / other.y_, z_ / other.z_};
-    }
+    constexpr Vector operator/(const Vector &other) const { return {x_ / other.x_, y_ / other.y_, z_ / other.z_}; }
 
     Vector &operator+=(const Vector &other)
     {
@@ -215,25 +185,13 @@ public:
                (std::fabs(z_ - other.z_) <= eps);
     }
 
-    bool operator!=(const Vector &other) const noexcept
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const Vector &other) const noexcept { return !(*this == other); }
 
-    [[nodiscard]] float length() const
-    {
-        return std::sqrt(lengthSquared());
-    }
+    [[nodiscard]] float length() const { return std::sqrt(lengthSquared()); }
 
-    [[nodiscard]] constexpr float lengthSquared() const
-    {
-        return (x_ * x_) + (y_ * y_) + (z_ * z_);
-    }
+    [[nodiscard]] constexpr float lengthSquared() const { return (x_ * x_) + (y_ * y_) + (z_ * z_); }
 
-    [[nodiscard]] float distance(const Vector &other) const
-    {
-        return std::sqrt(distanceSquared(other));
-    }
+    [[nodiscard]] float distance(const Vector &other) const { return std::sqrt(distanceSquared(other)); }
 
     [[nodiscard]] constexpr float distanceSquared(const Vector &other) const
     {
@@ -304,10 +262,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] constexpr bool isZero() const
-    {
-        return x_ == 0 && y_ == 0 && z_ == 0;
-    }
+    [[nodiscard]] constexpr bool isZero() const { return x_ == 0 && y_ == 0 && z_ == 0; }
 
     constexpr Vector &normalizeZeros()
     {

@@ -39,30 +39,15 @@ public:
     {
     }
 
-    [[nodiscard]] std::string getMessage() const
-    {
-        return message_;
-    }
+    [[nodiscard]] std::string getMessage() const { return message_; }
 
-    void setMessage(std::string message)
-    {
-        message_ = std::move(message);
-    }
+    void setMessage(std::string message) { message_ = std::move(message); }
 
-    void setPlayer(Player &player)
-    {
-        player_ = player;
-    }
+    void setPlayer(Player &player) { player_ = player; }
 
-    [[nodiscard]] std::string getFormat() const
-    {
-        return format_;
-    }
+    [[nodiscard]] std::string getFormat() const { return format_; }
 
-    void setFormat(std::string format)
-    {
-        format_ = std::move(format);
-    }
+    void setFormat(std::string format) { format_ = std::move(format); }
 
     [[nodiscard]] std::vector<Player *> getRecipients() const
     {

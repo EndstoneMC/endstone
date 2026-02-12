@@ -31,51 +31,26 @@
 
 namespace endstone {
 class BanEntry {
-
 public:
     using Date = std::chrono::system_clock::time_point;
 
     inline static const std::string DateFormat = "%FT%T%Ez";
 
-    [[nodiscard]] Date getCreated() const
-    {
-        return created_;
-    }
+    [[nodiscard]] Date getCreated() const { return created_; }
 
-    void setCreated(Date created)
-    {
-        created_ = created;
-    }
+    void setCreated(Date created) { created_ = created; }
 
-    [[nodiscard]] std::string getSource() const
-    {
-        return source_;
-    }
+    [[nodiscard]] std::string getSource() const { return source_; }
 
-    void setSource(std::string source)
-    {
-        source_ = std::move(source);
-    }
+    void setSource(std::string source) { source_ = std::move(source); }
 
-    [[nodiscard]] std::optional<Date> getExpiration() const
-    {
-        return expiration_;
-    }
+    [[nodiscard]] std::optional<Date> getExpiration() const { return expiration_; }
 
-    void setExpiration(std::optional<Date> expiration)
-    {
-        expiration_ = expiration;
-    }
+    void setExpiration(std::optional<Date> expiration) { expiration_ = expiration; }
 
-    [[nodiscard]] std::string getReason() const
-    {
-        return reason_;
-    }
+    [[nodiscard]] std::string getReason() const { return reason_; }
 
-    void setReason(std::string reason)
-    {
-        reason_ = std::move(reason);
-    }
+    void setReason(std::string reason) { reason_ = std::move(reason); }
 
 private:
     Date created_ = std::chrono::system_clock::now();

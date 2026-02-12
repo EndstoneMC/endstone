@@ -2,11 +2,12 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="namespacestd" kind="namespace" language="C++">
     <compoundname>std</compoundname>
+    <innerclass refid="structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4" prot="public">std::hash&lt; endstone::Identifier&lt; T &gt; &gt;</innerclass>
     <innerclass refid="structstd_1_1hash_3_01endstone_1_1UUID_01_4" prot="public">std::hash&lt; endstone::UUID &gt;</innerclass>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/util/uuid.h" line="157" column="1"/>
+    <location file="include/endstone/util/uuid.h" line="142" column="1"/>
   </compounddef>
 </doxygen>

@@ -239,7 +239,11 @@
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
         <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
@@ -251,10 +255,6 @@
         </childnode>
         <childnode refid="50" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
         <childnode refid="42" relation="include">
         </childnode>
       </node>
@@ -265,7 +265,7 @@
       <node id="53">
         <label>endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
@@ -602,16 +602,13 @@
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerBedLeaveEvent" kindref="compound">PlayerBedLeaveEvent</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>,<sp/><ref refid="classendstone_1_1Block" kindref="compound">Block</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">bed</ref>)<sp/>:<sp/><ref refid="classendstone_1_1PlayerEvent" kindref="compound">PlayerEvent</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>),<sp/>bed_(<ref refid="classendstone_1_1Identifier" kindref="compound">bed</ref>)<sp/>{}</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PlayerBedLeaveEvent" kindref="compound">~PlayerBedLeaveEvent</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38" refid="classendstone_1_1PlayerBedLeaveEvent_1aca06f33b1924e60bf91cd279c0389ab3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Block" kindref="compound">Block</ref><sp/>&amp;<ref refid="classendstone_1_1PlayerBedLeaveEvent_1aca06f33b1924e60bf91cd279c0389ab3" kindref="member">getBed</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="39"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>bed_;</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Block" kindref="compound">Block</ref><sp/>&amp;bed_;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classendstone_1_1PlayerBedLeaveEvent_1aca06f33b1924e60bf91cd279c0389ab3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Block" kindref="compound">Block</ref><sp/>&amp;<ref refid="classendstone_1_1PlayerBedLeaveEvent_1aca06f33b1924e60bf91cd279c0389ab3" kindref="member">getBed</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>bed_;<sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Block" kindref="compound">Block</ref><sp/>&amp;bed_;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/event/player/player_bed_leave_event.h"/>
   </compounddef>

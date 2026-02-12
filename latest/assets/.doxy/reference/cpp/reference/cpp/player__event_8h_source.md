@@ -34,10 +34,7 @@ public:
     explicit PlayerEvent(Player &player) : player_(player) {};
     ~PlayerEvent() override = default;
 
-    [[nodiscard]] Player &getPlayer() const
-    {
-        return player_;
-    }
+    [[nodiscard]] Player &getPlayer() const { return player_; }
 
 protected:
     std::reference_wrapper<Player> player_;

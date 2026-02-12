@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2590,19 +2590,6 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#enum-operand" class="md-nav__link">
-      <span class="md-ellipsis">
-        enum Operand
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
     <a href="#enum-operation" class="md-nav__link">
       <span class="md-ellipsis">
         enum Operation
@@ -2675,19 +2662,6 @@ For latest updates join the chat on
     <a href="#function-getname" class="md-nav__link">
       <span class="md-ellipsis">
         function getName
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-getoperand" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getOperand
       </span>
     </a>
 
@@ -2777,10 +2751,6 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">enum</td>
-<td style="text-align: left;"><a href="#enum-operand"><strong>Operand</strong></a>  <br><em>Value on which operation to be applied.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">enum</td>
 <td style="text-align: left;"><a href="#enum-operation"><strong>Operation</strong></a>  <br><em>Operation to be applied.</em></td>
 </tr>
 </tbody>
@@ -2796,11 +2766,11 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-attributemodifier-12"><strong>AttributeModifier</strong></a> (std::string name, <a href="../classendstone_1_1Identifier/"><strong>float</strong></a> amount, <a href="./#enum-operation"><strong>Operation</strong></a> operation, <a href="./#enum-operand"><strong>Operand</strong></a> operand=Operand::Value) <br></td>
+<td style="text-align: left;"><a href="#function-attributemodifier-12"><strong>AttributeModifier</strong></a> (std::string name, <a href="../classendstone_1_1Identifier/"><strong>float</strong></a> amount, <a href="./#enum-operation"><strong>Operation</strong></a> operation) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-attributemodifier-22"><strong>AttributeModifier</strong></a> (std::string name, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> uuid, <a href="../classendstone_1_1Identifier/"><strong>float</strong></a> amount, <a href="./#enum-operation"><strong>Operation</strong></a> operation, <a href="./#enum-operand"><strong>Operand</strong></a> operand=Operand::Value) <br></td>
+<td style="text-align: left;"><a href="#function-attributemodifier-22"><strong>AttributeModifier</strong></a> (std::string name, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> uuid, <a href="../classendstone_1_1Identifier/"><strong>float</strong></a> amount, <a href="./#enum-operation"><strong>Operation</strong></a> operation) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>float</strong></a></td>
@@ -2809,10 +2779,6 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">std::string</td>
 <td style="text-align: left;"><a href="#function-getname"><strong>getName</strong></a> () const<br><em>Get the name of this modifier.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="./#enum-operand"><strong>Operand</strong></a></td>
-<td style="text-align: left;"><a href="#function-getoperand"><strong>getOperand</strong></a> () const<br><em>Get the operand this modifier will apply.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./#enum-operation"><strong>Operation</strong></a></td>
@@ -2825,50 +2791,38 @@ For latest updates join the chat on
 </tbody>
 </table>
 <h2 id="public-types-documentation">Public Types Documentation<a class="headerlink" href="#public-types-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="enum-operand">enum Operand<a class="headerlink" href="#enum-operand" title="Permanent link">&para;</a></h3>
-<p><em>Value on which operation to be applied.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">Operand</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Value</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">MaxValue</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">MinValue</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">};</span>
-</span></code></pre></div></p>
-<hr>
-
 <h3 id="enum-operation">enum Operation<a class="headerlink" href="#enum-operation" title="Permanent link">&para;</a></h3>
 <p><em>Operation to be applied.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">Operation</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Add</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">MultiplyBase</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">Multiply</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">};</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">Operation</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Add</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">MultiplyBase</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">Multiply</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">};</span>
 </span></code></pre></div></p>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-attributemodifier-12">function AttributeModifier [&frac12;]<a class="headerlink" href="#function-attributemodifier-12" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">Operation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">Operand</span><span class="w"> </span><span class="n">operand</span><span class="o">=</span><span class="n">Operand</span><span class="o">::</span><span class="n">Value</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">Operation</span><span class="w"> </span><span class="n">operation</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-attributemodifier-22">function AttributeModifier [2/2]<a class="headerlink" href="#function-attributemodifier-22" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">Operation</span><span class="w"> </span><span class="n">operation</span><span class="p">,</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="n">Operand</span><span class="w"> </span><span class="n">operand</span><span class="o">=</span><span class="n">Operand</span><span class="o">::</span><span class="n">Value</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="n">uuid</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">Operation</span><span class="w"> </span><span class="n">operation</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-getamount">function getAmount<a class="headerlink" href="#function-getamount" title="Permanent link">&para;</a></h3>
 <p><em>Get the amount by which this modifier will apply the operation.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">getAmount</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">getAmount</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>modification amount </p>
@@ -2876,23 +2830,15 @@ For latest updates join the chat on
 
 <h3 id="function-getname">function getName<a class="headerlink" href="#function-getname" title="Permanent link">&para;</a></h3>
 <p><em>Get the name of this modifier.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>name </p>
 <hr>
 
-<h3 id="function-getoperand">function getOperand<a class="headerlink" href="#function-getoperand" title="Permanent link">&para;</a></h3>
-<p><em>Get the operand this modifier will apply.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Operand</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">getOperand</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>operand </p>
-<hr>
-
 <h3 id="function-getoperation">function getOperation<a class="headerlink" href="#function-getoperation" title="Permanent link">&para;</a></h3>
 <p><em>Get the operation this modifier will apply.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Operation</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">getOperation</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Operation</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">getOperation</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>operation </p>
@@ -2900,7 +2846,7 @@ For latest updates join the chat on
 
 <h3 id="function-getuniqueid">function getUniqueId<a class="headerlink" href="#function-getuniqueid" title="Permanent link">&para;</a></h3>
 <p><em>Get the unique ID for this modifier.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">getUniqueId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">AttributeModifier</span><span class="o">::</span><span class="n">getUniqueId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>unique id </p>
@@ -3031,10 +2977,10 @@ For latest updates join the chat on
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

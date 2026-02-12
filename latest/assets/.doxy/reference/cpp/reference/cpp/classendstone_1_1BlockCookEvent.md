@@ -93,11 +93,11 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockCookEvent**](#function-blockcookevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; source, std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; result) <br> |
+|   | [**BlockCookEvent**](#function-blockcookevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, [**ItemStack**](classendstone_1_1ItemStack.md) source, [**ItemStack**](classendstone_1_1ItemStack.md) result) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockCookEvent**](classendstone_1_1BlockCookEvent.md)) <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & | [**getResult**](#function-getresult) () const<br>_Gets the resultant_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _for this event._ |
 |  [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & | [**getSource**](#function-getsource) () const<br>_Gets the smelted_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _for this event._ |
-|  [**void**](classendstone_1_1Identifier.md) | [**setResult**](#function-setresult) (std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; result) <br>_Sets the resultant_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _for this event._ |
+|  [**void**](classendstone_1_1Identifier.md) | [**setResult**](#function-setresult) ([**ItemStack**](classendstone_1_1ItemStack.md) result) <br>_Sets the resultant_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _for this event._ |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -211,8 +211,8 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 ```C++
 inline endstone::BlockCookEvent::BlockCookEvent (
     std::unique_ptr< Block > block,
-    std::unique_ptr< ItemStack > source,
-    std::unique_ptr< ItemStack > result
+    ItemStack source,
+    ItemStack result
 ) 
 ```
 
@@ -293,7 +293,7 @@ smelting source [**ItemStack**](classendstone_1_1ItemStack.md)
 _Sets the resultant_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _for this event._
 ```C++
 inline void endstone::BlockCookEvent::setResult (
-    std::unique_ptr< ItemStack > result
+    ItemStack result
 ) 
 ```
 

@@ -44,15 +44,9 @@ public:
     {
     }
 
-    void setDimension(Dimension &dimension)
-    {
-        dimension_ = &dimension;
-    }
+    void setDimension(Dimension &dimension) { dimension_ = &dimension; }
 
-    [[nodiscard]] Dimension &getDimension() const
-    {
-        return *dimension_;
-    }
+    [[nodiscard]] Dimension &getDimension() const { return *dimension_; }
 
     [[nodiscard]] std::unique_ptr<Block> getBlock() const;
 
@@ -62,15 +56,9 @@ public:
         x_ = static_cast<float>(x);
     }
 
-    [[nodiscard]] constexpr float getX() const
-    {
-        return x_;
-    }
+    [[nodiscard]] constexpr float getX() const { return x_; }
 
-    [[nodiscard]] int getBlockX() const
-    {
-        return static_cast<int>(std::floorf(x_));
-    }
+    [[nodiscard]] int getBlockX() const { return static_cast<int>(std::floorf(x_)); }
 
     template <std::convertible_to<float> T>
     constexpr void setY(T y)
@@ -78,15 +66,9 @@ public:
         y_ = static_cast<float>(y);
     }
 
-    [[nodiscard]] constexpr float getY() const
-    {
-        return y_;
-    }
+    [[nodiscard]] constexpr float getY() const { return y_; }
 
-    [[nodiscard]] int getBlockY() const
-    {
-        return static_cast<int>(std::floorf(y_));
-    }
+    [[nodiscard]] int getBlockY() const { return static_cast<int>(std::floorf(y_)); }
 
     template <std::convertible_to<float> T>
     constexpr void setZ(T z)
@@ -94,35 +76,17 @@ public:
         z_ = static_cast<float>(z);
     }
 
-    [[nodiscard]] constexpr float getZ() const
-    {
-        return z_;
-    }
+    [[nodiscard]] constexpr float getZ() const { return z_; }
 
-    [[nodiscard]] int getBlockZ() const
-    {
-        return static_cast<int>(std::floorf(z_));
-    }
+    [[nodiscard]] int getBlockZ() const { return static_cast<int>(std::floorf(z_)); }
 
-    [[nodiscard]] float getPitch() const
-    {
-        return pitch_;
-    }
+    [[nodiscard]] float getPitch() const { return pitch_; }
 
-    void setPitch(float pitch)
-    {
-        pitch_ = pitch;
-    }
+    void setPitch(float pitch) { pitch_ = pitch; }
 
-    [[nodiscard]] float getYaw() const
-    {
-        return yaw_;
-    }
+    [[nodiscard]] float getYaw() const { return yaw_; }
 
-    void setYaw(float yaw)
-    {
-        yaw_ = yaw;
-    }
+    void setYaw(float yaw) { yaw_ = yaw; }
 
     [[nodiscard]] Vector getDirection() const
     {
@@ -153,20 +117,11 @@ public:
         return *this;
     }
 
-    [[nodiscard]] float length() const
-    {
-        return std::sqrt(lengthSquared());
-    }
+    [[nodiscard]] float length() const { return std::sqrt(lengthSquared()); }
 
-    [[nodiscard]] constexpr float lengthSquared() const
-    {
-        return (x_ * x_) + (y_ * y_) + (z_ * z_);
-    }
+    [[nodiscard]] constexpr float lengthSquared() const { return (x_ * x_) + (y_ * y_) + (z_ * z_); }
 
-    [[nodiscard]] float distance(const Location &other) const
-    {
-        return std::sqrt(distanceSquared(other));
-    }
+    [[nodiscard]] float distance(const Location &other) const { return std::sqrt(distanceSquared(other)); }
 
     [[nodiscard]] float distanceSquared(const Location &other) const;
 
@@ -228,15 +183,9 @@ public:
                (std::fabs(pitch_ - other.pitch_) <= eps) && (std::fabs(yaw_ - other.yaw_) <= eps);
     }
 
-    bool operator!=(const Location &other) const noexcept
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const Location &other) const noexcept { return !(*this == other); }
 
-    operator Vector() const noexcept
-    {
-        return {x_, y_, z_};
-    }
+    operator Vector() const noexcept { return {x_, y_, z_}; }
 
     static float normalizeYaw(float yaw)
     {

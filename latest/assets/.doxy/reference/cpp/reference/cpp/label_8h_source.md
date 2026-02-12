@@ -37,10 +37,7 @@ public:
     Label() = default;
     explicit Label(Message text) : text_(std::move(text)) {}
 
-    [[nodiscard]] Message getText() const
-    {
-        return text_;
-    }
+    [[nodiscard]] Message getText() const { return text_; }
 
     Label &setText(Message text)
     {

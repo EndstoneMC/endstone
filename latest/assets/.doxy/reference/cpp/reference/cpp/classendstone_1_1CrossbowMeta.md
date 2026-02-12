@@ -81,9 +81,9 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 | Type | Name |
 | ---: | :--- |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**addChargedProjectile**](#function-addchargedprojectile) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Adds a charged projectile to this item._  |
-| virtual std::vector&lt; std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; &gt; | [**getChargedProjectiles**](#function-getchargedprojectiles) () const = 0<br>_Returns an immutable list of the projectiles charged on this item._  |
+| virtual std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getChargedProjectiles**](#function-getchargedprojectiles) () const = 0<br>_Returns an immutable list of the projectiles charged on this item._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasChargedProjectiles**](#function-haschargedprojectiles) () const = 0<br>_Returns whether the item has any charged projectiles._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setChargedProjectiles**](#function-setchargedprojectiles) (std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) \* &gt; projectiles) = 0<br>_Sets the projectiles charged on this item._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setChargedProjectiles**](#function-setchargedprojectiles) (std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; projectiles) = 0<br>_Sets the projectiles charged on this item._  |
 
 
 ## Public Functions inherited from endstone::ItemMeta
@@ -210,7 +210,7 @@ virtual void endstone::CrossbowMeta::addChargedProjectile (
 
 _Returns an immutable list of the projectiles charged on this item._ 
 ```C++
-virtual std::vector< std::unique_ptr< ItemStack > > endstone::CrossbowMeta::getChargedProjectiles () const = 0
+virtual std::vector< ItemStack > endstone::CrossbowMeta::getChargedProjectiles () const = 0
 ```
 
 
@@ -261,7 +261,7 @@ whether charged projectiles are present
 _Sets the projectiles charged on this item._ 
 ```C++
 virtual void endstone::CrossbowMeta::setChargedProjectiles (
-    std::vector< ItemStack * > projectiles
+    std::vector< ItemStack > projectiles
 ) = 0
 ```
 

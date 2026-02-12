@@ -58,8 +58,8 @@ _Represents a block._ [More...](#detailed-description)
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains this_ [_**Block**_](classendstone_1_1Block.md) _._ |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the_ [_**Location**_](classendstone_1_1Location.md) _of the block._ |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-13) ([**int**](classendstone_1_1Identifier.md) offset\_x, [**int**](classendstone_1_1Identifier.md) offset\_y, [**int**](classendstone_1_1Identifier.md) offset\_z) = 0<br>_Gets the block at the given offsets._  |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-23) (BlockFace face) = 0<br>_Gets the block at the given face._  |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-33) (BlockFace face, [**int**](classendstone_1_1Identifier.md) distance) = 0<br>_Gets the block at the given distance of the given face._  |
+| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-23) ([**BlockFace**](namespaceendstone.md#enum-blockface) face) = 0<br>_Gets the block at the given face._  |
+| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-33) ([**BlockFace**](namespaceendstone.md#enum-blockface) face, [**int**](classendstone_1_1Identifier.md) distance) = 0<br>_Gets the block at the given distance of the given face._  |
 | virtual std::string | [**getType**](#function-gettype) () const = 0<br>_Get the type of the block._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block._  |

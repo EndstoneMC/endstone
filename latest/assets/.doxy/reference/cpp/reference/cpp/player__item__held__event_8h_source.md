@@ -37,15 +37,9 @@ public:
     {
     }
 
-    [[nodiscard]] int getPreviousSlot() const
-    {
-        return previous_;
-    }
+    [[nodiscard]] int getPreviousSlot() const { return previous_; }
 
-    [[nodiscard]] int getNewSlot() const
-    {
-        return current_;
-    }
+    [[nodiscard]] int getNewSlot() const { return current_; }
 
 private:
     int previous_;

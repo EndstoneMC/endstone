@@ -53,17 +53,11 @@ _Represents a mutable instance of an attribute and its associated modifiers and 
 | Type | Name |
 | ---: | :--- |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**addModifier**](#function-addmodifier) ([**const**](classendstone_1_1Identifier.md) [**AttributeModifier**](classendstone_1_1AttributeModifier.md) & modifier) = 0<br>_Add a modifier to this instance._  |
-| virtual [**float**](classendstone_1_1Identifier.md) | [**getBaseMaxValue**](#function-getbasemaxvalue) () const = 0<br>_Base max value of this instance before modifiers are applied._  |
-| virtual [**float**](classendstone_1_1Identifier.md) | [**getBaseMinValue**](#function-getbaseminvalue) () const = 0<br>_Base min value of this instance before modifiers are applied._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getBaseValue**](#function-getbasevalue) () const = 0<br>_Base value of this instance before modifiers are applied._  |
-| virtual [**float**](classendstone_1_1Identifier.md) | [**getMaxValue**](#function-getmaxvalue) () const = 0<br>_Get the max value of this instance after all associated modifiers have been applied._  |
-| virtual [**float**](classendstone_1_1Identifier.md) | [**getMinValue**](#function-getminvalue) () const = 0<br>_Get the min value of this instance after all associated modifiers have been applied._  |
 | virtual std::vector&lt; [**AttributeModifier**](classendstone_1_1AttributeModifier.md) &gt; | [**getModifiers**](#function-getmodifiers) () const = 0<br>_Get all modifiers present on this instance._  |
-| virtual std::string | [**getType**](#function-gettype) () const = 0<br>_The attribute type pertaining to this instance._  |
+| virtual [**AttributeId**](classendstone_1_1Identifier.md) | [**getType**](#function-gettype) () const = 0<br>_The attribute type pertaining to this instance._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getValue**](#function-getvalue) () const = 0<br>_Get the value of this instance after all associated modifiers have been applied._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**removeModifier**](#function-removemodifier) ([**const**](classendstone_1_1Identifier.md) [**AttributeModifier**](classendstone_1_1AttributeModifier.md) & modifier) = 0<br>_Remove a modifier from this instance._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setBaseMaxValue**](#function-setbasemaxvalue) ([**float**](classendstone_1_1Identifier.md) value) = 0<br>_Set the base max value of this instance._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setBaseMinValue**](#function-setbaseminvalue) ([**float**](classendstone_1_1Identifier.md) value) = 0<br>_Set the base min value of this instance._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setBaseValue**](#function-setbasevalue) ([**float**](classendstone_1_1Identifier.md) value) = 0<br>_Set the base value of this instance._  |
 | virtual  | [**~AttributeInstance**](#function-attributeinstance) () = default<br> |
 
@@ -126,56 +120,6 @@ virtual void endstone::AttributeInstance::addModifier (
 
 
 
-### function getBaseMaxValue 
-
-_Base max value of this instance before modifiers are applied._ 
-```C++
-virtual float endstone::AttributeInstance::getBaseMaxValue () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-base max value 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getBaseMinValue 
-
-_Base min value of this instance before modifiers are applied._ 
-```C++
-virtual float endstone::AttributeInstance::getBaseMinValue () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-base max value 
-
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function getBaseValue 
 
 _Base value of this instance before modifiers are applied._ 
@@ -190,56 +134,6 @@ virtual float endstone::AttributeInstance::getBaseValue () const = 0
 **Returns:**
 
 base value 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getMaxValue 
-
-_Get the max value of this instance after all associated modifiers have been applied._ 
-```C++
-virtual float endstone::AttributeInstance::getMaxValue () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-the max attribute value 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getMinValue 
-
-_Get the min value of this instance after all associated modifiers have been applied._ 
-```C++
-virtual float endstone::AttributeInstance::getMinValue () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-the min attribute value 
 
 
 
@@ -280,7 +174,7 @@ a copied collection of all modifiers
 
 _The attribute type pertaining to this instance._ 
 ```C++
-virtual std::string endstone::AttributeInstance::getType () const = 0
+virtual AttributeId endstone::AttributeInstance::getType () const = 0
 ```
 
 
@@ -343,60 +237,6 @@ virtual void endstone::AttributeInstance::removeModifier (
 
 
 * `modifier` to remove 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function setBaseMaxValue 
-
-_Set the base max value of this instance._ 
-```C++
-virtual void endstone::AttributeInstance::setBaseMaxValue (
-    float value
-) = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `value` new base max value 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function setBaseMinValue 
-
-_Set the base min value of this instance._ 
-```C++
-virtual void endstone::AttributeInstance::setBaseMinValue (
-    float value
-) = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `value` new base min value 
 
 
 

@@ -30,58 +30,34 @@
 namespace endstone {
 class AttributeModifier {
 public:
-    enum class Operand {
-        Value,
-        MaxValue,
-        MinValue,
-    };
-
     enum class Operation {
         Add,
         MultiplyBase,
         Multiply
     };
 
-    AttributeModifier(std::string name, float amount, Operation operation, Operand operand = Operand::Value)
-        : name_(std::move(name)), amount_(amount), operand_(operand), operation_(operation)
+    AttributeModifier(std::string name, float amount, Operation operation)
+        : name_(std::move(name)), amount_(amount), operation_(operation)
     {
     }
 
-    AttributeModifier(std::string name, UUID uuid, float amount, Operation operation, Operand operand = Operand::Value)
-        : name_(std::move(name)), uuid_(uuid), amount_(amount), operand_(operand), operation_(operation)
+    AttributeModifier(std::string name, UUID uuid, float amount, Operation operation)
+        : name_(std::move(name)), uuid_(uuid), amount_(amount), operation_(operation)
     {
     }
 
-    [[nodiscard]] UUID getUniqueId() const
-    {
-        return uuid_;
-    }
+    [[nodiscard]] UUID getUniqueId() const { return uuid_; }
 
-    [[nodiscard]] std::string getName() const
-    {
-        return name_;
-    }
+    [[nodiscard]] std::string getName() const { return name_; }
 
-    [[nodiscard]] float getAmount() const
-    {
-        return amount_;
-    }
+    [[nodiscard]] float getAmount() const { return amount_; }
 
-    [[nodiscard]] Operand getOperand() const
-    {
-        return operand_;
-    }
-
-    [[nodiscard]] Operation getOperation() const
-    {
-        return operation_;
-    }
+    [[nodiscard]] Operation getOperation() const { return operation_; }
 
 private:
     std::string name_;
     UUID uuid_;
     float amount_;
-    Operand operand_;
     Operation operation_;
 };
 }  // namespace endstone

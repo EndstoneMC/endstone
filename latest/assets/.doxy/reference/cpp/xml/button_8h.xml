@@ -278,8 +278,6 @@
       <node id="33">
         <label>include/endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h_source"/>
-        <childnode refid="34" relation="include">
-        </childnode>
       </node>
       <node id="34">
         <label>include/endstone/inventory/item_stack.h</label>
@@ -289,6 +287,8 @@
         <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -392,8 +392,6 @@
         <link refid="server_8h_source"/>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
         <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
@@ -441,46 +439,37 @@
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44" refid="classendstone_1_1Button_1a9f4197b42dd6f09b47e77ed083a69b2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>Message<sp/><ref refid="classendstone_1_1Button_1a9f4197b42dd6f09b47e77ed083a69b2b" kindref="member">getText</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="45"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>text_;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55" refid="classendstone_1_1Button_1a81e95408c4c135c0e0a14693b5285f51" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Button" kindref="compound">Button</ref><sp/>&amp;<ref refid="classendstone_1_1Button_1a81e95408c4c135c0e0a14693b5285f51" kindref="member">setText</ref>(Message<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">text</ref>)</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>text_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">text</ref>);</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="classendstone_1_1Button_1a51ef57a2817568eba3b565c04b409b3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Button_1a51ef57a2817568eba3b565c04b409b3b" kindref="member">getIcon</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="67"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>icon_;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77" refid="classendstone_1_1Button_1a5b8b26c09fd84d50e501f66bc2340727" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Button" kindref="compound">Button</ref><sp/>&amp;<ref refid="classendstone_1_1Button_1a5b8b26c09fd84d50e501f66bc2340727" kindref="member">setIcon</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">icon</ref>)</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>icon_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">icon</ref>);</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88" refid="classendstone_1_1Button_1a60036ee46a14e1782aa4a9ae1623a823" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>OnClickCallback<sp/><ref refid="classendstone_1_1Button_1a60036ee46a14e1782aa4a9ae1623a823" kindref="member">getOnClick</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="89"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>on_click_;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99" refid="classendstone_1_1Button_1a06e11b2cc8acd773c5fd6e1d482255c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Button" kindref="compound">Button</ref><sp/>&amp;<ref refid="classendstone_1_1Button_1a06e11b2cc8acd773c5fd6e1d482255c0" kindref="member">setOnClick</ref>(OnClickCallback<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">on_click</ref>)</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>on_click_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">on_click</ref>);</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>Message<sp/>text_;</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/>icon_;</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>OnClickCallback<sp/>on_click_;</highlight></codeline>
-<codeline lineno="109"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight></codeline>
+<codeline lineno="44" refid="classendstone_1_1Button_1a9f4197b42dd6f09b47e77ed083a69b2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>Message<sp/><ref refid="classendstone_1_1Button_1a9f4197b42dd6f09b47e77ed083a69b2b" kindref="member">getText</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>text_;<sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classendstone_1_1Button_1a81e95408c4c135c0e0a14693b5285f51" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Button" kindref="compound">Button</ref><sp/>&amp;<ref refid="classendstone_1_1Button_1a81e95408c4c135c0e0a14693b5285f51" kindref="member">setText</ref>(Message<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">text</ref>)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>text_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">text</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classendstone_1_1Button_1a51ef57a2817568eba3b565c04b409b3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Button_1a51ef57a2817568eba3b565c04b409b3b" kindref="member">getIcon</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>icon_;<sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classendstone_1_1Button_1a5b8b26c09fd84d50e501f66bc2340727" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Button" kindref="compound">Button</ref><sp/>&amp;<ref refid="classendstone_1_1Button_1a5b8b26c09fd84d50e501f66bc2340727" kindref="member">setIcon</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">icon</ref>)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>icon_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">icon</ref>);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classendstone_1_1Button_1a60036ee46a14e1782aa4a9ae1623a823" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>OnClickCallback<sp/><ref refid="classendstone_1_1Button_1a60036ee46a14e1782aa4a9ae1623a823" kindref="member">getOnClick</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>on_click_;<sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="classendstone_1_1Button_1a06e11b2cc8acd773c5fd6e1d482255c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Button" kindref="compound">Button</ref><sp/>&amp;<ref refid="classendstone_1_1Button_1a06e11b2cc8acd773c5fd6e1d482255c0" kindref="member">setOnClick</ref>(OnClickCallback<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">on_click</ref>)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>on_click_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">on_click</ref>);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>Message<sp/>text_;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/>icon_;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>OnClickCallback<sp/>on_click_;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/form/controls/button.h"/>
   </compounddef>

@@ -40,25 +40,13 @@ public:
     {
     }
 
-    [[nodiscard]] const Location &getFrom() const
-    {
-        return from_;
-    }
+    [[nodiscard]] const Location &getFrom() const { return from_; }
 
-    void setFrom(const Location &from)
-    {
-        from_ = from;
-    }
+    void setFrom(const Location &from) { from_ = from; }
 
-    [[nodiscard]] const Location &getTo() const
-    {
-        return to_;
-    }
+    [[nodiscard]] const Location &getTo() const { return to_; }
 
-    void setTo(const Location &to)
-    {
-        to_ = to;
-    }
+    void setTo(const Location &to) { to_ = to; }
 
     Location from_;
     Location to_;

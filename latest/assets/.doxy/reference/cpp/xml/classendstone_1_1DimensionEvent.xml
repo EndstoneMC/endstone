@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/level/dimension_event.h" line="40" column="15" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="40" bodyend="-1"/>
+        <location file="include/endstone/event/level/dimension_event.h" line="37" column="15" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="37" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/level/dimension_event.h" line="34" column="16" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="34" bodyend="37"/>
+        <location file="include/endstone/event/level/dimension_event.h" line="34" column="16" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="34" bodyend="34"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -118,7 +118,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/level/dimension_event.h" line="25" column="1" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="25" bodyend="41"/>
+    <location file="include/endstone/event/level/dimension_event.h" line="25" column="1" bodyfile="include/endstone/event/level/dimension_event.h" bodystart="25" bodyend="38"/>
     <listofallmembers>
       <member refid="classendstone_1_1DimensionEvent_1a06fb7621f6fd742856ae7b24537365d7" prot="private" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>dimension_</name></member>
       <member refid="classendstone_1_1DimensionEvent_1ad3a003262de859e49042454c65cfe383" prot="public" virt="non-virtual"><scope>endstone::DimensionEvent</scope><name>DimensionEvent</name></member>

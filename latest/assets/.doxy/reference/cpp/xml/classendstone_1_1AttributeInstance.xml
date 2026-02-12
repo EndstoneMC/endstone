@@ -18,9 +18,9 @@
         </inbodydescription>
         <location file="include/endstone/attribute/attribute_instance.h" line="27" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1ab64e1b83d261bd9acd12002d1c3774d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::string</type>
-        <definition>virtual std::string endstone::AttributeInstance::getType</definition>
+      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1aa711627cc0ae50ca8e77c79c5acaf90d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">AttributeId</ref></type>
+        <definition>virtual AttributeId endstone::AttributeInstance::getType</definition>
         <argsstring>() const =0</argsstring>
         <name>getType</name>
         <qualifiedname>endstone::AttributeInstance::getType</qualifiedname>
@@ -83,100 +83,6 @@
         </inbodydescription>
         <location file="include/endstone/attribute/attribute_instance.h" line="48" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1a792ba38e6ce8f864ff6d08d036563157" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
-        <definition>virtual float endstone::AttributeInstance::getBaseMaxValue</definition>
-        <argsstring>() const =0</argsstring>
-        <name>getBaseMaxValue</name>
-        <qualifiedname>endstone::AttributeInstance::getBaseMaxValue</qualifiedname>
-        <briefdescription>
-<para>Base max value of this instance before modifiers are applied. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>base max value </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/attribute/attribute_instance.h" line="55" column="20"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1a0086e63ae99b08b1732c43ce425158aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
-        <definition>virtual void endstone::AttributeInstance::setBaseMaxValue</definition>
-        <argsstring>(float value)=0</argsstring>
-        <name>setBaseMaxValue</name>
-        <qualifiedname>endstone::AttributeInstance::setBaseMaxValue</qualifiedname>
-        <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
-          <declname>value</declname>
-        </param>
-        <briefdescription>
-<para>Set the base max value of this instance. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>value</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>new base max value </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/attribute/attribute_instance.h" line="62" column="18"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1aa6016f211d9ea74d7c8e19f23a7a037a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
-        <definition>virtual float endstone::AttributeInstance::getBaseMinValue</definition>
-        <argsstring>() const =0</argsstring>
-        <name>getBaseMinValue</name>
-        <qualifiedname>endstone::AttributeInstance::getBaseMinValue</qualifiedname>
-        <briefdescription>
-<para>Base min value of this instance before modifiers are applied. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>base max value </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/attribute/attribute_instance.h" line="69" column="20"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1aa63427800cdc8cb78a56c70c302f0062" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
-        <definition>virtual void endstone::AttributeInstance::setBaseMinValue</definition>
-        <argsstring>(float value)=0</argsstring>
-        <name>setBaseMinValue</name>
-        <qualifiedname>endstone::AttributeInstance::setBaseMinValue</qualifiedname>
-        <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
-          <declname>value</declname>
-        </param>
-        <briefdescription>
-<para>Set the base min value of this instance. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>value</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>new base min value </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/attribute/attribute_instance.h" line="76" column="18"/>
-      </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeInstance_1aa8337efa45ce9c7c5ce034fb9b22b52c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
         <definition>virtual float endstone::AttributeInstance::getValue</definition>
@@ -193,43 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_instance.h" line="83" column="20"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1a972e00db97932fc2967b16f6ce52ea22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
-        <definition>virtual float endstone::AttributeInstance::getMaxValue</definition>
-        <argsstring>() const =0</argsstring>
-        <name>getMaxValue</name>
-        <qualifiedname>endstone::AttributeInstance::getMaxValue</qualifiedname>
-        <briefdescription>
-<para>Get the max value of this instance after all associated modifiers have been applied. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>the max attribute value </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/attribute/attribute_instance.h" line="90" column="20"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1AttributeInstance_1a08ffa1345942dc141349743e7c4a23ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
-        <definition>virtual float endstone::AttributeInstance::getMinValue</definition>
-        <argsstring>() const =0</argsstring>
-        <name>getMinValue</name>
-        <qualifiedname>endstone::AttributeInstance::getMinValue</qualifiedname>
-        <briefdescription>
-<para>Get the min value of this instance after all associated modifiers have been applied. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>the min attribute value </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/attribute/attribute_instance.h" line="97" column="20"/>
+        <location file="include/endstone/attribute/attribute_instance.h" line="55" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeInstance_1ae4e8c5dbda550816b24c08fd0a216edf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1AttributeModifier" kindref="compound">AttributeModifier</ref> &gt;</type>
@@ -247,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_instance.h" line="104" column="26"/>
+        <location file="include/endstone/attribute/attribute_instance.h" line="62" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeInstance_1aa1ede5a54c73d13f0b7c5b564cc037bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -276,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_instance.h" line="111" column="18"/>
+        <location file="include/endstone/attribute/attribute_instance.h" line="69" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeInstance_1a7dfee14fcbe2ecc529574f9b6176c4a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -305,7 +175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_instance.h" line="118" column="18"/>
+        <location file="include/endstone/attribute/attribute_instance.h" line="76" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -313,20 +183,14 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/attribute/attribute_instance.h" line="25" column="1" bodyfile="include/endstone/attribute/attribute_instance.h" bodystart="25" bodyend="119"/>
+    <location file="include/endstone/attribute/attribute_instance.h" line="25" column="1" bodyfile="include/endstone/attribute/attribute_instance.h" bodystart="25" bodyend="77"/>
     <listofallmembers>
       <member refid="classendstone_1_1AttributeInstance_1aa1ede5a54c73d13f0b7c5b564cc037bf" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>addModifier</name></member>
-      <member refid="classendstone_1_1AttributeInstance_1a792ba38e6ce8f864ff6d08d036563157" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>getBaseMaxValue</name></member>
-      <member refid="classendstone_1_1AttributeInstance_1aa6016f211d9ea74d7c8e19f23a7a037a" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>getBaseMinValue</name></member>
       <member refid="classendstone_1_1AttributeInstance_1aec4bae985b1028f0267083cffb79d5a7" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>getBaseValue</name></member>
-      <member refid="classendstone_1_1AttributeInstance_1a972e00db97932fc2967b16f6ce52ea22" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>getMaxValue</name></member>
-      <member refid="classendstone_1_1AttributeInstance_1a08ffa1345942dc141349743e7c4a23ef" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>getMinValue</name></member>
       <member refid="classendstone_1_1AttributeInstance_1ae4e8c5dbda550816b24c08fd0a216edf" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>getModifiers</name></member>
-      <member refid="classendstone_1_1AttributeInstance_1ab64e1b83d261bd9acd12002d1c3774d7" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>getType</name></member>
+      <member refid="classendstone_1_1AttributeInstance_1aa711627cc0ae50ca8e77c79c5acaf90d" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>getType</name></member>
       <member refid="classendstone_1_1AttributeInstance_1aa8337efa45ce9c7c5ce034fb9b22b52c" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>getValue</name></member>
       <member refid="classendstone_1_1AttributeInstance_1a7dfee14fcbe2ecc529574f9b6176c4a1" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>removeModifier</name></member>
-      <member refid="classendstone_1_1AttributeInstance_1a0086e63ae99b08b1732c43ce425158aa" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>setBaseMaxValue</name></member>
-      <member refid="classendstone_1_1AttributeInstance_1aa63427800cdc8cb78a56c70c302f0062" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>setBaseMinValue</name></member>
       <member refid="classendstone_1_1AttributeInstance_1acd02e0d33c2bbe142d65550de035f3a3" prot="public" virt="pure-virtual"><scope>endstone::AttributeInstance</scope><name>setBaseValue</name></member>
       <member refid="classendstone_1_1AttributeInstance_1a2c760ef86dbaff64b27215bee0a64d2e" prot="public" virt="virtual"><scope>endstone::AttributeInstance</scope><name>~AttributeInstance</name></member>
     </listofallmembers>

@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**IpBanEntry**](classendstone_1_1IpBanEntry.md) <br> |
+| class | [**IpBanEntry**](classendstone_1_1IpBanEntry.md) <br>_Represents an entry for a banned IP address._  |
 
 
 

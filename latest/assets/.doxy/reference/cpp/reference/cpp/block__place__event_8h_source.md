@@ -42,30 +42,15 @@ public:
     ~BlockPlaceEvent() override = default;
 
     inline static const std::string NAME = "BlockPlaceEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
-    [[nodiscard]] Player &getPlayer() const
-    {
-        return player_;
-    }
+    [[nodiscard]] Player &getPlayer() const { return player_; }
 
-    [[nodiscard]] BlockState &getBlockPlacedState() const
-    {
-        return *placed_block_;
-    }
+    [[nodiscard]] BlockState &getBlockPlacedState() const { return *placed_block_; }
 
-    [[nodiscard]] Block &getBlockReplaced() const
-    {
-        return getBlock();
-    }
+    [[nodiscard]] Block &getBlockReplaced() const { return getBlock(); }
 
-    [[nodiscard]] Block &getBlockAgainst() const
-    {
-        return *placed_against_;
-    }
+    [[nodiscard]] Block &getBlockAgainst() const { return *placed_against_; }
 
 private:
     std::unique_ptr<BlockState> placed_block_;

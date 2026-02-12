@@ -62,85 +62,40 @@ public:
         return fromRGBA(abgr & BIT_MASK, abgr >> 8 & BIT_MASK, abgr >> 16 & BIT_MASK, abgr >> 24 & BIT_MASK);
     }
 
-    static Color fromRGB(const int rgb)
-    {
-        return fromRGB(rgb >> 16 & BIT_MASK, rgb >> 8 & BIT_MASK, rgb & BIT_MASK);
-    }
+    static Color fromRGB(const int rgb) { return fromRGB(rgb >> 16 & BIT_MASK, rgb >> 8 & BIT_MASK, rgb & BIT_MASK); }
 
-    static Color fromBGR(const int bgr)
-    {
-        return fromBGR(bgr >> 16 & BIT_MASK, bgr >> 8 & BIT_MASK, bgr & BIT_MASK);
-    }
+    static Color fromBGR(const int bgr) { return fromBGR(bgr >> 16 & BIT_MASK, bgr >> 8 & BIT_MASK, bgr & BIT_MASK); }
 
-    [[nodiscard]] int getRed() const
-    {
-        return BIT_MASK & red_;
-    }
+    [[nodiscard]] int getRed() const { return BIT_MASK & red_; }
 
-    [[nodiscard]] Color setRed(const int red) const
-    {
-        return fromRGBA(red, getGreen(), getBlue(), getAlpha());
-    }
+    [[nodiscard]] Color setRed(const int red) const { return fromRGBA(red, getGreen(), getBlue(), getAlpha()); }
 
-    [[nodiscard]] int getGreen() const
-    {
-        return BIT_MASK & green_;
-    }
+    [[nodiscard]] int getGreen() const { return BIT_MASK & green_; }
 
-    [[nodiscard]] Color setGreen(const int green) const
-    {
-        return fromRGBA(getRed(), green, getBlue(), getAlpha());
-    }
+    [[nodiscard]] Color setGreen(const int green) const { return fromRGBA(getRed(), green, getBlue(), getAlpha()); }
 
-    [[nodiscard]] int getBlue() const
-    {
-        return BIT_MASK & blue_;
-    }
+    [[nodiscard]] int getBlue() const { return BIT_MASK & blue_; }
 
-    [[nodiscard]] Color setBlue(const int blue) const
-    {
-        return fromRGBA(getRed(), getGreen(), blue, getAlpha());
-    }
+    [[nodiscard]] Color setBlue(const int blue) const { return fromRGBA(getRed(), getGreen(), blue, getAlpha()); }
 
-    [[nodiscard]] int getAlpha() const
-    {
-        return BIT_MASK & alpha_;
-    }
+    [[nodiscard]] int getAlpha() const { return BIT_MASK & alpha_; }
 
-    [[nodiscard]] Color setAlpha(const int alpha) const
-    {
-        return fromRGBA(getRed(), getGreen(), getBlue(), alpha);
-    }
+    [[nodiscard]] Color setAlpha(const int alpha) const { return fromRGBA(getRed(), getGreen(), getBlue(), alpha); }
 
-    [[nodiscard]] int asRGBA() const
-    {
-        return getRed() << 24 | getGreen() << 16 | getBlue() << 8 | getAlpha();
-    }
+    [[nodiscard]] int asRGBA() const { return getRed() << 24 | getGreen() << 16 | getBlue() << 8 | getAlpha(); }
 
-    [[nodiscard]] int asABGR() const
-    {
-        return getAlpha() << 24 | getBlue() << 16 | getGreen() << 8 | getRed();
-    }
+    [[nodiscard]] int asABGR() const { return getAlpha() << 24 | getBlue() << 16 | getGreen() << 8 | getRed(); }
 
-    [[nodiscard]] int asRGB() const
-    {
-        return getRed() << 16 | getGreen() << 8 | getBlue();
-    }
+    [[nodiscard]] int asRGB() const { return getRed() << 16 | getGreen() << 8 | getBlue(); }
 
-    [[nodiscard]] int asBGR() const
-    {
-        return getBlue() << 16 | getGreen() << 8 | getRed();
-    }
+    [[nodiscard]] int asBGR() const { return getBlue() << 16 | getGreen() << 8 | getRed(); }
 
     bool operator==(const Color &other) const
     {
         return alpha_ == other.alpha_ && red_ == other.red_ && green_ == other.green_ && blue_ == other.blue_;
     }
 
-    bool operator!=(const Color &other) const
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const Color &other) const { return !(*this == other); }
 
 private:
     std::uint8_t red_, green_, blue_, alpha_;

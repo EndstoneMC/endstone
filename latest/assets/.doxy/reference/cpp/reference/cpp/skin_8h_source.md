@@ -40,25 +40,13 @@ public:
     {
     }
 
-    [[nodiscard]] const std::string &getId() const
-    {
-        return id_;
-    }
+    [[nodiscard]] const std::string &getId() const { return id_; }
 
-    [[nodiscard]] const Image &getImage() const
-    {
-        return image_;
-    }
+    [[nodiscard]] const Image &getImage() const { return image_; }
 
-    [[nodiscard]] const std::optional<std::string> &getCapeId() const
-    {
-        return cape_id_;
-    }
+    [[nodiscard]] const std::optional<std::string> &getCapeId() const { return cape_id_; }
 
-    [[nodiscard]] const Image *getCapeImage() const
-    {
-        return cape_image_.has_value() ? &cape_image_.value() : nullptr;
-    }
+    [[nodiscard]] const Image *getCapeImage() const { return cape_image_.has_value() ? &cape_image_.value() : nullptr; }
 
 private:
     std::string id_;

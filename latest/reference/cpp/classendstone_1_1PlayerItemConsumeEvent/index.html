@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2705,14 +2705,14 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-playeritemconsumeevent"><strong>PlayerItemConsumeEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item, <a href="../namespaceendstone/#enum-equipmentslot"><strong>EquipmentSlot</strong></a> hand) <br></td>
+<td style="text-align: left;"><a href="#function-playeritemconsumeevent"><strong>PlayerItemConsumeEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> item, <a href="../namespaceendstone/#enum-equipmentslot"><strong>EquipmentSlot</strong></a> hand) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../namespaceendstone/#enum-equipmentslot"><strong>EquipmentSlot</strong></a></td>
 <td style="text-align: left;"><a href="#function-gethand"><strong>getHand</strong></a> () const<br><em>Get the hand used to consume the item.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getitem"><strong>getItem</strong></a> () const<br><em>Gets the item that is being consumed.</em></td>
 </tr>
 </tbody>
@@ -2778,7 +2778,7 @@ For latest updates join the chat on
 <h3 id="function-playeritemconsumeevent">function PlayerItemConsumeEvent<a class="headerlink" href="#function-playeritemconsumeevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerItemConsumeEvent</span><span class="o">::</span><span class="n">PlayerItemConsumeEvent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">item</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="n">item</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">EquipmentSlot</span><span class="w"> </span><span class="n">hand</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
@@ -2794,10 +2794,8 @@ For latest updates join the chat on
 
 <h3 id="function-getitem">function getItem<a class="headerlink" href="#function-getitem" title="Permanent link">&para;</a></h3>
 <p><em>Gets the item that is being consumed.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerItemConsumeEvent</span><span class="o">::</span><span class="n">getItem</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerItemConsumeEvent</span><span class="o">::</span><span class="n">getItem</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
-<p><strong>Note:</strong></p>
-<p>Modifying the returned item will have no effect, you must use setItem(ItemStack) instead.</p>
 <p><strong>Returns:</strong></p>
 <p>an <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> for the item being consumed </p>
 <hr>
@@ -2927,10 +2925,10 @@ For latest updates join the chat on
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

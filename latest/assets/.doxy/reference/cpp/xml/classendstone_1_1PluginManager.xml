@@ -540,9 +540,9 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_manager.h" line="166" column="25"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginManager_1adf54011d2e7f3b831a1d9276119946a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> *</type>
-        <definition>virtual Permission * endstone::PluginManager::addPermission</definition>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1ae2ac19f29b0e2d363d749a464dd32750" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
+        <definition>virtual Permission &amp; endstone::PluginManager::addPermission</definition>
         <argsstring>(std::unique_ptr&lt; Permission &gt; perm)=0</argsstring>
         <name>addPermission</name>
         <qualifiedname>endstone::PluginManager::addPermission</qualifiedname>
@@ -946,7 +946,7 @@
     </detaileddescription>
     <location file="include/endstone/plugin/plugin_manager.h" line="36" column="1" bodyfile="include/endstone/plugin/plugin_manager.h" bodystart="36" bodyend="274"/>
     <listofallmembers>
-      <member refid="classendstone_1_1PluginManager_1adf54011d2e7f3b831a1d9276119946a1" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>addPermission</name></member>
+      <member refid="classendstone_1_1PluginManager_1ae2ac19f29b0e2d363d749a464dd32750" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>addPermission</name></member>
       <member refid="classendstone_1_1PluginManager_1a4dfe6ff074c30ba3055cdd8e81fc724c" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>callEvent</name></member>
       <member refid="classendstone_1_1PluginManager_1a14a15ef4e634b7109ef923c4dc84b64d" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>clearPlugins</name></member>
       <member refid="classendstone_1_1PluginManager_1a590c1e061513b9431b20d62bee105d8e" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>disablePlugin</name></member>

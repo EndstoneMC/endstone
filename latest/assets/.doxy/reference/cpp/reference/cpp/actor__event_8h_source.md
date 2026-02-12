@@ -34,10 +34,7 @@ public:
     explicit ActorEvent(ActorType &actor) : actor_(actor) {};
     ~ActorEvent() override = default;
 
-    [[nodiscard]] ActorType &getActor() const
-    {
-        return actor_;
-    }
+    [[nodiscard]] ActorType &getActor() const { return actor_; }
 
     // TODO(event): add getActorType method
 

@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="28" column="27" bodyfile="include/endstone/inventory/item_type.h" bodystart="28" bodyend="-1"/>
+        <location file="include/endstone/inventory/item_type.h" line="29" column="27" bodyfile="include/endstone/inventory/item_type.h" bodystart="29" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="31" column="13"/>
+        <location file="include/endstone/inventory/item_type.h" line="32" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1aa0b17f850e6ca640667a0a844539d494" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" kindref="member">ItemTypeId</ref></type>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="38" column="25"/>
+        <location file="include/endstone/inventory/item_type.h" line="39" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1a2e673b2a8d514e0d5697d5c15bee9e3c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="45" column="26"/>
+        <location file="include/endstone/inventory/item_type.h" line="46" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1a56354993700b0b0b130b2c891400c264" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="54" column="26"/>
+        <location file="include/endstone/inventory/item_type.h" line="55" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1a0ed5eae24345de2c756b00eb6da0cdb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="61" column="18"/>
+        <location file="include/endstone/inventory/item_type.h" line="62" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1ad6e45d72ee92f575f9913674f3beacd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -135,7 +135,56 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="68" column="18"/>
+        <location file="include/endstone/inventory/item_type.h" line="69" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemType_1afc38f163e45fb047c3f66d93131838eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+        <definition>virtual ItemStack endstone::ItemType::createItemStack</definition>
+        <argsstring>() const =0</argsstring>
+        <name>createItemStack</name>
+        <qualifiedname>endstone::ItemType::createItemStack</qualifiedname>
+        <briefdescription>
+<para>Constructs a new <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> with this item type that has the amount 1. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the constructed item stack. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_type.h" line="76" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemType_1ae41d77467211c50202ccfc4b01e2a633" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+        <definition>virtual ItemStack endstone::ItemType::createItemStack</definition>
+        <argsstring>(int amount) const =0</argsstring>
+        <name>createItemStack</name>
+        <qualifiedname>endstone::ItemType::createItemStack</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a new <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> with this item type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>amount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the amount in the stack </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> of this item type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_type.h" line="84" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1aa393a6ea6060af52befb825be7a883f2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -153,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="70" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="70" bodyend="73"/>
+        <location file="include/endstone/inventory/item_type.h" line="86" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="86" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1a49842a784c26b432168a9e431c73475b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -171,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="75" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="75" bodyend="78"/>
+        <location file="include/endstone/inventory/item_type.h" line="88" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="88" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1af875aee911c2b3f95b2efb7dfd2dc8fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -189,7 +238,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="80" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="80" bodyend="83"/>
+        <location file="include/endstone/inventory/item_type.h" line="90" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="90" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1a81b1aeb108d98457a98c801207b92f21" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -207,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="85" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="85" bodyend="88"/>
+        <location file="include/endstone/inventory/item_type.h" line="92" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="92" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemType_1a28f9a07c91492df133d2a5e3e4ee7c0a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -221,16 +270,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="90" column="5" bodyfile="include/endstone/inventory/item_type.h" bodystart="90" bodyend="93"/>
+        <location file="include/endstone/inventory/item_type.h" line="94" column="5" bodyfile="include/endstone/inventory/item_type.h" bodystart="94" bodyend="94"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/inventory/item_type.h" line="26" column="1" bodyfile="include/endstone/inventory/item_type.h" bodystart="26" bodyend="94"/>
+    <location file="include/endstone/inventory/item_type.h" line="27" column="1" bodyfile="include/endstone/inventory/item_type.h" bodystart="27" bodyend="95"/>
     <listofallmembers>
       <member refid="classendstone_1_1ItemType_1aee73c12bf0391b460432889b55496e59" prot="public" virt="non-virtual"><scope>endstone::ItemType</scope><name>Air</name></member>
+      <member refid="classendstone_1_1ItemType_1afc38f163e45fb047c3f66d93131838eb" prot="public" virt="pure-virtual"><scope>endstone::ItemType</scope><name>createItemStack</name></member>
+      <member refid="classendstone_1_1ItemType_1ae41d77467211c50202ccfc4b01e2a633" prot="public" virt="pure-virtual"><scope>endstone::ItemType</scope><name>createItemStack</name></member>
       <member refid="classendstone_1_1ItemType_1aa0b17f850e6ca640667a0a844539d494" prot="public" virt="pure-virtual"><scope>endstone::ItemType</scope><name>getId</name></member>
       <member refid="classendstone_1_1ItemType_1ad6e45d72ee92f575f9913674f3beacd9" prot="public" virt="pure-virtual"><scope>endstone::ItemType</scope><name>getMaxDurability</name></member>
       <member refid="classendstone_1_1ItemType_1a0ed5eae24345de2c756b00eb6da0cdb9" prot="public" virt="pure-virtual"><scope>endstone::ItemType</scope><name>getMaxStackSize</name></member>

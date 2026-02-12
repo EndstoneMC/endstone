@@ -40,44 +40,20 @@ public:
     constexpr explicit ValueTag(T &&v) : value_(std::move(v)) {}
 
     // Read-only implicit conversion to payload
-    operator const T &() const noexcept
-    {
-        return value_;
-    }
+    operator const T &() const noexcept { return value_; }
 
-    const T &value() const noexcept
-    {
-        return value_;
-    }
+    const T &value() const noexcept { return value_; }
 
     // Equality with same wrapper
-    friend constexpr bool operator==(const ValueTag &a, const ValueTag &b) noexcept
-    {
-        return a.value_ == b.value_;
-    }
+    friend constexpr bool operator==(const ValueTag &a, const ValueTag &b) noexcept { return a.value_ == b.value_; }
 
-    friend constexpr bool operator!=(const ValueTag &a, const ValueTag &b) noexcept
-    {
-        return !(a == b);
-    }
+    friend constexpr bool operator!=(const ValueTag &a, const ValueTag &b) noexcept { return !(a == b); }
 
     // Equality with underlying payload
-    friend constexpr bool operator==(const ValueTag &a, const T &b) noexcept
-    {
-        return a.value_ == b;
-    }
-    friend constexpr bool operator==(const T &a, const ValueTag &b) noexcept
-    {
-        return a == b.value_;
-    }
-    friend constexpr bool operator!=(const ValueTag &a, const T &b) noexcept
-    {
-        return !(a == b);
-    }
-    friend constexpr bool operator!=(const T &a, const ValueTag &b) noexcept
-    {
-        return !(a == b);
-    }
+    friend constexpr bool operator==(const ValueTag &a, const T &b) noexcept { return a.value_ == b; }
+    friend constexpr bool operator==(const T &a, const ValueTag &b) noexcept { return a == b.value_; }
+    friend constexpr bool operator!=(const ValueTag &a, const T &b) noexcept { return !(a == b); }
+    friend constexpr bool operator!=(const T &a, const ValueTag &b) noexcept { return !(a == b); }
 
 private:
     T value_;

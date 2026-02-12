@@ -33,15 +33,9 @@ public:
     SocketAddress() = default;
     SocketAddress(std::string hostname, std::uint32_t port) : hostname_(std::move(hostname)), port_(port) {}
 
-    [[nodiscard]] const std::string &getHostname() const
-    {
-        return hostname_;
-    }
+    [[nodiscard]] const std::string &getHostname() const { return hostname_; }
 
-    [[nodiscard]] std::uint32_t getPort() const
-    {
-        return port_;
-    }
+    [[nodiscard]] std::uint32_t getPort() const { return port_; }
 
 private:
     std::string hostname_;

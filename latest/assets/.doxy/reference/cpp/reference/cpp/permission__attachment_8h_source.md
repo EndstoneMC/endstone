@@ -41,30 +41,15 @@ class PermissionAttachment {
 public:
     PermissionAttachment(Plugin &plugin, Permissible &permissible) : permissible_(permissible), plugin_(plugin) {}
 
-    [[nodiscard]] Plugin &getPlugin() const
-    {
-        return plugin_;
-    }
+    [[nodiscard]] Plugin &getPlugin() const { return plugin_; }
 
-    void setRemovalCallback(PermissionRemovedExecutor ex)
-    {
-        removed_ = std::move(ex);
-    }
+    void setRemovalCallback(PermissionRemovedExecutor ex) { removed_ = std::move(ex); }
 
-    [[nodiscard]] PermissionRemovedExecutor getRemovalCallback() const
-    {
-        return removed_;
-    }
+    [[nodiscard]] PermissionRemovedExecutor getRemovalCallback() const { return removed_; }
 
-    [[nodiscard]] Permissible &getPermissible() const
-    {
-        return permissible_;
-    }
+    [[nodiscard]] Permissible &getPermissible() const { return permissible_; }
 
-    [[nodiscard]] std::unordered_map<std::string, bool> getPermissions() const
-    {
-        return permissions_;
-    }
+    [[nodiscard]] std::unordered_map<std::string, bool> getPermissions() const { return permissions_; }
 
     void setPermission(std::string name, bool value)
     {
@@ -73,10 +58,7 @@ public:
         permissible_.recalculatePermissions();
     }
 
-    void setPermission(Permission &perm, bool value)
-    {
-        setPermission(perm.getName(), value);
-    }
+    void setPermission(Permission &perm, bool value) { setPermission(perm.getName(), value); }
 
     void unsetPermission(std::string name)
     {
@@ -85,15 +67,9 @@ public:
         permissible_.recalculatePermissions();
     }
 
-    void unsetPermission(Permission &perm)
-    {
-        unsetPermission(perm.getName());
-    }
+    void unsetPermission(Permission &perm) { unsetPermission(perm.getName()); }
 
-    bool remove()
-    {
-        return permissible_.removeAttachment(*this);
-    }
+    bool remove() { return permissible_.removeAttachment(*this); }
 
 private:
     PermissionRemovedExecutor removed_;

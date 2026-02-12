@@ -38,10 +38,7 @@ public:
     using OnCloseCallback = std::function<void(Player *)>;
     explicit Form() = default;
 
-    [[nodiscard]] Message getTitle() const
-    {
-        return title_;
-    }
+    [[nodiscard]] Message getTitle() const { return title_; }
 
     T &setTitle(Message title)
     {
@@ -55,10 +52,7 @@ public:
         return *static_cast<T *>(this);
     }
 
-    [[nodiscard]] OnCloseCallback getOnClose() const
-    {
-        return on_close_;
-    }
+    [[nodiscard]] OnCloseCallback getOnClose() const { return on_close_; }
 
 protected:
     Message title_;

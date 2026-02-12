@@ -203,7 +203,11 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
         <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
@@ -215,10 +219,6 @@
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
         <childnode refid="36" relation="include">
         </childnode>
       </node>
@@ -229,7 +229,7 @@
       <node id="47">
         <label>endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -558,21 +558,15 @@
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PlayerGameModeChangeEvent" kindref="compound">~PlayerGameModeChangeEvent</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PlayerGameModeChangeEvent&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="35" refid="classendstone_1_1PlayerGameModeChangeEvent_1a5a5181811c288a046aaf3b0648e96cab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1PlayerGameModeChangeEvent_1a5a5181811c288a046aaf3b0648e96cab" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
-<codeline lineno="36"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NAME;</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45" refid="classendstone_1_1PlayerGameModeChangeEvent_1a422c30eafa2b703fd105138e45da4540" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref><sp/><ref refid="classendstone_1_1PlayerGameModeChangeEvent_1a422c30eafa2b703fd105138e45da4540" kindref="member">getNewGameMode</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="46"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>new_game_mode_;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref><sp/>new_game_mode_;</highlight></codeline>
-<codeline lineno="52"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classendstone_1_1PlayerGameModeChangeEvent_1a5a5181811c288a046aaf3b0648e96cab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1PlayerGameModeChangeEvent_1a5a5181811c288a046aaf3b0648e96cab" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NAME;<sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classendstone_1_1PlayerGameModeChangeEvent_1a422c30eafa2b703fd105138e45da4540" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref><sp/><ref refid="classendstone_1_1PlayerGameModeChangeEvent_1a422c30eafa2b703fd105138e45da4540" kindref="member">getNewGameMode</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>new_game_mode_;<sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref><sp/>new_game_mode_;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/event/player/player_game_mode_change_event.h"/>
   </compounddef>

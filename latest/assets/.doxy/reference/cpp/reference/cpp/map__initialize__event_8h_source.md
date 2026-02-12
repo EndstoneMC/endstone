@@ -38,10 +38,7 @@ public:
 
     explicit MapInitializeEvent(MapView &map) : map_(map) {}
 
-    [[nodiscard]] MapView &getMap() const
-    {
-        return map_;
-    }
+    [[nodiscard]] MapView &getMap() const { return map_; }
 
 private:
     MapView &map_;

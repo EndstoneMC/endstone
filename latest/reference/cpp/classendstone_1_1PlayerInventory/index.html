@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2825,11 +2825,11 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: right;">virtual std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getboots"><strong>getBoots</strong></a> () const = 0<br><em>Return the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>from the boots slot.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: right;">virtual std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getchestplate"><strong>getChestplate</strong></a> () const = 0<br><em>Return the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>from the chestplate slot.</em></td>
 </tr>
 <tr>
@@ -2837,28 +2837,28 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-gethelditemslot"><strong>getHeldItemSlot</strong></a> () const = 0<br><em>Get the slot number of the currently held item.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: right;">virtual std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-gethelmet"><strong>getHelmet</strong></a> () const = 0<br><em>Return the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>from the helmet slot.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: right;">virtual std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getiteminmainhand"><strong>getItemInMainHand</strong></a> () const = 0<br><em>Gets the item the player is currently holding in their main hand.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: right;">virtual std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getiteminoffhand"><strong>getItemInOffHand</strong></a> () const = 0<br><em>Gets the item the player is currently holding in their off hand.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: right;">virtual std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getleggings"><strong>getLeggings</strong></a> () const = 0<br><em>Return the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>from the leg slot.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setboots"><strong>setBoots</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * boots) = 0<br><em>Put the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>into the boots slot.</em></td>
+<td style="text-align: left;"><a href="#function-setboots"><strong>setBoots</strong></a> (std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; boots) = 0<br><em>Put the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>into the boots slot.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setchestplate"><strong>setChestplate</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * chestplate) = 0<br><em>Put the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>into the chestplate slot.</em></td>
+<td style="text-align: left;"><a href="#function-setchestplate"><strong>setChestplate</strong></a> (std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; chestplate) = 0<br><em>Put the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>into the chestplate slot.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -2866,19 +2866,19 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-sethelmet"><strong>setHelmet</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * helmet) = 0<br><em>Put the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>into the helmet slot.</em></td>
+<td style="text-align: left;"><a href="#function-sethelmet"><strong>setHelmet</strong></a> (std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; helmet) = 0<br><em>Put the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>into the helmet slot.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setiteminmainhand"><strong>setItemInMainHand</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item) = 0<br><em>Sets the item the player is holding in their main hand.</em></td>
+<td style="text-align: left;"><a href="#function-setiteminmainhand"><strong>setItemInMainHand</strong></a> (std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; item) = 0<br><em>Sets the item the player is holding in their main hand.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setiteminoffhand"><strong>setItemInOffHand</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item) = 0<br><em>Sets the item the player is holding in their off hand.</em></td>
+<td style="text-align: left;"><a href="#function-setiteminoffhand"><strong>setItemInOffHand</strong></a> (std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; item) = 0<br><em>Sets the item the player is holding in their off hand.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setleggings"><strong>setLeggings</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * leggings) = 0<br><em>Put the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>into the leggings slot.</em></td>
+<td style="text-align: left;"><a href="#function-setleggings"><strong>setLeggings</strong></a> (std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; leggings) = 0<br><em>Put the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>into the leggings slot.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2893,19 +2893,19 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual std::unordered_map&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-additem-12"><strong>addItem</strong></a> (std::vector&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * &gt; items) = 0<br><em>Stores the given ItemStacks in the inventory.</em></td>
+<td style="text-align: right;">virtual std::unordered_map&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-additem-12"><strong>addItem</strong></a> (std::vector&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; items) = 0<br><em>Stores the given ItemStacks in the inventory.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::unordered_map&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * &gt;</td>
+<td style="text-align: right;">std::unordered_map&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-additem-22"><strong>addItem</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... items) <br><em>Stores the given ItemStacks in the inventory.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::unordered_map&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>, std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">virtual std::unordered_map&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-all-12"><strong>all</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; type) const = 0<br><em>Finds all slots in the inventory containing any ItemStacks with the given</em> <a href="../classendstone_1_1ItemType/"><em><strong>ItemType</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::unordered_map&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>, std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">virtual std::unordered_map&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-all-22"><strong>all</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) const = 0<br><em>Finds all slots in the inventory containing any ItemStacks with the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
@@ -2949,11 +2949,11 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-firstempty"><strong>firstEmpty</strong></a> () const = 0<br><em>Returns the first empty Slot.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::vector&lt; std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &gt;</td>
+<td style="text-align: right;">virtual std::vector&lt; std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-getcontents"><strong>getContents</strong></a> () const = 0<br><em>Returns all ItemStacks from the inventory.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: right;">virtual std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-getitem"><strong>getItem</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> index) const = 0<br><em>Returns the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>found in the slot at the given index.</em></td>
 </tr>
 <tr>
@@ -2977,20 +2977,20 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-remove-22"><strong>remove</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) = 0<br><em>Removes all stacks in the inventory matching the given stack.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::unordered_map&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-removeitem-12"><strong>removeItem</strong></a> (std::vector&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * &gt; items) = 0<br><em>Removes the given ItemStacks from the inventory.</em></td>
+<td style="text-align: right;">virtual std::unordered_map&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-removeitem-12"><strong>removeItem</strong></a> (std::vector&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; items) = 0<br><em>Removes the given ItemStacks from the inventory.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::unordered_map&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * &gt;</td>
+<td style="text-align: right;">std::unordered_map&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-removeitem-22"><strong>removeItem</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... items) <br><em>Removes the given ItemStacks from the inventory.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-setcontents"><strong>setContents</strong></a> (std::vector&lt; <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * &gt; items) = 0<br><em>Completely replaces the inventory's contents. Removes all existing contents and replaces it with the ItemStacks given in the array.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-setcontents"><strong>setContents</strong></a> (std::vector&lt; std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &gt; items) = 0<br><em>Completely replaces the inventory's contents. Removes all existing contents and replaces it with the ItemStacks given in the array.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-setitem"><strong>setItem</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> index, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> * item) = 0<br><em>Stores the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>at the given index of the inventory.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-setitem"><strong>setItem</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> index, std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; item) = 0<br><em>Stores the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>at the given index of the inventory.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -3001,7 +3001,7 @@ For latest updates join the chat on
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-getboots">function getBoots<a class="headerlink" href="#function-getboots" title="Permanent link">&para;</a></h3>
 <p><em>Return the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>from the boots slot.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getBoots</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getBoots</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> in the boots slot </p>
@@ -3009,7 +3009,7 @@ For latest updates join the chat on
 
 <h3 id="function-getchestplate">function getChestplate<a class="headerlink" href="#function-getchestplate" title="Permanent link">&para;</a></h3>
 <p><em>Return the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>from the chestplate slot.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getChestplate</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getChestplate</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> in the chestplate slot </p>
@@ -3025,7 +3025,7 @@ For latest updates join the chat on
 
 <h3 id="function-gethelmet">function getHelmet<a class="headerlink" href="#function-gethelmet" title="Permanent link">&para;</a></h3>
 <p><em>Return the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>from the helmet slot.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getHelmet</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getHelmet</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> in the helmet slot </p>
@@ -3033,7 +3033,7 @@ For latest updates join the chat on
 
 <h3 id="function-getiteminmainhand">function getItemInMainHand<a class="headerlink" href="#function-getiteminmainhand" title="Permanent link">&para;</a></h3>
 <p><em>Gets the item the player is currently holding in their main hand.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getItemInMainHand</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getItemInMainHand</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the currently held item </p>
@@ -3041,7 +3041,7 @@ For latest updates join the chat on
 
 <h3 id="function-getiteminoffhand">function getItemInOffHand<a class="headerlink" href="#function-getiteminoffhand" title="Permanent link">&para;</a></h3>
 <p><em>Gets the item the player is currently holding in their off hand.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getItemInOffHand</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getItemInOffHand</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the currently held item </p>
@@ -3049,7 +3049,7 @@ For latest updates join the chat on
 
 <h3 id="function-getleggings">function getLeggings<a class="headerlink" href="#function-getleggings" title="Permanent link">&para;</a></h3>
 <p><em>Return the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>from the leg slot.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getLeggings</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">getLeggings</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> in the leg slot </p>
@@ -3058,7 +3058,7 @@ For latest updates join the chat on
 <h3 id="function-setboots">function setBoots<a class="headerlink" href="#function-setboots" title="Permanent link">&para;</a></h3>
 <p><em>Put the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>into the boots slot.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">setBoots</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">boots</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">boots</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>This does not check if the <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> is a pair of boots.</p>
@@ -3071,7 +3071,7 @@ For latest updates join the chat on
 <h3 id="function-setchestplate">function setChestplate<a class="headerlink" href="#function-setchestplate" title="Permanent link">&para;</a></h3>
 <p><em>Put the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>into the chestplate slot.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">setChestplate</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">chestplate</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">chestplate</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>This does not check if the <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> is a chestplate.</p>
@@ -3097,7 +3097,7 @@ For latest updates join the chat on
 <h3 id="function-sethelmet">function setHelmet<a class="headerlink" href="#function-sethelmet" title="Permanent link">&para;</a></h3>
 <p><em>Put the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>into the helmet slot.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">setHelmet</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">helmet</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">helmet</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>This does not check if the <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> is a helmet.</p>
@@ -3110,7 +3110,7 @@ For latest updates join the chat on
 <h3 id="function-setiteminmainhand">function setItemInMainHand<a class="headerlink" href="#function-setiteminmainhand" title="Permanent link">&para;</a></h3>
 <p><em>Sets the item the player is holding in their main hand.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">setItemInMainHand</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">item</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">item</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -3122,7 +3122,7 @@ For latest updates join the chat on
 <h3 id="function-setiteminoffhand">function setItemInOffHand<a class="headerlink" href="#function-setiteminoffhand" title="Permanent link">&para;</a></h3>
 <p><em>Sets the item the player is holding in their off hand.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">setItemInOffHand</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">item</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">item</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -3134,7 +3134,7 @@ For latest updates join the chat on
 <h3 id="function-setleggings">function setLeggings<a class="headerlink" href="#function-setleggings" title="Permanent link">&para;</a></h3>
 <p><em>Put the given</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>into the leggings slot.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerInventory</span><span class="o">::</span><span class="n">setLeggings</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">leggings</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">leggings</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>This does not check if the <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> is a pair of leggings.</p>
@@ -3269,10 +3269,10 @@ For latest updates join the chat on
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

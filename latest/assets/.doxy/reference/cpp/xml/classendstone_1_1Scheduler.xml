@@ -352,7 +352,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scheduler/scheduler.h" line="92" column="29"/>
+        <location file="include/endstone/scheduler/scheduler.h" line="93" column="29"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scheduler_1ae1d4003f6f8035f2679b91c09441d53a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -381,7 +381,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scheduler/scheduler.h" line="100" column="18"/>
+        <location file="include/endstone/scheduler/scheduler.h" line="101" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scheduler_1aff8ea940f0038a278a0d5f230280398c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -410,7 +410,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scheduler/scheduler.h" line="108" column="18"/>
+        <location file="include/endstone/scheduler/scheduler.h" line="109" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scheduler_1a8b427434811562ba2b4a49f1bd2e3e82" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -441,7 +441,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scheduler/scheduler.h" line="117" column="18"/>
+        <location file="include/endstone/scheduler/scheduler.h" line="118" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scheduler_1ae47c4d2e864c797a41d33be6982e9a43" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -472,7 +472,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scheduler/scheduler.h" line="126" column="18"/>
+        <location file="include/endstone/scheduler/scheduler.h" line="127" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Scheduler_1a990deb156627e87b5e35ade1b72a58e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> * &gt;</type>
@@ -491,7 +491,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scheduler/scheduler.h" line="135" column="25"/>
+        <location file="include/endstone/scheduler/scheduler.h" line="136" column="25"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -499,7 +499,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/scheduler/scheduler.h" line="24" column="1" bodyfile="include/endstone/scheduler/scheduler.h" bodystart="24" bodyend="136"/>
+    <location file="include/endstone/scheduler/scheduler.h" line="24" column="1" bodyfile="include/endstone/scheduler/scheduler.h" bodystart="24" bodyend="137"/>
     <listofallmembers>
       <member refid="classendstone_1_1Scheduler_1ae1d4003f6f8035f2679b91c09441d53a" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>cancelTask</name></member>
       <member refid="classendstone_1_1Scheduler_1aff8ea940f0038a278a0d5f230280398c" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>cancelTasks</name></member>

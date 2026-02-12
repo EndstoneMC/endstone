@@ -34,16 +34,10 @@ class PluginDisableEvent : public ServerEvent {
 public:
     explicit PluginDisableEvent(Plugin &plugin) : plugin_(plugin) {}
 
-    [[nodiscard]] Plugin &getPlugin() const
-    {
-        return plugin_;
-    }
+    [[nodiscard]] Plugin &getPlugin() const { return plugin_; }
 
     inline static const std::string NAME = "PluginDisableEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
 private:
     Plugin &plugin_;

@@ -31,6 +31,13 @@ Inherits the following classes: [endstone::BanList](classendstone_1_1BanList.md)
 
 
 
+## Public Types inherited from endstone::BanList
+
+See [endstone::BanList](classendstone_1_1BanList.md)
+
+| Type | Name |
+| ---: | :--- |
+| typedef [**T**](classendstone_1_1Identifier.md) | [**EntryType**](classendstone_1_1BanList.md#typedef-entrytype)  <br> |
 
 
 
@@ -73,21 +80,17 @@ Inherits the following classes: [endstone::BanList](classendstone_1_1BanList.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) & | [**addBan**](#function-addban-14) (std::string name, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) & | [**addBan**](#function-addban-24) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) & | [**addBan**](#function-addban-34) (std::string name, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) & | [**addBan**](#function-addban-44) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**const**](classendstone_1_1Identifier.md) [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) \* | [**getBanEntry**](#function-getbanentry-14) (std::string name) const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name._ |
-| virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) \* | [**getBanEntry**](#function-getbanentry-24) (std::string name) = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name._ |
-| virtual [**const**](classendstone_1_1Identifier.md) [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) \* | [**getBanEntry**](#function-getbanentry-34) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid) const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name,_[_**UUID**_](classendstone_1_1UUID.md) _, or XUID._ |
-| virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) \* | [**getBanEntry**](#function-getbanentry-44) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid) = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name,_[_**UUID**_](classendstone_1_1UUID.md) _, or XUID._ |
-| virtual std::vector&lt; [**const**](classendstone_1_1Identifier.md) [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) \* &gt; | [**getEntries**](#function-getentries-12) () const = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
-| virtual std::vector&lt; [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) \* &gt; | [**getEntries**](#function-getentries-22) () = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isBanned**](#function-isbanned-12) (std::string name) const = 0<br>_Checks if a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _exists for the target, indicating an active ban status._ |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) &gt; | [**addBan**](#function-addban-14) (std::string name, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) override = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) &gt; | [**addBan**](#function-addban-24) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) &gt; | [**addBan**](#function-addban-34) (std::string name, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) override = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) &gt; | [**addBan**](#function-addban-44) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) &gt; | [**getBanEntry**](#function-getbanentry-12) (std::string name) override const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name._ |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) &gt; | [**getBanEntry**](#function-getbanentry-22) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid) const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name,_[_**UUID**_](classendstone_1_1UUID.md) _, or XUID._ |
+| virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) &gt; &gt; | [**getEntries**](#function-getentries) () override const = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isBanned**](#function-isbanned-12) (std::string name) override const = 0<br>_Checks if a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _exists for the target, indicating an active ban status._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isBanned**](#function-isbanned-22) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid) const = 0<br>_Checks if a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _exists for the target, indicating an active ban status._ |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**removeBan**](#function-removeban-12) (std::string name) = 0<br>_Removes the specified player from this list, therefore indicating a "not banned" status._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**removeBan**](#function-removeban-12) (std::string name) override = 0<br>_Removes the specified player from this list, therefore indicating a "not banned" status._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**removeBan**](#function-removeban-22) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid) = 0<br>_Removes the specified player from this list, therefore indicating a "not banned" status._  |
-| virtual  | [**~PlayerBanList**](#function-playerbanlist) () = default<br> |
 
 
 ## Public Functions inherited from endstone::BanList
@@ -96,12 +99,10 @@ See [endstone::BanList](classendstone_1_1BanList.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**T**](classendstone_1_1Identifier.md) & | [**addBan**](classendstone_1_1BanList.md#function-addban-12) (std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**T**](classendstone_1_1Identifier.md) & | [**addBan**](classendstone_1_1BanList.md#function-addban-22) (std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**getBanEntry**](classendstone_1_1BanList.md#function-getbanentry-12) (std::string target) const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._ |
-| virtual [**T**](classendstone_1_1Identifier.md) \* | [**getBanEntry**](classendstone_1_1BanList.md#function-getbanentry-22) (std::string target) = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._ |
-| virtual std::vector&lt; [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* &gt; | [**getEntries**](classendstone_1_1BanList.md#function-getentries-12) () const = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
-| virtual std::vector&lt; [**T**](classendstone_1_1Identifier.md) \* &gt; | [**getEntries**](classendstone_1_1BanList.md#function-getentries-22) () = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**addBan**](classendstone_1_1BanList.md#function-addban-12) (std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**addBan**](classendstone_1_1BanList.md#function-addban-22) (std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**getBanEntry**](classendstone_1_1BanList.md#function-getbanentry) (std::string target) const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._ |
+| virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; &gt; | [**getEntries**](classendstone_1_1BanList.md#function-getentries) () const = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isBanned**](classendstone_1_1BanList.md#function-isbanned) (std::string target) const = 0<br>_Checks if a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _exists for the target, indicating an active ban status._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**removeBan**](classendstone_1_1BanList.md#function-removeban) (std::string target) = 0<br>_Removes the specified target from this list, therefore indicating a "not banned" status._  |
 | virtual  | [**~BanList**](classendstone_1_1BanList.md#function-banlist) () = default<br> |
@@ -168,12 +169,12 @@ See [endstone::BanList](classendstone_1_1BanList.md)
 
 _Adds a ban to this list. If a previous ban exists, this will update the previous entry._ 
 ```C++
-virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
+virtual NotNull < PlayerBanEntry > endstone::PlayerBanList::addBan (
     std::string name,
     std::optional< std::string > reason,
     std::optional< BanEntry::Date > expires,
     std::optional< std::string > source
-) = 0
+) override = 0
 ```
 
 
@@ -192,7 +193,7 @@ virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
 
 **Returns:**
 
-[**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md)& The entry for the newly created ban, or the entry for the (updated) previous ban. 
+[**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) The entry for the newly created ban, or the entry for the (updated) previous ban. 
 
 
 
@@ -210,7 +211,7 @@ Implements [*endstone::BanList::addBan*](classendstone_1_1BanList.md#function-ad
 
 _Adds a ban to this list. If a previous ban exists, this will update the previous entry._ 
 ```C++
-virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
+virtual NotNull < PlayerBanEntry > endstone::PlayerBanList::addBan (
     std::string name,
     std::optional< UUID > uuid,
     std::optional< std::string > xuid,
@@ -238,7 +239,7 @@ virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
 
 **Returns:**
 
-[**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md)& The entry for the newly created ban, or the entry for the (updated) previous ban. 
+[**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) The entry for the newly created ban, or the entry for the (updated) previous ban. 
 
 
 
@@ -254,12 +255,12 @@ virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
 
 _Adds a ban to this list. If a previous ban exists, this will update the previous entry._ 
 ```C++
-virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
+virtual NotNull < PlayerBanEntry > endstone::PlayerBanList::addBan (
     std::string name,
     std::optional< std::string > reason,
     std::chrono::seconds duration,
     std::optional< std::string > source
-) = 0
+) override = 0
 ```
 
 
@@ -278,7 +279,7 @@ virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
 
 **Returns:**
 
-[**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md)& The entry for the newly created ban, or the entry for the (updated) previous ban. 
+[**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) The entry for the newly created ban, or the entry for the (updated) previous ban. 
 
 
 
@@ -296,7 +297,7 @@ Implements [*endstone::BanList::addBan*](classendstone_1_1BanList.md#function-ad
 
 _Adds a ban to this list. If a previous ban exists, this will update the previous entry._ 
 ```C++
-virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
+virtual NotNull < PlayerBanEntry > endstone::PlayerBanList::addBan (
     std::string name,
     std::optional< UUID > uuid,
     std::optional< std::string > xuid,
@@ -324,7 +325,7 @@ virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
 
 **Returns:**
 
-[**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md)& The entry for the newly created ban, or the entry for the (updated) previous ban. 
+[**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) The entry for the newly created ban, or the entry for the (updated) previous ban. 
 
 
 
@@ -336,13 +337,13 @@ virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
 
 
 
-### function getBanEntry [1/4]
+### function getBanEntry [1/2]
 
 _Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name._
 ```C++
-virtual const  PlayerBanEntry * endstone::PlayerBanList::getBanEntry (
+virtual Nullable < PlayerBanEntry > endstone::PlayerBanList::getBanEntry (
     std::string name
-) const = 0
+) override const = 0
 ```
 
 
@@ -358,61 +359,25 @@ virtual const  PlayerBanEntry * endstone::PlayerBanList::getBanEntry (
 
 **Returns:**
 
-PlayerBanEntry\* The corresponding entry, or nullptr if none found. 
+[**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) The corresponding entry, or nullptr if none found. 
 
 
 
 
 
         
-Implements [*endstone::BanList::getBanEntry*](classendstone_1_1BanList.md#function-getbanentry-12)
+Implements [*endstone::BanList::getBanEntry*](classendstone_1_1BanList.md#function-getbanentry)
 
 
 <hr>
 
 
 
-### function getBanEntry [2/4]
-
-_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name._
-```C++
-virtual PlayerBanEntry * endstone::PlayerBanList::getBanEntry (
-    std::string name
-) = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `name` The player name to search for. 
-
-
-
-**Returns:**
-
-PlayerBanEntry\* The corresponding entry, or nullptr if none found. 
-
-
-
-
-
-        
-Implements [*endstone::BanList::getBanEntry*](classendstone_1_1BanList.md#function-getbanentry-22)
-
-
-<hr>
-
-
-
-### function getBanEntry [3/4]
+### function getBanEntry [2/2]
 
 _Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name,_[_**UUID**_](classendstone_1_1UUID.md) _, or XUID._
 ```C++
-virtual const  PlayerBanEntry * endstone::PlayerBanList::getBanEntry (
+virtual Nullable < PlayerBanEntry > endstone::PlayerBanList::getBanEntry (
     std::string name,
     std::optional< UUID > uuid,
     std::optional< std::string > xuid
@@ -434,7 +399,7 @@ virtual const  PlayerBanEntry * endstone::PlayerBanList::getBanEntry (
 
 **Returns:**
 
-PlayerBanEntry\* The corresponding entry, or nullptr if none found. 
+[**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) The corresponding entry, or nullptr if none found. 
 
 
 
@@ -446,49 +411,11 @@ PlayerBanEntry\* The corresponding entry, or nullptr if none found.
 
 
 
-### function getBanEntry [4/4]
-
-_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name,_[_**UUID**_](classendstone_1_1UUID.md) _, or XUID._
-```C++
-virtual PlayerBanEntry * endstone::PlayerBanList::getBanEntry (
-    std::string name,
-    std::optional< UUID > uuid,
-    std::optional< std::string > xuid
-) = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `name` The player name to search for. 
-* `uuid` The [**UUID**](classendstone_1_1UUID.md) of the player to search for, std::nullopt if not used. 
-* `xuid` The XUID of the player to search for, std::nullopt if not used. 
-
-
-
-**Returns:**
-
-PlayerBanEntry\* The corresponding entry, or nullptr if none found. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getEntries [1/2]
+### function getEntries 
 
 _Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._
 ```C++
-virtual std::vector< const  PlayerBanEntry * > endstone::PlayerBanList::getEntries () const = 0
+virtual std::vector< NotNull < PlayerBanEntry > > endstone::PlayerBanList::getEntries () override const = 0
 ```
 
 
@@ -504,34 +431,7 @@ A vector containing pointers to every entry tracked by this list.
 
 
         
-Implements [*endstone::BanList::getEntries*](classendstone_1_1BanList.md#function-getentries-12)
-
-
-<hr>
-
-
-
-### function getEntries [2/2]
-
-_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._
-```C++
-virtual std::vector< PlayerBanEntry * > endstone::PlayerBanList::getEntries () = 0
-```
-
-
-
-
-
-**Returns:**
-
-A vector containing pointers to every entry tracked by this list. 
-
-
-
-
-
-        
-Implements [*endstone::BanList::getEntries*](classendstone_1_1BanList.md#function-getentries-22)
+Implements [*endstone::BanList::getEntries*](classendstone_1_1BanList.md#function-getentries)
 
 
 <hr>
@@ -544,7 +444,7 @@ _Checks if a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _exists for the tar
 ```C++
 virtual bool endstone::PlayerBanList::isBanned (
     std::string name
-) const = 0
+) override const = 0
 ```
 
 
@@ -632,7 +532,7 @@ _Removes the specified player from this list, therefore indicating a "not banned
 ```C++
 virtual void endstone::PlayerBanList::removeBan (
     std::string name
-) = 0
+) override = 0
 ```
 
 
@@ -681,19 +581,6 @@ virtual void endstone::PlayerBanList::removeBan (
 
 
         
-
-<hr>
-
-
-
-### function ~PlayerBanList 
-
-```C++
-virtual endstone::PlayerBanList::~PlayerBanList () = default
-```
-
-
-
 
 <hr>
 

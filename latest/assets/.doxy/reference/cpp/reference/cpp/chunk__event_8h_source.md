@@ -31,12 +31,9 @@ namespace endstone {
 
 class ChunkEvent : public DimensionEvent {
 public:
-    explicit ChunkEvent(Chunk &chunk) : DimensionEvent(chunk.getDimension()), chunk_(chunk){};
+    explicit ChunkEvent(Chunk &chunk) : DimensionEvent(chunk.getDimension()), chunk_(chunk) {};
 
-    [[nodiscard]] Chunk &getChunk() const
-    {
-        return chunk_;
-    }
+    [[nodiscard]] Chunk &getChunk() const { return chunk_; }
 
 private:
     Chunk &chunk_;

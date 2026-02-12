@@ -8,8 +8,9 @@
 
 
 
+_Represents an entry for a banned IP address._ 
 
-
+* `#include <endstone/ban/ip_ban_entry.h>`
 
 
 

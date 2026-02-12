@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="161" column="18" bodyfile="include/endstone/nbt/array.h" bodystart="161" bodyend="-1"/>
+        <location file="include/endstone/nbt/array.h" line="95" column="18" bodyfile="include/endstone/nbt/array.h" bodystart="95" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -200,7 +200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="44" column="10" bodyfile="include/endstone/nbt/array.h" bodystart="44" bodyend="47"/>
+        <location file="include/endstone/nbt/array.h" line="44" column="10" bodyfile="include/endstone/nbt/array.h" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a299f89cf0789ed585bd1358003eb55ae" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>size_type</type>
@@ -214,7 +214,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="48" column="15" bodyfile="include/endstone/nbt/array.h" bodystart="48" bodyend="51"/>
+        <location file="include/endstone/nbt/array.h" line="45" column="15" bodyfile="include/endstone/nbt/array.h" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a07cc765ce138bdab900944be6eeb4fd2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="52" column="10" bodyfile="include/endstone/nbt/array.h" bodystart="52" bodyend="55"/>
+        <location file="include/endstone/nbt/array.h" line="46" column="10" bodyfile="include/endstone/nbt/array.h" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a6f2cfdcd78944227ac799a84e2d4837f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> &amp;</type>
@@ -246,7 +246,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="58" column="16" bodyfile="include/endstone/nbt/array.h" bodystart="58" bodyend="64"/>
+        <location file="include/endstone/nbt/array.h" line="49" column="16" bodyfile="include/endstone/nbt/array.h" bodystart="49" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a1a0f91ede18ffafa5b7cc94367f7a01b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> &amp;</type>
@@ -264,7 +264,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="65" column="22" bodyfile="include/endstone/nbt/array.h" bodystart="65" bodyend="71"/>
+        <location file="include/endstone/nbt/array.h" line="56" column="22" bodyfile="include/endstone/nbt/array.h" bodystart="56" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1acc1eea69891994857a66ced1b668f209" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> &amp;</type>
@@ -282,7 +282,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="72" column="16" bodyfile="include/endstone/nbt/array.h" bodystart="72" bodyend="75"/>
+        <location file="include/endstone/nbt/array.h" line="63" column="16" bodyfile="include/endstone/nbt/array.h" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a09984df202851cdacae3f0e51a2911f3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> &amp;</type>
@@ -300,7 +300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="76" column="22" bodyfile="include/endstone/nbt/array.h" bodystart="76" bodyend="79"/>
+        <location file="include/endstone/nbt/array.h" line="64" column="22" bodyfile="include/endstone/nbt/array.h" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1aa92ca3aebfae1544f39e255f58e39ab9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> *</type>
@@ -314,7 +314,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="80" column="16" bodyfile="include/endstone/nbt/array.h" bodystart="80" bodyend="83"/>
+        <location file="include/endstone/nbt/array.h" line="65" column="16" bodyfile="include/endstone/nbt/array.h" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a3955d9cb0e4d4f3050a8963c18bcd3a5" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">value_type</ref> *</type>
@@ -328,7 +328,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="84" column="22" bodyfile="include/endstone/nbt/array.h" bodystart="84" bodyend="87"/>
+        <location file="include/endstone/nbt/array.h" line="66" column="22" bodyfile="include/endstone/nbt/array.h" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1ac29404142f8794e18649fc254a776e83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -346,7 +346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="90" column="10" bodyfile="include/endstone/nbt/array.h" bodystart="90" bodyend="93"/>
+        <location file="include/endstone/nbt/array.h" line="69" column="10" bodyfile="include/endstone/nbt/array.h" bodystart="69" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a9e48bb4e9ed6dbe4165109f018589d52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -373,7 +373,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="95" column="10" bodyfile="include/endstone/nbt/array.h" bodystart="95" bodyend="98"/>
+        <location file="include/endstone/nbt/array.h" line="71" column="10" bodyfile="include/endstone/nbt/array.h" bodystart="71" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a45f60f4c3ed652ca7d18f127e3916636" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>iterator</type>
@@ -395,7 +395,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="99" column="14" bodyfile="include/endstone/nbt/array.h" bodystart="99" bodyend="102"/>
+        <location file="include/endstone/nbt/array.h" line="75" column="14" bodyfile="include/endstone/nbt/array.h" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a4de6147b90bfd48d49e4c8667b894626" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>iterator</type>
@@ -413,7 +413,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="103" column="14" bodyfile="include/endstone/nbt/array.h" bodystart="103" bodyend="106"/>
+        <location file="include/endstone/nbt/array.h" line="76" column="14" bodyfile="include/endstone/nbt/array.h" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a11ca7855a9d1cc40cf795d41def72971" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>iterator</type>
@@ -427,7 +427,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="109" column="14" bodyfile="include/endstone/nbt/array.h" bodystart="109" bodyend="112"/>
+        <location file="include/endstone/nbt/array.h" line="79" column="14" bodyfile="include/endstone/nbt/array.h" bodystart="79" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1ac8fa471f80e3200937ada18b68ef192b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>iterator</type>
@@ -441,7 +441,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="113" column="14" bodyfile="include/endstone/nbt/array.h" bodystart="113" bodyend="116"/>
+        <location file="include/endstone/nbt/array.h" line="80" column="14" bodyfile="include/endstone/nbt/array.h" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a9d0e1cbb120d3eb03f3b12e67c6e4a8d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const_iterator</type>
@@ -455,7 +455,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="117" column="20" bodyfile="include/endstone/nbt/array.h" bodystart="117" bodyend="120"/>
+        <location file="include/endstone/nbt/array.h" line="81" column="20" bodyfile="include/endstone/nbt/array.h" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1adfb3001cfe1cd86e4ee1b7932501a580" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const_iterator</type>
@@ -469,7 +469,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="121" column="20" bodyfile="include/endstone/nbt/array.h" bodystart="121" bodyend="124"/>
+        <location file="include/endstone/nbt/array.h" line="82" column="20" bodyfile="include/endstone/nbt/array.h" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a8bf802759e1ae88574d18be3a3cc96cf" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const_iterator</type>
@@ -483,7 +483,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="125" column="20" bodyfile="include/endstone/nbt/array.h" bodystart="125" bodyend="128"/>
+        <location file="include/endstone/nbt/array.h" line="83" column="20" bodyfile="include/endstone/nbt/array.h" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ArrayTag_1a8bc912251added41effaee44df3e500a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const_iterator</type>
@@ -497,7 +497,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="129" column="20" bodyfile="include/endstone/nbt/array.h" bodystart="129" bodyend="132"/>
+        <location file="include/endstone/nbt/array.h" line="84" column="20" bodyfile="include/endstone/nbt/array.h" bodystart="84" bodyend="84"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="friend">
@@ -521,7 +521,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="135" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="135" bodyend="138"/>
+        <location file="include/endstone/nbt/array.h" line="87" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="87" bodyend="87"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ArrayTag_1ae5ca07ea4121296e984e8492bc67fb66" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -543,7 +543,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="139" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="139" bodyend="142"/>
+        <location file="include/endstone/nbt/array.h" line="88" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="88" bodyend="88"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ArrayTag_1af63ee7c77276cff0767660389a4a3f67" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -565,7 +565,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="143" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="143" bodyend="146"/>
+        <location file="include/endstone/nbt/array.h" line="89" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ArrayTag_1a782aa3b9180b33a00abc4ef7f4d41332" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -587,7 +587,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="147" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="147" bodyend="150"/>
+        <location file="include/endstone/nbt/array.h" line="90" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="90" bodyend="90"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ArrayTag_1aec15badcb96fdaa6b29f8d2ec4dc0ba5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -609,7 +609,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="151" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="151" bodyend="154"/>
+        <location file="include/endstone/nbt/array.h" line="91" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="91" bodyend="91"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ArrayTag_1a4cd6d74a86ec21f1be3a3143fb08b4a9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -631,7 +631,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/array.h" line="155" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="155" bodyend="158"/>
+        <location file="include/endstone/nbt/array.h" line="92" column="17" bodyfile="include/endstone/nbt/array.h" bodystart="92" bodyend="92"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -662,7 +662,7 @@
         <link refid="structendstone_1_1nbt_1_1TagBase"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/nbt/array.h" line="25" column="1" bodyfile="include/endstone/nbt/array.h" bodystart="25" bodyend="162"/>
+    <location file="include/endstone/nbt/array.h" line="25" column="1" bodyfile="include/endstone/nbt/array.h" bodystart="25" bodyend="96"/>
     <listofallmembers>
       <member refid="classendstone_1_1nbt_1_1ArrayTag_1a7e505a2e1c55ebe0921cf604d9e38948" prot="public" virt="non-virtual"><scope>endstone::nbt::ArrayTag</scope><name>ArrayTag</name></member>
       <member refid="classendstone_1_1nbt_1_1ArrayTag_1a4aa2da818b91b853dc0448bec7100a42" prot="public" virt="non-virtual"><scope>endstone::nbt::ArrayTag</scope><name>ArrayTag</name></member>

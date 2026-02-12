@@ -30,29 +30,29 @@ namespace endstone {
 
 class PlayerInventory : public Inventory {
 public:
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> getHelmet() const = 0;
+    [[nodiscard]] virtual std::optional<ItemStack> getHelmet() const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> getChestplate() const = 0;
+    [[nodiscard]] virtual std::optional<ItemStack> getChestplate() const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> getLeggings() const = 0;
+    [[nodiscard]] virtual std::optional<ItemStack> getLeggings() const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> getBoots() const = 0;
+    [[nodiscard]] virtual std::optional<ItemStack> getBoots() const = 0;
 
-    virtual void setHelmet(const ItemStack *helmet) = 0;
+    virtual void setHelmet(std::optional<ItemStack> helmet) = 0;
 
-    virtual void setChestplate(const ItemStack *chestplate) = 0;
+    virtual void setChestplate(std::optional<ItemStack> chestplate) = 0;
 
-    virtual void setLeggings(const ItemStack *leggings) = 0;
+    virtual void setLeggings(std::optional<ItemStack> leggings) = 0;
 
-    virtual void setBoots(const ItemStack *boots) = 0;
+    virtual void setBoots(std::optional<ItemStack> boots) = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> getItemInMainHand() const = 0;
+    [[nodiscard]] virtual std::optional<ItemStack> getItemInMainHand() const = 0;
 
-    virtual void setItemInMainHand(const ItemStack *item) = 0;
+    virtual void setItemInMainHand(std::optional<ItemStack> item) = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> getItemInOffHand() const = 0;
+    [[nodiscard]] virtual std::optional<ItemStack> getItemInOffHand() const = 0;
 
-    virtual void setItemInOffHand(const ItemStack *item) = 0;
+    virtual void setItemInOffHand(std::optional<ItemStack> item) = 0;
 
     [[nodiscard]] virtual int getHeldItemSlot() const = 0;
 

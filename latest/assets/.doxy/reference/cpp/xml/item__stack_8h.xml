@@ -3,16 +3,14 @@
   <compounddef id="item__stack_8h" kind="file" language="C++">
     <compoundname>item_stack.h</compoundname>
     <includes local="no">memory</includes>
-    <includes refid="detail_8h" local="yes">endstone/detail.h</includes>
-    <includes refid="item__factory_8h" local="yes">endstone/inventory/item_factory.h</includes>
+    <includes local="no">string</includes>
     <includes refid="item__type_8h" local="yes">endstone/inventory/item_type.h</includes>
     <includes refid="item__meta_8h" local="yes">endstone/inventory/meta/item_meta.h</includes>
     <includes refid="tag_8h" local="yes">endstone/nbt/tag.h</includes>
-    <includes refid="registry_8h" local="yes">endstone/registry.h</includes>
-    <includes refid="server_8h" local="yes">endstone/server.h</includes>
     <includedby refid="item_8h" local="yes">include/endstone/actor/item.h</includedby>
     <includedby refid="block__cook__event_8h" local="yes">include/endstone/event/block/block_cook_event.h</includedby>
     <includedby refid="player__drop__item__event_8h" local="yes">include/endstone/event/player/player_drop_item_event.h</includedby>
+    <includedby refid="player__interact__event_8h" local="yes">include/endstone/event/player/player_interact_event.h</includedby>
     <includedby refid="player__item__consume__event_8h" local="yes">include/endstone/event/player/player_item_consume_event.h</includedby>
     <includedby refid="recipe_8h" local="yes">include/endstone/inventory/recipe.h</includedby>
     <includedby refid="dimension_8h" local="yes">include/endstone/level/dimension.h</includedby>
@@ -25,58 +23,60 @@
         <childnode refid="51" relation="include">
         </childnode>
       </node>
-      <node id="64">
+      <node id="63">
         <label>endstone/actor/mob.h</label>
         <link refid="mob_8h_source"/>
         <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="22">
+      <node id="19">
         <label>endstone/ban/ban_entry.h</label>
         <link refid="ban__entry_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="18">
         <label>endstone/ban/ban_list.h</label>
         <link refid="ban__list_8h_source"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="24">
         <label>endstone/ban/ip_ban_entry.h</label>
         <link refid="ip__ban__entry_8h_source"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>endstone/ban/ip_ban_list.h</label>
-        <link refid="ip__ban__list_8h_source"/>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+      </node>
+      <node id="16">
+        <label>endstone/ban/ip_ban_list.h</label>
+        <link refid="ip__ban__list_8h_source"/>
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
@@ -84,9 +84,9 @@
       <node id="26">
         <label>endstone/ban/player_ban_entry.h</label>
         <link refid="player__ban__entry_8h_source"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
@@ -94,29 +94,29 @@
       <node id="25">
         <label>endstone/ban/player_ban_list.h</label>
         <link refid="player__ban__list_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="30">
         <label>endstone/block/block_data.h</label>
         <link refid="block__data_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
@@ -138,9 +138,9 @@
       <node id="35">
         <label>endstone/boss/boss_bar.h</label>
         <link refid="boss__bar_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
@@ -149,52 +149,54 @@
         <childnode refid="38" relation="include">
         </childnode>
       </node>
-      <node id="60">
+      <node id="23">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="43">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
       </node>
-      <node id="3">
+      <node id="5">
         <label>endstone/detail.h</label>
         <link refid="detail_8h_source"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="95">
         <label>endstone/enchantments/enchantment.h</label>
         <link refid="enchantment_8h_source"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
       </node>
-      <node id="65">
+      <node id="64">
         <label>endstone/form/action_form.h</label>
         <link refid="action__form_8h_source"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
         </childnode>
         <childnode refid="66" relation="include">
         </childnode>
@@ -204,135 +206,139 @@
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
       </node>
-      <node id="66">
+      <node id="65">
         <label>endstone/form/controls/button.h</label>
         <link refid="button_8h_source"/>
         <childnode refid="44" relation="include">
         </childnode>
       </node>
-      <node id="67">
+      <node id="66">
         <label>endstone/form/controls/divider.h</label>
         <link refid="divider_8h_source"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
       </node>
-      <node id="73">
+      <node id="72">
         <label>endstone/form/controls/dropdown.h</label>
         <link refid="dropdown_8h_source"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>endstone/form/controls/header.h</label>
+        <link refid="header_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
       </node>
       <node id="68">
-        <label>endstone/form/controls/header.h</label>
-        <link refid="header_8h_source"/>
-        <childnode refid="8" relation="include">
+        <label>endstone/form/controls/label.h</label>
+        <link refid="label_8h_source"/>
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
       </node>
-      <node id="69">
-        <label>endstone/form/controls/label.h</label>
-        <link refid="label_8h_source"/>
-        <childnode refid="8" relation="include">
+      <node id="73">
+        <label>endstone/form/controls/slider.h</label>
+        <link refid="slider_8h_source"/>
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
       </node>
       <node id="74">
-        <label>endstone/form/controls/slider.h</label>
-        <link refid="slider_8h_source"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
+        <label>endstone/form/controls/step_slider.h</label>
+        <link refid="step__slider_8h_source"/>
+        <childnode refid="72" relation="include">
         </childnode>
       </node>
       <node id="75">
-        <label>endstone/form/controls/step_slider.h</label>
-        <link refid="step__slider_8h_source"/>
-        <childnode refid="73" relation="include">
-        </childnode>
-      </node>
-      <node id="76">
         <label>endstone/form/controls/text_input.h</label>
         <link refid="text__input_8h_source"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
       </node>
-      <node id="77">
+      <node id="76">
         <label>endstone/form/controls/toggle.h</label>
         <link refid="toggle_8h_source"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>endstone/form/form.h</label>
+        <link refid="form_8h_source"/>
         <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
       </node>
       <node id="70">
-        <label>endstone/form/form.h</label>
-        <link refid="form_8h_source"/>
-        <childnode refid="17" relation="include">
+        <label>endstone/form/message_form.h</label>
+        <link refid="message__form_8h_source"/>
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="69" relation="include">
         </childnode>
       </node>
       <node id="71">
-        <label>endstone/form/message_form.h</label>
-        <link refid="message__form_8h_source"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="70" relation="include">
-        </childnode>
-      </node>
-      <node id="72">
         <label>endstone/form/modal_form.h</label>
         <link refid="modal__form_8h_source"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
         </childnode>
         <childnode refid="73" relation="include">
-        </childnode>
-        <childnode refid="69" relation="include">
         </childnode>
         <childnode refid="74" relation="include">
         </childnode>
@@ -340,43 +346,29 @@
         </childnode>
         <childnode refid="76" relation="include">
         </childnode>
-        <childnode refid="77" relation="include">
-        </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="68" relation="include">
-        </childnode>
-        <childnode refid="70" relation="include">
+        <childnode refid="69" relation="include">
         </childnode>
       </node>
-      <node id="78">
+      <node id="77">
         <label>endstone/game_mode.h</label>
         <link refid="game__mode_8h_source"/>
       </node>
-      <node id="13">
-        <label>endstone/identifier.h</label>
+      <node id="11">
+        <label>identifier.h</label>
         <link refid="identifier_8h_source"/>
-        <childnode refid="14" relation="include">
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>endstone/inventory/inventory.h</label>
+        <link refid="inventory_8h_source"/>
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-      </node>
-      <node id="80">
-        <label>endstone/inventory/inventory.h</label>
-        <link refid="inventory_8h_source"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
         <childnode refid="49" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>endstone/inventory/item_factory.h</label>
-        <link refid="item__factory_8h_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="103" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -386,59 +378,53 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="103" relation="include">
+        <childnode refid="94" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="95" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="96" relation="include">
         </childnode>
       </node>
-      <node id="103">
-        <label>item_type.h</label>
+      <node id="4">
+        <label>endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="94">
         <label>endstone/inventory/meta/item_meta.h</label>
         <link refid="item__meta_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="95" relation="include">
         </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
       </node>
-      <node id="79">
+      <node id="78">
         <label>endstone/inventory/player_inventory.h</label>
         <link refid="player__inventory_8h_source"/>
-        <childnode refid="80" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
       </node>
       <node id="39">
         <label>endstone/lang/language.h</label>
         <link refid="language_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
@@ -446,11 +432,11 @@
       <node id="40">
         <label>endstone/lang/translatable.h</label>
         <link refid="translatable_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="41">
@@ -458,7 +444,7 @@
         <link refid="level_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
@@ -478,11 +464,11 @@
       <node id="55">
         <label>endstone/logger.h</label>
         <link refid="logger_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="58">
@@ -490,15 +476,15 @@
         <link refid="map__canvas_8h_source"/>
         <childnode refid="59" relation="include">
         </childnode>
-        <childnode refid="61" relation="include">
+        <childnode refid="60" relation="include">
         </childnode>
-        <childnode refid="62" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
       </node>
       <node id="59">
         <label>endstone/map/map_cursor.h</label>
         <link refid="map__cursor_8h_source"/>
-        <childnode refid="60" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="57">
@@ -516,86 +502,86 @@
       <node id="44">
         <label>endstone/message.h</label>
         <link refid="message_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
       </node>
-      <node id="97">
+      <node id="98">
         <label>endstone/nbt/array.h</label>
         <link refid="array_8h_source"/>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="98" relation="include">
+        <childnode refid="99" relation="include">
         </childnode>
       </node>
-      <node id="99">
+      <node id="100">
         <label>endstone/nbt/compound.h</label>
         <link refid="compound_8h_source"/>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="101" relation="include">
         </childnode>
-        <childnode refid="100" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="98" relation="include">
+        <childnode refid="99" relation="include">
         </childnode>
       </node>
-      <node id="101">
+      <node id="102">
         <label>endstone/nbt/list.h</label>
         <link refid="list_8h_source"/>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="98" relation="include">
-        </childnode>
-      </node>
-      <node id="95">
-        <label>endstone/nbt/tag.h</label>
-        <link refid="tag_8h_source"/>
-        <childnode refid="96" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="97" relation="include">
-        </childnode>
         <childnode refid="99" relation="include">
         </childnode>
-        <childnode refid="101" relation="include">
+      </node>
+      <node id="96">
+        <label>endstone/nbt/tag.h</label>
+        <link refid="tag_8h_source"/>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="98" relation="include">
         </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
         <childnode refid="102" relation="include">
         </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="103" relation="include">
+        </childnode>
       </node>
-      <node id="98">
+      <node id="99">
         <label>endstone/nbt/type.h</label>
         <link refid="type_8h_source"/>
       </node>
-      <node id="102">
+      <node id="103">
         <label>endstone/nbt/value.h</label>
         <link refid="value_8h_source"/>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="98" relation="include">
+        <childnode refid="99" relation="include">
         </childnode>
       </node>
-      <node id="81">
+      <node id="80">
         <label>endstone/offline_player.h</label>
         <link refid="offline__player_8h_source"/>
         <childnode refid="27" relation="include">
@@ -606,7 +592,7 @@
         <link refid="permissible_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
@@ -620,155 +606,155 @@
       <node id="47">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="48">
         <label>endstone/permissions/permission_level.h</label>
         <link refid="permission__level_8h_source"/>
       </node>
-      <node id="63">
+      <node id="62">
         <label>endstone/player.h</label>
         <link refid="player_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
         <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="65" relation="include">
+        <childnode refid="70" relation="include">
         </childnode>
         <childnode refid="71" relation="include">
         </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
         <childnode refid="78" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
         <childnode refid="81" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="89" relation="include">
         </childnode>
         <childnode refid="90" relation="include">
-        </childnode>
-        <childnode refid="91" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="93">
+      <node id="92">
         <label>endstone/plugin/service.h</label>
         <link refid="service_8h_source"/>
       </node>
-      <node id="92">
+      <node id="91">
         <label>endstone/plugin/service_manager.h</label>
         <link refid="service__manager_8h_source"/>
+        <childnode refid="92" relation="include">
+        </childnode>
         <childnode refid="93" relation="include">
         </childnode>
-        <childnode refid="94" relation="include">
-        </childnode>
       </node>
-      <node id="94">
+      <node id="93">
         <label>endstone/plugin/service_priority.h</label>
         <link refid="service__priority_8h_source"/>
       </node>
-      <node id="16">
+      <node id="8">
         <label>endstone/registry.h</label>
         <link refid="registry_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="83">
+      <node id="82">
         <label>endstone/scoreboard/criteria.h</label>
         <link refid="criteria_8h_source"/>
-        <childnode refid="84" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
       </node>
-      <node id="85">
+      <node id="84">
         <label>endstone/scoreboard/display_slot.h</label>
         <link refid="display__slot_8h_source"/>
       </node>
-      <node id="86">
+      <node id="85">
         <label>endstone/scoreboard/objective.h</label>
         <link refid="objective_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
         </childnode>
         <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="86">
+        <label>endstone/scoreboard/objective_sort_order.h</label>
+        <link refid="objective__sort__order_8h_source"/>
+      </node>
+      <node id="83">
+        <label>endstone/scoreboard/render_type.h</label>
+        <link refid="render__type_8h_source"/>
+      </node>
+      <node id="87">
+        <label>endstone/scoreboard/score.h</label>
+        <link refid="score_8h_source"/>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="88">
+        <label>endstone/scoreboard/score_entry.h</label>
+        <link refid="score__entry_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>endstone/scoreboard/scoreboard.h</label>
+        <link refid="scoreboard_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
         </childnode>
         <childnode refid="88" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
       </node>
-      <node id="87">
-        <label>endstone/scoreboard/objective_sort_order.h</label>
-        <link refid="objective__sort__order_8h_source"/>
-      </node>
-      <node id="84">
-        <label>endstone/scoreboard/render_type.h</label>
-        <link refid="render__type_8h_source"/>
-      </node>
-      <node id="88">
-        <label>endstone/scoreboard/score.h</label>
-        <link refid="score_8h_source"/>
-        <childnode refid="89" relation="include">
-        </childnode>
-        <childnode refid="49" relation="include">
-        </childnode>
-      </node>
-      <node id="89">
-        <label>endstone/scoreboard/score_entry.h</label>
-        <link refid="score__entry_8h_source"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="82">
-        <label>endstone/scoreboard/scoreboard.h</label>
-        <link refid="scoreboard_8h_source"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="83" relation="include">
-        </childnode>
-        <childnode refid="85" relation="include">
-        </childnode>
-        <childnode refid="86" relation="include">
-        </childnode>
-        <childnode refid="89" relation="include">
-        </childnode>
-        <childnode refid="49" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
+      <node id="13">
         <label>endstone/server.h</label>
         <link refid="server_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
@@ -780,57 +766,69 @@
         </childnode>
         <childnode refid="56" relation="include">
         </childnode>
-        <childnode refid="63" relation="include">
+        <childnode refid="62" relation="include">
         </childnode>
-        <childnode refid="92" relation="include">
+        <childnode refid="91" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="90">
+      <node id="89">
         <label>endstone/skin.h</label>
         <link refid="skin_8h_source"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="62" relation="include">
-        </childnode>
-      </node>
-      <node id="61">
-        <label>endstone/util/color.h</label>
-        <link refid="color_8h_source"/>
-      </node>
-      <node id="62">
-        <label>endstone/util/image.h</label>
-        <link refid="image_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="61" relation="include">
         </childnode>
+      </node>
+      <node id="60">
+        <label>endstone/util/color.h</label>
+        <link refid="color_8h_source"/>
+      </node>
+      <node id="61">
+        <label>endstone/util/image.h</label>
+        <link refid="image_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
         <childnode refid="49" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>endstone/util/pointers.h</label>
+        <link refid="pointers_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="49">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="50" relation="include">
         </childnode>
       </node>
-      <node id="91">
+      <node id="90">
         <label>endstone/util/socket_address.h</label>
         <link refid="socket__address_8h_source"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="27">
@@ -838,11 +836,11 @@
         <link refid="uuid_8h_source"/>
         <childnode refid="28" relation="include">
         </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="54">
@@ -852,7 +850,7 @@
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="34">
@@ -862,31 +860,31 @@
       <node id="28">
         <label>algorithm</label>
       </node>
-      <node id="19">
+      <node id="14">
         <label>chrono</label>
       </node>
       <node id="52">
         <label>cmath</label>
       </node>
-      <node id="29">
+      <node id="22">
         <label>cstddef</label>
       </node>
-      <node id="30">
+      <node id="29">
         <label>cstdint</label>
       </node>
-      <node id="5">
+      <node id="7">
         <label>dlfcn.h</label>
       </node>
-      <node id="15">
+      <node id="10">
         <label>fmt/format.h</label>
       </node>
       <node id="33">
         <label>fmt/ranges.h</label>
       </node>
-      <node id="17">
+      <node id="9">
         <label>functional</label>
       </node>
-      <node id="100">
+      <node id="101">
         <label>map</label>
       </node>
       <node id="2">
@@ -898,34 +896,34 @@
       <node id="53">
         <label>numbers</label>
       </node>
-      <node id="8">
+      <node id="17">
         <label>optional</label>
       </node>
-      <node id="96">
+      <node id="97">
         <label>regex</label>
       </node>
-      <node id="4">
+      <node id="6">
         <label>stdexcept</label>
       </node>
-      <node id="9">
+      <node id="3">
         <label>string</label>
       </node>
-      <node id="14">
+      <node id="12">
         <label>string_view</label>
       </node>
-      <node id="10">
+      <node id="31">
         <label>unordered_map</label>
       </node>
       <node id="46">
         <label>unordered_set</label>
       </node>
-      <node id="23">
+      <node id="20">
         <label>utility</label>
       </node>
       <node id="32">
         <label>variant</label>
       </node>
-      <node id="11">
+      <node id="15">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -940,26 +938,26 @@
         <label>include/endstone/event/block/block_cook_event.h</label>
         <link refid="block__cook__event_8h_source"/>
       </node>
-      <node id="10">
+      <node id="11">
         <label>include/endstone/event/chunk/chunk_event.h</label>
         <link refid="chunk__event_8h_source"/>
-        <childnode refid="11" relation="include">
-        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
       </node>
-      <node id="11">
+      <node id="12">
         <label>include/endstone/event/chunk/chunk_load_event.h</label>
         <link refid="chunk__load__event_8h_source"/>
       </node>
-      <node id="12">
+      <node id="13">
         <label>include/endstone/event/chunk/chunk_unload_event.h</label>
         <link refid="chunk__unload__event_8h_source"/>
       </node>
-      <node id="9">
+      <node id="10">
         <label>include/endstone/event/level/dimension_event.h</label>
         <link refid="dimension__event_8h_source"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -967,6 +965,10 @@
         <link refid="player__drop__item__event_8h_source"/>
       </node>
       <node id="6">
+        <label>include/endstone/event/player/player_interact_event.h</label>
+        <link refid="player__interact__event_8h_source"/>
+      </node>
+      <node id="7">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
@@ -989,19 +991,22 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>
-      <node id="8">
+      <node id="9">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1ItemStack" prot="public">endstone::ItemStack</innerclass>
+    <innerclass refid="classendstone_1_1ItemStack_1_1Impl" prot="private">endstone::ItemStack::Impl</innerclass>
     <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4" prot="public">fmt::formatter&lt; endstone::ItemStack &gt;</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
     <innernamespace refid="namespaceendstone_1_1core">endstone::core</innernamespace>
@@ -1027,206 +1032,123 @@
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/detail.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/inventory/item_factory.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/inventory/item_type.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/inventory/meta/item_meta.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/nbt/tag.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/registry.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/server.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">core<sp/>{</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">EndstoneItemStack;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36" refid="classendstone_1_1ItemStack" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>{</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">ItemTypeId</ref><sp/>&amp;type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">amount</ref><sp/>=<sp/>1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>data<sp/>=<sp/>0)</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">item</ref><sp/>=<sp/>ItemType::get(type);<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">item</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type_<sp/>=<sp/>type;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amount_<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">amount</ref>;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_<sp/>=<sp/>data;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">stack</ref>)</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>type_(<ref refid="classendstone_1_1Identifier" kindref="compound">stack</ref>.getType().getId()),<sp/>amount_(<ref refid="classendstone_1_1Identifier" kindref="compound">stack</ref>.getAmount()),<sp/>data_(<ref refid="classendstone_1_1Identifier" kindref="compound">stack</ref>.getData())</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classendstone_1_1Identifier" kindref="compound">stack</ref>.hasItemMeta())<sp/>{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ItemStack_1a71ae31684a695fc854a2df838cefa02b" kindref="member">ItemStack::setItemMeta</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">stack</ref>.getItemMeta().get());</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">~ItemStack</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">core::EndstoneItemStack;</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isEndstoneItemStack()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="62"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="72" refid="classendstone_1_1ItemStack_1a4d1f557b53cb2a5fafdd6e2793922f10" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref><sp/>&amp;<ref refid="classendstone_1_1ItemStack_1a4d1f557b53cb2a5fafdd6e2793922f10" kindref="member">getType</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="73"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">item</ref><sp/>=<sp/>ItemType::get(type_);<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">item</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">item</ref>;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*ItemType::get(ItemType::Air);</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85" refid="classendstone_1_1ItemStack_1aa1b427194fe176fd7fb1fbce23f5499d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1aa1b427194fe176fd7fb1fbce23f5499d" kindref="member">setType</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">ItemTypeId</ref><sp/>type)</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">item_type</ref><sp/>=<sp/>ItemType::get(type);</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Preconditions::checkArgument(<ref refid="classendstone_1_1Identifier" kindref="compound">item_type</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>item<sp/>type:<sp/>{}&quot;</highlight><highlight class="normal">,<sp/>type);</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type_<sp/>=<sp/>type;</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(meta_<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>meta_<sp/>=<sp/>detail::getServer().getItemFactory().asMetaFor(meta_.get(),<sp/>type);</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100" refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kindref="member">getAmount</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="101"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>amount_;</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/inventory/item_type.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/inventory/meta/item_meta.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/nbt/tag.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">core<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">EndstoneItemStack;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classendstone_1_1ItemStack" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="42" refid="classendstone_1_1ItemStack_1a7b5936ea2de322b1569345d7e4808eb5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a7b5936ea2de322b1569345d7e4808eb5" kindref="member">ItemStack</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">ItemTypeId</ref><sp/>type,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">amount</ref><sp/>=<sp/>1,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>data<sp/>=<sp/>0)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">item_type</ref><sp/>=<sp/>ItemType::get(type);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classendstone_1_1Identifier" kindref="compound">item_type</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(fmt::format(</highlight><highlight class="stringliteral">&quot;Unknown<sp/>item<sp/>type:<sp/>{}&quot;</highlight><highlight class="normal">,<sp/>type));</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">item_type</ref>-&gt;createItemStack(<ref refid="classendstone_1_1Identifier" kindref="compound">amount</ref>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>impl_-&gt;setData(data);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/>:<sp/>impl_(<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>.impl_-&gt;clone())<sp/>{}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>ItemStack(ItemStack<sp/>&amp;&amp;other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>ItemStack<sp/>&amp;operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ItemStack<sp/>&amp;other)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>!=<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>impl_<sp/>=<sp/>other.impl_-&gt;clone();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ItemStack_1a7b5936ea2de322b1569345d7e4808eb5" kindref="member">ItemStack</ref><sp/>&amp;operator=(ItemStack<sp/>&amp;&amp;other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>~ItemStack()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classendstone_1_1ItemStack_1a2681d8a56cdb2f020631a0930a2248c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref><sp/>&amp;<ref refid="classendstone_1_1ItemStack_1a2681d8a56cdb2f020631a0930a2248c8" kindref="member">getType</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl_-&gt;getType();<sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classendstone_1_1ItemStack_1a371b3f35a4eb4b921775f53ec47ba39a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a371b3f35a4eb4b921775f53ec47ba39a" kindref="member">setType</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">ItemTypeId</ref><sp/>type)<sp/>{<sp/>impl_-&gt;setType(type);<sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classendstone_1_1ItemStack_1ae8df0edfce4bb47a5ba4a8433f292361" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1ae8df0edfce4bb47a5ba4a8433f292361" kindref="member">getAmount</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl_-&gt;getAmount();<sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classendstone_1_1ItemStack_1a3bd310e0d5460751f1715889652224b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a3bd310e0d5460751f1715889652224b2" kindref="member">setAmount</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">amount</ref>)<sp/>{<sp/>impl_-&gt;setAmount(<ref refid="classendstone_1_1Identifier" kindref="compound">amount</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classendstone_1_1ItemStack_1ac76405538b9415de4ee2aa89bbfa6210" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1ac76405538b9415de4ee2aa89bbfa6210" kindref="member">getData</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl_-&gt;getData();<sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="classendstone_1_1ItemStack_1a85a677c8aa43a7c646ed6c7f0255a095" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a85a677c8aa43a7c646ed6c7f0255a095" kindref="member">setData</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>data)<sp/>{<sp/>impl_-&gt;setData(data);<sp/>}</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110" refid="classendstone_1_1ItemStack_1afd9e055aeb937c5b3da9ecc2cf9baecc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1afd9e055aeb937c5b3da9ecc2cf9baecc" kindref="member">setAmount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">amount</ref>)</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Preconditions::checkArgument(<ref refid="classendstone_1_1Identifier" kindref="compound">amount</ref><sp/>&gt;=<sp/>1<sp/>&amp;&amp;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">amount</ref><sp/>&lt;=<sp/>0xff,</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Item<sp/>stack<sp/>amount<sp/>must<sp/>be<sp/>between<sp/>1<sp/>to<sp/>255,<sp/>got<sp/>{}.&quot;</highlight><highlight class="normal">,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">amount</ref>);</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>amount_<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">amount</ref>;</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122" refid="classendstone_1_1ItemStack_1a3f2c4792c2ddb697945ad8458a41e319" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a3f2c4792c2ddb697945ad8458a41e319" kindref="member">getData</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="123"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data_;</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132" refid="classendstone_1_1ItemStack_1a319d00f3ef1c99fed2b9366a7519e482" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a319d00f3ef1c99fed2b9366a7519e482" kindref="member">setData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>data)</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_<sp/>=<sp/>data;</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="142" refid="classendstone_1_1ItemStack_1ab3b91d89d846d4a336540fedd801288a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1ItemStack_1ab3b91d89d846d4a336540fedd801288a" kindref="member">getTranslationKey</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="143"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getItemType().getTranslationKey(<ref refid="classendstone_1_1ItemStack_1a3f2c4792c2ddb697945ad8458a41e319" kindref="member">getData</ref>());</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152" refid="classendstone_1_1ItemStack_1add1c91b0b2f804dbe72efd6991a61b36" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1add1c91b0b2f804dbe72efd6991a61b36" kindref="member">getMaxStackSize</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="153"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>getItemType().getMaxStackSize();</highlight></codeline>
+<codeline lineno="110" refid="classendstone_1_1ItemStack_1abb214dcdab1e00b4fff144c0e1093e86" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1ItemStack_1abb214dcdab1e00b4fff144c0e1093e86" kindref="member">getTranslationKey</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl_-&gt;getTranslationKey();<sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classendstone_1_1ItemStack_1abbdb562aba92d0d3dac27967cad6cc3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1abbdb562aba92d0d3dac27967cad6cc3b" kindref="member">getMaxStackSize</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl_-&gt;getMaxStackSize();<sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="classendstone_1_1ItemStack_1adfdf501edfcaed0ec0c1012f78565f6a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref><sp/><ref refid="classendstone_1_1ItemStack_1adfdf501edfcaed0ec0c1012f78565f6a" kindref="member">getNbt</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl_-&gt;getNbt();<sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="classendstone_1_1ItemStack_1a34b1ab12d79dc5b1d68a55c42a56f802" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a34b1ab12d79dc5b1d68a55c42a56f802" kindref="member">setNbt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref><sp/>&amp;nbt)<sp/>{<sp/>impl_-&gt;setNbt(nbt);<sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="134"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref><sp/>==<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1ae8df0edfce4bb47a5ba4a8433f292361" kindref="member">getAmount</ref>()<sp/>==<sp/>other.<ref refid="classendstone_1_1ItemStack_1ae8df0edfce4bb47a5ba4a8433f292361" kindref="member">getAmount</ref>()<sp/>&amp;&amp;<sp/><ref refid="classendstone_1_1ItemStack_1ad368ed1a699dcc476c72ae302f5c9171" kindref="member">isSimilar</ref>(other);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ItemStack<sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>==<sp/>other);<sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="classendstone_1_1ItemStack_1ad368ed1a699dcc476c72ae302f5c9171" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1ad368ed1a699dcc476c72ae302f5c9171" kindref="member">isSimilar</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="150"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref><sp/>==<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl_-&gt;isSimilar(*<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>.impl_);</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="158"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref><sp/>==<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kindref="member">getAmount</ref>()<sp/>==<sp/>other.<ref refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kindref="member">getAmount</ref>()<sp/>&amp;&amp;<sp/><ref refid="classendstone_1_1ItemStack_1aeb93a9a474a043a67738f0838d79c2b4" kindref="member">isSimilar</ref>(other);</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ItemStack<sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="166"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(*</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>==<sp/>other);</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="176" refid="classendstone_1_1ItemStack_1aeb93a9a474a043a67738f0838d79c2b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1aeb93a9a474a043a67738f0838d79c2b4" kindref="member">isSimilar</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="177"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref><sp/>==<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a4d1f557b53cb2a5fafdd6e2793922f10" kindref="member">getType</ref>()<sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>.getType()<sp/>&amp;&amp;<sp/><ref refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" kindref="member">hasItemMeta</ref>()<sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>.hasItemMeta()<sp/>&amp;&amp;</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" kindref="member">hasItemMeta</ref>()</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/>detail::getServer().getItemFactory().equals(<ref refid="classendstone_1_1ItemStack_1adb74392c2405e46b8c61aedd3bccb5f8" kindref="member">getItemMeta</ref>().get(),<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>.getItemMeta().get())</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="192" refid="classendstone_1_1ItemStack_1adb74392c2405e46b8c61aedd3bccb5f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;ItemMeta&gt;<sp/><ref refid="classendstone_1_1ItemStack_1adb74392c2405e46b8c61aedd3bccb5f8" kindref="member">getItemMeta</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="193"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>meta_<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>?<sp/>detail::getServer().getItemFactory().getItemMeta(type_)<sp/>:<sp/>meta_-&gt;clone();</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"></highlight></codeline>
-<codeline lineno="202" refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" kindref="member">hasItemMeta</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="203"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!detail::getServer().getItemFactory().equals(meta_.get(),<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162" refid="classendstone_1_1ItemStack_1af5acb922e765e82d32b0203464c90e6d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::unique_ptr&lt;ItemMeta&gt;<sp/><ref refid="classendstone_1_1ItemStack_1af5acb922e765e82d32b0203464c90e6d" kindref="member">getItemMeta</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl_-&gt;getItemMeta();<sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="classendstone_1_1ItemStack_1a83d9e756157eadda61b433f42361c533" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a83d9e756157eadda61b433f42361c533" kindref="member">hasItemMeta</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl_-&gt;hasItemMeta();<sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="classendstone_1_1ItemStack_1a5fe552f9a77b134c4abf028e2432d47e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a5fe552f9a77b134c4abf028e2432d47e" kindref="member">setItemMeta</ref>(<ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">meta</ref>)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>impl_-&gt;setItemMeta(<ref refid="classendstone_1_1Identifier" kindref="compound">meta</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">core::EndstoneItemStack;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Impl<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~Impl()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;Impl&gt;<sp/>clone()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref><sp/>&amp;getType()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setType(<ref refid="classendstone_1_1Identifier" kindref="compound">ItemTypeId</ref><sp/>type)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getAmount()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setAmount(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">amount</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getData()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setData(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>data)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/>getTranslationKey()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>getMaxStackSize()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isSimilar(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Impl<sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;ItemMeta&gt;<sp/>getItemMeta()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>hasItemMeta()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>setItemMeta(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">meta</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref><sp/>getNbt()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setNbt(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref><sp/>&amp;nbt)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>ItemStack(std::unique_ptr&lt;Impl&gt;<sp/>impl)<sp/>:<sp/>impl_(std::move(impl))<sp/>{}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;Impl&gt;<sp/>impl_;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="206"><highlight class="normal"></highlight></codeline>
-<codeline lineno="213" refid="classendstone_1_1ItemStack_1a71ae31684a695fc854a2df838cefa02b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack_1a71ae31684a695fc854a2df838cefa02b" kindref="member">setItemMeta</ref>(<ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref><sp/>*<ref refid="classendstone_1_1Identifier" kindref="compound">meta</ref>)</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>setItemMeta0(<ref refid="classendstone_1_1Identifier" kindref="compound">meta</ref>,<sp/>type_);</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"></highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;ItemStack&gt;<sp/>clone()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="219"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;ItemStack&gt;(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"></highlight></codeline>
-<codeline lineno="228" refid="classendstone_1_1ItemStack_1ab5b0ec4312de538ebd8ffc50903dafe1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref><sp/><ref refid="classendstone_1_1ItemStack_1ab5b0ec4312de538ebd8ffc50903dafe1" kindref="member">toNbt</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="229"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">tag</ref>;</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">tag</ref>[</highlight><highlight class="stringliteral">&quot;Name&quot;</highlight><highlight class="normal">]<sp/>=<sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">StringTag</ref>(type_);</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">tag</ref>[</highlight><highlight class="stringliteral">&quot;Count&quot;</highlight><highlight class="normal">]<sp/>=<sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ByteTag</ref>(amount_);</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">tag</ref>[</highlight><highlight class="stringliteral">&quot;Damage&quot;</highlight><highlight class="normal">]<sp/>=<sp/><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ShortTag</ref>(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">short</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_));</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classendstone_1_1ItemStack_1a5b24b8e07a34c657516340bf8c5b59ed" kindref="member">hasItemMeta</ref>())<sp/>{</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">tag</ref>[</highlight><highlight class="stringliteral">&quot;tag&quot;</highlight><highlight class="normal">]<sp/>=<sp/><ref refid="classendstone_1_1ItemStack_1adb74392c2405e46b8c61aedd3bccb5f8" kindref="member">getItemMeta</ref>()-&gt;toNbt();</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">tag</ref>;</highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"></highlight></codeline>
-<codeline lineno="247" refid="classendstone_1_1ItemStack_1a96df59693211d0277f290bde04ace3fa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1ItemStack_1a96df59693211d0277f290bde04ace3fa" kindref="member">fromNbt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">tag</ref>)</highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>detail::getServer().getItemFactory().createItemStack(<ref refid="classendstone_1_1Identifier" kindref="compound">tag</ref>);</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"></highlight></codeline>
-<codeline lineno="252"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref><sp/>&amp;getItemType()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="254"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*type<sp/>=<sp/>ItemType::get(<ref refid="classendstone_1_1ItemStack_1a4d1f557b53cb2a5fafdd6e2793922f10" kindref="member">getType</ref>());</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(type<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>=<sp/>ItemType::get(ItemType::Air);</highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*type;</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="261"><highlight class="normal"></highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>setItemMeta0(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ItemMeta<sp/>*meta,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;type)</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!meta)<sp/>{</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>meta_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="268"><highlight class="normal"></highlight></codeline>
-<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;item_factory<sp/>=<sp/>detail::getServer().getItemFactory();</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!item_factory.isApplicable(meta,<sp/>type))<sp/>{</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="273"><highlight class="normal"></highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>meta_<sp/>=<sp/>item_factory.asMetaFor(meta,<sp/>type);</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="277"><highlight class="normal"></highlight></codeline>
-<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>type_<sp/>=<sp/>ItemType::Air;</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>amount_<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>data_<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;ItemMeta&gt;<sp/>meta_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="282"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="283"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="284"><highlight class="normal"></highlight></codeline>
-<codeline lineno="285"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
-<codeline lineno="286" refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">fmt::formatter&lt;<ref refid="namespaceendstone" kindref="compound">endstone</ref>::ItemStack&gt;<sp/>:<sp/>formatter&lt;string_view&gt;<sp/>{</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1ItemStack" kindref="compound">Type</ref><sp/>=<sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">endstone::ItemStack</ref>;</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"></highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
-<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">Type</ref><sp/>&amp;val,<sp/>FormatContext<sp/>&amp;ctx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>-&gt;<sp/>format_context::iterator</highlight></codeline>
-<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fmt::format_to(ctx.out(),<sp/></highlight><highlight class="stringliteral">&quot;ItemStack({}<sp/>x<sp/>{})&quot;</highlight><highlight class="normal">,<sp/>val.<ref refid="classendstone_1_1ItemStack_1a4d1f557b53cb2a5fafdd6e2793922f10" kindref="member">getType</ref>(),<sp/>val.<ref refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kindref="member">getAmount</ref>());</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="294"><highlight class="normal">};<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>fmt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="208" refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">fmt::formatter&lt;<ref refid="namespaceendstone" kindref="compound">endstone</ref>::ItemStack&gt;<sp/>:<sp/>formatter&lt;string_view&gt;<sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1ItemStack" kindref="compound">Type</ref><sp/>=<sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">endstone::ItemStack</ref>;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">Type</ref><sp/>&amp;val,<sp/>FormatContext<sp/>&amp;ctx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>-&gt;<sp/>format_context::iterator</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fmt::format_to(ctx.out(),<sp/></highlight><highlight class="stringliteral">&quot;ItemStack({}<sp/>x<sp/>{})&quot;</highlight><highlight class="normal">,<sp/>val.<ref refid="classendstone_1_1ItemStack_1a2681d8a56cdb2f020631a0930a2248c8" kindref="member">getType</ref>(),<sp/>val.<ref refid="classendstone_1_1ItemStack_1ae8df0edfce4bb47a5ba4a8433f292361" kindref="member">getAmount</ref>());</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="216"><highlight class="normal">};<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>fmt</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/inventory/item_stack.h"/>
   </compounddef>

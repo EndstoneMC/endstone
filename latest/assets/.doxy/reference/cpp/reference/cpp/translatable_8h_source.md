@@ -37,20 +37,11 @@ public:
     {
     }
 
-    [[nodiscard]] const std::string &getText() const
-    {
-        return text_;
-    }
+    [[nodiscard]] const std::string &getText() const { return text_; }
 
-    [[nodiscard]] const std::vector<std::string> &getParameters() const
-    {
-        return params_;
-    }
+    [[nodiscard]] const std::vector<std::string> &getParameters() const { return params_; }
 
-    [[nodiscard]] bool empty() const
-    {
-        return text_.empty();
-    }
+    [[nodiscard]] bool empty() const { return text_.empty(); }
 
 private:
     std::string text_;

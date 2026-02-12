@@ -178,46 +178,14 @@
         </inbodydescription>
         <location file="include/endstone/inventory/item_factory.h" line="63" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ItemFactory_1a8a12dd4736a6e5478397f561ab6a6045" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
-        <definition>virtual std::unique_ptr&lt; ItemStack &gt; endstone::ItemFactory::createItemStack</definition>
-        <argsstring>(const CompoundTag &amp;tag) const =0</argsstring>
-        <name>createItemStack</name>
-        <qualifiedname>endstone::ItemFactory::createItemStack</qualifiedname>
-        <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &amp;</type>
-          <declname>tag</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>Create a new <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> given the NBT.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>tag</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>the item NBT</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>the created <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref>, or nullptr if the input NBT was invalid </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/inventory/item_factory.h" line="72" column="30"/>
-      </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/inventory/item_factory.h" line="21" column="1" bodyfile="include/endstone/inventory/item_factory.h" bodystart="21" bodyend="73"/>
+    <location file="include/endstone/inventory/item_factory.h" line="21" column="1" bodyfile="include/endstone/inventory/item_factory.h" bodystart="21" bodyend="65"/>
     <listofallmembers>
       <member refid="classendstone_1_1ItemFactory_1a084aacc2614dd8e9cc3b29ff499fddd3" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>asMetaFor</name></member>
-      <member refid="classendstone_1_1ItemFactory_1a8a12dd4736a6e5478397f561ab6a6045" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>createItemStack</name></member>
       <member refid="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>equals</name></member>
       <member refid="classendstone_1_1ItemFactory_1a5d15dd0ea9a08da85abf2ef211f9efd5" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>getItemMeta</name></member>
       <member refid="classendstone_1_1ItemFactory_1aff21b0ec47bc64201a7626ad14ff1b2b" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>isApplicable</name></member>

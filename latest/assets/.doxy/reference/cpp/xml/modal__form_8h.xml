@@ -5,18 +5,18 @@
     <includes local="no">optional</includes>
     <includes local="no">string</includes>
     <includes local="no">utility</includes>
+    <includes refid="divider_8h" local="yes">endstone/form/controls/divider.h</includes>
     <includes refid="dropdown_8h" local="yes">endstone/form/controls/dropdown.h</includes>
+    <includes refid="header_8h" local="yes">endstone/form/controls/header.h</includes>
     <includes refid="label_8h" local="yes">endstone/form/controls/label.h</includes>
     <includes refid="slider_8h" local="yes">endstone/form/controls/slider.h</includes>
     <includes refid="step__slider_8h" local="yes">endstone/form/controls/step_slider.h</includes>
     <includes refid="text__input_8h" local="yes">endstone/form/controls/text_input.h</includes>
     <includes refid="toggle_8h" local="yes">endstone/form/controls/toggle.h</includes>
-    <includes refid="divider_8h" local="yes">endstone/form/controls/divider.h</includes>
-    <includes refid="header_8h" local="yes">endstone/form/controls/header.h</includes>
     <includes refid="form_8h" local="yes">endstone/form/form.h</includes>
     <includedby refid="player_8h" local="yes">include/endstone/player.h</includedby>
     <incdepgraph>
-      <node id="15">
+      <node id="5">
         <label>endstone/form/controls/divider.h</label>
         <link refid="divider_8h_source"/>
         <childnode refid="2" relation="include">
@@ -25,10 +25,10 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="10">
         <label>endstone/form/controls/dropdown.h</label>
         <link refid="dropdown_8h_source"/>
         <childnode refid="2" relation="include">
@@ -37,12 +37,12 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
-      <node id="16">
+      <node id="11">
         <label>endstone/form/controls/header.h</label>
         <link refid="header_8h_source"/>
         <childnode refid="2" relation="include">
@@ -51,10 +51,10 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="12">
         <label>endstone/form/controls/label.h</label>
         <link refid="label_8h_source"/>
         <childnode refid="2" relation="include">
@@ -63,10 +63,10 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="11">
+      <node id="13">
         <label>endstone/form/controls/slider.h</label>
         <link refid="slider_8h_source"/>
         <childnode refid="2" relation="include">
@@ -75,16 +75,16 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="14">
         <label>endstone/form/controls/step_slider.h</label>
         <link refid="step__slider_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="15">
         <label>endstone/form/controls/text_input.h</label>
         <link refid="text__input_8h_source"/>
         <childnode refid="2" relation="include">
@@ -93,10 +93,10 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="16">
         <label>endstone/form/controls/toggle.h</label>
         <link refid="toggle_8h_source"/>
         <childnode refid="2" relation="include">
@@ -105,7 +105,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="17">
@@ -113,7 +113,7 @@
         <link refid="form_8h_source"/>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -144,26 +144,26 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="8">
         <label>endstone/lang/translatable.h</label>
         <link refid="translatable_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="6">
         <label>endstone/message.h</label>
         <link refid="message_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="18">
@@ -178,10 +178,10 @@
       <node id="4">
         <label>utility</label>
       </node>
-      <node id="8">
+      <node id="7">
         <label>variant</label>
       </node>
-      <node id="6">
+      <node id="9">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -411,8 +411,6 @@
       <node id="32">
         <label>include/endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h_source"/>
-        <childnode refid="33" relation="include">
-        </childnode>
       </node>
       <node id="33">
         <label>include/endstone/inventory/item_stack.h</label>
@@ -422,6 +420,8 @@
         <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -525,8 +525,6 @@
         <link refid="server_8h_source"/>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
         <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
@@ -562,14 +560,14 @@
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/dropdown.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/label.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/slider.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/step_slider.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/text_input.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/toggle.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/divider.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/header.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/divider.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/dropdown.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/header.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/label.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/slider.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/step_slider.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/text_input.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/controls/toggle.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/form/form.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
@@ -585,58 +583,46 @@
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58" refid="classendstone_1_1ModalForm_1a9d307f7b12bb0b9fcc13ae2b6945db93" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::vector&lt;Control&gt;<sp/><ref refid="classendstone_1_1ModalForm_1a9d307f7b12bb0b9fcc13ae2b6945db93" kindref="member">getControls</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="59"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>controls_;</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="classendstone_1_1ModalForm_1ab65ea6f6acb1b5c10610e83ce5f67bc2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref><sp/>&amp;<ref refid="classendstone_1_1ModalForm_1ab65ea6f6acb1b5c10610e83ce5f67bc2" kindref="member">setControls</ref>(std::vector&lt;Control&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">controls</ref>)</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>controls_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">controls</ref>);</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80" refid="classendstone_1_1ModalForm_1a5e57d1511c91d8af59d8df8ad3f29803" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::optional&lt;Message&gt;<sp/><ref refid="classendstone_1_1ModalForm_1a5e57d1511c91d8af59d8df8ad3f29803" kindref="member">getSubmitButton</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="81"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>submit_button_text_;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91" refid="classendstone_1_1ModalForm_1a0829564dd011a2e7de8518900dd17561" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref><sp/>&amp;<ref refid="classendstone_1_1ModalForm_1a0829564dd011a2e7de8518900dd17561" kindref="member">setSubmitButton</ref>(std::optional&lt;Message&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">text</ref>)</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>submit_button_text_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">text</ref>);</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102" refid="classendstone_1_1ModalForm_1a5b90bdebd0b0e810a4d8fbdeb15fa18d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classendstone_1_1ModalForm_1a5b90bdebd0b0e810a4d8fbdeb15fa18d" kindref="member">getIcon</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="103"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>icon_;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113" refid="classendstone_1_1ModalForm_1a4192a3d22178a35987c77ce2a4cee2e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref><sp/>&amp;<ref refid="classendstone_1_1ModalForm_1a4192a3d22178a35987c77ce2a4cee2e2" kindref="member">setIcon</ref>(std::optional&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">icon</ref>)</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>icon_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">icon</ref>);</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="124" refid="classendstone_1_1ModalForm_1afb79d3eda590aca8e014c5db99715e70" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>OnSubmitCallback<sp/><ref refid="classendstone_1_1ModalForm_1afb79d3eda590aca8e014c5db99715e70" kindref="member">getOnSubmit</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="125"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>on_submit_;</highlight></codeline>
+<codeline lineno="58" refid="classendstone_1_1ModalForm_1a9d307f7b12bb0b9fcc13ae2b6945db93" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::vector&lt;Control&gt;<sp/><ref refid="classendstone_1_1ModalForm_1a9d307f7b12bb0b9fcc13ae2b6945db93" kindref="member">getControls</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>controls_;<sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classendstone_1_1ModalForm_1ab65ea6f6acb1b5c10610e83ce5f67bc2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref><sp/>&amp;<ref refid="classendstone_1_1ModalForm_1ab65ea6f6acb1b5c10610e83ce5f67bc2" kindref="member">setControls</ref>(std::vector&lt;Control&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">controls</ref>)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>controls_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">controls</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="classendstone_1_1ModalForm_1a5e57d1511c91d8af59d8df8ad3f29803" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::optional&lt;Message&gt;<sp/><ref refid="classendstone_1_1ModalForm_1a5e57d1511c91d8af59d8df8ad3f29803" kindref="member">getSubmitButton</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>submit_button_text_;<sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classendstone_1_1ModalForm_1a0829564dd011a2e7de8518900dd17561" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref><sp/>&amp;<ref refid="classendstone_1_1ModalForm_1a0829564dd011a2e7de8518900dd17561" kindref="member">setSubmitButton</ref>(std::optional&lt;Message&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">text</ref>)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>submit_button_text_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">text</ref>);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classendstone_1_1ModalForm_1a5b90bdebd0b0e810a4d8fbdeb15fa18d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classendstone_1_1ModalForm_1a5b90bdebd0b0e810a4d8fbdeb15fa18d" kindref="member">getIcon</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>icon_;<sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classendstone_1_1ModalForm_1a4192a3d22178a35987c77ce2a4cee2e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref><sp/>&amp;<ref refid="classendstone_1_1ModalForm_1a4192a3d22178a35987c77ce2a4cee2e2" kindref="member">setIcon</ref>(std::optional&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">icon</ref>)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>icon_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">icon</ref>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="classendstone_1_1ModalForm_1afb79d3eda590aca8e014c5db99715e70" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>OnSubmitCallback<sp/><ref refid="classendstone_1_1ModalForm_1afb79d3eda590aca8e014c5db99715e70" kindref="member">getOnSubmit</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>on_submit_;<sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="classendstone_1_1ModalForm_1a9b0b97dfd47eb028a0dda6b1229bacec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref><sp/>&amp;<ref refid="classendstone_1_1ModalForm_1a9b0b97dfd47eb028a0dda6b1229bacec" kindref="member">setOnSubmit</ref>(OnSubmitCallback<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">on_submit</ref>)</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>on_submit_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">on_submit</ref>);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135" refid="classendstone_1_1ModalForm_1a9b0b97dfd47eb028a0dda6b1229bacec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref><sp/>&amp;<ref refid="classendstone_1_1ModalForm_1a9b0b97dfd47eb028a0dda6b1229bacec" kindref="member">setOnSubmit</ref>(OnSubmitCallback<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">on_submit</ref>)</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>on_submit_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">on_submit</ref>);</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Control&gt;<sp/>controls_;</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;Message&gt;<sp/>submit_button_text_;</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/>icon_;</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>OnSubmitCallback<sp/>on_submit_;</highlight></codeline>
-<codeline lineno="146"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Control&gt;<sp/>controls_;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;Message&gt;<sp/>submit_button_text_;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/>icon_;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>OnSubmitCallback<sp/>on_submit_;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/form/modal_form.h"/>
   </compounddef>

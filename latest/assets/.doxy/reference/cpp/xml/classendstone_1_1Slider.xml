@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="147" column="13" bodyfile="include/endstone/form/controls/slider.h" bodystart="147" bodyend="-1"/>
+        <location file="include/endstone/form/controls/slider.h" line="132" column="13" bodyfile="include/endstone/form/controls/slider.h" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Slider_1a533faf19fbbacf7836946a8acf67098f" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="148" column="11" bodyfile="include/endstone/form/controls/slider.h" bodystart="148" bodyend="-1"/>
+        <location file="include/endstone/form/controls/slider.h" line="133" column="11" bodyfile="include/endstone/form/controls/slider.h" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Slider_1a4e50207f6be325caace8ded16ac89433" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="149" column="11" bodyfile="include/endstone/form/controls/slider.h" bodystart="149" bodyend="-1"/>
+        <location file="include/endstone/form/controls/slider.h" line="134" column="11" bodyfile="include/endstone/form/controls/slider.h" bodystart="134" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Slider_1afaa5db51fe0b1a6692163439a4c709b6" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="150" column="11" bodyfile="include/endstone/form/controls/slider.h" bodystart="150" bodyend="-1"/>
+        <location file="include/endstone/form/controls/slider.h" line="135" column="11" bodyfile="include/endstone/form/controls/slider.h" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Slider_1aa445d8623cf5c8e0e2fcdb09da3f5b4d" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="151" column="19" bodyfile="include/endstone/form/controls/slider.h" bodystart="151" bodyend="-1"/>
+        <location file="include/endstone/form/controls/slider.h" line="136" column="19" bodyfile="include/endstone/form/controls/slider.h" bodystart="136" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -141,7 +141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="41" column="14" bodyfile="include/endstone/form/controls/slider.h" bodystart="41" bodyend="44"/>
+        <location file="include/endstone/form/controls/slider.h" line="41" column="14" bodyfile="include/endstone/form/controls/slider.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1acf2217bdc5441b3cbe9a0716fca0f2f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Slider" kindref="compound">Slider</ref> &amp;</type>
@@ -172,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="52" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="52" bodyend="56"/>
+        <location file="include/endstone/form/controls/slider.h" line="49" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="49" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1a888e209ddf6c3e769b319e9728843a63" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -190,7 +190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="63" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="63" bodyend="66"/>
+        <location file="include/endstone/form/controls/slider.h" line="60" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1ae07e1917f5f43db8cb19858ff92cde24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Slider" kindref="compound">Slider</ref> &amp;</type>
@@ -221,7 +221,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="74" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="74" bodyend="78"/>
+        <location file="include/endstone/form/controls/slider.h" line="68" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="68" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1a678964a83e4820871d4b99dd2c7a1b45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -239,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="85" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="85" bodyend="88"/>
+        <location file="include/endstone/form/controls/slider.h" line="79" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="79" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1a22f05a1703d94aa0a797e73d202bce5f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Slider" kindref="compound">Slider</ref> &amp;</type>
@@ -270,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="96" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="96" bodyend="100"/>
+        <location file="include/endstone/form/controls/slider.h" line="87" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="87" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1acc5394db6cb1a0c2750702f2473163ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -288,7 +288,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="107" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="107" bodyend="110"/>
+        <location file="include/endstone/form/controls/slider.h" line="98" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="98" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1afe6aff5dcd3a303663266990ee107cd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Slider" kindref="compound">Slider</ref> &amp;</type>
@@ -319,7 +319,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="118" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="118" bodyend="122"/>
+        <location file="include/endstone/form/controls/slider.h" line="106" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="106" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1a40402a633fa41306b80e4da2cd84b99a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
@@ -337,7 +337,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="129" column="20" bodyfile="include/endstone/form/controls/slider.h" bodystart="129" bodyend="132"/>
+        <location file="include/endstone/form/controls/slider.h" line="117" column="20" bodyfile="include/endstone/form/controls/slider.h" bodystart="117" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1a72c66f99531b81c256375d5d530d058c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Slider" kindref="compound">Slider</ref> &amp;</type>
@@ -368,7 +368,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/slider.h" line="140" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="140" bodyend="144"/>
+        <location file="include/endstone/form/controls/slider.h" line="125" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="125" bodyend="129"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -376,7 +376,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/form/controls/slider.h" line="28" column="1" bodyfile="include/endstone/form/controls/slider.h" bodystart="28" bodyend="152"/>
+    <location file="include/endstone/form/controls/slider.h" line="28" column="1" bodyfile="include/endstone/form/controls/slider.h" bodystart="28" bodyend="137"/>
     <listofallmembers>
       <member refid="classendstone_1_1Slider_1aa445d8623cf5c8e0e2fcdb09da3f5b4d" prot="private" virt="non-virtual"><scope>endstone::Slider</scope><name>default_value_</name></member>
       <member refid="classendstone_1_1Slider_1a40402a633fa41306b80e4da2cd84b99a" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>getDefaultValue</name></member>

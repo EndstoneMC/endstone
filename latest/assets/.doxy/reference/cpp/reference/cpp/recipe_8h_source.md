@@ -31,7 +31,7 @@ class Recipe {
 public:
     virtual ~Recipe() = default;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> getResult() const = 0;
+    [[nodiscard]] virtual ItemStack getResult() const = 0;
 };
 }  // namespace endstone
 ```

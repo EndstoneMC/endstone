@@ -131,10 +131,7 @@ public:
             storage_);
     }
 
-    [[nodiscard]] bool empty() const noexcept
-    {
-        return size() == 0;
-    }
+    [[nodiscard]] bool empty() const noexcept { return size() == 0; }
 
     Tag &operator[](const std::string &key)
     {
@@ -283,15 +280,9 @@ public:
         return std::visit(visitor, storage_);
     }
 
-    friend bool operator==(const Tag &a, const Tag &b) noexcept
-    {
-        return a.storage_ == b.storage_;
-    }
+    friend bool operator==(const Tag &a, const Tag &b) noexcept { return a.storage_ == b.storage_; }
 
-    friend bool operator!=(const Tag &a, const Tag &b) noexcept
-    {
-        return !(a == b);
-    }
+    friend bool operator!=(const Tag &a, const Tag &b) noexcept { return !(a == b); }
 
 private:
     Storage storage_;

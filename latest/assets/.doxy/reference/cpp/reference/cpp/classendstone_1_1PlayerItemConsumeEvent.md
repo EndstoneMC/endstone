@@ -93,9 +93,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerItemConsumeEvent**](#function-playeritemconsumeevent) ([**Player**](classendstone_1_1Player.md) & player, [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item, [**EquipmentSlot**](namespaceendstone.md#enum-equipmentslot) hand) <br> |
+|   | [**PlayerItemConsumeEvent**](#function-playeritemconsumeevent) ([**Player**](classendstone_1_1Player.md) & player, [**ItemStack**](classendstone_1_1ItemStack.md) item, [**EquipmentSlot**](namespaceendstone.md#enum-equipmentslot) hand) <br> |
 |  [**EquipmentSlot**](namespaceendstone.md#enum-equipmentslot) | [**getHand**](#function-gethand) () const<br>_Get the hand used to consume the item._  |
-|  std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getItem**](#function-getitem) () const<br>_Gets the item that is being consumed._  |
+|  [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & | [**getItem**](#function-getitem) () const<br>_Gets the item that is being consumed._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -230,7 +230,7 @@ If the event is cancelled the effect will not be applied and the item will not b
 ```C++
 inline explicit endstone::PlayerItemConsumeEvent::PlayerItemConsumeEvent (
     Player & player,
-    const  ItemStack & item,
+    ItemStack item,
     EquipmentSlot hand
 ) 
 ```
@@ -271,16 +271,9 @@ the hand
 
 _Gets the item that is being consumed._ 
 ```C++
-inline std::unique_ptr< ItemStack > endstone::PlayerItemConsumeEvent::getItem () const
+inline const  ItemStack & endstone::PlayerItemConsumeEvent::getItem () const
 ```
 
-
-
-
-
-**Note:**
-
-Modifying the returned item will have no effect, you must use setItem(ItemStack) instead.
 
 
 

@@ -200,7 +200,11 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
         <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
@@ -212,10 +216,6 @@
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
         <childnode refid="36" relation="include">
         </childnode>
       </node>
@@ -226,7 +226,7 @@
       <node id="47">
         <label>endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -551,21 +551,15 @@
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PlayerInteractActorEvent" kindref="compound">~PlayerInteractActorEvent</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;PlayerInteractActorEvent&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="31" refid="classendstone_1_1PlayerInteractActorEvent_1ab38b49eafd6046d3baf2d147d2dd6f29" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1PlayerInteractActorEvent_1ab38b49eafd6046d3baf2d147d2dd6f29" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
-<codeline lineno="32"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NAME;</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="classendstone_1_1PlayerInteractActorEvent_1ac803fcee5b9b5980b8d1db566b1f3a29" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>&amp;<ref refid="classendstone_1_1PlayerInteractActorEvent_1ac803fcee5b9b5980b8d1db566b1f3a29" kindref="member">getActor</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="42"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>actor_;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>&amp;actor_;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classendstone_1_1PlayerInteractActorEvent_1ab38b49eafd6046d3baf2d147d2dd6f29" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1PlayerInteractActorEvent_1ab38b49eafd6046d3baf2d147d2dd6f29" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NAME;<sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classendstone_1_1PlayerInteractActorEvent_1ac803fcee5b9b5980b8d1db566b1f3a29" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>&amp;<ref refid="classendstone_1_1PlayerInteractActorEvent_1ac803fcee5b9b5980b8d1db566b1f3a29" kindref="member">getActor</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>actor_;<sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>&amp;actor_;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/event/player/player_interact_actor_event.h"/>
   </compounddef>

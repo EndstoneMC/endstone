@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_bed_enter_event.h" line="145" column="11" bodyfile="include/endstone/event/player/player_bed_enter_event.h" bodystart="145" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_bed_enter_event.h" line="142" column="11" bodyfile="include/endstone/event/player/player_bed_enter_event.h" bodystart="142" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_bed_enter_event.h" line="139" column="12" bodyfile="include/endstone/event/player/player_bed_enter_event.h" bodystart="139" bodyend="142"/>
+        <location file="include/endstone/event/player/player_bed_enter_event.h" line="139" column="12" bodyfile="include/endstone/event/player/player_bed_enter_event.h" bodystart="139" bodyend="139"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -127,7 +127,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_bed_enter_event.h" line="26" column="1" bodyfile="include/endstone/event/player/player_bed_enter_event.h" bodystart="26" bodyend="148"/>
+    <location file="include/endstone/event/player/player_bed_enter_event.h" line="26" column="1" bodyfile="include/endstone/event/player/player_bed_enter_event.h" bodystart="26" bodyend="145"/>
     <listofallmembers>
       <member refid="classendstone_1_1PlayerBedEnterEvent_1adbe5020df822b71c78edbfde08633881" prot="private" virt="non-virtual"><scope>endstone::PlayerBedEnterEvent</scope><name>bed_</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerBedEnterEvent</scope><name>cancel</name></member>

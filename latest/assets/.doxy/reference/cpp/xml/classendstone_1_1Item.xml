@@ -5,9 +5,9 @@
     <basecompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</basecompoundref>
     <includes refid="item_8h" local="no">endstone/actor/item.h</includes>
     <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1Item_1a7a898259f1715a166bfdd5ac7300cab8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
-        <definition>virtual std::unique_ptr&lt; ItemStack &gt; endstone::Item::getItemStack</definition>
+      <memberdef kind="function" id="classendstone_1_1Item_1aecc6e7de84c65dbe99809fc47c1284e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+        <definition>virtual ItemStack endstone::Item::getItemStack</definition>
         <argsstring>() const =0</argsstring>
         <name>getItemStack</name>
         <qualifiedname>endstone::Item::getItemStack</qualifiedname>
@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/item.h" line="31" column="30"/>
+        <location file="include/endstone/actor/item.h" line="31" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1af161f37341629c74503408f7ebfeb0e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -266,7 +266,7 @@
       <member refid="classendstone_1_1Actor_1ab4562c41d071b945338d742ac8d1e639" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getId</name></member>
-      <member refid="classendstone_1_1Item_1a7a898259f1715a166bfdd5ac7300cab8" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getItemStack</name></member>
+      <member refid="classendstone_1_1Item_1aecc6e7de84c65dbe99809fc47c1284e6" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getItemStack</name></member>
       <member refid="classendstone_1_1Actor_1aff1ed8218696acc7009bf7ce5a5069a2" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getLevel</name></member>
       <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getLocation</name></member>
       <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getName</name></member>

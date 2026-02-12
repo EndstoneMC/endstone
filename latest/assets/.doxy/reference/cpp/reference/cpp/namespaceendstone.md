@@ -57,6 +57,9 @@ _Represents a button with text and an optional icon._
 | class | [**BlockCookEvent**](classendstone_1_1BlockCookEvent.md) <br>_Called when an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _is successfully cooked in a block._ |
 | class | [**BlockData**](classendstone_1_1BlockData.md) <br>_Represents the data related to a live block._  |
 | class | [**BlockEvent**](classendstone_1_1BlockEvent.md) <br>_Represents an Block-related event._  |
+| class | [**BlockFormEvent**](classendstone_1_1BlockFormEvent.md) <br>_Called when a block is formed or spreads based on world conditions._  |
+| class | [**BlockFromToEvent**](classendstone_1_1BlockFromToEvent.md) <br>_Represents events with a source block and a destination block, currently only applies to liquid (lava and water) and teleporting dragon eggs._  |
+| class | [**BlockGrowEvent**](classendstone_1_1BlockGrowEvent.md) <br>_Called when a block grows naturally in the world._  |
 | class | [**BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md) <br>_Called when a piston block is triggered._  |
 | class | [**BlockPistonExtendEvent**](classendstone_1_1BlockPistonExtendEvent.md) <br>_Called when a piston extends._  |
 | class | [**BlockPistonRetractEvent**](classendstone_1_1BlockPistonRetractEvent.md) <br>_Called when a piston retracts._  |
@@ -100,7 +103,7 @@ _Represents a button with text and an optional icon._
 | class | [**Identifier**](classendstone_1_1Identifier.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents a identifier consisting of two components: a namespace and a key._  |
 | class | [**Image**](classendstone_1_1Image.md) <br>_Represents an RGBA image._  |
 | class | [**Inventory**](classendstone_1_1Inventory.md) <br>_Interface to the various inventories._  |
-| class | [**IpBanEntry**](classendstone_1_1IpBanEntry.md) <br> |
+| class | [**IpBanEntry**](classendstone_1_1IpBanEntry.md) <br>_Represents an entry for a banned IP address._  |
 | class | [**IpBanList**](classendstone_1_1IpBanList.md) <br>_Represents a ban list, containing banned IP addresses._  |
 | class | [**Item**](classendstone_1_1Item.md) <br>_Represents a base actor in the level._  |
 | class | [**ItemFactory**](classendstone_1_1ItemFactory.md) <br> |
@@ -124,6 +127,8 @@ _Represents a button with text and an optional icon._
 | class | [**MessageForm**](classendstone_1_1MessageForm.md) <br>_Represents a form with two buttons._  |
 | class | [**Mob**](classendstone_1_1Mob.md) <br>_Represents a mobile entity (i.e. living entity), such as a monster or player._  |
 | class | [**ModalForm**](classendstone_1_1ModalForm.md) <br>_Represents a modal form with controls._  |
+| class | [**NotNull**](classendstone_1_1NotNull.md) &lt;[**class**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
+| class | [**Nullable**](classendstone_1_1Nullable.md) &lt;[**class**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
 | class | [**Objective**](classendstone_1_1Objective.md) <br>_Represents an objective on a scoreboard that can show scores specific to entries._  |
 | class | [**OfflinePlayer**](classendstone_1_1OfflinePlayer.md) <br>_Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online._  |
 | class | [**PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md) <br>_Called when the server receives a packet from a connected client._  |
@@ -133,7 +138,7 @@ _Represents a button with text and an optional icon._
 | class | [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) <br>_Holds information about a permission attachment on a_ [_**Permissible**_](classendstone_1_1Permissible.md) _object._ |
 | class | [**PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md) <br>_Holds information on a permission and which_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _provides it._ |
 | class | [**Player**](classendstone_1_1Player.md) <br>_Represents a player._  |
-| class | [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) <br> |
+| class | [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) <br>_Represents an entry for a banned player._  |
 | class | [**PlayerBanList**](classendstone_1_1PlayerBanList.md) <br>_Represents a ban list, containing banned players._  |
 | class | [**PlayerBedEnterEvent**](classendstone_1_1PlayerBedEnterEvent.md) <br>_Called when a player is almost about to enter the bed._  |
 | class | [**PlayerBedLeaveEvent**](classendstone_1_1PlayerBedLeaveEvent.md) <br>_Called when a player is leaving a bed._  |
@@ -208,7 +213,7 @@ _Represents a button with text and an optional icon._
 | enum  | [**BarColor**](#enum-barcolor)  <br> |
 | enum  | [**BarFlag**](#enum-barflag)  <br> |
 | enum  | [**BarStyle**](#enum-barstyle)  <br> |
-| enum  | [**BlockFace**](#enum-blockface)  <br> |
+| enum  | [**BlockFace**](#enum-blockface)  <br>_Represents the face of a block._  |
 | typedef std::unordered\_map&lt; std::string, std::variant&lt; [**bool**](classendstone_1_1Identifier.md), std::string, [**int**](classendstone_1_1Identifier.md) &gt; &gt; | [**BlockStates**](#typedef-blockstates)  <br> |
 | typedef [**nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md)&lt; std::uint8\_t &gt; | [**ByteArrayTag**](#typedef-bytearraytag)  <br> |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::uint8\_t &gt; | [**ByteTag**](#typedef-bytetag)  <br> |
@@ -349,7 +354,7 @@ enum endstone::BarColor {
 ```C++
 enum endstone::BarFlag {
     DarkenSky,
-    Count
+    CreateFog
 };
 ```
 
@@ -381,6 +386,7 @@ enum endstone::BarStyle {
 
 ### enum BlockFace 
 
+_Represents the face of a block._ 
 ```C++
 enum endstone::BlockFace {
     Down,

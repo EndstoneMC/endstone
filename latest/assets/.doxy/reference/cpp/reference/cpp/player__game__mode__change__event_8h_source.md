@@ -39,15 +39,9 @@ public:
     ~PlayerGameModeChangeEvent() override = default;
 
     inline static const std::string NAME = "PlayerGameModeChangeEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
-    [[nodiscard]] GameMode getNewGameMode() const
-    {
-        return new_game_mode_;
-    }
+    [[nodiscard]] GameMode getNewGameMode() const { return new_game_mode_; }
 
 private:
     GameMode new_game_mode_;

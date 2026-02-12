@@ -25,7 +25,6 @@
 #pragma once
 
 namespace endstone {
-
 enum class BarStyle {
     Solid,
     Segmented6,
@@ -33,7 +32,6 @@ enum class BarStyle {
     Segmented12,
     Segmented20,
 };
-
 }  // namespace endstone
 ```
 

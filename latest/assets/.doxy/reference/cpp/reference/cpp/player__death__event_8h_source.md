@@ -37,20 +37,11 @@ public:
     {
     }
 
-    [[nodiscard]] Player &getPlayer() const
-    {
-        return static_cast<Player &>(getActor());
-    }
+    [[nodiscard]] Player &getPlayer() const { return static_cast<Player &>(getActor()); }
 
-    [[nodiscard]] std::optional<Message> getDeathMessage() const
-    {
-        return death_message_;
-    }
+    [[nodiscard]] std::optional<Message> getDeathMessage() const { return death_message_; }
 
-    void setDeathMessage(std::optional<Message> death_message)
-    {
-        death_message_ = std::move(death_message);
-    }
+    void setDeathMessage(std::optional<Message> death_message) { death_message_ = std::move(death_message); }
 
 private:
     std::optional<Message> death_message_;

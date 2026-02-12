@@ -52,7 +52,7 @@ _Represents some type of crafting recipe._
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getResult**](#function-getresult) () const = 0<br>_Get the result of this recipe._  |
+| virtual [**ItemStack**](classendstone_1_1ItemStack.md) | [**getResult**](#function-getresult) () const = 0<br>_Get the result of this recipe._  |
 | virtual  | [**~Recipe**](#function-recipe) () = default<br> |
 
 
@@ -91,7 +91,7 @@ _Represents some type of crafting recipe._
 
 _Get the result of this recipe._ 
 ```C++
-virtual std::unique_ptr< ItemStack > endstone::Recipe::getResult () const = 0
+virtual ItemStack endstone::Recipe::getResult () const = 0
 ```
 
 

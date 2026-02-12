@@ -299,8 +299,6 @@
       <node id="33">
         <label>include/endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h_source"/>
-        <childnode refid="34" relation="include">
-        </childnode>
       </node>
       <node id="34">
         <label>include/endstone/inventory/item_stack.h</label>
@@ -310,6 +308,8 @@
         <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -413,8 +413,6 @@
         <link refid="server_8h_source"/>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
         <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
@@ -457,25 +455,21 @@
 <codeline lineno="28" refid="classendstone_1_1Header" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Header" kindref="compound">Header</ref><sp/>{</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Header" kindref="compound">Header</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Header" kindref="compound">Header</ref>(Message<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">label</ref>)<sp/>:<sp/>label_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">label</ref>))</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40" refid="classendstone_1_1Header_1a7fbe4814c5ff46425f28d46fc89e7042" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>Message<sp/><ref refid="classendstone_1_1Header_1a7fbe4814c5ff46425f28d46fc89e7042" kindref="member">getLabel</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="41"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>label_;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51" refid="classendstone_1_1Header_1a4fe365b58872e118382981c82f925742" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Header" kindref="compound">Header</ref><sp/>&amp;<ref refid="classendstone_1_1Header_1a4fe365b58872e118382981c82f925742" kindref="member">setLabel</ref>(Message<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">label</ref>)</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>label_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">label</ref>);</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>Message<sp/>label_;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Header" kindref="compound">Header</ref>(Message<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">label</ref>)<sp/>:<sp/>label_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">label</ref>))<sp/>{}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classendstone_1_1Header_1a7fbe4814c5ff46425f28d46fc89e7042" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>Message<sp/><ref refid="classendstone_1_1Header_1a7fbe4814c5ff46425f28d46fc89e7042" kindref="member">getLabel</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>label_;<sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classendstone_1_1Header_1a4fe365b58872e118382981c82f925742" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Header" kindref="compound">Header</ref><sp/>&amp;<ref refid="classendstone_1_1Header_1a4fe365b58872e118382981c82f925742" kindref="member">setLabel</ref>(Message<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">label</ref>)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>label_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">label</ref>);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>Message<sp/>label_;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/form/controls/header.h"/>
   </compounddef>

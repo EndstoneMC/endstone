@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="83" column="13" bodyfile="include/endstone/form/form.h" bodystart="83" bodyend="-1"/>
+        <location file="include/endstone/form/form.h" line="77" column="13" bodyfile="include/endstone/form/form.h" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Form_1a2e7d8ad1b41e12cf0d4f1e8522bf3e46" prot="protected" static="no" mutable="no">
         <type>OnCloseCallback</type>
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="84" column="21" bodyfile="include/endstone/form/form.h" bodystart="84" bodyend="-1"/>
+        <location file="include/endstone/form/form.h" line="78" column="21" bodyfile="include/endstone/form/form.h" bodystart="78" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -85,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="43" column="14" bodyfile="include/endstone/form/form.h" bodystart="43" bodyend="46"/>
+        <location file="include/endstone/form/form.h" line="43" column="14" bodyfile="include/endstone/form/form.h" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Form_1a85daf37f20cdd2ce9e5eff9a2179a7e0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="54" column="7" bodyfile="include/endstone/form/form.h" bodystart="54" bodyend="58"/>
+        <location file="include/endstone/form/form.h" line="51" column="7" bodyfile="include/endstone/form/form.h" bodystart="51" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Form_1aff78b36d4798b8185ea1ff93f6260f63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
@@ -147,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="66" column="7" bodyfile="include/endstone/form/form.h" bodystart="66" bodyend="70"/>
+        <location file="include/endstone/form/form.h" line="63" column="7" bodyfile="include/endstone/form/form.h" bodystart="63" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>OnCloseCallback</type>
@@ -165,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="77" column="22" bodyfile="include/endstone/form/form.h" bodystart="77" bodyend="80"/>
+        <location file="include/endstone/form/form.h" line="74" column="22" bodyfile="include/endstone/form/form.h" bodystart="74" bodyend="74"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -174,7 +174,7 @@
     <detaileddescription>
 <para>The <ref refid="classendstone_1_1Form" kindref="compound">Form</ref> class provides a base abstraction for different types of forms. It supports three types of forms: Action, Message, and Modal. Each form has a title, which can be a string or a translatable object. </para>
     </detaileddescription>
-    <location file="include/endstone/form/form.h" line="33" column="1" bodyfile="include/endstone/form/form.h" bodystart="33" bodyend="85"/>
+    <location file="include/endstone/form/form.h" line="33" column="1" bodyfile="include/endstone/form/form.h" bodystart="33" bodyend="79"/>
     <listofallmembers>
       <member refid="classendstone_1_1Form_1a77028f5b2f946a921e9e118da00dbe3a" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>Form</name></member>
       <member refid="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>getOnClose</name></member>

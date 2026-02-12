@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_knockback_event.h" line="69" column="9" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="69" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_knockback_event.h" line="60" column="9" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorKnockbackEvent_1ac0892e6d7929da34e867dfe79e7864ff" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_knockback_event.h" line="70" column="11" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="70" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_knockback_event.h" line="61" column="11" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorKnockbackEvent_1a906d58cbc40540d8cd57327d0862d3c2" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_knockback_event.h" line="71" column="12" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="71" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_knockback_event.h" line="62" column="12" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorKnockbackEvent_1aae9204247f577fa7adb8d181ccf09eb8" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_knockback_event.h" line="72" column="12" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="72" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_knockback_event.h" line="63" column="12" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="63" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_knockback_event.h" line="40" column="12" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="40" bodyend="43"/>
+        <location file="include/endstone/event/actor/actor_knockback_event.h" line="40" column="12" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorKnockbackEvent_1aa141894e58254a8afe5f28d19d7aed02" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -141,7 +141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_knockback_event.h" line="53" column="13" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="53" bodyend="56"/>
+        <location file="include/endstone/event/actor/actor_knockback_event.h" line="50" column="13" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorKnockbackEvent_1a4d0589c39958cc0b744f76ba1d6e7714" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -170,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_knockback_event.h" line="63" column="10" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="63" bodyend="66"/>
+        <location file="include/endstone/event/actor/actor_knockback_event.h" line="57" column="10" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="57" bodyend="57"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -238,7 +238,7 @@
         <link refid="classendstone_1_1ICancellable"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/actor/actor_knockback_event.h" line="26" column="1" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="26" bodyend="73"/>
+    <location file="include/endstone/event/actor/actor_knockback_event.h" line="26" column="1" bodyfile="include/endstone/event/actor/actor_knockback_event.h" bodystart="26" bodyend="64"/>
     <listofallmembers>
       <member refid="classendstone_1_1ActorEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>ActorEvent</name></member>
       <member refid="classendstone_1_1ActorKnockbackEvent_1a91c6fe3fa52a62195dd478f0d384db72" prot="public" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>ActorKnockbackEvent</name></member>

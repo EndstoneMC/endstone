@@ -99,12 +99,12 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md)) <br> |
-|   | [**PlayerInteractEvent**](#function-playerinteractevent) ([**Player**](classendstone_1_1Player.md) & player, [**Action**](classendstone_1_1PlayerInteractEvent.md#enum-action) action, [**ItemStack**](classendstone_1_1ItemStack.md) \* item, [**Block**](classendstone_1_1Block.md) \* block\_clicked, BlockFace block\_face, [**const**](classendstone_1_1Identifier.md) std::optional&lt; [**Vector**](classendstone_1_1Vector.md) &gt; & clicked\_position) <br> |
+|   | [**PlayerInteractEvent**](#function-playerinteractevent) ([**Player**](classendstone_1_1Player.md) & player, [**Action**](classendstone_1_1PlayerInteractEvent.md#enum-action) action, std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; item, [**Block**](classendstone_1_1Block.md) \* block\_clicked, [**BlockFace**](namespaceendstone.md#enum-blockface) block\_face, std::optional&lt; [**Vector**](classendstone_1_1Vector.md) &gt; clicked\_position) <br> |
 |  [**Action**](classendstone_1_1PlayerInteractEvent.md#enum-action) | [**getAction**](#function-getaction) () const<br>_Returns the action type._  |
 |  [**Block**](classendstone_1_1Block.md) \* | [**getBlock**](#function-getblock) () const<br>_Returns the clicked block._  |
-|  BlockFace | [**getBlockFace**](#function-getblockface) () const<br>_Returns the face of the block that was clicked._  |
+|  [**BlockFace**](namespaceendstone.md#enum-blockface) | [**getBlockFace**](#function-getblockface) () const<br>_Returns the face of the block that was clicked._  |
 |  std::optional&lt; [**Vector**](classendstone_1_1Vector.md) &gt; | [**getClickedPosition**](#function-getclickedposition) () const<br>_Gets the exact position on the block the player interacted with._  |
-|  [**ItemStack**](classendstone_1_1ItemStack.md) \* | [**getItem**](#function-getitem) () const<br>_Returns the item in hand represented by this event._  |
+|  [**const**](classendstone_1_1Identifier.md) std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; & | [**getItem**](#function-getitem) () const<br>_Returns the item in hand represented by this event._  |
 |  [**bool**](classendstone_1_1Identifier.md) | [**hasBlock**](#function-hasblock) () const<br>_Check if this event involved a block._  |
 |  [**bool**](classendstone_1_1Identifier.md) | [**hasItem**](#function-hasitem) () const<br>_Check if this event involved an item._  |
 
@@ -256,10 +256,10 @@ endstone::PlayerInteractEvent::ENDSTONE_EVENT (
 inline endstone::PlayerInteractEvent::PlayerInteractEvent (
     Player & player,
     Action action,
-    ItemStack * item,
+    std::optional< ItemStack > item,
     Block * block_clicked,
     BlockFace block_face,
-    const std::optional< Vector > & clicked_position
+    std::optional< Vector > clicked_position
 ) 
 ```
 
@@ -388,7 +388,7 @@ the clicked position.
 
 _Returns the item in hand represented by this event._ 
 ```C++
-inline ItemStack * endstone::PlayerInteractEvent::getItem () const
+inline const std::optional< ItemStack > & endstone::PlayerInteractEvent::getItem () const
 ```
 
 
@@ -397,7 +397,7 @@ inline ItemStack * endstone::PlayerInteractEvent::getItem () const
 
 **Returns:**
 
-[**ItemStack**](classendstone_1_1ItemStack.md) the item used 
+[**ItemStack**](classendstone_1_1ItemStack.md) the item used, or std::nullopt if no item 
 
 
 

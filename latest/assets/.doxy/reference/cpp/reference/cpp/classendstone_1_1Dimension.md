@@ -57,7 +57,7 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**Item**](classendstone_1_1Item.md) & | [**dropItem**](#function-dropitem) ([**Location**](classendstone_1_1Location.md) location, [**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Drops an item at the specified_ [_**Location**_](classendstone_1_1Location.md) _._ |
+| virtual [**Item**](classendstone_1_1Item.md) & | [**dropItem**](#function-dropitem) ([**Location**](classendstone_1_1Location.md) location, [**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Drops an item at the specified_ [_**Location**_](classendstone_1_1Location.md) _._ |
 | virtual std::vector&lt; [**Actor**](classendstone_1_1Actor.md) \* &gt; | [**getActors**](#function-getactors) () const = 0<br>_Get a list of all actors in this dimension._  |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlockAt**](#function-getblockat-12) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) y, [**int**](classendstone_1_1Identifier.md) z) const = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given coordinates._ |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlockAt**](#function-getblockat-22) ([**Location**](classendstone_1_1Location.md) location) const = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given_[_**Location**_](classendstone_1_1Location.md) _._ |
@@ -130,7 +130,7 @@ _Drops an item at the specified_ [_**Location**_](classendstone_1_1Location.md) 
 ```C++
 virtual Item & endstone::Dimension::dropItem (
     Location location,
-    ItemStack & item
+    const  ItemStack & item
 ) = 0
 ```
 

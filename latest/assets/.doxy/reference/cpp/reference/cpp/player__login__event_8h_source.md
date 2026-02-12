@@ -38,20 +38,11 @@ public:
     ~PlayerLoginEvent() override = default;
 
     inline static const std::string NAME = "PlayerLoginEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
-    [[nodiscard]] const std::string &getKickMessage() const
-    {
-        return message_;
-    }
+    [[nodiscard]] const std::string &getKickMessage() const { return message_; }
 
-    void setKickMessage(const std::string &message)
-    {
-        message_ = message;
-    }
+    void setKickMessage(const std::string &message) { message_ = message; }
 
 private:
     std::string message_;

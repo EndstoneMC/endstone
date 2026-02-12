@@ -15,6 +15,7 @@
 * `#include <string>`
 * `#include <vector>`
 * `#include "endstone/ban/ban_entry.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

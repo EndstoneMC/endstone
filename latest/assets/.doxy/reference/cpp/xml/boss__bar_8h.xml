@@ -55,7 +55,7 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="24">
+      <node id="25">
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
       </node>
@@ -69,36 +69,36 @@
         <label>include/endstone/event/block/block_cook_event.h</label>
         <link refid="block__cook__event_8h_source"/>
       </node>
-      <node id="15">
+      <node id="16">
         <label>include/endstone/event/chunk/chunk_event.h</label>
         <link refid="chunk__event_8h_source"/>
-        <childnode refid="16" relation="include">
-        </childnode>
         <childnode refid="17" relation="include">
         </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
       </node>
-      <node id="16">
+      <node id="17">
         <label>include/endstone/event/chunk/chunk_load_event.h</label>
         <link refid="chunk__load__event_8h_source"/>
       </node>
-      <node id="17">
+      <node id="18">
         <label>include/endstone/event/chunk/chunk_unload_event.h</label>
         <link refid="chunk__unload__event_8h_source"/>
       </node>
-      <node id="25">
+      <node id="26">
         <label>include/endstone/event/event_handler.h</label>
         <link refid="event__handler_8h_source"/>
-        <childnode refid="26" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>include/endstone/event/handler_list.h</label>
         <link refid="handler__list_8h_source"/>
       </node>
-      <node id="14">
+      <node id="15">
         <label>include/endstone/event/level/dimension_event.h</label>
         <link refid="dimension__event_8h_source"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -106,6 +106,10 @@
         <link refid="player__drop__item__event_8h_source"/>
       </node>
       <node id="11">
+        <label>include/endstone/event/player/player_interact_event.h</label>
+        <link refid="player__interact__event_8h_source"/>
+      </node>
+      <node id="12">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
@@ -113,23 +117,21 @@
         <label>include/endstone/event/player/player_pickup_item_event.h</label>
         <link refid="player__pickup__item__event_8h_source"/>
       </node>
-      <node id="27">
+      <node id="28">
         <label>include/endstone/event/server/plugin_disable_event.h</label>
         <link refid="plugin__disable__event_8h_source"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="30">
         <label>include/endstone/event/server/plugin_enable_event.h</label>
         <link refid="plugin__enable__event_8h_source"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="5">
         <label>include/endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h_source"/>
-        <childnode refid="6" relation="include">
-        </childnode>
       </node>
       <node id="6">
         <label>include/endstone/inventory/item_stack.h</label>
@@ -146,8 +148,10 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
       </node>
-      <node id="22">
+      <node id="23">
         <label>include/endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="5" relation="include">
@@ -155,11 +159,11 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="22">
         <label>include/endstone/inventory/meta/book_meta.h</label>
         <link refid="book__meta_8h_source"/>
       </node>
-      <node id="18">
+      <node id="19">
         <label>include/endstone/inventory/meta/crossbow_meta.h</label>
         <link refid="crossbow__meta_8h_source"/>
       </node>
@@ -170,61 +174,61 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-      </node>
-      <node id="19">
-        <label>include/endstone/inventory/meta/map_meta.h</label>
-        <link refid="map__meta_8h_source"/>
-      </node>
-      <node id="20">
-        <label>include/endstone/inventory/meta/writable_book_meta.h</label>
-        <link refid="writable__book__meta_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="20">
+        <label>include/endstone/inventory/meta/map_meta.h</label>
+        <link refid="map__meta_8h_source"/>
+      </node>
+      <node id="21">
+        <label>include/endstone/inventory/meta/writable_book_meta.h</label>
+        <link refid="writable__book__meta_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>
-      <node id="13">
+      <node id="14">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
-        <childnode refid="14" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="24">
         <label>include/endstone/plugin/plugin.h</label>
         <link refid="plugin_8h_source"/>
-        <childnode refid="24" relation="include">
-        </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
       </node>
-      <node id="28">
+      <node id="29">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="31">
+      <node id="32">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
       </node>
-      <node id="30">
+      <node id="31">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -232,13 +236,11 @@
         <link refid="server_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -273,49 +275,47 @@
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/boss/bar_style.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Player;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31" refid="classendstone_1_1BossBar" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1BossBar" kindref="compound">BossBar</ref><sp/>{</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar" kindref="compound">~BossBar</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39" refid="classendstone_1_1BossBar_1adf79b39c307ce9a60ce97150a10da473" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1BossBar_1adf79b39c307ce9a60ce97150a10da473" kindref="member">getTitle</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45" refid="classendstone_1_1BossBar_1a8001b15b6c865dff7505af594854f9d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a8001b15b6c865dff7505af594854f9d6" kindref="member">setTitle</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">title</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51" refid="classendstone_1_1BossBar_1adf1bfb4dc7ac123c729edc425c6dbf38" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>BarColor<sp/><ref refid="classendstone_1_1BossBar_1adf1bfb4dc7ac123c729edc425c6dbf38" kindref="member">getColor</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57" refid="classendstone_1_1BossBar_1a6f2954ac107a94b825740c52946f5fe1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a6f2954ac107a94b825740c52946f5fe1" kindref="member">setColor</ref>(BarColor<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63" refid="classendstone_1_1BossBar_1a12f194cb1f44f0875591c2d31a26a079" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734" kindref="member">BarStyle</ref><sp/><ref refid="classendstone_1_1BossBar_1a12f194cb1f44f0875591c2d31a26a079" kindref="member">getStyle</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="classendstone_1_1BossBar_1ae9af39fed4792bba3635aca0b33cc364" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1ae9af39fed4792bba3635aca0b33cc364" kindref="member">setStyle</ref>(<ref refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734" kindref="member">BarStyle</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">style</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76" refid="classendstone_1_1BossBar_1a059c621a5d4bb4bd32aa1567195f6332" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a059c621a5d4bb4bd32aa1567195f6332" kindref="member">hasFlag</ref>(<ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" kindref="member">BarFlag</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">flag</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82" refid="classendstone_1_1BossBar_1a7620a5bbf2fe2e260ffd981ed812b233" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a7620a5bbf2fe2e260ffd981ed812b233" kindref="member">addFlag</ref>(<ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" kindref="member">BarFlag</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">flag</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88" refid="classendstone_1_1BossBar_1a1300817a31f861f6ec11094ab4d39a40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a1300817a31f861f6ec11094ab4d39a40" kindref="member">removeFlag</ref>(<ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" kindref="member">BarFlag</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">flag</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94" refid="classendstone_1_1BossBar_1a26fd77e91731b0d93a1053251c551cd0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a26fd77e91731b0d93a1053251c551cd0" kindref="member">getProgress</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100" refid="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" kindref="member">setProgress</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">progress</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106" refid="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" kindref="member">isVisible</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight></codeline>
-<codeline lineno="112" refid="classendstone_1_1BossBar_1ac037275aadff9ea427432063ffeca138" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1ac037275aadff9ea427432063ffeca138" kindref="member">setVisible</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">visible</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="118" refid="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" kindref="member">addPlayer</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="124" refid="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" kindref="member">removePlayer</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129" refid="classendstone_1_1BossBar_1adb723506a074cee293e813a4409b12c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1adb723506a074cee293e813a4409b12c2" kindref="member">removeAll</ref>()<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135" refid="classendstone_1_1BossBar_1a56def5f8e4f80164ae5d17288adc3c98" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;Player<sp/>*&gt;<sp/><ref refid="classendstone_1_1BossBar_1a56def5f8e4f80164ae5d17288adc3c98" kindref="member">getPlayers</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="136"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Player;</highlight></codeline>
+<codeline lineno="29" refid="classendstone_1_1BossBar" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1BossBar" kindref="compound">BossBar</ref><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar" kindref="compound">~BossBar</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classendstone_1_1BossBar_1adf79b39c307ce9a60ce97150a10da473" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1BossBar_1adf79b39c307ce9a60ce97150a10da473" kindref="member">getTitle</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classendstone_1_1BossBar_1a8001b15b6c865dff7505af594854f9d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a8001b15b6c865dff7505af594854f9d6" kindref="member">setTitle</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">title</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classendstone_1_1BossBar_1adf1bfb4dc7ac123c729edc425c6dbf38" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>BarColor<sp/><ref refid="classendstone_1_1BossBar_1adf1bfb4dc7ac123c729edc425c6dbf38" kindref="member">getColor</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classendstone_1_1BossBar_1a6f2954ac107a94b825740c52946f5fe1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a6f2954ac107a94b825740c52946f5fe1" kindref="member">setColor</ref>(BarColor<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classendstone_1_1BossBar_1a12f194cb1f44f0875591c2d31a26a079" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734" kindref="member">BarStyle</ref><sp/><ref refid="classendstone_1_1BossBar_1a12f194cb1f44f0875591c2d31a26a079" kindref="member">getStyle</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classendstone_1_1BossBar_1ae9af39fed4792bba3635aca0b33cc364" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1ae9af39fed4792bba3635aca0b33cc364" kindref="member">setStyle</ref>(<ref refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734" kindref="member">BarStyle</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">style</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classendstone_1_1BossBar_1a059c621a5d4bb4bd32aa1567195f6332" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a059c621a5d4bb4bd32aa1567195f6332" kindref="member">hasFlag</ref>(<ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" kindref="member">BarFlag</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">flag</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classendstone_1_1BossBar_1a7620a5bbf2fe2e260ffd981ed812b233" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a7620a5bbf2fe2e260ffd981ed812b233" kindref="member">addFlag</ref>(<ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" kindref="member">BarFlag</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">flag</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classendstone_1_1BossBar_1a1300817a31f861f6ec11094ab4d39a40" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a1300817a31f861f6ec11094ab4d39a40" kindref="member">removeFlag</ref>(<ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" kindref="member">BarFlag</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">flag</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classendstone_1_1BossBar_1a26fd77e91731b0d93a1053251c551cd0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a26fd77e91731b0d93a1053251c551cd0" kindref="member">getProgress</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" kindref="member">setProgress</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">progress</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" kindref="member">isVisible</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classendstone_1_1BossBar_1ac037275aadff9ea427432063ffeca138" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1ac037275aadff9ea427432063ffeca138" kindref="member">setVisible</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">visible</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" kindref="member">addPlayer</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" kindref="member">removePlayer</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">player</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="classendstone_1_1BossBar_1adb723506a074cee293e813a4409b12c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BossBar_1adb723506a074cee293e813a4409b12c2" kindref="member">removeAll</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classendstone_1_1BossBar_1a56def5f8e4f80164ae5d17288adc3c98" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;Player<sp/>*&gt;<sp/><ref refid="classendstone_1_1BossBar_1a56def5f8e4f80164ae5d17288adc3c98" kindref="member">getPlayers</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/boss/boss_bar.h"/>
   </compounddef>

@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2577,6 +2577,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#protected-attributes" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Attributes
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2614,11 +2625,28 @@ For latest updates join the chat on
 </li>
                 
             
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#protected-attributes-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Attributes Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Protected Attributes Documentation">
+        <ul class="md-nav__list">
+            
                 
                     <li class="md-nav__item">
-    <a href="#function-blockevent_1" class="md-nav__link">
+    <a href="#variable-block_" class="md-nav__link">
       <span class="md-ellipsis">
-        function ~BlockEvent
+        variable block_
       </span>
     </a>
 
@@ -2690,10 +2718,6 @@ For latest updates join the chat on
 <td style="text-align: right;"><a href="../classendstone_1_1Block/"><strong>Block</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getblock"><strong>getBlock</strong></a> () const<br><em>Gets the block involved in this event.</em></td>
 </tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-blockevent"><strong>~BlockEvent</strong></a> () override<br></td>
-</tr>
 </tbody>
 </table>
 <h2 id="public-functions-inherited-from-endstoneevent">Public Functions inherited from endstone::Event<a class="headerlink" href="#public-functions-inherited-from-endstoneevent" title="Permanent link">&para;</a></h2>
@@ -2732,6 +2756,21 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
+<h2 id="protected-attributes">Protected Attributes<a class="headerlink" href="#protected-attributes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">std::unique_ptr&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#variable-block_"><strong>block_</strong></a>  <br></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-blockevent">function BlockEvent<a class="headerlink" href="#function-blockevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockEvent</span><span class="o">::</span><span class="n">BlockEvent</span><span class="w"> </span><span class="p">(</span>
@@ -2747,9 +2786,9 @@ For latest updates join the chat on
 <p><strong>Returns:</strong></p>
 <p>The <a href="../classendstone_1_1Block/"><strong>Block</strong></a> which block is involved in this event </p>
 <hr>
-
-<h3 id="function-blockevent_1">function ~BlockEvent<a class="headerlink" href="#function-blockevent_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">BlockEvent</span><span class="o">::~</span><span class="n">BlockEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
+<h2 id="protected-attributes-documentation">Protected Attributes Documentation<a class="headerlink" href="#protected-attributes-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="variable-block_">variable block_<a class="headerlink" href="#variable-block_" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Block</span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockEvent</span><span class="o">::</span><span class="n">block_</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 
@@ -2878,10 +2917,10 @@ For latest updates join the chat on
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

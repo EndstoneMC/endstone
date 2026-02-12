@@ -8,8 +8,9 @@
 
 
 
+_Represents an entry for a banned player._ 
 
-
+* `#include <endstone/ban/player_ban_entry.h>`
 
 
 

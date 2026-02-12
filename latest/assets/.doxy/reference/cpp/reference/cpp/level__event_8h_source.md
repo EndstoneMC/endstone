@@ -31,12 +31,9 @@ namespace endstone {
 
 class LevelEvent : public Event {
 public:
-    explicit LevelEvent(Level &level) : level_(level){};
+    explicit LevelEvent(Level &level) : level_(level) {};
 
-    [[nodiscard]] Level &getLevel() const
-    {
-        return level_;
-    }
+    [[nodiscard]] Level &getLevel() const { return level_; }
 
 private:
     Level &level_;

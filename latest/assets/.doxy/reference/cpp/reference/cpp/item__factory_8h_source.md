@@ -40,7 +40,6 @@ public:
 
     [[nodiscard]] virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, ItemTypeId type) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> createItemStack(const CompoundTag &tag) const = 0;
 };
 }  // namespace endstone
 ```

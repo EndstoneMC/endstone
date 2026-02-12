@@ -113,7 +113,7 @@ Inherits the following classes: [endstone::BlockPistonEvent](classendstone_1_1Bl
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockPistonEvent**](#function-blockpistonevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, BlockFace direction) <br> |
+|   | [**BlockPistonEvent**](#function-blockpistonevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, [**BlockFace**](namespaceendstone.md#enum-blockface) direction) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockPistonRetractEvent**](classendstone_1_1BlockPistonRetractEvent.md)) <br> |
 
 
@@ -123,8 +123,8 @@ See [endstone::BlockPistonEvent](classendstone_1_1BlockPistonEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md#function-blockpistonevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, BlockFace direction) <br> |
-|  BlockFace | [**getDirection**](classendstone_1_1BlockPistonEvent.md#function-getdirection) () const<br>_Return the direction in which the piston will operate._  |
+|   | [**BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md#function-blockpistonevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, [**BlockFace**](namespaceendstone.md#enum-blockface) direction) <br> |
+|  [**BlockFace**](namespaceendstone.md#enum-blockface) | [**getDirection**](classendstone_1_1BlockPistonEvent.md#function-getdirection) () const<br>_Return the direction in which the piston will operate._  |
 
 
 ## Public Functions inherited from endstone::Cancellable

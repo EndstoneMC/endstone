@@ -24,9 +24,12 @@
 
 #pragma once
 
+#include <optional>
+
 #include "endstone/block/block_face.h"
 #include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
+#include "endstone/inventory/item_stack.h"
 
 namespace endstone {
 
@@ -41,50 +44,29 @@ public:
 
     ENDSTONE_EVENT(PlayerInteractEvent);
 
-    PlayerInteractEvent(Player &player, Action action, ItemStack *item, Block *block_clicked, BlockFace block_face,
-                        const std::optional<Vector> &clicked_position)
-        : Cancellable(player), action_(action), item_(item), block_clicked_(block_clicked), block_face_(block_face),
-          clicked_position_(clicked_position)
+    PlayerInteractEvent(Player &player, Action action, std::optional<ItemStack> item, Block *block_clicked,
+                        BlockFace block_face, std::optional<Vector> clicked_position)
+        : Cancellable(player), action_(action), item_(std::move(item)), block_clicked_(block_clicked),
+          block_face_(block_face), clicked_position_(std::move(clicked_position))
     {
     }
 
-    [[nodiscard]] Action getAction() const
-    {
-        return action_;
-    }
+    [[nodiscard]] Action getAction() const { return action_; }
 
-    [[nodiscard]] bool hasItem() const
-    {
-        return item_ != nullptr;
-    }
+    [[nodiscard]] bool hasItem() const { return item_.has_value(); }
 
-    [[nodiscard]] ItemStack *getItem() const
-    {
-        return item_;
-    }
+    [[nodiscard]] const std::optional<ItemStack> &getItem() const { return item_; }
 
-    [[nodiscard]] bool hasBlock() const
-    {
-        return block_clicked_ != nullptr;
-    }
+    [[nodiscard]] bool hasBlock() const { return block_clicked_ != nullptr; }
 
-    [[nodiscard]] Block *getBlock() const
-    {
-        return block_clicked_;
-    }
+    [[nodiscard]] Block *getBlock() const { return block_clicked_; }
 
-    [[nodiscard]] BlockFace getBlockFace() const
-    {
-        return block_face_;
-    }
+    [[nodiscard]] BlockFace getBlockFace() const { return block_face_; }
 
-    [[nodiscard]] std::optional<Vector> getClickedPosition() const
-    {
-        return clicked_position_;
-    }
+    [[nodiscard]] std::optional<Vector> getClickedPosition() const { return clicked_position_; }
 
 private:
-    ItemStack *item_;
+    std::optional<ItemStack> item_;
     Action action_;
     Block *block_clicked_;
     BlockFace block_face_;

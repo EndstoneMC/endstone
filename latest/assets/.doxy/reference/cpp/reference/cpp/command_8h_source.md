@@ -25,7 +25,6 @@
 #pragma once
 
 #include <algorithm>
-#include <optional>
 #include <string>
 #include <utility>
 #include <vector>
@@ -56,23 +55,17 @@ public:
         return false;
     }
 
-    [[nodiscard]] std::string getName() const
-    {
-        return name_;
-    }
+    [[nodiscard]] std::string getName() const { return name_; }
 
     void setName(std::string name)
     {
         if (!isRegistered()) {
-            std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+            std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
             name_ = std::move(name);
         }
     }
 
-    [[nodiscard]] std::string getDescription() const
-    {
-        return description_;
-    }
+    [[nodiscard]] std::string getDescription() const { return description_; }
 
     void setDescription(std::string description)
     {
@@ -81,16 +74,13 @@ public:
         }
     }
 
-    [[nodiscard]] std::vector<std::string> getAliases() const
-    {
-        return aliases_;
-    }
+    [[nodiscard]] std::vector<std::string> getAliases() const { return aliases_; }
 
     template <typename... Alias>
     void setAliases(Alias... aliases)
     {
         if (!isRegistered()) {
-            std::vector<std::string> all_aliases = {aliases...};
+            std::vector<std::string> all_aliases = {std::move(aliases)...};
             aliases_.clear();
             for (auto alias : all_aliases) {
                 std::transform(alias.begin(), alias.end(), alias.begin(),
@@ -100,16 +90,13 @@ public:
         }
     }
 
-    [[nodiscard]] std::vector<std::string> getUsages() const
-    {
-        return usages_;
-    }
+    [[nodiscard]] std::vector<std::string> getUsages() const { return usages_; }
 
     template <typename... Usage>
     void setUsages(Usage... usages)
     {
         if (!isRegistered()) {
-            std::vector<std::string> all_usages = {usages...};
+            std::vector<std::string> all_usages = {std::move(usages)...};
             if (all_usages.empty()) {
                 all_usages.push_back("/" + getName());
             }
@@ -117,15 +104,12 @@ public:
         }
     }
 
-    [[nodiscard]] std::vector<std::string> getPermissions() const
-    {
-        return permissions_;
-    }
+    [[nodiscard]] std::vector<std::string> getPermissions() const { return permissions_; }
 
     template <typename... Permission>
     void setPermissions(Permission... permissions)
     {
-        permissions_ = std::move(std::vector<std::string>{permissions...});
+        permissions_ = std::move(std::vector<std::string>{std::move(permissions)...});
     }
 
     [[nodiscard]] bool testPermission(const CommandSender &target) const
@@ -134,7 +118,7 @@ public:
             return true;
         }
 
-        target.sendErrorMessage(Translatable("commands.generic.unknown", {getName()}));
+        target.sendErrorMessage(Translatable("commands.generic.error.permissions", {getName()}));
         return false;
     }
 
@@ -144,8 +128,7 @@ public:
             return true;
         }
 
-        return std::any_of(permissions_.begin(), permissions_.end(),
-                           [&target](const auto &p) { return target.hasPermission(p); });
+        return std::ranges::any_of(permissions_, [&target](const auto &p) { return target.hasPermission(p); });
     }
 
     bool registerTo(const CommandMap &command_map)
@@ -168,15 +151,9 @@ public:
         return false;
     }
 
-    [[nodiscard]] bool isRegistered() const
-    {
-        return command_map_ != nullptr;
-    }
+    [[nodiscard]] bool isRegistered() const { return command_map_ != nullptr; }
 
-    [[nodiscard]] virtual PluginCommand *asPluginCommand() const
-    {
-        return nullptr;
-    }
+    [[nodiscard]] virtual PluginCommand *asPluginCommand() const { return nullptr; }
 
 private:
     [[nodiscard]] bool allowChangesFrom(const CommandMap &command_map) const

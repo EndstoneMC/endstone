@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/text_input.h" line="103" column="13" bodyfile="include/endstone/form/controls/text_input.h" bodystart="103" bodyend="-1"/>
+        <location file="include/endstone/form/controls/text_input.h" line="94" column="13" bodyfile="include/endstone/form/controls/text_input.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1TextInput_1a4a9230a84959d6a2cb00b31b5afb8529" prot="private" static="no" mutable="no">
         <type>Message</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/text_input.h" line="104" column="13" bodyfile="include/endstone/form/controls/text_input.h" bodystart="104" bodyend="-1"/>
+        <location file="include/endstone/form/controls/text_input.h" line="95" column="13" bodyfile="include/endstone/form/controls/text_input.h" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1TextInput_1ad07211ef414102b38a1c1736ed8c639a" prot="private" static="no" mutable="no">
         <type>std::optional&lt; std::string &gt;</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/text_input.h" line="105" column="19" bodyfile="include/endstone/form/controls/text_input.h" bodystart="105" bodyend="-1"/>
+        <location file="include/endstone/form/controls/text_input.h" line="96" column="19" bodyfile="include/endstone/form/controls/text_input.h" bodystart="96" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/text_input.h" line="41" column="14" bodyfile="include/endstone/form/controls/text_input.h" bodystart="41" bodyend="44"/>
+        <location file="include/endstone/form/controls/text_input.h" line="41" column="14" bodyfile="include/endstone/form/controls/text_input.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1TextInput_1a0d2843a5fffa953b6aa5e74a6cc0ac08" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1TextInput" kindref="compound">TextInput</ref> &amp;</type>
@@ -136,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/text_input.h" line="52" column="15" bodyfile="include/endstone/form/controls/text_input.h" bodystart="52" bodyend="56"/>
+        <location file="include/endstone/form/controls/text_input.h" line="49" column="15" bodyfile="include/endstone/form/controls/text_input.h" bodystart="49" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1TextInput_1aca59bfd3c2b319af6e30336193dcf025" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Message</type>
@@ -154,7 +154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/text_input.h" line="63" column="14" bodyfile="include/endstone/form/controls/text_input.h" bodystart="63" bodyend="66"/>
+        <location file="include/endstone/form/controls/text_input.h" line="60" column="14" bodyfile="include/endstone/form/controls/text_input.h" bodystart="60" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1TextInput_1ae28e7f3a57e8dd27e23d0b9480bb2393" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1TextInput" kindref="compound">TextInput</ref> &amp;</type>
@@ -185,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/text_input.h" line="74" column="15" bodyfile="include/endstone/form/controls/text_input.h" bodystart="74" bodyend="78"/>
+        <location file="include/endstone/form/controls/text_input.h" line="68" column="15" bodyfile="include/endstone/form/controls/text_input.h" bodystart="68" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1TextInput_1ab24213ee14ce543cb7bf0ebd23fdbf4d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -203,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/text_input.h" line="85" column="20" bodyfile="include/endstone/form/controls/text_input.h" bodystart="85" bodyend="88"/>
+        <location file="include/endstone/form/controls/text_input.h" line="79" column="20" bodyfile="include/endstone/form/controls/text_input.h" bodystart="79" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1TextInput_1a2bf266925a2e5a753d556cbe18e429d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1TextInput" kindref="compound">TextInput</ref> &amp;</type>
@@ -234,7 +234,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/text_input.h" line="96" column="15" bodyfile="include/endstone/form/controls/text_input.h" bodystart="96" bodyend="100"/>
+        <location file="include/endstone/form/controls/text_input.h" line="87" column="15" bodyfile="include/endstone/form/controls/text_input.h" bodystart="87" bodyend="91"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -242,7 +242,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/form/controls/text_input.h" line="28" column="1" bodyfile="include/endstone/form/controls/text_input.h" bodystart="28" bodyend="106"/>
+    <location file="include/endstone/form/controls/text_input.h" line="28" column="1" bodyfile="include/endstone/form/controls/text_input.h" bodystart="28" bodyend="97"/>
     <listofallmembers>
       <member refid="classendstone_1_1TextInput_1ad07211ef414102b38a1c1736ed8c639a" prot="private" virt="non-virtual"><scope>endstone::TextInput</scope><name>default_text_</name></member>
       <member refid="classendstone_1_1TextInput_1ab24213ee14ce543cb7bf0ebd23fdbf4d" prot="public" virt="non-virtual"><scope>endstone::TextInput</scope><name>getDefaultValue</name></member>

@@ -38,25 +38,13 @@ public:
     }
 
     inline static const std::string NAME = "ActorDamageEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
-    [[nodiscard]] float getDamage() const
-    {
-        return damage_;
-    }
+    [[nodiscard]] float getDamage() const { return damage_; }
 
-    void setDamage(const float damage)
-    {
-        damage_ = damage;
-    }
+    void setDamage(const float damage) { damage_ = damage; }
 
-    [[nodiscard]] DamageSource &getDamageSource() const
-    {
-        return *damage_source_;
-    }
+    [[nodiscard]] DamageSource &getDamageSource() const { return *damage_source_; }
 
 private:
     std::unique_ptr<DamageSource> damage_source_;

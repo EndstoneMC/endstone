@@ -22,6 +22,11 @@
 * **difference\_type** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 
 
+## e
+
+* **EntryType** ([**endstone::BanList**](classendstone_1_1BanList.md))
+
+
 ## f
 
 * **FormVariant** ([**endstone::Player**](classendstone_1_1Player.md))
@@ -48,6 +53,11 @@
 * **OnSubmitCallback** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **OnClickCallback** ([**endstone::Button**](classendstone_1_1Button.md))
 * **OnCloseCallback** ([**endstone::Form**](classendstone_1_1Form.md))
+
+
+## p
+
+* **pointer\_type** ([**endstone::NotNull**](classendstone_1_1NotNull.md))
 
 
 ## s

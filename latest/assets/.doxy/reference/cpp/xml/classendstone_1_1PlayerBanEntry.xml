@@ -3,6 +3,7 @@
   <compounddef id="classendstone_1_1PlayerBanEntry" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerBanEntry</compoundname>
     <basecompoundref refid="classendstone_1_1BanEntry" prot="public" virt="non-virtual">endstone::BanEntry</basecompoundref>
+    <includes refid="player__ban__entry_8h" local="no">endstone/ban/player_ban_entry.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerBanEntry_1ab4a20630b1df00f1a2a5d104cbc6d56c" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -16,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/player_ban_entry.h" line="63" column="17" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="63" bodyend="-1"/>
+        <location file="include/endstone/ban/player_ban_entry.h" line="57" column="17" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerBanEntry_1a25d40f94f62da9f0813b3caa2cb40ad4" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &gt;</type>
@@ -30,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/player_ban_entry.h" line="64" column="19" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="64" bodyend="-1"/>
+        <location file="include/endstone/ban/player_ban_entry.h" line="58" column="19" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerBanEntry_1a797e796d74e68f85e0b648c9fb2d21c9" prot="private" static="no" mutable="no">
         <type>std::optional&lt; std::string &gt;</type>
@@ -44,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/player_ban_entry.h" line="65" column="19" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="65" bodyend="-1"/>
+        <location file="include/endstone/ban/player_ban_entry.h" line="59" column="19" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="59" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -74,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/player_ban_entry.h" line="26" column="14" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="26" bodyend="30"/>
+        <location file="include/endstone/ban/player_ban_entry.h" line="29" column="14" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="29" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1a896cb5a70c13eaae3274577097a4c8be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -92,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/player_ban_entry.h" line="37" column="18" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="37" bodyend="40"/>
+        <location file="include/endstone/ban/player_ban_entry.h" line="40" column="18" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1aa8aceaaecf33187241f042e1ae0a9e35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &gt;</type>
@@ -110,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/player_ban_entry.h" line="47" column="20" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="47" bodyend="50"/>
+        <location file="include/endstone/ban/player_ban_entry.h" line="47" column="20" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1a28bafcfc774eb95548936c79ca407ebf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -128,10 +129,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/player_ban_entry.h" line="57" column="20" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="57" bodyend="60"/>
+        <location file="include/endstone/ban/player_ban_entry.h" line="54" column="20" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="54" bodyend="54"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Represents an entry for a banned player. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
@@ -159,7 +161,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/ban/player_ban_entry.h" line="24" column="1" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="24" bodyend="66"/>
+    <location file="include/endstone/ban/player_ban_entry.h" line="27" column="1" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="27" bodyend="60"/>
     <listofallmembers>
       <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>Date</name></member>
       <member refid="classendstone_1_1BanEntry_1ab6991f9c822ac9cd969188b71aabae4a" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>DateFormat</name></member>

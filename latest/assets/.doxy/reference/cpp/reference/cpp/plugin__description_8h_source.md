@@ -30,8 +30,8 @@
 
 #include <fmt/format.h>
 
-#include "endstone/detail.h"
 #include "endstone/command/command.h"
+#include "endstone/detail.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/plugin/plugin_load_order.h"
 
@@ -59,90 +59,39 @@ public:
         api_version_ = ENDSTONE_API_VERSION;
     }
 
-    [[nodiscard]] std::string getName() const
-    {
-        return name_;
-    }
+    [[nodiscard]] std::string getName() const { return name_; }
 
-    [[nodiscard]] std::string getVersion() const
-    {
-        return version_;
-    }
+    [[nodiscard]] std::string getVersion() const { return version_; }
 
-    [[nodiscard]] std::string getFullName() const
-    {
-        return full_name_;
-    }
+    [[nodiscard]] std::string getFullName() const { return full_name_; }
 
-    [[nodiscard]] std::string getAPIVersion() const
-    {
-        return api_version_;
-    }
+    [[nodiscard]] std::string getAPIVersion() const { return api_version_; }
 
-    [[nodiscard]] std::string getDescription() const
-    {
-        return description_;
-    }
+    [[nodiscard]] std::string getDescription() const { return description_; }
 
-    [[nodiscard]] PluginLoadOrder getLoad() const
-    {
-        return load_;
-    }
+    [[nodiscard]] PluginLoadOrder getLoad() const { return load_; }
 
-    [[nodiscard]] std::vector<std::string> getAuthors() const
-    {
-        return authors_;
-    }
+    [[nodiscard]] std::vector<std::string> getAuthors() const { return authors_; }
 
-    [[nodiscard]] std::vector<std::string> getContributors() const
-    {
-        return contributors_;
-    }
+    [[nodiscard]] std::vector<std::string> getContributors() const { return contributors_; }
 
-    [[nodiscard]] std::string getWebsite() const
-    {
-        return website_;
-    }
+    [[nodiscard]] std::string getWebsite() const { return website_; }
 
-    [[nodiscard]] std::string getPrefix() const
-    {
-        return prefix_;
-    }
+    [[nodiscard]] std::string getPrefix() const { return prefix_; }
 
-    [[nodiscard]] std::vector<std::string> getProvides() const
-    {
-        return provides_;
-    }
+    [[nodiscard]] std::vector<std::string> getProvides() const { return provides_; }
 
-    [[nodiscard]] std::vector<std::string> getDepend() const
-    {
-        return depend_;
-    }
+    [[nodiscard]] std::vector<std::string> getDepend() const { return depend_; }
 
-    [[nodiscard]] std::vector<std::string> getSoftDepend() const
-    {
-        return soft_depend_;
-    }
+    [[nodiscard]] std::vector<std::string> getSoftDepend() const { return soft_depend_; }
 
-    [[nodiscard]] std::vector<std::string> getLoadBefore() const
-    {
-        return load_before_;
-    }
+    [[nodiscard]] std::vector<std::string> getLoadBefore() const { return load_before_; }
 
-    [[nodiscard]] PermissionDefault getDefaultPermission() const
-    {
-        return default_permission_;
-    }
+    [[nodiscard]] PermissionDefault getDefaultPermission() const { return default_permission_; }
 
-    [[nodiscard]] std::vector<Command> getCommands() const
-    {
-        return commands_;
-    }
+    [[nodiscard]] std::vector<Command> getCommands() const { return commands_; }
 
-    [[nodiscard]] std::vector<Permission> getPermissions() const
-    {
-        return permissions_;
-    }
+    [[nodiscard]] std::vector<Permission> getPermissions() const { return permissions_; }
 
 private:
     std::string name_;

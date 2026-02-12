@@ -16,27 +16,24 @@
 #include <vector>
 
 #include "endstone/ban/ban_entry.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
-
 template <typename T>
 class BanList {
 public:
+    using EntryType = T;
     virtual ~BanList() = default;
 
-    [[nodiscard]] virtual const T *getBanEntry(std::string target) const = 0;
+    [[nodiscard]] virtual Nullable<T> getBanEntry(std::string target) const = 0;
 
-    [[nodiscard]] virtual T *getBanEntry(std::string target) = 0;
+    virtual NotNull<T> addBan(std::string target, std::optional<std::string> reason,
+                              std::optional<BanEntry::Date> expires, std::optional<std::string> source) = 0;
 
-    virtual T &addBan(std::string target, std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
-                      std::optional<std::string> source) = 0;
+    virtual NotNull<T> addBan(std::string target, std::optional<std::string> reason, std::chrono::seconds duration,
+                              std::optional<std::string> source) = 0;
 
-    virtual T &addBan(std::string target, std::optional<std::string> reason, std::chrono::seconds duration,
-                      std::optional<std::string> source) = 0;
-
-    [[nodiscard]] virtual std::vector<const T *> getEntries() const = 0;
-
-    [[nodiscard]] virtual std::vector<T *> getEntries() = 0;
+    [[nodiscard]] virtual std::vector<NotNull<T>> getEntries() const = 0;
 
     [[nodiscard]] virtual bool isBanned(std::string target) const = 0;
 

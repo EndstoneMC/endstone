@@ -31,12 +31,9 @@ namespace endstone {
 
 class DimensionEvent : public LevelEvent {
 public:
-    explicit DimensionEvent(Dimension &dimension) : LevelEvent(dimension.getLevel()), dimension_(dimension){};
+    explicit DimensionEvent(Dimension &dimension) : LevelEvent(dimension.getLevel()), dimension_(dimension) {};
 
-    [[nodiscard]] Dimension &getDimension() const
-    {
-        return dimension_;
-    }
+    [[nodiscard]] Dimension &getDimension() const { return dimension_; }
 
 private:
     Dimension &dimension_;

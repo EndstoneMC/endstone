@@ -38,20 +38,11 @@ public:
     {
     }
 
-    [[nodiscard]] Skin getNewSkin() const
-    {
-        return new_skin_;
-    }
+    [[nodiscard]] Skin getNewSkin() const { return new_skin_; }
 
-    [[nodiscard]] std::optional<Message> getSkinChangeMessage() const
-    {
-        return message_;
-    }
+    [[nodiscard]] std::optional<Message> getSkinChangeMessage() const { return message_; }
 
-    void setSkinChangeMessage(std::optional<Message> message)
-    {
-        message_ = std::move(message);
-    }
+    void setSkinChangeMessage(std::optional<Message> message) { message_ = std::move(message); }
 
 private:
     Skin new_skin_;

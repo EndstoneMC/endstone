@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_break_event.h" line="53" column="12" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="53" bodyend="-1"/>
+        <location file="include/endstone/event/block/block_break_event.h" line="47" column="12" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="47" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_break_event.h" line="37" column="18" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="37" bodyend="40"/>
+        <location file="include/endstone/event/block/block_break_event.h" line="37" column="18" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockBreakEvent_1aaa5791d3da729f993bf7cdcb07356ef5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_break_event.h" line="47" column="13" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="47" bodyend="50"/>
+        <location file="include/endstone/event/block/block_break_event.h" line="44" column="13" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="44" bodyend="44"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -178,8 +178,9 @@
         <link refid="classendstone_1_1ICancellable"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/block/block_break_event.h" line="28" column="1" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="28" bodyend="54"/>
+    <location file="include/endstone/event/block/block_break_event.h" line="28" column="1" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="28" bodyend="48"/>
     <listofallmembers>
+      <member refid="classendstone_1_1BlockEvent_1a8495800ade942e17e6832ba40530e4d9" prot="protected" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>block_</name></member>
       <member refid="classendstone_1_1BlockBreakEvent_1a742b54b0a4070c474abf8171bbb04a58" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>BlockBreakEvent</name></member>
       <member refid="classendstone_1_1BlockEvent_1a784685838d2b051b0846ceb821e6a9b5" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>BlockEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::BlockBreakEvent</scope><name>cancel</name></member>
@@ -195,7 +196,6 @@
       <member refid="classendstone_1_1BlockBreakEvent_1a327ccc0eed39d688459a71b8a6b809d9" prot="private" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::BlockBreakEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1BlockBreakEvent_1a0c013b5825d1ea1b75eaec4e2e076ee8" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>~BlockBreakEvent</name></member>
-      <member refid="classendstone_1_1BlockEvent_1a099e0f2a50354664de1e9f9bfc02d5d7" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>~BlockEvent</name></member>
       <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::BlockBreakEvent</scope><name>~Event</name></member>
       <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::BlockBreakEvent</scope><name>~ICancellable</name></member>
     </listofallmembers>

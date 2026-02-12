@@ -41,16 +41,10 @@ public:
 
     explicit ServerLoadEvent(LoadType type) : type_(type) {}
 
-    [[nodiscard]] LoadType getType() const
-    {
-        return type_;
-    }
+    [[nodiscard]] LoadType getType() const { return type_; }
 
     inline static const std::string NAME = "ServerLoadEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
 private:
     LoadType type_;

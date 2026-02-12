@@ -52,8 +52,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::AttributeInstance**](classendstone_1_1AttributeInstance.md) _Represents a mutable instance of an attribute and its associated modifiers and values._ 
 * **class** [**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md) _Represents an attribute modifier._ 
 * **class** [**endstone::BanEntry**](classendstone_1_1BanEntry.md) _A single entry from a ban list._     
-    * **class** [**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md) 
-    * **class** [**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) 
+    * **class** [**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md) _Represents an entry for a banned IP address._ 
+    * **class** [**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) _Represents an entry for a banned player._ 
 * **class** [**endstone::BanList**](classendstone_1_1BanList.md) _Represents a ban list, containing bans._ 
 * **class** [**endstone::Block**](classendstone_1_1Block.md) _Represents a block._ 
 * **class** [**endstone::BlockData**](classendstone_1_1BlockData.md) _Represents the data related to a live block._ 
@@ -107,6 +107,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::MapCursor**](classendstone_1_1MapCursor.md) _Represents a cursor on a map._ 
 * **class** [**endstone::MapRenderer**](classendstone_1_1MapRenderer.md) _Represents a renderer for a map._ 
 * **class** [**endstone::MapView**](classendstone_1_1MapView.md) _Represents a map item._ 
+* **class** [**endstone::NotNull**](classendstone_1_1NotNull.md) 
+* **class** [**endstone::Nullable**](classendstone_1_1Nullable.md) 
 * **class** [**endstone::Objective**](classendstone_1_1Objective.md) _Represents an objective on a scoreboard that can show scores specific to entries._ 
 * **class** [**endstone::OfflinePlayer**](classendstone_1_1OfflinePlayer.md) _Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online._     
     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
@@ -133,13 +135,18 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)_
 * **class** [**endstone::Vector**](classendstone_1_1Vector.md) _Represents a 3-dimensional vector._ 
 * **class** [**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) 
+* **class** [**endstone::ItemStack::Impl**](classendstone_1_1ItemStack_1_1Impl.md) 
 * **class** [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md) 
 * **class** [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md) 
 * **struct** [**endstone::ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._ 
 * **struct** [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md) 
 * **struct** [**endstone::nbt::escape\_view**](structendstone_1_1nbt_1_1escape__view.md) 
+* **struct** [**std::hash&lt; endstone::Identifier&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md) 
 * **struct** [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md) 
 * **class** **EventType**    
+    * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
+    * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
+    * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 

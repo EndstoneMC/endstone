@@ -41,10 +41,7 @@ public:
     {
     }
 
-    [[nodiscard]] Message getLabel() const
-    {
-        return label_;
-    }
+    [[nodiscard]] Message getLabel() const { return label_; }
 
     Dropdown &setLabel(Message label)
     {
@@ -58,10 +55,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] std::vector<std::string> getOptions() const
-    {
-        return options_;
-    }
+    [[nodiscard]] std::vector<std::string> getOptions() const { return options_; }
 
     Dropdown &setOptions(std::vector<std::string> options)
     {
@@ -69,10 +63,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] std::optional<int> getDefaultIndex() const
-    {
-        return default_index_;
-    }
+    [[nodiscard]] std::optional<int> getDefaultIndex() const { return default_index_; }
 
     Dropdown &setDefaultIndex(std::optional<int> default_index)
     {

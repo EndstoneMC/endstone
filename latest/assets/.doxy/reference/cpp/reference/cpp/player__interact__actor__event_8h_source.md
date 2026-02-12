@@ -35,15 +35,9 @@ public:
     ~PlayerInteractActorEvent() override = default;
 
     inline static const std::string NAME = "PlayerInteractActorEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
-    [[nodiscard]] Actor &getActor() const
-    {
-        return actor_;
-    }
+    [[nodiscard]] Actor &getActor() const { return actor_; }
 
 private:
     Actor &actor_;

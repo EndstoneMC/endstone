@@ -29,6 +29,7 @@
 #include "endstone/server.h"
 
 namespace endstone {
+class ItemStack;
 using ItemTypeId = Identifier<ItemType>;
 class ItemType {
 public:
@@ -47,30 +48,19 @@ public:
 
     [[nodiscard]] virtual int getMaxDurability() const = 0;
 
-    bool operator==(const ItemTypeId &other) const
-    {
-        return getId() == other;
-    }
+    [[nodiscard]] virtual ItemStack createItemStack() const = 0;
 
-    bool operator!=(const ItemTypeId &other) const
-    {
-        return !(*this == other);
-    }
+    [[nodiscard]] virtual ItemStack createItemStack(int amount) const = 0;
 
-    bool operator==(const ItemType &other) const
-    {
-        return getId() == other.getId();
-    }
+    bool operator==(const ItemTypeId &other) const { return getId() == other; }
 
-    bool operator!=(const ItemType &other) const
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const ItemTypeId &other) const { return !(*this == other); }
 
-    operator ItemTypeId() const
-    {
-        return getId();
-    }
+    bool operator==(const ItemType &other) const { return getId() == other.getId(); }
+
+    bool operator!=(const ItemType &other) const { return !(*this == other); }
+
+    operator ItemTypeId() const { return getId(); }
 };
 }  // namespace endstone
 

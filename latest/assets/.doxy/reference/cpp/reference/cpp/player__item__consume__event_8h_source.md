@@ -34,23 +34,17 @@ class PlayerItemConsumeEvent final : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerItemConsumeEvent)
 
-    explicit PlayerItemConsumeEvent(Player &player, const ItemStack &item, EquipmentSlot hand)
-        : Cancellable(player), item_(item), hand_(hand)
+    explicit PlayerItemConsumeEvent(Player &player, ItemStack item, EquipmentSlot hand)
+        : Cancellable(player), item_(std::move(item)), hand_(hand)
     {
     }
 
-    [[nodiscard]] std::unique_ptr<ItemStack> getItem() const
-    {
-        return item_.clone();
-    }
+    [[nodiscard]] const ItemStack &getItem() const { return item_; }
 
-    [[nodiscard]] EquipmentSlot getHand() const
-    {
-        return hand_;
-    }
+    [[nodiscard]] EquipmentSlot getHand() const { return hand_; }
 
 private:
-    const ItemStack &item_;
+    ItemStack item_;
     EquipmentSlot hand_;
 };
 }  // namespace endstone

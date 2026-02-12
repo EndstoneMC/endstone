@@ -30,7 +30,7 @@
 namespace endstone {
 class Item : public Actor {
 public:
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> getItemStack() const = 0;
+    [[nodiscard]] virtual ItemStack getItemStack() const = 0;
 
     virtual void setItemStack(const ItemStack &stack) = 0;
 

@@ -51,18 +51,9 @@ public:
     ArrayTag(std::initializer_list<value_type> init) : v_(init) {}  // {1,2,3}
 
     // Capacity
-    bool empty() const noexcept
-    {
-        return v_.empty();
-    }
-    size_type size() const noexcept
-    {
-        return v_.size();
-    }
-    void clear() noexcept
-    {
-        v_.clear();
-    }
+    bool empty() const noexcept { return v_.empty(); }
+    size_type size() const noexcept { return v_.size(); }
+    void clear() noexcept { v_.clear(); }
 
     // Element access
     value_type &at(size_type i)
@@ -79,93 +70,36 @@ public:
         }
         return v_[i];
     }
-    value_type &operator[](size_type i)
-    {
-        return v_[i];
-    }
-    const value_type &operator[](size_type i) const
-    {
-        return v_[i];
-    }
-    value_type *data() noexcept
-    {
-        return v_.data();
-    }
-    const value_type *data() const noexcept
-    {
-        return v_.data();
-    }
+    value_type &operator[](size_type i) { return v_[i]; }
+    const value_type &operator[](size_type i) const { return v_[i]; }
+    value_type *data() noexcept { return v_.data(); }
+    const value_type *data() const noexcept { return v_.data(); }
 
     // Modifiers
-    void push_back(value_type v)
-    {
-        v_.push_back(v);
-    }
+    void push_back(value_type v) { v_.push_back(v); }
     template <class It>
     void assign(It first, It last)
     {
         v_.assign(first, last);
     }
-    iterator insert(const_iterator pos, value_type v)
-    {
-        return v_.insert(pos, v);
-    }
-    iterator erase(const_iterator pos)
-    {
-        return v_.erase(pos);
-    }
+    iterator insert(const_iterator pos, value_type v) { return v_.insert(pos, v); }
+    iterator erase(const_iterator pos) { return v_.erase(pos); }
 
     // Iteration
-    iterator begin() noexcept
-    {
-        return v_.begin();
-    }
-    iterator end() noexcept
-    {
-        return v_.end();
-    }
-    const_iterator begin() const noexcept
-    {
-        return v_.begin();
-    }
-    const_iterator end() const noexcept
-    {
-        return v_.end();
-    }
-    const_iterator cbegin() const noexcept
-    {
-        return v_.cbegin();
-    }
-    const_iterator cend() const noexcept
-    {
-        return v_.cend();
-    }
+    iterator begin() noexcept { return v_.begin(); }
+    iterator end() noexcept { return v_.end(); }
+    const_iterator begin() const noexcept { return v_.begin(); }
+    const_iterator end() const noexcept { return v_.end(); }
+    const_iterator cbegin() const noexcept { return v_.cbegin(); }
+    const_iterator cend() const noexcept { return v_.cend(); }
 
     // Equality
-    friend bool operator==(const ArrayTag &a, const ArrayTag &b) noexcept
-    {
-        return a.v_ == b.v_;
-    }
-    friend bool operator!=(const ArrayTag &a, const ArrayTag &b) noexcept
-    {
-        return !(a == b);
-    }
-    friend bool operator==(const ArrayTag &a, const storage_type &b) noexcept
-    {
-        return a.v_ == b;
-    }
-    friend bool operator==(const storage_type &a, const ArrayTag &b) noexcept
-    {
-        return a == b.v_;
-    }
-    friend bool operator!=(const ArrayTag &a, const storage_type &b) noexcept
-    {
-        return !(a == b);
-    }
-    friend bool operator!=(const storage_type &a, const ArrayTag &b) noexcept
-    {
-        return !(a == b);
-    }
+    friend bool operator==(const ArrayTag &a, const ArrayTag &b) noexcept { return a.v_ == b.v_; }
+    friend bool operator!=(const ArrayTag &a, const ArrayTag &b) noexcept { return !(a == b); }
+    friend bool operator==(const ArrayTag &a, const storage_type &b) noexcept { return a.v_ == b; }
+    friend bool operator==(const storage_type &a, const ArrayTag &b) noexcept { return a == b.v_; }
+    friend bool operator!=(const ArrayTag &a, const storage_type &b) noexcept { return !(a == b); }
+    friend bool operator!=(const storage_type &a, const ArrayTag &b) noexcept { return !(a == b); }
 
 private:
     storage_type v_;

@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1BlockFromToEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::BlockFromToEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; BlockEvent &gt;</basecompoundref>
+    <includes refid="block__from__to__event_8h" local="no">endstone/event/block/block_from_to_event.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classendstone_1_1BlockFromToEvent_1acb8a3989091ef0b9d881aa368bc35a9e" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;Block&gt; endstone::BlockFromToEvent::to_</definition>
+        <argsstring></argsstring>
+        <name>to_</name>
+        <qualifiedname>endstone::BlockFromToEvent::to_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_from_to_event.h" line="43" column="21" bodyfile="include/endstone/event/block/block_from_to_event.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1BlockFromToEvent_1a0d141a519261773aa6e4639511dad578" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::BlockFromToEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(BlockFromToEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::BlockFromToEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1BlockFromToEvent" kindref="compound">BlockFromToEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_from_to_event.h" line="29" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockFromToEvent_1a9e6401a5b40edc7a9d9acc68dcd2e2d2" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::BlockFromToEvent::BlockFromToEvent</definition>
+        <argsstring>(std::unique_ptr&lt; Block &gt; block, std::unique_ptr&lt; Block &gt; to_block)</argsstring>
+        <name>BlockFromToEvent</name>
+        <qualifiedname>endstone::BlockFromToEvent::BlockFromToEvent</qualifiedname>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+          <declname>block</declname>
+        </param>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+          <declname>to_block</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_from_to_event.h" line="30" column="14" bodyfile="include/endstone/event/block/block_from_to_event.h" bodystart="30" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockFromToEvent_1a8df95bd9daada5d36d8960a9aed89129" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
+        <definition>Block &amp; endstone::BlockFromToEvent::getToBlock</definition>
+        <argsstring>() const</argsstring>
+        <name>getToBlock</name>
+        <qualifiedname>endstone::BlockFromToEvent::getToBlock</qualifiedname>
+        <briefdescription>
+<para>Convenience method for getting the faced <ref refid="classendstone_1_1Block" kindref="compound">Block</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The faced <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_from_to_event.h" line="40" column="12" bodyfile="include/endstone/event/block/block_from_to_event.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents events with a source block and a destination block, currently only applies to liquid (lava and water) and teleporting dragon eggs. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>If a <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> From To event is cancelled, the block will not move (the liquid will not flow). </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::BlockEvent</label>
+        <link refid="classendstone_1_1BlockEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::BlockFromToEvent</label>
+        <link refid="classendstone_1_1BlockFromToEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::BlockEvent</label>
+        <link refid="classendstone_1_1BlockEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::BlockFromToEvent</label>
+        <link refid="classendstone_1_1BlockFromToEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/block/block_from_to_event.h" line="27" column="1" bodyfile="include/endstone/event/block/block_from_to_event.h" bodystart="27" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1BlockEvent_1a8495800ade942e17e6832ba40530e4d9" prot="protected" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>block_</name></member>
+      <member refid="classendstone_1_1BlockEvent_1a784685838d2b051b0846ceb821e6a9b5" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>BlockEvent</name></member>
+      <member refid="classendstone_1_1BlockFromToEvent_1a9e6401a5b40edc7a9d9acc68dcd2e2d2" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>BlockFromToEvent</name></member>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::BlockFromToEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1BlockFromToEvent_1a0d141a519261773aa6e4639511dad578" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::BlockFromToEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1BlockFromToEvent_1a8df95bd9daada5d36d8960a9aed89129" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>getToBlock</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::BlockFromToEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::BlockFromToEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1BlockFromToEvent_1acb8a3989091ef0b9d881aa368bc35a9e" prot="protected" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>to_</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::BlockFromToEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::BlockFromToEvent</scope><name>~ICancellable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

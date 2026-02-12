@@ -3,6 +3,7 @@
   <compounddef id="classendstone_1_1IpBanEntry" kind="class" language="C++" prot="public">
     <compoundname>endstone::IpBanEntry</compoundname>
     <basecompoundref refid="classendstone_1_1BanEntry" prot="public" virt="non-virtual">endstone::BanEntry</basecompoundref>
+    <includes refid="ip__ban__entry_8h" local="no">endstone/ban/ip_ban_entry.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1IpBanEntry_1a5d1d45ba5dfa2993909e03d945e33125" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -16,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ip_ban_entry.h" line="38" column="17" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="38" bodyend="-1"/>
+        <location file="include/endstone/ban/ip_ban_entry.h" line="37" column="17" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="37" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -36,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ip_ban_entry.h" line="25" column="14" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="25" bodyend="25"/>
+        <location file="include/endstone/ban/ip_ban_entry.h" line="27" column="14" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="27" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1IpBanEntry_1a015a82a92b1a448b5e4235c15e75baa2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -54,10 +55,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ip_ban_entry.h" line="32" column="18" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="32" bodyend="35"/>
+        <location file="include/endstone/ban/ip_ban_entry.h" line="34" column="18" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="34" bodyend="34"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Represents an entry for a banned IP address. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
@@ -85,7 +87,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/ban/ip_ban_entry.h" line="23" column="1" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="23" bodyend="39"/>
+    <location file="include/endstone/ban/ip_ban_entry.h" line="25" column="1" bodyfile="include/endstone/ban/ip_ban_entry.h" bodystart="25" bodyend="38"/>
     <listofallmembers>
       <member refid="classendstone_1_1IpBanEntry_1a5d1d45ba5dfa2993909e03d945e33125" prot="private" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>address_</name></member>
       <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" prot="public" virt="non-virtual"><scope>endstone::IpBanEntry</scope><name>Date</name></member>

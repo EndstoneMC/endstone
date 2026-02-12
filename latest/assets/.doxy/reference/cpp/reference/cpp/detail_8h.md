@@ -93,7 +93,7 @@
 | define  | [**ENDSTONE\_VERSION\_MAJOR**](detail_8h.md#define-endstone_version_major)  `0`<br> |
 | define  | [**ENDSTONE\_VERSION\_MINOR**](detail_8h.md#define-endstone_version_minor)  `11`<br> |
 | define  | [**ENDSTONE\_VERSION\_PATCH**](detail_8h.md#define-endstone_version_patch)  `0`<br> |
-| define  | [**NETWORK\_PROTOCOL\_VERSION**](detail_8h.md#define-network_protocol_version)  `859`<br> |
+| define  | [**NETWORK\_PROTOCOL\_VERSION**](detail_8h.md#define-network_protocol_version)  `924`<br> |
 
 ## Macro Definition Documentation
 
@@ -199,7 +199,7 @@
 ### define NETWORK\_PROTOCOL\_VERSION 
 
 ```C++
-#define NETWORK_PROTOCOL_VERSION `859`
+#define NETWORK_PROTOCOL_VERSION `924`
 ```
 
 

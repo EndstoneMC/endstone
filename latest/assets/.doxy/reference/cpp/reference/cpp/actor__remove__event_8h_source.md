@@ -33,10 +33,7 @@ public:
     using ActorEvent::ActorEvent;
 
     inline static const std::string NAME = "ActorRemoveEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     // TODO(event): add remove cause
 };

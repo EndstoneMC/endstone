@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_remove_event.h" line="32" column="18" bodyfile="include/endstone/event/actor/actor_remove_event.h" bodystart="32" bodyend="35"/>
+        <location file="include/endstone/event/actor/actor_remove_event.h" line="32" column="18" bodyfile="include/endstone/event/actor/actor_remove_event.h" bodystart="32" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorRemoveEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -102,7 +102,7 @@
         <link refid="classendstone_1_1Event"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/actor/actor_remove_event.h" line="27" column="1" bodyfile="include/endstone/event/actor/actor_remove_event.h" bodystart="27" bodyend="38"/>
+    <location file="include/endstone/event/actor/actor_remove_event.h" line="27" column="1" bodyfile="include/endstone/event/actor/actor_remove_event.h" bodystart="27" bodyend="35"/>
     <listofallmembers>
       <member refid="classendstone_1_1ActorRemoveEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" virt="non-virtual"><scope>endstone::ActorRemoveEvent</scope><name>ActorEvent</name></member>
       <member refid="classendstone_1_1ActorEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" virt="non-virtual" ambiguityscope="ActorEvent&lt; Actor &gt;::"><scope>endstone::ActorRemoveEvent</scope><name>ActorEvent</name></member>

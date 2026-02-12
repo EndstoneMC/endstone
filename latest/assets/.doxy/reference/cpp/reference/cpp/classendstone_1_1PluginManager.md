@@ -54,7 +54,7 @@ _Represents a plugin manager that handles all plugins from the_ [_**Server**_](c
 | ---: | :--- |
 |   | [**PluginManager**](#function-pluginmanager-12) () = default<br> |
 |   | [**PluginManager**](#function-pluginmanager-22) ([**PluginManager**](classendstone_1_1PluginManager.md) [**const**](classendstone_1_1Identifier.md) &) = delete<br> |
-| virtual [**Permission**](classendstone_1_1Permission.md) \* | [**addPermission**](#function-addpermission) (std::unique\_ptr&lt; [**Permission**](classendstone_1_1Permission.md) &gt; perm) = 0<br> |
+| virtual [**Permission**](classendstone_1_1Permission.md) & | [**addPermission**](#function-addpermission) (std::unique\_ptr&lt; [**Permission**](classendstone_1_1Permission.md) &gt; perm) = 0<br> |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**callEvent**](#function-callevent) ([**Event**](classendstone_1_1Event.md) & event) = 0<br> |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**clearPlugins**](#function-clearplugins) () = 0<br> |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**disablePlugin**](#function-disableplugin) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br> |
@@ -148,7 +148,7 @@ endstone::PluginManager::PluginManager (
 ### function addPermission 
 
 ```C++
-virtual Permission * endstone::PluginManager::addPermission (
+virtual Permission & endstone::PluginManager::addPermission (
     std::unique_ptr< Permission > perm
 ) = 0
 ```

@@ -41,25 +41,13 @@ public:
     }
 
     inline static const std::string NAME = "BroadcastMessageEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
-    [[nodiscard]] const Message &getMessage() const
-    {
-        return message_;
-    }
+    [[nodiscard]] const Message &getMessage() const { return message_; }
 
-    void setMessage(Message message)
-    {
-        message_ = std::move(message);
-    }
+    void setMessage(Message message) { message_ = std::move(message); }
 
-    [[nodiscard]] const std::unordered_set<const CommandSender *> &getRecipients() const
-    {
-        return recipients_;
-    }
+    [[nodiscard]] const std::unordered_set<const CommandSender *> &getRecipients() const { return recipients_; }
 
 private:
     Message message_;

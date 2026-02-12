@@ -29,15 +29,11 @@
 #include "endstone/ban/ban_entry.h"
 
 namespace endstone {
-
 class IpBanEntry : public BanEntry {
 public:
     explicit IpBanEntry(std::string address) : address_(std::move(address)) {}
 
-    [[nodiscard]] std::string getAddress() const
-    {
-        return address_;
-    }
+    [[nodiscard]] std::string getAddress() const { return address_; }
 
 private:
     std::string address_;

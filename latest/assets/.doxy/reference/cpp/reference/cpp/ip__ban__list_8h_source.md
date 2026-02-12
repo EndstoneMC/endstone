@@ -22,21 +22,15 @@ namespace endstone {
 
 class IpBanList : public BanList<IpBanEntry> {
 public:
-    ~IpBanList() override = default;
+    [[nodiscard]] Nullable<IpBanEntry> getBanEntry(std::string address) const override = 0;
 
-    [[nodiscard]] const IpBanEntry *getBanEntry(std::string address) const override = 0;
+    NotNull<IpBanEntry> addBan(std::string address, std::optional<std::string> reason,
+                               std::optional<BanEntry::Date> expires, std::optional<std::string> source) override = 0;
 
-    [[nodiscard]] IpBanEntry *getBanEntry(std::string address) override = 0;
+    NotNull<IpBanEntry> addBan(std::string address, std::optional<std::string> reason, std::chrono::seconds duration,
+                               std::optional<std::string> source) override = 0;
 
-    IpBanEntry &addBan(std::string address, std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
-                       std::optional<std::string> source) override = 0;
-
-    IpBanEntry &addBan(std::string address, std::optional<std::string> reason, std::chrono::seconds duration,
-                       std::optional<std::string> source) override = 0;
-
-    [[nodiscard]] std::vector<const IpBanEntry *> getEntries() const override = 0;
-
-    [[nodiscard]] std::vector<IpBanEntry *> getEntries() override = 0;
+    [[nodiscard]] std::vector<NotNull<IpBanEntry>> getEntries() const override = 0;
 
     [[nodiscard]] bool isBanned(std::string address) const override = 0;
 

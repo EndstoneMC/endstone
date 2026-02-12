@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin_loader.h" line="158" column="12" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="158" bodyend="-1"/>
+        <location file="include/endstone/plugin/plugin_loader.h" line="155" column="12" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="155" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -241,7 +241,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin_loader.h" line="152" column="13" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="152" bodyend="155"/>
+        <location file="include/endstone/plugin/plugin_loader.h" line="152" column="13" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="152" bodyend="152"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -262,7 +262,7 @@
         <link refid="classendstone_1_1Server"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/plugin/plugin_loader.h" line="33" column="1" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="33" bodyend="159"/>
+    <location file="include/endstone/plugin/plugin_loader.h" line="33" column="1" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="33" bodyend="156"/>
     <listofallmembers>
       <member refid="classendstone_1_1PluginLoader_1ae3223c941eb3c61add708b064811310a" prot="public" virt="virtual"><scope>endstone::PluginLoader</scope><name>disablePlugin</name></member>
       <member refid="classendstone_1_1PluginLoader_1aa14e843ba2f369aae119f8284fd4ce77" prot="public" virt="virtual"><scope>endstone::PluginLoader</scope><name>enablePlugin</name></member>

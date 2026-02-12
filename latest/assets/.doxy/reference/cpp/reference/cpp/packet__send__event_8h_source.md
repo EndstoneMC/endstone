@@ -40,15 +40,9 @@ public:
     {
     }
 
-    [[nodiscard]] int getPacketId() const
-    {
-        return packet_id_;
-    }
+    [[nodiscard]] int getPacketId() const { return packet_id_; }
 
-    [[nodiscard]] std::string_view getPayload() const
-    {
-        return payload_;
-    }
+    [[nodiscard]] std::string_view getPayload() const { return payload_; }
 
     void setPayload(std::string_view payload)
     {
@@ -56,20 +50,11 @@ public:
         payload_ = owned_payload_;
     }
 
-    [[nodiscard]] Player *getPlayer() const
-    {
-        return player_;
-    }
+    [[nodiscard]] Player *getPlayer() const { return player_; }
 
-    [[nodiscard]] SocketAddress getAddress() const
-    {
-        return address_;
-    }
+    [[nodiscard]] SocketAddress getAddress() const { return address_; }
 
-    [[nodiscard]] int getSubClientId() const
-    {
-        return sub_client_id_;
-    }
+    [[nodiscard]] int getSubClientId() const { return sub_client_id_; }
 
 private:
     Player *player_;

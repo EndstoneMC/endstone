@@ -56,6 +56,8 @@
 
 | Type | Name |
 | ---: | :--- |
+| virtual [**ItemStack**](classendstone_1_1ItemStack.md) | [**createItemStack**](#function-createitemstack-12) () const = 0<br>_Constructs a new_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _with this item type that has the amount 1._ |
+| virtual [**ItemStack**](classendstone_1_1ItemStack.md) | [**createItemStack**](#function-createitemstack-22) ([**int**](classendstone_1_1Identifier.md) amount) const = 0<br>_Constructs a new_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _with this item type._ |
 | virtual [**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) | [**getId**](#function-getid) () const = 0<br>_Return the identifier of this item type._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxDurability**](#function-getmaxdurability) () const = 0<br>_Gets the maximum durability of this item type._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br>_Gets the maximum amount of this item type that can be held in a stack._  |
@@ -112,6 +114,65 @@ constexpr auto endstone::ItemType::Air;
 <hr>
 ## Public Functions Documentation
 
+
+
+
+### function createItemStack [1/2]
+
+_Constructs a new_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _with this item type that has the amount 1._
+```C++
+virtual ItemStack endstone::ItemType::createItemStack () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the constructed item stack. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function createItemStack [2/2]
+
+_Constructs a new_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _with this item type._
+```C++
+virtual ItemStack endstone::ItemType::createItemStack (
+    int amount
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `amount` the amount in the stack 
+
+
+
+**Returns:**
+
+An [**ItemStack**](classendstone_1_1ItemStack.md) of this item type 
+
+
+
+
+
+        
+
+<hr>
 
 
 

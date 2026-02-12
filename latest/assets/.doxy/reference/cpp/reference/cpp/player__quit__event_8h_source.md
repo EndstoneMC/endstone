@@ -37,15 +37,9 @@ public:
     {
     }
 
-    [[nodiscard]] std::optional<Message> getQuitMessage() const
-    {
-        return quit_message_;
-    }
+    [[nodiscard]] std::optional<Message> getQuitMessage() const { return quit_message_; }
 
-    void setQuitMessage(std::optional<Message> message)
-    {
-        quit_message_ = std::move(message);
-    }
+    void setQuitMessage(std::optional<Message> message) { quit_message_ = std::move(message); }
 
 private:
     std::optional<Message> quit_message_;

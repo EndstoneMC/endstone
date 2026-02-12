@@ -37,10 +37,7 @@ public:
     {
     }
 
-    [[nodiscard]] DamageSource &getDamageSource() const
-    {
-        return *damage_source_;
-    }
+    [[nodiscard]] DamageSource &getDamageSource() const { return *damage_source_; }
 
 private:
     std::unique_ptr<DamageSource> damage_source_;

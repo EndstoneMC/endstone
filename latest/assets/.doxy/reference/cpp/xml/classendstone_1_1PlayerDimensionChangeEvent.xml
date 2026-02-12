@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_dimension_change_event.h" line="55" column="15" bodyfile="include/endstone/event/player/player_dimension_change_event.h" bodystart="55" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_dimension_change_event.h" line="49" column="15" bodyfile="include/endstone/event/player/player_dimension_change_event.h" bodystart="49" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerDimensionChangeEvent_1af8722bb0c87b4df64a92628c134d7657" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_dimension_change_event.h" line="56" column="15" bodyfile="include/endstone/event/player/player_dimension_change_event.h" bodystart="56" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_dimension_change_event.h" line="50" column="15" bodyfile="include/endstone/event/player/player_dimension_change_event.h" bodystart="50" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_dimension_change_event.h" line="39" column="16" bodyfile="include/endstone/event/player/player_dimension_change_event.h" bodystart="39" bodyend="42"/>
+        <location file="include/endstone/event/player/player_dimension_change_event.h" line="39" column="16" bodyfile="include/endstone/event/player/player_dimension_change_event.h" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDimensionChangeEvent_1a6fc95e56eba0598121273b95006ead5a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_dimension_change_event.h" line="49" column="16" bodyfile="include/endstone/event/player/player_dimension_change_event.h" bodystart="49" bodyend="52"/>
+        <location file="include/endstone/event/player/player_dimension_change_event.h" line="46" column="16" bodyfile="include/endstone/event/player/player_dimension_change_event.h" bodystart="46" bodyend="46"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -156,7 +156,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_dimension_change_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_dimension_change_event.h" bodystart="25" bodyend="57"/>
+    <location file="include/endstone/event/player/player_dimension_change_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_dimension_change_event.h" bodystart="25" bodyend="51"/>
     <listofallmembers>
       <member refid="classendstone_1_1PlayerDimensionChangeEvent_1af8ebc15049381181867a6a0bd2db3668" prot="public" virt="non-virtual"><scope>endstone::PlayerDimensionChangeEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerDimensionChangeEvent</scope><name>Event</name></member>

@@ -40,10 +40,7 @@ public:
     {
     }
 
-    [[nodiscard]] Message getLabel() const
-    {
-        return label_;
-    }
+    [[nodiscard]] Message getLabel() const { return label_; }
 
     Slider &setLabel(Message label)
     {
@@ -51,10 +48,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] float getMin() const
-    {
-        return min_;
-    }
+    [[nodiscard]] float getMin() const { return min_; }
 
     Slider &setMin(float min)
     {
@@ -62,10 +56,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] float getMax() const
-    {
-        return max_;
-    }
+    [[nodiscard]] float getMax() const { return max_; }
 
     Slider &setMax(float max)
     {
@@ -73,10 +64,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] float getStep() const
-    {
-        return step_;
-    }
+    [[nodiscard]] float getStep() const { return step_; }
 
     Slider &setStep(float step)
     {
@@ -84,10 +72,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] std::optional<float> getDefaultValue() const
-    {
-        return default_value_;
-    }
+    [[nodiscard]] std::optional<float> getDefaultValue() const { return default_value_; }
 
     Slider &setDefaultValue(std::optional<float> default_value)
     {

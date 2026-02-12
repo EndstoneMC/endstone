@@ -302,8 +302,6 @@
       <node id="33">
         <label>include/endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h_source"/>
-        <childnode refid="34" relation="include">
-        </childnode>
       </node>
       <node id="34">
         <label>include/endstone/inventory/item_stack.h</label>
@@ -313,6 +311,8 @@
         <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -416,8 +416,6 @@
         <link refid="server_8h_source"/>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
         <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
@@ -463,34 +461,28 @@
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">OnCloseCallback<sp/>=<sp/>std::function&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>*)&gt;;</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Form" kindref="compound">Form</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43" refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>Message<sp/><ref refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" kindref="member">getTitle</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="44"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>title_;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54" refid="classendstone_1_1Form_1a85daf37f20cdd2ce9e5eff9a2179a7e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Form_1a85daf37f20cdd2ce9e5eff9a2179a7e0" kindref="member">setTitle</ref>(Message<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">title</ref>)</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>title_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">title</ref>);</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="classendstone_1_1Form_1aff78b36d4798b8185ea1ff93f6260f63" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Form_1aff78b36d4798b8185ea1ff93f6260f63" kindref="member">setOnClose</ref>(OnCloseCallback<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">on_close</ref>)</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>on_close_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">on_close</ref>);</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77" refid="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>OnCloseCallback<sp/><ref refid="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" kindref="member">getOnClose</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="78"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>on_close_;</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>Message<sp/>title_;</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>OnCloseCallback<sp/>on_close_;</highlight></codeline>
-<codeline lineno="85"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>Message<sp/><ref refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" kindref="member">getTitle</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>title_;<sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classendstone_1_1Form_1a85daf37f20cdd2ce9e5eff9a2179a7e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Form_1a85daf37f20cdd2ce9e5eff9a2179a7e0" kindref="member">setTitle</ref>(Message<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">title</ref>)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>title_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">title</ref>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classendstone_1_1Form_1aff78b36d4798b8185ea1ff93f6260f63" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Form_1aff78b36d4798b8185ea1ff93f6260f63" kindref="member">setOnClose</ref>(OnCloseCallback<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">on_close</ref>)</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>on_close_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">on_close</ref>);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>OnCloseCallback<sp/><ref refid="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" kindref="member">getOnClose</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>on_close_;<sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>Message<sp/>title_;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>OnCloseCallback<sp/>on_close_;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/form/form.h"/>
   </compounddef>

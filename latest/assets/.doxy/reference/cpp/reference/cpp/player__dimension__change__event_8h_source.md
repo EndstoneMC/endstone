@@ -38,15 +38,9 @@ public:
     {
     }
 
-    [[nodiscard]] Dimension &getFrom() const
-    {
-        return from_;
-    }
+    [[nodiscard]] Dimension &getFrom() const { return from_; }
 
-    [[nodiscard]] Dimension &getTo() const
-    {
-        return to_;
-    }
+    [[nodiscard]] Dimension &getTo() const { return to_; }
 
 private:
     Dimension &from_;

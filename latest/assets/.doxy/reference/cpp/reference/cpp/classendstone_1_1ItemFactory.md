@@ -52,7 +52,6 @@
 | Type | Name |
 | ---: | :--- |
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**asMetaFor**](#function-asmetafor) ([**const**](classendstone_1_1Identifier.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta, [**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type) const = 0<br>_Returns an appropriate item meta for the specified item type._  |
-| virtual std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**createItemStack**](#function-createitemstack) ([**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & tag) const = 0<br> |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**equals**](#function-equals) ([**const**](classendstone_1_1Identifier.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta1, [**const**](classendstone_1_1Identifier.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta2) const = 0<br>_This method is used to compare two_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _objects._ |
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) ([**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type) const = 0<br>_This creates a new item meta for the item type._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isApplicable**](#function-isapplicable) ([**const**](classendstone_1_1Identifier.md) [**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta, [**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type) const = 0<br>_This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
@@ -118,42 +117,6 @@ The item meta returned will always be a valid meta for a given [**ItemStack**](c
 **Returns:**
 
 An appropriate item meta for the specified item type. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function createItemStack 
-
-```C++
-virtual std::unique_ptr< ItemStack > endstone::ItemFactory::createItemStack (
-    const  CompoundTag & tag
-) const = 0
-```
-
-
-
-Create a new [**ItemStack**](classendstone_1_1ItemStack.md) given the NBT.
-
-
-
-
-**Parameters:**
-
-
-* `tag` the item NBT
-
-
-
-**Returns:**
-
-the created [**ItemStack**](classendstone_1_1ItemStack.md), or nullptr if the input NBT was invalid 
 
 
 

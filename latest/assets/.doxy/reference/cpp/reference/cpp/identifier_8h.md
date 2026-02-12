@@ -38,6 +38,7 @@
 | ---: | :--- |
 | class | [**Identifier**](classendstone_1_1Identifier.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents a identifier consisting of two components: a namespace and a key._  |
 | struct | [**formatter&lt; endstone::Identifier&lt; T &gt; &gt;**](structfmt_1_1formatter_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md) &lt;typename T&gt;<br> |
+| struct | [**hash&lt; endstone::Identifier&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md) &lt;typename T&gt;<br> |
 
 
 

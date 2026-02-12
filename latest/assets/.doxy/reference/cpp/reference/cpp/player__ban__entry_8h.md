@@ -37,7 +37,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) <br> |
+| class | [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) <br>_Represents an entry for a banned player._  |
 
 
 

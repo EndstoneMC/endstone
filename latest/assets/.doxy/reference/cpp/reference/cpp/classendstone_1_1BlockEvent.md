@@ -76,7 +76,6 @@ Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Can
 | ---: | :--- |
 |   | [**BlockEvent**](#function-blockevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block) <br> |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBlock**](#function-getblock) () const<br>_Gets the block involved in this event._  |
-|   | [**~BlockEvent**](#function-blockevent) () override<br> |
 
 
 ## Public Functions inherited from endstone::Event
@@ -105,6 +104,11 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
+## Protected Attributes
+
+| Type | Name |
+| ---: | :--- |
+|  std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**block\_**](#variable-block_)  <br> |
 
 
 
@@ -187,13 +191,15 @@ The [**Block**](classendstone_1_1Block.md) which block is involved in this event
         
 
 <hr>
+## Protected Attributes Documentation
 
 
 
-### function ~BlockEvent 
+
+### variable block\_ 
 
 ```C++
-endstone::BlockEvent::~BlockEvent () override
+std::unique_ptr<Block> endstone::BlockEvent::block_;
 ```
 
 

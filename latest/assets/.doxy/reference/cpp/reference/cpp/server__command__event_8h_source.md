@@ -38,25 +38,13 @@ public:
     ServerCommandEvent(CommandSender &sender, std::string command) : sender_(sender), command_(std::move(command)) {}
 
     inline static const std::string NAME = "ServerCommandEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
-    [[nodiscard]] std::string getCommand() const
-    {
-        return command_;
-    }
+    [[nodiscard]] std::string getCommand() const { return command_; }
 
-    void setCommand(std::string message)
-    {
-        command_ = std::move(message);
-    }
+    void setCommand(std::string message) { command_ = std::move(message); }
 
-    [[nodiscard]] CommandSender &getSender() const
-    {
-        return sender_;
-    }
+    [[nodiscard]] CommandSender &getSender() const { return sender_; }
 
 private:
     CommandSender &sender_;

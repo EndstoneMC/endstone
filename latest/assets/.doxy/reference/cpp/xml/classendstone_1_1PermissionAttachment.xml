@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="148" column="31" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="148" bodyend="-1"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="124" column="31" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PermissionAttachment_1a0665282edc285050706056e35da00289" prot="private" static="no" mutable="no">
         <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt;</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="149" column="24" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="149" bodyend="-1"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="125" column="24" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PermissionAttachment_1a23a8a1f392aa5a83ee5160a08bbb34e9" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> &amp;</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="150" column="17" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="150" bodyend="-1"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="126" column="17" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="126" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PermissionAttachment_1ad5219e0d0a1bf62538f0985e8f63cf7e" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="151" column="12" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="151" bodyend="-1"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="127" column="12" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="127" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -100,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="42" column="13" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="42" bodyend="45"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="42" column="13" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PermissionAttachment_1afdec8bd9ec22c4927bbe3f0942634502" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="52" column="10" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="52" bodyend="55"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="49" column="10" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PermissionAttachment_1aaa0a0536b3e09e20e52f39c4bd048014" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>PermissionRemovedExecutor</type>
@@ -147,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="63" column="32" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="63" bodyend="66"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="57" column="32" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="57" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PermissionAttachment_1a4406ac5a5c2b406d8422d8b71f07edbe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> &amp;</type>
@@ -165,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="73" column="18" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="73" bodyend="76"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="64" column="18" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PermissionAttachment_1ac65fe772f0d74b4c8d86838ceabea3f0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt;</type>
@@ -183,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="84" column="25" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="84" bodyend="87"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="72" column="25" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="72" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PermissionAttachment_1a6f9165a21202205b209092e59ea059d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -224,7 +224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="95" column="10" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="95" bodyend="100"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="80" column="10" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="80" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PermissionAttachment_1ab342904042506f6fc662d809987fbeb3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -265,7 +265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="108" column="10" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="108" bodyend="111"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="93" column="10" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="93" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PermissionAttachment_1a3a61d225f54d78fcc966d7039ee66e2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -294,7 +294,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="119" column="10" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="119" bodyend="124"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="101" column="10" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="101" bodyend="106"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PermissionAttachment_1a21033433ac446e94631d0025aa621151" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -323,7 +323,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="132" column="10" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="132" bodyend="135"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="114" column="10" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="114" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PermissionAttachment_1ae05dac79b46d01cbb836267045cac38e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -341,7 +341,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permission_attachment.h" line="142" column="10" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="142" bodyend="145"/>
+        <location file="include/endstone/permissions/permission_attachment.h" line="121" column="10" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="121" bodyend="121"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -349,7 +349,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/permissions/permission_attachment.h" line="33" column="1" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="33" bodyend="152"/>
+    <location file="include/endstone/permissions/permission_attachment.h" line="33" column="1" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="33" bodyend="128"/>
     <listofallmembers>
       <member refid="classendstone_1_1PermissionAttachment_1a4406ac5a5c2b406d8422d8b71f07edbe" prot="public" virt="non-virtual"><scope>endstone::PermissionAttachment</scope><name>getPermissible</name></member>
       <member refid="classendstone_1_1PermissionAttachment_1ac65fe772f0d74b4c8d86838ceabea3f0" prot="public" virt="non-virtual"><scope>endstone::PermissionAttachment</scope><name>getPermissions</name></member>

@@ -35,10 +35,7 @@ public:
     ~ActorSpawnEvent() override = default;
 
     inline static const std::string NAME = "ActorSpawnEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     // TODO(event): add spawn cause
 };

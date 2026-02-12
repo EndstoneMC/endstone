@@ -113,7 +113,7 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getItemStack**](#function-getitemstack) () const = 0<br>_Gets the item stack associated with this item drop._  |
+| virtual [**ItemStack**](classendstone_1_1ItemStack.md) | [**getItemStack**](#function-getitemstack) () const = 0<br>_Gets the item stack associated with this item drop._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getPickupDelay**](#function-getpickupdelay) () const = 0<br>_Gets the delay before this_ [_**Item**_](classendstone_1_1Item.md) _is available to be picked up by players._ |
 | virtual std::optional&lt; std::int64\_t &gt; | [**getThrower**](#function-getthrower) () const = 0<br>_Get the thrower of this item._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isUnlimitedLifetime**](#function-isunlimitedlifetime) () const = 0<br>_Gets if this_ [_**Item**_](classendstone_1_1Item.md) _lives forever._ |
@@ -312,7 +312,7 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 _Gets the item stack associated with this item drop._ 
 ```C++
-virtual std::unique_ptr< ItemStack > endstone::Item::getItemStack () const = 0
+virtual ItemStack endstone::Item::getItemStack () const = 0
 ```
 
 

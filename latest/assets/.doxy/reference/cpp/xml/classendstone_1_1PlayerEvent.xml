@@ -23,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_event.h" line="41" column="28" bodyfile="include/endstone/event/player/player_event.h" bodystart="41" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_event.h" line="38" column="28" bodyfile="include/endstone/event/player/player_event.h" bodystart="38" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_event.h" line="35" column="13" bodyfile="include/endstone/event/player/player_event.h" bodystart="35" bodyend="38"/>
+        <location file="include/endstone/event/player/player_event.h" line="35" column="13" bodyfile="include/endstone/event/player/player_event.h" bodystart="35" bodyend="35"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -251,7 +251,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_event.h" bodystart="25" bodyend="42"/>
+    <location file="include/endstone/event/player/player_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_event.h" bodystart="25" bodyend="39"/>
     <listofallmembers>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerEvent</scope><name>Event</name></member>

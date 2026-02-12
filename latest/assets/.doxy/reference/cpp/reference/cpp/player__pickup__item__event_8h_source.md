@@ -34,12 +34,9 @@ class PlayerPickupItemEvent : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerPickupItemEvent);
 
-    explicit PlayerPickupItemEvent(Player &player, Item &item) : Cancellable(player), item_(item){};
+    explicit PlayerPickupItemEvent(Player &player, Item &item) : Cancellable(player), item_(item) {};
 
-    Item &getItem() const
-    {
-        return item_;
-    }
+    Item &getItem() const { return item_; }
 
 private:
     Item &item_;

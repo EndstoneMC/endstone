@@ -5,6 +5,9 @@
     <innerfile refid="block__break__event_8h">block_break_event.h</innerfile>
     <innerfile refid="block__cook__event_8h">block_cook_event.h</innerfile>
     <innerfile refid="block__event_8h">block_event.h</innerfile>
+    <innerfile refid="block__form__event_8h">block_form_event.h</innerfile>
+    <innerfile refid="block__from__to__event_8h">block_from_to_event.h</innerfile>
+    <innerfile refid="block__grow__event_8h">block_grow_event.h</innerfile>
     <innerfile refid="block__piston__event_8h">block_piston_event.h</innerfile>
     <innerfile refid="block__piston__extend__event_8h">block_piston_extend_event.h</innerfile>
     <innerfile refid="block__piston__retract__event_8h">block_piston_retract_event.h</innerfile>

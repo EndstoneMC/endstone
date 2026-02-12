@@ -252,7 +252,11 @@
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
         <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
@@ -264,10 +268,6 @@
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
         <childnode refid="43" relation="include">
         </childnode>
       </node>
@@ -278,7 +278,7 @@
       <node id="54">
         <label>endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
@@ -620,40 +620,25 @@
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1BlockPlaceEvent" kindref="compound">~BlockPlaceEvent</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;BlockPlaceEvent&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="40" refid="classendstone_1_1BlockPlaceEvent_1ae9d0d87fc6e9e576202f755046851da5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1BlockPlaceEvent_1ae9d0d87fc6e9e576202f755046851da5" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
-<codeline lineno="41"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NAME;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50" refid="classendstone_1_1BlockPlaceEvent_1aaa28353cb0631c1c63a84504abf7067e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1BlockPlaceEvent_1aaa28353cb0631c1c63a84504abf7067e" kindref="member">getPlayer</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="51"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>player_;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60" refid="classendstone_1_1BlockPlaceEvent_1aaa914dd3891c83edd97b8e3cdaf3b3c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref><sp/>&amp;<ref refid="classendstone_1_1BlockPlaceEvent_1aaa914dd3891c83edd97b8e3cdaf3b3c5" kindref="member">getBlockPlacedState</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="61"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*placed_block_;</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70" refid="classendstone_1_1BlockPlaceEvent_1a5f25a2818f05265737b236b4568e2225" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Block" kindref="compound">Block</ref><sp/>&amp;<ref refid="classendstone_1_1BlockPlaceEvent_1a5f25a2818f05265737b236b4568e2225" kindref="member">getBlockReplaced</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="71"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" kindref="member">getBlock</ref>();</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80" refid="classendstone_1_1BlockPlaceEvent_1a822e71386ca87244c89763e333cfe7b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Block" kindref="compound">Block</ref><sp/>&amp;<ref refid="classendstone_1_1BlockPlaceEvent_1a822e71386ca87244c89763e333cfe7b2" kindref="member">getBlockAgainst</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="81"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*placed_against_;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;BlockState&gt;<sp/>placed_block_;</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;Block&gt;<sp/>placed_against_;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;player_;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(event):<sp/>add<sp/>ItemStack<sp/>item</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(event):<sp/>add<sp/>BlockState<sp/>placedBlockState</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classendstone_1_1BlockPlaceEvent_1ae9d0d87fc6e9e576202f755046851da5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1BlockPlaceEvent_1ae9d0d87fc6e9e576202f755046851da5" kindref="member">getEventName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NAME;<sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classendstone_1_1BlockPlaceEvent_1aaa28353cb0631c1c63a84504abf7067e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1BlockPlaceEvent_1aaa28353cb0631c1c63a84504abf7067e" kindref="member">getPlayer</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>player_;<sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classendstone_1_1BlockPlaceEvent_1aaa914dd3891c83edd97b8e3cdaf3b3c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref><sp/>&amp;<ref refid="classendstone_1_1BlockPlaceEvent_1aaa914dd3891c83edd97b8e3cdaf3b3c5" kindref="member">getBlockPlacedState</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*placed_block_;<sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classendstone_1_1BlockPlaceEvent_1a5f25a2818f05265737b236b4568e2225" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Block" kindref="compound">Block</ref><sp/>&amp;<ref refid="classendstone_1_1BlockPlaceEvent_1a5f25a2818f05265737b236b4568e2225" kindref="member">getBlockReplaced</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" kindref="member">getBlock</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classendstone_1_1BlockPlaceEvent_1a822e71386ca87244c89763e333cfe7b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Block" kindref="compound">Block</ref><sp/>&amp;<ref refid="classendstone_1_1BlockPlaceEvent_1a822e71386ca87244c89763e333cfe7b2" kindref="member">getBlockAgainst</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*placed_against_;<sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;BlockState&gt;<sp/>placed_block_;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unique_ptr&lt;Block&gt;<sp/>placed_against_;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;player_;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(event):<sp/>add<sp/>ItemStack<sp/>item</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(event):<sp/>add<sp/>BlockState<sp/>placedBlockState</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/event/block/block_place_event.h"/>
   </compounddef>

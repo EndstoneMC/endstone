@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="80" column="13" bodyfile="include/endstone/form/controls/toggle.h" bodystart="80" bodyend="-1"/>
+        <location file="include/endstone/form/controls/toggle.h" line="74" column="13" bodyfile="include/endstone/form/controls/toggle.h" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Toggle_1a3229768ec0b1d6a3e3254177f74f7eff" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="81" column="10" bodyfile="include/endstone/form/controls/toggle.h" bodystart="81" bodyend="-1"/>
+        <location file="include/endstone/form/controls/toggle.h" line="75" column="10" bodyfile="include/endstone/form/controls/toggle.h" bodystart="75" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="40" column="14" bodyfile="include/endstone/form/controls/toggle.h" bodystart="40" bodyend="43"/>
+        <location file="include/endstone/form/controls/toggle.h" line="40" column="14" bodyfile="include/endstone/form/controls/toggle.h" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Toggle_1af50982b6fa024d5baa71e93aeca3c250" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Toggle" kindref="compound">Toggle</ref> &amp;</type>
@@ -118,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="51" column="12" bodyfile="include/endstone/form/controls/toggle.h" bodystart="51" bodyend="55"/>
+        <location file="include/endstone/form/controls/toggle.h" line="48" column="12" bodyfile="include/endstone/form/controls/toggle.h" bodystart="48" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Toggle_1a3a5805179c86bb7f90c753c244b54162" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -136,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="62" column="11" bodyfile="include/endstone/form/controls/toggle.h" bodystart="62" bodyend="65"/>
+        <location file="include/endstone/form/controls/toggle.h" line="59" column="11" bodyfile="include/endstone/form/controls/toggle.h" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Toggle_1a17339331f52f72813e65c7edb654646e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Toggle" kindref="compound">Toggle</ref> &amp;</type>
@@ -167,7 +167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="73" column="12" bodyfile="include/endstone/form/controls/toggle.h" bodystart="73" bodyend="77"/>
+        <location file="include/endstone/form/controls/toggle.h" line="67" column="12" bodyfile="include/endstone/form/controls/toggle.h" bodystart="67" bodyend="71"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -175,7 +175,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/form/controls/toggle.h" line="28" column="1" bodyfile="include/endstone/form/controls/toggle.h" bodystart="28" bodyend="82"/>
+    <location file="include/endstone/form/controls/toggle.h" line="28" column="1" bodyfile="include/endstone/form/controls/toggle.h" bodystart="28" bodyend="76"/>
     <listofallmembers>
       <member refid="classendstone_1_1Toggle_1a3229768ec0b1d6a3e3254177f74f7eff" prot="private" virt="non-virtual"><scope>endstone::Toggle</scope><name>default_value_</name></member>
       <member refid="classendstone_1_1Toggle_1a3a5805179c86bb7f90c753c244b54162" prot="public" virt="non-virtual"><scope>endstone::Toggle</scope><name>getDefaultValue</name></member>

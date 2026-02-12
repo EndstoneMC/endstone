@@ -52,32 +52,28 @@ _Represents a stack of items._
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ItemStack**](#function-itemstack-23) ([**const**](classendstone_1_1Identifier.md) [**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) & type, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) amount=1, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) data=0) <br> |
-|   | [**ItemStack**](#function-itemstack-33) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & stack) <br> |
-| virtual std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**clone**](#function-clone) () const<br> |
-| virtual [**int**](classendstone_1_1Identifier.md) | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
-| virtual [**int**](classendstone_1_1Identifier.md) | [**getData**](#function-getdata) () const<br>_Gets the data for this stack of items._  |
-| virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
-| virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxStackSize**](#function-getmaxstacksize) () const<br>_Get the maximum stack size for this item._  |
-| virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const<br>_Get the translation key, suitable for use in a translation component._  |
-| virtual [**const**](classendstone_1_1Identifier.md) [**ItemType**](classendstone_1_1ItemType.md) & | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasItemMeta**](#function-hasitemmeta) () const<br>_Checks to see if any metadata has been defined._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isSimilar**](#function-issimilar) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br>_Checks if the two stacks are equal, but does not consider stack size (amount)._  |
+|   | [**ItemStack**](#function-itemstack-14) ([**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type, [**int**](classendstone_1_1Identifier.md) amount=1, [**int**](classendstone_1_1Identifier.md) data=0) <br>_An item stack._  |
+|   | [**ItemStack**](#function-itemstack-24) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) <br> |
+|   | [**ItemStack**](#function-itemstack-34) ([**ItemStack**](classendstone_1_1ItemStack.md) && other) noexcept<br> |
+|  [**int**](classendstone_1_1Identifier.md) | [**getAmount**](#function-getamount) () const<br>_Gets the amount of items in this stack._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getData**](#function-getdata) () const<br>_Gets the data for this stack of items._  |
+|  std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**getItemMeta**](#function-getitemmeta) () const<br>_Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
+|  [**int**](classendstone_1_1Identifier.md) | [**getMaxStackSize**](#function-getmaxstacksize) () const<br>_Get the maximum stack size for this item._  |
+|  [**CompoundTag**](classendstone_1_1CompoundTag.md) | [**getNbt**](#function-getnbt) () const<br>_Gets the NBT compound tag of this item stack._  |
+|  std::string | [**getTranslationKey**](#function-gettranslationkey) () const<br>_Get the translation key, suitable for use in a translation component._  |
+|  [**const**](classendstone_1_1Identifier.md) [**ItemType**](classendstone_1_1ItemType.md) & | [**getType**](#function-gettype) () const<br>_Gets the type of this item._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**hasItemMeta**](#function-hasitemmeta) () const<br>_Checks to see if any metadata has been defined._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**isSimilar**](#function-issimilar) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br>_Checks if the two stacks are equal, but does not consider stack size (amount)._  |
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setAmount**](#function-setamount) ([**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) amount) <br>_Sets the amount of items in this stack._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setData**](#function-setdata) ([**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) data) <br>_Sets the data for this stack of items._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**setItemMeta**](#function-setitemmeta) ([**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br>_Set the_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _of this_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype) ([**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type) <br>_Sets the type of this item._  |
-| virtual [**CompoundTag**](classendstone_1_1CompoundTag.md) | [**toNbt**](#function-tonbt) () const<br>_Serializes this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into a Named Binary Tag (NBT)_ |
-| virtual  | [**~ItemStack**](#function-itemstack) () = default<br> |
-
-
-## Public Static Functions
-
-| Type | Name |
-| ---: | :--- |
-|  std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**fromNbt**](#function-fromnbt) ([**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & tag) <br>_Deserializes an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _from a Named Binary Tag (NBT)._ |
+|  [**ItemStack**](classendstone_1_1ItemStack.md) & | [**operator=**](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) <br> |
+|  [**ItemStack**](classendstone_1_1ItemStack.md) & | [**operator=**](#function-operator_2) ([**ItemStack**](classendstone_1_1ItemStack.md) && other) noexcept<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_3) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & other) const<br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**setAmount**](#function-setamount) ([**int**](classendstone_1_1Identifier.md) amount) <br>_Sets the amount of items in this stack._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setData**](#function-setdata) ([**int**](classendstone_1_1Identifier.md) data) <br>_Sets the data for this stack of items._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**setItemMeta**](#function-setitemmeta) ([**ItemMeta**](classendstone_1_1ItemMeta.md) \* meta) <br>_Set the_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _of this_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._ |
+|  [**void**](classendstone_1_1Identifier.md) | [**setNbt**](#function-setnbt) ([**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & nbt) <br>_Sets the NBT compound tag of this item stack._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype) ([**ItemTypeId**](namespaceendstone.md#typedef-itemtypeid) type) <br>_Sets the type of this item._  |
+|   | [**~ItemStack**](#function-itemstack) () = default<br> |
 
 
 
@@ -100,11 +96,8 @@ _Represents a stack of items._
 
 
 
-## Protected Functions
 
-| Type | Name |
-| ---: | :--- |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isEndstoneItemStack**](#function-isendstoneitemstack) () const<br> |
+
 
 
 
@@ -114,28 +107,42 @@ _Represents a stack of items._
 
 
 
-### function ItemStack [2/3]
+### function ItemStack [1/4]
 
+_An item stack._ 
 ```C++
 inline explicit endstone::ItemStack::ItemStack (
-    const  ItemTypeId & type,
-    const  int amount=1,
-    const  int data=0
+    ItemTypeId type,
+    int amount=1,
+    int data=0
 ) 
 ```
 
 
 
 
+
+**Parameters:**
+
+
+* `type` the type 
+* `amount` the amount in the stack 
+* `data` the data value 
+
+
+
+
+        
+
 <hr>
 
 
 
-### function ItemStack [3/3]
+### function ItemStack [2/4]
 
 ```C++
 inline endstone::ItemStack::ItemStack (
-    const  ItemStack & stack
+    const  ItemStack & other
 ) 
 ```
 
@@ -146,10 +153,12 @@ inline endstone::ItemStack::ItemStack (
 
 
 
-### function clone 
+### function ItemStack [3/4]
 
 ```C++
-inline virtual std::unique_ptr< ItemStack > endstone::ItemStack::clone () const
+endstone::ItemStack::ItemStack (
+    ItemStack && other
+) noexcept
 ```
 
 
@@ -163,7 +172,7 @@ inline virtual std::unique_ptr< ItemStack > endstone::ItemStack::clone () const
 
 _Gets the amount of items in this stack._ 
 ```C++
-inline virtual int endstone::ItemStack::getAmount () const
+inline int endstone::ItemStack::getAmount () const
 ```
 
 
@@ -188,7 +197,7 @@ Amount of items in this stack
 
 _Gets the data for this stack of items._ 
 ```C++
-inline virtual int endstone::ItemStack::getData () const
+inline int endstone::ItemStack::getData () const
 ```
 
 
@@ -213,7 +222,7 @@ Data for this item
 
 _Gets a copy of this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _'s_[_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._
 ```C++
-inline virtual std::unique_ptr< ItemMeta > endstone::ItemStack::getItemMeta () const
+inline std::unique_ptr< ItemMeta > endstone::ItemStack::getItemMeta () const
 ```
 
 
@@ -238,7 +247,7 @@ a copy of the current [**ItemStack**](classendstone_1_1ItemStack.md)'s [**ItemMe
 
 _Get the maximum stack size for this item._ 
 ```C++
-inline virtual int endstone::ItemStack::getMaxStackSize () const
+inline int endstone::ItemStack::getMaxStackSize () const
 ```
 
 
@@ -259,11 +268,36 @@ The maximum you can stack this item to.
 
 
 
+### function getNbt 
+
+_Gets the NBT compound tag of this item stack._ 
+```C++
+inline CompoundTag endstone::ItemStack::getNbt () const
+```
+
+
+
+
+
+**Returns:**
+
+the NBT compound tag 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getTranslationKey 
 
 _Get the translation key, suitable for use in a translation component._ 
 ```C++
-inline virtual std::string endstone::ItemStack::getTranslationKey () const
+inline std::string endstone::ItemStack::getTranslationKey () const
 ```
 
 
@@ -288,7 +322,7 @@ the translation key
 
 _Gets the type of this item._ 
 ```C++
-inline virtual const  ItemType & endstone::ItemStack::getType () const
+inline const  ItemType & endstone::ItemStack::getType () const
 ```
 
 
@@ -313,7 +347,7 @@ Type of the items in this stack
 
 _Checks to see if any metadata has been defined._ 
 ```C++
-inline virtual bool endstone::ItemStack::hasItemMeta () const
+inline bool endstone::ItemStack::hasItemMeta () const
 ```
 
 
@@ -338,7 +372,7 @@ Returns true if some metadata has been set for this item
 
 _Checks if the two stacks are equal, but does not consider stack size (amount)._ 
 ```C++
-inline virtual bool endstone::ItemStack::isSimilar (
+inline bool endstone::ItemStack::isSimilar (
     const  ItemStack & other
 ) const
 ```
@@ -383,6 +417,36 @@ inline bool endstone::ItemStack::operator!= (
 
 
 
+### function operator= 
+
+```C++
+inline ItemStack & endstone::ItemStack::operator= (
+    const  ItemStack & other
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function operator= 
+
+```C++
+ItemStack & endstone::ItemStack::operator= (
+    ItemStack && other
+) noexcept
+```
+
+
+
+
+<hr>
+
+
+
 ### function operator== 
 
 ```C++
@@ -402,8 +466,8 @@ inline bool endstone::ItemStack::operator== (
 
 _Sets the amount of items in this stack._ 
 ```C++
-inline virtual void endstone::ItemStack::setAmount (
-    const  int amount
+inline void endstone::ItemStack::setAmount (
+    int amount
 ) 
 ```
 
@@ -429,8 +493,8 @@ inline virtual void endstone::ItemStack::setAmount (
 
 _Sets the data for this stack of items._ 
 ```C++
-inline virtual void endstone::ItemStack::setData (
-    const  int data
+inline void endstone::ItemStack::setData (
+    int data
 ) 
 ```
 
@@ -456,7 +520,7 @@ inline virtual void endstone::ItemStack::setData (
 
 _Set the_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _of this_[_**ItemStack**_](classendstone_1_1ItemStack.md) _._
 ```C++
-inline virtual bool endstone::ItemStack::setItemMeta (
+inline bool endstone::ItemStack::setItemMeta (
     ItemMeta * meta
 ) 
 ```
@@ -486,11 +550,38 @@ True if successfully applied [**ItemMeta**](classendstone_1_1ItemMeta.md)
 
 
 
+### function setNbt 
+
+_Sets the NBT compound tag of this item stack._ 
+```C++
+inline void endstone::ItemStack::setNbt (
+    const  CompoundTag & nbt
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `nbt` the NBT compound tag to set 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function setType 
 
 _Sets the type of this item._ 
 ```C++
-inline virtual void endstone::ItemStack::setType (
+inline void endstone::ItemStack::setType (
     ItemTypeId type
 ) 
 ```
@@ -513,86 +604,10 @@ inline virtual void endstone::ItemStack::setType (
 
 
 
-### function toNbt 
-
-_Serializes this_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _into a Named Binary Tag (NBT)_
-```C++
-inline virtual CompoundTag endstone::ItemStack::toNbt () const
-```
-
-
-
-
-
-**Returns:**
-
-A [**CompoundTag**](classendstone_1_1CompoundTag.md) containing the NBT of this [**ItemStack**](classendstone_1_1ItemStack.md). 
-
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function ~ItemStack 
 
 ```C++
-virtual endstone::ItemStack::~ItemStack () = default
-```
-
-
-
-
-<hr>
-## Public Static Functions Documentation
-
-
-
-
-### function fromNbt 
-
-_Deserializes an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _from a Named Binary Tag (NBT)._
-```C++
-static inline std::unique_ptr< ItemStack > endstone::ItemStack::fromNbt (
-    const  CompoundTag & tag
-) 
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `tag` The [**CompoundTag**](classendstone_1_1CompoundTag.md) used to deserialize the [**ItemStack**](classendstone_1_1ItemStack.md).
-
-
-
-**Returns:**
-
-The [**ItemStack**](classendstone_1_1ItemStack.md) created from the provided NBT. 
-
-
-
-
-
-        
-
-<hr>
-## Protected Functions Documentation
-
-
-
-
-### function isEndstoneItemStack 
-
-```C++
-inline virtual bool endstone::ItemStack::isEndstoneItemStack () const
+endstone::ItemStack::~ItemStack () = default
 ```
 
 

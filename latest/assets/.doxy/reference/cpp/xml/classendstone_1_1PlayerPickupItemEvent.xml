@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_pickup_item_event.h" line="43" column="10" bodyfile="include/endstone/event/player/player_pickup_item_event.h" bodystart="43" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_pickup_item_event.h" line="40" column="10" bodyfile="include/endstone/event/player/player_pickup_item_event.h" bodystart="40" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_pickup_item_event.h" line="37" column="10" bodyfile="include/endstone/event/player/player_pickup_item_event.h" bodystart="37" bodyend="40"/>
+        <location file="include/endstone/event/player/player_pickup_item_event.h" line="37" column="10" bodyfile="include/endstone/event/player/player_pickup_item_event.h" bodystart="37" bodyend="37"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -144,7 +144,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_pickup_item_event.h" line="26" column="1" bodyfile="include/endstone/event/player/player_pickup_item_event.h" bodystart="26" bodyend="44"/>
+    <location file="include/endstone/event/player/player_pickup_item_event.h" line="26" column="1" bodyfile="include/endstone/event/player/player_pickup_item_event.h" bodystart="26" bodyend="41"/>
     <listofallmembers>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1PlayerPickupItemEvent_1af8d09456f82338437efebcc77773909b" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>ENDSTONE_EVENT</name></member>

@@ -25,12 +25,10 @@
 #pragma once
 
 namespace endstone {
-
 enum class BarFlag {
     DarkenSky,
-    Count,
+    CreateFog,
 };
-
 }  // namespace endstone
 ```
 

@@ -34,9 +34,9 @@ public:
     
     [[nodiscard]] virtual bool hasChargedProjectiles() const = 0;
 
-    [[nodiscard]] virtual std::vector<std::unique_ptr<ItemStack>> getChargedProjectiles() const = 0;
+    [[nodiscard]] virtual std::vector<ItemStack> getChargedProjectiles() const = 0;
 
-    virtual void setChargedProjectiles(std::vector<ItemStack *> projectiles) = 0;
+    virtual void setChargedProjectiles(std::vector<ItemStack> projectiles) = 0;
 
     virtual void addChargedProjectile(const ItemStack &item) = 0;
 };

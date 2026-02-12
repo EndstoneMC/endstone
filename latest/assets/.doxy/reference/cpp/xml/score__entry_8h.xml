@@ -248,8 +248,6 @@
       <node id="35">
         <label>include/endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h_source"/>
-        <childnode refid="36" relation="include">
-        </childnode>
       </node>
       <node id="36">
         <label>include/endstone/inventory/item_stack.h</label>
@@ -259,6 +257,8 @@
         <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
@@ -389,8 +389,6 @@
         <label>include/endstone/server.h</label>
         <link refid="server_8h_source"/>
         <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>

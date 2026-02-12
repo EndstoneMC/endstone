@@ -39,26 +39,14 @@ class Cancellable : public EventType, public ICancellable {
 public:
     using EventType::EventType;
 
-    [[nodiscard]] bool isCancelled() const override
-    {
-        return EventType::cancelled_;
-    }
+    [[nodiscard]] bool isCancelled() const override { return EventType::cancelled_; }
 
-    void setCancelled(bool cancel) override
-    {
-        EventType::cancelled_ = cancel;
-    }
+    void setCancelled(bool cancel) override { EventType::cancelled_ = cancel; }
 
-    void cancel() final
-    {
-        setCancelled(true);
-    }
+    void cancel() final { setCancelled(true); }
 
 private:
-    [[nodiscard]] bool isCancellable() const final
-    {
-        return true;
-    }
+    [[nodiscard]] bool isCancellable() const final { return true; }
 };
 }  // namespace endstone
 ```

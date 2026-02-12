@@ -38,15 +38,9 @@ public:
 
     explicit PlayerKickEvent(Player &player, std::string reason) : Cancellable(player), reason_(std::move(reason)) {}
 
-    [[nodiscard]] std::string getReason() const
-    {
-        return reason_;
-    }
+    [[nodiscard]] std::string getReason() const { return reason_; }
 
-    void setReason(std::string reason)
-    {
-        reason_ = std::move(reason);
-    }
+    void setReason(std::string reason) { reason_ = std::move(reason); }
 
 private:
     std::string reason_;

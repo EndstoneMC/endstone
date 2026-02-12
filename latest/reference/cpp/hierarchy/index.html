@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2687,8 +2687,8 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a> <em>Represents a mutable instance of an attribute and its associated modifiers and values.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1AttributeModifier/"><strong>endstone::AttributeModifier</strong></a> <em>Represents an attribute modifier.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1BanEntry/"><strong>endstone::BanEntry</strong></a> <em>A single entry from a ban list.</em>     <ul>
-<li><strong>class</strong> <a href="../classendstone_1_1IpBanEntry/"><strong>endstone::IpBanEntry</strong></a> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1PlayerBanEntry/"><strong>endstone::PlayerBanEntry</strong></a> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1IpBanEntry/"><strong>endstone::IpBanEntry</strong></a> <em>Represents an entry for a banned IP address.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1PlayerBanEntry/"><strong>endstone::PlayerBanEntry</strong></a> <em>Represents an entry for a banned player.</em> </li>
 </ul>
 </li>
 <li><strong>class</strong> <a href="../classendstone_1_1BanList/"><strong>endstone::BanList</strong></a> <em>Represents a ban list, containing bans.</em> </li>
@@ -2760,6 +2760,8 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1MapCursor/"><strong>endstone::MapCursor</strong></a> <em>Represents a cursor on a map.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1MapRenderer/"><strong>endstone::MapRenderer</strong></a> <em>Represents a renderer for a map.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a> <em>Represents a map item.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1NotNull/"><strong>endstone::NotNull</strong></a> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Nullable/"><strong>endstone::Nullable</strong></a> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a> <em>Represents an objective on a scoreboard that can show scores specific to entries.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1OfflinePlayer/"><strong>endstone::OfflinePlayer</strong></a> <em>Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online.</em>     <ul>
 <li><strong>class</strong> <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a> <em>Represents a player.</em> </li>
@@ -2788,13 +2790,18 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1UUID/"><strong>endstone::UUID</strong></a> <em>Implementation of Universally Unique</em> <a href="../classendstone_1_1Identifier/"><em><strong>Identifier</strong></em></a> <em>(</em><a href="../classendstone_1_1UUID/"><em><strong>UUID</strong></em></a> <em>)</em></li>
 <li><strong>class</strong> <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a> <em>Represents a 3-dimensional vector.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1nbt_1_1Tag/"><strong>endstone::nbt::Tag</strong></a> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1ItemStack_1_1Impl/"><strong>endstone::ItemStack::Impl</strong></a> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1detail_1_1CommandBuilder/"><strong>endstone::detail::CommandBuilder</strong></a> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1detail_1_1PermissionBuilder/"><strong>endstone::detail::PermissionBuilder</strong></a> </li>
 <li><strong>struct</strong> <a href="../structendstone_1_1ColorFormat/"><strong>endstone::ColorFormat</strong></a> <em>All supported color and format codes.</em> </li>
 <li><strong>struct</strong> <a href="../structendstone_1_1detail_1_1PluginDescriptionBuilder/"><strong>endstone::detail::PluginDescriptionBuilder</strong></a> </li>
 <li><strong>struct</strong> <a href="../structendstone_1_1nbt_1_1escape__view/"><strong>endstone::nbt::escape_view</strong></a> </li>
+<li><strong>struct</strong> <a href="../structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4/"><strong>std::hash&lt; endstone::Identifier&lt; T &gt; &gt;</strong></a> </li>
 <li><strong>struct</strong> <a href="../structstd_1_1hash_3_01endstone_1_1UUID_01_4/"><strong>std::hash&lt; endstone::UUID &gt;</strong></a> </li>
 <li><strong>class</strong> <strong>EventType</strong>    <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a> <em>A type characterizing events that may be cancelled by a plugin or the server.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a> <em>A type characterizing events that may be cancelled by a plugin or the server.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a> <em>A type characterizing events that may be cancelled by a plugin or the server.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a> <em>A type characterizing events that may be cancelled by a plugin or the server.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a> <em>A type characterizing events that may be cancelled by a plugin or the server.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a> <em>A type characterizing events that may be cancelled by a plugin or the server.</em> </li>
@@ -3042,10 +3049,10 @@ For latest updates join the chat on
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

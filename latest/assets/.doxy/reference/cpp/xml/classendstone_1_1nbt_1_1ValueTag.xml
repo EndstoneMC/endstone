@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/value.h" line="73" column="7" bodyfile="include/endstone/nbt/value.h" bodystart="73" bodyend="-1"/>
+        <location file="include/endstone/nbt/value.h" line="49" column="7" bodyfile="include/endstone/nbt/value.h" bodystart="49" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -103,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/value.h" line="33" column="5" bodyfile="include/endstone/nbt/value.h" bodystart="33" bodyend="36"/>
+        <location file="include/endstone/nbt/value.h" line="33" column="5" bodyfile="include/endstone/nbt/value.h" bodystart="33" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1ValueTag_1ac9859bc29b87f3d8393ae87517ca7176" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/value.h" line="38" column="13" bodyfile="include/endstone/nbt/value.h" bodystart="38" bodyend="41"/>
+        <location file="include/endstone/nbt/value.h" line="35" column="13" bodyfile="include/endstone/nbt/value.h" bodystart="35" bodyend="35"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="friend">
@@ -141,7 +141,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/value.h" line="44" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="44" bodyend="47"/>
+        <location file="include/endstone/nbt/value.h" line="38" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="38" bodyend="38"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ValueTag_1adf78f6a373d9c2007bec52994e9f79d5" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -163,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/value.h" line="49" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="49" bodyend="52"/>
+        <location file="include/endstone/nbt/value.h" line="40" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ValueTag_1a0fecd2d88ed80412529ab707c8d330ea" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -185,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/value.h" line="55" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="55" bodyend="58"/>
+        <location file="include/endstone/nbt/value.h" line="43" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ValueTag_1a11c8f3ed0a7474b8f59ca9411dd90720" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -207,7 +207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/value.h" line="59" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="59" bodyend="62"/>
+        <location file="include/endstone/nbt/value.h" line="44" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ValueTag_1a744398e810df61c160a28eec123e595a" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -229,7 +229,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/value.h" line="63" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="63" bodyend="66"/>
+        <location file="include/endstone/nbt/value.h" line="45" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1ValueTag_1a1150898be4a733f0200e6556af29bb81" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -251,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/value.h" line="67" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="67" bodyend="70"/>
+        <location file="include/endstone/nbt/value.h" line="46" column="27" bodyfile="include/endstone/nbt/value.h" bodystart="46" bodyend="46"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -282,7 +282,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/nbt/value.h" line="24" column="1" bodyfile="include/endstone/nbt/value.h" bodystart="24" bodyend="74"/>
+    <location file="include/endstone/nbt/value.h" line="24" column="1" bodyfile="include/endstone/nbt/value.h" bodystart="24" bodyend="50"/>
     <listofallmembers>
       <member refid="classendstone_1_1nbt_1_1ValueTag_1aeaa81df0d0b64ef22e36de557b809054" prot="public" virt="non-virtual"><scope>endstone::nbt::ValueTag</scope><name>operator const T &amp;</name></member>
       <member refid="classendstone_1_1nbt_1_1ValueTag_1adf78f6a373d9c2007bec52994e9f79d5" prot="public" virt="non-virtual"><scope>endstone::nbt::ValueTag</scope><name>operator!=</name></member>

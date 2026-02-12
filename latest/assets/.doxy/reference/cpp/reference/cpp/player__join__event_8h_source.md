@@ -37,15 +37,9 @@ public:
     {
     }
 
-    [[nodiscard]] std::optional<Message> getJoinMessage() const
-    {
-        return join_message_;
-    }
+    [[nodiscard]] std::optional<Message> getJoinMessage() const { return join_message_; }
 
-    void setJoinMessage(std::optional<Message> message)
-    {
-        join_message_ = std::move(message);
-    }
+    void setJoinMessage(std::optional<Message> message) { join_message_ = std::move(message); }
 
 private:
     std::optional<Message> join_message_;

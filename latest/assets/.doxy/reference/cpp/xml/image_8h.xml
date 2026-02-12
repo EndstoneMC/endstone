@@ -47,7 +47,7 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="29">
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
       </node>
@@ -57,7 +57,7 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="41">
         <label>include/endstone/event/actor/player_death_event.h</label>
         <link refid="player__death__event_8h_source"/>
       </node>
@@ -65,59 +65,59 @@
         <label>include/endstone/event/block/block_cook_event.h</label>
         <link refid="block__cook__event_8h_source"/>
       </node>
-      <node id="38">
+      <node id="39">
         <label>include/endstone/event/block/block_place_event.h</label>
         <link refid="block__place__event_8h_source"/>
       </node>
-      <node id="20">
+      <node id="21">
         <label>include/endstone/event/chunk/chunk_event.h</label>
         <link refid="chunk__event_8h_source"/>
-        <childnode refid="21" relation="include">
-        </childnode>
         <childnode refid="22" relation="include">
         </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
       </node>
-      <node id="21">
+      <node id="22">
         <label>include/endstone/event/chunk/chunk_load_event.h</label>
         <link refid="chunk__load__event_8h_source"/>
       </node>
-      <node id="22">
+      <node id="23">
         <label>include/endstone/event/chunk/chunk_unload_event.h</label>
         <link refid="chunk__unload__event_8h_source"/>
       </node>
-      <node id="29">
+      <node id="30">
         <label>include/endstone/event/event_handler.h</label>
         <link refid="event__handler_8h_source"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="31">
         <label>include/endstone/event/handler_list.h</label>
         <link refid="handler__list_8h_source"/>
       </node>
-      <node id="19">
+      <node id="20">
         <label>include/endstone/event/level/dimension_event.h</label>
         <link refid="dimension__event_8h_source"/>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="41">
+      <node id="42">
         <label>include/endstone/event/player/player_bed_enter_event.h</label>
         <link refid="player__bed__enter__event_8h_source"/>
       </node>
-      <node id="42">
+      <node id="43">
         <label>include/endstone/event/player/player_bed_leave_event.h</label>
         <link refid="player__bed__leave__event_8h_source"/>
       </node>
-      <node id="43">
+      <node id="44">
         <label>include/endstone/event/player/player_chat_event.h</label>
         <link refid="player__chat__event_8h_source"/>
       </node>
-      <node id="44">
+      <node id="45">
         <label>include/endstone/event/player/player_command_event.h</label>
         <link refid="player__command__event_8h_source"/>
       </node>
-      <node id="45">
+      <node id="46">
         <label>include/endstone/event/player/player_dimension_change_event.h</label>
         <link refid="player__dimension__change__event_8h_source"/>
       </node>
@@ -125,15 +125,13 @@
         <label>include/endstone/event/player/player_drop_item_event.h</label>
         <link refid="player__drop__item__event_8h_source"/>
       </node>
-      <node id="46">
+      <node id="47">
         <label>include/endstone/event/player/player_emote_event.h</label>
         <link refid="player__emote__event_8h_source"/>
       </node>
-      <node id="39">
+      <node id="40">
         <label>include/endstone/event/player/player_event.h</label>
         <link refid="player__event_8h_source"/>
-        <childnode refid="40" relation="include">
-        </childnode>
         <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
@@ -144,9 +142,9 @@
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
         <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
@@ -155,6 +153,8 @@
         <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="50" relation="include">
         </childnode>
@@ -175,19 +175,19 @@
         <childnode refid="60" relation="include">
         </childnode>
       </node>
-      <node id="47">
+      <node id="48">
         <label>include/endstone/event/player/player_game_mode_change_event.h</label>
         <link refid="player__game__mode__change__event_8h_source"/>
       </node>
-      <node id="48">
+      <node id="49">
         <label>include/endstone/event/player/player_interact_actor_event.h</label>
         <link refid="player__interact__actor__event_8h_source"/>
       </node>
-      <node id="49">
+      <node id="16">
         <label>include/endstone/event/player/player_interact_event.h</label>
         <link refid="player__interact__event_8h_source"/>
       </node>
-      <node id="16">
+      <node id="17">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
@@ -249,23 +249,21 @@
         <label>include/endstone/event/server/map_initialize_event.h</label>
         <link refid="map__initialize__event_8h_source"/>
       </node>
-      <node id="31">
+      <node id="32">
         <label>include/endstone/event/server/plugin_disable_event.h</label>
         <link refid="plugin__disable__event_8h_source"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="34">
         <label>include/endstone/event/server/plugin_enable_event.h</label>
         <link refid="plugin__enable__event_8h_source"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
       <node id="10">
         <label>include/endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h_source"/>
-        <childnode refid="11" relation="include">
-        </childnode>
       </node>
       <node id="11">
         <label>include/endstone/inventory/item_stack.h</label>
@@ -282,8 +280,10 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>include/endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="10" relation="include">
@@ -291,11 +291,11 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="26">
         <label>include/endstone/inventory/meta/book_meta.h</label>
         <link refid="book__meta_8h_source"/>
       </node>
-      <node id="23">
+      <node id="24">
         <label>include/endstone/inventory/meta/crossbow_meta.h</label>
         <link refid="crossbow__meta_8h_source"/>
       </node>
@@ -306,31 +306,31 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="6">
         <label>include/endstone/inventory/meta/map_meta.h</label>
         <link refid="map__meta_8h_source"/>
       </node>
-      <node id="24">
+      <node id="25">
         <label>include/endstone/inventory/meta/writable_book_meta.h</label>
         <link refid="writable__book__meta_8h_source"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="18">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>
-      <node id="18">
+      <node id="19">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -355,44 +355,44 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="38">
         <label>include/endstone/player.h</label>
         <link refid="player_8h_source"/>
-        <childnode refid="38" relation="include">
-        </childnode>
         <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="28">
         <label>include/endstone/plugin/plugin.h</label>
         <link refid="plugin_8h_source"/>
-        <childnode refid="28" relation="include">
-        </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
       </node>
-      <node id="32">
+      <node id="33">
         <label>include/endstone/plugin/plugin_loader.h</label>
         <link refid="plugin__loader_8h_source"/>
       </node>
-      <node id="35">
+      <node id="36">
         <label>include/endstone/scheduler/scheduler.h</label>
         <link refid="scheduler_8h_source"/>
       </node>
-      <node id="34">
+      <node id="35">
         <label>include/endstone/scheduler/task.h</label>
         <link refid="task_8h_source"/>
-        <childnode refid="35" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -400,19 +400,17 @@
         <link refid="server_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="37">
         <label>include/endstone/skin.h</label>
         <link refid="skin_8h_source"/>
-        <childnode refid="37" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -420,7 +418,7 @@
         <link refid="image_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -480,121 +478,112 @@
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76" refid="classendstone_1_1Image_1ab592f7b0673fc9dcbaf9e9ebfcc1a76b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab592f7b0673fc9dcbaf9e9ebfcc1a76b" kindref="member">getWidth</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="77"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>width_;</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86" refid="classendstone_1_1Image_1a1a37e02cab2cd6c3e80c9b50b2ec8c93" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1a1a37e02cab2cd6c3e80c9b50b2ec8c93" kindref="member">getHeight</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="87"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>height_;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96" refid="classendstone_1_1Image_1ac87dac3e15a668005e46fc9e31c82d65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ac87dac3e15a668005e46fc9e31c82d65" kindref="member">getDepth</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="97"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type_)<sp/>{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3bad3f6975213fb5546d8486b54b025dbd7" kindref="member">Type::Grayscale</ref>:</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3ba889574aebacda6bfd3e534e2b49b8028" kindref="member">Type::RGB</ref>:</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>3;</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3baea3495a278957dc58165e48a8945469f" kindref="member">Type::RGBA</ref>:</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>4;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="118" refid="classendstone_1_1Image_1a58311542846d5ed447a69f2c17d06d6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Color" kindref="compound">Color</ref><sp/><ref refid="classendstone_1_1Image_1a58311542846d5ed447a69f2c17d06d6c" kindref="member">getColor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="119"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>=<sp/>(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>)<sp/>*<sp/>width_<sp/>+<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>)<sp/>*<sp/>4;</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::uint8_t<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">r</ref><sp/>=<sp/>0,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">g</ref><sp/>=<sp/>0,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref><sp/>=<sp/>0,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">a</ref><sp/>=<sp/>255;</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type_)<sp/>{</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3bad3f6975213fb5546d8486b54b025dbd7" kindref="member">Type::Grayscale</ref>:</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">r</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">g</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref>]);</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3ba889574aebacda6bfd3e534e2b49b8028" kindref="member">Type::RGB</ref>:</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">r</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref>]);</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">g</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>1]);</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>2]);</highlight></codeline>
+<codeline lineno="76" refid="classendstone_1_1Image_1ab592f7b0673fc9dcbaf9e9ebfcc1a76b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab592f7b0673fc9dcbaf9e9ebfcc1a76b" kindref="member">getWidth</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>width_;<sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="classendstone_1_1Image_1a1a37e02cab2cd6c3e80c9b50b2ec8c93" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1a1a37e02cab2cd6c3e80c9b50b2ec8c93" kindref="member">getHeight</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>height_;<sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="classendstone_1_1Image_1ac87dac3e15a668005e46fc9e31c82d65" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ac87dac3e15a668005e46fc9e31c82d65" kindref="member">getDepth</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="91"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type_)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3bad3f6975213fb5546d8486b54b025dbd7" kindref="member">Type::Grayscale</ref>:</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3ba889574aebacda6bfd3e534e2b49b8028" kindref="member">Type::RGB</ref>:</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>3;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3baea3495a278957dc58165e48a8945469f" kindref="member">Type::RGBA</ref>:</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>4;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="classendstone_1_1Image_1a58311542846d5ed447a69f2c17d06d6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Color" kindref="compound">Color</ref><sp/><ref refid="classendstone_1_1Image_1a58311542846d5ed447a69f2c17d06d6c" kindref="member">getColor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="113"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>=<sp/>(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>)<sp/>*<sp/>width_<sp/>+<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>)<sp/>*<sp/>4;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::uint8_t<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">r</ref><sp/>=<sp/>0,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">g</ref><sp/>=<sp/>0,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref><sp/>=<sp/>0,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">a</ref><sp/>=<sp/>255;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type_)<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3bad3f6975213fb5546d8486b54b025dbd7" kindref="member">Type::Grayscale</ref>:</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">r</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">g</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref>]);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3ba889574aebacda6bfd3e534e2b49b8028" kindref="member">Type::RGB</ref>:</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">r</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref>]);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">g</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>1]);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>2]);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3baea3495a278957dc58165e48a8945469f" kindref="member">Type::RGBA</ref>:</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">r</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref>]);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">g</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>1]);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>2]);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">a</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>3]);</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3baea3495a278957dc58165e48a8945469f" kindref="member">Type::RGBA</ref>:</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">r</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref>]);</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">g</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>1]);</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>2]);</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">a</ref><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>3]);</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<ref refid="classendstone_1_1Identifier" kindref="compound">r</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">g</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>};</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight></codeline>
-<codeline lineno="149" refid="classendstone_1_1Image_1a3345e47562e1f00eaf6d3e944517f60f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1a3345e47562e1f00eaf6d3e944517f60f" kindref="member">setColor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Color" kindref="compound">Color</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>)</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>=<sp/>(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>)<sp/>*<sp/>width_<sp/>+<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>)<sp/>*<sp/>4;</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type_)<sp/>{</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3bad3f6975213fb5546d8486b54b025dbd7" kindref="member">Type::Grayscale</ref>:</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref>]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getRed());</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3ba889574aebacda6bfd3e534e2b49b8028" kindref="member">Type::RGB</ref>:</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref>]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getRed());</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>1]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getGreen());</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>2]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getBlue());</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<ref refid="classendstone_1_1Identifier" kindref="compound">r</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">g</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">b</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">a</ref>};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="classendstone_1_1Image_1a3345e47562e1f00eaf6d3e944517f60f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1a3345e47562e1f00eaf6d3e944517f60f" kindref="member">setColor</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Color" kindref="compound">Color</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>=<sp/>(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">y</ref>)<sp/>*<sp/>width_<sp/>+<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">x</ref>)<sp/>*<sp/>4;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type_)<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3bad3f6975213fb5546d8486b54b025dbd7" kindref="member">Type::Grayscale</ref>:</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref>]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getRed());</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3ba889574aebacda6bfd3e534e2b49b8028" kindref="member">Type::RGB</ref>:</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref>]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getRed());</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>1]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getGreen());</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>2]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getBlue());</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3baea3495a278957dc58165e48a8945469f" kindref="member">Type::RGBA</ref>:</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref>]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getRed());</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>1]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getGreen());</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>2]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getBlue());</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>3]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getAlpha());</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3baea3495a278957dc58165e48a8945469f" kindref="member">Type::RGBA</ref>:</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref>]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getRed());</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>1]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getGreen());</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>2]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getBlue());</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data_[<ref refid="classendstone_1_1Identifier" kindref="compound">idx</ref><sp/>+<sp/>3]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">color</ref>.getAlpha());</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177" refid="classendstone_1_1Image_1a11876f62967de8de031c79aee31cc3a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::string_view<sp/><ref refid="classendstone_1_1Image_1a11876f62967de8de031c79aee31cc3a6" kindref="member">getData</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="178"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data_;</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"></highlight></codeline>
-<codeline lineno="191" refid="classendstone_1_1Image_1a3a1c8f43ddaa26480349a1bb1e13132f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Result&lt;Image&gt;</ref><sp/><ref refid="classendstone_1_1Image_1a3a1c8f43ddaa26480349a1bb1e13132f" kindref="member">fromArray</ref>(<ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kindref="member">Type</ref><sp/>type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">width</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">height</ref>,</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">array</ref>)</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">buffer</ref>(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">array</ref>.data()),<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">array</ref>.size());</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1a34842adf667ed77decdc8a3de25d4367" kindref="member">fromBuffer</ref>(type,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">width</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">height</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">buffer</ref>);</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="197"><highlight class="normal"></highlight></codeline>
-<codeline lineno="207" refid="classendstone_1_1Image_1a34842adf667ed77decdc8a3de25d4367" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Result&lt;Image&gt;</ref><sp/><ref refid="classendstone_1_1Image_1a34842adf667ed77decdc8a3de25d4367" kindref="member">fromBuffer</ref>(<ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kindref="member">Type</ref><sp/>type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">width</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">height</ref>,<sp/>std::string_view<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">buffer</ref>)</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">depth</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type)<sp/>{</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3bad3f6975213fb5546d8486b54b025dbd7" kindref="member">Type::Grayscale</ref>:</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">depth</ref><sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3ba889574aebacda6bfd3e534e2b49b8028" kindref="member">Type::RGB</ref>:</highlight></codeline>
-<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">depth</ref><sp/>=<sp/>3;</highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3baea3495a278957dc58165e48a8945469f" kindref="member">Type::RGBA</ref>:</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">depth</ref><sp/>=<sp/>4;</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nonstd::make_unexpected(</highlight><highlight class="stringliteral">&quot;Image::fromBuffer:<sp/>invalid<sp/>image<sp/>type&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"></highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ENDSTONE_CHECKF(<ref refid="classendstone_1_1Identifier" kindref="compound">buffer</ref>.size()<sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">width</ref><sp/>*<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">height</ref><sp/>*<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">depth</ref>,</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Image::fromBuffer:<sp/>invalid<sp/>buffer<sp/>size,<sp/>got<sp/>{}<sp/>bytes,<sp/>expected<sp/>{}<sp/>bytes.&quot;</highlight><highlight class="normal">,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">buffer</ref>.size(),</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">width</ref><sp/>*<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">height</ref><sp/>*<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">depth</ref>);</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"></highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image" kindref="compound">Image</ref>(type,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">width</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">height</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">buffer</ref>);</highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"></highlight></codeline>
-<codeline lineno="231"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kindref="member">Type</ref><sp/>type_;</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width_;</highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height_;</highlight></codeline>
-<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>data_;</highlight></codeline>
-<codeline lineno="236"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="237"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="classendstone_1_1Image_1a11876f62967de8de031c79aee31cc3a6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::string_view<sp/><ref refid="classendstone_1_1Image_1a11876f62967de8de031c79aee31cc3a6" kindref="member">getData</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data_;<sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="classendstone_1_1Image_1a3a1c8f43ddaa26480349a1bb1e13132f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Result&lt;Image&gt;</ref><sp/><ref refid="classendstone_1_1Image_1a3a1c8f43ddaa26480349a1bb1e13132f" kindref="member">fromArray</ref>(<ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kindref="member">Type</ref><sp/>type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">width</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">height</ref>,</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">array</ref>)</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">buffer</ref>(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1Identifier" kindref="compound">array</ref>.data()),<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">array</ref>.size());</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1a34842adf667ed77decdc8a3de25d4367" kindref="member">fromBuffer</ref>(type,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">width</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">height</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">buffer</ref>);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="classendstone_1_1Image_1a34842adf667ed77decdc8a3de25d4367" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Result&lt;Image&gt;</ref><sp/><ref refid="classendstone_1_1Image_1a34842adf667ed77decdc8a3de25d4367" kindref="member">fromBuffer</ref>(<ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kindref="member">Type</ref><sp/>type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">width</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">height</ref>,<sp/>std::string_view<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">buffer</ref>)</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">depth</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type)<sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3bad3f6975213fb5546d8486b54b025dbd7" kindref="member">Type::Grayscale</ref>:</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">depth</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3ba889574aebacda6bfd3e534e2b49b8028" kindref="member">Type::RGB</ref>:</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">depth</ref><sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3baea3495a278957dc58165e48a8945469f" kindref="member">Type::RGBA</ref>:</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">depth</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>nonstd::make_unexpected(</highlight><highlight class="stringliteral">&quot;Image::fromBuffer:<sp/>invalid<sp/>image<sp/>type&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ENDSTONE_CHECKF(<ref refid="classendstone_1_1Identifier" kindref="compound">buffer</ref>.size()<sp/>==<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">width</ref><sp/>*<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">height</ref><sp/>*<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">depth</ref>,</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Image::fromBuffer:<sp/>invalid<sp/>buffer<sp/>size,<sp/>got<sp/>{}<sp/>bytes,<sp/>expected<sp/>{}<sp/>bytes.&quot;</highlight><highlight class="normal">,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">buffer</ref>.size(),</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">width</ref><sp/>*<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">height</ref><sp/>*<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">depth</ref>);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Image" kindref="compound">Image</ref>(type,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">width</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">height</ref>,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">buffer</ref>);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Image_1ab90b74144efbc447609b079e7089dd3b" kindref="member">Type</ref><sp/>type_;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width_;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height_;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>data_;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="228"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/util/image.h"/>
   </compounddef>

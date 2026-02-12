@@ -138,10 +138,7 @@ public:
     //     }
     // }
 
-    [[nodiscard]] Block &getBed() const
-    {
-        return bed_;
-    }
+    [[nodiscard]] Block &getBed() const { return bed_; }
 
 private:
     Block &bed_;

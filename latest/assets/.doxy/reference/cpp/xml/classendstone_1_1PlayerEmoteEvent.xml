@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_emote_event.h" line="74" column="17" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="74" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_emote_event.h" line="62" column="17" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerEmoteEvent_1a21d26ae7e9b87b41ffe4defd24162dc6" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_emote_event.h" line="75" column="10" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="75" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_emote_event.h" line="63" column="10" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="63" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_emote_event.h" line="34" column="18" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="34" bodyend="37"/>
+        <location file="include/endstone/event/player/player_emote_event.h" line="34" column="18" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="34" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a3cdd5e160ee7f361ee4dd23cd94bf709" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_emote_event.h" line="44" column="18" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="44" bodyend="47"/>
+        <location file="include/endstone/event/player/player_emote_event.h" line="41" column="18" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a44bd292db6e8d2326ac16126cadfcf1a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -146,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_emote_event.h" line="56" column="11" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="56" bodyend="59"/>
+        <location file="include/endstone/event/player/player_emote_event.h" line="50" column="11" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a8b3923ba2a6d0867d03ea8ec89ab299a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -177,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_emote_event.h" line="68" column="10" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="68" bodyend="71"/>
+        <location file="include/endstone/event/player/player_emote_event.h" line="59" column="10" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="59" bodyend="59"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -245,7 +245,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_emote_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="25" bodyend="76"/>
+    <location file="include/endstone/event/player/player_emote_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="25" bodyend="64"/>
     <listofallmembers>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerEmoteEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1PlayerEmoteEvent_1a74fb29919f23124f944930495dccc486" prot="private" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>emote_id_</name></member>

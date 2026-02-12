@@ -24,7 +24,7 @@
 
 #pragma once
 
-#include <string>
+#include <vector>
 
 #include "endstone/attribute/attribute_modifier.h"
 
@@ -33,25 +33,13 @@ class AttributeInstance {
 public:
     virtual ~AttributeInstance() = default;
 
-    [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual AttributeId getType() const = 0;
 
     [[nodiscard]] virtual float getBaseValue() const = 0;
 
     virtual void setBaseValue(float value) = 0;
 
-    [[nodiscard]] virtual float getBaseMaxValue() const = 0;
-
-    virtual void setBaseMaxValue(float value) = 0;
-
-    [[nodiscard]] virtual float getBaseMinValue() const = 0;
-
-    virtual void setBaseMinValue(float value) = 0;
-
     [[nodiscard]] virtual float getValue() const = 0;
-
-    [[nodiscard]] virtual float getMaxValue() const = 0;
-
-    [[nodiscard]] virtual float getMinValue() const = 0;
 
     [[nodiscard]] virtual std::vector<AttributeModifier> getModifiers() const = 0;
 

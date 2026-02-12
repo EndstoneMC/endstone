@@ -39,20 +39,11 @@ public:
     {
     }
 
-    [[nodiscard]] std::string getName() const
-    {
-        return name_;
-    }
+    [[nodiscard]] std::string getName() const { return name_; }
 
-    [[nodiscard]] std::optional<UUID> getUniqueId() const
-    {
-        return uuid_;
-    }
+    [[nodiscard]] std::optional<UUID> getUniqueId() const { return uuid_; }
 
-    [[nodiscard]] std::optional<std::string> getXuid() const
-    {
-        return xuid_;
-    }
+    [[nodiscard]] std::optional<std::string> getXuid() const { return xuid_; }
 
 private:
     std::string name_;

@@ -42,116 +42,53 @@ public:
     {
     }
 
-    [[nodiscard]] std::string getRemoteHost() const
-    {
-        return remote_host_;
-    }
+    [[nodiscard]] std::string getRemoteHost() const { return remote_host_; }
 
-    [[nodiscard]] int getRemotePort() const
-    {
-        return remote_port_;
-    }
+    [[nodiscard]] int getRemotePort() const { return remote_port_; }
 
-    [[nodiscard]] std::string getServerGuid() const
-    {
-        return server_guid_;
-    }
+    [[nodiscard]] std::string getServerGuid() const { return server_guid_; }
 
-    void setServerGuid(std::string guid)
-    {
-        server_guid_ = std::move(guid);
-    }
+    void setServerGuid(std::string guid) { server_guid_ = std::move(guid); }
 
-    [[nodiscard]] int getLocalPort() const
-    {
-        return local_port_;
-    }
+    [[nodiscard]] int getLocalPort() const { return local_port_; }
 
-    void setLocalPort(int port)
-    {
-        local_port_ = port;
-    }
+    void setLocalPort(int port) { local_port_ = port; }
 
-    [[nodiscard]] int getLocalPortV6() const
-    {
-        return local_port_v6_;
-    }
+    [[nodiscard]] int getLocalPortV6() const { return local_port_v6_; }
 
-    void setLocalPortV6(int port)
-    {
-        local_port_v6_ = port;
-    }
+    void setLocalPortV6(int port) { local_port_v6_ = port; }
 
-    [[nodiscard]] std::string getMotd() const
-    {
-        return motd_;
-    }
+    [[nodiscard]] std::string getMotd() const { return motd_; }
 
-    void setMotd(std::string motd)
-    {
-        motd_ = std::move(motd);
-    }
+    void setMotd(std::string motd) { motd_ = std::move(motd); }
 
-    [[nodiscard]] int getNetworkProtocolVersion() const
-    {
-        return network_protocol_version_;
-    }
+    [[nodiscard]] int getNetworkProtocolVersion() const { return network_protocol_version_; }
 
-    [[nodiscard]] std::string getMinecraftVersionNetwork() const
-    {
-        return minecraft_version_network_;
-    }
+    [[nodiscard]] std::string getMinecraftVersionNetwork() const { return minecraft_version_network_; }
 
     void setMinecraftVersionNetwork(std::string minecraft_version_network)
     {
         minecraft_version_network_ = std::move(minecraft_version_network);
     }
 
-    [[nodiscard]] int getNumPlayers() const
-    {
-        return num_players_;
-    }
+    [[nodiscard]] int getNumPlayers() const { return num_players_; }
 
-    void setNumPlayers(int num_players)
-    {
-        num_players_ = num_players;
-    }
+    void setNumPlayers(int num_players) { num_players_ = num_players; }
 
-    [[nodiscard]] int getMaxPlayers() const
-    {
-        return max_players_;
-    }
+    [[nodiscard]] int getMaxPlayers() const { return max_players_; }
 
-    void setMaxPlayers(int max_players)
-    {
-        max_players_ = max_players;
-    }
+    void setMaxPlayers(int max_players) { max_players_ = max_players; }
 
-    [[nodiscard]] std::string getLevelName() const
-    {
-        return level_name_;
-    }
+    [[nodiscard]] std::string getLevelName() const { return level_name_; }
 
-    void setLevelName(std::string level_name)
-    {
-        level_name_ = std::move(level_name);
-    }
+    void setLevelName(std::string level_name) { level_name_ = std::move(level_name); }
 
-    [[nodiscard]] GameMode getGameMode() const
-    {
-        return game_mode_;
-    }
+    [[nodiscard]] GameMode getGameMode() const { return game_mode_; }
 
-    void setGameMode(GameMode game_mode)
-    {
-        game_mode_ = game_mode;
-    }
+    void setGameMode(GameMode game_mode) { game_mode_ = game_mode; }
 
     inline static const std::string NAME = "ServerListPingEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     bool deserialize();
     std::string serialize();

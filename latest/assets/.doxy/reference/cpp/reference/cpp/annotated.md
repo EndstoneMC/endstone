@@ -26,6 +26,9 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**BlockCookEvent**](classendstone_1_1BlockCookEvent.md) _Called when an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _is successfully cooked in a block._    
     * **class** [**BlockData**](classendstone_1_1BlockData.md) _Represents the data related to a live block._     
     * **class** [**BlockEvent**](classendstone_1_1BlockEvent.md) _Represents an Block-related event._     
+    * **class** [**BlockFormEvent**](classendstone_1_1BlockFormEvent.md) _Called when a block is formed or spreads based on world conditions._     
+    * **class** [**BlockFromToEvent**](classendstone_1_1BlockFromToEvent.md) _Represents events with a source block and a destination block, currently only applies to liquid (lava and water) and teleporting dragon eggs._     
+    * **class** [**BlockGrowEvent**](classendstone_1_1BlockGrowEvent.md) _Called when a block grows naturally in the world._     
     * **class** [**BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md) _Called when a piston block is triggered._     
     * **class** [**BlockPistonExtendEvent**](classendstone_1_1BlockPistonExtendEvent.md) _Called when a piston extends._     
     * **class** [**BlockPistonRetractEvent**](classendstone_1_1BlockPistonRetractEvent.md) _Called when a piston retracts._     
@@ -69,7 +72,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Identifier**](classendstone_1_1Identifier.md) _Represents a identifier consisting of two components: a namespace and a key._     
     * **class** [**Image**](classendstone_1_1Image.md) _Represents an RGBA image._     
     * **class** [**Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
-    * **class** [**IpBanEntry**](classendstone_1_1IpBanEntry.md)     
+    * **class** [**IpBanEntry**](classendstone_1_1IpBanEntry.md) _Represents an entry for a banned IP address._     
     * **class** [**IpBanList**](classendstone_1_1IpBanList.md) _Represents a ban list, containing banned IP addresses._     
     * **class** [**Item**](classendstone_1_1Item.md) _Represents a base actor in the level._     
     * **class** [**ItemFactory**](classendstone_1_1ItemFactory.md)     
@@ -93,6 +96,8 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**MessageForm**](classendstone_1_1MessageForm.md) _Represents a form with two buttons._     
     * **class** [**Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
     * **class** [**ModalForm**](classendstone_1_1ModalForm.md) _Represents a modal form with controls._     
+    * **class** [**NotNull**](classendstone_1_1NotNull.md)     
+    * **class** [**Nullable**](classendstone_1_1Nullable.md)     
     * **class** [**Objective**](classendstone_1_1Objective.md) _Represents an objective on a scoreboard that can show scores specific to entries._     
     * **class** [**OfflinePlayer**](classendstone_1_1OfflinePlayer.md) _Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online._     
     * **class** [**PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md) _Called when the server receives a packet from a connected client._     
@@ -102,7 +107,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) _Holds information about a permission attachment on a_ [_**Permissible**_](classendstone_1_1Permissible.md) _object._    
     * **class** [**PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md) _Holds information on a permission and which_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _provides it._    
     * **class** [**Player**](classendstone_1_1Player.md) _Represents a player._     
-    * **class** [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md)     
+    * **class** [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) _Represents an entry for a banned player._     
     * **class** [**PlayerBanList**](classendstone_1_1PlayerBanList.md) _Represents a ban list, containing banned players._     
     * **class** [**PlayerBedEnterEvent**](classendstone_1_1PlayerBedEnterEvent.md) _Called when a player is almost about to enter the bed._     
     * **class** [**PlayerBedLeaveEvent**](classendstone_1_1PlayerBedLeaveEvent.md) _Called when a player is leaving a bed._     
@@ -174,6 +179,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
         * **struct** [**TagBase**](structendstone_1_1nbt_1_1TagBase.md) 
         * **class** [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)     
     * **struct** [**overloaded**](structendstone_1_1overloaded.md) _Helper type for visitors._ 
+* **class** [**Impl**](classendstone_1_1ItemStack_1_1Impl.md)     
 * **class** [**CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md)     
 * **class** [**PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md)     
 * **struct** [**PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md)     
@@ -209,5 +215,6 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **struct** [**formatter&lt; endstone::nbt::Tag &gt;**](structfmt_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4.md)     
     * **struct** [**formatter&lt; endstone::nbt::escape\_view &gt;**](structfmt_1_1formatter_3_01endstone_1_1nbt_1_1escape__view_01_4.md)     
 * **namespace** [**std**](namespacestd.md)     
+    * **struct** [**hash&lt; endstone::Identifier&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md)     
     * **struct** [**hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md)     
 

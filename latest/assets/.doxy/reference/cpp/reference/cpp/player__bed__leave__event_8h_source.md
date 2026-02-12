@@ -37,10 +37,7 @@ public:
     explicit PlayerBedLeaveEvent(Player &player, Block &bed) : PlayerEvent(player), bed_(bed) {}
     ~PlayerBedLeaveEvent() override = default;
 
-    [[nodiscard]] Block &getBed() const
-    {
-        return bed_;
-    }
+    [[nodiscard]] Block &getBed() const { return bed_; }
 
 private:
     Block &bed_;

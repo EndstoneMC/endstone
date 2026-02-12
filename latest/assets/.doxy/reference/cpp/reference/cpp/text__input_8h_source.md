@@ -40,10 +40,7 @@ public:
     {
     }
 
-    [[nodiscard]] Message getLabel() const
-    {
-        return label_;
-    }
+    [[nodiscard]] Message getLabel() const { return label_; }
 
     TextInput &setLabel(Message label)
     {
@@ -51,10 +48,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] Message getPlaceholder() const
-    {
-        return placeholder_;
-    }
+    [[nodiscard]] Message getPlaceholder() const { return placeholder_; }
 
     TextInput &setPlaceholder(Message placeholder)
     {
@@ -62,10 +56,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] std::optional<std::string> getDefaultValue() const
-    {
-        return default_text_;
-    }
+    [[nodiscard]] std::optional<std::string> getDefaultValue() const { return default_text_; }
 
     TextInput &setDefaultValue(std::optional<std::string> text)
     {

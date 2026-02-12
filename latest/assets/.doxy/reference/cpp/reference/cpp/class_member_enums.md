@@ -21,7 +21,6 @@
 
 ## o
 
-* **Operand** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md))
 * **Operation** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md))
 
 

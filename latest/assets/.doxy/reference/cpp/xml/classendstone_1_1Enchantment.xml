@@ -826,7 +826,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="281" column="10" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="281" bodyend="284"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="281" column="10" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="281" bodyend="281"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1ace641b3d9fa0c6e89e9bd52b547a5d02" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -844,7 +844,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="286" column="10" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="286" bodyend="289"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="283" column="10" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="283" bodyend="283"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a162c71d3ff9118533b2620d83b3b4144" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -862,7 +862,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="291" column="10" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="291" bodyend="294"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="285" column="10" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="285" bodyend="285"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a611ac0f1d0bb8cba0551075df1d162ed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -880,7 +880,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="296" column="10" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="296" bodyend="299"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="287" column="10" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="287" bodyend="287"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a8e7db8ef056cd17e3f409b8332b2157a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -894,14 +894,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="301" column="5" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="301" bodyend="304"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="289" column="5" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="289" bodyend="289"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/enchantments/enchantment.h" line="25" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="25" bodyend="305"/>
+    <location file="include/endstone/enchantments/enchantment.h" line="25" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="25" bodyend="290"/>
     <listofallmembers>
       <member refid="classendstone_1_1Enchantment_1a42951020e8e528fe120e6e33b3fcd6de" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>AquaAffinity</name></member>
       <member refid="classendstone_1_1Enchantment_1a0fdbd9dc57cb3132b60edf77206dd392" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>BaneOfArthropods</name></member>

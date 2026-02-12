@@ -35,20 +35,16 @@ namespace endstone {
 class Header {
 public:
     Header() = default;
-    explicit Header(Message label) : label_(std::move(label))
-    {
-    }
+    explicit Header(Message label) : label_(std::move(label)) {}
 
-    [[nodiscard]] Message getLabel() const
-    {
-        return label_;
-    }
+    [[nodiscard]] Message getLabel() const { return label_; }
 
     Header &setLabel(Message label)
     {
         label_ = std::move(label);
         return *this;
     }
+
 private:
     Message label_;
 };

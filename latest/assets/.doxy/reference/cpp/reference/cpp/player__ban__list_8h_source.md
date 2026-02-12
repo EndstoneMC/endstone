@@ -22,42 +22,34 @@ namespace endstone {
 
 class PlayerBanList : public BanList<PlayerBanEntry> {
 public:
-    virtual ~PlayerBanList() = default;
+    [[nodiscard]] Nullable<PlayerBanEntry> getBanEntry(std::string name) const override = 0;
 
-    [[nodiscard]] virtual const PlayerBanEntry *getBanEntry(std::string name) const = 0;
+    [[nodiscard]] virtual Nullable<PlayerBanEntry> getBanEntry(std::string name, std::optional<UUID> uuid,
+                                                               std::optional<std::string> xuid) const = 0;
 
-    [[nodiscard]] virtual PlayerBanEntry *getBanEntry(std::string name) = 0;
+    NotNull<PlayerBanEntry> addBan(std::string name, std::optional<std::string> reason,
+                                   std::optional<BanEntry::Date> expires,
+                                   std::optional<std::string> source) override = 0;
 
-    [[nodiscard]] virtual const PlayerBanEntry *getBanEntry(std::string name, std::optional<UUID> uuid,
-                                                            std::optional<std::string> xuid) const = 0;
+    virtual NotNull<PlayerBanEntry> addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
+                                           std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
+                                           std::optional<std::string> source) = 0;
 
-    [[nodiscard]] virtual PlayerBanEntry *getBanEntry(std::string name, std::optional<UUID> uuid,
-                                                      std::optional<std::string> xuid) = 0;
+    NotNull<PlayerBanEntry> addBan(std::string name, std::optional<std::string> reason, std::chrono::seconds duration,
+                                   std::optional<std::string> source) override = 0;
 
-    virtual PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason,
-                                   std::optional<BanEntry::Date> expires, std::optional<std::string> source) = 0;
+    virtual NotNull<PlayerBanEntry> addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
+                                           std::optional<std::string> reason, std::chrono::seconds duration,
+                                           std::optional<std::string> source) = 0;
 
-    virtual PlayerBanEntry &addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
-                                   std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
-                                   std::optional<std::string> source) = 0;
+    [[nodiscard]] std::vector<NotNull<PlayerBanEntry>> getEntries() const override = 0;
 
-    virtual PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason, std::chrono::seconds duration,
-                                   std::optional<std::string> source) = 0;
-
-    virtual PlayerBanEntry &addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
-                                   std::optional<std::string> reason, std::chrono::seconds duration,
-                                   std::optional<std::string> source) = 0;
-
-    [[nodiscard]] virtual std::vector<const PlayerBanEntry *> getEntries() const = 0;
-
-    [[nodiscard]] virtual std::vector<PlayerBanEntry *> getEntries() = 0;
-
-    [[nodiscard]] virtual bool isBanned(std::string name) const = 0;
+    [[nodiscard]] bool isBanned(std::string name) const override = 0;
 
     [[nodiscard]] virtual bool isBanned(std::string name, std::optional<UUID> uuid,
                                         std::optional<std::string> xuid) const = 0;
 
-    virtual void removeBan(std::string name) = 0;
+    void removeBan(std::string name) override = 0;
 
     virtual void removeBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid) = 0;
 };

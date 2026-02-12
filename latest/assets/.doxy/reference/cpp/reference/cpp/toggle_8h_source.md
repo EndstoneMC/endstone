@@ -39,10 +39,7 @@ public:
     {
     }
 
-    [[nodiscard]] Message getLabel() const
-    {
-        return label_;
-    }
+    [[nodiscard]] Message getLabel() const { return label_; }
 
     Toggle &setLabel(Message label)
     {
@@ -50,10 +47,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] bool getDefaultValue() const
-    {
-        return default_value_;
-    }
+    [[nodiscard]] bool getDefaultValue() const { return default_value_; }
 
     Toggle &setDefaultValue(bool value)
     {

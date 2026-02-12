@@ -257,7 +257,7 @@
         <name>getRelative</name>
         <qualifiedname>endstone::Block::getRelative</qualifiedname>
         <param>
-          <type>BlockFace</type>
+          <type><ref refid="namespaceendstone_1aec620d05bd961a002c83b008e178a785" kindref="member">BlockFace</ref></type>
           <declname>face</declname>
         </param>
         <briefdescription>
@@ -289,7 +289,7 @@
         <name>getRelative</name>
         <qualifiedname>endstone::Block::getRelative</qualifiedname>
         <param>
-          <type>BlockFace</type>
+          <type><ref refid="namespaceendstone_1aec620d05bd961a002c83b008e178a785" kindref="member">BlockFace</ref></type>
           <declname>face</declname>
         </param>
         <param>

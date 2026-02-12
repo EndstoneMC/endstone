@@ -208,7 +208,11 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
         <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
@@ -220,10 +224,6 @@
         </childnode>
         <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
         <childnode refid="36" relation="include">
         </childnode>
       </node>
@@ -234,7 +234,7 @@
       <node id="47">
         <label>endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -588,31 +588,19 @@
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="classendstone_1_1PlayerMoveEvent_1a107f307825941d5cfb6b128ddfce7afa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>&amp;<ref refid="classendstone_1_1PlayerMoveEvent_1a107f307825941d5cfb6b128ddfce7afa" kindref="member">getFrom</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="42"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>from_;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51" refid="classendstone_1_1PlayerMoveEvent_1a58170572971794cd9e8fff214a2cd0cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerMoveEvent_1a58170572971794cd9e8fff214a2cd0cc" kindref="member">setFrom</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">from</ref>)</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>from_<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">from</ref>;</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61" refid="classendstone_1_1PlayerMoveEvent_1a4b864f9dd1062d0f2ab64af81b20513e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>&amp;<ref refid="classendstone_1_1PlayerMoveEvent_1a4b864f9dd1062d0f2ab64af81b20513e" kindref="member">getTo</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="62"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>to_;</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71" refid="classendstone_1_1PlayerMoveEvent_1a98f462d71a7ea0f3f0fc42203fb91a2d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerMoveEvent_1a98f462d71a7ea0f3f0fc42203fb91a2d" kindref="member">setTo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">to</ref>)</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>to_<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">to</ref>;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>from_;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>to_;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classendstone_1_1PlayerMoveEvent_1a107f307825941d5cfb6b128ddfce7afa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>&amp;<ref refid="classendstone_1_1PlayerMoveEvent_1a107f307825941d5cfb6b128ddfce7afa" kindref="member">getFrom</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>from_;<sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classendstone_1_1PlayerMoveEvent_1a58170572971794cd9e8fff214a2cd0cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerMoveEvent_1a58170572971794cd9e8fff214a2cd0cc" kindref="member">setFrom</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">from</ref>)<sp/>{<sp/>from_<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">from</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classendstone_1_1PlayerMoveEvent_1a4b864f9dd1062d0f2ab64af81b20513e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>&amp;<ref refid="classendstone_1_1PlayerMoveEvent_1a4b864f9dd1062d0f2ab64af81b20513e" kindref="member">getTo</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>to_;<sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="classendstone_1_1PlayerMoveEvent_1a98f462d71a7ea0f3f0fc42203fb91a2d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerMoveEvent_1a98f462d71a7ea0f3f0fc42203fb91a2d" kindref="member">setTo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">to</ref>)<sp/>{<sp/>to_<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">to</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>from_;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>to_;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/event/player/player_move_event.h"/>
   </compounddef>

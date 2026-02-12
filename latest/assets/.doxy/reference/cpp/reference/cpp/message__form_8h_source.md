@@ -34,10 +34,7 @@ class MessageForm : public Form<MessageForm> {
 public:
     using OnSubmitCallback = std::function<void(Player *, int)>;
 
-    [[nodiscard]] Message getContent() const
-    {
-        return content_;
-    }
+    [[nodiscard]] Message getContent() const { return content_; }
 
     MessageForm &setContent(Message text)
     {
@@ -45,10 +42,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] Message getButton1() const
-    {
-        return button1_text_;
-    }
+    [[nodiscard]] Message getButton1() const { return button1_text_; }
 
     MessageForm &setButton1(Message text)
     {
@@ -56,10 +50,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] Message getButton2() const
-    {
-        return button2_text_;
-    }
+    [[nodiscard]] Message getButton2() const { return button2_text_; }
 
     MessageForm &setButton2(Message text)
     {
@@ -67,10 +58,7 @@ public:
         return *this;
     }
 
-    [[nodiscard]] OnSubmitCallback getOnSubmit() const
-    {
-        return on_submit_;
-    }
+    [[nodiscard]] OnSubmitCallback getOnSubmit() const { return on_submit_; }
 
     MessageForm &setOnSubmit(OnSubmitCallback on_submit)
     {

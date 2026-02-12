@@ -41,25 +41,13 @@ public:
     {
     }
 
-    [[nodiscard]] Permissible &getPermissible() const
-    {
-        return permissible_;
-    }
+    [[nodiscard]] Permissible &getPermissible() const { return permissible_; }
 
-    [[nodiscard]] std::string getPermission() const
-    {
-        return permission_;
-    }
+    [[nodiscard]] std::string getPermission() const { return permission_; }
 
-    [[nodiscard]] PermissionAttachment *getAttachment() const
-    {
-        return attachment_;
-    }
+    [[nodiscard]] PermissionAttachment *getAttachment() const { return attachment_; }
 
-    [[nodiscard]] bool getValue() const
-    {
-        return value_;
-    }
+    [[nodiscard]] bool getValue() const { return value_; }
 
 private:
     Permissible &permissible_;

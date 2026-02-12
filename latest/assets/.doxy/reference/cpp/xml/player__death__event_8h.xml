@@ -220,7 +220,11 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
         <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
@@ -232,10 +236,6 @@
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
         <childnode refid="38" relation="include">
         </childnode>
       </node>
@@ -246,7 +246,7 @@
       <node id="49">
         <label>endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
-        <childnode refid="14" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -573,27 +573,18 @@
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38" refid="classendstone_1_1PlayerDeathEvent_1acc66e0f2d94b897223abd87c1ff30e8b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1PlayerDeathEvent_1acc66e0f2d94b897223abd87c1ff30e8b" kindref="member">getPlayer</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="39"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1ActorEvent_1a49c459c96e831dbab2333ec2187ea552" kindref="member">getActor</ref>());</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48" refid="classendstone_1_1PlayerDeathEvent_1ac10543a6ddb7eb32aed23e72c94b7d61" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::optional&lt;Message&gt;<sp/><ref refid="classendstone_1_1PlayerDeathEvent_1ac10543a6ddb7eb32aed23e72c94b7d61" kindref="member">getDeathMessage</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="49"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>death_message_;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58" refid="classendstone_1_1PlayerDeathEvent_1a6a243db2fbf5bdcb6163b39b151338a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerDeathEvent_1a6a243db2fbf5bdcb6163b39b151338a5" kindref="member">setDeathMessage</ref>(std::optional&lt;Message&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">death_message</ref>)</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>death_message_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">death_message</ref>);</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;Message&gt;<sp/>death_message_;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(event):<sp/>new<sp/>exp,<sp/>new<sp/>level,<sp/>new<sp/>total<sp/>exp,<sp/>keep<sp/>level,<sp/>keep<sp/>inventory</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="68"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classendstone_1_1PlayerDeathEvent_1acc66e0f2d94b897223abd87c1ff30e8b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;<ref refid="classendstone_1_1PlayerDeathEvent_1acc66e0f2d94b897223abd87c1ff30e8b" kindref="member">getPlayer</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>&amp;</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classendstone_1_1ActorEvent_1a49c459c96e831dbab2333ec2187ea552" kindref="member">getActor</ref>());<sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classendstone_1_1PlayerDeathEvent_1ac10543a6ddb7eb32aed23e72c94b7d61" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::optional&lt;Message&gt;<sp/><ref refid="classendstone_1_1PlayerDeathEvent_1ac10543a6ddb7eb32aed23e72c94b7d61" kindref="member">getDeathMessage</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>death_message_;<sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classendstone_1_1PlayerDeathEvent_1a6a243db2fbf5bdcb6163b39b151338a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerDeathEvent_1a6a243db2fbf5bdcb6163b39b151338a5" kindref="member">setDeathMessage</ref>(std::optional&lt;Message&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">death_message</ref>)<sp/>{<sp/>death_message_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">death_message</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;Message&gt;<sp/>death_message_;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(event):<sp/>new<sp/>exp,<sp/>new<sp/>level,<sp/>new<sp/>total<sp/>exp,<sp/>keep<sp/>level,<sp/>keep<sp/>inventory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/event/actor/player_death_event.h"/>
   </compounddef>

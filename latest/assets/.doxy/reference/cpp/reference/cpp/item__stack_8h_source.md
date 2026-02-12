@@ -25,14 +25,11 @@
 #pragma once
 
 #include <memory>
+#include <string>
 
-#include "endstone/detail.h"
-#include "endstone/inventory/item_factory.h"
 #include "endstone/inventory/item_type.h"
 #include "endstone/inventory/meta/item_meta.h"
 #include "endstone/nbt/tag.h"
-#include "endstone/registry.h"
-#include "endstone/server.h"
 
 namespace endstone {
 
@@ -41,85 +38,47 @@ class EndstoneItemStack;
 }
 
 class ItemStack {
-    ItemStack() = default;
-
 public:
-    explicit ItemStack(const ItemTypeId &type, const int amount = 1, const int data = 0)
+    explicit ItemStack(ItemTypeId type, int amount = 1, int data = 0)
     {
-        if (const auto *item = ItemType::get(type); item != nullptr) {
-            type_ = type;
-            amount_ = amount;
-            data_ = data;
+        auto *item_type = ItemType::get(type);
+        if (!item_type) {
+            throw std::invalid_argument(fmt::format("Unknown item type: {}", type));
         }
+        *this = item_type->createItemStack(amount);
+        impl_->setData(data);
     }
-
-    ItemStack(const ItemStack &stack)
-        : type_(stack.getType().getId()), amount_(stack.getAmount()), data_(stack.getData())
+    ItemStack(const ItemStack &other) : impl_(other.impl_->clone()) {}
+    ItemStack(ItemStack &&other) noexcept = default;
+    ItemStack &operator=(const ItemStack &other)
     {
-        if (stack.hasItemMeta()) {
-            ItemStack::setItemMeta(stack.getItemMeta().get());
+        if (this != &other) {
+            impl_ = other.impl_->clone();
         }
+        return *this;
     }
+    ItemStack &operator=(ItemStack &&other) noexcept = default;
+    ~ItemStack() = default;
 
-    virtual ~ItemStack() = default;
+    [[nodiscard]] const ItemType &getType() const { return impl_->getType(); }
 
-protected:
-    friend class core::EndstoneItemStack;
-    [[nodiscard]] virtual bool isEndstoneItemStack() const
-    {
-        return false;
-    }
+    void setType(ItemTypeId type) { impl_->setType(type); }
 
-public:
-    [[nodiscard]] virtual const ItemType &getType() const
-    {
-        if (const auto *item = ItemType::get(type_); item != nullptr) {
-            return *item;
-        }
-        return *ItemType::get(ItemType::Air);
-    }
+    [[nodiscard]] int getAmount() const { return impl_->getAmount(); }
 
-    virtual void setType(ItemTypeId type)
-    {
-        const auto *item_type = ItemType::get(type);
-        Preconditions::checkArgument(item_type != nullptr, "Unknown item type: {}", type);
-        type_ = type;
-        if (meta_ != nullptr) {
-            meta_ = detail::getServer().getItemFactory().asMetaFor(meta_.get(), type);
-        }
-    }
+    void setAmount(int amount) { impl_->setAmount(amount); }
 
-    [[nodiscard]] virtual int getAmount() const
-    {
-        return amount_;
-    }
+    [[nodiscard]] int getData() const { return impl_->getData(); }
 
-    virtual void setAmount(const int amount)
-    {
-        Preconditions::checkArgument(amount >= 1 && amount <= 0xff,
-                                     "Item stack amount must be between 1 to 255, got {}.", amount);
-        amount_ = amount;
-    }
+    void setData(int data) { impl_->setData(data); }
 
-    [[nodiscard]] virtual int getData() const
-    {
-        return data_;
-    }
+    [[nodiscard]] std::string getTranslationKey() const { return impl_->getTranslationKey(); }
 
-    virtual void setData(const int data)
-    {
-        data_ = data;
-    }
+    [[nodiscard]] int getMaxStackSize() const { return impl_->getMaxStackSize(); }
 
-    [[nodiscard]] virtual std::string getTranslationKey() const
-    {
-        return getItemType().getTranslationKey(getData());
-    }
+    [[nodiscard]] CompoundTag getNbt() const { return impl_->getNbt(); }
 
-    [[nodiscard]] virtual int getMaxStackSize() const
-    {
-        return getItemType().getMaxStackSize();
-    }
+    void setNbt(const CompoundTag &nbt) { impl_->setNbt(nbt); }
 
     bool operator==(const ItemStack &other) const
     {
@@ -129,89 +88,47 @@ public:
         return getAmount() == other.getAmount() && isSimilar(other);
     }
 
-    bool operator!=(const ItemStack &other) const
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const ItemStack &other) const { return !(*this == other); }
 
-    [[nodiscard]] virtual bool isSimilar(const ItemStack &other) const
+    [[nodiscard]] bool isSimilar(const ItemStack &other) const
     {
         if (&other == this) {
             return true;
         }
-        return getType() == other.getType() && hasItemMeta() == other.hasItemMeta() &&
-               (hasItemMeta()
-                    ? detail::getServer().getItemFactory().equals(getItemMeta().get(), other.getItemMeta().get())
-                    : true);
+        return impl_->isSimilar(*other.impl_);
     }
 
-    [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta() const
-    {
-        return meta_ == nullptr ? detail::getServer().getItemFactory().getItemMeta(type_) : meta_->clone();
-    }
+    [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta() const { return impl_->getItemMeta(); }
 
-    [[nodiscard]] virtual bool hasItemMeta() const
-    {
-        return !detail::getServer().getItemFactory().equals(meta_.get(), nullptr);
-    }
+    [[nodiscard]] bool hasItemMeta() const { return impl_->hasItemMeta(); }
 
-    virtual bool setItemMeta(ItemMeta *meta)
-    {
-        return setItemMeta0(meta, type_);
-    }
-
-    [[nodiscard]] virtual std::unique_ptr<ItemStack> clone() const
-    {
-        return std::make_unique<ItemStack>(*this);
-    }
-
-    [[nodiscard]] virtual CompoundTag toNbt() const
-    {
-        CompoundTag tag;
-        tag["Name"] = StringTag(type_);
-        tag["Count"] = ByteTag(amount_);
-        tag["Damage"] = ShortTag(static_cast<short>(data_));
-        if (hasItemMeta()) {
-            tag["tag"] = getItemMeta()->toNbt();
-        }
-        return tag;
-    }
-
-    static std::unique_ptr<ItemStack> fromNbt(const CompoundTag &tag)
-    {
-        return detail::getServer().getItemFactory().createItemStack(tag);
-    }
+    bool setItemMeta(ItemMeta *meta) { return impl_->setItemMeta(meta); }
 
 private:
-    [[nodiscard]] const ItemType &getItemType() const
-    {
-        const auto *type = ItemType::get(getType());
-        if (type == nullptr) {
-            type = ItemType::get(ItemType::Air);
-        }
-        return *type;
-    }
+    friend class core::EndstoneItemStack;
 
-    bool setItemMeta0(const ItemMeta *meta, const std::string &type)
-    {
-        if (!meta) {
-            meta_ = nullptr;
-            return true;
-        }
+    class Impl {
+    public:
+        virtual ~Impl() = default;
+        [[nodiscard]] virtual std::unique_ptr<Impl> clone() const = 0;
+        [[nodiscard]] virtual const ItemType &getType() const = 0;
+        virtual void setType(ItemTypeId type) = 0;
+        [[nodiscard]] virtual int getAmount() const = 0;
+        virtual void setAmount(int amount) = 0;
+        [[nodiscard]] virtual int getData() const = 0;
+        virtual void setData(int data) = 0;
+        [[nodiscard]] virtual std::string getTranslationKey() const = 0;
+        [[nodiscard]] virtual int getMaxStackSize() const = 0;
+        [[nodiscard]] virtual bool isSimilar(const Impl &other) const = 0;
+        [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta() const = 0;
+        [[nodiscard]] virtual bool hasItemMeta() const = 0;
+        virtual bool setItemMeta(const ItemMeta *meta) = 0;
+        [[nodiscard]] virtual CompoundTag getNbt() const = 0;
+        virtual void setNbt(const CompoundTag &nbt) = 0;
+    };
 
-        const auto &item_factory = detail::getServer().getItemFactory();
-        if (!item_factory.isApplicable(meta, type)) {
-            return false;
-        }
-
-        meta_ = item_factory.asMetaFor(meta, type);
-        return true;
-    }
-
-    std::string type_ = ItemType::Air;
-    int amount_ = 0;
-    int data_ = 0;
-    std::unique_ptr<ItemMeta> meta_ = nullptr;
+    explicit ItemStack(std::unique_ptr<Impl> impl) : impl_(std::move(impl)) {}
+    std::unique_ptr<Impl> impl_;
 };
 }  // namespace endstone
 

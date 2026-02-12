@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1NotNull" kind="class" language="C++" prot="public">
+    <compoundname>endstone::NotNull</compoundname>
+    <templateparamlist>
+      <param>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classendstone_1_1NotNull_1a8afefdd6932f6afe48453aa0d8f555fc" prot="public" static="no">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
+        <definition>using endstone::NotNull&lt; T &gt;::pointer_type =  std::shared_ptr&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>pointer_type</name>
+        <qualifiedname>endstone::NotNull::pointer_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="27" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1NotNull_1ada9b05034b2b591132a1e87d4d9ff2a3" prot="private" static="no" mutable="no">
+        <type>pointer_type</type>
+        <definition>pointer_type endstone::NotNull&lt; T &gt;::ptr_</definition>
+        <argsstring></argsstring>
+        <name>ptr_</name>
+        <qualifiedname>endstone::NotNull::ptr_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="51" column="18" bodyfile="include/endstone/util/pointers.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1NotNull_1a402089231c348f213539e7f7dc87845a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::NotNull&lt; T &gt;::NotNull</definition>
+        <argsstring>()=delete</argsstring>
+        <name>NotNull</name>
+        <qualifiedname>endstone::NotNull::NotNull</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="28" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1a56afe76a737e3b587497adfae3f4ec9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::NotNull&lt; T &gt;::NotNull</definition>
+        <argsstring>(std::shared_ptr&lt; T &gt; ptr)</argsstring>
+        <name>NotNull</name>
+        <qualifiedname>endstone::NotNull::NotNull</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="29" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1a61bbfe33e76c9258f86fecb07f224a6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::NotNull&lt; T &gt;::NotNull</definition>
+        <argsstring>(const NotNull &amp;other)=default</argsstring>
+        <name>NotNull</name>
+        <qualifiedname>endstone::NotNull::NotNull</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="33" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1aa7fb65135484ebb79da3d599da6f500f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
+        <definition>NotNull &amp; endstone::NotNull&lt; T &gt;::operator=</definition>
+        <argsstring>(const NotNull &amp;other)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>endstone::NotNull::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="34" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1a533011e63ef7c9abff4433d5ea493c73" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> pointer_type &amp;</type>
+        <definition>const pointer_type &amp; endstone::NotNull&lt; T &gt;::get</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>get</name>
+        <qualifiedname>endstone::NotNull::get</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="35" column="24" bodyfile="include/endstone/util/pointers.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1a21a8f4d85591cb435433f126f1b8f7b6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> *</type>
+        <definition>T * endstone::NotNull&lt; T &gt;::operator-&gt;</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator-&gt;</name>
+        <qualifiedname>endstone::NotNull::operator-&gt;</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="36" column="7" bodyfile="include/endstone/util/pointers.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1a10782f46cb764067d938eb9f09164bd8" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
+        <definition>T &amp; endstone::NotNull&lt; T &gt;::operator*</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>operator*</name>
+        <qualifiedname>endstone::NotNull::operator*</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="37" column="7" bodyfile="include/endstone/util/pointers.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1a4b74a11f0815fff2cbd6e97e16010758" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::NotNull&lt; T &gt;::NotNull</definition>
+        <argsstring>(std::nullptr_t)=delete</argsstring>
+        <name>NotNull</name>
+        <qualifiedname>endstone::NotNull::NotNull</qualifiedname>
+        <param>
+          <type>std::nullptr_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="39" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1aa13cb05033bf872ad518942a3a685a39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
+        <definition>NotNull &amp; endstone::NotNull&lt; T &gt;::operator=</definition>
+        <argsstring>(std::nullptr_t)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>endstone::NotNull::operator=</qualifiedname>
+        <param>
+          <type>std::nullptr_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="40" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1aa5c8f8df6b82922f6f8ed994580d5e87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
+        <definition>NotNull &amp; endstone::NotNull&lt; T &gt;::operator++</definition>
+        <argsstring>()=delete</argsstring>
+        <name>operator++</name>
+        <qualifiedname>endstone::NotNull::operator++</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="41" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1ae0ae6cb934ff096d25778ae85f9d5836" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
+        <definition>NotNull &amp; endstone::NotNull&lt; T &gt;::operator--</definition>
+        <argsstring>()=delete</argsstring>
+        <name>operator--</name>
+        <qualifiedname>endstone::NotNull::operator--</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="42" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1a1012fd4cb537045703262607b464f045" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref></type>
+        <definition>NotNull endstone::NotNull&lt; T &gt;::operator++</definition>
+        <argsstring>(int)=delete</argsstring>
+        <name>operator++</name>
+        <qualifiedname>endstone::NotNull::operator++</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="43" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1a10cd4f71796664feba9512e51de3984a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref></type>
+        <definition>NotNull endstone::NotNull&lt; T &gt;::operator--</definition>
+        <argsstring>(int)=delete</argsstring>
+        <name>operator--</name>
+        <qualifiedname>endstone::NotNull::operator--</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="44" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1a14ce33c0a3857ca010b140b1dc155463" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
+        <definition>NotNull &amp; endstone::NotNull&lt; T &gt;::operator+=</definition>
+        <argsstring>(std::ptrdiff_t)=delete</argsstring>
+        <name>operator+=</name>
+        <qualifiedname>endstone::NotNull::operator+=</qualifiedname>
+        <param>
+          <type>std::ptrdiff_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="45" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1a56a78ca5ed1a136d46c6b5d5fc521f7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
+        <definition>NotNull &amp; endstone::NotNull&lt; T &gt;::operator-=</definition>
+        <argsstring>(std::ptrdiff_t)=delete</argsstring>
+        <name>operator-=</name>
+        <qualifiedname>endstone::NotNull::operator-=</qualifiedname>
+        <param>
+          <type>std::ptrdiff_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="46" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1ac9addf65a9ad25ebc593311383ff2fbc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::NotNull&lt; T &gt;::operator[]</definition>
+        <argsstring>(std::ptrdiff_t) const =delete</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>endstone::NotNull::operator[]</qualifiedname>
+        <param>
+          <type>std::ptrdiff_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="47" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1NotNull_1a71569c477dbe7c3fa58f8a684db3de55" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::NotNull&lt; T &gt;::swap</definition>
+        <argsstring>(NotNull &amp;other) noexcept</argsstring>
+        <name>swap</name>
+        <qualifiedname>endstone::NotNull::swap</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="48" column="10" bodyfile="include/endstone/util/pointers.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/util/pointers.h" line="25" column="1" bodyfile="include/endstone/util/pointers.h" bodystart="25" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1NotNull_1a533011e63ef7c9abff4433d5ea493c73" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>get</name></member>
+      <member refid="classendstone_1_1NotNull_1a402089231c348f213539e7f7dc87845a" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>NotNull</name></member>
+      <member refid="classendstone_1_1NotNull_1a56afe76a737e3b587497adfae3f4ec9c" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>NotNull</name></member>
+      <member refid="classendstone_1_1NotNull_1a61bbfe33e76c9258f86fecb07f224a6d" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>NotNull</name></member>
+      <member refid="classendstone_1_1NotNull_1a4b74a11f0815fff2cbd6e97e16010758" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>NotNull</name></member>
+      <member refid="classendstone_1_1NotNull_1a10782f46cb764067d938eb9f09164bd8" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator*</name></member>
+      <member refid="classendstone_1_1NotNull_1aa5c8f8df6b82922f6f8ed994580d5e87" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator++</name></member>
+      <member refid="classendstone_1_1NotNull_1a1012fd4cb537045703262607b464f045" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator++</name></member>
+      <member refid="classendstone_1_1NotNull_1a14ce33c0a3857ca010b140b1dc155463" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator+=</name></member>
+      <member refid="classendstone_1_1NotNull_1ae0ae6cb934ff096d25778ae85f9d5836" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator--</name></member>
+      <member refid="classendstone_1_1NotNull_1a10cd4f71796664feba9512e51de3984a" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator--</name></member>
+      <member refid="classendstone_1_1NotNull_1a56a78ca5ed1a136d46c6b5d5fc521f7b" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator-=</name></member>
+      <member refid="classendstone_1_1NotNull_1a21a8f4d85591cb435433f126f1b8f7b6" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator-&gt;</name></member>
+      <member refid="classendstone_1_1NotNull_1aa7fb65135484ebb79da3d599da6f500f" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1NotNull_1aa13cb05033bf872ad518942a3a685a39" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1NotNull_1ac9addf65a9ad25ebc593311383ff2fbc" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>operator[]</name></member>
+      <member refid="classendstone_1_1NotNull_1a8afefdd6932f6afe48453aa0d8f555fc" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>pointer_type</name></member>
+      <member refid="classendstone_1_1NotNull_1ada9b05034b2b591132a1e87d4d9ff2a3" prot="private" virt="non-virtual"><scope>endstone::NotNull</scope><name>ptr_</name></member>
+      <member refid="classendstone_1_1NotNull_1a71569c477dbe7c3fa58f8a684db3de55" prot="public" virt="non-virtual"><scope>endstone::NotNull</scope><name>swap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

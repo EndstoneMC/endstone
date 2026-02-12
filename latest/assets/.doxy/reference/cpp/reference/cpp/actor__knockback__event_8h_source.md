@@ -39,20 +39,11 @@ public:
     {
     }
 
-    [[nodiscard]] Actor *getSource() const
-    {
-        return source_;
-    }
+    [[nodiscard]] Actor *getSource() const { return source_; }
 
-    [[nodiscard]] Vector getKnockback() const
-    {
-        return knockback_;
-    }
+    [[nodiscard]] Vector getKnockback() const { return knockback_; }
 
-    void setKnockback(Vector knockback)
-    {
-        knockback_ = knockback;
-    }
+    void setKnockback(Vector knockback) { knockback_ = knockback; }
 
 private:
     Mob &mob_;

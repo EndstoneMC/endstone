@@ -32,9 +32,7 @@
 #include "endstone/boss/bar_style.h"
 
 namespace endstone {
-
 class Player;
-
 class BossBar {
 public:
     virtual ~BossBar() = default;

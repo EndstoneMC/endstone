@@ -43,16 +43,10 @@ public:
 
 private:
     friend class core::EndstoneMapView;
-    [[nodiscard]] virtual bool isEndstoneMapRenderer() const
-    {
-        return false;
-    }
+    [[nodiscard]] virtual bool isEndstoneMapRenderer() const { return false; }
 
 public:
-    [[nodiscard]] bool isContextual() const
-    {
-        return is_contextual_;
-    }
+    [[nodiscard]] bool isContextual() const { return is_contextual_; }
 
     virtual void initialize(MapView &map) {}
 

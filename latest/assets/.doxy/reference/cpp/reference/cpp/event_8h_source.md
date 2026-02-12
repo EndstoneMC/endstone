@@ -37,7 +37,7 @@ enum class EventResult {
 
 class Event {
 public:
-    explicit Event(bool async = false) : async_(async){};
+    explicit Event(bool async = false) : async_(async) {};
     Event(const Event &) = delete;             // deleted copy constructor
     Event &operator=(const Event &) = delete;  // deleted copy assignment operator
 
@@ -45,16 +45,10 @@ public:
 
     [[nodiscard]] virtual std::string getEventName() const = 0;
 
-    [[nodiscard]] bool isAsynchronous() const
-    {
-        return async_;
-    }
+    [[nodiscard]] bool isAsynchronous() const { return async_; }
 
 private:
-    [[nodiscard]] virtual bool isCancellable() const
-    {
-        return false;
-    }
+    [[nodiscard]] virtual bool isCancellable() const { return false; }
 
     template <class T>
     friend class Cancellable;

@@ -30,6 +30,11 @@ _Represents a ban list, containing bans._ [More...](#detailed-description)
 
 
 
+## Public Types
+
+| Type | Name |
+| ---: | :--- |
+| typedef [**T**](classendstone_1_1Identifier.md) | [**EntryType**](#typedef-entrytype)  <br> |
 
 
 
@@ -54,12 +59,10 @@ _Represents a ban list, containing bans._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**T**](classendstone_1_1Identifier.md) & | [**addBan**](#function-addban-12) (std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**T**](classendstone_1_1Identifier.md) & | [**addBan**](#function-addban-22) (std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**getBanEntry**](#function-getbanentry-12) (std::string target) const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._ |
-| virtual [**T**](classendstone_1_1Identifier.md) \* | [**getBanEntry**](#function-getbanentry-22) (std::string target) = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._ |
-| virtual std::vector&lt; [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* &gt; | [**getEntries**](#function-getentries-12) () const = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
-| virtual std::vector&lt; [**T**](classendstone_1_1Identifier.md) \* &gt; | [**getEntries**](#function-getentries-22) () = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**addBan**](#function-addban-12) (std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**addBan**](#function-addban-22) (std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**getBanEntry**](#function-getbanentry) (std::string target) const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._ |
+| virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; &gt; | [**getEntries**](#function-getentries) () const = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isBanned**](#function-isbanned) (std::string target) const = 0<br>_Checks if a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _exists for the target, indicating an active ban status._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**removeBan**](#function-removeban) (std::string target) = 0<br>_Removes the specified target from this list, therefore indicating a "not banned" status._  |
 | virtual  | [**~BanList**](#function-banlist) () = default<br> |
@@ -105,6 +108,21 @@ _Represents a ban list, containing bans._ [More...](#detailed-description)
 
 
     
+## Public Types Documentation
+
+
+
+
+### typedef EntryType 
+
+```C++
+using endstone::BanList< T >::EntryType =  T;
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
 
@@ -114,7 +132,7 @@ _Represents a ban list, containing bans._ [More...](#detailed-description)
 
 _Adds a ban to this list. If a previous ban exists, this will update the previous entry._ 
 ```C++
-virtual T & endstone::BanList::addBan (
+virtual NotNull < T > endstone::BanList::addBan (
     std::string target,
     std::optional< std::string > reason,
     std::optional< BanEntry::Date > expires,
@@ -154,7 +172,7 @@ T& The entry for the newly created ban, or the entry for the (updated) previous 
 
 _Adds a ban to this list. If a previous ban exists, this will update the previous entry._ 
 ```C++
-virtual T & endstone::BanList::addBan (
+virtual NotNull < T > endstone::BanList::addBan (
     std::string target,
     std::optional< std::string > reason,
     std::chrono::seconds duration,
@@ -190,11 +208,11 @@ T& The entry for the newly created ban, or the entry for the (updated) previous 
 
 
 
-### function getBanEntry [1/2]
+### function getBanEntry 
 
 _Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._
 ```C++
-virtual const  T * endstone::BanList::getBanEntry (
+virtual Nullable < T > endstone::BanList::getBanEntry (
     std::string target
 ) const = 0
 ```
@@ -224,70 +242,11 @@ T\* The corresponding entry, or nullptr if none found.
 
 
 
-### function getBanEntry [2/2]
-
-_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._
-```C++
-virtual T * endstone::BanList::getBanEntry (
-    std::string target
-) = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `target` The entry parameter to search for. 
-
-
-
-**Returns:**
-
-T\* The corresponding entry, or nullptr if none found. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getEntries [1/2]
+### function getEntries 
 
 _Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._
 ```C++
-virtual std::vector< const  T * > endstone::BanList::getEntries () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-A vector containing pointers to every entry tracked by this list. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getEntries [2/2]
-
-_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._
-```C++
-virtual std::vector< T * > endstone::BanList::getEntries () = 0
+virtual std::vector< NotNull < T > > endstone::BanList::getEntries () const = 0
 ```
 
 

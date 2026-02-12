@@ -42,25 +42,13 @@ public:
     ~ActorExplodeEvent() override = default;
 
     inline static const std::string NAME = "ActorExplodeEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
+    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
-    [[nodiscard]] const Location &getLocation() const
-    {
-        return location_;
-    }
+    [[nodiscard]] const Location &getLocation() const { return location_; }
 
-    [[nodiscard]] const BlockList &getBlockList() const
-    {
-        return blocks_;
-    }
+    [[nodiscard]] const BlockList &getBlockList() const { return blocks_; }
 
-    [[nodiscard]] BlockList &getBlockList()
-    {
-        return blocks_;
-    }
+    [[nodiscard]] BlockList &getBlockList() { return blocks_; }
 
 private:
     Location location_;

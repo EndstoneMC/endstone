@@ -50,19 +50,19 @@
         <label>include/endstone/event/block/block_cook_event.h</label>
         <link refid="block__cook__event_8h_source"/>
       </node>
-      <node id="24">
+      <node id="25">
         <label>include/endstone/event/chunk/chunk_event.h</label>
         <link refid="chunk__event_8h_source"/>
-        <childnode refid="25" relation="include">
-        </childnode>
         <childnode refid="26" relation="include">
         </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
       </node>
-      <node id="25">
+      <node id="26">
         <label>include/endstone/event/chunk/chunk_load_event.h</label>
         <link refid="chunk__load__event_8h_source"/>
       </node>
-      <node id="26">
+      <node id="27">
         <label>include/endstone/event/chunk/chunk_unload_event.h</label>
         <link refid="chunk__unload__event_8h_source"/>
       </node>
@@ -76,10 +76,10 @@
         <label>include/endstone/event/handler_list.h</label>
         <link refid="handler__list_8h_source"/>
       </node>
-      <node id="23">
+      <node id="24">
         <label>include/endstone/event/level/dimension_event.h</label>
         <link refid="dimension__event_8h_source"/>
-        <childnode refid="24" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="19">
@@ -87,6 +87,10 @@
         <link refid="player__drop__item__event_8h_source"/>
       </node>
       <node id="20">
+        <label>include/endstone/event/player/player_interact_event.h</label>
+        <link refid="player__interact__event_8h_source"/>
+      </node>
+      <node id="21">
         <label>include/endstone/event/player/player_item_consume_event.h</label>
         <link refid="player__item__consume__event_8h_source"/>
       </node>
@@ -109,8 +113,6 @@
       <node id="14">
         <label>include/endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h_source"/>
-        <childnode refid="15" relation="include">
-        </childnode>
       </node>
       <node id="15">
         <label>include/endstone/inventory/item_stack.h</label>
@@ -127,8 +129,10 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
       </node>
-      <node id="31">
+      <node id="32">
         <label>include/endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
         <childnode refid="14" relation="include">
@@ -136,11 +140,11 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="31">
         <label>include/endstone/inventory/meta/book_meta.h</label>
         <link refid="book__meta_8h_source"/>
       </node>
-      <node id="27">
+      <node id="28">
         <label>include/endstone/inventory/meta/crossbow_meta.h</label>
         <link refid="crossbow__meta_8h_source"/>
       </node>
@@ -151,31 +155,31 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
         <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-      </node>
-      <node id="28">
-        <label>include/endstone/inventory/meta/map_meta.h</label>
-        <link refid="map__meta_8h_source"/>
-      </node>
-      <node id="29">
-        <label>include/endstone/inventory/meta/writable_book_meta.h</label>
-        <link refid="writable__book__meta_8h_source"/>
         <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="29">
+        <label>include/endstone/inventory/meta/map_meta.h</label>
+        <link refid="map__meta_8h_source"/>
+      </node>
+      <node id="30">
+        <label>include/endstone/inventory/meta/writable_book_meta.h</label>
+        <link refid="writable__book__meta_8h_source"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
       </node>
-      <node id="22">
+      <node id="23">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -223,9 +227,7 @@
         <link refid="server_8h_source"/>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -297,74 +299,56 @@
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>trace(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">message</ref>)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="87"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Trace,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">message</ref>);</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args,<sp/>std::enable_if_t&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0),<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>=<sp/>0&gt;</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>trace(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="93"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Trace,<sp/>format,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>debug(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>message)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>trace(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">message</ref>)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Trace,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">message</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args,<sp/>std::enable_if_t&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0),<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>=<sp/>0&gt;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>trace(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="90"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Trace,<sp/>format,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>debug(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>message)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Debug,<sp/>message);<sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args,<sp/>std::enable_if_t&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0),<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>=<sp/>0&gt;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>debug(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="98"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Debug,<sp/>message);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Debug,<sp/>format,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args,<sp/>std::enable_if_t&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0),<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>=<sp/>0&gt;</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>debug(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="104"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Debug,<sp/>format,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>info(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>message)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="109"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Info,<sp/>message);</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args,<sp/>std::enable_if_t&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0),<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>=<sp/>0&gt;</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>info(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="115"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Info,<sp/>format,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>warning(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>message)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="120"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Warning,<sp/>message);</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args,<sp/>std::enable_if_t&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0),<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>=<sp/>0&gt;</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>warning(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="126"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Warning,<sp/>format,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>message)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="131"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Error,<sp/>message);</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>info(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>message)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Info,<sp/>message);<sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args,<sp/>std::enable_if_t&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0),<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>=<sp/>0&gt;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>info(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="106"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Info,<sp/>format,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>warning(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>message)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Warning,<sp/>message);<sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args,<sp/>std::enable_if_t&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0),<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>=<sp/>0&gt;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>warning(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="114"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Warning,<sp/>format,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>message)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Error,<sp/>message);<sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args,<sp/>std::enable_if_t&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0),<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>=<sp/>0&gt;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="122"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Error,<sp/>format,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>critical(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>message)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Critical,<sp/>message);<sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args,<sp/>std::enable_if_t&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0),<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>=<sp/>0&gt;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>critical(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="130"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Critical,<sp/>format,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args,<sp/>std::enable_if_t&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0),<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>=<sp/>0&gt;</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="137"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Error,<sp/>format,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>critical(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/>message)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="142"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Critical,<sp/>message);</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args,<sp/>std::enable_if_t&lt;(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0),<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&gt;<sp/>=<sp/>0&gt;</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>critical(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="148"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" kindref="member">log</ref>(Critical,<sp/>format,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="151"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/logger.h"/>
   </compounddef>
