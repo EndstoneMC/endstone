@@ -80,7 +80,8 @@ private:
     friend class NetworkSystem;
     ENDSTONE_HOOK virtual std::optional<PlayerAuthenticationInfo> _validateLoginPacket(const NetworkIdentifier &source,
                                                                                        const LoginPacket &packet);
-    ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &source,
+    // TODO: do not hook this method, listen for packet and then try get from sub player lists
+    ServerPlayer &_createNewPlayer(NetworkIdentifier const &source,
                                                  SubClientConnectionRequest const &connection_request,
                                                  const PlayerAuthenticationInfo &player_info, SubClientId subid);
     [[nodiscard]] ENDSTONE_HOOK bool _isServerTextEnabled(ServerTextEvent const &) const;
