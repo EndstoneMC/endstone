@@ -20,7 +20,7 @@ import tomlkit
 from packaging.version import Version
 from rich.progress import BarColumn, DownloadColumn, Progress, TextColumn, TimeRemainingColumn
 
-from endstone import __minecraft_version__ as minecraft_version
+from endstone import __minecraft_version__
 
 
 class Bootstrap:
@@ -64,6 +64,10 @@ class Bootstrap:
     def user_agent(self) -> str:
         return "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36"
 
+    @property
+    def minecraft_version(self) -> Version:
+        return Version(__minecraft_version__)
+
     def _validate(self) -> None:
         if platform.system().lower() != self.target_system:
             raise NotImplementedError(f"{platform.system()} is not supported by this bootstrap.")
@@ -76,14 +80,15 @@ class Bootstrap:
         dst = Path(dst)
 
         self._logger.info("Loading index from the remote server...")
-        channel = "preview" if Version(minecraft_version).is_prerelease else "release"
-        metadata_url = "/".join([self._remote, channel, minecraft_version, "metadata.json"])
+        channel = "preview" if self.minecraft_version.is_prerelease else "release"
+        version = f"1.{self.minecraft_version}" if self.minecraft_version.major > 1 else str(self.minecraft_version)
+        metadata_url = "/".join([self._remote, channel, version, "metadata.json"])
         response = requests.get(metadata_url, timeout=10)
         response.raise_for_status()
         metadata = response.json()
 
-        if minecraft_version != metadata["version"]:
-            raise ValueError(f"Version mismatch, expect: {minecraft_version}, actual: {metadata['version']}")
+        if version != metadata["version"]:
+            raise ValueError(f"Version mismatch, expect: {version}, actual: {metadata['version']}")
 
         should_modify_server_properties = True
 
@@ -152,7 +157,7 @@ class Bootstrap:
 
         version_file = dst / "version.txt"
         with version_file.open("w", encoding="utf-8") as file:
-            file.writelines(minecraft_version)
+            file.writelines(str(self.minecraft_version))
 
     def _prepare(self) -> None:
         # ensure the plugin folder exists
@@ -212,7 +217,7 @@ class Bootstrap:
 
         if not self._no_confirm:
             download = click.confirm(
-                f"Bedrock Dedicated Server (v{minecraft_version}) "
+                f"Bedrock Dedicated Server (v{self.minecraft_version}) "
                 f"is not found in {str(self.executable_path.parent)}. "
                 f"Would you like to download it now?",
                 default=True,
@@ -228,7 +233,7 @@ class Bootstrap:
 
     def _update(self) -> None:
         current_version = Version("0.0.0")
-        supported_version = Version(minecraft_version)
+        supported_version = self.minecraft_version
 
         version_file = self.server_path / "version.txt"
         if version_file.exists():
@@ -248,7 +253,7 @@ class Bootstrap:
             update = click.confirm(
                 f"An older version of Bedrock Dedicated Server (v{current_version}) "
                 f"is found in {str(self.executable_path.parent)}. "
-                f"Would you like to update to v{minecraft_version} now?",
+                f"Would you like to update to v{self.minecraft_version} now?",
                 default=True,
             )
         else:
@@ -257,7 +262,7 @@ class Bootstrap:
         if not update:
             sys.exit(1)
 
-        self._logger.info(f"Updating server from v{current_version} to v{minecraft_version}...")
+        self._logger.info(f"Updating server from v{current_version} to v{self.minecraft_version}...")
         self._download(self.server_path)
 
     def run(self) -> int:

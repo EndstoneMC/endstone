@@ -48,7 +48,6 @@ from .util import SocketAddress
 
 __all__ = [
     "__version__",
-    "__minecraft_version__",
     "ColorFormat",
     "GameMode",
     "Logger",
@@ -57,6 +56,7 @@ __all__ = [
     "Registry",
     "Server",
     "Skin",
+    "__minecraft_version__",
     "actor",
     "attribute",
     "ban",
@@ -771,6 +771,8 @@ class Skin:
         """
         ...
 
+__minecraft_version__ = "26.0"
+
 class Registry(typing.Generic[_T]):
     """
     Presents a registry
@@ -788,5 +790,3 @@ class Registry(typing.Generic[_T]):
     def __getitem__(self, key: str) -> _T: ...
     def __iter__(self) -> list: ...
     def __contains__(self, key: str) -> bool: ...
-
-__minecraft_version__: str
