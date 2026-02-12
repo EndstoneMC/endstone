@@ -106,7 +106,7 @@ repair-wheel-command = [
 
 [tool.cibuildwheel.linux]
 manylinux-x86_64-image = "ghcr.io/endstonemc/manylinux_2_31_x86_64"
-environment = { LLVM_VERSION = 16, CC = "/usr/bin/clang", CXX = "/usr/bin/clang++" }
+environment = { LLVM_VERSION = 20, CC = "/usr/bin/clang", CXX = "/usr/bin/clang++" }
 before-all = [
     "apt-get update -y -q && apt-get install -y -q build-essential lsb-release wget software-properties-common gnupg",
     "wget https://apt.llvm.org/llvm.sh && chmod +x llvm.sh && ./llvm.sh ${LLVM_VERSION}",

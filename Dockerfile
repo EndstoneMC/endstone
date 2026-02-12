@@ -9,7 +9,7 @@ ENV PYTHONUNBUFFERED=1 \
 FROM base AS builder
 
 # Install required dependencies and configure LLVM
-ARG LLVM_VERSION=16
+ARG LLVM_VERSION=20
 RUN apt-get update -y -qq \
     && apt-get install -y -qq build-essential lsb-release git wget software-properties-common gnupg \
     && wget https://apt.llvm.org/llvm.sh \
