@@ -103,6 +103,8 @@ public:
     static constexpr auto Infested = EffectId::minecraft("infested");
 
     static constexpr auto RaidOmen = EffectId::minecraft("raid_omen");
+
+    static constexpr auto BreathOfTheNautilus = EffectId::minecraft("breath_of_the_nautilus");
 };
 }  // namespace endstone
 ```

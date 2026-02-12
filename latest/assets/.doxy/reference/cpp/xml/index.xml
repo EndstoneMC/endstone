@@ -722,6 +722,7 @@
     <member refid="classendstone_1_1EffectType_1a71d76c66a98a9f6f038186c8a47d379f" kind="variable"><name>Oozing</name></member>
     <member refid="classendstone_1_1EffectType_1a99c1d88dc16a4c3e25af259303b6d45f" kind="variable"><name>Infested</name></member>
     <member refid="classendstone_1_1EffectType_1a455ec17fee0ef6334c2231c509df34f0" kind="variable"><name>RaidOmen</name></member>
+    <member refid="classendstone_1_1EffectType_1a7cb484582e16e833d637f39266a26b0d" kind="variable"><name>BreathOfTheNautilus</name></member>
   </compound>
   <compound refid="classendstone_1_1Enchantment" kind="class"><name>endstone::Enchantment</name>
     <member refid="classendstone_1_1Enchantment_1ac7918f3e3cab412ff65c436a05b85889" kind="variable"><name>Protection</name></member>

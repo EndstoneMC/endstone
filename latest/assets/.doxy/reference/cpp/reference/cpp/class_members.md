@@ -98,6 +98,7 @@
 * **begin** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md), [**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::UUID**](classendstone_1_1UUID.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **BadOmen** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **Blindness** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
+* **BreathOfTheNautilus** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **BaneOfArthropods** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **BlastProtection** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **Breach** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))

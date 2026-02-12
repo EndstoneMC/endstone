@@ -36,6 +36,7 @@
 * **BLACK** ([**endstone::Colors**](classendstone_1_1Colors.md))
 * **BadOmen** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **Blindness** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
+* **BreathOfTheNautilus** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **BaneOfArthropods** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **BlastProtection** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **Breach** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))

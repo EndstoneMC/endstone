@@ -582,17 +582,34 @@
         </inbodydescription>
         <location file="include/endstone/effect/effect_type.h" line="210" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="210" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a7cb484582e16e833d637f39266a26b0d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::BreathOfTheNautilus</definition>
+        <argsstring></argsstring>
+        <name>BreathOfTheNautilus</name>
+        <qualifiedname>endstone::EffectType::BreathOfTheNautilus</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;breath_of_the_nautilus&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Prevents the rider&apos;s oxygen bar from depleting while riding a nautilus or zombie nautilus. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="215" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
     </sectiondef>
     <briefdescription>
 <para>All effect types. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/effect/effect_type.h" line="26" column="1" bodyfile="include/endstone/effect/effect_type.h" bodystart="26" bodyend="211"/>
+    <location file="include/endstone/effect/effect_type.h" line="26" column="1" bodyfile="include/endstone/effect/effect_type.h" bodystart="26" bodyend="216"/>
     <listofallmembers>
       <member refid="classendstone_1_1EffectType_1a8acfe94b560a8febb2f485e578f45159" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Absorption</name></member>
       <member refid="classendstone_1_1EffectType_1ad05807d9a795e264c221a562fff43ea2" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>BadOmen</name></member>
       <member refid="classendstone_1_1EffectType_1a7466229104baf254bd422d8b97154c89" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Blindness</name></member>
+      <member refid="classendstone_1_1EffectType_1a7cb484582e16e833d637f39266a26b0d" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>BreathOfTheNautilus</name></member>
       <member refid="classendstone_1_1EffectType_1a5efdff0153d27ddd3079fa1547c0b9c4" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>ConduitPower</name></member>
       <member refid="classendstone_1_1EffectType_1a8e1a95df98b75ee68797075094ae2ba7" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Darkness</name></member>
       <member refid="classendstone_1_1EffectType_1aaeee81973d333a71beaf4ced6399594a" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>FatalPoison</name></member>

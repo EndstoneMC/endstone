@@ -41,6 +41,7 @@ _All effect types._
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Absorption**](#variable-absorption)   = `EffectId::minecraft("absorption")`<br> |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**BadOmen**](#variable-badomen)   = `EffectId::minecraft("bad\_omen")`<br> |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Blindness**](#variable-blindness)   = `EffectId::minecraft("blindness")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**BreathOfTheNautilus**](#variable-breathofthenautilus)   = `EffectId::minecraft("breath\_of\_the\_nautilus")`<br> |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ConduitPower**](#variable-conduitpower)   = `EffectId::minecraft("conduit\_power")`<br> |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Darkness**](#variable-darkness)   = `EffectId::minecraft("darkness")`<br> |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FatalPoison**](#variable-fatalpoison)   = `EffectId::minecraft("fatal\_poison")`<br> |
@@ -165,6 +166,23 @@ constexpr auto endstone::EffectType::Blindness;
 
 
 Blinds an entity. 
+
+
+        
+
+<hr>
+
+
+
+### variable BreathOfTheNautilus 
+
+```C++
+constexpr auto endstone::EffectType::BreathOfTheNautilus;
+```
+
+
+
+Prevents the rider's oxygen bar from depleting while riding a nautilus or zombie nautilus. 
 
 
         
