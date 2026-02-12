@@ -42,8 +42,8 @@ plugins:
       branch: main
   - macros
   - mkdocstrings:
-      enabled: true
-      custom_templates: docs/templates
+      enabled: !ENV [ CI, false ]
+      # custom_templates: docs/templates
       handlers:
         python:
           paths: [ python/src ]
