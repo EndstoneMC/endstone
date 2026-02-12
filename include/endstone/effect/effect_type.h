@@ -208,5 +208,10 @@ public:
      * Triggers a raid when a player enters a village.
      */
     static constexpr auto RaidOmen = EffectId::minecraft("raid_omen");
+
+    /**
+     * Prevents the rider's oxygen bar from depleting while riding a nautilus or zombie nautilus.
+     */
+    static constexpr auto BreathOfTheNautilus = EffectId::minecraft("breath_of_the_nautilus");
 };
 }  // namespace endstone

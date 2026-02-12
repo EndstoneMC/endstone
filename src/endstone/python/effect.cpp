@@ -56,6 +56,8 @@ void init_effect(py::module_ &m)
         .def_property_readonly_static("WEAVING", [](const py::object &) { return EffectType::Weaving; })
         .def_property_readonly_static("OOZING", [](const py::object &) { return EffectType::Oozing; })
         .def_property_readonly_static("INFESTED", [](const py::object &) { return EffectType::Infested; })
-        .def_property_readonly_static("RAID_OMEN", [](const py::object &) { return EffectType::RaidOmen; });
+        .def_property_readonly_static("RAID_OMEN", [](const py::object &) { return EffectType::RaidOmen; })
+        .def_property_readonly_static("BREATH_OF_THE_NAUTILUS",
+                                      [](const py::object &) { return EffectType::BreathOfTheNautilus; });
 }
 }  // namespace endstone::python

@@ -45,3 +45,4 @@ class EffectType:
     OOZING = "minecraft:oozing"
     INFESTED = "minecraft:infested"
     RAID_OMEN = "minecraft:raid_omen"
+    BREATH_OF_THE_NAUTILUS = "minecraft:breath_of_the_nautilus"
