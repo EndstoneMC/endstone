@@ -12,36 +12,61 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Added support for BDS 1.26.0.
-- **NBT API**: Plugins can now read, create, and manipulate NBT data directly. All 11 standard tag types are supported (`ByteTag` through `CompoundTag`), with full Python bindings. `CompoundTag` works like a dictionary and `ListTag` like a list. Tags can be printed in SNBT format for debugging.
-- **ItemStack NBT serialization**: Convert items to and from NBT using `ItemStack.to_nbt()` and `ItemStack.from_nbt()`. Useful for saving items to storage or exchanging item data between plugins.
-- **Enchantment API**: All 33 vanilla enchantments are available as named constants. Plugins can check max level, conflicts between enchantments, and whether an enchantment can be applied to a given item. Accessible via the new Registry system.
-- **Map API**: Plugins can now create and customise in-game maps. Draw pixels and images on the map canvas, add map cursors (24 types including Player, Mansion, Monument, and TrialChambers), control scale and center position, and listen for `MapInitializeEvent` when a new map is created.
+- **NBT API**: Plugins can now read, create, and manipulate NBT data directly. All 11 standard tag types are supported (
+  `ByteTag` through `CompoundTag`), with full Python bindings. `CompoundTag` works like a dictionary and `ListTag` like
+  a list. Tags can be printed in SNBT format for debugging.
+- **ItemStack NBT access**: Read and write NBT data on items using `ItemStack.nbt` (Python) / `ItemStack::getNbt()` and
+  `ItemStack::setNbt()` (C++). Useful for inspecting or modifying item data directly.
+- **Enchantment API**: All 33 vanilla enchantments are available as named constants. Plugins can check max level,
+  conflicts between enchantments, and whether an enchantment can be applied to a given item. Accessible via the new
+  Registry system.
+- **Map API**: Plugins can now create and customise in-game maps. Draw pixels and images on the map canvas, add map
+  cursors (24 types including Player, Mansion, Monument, and TrialChambers), control scale and center position, and
+  listen for `MapInitializeEvent` when a new map is created.
 - **New events**:
-  - `BlockFromToEvent`: fires on liquid flow teleportation. Cancellable.
-  - `PlayerPortalEvent`: fires when a player enters a portal, with access to source and destination locations. Cancellable.
-  - `PlayerDimensionChangeEvent`: fires when a player moves between dimensions (Overworld, Nether, The End).
+    - `BlockFromToEvent`: fires on liquid flow teleportation. Cancellable.
+    - `PlayerPortalEvent`: fires when a player enters a portal, with access to source and destination locations.
+      Cancellable.
+    - `PlayerDimensionChangeEvent`: fires when a player moves between dimensions (Overworld, Nether, The End).
 - **New ItemMeta types**:
-  - `BookMeta`: read and write signed book title, author, generation, and pages.
-  - `WritableBookMeta`: manage book-and-quill pages.
-  - `CrossbowMeta`: inspect and modify loaded crossbow projectiles.
-- **Command system**: Commands can now accept entity type arguments with tab completion via the new `entity_type` parameter type.
-- **Dimension API**: `Dimension.spawn_actor()` creates an entity at a given location. `Dimension.drop_item()` drops an item on the ground as a collectible entity.
+    - `BookMeta`: read and write signed book title, author, generation, and pages.
+    - `WritableBookMeta`: manage book-and-quill pages.
+    - `CrossbowMeta`: inspect and modify loaded crossbow projectiles.
+- **Command system**: Commands can now accept entity type arguments with tab completion via the new `entity_type`
+  parameter type.
+- **Dimension API**: `Dimension.spawn_actor()` creates an entity at a given location. `Dimension.drop_item()` drops an
+  item on the ground as a collectible entity.
 - **Mob API**: `Mob.max_health` is now writable, allowing plugins to change a mob's maximum health.
-- **Interactive console**: New console experience with persistent command history across server restarts. Enabled by default on Windows, disabled on Linux. Use `--interactive` / `--no-interactive` CLI flags to override, or set the `ENDSTONE_USE_INTERACTIVE_CONSOLE` environment variable.
-- **Crash reports**: Server crashes now automatically save a report to `crash_reports/` with cleaned-up stack traces for easier debugging.
-- **`endstone.asyncio` module**: Run async code from plugins using a background event loop. Call `submit(coro)` to schedule a coroutine and get a `Future` back, without blocking the server thread.
-- **Registry system**: A unified way to look up game objects (e.g., enchantments) by their identifier. Supports lookup, existence checks, and iteration.
+- **Interactive console**: New console experience with persistent command history across server restarts. Enabled by
+  default on Windows, disabled on Linux. Use `--interactive` / `--no-interactive` CLI flags to override, or set the
+  `ENDSTONE_USE_INTERACTIVE_CONSOLE` environment variable.
+- **Crash reports**: Server crashes now automatically save a report to `crash_reports/` with cleaned-up stack traces for
+  easier debugging.
+- **`endstone.asyncio` module**: Run async code from plugins using a background event loop. Call `submit(coro)` to
+  schedule a coroutine and get a `Future` back, without blocking the server thread.
+- **Registry system**: A unified way to look up game objects (e.g., enchantments) by their identifier. Supports lookup,
+  existence checks, and iteration.
 - **BossBar**: Added `CREATE_FOG` flag to control whether a boss bar creates fog effects for players.
 - **Logging**: Rotated log files are now gzip-compressed to save disk space.
+- **`endstone.metrics` module**: Built-in [bStats](https://bstats.org) integration for plugin analytics. Create a
+  `Metrics` instance with your plugin and service ID to start reporting. Includes 8 chart types: `SimplePie`,
+  `AdvancedPie`, `DrilldownPie`, `SingleLineChart`, `MultiLineChart`, `SimpleBarChart`, `AdvancedBarChart`, and
+  `CustomChart`. Data is submitted asynchronously via `endstone.asyncio`.
 - **`ItemStack.translation_key`** property for getting an item's localisation key.
 - Added support for Python 3.14.
 
 ### Changed
 
-- **BREAKING**: `NamespacedKey` has been replaced by `Identifier<T>`, a type-safe template that parses `"namespace:key"` strings and defaults to the `"minecraft"` namespace. C++ plugins must update all references. In Python, identifiers are simply strings.
-- **BREAKING**: `Result<T>` has been removed. API methods now return values directly and throw exceptions on invalid input via `Preconditions` checks. These exceptions signal programming errors (e.g., passing invalid arguments). Affected areas include health, distance calculations, boss bar progress, colour construction, and scoreboard operations. Python plugins are unaffected.
+- **BREAKING**: `NamespacedKey` has been replaced by `Identifier<T>`, a type-safe template that parses `"namespace:key"`
+  strings and defaults to the `"minecraft"` namespace. C++ plugins must update all references. In Python, identifiers
+  are simply strings.
+- **BREAKING**: `Result<T>` has been removed. API methods now return values directly and throw exceptions on invalid
+  input via `Preconditions` checks. These exceptions signal programming errors (e.g., passing invalid arguments).
+  Affected areas include health, distance calculations, boss bar progress, colour construction, and scoreboard
+  operations. Python plugins are unaffected.
 - **BREAKING**: Dimension argument reordered and made optional in several APIs. Call sites may need updating.
-- Health methods (`get_health`, `set_health`, `get_max_health`, `set_max_health`) moved from `Actor` to `Mob`, since only mobs have health.
+- Health methods (`get_health`, `set_health`, `get_max_health`, `set_max_health`) moved from `Actor` to `Mob`, since
+  only mobs have health.
 - `PlayerDeathEvent` now extends `ActorDeathEvent` instead of `PlayerEvent`.
 - Default config file renamed from `endstone.toml` to `endstone.default.toml`.
 - Enchantment APIs now use typed `EnchantmentId` constants instead of raw strings.
@@ -54,12 +79,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Fixed log files not reopening properly after rotation, which could cause logs to be written to stale files.
 - Fixed Python interpreter not being found reliably in multi-Python environments.
 - Fixed a crash on server shutdown caused by C++ destructors running after the Python interpreter was already torn down.
-- Fixed plugin loading failing in environments where `pip` is not available (such as `uv`), since `pip` is used at runtime to install plugins from file.
-
-### Removed
-
-- Removed `endstone-bstats` external dependency. Metrics collection is now built in.
-- Removed legacy `stubgen`, replaced by standalone `endstone-stubgen` CLI tool.
+- Fixed plugin loading failing in environments where `pip` is not available (such as `uv`), since `pip` is used at
+  runtime to install plugins from file.
 
 ## [0.10.18](https://github.com/EndstoneMC/endstone/releases/tag/v0.10.18) - 2025-12-11
 
