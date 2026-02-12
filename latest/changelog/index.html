@@ -2589,8 +2589,6 @@ For latest updates join the chat on
             
                 
             
-                
-            
         </ul>
     </nav>
     
@@ -3832,8 +3830,6 @@ For latest updates join the chat on
             
                 
             
-                
-            
         </ul>
     </nav>
     
@@ -5065,36 +5061,65 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Added support for BDS 1.26.0.</li>
-<li><strong>NBT API</strong>: Plugins can now read, create, and manipulate NBT data directly. All 11 standard tag types are supported (<code>ByteTag</code> through <code>CompoundTag</code>), with full Python bindings. <code>CompoundTag</code> works like a dictionary and <code>ListTag</code> like a list. Tags can be printed in SNBT format for debugging.</li>
-<li><strong>ItemStack NBT serialization</strong>: Convert items to and from NBT using <code>ItemStack.to_nbt()</code> and <code>ItemStack.from_nbt()</code>. Useful for saving items to storage or exchanging item data between plugins.</li>
-<li><strong>Enchantment API</strong>: All 33 vanilla enchantments are available as named constants. Plugins can check max level, conflicts between enchantments, and whether an enchantment can be applied to a given item. Accessible via the new Registry system.</li>
-<li><strong>Map API</strong>: Plugins can now create and customise in-game maps. Draw pixels and images on the map canvas, add map cursors (24 types including Player, Mansion, Monument, and TrialChambers), control scale and center position, and listen for <code>MapInitializeEvent</code> when a new map is created.</li>
-<li><strong>New events</strong>:</li>
+<li><strong>NBT API</strong>: Plugins can now read, create, and manipulate NBT data directly. All 11 standard tag types are supported (
+  <code>ByteTag</code> through <code>CompoundTag</code>), with full Python bindings. <code>CompoundTag</code> works like a dictionary and <code>ListTag</code> like
+  a list. Tags can be printed in SNBT format for debugging.</li>
+<li><strong>ItemStack NBT access</strong>: Read and write NBT data on items using <code>ItemStack.nbt</code> (Python) / <code>ItemStack::getNbt()</code> and
+  <code>ItemStack::setNbt()</code> (C++). Useful for inspecting or modifying item data directly.</li>
+<li><strong>Enchantment API</strong>: All 33 vanilla enchantments are available as named constants. Plugins can check max level,
+  conflicts between enchantments, and whether an enchantment can be applied to a given item. Accessible via the new
+  Registry system.</li>
+<li><strong>Map API</strong>: Plugins can now create and customise in-game maps. Draw pixels and images on the map canvas, add map
+  cursors (24 types including Player, Mansion, Monument, and TrialChambers), control scale and center position, and
+  listen for <code>MapInitializeEvent</code> when a new map is created.</li>
+<li><strong>New events</strong>:<ul>
 <li><code>BlockFromToEvent</code>: fires on liquid flow teleportation. Cancellable.</li>
-<li><code>PlayerPortalEvent</code>: fires when a player enters a portal, with access to source and destination locations. Cancellable.</li>
+<li><code>PlayerPortalEvent</code>: fires when a player enters a portal, with access to source and destination locations.
+  Cancellable.</li>
 <li><code>PlayerDimensionChangeEvent</code>: fires when a player moves between dimensions (Overworld, Nether, The End).</li>
-<li><strong>New ItemMeta types</strong>:</li>
+</ul>
+</li>
+<li><strong>New ItemMeta types</strong>:<ul>
 <li><code>BookMeta</code>: read and write signed book title, author, generation, and pages.</li>
 <li><code>WritableBookMeta</code>: manage book-and-quill pages.</li>
 <li><code>CrossbowMeta</code>: inspect and modify loaded crossbow projectiles.</li>
-<li><strong>Command system</strong>: Commands can now accept entity type arguments with tab completion via the new <code>entity_type</code> parameter type.</li>
-<li><strong>Dimension API</strong>: <code>Dimension.spawn_actor()</code> creates an entity at a given location. <code>Dimension.drop_item()</code> drops an item on the ground as a collectible entity.</li>
+</ul>
+</li>
+<li><strong>Command system</strong>: Commands can now accept entity type arguments with tab completion via the new <code>entity_type</code>
+  parameter type.</li>
+<li><strong>Dimension API</strong>: <code>Dimension.spawn_actor()</code> creates an entity at a given location. <code>Dimension.drop_item()</code> drops an
+  item on the ground as a collectible entity.</li>
 <li><strong>Mob API</strong>: <code>Mob.max_health</code> is now writable, allowing plugins to change a mob's maximum health.</li>
-<li><strong>Interactive console</strong>: New console experience with persistent command history across server restarts. Enabled by default on Windows, disabled on Linux. Use <code>--interactive</code> / <code>--no-interactive</code> CLI flags to override, or set the <code>ENDSTONE_USE_INTERACTIVE_CONSOLE</code> environment variable.</li>
-<li><strong>Crash reports</strong>: Server crashes now automatically save a report to <code>crash_reports/</code> with cleaned-up stack traces for easier debugging.</li>
-<li><strong><code>endstone.asyncio</code> module</strong>: Run async code from plugins using a background event loop. Call <code>submit(coro)</code> to schedule a coroutine and get a <code>Future</code> back, without blocking the server thread.</li>
-<li><strong>Registry system</strong>: A unified way to look up game objects (e.g., enchantments) by their identifier. Supports lookup, existence checks, and iteration.</li>
+<li><strong>Interactive console</strong>: New console experience with persistent command history across server restarts. Enabled by
+  default on Windows, disabled on Linux. Use <code>--interactive</code> / <code>--no-interactive</code> CLI flags to override, or set the
+  <code>ENDSTONE_USE_INTERACTIVE_CONSOLE</code> environment variable.</li>
+<li><strong>Crash reports</strong>: Server crashes now automatically save a report to <code>crash_reports/</code> with cleaned-up stack traces for
+  easier debugging.</li>
+<li><strong><code>endstone.asyncio</code> module</strong>: Run async code from plugins using a background event loop. Call <code>submit(coro)</code> to
+  schedule a coroutine and get a <code>Future</code> back, without blocking the server thread.</li>
+<li><strong>Registry system</strong>: A unified way to look up game objects (e.g., enchantments) by their identifier. Supports lookup,
+  existence checks, and iteration.</li>
 <li><strong>BossBar</strong>: Added <code>CREATE_FOG</code> flag to control whether a boss bar creates fog effects for players.</li>
 <li><strong>Logging</strong>: Rotated log files are now gzip-compressed to save disk space.</li>
+<li><strong><code>endstone.metrics</code> module</strong>: Built-in <a href="https://bstats.org">bStats</a> integration for plugin analytics. Create a
+  <code>Metrics</code> instance with your plugin and service ID to start reporting. Includes 8 chart types: <code>SimplePie</code>,
+  <code>AdvancedPie</code>, <code>DrilldownPie</code>, <code>SingleLineChart</code>, <code>MultiLineChart</code>, <code>SimpleBarChart</code>, <code>AdvancedBarChart</code>, and
+  <code>CustomChart</code>. Data is submitted asynchronously via <code>endstone.asyncio</code>.</li>
 <li><strong><code>ItemStack.translation_key</code></strong> property for getting an item's localisation key.</li>
 <li>Added support for Python 3.14.</li>
 </ul>
 <h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>BREAKING</strong>: <code>NamespacedKey</code> has been replaced by <code>Identifier&lt;T&gt;</code>, a type-safe template that parses <code>"namespace:key"</code> strings and defaults to the <code>"minecraft"</code> namespace. C++ plugins must update all references. In Python, identifiers are simply strings.</li>
-<li><strong>BREAKING</strong>: <code>Result&lt;T&gt;</code> has been removed. API methods now return values directly and throw exceptions on invalid input via <code>Preconditions</code> checks. These exceptions signal programming errors (e.g., passing invalid arguments). Affected areas include health, distance calculations, boss bar progress, colour construction, and scoreboard operations. Python plugins are unaffected.</li>
+<li><strong>BREAKING</strong>: <code>NamespacedKey</code> has been replaced by <code>Identifier&lt;T&gt;</code>, a type-safe template that parses <code>"namespace:key"</code>
+  strings and defaults to the <code>"minecraft"</code> namespace. C++ plugins must update all references. In Python, identifiers
+  are simply strings.</li>
+<li><strong>BREAKING</strong>: <code>Result&lt;T&gt;</code> has been removed. API methods now return values directly and throw exceptions on invalid
+  input via <code>Preconditions</code> checks. These exceptions signal programming errors (e.g., passing invalid arguments).
+  Affected areas include health, distance calculations, boss bar progress, colour construction, and scoreboard
+  operations. Python plugins are unaffected.</li>
 <li><strong>BREAKING</strong>: Dimension argument reordered and made optional in several APIs. Call sites may need updating.</li>
-<li>Health methods (<code>get_health</code>, <code>set_health</code>, <code>get_max_health</code>, <code>set_max_health</code>) moved from <code>Actor</code> to <code>Mob</code>, since only mobs have health.</li>
+<li>Health methods (<code>get_health</code>, <code>set_health</code>, <code>get_max_health</code>, <code>set_max_health</code>) moved from <code>Actor</code> to <code>Mob</code>, since
+  only mobs have health.</li>
 <li><code>PlayerDeathEvent</code> now extends <code>ActorDeathEvent</code> instead of <code>PlayerEvent</code>.</li>
 <li>Default config file renamed from <code>endstone.toml</code> to <code>endstone.default.toml</code>.</li>
 <li>Enchantment APIs now use typed <code>EnchantmentId</code> constants instead of raw strings.</li>
@@ -5107,12 +5132,8 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>Fixed log files not reopening properly after rotation, which could cause logs to be written to stale files.</li>
 <li>Fixed Python interpreter not being found reliably in multi-Python environments.</li>
 <li>Fixed a crash on server shutdown caused by C++ destructors running after the Python interpreter was already torn down.</li>
-<li>Fixed plugin loading failing in environments where <code>pip</code> is not available (such as <code>uv</code>), since <code>pip</code> is used at runtime to install plugins from file.</li>
-</ul>
-<h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Removed <code>endstone-bstats</code> external dependency. Metrics collection is now built in.</li>
-<li>Removed legacy <code>stubgen</code>, replaced by standalone <code>endstone-stubgen</code> CLI tool.</li>
+<li>Fixed plugin loading failing in environments where <code>pip</code> is not available (such as <code>uv</code>), since <code>pip</code> is used at
+  runtime to install plugins from file.</li>
 </ul>
 <h2 id="01018-2025-12-11"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.10.18">0.10.18</a> - 2025-12-11<a class="headerlink" href="#01018-2025-12-11" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.10.17...v0.10.18">Compare with 0.10.17</a></small></p>
