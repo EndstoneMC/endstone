@@ -65,3 +65,12 @@ void BaseAttributeMap::_onAttributeModified(AttributeInstance const &instance)
 }
 
 void BaseAttributeMap::_onAttributeModifiedDisabled(const AttributeInstance &instance) {}
+
+std::vector<MutableAttributeWithContext> BaseAttributeMap::getAttributes()
+{
+    std::vector<MutableAttributeWithContext> attributes;
+    for (auto [id, instance] : instance_map_) {
+        attributes.emplace_back(&instance, this);
+    }
+    return attributes;
+}

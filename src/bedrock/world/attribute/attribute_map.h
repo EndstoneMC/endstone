@@ -32,6 +32,7 @@ public:
 
     [[nodiscard]] const AttributeInstance *getInstance(const HashedString &name) const;                 // Endstone
     [[nodiscard]] MutableAttributeWithContext getMutableInstanceWithContext(const HashedString &name);  // Endstone
+    [[nodiscard]] std::vector<MutableAttributeWithContext> getAttributes();
 
 private:
     void _onAttributeModified(const AttributeInstance &instance);

@@ -12,17 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/attribute/attribute_instance.h"
-
 #include "bedrock/world/attribute/attribute_instance.h"
 #include "bedrock/world/attribute/mutable_attribute_with_context.h"
+#include "endstone/attribute/attribute_instance.h"
 #include "endstone/core/util/uuid.h"
 
 namespace endstone {
 
 class EndstoneAttributeInstance : public AttributeInstance {
 public:
-    explicit EndstoneAttributeInstance(::MutableAttributeWithContext &handle) : handle_(handle) {}
+    ~EndstoneAttributeInstance() override = default;
+
+    explicit EndstoneAttributeInstance(::MutableAttributeWithContext handle) : handle_(handle) {}
 
     [[nodiscard]] AttributeId getType() const override
     {
@@ -106,7 +107,7 @@ public:
     }
 
 private:
-    ::MutableAttributeWithContext &handle_;
+    ::MutableAttributeWithContext handle_;
 };
 
 }  // namespace endstone

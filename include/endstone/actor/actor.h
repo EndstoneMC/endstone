@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "endstone/attribute/attribute_instance.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/level/location.h"
 
@@ -235,6 +236,12 @@ public:
      * @param score The new score tag to set.
      */
     virtual void setScoreTag(std::string score) = 0;
+
+    [[nodiscard]] virtual bool hasAttribute(AttributeId id) const = 0;
+
+    [[nodiscard]] virtual std::unique_ptr<AttributeInstance> getAttribute(AttributeId id) = 0;
+
+    [[nodiscard]] virtual std::vector<std::unique_ptr<AttributeInstance>> getAttributes() = 0;
 };
 
 }  // namespace endstone

@@ -33,7 +33,6 @@ add_library(endstone_core
         skin.cpp
         actor/actor.cpp
         actor/item.cpp
-        attribute/attribute_instance.cpp
         ban/ip_ban_list.cpp
         ban/player_ban_list.cpp
         block/block.cpp
