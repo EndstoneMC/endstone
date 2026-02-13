@@ -16,13 +16,13 @@
 
 #include <memory>
 
+#include "bedrock/deps/raknet/plugin_interface.h"
 #include "bedrock/deps/raknet/raknet_socket2.h"
 #include "bedrock/deps/raknet/raknet_types.h"
 
 namespace RakNet {
 
 class BitStream;
-class Packet;
 struct PublicKey;
 class RakNetSocket2;
 class ShadowBanList;
@@ -69,11 +69,11 @@ public:
     virtual bool GetConnectionList(SystemAddress *, unsigned short *) const = 0;
     virtual unsigned int GetNextSendReceipt() = 0;
     virtual unsigned int IncrementNextSendReceipt() = 0;
-    virtual unsigned int Send(BitStream const *, PacketPriority, PacketReliability, char, AddressOrGUID, bool,
-                              unsigned int) = 0;
     virtual unsigned int Send(char const *, int, PacketPriority, PacketReliability, char, AddressOrGUID, bool,
                               unsigned int) = 0;
     virtual void SendLoopback(char const *, int) = 0;
+    virtual unsigned int Send(BitStream const *, PacketPriority, PacketReliability, char, AddressOrGUID, bool,
+                              unsigned int) = 0;
     virtual unsigned int SendList(char const **, int const *, int, PacketPriority, PacketReliability, char,
                                   AddressOrGUID, bool, unsigned int) = 0;
     virtual Packet *Receive() = 0;
@@ -91,8 +91,8 @@ public:
     virtual void ClearBanList() = 0;
     virtual bool IsBanned(char const *) = 0;
     virtual void SetLimitIPConnectionFrequency(bool) = 0;
-    virtual bool Ping(char const *, unsigned short, bool, unsigned int) = 0;
     virtual void Ping(SystemAddress) = 0;
+    virtual bool Ping(char const *, unsigned short, bool, unsigned int) = 0;
     virtual void SendNatTraversalMessage(SystemAddress) = 0;
     virtual int GetAveragePing(AddressOrGUID) = 0;
     virtual int GetLastPing(AddressOrGUID) const = 0;
@@ -115,6 +115,8 @@ public:
     virtual void SetTimeoutTime(RakNet::TimeMS, const SystemAddress) = 0;
     virtual RakNet::TimeMS GetTimeoutTime(const SystemAddress) = 0;
     virtual int GetMTUSize(const SystemAddress) const = 0;
+    virtual unsigned int GetNumberOfAdapters() = 0;
+    virtual NetworkAdapter &GetLocalAdapter(unsigned int) = 0;
     virtual unsigned GetNumberOfAddresses() = 0;
     virtual const char *GetLocalIP(unsigned int) = 0;
     virtual bool IsLocalIP(const char *) = 0;

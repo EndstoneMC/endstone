@@ -34,10 +34,7 @@ using RNS2Socket = int;
 enum class RNS2Type;
 
 struct RNS2_SendParameters {  // NOLINT
-    RNS2_SendParameters()
-    {
-        ttl = 0;
-    }
+    RNS2_SendParameters() { ttl = 0; }
     char *data;
     int length;
     SystemAddress system_address;
@@ -81,14 +78,14 @@ protected:
     // TODO(fixme): write a RakNetPlugin to intercept ID_UNCONNECTED_PING and trigger ServerListPingEvent
     //  then craft and send ID_UNCONNECTED_PONG based on the event.
     // NOLINTNEXTLINE
-    static RNS2SendResult Send_Windows_Linux_360NoVDP(RNS2Socket socket,
-                                                                    RNS2_SendParameters *send_parameters,
-                                                                    const char *file, unsigned int line);
+    static RNS2SendResult Send_Windows_Linux_360NoVDP(RNS2Socket socket, RNS2_SendParameters *send_parameters,
+                                                      const char *file, unsigned int line);
 };
 
-class RakNetSocket2 : std::enable_shared_from_this<RakNetSocket2> {
+class RakNetSocket2 : public std::enable_shared_from_this<RakNetSocket2> {
 public:
     virtual ~RakNetSocket2() = 0;
+    virtual RNS2SendResult Send(RNS2_SendParameters *, const char *, unsigned int) = 0;
 
 protected:
     RNS2EventHandler *event_handler_;            // +24

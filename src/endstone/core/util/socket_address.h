@@ -21,6 +21,7 @@ namespace endstone::core {
 
 class EndstoneSocketAddress {
 public:
+    static SocketAddress fromSystemAddress(const RakNet::SystemAddress &network_id);
     static SocketAddress fromNetworkIdentifier(const NetworkIdentifier &network_id);
 };
 }  // namespace endstone::core

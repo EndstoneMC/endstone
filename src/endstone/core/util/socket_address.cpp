@@ -17,15 +17,20 @@
 #include "endstone/core/server.h"
 
 namespace endstone::core {
+SocketAddress EndstoneSocketAddress::fromSystemAddress(const RakNet::SystemAddress &address)
+{
+    char buffer[INET6_ADDRSTRLEN + 5 + 1] = {};
+    address.ToString(false, buffer);
+    return {buffer, address.GetPort()};
+}
+
 SocketAddress EndstoneSocketAddress::fromNetworkIdentifier(const NetworkIdentifier &network_id)
 {
     switch (network_id.getType()) {
     case NetworkIdentifier::Type::RakNet: {
         const auto *peer = EndstoneServer::getInstance().getRakNetConnector().getPeer();
         const auto addr = peer->GetSystemAddressFromGuid(network_id.guid);
-        char buffer[INET6_ADDRSTRLEN + 5 + 1] = {};
-        addr.ToString(false, buffer);
-        return {buffer, addr.GetPort()};
+        return fromSystemAddress(addr);
     }
     case NetworkIdentifier::Type::Address:
     case NetworkIdentifier::Type::Address6: {

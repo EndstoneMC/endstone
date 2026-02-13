@@ -48,7 +48,12 @@ enum class StartupResult {
     // NOLINTEND
 };
 
+#define BITS_TO_BYTES(x) (((x) + 7) >> 3)
+#define BYTES_TO_BITS(x) ((x) << 3)
+
 using SystemIndex = std::uint16_t;
+using MessageID = unsigned char;
+using BitSize_t = std::uint32_t;
 
 struct SystemAddress {
     SystemAddress()
@@ -57,7 +62,7 @@ struct SystemAddress {
         // used for operator ==
         memset(&address, 0, sizeof(address));
         address.addr4.sin_family = AF_INET;
-        system_index = -1;
+        system_index = static_cast<SystemIndex>(-1);
         debug_port = 0;
     }
     [[nodiscard]] std::uint16_t GetPort() const;                                  // NOLINT
@@ -76,13 +81,12 @@ struct SystemAddress {
 };
 BEDROCK_STATIC_ASSERT_SIZE(SystemAddress, 136, 136);
 
+struct NetworkAdapter;
+
 struct RakNetGUID {
     RakNetGUID() : g(-1), system_index(-1) {}
     explicit RakNetGUID(uint64_t g) : g(g), system_index(-1) {}
-    bool operator==(const RakNetGUID &right) const
-    {
-        return g == right.g;
-    }
+    bool operator==(const RakNetGUID &right) const { return g == right.g; }
 
     std::uint64_t g;
     SystemIndex system_index;
@@ -90,7 +94,7 @@ struct RakNetGUID {
 BEDROCK_STATIC_ASSERT_SIZE(RakNetGUID, 16, 16);
 
 const RakNetGUID UNASSIGNED_RAKNET_GUID(static_cast<uint64_t>(-1));
-const SystemAddress UNASSIGNED_SYSTEM_ADDRESS;
+const SystemAddress UNASSIGNED_SYSTEM_ADDRESS{};
 
 struct AddressOrGUID {
     AddressOrGUID() = default;
@@ -128,4 +132,13 @@ struct AddressOrGUID {
     SystemAddress system_address;
 };
 
+struct Packet {
+    SystemAddress systemAddress;
+    RakNetGUID guid;
+    unsigned int length;
+    BitSize_t bitSize;
+    unsigned char *data;
+    bool deleteData;
+    bool wasGeneratedLocally;
+};
 }  // namespace RakNet

@@ -40,8 +40,10 @@ enum class EventResult {
 class Event {
 public:
     explicit Event(bool async = false) : async_(async) {};
-    Event(const Event &) = delete;             // deleted copy constructor
-    Event &operator=(const Event &) = delete;  // deleted copy assignment operator
+    Event(const Event &) = delete;
+    Event &operator=(const Event &) = delete;
+    Event(Event &&) = default;
+    Event &operator=(Event &&) = default;
 
     virtual ~Event() = default;
 
