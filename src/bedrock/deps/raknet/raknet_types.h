@@ -62,7 +62,7 @@ struct SystemAddress {
         // used for operator ==
         memset(&address, 0, sizeof(address));
         address.addr4.sin_family = AF_INET;
-        system_index = -1;
+        system_index = static_cast<SystemIndex>(-1);
         debug_port = 0;
     }
     [[nodiscard]] std::uint16_t GetPort() const;                                  // NOLINT
@@ -81,6 +81,8 @@ struct SystemAddress {
 };
 BEDROCK_STATIC_ASSERT_SIZE(SystemAddress, 136, 136);
 
+struct NetworkAdapter;
+
 struct RakNetGUID {
     RakNetGUID() : g(-1), system_index(-1) {}
     explicit RakNetGUID(uint64_t g) : g(g), system_index(-1) {}
@@ -92,7 +94,7 @@ struct RakNetGUID {
 BEDROCK_STATIC_ASSERT_SIZE(RakNetGUID, 16, 16);
 
 const RakNetGUID UNASSIGNED_RAKNET_GUID(static_cast<uint64_t>(-1));
-const SystemAddress UNASSIGNED_SYSTEM_ADDRESS;
+const SystemAddress UNASSIGNED_SYSTEM_ADDRESS{};
 
 struct AddressOrGUID {
     AddressOrGUID() = default;
