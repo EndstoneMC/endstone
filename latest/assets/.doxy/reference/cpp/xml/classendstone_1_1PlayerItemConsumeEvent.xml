@@ -173,6 +173,7 @@
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PlayerItemConsumeEvent_1a4c71af194ee2c446fcb5c5eb28715050" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>getHand</name></member>
       <member refid="classendstone_1_1PlayerItemConsumeEvent_1a4de0357572db1c426f5278d709e7a598" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>getItem</name></member>
@@ -182,6 +183,7 @@
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1PlayerItemConsumeEvent_1af9821b75d075a005fb9a147435b9388a" prot="private" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>item_</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>PlayerEvent</name></member>
       <member refid="classendstone_1_1PlayerItemConsumeEvent_1ad3b53513f23b6b3500dbecf9496570b3" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>PlayerItemConsumeEvent</name></member>

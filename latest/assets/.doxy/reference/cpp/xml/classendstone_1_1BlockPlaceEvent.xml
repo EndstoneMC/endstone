@@ -276,6 +276,7 @@
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::BlockPlaceEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1a822e71386ca87244c89763e333cfe7b2" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>getBlockAgainst</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1aaa914dd3891c83edd97b8e3cdaf3b3c5" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>getBlockPlacedState</name></member>
@@ -286,6 +287,7 @@
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::BlockPlaceEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1ac4e2bdd1835d163b9eb5accdfbbd63c1" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1ab58f51c0b2c6e6faad8b5f990bcdd2fa" prot="private" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>placed_against_</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1a5ff8f8ed7c32f7d49f2cd81196fe0d93" prot="private" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>placed_block_</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1a916d00309007668efdf242a1207e45e3" prot="private" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>player_</name></member>

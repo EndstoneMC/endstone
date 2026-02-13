@@ -349,6 +349,7 @@
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PacketReceiveEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1ServerEvent_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1ab5fe2e62cbedfbe4312c442b1a774b10" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>getAddress</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1ade14c9698e182f8c468ff220fdce7eb3" prot="public" virt="virtual"><scope>endstone::PacketReceiveEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1a55fbf8774d4f1a7d069e542c685fdd48" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>getPacketId</name></member>
@@ -359,6 +360,7 @@
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PacketReceiveEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1a218801638ce951b0f39ba49d6a99e159" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1adc2c03d18ae6e368c288bd205cd51594" prot="private" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>owned_payload_</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1a223394f5245bf96c91c8416a79f1cff1" prot="private" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>packet_id_</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1aadc6685d7ad9177fb9f9175f58088345" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>PacketReceiveEvent</name></member>

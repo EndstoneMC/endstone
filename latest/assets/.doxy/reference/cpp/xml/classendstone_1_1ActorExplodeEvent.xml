@@ -257,6 +257,7 @@
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::ActorExplodeEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ActorEvent_1a49c459c96e831dbab2333ec2187ea552" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>getActor</name></member>
       <member refid="classendstone_1_1ActorExplodeEvent_1a0b009ccfd36dbb770f245f1d30d4e348" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>getBlockList</name></member>
       <member refid="classendstone_1_1ActorExplodeEvent_1a1a6ba8571a20ec1325ec4a9aa45a1a0a" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>getBlockList</name></member>
@@ -267,6 +268,7 @@
       <member refid="classendstone_1_1ActorExplodeEvent_1a71dac852727c2b7fb8268622c43c0cc2" prot="private" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>location_</name></member>
       <member refid="classendstone_1_1ActorExplodeEvent_1a538b328811580be48ba12a6e72d81f63" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::ActorExplodeEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1ActorEvent_1a9fff5524effc04e99bb28d49a9b37b6f" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>~ActorEvent</name></member>
       <member refid="classendstone_1_1ActorExplodeEvent_1aeb8f75b17f04f27c4e4e64cd1f56d2f2" prot="public" virt="non-virtual"><scope>endstone::ActorExplodeEvent</scope><name>~ActorExplodeEvent</name></member>

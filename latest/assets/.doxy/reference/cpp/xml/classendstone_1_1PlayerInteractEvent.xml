@@ -385,6 +385,7 @@
       <member refid="classendstone_1_1PlayerInteractEvent_1aa5eb8d30d11e46d8936bdfc3bf9262cc" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1PlayerInteractEvent_1a17117725b022db37efc279e4f35b06c5" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>getAction</name></member>
       <member refid="classendstone_1_1PlayerInteractEvent_1a4f26cb5a7a2306ab9c37aab371498bb2" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1PlayerInteractEvent_1ad38f34d2deabcbd5503b3ceaafd033c7" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>getBlockFace</name></member>
@@ -398,6 +399,7 @@
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerInteractEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1PlayerInteractEvent_1a0fe282245bcba3f5d824f122ee98330c" prot="private" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>item_</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>PlayerEvent</name></member>
       <member refid="classendstone_1_1PlayerInteractEvent_1adacc1eea506e1636a9eb25ec5d22d709" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>PlayerInteractEvent</name></member>

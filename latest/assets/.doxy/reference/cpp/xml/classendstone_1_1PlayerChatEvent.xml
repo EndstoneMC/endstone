@@ -311,6 +311,7 @@
       <member refid="classendstone_1_1PlayerChatEvent_1a6d8d09a5415905191c0f75b4e029b4c2" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1PlayerChatEvent_1a6f547117792397c1aa4dfeed946d6452" prot="private" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>format_</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerChatEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PlayerChatEvent_1a4ca2281553851adb20356f1d15fff91e" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>getFormat</name></member>
@@ -321,6 +322,7 @@
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerChatEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1PlayerChatEvent_1a5a2fadea22a0df7dcfd1e3229ace5414" prot="private" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>message_</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1PlayerChatEvent_1a7b502ca97396f42b9a828464885afc07" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>PlayerChatEvent</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>PlayerEvent</name></member>

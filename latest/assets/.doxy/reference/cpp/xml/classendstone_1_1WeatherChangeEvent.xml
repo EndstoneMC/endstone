@@ -182,12 +182,14 @@
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::WeatherChangeEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1WeatherChangeEvent_1aed5ffb1d7cab8026df5c6b2529f95f24" prot="public" virt="virtual"><scope>endstone::WeatherChangeEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1WeatherEvent_1a41c387efbe3a36881832bddf69b90691" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>getLevel</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::WeatherChangeEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1WeatherChangeEvent_1af684c3b39e6a91f4453f14e46ade558e" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::WeatherChangeEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1WeatherChangeEvent_1a2bde9420885bad855573e4557f771a8d" prot="private" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>to_</name></member>
       <member refid="classendstone_1_1WeatherChangeEvent_1a6f1a7f2b0be3478b85737c52f35da02e" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>toWeatherState</name></member>

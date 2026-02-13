@@ -272,6 +272,7 @@
       <member refid="classendstone_1_1PlayerMoveEvent_1a545efb1716ac4e5a9ff1c50b81f2df69" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1PlayerMoveEvent_1ab13ad4f9c7456bf710fcb329233cf4c7" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>from_</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerMoveEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PlayerMoveEvent_1a107f307825941d5cfb6b128ddfce7afa" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>getFrom</name></member>
@@ -280,6 +281,7 @@
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerMoveEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>PlayerEvent</name></member>
       <member refid="classendstone_1_1PlayerMoveEvent_1a8a1cf3638b2074e1d7845129adbbfed5" prot="public" virt="non-virtual"><scope>endstone::PlayerMoveEvent</scope><name>PlayerMoveEvent</name></member>

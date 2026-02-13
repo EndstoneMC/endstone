@@ -15,6 +15,7 @@
 * `#include "endstone/event/cancellable.h"`
 * `#include "endstone/event/server/server_event.h"`
 * `#include "endstone/game_mode.h"`
+* `#include "endstone/util/socket_address.h"`
 
 
 

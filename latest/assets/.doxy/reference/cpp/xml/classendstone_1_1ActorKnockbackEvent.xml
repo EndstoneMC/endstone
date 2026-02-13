@@ -246,6 +246,7 @@
       <member refid="classendstone_1_1ActorKnockbackEvent_1a7be704fa067cb046a3615c863541f21b" prot="public" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ActorEvent_1a49c459c96e831dbab2333ec2187ea552" prot="public" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>getActor</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1ActorKnockbackEvent_1aa141894e58254a8afe5f28d19d7aed02" prot="public" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>getKnockback</name></member>
@@ -255,6 +256,7 @@
       <member refid="classendstone_1_1ActorKnockbackEvent_1aae9204247f577fa7adb8d181ccf09eb8" prot="private" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>knockback_</name></member>
       <member refid="classendstone_1_1ActorKnockbackEvent_1ab5e73d9ee065b8615cfed763fe869c91" prot="private" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>mob_</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1ActorKnockbackEvent_1a906d58cbc40540d8cd57327d0862d3c2" prot="private" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>raw_knockback_</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::ActorKnockbackEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1ActorKnockbackEvent_1a4d0589c39958cc0b744f76ba1d6e7714" prot="public" virt="non-virtual"><scope>endstone::ActorKnockbackEvent</scope><name>setKnockback</name></member>

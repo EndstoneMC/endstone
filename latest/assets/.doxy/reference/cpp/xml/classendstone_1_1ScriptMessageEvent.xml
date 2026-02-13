@@ -236,6 +236,7 @@
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::ScriptMessageEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ScriptMessageEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ScriptMessageEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1ServerEvent_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::ScriptMessageEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ScriptMessageEvent_1a23b45d138202bb0494068a76a775d703" prot="public" virt="virtual"><scope>endstone::ScriptMessageEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1ScriptMessageEvent_1a55b3bd04740ef0190905a76341117530" prot="public" virt="non-virtual"><scope>endstone::ScriptMessageEvent</scope><name>getMessage</name></member>
       <member refid="classendstone_1_1ScriptMessageEvent_1ab02541c1eb8d43ffb49c7a0fd11bd1bf" prot="public" virt="non-virtual"><scope>endstone::ScriptMessageEvent</scope><name>getMessageId</name></member>
@@ -246,6 +247,7 @@
       <member refid="classendstone_1_1ScriptMessageEvent_1a58317ac21e5a652d21cc76f29e8fd689" prot="private" virt="non-virtual"><scope>endstone::ScriptMessageEvent</scope><name>message_id_</name></member>
       <member refid="classendstone_1_1ScriptMessageEvent_1a640a9ad1b0b372ef2c0abc125e49bc04" prot="public" virt="non-virtual"><scope>endstone::ScriptMessageEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ScriptMessageEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::ScriptMessageEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1ScriptMessageEvent_1a5ca8c894f05907c46541fdd1546ec1b7" prot="public" virt="non-virtual"><scope>endstone::ScriptMessageEvent</scope><name>ScriptMessageEvent</name></member>
       <member refid="classendstone_1_1ScriptMessageEvent_1a1947b8b1a29c49b0302268f093ca5506" prot="private" virt="non-virtual"><scope>endstone::ScriptMessageEvent</scope><name>sender_</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::ScriptMessageEvent</scope><name>setCancelled</name></member>

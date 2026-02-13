@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"ServerListPingEvent"`<br> |
 
 
 
@@ -98,31 +93,28 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ServerListPingEvent**](#function-serverlistpingevent) (std::string remote\_host, [**int**](classendstone_1_1Identifier.md) remote\_port, std::string ping\_response) <br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**deserialize**](#function-deserialize) () <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  [**GameMode**](namespaceendstone.md#enum-gamemode) | [**getGameMode**](#function-getgamemode) () const<br> |
-|  std::string | [**getLevelName**](#function-getlevelname) () const<br> |
-|  [**int**](classendstone_1_1Identifier.md) | [**getLocalPort**](#function-getlocalport) () const<br> |
-|  [**int**](classendstone_1_1Identifier.md) | [**getLocalPortV6**](#function-getlocalportv6) () const<br> |
-|  [**int**](classendstone_1_1Identifier.md) | [**getMaxPlayers**](#function-getmaxplayers) () const<br> |
-|  std::string | [**getMinecraftVersionNetwork**](#function-getminecraftversionnetwork) () const<br> |
-|  std::string | [**getMotd**](#function-getmotd) () const<br> |
-|  [**int**](classendstone_1_1Identifier.md) | [**getNetworkProtocolVersion**](#function-getnetworkprotocolversion) () const<br> |
-|  [**int**](classendstone_1_1Identifier.md) | [**getNumPlayers**](#function-getnumplayers) () const<br> |
-|  std::string | [**getRemoteHost**](#function-getremotehost) () const<br> |
-|  [**int**](classendstone_1_1Identifier.md) | [**getRemotePort**](#function-getremoteport) () const<br> |
-|  std::string | [**getServerGuid**](#function-getserverguid) () const<br> |
-|  std::string | [**serialize**](#function-serialize) () <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setGameMode**](#function-setgamemode) ([**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setLevelName**](#function-setlevelname) (std::string level\_name) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setLocalPort**](#function-setlocalport) ([**int**](classendstone_1_1Identifier.md) port) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setLocalPortV6**](#function-setlocalportv6) ([**int**](classendstone_1_1Identifier.md) port) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setMaxPlayers**](#function-setmaxplayers) ([**int**](classendstone_1_1Identifier.md) max\_players) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setMinecraftVersionNetwork**](#function-setminecraftversionnetwork) (std::string minecraft\_version\_network) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setMotd**](#function-setmotd) (std::string motd) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setNumPlayers**](#function-setnumplayers) ([**int**](classendstone_1_1Identifier.md) num\_players) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setServerGuid**](#function-setserverguid) (std::string guid) <br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md)) <br> |
+|   | [**ServerListPingEvent**](#function-serverlistpingevent) ([**SocketAddress**](classendstone_1_1SocketAddress.md) address, std::string motd, [**int**](classendstone_1_1Identifier.md) network\_protocol\_version, std::string minecraft\_version\_network, [**int**](classendstone_1_1Identifier.md) num\_players, [**int**](classendstone_1_1Identifier.md) max\_players, std::string server\_guid, std::string level\_name, [**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode, [**int**](classendstone_1_1Identifier.md) local\_port, [**int**](classendstone_1_1Identifier.md) local\_port\_v6) <br> |
+|  [**SocketAddress**](classendstone_1_1SocketAddress.md) | [**getAddress**](#function-getaddress) () const<br>_Get the address the ping is coming from._  |
+|  [**GameMode**](namespaceendstone.md#enum-gamemode) | [**getGameMode**](#function-getgamemode) () const<br>_Get the current game mode._  |
+|  std::string | [**getLevelName**](#function-getlevelname) () const<br>_Get the level name._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getLocalPort**](#function-getlocalport) () const<br>_Get the local port of the server._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getLocalPortV6**](#function-getlocalportv6) () const<br>_Get the local port of the server for IPv6 support._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getMaxPlayers**](#function-getmaxplayers) () const<br>_Get the maximum number of players allowed._  |
+|  std::string | [**getMinecraftVersionNetwork**](#function-getminecraftversionnetwork) () const<br>_Get the network version of Minecraft that is supported by this server._  |
+|  std::string | [**getMotd**](#function-getmotd) () const<br>_Get the message of the day message._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getNetworkProtocolVersion**](#function-getnetworkprotocolversion) () const<br>_Get the network protocol version of this server._  |
+|  [**int**](classendstone_1_1Identifier.md) | [**getNumPlayers**](#function-getnumplayers) () const<br>_Get the number of players online._  |
+|  std::string | [**getServerGuid**](#function-getserverguid) () const<br>_Get the unique identifier of the server._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setGameMode**](#function-setgamemode) ([**GameMode**](namespaceendstone.md#enum-gamemode) game\_mode) <br>_Set the current game mode._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setLevelName**](#function-setlevelname) (std::string level\_name) <br>_Set the level name._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setLocalPort**](#function-setlocalport) ([**int**](classendstone_1_1Identifier.md) port) <br>_Set the local port of the server._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setLocalPortV6**](#function-setlocalportv6) ([**int**](classendstone_1_1Identifier.md) port) <br>_Set the local port of the server for IPv6 support._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setMaxPlayers**](#function-setmaxplayers) ([**int**](classendstone_1_1Identifier.md) max\_players) <br>_Set the maximum number of players allowed._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setMinecraftVersionNetwork**](#function-setminecraftversionnetwork) (std::string minecraft\_version\_network) <br>_Set the network version of Minecraft that is supported by this server._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setMotd**](#function-setmotd) (std::string motd) <br>_Change the message of the day message._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setNumPlayers**](#function-setnumplayers) ([**int**](classendstone_1_1Identifier.md) num\_players) <br>_Set the number of players online._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setServerGuid**](#function-setserverguid) (std::string guid) <br>_Set the unique identifier of the server._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -226,33 +218,16 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
-
-
-
-
-### variable NAME 
-
-```C++
-const std::string endstone::ServerListPingEvent::NAME;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
 
 
-### function ServerListPingEvent 
+### function ENDSTONE\_EVENT 
 
 ```C++
-inline endstone::ServerListPingEvent::ServerListPingEvent (
-    std::string remote_host,
-    int remote_port,
-    std::string ping_response
+endstone::ServerListPingEvent::ENDSTONE_EVENT (
+    ServerListPingEvent
 ) 
 ```
 
@@ -263,10 +238,22 @@ inline endstone::ServerListPingEvent::ServerListPingEvent (
 
 
 
-### function deserialize 
+### function ServerListPingEvent 
 
 ```C++
-bool endstone::ServerListPingEvent::deserialize () 
+inline endstone::ServerListPingEvent::ServerListPingEvent (
+    SocketAddress address,
+    std::string motd,
+    int network_protocol_version,
+    std::string minecraft_version_network,
+    int num_players,
+    int max_players,
+    std::string server_guid,
+    std::string level_name,
+    GameMode game_mode,
+    int local_port,
+    int local_port_v6
+) 
 ```
 
 
@@ -276,30 +263,26 @@ bool endstone::ServerListPingEvent::deserialize ()
 
 
 
-### function getEventName 
+### function getAddress 
 
+_Get the address the ping is coming from._ 
 ```C++
-inline virtual std::string endstone::ServerListPingEvent::getEventName () override const
+inline SocketAddress endstone::ServerListPingEvent::getAddress () const
 ```
 
-
-
-Gets a user-friendly identifier for this event.
 
 
 
 
 **Returns:**
 
-name of this event 
+the address 
 
 
 
 
 
         
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 
@@ -307,13 +290,11 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function getGameMode 
 
+_Get the current game mode._ 
 ```C++
 inline GameMode endstone::ServerListPingEvent::getGameMode () const
 ```
 
-
-
-Get the current game mode.
 
 
 
@@ -334,13 +315,11 @@ the game mode
 
 ### function getLevelName 
 
+_Get the level name._ 
 ```C++
 inline std::string endstone::ServerListPingEvent::getLevelName () const
 ```
 
-
-
-Get the level name.
 
 
 
@@ -361,13 +340,11 @@ the level name
 
 ### function getLocalPort 
 
+_Get the local port of the server._ 
 ```C++
 inline int endstone::ServerListPingEvent::getLocalPort () const
 ```
 
-
-
-Get the local port of the server.
 
 
 
@@ -388,13 +365,11 @@ The local port
 
 ### function getLocalPortV6 
 
+_Get the local port of the server for IPv6 support._ 
 ```C++
 inline int endstone::ServerListPingEvent::getLocalPortV6 () const
 ```
 
-
-
-Get the local port of the server for IPv6 support
 
 
 
@@ -415,13 +390,11 @@ The local port for IPv6
 
 ### function getMaxPlayers 
 
+_Get the maximum number of players allowed._ 
 ```C++
 inline int endstone::ServerListPingEvent::getMaxPlayers () const
 ```
 
-
-
-Get the maximum number of players allowed.
 
 
 
@@ -442,13 +415,11 @@ the maximum number of players
 
 ### function getMinecraftVersionNetwork 
 
+_Get the network version of Minecraft that is supported by this server._ 
 ```C++
 inline std::string endstone::ServerListPingEvent::getMinecraftVersionNetwork () const
 ```
 
-
-
-Get the network version of Minecraft that is supported by this server
 
 
 
@@ -469,13 +440,11 @@ the network version of Minecraft
 
 ### function getMotd 
 
+_Get the message of the day message._ 
 ```C++
 inline std::string endstone::ServerListPingEvent::getMotd () const
 ```
 
-
-
-Get the message of the day message.
 
 
 
@@ -496,13 +465,11 @@ the message of the day
 
 ### function getNetworkProtocolVersion 
 
+_Get the network protocol version of this server._ 
 ```C++
 inline int endstone::ServerListPingEvent::getNetworkProtocolVersion () const
 ```
 
-
-
-Get the network protocol version of this server
 
 
 
@@ -523,13 +490,11 @@ the network protocol version
 
 ### function getNumPlayers 
 
+_Get the number of players online._ 
 ```C++
 inline int endstone::ServerListPingEvent::getNumPlayers () const
 ```
 
-
-
-Get the number of players online
 
 
 
@@ -548,69 +513,13 @@ the number of players
 
 
 
-### function getRemoteHost 
-
-```C++
-inline std::string endstone::ServerListPingEvent::getRemoteHost () const
-```
-
-
-
-Get the host the ping is coming from.
-
-
-
-
-**Returns:**
-
-The host 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getRemotePort 
-
-```C++
-inline int endstone::ServerListPingEvent::getRemotePort () const
-```
-
-
-
-Get the port the ping is coming from.
-
-
-
-
-**Returns:**
-
-The port 
-
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function getServerGuid 
 
+_Get the unique identifier of the server._ 
 ```C++
 inline std::string endstone::ServerListPingEvent::getServerGuid () const
 ```
 
-
-
-Get the unique identifier of the server.
 
 
 
@@ -629,30 +538,15 @@ The server guid
 
 
 
-### function serialize 
-
-```C++
-std::string endstone::ServerListPingEvent::serialize () 
-```
-
-
-
-
-<hr>
-
-
-
 ### function setGameMode 
 
+_Set the current game mode._ 
 ```C++
 inline void endstone::ServerListPingEvent::setGameMode (
     GameMode game_mode
 ) 
 ```
 
-
-
-Set the current game mode.
 
 
 
@@ -673,15 +567,13 @@ Set the current game mode.
 
 ### function setLevelName 
 
+_Set the level name._ 
 ```C++
 inline void endstone::ServerListPingEvent::setLevelName (
     std::string level_name
 ) 
 ```
 
-
-
-Set the level name.
 
 
 
@@ -702,15 +594,13 @@ Set the level name.
 
 ### function setLocalPort 
 
+_Set the local port of the server._ 
 ```C++
 inline void endstone::ServerListPingEvent::setLocalPort (
     int port
 ) 
 ```
 
-
-
-Set the local port of the server.
 
 
 
@@ -731,15 +621,13 @@ Set the local port of the server.
 
 ### function setLocalPortV6 
 
+_Set the local port of the server for IPv6 support._ 
 ```C++
 inline void endstone::ServerListPingEvent::setLocalPortV6 (
     int port
 ) 
 ```
 
-
-
-Set the local port of the server for IPv6 support.
 
 
 
@@ -760,15 +648,13 @@ Set the local port of the server for IPv6 support.
 
 ### function setMaxPlayers 
 
+_Set the maximum number of players allowed._ 
 ```C++
 inline void endstone::ServerListPingEvent::setMaxPlayers (
     int max_players
 ) 
 ```
 
-
-
-Set the maximum number of players allowed.
 
 
 
@@ -789,15 +675,13 @@ Set the maximum number of players allowed.
 
 ### function setMinecraftVersionNetwork 
 
+_Set the network version of Minecraft that is supported by this server._ 
 ```C++
 inline void endstone::ServerListPingEvent::setMinecraftVersionNetwork (
     std::string minecraft_version_network
 ) 
 ```
 
-
-
-Set the network version of Minecraft that is supported by this server
 
 
 
@@ -818,15 +702,13 @@ Set the network version of Minecraft that is supported by this server
 
 ### function setMotd 
 
+_Change the message of the day message._ 
 ```C++
 inline void endstone::ServerListPingEvent::setMotd (
     std::string motd
 ) 
 ```
 
-
-
-Change the message of the day message.
 
 
 
@@ -847,15 +729,13 @@ Change the message of the day message.
 
 ### function setNumPlayers 
 
+_Set the number of players online._ 
 ```C++
 inline void endstone::ServerListPingEvent::setNumPlayers (
     int num_players
 ) 
 ```
 
-
-
-Set the number of players online.
 
 
 
@@ -876,15 +756,13 @@ Set the number of players online.
 
 ### function setServerGuid 
 
+_Set the unique identifier of the server._ 
 ```C++
 inline void endstone::ServerListPingEvent::setServerGuid (
     std::string guid
 ) 
 ```
 
-
-
-Set the unique identifier of the server.
 
 
 

@@ -2555,17 +2555,6 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#public-static-attributes" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Static Attributes
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
     <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions
@@ -2599,36 +2588,6 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#public-static-attributes-documentation" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Static Attributes Documentation
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-    <nav class="md-nav" aria-label="Public Static Attributes Documentation">
-        <ul class="md-nav__list">
-            
-                
-                    <li class="md-nav__item">
-    <a href="#variable-name" class="md-nav__link">
-      <span class="md-ellipsis">
-        variable NAME
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-        </ul>
-    </nav>
-    
-</li>
-      
-        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2639,6 +2598,19 @@ For latest updates join the chat on
     
     <nav class="md-nav" aria-label="Public Functions Documentation">
         <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-endstone_event" class="md-nav__link">
+      <span class="md-ellipsis">
+        function ENDSTONE_EVENT
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
             
                 
                     <li class="md-nav__item">
@@ -2655,22 +2627,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-deserialize" class="md-nav__link">
+    <a href="#function-getaddress" class="md-nav__link">
       <span class="md-ellipsis">
-        function deserialize
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-geteventname" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getEventName
+        function getAddress
       </span>
     </a>
 
@@ -2798,48 +2757,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getremotehost" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getRemoteHost
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-getremoteport" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getRemotePort
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
     <a href="#function-getserverguid" class="md-nav__link">
       <span class="md-ellipsis">
         function getServerGuid
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-serialize" class="md-nav__link">
-      <span class="md-ellipsis">
-        function serialize
       </span>
     </a>
 
@@ -3010,21 +2930,6 @@ For latest updates join the chat on
 <li><code>#include &lt;endstone/event/server/server_list_ping_event.h&gt;</code></li>
 </ul>
 <p>Inherits the following classes: <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
-<h2 id="public-static-attributes">Public Static Attributes<a class="headerlink" href="#public-static-attributes" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string</td>
-<td style="text-align: left;"><a href="#variable-name"><strong>NAME</strong></a>   = <code>"ServerListPingEvent"</code><br></td>
-</tr>
-</tbody>
-</table>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3036,103 +2941,91 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-serverlistpingevent"><strong>ServerListPingEvent</strong></a> (std::string remote_host, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> remote_port, std::string ping_response) <br></td>
+<td style="text-align: left;"><a href="#function-endstone_event"><strong>ENDSTONE_EVENT</strong></a> (<a href="./"><strong>ServerListPingEvent</strong></a>) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-deserialize"><strong>deserialize</strong></a> () <br></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="#function-serverlistpingevent"><strong>ServerListPingEvent</strong></a> (<a href="../classendstone_1_1SocketAddress/"><strong>SocketAddress</strong></a> address, std::string motd, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> network_protocol_version, std::string minecraft_version_network, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> num_players, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> max_players, std::string server_guid, std::string level_name, <a href="../namespaceendstone/#enum-gamemode"><strong>GameMode</strong></a> game_mode, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> local_port, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> local_port_v6) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1SocketAddress/"><strong>SocketAddress</strong></a></td>
+<td style="text-align: left;"><a href="#function-getaddress"><strong>getAddress</strong></a> () const<br><em>Get the address the ping is coming from.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../namespaceendstone/#enum-gamemode"><strong>GameMode</strong></a></td>
-<td style="text-align: left;"><a href="#function-getgamemode"><strong>getGameMode</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getgamemode"><strong>getGameMode</strong></a> () const<br><em>Get the current game mode.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string</td>
-<td style="text-align: left;"><a href="#function-getlevelname"><strong>getLevelName</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getlevelname"><strong>getLevelName</strong></a> () const<br><em>Get the level name.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="#function-getlocalport"><strong>getLocalPort</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getlocalport"><strong>getLocalPort</strong></a> () const<br><em>Get the local port of the server.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="#function-getlocalportv6"><strong>getLocalPortV6</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getlocalportv6"><strong>getLocalPortV6</strong></a> () const<br><em>Get the local port of the server for IPv6 support.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="#function-getmaxplayers"><strong>getMaxPlayers</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getmaxplayers"><strong>getMaxPlayers</strong></a> () const<br><em>Get the maximum number of players allowed.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string</td>
-<td style="text-align: left;"><a href="#function-getminecraftversionnetwork"><strong>getMinecraftVersionNetwork</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getminecraftversionnetwork"><strong>getMinecraftVersionNetwork</strong></a> () const<br><em>Get the network version of Minecraft that is supported by this server.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string</td>
-<td style="text-align: left;"><a href="#function-getmotd"><strong>getMotd</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getmotd"><strong>getMotd</strong></a> () const<br><em>Get the message of the day message.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="#function-getnetworkprotocolversion"><strong>getNetworkProtocolVersion</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getnetworkprotocolversion"><strong>getNetworkProtocolVersion</strong></a> () const<br><em>Get the network protocol version of this server.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="#function-getnumplayers"><strong>getNumPlayers</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getnumplayers"><strong>getNumPlayers</strong></a> () const<br><em>Get the number of players online.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string</td>
-<td style="text-align: left;"><a href="#function-getremotehost"><strong>getRemoteHost</strong></a> () const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="#function-getremoteport"><strong>getRemotePort</strong></a> () const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">std::string</td>
-<td style="text-align: left;"><a href="#function-getserverguid"><strong>getServerGuid</strong></a> () const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;">std::string</td>
-<td style="text-align: left;"><a href="#function-serialize"><strong>serialize</strong></a> () <br></td>
+<td style="text-align: left;"><a href="#function-getserverguid"><strong>getServerGuid</strong></a> () const<br><em>Get the unique identifier of the server.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setgamemode"><strong>setGameMode</strong></a> (<a href="../namespaceendstone/#enum-gamemode"><strong>GameMode</strong></a> game_mode) <br></td>
+<td style="text-align: left;"><a href="#function-setgamemode"><strong>setGameMode</strong></a> (<a href="../namespaceendstone/#enum-gamemode"><strong>GameMode</strong></a> game_mode) <br><em>Set the current game mode.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setlevelname"><strong>setLevelName</strong></a> (std::string level_name) <br></td>
+<td style="text-align: left;"><a href="#function-setlevelname"><strong>setLevelName</strong></a> (std::string level_name) <br><em>Set the level name.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setlocalport"><strong>setLocalPort</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> port) <br></td>
+<td style="text-align: left;"><a href="#function-setlocalport"><strong>setLocalPort</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> port) <br><em>Set the local port of the server.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setlocalportv6"><strong>setLocalPortV6</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> port) <br></td>
+<td style="text-align: left;"><a href="#function-setlocalportv6"><strong>setLocalPortV6</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> port) <br><em>Set the local port of the server for IPv6 support.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setmaxplayers"><strong>setMaxPlayers</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> max_players) <br></td>
+<td style="text-align: left;"><a href="#function-setmaxplayers"><strong>setMaxPlayers</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> max_players) <br><em>Set the maximum number of players allowed.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setminecraftversionnetwork"><strong>setMinecraftVersionNetwork</strong></a> (std::string minecraft_version_network) <br></td>
+<td style="text-align: left;"><a href="#function-setminecraftversionnetwork"><strong>setMinecraftVersionNetwork</strong></a> (std::string minecraft_version_network) <br><em>Set the network version of Minecraft that is supported by this server.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setmotd"><strong>setMotd</strong></a> (std::string motd) <br></td>
+<td style="text-align: left;"><a href="#function-setmotd"><strong>setMotd</strong></a> (std::string motd) <br><em>Change the message of the day message.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setnumplayers"><strong>setNumPlayers</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> num_players) <br></td>
+<td style="text-align: left;"><a href="#function-setnumplayers"><strong>setNumPlayers</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> num_players) <br><em>Set the number of players online.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setserverguid"><strong>setServerGuid</strong></a> (std::string guid) <br></td>
+<td style="text-align: left;"><a href="#function-setserverguid"><strong>setServerGuid</strong></a> (std::string guid) <br><em>Set the unique identifier of the server.</em></td>
 </tr>
 </tbody>
 </table>
@@ -3188,142 +3081,125 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
-<h2 id="public-static-attributes-documentation">Public Static Attributes Documentation<a class="headerlink" href="#public-static-attributes-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="variable-name">variable NAME<a class="headerlink" href="#variable-name" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">NAME</span><span class="p">;</span>
+<h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-endstone_event">function ENDSTONE_EVENT<a class="headerlink" href="#function-endstone_event" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">ENDSTONE_EVENT</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">ServerListPingEvent</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
-<h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+
 <h3 id="function-serverlistpingevent">function ServerListPingEvent<a class="headerlink" href="#function-serverlistpingevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">remote_host</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">remote_port</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">ping_response</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">SocketAddress</span><span class="w"> </span><span class="n">address</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">motd</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">network_protocol_version</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">minecraft_version_network</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num_players</span><span class="p">,</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max_players</span><span class="p">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">server_guid</span><span class="p">,</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">level_name</span><span class="p">,</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="n">GameMode</span><span class="w"> </span><span class="n">game_mode</span><span class="p">,</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">local_port</span><span class="p">,</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">local_port_v6</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-deserialize">function deserialize<a class="headerlink" href="#function-deserialize" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">deserialize</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
-</span></code></pre></div>
-<hr>
-
-<h3 id="function-geteventname">function getEventName<a class="headerlink" href="#function-geteventname" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getEventName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets a user-friendly identifier for this event.</p>
+<h3 id="function-getaddress">function getAddress<a class="headerlink" href="#function-getaddress" title="Permanent link">&para;</a></h3>
+<p><em>Get the address the ping is coming from.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">SocketAddress</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getAddress</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>name of this event </p>
-<p>Implements <a href="../classendstone_1_1Event/#function-geteventname"><em>endstone::Event::getEventName</em></a></p>
+<p>the address </p>
 <hr>
 
 <h3 id="function-getgamemode">function getGameMode<a class="headerlink" href="#function-getgamemode" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">GameMode</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getGameMode</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the current game mode.</p>
+<p><em>Get the current game mode.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">GameMode</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getGameMode</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the game mode </p>
 <hr>
 
 <h3 id="function-getlevelname">function getLevelName<a class="headerlink" href="#function-getlevelname" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getLevelName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the level name.</p>
+<p><em>Get the level name.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getLevelName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the level name </p>
 <hr>
 
 <h3 id="function-getlocalport">function getLocalPort<a class="headerlink" href="#function-getlocalport" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getLocalPort</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the local port of the server.</p>
+<p><em>Get the local port of the server.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getLocalPort</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The local port </p>
 <hr>
 
 <h3 id="function-getlocalportv6">function getLocalPortV6<a class="headerlink" href="#function-getlocalportv6" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getLocalPortV6</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the local port of the server for IPv6 support</p>
+<p><em>Get the local port of the server for IPv6 support.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getLocalPortV6</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The local port for IPv6 </p>
 <hr>
 
 <h3 id="function-getmaxplayers">function getMaxPlayers<a class="headerlink" href="#function-getmaxplayers" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getMaxPlayers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the maximum number of players allowed.</p>
+<p><em>Get the maximum number of players allowed.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getMaxPlayers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the maximum number of players </p>
 <hr>
 
 <h3 id="function-getminecraftversionnetwork">function getMinecraftVersionNetwork<a class="headerlink" href="#function-getminecraftversionnetwork" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getMinecraftVersionNetwork</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the network version of Minecraft that is supported by this server</p>
+<p><em>Get the network version of Minecraft that is supported by this server.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getMinecraftVersionNetwork</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the network version of Minecraft </p>
 <hr>
 
 <h3 id="function-getmotd">function getMotd<a class="headerlink" href="#function-getmotd" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getMotd</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the message of the day message.</p>
+<p><em>Get the message of the day message.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getMotd</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the message of the day </p>
 <hr>
 
 <h3 id="function-getnetworkprotocolversion">function getNetworkProtocolVersion<a class="headerlink" href="#function-getnetworkprotocolversion" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getNetworkProtocolVersion</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the network protocol version of this server</p>
+<p><em>Get the network protocol version of this server.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getNetworkProtocolVersion</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the network protocol version </p>
 <hr>
 
 <h3 id="function-getnumplayers">function getNumPlayers<a class="headerlink" href="#function-getnumplayers" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getNumPlayers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the number of players online</p>
+<p><em>Get the number of players online.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getNumPlayers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the number of players </p>
 <hr>
 
-<h3 id="function-getremotehost">function getRemoteHost<a class="headerlink" href="#function-getremotehost" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getRemoteHost</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the host the ping is coming from.</p>
-<p><strong>Returns:</strong></p>
-<p>The host </p>
-<hr>
-
-<h3 id="function-getremoteport">function getRemotePort<a class="headerlink" href="#function-getremoteport" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getRemotePort</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the port the ping is coming from.</p>
-<p><strong>Returns:</strong></p>
-<p>The port </p>
-<hr>
-
 <h3 id="function-getserverguid">function getServerGuid<a class="headerlink" href="#function-getserverguid" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getServerGuid</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the unique identifier of the server.</p>
+<p><em>Get the unique identifier of the server.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">getServerGuid</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The server guid </p>
 <hr>
 
-<h3 id="function-serialize">function serialize<a class="headerlink" href="#function-serialize" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">serialize</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
-</span></code></pre></div>
-<hr>
-
 <h3 id="function-setgamemode">function setGameMode<a class="headerlink" href="#function-setgamemode" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setGameMode</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="n">GameMode</span><span class="w"> </span><span class="n">game_mode</span>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Set the current game mode.</p>
+<p><em>Set the current game mode.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setGameMode</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="n">GameMode</span><span class="w"> </span><span class="n">game_mode</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>game_mode</code> the game mode </li>
@@ -3331,11 +3207,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setlevelname">function setLevelName<a class="headerlink" href="#function-setlevelname" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setLevelName</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">level_name</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Set the level name.</p>
+<p><em>Set the level name.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setLevelName</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">level_name</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>level_name</code> the level name </li>
@@ -3343,11 +3219,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setlocalport">function setLocalPort<a class="headerlink" href="#function-setlocalport" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setLocalPort</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">port</span>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Set the local port of the server.</p>
+<p><em>Set the local port of the server.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setLocalPort</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">port</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>port</code> the local port </li>
@@ -3355,11 +3231,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setlocalportv6">function setLocalPortV6<a class="headerlink" href="#function-setlocalportv6" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setLocalPortV6</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">port</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Set the local port of the server for IPv6 support.</p>
+<p><em>Set the local port of the server for IPv6 support.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setLocalPortV6</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">port</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>port</code> the local port for IPv6 </li>
@@ -3367,11 +3243,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setmaxplayers">function setMaxPlayers<a class="headerlink" href="#function-setmaxplayers" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setMaxPlayers</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max_players</span>
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Set the maximum number of players allowed.</p>
+<p><em>Set the maximum number of players allowed.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setMaxPlayers</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max_players</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>max_players</code> the maximum number of players </li>
@@ -3379,11 +3255,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setminecraftversionnetwork">function setMinecraftVersionNetwork<a class="headerlink" href="#function-setminecraftversionnetwork" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setMinecraftVersionNetwork</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">minecraft_version_network</span>
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Set the network version of Minecraft that is supported by this server</p>
+<p><em>Set the network version of Minecraft that is supported by this server.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setMinecraftVersionNetwork</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">minecraft_version_network</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>minecraft_version_network</code> the network version of Minecraft </li>
@@ -3391,11 +3267,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setmotd">function setMotd<a class="headerlink" href="#function-setmotd" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setMotd</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">motd</span>
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Change the message of the day message.</p>
+<p><em>Change the message of the day message.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setMotd</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">motd</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>motd</code> the message of the day </li>
@@ -3403,11 +3279,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setnumplayers">function setNumPlayers<a class="headerlink" href="#function-setnumplayers" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setNumPlayers</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num_players</span>
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Set the number of players online.</p>
+<p><em>Set the number of players online.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setNumPlayers</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num_players</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>num_players</code> the number of players </li>
@@ -3415,11 +3291,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setserverguid">function setServerGuid<a class="headerlink" href="#function-setserverguid" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setServerGuid</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">guid</span>
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Set the unique identifier of the server.</p>
+<p><em>Set the unique identifier of the server.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerListPingEvent</span><span class="o">::</span><span class="n">setServerGuid</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">guid</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>guid</code> the server guid </li>

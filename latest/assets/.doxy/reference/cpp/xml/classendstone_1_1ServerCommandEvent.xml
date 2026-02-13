@@ -232,6 +232,7 @@
       <member refid="classendstone_1_1ServerCommandEvent_1a403198dc6dbe597662b617fdc88db4b3" prot="private" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>command_</name></member>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1ServerEvent_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerCommandEvent_1a93827eb1ca9e938792f2abcf9fd1a09c" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>getCommand</name></member>
       <member refid="classendstone_1_1ServerCommandEvent_1af62a9d9bbc278b05dece09c1273e5b63" prot="public" virt="virtual"><scope>endstone::ServerCommandEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1ServerCommandEvent_1a989fc72b2d7b7feb85a88dc3aa50bca7" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>getSender</name></member>
@@ -239,6 +240,7 @@
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::ServerCommandEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1ServerCommandEvent_1a6df4d8250b60448f4574d4d732d6f1ad" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1ServerCommandEvent_1a7cffd99adc29d5cbf698c13bbffaaa4a" prot="private" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>sender_</name></member>
       <member refid="classendstone_1_1ServerCommandEvent_1a8c99c3360b322ea0d6fcf42b3b0ab4b0" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>ServerCommandEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::ServerCommandEvent</scope><name>setCancelled</name></member>

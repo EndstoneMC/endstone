@@ -74,8 +74,9 @@ Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Can
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](#function-event-12) ([**bool**](classendstone_1_1Identifier.md) async=[**false**](classendstone_1_1Identifier.md)) <br> |
-|   | [**Event**](#function-event-22) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+|   | [**Event**](#function-event-13) ([**bool**](classendstone_1_1Identifier.md) async=[**false**](classendstone_1_1Identifier.md)) <br> |
+|   | [**Event**](#function-event-23) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+|   | [**Event**](#function-event-33) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
 
 
 ## Public Functions inherited from endstone::Event
@@ -84,11 +85,13 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](classendstone_1_1Event.md#function-event-12) ([**bool**](classendstone_1_1Identifier.md) async=[**false**](classendstone_1_1Identifier.md)) <br> |
-|   | [**Event**](classendstone_1_1Event.md#function-event-22) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-13) ([**bool**](classendstone_1_1Identifier.md) async=[**false**](classendstone_1_1Identifier.md)) <br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-23) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+|   | [**Event**](classendstone_1_1Event.md#function-event-33) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
 | virtual std::string | [**getEventName**](classendstone_1_1Event.md#function-geteventname) () const = 0<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**isAsynchronous**](classendstone_1_1Event.md#function-isasynchronous) () const<br> |
 |  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](classendstone_1_1Event.md#function-operator_1) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
 | virtual  | [**~Event**](classendstone_1_1Event.md#function-event) () = default<br> |
 
 
@@ -149,7 +152,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-### function Event [1/2]
+### function Event [1/3]
 
 ```C++
 inline explicit endstone::ServerEvent::Event (
@@ -164,12 +167,27 @@ inline explicit endstone::ServerEvent::Event (
 
 
 
-### function Event [2/2]
+### function Event [2/3]
 
 ```C++
 endstone::ServerEvent::Event (
     const  Event &
 ) = delete
+```
+
+
+
+
+<hr>
+
+
+
+### function Event [3/3]
+
+```C++
+endstone::ServerEvent::Event (
+    Event &&
+) = default
 ```
 
 

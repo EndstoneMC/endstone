@@ -30,21 +30,26 @@
 #include "endstone/event/cancellable.h"
 #include "endstone/event/server/server_event.h"
 #include "endstone/game_mode.h"
+#include "endstone/util/socket_address.h"
 
 namespace endstone {
 
 class ServerListPingEvent : public Cancellable<ServerEvent> {
 public:
-    ServerListPingEvent(std::string remote_host, int remote_port, std::string ping_response)
-        : Cancellable(true), ping_response_(std::move(ping_response)), remote_host_(std::move(remote_host)),
-          remote_port_(remote_port), network_protocol_version_(0), num_players_(0), max_players_(0), game_mode_(),
-          local_port_(0), local_port_v6_(0)
+    ENDSTONE_EVENT(ServerListPingEvent);
+    ServerListPingEvent(SocketAddress address, std::string motd, int network_protocol_version,
+                        std::string minecraft_version_network, int num_players, int max_players,
+                        std::string server_guid, std::string level_name, GameMode game_mode, int local_port,
+                        int local_port_v6)
+        : Cancellable(true), address_(std::move(address)), motd_(std::move(motd)),
+          network_protocol_version_(network_protocol_version),
+          minecraft_version_network_(std::move(minecraft_version_network)), num_players_(num_players),
+          max_players_(max_players), server_guid_(std::move(server_guid)), level_name_(std::move(level_name)),
+          game_mode_(game_mode), local_port_(local_port), local_port_v6_(local_port_v6)
     {
     }
 
-    [[nodiscard]] std::string getRemoteHost() const { return remote_host_; }
-
-    [[nodiscard]] int getRemotePort() const { return remote_port_; }
+    [[nodiscard]] SocketAddress getAddress() const { return address_; }
 
     [[nodiscard]] std::string getServerGuid() const { return server_guid_; }
 
@@ -87,16 +92,8 @@ public:
 
     void setGameMode(GameMode game_mode) { game_mode_ = game_mode; }
 
-    inline static const std::string NAME = "ServerListPingEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
-
-    bool deserialize();
-    std::string serialize();
-
 private:
-    std::string ping_response_;
-    std::string remote_host_;
-    int remote_port_;
+    SocketAddress address_;
     std::string motd_;
     int network_protocol_version_;
     std::string minecraft_version_network_;

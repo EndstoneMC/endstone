@@ -53,11 +53,13 @@ Inherited by the following classes: [endstone::ActorEvent](classendstone_1_1Acto
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Event**](#function-event-12) ([**bool**](classendstone_1_1Identifier.md) async=[**false**](classendstone_1_1Identifier.md)) <br> |
-|   | [**Event**](#function-event-22) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+|   | [**Event**](#function-event-13) ([**bool**](classendstone_1_1Identifier.md) async=[**false**](classendstone_1_1Identifier.md)) <br> |
+|   | [**Event**](#function-event-23) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+|   | [**Event**](#function-event-33) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () const = 0<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**isAsynchronous**](#function-isasynchronous) () const<br> |
 |  [**Event**](classendstone_1_1Event.md) & | [**operator=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
+|  [**Event**](classendstone_1_1Event.md) & | [**operator=**](#function-operator_1) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
 | virtual  | [**~Event**](#function-event) () = default<br> |
 
 
@@ -92,7 +94,7 @@ Inherited by the following classes: [endstone::ActorEvent](classendstone_1_1Acto
 
 
 
-### function Event [1/2]
+### function Event [1/3]
 
 ```C++
 inline explicit endstone::Event::Event (
@@ -107,12 +109,27 @@ inline explicit endstone::Event::Event (
 
 
 
-### function Event [2/2]
+### function Event [2/3]
 
 ```C++
 endstone::Event::Event (
     const  Event &
 ) = delete
+```
+
+
+
+
+<hr>
+
+
+
+### function Event [3/3]
+
+```C++
+endstone::Event::Event (
+    Event &&
+) = default
 ```
 
 
@@ -182,6 +199,21 @@ false by default, true if the event fires asynchronously
 Event & endstone::Event::operator= (
     const  Event &
 ) = delete
+```
+
+
+
+
+<hr>
+
+
+
+### function operator= 
+
+```C++
+Event & endstone::Event::operator= (
+    Event &&
+) = default
 ```
 
 

@@ -279,6 +279,7 @@
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::ActorTeleportEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ActorTeleportEvent_1a2b90f3e377a4f13cb09f7ce4c26a45a8" prot="private" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>from_</name></member>
       <member refid="classendstone_1_1ActorEvent_1a49c459c96e831dbab2333ec2187ea552" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>getActor</name></member>
       <member refid="classendstone_1_1ActorTeleportEvent_1a60979e7b5222885d3b072c8dde7185d2" prot="public" virt="virtual"><scope>endstone::ActorTeleportEvent</scope><name>getEventName</name></member>
@@ -288,6 +289,7 @@
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::ActorTeleportEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1ActorTeleportEvent_1a2f7ffbf56f181255a139b024ba509783" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::ActorTeleportEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1ActorTeleportEvent_1ac71b31960417257ca1b2abaf7fc3e5e2" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>setFrom</name></member>
       <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>setTo</name></member>

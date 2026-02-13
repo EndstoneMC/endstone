@@ -251,6 +251,7 @@
       <member refid="classendstone_1_1PlayerEmoteEvent_1a74fb29919f23124f944930495dccc486" prot="private" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>emote_id_</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1PlayerEmoteEvent_1a3cdd5e160ee7f361ee4dd23cd94bf709" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>getEmoteId</name></member>
       <member refid="classendstone_1_1PlayerEmoteEvent_1a79b81c6252a8a7036ddf04f4827edd40" prot="public" virt="virtual"><scope>endstone::PlayerEmoteEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>getPlayer</name></member>
@@ -260,6 +261,7 @@
       <member refid="classendstone_1_1PlayerEmoteEvent_1a21d26ae7e9b87b41ffe4defd24162dc6" prot="private" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>muted_</name></member>
       <member refid="classendstone_1_1PlayerEmoteEvent_1a74ecb4319b65d01b406f8c591d3aff18" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1PlayerEmoteEvent_1ac2488935ceb6439496161cad234f16aa" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>PlayerEmoteEvent</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>PlayerEvent</name></member>

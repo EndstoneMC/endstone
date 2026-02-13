@@ -154,12 +154,14 @@
       <member refid="classendstone_1_1BlockFromToEvent_1a0d141a519261773aa6e4639511dad578" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1BlockEvent_1ac9da7c79ee76c2145547c4b09eea46a0" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::BlockFromToEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1BlockFromToEvent_1a8df95bd9daada5d36d8960a9aed89129" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>getToBlock</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::BlockFromToEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::BlockFromToEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1BlockFromToEvent_1acb8a3989091ef0b9d881aa368bc35a9e" prot="protected" virt="non-virtual"><scope>endstone::BlockFromToEvent</scope><name>to_</name></member>
       <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::BlockFromToEvent</scope><name>~Event</name></member>

@@ -150,6 +150,7 @@
       <member refid="classendstone_1_1PlayerPickupItemEvent_1af8d09456f82338437efebcc77773909b" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PlayerPickupItemEvent_1af2e2a3c35dde44219709a5303569979c" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>getItem</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>getPlayer</name></member>
@@ -157,6 +158,7 @@
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1PlayerPickupItemEvent_1ad4b4af1a9ca78f0f02b27dabfc88eafd" prot="private" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>item_</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>PlayerEvent</name></member>
       <member refid="classendstone_1_1PlayerPickupItemEvent_1a2ffe5a51d8b0c22799ba4db466fc6f91" prot="public" virt="non-virtual"><scope>endstone::PlayerPickupItemEvent</scope><name>PlayerPickupItemEvent</name></member>
