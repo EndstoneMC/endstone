@@ -1,4 +1,4 @@
-timestamp = 1770940689
+timestamp = 1770947608
 version = "1.26.0"
 
 [windows]
@@ -97,6 +97,8 @@ version = "1.26.0"
 "?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z" = 50045600
 # ScriptModuleMinecraft::ScriptBlockUtils
 "?createBlockDescriptor@ScriptBlockUtils@ScriptModuleMinecraft@@YA?AVBlockDescriptor@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$unordered_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@U?$hash@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@U?$equal_to@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@@std@@@2@@std@@@5@@Z" = 38996960
+# ServerInstance
+"?initializeServer@ServerInstance@@QEAA_N$$QEAUServerInstanceInitArguments@@@Z" = 49004208
 # ServerNetworkHandler
 "?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@AEBUPlayerAuthenticationInfo@@W4SubClientId@@@Z" = 27486672
 "?_isServerTextEnabled@ServerNetworkHandler@@AEBA_NAEBW4ServerTextEvent@@@Z" = 27496128
@@ -110,8 +112,6 @@ version = "1.26.0"
 "?_afterMovementSimulation@ServerPlayerMovementCorrectionSystem@@YAXAEBVUserEntityIdentifierComponent@@AEAVActor@@AEBVPlayerAuthInputPacket@@AEAVReplayStateComponent@@PEBUActorRotationComponent@@AEAUServerPlayerMovementComponent@@AEAUStateVectorComponent@@PEBUBoatMovementComponent@@@Z" = 23971968
 # ServerScoreboard
 "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z" = 77674496
-# ServerScriptManager
-"?_runPlugins@ServerScriptManager@@AEAAXW4PluginExecutionGroup@@AEAVServerInstance@@@Z" = 37748368
 # UnverifiedCertificate
 "?fromString@UnverifiedCertificate@@SA?AV1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z" = 78177728
 
@@ -146,7 +146,6 @@ version = "1.26.0"
 "_ZN15CommandRegistry24registerOverloadInternalERNS_9SignatureERNS_8OverloadE" = 137515392
 "_ZNK15CommandRegistry14symbolToStringENS_6SymbolE" = 137392640
 "_ZNK15CommandRegistry26serializeAvailableCommandsEv" = 137577408
-"_ZNK15CommandRegistry8describeERK20CommandParameterData" = 137570304
 # CommandUtils
 "_ZN12CommandUtils12getActorNameERK5Actor" = 137314768
 # CraftingDataPacket
@@ -167,7 +166,7 @@ version = "1.26.0"
 "_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE" = 168605664
 "_ZN13ItemStackBase4initEiiib" = 168574352
 # LeavesBlock
-"_ZN11LeavesBlock4_dieER11BlockSourceRK8BlockPos" = 169937936
+"_ZNK11LeavesBlock4_dieER11BlockSourceRK8BlockPos" = 169937936
 # Level
 "_ZN5Level4tickEv" = 173068912
 # LiquidBlock
