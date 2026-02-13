@@ -1,0 +1,400 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Slider" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Slider</compoundname>
+    <includes refid="slider_8h" local="no">endstone/form/controls/slider.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Slider_1a6ab24261f08b33fd1b3476c7bd1a08bc" prot="private" static="no" mutable="no">
+        <type>Message</type>
+        <definition>Message endstone::Slider::label_</definition>
+        <argsstring></argsstring>
+        <name>label_</name>
+        <qualifiedname>endstone::Slider::label_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="132" column="13" bodyfile="include/endstone/form/controls/slider.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Slider_1a533faf19fbbacf7836946a8acf67098f" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <definition>float endstone::Slider::min_</definition>
+        <argsstring></argsstring>
+        <name>min_</name>
+        <qualifiedname>endstone::Slider::min_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="133" column="11" bodyfile="include/endstone/form/controls/slider.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Slider_1a4e50207f6be325caace8ded16ac89433" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <definition>float endstone::Slider::max_</definition>
+        <argsstring></argsstring>
+        <name>max_</name>
+        <qualifiedname>endstone::Slider::max_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="134" column="11" bodyfile="include/endstone/form/controls/slider.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Slider_1afaa5db51fe0b1a6692163439a4c709b6" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <definition>float endstone::Slider::step_</definition>
+        <argsstring></argsstring>
+        <name>step_</name>
+        <qualifiedname>endstone::Slider::step_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="135" column="11" bodyfile="include/endstone/form/controls/slider.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Slider_1aa445d8623cf5c8e0e2fcdb09da3f5b4d" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+        <definition>std::optional&lt;float&gt; endstone::Slider::default_value_</definition>
+        <argsstring></argsstring>
+        <name>default_value_</name>
+        <qualifiedname>endstone::Slider::default_value_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="136" column="19" bodyfile="include/endstone/form/controls/slider.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Slider_1a9747b93fdcc402378699b5d3d69dc81b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Slider::Slider</definition>
+        <argsstring>()=default</argsstring>
+        <name>Slider</name>
+        <qualifiedname>endstone::Slider::Slider</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="30" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Slider_1aa4e6a206a483a5e859ea69a4b4c8e798" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Slider::Slider</definition>
+        <argsstring>(Message label, float min, float max, float step, std::optional&lt; float &gt; default_value=std::nullopt)</argsstring>
+        <name>Slider</name>
+        <qualifiedname>endstone::Slider::Slider</qualifiedname>
+        <param>
+          <type>Message</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <declname>min</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <declname>max</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <declname>step</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+          <declname>default_value</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="31" column="14" bodyfile="include/endstone/form/controls/slider.h" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Slider_1ab8e94955a47d5eaedac0e06ab350f7f2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Message</type>
+        <definition>Message endstone::Slider::getLabel</definition>
+        <argsstring>() const</argsstring>
+        <name>getLabel</name>
+        <qualifiedname>endstone::Slider::getLabel</qualifiedname>
+        <briefdescription>
+<para>Gets the label of the toggle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The label of the toggle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="41" column="14" bodyfile="include/endstone/form/controls/slider.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Slider_1acf2217bdc5441b3cbe9a0716fca0f2f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Slider" kindref="compound">Slider</ref> &amp;</type>
+        <definition>Slider &amp; endstone::Slider::setLabel</definition>
+        <argsstring>(Message label)</argsstring>
+        <name>setLabel</name>
+        <qualifiedname>endstone::Slider::setLabel</qualifiedname>
+        <param>
+          <type>Message</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+<para>Sets the label of the toggle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>label</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new label for the toggle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current toggle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="49" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="49" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Slider_1a888e209ddf6c3e769b319e9728843a63" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <definition>float endstone::Slider::getMin</definition>
+        <argsstring>() const</argsstring>
+        <name>getMin</name>
+        <qualifiedname>endstone::Slider::getMin</qualifiedname>
+        <briefdescription>
+<para>Gets the minimum value of the slider. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The minimum value of the slider. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="60" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Slider_1ae07e1917f5f43db8cb19858ff92cde24" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Slider" kindref="compound">Slider</ref> &amp;</type>
+        <definition>Slider &amp; endstone::Slider::setMin</definition>
+        <argsstring>(float min)</argsstring>
+        <name>setMin</name>
+        <qualifiedname>endstone::Slider::setMin</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <declname>min</declname>
+        </param>
+        <briefdescription>
+<para>Sets the minimum value of the slider. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new minimum value for the slider. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current slider, for function chaining. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="68" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="68" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Slider_1a678964a83e4820871d4b99dd2c7a1b45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <definition>float endstone::Slider::getMax</definition>
+        <argsstring>() const</argsstring>
+        <name>getMax</name>
+        <qualifiedname>endstone::Slider::getMax</qualifiedname>
+        <briefdescription>
+<para>Gets the maximum value of the slider. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The maximum value of the slider. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="79" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Slider_1a22f05a1703d94aa0a797e73d202bce5f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Slider" kindref="compound">Slider</ref> &amp;</type>
+        <definition>Slider &amp; endstone::Slider::setMax</definition>
+        <argsstring>(float max)</argsstring>
+        <name>setMax</name>
+        <qualifiedname>endstone::Slider::setMax</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>Sets the maximum value of the slider. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new maximum value for the slider. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current slider, for function chaining. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="87" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="87" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Slider_1acc5394db6cb1a0c2750702f2473163ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <definition>float endstone::Slider::getStep</definition>
+        <argsstring>() const</argsstring>
+        <name>getStep</name>
+        <qualifiedname>endstone::Slider::getStep</qualifiedname>
+        <briefdescription>
+<para>Gets the step size of the slider. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The step size of the slider. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="98" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="98" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Slider_1afe6aff5dcd3a303663266990ee107cd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Slider" kindref="compound">Slider</ref> &amp;</type>
+        <definition>Slider &amp; endstone::Slider::setStep</definition>
+        <argsstring>(float step)</argsstring>
+        <name>setStep</name>
+        <qualifiedname>endstone::Slider::setStep</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+          <declname>step</declname>
+        </param>
+        <briefdescription>
+<para>Sets the step size of the slider. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>step</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new step size for the slider. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current slider, for function chaining. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="106" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="106" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Slider_1a40402a633fa41306b80e4da2cd84b99a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+        <definition>std::optional&lt; float &gt; endstone::Slider::getDefaultValue</definition>
+        <argsstring>() const</argsstring>
+        <name>getDefaultValue</name>
+        <qualifiedname>endstone::Slider::getDefaultValue</qualifiedname>
+        <briefdescription>
+<para>Gets the default value of the slider. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The default value of the slider. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="117" column="20" bodyfile="include/endstone/form/controls/slider.h" bodystart="117" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Slider_1a72c66f99531b81c256375d5d530d058c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Slider" kindref="compound">Slider</ref> &amp;</type>
+        <definition>Slider &amp; endstone::Slider::setDefaultValue</definition>
+        <argsstring>(std::optional&lt; float &gt; default_value)</argsstring>
+        <name>setDefaultValue</name>
+        <qualifiedname>endstone::Slider::setDefaultValue</qualifiedname>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+          <declname>default_value</declname>
+        </param>
+        <briefdescription>
+<para>Sets the default value of the slider. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>default_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new default value for the slider. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current slider, for function chaining. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/slider.h" line="125" column="12" bodyfile="include/endstone/form/controls/slider.h" bodystart="125" bodyend="129"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a slider with a label. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/form/controls/slider.h" line="28" column="1" bodyfile="include/endstone/form/controls/slider.h" bodystart="28" bodyend="137"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Slider_1aa445d8623cf5c8e0e2fcdb09da3f5b4d" prot="private" virt="non-virtual"><scope>endstone::Slider</scope><name>default_value_</name></member>
+      <member refid="classendstone_1_1Slider_1a40402a633fa41306b80e4da2cd84b99a" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>getDefaultValue</name></member>
+      <member refid="classendstone_1_1Slider_1ab8e94955a47d5eaedac0e06ab350f7f2" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>getLabel</name></member>
+      <member refid="classendstone_1_1Slider_1a678964a83e4820871d4b99dd2c7a1b45" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>getMax</name></member>
+      <member refid="classendstone_1_1Slider_1a888e209ddf6c3e769b319e9728843a63" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>getMin</name></member>
+      <member refid="classendstone_1_1Slider_1acc5394db6cb1a0c2750702f2473163ce" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>getStep</name></member>
+      <member refid="classendstone_1_1Slider_1a6ab24261f08b33fd1b3476c7bd1a08bc" prot="private" virt="non-virtual"><scope>endstone::Slider</scope><name>label_</name></member>
+      <member refid="classendstone_1_1Slider_1a4e50207f6be325caace8ded16ac89433" prot="private" virt="non-virtual"><scope>endstone::Slider</scope><name>max_</name></member>
+      <member refid="classendstone_1_1Slider_1a533faf19fbbacf7836946a8acf67098f" prot="private" virt="non-virtual"><scope>endstone::Slider</scope><name>min_</name></member>
+      <member refid="classendstone_1_1Slider_1a72c66f99531b81c256375d5d530d058c" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>setDefaultValue</name></member>
+      <member refid="classendstone_1_1Slider_1acf2217bdc5441b3cbe9a0716fca0f2f9" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>setLabel</name></member>
+      <member refid="classendstone_1_1Slider_1a22f05a1703d94aa0a797e73d202bce5f" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>setMax</name></member>
+      <member refid="classendstone_1_1Slider_1ae07e1917f5f43db8cb19858ff92cde24" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>setMin</name></member>
+      <member refid="classendstone_1_1Slider_1afe6aff5dcd3a303663266990ee107cd8" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>setStep</name></member>
+      <member refid="classendstone_1_1Slider_1a9747b93fdcc402378699b5d3d69dc81b" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>Slider</name></member>
+      <member refid="classendstone_1_1Slider_1aa4e6a206a483a5e859ea69a4b4c8e798" prot="public" virt="non-virtual"><scope>endstone::Slider</scope><name>Slider</name></member>
+      <member refid="classendstone_1_1Slider_1afaa5db51fe0b1a6692163439a4c709b6" prot="private" virt="non-virtual"><scope>endstone::Slider</scope><name>step_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

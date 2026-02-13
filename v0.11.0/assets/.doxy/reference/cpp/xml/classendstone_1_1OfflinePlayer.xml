@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1OfflinePlayer" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::OfflinePlayer</compoundname>
+    <derivedcompoundref refid="classendstone_1_1Player" prot="public" virt="non-virtual">endstone::Player</derivedcompoundref>
+    <includes refid="offline__player_8h" local="no">endstone/offline_player.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1OfflinePlayer_1a9d4539d56917bc166121f2bb2919b288" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::OfflinePlayer::~OfflinePlayer</definition>
+        <argsstring>()=default</argsstring>
+        <name>~OfflinePlayer</name>
+        <qualifiedname>endstone::OfflinePlayer::~OfflinePlayer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/offline_player.h" line="27" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1OfflinePlayer_1a0135bdd81bed1caddebbab8deb91a32f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::OfflinePlayer::getName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getName</name>
+        <qualifiedname>endstone::OfflinePlayer::getName</qualifiedname>
+        <reimplementedby refid="classendstone_1_1Player_1a03b944357fe64bdbb905d0b65695a9af">getName</reimplementedby>
+        <briefdescription>
+<para>Returns the name of this player. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> name or null if we have not seen a name for this player yet </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/offline_player.h" line="34" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1OfflinePlayer_1aa1c48a8a74d2fcb7eefc8892f032ab99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref></type>
+        <definition>virtual UUID endstone::OfflinePlayer::getUniqueId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getUniqueId</name>
+        <qualifiedname>endstone::OfflinePlayer::getUniqueId</qualifiedname>
+        <briefdescription>
+<para>Returns the <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> of this player. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/offline_player.h" line="41" column="19"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::OfflinePlayer</label>
+        <link refid="classendstone_1_1OfflinePlayer"/>
+      </node>
+      <node id="2">
+        <label>endstone::Player</label>
+        <link refid="classendstone_1_1Player"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="include/endstone/offline_player.h" line="25" column="1" bodyfile="include/endstone/offline_player.h" bodystart="25" bodyend="42"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1OfflinePlayer_1a0135bdd81bed1caddebbab8deb91a32f" prot="public" virt="pure-virtual"><scope>endstone::OfflinePlayer</scope><name>getName</name></member>
+      <member refid="classendstone_1_1OfflinePlayer_1aa1c48a8a74d2fcb7eefc8892f032ab99" prot="public" virt="pure-virtual"><scope>endstone::OfflinePlayer</scope><name>getUniqueId</name></member>
+      <member refid="classendstone_1_1OfflinePlayer_1a9d4539d56917bc166121f2bb2919b288" prot="public" virt="virtual"><scope>endstone::OfflinePlayer</scope><name>~OfflinePlayer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

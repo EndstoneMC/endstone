@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerChatEvent" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>endstone::PlayerChatEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
+    <includes refid="player__chat__event_8h" local="no">endstone/event/player/player_chat_event.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerChatEvent_1a5a2fadea22a0df7dcfd1e3229ace5414" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerChatEvent::message_</definition>
+        <argsstring></argsstring>
+        <name>message_</name>
+        <qualifiedname>endstone::PlayerChatEvent::message_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_chat_event.h" line="87" column="17" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerChatEvent_1a6f547117792397c1aa4dfeed946d6452" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerChatEvent::format_</definition>
+        <argsstring></argsstring>
+        <name>format_</name>
+        <qualifiedname>endstone::PlayerChatEvent::format_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_chat_event.h" line="88" column="17" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerChatEvent_1aa44281fed81a0f6ec7d366bb1e055079" prot="private" static="no" mutable="yes">
+        <type>std::optional&lt; std::vector&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> * &gt; &gt;</type>
+        <definition>std::optional&lt;std::vector&lt;Player *&gt; &gt; endstone::PlayerChatEvent::recipients_</definition>
+        <argsstring></argsstring>
+        <name>recipients_</name>
+        <qualifiedname>endstone::PlayerChatEvent::recipients_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_chat_event.h" line="89" column="27" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a6d8d09a5415905191c0f75b4e029b4c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerChatEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerChatEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerChatEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerChatEvent" kindref="compound">PlayerChatEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_chat_event.h" line="27" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a7b502ca97396f42b9a828464885afc07" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerChatEvent::PlayerChatEvent</definition>
+        <argsstring>(Player &amp;player, std::string message, std::optional&lt; std::vector&lt; Player * &gt; &gt; recipients, std::string format=&quot;&lt;{0}&gt; {1}&quot;)</argsstring>
+        <name>PlayerChatEvent</name>
+        <qualifiedname>endstone::PlayerChatEvent::PlayerChatEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::vector&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> * &gt; &gt;</type>
+          <declname>recipients</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>format</declname>
+          <defval>&quot;&lt;{0}&gt; {1}&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_chat_event.h" line="28" column="14" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="28" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a6aaa932d6bf8d004a1aa67f9332587e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerChatEvent::getMessage</definition>
+        <argsstring>() const</argsstring>
+        <name>getMessage</name>
+        <qualifiedname>endstone::PlayerChatEvent::getMessage</qualifiedname>
+        <briefdescription>
+<para>Gets the message that the player is attempting to send. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Message the player is attempting to send </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_chat_event.h" line="40" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a6911b50e5f63878d746bdda07d8fcd58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::PlayerChatEvent::setMessage</definition>
+        <argsstring>(std::string message)</argsstring>
+        <name>setMessage</name>
+        <qualifiedname>endstone::PlayerChatEvent::setMessage</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Sets the message that the player will send. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New message that the player will send </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_chat_event.h" line="47" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a13300f0afa05d3b3643bf60c9f8f2778" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::PlayerChatEvent::setPlayer</definition>
+        <argsstring>(Player &amp;player)</argsstring>
+        <name>setPlayer</name>
+        <qualifiedname>endstone::PlayerChatEvent::setPlayer</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+<para>Sets the player that this message will display as. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>player</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New player which this event will execute as </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_chat_event.h" line="54" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a4ca2281553851adb20356f1d15fff91e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerChatEvent::getFormat</definition>
+        <argsstring>() const</argsstring>
+        <name>getFormat</name>
+        <qualifiedname>endstone::PlayerChatEvent::getFormat</qualifiedname>
+        <briefdescription>
+<para>Gets the format to use to display this chat message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See <ulink url="https://en.cppreference.com/w/cpp/utility/format/spec.html">the format string syntax</ulink></para>
+<para><simplesect kind="return"><para>format string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_chat_event.h" line="63" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a16bf30f1143a3b116ce865bbc8dedc62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::PlayerChatEvent::setFormat</definition>
+        <argsstring>(std::string format)</argsstring>
+        <name>setFormat</name>
+        <qualifiedname>endstone::PlayerChatEvent::setFormat</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+<para>Sets the format to use to display this chat message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>format string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_chat_event.h" line="71" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1ae72e5e69a2f537ecac4c33d065e1fdc2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> * &gt;</type>
+        <definition>std::vector&lt; Player * &gt; endstone::PlayerChatEvent::getRecipients</definition>
+        <argsstring>() const</argsstring>
+        <name>getRecipients</name>
+        <qualifiedname>endstone::PlayerChatEvent::getRecipients</qualifiedname>
+        <briefdescription>
+<para>Gets a set of recipients that this chat message will be displayed to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>All Players who will see this chat message </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_chat_event.h" line="78" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="78" bodyend="84"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a player sends a chat message. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerChatEvent</label>
+        <link refid="classendstone_1_1PlayerChatEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerChatEvent</label>
+        <link refid="classendstone_1_1PlayerChatEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_chat_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="25" bodyend="90"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerChatEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1PlayerChatEvent_1a6d8d09a5415905191c0f75b4e029b4c2" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1PlayerChatEvent_1a6f547117792397c1aa4dfeed946d6452" prot="private" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>format_</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerChatEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerChatEvent_1a4ca2281553851adb20356f1d15fff91e" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>getFormat</name></member>
+      <member refid="classendstone_1_1PlayerChatEvent_1a6aaa932d6bf8d004a1aa67f9332587e3" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>getMessage</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerChatEvent_1ae72e5e69a2f537ecac4c33d065e1fdc2" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>getRecipients</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerChatEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1PlayerChatEvent_1a5a2fadea22a0df7dcfd1e3229ace5414" prot="private" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>message_</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1PlayerChatEvent_1a7b502ca97396f42b9a828464885afc07" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>PlayerChatEvent</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerChatEvent_1aa44281fed81a0f6ec7d366bb1e055079" prot="private" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>recipients_</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::PlayerChatEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1PlayerChatEvent_1a16bf30f1143a3b116ce865bbc8dedc62" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>setFormat</name></member>
+      <member refid="classendstone_1_1PlayerChatEvent_1a6911b50e5f63878d746bdda07d8fcd58" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>setMessage</name></member>
+      <member refid="classendstone_1_1PlayerChatEvent_1a13300f0afa05d3b3643bf60c9f8f2778" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>setPlayer</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerChatEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::PlayerChatEvent</scope><name>~ICancellable</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>~PlayerEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

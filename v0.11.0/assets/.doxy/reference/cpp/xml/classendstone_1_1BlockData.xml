@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1BlockData" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::BlockData</compoundname>
+    <includes refid="block__data_8h" local="no">endstone/block/block_data.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1BlockData_1afe42c3c7cc62c74f14f95c02e58c576e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::BlockData::~BlockData</definition>
+        <argsstring>()=default</argsstring>
+        <name>~BlockData</name>
+        <qualifiedname>endstone::BlockData::~BlockData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_data.h" line="35" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::BlockData::getType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getType</name>
+        <qualifiedname>endstone::BlockData::getType</qualifiedname>
+        <briefdescription>
+<para>Get the block type represented by this block data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the block type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_data.h" line="42" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>BlockStates</type>
+        <definition>virtual BlockStates endstone::BlockData::getBlockStates</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getBlockStates</name>
+        <qualifiedname>endstone::BlockData::getBlockStates</qualifiedname>
+        <briefdescription>
+<para>Gets the block states, which when passed into a method such as Server::createBlockData(type, block_states) will unambiguously recreate this instance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the block states for this block </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_data.h" line="50" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::uint32_t</type>
+        <definition>virtual std::uint32_t endstone::BlockData::getRuntimeId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getRuntimeId</name>
+        <qualifiedname>endstone::BlockData::getRuntimeId</qualifiedname>
+        <briefdescription>
+<para>Get the runtime ID for this block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the runtime id for this block </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_data.h" line="57" column="28"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents the data related to a live block. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/block/block_data.h" line="33" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="33" bodyend="58"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" prot="public" virt="pure-virtual"><scope>endstone::BlockData</scope><name>getBlockStates</name></member>
+      <member refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" prot="public" virt="pure-virtual"><scope>endstone::BlockData</scope><name>getRuntimeId</name></member>
+      <member refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" prot="public" virt="pure-virtual"><scope>endstone::BlockData</scope><name>getType</name></member>
+      <member refid="classendstone_1_1BlockData_1afe42c3c7cc62c74f14f95c02e58c576e" prot="public" virt="virtual"><scope>endstone::BlockData</scope><name>~BlockData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

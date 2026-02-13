@@ -1,0 +1,427 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Permission" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Permission</compoundname>
+    <includes refid="permission_8h" local="no">endstone/permissions/permission.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Permission_1a385c02996be80249d7de305f42f92924" prot="public" static="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
+        <definition>const PermissionDefault endstone::Permission::DefaultPermission</definition>
+        <argsstring></argsstring>
+        <name>DefaultPermission</name>
+        <qualifiedname>endstone::Permission::DefaultPermission</qualifiedname>
+        <initializer>= PermissionDefault::Operator</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="34" column="36" bodyfile="include/endstone/permissions/permission.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Permission_1adee44b76a17eb5dbd3157ded8289be3f" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::Permission::name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
+        <qualifiedname>endstone::Permission::name_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="170" column="17" bodyfile="include/endstone/permissions/permission.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Permission_1ad529bf3a412dac6d4ecd993786aeb2e5" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, bool&gt; endstone::Permission::children_</definition>
+        <argsstring></argsstring>
+        <name>children_</name>
+        <qualifiedname>endstone::Permission::children_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="171" column="24" bodyfile="include/endstone/permissions/permission.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Permission_1a5c738f9da8b8ba26ad2270b8945b542f" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
+        <definition>PermissionDefault endstone::Permission::default_value_</definition>
+        <argsstring></argsstring>
+        <name>default_value_</name>
+        <qualifiedname>endstone::Permission::default_value_</qualifiedname>
+        <initializer>= DefaultPermission</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="172" column="23" bodyfile="include/endstone/permissions/permission.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Permission_1ac170221aaff4f514fe4a1581d706a7cd" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::Permission::description_</definition>
+        <argsstring></argsstring>
+        <name>description_</name>
+        <qualifiedname>endstone::Permission::description_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="173" column="17" bodyfile="include/endstone/permissions/permission.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Permission_1ae7cf16709b500c43716abb4c5b5a1bb3" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1PluginManager" kindref="compound">PluginManager</ref> *</type>
+        <definition>PluginManager* endstone::Permission::plugin_manager_</definition>
+        <argsstring></argsstring>
+        <name>plugin_manager_</name>
+        <qualifiedname>endstone::Permission::plugin_manager_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="174" column="19" bodyfile="include/endstone/permissions/permission.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Permission_1a74535a5712de35b6a88927ac33f0b25b" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Permission::Permission</definition>
+        <argsstring>(std::string name, std::string description=&quot;&quot;, PermissionDefault default_value=DefaultPermission, std::unordered_map&lt; std::string, bool &gt; children={})</argsstring>
+        <name>Permission</name>
+        <qualifiedname>endstone::Permission::Permission</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>description</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
+          <declname>default_value</declname>
+          <defval>DefaultPermission</defval>
+        </param>
+        <param>
+          <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt;</type>
+          <declname>children</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="36" column="14" bodyfile="include/endstone/permissions/permission.h" bodystart="36" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Permission_1ad3c9f16d5737c0bd1ffca96d069eb18e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::Permission::getName</definition>
+        <argsstring>() const</argsstring>
+        <name>getName</name>
+        <qualifiedname>endstone::Permission::getName</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the unique fully qualified name of this <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref></para>
+<para><simplesect kind="return"><para>Fully qualified name </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="51" column="18" bodyfile="include/endstone/permissions/permission.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Permission_1a00a4dae7f788d5974d87b7b5c296e819" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::unordered_map&lt; std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref> &gt; &amp;</type>
+        <definition>std::unordered_map&lt; std::string, bool &gt; &amp; endstone::Permission::getChildren</definition>
+        <argsstring>()</argsstring>
+        <name>getChildren</name>
+        <qualifiedname>endstone::Permission::getChildren</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the children of this permission. If you change this map in any form, you must call <ref refid="classendstone_1_1Permission_1ab086181413bdb79b6eefe7848a65300e" kindref="member">recalculatePermissibles()</ref> to recalculate all Permissibles</para>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> children </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="59" column="24" bodyfile="include/endstone/permissions/permission.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Permission_1ab667964641734328e6882b4391d0b5d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
+        <definition>PermissionDefault endstone::Permission::getDefault</definition>
+        <argsstring>() const</argsstring>
+        <name>getDefault</name>
+        <qualifiedname>endstone::Permission::getDefault</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the default value of this permission.</para>
+<para><simplesect kind="return"><para>Default value of this permission. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="66" column="24" bodyfile="include/endstone/permissions/permission.h" bodystart="66" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Permission_1af76b08d0dd8fea2f839e5e5da221c651" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::Permission::setDefault</definition>
+        <argsstring>(PermissionDefault value)</argsstring>
+        <name>setDefault</name>
+        <qualifiedname>endstone::Permission::setDefault</qualifiedname>
+        <param>
+          <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the default value of this permission.</para>
+<para>This will not be saved to disk, and is a temporary operation until the server reloads permissions. Changing this default will cause all Permissibles that contain this permission to recalculate their permissions</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new default to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="76" column="10" bodyfile="include/endstone/permissions/permission.h" bodystart="76" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Permission_1a8760bb7006bbd320ee75f80c786f414c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::Permission::getDescription</definition>
+        <argsstring>() const</argsstring>
+        <name>getDescription</name>
+        <qualifiedname>endstone::Permission::getDescription</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a brief description of this permission, may be empty</para>
+<para><simplesect kind="return"><para>Brief description of this permission </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="87" column="18" bodyfile="include/endstone/permissions/permission.h" bodystart="87" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Permission_1ad758e85f89650756e9782677de269edd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::Permission::setDescription</definition>
+        <argsstring>(std::string value)</argsstring>
+        <name>setDescription</name>
+        <qualifiedname>endstone::Permission::setDescription</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the description of this permission.</para>
+<para>This will not be saved to disk, and is a temporary operation until the server reloads permissions.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new description to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="96" column="10" bodyfile="include/endstone/permissions/permission.h" bodystart="96" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Permission_1a61a4cbfb72b192e44a695e268c7e6aa6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::unordered_set&lt; <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> * &gt;</type>
+        <definition>std::unordered_set&lt; Permissible * &gt; endstone::Permission::getPermissibles</definition>
+        <argsstring>() const</argsstring>
+        <name>getPermissibles</name>
+        <qualifiedname>endstone::Permission::getPermissibles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a set containing every <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> that has this permission. This set cannot be modified.</para>
+<para><simplesect kind="return"><para>Set containing permissibles with this permission </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="104" column="25" bodyfile="include/endstone/permissions/permission.h" bodystart="104" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Permission_1ab086181413bdb79b6eefe7848a65300e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::Permission::recalculatePermissibles</definition>
+        <argsstring>()</argsstring>
+        <name>recalculatePermissibles</name>
+        <qualifiedname>endstone::Permission::recalculatePermissibles</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Recalculates all Permissibles that contain this permission.</para>
+<para>This should be called after modifying the children, and is automatically called after modifying the default value </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="118" column="10" bodyfile="include/endstone/permissions/permission.h" bodystart="118" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Permission_1a44cb16b9597c2e9a2b6ef6f3a3332344" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> *</type>
+        <definition>Permission * endstone::Permission::addParent</definition>
+        <argsstring>(std::string name, bool value)</argsstring>
+        <name>addParent</name>
+        <qualifiedname>endstone::Permission::addParent</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds this permission to the specified parent permission.</para>
+<para>If the parent permission does not exist, it will be created and registered.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the parent permission </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to set this permission to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Parent permission it created or loaded </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="141" column="16" bodyfile="include/endstone/permissions/permission.h" bodystart="141" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Permission_1abce4255512cee5e3a6c8932cece8aa0a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::Permission::addParent</definition>
+        <argsstring>(Permission &amp;perm, bool value) const</argsstring>
+        <name>addParent</name>
+        <qualifiedname>endstone::Permission::addParent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
+          <declname>perm</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds this permission to the specified parent permission.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>perm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parent permission to register with </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to set this permission to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="161" column="10" bodyfile="include/endstone/permissions/permission.h" bodystart="161" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Permission_1a53ca57f91063211ddebc05e1ea97c26d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::Permission::init</definition>
+        <argsstring>(PluginManager &amp;plugin_manager)</argsstring>
+        <name>init</name>
+        <qualifiedname>endstone::Permission::init</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PluginManager" kindref="compound">PluginManager</ref> &amp;</type>
+          <declname>plugin_manager</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission.h" line="167" column="10" bodyfile="include/endstone/permissions/permission.h" bodystart="167" bodyend="167"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a unique permission that may be attached to a <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/permissions/permission.h" line="32" column="1" bodyfile="include/endstone/permissions/permission.h" bodystart="32" bodyend="175"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Permission_1a44cb16b9597c2e9a2b6ef6f3a3332344" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>addParent</name></member>
+      <member refid="classendstone_1_1Permission_1abce4255512cee5e3a6c8932cece8aa0a" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>addParent</name></member>
+      <member refid="classendstone_1_1Permission_1ad529bf3a412dac6d4ecd993786aeb2e5" prot="private" virt="non-virtual"><scope>endstone::Permission</scope><name>children_</name></member>
+      <member refid="classendstone_1_1Permission_1a5c738f9da8b8ba26ad2270b8945b542f" prot="private" virt="non-virtual"><scope>endstone::Permission</scope><name>default_value_</name></member>
+      <member refid="classendstone_1_1Permission_1a385c02996be80249d7de305f42f92924" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>DefaultPermission</name></member>
+      <member refid="classendstone_1_1Permission_1ac170221aaff4f514fe4a1581d706a7cd" prot="private" virt="non-virtual"><scope>endstone::Permission</scope><name>description_</name></member>
+      <member refid="classendstone_1_1Permission_1a00a4dae7f788d5974d87b7b5c296e819" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>getChildren</name></member>
+      <member refid="classendstone_1_1Permission_1ab667964641734328e6882b4391d0b5d1" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>getDefault</name></member>
+      <member refid="classendstone_1_1Permission_1a8760bb7006bbd320ee75f80c786f414c" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>getDescription</name></member>
+      <member refid="classendstone_1_1Permission_1ad3c9f16d5737c0bd1ffca96d069eb18e" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Permission_1a61a4cbfb72b192e44a695e268c7e6aa6" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>getPermissibles</name></member>
+      <member refid="classendstone_1_1Permission_1a53ca57f91063211ddebc05e1ea97c26d" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>init</name></member>
+      <member refid="classendstone_1_1Permission_1adee44b76a17eb5dbd3157ded8289be3f" prot="private" virt="non-virtual"><scope>endstone::Permission</scope><name>name_</name></member>
+      <member refid="classendstone_1_1Permission_1a74535a5712de35b6a88927ac33f0b25b" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>Permission</name></member>
+      <member refid="classendstone_1_1Permission_1ae7cf16709b500c43716abb4c5b5a1bb3" prot="private" virt="non-virtual"><scope>endstone::Permission</scope><name>plugin_manager_</name></member>
+      <member refid="classendstone_1_1Permission_1ab086181413bdb79b6eefe7848a65300e" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>recalculatePermissibles</name></member>
+      <member refid="classendstone_1_1Permission_1af76b08d0dd8fea2f839e5e5da221c651" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>setDefault</name></member>
+      <member refid="classendstone_1_1Permission_1ad758e85f89650756e9782677de269edd" prot="public" virt="non-virtual"><scope>endstone::Permission</scope><name>setDescription</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

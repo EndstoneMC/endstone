@@ -1,0 +1,702 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1MapCursor" kind="class" language="C++" prot="public">
+    <compoundname>endstone::MapCursor</compoundname>
+    <includes refid="map__cursor_8h" local="no">endstone/map/map_cursor.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Type</name>
+        <qualifiedname>endstone::MapCursor::Type</qualifiedname>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a636da1d35e805b00eae0fcd8333f9234" prot="public">
+          <name>Player</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a3bb3e8c8a24891ba0f7608bcc96f8b0a" prot="public">
+          <name>Frame</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a4c342c1abef0405c887d87a126bc9e68" prot="public">
+          <name>RedMarker</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a37af81494c6a57516e35a438dd0ac6fb" prot="public">
+          <name>BlueMarker</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1acfa5bb4d1b195e96ee29acd7d368dbf0" prot="public">
+          <name>TargetX</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a6e0f201ab6abe56f791ed6cc41f8da21" prot="public">
+          <name>TargetPoint</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a996aff7aa33bb7502158a80edf2549a6" prot="public">
+          <name>PlayerOffMap</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a1bba9c3ca5859b84a3c4b66eff35334b" prot="public">
+          <name>SignMarker</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1aacf11b2fadfb349d8ddec834f661d8c2" prot="public">
+          <name>PinkMarker</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1aa5edb542828ea85b0bc13b67dc4d096b" prot="public">
+          <name>OrangeMarker</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a28faab60a61d6ad211a193002f45b2c5" prot="public">
+          <name>YellowMarker</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a0f13a4bd90323e755d8a7155e854eea3" prot="public">
+          <name>CyanMarker</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1af4b65a32d4058e4f465b5233bf06d895" prot="public">
+          <name>GreenPoint</name>
+          <initializer>= 12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1ad871d261253f249b24a98cb75c25f535" prot="public">
+          <name>PlayerOffLimits</name>
+          <initializer>= 13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1ae190bccc5ecb4fc25e23cc2d9d46a18b" prot="public">
+          <name>Mansion</name>
+          <initializer>= 14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a64ff06a3760f9cd7c19d86a751a74205" prot="public">
+          <name>Monument</name>
+          <initializer>= 15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a7679d9422568e6a4dcb6707f48771742" prot="public">
+          <name>VillageDesert</name>
+          <initializer>= 17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a4db37c88982584db75f18a4b69869be3" prot="public">
+          <name>VillagePlains</name>
+          <initializer>= 18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1aa3a43e6f8177d54e5f64118e1e5c2249" prot="public">
+          <name>VillageSavanna</name>
+          <initializer>= 19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1ac8e11bc01dc0c79c62ce3d6fc15bf1e4" prot="public">
+          <name>VillageSnowy</name>
+          <initializer>= 20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1aa5c518ea2f58e58b5ad4d55d3b05d5a9" prot="public">
+          <name>VillageTaiga</name>
+          <initializer>= 21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a64e7e7f511db9a47a60fa57d036a58e9" prot="public">
+          <name>JungleTemple</name>
+          <initializer>= 22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1a030fc65c5c72dae3c4d8892c08af7c8b" prot="public">
+          <name>SwampHut</name>
+          <initializer>= 23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1acb76ebed2323459ef5c6de161f001be4" prot="public">
+          <name>TrialChambers</name>
+          <initializer>= 24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents the standard types of map cursors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="28" column="5" bodyfile="include/endstone/map/map_cursor.h" bodystart="28" bodyend="54"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1MapCursor_1a2f0e971bf5d3d81d8438394167d79d2c" prot="private" static="no" mutable="no">
+        <type>std::int8_t</type>
+        <definition>std::int8_t endstone::MapCursor::x_</definition>
+        <argsstring></argsstring>
+        <name>x_</name>
+        <qualifiedname>endstone::MapCursor::x_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="162" column="17" bodyfile="include/endstone/map/map_cursor.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1MapCursor_1ad35979b1bfba225e87c0222892a40b36" prot="private" static="no" mutable="no">
+        <type>std::int8_t</type>
+        <definition>std::int8_t endstone::MapCursor::y_</definition>
+        <argsstring></argsstring>
+        <name>y_</name>
+        <qualifiedname>endstone::MapCursor::y_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="162" column="20" bodyfile="include/endstone/map/map_cursor.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1MapCursor_1a80958d5cc18e5a9bb0d5eb5a13ca9278" prot="private" static="no" mutable="no">
+        <type>std::int8_t</type>
+        <definition>std::int8_t endstone::MapCursor::direction_</definition>
+        <argsstring></argsstring>
+        <name>direction_</name>
+        <qualifiedname>endstone::MapCursor::direction_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="163" column="17" bodyfile="include/endstone/map/map_cursor.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1MapCursor_1adc46bac110c927e3ab55e60bf2449a69" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::MapCursor::visible_</definition>
+        <argsstring></argsstring>
+        <name>visible_</name>
+        <qualifiedname>endstone::MapCursor::visible_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="164" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1MapCursor_1a1fa52f04be86f9d0410c968c37ccfec1" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::MapCursor::caption_</definition>
+        <argsstring></argsstring>
+        <name>caption_</name>
+        <qualifiedname>endstone::MapCursor::caption_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="165" column="17" bodyfile="include/endstone/map/map_cursor.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1MapCursor_1a8bb3f8ea3c7c6d06627d51d7ce82cbb8" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1" kindref="member">Type</ref></type>
+        <definition>Type endstone::MapCursor::type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <qualifiedname>endstone::MapCursor::type_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="166" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1a99a41d849f80e9a83f46d978a211df65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::MapCursor::MapCursor</definition>
+        <argsstring>(std::int8_t x, std::int8_t y, std::int8_t direction, Type type, bool visible, std::string caption=&quot;&quot;)</argsstring>
+        <name>MapCursor</name>
+        <qualifiedname>endstone::MapCursor::MapCursor</qualifiedname>
+        <param>
+          <type>std::int8_t</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>std::int8_t</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>std::int8_t</type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1" kindref="member">Type</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>visible</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>caption</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Initialize the map cursor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate, from -128 to 127. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate, from -128 to 127. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The facing of the cursor, from 0 to 15. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type (color/style) of the map cursor. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>visible</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the cursor is visible by default. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>caption</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>cursor caption </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="66" column="5" bodyfile="include/endstone/map/map_cursor.h" bodystart="66" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1adf1a23f11c7267eba48a76ca2b6724ee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::int8_t</type>
+        <definition>std::int8_t endstone::MapCursor::getX</definition>
+        <argsstring>() const</argsstring>
+        <name>getX</name>
+        <qualifiedname>endstone::MapCursor::getX</qualifiedname>
+        <briefdescription>
+<para>Get the X position of this cursor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The X coordinate. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="76" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="76" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1ae34f0e46b4603482a5caf2ac79681ab7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::int8_t</type>
+        <definition>std::int8_t endstone::MapCursor::getY</definition>
+        <argsstring>() const</argsstring>
+        <name>getY</name>
+        <qualifiedname>endstone::MapCursor::getY</qualifiedname>
+        <briefdescription>
+<para>Get the Y position of this cursor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The Y coordinate. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="83" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1a30e6f6d1908b80373e5583a270e0b63d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::int8_t</type>
+        <definition>std::int8_t endstone::MapCursor::getDirection</definition>
+        <argsstring>() const</argsstring>
+        <name>getDirection</name>
+        <qualifiedname>endstone::MapCursor::getDirection</qualifiedname>
+        <briefdescription>
+<para>Get the direction of this cursor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The facing of the cursor, from 0 to 15. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="90" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1aee3bb721ce1903c66eea99b67c3a5118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1" kindref="member">Type</ref></type>
+        <definition>Type endstone::MapCursor::getType</definition>
+        <argsstring>() const</argsstring>
+        <name>getType</name>
+        <qualifiedname>endstone::MapCursor::getType</qualifiedname>
+        <briefdescription>
+<para>Get the type of this cursor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The type (color/style) of the map cursor. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="97" column="11" bodyfile="include/endstone/map/map_cursor.h" bodystart="97" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1ae9506f2c0559118d4144b5e346a40c14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::MapCursor::isVisible</definition>
+        <argsstring>() const</argsstring>
+        <name>isVisible</name>
+        <qualifiedname>endstone::MapCursor::isVisible</qualifiedname>
+        <briefdescription>
+<para>Get the visibility status of this cursor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if visible, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="104" column="11" bodyfile="include/endstone/map/map_cursor.h" bodystart="104" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1a29380088da25b4084b81606e6b5d508f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::MapCursor::setX</definition>
+        <argsstring>(const std::int8_t x)</argsstring>
+        <name>setX</name>
+        <qualifiedname>endstone::MapCursor::setX</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::int8_t</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>Set the X position of this cursor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The X coordinate. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="111" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="111" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1a484cc2ed2c6de8debc8972f6c8c0988f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::MapCursor::setY</definition>
+        <argsstring>(const std::int8_t y)</argsstring>
+        <name>setY</name>
+        <qualifiedname>endstone::MapCursor::setY</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::int8_t</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Set the Y position of this cursor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The Y coordinate. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="118" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="118" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1a071c1c4a3031390fc42737975f2b6f2a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::MapCursor::setDirection</definition>
+        <argsstring>(std::int8_t direction)</argsstring>
+        <name>setDirection</name>
+        <qualifiedname>endstone::MapCursor::setDirection</qualifiedname>
+        <param>
+          <type>std::int8_t</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Set the direction of this cursor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The facing of the cursor, from 0 to 15. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="125" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="125" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1a500aa39db9566ee384d1e532aac1ea8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::MapCursor::setType</definition>
+        <argsstring>(Type type)</argsstring>
+        <name>setType</name>
+        <qualifiedname>endstone::MapCursor::setType</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1" kindref="member">Type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Set the type of this cursor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type (color/style) of the map cursor. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="137" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="137" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1a5428ea761c7426c0f42597f4b2ebbdb4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::MapCursor::setVisible</definition>
+        <argsstring>(bool visible)</argsstring>
+        <name>setVisible</name>
+        <qualifiedname>endstone::MapCursor::setVisible</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>visible</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the visibility status of this cursor.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>visible</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True if visible. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="144" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="144" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1a502289582909400265906211368ee2fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::MapCursor::getCaption</definition>
+        <argsstring>() const</argsstring>
+        <name>getCaption</name>
+        <qualifiedname>endstone::MapCursor::getCaption</qualifiedname>
+        <briefdescription>
+<para>Gets the caption on this cursor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>caption </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="152" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="152" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapCursor_1a5dca61d7f87cb3113256b691645467c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::MapCursor::setCaption</definition>
+        <argsstring>(std::string caption)</argsstring>
+        <name>setCaption</name>
+        <qualifiedname>endstone::MapCursor::setCaption</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>caption</declname>
+        </param>
+        <briefdescription>
+<para>Sets the caption on this cursor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>caption</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new caption </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/map/map_cursor.h" line="159" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="159" bodyend="159"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a cursor on a map. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/map/map_cursor.h" line="23" column="1" bodyfile="include/endstone/map/map_cursor.h" bodystart="23" bodyend="167"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1MapCursor_1a1fa52f04be86f9d0410c968c37ccfec1" prot="private" virt="non-virtual"><scope>endstone::MapCursor</scope><name>caption_</name></member>
+      <member refid="classendstone_1_1MapCursor_1a80958d5cc18e5a9bb0d5eb5a13ca9278" prot="private" virt="non-virtual"><scope>endstone::MapCursor</scope><name>direction_</name></member>
+      <member refid="classendstone_1_1MapCursor_1a502289582909400265906211368ee2fe" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>getCaption</name></member>
+      <member refid="classendstone_1_1MapCursor_1a30e6f6d1908b80373e5583a270e0b63d" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>getDirection</name></member>
+      <member refid="classendstone_1_1MapCursor_1aee3bb721ce1903c66eea99b67c3a5118" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>getType</name></member>
+      <member refid="classendstone_1_1MapCursor_1adf1a23f11c7267eba48a76ca2b6724ee" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>getX</name></member>
+      <member refid="classendstone_1_1MapCursor_1ae34f0e46b4603482a5caf2ac79681ab7" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>getY</name></member>
+      <member refid="classendstone_1_1MapCursor_1ae9506f2c0559118d4144b5e346a40c14" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>isVisible</name></member>
+      <member refid="classendstone_1_1MapCursor_1a99a41d849f80e9a83f46d978a211df65" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>MapCursor</name></member>
+      <member refid="classendstone_1_1MapCursor_1a5dca61d7f87cb3113256b691645467c6" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>setCaption</name></member>
+      <member refid="classendstone_1_1MapCursor_1a071c1c4a3031390fc42737975f2b6f2a" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>setDirection</name></member>
+      <member refid="classendstone_1_1MapCursor_1a500aa39db9566ee384d1e532aac1ea8b" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>setType</name></member>
+      <member refid="classendstone_1_1MapCursor_1a5428ea761c7426c0f42597f4b2ebbdb4" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>setVisible</name></member>
+      <member refid="classendstone_1_1MapCursor_1a29380088da25b4084b81606e6b5d508f" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>setX</name></member>
+      <member refid="classendstone_1_1MapCursor_1a484cc2ed2c6de8debc8972f6c8c0988f" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>setY</name></member>
+      <member refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1" prot="public" virt="non-virtual"><scope>endstone::MapCursor</scope><name>Type</name></member>
+      <member refid="classendstone_1_1MapCursor_1a8bb3f8ea3c7c6d06627d51d7ce82cbb8" prot="private" virt="non-virtual"><scope>endstone::MapCursor</scope><name>type_</name></member>
+      <member refid="classendstone_1_1MapCursor_1adc46bac110c927e3ab55e60bf2449a69" prot="private" virt="non-virtual"><scope>endstone::MapCursor</scope><name>visible_</name></member>
+      <member refid="classendstone_1_1MapCursor_1a2f0e971bf5d3d81d8438394167d79d2c" prot="private" virt="non-virtual"><scope>endstone::MapCursor</scope><name>x_</name></member>
+      <member refid="classendstone_1_1MapCursor_1ad35979b1bfba225e87c0222892a40b36" prot="private" virt="non-virtual"><scope>endstone::MapCursor</scope><name>y_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

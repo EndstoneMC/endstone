@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Identifier" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Identifier</compoundname>
+    <includes refid="identifier_8h" local="no">endstone/identifier.h</includes>
+    <templateparamlist>
+      <param>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Identifier_1a1d08ebf05277cab89f84c39867903da5" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> std::string_view</type>
+        <definition>constexpr std::string_view endstone::Identifier&lt; T &gt;::Minecraft</definition>
+        <argsstring></argsstring>
+        <name>Minecraft</name>
+        <qualifiedname>endstone::Identifier::Minecraft</qualifiedname>
+        <initializer>= &quot;minecraft&quot;</initializer>
+        <briefdescription>
+<para>The namespace representing all inbuilt keys. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="31" column="39" bodyfile="include/endstone/identifier.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Identifier_1aaa50c36a2aa82726c6a14c15084e31de" prot="private" static="no" mutable="no">
+        <type>std::string_view</type>
+        <definition>std::string_view endstone::Identifier&lt; T &gt;::namespace_</definition>
+        <argsstring></argsstring>
+        <name>namespace_</name>
+        <qualifiedname>endstone::Identifier::namespace_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="77" column="22" bodyfile="include/endstone/identifier.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Identifier_1aef160f0e4f36db6cc3deded474484265" prot="private" static="no" mutable="no">
+        <type>std::string_view</type>
+        <definition>std::string_view endstone::Identifier&lt; T &gt;::key_</definition>
+        <argsstring></argsstring>
+        <name>key_</name>
+        <qualifiedname>endstone::Identifier::key_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="78" column="22" bodyfile="include/endstone/identifier.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Identifier_1a8fb79d1d92931c86800559f3cb1dc442" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
+        <definition>constexpr endstone::Identifier&lt; T &gt;::Identifier</definition>
+        <argsstring>(const char *s) noexcept</argsstring>
+        <name>Identifier</name>
+        <qualifiedname>endstone::Identifier::Identifier</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">char</ref> *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="33" column="15" bodyfile="include/endstone/identifier.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Identifier_1a188a3d0cc50fa80ea6176183740fe007" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
+        <definition>constexpr endstone::Identifier&lt; T &gt;::Identifier</definition>
+        <argsstring>(const std::string &amp;s) noexcept</argsstring>
+        <name>Identifier</name>
+        <qualifiedname>endstone::Identifier::Identifier</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="35" column="15" bodyfile="include/endstone/identifier.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Identifier_1a1433ff65a2a925be18f2537224160137" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
+        <definition>constexpr endstone::Identifier&lt; T &gt;::Identifier</definition>
+        <argsstring>(const std::string_view &amp;identifier) noexcept</argsstring>
+        <name>Identifier</name>
+        <qualifiedname>endstone::Identifier::Identifier</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string_view &amp;</type>
+          <declname>identifier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="37" column="15" bodyfile="include/endstone/identifier.h" bodystart="37" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Identifier_1ad7a0a327a55eed2cae97237160b022a4" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
+        <definition>constexpr endstone::Identifier&lt; T &gt;::Identifier</definition>
+        <argsstring>(const std::string_view &amp;namespace_, const std::string_view &amp;key) noexcept</argsstring>
+        <name>Identifier</name>
+        <qualifiedname>endstone::Identifier::Identifier</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string_view &amp;</type>
+          <declname>namespace_</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string_view &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="50" column="15" bodyfile="include/endstone/identifier.h" bodystart="50" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Identifier_1af3574ba3a17f608f124f2d0315c3f21b" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> std::string_view</type>
+        <definition>constexpr std::string_view endstone::Identifier&lt; T &gt;::getNamespace</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getNamespace</name>
+        <qualifiedname>endstone::Identifier::getNamespace</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="55" column="33" bodyfile="include/endstone/identifier.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Identifier_1a43556ba00f67a5ff4e92555e86eda788" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> std::string_view</type>
+        <definition>constexpr std::string_view endstone::Identifier&lt; T &gt;::getKey</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getKey</name>
+        <qualifiedname>endstone::Identifier::getKey</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="57" column="33" bodyfile="include/endstone/identifier.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Identifier_1abf2ac66c2abfc0dcfcedd8fe17fefcca" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Identifier&lt; T &gt;::operator==</definition>
+        <argsstring>(const Identifier &amp;other) const noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::Identifier::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="59" column="20" bodyfile="include/endstone/identifier.h" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Identifier_1ae5dbb768ecac7d06848cde156e55f304" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Identifier&lt; T &gt;::operator!=</definition>
+        <argsstring>(const Identifier &amp;other) const noexcept</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>endstone::Identifier::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="64" column="20" bodyfile="include/endstone/identifier.h" bodystart="64" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Identifier_1af1a4a37a0a78e947b786cd6a39d7417a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Identifier&lt; T &gt;::operator std::string</definition>
+        <argsstring>() const</argsstring>
+        <name>operator std::string</name>
+        <qualifiedname>endstone::Identifier::string</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="66" column="5" bodyfile="include/endstone/identifier.h" bodystart="66" bodyend="72"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref></type>
+        <definition>static constexpr Identifier endstone::Identifier&lt; T &gt;::minecraft</definition>
+        <argsstring>(const std::string_view key) noexcept</argsstring>
+        <name>minecraft</name>
+        <qualifiedname>endstone::Identifier::minecraft</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string_view</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/identifier.h" line="74" column="33" bodyfile="include/endstone/identifier.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a identifier consisting of two components: a namespace and a key. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/identifier.h" line="26" column="1" bodyfile="include/endstone/identifier.h" bodystart="26" bodyend="79"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Identifier_1a43556ba00f67a5ff4e92555e86eda788" prot="public" virt="non-virtual"><scope>endstone::Identifier</scope><name>getKey</name></member>
+      <member refid="classendstone_1_1Identifier_1af3574ba3a17f608f124f2d0315c3f21b" prot="public" virt="non-virtual"><scope>endstone::Identifier</scope><name>getNamespace</name></member>
+      <member refid="classendstone_1_1Identifier_1a8fb79d1d92931c86800559f3cb1dc442" prot="public" virt="non-virtual"><scope>endstone::Identifier</scope><name>Identifier</name></member>
+      <member refid="classendstone_1_1Identifier_1a188a3d0cc50fa80ea6176183740fe007" prot="public" virt="non-virtual"><scope>endstone::Identifier</scope><name>Identifier</name></member>
+      <member refid="classendstone_1_1Identifier_1a1433ff65a2a925be18f2537224160137" prot="public" virt="non-virtual"><scope>endstone::Identifier</scope><name>Identifier</name></member>
+      <member refid="classendstone_1_1Identifier_1ad7a0a327a55eed2cae97237160b022a4" prot="public" virt="non-virtual"><scope>endstone::Identifier</scope><name>Identifier</name></member>
+      <member refid="classendstone_1_1Identifier_1aef160f0e4f36db6cc3deded474484265" prot="private" virt="non-virtual"><scope>endstone::Identifier</scope><name>key_</name></member>
+      <member refid="classendstone_1_1Identifier_1a1d08ebf05277cab89f84c39867903da5" prot="public" virt="non-virtual"><scope>endstone::Identifier</scope><name>Minecraft</name></member>
+      <member refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" prot="public" virt="non-virtual"><scope>endstone::Identifier</scope><name>minecraft</name></member>
+      <member refid="classendstone_1_1Identifier_1aaa50c36a2aa82726c6a14c15084e31de" prot="private" virt="non-virtual"><scope>endstone::Identifier</scope><name>namespace_</name></member>
+      <member refid="classendstone_1_1Identifier_1af1a4a37a0a78e947b786cd6a39d7417a" prot="public" virt="non-virtual"><scope>endstone::Identifier</scope><name>operator std::string</name></member>
+      <member refid="classendstone_1_1Identifier_1ae5dbb768ecac7d06848cde156e55f304" prot="public" virt="non-virtual"><scope>endstone::Identifier</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Identifier_1abf2ac66c2abfc0dcfcedd8fe17fefcca" prot="public" virt="non-virtual"><scope>endstone::Identifier</scope><name>operator==</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

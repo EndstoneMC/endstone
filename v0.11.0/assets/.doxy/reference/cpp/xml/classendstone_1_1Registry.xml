@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Registry" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Registry</compoundname>
+    <basecompoundref refid="classendstone_1_1IRegistry" prot="public" virt="non-virtual">endstone::IRegistry</basecompoundref>
+    <includes refid="registry_8h" local="no">endstone/registry.h</includes>
+    <templateparamlist>
+      <param>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Registry_1a97c2758ea2a49ded5abeae90e02a31a0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> *</type>
+        <definition>virtual T * endstone::Registry&lt; T &gt;::get</definition>
+        <argsstring>(Identifier&lt; T &gt; id) noexcept=0</argsstring>
+        <name>get</name>
+        <qualifiedname>endstone::Registry::get</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Get the object by its identifier. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a raw pointer to the object, or nullptr if not found.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref> to look up. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>T* Pointer to the object, or nullptr if it does not exist. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/registry.h" line="48" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Registry_1a1e7e2da1521bc7755ca57cbf5bd41fda" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> *</type>
+        <definition>virtual const T * endstone::Registry&lt; T &gt;::get</definition>
+        <argsstring>(Identifier&lt; T &gt; id) const noexcept=0</argsstring>
+        <name>get</name>
+        <qualifiedname>endstone::Registry::get</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Get the object by its identifier. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a raw pointer to the object, or nullptr if not found.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Non-null identifier to look up. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>const T* Pointer to the object, or nullptr if it does not exist. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/registry.h" line="58" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Registry_1a3c9abfdf664a59b267798fd1dfc1a884" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
+        <definition>virtual T &amp; endstone::Registry&lt; T &gt;::getOrThrow</definition>
+        <argsstring>(Identifier&lt; T &gt; id)</argsstring>
+        <name>getOrThrow</name>
+        <qualifiedname>endstone::Registry::getOrThrow</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Get the object by its identifier or throw if missing. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>identifier of the object to retrieve. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>T&amp; Reference to the object with the given identifier. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::invalid_argument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if no object with the given identifier exists. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/registry.h" line="67" column="15" bodyfile="include/endstone/registry.h" bodystart="67" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Registry_1a341f0a7dbb53815740f1c23b47ccddec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
+        <definition>virtual const T &amp; endstone::Registry&lt; T &gt;::getOrThrow</definition>
+        <argsstring>(Identifier&lt; T &gt; id) const</argsstring>
+        <name>getOrThrow</name>
+        <qualifiedname>endstone::Registry::getOrThrow</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Get the object by its identifier or throw if missing. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>identifier of the object to retrieve. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>const T&amp; Const reference to the object with the given identifier. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::invalid_argument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if no object with the given identifier exists. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/registry.h" line="82" column="21" bodyfile="include/endstone/registry.h" bodystart="82" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Registry&lt; T &gt;::forEach</definition>
+        <argsstring>(std::function&lt; bool(const T &amp;)&gt; func) const =0</argsstring>
+        <name>forEach</name>
+        <qualifiedname>endstone::Registry::forEach</qualifiedname>
+        <param>
+          <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;)&gt;</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+<para>Apply a function to each stored element. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Iterates over all stored elements and applies the provided function to them. The iteration continues until the function returns false or all elements have been processed.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A callable object taking a const reference to an element and returning a boolean. Returning false stops the iteration. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/registry.h" line="100" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract registry interface for objects with identifiers. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Provides lookup by identifier (nullable or exception-throwing) and iteration.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Must implement getId(). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::IRegistry</label>
+        <link refid="classendstone_1_1IRegistry"/>
+      </node>
+      <node id="1">
+        <label>endstone::Registry&lt; T &gt;</label>
+        <link refid="classendstone_1_1Registry"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::IRegistry</label>
+        <link refid="classendstone_1_1IRegistry"/>
+      </node>
+      <node id="1">
+        <label>endstone::Registry&lt; T &gt;</label>
+        <link refid="classendstone_1_1Registry"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/registry.h" line="38" column="1" bodyfile="include/endstone/registry.h" bodystart="38" bodyend="101"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>forEach</name></member>
+      <member refid="classendstone_1_1Registry_1a97c2758ea2a49ded5abeae90e02a31a0" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>get</name></member>
+      <member refid="classendstone_1_1Registry_1a1e7e2da1521bc7755ca57cbf5bd41fda" prot="public" virt="pure-virtual"><scope>endstone::Registry</scope><name>get</name></member>
+      <member refid="classendstone_1_1Registry_1a3c9abfdf664a59b267798fd1dfc1a884" prot="public" virt="virtual"><scope>endstone::Registry</scope><name>getOrThrow</name></member>
+      <member refid="classendstone_1_1Registry_1a341f0a7dbb53815740f1c23b47ccddec" prot="public" virt="virtual"><scope>endstone::Registry</scope><name>getOrThrow</name></member>
+      <member refid="classendstone_1_1IRegistry_1a06d066c86d938e8ab986cb51eadae54f" prot="public" virt="virtual"><scope>endstone::Registry</scope><name>~IRegistry</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

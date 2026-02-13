@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerEmoteEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::PlayerEmoteEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
+    <includes refid="player__emote__event_8h" local="no">endstone/event/player/player_emote_event.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerEmoteEvent_1a74ecb4319b65d01b406f8c591d3aff18" prot="public" static="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string</type>
+        <definition>const std::string endstone::PlayerEmoteEvent::NAME</definition>
+        <argsstring></argsstring>
+        <name>NAME</name>
+        <qualifiedname>endstone::PlayerEmoteEvent::NAME</qualifiedname>
+        <initializer>= &quot;PlayerEmoteEvent&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_emote_event.h" line="33" column="37" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerEmoteEvent_1a74fb29919f23124f944930495dccc486" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerEmoteEvent::emote_id_</definition>
+        <argsstring></argsstring>
+        <name>emote_id_</name>
+        <qualifiedname>endstone::PlayerEmoteEvent::emote_id_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_emote_event.h" line="62" column="17" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerEmoteEvent_1a21d26ae7e9b87b41ffe4defd24162dc6" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::PlayerEmoteEvent::muted_</definition>
+        <argsstring></argsstring>
+        <name>muted_</name>
+        <qualifiedname>endstone::PlayerEmoteEvent::muted_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_emote_event.h" line="63" column="10" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1ac2488935ceb6439496161cad234f16aa" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerEmoteEvent::PlayerEmoteEvent</definition>
+        <argsstring>(Player &amp;player, std::string emote_id, bool muted)</argsstring>
+        <name>PlayerEmoteEvent</name>
+        <qualifiedname>endstone::PlayerEmoteEvent::PlayerEmoteEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>emote_id</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>muted</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_emote_event.h" line="27" column="14" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="27" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a197c850f0d19456039fa2371f4476ff6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerEmoteEvent::~PlayerEmoteEvent</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~PlayerEmoteEvent</name>
+        <qualifiedname>endstone::PlayerEmoteEvent::~PlayerEmoteEvent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_emote_event.h" line="31" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a79b81c6252a8a7036ddf04f4827edd40" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerEmoteEvent::getEventName</definition>
+        <argsstring>() const override</argsstring>
+        <name>getEventName</name>
+        <qualifiedname>endstone::PlayerEmoteEvent::getEventName</qualifiedname>
+        <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a user-friendly identifier for this event.</para>
+<para><simplesect kind="return"><para>name of this event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_emote_event.h" line="34" column="18" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a3cdd5e160ee7f361ee4dd23cd94bf709" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerEmoteEvent::getEmoteId</definition>
+        <argsstring>() const</argsstring>
+        <name>getEmoteId</name>
+        <qualifiedname>endstone::PlayerEmoteEvent::getEmoteId</qualifiedname>
+        <briefdescription>
+<para>Gets the emote piece ID. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The emote piece ID </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_emote_event.h" line="41" column="18" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a44bd292db6e8d2326ac16126cadfcf1a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::PlayerEmoteEvent::isMuted</definition>
+        <argsstring>() const</argsstring>
+        <name>isMuted</name>
+        <qualifiedname>endstone::PlayerEmoteEvent::isMuted</qualifiedname>
+        <briefdescription>
+<para>Gets the muted state for the emote. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method determines whether the emote is being executed without sending a chat message about the emote.</para>
+<para><simplesect kind="return"><para>true if the emote is muted, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_emote_event.h" line="50" column="11" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerEmoteEvent_1a8b3923ba2a6d0867d03ea8ec89ab299a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::PlayerEmoteEvent::setMuted</definition>
+        <argsstring>(bool muted)</argsstring>
+        <name>setMuted</name>
+        <qualifiedname>endstone::PlayerEmoteEvent::setMuted</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>muted</declname>
+        </param>
+        <briefdescription>
+<para>Sets the muted state for the emote. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>If set to true, the emote will be executed silently, and no chat messages will be sent.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>muted</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to mute the emote and disable chat messages, false to unmute it. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_emote_event.h" line="59" column="10" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a player uses an emote. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerEmoteEvent</label>
+        <link refid="classendstone_1_1PlayerEmoteEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="5">
+        <label>endstone::ICancellable</label>
+        <link refid="classendstone_1_1ICancellable"/>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerEmoteEvent</label>
+        <link refid="classendstone_1_1PlayerEmoteEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_emote_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_emote_event.h" bodystart="25" bodyend="64"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerEmoteEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1PlayerEmoteEvent_1a74fb29919f23124f944930495dccc486" prot="private" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>emote_id_</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1PlayerEmoteEvent_1a3cdd5e160ee7f361ee4dd23cd94bf709" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>getEmoteId</name></member>
+      <member refid="classendstone_1_1PlayerEmoteEvent_1a79b81c6252a8a7036ddf04f4827edd40" prot="public" virt="virtual"><scope>endstone::PlayerEmoteEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerEmoteEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1PlayerEmoteEvent_1a44bd292db6e8d2326ac16126cadfcf1a" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>isMuted</name></member>
+      <member refid="classendstone_1_1PlayerEmoteEvent_1a21d26ae7e9b87b41ffe4defd24162dc6" prot="private" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>muted_</name></member>
+      <member refid="classendstone_1_1PlayerEmoteEvent_1a74ecb4319b65d01b406f8c591d3aff18" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>NAME</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1PlayerEmoteEvent_1ac2488935ceb6439496161cad234f16aa" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>PlayerEmoteEvent</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::PlayerEmoteEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1PlayerEmoteEvent_1a8b3923ba2a6d0867d03ea8ec89ab299a" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>setMuted</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerEmoteEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::PlayerEmoteEvent</scope><name>~ICancellable</name></member>
+      <member refid="classendstone_1_1PlayerEmoteEvent_1a197c850f0d19456039fa2371f4476ff6" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>~PlayerEmoteEvent</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerEmoteEvent</scope><name>~PlayerEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

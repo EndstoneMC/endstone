@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structendstone_1_1nbt_1_1escape__view" kind="struct" language="C++" prot="private">
+    <compoundname>endstone::nbt::escape_view</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structendstone_1_1nbt_1_1escape__view_1a60c2f283c66d5aacd00e56c35518ea17" prot="public" static="no" mutable="no">
+        <type>std::string_view</type>
+        <definition>std::string_view endstone::nbt::escape_view::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>endstone::nbt::escape_view::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="553" column="22" bodyfile="include/endstone/nbt/tag.h" bodystart="553" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/nbt/tag.h" line="552" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="552" bodyend="554"/>
+    <listofallmembers>
+      <member refid="structendstone_1_1nbt_1_1escape__view_1a60c2f283c66d5aacd00e56c35518ea17" prot="public" virt="non-virtual"><scope>endstone::nbt::escape_view</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

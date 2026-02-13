@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="namespaceendstone_1_1detail" kind="namespace" language="C++">
+    <compoundname>endstone::detail</compoundname>
+    <innerclass refid="classendstone_1_1detail_1_1CommandBuilder" prot="private">endstone::detail::CommandBuilder</innerclass>
+    <innerclass refid="classendstone_1_1detail_1_1PermissionBuilder" prot="private">endstone::detail::PermissionBuilder</innerclass>
+    <innerclass refid="structendstone_1_1detail_1_1PluginDescriptionBuilder" prot="private">endstone::detail::PluginDescriptionBuilder</innerclass>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="detail_8h_1af3be710d43440fb182f40428a8ed98dc" prot="public" static="no" mutable="no">
+        <templateparamlist>
+          <param>
+            <type>typename Return</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Arg</declname>
+            <defname>Arg</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Return</ref>(*)(Arg...)</type>
+        <definition>Return(Class::*)(Arg...) endstone::detail::fp_cast(Return(Class::*fp)(Arg...) const, void *address)</definition>
+        <argsstring>(Return(*fp)(Arg...), void *func)</argsstring>
+        <name>fp_cast</name>
+        <qualifiedname>endstone::detail::fp_cast</qualifiedname>
+        <briefdescription>
+<para>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/detail.h" line="122" column="1" bodyfile="include/endstone/detail.h" bodystart="122" bodyend="125"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="detail_8h_1a299e6b6b258696a822a5df0b72a3fa37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Return</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> *</type>
+        <definition>void * endstone::detail::fp_cast</definition>
+        <argsstring>(Return(*fp)(Args...))</argsstring>
+        <name>fp_cast</name>
+        <qualifiedname>endstone::detail::fp_cast</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Return</ref>(*)(Args...)</type>
+          <declname>fp</declname>
+        </param>
+        <briefdescription>
+<para>Cast a function pointer to void pointer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Return</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The return type of the function. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The argument types of the function.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The function pointer to be casted.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A void pointer to the function. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/detail.h" line="67" column="6" bodyfile="include/endstone/detail.h" bodystart="67" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="detail_8h_1acf4444f81858c5237ba18a115b01108e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Return</type>
+          </param>
+          <param>
+            <type>typename Class</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> *</type>
+        <definition>void * endstone::detail::fp_cast</definition>
+        <argsstring>(Return(Class::*fp)(Args...))</argsstring>
+        <name>fp_cast</name>
+        <qualifiedname>endstone::detail::fp_cast</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Return</ref>(Class::*)(Args...)</type>
+          <declname>fp</declname>
+        </param>
+        <briefdescription>
+<para>Cast a member function pointer to void pointer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Cast a constant member function pointer to void pointer.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Return</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The return type of the member function. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Class</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class type that the member function belongs to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The argument types of the member function.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the member function to be casted.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A void pointer to the member function.</para>
+</simplesect>
+<parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Return</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The return type of the constant member function. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Class</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The class type that the constant member function belongs to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The argument types of the constant member function.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the constant member function to be casted.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A void pointer to the constant member function. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/detail.h" line="89" column="6" bodyfile="include/endstone/detail.h" bodystart="89" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="detail_8h_1aecf7182420334f85f53fac02ff6ca4c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
+        <definition>Server &amp; endstone::detail::getServer</definition>
+        <argsstring>()</argsstring>
+        <name>getServer</name>
+        <qualifiedname>endstone::detail::getServer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the current <ref refid="classendstone_1_1Server" kindref="compound">Server</ref> singleton</para>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> instance being run </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/detail.h" line="157" column="15" bodyfile="include/endstone/detail.h" bodystart="157" bodyend="186"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/detail.h" line="55" column="1"/>
+  </compounddef>
+</doxygen>

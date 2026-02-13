@@ -1,0 +1,518 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Scheduler" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Scheduler</compoundname>
+    <includes refid="scheduler_8h" local="no">endstone/scheduler/scheduler.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Scheduler_1a869448c7e94100977f5c3026c6a16a45" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Scheduler::~Scheduler</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Scheduler</name>
+        <qualifiedname>endstone::Scheduler::~Scheduler</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/scheduler.h" line="26" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scheduler_1a9f4787f0c3bcbd771935a8a58fb40198" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; Task &gt; endstone::Scheduler::runTask</definition>
+        <argsstring>(Plugin &amp;plugin, std::function&lt; void()&gt; task)=0</argsstring>
+        <name>runTask</name>
+        <qualifiedname>endstone::Scheduler::runTask</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <param>
+          <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>()&gt;</type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a task that will be executed synchronously on the next server tick.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the reference to the plugin scheduling task </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the task to be run </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> that contains the id number (nullptr if task is empty) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/scheduler.h" line="35" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scheduler_1a756a006b06a7ceca85281bf4b1928631" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; Task &gt; endstone::Scheduler::runTaskLater</definition>
+        <argsstring>(Plugin &amp;plugin, std::function&lt; void()&gt; task, std::uint64_t delay)=0</argsstring>
+        <name>runTaskLater</name>
+        <qualifiedname>endstone::Scheduler::runTaskLater</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <param>
+          <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>()&gt;</type>
+          <declname>task</declname>
+        </param>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a task that will be executed synchronously after the specified number of server ticks.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the reference to the plugin scheduling task </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the task to be run </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the ticks to wait before running the task </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> that contains the id number (nullptr if task is empty) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/scheduler.h" line="45" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scheduler_1a5e51e79411db6d37584d8ef311c34d16" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; Task &gt; endstone::Scheduler::runTaskTimer</definition>
+        <argsstring>(Plugin &amp;plugin, std::function&lt; void()&gt; task, std::uint64_t delay, std::uint64_t period)=0</argsstring>
+        <name>runTaskTimer</name>
+        <qualifiedname>endstone::Scheduler::runTaskTimer</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <param>
+          <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>()&gt;</type>
+          <declname>task</declname>
+        </param>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>delay</declname>
+        </param>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>period</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the specified number of server ticks.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the reference to the plugin scheduling task </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the task to be run </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the ticks to wait before running the task </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>period</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the ticks to wait between runs </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> that contains the id number (nullptr if task is empty) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/scheduler.h" line="57" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scheduler_1a00bc012bc77248bfe0334f0e7b3020a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; Task &gt; endstone::Scheduler::runTaskAsync</definition>
+        <argsstring>(Plugin &amp;plugin, std::function&lt; void()&gt; task)=0</argsstring>
+        <name>runTaskAsync</name>
+        <qualifiedname>endstone::Scheduler::runTaskAsync</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <param>
+          <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>()&gt;</type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Returns a task that will be executed asynchronously on the next server tick. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="remark"><para>Asynchronous tasks should never access any Endstone API</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the reference to the plugin scheduling task </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the task to be run </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> that contains the id number (nullptr if task is empty) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/scheduler.h" line="68" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scheduler_1aa025f22de368fa7a952d874e6c47af6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; Task &gt; endstone::Scheduler::runTaskLaterAsync</definition>
+        <argsstring>(Plugin &amp;plugin, std::function&lt; void()&gt; task, std::uint64_t delay)=0</argsstring>
+        <name>runTaskLaterAsync</name>
+        <qualifiedname>endstone::Scheduler::runTaskLaterAsync</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <param>
+          <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>()&gt;</type>
+          <declname>task</declname>
+        </param>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Returns a task that will be executed asynchronously after the specified number of server ticks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="remark"><para>Asynchronous tasks should never access any Endstone API</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the reference to the plugin scheduling task </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the task to be run </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the ticks to wait before running the task </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> that contains the id number (nullptr if task is empty) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/scheduler.h" line="79" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scheduler_1ace8829c467271bbf23c72ebfb821aca2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; Task &gt; endstone::Scheduler::runTaskTimerAsync</definition>
+        <argsstring>(Plugin &amp;plugin, std::function&lt; void()&gt; task, std::uint64_t delay, std::uint64_t period)=0</argsstring>
+        <name>runTaskTimerAsync</name>
+        <qualifiedname>endstone::Scheduler::runTaskTimerAsync</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <param>
+          <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>()&gt;</type>
+          <declname>task</declname>
+        </param>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>delay</declname>
+        </param>
+        <param>
+          <type>std::uint64_t</type>
+          <declname>period</declname>
+        </param>
+        <briefdescription>
+<para>Returns a task that will be executed repeatedly (and asynchronously) until cancelled, starting after the specified number of server ticks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="remark"><para>Asynchronous tasks should never access any Endstone API</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the reference to the plugin scheduling task </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the task to be run </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the ticks to wait before running the task </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>period</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the ticks to wait between runs </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> that contains the id number (nullptr if task is empty) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/scheduler.h" line="93" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scheduler_1ae1d4003f6f8035f2679b91c09441d53a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Scheduler::cancelTask</definition>
+        <argsstring>(TaskId id)=0</argsstring>
+        <name>cancelTask</name>
+        <qualifiedname>endstone::Scheduler::cancelTask</qualifiedname>
+        <param>
+          <type>TaskId</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Removes task from scheduler.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>taskId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Id number of task to be removed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/scheduler.h" line="101" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scheduler_1aff8ea940f0038a278a0d5f230280398c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Scheduler::cancelTasks</definition>
+        <argsstring>(Plugin &amp;plugin)=0</argsstring>
+        <name>cancelTasks</name>
+        <qualifiedname>endstone::Scheduler::cancelTasks</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Removes all tasks associated with a particular plugin from the scheduler.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Owner of tasks to be removed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/scheduler.h" line="109" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scheduler_1a8b427434811562ba2b4a49f1bd2e3e82" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Scheduler::isRunning</definition>
+        <argsstring>(TaskId id)=0</argsstring>
+        <name>isRunning</name>
+        <qualifiedname>endstone::Scheduler::isRunning</qualifiedname>
+        <param>
+          <type>TaskId</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if the task currently running.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>taskId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The task to check.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>If the task is currently running. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/scheduler.h" line="118" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scheduler_1ae47c4d2e864c797a41d33be6982e9a43" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Scheduler::isQueued</definition>
+        <argsstring>(TaskId id)=0</argsstring>
+        <name>isQueued</name>
+        <qualifiedname>endstone::Scheduler::isQueued</qualifiedname>
+        <param>
+          <type>TaskId</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check if the task queued to be run later.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>taskId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The task to check.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>If the task is queued to be run. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/scheduler.h" line="127" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scheduler_1a990deb156627e87b5e35ade1b72a58e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> * &gt;</type>
+        <definition>virtual std::vector&lt; Task * &gt; endstone::Scheduler::getPendingTasks</definition>
+        <argsstring>()=0</argsstring>
+        <name>getPendingTasks</name>
+        <qualifiedname>endstone::Scheduler::getPendingTasks</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a vector of all pending tasks.</para>
+<para>The ordering of the tasks is NOT related to their order of execution.</para>
+<para><simplesect kind="return"><para>Pending tasks </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/scheduler.h" line="136" column="25"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a scheduler that executes various tasks. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/scheduler/scheduler.h" line="24" column="1" bodyfile="include/endstone/scheduler/scheduler.h" bodystart="24" bodyend="137"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Scheduler_1ae1d4003f6f8035f2679b91c09441d53a" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>cancelTask</name></member>
+      <member refid="classendstone_1_1Scheduler_1aff8ea940f0038a278a0d5f230280398c" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>cancelTasks</name></member>
+      <member refid="classendstone_1_1Scheduler_1a990deb156627e87b5e35ade1b72a58e4" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>getPendingTasks</name></member>
+      <member refid="classendstone_1_1Scheduler_1ae47c4d2e864c797a41d33be6982e9a43" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>isQueued</name></member>
+      <member refid="classendstone_1_1Scheduler_1a8b427434811562ba2b4a49f1bd2e3e82" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>isRunning</name></member>
+      <member refid="classendstone_1_1Scheduler_1a9f4787f0c3bcbd771935a8a58fb40198" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>runTask</name></member>
+      <member refid="classendstone_1_1Scheduler_1a00bc012bc77248bfe0334f0e7b3020a2" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>runTaskAsync</name></member>
+      <member refid="classendstone_1_1Scheduler_1a756a006b06a7ceca85281bf4b1928631" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>runTaskLater</name></member>
+      <member refid="classendstone_1_1Scheduler_1aa025f22de368fa7a952d874e6c47af6e" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>runTaskLaterAsync</name></member>
+      <member refid="classendstone_1_1Scheduler_1a5e51e79411db6d37584d8ef311c34d16" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>runTaskTimer</name></member>
+      <member refid="classendstone_1_1Scheduler_1ace8829c467271bbf23c72ebfb821aca2" prot="public" virt="pure-virtual"><scope>endstone::Scheduler</scope><name>runTaskTimerAsync</name></member>
+      <member refid="classendstone_1_1Scheduler_1a869448c7e94100977f5c3026c6a16a45" prot="public" virt="virtual"><scope>endstone::Scheduler</scope><name>~Scheduler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

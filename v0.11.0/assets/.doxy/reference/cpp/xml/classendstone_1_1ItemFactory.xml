@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ItemFactory" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::ItemFactory</compoundname>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1ItemFactory_1aad09d9483ab4cada38c27ef7b735f6da" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::ItemFactory::~ItemFactory</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ItemFactory</name>
+        <qualifiedname>endstone::ItemFactory::~ItemFactory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_factory.h" line="23" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemFactory_1a5d15dd0ea9a08da85abf2ef211f9efd5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; ItemMeta &gt; endstone::ItemFactory::getItemMeta</definition>
+        <argsstring>(ItemTypeId type) const =0</argsstring>
+        <name>getItemMeta</name>
+        <qualifiedname>endstone::ItemFactory::getItemMeta</qualifiedname>
+        <param>
+          <type><ref refid="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" kindref="member">ItemTypeId</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>This creates a new item meta for the item type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The item type to consider as base for the meta </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> that could be applied to an item stack of the specified item type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_factory.h" line="31" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemFactory_1aff21b0ec47bc64201a7626ad14ff1b2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::ItemFactory::isApplicable</definition>
+        <argsstring>(const ItemMeta *meta, ItemTypeId type) const =0</argsstring>
+        <name>isApplicable</name>
+        <qualifiedname>endstone::ItemFactory::isApplicable</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
+          <declname>meta</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" kindref="member">ItemTypeId</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>meta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Meta to check </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The item type that meta will be applied to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the meta can be applied without losing data, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_factory.h" line="41" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::ItemFactory::equals</definition>
+        <argsstring>(const ItemMeta *meta1, const ItemMeta *meta2) const =0</argsstring>
+        <name>equals</name>
+        <qualifiedname>endstone::ItemFactory::equals</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
+          <declname>meta1</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
+          <declname>meta2</declname>
+        </param>
+        <briefdescription>
+<para>This method is used to compare two <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> objects. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>meta1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First meta to compare, and may be null to indicate no data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>meta2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second meta to compare, and may be null to indicate no data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>false if one of the meta has data the other does not, otherwise true </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_factory.h" line="50" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemFactory_1a084aacc2614dd8e9cc3b29ff499fddd3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; ItemMeta &gt; endstone::ItemFactory::asMetaFor</definition>
+        <argsstring>(const ItemMeta *meta, ItemTypeId type) const =0</argsstring>
+        <name>asMetaFor</name>
+        <qualifiedname>endstone::ItemFactory::asMetaFor</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> *</type>
+          <declname>meta</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" kindref="member">ItemTypeId</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Returns an appropriate item meta for the specified item type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The item meta returned will always be a valid meta for a given <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> of the specified item type. It may be a more or less specific meta, and could also be the same meta or meta type as the parameter. The item meta returned will also always be the most appropriate meta.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>meta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the meta to convert </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the item type to convert the meta for </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>An appropriate item meta for the specified item type. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_factory.h" line="63" column="30"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/inventory/item_factory.h" line="21" column="1" bodyfile="include/endstone/inventory/item_factory.h" bodystart="21" bodyend="65"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ItemFactory_1a084aacc2614dd8e9cc3b29ff499fddd3" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>asMetaFor</name></member>
+      <member refid="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>equals</name></member>
+      <member refid="classendstone_1_1ItemFactory_1a5d15dd0ea9a08da85abf2ef211f9efd5" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>getItemMeta</name></member>
+      <member refid="classendstone_1_1ItemFactory_1aff21b0ec47bc64201a7626ad14ff1b2b" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>isApplicable</name></member>
+      <member refid="classendstone_1_1ItemFactory_1aad09d9483ab4cada38c27ef7b735f6da" prot="public" virt="virtual"><scope>endstone::ItemFactory</scope><name>~ItemFactory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

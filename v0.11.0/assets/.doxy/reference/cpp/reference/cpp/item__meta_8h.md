@@ -1,0 +1,121 @@
+
+
+# File item\_meta.h
+
+
+
+[**FileList**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**inventory**](dir_d1e84b530b14f41e8b6f5ec1b5dee76c.md) **>** [**meta**](dir_2d728641c8c30e7cdff7ab60efc98406.md) **>** [**item\_meta.h**](item__meta_8h.md)
+
+[Go to the source code of this file](item__meta_8h_source.md)
+
+
+
+* `#include <memory>`
+* `#include <optional>`
+* `#include <string>`
+* `#include <unordered_map>`
+* `#include <vector>`
+* `#include "endstone/enchantments/enchantment.h"`
+* `#include "endstone/nbt/tag.h"`
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Namespaces
+
+| Type | Name |
+| ---: | :--- |
+| namespace | [**endstone**](namespaceendstone.md) <br>_Represents a button with text and an optional icon._  |
+
+
+## Classes
+
+| Type | Name |
+| ---: | :--- |
+| class | [**ItemMeta**](classendstone_1_1ItemMeta.md) <br>_Represents the metadata of a generic item._  |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Macros
+
+| Type | Name |
+| ---: | :--- |
+| define  | [**ENDSTONE\_ITEM\_META\_TYPE**](item__meta_8h.md#define-endstone_item_meta_type) (type) `static constexpr auto MetaType = Type::type;`<br> |
+
+## Macro Definition Documentation
+
+
+
+
+
+### define ENDSTONE\_ITEM\_META\_TYPE 
+
+```C++
+#define ENDSTONE_ITEM_META_TYPE (
+    type
+) `static constexpr auto MetaType = Type::type;`
+```
+
+
+
+
+<hr>
+
+------------------------------
+The documentation for this class was generated from the following file `include/endstone/inventory/meta/item_meta.h`
+

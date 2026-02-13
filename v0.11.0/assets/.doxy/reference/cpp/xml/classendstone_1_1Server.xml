@@ -1,0 +1,1312 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Server" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Server</compoundname>
+    <includes refid="server_8h" local="no">endstone/server.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Server_1a7be1e023a703bcc57e49e341c9987397" prot="public" static="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string</type>
+        <definition>const std::string endstone::Server::BroadcastChannelAdmin</definition>
+        <argsstring></argsstring>
+        <name>BroadcastChannelAdmin</name>
+        <qualifiedname>endstone::Server::BroadcastChannelAdmin</qualifiedname>
+        <initializer>= &quot;endstone.broadcast.admin&quot;</initializer>
+        <briefdescription>
+<para>Used for all administrative messages, such as an operator using a command. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="434" column="37" bodyfile="include/endstone/server.h" bodystart="434" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" prot="public" static="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string</type>
+        <definition>const std::string endstone::Server::BroadcastChannelUser</definition>
+        <argsstring></argsstring>
+        <name>BroadcastChannelUser</name>
+        <qualifiedname>endstone::Server::BroadcastChannelUser</qualifiedname>
+        <initializer>= &quot;endstone.broadcast.user&quot;</initializer>
+        <briefdescription>
+<para>Used for all announcement messages, such as informing users that a player has joined. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="439" column="37" bodyfile="include/endstone/server.h" bodystart="439" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Server_1a2dee067a586bcea2355896f716fc3375" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Server::Server</definition>
+        <argsstring>()=default</argsstring>
+        <name>Server</name>
+        <qualifiedname>endstone::Server::Server</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="56" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1ab38f521ee3c088261a6448d3bf9d4dbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Server::Server</definition>
+        <argsstring>(const Server &amp;)=delete</argsstring>
+        <name>Server</name>
+        <qualifiedname>endstone::Server::Server</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="57" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a2dc1b2cbbff569db469db842d178baf6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
+        <definition>Server &amp; endstone::Server::operator=</definition>
+        <argsstring>(const Server &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>endstone::Server::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="58" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a6d90d04047e7e0730d9822be14611ba1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Server::~Server</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Server</name>
+        <qualifiedname>endstone::Server::~Server</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="60" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a2478b382f6098c157032048b0f6f64ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Server::getName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getName</name>
+        <qualifiedname>endstone::Server::getName</qualifiedname>
+        <briefdescription>
+<para>Gets the name of this server implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>name of this server implementation </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="67" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a29d50cb9b2c09942f11148c2e78a9d6b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Server::getVersion</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getVersion</name>
+        <qualifiedname>endstone::Server::getVersion</qualifiedname>
+        <briefdescription>
+<para>Gets the version string of this server implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>version of this server implementation </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="74" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a849bb8c24789cc5130abd4d4bbb5dddb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Server::getMinecraftVersion</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getMinecraftVersion</name>
+        <qualifiedname>endstone::Server::getMinecraftVersion</qualifiedname>
+        <briefdescription>
+<para>Gets the Minecraft version that this server is running. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>version of Minecraft </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="81" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a18c9bcc8cd31afdf4e5294c64135d2f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Server::getProtocolVersion</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getProtocolVersion</name>
+        <qualifiedname>endstone::Server::getProtocolVersion</qualifiedname>
+        <briefdescription>
+<para>Gets the network protocol version that this server supports. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>version of network protocol </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="88" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a2c15860e3e6cf3347e9d485a44f8be1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Logger" kindref="compound">Logger</ref> &amp;</type>
+        <definition>virtual Logger &amp; endstone::Server::getLogger</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getLogger</name>
+        <qualifiedname>endstone::Server::getLogger</qualifiedname>
+        <briefdescription>
+<para>Returns the primary logger associated with this server instance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Logger" kindref="compound">Logger</ref> associated with this server </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="95" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a90941565489a85794e4e0ff9d8378c68" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Language" kindref="compound">Language</ref> &amp;</type>
+        <definition>virtual Language &amp; endstone::Server::getLanguage</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getLanguage</name>
+        <qualifiedname>endstone::Server::getLanguage</qualifiedname>
+        <briefdescription>
+<para>Gets the current language interface used by the server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Language" kindref="compound">Language</ref> interface used by the server for translations. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="102" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1afd16655cd119fe34c52f3658245093d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1PluginManager" kindref="compound">PluginManager</ref> &amp;</type>
+        <definition>virtual PluginManager &amp; endstone::Server::getPluginManager</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getPluginManager</name>
+        <qualifiedname>endstone::Server::getPluginManager</qualifiedname>
+        <briefdescription>
+<para>Gets the plugin manager for interfacing with plugins. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a plugin manager for this <ref refid="classendstone_1_1Server" kindref="compound">Server</ref> instance </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="109" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1aa10c30d79eeb43b5df5a13691b2224ac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> *</type>
+        <definition>virtual PluginCommand * endstone::Server::getPluginCommand</definition>
+        <argsstring>(std::string name) const =0</argsstring>
+        <name>getPluginCommand</name>
+        <qualifiedname>endstone::Server::getPluginCommand</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Gets a <ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> with the given name or alias. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the name of the command to retrieve </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a plugin command if found, null otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="117" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1ad67d5847b45b8fb7d23efbb4f1321a01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1ConsoleCommandSender" kindref="compound">ConsoleCommandSender</ref> &amp;</type>
+        <definition>virtual ConsoleCommandSender &amp; endstone::Server::getCommandSender</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getCommandSender</name>
+        <qualifiedname>endstone::Server::getCommandSender</qualifiedname>
+        <briefdescription>
+<para>Gets a <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> for this server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a console command sender </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="124" column="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1ae51b7402688f21fe9779349df0c5df73" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Server::dispatchCommand</definition>
+        <argsstring>(CommandSender &amp;sender, std::string command_line) const =0</argsstring>
+        <name>dispatchCommand</name>
+        <qualifiedname>endstone::Server::dispatchCommand</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>command_line</declname>
+        </param>
+        <briefdescription>
+<para>Dispatches a command on this server, and executes it if found. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the apparent sender of the command </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>command_line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the command + arguments. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if execution is successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="133" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a5c2d347170670b60809ea7ca42e8f045" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Scheduler" kindref="compound">Scheduler</ref> &amp;</type>
+        <definition>virtual Scheduler &amp; endstone::Server::getScheduler</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getScheduler</name>
+        <qualifiedname>endstone::Server::getScheduler</qualifiedname>
+        <briefdescription>
+<para>Gets the scheduler for managing scheduled events. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a scheduling service for this server </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="140" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a22293d531e15da6ab46fcf6f303385b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> *</type>
+        <definition>virtual Level * endstone::Server::getLevel</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getLevel</name>
+        <qualifiedname>endstone::Server::getLevel</qualifiedname>
+        <briefdescription>
+<para>Gets the server level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the server level </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="147" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a6d63beaa8eac5c79ccb387447e977214" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> * &gt;</type>
+        <definition>virtual std::vector&lt; Player * &gt; endstone::Server::getOnlinePlayers</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getOnlinePlayers</name>
+        <qualifiedname>endstone::Server::getOnlinePlayers</qualifiedname>
+        <briefdescription>
+<para>Gets a list of all currently online players. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>a list of currently online players. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="154" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1acac268b65787dd0261790dab8c4f110d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Server::getMaxPlayers</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getMaxPlayers</name>
+        <qualifiedname>endstone::Server::getMaxPlayers</qualifiedname>
+        <briefdescription>
+<para>Get the maximum amount of players which can login to this server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the amount of players this server allows </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="161" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a44ff16f118e70e3a032854124ffca958" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Server::setMaxPlayers</definition>
+        <argsstring>(int max_players)=0</argsstring>
+        <name>setMaxPlayers</name>
+        <qualifiedname>endstone::Server::setMaxPlayers</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>max_players</declname>
+        </param>
+        <briefdescription>
+<para>Set the maximum amount of players allowed to be logged in at once. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>max_players</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum amount of concurrent players </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="168" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a388917288af53f200925c6d5cc9bd821" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *</type>
+        <definition>virtual Player * endstone::Server::getPlayer</definition>
+        <argsstring>(endstone::UUID id) const =0</argsstring>
+        <name>getPlayer</name>
+        <qualifiedname>endstone::Server::getPlayer</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">endstone::UUID</ref></type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Gets the player with the given <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> of the player to retrieve </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a player object if one was found, null otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="176" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a02ad5f608bf57e66d60959ace598c492" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Server::getPort</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getPort</name>
+        <qualifiedname>endstone::Server::getPort</qualifiedname>
+        <briefdescription>
+<para>Get the game port that the server runs on. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the port number of this server </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="183" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a8f5fe4938d839ad53d7449429dbc6f7a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Server::getPortV6</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getPortV6</name>
+        <qualifiedname>endstone::Server::getPortV6</qualifiedname>
+        <briefdescription>
+<para>Get the game port (IPv6) that the server runs on. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the port number of this server </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="190" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1ae3fa91a411498dc3b3bdecfeaffac19e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Server::getOnlineMode</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getOnlineMode</name>
+        <qualifiedname>endstone::Server::getOnlineMode</qualifiedname>
+        <briefdescription>
+<para>Gets whether the <ref refid="classendstone_1_1Server" kindref="compound">Server</ref> is in online mode or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the server authenticates clients, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="197" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1aceebe1840a2f384ac0bc028e690fc423" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *</type>
+        <definition>virtual Player * endstone::Server::getPlayer</definition>
+        <argsstring>(std::string name) const =0</argsstring>
+        <name>getPlayer</name>
+        <qualifiedname>endstone::Server::getPlayer</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Gets the player with the exact given name, case-insensitive. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Exact name of the player to retrieve </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a player object if one was found, null otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="205" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a349c02e809ca14e2c16b0fa6bf021d1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Server::shutdown</definition>
+        <argsstring>()=0</argsstring>
+        <name>shutdown</name>
+        <qualifiedname>endstone::Server::shutdown</qualifiedname>
+        <briefdescription>
+<para>Shutdowns the server, stopping everything. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="210" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1acd79b367ca64559921c87dbfe9950bea" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Server::reload</definition>
+        <argsstring>()=0</argsstring>
+        <name>reload</name>
+        <qualifiedname>endstone::Server::reload</qualifiedname>
+        <briefdescription>
+<para>Reloads the server configuration, functions, scripts and plugins. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="215" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1aba9dbe7bb1d4c0083a7d5bd1e76fbca0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Server::reloadData</definition>
+        <argsstring>()=0</argsstring>
+        <name>reloadData</name>
+        <qualifiedname>endstone::Server::reloadData</qualifiedname>
+        <briefdescription>
+<para>Reload only the Minecraft data for the server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This includes functions and script files from all behaviour packs. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="222" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1aad0acb0f58d11256a696ecdc04287331" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Server::broadcast</definition>
+        <argsstring>(const Message &amp;message, const std::string &amp;permission) const =0</argsstring>
+        <name>broadcast</name>
+        <qualifiedname>endstone::Server::broadcast</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> Message &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>permission</declname>
+        </param>
+        <briefdescription>
+<para>Broadcasts the specified message to every user with the given permission name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>message to broadcast </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>permission</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the required permission Permissibles must have to receive the broadcast </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="230" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1acc4f0ea241258f9d987752f1b86d1c8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Server::broadcastMessage</definition>
+        <argsstring>(const Message &amp;message) const =0</argsstring>
+        <name>broadcastMessage</name>
+        <qualifiedname>endstone::Server::broadcastMessage</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> Message &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Broadcasts the specified message to every user with permission endstone.broadcast.user. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the message </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="237" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a3ed020d4865697b14256c386952aef8c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::Server::broadcastMessage</definition>
+        <argsstring>(const fmt::format_string&lt; Args... &gt; format, Args &amp;&amp;...args) const</argsstring>
+        <name>broadcastMessage</name>
+        <qualifiedname>endstone::Server::broadcastMessage</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> fmt::format_string&lt; Args... &gt;</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Args</ref> &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="240" column="10" bodyfile="include/endstone/server.h" bodystart="240" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a1a2968bddfbf66a9421477b42219799e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Server::isPrimaryThread</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isPrimaryThread</name>
+        <qualifiedname>endstone::Server::isPrimaryThread</qualifiedname>
+        <briefdescription>
+<para>Checks the current thread against the expected primary server thread. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the current thread matches the expected primary thread, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="255" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a889e988b65a8e60440b2ac4ac668a2e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1ItemFactory" kindref="compound">ItemFactory</ref> &amp;</type>
+        <definition>virtual ItemFactory &amp; endstone::Server::getItemFactory</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getItemFactory</name>
+        <qualifiedname>endstone::Server::getItemFactory</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the instance of the item factory (for <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref>).</para>
+<para><simplesect kind="return"><para>the item factory </para>
+</simplesect>
+<simplesect kind="see"><para><ref refid="classendstone_1_1ItemFactory" kindref="compound">ItemFactory</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="263" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a1017e6993532d46e06eb80871d3e0053" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> *</type>
+        <definition>virtual Scoreboard * endstone::Server::getScoreboard</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getScoreboard</name>
+        <qualifiedname>endstone::Server::getScoreboard</qualifiedname>
+        <briefdescription>
+<para>Gets the primary <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> controlled by the server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> is saved by the server, is affected by the /scoreboard command, and is the scoreboard shown by default to players. This will only exist after the level has been loaded.</para>
+<para><simplesect kind="return"><para>the default server scoreboard </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="273" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a6bff7fa11f6c5256df465cc74aab51e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt; Scoreboard &gt; endstone::Server::createScoreboard</definition>
+        <argsstring>()=0</argsstring>
+        <name>createScoreboard</name>
+        <qualifiedname>endstone::Server::createScoreboard</qualifiedname>
+        <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> to be tracked by the server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will not be saved by the server and is not affected by the /scoreboard command.</para>
+<para><simplesect kind="return"><para>the newly created <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="282" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a2a9e4988b27ff1cfa65df290a8d61c7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <definition>virtual float endstone::Server::getCurrentMillisecondsPerTick</definition>
+        <argsstring>()=0</argsstring>
+        <name>getCurrentMillisecondsPerTick</name>
+        <qualifiedname>endstone::Server::getCurrentMillisecondsPerTick</qualifiedname>
+        <briefdescription>
+<para>Gets the current milliseconds per tick (MSPT). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The average current of milliseconds per tick. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="289" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a63e3ffb84311f233e965144501ceb195" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <definition>virtual float endstone::Server::getAverageMillisecondsPerTick</definition>
+        <argsstring>()=0</argsstring>
+        <name>getAverageMillisecondsPerTick</name>
+        <qualifiedname>endstone::Server::getAverageMillisecondsPerTick</qualifiedname>
+        <briefdescription>
+<para>Gets the average milliseconds per tick (MSPT). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The average number of milliseconds per tick. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="296" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a3b94b752dcf483b607c247ff335a0deb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <definition>virtual float endstone::Server::getCurrentTicksPerSecond</definition>
+        <argsstring>()=0</argsstring>
+        <name>getCurrentTicksPerSecond</name>
+        <qualifiedname>endstone::Server::getCurrentTicksPerSecond</qualifiedname>
+        <briefdescription>
+<para>Gets the current ticks per second (TPS). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The current ticks per second </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="303" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a23be2bfc5675e6b04cce1e2a7f7f3277" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <definition>virtual float endstone::Server::getAverageTicksPerSecond</definition>
+        <argsstring>()=0</argsstring>
+        <name>getAverageTicksPerSecond</name>
+        <qualifiedname>endstone::Server::getAverageTicksPerSecond</qualifiedname>
+        <briefdescription>
+<para>Gets the average ticks per second (TPS). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The average ticks per second </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="309" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a4961829bb78b2cbb9e53393f6c4ee3ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <definition>virtual float endstone::Server::getCurrentTickUsage</definition>
+        <argsstring>()=0</argsstring>
+        <name>getCurrentTickUsage</name>
+        <qualifiedname>endstone::Server::getCurrentTickUsage</qualifiedname>
+        <briefdescription>
+<para>Gets the current tick usage of the server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The current tick usage in percentage. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="316" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a08daaf367859b76040b252ba7e2b3dcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
+        <definition>virtual float endstone::Server::getAverageTickUsage</definition>
+        <argsstring>()=0</argsstring>
+        <name>getAverageTickUsage</name>
+        <qualifiedname>endstone::Server::getAverageTickUsage</qualifiedname>
+        <briefdescription>
+<para>Gets the average tick usage of the server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The average tick usage in percentage. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="323" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::chrono::system_clock::time_point</type>
+        <definition>virtual std::chrono::system_clock::time_point endstone::Server::getStartTime</definition>
+        <argsstring>()=0</argsstring>
+        <name>getStartTime</name>
+        <qualifiedname>endstone::Server::getStartTime</qualifiedname>
+        <briefdescription>
+<para>Gets the start time of the server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The start time of the server. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="330" column="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a7e443c131695f212023c111ae764d404" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BossBar" kindref="compound">BossBar</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; BossBar &gt; endstone::Server::createBossBar</definition>
+        <argsstring>(std::string title, BarColor color, BarStyle style) const =0</argsstring>
+        <name>createBossBar</name>
+        <qualifiedname>endstone::Server::createBossBar</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>BarColor</type>
+          <declname>color</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734" kindref="member">BarStyle</ref></type>
+          <declname>style</declname>
+        </param>
+        <briefdescription>
+<para>Creates a boss bar instance to display to players. The progress defaults to 1.0. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the title of the boss bar </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the color of the boss bar </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>style</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the style of the boss bar </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the created boss bar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="340" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a2536be1d6e7e8756a2827762ab9896ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BossBar" kindref="compound">BossBar</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; BossBar &gt; endstone::Server::createBossBar</definition>
+        <argsstring>(std::string title, BarColor color, BarStyle style, std::vector&lt; BarFlag &gt; flags) const =0</argsstring>
+        <name>createBossBar</name>
+        <qualifiedname>endstone::Server::createBossBar</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>BarColor</type>
+          <declname>color</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734" kindref="member">BarStyle</ref></type>
+          <declname>style</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" kindref="member">BarFlag</ref> &gt;</type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+<para>Creates a boss bar instance to display to players. The progress defaults to 1.0. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the title of the boss bar </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the color of the boss bar </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>style</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the style of the boss bar </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a list of flags to set on the boss bar </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the created boss bar </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="352" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a7d040acfc02adf59c5cdcc67f32d3648" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; BlockData &gt; endstone::Server::createBlockData</definition>
+        <argsstring>(std::string type) const =0</argsstring>
+        <name>createBlockData</name>
+        <qualifiedname>endstone::Server::createBlockData</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> instance for the specified block type, with all properties initialized to defaults. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the block type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>new data instance </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="362" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a89fe4c0d8fc3f072e796e5312366db73" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; BlockData &gt; endstone::Server::createBlockData</definition>
+        <argsstring>(std::string type, BlockStates block_states) const =0</argsstring>
+        <name>createBlockData</name>
+        <qualifiedname>endstone::Server::createBlockData</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>BlockStates</type>
+          <declname>block_states</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> instance for the specified block type, with all properties initialized to defaults, except for those provided in data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the block type </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>block_states</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>block states, for example <computeroutput>{&quot;old_leaf_type&quot;:&quot;birch&quot;, &quot;persistent_bit&quot;:true}</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>new data instance </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="372" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a6aabbee05ed99ba41702ae926c6374b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1PlayerBanList" kindref="compound">PlayerBanList</ref> &amp;</type>
+        <definition>virtual PlayerBanList &amp; endstone::Server::getBanList</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getBanList</name>
+        <qualifiedname>endstone::Server::getBanList</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the player ban list.</para>
+<para><simplesect kind="return"><para>The player ban list </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="380" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a8ab4971ec939f666bf3b98d1a80c7af3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1IpBanList" kindref="compound">IpBanList</ref> &amp;</type>
+        <definition>virtual IpBanList &amp; endstone::Server::getIpBanList</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getIpBanList</name>
+        <qualifiedname>endstone::Server::getIpBanList</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the IP ban list.</para>
+<para><simplesect kind="return"><para>The IP ban list </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="387" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a846007f57bf27a84e78f49b218c2fa7c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1ServiceManager" kindref="compound">ServiceManager</ref> &amp;</type>
+        <definition>virtual ServiceManager &amp; endstone::Server::getServiceManager</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getServiceManager</name>
+        <qualifiedname>endstone::Server::getServiceManager</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the service manager.</para>
+<para><simplesect kind="return"><para>The service manager </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="394" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a9ea05521ca2c068fb9acf07dd7af2eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1IRegistry" kindref="compound">IRegistry</ref> *</type>
+        <definition>virtual IRegistry * endstone::Server::_getRegistry</definition>
+        <argsstring>(const std::string &amp;type) const =0</argsstring>
+        <name>_getRegistry</name>
+        <qualifiedname>endstone::Server::_getRegistry</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Returns the registry for the given type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If no registry is present for the given type null will be returned.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>of the registry to get</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the corresponding registry or null if not present </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="405" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a767171af5232bcf5c1d1502f4903edea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Registry" kindref="compound">Registry</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt; &amp;</type>
+        <definition>const Registry&lt; T &gt; &amp; endstone::Server::getRegistry</definition>
+        <argsstring>() const</argsstring>
+        <name>getRegistry</name>
+        <qualifiedname>endstone::Server::getRegistry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="408" column="21" bodyfile="include/endstone/server.h" bodystart="408" bodyend="411"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a1934abd049be85a1a3bf8170a0c56d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> *</type>
+        <definition>virtual MapView * endstone::Server::getMap</definition>
+        <argsstring>(std::int64_t id) const =0</argsstring>
+        <name>getMap</name>
+        <qualifiedname>endstone::Server::getMap</qualifiedname>
+        <param>
+          <type>std::int64_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Gets the map from the given item ID. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the id of the map to get</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a map view if it exists, or null otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="420" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a4d65ff2e2b62f582c1615497bb8b5d83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> &amp;</type>
+        <definition>virtual MapView &amp; endstone::Server::createMap</definition>
+        <argsstring>(const Dimension &amp;dimension) const =0</argsstring>
+        <name>createMap</name>
+        <qualifiedname>endstone::Server::createMap</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
+          <declname>dimension</declname>
+        </param>
+        <briefdescription>
+<para>Create a new map with an automatically assigned ID. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dimension</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> the map will belong to</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a newly created map view </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="429" column="22"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a server implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/server.h" line="54" column="1" bodyfile="include/endstone/server.h" bodystart="54" bodyend="440"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Server_1a9ea05521ca2c068fb9acf07dd7af2eeb" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>_getRegistry</name></member>
+      <member refid="classendstone_1_1Server_1aad0acb0f58d11256a696ecdc04287331" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcast</name></member>
+      <member refid="classendstone_1_1Server_1a7be1e023a703bcc57e49e341c9987397" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>BroadcastChannelAdmin</name></member>
+      <member refid="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>BroadcastChannelUser</name></member>
+      <member refid="classendstone_1_1Server_1acc4f0ea241258f9d987752f1b86d1c8e" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
+      <member refid="classendstone_1_1Server_1a3ed020d4865697b14256c386952aef8c" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
+      <member refid="classendstone_1_1Server_1a7d040acfc02adf59c5cdcc67f32d3648" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
+      <member refid="classendstone_1_1Server_1a89fe4c0d8fc3f072e796e5312366db73" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
+      <member refid="classendstone_1_1Server_1a7e443c131695f212023c111ae764d404" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
+      <member refid="classendstone_1_1Server_1a2536be1d6e7e8756a2827762ab9896ba" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
+      <member refid="classendstone_1_1Server_1a4d65ff2e2b62f582c1615497bb8b5d83" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createMap</name></member>
+      <member refid="classendstone_1_1Server_1a6bff7fa11f6c5256df465cc74aab51e9" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createScoreboard</name></member>
+      <member refid="classendstone_1_1Server_1ae51b7402688f21fe9779349df0c5df73" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>dispatchCommand</name></member>
+      <member refid="classendstone_1_1Server_1a63e3ffb84311f233e965144501ceb195" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageMillisecondsPerTick</name></member>
+      <member refid="classendstone_1_1Server_1a23be2bfc5675e6b04cce1e2a7f7f3277" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageTicksPerSecond</name></member>
+      <member refid="classendstone_1_1Server_1a08daaf367859b76040b252ba7e2b3dcf" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageTickUsage</name></member>
+      <member refid="classendstone_1_1Server_1a6aabbee05ed99ba41702ae926c6374b2" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getBanList</name></member>
+      <member refid="classendstone_1_1Server_1ad67d5847b45b8fb7d23efbb4f1321a01" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCommandSender</name></member>
+      <member refid="classendstone_1_1Server_1a2a9e4988b27ff1cfa65df290a8d61c7c" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCurrentMillisecondsPerTick</name></member>
+      <member refid="classendstone_1_1Server_1a3b94b752dcf483b607c247ff335a0deb" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCurrentTicksPerSecond</name></member>
+      <member refid="classendstone_1_1Server_1a4961829bb78b2cbb9e53393f6c4ee3ad" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCurrentTickUsage</name></member>
+      <member refid="classendstone_1_1Server_1a8ab4971ec939f666bf3b98d1a80c7af3" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getIpBanList</name></member>
+      <member refid="classendstone_1_1Server_1a889e988b65a8e60440b2ac4ac668a2e3" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getItemFactory</name></member>
+      <member refid="classendstone_1_1Server_1a90941565489a85794e4e0ff9d8378c68" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getLanguage</name></member>
+      <member refid="classendstone_1_1Server_1a22293d531e15da6ab46fcf6f303385b7" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getLevel</name></member>
+      <member refid="classendstone_1_1Server_1a2c15860e3e6cf3347e9d485a44f8be1d" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getLogger</name></member>
+      <member refid="classendstone_1_1Server_1a1934abd049be85a1a3bf8170a0c56d49" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getMap</name></member>
+      <member refid="classendstone_1_1Server_1acac268b65787dd0261790dab8c4f110d" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getMaxPlayers</name></member>
+      <member refid="classendstone_1_1Server_1a849bb8c24789cc5130abd4d4bbb5dddb" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getMinecraftVersion</name></member>
+      <member refid="classendstone_1_1Server_1a2478b382f6098c157032048b0f6f64ad" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Server_1ae3fa91a411498dc3b3bdecfeaffac19e" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getOnlineMode</name></member>
+      <member refid="classendstone_1_1Server_1a6d63beaa8eac5c79ccb387447e977214" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getOnlinePlayers</name></member>
+      <member refid="classendstone_1_1Server_1a388917288af53f200925c6d5cc9bd821" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1Server_1aceebe1840a2f384ac0bc028e690fc423" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1Server_1aa10c30d79eeb43b5df5a13691b2224ac" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPluginCommand</name></member>
+      <member refid="classendstone_1_1Server_1afd16655cd119fe34c52f3658245093d1" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPluginManager</name></member>
+      <member refid="classendstone_1_1Server_1a02ad5f608bf57e66d60959ace598c492" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPort</name></member>
+      <member refid="classendstone_1_1Server_1a8f5fe4938d839ad53d7449429dbc6f7a" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPortV6</name></member>
+      <member refid="classendstone_1_1Server_1a18c9bcc8cd31afdf4e5294c64135d2f4" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getProtocolVersion</name></member>
+      <member refid="classendstone_1_1Server_1a767171af5232bcf5c1d1502f4903edea" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>getRegistry</name></member>
+      <member refid="classendstone_1_1Server_1a5c2d347170670b60809ea7ca42e8f045" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getScheduler</name></member>
+      <member refid="classendstone_1_1Server_1a1017e6993532d46e06eb80871d3e0053" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getScoreboard</name></member>
+      <member refid="classendstone_1_1Server_1a846007f57bf27a84e78f49b218c2fa7c" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getServiceManager</name></member>
+      <member refid="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getStartTime</name></member>
+      <member refid="classendstone_1_1Server_1a29d50cb9b2c09942f11148c2e78a9d6b" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getVersion</name></member>
+      <member refid="classendstone_1_1Server_1a1a2968bddfbf66a9421477b42219799e" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>isPrimaryThread</name></member>
+      <member refid="classendstone_1_1Server_1a2dc1b2cbbff569db469db842d178baf6" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Server_1acd79b367ca64559921c87dbfe9950bea" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>reload</name></member>
+      <member refid="classendstone_1_1Server_1aba9dbe7bb1d4c0083a7d5bd1e76fbca0" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>reloadData</name></member>
+      <member refid="classendstone_1_1Server_1a2dee067a586bcea2355896f716fc3375" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>Server</name></member>
+      <member refid="classendstone_1_1Server_1ab38f521ee3c088261a6448d3bf9d4dbd" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>Server</name></member>
+      <member refid="classendstone_1_1Server_1a44ff16f118e70e3a032854124ffca958" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>setMaxPlayers</name></member>
+      <member refid="classendstone_1_1Server_1a349c02e809ca14e2c16b0fa6bf021d1a" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>shutdown</name></member>
+      <member refid="classendstone_1_1Server_1a6d90d04047e7e0730d9822be14611ba1" prot="public" virt="virtual"><scope>endstone::Server</scope><name>~Server</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
