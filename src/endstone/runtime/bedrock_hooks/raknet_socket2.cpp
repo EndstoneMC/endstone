@@ -28,7 +28,6 @@
 using endstone::core::EndstoneServer;
 
 namespace RakNet {
-
 RNS2SendResult RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP(RNS2Socket socket,
                                                                    RNS2_SendParameters *send_parameters,
                                                                    const char *file, unsigned int line)
@@ -74,5 +73,4 @@ RNS2SendResult RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP(RNS2Socket so
     return ENDSTONE_HOOK_CALL_ORIGINAL(&RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP, socket, send_parameters,
                                        file, line);
 }
-
 }  // namespace RakNet

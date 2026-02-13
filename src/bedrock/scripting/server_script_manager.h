@@ -21,5 +21,5 @@ class ServerInstance;
 class ServerScriptManager {
 public:
 private:
-    ENDSTONE_HOOK void _runPlugins(PluginExecutionGroup exe_group, ServerInstance &server_instance);
+    void _runPlugins(PluginExecutionGroup exe_group, ServerInstance &server_instance);
 };

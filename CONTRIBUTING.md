@@ -30,7 +30,7 @@ hooks into the BDS binary to expose a high-level Bukkit-like API for plugin deve
 
 **Linux:**
 
-- Clang 16+ with libc++
+- Clang 20+ with libc++
 - CMake
 - Ninja
 - Conan 2.0+

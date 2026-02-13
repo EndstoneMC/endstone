@@ -12,10 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/scripting/server_script_manager.h"
-
-#include <mutex>
-#include <thread>
+#include "bedrock/server/server_instance.h"
 
 #include "bedrock/scripting/event_handlers/script_actor_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_block_gameplay_handler.h"
@@ -73,12 +70,13 @@ void hookEventHandler(ItemGameplayHandler &handler)
 template <>
 void hookEventHandler(LevelGameplayHandler &handler)
 {
+    // TODO(hook): find new way to implement WeatherEvent
 #ifdef _WIN32
     vhook::create<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
-    vhook::create<1>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
+    // vhook::create<1>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
 #else
     vhook::create<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
-    vhook::create<3>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
+    // vhook::create<3>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
 #endif
 }
 
@@ -116,34 +114,46 @@ void hookEventHandler(ServerNetworkEventHandler &handler)
 #endif
 }
 
-void ServerScriptManager::_runPlugins(PluginExecutionGroup exe_group, ServerInstance &server_instance)
+class ServerInstanceLifecycleListener : ServerInstanceEventListener {
+public:
+    ::EventResult onServerThreadStarted(ServerInstance &instance) override
+    {
+        auto &level = *instance.getMinecraft()->getLevel();
+        auto &server = endstone::core::EndstoneServer ::getInstance();
+        hookEventHandler(*level.getActorEventCoordinator().actor_gameplay_handler);
+        hookEventHandler(*level.getBlockEventCoordinator().block_gameplay_handler);
+        hookEventHandler(*level.getItemEventCoordinator().item_gameplay_handler);
+        hookEventHandler(*level.getLevelEventCoordinator().level_gameplay_handler);
+        hookEventHandler(*level.getServerPlayerEventCoordinator().player_gameplay_handler);
+        hookEventHandler(*level.getScriptingEventCoordinator().scripting_event_handler);
+        hookEventHandler(*level.getServerNetworkEventCoordinator().server_network_event_handler);
+        server.setLevel(level);
+        return ::EventResult::KeepGoing;
+    }
+
+    ::EventResult onServerThreadStopped(ServerInstance &instance) override
+    {
+        if (entt::locator<endstone::core::EndstoneServer>::has_value()) {
+            auto &server = endstone::core::EndstoneServer::getInstance();
+            server.disablePlugins();
+        }
+        entt::locator<endstone::core::EndstoneServer>::reset();
+        return ::EventResult::KeepGoing;
+    }
+
+    static ServerInstanceEventListener &getInstance()
+    {
+        static ServerInstanceLifecycleListener instance;
+        return instance;
+    }
+};
+
+bool ServerInstance::initializeServer(ServerInstanceInitArguments &&args)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerScriptManager::_runPlugins, this, exe_group, server_instance);
-    static std::once_flag init_server, init_level;
-    switch (exe_group) {
-    case PluginExecutionGroup::PrePackLoadExecution: {
-        std::call_once(init_server, [&server_instance]() {
-            auto &server = entt::locator<endstone::core::EndstoneServer>::value_or();
-            server.init(server_instance);
-        });
-        break;
-    }
-    case PluginExecutionGroup::ServerStartExecution: {
-        std::call_once(init_level, [&server_instance]() {
-            auto &level = *server_instance.getMinecraft()->getLevel();
-            auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-            hookEventHandler(*level.getActorEventCoordinator().actor_gameplay_handler);
-            hookEventHandler(*level.getBlockEventCoordinator().block_gameplay_handler);
-            hookEventHandler(*level.getItemEventCoordinator().item_gameplay_handler);
-            hookEventHandler(*level.getLevelEventCoordinator().level_gameplay_handler);
-            hookEventHandler(*level.getServerPlayerEventCoordinator().player_gameplay_handler);
-            hookEventHandler(*level.getScriptingEventCoordinator().scripting_event_handler);
-            hookEventHandler(*level.getServerNetworkEventCoordinator().server_network_event_handler);
-            server.setLevel(level);
-        });
-        break;
-    }
-    default:
-        break;
-    }
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstance::initializeServer, this,
+                                              std::forward<ServerInstanceInitArguments>(args));
+    auto &server = endstone::core::EndstoneServer::getInstance();
+    server.init(*this);
+    getEventCoordinator()->registerListener(&ServerInstanceLifecycleListener::getInstance());
+    return result;
 }

@@ -9,7 +9,7 @@ ENV PYTHONUNBUFFERED=1 \
 FROM base AS builder
 
 # Install required dependencies and configure LLVM
-ARG LLVM_VERSION=16
+ARG LLVM_VERSION=20
 RUN apt-get update -y -qq \
     && apt-get install -y -qq build-essential lsb-release git wget software-properties-common gnupg \
     && wget https://apt.llvm.org/llvm.sh \
@@ -45,7 +45,7 @@ RUN --mount=type=secret,id=sentry-auth-token,env=SENTRY_AUTH_TOKEN \
     && python -m pip wheel . --no-deps --wheel-dir=dist --verbose \
     && python scripts/repair_wheel.py -o endstone -p endstone -w wheelhouse dist/*.whl \
     && pip install wheelhouse/*-${AUDITWHEEL_PLAT}.whl \
-    && pytest tests/endstone/python
+    && pytest tests
 
 # Final stage
 FROM python:3.12-slim-bookworm AS final

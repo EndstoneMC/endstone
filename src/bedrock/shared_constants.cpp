@@ -13,10 +13,3 @@
 // limitations under the License.
 
 #include "bedrock/shared_constants.h"
-
-#include "bedrock/symbol.h"
-
-std::string Common::getGameVersionString()
-{
-    return BEDROCK_CALL(&Common::getGameVersionString);
-}

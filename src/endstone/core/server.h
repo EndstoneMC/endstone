@@ -127,6 +127,7 @@ public:
     [[nodiscard]] PackSource &getPackSource() const;
     [[nodiscard]] bool getAllowClientPacks() const;
     [[nodiscard]] bool logCommands() const;
+    [[nodiscard]] bool isServerTextEnabled(ServerTextEvent event) const;
 
     [[nodiscard]] ServerInstance &getServer() const;
     [[nodiscard]] RakNetConnector &getRakNetConnector() const;
@@ -168,6 +169,7 @@ private:
     // TODO(config): move the following the a separate class/struct
     bool allow_client_packs_ = false;
     bool log_commands_ = true;
+    ServerTextSettings text_settings_;
     ::Bedrock::PubSub::Subscription on_gameplay_user_removed_;
     ::Bedrock::PubSub::Subscription on_chunk_load_;
     ::Bedrock::PubSub::Subscription on_chunk_unload_;

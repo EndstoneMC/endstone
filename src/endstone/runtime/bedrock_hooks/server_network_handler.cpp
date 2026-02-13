@@ -64,7 +64,7 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
 }
 
 bool ServerNetworkHandler::tryToLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request,
-                                          const PlayerAuthenticationInfo &player_info)
+                                           const PlayerAuthenticationInfo &player_info)
 {
     const auto new_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::tryToLoadPlayer, this, server_player,
                                                         connection_request, player_info);
@@ -81,26 +81,26 @@ bool ServerNetworkHandler::tryToLoadPlayer(ServerPlayer &server_player, const Co
     return new_player;
 }
 
-ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &network_id,
-                                                     const SubClientConnectionRequest &sub_client_connection_request,
-                                                     const PlayerAuthenticationInfo &player_info,
-                                                     SubClientId sub_client_id)
-{
-    auto &server_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_createNewPlayer, this, network_id,
-                                                      sub_client_connection_request, player_info, sub_client_id);
-    const auto &server = endstone::core::EndstoneServer::getInstance();
-    auto &endstone_player = server_player.getEndstoneActor<endstone::core::EndstonePlayer>();
-    endstone_player.initFromConnectionRequest(&sub_client_connection_request);
-
-    endstone::PlayerLoginEvent e{endstone_player};
-    server.getPluginManager().callEvent(e);
-
-    if (e.isCancelled()) {
-        const auto identifier = server_player.getPersistentComponent<UserEntityIdentifierComponent>();
-        disconnect(identifier->getNetworkId(), identifier->getSubClientId(), e.getKickMessage());
-    }
-    return server_player;
-}
+// ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &network_id,
+//                                                      const SubClientConnectionRequest &sub_client_connection_request,
+//                                                      const PlayerAuthenticationInfo &player_info,
+//                                                      SubClientId sub_client_id)
+// {
+//     auto &server_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_createNewPlayer, this, network_id,
+//                                                       sub_client_connection_request, player_info, sub_client_id);
+//     const auto &server = endstone::core::EndstoneServer::getInstance();
+//     auto &endstone_player = server_player.getEndstoneActor<endstone::core::EndstonePlayer>();
+//     endstone_player.initFromConnectionRequest(&sub_client_connection_request);
+//
+//     endstone::PlayerLoginEvent e{endstone_player};
+//     server.getPluginManager().callEvent(e);
+//
+//     if (e.isCancelled()) {
+//         const auto identifier = server_player.getPersistentComponent<UserEntityIdentifierComponent>();
+//         disconnect(identifier->getNetworkId(), identifier->getSubClientId(), e.getKickMessage());
+//     }
+//     return server_player;
+// }
 
 ServerPlayer *ServerNetworkHandler::getServerPlayer(const NetworkIdentifier &source, SubClientId sub_id)
 {
@@ -176,11 +176,3 @@ std::optional<PlayerAuthenticationInfo> ServerNetworkHandler::_validateLoginPack
     return auth_info;
 }
 
-bool ServerNetworkHandler::_isServerTextEnabled(ServerTextEvent const &event) const
-{
-    if (event == ServerTextEvent::PlayerConnection || event == ServerTextEvent::PlayerChangedSkin) {
-        // Note: return false to prevent BDS from sending the messages - we will take over
-        return false;
-    }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_isServerTextEnabled, this, event);
-}

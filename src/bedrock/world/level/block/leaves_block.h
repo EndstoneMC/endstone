@@ -17,5 +17,10 @@
 class LeavesBlock : public BlockType {
 public:
 protected:
+#ifdef _WIN32
     ENDSTONE_HOOK void _die(BlockSource &region, BlockPos const &pos) const;
+#else
+    // workaround to match the actual calling convention after Clang's optimisation on Linux
+    ENDSTONE_HOOK static void _die(BlockSource &region, BlockPos const &pos);
+#endif
 };

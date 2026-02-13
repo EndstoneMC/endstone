@@ -16,6 +16,7 @@
 
 #include <utility>
 
+#include "endstone/detail.h"
 #include "endstone/endstone.hpp"
 #include "registry.h"
 #include "type_caster.h"
@@ -178,6 +179,8 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_registry(m);
     init_server(server);
     init_event(m_event, event);
+
+    m.attr("__minecraft_version__") = MINECRAFT_VERSION;
 }
 
 void init_color_format(py::module_ &m)

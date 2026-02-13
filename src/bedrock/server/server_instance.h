@@ -30,11 +30,14 @@
 #include "bedrock/world/game_session.h"
 #include "bedrock/world/minecraft.h"
 
+struct ServerInstanceInitArguments;
+
 class ServerInstance : public Bedrock::EnableNonOwnerReferences,
                        public AppPlatformListener,
                        public GameCallbacks,
                        public Core::StorageAreaStateListener {
 public:
+    ENDSTONE_HOOK bool initializeServer(ServerInstanceInitArguments &&args);
     ServerInstance(IMinecraftApp &, const Bedrock::NotNullNonOwnerPtr<ServerInstanceEventCoordinator> &);
     enum InstanceState : unsigned int {
         Running = 0,

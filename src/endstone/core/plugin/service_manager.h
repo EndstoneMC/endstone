@@ -16,6 +16,7 @@
 
 #include <mutex>
 #include <unordered_map>
+#include <vector>
 
 #include "endstone/plugin/service_manager.h"
 
@@ -32,55 +33,28 @@ public:
     {
     }
 
-    [[nodiscard]] std::string getName() const
-    {
-        return name_;
-    }
+    [[nodiscard]] std::string getName() const { return name_; }
 
-    [[nodiscard]] Plugin &getPlugin() const
-    {
-        return plugin_;
-    }
+    [[nodiscard]] Plugin &getPlugin() const { return plugin_; }
 
-    [[nodiscard]] std::shared_ptr<Service> getProvider() const
-    {
-        return provider_;
-    }
+    [[nodiscard]] std::shared_ptr<Service> getProvider() const { return provider_; }
 
-    [[nodiscard]] ServicePriority getPriority() const
-    {
-        return priority_;
-    }
+    [[nodiscard]] ServicePriority getPriority() const { return priority_; }
 
-    bool operator<(const RegisteredServiceProvider &other) const
-    {
-        return priority_ < other.getPriority();
-    }
+    bool operator<(const RegisteredServiceProvider &other) const { return priority_ < other.getPriority(); }
 
-    bool operator>(const RegisteredServiceProvider &other) const
-    {
-        return priority_ > other.getPriority();
-    }
+    bool operator>(const RegisteredServiceProvider &other) const { return priority_ > other.getPriority(); }
 
     bool operator==(const RegisteredServiceProvider &other) const
     {
         return static_cast<int>(priority_) == static_cast<int>(other.getPriority());
     }
 
-    bool operator!=(const RegisteredServiceProvider &other) const
-    {
-        return !(*this == other);
-    }
+    bool operator!=(const RegisteredServiceProvider &other) const { return !(*this == other); }
 
-    bool operator<=(const RegisteredServiceProvider &other) const
-    {
-        return !(*this > other);
-    }
+    bool operator<=(const RegisteredServiceProvider &other) const { return !(*this > other); }
 
-    bool operator>=(const RegisteredServiceProvider &other) const
-    {
-        return !(*this < other);
-    }
+    bool operator>=(const RegisteredServiceProvider &other) const { return !(*this < other); }
 
 private:
     std::string name_;
