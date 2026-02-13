@@ -979,15 +979,9 @@ class ServerListPingEvent(ServerEvent, Cancellable):
     Called when a server ping is coming in.
     """
     @property
-    def remote_host(self) -> str:
+    def address(self) -> SocketAddress:
         """
-        Get the host the ping is coming from.
-        """
-        ...
-    @property
-    def remote_port(self) -> int:
-        """
-        Get the port the ping is coming from.
+        Get the address the ping is coming from.
         """
         ...
     @property
