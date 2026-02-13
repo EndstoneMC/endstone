@@ -118,8 +118,16 @@ void EndstoneServer::setLevel(::Level &level)
     metrics_ = std::make_unique<EndstoneMetrics>(*this);  // start metrics
     loadResourcePacks();
     initRegistries();
-    level._getPlayerDeathManager()->sender_.reset();                       // prevent BDS from sending the death message
-    (void)dispatchCommand(getCommandSender(), "reloadpacketlimitconfig");  // enable packet rate limiter
+
+    // enable packet rate limiter
+    (void)dispatchCommand(getCommandSender(), "reloadpacketlimitconfig");
+
+    // prevent BDS from sending these messages by default - we allow plugin to override these messages
+    auto &text_settings =
+        const_cast<ServerTextSettingsBitset &>(server_instance_->getServerTextSettings()->getEnabledServerTextEvents());
+    text_settings.reset(static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerConnection));
+    text_settings.reset(static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerChangedSkin));
+    level._getPlayerDeathManager()->sender_.reset();  // player death
 
     // #blameMojang
     // MapItemSavedData never removes disconnected players from its

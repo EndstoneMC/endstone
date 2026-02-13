@@ -68,7 +68,7 @@ public:
     const ConnectionRequest &fetchConnectionRequest(const NetworkIdentifier &source);
     [[nodiscard]] PlayerAuthenticationInfo fetchPlayerAuthenticationInfo(const NetworkIdentifier &source);
     ENDSTONE_HOOK bool tryToLoadPlayer(ServerPlayer &, ConnectionRequest const &,
-                                      const PlayerAuthenticationInfo &player_info);
+                                       const PlayerAuthenticationInfo &player_info);
 
     ServerPlayer *getServerPlayer(const NetworkIdentifier &, SubClientId);  // Endstone
     void disconnect(NetworkIdentifier const &network_id, SubClientId sub_client_id,
@@ -82,9 +82,9 @@ private:
                                                                                        const LoginPacket &packet);
     // TODO: do not hook this method, listen for packet and then try get from sub player lists
     ServerPlayer &_createNewPlayer(NetworkIdentifier const &source,
-                                                 SubClientConnectionRequest const &connection_request,
-                                                 const PlayerAuthenticationInfo &player_info, SubClientId subid);
-    [[nodiscard]] ENDSTONE_HOOK bool _isServerTextEnabled(ServerTextEvent const &) const;
+                                   SubClientConnectionRequest const &connection_request,
+                                   const PlayerAuthenticationInfo &player_info, SubClientId subid);
+    [[nodiscard]] bool _isServerTextEnabled(ServerTextEvent const &) const;
 
 protected:
     class Client {
@@ -140,5 +140,5 @@ private:
     gsl::not_null<std::unique_ptr<AsyncJoinTaskManager>> async_join_task_manager_;
     std::unique_ptr<TaskGroup> io_task_group_;
     bool is_trial_;
-    std::unordered_map<PackIdVersion, std::string> pack_id_to_content_key_;  // TODO(fixme): check offset
+    std::unordered_map<PackIdVersion, std::string> pack_id_to_content_key_;
 };

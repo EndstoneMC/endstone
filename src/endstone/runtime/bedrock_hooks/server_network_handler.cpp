@@ -64,7 +64,7 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
 }
 
 bool ServerNetworkHandler::tryToLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request,
-                                          const PlayerAuthenticationInfo &player_info)
+                                           const PlayerAuthenticationInfo &player_info)
 {
     const auto new_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::tryToLoadPlayer, this, server_player,
                                                         connection_request, player_info);
@@ -176,11 +176,3 @@ std::optional<PlayerAuthenticationInfo> ServerNetworkHandler::_validateLoginPack
     return auth_info;
 }
 
-bool ServerNetworkHandler::_isServerTextEnabled(ServerTextEvent const &event) const
-{
-    if (event == ServerTextEvent::PlayerConnection || event == ServerTextEvent::PlayerChangedSkin) {
-        // Note: return false to prevent BDS from sending the messages - we will take over
-        return false;
-    }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_isServerTextEnabled, this, event);
-}
