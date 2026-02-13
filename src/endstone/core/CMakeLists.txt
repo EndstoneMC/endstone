@@ -62,7 +62,6 @@ add_library(endstone_core
         command/defaults/version_command.cpp
         damage/damage_source.cpp
         enchantments/enchantment.cpp
-        event/server/server_list_ping_event.cpp
         form/form_codec.cpp
         inventory/meta/item_meta.cpp
         inventory/meta/map_meta.cpp
