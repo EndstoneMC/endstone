@@ -26,6 +26,7 @@ add_library(bedrock STATIC
         core/utility/serialize_simple_types.cpp
         crypto/encoding/base64.cpp
         deps/json/value.cpp
+        deps/raknet/bit_stream.cpp
         deps/raknet/get_time.cpp
         deps/raknet/raknet_types.cpp
         entity/gamerefs_entity/entity_context.cpp
