@@ -350,10 +350,7 @@ void init_event(py::module_ &m, py::class_<Event> &event)
 
     py::class_<ServerListPingEvent, ServerEvent, ICancellable>(m, "ServerListPingEvent",
                                                                "Called when a server ping is coming in.")
-        .def_property_readonly("remote_host", &ServerListPingEvent::getRemoteHost,
-                               "Get the host the ping is coming from.")
-        .def_property_readonly("remote_port", &ServerListPingEvent::getRemotePort,
-                               "Get the port the ping is coming from.")
+        .def_property_readonly("address", &ServerListPingEvent::getAddress, "Get the address the ping is coming from.")
         .def_property("server_guid", &ServerListPingEvent::getServerGuid, &ServerListPingEvent::setServerGuid,
                       "Get or set the unique identifier of the server.")
         .def_property("local_port", &ServerListPingEvent::getLocalPort, &ServerListPingEvent::setLocalPort,
