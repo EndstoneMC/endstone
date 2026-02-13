@@ -48,7 +48,12 @@ enum class StartupResult {
     // NOLINTEND
 };
 
+#define BITS_TO_BYTES(x) (((x) + 7) >> 3)
+#define BYTES_TO_BITS(x) ((x) << 3)
+
 using SystemIndex = std::uint16_t;
+using MessageID = unsigned char;
+using BitSize_t = std::uint32_t;
 
 struct SystemAddress {
     SystemAddress()
@@ -79,10 +84,7 @@ BEDROCK_STATIC_ASSERT_SIZE(SystemAddress, 136, 136);
 struct RakNetGUID {
     RakNetGUID() : g(-1), system_index(-1) {}
     explicit RakNetGUID(uint64_t g) : g(g), system_index(-1) {}
-    bool operator==(const RakNetGUID &right) const
-    {
-        return g == right.g;
-    }
+    bool operator==(const RakNetGUID &right) const { return g == right.g; }
 
     std::uint64_t g;
     SystemIndex system_index;
@@ -128,4 +130,13 @@ struct AddressOrGUID {
     SystemAddress system_address;
 };
 
+struct Packet {
+    SystemAddress systemAddress;
+    RakNetGUID guid;
+    unsigned int length;
+    BitSize_t bitSize;
+    unsigned char *data;
+    bool deleteData;
+    bool wasGeneratedLocally;
+};
 }  // namespace RakNet

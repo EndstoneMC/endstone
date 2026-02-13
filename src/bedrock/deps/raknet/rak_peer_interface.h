@@ -16,13 +16,13 @@
 
 #include <memory>
 
+#include "bedrock/deps/raknet/plugin_interface.h"
 #include "bedrock/deps/raknet/raknet_socket2.h"
 #include "bedrock/deps/raknet/raknet_types.h"
 
 namespace RakNet {
 
 class BitStream;
-class Packet;
 struct PublicKey;
 class RakNetSocket2;
 class ShadowBanList;
