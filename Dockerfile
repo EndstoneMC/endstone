@@ -45,7 +45,7 @@ RUN --mount=type=secret,id=sentry-auth-token,env=SENTRY_AUTH_TOKEN \
     && python -m pip wheel . --no-deps --wheel-dir=dist --verbose \
     && python scripts/repair_wheel.py -o endstone -p endstone -w wheelhouse dist/*.whl \
     && pip install wheelhouse/*-${AUDITWHEEL_PLAT}.whl \
-    && pytest tests/endstone/python
+    && pytest tests
 
 # Final stage
 FROM python:3.12-slim-bookworm AS final
