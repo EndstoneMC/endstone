@@ -167,7 +167,7 @@ version = "1.26.0"
 "_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE" = 168605664
 "_ZN13ItemStackBase4initEiiib" = 168574352
 # LeavesBlock
-"_ZNK11LeavesBlock4_dieER11BlockSourceRK8BlockPos" = 169937936
+"_ZN11LeavesBlock4_dieER11BlockSourceRK8BlockPos" = 169937936
 # Level
 "_ZN5Level4tickEv" = 173068912
 # LiquidBlock
