@@ -70,12 +70,13 @@ void hookEventHandler(ItemGameplayHandler &handler)
 template <>
 void hookEventHandler(LevelGameplayHandler &handler)
 {
+    // TODO(hook): find new way to implement WeatherEvent
 #ifdef _WIN32
     vhook::create<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
-    vhook::create<1>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
+    // vhook::create<1>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
 #else
     vhook::create<2>(&handler, &ScriptLevelGameplayHandler::handleEvent1);
-    vhook::create<3>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
+    // vhook::create<3>(&handler, &ScriptLevelGameplayHandler::handleEvent2);
 #endif
 }
 
