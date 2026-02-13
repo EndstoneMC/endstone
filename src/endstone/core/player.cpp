@@ -581,7 +581,11 @@ void EndstonePlayer::sendForm(FormVariant form)
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ShowModalForm);
     std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
     pk->payload.form_id = ++form_ids_;
-    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) { return FormCodec::toJson(arg); }}, form).dump();
+    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) {
+                                           return FormCodec::toJson(arg);
+                                       }},
+                                       form)
+                                .dump();
     forms_.emplace(pk->payload.form_id, std::move(form));
     getHandle().sendNetworkPacket(*packet);
 }
@@ -656,8 +660,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
             }
 
             skin_change_message = e.getSkinChangeMessage().value_or("");
-            if (server.getServer().getServerTextSettings()->getEnabledServerTextEvents().test(
-                    static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerChangedSkin)) &&
+            if (server.isServerTextEnabled(ServerTextEvent::PlayerChangedSkin) &&
                 (!std::holds_alternative<std::string>(skin_change_message) ||
                  !std::get<std::string>(skin_change_message).empty())) {
                 server.broadcastMessage(skin_change_message);
@@ -806,8 +809,7 @@ void EndstonePlayer::doFirstSpawn()
     PlayerJoinEvent e{*this, join_message};
     server.getPluginManager().callEvent(e);
     join_message = e.getJoinMessage().value_or("");
-    if (server.getServer().getServerTextSettings()->getEnabledServerTextEvents().test(
-            static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerConnection)) &&
+    if (server.isServerTextEnabled(ServerTextEvent::PlayerConnection) &&
         (!std::holds_alternative<std::string>(join_message) || !std::get<std::string>(join_message).empty())) {
         server.broadcastMessage(join_message);
     }

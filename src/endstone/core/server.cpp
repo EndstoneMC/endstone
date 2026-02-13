@@ -125,6 +125,7 @@ void EndstoneServer::setLevel(::Level &level)
     // prevent BDS from sending these messages by default - we allow plugin to override these messages
     auto &text_settings =
         const_cast<ServerTextSettingsBitset &>(server_instance_->getServerTextSettings()->getEnabledServerTextEvents());
+    text_settings_ = text_settings;
     text_settings.reset(static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerConnection));
     text_settings.reset(static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerChangedSkin));
     level._getPlayerDeathManager()->sender_.reset();  // player death
@@ -234,6 +235,12 @@ bool EndstoneServer::getAllowClientPacks() const
 bool EndstoneServer::logCommands() const
 {
     return log_commands_;
+}
+
+bool EndstoneServer::isServerTextEnabled(ServerTextEvent event) const
+{
+    return text_settings_.getEnabledServerTextEvents().test(
+        static_cast<std::underlying_type_t<ServerTextEvent>>(event));
 }
 
 void EndstoneServer::loadResourcePacks()
