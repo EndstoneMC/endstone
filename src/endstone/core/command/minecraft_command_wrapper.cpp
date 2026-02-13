@@ -33,12 +33,13 @@ MinecraftCommandWrapper::MinecraftCommandWrapper(MinecraftCommands &minecraft_co
     setDescription(std::move(description));
 
     // Usages
-    std::vector<std::string> usages;
-    usages.reserve(signature.overloads.size());
-    for (const auto &overload : signature.overloads) {
-        usages.push_back(minecraft_commands.getRegistry().describe(signature, overload));
-    }
-    setUsages(std::move(usages));
+    // TODO(fixme): re-enable this
+    // std::vector<std::string> usages;
+    // usages.reserve(signature.overloads.size());
+    // for (const auto &overload : signature.overloads) {
+    //     usages.push_back(minecraft_commands.getRegistry().describe(signature, overload));
+    // }
+    // setUsages(std::move(usages));
 
     // Permissions
     setPermissions(getPermission(signature));
