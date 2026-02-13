@@ -42,14 +42,15 @@ public:
     void setCurrentValue(float value, AttributeModificationContext context);
     void addBuff(const AttributeBuff &, AttributeModificationContext);
     void removeBuff(const AttributeBuff &buff);
-    void addModifier(const AttributeModifier &modifier, AttributeModificationContext context);     // todo
+    void addModifier(const AttributeModifier &modifier, AttributeModificationContext context);
     void removeModifier(const AttributeModifier &modifier, AttributeModificationContext context);  // todo
 
 private:
     friend class BaseAttributeMap;
 
     void _setDirty(AttributeModificationContext context);
-    float _calculateValue();  // todo
+    float _calculateValue();
+    float _sanitizeValue(float);
 
     Attribute *attribute_;
 

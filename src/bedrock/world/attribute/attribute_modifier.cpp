@@ -27,11 +27,7 @@ AttributeModifier::AttributeModifier(mce::UUID id, const std::string &name, floa
 {
 }
 
-AttributeModifier::AttributeModifier()
-    : amount_(0.0F), operation_(AttributeModifierOperation::OPERATION_INVALID),
-      operands_(AttributeOperands::OPERAND_INVALID), serialize_(false)
-{
-}
+AttributeModifier::AttributeModifier() = default;
 
 AttributeModifier::~AttributeModifier() = default;
 
@@ -77,8 +73,7 @@ void AttributeModifier::setSerialize(bool serialize)
 
 bool AttributeModifier::operator==(const AttributeModifier &rhs) const
 {
-    return id_ == rhs.id_ && name_ == rhs.name_ && amount_ == rhs.amount_ && operation_ == rhs.operation_ &&
-           operands_ == rhs.operands_ && serialize_ == rhs.serialize_;
+    return id_ == rhs.id_ && name_ == rhs.name_ && operation_ == rhs.operation_ && operands_ == rhs.operands_;
 }
 
 bool AttributeModifier::operator!=(const AttributeModifier &rhs) const
@@ -86,15 +81,4 @@ bool AttributeModifier::operator!=(const AttributeModifier &rhs) const
     return !(*this == rhs);
 }
 
-AttributeModifier &AttributeModifier::operator=(const AttributeModifier &rhs)
-{
-    if (this != &rhs) {
-        id_ = rhs.id_;
-        name_ = rhs.name_;
-        amount_ = rhs.amount_;
-        operation_ = rhs.operation_;
-        operands_ = rhs.operands_;
-        serialize_ = rhs.serialize_;
-    }
-    return *this;
-}
+AttributeModifier &AttributeModifier::operator=(const AttributeModifier &rhs) = default;
