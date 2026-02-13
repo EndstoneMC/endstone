@@ -1,4 +1,4 @@
-timestamp = 1770936825
+timestamp = 1770940689
 version = "1.26.0"
 
 [windows]
@@ -211,6 +211,8 @@ version = "1.26.0"
 "_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level" = 135897840
 # ScriptModuleMinecraft::ScriptBlockUtils
 "_ZN21ScriptModuleMinecraft16ScriptBlockUtils21createBlockDescriptorENSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEENS1_8optionalINS1_13unordered_mapIS7_NS1_7variantIJiS7_bEEENS1_4hashIS7_EENS1_8equal_toIS7_EENS5_INS1_4pairIKS7_SB_EEEEEEEE" = 125649120
+# ServerInstance
+"_ZN14ServerInstance16initializeServerEO27ServerInstanceInitArguments" = 138245168
 # ServerNetworkHandler
 "_ZN20ServerNetworkHandler15tryToLoadPlayerER12ServerPlayerRK17ConnectionRequestRK24PlayerAuthenticationInfo" = 118198800
 "_ZN20ServerNetworkHandler20_validateLoginPacketERK17NetworkIdentifierRK11LoginPacket" = 118131248
@@ -221,7 +223,5 @@ version = "1.26.0"
 "_ZN12ServerPlayer15changeDimensionE11AutomaticIDI9DimensioniE" = 137994256
 # ServerScoreboard
 "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE" = 179322304
-# ServerScriptManager
-"_ZN19ServerScriptManager11_runPluginsE20PluginExecutionGroupR14ServerInstance" = 133902416
 # UnverifiedCertificate
 "_ZN21UnverifiedCertificate10fromStringERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE" = 184402400

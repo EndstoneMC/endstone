@@ -65,27 +65,6 @@ namespace fs = std::filesystem;
 namespace py = pybind11;
 
 namespace endstone::core {
-namespace {
-class ServerInstanceStopListener : ServerInstanceEventListener {
-public:
-    ::EventResult onServerThreadStopped(ServerInstance &instance) override
-    {
-        if (entt::locator<EndstoneServer>::has_value()) {
-            auto &server = entt::locator<EndstoneServer>::value();
-            server.disablePlugins();
-        }
-        entt::locator<EndstoneServer>::reset();
-        return ::EventResult::KeepGoing;
-    }
-
-    static ServerInstanceEventListener &getInstance()
-    {
-        static ServerInstanceStopListener instance;
-        return instance;
-    }
-};
-}  // namespace
-
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
 {
     EndstoneServer::getLogger().info("{}This server is running {} version: {} (Minecraft: {})",
@@ -120,7 +99,6 @@ void EndstoneServer::init(ServerInstance &server_instance)
         throw std::runtime_error("Server instance already initialized.");
     }
     server_instance_ = &server_instance;
-    server_instance_->getEventCoordinator()->registerListener(&ServerInstanceStopListener::getInstance());
     command_sender_ = std::make_shared<EndstoneConsoleCommandSender>();
     command_sender_->recalculatePermissions();
     player_ban_list_->load();
