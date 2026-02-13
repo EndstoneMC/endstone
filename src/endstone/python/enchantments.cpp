@@ -84,6 +84,7 @@ void init_enchantments(py::module_ &m)
         .def_static("get", &Enchantment::get, py::arg("name"), "Attempts to get the Enchantment with the given name.",
                     py::return_value_policy::reference)
         .def("__str__", &Enchantment::getId)
+        .def("__hash__", [](const Enchantment &self) { return std::hash<EnchantmentId>{}(self.getId()); })
         .def(py::self == py::self)
         .def(py::self != py::self)
         .def(py::self == std::string_view())
