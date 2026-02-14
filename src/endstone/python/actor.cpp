@@ -55,7 +55,10 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
         .def_property("name_tag", &Actor::getNameTag, &Actor::setNameTag,
                       "Gets or sets the current name tag of the actor.")
         .def_property("score_tag", &Actor::getScoreTag, &Actor::setScoreTag,
-                      "Gets or sets the current score tag of the actor.");
+                      "Gets or sets the current score tag of the actor.")
+        .def("has_attribute", &Actor::hasAttribute, "", py::arg("attribute"))
+        .def("get_attribute", &Actor::getAttribute, "", py::arg("attribute"))
+        .def_property_readonly("attributes", &Actor::getAttributes, "");
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
                               "Checks to see if an actor is gliding, such as using an Elytra.")

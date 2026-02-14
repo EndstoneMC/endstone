@@ -28,7 +28,7 @@ using endstone::core::EndstoneServer;
 
 void Level::tick()
 {
-    constexpr auto symbol = __FUNCDNAME__;
+    constexpr static auto symbol = __FUNCDNAME__;
     auto &server = entt::locator<EndstoneServer>::value();
     server.tick(getCurrentServerTick().tick_id,
                 [&]() { ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, symbol, this); });
