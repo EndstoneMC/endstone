@@ -3,6 +3,10 @@
 Endstone provides a powerful event system that allows plugins to listen to various events that happen in the
 server. Let's walk you through registering a simple event listener.
 
+!!! info "Reference List"
+
+    See the [API documentation](../reference/python/event.md) for a list of events your plugin can listen to.
+
 ## Add event handlers
 
 Let's say your plugin want to listen to when a player joins the server and send a message to inform everyone on the
