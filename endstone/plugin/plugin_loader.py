@@ -196,6 +196,7 @@ class PythonPluginLoader(PluginLoader):
         # prepare plugin description
         cls_attr = dict(cls.__dict__)
         name = ep.name.replace("-", "_")
+        cls_attr.pop("name", None)  # ignore name from class attrs; always use the entry point name
         version = cls_attr.pop("version", plugin_metadata["version"])
 
         api_version = cls_attr.pop("api_version", None)
