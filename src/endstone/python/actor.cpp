@@ -56,9 +56,15 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
                       "Gets or sets the current name tag of the actor.")
         .def_property("score_tag", &Actor::getScoreTag, &Actor::setScoreTag,
                       "Gets or sets the current score tag of the actor.")
-        .def("has_attribute", &Actor::hasAttribute, "", py::arg("attribute"))
-        .def("get_attribute", &Actor::getAttribute, "", py::arg("attribute"))
-        .def_property_readonly("attributes", &Actor::getAttributes, "");
+        .def("has_attribute", &Actor::hasAttribute, "Check the attribute is present in the object.",
+             py::arg("attribute"))
+        .def("get_attribute", &Actor::getAttribute,
+             "Gets the specified attribute instance from the object. This instance will be backed directly to the "
+             "object and any changes will be visible at once.",
+             py::arg("attribute"))
+        .def_property_readonly("attributes", &Actor::getAttributes,
+                               "Gets all attribute instances from the object. This instance will be backed directly to "
+                               "the object and any changes will be visible at once.");
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
                               "Checks to see if an actor is gliding, such as using an Elytra.")
