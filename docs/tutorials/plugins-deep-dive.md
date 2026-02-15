@@ -19,6 +19,18 @@ flowchart TD
 	end
 ```
 
+??? abstract "Pseudo Source Code"
+
+	``` cpp title="src/endstone/core/server.cpp"
+	void EndstoneServer::init()
+	{
+		pluginManager = std::make_unique<EndstonePluginManager>(*this);
+		
+		pluginManager->registerLoader(std::make_unique<CppPluginLoader>(*this));
+    	pluginManager->registerLoader(std::make_unique<PythonPluginLoader>(*this));
+	}
+	```
+
 Each plugin loader defines what files they parse, and how to parse them. This information is passed during registration.
 
 ```mermaid
@@ -80,9 +92,28 @@ flowchart LR
 	
 ```
 
-!!! note 
+??? abstract "Pseudo Source Code"
 
-    This is not what's exactly done in the source code. The logic for scanning a directory belongs to the plugin manager.
+	This is not what's exactly done in the [real source code](https://github.com/EndstoneMC/endstone/blob/main/src/endstone/core/server.cpp); however, the logic remains very similar.
+
+	``` cpp title="src/endstone/core/server.cpp" hl_lines="8-14"
+	void EndstoneServer::init()
+	{
+		pluginManager = std::make_unique<EndstonePluginManager>(*this);
+		
+		pluginManager->registerLoader(std::make_unique<CppPluginLoader>(*this));
+    	pluginManager->registerLoader(std::make_unique<PythonPluginLoader>(*this));
+
+		auto pluginDirectory = fs::current_path() / "plugins";
+		if (exists(pluginDirectory)) {
+			pluginManager->loadPlugins(pluginDirectory.string());
+		}
+		else {
+			createDirectories(pluginDirectory);
+		}
+	}
+	```
+    
 
 ## Runtime
 
@@ -115,3 +146,18 @@ sequenceDiagram
 
 	GR->> GR: Running
 ```
+
+??? abstract "Pseudo Source Code"
+
+	``` cpp title="src/endstone/source_file.cpp"
+	void handleEvent()
+	{
+		Event e(eventInformation)
+
+		getServer().getPluginManager().callEvent(e);
+		if (e.isCancelled()) {
+			// cancel event
+		}
+		// continue with event
+	}
+	```
