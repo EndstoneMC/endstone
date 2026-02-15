@@ -4,6 +4,7 @@ Classes relating to actors (entities) that can exist in a world, including all p
 
 import typing
 
+from endstone.attribute import AttributeInstance
 from endstone.command import CommandSender
 from endstone.inventory import ItemStack
 from endstone.level import Dimension, Level, Location
@@ -157,6 +158,22 @@ class Actor(CommandSender):
         ...
     @score_tag.setter
     def score_tag(self, arg1: str) -> None: ...
+    def has_attribute(self, attribute: str) -> bool:
+        """
+        Check the attribute is present in the object.
+        """
+        ...
+    def get_attribute(self, attribute: str) -> AttributeInstance:
+        """
+        Gets the specified attribute instance from the object. This instance will be backed directly to the object and any changes will be visible at once.
+        """
+        ...
+    @property
+    def attributes(self) -> list[AttributeInstance]:
+        """
+        Gets all attribute instances from the object. This instance will be backed directly to the object and any changes will be visible at once.
+        """
+        ...
 
 class Mob(Actor):
     """
