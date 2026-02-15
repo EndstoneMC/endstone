@@ -111,6 +111,7 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
                 {"visualShape", visual_shape},
                 {"uiShape", ui_shape},
                 {"liquidClipShape", liquid_clip_shape},
+                {"translationKey", block.getBlockType().buildDescriptionId(block)}
             });
             data.block_palette.add(block.getSerializationId().copy());
             return true;
@@ -144,7 +145,8 @@ void dumpItemData(VanillaData &data, const ::Level &level)
                             {"isDamageable", item->isDamageable()},
                             {"maxStackSize", item->getMaxStackSize(ItemDescriptor())},
                             {"furnaceBurnDuration", FurnaceBlockActor::getBurnDuration(::ItemStack(*item), 200)},
-                            {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)}};
+                            {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)},
+                            {"translationKey", item->buildDescriptionId(ItemDescriptor(*item, 0), nullptr)}};
 
         if (const auto components = item->buildNetworkTag()) {
             ::CompoundTag tag;
