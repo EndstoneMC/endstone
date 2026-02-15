@@ -24,6 +24,7 @@ public:
     explicit EndstoneBlockData(::Block &block);
 
     [[nodiscard]] std::string getType() const override;
+    [[nodiscard]] std::string getTranslationKey() const override;
     [[nodiscard]] BlockStates getBlockStates() const override;
     [[nodiscard]] std::uint32_t getRuntimeId() const override;
 
