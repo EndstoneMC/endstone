@@ -267,6 +267,7 @@
   <compound refid="classendstone_1_1BlockData" kind="class"><name>endstone::BlockData</name>
     <member refid="classendstone_1_1BlockData_1afe42c3c7cc62c74f14f95c02e58c576e" kind="function"><name>~BlockData</name></member>
     <member refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1BlockData_1a52cc5370535fbc33bdd878238b16898f" kind="function"><name>getTranslationKey</name></member>
     <member refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" kind="function"><name>getBlockStates</name></member>
     <member refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" kind="function"><name>getRuntimeId</name></member>
   </compound>

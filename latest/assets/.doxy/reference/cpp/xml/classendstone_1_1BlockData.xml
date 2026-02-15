@@ -36,6 +36,24 @@
         </inbodydescription>
         <location file="include/endstone/block/block_data.h" line="42" column="26"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockData_1a52cc5370535fbc33bdd878238b16898f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::BlockData::getTranslationKey</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getTranslationKey</name>
+        <qualifiedname>endstone::BlockData::getTranslationKey</qualifiedname>
+        <briefdescription>
+<para>Get the translation key for this block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the translation key for this block </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_data.h" line="49" column="26"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>BlockStates</type>
         <definition>virtual BlockStates endstone::BlockData::getBlockStates</definition>
@@ -52,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_data.h" line="50" column="26"/>
+        <location file="include/endstone/block/block_data.h" line="57" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::uint32_t</type>
@@ -70,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_data.h" line="57" column="28"/>
+        <location file="include/endstone/block/block_data.h" line="64" column="28"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -78,10 +96,11 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/block/block_data.h" line="33" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="33" bodyend="58"/>
+    <location file="include/endstone/block/block_data.h" line="33" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="33" bodyend="65"/>
     <listofallmembers>
       <member refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" prot="public" virt="pure-virtual"><scope>endstone::BlockData</scope><name>getBlockStates</name></member>
       <member refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" prot="public" virt="pure-virtual"><scope>endstone::BlockData</scope><name>getRuntimeId</name></member>
+      <member refid="classendstone_1_1BlockData_1a52cc5370535fbc33bdd878238b16898f" prot="public" virt="pure-virtual"><scope>endstone::BlockData</scope><name>getTranslationKey</name></member>
       <member refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" prot="public" virt="pure-virtual"><scope>endstone::BlockData</scope><name>getType</name></member>
       <member refid="classendstone_1_1BlockData_1afe42c3c7cc62c74f14f95c02e58c576e" prot="public" virt="virtual"><scope>endstone::BlockData</scope><name>~BlockData</name></member>
     </listofallmembers>
