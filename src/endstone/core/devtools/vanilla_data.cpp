@@ -146,7 +146,7 @@ void dumpItemData(VanillaData &data, const ::Level &level)
                             {"maxStackSize", item->getMaxStackSize(ItemDescriptor())},
                             {"furnaceBurnDuration", FurnaceBlockActor::getBurnDuration(::ItemStack(*item), 200)},
                             {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)},
-                            {"translationKey", item->buildDescriptionId(ItemDescriptor(), nullptr)}};
+                            {"translationKey", item->buildDescriptionId(ItemDescriptor(*item, 0), nullptr)}};
 
         if (const auto components = item->buildNetworkTag()) {
             ::CompoundTag tag;
