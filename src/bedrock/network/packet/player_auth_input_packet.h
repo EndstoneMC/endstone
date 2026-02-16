@@ -93,11 +93,13 @@ public:
         INPUT_NUM = 65,
     };
 
-    PlayerAuthInputPacket();
-    [[nodiscard]] bool getInput(InputData input) const
-    {
-        return input_data.test(input);
-    }
+    PlayerAuthInputPacket() = default;
+    [[nodiscard]] MinecraftPacketIds getId() const override { return MinecraftPacketIds::PlayerAuthInputPacket; }
+    [[nodiscard]] std::string_view getName() const override { return "PlayerAuthInputPacket"; }
+    void write(BinaryStream &stream) const override {}                                 // todo
+    Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override { return {}; }  // todo
+
+    [[nodiscard]] bool getInput(InputData input) const { return input_data.test(input); }
 
     Vec2 rot;
     Vec3 pos;

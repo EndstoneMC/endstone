@@ -13,14 +13,13 @@
 // limitations under the License.
 
 #pragma once
-
 #include "bedrock/entity/entity_id.h"
-
-class StrictEntityContext {
+template <typename T0>
+class Optional {
 public:
-    [[nodiscard]] bool isNull() const { return entity_id_ == entt::null; }
+    using StorageType = entt::constness_as_t<entt::basic_storage<T0, EntityId, std::allocator<T0>, void>, T0>;
+    using ValueType = T0;
 
-private:
-    EntityId entity_id_;         // +0
-    std::uint32_t registry_id_;  // +4
+    StorageType *entt_storage;
+    EntityId entity;
 };

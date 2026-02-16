@@ -14,13 +14,15 @@
 
 #pragma once
 
-#include "bedrock/entity/entity_id.h"
-
-class StrictEntityContext {
+#include "bedrock/network/packet/player_auth_input_packet.h"
+struct ServerPlayerCurrentMovementComponent {
 public:
-    [[nodiscard]] bool isNull() const { return entity_id_ == entt::null; }
-
-private:
-    EntityId entity_id_;         // +0
-    std::uint32_t registry_id_;  // +4
+    // member variables
+    // NOLINTBEGIN
+    PlayerAuthInputPacket mCurrentUpdate;
+    Vec3 mOldPosition;
+    Vec2 mPrevRotation;
+    Vec2 mNewRotation;
+    bool mShouldCorrectForSneaking;
+    // NOLINTEND
 };

@@ -14,28 +14,25 @@
 
 #pragma once
 #include "bedrock/bedrock.h"
+#include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/components/boat_movement_component.h"
+#include "bedrock/entity/components/passenger_component.h"
 #include "bedrock/entity/components/replay_state_component.h"
+#include "bedrock/entity/components/server_player_current_movement_component.h"
 #include "bedrock/entity/components/server_player_movement_component.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
+#include "bedrock/entity/optional.h"
 #include "bedrock/entity/strict/strict_entity_context.h"
-#include "bedrock/network/packet/player_auth_input_packet.h"
-#include "bedrock/world/actor/actor.h"
 
+template <typename... Ts>
+class ViewT {};
 namespace ServerPlayerMovementCorrectionSystem {
-void _afterMovementSimulation(const UserEntityIdentifierComponent &user_identifier, Actor &actor,
-                              const PlayerAuthInputPacket &packet, ReplayStateComponent &replay,
-                              const ActorRotationComponent *actor_rotation,
-                              ServerPlayerMovementComponent &server_player_movement, StateVectorComponent &state_vector,
-                              const BoatMovementComponent *boat);
-// TODO: hook _tickServerPlayerMovementCorrectionSystem instead
-/*
-void _tickServerPlayerMovementCorrectionSystem(
+ENDSTONE_HOOK void _tickServerPlayerMovementCorrectionSystem(
     const StrictEntityContext &player,
     const ServerPlayerCurrentMovementComponent &server_player_current_movement_component,
     const UserEntityIdentifierComponent &user_identifier_component,
     ServerPlayerMovementComponent &server_player_movement_component,
-    Optional<const PassengerComponent> passengerComponent, StateVectorComponent &player_state_vector,
-    const View<const ActorRotationComponent, ActorOwnerComponent, ReplayStateComponent, StateVectorComponent,
-               Optional<const BoatMovementComponent>> &replayableEntityView);*/
+    Optional<const PassengerComponent> passenger_component, StateVectorComponent &player_state_vector,
+    const ViewT<const ActorRotationComponent, ActorOwnerComponent, ReplayStateComponent, StateVectorComponent,
+                Optional<const BoatMovementComponent>> &replayable_entity_view);
 }  // namespace ServerPlayerMovementCorrectionSystem
