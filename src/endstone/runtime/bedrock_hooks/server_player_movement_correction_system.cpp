@@ -52,14 +52,14 @@ void ServerPlayerMovementCorrectionSystem::_tickServerPlayerMovementCorrectionSy
 
         const endstone::Location from{endstone_player.getDimension(),
                                       pos_prev.x,
-                                      pos_prev.y - ActorOffset::getHeightOffset(player.getEntity()),
+                                      pos_prev.y - ActorOffset::getHeightOffset(player->getEntity()),
                                       pos_prev.z,
                                       rot_prev.x,
                                       rot_prev.y};
         const endstone::Location to = endstone_player.getLocation();
-        const auto &packet = server_player_current_movement_component.mCurrentUpdate;
-        if (packet.getInput(PlayerAuthInputPacket::InputData::Jumping) && p->wasOnGround() && !p->isOnGround() &&
-            delta.y > 0.0F) {
+        const auto &packet = server_player_current_movement_component.current_update;
+        if (packet.getInput(PlayerAuthInputPacket::InputData::Jumping) && player->wasOnGround() &&
+            !player->isOnGround() && delta.y > 0.0F) {
             endstone::PlayerJumpEvent e{endstone_player, from, to};
             server.getPluginManager().callEvent(e);
 

@@ -16,13 +16,9 @@
 
 #include "bedrock/network/packet/player_auth_input_packet.h"
 struct ServerPlayerCurrentMovementComponent {
-public:
-    // member variables
-    // NOLINTBEGIN
-    PlayerAuthInputPacket mCurrentUpdate;
-    Vec3 mOldPosition;
-    Vec2 mPrevRotation;
-    Vec2 mNewRotation;
-    bool mShouldCorrectForSneaking;
-    // NOLINTEND
+    PlayerAuthInputPacket current_update;
+    Vec3 old_position;
+    Vec2 prev_rotation;
+    Vec2 new_rotation;
+    bool should_correct_for_sneaking;
 };

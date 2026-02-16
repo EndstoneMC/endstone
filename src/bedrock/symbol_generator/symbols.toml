@@ -110,6 +110,7 @@ version = "1.26.0"
 "?changeDimension@ServerPlayer@@UEAAXV?$AutomaticID@VDimension@@H@@@Z" = 49090848
 # ServerPlayerMovementCorrectionSystem
 "?_afterMovementSimulation@ServerPlayerMovementCorrectionSystem@@YAXAEBVUserEntityIdentifierComponent@@AEAVActor@@AEBVPlayerAuthInputPacket@@AEAVReplayStateComponent@@PEBUActorRotationComponent@@AEAUServerPlayerMovementComponent@@AEAUStateVectorComponent@@PEBUBoatMovementComponent@@@Z" = 23971968
+"?_tickServerPlayerMovementCorrectionSystem@ServerPlayerMovementCorrectionSystem@@YAXAEBVStrictEntityContext@@AEBUServerPlayerCurrentMovementComponent@@AEBVUserEntityIdentifierComponent@@AEAUServerPlayerMovementComponent@@V?$Optional@$$CBUPassengerComponent@@@@AEAUStateVectorComponent@@AEBV?$ViewT@$$CBUActorRotationComponent@@VActorOwnerComponent@@VReplayStateComponent@@UStateVectorComponent@@V?$Optional@$$CBUBoatMovementComponent@@@@@@@Z" = 23972816
 # ServerScoreboard
 "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z" = 77674496
 # UnverifiedCertificate
@@ -224,3 +225,5 @@ version = "1.26.0"
 "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE" = 179322304
 # UnverifiedCertificate
 "_ZN21UnverifiedCertificate10fromStringERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE" = 184402400
+# ServerPlayerMovementCorrectionSystem
+"_ZN36ServerPlayerMovementCorrectionSystem41_tickServerPlayerMovementCorrectionSystemERK19StrictEntityContextRK36ServerPlayerCurrentMovementComponentRK29UserEntityIdentifierComponent8OptionalIK18PassengerComponentER20StateVectorComponentRK5ViewTIS0_JK22ActorRotationComponent19ActorOwnerComponent20ReplayStateComponentSD_EE" = 104804480
