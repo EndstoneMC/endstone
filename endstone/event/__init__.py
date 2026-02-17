@@ -42,6 +42,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "ChunkUnloadEvent",
             "DimensionEvent",
             "Event",
+            "GS4QueryEvent",
             "EventResult",
             "LeavesDecayEvent",
             "LevelEvent",

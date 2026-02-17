@@ -41,6 +41,7 @@ __all__ = [
     "Event",
     "EventPriority",
     "EventResult",
+    "GS4QueryEvent",
     "LeavesDecayEvent",
     "LevelEvent",
     "MapInitializeEvent",
@@ -1062,6 +1063,117 @@ class ServerListPingEvent(ServerEvent, Cancellable):
         ...
     @game_mode.setter
     def game_mode(self, arg1: GameMode) -> None: ...
+
+class GS4QueryEvent(ServerEvent, Cancellable):
+    """
+    Called when the server is queried over the GS4 protocol.
+    """
+    class QueryType(enum.Enum):
+        BASIC = 0
+        FULL = 1
+
+    BASIC = QueryType.BASIC
+    FULL = QueryType.FULL
+    @property
+    def address(self) -> SocketAddress:
+        """
+        Get the address the query is coming from.
+        """
+        ...
+    @property
+    def query_type(self) -> QueryType:
+        """
+        Get the type of query.
+        """
+        ...
+    @property
+    def motd(self) -> str:
+        """
+        Gets or sets the server MOTD.
+        """
+        ...
+    @motd.setter
+    def motd(self, arg1: str) -> None: ...
+    @property
+    def game_type(self) -> str:
+        """
+        Gets or sets the game type string.
+        """
+        ...
+    @game_type.setter
+    def game_type(self, arg1: str) -> None: ...
+    @property
+    def map(self) -> str:
+        """
+        Gets or sets the map/level name.
+        """
+        ...
+    @map.setter
+    def map(self, arg1: str) -> None: ...
+    @property
+    def num_players(self) -> int:
+        """
+        Gets or sets the number of players online.
+        """
+        ...
+    @num_players.setter
+    def num_players(self, arg1: int) -> None: ...
+    @property
+    def max_players(self) -> int:
+        """
+        Gets or sets the maximum number of players allowed.
+        """
+        ...
+    @max_players.setter
+    def max_players(self, arg1: int) -> None: ...
+    @property
+    def host_port(self) -> int:
+        """
+        Gets or sets the host port.
+        """
+        ...
+    @host_port.setter
+    def host_port(self, arg1: int) -> None: ...
+    @property
+    def host_ip(self) -> str:
+        """
+        Gets or sets the host IP.
+        """
+        ...
+    @host_ip.setter
+    def host_ip(self, arg1: str) -> None: ...
+    @property
+    def version(self) -> str:
+        """
+        Gets or sets the Minecraft version string.
+        """
+        ...
+    @version.setter
+    def version(self, arg1: str) -> None: ...
+    @property
+    def plugins(self) -> str:
+        """
+        Gets or sets the plugin info string.
+        """
+        ...
+    @plugins.setter
+    def plugins(self, arg1: str) -> None: ...
+    @property
+    def players(self) -> list[str]:
+        """
+        Gets or sets the list of online player names.
+        """
+        ...
+    @players.setter
+    def players(self, arg1: list[str]) -> None: ...
+    @property
+    def game_id(self) -> str:
+        """
+        Gets or sets the game ID string.
+        """
+        ...
+    @game_id.setter
+    def game_id(self, arg1: str) -> None: ...
 
 class ServerLoadEvent(Event):
     """

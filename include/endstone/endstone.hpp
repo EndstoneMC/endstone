@@ -115,6 +115,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/server/packet_receive_event.h"
 #include "event/server/packet_send_event.h"
 #include "event/server/plugin_disable_event.h"
+#include "event/server/gs4_query_event.h"
 #include "event/server/plugin_enable_event.h"
 #include "event/server/script_message_event.h"
 #include "event/server/server_command_event.h"

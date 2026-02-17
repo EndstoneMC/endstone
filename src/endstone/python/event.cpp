@@ -373,6 +373,37 @@ void init_event(py::module_ &m, py::class_<Event> &event)
         .def_property("game_mode", &ServerListPingEvent::getGameMode, &ServerListPingEvent::setGameMode,
                       "Gets or sets the current game mode.");
 
+    auto gs4_query_event = py::class_<GS4QueryEvent, ServerEvent, ICancellable>(
+        m, "GS4QueryEvent", "Called when the server is queried over the GS4 protocol.");
+    py::native_enum<GS4QueryEvent::QueryType>(gs4_query_event, "QueryType", "enum.Enum")
+        .value("BASIC", GS4QueryEvent::QueryType::Basic)
+        .value("FULL", GS4QueryEvent::QueryType::Full)
+        .export_values()
+        .finalize();
+    gs4_query_event.def_property_readonly("address", &GS4QueryEvent::getAddress,
+                                          "Get the address the query is coming from.")
+        .def_property_readonly("query_type", &GS4QueryEvent::getQueryType, "Get the type of query.")
+        .def_property("motd", &GS4QueryEvent::getMotd, &GS4QueryEvent::setMotd, "Gets or sets the server MOTD.")
+        .def_property("game_type", &GS4QueryEvent::getGameType, &GS4QueryEvent::setGameType,
+                      "Gets or sets the game type string.")
+        .def_property("map", &GS4QueryEvent::getMap, &GS4QueryEvent::setMap, "Gets or sets the map/level name.")
+        .def_property("num_players", &GS4QueryEvent::getNumPlayers, &GS4QueryEvent::setNumPlayers,
+                      "Gets or sets the number of players online.")
+        .def_property("max_players", &GS4QueryEvent::getMaxPlayers, &GS4QueryEvent::setMaxPlayers,
+                      "Gets or sets the maximum number of players allowed.")
+        .def_property("host_port", &GS4QueryEvent::getHostPort, &GS4QueryEvent::setHostPort,
+                      "Gets or sets the host port.")
+        .def_property("host_ip", &GS4QueryEvent::getHostIp, &GS4QueryEvent::setHostIp,
+                      "Gets or sets the host IP.")
+        .def_property("version", &GS4QueryEvent::getVersion, &GS4QueryEvent::setVersion,
+                      "Gets or sets the Minecraft version string.")
+        .def_property("plugins", &GS4QueryEvent::getPlugins, &GS4QueryEvent::setPlugins,
+                      "Gets or sets the plugin info string.")
+        .def_property("players", &GS4QueryEvent::getPlayers, &GS4QueryEvent::setPlayers,
+                      "Gets or sets the list of online player names.")
+        .def_property("game_id", &GS4QueryEvent::getGameId, &GS4QueryEvent::setGameId,
+                      "Gets or sets the game ID string.");
+
     auto server_load_event = py::class_<ServerLoadEvent, Event>(
         m, "ServerLoadEvent", "Called when either the server startup or reload has completed.");
     py::native_enum<ServerLoadEvent::LoadType>(server_load_event, "LoadType", "enum.Enum")

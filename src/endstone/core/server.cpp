@@ -46,6 +46,7 @@
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
 #include "endstone/core/metrics.h"
+#include "endstone/core/network/query/query_handler.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/player.h"
 #include "endstone/core/plugin/cpp_plugin_loader.h"
@@ -79,6 +80,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     service_manager_ = std::make_unique<EndstoneServiceManager>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
+    query_handler_ = std::make_unique<QueryHandler>();
     start_time_ = std::chrono::system_clock::now();
 
     try {
@@ -737,6 +739,11 @@ RakNetConnector &EndstoneServer::getRakNetConnector() const
 {
     return static_cast<RakNetConnector &>(
         *getServer().getMinecraft()->getServerNetworkHandler()->network_.getRemoteConnector());
+}
+
+QueryHandler &EndstoneServer::getQueryHandler() const
+{
+    return *query_handler_;
 }
 
 EndstoneServer &EndstoneServer::getInstance()

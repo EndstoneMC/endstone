@@ -23,6 +23,7 @@
 #include "bedrock/deps/raknet/bit_stream.h"
 #include "bedrock/deps/raknet/message_identifiers.h"
 #include "bedrock/deps/raknet/plugin_interface.h"
+#include "endstone/core/network/query/query_handler.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
 #include "endstone/event/server/server_list_ping_event.h"
@@ -31,6 +32,10 @@
 constexpr unsigned int MAX_OFFLINE_DATA_LENGTH = 400;
 constexpr unsigned char OFFLINE_MESSAGE_DATA_ID[16] = {0x00, 0xFF, 0xFF, 0x00, 0xFE, 0xFE, 0xFE, 0xFE,
                                                        0xFD, 0xFD, 0xFD, 0xFD, 0x12, 0x34, 0x56, 0x78};
+
+// GS4 Query Protocol magic bytes
+static constexpr unsigned char GS4_MAGIC_1 = 0xFE;
+static constexpr unsigned char GS4_MAGIC_2 = 0xFD;
 
 static endstone::ServerListPingEvent callServerListPingEvent(endstone::SocketAddress address, std::string_view data)
 {
@@ -65,6 +70,14 @@ RakNet::RakPeerInterface *gRakPeer = nullptr;
 
 bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
 {
+    // Intercept GS4 query packets (magic bytes FE FD don't collide with RakNet message IDs)
+    if (recv->bytes_read >= 3 && static_cast<unsigned char>(recv->data[0]) == GS4_MAGIC_1 &&
+        static_cast<unsigned char>(recv->data[1]) == GS4_MAGIC_2) {
+        auto &server = endstone::core::EndstoneServer::getInstance();
+        server.getQueryHandler().handleQuery(recv->socket, recv->system_address, recv->data, recv->bytes_read);
+        return false;  // consume packet
+    }
+
     if (recv->data[0] == ID_UNCONNECTED_PING &&
         recv->bytes_read >= sizeof(unsigned char) + sizeof(RakNet::Time) + sizeof(OFFLINE_MESSAGE_DATA_ID)) {
         char *ping_data;

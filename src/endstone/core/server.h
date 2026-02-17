@@ -39,6 +39,7 @@ namespace endstone::core {
 class EndstoneConsoleCommandSender;
 class EndstoneMetrics;
 class EndstonePlayer;
+class QueryHandler;
 class EndstoneServer : public Server {
 public:
     explicit EndstoneServer();
@@ -131,6 +132,7 @@ public:
 
     [[nodiscard]] ServerInstance &getServer() const;
     [[nodiscard]] RakNetConnector &getRakNetConnector() const;
+    [[nodiscard]] QueryHandler &getQueryHandler() const;
 
     [[nodiscard]] static EndstoneServer &getInstance();
 
@@ -170,6 +172,7 @@ private:
     bool allow_client_packs_ = false;
     bool log_commands_ = true;
     ServerTextSettings text_settings_;
+    std::unique_ptr<QueryHandler> query_handler_;
     ::Bedrock::PubSub::Subscription on_gameplay_user_removed_;
     ::Bedrock::PubSub::Subscription on_chunk_load_;
     ::Bedrock::PubSub::Subscription on_chunk_unload_;
