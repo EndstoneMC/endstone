@@ -103,12 +103,6 @@ class BlockData:
         """
         ...
     @property
-    def translation_key(self) -> str:
-        """
-        Gets the translation key for this block.
-        """
-        ...
-    @property
     def block_states(self) -> dict[str, bool | str | int]:
         """
         Gets the block states for this block.
