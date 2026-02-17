@@ -20,6 +20,7 @@
 class StrictEntityContext {
 public:
     [[nodiscard]] bool isNull() const { return entity_id_ == entt::null; }
+    [[nodiscard]] EntityId _getEntityId() const { return entity_id_; }
 
 private:
     EntityId entity_id_;         // +0

@@ -32,6 +32,6 @@ ENDSTONE_HOOK void _tickServerPlayerMovementCorrectionSystem(
     const UserEntityIdentifierComponent &user_identifier_component,
     ServerPlayerMovementComponent &server_player_movement_component,
     Optional<const PassengerComponent> passenger_component, StateVectorComponent &player_state_vector,
-    const ViewT<const ActorRotationComponent, ActorOwnerComponent, ReplayStateComponent, StateVectorComponent,
-               Optional<const BoatMovementComponent>> &replayable_entity_view);
+    const ViewT<StrictEntityContext, const ActorRotationComponent, ActorOwnerComponent, ReplayStateComponent,
+                StateVectorComponent, Optional<const BoatMovementComponent>> &replayable_entity_view);
 }  // namespace ServerPlayerMovementCorrectionSystem
