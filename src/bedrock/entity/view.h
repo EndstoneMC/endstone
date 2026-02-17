@@ -13,13 +13,19 @@
 // limitations under the License.
 
 #pragma once
+
 #include "bedrock/entity/entity_id.h"
-template <typename T0>
+
+template <typename Component>
 class Optional {
 public:
-    using StorageType = entt::constness_as_t<entt::basic_storage<T0, EntityId, std::allocator<T0>, void>, T0>;
-    using ValueType = T0;
+    using StorageType = entt::constness_as_t<entt::basic_storage<Component, EntityId>, Component>;
+    using ValueType = Component;
 
-    StorageType *entt_storage;
-    EntityId entity;
+private:
+    StorageType *entt_storage_;
+    EntityId entity_;
 };
+
+template <typename EntityContextT, typename... Components>
+class ViewT {};

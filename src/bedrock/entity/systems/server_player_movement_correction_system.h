@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #pragma once
+
 #include "bedrock/bedrock.h"
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/components/boat_movement_component.h"
@@ -21,11 +22,9 @@
 #include "bedrock/entity/components/server_player_current_movement_component.h"
 #include "bedrock/entity/components/server_player_movement_component.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
-#include "bedrock/entity/optional.h"
 #include "bedrock/entity/strict/strict_entity_context.h"
+#include "bedrock/entity/view.h"
 
-template <typename... Ts>
-class ViewT {};
 namespace ServerPlayerMovementCorrectionSystem {
 ENDSTONE_HOOK void _tickServerPlayerMovementCorrectionSystem(
     const StrictEntityContext &player,
@@ -34,5 +33,5 @@ ENDSTONE_HOOK void _tickServerPlayerMovementCorrectionSystem(
     ServerPlayerMovementComponent &server_player_movement_component,
     Optional<const PassengerComponent> passenger_component, StateVectorComponent &player_state_vector,
     const ViewT<const ActorRotationComponent, ActorOwnerComponent, ReplayStateComponent, StateVectorComponent,
-                Optional<const BoatMovementComponent>> &replayable_entity_view);
+               Optional<const BoatMovementComponent>> &replayable_entity_view);
 }  // namespace ServerPlayerMovementCorrectionSystem

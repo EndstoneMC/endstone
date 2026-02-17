@@ -25,11 +25,6 @@ std::string EndstoneBlockData::getType() const
     return block_.getBlockType().getName().getString();
 }
 
-std::string EndstoneBlockData::getTranslationKey() const
-{
-    return block_.getBlockType().buildDescriptionId(block_);
-}
-
 BlockStates EndstoneBlockData::getBlockStates() const
 {
     BlockStates result;

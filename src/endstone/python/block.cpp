@@ -33,7 +33,6 @@ void init_block(py::module_ &m, py::class_<Block> &block)
 
     py::class_<BlockData>(m, "BlockData", "Represents the data related to a live block")
         .def_property_readonly("type", &BlockData::getType, "Get the block type represented by this block data.")
-        .def_property_readonly("translation_key", &BlockData::getTranslationKey, "Gets the translation key for this block.")
         .def_property_readonly("block_states", &BlockData::getBlockStates, "Gets the block states for this block.")
         .def_property_readonly("runtime_id", &BlockData::getRuntimeId, "Gets the runtime id for this block.")
         .def("__str__", [](const BlockData &self) { return fmt::format("{}", self); });

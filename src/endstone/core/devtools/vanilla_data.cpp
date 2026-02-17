@@ -111,7 +111,6 @@ void dumpBlockData(VanillaData &data, const ::Level &level)
                 {"visualShape", visual_shape},
                 {"uiShape", ui_shape},
                 {"liquidClipShape", liquid_clip_shape},
-                {"translationKey", block.getBlockType().buildDescriptionId(block)}
             });
             data.block_palette.add(block.getSerializationId().copy());
             return true;
@@ -145,8 +144,7 @@ void dumpItemData(VanillaData &data, const ::Level &level)
                             {"isDamageable", item->isDamageable()},
                             {"maxStackSize", item->getMaxStackSize(ItemDescriptor())},
                             {"furnaceBurnDuration", FurnaceBlockActor::getBurnDuration(::ItemStack(*item), 200)},
-                            {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)},
-                            {"translationKey", item->buildDescriptionId(ItemDescriptor(*item, 0), nullptr)}};
+                            {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)}};
 
         if (const auto components = item->buildNetworkTag()) {
             ::CompoundTag tag;
@@ -219,7 +217,9 @@ void dumpShapedRecipe(const Recipe &recipe, nlohmann::json &json)
 void dumpRecipes(VanillaData &data, ::Level &level)
 {
     auto packet = CraftingDataPacket::prepareFromRecipes(level.getRecipes(), false);
-    auto id_to_name = [&level](int id) { return level.getItemRegistry().getItem(id)->getFullItemName(); };
+    auto id_to_name = [&level](int id) {
+        return level.getItemRegistry().getItem(id)->getFullItemName();
+    };
 
     for (const auto &entry : packet->crafting_entries) {
         nlohmann::json recipe;
