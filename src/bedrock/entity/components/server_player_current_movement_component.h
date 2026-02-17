@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/network/packet/player_auth_input_packet.h"
+
 struct ServerPlayerCurrentMovementComponent {
     PlayerAuthInputPacket current_update;
     Vec3 old_position;
