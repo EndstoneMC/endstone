@@ -26,6 +26,7 @@ namespace endstone {
  */
 class WeatherChangeEvent : public Cancellable<WeatherEvent> {
 public:
+    ENDSTONE_EVENT(WeatherChangeEvent);
     WeatherChangeEvent(Level &level, const bool to) : Cancellable(level), to_(to) {}
     ~WeatherChangeEvent() override = default;
 
@@ -35,9 +36,6 @@ public:
      * @return true if the weather is being set to raining, false otherwise
      */
     [[nodiscard]] bool toWeatherState() const { return to_; }
-
-    inline static const std::string NAME = "WeatherChangeEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
 private:
     bool to_;

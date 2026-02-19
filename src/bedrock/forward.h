@@ -141,6 +141,7 @@ class LevelChunkBuilderData;
 class LevelChunkMetaData;
 class LevelChunkMetaDataDictionary;
 class LevelChunkVolumeData;
+class LevelEventManager;
 class LevelSoundManager;
 class LevelStorageObserver;
 class LevelStorageWriteBatch;
