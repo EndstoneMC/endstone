@@ -14,16 +14,12 @@
 
 #pragma once
 
-#include "bedrock/entity/entity_id.h"
-#include "bedrock/entity/gamerefs_entity/entity_registry.h"
+#include "bedrock/network/packet/player_auth_input_packet.h"
 
-class StrictEntityContext {
-public:
-    [[nodiscard]] bool isNull() const { return entity_id_ == entt::null; }
-    [[nodiscard]] EntityId _getEntityId() const { return entity_id_; }
-
-private:
-    EntityId entity_id_;         // +0
-    std::uint32_t registry_id_;  // +4
-    EntityRegistry *registry_;   // +8
+struct ServerPlayerCurrentMovementComponent {
+    PlayerAuthInputPacket current_update;
+    Vec3 old_position;
+    Vec2 prev_rotation;
+    Vec2 new_rotation;
+    bool should_correct_for_sneaking;
 };

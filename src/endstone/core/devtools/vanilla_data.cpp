@@ -217,7 +217,9 @@ void dumpShapedRecipe(const Recipe &recipe, nlohmann::json &json)
 void dumpRecipes(VanillaData &data, ::Level &level)
 {
     auto packet = CraftingDataPacket::prepareFromRecipes(level.getRecipes(), false);
-    auto id_to_name = [&level](int id) { return level.getItemRegistry().getItem(id)->getFullItemName(); };
+    auto id_to_name = [&level](int id) {
+        return level.getItemRegistry().getItem(id)->getFullItemName();
+    };
 
     for (const auto &entry : packet->crafting_entries) {
         nlohmann::json recipe;
