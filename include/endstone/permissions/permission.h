@@ -15,6 +15,7 @@
 #pragma once
 
 #include <algorithm>
+#include <memory>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
@@ -31,7 +32,7 @@ namespace endstone {
  */
 class Permission {
 public:
-    static const PermissionDefault DefaultPermission = PermissionDefault::Operator;
+    static constexpr auto DefaultPermission = PermissionDefault::Operator;
 
     explicit Permission(std::string name, std::string description = "",
                         PermissionDefault default_value = DefaultPermission,

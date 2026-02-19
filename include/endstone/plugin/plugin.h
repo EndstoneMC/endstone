@@ -16,6 +16,7 @@
 
 #include <algorithm>
 #include <filesystem>
+#include <functional>
 #include <set>
 #include <string>
 #include <unordered_map>

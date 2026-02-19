@@ -14,7 +14,11 @@
 
 #pragma once
 
+#include <algorithm>
+#include <cstddef>
+#include <cstring>
 #include <string>
+#include <vector>
 
 #include "endstone/util/color.h"
 #include "endstone/util/result.h"

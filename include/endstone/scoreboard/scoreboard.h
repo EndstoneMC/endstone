@@ -14,7 +14,9 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
+#include <vector>
 
 #include "endstone/scoreboard/criteria.h"
 #include "endstone/scoreboard/display_slot.h"

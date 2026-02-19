@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <string>
+
 #include "endstone/scoreboard/render_type.h"
 
 namespace endstone {

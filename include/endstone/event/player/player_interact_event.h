@@ -15,6 +15,7 @@
 #pragma once
 
 #include <optional>
+#include <utility>
 
 #include "endstone/block/block_face.h"
 #include "endstone/event/cancellable.h"

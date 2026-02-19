@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <string>
 #include <utility>
 
 #include "endstone/ban/ban_entry.h"

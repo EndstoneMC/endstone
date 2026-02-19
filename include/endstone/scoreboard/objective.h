@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <memory>
+#include <optional>
 #include <string>
 
 #include "endstone/scoreboard/objective_sort_order.h"

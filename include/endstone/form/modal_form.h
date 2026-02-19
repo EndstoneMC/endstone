@@ -14,9 +14,12 @@
 
 #pragma once
 
+#include <functional>
 #include <optional>
 #include <string>
 #include <utility>
+#include <variant>
+#include <vector>
 
 #include "endstone/form/controls/divider.h"
 #include "endstone/form/controls/dropdown.h"

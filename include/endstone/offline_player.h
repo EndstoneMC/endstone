@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <string>
+
 #include "endstone/util/uuid.h"
 
 namespace endstone {

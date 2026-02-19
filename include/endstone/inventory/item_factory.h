@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <memory>
+
 #include "endstone/inventory/meta/item_meta.h"
 #include "item_type.h"
 
@@ -61,6 +63,5 @@ public:
      * @return An appropriate item meta for the specified item type.
      */
     [[nodiscard]] virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, ItemTypeId type) const = 0;
-
 };
 }  // namespace endstone

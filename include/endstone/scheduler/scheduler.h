@@ -14,6 +14,11 @@
 
 #pragma once
 
+#include <cstdint>
+#include <functional>
+#include <memory>
+#include <vector>
+
 #include "endstone/scheduler/task.h"
 
 namespace endstone {

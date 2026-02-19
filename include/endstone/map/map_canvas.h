@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <cstdint>
+#include <vector>
+
 #include "endstone/map/map_cursor.h"
 #include "endstone/util/color.h"
 #include "endstone/util/image.h"

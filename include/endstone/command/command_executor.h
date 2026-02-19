@@ -16,6 +16,7 @@
 
 #include <map>
 #include <string>
+#include <vector>
 
 #include "endstone/command/command.h"
 #include "endstone/command/command_sender.h"

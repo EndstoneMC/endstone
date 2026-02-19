@@ -14,8 +14,12 @@
 
 #pragma once
 
+#include <functional>
 #include <optional>
 #include <string>
+#include <utility>
+#include <variant>
+#include <vector>
 
 #include "endstone/form/controls/button.h"
 #include "endstone/form/controls/divider.h"

@@ -15,6 +15,7 @@
 #pragma once
 
 #include <functional>
+#include <utility>
 
 #include "endstone/message.h"
 

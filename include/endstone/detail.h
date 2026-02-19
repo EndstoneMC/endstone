@@ -22,6 +22,8 @@
 #include <Windows.h>
 #else
 #include <dlfcn.h>
+
+#include <cstddef>
 #endif
 
 #define ENDSTONE_STRINGIFY(x) #x

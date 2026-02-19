@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <functional>
+
 #include "endstone/event/event.h"
 #include "endstone/player.h"
 

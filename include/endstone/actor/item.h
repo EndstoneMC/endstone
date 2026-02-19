@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <cstdint>
+#include <optional>
+
 #include "endstone/actor/actor.h"
 #include "endstone/inventory/item_stack.h"
 

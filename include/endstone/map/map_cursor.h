@@ -14,6 +14,10 @@
 
 #pragma once
 
+#include <cstdint>
+#include <string>
+#include <utility>
+
 #include "endstone/check.h"
 
 namespace endstone {
