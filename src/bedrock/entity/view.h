@@ -22,6 +22,8 @@ public:
     using storage_type = entt::storage_for_t<Component, EntityId>;
     using value_type = Component;
 
+    Optional(storage_type &storage, EntityId entity) : entt_storage_(&storage), entity_(entity) {}
+    ~Optional() {}  // NOLINT(*-use-equals-default): keep it as-is for ABI compatibility, do not simplify it to default
     explicit operator bool() const { return entt_storage_->contains(entity_); }
     value_type &operator*() const { return entt_storage_->get(entity_); }
 
@@ -80,6 +82,7 @@ class ViewT {
     using ViewType = details::view_type_from_list<returned_type_list>::type;
 
 public:
+    ViewT(EntityRegistry &registry) : registry_{registry} {}
     auto tryGetAll(const EntityContextT &context) const
         -> std::optional<decltype(std::declval<ViewType &>().get(context._getEntityId()))>
     {
