@@ -36,12 +36,14 @@ bool EndstoneItemFactory::isApplicable(const ItemMeta *meta, const ItemTypeId ty
     if (meta == nullptr) {
         return false;
     }
-    return static_cast<const EndstoneItemMeta &>(*meta).applicableTo(type);
+    return meta->getExtras().applicableTo(type);
 }
 
-static bool equals0(const EndstoneItemMeta &meta1, const EndstoneItemMeta &meta2)
+static bool equals0(const ItemMeta &meta1, const ItemMeta &meta2)
 {
-    return meta1.equalsCommon(meta2) && meta1.notUncommon(meta2) && meta2.notUncommon(meta1);
+    auto &e1 = meta1.getExtras();
+    auto &e2 = meta2.getExtras();
+    return e1.equalsCommon(meta2) && e1.notUncommon(meta2) && e2.notUncommon(meta1);
 }
 
 bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) const
@@ -50,12 +52,12 @@ bool EndstoneItemFactory::equals(const ItemMeta *meta1, const ItemMeta *meta2) c
         return true;
     }
     if (meta1 == nullptr) {
-        return static_cast<const EndstoneItemMeta *>(meta2)->isEmpty();
+        return meta2->getExtras().isEmpty();
     }
     if (meta2 == nullptr) {
-        return static_cast<const EndstoneItemMeta *>(meta1)->isEmpty();
+        return meta1->getExtras().isEmpty();
     }
-    return equals0(static_cast<const EndstoneItemMeta &>(*meta1), static_cast<const EndstoneItemMeta &>(*meta2));
+    return equals0(*meta1, *meta2);
 }
 
 std::unique_ptr<ItemMeta> EndstoneItemFactory::asMetaFor(const ItemMeta *meta, ItemTypeId type) const

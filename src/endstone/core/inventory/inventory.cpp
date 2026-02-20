@@ -32,7 +32,7 @@ int EndstoneInventory::getMaxStackSize() const
 
 std::optional<ItemStack> EndstoneInventory::getItem(int index) const
 {
-    auto item = container_.getItem(index);
+    const auto &item = container_.getItem(index);
     if (item.isNull()) {
         return std::nullopt;
     }
