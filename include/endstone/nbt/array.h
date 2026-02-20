@@ -29,9 +29,9 @@ public:
     using value_type = T;
     using size_type = std::size_t;
     using storage_type = std::vector<value_type>;
-    using iterator = storage_type::iterator;
-    using const_iterator = storage_type::const_iterator;
-    using difference_type = storage_type::difference_type;
+    using iterator = typename storage_type::iterator;
+    using const_iterator = typename storage_type::const_iterator;
+    using difference_type = typename storage_type::difference_type;
 
     // Constructors
     ArrayTag() = default;
