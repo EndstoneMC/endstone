@@ -15,7 +15,6 @@
 #pragma once
 
 #include <algorithm>
-#include <ranges>
 #include <string>
 #include <utility>
 #include <vector>
@@ -73,7 +72,7 @@ public:
     void setName(std::string name)
     {
         if (!isRegistered()) {
-            std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
+            std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
             name_ = std::move(name);
         }
     }
@@ -195,7 +194,7 @@ public:
             return true;
         }
 
-        return std::ranges::any_of(permissions_, [&target](const auto &p) { return target.hasPermission(p); });
+        return std::any_of(permissions_.begin(), permissions_.end(), [&target](const auto &p) { return target.hasPermission(p); });
     }
 
     /**
