@@ -144,7 +144,7 @@ public:
         if (!plugin_manager_) {
             return nullptr;
         }
-        std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
         auto *perm = plugin_manager_->getPermission(name);
         if (!perm) {
             perm = &plugin_manager_->addPermission(std::make_unique<Permission>(name));
