@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structfmt_1_1formatter_3_01endstone_1_1CompoundTag_1_1map__type_1_1value__type_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>fmt::formatter&lt; endstone::CompoundTag::map_type::value_type &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">formatter&lt; string_view &gt;</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structfmt_1_1formatter_3_01endstone_1_1CompoundTag_1_1map__type_1_1value__type_01_4_1ae0c35a913315640f07e5ab514ecd6d51" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FormatContext</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto fmt::formatter&lt; endstone::CompoundTag::map_type::value_type &gt;::format</definition>
+        <argsstring>(const endstone::CompoundTag::map_type::value_type &amp;pair, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <name>format</name>
+        <qualifiedname>fmt::formatter&lt; endstone::CompoundTag::map_type::value_type &gt;::format</qualifiedname>
+        <param>
+          <type>const endstone::CompoundTag::map_type::value_type &amp;</type>
+          <declname>pair</declname>
+        </param>
+        <param>
+          <type>FormatContext &amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="698" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="698" bodyend="702"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>fmt::formatter&lt; endstone::CompoundTag::map_type::value_type &gt;</label>
+        <link refid="structfmt_1_1formatter_3_01endstone_1_1CompoundTag_1_1map__type_1_1value__type_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>formatter&lt; string_view &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>fmt::formatter&lt; endstone::CompoundTag::map_type::value_type &gt;</label>
+        <link refid="structfmt_1_1formatter_3_01endstone_1_1CompoundTag_1_1map__type_1_1value__type_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>formatter&lt; string_view &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/nbt/tag.h" line="696" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="696" bodyend="703"/>
+    <listofallmembers>
+      <member refid="structfmt_1_1formatter_3_01endstone_1_1CompoundTag_1_1map__type_1_1value__type_01_4_1ae0c35a913315640f07e5ab514ecd6d51" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::CompoundTag::map_type::value_type &gt;</scope><name>format</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

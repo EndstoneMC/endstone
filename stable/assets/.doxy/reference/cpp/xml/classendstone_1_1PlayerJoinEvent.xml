@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerJoinEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::PlayerJoinEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</basecompoundref>
+    <includes refid="player__join__event_8h" local="no">endstone/event/player/player_join_event.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerJoinEvent_1a8874cd603a6d3ab0f294f728acb8373c" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; Message &gt;</type>
+        <definition>std::optional&lt;Message&gt; endstone::PlayerJoinEvent::join_message_</definition>
+        <argsstring></argsstring>
+        <name>join_message_</name>
+        <qualifiedname>endstone::PlayerJoinEvent::join_message_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_join_event.h" line="51" column="19" bodyfile="include/endstone/event/player/player_join_event.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerJoinEvent_1a8d98db7f36578c9563fa158defc791f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerJoinEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerJoinEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerJoinEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerJoinEvent" kindref="compound">PlayerJoinEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_join_event.h" line="29" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerJoinEvent_1a57649db75a39610202ffecf345d4e09b" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerJoinEvent::PlayerJoinEvent</definition>
+        <argsstring>(Player &amp;player, std::optional&lt; Message &gt; join_message)</argsstring>
+        <name>PlayerJoinEvent</name>
+        <qualifiedname>endstone::PlayerJoinEvent::PlayerJoinEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; Message &gt;</type>
+          <declname>join_message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_join_event.h" line="31" column="14" bodyfile="include/endstone/event/player/player_join_event.h" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerJoinEvent_1af6a9da33988a5734a055434ba384faeb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; Message &gt;</type>
+        <definition>std::optional&lt; Message &gt; endstone::PlayerJoinEvent::getJoinMessage</definition>
+        <argsstring>() const</argsstring>
+        <name>getJoinMessage</name>
+        <qualifiedname>endstone::PlayerJoinEvent::getJoinMessage</qualifiedname>
+        <briefdescription>
+<para>Gets the join message to send to all online players. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Message to appear to other players on the server. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_join_event.h" line="41" column="20" bodyfile="include/endstone/event/player/player_join_event.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerJoinEvent_1a63594b91d25a768fef8edcd5ca24bd93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::PlayerJoinEvent::setJoinMessage</definition>
+        <argsstring>(std::optional&lt; Message &gt; message)</argsstring>
+        <name>setJoinMessage</name>
+        <qualifiedname>endstone::PlayerJoinEvent::setJoinMessage</qualifiedname>
+        <param>
+          <type>std::optional&lt; Message &gt;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Sets the join message to send to all online players. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message to appear to other players on the server. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_join_event.h" line="48" column="10" bodyfile="include/endstone/event/player/player_join_event.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Called when a player joins a server. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerJoinEvent</label>
+        <link refid="classendstone_1_1PlayerJoinEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerJoinEvent</label>
+        <link refid="classendstone_1_1PlayerJoinEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_join_event.h" line="27" column="1" bodyfile="include/endstone/event/player/player_join_event.h" bodystart="27" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PlayerJoinEvent_1a8d98db7f36578c9563fa158defc791f1" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>ENDSTONE_EVENT</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerJoinEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerJoinEvent_1af6a9da33988a5734a055434ba384faeb" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>getJoinMessage</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1PlayerJoinEvent_1a8874cd603a6d3ab0f294f728acb8373c" prot="private" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>join_message_</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>player_</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerJoinEvent_1a57649db75a39610202ffecf345d4e09b" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>PlayerJoinEvent</name></member>
+      <member refid="classendstone_1_1PlayerJoinEvent_1a63594b91d25a768fef8edcd5ca24bd93" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>setJoinMessage</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerJoinEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerJoinEvent</scope><name>~PlayerEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

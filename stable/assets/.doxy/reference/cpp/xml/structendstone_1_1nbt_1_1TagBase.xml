@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structendstone_1_1nbt_1_1TagBase" kind="struct" language="C++" prot="public">
+    <compoundname>endstone::nbt::TagBase</compoundname>
+    <derivedcompoundref refid="classendstone_1_1CompoundTag" prot="public" virt="non-virtual">endstone::CompoundTag</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ListTag" prot="public" virt="non-virtual">endstone::ListTag</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1nbt_1_1ArrayTag" prot="public" virt="non-virtual">endstone::nbt::ArrayTag&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1nbt_1_1ValueTag" prot="public" virt="non-virtual">endstone::nbt::ValueTag&lt; T &gt;</derivedcompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::CompoundTag</label>
+        <link refid="classendstone_1_1CompoundTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::ListTag</label>
+        <link refid="classendstone_1_1ListTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::nbt::ArrayTag&lt; T &gt;</label>
+        <link refid="classendstone_1_1nbt_1_1ArrayTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::nbt::TagBase</label>
+        <link refid="structendstone_1_1nbt_1_1TagBase"/>
+      </node>
+      <node id="5">
+        <label>endstone::nbt::ValueTag&lt; T &gt;</label>
+        <link refid="classendstone_1_1nbt_1_1ValueTag"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="include/endstone/nbt/type.h" line="19" column="1" bodyfile="include/endstone/nbt/type.h" bodystart="19" bodyend="19"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

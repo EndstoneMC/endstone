@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1IRegistry" kind="class" language="C++" prot="public">
+    <compoundname>endstone::IRegistry</compoundname>
+    <derivedcompoundref refid="classendstone_1_1Registry" prot="public" virt="non-virtual">endstone::Registry&lt; T &gt;</derivedcompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1IRegistry_1a06d066c86d938e8ab986cb51eadae54f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::IRegistry::~IRegistry</definition>
+        <argsstring>()=default</argsstring>
+        <name>~IRegistry</name>
+        <qualifiedname>endstone::IRegistry::~IRegistry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/registry.h" line="27" column="13"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::IRegistry</label>
+        <link refid="classendstone_1_1IRegistry"/>
+      </node>
+      <node id="2">
+        <label>endstone::Registry&lt; T &gt;</label>
+        <link refid="classendstone_1_1Registry"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="include/endstone/registry.h" line="25" column="1" bodyfile="include/endstone/registry.h" bodystart="25" bodyend="28"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1IRegistry_1a06d066c86d938e8ab986cb51eadae54f" prot="public" virt="virtual"><scope>endstone::IRegistry</scope><name>~IRegistry</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

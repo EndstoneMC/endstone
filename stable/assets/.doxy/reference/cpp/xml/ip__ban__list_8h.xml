@@ -1,0 +1,359 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="ip__ban__list_8h" kind="file" language="C++">
+    <compoundname>ip_ban_list.h</compoundname>
+    <includes local="no">chrono</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includes refid="ban__list_8h" local="yes">endstone/ban/ban_list.h</includes>
+    <includes refid="ip__ban__entry_8h" local="yes">endstone/ban/ip_ban_entry.h</includes>
+    <includedby refid="server_8h" local="yes">include/endstone/server.h</includedby>
+    <incdepgraph>
+      <node id="7">
+        <label>endstone/ban/ban_entry.h</label>
+        <link refid="ban__entry_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone/ban/ban_list.h</label>
+        <link refid="ban__list_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>endstone/ban/ip_ban_entry.h</label>
+        <link refid="ip__ban__entry_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/endstone/ban/ip_ban_list.h</label>
+        <link refid="ip__ban__list_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>endstone/check.h</label>
+        <link refid="check_8h_source"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>endstone/util/pointers.h</label>
+        <link refid="pointers_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>chrono</label>
+      </node>
+      <node id="10">
+        <label>cstddef</label>
+      </node>
+      <node id="14">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="11">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>optional</label>
+      </node>
+      <node id="13">
+        <label>stdexcept</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="8">
+        <label>utility</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7">
+        <label>include/endstone/actor/item.h</label>
+        <link refid="item_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/endstone/ban/ip_ban_list.h</label>
+        <link refid="ip__ban__list_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>include/endstone/command/plugin_command.h</label>
+        <link refid="plugin__command_8h_source"/>
+      </node>
+      <node id="3">
+        <label>include/endstone/enchantments/enchantment.h</label>
+        <link refid="enchantment_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/endstone/event/block/block_cook_event.h</label>
+        <link refid="block__cook__event_8h_source"/>
+      </node>
+      <node id="16">
+        <label>include/endstone/event/chunk/chunk_event.h</label>
+        <link refid="chunk__event_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>include/endstone/event/chunk/chunk_load_event.h</label>
+        <link refid="chunk__load__event_8h_source"/>
+      </node>
+      <node id="18">
+        <label>include/endstone/event/chunk/chunk_unload_event.h</label>
+        <link refid="chunk__unload__event_8h_source"/>
+      </node>
+      <node id="26">
+        <label>include/endstone/event/event_handler.h</label>
+        <link refid="event__handler_8h_source"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>include/endstone/event/handler_list.h</label>
+        <link refid="handler__list_8h_source"/>
+      </node>
+      <node id="15">
+        <label>include/endstone/event/level/dimension_event.h</label>
+        <link refid="dimension__event_8h_source"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/endstone/event/player/player_drop_item_event.h</label>
+        <link refid="player__drop__item__event_8h_source"/>
+      </node>
+      <node id="11">
+        <label>include/endstone/event/player/player_interact_event.h</label>
+        <link refid="player__interact__event_8h_source"/>
+      </node>
+      <node id="12">
+        <label>include/endstone/event/player/player_item_consume_event.h</label>
+        <link refid="player__item__consume__event_8h_source"/>
+      </node>
+      <node id="8">
+        <label>include/endstone/event/player/player_pickup_item_event.h</label>
+        <link refid="player__pickup__item__event_8h_source"/>
+      </node>
+      <node id="28">
+        <label>include/endstone/event/server/plugin_disable_event.h</label>
+        <link refid="plugin__disable__event_8h_source"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>include/endstone/event/server/plugin_enable_event.h</label>
+        <link refid="plugin__enable__event_8h_source"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/endstone/inventory/item_factory.h</label>
+        <link refid="item__factory_8h_source"/>
+      </node>
+      <node id="6">
+        <label>include/endstone/inventory/item_stack.h</label>
+        <link refid="item__stack_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>include/endstone/inventory/item_type.h</label>
+        <link refid="item__type_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>include/endstone/inventory/meta/book_meta.h</label>
+        <link refid="book__meta_8h_source"/>
+      </node>
+      <node id="19">
+        <label>include/endstone/inventory/meta/crossbow_meta.h</label>
+        <link refid="crossbow__meta_8h_source"/>
+      </node>
+      <node id="4">
+        <label>include/endstone/inventory/meta/item_meta.h</label>
+        <link refid="item__meta_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>include/endstone/inventory/meta/map_meta.h</label>
+        <link refid="map__meta_8h_source"/>
+      </node>
+      <node id="21">
+        <label>include/endstone/inventory/meta/writable_book_meta.h</label>
+        <link refid="writable__book__meta_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>include/endstone/inventory/recipe.h</label>
+        <link refid="recipe_8h_source"/>
+      </node>
+      <node id="14">
+        <label>include/endstone/level/dimension.h</label>
+        <link refid="dimension_8h_source"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>include/endstone/plugin/plugin.h</label>
+        <link refid="plugin_8h_source"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>include/endstone/plugin/plugin_loader.h</label>
+        <link refid="plugin__loader_8h_source"/>
+      </node>
+      <node id="32">
+        <label>include/endstone/scheduler/scheduler.h</label>
+        <link refid="scheduler_8h_source"/>
+      </node>
+      <node id="31">
+        <label>include/endstone/scheduler/task.h</label>
+        <link refid="task_8h_source"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/endstone/server.h</label>
+        <link refid="server_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classendstone_1_1IpBanList" prot="public">endstone::IpBanList</innerclass>
+    <innernamespace refid="namespaceendstone">endstone</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;chrono&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/ban/ban_list.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/ban/ip_ban_entry.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classendstone_1_1IpBanList" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1IpBanList" kindref="compound">IpBanList</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BanList" kindref="compound">BanList</ref>&lt;IpBanEntry&gt;<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="24" refid="classendstone_1_1IpBanList_1a7ef753b6e660adca428e5fd60a28508e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Nullable&lt;IpBanEntry&gt;</ref><sp/><ref refid="classendstone_1_1IpBanList_1a7ef753b6e660adca428e5fd60a28508e" kindref="member">getBanEntry</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">address</ref>)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classendstone_1_1IpBanList_1ad264cc52a978a556c8267e37ae0198d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;IpBanEntry&gt;</ref><sp/><ref refid="classendstone_1_1IpBanList_1ad264cc52a978a556c8267e37ae0198d5" kindref="member">addBan</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">address</ref>,<sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">reason</ref>,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;BanEntry::Date&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">expires</ref>,<sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">source</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classendstone_1_1IpBanList_1a5459d7db4a91b4eaa8b0d77fb2a4c57c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;IpBanEntry&gt;</ref><sp/><ref refid="classendstone_1_1IpBanList_1a5459d7db4a91b4eaa8b0d77fb2a4c57c" kindref="member">addBan</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">address</ref>,<sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">reason</ref>,<sp/>std::chrono::seconds<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">duration</ref>,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">source</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classendstone_1_1IpBanList_1aa2727e5e9e743e0b5ab63a7094526f99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::vector&lt;NotNull&lt;IpBanEntry&gt;&gt;<sp/><ref refid="classendstone_1_1IpBanList_1aa2727e5e9e743e0b5ab63a7094526f99" kindref="member">getEntries</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classendstone_1_1IpBanList_1a65ab85f06f3522ee90ec267859db0054" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IpBanList_1a65ab85f06f3522ee90ec267859db0054" kindref="member">isBanned</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">address</ref>)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" kindref="member">removeBan</ref>(std::string<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">address</ref>)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/endstone/ban/ip_ban_list.h"/>
+  </compounddef>
+</doxygen>

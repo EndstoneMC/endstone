@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1MapMeta" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::MapMeta</compoundname>
+    <basecompoundref refid="classendstone_1_1ItemMeta" prot="public" virt="non-virtual">endstone::ItemMeta</basecompoundref>
+    <includes refid="map__meta_8h" local="no">endstone/inventory/meta/map_meta.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classendstone_1_1MapMeta_1a0c1d1fc1447dcd87b0a57fc76769a209" prot="public" static="no">
+        <type>std::int64_t</type>
+        <definition>using endstone::MapMeta::MapId =  std::int64_t</definition>
+        <argsstring></argsstring>
+        <name>MapId</name>
+        <qualifiedname>endstone::MapMeta::MapId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="30" column="5" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1MapMeta_1a428e86f59dd0a3ebd353c63f5420834e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::MapMeta::hasMapId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>hasMapId</name>
+        <qualifiedname>endstone::MapMeta::hasMapId</qualifiedname>
+        <briefdescription>
+<para>Checks for existence of a map ID number. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this has a map ID number. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="36" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapMeta_1a7061bbab491883854847dba81ca9b858" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>MapId</type>
+        <definition>virtual MapId endstone::MapMeta::getMapId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getMapId</name>
+        <qualifiedname>endstone::MapMeta::getMapId</qualifiedname>
+        <briefdescription>
+<para>Gets the map ID that is set. This is used to determine what map is displayed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the map ID that is set </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="43" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapMeta_1aef8d3210e296dfbfcab867466c16af9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::MapMeta::setMapId</definition>
+        <argsstring>(MapId id)=0</argsstring>
+        <name>setMapId</name>
+        <qualifiedname>endstone::MapMeta::setMapId</qualifiedname>
+        <param>
+          <type>MapId</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Sets the map ID. This is used to determine what map is displayed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the map id to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="50" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::MapMeta::hasMapView</definition>
+        <argsstring>() const =0</argsstring>
+        <name>hasMapView</name>
+        <qualifiedname>endstone::MapMeta::hasMapView</qualifiedname>
+        <briefdescription>
+<para>Checks for existence of an associated map. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this item has an associated map </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="57" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> *</type>
+        <definition>virtual MapView * endstone::MapMeta::getMapView</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getMapView</name>
+        <qualifiedname>endstone::MapMeta::getMapView</qualifiedname>
+        <briefdescription>
+<para>Gets the map view associated with this map item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Plugins should check that <ref refid="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" kindref="member">hasMapView()</ref> returns true before calling this method.</para>
+</simplesect>
+<simplesect kind="return"><para>the map view, or nullptr if the item <ref refid="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" kindref="member">hasMapView()</ref>, but this map does not exist on the server </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="66" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::MapMeta::setMapView</definition>
+        <argsstring>(const MapView *map)=0</argsstring>
+        <name>setMapView</name>
+        <qualifiedname>endstone::MapMeta::setMapView</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> *</type>
+          <declname>map</declname>
+        </param>
+        <briefdescription>
+<para>Sets the associated map. This is used to determine what map is displayed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the map to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="73" column="18"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents the metadata for a map item. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::ItemMeta</label>
+        <link refid="classendstone_1_1ItemMeta"/>
+      </node>
+      <node id="1">
+        <label>endstone::MapMeta</label>
+        <link refid="classendstone_1_1MapMeta"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::ItemMeta</label>
+        <link refid="classendstone_1_1ItemMeta"/>
+      </node>
+      <node id="1">
+        <label>endstone::MapMeta</label>
+        <link refid="classendstone_1_1MapMeta"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/inventory/meta/map_meta.h" line="26" column="1" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="26" bodyend="74"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ItemMeta_1ac1ee49d00e1cdd56816e0e775bff4241" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>addEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1af179bd7b745731e3d0f1e66828e45149" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>as</name></member>
+      <member refid="classendstone_1_1ItemMeta_1af5d8b132d9add8051466b9b19e3bfa61" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>as</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>clone</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getDamage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getDisplayName</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a4ada54133ca59faa19c55d38b3be845f" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getEnchantLevel</name></member>
+      <member refid="classendstone_1_1ItemMeta_1afe5fbc4ed421b33e455d1e2e679d76e5" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getEnchants</name></member>
+      <member refid="classendstone_1_1ItemMeta_1aa9ac1cb2bb1fb71ff465001603b3cddf" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getExtras</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a170ca4e3a87a7a590ba03019129793d1" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getLore</name></member>
+      <member refid="classendstone_1_1MapMeta_1a7061bbab491883854847dba81ca9b858" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getMapId</name></member>
+      <member refid="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getMapView</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getRepairCost</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getType</name></member>
+      <member refid="classendstone_1_1ItemMeta_1af5939a3ac6202136120dcab179c8e9d6" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>hasConflictingEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>hasDamage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>hasDisplayName</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ade351771a140fed5f755067c9fa8d6e3" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>hasEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ac43230ac05adb1a16d1d6d60049dc010" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>hasEnchants</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>hasLore</name></member>
+      <member refid="classendstone_1_1MapMeta_1a428e86f59dd0a3ebd353c63f5420834e" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>hasMapId</name></member>
+      <member refid="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>hasMapView</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>hasRepairCost</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>isUnbreakable</name></member>
+      <member refid="classendstone_1_1MapMeta_1a0c1d1fc1447dcd87b0a57fc76769a209" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>MapId</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ad00a6e480dbda4f8e054f48cd318756f" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>removeEnchant</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>removeEnchants</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a65cb98d0b4ad3842775aeea2fb7900cc" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setDamage</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setDisplayName</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setLore</name></member>
+      <member refid="classendstone_1_1MapMeta_1aef8d3210e296dfbfcab867466c16af9f" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setMapId</name></member>
+      <member refid="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setMapView</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setRepairCost</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setUnbreakable</name></member>
+      <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>Type</name></member>
+      <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" prot="public" virt="virtual"><scope>endstone::MapMeta</scope><name>~ItemMeta</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

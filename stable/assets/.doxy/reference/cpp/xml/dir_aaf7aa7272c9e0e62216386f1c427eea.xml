@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_aaf7aa7272c9e0e62216386f1c427eea" kind="dir">
+    <compoundname>include/endstone/effect</compoundname>
+    <innerfile refid="effect__type_8h">effect_type.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/effect/"/>
+  </compounddef>
+</doxygen>

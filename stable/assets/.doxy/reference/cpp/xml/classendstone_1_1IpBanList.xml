@@ -1,0 +1,301 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1IpBanList" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::IpBanList</compoundname>
+    <basecompoundref refid="classendstone_1_1BanList" prot="public" virt="non-virtual">endstone::BanList&lt; IpBanEntry &gt;</basecompoundref>
+    <includes refid="ip__ban__list_8h" local="no">endstone/ban/ip_ban_list.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1a7ef753b6e660adca428e5fd60a28508e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> &gt;</type>
+        <definition>Nullable&lt; IpBanEntry &gt; endstone::IpBanList::getBanEntry</definition>
+        <argsstring>(std::string address) const override=0</argsstring>
+        <name>getBanEntry</name>
+        <qualifiedname>endstone::IpBanList::getBanEntry</qualifiedname>
+        <reimplements refid="classendstone_1_1BanList_1a341a9b706d919e8b37d1328bbdc63bdf">getBanEntry</reimplements>
+        <param>
+          <type>std::string</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+<para>Gets a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> by IP address. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The IP address to search for. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> The corresponding entry, or nullptr if none found. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/ip_ban_list.h" line="24" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1ad264cc52a978a556c8267e37ae0198d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> &gt;</type>
+        <definition>NotNull&lt; IpBanEntry &gt; endstone::IpBanList::addBan</definition>
+        <argsstring>(std::string address, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) override=0</argsstring>
+        <name>addBan</name>
+        <qualifiedname>endstone::IpBanList::addBan</qualifiedname>
+        <reimplements refid="classendstone_1_1BanList_1ae961242de2837b0bd002f8fb1f319e3c">addBan</reimplements>
+        <param>
+          <type>std::string</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; BanEntry::Date &gt;</type>
+          <declname>expires</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Adds a ban to this list. If a previous ban exists, this will update the previous entry. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The IP address of the target. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reason</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The reason for the ban, std::nullopt indicates implementation default. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>expires</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The date for the ban&apos;s expiration (unban), or std::nullopt to imply forever. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the ban, std::nullopt indicates implementation default. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> The entry for the newly created ban, or the entry for the (updated) previous ban. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/ip_ban_list.h" line="35" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1a5459d7db4a91b4eaa8b0d77fb2a4c57c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> &gt;</type>
+        <definition>NotNull&lt; IpBanEntry &gt; endstone::IpBanList::addBan</definition>
+        <argsstring>(std::string address, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) override=0</argsstring>
+        <name>addBan</name>
+        <qualifiedname>endstone::IpBanList::addBan</qualifiedname>
+        <reimplements refid="classendstone_1_1BanList_1a1497b5ce856d65f9a8e027dfbc990020">addBan</reimplements>
+        <param>
+          <type>std::string</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>std::chrono::seconds</type>
+          <declname>duration</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Adds a ban to this list. If a previous ban exists, this will update the previous entry. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The IP address of the target. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reason</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The reason for the ban, std::nullopt indicates implementation default. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>duration</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The duration of the ban </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the ban, std::nullopt indicates implementation default. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> The entry for the newly created ban, or the entry for the (updated) previous ban. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/ip_ban_list.h" line="47" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1aa2727e5e9e743e0b5ab63a7094526f99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; NotNull&lt; IpBanEntry &gt; &gt; endstone::IpBanList::getEntries</definition>
+        <argsstring>() const override=0</argsstring>
+        <name>getEntries</name>
+        <qualifiedname>endstone::IpBanList::getEntries</qualifiedname>
+        <reimplements refid="classendstone_1_1BanList_1a9aab2914bc54c514c6aa55ff954ef264">getEntries</reimplements>
+        <briefdescription>
+<para>Gets a vector containing pointers to every <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> in this list. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A vector containing pointers to every entry tracked by this list. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/ip_ban_list.h" line="55" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1a65ab85f06f3522ee90ec267859db0054" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::IpBanList::isBanned</definition>
+        <argsstring>(std::string address) const override=0</argsstring>
+        <name>isBanned</name>
+        <qualifiedname>endstone::IpBanList::isBanned</qualifiedname>
+        <reimplements refid="classendstone_1_1BanList_1a7fd3e0a897b072736e9df35d91b12c19">isBanned</reimplements>
+        <param>
+          <type>std::string</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+<para>Checks if a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> exists for the target, indicating an active ban status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The IP address to find. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true If a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> exists for the target, indicating an active ban status. </para>
+</simplesect>
+<simplesect kind="return"><para>false Otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/ip_ban_list.h" line="64" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::IpBanList::removeBan</definition>
+        <argsstring>(std::string address) override=0</argsstring>
+        <name>removeBan</name>
+        <qualifiedname>endstone::IpBanList::removeBan</qualifiedname>
+        <reimplements refid="classendstone_1_1BanList_1abefb6ec9f4a696e98609579e3b87718a">removeBan</reimplements>
+        <param>
+          <type>std::string</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+<para>Removes the specified IP address from this list, therefore indicating a &quot;not banned&quot; status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The IP address to remove from this list. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/ip_ban_list.h" line="71" column="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a ban list, containing banned IP addresses. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::BanList&lt; IpBanEntry &gt;</label>
+        <link refid="classendstone_1_1BanList"/>
+      </node>
+      <node id="1">
+        <label>endstone::IpBanList</label>
+        <link refid="classendstone_1_1IpBanList"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::BanList&lt; IpBanEntry &gt;</label>
+        <link refid="classendstone_1_1BanList"/>
+      </node>
+      <node id="1">
+        <label>endstone::IpBanList</label>
+        <link refid="classendstone_1_1IpBanList"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/ban/ip_ban_list.h" line="16" column="1" bodyfile="include/endstone/ban/ip_ban_list.h" bodystart="16" bodyend="72"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1IpBanList_1ad264cc52a978a556c8267e37ae0198d5" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>addBan</name></member>
+      <member refid="classendstone_1_1IpBanList_1a5459d7db4a91b4eaa8b0d77fb2a4c57c" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>addBan</name></member>
+      <member refid="classendstone_1_1BanList_1a8240df23e36ae68136a86356c8c5e928" prot="public" virt="non-virtual"><scope>endstone::IpBanList</scope><name>EntryType</name></member>
+      <member refid="classendstone_1_1IpBanList_1a7ef753b6e660adca428e5fd60a28508e" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>getBanEntry</name></member>
+      <member refid="classendstone_1_1IpBanList_1aa2727e5e9e743e0b5ab63a7094526f99" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>getEntries</name></member>
+      <member refid="classendstone_1_1IpBanList_1a65ab85f06f3522ee90ec267859db0054" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>isBanned</name></member>
+      <member refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>removeBan</name></member>
+      <member refid="classendstone_1_1BanList_1a409cf606a2985931ed9a7eb51b9362ea" prot="public" virt="virtual"><scope>endstone::IpBanList</scope><name>~BanList</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

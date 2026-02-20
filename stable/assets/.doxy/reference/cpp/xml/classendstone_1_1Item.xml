@@ -1,0 +1,317 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Item" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Item</compoundname>
+    <basecompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</basecompoundref>
+    <includes refid="item_8h" local="no">endstone/actor/item.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Item_1aecc6e7de84c65dbe99809fc47c1284e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref></type>
+        <definition>virtual ItemStack endstone::Item::getItemStack</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getItemStack</name>
+        <qualifiedname>endstone::Item::getItemStack</qualifiedname>
+        <briefdescription>
+<para>Gets the item stack associated with this item drop. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>An item stack. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/item.h" line="34" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Item_1af161f37341629c74503408f7ebfeb0e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Item::setItemStack</definition>
+        <argsstring>(const ItemStack &amp;stack)=0</argsstring>
+        <name>setItemStack</name>
+        <qualifiedname>endstone::Item::setItemStack</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
+          <declname>stack</declname>
+        </param>
+        <briefdescription>
+<para>Sets the item stack associated with this item drop. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stack</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An item stack. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/item.h" line="41" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Item_1a3256b7b25cc3a2e8a59a18ea471c386d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Item::getPickupDelay</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getPickupDelay</name>
+        <qualifiedname>endstone::Item::getPickupDelay</qualifiedname>
+        <briefdescription>
+<para>Gets the delay before this <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> is available to be picked up by players. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Remaining delay </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/item.h" line="48" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Item_1a9ecb3d011f118920d313d406b0e1f7cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Item::setPickupDelay</definition>
+        <argsstring>(int delay)=0</argsstring>
+        <name>setPickupDelay</name>
+        <qualifiedname>endstone::Item::setPickupDelay</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Sets the delay before this <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> is available to be picked up by players. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New delay </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/item.h" line="55" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Item_1aa75743e9275be2335852f72f8e77a879" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Item::setUnlimitedLifetime</definition>
+        <argsstring>(bool unlimited)=0</argsstring>
+        <name>setUnlimitedLifetime</name>
+        <qualifiedname>endstone::Item::setUnlimitedLifetime</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>unlimited</declname>
+        </param>
+        <briefdescription>
+<para>Sets if this <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> should live forever. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unlimited</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true if the lifetime is unlimited </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/item.h" line="62" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Item_1ae9d1acdd426e2abdaa9a7d0772e013a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Item::isUnlimitedLifetime</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isUnlimitedLifetime</name>
+        <qualifiedname>endstone::Item::isUnlimitedLifetime</qualifiedname>
+        <briefdescription>
+<para>Gets if this <ref refid="classendstone_1_1Item" kindref="compound">Item</ref> lives forever. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the lifetime is unlimited </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/item.h" line="69" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Item_1a76a67449432660c8c549c9e578fbf549" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Item::setThrower</definition>
+        <argsstring>(std::optional&lt; std::int64_t &gt; thrower)=0</argsstring>
+        <name>setThrower</name>
+        <qualifiedname>endstone::Item::setThrower</qualifiedname>
+        <param>
+          <type>std::optional&lt; std::int64_t &gt;</type>
+          <declname>thrower</declname>
+        </param>
+        <briefdescription>
+<para>Set the thrower of this item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The thrower is the entity which dropped the item.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>thrower</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>unique id of thrower </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/item.h" line="78" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Item_1ab8e408c96b5ddb96277d89bdebf186ae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; std::int64_t &gt;</type>
+        <definition>virtual std::optional&lt; std::int64_t &gt; endstone::Item::getThrower</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getThrower</name>
+        <qualifiedname>endstone::Item::getThrower</qualifiedname>
+        <briefdescription>
+<para>Get the thrower of this item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The thrower is the entity which dropped the item.</para>
+</simplesect>
+<simplesect kind="return"><para>unique id of thrower </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/item.h" line="87" column="28"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a base actor in the level. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Actor</label>
+        <link refid="classendstone_1_1Actor"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Item</label>
+        <link refid="classendstone_1_1Item"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Actor</label>
+        <link refid="classendstone_1_1Actor"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Item</label>
+        <link refid="classendstone_1_1Item"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/actor/item.h" line="27" column="1" bodyfile="include/endstone/actor/item.h" bodystart="27" bodyend="88"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Actor_1a7df17ed4f47907e5022b1eff1f306271" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>addScoreboardTag</name></member>
+      <member refid="classendstone_1_1CommandSender_1aa3ff3e9752f3a3a7a84bc9058d7abbdc" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>asActor</name></member>
+      <member refid="classendstone_1_1CommandSender_1ad60565f649ada2e97dd8f62c8d791027" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>asBlock</name></member>
+      <member refid="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893" prot="public" virt="virtual"><scope>endstone::Item</scope><name>asCommandSender</name></member>
+      <member refid="classendstone_1_1CommandSender_1a635ff0815f93ba402b40486e5b3a4fdb" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>asConsole</name></member>
+      <member refid="classendstone_1_1Actor_1a6c81fe219b046d28cdf13c5c400793c6" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>asItem</name></member>
+      <member refid="classendstone_1_1Actor_1acbd7afe34e58507083765ae5d27ff9c0" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>asMob</name></member>
+      <member refid="classendstone_1_1CommandSender_1a13a510a2f1e21138d8dfa9f9c898e136" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>asPlayer</name></member>
+      <member refid="classendstone_1_1Actor_1ab4562c41d071b945338d742ac8d1e639" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getEffectivePermissions</name></member>
+      <member refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getId</name></member>
+      <member refid="classendstone_1_1Item_1aecc6e7de84c65dbe99809fc47c1284e6" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getItemStack</name></member>
+      <member refid="classendstone_1_1Actor_1aff1ed8218696acc7009bf7ce5a5069a2" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getLevel</name></member>
+      <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getLocation</name></member>
+      <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Actor_1a7bac2e604ceb3d48c3fbc6a628f6eaec" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getNameTag</name></member>
+      <member refid="classendstone_1_1Permissible_1a6d78baa46215c951dc25cb5e55af085c" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getPermissionLevel</name></member>
+      <member refid="classendstone_1_1Item_1a3256b7b25cc3a2e8a59a18ea471c386d" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getPickupDelay</name></member>
+      <member refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getRuntimeId</name></member>
+      <member refid="classendstone_1_1Actor_1aab1b3bf14d77e70515a6afacb3219e86" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getScoreboardTags</name></member>
+      <member refid="classendstone_1_1Actor_1a29bb3fe504b2b2bffd749a0d9ef1ed92" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getScoreTag</name></member>
+      <member refid="classendstone_1_1CommandSender_1aecd5cad85026861938379fa283d626cf" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getServer</name></member>
+      <member refid="classendstone_1_1Item_1ab8e408c96b5ddb96277d89bdebf186ae" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getThrower</name></member>
+      <member refid="classendstone_1_1Actor_1a35dbee5875715f9edd8be8b117377129" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getType</name></member>
+      <member refid="classendstone_1_1Actor_1a991a21714a41b82ee7785c0dbf176c3a" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>getVelocity</name></member>
+      <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isDead</name></member>
+      <member refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isInLava</name></member>
+      <member refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isInWater</name></member>
+      <member refid="classendstone_1_1Actor_1a26211c565a42de6f28565bed6d3c854b" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isNameTagAlwaysVisible</name></member>
+      <member refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isNameTagVisible</name></member>
+      <member refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isOnGround</name></member>
+      <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Item_1ae9d1acdd426e2abdaa9a7d0772e013a9" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isUnlimitedLifetime</name></member>
+      <member refid="classendstone_1_1Actor_1a5b744893654143e1d8a1f03b1d3cc459" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>isValid</name></member>
+      <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>recalculatePermissions</name></member>
+      <member refid="classendstone_1_1Actor_1a896dcb16d037d3591b0d39480521a193" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>remove</name></member>
+      <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>removeAttachment</name></member>
+      <member refid="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>removeScoreboardTag</name></member>
+      <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::Item</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Item</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1Item_1af161f37341629c74503408f7ebfeb0e1" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setItemStack</name></member>
+      <member refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setNameTag</name></member>
+      <member refid="classendstone_1_1Actor_1a6c7dc2e5a9b99db8b000e84e4eba5822" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setNameTagAlwaysVisible</name></member>
+      <member refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setNameTagVisible</name></member>
+      <member refid="classendstone_1_1Item_1a9ecb3d011f118920d313d406b0e1f7cf" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setPickupDelay</name></member>
+      <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setRotation</name></member>
+      <member refid="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setScoreTag</name></member>
+      <member refid="classendstone_1_1Item_1a76a67449432660c8c549c9e578fbf549" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setThrower</name></member>
+      <member refid="classendstone_1_1Item_1aa75743e9275be2335852f72f8e77a879" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>setUnlimitedLifetime</name></member>
+      <member refid="classendstone_1_1Actor_1aecfec6af43ddcb9ab2dfa1d23e2b0b82" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>teleport</name></member>
+      <member refid="classendstone_1_1Actor_1a4be9f8132bce43f6aa06660cb2439e66" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>teleport</name></member>
+      <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::Item</scope><name>~Permissible</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

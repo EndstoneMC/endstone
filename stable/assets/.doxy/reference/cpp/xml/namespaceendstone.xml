@@ -1,0 +1,1454 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="namespaceendstone" kind="namespace" language="C++">
+    <compoundname>endstone</compoundname>
+    <innerclass refid="classendstone_1_1ActionForm" prot="public">endstone::ActionForm</innerclass>
+    <innerclass refid="classendstone_1_1Actor" prot="public">endstone::Actor</innerclass>
+    <innerclass refid="classendstone_1_1ActorDamageEvent" prot="public">endstone::ActorDamageEvent</innerclass>
+    <innerclass refid="classendstone_1_1ActorDeathEvent" prot="public">endstone::ActorDeathEvent</innerclass>
+    <innerclass refid="classendstone_1_1ActorEvent" prot="public">endstone::ActorEvent</innerclass>
+    <innerclass refid="classendstone_1_1ActorExplodeEvent" prot="public">endstone::ActorExplodeEvent</innerclass>
+    <innerclass refid="classendstone_1_1ActorKnockbackEvent" prot="public">endstone::ActorKnockbackEvent</innerclass>
+    <innerclass refid="classendstone_1_1ActorRemoveEvent" prot="public">endstone::ActorRemoveEvent</innerclass>
+    <innerclass refid="classendstone_1_1ActorSpawnEvent" prot="public">endstone::ActorSpawnEvent</innerclass>
+    <innerclass refid="classendstone_1_1ActorTeleportEvent" prot="public">endstone::ActorTeleportEvent</innerclass>
+    <innerclass refid="classendstone_1_1Attribute" prot="public">endstone::Attribute</innerclass>
+    <innerclass refid="classendstone_1_1AttributeInstance" prot="public">endstone::AttributeInstance</innerclass>
+    <innerclass refid="classendstone_1_1AttributeModifier" prot="public">endstone::AttributeModifier</innerclass>
+    <innerclass refid="classendstone_1_1BanEntry" prot="public">endstone::BanEntry</innerclass>
+    <innerclass refid="classendstone_1_1BanList" prot="public">endstone::BanList</innerclass>
+    <innerclass refid="classendstone_1_1Block" prot="public">endstone::Block</innerclass>
+    <innerclass refid="classendstone_1_1BlockBreakEvent" prot="public">endstone::BlockBreakEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockCommandSender" prot="public">endstone::BlockCommandSender</innerclass>
+    <innerclass refid="classendstone_1_1BlockCookEvent" prot="public">endstone::BlockCookEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockData" prot="public">endstone::BlockData</innerclass>
+    <innerclass refid="classendstone_1_1BlockEvent" prot="public">endstone::BlockEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockFormEvent" prot="public">endstone::BlockFormEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockFromToEvent" prot="public">endstone::BlockFromToEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockGrowEvent" prot="public">endstone::BlockGrowEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockPistonEvent" prot="public">endstone::BlockPistonEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockPistonExtendEvent" prot="public">endstone::BlockPistonExtendEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockPistonRetractEvent" prot="public">endstone::BlockPistonRetractEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockPlaceEvent" prot="public">endstone::BlockPlaceEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockState" prot="public">endstone::BlockState</innerclass>
+    <innerclass refid="classendstone_1_1BookMeta" prot="public">endstone::BookMeta</innerclass>
+    <innerclass refid="classendstone_1_1BossBar" prot="public">endstone::BossBar</innerclass>
+    <innerclass refid="classendstone_1_1BroadcastMessageEvent" prot="public">endstone::BroadcastMessageEvent</innerclass>
+    <innerclass refid="classendstone_1_1Button" prot="public">endstone::Button</innerclass>
+    <innerclass refid="classendstone_1_1Cancellable" prot="public">endstone::Cancellable</innerclass>
+    <innerclass refid="classendstone_1_1Chunk" prot="public">endstone::Chunk</innerclass>
+    <innerclass refid="classendstone_1_1ChunkEvent" prot="public">endstone::ChunkEvent</innerclass>
+    <innerclass refid="classendstone_1_1ChunkLoadEvent" prot="public">endstone::ChunkLoadEvent</innerclass>
+    <innerclass refid="classendstone_1_1ChunkUnloadEvent" prot="public">endstone::ChunkUnloadEvent</innerclass>
+    <innerclass refid="classendstone_1_1Color" prot="public">endstone::Color</innerclass>
+    <innerclass refid="structendstone_1_1ColorFormat" prot="public">endstone::ColorFormat</innerclass>
+    <innerclass refid="classendstone_1_1Colors" prot="public">endstone::Colors</innerclass>
+    <innerclass refid="classendstone_1_1Command" prot="public">endstone::Command</innerclass>
+    <innerclass refid="classendstone_1_1CommandExecutor" prot="public">endstone::CommandExecutor</innerclass>
+    <innerclass refid="classendstone_1_1CommandMap" prot="public">endstone::CommandMap</innerclass>
+    <innerclass refid="classendstone_1_1CommandSender" prot="public">endstone::CommandSender</innerclass>
+    <innerclass refid="classendstone_1_1CommandSenderWrapper" prot="public">endstone::CommandSenderWrapper</innerclass>
+    <innerclass refid="classendstone_1_1CompoundTag" prot="public">endstone::CompoundTag</innerclass>
+    <innerclass refid="classendstone_1_1ConsoleCommandSender" prot="public">endstone::ConsoleCommandSender</innerclass>
+    <innerclass refid="classendstone_1_1Criteria" prot="public">endstone::Criteria</innerclass>
+    <innerclass refid="classendstone_1_1CrossbowMeta" prot="public">endstone::CrossbowMeta</innerclass>
+    <innerclass refid="classendstone_1_1DamageSource" prot="public">endstone::DamageSource</innerclass>
+    <innerclass refid="classendstone_1_1Dimension" prot="public">endstone::Dimension</innerclass>
+    <innerclass refid="classendstone_1_1DimensionEvent" prot="public">endstone::DimensionEvent</innerclass>
+    <innerclass refid="classendstone_1_1Divider" prot="public">endstone::Divider</innerclass>
+    <innerclass refid="classendstone_1_1Dropdown" prot="public">endstone::Dropdown</innerclass>
+    <innerclass refid="classendstone_1_1EffectType" prot="public">endstone::EffectType</innerclass>
+    <innerclass refid="classendstone_1_1Enchantment" prot="public">endstone::Enchantment</innerclass>
+    <innerclass refid="classendstone_1_1Event" prot="public">endstone::Event</innerclass>
+    <innerclass refid="classendstone_1_1EventHandler" prot="public">endstone::EventHandler</innerclass>
+    <innerclass refid="classendstone_1_1Form" prot="public">endstone::Form</innerclass>
+    <innerclass refid="classendstone_1_1HandlerList" prot="public">endstone::HandlerList</innerclass>
+    <innerclass refid="classendstone_1_1Header" prot="public">endstone::Header</innerclass>
+    <innerclass refid="classendstone_1_1ICancellable" prot="public">endstone::ICancellable</innerclass>
+    <innerclass refid="classendstone_1_1Identifier" prot="public">endstone::Identifier</innerclass>
+    <innerclass refid="classendstone_1_1Image" prot="public">endstone::Image</innerclass>
+    <innerclass refid="classendstone_1_1Inventory" prot="public">endstone::Inventory</innerclass>
+    <innerclass refid="classendstone_1_1IpBanEntry" prot="public">endstone::IpBanEntry</innerclass>
+    <innerclass refid="classendstone_1_1IpBanList" prot="public">endstone::IpBanList</innerclass>
+    <innerclass refid="classendstone_1_1IRegistry" prot="public">endstone::IRegistry</innerclass>
+    <innerclass refid="classendstone_1_1Item" prot="public">endstone::Item</innerclass>
+    <innerclass refid="classendstone_1_1ItemFactory" prot="public">endstone::ItemFactory</innerclass>
+    <innerclass refid="classendstone_1_1ItemMeta" prot="public">endstone::ItemMeta</innerclass>
+    <innerclass refid="classendstone_1_1ItemStack" prot="public">endstone::ItemStack</innerclass>
+    <innerclass refid="classendstone_1_1ItemType" prot="public">endstone::ItemType</innerclass>
+    <innerclass refid="classendstone_1_1Label" prot="public">endstone::Label</innerclass>
+    <innerclass refid="classendstone_1_1Language" prot="public">endstone::Language</innerclass>
+    <innerclass refid="classendstone_1_1LeavesDecayEvent" prot="public">endstone::LeavesDecayEvent</innerclass>
+    <innerclass refid="classendstone_1_1Level" prot="public">endstone::Level</innerclass>
+    <innerclass refid="classendstone_1_1LevelEvent" prot="public">endstone::LevelEvent</innerclass>
+    <innerclass refid="classendstone_1_1ListTag" prot="public">endstone::ListTag</innerclass>
+    <innerclass refid="classendstone_1_1Location" prot="public">endstone::Location</innerclass>
+    <innerclass refid="classendstone_1_1Logger" prot="public">endstone::Logger</innerclass>
+    <innerclass refid="classendstone_1_1MapCanvas" prot="public">endstone::MapCanvas</innerclass>
+    <innerclass refid="classendstone_1_1MapCursor" prot="public">endstone::MapCursor</innerclass>
+    <innerclass refid="classendstone_1_1MapInitializeEvent" prot="public">endstone::MapInitializeEvent</innerclass>
+    <innerclass refid="classendstone_1_1MapMeta" prot="public">endstone::MapMeta</innerclass>
+    <innerclass refid="classendstone_1_1MapRenderer" prot="public">endstone::MapRenderer</innerclass>
+    <innerclass refid="classendstone_1_1MapView" prot="public">endstone::MapView</innerclass>
+    <innerclass refid="classendstone_1_1MessageForm" prot="public">endstone::MessageForm</innerclass>
+    <innerclass refid="classendstone_1_1Mob" prot="public">endstone::Mob</innerclass>
+    <innerclass refid="classendstone_1_1ModalForm" prot="public">endstone::ModalForm</innerclass>
+    <innerclass refid="classendstone_1_1NotNull" prot="public">endstone::NotNull</innerclass>
+    <innerclass refid="classendstone_1_1Nullable" prot="public">endstone::Nullable</innerclass>
+    <innerclass refid="classendstone_1_1Objective" prot="public">endstone::Objective</innerclass>
+    <innerclass refid="classendstone_1_1OfflinePlayer" prot="public">endstone::OfflinePlayer</innerclass>
+    <innerclass refid="structendstone_1_1overloaded" prot="public">endstone::overloaded</innerclass>
+    <innerclass refid="classendstone_1_1PacketReceiveEvent" prot="public">endstone::PacketReceiveEvent</innerclass>
+    <innerclass refid="classendstone_1_1PacketSendEvent" prot="public">endstone::PacketSendEvent</innerclass>
+    <innerclass refid="classendstone_1_1Permissible" prot="public">endstone::Permissible</innerclass>
+    <innerclass refid="classendstone_1_1Permission" prot="public">endstone::Permission</innerclass>
+    <innerclass refid="classendstone_1_1PermissionAttachment" prot="public">endstone::PermissionAttachment</innerclass>
+    <innerclass refid="classendstone_1_1PermissionAttachmentInfo" prot="public">endstone::PermissionAttachmentInfo</innerclass>
+    <innerclass refid="classendstone_1_1Player" prot="public">endstone::Player</innerclass>
+    <innerclass refid="classendstone_1_1PlayerBanEntry" prot="public">endstone::PlayerBanEntry</innerclass>
+    <innerclass refid="classendstone_1_1PlayerBanList" prot="public">endstone::PlayerBanList</innerclass>
+    <innerclass refid="classendstone_1_1PlayerBedEnterEvent" prot="public">endstone::PlayerBedEnterEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerBedLeaveEvent" prot="public">endstone::PlayerBedLeaveEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerChatEvent" prot="public">endstone::PlayerChatEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerCommandEvent" prot="public">endstone::PlayerCommandEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerDeathEvent" prot="public">endstone::PlayerDeathEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerDimensionChangeEvent" prot="public">endstone::PlayerDimensionChangeEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerDropItemEvent" prot="public">endstone::PlayerDropItemEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerEmoteEvent" prot="public">endstone::PlayerEmoteEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerEvent" prot="public">endstone::PlayerEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerGameModeChangeEvent" prot="public">endstone::PlayerGameModeChangeEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerInteractActorEvent" prot="public">endstone::PlayerInteractActorEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerInteractEvent" prot="public">endstone::PlayerInteractEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerInventory" prot="public">endstone::PlayerInventory</innerclass>
+    <innerclass refid="classendstone_1_1PlayerItemConsumeEvent" prot="public">endstone::PlayerItemConsumeEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerItemHeldEvent" prot="public">endstone::PlayerItemHeldEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerJoinEvent" prot="public">endstone::PlayerJoinEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerJumpEvent" prot="public">endstone::PlayerJumpEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerKickEvent" prot="public">endstone::PlayerKickEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerLoginEvent" prot="public">endstone::PlayerLoginEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerMoveEvent" prot="public">endstone::PlayerMoveEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerPickupItemEvent" prot="public">endstone::PlayerPickupItemEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerPortalEvent" prot="public">endstone::PlayerPortalEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerQuitEvent" prot="public">endstone::PlayerQuitEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerRespawnEvent" prot="public">endstone::PlayerRespawnEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerSkinChangeEvent" prot="public">endstone::PlayerSkinChangeEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerTeleportEvent" prot="public">endstone::PlayerTeleportEvent</innerclass>
+    <innerclass refid="classendstone_1_1Plugin" prot="public">endstone::Plugin</innerclass>
+    <innerclass refid="classendstone_1_1PluginCommand" prot="public">endstone::PluginCommand</innerclass>
+    <innerclass refid="classendstone_1_1PluginDescription" prot="public">endstone::PluginDescription</innerclass>
+    <innerclass refid="classendstone_1_1PluginDisableEvent" prot="public">endstone::PluginDisableEvent</innerclass>
+    <innerclass refid="classendstone_1_1PluginEnableEvent" prot="public">endstone::PluginEnableEvent</innerclass>
+    <innerclass refid="classendstone_1_1PluginLoader" prot="public">endstone::PluginLoader</innerclass>
+    <innerclass refid="classendstone_1_1PluginManager" prot="public">endstone::PluginManager</innerclass>
+    <innerclass refid="classendstone_1_1PotionType" prot="public">endstone::PotionType</innerclass>
+    <innerclass refid="classendstone_1_1Preconditions" prot="public">endstone::Preconditions</innerclass>
+    <innerclass refid="classendstone_1_1Recipe" prot="public">endstone::Recipe</innerclass>
+    <innerclass refid="classendstone_1_1Registry" prot="public">endstone::Registry</innerclass>
+    <innerclass refid="classendstone_1_1Scheduler" prot="public">endstone::Scheduler</innerclass>
+    <innerclass refid="classendstone_1_1Score" prot="public">endstone::Score</innerclass>
+    <innerclass refid="classendstone_1_1Scoreboard" prot="public">endstone::Scoreboard</innerclass>
+    <innerclass refid="classendstone_1_1ScriptMessageEvent" prot="public">endstone::ScriptMessageEvent</innerclass>
+    <innerclass refid="classendstone_1_1Server" prot="public">endstone::Server</innerclass>
+    <innerclass refid="classendstone_1_1ServerCommandEvent" prot="public">endstone::ServerCommandEvent</innerclass>
+    <innerclass refid="classendstone_1_1ServerEvent" prot="public">endstone::ServerEvent</innerclass>
+    <innerclass refid="classendstone_1_1ServerListPingEvent" prot="public">endstone::ServerListPingEvent</innerclass>
+    <innerclass refid="classendstone_1_1ServerLoadEvent" prot="public">endstone::ServerLoadEvent</innerclass>
+    <innerclass refid="classendstone_1_1Service" prot="public">endstone::Service</innerclass>
+    <innerclass refid="classendstone_1_1ServiceManager" prot="public">endstone::ServiceManager</innerclass>
+    <innerclass refid="classendstone_1_1Skin" prot="public">endstone::Skin</innerclass>
+    <innerclass refid="classendstone_1_1Slider" prot="public">endstone::Slider</innerclass>
+    <innerclass refid="classendstone_1_1SocketAddress" prot="public">endstone::SocketAddress</innerclass>
+    <innerclass refid="classendstone_1_1StepSlider" prot="public">endstone::StepSlider</innerclass>
+    <innerclass refid="classendstone_1_1Task" prot="public">endstone::Task</innerclass>
+    <innerclass refid="classendstone_1_1TextInput" prot="public">endstone::TextInput</innerclass>
+    <innerclass refid="classendstone_1_1ThunderChangeEvent" prot="public">endstone::ThunderChangeEvent</innerclass>
+    <innerclass refid="classendstone_1_1Toggle" prot="public">endstone::Toggle</innerclass>
+    <innerclass refid="classendstone_1_1Translatable" prot="public">endstone::Translatable</innerclass>
+    <innerclass refid="classendstone_1_1UUID" prot="public">endstone::UUID</innerclass>
+    <innerclass refid="classendstone_1_1Vector" prot="public">endstone::Vector</innerclass>
+    <innerclass refid="classendstone_1_1WeatherChangeEvent" prot="public">endstone::WeatherChangeEvent</innerclass>
+    <innerclass refid="classendstone_1_1WeatherEvent" prot="public">endstone::WeatherEvent</innerclass>
+    <innerclass refid="classendstone_1_1WritableBookMeta" prot="public">endstone::WritableBookMeta</innerclass>
+    <innernamespace refid="namespaceendstone_1_1core">endstone::core</innernamespace>
+    <innernamespace refid="namespaceendstone_1_1detail">endstone::detail</innernamespace>
+    <innernamespace refid="namespaceendstone_1_1nbt">endstone::nbt</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceendstone_1aec620d05bd961a002c83b008e178a785" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>BlockFace</name>
+        <qualifiedname>endstone::BlockFace</qualifiedname>
+        <enumvalue id="namespaceendstone_1aec620d05bd961a002c83b008e178a785a08a38277b0309070706f6652eeae9a53" prot="public">
+          <name>Down</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1aec620d05bd961a002c83b008e178a785a258f49887ef8d14ac268c92b02503aaa" prot="public">
+          <name>Up</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1aec620d05bd961a002c83b008e178a785a601560b94fbb188919dd1d36c8ab70a4" prot="public">
+          <name>North</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1aec620d05bd961a002c83b008e178a785a263d7b2cf53802c9ed127b718c0bf9fd" prot="public">
+          <name>South</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1aec620d05bd961a002c83b008e178a785abf495fc048d8d44b7f32536df5cf3930" prot="public">
+          <name>West</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1aec620d05bd961a002c83b008e178a785aa99dc62d017d04cf67266593f9c3761e" prot="public">
+          <name>East</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents the face of a block. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_face.h" line="21" column="1" bodyfile="include/endstone/block/block_face.h" bodystart="21" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>BarColor</name>
+        <qualifiedname>endstone::BarColor</qualifiedname>
+        <enumvalue id="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6a8dc5344bc0746e1cc5abf896ca03bbdf" prot="public">
+          <name>Pink</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6a9594eec95be70e7b1710f730fdda33d9" prot="public">
+          <name>Blue</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6aee38e4d5dd68c4e440825018d549cb47" prot="public">
+          <name>Red</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6ad382816a3cbeed082c9e216e7392eed1" prot="public">
+          <name>Green</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6a51e6cd92b6c45f9affdc158ecca2b8b8" prot="public">
+          <name>Yellow</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6ab9ba865fec061c9706d2fd7ce49c0cc7" prot="public">
+          <name>Purple</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6a2e31f16d0f61e79b46d42f2228ca7bd6" prot="public">
+          <name>RebeccaPurple</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6a25a81701fbfa4a1efdf660a950c1d006" prot="public">
+          <name>White</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/boss/bar_color.h" line="18" column="1" bodyfile="include/endstone/boss/bar_color.h" bodystart="18" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>BarFlag</name>
+        <qualifiedname>endstone::BarFlag</qualifiedname>
+        <enumvalue id="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362aa12715294416f81a7a85a5a7ebb8fc70" prot="public">
+          <name>DarkenSky</name>
+          <briefdescription>
+<para>Darkens the sky like during fighting a wither. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1acc3803a64f53c1f4880bc60821eca362a9ee43b94d40ab3242ce5f7f8fcc332a1" prot="public">
+          <name>CreateFog</name>
+          <briefdescription>
+<para>Creates fog around the world. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/boss/bar_flag.h" line="18" column="1" bodyfile="include/endstone/boss/bar_flag.h" bodystart="18" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>BarStyle</name>
+        <qualifiedname>endstone::BarStyle</qualifiedname>
+        <enumvalue id="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734ae41480b6bbfbf7407974a88d3d34f4fa" prot="public">
+          <name>Solid</name>
+          <briefdescription>
+<para>Makes the boss bar solid (no segments) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734a680ebb3273d9b287cdbb10764a9a2c2c" prot="public">
+          <name>Segmented6</name>
+          <briefdescription>
+<para>Splits the boss bar into 6 segments. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734a10cc77057fdaaeb85630c7ba35423a21" prot="public">
+          <name>Segmented10</name>
+          <briefdescription>
+<para>Splits the boss bar into 10 segments. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734a78a0e9a4e6b5cde6eb5f30e264ea5cd6" prot="public">
+          <name>Segmented12</name>
+          <briefdescription>
+<para>Splits the boss bar into 12 segments. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734a92359dcedf3f43775a3e540c8cac0b46" prot="public">
+          <name>Segmented20</name>
+          <briefdescription>
+<para>Splits the boss bar into 20 segments. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/boss/bar_style.h" line="18" column="1" bodyfile="include/endstone/boss/bar_style.h" bodystart="18" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1a5415420c66b97075d7306679e05c931a" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>EventResult</name>
+        <qualifiedname>endstone::EventResult</qualifiedname>
+        <enumvalue id="namespaceendstone_1a5415420c66b97075d7306679e05c931aa3682d1665cf331373000c20680732d3a" prot="public">
+          <name>Deny</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Deny the event. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5415420c66b97075d7306679e05c931aa7a1920d61156abc05a60135aefe8bc67" prot="public">
+          <name>Default</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Neither deny nor allow the event. The server will proceed with its normal handling. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5415420c66b97075d7306679e05c931aa45f0fb72a0defdfdb01de4b5a5a6876b" prot="public">
+          <name>Allow</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Allow / Force the event. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="22" column="1" bodyfile="include/endstone/event/event.h" bodystart="22" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>EventPriority</name>
+        <qualifiedname>endstone::EventPriority</qualifiedname>
+        <enumvalue id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342ab5b8e20937205384be7b9e0c29a28fdb" prot="public">
+          <name>Lowest</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is of very low importance and should be run first, to allow other plugins to further customise the outcome </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a28d0edd045e05cf5af64e35ae0c4c6ef" prot="public">
+          <name>Low</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is of low importance </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a960b44c579bc2f6818d2daaf9e4c16f0" prot="public">
+          <name>Normal</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is neither important nor unimportant, and may be run normally </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a655d20c1ca69519ca647684edbb2db35" prot="public">
+          <name>High</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is of high importance </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a582996407922dab08d5cf2b3d2a7c1c9" prot="public">
+          <name>Highest</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is critical and must have the final say in what happens to the event </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342ad2986ac8cb6bd55892099c1ffd6b1f6f" prot="public">
+          <name>Monitor</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> is listened to purely for monitoring the outcome of an event. No modifications to the event should be made under this priority </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents an event&apos;s priority in execution. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Listeners with lower priority are called first will listeners with higher priority are called last. Listeners are called in following order: LOWEST -&gt; LOW -&gt; NORMAL -&gt; HIGH -&gt; HIGHEST -&gt; MONITOR </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event_priority.h" line="26" column="1" bodyfile="include/endstone/event/event_priority.h" bodystart="26" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>GameMode</name>
+        <qualifiedname>endstone::GameMode</qualifiedname>
+        <enumvalue id="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa521100d075c1284b944841394e157744" prot="public">
+          <name>Survival</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Survival mode is the &quot;normal&quot; gameplay type, with no special features. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa047c6bd032387e5c84e1e718f58f7e5a" prot="public">
+          <name>Creative</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Creative mode may fly, build instantly, become invulnerable and create free items. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aadc1d2a4d591857f0a0dd38b4ebcf5a72" prot="public">
+          <name>Adventure</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Adventure mode cannot break blocks without the correct tools. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa38721bd8d7c0aa7e0e6999ae0c2cc98d" prot="public">
+          <name>Spectator</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Spectator mode cannot interact with the world in anyway and is invisible to normal players. This grants the player the ability to no-clip through the world. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents the various type of game modes that Players may have. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/game_mode.h" line="22" column="1" bodyfile="include/endstone/game_mode.h" bodystart="22" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>EquipmentSlot</name>
+        <qualifiedname>endstone::EquipmentSlot</qualifiedname>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39aa78b1ac16c0cd02168097fc9a9bd7604" prot="public">
+          <name>Hand</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a2cc539207caf1a7e1e986b92e4462d7c" prot="public">
+          <name>OffHand</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a0f2e8e047e38898ec859c631576985e7" prot="public">
+          <name>Feet</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a48423a9049b3065103ef1026a5fa08e5" prot="public">
+          <name>Legs</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a080a546abcbea74459f27ba33313993d" prot="public">
+          <name>Chest</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39a98921133d10fbdb0fb6dbb7b2648befe" prot="public">
+          <name>Head</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1afad3b218f2082aec71169d21f2493a39aac101b32dda4448cf13a93fe283dddd8" prot="public">
+          <name>Body</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="note"><para>Only for certain entities such as horses and wolves. </para>
+</simplesect>
+</para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/equipment_slot.h" line="21" column="1" bodyfile="include/endstone/inventory/equipment_slot.h" bodystart="21" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>PermissionDefault</name>
+        <qualifiedname>endstone::PermissionDefault</qualifiedname>
+        <enumvalue id="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481af827cf462f62848df37c5e1e94a4da74" prot="public">
+          <name>True</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481af8320b26d30ab433c5a54546d21f414c" prot="public">
+          <name>False</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481ae1b3ec89ead7f83a9245ed5c9cacfdbf" prot="public">
+          <name>Operator</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481a536205216181a240bf213a21598278dd" prot="public">
+          <name>NotOperator</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481abccaa4aa80831b76c11240a16447975f" prot="public">
+          <name>Console</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents the possible default values for permissions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission_default.h" line="22" column="1" bodyfile="include/endstone/permissions/permission_default.h" bodystart="22" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbb" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>PermissionLevel</name>
+        <qualifiedname>endstone::PermissionLevel</qualifiedname>
+        <enumvalue id="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbba7a1920d61156abc05a60135aefe8bc67" prot="public">
+          <name>Default</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbbae1b3ec89ead7f83a9245ed5c9cacfdbf" prot="public">
+          <name>Operator</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbbabccaa4aa80831b76c11240a16447975f" prot="public">
+          <name>Console</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission_level.h" line="18" column="1" bodyfile="include/endstone/permissions/permission_level.h" bodystart="18" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1acbd28364660dc397ef62ea1902defe6b" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>PluginLoadOrder</name>
+        <qualifiedname>endstone::PluginLoadOrder</qualifiedname>
+        <enumvalue id="namespaceendstone_1acbd28364660dc397ef62ea1902defe6ba13e685964c2548aa748f7ea263bad4e5" prot="public">
+          <name>Startup</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Indicates that the plugin will be loaded at startup </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" prot="public">
+          <name>PostWorld</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Indicates that the plugin will be loaded after the first/default world was created </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents the order in which a plugin should be initialized and enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_load_order.h" line="22" column="1" bodyfile="include/endstone/plugin/plugin_load_order.h" bodystart="22" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1a5e726f9a35fad2caa785b6225c768ca5" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>ServicePriority</name>
+        <qualifiedname>endstone::ServicePriority</qualifiedname>
+        <enumvalue id="namespaceendstone_1a5e726f9a35fad2caa785b6225c768ca5ab5b8e20937205384be7b9e0c29a28fdb" prot="public">
+          <name>Lowest</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5e726f9a35fad2caa785b6225c768ca5a28d0edd045e05cf5af64e35ae0c4c6ef" prot="public">
+          <name>Low</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5e726f9a35fad2caa785b6225c768ca5a960b44c579bc2f6818d2daaf9e4c16f0" prot="public">
+          <name>Normal</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5e726f9a35fad2caa785b6225c768ca5a655d20c1ca69519ca647684edbb2db35" prot="public">
+          <name>High</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5e726f9a35fad2caa785b6225c768ca5a582996407922dab08d5cf2b3d2a7c1c9" prot="public">
+          <name>Highest</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents various priorities of a provider. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/service_priority.h" line="21" column="1" bodyfile="include/endstone/plugin/service_priority.h" bodystart="21" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>DisplaySlot</name>
+        <qualifiedname>endstone::DisplaySlot</qualifiedname>
+        <enumvalue id="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4a5b9ffa92c0234ccbdc123d9adc2ee438" prot="public">
+          <name>BelowName</name>
+          <briefdescription>
+<para>Displays the score below the player&apos;s name. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4aec90d7579b8e9e4c97501a75500e109a" prot="public">
+          <name>PlayerList</name>
+          <briefdescription>
+<para>Displays the score in the player list on the pause screen. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4a0618886ac5850cee7f454d1085a52574" prot="public">
+          <name>SideBar</name>
+          <briefdescription>
+<para>Displays the score on the side of the player&apos;s screen. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Locations for displaying objectives to the player. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/display_slot.h" line="22" column="1" bodyfile="include/endstone/scoreboard/display_slot.h" bodystart="22" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1a3bd0139000789bdd027bcb09aca47f9f" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>ObjectiveSortOrder</name>
+        <qualifiedname>endstone::ObjectiveSortOrder</qualifiedname>
+        <enumvalue id="namespaceendstone_1a3bd0139000789bdd027bcb09aca47f9facf3fb1ff52ea1eed3347ac5401ee7f0c" prot="public">
+          <name>Ascending</name>
+          <briefdescription>
+<para>Sorts the objectives in the ascending order. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1a3bd0139000789bdd027bcb09aca47f9fae3cf5ac19407b1a62c6fccaff675a53b" prot="public">
+          <name>Descending</name>
+          <briefdescription>
+<para>Sorts the objectives in the descending order. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents the sort order of objectives on a DisplaySlot. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/objective_sort_order.h" line="22" column="1" bodyfile="include/endstone/scoreboard/objective_sort_order.h" bodystart="22" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" prot="public" static="no" strong="yes">
+        <type>std::uint8_t</type>
+        <name>RenderType</name>
+        <qualifiedname>endstone::RenderType</qualifiedname>
+        <enumvalue id="namespaceendstone_1ae444241ed516d06f778078ee798db9e9aa0faef0851b4294c06f2b94bb1cb2044" prot="public">
+          <name>Integer</name>
+          <briefdescription>
+<para>Display integer value. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceendstone_1ae444241ed516d06f778078ee798db9e9a6af4bf214d6cf054f9528da5b6054817" prot="public">
+          <name>Hearts</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Display number of hearts corresponding to value. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Controls the way in which an <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> is rendered on the client side. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/render_type.h" line="23" column="1" bodyfile="include/endstone/scoreboard/render_type.h" bodystart="23" bodyend="32"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceendstone_1ac2d399872c391e7ce2ec1896ba62e669" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Attribute" kindref="compound">Attribute</ref> &gt;</type>
+        <definition>using endstone::AttributeId = typedef Identifier&lt;class Attribute&gt;</definition>
+        <argsstring></argsstring>
+        <name>AttributeId</name>
+        <qualifiedname>endstone::AttributeId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/attribute/attribute.h" line="20" column="1" bodyfile="include/endstone/attribute/attribute.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a688abbe501a61374454a55553d25e08f" prot="public" static="no">
+        <type>std::unordered_map&lt; std::string, std::variant&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>, std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt; &gt;</type>
+        <definition>using endstone::BlockStates = typedef std::unordered_map&lt;std::string, std::variant&lt;bool, std::string, int&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>BlockStates</name>
+        <qualifiedname>endstone::BlockStates</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_data.h" line="29" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1EffectType" kindref="compound">EffectType</ref> &gt;</type>
+        <definition>using endstone::EffectId = typedef Identifier&lt;class EffectType&gt;</definition>
+        <argsstring></argsstring>
+        <name>EffectId</name>
+        <qualifiedname>endstone::EffectId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="22" column="1" bodyfile="include/endstone/effect/effect_type.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a996c90f609bfd792a8245bb60fd3e4ea" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> &gt;</type>
+        <definition>using endstone::EnchantmentId = typedef Identifier&lt;class Enchantment&gt;</definition>
+        <argsstring></argsstring>
+        <name>EnchantmentId</name>
+        <qualifiedname>endstone::EnchantmentId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/enchantments/enchantment.h" line="24" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref> &gt;</type>
+        <definition>using endstone::ItemTypeId = typedef Identifier&lt;ItemType&gt;</definition>
+        <argsstring></argsstring>
+        <name>ItemTypeId</name>
+        <qualifiedname>endstone::ItemTypeId</qualifiedname>
+        <briefdescription>
+<para>Represents an item type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_type.h" line="28" column="1" bodyfile="include/endstone/inventory/item_type.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" prot="public" static="no">
+        <type>std::variant&lt; std::string, <ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref> &gt;</type>
+        <definition>using endstone::Message = typedef std::variant&lt;std::string, Translatable&gt;</definition>
+        <argsstring></argsstring>
+        <name>Message</name>
+        <qualifiedname>endstone::Message</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/message.h" line="25" column="1" bodyfile="include/endstone/message.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a33e1574322a8aca1ebab711faea30a4a" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::uint8_t &gt;</type>
+        <definition>using endstone::ByteTag = typedef nbt::ValueTag&lt;std::uint8_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>ByteTag</name>
+        <qualifiedname>endstone::ByteTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="38" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1acb2bf69099c0af04c6c085cb2b3241c8" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::int16_t &gt;</type>
+        <definition>using endstone::ShortTag = typedef nbt::ValueTag&lt;std::int16_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>ShortTag</name>
+        <qualifiedname>endstone::ShortTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="39" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1ac3fa2364d5a39f92bac2643e995aef4f" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::int32_t &gt;</type>
+        <definition>using endstone::IntTag = typedef nbt::ValueTag&lt;std::int32_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>IntTag</name>
+        <qualifiedname>endstone::IntTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="40" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a461a40b18afe2f2f141107df466d3f23" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::int64_t &gt;</type>
+        <definition>using endstone::LongTag = typedef nbt::ValueTag&lt;std::int64_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>LongTag</name>
+        <qualifiedname>endstone::LongTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="41" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1aad298a7519bf969fb5c39873086bb6a6" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
+        <definition>using endstone::FloatTag = typedef nbt::ValueTag&lt;float&gt;</definition>
+        <argsstring></argsstring>
+        <name>FloatTag</name>
+        <qualifiedname>endstone::FloatTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="42" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1abc87a5b4504a532abbacdec96b88f91d" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">double</ref> &gt;</type>
+        <definition>using endstone::DoubleTag = typedef nbt::ValueTag&lt;double&gt;</definition>
+        <argsstring></argsstring>
+        <name>DoubleTag</name>
+        <qualifiedname>endstone::DoubleTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="43" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a3dfcef30e05aaccd7b8316021b9b43dd" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">nbt::ArrayTag</ref>&lt; std::uint8_t &gt;</type>
+        <definition>using endstone::ByteArrayTag = typedef nbt::ArrayTag&lt;std::uint8_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>ByteArrayTag</name>
+        <qualifiedname>endstone::ByteArrayTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="44" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a9f9696219c347f4a15b1e1495af99f66" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::string &gt;</type>
+        <definition>using endstone::StringTag = typedef nbt::ValueTag&lt;std::string&gt;</definition>
+        <argsstring></argsstring>
+        <name>StringTag</name>
+        <qualifiedname>endstone::StringTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="45" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a32ff16a28255aeb30f8d6905e6100a2b" prot="public" static="no">
+        <type><ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">nbt::ArrayTag</ref>&lt; std::int32_t &gt;</type>
+        <definition>using endstone::IntArrayTag = typedef nbt::ArrayTag&lt;std::int32_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>IntArrayTag</name>
+        <qualifiedname>endstone::IntArrayTag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="46" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1afe5c52ae8db67deff2df8c157cd1c71e" prot="public" static="no">
+        <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;)&gt;</type>
+        <definition>using endstone::PermissionRemovedExecutor = typedef std::function&lt;void(const PermissionAttachment &amp;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>PermissionRemovedExecutor</name>
+        <qualifiedname>endstone::PermissionRemovedExecutor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/permissions/permission_attachment.h" line="28" column="1" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a752231e730d011e08a0c9329945d4d6f" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1PotionType" kindref="compound">PotionType</ref> &gt;</type>
+        <definition>using endstone::PotionId = typedef Identifier&lt;class PotionType&gt;</definition>
+        <argsstring></argsstring>
+        <name>PotionId</name>
+        <qualifiedname>endstone::PotionId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="20" column="1" bodyfile="include/endstone/potion/potion_type.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1ae2ff6d706eb4d7bdf8062917bb90ac29" prot="public" static="no">
+        <type>std::uint32_t</type>
+        <definition>using endstone::TaskId = typedef std::uint32_t</definition>
+        <argsstring></argsstring>
+        <name>TaskId</name>
+        <qualifiedname>endstone::TaskId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scheduler/task.h" line="23" column="1" bodyfile="include/endstone/scheduler/task.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" prot="public" static="no">
+        <type>std::variant&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *, std::string &gt;</type>
+        <definition>using endstone::ScoreEntry = typedef std::variant&lt;Player *, Actor *, std::string&gt;</definition>
+        <argsstring></argsstring>
+        <name>ScoreEntry</name>
+        <qualifiedname>endstone::ScoreEntry</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>An entry for a score. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/score_entry.h" line="29" column="1" bodyfile="include/endstone/scoreboard/score_entry.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1abc54c88a21352cadabe5992bea8976d6" prot="public" static="no">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>nonstd::expected&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref>, std::string &gt;</type>
+        <definition>using endstone::Result = typedef nonstd::expected&lt;T, std::string&gt;</definition>
+        <argsstring></argsstring>
+        <name>Result</name>
+        <qualifiedname>endstone::Result</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/result.h" line="25" column="1" bodyfile="include/endstone/util/result.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceendstone_1a7b7ab9b56a4154ad3a009298e60619e0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::operator==</definition>
+        <argsstring>(const ListTag &amp;a, const ListTag &amp;b) noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="410" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="410" bodyend="413"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1a34cad5224fa76351c8c972f96d3714d4" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::operator!=</definition>
+        <argsstring>(const ListTag &amp;a, const ListTag &amp;b) noexcept</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>endstone::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="415" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="415" bodyend="418"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1a80c7553c9d56b35db5a0dc38e593353b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::operator==</definition>
+        <argsstring>(const CompoundTag &amp;a, const CompoundTag &amp;b) noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="549" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="549" bodyend="552"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1ab04db219712717856d6a5330ef2b4534" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::operator!=</definition>
+        <argsstring>(const CompoundTag &amp;a, const CompoundTag &amp;b) noexcept</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>endstone::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="554" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="554" bodyend="557"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1ad7d0fbae7e1dd31cae1c84965a2f65a8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::operator==</definition>
+        <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="98" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="98" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1ac40f4f96efb610d56f90c6541fc8b400" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::operator&lt;</definition>
+        <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
+        <name>operator&lt;</name>
+        <qualifiedname>endstone::operator&lt;</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="103" column="8" bodyfile="include/endstone/util/uuid.h" bodystart="103" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1a96fb3e11970608db1df12feb7a3a829e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::operator!=</definition>
+        <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>endstone::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="108" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="108" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1aba0d90c3040dfe93ee11500a1923dfad" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::operator&gt;</definition>
+        <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
+        <name>operator&gt;</name>
+        <qualifiedname>endstone::operator&gt;</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="113" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="113" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1a467aa3012a4c69958f16d9e0d713bf3a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::operator&lt;=</definition>
+        <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
+        <name>operator&lt;=</name>
+        <qualifiedname>endstone::operator&lt;=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="117" column="8" bodyfile="include/endstone/util/uuid.h" bodystart="117" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1af337ccd795abe8d4ca38aeffcd6066e7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::operator&gt;=</definition>
+        <argsstring>(UUID const &amp;lhs, UUID const &amp;rhs) noexcept</argsstring>
+        <name>operator&gt;=</name>
+        <qualifiedname>endstone::operator&gt;=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="122" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="122" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1af2cf5277faf4607f09dbd0060c401d53" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::swap</definition>
+        <argsstring>(UUID &amp;lhs, UUID &amp;rhs) noexcept</argsstring>
+        <name>swap</name>
+        <qualifiedname>endstone::swap</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &amp;</type>
+          <declname>lhs</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="127" column="13" bodyfile="include/endstone/util/uuid.h" bodystart="127" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1a3d5bde372c0cb7aefcad787a85d1f551" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t endstone::hash_value</definition>
+        <argsstring>(UUID const &amp;u) noexcept</argsstring>
+        <name>hash_value</name>
+        <qualifiedname>endstone::hash_value</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> &amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="132" column="20" bodyfile="include/endstone/util/uuid.h" bodystart="132" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceendstone_1a653e5211ad2fdddf9d08c7353381631d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Func</declname>
+            <defname>Func</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>endstone::overloaded</definition>
+        <argsstring>(Func...) -&gt; overloaded&lt; Func... &gt;</argsstring>
+        <name>overloaded</name>
+        <qualifiedname>endstone::overloaded</qualifiedname>
+        <param>
+          <type>Func...</type>
+        </param>
+        <briefdescription>
+<para>Deduction guide. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Types of function objects. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/variant.h" line="32" column="1" declfile="include/endstone/variant.h" declline="32" declcolumn="1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a button with text and an optional icon. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/actor/actor.h" line="24" column="1"/>
+  </compounddef>
+</doxygen>

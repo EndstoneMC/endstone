@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="namespacefmt" kind="namespace" language="C++">
+    <compoundname>fmt</compoundname>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1Actor_01_4" prot="public">fmt::formatter&lt; endstone::Actor &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1Block_01_4" prot="public">fmt::formatter&lt; endstone::Block &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4" prot="public">fmt::formatter&lt; endstone::BlockData &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4" prot="public">fmt::formatter&lt; endstone::BlockState &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4" prot="public">fmt::formatter&lt; endstone::BlockStates &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4" prot="public">fmt::formatter&lt; endstone::BlockStates::mapped_type &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4" prot="public">fmt::formatter&lt; endstone::BlockStates::value_type &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1ByteArrayTag_01_4" prot="public">fmt::formatter&lt; endstone::ByteArrayTag &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1ByteTag_01_4" prot="public">fmt::formatter&lt; endstone::ByteTag &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1Chunk_01_4" prot="public">fmt::formatter&lt; endstone::Chunk &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1CompoundTag_01_4" prot="public">fmt::formatter&lt; endstone::CompoundTag &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1CompoundTag_1_1map__type_1_1value__type_01_4" prot="public">fmt::formatter&lt; endstone::CompoundTag::map_type::value_type &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4" prot="public">fmt::formatter&lt; endstone::DamageSource &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4" prot="public">fmt::formatter&lt; endstone::Dimension &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1DoubleTag_01_4" prot="public">fmt::formatter&lt; endstone::DoubleTag &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1FloatTag_01_4" prot="public">fmt::formatter&lt; endstone::FloatTag &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1Identifier_3_01T_01_4_01_4" prot="public">fmt::formatter&lt; endstone::Identifier&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1IntArrayTag_01_4" prot="public">fmt::formatter&lt; endstone::IntArrayTag &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1IntTag_01_4" prot="public">fmt::formatter&lt; endstone::IntTag &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4" prot="public">fmt::formatter&lt; endstone::ItemStack &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4" prot="public">fmt::formatter&lt; endstone::ItemType &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1ListTag_01_4" prot="public">fmt::formatter&lt; endstone::ListTag &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1Location_01_4" prot="public">fmt::formatter&lt; endstone::Location &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1LongTag_01_4" prot="public">fmt::formatter&lt; endstone::LongTag &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1nbt_1_1escape__view_01_4" prot="public">fmt::formatter&lt; endstone::nbt::escape_view &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4" prot="public">fmt::formatter&lt; endstone::nbt::Tag &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1ShortTag_01_4" prot="public">fmt::formatter&lt; endstone::ShortTag &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1StringTag_01_4" prot="public">fmt::formatter&lt; endstone::StringTag &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1Vector_01_4" prot="public">fmt::formatter&lt; endstone::Vector &gt;</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/block/block.h" line="171" column="1"/>
+  </compounddef>
+</doxygen>

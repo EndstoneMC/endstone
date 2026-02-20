@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="namespaceendstone_1_1nbt" kind="namespace" language="C++">
+    <compoundname>endstone::nbt</compoundname>
+    <innerclass refid="classendstone_1_1nbt_1_1ArrayTag" prot="public">endstone::nbt::ArrayTag</innerclass>
+    <innerclass refid="structendstone_1_1nbt_1_1escape__view" prot="private">endstone::nbt::escape_view</innerclass>
+    <innerclass refid="classendstone_1_1nbt_1_1Tag" prot="public">endstone::nbt::Tag</innerclass>
+    <innerclass refid="structendstone_1_1nbt_1_1TagBase" prot="public">endstone::nbt::TagBase</innerclass>
+    <innerclass refid="classendstone_1_1nbt_1_1ValueTag" prot="public">endstone::nbt::ValueTag</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="type_8h_1a4ad7d0adad58bd6416997ecb276da28c" prot="public" static="no" strong="yes">
+        <type>std::uint8_t</type>
+        <name>Type</name>
+        <qualifiedname>endstone::nbt::Type</qualifiedname>
+        <enumvalue id="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca87557f11575c0ad78e4e28abedc13b6e" prot="public">
+          <name>End</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="type_8h_1a4ad7d0adad58bd6416997ecb276da28caa245c3230debe5c956484ecc6fa93877" prot="public">
+          <name>Byte</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca30bb747c98bccdd11b3f89e644c4d0ad" prot="public">
+          <name>Short</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca1686a6c336b71b36d77354cea19a8b52" prot="public">
+          <name>Int</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca8394f0347c184cf156ac5924dccb773b" prot="public">
+          <name>Long</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca22ae0e2b89e5e3d477f988cc36d3272b" prot="public">
+          <name>Float</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="type_8h_1a4ad7d0adad58bd6416997ecb276da28cad909d38d705ce75386dd86e611a82f5b" prot="public">
+          <name>Double</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca29d83f0080e24c1f4b3975dc9ff9e868" prot="public">
+          <name>ByteArray</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca27118326006d3829667a400ad23d5d98" prot="public">
+          <name>String</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca4ee29ca12c7d126654bd0e5275de6135" prot="public">
+          <name>List</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca26154ea007c65f860de5333a555a56cf" prot="public">
+          <name>Compound</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="type_8h_1a4ad7d0adad58bd6416997ecb276da28caa4cf98abdafab708d30b8d2ae8d57be8" prot="public">
+          <name>IntArray</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/type.h" line="20" column="1" bodyfile="include/endstone/nbt/type.h" bodystart="20" bodyend="33"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="tag_8h_1a3311af8ab3020c12798741271ff1aca8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>escape_view</type>
+        <definition>escape_view endstone::nbt::escaped</definition>
+        <argsstring>(std::string_view value)</argsstring>
+        <name>escaped</name>
+        <qualifiedname>endstone::nbt::escaped</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="563" column="20" bodyfile="include/endstone/nbt/tag.h" bodystart="563" bodyend="566"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/nbt/array.h" line="25" column="1"/>
+  </compounddef>
+</doxygen>

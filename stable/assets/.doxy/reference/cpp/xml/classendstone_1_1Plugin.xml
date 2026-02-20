@@ -1,0 +1,551 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Plugin" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Plugin</compoundname>
+    <basecompoundref refid="classendstone_1_1CommandExecutor" prot="public" virt="non-virtual">endstone::CommandExecutor</basecompoundref>
+    <includes refid="plugin_8h" local="no">endstone/plugin/plugin.h</includes>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classendstone_1_1Plugin_1a7935fed495dc747e3ee24e005a4439eb" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref></type>
+        <definition>friend class PluginLoader</definition>
+        <argsstring></argsstring>
+        <name>PluginLoader</name>
+        <qualifiedname>endstone::Plugin::PluginLoader</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="155" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classendstone_1_1Plugin_1af89a58b391c1b932c5d3580fc2ccb764" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref></type>
+        <definition>friend class core::EndstonePluginManager</definition>
+        <argsstring></argsstring>
+        <name>core::EndstonePluginManager</name>
+        <qualifiedname>endstone::Plugin::EndstonePluginManager</qualifiedname>
+        <param>
+          <type>core::EndstonePluginManager</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="156" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Plugin_1aee2a3ea3a977bc44ea80f5a74ca5c454" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Plugin::enabled_</definition>
+        <argsstring></argsstring>
+        <name>enabled_</name>
+        <qualifiedname>endstone::Plugin::enabled_</qualifiedname>
+        <initializer>{<ref refid="classendstone_1_1Identifier" kindref="compound">false</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="178" column="10" bodyfile="include/endstone/plugin/plugin.h" bodystart="178" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Plugin_1adfef6b28e088eeba9322262d6c4bab5b" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> *</type>
+        <definition>PluginLoader* endstone::Plugin::loader_</definition>
+        <argsstring></argsstring>
+        <name>loader_</name>
+        <qualifiedname>endstone::Plugin::loader_</qualifiedname>
+        <initializer>{<ref refid="classendstone_1_1Identifier" kindref="compound">nullptr</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="179" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="179" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Plugin_1abb783c24dd0a315c59a4c03e619779b3" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> *</type>
+        <definition>Server* endstone::Plugin::server_</definition>
+        <argsstring></argsstring>
+        <name>server_</name>
+        <qualifiedname>endstone::Plugin::server_</qualifiedname>
+        <initializer>{<ref refid="classendstone_1_1Identifier" kindref="compound">nullptr</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="180" column="12" bodyfile="include/endstone/plugin/plugin.h" bodystart="180" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Plugin_1a8772bd2b390aee5e1cf0ff8ed982ffe4" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Logger" kindref="compound">Logger</ref> *</type>
+        <definition>Logger* endstone::Plugin::logger_</definition>
+        <argsstring></argsstring>
+        <name>logger_</name>
+        <qualifiedname>endstone::Plugin::logger_</qualifiedname>
+        <initializer>{<ref refid="classendstone_1_1Identifier" kindref="compound">nullptr</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="181" column="12" bodyfile="include/endstone/plugin/plugin.h" bodystart="181" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Plugin_1a9ca34c145db5a8a408d70fff3080e032" prot="private" static="no" mutable="no">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path endstone::Plugin::data_folder_</definition>
+        <argsstring></argsstring>
+        <name>data_folder_</name>
+        <qualifiedname>endstone::Plugin::data_folder_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="182" column="27" bodyfile="include/endstone/plugin/plugin.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Plugin_1a3c48f15bc7bddcfd3eb0c8ce149a367e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Plugin::Plugin</definition>
+        <argsstring>()=default</argsstring>
+        <name>Plugin</name>
+        <qualifiedname>endstone::Plugin::Plugin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="44" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1a3d1347124cfe422d926f187324bf8607" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Plugin::Plugin</definition>
+        <argsstring>(const Plugin &amp;)=delete</argsstring>
+        <name>Plugin</name>
+        <qualifiedname>endstone::Plugin::Plugin</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="45" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1a61d1196288528c00e56ba09566293a7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+        <definition>Plugin &amp; endstone::Plugin::operator=</definition>
+        <argsstring>(const Plugin &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>endstone::Plugin::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="46" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1abe4e7cd4f32eb0e744f8df2850391dfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Plugin::~Plugin</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~Plugin</name>
+        <qualifiedname>endstone::Plugin::~Plugin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="48" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1afbb41d0901dc0ba90e6f07e33f1222ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1PluginDescription" kindref="compound">PluginDescription</ref> &amp;</type>
+        <definition>virtual const PluginDescription &amp; endstone::Plugin::getDescription</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getDescription</name>
+        <qualifiedname>endstone::Plugin::getDescription</qualifiedname>
+        <briefdescription>
+<para>Returns the details of this plugin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Details of this plugin </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="55" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1af5d90225a0057bf88d97144acfae2ff4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Plugin::onLoad</definition>
+        <argsstring>()</argsstring>
+        <name>onLoad</name>
+        <qualifiedname>endstone::Plugin::onLoad</qualifiedname>
+        <briefdescription>
+<para>Called after a plugin is loaded but before it has been enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>When multiple plugins are loaded, the <ref refid="classendstone_1_1Plugin_1af5d90225a0057bf88d97144acfae2ff4" kindref="member">onLoad()</ref> for all plugins is called before any <ref refid="classendstone_1_1Plugin_1ae2a98beb4cfdc042da7e0d7ed0cd5856" kindref="member">onEnable()</ref> is called. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="63" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1ae2a98beb4cfdc042da7e0d7ed0cd5856" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Plugin::onEnable</definition>
+        <argsstring>()</argsstring>
+        <name>onEnable</name>
+        <qualifiedname>endstone::Plugin::onEnable</qualifiedname>
+        <briefdescription>
+<para>Called when this plugin is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="68" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1aadd23b4ac5c6603e6961728d6586b121" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Plugin::onDisable</definition>
+        <argsstring>()</argsstring>
+        <name>onDisable</name>
+        <qualifiedname>endstone::Plugin::onDisable</qualifiedname>
+        <briefdescription>
+<para>Called when this plugin is disabled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="73" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1a0d49600964b786ccf286a80537c14882" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Logger" kindref="compound">Logger</ref> &amp;</type>
+        <definition>Logger &amp; endstone::Plugin::getLogger</definition>
+        <argsstring>() const</argsstring>
+        <name>getLogger</name>
+        <qualifiedname>endstone::Plugin::getLogger</qualifiedname>
+        <briefdescription>
+<para>Returns the plugin logger associated with this server&apos;s logger. The returned logger automatically tags all log messages with the plugin&apos;s name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Logger" kindref="compound">Logger</ref> associated with this plugin </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="82" column="13" bodyfile="include/endstone/plugin/plugin.h" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1ab06a53213e2521dd7d2cde4a260f80f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Plugin::isEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>isEnabled</name>
+        <qualifiedname>endstone::Plugin::isEnabled</qualifiedname>
+        <briefdescription>
+<para>Returns a value indicating whether this plugin is currently enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if this plugin is enabled, otherwise false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="90" column="11" bodyfile="include/endstone/plugin/plugin.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1ad3c9fb3cfbdc03ca2f00ebf34aa4ef1e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> &amp;</type>
+        <definition>PluginLoader &amp; endstone::Plugin::getPluginLoader</definition>
+        <argsstring>() const</argsstring>
+        <name>getPluginLoader</name>
+        <qualifiedname>endstone::Plugin::getPluginLoader</qualifiedname>
+        <briefdescription>
+<para>Gets the associated <ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> responsible for this plugin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> that controls this plugin </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="97" column="19" bodyfile="include/endstone/plugin/plugin.h" bodystart="97" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1aa828bda3cbb3f880d2a67b93545957eb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
+        <definition>Server &amp; endstone::Plugin::getServer</definition>
+        <argsstring>() const</argsstring>
+        <name>getServer</name>
+        <qualifiedname>endstone::Plugin::getServer</qualifiedname>
+        <briefdescription>
+<para>Returns the <ref refid="classendstone_1_1Server" kindref="compound">Server</ref> instance currently running this plugin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> running this plugin </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="104" column="13" bodyfile="include/endstone/plugin/plugin.h" bodystart="104" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1a75894467827c57e62d03f491428a1852" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::Plugin::getName</definition>
+        <argsstring>() const</argsstring>
+        <name>getName</name>
+        <qualifiedname>endstone::Plugin::getName</qualifiedname>
+        <briefdescription>
+<para>Returns the name of the plugin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This should return the bare name of the plugin and should be used for comparison.</para>
+<para><simplesect kind="return"><para>name of the plugin </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="114" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1ade724d92b6cebdf4c11d3a4c04e3f49f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> *</type>
+        <definition>PluginCommand * endstone::Plugin::getCommand</definition>
+        <argsstring>(std::string name) const</argsstring>
+        <name>getCommand</name>
+        <qualifiedname>endstone::Plugin::getCommand</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Gets the command with the given name, specific to this plugin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name or alias of the command </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the plugin command if found, otherwise null </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="122" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="122" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1a3181846afa77e1801c009aa535b25ea0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::filesystem::path &amp;</type>
+        <definition>const std::filesystem::path &amp; endstone::Plugin::getDataFolder</definition>
+        <argsstring>() const</argsstring>
+        <name>getDataFolder</name>
+        <qualifiedname>endstone::Plugin::getDataFolder</qualifiedname>
+        <briefdescription>
+<para>Returns the folder that the plugin data&apos;s files are located in. The folder may not yet exist. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The folder </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="134" column="34" bodyfile="include/endstone/plugin/plugin.h" bodystart="134" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1ae552be9edf85435a6b70361de0f0c133" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> EventType</type>
+          </param>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::Plugin::registerEvent</definition>
+        <argsstring>(void(T::*func)(EventType &amp;), T &amp;instance, EventPriority priority=EventPriority::Normal, bool ignore_cancelled=false)</argsstring>
+        <name>registerEvent</name>
+        <qualifiedname>endstone::Plugin::registerEvent</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(T::*)(EventType &amp;)</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
+          <declname>instance</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" kindref="member">EventPriority</ref></type>
+          <declname>priority</declname>
+          <defval><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a960b44c579bc2f6818d2daaf9e4c16f0" kindref="member">EventPriority::Normal</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>ignore_cancelled</declname>
+          <defval><ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="137" column="10" bodyfile="include/endstone/plugin/plugin.h" bodystart="137" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1a5a480b1117f2d8459e4923e1808f1239" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> EventType</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::Plugin::registerEvent</definition>
+        <argsstring>(std::function&lt; void(EventType &amp;)&gt; func, EventPriority priority=EventPriority::Normal, bool ignore_cancelled=false)</argsstring>
+        <name>registerEvent</name>
+        <qualifiedname>endstone::Plugin::registerEvent</qualifiedname>
+        <param>
+          <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(EventType &amp;)&gt;</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" kindref="member">EventPriority</ref></type>
+          <declname>priority</declname>
+          <defval><ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a960b44c579bc2f6818d2daaf9e4c16f0" kindref="member">EventPriority::Normal</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>ignore_cancelled</declname>
+          <defval><ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="146" column="10" bodyfile="include/endstone/plugin/plugin.h" bodystart="146" bodyend="152"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classendstone_1_1Plugin_1aaadd57e597b76aae651de39c005b2a37" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>void endstone::Plugin::setEnabled</definition>
+        <argsstring>(bool enabled)</argsstring>
+        <name>setEnabled</name>
+        <qualifiedname>endstone::Plugin::setEnabled</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the enabled state of this plugin</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true if enabled, otherwise false </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin.h" line="163" column="10" bodyfile="include/endstone/plugin/plugin.h" bodystart="163" bodyend="175"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::CommandExecutor</label>
+        <link refid="classendstone_1_1CommandExecutor"/>
+      </node>
+      <node id="1">
+        <label>endstone::Plugin</label>
+        <link refid="classendstone_1_1Plugin"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::CommandExecutor</label>
+        <link refid="classendstone_1_1CommandExecutor"/>
+      </node>
+      <node id="1">
+        <label>endstone::Plugin</label>
+        <link refid="classendstone_1_1Plugin"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/plugin/plugin.h" line="42" column="1" bodyfile="include/endstone/plugin/plugin.h" bodystart="42" bodyend="183"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Plugin_1af89a58b391c1b932c5d3580fc2ccb764" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>core::EndstonePluginManager</name></member>
+      <member refid="classendstone_1_1Plugin_1a9ca34c145db5a8a408d70fff3080e032" prot="private" virt="non-virtual"><scope>endstone::Plugin</scope><name>data_folder_</name></member>
+      <member refid="classendstone_1_1Plugin_1aee2a3ea3a977bc44ea80f5a74ca5c454" prot="private" virt="non-virtual"><scope>endstone::Plugin</scope><name>enabled_</name></member>
+      <member refid="classendstone_1_1Plugin_1ade724d92b6cebdf4c11d3a4c04e3f49f" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>getCommand</name></member>
+      <member refid="classendstone_1_1Plugin_1a3181846afa77e1801c009aa535b25ea0" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>getDataFolder</name></member>
+      <member refid="classendstone_1_1Plugin_1afbb41d0901dc0ba90e6f07e33f1222ea" prot="public" virt="pure-virtual"><scope>endstone::Plugin</scope><name>getDescription</name></member>
+      <member refid="classendstone_1_1Plugin_1a0d49600964b786ccf286a80537c14882" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>getLogger</name></member>
+      <member refid="classendstone_1_1Plugin_1a75894467827c57e62d03f491428a1852" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Plugin_1ad3c9fb3cfbdc03ca2f00ebf34aa4ef1e" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>getPluginLoader</name></member>
+      <member refid="classendstone_1_1Plugin_1aa828bda3cbb3f880d2a67b93545957eb" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>getServer</name></member>
+      <member refid="classendstone_1_1Plugin_1ab06a53213e2521dd7d2cde4a260f80f4" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>isEnabled</name></member>
+      <member refid="classendstone_1_1Plugin_1adfef6b28e088eeba9322262d6c4bab5b" prot="private" virt="non-virtual"><scope>endstone::Plugin</scope><name>loader_</name></member>
+      <member refid="classendstone_1_1Plugin_1a8772bd2b390aee5e1cf0ff8ed982ffe4" prot="private" virt="non-virtual"><scope>endstone::Plugin</scope><name>logger_</name></member>
+      <member refid="classendstone_1_1CommandExecutor_1abf189fa960c2e7f1fbc3f0366afc3d1f" prot="public" virt="virtual"><scope>endstone::Plugin</scope><name>onCommand</name></member>
+      <member refid="classendstone_1_1Plugin_1aadd23b4ac5c6603e6961728d6586b121" prot="public" virt="virtual"><scope>endstone::Plugin</scope><name>onDisable</name></member>
+      <member refid="classendstone_1_1Plugin_1ae2a98beb4cfdc042da7e0d7ed0cd5856" prot="public" virt="virtual"><scope>endstone::Plugin</scope><name>onEnable</name></member>
+      <member refid="classendstone_1_1Plugin_1af5d90225a0057bf88d97144acfae2ff4" prot="public" virt="virtual"><scope>endstone::Plugin</scope><name>onLoad</name></member>
+      <member refid="classendstone_1_1Plugin_1a61d1196288528c00e56ba09566293a7f" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Plugin_1a3c48f15bc7bddcfd3eb0c8ce149a367e" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>Plugin</name></member>
+      <member refid="classendstone_1_1Plugin_1a3d1347124cfe422d926f187324bf8607" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>Plugin</name></member>
+      <member refid="classendstone_1_1Plugin_1a7935fed495dc747e3ee24e005a4439eb" prot="protected" virt="non-virtual"><scope>endstone::Plugin</scope><name>PluginLoader</name></member>
+      <member refid="classendstone_1_1Plugin_1ae552be9edf85435a6b70361de0f0c133" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>registerEvent</name></member>
+      <member refid="classendstone_1_1Plugin_1a5a480b1117f2d8459e4923e1808f1239" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>registerEvent</name></member>
+      <member refid="classendstone_1_1Plugin_1abb783c24dd0a315c59a4c03e619779b3" prot="private" virt="non-virtual"><scope>endstone::Plugin</scope><name>server_</name></member>
+      <member refid="classendstone_1_1Plugin_1aaadd57e597b76aae651de39c005b2a37" prot="protected" virt="non-virtual"><scope>endstone::Plugin</scope><name>setEnabled</name></member>
+      <member refid="classendstone_1_1CommandExecutor_1a9dfc0b1fe01086e280de0d8202f6482c" prot="public" virt="virtual"><scope>endstone::Plugin</scope><name>~CommandExecutor</name></member>
+      <member refid="classendstone_1_1Plugin_1abe4e7cd4f32eb0e744f8df2850391dfc" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>~Plugin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

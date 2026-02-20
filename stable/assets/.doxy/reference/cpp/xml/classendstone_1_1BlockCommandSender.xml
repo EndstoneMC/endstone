@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1BlockCommandSender" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::BlockCommandSender</compoundname>
+    <basecompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</basecompoundref>
+    <includes refid="block__command__sender_8h" local="no">endstone/command/block_command_sender.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1BlockCommandSender_1a4b8542ff30c04bccecba373dde32188b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; Block &gt; endstone::BlockCommandSender::getBlock</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getBlock</name>
+        <qualifiedname>endstone::BlockCommandSender::getBlock</qualifiedname>
+        <briefdescription>
+<para>Returns the block this command sender belongs to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> for the command sender </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/block_command_sender.h" line="34" column="30"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a block command sender. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::BlockCommandSender</label>
+        <link refid="classendstone_1_1BlockCommandSender"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::BlockCommandSender</label>
+        <link refid="classendstone_1_1BlockCommandSender"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/command/block_command_sender.h" line="27" column="1" bodyfile="include/endstone/command/block_command_sender.h" bodystart="27" bodyend="35"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1CommandSender_1aa3ff3e9752f3a3a7a84bc9058d7abbdc" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>asActor</name></member>
+      <member refid="classendstone_1_1CommandSender_1ad60565f649ada2e97dd8f62c8d791027" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>asBlock</name></member>
+      <member refid="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893" prot="public" virt="virtual"><scope>endstone::BlockCommandSender</scope><name>asCommandSender</name></member>
+      <member refid="classendstone_1_1CommandSender_1a635ff0815f93ba402b40486e5b3a4fdb" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>asConsole</name></member>
+      <member refid="classendstone_1_1CommandSender_1a13a510a2f1e21138d8dfa9f9c898e136" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>asPlayer</name></member>
+      <member refid="classendstone_1_1BlockCommandSender_1a4b8542ff30c04bccecba373dde32188b" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>getEffectivePermissions</name></member>
+      <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Permissible_1a6d78baa46215c951dc25cb5e55af085c" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>getPermissionLevel</name></member>
+      <member refid="classendstone_1_1CommandSender_1aecd5cad85026861938379fa283d626cf" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>getServer</name></member>
+      <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>recalculatePermissions</name></member>
+      <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>removeAttachment</name></member>
+      <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::BlockCommandSender</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::BlockCommandSender</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::BlockCommandSender</scope><name>~Permissible</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

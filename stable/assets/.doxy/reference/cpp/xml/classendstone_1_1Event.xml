@@ -1,0 +1,721 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Event" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Event</compoundname>
+    <derivedcompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent&lt; Mob &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent&lt; Actor &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent&lt; ActorType &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1BlockEvent" prot="public" virt="non-virtual">endstone::BlockEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1LevelEvent" prot="public" virt="non-virtual">endstone::LevelEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ServerEvent" prot="public" virt="non-virtual">endstone::ServerEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1WeatherEvent" prot="public" virt="non-virtual">endstone::WeatherEvent</derivedcompoundref>
+    <includes refid="event_8h" local="no">endstone/event/event.h</includes>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classendstone_1_1Event_1a7f434d804d3d19ce4876be9b2a540fcf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref></type>
+        <definition>friend class Cancellable</definition>
+        <argsstring></argsstring>
+        <name>Cancellable</name>
+        <qualifiedname>endstone::Event::Cancellable</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Cancellable" kindref="compound">Cancellable</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="68" column="18" bodyfile="include/endstone/event/event.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classendstone_1_1Event_1a0b257358246ba8f9c2f228c35e4f3e85" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref></type>
+        <definition>friend class EventHandler</definition>
+        <argsstring></argsstring>
+        <name>EventHandler</name>
+        <qualifiedname>endstone::Event::EventHandler</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="69" column="18" bodyfile="include/endstone/event/event.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Event_1a17c460fb3a1fa2b8b8f60a0744c0ab89" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Event::async_</definition>
+        <argsstring></argsstring>
+        <name>async_</name>
+        <qualifiedname>endstone::Event::async_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="71" column="10" bodyfile="include/endstone/event/event.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Event_1a5f9dfb12b76c9d6b46a42fb4238576f0" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Event::cancelled_</definition>
+        <argsstring></argsstring>
+        <name>cancelled_</name>
+        <qualifiedname>endstone::Event::cancelled_</qualifiedname>
+        <initializer>{<ref refid="classendstone_1_1Identifier" kindref="compound">false</ref>}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="72" column="10" bodyfile="include/endstone/event/event.h" bodystart="72" bodyend="72"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Event::Event</definition>
+        <argsstring>(bool async=false)</argsstring>
+        <name>Event</name>
+        <qualifiedname>endstone::Event::Event</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>async</declname>
+          <defval><ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="42" column="14" bodyfile="include/endstone/event/event.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Event::Event</definition>
+        <argsstring>(const Event &amp;)=delete</argsstring>
+        <name>Event</name>
+        <qualifiedname>endstone::Event::Event</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="43" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
+        <definition>Event &amp; endstone::Event::operator=</definition>
+        <argsstring>(const Event &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>endstone::Event::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="44" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Event::Event</definition>
+        <argsstring>(Event &amp;&amp;)=default</argsstring>
+        <name>Event</name>
+        <qualifiedname>endstone::Event::Event</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="45" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
+        <definition>Event &amp; endstone::Event::operator=</definition>
+        <argsstring>(Event &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>endstone::Event::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="46" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Event::~Event</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Event</name>
+        <qualifiedname>endstone::Event::~Event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="48" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Event::getEventName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getEventName</name>
+        <qualifiedname>endstone::Event::getEventName</qualifiedname>
+        <reimplementedby refid="classendstone_1_1ActorDamageEvent_1adc39392f2370363313d09e4dde688e08">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1ActorExplodeEvent_1a5cc3e0325db3f67173ae516314fae999">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1ActorRemoveEvent_1aba629c08862f2ce560791525abfc6037">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1ActorSpawnEvent_1a3121b34be728eb087186a20be395032f">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1ActorTeleportEvent_1a60979e7b5222885d3b072c8dde7185d2">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1BlockBreakEvent_1a51513f05d20b347797c31be3fb6db1d2">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1BlockPlaceEvent_1ae9d0d87fc6e9e576202f755046851da5">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PlayerCommandEvent_1a64066f629ce1473239141c71c1177010">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PlayerEmoteEvent_1a79b81c6252a8a7036ddf04f4827edd40">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PlayerGameModeChangeEvent_1a5a5181811c288a046aaf3b0648e96cab">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PlayerInteractActorEvent_1ab38b49eafd6046d3baf2d147d2dd6f29">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PlayerLoginEvent_1a9593905e32bd292c3782ccc93190f92b">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PlayerRespawnEvent_1a0b74630548cc0c5d82b0ba24a915e8d8">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1BroadcastMessageEvent_1aecff22889cac261fc45bc6126e32dbf4">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PacketReceiveEvent_1ade14c9698e182f8c468ff220fdce7eb3">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PluginDisableEvent_1a9083d88e6a5e47ed6307cc5f8ee12d4c">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1PluginEnableEvent_1a80a2a76f95e0c011b04994475905d79b">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1ScriptMessageEvent_1a23b45d138202bb0494068a76a775d703">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1ServerCommandEvent_1af62a9d9bbc278b05dece09c1273e5b63">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a">getEventName</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a user-friendly identifier for this event.</para>
+<para><simplesect kind="return"><para>name of this event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="55" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Event::isAsynchronous</definition>
+        <argsstring>() const</argsstring>
+        <name>isAsynchronous</name>
+        <qualifiedname>endstone::Event::isAsynchronous</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Any custom event that should not by synchronized with other events must use the specific constructor.</para>
+<para><simplesect kind="return"><para>false by default, true if the event fires asynchronously </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="62" column="11" bodyfile="include/endstone/event/event.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classendstone_1_1Event_1a262e0232aa1ac5f2db91298dc404c9ec" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Event::isCancellable</definition>
+        <argsstring>() const</argsstring>
+        <name>isCancellable</name>
+        <qualifiedname>endstone::Event::isCancellable</qualifiedname>
+        <reimplementedby refid="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418">isCancellable</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418">isCancellable</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418">isCancellable</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418">isCancellable</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418">isCancellable</reimplementedby>
+        <reimplementedby refid="classendstone_1_1Cancellable_1abd816b263a239cdacef9ca3b9c549418">isCancellable</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/event.h" line="65" column="19" bodyfile="include/endstone/event/event.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents an event. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="8">
+        <label>endstone::ActorEvent&lt; Actor &gt;</label>
+        <link refid="classendstone_1_1ActorEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::ActorEvent&lt; Mob &gt;</label>
+        <link refid="classendstone_1_1ActorEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>endstone::Cancellable&lt; ActorEvent&lt; Actor &gt; &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Cancellable&lt; ActorEvent&lt; Mob &gt; &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>endstone::Cancellable&lt; BlockEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>endstone::Cancellable&lt; PlayerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="58">
+        <label>endstone::Cancellable&lt; ServerEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>endstone::Cancellable&lt; WeatherEvent &gt;</label>
+        <link refid="classendstone_1_1Cancellable"/>
+        <childnode refid="69" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::ActorDamageEvent</label>
+        <link refid="classendstone_1_1ActorDamageEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::ActorDeathEvent</label>
+        <link refid="classendstone_1_1ActorDeathEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>endstone::ActorEvent&lt; ActorType &gt;</label>
+        <link refid="classendstone_1_1ActorEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>endstone::ActorExplodeEvent</label>
+        <link refid="classendstone_1_1ActorExplodeEvent"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::ActorKnockbackEvent</label>
+        <link refid="classendstone_1_1ActorKnockbackEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>endstone::ActorRemoveEvent</label>
+        <link refid="classendstone_1_1ActorRemoveEvent"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>endstone::ActorSpawnEvent</label>
+        <link refid="classendstone_1_1ActorSpawnEvent"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>endstone::ActorTeleportEvent</label>
+        <link refid="classendstone_1_1ActorTeleportEvent"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>endstone::BlockBreakEvent</label>
+        <link refid="classendstone_1_1BlockBreakEvent"/>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>endstone::BlockCookEvent</label>
+        <link refid="classendstone_1_1BlockCookEvent"/>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>endstone::BlockEvent</label>
+        <link refid="classendstone_1_1BlockEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>endstone::BlockFormEvent</label>
+        <link refid="classendstone_1_1BlockFormEvent"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>endstone::BlockFromToEvent</label>
+        <link refid="classendstone_1_1BlockFromToEvent"/>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>endstone::BlockGrowEvent</label>
+        <link refid="classendstone_1_1BlockGrowEvent"/>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>endstone::BlockPistonEvent</label>
+        <link refid="classendstone_1_1BlockPistonEvent"/>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>endstone::BlockPistonExtendEvent</label>
+        <link refid="classendstone_1_1BlockPistonExtendEvent"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>endstone::BlockPistonRetractEvent</label>
+        <link refid="classendstone_1_1BlockPistonRetractEvent"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>endstone::BlockPlaceEvent</label>
+        <link refid="classendstone_1_1BlockPlaceEvent"/>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>endstone::BroadcastMessageEvent</label>
+        <link refid="classendstone_1_1BroadcastMessageEvent"/>
+        <childnode refid="58" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>endstone::ChunkEvent</label>
+        <link refid="classendstone_1_1ChunkEvent"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>endstone::ChunkLoadEvent</label>
+        <link refid="classendstone_1_1ChunkLoadEvent"/>
+        <childnode refid="29" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>endstone::ChunkUnloadEvent</label>
+        <link refid="classendstone_1_1ChunkUnloadEvent"/>
+        <childnode refid="29" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>endstone::DimensionEvent</label>
+        <link refid="classendstone_1_1DimensionEvent"/>
+        <childnode refid="27" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="26">
+        <label>endstone::LeavesDecayEvent</label>
+        <link refid="classendstone_1_1LeavesDecayEvent"/>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>endstone::LevelEvent</label>
+        <link refid="classendstone_1_1LevelEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="65">
+        <label>endstone::MapInitializeEvent</label>
+        <link refid="classendstone_1_1MapInitializeEvent"/>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>endstone::PacketReceiveEvent</label>
+        <link refid="classendstone_1_1PacketReceiveEvent"/>
+        <childnode refid="58" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>endstone::PacketSendEvent</label>
+        <link refid="classendstone_1_1PacketSendEvent"/>
+        <childnode refid="58" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>endstone::PlayerBedEnterEvent</label>
+        <link refid="classendstone_1_1PlayerBedEnterEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>endstone::PlayerBedLeaveEvent</label>
+        <link refid="classendstone_1_1PlayerBedLeaveEvent"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>endstone::PlayerChatEvent</label>
+        <link refid="classendstone_1_1PlayerChatEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>endstone::PlayerCommandEvent</label>
+        <link refid="classendstone_1_1PlayerCommandEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::PlayerDeathEvent</label>
+        <link refid="classendstone_1_1PlayerDeathEvent"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="53">
+        <label>endstone::PlayerDimensionChangeEvent</label>
+        <link refid="classendstone_1_1PlayerDimensionChangeEvent"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>endstone::PlayerDropItemEvent</label>
+        <link refid="classendstone_1_1PlayerDropItemEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>endstone::PlayerEmoteEvent</label>
+        <link refid="classendstone_1_1PlayerEmoteEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>endstone::PlayerGameModeChangeEvent</label>
+        <link refid="classendstone_1_1PlayerGameModeChangeEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>endstone::PlayerInteractActorEvent</label>
+        <link refid="classendstone_1_1PlayerInteractActorEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>endstone::PlayerInteractEvent</label>
+        <link refid="classendstone_1_1PlayerInteractEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>endstone::PlayerItemConsumeEvent</label>
+        <link refid="classendstone_1_1PlayerItemConsumeEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>endstone::PlayerItemHeldEvent</label>
+        <link refid="classendstone_1_1PlayerItemHeldEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="54">
+        <label>endstone::PlayerJoinEvent</label>
+        <link refid="classendstone_1_1PlayerJoinEvent"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>endstone::PlayerJumpEvent</label>
+        <link refid="classendstone_1_1PlayerJumpEvent"/>
+        <childnode refid="46" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>endstone::PlayerKickEvent</label>
+        <link refid="classendstone_1_1PlayerKickEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>endstone::PlayerLoginEvent</label>
+        <link refid="classendstone_1_1PlayerLoginEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>endstone::PlayerMoveEvent</label>
+        <link refid="classendstone_1_1PlayerMoveEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>endstone::PlayerPickupItemEvent</label>
+        <link refid="classendstone_1_1PlayerPickupItemEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>endstone::PlayerPortalEvent</label>
+        <link refid="classendstone_1_1PlayerPortalEvent"/>
+        <childnode refid="48" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="55">
+        <label>endstone::PlayerQuitEvent</label>
+        <link refid="classendstone_1_1PlayerQuitEvent"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>endstone::PlayerRespawnEvent</label>
+        <link refid="classendstone_1_1PlayerRespawnEvent"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>endstone::PlayerSkinChangeEvent</label>
+        <link refid="classendstone_1_1PlayerSkinChangeEvent"/>
+        <childnode refid="33" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>endstone::PlayerTeleportEvent</label>
+        <link refid="classendstone_1_1PlayerTeleportEvent"/>
+        <childnode refid="46" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>endstone::PluginDisableEvent</label>
+        <link refid="classendstone_1_1PluginDisableEvent"/>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>endstone::PluginEnableEvent</label>
+        <link refid="classendstone_1_1PluginEnableEvent"/>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>endstone::ScriptMessageEvent</label>
+        <link refid="classendstone_1_1ScriptMessageEvent"/>
+        <childnode refid="58" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>endstone::ServerCommandEvent</label>
+        <link refid="classendstone_1_1ServerCommandEvent"/>
+        <childnode refid="58" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>endstone::ServerEvent</label>
+        <link refid="classendstone_1_1ServerEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>endstone::ServerListPingEvent</label>
+        <link refid="classendstone_1_1ServerListPingEvent"/>
+        <childnode refid="58" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>endstone::ServerLoadEvent</label>
+        <link refid="classendstone_1_1ServerLoadEvent"/>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>endstone::ThunderChangeEvent</label>
+        <link refid="classendstone_1_1ThunderChangeEvent"/>
+        <childnode refid="70" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="72">
+        <label>endstone::WeatherChangeEvent</label>
+        <link refid="classendstone_1_1WeatherChangeEvent"/>
+        <childnode refid="70" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="69">
+        <label>endstone::WeatherEvent</label>
+        <link refid="classendstone_1_1WeatherEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="include/endstone/event/event.h" line="40" column="1" bodyfile="include/endstone/event/event.h" bodystart="40" bodyend="73"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Event_1a17c460fb3a1fa2b8b8f60a0744c0ab89" prot="private" virt="non-virtual"><scope>endstone::Event</scope><name>async_</name></member>
+      <member refid="classendstone_1_1Event_1a7f434d804d3d19ce4876be9b2a540fcf" prot="private" virt="non-virtual"><scope>endstone::Event</scope><name>Cancellable</name></member>
+      <member refid="classendstone_1_1Event_1a5f9dfb12b76c9d6b46a42fb4238576f0" prot="private" virt="non-virtual"><scope>endstone::Event</scope><name>cancelled_</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::Event</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::Event</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::Event</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a0b257358246ba8f9c2f228c35e4f3e85" prot="private" virt="non-virtual"><scope>endstone::Event</scope><name>EventHandler</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::Event</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::Event</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Event_1a262e0232aa1ac5f2db91298dc404c9ec" prot="private" virt="virtual"><scope>endstone::Event</scope><name>isCancellable</name></member>
+      <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::Event</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::Event</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::Event</scope><name>~Event</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
