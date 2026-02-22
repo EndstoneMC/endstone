@@ -28,6 +28,9 @@ __all__ = [
     "BlockBreakEvent",
     "BlockCookEvent",
     "BlockEvent",
+    "BlockFormEvent",
+    "BlockFromToEvent",
+    "BlockGrowEvent",
     "BlockPistonEvent",
     "BlockPistonExtendEvent",
     "BlockPistonRetractEvent",
@@ -399,6 +402,36 @@ class LeavesDecayEvent(BlockEvent, Cancellable):
     Called when leaves are decaying naturally.
     If a Leaves Decay event is cancelled, the leaves will not decay.
     """
+
+class BlockGrowEvent(BlockEvent, Cancellable):
+    """
+    Called when a block grows naturally in the world.
+    If a Block Grow event is cancelled, the block will not grow.
+    """
+    @property
+    def new_state(self) -> BlockState:
+        """
+        Gets the state of the block where it will form or spread to.
+        """
+        ...
+
+class BlockFormEvent(BlockGrowEvent):
+    """
+    Called when a block is formed or spreads based on world conditions.
+    If a Block Form event is cancelled, the block will not be formed.
+    """
+
+class BlockFromToEvent(BlockEvent, Cancellable):
+    """
+    Represents events with a source block and a destination block, currently only applies to liquid (lava and water) and teleporting dragon eggs.
+    If a Block From To event is cancelled, the block will not move (the liquid will not flow).
+    """
+    @property
+    def to_block(self) -> Block:
+        """
+        Gets the faced Block.
+        """
+        ...
 
 class LevelEvent(Event):
     """

@@ -131,6 +131,23 @@ void init_event(py::module_ &m, py::class_<Event> &event)
                                "Gets the smelted ItemStack for this event")
         .def_property("result", &BlockCookEvent::getResult, &BlockCookEvent::setResult,
                       "Gets or sets the resultant ItemStack for this event");
+    py::class_<BlockFormEvent, BlockGrowEvent>(
+    m, "BlockFormEvent",
+    "Called when a block is formed or spreads based on world conditions.\n"
+    "If a Block Form event is cancelled, the block will not be formed.");
+    py::class_<BlockFromToEvent, BlockEvent, ICancellable>(
+        m, "BlockFromToEvent",
+        "Represents events with a source block and a destination block, currently only applies to liquid "
+        "(lava and water) and teleporting dragon eggs.\n"
+        "If a Block From To event is cancelled, the block will not move (the liquid will not flow).")
+        .def_property_readonly("to_block", &BlockFromToEvent::getToBlock, py::return_value_policy::reference,
+                               "Gets the faced Block.");
+    py::class_<BlockGrowEvent, BlockEvent, ICancellable>(
+    m, "BlockGrowEvent",
+    "Called when a block grows naturally in the world.\n"
+    "If a Block Grow event is cancelled, the block will not grow.")
+    .def_property_readonly("new_state", &BlockGrowEvent::getNewState, py::return_value_policy::reference,
+                           "Gets the state of the block where it will form or spread to.");
     py::class_<BlockPistonEvent, BlockEvent, ICancellable>(m, "BlockPistonEvent",
                                                            "Called when a piston block is triggered")
         .def_property_readonly("direction", &BlockPistonEvent::getDirection,
