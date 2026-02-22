@@ -1,8 +1,11 @@
 name: docs
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
+    tags:
+      - 'v*'
     paths:
       - '.github/workflows/*'
       - 'docs/**'
@@ -10,8 +13,6 @@ on:
       - 'endstone/**'
       - '*.md'
       - 'mkdocs.yml'
-  release:
-    types: [ published ]
 
 permissions:
   contents: write
@@ -42,7 +43,7 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install -r docs/requirements.txt
-      - if: github.event_name == 'push'
+      - if: github.ref == 'refs/heads/main'
         run: mike deploy --push latest
-      - if: github.event_name == 'release' && github.event.action == 'published'
+      - if: startsWith(github.ref, 'refs/tags/')
         run: mike deploy --push --update-aliases ${{ github.ref_name }} stable
