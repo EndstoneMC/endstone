@@ -18,19 +18,27 @@
 
 #include "endstone/runtime/hook.h"
 
+// #blameMojang - DoS via malformed LoginPacket. Zero input validation on certificate chains:
+// 1. Oversized strings (>3MB) cause memory exhaustion
+// 2. Large chain arrays cause stack overflow - because someone thought recursion was a good idea
+//    for parsing untrusted input with no depth limit
+// Fix: reject oversized inputs and excessive chain lengths before processing.
 UnverifiedCertificate UnverifiedCertificate::fromString(const std::string &input)
 {
+    // Reject oversized inputs (>3MB is absurd for a certificate chain)
     if (input.size() <= 0x300000) {
         try {
             auto json = nlohmann::json::parse(input);
             if (json.is_object()) {
                 auto &chain = json["chain"];
+                // Reject chains with more than 10 certificates (normal auth needs 2-3)
                 if (chain.is_array() && chain.size() <= 10) {
                     return ENDSTONE_HOOK_CALL_ORIGINAL(&UnverifiedCertificate::fromString, input);
                 }
             }
         }
         catch (...) {
+            // Malformed JSON - reject silently
         }
     }
     return {WebToken(), nullptr};
@@ -38,10 +46,9 @@ UnverifiedCertificate UnverifiedCertificate::fromString(const std::string &input
 
 bool Certificate::validate(std::time_t current_time, bool is_self_signed, bool check_expired)
 {
-    // Fix: #blamemojang
-    // ServerConnectionAuthValidatorAnon::ConnectionRequest_verify does not check
-    // the result of UnverifiedCertificate::verify, this will crash the server if the client
-    // sends an invalid certificate.
+    // #blameMojang - ConnectionRequest_verify calls validate() without null-checking the result of
+    // UnverifiedCertificate::verify(). Malformed certificates -> nullptr -> instant crash.
+    // A single null check would have prevented this. Fix: we add the null check ourselves.
     if (std::launder(this) == nullptr) {
         return false;
     }

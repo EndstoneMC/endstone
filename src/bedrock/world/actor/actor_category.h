@@ -40,7 +40,7 @@ enum class ActorCategory : std::uint32_t {
     HumanoidMonster = Humanoid | Monster,
     WaterAnimal = Water | Animal,
     TamableAnimal = Tamable | Animal,
-    UndeadMob = Undead | Monster,  // wtf mojang
+    UndeadMob = Undead | Monster,  // #blameMojang - misleading name, it's Undead | Monster, not Undead | Mob
     ZombieMonster = Zombie | Monster,
     EvocationIllagerMonster = Villager | HumanoidMonster,
 };
