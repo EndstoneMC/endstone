@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include <cstdint>
 namespace endstone {
 class Color {
 public:

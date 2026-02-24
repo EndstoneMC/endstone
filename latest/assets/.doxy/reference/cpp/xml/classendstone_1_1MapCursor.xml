@@ -207,7 +207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="28" column="5" bodyfile="include/endstone/map/map_cursor.h" bodystart="28" bodyend="54"/>
+        <location file="include/endstone/map/map_cursor.h" line="32" column="5" bodyfile="include/endstone/map/map_cursor.h" bodystart="32" bodyend="58"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -223,7 +223,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="162" column="17" bodyfile="include/endstone/map/map_cursor.h" bodystart="162" bodyend="-1"/>
+        <location file="include/endstone/map/map_cursor.h" line="166" column="17" bodyfile="include/endstone/map/map_cursor.h" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1MapCursor_1ad35979b1bfba225e87c0222892a40b36" prot="private" static="no" mutable="no">
         <type>std::int8_t</type>
@@ -237,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="162" column="20" bodyfile="include/endstone/map/map_cursor.h" bodystart="162" bodyend="-1"/>
+        <location file="include/endstone/map/map_cursor.h" line="166" column="20" bodyfile="include/endstone/map/map_cursor.h" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1MapCursor_1a80958d5cc18e5a9bb0d5eb5a13ca9278" prot="private" static="no" mutable="no">
         <type>std::int8_t</type>
@@ -251,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="163" column="17" bodyfile="include/endstone/map/map_cursor.h" bodystart="163" bodyend="-1"/>
+        <location file="include/endstone/map/map_cursor.h" line="167" column="17" bodyfile="include/endstone/map/map_cursor.h" bodystart="167" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1MapCursor_1adc46bac110c927e3ab55e60bf2449a69" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -265,7 +265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="164" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="164" bodyend="-1"/>
+        <location file="include/endstone/map/map_cursor.h" line="168" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1MapCursor_1a1fa52f04be86f9d0410c968c37ccfec1" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -279,7 +279,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="165" column="17" bodyfile="include/endstone/map/map_cursor.h" bodystart="165" bodyend="-1"/>
+        <location file="include/endstone/map/map_cursor.h" line="169" column="17" bodyfile="include/endstone/map/map_cursor.h" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1MapCursor_1a8bb3f8ea3c7c6d06627d51d7ce82cbb8" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1" kindref="member">Type</ref></type>
@@ -293,7 +293,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="166" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="166" bodyend="-1"/>
+        <location file="include/endstone/map/map_cursor.h" line="170" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="170" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -385,7 +385,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="66" column="5" bodyfile="include/endstone/map/map_cursor.h" bodystart="66" bodyend="69"/>
+        <location file="include/endstone/map/map_cursor.h" line="70" column="5" bodyfile="include/endstone/map/map_cursor.h" bodystart="70" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1adf1a23f11c7267eba48a76ca2b6724ee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::int8_t</type>
@@ -403,7 +403,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="76" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="76" bodyend="76"/>
+        <location file="include/endstone/map/map_cursor.h" line="80" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1ae34f0e46b4603482a5caf2ac79681ab7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::int8_t</type>
@@ -421,7 +421,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="83" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="83" bodyend="83"/>
+        <location file="include/endstone/map/map_cursor.h" line="87" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="87" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a30e6f6d1908b80373e5583a270e0b63d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::int8_t</type>
@@ -439,7 +439,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="90" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="90" bodyend="90"/>
+        <location file="include/endstone/map/map_cursor.h" line="94" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="94" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1aee3bb721ce1903c66eea99b67c3a5118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1MapCursor_1ae83bceb70978c7596e55b0ed491a94c1" kindref="member">Type</ref></type>
@@ -457,7 +457,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="97" column="11" bodyfile="include/endstone/map/map_cursor.h" bodystart="97" bodyend="97"/>
+        <location file="include/endstone/map/map_cursor.h" line="101" column="11" bodyfile="include/endstone/map/map_cursor.h" bodystart="101" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1ae9506f2c0559118d4144b5e346a40c14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -475,7 +475,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="104" column="11" bodyfile="include/endstone/map/map_cursor.h" bodystart="104" bodyend="104"/>
+        <location file="include/endstone/map/map_cursor.h" line="108" column="11" bodyfile="include/endstone/map/map_cursor.h" bodystart="108" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a29380088da25b4084b81606e6b5d508f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -504,7 +504,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="111" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="111" bodyend="111"/>
+        <location file="include/endstone/map/map_cursor.h" line="115" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="115" bodyend="115"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a484cc2ed2c6de8debc8972f6c8c0988f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -533,7 +533,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="118" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="118" bodyend="118"/>
+        <location file="include/endstone/map/map_cursor.h" line="122" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="122" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a071c1c4a3031390fc42737975f2b6f2a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -562,7 +562,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="125" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="125" bodyend="130"/>
+        <location file="include/endstone/map/map_cursor.h" line="129" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="129" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a500aa39db9566ee384d1e532aac1ea8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -591,7 +591,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="137" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="137" bodyend="137"/>
+        <location file="include/endstone/map/map_cursor.h" line="141" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="141" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a5428ea761c7426c0f42597f4b2ebbdb4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -620,7 +620,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="144" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="144" bodyend="144"/>
+        <location file="include/endstone/map/map_cursor.h" line="148" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="148" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a502289582909400265906211368ee2fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -638,7 +638,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="152" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="152" bodyend="152"/>
+        <location file="include/endstone/map/map_cursor.h" line="156" column="18" bodyfile="include/endstone/map/map_cursor.h" bodystart="156" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCursor_1a5dca61d7f87cb3113256b691645467c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -667,7 +667,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_cursor.h" line="159" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="159" bodyend="159"/>
+        <location file="include/endstone/map/map_cursor.h" line="163" column="10" bodyfile="include/endstone/map/map_cursor.h" bodystart="163" bodyend="163"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -675,7 +675,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/map/map_cursor.h" line="23" column="1" bodyfile="include/endstone/map/map_cursor.h" bodystart="23" bodyend="167"/>
+    <location file="include/endstone/map/map_cursor.h" line="27" column="1" bodyfile="include/endstone/map/map_cursor.h" bodystart="27" bodyend="171"/>
     <listofallmembers>
       <member refid="classendstone_1_1MapCursor_1a1fa52f04be86f9d0410c968c37ccfec1" prot="private" virt="non-virtual"><scope>endstone::MapCursor</scope><name>caption_</name></member>
       <member refid="classendstone_1_1MapCursor_1a80958d5cc18e5a9bb0d5eb5a13ca9278" prot="private" virt="non-virtual"><scope>endstone::MapCursor</scope><name>direction_</name></member>

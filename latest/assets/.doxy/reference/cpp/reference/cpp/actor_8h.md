@@ -10,6 +10,9 @@
 
 
 
+* `#include <cstdint>`
+* `#include <string>`
+* `#include <vector>`
 * `#include "endstone/command/command_sender.h"`
 * `#include "endstone/level/location.h"`
 

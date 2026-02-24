@@ -24,6 +24,11 @@
 
 #pragma once
 
+#include <memory>
+#include <stdexcept>
+#include <string>
+#include <vector>
+
 #include "endstone/command/command.h"
 #include "endstone/command/command_executor.h"
 #include "endstone/plugin/plugin.h"

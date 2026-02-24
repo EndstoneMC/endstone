@@ -10,6 +10,8 @@
 
 
 
+* `#include <memory>`
+* `#include <string>`
 * `#include <fmt/format.h>`
 * `#include "endstone/block/block.h"`
 * `#include "endstone/util/result.h"`

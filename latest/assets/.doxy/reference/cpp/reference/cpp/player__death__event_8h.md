@@ -10,6 +10,9 @@
 
 
 
+* `#include <memory>`
+* `#include <optional>`
+* `#include <utility>`
 * `#include "endstone/event/actor/actor_death_event.h"`
 * `#include "endstone/event/player/player_event.h"`
 

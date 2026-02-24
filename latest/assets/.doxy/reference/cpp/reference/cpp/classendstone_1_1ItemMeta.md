@@ -66,6 +66,7 @@ Inherited by the following classes: [endstone::CrossbowMeta](classendstone_1_1Cr
 | virtual std::string | [**getDisplayName**](#function-getdisplayname) () const = 0<br>_Gets the display name that is set._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getEnchantLevel**](#function-getenchantlevel) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br>_Checks for the level of the specified enchantment._  |
 | virtual std::unordered\_map&lt; [**const**](classendstone_1_1Identifier.md) [**Enchantment**](classendstone_1_1Enchantment.md) \*, [**int**](classendstone_1_1Identifier.md) &gt; | [**getEnchants**](#function-getenchants) () const = 0<br>_Returns a copy the enchantments in this_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
+| virtual [**const**](classendstone_1_1Identifier.md) core::ItemMetaExtras & | [**getExtras**](#function-getextras) () const = 0<br> |
 | virtual std::vector&lt; std::string &gt; | [**getLore**](#function-getlore) () const = 0<br>_Gets the lore that is set._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getRepairCost**](#function-getrepaircost) () const = 0<br>_Gets the repair penalty._  |
 | virtual Type | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this item meta._  |
@@ -84,7 +85,6 @@ Inherited by the following classes: [endstone::CrossbowMeta](classendstone_1_1Cr
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setLore**](#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) = 0<br>_Sets the lore for this item or removes lore when given_ `std::nullopt` _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setRepairCost**](#function-setrepaircost) ([**int**](classendstone_1_1Identifier.md) cost) = 0<br>_Sets the repair penalty._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setUnbreakable**](#function-setunbreakable) ([**bool**](classendstone_1_1Identifier.md) unbreakable) = 0<br>_Sets the unbreakable tag. An unbreakable item will not lose durability._  |
-| virtual [**CompoundTag**](classendstone_1_1CompoundTag.md) | [**toNbt**](#function-tonbt) () const = 0<br> |
 | virtual  | [**~ItemMeta**](#function-itemmeta) () = default<br> |
 
 
@@ -338,6 +338,19 @@ An immutable copy of the enchantments
 
 
         
+
+<hr>
+
+
+
+### function getExtras 
+
+```C++
+virtual const core::ItemMetaExtras & endstone::ItemMeta::getExtras () const = 0
+```
+
+
+
 
 <hr>
 
@@ -816,19 +829,6 @@ virtual void endstone::ItemMeta::setUnbreakable (
 
 
         
-
-<hr>
-
-
-
-### function toNbt 
-
-```C++
-virtual CompoundTag endstone::ItemMeta::toNbt () const = 0
-```
-
-
-
 
 <hr>
 

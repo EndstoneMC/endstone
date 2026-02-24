@@ -11,7 +11,9 @@
 
 
 * `#include <memory>`
+* `#include <stdexcept>`
 * `#include <string>`
+* `#include <utility>`
 * `#include "endstone/inventory/item_type.h"`
 * `#include "endstone/inventory/meta/item_meta.h"`
 * `#include "endstone/nbt/tag.h"`

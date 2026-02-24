@@ -10,6 +10,8 @@
 
 
 
+* `#include <memory>`
+* `#include <optional>`
 * `#include <string>`
 * `#include "endstone/scoreboard/objective_sort_order.h"`
 * `#include "endstone/scoreboard/score.h"`

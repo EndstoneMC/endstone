@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/player_death_event.h" line="55" column="19" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="55" bodyend="-1"/>
+        <location file="include/endstone/event/actor/player_death_event.h" line="59" column="19" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="59" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/player_death_event.h" line="26" column="5"/>
+        <location file="include/endstone/event/actor/player_death_event.h" line="30" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDeathEvent_1a3104f4d23f97f8c6231b5b6be585d18e" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/player_death_event.h" line="27" column="14" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="27" bodyend="31"/>
+        <location file="include/endstone/event/actor/player_death_event.h" line="31" column="14" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="31" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDeathEvent_1acc66e0f2d94b897223abd87c1ff30e8b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/player_death_event.h" line="38" column="13" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="38" bodyend="38"/>
+        <location file="include/endstone/event/actor/player_death_event.h" line="42" column="13" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDeathEvent_1ac10543a6ddb7eb32aed23e72c94b7d61" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; Message &gt;</type>
@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/player_death_event.h" line="45" column="20" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="45" bodyend="45"/>
+        <location file="include/endstone/event/actor/player_death_event.h" line="49" column="20" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDeathEvent_1a6a243db2fbf5bdcb6163b39b151338a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/player_death_event.h" line="52" column="10" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="52" bodyend="52"/>
+        <location file="include/endstone/event/actor/player_death_event.h" line="56" column="10" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="56" bodyend="56"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -183,7 +183,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/actor/player_death_event.h" line="24" column="1" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="24" bodyend="58"/>
+    <location file="include/endstone/event/actor/player_death_event.h" line="28" column="1" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="28" bodyend="62"/>
     <listofallmembers>
       <member refid="classendstone_1_1ActorDeathEvent_1a0a2ffc4f1aa535e3afd006a934114f1a" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>ActorDeathEvent</name></member>
       <member refid="classendstone_1_1ActorEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" virt="non-virtual"><scope>endstone::PlayerDeathEvent</scope><name>ActorEvent</name></member>

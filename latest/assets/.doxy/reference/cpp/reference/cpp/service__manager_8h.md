@@ -10,6 +10,9 @@
 
 
 
+* `#include <memory>`
+* `#include <string>`
+* `#include <utility>`
 * `#include "endstone/plugin/service.h"`
 * `#include "endstone/plugin/service_priority.h"`
 

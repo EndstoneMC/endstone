@@ -24,6 +24,8 @@
 
 #pragma once
 
+#include <cstdint>
+
 #include "endstone/inventory/meta/item_meta.h"
 #include "endstone/map/map_view.h"
 

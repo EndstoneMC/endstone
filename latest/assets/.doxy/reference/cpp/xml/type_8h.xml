@@ -2,11 +2,23 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="type_8h" kind="file" language="C++">
     <compoundname>type.h</compoundname>
+    <includes local="no">cstdint</includes>
     <includedby refid="array_8h" local="yes">include/endstone/nbt/array.h</includedby>
     <includedby refid="compound_8h" local="yes">include/endstone/nbt/compound.h</includedby>
     <includedby refid="list_8h" local="yes">include/endstone/nbt/list.h</includedby>
     <includedby refid="tag_8h" local="yes">include/endstone/nbt/tag.h</includedby>
     <includedby refid="value_8h" local="yes">include/endstone/nbt/value.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/endstone/nbt/type.h</label>
+        <link refid="type_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstdint</label>
+      </node>
+    </incdepgraph>
     <invincdepgraph>
       <node id="5">
         <label>include/endstone/actor/item.h</label>
@@ -56,10 +68,6 @@
         <label>include/endstone/event/player/player_pickup_item_event.h</label>
         <link refid="player__pickup__item__event_8h_source"/>
       </node>
-      <node id="18">
-        <label>include/endstone/inventory/item_factory.h</label>
-        <link refid="item__factory_8h_source"/>
-      </node>
       <node id="4">
         <label>include/endstone/inventory/item_stack.h</label>
         <link refid="item__stack_8h_source"/>
@@ -78,38 +86,6 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="22">
-        <label>include/endstone/inventory/meta/book_meta.h</label>
-        <link refid="book__meta_8h_source"/>
-      </node>
-      <node id="19">
-        <label>include/endstone/inventory/meta/crossbow_meta.h</label>
-        <link refid="crossbow__meta_8h_source"/>
-      </node>
-      <node id="17">
-        <label>include/endstone/inventory/meta/item_meta.h</label>
-        <link refid="item__meta_8h_source"/>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>include/endstone/inventory/meta/map_meta.h</label>
-        <link refid="map__meta_8h_source"/>
-      </node>
-      <node id="21">
-        <label>include/endstone/inventory/meta/writable_book_meta.h</label>
-        <link refid="writable__book__meta_8h_source"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-      </node>
       <node id="11">
         <label>include/endstone/inventory/recipe.h</label>
         <link refid="recipe_8h_source"/>
@@ -126,13 +102,13 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="17">
         <label>include/endstone/nbt/compound.h</label>
         <link refid="compound_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="24">
+      <node id="18">
         <label>include/endstone/nbt/list.h</label>
         <link refid="list_8h_source"/>
         <childnode refid="3" relation="include">
@@ -143,24 +119,22 @@
         <link refid="tag_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/nbt/type.h</label>
         <link refid="type_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="19">
         <label>include/endstone/nbt/value.h</label>
         <link refid="value_8h_source"/>
         <childnode refid="3" relation="include">
@@ -191,23 +165,24 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone::nbt<sp/>{</highlight></codeline>
-<codeline lineno="18" refid="structendstone_1_1nbt_1_1TagBase" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structendstone_1_1nbt_1_1TagBase" kindref="compound">TagBase</ref><sp/>{};</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>Type<sp/>:<sp/>std::uint8_t<sp/>{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>End<sp/>=<sp/>0,</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>Byte<sp/>=<sp/>1,</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>Short<sp/>=<sp/>2,</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>Int<sp/>=<sp/>3,</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>Long<sp/>=<sp/>4,</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>Float<sp/>=<sp/>5,</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>Double<sp/>=<sp/>6,</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>ByteArray<sp/>=<sp/>7,</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/>=<sp/>8,</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>List<sp/>=<sp/>9,</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>Compound<sp/>=<sp/>10,</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>IntArray<sp/>=<sp/>11,</highlight></codeline>
-<codeline lineno="32"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="33"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone::nbt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone::nbt<sp/>{</highlight></codeline>
+<codeline lineno="19" refid="structendstone_1_1nbt_1_1TagBase" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structendstone_1_1nbt_1_1TagBase" kindref="compound">TagBase</ref><sp/>{};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>Type<sp/>:<sp/>std::uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>End<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>Byte<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>Short<sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>Int<sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>Long<sp/>=<sp/>4,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>Float<sp/>=<sp/>5,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>Double<sp/>=<sp/>6,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>ByteArray<sp/>=<sp/>7,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>String<sp/>=<sp/>8,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>List<sp/>=<sp/>9,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>Compound<sp/>=<sp/>10,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>IntArray<sp/>=<sp/>11,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone::nbt</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/nbt/type.h"/>
   </compounddef>

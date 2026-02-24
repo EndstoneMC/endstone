@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include <cstdint>
 namespace endstone {
 
 enum class RenderType : std::uint8_t {

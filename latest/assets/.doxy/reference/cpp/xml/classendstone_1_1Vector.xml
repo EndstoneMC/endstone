@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="569" column="11" bodyfile="include/endstone/util/vector.h" bodystart="569" bodyend="-1"/>
+        <location file="include/endstone/util/vector.h" line="570" column="11" bodyfile="include/endstone/util/vector.h" bodystart="570" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Vector_1ab1fd7c168b44802d8065c597475386ee" prot="protected" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="570" column="11" bodyfile="include/endstone/util/vector.h" bodystart="570" bodyend="-1"/>
+        <location file="include/endstone/util/vector.h" line="571" column="11" bodyfile="include/endstone/util/vector.h" bodystart="571" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Vector_1a17331592c0714b78a81cb9942ffe2015" prot="protected" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="571" column="11" bodyfile="include/endstone/util/vector.h" bodystart="571" bodyend="-1"/>
+        <location file="include/endstone/util/vector.h" line="572" column="11" bodyfile="include/endstone/util/vector.h" bodystart="572" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="32" column="15"/>
+        <location file="include/endstone/util/vector.h" line="33" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a17879333a2378988fcdfe405036caefa" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="42" column="15" bodyfile="include/endstone/util/vector.h" bodystart="42" bodyend="44"/>
+        <location file="include/endstone/util/vector.h" line="43" column="15" bodyfile="include/endstone/util/vector.h" bodystart="43" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a1a2d6e1d50444d3f9e2ffb9234960e2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -142,7 +142,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="46" column="5"/>
+        <location file="include/endstone/util/vector.h" line="47" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ab6f5be439ef2d694beefa8f72dcb40f3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -160,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="47" column="5"/>
+        <location file="include/endstone/util/vector.h" line="48" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a672e1bca61d7163ac230c7db00aadaf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -178,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="48" column="12"/>
+        <location file="include/endstone/util/vector.h" line="49" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a5987a0b5cc7201e3f4c6343b6b43b518" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -196,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="49" column="12"/>
+        <location file="include/endstone/util/vector.h" line="50" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ade1fd8a70070c4058ad8da7d69afb388" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -214,7 +214,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="56" column="22" bodyfile="include/endstone/util/vector.h" bodystart="56" bodyend="56"/>
+        <location file="include/endstone/util/vector.h" line="57" column="22" bodyfile="include/endstone/util/vector.h" bodystart="57" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ad6fe1c73bc113b810234d2bfada8ca0e" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -252,7 +252,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="65" column="22" bodyfile="include/endstone/util/vector.h" bodystart="65" bodyend="69"/>
+        <location file="include/endstone/util/vector.h" line="66" column="22" bodyfile="include/endstone/util/vector.h" bodystart="66" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1adcd8a60875bbb547e5304f40fa4aaabf" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -270,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="76" column="22" bodyfile="include/endstone/util/vector.h" bodystart="76" bodyend="76"/>
+        <location file="include/endstone/util/vector.h" line="77" column="22" bodyfile="include/endstone/util/vector.h" bodystart="77" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a61f1e552c8964108c6dea9d25df1d10f" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -308,7 +308,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="85" column="22" bodyfile="include/endstone/util/vector.h" bodystart="85" bodyend="89"/>
+        <location file="include/endstone/util/vector.h" line="86" column="22" bodyfile="include/endstone/util/vector.h" bodystart="86" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a2c9b701560462a7c015a6cae44d4841c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -326,7 +326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="96" column="22" bodyfile="include/endstone/util/vector.h" bodystart="96" bodyend="96"/>
+        <location file="include/endstone/util/vector.h" line="97" column="22" bodyfile="include/endstone/util/vector.h" bodystart="97" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1afa0231f4530a2b23dd51e7a1f976cfa5" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -364,7 +364,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="105" column="22" bodyfile="include/endstone/util/vector.h" bodystart="105" bodyend="109"/>
+        <location file="include/endstone/util/vector.h" line="106" column="22" bodyfile="include/endstone/util/vector.h" bodystart="106" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1adac00ea988bf21097fdb12bf7b249663" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -382,7 +382,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="116" column="10" bodyfile="include/endstone/util/vector.h" bodystart="116" bodyend="116"/>
+        <location file="include/endstone/util/vector.h" line="117" column="10" bodyfile="include/endstone/util/vector.h" bodystart="117" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a8b94ba16b189f220722d2c1c4a07c57d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -400,7 +400,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="123" column="10" bodyfile="include/endstone/util/vector.h" bodystart="123" bodyend="123"/>
+        <location file="include/endstone/util/vector.h" line="124" column="10" bodyfile="include/endstone/util/vector.h" bodystart="124" bodyend="124"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ad04cbacaf9f9f2e59a8690469c368450" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -418,7 +418,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="130" column="10" bodyfile="include/endstone/util/vector.h" bodystart="130" bodyend="130"/>
+        <location file="include/endstone/util/vector.h" line="131" column="10" bodyfile="include/endstone/util/vector.h" bodystart="131" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1aded8bc272c79ee7b70e892da401cda0a" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -436,7 +436,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="132" column="22" bodyfile="include/endstone/util/vector.h" bodystart="132" bodyend="132"/>
+        <location file="include/endstone/util/vector.h" line="133" column="22" bodyfile="include/endstone/util/vector.h" bodystart="133" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a4d354598ba6f721c3a994469bd50043c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -454,7 +454,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="134" column="22" bodyfile="include/endstone/util/vector.h" bodystart="134" bodyend="134"/>
+        <location file="include/endstone/util/vector.h" line="135" column="22" bodyfile="include/endstone/util/vector.h" bodystart="135" bodyend="135"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1abceb4a257ceb299245c7737c44159e4c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -472,7 +472,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="136" column="22" bodyfile="include/endstone/util/vector.h" bodystart="136" bodyend="136"/>
+        <location file="include/endstone/util/vector.h" line="137" column="22" bodyfile="include/endstone/util/vector.h" bodystart="137" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a317abf2bd377bd115d9804c7977dbc47" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -490,7 +490,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="138" column="22" bodyfile="include/endstone/util/vector.h" bodystart="138" bodyend="138"/>
+        <location file="include/endstone/util/vector.h" line="139" column="22" bodyfile="include/endstone/util/vector.h" bodystart="139" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ae5ec192b16504854e5b5a5c2d60e9641" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -508,7 +508,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="140" column="12" bodyfile="include/endstone/util/vector.h" bodystart="140" bodyend="146"/>
+        <location file="include/endstone/util/vector.h" line="141" column="12" bodyfile="include/endstone/util/vector.h" bodystart="141" bodyend="147"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a4a01f066025009fbeb4c9d2c40ea5378" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -526,7 +526,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="148" column="12" bodyfile="include/endstone/util/vector.h" bodystart="148" bodyend="154"/>
+        <location file="include/endstone/util/vector.h" line="149" column="12" bodyfile="include/endstone/util/vector.h" bodystart="149" bodyend="155"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a3dd3035751d05bb4f98fa7a7c9b3ef5e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -544,7 +544,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="156" column="12" bodyfile="include/endstone/util/vector.h" bodystart="156" bodyend="162"/>
+        <location file="include/endstone/util/vector.h" line="157" column="12" bodyfile="include/endstone/util/vector.h" bodystart="157" bodyend="163"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a8df35aa6df3a420c0e403f0d1830cfed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -562,7 +562,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="164" column="12" bodyfile="include/endstone/util/vector.h" bodystart="164" bodyend="170"/>
+        <location file="include/endstone/util/vector.h" line="165" column="12" bodyfile="include/endstone/util/vector.h" bodystart="165" bodyend="171"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a8d9e64d0da33884ed8efc3ad92df0213" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -587,7 +587,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="173" column="22" bodyfile="include/endstone/util/vector.h" bodystart="173" bodyend="177"/>
+        <location file="include/endstone/util/vector.h" line="174" column="22" bodyfile="include/endstone/util/vector.h" bodystart="174" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ad242054c1236d91bb57f3c252251039e" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -612,7 +612,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="180" column="22" bodyfile="include/endstone/util/vector.h" bodystart="180" bodyend="184"/>
+        <location file="include/endstone/util/vector.h" line="181" column="22" bodyfile="include/endstone/util/vector.h" bodystart="181" bodyend="185"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a4476f60526db1f3ffb4dd7f2df4f62a9" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -637,7 +637,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="187" column="22" bodyfile="include/endstone/util/vector.h" bodystart="187" bodyend="191"/>
+        <location file="include/endstone/util/vector.h" line="188" column="22" bodyfile="include/endstone/util/vector.h" bodystart="188" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a602be11767e8dd72bdb9992e9750236e" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -662,7 +662,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="194" column="22" bodyfile="include/endstone/util/vector.h" bodystart="194" bodyend="198"/>
+        <location file="include/endstone/util/vector.h" line="195" column="22" bodyfile="include/endstone/util/vector.h" bodystart="195" bodyend="199"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a0598c7cb7cf12e9c0af010d8993fd814" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -680,7 +680,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="232" column="10" bodyfile="include/endstone/util/vector.h" bodystart="232" bodyend="237"/>
+        <location file="include/endstone/util/vector.h" line="233" column="10" bodyfile="include/endstone/util/vector.h" bodystart="233" bodyend="238"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a96ff865a96e7487a68d6fd71eecf3bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -698,7 +698,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="239" column="10" bodyfile="include/endstone/util/vector.h" bodystart="239" bodyend="239"/>
+        <location file="include/endstone/util/vector.h" line="240" column="10" bodyfile="include/endstone/util/vector.h" bodystart="240" bodyend="240"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a6fcb3db759e3d9b99509819223fdda36" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -716,7 +716,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="246" column="12" bodyfile="include/endstone/util/vector.h" bodystart="246" bodyend="246"/>
+        <location file="include/endstone/util/vector.h" line="247" column="12" bodyfile="include/endstone/util/vector.h" bodystart="247" bodyend="247"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a90a69a99836fd742075e7fb633199ab4" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -734,7 +734,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="253" column="22" bodyfile="include/endstone/util/vector.h" bodystart="253" bodyend="253"/>
+        <location file="include/endstone/util/vector.h" line="254" column="22" bodyfile="include/endstone/util/vector.h" bodystart="254" bodyend="254"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a496ea3fa87a3890ab011c9f1c9724309" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -765,7 +765,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="261" column="12" bodyfile="include/endstone/util/vector.h" bodystart="261" bodyend="261"/>
+        <location file="include/endstone/util/vector.h" line="262" column="12" bodyfile="include/endstone/util/vector.h" bodystart="262" bodyend="262"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a3c880f6fe455bf2e064c54b408f61ab7" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -796,7 +796,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="269" column="22" bodyfile="include/endstone/util/vector.h" bodystart="269" bodyend="273"/>
+        <location file="include/endstone/util/vector.h" line="270" column="22" bodyfile="include/endstone/util/vector.h" bodystart="270" bodyend="274"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a535cc5347d7bf44f944e661f04161b3f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -827,7 +827,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="281" column="12" bodyfile="include/endstone/util/vector.h" bodystart="281" bodyend="285"/>
+        <location file="include/endstone/util/vector.h" line="282" column="12" bodyfile="include/endstone/util/vector.h" bodystart="282" bodyend="286"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1aaaae2d7af23641afd6a3c2be07b56e32" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -858,7 +858,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="293" column="22" bodyfile="include/endstone/util/vector.h" bodystart="293" bodyend="299"/>
+        <location file="include/endstone/util/vector.h" line="294" column="22" bodyfile="include/endstone/util/vector.h" bodystart="294" bodyend="300"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a4169c456a0a2e46e294920127e35be4d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -889,7 +889,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="307" column="23" bodyfile="include/endstone/util/vector.h" bodystart="307" bodyend="313"/>
+        <location file="include/endstone/util/vector.h" line="308" column="23" bodyfile="include/endstone/util/vector.h" bodystart="308" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ad6520ae584514364caa411a4b005ac6c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -920,7 +920,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="322" column="22" bodyfile="include/endstone/util/vector.h" bodystart="322" bodyend="325"/>
+        <location file="include/endstone/util/vector.h" line="323" column="22" bodyfile="include/endstone/util/vector.h" bodystart="323" bodyend="326"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1abda3da0f6fb3eb443f5891000e54e14d" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -957,7 +957,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="338" column="22" bodyfile="include/endstone/util/vector.h" bodystart="338" bodyend="347"/>
+        <location file="include/endstone/util/vector.h" line="339" column="22" bodyfile="include/endstone/util/vector.h" bodystart="339" bodyend="348"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a02c6c4d72ce3531f554df7a19bcfc552" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref></type>
@@ -994,7 +994,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="360" column="23" bodyfile="include/endstone/util/vector.h" bodystart="360" bodyend="366"/>
+        <location file="include/endstone/util/vector.h" line="361" column="23" bodyfile="include/endstone/util/vector.h" bodystart="361" bodyend="367"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a4ee335f45978f4538c3828f238db4529" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -1012,7 +1012,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="373" column="12" bodyfile="include/endstone/util/vector.h" bodystart="373" bodyend="380"/>
+        <location file="include/endstone/util/vector.h" line="374" column="12" bodyfile="include/endstone/util/vector.h" bodystart="374" bodyend="381"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a26421a1fe19d49b3e2bd72f10dea50b3" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -1030,7 +1030,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="387" column="22" bodyfile="include/endstone/util/vector.h" bodystart="387" bodyend="393"/>
+        <location file="include/endstone/util/vector.h" line="388" column="22" bodyfile="include/endstone/util/vector.h" bodystart="388" bodyend="394"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1aec784233412e23885adc14c06b15ae37" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -1048,7 +1048,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="400" column="21" bodyfile="include/endstone/util/vector.h" bodystart="400" bodyend="400"/>
+        <location file="include/endstone/util/vector.h" line="401" column="21" bodyfile="include/endstone/util/vector.h" bodystart="401" bodyend="401"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ad346b2a05bd085e2cc450bec1514606f" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -1066,7 +1066,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="407" column="22" bodyfile="include/endstone/util/vector.h" bodystart="407" bodyend="419"/>
+        <location file="include/endstone/util/vector.h" line="408" column="22" bodyfile="include/endstone/util/vector.h" bodystart="408" bodyend="420"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1aa118da1a7206f0d5b50fd5e1afa7de3d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -1110,7 +1110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="431" column="21" bodyfile="include/endstone/util/vector.h" bodystart="431" bodyend="434"/>
+        <location file="include/endstone/util/vector.h" line="432" column="21" bodyfile="include/endstone/util/vector.h" bodystart="432" bodyend="435"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a3e2bba49e51ff18ee733ee53630df286" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -1153,7 +1153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="444" column="21" bodyfile="include/endstone/util/vector.h" bodystart="444" bodyend="448"/>
+        <location file="include/endstone/util/vector.h" line="445" column="21" bodyfile="include/endstone/util/vector.h" bodystart="445" bodyend="449"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a22f7a34e30e48f8cb79e4bf044ccb0ef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -1171,7 +1171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="455" column="11" bodyfile="include/endstone/util/vector.h" bodystart="455" bodyend="459"/>
+        <location file="include/endstone/util/vector.h" line="456" column="11" bodyfile="include/endstone/util/vector.h" bodystart="456" bodyend="460"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ab8fedea6d19e827ad713411d31ad4185" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -1202,7 +1202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="468" column="12" bodyfile="include/endstone/util/vector.h" bodystart="468" bodyend="475"/>
+        <location file="include/endstone/util/vector.h" line="469" column="12" bodyfile="include/endstone/util/vector.h" bodystart="469" bodyend="476"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a9e4100b8395fa5f07bf06d6c372b5985" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -1233,7 +1233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="484" column="12" bodyfile="include/endstone/util/vector.h" bodystart="484" bodyend="491"/>
+        <location file="include/endstone/util/vector.h" line="485" column="12" bodyfile="include/endstone/util/vector.h" bodystart="485" bodyend="492"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1a331ee16da6598240b3afa5b44bd1c2c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -1264,7 +1264,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="500" column="12" bodyfile="include/endstone/util/vector.h" bodystart="500" bodyend="507"/>
+        <location file="include/endstone/util/vector.h" line="501" column="12" bodyfile="include/endstone/util/vector.h" bodystart="501" bodyend="508"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1ac0474cf85b54344844b39891cb6302cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -1309,7 +1309,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="527" column="12" bodyfile="include/endstone/util/vector.h" bodystart="527" bodyend="530"/>
+        <location file="include/endstone/util/vector.h" line="528" column="12" bodyfile="include/endstone/util/vector.h" bodystart="528" bodyend="531"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Vector_1abfecaf052e634c51da2b53b78540b186" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &amp;</type>
@@ -1354,7 +1354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="549" column="12" bodyfile="include/endstone/util/vector.h" bodystart="549" bodyend="566"/>
+        <location file="include/endstone/util/vector.h" line="550" column="12" bodyfile="include/endstone/util/vector.h" bodystart="550" bodyend="567"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="friend">
@@ -1384,7 +1384,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="202" column="19" bodyfile="include/endstone/util/vector.h" bodystart="202" bodyend="206"/>
+        <location file="include/endstone/util/vector.h" line="203" column="19" bodyfile="include/endstone/util/vector.h" bodystart="203" bodyend="207"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1Vector_1afc20f47de21b481d32754052db6f6234" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1412,7 +1412,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="210" column="19" bodyfile="include/endstone/util/vector.h" bodystart="210" bodyend="214"/>
+        <location file="include/endstone/util/vector.h" line="211" column="19" bodyfile="include/endstone/util/vector.h" bodystart="211" bodyend="215"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1Vector_1abc0df9acf91bd86b670a8274ff26ee6b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1440,7 +1440,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="218" column="19" bodyfile="include/endstone/util/vector.h" bodystart="218" bodyend="222"/>
+        <location file="include/endstone/util/vector.h" line="219" column="19" bodyfile="include/endstone/util/vector.h" bodystart="219" bodyend="223"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1Vector_1a605a6f29d321741a9b85c030f0d641d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1468,7 +1468,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/vector.h" line="226" column="19" bodyfile="include/endstone/util/vector.h" bodystart="226" bodyend="230"/>
+        <location file="include/endstone/util/vector.h" line="227" column="19" bodyfile="include/endstone/util/vector.h" bodystart="227" bodyend="231"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1476,7 +1476,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/util/vector.h" line="27" column="1" bodyfile="include/endstone/util/vector.h" bodystart="27" bodyend="572"/>
+    <location file="include/endstone/util/vector.h" line="28" column="1" bodyfile="include/endstone/util/vector.h" bodystart="28" bodyend="573"/>
     <listofallmembers>
       <member refid="classendstone_1_1Vector_1a535cc5347d7bf44f944e661f04161b3f" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>angle</name></member>
       <member refid="classendstone_1_1Vector_1abda3da0f6fb3eb443f5891000e54e14d" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>crossProduct</name></member>

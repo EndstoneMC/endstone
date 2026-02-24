@@ -5,12 +5,14 @@
     <includes refid="map__canvas_8h" local="yes">endstone/map/map_canvas.h</includes>
     <includedby refid="map__view_8h" local="yes">include/endstone/map/map_view.h</includedby>
     <incdepgraph>
-      <node id="4">
+      <node id="8">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -18,15 +20,25 @@
         <link refid="map__canvas_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone/map/map_cursor.h</label>
+        <link refid="map__cursor_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>endstone/map/map_cursor.h</label>
-        <link refid="map__cursor_8h_source"/>
-        <childnode refid="4" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -35,39 +47,69 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="11">
         <label>endstone/util/color.h</label>
         <link refid="color_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
-      <node id="8">
+      <node id="12">
         <label>endstone/util/image.h</label>
         <link refid="image_8h_source"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="16">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="6">
+      <node id="13">
+        <label>algorithm</label>
+      </node>
+      <node id="14">
+        <label>cstddef</label>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="15">
+        <label>cstring</label>
+      </node>
+      <node id="10">
         <label>fmt/format.h</label>
       </node>
-      <node id="11">
+      <node id="17">
         <label>nonstd/expected.hpp</label>
       </node>
-      <node id="5">
+      <node id="9">
         <label>stdexcept</label>
       </node>
-      <node id="9">
+      <node id="6">
         <label>string</label>
+      </node>
+      <node id="7">
+        <label>utility</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>

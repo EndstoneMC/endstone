@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_chat_event.h" line="87" column="17" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="87" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_chat_event.h" line="92" column="17" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerChatEvent_1a6f547117792397c1aa4dfeed946d6452" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_chat_event.h" line="88" column="17" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="88" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_chat_event.h" line="93" column="17" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerChatEvent_1aa44281fed81a0f6ec7d366bb1e055079" prot="private" static="no" mutable="yes">
         <type>std::optional&lt; std::vector&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> * &gt; &gt;</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_chat_event.h" line="89" column="27" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="89" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_chat_event.h" line="94" column="27" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="94" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_chat_event.h" line="27" column="5"/>
+        <location file="include/endstone/event/player/player_chat_event.h" line="32" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a7b502ca97396f42b9a828464885afc07" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_chat_event.h" line="28" column="14" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="28" bodyend="33"/>
+        <location file="include/endstone/event/player/player_chat_event.h" line="33" column="14" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="33" bodyend="38"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a6aaa932d6bf8d004a1aa67f9332587e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_chat_event.h" line="40" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="40" bodyend="40"/>
+        <location file="include/endstone/event/player/player_chat_event.h" line="45" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a6911b50e5f63878d746bdda07d8fcd58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -142,7 +142,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_chat_event.h" line="47" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="47" bodyend="47"/>
+        <location file="include/endstone/event/player/player_chat_event.h" line="52" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="52" bodyend="52"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a13300f0afa05d3b3643bf60c9f8f2778" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -171,7 +171,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_chat_event.h" line="54" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="54" bodyend="54"/>
+        <location file="include/endstone/event/player/player_chat_event.h" line="59" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="59" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a4ca2281553851adb20356f1d15fff91e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -190,7 +190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_chat_event.h" line="63" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="63" bodyend="63"/>
+        <location file="include/endstone/event/player/player_chat_event.h" line="68" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1a16bf30f1143a3b116ce865bbc8dedc62" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -219,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_chat_event.h" line="71" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="71" bodyend="71"/>
+        <location file="include/endstone/event/player/player_chat_event.h" line="76" column="10" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerChatEvent_1ae72e5e69a2f537ecac4c33d065e1fdc2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> * &gt;</type>
@@ -237,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_chat_event.h" line="78" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="78" bodyend="84"/>
+        <location file="include/endstone/event/player/player_chat_event.h" line="83" column="18" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="83" bodyend="89"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -305,7 +305,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_chat_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="25" bodyend="90"/>
+    <location file="include/endstone/event/player/player_chat_event.h" line="30" column="1" bodyfile="include/endstone/event/player/player_chat_event.h" bodystart="30" bodyend="95"/>
     <listofallmembers>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerChatEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1PlayerChatEvent_1a6d8d09a5415905191c0f75b4e029b4c2" prot="public" virt="non-virtual"><scope>endstone::PlayerChatEvent</scope><name>ENDSTONE_EVENT</name></member>

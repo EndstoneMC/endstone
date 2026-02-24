@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_piston_retract_event.h" line="27" column="5" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="28" bodyend="31"/>
+        <location file="include/endstone/event/block/block_piston_retract_event.h" line="27" column="5" bodyfile="include/endstone/event/block/block_piston_event.h" bodystart="31" bodyend="34"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

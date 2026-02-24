@@ -24,6 +24,10 @@
 
 #pragma once
 
+#include <string>
+#include <string_view>
+#include <utility>
+
 #include "endstone/event/cancellable.h"
 #include "endstone/event/server/server_event.h"
 

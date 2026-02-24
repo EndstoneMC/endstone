@@ -12,7 +12,11 @@
       <node id="5">
         <label>identifier.h</label>
         <link refid="identifier_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -39,6 +43,9 @@
         <label>stdexcept</label>
       </node>
       <node id="6">
+        <label>string</label>
+      </node>
+      <node id="7">
         <label>string_view</label>
       </node>
     </incdepgraph>

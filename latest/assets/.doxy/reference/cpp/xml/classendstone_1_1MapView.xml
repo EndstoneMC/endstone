@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="31" column="5" bodyfile="include/endstone/map/map_view.h" bodystart="31" bodyend="37"/>
+        <location file="include/endstone/map/map_view.h" line="35" column="5" bodyfile="include/endstone/map/map_view.h" bodystart="35" bodyend="41"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="39" column="13"/>
+        <location file="include/endstone/map/map_view.h" line="43" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1aaa13aa08f9e1c8b15797a9ea8af70951" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int64_t</type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="46" column="27"/>
+        <location file="include/endstone/map/map_view.h" line="50" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1a358de6be116c02c479df672b7d115fb1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="55" column="19"/>
+        <location file="include/endstone/map/map_view.h" line="59" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1aeadc8818f79ee31f6068b7e57c1eebee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1MapView_1a8923322151bf59ee7077fe9c071a3a3c" kindref="member">Scale</ref></type>
@@ -126,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="62" column="20"/>
+        <location file="include/endstone/map/map_view.h" line="66" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1ac539ec1fa7f4055f8a662b6897f25073" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -155,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="69" column="18"/>
+        <location file="include/endstone/map/map_view.h" line="73" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1a9a42abd0ee68d6d858f29b313d334d99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -173,7 +173,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="76" column="18"/>
+        <location file="include/endstone/map/map_view.h" line="80" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1a730857d1da98ce90d93e6ef1da89af2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -191,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="83" column="18"/>
+        <location file="include/endstone/map/map_view.h" line="87" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1a909106f650cd8d8755bca25a7b5c76aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="90" column="18"/>
+        <location file="include/endstone/map/map_view.h" line="94" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1ae4875770b34a02497ccdcc081e3d71ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -249,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="97" column="18"/>
+        <location file="include/endstone/map/map_view.h" line="101" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1ab739c4252289cfd9ca7436a537cf62d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> *</type>
@@ -267,7 +267,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="104" column="24"/>
+        <location file="include/endstone/map/map_view.h" line="108" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1a0ff3209db49eb4585652c8ca104cf7c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -296,7 +296,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="111" column="18"/>
+        <location file="include/endstone/map/map_view.h" line="115" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1a91a42244a4f6e209e3d80fd2d1343bda" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::shared_ptr&lt; <ref refid="classendstone_1_1MapRenderer" kindref="compound">MapRenderer</ref> &gt; &gt;</type>
@@ -314,7 +314,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="118" column="26"/>
+        <location file="include/endstone/map/map_view.h" line="122" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1a759c2ca352b140a77f6aec185c1f2561" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -343,7 +343,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="125" column="18"/>
+        <location file="include/endstone/map/map_view.h" line="129" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1a778c94e5095993dd7c5895d7f8c24eee" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -374,7 +374,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="134" column="18"/>
+        <location file="include/endstone/map/map_view.h" line="138" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1ab94f8ff90f7ecef5e313f40696a993b8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -392,7 +392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="142" column="19"/>
+        <location file="include/endstone/map/map_view.h" line="146" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1a279570bf134982e89afa46b9ceeb81a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -421,7 +421,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="150" column="18"/>
+        <location file="include/endstone/map/map_view.h" line="154" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1afde755089e4f1bcb1849fe27a56323fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -439,7 +439,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="157" column="19"/>
+        <location file="include/endstone/map/map_view.h" line="161" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapView_1ae265a39be350ec1e782a8035f867bda9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -468,7 +468,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_view.h" line="164" column="18"/>
+        <location file="include/endstone/map/map_view.h" line="168" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -476,7 +476,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/map/map_view.h" line="26" column="1" bodyfile="include/endstone/map/map_view.h" bodystart="26" bodyend="165"/>
+    <location file="include/endstone/map/map_view.h" line="30" column="1" bodyfile="include/endstone/map/map_view.h" bodystart="30" bodyend="169"/>
     <listofallmembers>
       <member refid="classendstone_1_1MapView_1a759c2ca352b140a77f6aec185c1f2561" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>addRenderer</name></member>
       <member refid="classendstone_1_1MapView_1a9a42abd0ee68d6d858f29b313d334d99" prot="public" virt="pure-virtual"><scope>endstone::MapView</scope><name>getCenterX</name></member>

@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/handler_list.h" line="121" column="24" bodyfile="include/endstone/event/handler_list.h" bodystart="121" bodyend="-1"/>
+        <location file="include/endstone/event/handler_list.h" line="123" column="24" bodyfile="include/endstone/event/handler_list.h" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1HandlerList_1aeb44cef7cd2c841d804cd2a42f266660" prot="private" static="no" mutable="no">
         <type>std::map&lt; <ref refid="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342" kindref="member">EventPriority</ref>, std::vector&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> &gt; &gt; &gt;</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/handler_list.h" line="122" column="14" bodyfile="include/endstone/event/handler_list.h" bodystart="122" bodyend="-1"/>
+        <location file="include/endstone/event/handler_list.h" line="124" column="14" bodyfile="include/endstone/event/handler_list.h" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1HandlerList_1a549331fe1bfcd40f3e7b29b514edeb46" prot="private" static="no" mutable="yes">
         <type>std::vector&lt; <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> * &gt;</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/handler_list.h" line="123" column="25" bodyfile="include/endstone/event/handler_list.h" bodystart="123" bodyend="-1"/>
+        <location file="include/endstone/event/handler_list.h" line="125" column="25" bodyfile="include/endstone/event/handler_list.h" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1HandlerList_1a495f3b97e658b65ee688803e6058f98e" prot="private" static="no" mutable="yes">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/handler_list.h" line="124" column="18" bodyfile="include/endstone/event/handler_list.h" bodystart="124" bodyend="124"/>
+        <location file="include/endstone/event/handler_list.h" line="126" column="18" bodyfile="include/endstone/event/handler_list.h" bodystart="126" bodyend="126"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1HandlerList_1a232dbfba6d8ceeb53735a41578bddefd" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/handler_list.h" line="125" column="17" bodyfile="include/endstone/event/handler_list.h" bodystart="125" bodyend="-1"/>
+        <location file="include/endstone/event/handler_list.h" line="127" column="17" bodyfile="include/endstone/event/handler_list.h" bodystart="127" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/handler_list.h" line="33" column="14" bodyfile="include/endstone/event/handler_list.h" bodystart="33" bodyend="33"/>
+        <location file="include/endstone/event/handler_list.h" line="35" column="14" bodyfile="include/endstone/event/handler_list.h" bodystart="35" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1HandlerList_1a0c020fd39ab3790ae5066d0770e9f5e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> *</type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/handler_list.h" line="41" column="18" bodyfile="include/endstone/event/handler_list.h" bodystart="41" bodyend="53"/>
+        <location file="include/endstone/event/handler_list.h" line="43" column="18" bodyfile="include/endstone/event/handler_list.h" bodystart="43" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1HandlerList_1ad2417dc763c19d61a627a7e43c09b81a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -153,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/handler_list.h" line="60" column="10" bodyfile="include/endstone/event/handler_list.h" bodystart="60" bodyend="71"/>
+        <location file="include/endstone/event/handler_list.h" line="62" column="10" bodyfile="include/endstone/event/handler_list.h" bodystart="62" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1HandlerList_1a5950519aa05fb195d32afad8ea03addc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -182,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/handler_list.h" line="78" column="10" bodyfile="include/endstone/event/handler_list.h" bodystart="78" bodyend="88"/>
+        <location file="include/endstone/event/handler_list.h" line="80" column="10" bodyfile="include/endstone/event/handler_list.h" bodystart="80" bodyend="90"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1HandlerList_1ad341b769bbf3a604e82392b84212a18d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> * &gt;</type>
@@ -200,7 +200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/handler_list.h" line="95" column="17" bodyfile="include/endstone/event/handler_list.h" bodystart="95" bodyend="102"/>
+        <location file="include/endstone/event/handler_list.h" line="97" column="17" bodyfile="include/endstone/event/handler_list.h" bodystart="97" bodyend="104"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -216,7 +216,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/handler_list.h" line="105" column="10" bodyfile="include/endstone/event/handler_list.h" bodystart="105" bodyend="118"/>
+        <location file="include/endstone/event/handler_list.h" line="107" column="10" bodyfile="include/endstone/event/handler_list.h" bodystart="107" bodyend="120"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -224,7 +224,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/event/handler_list.h" line="31" column="1" bodyfile="include/endstone/event/handler_list.h" bodystart="31" bodyend="126"/>
+    <location file="include/endstone/event/handler_list.h" line="33" column="1" bodyfile="include/endstone/event/handler_list.h" bodystart="33" bodyend="128"/>
     <listofallmembers>
       <member refid="classendstone_1_1HandlerList_1a60ca2f071683e43f5d601d886cc3a622" prot="protected" virt="non-virtual"><scope>endstone::HandlerList</scope><name>bake</name></member>
       <member refid="classendstone_1_1HandlerList_1a549331fe1bfcd40f3e7b29b514edeb46" prot="private" virt="non-virtual"><scope>endstone::HandlerList</scope><name>baked_handlers_</name></member>

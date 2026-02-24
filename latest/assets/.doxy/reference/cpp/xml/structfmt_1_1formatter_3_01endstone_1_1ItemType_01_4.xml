@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="100" column="5" bodyfile="include/endstone/inventory/item_type.h" bodystart="100" bodyend="-1"/>
+        <location file="include/endstone/inventory/item_type.h" line="102" column="5" bodyfile="include/endstone/inventory/item_type.h" bodystart="102" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_type.h" line="103" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="103" bodyend="106"/>
+        <location file="include/endstone/inventory/item_type.h" line="105" column="10" bodyfile="include/endstone/inventory/item_type.h" bodystart="105" bodyend="108"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -76,7 +76,7 @@
         <label>formatter&lt; string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/inventory/item_type.h" line="99" column="1" bodyfile="include/endstone/inventory/item_type.h" bodystart="99" bodyend="107"/>
+    <location file="include/endstone/inventory/item_type.h" line="101" column="1" bodyfile="include/endstone/inventory/item_type.h" bodystart="101" bodyend="109"/>
     <listofallmembers>
       <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4_1a787932a2a8b044ef7df518d268f4b19f" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::ItemType &gt;</scope><name>format</name></member>
       <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemType_01_4_1af86040eb443c33219a63d3dd1158fe4e" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::ItemType &gt;</scope><name>Type</name></member>

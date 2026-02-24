@@ -24,7 +24,15 @@
 
 #pragma once
 
+#include <cstddef>
+#include <cstdint>
 #include <regex>
+#include <stdexcept>
+#include <string>
+#include <string_view>
+#include <type_traits>
+#include <utility>
+#include <variant>
 
 #include <fmt/format.h>
 #include <fmt/ranges.h>

@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/uuid.h" line="92" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="92" bodyend="92"/>
+        <location file="include/endstone/util/uuid.h" line="94" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="94" bodyend="94"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/uuid.h" line="31" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="31" bodyend="31"/>
+        <location file="include/endstone/util/uuid.h" line="33" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="33" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1UUID_1af0a0cf716be9f38cc598f04cc3dc69f9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref> *</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/uuid.h" line="33" column="20" bodyfile="include/endstone/util/uuid.h" bodystart="33" bodyend="33"/>
+        <location file="include/endstone/util/uuid.h" line="35" column="20" bodyfile="include/endstone/util/uuid.h" bodystart="35" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1UUID_1ae1d61e41a23e8202cdc844ad2c831fe3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>std::uint8_t *</type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/uuid.h" line="35" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="35" bodyend="35"/>
+        <location file="include/endstone/util/uuid.h" line="37" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1UUID_1a2a4791e3c8e433cb181f0f2e5cd16093" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">uint8_t</ref> *</type>
@@ -75,7 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/uuid.h" line="37" column="20" bodyfile="include/endstone/util/uuid.h" bodystart="37" bodyend="37"/>
+        <location file="include/endstone/util/uuid.h" line="39" column="20" bodyfile="include/endstone/util/uuid.h" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1UUID_1a4e2f46b83b69f6bfc59456083849da00" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/uuid.h" line="41" column="11" bodyfile="include/endstone/util/uuid.h" bodystart="41" bodyend="44"/>
+        <location file="include/endstone/util/uuid.h" line="43" column="11" bodyfile="include/endstone/util/uuid.h" bodystart="43" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1UUID_1a1d5154c476140540420483ac9e435c59" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -103,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/uuid.h" line="46" column="10" bodyfile="include/endstone/util/uuid.h" bodystart="46" bodyend="66"/>
+        <location file="include/endstone/util/uuid.h" line="48" column="10" bodyfile="include/endstone/util/uuid.h" bodystart="48" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1UUID_1a0f9e2913aaa2ce04017cd62bfca446d9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -121,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/uuid.h" line="68" column="10" bodyfile="include/endstone/util/uuid.h" bodystart="68" bodyend="73"/>
+        <location file="include/endstone/util/uuid.h" line="70" column="10" bodyfile="include/endstone/util/uuid.h" bodystart="70" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1UUID_1af4c18bdc295b4607ff4f82374b67fc02" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/uuid.h" line="75" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="75" bodyend="91"/>
+        <location file="include/endstone/util/uuid.h" line="77" column="18" bodyfile="include/endstone/util/uuid.h" bodystart="77" bodyend="93"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/uuid.h" line="39" column="35" bodyfile="include/endstone/util/uuid.h" bodystart="39" bodyend="39"/>
+        <location file="include/endstone/util/uuid.h" line="41" column="35" bodyfile="include/endstone/util/uuid.h" bodystart="41" bodyend="41"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -160,7 +160,7 @@
     <detaileddescription>
 <para>Adapted from <ulink url="https://github.com/boostorg/uuid/blob/develop/include/boost/uuid/uuid.hpp">https://github.com/boostorg/uuid/blob/develop/include/boost/uuid/uuid.hpp</ulink> </para>
     </detaileddescription>
-    <location file="include/endstone/util/uuid.h" line="29" column="1" bodyfile="include/endstone/util/uuid.h" bodystart="29" bodyend="93"/>
+    <location file="include/endstone/util/uuid.h" line="31" column="1" bodyfile="include/endstone/util/uuid.h" bodystart="31" bodyend="95"/>
     <listofallmembers>
       <member refid="classendstone_1_1UUID_1aa0bd3b5d88e662f58bd7dc3695be1da4" prot="public" virt="non-virtual"><scope>endstone::UUID</scope><name>begin</name></member>
       <member refid="classendstone_1_1UUID_1af0a0cf716be9f38cc598f04cc3dc69f9" prot="public" virt="non-virtual"><scope>endstone::UUID</scope><name>begin</name></member>

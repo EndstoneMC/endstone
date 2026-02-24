@@ -10,6 +10,8 @@
 
 
 
+* `#include <memory>`
+* `#include <utility>`
 * `#include "endstone/damage/damage_source.h"`
 * `#include "endstone/event/actor/actor_event.h"`
 

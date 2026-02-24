@@ -42,7 +42,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_form_event.h" line="36" column="5" bodyfile="include/endstone/event/block/block_grow_event.h" bodystart="29" bodyend="32"/>
+        <location file="include/endstone/event/block/block_form_event.h" line="36" column="5" bodyfile="include/endstone/event/block/block_grow_event.h" bodystart="32" bodyend="35"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

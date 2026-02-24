@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/item.h" line="31" column="24"/>
+        <location file="include/endstone/actor/item.h" line="34" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1af161f37341629c74503408f7ebfeb0e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/item.h" line="38" column="18"/>
+        <location file="include/endstone/actor/item.h" line="41" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1a3256b7b25cc3a2e8a59a18ea471c386d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/item.h" line="45" column="18"/>
+        <location file="include/endstone/actor/item.h" line="48" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1a9ecb3d011f118920d313d406b0e1f7cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/item.h" line="52" column="18"/>
+        <location file="include/endstone/actor/item.h" line="55" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1aa75743e9275be2335852f72f8e77a879" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -126,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/item.h" line="59" column="18"/>
+        <location file="include/endstone/actor/item.h" line="62" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1ae9d1acdd426e2abdaa9a7d0772e013a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/item.h" line="66" column="19"/>
+        <location file="include/endstone/actor/item.h" line="69" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1a76a67449432660c8c549c9e578fbf549" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -175,7 +175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/item.h" line="75" column="18"/>
+        <location file="include/endstone/actor/item.h" line="78" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Item_1ab8e408c96b5ddb96277d89bdebf186ae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; std::int64_t &gt;</type>
@@ -195,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/item.h" line="84" column="28"/>
+        <location file="include/endstone/actor/item.h" line="87" column="28"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -251,7 +251,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/actor/item.h" line="24" column="1" bodyfile="include/endstone/actor/item.h" bodystart="24" bodyend="85"/>
+    <location file="include/endstone/actor/item.h" line="27" column="1" bodyfile="include/endstone/actor/item.h" bodystart="27" bodyend="88"/>
     <listofallmembers>
       <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::Item</scope><name>addAttachment</name></member>

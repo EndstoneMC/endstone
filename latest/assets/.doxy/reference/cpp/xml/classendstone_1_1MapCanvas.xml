@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="32" column="13"/>
+        <location file="include/endstone/map/map_canvas.h" line="35" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1a49128d914ad9dd72f7c10231ea91b613" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> &amp;</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="39" column="22"/>
+        <location file="include/endstone/map/map_canvas.h" line="42" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1a1b9ebc993a915ba2eb8998b428a847a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1MapCursor" kindref="compound">MapCursor</ref> &gt;</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="46" column="26"/>
+        <location file="include/endstone/map/map_canvas.h" line="49" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1abc7a84ff2147636d451c6e9a87294d31" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="53" column="18"/>
+        <location file="include/endstone/map/map_canvas.h" line="56" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1ab9a56206d8bb2728a78f500059c805ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="62" column="18"/>
+        <location file="include/endstone/map/map_canvas.h" line="65" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1a20b00b40d085f19b92454dd171816c51" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -177,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="72" column="20"/>
+        <location file="include/endstone/map/map_canvas.h" line="75" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1a90d6935c9d5923cadaec20284eefd1ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="82" column="20"/>
+        <location file="include/endstone/map/map_canvas.h" line="85" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1a938c0200e58bd6e6ad4a47f27a8c6120" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -273,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="91" column="18"/>
+        <location file="include/endstone/map/map_canvas.h" line="94" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1a6974d7ff1ddbebb681a2b49d37534a23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::uint32_t</type>
@@ -316,7 +316,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="100" column="28"/>
+        <location file="include/endstone/map/map_canvas.h" line="103" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1a3cbade71dec5ec2ead328d6ebebcff97" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::uint32_t</type>
@@ -359,7 +359,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="109" column="28"/>
+        <location file="include/endstone/map/map_canvas.h" line="112" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapCanvas_1a6baa558e589385df3cdd52691c4628a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -412,7 +412,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/map/map_canvas.h" line="118" column="18"/>
+        <location file="include/endstone/map/map_canvas.h" line="121" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -423,7 +423,7 @@
 </simplesect>
 </para>
     </detaileddescription>
-    <location file="include/endstone/map/map_canvas.h" line="30" column="1" bodyfile="include/endstone/map/map_canvas.h" bodystart="30" bodyend="119"/>
+    <location file="include/endstone/map/map_canvas.h" line="33" column="1" bodyfile="include/endstone/map/map_canvas.h" bodystart="33" bodyend="122"/>
     <listofallmembers>
       <member refid="classendstone_1_1MapCanvas_1a6baa558e589385df3cdd52691c4628a6" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>drawImage</name></member>
       <member refid="classendstone_1_1MapCanvas_1a3cbade71dec5ec2ead328d6ebebcff97" prot="public" virt="pure-virtual"><scope>endstone::MapCanvas</scope><name>getBasePixel</name></member>

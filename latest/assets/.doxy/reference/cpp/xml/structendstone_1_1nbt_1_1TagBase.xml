@@ -40,7 +40,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/nbt/type.h" line="18" column="1" bodyfile="include/endstone/nbt/type.h" bodystart="18" bodyend="18"/>
+    <location file="include/endstone/nbt/type.h" line="19" column="1" bodyfile="include/endstone/nbt/type.h" bodystart="19" bodyend="19"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

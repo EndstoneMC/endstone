@@ -13,6 +13,7 @@
 * `#include <functional>`
 * `#include <memory>`
 * `#include <string>`
+* `#include <unordered_set>`
 * `#include <vector>`
 * `#include "endstone/event/event.h"`
 * `#include "endstone/event/event_priority.h"`

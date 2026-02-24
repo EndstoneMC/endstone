@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_factory.h" line="23" column="13"/>
+        <location file="include/endstone/inventory/item_factory.h" line="25" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemFactory_1a5d15dd0ea9a08da85abf2ef211f9efd5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_factory.h" line="31" column="30"/>
+        <location file="include/endstone/inventory/item_factory.h" line="33" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemFactory_1aff21b0ec47bc64201a7626ad14ff1b2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_factory.h" line="41" column="19"/>
+        <location file="include/endstone/inventory/item_factory.h" line="43" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -132,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_factory.h" line="50" column="19"/>
+        <location file="include/endstone/inventory/item_factory.h" line="52" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ItemFactory_1a084aacc2614dd8e9cc3b29ff499fddd3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref> &gt;</type>
@@ -176,14 +176,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/item_factory.h" line="63" column="30"/>
+        <location file="include/endstone/inventory/item_factory.h" line="65" column="30"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/inventory/item_factory.h" line="21" column="1" bodyfile="include/endstone/inventory/item_factory.h" bodystart="21" bodyend="65"/>
+    <location file="include/endstone/inventory/item_factory.h" line="23" column="1" bodyfile="include/endstone/inventory/item_factory.h" bodystart="23" bodyend="66"/>
     <listofallmembers>
       <member refid="classendstone_1_1ItemFactory_1a084aacc2614dd8e9cc3b29ff499fddd3" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>asMetaFor</name></member>
       <member refid="classendstone_1_1ItemFactory_1a3addbbc69664b64ec93e2a0ceb8b7217" prot="public" virt="pure-virtual"><scope>endstone::ItemFactory</scope><name>equals</name></member>

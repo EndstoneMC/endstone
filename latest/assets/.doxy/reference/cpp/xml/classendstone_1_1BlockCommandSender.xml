@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/block_command_sender.h" line="32" column="30"/>
+        <location file="include/endstone/command/block_command_sender.h" line="34" column="30"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -65,7 +65,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/command/block_command_sender.h" line="25" column="1" bodyfile="include/endstone/command/block_command_sender.h" bodystart="25" bodyend="33"/>
+    <location file="include/endstone/command/block_command_sender.h" line="27" column="1" bodyfile="include/endstone/command/block_command_sender.h" bodystart="27" bodyend="35"/>
     <listofallmembers>
       <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1ab1adef2b8d0494a9bfcd9c9ffb995f2b" prot="public" virt="pure-virtual"><scope>endstone::BlockCommandSender</scope><name>addAttachment</name></member>

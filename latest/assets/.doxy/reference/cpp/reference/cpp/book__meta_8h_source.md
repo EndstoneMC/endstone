@@ -24,6 +24,9 @@
 
 #pragma once
 
+#include <optional>
+#include <string>
+
 #include "endstone/inventory/meta/writable_book_meta.h"
 
 namespace endstone {

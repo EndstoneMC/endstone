@@ -10,6 +10,8 @@
 
 
 
+* `#include <optional>`
+* `#include <string>`
 * `#include "endstone/inventory/meta/writable_book_meta.h"`
 
 

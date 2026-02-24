@@ -121,9 +121,9 @@
     <member refid="classendstone_1_1nbt_1_1ArrayTag_1adf7d5bc7fc62e0182b232f3087f7d1e6" kind="typedef"><name>value_type</name></member>
     <member refid="classendstone_1_1nbt_1_1ArrayTag_1ab6fcb4a9e6e2b09910516d13ab884163" kind="typedef"><name>size_type</name></member>
     <member refid="classendstone_1_1nbt_1_1ArrayTag_1a290f628a0e071867af0d46c5356889cf" kind="typedef"><name>storage_type</name></member>
-    <member refid="classendstone_1_1nbt_1_1ArrayTag_1abfc87d92c27004ef515b3c6485ca4ccb" kind="typedef"><name>iterator</name></member>
-    <member refid="classendstone_1_1nbt_1_1ArrayTag_1aca902f6c1342dc0f7cd0defc389483e1" kind="typedef"><name>const_iterator</name></member>
-    <member refid="classendstone_1_1nbt_1_1ArrayTag_1a52c1abdcec93f307d2a999069a327582" kind="typedef"><name>difference_type</name></member>
+    <member refid="classendstone_1_1nbt_1_1ArrayTag_1a42dda796d5ef80fa0fa8eab3df4457af" kind="typedef"><name>iterator</name></member>
+    <member refid="classendstone_1_1nbt_1_1ArrayTag_1ac9969841cedd0986327c6f32b7d43d90" kind="typedef"><name>const_iterator</name></member>
+    <member refid="classendstone_1_1nbt_1_1ArrayTag_1a4395264299b3c3968c53c9bca1cbdb97" kind="typedef"><name>difference_type</name></member>
     <member refid="classendstone_1_1nbt_1_1ArrayTag_1a055984a4f5c104ed491bd253d485cf28" kind="variable"><name>v_</name></member>
     <member refid="classendstone_1_1nbt_1_1ArrayTag_1a7e505a2e1c55ebe0921cf604d9e38948" kind="function"><name>ArrayTag</name></member>
     <member refid="classendstone_1_1nbt_1_1ArrayTag_1a4aa2da818b91b853dc0448bec7100a42" kind="function"><name>ArrayTag</name></member>
@@ -1097,7 +1097,7 @@
     <member refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" kind="function"><name>getRepairCost</name></member>
     <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" kind="function"><name>setRepairCost</name></member>
     <member refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" kind="function"><name>clone</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a4e9ad277734acb0df17559a70ca8ed78" kind="function"><name>toNbt</name></member>
+    <member refid="classendstone_1_1ItemMeta_1aa9ac1cb2bb1fb71ff465001603b3cddf" kind="function"><name>getExtras</name></member>
     <member refid="classendstone_1_1ItemMeta_1af179bd7b745731e3d0f1e66828e45149" kind="function"><name>as</name></member>
     <member refid="classendstone_1_1ItemMeta_1af5d8b132d9add8051466b9b19e3bfa61" kind="function"><name>as</name></member>
   </compound>
@@ -1541,7 +1541,7 @@
     <member refid="classendstone_1_1Permissible_1a49323c37f310044720678e27513b44dc" kind="function"><name>asCommandSender</name></member>
   </compound>
   <compound refid="classendstone_1_1Permission" kind="class"><name>endstone::Permission</name>
-    <member refid="classendstone_1_1Permission_1a385c02996be80249d7de305f42f92924" kind="variable"><name>DefaultPermission</name></member>
+    <member refid="classendstone_1_1Permission_1a03f4834144ee871a3c6610d2e52dbc9b" kind="variable"><name>DefaultPermission</name></member>
     <member refid="classendstone_1_1Permission_1adee44b76a17eb5dbd3157ded8289be3f" kind="variable"><name>name_</name></member>
     <member refid="classendstone_1_1Permission_1ad529bf3a412dac6d4ecd993786aeb2e5" kind="variable"><name>children_</name></member>
     <member refid="classendstone_1_1Permission_1a5c738f9da8b8ba26ad2270b8945b542f" kind="variable"><name>default_value_</name></member>
@@ -2399,12 +2399,11 @@
     <member refid="classendstone_1_1TextInput_1a2bf266925a2e5a753d556cbe18e429d8" kind="function"><name>setDefaultValue</name></member>
   </compound>
   <compound refid="classendstone_1_1ThunderChangeEvent" kind="class"><name>endstone::ThunderChangeEvent</name>
-    <member refid="classendstone_1_1ThunderChangeEvent_1af5811528ec4395a5c8bb78e00815c4ab" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1ThunderChangeEvent_1aaaba13b478e077148ec46fda6a9e50ee" kind="variable"><name>to_</name></member>
+    <member refid="classendstone_1_1ThunderChangeEvent_1adfd71a1b139dfe7494a9c9bf35d65d33" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1ThunderChangeEvent_1a45cd6ad4d14162e864c3307bf02299c6" kind="function"><name>ThunderChangeEvent</name></member>
     <member refid="classendstone_1_1ThunderChangeEvent_1a1f20d7ce8209c6817797bca7b2e1db5c" kind="function"><name>~ThunderChangeEvent</name></member>
     <member refid="classendstone_1_1ThunderChangeEvent_1ae3e78b8cabe8c813b36f186c3573c476" kind="function"><name>toThunderState</name></member>
-    <member refid="classendstone_1_1ThunderChangeEvent_1a65d8e1b242cf7929f5f56a7b625d1e83" kind="function"><name>getEventName</name></member>
   </compound>
   <compound refid="classendstone_1_1Toggle" kind="class"><name>endstone::Toggle</name>
     <member refid="classendstone_1_1Toggle_1ab70b5d10613173b8cbe80b53c5f769a3" kind="variable"><name>label_</name></member>
@@ -2512,12 +2511,11 @@
     <member refid="classendstone_1_1Vector_1a605a6f29d321741a9b85c030f0d641d8" kind="friend"><name>operator/</name></member>
   </compound>
   <compound refid="classendstone_1_1WeatherChangeEvent" kind="class"><name>endstone::WeatherChangeEvent</name>
-    <member refid="classendstone_1_1WeatherChangeEvent_1af684c3b39e6a91f4453f14e46ade558e" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1WeatherChangeEvent_1a2bde9420885bad855573e4557f771a8d" kind="variable"><name>to_</name></member>
+    <member refid="classendstone_1_1WeatherChangeEvent_1a247413fd1f2105fc8ef62d3fffae4f76" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1WeatherChangeEvent_1a70879686a9719e31e6bf74e78652f192" kind="function"><name>WeatherChangeEvent</name></member>
     <member refid="classendstone_1_1WeatherChangeEvent_1a2654b155b5ca461dd93f90348142c3f3" kind="function"><name>~WeatherChangeEvent</name></member>
     <member refid="classendstone_1_1WeatherChangeEvent_1a6f1a7f2b0be3478b85737c52f35da02e" kind="function"><name>toWeatherState</name></member>
-    <member refid="classendstone_1_1WeatherChangeEvent_1aed5ffb1d7cab8026df5c6b2529f95f24" kind="function"><name>getEventName</name></member>
   </compound>
   <compound refid="classendstone_1_1WeatherEvent" kind="class"><name>endstone::WeatherEvent</name>
     <member refid="classendstone_1_1WeatherEvent_1adb82c6d960c79dfe381ef94b8ef07b85" kind="variable"><name>level_</name></member>

@@ -25,8 +25,11 @@
 #pragma once
 
 #include <algorithm>
+#include <cstddef>
 #include <map>
 #include <stdexcept>
+#include <string>
+#include <utility>
 
 #include "endstone/nbt/type.h"
 

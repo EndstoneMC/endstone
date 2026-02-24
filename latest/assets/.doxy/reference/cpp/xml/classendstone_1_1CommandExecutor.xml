@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_executor.h" line="29" column="13"/>
+        <location file="include/endstone/command/command_executor.h" line="30" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandExecutor_1abf189fa960c2e7f1fbc3f0366afc3d1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_executor.h" line="39" column="18" bodyfile="include/endstone/command/command_executor.h" bodystart="39" bodyend="42"/>
+        <location file="include/endstone/command/command_executor.h" line="40" column="18" bodyfile="include/endstone/command/command_executor.h" bodystart="40" bodyend="43"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -92,7 +92,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/command/command_executor.h" line="27" column="1" bodyfile="include/endstone/command/command_executor.h" bodystart="27" bodyend="43"/>
+    <location file="include/endstone/command/command_executor.h" line="28" column="1" bodyfile="include/endstone/command/command_executor.h" bodystart="28" bodyend="44"/>
     <listofallmembers>
       <member refid="classendstone_1_1CommandExecutor_1abf189fa960c2e7f1fbc3f0366afc3d1f" prot="public" virt="virtual"><scope>endstone::CommandExecutor</scope><name>onCommand</name></member>
       <member refid="classendstone_1_1CommandExecutor_1a9dfc0b1fe01086e280de0d8202f6482c" prot="public" virt="virtual"><scope>endstone::CommandExecutor</scope><name>~CommandExecutor</name></member>

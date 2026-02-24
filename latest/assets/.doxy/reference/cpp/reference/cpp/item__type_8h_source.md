@@ -24,6 +24,8 @@
 
 #pragma once
 
+#include <string>
+
 #include "endstone/detail.h"
 #include "endstone/registry.h"
 #include "endstone/server.h"

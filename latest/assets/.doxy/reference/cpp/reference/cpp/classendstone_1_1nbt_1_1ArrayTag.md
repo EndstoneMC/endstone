@@ -34,9 +34,9 @@ Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1
 
 | Type | Name |
 | ---: | :--- |
-| typedef storage\_type::const\_iterator | [**const\_iterator**](#typedef-const_iterator)  <br> |
-| typedef storage\_type::difference\_type | [**difference\_type**](#typedef-difference_type)  <br> |
-| typedef storage\_type::iterator | [**iterator**](#typedef-iterator)  <br> |
+| typedef [**typename**](classendstone_1_1Identifier.md) storage\_type::const\_iterator | [**const\_iterator**](#typedef-const_iterator)  <br> |
+| typedef [**typename**](classendstone_1_1Identifier.md) storage\_type::difference\_type | [**difference\_type**](#typedef-difference_type)  <br> |
+| typedef [**typename**](classendstone_1_1Identifier.md) storage\_type::iterator | [**iterator**](#typedef-iterator)  <br> |
 | typedef std::size\_t | [**size\_type**](#typedef-size_type)  <br> |
 | typedef std::vector&lt; [**value\_type**](classendstone_1_1Identifier.md) &gt; | [**storage\_type**](#typedef-storage_type)  <br> |
 | typedef [**T**](classendstone_1_1Identifier.md) | [**value\_type**](#typedef-value_type)  <br> |
@@ -171,7 +171,7 @@ Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1
 ### typedef const\_iterator 
 
 ```C++
-using endstone::nbt::ArrayTag< T >::const_iterator =  storage_type::const_iterator;
+using endstone::nbt::ArrayTag< T >::const_iterator =  typename storage_type::const_iterator;
 ```
 
 
@@ -184,7 +184,7 @@ using endstone::nbt::ArrayTag< T >::const_iterator =  storage_type::const_iterat
 ### typedef difference\_type 
 
 ```C++
-using endstone::nbt::ArrayTag< T >::difference_type =  storage_type::difference_type;
+using endstone::nbt::ArrayTag< T >::difference_type =  typename storage_type::difference_type;
 ```
 
 
@@ -197,7 +197,7 @@ using endstone::nbt::ArrayTag< T >::difference_type =  storage_type::difference_
 ### typedef iterator 
 
 ```C++
-using endstone::nbt::ArrayTag< T >::iterator =  storage_type::iterator;
+using endstone::nbt::ArrayTag< T >::iterator =  typename storage_type::iterator;
 ```
 
 

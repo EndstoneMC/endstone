@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_spawn_event.h" line="32" column="37" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="32" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_spawn_event.h" line="34" column="37" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="34" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_spawn_event.h" line="29" column="14" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="29" bodyend="29"/>
+        <location file="include/endstone/event/actor/actor_spawn_event.h" line="31" column="14" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="31" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorSpawnEvent_1ac524be66b9fb6427fec2fab4dca9c7c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_spawn_event.h" line="30" column="5"/>
+        <location file="include/endstone/event/actor/actor_spawn_event.h" line="32" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorSpawnEvent_1a3121b34be728eb087186a20be395032f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_spawn_event.h" line="33" column="18" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="33" bodyend="33"/>
+        <location file="include/endstone/event/actor/actor_spawn_event.h" line="35" column="18" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="35" bodyend="35"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -140,7 +140,7 @@
         <link refid="classendstone_1_1ICancellable"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/actor/actor_spawn_event.h" line="27" column="1" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="27" bodyend="36"/>
+    <location file="include/endstone/event/actor/actor_spawn_event.h" line="29" column="1" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="29" bodyend="38"/>
     <listofallmembers>
       <member refid="classendstone_1_1ActorEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>ActorEvent</name></member>
       <member refid="classendstone_1_1ActorSpawnEvent_1a97220eb48dd782f724751748da0be5e6" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>ActorSpawnEvent</name></member>

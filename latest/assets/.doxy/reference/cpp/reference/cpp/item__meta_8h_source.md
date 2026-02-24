@@ -27,15 +27,18 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <type_traits>
 #include <unordered_map>
 #include <vector>
 
 #include "endstone/enchantments/enchantment.h"
-#include "endstone/nbt/tag.h"
 
 #define ENDSTONE_ITEM_META_TYPE(type) static constexpr auto MetaType = Type::type;
 
 namespace endstone {
+namespace core {
+class ItemMetaExtras;
+}
 class ItemMeta {
 public:
     enum class Type {
@@ -97,7 +100,7 @@ public:
 
     [[nodiscard]] virtual std::unique_ptr<ItemMeta> clone() const = 0;
 
-    [[nodiscard]] virtual CompoundTag toNbt() const = 0;
+    [[nodiscard]] virtual const core::ItemMetaExtras &getExtras() const = 0;
 
     template <typename T>
         requires std::is_base_of_v<ItemMeta, T>

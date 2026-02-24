@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/offline_player.h" line="27" column="13"/>
+        <location file="include/endstone/offline_player.h" line="29" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1OfflinePlayer_1a0135bdd81bed1caddebbab8deb91a32f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/offline_player.h" line="34" column="26"/>
+        <location file="include/endstone/offline_player.h" line="36" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1OfflinePlayer_1aa1c48a8a74d2fcb7eefc8892f032ab99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref></type>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/offline_player.h" line="41" column="19"/>
+        <location file="include/endstone/offline_player.h" line="43" column="19"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -74,7 +74,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/offline_player.h" line="25" column="1" bodyfile="include/endstone/offline_player.h" bodystart="25" bodyend="42"/>
+    <location file="include/endstone/offline_player.h" line="27" column="1" bodyfile="include/endstone/offline_player.h" bodystart="27" bodyend="44"/>
     <listofallmembers>
       <member refid="classendstone_1_1OfflinePlayer_1a0135bdd81bed1caddebbab8deb91a32f" prot="public" virt="pure-virtual"><scope>endstone::OfflinePlayer</scope><name>getName</name></member>
       <member refid="classendstone_1_1OfflinePlayer_1aa1c48a8a74d2fcb7eefc8892f032ab99" prot="public" virt="pure-virtual"><scope>endstone::OfflinePlayer</scope><name>getUniqueId</name></member>

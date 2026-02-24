@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/check.h" line="25" column="17" bodyfile="include/endstone/check.h" bodystart="25" bodyend="31"/>
+        <location file="include/endstone/check.h" line="26" column="17" bodyfile="include/endstone/check.h" bodystart="26" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Preconditions_1a7e66cfe150961a5377a0149d7b609df1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -67,14 +67,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/check.h" line="34" column="17" bodyfile="include/endstone/check.h" bodystart="34" bodyend="40"/>
+        <location file="include/endstone/check.h" line="35" column="17" bodyfile="include/endstone/check.h" bodystart="35" bodyend="41"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/check.h" line="22" column="1" bodyfile="include/endstone/check.h" bodystart="22" bodyend="41"/>
+    <location file="include/endstone/check.h" line="23" column="1" bodyfile="include/endstone/check.h" bodystart="23" bodyend="42"/>
     <listofallmembers>
       <member refid="classendstone_1_1Preconditions_1afa34146371395492185fbf2f29f9ac6f" prot="public" virt="non-virtual"><scope>endstone::Preconditions</scope><name>checkArgument</name></member>
       <member refid="classendstone_1_1Preconditions_1a7e66cfe150961a5377a0149d7b609df1" prot="public" virt="non-virtual"><scope>endstone::Preconditions</scope><name>checkState</name></member>

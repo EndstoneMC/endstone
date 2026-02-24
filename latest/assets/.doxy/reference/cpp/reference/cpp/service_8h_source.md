@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include <memory>
 namespace endstone {
 class Service : public std::enable_shared_from_this<Service> {
 public:

@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_teleport_event.h" line="27" column="5" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="31" bodyend="34"/>
+        <location file="include/endstone/event/player/player_teleport_event.h" line="27" column="5" bodyfile="include/endstone/event/player/player_move_event.h" bodystart="33" bodyend="36"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

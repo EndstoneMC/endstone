@@ -2,17 +2,26 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="player__inventory_8h" kind="file" language="C++">
     <compoundname>player_inventory.h</compoundname>
+    <includes local="no">optional</includes>
     <includes refid="inventory_8h" local="yes">endstone/inventory/inventory.h</includes>
     <includedby refid="player_8h" local="yes">include/endstone/player.h</includedby>
     <incdepgraph>
-      <node id="2">
+      <node id="3">
         <label>endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -20,25 +29,41 @@
         <link refid="player__inventory_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
-      <node id="5">
+      <node id="9">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="6">
+      <node id="10">
         <label>fmt/format.h</label>
       </node>
-      <node id="7">
+      <node id="11">
         <label>nonstd/expected.hpp</label>
       </node>
-      <node id="3">
+      <node id="2">
         <label>optional</label>
       </node>
       <node id="4">
+        <label>string</label>
+      </node>
+      <node id="5">
+        <label>type_traits</label>
+      </node>
+      <node id="6">
+        <label>unordered_map</label>
+      </node>
+      <node id="7">
+        <label>utility</label>
+      </node>
+      <node id="8">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -413,42 +438,44 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/inventory/inventory.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/inventory/inventory.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24" refid="classendstone_1_1PlayerInventory" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PlayerInventory" kindref="compound">PlayerInventory</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Inventory" kindref="compound">Inventory</ref><sp/>{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="31" refid="classendstone_1_1PlayerInventory_1a40008a8adfa966a38901a280cda0aabd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1a40008a8adfa966a38901a280cda0aabd" kindref="member">getHelmet</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38" refid="classendstone_1_1PlayerInventory_1a129b0376044bfd03922cf313ce5062e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1a129b0376044bfd03922cf313ce5062e4" kindref="member">getChestplate</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="45" refid="classendstone_1_1PlayerInventory_1a5ecc57bdd88ee18e11331454edef8400" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1a5ecc57bdd88ee18e11331454edef8400" kindref="member">getLeggings</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="52" refid="classendstone_1_1PlayerInventory_1a418e2375abc6113b097d278d3b00687d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1a418e2375abc6113b097d278d3b00687d" kindref="member">getBoots</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61" refid="classendstone_1_1PlayerInventory_1a2e6bdf731fd2cba0f8a2e696a4241904" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1a2e6bdf731fd2cba0f8a2e696a4241904" kindref="member">setHelmet</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">helmet</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70" refid="classendstone_1_1PlayerInventory_1a9c78de5bc17f49d878297e832ee3ad8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1a9c78de5bc17f49d878297e832ee3ad8a" kindref="member">setChestplate</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">chestplate</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79" refid="classendstone_1_1PlayerInventory_1ad761e52cde352de4b2ba0675294f53dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1ad761e52cde352de4b2ba0675294f53dc" kindref="member">setLeggings</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">leggings</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88" refid="classendstone_1_1PlayerInventory_1afb8ac77897c7215b15c64c868035df51" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1afb8ac77897c7215b15c64c868035df51" kindref="member">setBoots</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">boots</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95" refid="classendstone_1_1PlayerInventory_1a20dd4b1438437038976da281334baa80" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1a20dd4b1438437038976da281334baa80" kindref="member">getItemInMainHand</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102" refid="classendstone_1_1PlayerInventory_1ae97e5cd9553262f56a6ea3cef23c101a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1ae97e5cd9553262f56a6ea3cef23c101a" kindref="member">setItemInMainHand</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">item</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109" refid="classendstone_1_1PlayerInventory_1ae1b89470e274870d03a5fe35caf13e9d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1ae1b89470e274870d03a5fe35caf13e9d" kindref="member">getItemInOffHand</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116" refid="classendstone_1_1PlayerInventory_1ac232b93d8250f2274981d832a612b7c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1ac232b93d8250f2274981d832a612b7c5" kindref="member">setItemInOffHand</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">item</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123" refid="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" kindref="member">getHeldItemSlot</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132" refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" kindref="member">setHeldItemSlot</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">slot</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="133"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classendstone_1_1PlayerInventory" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PlayerInventory" kindref="compound">PlayerInventory</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Inventory" kindref="compound">Inventory</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="33" refid="classendstone_1_1PlayerInventory_1a40008a8adfa966a38901a280cda0aabd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1a40008a8adfa966a38901a280cda0aabd" kindref="member">getHelmet</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classendstone_1_1PlayerInventory_1a129b0376044bfd03922cf313ce5062e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1a129b0376044bfd03922cf313ce5062e4" kindref="member">getChestplate</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classendstone_1_1PlayerInventory_1a5ecc57bdd88ee18e11331454edef8400" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1a5ecc57bdd88ee18e11331454edef8400" kindref="member">getLeggings</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classendstone_1_1PlayerInventory_1a418e2375abc6113b097d278d3b00687d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1a418e2375abc6113b097d278d3b00687d" kindref="member">getBoots</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classendstone_1_1PlayerInventory_1a2e6bdf731fd2cba0f8a2e696a4241904" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1a2e6bdf731fd2cba0f8a2e696a4241904" kindref="member">setHelmet</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">helmet</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classendstone_1_1PlayerInventory_1a9c78de5bc17f49d878297e832ee3ad8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1a9c78de5bc17f49d878297e832ee3ad8a" kindref="member">setChestplate</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">chestplate</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classendstone_1_1PlayerInventory_1ad761e52cde352de4b2ba0675294f53dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1ad761e52cde352de4b2ba0675294f53dc" kindref="member">setLeggings</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">leggings</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="classendstone_1_1PlayerInventory_1afb8ac77897c7215b15c64c868035df51" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1afb8ac77897c7215b15c64c868035df51" kindref="member">setBoots</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">boots</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="classendstone_1_1PlayerInventory_1a20dd4b1438437038976da281334baa80" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1a20dd4b1438437038976da281334baa80" kindref="member">getItemInMainHand</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="classendstone_1_1PlayerInventory_1ae97e5cd9553262f56a6ea3cef23c101a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1ae97e5cd9553262f56a6ea3cef23c101a" kindref="member">setItemInMainHand</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">item</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classendstone_1_1PlayerInventory_1ae1b89470e274870d03a5fe35caf13e9d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1PlayerInventory_1ae1b89470e274870d03a5fe35caf13e9d" kindref="member">getItemInOffHand</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="classendstone_1_1PlayerInventory_1ac232b93d8250f2274981d832a612b7c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1ac232b93d8250f2274981d832a612b7c5" kindref="member">setItemInOffHand</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">item</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1a6e1e5493b9a488e34b9cd16ff3767841" kindref="member">getHeldItemSlot</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory_1a852f77697de27d57e4d5393c4179bf0c" kindref="member">setHeldItemSlot</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">slot</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/inventory/player_inventory.h"/>
   </compounddef>

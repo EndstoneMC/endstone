@@ -21,14 +21,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/uuid.h" line="145" column="17" bodyfile="include/endstone/util/uuid.h" bodystart="145" bodyend="145"/>
+        <location file="include/endstone/util/uuid.h" line="147" column="17" bodyfile="include/endstone/util/uuid.h" bodystart="147" bodyend="147"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/util/uuid.h" line="144" column="1" bodyfile="include/endstone/util/uuid.h" bodystart="144" bodyend="146"/>
+    <location file="include/endstone/util/uuid.h" line="146" column="1" bodyfile="include/endstone/util/uuid.h" bodystart="146" bodyend="148"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01endstone_1_1UUID_01_4_1aba2e224d81006d5f09afad62be9dfd1c" prot="public" virt="non-virtual"><scope>std::hash&lt; endstone::UUID &gt;</scope><name>operator()</name></member>
     </listofallmembers>

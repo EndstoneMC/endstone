@@ -10,6 +10,7 @@
 
 
 
+* `#include <string>`
 * `#include "endstone/util/uuid.h"`
 
 

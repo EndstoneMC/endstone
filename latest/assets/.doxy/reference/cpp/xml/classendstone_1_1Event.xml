@@ -211,8 +211,6 @@
         <reimplementedby refid="classendstone_1_1ScriptMessageEvent_1a23b45d138202bb0494068a76a775d703">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ServerCommandEvent_1af62a9d9bbc278b05dece09c1273e5b63">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a">getEventName</reimplementedby>
-        <reimplementedby refid="classendstone_1_1ThunderChangeEvent_1a65d8e1b242cf7929f5f56a7b625d1e83">getEventName</reimplementedby>
-        <reimplementedby refid="classendstone_1_1WeatherChangeEvent_1aed5ffb1d7cab8026df5c6b2529f95f24">getEventName</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

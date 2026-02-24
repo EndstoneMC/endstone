@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="32" column="13"/>
+        <location file="include/endstone/scoreboard/objective.h" line="34" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a04d9acb8c652c173e744b34e79bdaf12" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="39" column="26"/>
+        <location file="include/endstone/scoreboard/objective.h" line="41" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1acb6e56a84b0ceb4b96069977a10a1335" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="46" column="26"/>
+        <location file="include/endstone/scoreboard/objective.h" line="48" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1aef9a2e958f08540ef6c2f0c8bfc6663d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="53" column="18"/>
+        <location file="include/endstone/scoreboard/objective.h" line="55" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1ae125ae418556b2c6842c79b2b5de6690" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Criteria" kindref="compound">Criteria</ref> &amp;</type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="60" column="29"/>
+        <location file="include/endstone/scoreboard/objective.h" line="62" column="29"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="67" column="19"/>
+        <location file="include/endstone/scoreboard/objective.h" line="69" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1ada9df9db7d4dab1a2a129891a58822b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> &amp;</type>
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="74" column="25"/>
+        <location file="include/endstone/scoreboard/objective.h" line="76" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1aa121126c45b531b856e831ad2aa77722" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -150,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="79" column="18"/>
+        <location file="include/endstone/scoreboard/objective.h" line="81" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1afdcfd70f9cbfa5034cccdc374388208b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="86" column="19"/>
+        <location file="include/endstone/scoreboard/objective.h" line="88" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a9b750f03e9ddd5a2b37816cefc594950" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; <ref refid="namespaceendstone_1a5a0414cc6da27c764e22b6cb9b64aaa4" kindref="member">DisplaySlot</ref> &gt;</type>
@@ -186,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="93" column="28"/>
+        <location file="include/endstone/scoreboard/objective.h" line="95" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a9b6f6be14158df05a7288cbecaadfe82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; <ref refid="namespaceendstone_1a3bd0139000789bdd027bcb09aca47f9f" kindref="member">ObjectiveSortOrder</ref> &gt;</type>
@@ -204,7 +204,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="100" column="28"/>
+        <location file="include/endstone/scoreboard/objective.h" line="102" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a6544fbed1b3ae826ed243443f5ba960d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -233,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="108" column="18"/>
+        <location file="include/endstone/scoreboard/objective.h" line="110" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a9ff84cbc24983fe08d512a246cff8d8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -262,7 +262,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="115" column="18"/>
+        <location file="include/endstone/scoreboard/objective.h" line="117" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a62669bd4b8e423aa0d8842b6e338f335" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -303,7 +303,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="124" column="18"/>
+        <location file="include/endstone/scoreboard/objective.h" line="126" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1aceaf61f35e4299fd342ef68b086e7371" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" kindref="member">RenderType</ref></type>
@@ -321,7 +321,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="131" column="25"/>
+        <location file="include/endstone/scoreboard/objective.h" line="133" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a38f5b580516e9c0083ddfac7b6de260a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Score" kindref="compound">Score</ref> &gt;</type>
@@ -362,7 +362,7 @@ Gets an entry&apos;s <ref refid="classendstone_1_1Score" kindref="compound">Scor
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="146" column="30"/>
+        <location file="include/endstone/scoreboard/objective.h" line="148" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a8a41679213a22450c756fd1c14edbc36" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -380,7 +380,7 @@ Gets an entry&apos;s <ref refid="classendstone_1_1Score" kindref="compound">Scor
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="148" column="18"/>
+        <location file="include/endstone/scoreboard/objective.h" line="150" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1abfd8c61ab066baec27ba92445cc6ce3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -398,7 +398,7 @@ Gets an entry&apos;s <ref refid="classendstone_1_1Score" kindref="compound">Scor
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="149" column="18"/>
+        <location file="include/endstone/scoreboard/objective.h" line="151" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -406,7 +406,7 @@ Gets an entry&apos;s <ref refid="classendstone_1_1Score" kindref="compound">Scor
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/scoreboard/objective.h" line="30" column="1" bodyfile="include/endstone/scoreboard/objective.h" bodystart="30" bodyend="150"/>
+    <location file="include/endstone/scoreboard/objective.h" line="32" column="1" bodyfile="include/endstone/scoreboard/objective.h" bodystart="32" bodyend="152"/>
     <listofallmembers>
       <member refid="classendstone_1_1Objective_1ae125ae418556b2c6842c79b2b5de6690" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getCriteria</name></member>
       <member refid="classendstone_1_1Objective_1acb6e56a84b0ceb4b96069977a10a1335" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getDisplayName</name></member>

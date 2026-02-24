@@ -11,6 +11,7 @@
 
 
 * `#include <string>`
+* `#include <unordered_set>`
 * `#include <utility>`
 * `#include "endstone/command/command_sender.h"`
 * `#include "endstone/event/cancellable.h"`

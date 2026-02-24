@@ -24,6 +24,9 @@
 
 #pragma once
 
+#include <memory>
+#include <utility>
+
 #include "endstone/block/block.h"
 #include "endstone/event/event.h"
 

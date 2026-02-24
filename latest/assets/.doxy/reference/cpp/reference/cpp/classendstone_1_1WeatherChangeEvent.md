@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"WeatherChangeEvent"`<br> |
 
 
 
@@ -98,8 +93,8 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md)) <br> |
 |   | [**WeatherChangeEvent**](#function-weatherchangeevent) ([**Level**](classendstone_1_1Level.md) & level, [**const**](classendstone_1_1Identifier.md) [**bool**](classendstone_1_1Identifier.md) to) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**toWeatherState**](#function-toweatherstate) () const<br> |
 |   | [**~WeatherChangeEvent**](#function-weatherchangeevent) () override<br> |
 
@@ -205,23 +200,23 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::WeatherChangeEvent::NAME;
+endstone::WeatherChangeEvent::ENDSTONE_EVENT (
+    WeatherChangeEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -235,35 +230,6 @@ inline endstone::WeatherChangeEvent::WeatherChangeEvent (
 ```
 
 
-
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::WeatherChangeEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
 
 <hr>

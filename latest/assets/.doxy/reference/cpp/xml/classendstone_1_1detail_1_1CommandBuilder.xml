@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin.h" line="224" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="224" bodyend="-1"/>
+        <location file="include/endstone/plugin/plugin.h" line="225" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="225" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1detail_1_1CommandBuilder_1a5b6736d275eb7ac68093c00e767a335e" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin.h" line="225" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="225" bodyend="-1"/>
+        <location file="include/endstone/plugin/plugin.h" line="226" column="17" bodyfile="include/endstone/plugin/plugin.h" bodystart="226" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1detail_1_1CommandBuilder_1a7f9b1bf8c6db40d62cb9638e13bb4c2c" prot="private" static="no" mutable="no">
         <type>std::set&lt; std::string &gt;</type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin.h" line="226" column="14" bodyfile="include/endstone/plugin/plugin.h" bodystart="226" bodyend="-1"/>
+        <location file="include/endstone/plugin/plugin.h" line="227" column="14" bodyfile="include/endstone/plugin/plugin.h" bodystart="227" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1detail_1_1CommandBuilder_1a5225cadbb8961bab0f5807708df3a1a7" prot="private" static="no" mutable="no">
         <type>std::set&lt; std::string &gt;</type>
@@ -57,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin.h" line="227" column="14" bodyfile="include/endstone/plugin/plugin.h" bodystart="227" bodyend="-1"/>
+        <location file="include/endstone/plugin/plugin.h" line="228" column="14" bodyfile="include/endstone/plugin/plugin.h" bodystart="228" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1detail_1_1CommandBuilder_1a9dbe62d474febee24f93dce932c3e350" prot="private" static="no" mutable="no">
         <type>std::set&lt; std::string &gt;</type>
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin.h" line="228" column="14" bodyfile="include/endstone/plugin/plugin.h" bodystart="228" bodyend="-1"/>
+        <location file="include/endstone/plugin/plugin.h" line="229" column="14" bodyfile="include/endstone/plugin/plugin.h" bodystart="229" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin.h" line="187" column="14" bodyfile="include/endstone/plugin/plugin.h" bodystart="187" bodyend="187"/>
+        <location file="include/endstone/plugin/plugin.h" line="188" column="14" bodyfile="include/endstone/plugin/plugin.h" bodystart="188" bodyend="188"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1detail_1_1CommandBuilder_1a9b560110d4bccb22c2c97a0b8f7e87f6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>CommandBuilder &amp;</type>
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin.h" line="189" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="189" bodyend="193"/>
+        <location file="include/endstone/plugin/plugin.h" line="190" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="190" bodyend="194"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1detail_1_1CommandBuilder_1a689a5e81fd2e146f27c55f48a24a28e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -134,7 +134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin.h" line="196" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="196" bodyend="200"/>
+        <location file="include/endstone/plugin/plugin.h" line="197" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="197" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1detail_1_1CommandBuilder_1a6b7e374143eed299d298e795182fd9db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -159,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin.h" line="203" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="203" bodyend="207"/>
+        <location file="include/endstone/plugin/plugin.h" line="204" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="204" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1detail_1_1CommandBuilder_1a30fe443a7e303392a0fd67150f96b99b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -184,7 +184,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin.h" line="210" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="210" bodyend="214"/>
+        <location file="include/endstone/plugin/plugin.h" line="211" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="211" bodyend="215"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1detail_1_1CommandBuilder_1a23eb482bf7b9baa80c637436c32e0245" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Command" kindref="compound">Command</ref></type>
@@ -198,14 +198,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin.h" line="216" column="14" bodyfile="include/endstone/plugin/plugin.h" bodystart="216" bodyend="221"/>
+        <location file="include/endstone/plugin/plugin.h" line="217" column="14" bodyfile="include/endstone/plugin/plugin.h" bodystart="217" bodyend="222"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/plugin/plugin.h" line="185" column="1" bodyfile="include/endstone/plugin/plugin.h" bodystart="185" bodyend="229"/>
+    <location file="include/endstone/plugin/plugin.h" line="186" column="1" bodyfile="include/endstone/plugin/plugin.h" bodystart="186" bodyend="230"/>
     <listofallmembers>
       <member refid="classendstone_1_1detail_1_1CommandBuilder_1a6b7e374143eed299d298e795182fd9db" prot="public" virt="non-virtual"><scope>endstone::detail::CommandBuilder</scope><name>aliases</name></member>
       <member refid="classendstone_1_1detail_1_1CommandBuilder_1a5225cadbb8961bab0f5807708df3a1a7" prot="private" virt="non-virtual"><scope>endstone::detail::CommandBuilder</scope><name>aliases_</name></member>

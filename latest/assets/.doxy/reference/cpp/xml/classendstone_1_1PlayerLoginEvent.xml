@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_login_event.h" line="33" column="37" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="33" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_login_event.h" line="36" column="37" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="36" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_login_event.h" line="51" column="17" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="51" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_login_event.h" line="54" column="17" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="54" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_login_event.h" line="27" column="14" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="27" bodyend="30"/>
+        <location file="include/endstone/event/player/player_login_event.h" line="30" column="14" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="30" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1aef505c2ab738b4126b68f20611f118dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_login_event.h" line="31" column="5"/>
+        <location file="include/endstone/event/player/player_login_event.h" line="34" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1a9593905e32bd292c3782ccc93190f92b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_login_event.h" line="34" column="18" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="34" bodyend="34"/>
+        <location file="include/endstone/event/player/player_login_event.h" line="37" column="18" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1a25b7ba1f99219f7b07dc41a2aa36b840" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_login_event.h" line="41" column="24" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="41" bodyend="41"/>
+        <location file="include/endstone/event/player/player_login_event.h" line="44" column="24" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerLoginEvent_1a8f5b97ba68ebdaf921e4d9a9e6f8219e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -139,7 +139,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_login_event.h" line="48" column="10" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="48" bodyend="48"/>
+        <location file="include/endstone/event/player/player_login_event.h" line="51" column="10" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="51" bodyend="51"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -207,7 +207,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_login_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="25" bodyend="52"/>
+    <location file="include/endstone/event/player/player_login_event.h" line="28" column="1" bodyfile="include/endstone/event/player/player_login_event.h" bodystart="28" bodyend="55"/>
     <listofallmembers>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerLoginEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerLoginEvent</scope><name>Event</name></member>

@@ -10,6 +10,7 @@
 
 
 
+* `#include <string>`
 * `#include "endstone/scoreboard/render_type.h"`
 
 

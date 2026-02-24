@@ -24,6 +24,8 @@
 
 #pragma once
 
+#include <memory>
+
 #include "endstone/inventory/meta/item_meta.h"
 #include "item_type.h"
 
@@ -39,7 +41,6 @@ public:
     [[nodiscard]] virtual bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const = 0;
 
     [[nodiscard]] virtual std::unique_ptr<ItemMeta> asMetaFor(const ItemMeta *meta, ItemTypeId type) const = 0;
-
 };
 }  // namespace endstone
 ```

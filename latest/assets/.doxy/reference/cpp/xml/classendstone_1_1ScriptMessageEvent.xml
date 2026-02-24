@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/script_message_event.h" line="32" column="37" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="32" bodyend="-1"/>
+        <location file="include/endstone/event/server/script_message_event.h" line="35" column="37" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="35" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/script_message_event.h" line="57" column="17" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="57" bodyend="-1"/>
+        <location file="include/endstone/event/server/script_message_event.h" line="60" column="17" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ScriptMessageEvent_1af5d0528484ef2dea019233ac46bb36b1" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/script_message_event.h" line="58" column="17" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="58" bodyend="-1"/>
+        <location file="include/endstone/event/server/script_message_event.h" line="61" column="17" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ScriptMessageEvent_1a1947b8b1a29c49b0302268f093ca5506" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/script_message_event.h" line="59" column="25" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="59" bodyend="-1"/>
+        <location file="include/endstone/event/server/script_message_event.h" line="62" column="25" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="62" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/script_message_event.h" line="27" column="5" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="27" bodyend="30"/>
+        <location file="include/endstone/event/server/script_message_event.h" line="30" column="5" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="30" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ScriptMessageEvent_1a23b45d138202bb0494068a76a775d703" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/script_message_event.h" line="33" column="18" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="33" bodyend="33"/>
+        <location file="include/endstone/event/server/script_message_event.h" line="36" column="18" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="36" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ScriptMessageEvent_1ab02541c1eb8d43ffb49c7a0fd11bd1bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/script_message_event.h" line="40" column="24" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="40" bodyend="40"/>
+        <location file="include/endstone/event/server/script_message_event.h" line="43" column="24" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ScriptMessageEvent_1a55b3bd04740ef0190905a76341117530" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/script_message_event.h" line="47" column="24" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="47" bodyend="47"/>
+        <location file="include/endstone/event/server/script_message_event.h" line="50" column="24" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ScriptMessageEvent_1af4876c77b5ba5b1a898318cc2fd71fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
@@ -163,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/script_message_event.h" line="54" column="26" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="54" bodyend="54"/>
+        <location file="include/endstone/event/server/script_message_event.h" line="57" column="26" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="57" bodyend="57"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -231,7 +231,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/server/script_message_event.h" line="25" column="1" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="25" bodyend="60"/>
+    <location file="include/endstone/event/server/script_message_event.h" line="28" column="1" bodyfile="include/endstone/event/server/script_message_event.h" bodystart="28" bodyend="63"/>
     <listofallmembers>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::ScriptMessageEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ScriptMessageEvent</scope><name>Event</name></member>

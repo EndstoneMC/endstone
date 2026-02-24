@@ -10,7 +10,9 @@
 
 
 
+* `#include <algorithm>`
 * `#include <map>`
+* `#include <memory>`
 * `#include <mutex>`
 * `#include <string>`
 * `#include <utility>`

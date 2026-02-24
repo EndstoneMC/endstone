@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_respawn_event.h" line="29" column="37" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="29" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_respawn_event.h" line="31" column="37" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="31" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_respawn_event.h" line="26" column="14" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="26" bodyend="26"/>
+        <location file="include/endstone/event/player/player_respawn_event.h" line="28" column="14" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="28" bodyend="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerRespawnEvent_1a6d85e0d878c46548c97daab6e89bad91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_respawn_event.h" line="27" column="5"/>
+        <location file="include/endstone/event/player/player_respawn_event.h" line="29" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerRespawnEvent_1a0b74630548cc0c5d82b0ba24a915e8d8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -71,7 +71,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_respawn_event.h" line="30" column="18" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="30" bodyend="30"/>
+        <location file="include/endstone/event/player/player_respawn_event.h" line="32" column="18" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="32" bodyend="32"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -115,7 +115,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_respawn_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="24" bodyend="31"/>
+    <location file="include/endstone/event/player/player_respawn_event.h" line="26" column="1" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="26" bodyend="33"/>
     <listofallmembers>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>Event</name></member>

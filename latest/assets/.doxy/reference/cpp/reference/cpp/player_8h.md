@@ -11,6 +11,9 @@
 
 
 * `#include <chrono>`
+* `#include <optional>`
+* `#include <string>`
+* `#include <string_view>`
 * `#include <variant>`
 * `#include "endstone/actor/mob.h"`
 * `#include "endstone/form/action_form.h"`

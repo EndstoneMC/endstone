@@ -10,6 +10,10 @@
 
 
 
+* `#include <memory>`
+* `#include <string>`
+* `#include <utility>`
+* `#include <vector>`
 * `#include "endstone/block/block.h"`
 * `#include "endstone/event/actor/actor_event.h"`
 * `#include "endstone/event/cancellable.h"`

@@ -10,6 +10,8 @@
 
 
 
+* `#include <string>`
+* `#include <vector>`
 * `#include "endstone/inventory/meta/item_meta.h"`
 
 

@@ -13,10 +13,10 @@
 * `#include <memory>`
 * `#include <optional>`
 * `#include <string>`
+* `#include <type_traits>`
 * `#include <unordered_map>`
 * `#include <vector>`
 * `#include "endstone/enchantments/enchantment.h"`
-* `#include "endstone/nbt/tag.h"`
 
 
 
@@ -35,6 +35,7 @@
 | Type | Name |
 | ---: | :--- |
 | namespace | [**endstone**](namespaceendstone.md) <br>_Represents a button with text and an optional icon._  |
+| namespace | [**core**](namespaceendstone_1_1core.md) <br> |
 
 
 ## Classes

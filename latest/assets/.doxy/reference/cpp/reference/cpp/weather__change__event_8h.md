@@ -10,6 +10,7 @@
 
 
 
+* `#include <string>`
 * `#include "endstone/event/cancellable.h"`
 * `#include "endstone/event/weather/weather_event.h"`
 

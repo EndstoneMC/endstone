@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/criteria.h" line="26" column="5" bodyfile="include/endstone/scoreboard/criteria.h" bodystart="26" bodyend="31"/>
+        <location file="include/endstone/scoreboard/criteria.h" line="28" column="5" bodyfile="include/endstone/scoreboard/criteria.h" bodystart="28" bodyend="33"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/criteria.h" line="33" column="13"/>
+        <location file="include/endstone/scoreboard/criteria.h" line="35" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Criteria_1a0b64daff057e51e6c0ad4ca8ff404d21" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/criteria.h" line="40" column="26"/>
+        <location file="include/endstone/scoreboard/criteria.h" line="42" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Criteria_1a41b262cc7d4029a58773d1fa1e5c0eab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/criteria.h" line="48" column="19"/>
+        <location file="include/endstone/scoreboard/criteria.h" line="50" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Criteria_1a62d2a81d1b34cb0c271bdf470b0064de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" kindref="member">RenderType</ref></type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/criteria.h" line="55" column="25"/>
+        <location file="include/endstone/scoreboard/criteria.h" line="57" column="25"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -100,7 +100,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/scoreboard/criteria.h" line="24" column="1" bodyfile="include/endstone/scoreboard/criteria.h" bodystart="24" bodyend="56"/>
+    <location file="include/endstone/scoreboard/criteria.h" line="26" column="1" bodyfile="include/endstone/scoreboard/criteria.h" bodystart="26" bodyend="58"/>
     <listofallmembers>
       <member refid="classendstone_1_1Criteria_1a62d2a81d1b34cb0c271bdf470b0064de" prot="public" virt="pure-virtual"><scope>endstone::Criteria</scope><name>getDefaultRenderType</name></member>
       <member refid="classendstone_1_1Criteria_1a0b64daff057e51e6c0ad4ca8ff404d21" prot="public" virt="pure-virtual"><scope>endstone::Criteria</scope><name>getName</name></member>

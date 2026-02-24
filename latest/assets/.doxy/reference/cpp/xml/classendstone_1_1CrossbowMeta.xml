@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/crossbow_meta.h" line="32" column="19"/>
+        <location file="include/endstone/inventory/meta/crossbow_meta.h" line="34" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CrossbowMeta_1a38213a27173640679f1cceef0e727157" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
@@ -39,7 +39,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/crossbow_meta.h" line="39" column="26"/>
+        <location file="include/endstone/inventory/meta/crossbow_meta.h" line="41" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CrossbowMeta_1abf1ebaf64014c75db3c3d97005eabf4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/crossbow_meta.h" line="46" column="18"/>
+        <location file="include/endstone/inventory/meta/crossbow_meta.h" line="48" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CrossbowMeta_1a6fdf10d11b9d51a4171436247750be58" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/crossbow_meta.h" line="53" column="18"/>
+        <location file="include/endstone/inventory/meta/crossbow_meta.h" line="55" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -129,7 +129,7 @@
         <link refid="classendstone_1_1ItemMeta"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/inventory/meta/crossbow_meta.h" line="23" column="1" bodyfile="include/endstone/inventory/meta/crossbow_meta.h" bodystart="23" bodyend="54"/>
+    <location file="include/endstone/inventory/meta/crossbow_meta.h" line="25" column="1" bodyfile="include/endstone/inventory/meta/crossbow_meta.h" bodystart="25" bodyend="56"/>
     <listofallmembers>
       <member refid="classendstone_1_1CrossbowMeta_1a6fdf10d11b9d51a4171436247750be58" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>addChargedProjectile</name></member>
       <member refid="classendstone_1_1ItemMeta_1ac1ee49d00e1cdd56816e0e775bff4241" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>addEnchant</name></member>
@@ -141,6 +141,7 @@
       <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>getDisplayName</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4ada54133ca59faa19c55d38b3be845f" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>getEnchantLevel</name></member>
       <member refid="classendstone_1_1ItemMeta_1afe5fbc4ed421b33e455d1e2e679d76e5" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>getEnchants</name></member>
+      <member refid="classendstone_1_1ItemMeta_1aa9ac1cb2bb1fb71ff465001603b3cddf" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>getExtras</name></member>
       <member refid="classendstone_1_1ItemMeta_1a170ca4e3a87a7a590ba03019129793d1" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>getLore</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>getRepairCost</name></member>
       <member refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>getType</name></member>
@@ -161,7 +162,6 @@
       <member refid="classendstone_1_1ItemMeta_1ae2d1ff3f93a5fe805dd0a74bbcfaf028" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>setLore</name></member>
       <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>setRepairCost</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>setUnbreakable</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a4e9ad277734acb0df17559a70ca8ed78" prot="public" virt="pure-virtual"><scope>endstone::CrossbowMeta</scope><name>toNbt</name></member>
       <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" prot="public" virt="non-virtual"><scope>endstone::CrossbowMeta</scope><name>Type</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" prot="public" virt="virtual"><scope>endstone::CrossbowMeta</scope><name>~ItemMeta</name></member>
     </listofallmembers>

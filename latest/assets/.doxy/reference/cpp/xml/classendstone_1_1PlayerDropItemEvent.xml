@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_drop_item_event.h" line="40" column="15" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="40" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_drop_item_event.h" line="42" column="15" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="42" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -41,7 +41,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_drop_item_event.h" line="30" column="14" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="30" bodyend="30"/>
+        <location file="include/endstone/event/player/player_drop_item_event.h" line="32" column="14" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="32" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDropItemEvent_1a40ad469ac2c8a5035ba526833ca3c638" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_drop_item_event.h" line="37" column="22" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="37" bodyend="37"/>
+        <location file="include/endstone/event/player/player_drop_item_event.h" line="39" column="22" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="39" bodyend="39"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -127,7 +127,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_drop_item_event.h" line="26" column="1" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="26" bodyend="41"/>
+    <location file="include/endstone/event/player/player_drop_item_event.h" line="28" column="1" bodyfile="include/endstone/event/player/player_drop_item_event.h" bodystart="28" bodyend="43"/>
     <listofallmembers>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerDropItemEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1PlayerDropItemEvent_1aa96b55c52eff51ed96cd0bf4d989efb8" prot="private" virt="non-virtual"><scope>endstone::PlayerDropItemEvent</scope><name>drop_</name></member>

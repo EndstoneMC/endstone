@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="582" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="582" bodyend="585"/>
+        <location file="include/endstone/nbt/tag.h" line="590" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="590" bodyend="593"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -60,7 +60,7 @@
         <label>formatter&lt; string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/nbt/tag.h" line="580" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="580" bodyend="586"/>
+    <location file="include/endstone/nbt/tag.h" line="588" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="588" bodyend="594"/>
     <listofallmembers>
       <member refid="structfmt_1_1formatter_3_01endstone_1_1ByteTag_01_4_1a44790824fe760c2ccd96910690f654a9" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::ByteTag &gt;</scope><name>format</name></member>
     </listofallmembers>

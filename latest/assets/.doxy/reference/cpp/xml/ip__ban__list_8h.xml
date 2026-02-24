@@ -41,6 +41,8 @@
       <node id="15">
         <label>endstone/ban/ip_ban_entry.h</label>
         <link refid="ip__ban__entry_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
@@ -66,6 +68,8 @@
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
         <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>

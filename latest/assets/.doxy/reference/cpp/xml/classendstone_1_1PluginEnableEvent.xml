@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/plugin_enable_event.h" line="37" column="37" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="37" bodyend="-1"/>
+        <location file="include/endstone/event/server/plugin_enable_event.h" line="39" column="37" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="39" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/plugin_enable_event.h" line="41" column="12" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="41" bodyend="-1"/>
+        <location file="include/endstone/event/server/plugin_enable_event.h" line="43" column="12" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="43" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/plugin_enable_event.h" line="28" column="14" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="28" bodyend="28"/>
+        <location file="include/endstone/event/server/plugin_enable_event.h" line="30" column="14" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="30" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginEnableEvent_1a52ae25a2b8f978fd31ccfde6b5fcd203" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/plugin_enable_event.h" line="35" column="13" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="35" bodyend="35"/>
+        <location file="include/endstone/event/server/plugin_enable_event.h" line="37" column="13" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="37" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginEnableEvent_1a80a2a76f95e0c011b04994475905d79b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/plugin_enable_event.h" line="38" column="18" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="38" bodyend="38"/>
+        <location file="include/endstone/event/server/plugin_enable_event.h" line="40" column="18" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="40" bodyend="40"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -135,7 +135,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/server/plugin_enable_event.h" line="26" column="1" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="26" bodyend="42"/>
+    <location file="include/endstone/event/server/plugin_enable_event.h" line="28" column="1" bodyfile="include/endstone/event/server/plugin_enable_event.h" bodystart="28" bodyend="44"/>
     <listofallmembers>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PluginEnableEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PluginEnableEvent</scope><name>Event</name></member>

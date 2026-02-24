@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_teleport_event.h" line="36" column="37" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="36" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="39" column="37" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="39" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_teleport_event.h" line="68" column="14" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="68" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="71" column="14" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActorTeleportEvent_1a57f1bfdf09d6f173e5fe1d34f2a2c3c6" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_teleport_event.h" line="69" column="14" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="69" bodyend="-1"/>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="72" column="14" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="72" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_teleport_event.h" line="30" column="14" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="30" bodyend="33"/>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="33" column="14" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="33" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1a05d22c8898cc980d69767e36c70d2248" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_teleport_event.h" line="34" column="5"/>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="37" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1a60979e7b5222885d3b072c8dde7185d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_teleport_event.h" line="37" column="18" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="37" bodyend="37"/>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="40" column="18" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1a2d41334b6b7b8362cad60430d56febb2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_teleport_event.h" line="44" column="21" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="44" bodyend="44"/>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="47" column="21" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1ac71b31960417257ca1b2abaf7fc3e5e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -156,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_teleport_event.h" line="51" column="10" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="51" bodyend="51"/>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="54" column="10" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1ab0bce5bf080702eb2808d46e7e1ab612" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>
@@ -174,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_teleport_event.h" line="58" column="21" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="58" bodyend="58"/>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="61" column="21" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="61" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -203,7 +203,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/actor/actor_teleport_event.h" line="65" column="10" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="65" bodyend="65"/>
+        <location file="include/endstone/event/actor/actor_teleport_event.h" line="68" column="10" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="68" bodyend="68"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -272,7 +272,7 @@
         <link refid="classendstone_1_1ICancellable"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/actor/actor_teleport_event.h" line="28" column="1" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="28" bodyend="70"/>
+    <location file="include/endstone/event/actor/actor_teleport_event.h" line="31" column="1" bodyfile="include/endstone/event/actor/actor_teleport_event.h" bodystart="31" bodyend="73"/>
     <listofallmembers>
       <member refid="classendstone_1_1ActorEvent_1a07f53f59692095b4a31a6e3d95128015" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>ActorEvent</name></member>
       <member refid="classendstone_1_1ActorTeleportEvent_1a6c419a38acb7baf7091376bac7bb44d7" prot="public" virt="non-virtual"><scope>endstone::ActorTeleportEvent</scope><name>ActorTeleportEvent</name></member>

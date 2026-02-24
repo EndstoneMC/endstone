@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/identifier.h" line="95" column="10" bodyfile="include/endstone/identifier.h" bodystart="95" bodyend="98"/>
+        <location file="include/endstone/identifier.h" line="97" column="10" bodyfile="include/endstone/identifier.h" bodystart="97" bodyend="100"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -63,7 +63,7 @@
         <label>formatter&lt; string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/identifier.h" line="93" column="1" bodyfile="include/endstone/identifier.h" bodystart="93" bodyend="99"/>
+    <location file="include/endstone/identifier.h" line="95" column="1" bodyfile="include/endstone/identifier.h" bodystart="95" bodyend="101"/>
     <listofallmembers>
       <member refid="structfmt_1_1formatter_3_01endstone_1_1Identifier_3_01T_01_4_01_4_1a935e825a2e2de72a67701ec2da0804af" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::Identifier&lt; T &gt; &gt;</scope><name>format</name></member>
     </listofallmembers>

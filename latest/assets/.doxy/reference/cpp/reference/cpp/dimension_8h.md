@@ -10,6 +10,9 @@
 
 
 
+* `#include <memory>`
+* `#include <string>`
+* `#include <vector>`
 * `#include "endstone/block/block.h"`
 * `#include "endstone/inventory/item_stack.h"`
 * `#include "endstone/level/chunk.h"`

@@ -38,7 +38,7 @@ _Represents a unique permission that may be attached to a_ [_**Permissible**_](c
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) [**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) | [**DefaultPermission**](#variable-defaultpermission)   = `PermissionDefault::Operator`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**DefaultPermission**](#variable-defaultpermission)   = `PermissionDefault::Operator`<br> |
 
 
 
@@ -105,7 +105,7 @@ _Represents a unique permission that may be attached to a_ [_**Permissible**_](c
 ### variable DefaultPermission 
 
 ```C++
-const PermissionDefault endstone::Permission::DefaultPermission;
+constexpr auto endstone::Permission::DefaultPermission;
 ```
 
 

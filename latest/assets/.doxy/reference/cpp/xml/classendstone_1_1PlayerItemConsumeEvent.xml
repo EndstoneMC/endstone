@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_item_consume_event.h" line="56" column="15" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="56" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_item_consume_event.h" line="58" column="15" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerItemConsumeEvent_1aea8ad32c30b0d189f3fd02fa871ccc87" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39" kindref="member">EquipmentSlot</ref></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_item_consume_event.h" line="57" column="19" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="57" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_item_consume_event.h" line="59" column="19" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="59" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_item_consume_event.h" line="36" column="14" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="36" bodyend="39"/>
+        <location file="include/endstone/event/player/player_item_consume_event.h" line="38" column="14" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="38" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerItemConsumeEvent_1a4de0357572db1c426f5278d709e7a598" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &amp;</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_item_consume_event.h" line="46" column="22" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="46" bodyend="46"/>
+        <location file="include/endstone/event/player/player_item_consume_event.h" line="48" column="22" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="48" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerItemConsumeEvent_1a4c71af194ee2c446fcb5c5eb28715050" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespaceendstone_1afad3b218f2082aec71169d21f2493a39" kindref="member">EquipmentSlot</ref></type>
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_item_consume_event.h" line="53" column="20" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="53" bodyend="53"/>
+        <location file="include/endstone/event/player/player_item_consume_event.h" line="55" column="20" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="55" bodyend="55"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -168,7 +168,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_item_consume_event.h" line="32" column="1" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="32" bodyend="58"/>
+    <location file="include/endstone/event/player/player_item_consume_event.h" line="34" column="1" bodyfile="include/endstone/event/player/player_item_consume_event.h" bodystart="34" bodyend="60"/>
     <listofallmembers>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>cancel</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerItemConsumeEvent</scope><name>Event</name></member>

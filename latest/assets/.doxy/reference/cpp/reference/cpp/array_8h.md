@@ -11,7 +11,9 @@
 
 
 * `#include <algorithm>`
+* `#include <cstddef>`
 * `#include <stdexcept>`
+* `#include <utility>`
 * `#include <vector>`
 * `#include "endstone/nbt/type.h"`
 

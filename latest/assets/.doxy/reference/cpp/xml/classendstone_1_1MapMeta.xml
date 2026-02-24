@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/map_meta.h" line="28" column="5" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="28" bodyend="-1"/>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="30" column="5" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="30" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/map_meta.h" line="34" column="19"/>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="36" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapMeta_1a7061bbab491883854847dba81ca9b858" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>MapId</type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/map_meta.h" line="41" column="20"/>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="43" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapMeta_1aef8d3210e296dfbfcab867466c16af9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -84,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/map_meta.h" line="48" column="18"/>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="50" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapMeta_1aa57ad60c4a27d82e4a9ff4be97d803b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -102,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/map_meta.h" line="55" column="19"/>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="57" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1MapView" kindref="compound">MapView</ref> *</type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/map_meta.h" line="64" column="22"/>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="66" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/map_meta.h" line="71" column="18"/>
+        <location file="include/endstone/inventory/meta/map_meta.h" line="73" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -183,7 +183,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/inventory/meta/map_meta.h" line="24" column="1" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="24" bodyend="72"/>
+    <location file="include/endstone/inventory/meta/map_meta.h" line="26" column="1" bodyfile="include/endstone/inventory/meta/map_meta.h" bodystart="26" bodyend="74"/>
     <listofallmembers>
       <member refid="classendstone_1_1ItemMeta_1ac1ee49d00e1cdd56816e0e775bff4241" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>addEnchant</name></member>
       <member refid="classendstone_1_1ItemMeta_1af179bd7b745731e3d0f1e66828e45149" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>as</name></member>
@@ -193,6 +193,7 @@
       <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getDisplayName</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4ada54133ca59faa19c55d38b3be845f" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getEnchantLevel</name></member>
       <member refid="classendstone_1_1ItemMeta_1afe5fbc4ed421b33e455d1e2e679d76e5" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getEnchants</name></member>
+      <member refid="classendstone_1_1ItemMeta_1aa9ac1cb2bb1fb71ff465001603b3cddf" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getExtras</name></member>
       <member refid="classendstone_1_1ItemMeta_1a170ca4e3a87a7a590ba03019129793d1" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getLore</name></member>
       <member refid="classendstone_1_1MapMeta_1a7061bbab491883854847dba81ca9b858" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getMapId</name></member>
       <member refid="classendstone_1_1MapMeta_1a01254f080fe2baea5430b5cd1f6b083d" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>getMapView</name></member>
@@ -218,7 +219,6 @@
       <member refid="classendstone_1_1MapMeta_1af6a08274ff7dcecc69da6da904a250ac" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setMapView</name></member>
       <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setRepairCost</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>setUnbreakable</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a4e9ad277734acb0df17559a70ca8ed78" prot="public" virt="pure-virtual"><scope>endstone::MapMeta</scope><name>toNbt</name></member>
       <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" prot="public" virt="non-virtual"><scope>endstone::MapMeta</scope><name>Type</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" prot="public" virt="virtual"><scope>endstone::MapMeta</scope><name>~ItemMeta</name></member>
     </listofallmembers>

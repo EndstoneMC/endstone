@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/broadcast_message_event.h" line="38" column="37" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="38" bodyend="-1"/>
+        <location file="include/endstone/event/server/broadcast_message_event.h" line="39" column="37" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="39" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/broadcast_message_event.h" line="63" column="13" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="63" bodyend="-1"/>
+        <location file="include/endstone/event/server/broadcast_message_event.h" line="64" column="13" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1BroadcastMessageEvent_1a53004e13a08c5694d14b948528bf91a9" prot="private" static="no" mutable="no">
         <type>std::unordered_set&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt;</type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/broadcast_message_event.h" line="64" column="24" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="64" bodyend="-1"/>
+        <location file="include/endstone/event/server/broadcast_message_event.h" line="65" column="24" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="65" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/broadcast_message_event.h" line="33" column="5" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="33" bodyend="36"/>
+        <location file="include/endstone/event/server/broadcast_message_event.h" line="34" column="5" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="34" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1aecff22889cac261fc45bc6126e32dbf4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/broadcast_message_event.h" line="39" column="18" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="39" bodyend="39"/>
+        <location file="include/endstone/event/server/broadcast_message_event.h" line="40" column="18" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="40" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1abded73e5b43b74bb3e0698691e4e34e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> Message &amp;</type>
@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/broadcast_message_event.h" line="46" column="20" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="46" bodyend="46"/>
+        <location file="include/endstone/event/server/broadcast_message_event.h" line="47" column="20" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1a38fe78c4c7758c30f1e08d930417c276" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -142,7 +142,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/broadcast_message_event.h" line="53" column="10" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="53" bodyend="53"/>
+        <location file="include/endstone/event/server/broadcast_message_event.h" line="54" column="10" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="54" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BroadcastMessageEvent_1a32bd00d3d3836b81cef9852f7ace5a36" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::unordered_set&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> * &gt; &amp;</type>
@@ -160,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/broadcast_message_event.h" line="60" column="31" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="60" bodyend="60"/>
+        <location file="include/endstone/event/server/broadcast_message_event.h" line="61" column="31" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="61" bodyend="61"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -229,7 +229,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/server/broadcast_message_event.h" line="31" column="1" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="31" bodyend="65"/>
+    <location file="include/endstone/event/server/broadcast_message_event.h" line="32" column="1" bodyfile="include/endstone/event/server/broadcast_message_event.h" bodystart="32" bodyend="66"/>
     <listofallmembers>
       <member refid="classendstone_1_1BroadcastMessageEvent_1a30af9de400fa866509e535893d1fce33" prot="public" virt="non-virtual"><scope>endstone::BroadcastMessageEvent</scope><name>BroadcastMessageEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::BroadcastMessageEvent</scope><name>cancel</name></member>

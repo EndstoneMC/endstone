@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="34" column="13"/>
+        <location file="include/endstone/block/block_state.h" line="37" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1af4b36588a23e8df26ea57425c206265f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="41" column="30"/>
+        <location file="include/endstone/block/block_state.h" line="44" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1ae5c5fbb7989498006f3e7e48d76e10cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="48" column="26"/>
+        <location file="include/endstone/block/block_state.h" line="51" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1aa88e548ecca5594b29a7cc309a65266f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -81,7 +81,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="55" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="58" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a18ebe2b1c527ebb7b915157bb2d0c557" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="62" column="30"/>
+        <location file="include/endstone/block/block_state.h" line="65" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1ac85e292da7159b3835cc3919e68c08c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -128,7 +128,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="69" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="72" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a0d30c01fe70f8e5b591a23fe36490738" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
@@ -146,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="76" column="24"/>
+        <location file="include/endstone/block/block_state.h" line="79" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -164,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="83" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="86" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -182,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="90" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="93" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -200,7 +200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="97" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="100" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
@@ -218,7 +218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="104" column="23"/>
+        <location file="include/endstone/block/block_state.h" line="107" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -237,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="114" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="117" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -269,7 +269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="124" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="127" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -315,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="137" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="140" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -324,7 +324,7 @@
     <detaileddescription>
 <para>Unlike <ref refid="classendstone_1_1Block" kindref="compound">Block</ref>, which only one object can exist per coordinate, <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> can exist multiple times for any given <ref refid="classendstone_1_1Block" kindref="compound">Block</ref>. Note that another plugin may change the state of the block, and you will not know, or they may change the block to another type entirely, causing your <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> to become invalid. </para>
     </detaileddescription>
-    <location file="include/endstone/block/block_state.h" line="32" column="1" bodyfile="include/endstone/block/block_state.h" bodystart="32" bodyend="138"/>
+    <location file="include/endstone/block/block_state.h" line="35" column="1" bodyfile="include/endstone/block/block_state.h" bodystart="35" bodyend="141"/>
     <listofallmembers>
       <member refid="classendstone_1_1BlockState_1af4b36588a23e8df26ea57425c206265f" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1BlockState_1a18ebe2b1c527ebb7b915157bb2d0c557" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getData</name></member>

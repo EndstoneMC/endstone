@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include <cstdint>
 namespace endstone::nbt {
 struct TagBase {};
 enum class Type : std::uint8_t {

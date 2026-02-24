@@ -10,8 +10,10 @@
 
 
 
+* `#include <cstdint>`
 * `#include <memory>`
 * `#include <string>`
+* `#include <vector>`
 * `#include "endstone/actor/actor.h"`
 
 

@@ -25,19 +25,19 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="4">
         <label>endstone/block/block_data.h</label>
         <link refid="block__data_8h_source"/>
-        <childnode refid="3" relation="include">
-        </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -47,73 +47,87 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
       </node>
-      <node id="10">
+      <node id="11">
         <label>endstone/block/block_face.h</label>
         <link refid="block__face_8h_source"/>
       </node>
-      <node id="11">
+      <node id="12">
         <label>endstone/level/location.h</label>
         <link refid="location_8h_source"/>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>endstone/util/result.h</label>
+        <link refid="result_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="14">
-        <label>endstone/util/result.h</label>
-        <link refid="result_8h_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
+      <node id="17">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="10">
         <label>endstone/variant.h</label>
         <link refid="variant_8h_source"/>
       </node>
-      <node id="17">
+      <node id="18">
         <label>algorithm</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>cmath</label>
       </node>
-      <node id="7">
-        <label>fmt/format.h</label>
+      <node id="19">
+        <label>concepts</label>
+      </node>
+      <node id="5">
+        <label>cstdint</label>
       </node>
       <node id="8">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="9">
         <label>fmt/ranges.h</label>
       </node>
       <node id="2">
         <label>memory</label>
       </node>
-      <node id="15">
+      <node id="16">
         <label>nonstd/expected.hpp</label>
       </node>
-      <node id="13">
+      <node id="14">
         <label>numbers</label>
       </node>
       <node id="3">
         <label>string</label>
       </node>
-      <node id="5">
+      <node id="6">
         <label>unordered_map</label>
       </node>
-      <node id="6">
+      <node id="7">
         <label>variant</label>
       </node>
     </incdepgraph>

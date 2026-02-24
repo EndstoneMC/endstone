@@ -10,6 +10,7 @@
 
 
 
+* `#include <memory>`
 * `#include "endstone/inventory/meta/item_meta.h"`
 * `#include "item_type.h"`
 
