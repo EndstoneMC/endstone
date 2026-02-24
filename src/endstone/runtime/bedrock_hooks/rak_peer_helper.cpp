@@ -65,6 +65,14 @@ RakNet::RakPeerInterface *gRakPeer = nullptr;
 
 bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
 {
+    // FIX: MCPE-228407 - Mojang's modified version of RakNet adds handling for packet types 0x86-0x8A, which are not
+    // present in upstream RakNet. The handler for 0x86 (ID_PONG_ADDRESS_INFO) attempts to read a SystemAddress from the
+    // packet without validating its length, causing a buffer over-read that crashes the server. Drop these undersized
+    // packets before they reach the vulnerable code path.
+    if (static_cast<unsigned char>(recv->data[0]) == 0x86 &&
+        recv->bytes_read < sizeof(unsigned char) + sizeof(RakNet::SystemAddress)) {
+        return false;
+    }
     if (recv->data[0] == ID_UNCONNECTED_PING &&
         recv->bytes_read >= sizeof(unsigned char) + sizeof(RakNet::Time) + sizeof(OFFLINE_MESSAGE_DATA_ID)) {
         char *ping_data;
