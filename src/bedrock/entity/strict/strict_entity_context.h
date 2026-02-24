@@ -15,15 +15,12 @@
 #pragma once
 
 #include "bedrock/entity/entity_id.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
 #include "bedrock/entity/gamerefs_entity/entity_registry.h"
 
 class StrictEntityContext {
 public:
-    [[nodiscard]] bool isNull() const
-    {
-        return entity_id_ == entt::null;
-    }
+    [[nodiscard]] bool isNull() const { return entity_id_ == entt::null; }
+    [[nodiscard]] EntityId _getEntityId() const { return entity_id_; }
 
 private:
     EntityId entity_id_;         // +0

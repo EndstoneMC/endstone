@@ -54,10 +54,9 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClientWithMessage, this, id, sub_id, reason,
                                 disconnect_message, std::move(filtered_message), skip_message);
 
-    // BUGFIX:
-    // Close the connection immediately so no further packets from this client can be processed.
-    // The original code sends a disconnection packet to the client and waits for the client to confirm.
-    // A malicious client may ignore it and keep sending packets, making the server vulnerable to packet spam.
+    // #blameMojang - BDS politely asks clients to disconnect and waits for acknowledgment.
+    // Malicious clients can simply ignore this and keep spamming packets indefinitely.
+    // Fix: don't ask, just close the connection.
     if (sub_id == SubClientId::PrimaryClient) {
         server.getServer().getNetwork().closeConnection(id, reason, message);
     }

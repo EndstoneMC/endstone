@@ -537,6 +537,151 @@ def test_repr_tags(tag, expected):
     assert repr(tag) == expected
 
 
+def test_to_list_empty():
+    lt = ListTag()
+    assert lt.to_list() == []
+
+
+def test_to_list_scalars():
+    lt = ListTag([IntTag(1), IntTag(2), IntTag(3)])
+    result = lt.to_list()
+    assert result == [1, 2, 3]
+    assert all(isinstance(v, int) for v in result)
+
+
+def test_to_list_strings():
+    lt = ListTag([StringTag("a"), StringTag("b")])
+    result = lt.to_list()
+    assert result == ["a", "b"]
+    assert all(isinstance(v, str) for v in result)
+
+
+def test_to_list_nested_compounds():
+    lt = ListTag(
+        [
+            CompoundTag({"x": IntTag(1)}),
+            CompoundTag({"x": IntTag(2)}),
+        ]
+    )
+    result = lt.to_list()
+    assert result == [{"x": 1}, {"x": 2}]
+    assert all(isinstance(v, dict) for v in result)
+
+
+def test_to_list_does_not_mutate_original():
+    lt = ListTag([IntTag(10), IntTag(20)])
+    result = lt.to_list()
+    result[0] = 999
+    result.append(30)
+    assert len(lt) == 2
+    assert lt[0] == IntTag(10)
+
+
+def test_to_dict_empty():
+    ct = CompoundTag()
+    assert ct.to_dict() == {}
+
+
+def test_to_dict_scalar_types():
+    ct = CompoundTag(
+        {
+            "byte": ByteTag(1),
+            "short": ShortTag(2),
+            "int": IntTag(3),
+            "long": LongTag(4),
+            "float": FloatTag(1.5),
+            "double": DoubleTag(2.5),
+            "string": StringTag("hello"),
+        }
+    )
+    d = ct.to_dict()
+    assert d == {
+        "byte": 1,
+        "short": 2,
+        "int": 3,
+        "long": 4,
+        "float": pytest.approx(1.5),
+        "double": pytest.approx(2.5),
+        "string": "hello",
+    }
+    # verify native Python types
+    assert isinstance(d["byte"], int)
+    assert isinstance(d["short"], int)
+    assert isinstance(d["int"], int)
+    assert isinstance(d["long"], int)
+    assert isinstance(d["float"], float)
+    assert isinstance(d["double"], float)
+    assert isinstance(d["string"], str)
+
+
+def test_to_dict_byte_array_returns_bytes():
+    ct = CompoundTag({"data": ByteArrayTag([1, 2, 255])})
+    d = ct.to_dict()
+    assert isinstance(d["data"], bytes)
+    assert d["data"] == bytes([1, 2, 255])
+
+
+def test_to_dict_int_array_returns_list():
+    ct = CompoundTag({"ids": IntArrayTag([10, 20, 30])})
+    d = ct.to_dict()
+    assert isinstance(d["ids"], list)
+    assert d["ids"] == [10, 20, 30]
+
+
+def test_to_dict_list_tag():
+    ct = CompoundTag({"scores": ListTag([IntTag(100), IntTag(200)])})
+    d = ct.to_dict()
+    assert isinstance(d["scores"], list)
+    assert d["scores"] == [100, 200]
+
+
+def test_to_dict_nested_compound():
+    ct = CompoundTag(
+        {
+            "pos": CompoundTag(
+                {
+                    "x": IntTag(1),
+                    "y": IntTag(2),
+                    "z": IntTag(3),
+                }
+            ),
+            "name": StringTag("Player"),
+        }
+    )
+    d = ct.to_dict()
+    assert isinstance(d["pos"], dict)
+    assert d["pos"] == {"x": 1, "y": 2, "z": 3}
+    assert d["name"] == "Player"
+
+
+def test_to_dict_nested_list_of_compounds():
+    ct = CompoundTag(
+        {
+            "items": ListTag(
+                [
+                    CompoundTag({"id": StringTag("stone"), "count": ByteTag(64)}),
+                    CompoundTag({"id": StringTag("dirt"), "count": ByteTag(32)}),
+                ]
+            ),
+        }
+    )
+    d = ct.to_dict()
+    assert isinstance(d["items"], list)
+    assert len(d["items"]) == 2
+    assert d["items"][0] == {"id": "stone", "count": 64}
+    assert d["items"][1] == {"id": "dirt", "count": 32}
+
+
+def test_to_dict_does_not_mutate_original():
+    ct = CompoundTag({"a": IntTag(1), "b": StringTag("x")})
+    d = ct.to_dict()
+    d["a"] = 999
+    d["c"] = "new"
+    # original should be unchanged
+    assert ct["a"] == 1
+    assert "c" not in ct
+
+
 def test_compound_tag_self_assignment():
     a = CompoundTag({"a": IntTag(1)})
     a["b"] = a

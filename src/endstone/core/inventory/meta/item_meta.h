@@ -181,12 +181,7 @@ public:
 
     void setRepairCost(int cost) override { repair_cost_ = cost; }
 
-    [[nodiscard]] CompoundTag toNbt() const override
-    {
-        auto tag = std::make_unique<::CompoundTag>();
-        applyToItem(*tag);
-        return nbt::fromMinecraft(*tag).get<CompoundTag>();
-    }
+    [[nodiscard]] const ItemMetaExtras &getExtras() const override { return *this; }
 
     [[nodiscard]] bool isEmpty() const override
     {

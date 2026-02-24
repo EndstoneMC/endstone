@@ -15,6 +15,7 @@
 #pragma once
 
 #include <algorithm>
+#include <memory>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
@@ -31,7 +32,7 @@ namespace endstone {
  */
 class Permission {
 public:
-    static const PermissionDefault DefaultPermission = PermissionDefault::Operator;
+    static constexpr auto DefaultPermission = PermissionDefault::Operator;
 
     explicit Permission(std::string name, std::string description = "",
                         PermissionDefault default_value = DefaultPermission,
@@ -143,7 +144,7 @@ public:
         if (!plugin_manager_) {
             return nullptr;
         }
-        std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
         auto *perm = plugin_manager_->getPermission(name);
         if (!perm) {
             perm = &plugin_manager_->addPermission(std::make_unique<Permission>(name));

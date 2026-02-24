@@ -30,6 +30,8 @@ public:
     WeakRef<EntityRegistry> getWeakRef();
 
 protected:
+    template <typename EntityContextT, typename... Components>
+    friend class ViewT;
     friend class EntityContext;
     friend class OwnerStorageEntity;
     using EntityInvokeCallbackFunc = std::function<void(EntityId)>;

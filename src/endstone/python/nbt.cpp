@@ -17,6 +17,53 @@
 namespace py = pybind11;
 
 namespace endstone::python {
+static py::object tag_to_python(const nbt::Tag &tag)
+{
+    return tag.visit([](auto &&arg) -> py::object {
+        using T = std::decay_t<decltype(arg)>;
+        if constexpr (std::is_same_v<T, std::monostate>) {
+            return py::none();
+        }
+        else if constexpr (std::is_same_v<T, ByteTag> || std::is_same_v<T, ShortTag> || std::is_same_v<T, IntTag> ||
+                           std::is_same_v<T, LongTag>) {
+            return py::int_(arg.value());
+        }
+        else if constexpr (std::is_same_v<T, FloatTag> || std::is_same_v<T, DoubleTag>) {
+            return py::float_(arg.value());
+        }
+        else if constexpr (std::is_same_v<T, StringTag>) {
+            return py::str(arg.value());
+        }
+        else if constexpr (std::is_same_v<T, ByteArrayTag>) {
+            const auto *ptr = reinterpret_cast<const char *>(arg.data());
+            return py::bytes(ptr, arg.size());
+        }
+        else if constexpr (std::is_same_v<T, IntArrayTag>) {
+            py::list lst;
+            for (const auto &elem : arg) {
+                lst.append(elem);
+            }
+            return lst;
+        }
+        else if constexpr (std::is_same_v<T, ListTag>) {
+            py::list lst;
+            for (const auto &elem : arg) {
+                lst.append(tag_to_python(elem));
+            }
+            return lst;
+        }
+        else if constexpr (std::is_same_v<T, CompoundTag>) {
+            py::dict d;
+            for (const auto &[k, v] : arg) {
+                d[py::str(k)] = tag_to_python(v);
+            }
+            return d;
+        }
+        else {
+            return py::none();
+        }
+    });
+}
 
 static std::size_t normalize_index(py::ssize_t i, std::size_t n)
 {
@@ -230,6 +277,14 @@ static void bind_list_tag(py::module &m)
                 return out;
             },
             py::arg("index") = -1)
+        .def("to_list",
+             [](const ListTag &self) {
+                 py::list lst;
+                 for (const auto &elem : self) {
+                     lst.append(tag_to_python(elem));
+                 }
+                 return lst;
+             })
         .def("size", &ListTag::size)
         .def("empty", &ListTag::empty)
         .def(py::self == py::self)
@@ -304,6 +359,14 @@ static void bind_compound_tag(py::module &m)
             py::keep_alive<0, 1>())
         .def(py::self == py::self)
         .def(py::self != py::self)
+        .def("to_dict",
+             [](const CompoundTag &self) {
+                 py::dict d;
+                 for (const auto &[k, v] : self) {
+                     d[py::str(k)] = tag_to_python(v);
+                 }
+                 return d;
+             })
         .def("__str__", [](const CompoundTag &self) { return fmt::format("{}", self); })
         .def("__repr__", [](const CompoundTag &self) {
             py::dict d;

@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <memory>
 namespace endstone {
 /**
  * @brief Services represent a list of methods.

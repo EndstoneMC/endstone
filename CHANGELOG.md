@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.11.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.11.1) - 2026-02-20
+
+<small>[Compare with 0.11.0](https://github.com/EndstoneMC/endstone/compare/v0.11.0...v0.11.1)</small>
+
+### Added
+
+- Added support for BDS version 1.26.1.1.
+- Added `ListTag.to_list()` and `CompoundTag.to_dict()` methods (Python) that recursively convert NBT tag trees to
+  native Python data structures (`list` and `dict`).
+- Exported `attribute`, `effect`, `nbt`, and `potion` submodules from the top-level `endstone` Python package.
+- Added explicit standard library `#include` directives across all public C++ API headers for self-contained
+  compilation.
+
+### Fixed
+
+- Fixed `PlayerMoveEvent` and `PlayerJumpEvent` not firing.
+- Fixed `WeatherChangeEvent` and `ThunderChangeEvent` not firing.
+- Fixed `ServerListPingEvent` not firing.
+- Fixed `Enchantment` objects being unhashable, preventing their use as dictionary keys and in sets.
+- Fixed a duplicate keyword argument error when loading Python plugins that define a `name` class attribute.
+- Fixed several issues that caused the Map API to not work correctly in some occasions. Maps now behave consistently
+  across different platforms.
+
+### Changed
+
+- **BREAKING**: `ServerListPingEvent.remote_host` and `ServerListPingEvent.remote_port` properties have been replaced by
+  a single `ServerListPingEvent.address` property that returns a `SocketAddress`.
+
 ## [0.11.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.11.0) - 2026-02-13
 
 <small>[Compare with 0.10.18](https://github.com/EndstoneMC/endstone/compare/v0.10.18...v0.11.0)</small>

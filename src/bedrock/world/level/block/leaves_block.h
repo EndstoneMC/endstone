@@ -17,10 +17,12 @@
 class LeavesBlock : public BlockType {
 public:
 protected:
+    // #blameMojang - Instead of profiling and optimizing actual hot paths, Mojang just cranks
+    // compiler optimization flags and prays. On Linux, this mangles the calling convention.
+    // Same function, different ABI per platform. We declare it static on Linux to match reality.
 #ifdef _WIN32
     ENDSTONE_HOOK void _die(BlockSource &region, BlockPos const &pos) const;
 #else
-    // workaround to match the actual calling convention after Clang's optimisation on Linux
     ENDSTONE_HOOK static void _die(BlockSource &region, BlockPos const &pos);
 #endif
 };

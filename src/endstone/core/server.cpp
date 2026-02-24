@@ -130,12 +130,9 @@ void EndstoneServer::setLevel(::Level &level)
     text_settings.reset(static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerChangedSkin));
     level._getPlayerDeathManager()->sender_.reset();  // player death
 
-    // #blameMojang
-    // MapItemSavedData never removes disconnected players from its
-    // tracked-entity list. Each stale tracker holds a ChunkViewSource that
-    // keeps a 256×256 chunk area permanently loaded, causing massive memory
-    // retention as players spread out.
-    // Fix: when a gameplay user is removed, purge them from all maps.
+    // #blameMojang - MapItemSavedData tracks players for map updates but never cleans up on disconnect.
+    // Each stale tracker pins a 256x256 chunk area in memory. Players come and go, memory only goes up.
+    // Fix: actually remove players from map trackers when they leave.
     on_gameplay_user_removed_ = level.getGameplayUserManager()->getGameplayUserRemovedConnector().connect(
         [&](EntityContext &entity) {
             if (auto *player = ::Player::tryGetFromEntity(entity, true); player) {
@@ -658,9 +655,9 @@ MapView &EndstoneServer::createMap(const Dimension &dimension) const
 {
     auto &dim = static_cast<const EndstoneDimension &>(dimension).getHandle();
     auto &level = dim.getLevel();
+    // TODO: should we use dimension spawn point instead of BlockPos::ZERO?
     // creates a new map at world spawn with the scale of 3, without tracking position and unlimited tracking
-    const auto pos = dim.getSpawnPos();
-    const auto &map = level.createMapSavedData(ActorUniqueID::INVALID_ID, pos, dim.getDimensionId(), 3);
+    const auto &map = level.createMapSavedData(ActorUniqueID::INVALID_ID, BlockPos::ZERO, dim.getDimensionId(), 3);
     return map.getMapView();
 }
 

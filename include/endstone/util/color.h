@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <cstdint>
 namespace endstone {
 /**
  * @brief Represents a color with red, green, blue, and alpha components.

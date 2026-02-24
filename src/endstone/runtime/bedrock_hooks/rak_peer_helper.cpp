@@ -65,6 +65,14 @@ RakNet::RakPeerInterface *gRakPeer = nullptr;
 
 bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
 {
+    // #blameMojang - MCPE-228407: Mojang's custom RakNet packet 0x86 handler reads SystemAddress
+    // without checking if the packet is large enough to contain one. Networking 101: validate before read.
+    // Reported to Mojang, closed as "Won't Fix". Classic.
+    // Fix: drop undersized packets before they reach the vulnerable code path.
+    if (static_cast<unsigned char>(recv->data[0]) == 0x86 &&
+        recv->bytes_read < sizeof(unsigned char) + sizeof(RakNet::SystemAddress)) {
+        return false;
+    }
     if (recv->data[0] == ID_UNCONNECTED_PING &&
         recv->bytes_read >= sizeof(unsigned char) + sizeof(RakNet::Time) + sizeof(OFFLINE_MESSAGE_DATA_ID)) {
         char *ping_data;

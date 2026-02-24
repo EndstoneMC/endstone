@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <functional>
 #include <utility>
 
 #include "endstone/form/form.h"

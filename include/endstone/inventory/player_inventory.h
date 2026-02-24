@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <optional>
+
 #include "endstone/inventory/inventory.h"
 
 namespace endstone {

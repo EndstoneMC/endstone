@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <string>
+
 #include "endstone/event/cancellable.h"
 #include "endstone/event/weather/weather_event.h"
 
@@ -24,6 +26,7 @@ namespace endstone {
  */
 class ThunderChangeEvent : public Cancellable<WeatherEvent> {
 public:
+    ENDSTONE_EVENT(ThunderChangeEvent);
     ThunderChangeEvent(Level &level, bool to) : Cancellable(level), to_(to) {}
     ~ThunderChangeEvent() override = default;
 
@@ -33,9 +36,6 @@ public:
      * @return true if the weather is being set to thundering, false otherwise
      */
     [[nodiscard]] bool toThunderState() const { return to_; }
-
-    inline static const std::string NAME = "ThunderChangeEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
 private:
     bool to_;

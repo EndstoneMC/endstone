@@ -293,13 +293,13 @@ def test_create_map(server: Server) -> None:
     """Test creating a new map."""
     level = server.level
     assert level is not None
-
-    # Create a map for the overworld dimension
-    overworld = level.get_dimension("overworld")
-    assert overworld is not None
-    map_view = server.create_map(overworld)
-    assert map_view is not None
-    assert map_view.id != -1
+    dimension = level.get_dimension("overworld")
+    assert dimension is not None
+    view = server.create_map(dimension)
+    assert view.id != -1, f"Expected valid map id, got {view.id}"
+    assert view.scale == 3, f"Expected scale 3, got {view.scale}"
+    assert view.center_x == view.center_z, f"Expected center_x == center_z, got {view.center_x} != {view.center_z}"
+    assert view.center_x == 448, f"Expected center_x 448, got {view.center_x}"
 
 
 # =============================================================================

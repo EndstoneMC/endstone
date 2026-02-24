@@ -21,6 +21,7 @@
 #include "endstone/core/nbt.h"
 
 namespace endstone::core {
+
 EndstoneItemStack::EndstoneItemStack(const ::ItemStackBase &item) : item_(item) {}
 
 EndstoneItemStack::EndstoneItemStack(const EndstoneItemStack &other) : item_(other.item_) {}
@@ -200,7 +201,7 @@ bool EndstoneItemStack::setItemMeta(ItemStackBase *item, const ItemMeta *meta)
         return true;
     }
 
-    if (const auto &m = static_cast<EndstoneItemMeta &>(*item_meta); !m.isEmpty()) {
+    if (auto &m = item_meta->getExtras(); !m.isEmpty()) {
         auto tag = item->hasUserData() ? item->getUserData()->clone() : std::make_unique<::CompoundTag>();
         m.applyToItem(*tag);
         item->setUserData(std::move(tag));

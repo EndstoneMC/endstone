@@ -231,6 +231,16 @@ const Int64Tag *CompoundTag::getInt64Tag(StringView name) const
     return nullptr;
 }
 
+Int64Tag *CompoundTag::getInt64Tag(StringView name)
+{
+    if (auto *tag = get(name); tag) {
+        if (tag->getId() == Type::Int64) {
+            return static_cast<Int64Tag *>(tag);
+        }
+    }
+    return nullptr;
+}
+
 std::int16_t CompoundTag::getShort(StringView name) const
 {
     if (const auto *tag = getShortTag(name)) {

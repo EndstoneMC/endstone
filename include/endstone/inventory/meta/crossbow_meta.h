@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <vector>
+
 #include "endstone/inventory/meta/item_meta.h"
 
 namespace endstone {

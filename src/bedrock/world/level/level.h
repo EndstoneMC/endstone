@@ -31,7 +31,9 @@ public:
     [[nodiscard]] virtual void *getPlayerSleepManager() const = 0;
     virtual void *getPlayerSleepManager() = 0;
 
-#ifdef __linux__  // wtf mojang
+    // #blameMojang - Linux build has extra virtual methods not in Windows build.
+    // Same class, different vtable layout per platform. Why? Ask Mojang.
+#ifdef __linux__
     virtual void onSourceCreated(BlockSource &) = 0;
     virtual void onSourceDestroyed(BlockSource &) = 0;
 #endif

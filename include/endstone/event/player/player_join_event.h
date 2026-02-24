@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <optional>
+#include <utility>
+
 #include "endstone/event/player/player_event.h"
 
 namespace endstone {
