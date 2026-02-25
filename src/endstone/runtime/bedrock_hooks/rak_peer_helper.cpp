@@ -71,7 +71,7 @@ bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
     // Fix: drop undersized packets before they reach the vulnerable code path.
     if (static_cast<unsigned char>(recv->data[0]) == 0x86) {
         int expected_size = sizeof(unsigned char) + sizeof(unsigned char);
-        if (recv->data[0] == 4) {  // ipv4
+        if (recv->data[1] == 4) {  // ipv4
             expected_size += sizeof(std::uint32_t) + sizeof(std::uint16_t);
         }
         else {  // ipv6
