@@ -69,9 +69,17 @@ bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
     // present in upstream RakNet. The handler for 0x86 (ID_PONG_ADDRESS_INFO) attempts to read a SystemAddress from the
     // packet without validating its length, causing a buffer over-read that crashes the server. Drop these undersized
     // packets before they reach the vulnerable code path.
-    if (static_cast<unsigned char>(recv->data[0]) == 0x86 &&
-        recv->bytes_read < sizeof(unsigned char) + sizeof(RakNet::SystemAddress)) {
-        return false;
+    if (static_cast<unsigned char>(recv->data[0]) == 0x86) {
+        int expected_size = sizeof(unsigned char) + sizeof(unsigned char);
+        if (recv->data[0] == 4) {  // ipv4
+            expected_size += sizeof(std::uint32_t) + sizeof(std::uint16_t);
+        }
+        else {  // ipv6
+            expected_size += sizeof(sockaddr_in6);
+        }
+        if (recv->bytes_read < expected_size) {
+            return false;
+        }
     }
     if (recv->data[0] == ID_UNCONNECTED_PING &&
         recv->bytes_read >= sizeof(unsigned char) + sizeof(RakNet::Time) + sizeof(OFFLINE_MESSAGE_DATA_ID)) {
