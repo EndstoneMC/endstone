@@ -65,10 +65,10 @@ RakNet::RakPeerInterface *gRakPeer = nullptr;
 
 bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
 {
-    // FIX: MCPE-228407 - Mojang's modified version of RakNet adds handling for packet types 0x86-0x8A, which are not
-    // present in upstream RakNet. The handler for 0x86 (ID_PONG_ADDRESS_INFO) attempts to read a SystemAddress from the
-    // packet without validating its length, causing a buffer over-read that crashes the server. Drop these undersized
-    // packets before they reach the vulnerable code path.
+    // #blameMojang - MCPE-228407: Mojang's custom RakNet packet 0x86 handler reads SystemAddress
+    // without checking if the packet is large enough to contain one. Networking 101: validate before read.
+    // Reported to Mojang, closed as "Won't Fix". Classic.
+    // Fix: drop undersized packets before they reach the vulnerable code path.
     if (static_cast<unsigned char>(recv->data[0]) == 0x86) {
         int expected_size = sizeof(unsigned char) + sizeof(unsigned char);
         if (recv->data[0] == 4) {  // ipv4

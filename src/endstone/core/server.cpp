@@ -130,12 +130,9 @@ void EndstoneServer::setLevel(::Level &level)
     text_settings.reset(static_cast<std::underlying_type_t<ServerTextEvent>>(ServerTextEvent::PlayerChangedSkin));
     level._getPlayerDeathManager()->sender_.reset();  // player death
 
-    // #blameMojang
-    // MapItemSavedData never removes disconnected players from its
-    // tracked-entity list. Each stale tracker holds a ChunkViewSource that
-    // keeps a 256×256 chunk area permanently loaded, causing massive memory
-    // retention as players spread out.
-    // Fix: when a gameplay user is removed, purge them from all maps.
+    // #blameMojang - MapItemSavedData tracks players for map updates but never cleans up on disconnect.
+    // Each stale tracker pins a 256x256 chunk area in memory. Players come and go, memory only goes up.
+    // Fix: actually remove players from map trackers when they leave.
     on_gameplay_user_removed_ = level.getGameplayUserManager()->getGameplayUserRemovedConnector().connect(
         [&](EntityContext &entity) {
             if (auto *player = ::Player::tryGetFromEntity(entity, true); player) {
