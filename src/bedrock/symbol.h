@@ -16,6 +16,12 @@
 
 #include <algorithm>
 #include <array>
+#include <cctype>
+#include <string>
+#include <cstdint>
+#include <sstream>
+#include <unordered_map>
+#include <vector>
 #include <memory>
 #include <stdexcept>
 #include <string_view>
@@ -27,28 +33,102 @@
 #include "endstone/detail.h"
 
 namespace endstone::runtime {
-#include "bedrock_symbols.generated.h"
+#include "bedrock_signatures.generated.h"
 
 void *get_module_base();
 std::string get_module_pathname();
 void *get_executable_base();
 std::string get_executable_pathname();
+std::size_t get_executable_size();
 
-consteval std::size_t get_symbol(const std::string_view symbol)
+namespace {
+struct Pattern {
+    std::vector<std::uint8_t> bytes;
+    std::vector<bool> mask;
+};
+
+Pattern parse_pattern(std::string_view s)
 {
-    for (const auto &[key, value] : symbols) {
-        if (key == symbol) {
-            return value;
+    Pattern p;
+    const char *data = s.data();
+    std::size_t i = 0;
+    while (i < s.size()) {
+        while (i < s.size() && std::isspace(static_cast<unsigned char>(data[i]))) ++i;
+        if (i >= s.size()) break;
+
+        if (data[i] == '?') {
+            p.bytes.push_back(0);
+            p.mask.push_back(false);
+            while (i < s.size() && !std::isspace(static_cast<unsigned char>(data[i]))) ++i;
+            continue;
         }
+
+        std::size_t j = i;
+        while (j < s.size() && !std::isspace(static_cast<unsigned char>(data[j]))) ++j;
+        int hex = 0;
+        for (std::size_t k = i; k < j; ++k) {
+            char c = data[k];
+            hex <<= 4;
+            if (std::isdigit(static_cast<unsigned char>(c))) hex |= (c - '0');
+            else hex |= (10 + (std::toupper(static_cast<unsigned char>(c)) - 'A'));
+        }
+        p.bytes.push_back(static_cast<std::uint8_t>(hex));
+        p.mask.push_back(true);
+        i = j;
     }
-    throw "symbol not found";
+    return p;
+}
+
+std::size_t scan(const Pattern &p)
+{
+    auto *base = static_cast<std::uint8_t *>(get_executable_base());
+    auto size = get_executable_size();
+    for (std::size_t i = 0; i + p.bytes.size() <= size; ++i) {
+        bool ok = true;
+        for (std::size_t j = 0; j < p.bytes.size(); ++j) {
+            if (p.mask[j] && base[i + j] != p.bytes[j]) { ok = false; break; }
+        }
+        if (ok) return i;
+    }
+    throw std::runtime_error("signature not found");
+}
+}  // namespace
+
+inline std::size_t get_symbol(std::string_view symbol)
+{
+    static std::unordered_map<std::string, std::size_t> cache;
+    auto key = std::string(symbol);
+    if (auto it = cache.find(key); it != cache.end()) return it->second;
+
+    const SignatureItem *found = nullptr;
+    for (const auto &item : signatures) {
+        if (item.name == symbol) { found = &item; break; }
+    }
+    if (!found) throw std::runtime_error("symbol signature missing");
+
+    auto pat = parse_pattern(found->pattern);
+    auto match_off = scan(pat);
+
+    std::size_t off = match_off;
+    if (found->rip_relative) {
+        auto *base = static_cast<std::uint8_t *>(get_executable_base());
+        auto disp_ptr = base + match_off + static_cast<std::size_t>(found->rip_offset);
+        auto disp = *reinterpret_cast<const std::int32_t *>(disp_ptr);
+        auto target = (match_off + static_cast<std::size_t>(found->rip_offset) + 4) + static_cast<std::size_t>(disp);
+        off = target;
+    }
+    off += static_cast<std::size_t>(found->extra);
+
+    cache.emplace(key, off);
+    return off;
 }
 
 template <typename Func>
-constexpr void foreach_symbol(Func &&func)
+inline void foreach_symbol(Func &&func)
 {
-    for (const auto &[key, value] : symbols) {
-        std::invoke(std::forward<Func>(func), key, value);
+    for (const auto &item : signatures) {
+        auto off = get_symbol(item.name);
+        std::invoke(std::forward<Func>(func), item.name, off);
     }
 }
 
@@ -60,15 +140,15 @@ constexpr decltype(auto) invoke(const char *function, Func &&func, Args &&...arg
 }
 
 #ifdef _WIN32
-template <std::size_t Offset, typename Class, typename... Args>
-Class *(*get_ctor())(Class *, Args...)
+template <typename Class, typename... Args>
+Class *(*get_ctor(const std::size_t Offset)) (Class *, Args...)
 {
     auto *addr = static_cast<char *>(get_executable_base()) + Offset;
     return reinterpret_cast<Class *(*)(Class *, Args...)>(addr);
 }
 #elif __linux__
-template <std::size_t Offset, typename Class, typename... Args>
-void (*get_ctor())(Class *, Args...)
+template <typename Class, typename... Args>
+void (*get_ctor(const std::size_t Offset)) (Class *, Args...)
 {
     auto *addr = static_cast<char *>(get_executable_base()) + Offset;
     return reinterpret_cast<void (*)(Class *, Args...)>(addr);
@@ -88,4 +168,4 @@ void (*get_ctor())(Class *, Args...)
                            endstone::runtime::get_symbol(name));
 
 #define BEDROCK_CTOR(type, ...) \
-    endstone::runtime::get_ctor<endstone::runtime::get_symbol(__FUNCDNAME__), type, ##__VA_ARGS__>()
+    endstone::runtime::get_ctor<type, ##__VA_ARGS__>(endstone::runtime::get_symbol(__FUNCDNAME__))

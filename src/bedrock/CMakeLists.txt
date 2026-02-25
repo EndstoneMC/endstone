@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(bedrock LANGUAGES CXX)
 
-add_subdirectory(symbol_generator)
+add_subdirectory(signature_generator)
 
 find_package(base64 REQUIRED)
 find_package(Boost REQUIRED)
@@ -136,12 +136,11 @@ add_library(bedrock STATIC
         world/scores/server_scoreboard.cpp
 )
 add_library(bedrock::bedrock ALIAS bedrock)
-add_dependencies(bedrock bedrock_symbols)
 target_include_directories(bedrock PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../)
 target_compile_definitions(bedrock PUBLIC ENTT_SPARSE_PAGE=2048)
 target_compile_definitions(bedrock PUBLIC ENTT_PACKED_PAGE=128)
 target_compile_definitions(bedrock PUBLIC ENTT_NO_MIXIN)
-target_link_libraries(bedrock PUBLIC bedrock::symbols endstone::endstone aklomp::base64 boost::boost fmt::fmt EnTT::EnTT glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nonstd::expected-lite)
+target_link_libraries(bedrock PUBLIC bedrock::signatures endstone::endstone aklomp::base64 boost::boost fmt::fmt EnTT::EnTT glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nonstd::expected-lite)
 if (MSVC)
     target_link_options(bedrock PRIVATE /DEBUG /INCREMENTAL:NO /OPT:REF /OPT:ICF)
     target_compile_options(bedrock PRIVATE /O2 /DNDEBUG /Zi /Gy)
