@@ -1,4 +1,4 @@
-timestamp = 1772125151
+timestamp = 1772146050
 version = "1.26.2"
 
 [windows]
@@ -39,6 +39,8 @@ version = "1.26.2"
 "?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z" = 29954624
 # DedicatedServer
 "?start@DedicatedServer@@QEAA?AW4StartResult@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z" = 1302608
+# Explosion
+"?explode@Explosion@@QEAA_NAEAVIRandom@@@Z" = 69721616
 # FurnaceBlockActor
 "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 7284880
 # InventoryTransaction
@@ -152,6 +154,8 @@ version = "1.26.2"
 "_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 116403824
 # DedicatedServer
 "_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE" = 60924112
+# Explosion
+"_ZN9Explosion7explodeER7IRandom" = 172891664
 # FurnaceBlockActor
 "_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef" = 177929088
 # InventoryTransaction

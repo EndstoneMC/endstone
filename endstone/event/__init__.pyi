@@ -28,6 +28,7 @@ __all__ = [
     "BlockBreakEvent",
     "BlockCookEvent",
     "BlockEvent",
+    "BlockExplodeEvent",
     "BlockFormEvent",
     "BlockFromToEvent",
     "BlockGrowEvent",
@@ -327,6 +328,19 @@ class BlockBreakEvent(BlockEvent, Cancellable):
         Gets the Player that is breaking the block involved in this event.
         """
         ...
+
+class BlockExplodeEvent(BlockEvent, Cancellable):
+    """
+    Called when a block explodes.
+    """
+    @property
+    def block_list(self) -> list[Block]:
+        """
+        Gets or sets the list of blocks that would have been removed or were removed from the explosion event.
+        """
+        ...
+    @block_list.setter
+    def block_list(self, arg1: list[Block]) -> None: ...
 
 class BlockCookEvent(BlockEvent, Cancellable):
     """

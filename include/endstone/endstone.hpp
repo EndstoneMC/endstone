@@ -67,6 +67,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "event/actor/player_death_event.h"
 #include "event/block/block_break_event.h"
 #include "event/block/block_cook_event.h"
+#include "event/block/block_explode_event.h"
 #include "event/block/block_event.h"
 #include "event/block/block_form_event.h"
 #include "event/block/block_from_to_event.h"
