@@ -771,7 +771,7 @@ class Skin:
         """
         ...
 
-__minecraft_version__ = "26.1"
+__minecraft_version__ = "26.2"
 
 class Registry(typing.Generic[_T]):
     """
