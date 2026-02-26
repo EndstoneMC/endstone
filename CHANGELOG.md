@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased](https://github.com/EndstoneMC/endstone/compare/v0.11.1...HEAD)
+
+<small>[Compare with 0.11.1](https://github.com/EndstoneMC/endstone/compare/v0.11.1...HEAD)</small>
+
+### Added
+
+- Added support for BDS version 1.26.2.1.
+- Added `BlockExplodeEvent` for non-actor explosions (e.g., bed in the Nether, respawn anchor in the Overworld).
+
+### Fixed
+
+- Fixed a crash caused by vulnerabilities introduced in Mojang's RakNet modifications (MCPE-228407).
+- Fixed missing exports for `BlockFormEvent`, `BlockFromToEvent`, and `BlockGrowEvent` events.
+
 ## [0.11.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.11.1) - 2026-02-20
 
 <small>[Compare with 0.11.0](https://github.com/EndstoneMC/endstone/compare/v0.11.0...v0.11.1)</small>
