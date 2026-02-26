@@ -31,13 +31,11 @@ namespace endstone {
  */
 class BroadcastMessageEvent : public Cancellable<ServerEvent> {
 public:
+    ENDSTONE_EVENT(BroadcastMessageEvent);
     BroadcastMessageEvent(bool async, Message message, std::unordered_set<const CommandSender *> recipients)
         : Cancellable(async), message_(std::move(message)), recipients_(std::move(recipients))
     {
     }
-
-    inline static const std::string NAME = "BroadcastMessageEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * Get the message to broadcast.

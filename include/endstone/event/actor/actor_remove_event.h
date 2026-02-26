@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <string>
-
 #include "endstone/event/actor/actor_event.h"
 
 namespace endstone {
@@ -28,10 +26,8 @@ namespace endstone {
  */
 class ActorRemoveEvent : public ActorEvent<Actor> {
 public:
+    ENDSTONE_EVENT(ActorRemoveEvent);
     using ActorEvent::ActorEvent;
-
-    inline static const std::string NAME = "ActorRemoveEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     // TODO(event): add remove cause
 };

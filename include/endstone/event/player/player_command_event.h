@@ -27,13 +27,11 @@ namespace endstone {
  */
 class PlayerCommandEvent : public Cancellable<PlayerEvent> {
 public:
+    ENDSTONE_EVENT(PlayerCommandEvent);
     explicit PlayerCommandEvent(Player &player, std::string command) : Cancellable(player), command_(std::move(command))
     {
     }
     ~PlayerCommandEvent() override = default;
-
-    inline static const std::string NAME = "PlayerCommandEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * Gets the command that the player is attempting to send.

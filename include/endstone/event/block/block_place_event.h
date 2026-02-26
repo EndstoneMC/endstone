@@ -15,7 +15,6 @@
 #pragma once
 
 #include <memory>
-#include <string>
 #include <utility>
 
 #include "endstone/block/block_state.h"
@@ -32,6 +31,7 @@ namespace endstone {
  */
 class BlockPlaceEvent : public Cancellable<BlockEvent> {
 public:
+    ENDSTONE_EVENT(BlockPlaceEvent);
     explicit BlockPlaceEvent(std::unique_ptr<BlockState> placed_block, std::unique_ptr<Block> replaced_block,
                              std::unique_ptr<Block> placed_against, Player &player)
         : Cancellable(std::move(replaced_block)), placed_block_(std::move(placed_block)),
@@ -39,9 +39,6 @@ public:
     {
     }
     ~BlockPlaceEvent() override = default;
-
-    inline static const std::string NAME = "BlockPlaceEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * @brief Gets the player who placed the block involved in this event.

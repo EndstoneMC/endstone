@@ -27,13 +27,11 @@ namespace endstone {
  */
 class ScriptMessageEvent : public Cancellable<ServerEvent> {
 public:
+    ENDSTONE_EVENT(ScriptMessageEvent);
     ScriptMessageEvent(std::string message_id, std::string message, const CommandSender &sender)
         : Cancellable(false), message_id_(std::move(message_id)), message_(std::move(message)), sender_(sender)
     {
     }
-
-    inline static const std::string NAME = "ScriptMessageEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * Get the message id to send.

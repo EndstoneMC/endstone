@@ -34,10 +34,8 @@ namespace endstone {
  */
 class ServerCommandEvent : public Cancellable<ServerEvent> {
 public:
+    ENDSTONE_EVENT(ServerCommandEvent);
     ServerCommandEvent(CommandSender &sender, std::string command) : sender_(sender), command_(std::move(command)) {}
-
-    inline static const std::string NAME = "ServerCommandEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * Gets the command that the server is attempting to execute from the console

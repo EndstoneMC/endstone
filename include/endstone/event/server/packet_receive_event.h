@@ -28,15 +28,13 @@ namespace endstone {
  */
 class PacketReceiveEvent : public Cancellable<ServerEvent> {
 public:
+    ENDSTONE_EVENT(PacketReceiveEvent);
     PacketReceiveEvent(Player *player, const int packet_id, std::string_view payload, SocketAddress address,
                        const int sub_client_id)
         : player_(player), packet_id_(packet_id), payload_(payload), address_(std::move(address)),
           sub_client_id_(sub_client_id)
     {
     }
-
-    inline static const std::string NAME = "PacketReceiveEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * @brief Gets the ID of the packet.

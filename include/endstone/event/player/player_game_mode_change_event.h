@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <string>
-
 #include "endstone/event/cancellable.h"
 #include "endstone/event/player/player_event.h"
 #include "endstone/game_mode.h"
@@ -27,14 +25,12 @@ namespace endstone {
  */
 class PlayerGameModeChangeEvent : public Cancellable<PlayerEvent> {
 public:
+    ENDSTONE_EVENT(PlayerGameModeChangeEvent);
     explicit PlayerGameModeChangeEvent(Player &player, GameMode new_game_mode)
         : Cancellable(player), new_game_mode_(new_game_mode)
     {
     }
     ~PlayerGameModeChangeEvent() override = default;
-
-    inline static const std::string NAME = "PlayerGameModeChangeEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * @brief Gets the GameMode the player is switched to.

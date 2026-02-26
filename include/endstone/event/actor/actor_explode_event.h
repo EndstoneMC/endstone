@@ -15,7 +15,6 @@
 #pragma once
 
 #include <memory>
-#include <string>
 #include <utility>
 #include <vector>
 
@@ -33,14 +32,12 @@ class ActorExplodeEvent : public Cancellable<ActorEvent<Actor>> {
     using BlockList = std::vector<std::unique_ptr<Block>>;
 
 public:
+    ENDSTONE_EVENT(ActorExplodeEvent);
     explicit ActorExplodeEvent(Actor &actor, Location location, BlockList blocks)
         : Cancellable(actor), location_(location), blocks_(std::move(blocks))
     {
     }
     ~ActorExplodeEvent() override = default;
-
-    inline static const std::string NAME = "ActorExplodeEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * @brief Returns the location where the explosion happened.

@@ -15,7 +15,6 @@
 #pragma once
 
 #include <memory>
-#include <string>
 #include <utility>
 
 #include "endstone/damage/damage_source.h"
@@ -29,13 +28,11 @@ namespace endstone {
  */
 class ActorDamageEvent : public Cancellable<ActorEvent<Mob>> {
 public:
+    ENDSTONE_EVENT(ActorDamageEvent);
     ActorDamageEvent(Mob &actor, std::unique_ptr<DamageSource> damage_source, const float damage)
         : Cancellable(actor), damage_source_(std::move(damage_source)), damage_(damage)
     {
     }
-
-    inline static const std::string NAME = "ActorDamageEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * @brief Gets the raw amount of damage caused by the event

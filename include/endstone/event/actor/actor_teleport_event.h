@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include <string>
 #include <utility>
 
 #include "endstone/event/actor/actor_event.h"
@@ -30,14 +29,12 @@ namespace endstone {
  */
 class ActorTeleportEvent : public Cancellable<ActorEvent<Actor>> {
 public:
+    ENDSTONE_EVENT(ActorTeleportEvent);
     explicit ActorTeleportEvent(Actor &actor, Location from, Location to)
         : Cancellable(actor), from_(std::move(from)), to_(std::move(to))
     {
     }
     ~ActorTeleportEvent() override = default;
-
-    inline static const std::string NAME = "ActorTeleportEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * @brief Gets the location that this actor moved from

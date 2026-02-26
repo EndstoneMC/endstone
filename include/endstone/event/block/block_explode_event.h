@@ -15,7 +15,6 @@
 #pragma once
 
 #include <memory>
-#include <string>
 #include <utility>
 #include <vector>
 
@@ -35,14 +34,12 @@ class BlockExplodeEvent : public Cancellable<BlockEvent> {
     using BlockList = std::vector<std::unique_ptr<Block>>;
 
 public:
+    ENDSTONE_EVENT(BlockExplodeEvent);
     explicit BlockExplodeEvent(std::unique_ptr<Block> block, BlockList blocks)
         : Cancellable(std::move(block)), blocks_(std::move(blocks))
     {
     }
     ~BlockExplodeEvent() override = default;
-
-    inline static const std::string NAME = "BlockExplodeEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     /**
      * @brief Returns the list of blocks that would have been removed or were removed from the explosion event.
