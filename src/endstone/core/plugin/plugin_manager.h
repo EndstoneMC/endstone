@@ -36,6 +36,7 @@ namespace endstone::core {
 class EndstonePluginManager : public PluginManager {
 public:
     explicit EndstonePluginManager(Server &server);
+    ~EndstonePluginManager() override;
 
     /** Plugin loading */
     void registerLoader(std::unique_ptr<PluginLoader> loader) override;
