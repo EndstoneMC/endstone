@@ -19,6 +19,7 @@
 #include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/clientbound_map_item_data_packet.h"
 #include "bedrock/network/packet/emote_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
@@ -42,6 +43,7 @@
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/inventory/player_inventory.h"
+#include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
 #include "endstone/core/network/data_packet.h"
 #include "endstone/core/server.h"
@@ -601,6 +603,32 @@ void EndstonePlayer::sendPacket(int packet_id, std::string_view payload) const
 {
     DataPacket pk(packet_id, payload);
     getHandle().sendNetworkPacket(pk);
+}
+
+void EndstonePlayer::sendMap(MapView &map)
+{
+    auto &view = static_cast<EndstoneMapView &>(map);
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::MapData);
+    auto &pk = static_cast<ClientboundMapItemDataPacket &>(*packet);
+    pk.map_ids_.clear();
+    pk.map_ids_.emplace_back(view.map_.getMapId());
+    pk.scale_ = view.map_.getScale();
+    pk.start_x_ = 0;
+    pk.start_y_ = 0;
+    pk.map_origin_ = view.map_.getOrigin();
+    pk.dimension_ = view.map_.getDimensionId().runtime_id;
+    pk.width_ = MapConstants::MAP_SIZE;
+    pk.height_ = MapConstants::MAP_SIZE;
+    pk.type_ = ClientboundMapItemDataPacket::Type::TextureUpdate | ClientboundMapItemDataPacket::Type::DecorationUpdate;
+    pk.locked_ = view.map_.isLocked();
+
+    for (const auto &[unique_id, decoration] : view.map_.getDecorations()) {
+        pk.unique_ids_.emplace_back(unique_id);
+        pk.decorations_.emplace_back(decoration);
+    }
+    auto pixels = view.map_.getPixels();
+    pk.map_pixels_ = {pixels.begin(), pixels.end()};
+    getHandle().sendNetworkPacket(*packet);
 }
 
 bool EndstonePlayer::handlePacket(Packet &packet)

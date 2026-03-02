@@ -55,6 +55,7 @@ public:
 private:
     bool isContextual() const;
     friend class EndstoneMapCanvas;
+    friend class EndstonePlayer;
 
     std::unordered_map<std::uint64_t, RenderData> render_cache_;
     std::vector<std::shared_ptr<MapRenderer>> renderers_;
