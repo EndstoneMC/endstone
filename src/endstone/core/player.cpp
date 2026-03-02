@@ -626,8 +626,7 @@ void EndstonePlayer::sendMap(MapView &map)
         pk.unique_ids_.emplace_back(unique_id);
         pk.decorations_.emplace_back(decoration);
     }
-    auto pixels = view.map_.getPixels();
-    pk.map_pixels_ = {pixels.begin(), pixels.end()};
+    pk.map_pixels_.resize(pk.width_ * pk.height_);
     getHandle().sendNetworkPacket(*packet);
 }
 
