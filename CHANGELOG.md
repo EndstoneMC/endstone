@@ -11,8 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Added support for BDS version 1.26.2.1.
+- Added support for BDS version 1.26.3.1.
 - Added `BlockExplodeEvent` for non-actor explosions (e.g., bed in the Nether, respawn anchor in the Overworld).
+- Added `Player.send_map()` method for sending full map data to players, enabling custom map renderers to push updates
+  on demand (e.g., animated maps via the scheduler).
 
 ### Fixed
 
