@@ -350,7 +350,7 @@ class OfflinePlayer:
         """
         ...
 
-class Player(Mob, OfflinePlayer):
+class Player(Mob):
     """
     Represents a player.
     """
