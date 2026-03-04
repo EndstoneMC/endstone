@@ -18,6 +18,7 @@
 #include "bedrock/world/level/saveddata/map_item_saved_data.h"
 
 class ClientboundMapItemDataPacket : public Packet {
+public:
     enum class Type : int32_t {
         Invalid = 0,
         TextureUpdate = 2,
@@ -25,20 +26,13 @@ class ClientboundMapItemDataPacket : public Packet {
         Creation = 8,
     };
 
-public:
     ClientboundMapItemDataPacket();
     ClientboundMapItemDataPacket(ActorUniqueID, int8_t, const MapItemSavedData::DecorationCollection &,
                                  buffer_span<unsigned int>, int, int, int, int, DimensionType, bool, const BlockPos &);
     ClientboundMapItemDataPacket(gsl::not_null<MapItemSavedData *>, Level &);
-    ActorUniqueID getMapId() const
-    {
-        return map_ids_.front();
-    }
+    ActorUniqueID getMapId() const { return map_ids_.front(); }
     const std::vector<ActorUniqueID> &getMapIds() const;
-    DimensionType getDimensionId() const
-    {
-        return DimensionType(dimension_);
-    }
+    DimensionType getDimensionId() const { return DimensionType(dimension_); }
     int8_t getScale() const;
     void applyToMap(MapItemSavedData &, const bool) const;
     void resampleClientMap(MapItemSavedData &, BlockSource &, const BlockPos &, int) const;
@@ -64,3 +58,9 @@ public:
     bool locked_;
 };
 static_assert(sizeof(ClientboundMapItemDataPacket) == 200);
+
+inline ClientboundMapItemDataPacket::Type operator|(ClientboundMapItemDataPacket::Type a,
+                                                    ClientboundMapItemDataPacket::Type b)
+{
+    return static_cast<ClientboundMapItemDataPacket::Type>(static_cast<int32_t>(a) | static_cast<int32_t>(b));
+}

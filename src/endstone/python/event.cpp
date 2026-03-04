@@ -125,6 +125,29 @@ void init_event(py::module_ &m, py::class_<Event> &event)
                                                           "Called when a block is broken by a player.")
         .def_property_readonly("player", &BlockBreakEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the Player that is breaking the block involved in this event.");
+    py::class_<BlockExplodeEvent, BlockEvent, ICancellable>(m, "BlockExplodeEvent",
+                                                             "Called when a block explodes.")
+        .def_property(
+            "block_list",
+            [](const BlockExplodeEvent &self) {
+                std::vector<Block *> blocks;
+                for (const auto &block : self.getBlockList()) {
+                    if (block) {
+                        blocks.emplace_back(block.get());
+                    }
+                }
+                return blocks;
+            },
+            [](BlockExplodeEvent &self, const std::vector<Block *> &blocks) {
+                self.getBlockList().clear();
+                for (const auto &block : blocks) {
+                    if (block) {
+                        self.getBlockList().emplace_back(block->clone());
+                    }
+                }
+            },
+            py::return_value_policy::reference_internal,
+            "Gets or sets the list of blocks that would have been removed or were removed from the explosion event.");
     py::class_<BlockCookEvent, BlockEvent, ICancellable>(m, "BlockCookEvent",
                                                          "Called when an ItemStack is successfully cooked in a block.")
         .def_property_readonly("source", &BlockCookEvent::getSource, py::return_value_policy::reference,

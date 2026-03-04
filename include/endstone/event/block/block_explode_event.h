@@ -19,34 +19,27 @@
 #include <vector>
 
 #include "endstone/block/block.h"
-#include "endstone/event/actor/actor_event.h"
+#include "endstone/event/block/block_event.h"
 #include "endstone/event/cancellable.h"
-#include "endstone/level/location.h"
 
 namespace endstone {
 
 /**
- * @brief Called when an actor explodes
+ * @brief Called when a block explodes (e.g. bed in the Nether, respawn anchor in the Overworld).
+ *
+ * <p>
+ * If a BlockExplodeEvent is cancelled, the explosion will not occur.
  */
-class ActorExplodeEvent : public Cancellable<ActorEvent<Actor>> {
+class BlockExplodeEvent : public Cancellable<BlockEvent> {
     using BlockList = std::vector<std::unique_ptr<Block>>;
 
 public:
-    ENDSTONE_EVENT(ActorExplodeEvent);
-    explicit ActorExplodeEvent(Actor &actor, Location location, BlockList blocks)
-        : Cancellable(actor), location_(location), blocks_(std::move(blocks))
+    ENDSTONE_EVENT(BlockExplodeEvent);
+    explicit BlockExplodeEvent(std::unique_ptr<Block> block, BlockList blocks)
+        : Cancellable(std::move(block)), blocks_(std::move(blocks))
     {
     }
-    ~ActorExplodeEvent() override = default;
-
-    /**
-     * @brief Returns the location where the explosion happened.
-     * <p>
-     * It is not possible to get this value from the Entity as the Entity no longer exists in the world.
-     *
-     * @return The location of the explosion
-     */
-    [[nodiscard]] const Location &getLocation() const { return location_; }
+    ~BlockExplodeEvent() override = default;
 
     /**
      * @brief Returns the list of blocks that would have been removed or were removed from the explosion event.
@@ -63,7 +56,6 @@ public:
     [[nodiscard]] BlockList &getBlockList() { return blocks_; }
 
 private:
-    Location location_;
     BlockList blocks_;
 };
 

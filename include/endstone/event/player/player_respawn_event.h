@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <string>
-
 #include "endstone/event/player/player_event.h"
 
 namespace endstone {
@@ -25,11 +23,9 @@ namespace endstone {
  */
 class PlayerRespawnEvent : public PlayerEvent {
 public:
+    ENDSTONE_EVENT(PlayerRespawnEvent);
     explicit PlayerRespawnEvent(Player &player) : PlayerEvent(player) {}
     ~PlayerRespawnEvent() override = default;
-
-    inline static const std::string NAME = "PlayerRespawnEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 };
 
 }  // namespace endstone

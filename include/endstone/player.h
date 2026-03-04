@@ -26,6 +26,7 @@
 #include "endstone/form/modal_form.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
+#include "endstone/map/map_view.h"
 #include "endstone/offline_player.h"
 #include "endstone/scoreboard/scoreboard.h"
 #include "endstone/skin.h"
@@ -470,6 +471,15 @@ public:
      * @param payload The payload of the packet to be transmitted.
      */
     virtual void sendPacket(int packet_id, std::string_view payload) const = 0;
+
+    /**
+     * @brief Render a map and send it to the player in its entirety.
+     *
+     * This may be used when streaming the map in the normal manner is not desirable.
+     *
+     * @param map The map to send
+     */
+    virtual void sendMap(MapView &map) = 0;
 };
 
 }  // namespace endstone

@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <string>
-
 #include "endstone/event/actor/actor_event.h"
 #include "endstone/event/cancellable.h"
 
@@ -28,11 +26,9 @@ namespace endstone {
  */
 class ActorSpawnEvent : public Cancellable<ActorEvent<Actor>> {
 public:
+    ENDSTONE_EVENT(ActorSpawnEvent);
     explicit ActorSpawnEvent(Actor &actor) : Cancellable(actor) {}
     ~ActorSpawnEvent() override = default;
-
-    inline static const std::string NAME = "ActorSpawnEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     // TODO(event): add spawn cause
 };

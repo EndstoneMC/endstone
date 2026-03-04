@@ -14,6 +14,9 @@
 
 #include "bedrock/scripting/event_handlers/script_block_gameplay_handler.h"
 
+#include <optional>
+
+#include "bedrock/core/math/vec3.h"
 #include "bedrock/world/actor/actor.h"
 #include "endstone/block/block_face.h"
 #include "endstone/core/block/block_face.h"
@@ -21,9 +24,14 @@
 #include "endstone/core/player.h"
 #include "endstone/event/actor/actor_explode_event.h"
 #include "endstone/event/block/block_break_event.h"
+#include "endstone/event/block/block_explode_event.h"
 #include "endstone/event/block/block_piston_event.h"
 #include "endstone/event/block/block_place_event.h"
 #include "endstone/runtime/vtable_hook.h"
+
+namespace endstone::runtime {
+const std::optional<Vec3> &getLastExplosionPos();
+}  // namespace endstone::runtime
 
 namespace {
 
@@ -86,7 +94,24 @@ bool handleEvent(ExplosionStartedEvent &event)
         }
     }
     else {
-        // TODO(event): BlockExplodeEvent
+        auto &block_source = event.dimension.getBlockSourceFromMainChunkSource();
+        const auto &pos = endstone::runtime::getLastExplosionPos();
+        if (!pos) {
+            server.getLogger().critical("BlockExplodeEvent: invalid explosion position");
+            return true;
+        }
+        endstone::BlockExplodeEvent e{endstone::core::EndstoneBlock::at(block_source, BlockPos(pos.value())),
+                                      std::move(block_list)};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
+        event.blocks.clear();
+        for (const auto &block : e.getBlockList()) {
+            if (block) {
+                event.blocks.emplace(block->getX(), block->getY(), block->getZ());
+            }
+        }
     }
     return true;
 }

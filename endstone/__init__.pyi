@@ -612,6 +612,13 @@ class Player(Mob, OfflinePlayer):
         Closes the forms that are currently open for the player.
         """
         ...
+    def send_map(self, map: MapView) -> None:
+        """
+        Render a map and send it to the player in its entirety.
+
+        This may be used when streaming the map in the normal manner is not desirable.
+        """
+        ...
     def send_packet(self, packet_id: int, payload: bytes) -> None:
         """
         Sends a packet to the player.
@@ -771,7 +778,7 @@ class Skin:
         """
         ...
 
-__minecraft_version__ = "26.1"
+__minecraft_version__ = "26.3"
 
 class Registry(typing.Generic[_T]):
     """

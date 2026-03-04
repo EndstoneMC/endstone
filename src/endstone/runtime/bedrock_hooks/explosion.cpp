@@ -12,24 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/level/explosion.h"
 
-#include "endstone/event/actor/actor_event.h"
+#include <optional>
 
-namespace endstone {
+#include "endstone/runtime/hook.h"
 
-/**
- * @brief Called when an Actor is removed.
- *
- * This event should only be used for monitoring. Modifying the actor during or after this event leads to undefined
- * behaviours. This event will not be called for Players.
- */
-class ActorRemoveEvent : public ActorEvent<Actor> {
-public:
-    ENDSTONE_EVENT(ActorRemoveEvent);
-    using ActorEvent::ActorEvent;
+namespace endstone::runtime {
+thread_local std::optional<Vec3> last_explosion_pos;
 
-    // TODO(event): add remove cause
-};
+const std::optional<Vec3> &getLastExplosionPos()
+{
+    return last_explosion_pos;
+}
+}  // namespace endstone::runtime
 
-}  // namespace endstone
+bool Explosion::explode(IRandom &random)
+{
+    endstone::runtime::last_explosion_pos = pos_;
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&Explosion::explode, this, random);
+    endstone::runtime::last_explosion_pos.reset();
+    return result;
+}

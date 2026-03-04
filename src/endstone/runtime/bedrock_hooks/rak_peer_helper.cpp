@@ -69,9 +69,17 @@ bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
     // without checking if the packet is large enough to contain one. Networking 101: validate before read.
     // Reported to Mojang, closed as "Won't Fix". Classic.
     // Fix: drop undersized packets before they reach the vulnerable code path.
-    if (static_cast<unsigned char>(recv->data[0]) == 0x86 &&
-        recv->bytes_read < sizeof(unsigned char) + sizeof(RakNet::SystemAddress)) {
-        return false;
+    if (static_cast<unsigned char>(recv->data[0]) == 0x86) {
+        int expected_size = sizeof(unsigned char) + sizeof(unsigned char);
+        if (recv->data[1] == 4) {  // ipv4
+            expected_size += sizeof(std::uint32_t) + sizeof(std::uint16_t);
+        }
+        else {  // ipv6
+            expected_size += sizeof(sockaddr_in6);
+        }
+        if (recv->bytes_read < expected_size) {
+            return false;
+        }
     }
     if (recv->data[0] == ID_UNCONNECTED_PING &&
         recv->bytes_read >= sizeof(unsigned char) + sizeof(RakNet::Time) + sizeof(OFFLINE_MESSAGE_DATA_ID)) {
