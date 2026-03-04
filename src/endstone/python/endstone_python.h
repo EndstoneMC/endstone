@@ -34,6 +34,10 @@ namespace detail {
 template <typename T>
 struct py_class;
 template <>
+struct py_class<Permissible> {
+    using type = py::classh<Permissible>;
+};
+template <>
 struct py_class<CommandSender> {
     using type = py::classh<CommandSender, Permissible>;
 };
@@ -47,7 +51,7 @@ struct py_class<Mob> {
 };
 template <>
 struct py_class<Player> {
-    using type = py::classh<Player, Mob, OfflinePlayer>;
+    using type = py::classh<Player, Mob>;
 };
 template <>
 struct py_class<Item> {

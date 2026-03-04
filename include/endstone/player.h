@@ -38,7 +38,7 @@ namespace endstone {
 /**
  * @brief Represents a player.
  */
-class Player : public Mob, public OfflinePlayer {
+class Player : public Mob {
 protected:
     using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
 
@@ -49,6 +49,13 @@ public:
      * @return Player name or null if we have not seen a name for this player yet
      */
     [[nodiscard]] std::string getName() const override = 0;
+
+    /**
+     * @brief Returns the UUID of this player
+     *
+     * @return Player UUID
+     */
+    [[nodiscard]] virtual UUID getUniqueId() const = 0;
 
     /**
      * @brief Checks if this player is a server operator

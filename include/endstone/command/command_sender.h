@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include <memory>
 #include <string>
 #include <utility>
 
@@ -35,7 +34,7 @@ class Player;
 /**
  * @brief Represents a command sender.
  */
-class CommandSender : public Permissible, public std::enable_shared_from_this<CommandSender> {
+class CommandSender : public Permissible {
 public:
     // Permissible
     [[nodiscard]] CommandSender *asCommandSender() const override { return const_cast<CommandSender *>(this); }

@@ -29,7 +29,7 @@ Permission createPermission(std::string name, const std::optional<std::string> &
 }
 }  // namespace
 
-void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::class_<Permission> &permission)
+void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::class_<Permission> &permission)
 {
     permission  //
         .def(py::init(&createPermission), py::arg("name"), py::arg("description") = py::none(),
