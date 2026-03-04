@@ -14,11 +14,9 @@
 
 #include "endstone_python.h"
 
-namespace py = pybind11;
-
 namespace endstone::python {
 
-void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::class_<Mob, Actor> &mob)
+void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
 {
     actor.def_property_readonly("type", &Actor::getType, "Gets the type of the actor.")
         .def_property_readonly("runtime_id", &Actor::getRuntimeId, "Returns the runtime id for this actor.")
@@ -64,7 +62,7 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
         .def_property("max_health", &Mob::getMaxHealth, &Mob::setMaxHealth,
                       "Gets or sets the maximum health this entity has.");
 
-    py::class_<Item, Actor>(m, "Item", "Represents a base actor in the level.")
+    py_class<Item>(m, "Item", "Represents a base actor in the level.")
         .def_property("item_stack", &Item::getItemStack, &Item::setItemStack,
                       "Gets or sets the item stack associated with this item drop.")
         .def_property("pickup_delay", &Item::getPickupDelay, &Item::setPickupDelay,

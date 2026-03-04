@@ -27,5 +27,50 @@
 #include "poly.h"
 #include "type_caster.h"
 
+namespace py = pybind11;
+
+namespace endstone::python {
+namespace detail {
+template <typename T>
+struct py_class;
+template <>
+struct py_class<CommandSender> {
+    using type = py::classh<CommandSender, Permissible>;
+};
+template <>
+struct py_class<Actor> {
+    using type = py::classh<Actor, CommandSender>;
+};
+template <>
+struct py_class<Mob> {
+    using type = py::classh<Mob, Actor>;
+};
+template <>
+struct py_class<Player> {
+    using type = py::classh<Player, Mob, OfflinePlayer>;
+};
+template <>
+struct py_class<Item> {
+    using type = py::classh<Item, Actor>;
+};
+template <>
+struct py_class<BlockCommandSender> {
+    using type = py::classh<BlockCommandSender, CommandSender>;
+};
+template <>
+struct py_class<ConsoleCommandSender> {
+    using type = py::classh<ConsoleCommandSender, CommandSender>;
+};
+template <>
+struct py_class<CommandSenderWrapper> {
+    using type = py::classh<CommandSenderWrapper, CommandSender>;
+};
+
+}  // namespace detail
+
+template <typename T>
+using py_class = typename detail::py_class<T>::type;
+}  // namespace endstone::python
+
 template <typename... Ts>
 struct type_list {};

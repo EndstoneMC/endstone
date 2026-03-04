@@ -21,16 +21,14 @@
 #include "registry.h"
 #include "type_caster.h"
 
-namespace py = pybind11;
-
 namespace endstone::python {
-void init_actor(py::module_ &, py::class_<Actor, CommandSender> &actor, py::class_<Mob, Actor> &mob);
+void init_actor(py::module_ &, py_class<Actor> &actor, py_class<Mob> &mob);
 void init_attribute(py::module_ &);
 void init_ban(py::module_ &);
 void init_block(py::module_ &, py::class_<Block> &block);
 void init_boss(py::module_ &);
 void init_color_format(py::module_ &);
-void init_command(py::module &, py::class_<CommandSender, Permissible> &command_sender);
+void init_command(py::module &, py_class<CommandSender> &command_sender);
 void init_damage(py::module_ &);
 void init_effect(py::module_ &);
 void init_enchantments(py::module_ &);
@@ -45,8 +43,7 @@ void init_logger(py::module_ &);
 void init_map(py::module_ &);
 void init_nbt(py::module_ &);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission);
-void init_player(py::module_ &, py::class_<OfflinePlayer> &offline_player,
-                 py::class_<Player, Mob, OfflinePlayer> &player);
+void init_player(py::module_ &, py::class_<OfflinePlayer> &offline_player, py_class<Player> &player);
 void init_plugin(py::module_ &);
 void init_potion(py::module_ &);
 void init_registry(py::module_ &);
@@ -134,16 +131,15 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
                                              "Represents a unique permission that may be attached to a Permissible");
     auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
     auto block = py::class_<Block>(m_block, "Block", "Represents a block.");
-    auto command_sender =
-        py::class_<CommandSender, Permissible>(m_command, "CommandSender", "Represents a command sender.");
-    auto actor = py::class_<Actor, CommandSender>(m_actor, "Actor", "Represents a base actor in the level.");
-    auto mob = py::class_<Mob, Actor>(m_actor, "Mob",
-                                      "Represents a mobile entity (i.e. living entity), such as a monster or player.");
+    auto command_sender = py_class<CommandSender>(m_command, "CommandSender", "Represents a command sender.");
+    auto actor = py_class<Actor>(m_actor, "Actor", "Represents a base actor in the level.");
+    auto mob = py_class<Mob>(m_actor, "Mob",
+                      "Represents a mobile entity (i.e. living entity), such as a monster or player.");
     auto offline_player = py::class_<OfflinePlayer>(
         m, "OfflinePlayer",
         "Represents a reference to a player identity and the data belonging to a player that is stored on the disk and "
         "can, thus, be retrieved without the player needing to be online.");
-    auto player = py::class_<Player, Mob, OfflinePlayer>(m, "Player", "Represents a player.");
+    auto player = py_class<Player>(m, "Player", "Represents a player.");
     auto item_stack = py::class_<ItemStack>(m_inventory, "ItemStack", "Represents a stack of items.");
     auto level = py::class_<Level>(m_level, "Level");
     auto dimension = py::class_<Dimension>(m_level, "Dimension", "Represents a dimension within a Level.");
@@ -377,8 +373,7 @@ void init_server(py::class_<Server> &server)
              py::arg("dimension"), py::return_value_policy::reference);
 }
 
-void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player,
-                 py::class_<Player, Mob, OfflinePlayer> &player)
+void init_player(py::module_ &m, py::class_<OfflinePlayer> &offline_player, py_class<Player> &player)
 {
     py::class_<Skin>(m, "Skin", "Represents a player skin.")
         .def(py::init<std::string, Image, std::optional<std::string>, std::optional<Image>>(), py::arg("id"),
