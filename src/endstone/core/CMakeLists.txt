@@ -65,7 +65,6 @@ add_library(endstone_core
         form/form_codec.cpp
         inventory/meta/item_meta.cpp
         inventory/meta/map_meta.cpp
-        inventory/inventory.cpp
         inventory/item_factory.cpp
         inventory/item_metas.cpp
         inventory/item_stack.cpp
