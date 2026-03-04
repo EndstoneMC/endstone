@@ -14,44 +14,37 @@
 
 #pragma once
 
-#include <vector>
+#include <optional>
 
 #include "endstone/inventory/meta/item_meta.h"
 
 namespace endstone {
 /**
- * @brief Represents the meta for a crossbow that can have charged projectiles.
+ * @brief Represents the meta for a crossbow that can have a charged projectile.
  */
 class CrossbowMeta : public ItemMeta {
 public:
     ENDSTONE_ITEM_META_TYPE(CrossBow)
 
     /**
-     * @brief Returns whether the item has any charged projectiles.
+     * @brief Returns whether the crossbow has a charged projectile.
      *
-     * @return whether charged projectiles are present
+     * @return whether a charged projectile is present
      */
-    [[nodiscard]] virtual bool hasChargedProjectiles() const = 0;
+    [[nodiscard]] virtual bool hasChargedProjectile() const = 0;
 
     /**
-     * @brief Returns an immutable list of the projectiles charged on this item.
+     * @brief Returns the charged projectile, or std::nullopt if none.
      *
-     * @return charged projectiles
+     * @return the charged projectile
      */
-    [[nodiscard]] virtual std::vector<ItemStack> getChargedProjectiles() const = 0;
+    [[nodiscard]] virtual std::optional<ItemStack> getChargedProjectile() const = 0;
 
     /**
-     * @brief Sets the projectiles charged on this item.
+     * @brief Sets the charged projectile. Pass std::nullopt to clear.
      *
-     * @param projectiles the projectiles to set
+     * @param projectile the projectile to set, or std::nullopt to clear
      */
-    virtual void setChargedProjectiles(std::vector<ItemStack> projectiles) = 0;
-
-    /**
-     * @brief Adds a charged projectile to this item.
-     *
-     * @param item projectile
-     */
-    virtual void addChargedProjectile(const ItemStack &item) = 0;
+    virtual void setChargedProjectile(std::optional<ItemStack> projectile) = 0;
 };
 }  // namespace endstone

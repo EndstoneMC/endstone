@@ -69,6 +69,9 @@ public:
         static std::unordered_map<std::string, ItemMetaDetails *> look_up = {
             {"minecraft:air", &Empty},
             {"minecraft:filled_map", &Map},
+            {"minecraft:writable_book", &WritableBook},
+            {"minecraft:written_book", &Book},
+            {"minecraft:crossbow", &Crossbow},
         };
         if (const auto it = look_up.find(type); it != look_up.end()) {
             return *it->second;
@@ -80,5 +83,8 @@ private:
     static ItemMetaDetails Empty;
     static ItemMetaDetails Item;
     static ItemMetaDetails Map;
+    static ItemMetaDetails WritableBook;
+    static ItemMetaDetails Book;
+    static ItemMetaDetails Crossbow;
 };
 }  // namespace endstone::core

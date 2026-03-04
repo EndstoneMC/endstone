@@ -4,6 +4,9 @@ __getattr__, __dir__, __all__ = lazy.attach(
     "endstone._python",
     submod_attrs={
         "inventory": [
+            "BookMeta",
+            "BookMetaGeneration",
+            "CrossbowMeta",
             "EquipmentSlot",
             "Inventory",
             "ItemFactory",
@@ -12,6 +15,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "ItemType",
             "MapMeta",
             "PlayerInventory",
+            "WritableBookMeta",
         ],
     },
 )

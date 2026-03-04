@@ -84,6 +84,51 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property("map_view", &MapMeta::getMapView, &MapMeta::setMapView, py::return_value_policy::reference,
                       "Gets or sets the map view that is associated with this map item.");
 
+    py::class_<WritableBookMeta, ItemMeta>(m, "WritableBookMeta", "Represents the metadata for a writable book.")
+        .def_property_readonly("has_pages", &WritableBookMeta::hasPages,
+                               "Checks for the existence of pages in the book.")
+        .def("get_page", &WritableBookMeta::getPage, py::arg("page"), "Gets the specified page in the book.")
+        .def("set_page", &WritableBookMeta::setPage, py::arg("page"), py::arg("data"),
+             "Sets the specified page in the book.")
+        .def_property(
+            "pages", &WritableBookMeta::getPages,
+            [](WritableBookMeta &self, std::vector<std::string> pages) { self.setPages(std::move(pages)); },
+            "Gets or sets all the pages in the book.")
+        .def(
+            "add_page",
+            [](WritableBookMeta &self, const py::Args<std::string> &pages) {
+                std::vector<std::string> vec;
+                vec.reserve(pages.size());
+                for (auto page : pages) {
+                    vec.push_back(page.cast<std::string>());
+                }
+                self.addPages(std::move(vec));
+            },
+            "Adds new pages to the end of the book.")
+        .def_property_readonly("page_count", &WritableBookMeta::getPageCount, "Gets the number of pages in the book.");
+
+    py::native_enum<BookMeta::Generation>(m, "BookMetaGeneration", "enum.Enum")
+        .value("ORIGINAL", BookMeta::Generation::Original)
+        .value("COPY_OF_ORIGINAL", BookMeta::Generation::CopyOfOriginal)
+        .value("COPY_OF_COPY", BookMeta::Generation::CopyOfCopy)
+        .finalize();
+
+    py::class_<BookMeta, WritableBookMeta>(m, "BookMeta", "Represents the metadata for a written book.")
+        .def_property_readonly("has_title", &BookMeta::hasTitle, "Checks for the existence of a title in the book.")
+        .def_property("title", &BookMeta::getTitle, &BookMeta::setTitle, "Gets or sets the title of the book.")
+        .def_property_readonly("has_author", &BookMeta::hasAuthor, "Checks for the existence of an author in the book.")
+        .def_property("author", &BookMeta::getAuthor, &BookMeta::setAuthor, "Gets or sets the author of the book.")
+        .def_property_readonly("has_generation", &BookMeta::hasGeneration,
+                               "Checks for the existence of generation level in the book.")
+        .def_property("generation", &BookMeta::getGeneration, &BookMeta::setGeneration,
+                      "Gets or sets the generation of the book.");
+
+    py::class_<CrossbowMeta, ItemMeta>(m, "CrossbowMeta", "Represents the metadata for a crossbow.")
+        .def_property_readonly("has_charged_projectile", &CrossbowMeta::hasChargedProjectile,
+                               "Returns whether the crossbow has a charged projectile.")
+        .def_property("charged_projectile", &CrossbowMeta::getChargedProjectile, &CrossbowMeta::setChargedProjectile,
+                      "Gets or sets the charged projectile.");
+
     py::class_<ItemFactory>(m, "ItemFactory")
         .def("get_item_meta", &ItemFactory::getItemMeta, py::arg("type"),
              "This creates a new item meta for the item type.")
@@ -122,7 +167,8 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
              "Checks if the two stacks are equal, but does not consider stack size (amount).")
         .def_property_readonly("item_meta", &ItemStack::getItemMeta, "Gets a copy of the ItemMeta of this ItemStack.")
         .def("set_item_meta", &ItemStack::setItemMeta, py::arg("meta"), "Set the ItemMeta of this ItemStack.")
-        .def_property("nbt", &ItemStack::getNbt, &ItemStack::setNbt, "Gets or sets the NBT compound tag of this item stack.")
+        .def_property("nbt", &ItemStack::getNbt, &ItemStack::setNbt,
+                      "Gets or sets the NBT compound tag of this item stack.")
         .def(py::self == py::self)
         .def(py::self != py::self)
         .def("__str__", [](const ItemStack &self) { return fmt::format("{}", self); });
