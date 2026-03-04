@@ -8,7 +8,7 @@
 
 
 
-_Represents the meta for a crossbow that can have charged projectiles._ 
+_Represents the meta for a crossbow that can have a charged projectile._ 
 
 * `#include <endstone/inventory/meta/crossbow_meta.h>`
 
@@ -80,10 +80,9 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**addChargedProjectile**](#function-addchargedprojectile) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Adds a charged projectile to this item._  |
-| virtual std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getChargedProjectiles**](#function-getchargedprojectiles) () const = 0<br>_Returns an immutable list of the projectiles charged on this item._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasChargedProjectiles**](#function-haschargedprojectiles) () const = 0<br>_Returns whether the item has any charged projectiles._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setChargedProjectiles**](#function-setchargedprojectiles) (std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; projectiles) = 0<br>_Sets the projectiles charged on this item._  |
+| virtual std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getChargedProjectile**](#function-getchargedprojectile) () const = 0<br>_Returns the charged projectile, or std::nullopt if none._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasChargedProjectile**](#function-haschargedprojectile) () const = 0<br>_Returns whether the crossbow has a charged projectile._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setChargedProjectile**](#function-setchargedprojectile) (std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; projectile) = 0<br>_Sets the charged projectile. Pass std::nullopt to clear._  |
 
 
 ## Public Functions inherited from endstone::ItemMeta
@@ -179,12 +178,62 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 
 
 
-### function addChargedProjectile 
+### function getChargedProjectile 
 
-_Adds a charged projectile to this item._ 
+_Returns the charged projectile, or std::nullopt if none._ 
 ```C++
-virtual void endstone::CrossbowMeta::addChargedProjectile (
-    const  ItemStack & item
+virtual std::optional< ItemStack > endstone::CrossbowMeta::getChargedProjectile () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the charged projectile 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function hasChargedProjectile 
+
+_Returns whether the crossbow has a charged projectile._ 
+```C++
+virtual bool endstone::CrossbowMeta::hasChargedProjectile () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+whether a charged projectile is present 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setChargedProjectile 
+
+_Sets the charged projectile. Pass std::nullopt to clear._ 
+```C++
+virtual void endstone::CrossbowMeta::setChargedProjectile (
+    std::optional< ItemStack > projectile
 ) = 0
 ```
 
@@ -195,84 +244,7 @@ virtual void endstone::CrossbowMeta::addChargedProjectile (
 **Parameters:**
 
 
-* `item` projectile 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getChargedProjectiles 
-
-_Returns an immutable list of the projectiles charged on this item._ 
-```C++
-virtual std::vector< ItemStack > endstone::CrossbowMeta::getChargedProjectiles () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-charged projectiles 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function hasChargedProjectiles 
-
-_Returns whether the item has any charged projectiles._ 
-```C++
-virtual bool endstone::CrossbowMeta::hasChargedProjectiles () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-whether charged projectiles are present 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function setChargedProjectiles 
-
-_Sets the projectiles charged on this item._ 
-```C++
-virtual void endstone::CrossbowMeta::setChargedProjectiles (
-    std::vector< ItemStack > projectiles
-) = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `projectiles` the projectiles to set 
+* `projectile` the projectile to set, or std::nullopt to clear 
 
 
 

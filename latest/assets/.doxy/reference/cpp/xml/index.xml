@@ -633,10 +633,9 @@
     <member refid="classendstone_1_1Criteria_1a62d2a81d1b34cb0c271bdf470b0064de" kind="function"><name>getDefaultRenderType</name></member>
   </compound>
   <compound refid="classendstone_1_1CrossbowMeta" kind="class"><name>endstone::CrossbowMeta</name>
-    <member refid="classendstone_1_1CrossbowMeta_1a459324fd5f1e597c8d86ab5f97bb2a81" kind="function"><name>hasChargedProjectiles</name></member>
-    <member refid="classendstone_1_1CrossbowMeta_1a38213a27173640679f1cceef0e727157" kind="function"><name>getChargedProjectiles</name></member>
-    <member refid="classendstone_1_1CrossbowMeta_1abf1ebaf64014c75db3c3d97005eabf4c" kind="function"><name>setChargedProjectiles</name></member>
-    <member refid="classendstone_1_1CrossbowMeta_1a6fdf10d11b9d51a4171436247750be58" kind="function"><name>addChargedProjectile</name></member>
+    <member refid="classendstone_1_1CrossbowMeta_1a25247a3a96495bcc9ef5580b287c954e" kind="function"><name>hasChargedProjectile</name></member>
+    <member refid="classendstone_1_1CrossbowMeta_1aff2f865a581e87ef8a8103ba3074175c" kind="function"><name>getChargedProjectile</name></member>
+    <member refid="classendstone_1_1CrossbowMeta_1a7e5fc67e1426488549f3a1adf42c746c" kind="function"><name>setChargedProjectile</name></member>
   </compound>
   <compound refid="classendstone_1_1DamageSource" kind="class"><name>endstone::DamageSource</name>
     <member refid="classendstone_1_1DamageSource_1ad7317c28b8853f400f518106f3f9d659" kind="function"><name>~DamageSource</name></member>
@@ -2522,7 +2521,7 @@
     <member refid="classendstone_1_1WritableBookMeta_1a8ac8922569392b56172011e714c38b37" kind="function"><name>setPages</name></member>
     <member refid="classendstone_1_1WritableBookMeta_1af78248585a392637bb362107854f5d87" kind="function"><name>setPages</name></member>
     <member refid="classendstone_1_1WritableBookMeta_1a40c40653c9f6d88d170e9aa5b9838df8" kind="function"><name>addPage</name></member>
-    <member refid="classendstone_1_1WritableBookMeta_1a8c6bbef3da6c8cf8005b7d6c1ca9ac15" kind="function"><name>addPage</name></member>
+    <member refid="classendstone_1_1WritableBookMeta_1a3c41804905f522ef1e9de5f616787da1" kind="function"><name>addPages</name></member>
     <member refid="classendstone_1_1WritableBookMeta_1a207196509c31e42333531d547b0f1af0" kind="function"><name>getPageCount</name></member>
   </compound>
   <compound refid="namespaceendstone" kind="namespace"><name>endstone</name>

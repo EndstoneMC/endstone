@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="crossbow__meta_8h" kind="file" language="C++">
     <compoundname>crossbow_meta.h</compoundname>
-    <includes local="no">vector</includes>
+    <includes local="no">optional</includes>
     <includes refid="item__meta_8h" local="yes">endstone/inventory/meta/item_meta.h</includes>
     <incdepgraph>
       <node id="45">
@@ -10,9 +10,9 @@
         <link refid="actor_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
@@ -30,9 +30,9 @@
         <link refid="ban__entry_8h_source"/>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -42,11 +42,11 @@
         <link refid="ban__list_8h_source"/>
         <childnode refid="20" relation="include">
         </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
@@ -56,7 +56,7 @@
       <node id="28">
         <label>endstone/ban/ip_ban_entry.h</label>
         <link refid="ip__ban__entry_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -68,11 +68,11 @@
         <link refid="ip__ban__list_8h_source"/>
         <childnode refid="20" relation="include">
         </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
@@ -82,9 +82,9 @@
       <node id="30">
         <label>endstone/ban/player_ban_entry.h</label>
         <link refid="player__ban__entry_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -98,11 +98,11 @@
         <link refid="player__ban__list_8h_source"/>
         <childnode refid="20" relation="include">
         </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
@@ -114,9 +114,9 @@
         <link refid="block__data_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
@@ -142,9 +142,9 @@
       <node id="38">
         <label>endstone/boss/boss_bar.h</label>
         <link refid="boss__bar_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
@@ -166,7 +166,7 @@
       <node id="46">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -204,15 +204,15 @@
         <link refid="action__form_8h_source"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="69" relation="include">
         </childnode>
@@ -230,9 +230,9 @@
         <link refid="button_8h_source"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -242,9 +242,9 @@
       <node id="70">
         <label>endstone/form/controls/divider.h</label>
         <link refid="divider_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -254,13 +254,13 @@
       <node id="76">
         <label>endstone/form/controls/dropdown.h</label>
         <link refid="dropdown_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
@@ -268,9 +268,9 @@
       <node id="71">
         <label>endstone/form/controls/header.h</label>
         <link refid="header_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -280,9 +280,9 @@
       <node id="72">
         <label>endstone/form/controls/label.h</label>
         <link refid="label_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -292,9 +292,9 @@
       <node id="77">
         <label>endstone/form/controls/slider.h</label>
         <link refid="slider_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -310,9 +310,9 @@
       <node id="79">
         <label>endstone/form/controls/text_input.h</label>
         <link refid="text__input_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -322,9 +322,9 @@
       <node id="80">
         <label>endstone/form/controls/toggle.h</label>
         <link refid="toggle_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -356,15 +356,15 @@
         <link refid="modal__form_8h_source"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="70" relation="include">
         </childnode>
@@ -394,7 +394,7 @@
         <link refid="identifier_8h_source"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -404,17 +404,17 @@
       <node id="83">
         <label>endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
@@ -432,6 +432,8 @@
         <link refid="item__meta_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
@@ -440,15 +442,13 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="82">
         <label>endstone/inventory/player_inventory.h</label>
         <link refid="player__inventory_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="83" relation="include">
         </childnode>
@@ -456,9 +456,9 @@
       <node id="42">
         <label>endstone/lang/language.h</label>
         <link refid="language_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
@@ -466,11 +466,11 @@
       <node id="43">
         <label>endstone/lang/translatable.h</label>
         <link refid="translatable_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="44">
@@ -480,9 +480,9 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
@@ -508,11 +508,11 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -524,7 +524,7 @@
         <link refid="map__canvas_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
@@ -538,7 +538,7 @@
         <link refid="map__cursor_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -558,7 +558,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="61" relation="include">
         </childnode>
@@ -566,7 +566,7 @@
       <node id="47">
         <label>endstone/message.h</label>
         <link refid="message_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -578,7 +578,7 @@
       <node id="84">
         <label>endstone/offline_player.h</label>
         <link refid="offline__player_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
@@ -588,7 +588,7 @@
         <link refid="permissible_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
@@ -602,7 +602,7 @@
       <node id="50">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -616,9 +616,9 @@
         <link refid="player_8h_source"/>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -660,7 +660,7 @@
         <link refid="service__manager_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -688,7 +688,7 @@
       <node id="86">
         <label>endstone/scoreboard/criteria.h</label>
         <link refid="criteria_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="87" relation="include">
         </childnode>
@@ -702,9 +702,9 @@
         <link refid="objective_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="90" relation="include">
         </childnode>
@@ -734,11 +734,11 @@
       <node id="92">
         <label>endstone/scoreboard/score_entry.h</label>
         <link refid="score__entry_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="85">
@@ -746,9 +746,9 @@
         <link refid="scoreboard_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="86" relation="include">
         </childnode>
@@ -772,13 +772,13 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
@@ -810,9 +810,9 @@
       <node id="93">
         <label>endstone/skin.h</label>
         <link refid="skin_8h_source"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -834,9 +834,9 @@
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
@@ -858,7 +858,7 @@
       <node id="52">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -870,7 +870,7 @@
         <link refid="socket__address_8h_source"/>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -888,7 +888,7 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="57">
@@ -949,22 +949,22 @@
       <node id="56">
         <label>numbers</label>
       </node>
-      <node id="5">
+      <node id="2">
         <label>optional</label>
       </node>
       <node id="11">
         <label>stdexcept</label>
       </node>
-      <node id="6">
+      <node id="5">
         <label>string</label>
       </node>
       <node id="16">
         <label>string_view</label>
       </node>
-      <node id="7">
+      <node id="6">
         <label>type_traits</label>
       </node>
-      <node id="8">
+      <node id="7">
         <label>unordered_map</label>
       </node>
       <node id="49">
@@ -976,7 +976,7 @@
       <node id="35">
         <label>variant</label>
       </node>
-      <node id="2">
+      <node id="8">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -1003,7 +1003,7 @@
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/inventory/meta/item_meta.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
@@ -1013,15 +1013,13 @@
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>ENDSTONE_ITEM_META_TYPE(CrossBow)</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="34" refid="classendstone_1_1CrossbowMeta_1a459324fd5f1e597c8d86ab5f97bb2a81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CrossbowMeta_1a459324fd5f1e597c8d86ab5f97bb2a81" kindref="member">hasChargedProjectiles</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="34" refid="classendstone_1_1CrossbowMeta_1a25247a3a96495bcc9ef5580b287c954e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CrossbowMeta_1a25247a3a96495bcc9ef5580b287c954e" kindref="member">hasChargedProjectile</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="classendstone_1_1CrossbowMeta_1a38213a27173640679f1cceef0e727157" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1CrossbowMeta_1a38213a27173640679f1cceef0e727157" kindref="member">getChargedProjectiles</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="41" refid="classendstone_1_1CrossbowMeta_1aff2f865a581e87ef8a8103ba3074175c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1CrossbowMeta_1aff2f865a581e87ef8a8103ba3074175c" kindref="member">getChargedProjectile</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48" refid="classendstone_1_1CrossbowMeta_1abf1ebaf64014c75db3c3d97005eabf4c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CrossbowMeta_1abf1ebaf64014c75db3c3d97005eabf4c" kindref="member">setChargedProjectiles</ref>(std::vector&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">projectiles</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55" refid="classendstone_1_1CrossbowMeta_1a6fdf10d11b9d51a4171436247750be58" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CrossbowMeta_1a6fdf10d11b9d51a4171436247750be58" kindref="member">addChargedProjectile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">item</ref>)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="57"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classendstone_1_1CrossbowMeta_1a7e5fc67e1426488549f3a1adf42c746c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CrossbowMeta_1a7e5fc67e1426488549f3a1adf42c746c" kindref="member">setChargedProjectile</ref>(std::optional&lt;ItemStack&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">projectile</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/inventory/meta/crossbow_meta.h"/>
   </compounddef>

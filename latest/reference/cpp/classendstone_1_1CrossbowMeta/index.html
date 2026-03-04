@@ -2601,9 +2601,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-addchargedprojectile" class="md-nav__link">
+    <a href="#function-getchargedprojectile" class="md-nav__link">
       <span class="md-ellipsis">
-        function addChargedProjectile
+        function getChargedProjectile
       </span>
     </a>
 
@@ -2614,9 +2614,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getchargedprojectiles" class="md-nav__link">
+    <a href="#function-haschargedprojectile" class="md-nav__link">
       <span class="md-ellipsis">
-        function getChargedProjectiles
+        function hasChargedProjectile
       </span>
     </a>
 
@@ -2627,22 +2627,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-haschargedprojectiles" class="md-nav__link">
+    <a href="#function-setchargedprojectile" class="md-nav__link">
       <span class="md-ellipsis">
-        function hasChargedProjectiles
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-setchargedprojectiles" class="md-nav__link">
-      <span class="md-ellipsis">
-        function setChargedProjectiles
+        function setChargedProjectile
       </span>
     </a>
 
@@ -2691,7 +2678,7 @@ For latest updates join the chat on
 
 <h1 id="class-endstonecrossbowmeta">Class endstone::CrossbowMeta<a class="headerlink" href="#class-endstonecrossbowmeta" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>CrossbowMeta</strong></a></p>
-<p><em>Represents the meta for a crossbow that can have charged projectiles.</em> </p>
+<p><em>Represents the meta for a crossbow that can have a charged projectile.</em> </p>
 <ul>
 <li><code>#include &lt;endstone/inventory/meta/crossbow_meta.h&gt;</code></li>
 </ul>
@@ -2722,20 +2709,16 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-addchargedprojectile"><strong>addChargedProjectile</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) = 0<br><em>Adds a charged projectile to this item.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-getchargedprojectiles"><strong>getChargedProjectiles</strong></a> () const = 0<br><em>Returns an immutable list of the projectiles charged on this item.</em></td>
+<td style="text-align: right;">virtual std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getchargedprojectile"><strong>getChargedProjectile</strong></a> () const = 0<br><em>Returns the charged projectile, or std::nullopt if none.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-haschargedprojectiles"><strong>hasChargedProjectiles</strong></a> () const = 0<br><em>Returns whether the item has any charged projectiles.</em></td>
+<td style="text-align: left;"><a href="#function-haschargedprojectile"><strong>hasChargedProjectile</strong></a> () const = 0<br><em>Returns whether the crossbow has a charged projectile.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setchargedprojectiles"><strong>setChargedProjectiles</strong></a> (std::vector&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; projectiles) = 0<br><em>Sets the projectiles charged on this item.</em></td>
+<td style="text-align: left;"><a href="#function-setchargedprojectile"><strong>setChargedProjectile</strong></a> (std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; projectile) = 0<br><em>Sets the charged projectile. Pass std::nullopt to clear.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2864,43 +2847,31 @@ For latest updates join the chat on
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-addchargedprojectile">function addChargedProjectile<a class="headerlink" href="#function-addchargedprojectile" title="Permanent link">&para;</a></h3>
-<p><em>Adds a charged projectile to this item.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CrossbowMeta</span><span class="o">::</span><span class="n">addChargedProjectile</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">item</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<h3 id="function-getchargedprojectile">function getChargedProjectile<a class="headerlink" href="#function-getchargedprojectile" title="Permanent link">&para;</a></h3>
+<p><em>Returns the charged projectile, or std::nullopt if none.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CrossbowMeta</span><span class="o">::</span><span class="n">getChargedProjectile</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the charged projectile </p>
+<hr>
+
+<h3 id="function-haschargedprojectile">function hasChargedProjectile<a class="headerlink" href="#function-haschargedprojectile" title="Permanent link">&para;</a></h3>
+<p><em>Returns whether the crossbow has a charged projectile.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CrossbowMeta</span><span class="o">::</span><span class="n">hasChargedProjectile</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>whether a charged projectile is present </p>
+<hr>
+
+<h3 id="function-setchargedprojectile">function setChargedProjectile<a class="headerlink" href="#function-setchargedprojectile" title="Permanent link">&para;</a></h3>
+<p><em>Sets the charged projectile. Pass std::nullopt to clear.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CrossbowMeta</span><span class="o">::</span><span class="n">setChargedProjectile</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">projectile</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>item</code> projectile </li>
-</ul>
-<hr>
-
-<h3 id="function-getchargedprojectiles">function getChargedProjectiles<a class="headerlink" href="#function-getchargedprojectiles" title="Permanent link">&para;</a></h3>
-<p><em>Returns an immutable list of the projectiles charged on this item.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CrossbowMeta</span><span class="o">::</span><span class="n">getChargedProjectiles</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>charged projectiles </p>
-<hr>
-
-<h3 id="function-haschargedprojectiles">function hasChargedProjectiles<a class="headerlink" href="#function-haschargedprojectiles" title="Permanent link">&para;</a></h3>
-<p><em>Returns whether the item has any charged projectiles.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CrossbowMeta</span><span class="o">::</span><span class="n">hasChargedProjectiles</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>whether charged projectiles are present </p>
-<hr>
-
-<h3 id="function-setchargedprojectiles">function setChargedProjectiles<a class="headerlink" href="#function-setchargedprojectiles" title="Permanent link">&para;</a></h3>
-<p><em>Sets the projectiles charged on this item.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CrossbowMeta</span><span class="o">::</span><span class="n">setChargedProjectiles</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">projectiles</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>projectiles</code> the projectiles to set </li>
+<li><code>projectile</code> the projectile to set, or std::nullopt to clear </li>
 </ul>
 <hr>
 

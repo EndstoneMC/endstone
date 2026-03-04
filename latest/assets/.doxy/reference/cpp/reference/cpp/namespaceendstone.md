@@ -86,7 +86,7 @@ _Represents a button with text and an optional icon._
 | class | [**CompoundTag**](classendstone_1_1CompoundTag.md) <br> |
 | class | [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) <br>_Represents a console command sender._  |
 | class | [**Criteria**](classendstone_1_1Criteria.md) <br>_Represents a scoreboard criteria._  |
-| class | [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) <br>_Represents the meta for a crossbow that can have charged projectiles._  |
+| class | [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) <br>_Represents the meta for a crossbow that can have a charged projectile._  |
 | class | [**DamageSource**](classendstone_1_1DamageSource.md) <br>_Represents a source of damage._  |
 | class | [**Dimension**](classendstone_1_1Dimension.md) <br>_Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._ |
 | class | [**DimensionEvent**](classendstone_1_1DimensionEvent.md) <br>_Represents events within a level._  |

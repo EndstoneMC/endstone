@@ -122,15 +122,15 @@ See [endstone::WritableBookMeta](classendstone_1_1WritableBookMeta.md)
 
 | Type | Name |
 | ---: | :--- |
-|  [**void**](classendstone_1_1Identifier.md) | [**addPage**](classendstone_1_1WritableBookMeta.md#function-addpage-12) ([**Args**](classendstone_1_1Identifier.md) &&... pages) <br>_Adds new pages to the end of the book._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**addPage**](classendstone_1_1WritableBookMeta.md#function-addpage-22) (std::vector&lt; std::string &gt; pages) = 0<br>_Adds new pages to the end of the book._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**addPage**](classendstone_1_1WritableBookMeta.md#function-addpage) ([**Args**](classendstone_1_1Identifier.md) &&... pages) <br>_Adds new pages to the end of the book._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**addPages**](classendstone_1_1WritableBookMeta.md#function-addpages) (std::vector&lt; std::string &gt; pages) = 0<br>_Adds new pages to the end of the book._  |
 | virtual std::string | [**getPage**](classendstone_1_1WritableBookMeta.md#function-getpage) ([**int**](classendstone_1_1Identifier.md) page) const = 0<br>_Gets the specified page in the book. The given page must exist._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getPageCount**](classendstone_1_1WritableBookMeta.md#function-getpagecount) () const = 0<br>_Gets the number of pages in the book._  |
 | virtual std::vector&lt; std::string &gt; | [**getPages**](classendstone_1_1WritableBookMeta.md#function-getpages) () const = 0<br>_Gets all the pages in the book._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPages**](classendstone_1_1WritableBookMeta.md#function-haspages) () const = 0<br>_Checks for the existence of pages in the book._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setPage**](classendstone_1_1WritableBookMeta.md#function-setpage) ([**int**](classendstone_1_1Identifier.md) page, std::string data) = 0<br>_Sets the specified page in the book. Pages of the book must be contiguous._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setPages**](classendstone_1_1WritableBookMeta.md#function-setpages-12) ([**Args**](classendstone_1_1Identifier.md) &&... pages) <br>_Clears the existing book pages, and sets the book to use the provided pages._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setPages**](classendstone_1_1WritableBookMeta.md#function-setpages-22) (std::vector&lt; std::string &gt; pages) = 0<br>_Maximum 50 pages with 798 characters per page._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setPages**](classendstone_1_1WritableBookMeta.md#function-setpages-22) (std::vector&lt; std::string &gt; pages) = 0<br>_Maximum 50 pages with 256 characters per page._  |
 
 
 ## Public Functions inherited from endstone::ItemMeta

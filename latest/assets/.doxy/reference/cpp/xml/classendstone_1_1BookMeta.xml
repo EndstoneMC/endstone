@@ -295,7 +295,7 @@
     <listofallmembers>
       <member refid="classendstone_1_1ItemMeta_1ac1ee49d00e1cdd56816e0e775bff4241" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>addEnchant</name></member>
       <member refid="classendstone_1_1WritableBookMeta_1a40c40653c9f6d88d170e9aa5b9838df8" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>addPage</name></member>
-      <member refid="classendstone_1_1WritableBookMeta_1a8c6bbef3da6c8cf8005b7d6c1ca9ac15" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>addPage</name></member>
+      <member refid="classendstone_1_1WritableBookMeta_1a3c41804905f522ef1e9de5f616787da1" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>addPages</name></member>
       <member refid="classendstone_1_1ItemMeta_1af179bd7b745731e3d0f1e66828e45149" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>as</name></member>
       <member refid="classendstone_1_1ItemMeta_1af5d8b132d9add8051466b9b19e3bfa61" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>as</name></member>
       <member refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>clone</name></member>

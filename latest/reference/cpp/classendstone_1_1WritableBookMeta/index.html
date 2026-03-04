@@ -2601,9 +2601,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-addpage-12" class="md-nav__link">
+    <a href="#function-addpage" class="md-nav__link">
       <span class="md-ellipsis">
-        function addPage [&frac12;]
+        function addPage
       </span>
     </a>
 
@@ -2614,9 +2614,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-addpage-22" class="md-nav__link">
+    <a href="#function-addpages" class="md-nav__link">
       <span class="md-ellipsis">
-        function addPage [2/2]
+        function addPages
       </span>
     </a>
 
@@ -2789,11 +2789,11 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-addpage-12"><strong>addPage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... pages) <br><em>Adds new pages to the end of the book.</em></td>
+<td style="text-align: left;"><a href="#function-addpage"><strong>addPage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... pages) <br><em>Adds new pages to the end of the book.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-addpage-22"><strong>addPage</strong></a> (std::vector&lt; std::string &gt; pages) = 0<br><em>Adds new pages to the end of the book.</em></td>
+<td style="text-align: left;"><a href="#function-addpages"><strong>addPages</strong></a> (std::vector&lt; std::string &gt; pages) = 0<br><em>Adds new pages to the end of the book.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
@@ -2821,7 +2821,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setpages-22"><strong>setPages</strong></a> (std::vector&lt; std::string &gt; pages) = 0<br><em>Maximum 50 pages with 798 characters per page.</em></td>
+<td style="text-align: left;"><a href="#function-setpages-22"><strong>setPages</strong></a> (std::vector&lt; std::string &gt; pages) = 0<br><em>Maximum 50 pages with 256 characters per page.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2950,7 +2950,7 @@ For latest updates join the chat on
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-addpage-12">function addPage [&frac12;]<a class="headerlink" href="#function-addpage-12" title="Permanent link">&para;</a></h3>
+<h3 id="function-addpage">function addPage<a class="headerlink" href="#function-addpage" title="Permanent link">&para;</a></h3>
 <p><em>Adds new pages to the end of the book.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">convertible_to</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">WritableBookMeta</span><span class="o">::</span><span class="n">addPage</span><span class="w"> </span><span class="p">(</span>
@@ -2958,21 +2958,21 @@ For latest updates join the chat on
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Note:</strong></p>
-<p>Up to a maximum of 50 pages with 798 characters per page.</p>
+<p>Up to a maximum of 50 pages with 256 characters per page.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>pages</code> A list of strings, each being a page </li>
 </ul>
 <hr>
 
-<h3 id="function-addpage-22">function addPage [2/2]<a class="headerlink" href="#function-addpage-22" title="Permanent link">&para;</a></h3>
+<h3 id="function-addpages">function addPages<a class="headerlink" href="#function-addpages" title="Permanent link">&para;</a></h3>
 <p><em>Adds new pages to the end of the book.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">WritableBookMeta</span><span class="o">::</span><span class="n">addPage</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">WritableBookMeta</span><span class="o">::</span><span class="n">addPages</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">pages</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Note:</strong></p>
-<p>Up to a maximum of 50 pages with 798 characters per page.</p>
+<p>Up to a maximum of 50 pages with 256 characters per page.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>pages</code> A list of strings, each being a page </li>
@@ -3044,7 +3044,7 @@ For latest updates join the chat on
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Note:</strong></p>
-<p>Maximum 50 pages with 798 characters per page.</p>
+<p>Maximum 50 pages with 256 characters per page.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>pages</code> A list of pages to set the book to use </li>
@@ -3052,7 +3052,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setpages-22">function setPages [2/2]<a class="headerlink" href="#function-setpages-22" title="Permanent link">&para;</a></h3>
-<p><em>Maximum 50 pages with 798 characters per page.</em> 
+<p><em>Maximum 50 pages with 256 characters per page.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">WritableBookMeta</span><span class="o">::</span><span class="n">setPages</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">pages</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
