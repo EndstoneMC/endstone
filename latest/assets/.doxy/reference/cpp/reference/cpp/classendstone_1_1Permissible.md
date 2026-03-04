@@ -14,6 +14,7 @@ _Represents an object that may become a server operator and can be assigned perm
 
 
 
+Inherits the following classes: std::enable_shared_from_this< Permissible >
 
 
 Inherited by the following classes: [endstone::CommandSender](classendstone_1_1CommandSender.md)

@@ -16,7 +16,6 @@ _Represents a reference to a player identity and the data belonging to a player 
 
 
 
-Inherited by the following classes: [endstone::Player](classendstone_1_1Player.md)
 
 
 
@@ -96,6 +95,13 @@ _Returns the name of this player._
 virtual std::string endstone::OfflinePlayer::getName () const = 0
 ```
 
+
+
+
+
+**Note:**
+
+Names are no longer unique past a single game session. For persistent storage it is recommended that you use [**getUniqueId()**](classendstone_1_1OfflinePlayer.md#function-getuniqueid) instead.
 
 
 

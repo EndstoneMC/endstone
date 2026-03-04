@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Permissible" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Permissible</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; Permissible &gt;</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</derivedcompoundref>
     <includes refid="permissible_8h" local="no">endstone/permissions/permissible.h</includes>
     <sectiondef kind="public-func">
@@ -347,59 +348,75 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3">
+      <node id="4">
         <label>endstone::Actor</label>
         <link refid="classendstone_1_1Actor"/>
-        <childnode refid="2" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>endstone::BlockCommandSender</label>
         <link refid="classendstone_1_1BlockCommandSender"/>
-        <childnode refid="2" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="2">
+      <node id="3">
         <label>endstone::CommandSender</label>
         <link refid="classendstone_1_1CommandSender"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="8">
+      <node id="9">
         <label>endstone::CommandSenderWrapper</label>
         <link refid="classendstone_1_1CommandSenderWrapper"/>
-        <childnode refid="2" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="9">
+      <node id="10">
         <label>endstone::ConsoleCommandSender</label>
         <link refid="classendstone_1_1ConsoleCommandSender"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>endstone::Item</label>
-        <link refid="classendstone_1_1Item"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
       <node id="5">
+        <label>endstone::Item</label>
+        <link refid="classendstone_1_1Item"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
         <label>endstone::Mob</label>
         <link refid="classendstone_1_1Mob"/>
-        <childnode refid="3" relation="public-inheritance">
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
       <node id="1">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
-      </node>
-      <node id="6">
-        <label>endstone::Player</label>
-        <link refid="classendstone_1_1Player"/>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="7">
+        <label>endstone::Player</label>
+        <link refid="classendstone_1_1Player"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
+      </node>
     </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
+      </node>
+    </collaborationgraph>
     <location file="include/endstone/permissions/permissible.h" line="35" column="1" bodyfile="include/endstone/permissions/permissible.h" bodystart="35" bodyend="125"/>
     <listofallmembers>
       <member refid="classendstone_1_1Permissible_1a08be02debf01b55544c4566931ed98fc" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>addAttachment</name></member>

@@ -45,12 +45,14 @@
 
 namespace endstone {
 
-class Player : public Mob, public OfflinePlayer {
+class Player : public Mob {
 protected:
     using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
 
 public:
     [[nodiscard]] std::string getName() const override = 0;
+
+    [[nodiscard]] virtual UUID getUniqueId() const = 0;
 
     [[nodiscard]] virtual bool isOp() const = 0;
 

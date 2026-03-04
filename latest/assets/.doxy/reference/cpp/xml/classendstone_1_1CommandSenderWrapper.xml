@@ -591,6 +591,11 @@
       <node id="3">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -609,6 +614,11 @@
       <node id="3">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/endstone/command/command_sender_wrapper.h" line="29" column="1" bodyfile="include/endstone/command/command_sender_wrapper.h" bodystart="29" bodyend="90"/>

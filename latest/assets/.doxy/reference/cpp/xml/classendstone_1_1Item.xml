@@ -225,6 +225,11 @@
       <node id="4">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -249,6 +254,11 @@
       <node id="4">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/endstone/actor/item.h" line="27" column="1" bodyfile="include/endstone/actor/item.h" bodystart="27" bodyend="88"/>

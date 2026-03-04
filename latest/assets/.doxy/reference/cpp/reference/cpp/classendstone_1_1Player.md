@@ -14,27 +14,7 @@ _Represents a player._
 
 
 
-Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [endstone::OfflinePlayer](classendstone_1_1OfflinePlayer.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 
 
 
@@ -171,6 +151,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _displayed to this player._ |
 | virtual [**Skin**](classendstone_1_1Skin.md) | [**getSkin**](#function-getskin) () const = 0<br>_Gets the player's skin._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getTotalExp**](#function-gettotalexp) () const = 0<br>_Gets the players total experience points._  |
+| virtual [**UUID**](classendstone_1_1UUID.md) | [**getUniqueId**](#function-getuniqueid) () const = 0<br>_Returns the_ [_**UUID**_](classendstone_1_1UUID.md) _of this player._ |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getWalkSpeed**](#function-getwalkspeed) () const = 0<br>_Gets the current allowed speed that a client can walk._  |
 | virtual std::string | [**getXuid**](#function-getxuid) () const = 0<br>_Returns the Xbox User ID (XUID) of this player._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**giveExp**](#function-giveexp) ([**int**](classendstone_1_1Identifier.md) amount) = 0<br>_Gives the player the amount of experience specified._  |
@@ -301,19 +282,6 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 | virtual  | [**~Permissible**](classendstone_1_1Permissible.md#function-permissible) () = default<br> |
 
 
-## Public Functions inherited from endstone::OfflinePlayer
-
-See [endstone::OfflinePlayer](classendstone_1_1OfflinePlayer.md)
-
-| Type | Name |
-| ---: | :--- |
-| virtual std::string | [**getName**](classendstone_1_1OfflinePlayer.md#function-getname) () const = 0<br>_Returns the name of this player._  |
-| virtual [**UUID**](classendstone_1_1UUID.md) | [**getUniqueId**](classendstone_1_1OfflinePlayer.md#function-getuniqueid) () const = 0<br>_Returns the_ [_**UUID**_](classendstone_1_1UUID.md) _of this player._ |
-| virtual  | [**~OfflinePlayer**](classendstone_1_1OfflinePlayer.md#function-offlineplayer) () = default<br> |
-
-
-
-
 
 
 
@@ -329,30 +297,6 @@ See [endstone::OfflinePlayer](classendstone_1_1OfflinePlayer.md)
 | Type | Name |
 | ---: | :--- |
 | typedef std::variant&lt; [**MessageForm**](classendstone_1_1MessageForm.md), [**ActionForm**](classendstone_1_1ActionForm.md), [**ModalForm**](classendstone_1_1ModalForm.md) &gt; | [**FormVariant**](#typedef-formvariant)  <br> |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -914,6 +858,31 @@ This refers to the total amount of experience the player has collected over time
 **Returns:**
 
 Current total experience points 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getUniqueId 
+
+_Returns the_ [_**UUID**_](classendstone_1_1UUID.md) _of this player._
+```C++
+virtual UUID endstone::Player::getUniqueId () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+[**Player**](classendstone_1_1Player.md) [**UUID**](classendstone_1_1UUID.md) 
 
 
 

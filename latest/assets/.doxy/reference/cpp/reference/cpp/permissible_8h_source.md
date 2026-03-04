@@ -39,7 +39,7 @@ class Plugin;
 class Permission;
 class PermissionAttachment;
 
-class Permissible {
+class Permissible : public std::enable_shared_from_this<Permissible> {
 public:
     virtual ~Permissible() = default;
 
