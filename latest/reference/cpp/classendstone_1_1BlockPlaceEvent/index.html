@@ -2651,9 +2651,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getblockplacedstate" class="md-nav__link">
+    <a href="#function-getblockplaced" class="md-nav__link">
       <span class="md-ellipsis">
-        function getBlockPlacedState
+        function getBlockPlaced
       </span>
     </a>
 
@@ -2664,9 +2664,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getblockreplaced" class="md-nav__link">
+    <a href="#function-getblockreplacedstate" class="md-nav__link">
       <span class="md-ellipsis">
-        function getBlockReplaced
+        function getBlockReplacedState
       </span>
     </a>
 
@@ -2757,7 +2757,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-blockplaceevent"><strong>BlockPlaceEvent</strong></a> (std::unique_ptr&lt; <a href="../classendstone_1_1BlockState/"><strong>BlockState</strong></a> &gt; placed_block, std::unique_ptr&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt; replaced_block, std::unique_ptr&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt; placed_against, <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player) <br></td>
+<td style="text-align: left;"><a href="#function-blockplaceevent"><strong>BlockPlaceEvent</strong></a> (std::unique_ptr&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt; placed_block, std::unique_ptr&lt; <a href="../classendstone_1_1BlockState/"><strong>BlockState</strong></a> &gt; replaced_state, std::unique_ptr&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt; placed_against, <a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -2768,12 +2768,12 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getblockagainst"><strong>getBlockAgainst</strong></a> () const<br><em>Gets the block that this block was placed against.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1BlockState/"><strong>BlockState</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getblockplacedstate"><strong>getBlockPlacedState</strong></a> () const<br><em>Gets the</em> <a href="../classendstone_1_1BlockState/"><em><strong>BlockState</strong></em></a> <em>for the block which was placed.</em></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Block/"><strong>Block</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-getblockplaced"><strong>getBlockPlaced</strong></a> () const<br><em>Gets the block placed.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1Block/"><strong>Block</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getblockreplaced"><strong>getBlockReplaced</strong></a> () const<br><em>Gets the block which was replaced.</em></td>
+<td style="text-align: right;"><a href="../classendstone_1_1BlockState/"><strong>BlockState</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-getblockreplacedstate"><strong>getBlockReplacedState</strong></a> () const<br><em>Gets the</em> <a href="../classendstone_1_1BlockState/"><em><strong>BlockState</strong></em></a> <em>for the block which was replaced.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp;</td>
@@ -2842,8 +2842,8 @@ For latest updates join the chat on
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-blockplaceevent">function BlockPlaceEvent<a class="headerlink" href="#function-blockplaceevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockPlaceEvent</span><span class="o">::</span><span class="n">BlockPlaceEvent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">BlockState</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">placed_block</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">replaced_block</span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">placed_block</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">BlockState</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">replaced_state</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">placed_against</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span><span class="w"> </span>
@@ -2865,20 +2865,20 @@ For latest updates join the chat on
 <p><a href="../classendstone_1_1Block/"><strong>Block</strong></a> the block that the new block was placed against </p>
 <hr>
 
-<h3 id="function-getblockplacedstate">function getBlockPlacedState<a class="headerlink" href="#function-getblockplacedstate" title="Permanent link">&para;</a></h3>
-<p><em>Gets the</em> <a href="../classendstone_1_1BlockState/"><em><strong>BlockState</strong></em></a> <em>for the block which was placed.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">BlockState</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockPlaceEvent</span><span class="o">::</span><span class="n">getBlockPlacedState</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<h3 id="function-getblockplaced">function getBlockPlaced<a class="headerlink" href="#function-getblockplaced" title="Permanent link">&para;</a></h3>
+<p><em>Gets the block placed.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockPlaceEvent</span><span class="o">::</span><span class="n">getBlockPlaced</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>The <a href="../classendstone_1_1BlockState/"><strong>BlockState</strong></a> for the block which was placed. </p>
+<p>The <a href="../classendstone_1_1Block/"><strong>Block</strong></a> that was placed. </p>
 <hr>
 
-<h3 id="function-getblockreplaced">function getBlockReplaced<a class="headerlink" href="#function-getblockreplaced" title="Permanent link">&para;</a></h3>
-<p><em>Gets the block which was replaced.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockPlaceEvent</span><span class="o">::</span><span class="n">getBlockReplaced</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<h3 id="function-getblockreplacedstate">function getBlockReplacedState<a class="headerlink" href="#function-getblockreplacedstate" title="Permanent link">&para;</a></h3>
+<p><em>Gets the</em> <a href="../classendstone_1_1BlockState/"><em><strong>BlockState</strong></em></a> <em>for the block which was replaced.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">BlockState</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockPlaceEvent</span><span class="o">::</span><span class="n">getBlockReplacedState</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>The <a href="../classendstone_1_1Block/"><strong>Block</strong></a> which was replaced. </p>
+<p>The <a href="../classendstone_1_1BlockState/"><strong>BlockState</strong></a> of the block that was replaced. </p>
 <hr>
 
 <h3 id="function-getplayer">function getPlayer<a class="headerlink" href="#function-getplayer" title="Permanent link">&para;</a></h3>

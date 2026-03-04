@@ -309,15 +309,15 @@
     <member refid="classendstone_1_1BlockPistonRetractEvent_1a4045e305bbfc65226b898f11a7ec8389" kind="function"><name>BlockPistonEvent</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockPlaceEvent" kind="class"><name>endstone::BlockPlaceEvent</name>
-    <member refid="classendstone_1_1BlockPlaceEvent_1a5ff8f8ed7c32f7d49f2cd81196fe0d93" kind="variable"><name>placed_block_</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a734430257551b89b05bb7c71d7a4ab0b" kind="variable"><name>replaced_state_</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1ab58f51c0b2c6e6faad8b5f990bcdd2fa" kind="variable"><name>placed_against_</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1a916d00309007668efdf242a1207e45e3" kind="variable"><name>player_</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1a846257ca82a9d7256f551ee36cfaae75" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1BlockPlaceEvent_1a73ef62fcb9caa9f9f873d9ddc6c46e9c" kind="function"><name>BlockPlaceEvent</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1ad5b26cf51663093d84d7430dd1bf05f5" kind="function"><name>BlockPlaceEvent</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1ab1bb2ece0d15adb5704b90587d971bed" kind="function"><name>~BlockPlaceEvent</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1aaa28353cb0631c1c63a84504abf7067e" kind="function"><name>getPlayer</name></member>
-    <member refid="classendstone_1_1BlockPlaceEvent_1aaa914dd3891c83edd97b8e3cdaf3b3c5" kind="function"><name>getBlockPlacedState</name></member>
-    <member refid="classendstone_1_1BlockPlaceEvent_1a5f25a2818f05265737b236b4568e2225" kind="function"><name>getBlockReplaced</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a6b8bc3f1e4367d32c1fcfc4e3825e07d" kind="function"><name>getBlockPlaced</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a1f1656bfe3b37ec3d8eaf09b13d145bc" kind="function"><name>getBlockReplacedState</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1a822e71386ca87244c89763e333cfe7b2" kind="function"><name>getBlockAgainst</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockState" kind="class"><name>endstone::BlockState</name>
