@@ -5,7 +5,7 @@
 
 ## b
 
-* **BlockList** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
+* **BlockList** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md), [**endstone::BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md))
 
 
 ## c

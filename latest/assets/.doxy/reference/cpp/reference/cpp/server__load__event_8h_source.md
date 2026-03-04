@@ -24,8 +24,6 @@
 
 #pragma once
 
-#include <string>
-
 #include "endstone/command/command_sender.h"
 #include "endstone/event/event.h"
 #include "endstone/event/server/server_event.h"
@@ -34,6 +32,8 @@ namespace endstone {
 
 class ServerLoadEvent : public ServerEvent {
 public:
+    ENDSTONE_EVENT(ServerLoadEvent);
+
     enum class LoadType {
         Startup,
         Reload
@@ -42,9 +42,6 @@ public:
     explicit ServerLoadEvent(LoadType type) : type_(type) {}
 
     [[nodiscard]] LoadType getType() const { return type_; }
-
-    inline static const std::string NAME = "ServerLoadEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
 private:
     LoadType type_;

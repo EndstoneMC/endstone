@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"PlayerEmoteEvent"`<br> |
 
 
 
@@ -98,9 +93,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md)) <br> |
 |   | [**PlayerEmoteEvent**](#function-playeremoteevent) ([**Player**](classendstone_1_1Player.md) & player, std::string emote\_id, [**bool**](classendstone_1_1Identifier.md) muted) <br> |
 |  std::string | [**getEmoteId**](#function-getemoteid) () const<br>_Gets the emote piece ID._  |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**isMuted**](#function-ismuted) () const<br>_Gets the muted state for the emote._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setMuted**](#function-setmuted) ([**bool**](classendstone_1_1Identifier.md) muted) <br>_Sets the muted state for the emote._  |
 |   | [**~PlayerEmoteEvent**](#function-playeremoteevent) () override<br> |
@@ -207,23 +202,23 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::PlayerEmoteEvent::NAME;
+endstone::PlayerEmoteEvent::ENDSTONE_EVENT (
+    PlayerEmoteEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -264,35 +259,6 @@ The emote piece ID
 
 
         
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PlayerEmoteEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 

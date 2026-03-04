@@ -10,7 +10,6 @@
 
 
 
-* `#include <string>`
 * `#include "endstone/event/event.h"`
 * `#include "endstone/event/server/server_event.h"`
 * `#include "endstone/plugin/plugin.h"`

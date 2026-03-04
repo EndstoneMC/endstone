@@ -11,7 +11,6 @@
 
 
 * `#include <memory>`
-* `#include <string>`
 * `#include <utility>`
 * `#include <vector>`
 * `#include "endstone/block/block.h"`

@@ -23,6 +23,7 @@
     <innerclass refid="classendstone_1_1BlockCookEvent" prot="public">endstone::BlockCookEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockData" prot="public">endstone::BlockData</innerclass>
     <innerclass refid="classendstone_1_1BlockEvent" prot="public">endstone::BlockEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockExplodeEvent" prot="public">endstone::BlockExplodeEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockFormEvent" prot="public">endstone::BlockFormEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockFromToEvent" prot="public">endstone::BlockFromToEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockGrowEvent" prot="public">endstone::BlockGrowEvent</innerclass>

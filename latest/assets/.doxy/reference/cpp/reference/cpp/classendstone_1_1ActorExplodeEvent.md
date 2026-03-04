@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"ActorExplodeEvent"`<br> |
 
 
 
@@ -99,9 +94,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ActorExplodeEvent**](#function-actorexplodeevent) ([**Actor**](classendstone_1_1Actor.md) & actor, [**Location**](classendstone_1_1Location.md) location, BlockList blocks) <br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md)) <br> |
 |  [**const**](classendstone_1_1Identifier.md) BlockList & | [**getBlockList**](#function-getblocklist-12) () const<br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
 |  BlockList & | [**getBlockList**](#function-getblocklist-22) () <br>_Returns the list of blocks that would have been removed or were removed from the explosion event._  |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & | [**getLocation**](#function-getlocation) () const<br>_Returns the location where the explosion happened._  |
 |   | [**~ActorExplodeEvent**](#function-actorexplodeevent) () override<br> |
 
@@ -207,21 +202,6 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
-
-
-
-
-### variable NAME 
-
-```C++
-const std::string endstone::ActorExplodeEvent::NAME;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
@@ -234,6 +214,21 @@ inline explicit endstone::ActorExplodeEvent::ActorExplodeEvent (
     Actor & actor,
     Location location,
     BlockList blocks
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function ENDSTONE\_EVENT 
+
+```C++
+endstone::ActorExplodeEvent::ENDSTONE_EVENT (
+    ActorExplodeEvent
 ) 
 ```
 
@@ -289,35 +284,6 @@ All blown-up blocks
 
 
         
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::ActorExplodeEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 

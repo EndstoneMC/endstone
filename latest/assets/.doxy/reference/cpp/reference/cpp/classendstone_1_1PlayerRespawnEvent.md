@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"PlayerRespawnEvent"`<br> |
 
 
 
@@ -98,8 +93,8 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md)) <br> |
 |   | [**PlayerRespawnEvent**](#function-playerrespawnevent) ([**Player**](classendstone_1_1Player.md) & player) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |   | [**~PlayerRespawnEvent**](#function-playerrespawnevent) () override<br> |
 
 
@@ -215,23 +210,23 @@ See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::PlayerRespawnEvent::NAME;
+endstone::PlayerRespawnEvent::ENDSTONE_EVENT (
+    PlayerRespawnEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -244,35 +239,6 @@ inline explicit endstone::PlayerRespawnEvent::PlayerRespawnEvent (
 ```
 
 
-
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PlayerRespawnEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
 
 <hr>

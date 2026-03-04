@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"PlayerGameModeChangeEvent"`<br> |
 
 
 
@@ -98,8 +93,8 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerGameModeChangeEvent**](classendstone_1_1PlayerGameModeChangeEvent.md)) <br> |
 |   | [**PlayerGameModeChangeEvent**](#function-playergamemodechangeevent) ([**Player**](classendstone_1_1Player.md) & player, [**GameMode**](namespaceendstone.md#enum-gamemode) new\_game\_mode) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**GameMode**](namespaceendstone.md#enum-gamemode) | [**getNewGameMode**](#function-getnewgamemode) () const<br>_Gets the GameMode the player is switched to._  |
 |   | [**~PlayerGameModeChangeEvent**](#function-playergamemodechangeevent) () override<br> |
 
@@ -205,23 +200,23 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::PlayerGameModeChangeEvent::NAME;
+endstone::PlayerGameModeChangeEvent::ENDSTONE_EVENT (
+    PlayerGameModeChangeEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -235,35 +230,6 @@ inline explicit endstone::PlayerGameModeChangeEvent::PlayerGameModeChangeEvent (
 ```
 
 
-
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PlayerGameModeChangeEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
 
 <hr>

@@ -289,7 +289,7 @@
       </memberdef>
       <memberdef kind="define" id="detail_8h_1a1a384214544c4bcb200df812e5ac2bc9" prot="public" static="no">
         <name>ENDSTONE_VERSION_PATCH</name>
-        <initializer>1</initializer>
+        <initializer>2</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -356,7 +356,7 @@
       </memberdef>
       <memberdef kind="define" id="detail_8h_1ab5ab678dbebc4266524cc369b4cf7634" prot="public" static="no">
         <name>MINECRAFT_VERSION_PATCH</name>
-        <initializer>1</initializer>
+        <initializer>3</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -415,7 +415,7 @@
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_MAJOR<sp/>0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_MINOR<sp/>11</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_PATCH<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_PATCH<sp/>2</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NETWORK_PROTOCOL_VERSION<sp/>924</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
@@ -429,7 +429,7 @@
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MINECRAFT_VERSION_MAJOR<sp/>1</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MINECRAFT_VERSION_MINOR<sp/>26</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MINECRAFT_VERSION_PATCH<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MINECRAFT_VERSION_PATCH<sp/>3</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MINECRAFT_VERSION</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MINECRAFT_VERSION<sp/>ENDSTONE_TOSTRING(MINECRAFT_VERSION_MINOR)<sp/>&quot;.&quot;<sp/>ENDSTONE_TOSTRING(MINECRAFT_VERSION_PATCH)</highlight><highlight class="normal"></highlight></codeline>

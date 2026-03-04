@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"BlockPlaceEvent"`<br> |
 
 
 
@@ -99,10 +94,10 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**BlockPlaceEvent**](#function-blockplaceevent) (std::unique\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; placed\_block, std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; replaced\_block, std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; placed\_against, [**Player**](classendstone_1_1Player.md) & player) <br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md)) <br> |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBlockAgainst**](#function-getblockagainst) () const<br>_Gets the block that this block was placed against._  |
 |  [**BlockState**](classendstone_1_1BlockState.md) & | [**getBlockPlacedState**](#function-getblockplacedstate) () const<br>_Gets the_ [_**BlockState**_](classendstone_1_1BlockState.md) _for the block which was placed._ |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBlockReplaced**](#function-getblockreplaced) () const<br>_Gets the block which was replaced._  |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](#function-getplayer) () const<br>_Gets the player who placed the block involved in this event._  |
 |   | [**~BlockPlaceEvent**](#function-blockplaceevent) () override<br> |
 
@@ -215,21 +210,6 @@ If a [**BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md) is cancelled, th
 
 
     
-## Public Static Attributes Documentation
-
-
-
-
-### variable NAME 
-
-```C++
-const std::string endstone::BlockPlaceEvent::NAME;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
@@ -243,6 +223,21 @@ inline explicit endstone::BlockPlaceEvent::BlockPlaceEvent (
     std::unique_ptr< Block > replaced_block,
     std::unique_ptr< Block > placed_against,
     Player & player
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function ENDSTONE\_EVENT 
+
+```C++
+endstone::BlockPlaceEvent::ENDSTONE_EVENT (
+    BlockPlaceEvent
 ) 
 ```
 
@@ -323,35 +318,6 @@ The [**Block**](classendstone_1_1Block.md) which was replaced.
 
 
         
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::BlockPlaceEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 

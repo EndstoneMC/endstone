@@ -4,23 +4,6 @@
     <compoundname>endstone::PacketReceiveEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; ServerEvent &gt;</basecompoundref>
     <includes refid="packet__receive__event_8h" local="no">endstone/event/server/packet_receive_event.h</includes>
-    <sectiondef kind="public-static-attrib">
-      <memberdef kind="variable" id="classendstone_1_1PacketReceiveEvent_1a218801638ce951b0f39ba49d6a99e159" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string</type>
-        <definition>const std::string endstone::PacketReceiveEvent::NAME</definition>
-        <argsstring></argsstring>
-        <name>NAME</name>
-        <qualifiedname>endstone::PacketReceiveEvent::NAME</qualifiedname>
-        <initializer>= &quot;PacketReceiveEvent&quot;</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="38" column="37" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="38" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PacketReceiveEvent_1ae3bb240e8bb1474e89ee472315d984a4" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *</type>
@@ -34,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="92" column="12" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="92" bodyend="-1"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="90" column="12" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PacketReceiveEvent_1a223394f5245bf96c91c8416a79f1cff1" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -48,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="93" column="9" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="93" bodyend="-1"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="91" column="9" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PacketReceiveEvent_1aa4f36ef472c3b84490b0a7f42677963d" prot="private" static="no" mutable="no">
         <type>std::string_view</type>
@@ -62,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="94" column="22" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="94" bodyend="-1"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="92" column="22" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PacketReceiveEvent_1adc2c03d18ae6e368c288bd205cd51594" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -76,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="95" column="17" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="95" bodyend="-1"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="93" column="17" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PacketReceiveEvent_1abc8cb2b1a79f17b8e04688ae13ebca3e" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref></type>
@@ -90,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="96" column="19" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="96" bodyend="-1"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="94" column="19" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PacketReceiveEvent_1aa8e2c5962e873716ac4a727d53335a8e" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -104,10 +87,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="97" column="9" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="97" bodyend="-1"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="95" column="9" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="95" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PacketReceiveEvent_1a96b8627ba0e54f09e49f049cc8ded747" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PacketReceiveEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PacketReceiveEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PacketReceiveEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PacketReceiveEvent" kindref="compound">PacketReceiveEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="31" column="5"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketReceiveEvent_1aadc6685d7ad9177fb9f9175f58088345" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PacketReceiveEvent::PacketReceiveEvent</definition>
@@ -140,26 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="31" column="5" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="31" bodyend="36"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PacketReceiveEvent_1ade14c9698e182f8c468ff220fdce7eb3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::string</type>
-        <definition>std::string endstone::PacketReceiveEvent::getEventName</definition>
-        <argsstring>() const override</argsstring>
-        <name>getEventName</name>
-        <qualifiedname>endstone::PacketReceiveEvent::getEventName</qualifiedname>
-        <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>Gets a user-friendly identifier for this event.</para>
-<para><simplesect kind="return"><para>name of this event </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="39" column="18" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="39" bodyend="39"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="32" column="5" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="32" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketReceiveEvent_1a55fbf8774d4f1a7d069e542c685fdd48" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -177,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="46" column="10" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="46" bodyend="46"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="44" column="10" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketReceiveEvent_1a518168db89685906e59159d8fde84006" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string_view</type>
@@ -195,7 +176,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="53" column="23" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="53" bodyend="53"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="51" column="23" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketReceiveEvent_1a38da3d7aa9ee5431efbf9ef500b1df56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -217,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="60" column="10" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="60" bodyend="64"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="58" column="10" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="58" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketReceiveEvent_1aad07dd636d8b60d143ea65a0d4ed47bc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *</type>
@@ -237,7 +218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="73" column="13" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="73" bodyend="73"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="71" column="13" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketReceiveEvent_1ab5fe2e62cbedfbe4312c442b1a774b10" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref></type>
@@ -255,7 +236,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="80" column="20" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="80" bodyend="80"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="78" column="20" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="78" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PacketReceiveEvent_1af975d7e890536043acb7213e7b2e0923" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -275,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/packet_receive_event.h" line="89" column="10" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="89" bodyend="89"/>
+        <location file="include/endstone/event/server/packet_receive_event.h" line="87" column="10" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="87" bodyend="87"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -343,22 +324,22 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/server/packet_receive_event.h" line="29" column="1" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="29" bodyend="98"/>
+    <location file="include/endstone/event/server/packet_receive_event.h" line="29" column="1" bodyfile="include/endstone/event/server/packet_receive_event.h" bodystart="29" bodyend="96"/>
     <listofallmembers>
       <member refid="classendstone_1_1PacketReceiveEvent_1abc8cb2b1a79f17b8e04688ae13ebca3e" prot="private" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>address_</name></member>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PacketReceiveEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1PacketReceiveEvent_1a96b8627ba0e54f09e49f049cc8ded747" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1ab5fe2e62cbedfbe4312c442b1a774b10" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>getAddress</name></member>
-      <member refid="classendstone_1_1PacketReceiveEvent_1ade14c9698e182f8c468ff220fdce7eb3" prot="public" virt="virtual"><scope>endstone::PacketReceiveEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PacketReceiveEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1a55fbf8774d4f1a7d069e542c685fdd48" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>getPacketId</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1a518168db89685906e59159d8fde84006" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>getPayload</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1aad07dd636d8b60d143ea65a0d4ed47bc" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1af975d7e890536043acb7213e7b2e0923" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>getSubClientId</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PacketReceiveEvent</scope><name>isCancelled</name></member>
-      <member refid="classendstone_1_1PacketReceiveEvent_1a218801638ce951b0f39ba49d6a99e159" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PacketReceiveEvent_1adc2c03d18ae6e368c288bd205cd51594" prot="private" virt="non-virtual"><scope>endstone::PacketReceiveEvent</scope><name>owned_payload_</name></member>

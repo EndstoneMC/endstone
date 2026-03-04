@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"PlayerCommandEvent"`<br> |
 
 
 
@@ -98,9 +93,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md)) <br> |
 |   | [**PlayerCommandEvent**](#function-playercommandevent) ([**Player**](classendstone_1_1Player.md) & player, std::string command) <br> |
 |  std::string | [**getCommand**](#function-getcommand) () const<br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**void**](classendstone_1_1Identifier.md) | [**setCommand**](#function-setcommand) (std::string command) <br> |
 |   | [**~PlayerCommandEvent**](#function-playercommandevent) () override<br> |
 
@@ -206,23 +201,23 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::PlayerCommandEvent::NAME;
+endstone::PlayerCommandEvent::ENDSTONE_EVENT (
+    PlayerCommandEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -264,35 +259,6 @@ Gets the command that the player is attempting to send.
 
 
         
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PlayerCommandEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 

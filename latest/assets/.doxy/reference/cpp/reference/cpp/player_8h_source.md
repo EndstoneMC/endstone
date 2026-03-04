@@ -36,6 +36,7 @@
 #include "endstone/form/modal_form.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
+#include "endstone/map/map_view.h"
 #include "endstone/offline_player.h"
 #include "endstone/scoreboard/scoreboard.h"
 #include "endstone/skin.h"
@@ -171,6 +172,8 @@ public:
     virtual void closeForm() = 0;
 
     virtual void sendPacket(int packet_id, std::string_view payload) const = 0;
+
+    virtual void sendMap(MapView &map) = 0;
 };
 
 }  // namespace endstone

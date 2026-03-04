@@ -52,6 +52,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**BlockEvent**](classendstone_1_1BlockEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**BlockFormEvent**](classendstone_1_1BlockFormEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**BlockFromToEvent**](classendstone_1_1BlockFromToEvent.md)

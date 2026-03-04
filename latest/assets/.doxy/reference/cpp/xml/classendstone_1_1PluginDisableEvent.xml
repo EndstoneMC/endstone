@@ -4,23 +4,6 @@
     <compoundname>endstone::PluginDisableEvent</compoundname>
     <basecompoundref refid="classendstone_1_1ServerEvent" prot="public" virt="non-virtual">endstone::ServerEvent</basecompoundref>
     <includes refid="plugin__disable__event_8h" local="no">endstone/event/server/plugin_disable_event.h</includes>
-    <sectiondef kind="public-static-attrib">
-      <memberdef kind="variable" id="classendstone_1_1PluginDisableEvent_1a995d4dc150131f31d6a0e3f70c684301" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string</type>
-        <definition>const std::string endstone::PluginDisableEvent::NAME</definition>
-        <argsstring></argsstring>
-        <name>NAME</name>
-        <qualifiedname>endstone::PluginDisableEvent::NAME</qualifiedname>
-        <initializer>= &quot;PluginDisableEvent&quot;</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/server/plugin_disable_event.h" line="39" column="37" bodyfile="include/endstone/event/server/plugin_disable_event.h" bodystart="39" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PluginDisableEvent_1a8ed2b8b47101e59de8bde89c9070c42e" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
@@ -34,10 +17,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/plugin_disable_event.h" line="43" column="12" bodyfile="include/endstone/event/server/plugin_disable_event.h" bodystart="43" bodyend="-1"/>
+        <location file="include/endstone/event/server/plugin_disable_event.h" line="39" column="12" bodyfile="include/endstone/event/server/plugin_disable_event.h" bodystart="39" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PluginDisableEvent_1a63c624683a936c776a1145fce8c2b400" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PluginDisableEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PluginDisableEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PluginDisableEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PluginDisableEvent" kindref="compound">PluginDisableEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/server/plugin_disable_event.h" line="28" column="5"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginDisableEvent_1acef2a95f3b8010556e99a6bef3ee215e" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PluginDisableEvent::PluginDisableEvent</definition>
@@ -54,7 +54,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/plugin_disable_event.h" line="30" column="14" bodyfile="include/endstone/event/server/plugin_disable_event.h" bodystart="30" bodyend="30"/>
+        <location file="include/endstone/event/server/plugin_disable_event.h" line="29" column="14" bodyfile="include/endstone/event/server/plugin_disable_event.h" bodystart="29" bodyend="29"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginDisableEvent_1aeb2503ac0c2c35f22461753a4bbb78b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
@@ -72,26 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/plugin_disable_event.h" line="37" column="13" bodyfile="include/endstone/event/server/plugin_disable_event.h" bodystart="37" bodyend="37"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginDisableEvent_1a9083d88e6a5e47ed6307cc5f8ee12d4c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::string</type>
-        <definition>std::string endstone::PluginDisableEvent::getEventName</definition>
-        <argsstring>() const override</argsstring>
-        <name>getEventName</name>
-        <qualifiedname>endstone::PluginDisableEvent::getEventName</qualifiedname>
-        <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>Gets a user-friendly identifier for this event.</para>
-<para><simplesect kind="return"><para>name of this event </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/server/plugin_disable_event.h" line="40" column="18" bodyfile="include/endstone/event/server/plugin_disable_event.h" bodystart="40" bodyend="40"/>
+        <location file="include/endstone/event/server/plugin_disable_event.h" line="36" column="13" bodyfile="include/endstone/event/server/plugin_disable_event.h" bodystart="36" bodyend="36"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -135,15 +116,15 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/server/plugin_disable_event.h" line="28" column="1" bodyfile="include/endstone/event/server/plugin_disable_event.h" bodystart="28" bodyend="44"/>
+    <location file="include/endstone/event/server/plugin_disable_event.h" line="26" column="1" bodyfile="include/endstone/event/server/plugin_disable_event.h" bodystart="26" bodyend="40"/>
     <listofallmembers>
+      <member refid="classendstone_1_1PluginDisableEvent_1a63c624683a936c776a1145fce8c2b400" prot="public" virt="non-virtual"><scope>endstone::PluginDisableEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PluginDisableEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PluginDisableEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ServerEvent_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PluginDisableEvent</scope><name>Event</name></member>
-      <member refid="classendstone_1_1PluginDisableEvent_1a9083d88e6a5e47ed6307cc5f8ee12d4c" prot="public" virt="virtual"><scope>endstone::PluginDisableEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PluginDisableEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PluginDisableEvent_1aeb2503ac0c2c35f22461753a4bbb78b7" prot="public" virt="non-virtual"><scope>endstone::PluginDisableEvent</scope><name>getPlugin</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PluginDisableEvent</scope><name>isAsynchronous</name></member>
-      <member refid="classendstone_1_1PluginDisableEvent_1a995d4dc150131f31d6a0e3f70c684301" prot="public" virt="non-virtual"><scope>endstone::PluginDisableEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PluginDisableEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PluginDisableEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PluginDisableEvent_1a8ed2b8b47101e59de8bde89c9070c42e" prot="private" virt="non-virtual"><scope>endstone::PluginDisableEvent</scope><name>plugin_</name></member>

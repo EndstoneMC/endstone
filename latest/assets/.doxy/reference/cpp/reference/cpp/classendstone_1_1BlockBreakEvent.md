@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"BlockBreakEvent"`<br> |
 
 
 
@@ -99,7 +94,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**BlockBreakEvent**](#function-blockbreakevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, [**Player**](classendstone_1_1Player.md) & player) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md)) <br> |
 |  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](#function-getplayer) () const<br>_Gets the_ [_**Player**_](classendstone_1_1Player.md) _that is breaking the block involved in this event._ |
 |   | [**~BlockBreakEvent**](#function-blockbreakevent) () override<br> |
 
@@ -212,21 +207,6 @@ If a [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) is cancelled, th
 
 
     
-## Public Static Attributes Documentation
-
-
-
-
-### variable NAME 
-
-```C++
-const std::string endstone::BlockBreakEvent::NAME;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
@@ -248,29 +228,15 @@ inline explicit endstone::BlockBreakEvent::BlockBreakEvent (
 
 
 
-### function getEventName 
+### function ENDSTONE\_EVENT 
 
 ```C++
-inline virtual std::string endstone::BlockBreakEvent::getEventName () override const
+endstone::BlockBreakEvent::ENDSTONE_EVENT (
+    BlockBreakEvent
+) 
 ```
 
 
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
 
 <hr>

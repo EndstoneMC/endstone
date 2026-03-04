@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"PlayerInteractActorEvent"`<br> |
 
 
 
@@ -98,9 +93,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md)) <br> |
 |   | [**PlayerInteractActorEvent**](#function-playerinteractactorevent) ([**Player**](classendstone_1_1Player.md) & player, [**Actor**](classendstone_1_1Actor.md) & actor) <br> |
 |  [**Actor**](classendstone_1_1Actor.md) & | [**getActor**](#function-getactor) () const<br>_Gets the actor that was right-clicked by the player._  |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |   | [**~PlayerInteractActorEvent**](#function-playerinteractactorevent) () override<br> |
 
 
@@ -205,23 +200,23 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::PlayerInteractActorEvent::NAME;
+endstone::PlayerInteractActorEvent::ENDSTONE_EVENT (
+    PlayerInteractActorEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -261,35 +256,6 @@ actor right-clicked by player
 
 
         
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PlayerInteractActorEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 

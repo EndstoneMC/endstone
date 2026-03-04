@@ -36,14 +36,14 @@ namespace endstone {
 
 class PlayerInteractEvent : public Cancellable<PlayerEvent> {
 public:
+    ENDSTONE_EVENT(PlayerInteractEvent);
+
     enum class Action {
         LeftClickBlock,
         RightClickBlock,
         LeftClickAir,
         RightClickAir,
     };
-
-    ENDSTONE_EVENT(PlayerInteractEvent);
 
     PlayerInteractEvent(Player &player, Action action, std::optional<ItemStack> item, Block *block_clicked,
                         BlockFace block_face, std::optional<Vector> clicked_position)

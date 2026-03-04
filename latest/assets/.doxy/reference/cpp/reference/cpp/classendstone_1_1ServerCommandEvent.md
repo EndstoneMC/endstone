@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"ServerCommandEvent"`<br> |
 
 
 
@@ -98,9 +93,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md)) <br> |
 |   | [**ServerCommandEvent**](#function-servercommandevent) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command) <br> |
 |  std::string | [**getCommand**](#function-getcommand) () const<br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**CommandSender**](classendstone_1_1CommandSender.md) & | [**getSender**](#function-getsender) () const<br> |
 |  [**void**](classendstone_1_1Identifier.md) | [**setCommand**](#function-setcommand) (std::string message) <br> |
 
@@ -216,23 +211,23 @@ You should not use this except for a few cases like logging commands, blocking c
 
 
     
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::ServerCommandEvent::NAME;
+endstone::ServerCommandEvent::ENDSTONE_EVENT (
+    ServerCommandEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -274,35 +269,6 @@ Gets the command that the server is attempting to execute from the console
 
 
         
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::ServerCommandEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 

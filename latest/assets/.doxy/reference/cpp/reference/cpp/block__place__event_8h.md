@@ -11,7 +11,6 @@
 
 
 * `#include <memory>`
-* `#include <string>`
 * `#include <utility>`
 * `#include "endstone/block/block_state.h"`
 * `#include "endstone/event/block/block_event.h"`

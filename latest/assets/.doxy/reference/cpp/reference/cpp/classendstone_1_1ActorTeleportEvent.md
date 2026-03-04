@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"ActorTeleportEvent"`<br> |
 
 
 
@@ -99,7 +94,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ActorTeleportEvent**](#function-actorteleportevent) ([**Actor**](classendstone_1_1Actor.md) & actor, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md)) <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & | [**getFrom**](#function-getfrom) () const<br>_Gets the location that this actor moved from._  |
 |  [**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & | [**getTo**](#function-getto) () const<br>_Gets the location that this actor moved to._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setFrom**](#function-setfrom) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & from) <br>_Sets the location that this actor moved from._  |
@@ -215,21 +210,6 @@ This may be as a result of natural causes (Enderman, Shulker), pathfinding (Wolf
 
 
     
-## Public Static Attributes Documentation
-
-
-
-
-### variable NAME 
-
-```C++
-const std::string endstone::ActorTeleportEvent::NAME;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
@@ -252,29 +232,15 @@ inline explicit endstone::ActorTeleportEvent::ActorTeleportEvent (
 
 
 
-### function getEventName 
+### function ENDSTONE\_EVENT 
 
 ```C++
-inline virtual std::string endstone::ActorTeleportEvent::getEventName () override const
+endstone::ActorTeleportEvent::ENDSTONE_EVENT (
+    ActorTeleportEvent
+) 
 ```
 
 
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
 
 <hr>

@@ -4,23 +4,6 @@
     <compoundname>endstone::PlayerGameModeChangeEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</basecompoundref>
     <includes refid="player__game__mode__change__event_8h" local="no">endstone/event/player/player_game_mode_change_event.h</includes>
-    <sectiondef kind="public-static-attrib">
-      <memberdef kind="variable" id="classendstone_1_1PlayerGameModeChangeEvent_1a6c0edd9e6eac2347d03c35509b4c6404" prot="public" static="yes" mutable="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string</type>
-        <definition>const std::string endstone::PlayerGameModeChangeEvent::NAME</definition>
-        <argsstring></argsstring>
-        <name>NAME</name>
-        <qualifiedname>endstone::PlayerGameModeChangeEvent::NAME</qualifiedname>
-        <initializer>= &quot;PlayerGameModeChangeEvent&quot;</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/player/player_game_mode_change_event.h" line="36" column="37" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="36" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerGameModeChangeEvent_1a04a813980762f492edc3db56907da5b5" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
@@ -34,10 +17,27 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_game_mode_change_event.h" line="47" column="14" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="47" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_game_mode_change_event.h" line="43" column="14" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="43" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerGameModeChangeEvent_1a6a40c884adc4e5b9f09c99aa8369e8a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerGameModeChangeEvent::ENDSTONE_EVENT</definition>
+        <argsstring>(PlayerGameModeChangeEvent)</argsstring>
+        <name>ENDSTONE_EVENT</name>
+        <qualifiedname>endstone::PlayerGameModeChangeEvent::ENDSTONE_EVENT</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerGameModeChangeEvent" kindref="compound">PlayerGameModeChangeEvent</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_game_mode_change_event.h" line="28" column="5"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerGameModeChangeEvent_1a5e4a9eaed65c0886aaf01610a8c5d4eb" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PlayerGameModeChangeEvent::PlayerGameModeChangeEvent</definition>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_game_mode_change_event.h" line="30" column="14" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="30" bodyend="33"/>
+        <location file="include/endstone/event/player/player_game_mode_change_event.h" line="29" column="14" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="29" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerGameModeChangeEvent_1aef8569884e4cbdbabb945eef9c4ec9eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -72,26 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_game_mode_change_event.h" line="34" column="5"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerGameModeChangeEvent_1a5a5181811c288a046aaf3b0648e96cab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::string</type>
-        <definition>std::string endstone::PlayerGameModeChangeEvent::getEventName</definition>
-        <argsstring>() const override</argsstring>
-        <name>getEventName</name>
-        <qualifiedname>endstone::PlayerGameModeChangeEvent::getEventName</qualifiedname>
-        <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>Gets a user-friendly identifier for this event.</para>
-<para><simplesect kind="return"><para>name of this event </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/event/player/player_game_mode_change_event.h" line="37" column="18" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="37" bodyend="37"/>
+        <location file="include/endstone/event/player/player_game_mode_change_event.h" line="33" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerGameModeChangeEvent_1a422c30eafa2b703fd105138e45da4540" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespaceendstone_1a3185831693a75ff4595095c0fe568c2a" kindref="member">GameMode</ref></type>
@@ -109,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_game_mode_change_event.h" line="44" column="15" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="44" bodyend="44"/>
+        <location file="include/endstone/event/player/player_game_mode_change_event.h" line="40" column="15" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="40" bodyend="40"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -177,18 +158,18 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_game_mode_change_event.h" line="28" column="1" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="28" bodyend="48"/>
+    <location file="include/endstone/event/player/player_game_mode_change_event.h" line="26" column="1" bodyfile="include/endstone/event/player/player_game_mode_change_event.h" bodystart="26" bodyend="44"/>
     <listofallmembers>
       <member refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327" prot="public" virt="virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>cancel</name></member>
+      <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a6a40c884adc4e5b9f09c99aa8369e8a4" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>Event</name></member>
-      <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a5a5181811c288a046aaf3b0648e96cab" prot="public" virt="virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a422c30eafa2b703fd105138e45da4540" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>getNewGameMode</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>isCancelled</name></member>
-      <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a6c0edd9e6eac2347d03c35509b4c6404" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1PlayerGameModeChangeEvent_1a04a813980762f492edc3db56907da5b5" prot="private" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>new_game_mode_</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerGameModeChangeEvent</scope><name>operator=</name></member>

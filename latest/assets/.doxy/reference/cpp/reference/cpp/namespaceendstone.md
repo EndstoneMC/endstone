@@ -57,6 +57,7 @@ _Represents a button with text and an optional icon._
 | class | [**BlockCookEvent**](classendstone_1_1BlockCookEvent.md) <br>_Called when an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _is successfully cooked in a block._ |
 | class | [**BlockData**](classendstone_1_1BlockData.md) <br>_Represents the data related to a live block._  |
 | class | [**BlockEvent**](classendstone_1_1BlockEvent.md) <br>_Represents an Block-related event._  |
+| class | [**BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md) <br>_Called when a block explodes (e.g. bed in the Nether, respawn anchor in the Overworld)._  |
 | class | [**BlockFormEvent**](classendstone_1_1BlockFormEvent.md) <br>_Called when a block is formed or spreads based on world conditions._  |
 | class | [**BlockFromToEvent**](classendstone_1_1BlockFromToEvent.md) <br>_Represents events with a source block and a destination block, currently only applies to liquid (lava and water) and teleporting dragon eggs._  |
 | class | [**BlockGrowEvent**](classendstone_1_1BlockGrowEvent.md) <br>_Called when a block grows naturally in the world._  |

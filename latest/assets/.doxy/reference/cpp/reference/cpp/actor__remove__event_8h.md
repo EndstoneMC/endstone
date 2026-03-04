@@ -10,7 +10,6 @@
 
 
 
-* `#include <string>`
 * `#include "endstone/event/actor/actor_event.h"`
 
 

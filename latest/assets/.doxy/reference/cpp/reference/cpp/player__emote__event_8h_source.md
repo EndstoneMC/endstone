@@ -34,14 +34,12 @@ namespace endstone {
 
 class PlayerEmoteEvent : public Cancellable<PlayerEvent> {
 public:
+    ENDSTONE_EVENT(PlayerEmoteEvent);
     explicit PlayerEmoteEvent(Player &player, std::string emote_id, bool muted)
         : Cancellable(player), emote_id_(std::move(emote_id)), muted_(muted)
     {
     }
     ~PlayerEmoteEvent() override = default;
-
-    inline static const std::string NAME = "PlayerEmoteEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     [[nodiscard]] std::string getEmoteId() const { return emote_id_; }
 

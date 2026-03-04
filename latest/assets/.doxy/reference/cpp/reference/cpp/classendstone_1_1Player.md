@@ -184,6 +184,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md),  [ends
 | virtual [**void**](classendstone_1_1Identifier.md) | [**playSound**](#function-playsound) ([**Location**](classendstone_1_1Location.md) location, std::string sound, [**float**](classendstone_1_1Identifier.md) volume, [**float**](classendstone_1_1Identifier.md) pitch) = 0<br>_Play a sound for a player at the location._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**resetTitle**](#function-resettitle) () const = 0<br>_Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendForm**](#function-sendform) (FormVariant form) = 0<br>_Sends a form to the player._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**sendMap**](#function-sendmap) ([**MapView**](classendstone_1_1MapView.md) & map) = 0<br>_Render a map and send it to the player in its entirety._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendPacket**](#function-sendpacket) ([**int**](classendstone_1_1Identifier.md) packet\_id, std::string\_view payload) const = 0<br>_Sends a packet to the player._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendPopup**](#function-sendpopup) (std::string message) const = 0<br>_Sends this player a popup message._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**sendTip**](#function-sendtip) (std::string message) const = 0<br>_Sends this player a tip message._  |
@@ -1253,6 +1254,36 @@ virtual void endstone::Player::sendForm (
 
 
 * `form` The form to send 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function sendMap 
+
+_Render a map and send it to the player in its entirety._ 
+```C++
+virtual void endstone::Player::sendMap (
+    MapView & map
+) = 0
+```
+
+
+
+This may be used when streaming the map in the normal manner is not desirable.
+
+
+
+
+**Parameters:**
+
+
+* `map` The map to send 
 
 
 

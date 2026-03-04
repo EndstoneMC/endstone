@@ -71,6 +71,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**block\_break\_event.h**](block__break__event_8h.md)     
                 * **file** [**block\_cook\_event.h**](block__cook__event_8h.md)     
                 * **file** [**block\_event.h**](block__event_8h.md)     
+                * **file** [**block\_explode\_event.h**](block__explode__event_8h.md)     
                 * **file** [**block\_form\_event.h**](block__form__event_8h.md)     
                 * **file** [**block\_from\_to\_event.h**](block__from__to__event_8h.md)     
                 * **file** [**block\_grow\_event.h**](block__grow__event_8h.md)     

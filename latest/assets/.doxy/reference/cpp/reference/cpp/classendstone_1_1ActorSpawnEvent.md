@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"ActorSpawnEvent"`<br> |
 
 
 
@@ -99,7 +94,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ActorSpawnEvent**](#function-actorspawnevent) ([**Actor**](classendstone_1_1Actor.md) & actor) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md)) <br> |
 |   | [**~ActorSpawnEvent**](#function-actorspawnevent) () override<br> |
 
 
@@ -211,21 +206,6 @@ If an [**Actor**](classendstone_1_1Actor.md) Spawn event is cancelled, the actor
 
 
     
-## Public Static Attributes Documentation
-
-
-
-
-### variable NAME 
-
-```C++
-const std::string endstone::ActorSpawnEvent::NAME;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
@@ -246,29 +226,15 @@ inline explicit endstone::ActorSpawnEvent::ActorSpawnEvent (
 
 
 
-### function getEventName 
+### function ENDSTONE\_EVENT 
 
 ```C++
-inline virtual std::string endstone::ActorSpawnEvent::getEventName () override const
+endstone::ActorSpawnEvent::ENDSTONE_EVENT (
+    ActorSpawnEvent
+) 
 ```
 
 
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
 
 <hr>

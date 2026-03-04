@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::ServerEvent](classendstone_1_1ServerE
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"PluginDisableEvent"`<br> |
 
 
 
@@ -98,8 +93,8 @@ Inherits the following classes: [endstone::ServerEvent](classendstone_1_1ServerE
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md)) <br> |
 |   | [**PluginDisableEvent**](#function-plugindisableevent) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br> |
 
 
@@ -208,23 +203,23 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::PluginDisableEvent::NAME;
+endstone::PluginDisableEvent::ENDSTONE_EVENT (
+    PluginDisableEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -237,35 +232,6 @@ inline explicit endstone::PluginDisableEvent::PluginDisableEvent (
 ```
 
 
-
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PluginDisableEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
 
 <hr>

@@ -34,14 +34,12 @@ namespace endstone {
 
 class PlayerLoginEvent : public Cancellable<PlayerEvent> {
 public:
+    ENDSTONE_EVENT(PlayerLoginEvent);
     explicit PlayerLoginEvent(Player &player, std::string message = "")
         : Cancellable(player), message_(std::move(message))
     {
     }
     ~PlayerLoginEvent() override = default;
-
-    inline static const std::string NAME = "PlayerLoginEvent";
-    [[nodiscard]] std::string getEventName() const override { return NAME; }
 
     [[nodiscard]] const std::string &getKickMessage() const { return message_; }
 

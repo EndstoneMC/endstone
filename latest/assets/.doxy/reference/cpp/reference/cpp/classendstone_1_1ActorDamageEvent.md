@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"ActorDamageEvent"`<br> |
 
 
 
@@ -99,9 +94,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ActorDamageEvent**](#function-actordamageevent) ([**Mob**](classendstone_1_1Mob.md) & actor, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source, [**const**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) damage) <br> |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md)) <br> |
 |  [**float**](classendstone_1_1Identifier.md) | [**getDamage**](#function-getdamage) () const<br>_Gets the raw amount of damage caused by the event._  |
 |  [**DamageSource**](classendstone_1_1DamageSource.md) & | [**getDamageSource**](#function-getdamagesource) () const<br>_Get the source of damage._  |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**void**](classendstone_1_1Identifier.md) | [**setDamage**](#function-setdamage) ([**const**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) damage) <br>_Sets the raw amount of damage caused by the event._  |
 
 
@@ -206,21 +201,6 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
-
-
-
-
-### variable NAME 
-
-```C++
-const std::string endstone::ActorDamageEvent::NAME;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
@@ -233,6 +213,21 @@ inline endstone::ActorDamageEvent::ActorDamageEvent (
     Mob & actor,
     std::unique_ptr< DamageSource > damage_source,
     const  float damage
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function ENDSTONE\_EVENT 
+
+```C++
+endstone::ActorDamageEvent::ENDSTONE_EVENT (
+    ActorDamageEvent
 ) 
 ```
 
@@ -288,35 +283,6 @@ a [**DamageSource**](classendstone_1_1DamageSource.md) detailing the source of t
 
 
         
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::ActorDamageEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 

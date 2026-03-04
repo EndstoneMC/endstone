@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"PacketReceiveEvent"`<br> |
 
 
 
@@ -98,9 +93,9 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md)) <br> |
 |   | [**PacketReceiveEvent**](#function-packetreceiveevent) ([**Player**](classendstone_1_1Player.md) \* player, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) packet\_id, std::string\_view payload, [**SocketAddress**](classendstone_1_1SocketAddress.md) address, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) sub\_client\_id) <br> |
 |  [**SocketAddress**](classendstone_1_1SocketAddress.md) | [**getAddress**](#function-getaddress) () const<br>_Gets the network address to which this packet is being sent._  |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**int**](classendstone_1_1Identifier.md) | [**getPacketId**](#function-getpacketid) () const<br>_Gets the ID of the packet._  |
 |  std::string\_view | [**getPayload**](#function-getpayload) () const<br>_Gets the raw packet data_ **excluding** _the header._ |
 |  [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer) () const<br>_Returns the player involved in this event._  |
@@ -209,23 +204,23 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::PacketReceiveEvent::NAME;
+endstone::PacketReceiveEvent::ENDSTONE_EVENT (
+    PacketReceiveEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -268,35 +263,6 @@ The [**SocketAddress**](classendstone_1_1SocketAddress.md) of the destination cl
 
 
         
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::PacketReceiveEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
-
 
 <hr>
 

@@ -52,11 +52,6 @@ Inherits the following classes: [endstone::ServerEvent](classendstone_1_1ServerE
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"ServerLoadEvent"`<br> |
 
 
 
@@ -103,8 +98,8 @@ Inherits the following classes: [endstone::ServerEvent](classendstone_1_1ServerE
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md)) <br> |
 |   | [**ServerLoadEvent**](#function-serverloadevent) (LoadType type) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  LoadType | [**getType**](#function-gettype) () const<br> |
 
 
@@ -231,23 +226,23 @@ enum endstone::ServerLoadEvent::LoadType {
 
 
 <hr>
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::ServerLoadEvent::NAME;
+endstone::ServerLoadEvent::ENDSTONE_EVENT (
+    ServerLoadEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -260,35 +255,6 @@ inline explicit endstone::ServerLoadEvent::ServerLoadEvent (
 ```
 
 
-
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::ServerLoadEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
 
 <hr>

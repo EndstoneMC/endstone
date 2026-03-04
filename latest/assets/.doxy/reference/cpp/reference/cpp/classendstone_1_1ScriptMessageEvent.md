@@ -47,11 +47,6 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 
 
-## Public Static Attributes
-
-| Type | Name |
-| ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**NAME**](#variable-name)   = `"ScriptMessageEvent"`<br> |
 
 
 
@@ -98,8 +93,8 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 
 | Type | Name |
 | ---: | :--- |
+|   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md)) <br> |
 |   | [**ScriptMessageEvent**](#function-scriptmessageevent) (std::string message\_id, std::string message, [**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & sender) <br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**const**](classendstone_1_1Identifier.md) std::string & | [**getMessage**](#function-getmessage) () const<br> |
 |  [**const**](classendstone_1_1Identifier.md) std::string & | [**getMessageId**](#function-getmessageid) () const<br> |
 |  [**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & | [**getSender**](#function-getsender) () const<br> |
@@ -206,23 +201,23 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 
 
-## Public Static Attributes Documentation
+## Public Functions Documentation
 
 
 
 
-### variable NAME 
+### function ENDSTONE\_EVENT 
 
 ```C++
-const std::string endstone::ScriptMessageEvent::NAME;
+endstone::ScriptMessageEvent::ENDSTONE_EVENT (
+    ScriptMessageEvent
+) 
 ```
 
 
 
 
 <hr>
-## Public Functions Documentation
-
 
 
 
@@ -237,35 +232,6 @@ inline endstone::ScriptMessageEvent::ScriptMessageEvent (
 ```
 
 
-
-
-<hr>
-
-
-
-### function getEventName 
-
-```C++
-inline virtual std::string endstone::ScriptMessageEvent::getEventName () override const
-```
-
-
-
-Gets a user-friendly identifier for this event.
-
-
-
-
-**Returns:**
-
-name of this event 
-
-
-
-
-
-        
-Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
 
 <hr>

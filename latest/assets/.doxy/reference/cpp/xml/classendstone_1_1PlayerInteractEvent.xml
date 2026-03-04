@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="32" column="5" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="32" bodyend="49"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="34" column="5" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="34" bodyend="51"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="51" column="5"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="32" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1adacc1eea506e1636a9eb25ec5d22d709" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
