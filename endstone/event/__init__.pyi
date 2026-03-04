@@ -423,15 +423,15 @@ class BlockPlaceEvent(BlockEvent, Cancellable):
         """
         ...
     @property
-    def block_placed_state(self) -> BlockState:
+    def block_placed(self) -> Block:
         """
-        Gets the BlockState for the block which was placed.
+        Gets the block placed.
         """
         ...
     @property
-    def block_replaced(self) -> Block:
+    def block_replaced_state(self) -> BlockState:
         """
-        Gets the block which was replaced.
+        Gets the BlockState for the block which was replaced.
         """
         ...
     @property
