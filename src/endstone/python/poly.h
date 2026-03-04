@@ -102,6 +102,15 @@ struct polymorphic_type_hook<endstone::ItemMeta> {
         case endstone::ItemMeta::Type::Map:
             type = &typeid(endstone::MapMeta);
             return static_cast<const endstone::MapMeta *>(src);
+        case endstone::ItemMeta::Type::WritableBook:
+            type = &typeid(endstone::WritableBookMeta);
+            return static_cast<const endstone::WritableBookMeta *>(src);
+        case endstone::ItemMeta::Type::Book:
+            type = &typeid(endstone::BookMeta);
+            return static_cast<const endstone::BookMeta *>(src);
+        case endstone::ItemMeta::Type::CrossBow:
+            type = &typeid(endstone::CrossbowMeta);
+            return static_cast<const endstone::CrossbowMeta *>(src);
         case endstone::ItemMeta::Type::Item:
         default:
             break;
