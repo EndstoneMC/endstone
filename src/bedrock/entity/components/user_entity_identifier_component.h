@@ -46,7 +46,7 @@ public:
         return client_uuid_;
     }
     [[nodiscard]] std::string getIdentityName() const;
-    [[nodiscard]] std::string getXuid(bool trust_self_signed) const
+    [[nodiscard]] std::string getXuid() const
     {
         return trusted_player_info_.xuid;
     }

@@ -23,6 +23,7 @@
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
 #include "endstone/core/util/socket_address.h"
+#include "endstone/core/util/uuid.h"
 #include "endstone/event/player/player_kick_event.h"
 #include "endstone/event/player/player_login_event.h"
 #include "endstone/runtime/hook.h"

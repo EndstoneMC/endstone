@@ -66,9 +66,6 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
       inventory_(std::make_unique<EndstonePlayerInventory>(player)),
       ender_chest_(std::make_unique<EndstoneInventory>(*player.getEnderChestContainer()))
 {
-    const auto component = player.getPersistentComponent<UserEntityIdentifierComponent>();
-    uuid_ = EndstoneUUID::fromMinecraft(component->getClientUUID());
-    xuid_ = component->getXuid(false);
     last_op_status_ = EndstonePlayer::isOp();
 }
 
@@ -186,7 +183,8 @@ bool EndstonePlayer::teleport(const Location &location)
 
 UUID EndstonePlayer::getUniqueId() const
 {
-    return uuid_;
+    const auto *component = getHandle().tryGetComponent<UserEntityIdentifierComponent>();
+    return EndstoneUUID::fromMinecraft(component->getClientUUID());
 }
 
 bool EndstonePlayer::isOp() const
@@ -207,7 +205,8 @@ void EndstonePlayer::setOp(bool value)
 
 std::string EndstonePlayer::getXuid() const
 {
-    return xuid_;
+    const auto *component = getHandle().tryGetComponent<UserEntityIdentifierComponent>();
+    return component->getXuid();
 }
 
 SocketAddress EndstonePlayer::getAddress() const
