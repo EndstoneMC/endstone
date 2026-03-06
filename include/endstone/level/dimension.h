@@ -14,11 +14,13 @@
 
 #pragma once
 
+#include <cstdint>
 #include <memory>
 #include <string>
 #include <vector>
 
 #include "endstone/block/block.h"
+#include "endstone/debug/shape.h"
 #include "endstone/inventory/item_stack.h"
 #include "endstone/level/chunk.h"
 #include "endstone/util/result.h"
@@ -139,6 +141,38 @@ public:
      * @return A List of all actors currently residing in this dimension
      */
     [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
+
+    /**
+     * @brief Adds a debug shape to this dimension, visible to all players in this dimension.
+     *
+     * @param location the location to place the shape
+     * @param shape the shape to add
+     * @return the unique id assigned to the shape
+     */
+    virtual std::uint64_t addDebugShape(Location location, DebugShapeVariant shape) = 0;
+
+    /**
+     * @brief Adds a debug shape with a duration to this dimension, visible to all players in this dimension.
+     * The shape is automatically removed after the specified duration.
+     *
+     * @param location the location to place the shape
+     * @param shape the shape to add
+     * @param duration the duration in seconds before auto-removal
+     * @return the unique id assigned to the shape
+     */
+    virtual std::uint64_t addDebugShape(Location location, DebugShapeVariant shape, float duration) = 0;
+
+    /**
+     * @brief Removes a specific debug shape from this dimension by its id.
+     *
+     * @param id the id returned by addDebugShape()
+     */
+    virtual void removeDebugShape(std::uint64_t id) = 0;
+
+    /**
+     * @brief Clears all debug shapes from this dimension.
+     */
+    virtual void clearDebugShapes() = 0;
 };
 
 inline std::unique_ptr<Block> Location::getBlock() const
