@@ -298,7 +298,9 @@ def test_create_map(server: Server) -> None:
     view = server.create_map(dimension)
     assert view.id != -1, f"Expected valid map id, got {view.id}"
     assert view.scale == 3, f"Expected scale 3, got {view.scale}"
-    assert view.center_x == view.center_z, f"Expected center_x == center_z, got {view.center_x} != {view.center_z}"
+    assert view.center_x == view.center_z, (
+        f"Expected center_x == center_z, got {view.center_x} != {view.center_z}"
+    )
     assert view.center_x == 448, f"Expected center_x 448, got {view.center_x}"
 
 

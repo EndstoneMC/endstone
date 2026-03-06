@@ -1,3 +1,5 @@
+import typing
+
 import pytest
 
 from endstone.nbt import (
@@ -488,26 +490,26 @@ def test_nested_compound_tags():
         (IntArrayTag([1, 2, 3]), "[I;1,2,3]"),
         (ListTag([IntTag(1), IntTag(2)]), "[1,2]"),
         (
-            ListTag(
-                [
-                    CompoundTag({"id": IntTag(1)}),
-                    CompoundTag({"id": IntTag(2)}),
-                ]
-            ),
-            "[{id:1},{id:2}]",
+                ListTag(
+                    [
+                        CompoundTag({"id": IntTag(1)}),
+                        CompoundTag({"id": IntTag(2)}),
+                    ]
+                ),
+                "[{id:1},{id:2}]",
         ),
         (
-            CompoundTag({"x": IntTag(1), "y": StringTag("a")}),
-            "{x:1,y:a}",
+                CompoundTag({"x": IntTag(1), "y": StringTag("a")}),
+                "{x:1,y:a}",
         ),
         (
-            CompoundTag(
-                {
-                    "pos": ListTag([IntTag(1), IntTag(2), IntTag(3)]),
-                    "name": StringTag("Alex"),
-                }
-            ),
-            "{name:Alex,pos:[1,2,3]}",
+                CompoundTag(
+                    {
+                        "pos": ListTag([IntTag(1), IntTag(2), IntTag(3)]),
+                        "name": StringTag("Alex"),
+                    }
+                ),
+                "{name:Alex,pos:[1,2,3]}",
         ),
     ],
 )
@@ -529,8 +531,8 @@ def test_str_tags(tag, expected):
         (IntArrayTag([1, 2, 3]), "IntArrayTag([1, 2, 3])"),
         (ListTag([IntTag(1), IntTag(2)]), "ListTag([IntTag(1), IntTag(2)])"),
         (
-            CompoundTag({"x": IntTag(1)}),
-            "CompoundTag({'x': IntTag(1)})",
+                CompoundTag({"x": IntTag(1)}),
+                "CompoundTag({'x': IntTag(1)})",
         ),
     ],
 )
@@ -706,12 +708,22 @@ def test_to_dict_does_not_mutate_original():
         CompoundTag(),
     ],
     ids=[
-        "byte", "short", "int", "long", "float", "double", "string",
-        "byte_array", "int_array", "list", "empty_list",
-        "compound", "empty_compound",
+        "byte",
+        "short",
+        "int",
+        "long",
+        "float",
+        "double",
+        "string",
+        "byte_array",
+        "int_array",
+        "list",
+        "empty_list",
+        "compound",
+        "empty_compound",
     ],
 )
-def test_dump_load_roundtrip(tag, byte_order, network):
+def test_dump_load_roundtrip(tag, byte_order: typing.Literal["little", "big"], network):
     if byte_order == "big" and network:
         pytest.skip("network format is always little-endian")
 
@@ -724,25 +736,29 @@ def test_dump_load_roundtrip(tag, byte_order, network):
 
 
 @pytest.mark.parametrize("byte_order", ["little", "big"])
-def test_dump_load_named_roundtrip(byte_order):
+def test_dump_load_named_roundtrip(byte_order: typing.Literal["little", "big"]):
     tag = CompoundTag({"health": IntTag(20), "name": StringTag("Steve")})
     data = tag.dump(name="Player", byte_order=byte_order)
     assert isinstance(data, bytes)
 
-    result, name = load(data,  byte_order=byte_order)
+    result, name = load(data, byte_order=byte_order)
     assert name == "Player"
     assert result == tag
 
 
 def test_dump_load_nested_compound():
-    tag = CompoundTag({
-        "pos": CompoundTag({"x": IntTag(1), "y": IntTag(2), "z": IntTag(3)}),
-        "inventory": ListTag([
-            CompoundTag({"id": StringTag("stone"), "count": ByteTag(64)}),
-            CompoundTag({"id": StringTag("dirt"), "count": ByteTag(32)}),
-        ]),
-        "name": StringTag("Player"),
-    })
+    tag = CompoundTag(
+        {
+            "pos": CompoundTag({"x": IntTag(1), "y": IntTag(2), "z": IntTag(3)}),
+            "inventory": ListTag(
+                [
+                    CompoundTag({"id": StringTag("stone"), "count": ByteTag(64)}),
+                    CompoundTag({"id": StringTag("dirt"), "count": ByteTag(32)}),
+                ]
+            ),
+            "name": StringTag("Player"),
+        }
+    )
     data = tag.dump()
     result = load(data)
     assert result[0] == tag
@@ -756,7 +772,6 @@ def test_dump_returns_bytes():
 
 def test_dump_network_format():
     tag = IntTag(42)
-    data_normal = tag.dump()
     data_network = tag.dump(network=True)
     # network varint encoding may differ in size from fixed-width
     assert isinstance(data_network, bytes)
@@ -778,13 +793,18 @@ def test_load_with_name_returns_tuple():
 def test_dump_invalid_byte_order():
     tag = IntTag(1)
     with pytest.raises(Exception):
-        tag.dump(byte_order="native")
+        tag.dump(byte_order="native")  # noqa
 
 
 def test_all_value_tags_have_dump():
     for cls, val in [
-        (ByteTag, 1), (ShortTag, 2), (IntTag, 3), (LongTag, 4),
-        (FloatTag, 1.0), (DoubleTag, 2.0), (StringTag, "x"),
+        (ByteTag, 1),
+        (ShortTag, 2),
+        (IntTag, 3),
+        (LongTag, 4),
+        (FloatTag, 1.0),
+        (DoubleTag, 2.0),
+        (StringTag, "x"),
     ]:
         tag = cls(val)
         data = tag.dump()
