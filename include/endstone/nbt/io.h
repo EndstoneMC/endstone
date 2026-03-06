@@ -16,7 +16,6 @@
 
 #include <bit>
 #include <cstdint>
-#include <cstring>
 #include <stdexcept>
 #include <string>
 #include <string_view>
@@ -32,7 +31,7 @@ namespace detail {
 
 inline void write_bytes(std::string &out, const void *data, std::size_t n)
 {
-    out.append(reinterpret_cast<const char *>(data), n);
+    out.append(static_cast<const char *>(data), n);
 }
 
 inline void read_bytes(std::string_view &in, void *dst, std::size_t n)
@@ -47,7 +46,7 @@ inline void read_bytes(std::string_view &in, void *dst, std::size_t n)
 // ---- endian-aware numeric I/O ----
 
 template <typename T>
-inline void write_value(std::string &out, T value, std::endian byte_order)
+void write_value(std::string &out, T value, std::endian byte_order)
 {
     static_assert(std::is_arithmetic_v<T>);
     if constexpr (sizeof(T) == 1) {
@@ -84,7 +83,7 @@ inline void write_value(std::string &out, T value, std::endian byte_order)
 }
 
 template <typename T>
-inline T read_value(std::string_view &in, std::endian byte_order)
+T read_value(std::string_view &in, std::endian byte_order)
 {
     static_assert(std::is_arithmetic_v<T>);
     T value{};
@@ -437,18 +436,32 @@ inline Tag read_tag_payload(std::string_view &in, Type type, std::endian byte_or
 
 }  // namespace detail
 
-// ---- dump: serialize tag without name ----
-
+/**
+ * @brief Serialize an NBT tag to binary format with an empty name.
+ *
+ * @param tag The tag to serialize.
+ * @param byte_order Byte order: std::endian::little (Bedrock) or std::endian::big (Java).
+ * @param network If true, use Bedrock network varint encoding for lengths and Int/Long values.
+ * @return Binary NBT data as [type:1][name:""][payload].
+ */
 inline std::string dump(const Tag &tag, std::endian byte_order = std::endian::little, bool network = false)
 {
     std::string out;
     out.push_back(static_cast<char>(static_cast<std::uint8_t>(tag.type())));
+    detail::write_string(out, {}, byte_order, network);
     detail::write_tag_payload(out, tag, byte_order, network);
     return out;
 }
 
-// ---- dump: serialize tag with name ----
-
+/**
+ * @brief Serialize an NBT tag to binary format with a name.
+ *
+ * @param tag The tag to serialize.
+ * @param name The root tag name (e.g. "" for Bedrock level.dat, or a descriptive name).
+ * @param byte_order Byte order: std::endian::little (Bedrock) or std::endian::big (Java).
+ * @param network If true, use Bedrock network varint encoding for lengths and Int/Long values.
+ * @return Binary NBT data as [type:1][name:string][payload].
+ */
 inline std::string dump(const Tag &tag, const std::string &name, std::endian byte_order = std::endian::little,
                         bool network = false)
 {
@@ -459,8 +472,16 @@ inline std::string dump(const Tag &tag, const std::string &name, std::endian byt
     return out;
 }
 
-// ---- load: deserialize and populate name ----
-
+/**
+ * @brief Deserialize binary NBT data into a Tag, populating the root tag name.
+ *
+ * @param data Binary NBT data. Consumed from front via string_view.
+ * @param[out] name The deserialized root tag name.
+ * @param byte_order Byte order used in the binary data.
+ * @param network If true, expect Bedrock network varint encoding.
+ * @return The deserialized tag.
+ * @throws std::runtime_error If the data is truncated or malformed.
+ */
 inline Tag load(std::string_view data, std::string &name, std::endian byte_order = std::endian::little,
                 bool network = false)
 {
@@ -473,8 +494,15 @@ inline Tag load(std::string_view data, std::string &name, std::endian byte_order
     return detail::read_tag_payload(data, type, byte_order, network);
 }
 
-// ---- load: deserialize, discarding name ----
-
+/**
+ * @brief Deserialize binary NBT data into a Tag, discarding the root tag name.
+ *
+ * @param data Binary NBT data.
+ * @param byte_order Byte order used in the binary data.
+ * @param network If true, expect Bedrock network varint encoding.
+ * @return The deserialized tag.
+ * @throws std::runtime_error If the data is truncated or malformed.
+ */
 inline Tag load(std::string_view data, std::endian byte_order = std::endian::little, bool network = false)
 {
     std::string name;

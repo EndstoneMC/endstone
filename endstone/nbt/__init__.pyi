@@ -47,7 +47,19 @@ class ByteTag(Tag):
     def __int__(self) -> int: ...
     def dump(
         self, name: str | None = None, byte_order: typing.Literal["little", "big"] = "little", network: bool = False
-    ) -> bytes: ...
+    ) -> bytes:
+        """
+        Serialize this tag to binary NBT format.
+
+        Args:
+            name: Optional root tag name. If None, an empty name is used.
+            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+
+        Returns:
+            bytes: The binary NBT data.
+        """
+        ...
 
 class ShortTag(Tag):
     @typing.overload
@@ -73,7 +85,19 @@ class ShortTag(Tag):
     def __int__(self) -> int: ...
     def dump(
         self, name: str | None = None, byte_order: typing.Literal["little", "big"] = "little", network: bool = False
-    ) -> bytes: ...
+    ) -> bytes:
+        """
+        Serialize this tag to binary NBT format.
+
+        Args:
+            name: Optional root tag name. If None, an empty name is used.
+            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+
+        Returns:
+            bytes: The binary NBT data.
+        """
+        ...
 
 class IntTag(Tag):
     @typing.overload
@@ -99,7 +123,19 @@ class IntTag(Tag):
     def __int__(self) -> int: ...
     def dump(
         self, name: str | None = None, byte_order: typing.Literal["little", "big"] = "little", network: bool = False
-    ) -> bytes: ...
+    ) -> bytes:
+        """
+        Serialize this tag to binary NBT format.
+
+        Args:
+            name: Optional root tag name. If None, an empty name is used.
+            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+
+        Returns:
+            bytes: The binary NBT data.
+        """
+        ...
 
 class LongTag(Tag):
     @typing.overload
@@ -125,7 +161,19 @@ class LongTag(Tag):
     def __int__(self) -> int: ...
     def dump(
         self, name: str | None = None, byte_order: typing.Literal["little", "big"] = "little", network: bool = False
-    ) -> bytes: ...
+    ) -> bytes:
+        """
+        Serialize this tag to binary NBT format.
+
+        Args:
+            name: Optional root tag name. If None, an empty name is used.
+            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+
+        Returns:
+            bytes: The binary NBT data.
+        """
+        ...
 
 class FloatTag(Tag):
     @typing.overload
@@ -151,7 +199,19 @@ class FloatTag(Tag):
     def __float__(self) -> float: ...
     def dump(
         self, name: str | None = None, byte_order: typing.Literal["little", "big"] = "little", network: bool = False
-    ) -> bytes: ...
+    ) -> bytes:
+        """
+        Serialize this tag to binary NBT format.
+
+        Args:
+            name: Optional root tag name. If None, an empty name is used.
+            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+
+        Returns:
+            bytes: The binary NBT data.
+        """
+        ...
 
 class DoubleTag(Tag):
     @typing.overload
@@ -177,7 +237,19 @@ class DoubleTag(Tag):
     def __float__(self) -> float: ...
     def dump(
         self, name: str | None = None, byte_order: typing.Literal["little", "big"] = "little", network: bool = False
-    ) -> bytes: ...
+    ) -> bytes:
+        """
+        Serialize this tag to binary NBT format.
+
+        Args:
+            name: Optional root tag name. If None, an empty name is used.
+            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+
+        Returns:
+            bytes: The binary NBT data.
+        """
+        ...
 
 class ByteArrayTag(Tag):
     @typing.overload
@@ -221,7 +293,19 @@ class ByteArrayTag(Tag):
     def __bytes__(self) -> bytes: ...
     def dump(
         self, name: str | None = None, byte_order: typing.Literal["little", "big"] = "little", network: bool = False
-    ) -> bytes: ...
+    ) -> bytes:
+        """
+        Serialize this tag to binary NBT format.
+
+        Args:
+            name: Optional root tag name. If None, an empty name is used.
+            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+
+        Returns:
+            bytes: The binary NBT data.
+        """
+        ...
 
 class StringTag(Tag):
     @typing.overload
@@ -246,7 +330,19 @@ class StringTag(Tag):
     def __repr__(self) -> str: ...
     def dump(
         self, name: str | None = None, byte_order: typing.Literal["little", "big"] = "little", network: bool = False
-    ) -> bytes: ...
+    ) -> bytes:
+        """
+        Serialize this tag to binary NBT format.
+
+        Args:
+            name: Optional root tag name. If None, an empty name is used.
+            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+
+        Returns:
+            bytes: The binary NBT data.
+        """
+        ...
 
 class IntArrayTag(Tag):
     @typing.overload
@@ -277,7 +373,19 @@ class IntArrayTag(Tag):
     def __repr__(self) -> str: ...
     def dump(
         self, name: str | None = None, byte_order: typing.Literal["little", "big"] = "little", network: bool = False
-    ) -> bytes: ...
+    ) -> bytes:
+        """
+        Serialize this tag to binary NBT format.
+
+        Args:
+            name: Optional root tag name. If None, an empty name is used.
+            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+
+        Returns:
+            bytes: The binary NBT data.
+        """
+        ...
 
 class ListTag(Tag):
     @typing.overload
@@ -303,7 +411,19 @@ class ListTag(Tag):
     def __ne__(self, arg0: ListTag) -> bool: ...
     def dump(
         self, name: str | None = None, byte_order: typing.Literal["little", "big"] = "little", network: bool = False
-    ) -> bytes: ...
+    ) -> bytes:
+        """
+        Serialize this tag to binary NBT format.
+
+        Args:
+            name: Optional root tag name. If None, an empty name is used.
+            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+
+        Returns:
+            bytes: The binary NBT data.
+        """
+        ...
 
 class CompoundTag(Tag):
     @typing.overload
@@ -332,6 +452,30 @@ class CompoundTag(Tag):
     def __repr__(self) -> str: ...
     def dump(
         self, name: str | None = None, byte_order: typing.Literal["little", "big"] = "little", network: bool = False
-    ) -> bytes: ...
+    ) -> bytes:
+        """
+        Serialize this tag to binary NBT format.
 
-def load(data: bytes, byte_order: typing.Literal["little", "big"] = "little", network: bool = False) -> object: ...
+        Args:
+            name: Optional root tag name. If None, an empty name is used.
+            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+
+        Returns:
+            bytes: The binary NBT data.
+        """
+        ...
+
+def load(data: bytes, byte_order: typing.Literal["little", "big"] = "little", network: bool = False) -> tuple[Tag, str]:
+    """
+    Deserialize binary NBT data into a tag.
+
+    Args:
+        data: Binary NBT data (bytes).
+        byte_order: Byte order of the binary data, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+        network: If True, expect Bedrock network varint encoding.
+
+    Returns:
+        tuple[Tag, str]: A tuple of (tag, name) where name is the root tag name.
+    """
+    ...

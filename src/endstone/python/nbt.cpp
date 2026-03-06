@@ -95,7 +95,14 @@ static void bind_dump(PyClass &cls)
             }
             return py::bytes(result);
         },
-        py::arg("name") = py::none(), py::arg("byte_order") = "little", py::arg("network") = false);
+        py::arg("name") = py::none(), py::arg("byte_order") = "little", py::arg("network") = false,
+        "Serialize this tag to binary NBT format.\n\n"
+        "Args:\n"
+        "    name: Optional root tag name. If None, an empty name is used.\n"
+        "    byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).\n"
+        "    network: If True, use Bedrock network varint encoding for lengths and Int/Long values.\n\n"
+        "Returns:\n"
+        "    bytes: The binary NBT data.");
 }
 
 template <typename T, typename... Args>
@@ -419,16 +426,23 @@ void init_nbt(py::module_ &m)
     bind_list_tag(m);
     bind_compound_tag(m);
 
-    // load(data, byte_order="little", network=False) -> Tag or tuple(Tag, str)
     m.def(
         "load",
-        [](py::bytes data, const Literal<"little", "big"> &byte_order, bool network) -> py::object {
+        [](py::bytes data, const Literal<"little", "big"> &byte_order,
+           bool network) -> std::tuple<endstone::nbt::Tag, py::str> {
             auto endian = byte_order.value() == "big" ? std::endian::big : std::endian::little;
             auto sv = std::string_view(PyBytes_AsString(data.ptr()), PyBytes_Size(data.ptr()));
             std::string name;
             auto tag = nbt::load(sv, name, endian, network);
-            return py::make_tuple(py::cast(tag), py::str(name));
+            return std::make_tuple(std::move(tag), std::move(name));
         },
-        py::arg("data"), py::arg("byte_order") = "little", py::arg("network") = false);
+        py::arg("data"), py::arg("byte_order") = "little", py::arg("network") = false,
+        "Deserialize binary NBT data into a tag.\n\n"
+        "Args:\n"
+        "    data: Binary NBT data (bytes).\n"
+        "    byte_order: Byte order of the binary data, either ``'little'`` (Bedrock) or ``'big'`` (Java).\n"
+        "    network: If True, expect Bedrock network varint encoding.\n\n"
+        "Returns:\n"
+        "    tuple[Tag, str]: A tuple of (tag, name) where name is the root tag name.");
 }
 }  // namespace endstone::python

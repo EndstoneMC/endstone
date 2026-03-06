@@ -720,7 +720,7 @@ def test_dump_load_roundtrip(tag, byte_order, network):
     assert len(data) > 0
 
     result = load(data, byte_order=byte_order, network=network)
-    assert result == tag
+    assert result[0] == tag
 
 
 @pytest.mark.parametrize("byte_order", ["little", "big"])
@@ -745,7 +745,7 @@ def test_dump_load_nested_compound():
     })
     data = tag.dump()
     result = load(data)
-    assert result == tag
+    assert result[0] == tag
 
 
 def test_dump_returns_bytes():
@@ -762,7 +762,7 @@ def test_dump_network_format():
     assert isinstance(data_network, bytes)
     assert len(data_network) > 0
     # round-trip
-    assert load(data_network, network=True) == tag
+    assert load(data_network, network=True)[0] == tag
 
 
 def test_load_with_name_returns_tuple():
@@ -789,7 +789,7 @@ def test_all_value_tags_have_dump():
         tag = cls(val)
         data = tag.dump()
         assert isinstance(data, bytes)
-        assert load(data) == tag
+        assert load(data)[0] == tag
 
 
 def test_array_tags_have_dump():
@@ -797,7 +797,7 @@ def test_array_tags_have_dump():
         tag = cls(vals)
         data = tag.dump()
         assert isinstance(data, bytes)
-        assert load(data) == tag
+        assert load(data)[0] == tag
 
 
 def test_compound_tag_self_assignment():
