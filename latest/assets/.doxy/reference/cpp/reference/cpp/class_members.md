@@ -229,6 +229,7 @@
 * **data** ([**endstone::UUID**](classendstone_1_1UUID.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **dot** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **difference\_type** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **dump** ([**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
 * **description** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md), [**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 * **default\_** ([**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **default\_permission** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))

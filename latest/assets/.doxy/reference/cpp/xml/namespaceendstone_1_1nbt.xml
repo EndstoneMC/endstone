@@ -7,6 +7,7 @@
     <innerclass refid="classendstone_1_1nbt_1_1Tag" prot="public">endstone::nbt::Tag</innerclass>
     <innerclass refid="structendstone_1_1nbt_1_1TagBase" prot="public">endstone::nbt::TagBase</innerclass>
     <innerclass refid="classendstone_1_1nbt_1_1ValueTag" prot="public">endstone::nbt::ValueTag</innerclass>
+    <innernamespace refid="namespaceendstone_1_1nbt_1_1detail">endstone::nbt::detail</innernamespace>
     <sectiondef kind="enum">
       <memberdef kind="enum" id="type_8h_1a4ad7d0adad58bd6416997ecb276da28c" prot="public" static="no" strong="yes">
         <type>std::uint8_t</type>
@@ -118,6 +119,276 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
+      <memberdef kind="function" id="io_8h_1af796a45b5e4965a0f5ab29f066240000" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::nbt::dump</definition>
+        <argsstring>(const Tag &amp;tag, std::endian byte_order=std::endian::little, bool network=false)</argsstring>
+        <name>dump</name>
+        <qualifiedname>endstone::nbt::dump</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref> &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>std::endian</type>
+          <declname>byte_order</declname>
+          <defval>std::endian::little</defval>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>network</declname>
+          <defval><ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></defval>
+        </param>
+        <briefdescription>
+<para>Serialize an NBT tag to binary format with an empty name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tag to serialize. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte_order</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte order: std::endian::little (Bedrock) or std::endian::big (Java). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>network</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, use Bedrock network varint encoding for lengths and Int/Long values. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Binary NBT data as [type:1][name:&quot;&quot;][payload]. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/io.h" line="447" column="20" bodyfile="include/endstone/nbt/io.h" bodystart="447" bodyend="454"/>
+      </memberdef>
+      <memberdef kind="function" id="io_8h_1a46968b69587d386ec526d18731120e67" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::nbt::dump</definition>
+        <argsstring>(const Tag &amp;tag, const std::string &amp;name, std::endian byte_order=std::endian::little, bool network=false)</argsstring>
+        <name>dump</name>
+        <qualifiedname>endstone::nbt::dump</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref> &amp;</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::endian</type>
+          <declname>byte_order</declname>
+          <defval>std::endian::little</defval>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>network</declname>
+          <defval><ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></defval>
+        </param>
+        <briefdescription>
+<para>Serialize an NBT tag to binary format with a name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tag to serialize. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The root tag name (e.g. &quot;&quot; for Bedrock level.dat, or a descriptive name). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte_order</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte order: std::endian::little (Bedrock) or std::endian::big (Java). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>network</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, use Bedrock network varint encoding for lengths and Int/Long values. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Binary NBT data as [type:1][name:string][payload]. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/io.h" line="465" column="20" bodyfile="include/endstone/nbt/io.h" bodystart="465" bodyend="473"/>
+      </memberdef>
+      <memberdef kind="function" id="io_8h_1a8094ac05e4e8d2f17d20bfc3094ce332" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref></type>
+        <definition>Tag endstone::nbt::load</definition>
+        <argsstring>(std::string_view data, std::string &amp;name, std::endian byte_order=std::endian::little, bool network=false)</argsstring>
+        <name>load</name>
+        <qualifiedname>endstone::nbt::load</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::endian</type>
+          <declname>byte_order</declname>
+          <defval>std::endian::little</defval>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>network</declname>
+          <defval><ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></defval>
+        </param>
+        <briefdescription>
+<para>Deserialize binary NBT data into a <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref>, populating the root tag name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Binary NBT data. Consumed from front via string_view. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The deserialized root tag name. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte_order</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte order used in the binary data. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>network</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, expect Bedrock network varint encoding. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The deserialized tag. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the data is truncated or malformed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/io.h" line="485" column="12" bodyfile="include/endstone/nbt/io.h" bodystart="485" bodyend="495"/>
+      </memberdef>
+      <memberdef kind="function" id="io_8h_1a6d3226badab86c4f8832004bbdd875be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref></type>
+        <definition>Tag endstone::nbt::load</definition>
+        <argsstring>(std::string_view data, std::endian byte_order=std::endian::little, bool network=false)</argsstring>
+        <name>load</name>
+        <qualifiedname>endstone::nbt::load</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>std::endian</type>
+          <declname>byte_order</declname>
+          <defval>std::endian::little</defval>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>network</declname>
+          <defval><ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></defval>
+        </param>
+        <briefdescription>
+<para>Deserialize binary NBT data into a <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref>, discarding the root tag name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Binary NBT data. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>byte_order</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte order used in the binary data. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>network</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, expect Bedrock network varint encoding. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The deserialized tag. </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the data is truncated or malformed. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/io.h" line="506" column="12" bodyfile="include/endstone/nbt/io.h" bodystart="506" bodyend="510"/>
+      </memberdef>
       <memberdef kind="function" id="tag_8h_1a3311af8ab3020c12798741271ff1aca8" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>escape_view</type>
         <definition>escape_view endstone::nbt::escaped</definition>
@@ -134,7 +405,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="563" column="20" bodyfile="include/endstone/nbt/tag.h" bodystart="563" bodyend="566"/>
+        <location file="include/endstone/nbt/tag.h" line="585" column="20" bodyfile="include/endstone/nbt/tag.h" bodystart="585" bodyend="588"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

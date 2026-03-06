@@ -110,10 +110,18 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
+      <node id="16">
+        <label>include/endstone/nbt/io.h</label>
+        <link refid="io_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
       <node id="2">
         <label>include/endstone/nbt/tag.h</label>
         <link refid="tag_8h_source"/>
         <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="1">

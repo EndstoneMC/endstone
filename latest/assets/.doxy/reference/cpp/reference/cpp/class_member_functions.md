@@ -135,6 +135,7 @@
 * **dispatchCommand** ([**endstone::Server**](classendstone_1_1Server.md))
 * **dot** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **data** ([**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
+* **dump** ([**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
 * **description** ([**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **default\_** ([**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 

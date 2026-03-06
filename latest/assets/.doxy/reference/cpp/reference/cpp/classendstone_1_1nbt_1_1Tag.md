@@ -84,6 +84,8 @@
 |  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-34) (std::size\_t index) <br> |
 |  [**const**](classendstone_1_1Identifier.md) [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-44) (std::size\_t index) const<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**contains**](#function-contains) ([**const**](classendstone_1_1Identifier.md) std::string & key) noexcept const<br> |
+|  std::string | [**dump**](#function-dump-12) (std::endian byte\_order=std::endian::little, [**bool**](classendstone_1_1Identifier.md) network=[**false**](classendstone_1_1Identifier.md)) const<br>_Serialize this tag to binary NBT with an empty root name._  |
+|  std::string | [**dump**](#function-dump-22) ([**const**](classendstone_1_1Identifier.md) std::string & name, std::endian byte\_order=std::endian::little, [**bool**](classendstone_1_1Identifier.md) network=[**false**](classendstone_1_1Identifier.md)) const<br>_Serialize this tag to binary NBT with a root name._  |
 |  std::pair&lt; CompoundTag::iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**emplace**](#function-emplace) ([**Args**](classendstone_1_1Identifier.md) &&... args) <br> |
 |  [**ListTag**](classendstone_1_1ListTag.md) & | [**emplace\_back**](#function-emplace_back) ([**Args**](classendstone_1_1Identifier.md) &&... args) <br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**empty**](#function-empty) () noexcept const<br> |
@@ -558,6 +560,83 @@ inline bool endstone::nbt::Tag::contains (
 
 
 
+
+<hr>
+
+
+
+### function dump [1/2]
+
+_Serialize this tag to binary NBT with an empty root name._ 
+```C++
+inline std::string endstone::nbt::Tag::dump (
+    std::endian byte_order=std::endian::little,
+    bool network=false
+) const
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `byte_order` std::endian::little (Bedrock) or std::endian::big (Java). 
+* `network` If true, use Bedrock network varint encoding. 
+
+
+
+**Returns:**
+
+Binary NBT data. 
+
+
+
+
+**See also:** endstone::nbt::dump(), endstone::nbt::load() 
+
+
+
+        
+
+<hr>
+
+
+
+### function dump [2/2]
+
+_Serialize this tag to binary NBT with a root name._ 
+```C++
+inline std::string endstone::nbt::Tag::dump (
+    const std::string & name,
+    std::endian byte_order=std::endian::little,
+    bool network=false
+) const
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `name` The root tag name. 
+* `byte_order` std::endian::little (Bedrock) or std::endian::big (Java). 
+* `network` If true, use Bedrock network varint encoding. 
+
+
+
+**Returns:**
+
+Binary NBT data. 
+
+
+
+
+
+        
 
 <hr>
 

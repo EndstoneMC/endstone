@@ -173,6 +173,7 @@ Here is a list of all files with brief descriptions:
         * **dir** [**nbt**](dir_777e494cd9d9b9aeedcd0556d83eeb02.md)     
             * **file** [**array.h**](array_8h.md)     
             * **file** [**compound.h**](compound_8h.md)     
+            * **file** [**io.h**](io_8h.md)     
             * **file** [**list.h**](list_8h.md)     
             * **file** [**tag.h**](tag_8h.md)     
             * **file** [**type.h**](type_8h.md)     

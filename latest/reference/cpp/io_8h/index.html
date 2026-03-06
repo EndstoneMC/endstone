@@ -10,7 +10,7 @@
         <meta name="author" content="Vincent Wu">
       
       
-        <link rel="canonical" href="https://endstone.dev/latest/reference/cpp/dir_777e494cd9d9b9aeedcd0556d83eeb02/">
+        <link rel="canonical" href="https://endstone.dev/latest/reference/cpp/io_8h/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Dir include/endstone/nbt - Endstone</title>
+        <title>File io.h - Endstone</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dir-includeendstonenbt" class="md-skip">
+        <a href="#file-ioh" class="md-skip">
           Skip to content
         </a>
       
@@ -138,7 +138,7 @@ For latest updates join the chat on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dir include/endstone/nbt
+              File io.h
             
           </span>
         </div>
@@ -2555,9 +2555,9 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#files" class="md-nav__link">
+    <a href="#namespaces" class="md-nav__link">
       <span class="md-ellipsis">
-        Files
+        Namespaces
       </span>
     </a>
 
@@ -2582,7 +2582,7 @@ For latest updates join the chat on
 
 
   
-    <a href="https://github.com/EndstoneMC/endstone/edit/main/docs/reference/cpp/dir_777e494cd9d9b9aeedcd0556d83eeb02.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/EndstoneMC/endstone/edit/main/docs/reference/cpp/io_8h.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2591,16 +2591,26 @@ For latest updates join the chat on
     
       
     
-    <a href="https://github.com/EndstoneMC/endstone/raw/main/docs/reference/cpp/dir_777e494cd9d9b9aeedcd0556d83eeb02.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/EndstoneMC/endstone/raw/main/docs/reference/cpp/io_8h.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="dir-includeendstonenbt">Dir include/endstone/nbt<a class="headerlink" href="#dir-includeendstonenbt" title="Permanent link">&para;</a></h1>
-<p><a href="../files/"><strong>FileList</strong></a> <strong>&gt;</strong> <a href="../dir_6cf277b678674f97c7a2b6b3b2447b33/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>nbt</strong></a></p>
-<h2 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h2>
+<h1 id="file-ioh">File io.h<a class="headerlink" href="#file-ioh" title="Permanent link">&para;</a></h1>
+<p><a href="../files/"><strong>FileList</strong></a> <strong>&gt;</strong> <a href="../dir_6cf277b678674f97c7a2b6b3b2447b33/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="../dir_777e494cd9d9b9aeedcd0556d83eeb02/"><strong>nbt</strong></a> <strong>&gt;</strong> <a href="./"><strong>io.h</strong></a></p>
+<p><a href="../io_8h_source/">Go to the source code of this file</a></p>
+<ul>
+<li><code>#include &lt;bit&gt;</code></li>
+<li><code>#include &lt;cstdint&gt;</code></li>
+<li><code>#include &lt;stdexcept&gt;</code></li>
+<li><code>#include &lt;string&gt;</code></li>
+<li><code>#include &lt;string_view&gt;</code></li>
+<li><code>#include &lt;type_traits&gt;</code></li>
+<li><code>#include "endstone/nbt/tag.h"</code></li>
+</ul>
+<h2 id="namespaces">Namespaces<a class="headerlink" href="#namespaces" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2610,37 +2620,21 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../array_8h/"><strong>array.h</strong></a> <br></td>
+<td style="text-align: right;">namespace</td>
+<td style="text-align: left;"><a href="../namespaceendstone/"><strong>endstone</strong></a> <br><em>Represents a button with text and an optional icon.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../compound_8h/"><strong>compound.h</strong></a> <br></td>
+<td style="text-align: right;">namespace</td>
+<td style="text-align: left;"><a href="../namespaceendstone_1_1nbt/"><strong>nbt</strong></a> <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../io_8h/"><strong>io.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../list_8h/"><strong>list.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../tag_8h/"><strong>tag.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../type_8h/"><strong>type.h</strong></a> <br></td>
-</tr>
-<tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../value_8h/"><strong>value.h</strong></a> <br></td>
+<td style="text-align: right;">namespace</td>
+<td style="text-align: left;"><a href="../namespaceendstone_1_1nbt_1_1detail/"><strong>detail</strong></a> <br></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p>The documentation for this class was generated from the following file <code>include/endstone/nbt/</code></p>
+<p>The documentation for this class was generated from the following file <code>include/endstone/nbt/io.h</code></p>
 
 
 

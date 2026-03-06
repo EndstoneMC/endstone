@@ -2362,6 +2362,8 @@
     <member refid="classendstone_1_1nbt_1_1Tag_1a8df34ad15f6774c092a3150d59ceaa4d" kind="function"><name>get_if</name></member>
     <member refid="classendstone_1_1nbt_1_1Tag_1aabd493b83ae07849c9a46fa48d6cbf72" kind="function"><name>visit</name></member>
     <member refid="classendstone_1_1nbt_1_1Tag_1a379ae7f659e414ac89271d8633401656" kind="function"><name>visit</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a282028a9a347d259cc65049cadcdbedd" kind="function"><name>dump</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a267f7fa0521b527b4a5adafde12eb62e" kind="function"><name>dump</name></member>
     <member refid="classendstone_1_1nbt_1_1Tag_1a2c3640f9a0f98e5029c9b2905322784e" kind="friend"><name>operator==</name></member>
     <member refid="classendstone_1_1nbt_1_1Tag_1a7ed7ce4f905d733b1977d9e1d6f60ba1" kind="friend"><name>operator!=</name></member>
   </compound>
@@ -2659,7 +2661,35 @@
     <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca4ee29ca12c7d126654bd0e5275de6135" kind="enumvalue"><name>List</name></member>
     <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca26154ea007c65f860de5333a555a56cf" kind="enumvalue"><name>Compound</name></member>
     <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28caa4cf98abdafab708d30b8d2ae8d57be8" kind="enumvalue"><name>IntArray</name></member>
+    <member refid="io_8h_1af796a45b5e4965a0f5ab29f066240000" kind="function"><name>dump</name></member>
+    <member refid="io_8h_1a46968b69587d386ec526d18731120e67" kind="function"><name>dump</name></member>
+    <member refid="io_8h_1a8094ac05e4e8d2f17d20bfc3094ce332" kind="function"><name>load</name></member>
+    <member refid="io_8h_1a6d3226badab86c4f8832004bbdd875be" kind="function"><name>load</name></member>
     <member refid="tag_8h_1a3311af8ab3020c12798741271ff1aca8" kind="function"><name>escaped</name></member>
+  </compound>
+  <compound refid="namespaceendstone_1_1nbt_1_1detail" kind="namespace"><name>endstone::nbt::detail</name>
+    <member refid="io_8h_1a61767e5461bd967b1af5d1c10370d8c8" kind="function"><name>write_bytes</name></member>
+    <member refid="io_8h_1a64600a49d631c3d7e563604afb9d6efc" kind="function"><name>read_bytes</name></member>
+    <member refid="io_8h_1a5cc240457c15ae932cc22d7122c937c4" kind="function"><name>write_value</name></member>
+    <member refid="io_8h_1a4c91eef182c4df2effd71055570c1340" kind="function"><name>read_value</name></member>
+    <member refid="io_8h_1af614c4721898f0a9d582d0060da9a41e" kind="function"><name>write_varint</name></member>
+    <member refid="io_8h_1a24e64c8633f2bb6815d146f97477efd8" kind="function"><name>read_varint</name></member>
+    <member refid="io_8h_1a708afbe713e875109c5e66336c120b1a" kind="function"><name>zigzag_encode32</name></member>
+    <member refid="io_8h_1a136417e48ba3dcc21bbf3fcc8917fb37" kind="function"><name>zigzag_decode32</name></member>
+    <member refid="io_8h_1a8dff3df41f422bcc25ed68b4f1010dfc" kind="function"><name>write_zigzag32</name></member>
+    <member refid="io_8h_1ae710bdcde9f404a84ed94c56313bee23" kind="function"><name>read_zigzag32</name></member>
+    <member refid="io_8h_1ade89cb60c8befd1221275d47e7d77e0f" kind="function"><name>write_varint64</name></member>
+    <member refid="io_8h_1a5a793eea948cd225a34a0e1dfeb12798" kind="function"><name>read_varint64</name></member>
+    <member refid="io_8h_1a0928bcdca98f5e2d09366c0df69a7019" kind="function"><name>zigzag_encode64</name></member>
+    <member refid="io_8h_1a8a0f2ffe8c3b43f827100807734d8096" kind="function"><name>zigzag_decode64</name></member>
+    <member refid="io_8h_1af1c18639a65a5c8e35839c5f8a5317f1" kind="function"><name>write_zigzag64</name></member>
+    <member refid="io_8h_1aa90f30c5c2dadf18441de21b0f758f10" kind="function"><name>read_zigzag64</name></member>
+    <member refid="io_8h_1a23af777240bd6316ae8e22fcf517078f" kind="function"><name>write_string</name></member>
+    <member refid="io_8h_1a6d06cf034ea052c88684574daa92b063" kind="function"><name>read_string</name></member>
+    <member refid="io_8h_1ab98be424e9f66ce2909c998541c21d71" kind="function"><name>write_length</name></member>
+    <member refid="io_8h_1ab8629d7a0eefd4bc0ebf83bd2f0bd2b5" kind="function"><name>read_length</name></member>
+    <member refid="io_8h_1ad4669bbd058fe46a64cdec8b575650b0" kind="function"><name>write_tag_payload</name></member>
+    <member refid="io_8h_1a606207e3a37f3992b18bf36fc8ac6484" kind="function"><name>read_tag_payload</name></member>
   </compound>
   <compound refid="namespacefmt" kind="namespace"><name>fmt</name>
   </compound>
@@ -2966,6 +2996,8 @@
   <compound refid="array_8h" kind="file"><name>array.h</name>
   </compound>
   <compound refid="compound_8h" kind="file"><name>compound.h</name>
+  </compound>
+  <compound refid="io_8h" kind="file"><name>io.h</name>
   </compound>
   <compound refid="list_8h" kind="file"><name>list.h</name>
   </compound>
