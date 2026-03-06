@@ -21,6 +21,7 @@
 #include <variant>
 
 #include "endstone/actor/mob.h"
+#include "endstone/debug/shape.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -487,6 +488,27 @@ public:
      * @param map The map to send
      */
     virtual void sendMap(MapView &map) = 0;
+
+    /**
+     * @brief Adds a debug shape visible only to this player.
+     *
+     * @param location the location to place the shape
+     * @param shape the shape to add
+     * @return the unique id assigned to the shape
+     */
+    virtual std::uint64_t addDebugShape(Location location, DebugShapeVariant shape) = 0;
+
+    /**
+     * @brief Removes a specific debug shape from this player by its id.
+     *
+     * @param id the id returned by addDebugShape()
+     */
+    virtual void removeDebugShape(std::uint64_t id) = 0;
+
+    /**
+     * @brief Removes all debug shapes visible to this player.
+     */
+    virtual void removeDebugShapes() = 0;
 };
 
 }  // namespace endstone

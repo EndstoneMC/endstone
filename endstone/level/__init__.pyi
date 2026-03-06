@@ -3,7 +3,6 @@ import typing
 
 from endstone.actor import Actor, Item
 from endstone.block import Block
-from endstone.debug import DebugArrow, DebugBox, DebugCircle, DebugLine, DebugSphere, DebugText
 from endstone.inventory import ItemStack
 from endstone.util import Vector
 
@@ -133,23 +132,6 @@ class Dimension:
     def actors(self) -> list[Actor]:
         """
         Get a list of all actors in this dimension
-        """
-        ...
-    def add_debug_shape(
-        self, location: Location, shape: DebugBox | DebugSphere | DebugCircle | DebugLine | DebugArrow | DebugText
-    ) -> int:
-        """
-        Adds a debug shape to this dimension, visible to all players.
-        """
-        ...
-    def remove_debug_shape(self, id: int) -> None:
-        """
-        Removes a specific debug shape from this dimension by its id.
-        """
-        ...
-    def clear_debug_shapes(self) -> None:
-        """
-        Clears all debug shapes from this dimension.
         """
         ...
 

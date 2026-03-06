@@ -629,6 +629,22 @@ void EndstonePlayer::sendMap(MapView &map)
     getHandle().sendNetworkPacket(*packet);
 }
 
+std::uint64_t EndstonePlayer::addDebugShape(Location location, DebugShapeVariant shape)
+{
+    // TODO(endstone): implement
+    return 0;
+}
+
+void EndstonePlayer::removeDebugShape(std::uint64_t id)
+{
+    // TODO(endstone): implement
+}
+
+void EndstonePlayer::removeDebugShapes()
+{
+    // TODO(endstone): implement
+}
+
 bool EndstonePlayer::handlePacket(Packet &packet)
 {
     switch (packet.getId()) {

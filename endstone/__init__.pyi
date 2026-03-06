@@ -626,6 +626,23 @@ class Player(Mob):
         Sends a packet to the player.
         """
         ...
+    def add_debug_shape(
+        self, location: Location, shape: debug.DebugBox | debug.DebugSphere | debug.DebugCircle | debug.DebugLine | debug.DebugArrow | debug.DebugText
+    ) -> int:
+        """
+        Adds a debug shape visible only to this player.
+        """
+        ...
+    def remove_debug_shape(self, id: int) -> None:
+        """
+        Removes a specific debug shape from this player by its id.
+        """
+        ...
+    def remove_debug_shapes(self) -> None:
+        """
+        Removes all debug shapes visible to this player.
+        """
+        ...
 
 class ColorFormat:
     """
