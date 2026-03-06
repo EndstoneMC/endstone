@@ -16,6 +16,7 @@
 
 #include <cstdint>
 #include <memory>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -150,17 +151,6 @@ public:
      * @return the unique id assigned to the shape
      */
     virtual std::uint64_t addDebugShape(Location location, DebugShapeVariant shape) = 0;
-
-    /**
-     * @brief Adds a debug shape with a duration to this dimension, visible to all players in this dimension.
-     * The shape is automatically removed after the specified duration.
-     *
-     * @param location the location to place the shape
-     * @param shape the shape to add
-     * @param duration the duration in seconds before auto-removal
-     * @return the unique id assigned to the shape
-     */
-    virtual std::uint64_t addDebugShape(Location location, DebugShapeVariant shape, float duration) = 0;
 
     /**
      * @brief Removes a specific debug shape from this dimension by its id.

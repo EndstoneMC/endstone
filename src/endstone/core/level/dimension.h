@@ -36,6 +36,9 @@ public:
     [[nodiscard]] Item &dropItem(Location location, const ItemStack &item) override;
     [[nodiscard]] Actor *spawnActor(Location location, std::string type) override;
     [[nodiscard]] std::vector<Actor *> getActors() const override;
+    std::uint64_t addDebugShape(Location location, DebugShapeVariant shape) override;
+    void removeDebugShape(std::uint64_t id) override;
+    void clearDebugShapes() override;
 
     [[nodiscard]] ::Dimension &getHandle() const;
 

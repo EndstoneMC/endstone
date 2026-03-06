@@ -65,7 +65,14 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         .def("spawn_actor", &Dimension::spawnActor, py::arg("location"), py::arg("type"),
              py::return_value_policy::reference, "Creates an actor at the given Location")
         .def_property_readonly("actors", &Dimension::getActors, py::return_value_policy::reference_internal,
-                               "Get a list of all actors in this dimension");
+                               "Get a list of all actors in this dimension")
+        .def("add_debug_shape", &Dimension::addDebugShape,
+             py::arg("location"), py::arg("shape"),
+             "Adds a debug shape to this dimension, visible to all players.")
+        .def("remove_debug_shape", &Dimension::removeDebugShape, py::arg("id"),
+             "Removes a specific debug shape from this dimension by its id.")
+        .def("clear_debug_shapes", &Dimension::clearDebugShapes,
+             "Clears all debug shapes from this dimension.");
 
     level.def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
         .def_property_readonly("actors", &Level::getActors, "Get a list of all actors in this level",

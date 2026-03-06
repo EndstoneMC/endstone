@@ -133,6 +133,22 @@ std::vector<Actor *> EndstoneDimension::getActors() const
     return result;
 }
 
+std::uint64_t EndstoneDimension::addDebugShape(Location location, DebugShapeVariant shape)
+{
+    // TODO(endstone): implement
+    return 0;
+}
+
+void EndstoneDimension::removeDebugShape(std::uint64_t id)
+{
+    // TODO(endstone): implement
+}
+
+void EndstoneDimension::clearDebugShapes()
+{
+    // TODO(endstone): implement
+}
+
 ::Dimension &EndstoneDimension::getHandle() const
 {
     if (!dimension_.isSet()) {
