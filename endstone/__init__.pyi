@@ -37,6 +37,7 @@ from .ban import IpBanList, PlayerBanList
 from .block import BlockData
 from .boss import BarColor, BarFlag, BarStyle, BossBar
 from .command import CommandSender, ConsoleCommandSender
+from .debug import DebugArrow, DebugBox, DebugCircle, DebugLine, DebugSphere, DebugText
 from .form import ActionForm, MessageForm, ModalForm
 from .inventory import Inventory, ItemFactory, PlayerInventory
 from .lang import Language, Translatable
@@ -627,7 +628,7 @@ class Player(Mob):
         """
         ...
     def add_debug_shape(
-        self, location: Location, shape: debug.DebugBox | debug.DebugSphere | debug.DebugCircle | debug.DebugLine | debug.DebugArrow | debug.DebugText
+        self, location: Location, shape: DebugBox | DebugSphere | DebugCircle | DebugLine | DebugArrow | DebugText
     ) -> int:
         """
         Adds a debug shape visible only to this player.
