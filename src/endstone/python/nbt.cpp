@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "endstone_python.h"
+#include "literal.h"
 
 namespace py = pybind11;
 
@@ -76,6 +77,27 @@ static std::size_t normalize_index(py::ssize_t i, std::size_t n)
     return static_cast<std::size_t>(i);
 }
 
+template <typename T, typename PyClass>
+static void bind_dump(PyClass &cls)
+{
+    cls.def(
+        "dump",
+        [](const T &self, std::optional<std::string> name, const Literal<"little", "big"> &byte_order,
+           bool network) -> py::bytes {
+            nbt::Tag tag{self};
+            auto endian = byte_order.value() == "big" ? std::endian::big : std::endian::little;
+            std::string result;
+            if (name.has_value()) {
+                result = nbt::dump(tag, name.value(), endian, network);
+            }
+            else {
+                result = nbt::dump(tag, endian, network);
+            }
+            return py::bytes(result);
+        },
+        py::arg("name") = py::none(), py::arg("byte_order") = "little", py::arg("network") = false);
+}
+
 template <typename T, typename... Args>
 auto bind_value_tag(py::module &m, const char *name, Args &&...args)
 {
@@ -102,6 +124,7 @@ auto bind_value_tag(py::module &m, const char *name, Args &&...args)
     if constexpr (std::is_floating_point_v<value_type>) {
         cls.def("__float__", [](const T &self) { return static_cast<py::float_>(self.value()); });
     }
+    bind_dump<T>(cls);
     return cls;
 }
 
@@ -204,177 +227,181 @@ static void bind_array_tag(py::module_ &m, const char *name, Args &&...args)
             );
         });
     }
+    bind_dump<T>(cls);
 }
 
 static void bind_list_tag(py::module &m)
 {
-    py::class_<ListTag, nbt::TagBase>(m, "ListTag")
-        .def(py::init<>())
-        .def(py::init([](py::iterable iter) {
-                 ListTag lt;
-                 for (py::handle h : iter) {
-                     auto v = py::cast<nbt::Tag>(h);
-                     lt.emplace_back(v);
-                 }
-                 return lt;
-             }),
-             py::arg("iterable"))
-        .def("__len__", [](const ListTag &self) { return static_cast<py::ssize_t>(self.size()); })
-        .def("__bool__", [](const ListTag &self) { return !self.empty(); })
-        .def("__str__", [](const ListTag &self) { return fmt::format("{}", self); })
-        .def("__repr__",
-             [](const ListTag &self) {
-                 py::list lst;
-                 for (const auto &tag : self) {
-                     lst.append(py::cast(tag));
-                 }
-                 return py::str("ListTag({})").format(py::repr(lst));
-             })
-        .def(
-            "__getitem__",
-            [](ListTag &self, py::ssize_t i) -> nbt::Tag & {
-                auto idx = normalize_index(i, self.size());
-                return self.at(idx);
-            },
-            py::return_value_policy::reference_internal)
-        .def("__setitem__",
-             [](ListTag &self, py::ssize_t i, const nbt::Tag &value) {
-                 if (value.type() == nbt::Type::End) {
-                     throw std::invalid_argument("ListTag cannot contain End tags.");
-                 }
-                 const auto n = self.size();
-                 auto idx = normalize_index(i, n);
-                 if (self.type() != nbt::Type::End && value.type() != self.type()) {
-                     throw std::invalid_argument("ListTag elements must have the same type.");
-                 }
-                 self.at(idx) = value;
-             })
-        .def("__delitem__",
-             [](ListTag &self, py::ssize_t i) {
-                 auto idx = normalize_index(i, self.size());
-                 self.erase(self.cbegin() + static_cast<std::ptrdiff_t>(idx));
-             })
-        .def(
-            "__iter__", [](ListTag &self) { return py::make_iterator(self.begin(), self.end()); },
-            py::keep_alive<0, 1>())
-        .def("clear", &ListTag::clear)
-        .def(
-            "append", [](ListTag &self, const nbt::Tag &v) { self.emplace_back(v); }, py::arg("tag"))
-        .def(
-            "extend",
-            [](ListTag &self, py::iterable it) {
-                for (py::handle h : it) {
-                    self.emplace_back(py::cast<nbt::Tag>(h));
-                }
-            },
-            py::arg("iterable"))
-        .def(
-            "pop",
-            [](ListTag &self, py::ssize_t index) {
-                auto idx = normalize_index(index, self.size());
-                auto out = self.at(idx);  // copy out
-                self.erase(self.cbegin() + static_cast<std::ptrdiff_t>(idx));
-                return out;
-            },
-            py::arg("index") = -1)
-        .def("to_list",
-             [](const ListTag &self) {
-                 py::list lst;
-                 for (const auto &elem : self) {
-                     lst.append(tag_to_python(elem));
-                 }
-                 return lst;
-             })
-        .def("size", &ListTag::size)
-        .def("empty", &ListTag::empty)
-        .def(py::self == py::self)
-        .def(py::self != py::self);
+    auto cls = py::class_<ListTag, nbt::TagBase>(m, "ListTag")
+                   .def(py::init<>())
+                   .def(py::init([](py::iterable iter) {
+                            ListTag lt;
+                            for (py::handle h : iter) {
+                                auto v = py::cast<nbt::Tag>(h);
+                                lt.emplace_back(v);
+                            }
+                            return lt;
+                        }),
+                        py::arg("iterable"))
+                   .def("__len__", [](const ListTag &self) { return static_cast<py::ssize_t>(self.size()); })
+                   .def("__bool__", [](const ListTag &self) { return !self.empty(); })
+                   .def("__str__", [](const ListTag &self) { return fmt::format("{}", self); })
+                   .def("__repr__",
+                        [](const ListTag &self) {
+                            py::list lst;
+                            for (const auto &tag : self) {
+                                lst.append(py::cast(tag));
+                            }
+                            return py::str("ListTag({})").format(py::repr(lst));
+                        })
+                   .def(
+                       "__getitem__",
+                       [](ListTag &self, py::ssize_t i) -> nbt::Tag & {
+                           auto idx = normalize_index(i, self.size());
+                           return self.at(idx);
+                       },
+                       py::return_value_policy::reference_internal)
+                   .def("__setitem__",
+                        [](ListTag &self, py::ssize_t i, const nbt::Tag &value) {
+                            if (value.type() == nbt::Type::End) {
+                                throw std::invalid_argument("ListTag cannot contain End tags.");
+                            }
+                            const auto n = self.size();
+                            auto idx = normalize_index(i, n);
+                            if (self.type() != nbt::Type::End && value.type() != self.type()) {
+                                throw std::invalid_argument("ListTag elements must have the same type.");
+                            }
+                            self.at(idx) = value;
+                        })
+                   .def("__delitem__",
+                        [](ListTag &self, py::ssize_t i) {
+                            auto idx = normalize_index(i, self.size());
+                            self.erase(self.cbegin() + static_cast<std::ptrdiff_t>(idx));
+                        })
+                   .def(
+                       "__iter__", [](ListTag &self) { return py::make_iterator(self.begin(), self.end()); },
+                       py::keep_alive<0, 1>())
+                   .def("clear", &ListTag::clear)
+                   .def(
+                       "append", [](ListTag &self, const nbt::Tag &v) { self.emplace_back(v); }, py::arg("tag"))
+                   .def(
+                       "extend",
+                       [](ListTag &self, py::iterable it) {
+                           for (py::handle h : it) {
+                               self.emplace_back(py::cast<nbt::Tag>(h));
+                           }
+                       },
+                       py::arg("iterable"))
+                   .def(
+                       "pop",
+                       [](ListTag &self, py::ssize_t index) {
+                           auto idx = normalize_index(index, self.size());
+                           auto out = self.at(idx);  // copy out
+                           self.erase(self.cbegin() + static_cast<std::ptrdiff_t>(idx));
+                           return out;
+                       },
+                       py::arg("index") = -1)
+                   .def("to_list",
+                        [](const ListTag &self) {
+                            py::list lst;
+                            for (const auto &elem : self) {
+                                lst.append(tag_to_python(elem));
+                            }
+                            return lst;
+                        })
+                   .def("size", &ListTag::size)
+                   .def("empty", &ListTag::empty)
+                   .def(py::self == py::self)
+                   .def(py::self != py::self);
+    bind_dump<ListTag>(cls);
 }
 
 static void bind_compound_tag(py::module &m)
 {
-    py::class_<CompoundTag, nbt::TagBase>(m, "CompoundTag")
-        .def(py::init<>())
-        .def(py::init([](py::dict d) {
-                 CompoundTag c;
-                 for (auto item : d) {
-                     auto key = py::cast<std::string>(item.first);
-                     auto val = py::cast<nbt::Tag>(item.second);
-                     c.insert_or_assign(key, std::move(val));
-                 }
-                 return c;
-             }),
-             py::arg("mapping "))
-        .def("__len__", &CompoundTag::size)
-        .def("__bool__", [](const CompoundTag &self) { return !self.empty(); })
-        .def("__contains__", &CompoundTag::contains, py::arg("key"))
-        .def(
-            "__getitem__", [](CompoundTag &self, const std::string &key) -> nbt::Tag & { return self.at(key); },
-            py::return_value_policy::reference_internal)
-        .def("__setitem__", [](CompoundTag &self, const std::string &key,
-                               const nbt::Tag &value) { self.insert_or_assign(key, value); })
-        .def(
-            "setdefault",
-            [](CompoundTag &self, const std::string &key, const nbt::Tag &default_value) -> nbt::Tag & {
-                if (!self.contains(key)) {
-                    self.insert_or_assign(key, default_value);
+    auto cls =
+        py::class_<CompoundTag, nbt::TagBase>(m, "CompoundTag")
+            .def(py::init<>())
+            .def(py::init([](py::dict d) {
+                     CompoundTag c;
+                     for (auto item : d) {
+                         auto key = py::cast<std::string>(item.first);
+                         auto val = py::cast<nbt::Tag>(item.second);
+                         c.insert_or_assign(key, std::move(val));
+                     }
+                     return c;
+                 }),
+                 py::arg("mapping "))
+            .def("__len__", &CompoundTag::size)
+            .def("__bool__", [](const CompoundTag &self) { return !self.empty(); })
+            .def("__contains__", &CompoundTag::contains, py::arg("key"))
+            .def(
+                "__getitem__", [](CompoundTag &self, const std::string &key) -> nbt::Tag & { return self.at(key); },
+                py::return_value_policy::reference_internal)
+            .def("__setitem__", [](CompoundTag &self, const std::string &key,
+                                   const nbt::Tag &value) { self.insert_or_assign(key, value); })
+            .def(
+                "setdefault",
+                [](CompoundTag &self, const std::string &key, const nbt::Tag &default_value) -> nbt::Tag & {
+                    if (!self.contains(key)) {
+                        self.insert_or_assign(key, default_value);
+                    }
+                    return self.at(key);
+                },
+                py::return_value_policy::reference_internal, py::arg("key"), py::arg("default"))
+            .def("clear", &CompoundTag::clear)
+            .def(
+                "pop",
+                [](CompoundTag &self, const std::string &key) {
+                    if (self.contains(key)) {
+                        auto removed = self.at(key);
+                        self.erase(key);
+                        return removed;
+                    }
+                    throw py::key_error("key not found: " + key);
+                },
+                py::arg("key"))
+            .def(
+                "pop",
+                [](CompoundTag &self, const std::string &key, py::object default_value) -> py::object {
+                    if (self.contains(key)) {
+                        auto removed = self.at(key);
+                        self.erase(key);
+                        return py::cast(removed);
+                    }
+                    return default_value;
+                },
+                py::arg("key"), py::arg("default") = py::none())
+            .def(
+                "__iter__", [](CompoundTag &self) { return py::make_key_iterator(self.begin(), self.end()); },
+                py::keep_alive<0, 1>())
+            .def(
+                "keys", [](CompoundTag &self) { return py::make_key_iterator(self.begin(), self.end()); },
+                py::keep_alive<0, 1>())
+            .def(
+                "values", [](CompoundTag &self) { return py::make_value_iterator(self.begin(), self.end()); },
+                py::keep_alive<0, 1>())
+            .def(
+                "items", [](CompoundTag &self) { return py::make_iterator(self.begin(), self.end()); },
+                py::keep_alive<0, 1>())
+            .def(py::self == py::self)
+            .def(py::self != py::self)
+            .def("to_dict",
+                 [](const CompoundTag &self) {
+                     py::dict d;
+                     for (const auto &[k, v] : self) {
+                         d[py::str(k)] = tag_to_python(v);
+                     }
+                     return d;
+                 })
+            .def("__str__", [](const CompoundTag &self) { return fmt::format("{}", self); })
+            .def("__repr__", [](const CompoundTag &self) {
+                py::dict d;
+                for (const auto &[k, v] : self) {
+                    d[py::str(k)] = py::cast(v);
                 }
-                return self.at(key);
-            },
-            py::return_value_policy::reference_internal, py::arg("key"), py::arg("default"))
-        .def("clear", &CompoundTag::clear)
-        .def(
-            "pop",
-            [](CompoundTag &self, const std::string &key) {
-                if (self.contains(key)) {
-                    auto removed = self.at(key);
-                    self.erase(key);
-                    return removed;
-                }
-                throw py::key_error("key not found: " + key);
-            },
-            py::arg("key"))
-        .def(
-            "pop",
-            [](CompoundTag &self, const std::string &key, py::object default_value) -> py::object {
-                if (self.contains(key)) {
-                    auto removed = self.at(key);
-                    self.erase(key);
-                    return py::cast(removed);
-                }
-                return default_value;
-            },
-            py::arg("key"), py::arg("default") = py::none())
-        .def(
-            "__iter__", [](CompoundTag &self) { return py::make_key_iterator(self.begin(), self.end()); },
-            py::keep_alive<0, 1>())
-        .def(
-            "keys", [](CompoundTag &self) { return py::make_key_iterator(self.begin(), self.end()); },
-            py::keep_alive<0, 1>())
-        .def(
-            "values", [](CompoundTag &self) { return py::make_value_iterator(self.begin(), self.end()); },
-            py::keep_alive<0, 1>())
-        .def(
-            "items", [](CompoundTag &self) { return py::make_iterator(self.begin(), self.end()); },
-            py::keep_alive<0, 1>())
-        .def(py::self == py::self)
-        .def(py::self != py::self)
-        .def("to_dict",
-             [](const CompoundTag &self) {
-                 py::dict d;
-                 for (const auto &[k, v] : self) {
-                     d[py::str(k)] = tag_to_python(v);
-                 }
-                 return d;
-             })
-        .def("__str__", [](const CompoundTag &self) { return fmt::format("{}", self); })
-        .def("__repr__", [](const CompoundTag &self) {
-            py::dict d;
-            for (const auto &[k, v] : self) {
-                d[py::str(k)] = py::cast(v);
-            }
-            return py::str("CompoundTag({})").format(py::repr(d));
-        });
+                return py::str("CompoundTag({})").format(py::repr(d));
+            });
+    bind_dump<CompoundTag>(cls);
 }
 
 void init_nbt(py::module_ &m)
@@ -391,5 +418,17 @@ void init_nbt(py::module_ &m)
     bind_array_tag<IntArrayTag>(m, "IntArrayTag");
     bind_list_tag(m);
     bind_compound_tag(m);
+
+    // load(data, byte_order="little", network=False) -> Tag or tuple(Tag, str)
+    m.def(
+        "load",
+        [](py::bytes data, const Literal<"little", "big"> &byte_order, bool network) -> py::object {
+            auto endian = byte_order.value() == "big" ? std::endian::big : std::endian::little;
+            auto sv = std::string_view(PyBytes_AsString(data.ptr()), PyBytes_Size(data.ptr()));
+            std::string name;
+            auto tag = nbt::load(sv, name, endian, network);
+            return py::make_tuple(py::cast(tag), py::str(name));
+        },
+        py::arg("data"), py::arg("byte_order") = "little", py::arg("network") = false);
 }
 }  // namespace endstone::python

@@ -12,8 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <bit>
+
 #include <gtest/gtest.h>
 
+#include "endstone/nbt/io.h"
 #include "endstone/nbt/tag.h"
 
 using namespace endstone;
@@ -307,3 +310,195 @@ TEST(NbtCompoundTag, SelfAssignment)
     EXPECT_EQ(inner.size(), 1);
     EXPECT_EQ(inner.at("a").get<IntTag>(), 1);
 }
+
+// ---- NBT IO Tests ----
+
+struct NbtIoParam {
+    std::endian byte_order;
+    bool network;
+    std::string name;
+};
+
+class NbtIoFormatTest : public ::testing::TestWithParam<NbtIoParam> {};
+
+TEST_P(NbtIoFormatTest, RoundTripByte)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{ByteTag{42}};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripShort)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{ShortTag{-1234}};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripInt)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{IntTag{100000}};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripLong)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{LongTag{-9876543210LL}};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripFloat)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{FloatTag{3.14f}};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripDouble)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{DoubleTag{2.718281828}};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripString)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{StringTag{"Hello NBT!"}};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripByteArray)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{ByteArrayTag{1, 2, 3, 255, 0}};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripIntArray)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{IntArrayTag{-1, 0, 1, 2147483647, -2147483647}};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripList)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{ListTag{IntTag{10}, IntTag{20}, IntTag{30}}};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripEmptyList)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{ListTag{}};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripCompound)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{CompoundTag{
+        {"name", StringTag{"Sword"}},
+        {"damage", IntTag{7}},
+        {"enchanted", ByteTag{1}},
+    }};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripEmptyCompound)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{CompoundTag{}};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, RoundTripNestedCompound)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{CompoundTag{
+        {"display",
+         CompoundTag{
+             {"Name", StringTag{"Diamond Sword"}},
+             {"Lore",
+              ListTag{
+                  StringTag{"Sharp"},
+                  StringTag{"Ancient"},
+              }},
+         }},
+        {"data", ByteArrayTag{10, 20, 30}},
+        {"ids", IntArrayTag{100, 200, 300}},
+        {"matrix",
+         ListTag{
+             ListTag{IntTag{1}, IntTag{2}},
+             ListTag{IntTag{3}, IntTag{4}},
+         }},
+    }};
+    auto data = nbt::dump(original, byte_order, network);
+    auto loaded = nbt::load(data, byte_order, network);
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, NamedTagRoundTrip)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{CompoundTag{
+        {"key", StringTag{"value"}},
+        {"num", LongTag{42}},
+    }};
+    std::string name = "MyRoot";
+    auto data = nbt::dump(original, name, byte_order, network);
+
+    std::string loaded_name;
+    auto loaded = nbt::load(data, loaded_name, byte_order, network);
+    EXPECT_EQ(loaded_name, "MyRoot");
+    EXPECT_EQ(original, loaded);
+}
+
+TEST_P(NbtIoFormatTest, DumpMemberFunction)
+{
+    auto [byte_order, network, _] = GetParam();
+    nbt::Tag original{IntTag{99}};
+    auto data1 = original.dump(byte_order, network);
+    auto data2 = nbt::dump(original, byte_order, network);
+    EXPECT_EQ(data1, data2);
+
+    auto data3 = original.dump("test", byte_order, network);
+    auto data4 = nbt::dump(original, "test", byte_order, network);
+    EXPECT_EQ(data3, data4);
+}
+
+INSTANTIATE_TEST_SUITE_P(AllFormats, NbtIoFormatTest,
+                         ::testing::Values(NbtIoParam{std::endian::little, false, "LittleEndian"},
+                                           NbtIoParam{std::endian::big, false, "BigEndian"},
+                                           NbtIoParam{std::endian::little, true, "Network"}),
+                         [](const auto &info) { return info.param.name; });

@@ -16,6 +16,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "ShortTag",
             "StringTag",
             "Tag",
+            "load",
         ],
     },
 )

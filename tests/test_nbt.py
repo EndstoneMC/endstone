@@ -13,6 +13,7 @@ from endstone.nbt import (
     ShortTag,
     StringTag,
     Tag,
+    load,
 )
 
 
@@ -680,6 +681,123 @@ def test_to_dict_does_not_mutate_original():
     # original should be unchanged
     assert ct["a"] == 1
     assert "c" not in ct
+
+
+# ── NBT IO (dump / load) ──────────────────────────────────────────────
+
+
+@pytest.mark.parametrize("byte_order", ["little", "big"])
+@pytest.mark.parametrize("network", [False, True])
+@pytest.mark.parametrize(
+    "tag",
+    [
+        ByteTag(42),
+        ShortTag(1000),
+        IntTag(100000),
+        LongTag(9999999999),
+        FloatTag(1.5),
+        DoubleTag(3.14),
+        StringTag("hello"),
+        ByteArrayTag([1, 2, 3, 255]),
+        IntArrayTag([10, 20, 30]),
+        ListTag([IntTag(1), IntTag(2), IntTag(3)]),
+        ListTag(),
+        CompoundTag({"x": IntTag(1), "y": StringTag("test")}),
+        CompoundTag(),
+    ],
+    ids=[
+        "byte", "short", "int", "long", "float", "double", "string",
+        "byte_array", "int_array", "list", "empty_list",
+        "compound", "empty_compound",
+    ],
+)
+def test_dump_load_roundtrip(tag, byte_order, network):
+    if byte_order == "big" and network:
+        pytest.skip("network format is always little-endian")
+
+    data = tag.dump(byte_order=byte_order, network=network)
+    assert isinstance(data, bytes)
+    assert len(data) > 0
+
+    result = load(data, byte_order=byte_order, network=network)
+    assert result == tag
+
+
+@pytest.mark.parametrize("byte_order", ["little", "big"])
+def test_dump_load_named_roundtrip(byte_order):
+    tag = CompoundTag({"health": IntTag(20), "name": StringTag("Steve")})
+    data = tag.dump(name="Player", byte_order=byte_order)
+    assert isinstance(data, bytes)
+
+    result, name = load(data,  byte_order=byte_order)
+    assert name == "Player"
+    assert result == tag
+
+
+def test_dump_load_nested_compound():
+    tag = CompoundTag({
+        "pos": CompoundTag({"x": IntTag(1), "y": IntTag(2), "z": IntTag(3)}),
+        "inventory": ListTag([
+            CompoundTag({"id": StringTag("stone"), "count": ByteTag(64)}),
+            CompoundTag({"id": StringTag("dirt"), "count": ByteTag(32)}),
+        ]),
+        "name": StringTag("Player"),
+    })
+    data = tag.dump()
+    result = load(data)
+    assert result == tag
+
+
+def test_dump_returns_bytes():
+    tag = IntTag(42)
+    data = tag.dump()
+    assert type(data) is bytes
+
+
+def test_dump_network_format():
+    tag = IntTag(42)
+    data_normal = tag.dump()
+    data_network = tag.dump(network=True)
+    # network varint encoding may differ in size from fixed-width
+    assert isinstance(data_network, bytes)
+    assert len(data_network) > 0
+    # round-trip
+    assert load(data_network, network=True) == tag
+
+
+def test_load_with_name_returns_tuple():
+    tag = StringTag("test")
+    data = tag.dump(name="myname")
+    result = load(data)
+    assert isinstance(result, tuple)
+    assert len(result) == 2
+    assert result[0] == tag
+    assert result[1] == "myname"
+
+
+def test_dump_invalid_byte_order():
+    tag = IntTag(1)
+    with pytest.raises(Exception):
+        tag.dump(byte_order="native")
+
+
+def test_all_value_tags_have_dump():
+    for cls, val in [
+        (ByteTag, 1), (ShortTag, 2), (IntTag, 3), (LongTag, 4),
+        (FloatTag, 1.0), (DoubleTag, 2.0), (StringTag, "x"),
+    ]:
+        tag = cls(val)
+        data = tag.dump()
+        assert isinstance(data, bytes)
+        assert load(data) == tag
+
+
+def test_array_tags_have_dump():
+    for cls, vals in [(ByteArrayTag, [1, 2, 3]), (IntArrayTag, [10, 20])]:
+        tag = cls(vals)
+        data = tag.dump()
+        assert isinstance(data, bytes)
+        assert load(data) == tag
 
 
 def test_compound_tag_self_assignment():
