@@ -81,7 +81,7 @@ jobs:
         run: 7z a endstone-win_amd64-portable.zip .\dist\endstone-win_amd64-portable\*
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           path: endstone-win_amd64-portable.zip
           name: endstone-win_amd64-portable.zip
