@@ -120,6 +120,9 @@ public:
     void closeForm() override;
     void sendPacket(int packet_id, std::string_view payload) const override;
     void sendMap(MapView &map) override;
+    std::uint64_t addDebugShape(Location location, DebugShapeVariant shape) override;
+    void removeDebugShape(std::uint64_t id) override;
+    void removeDebugShapes() override;
 
     bool handlePacket(Packet &packet);
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);

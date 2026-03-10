@@ -139,6 +139,7 @@ public:
      * @return A List of all actors currently residing in this dimension
      */
     [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
+
 };
 
 inline std::unique_ptr<Block> Location::getBlock() const

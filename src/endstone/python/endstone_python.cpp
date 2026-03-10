@@ -30,6 +30,7 @@ void init_boss(py::module_ &);
 void init_color_format(py::module_ &);
 void init_command(py::module &, py_class<CommandSender> &command_sender);
 void init_damage(py::module_ &);
+void init_debug(py::module_ &);
 void init_effect(py::module_ &);
 void init_enchantments(py::module_ &);
 void init_event(py::module_ &, py::class_<Event> &event);
@@ -69,6 +70,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto m_command = m.def_submodule("command", "Classes relating to handling specialized non-chat player input.");
     auto m_damage =
         m.def_submodule("damage", "Classes relating to damage types and sources applicable to mobs (living entities).");
+    auto m_debug = m.def_submodule("debug", "Classes relating to debug shape drawing utilities.");
     auto m_effect = m.def_submodule("effect", "Classes relating to the effects that can be applied to entities.");
     auto m_enchantments =
         m.def_submodule("enchantments", "Classes relating to the specialized enhancements to ItemStacks.");
@@ -133,8 +135,8 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto block = py::class_<Block>(m_block, "Block", "Represents a block.");
     auto command_sender = py_class<CommandSender>(m_command, "CommandSender", "Represents a command sender.");
     auto actor = py_class<Actor>(m_actor, "Actor", "Represents a base actor in the level.");
-    auto mob = py_class<Mob>(m_actor, "Mob",
-                      "Represents a mobile entity (i.e. living entity), such as a monster or player.");
+    auto mob =
+        py_class<Mob>(m_actor, "Mob", "Represents a mobile entity (i.e. living entity), such as a monster or player.");
     py::class_<OfflinePlayer>(
         m, "OfflinePlayer",
         "Represents a reference to a player identity and the data belonging to a player that is stored on the disk and "
@@ -152,6 +154,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_attribute(m_attribute);
     init_color_format(m);
     init_damage(m_damage);
+    init_debug(m_debug);
     init_game_mode(m);
     init_logger(m);
     init_lang(m_lang);
@@ -469,7 +472,12 @@ void init_player(py::module_ &m, py_class<Player> &player)
             [](const Player &self, const int packet_id, const py::bytes &payload) {
                 return self.sendPacket(packet_id, payload);
             },
-            py::arg("packet_id"), py::arg("payload"), "Sends a packet to the player.");
+            py::arg("packet_id"), py::arg("payload"), "Sends a packet to the player.")
+        .def("add_debug_shape", &Player::addDebugShape, py::arg("location"), py::arg("shape"),
+             "Adds a debug shape visible only to this player.")
+        .def("remove_debug_shape", &Player::removeDebugShape, py::arg("id"),
+             "Removes a specific debug shape from this player by its id.")
+        .def("remove_debug_shapes", &Player::removeDebugShapes, "Removes all debug shapes visible to this player.");
 }
 
 }  // namespace endstone::python
