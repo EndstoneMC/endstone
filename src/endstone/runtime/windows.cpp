@@ -167,6 +167,19 @@ std::string get_executable_pathname()
     return file_name;
 }
 
+std::size_t get_executable_size()
+{
+    static std::size_t size = []() {
+        MODULEINFO mi = {nullptr};
+        if (!GetModuleInformation(GetCurrentProcess(), get_module_handle(nullptr), &mi, sizeof(mi))) {
+            throw std::system_error(static_cast<int>(GetLastError()), std::system_category(),
+                                    "GetModuleInformation failed");
+        }
+        return static_cast<std::size_t>(mi.SizeOfImage);
+    }();
+    return size;
+}
+
 namespace {
 int stdin_fd = -1;
 int null_fd = -1;
