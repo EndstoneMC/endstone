@@ -14,6 +14,7 @@
 
 #include "endstone/core/devtools/devtools_command.h"
 
+#include "endstone/command/console_command_sender.h"
 #include "endstone/core/devtools/devtools.h"
 
 namespace endstone::core {
@@ -32,7 +33,7 @@ bool DevToolsCommand::execute(CommandSender &sender, const std::vector<std::stri
         return true;
     }
 
-    if (!sender.asConsole()) {
+    if (!sender.is<ConsoleCommandSender>()) {
         sender.sendErrorMessage("This command can only be executed from the console.");
         return true;
     }

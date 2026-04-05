@@ -24,49 +24,13 @@
 
 namespace endstone {
 
-class Actor;
-class BlockCommandSender;
-class ConsoleCommandSender;
-class Mob;
 class Server;
-class Player;
 
 /**
  * @brief Represents a command sender.
  */
 class CommandSender : public Permissible {
 public:
-    // Permissible
-    [[nodiscard]] CommandSender *asCommandSender() const override { return const_cast<CommandSender *>(this); }
-
-    /**
-     * @brief Gets a CommandSender as ConsoleCommandSender
-     *
-     * @return CommandSender, nullptr if not a ConsoleCommandSender
-     */
-    [[nodiscard]] virtual ConsoleCommandSender *asConsole() const = 0;
-
-    /**
-     * @brief Gets a CommandSender as BlockCommandSender
-     *
-     * @return CommandSender, nullptr if not a BlockCommandSender
-     */
-    [[nodiscard]] virtual BlockCommandSender *asBlock() const = 0;
-
-    /**
-     * @brief Gets a CommandSender as Actor
-     *
-     * @return Actor, nullptr if not an Actor
-     */
-    [[nodiscard]] virtual Actor *asActor() const = 0;
-
-    /**
-     * @brief Gets a CommandSender as Player
-     *
-     * @return Player, nullptr if not a Player
-     */
-    [[nodiscard]] virtual Player *asPlayer() const = 0;
-
     /**
      * @brief Sends this sender a message
      *

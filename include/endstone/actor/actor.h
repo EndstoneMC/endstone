@@ -22,28 +22,12 @@
 #include "endstone/level/location.h"
 
 namespace endstone {
-class Item;
-class Mob;
 class Level;
 /**
  * @brief Represents a base actor in the level.
  */
 class Actor : public CommandSender {
 public:
-    /**
-     * @brief Gets an Actor as Mob
-     *
-     * @return Mob, nullptr if not an Mob
-     */
-    [[nodiscard]] virtual Mob *asMob() const = 0;
-
-    /**
-     * @brief Gets an Actor as Item
-     *
-     * @return Item, nullptr if not an Item
-     */
-    [[nodiscard]] virtual Item *asItem() const = 0;
-
     /**
      * @brief Get the type of the actor.
      *

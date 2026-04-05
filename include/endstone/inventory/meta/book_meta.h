@@ -25,8 +25,6 @@ namespace endstone {
  */
 class BookMeta : public WritableBookMeta {
 public:
-    ENDSTONE_ITEM_META_TYPE(Book)
-
     /**
      * @brief Represents the generation (or level of copying) of a written book
      */

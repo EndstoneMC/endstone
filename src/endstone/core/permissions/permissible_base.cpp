@@ -17,6 +17,7 @@
 #include <memory>
 
 #include "endstone/core/server.h"
+#include "endstone/core/type.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_attachment_info.h"
 
@@ -186,9 +187,14 @@ std::unordered_set<PermissionAttachmentInfo *> PermissibleBase::getEffectivePerm
     return result;
 }
 
-CommandSender *PermissibleBase::asCommandSender() const
+const std::type_info &PermissibleBase::getClassTypeId() const
 {
-    return nullptr;
+    return typeid(Permissible);
+}
+
+bool PermissibleBase::isInstanceOf(const std::type_info &target) const
+{
+    return core::isInstanceOf(*this, target);
 }
 
 void PermissibleBase::clearPermissions()

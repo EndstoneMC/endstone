@@ -28,6 +28,7 @@ add_executable(endstone_test
         test_service_manager.cpp
         test_thread_pool_executor.cpp
         test_uuid.cpp
+        test_object.cpp
         test_vector.cpp
 )
 add_dependencies(endstone_test test_plugin)

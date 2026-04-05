@@ -25,8 +25,6 @@ namespace endstone {
  */
 class WritableBookMeta : public ItemMeta {
 public:
-    ENDSTONE_ITEM_META_TYPE(WritableBook)
-
     /**
      * @brief Checks for the existence of pages in the book.
      *

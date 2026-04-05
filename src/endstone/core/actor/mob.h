@@ -26,10 +26,6 @@ class EndstoneMobBase : public EndstoneActorBase<Interface, Handle> {
 
 public:
     using Base::Base;
-    [[nodiscard]] Mob *asMob() const override
-    {
-        return const_cast<EndstoneMobBase *>(this);
-    }
 
     void setRotation(float yaw, float pitch) override
     {

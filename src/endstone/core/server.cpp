@@ -15,6 +15,7 @@
 #include "endstone/core/server.h"
 
 #include <filesystem>
+#include "endstone/core/type.h"
 #include <iostream>
 #include <memory>
 
@@ -68,6 +69,7 @@ namespace py = pybind11;
 namespace endstone::core {
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
 {
+    registerTypes();
     EndstoneServer::getLogger().info("{}This server is running {} version: {} (Minecraft: {})",
                                      ColorFormat::DarkAqua + ColorFormat::Bold, EndstoneServer::getName(),
                                      EndstoneServer::getVersion(), EndstoneServer::getMinecraftVersion());
@@ -505,7 +507,7 @@ void EndstoneServer::broadcast(const Message &message, const std::string &permis
 {
     std::unordered_set<const CommandSender *> recipients;
     for (const auto *permissible : getPluginManager().getPermissionSubscriptions(permission)) {
-        if (const auto *sender = permissible->asCommandSender(); sender && sender->hasPermission(permission)) {
+        if (const auto *sender = permissible->as<CommandSender>(); sender && sender->hasPermission(permission)) {
             recipients.insert(sender);
         }
     }

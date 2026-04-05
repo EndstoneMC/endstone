@@ -29,6 +29,7 @@ add_library(endstone_core
         player.cpp
         registry.cpp
         server.cpp
+        type.cpp
         signal_handler.cpp
         skin.cpp
         actor/actor.cpp

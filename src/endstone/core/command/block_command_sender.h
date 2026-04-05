@@ -24,7 +24,6 @@ class EndstoneBlockCommandSender : public ServerCommandSender<BlockCommandSender
 public:
     EndstoneBlockCommandSender(const CommandOrigin &origin, CommandOutput &output);
 
-    [[nodiscard]] BlockCommandSender *asBlock() const override;
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] std::string getName() const override;

@@ -18,11 +18,6 @@
 #include "endstone/core/server.h"
 
 namespace endstone::core {
-Item *EndstoneItem::asItem() const
-{
-    return const_cast<EndstoneItem *>(this);
-}
-
 ItemStack EndstoneItem::getItemStack() const
 {
     return EndstoneItemStack::fromMinecraft(getHandle().getItemStack());

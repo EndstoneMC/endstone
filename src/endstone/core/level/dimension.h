@@ -16,13 +16,14 @@
 
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/actor/actor.h"
+#include "endstone/actor/item.h"
 #include "endstone/core/server.h"
 #include "endstone/level/dimension.h"
 
 namespace endstone::core {
 class EndstoneDimension : public Dimension {
 public:
-    explicit EndstoneDimension( WeakRef<::Dimension> dimension, EndstoneLevel &level);
+    explicit EndstoneDimension(WeakRef<::Dimension> dimension, EndstoneLevel &level);
     ~EndstoneDimension() override = default;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] Type getType() const override;

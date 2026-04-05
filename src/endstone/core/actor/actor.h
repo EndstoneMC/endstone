@@ -23,6 +23,7 @@
 #include "endstone/core/level/dimension.h"
 #include "endstone/core/permissions/permissible_base.h"
 #include "endstone/core/server.h"
+#include "endstone/core/type.h"
 
 class Actor;
 
@@ -101,27 +102,18 @@ public:
         return ActorPermissibleBase::get().getEffectivePermissions();
     }
 
+    // Object
+    [[nodiscard]] const std::type_info &getClassTypeId() const override
+    {
+        return typeid(Interface);
+    }
+
+    [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override
+    {
+        return core::isInstanceOf(*this, target);
+    }
+
     // CommandSender
-    [[nodiscard]] ConsoleCommandSender *asConsole() const override
-    {
-        return nullptr;
-    }
-
-    [[nodiscard]] BlockCommandSender *asBlock() const override
-    {
-        return nullptr;
-    }
-
-    [[nodiscard]] Actor *asActor() const override
-    {
-        return const_cast<EndstoneActorBase *>(this);
-    }
-
-    [[nodiscard]] Player *asPlayer() const override
-    {
-        return nullptr;
-    }
-
     void sendMessage(const Message &message) const override {}
 
     void sendErrorMessage(const Message &message) const override {}
@@ -137,16 +129,6 @@ public:
     }
 
     // Actor
-    [[nodiscard]] Mob *asMob() const override
-    {
-        return nullptr;
-    }
-
-    [[nodiscard]] Item *asItem() const override
-    {
-        return nullptr;
-    }
-
     [[nodiscard]] std::string getType() const override
     {
         return getHandle().getActorIdentifier().getCanonicalName();

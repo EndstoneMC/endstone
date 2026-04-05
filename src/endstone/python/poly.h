@@ -17,106 +17,84 @@
 #include <pybind11/pybind11.h>
 
 namespace PYBIND11_NAMESPACE {
-template <>
-struct polymorphic_type_hook<endstone::Mob> {
-    static const void *get(const endstone::Mob *src, const std::type_info *&type)
+
+namespace detail {
+
+/**
+ * @brief Hierarchical polymorphic dispatch for pybind11.
+ *
+ * Each hook lists only its direct children. If a child type has its own
+ * poly_dispatch hook, dispatch is delegated to it automatically.
+ * Children should be listed most-derived first within the same level.
+ */
+template <typename Base, typename... Children>
+struct poly_dispatch {
+    // Tag so we can detect our own hooks vs pybind11 defaults
+    using is_poly_dispatch = std::true_type;
+
+    static const void *get(const Base *src, const std::type_info *&type)
     {
         if (!src) {
             return src;
         }
-        if (const auto *player = src->asPlayer()) {
-            type = &typeid(endstone::Player);
-            return player;
+        const void *result = nullptr;
+        (try_dispatch<Children>(src, type, result) || ...);
+        if (!result) {
+            type = &typeid(Base);
+            result = src;
         }
-        type = &typeid(endstone::Mob);
-        return src;
+        return result;
+    }
+
+private:
+    template <typename T>
+    static bool try_dispatch(const Base *src, const std::type_info *&type, const void *&result)
+    {
+        auto *child = src->template as<T>();
+        if (!child) {
+            return false;
+        }
+        if constexpr (requires { typename polymorphic_type_hook<T>::is_poly_dispatch; }) {
+            result = polymorphic_type_hook<T>::get(child, type);
+        }
+        else {
+            type = &typeid(T);
+            result = child;
+        }
+        return true;
     }
 };
+
+}  // namespace detail
+
+// Each hook lists only DIRECT children — delegation handles deeper dispatch.
+
+// ---- Permissible / CommandSender / Actor hierarchy ----
 
 template <>
-struct polymorphic_type_hook<endstone::Actor> {
-    static const void *get(const endstone::Actor *src, const std::type_info *&type)
-    {
-        if (!src) {
-            return src;
-        }
-        if (const auto *mob = src->asMob()) {
-            return polymorphic_type_hook<endstone::Mob>::get(mob, type);
-        }
-        if (const auto *item = src->asItem()) {
-            type = &typeid(endstone::Item);
-            return item;
-        }
-        type = &typeid(endstone::Actor);
-        return src;
-    }
-};
+struct polymorphic_type_hook<endstone::Mob> : detail::poly_dispatch<endstone::Mob, endstone::Player> {};
 
 template <>
-struct polymorphic_type_hook<endstone::CommandSender> {
-    static const void *get(const endstone::CommandSender *src, const std::type_info *&type)
-    {
-        if (!src) {
-            return src;
-        }
-        if (const auto *actor = src->asActor()) {
-            return polymorphic_type_hook<endstone::Actor>::get(actor, type);
-        }
-        if (const auto *console = src->asConsole()) {
-            type = &typeid(endstone::ConsoleCommandSender);
-            return console;
-        }
-        if (const auto *block = src->asBlock()) {
-            type = &typeid(endstone::BlockCommandSender);
-            return block;
-        }
-        type = &typeid(endstone::CommandSender);
-        return src;
-    }
-};
+struct polymorphic_type_hook<endstone::Actor> : detail::poly_dispatch<endstone::Actor, endstone::Mob, endstone::Item> {};
 
 template <>
-struct polymorphic_type_hook<endstone::Permissible> {
-    static const void *get(const endstone::Permissible *src, const std::type_info *&type)
-    {
-        if (!src) {
-            return src;
-        }
-        if (const auto *command_sender = src->asCommandSender()) {
-            return polymorphic_type_hook<endstone::CommandSender>::get(command_sender, type);
-        }
-        type = &typeid(endstone::Permissible);
-        return src;
-    }
-};
+struct polymorphic_type_hook<endstone::CommandSender>
+    : detail::poly_dispatch<endstone::CommandSender, endstone::Actor, endstone::ConsoleCommandSender,
+                            endstone::BlockCommandSender> {};
 
 template <>
-struct polymorphic_type_hook<endstone::ItemMeta> {
-    static const void *get(const endstone::ItemMeta *src, const std::type_info *&type)
-    {
-        if (!src) {
-            return src;
-        }
+struct polymorphic_type_hook<endstone::Permissible>
+    : detail::poly_dispatch<endstone::Permissible, endstone::CommandSender> {};
 
-        switch (src->getType()) {
-        case endstone::ItemMeta::Type::Map:
-            type = &typeid(endstone::MapMeta);
-            return static_cast<const endstone::MapMeta *>(src);
-        case endstone::ItemMeta::Type::WritableBook:
-            type = &typeid(endstone::WritableBookMeta);
-            return static_cast<const endstone::WritableBookMeta *>(src);
-        case endstone::ItemMeta::Type::Book:
-            type = &typeid(endstone::BookMeta);
-            return static_cast<const endstone::BookMeta *>(src);
-        case endstone::ItemMeta::Type::CrossBow:
-            type = &typeid(endstone::CrossbowMeta);
-            return static_cast<const endstone::CrossbowMeta *>(src);
-        case endstone::ItemMeta::Type::Item:
-        default:
-            break;
-        }
-        type = &typeid(endstone::ItemMeta);
-        return src;
-    }
-};
+// ---- ItemMeta hierarchy ----
+
+template <>
+struct polymorphic_type_hook<endstone::WritableBookMeta>
+    : detail::poly_dispatch<endstone::WritableBookMeta, endstone::BookMeta> {};
+
+template <>
+struct polymorphic_type_hook<endstone::ItemMeta>
+    : detail::poly_dispatch<endstone::ItemMeta, endstone::WritableBookMeta, endstone::MapMeta,
+                            endstone::CrossbowMeta> {};
+
 }  // namespace PYBIND11_NAMESPACE

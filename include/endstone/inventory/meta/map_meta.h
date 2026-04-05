@@ -25,8 +25,6 @@ namespace endstone {
  */
 class MapMeta : public ItemMeta {
 public:
-    ENDSTONE_ITEM_META_TYPE(Map)
-
     using MapId = std::int64_t;
     /**
      * @brief Checks for existence of a map ID number.

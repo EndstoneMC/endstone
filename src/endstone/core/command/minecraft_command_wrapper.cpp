@@ -19,8 +19,10 @@
 #include "bedrock/locale/i18n.h"
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/server/commands/minecraft_commands.h"
+#include "endstone/command/console_command_sender.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/server.h"
+#include "endstone/player.h"
 
 namespace endstone::core {
 
@@ -94,7 +96,7 @@ bool MinecraftCommandWrapper::execute(CommandSender &sender, const std::vector<s
 std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(CommandSender &sender)
 {
     const auto *level = EndstoneServer::getInstance().getEndstoneLevel();
-    if (const auto *console = sender.asConsole(); console) {
+    if (const auto *console = sender.as<ConsoleCommandSender>(); console) {
         ::CompoundTag tag;
         {
             tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::DedicatedServer));
@@ -105,7 +107,7 @@ std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(Command
         return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(level->getHandle()));
     }
 
-    if (const auto *player = sender.asPlayer(); player) {
+    if (const auto *player = sender.as<Player>(); player) {
         ::CompoundTag tag;
         {
             tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Player));
@@ -114,7 +116,7 @@ std::unique_ptr<CommandOrigin> MinecraftCommandWrapper::getCommandOrigin(Command
         return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(level->getHandle()));
     }
 
-    if (const auto *actor = sender.asActor(); actor) {
+    if (const auto *actor = sender.as<Actor>(); actor) {
         ::CompoundTag tag;
         {
             tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Entity));

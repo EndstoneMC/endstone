@@ -120,11 +120,6 @@ std::unordered_set<PermissionAttachmentInfo *> EndstonePlayer::getEffectivePermi
     return perm_->getEffectivePermissions();
 }
 
-Player *EndstonePlayer::asPlayer() const
-{
-    return const_cast<EndstonePlayer *>(this);
-}
-
 void EndstonePlayer::sendMessage(const Message &message) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
@@ -247,7 +242,7 @@ void EndstonePlayer::kick(std::string message) const
 
 bool EndstonePlayer::performCommand(std::string command) const
 {
-    return server_.dispatchCommand(*asPlayer(), command);
+    return server_.dispatchCommand(*const_cast<EndstonePlayer *>(this), command);
 }
 
 bool EndstonePlayer::isSneaking() const

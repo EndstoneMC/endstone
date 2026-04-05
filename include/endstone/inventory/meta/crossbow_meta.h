@@ -24,8 +24,6 @@ namespace endstone {
  */
 class CrossbowMeta : public ItemMeta {
 public:
-    ENDSTONE_ITEM_META_TYPE(CrossBow)
-
     /**
      * @brief Returns whether the crossbow has a charged projectile.
      *

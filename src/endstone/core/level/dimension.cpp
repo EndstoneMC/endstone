@@ -14,13 +14,12 @@
 
 #include "endstone/core/level/dimension.h"
 
-#include <endstone/core/actor/item.h>
-#include <endstone/core/inventory/item_stack.h>
-
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
+#include "endstone/core/actor/item.h"
 #include "endstone/core/block/block.h"
+#include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/level/chunk.h"
 #include "endstone/core/level/level.h"
 
