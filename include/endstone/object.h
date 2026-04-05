@@ -18,10 +18,6 @@
 #include <typeinfo>
 
 namespace endstone {
-class Object;
-namespace core {
-bool isInstanceOf(const Object &obj, const std::type_info &target);
-}  // namespace core
 
 /**
  * @brief Base class providing runtime type identification and safe casting.
@@ -33,6 +29,16 @@ bool isInstanceOf(const Object &obj, const std::type_info &target);
 class Object {
 public:
     virtual ~Object() = default;
+
+    /**
+     * @internal For internal use only. Prefer is<T>() and as<T>() instead.
+     */
+    [[nodiscard]] virtual const std::type_info &getClassTypeId() const = 0;
+
+    /**
+     * @internal For internal use only. Prefer is<T>() and as<T>() instead.
+     */
+    [[nodiscard]] virtual bool isInstanceOf(const std::type_info &target) const = 0;
 
     /**
      * @brief Attempts to cast this object to the given type T.
@@ -77,12 +83,6 @@ public:
     {
         return isInstanceOf(typeid(T));
     }
-
-protected:
-    [[nodiscard]] virtual const std::type_info &getClassTypeId() const = 0;
-    [[nodiscard]] virtual bool isInstanceOf(const std::type_info &target) const = 0;
-
-    friend bool core::isInstanceOf(const Object &, const std::type_info &);
 };
 
 }  // namespace endstone
