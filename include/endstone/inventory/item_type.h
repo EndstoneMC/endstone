@@ -26,8 +26,6 @@ class ItemType : public Registry<ItemType>::Type {
 public:
     static constexpr auto Air = ItemTypeId::minecraft("air");
 
-    ENDSTONE_REGISTRY_TYPE(ItemType)
-
     /**
      * @brief Get the translation key, suitable for use in a translation component.
      *

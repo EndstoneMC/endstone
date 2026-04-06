@@ -14,102 +14,58 @@
 
 #pragma once
 
-#include <memory>
-
-#include <pybind11/functional.h>
+#include <pybind11/detail/internals.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/actor/actor_type.h"
 #include "endstone/registry.h"
 
 namespace py = pybind11;
 
 namespace endstone::python {
-using RegistryTypes = type_list<ActorType, BlockType, Enchantment, ItemType>;
 
-template <typename List>
-struct registry_getter;
+class PyRegistry {
+public:
+    explicit PyRegistry(const IRegistry &registry) : registry_(registry) {}
 
-template <typename... Ts>
-struct registry_getter<type_list<Ts...>> {
-    static py::object get(Server &self, const py::type &t)
+    [[nodiscard]] py::object get(const std::string &id) const
     {
-        py::object result = py::none();
-        bool matched = false;
-
-        (
-            [&] {
-                if (!matched && t.is(py::type::of<Ts>())) {
-                    matched = true;
-                    result =
-                        py::cast(&self.getRegistry<Ts>(), py::return_value_policy::reference_internal, py::cast(self));
-                }
-            }(),
-            ...);
-
-        return result;
+        if (const auto *p = registry_.get0(id)) {
+            return cast(p);
+        }
+        return py::none();
     }
+
+    [[nodiscard]] py::object getOrThrow(const std::string &id) const
+    {
+        if (const auto *p = registry_.get0(id)) {
+            return cast(p);
+        }
+        throw py::key_error(fmt::format("No registry entry found for identifier: {}", id));
+    }
+
+    [[nodiscard]] py::iterator iter() const
+    {
+        py::list items;
+        registry_.forEach0([this, &items](const void *p) {
+            items.append(cast(p));
+            return true;
+        });
+        return py::iter(items);
+    }
+
+    [[nodiscard]] bool contains(const std::string &id) const { return registry_.get0(id) != nullptr; }
+
+    [[nodiscard]] std::size_t size() const { return registry_.size(); }
+
+private:
+    [[nodiscard]] py::object cast(const void *p) const
+    {
+        auto *tinfo = py::detail::get_type_info(registry_.getTypeId());
+        return py::reinterpret_steal<py::object>(
+            py::detail::type_caster_generic::cast(p, py::return_value_policy::reference, {}, tinfo, nullptr, nullptr));
+    }
+
+    const IRegistry &registry_;
 };
-
-template <typename... Ts>
-py::object get_registry(const Server &self, const py::type &t, type_list<Ts...>)
-{
-    py::object result = py::none();
-    bool matched = false;
-    (
-        [&] {
-            if (!matched && t.is(py::type::of<Ts>())) {
-                matched = true;
-                result = py::cast(&self.getRegistry<Ts>(), py::return_value_policy::reference);
-            }
-        }(),
-        ...);
-    return result;
-}
-
-template <typename T, typename... Args>
-void bind_registry(py::module &m, Args &&...args)
-{
-    py::class_<Registry<T>>(m, (std::string(T::RegistryType) + "Registry").c_str(), std::forward<Args>(args)...)
-        .def("get", py::overload_cast<Identifier<T>>(&Registry<T>::get, py::const_), py::arg("id"),
-             py::return_value_policy::reference, "Get the object by its identifier.")
-        .def(
-            "get_or_throw",
-            [](const Registry<T> &self, const Identifier<T> id) -> const T & {
-                if (auto *p = self.get(id)) {
-                    return *p;
-                }
-                throw py::key_error(fmt::format("No registry entry found for identifier: {}", id));
-            },
-            py::arg("id"), py::return_value_policy::reference, "Get the object by its identifier or throw if missing.")
-        .def(
-            "__getitem__",
-            [](const Registry<T> &self, const Identifier<T> id) -> const T & {
-                if (auto *p = self.get(id)) {
-                    return *p;
-                }
-                throw py::key_error(fmt::format("No registry entry found for identifier: {}", id));
-            },
-            py::arg("id"), py::return_value_policy::reference)
-        .def("__iter__",
-             [](const Registry<T> &self) {
-                 py::list items;
-                 self.forEach([&items](const T &elem) {
-                     items.append(py::cast(&elem, py::return_value_policy::reference));
-                     return true;  // continue iteration
-                 });
-                 return py::iter(items);
-             })
-        .def(
-            "__contains__", [](const Registry<T> &self, const Identifier<T> id) { return self.get(id) != nullptr; },
-            py::arg("id"))
-        .def("__len__", &Registry<T>::size);
-}
-
-template <typename... Ts>
-void bind_registries(py::module_ &m, type_list<Ts...>)
-{
-    (bind_registry<Ts>(m), ...);
-}
 };  // namespace endstone::python

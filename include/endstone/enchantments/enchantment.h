@@ -21,7 +21,6 @@ class ItemStack;
 using EnchantmentId = Identifier<class Enchantment>;
 class Enchantment : public Registry<Enchantment>::Type {
 public:
-    ENDSTONE_REGISTRY_TYPE(Enchantment)
     /**
      * @brief Provides protection against environmental damage
      */

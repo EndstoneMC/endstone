@@ -191,10 +191,10 @@ void EndstoneServer::setLevel(::Level &level)
 
 void EndstoneServer::initRegistries()
 {
-    registries_["ActorType"] = EndstoneRegistry<ActorType, std::string>::create();
-    registries_["BlockType"] = EndstoneRegistry<BlockType, ::BlockType>::create();
-    registries_["Enchantment"] = EndstoneRegistry<Enchantment, ::Enchant>::create();
-    registries_["ItemType"] = EndstoneRegistry<ItemType, ::Item>::create();
+    registries_[typeid(ActorType)] = EndstoneRegistry<ActorType, std::string>::create();
+    registries_[typeid(BlockType)] = EndstoneRegistry<BlockType, ::BlockType>::create();
+    registries_[typeid(Enchantment)] = EndstoneRegistry<Enchantment, ::Enchant>::create();
+    registries_[typeid(ItemType)] = EndstoneRegistry<ItemType, ::Item>::create();
     BlockStateRegistry::get().unregisterBlockStates();
     ::BlockState::forEachState([](const auto &state) {
         BlockStateRegistry::get().registerBlockState(state);
@@ -639,9 +639,9 @@ ServiceManager &EndstoneServer::getServiceManager() const
     return *service_manager_;
 }
 
-IRegistry *EndstoneServer::_getRegistry(const std::string &type) const
+IRegistry *EndstoneServer::_getRegistry(const std::type_info &type) const
 {
-    const auto it = registries_.find(type);
+    const auto it = registries_.find(std::type_index(type));
     if (registries_.end() == it) {
         return nullptr;
     }

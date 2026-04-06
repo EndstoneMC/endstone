@@ -20,6 +20,7 @@
 #include <stdexcept>
 #include <string>
 #include <string_view>
+#include <typeinfo>
 #include <utility>
 #include <vector>
 
@@ -406,12 +407,12 @@ public:
      *
      * @return the corresponding registry or null if not present
      */
-    [[nodiscard]] virtual IRegistry *_getRegistry(const std::string &type) const = 0;
+    [[nodiscard]] virtual IRegistry *_getRegistry(const std::type_info &type) const = 0;
 
     template <typename T>
     [[nodiscard]] const Registry<T> &getRegistry() const
     {
-        return *static_cast<Registry<T> *>(_getRegistry(T::RegistryType));
+        return *static_cast<Registry<T> *>(_getRegistry(typeid(T)));
     }
 
     /**

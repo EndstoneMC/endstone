@@ -133,8 +133,8 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto block = py::class_<Block>(m_block, "Block", "Represents a block.");
     auto command_sender = py_class<CommandSender>(m_command, "CommandSender", "Represents a command sender.");
     auto actor = py_class<Actor>(m_actor, "Actor", "Represents a base actor in the level.");
-    auto mob = py_class<Mob>(m_actor, "Mob",
-                      "Represents a mobile entity (i.e. living entity), such as a monster or player.");
+    auto mob =
+        py_class<Mob>(m_actor, "Mob", "Represents a mobile entity (i.e. living entity), such as a monster or player.");
     py::class_<OfflinePlayer>(
         m, "OfflinePlayer",
         "Represents a reference to a player identity and the data belonging to a player that is stored on the disk and "
@@ -274,7 +274,14 @@ void init_logger(py::module &m)
 
 void init_registry(py::module_ &m)
 {
-    bind_registries(m, RegistryTypes{});
+    py::class_<PyRegistry>(m, "Registry")
+        .def("get", &PyRegistry::get, py::arg("id"), "Get the object by its identifier.")
+        .def("get_or_throw", &PyRegistry::getOrThrow, py::arg("id"),
+             "Get the object by its identifier or throw if missing.")
+        .def("__getitem__", &PyRegistry::getOrThrow, py::arg("id"))
+        .def("__iter__", &PyRegistry::iter)
+        .def("__contains__", &PyRegistry::contains, py::arg("id"))
+        .def("__len__", &PyRegistry::size);
 }
 
 void init_server(py::class_<Server> &server)
@@ -303,8 +310,18 @@ void init_server(py::class_<Server> &server)
                                "Gets the service manager.")
         .def(
             "get_registry",
-            [](const Server &self, const py::type &t) -> py::object { return get_registry(self, t, RegistryTypes{}); },
-            py::arg("type"), py::return_value_policy::reference, "Returns the registry for all the enchantments.")
+            [](const Server &self, const py::type &t) -> py::object {
+                auto *type_info = py::detail::get_type_info(reinterpret_cast<PyTypeObject *>(t.ptr()));
+                if (!type_info) {
+                    return py::none();
+                }
+                auto *registry = self._getRegistry(*type_info->cpptype);
+                if (!registry) {
+                    return py::none();
+                }
+                return py::cast(PyRegistry(*registry));
+            },
+            py::arg("type"), "Returns the registry for the given type.")
         .def_property_readonly("level", &Server::getLevel, py::return_value_policy::reference_internal,
                                "Gets the server level.")
         .def_property_readonly("online_players", &Server::getOnlinePlayers, py::return_value_policy::reference_internal,

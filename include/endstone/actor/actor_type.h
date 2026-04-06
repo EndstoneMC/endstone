@@ -168,7 +168,5 @@ public:
     static constexpr auto WitherSkullDangerous = ActorTypeId::minecraft("wither_skull_dangerous");
     static constexpr auto XpBottle = ActorTypeId::minecraft("xp_bottle");
     static constexpr auto XpOrb = ActorTypeId::minecraft("xp_orb");
-
-    ENDSTONE_REGISTRY_TYPE(ActorType)
-};
+``};
 }  // namespace endstone

@@ -26,9 +26,20 @@
 #include "server.h"
 
 namespace endstone {
+namespace python {
+class PyRegistry;
+}
+
 class IRegistry {
 public:
     virtual ~IRegistry() = default;
+    [[nodiscard]] virtual std::size_t size() const = 0;
+
+protected:
+    friend class python::PyRegistry;
+    [[nodiscard]] virtual const void *get0(std::string_view id) const noexcept = 0;
+    virtual void forEach0(std::function<bool(const void *)> func) const = 0;
+    [[nodiscard]] virtual const std::type_info &getTypeId() const noexcept = 0;
 };
 
 /**
@@ -147,16 +158,21 @@ public:
      */
     virtual void forEach(std::function<bool(const T &)> func) const = 0;
 
-    /**
-     * @brief Returns the number of entries in this registry.
-     *
-     * @return std::size_t The number of entries.
-     */
-    [[nodiscard]] virtual std::size_t size() const = 0;
+    [[nodiscard]] std::size_t size() const override = 0;
+
+private:
+    [[nodiscard]] const void *get0(std::string_view id) const noexcept override
+    {
+        return get(Identifier<T>(id));
+    }
+
+    void forEach0(std::function<bool(const void *)> func) const override
+    {
+        forEach([&func](const T &elem) { return func(&elem); });
+    }
+
+    [[nodiscard]] const std::type_info &getTypeId() const noexcept override { return typeid(T); }
 };
-
-#define ENDSTONE_REGISTRY_TYPE(type) static constexpr auto RegistryType = #type;
-
 }  // namespace endstone
 
 template <typename T>

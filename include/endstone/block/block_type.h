@@ -31,8 +31,6 @@ class BlockType : public Registry<BlockType>::Type {
 public:
     static constexpr auto Air = BlockTypeId::minecraft("air");
 
-    ENDSTONE_REGISTRY_TYPE(BlockType)
-
     /**
      * @brief Returns true if this BlockType has a corresponding ItemType.
      *
