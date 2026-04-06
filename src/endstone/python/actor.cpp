@@ -26,6 +26,8 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property_readonly_static(
             "ALLAY", [](const py::object &) { return ActorType::Allay; }, "Allay")
         .def_property_readonly_static(
+            "AREA_EFFECT_CLOUD", [](const py::object &) { return ActorType::AreaEffectCloud; }, "Area Effect Cloud")
+        .def_property_readonly_static(
             "ARMADILLO", [](const py::object &) { return ActorType::Armadillo; }, "Armadillo")
         .def_property_readonly_static(
             "ARMOR_STAND", [](const py::object &) { return ActorType::ArmorStand; }, "Armor Stand")
@@ -58,9 +60,17 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property_readonly_static(
             "CAVE_SPIDER", [](const py::object &) { return ActorType::CaveSpider; }, "Cave Spider")
         .def_property_readonly_static(
+            "CHEST_BOAT", [](const py::object &) { return ActorType::ChestBoat; }, "Chest Boat")
+        .def_property_readonly_static(
+            "CHEST_MINECART", [](const py::object &) { return ActorType::ChestMinecart; }, "Chest Minecart")
+        .def_property_readonly_static(
             "CHICKEN", [](const py::object &) { return ActorType::Chicken; }, "Chicken")
         .def_property_readonly_static(
             "COD", [](const py::object &) { return ActorType::Cod; }, "Cod")
+        .def_property_readonly_static(
+            "COMMAND_BLOCK_MINECART", [](const py::object &) { return ActorType::CommandBlockMinecart; }, "Command Block Minecart")
+        .def_property_readonly_static(
+            "COPPER_GOLEM", [](const py::object &) { return ActorType::CopperGolem; }, "Copper Golem")
         .def_property_readonly_static(
             "COW", [](const py::object &) { return ActorType::Cow; }, "Cow")
         .def_property_readonly_static(
@@ -72,21 +82,39 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property_readonly_static(
             "DONKEY", [](const py::object &) { return ActorType::Donkey; }, "Donkey")
         .def_property_readonly_static(
+            "DRAGON_FIREBALL", [](const py::object &) { return ActorType::DragonFireball; }, "Dragon Fireball")
+        .def_property_readonly_static(
             "DROWNED", [](const py::object &) { return ActorType::Drowned; }, "Drowned")
+        .def_property_readonly_static(
+            "EGG", [](const py::object &) { return ActorType::Egg; }, "Egg")
         .def_property_readonly_static(
             "ELDER_GUARDIAN", [](const py::object &) { return ActorType::ElderGuardian; }, "Elder Guardian")
         .def_property_readonly_static(
             "ELDER_GUARDIAN_GHOST", [](const py::object &) { return ActorType::ElderGuardianGhost; }, "Elder Guardian Ghost")
         .def_property_readonly_static(
+            "ENDER_CRYSTAL", [](const py::object &) { return ActorType::EnderCrystal; }, "Ender Crystal")
+        .def_property_readonly_static(
             "ENDER_DRAGON", [](const py::object &) { return ActorType::EnderDragon; }, "Ender Dragon")
         .def_property_readonly_static(
-            "ENDERMAN", [](const py::object &) { return ActorType::EnderMan; }, "Enderman")
+            "ENDER_PEARL", [](const py::object &) { return ActorType::EnderPearl; }, "Ender Pearl")
+        .def_property_readonly_static(
+            "ENDERMAN", [](const py::object &) { return ActorType::Enderman; }, "Enderman")
         .def_property_readonly_static(
             "ENDERMITE", [](const py::object &) { return ActorType::Endermite; }, "Endermite")
         .def_property_readonly_static(
             "EVOCATION_FANG", [](const py::object &) { return ActorType::EvocationFang; }, "Evocation Fang")
         .def_property_readonly_static(
             "EVOCATION_ILLAGER", [](const py::object &) { return ActorType::EvocationIllager; }, "Evoker")
+        .def_property_readonly_static(
+            "EYE_OF_ENDER_SIGNAL", [](const py::object &) { return ActorType::EyeOfEnderSignal; }, "Eye of Ender Signal")
+        .def_property_readonly_static(
+            "FALLING_BLOCK", [](const py::object &) { return ActorType::FallingBlock; }, "Falling Block")
+        .def_property_readonly_static(
+            "FIREBALL", [](const py::object &) { return ActorType::Fireball; }, "Fireball")
+        .def_property_readonly_static(
+            "FIREWORKS_ROCKET", [](const py::object &) { return ActorType::FireworksRocket; }, "Fireworks Rocket")
+        .def_property_readonly_static(
+            "FISHING_HOOK", [](const py::object &) { return ActorType::FishingHook; }, "Fishing Hook")
         .def_property_readonly_static(
             "FOX", [](const py::object &) { return ActorType::Fox; }, "Fox")
         .def_property_readonly_static(
@@ -104,6 +132,8 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property_readonly_static(
             "HOGLIN", [](const py::object &) { return ActorType::Hoglin; }, "Hoglin")
         .def_property_readonly_static(
+            "HOPPER_MINECART", [](const py::object &) { return ActorType::HopperMinecart; }, "Hopper Minecart")
+        .def_property_readonly_static(
             "HORSE", [](const py::object &) { return ActorType::Horse; }, "Horse")
         .def_property_readonly_static(
             "HUSK", [](const py::object &) { return ActorType::Husk; }, "Husk")
@@ -112,23 +142,35 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property_readonly_static(
             "IRON_GOLEM", [](const py::object &) { return ActorType::IronGolem; }, "Iron Golem")
         .def_property_readonly_static(
-            "ITEM", [](const py::object &) { return ActorType::ItemEntity; }, "Item")
+            "ITEM", [](const py::object &) { return ActorType::Item; }, "Item")
+        .def_property_readonly_static(
+            "LEASH_KNOT", [](const py::object &) { return ActorType::LeashKnot; }, "Leash Knot")
+        .def_property_readonly_static(
+            "LIGHTNING_BOLT", [](const py::object &) { return ActorType::LightningBolt; }, "Lightning Bolt")
         .def_property_readonly_static(
             "LINGERING_POTION", [](const py::object &) { return ActorType::LingeringPotion; }, "Lingering Potion")
         .def_property_readonly_static(
             "LLAMA", [](const py::object &) { return ActorType::Llama; }, "Llama")
         .def_property_readonly_static(
+            "LLAMA_SPIT", [](const py::object &) { return ActorType::LlamaSpit; }, "Llama Spit")
+        .def_property_readonly_static(
             "MAGMA_CUBE", [](const py::object &) { return ActorType::MagmaCube; }, "Magma Cube")
+        .def_property_readonly_static(
+            "MINECART", [](const py::object &) { return ActorType::Minecart; }, "Minecart")
         .def_property_readonly_static(
             "MOOSHROOM", [](const py::object &) { return ActorType::Mooshroom; }, "Mooshroom")
         .def_property_readonly_static(
             "MULE", [](const py::object &) { return ActorType::Mule; }, "Mule")
+        .def_property_readonly_static(
+            "NAUTILUS", [](const py::object &) { return ActorType::Nautilus; }, "Nautilus")
         .def_property_readonly_static(
             "NPC", [](const py::object &) { return ActorType::Npc; }, "NPC")
         .def_property_readonly_static(
             "OCELOT", [](const py::object &) { return ActorType::Ocelot; }, "Ocelot")
         .def_property_readonly_static(
             "OMINOUS_ITEM_SPAWNER", [](const py::object &) { return ActorType::OminousItemSpawner; }, "Ominous Item Spawner")
+        .def_property_readonly_static(
+            "PAINTING", [](const py::object &) { return ActorType::Painting; }, "Painting")
         .def_property_readonly_static(
             "PANDA", [](const py::object &) { return ActorType::Panda; }, "Panda")
         .def_property_readonly_static(
@@ -162,6 +204,8 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property_readonly_static(
             "SHULKER", [](const py::object &) { return ActorType::Shulker; }, "Shulker")
         .def_property_readonly_static(
+            "SHULKER_BULLET", [](const py::object &) { return ActorType::ShulkerBullet; }, "Shulker Bullet")
+        .def_property_readonly_static(
             "SILVERFISH", [](const py::object &) { return ActorType::Silverfish; }, "Silverfish")
         .def_property_readonly_static(
             "SKELETON", [](const py::object &) { return ActorType::Skeleton; }, "Skeleton")
@@ -170,17 +214,33 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property_readonly_static(
             "SLIME", [](const py::object &) { return ActorType::Slime; }, "Slime")
         .def_property_readonly_static(
+            "SMALL_FIREBALL", [](const py::object &) { return ActorType::SmallFireball; }, "Small Fireball")
+        .def_property_readonly_static(
             "SNIFFER", [](const py::object &) { return ActorType::Sniffer; }, "Sniffer")
         .def_property_readonly_static(
             "SNOW_GOLEM", [](const py::object &) { return ActorType::SnowGolem; }, "Snow Golem")
         .def_property_readonly_static(
+            "SNOWBALL", [](const py::object &) { return ActorType::Snowball; }, "Snowball")
+        .def_property_readonly_static(
             "SPIDER", [](const py::object &) { return ActorType::Spider; }, "Spider")
+        .def_property_readonly_static(
+            "SPLASH_POTION", [](const py::object &) { return ActorType::SplashPotion; }, "Splash Potion")
         .def_property_readonly_static(
             "SQUID", [](const py::object &) { return ActorType::Squid; }, "Squid")
         .def_property_readonly_static(
             "STRAY", [](const py::object &) { return ActorType::Stray; }, "Stray")
         .def_property_readonly_static(
             "STRIDER", [](const py::object &) { return ActorType::Strider; }, "Strider")
+        .def_property_readonly_static(
+            "TADPOLE", [](const py::object &) { return ActorType::Tadpole; }, "Tadpole")
+        .def_property_readonly_static(
+            "THROWN_TRIDENT", [](const py::object &) { return ActorType::ThrownTrident; }, "Thrown Trident")
+        .def_property_readonly_static(
+            "TNT", [](const py::object &) { return ActorType::Tnt; }, "TNT")
+        .def_property_readonly_static(
+            "TNT_MINECART", [](const py::object &) { return ActorType::TntMinecart; }, "TNT Minecart")
+        .def_property_readonly_static(
+            "TRADER_LLAMA", [](const py::object &) { return ActorType::TraderLlama; }, "Trader Llama")
         .def_property_readonly_static(
             "TRIPOD_CAMERA", [](const py::object &) { return ActorType::TripodCamera; }, "Tripod Camera")
         .def_property_readonly_static(
@@ -214,7 +274,9 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property_readonly_static(
             "WOLF", [](const py::object &) { return ActorType::Wolf; }, "Wolf")
         .def_property_readonly_static(
-            "XP_BOTTLE", [](const py::object &) { return ActorType::ExperienceBottle; }, "Experience Bottle")
+            "XP_BOTTLE", [](const py::object &) { return ActorType::XpBottle; }, "XP Bottle")
+        .def_property_readonly_static(
+            "XP_ORB", [](const py::object &) { return ActorType::XpOrb; }, "XP Orb")
         .def_property_readonly_static(
             "ZOGLIN", [](const py::object &) { return ActorType::Zoglin; }, "Zoglin")
         .def_property_readonly_static(

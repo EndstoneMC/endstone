@@ -77,6 +77,23 @@ def test_excess_constants(server: Server, registry_type):
     )
 
 
+@pytest.mark.parametrize("registry_type", [ActorType], ids=lambda t: t.__name__)
+def test_missing_constants(server: Server, registry_type):
+    """Every registry entry should have a corresponding static constant on the class."""
+    registry = server.get_registry(registry_type)
+    constants = _get_enum_constants(registry_type)
+    exported_ids = set(constants.values())
+    missing = [
+        str(item.id)
+        for item in registry
+        if str(item.id) not in exported_ids
+    ]
+    assert not missing, (
+        f"{len(missing)} registry id(s) in {registry_type.__name__} "
+        f"not exported as constants: {missing}"
+    )
+
+
 # =============================================================================
 # Type-specific attribute tests
 # =============================================================================

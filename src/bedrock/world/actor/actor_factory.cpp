@@ -25,9 +25,8 @@ OwnerPtr<EntityContext> ActorFactory::createSpawnedActor(const ActorDefinitionId
 std::vector<std::string> ActorFactory::generateActorIdentifierList() const
 {
     std::vector<std::string> result;
-    for (const auto &[key, value] : factory_function_) {
+    for (const auto &key : factory_function_ | std::views::keys) {
         result.emplace_back(key);
     }
-    fmt::print("ActorFactory::generateActorIdentifierList: {}\n", result);
     return result;
 }
