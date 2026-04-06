@@ -141,14 +141,14 @@ const signal_slot SIGNAL_DEFINITIONS[] = {SIGNAL_DEF(SIGILL, "IllegalInstruction
 
 bool should_print(const sentry_ucontext_t *ctx)
 {
-#ifdef _WIN32
-    const auto *record = ctx->exception_ptrs.ExceptionRecord;
-    if (record->ExceptionCode == STATUS_FATAL_APP_EXIT) {
-        // Skip printing when the app crashes during intentional shutdown
-        // (e.g., via std::exit or ExitProcess).
-        return false;
-    }
-#endif
+// #ifdef _WIN32
+//     const auto *record = ctx->exception_ptrs.ExceptionRecord;
+//     if (record->ExceptionCode == STATUS_FATAL_APP_EXIT) {
+//         // Skip printing when the app crashes during intentional shutdown
+//         // (e.g., via std::exit or ExitProcess).
+//         return false;
+//     }
+// #endif
     return true;
 }
 

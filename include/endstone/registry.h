@@ -146,6 +146,13 @@ public:
      *             and returning a boolean. Returning false stops the iteration.
      */
     virtual void forEach(std::function<bool(const T &)> func) const = 0;
+
+    /**
+     * @brief Returns the number of entries in this registry.
+     *
+     * @return std::size_t The number of entries.
+     */
+    [[nodiscard]] virtual std::size_t size() const = 0;
 };
 
 #define ENDSTONE_REGISTRY_TYPE(type) static constexpr auto RegistryType = #type;

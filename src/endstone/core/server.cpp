@@ -52,6 +52,7 @@
 #include "endstone/core/player.h"
 #include "endstone/core/plugin/cpp_plugin_loader.h"
 #include "endstone/core/plugin/python_plugin_loader.h"
+#include "endstone/actor/actor_type.h"
 #include "endstone/core/registry.h"
 #include "endstone/core/signal_handler.h"
 #include "endstone/core/util/uuid.h"
@@ -190,6 +191,7 @@ void EndstoneServer::setLevel(::Level &level)
 
 void EndstoneServer::initRegistries()
 {
+    registries_["ActorType"] = EndstoneRegistry<ActorType, std::string>::create();
     registries_["BlockType"] = EndstoneRegistry<BlockType, ::BlockType>::create();
     registries_["Enchantment"] = EndstoneRegistry<Enchantment, ::Enchant>::create();
     registries_["ItemType"] = EndstoneRegistry<ItemType, ::Item>::create();

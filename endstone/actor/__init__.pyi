@@ -9,14 +9,14 @@ from endstone.inventory import ItemStack
 from endstone.level import Dimension, Level, Location
 from endstone.util import Vector
 
-__all__ = ["Actor", "Item", "Mob"]
+__all__ = ["Actor", "ActorType", "Item", "Mob"]
 
 class Actor(CommandSender):
     """
     Represents a base actor in the level.
     """
     @property
-    def type(self) -> str:
+    def type(self) -> ActorType:
         """
         Gets the type of the actor.
         """
@@ -184,6 +184,139 @@ class Mob(Actor):
         ...
     @max_health.setter
     def max_health(self, arg1: int) -> None: ...
+
+class ActorType:
+    """
+    Represents an actor type.
+    """
+
+    AGENT = "minecraft:agent"
+    ALLAY = "minecraft:allay"
+    ARMADILLO = "minecraft:armadillo"
+    ARMOR_STAND = "minecraft:armor_stand"
+    ARROW = "minecraft:arrow"
+    AXOLOTL = "minecraft:axolotl"
+    BALLOON = "minecraft:balloon"
+    BAT = "minecraft:bat"
+    BEE = "minecraft:bee"
+    BLAZE = "minecraft:blaze"
+    BOAT = "minecraft:boat"
+    BOGGED = "minecraft:bogged"
+    BREEZE = "minecraft:breeze"
+    BREEZE_WIND_CHARGE_PROJECTILE = "minecraft:breeze_wind_charge_projectile"
+    CAMEL = "minecraft:camel"
+    CAMEL_HUSK = "minecraft:camel_husk"
+    CAT = "minecraft:cat"
+    CAVE_SPIDER = "minecraft:cave_spider"
+    CHICKEN = "minecraft:chicken"
+    COD = "minecraft:cod"
+    COW = "minecraft:cow"
+    CREAKING = "minecraft:creaking"
+    CREEPER = "minecraft:creeper"
+    DOLPHIN = "minecraft:dolphin"
+    DONKEY = "minecraft:donkey"
+    DROWNED = "minecraft:drowned"
+    ELDER_GUARDIAN = "minecraft:elder_guardian"
+    ELDER_GUARDIAN_GHOST = "minecraft:elder_guardian_ghost"
+    ENDER_DRAGON = "minecraft:ender_dragon"
+    ENDERMAN = "minecraft:enderman"
+    ENDERMITE = "minecraft:endermite"
+    EVOCATION_FANG = "minecraft:evocation_fang"
+    EVOCATION_ILLAGER = "minecraft:evocation_illager"
+    FOX = "minecraft:fox"
+    FROG = "minecraft:frog"
+    GHAST = "minecraft:ghast"
+    GLOW_SQUID = "minecraft:glow_squid"
+    GOAT = "minecraft:goat"
+    GUARDIAN = "minecraft:guardian"
+    HAPPY_GHAST = "minecraft:happy_ghast"
+    HOGLIN = "minecraft:hoglin"
+    HORSE = "minecraft:horse"
+    HUSK = "minecraft:husk"
+    ICE_BOMB = "minecraft:ice_bomb"
+    IRON_GOLEM = "minecraft:iron_golem"
+    ITEM = "minecraft:item"
+    LINGERING_POTION = "minecraft:lingering_potion"
+    LLAMA = "minecraft:llama"
+    MAGMA_CUBE = "minecraft:magma_cube"
+    MOOSHROOM = "minecraft:mooshroom"
+    MULE = "minecraft:mule"
+    NPC = "minecraft:npc"
+    OCELOT = "minecraft:ocelot"
+    OMINOUS_ITEM_SPAWNER = "minecraft:ominous_item_spawner"
+    PANDA = "minecraft:panda"
+    PARCHED = "minecraft:parched"
+    PARROT = "minecraft:parrot"
+    PHANTOM = "minecraft:phantom"
+    PIG = "minecraft:pig"
+    PIGLIN = "minecraft:piglin"
+    PIGLIN_BRUTE = "minecraft:piglin_brute"
+    PILLAGER = "minecraft:pillager"
+    PLAYER = "minecraft:player"
+    POLAR_BEAR = "minecraft:polar_bear"
+    PUFFERFISH = "minecraft:pufferfish"
+    RABBIT = "minecraft:rabbit"
+    RAVAGER = "minecraft:ravager"
+    SALMON = "minecraft:salmon"
+    SHEEP = "minecraft:sheep"
+    SHULKER = "minecraft:shulker"
+    SILVERFISH = "minecraft:silverfish"
+    SKELETON = "minecraft:skeleton"
+    SKELETON_HORSE = "minecraft:skeleton_horse"
+    SLIME = "minecraft:slime"
+    SNIFFER = "minecraft:sniffer"
+    SNOW_GOLEM = "minecraft:snow_golem"
+    SPIDER = "minecraft:spider"
+    SQUID = "minecraft:squid"
+    STRAY = "minecraft:stray"
+    STRIDER = "minecraft:strider"
+    TRIPOD_CAMERA = "minecraft:tripod_camera"
+    TROPICALFISH = "minecraft:tropicalfish"
+    TURTLE = "minecraft:turtle"
+    VEX = "minecraft:vex"
+    VILLAGER = "minecraft:villager"
+    VILLAGER_V2 = "minecraft:villager_v2"
+    VINDICATOR = "minecraft:vindicator"
+    WANDERING_TRADER = "minecraft:wandering_trader"
+    WARDEN = "minecraft:warden"
+    WIND_CHARGE_PROJECTILE = "minecraft:wind_charge_projectile"
+    WITCH = "minecraft:witch"
+    WITHER = "minecraft:wither"
+    WITHER_SKELETON = "minecraft:wither_skeleton"
+    WITHER_SKULL = "minecraft:wither_skull"
+    WITHER_SKULL_DANGEROUS = "minecraft:wither_skull_dangerous"
+    WOLF = "minecraft:wolf"
+    XP_BOTTLE = "minecraft:xp_bottle"
+    ZOGLIN = "minecraft:zoglin"
+    ZOMBIE = "minecraft:zombie"
+    ZOMBIE_HORSE = "minecraft:zombie_horse"
+    ZOMBIE_NAUTILUS = "minecraft:zombie_nautilus"
+    ZOMBIE_PIGMAN = "minecraft:zombie_pigman"
+    ZOMBIE_VILLAGER = "minecraft:zombie_villager"
+    ZOMBIE_VILLAGER_V2 = "minecraft:zombie_villager_v2"
+    @property
+    def id(self) -> str:
+        """
+        Return the identifier of this actor type.
+        """
+        ...
+    @property
+    def translation_key(self) -> str:
+        """
+        Get the translation key, suitable for use in a translation component.
+        """
+        ...
+    @staticmethod
+    def get(name: str) -> ActorType:
+        """
+        Attempts to get the ActorType with the given name.
+        """
+        ...
+    def __str__(self) -> str: ...
+    def __repr__(self) -> str: ...
+    def __hash__(self) -> int: ...
+    def __eq__(self, arg0: ActorType) -> bool: ...
+    def __ne__(self, arg0: ActorType) -> bool: ...
 
 class Item(Actor):
     """

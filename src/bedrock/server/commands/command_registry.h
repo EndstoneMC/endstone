@@ -287,7 +287,7 @@ public:
         std::string name;
         Bedrock::typeid_t<CommandRegistry> type;
         ParseFunction parse;
-        std::vector<std::pair<std::uint32_t, std::uint32_t>> values;
+        std::vector<std::pair<std::uint64_t, std::uint64_t>> values;
     };
     struct ChainedSubcommand;
     struct SoftEnum {
@@ -335,7 +335,6 @@ public:
     friend class endstone::core::EndstoneCommandMap;
     friend class endstone::core::EndstonePlayer;
     friend class endstone::core::MinecraftCommandPermissions;
-
     [[nodiscard]] std::string describe(const Signature &signature, const Overload &overload) const
     {
         return describe(signature, signature.name, overload, 0, nullptr, nullptr);
@@ -390,9 +389,9 @@ private:
     std::vector<Factorization> factorizations_;                                                  // +296
     std::vector<std::string> postfixes_;                                                         // +320
     std::map<std::string, std::uint32_t> enum_lookup_;                                           // +344
-    std::map<std::string, std::uint32_t> enum_value_lookup_;                                     // +360
+    std::map<std::string, std::uint64_t> enum_value_lookup_;                                     // +360
     std::map<std::string, std::uint32_t> chained_subcommand_lookup_;                             // +376
-    std::map<std::string, std::uint32_t> chained_subcommand_value_lookup_;                       // +392
+    std::map<std::string, std::uint64_t> chained_subcommand_value_lookup_;                       // +392
     std::vector<Symbol> command_symbols_;                                                        // +408
     std::map<std::string, Signature> signatures_;                                                // +432
     std::map<Bedrock::typeid_t<CommandRegistry>, std::int32_t> type_lookup_;                     // +448

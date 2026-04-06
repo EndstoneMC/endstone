@@ -25,6 +25,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #endif
 
 #include "actor/actor.h"
+#include "actor/actor_type.h"
 #include "actor/item.h"
 #include "actor/mob.h"
 #include "attribute/attribute.h"

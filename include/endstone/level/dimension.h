@@ -129,10 +129,10 @@ public:
      * @brief Creates an actor at the given Location
      *
      * @param location The location to spawn the actor
-     * @param type The actor to spawn
+     * @param type The actor type to spawn
      * @return Resulting Actor of this method
      */
-    [[nodiscard]] virtual Actor *spawnActor(Location location, std::string type) = 0;
+    [[nodiscard]] virtual Actor *spawnActor(Location location, ActorTypeId type) = 0;
 
     /**
      * @brief Get a list of all actors in this dimension

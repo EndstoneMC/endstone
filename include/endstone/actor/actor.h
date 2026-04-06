@@ -18,6 +18,7 @@
 #include <string>
 #include <vector>
 
+#include "endstone/actor/actor_type.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/level/location.h"
 
@@ -31,11 +32,9 @@ public:
     /**
      * @brief Get the type of the actor.
      *
-     * This method returns the type of the actor as a string, for example, minecraft:pig.
-     *
      * @return The type of the actor.
      */
-    [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual const ActorType &getType() const = 0;
 
     /**
      * Returns the runtime id for this actor

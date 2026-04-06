@@ -20,12 +20,13 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/actor/actor_type.h"
 #include "endstone/registry.h"
 
 namespace py = pybind11;
 
 namespace endstone::python {
-using RegistryTypes = type_list<BlockType, Enchantment, ItemType>;
+using RegistryTypes = type_list<ActorType, BlockType, Enchantment, ItemType>;
 
 template <typename List>
 struct registry_getter;
@@ -91,20 +92,19 @@ void bind_registry(py::module &m, Args &&...args)
                 throw py::key_error(fmt::format("No registry entry found for identifier: {}", id));
             },
             py::arg("id"), py::return_value_policy::reference)
-        .def(
-            "__iter__",
-            [](const Registry<T> &self) {
-                py::list items;
-                self.forEach([&items](const T &elem) {
-                    items.append(elem);
-                    return true;  // continue iteration
-                });
-                return items;
-            },
-            py::return_value_policy::reference_internal)
+        .def("__iter__",
+             [](const Registry<T> &self) {
+                 py::list items;
+                 self.forEach([&items](const T &elem) {
+                     items.append(py::cast(&elem, py::return_value_policy::reference));
+                     return true;  // continue iteration
+                 });
+                 return py::iter(items);
+             })
         .def(
             "__contains__", [](const Registry<T> &self, const Identifier<T> id) { return self.get(id) != nullptr; },
-            py::arg("id"));
+            py::arg("id"))
+        .def("__len__", &Registry<T>::size);
 }
 
 template <typename... Ts>

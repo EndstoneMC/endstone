@@ -114,7 +114,7 @@ class BlockType:
         Returns true if this BlockType has a corresponding ItemType.
         """
         ...
-    def create_block_data(*args, **kwargs) -> None:
+    def create_block_data(self) -> BlockData:
         """
         Creates a new BlockData instance for this block type, with all properties initialized to defaults.
         """

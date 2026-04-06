@@ -129,9 +129,10 @@ public:
     }
 
     // Actor
-    [[nodiscard]] std::string getType() const override
+    [[nodiscard]] const ActorType &getType() const override
     {
-        return getHandle().getActorIdentifier().getCanonicalName();
+        const auto &canonical = getHandle().getActorIdentifier().getCanonicalName();
+        return server_.getRegistry<ActorType>().getOrThrow(ActorTypeId{canonical});
     }
 
     [[nodiscard]] std::uint64_t getRuntimeId() const override

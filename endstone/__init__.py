@@ -5,6 +5,7 @@ __getattr__, __dir__, __all__ = lazy.attach(
     submod_attrs={
         "_python": [
             "__minecraft_version__",
+            "ActorTypeRegistry",
             "ColorFormat",
             "EnchantmentRegistry",
             "GameMode",

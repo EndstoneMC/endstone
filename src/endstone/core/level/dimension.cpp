@@ -103,10 +103,10 @@ Item &EndstoneDimension::dropItem(const Location location, const ItemStack &item
     return actor->getEndstoneActor<EndstoneItem>();
 }
 
-Actor *EndstoneDimension::spawnActor(Location location, std::string type)
+Actor *EndstoneDimension::spawnActor(Location location, ActorTypeId type)
 {
     auto &actor_factory = level_.getHandle().getActorFactory();
-    const auto id = ActorDefinitionIdentifier(type);
+    const auto id = ActorDefinitionIdentifier(std::string(type));
     auto entity = actor_factory.createSpawnedActor(id, nullptr, {location.getX(), location.getY(), location.getZ()},
                                                    {location.getPitch(), location.getYaw()});
     const auto *actor =

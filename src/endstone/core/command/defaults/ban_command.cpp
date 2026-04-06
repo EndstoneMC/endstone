@@ -17,6 +17,7 @@
 #include <string>
 #include <vector>
 
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {

@@ -34,7 +34,12 @@ public:
      */
     [[nodiscard]] ActorType &getActor() const { return actor_; }
 
-    // TODO(event): add getActorType method
+    /**
+     * @brief Returns the type of the Actor involved in this event.
+     *
+     * @return ActorType of the Actor involved in this event
+     */
+    [[nodiscard]] const endstone::ActorType &getActorType() const { return actor_.getType(); }
 
 private:
     ActorType &actor_;

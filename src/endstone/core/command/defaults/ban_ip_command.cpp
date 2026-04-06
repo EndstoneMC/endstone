@@ -18,6 +18,7 @@
 #include <vector>
 
 #include "bedrock/deps/raknet/socket_includes.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {

@@ -14,10 +14,12 @@
 
 #include "endstone/core/registry.h"
 
+#include "bedrock/world/actor/actor_factory.h"
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/registry/item_registry_manager.h"
 #include "bedrock/world/level/block/registry/block_type_registry.h"
+#include "endstone/core/actor/actor_type.h"
 #include "endstone/core/block/block_type.h"
 #include "endstone/core/enchantments/enchantment.h"
 #include "endstone/core/inventory/item_type.h"
@@ -86,9 +88,8 @@ std::vector<Identifier<BlockType>> EndstoneRegistry<BlockType, ::BlockType>::ide
 template <>
 const ::BlockType *EndstoneRegistry<BlockType, ::BlockType>::getMinecraft(Identifier<BlockType> id) const
 {
-    throw std::logic_error(fmt::format("EndstoneRegistry<BlockType>: cache is pre-populated, getMinecraft should not "
-                                       "be called (id: {})",
-                                       id));
+    // cache is pre-populated, getMinecraft should not be called
+    return nullptr;
 }
 
 template <>
@@ -103,6 +104,38 @@ std::unique_ptr<Registry<BlockType>> EndstoneRegistry<BlockType, ::BlockType>::c
         registry->cache_.emplace(id, std::make_unique<EndstoneBlockType>(block_type));
         return true;
     });
+    return registry;
+}
+
+template <>
+std::vector<Identifier<ActorType>> EndstoneRegistry<ActorType, std::string>::identifiers() const
+{
+    std::vector<Identifier<ActorType>> keys;
+    keys.reserve(cache_.size());
+    for (const auto &[key, _] : cache_) {
+        keys.emplace_back(key);
+    }
+    return keys;
+}
+
+template <>
+const std::string *EndstoneRegistry<ActorType, std::string>::getMinecraft(Identifier<ActorType> id) const
+{
+    // cache is pre-populated, getMinecraft should not be called
+    return nullptr;
+}
+
+template <>
+std::unique_ptr<Registry<ActorType>> EndstoneRegistry<ActorType, std::string>::create()
+{
+    auto registry = std::make_unique<EndstoneRegistry>(
+        [](const auto &, const auto &) -> std::unique_ptr<ActorType> { return nullptr; });
+
+    const auto &server = EndstoneServer::getInstance();
+    const auto &level = server.getEndstoneLevel()->getHandle();
+    for (const auto &name : level.getActorFactory().generateActorIdentifierList()) {
+        registry->cache_.emplace(ActorTypeId(name), std::make_unique<EndstoneActorType>(name));
+    }
     return registry;
 }
 
