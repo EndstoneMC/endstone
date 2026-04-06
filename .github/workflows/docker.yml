@@ -62,7 +62,7 @@ jobs:
 
       - name: Login to ${{ matrix.registry_name }}
         if: steps.guard.outputs.skip != 'true'
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ${{ matrix.registry }}
           username: ${{ matrix.username_secret == 'github_actor' && github.actor || secrets[matrix.username_secret] }}
