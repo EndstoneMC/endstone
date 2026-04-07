@@ -490,26 +490,26 @@ def test_nested_compound_tags():
         (IntArrayTag([1, 2, 3]), "[I;1,2,3]"),
         (ListTag([IntTag(1), IntTag(2)]), "[1,2]"),
         (
-                ListTag(
-                    [
-                        CompoundTag({"id": IntTag(1)}),
-                        CompoundTag({"id": IntTag(2)}),
-                    ]
-                ),
-                "[{id:1},{id:2}]",
+            ListTag(
+                [
+                    CompoundTag({"id": IntTag(1)}),
+                    CompoundTag({"id": IntTag(2)}),
+                ]
+            ),
+            "[{id:1},{id:2}]",
         ),
         (
-                CompoundTag({"x": IntTag(1), "y": StringTag("a")}),
-                "{x:1,y:a}",
+            CompoundTag({"x": IntTag(1), "y": StringTag("a")}),
+            "{x:1,y:a}",
         ),
         (
-                CompoundTag(
-                    {
-                        "pos": ListTag([IntTag(1), IntTag(2), IntTag(3)]),
-                        "name": StringTag("Alex"),
-                    }
-                ),
-                "{name:Alex,pos:[1,2,3]}",
+            CompoundTag(
+                {
+                    "pos": ListTag([IntTag(1), IntTag(2), IntTag(3)]),
+                    "name": StringTag("Alex"),
+                }
+            ),
+            "{name:Alex,pos:[1,2,3]}",
         ),
     ],
 )
@@ -531,8 +531,8 @@ def test_str_tags(tag, expected):
         (IntArrayTag([1, 2, 3]), "IntArrayTag([1, 2, 3])"),
         (ListTag([IntTag(1), IntTag(2)]), "ListTag([IntTag(1), IntTag(2)])"),
         (
-                CompoundTag({"x": IntTag(1)}),
-                "CompoundTag({'x': IntTag(1)})",
+            CompoundTag({"x": IntTag(1)}),
+            "CompoundTag({'x': IntTag(1)})",
         ),
     ],
 )

@@ -76,8 +76,5 @@ class MockPlugin : public endstone::Plugin {
 public:
     MOCK_METHOD(const endstone::PluginDescription &, getDescription, (), (const, override));
 
-    void setEnabled(const bool enabled)
-    {
-        Plugin::setEnabled(enabled);
-    }
+    void setEnabled(const bool enabled) { Plugin::setEnabled(enabled); }
 };

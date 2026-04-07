@@ -123,6 +123,7 @@ class Event:
     """
     Represents an event.
     """
+    def __init__(self, is_async: bool = False) -> None: ...
     @property
     def event_name(self) -> str:
         """
@@ -146,24 +147,20 @@ class Cancellable:
     Represents an event that may be cancelled by a plugin or the server.
     """
     @property
-    def cancelled(self) -> bool:
-        """
-        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
-        """
-        ...
-    @cancelled.setter
-    def cancelled(self, arg1: bool) -> None: ...
-    @property
     def is_cancelled(self) -> bool:
         """
-        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        Gets or sets the cancellation state of this event.
+
+        A cancelled event will not be executed in the server, but will still pass to other plugins.
         """
         ...
     @is_cancelled.setter
     def is_cancelled(self, arg1: bool) -> None: ...
     def cancel(self) -> None:
         """
-        Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
+        Cancel this event.
+
+        A cancelled event will not be executed in the server, but will still pass to other plugins.
         """
         ...
 

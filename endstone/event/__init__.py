@@ -16,6 +16,33 @@ def event_handler(func=None, *, priority: EventPriority = EventPriority.NORMAL, 
     return decorator
 
 
+class Cancellable:
+    """
+    Represents an event that may be cancelled by a plugin or the server.
+    """
+
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets or sets the cancellation state of this event.
+
+        A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+        return getattr(self, "_cancelled", False)
+
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None:  # noqa
+        setattr(self, "_cancelled", arg1)
+
+    def cancel(self) -> None:
+        """
+        Cancel this event.
+
+        A cancelled event will not be executed in the server, but will still pass to other plugins.
+        """
+        self.is_cancelled = True
+
+
 __getattr__, __dir__, __all__ = lazy.attach(
     "endstone._python",
     submod_attrs={
@@ -40,7 +67,6 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "BlockPistonRetractEvent",
             "BlockPlaceEvent",
             "BroadcastMessageEvent",
-            "Cancellable",
             "ChunkEvent",
             "ChunkLoadEvent",
             "ChunkUnloadEvent",
@@ -92,4 +118,4 @@ __getattr__, __dir__, __all__ = lazy.attach(
     },
 )
 
-__all__.extend(["EventPriority", "event_handler"])
+__all__.extend(["Cancellable", "EventPriority", "event_handler"])

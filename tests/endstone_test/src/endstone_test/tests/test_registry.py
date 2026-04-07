@@ -1,5 +1,4 @@
 import pytest
-
 from endstone import Server
 from endstone.actor import ActorType
 from endstone.enchantments import Enchantment
@@ -14,8 +13,7 @@ def _get_enum_constants(cls):
     return {
         name: getattr(cls, name)
         for name in dir(cls)
-        if not name.startswith("_")
-           and isinstance(getattr(cls, name), str)
+        if not name.startswith("_") and isinstance(getattr(cls, name), str)
     }
 
 
@@ -83,11 +81,7 @@ def test_missing_constants(server: Server, registry_type):
     registry = server.get_registry(registry_type)
     constants = _get_enum_constants(registry_type)
     exported_ids = set(constants.values())
-    missing = [
-        str(item.id)
-        for item in registry
-        if str(item.id) not in exported_ids
-    ]
+    missing = [str(item.id) for item in registry if str(item.id) not in exported_ids]
     assert not missing, (
         f"{len(missing)} registry id(s) in {registry_type.__name__} "
         f"not exported as constants: {missing}"
