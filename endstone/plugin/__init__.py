@@ -14,29 +14,29 @@ from endstone.event import Event
 
 class Plugin(_Plugin):
     # Metadata
-    version = None
-    api_version = None
+    version: str | None = None
+    api_version: str | None = None
 
     # Optional metadata
-    description = None
-    load = None
-    authors = None
-    contributors = None
-    website = None
-    prefix = None
+    description: str | None = None
+    load: str | None = None
+    authors: list[str] | None = None
+    contributors: list[str] | None = None
+    website: str | None = None
+    prefix: str | None = None
 
     # Dependencies
-    provides = None
-    depend = None
-    soft_depend = None
-    load_before = None
+    provides: list[str] | None = None
+    depend: list[str] | None = None
+    soft_depend: list[str] | None = None
+    load_before: list[str] | None = None
 
     # Command
-    commands = None
+    commands: dict | None = None
 
     # Permissions
-    default_permission = None
-    permissions = None
+    default_permission: str | None = None
+    permissions: dict | None = None
 
     def __init__(self):
         _Plugin.__init__(self)

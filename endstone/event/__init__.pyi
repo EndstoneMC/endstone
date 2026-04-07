@@ -3,6 +3,8 @@ Classes relating to handling triggered code executions.
 """
 
 import enum
+from collections.abc import Callable
+from typing import TypeVar, overload
 
 from endstone import GameMode, Player, Skin
 from endstone.actor import Actor, Item, Mob
@@ -15,6 +17,8 @@ from endstone.level import Chunk, Dimension, Level, Location
 from endstone.map import MapView
 from endstone.plugin import Plugin
 from endstone.util import SocketAddress, Vector
+
+_F = TypeVar("_F", bound=Callable[..., None])
 
 __all__ = [
     "ActorDamageEvent",
@@ -1151,6 +1155,7 @@ class WeatherChangeEvent(WeatherEvent, Cancellable):
         """
         ...
 
-def event_handler(
-    func=None, *, priority: EventPriority = EventPriority.NORMAL, ignore_cancelled: bool = False
-) -> None: ...
+@overload
+def event_handler(__func: _F) -> _F: ...
+@overload
+def event_handler(*, priority: EventPriority = ..., ignore_cancelled: bool = ...) -> Callable[[_F], _F]: ...

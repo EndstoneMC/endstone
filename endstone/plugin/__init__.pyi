@@ -221,21 +221,21 @@ class Plugin:
     Represents a Plugin
     """
 
-    version = None
-    api_version = None
-    description = None
-    load = None
-    authors = None
-    contributors = None
-    website = None
-    prefix = None
-    provides = None
-    depend = None
-    soft_depend = None
-    load_before = None
-    commands = None
-    default_permission = None
-    permissions = None
+    version: str | None = None
+    api_version: str | None = None
+    description: str | None = None
+    load: PluginLoadOrder | None = None
+    authors: list[str] | None = None
+    contributors: list[str] | None = None
+    website: str | None = None
+    prefix: str | None = None
+    provides: list[str] | None = None
+    depend: list[str] | None = None
+    soft_depend: list[str] | None = None
+    load_before: list[str] | None = None
+    commands: dict | None = None
+    default_permission: PermissionDefault | None = None
+    permissions: dict | None = None
     def __init__(self) -> None: ...
     _description: PluginDescription | None = None
     _config = None

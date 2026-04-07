@@ -1,6 +1,19 @@
+from collections.abc import Callable
+from typing import TypeVar, overload
+
 import lazy_loader as lazy
 
 from endstone._python.event import EventPriority
+
+_F = TypeVar("_F", bound=Callable[..., None])
+
+
+@overload
+def event_handler(__func: _F) -> _F: ...
+
+
+@overload
+def event_handler(*, priority: EventPriority = ..., ignore_cancelled: bool = ...) -> Callable[[_F], _F]: ...
 
 
 def event_handler(func=None, *, priority: EventPriority = EventPriority.NORMAL, ignore_cancelled: bool = False):
