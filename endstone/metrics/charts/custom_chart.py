@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import final
+from typing import Any, final
 
 
 class CustomChart(ABC):
@@ -25,7 +25,7 @@ class CustomChart(ABC):
         self.chart_id = chart_id
 
     @final
-    def _get_request_json_object(self) -> dict | None:
+    def _get_request_json_object(self) -> dict[str, Any] | None:
         """
         Gets the JSON object for the chart request.
 
@@ -35,7 +35,7 @@ class CustomChart(ABC):
         Raises:
             ChartDataError: If there is an error getting the chart data.
         """
-        chart = {"chartId": self.chart_id}
+        chart: dict[str, Any] = {"chartId": self.chart_id}
         try:
             data = self.get_chart_data()
             if not data:  # If the data is empty we don't send the chart.
@@ -49,7 +49,7 @@ class CustomChart(ABC):
         return chart
 
     @abstractmethod
-    def get_chart_data(self) -> dict | None:
+    def get_chart_data(self) -> dict[str, Any] | None:
         """
         Gets the data for the chart.
 

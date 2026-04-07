@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Callable
+from typing import Any, Callable
 
 from .custom_chart import CustomChart
 
@@ -18,7 +18,7 @@ class SimplePie(CustomChart):
         super().__init__(chart_id)
         self.get_value = get_value
 
-    def get_chart_data(self) -> dict | None:
+    def get_chart_data(self) -> dict[str, Any] | None:
         """
         Gets the data for the simple pie chart.
 

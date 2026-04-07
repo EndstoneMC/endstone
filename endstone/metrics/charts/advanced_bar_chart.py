@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Callable, Dict, List
+from typing import Any, Callable, Dict, List
 
 from .custom_chart import CustomChart
 
@@ -17,7 +17,7 @@ class AdvancedBarChart(CustomChart):
         super().__init__(chart_id)
         self.get_values = get_values
 
-    def get_chart_data(self) -> dict | None:
+    def get_chart_data(self) -> dict[str, Any] | None:
         """
         Gets the data for the advanced bar chart.
 
