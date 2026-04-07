@@ -34,7 +34,7 @@ class _ThreadLoopRunner:
                 loop.set_debug(self._debug)
             self._loop = loop
 
-            def _thread_main():
+            def _thread_main() -> None:
                 asyncio.set_event_loop(loop)
                 self._started_evt.set()
                 loop.run_forever()
@@ -53,7 +53,7 @@ class _ThreadLoopRunner:
             loop = self._loop
             thread = self._thread
 
-            async def _shutdown():
+            async def _shutdown() -> None:
                 current = asyncio.current_task()
                 to_cancel = [t for t in asyncio.all_tasks() if t is not current]
                 for t in to_cancel:
@@ -86,6 +86,8 @@ class _ThreadLoopRunner:
         if not asyncio.iscoroutine(coro):
             raise TypeError(f"a coroutine object is required, got {coro!r}")
         self._lazy_init()
+        if self._loop is None:
+            raise RuntimeError("Event loop is not initialized")
         return asyncio.run_coroutine_threadsafe(coro, self._loop)
 
     def get_loop(self) -> asyncio.AbstractEventLoop:

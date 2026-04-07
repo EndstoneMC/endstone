@@ -29,6 +29,8 @@ __all__ = [
     "SimpleBarChart",
     "SimplePie",
     "SingleLineChart",
+    "MetricsBase",
+    "MetricsConfig",
 ]
 
 
@@ -107,13 +109,15 @@ class Metrics(MetricsBase):
         platform_data["osArch"] = os_arch
         platform_data["coreCount"] = psutil.cpu_count(logical=False)
 
-    def append_service_data(self, service_data: Dict[str, Any]):
+    def append_service_data(self, service_data: Dict[str, Any]) -> None:
         """
         Appends service-specific data to the provided dict.
 
         Args:
             service_data (Dict[str, Any]): The dict to append data to.
         """
+        if self._plugin._description is None:
+            raise RuntimeError("Plugin description is not available")
         service_data["pluginVersion"] = self._plugin._description.version
 
     def submit_task(self, task: Callable[[], None]) -> None:
