@@ -32,8 +32,11 @@ def main() -> None:
     module.set_member("__version__", package.get_member("__version__"))
     module.imports.setdefault("__version__", package.imports.get("__version__"))
     module.exports = ["__version__"] + module.exports
+    # endstone.event
+    module["event"].members = {"_F": package.get_member("event._F"), **module["event"].members}
     module.set_member("event.event_handler", package.get_member("event.event_handler"))
     module["event"].exports.append("event_handler")
+    # endstone.plugin
     module.set_member("plugin.Plugin", package.get_member("plugin.Plugin"))
     module["plugin.Plugin"].bases = None
     module["plugin.Plugin"].members.pop("_get_description")

@@ -241,7 +241,7 @@ class Button:
         self,
         text: str | Translatable = "",
         icon: str | None = None,
-        on_click: collections.abc.Callable[[Player], None] = None,
+        on_click: collections.abc.Callable[[Player], None] | None = None,
     ) -> None: ...
     @property
     def text(self) -> str | Translatable:
@@ -278,8 +278,8 @@ class MessageForm:
         content: str | Translatable = "",
         button1: str | Translatable = "",
         button2: str | Translatable = "",
-        on_submit: collections.abc.Callable[[Player, int], None] = None,
-        on_close: collections.abc.Callable[[Player], None] = None,
+        on_submit: collections.abc.Callable[[Player, int], None] | None = None,
+        on_close: collections.abc.Callable[[Player], None] | None = None,
     ) -> None: ...
     @property
     def title(self) -> str | Translatable:
@@ -339,8 +339,8 @@ class ActionForm:
         title: str | Translatable = "",
         content: str | Translatable = "",
         buttons: list[Button | Divider | Header | Label] | None = None,
-        on_submit: collections.abc.Callable[[Player, int], None] = None,
-        on_close: collections.abc.Callable[[Player], None] = None,
+        on_submit: collections.abc.Callable[[Player, int], None] | None = None,
+        on_close: collections.abc.Callable[[Player], None] | None = None,
     ) -> None: ...
     @property
     def title(self) -> str | Translatable:
@@ -378,7 +378,7 @@ class ActionForm:
         self,
         text: str | Translatable,
         icon: str | None = None,
-        on_click: collections.abc.Callable[[Player], None] = None,
+        on_click: collections.abc.Callable[[Player], None] | None = None,
     ) -> ActionForm:
         """
         Adds a button to the form.
@@ -418,8 +418,8 @@ class ModalForm:
         controls: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header] | None = None,
         submit_button: str | Translatable | None = None,
         icon: str | None = None,
-        on_submit: collections.abc.Callable[[Player, str], None] = None,
-        on_close: collections.abc.Callable[[Player], None] = None,
+        on_submit: collections.abc.Callable[[Player, str], None] | None = None,
+        on_close: collections.abc.Callable[[Player], None] | None = None,
     ) -> None: ...
     def add_control(
         self, control: Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header

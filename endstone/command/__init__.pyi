@@ -63,8 +63,8 @@ class CommandSenderWrapper(CommandSender):
     def __init__(
         self,
         sender: CommandSender,
-        on_message: collections.abc.Callable[[str | Translatable], None] = None,
-        on_error: collections.abc.Callable[[str | Translatable], None] = None,
+        on_message: collections.abc.Callable[[str | Translatable], None] | None = None,
+        on_error: collections.abc.Callable[[str | Translatable], None] | None = None,
     ) -> None: ...
 
 class ConsoleCommandSender(CommandSender):

@@ -31,7 +31,6 @@ logger = logging.getLogger(__name__)
 
 __all__ = ["main"]
 
-
 _F = TypeVar("_F", bound=Callable[..., Any])
 
 
@@ -39,7 +38,7 @@ def catch_exceptions(func: _F) -> _F:
     """Decorator to catch and log exceptions."""
 
     @functools.wraps(func)
-    def wrapper(*args, **kwargs) -> Any: #type: ignore[no-untyped-def]
+    def wrapper(*args, **kwargs):  # type: ignore[no-untyped-def]
         try:
             return func(*args, **kwargs)
         except Exception as e:

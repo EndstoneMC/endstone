@@ -10,7 +10,7 @@ import sys
 import tempfile
 import zipfile
 from pathlib import Path
-from typing import Any, Union
+from typing import Union
 
 import click
 import importlib_resources
