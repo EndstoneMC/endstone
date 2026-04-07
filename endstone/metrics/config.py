@@ -24,6 +24,8 @@ class MetricsConfig:
 
     @property
     def server_uuid(self) -> uuid.UUID:
+        if self._server_uuid is None:
+            raise RuntimeError("Server UUID is not set")
         return self._server_uuid
 
     @property
@@ -71,11 +73,11 @@ class MetricsConfig:
         for comment in comments:
             config.add(tomlkit.comment(comment))
 
-        config.add("enabled", self._default_enabled)
-        config.add("server-uuid", str(uuid.uuid4()))
-        config.add("log-errors", False)
-        config.add("log-sent-data", False)
-        config.add("log-response-status-text", False)
+        config.add("enabled", self._default_enabled)  # type: ignore[arg-type]
+        config.add("server-uuid", str(uuid.uuid4()))  # type: ignore[arg-type]
+        config.add("log-errors", False)  # type: ignore[arg-type]
+        config.add("log-sent-data", False)  # type: ignore[arg-type]
+        config.add("log-response-status-text", False)  # type: ignore[arg-type]
 
         self._file.parent.mkdir(parents=True, exist_ok=True)
         with open(self._file, "w", encoding="utf-8") as f:
