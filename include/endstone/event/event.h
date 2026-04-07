@@ -63,6 +63,7 @@ public:
 
 private:
     [[nodiscard]] virtual bool isCancellable() const { return false; }
+    [[nodiscard]] virtual bool isCancelled() const { return cancelled_; }
 
     template <class T>
     friend class Cancellable;

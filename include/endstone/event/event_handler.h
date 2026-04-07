@@ -68,7 +68,7 @@ public:
         if (event.getEventName() != event_) {
             return;
         }
-        if (event.isCancellable() && event.cancelled_ && isIgnoreCancelled()) {
+        if (event.isCancellable() && event.isCancelled() && isIgnoreCancelled()) {
             return;
         }
         executor_(event);
