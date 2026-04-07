@@ -36,8 +36,8 @@ class LinuxBootstrap(Bootstrap):
         os.chmod(self.executable_path, st.st_mode | stat.S_IEXEC)
         os.chmod(self.server_path / "crashpad_handler", st.st_mode | stat.S_IEXEC)
 
-    def _run(self, *args, **kwargs) -> int:
-        process = subprocess.Popen(
+    def _run(self, *args, **kwargs) -> int:  # type: ignore[no-untyped-def]
+        process = subprocess.Popen(  # type: ignore[call-overload]
             [str(self.executable_path.absolute())],
             text=True,
             encoding="utf-8",
@@ -46,4 +46,4 @@ class LinuxBootstrap(Bootstrap):
             *args,
             **kwargs,
         )
-        return process.wait()
+        return int(process.wait())

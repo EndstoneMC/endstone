@@ -4,19 +4,19 @@ import os
 import subprocess
 import sys
 import warnings
-from subprocess import STARTUPINFO, Handle, list2cmdline
+from subprocess import STARTUPINFO, Handle, list2cmdline  # type: ignore[attr-defined]
 
-from endstone import _detours
+from endstone import _detours  # type: ignore[attr-defined]
 
 from .base import Bootstrap
 
 
-class PopenWithDll(subprocess.Popen):
-    def __init__(self, *args, **kwargs):
+class PopenWithDll(subprocess.Popen[str]):
+    def __init__(self, *args, **kwargs) -> None:  # type: ignore[no-untyped-def]
         self.dll_names = kwargs.pop("dll_names", None)
         super().__init__(*args, **kwargs)
 
-    def _execute_child(
+    def _execute_child(  # type: ignore[no-untyped-def]
         self,
         args,
         executable,
@@ -34,16 +34,9 @@ class PopenWithDll(subprocess.Popen):
         c2pwrite,
         errread,
         errwrite,
-        # unused_restore_signals,
-        # unused_gid,
-        # unused_gids,
-        # unused_uid,
-        # unused_umask,
-        # unused_start_new_session,
-        # unused_process_group,
         *unused_args,
         **unused_kwargs,
-    ):
+    ) -> None:
         """Execute program (MS Windows version)"""
 
         assert not pass_fds, "pass_fds not supported on Windows."
@@ -88,7 +81,7 @@ class PopenWithDll(subprocess.Popen):
             if use_std_handles:
                 handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
 
-            handle_list[:] = self._filter_handle_list(handle_list)
+            handle_list[:] = self._filter_handle_list(handle_list)  # type: ignore[attr-defined]
 
             if handle_list:
                 if not close_fds:
@@ -120,7 +113,7 @@ class PopenWithDll(subprocess.Popen):
                 dll_name=self.dll_names,
             )
         finally:
-            self._close_pipe_fds(p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite)
+            self._close_pipe_fds(p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite)  # type: ignore[attr-defined]
 
         # Retain the process handle, but close the thread handle
         self._child_created = True
@@ -178,7 +171,7 @@ class WindowsBootstrap(Bootstrap):
                 "from https://www.python.org/downloads/ ."
             )
 
-    def _run(self, *args, **kwargs) -> int:
+    def _run(self, *args, **kwargs) -> int:  # type: ignore[no-untyped-def]
         try:
             self._add_loopback_exemption()
         except Exception as e:

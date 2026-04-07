@@ -10,12 +10,12 @@ import sys
 import tempfile
 import zipfile
 from pathlib import Path
-from typing import Union
+from typing import Any, Union
 
 import click
 import importlib_resources
 import requests
-import sentry_crashpad
+import sentry_crashpad  # type: ignore[import-untyped]
 import tomlkit
 from packaging.version import Version
 from rich.progress import BarColumn, DownloadColumn, Progress, TextColumn, TimeRemainingColumn
@@ -29,7 +29,7 @@ class Bootstrap:
         self._no_confirm = no_confirm
         self._remote = remote
         self._logger = logging.getLogger(self.name)
-        self._process: subprocess.Popen
+        self._process: subprocess.Popen[str]
         self._interactive = interactive
 
     @property
@@ -76,7 +76,7 @@ class Bootstrap:
         if not self._endstone_runtime_path.exists():
             raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), str(self._endstone_runtime_path))
 
-    def _download(self, dst: Union[str, os.PathLike]) -> None:
+    def _download(self, dst: Union[str, os.PathLike[str]]) -> None:
         dst = Path(dst)
 
         self._logger.info("Loading index from the remote server...")
@@ -140,8 +140,8 @@ class Bootstrap:
 
         if should_modify_server_properties:
             properties = dst / "server.properties"
-            with properties.open("r", encoding="utf-8") as file:
-                in_lines = file.readlines()
+            with properties.open("r", encoding="utf-8") as f:
+                in_lines = f.readlines()
 
             out_lines = []
             for line in in_lines:
@@ -152,12 +152,12 @@ class Bootstrap:
                 else:
                     out_lines.append(line)
 
-            with properties.open("w", encoding="utf-8") as file:
-                file.writelines(out_lines)
+            with properties.open("w", encoding="utf-8") as f:
+                f.writelines(out_lines)
 
         version_file = dst / "version.txt"
-        with version_file.open("w", encoding="utf-8") as file:
-            file.writelines(str(self.minecraft_version))
+        with version_file.open("w", encoding="utf-8") as f:
+            f.writelines(str(self.minecraft_version))
 
     def _prepare(self) -> None:
         # ensure the plugin folder exists
@@ -200,7 +200,7 @@ class Bootstrap:
                     else:
                         # if both are tables, dive deeper
                         if isinstance(val, tomlkit.TOMLDocument) and isinstance(to_doc[key], tomlkit.TOMLDocument):
-                            migrate_config(val, to_doc[key])
+                            migrate_config(val, to_doc[key])  # type: ignore[arg-type]
 
             migrate_config(default_config, config)
             with open(self.config_path, "w", encoding="utf-8") as f:
@@ -291,7 +291,7 @@ class Bootstrap:
             env["ENDSTONE_USE_INTERACTIVE_CONSOLE"] = "1"
         return env
 
-    def _run(self, *args, **kwargs) -> int:
+    def _run(self, *args, **kwargs) -> int:  # type: ignore[no-untyped-def]
         """
         Runs the server and returns its exit code.
 

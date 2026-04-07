@@ -3,11 +3,13 @@ import logging
 import platform
 import sys
 import time
+from typing import Any, Callable, TypeVar, cast
 
 import click
 import colorlog
 
 from endstone._version import __version__
+from endstone.cli.base import Bootstrap
 
 handler = colorlog.StreamHandler()
 handler.setFormatter(
@@ -30,18 +32,21 @@ logger = logging.getLogger(__name__)
 __all__ = ["main"]
 
 
-def catch_exceptions(func):
+_F = TypeVar("_F", bound=Callable[..., Any])
+
+
+def catch_exceptions(func: _F) -> _F:
     """Decorator to catch and log exceptions."""
 
     @functools.wraps(func)
-    def wrapper(*args, **kwargs):
+    def wrapper(*args, **kwargs) -> Any: #type: ignore[no-untyped-def]
         try:
             return func(*args, **kwargs)
         except Exception as e:
             logger.exception(e)
             sys.exit(-1)
 
-    return wrapper
+    return cast(_F, wrapper)
 
 
 @click.group(invoke_without_command=True, help="Starts an endstone server.")
@@ -75,10 +80,11 @@ def catch_exceptions(func):
 @click.version_option(__version__)
 @click.pass_context
 @catch_exceptions
-def main(ctx, server_folder: str, no_confirm: bool, remote: str, interactive: bool) -> None:
+def main(ctx: click.Context, server_folder: str, no_confirm: bool, remote: str, interactive: bool) -> None:
     if ctx.invoked_subcommand is not None:
         return
 
+    cls: type[Bootstrap]
     system = platform.system()
     if system == "Windows":
         from .windows import WindowsBootstrap
