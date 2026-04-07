@@ -32,9 +32,14 @@ public:
     [[nodiscard]] std::string getEventName() const override
     {
         py::gil_scoped_acquire gil;
-        const auto type = py::type::of(py::cast(this));
-        return fmt::format("{}.{}", type.attr("__module__").cast<std::string>(),
-                           type.attr("__qualname__").cast<std::string>());
+        const auto self = py::cast(this);
+        const auto type = py::type::of(self);
+        auto module = type.attr("__module__").cast<std::string>();
+        auto qualname = type.attr("__qualname__").cast<std::string>();
+        if (module.starts_with("endstone.")) {
+            return qualname;
+        }
+        return fmt::format("{}.{}", module, qualname);
     }
 
     [[nodiscard]] bool isCancelled() const override

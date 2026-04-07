@@ -85,9 +85,11 @@ class Plugin(_Plugin):
             event_cls = params[0].annotation
             priority = getattr(func, "_priority")
             ignore_cancelled = getattr(func, "_ignore_cancelled")
-            self.server.plugin_manager.register_event(
-                getattr(event_cls, "NAME", event_cls.__name__), func, priority, self, ignore_cancelled
-            )
+            if event_cls.__module__.startswith("endstone."):
+                event_name = event_cls.__name__
+            else:
+                event_name = f"{event_cls.__module__}.{event_cls.__qualname__}"
+            self.server.plugin_manager.register_event(event_name, func, priority, self, ignore_cancelled)
 
     @property
     def config(self) -> dict:
