@@ -98,9 +98,25 @@ def main(ctx: click.Context, server_folder: str, no_confirm: bool, remote: str, 
         raise NotImplementedError(f"{system} is not supported.")
 
     bootstrap = cls(server_folder=server_folder, no_confirm=no_confirm, remote=remote, interactive=interactive)
-    exit_code = bootstrap.run()
-    if exit_code != 0:
-        logger.error(f"Server exited with non-zero code {exit_code}.")
-        time.sleep(2)
+    restart_marker = bootstrap.server_path / ".endstone_restart"
 
-    sys.exit(exit_code)
+    while True:
+        exit_code = bootstrap.run()
+
+        if restart_marker.exists():
+            try:
+                timestamp = float(restart_marker.read_text().strip())
+                elapsed = time.time() - timestamp
+                if elapsed < 60:
+                    restart_marker.unlink()
+                    logger.info("Server is restarting...")
+                    continue
+            except (ValueError, OSError):
+                pass
+            restart_marker.unlink(missing_ok=True)
+
+        if exit_code != 0:
+            logger.error(f"Server exited with non-zero code {exit_code}.")
+            time.sleep(2)
+
+        sys.exit(exit_code)

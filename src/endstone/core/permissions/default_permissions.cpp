@@ -105,6 +105,8 @@ Permission &CommandPermissions::registerPermissions(Permission &parent)
     registerPermission(PREFIX + "reload", "reload",
                        "Allows the user to reload the configuration and plugins of the server",
                        PermissionDefault::Operator, commands);
+    registerPermission(PREFIX + "restart", "restart", "Allows the user to restart the server",
+                       PermissionDefault::Operator, commands);
     registerPermission(PREFIX + "seed", "seed", "Allows the user to view the seed of the level.",
                        PermissionDefault::Operator, commands);
     registerPermission(PREFIX + "status", "status", "Allows the user to view the status of the server",
