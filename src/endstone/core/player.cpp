@@ -482,7 +482,7 @@ void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
                                    std::optional<std::string> molang_variables_json) const
 {
     BinaryStream stream;
-    stream.writeByte(static_cast<int>(getDimension().getType()), "Dimension Id", nullptr);
+    stream.writeByte(getHandle().getDimension().getDimensionId().runtime_id, "Dimension Id", nullptr);
     stream.writeVarInt64(-1, "Actor Unique ID", nullptr);  // -1 = self
     stream.writeFloat(x, "X", nullptr);
     stream.writeFloat(y, "Y", nullptr);

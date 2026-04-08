@@ -14,7 +14,6 @@
 
 #include "endstone/core/level/level.h"
 
-#include <boost/algorithm/string.hpp>
 #include <entt/entt.hpp>
 
 #include "bedrock/core/utility/automatic_id.h"
@@ -90,22 +89,19 @@ std::vector<Dimension *> EndstoneLevel::getDimensions() const
     return dimensions;
 }
 
-Dimension *EndstoneLevel::getDimension(std::string name) const
+Dimension *EndstoneLevel::getDimension(DimensionId id) const
 {
-    if (name == "the_end") {
-        name = "TheEnd";
-    }
     for (const auto &dimension : dimensions_ | std::views::values) {
-        if (boost::iequals(dimension->getName(), name)) {
+        if (dimension->getId() == id) {
             return dimension.get();
         }
     }
     return nullptr;
 }
 
-Dimension *EndstoneLevel::getDimension(int id) const
+Dimension *EndstoneLevel::getDimension(DimensionType type) const
 {
-    if (const auto it = dimensions_.find(id); it != dimensions_.end()) {
+    if (const auto it = dimensions_.find(type.runtime_id); it != dimensions_.end()) {
         return it->second.get();
     }
     return nullptr;

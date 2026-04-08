@@ -21,27 +21,39 @@
 #include "endstone/actor/actor.h"
 #include "endstone/actor/item.h"
 #include "endstone/block/block.h"
+#include "endstone/identifier.h"
 #include "endstone/inventory/item_stack.h"
 #include "endstone/level/chunk.h"
 
 namespace endstone {
+
+class Dimension;
+using DimensionId = Identifier<Dimension>;
 
 /**
  * @brief Represents a dimension within a Level.
  */
 class Dimension {
 public:
-    /**
-     * @brief Represents various dimension types.
-     */
-    enum class Type {
-        Overworld = 0,
-        Nether = 1,
-        TheEnd = 2,
-        Custom = 999
-    };
+    static constexpr auto Overworld = DimensionId::minecraft("overworld");
+    static constexpr auto Nether = DimensionId::minecraft("nether");
+    static constexpr auto TheEnd = DimensionId::minecraft("the_end");
 
     virtual ~Dimension() = default;
+
+    /**
+     * @brief Return the identifier of this dimension.
+     *
+     * @return this dimension's identifier
+     */
+    [[nodiscard]] virtual DimensionId getId() const = 0;
+
+    /**
+     * @brief Get the translation key, suitable for use in a translation component.
+     *
+     * @return the translation key
+     */
+    [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
     /**
      * @brief Gets the name of this dimension
@@ -49,13 +61,6 @@ public:
      * @return Name of this dimension
      */
     [[nodiscard]] virtual std::string getName() const = 0;
-
-    /**
-     * @brief Gets the type of this dimension
-     *
-     * @return Type of this dimension
-     */
-    [[nodiscard]] virtual Type getType() const = 0;
 
     /**
      * @brief Gets the level to which this dimension belongs

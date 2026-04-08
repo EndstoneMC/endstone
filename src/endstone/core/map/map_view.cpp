@@ -14,6 +14,7 @@
 
 #include "endstone/core/map/map_view.h"
 
+#include "endstone/core/level/dimension.h"
 #include "endstone/core/map/map_canvas.h"
 #include "endstone/core/map/map_renderer.h"
 #include "endstone/core/player.h"
@@ -78,12 +79,12 @@ Dimension *EndstoneMapView::getDimension() const
     if (!dimension.isSet()) {
         return nullptr;
     }
-    return level->getDimension(dimension.unwrap()->getDimensionId().runtime_id);
+    return level->getDimension(dimension.unwrap()->getDimensionId());
 }
 
 void EndstoneMapView::setDimension(const Dimension &dimension)
 {
-    map_.setDimensionId({static_cast<int>(dimension.getType())});
+    map_.setDimensionId(static_cast<const EndstoneDimension &>(dimension).getHandle().getDimensionId());
 }
 
 std::vector<std::shared_ptr<MapRenderer>> EndstoneMapView::getRenderers() const

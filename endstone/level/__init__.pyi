@@ -1,4 +1,3 @@
-import enum
 import typing
 
 from endstone.actor import Actor, Item
@@ -35,9 +34,9 @@ class Level:
         Gets a list of all dimensions within this level.
         """
         ...
-    def get_dimension(self, name: str) -> Dimension:
+    def get_dimension(self, id: str) -> Dimension:
         """
-        Gets the dimension with the given name.
+        Gets the dimension with the given id.
         """
         ...
     @property
@@ -51,30 +50,26 @@ class Dimension:
     """
     Represents a dimension within a Level.
     """
-    class Type(enum.Enum):
-        """
-        Represents various dimension types.
-        """
+    OVERWORLD: str = "minecraft:overworld"
+    NETHER: str = "minecraft:nether"
+    THE_END: str = "minecraft:the_end"
 
-        OVERWORLD = 0
-        NETHER = 1
-        THE_END = 2
-        CUSTOM = 999
-
-    OVERWORLD = Type.OVERWORLD
-    NETHER = Type.NETHER
-    THE_END = Type.THE_END
-    CUSTOM = Type.CUSTOM
+    @property
+    def id(self) -> str:
+        """
+        Gets the identifier of this dimension
+        """
+        ...
+    @property
+    def translation_key(self) -> str:
+        """
+        Gets the translation key for this dimension
+        """
+        ...
     @property
     def name(self) -> str:
         """
         Gets the name of this dimension
-        """
-        ...
-    @property
-    def type(self) -> Type:
-        """
-        Gets the type of this dimension
         """
         ...
     @property

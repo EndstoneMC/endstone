@@ -37,16 +37,14 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         .def("__repr__", [](const Chunk &self) { return fmt::format("{}", self); })
         .def("__str__", [](const Chunk &self) { return fmt::format("{}", self); });
 
-    py::native_enum<Dimension::Type>(dimension, "Type", "enum.Enum", "Represents various dimension types.")
-        .value("OVERWORLD", Dimension::Type::Overworld)
-        .value("NETHER", Dimension::Type::Nether)
-        .value("THE_END", Dimension::Type::TheEnd)
-        .value("CUSTOM", Dimension::Type::Custom)
-        .export_values()
-        .finalize();
-
-    dimension.def_property_readonly("name", &Dimension::getName, "Gets the name of this dimension")
-        .def_property_readonly("type", &Dimension::getType, "Gets the type of this dimension")
+    dimension
+        .def_property_readonly_static("OVERWORLD", [](const py::object &) { return Dimension::Overworld; })
+        .def_property_readonly_static("NETHER", [](const py::object &) { return Dimension::Nether; })
+        .def_property_readonly_static("THE_END", [](const py::object &) { return Dimension::TheEnd; })
+        .def_property_readonly("id", &Dimension::getId, "Gets the identifier of this dimension")
+        .def_property_readonly("translation_key", &Dimension::getTranslationKey,
+                               "Gets the translation key for this dimension")
+        .def_property_readonly("name", &Dimension::getName, "Gets the name of this dimension")
         .def_property_readonly("level", &Dimension::getLevel, "Gets the level to which this dimension belongs",
                                py::return_value_policy::reference)
         .def("get_block_at", py::overload_cast<Location>(&Dimension::getBlockAt, py::const_),
@@ -73,7 +71,7 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         .def_property("time", &Level::getTime, &Level::setTime, "Gets and sets the relative in-game time on the server")
         .def_property_readonly("dimensions", &Level::getDimensions, "Gets a list of all dimensions within this level.",
                                py::return_value_policy::reference_internal)
-        .def("get_dimension", &Level::getDimension, py::arg("name"), "Gets the dimension with the given name.",
+        .def("get_dimension", &Level::getDimension, py::arg("id"), "Gets the dimension with the given id.",
              py::return_value_policy::reference)
         .def_property_readonly("seed", &Level::getSeed, "Gets the Seed for this level.");
 

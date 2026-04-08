@@ -135,8 +135,8 @@ bool handleEvent(const PlayerDimensionChangeAfterEvent &event)
         const auto &server = endstone::core::EndstoneServer::getInstance();
         endstone::PlayerDimensionChangeEvent e{
             player->getEndstoneActor<endstone::core::EndstonePlayer>(),
-            *server.getEndstoneLevel()->getDimension(event.from_dimension.runtime_id),
-            *server.getEndstoneLevel()->getDimension(event.to_dimension.runtime_id),
+            *server.getEndstoneLevel()->getDimension(event.from_dimension),
+            *server.getEndstoneLevel()->getDimension(event.to_dimension),
         };
         server.getPluginManager().callEvent(e);
     }

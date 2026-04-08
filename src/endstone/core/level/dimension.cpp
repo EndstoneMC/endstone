@@ -29,23 +29,29 @@ EndstoneDimension::EndstoneDimension(WeakRef<::Dimension> dimension, EndstoneLev
 {
 }
 
-std::string EndstoneDimension::getName() const
-{
-    return getHandle().getName();
-}
-
-Dimension::Type EndstoneDimension::getType() const
+DimensionId EndstoneDimension::getId() const
 {
     switch (getHandle().getDimensionId().runtime_id) {
     case VanillaDimensions::Overworld.runtime_id:
-        return Type::Overworld;
+        return Dimension::Overworld;
     case VanillaDimensions::Nether.runtime_id:
-        return Type::Nether;
+        return Dimension::Nether;
     case VanillaDimensions::TheEnd.runtime_id:
-        return Type::TheEnd;
+        return Dimension::TheEnd;
     default:
-        return Type::Custom;
+        // TODO(fixme): return actual id after 1.26.20 update with custom dimension
+        return DimensionId(getHandle().getName());
     }
+}
+
+std::string EndstoneDimension::getTranslationKey() const
+{
+    return getHandle().getLocalizationKey();
+}
+
+std::string EndstoneDimension::getName() const
+{
+    return getHandle().getName();
 }
 
 Level &EndstoneDimension::getLevel() const
@@ -144,5 +150,5 @@ std::vector<Actor *> EndstoneDimension::getActors() const
 endstone::Dimension &Dimension::getEndstoneDimension() const
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    return *server.getEndstoneLevel()->getDimension(getDimensionId().runtime_id);
+    return *server.getEndstoneLevel()->getDimension(getDimensionId());
 }

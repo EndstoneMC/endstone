@@ -19,6 +19,11 @@ bool Dimension::isBrightOutside() const
     return isNaturalDimension() && sky_darken_.value < 4;
 }
 
+std::string Dimension::getLocalizationKey() const
+{
+    return fmt::format("dimension.dimensionName{}", id_.runtime_id);
+}
+
 Level &Dimension::getLevel() const
 {
     return *level_;

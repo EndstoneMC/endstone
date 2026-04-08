@@ -36,8 +36,8 @@ public:
     [[nodiscard]] int getTime() const override;
     void setTime(int time) override;
     [[nodiscard]] std::vector<Dimension *> getDimensions() const override;
-    [[nodiscard]] Dimension *getDimension(std::string name) const override;
-    [[nodiscard]] Dimension *getDimension(int id) const;  // TODO(fixme): make it virtual
+    [[nodiscard]] Dimension *getDimension(DimensionId id) const override;
+    [[nodiscard]] Dimension *getDimension(DimensionType type) const;
     [[nodiscard]] std::int64_t getSeed() const override;
 
     [[nodiscard]] EndstoneServer &getServer() const;
