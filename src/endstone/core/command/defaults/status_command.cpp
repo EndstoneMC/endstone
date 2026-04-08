@@ -102,7 +102,7 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
             }
         }
         sender.sendMessage("- {}Dimension \"{}\": {}{}{} loaded chunks, {}{}{} entities",              //
-                           ColorFormat::Gold, dimension->getName(),                                    //
+                           ColorFormat::Gold, dimension->getId(),                                    //
                            ColorFormat::Red, dimension->getLoadedChunks().size(), ColorFormat::Green,  //
                            ColorFormat::Red, actor_count, ColorFormat::Green);
     }

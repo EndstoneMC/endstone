@@ -49,11 +49,6 @@ std::string EndstoneDimension::getTranslationKey() const
     return getHandle().getLocalizationKey();
 }
 
-std::string EndstoneDimension::getName() const
-{
-    return getHandle().getName();
-}
-
 Level &EndstoneDimension::getLevel() const
 {
     return level_;

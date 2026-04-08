@@ -41,15 +41,6 @@ def test_dimension_id_property(server: Server) -> None:
     assert the_end.id == "minecraft:the_end"
 
 
-def test_dimension_name_property(server: Server) -> None:
-    """Test that each dimension has a non-empty name."""
-    for dim_id in [Dimension.OVERWORLD, Dimension.NETHER, Dimension.THE_END]:
-        dim = server.level.get_dimension(dim_id)
-        assert dim is not None
-        assert isinstance(dim.name, str)
-        assert len(dim.name) > 0
-
-
 def test_dimension_translation_key(server: Server) -> None:
     """Test that each dimension has a translation key."""
     for dim_id in [Dimension.OVERWORLD, Dimension.NETHER, Dimension.THE_END]:

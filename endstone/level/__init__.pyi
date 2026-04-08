@@ -67,12 +67,6 @@ class Dimension:
         """
         ...
     @property
-    def name(self) -> str:
-        """
-        Gets the name of this dimension
-        """
-        ...
-    @property
     def level(self) -> Level:
         """
         Gets the level to which this dimension belongs

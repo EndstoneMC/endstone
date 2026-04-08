@@ -44,7 +44,6 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         .def_property_readonly("id", &Dimension::getId, "Gets the identifier of this dimension")
         .def_property_readonly("translation_key", &Dimension::getTranslationKey,
                                "Gets the translation key for this dimension")
-        .def_property_readonly("name", &Dimension::getName, "Gets the name of this dimension")
         .def_property_readonly("level", &Dimension::getLevel, "Gets the level to which this dimension belongs",
                                py::return_value_policy::reference)
         .def("get_block_at", py::overload_cast<Location>(&Dimension::getBlockAt, py::const_),
