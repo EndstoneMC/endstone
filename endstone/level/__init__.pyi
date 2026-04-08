@@ -50,10 +50,10 @@ class Dimension:
     """
     Represents a dimension within a Level.
     """
-    OVERWORLD: str = "minecraft:overworld"
-    NETHER: str = "minecraft:nether"
-    THE_END: str = "minecraft:the_end"
 
+    OVERWORLD = "minecraft:overworld"
+    NETHER = "minecraft:nether"
+    THE_END = "minecraft:the_end"
     @property
     def id(self) -> str:
         """
