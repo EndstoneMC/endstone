@@ -6,6 +6,7 @@ from endstone import (
 )
 from endstone.actor import Actor, Mob
 from endstone.command import CommandSender, ConsoleCommandSender
+from endstone.level import Dimension
 
 # =============================================================================
 # Section 1: Console command sender isinstance checks
@@ -65,8 +66,8 @@ def test_player_as_actor_resolves_to_player(player: Player, server: Server):
     """Verify that getting actors and finding the player returns the correct Player type."""
     level = server.level
     assert level is not None
-    for dim_name in ["overworld", "nether", "the_end"]:
-        dim = level.get_dimension(dim_name)
+    for dim_id in [Dimension.OVERWORLD, Dimension.NETHER, Dimension.THE_END]:
+        dim = level.get_dimension(dim_id)
         if dim is None:
             continue
         for actor in dim.actors:
