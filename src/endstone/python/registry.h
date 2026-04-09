@@ -68,20 +68,20 @@ class PyRegistry {
 public:
     explicit PyRegistry(const IRegistry &registry) : registry_(registry) {}
 
-    [[nodiscard]] py::object get(const std::string &id) const
+    [[nodiscard]] py::object get(const PyIdentifier &id) const
     {
-        if (const auto *p = registry_.get0(id)) {
+        if (const auto *p = registry_.get0(id.str())) {
             return cast(p);
         }
         return py::none();
     }
 
-    [[nodiscard]] py::object getOrThrow(const std::string &id) const
+    [[nodiscard]] py::object getOrThrow(const PyIdentifier &id) const
     {
-        if (const auto *p = registry_.get0(id)) {
+        if (const auto *p = registry_.get0(id.str())) {
             return cast(p);
         }
-        throw py::key_error(fmt::format("No registry entry found for identifier: {}", id));
+        throw py::key_error(fmt::format("No registry entry found for identifier: {}", id.str()));
     }
 
     [[nodiscard]] py::iterator iter() const
@@ -94,7 +94,7 @@ public:
         return py::iter(items);
     }
 
-    [[nodiscard]] bool contains(const std::string &id) const { return registry_.get0(id) != nullptr; }
+    [[nodiscard]] bool contains(const PyIdentifier &id) const { return registry_.get0(id.str()) != nullptr; }
 
     [[nodiscard]] std::size_t size() const { return registry_.size(); }
 
