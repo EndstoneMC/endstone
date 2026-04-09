@@ -96,6 +96,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
              })
         .def_static(
             "__class_getitem__", [](const py::object &) { return py::type::of<PyIdentifier>(); }, py::arg("item"));
+    py::implicitly_convertible<std::string, PyIdentifier>();
 
     // Submodules
     auto m_actor =
