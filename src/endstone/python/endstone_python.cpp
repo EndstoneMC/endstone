@@ -58,6 +58,45 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     py::options options;
     options.disable_enum_members_docstring();
 
+    // Identifier (registered early, before classes that use it via type caster)
+    py::class_<PyIdentifier>(m, "Identifier",
+                             "Represents a namespaced identifier consisting of a namespace and a key.")
+        .def(py::init<std::string>(), py::arg("id"), "Create an Identifier from a string like 'namespace:key'.")
+        .def(py::init<std::string, std::string>(), py::arg("namespace_"), py::arg("key"),
+             "Create an Identifier from separate namespace and key.")
+        .def_property_readonly(
+            "namespace", [](const PyIdentifier &self) { return self.namespace_; },
+            "The namespace component of this identifier.")
+        .def_property_readonly(
+            "key", [](const PyIdentifier &self) { return self.key_; }, "The key component of this identifier.")
+        .def("__str__", &PyIdentifier::str)
+        .def("__repr__",
+             [](const PyIdentifier &self) { return "Identifier(" + self.str() + ")"; })
+        .def("__hash__",
+             [](const PyIdentifier &self) { return py::hash(py::str(self.str())); })
+        .def("__eq__",
+             [](const PyIdentifier &self, const py::object &other) {
+                 if (py::isinstance<PyIdentifier>(other)) {
+                     return self == other.cast<PyIdentifier>();
+                 }
+                 if (py::isinstance<py::str>(other)) {
+                     return self.str() == other.cast<std::string>();
+                 }
+                 return false;
+             })
+        .def("__ne__",
+             [](const PyIdentifier &self, const py::object &other) {
+                 if (py::isinstance<PyIdentifier>(other)) {
+                     return !(self == other.cast<PyIdentifier>());
+                 }
+                 if (py::isinstance<py::str>(other)) {
+                     return self.str() != other.cast<std::string>();
+                 }
+                 return true;
+             })
+        .def_static(
+            "__class_getitem__", [](const py::object &) { return py::type::of<PyIdentifier>(); }, py::arg("item"));
+
     // Submodules
     auto m_actor =
         m.def_submodule("actor", "Classes relating to actors (entities) that can exist in a world, including all "

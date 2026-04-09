@@ -19,16 +19,14 @@ def main() -> None:
     module = load(module_name)
     package = module.package
 
+    # endstone
     module.members = {"_T": package.get_member("_T"), **module.members}
-    for member in list(module.members.keys()):
-        if member.endswith("Registry"):
-            module.members.pop(member)
-            module.exports.remove(member)
     module.set_member("Registry", package.get_member("Registry"))
     module.exports.append("Registry")
+    module.set_member("Identifier", package.get_member("Identifier"))
+    module.exports.append("Identifier")
     module.exports = sorted(module.exports)
     module["Server.get_registry"] = package["Server.get_registry"]
-
     module.set_member("__version__", package.get_member("__version__"))
     module.imports.setdefault("__version__", package.imports.get("__version__"))
     module.exports = ["__version__"] + module.exports

@@ -24,6 +24,46 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
+struct PyIdentifier {
+    std::string namespace_;
+    std::string key_;
+
+    PyIdentifier() = default;
+
+    PyIdentifier(std::string ns, std::string key) : namespace_(std::move(ns)), key_(std::move(key))
+    {
+        if (namespace_.empty() || key_.empty()) {
+            throw std::invalid_argument("Identifier namespace and key must not be empty.");
+        }
+    }
+
+    explicit PyIdentifier(const std::string &full)
+    {
+        if (full.empty()) {
+            throw std::invalid_argument("Identifier string must not be empty.");
+        }
+        const auto pos = full.rfind(':');
+        if (pos == std::string::npos) {
+            namespace_ = "minecraft";
+            key_ = full;
+        }
+        else {
+            namespace_ = full.substr(0, pos);
+            key_ = full.substr(pos + 1);
+        }
+        if (namespace_.empty() || key_.empty()) {
+            throw std::invalid_argument("Identifier namespace and key must not be empty.");
+        }
+    }
+
+    [[nodiscard]] std::string str() const { return namespace_ + ":" + key_; }
+
+    bool operator==(const PyIdentifier &other) const
+    {
+        return namespace_ == other.namespace_ && key_ == other.key_;
+    }
+};
+
 class PyRegistry {
 public:
     explicit PyRegistry(const IRegistry &registry) : registry_(registry) {}

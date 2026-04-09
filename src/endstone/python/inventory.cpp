@@ -44,7 +44,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
              "Constructs a new ItemStack with this item type.")
         .def_static("get", &ItemType::get, py::arg("name"), "Attempts to get the ItemType with the given name.",
                     py::return_value_policy::reference)
-        .def("__str__", &ItemType::getId)
+        .def("__str__", [](const ItemType &self) { return std::string(self.getId()); })
         .def(py::self == py::self)
         .def(py::self != py::self)
         .def(py::self == std::string_view())

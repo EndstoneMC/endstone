@@ -50,7 +50,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
              "Creates a new BlockData instance for this block type, with all properties initialized to defaults.")
         .def_static("get", &BlockType::get, py::arg("name"), "Attempts to get the BlockType with the given name.",
                     py::return_value_policy::reference)
-        .def("__str__", &BlockType::getId)
+        .def("__str__", [](const BlockType &self) { return std::string(self.getId()); })
         .def("__repr__", [](const BlockType &self) { return fmt::format("BlockType({})", self.getId()); });
 
     py::class_<BlockState>(m, "BlockState",

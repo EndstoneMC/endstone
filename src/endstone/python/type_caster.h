@@ -18,6 +18,7 @@
 #include <pybind11/pybind11.h>
 
 #include "endstone/endstone.hpp"
+#include "registry.h"
 
 namespace pybind11::detail {
 template <>
@@ -266,32 +267,48 @@ public:
 template <typename T>
 class type_caster<endstone::Identifier<T>> {
 public:
+    using value_conv = make_caster<T>;
     explicit type_caster() : value("") {}
     // Python -> C++
     bool load(handle src, bool convert)
     {
-        make_caster<std::string_view> str_caster;
-        if (!str_caster.load(src, convert)) {
-            return false;
-        }
-        try {
-            value = static_cast<std::string_view &>(str_caster);
+        // Accept PyIdentifier objects
+        if (isinstance<endstone::python::PyIdentifier>(src)) {
+            auto &py_id = src.cast<endstone::python::PyIdentifier &>();
+            storage_ = py_id.str();
+            value = endstone::Identifier<T>(std::string_view(storage_));
             return true;
         }
-        catch (const std::exception &e) {
-            PyErr_SetString(PyExc_ValueError, e.what());
-            return false;
-        }
-    }
-
-    // C++ -> Python
-    static handle cast(endstone::Identifier<T> src, return_value_policy policy, handle parent)
-    {
+        // Accept strings
         make_caster<std::string> str_caster;
-        return str_caster.cast(src, policy, parent);
+        if (str_caster.load(src, convert)) {
+            try {
+                storage_ = cast_op<std::string>(std::move(str_caster));
+                value = endstone::Identifier<T>(std::string_view(storage_));
+                return true;
+            }
+            catch (const std::exception &e) {
+                PyErr_SetString(PyExc_ValueError, e.what());
+                return false;
+            }
+        }
+        return false;
     }
 
-    PYBIND11_TYPE_CASTER(endstone::Identifier<T>, const_name(PYBIND11_STRING_NAME));
+    // C++ -> Python: return PyIdentifier object
+    static handle cast(endstone::Identifier<T> src, return_value_policy /*policy*/, handle /*parent*/)
+    {
+        endstone::python::PyIdentifier id(std::string(src.getNamespace()), std::string(src.getKey()));
+        return pybind11::cast(std::move(id)).release();
+    }
+
+    // PYBIND11_TYPE_CASTER(endstone::Identifier<T>, const_name("@Identifier[") + value_conv::name +
+    //                                                   const_name("] | str@Identifier[") + value_conv::name +
+    //                                                   const_name("]@"));
+    PYBIND11_TYPE_CASTER(endstone::Identifier<T>, const_name("endstone.Identifier[") + value_conv::name + const_name("]"));
+
+private:
+    std::string storage_;
 };
 
 template <>
