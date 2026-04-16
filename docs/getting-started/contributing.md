@@ -113,7 +113,7 @@ After that, you can either:
 - [Start a live server to preview the documentation as you write](https://squidfunk.github.io/mkdocs-material/creating-your-site/#previewing-as-you-write), or
 
 ```shell
-mkdocs serve
+mkdocs serve --livereload
 ```
 
 - [Build the documentation](https://squidfunk.github.io/mkdocs-material/creating-your-site/#building-your-site)
