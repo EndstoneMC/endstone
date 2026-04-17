@@ -31,7 +31,7 @@ cd endstone
 
 ### Install the package manager (conan)
 
-The dependencies needed for the development of **Endstone** are provided Conan Package Manager (`>=2.0`). The install
+The dependencies needed for the development of **Endstone** are provided by [Conan package manager](https://docs.conan.io/2) (`>=2.0`). To install
 the package manager, run the following commands in your Python environment.
 
 ```shell
@@ -41,17 +41,17 @@ conan profile detect
 
 ### Install dependencies
 
-First of all, run the following commands to install dependencies of this project:
+First of all, run the following commands to install the dependencies of this project:
 
 === ":fontawesome-brands-windows: Command Prompt"
-```shell
-conan install . --build=missing -s compiler.cppstd=20 -c tools.cmake.cmaketoolchain:generator=Ninja
-```
+    ```shell
+    conan install . --build=missing -s compiler.cppstd=20 -c tools.cmake.cmaketoolchain:generator=Ninja
+    ```
 
-=== ":fontawesome-brands-windows: Powershell"
-```shell
-conan install . --build=missing -s compiler.cppstd=20 -c tools.cmake.cmaketoolchain:generator=Ninja -c tools.env.virtualenv:powershell=True
-```
+=== ":fontawesome-brands-windows: PowerShell"
+    ```shell
+    conan install . --build=missing -s compiler.cppstd=20 -c tools.cmake.cmaketoolchain:generator=Ninja -c tools.env.virtualenv:powershell=True
+    ```
 
 === ":fontawesome-brands-linux: Linux"
 
@@ -59,17 +59,17 @@ conan install . --build=missing -s compiler.cppstd=20 -c tools.cmake.cmaketoolch
     conan install . --build=missing -s compiler.cppstd=20 -s compiler.libcxx=libc++ -c tools.cmake.cmaketoolchain:generator=Ninja
     ```
 
-Now, activate the build virtual environment create by conan.
+Now, activate the build virtual environment created by conan.
 
 === ":fontawesome-brands-windows: Command Prompt"
-```cmd
-.\build\Release\generators\conanbuild.bat
-```
+    ```cmd
+    .\build\Release\generators\conanbuild.bat
+    ```
 
-=== ":fontawesome-brands-windows: Powershell"
-```cmd
-.\build\Release\generators\conanbuild.ps1
-```
+=== ":fontawesome-brands-windows: PowerShell"
+    ```cmd
+    .\build\Release\generators\conanbuild.ps1
+    ```
 
 === ":fontawesome-brands-linux: Linux"
 
