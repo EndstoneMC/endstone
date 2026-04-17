@@ -25,10 +25,16 @@ just delete and recreate the environment. It's trivial to set up:
 
 -   Activate the environment with:
 
-    === ":fontawesome-brands-windows: Windows"
+    === ":fontawesome-brands-windows: Command Prompt"
 
-        ``` sh
-        . .venv/Scripts/activate
+        ``` cmd
+        . .venv\Scripts\activate.bat
+        ```
+
+    === ":fontawesome-brands-windows: PowerShell"
+
+        ``` powershell
+        . .venv\Scripts\Activate.ps1
         ```
 
     === ":fontawesome-brands-linux: Linux"
