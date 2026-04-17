@@ -20,7 +20,7 @@ just delete and recreate the environment. It's trivial to set up:
 -   Create a new virtual environment with:
 
     ```
-    python3 -m venv venv
+    python3 -m venv .venv
     ```
 
 -   Activate the environment with:
@@ -28,17 +28,17 @@ just delete and recreate the environment. It's trivial to set up:
     === ":fontawesome-brands-windows: Windows"
 
         ``` sh
-        . venv/Scripts/activate
+        . .venv/Scripts/activate
         ```
 
     === ":fontawesome-brands-linux: Linux"
 
         ``` sh
-        . venv/bin/activate
+        . .venv/bin/activate
         ```
 
 
-    Your terminal should now print `(venv)` before the prompt, which is how you
+    Your terminal should now print `(.venv)` before the prompt, which is how you
     know that you are inside the virtual environment that you just created.
 
 -   Exit the environment with:
