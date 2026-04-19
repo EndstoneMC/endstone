@@ -92,4 +92,4 @@ Before installing your first plugin, you will need to build it.
 
 [editable installation]: https://pip.pypa.io/en/latest/topics/local-project-installs/
 
-[virtual environment]: ../../getting-started/installation/#environment
+[virtual environment]: ../getting-started/installation.md#environment
