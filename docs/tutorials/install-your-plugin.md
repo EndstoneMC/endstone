@@ -39,22 +39,28 @@ Before installing your first plugin, you will need to build it.
 
     To do so, you will need the activate the [virtual environment]. Please make sure Endstone is also installed inside the environment.
 
-    === ":fontawesome-brands-windows: Windows"
+    === ":fontawesome-brands-windows: Command Prompt"
 
-        ``` sh
-        . venv/Scripts/activate
+        ``` cmd
+        . .venv\Scripts\activate.bat
+        ```
+
+    === ":fontawesome-brands-windows: PowerShell"
+
+        ``` powershell
+        . .venv\Scripts\Activate.ps1
         ```
 
     === ":fontawesome-brands-linux: Linux"
 
         ``` sh
-        . venv/bin/activate
+        . .venv/bin/activate
         ```
     
     You can now enter this “development mode” by performing an [editable installation] inside the virtual environment, 
     using pip’s `-e/--editable` flag, as shown below:
 
-    ``` sh title="(venv)"
+    ``` sh title="(.venv)"
     pip install --editable .
     ```
 
