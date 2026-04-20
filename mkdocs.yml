@@ -40,6 +40,8 @@ plugins:
       enabled: !ENV [ CI, false ]
       repository: EndstoneMC/endstone
       branch: main
+      exclude_committers:
+        - web-flow
   - macros
   - mkdocstrings:
       enabled: !ENV [ CI, false ]
