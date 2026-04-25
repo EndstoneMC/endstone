@@ -67,16 +67,34 @@ from the last step. Open up a terminal and install Endstone with:
 ### with docker
 
 The official [Docker image] is a great way to get the Endstone server up and running in a few
-minutes. Open up a terminal and pull the image with:
+minutes, and enables you to run Endstone on ARM through emulation. Open up a terminal and pull the image with:
 
-=== "Latest"
+=== "Latest (x86/x64, Native)"
 
-    ```
+    ```shell
     docker pull endstone/endstone
     ```
+
+=== "Latest (ARM, with Emulation)"
+
+    ```shell
+    docker pull --platform linux/amd64 endstone/endstone
+    ```
+
+    Then, you can run a new server like this:
+
+    ```shell
+    # Create a new server called "endstone-server" that emulates an `amd64` architecture CPU, and bind the host port
+    # `19132` to the same port in the container.
+    docker run --platform linux/amd64 -p 19132:19132 -d --name endstone-server endstone/endstone
+    ```
+
+If you're new to Docker, check out the [Docker beginner's guide].
 
 [Python package]: https://pypi.org/project/endstone/
 
 [virtual environment]: https://realpython.com/what-is-pip/#using-pip-in-a-python-virtual-environment
 
 [Docker image]: https://hub.docker.com/r/endstone/endstone/
+
+[Docker beginner's guide]: https://docs.docker.com/get-started/
