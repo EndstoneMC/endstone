@@ -37,7 +37,7 @@ Alternatively, if you're running Endstone from within Docker, use:
     endstone/endstone
     ```
 
-    Note that if you are on an `x86_64` machine and you are not on MacOS/Windows, emulation will not apply.
+    Note that if you are on an `x86-64` machine and you are not on macOS or Windows, emulation will not apply.
 
 You should see this in your console:
 
