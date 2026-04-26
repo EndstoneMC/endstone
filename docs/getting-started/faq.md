@@ -14,4 +14,4 @@ comments: true
 
 [^1]: While BDS is natively built for `x86-64`, it can run exceptionally well on `arm` systems using [Docker emulation]. In our testing on an **Apple M1 running macOS Tahoe (26.3.1)**, performance remains stable with little-to-no latency impact! 
 
-[Docker emulation]: installation#with-docker
+[Docker emulation]: installation.md/#with-docker-latest-arm-with-emulation
