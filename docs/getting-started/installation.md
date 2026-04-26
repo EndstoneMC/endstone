@@ -69,25 +69,19 @@ from the last step. Open up a terminal and install Endstone with:
 The official [Docker image] is a great way to get the Endstone server up and running in a few
 minutes, and enables you to run Endstone on ARM through emulation. Open up a terminal and pull the image with:
 
-=== "Latest (x86/x64, Native)"
+=== "Latest"
 
     ```shell
     docker pull endstone/endstone
     ```
 
-=== "Latest (ARM, with Emulation)"
+=== "Latest / :fontawesome-brands-apple: MacOS / :fontawesome-solid-microchip: with Emulation"
 
     ```shell
     docker pull --platform linux/amd64 endstone/endstone
     ```
 
-    Then, you can run a new server like this:
-
-    ```shell
-    # Create a new server called "endstone-server" that emulates an `amd64` architecture CPU, and bind the host port
-    # `19132` to the same port in the container.
-    docker run --platform linux/amd64 -p 19132:19132 -d --name endstone-server endstone/endstone
-    ```
+    Note that if you are on an `x86_64` machine and you are not on MacOS/Windows, emulation will not apply.
 
 If you're new to Docker, check out the [Docker beginner's guide].
 

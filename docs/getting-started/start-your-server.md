@@ -25,6 +25,20 @@ Alternatively, if you're running Endstone from within Docker, use:
     docker run --rm -it -v "%cd%":/home/endstone -p 19132:19132/udp endstone/endstone
     ```
 
+=== ":fontawesome-brands-linux: Linux / :fontawesome-brands-apple: MacOS / :fontawesome-solid-microchip: with emulation"
+
+    ```
+    docker run \
+    --platform linux/amd64 \
+    -p 19132:19132 \
+    -it \
+    -v ${PWD}:/home/endstone \
+    --name endstone-server \
+    endstone/endstone
+    ```
+
+    Note that if you are on an `x86_64` machine and you are not on MacOS/Windows, emulation will not apply.
+
 You should see this in your console:
 
 ![Start your server](start-your-server.png)
