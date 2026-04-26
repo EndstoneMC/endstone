@@ -81,7 +81,7 @@ minutes, and enables you to run Endstone on ARM through emulation. Open up a ter
     docker pull --platform linux/amd64 endstone/endstone
     ```
 
-    Note that if you are on an `x86_64` machine and you are not on MacOS/Windows, emulation will not apply.
+    Note that if you are on an `x86-64` machine and you are not on macOS or Windows, emulation will not apply.
 
 If you're new to Docker, check out the [Docker beginner's guide].
 
