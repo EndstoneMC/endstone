@@ -75,7 +75,7 @@ minutes, and enables you to run Endstone on ARM through emulation. Open up a ter
     docker pull endstone/endstone
     ```
 
-=== "Latest / :fontawesome-brands-apple: MacOS / :fontawesome-solid-microchip: with Emulation"
+=== "Latest / :fontawesome-brands-apple: macOS / :fontawesome-solid-microchip: with emulation"
 
     ```shell
     docker pull --platform linux/amd64 endstone/endstone
