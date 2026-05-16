@@ -40,6 +40,7 @@ add_library(bedrock STATIC
         nbt/list_tag.cpp
         nbt/nbt_io.cpp
         nbt/tag.cpp
+        network/base_connection_request.cpp
         network/connection_request.cpp
         network/network_identifier.cpp
         network/packet/types/world/actor/serialized_abilities_data.cpp
