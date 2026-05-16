@@ -164,6 +164,17 @@ noise first), update Endstone's `src/bedrock/` declaration:
   to `src/bedrock/forward.h` in alphabetic order and use the type incomplete
   (fine for pointers, references, and container value types like
   `std::vector` / `std::unordered_map`).
+- **Width-ambiguous integers** - bedrock-headers are reconstructed from a
+  Linux/Android build, where `unsigned long` is 64-bit; on Windows (LLP64) it
+  is 32-bit. Whenever the diff shows `unsigned long`, port it as
+  `std::uint64_t` so the type is 64-bit on both of Endstone's target platforms.
+- **One type per corresponding file** - when a change needs a BDS type Endstone
+  does not yet declare, add it in its *own* `src/bedrock/` header mirroring the
+  BDS file that defines it (snake_case path), then `#include` it - do not paste
+  a foreign type's definition inline into whatever header happens to need it.
+  (A forward declaration of a helper type may sit in the header that uses it,
+  as BDS does; a forward declaration needed across many headers goes in
+  `src/bedrock/forward.h`.)
 - **Structural refactors** - when BDS introduces a base class (e.g. 1.26.20's
   `BaseConnectionRequest`), mirror it: add the base header, re-parent the
   derived classes, move the shared members into the base. When BDS removes a
