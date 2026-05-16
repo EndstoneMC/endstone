@@ -136,6 +136,15 @@ too big. Use this finer split:)
 9. `src/common/world/level/{dimension,biome}` and remaining `src/common/world/level/*` (chunk, material, storage, level core)
 10. `src/common/world/*` - remaining world (`attribute`, `effect`, `events`, `inventory`, `response`, ...)
 11. `src-deps` other than SharedTypes (Certificates, VanillaComponents, ...), then anything else
+12. **Cross-validate** - once every ABI change is in, re-review the whole
+    `src/bedrock/` diff against the bedrock-headers diff. Every edited function
+    signature, vtable slot, member type/order, and structural change must trace
+    to a concrete change in `git diff android/r<prev> android/r<new>`. Reject
+    anything not backed by the diff: no invented types, no guessed members, no
+    hallucinated signatures, no "looks-right" edits. A change that cannot be
+    matched to the header diff is wrong - revert or fix it. This stage exists
+    because the porting stages, especially when parallelised across agents, can
+    introduce plausible but unfounded edits - they must all be matched up.
 
 ## Applying a change
 
