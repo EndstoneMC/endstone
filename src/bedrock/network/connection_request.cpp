@@ -16,84 +16,82 @@
 
 #include "bedrock/crypto/encoding/base64.h"
 
-std::string ConnectionRequest::getClientThirdPartyName() const
+// BaseConnectionRequest holds the data getters shared by ConnectionRequest and
+// SubClientConnectionRequest since BDS 1.26.20 re-parented both under it.
+
+Json::Value BaseConnectionRequest::getData(const std::string &key) const
+{
+    return raw_token_->getData().get(key, Json::nullValue);
+}
+
+const WebToken &BaseConnectionRequest::_getRawRequest() const
+{
+    return *raw_token_;
+}
+
+std::string BaseConnectionRequest::getThirdPartyName() const
 {
     return getData("ThirdPartyName").asString();
 }
 
-std::string ConnectionRequest::getSkinId() const
+std::string BaseConnectionRequest::getSkinId() const
 {
     return getData("SkinId").asString();
 }
 
-std::string ConnectionRequest::getCapeId() const
+std::string BaseConnectionRequest::getCapeId() const
 {
     return getData("CapeId").asString();
 }
 
-std::vector<unsigned char> ConnectionRequest::getSkinData() const
+std::vector<unsigned char> BaseConnectionRequest::getSkinData() const
 {
     auto result = Util::base64_decode(getData("SkinData").asString());
     return {result.begin(), result.end()};
 }
 
-std::string ConnectionRequest::getSkinDataAsString() const
-{
-    return getData("SkinData").asString();
-}
-
-uint16_t ConnectionRequest::getSkinImageWidth() const
+uint16_t BaseConnectionRequest::getSkinImageWidth() const
 {
     return getData("SkinImageWidth").asInt();
 }
 
-uint16_t ConnectionRequest::getSkinImageHeight() const
+uint16_t BaseConnectionRequest::getSkinImageHeight() const
 {
     return getData("SkinImageHeight").asInt();
 }
 
-std::vector<unsigned char> ConnectionRequest::getCapeData() const
+std::vector<unsigned char> BaseConnectionRequest::getCapeData() const
 {
     auto result = Util::base64_decode(getData("CapeData").asString());
     return {result.begin(), result.end()};
 }
 
-uint16_t ConnectionRequest::getCapeImageWidth() const
+uint16_t BaseConnectionRequest::getCapeImageWidth() const
 {
     return getData("CapeImageWidth").asInt();
 }
 
-uint16_t ConnectionRequest::getCapeImageHeight() const
+uint16_t BaseConnectionRequest::getCapeImageHeight() const
 {
     return getData("CapeImageHeight").asInt();
+}
+
+BuildPlatform BaseConnectionRequest::getDeviceOS() const
+{
+    return static_cast<BuildPlatform>(getData("DeviceOS").asInt());
+}
+
+std::string BaseConnectionRequest::getDeviceId() const
+{
+    return getData("DeviceId").asString();
+}
+
+std::string BaseConnectionRequest::getLanguageCode() const
+{
+    return getData("LanguageCode").asString();
 }
 
 std::string ConnectionRequest::getGameVersionString() const
 {
     return getData("GameVersion").asString();
-}
-
-BuildPlatform ConnectionRequest::getDeviceOS() const
-{
-    return static_cast<BuildPlatform>(getData("DeviceOS").asInt());
-}
-
-std::string ConnectionRequest::getDeviceId() const
-{
-    return getData("DeviceId").asString();
-}
-
-const WebToken &ConnectionRequest::_getRawRequest() const
-{
-    return *raw_token_;
-}
-
-std::string ConnectionRequest::getLanguageCode() const
-{
-    return getData("LanguageCode").asString();
-}
-
-Json::Value ConnectionRequest::getData(const std::string &key) const
-{
-    return raw_token_->getData().get(key, Json::nullValue);
 }

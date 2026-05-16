@@ -47,7 +47,6 @@ add_library(bedrock STATIC
         network/network_system.cpp
         network/packet.cpp
         network/server_network_handler.cpp
-        network/sub_client_connection_request.cpp
         platform/assigned_thread.cpp
         platform/uuid.cpp
         resources/base_game_version.cpp

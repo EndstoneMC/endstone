@@ -277,10 +277,11 @@ void EndstonePlayer::playSound(Location location, std::string sound, float volum
 {
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlaySound);
     const auto pk = std::static_pointer_cast<PlaySoundPacket>(packet);
-    pk->name = sound;
-    pk->pos = {static_cast<int>(location.getX()), static_cast<int>(location.getY()), static_cast<int>(location.getZ())};
-    pk->volume = volume;
-    pk->pitch = pitch;
+    pk->payload.name = sound;
+    pk->payload.pos = {static_cast<int>(location.getX()), static_cast<int>(location.getY()),
+                       static_cast<int>(location.getZ())};
+    pk->payload.volume = volume;
+    pk->payload.pitch = pitch;
     getHandle().sendNetworkPacket(*packet);
 }
 
@@ -655,7 +656,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     case MinecraftPacketIds::PlayerEquipment: {
         auto &pk = static_cast<MobEquipmentPacket &>(packet);
         auto from_slot = this->inventory_->getHeldItemSlot();
-        auto to_slot = pk.selected_slot;
+        auto to_slot = pk.payload.selected_slot;
         if (from_slot == to_slot) {
             return true;
         }
@@ -910,8 +911,14 @@ void EndstonePlayer::initFromConnectionRequest(
                 device_id_ = device_id;
             }
 
-            if (auto game_version = req->getGameVersionString(); !game_version.empty()) {
-                game_version_ = game_version;
+            using ReqType = std::remove_cv_t<std::remove_pointer_t<std::remove_reference_t<decltype(req)>>>;
+            if constexpr (std::is_same_v<ReqType, ::ConnectionRequest>) {
+                if (auto game_version = req->getGameVersionString(); !game_version.empty()) {
+                    game_version_ = game_version;
+                }
+                else {
+                    game_version_ = server_.getMinecraftVersion();
+                }
             }
             else {
                 game_version_ = server_.getMinecraftVersion();

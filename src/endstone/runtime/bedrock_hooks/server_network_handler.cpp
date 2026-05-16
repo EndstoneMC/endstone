@@ -156,7 +156,7 @@ std::optional<PlayerAuthenticationInfo> ServerNetworkHandler::_validateLoginPack
 
     const auto &info = *auth_info;
     const auto &name =
-        info.xuid.empty() ? packet.payload.connection_request->getClientThirdPartyName() : info.xbox_live_name;
+        info.xuid.empty() ? packet.payload.connection_request->getThirdPartyName() : info.xbox_live_name;
     const auto uuid = endstone::core::EndstoneUUID::fromMinecraft(info.authenticated_uuid);
     const auto &xuid = info.xuid;
     if (server.getBanList().isBanned(name, uuid, xuid)) {

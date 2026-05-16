@@ -23,6 +23,8 @@
 #include "bedrock/world/containers/container_enum.h"
 #include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
 
+using ItemStackLegacyRequestId = TypedClientNetId<ItemStackLegacyRequestIdTag>;
+
 class InventoryTransactionPacket : public Packet {
 public:
     [[nodiscard]] MinecraftPacketIds getId() const override;
