@@ -14,29 +14,8 @@
 
 #pragma once
 
-#include <string>
+#include <cstdint>
 
-#include "bedrock/certificates/identity/minecraft_account_permissions.h"
-#include "bedrock/platform/uuid.h"
-
-enum class PlayerAuthenticationType : int {
-    Invalid = -1,
-    Full = 0,
-    Guest = 1,
-    SelfSigned = 2,
-};
-
-struct PlayerAuthenticationInfo {
-    std::string xuid;
-    std::string play_fab_id;
-    std::string nintendo_id;
-    std::string psn_id;
-    std::string tenant_id;
-    std::string xbox_live_name;
-    std::string nintendo_name;
-    std::string play_station_name;
-    MinecraftAccountPermissions permissions;
-    std::string public_key;
-    mce::UUID authenticated_uuid;
-    bool is_host;
+struct MinecraftAccountPermissions {
+    std::int64_t permissions;
 };

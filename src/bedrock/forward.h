@@ -160,6 +160,7 @@ class NavigationComponent;
 class NetworkChunkPublisher;
 class NetworkSessionOwner;
 class NetworkStatistics {};
+class NonceWithTTL;
 class Options;
 class PackManifestFactory;
 class PackMetadata;

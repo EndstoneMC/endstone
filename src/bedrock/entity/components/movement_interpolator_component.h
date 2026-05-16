@@ -35,6 +35,7 @@ struct MovementInterpolatorComponent {
     int position_steps;
     int rotation_steps;
     int head_yaw_steps;
+    bool must_be_completed;
     bool player_control_server_vehicle;
     static constexpr int MAX_LERP_STEPS = 3;
 };
