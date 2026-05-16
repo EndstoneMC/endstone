@@ -28,8 +28,3 @@ enum class CreativeItemCategory : int {
 };
 
 }  // namespace SharedTypes
-
-// BDS 1.26.20 moved CreativeItemCategory into the SharedTypes namespace.
-// The alias keeps existing call sites compiling while function symbols still
-// mangle against the SharedTypes-qualified type.
-using CreativeItemCategory = SharedTypes::CreativeItemCategory;

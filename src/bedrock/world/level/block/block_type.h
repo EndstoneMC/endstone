@@ -373,7 +373,7 @@ private:
     const Material &material_;
     bool falling_;
     float particle_quantity_scalar_;
-    CreativeItemCategory creative_item_category_;
+    SharedTypes::CreativeItemCategory creative_item_category_;
     std::string creative_group_;
     bool is_hidden_in_commands_;
     bool allows_runes_;
