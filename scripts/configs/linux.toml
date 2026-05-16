@@ -109,15 +109,6 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-# 69 64 65 6E 74 69 74 79 50 75 62 6C 69 63 4B 65 79
-name = "_ZN11Certificate8validateElbb"
-relative = false
-extra = 0
-pattern = "E8 ? ? ? ? ? 8B 6C 24 ? 48 C7 44 24 ? ? ? ? ? 48 C7 84 24"
-rip_relative = true
-rip_offset = 1
-
-[[signatures]]
 # commands.generic.blocked_edu
 name = "_ZNK7Command3runERK13CommandOriginR13CommandOutput"
 relative = false
@@ -489,7 +480,7 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "_ZN12ServerPlayer15changeDimensionE11AutomaticIDI9DimensioniE"
+name = "_ZN12ServerPlayer15changeDimensionE13DimensionType"
 relative = false
 extra = 0
 pattern = "53 48 83 EC ? 89 F2 48 89 FB 48 8B 4F"
@@ -505,12 +496,6 @@ name = "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8no
 relative = false
 extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 8C 24 ? ? ? ? 49 89 D6 49 89 FC"
-
-[[signatures]]
-name = "_ZN21UnverifiedCertificate10fromStringERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE"
-relative = false
-extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 F3 ? ? ? 48 8D 7C 24 ? 31 F6"
 
 [[signatures]]
 name = "_ZN14WeatherManager13updateWeatherEfifi"

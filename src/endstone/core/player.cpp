@@ -636,7 +636,7 @@ void EndstonePlayer::sendMap(MapView &map)
     pk.start_x_ = 0;
     pk.start_y_ = 0;
     pk.map_origin_ = view.map_.getOrigin();
-    pk.dimension_ = view.map_.getDimensionId().runtime_id;
+    pk.dimension_ = view.map_.getDimensionId().value;
     pk.width_ = MapConstants::MAP_SIZE;
     pk.height_ = MapConstants::MAP_SIZE;
     pk.type_ = ClientboundMapItemDataPacket::Type::TextureUpdate | ClientboundMapItemDataPacket::Type::DecorationUpdate;

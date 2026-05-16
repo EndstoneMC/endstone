@@ -78,7 +78,7 @@ Dimension *EndstoneMapView::getDimension() const
     if (!dimension.isSet()) {
         return nullptr;
     }
-    return level->getDimension(dimension.unwrap()->getDimensionId().runtime_id);
+    return level->getDimension(dimension.unwrap()->getDimensionId().value);
 }
 
 void EndstoneMapView::setDimension(const Dimension &dimension)

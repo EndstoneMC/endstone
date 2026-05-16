@@ -104,14 +104,6 @@ extra = 0
 pattern = "48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 49 63 F8"
 
 [[signatures]]
-name = "?validate@Certificate@@QEAA_N_J_N1@Z"
-relative = false
-extra = 0
-pattern = "E8 ? ? ? ? 88 83 ? ? ? ? 84 C0"
-rip_relative = true
-rip_offset = 1
-
-[[signatures]]
 name = "?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z"
 relative = false
 extra = 0
@@ -198,7 +190,7 @@ extra = 0
 pattern = "48 8B C4 48 89 58 ? 48 89 70 ? 48 89 78 ? 55 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 70 ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 45 0F B6 E8"
 
 [[signatures]]
-name = "?start@DedicatedServer@@QEAA?AW4StartResult@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z"
+name = "?start@DedicatedServer@@QEAA?AW4ServerExitCode@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z"
 relative = false
 extra = 0
 pattern = "E8 ? ? ? ? 8B F0 48 8D 8D ? ? ? ? E8 ? ? ? ? 48 8D 8D"
@@ -321,7 +313,7 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z"
+name = "?knockback@Mob@@UEAAXPEAVActor@@HMMAEBUKnockbackParameters@@@Z"
 relative = false
 extra = 0
 pattern = "F3 0F 11 4C 24 ? E8 ? ? ? ? 48 8D 4B ? 48 83 C4"
@@ -481,7 +473,7 @@ rip_relative = true
 rip_offset = 12
 
 [[signatures]]
-name = "?changeDimension@ServerPlayer@@UEAAXV?$AutomaticID@VDimension@@H@@@Z"
+name = "?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z"
 relative = false
 extra = 0
 pattern = "48 89 5C 24 ? 57 48 83 EC ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 44 24 ? 8B DA 48 8B F9 8B 41"
@@ -497,14 +489,6 @@ name = "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?
 relative = false
 extra = 0
 pattern = "48 8B C4 48 89 58 ? 48 89 70 ? 55 57 41 54 41 56 41 57 48 8D 68 ? 48 81 EC ? ? ? ? 0F 29 70 ? 4D 8B F1"
-
-[[signatures]]
-name = "?fromString@UnverifiedCertificate@@SA?AV1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z"
-relative = false
-extra = 0
-pattern = "E8 ? ? ? ? 90 48 8B D0 48 8D 4C 24 ? E8 ? ? ? ? ? ? ? ? ? ? 49 8B 5E"
-rip_relative = true
-rip_offset = 1
 
 [[signatures]]
 name = "?updateWeather@WeatherManager@@QEAAXMHMH@Z"

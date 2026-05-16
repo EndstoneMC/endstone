@@ -14,7 +14,16 @@
 
 #pragma once
 
-#include "bedrock/core/utility/automatic_id.h"
+struct DimensionType {
+    int value;
 
-class Dimension;
-using DimensionType = AutomaticID<Dimension, int>;
+    bool operator==(const DimensionType &other) const
+    {
+        return value == other.value;
+    }
+
+    bool operator!=(const DimensionType &other) const
+    {
+        return !(*this == other);
+    }
+};

@@ -23,8 +23,6 @@ version = "1.26.20"
 "_ZNK17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE" = 188381760
 # CampfireBlockActor
 "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei" = 191409024
-# Certificate
-"_ZN11Certificate8validateElbb" = 0
 # Command
 "_ZNK7Command3runERK13CommandOriginR13CommandOutput" = 137022736
 # CommandOriginLoader
@@ -113,7 +111,5 @@ version = "1.26.20"
 "_ZN36ServerPlayerMovementCorrectionSystem41_tickServerPlayerMovementCorrectionSystemERK19StrictEntityContextRK36ServerPlayerCurrentMovementComponentRK29UserEntityIdentifierComponentR29ServerPlayerMovementComponent8OptionalIK18PassengerComponentER20StateVectorComponentRK5ViewTIS0_JK22ActorRotationComponent19ActorOwnerComponent20ReplayStateComponentSF_SB_IK21BoatMovementComponentEEE" = 100234144
 # ServerScoreboard
 "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE" = 192634448
-# UnverifiedCertificate
-"_ZN21UnverifiedCertificate10fromStringERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE" = 0
 # WeatherManager
 "_ZN14WeatherManager13updateWeatherEfifi" = 184936464

@@ -16,7 +16,6 @@
 
 #include <memory>
 
-#include "bedrock/certificates/certificate.h"
 #include "bedrock/certificates/identity/player_authentication_info.h"
 #include "bedrock/util/new_type.h"
 
@@ -30,7 +29,6 @@ public:
     };
 
     GameServerToken();
-    GameServerToken(std::unique_ptr<Certificate>, VerificationOptions);
 
     operator bool() const
     {

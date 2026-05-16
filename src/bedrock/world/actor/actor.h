@@ -27,7 +27,6 @@
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/core/string/string_hash.h"
-#include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/util/new_type.h"
 #include "bedrock/entity/components/aabb_shape_component.h"
 #include "bedrock/entity/components/actor_rotation_component.h"

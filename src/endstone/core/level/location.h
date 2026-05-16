@@ -24,7 +24,7 @@ public:
 
     static Location toEndstone(const Vec3 &vec3, const DimensionType id)
     {
-        return Location(*EndstoneServer::getInstance().getEndstoneLevel()->getDimension(id.runtime_id), vec3.x, vec3.y,
+        return Location(*EndstoneServer::getInstance().getEndstoneLevel()->getDimension(id.value), vec3.x, vec3.y,
                         vec3.z);
     }
 };

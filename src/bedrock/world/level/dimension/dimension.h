@@ -45,14 +45,14 @@ class IDimension {
 public:
     virtual ~IDimension() = 0;
     [[nodiscard]] virtual bool isNaturalDimension() const = 0;
-    virtual AutomaticID<Dimension, int> getDimensionId() const = 0;
+    virtual DimensionType getDimensionId() const = 0;
     virtual void sendPacketForPosition(BlockPos const &, Packet const &, Player const *) = 0;
     virtual void sendPacketForEntity(Actor const &actor, Packet const &packet, Player const *except) = 0;
     virtual void flushLevelChunkGarbageCollector() = 0;
     virtual void initializeWithLevelStorageManagerConnector(ILevelStorageManagerConnector &) = 0;
     virtual BiomeRegistry &getBiomeRegistry() = 0;
     [[nodiscard]] virtual BiomeRegistry const &getBiomeRegistry() const = 0;
-    virtual Vec3 translatePosAcrossDimension(Vec3 const &, AutomaticID<Dimension, int>) = 0;
+    virtual Vec3 translatePosAcrossDimension(Vec3 const &, DimensionType) = 0;
     virtual void forEachPlayer(std::function<bool(Player &)>) = 0;
     virtual Actor *fetchEntity(ActorUniqueID, bool) = 0;
     [[nodiscard]] virtual BlockSource &getBlockSourceFromMainChunkSource() const = 0;
