@@ -30,7 +30,7 @@ constexpr std::size_t get_num_values()
 }
 static_assert(get_num_values<78, std::uint64_t>() == 2);
 
-template <std::size_t Bits, typename UnderlyingType>
+template <std::size_t Bits, typename UnderlyingType = std::size_t>
 class bitset : public detail::bitset_base<bitset<Bits, UnderlyingType>,
                                           std::array<UnderlyingType, get_num_values<Bits, UnderlyingType>()>> {
     static constexpr size_t num_values = get_num_values<Bits, UnderlyingType>();
