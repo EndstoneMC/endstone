@@ -21,16 +21,13 @@
 #include "bedrock/network/disconnection_request_info.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/cerealize/core/packet_serialization_helper.h"
+#include "bedrock/network/packet/cerealize/schema/dynamic/dynamic_value.h"
 #include "bedrock/network/packet/serialize/serialized_packet.h"
 
 struct DisconnectPacketMessages {
     std::string message;
     std::string filtered_message;
 };
-
-namespace cereal {
-struct NullType {};
-}  // namespace cereal
 
 using VariantDisconnectPacketMessages = std::variant<DisconnectPacketMessages, cereal::NullType>;
 

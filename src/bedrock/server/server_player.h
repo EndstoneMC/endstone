@@ -19,20 +19,10 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/certificates/identity/game_server_token.h"
+#include "bedrock/core/utility/callback_token.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/inventory/inventory_menu.h"
-
-class CallbackTokenCancelState;
-
-class CallbackToken {
-public:
-    CallbackToken();
-    ~CallbackToken();
-
-private:
-    std::weak_ptr<CallbackTokenCancelState> cancel_state_;
-};
 
 class ServerPlayer : public Player {
 public:

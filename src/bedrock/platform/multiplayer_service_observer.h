@@ -18,11 +18,11 @@
 #include <variant>
 
 #include "bedrock/core/utility/observer.h"
+#include "bedrock/network/nonce.h"
 #include "bedrock/platform/uuid.h"
 #include "bedrock/util/new_type.h"
 
 namespace Social {
-struct Nonce : NewType<std::string> {};
 struct Xuid : NewType<std::string> {};
 struct PsnId : NewType<std::string> {};
 struct NsaId : NewType<std::string> {};
