@@ -131,7 +131,7 @@ class IServerNetworkController;
 class ISubChunkLighter {};
 class ItemComponent;
 class ItemComponentPacket;
-class ItemComprehensiveLoadResult;
+struct ItemComprehensiveLoadResult;
 class ItemData;
 struct ItemIconInfoFactory;
 class ItemStackNetManagerBase;
