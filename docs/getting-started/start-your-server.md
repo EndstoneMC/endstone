@@ -16,13 +16,13 @@ Alternatively, if you're running Endstone from within Docker, use:
 === ":fontawesome-brands-linux: Linux / :fontawesome-brands-windows: Powershell"
 
     ```
-    docker run --rm -it -v ${PWD}:/home/endstone -p 19132:19132/udp endstone/endstone
+    docker run --rm -it -v ${PWD}:/home/endstone/bedrock_server -p 19132:19132/udp endstone/endstone
     ```
 
 === ":fontawesome-brands-windows: Command Prompt"
 
     ```
-    docker run --rm -it -v "%cd%":/home/endstone -p 19132:19132/udp endstone/endstone
+    docker run --rm -it -v "%cd%":/home/endstone/bedrock_server -p 19132:19132/udp endstone/endstone
     ```
 
 === ":fontawesome-brands-linux: Linux / :fontawesome-brands-apple: macOS / :fontawesome-solid-microchip: with emulation"
@@ -30,9 +30,9 @@ Alternatively, if you're running Endstone from within Docker, use:
     ```
     docker run \
     --platform linux/amd64 \
-    -p 19132:19132 \
+    -p 19132:19132/udp \
     -it \
-    -v ${PWD}:/home/endstone \
+    -v ${PWD}:/home/endstone/bedrock_server \
     --name endstone-server \
     endstone/endstone
     ```
