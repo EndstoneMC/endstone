@@ -131,10 +131,10 @@ too big. Use this finer split:)
 4. `src/common/entity` - ECS components
 5. `src/common/{certificates,resources,scripting,platform,locale,gameplayhandlers,...}` - remaining non-world
 6. `src/common/world/actor`
-7. `src/common/world/block`
-8. `src/common/world/item`
-9. `src/common/world/{dimension,biome}`
-10. `src/common/world/*` - remaining world
+7. `src/common/world/item`
+8. `src/common/world/level/block`
+9. `src/common/world/level/{dimension,biome}` and remaining `src/common/world/level/*` (chunk, material, storage, level core)
+10. `src/common/world/*` - remaining world (`attribute`, `effect`, `events`, `inventory`, `response`, ...)
 11. `src-deps` other than SharedTypes (Certificates, VanillaComponents, ...), then anything else
 
 ## Applying a change
@@ -215,8 +215,38 @@ entry ("Added support for BDS X.Y.Z"), commit, open the PR.
   1.26.20 split packets into a `<Name>Payload` struct plus
   `cerealizer`/`serialize` specializations, and re-parented `ConnectionRequest`
   under `BaseConnectionRequest`. These need real design work in `src/bedrock/`,
-  not a mechanical edit - flag them and do them deliberately.
+  not a mechanical edit - flag them and do them deliberately. When one packet
+  shows the `<Name>Payload` split, assume *every* `network/packet/*` got it -
+  port them all; `inventory_slot_packet.h` is a good reference for the pattern.
 - A function missing from the PDB publics may have been inlined, not removed.
+
+### Symbol table is not optional for the build
+
+- `get_symbol()` is `consteval` and **throws** when a name is absent; the
+  generator **drops every `0`-valued entry** from `bedrock_symbols.generated.h`.
+  So an unresolved symbol that any TU consumes via `BEDROCK_CALL` /
+  `BEDROCK_VAR` / `BEDROCK_CTOR` is a hard **compile** error
+  (`C7595: call to immediate function is not a constant expression`), not a
+  silently-disabled hook. Phase 1 must resolve *every consumed* symbol before
+  the build can go green - Phase 2 alone never produces a buildable tree.
+- When a hooked function's signature changes, its `__FUNCDNAME__` changes, so
+  the old `name` in `scripts/configs/{windows,linux}.toml` goes stale - update
+  it and re-dump, or that hook's TU stops compiling.
+- **Temporary verification trick.** To compile-check the Phase-2 port before
+  Phase 1 is finished, *temporarily* comment out the `if (val == 0) { ...
+  continue; }` skip in `src/bedrock/symbol_generator/main.cpp` so every entry -
+  including unresolved `0`s - lands in the generated table. `get_symbol` then
+  finds every key and the build goes green, so real ABI/source errors surface.
+  **Revert it before committing** - the generator must keep dropping `0`s and
+  `get_symbol` must keep throwing so a genuinely missing symbol stays a loud
+  error. The real fix is always Phase 1 (re-dump / update stale `name`s).
+
+### Resuming a partially-done bump branch
+
+- Don't trust that an earlier stage is finished. A prior commit may have ported
+  only some files of a stage (e.g. some `network/packet/*` but not all) and
+  left `.cpp` files referencing the pre-refactor shape. Build early; the first
+  compile pass is what surfaces these gaps.
 
 ## Record findings here
 
