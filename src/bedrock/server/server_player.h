@@ -14,11 +14,25 @@
 
 #pragma once
 
+#include <memory>
+#include <string>
+
 #include "bedrock/bedrock.h"
 #include "bedrock/certificates/identity/game_server_token.h"
 #include "bedrock/network/server_network_system.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/inventory/inventory_menu.h"
+
+class CallbackTokenCancelState;
+
+class CallbackToken {
+public:
+    CallbackToken();
+    ~CallbackToken();
+
+private:
+    std::weak_ptr<CallbackTokenCancelState> cancel_state_;
+};
 
 class ServerPlayer : public Player {
 public:
@@ -34,16 +48,18 @@ public:
 
 protected:
     PlatformType platform_type_;
+    std::string language_code_;
 
 private:
     ServerNetworkSystem &network_;
     OnPlayerLoadedCallback on_player_loaded_callback_;
     InventoryMenu inventory_menu_;
     ContainerID container_counter_;
+    CallbackToken close_container_token_;
     uint32_t max_chunk_radius_;
     bool is_initial_player_load_happening_;
     bool is_teacher_;
-    bool local_player_initialized_;  // +3482
+    bool local_player_initialized_;  // +3530
     bool waiting_for_ticking_areas_preload_;
     Tick prev_shield_blocking_tick_;
     uint32_t client_view_radius_;
