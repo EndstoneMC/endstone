@@ -14,14 +14,28 @@
 
 #pragma once
 
+#include <memory>
+#include <utility>
+#include <vector>
+
 #include "bedrock/forward.h"
 #include "bedrock/network/packet.h"
-#include "bedrock/server/server_player.h"
-#include "bedrock/world/level/block_palette.h"
+#include "bedrock/world/containers/container_enum.h"
+#include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
 
-class InventoryPacket : public Packet {
+class InventoryTransactionPacket : public Packet {
 public:
-    virtual void handle(ServerPlayer &, BlockPalette &, const MoveInputComponent &, ActorRotationComponent &,
-                        bool) const = 0;
-    [[nodiscard]] virtual const ComplexInventoryTransaction *getComplexInventoryTransaction() const = 0;
+    [[nodiscard]] MinecraftPacketIds getId() const override;
+    [[nodiscard]] std::string_view getName() const override;
+    void write(BinaryStream &stream) const override;
+    void handle(ServerPlayer &player, BlockPalette &block_palette, const MoveInputComponent &move_input,
+                ActorRotationComponent &actor_rotation, bool is_aim_assist) const;
+
+    ItemStackLegacyRequestId legacy_request_id;
+    std::vector<std::pair<ContainerEnumName, std::vector<unsigned char>>> legacy_set_item_slots;
+    std::unique_ptr<ComplexInventoryTransaction> transaction;
+    bool is_client_side;
+
+private:
+    Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override;
 };

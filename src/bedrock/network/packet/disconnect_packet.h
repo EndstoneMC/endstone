@@ -14,20 +14,38 @@
 
 #pragma once
 
+#include <optional>
+#include <string>
+#include <variant>
+
+#include "bedrock/network/disconnection_request_info.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/cerealize/core/packet_serialization_helper.h"
+#include "bedrock/network/packet/serialize/serialized_packet.h"
+
+struct DisconnectPacketMessages {
+    std::string message;
+    std::string filtered_message;
+};
+
+namespace cereal {
+struct NullType {};
+}  // namespace cereal
+
+using VariantDisconnectPacketMessages = std::variant<DisconnectPacketMessages, cereal::NullType>;
+
+struct DisconnectPacketPayload {
+    DisconnectPacketPayload();
+    DisconnectPacketPayload(Connection::DisconnectFailReason reason, std::optional<std::string> message,
+                            std::optional<std::string> filtered_message);
+    Connection::DisconnectFailReason reason;
+    VariantDisconnectPacketMessages messages;
+};
 
 class DisconnectPacket : public Packet {
 public:
-    bool skip_message;
-    std::string message;
-    std::optional<std::string> filtered_message;
-    Connection::DisconnectFailReason reason;
-    DisconnectPacket(Connection::DisconnectFailReason reason, const std::string &message,
-                     std::optional<std::string> filtered_message, bool skip_message);
-    [[nodiscard]] MinecraftPacketIds getId() const override;
-    [[nodiscard]] std::string_view getName() const override;
-    void write(BinaryStream &stream) const override;
-
-private:
-    Bedrock::Result<void> _read(ReadOnlyBinaryStream &stream) override;
+    DisconnectPacketPayload payload;
+    SerializationMode serialization_mode = SerializationMode::CerealOnly;
+    DisconnectPacket();
+    DisconnectPacket(DisconnectPacketPayload payload);
 };
