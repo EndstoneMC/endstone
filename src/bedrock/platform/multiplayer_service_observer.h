@@ -15,15 +15,25 @@
 #pragma once
 
 #include <string>
+#include <variant>
 
 #include "bedrock/core/utility/observer.h"
 #include "bedrock/platform/uuid.h"
+#include "bedrock/util/new_type.h"
 
 namespace Social {
+struct Nonce : NewType<std::string> {};
+struct Xuid : NewType<std::string> {};
+struct PsnId : NewType<std::string> {};
+struct NsaId : NewType<std::string> {};
+struct OnlineId : std::variant<Xuid, PsnId, NsaId> {};
+
 class MultiplayerServiceObserver : public Core::Observer<MultiplayerServiceObserver, Core::SingleThreadedLock> {
 public:
     virtual void onInvalidPlayerJoinedLobby(mce::UUID const &uuid, std::string const &xuid) = 0;
     virtual void onUserDisconnectedBecauseConcurrentLogin(std::string const &id) = 0;
+    virtual void onPlayerJoinedLobby(OnlineId const &id, Nonce const &nonce) = 0;
+    virtual void onPlayerLeftLobby(OnlineId const &id) = 0;
 };
 static_assert(sizeof(MultiplayerServiceObserver) == 16);
 }  // namespace Social

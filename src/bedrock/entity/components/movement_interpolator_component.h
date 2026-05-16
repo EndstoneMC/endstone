@@ -18,6 +18,7 @@
 #include "bedrock/core/math/vec3.h"
 
 struct MovementInterpolatorComponent {
+    [[nodiscard]] bool canStartLerpTo(bool must_be_completed) const;
     void lerpTo(const Vec3 &, const Vec2 &, int);
     void lerpToRotation(const Vec2 &, int);
     void reset()
@@ -28,7 +29,7 @@ struct MovementInterpolatorComponent {
     }
     void setHeadYawLerpTarget(float, int);
     bool isActive() const;
-    static void startLerpTo(EntityContext &, const Vec3 &, const Vec2 &, int);
+    static void startLerpTo(EntityContext &, const Vec3 &, const Vec2 &, int, bool);
     Vec3 pos;
     Vec2 rot;
     float head_yaw;
