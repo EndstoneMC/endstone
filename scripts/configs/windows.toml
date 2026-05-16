@@ -251,7 +251,7 @@ rip_relative = true
 rip_offset = 7
 
 [[signatures]]
-name = "?init@ItemStackBase@@IEAAXHHH_N@Z"
+name = "?_setItem@ItemStackBase@@AEAA_NH_N@Z"
 relative = false
 extra = 0
 pattern = "C6 44 24 ? 00 E8 ? ? ? ? 48 8B 4D"

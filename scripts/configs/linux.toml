@@ -245,10 +245,10 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "_ZN13ItemStackBase4initEiiib"
+name = "_ZN13ItemStackBase8_setItemEib"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 4D 85 F6 75 ? E9 ? ? ? ? 0F B7 C1"
+pattern = "E8 ? ? ? ? E8 ? ? ? ? 48 89 43 ? 80 7B"
 rip_relative = true
 rip_offset = 1
 

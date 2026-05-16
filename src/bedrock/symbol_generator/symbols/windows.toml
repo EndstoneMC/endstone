@@ -1,4 +1,4 @@
-timestamp = 1778971749
+timestamp = 1778973153
 version = "1.26.20"
 
 [symbols]
@@ -54,7 +54,7 @@ version = "1.26.20"
 "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z" = 13034048
 # ItemStackBase
 "?_loadBlocksForCanPlaceOnCanDestroy@ItemStackBase@@CA_NAEAV?$vector@PEBVBlockType@@V?$allocator@PEBVBlockType@@@std@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z" = 19969824
-"?init@ItemStackBase@@IEAAXHHH_N@Z" = 0
+"?_setItem@ItemStackBase@@AEAA_NH_N@Z" = 19943776
 # LeavesBlock
 "?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z" = 44884032
 # Level
