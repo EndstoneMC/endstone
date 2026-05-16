@@ -94,7 +94,7 @@ const std::string &Item::getCreativeGroup() const
     return creative_group_;
 }
 
-CreativeItemCategory Item::getCreativeCategory() const
+SharedTypes::CreativeItemCategory Item::getCreativeCategory() const
 {
     return creative_category_;
 }

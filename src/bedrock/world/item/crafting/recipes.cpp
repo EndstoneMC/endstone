@@ -14,19 +14,23 @@
 
 #include "bedrock/world/item/crafting/recipes.h"
 
-ItemInstance Recipes::getFurnaceRecipeResult(const ItemStackBase &item, const HashedString &tag) const
+ItemInstance Recipes::getFurnaceRecipeResult(const ItemStackBase &item, const HashedString &) const
 {
-    if (!item || furnace_recipes_.empty()) {
+    if (!item || furnace_results_.empty()) {
         return ItemInstance();
     }
 
-    for (const auto &[key, value] : furnace_recipes_) {
-        auto id = key.id >> 16;
-        auto aux = static_cast<std::uint16_t>(key.id);
-        if (id == item.getId() && key.tag == tag &&
-            (aux == ItemDescriptor::ANY_AUX_VALUE || aux == item.getAuxValue())) {
-            return value;
-        }
+    // BDS 1.26.20 reorganised furnace recipes into a nested id -> aux -> result map.
+    const auto outer = furnace_results_.find(item.getId());
+    if (outer == furnace_results_.end()) {
+        return ItemInstance();
+    }
+
+    if (const auto exact = outer->second.find(item.getAuxValue()); exact != outer->second.end()) {
+        return exact->second;
+    }
+    if (const auto any = outer->second.find(ItemDescriptor::ANY_AUX_VALUE); any != outer->second.end()) {
+        return any->second;
     }
 
     return ItemInstance();
