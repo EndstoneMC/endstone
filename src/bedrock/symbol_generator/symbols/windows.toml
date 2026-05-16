@@ -1,10 +1,9 @@
-timestamp = 1778968399
+timestamp = 1778971749
 version = "1.26.20"
 
 [symbols]
 "BlockState::StateListNode::mHead" = 163098640
 "Enchant::mEnchants" = 163171400
-"getI18n::result" = 0
 # Actor
 "?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z" = 20200608
 # ActorFactory
@@ -113,3 +112,5 @@ version = "1.26.20"
 "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z" = 14738512
 # WeatherManager
 "?updateWeather@WeatherManager@@QEAAXMHMH@Z" = 13860112
+# YAAEAVI18n
+"?getI18n@@YAAEAVI18n@@XZ" = 4802160

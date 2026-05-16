@@ -20,12 +20,12 @@ rip_relative = true
 rip_offset = 3
 
 [[signatures]]
-name = "getI18n::result"
+name = "?getI18n@@YAAEAVI18n@@XZ"
 relative = false
 extra = 0
-pattern = "41 B8 88 01 00 00 48 8D 0D ? ? ? ?"
+pattern = "E8 ? ? ? ? ? ? ? 4C 8B 41 ? 4C 8B 0D ? ? ? ? 48 C7 85"
 rip_relative = true
-rip_offset = 9
+rip_offset = 1
 
 [[signatures]]
 name = "?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z"
