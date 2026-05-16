@@ -16,7 +16,6 @@
 
 #include <string_view>
 
-#include "../../../../include/endstone/event/actor/player_death_event.h"
 #include "bedrock/entity/components/replay_state_component.h"
 #include "bedrock/locale/i18n.h"
 #include "bedrock/network/packet/death_info_packet.h"
@@ -32,6 +31,7 @@
 #include "endstone/core/message.h"
 #include "endstone/core/player.h"
 #include "endstone/core/server.h"
+#include "endstone/event/actor/player_death_event.h"
 #include "endstone/event/player/player_dimension_change_event.h"
 #include "endstone/event/player/player_drop_item_event.h"
 #include "endstone/event/player/player_emote_event.h"
@@ -41,6 +41,7 @@
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/player/player_respawn_event.h"
 #include "endstone/runtime/vtable_hook.h"
+
 
 namespace {
 bool handleEvent(const PlayerDamageEvent &event)
