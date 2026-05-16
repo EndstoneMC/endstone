@@ -14,13 +14,20 @@ Two phases:
 
 ## NDA boundary (read first)
 
-Phase 2 uses `bedrock-headers`, a private repo of C++ headers reconstructed
-from Mojang BDS binaries. **That content is NDA-protected.** Never copy header
-bodies (class definitions, full member layouts) into the public `endstone`
-repo, its commits, PRs, or this skill. Endstone's `src/bedrock/` is a
-hand-written, minimal reimplementation - only what Endstone needs, in
-Endstone's own naming - which is the DMCA-safe form. The header diff is a
-private working reference only.
+This workflow may use two private Mojang-derived artifacts:
+
+- `bedrock-headers` - required for ABI porting. This private repo contains C++
+  headers reconstructed from BDS binaries.
+- `bedrock_server.pdb` - useful when available for Windows symbol resolution,
+  but not guaranteed to be published for every BDS release.
+
+**Both artifacts are NDA-protected.** Never copy header bodies, class
+definitions, full member layouts, PDB dumps, symbol listings, or other private
+artifact contents into the public `endstone` repo, its commits, PRs, issues,
+logs, or this skill. Endstone's `src/bedrock/` is a hand-written, minimal
+reimplementation - only what Endstone needs, in Endstone's own naming - which
+is the DMCA-safe form. Treat headers, PDBs, generated dumps, and diffs as
+private working references only.
 
 ---
 
@@ -47,8 +54,12 @@ still succeeds).
 ## Prerequisites
 
 - `uv` - runs `dump_symbols.py` (PEP 723 inline deps, no manual install).
-- `pdbtool` - `cargo install pdbtool` (Microsoft pdb-rs). Reads the Windows PDB.
-- The Windows BDS PDB (`bedrock_server.pdb`) for the target version.
+- `pdbtool` - `cargo install pdbtool` (Microsoft pdb-rs). Reads the Windows PDB
+  when one is available.
+- `bedrock-headers` for the target version. Headers are mandatory for Phase 2
+  ABI porting and must remain private.
+- Optional: the Windows BDS PDB (`bedrock_server.pdb`) for the target version.
+  Use it when available; some BDS releases do not have a public/accessible PDB.
 - The target version must be published in the `EndstoneMC/bedrock-server-data`
   repo - the Linux path downloads the binary from it. Check its `versions.json`.
 
@@ -62,6 +73,10 @@ still succeeds).
 3. **Regenerate** (run in the background, 25 s to a few minutes):
    - Windows: `uv run --script scripts/dump_symbols.py scripts/configs/windows.toml --pdb <path>/bedrock_server.pdb`
    - Linux: `uv run --script scripts/dump_symbols.py scripts/configs/linux.toml`
+   - If the Windows PDB is unavailable, skip the Windows PDB regeneration for
+     now and rely on Linux pattern results plus the required header diff to
+     identify ABI changes. Update Windows symbols later if/when a PDB becomes
+     available.
 4. **Triage the failures.** The two platforms fail differently:
    - **Windows (PDB, by name):** a miss = the mangled name is gone from the PDB
      = the signature changed (MSVC mangling encodes the full signature incl.
@@ -134,7 +149,12 @@ noise first), update Endstone's `src/bedrock/` declaration:
   reordered virtual shifts every slot below it; mirror the new order (use `= 0`
   placeholders for virtuals Endstone does not implement).
 - **Members** - type, order and size must match for layout. Member *names* stay
-  Endstone's own (`lower_case_`); do not copy Mojang's names.
+  Endstone's own (`lower_case_`); do not copy Mojang's names. Declare a new
+  member's type for real - never a same-size stand-in (`std::string` etc.). If
+  the real type would drag in a heavy include chain, add a forward declaration
+  to `src/bedrock/forward.h` in alphabetic order and use the type incomplete
+  (fine for pointers, references, and container value types like
+  `std::vector` / `std::unordered_map`).
 
 Then update the mangled `name` in `scripts/configs/{windows,linux}.toml`,
 re-run the dumper, and update any affected hook in
