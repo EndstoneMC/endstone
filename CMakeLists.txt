@@ -1,22 +1,35 @@
 cmake_minimum_required(VERSION 3.15)
+
 project(endstone LANGUAGES CXX)
 
-# Endstone requires C++ 20
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Compiler Check
 if (WIN32)
     if (NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-        message(FATAL_ERROR "Endstone: MSVC is required on Windows.")
+        message(FATAL_ERROR
+            "Endstone: MSVC is required on Windows, but CMake detected ${CMAKE_CXX_COMPILER_ID}. "
+            "Reconfigure from a Visual Studio Developer PowerShell or set CXX=cl."
+        )
     endif ()
 elseif (UNIX)
     if (NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-        message(FATAL_ERROR "Endstone: Clang is required on Linux.")
+        message(FATAL_ERROR
+            "Endstone: Clang is required on Linux, but CMake detected ${CMAKE_CXX_COMPILER_ID}. "
+            "Reconfigure with CC=clang and CXX=clang++."
+        )
     endif ()
     # Force use libc++ for ABI compatibility with BDS
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -fPIC" CACHE STRING "" FORCE)
 else ()
     message(FATAL_ERROR "Endstone: ${CMAKE_SYSTEM_NAME} (${CMAKE_SYSTEM_PROCESSOR}) is not supported")
+endif ()
+
+if (NOT CMAKE_GENERATOR MATCHES "^Ninja")
+    message(FATAL_ERROR "Endstone: Ninja is required as the CMake generator. Reconfigure with -G Ninja.")
 endif ()
 
 # Options
