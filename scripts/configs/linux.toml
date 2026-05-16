@@ -1,0 +1,519 @@
+version = "1.26.13"
+platform = "linux"
+executable = "bedrock_server"
+filename = "bedrock_server"
+
+[[signatures]]
+name = "BlockState::StateListNode::mHead"
+relative = false
+extra = 0
+pattern = "48 8B 05 ? ? ? ? 48 85 C0 74 ? 48 8D 0D ? ? ? ? 48 89 48"
+rip_relative = true
+rip_offset = 3
+
+[[signatures]]
+name = "Enchant::mEnchants"
+relative = false
+extra = 0
+pattern = "48 8B 1D ? ? ? ? 48 8B 2D ? ? ? ? 49 89 EE"
+rip_relative = true
+rip_offset = 10
+
+[[signatures]]
+name = "getI18n::result"
+relative = false
+extra = 0
+pattern = "0F 29 84 24 ? ? ? ? 48 8D 35 ? ? ? ? 48 8B 05 ? ? ? ? 48 8D 7C 24"
+rip_relative = true
+rip_offset = 11
+
+[[signatures]]
+# 3 Player teleportTo
+name = "_ZN5Actor10teleportToERK4Vec3biib"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B BB ? ? ? ? ? ? ? FF 90 ? ? ? ? 84 C0 0F 85 ? ? ? ? 48 8B 93"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+# commands.agent.createagent.failed
+name = "_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? F6 84 24 ? ? ? ? ? 4D 89 EC"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+# Batched Network TaskGroup
+name = "_ZN18BatchedNetworkPeer10sendPacketERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEN11NetworkPeer11ReliabilityE15Compressibility"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 89 CD 49 89 F6 48 89 FB 48 83 C7"
+
+[[signatures]]
+# Batched Network TaskGroup
+name = "_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 48 8B 8F"
+
+[[signatures]]
+# Server stop requested.
+name = "_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 83 C4 ? FF 43"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+# No block descriptor to resolve during deferred resolution
+name = "_ZN15BlockDescriptor13ResolveHelper7resolveEb"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 4C 89 E7 E8 ? ? ? ? 8B 6B"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZNK9BlockType25tryGetStateFromLegacyDataEt"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 F5 49 89 FE 4C 8D AF"
+
+[[signatures]]
+name = "_ZNK9BlockType14spawnResourcesER11BlockSourceRK8BlockPosRK5BlockR7IRandomRK20ResourceDropsContext"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B 9B ? ? ? ? 48 8D 3D"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZNK17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? ? ? ? 4C 8B BB ? ? ? ? 48 89 DF"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+# 00 80 3e b2 9d ef 3e 00 00 80 3e 00 00 80 3e b2 9d
+name = "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 49 8B 45 ? 4C 89 EF BE ? ? ? ? FF 50 ? 85 C0"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+# 69 64 65 6E 74 69 74 79 50 75 62 6C 69 63 4B 65 79
+name = "_ZN11Certificate8validateElbb"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? ? 8B 6C 24 ? 48 C7 44 24 ? ? ? ? ? 48 C7 84 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+# commands.generic.blocked_edu
+name = "_ZNK7Command3runERK13CommandOriginR13CommandOutput"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 41 39 5F ? 74"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+# OriginType
+name = "_ZN19CommandOriginLoader4loadERK11CompoundTagR11ServerLevel"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8D 7C 24 ? ? 89 ? 4C 89 F2 E8 ? ? ? ? 4C 8B 74 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+# commands.ability.description
+name = "_ZN15CommandRegistry13addEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorIS6_NS4_IS6_EEEE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 41 89 C4 4C 8B 74 24 ? 4D 85 F6"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN15CommandRegistry13registerAliasENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES6_"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? F6 84 24 ? ? ? ? ? 75 ? F6 84 24 ? ? ? ? ? 75 ? 0F B6 05"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN15CommandRegistry15registerCommandERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEPKc22CommandPermissionLevel11CommandFlagSC_"
+relative = false
+extra = 0
+pattern = "41 B8 40 00 00 00 41 B9 80 00 00 00 E8 ? ? ? ? F6 44 24"
+rip_relative = true
+rip_offset = 13
+
+[[signatures]]
+name = "_ZN15CommandRegistry24registerOverloadInternalERNS_9SignatureERNS_8OverloadE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 4C 89 E0 48 83 C4 ? 5B 41 5C 41 5D 41 5E 41 5F 5D C3 E8 ? ? ? ? 4D 89 6C 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+# INVALID_CHAINED_SUBCOMMAND
+name = "_ZNK15CommandRegistry14symbolToStringENS_6SymbolE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8D 74 24 ? 4C 8D 44 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZNK15CommandRegistry26serializeAvailableCommandsEv"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? ? ? ? 4C 89 FF 48 89 DE 4C 89 E2 31 C9"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN12CommandUtils12getActorNameERK5Actor"
+relative = false
+extra = 0
+pattern = " E8 ? ? ? ? C7 44 24 ? ? ? ? ? 4C 8D 6C 24 ? 8B 74 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B BB ? ? ? ? ? ? ? FF 90 ? ? ? ? 48 89 C3 48 85 C0"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 89 C5 48 8D BC 24 ? ? ? ? E8 ? ? ? ? ? ? ? 48 89 DF"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN9Explosion7explodeER7IRandom"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 89 C3 48 8B 7C 24 ? 48 85 FF 74 ? 66 66 66 66 66 2E 0F 1F 84 00"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef"
+relative = false
+extra = 0
+pattern = "41 56 53 50 0F 57 C9 80 7F"
+
+[[signatures]]
+name = "_ZNK4Item12readUserDataER13ItemStackBaseR10IDataInputR20ReadOnlyBinaryStream"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 89 DF E8 ? ? ? ? 49 89 46 ? 48 83 C4"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN12ItemInstance7fromTagERK11CompoundTag"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 4C 8D AC 24 ? ? ? ? 4C 89 EF 4C 89 F6 E8 ? ? ? ? 48 8D 05"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 FB 4D 85 C0 74 ? 48 89 D5"
+
+[[signatures]]
+name = "_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 89 C5 ? ? ? ? 75 ? F6 84 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN13ItemStackBase4initEiiib"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 4D 85 F6 75 ? E9 ? ? ? ? 0F B7 C1"
+rip_relative = true
+rip_offset = 1
+
+# name is arbitrary, this is actually hooking a lambda function
+[[signatures]]
+name = "_ZN20InventoryTransaction23executeWorldInteractionEPvR6PlayerRK15InventoryAction"
+relative = false
+extra = 0
+pattern = "41 57 41 56 53 8B 42"
+
+[[signatures]]
+name = "_ZNK11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 F4 49 BD"
+
+[[signatures]]
+name = "_ZN5Level4tickEv"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 49 8B 7C 24 ? 48 85 FF 74 ? ? ? ? FF 90"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZNK11LiquidBlock12_trySpreadToER11BlockSourceRK8BlockPosiS4_h"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 44 89 EF 8B 74 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN14MapDataManager12_loadMapDataERK13ActorUniqueID"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 59 C3 0F 1F 80 ? ? ? ? 49 3B 72"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE"
+relative = false
+extra = 0
+pattern = " E8 ? ? ? ? 48 89 44 24 ? 48 8B BC 24 ? ? ? ? 4C 39 FF"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZNK17MinecraftCommands14executeCommandER14CommandContextb"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 89 C5 E9 ? ? ? ? 49 8B 7F"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 4C 8B 64 24 ? 48 83 7C 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN3Mob9knockbackEP5Actorifffff"
+relative = false
+extra = 0
+pattern = "41 56 53 48 81 EC ? ? ? ? F3 0F 11 64 24"
+
+[[signatures]]
+name = "_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 CD 48 89 D3 49 89 F6"
+
+[[signatures]]
+name = "_ZN4Pack10createPackERK15IPackIOProviderRK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEP16PackSourceReportRKN4Core4PathE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 83 C4 ? F6 44 24 ? ? 4C 8B ? 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+# BA 53 00 00 00 ? ? FF FF FF FF
+name = "_ZN16PistonBlockActor4tickER11BlockSource"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? ? 89 ? FF 47 ? ? 89 F5"
+
+[[signatures]]
+name = "_ZN6Player10teleportToERK4Vec3biib"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 45 89 CC 44 89 C5 41 89 CE"
+
+[[signatures]]
+name = "_ZN6Player14stopSleepInBedEbb"
+relative = false
+extra = 0
+pattern = "0F B6 D3 4C 89 F7 E8 ? ? ? ?"
+rip_relative = true
+rip_offset = 7
+
+[[signatures]]
+name = "_ZN6Player15startSleepInBedERK8BlockPos"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 48 89 FB 41 BD"
+
+[[signatures]]
+# find stopUsingItem and then xref
+name = "_ZN6Player17completeUsingItemEv"
+relative = false
+extra = 0
+pattern = "83 F8 01 0F 84 ? ? ? ? 85 C0 75 ? 48 8B BF "
+rip_relative = true
+rip_offset = 5
+
+[[signatures]]
+name = "_ZN6Player4dropERK9ItemStackb"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 FB 48 8B BF ? ? ? ? 48 85 FF 0F 84 ? ? ? ? 49 89 F6 89 D5"
+
+[[signatures]]
+name = "_ZN6Player4takeER5Actorii"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 84 C0 74 ? ? ? ? 48 89 DF 5B 41 5C"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 F3 8B AF"
+
+[[signatures]]
+name = "_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 83 F8 ? 40 0F 92 C5"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZNK17RepositoryFactory13createSourcesERK23IResourcePackRepository"
+relative = false
+extra = 0
+pattern = "41 57 41 56 41 54 53 48 81 EC ? ? ? ? 49 89 D7 48 89 FB 48 8D 3D"
+
+[[signatures]]
+name = "_ZN17RepositorySources20initializePackSourceER17PackSourceFactory"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 4C 8B A3 ? ? ? ? 48 8B AB ? ? ? ? 4C 8B 7D"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN17ResourcePackStack11deserializeERNSt3__113basic_istreamIcNS0_11char_traitsIcEEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK23IResourcePackRepositoryEEEENS0_8optionalINS0_12basic_stringIcS3_NS0_9allocatorIcEEEEEE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8B 84 24 ? ? ? ? 48 C7 84 24 ? ? ? ? ? ? ? ? 48 8B BC 24 ? ? ? ? 48 89 84 24 ? ? ? ? 48 85 FF 74 ? ? ? ? FF 50 ? 48 8B BC 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? F6 84 24 ? ? ? ? ? 75 ? 48 8B 44 24 ? 48 89 44 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN21ScriptModuleMinecraft16ScriptBlockUtils21createBlockDescriptorENSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEENS1_8optionalINS1_13unordered_mapIS7_NS1_7variantIJiS7_bEEENS1_4hashIS7_EENS1_8equal_toIS7_EENS5_INS1_4pairIKS7_SB_EEEEEEEE"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 80 BC 24 ? ? ? ? ? 75 ? 48 8D BC 24 ? ? ? ? E8 ? ? ? ? 49 89 EF"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN14ServerInstance16initializeServerEO27ServerInstanceInitArguments"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 FE 48 89 74 24 ? 48 8D 9E"
+
+[[signatures]]
+name = "_ZN20ServerNetworkHandler15tryToLoadPlayerER12ServerPlayerRK17ConnectionRequestRK24PlayerAuthenticationInfo"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 89 C5 84 C0 75 ? 49 8B 87"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN20ServerNetworkHandler20_validateLoginPacketERK17NetworkIdentifierRK11LoginPacket"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 CC 49 89 D7 49 89 F6 48 89 FB ? ? ? 48 89 F7 48 89 D6"
+
+[[signatures]]
+name = "_ZN20ServerNetworkHandler24updateServerAnnouncementEv"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 80 3D ? ? ? ? ? 75 ? 4C 89 E7"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EEb"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 48 8D 9C 24 ? ? ? ? 80 7C 24 ? ? 75"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent"
+relative = false
+extra = 0
+pattern = "E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 48 8D BC 24 ? ? ? ? 48 8D 74 24 ? 48 8D 54 24"
+rip_relative = true
+rip_offset = 1
+
+[[signatures]]
+name = "_ZN12ServerPlayer15changeDimensionE11AutomaticIDI9DimensioniE"
+relative = false
+extra = 0
+pattern = "53 48 83 EC ? 89 F2 48 89 FB 48 8B 4F"
+
+[[signatures]]
+name = "_ZN36ServerPlayerMovementCorrectionSystem41_tickServerPlayerMovementCorrectionSystemERK19StrictEntityContextRK36ServerPlayerCurrentMovementComponentRK29UserEntityIdentifierComponentR29ServerPlayerMovementComponent8OptionalIK18PassengerComponentER20StateVectorComponentRK5ViewTIS0_JK22ActorRotationComponent19ActorOwnerComponent20ReplayStateComponentSF_SB_IK21BoatMovementComponentEEE"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4D 89 CF 48 89 4C 24"
+
+[[signatures]]
+name = "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 8C 24 ? ? ? ? 49 89 D6 49 89 FC"
+
+[[signatures]]
+name = "_ZN21UnverifiedCertificate10fromStringERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 F3 ? ? ? 48 8D 7C 24 ? 31 F6"
+
+[[signatures]]
+name = "_ZN14WeatherManager13updateWeatherEfifi"
+relative = false
+extra = 0
+pattern = "55 41 57 41 56 41 54 53 48 81 EC ? ? ? ? 89 D5 0F 29 4C 24"
