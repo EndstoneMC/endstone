@@ -96,6 +96,7 @@ public:
     CircuitSystem &getCircuitSystem();
     [[nodiscard]] bool isRedstoneTick() const;
     [[nodiscard]] const std::string &getName() const;
+    [[nodiscard]] const std::string &getTypeId() const;
     WeakRef<Dimension> getWeakRef();
     [[nodiscard]] endstone::Dimension &getEndstoneDimension() const;  // Endstone
 
@@ -117,13 +118,14 @@ private:
     std::shared_ptr<LevelChunkMetaData> target_metadata_;
     std::unique_ptr<RuntimeLightingManager> runtime_lighting_manager_;
     std::string name_;
+    std::string type_id_;
     DimensionType id_;
     const DimensionIdType registry_id_;
-    bool ultra_warm_;  // +390
+    bool ultra_warm_;  // +422
     bool has_ceiling_;
     bool has_skylight_;
     Brightness sky_darken_;
-    std::unique_ptr<BlockEventDispatcher> dispatcher_;  // +400
+    std::unique_ptr<BlockEventDispatcher> dispatcher_;  // +432
     std::unique_ptr<TaskGroup> task_group_;
     std::unique_ptr<TaskGroup> chunk_gen_task_group_;
     std::unique_ptr<PostprocessingManager> post_processing_manager_;

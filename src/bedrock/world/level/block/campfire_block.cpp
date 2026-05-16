@@ -35,7 +35,8 @@ bool CampfireBlock::tryLightFire(BlockSource &region, const BlockPos &pos, Actor
     }
 
     auto after = block.setState<bool>(VanillaStateIds::Extinguished, false);
-    region.getLevel().broadcastSoundEvent(region, LevelSoundEvent::Ignite, pos, -1, ActorSoundIdentifier(), false);
+    region.getLevel().broadcastSoundEvent(region, LevelSoundEvent::Ignite, pos, -1, ActorSoundIdentifier(), false,
+                                          std::nullopt);
     region.setBlock(pos, *after, UPDATE_ALL, nullptr, nullptr);
     region.postGameEvent(source_actor, GameEventRegistry::blockChange, pos, nullptr);
     return true;

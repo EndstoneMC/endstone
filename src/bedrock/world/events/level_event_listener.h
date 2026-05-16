@@ -27,5 +27,6 @@ public:
     virtual EventResult onLevelTickStart(Level &);
     virtual EventResult onLevelTickEnd(Level &);
     virtual EventResult onLevelWeatherChange(const std::string &, bool, bool, bool, bool);
+    virtual EventResult onRealmsStory(const std::string &);
     virtual EventResult onEvent(const EventType &);
 };

@@ -55,4 +55,4 @@ private:
     bool solid_;
     bool super_hot_;
 };
-static_assert(sizeof(Material) == 12);
+static_assert(sizeof(Material) == 7);

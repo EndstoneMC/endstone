@@ -17,15 +17,20 @@
 #include "bedrock/core/utility/pub_sub/connector.h"
 #include "bedrock/world/level/dimension/dimension.h"
 
+class DimensionManager;
+
 class IDimensionManagerConnector {
 public:
     virtual Bedrock::PubSub::Connector<void(Dimension &)> &getOnNewDimensionCreatedConnector() = 0;
+    virtual Bedrock::PubSub::Connector<void(DimensionManager &)> &
+    getOnReadyForCustomDimensionRegistrationConnector() = 0;
 };
 
 class DimensionManager : public IDimensionManagerConnector {
 public:
     virtual ~DimensionManager();
     Bedrock::PubSub::Connector<void(Dimension &)> &getOnNewDimensionCreatedConnector() override;
+    Bedrock::PubSub::Connector<void(DimensionManager &)> &getOnReadyForCustomDimensionRegistrationConnector() override;
     void shutdown();
     WeakRef<Dimension> getRandomDimension(Random &random);
     WeakRef<Dimension> getOrCreateDimension(DimensionType dimension_type);

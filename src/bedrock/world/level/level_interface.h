@@ -22,6 +22,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "bedrock/audio/server_sound_handle.h"
 #include "bedrock/config/player_capabilities.h"
 #include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
@@ -90,9 +91,10 @@ public:
                             std::string const *) = 0;
     virtual void startLeaveGame() = 0;
     virtual bool isLeaveGameDone() = 0;
+    [[nodiscard]] virtual bool isDimensionTypeActive(DimensionType) const = 0;
     virtual WeakRef<Dimension> getOrCreateDimension(DimensionType) = 0;
     [[nodiscard]] virtual WeakRef<Dimension> getDimension(DimensionType) const = 0;
-    [[nodiscard]] virtual DimensionType getLastOrDefaultSpawnDimensionId(DimensionType) const = 0;
+    [[nodiscard]] virtual DimensionType resolvePlayerSpawnDimension(const CompoundTag *) const = 0;
     virtual void forEachDimension(std::function<bool(Dimension &)>) = 0;
     virtual void forEachDimension(std::function<bool(Dimension const &)>) const = 0;
     virtual DimensionManager &getDimensionManager() = 0;
@@ -276,7 +278,7 @@ public:
     virtual void sendServerLegacyParticle(ParticleType, Vec3 const &, Vec3 const &, int) = 0;
     virtual void playSound(LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &, bool, bool) = 0;
     virtual void playSound(LevelSoundEvent, Vec3 const &, float, float) = 0;
-    virtual void playSound(std::string const &, Vec3 const &, float, float) = 0;
+    virtual void playSound(std::string const &, Vec3 const &, float, float, std::optional<ServerSoundHandle>) = 0;
     virtual void playSound(IConstBlockSource const &, LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &,
                            bool, bool) = 0;
     virtual void playSound(DimensionType, LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &, bool,
@@ -302,12 +304,12 @@ public:
     virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, int) = 0;
     virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, Block const &) = 0;
     virtual void broadcastSoundEvent(BlockSource &, LevelSoundEvent, Vec3 const &, Block const &,
-                                     ActorSoundIdentifier const &, bool) = 0;
+                                     ActorSoundIdentifier const &, bool, std::optional<Vec3> const &) = 0;
     virtual void broadcastSoundEvent(BlockSource &, LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &,
-                                     bool) = 0;
+                                     bool, std::optional<Vec3> const &) = 0;
     virtual void broadcastSoundEvent(Dimension &, LevelSoundEvent, Vec3 const &, int, ActorSoundIdentifier const &,
-                                     bool) = 0;
-    virtual void broadcastActorEvent(Actor &, ActorEvent, int) const = 0;
+                                     bool, std::optional<Vec3> const &) = 0;
+    virtual void broadcastActorEvent(Actor &, ActorEvent, int, std::optional<Vec3> const &) const = 0;
     [[nodiscard]] virtual void *getActorEventBroadcaster() const = 0;
     virtual void addChunkViewTracker(std::weak_ptr<ChunkViewSource>) = 0;
     virtual void onChunkReload(Bounds const &) = 0;
