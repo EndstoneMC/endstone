@@ -1,4 +1,4 @@
-version = "1.26.13"
+version = "1.26.20"
 platform = "linux"
 executable = "bedrock_server"
 filename = "bedrock_server"
