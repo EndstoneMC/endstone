@@ -88,7 +88,7 @@ enum class BlockProperty : std::uint64_t {
     // OnlyPistonPush = 0x80000000,
     Liquid = 0x100000000,
     // CanBeBuiltOver = 0x200000000,
-    SnowRecoverable = 0x400000000,
+    // SnowRecoverable = 0x400000000,
     Scaffolding = 0x800000000,
     CanSupportCenterHangingBlock = 0x1000000000,
     BreaksWhenHitByArrow_DEPRECATED = 0x2000000000,
@@ -203,8 +203,6 @@ public:
     virtual void movedByPiston(BlockSource &, BlockPos const &) const = 0;
     virtual void onStructureBlockPlace(BlockSource &, BlockPos const &) const = 0;
     virtual void setupRedstoneComponent(BlockSource &, BlockPos const &) const = 0;
-    virtual void updateEntityAfterFallOn(BlockPos const &, UpdateEntityAfterFallOnInterface &) const = 0;
-    [[nodiscard]] virtual bool isBounceBlock() const = 0;
     [[nodiscard]] virtual bool isPreservingMediumWhenPlaced(BlockType const *) const = 0;
     [[nodiscard]] virtual bool isFilteredOut(BlockRenderLayer) const = 0;
     [[nodiscard]] virtual bool canRenderSelectionOverlay(BlockRenderLayer) const = 0;
@@ -287,6 +285,7 @@ public:
     [[nodiscard]] virtual BlockRenderLayer getRenderLayer(Block const &, BlockSource &, BlockPos const &) const = 0;
     [[nodiscard]] virtual int getExtraRenderLayers() const = 0;
     [[nodiscard]] virtual const HashedString &getCullingLayer() const = 0;
+    [[nodiscard]] virtual float getBounciness(IConstBlockSource const &, BlockPos const &) const = 0;
     [[nodiscard]] virtual Brightness getLight(Block const &) const = 0;
     [[nodiscard]] virtual Brightness getLightEmission(Block const &) const = 0;
     [[nodiscard]] virtual Brightness getEmissiveBrightness(Block const &) const = 0;
@@ -360,7 +359,7 @@ public:
 
 private:
     BlockComponentStorage components_;  // +40
-    NameInfo name_info_;                // +144
+    NameInfo name_info_;                // +160
     BlockProperty properties_;
     bool fancy_;
     BlockRenderLayer render_layer_;
@@ -395,14 +394,14 @@ private:
 protected:
     Brightness light_block_;
     Brightness light_emission_;
-    Color map_color_;  // +400
+    Color map_color_;  // +416
     float friction_;
     NoteBlockInstrument note_block_instrument_;
     TintMethod tint_method_;
     bool return_default_block_on_unidentified_block_state_;
 
 private:
-    NewBlockID id_;  // +426
+    NewBlockID id_;  // +442
     BaseGameVersion min_required_game_version_;
     bool is_vanilla_;
     std::vector<HashedString> tags_;
@@ -410,10 +409,10 @@ private:
     AABB visual_shape_;
     std::int32_t bits_used_;
     std::int32_t total_bits_used_;
-    std::map<std::uint64_t, BlockStateInstance> states_;  // +624
+    std::map<std::uint64_t, BlockStateInstance> states_;  // +640
     std::unordered_map<HashedString, std::uint64_t> state_name_map_;
     std::size_t creative_enum_state_;
-    std::vector<std::unique_ptr<Block>> block_permutations_;  // +712
+    std::vector<std::unique_ptr<Block>> block_permutations_;  // +728
     Block *default_state_;
     std::vector<std::unique_ptr<void *>> get_placement_block_callbacks_;
     Core::Cache<std::uint16_t, const Block *> legacy_data_lookup_table_;

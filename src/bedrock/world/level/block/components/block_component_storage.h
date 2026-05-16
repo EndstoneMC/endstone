@@ -15,11 +15,14 @@
 #pragma once
 
 #include <cstdint>
+#include <memory>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/utility/type_id.h"
 #include "bedrock/platform/brstd/flat_map.h"
 #include "bedrock/platform/brstd/flat_set.h"
+
+class BlockComponentEventSubscriber;
 
 class BlockComponentStorage {
 public:
@@ -33,5 +36,6 @@ private:
     bool allow_adding_components_;  // +72
     bool allow_replacement_components_;
     bool allow_try_get_components_before_finalization_;
+    std::weak_ptr<BlockComponentEventSubscriber> block_component_event_subscriber_;  // +80
 };
-BEDROCK_STATIC_ASSERT_SIZE(BlockComponentStorage, 80, 80);
+BEDROCK_STATIC_ASSERT_SIZE(BlockComponentStorage, 96, 96);
