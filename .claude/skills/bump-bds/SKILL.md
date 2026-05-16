@@ -1,5 +1,5 @@
 ---
-name: bump-bds-version
+name: bump-bds
 description: Update Endstone to support a new Bedrock Dedicated Server (BDS) version - regenerate the symbol offset tables and port src/bedrock to the new ABI. Use when bumping the supported BDS version (e.g. "add support for BDS 1.26.x", "bump the BDS version").
 ---
 
