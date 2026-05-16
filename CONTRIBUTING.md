@@ -239,9 +239,20 @@ Before submitting Python code, ensure it passes ruff checks.
 
 ## Submitting Changes
 
+### Branching Model
+
+Endstone uses a release-focused branching model:
+
+- **`main`** — the latest stable release. Protected; no direct pushes. Updated only through the release process.
+- **`develop`** — the active development branch. All new work is integrated here.
+- **`v0.x`** — per-API-version branches (e.g. `v0.10`, `v0.11`) for maintenance and patch releases of each minor
+  version.
+
+Open pull requests against **`develop`**. Version-specific fixes and backports target the relevant **`v0.x`** branch.
+
 ### Pull Request Process
 
-1. **Fork and Branch**: Create a feature branch from `main`
+1. **Fork and Branch**: Create a feature branch from `develop`
 2. **Make Changes**: Follow the code style guidelines
 3. **Test**: Run all tests and ensure builds pass
 4. **Commit**: Write clear, concise commit messages
