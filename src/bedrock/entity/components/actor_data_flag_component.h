@@ -14,12 +14,12 @@
 
 #pragma once
 
-#include <bitset>
-
 #include "bedrock/entity/components/actor_data_component_base.h"
+#include "bedrock/platform/brstd/bitset.h"
 #include "bedrock/world/actor/actor_flags.h"
 
-struct ActorDataFlagComponent : ActorDataComponentBase<std::bitset<static_cast<int>(ActorFlags::Count)>> {
+struct ActorDataFlagComponent
+    : ActorDataComponentBase<brstd::bitset<static_cast<std::size_t>(ActorFlags::Count), unsigned long>> {
 
     [[nodiscard]] bool getStatusFlag(ActorFlags flag) const
     {
