@@ -155,6 +155,12 @@ noise first), update Endstone's `src/bedrock/` declaration:
   to `src/bedrock/forward.h` in alphabetic order and use the type incomplete
   (fine for pointers, references, and container value types like
   `std::vector` / `std::unordered_map`).
+- **Structural refactors** - when BDS introduces a base class (e.g. 1.26.20's
+  `BaseConnectionRequest`), mirror it: add the base header, re-parent the
+  derived classes, move the shared members into the base. When BDS removes a
+  class, `git rm` the Endstone header once `grep` confirms nothing else
+  references it. Follow the BDS structure closely; only the file name differs
+  (snake_case). Keep it minimal - declare only what Endstone uses.
 
 Then update the mangled `name` in `scripts/configs/{windows,linux}.toml`,
 re-run the dumper, and update any affected hook in
