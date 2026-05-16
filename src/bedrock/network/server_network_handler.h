@@ -61,7 +61,7 @@ public:
     ENDSTONE_HOOK void disconnectClientWithMessage(const NetworkIdentifier &id, SubClientId sub_id,
                                                    Connection::DisconnectFailReason disconnect_reason,
                                                    const std::string &message,
-                                                   std::optional<std::string> filtered_message, bool skip_message);
+                                                   std::optional<std::string> filtered_message);
     [[nodiscard]] int getMaxNumPlayers() const;
     int setMaxNumPlayers(int max_players);
     void updateServerAnnouncement();

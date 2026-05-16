@@ -30,7 +30,7 @@
 void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &id, const SubClientId sub_id,
                                                        const Connection::DisconnectFailReason reason,
                                                        const std::string &message,
-                                                       std::optional<std::string> filtered_message, bool skip_message)
+                                                       std::optional<std::string> filtered_message)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto disconnect_message = message;
@@ -52,7 +52,7 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
     }
 
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClientWithMessage, this, id, sub_id, reason,
-                                disconnect_message, std::move(filtered_message), skip_message);
+                                disconnect_message, std::move(filtered_message));
 
     // #blameMojang - BDS politely asks clients to disconnect and waits for acknowledgment.
     // Malicious clients can simply ignore this and keep spamming packets indefinitely.
@@ -129,7 +129,7 @@ void ServerNetworkHandler::disconnect(NetworkIdentifier const &network_id, SubCl
         player->addOrRemoveComponent<endstone::core::InternalDisconnectFlagComponent>(true);
     }
     disconnectClientWithMessage(network_id, sub_client_id, Connection::DisconnectFailReason::NoReason, reason,
-                                std::nullopt, false);
+                                std::nullopt);
 }
 
 std::optional<PlayerAuthenticationInfo> ServerNetworkHandler::_validateLoginPacket(const NetworkIdentifier &source,

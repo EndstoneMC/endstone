@@ -473,7 +473,7 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EEb"
+name = "_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EE"
 relative = false
 extra = 0
 pattern = "E8 ? ? ? ? 48 8D 9C 24 ? ? ? ? 80 7C 24 ? ? 75"
