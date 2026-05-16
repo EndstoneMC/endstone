@@ -18,7 +18,8 @@
 #include "bedrock/platform/brstd/bitset.h"
 #include "bedrock/world/actor/actor_flags.h"
 
-struct ActorDataFlagComponent : ActorDataComponentBase<brstd::bitset<static_cast<std::size_t>(ActorFlags::Count)>> {
+struct ActorDataFlagComponent
+    : ActorDataComponentBase<brstd::bitset<static_cast<std::size_t>(ActorFlags::Count), std::uint64_t>> {
 
     [[nodiscard]] bool getStatusFlag(ActorFlags flag) const { return value_.test(static_cast<int>(flag)); }
 
