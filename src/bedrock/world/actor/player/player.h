@@ -340,6 +340,9 @@ private:
     std::int64_t blocked_using_shield_time_stamp_;
     std::int64_t blocked_using_damaged_shield_time_stamp_;
     std::string name_;
+    std::optional<std::string> chat_name_prefix_;
+    std::optional<std::string> chat_name_suffix_;
+    std::optional<std::string> chat_message_prefix_;
     std::string last_emote_played_;
     time_t emote_easter_egg_end_time_;
     unsigned int emote_message_count_;
