@@ -91,8 +91,11 @@ endstone
 
 ```shell
 docker pull endstone/endstone
-docker run --rm -it -p 19132:19132/udp endstone/endstone
+docker run --rm -it -v ${PWD}/data:/data -p 19132:19132/udp -p 19133:19133/udp endstone/endstone
 ```
+
+The world, plugins and configuration are stored in `./data`. Set the `PUID`/`PGID` environment
+variables to your host user so the files stay writable.
 
 ### Building from source
 

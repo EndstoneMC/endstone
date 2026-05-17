@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `WritableBookMeta`, `BookMeta`, and `CrossbowMeta` item meta types.
 - Added binary NBT serialization (`dump`/`load`) with support for multiple formats.
 - Added unified `Object.as<T>()`/`is<T>()` casting API, replacing the per-type `asPlayer()`, `asMob()`, etc. methods.
+- Added a healthcheck to the Docker image so `docker ps` and Docker Compose report whether the server is actually online.
+- Added `PUID`/`PGID` environment variables to the Docker image to keep server files owned by your host user.
+- Added a `docker-compose.yml` for running the server with Docker Compose.
+- Added graceful shutdown on Linux: stopping the server (e.g. via `docker stop`) now lets the Bedrock server save the world before it exits.
 
 ### Changed
 
@@ -27,6 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: `Player` no longer inherits from `OfflinePlayer`.
 - **BREAKING**: `BlockPlaceEvent.block` now returns the placed block instead of the replaced block.
   `block_placed_state`/`block_replaced` renamed to `block_placed`/`block_replaced_state` to match Bukkit.
+- **BREAKING**: The Docker image now stores server data in `/data` instead of `/home/endstone/bedrock_server`.
+  Update your volume mount accordingly (e.g. `-v ./data:/data`).
 
 
 ### Fixed

@@ -1,10 +1,29 @@
-.cache/*
-.idea/*
-.venv/*
-venv/*
-bedrock_server
+# Keep .git — setuptools_scm derives the wheel version from it.
+# Keep tests/ — the image build runs `pytest tests`.
+
+# Build outputs
 build
 dist
 stubs
 wheelhouse
 CMakeUserPresets.json
+*.egg-info
+
+# Virtual environments and caches
+.cache
+.venv
+venv
+__pycache__
+*.pyc
+.pytest_cache
+
+# Server data
+bedrock_server
+data
+
+# Editor, CI and local config
+.github
+.idea
+.vscode
+.claude
+.env

@@ -1,4 +1,5 @@
 import os
+import signal
 import stat
 import subprocess
 import sysconfig
@@ -37,7 +38,7 @@ class LinuxBootstrap(Bootstrap):
         os.chmod(self.server_path / "crashpad_handler", st.st_mode | stat.S_IEXEC)
 
     def _run(self, *args, **kwargs) -> int:  # type: ignore[no-untyped-def]
-        process = subprocess.Popen(  # type: ignore[call-overload]
+        self._process = subprocess.Popen(  # type: ignore[call-overload]
             [str(self.executable_path.absolute())],
             text=True,
             encoding="utf-8",
@@ -46,4 +47,16 @@ class LinuxBootstrap(Bootstrap):
             *args,
             **kwargs,
         )
-        return int(process.wait())
+
+        # Forward termination signals to the Bedrock server so it can shut down
+        # gracefully and save the world (e.g. on `docker stop`).
+        def _forward(signum, _frame):  # type: ignore[no-untyped-def]
+            try:
+                self._process.send_signal(signum)
+            except ProcessLookupError:
+                pass
+
+        for sig in (signal.SIGTERM, signal.SIGINT):
+            signal.signal(sig, _forward)
+
+        return int(self._process.wait())
