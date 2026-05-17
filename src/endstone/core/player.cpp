@@ -603,11 +603,7 @@ void EndstonePlayer::sendForm(FormVariant form)
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ShowModalForm);
     std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
     pk->payload.form_id = ++form_ids_;
-    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) {
-                                           return FormCodec::toJson(arg);
-                                       }},
-                                       form)
-                                .dump();
+    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) { return FormCodec::toJson(arg); }}, form).dump();
     forms_.emplace(pk->payload.form_id, std::move(form));
     getHandle().sendNetworkPacket(*packet);
 }
@@ -866,16 +862,19 @@ void EndstonePlayer::doFirstSpawn()
 }
 
 void EndstonePlayer::initFromConnectionRequest(
-    std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request)
+    std::variant<std::reference_wrapper<const ::ConnectionRequest>,
+                 std::reference_wrapper<const ::SubClientConnectionRequest>>
+        request)
 {
     std::visit(
-        [&](auto &&req) {
-            if (auto locale = req->getLanguageCode(); !locale.empty()) {
+        [&](auto &&ref) {
+            const auto &req = ref.get();
+            if (auto locale = req.getLanguageCode(); !locale.empty()) {
                 locale_ = locale;
             }
 
             // https://github.com/GeyserMC/Geyser/blob/master/common/src/main/java/org/geysermc/floodgate/util/DeviceOs.java
-            auto platform = req->getDeviceOS();
+            auto platform = req.getDeviceOS();
             switch (platform) {
             case BuildPlatform::Google:
                 device_os_ = "Android";
@@ -907,13 +906,13 @@ void EndstonePlayer::initFromConnectionRequest(
                 break;
             }
 
-            if (auto device_id = req->getDeviceId(); !device_id.empty()) {
+            if (auto device_id = req.getDeviceId(); !device_id.empty()) {
                 device_id_ = device_id;
             }
 
-            using ReqType = std::remove_cv_t<std::remove_pointer_t<std::remove_reference_t<decltype(req)>>>;
+            using ReqType = std::remove_cvref_t<decltype(req)>;
             if constexpr (std::is_same_v<ReqType, ::ConnectionRequest>) {
-                if (auto game_version = req->getGameVersionString(); !game_version.empty()) {
+                if (auto game_version = req.getGameVersionString(); !game_version.empty()) {
                     game_version_ = game_version;
                 }
                 else {

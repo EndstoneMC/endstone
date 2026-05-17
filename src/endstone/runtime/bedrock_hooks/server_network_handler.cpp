@@ -69,7 +69,7 @@ bool ServerNetworkHandler::tryToLoadPlayer(ServerPlayer &server_player, const Co
                                                         connection_request, player_info);
     const auto &server = endstone::core::EndstoneServer::getInstance();
     auto &endstone_player = server_player.getEndstoneActor<endstone::core::EndstonePlayer>();
-    endstone_player.initFromConnectionRequest(&connection_request);
+    endstone_player.initFromConnectionRequest(connection_request);
 
     endstone::PlayerLoginEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
@@ -89,7 +89,7 @@ bool ServerNetworkHandler::tryToLoadPlayer(ServerPlayer &server_player, const Co
 //                                                       sub_client_connection_request, player_info, sub_client_id);
 //     const auto &server = endstone::core::EndstoneServer::getInstance();
 //     auto &endstone_player = server_player.getEndstoneActor<endstone::core::EndstonePlayer>();
-//     endstone_player.initFromConnectionRequest(&sub_client_connection_request);
+//     endstone_player.initFromConnectionRequest(sub_client_connection_request);
 //
 //     endstone::PlayerLoginEvent e{endstone_player};
 //     server.getPluginManager().callEvent(e);
