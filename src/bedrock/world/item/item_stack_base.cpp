@@ -382,6 +382,14 @@ std::int16_t ItemStackBase::getId() const
     return item_->getId();
 }
 
+int ItemStackBase::getIdAux() const
+{
+    if (item_.isNull()) {
+        return 0;
+    }
+    return item_->buildIdAux(getAuxValue(), getUserData());
+}
+
 bool ItemStackBase::isBlock() const
 {
     return !item_.isNull() && !item_->getBlockType().isNull();
