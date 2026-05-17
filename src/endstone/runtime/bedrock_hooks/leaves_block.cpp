@@ -11,7 +11,11 @@
 #include "endstone/core/server.h"
 #include "endstone/event/block/leaves_decay_event.h"
 
+#ifdef _WIN32
 void LeavesBlock::randomTick(BlockEvents::BlockRandomTickEvent &event_data) const
+#elif __linux__
+void LeavesBlock::randomTick(BlockEvents::BlockRandomTickEvent &event_data)
+#endif
 {
     auto &region = event_data.region;
     const auto &pos = event_data.pos;
@@ -91,7 +95,7 @@ void LeavesBlock::randomTick(BlockEvents::BlockRandomTickEvent &event_data) cons
     }
 }
 
-void LeavesBlock::_die(BlockSource &region, const BlockPos &pos) const
+void LeavesBlock::_die(BlockSource &region, const BlockPos &pos) /*const*/
 {
     // Endstone begins
     const auto &server = endstone::core::EndstoneServer::getInstance();
@@ -105,9 +109,9 @@ void LeavesBlock::_die(BlockSource &region, const BlockPos &pos) const
     auto &random = region.getLevel().getRandom();
     const auto &block = region.getBlock(pos);
     block.spawnResources(region, pos, random, ResourceDropsContext::fromOtherCause(region, pos));
-    auto &air = static_cast<const endstone::core::EndstoneBlockType &>(
-                    server.getRegistry<endstone::BlockType>().getOrThrow(endstone::BlockType::Air))
-                    .getHandle()
-                    .getDefaultState();
+    const auto &air = static_cast<const endstone::core::EndstoneBlockType &>(
+                          server.getRegistry<endstone::BlockType>().getOrThrow(endstone::BlockType::Air))
+                          .getHandle()
+                          .getDefaultState();
     region.setBlock(pos, air, UPDATE_ALL, nullptr, {});
 }

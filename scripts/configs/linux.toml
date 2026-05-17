@@ -57,7 +57,7 @@ pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 89 CD 49 89 F6 48 89 FB 48 8
 name = "_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE"
 relative = false
 extra = 0
-pattern = "55 41 57 41 56 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 48 8B 8F"
+pattern = "41 57 41 56 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 48 8B 8F"
 
 [[signatures]]
 # Server stop requested.
@@ -188,9 +188,7 @@ rip_offset = 1
 name = "_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 48 8B BB ? ? ? ? ? ? ? FF 90 ? ? ? ? 48 89 C3 48 85 C0"
-rip_relative = true
-rip_offset = 1
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 94 24 ? ? ? ? 48 89 F3"
 
 [[signatures]]
 name = "_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE"
@@ -260,16 +258,16 @@ extra = 0
 pattern = "41 57 41 56 53 8B 42"
 
 [[signatures]]
-name = "_ZNK11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"
+name = "_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"
 relative = false
 extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 F4 49 BD"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 FC 48 BB"
 
 [[signatures]]
 name = "_ZN5Level4tickEv"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 49 8B 7C 24 ? 48 85 FF 74 ? ? ? ? FF 90"
+pattern = "E8 ? ? ? ? 48 8B 7B ? 48 85 FF 74 ? ? ? ? FF 90"
 rip_relative = true
 rip_offset = 1
 
@@ -282,12 +280,10 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "_ZN14MapDataManager12_loadMapDataERK13ActorUniqueID"
+name = "_ZN14MapDataManager15getMapSavedDataE13ActorUniqueID"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 59 C3 0F 1F 80 ? ? ? ? 49 3B 72"
-rip_relative = true
-rip_offset = 1
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 48 89 FB 48 89 74 24"
 
 [[signatures]]
 name = "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE"
@@ -309,15 +305,15 @@ rip_offset = 1
 name = "_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 4C 8B 64 24 ? 48 83 7C 24"
+pattern = "E8 ? ? ? ? 48 83 BC 24 ? ? ? ? ? 0F 84 ? ? ? ? 41 89 DE"
 rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "_ZN3Mob9knockbackEP5Actorifffff"
+name = "_ZN3Mob9knockbackEP5ActoriffRK19KnockbackParameters"
 relative = false
 extra = 0
-pattern = "41 56 53 48 81 EC ? ? ? ? F3 0F 11 64 24"
+pattern = "55 41 56 53 48 81 EC ? ? ? ? 49 89 CE 0F 29 4C 24"
 
 [[signatures]]
 name = "_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId"
@@ -401,7 +397,7 @@ rip_offset = 1
 name = "_ZNK17RepositoryFactory13createSourcesERK23IResourcePackRepository"
 relative = false
 extra = 0
-pattern = "41 57 41 56 41 54 53 48 81 EC ? ? ? ? 49 89 D7 48 89 FB 48 8D 3D"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 D3 49 89 FD 48 8D 3D"
 
 [[signatures]]
 name = "_ZN17RepositorySources20initializePackSourceER17PackSourceFactory"
@@ -445,7 +441,7 @@ pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 FE 48 89 74 24 ?
 name = "_ZN20ServerNetworkHandler15tryToLoadPlayerER12ServerPlayerRK17ConnectionRequestRK24PlayerAuthenticationInfo"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 89 C5 84 C0 75 ? 49 8B 87"
+pattern = "E8 ? ? ? ? 89 C5 84 C0 75 ? 49 8B 84 24"
 rip_relative = true
 rip_offset = 1
 
@@ -453,7 +449,7 @@ rip_offset = 1
 name = "_ZN20ServerNetworkHandler20_validateLoginPacketERK17NetworkIdentifierRK11LoginPacket"
 relative = false
 extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 CC 49 89 D7 49 89 F6 48 89 FB ? ? ? 48 89 F7 48 89 D6"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 CC 48 89 D3 49 89 F6 49 89 FF ? ? ? 48 89 F7"
 
 [[signatures]]
 name = "_ZN20ServerNetworkHandler24updateServerAnnouncementEv"

@@ -14,11 +14,14 @@
 
 #pragma once
 
-
 #if _WIN32
-#define ENDSTONE_HOOK __declspec(dllexport)
+#define ENDSTONE_HOOK       __declspec(dllexport)
+#define ENDSTONE_HOOK_WIN32 __declspec(dllexport)
+#define ENDSTONE_HOOK_LINUX
 #elif __linux__
 #define ENDSTONE_HOOK __attribute__((visibility("default")))
+#define ENDSTONE_HOOK_WIN32
+#define ENDSTONE_HOOK_LINUX __attribute__((visibility("default")))
 #endif
 #define ENDSTONE_VHOOK
 

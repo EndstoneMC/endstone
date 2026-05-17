@@ -1,4 +1,4 @@
-timestamp = 1778973153
+timestamp = 1779059952
 version = "1.26.20"
 
 [symbols]
@@ -11,7 +11,7 @@ version = "1.26.20"
 "_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2" = 153774592
 # BatchedNetworkPeer
 "_ZN18BatchedNetworkPeer10sendPacketERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEN11NetworkPeer11ReliabilityE15Compressibility" = 97628816
-"_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE" = 0
+"_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE" = 97629232
 # BedrockLog::LogDetails
 "_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag" = 216599584
 # BlockDescriptor::ResolveHelper
@@ -37,7 +37,7 @@ version = "1.26.20"
 # CommandUtils
 "_ZN12CommandUtils12getActorNameERK5Actor" = 136634112
 # CraftingDataPacket
-"_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 0
+"_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 113475728
 # DedicatedServer
 "_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE" = 65772192
 # Explosion
@@ -56,20 +56,20 @@ version = "1.26.20"
 "_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE" = 180815744
 "_ZN13ItemStackBase8_setItemEib" = 180785776
 # LeavesBlock
-"_ZNK11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE" = 0
+"_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE" = 182616944
 # Level
-"_ZN5Level4tickEv" = 0
+"_ZN5Level4tickEv" = 185344288
 # LiquidBlock
 "_ZNK11LiquidBlock12_trySpreadToER11BlockSourceRK8BlockPosiS4_h" = 182318944
 # MapDataManager
-"_ZN14MapDataManager12_loadMapDataERK13ActorUniqueID" = 0
+"_ZN14MapDataManager15getMapSavedDataE13ActorUniqueID" = 185398160
 # MinecraftCommands
 "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE" = 136697760
 "_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 136645312
 # MinecraftPackets
-"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 0
+"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 117507360
 # Mob
-"_ZN3Mob9knockbackEP5Actorifffff" = 0
+"_ZN3Mob9knockbackEP5ActoriffRK19KnockbackParameters" = 151104464
 # NetworkSystem
 "_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId" = 117476256
 # Pack
@@ -88,7 +88,7 @@ version = "1.26.20"
 # RakPeerHelper
 "_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE" = 117048768
 # RepositoryFactory
-"_ZNK17RepositoryFactory13createSourcesERK23IResourcePackRepository" = 0
+"_ZNK17RepositoryFactory13createSourcesERK23IResourcePackRepository" = 134249792
 # RepositorySources
 "_ZN17RepositorySources20initializePackSourceER17PackSourceFactory" = 133909440
 # ResourcePackStack
@@ -100,8 +100,8 @@ version = "1.26.20"
 # ServerInstance
 "_ZN14ServerInstance16initializeServerEO27ServerInstanceInitArguments" = 137217248
 # ServerNetworkHandler
-"_ZN20ServerNetworkHandler15tryToLoadPlayerER12ServerPlayerRK17ConnectionRequestRK24PlayerAuthenticationInfo" = 0
-"_ZN20ServerNetworkHandler20_validateLoginPacketERK17NetworkIdentifierRK11LoginPacket" = 0
+"_ZN20ServerNetworkHandler15tryToLoadPlayerER12ServerPlayerRK17ConnectionRequestRK24PlayerAuthenticationInfo" = 117273104
+"_ZN20ServerNetworkHandler20_validateLoginPacketERK17NetworkIdentifierRK11LoginPacket" = 117198528
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 117184320
 "_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EE" = 117124496
 "_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 117185872
