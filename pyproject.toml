@@ -77,6 +77,10 @@ config = ["tools.cmake.cmaketoolchain:generator=Ninja"]
 [[tool.scikit-build-core-conan.overrides]]
 if.platform-system = "win32"
 settings = ["compiler.cppstd=20"]
+config = [
+    "tools.cmake.cmaketoolchain:generator=Ninja",
+    '&:tools.build:compiler_executables={"c": "clang-cl", "cpp": "clang-cl"}',
+]
 
 [[tool.scikit-build-core-conan.overrides]]
 if.platform-system = "linux"
@@ -103,9 +107,6 @@ repair-wheel-command = [
     "pip install auditwheel==6.2.0 sentry-cli",
     'python scripts/repair_wheel.py -o endstone -p endstone -w {dest_dir} {wheel}',
 ]
-
-[tool.cibuildwheel.windows]
-environment = { CC = "clang-cl", CXX = "clang-cl" }
 
 [tool.cibuildwheel.linux]
 manylinux-x86_64-image = "ghcr.io/endstonemc/manylinux_2_31_x86_64"

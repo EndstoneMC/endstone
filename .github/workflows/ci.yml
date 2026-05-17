@@ -52,13 +52,6 @@ jobs:
         with:
           arch: x86_64
 
-      - name: Select clang-cl (Windows)
-        if: runner.os == 'Windows'
-        shell: bash
-        run: |
-          echo "CC=clang-cl" >> "$GITHUB_ENV"
-          echo "CXX=clang-cl" >> "$GITHUB_ENV"
-
       - name: Set up CMake and Ninja
         uses: lukka/get-cmake@latest
 

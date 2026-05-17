@@ -23,6 +23,7 @@
 #include <Psapi.h>
 #include <corecrt_io.h>
 #include <fcntl.h>
+#include <share.h>
 
 #include <chrono>
 #include <iostream>
@@ -179,7 +180,7 @@ void stdin_save()
 
 void stdin_close()
 {
-    null_fd = _open("NUL", _O_RDONLY);
+    _sopen_s(&null_fd, "NUL", _O_RDONLY, _SH_DENYNO, 0);
     _dup2(null_fd, _fileno(stdin));
     std::cin.clear();
     std::wcin.clear();

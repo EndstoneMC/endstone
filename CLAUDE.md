@@ -17,12 +17,10 @@ Endstone is a plugin API for Minecraft Bedrock Dedicated Servers (BDS), supporti
 ```shell
 pip install conan
 
-# Windows — clang-cl/lld-link must be on PATH; run from a Visual Studio
-# Developer prompt so clang-cl can find the Windows SDK and MSVC STL.
-set CC=clang-cl
-set CXX=clang-cl
-conan profile detect --force
-conan install . --build=missing -s compiler.cppstd=20 -c tools.cmake.cmaketoolchain:generator=Ninja
+# Windows — run from a Visual Studio Developer prompt; clang-cl/lld-link must be on PATH.
+# Dependencies build with MSVC; the '&:' conf builds Endstone itself with clang-cl.
+conan profile detect
+conan install . --build=missing -s compiler.cppstd=20 -c tools.cmake.cmaketoolchain:generator=Ninja -c "&:tools.build:compiler_executables={'c':'clang-cl','cpp':'clang-cl'}"
 
 # Linux
 conan profile detect

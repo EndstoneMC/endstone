@@ -21,6 +21,9 @@ if (WIN32)
     endif ()
     # Link with the LLVM linker (lld-link) instead of the MSVC linker
     set(CMAKE_LINKER_TYPE LLD)
+    # CMake cannot scan for C++20 module imports with clang-cl; Endstone uses no
+    # modules, so disable scanning to avoid a hard configure error.
+    set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
 elseif (UNIX)
     if (NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
         message(FATAL_ERROR
