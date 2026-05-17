@@ -122,10 +122,12 @@ We welcome contributions from the community! Whether it's bug reports, feature r
 
 Endstone is licensed under the [Apache-2.0 license](LICENSE).
 
-<div align="center">
+## Acknowledgements
 
-**Sponsored by [Bisect Hosting](https://bisecthosting.com/endstone)**
+Endstone is proudly sponsored by [Bisect Hosting](https://bisecthosting.com/endstone), which offers managed Minecraft server hosting.
 
 [![Bisect Hosting](docs/assets/bisecthosting-banner.webp)](https://bisecthosting.com/endstone)
 
-</div>
+Package repository hosting is graciously provided by [Cloudsmith](https://cloudsmith.com), which offers free package management for open-source projects.
+
+[![Hosted By: Cloudsmith](https://img.shields.io/badge/OSS%20hosting%20by-cloudsmith-blue?logo=cloudsmith)](https://cloudsmith.com)
