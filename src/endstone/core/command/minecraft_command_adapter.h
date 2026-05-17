@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/server/commands/command.h"
+#include "bedrock/server/commands/command_registry.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {
@@ -30,3 +31,6 @@ private:
 };
 
 }  // namespace endstone::core
+
+template <>
+const CommandRegistry::ParamParseRule CommandRegistry::ParseRuleFor<endstone::core::MinecraftCommandAdapter>::instance;
