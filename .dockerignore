@@ -21,8 +21,8 @@ __pycache__
 bedrock_server
 data
 
-# Editor, CI and local config
-.github
+# Editor and local config (untracked paths only — excluding a git-tracked path
+# here makes the build tree look dirty to setuptools_scm).
 .idea
 .vscode
 .claude

@@ -1,4 +1,6 @@
 .git_archival.txt  export-subst
 
-# Shell scripts must keep LF endings so they run inside Linux containers.
-*.sh text eol=lf
+# Store text files with LF and check them out as LF on every OS. This keeps the
+# Docker build context a pristine git tree (no CRLF "modifications") so
+# setuptools_scm derives the real release version instead of a ".dev0" one.
+* text=auto eol=lf
