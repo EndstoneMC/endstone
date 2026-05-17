@@ -214,6 +214,24 @@ entry ("Added support for BDS X.Y.Z"), commit, open the PR.
 - **Declaration reordering** - declarations get reordered within a file; the
   diff shows -/+ pairs of identical content moved.
 
+### Real BDS changes that still need no `src/bedrock/` action
+
+A change can be a genuine BDS change yet need nothing in Endstone, because
+Endstone deliberately models only a subset. Rule these out before editing:
+
+- **Additive enum values** beyond Endstone's declared subset. Endstone declares
+  only the enumerators it uses; the enum's underlying width is unchanged, so
+  values added past Endstone's range need nothing.
+- **A class Endstone truncates with `// ...`** - e.g. `NetEventCallback`.
+  Virtuals or members added in the undeclared tail are already covered by the
+  `// ...`; touch nothing. (One added *in the middle* of the declared part does
+  still need handling.)
+- **An empty-stubbed type** - Endstone declares some types it never models as
+  `struct X {};` (e.g. `NetworkPeer::NetworkStatus`). Internal changes to such a
+  type need no action.
+- **New free functions or non-virtual methods** Endstone does not declare - no
+  layout or vtable impact.
+
 ### Tooling
 
 - **lief's free build cannot read PDBs** - `lief.pdb.load()` fails with
@@ -228,6 +246,11 @@ entry ("Added support for BDS X.Y.Z"), commit, open the PR.
 - Some symbols are never public (function-local statics like `getI18n::result`,
   some data) and never appear in `pdbtool ... psi` - keep them on the
   byte-signature path.
+- To recover a **renamed** Windows symbol (re-signed, not removed), dump every
+  public once with `pdbtool --quiet dump <pdb> psi` and grep for the scope
+  (`?<method>@<Class>@@`); the surviving line is the new mangled name. Verify it
+  against the bedrock-headers signature before copying it into the config so you
+  do not pick the wrong overload.
 
 ### BDS itself
 
@@ -239,6 +262,23 @@ entry ("Added support for BDS X.Y.Z"), commit, open the PR.
   shows the `<Name>Payload` split, assume *every* `network/packet/*` got it -
   port them all; `inventory_slot_packet.h` is a good reference for the pattern.
 - A function missing from the PDB publics may have been inlined, not removed.
+- BDS sometimes promotes a **type alias to a concrete type** - e.g. 1.26.20
+  turned `using DimensionType = AutomaticID<Dimension, int>;` into a standalone
+  `struct DimensionType`. The mangled name of every symbol taking it changes
+  (`...V?$AutomaticID@VDimension@@H@@...` -> `...UDimensionType@@...`) with no
+  logic change, so it surfaces as a Windows miss. The fix is structural: make
+  Endstone's type a real `struct` too (mirror the BDS layout - often a single
+  integer member), replace every direct use of the old underlying type, and
+  delete the now-orphaned alias/template header. Editing only the config `name`
+  is not enough - `__FUNCDNAME__` comes from Endstone's declaration, so the
+  declared type itself must change.
+- Removing a class is a **multi-file cascade**, not just one `git rm`. When BDS
+  deletes a class, also remove: its `src/endstone/runtime/bedrock_hooks/*.cpp`
+  hook, the source-list entries in the relevant `CMakeLists.txt` files, the
+  `[[signatures]]` blocks in both `scripts/configs/*.toml`, the entries in the
+  generated `src/bedrock/symbol_generator/symbols/*.toml`, and any dependent
+  declaration that named the type. `grep` the tree for the class name afterward
+  to confirm nothing dangles.
 
 ### Symbol table is not optional for the build
 
