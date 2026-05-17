@@ -280,12 +280,51 @@ Endstone deliberately models only a subset. Rule these out before editing:
 - A function inlined on one platform but out-of-line on the other has a real
   symbol on only one side. Split resolution with `#ifdef` - e.g. call the
   out-of-line function on one platform and read its function-local static on
-  the other.
+  the other. If the inlined-away function is *hooked* (not just called),
+  `#ifdef`-calling the original does not help - there is no entry point to
+  detour; relocate the hook on that platform to the still-out-of-line caller
+  it was inlined into and reconstruct the trigger condition there.
 - To recover a **renamed** Windows symbol (re-signed, not removed), dump every
   public once with `pdbtool --quiet dump <pdb> psi` and grep for the scope
   (`?<method>@<Class>@@`); the surviving line is the new mangled name. Verify it
   against the bedrock-headers signature before copying it into the config so you
   do not pick the wrong overload.
+
+### Re-extracting a stale Linux pattern
+
+A "Linux only" miss is a stale byte `pattern`; the function still exists.
+Re-cut it from the new binary:
+
+- **Prefer a prologue pattern over a call-site one.** A call-site pattern
+  (`E8 ?? ?? ?? ??` + `rip_relative` / `rip_offset`) resolves the function via
+  a `call` displacement, so it breaks whenever the *caller* changes - even
+  when the target function is untouched; that is why one release breaks a
+  whole cluster of them. Re-anchor on the function's own prologue (the `push`
+  sequence + `sub rsp`) wherever the function is not inlined - the match
+  offset is then the function start itself.
+- **Converting a call-site entry to a prologue entry: delete `rip_relative`
+  and `rip_offset`.** A prologue pattern's match offset already *is* the
+  function; leaving `rip_relative = true` makes the dumper RIP-decode bytes
+  inside the prologue and resolve to a silently-wrong, non-zero address -
+  worse than a `0` miss, because it passes the build and corrupts at runtime.
+- A **prologue miss** and a **call-site miss** mean different things: a
+  prologue miss = the function's own codegen changed (callee-saved register
+  set, argument shuffle); a call-site miss = a caller changed. Neither implies
+  a signature change - a different saved-register set is pure codegen churn.
+  Confirm against the Windows mangled name before assuming the config `name`
+  must change.
+- **Cross-version dump to triage.** Run the dumper against the *previous* BDS
+  version (copy the config, set the old `version`; the output path is fixed,
+  so `git checkout` the regenerated table afterward). A pattern that matches
+  the previous version but not the new one confirms it went stale *at* this
+  bump - re-extract it; one that misses both was already wrong.
+- **RVA-delta plausibility.** Cross-check resolved offsets against the
+  previous version's table: deltas should all be positive (the binary grows)
+  and rise broadly monotonically with RVA (code accumulates ahead of each
+  function). A negative delta, a wild outlier, or a function pair whose
+  relative order flipped flags a pattern that matched the wrong location -
+  verify those before trusting the dump. Sub-MB local non-monotonic wiggles
+  are normal linker-layout noise.
 
 ### BDS itself
 
@@ -297,6 +336,17 @@ Endstone deliberately models only a subset. Rule these out before editing:
   shows the `<Name>Payload` split, assume *every* `network/packet/*` got it -
   port them all; `inventory_slot_packet.h` is a good reference for the pattern.
 - A function missing from the PDB publics may have been inlined, not removed.
+- BDS is built with whole-program optimization, so the compiler can **drop the
+  unused `this`** from a non-virtual member function that never touches it -
+  every argument then shifts down one integer register (on Linux the first
+  real arg moves from `rsi` to `rdi`; spot it as `mov <reg>, rdi` where the
+  old prologue had `mov <reg>, rsi`). Mirror it by declaring that function
+  `static` in Endstone's `src/bedrock/` (`#ifdef`-split if only one platform
+  optimized it). This changes `__FUNCDNAME__`: a static member has no `this`,
+  so the Itanium name loses its cv-qualifier (`_ZNK...` -> `_ZN...`) and the
+  MSVC name loses its `B` const code. Updating only the config `pattern` is
+  not enough - the `name` must change to the static-form mangling, or
+  `get_symbol()` throws.
 - BDS sometimes promotes a **type alias to a concrete type** - e.g. 1.26.20
   turned `using DimensionType = AutomaticID<Dimension, int>;` into a standalone
   `struct DimensionType`. The mangled name of every symbol taking it changes
