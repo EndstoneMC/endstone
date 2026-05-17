@@ -1,0 +1,8 @@
+extensions/*
+migrations/*
+p/*
+*.db
+global.conf
+remotes.json
+settings.yml
+version.txt
