@@ -137,6 +137,11 @@ void BinaryStream::writeByte(std::uint8_t value, char const *doc_field_name, cha
     write(&value, sizeof(value));
 }
 
+void BinaryStream::writeSignedByte(std::int8_t value, char const *doc_field_name, char const *doc_field_notes)
+{
+    write(&value, sizeof(value));
+}
+
 void BinaryStream::writeUnsignedShort(std::uint16_t value, char const *doc_field_name, char const *doc_field_notes)
 {
     write(&value, sizeof(value));
