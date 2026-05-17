@@ -78,16 +78,24 @@ still succeeds).
      identify ABI changes. Update Windows symbols later if/when a PDB becomes
      available.
 4. **Triage the failures.** The two platforms fail differently:
-   - **Windows (PDB, by name):** a miss = the mangled name is gone from the PDB
-     = the signature changed (MSVC mangling encodes the full signature incl.
-     return type). A Windows hit is name-verified.
+   - **Windows (PDB by name, then byte pattern):** each entry is looked up by
+     mangled `name` in the PDB; entries the PDB has no public record for
+     (lambdas, function-local statics) fall back to scanning the entry's
+     `pattern` in the server binary. A miss thus means *both* failed - the
+     mangled name is gone (MSVC encodes the full signature incl. return type,
+     const-ness and access) *and* the byte pattern no longer matches. A PDB hit
+     is name-verified; a fallback hit ("Found signature (fallback)") is only
+     pattern-verified, like a Linux hit.
    - **Linux (byte-pattern scan):** a miss = the `pattern` in `configs/linux.toml`
      no longer matches. The function usually still exists - the pattern went
      stale. A Linux hit is a pattern match *labelled* with the config name; it
      is not name-verified.
    - Failed on **both** -> real signature/API change.
-   - **Windows only** -> mangled name changed; if only the return type changed,
-     the Linux Itanium name is unaffected (Itanium omits return types).
+   - **Windows only** -> the mangled name changed: signature, return type,
+     const-ness or access specifier. Itanium omits the return type, so a pure
+     return-type change leaves the Linux name intact. A const/access change is
+     fixed in Endstone's `src/bedrock/` *declaration* (`__FUNCDNAME__` derives
+     from it), not the config alone.
    - **Linux only** -> stale byte pattern; re-extract it (IDA / Ghidra).
 
 The failure list is the input to Phase 2.
@@ -120,23 +128,30 @@ Match by normalized basename (lowercase, strip `_` and `-`): bedrock-headers
 ## Staged review order
 
 Review the diff in stages - foundational types first, so later stages do not
-rework. Scope: `handheld/` only; **skip `handheld/src-client/`** (game client).
-Within each stage, deep-dive only the intersection. (The first attempt used 3
-coarse stages; "handheld/src non-world" alone was 467 files / 44 intersecting -
-too big. Use this finer split:)
+rework. Scope: the `handheld/` tree **and** the top-level `src/base/` tree;
+**skip `handheld/src-client/`** (game client) and the other top-level `src/`
+subtrees (`account`, `external`, `gui` - client / Xbox / third-party, nothing
+Endstone mirrors). Within each stage, deep-dive only the intersection. (The
+first attempt used 3 coarse stages; "handheld/src non-world" alone was 467
+files / 44 intersecting - too big. Use this finer split:)
 
-1. `src-deps/SharedTypes` - shared types and enums
-2. `src/common/network` - packets, network types, packet-id / disconnect enums
-3. `src/common/server` (incl. `server/commands`) - server and command system
-4. `src/common/entity` - ECS components
-5. `src/common/{certificates,resources,scripting,platform,locale,gameplayhandlers,...}` - remaining non-world
-6. `src/common/world/actor`
-7. `src/common/world/item`
-8. `src/common/world/level/block`
-9. `src/common/world/level/{dimension,biome}` and remaining `src/common/world/level/*` (chunk, material, storage, level core)
-10. `src/common/world/*` - remaining world (`attribute`, `effect`, `events`, `inventory`, `response`, ...)
-11. `src-deps` other than SharedTypes (Certificates, VanillaComponents, ...), then anything else
-12. **Cross-validate** - once every ABI change is in, re-review the whole
+1. `src/base` (top-level, *not* under `handheld/`) - the shared `Core` library:
+   foundational utilities and low-level types (`BinaryStream`, ...). Easy to
+   miss because every staged path below lives under `handheld/` while this tree
+   is separate; a missed change here (e.g. a new `BinaryStream` virtual)
+   silently shifts a vtable that Phase 1 can never flag.
+2. `src-deps/SharedTypes` - shared types and enums
+3. `src/common/network` - packets, network types, packet-id / disconnect enums
+4. `src/common/server` (incl. `server/commands`) - server and command system
+5. `src/common/entity` - ECS components
+6. `src/common/{certificates,resources,scripting,platform,locale,gameplayhandlers,...}` - remaining non-world
+7. `src/common/world/actor`
+8. `src/common/world/item`
+9. `src/common/world/level/block`
+10. `src/common/world/level/{dimension,biome}` and remaining `src/common/world/level/*` (chunk, material, storage, level core)
+11. `src/common/world/*` - remaining world (`attribute`, `effect`, `events`, `inventory`, `response`, ...)
+12. `src-deps` other than SharedTypes (Certificates, VanillaComponents, ...), then anything else
+13. **Cross-validate** - once every ABI change is in, re-review the whole
     `src/bedrock/` diff against the bedrock-headers diff. Every edited function
     signature, vtable slot, member type/order, and structural change must trace
     to a concrete change in `git diff android/r<prev> android/r<new>`. Reject
@@ -168,6 +183,14 @@ noise first), update Endstone's `src/bedrock/` declaration:
   Linux/Android build, where `unsigned long` is 64-bit; on Windows (LLP64) it
   is 32-bit. Whenever the diff shows `unsigned long`, port it as
   `std::uint64_t` so the type is 64-bit on both of Endstone's target platforms.
+- **Template arguments** - a class template's *default* arguments are part of
+  its declaration: copy them from bedrock-headers verbatim, never guess (e.g.
+  `brstd::bitset`'s word-type parameter defaults to `unsigned int`). And never
+  drop an *explicit* template argument to lean on a default - a given
+  instantiation often overrides the default, so check the actual instantiation
+  in the diff and spell every argument it spells. If the explicit argument is a
+  width-ambiguous integer, still apply the rule above (`brstd::bitset<N,
+  unsigned long>` -> `brstd::bitset<N, std::uint64_t>`).
 - **One type per corresponding file** - when a change needs a BDS type Endstone
   does not yet declare, add it in its *own* `src/bedrock/` header mirroring the
   BDS file that defines it (snake_case path), then `#include` it - do not paste
@@ -243,9 +266,21 @@ Endstone deliberately models only a subset. Rule these out before editing:
   with ASCII patterns; capture via the script's subprocess (UTF-8) or run
   `iconv -f UTF-16 -t UTF-8` first.
 - Windows symbol offsets are RVAs: `RVA = section RVA + symbol offset`.
-- Some symbols are never public (function-local statics like `getI18n::result`,
-  some data) and never appear in `pdbtool ... psi` - keep them on the
-  byte-signature path.
+- Some symbols are never public - function-local statics, lambdas, some data -
+  and never appear in `pdbtool ... psi`. The `--pdb` path handles this: any
+  entry it cannot resolve by name falls back to scanning that entry's `pattern`
+  in the server binary (`bedrock_server.exe`, read from beside the PDB or
+  downloaded). Such an entry just needs a valid byte `pattern` like a Linux one;
+  its `name` can be an arbitrary unique key.
+- When a function has no usable symbol at all - an overload dropped from the
+  PDB publics, or a lambda - resolve a *callee* instead: reimplement the
+  function in `src/bedrock/` from the decompilation and `BEDROCK_CALL` a
+  function it calls that does have a stable symbol. Verify the reimplementation
+  against the decomp; never guess the body.
+- A function inlined on one platform but out-of-line on the other has a real
+  symbol on only one side. Split resolution with `#ifdef` - e.g. call the
+  out-of-line function on one platform and read its function-local static on
+  the other.
 - To recover a **renamed** Windows symbol (re-signed, not removed), dump every
   public once with `pdbtool --quiet dump <pdb> psi` and grep for the scope
   (`?<method>@<Class>@@`); the surviving line is the new mangled name. Verify it
