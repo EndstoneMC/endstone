@@ -20,7 +20,9 @@ add_library(detours STATIC
 )
 
 target_include_directories(detours PUBLIC "${detours_SOURCE_DIR}/src")
-target_compile_options(detours PRIVATE /W4 /WX /Zi /MT /Gy /Gm- /Zl /Od)
+# Detours is third-party (MSVC-targeted) code; clang-cl does not compile it
+# warning-clean, so /WX is dropped here. /Gm- is an MSVC-only flag clang-cl rejects.
+target_compile_options(detours PRIVATE /W4 /Zi /MT /Gy /Zl /Od)
 
 include(GNUInstallDirs)
 install(TARGETS detours)

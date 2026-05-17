@@ -104,6 +104,9 @@ repair-wheel-command = [
     'python scripts/repair_wheel.py -o endstone -p endstone -w {dest_dir} {wheel}',
 ]
 
+[tool.cibuildwheel.windows]
+environment = { CC = "clang-cl", CXX = "clang-cl" }
+
 [tool.cibuildwheel.linux]
 manylinux-x86_64-image = "ghcr.io/endstonemc/manylinux_2_31_x86_64"
 environment = { LLVM_VERSION = 20, CC = "/usr/bin/clang", CXX = "/usr/bin/clang++" }
