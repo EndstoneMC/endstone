@@ -79,8 +79,9 @@ ENV PYTHONUNBUFFERED=1 \
 
 # Install runtime dependencies and create the unprivileged service user. The
 # entrypoint remaps this user to PUID/PGID at startup, then drops to it via gosu.
+# libcurl4 provides libcurl.so.4, which the Bedrock server binary links against.
 RUN apt-get update -y -qq \
-    && apt-get install -y -qq --no-install-recommends gosu tzdata \
+    && apt-get install -y -qq --no-install-recommends gosu tzdata libcurl4 \
     && apt-get clean -y -qq \
     && rm -rf /var/lib/apt/lists/* \
     && groupadd --gid 1000 endstone \
