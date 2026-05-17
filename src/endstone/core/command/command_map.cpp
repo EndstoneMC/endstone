@@ -300,17 +300,11 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
         }
 
         bool success = true;
-        // BDS 1.26.20: CommandParameterData now takes a CommandRegistry::ParamParseRule* instead of a raw
-        // ParseFunction. The rule pairs the parse function with the grammar terminal symbol; basic free-form
-        // text parameters use RawText.
-        static const CommandRegistry::ParamParseRule parse_rule{&CommandRegistry::parse<MinecraftCommandAdapter>,
-                                                                CommandRegistry::HardNonTerminal::RawText};
-
         std::vector<CommandParameterData> param_data;
         for (const auto &parameter : parameters) {
-            auto data = CommandParameterData({0}, &parse_rule, parameter.name.c_str(),
-                                             CommandParameterDataType::Basic, nullptr, nullptr, 0, parameter.optional,
-                                             -1);
+            auto data = CommandParameterData({0}, &CommandRegistry::ParseRuleFor<MinecraftCommandAdapter>::instance,
+                                             parameter.name.c_str(), CommandParameterDataType::Basic, nullptr, nullptr,
+                                             0, parameter.optional, -1);
 
             if (parameter.is_enum) {
                 const auto &enum_name = parameter.type;

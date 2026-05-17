@@ -288,6 +288,10 @@ public:
         ParseFunction parse;
         Symbol symbol;
     };
+    template<typename T>
+    struct ParseRuleFor {
+        static const ParamParseRule instance;
+    }; 
     struct Enum {
         std::string name;
         Bedrock::typeid_t<CommandRegistry> type;
