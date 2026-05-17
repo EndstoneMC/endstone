@@ -14,7 +14,7 @@ services:
     tty: true
 
     # Give the Bedrock server time to save the world before it is killed.
-    stop_grace_period: 60s
+    stop_grace_period: 15s
 
     ports:
       - "19132:19132/udp"  # IPv4 game port
