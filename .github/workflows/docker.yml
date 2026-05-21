@@ -80,7 +80,7 @@ jobs:
 
       - name: Build and Push
         if: steps.guard.outputs.skip != 'true'
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           platforms: linux/amd64
