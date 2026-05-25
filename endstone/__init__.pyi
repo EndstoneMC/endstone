@@ -14,6 +14,7 @@ from . import (
     boss,
     command,
     damage,
+    debug,
     effect,
     enchantments,
     event,
@@ -36,6 +37,7 @@ from .ban import IpBanList, PlayerBanList
 from .block import BlockData
 from .boss import BarColor, BarFlag, BarStyle, BossBar
 from .command import CommandSender, ConsoleCommandSender
+from .debug import DebugArrow, DebugBox, DebugCircle, DebugLine, DebugSphere, DebugText
 from .form import ActionForm, MessageForm, ModalForm
 from .inventory import Inventory, ItemFactory, PlayerInventory
 from .lang import Language, Translatable
@@ -64,6 +66,7 @@ __all__ = [
     "boss",
     "command",
     "damage",
+    "debug",
     "effect",
     "enchantments",
     "event",
@@ -622,6 +625,23 @@ class Player(Mob):
     def send_packet(self, packet_id: int, payload: bytes) -> None:
         """
         Sends a packet to the player.
+        """
+        ...
+    def add_debug_shape(
+        self, location: Location, shape: DebugBox | DebugSphere | DebugCircle | DebugLine | DebugArrow | DebugText
+    ) -> int:
+        """
+        Adds a debug shape visible only to this player.
+        """
+        ...
+    def remove_debug_shape(self, id: int) -> None:
+        """
+        Removes a specific debug shape from this player by its id.
+        """
+        ...
+    def remove_debug_shapes(self) -> None:
+        """
+        Removes all debug shapes visible to this player.
         """
         ...
 

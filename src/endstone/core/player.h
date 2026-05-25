@@ -14,7 +14,9 @@
 
 #pragma once
 
+#include <limits>
 #include <memory>
+#include <unordered_set>
 
 #include <nlohmann/json.hpp>
 
@@ -119,6 +121,9 @@ public:
     void closeForm() override;
     void sendPacket(int packet_id, std::string_view payload) const override;
     void sendMap(MapView &map) override;
+    std::uint64_t addDebugShape(Location location, DebugShapeVariant shape) override;
+    void removeDebugShape(std::uint64_t id) override;
+    void removeDebugShapes() override;
 
     bool handlePacket(Packet &packet);
     void onFormClose(std::uint32_t form_id, PlayerFormCloseReason reason);
@@ -142,6 +147,8 @@ private:
     std::string game_version_;
     std::uint32_t form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<std::uint32_t, FormVariant> forms_;
+    std::uint64_t debug_shape_ids_ = std::numeric_limits<std::uint64_t>::max();  // Decrement to avoid collision with script api
+    std::unordered_set<std::uint64_t> debug_shapes_;
     bool spawned_ = false;
     bool last_op_status_ = false;
 };

@@ -21,6 +21,7 @@
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
+#include "bedrock/network/packet/debug_drawer_packet.h"
 #include "bedrock/network/packet/emote_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
@@ -44,6 +45,7 @@
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/inventory/player_inventory.h"
+#include "endstone/core/level/dimension.h"
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
 #include "endstone/core/network/data_packet.h"
@@ -641,6 +643,120 @@ void EndstonePlayer::sendMap(MapView &map)
     }
     pk.map_pixels_.resize(pk.width_ * pk.height_);
     getHandle().sendNetworkPacket(*packet);
+}
+
+std::uint64_t EndstonePlayer::addDebugShape(Location location, DebugShapeVariant shape)
+{
+    using ShapeType = ScriptModuleDebugUtilities::ScriptDebugShapeType;
+
+    auto id = debug_shape_ids_--;
+    auto &dimension = static_cast<EndstoneDimension &>(location.getDimension());
+
+    ShapeDataPayload data;
+    data.network_id = id;
+    data.location = Vec3{location.getX(), location.getY(), location.getZ()};
+    data.dimension_id = dimension.getHandle().getDimensionId();
+
+    std::visit(
+        [&data, &location](auto &&s) {
+            using T = std::decay_t<decltype(s)>;
+            auto c = s.getColor();
+            data.color =
+                mce::Color(static_cast<float>(c.getRed()) / 255.0F, static_cast<float>(c.getGreen()) / 255.0F,
+                           static_cast<float>(c.getBlue()) / 255.0F, static_cast<float>(c.getAlpha()) / 255.0F);
+            data.scale = s.getScale();
+            auto r = s.getRotation();
+            data.rotation = Vec3{r.getX(), r.getY(), r.getZ()};
+
+            if constexpr (std::is_same_v<T, DebugBox>) {
+                data.shape_type = ShapeType::Box;
+                auto b = s.getBound();
+                data.extra_data_payload = BoxDataPayload{Vec3{b.getX(), b.getY(), b.getZ()}};
+            }
+            else if constexpr (std::is_same_v<T, DebugSphere>) {
+                data.shape_type = ShapeType::Sphere;
+            }
+            else if constexpr (std::is_same_v<T, DebugCircle>) {
+                data.shape_type = ShapeType::Circle;
+            }
+            else if constexpr (std::is_same_v<T, DebugLine>) {
+                data.shape_type = ShapeType::Line;
+                // Compute direction from rotation (pitch=x, yaw=y), same as Location::getDirection
+                auto rot_x = r.getY() * std::numbers::pi_v<float> / 180.0F;
+                auto rot_y = r.getX() * std::numbers::pi_v<float> / 180.0F;
+                auto xz = std::cos(rot_y);
+                auto dx = -xz * std::sin(rot_x);
+                auto dy = -std::sin(rot_y);
+                auto dz = xz * std::cos(rot_x);
+                auto end = Vec3{location.getX() + dx * s.getLength(),
+                                location.getY() + dy * s.getLength(),
+                                location.getZ() + dz * s.getLength()};
+                data.extra_data_payload = LineDataPayload{end};
+            }
+            else if constexpr (std::is_same_v<T, DebugArrow>) {
+                data.shape_type = ShapeType::Arrow;
+                auto rot_x = r.getY() * std::numbers::pi_v<float> / 180.0F;
+                auto rot_y = r.getX() * std::numbers::pi_v<float> / 180.0F;
+                auto xz = std::cos(rot_y);
+                auto dx = -xz * std::sin(rot_x);
+                auto dy = -std::sin(rot_y);
+                auto dz = xz * std::cos(rot_x);
+                auto end = Vec3{location.getX() + dx * s.getLength(),
+                                location.getY() + dy * s.getLength(),
+                                location.getZ() + dz * s.getLength()};
+                ArrowDataPayload arrow;
+                arrow.end_location = end;
+                arrow.arrow_head_length = s.getHeadLength();
+                arrow.arrow_head_radius = s.getHeadRadius();
+                arrow.num_segments = static_cast<unsigned char>(s.getHeadSegments());
+                data.extra_data_payload = arrow;
+            }
+            else if constexpr (std::is_same_v<T, DebugText>) {
+                data.shape_type = ShapeType::Text;
+                data.extra_data_payload = TextDataPayload{s.getText()};
+            }
+        },
+        shape);
+
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ServerScriptDebugDrawerPacket);
+    auto &pk = static_cast<DebugDrawerPacket &>(*packet);
+    pk.payload.shapes.emplace_back(std::move(data));
+    getHandle().sendNetworkPacket(*packet);
+    debug_shapes_.insert(id);
+    return id;
+}
+
+void EndstonePlayer::removeDebugShape(std::uint64_t id)
+{
+    if (debug_shapes_.erase(id) == 0) {
+        return;
+    }
+
+    ShapeDataPayload shape_data;
+    shape_data.network_id = id;
+    shape_data.time_left_total_sec = 0;
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ServerScriptDebugDrawerPacket);
+    auto &pk = static_cast<DebugDrawerPacket &>(*packet);
+    pk.payload.shapes.emplace_back(std::move(shape_data));
+    getHandle().sendNetworkPacket(*packet);
+}
+
+void EndstonePlayer::removeDebugShapes()
+{
+    if (debug_shapes_.empty()) {
+        return;
+    }
+
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ServerScriptDebugDrawerPacket);
+    auto &pk = static_cast<DebugDrawerPacket &>(*packet);
+    for (auto id : debug_shapes_) {
+        ShapeDataPayload shape_data;
+        shape_data.network_id = id;
+        shape_data.time_left_total_sec = 0;
+        pk.payload.shapes.emplace_back(std::move(shape_data));
+    }
+    getHandle().sendNetworkPacket(*packet);
+    debug_shapes_.clear();
 }
 
 bool EndstonePlayer::handlePacket(Packet &packet)
