@@ -1,4 +1,4 @@
-timestamp = 1779059952
+timestamp = 1779732660
 version = "1.26.20"
 
 [symbols]
@@ -79,7 +79,7 @@ version = "1.26.20"
 # Player
 "_ZN6Player10teleportToERK4Vec3biib" = 172239440
 "_ZN6Player14stopSleepInBedEbb" = 172250112
-"_ZN6Player15startSleepInBedERK8BlockPos" = 172167296
+"_ZN6Player15startSleepInBedERK8BlockPos" = 172245680
 "_ZN6Player17completeUsingItemEv" = 172268256
 "_ZN6Player4dropERK9ItemStackb" = 172379104
 "_ZN6Player4takeER5Actorii" = 172326928

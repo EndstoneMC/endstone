@@ -354,7 +354,7 @@ rip_offset = 7
 name = "_ZN6Player15startSleepInBedERK8BlockPos"
 relative = false
 extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 48 89 FB 41 BD"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 48 89 FB 41 BD ? ? ? ? 48 8D 35"
 
 [[signatures]]
 # find stopUsingItem and then xref
