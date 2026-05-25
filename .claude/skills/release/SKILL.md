@@ -45,16 +45,30 @@ from `main`. Compute the next version:
 - Default = previous tag's patch + 1 (e.g. `v0.11.3` -> `0.11.4`).
 - For a minor/major bump (`0.12.0`, `1.0.0`), the user must have said so.
 
-Verify `include/endstone/detail.h` macros match the target:
+Verify all version-touching files match. The `bump-bds` flow updates
+`include/endstone/detail.h` but typically misses other surfaces - check
+each one and edit it inline if it's stale.
 
 ```shell
-grep -E 'ENDSTONE_VERSION_(MAJOR|MINOR|PATCH)' include/endstone/detail.h
+grep -E 'ENDSTONE_VERSION_(MAJOR|MINOR|PATCH)|MINECRAFT_VERSION_(MAJOR|MINOR|PATCH)|NETWORK_PROTOCOL_VERSION' include/endstone/detail.h
+grep -E 'minecraft-v[0-9]+\.[0-9]+_\(Bedrock\)' README.md
 ```
 
-`ENDSTONE_VERSION_PATCH` must equal the patch you are about to release. If
-it does not, **STOP** - either the `bump-bds` flow that should have set it
-hasn't run, or the user wants a different version than expected. Confirm
-before editing the header yourself.
+Checklist:
+
+1. **`include/endstone/detail.h`** must have:
+   - `ENDSTONE_VERSION_PATCH` = the patch number being released
+   - `MINECRAFT_VERSION_MAJOR/MINOR/PATCH` = the supported BDS version
+   - `NETWORK_PROTOCOL_VERSION` = the BDS network protocol version
+   If any are stale, edit the macros directly.
+2. **`README.md` Minecraft badge**
+   (`https://img.shields.io/badge/minecraft-vNN.NN_(Bedrock)-black`) must
+   match `MINECRAFT_VERSION_MINOR.MINECRAFT_VERSION_PATCH` from
+   `detail.h`. Update with `Edit` if stale - the badge URL is the only
+   spot users see the supported BDS version on the project landing page.
+
+If any update is needed and the user hasn't already confirmed the target
+version, **STOP** to confirm before editing.
 
 ---
 
