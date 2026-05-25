@@ -61,14 +61,20 @@ jobs:
           CIBW_BUILD: ${{ matrix.python-tag }}-${{ matrix.platform }}
           CIBW_BUILD_VERBOSITY: 1
           CIBW_ENVIRONMENT_PASS_LINUX: "SENTRY_AUTH_TOKEN"
+          # cibuildwheel copies the project into the Linux container
+          # rather than bind-mounting it, so conan writes to
+          # /project/.conan2 (per .conanrc) are isolated from the host
+          # and lost on container cleanup. Bind-mount the workspace's
+          # .conan2 over the container's /project/.conan2 so packages
+          # persist to the host for actions/cache to save.
+          CIBW_CONTAINER_ENGINE: "docker; create_args: --volume ${{ github.workspace }}/.conan2:/project/.conan2"
 
-      - name: Restore ownership of project-local Conan home (Linux)
-        if: runner.os == 'Linux'
-        # cibuildwheel runs conan inside the manylinux container as root,
-        # and .conanrc points conan_home to ./.conan2 in the workspace.
-        # Hand the workspace files back to the runner user so actions/cache
-        # and subsequent steps can read them.
-        run: sudo chown -R $USER:$USER .conan2
+      - name: Reclaim ownership of project-local Conan home (Linux)
+        if: always() && runner.os == 'Linux'
+        # The volume-mounted .conan2 is written by root inside the
+        # container; hand it back to the runner user so actions/cache
+        # can save it.
+        run: sudo chown -R "$(id -u):$(id -g)" .conan2
 
       - uses: actions/upload-artifact@v6
         with:
