@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1BlockType" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::BlockType</compoundname>
+    <basecompoundref refid="classendstone_1_1Registry_1_1Type" prot="public" virt="non-virtual">endstone::Registry&lt; T &gt;::Type</basecompoundref>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1BlockType_1aeae830d84b5168ebccfe9775be5e8bfc" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::BlockType::Air</definition>
+        <argsstring></argsstring>
+        <name>Air</name>
+        <qualifiedname>endstone::BlockType::Air</qualifiedname>
+        <initializer>= BlockTypeId::minecraft(&quot;air&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_type.h" line="32" column="27" bodyfile="include/endstone/block/block_type.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1BlockType_1a853a735ab1fa78eeffbebb300e3c749f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::BlockType::hasItemType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>hasItemType</name>
+        <qualifiedname>endstone::BlockType::hasItemType</qualifiedname>
+        <briefdescription>
+<para>Returns true if this <ref refid="classendstone_1_1BlockType" kindref="compound">BlockType</ref> has a corresponding <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if there is a corresponding <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref>, otherwise false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_type.h" line="41" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockType_1aa415d093dbd60f47b0cb358d70c2ddb7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; BlockData &gt; endstone::BlockType::createBlockData</definition>
+        <argsstring>() const =0</argsstring>
+        <name>createBlockData</name>
+        <qualifiedname>endstone::BlockType::createBlockData</qualifiedname>
+        <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> instance for this block type, with all properties initialized to unspecified defaults. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>new data instance </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_type.h" line="49" column="30"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::BlockType</label>
+        <link refid="classendstone_1_1BlockType"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Registry&lt; T &gt;::Type</label>
+        <link refid="classendstone_1_1Registry_1_1Type"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::BlockType</label>
+        <link refid="classendstone_1_1BlockType"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Registry&lt; T &gt;::Type</label>
+        <link refid="classendstone_1_1Registry_1_1Type"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/block/block_type.h" line="30" column="1" bodyfile="include/endstone/block/block_type.h" bodystart="30" bodyend="50"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1BlockType_1aeae830d84b5168ebccfe9775be5e8bfc" prot="public" virt="non-virtual"><scope>endstone::BlockType</scope><name>Air</name></member>
+      <member refid="classendstone_1_1BlockType_1aa415d093dbd60f47b0cb358d70c2ddb7" prot="public" virt="pure-virtual"><scope>endstone::BlockType</scope><name>createBlockData</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1adb225834ec0af1fdd72f998cbee22946" prot="public" virt="non-virtual"><scope>endstone::BlockType</scope><name>get</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1ac7979c573cb4a71caf8f0d766048e95a" prot="public" virt="pure-virtual"><scope>endstone::BlockType</scope><name>getId</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a3d82ceca29e75e71a8ad56c5d0f12aa7" prot="public" virt="pure-virtual"><scope>endstone::BlockType</scope><name>getTranslationKey</name></member>
+      <member refid="classendstone_1_1BlockType_1a853a735ab1fa78eeffbebb300e3c749f" prot="public" virt="pure-virtual"><scope>endstone::BlockType</scope><name>hasItemType</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a7d2793f0ec3a8f4e7ab9b8afbd777e82" prot="public" virt="non-virtual"><scope>endstone::BlockType</scope><name>Id</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1ab333d4c3e969abfb5dd01c4ce34d7154" prot="public" virt="non-virtual"><scope>endstone::BlockType</scope><name>operator Id</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a9e32d0cd444cf6e98cece1f89fd16fb4" prot="public" virt="non-virtual"><scope>endstone::BlockType</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1aece109daae5dede57edc8c23ef174aff" prot="public" virt="non-virtual"><scope>endstone::BlockType</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1ae1f1c16d4904b521e7f727ae1e9715e7" prot="public" virt="non-virtual"><scope>endstone::BlockType</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a0e07b4427e10e44725cefa814de62a11" prot="public" virt="non-virtual"><scope>endstone::BlockType</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a2262020b59996fe1363c1e1058711944" prot="public" virt="virtual"><scope>endstone::BlockType</scope><name>~Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

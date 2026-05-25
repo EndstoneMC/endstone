@@ -1,0 +1,787 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PotionType" kind="class" language="C++" prot="public">
+    <compoundname>endstone::PotionType</compoundname>
+    <includes refid="potion__type_8h" local="no">endstone/potion/potion_type.h</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a94815c4a6de78565094e9a9fc2917ac2" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> std::string_view</type>
+        <definition>constexpr std::string_view endstone::PotionType::Minecraft</definition>
+        <argsstring></argsstring>
+        <name>Minecraft</name>
+        <qualifiedname>endstone::PotionType::Minecraft</qualifiedname>
+        <initializer>= &quot;minecraft:potion_type&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="25" column="39" bodyfile="include/endstone/potion/potion_type.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a82f5fefbd3fbca555cc3de232735f27e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Water</definition>
+        <argsstring></argsstring>
+        <name>Water</name>
+        <qualifiedname>endstone::PotionType::Water</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;water&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="28" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a2e42a17c9960477de466c12c74ea4d69" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Mundane</definition>
+        <argsstring></argsstring>
+        <name>Mundane</name>
+        <qualifiedname>endstone::PotionType::Mundane</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;mundane&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="29" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ae36b681f6c4552b3ee2f7bea5cfe0795" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongMundane</definition>
+        <argsstring></argsstring>
+        <name>LongMundane</name>
+        <qualifiedname>endstone::PotionType::LongMundane</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_mundane&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="30" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a801f61e5678ed0836abbc44f6edc8056" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Thick</definition>
+        <argsstring></argsstring>
+        <name>Thick</name>
+        <qualifiedname>endstone::PotionType::Thick</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;thick&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="31" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a934a4efc0c60904aa69e6dd875f1cd7e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Awkward</definition>
+        <argsstring></argsstring>
+        <name>Awkward</name>
+        <qualifiedname>endstone::PotionType::Awkward</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;awkward&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="32" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ace8f4629639d2b1c523320205494c27e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Nightvision</definition>
+        <argsstring></argsstring>
+        <name>Nightvision</name>
+        <qualifiedname>endstone::PotionType::Nightvision</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;nightvision&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="33" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a53ff99d5732b77f5b181404047616cbd" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongNightvision</definition>
+        <argsstring></argsstring>
+        <name>LongNightvision</name>
+        <qualifiedname>endstone::PotionType::LongNightvision</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_nightvision&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="34" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1acc44b7274cb6f20e2bbe02599b6d7e87" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Invisibility</definition>
+        <argsstring></argsstring>
+        <name>Invisibility</name>
+        <qualifiedname>endstone::PotionType::Invisibility</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;invisibility&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="35" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a09a7a37a6ade2e8952a4678232134fa1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongInvisibility</definition>
+        <argsstring></argsstring>
+        <name>LongInvisibility</name>
+        <qualifiedname>endstone::PotionType::LongInvisibility</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_invisibility&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="36" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1aba6f1f93f0ac476af383b587a6c74ed8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Leaping</definition>
+        <argsstring></argsstring>
+        <name>Leaping</name>
+        <qualifiedname>endstone::PotionType::Leaping</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;leaping&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="37" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a36f3881be53c96e429de099807afd0c2" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongLeaping</definition>
+        <argsstring></argsstring>
+        <name>LongLeaping</name>
+        <qualifiedname>endstone::PotionType::LongLeaping</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_leaping&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="38" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a6dc284fe1840039c8ef8a2cc712188d4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::StrongLeaping</definition>
+        <argsstring></argsstring>
+        <name>StrongLeaping</name>
+        <qualifiedname>endstone::PotionType::StrongLeaping</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;strong_leaping&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="39" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1aec1eb44f513e34f339af932d64ffee8a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::FireResistance</definition>
+        <argsstring></argsstring>
+        <name>FireResistance</name>
+        <qualifiedname>endstone::PotionType::FireResistance</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;fire_resistance&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="40" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1aa438cb3ca3ee81ddb3b7858ee4877036" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongFireResistance</definition>
+        <argsstring></argsstring>
+        <name>LongFireResistance</name>
+        <qualifiedname>endstone::PotionType::LongFireResistance</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_fire_resistance&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="41" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a91dbe1465d0d788db72f2304d8b21892" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Swiftness</definition>
+        <argsstring></argsstring>
+        <name>Swiftness</name>
+        <qualifiedname>endstone::PotionType::Swiftness</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;swiftness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="42" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a5fc403b2603683ac91076569d7a23115" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongSwiftness</definition>
+        <argsstring></argsstring>
+        <name>LongSwiftness</name>
+        <qualifiedname>endstone::PotionType::LongSwiftness</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_swiftness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="43" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a1581a974eed694438fa1d00489d9050d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::StrongSwiftness</definition>
+        <argsstring></argsstring>
+        <name>StrongSwiftness</name>
+        <qualifiedname>endstone::PotionType::StrongSwiftness</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;strong_swiftness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="44" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a1551a2caf362a91a1dfd81f9fa2e3726" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Slowness</definition>
+        <argsstring></argsstring>
+        <name>Slowness</name>
+        <qualifiedname>endstone::PotionType::Slowness</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;slowness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="45" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a71e4c65417a374a809d5fe3306eca358" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongSlowness</definition>
+        <argsstring></argsstring>
+        <name>LongSlowness</name>
+        <qualifiedname>endstone::PotionType::LongSlowness</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_slowness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="46" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1acc5c6ad888dcb9dac1c40e546e242c34" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::StrongSlowness</definition>
+        <argsstring></argsstring>
+        <name>StrongSlowness</name>
+        <qualifiedname>endstone::PotionType::StrongSlowness</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;strong_slowness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="47" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ace66f2f54600a9d3b59c9895d6cbe21f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::WaterBreathing</definition>
+        <argsstring></argsstring>
+        <name>WaterBreathing</name>
+        <qualifiedname>endstone::PotionType::WaterBreathing</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;water_breathing&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="48" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a1c6d84c930df4d76627fd81a7ed127cc" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongWaterBreathing</definition>
+        <argsstring></argsstring>
+        <name>LongWaterBreathing</name>
+        <qualifiedname>endstone::PotionType::LongWaterBreathing</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_water_breathing&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="49" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a66fffb2ec05a62c6efeb828517bfe575" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Healing</definition>
+        <argsstring></argsstring>
+        <name>Healing</name>
+        <qualifiedname>endstone::PotionType::Healing</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;healing&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="50" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a7a6cd07d904eb6a7a0d1bae3bdfe0c45" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::StrongHealing</definition>
+        <argsstring></argsstring>
+        <name>StrongHealing</name>
+        <qualifiedname>endstone::PotionType::StrongHealing</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;strong_healing&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="51" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a707bbab37945163a2ac4c6f34bed9372" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Harming</definition>
+        <argsstring></argsstring>
+        <name>Harming</name>
+        <qualifiedname>endstone::PotionType::Harming</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;harming&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="52" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a98c8cb9774dbf5ce65f7874d81a80185" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::StrongHarming</definition>
+        <argsstring></argsstring>
+        <name>StrongHarming</name>
+        <qualifiedname>endstone::PotionType::StrongHarming</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;strong_harming&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="53" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ae06515a190dbd97e6064a974578be9e2" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Poison</definition>
+        <argsstring></argsstring>
+        <name>Poison</name>
+        <qualifiedname>endstone::PotionType::Poison</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;poison&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="54" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a19968831e3b8455f366ade3b3ca11279" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongPoison</definition>
+        <argsstring></argsstring>
+        <name>LongPoison</name>
+        <qualifiedname>endstone::PotionType::LongPoison</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_poison&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="55" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ac5b96d18de11e99756ac9168b882eb94" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::StrongPoison</definition>
+        <argsstring></argsstring>
+        <name>StrongPoison</name>
+        <qualifiedname>endstone::PotionType::StrongPoison</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;strong_poison&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="56" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a3cbd106a8e61957786636c5005089697" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Regeneration</definition>
+        <argsstring></argsstring>
+        <name>Regeneration</name>
+        <qualifiedname>endstone::PotionType::Regeneration</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;regeneration&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="57" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a45d48d3ccb90eef2e260dadd78dc8c45" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongRegeneration</definition>
+        <argsstring></argsstring>
+        <name>LongRegeneration</name>
+        <qualifiedname>endstone::PotionType::LongRegeneration</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_regeneration&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="58" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a295b5f41c2b87b3568ba66feda45042e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::StrongRegeneration</definition>
+        <argsstring></argsstring>
+        <name>StrongRegeneration</name>
+        <qualifiedname>endstone::PotionType::StrongRegeneration</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;strong_regeneration&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="59" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a7d494218a9889e2f3c6bd53385d4dd2d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Strength</definition>
+        <argsstring></argsstring>
+        <name>Strength</name>
+        <qualifiedname>endstone::PotionType::Strength</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;strength&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="60" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ad7bb3897ee2a96c3465827a8701c10ba" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongStrength</definition>
+        <argsstring></argsstring>
+        <name>LongStrength</name>
+        <qualifiedname>endstone::PotionType::LongStrength</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_strength&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="61" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a9a5d59579dec55740e51f926d21218df" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::StrongStrength</definition>
+        <argsstring></argsstring>
+        <name>StrongStrength</name>
+        <qualifiedname>endstone::PotionType::StrongStrength</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;strong_strength&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="62" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ae474688a67d93bd0b256d2e6e8be72e1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Weakness</definition>
+        <argsstring></argsstring>
+        <name>Weakness</name>
+        <qualifiedname>endstone::PotionType::Weakness</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;weakness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="63" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a8bcb20c1075d56f4f42dca573cce6b13" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongWeakness</definition>
+        <argsstring></argsstring>
+        <name>LongWeakness</name>
+        <qualifiedname>endstone::PotionType::LongWeakness</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_weakness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="64" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a754e358e88cee9f01ab363a78cf50456" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Wither</definition>
+        <argsstring></argsstring>
+        <name>Wither</name>
+        <qualifiedname>endstone::PotionType::Wither</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;wither&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="65" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a67d039e139115f7984a08aa1f8757cfe" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::TurtleMaster</definition>
+        <argsstring></argsstring>
+        <name>TurtleMaster</name>
+        <qualifiedname>endstone::PotionType::TurtleMaster</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;turtle_master&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="66" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a2ac345546d5a4809c511cbaa95264f2e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongTurtleMaster</definition>
+        <argsstring></argsstring>
+        <name>LongTurtleMaster</name>
+        <qualifiedname>endstone::PotionType::LongTurtleMaster</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_turtle_master&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="67" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ae26fbdaa7c876e4962ab806b55f3aa74" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::StrongTurtleMaster</definition>
+        <argsstring></argsstring>
+        <name>StrongTurtleMaster</name>
+        <qualifiedname>endstone::PotionType::StrongTurtleMaster</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;strong_turtle_master&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="68" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a61c7675bf28f2ab7a07c1475463391fe" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::SlowFalling</definition>
+        <argsstring></argsstring>
+        <name>SlowFalling</name>
+        <qualifiedname>endstone::PotionType::SlowFalling</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;slow_falling&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="69" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a0f874f24c04561c244d61cc4b5eb6995" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::LongSlowFalling</definition>
+        <argsstring></argsstring>
+        <name>LongSlowFalling</name>
+        <qualifiedname>endstone::PotionType::LongSlowFalling</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;long_slow_falling&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="70" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1ac8c7d8143bcb385b60d5731eeaad0bda" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::WindCharged</definition>
+        <argsstring></argsstring>
+        <name>WindCharged</name>
+        <qualifiedname>endstone::PotionType::WindCharged</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;wind_charged&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="71" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1a0595aaf16ef833f606fd5fb1bb0b7a5d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Weaving</definition>
+        <argsstring></argsstring>
+        <name>Weaving</name>
+        <qualifiedname>endstone::PotionType::Weaving</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;weaving&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="72" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1add3039d4d2969b8c684abac9f9c3d9cd" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Oozing</definition>
+        <argsstring></argsstring>
+        <name>Oozing</name>
+        <qualifiedname>endstone::PotionType::Oozing</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;oozing&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="73" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PotionType_1af75f7c3da68f94e50cddb8d1661aac01" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::PotionType::Infested</definition>
+        <argsstring></argsstring>
+        <name>Infested</name>
+        <qualifiedname>endstone::PotionType::Infested</qualifiedname>
+        <initializer>= <ref refid="classendstone_1_1Identifier" kindref="compound">PotionId</ref>(Minecraft, &quot;infested&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/potion_type.h" line="74" column="27" bodyfile="include/endstone/potion/potion_type.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All potion types. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/potion/potion_type.h" line="24" column="1" bodyfile="include/endstone/potion/potion_type.h" bodystart="24" bodyend="75"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PotionType_1a934a4efc0c60904aa69e6dd875f1cd7e" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Awkward</name></member>
+      <member refid="classendstone_1_1PotionType_1aec1eb44f513e34f339af932d64ffee8a" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>FireResistance</name></member>
+      <member refid="classendstone_1_1PotionType_1a707bbab37945163a2ac4c6f34bed9372" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Harming</name></member>
+      <member refid="classendstone_1_1PotionType_1a66fffb2ec05a62c6efeb828517bfe575" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Healing</name></member>
+      <member refid="classendstone_1_1PotionType_1af75f7c3da68f94e50cddb8d1661aac01" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Infested</name></member>
+      <member refid="classendstone_1_1PotionType_1acc44b7274cb6f20e2bbe02599b6d7e87" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Invisibility</name></member>
+      <member refid="classendstone_1_1PotionType_1aba6f1f93f0ac476af383b587a6c74ed8" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Leaping</name></member>
+      <member refid="classendstone_1_1PotionType_1aa438cb3ca3ee81ddb3b7858ee4877036" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongFireResistance</name></member>
+      <member refid="classendstone_1_1PotionType_1a09a7a37a6ade2e8952a4678232134fa1" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongInvisibility</name></member>
+      <member refid="classendstone_1_1PotionType_1a36f3881be53c96e429de099807afd0c2" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongLeaping</name></member>
+      <member refid="classendstone_1_1PotionType_1ae36b681f6c4552b3ee2f7bea5cfe0795" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongMundane</name></member>
+      <member refid="classendstone_1_1PotionType_1a53ff99d5732b77f5b181404047616cbd" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongNightvision</name></member>
+      <member refid="classendstone_1_1PotionType_1a19968831e3b8455f366ade3b3ca11279" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongPoison</name></member>
+      <member refid="classendstone_1_1PotionType_1a45d48d3ccb90eef2e260dadd78dc8c45" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongRegeneration</name></member>
+      <member refid="classendstone_1_1PotionType_1a0f874f24c04561c244d61cc4b5eb6995" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongSlowFalling</name></member>
+      <member refid="classendstone_1_1PotionType_1a71e4c65417a374a809d5fe3306eca358" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongSlowness</name></member>
+      <member refid="classendstone_1_1PotionType_1ad7bb3897ee2a96c3465827a8701c10ba" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongStrength</name></member>
+      <member refid="classendstone_1_1PotionType_1a5fc403b2603683ac91076569d7a23115" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongSwiftness</name></member>
+      <member refid="classendstone_1_1PotionType_1a2ac345546d5a4809c511cbaa95264f2e" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongTurtleMaster</name></member>
+      <member refid="classendstone_1_1PotionType_1a1c6d84c930df4d76627fd81a7ed127cc" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongWaterBreathing</name></member>
+      <member refid="classendstone_1_1PotionType_1a8bcb20c1075d56f4f42dca573cce6b13" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>LongWeakness</name></member>
+      <member refid="classendstone_1_1PotionType_1a94815c4a6de78565094e9a9fc2917ac2" prot="private" virt="non-virtual"><scope>endstone::PotionType</scope><name>Minecraft</name></member>
+      <member refid="classendstone_1_1PotionType_1a2e42a17c9960477de466c12c74ea4d69" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Mundane</name></member>
+      <member refid="classendstone_1_1PotionType_1ace8f4629639d2b1c523320205494c27e" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Nightvision</name></member>
+      <member refid="classendstone_1_1PotionType_1add3039d4d2969b8c684abac9f9c3d9cd" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Oozing</name></member>
+      <member refid="classendstone_1_1PotionType_1ae06515a190dbd97e6064a974578be9e2" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Poison</name></member>
+      <member refid="classendstone_1_1PotionType_1a3cbd106a8e61957786636c5005089697" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Regeneration</name></member>
+      <member refid="classendstone_1_1PotionType_1a61c7675bf28f2ab7a07c1475463391fe" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>SlowFalling</name></member>
+      <member refid="classendstone_1_1PotionType_1a1551a2caf362a91a1dfd81f9fa2e3726" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Slowness</name></member>
+      <member refid="classendstone_1_1PotionType_1a7d494218a9889e2f3c6bd53385d4dd2d" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Strength</name></member>
+      <member refid="classendstone_1_1PotionType_1a98c8cb9774dbf5ce65f7874d81a80185" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongHarming</name></member>
+      <member refid="classendstone_1_1PotionType_1a7a6cd07d904eb6a7a0d1bae3bdfe0c45" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongHealing</name></member>
+      <member refid="classendstone_1_1PotionType_1a6dc284fe1840039c8ef8a2cc712188d4" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongLeaping</name></member>
+      <member refid="classendstone_1_1PotionType_1ac5b96d18de11e99756ac9168b882eb94" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongPoison</name></member>
+      <member refid="classendstone_1_1PotionType_1a295b5f41c2b87b3568ba66feda45042e" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongRegeneration</name></member>
+      <member refid="classendstone_1_1PotionType_1acc5c6ad888dcb9dac1c40e546e242c34" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongSlowness</name></member>
+      <member refid="classendstone_1_1PotionType_1a9a5d59579dec55740e51f926d21218df" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongStrength</name></member>
+      <member refid="classendstone_1_1PotionType_1a1581a974eed694438fa1d00489d9050d" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongSwiftness</name></member>
+      <member refid="classendstone_1_1PotionType_1ae26fbdaa7c876e4962ab806b55f3aa74" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>StrongTurtleMaster</name></member>
+      <member refid="classendstone_1_1PotionType_1a91dbe1465d0d788db72f2304d8b21892" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Swiftness</name></member>
+      <member refid="classendstone_1_1PotionType_1a801f61e5678ed0836abbc44f6edc8056" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Thick</name></member>
+      <member refid="classendstone_1_1PotionType_1a67d039e139115f7984a08aa1f8757cfe" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>TurtleMaster</name></member>
+      <member refid="classendstone_1_1PotionType_1a82f5fefbd3fbca555cc3de232735f27e" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Water</name></member>
+      <member refid="classendstone_1_1PotionType_1ace66f2f54600a9d3b59c9895d6cbe21f" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>WaterBreathing</name></member>
+      <member refid="classendstone_1_1PotionType_1ae474688a67d93bd0b256d2e6e8be72e1" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Weakness</name></member>
+      <member refid="classendstone_1_1PotionType_1a0595aaf16ef833f606fd5fb1bb0b7a5d" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Weaving</name></member>
+      <member refid="classendstone_1_1PotionType_1ac8c7d8143bcb385b60d5731eeaad0bda" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>WindCharged</name></member>
+      <member refid="classendstone_1_1PotionType_1a754e358e88cee9f01ab363a78cf50456" prot="public" virt="non-virtual"><scope>endstone::PotionType</scope><name>Wither</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

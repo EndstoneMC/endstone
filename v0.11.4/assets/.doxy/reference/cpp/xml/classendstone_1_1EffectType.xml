@@ -1,0 +1,648 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1EffectType" kind="class" language="C++" prot="public">
+    <compoundname>endstone::EffectType</compoundname>
+    <includes refid="effect__type_8h" local="no">endstone/effect/effect_type.h</includes>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a1bc785783704de4311b5dd145b80f0a1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Speed</definition>
+        <argsstring></argsstring>
+        <name>Speed</name>
+        <qualifiedname>endstone::EffectType::Speed</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;speed&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases movement speed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="31" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a81907192deb4d3e74681ddf020e4630f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Slowness</definition>
+        <argsstring></argsstring>
+        <name>Slowness</name>
+        <qualifiedname>endstone::EffectType::Slowness</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;slowness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decreases movement speed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="36" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1aa2e24d50b86bc4934e057fbb0d53dff9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Haste</definition>
+        <argsstring></argsstring>
+        <name>Haste</name>
+        <qualifiedname>endstone::EffectType::Haste</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;haste&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases dig speed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="41" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a6638743a7d4be40c9ee266e15e25f93b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::MiningFatigue</definition>
+        <argsstring></argsstring>
+        <name>MiningFatigue</name>
+        <qualifiedname>endstone::EffectType::MiningFatigue</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;mining_fatigue&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decreases dig speed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="46" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a4acca2261fea494a4292d69479ef45b5" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Strength</definition>
+        <argsstring></argsstring>
+        <name>Strength</name>
+        <qualifiedname>endstone::EffectType::Strength</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;strength&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases damage dealt. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="51" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1aae3d5346cf5c46e21468651f0da2f8d5" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::InstantHealth</definition>
+        <argsstring></argsstring>
+        <name>InstantHealth</name>
+        <qualifiedname>endstone::EffectType::InstantHealth</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;instant_health&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Heals an entity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="56" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1aab73d0d5c7198ef6d17385db632c88e0" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::InstantDamage</definition>
+        <argsstring></argsstring>
+        <name>InstantDamage</name>
+        <qualifiedname>endstone::EffectType::InstantDamage</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;instant_damage&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Hurts an entity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="61" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a8ea76a75b56c41d9d2125d5490713af5" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::JumpBoost</definition>
+        <argsstring></argsstring>
+        <name>JumpBoost</name>
+        <qualifiedname>endstone::EffectType::JumpBoost</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;jump_boost&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases jump height. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="66" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ac14fbf24addd6a1239a7fdf2cd6f3cde" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Nausea</definition>
+        <argsstring></argsstring>
+        <name>Nausea</name>
+        <qualifiedname>endstone::EffectType::Nausea</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;nausea&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Warps vision on the client. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="71" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1af17c18310a5fa824fe27c619d27b7f89" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Regeneration</definition>
+        <argsstring></argsstring>
+        <name>Regeneration</name>
+        <qualifiedname>endstone::EffectType::Regeneration</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;regeneration&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Regenerates health. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="76" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a0ac3b6bbf396d4e8a2da382fb0e56dde" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Resistance</definition>
+        <argsstring></argsstring>
+        <name>Resistance</name>
+        <qualifiedname>endstone::EffectType::Resistance</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;resistance&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decreases damage dealt to an entity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="81" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1acf8a9eda57ed368aae6d0d2ba2b3081c" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::FireResistance</definition>
+        <argsstring></argsstring>
+        <name>FireResistance</name>
+        <qualifiedname>endstone::EffectType::FireResistance</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;fire_resistance&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Stops fire damage. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="86" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a12e3952816ecb830987c9c1abbd86a35" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::WaterBreathing</definition>
+        <argsstring></argsstring>
+        <name>WaterBreathing</name>
+        <qualifiedname>endstone::EffectType::WaterBreathing</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;water_breathing&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows breathing underwater. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="91" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ae9fe9b76e44f7f0c9bd91a3d7aa852bb" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Invisibility</definition>
+        <argsstring></argsstring>
+        <name>Invisibility</name>
+        <qualifiedname>endstone::EffectType::Invisibility</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;invisibility&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Grants invisibility. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="96" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a7466229104baf254bd422d8b97154c89" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Blindness</definition>
+        <argsstring></argsstring>
+        <name>Blindness</name>
+        <qualifiedname>endstone::EffectType::Blindness</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;blindness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Blinds an entity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="101" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a6fa594813d66f0df40de0cbec3a765ba" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::NightVision</definition>
+        <argsstring></argsstring>
+        <name>NightVision</name>
+        <qualifiedname>endstone::EffectType::NightVision</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;night_vision&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Allows an entity to see in the dark. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="106" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a0e59560b01d97c9a89ab950951bfb7f9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Hunger</definition>
+        <argsstring></argsstring>
+        <name>Hunger</name>
+        <qualifiedname>endstone::EffectType::Hunger</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;hunger&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases hunger. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="111" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a3ac3c89e8f6c9bb014f2c794d3c7294e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Weakness</definition>
+        <argsstring></argsstring>
+        <name>Weakness</name>
+        <qualifiedname>endstone::EffectType::Weakness</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;weakness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decreases damage dealt by an entity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="116" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a11e4181e2a92e9ab02ea29b2f1c74f0b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Poison</definition>
+        <argsstring></argsstring>
+        <name>Poison</name>
+        <qualifiedname>endstone::EffectType::Poison</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;poison&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Deals damage to an entity over time. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="121" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a6c0d8825ed3b3c8fc2b0bf73c87b1ab3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Wither</definition>
+        <argsstring></argsstring>
+        <name>Wither</name>
+        <qualifiedname>endstone::EffectType::Wither</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;wither&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Deals damage to an entity over time and gives the health to the shooter. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="127" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a842baa92f96d10eefa227f7d5a746da5" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::HealthBoost</definition>
+        <argsstring></argsstring>
+        <name>HealthBoost</name>
+        <qualifiedname>endstone::EffectType::HealthBoost</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;health_boost&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases the maximum health of an entity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="132" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a8acfe94b560a8febb2f485e578f45159" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Absorption</definition>
+        <argsstring></argsstring>
+        <name>Absorption</name>
+        <qualifiedname>endstone::EffectType::Absorption</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;absorption&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases the maximum health of an entity with health that cannot be regenerated, but is refilled every 30 seconds. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="138" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a86bd2d6ed5e06af4f0ee40a9c72d51df" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Saturation</definition>
+        <argsstring></argsstring>
+        <name>Saturation</name>
+        <qualifiedname>endstone::EffectType::Saturation</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;saturation&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Increases the food level of an entity each tick. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="143" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1add358e7b276aba39ac1643c8e86ebd3c" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Levitation</definition>
+        <argsstring></argsstring>
+        <name>Levitation</name>
+        <qualifiedname>endstone::EffectType::Levitation</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;levitation&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Causes the entity to float into the air. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="148" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1aaeee81973d333a71beaf4ced6399594a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::FatalPoison</definition>
+        <argsstring></argsstring>
+        <name>FatalPoison</name>
+        <qualifiedname>endstone::EffectType::FatalPoison</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;fatal_poison&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Inflicts damage to the entity over time, and can kill both undead and non-undead mobs, similar to Wither </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="153" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a5efdff0153d27ddd3079fa1547c0b9c4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::ConduitPower</definition>
+        <argsstring></argsstring>
+        <name>ConduitPower</name>
+        <qualifiedname>endstone::EffectType::ConduitPower</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;conduit_power&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Effects granted by a nearby conduit. Includes enhanced underwater abilities. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="158" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1aedcd635847309a74e8c3d55c96ab81dd" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::SlowFalling</definition>
+        <argsstring></argsstring>
+        <name>SlowFalling</name>
+        <qualifiedname>endstone::EffectType::SlowFalling</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;slow_falling&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Slows entity fall rate. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="163" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1ad05807d9a795e264c221a562fff43ea2" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::BadOmen</definition>
+        <argsstring></argsstring>
+        <name>BadOmen</name>
+        <qualifiedname>endstone::EffectType::BadOmen</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;bad_omen&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Triggers an ominous event when the player enters a village or trial chambers.<linebreak/>
+ oof. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="169" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a50ac6f6133315aa41d6ce621b882e7fb" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::HeroOfTheVillage</definition>
+        <argsstring></argsstring>
+        <name>HeroOfTheVillage</name>
+        <qualifiedname>endstone::EffectType::HeroOfTheVillage</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;hero_of_the_village&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reduces the cost of villager trades.<linebreak/>
+ \o/. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="175" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a8e1a95df98b75ee68797075094ae2ba7" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Darkness</definition>
+        <argsstring></argsstring>
+        <name>Darkness</name>
+        <qualifiedname>endstone::EffectType::Darkness</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;darkness&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Causes the player&apos;s vision to dim occasionally. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="180" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1aa5638d778e9ecc4793cd4b17cb295ed4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::TrialOmen</definition>
+        <argsstring></argsstring>
+        <name>TrialOmen</name>
+        <qualifiedname>endstone::EffectType::TrialOmen</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;trial_omen&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Causes trial spawners to become ominous. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="185" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a900d76af4a5c87a1c223e8a63fb70d13" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::WindCharged</definition>
+        <argsstring></argsstring>
+        <name>WindCharged</name>
+        <qualifiedname>endstone::EffectType::WindCharged</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;wind_charged&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Emits a wind burst upon death. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="190" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a8355b66ddcd485b67d62934d68f44243" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Weaving</definition>
+        <argsstring></argsstring>
+        <name>Weaving</name>
+        <qualifiedname>endstone::EffectType::Weaving</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;weaving&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates cobwebs upon death. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="195" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a71d76c66a98a9f6f038186c8a47d379f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Oozing</definition>
+        <argsstring></argsstring>
+        <name>Oozing</name>
+        <qualifiedname>endstone::EffectType::Oozing</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;oozing&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Causes slimes to spawn upon death. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="200" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a99c1d88dc16a4c3e25af259303b6d45f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::Infested</definition>
+        <argsstring></argsstring>
+        <name>Infested</name>
+        <qualifiedname>endstone::EffectType::Infested</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;infested&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Chance of spawning silverfish when hurt. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="205" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a455ec17fee0ef6334c2231c509df34f0" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::RaidOmen</definition>
+        <argsstring></argsstring>
+        <name>RaidOmen</name>
+        <qualifiedname>endstone::EffectType::RaidOmen</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;raid_omen&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Triggers a raid when a player enters a village. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="210" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1EffectType_1a7cb484582e16e833d637f39266a26b0d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::EffectType::BreathOfTheNautilus</definition>
+        <argsstring></argsstring>
+        <name>BreathOfTheNautilus</name>
+        <qualifiedname>endstone::EffectType::BreathOfTheNautilus</qualifiedname>
+        <initializer>= EffectId::minecraft(&quot;breath_of_the_nautilus&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Prevents the rider&apos;s oxygen bar from depleting while riding a nautilus or zombie nautilus. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/effect/effect_type.h" line="215" column="27" bodyfile="include/endstone/effect/effect_type.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All effect types. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/effect/effect_type.h" line="26" column="1" bodyfile="include/endstone/effect/effect_type.h" bodystart="26" bodyend="216"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1EffectType_1a8acfe94b560a8febb2f485e578f45159" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Absorption</name></member>
+      <member refid="classendstone_1_1EffectType_1ad05807d9a795e264c221a562fff43ea2" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>BadOmen</name></member>
+      <member refid="classendstone_1_1EffectType_1a7466229104baf254bd422d8b97154c89" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Blindness</name></member>
+      <member refid="classendstone_1_1EffectType_1a7cb484582e16e833d637f39266a26b0d" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>BreathOfTheNautilus</name></member>
+      <member refid="classendstone_1_1EffectType_1a5efdff0153d27ddd3079fa1547c0b9c4" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>ConduitPower</name></member>
+      <member refid="classendstone_1_1EffectType_1a8e1a95df98b75ee68797075094ae2ba7" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Darkness</name></member>
+      <member refid="classendstone_1_1EffectType_1aaeee81973d333a71beaf4ced6399594a" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>FatalPoison</name></member>
+      <member refid="classendstone_1_1EffectType_1acf8a9eda57ed368aae6d0d2ba2b3081c" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>FireResistance</name></member>
+      <member refid="classendstone_1_1EffectType_1aa2e24d50b86bc4934e057fbb0d53dff9" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Haste</name></member>
+      <member refid="classendstone_1_1EffectType_1a842baa92f96d10eefa227f7d5a746da5" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>HealthBoost</name></member>
+      <member refid="classendstone_1_1EffectType_1a50ac6f6133315aa41d6ce621b882e7fb" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>HeroOfTheVillage</name></member>
+      <member refid="classendstone_1_1EffectType_1a0e59560b01d97c9a89ab950951bfb7f9" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Hunger</name></member>
+      <member refid="classendstone_1_1EffectType_1a99c1d88dc16a4c3e25af259303b6d45f" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Infested</name></member>
+      <member refid="classendstone_1_1EffectType_1aab73d0d5c7198ef6d17385db632c88e0" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>InstantDamage</name></member>
+      <member refid="classendstone_1_1EffectType_1aae3d5346cf5c46e21468651f0da2f8d5" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>InstantHealth</name></member>
+      <member refid="classendstone_1_1EffectType_1ae9fe9b76e44f7f0c9bd91a3d7aa852bb" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Invisibility</name></member>
+      <member refid="classendstone_1_1EffectType_1a8ea76a75b56c41d9d2125d5490713af5" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>JumpBoost</name></member>
+      <member refid="classendstone_1_1EffectType_1add358e7b276aba39ac1643c8e86ebd3c" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Levitation</name></member>
+      <member refid="classendstone_1_1EffectType_1a6638743a7d4be40c9ee266e15e25f93b" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>MiningFatigue</name></member>
+      <member refid="classendstone_1_1EffectType_1ac14fbf24addd6a1239a7fdf2cd6f3cde" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Nausea</name></member>
+      <member refid="classendstone_1_1EffectType_1a6fa594813d66f0df40de0cbec3a765ba" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>NightVision</name></member>
+      <member refid="classendstone_1_1EffectType_1a71d76c66a98a9f6f038186c8a47d379f" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Oozing</name></member>
+      <member refid="classendstone_1_1EffectType_1a11e4181e2a92e9ab02ea29b2f1c74f0b" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Poison</name></member>
+      <member refid="classendstone_1_1EffectType_1a455ec17fee0ef6334c2231c509df34f0" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>RaidOmen</name></member>
+      <member refid="classendstone_1_1EffectType_1af17c18310a5fa824fe27c619d27b7f89" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Regeneration</name></member>
+      <member refid="classendstone_1_1EffectType_1a0ac3b6bbf396d4e8a2da382fb0e56dde" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Resistance</name></member>
+      <member refid="classendstone_1_1EffectType_1a86bd2d6ed5e06af4f0ee40a9c72d51df" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Saturation</name></member>
+      <member refid="classendstone_1_1EffectType_1aedcd635847309a74e8c3d55c96ab81dd" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>SlowFalling</name></member>
+      <member refid="classendstone_1_1EffectType_1a81907192deb4d3e74681ddf020e4630f" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Slowness</name></member>
+      <member refid="classendstone_1_1EffectType_1a1bc785783704de4311b5dd145b80f0a1" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Speed</name></member>
+      <member refid="classendstone_1_1EffectType_1a4acca2261fea494a4292d69479ef45b5" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Strength</name></member>
+      <member refid="classendstone_1_1EffectType_1aa5638d778e9ecc4793cd4b17cb295ed4" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>TrialOmen</name></member>
+      <member refid="classendstone_1_1EffectType_1a12e3952816ecb830987c9c1abbd86a35" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>WaterBreathing</name></member>
+      <member refid="classendstone_1_1EffectType_1a3ac3c89e8f6c9bb014f2c794d3c7294e" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Weakness</name></member>
+      <member refid="classendstone_1_1EffectType_1a8355b66ddcd485b67d62934d68f44243" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Weaving</name></member>
+      <member refid="classendstone_1_1EffectType_1a900d76af4a5c87a1c223e8a63fb70d13" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>WindCharged</name></member>
+      <member refid="classendstone_1_1EffectType_1a6c0d8825ed3b3c8fc2b0bf73c87b1ab3" prot="public" virt="non-virtual"><scope>endstone::EffectType</scope><name>Wither</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

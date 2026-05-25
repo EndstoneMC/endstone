@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_9972879ee1a1ab85aef1f41c76fb712c" kind="dir">
+    <compoundname>include/endstone/event/level</compoundname>
+    <innerfile refid="dimension__event_8h">dimension_event.h</innerfile>
+    <innerfile refid="level__event_8h">level_event.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/event/level/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structendstone_1_1overloaded" kind="struct" language="C++" prot="public">
+    <compoundname>endstone::overloaded</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">endstone::Func</basecompoundref>
+    <includes refid="variant_8h" local="no">endstone/variant.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename...</type>
+        <declname>Func</declname>
+        <defname>Func</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>Helper type for visitors. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Types of function objects. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Func</label>
+      </node>
+      <node id="1">
+        <label>endstone::overloaded&lt; Func &gt;</label>
+        <link refid="structendstone_1_1overloaded"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Func</label>
+      </node>
+      <node id="1">
+        <label>endstone::overloaded&lt; Func &gt;</label>
+        <link refid="structendstone_1_1overloaded"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/variant.h" line="23" column="1" bodyfile="include/endstone/variant.h" bodystart="23" bodyend="25"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

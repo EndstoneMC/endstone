@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_777e494cd9d9b9aeedcd0556d83eeb02" kind="dir">
+    <compoundname>include/endstone/nbt</compoundname>
+    <innerfile refid="array_8h">array.h</innerfile>
+    <innerfile refid="compound_8h">compound.h</innerfile>
+    <innerfile refid="list_8h">list.h</innerfile>
+    <innerfile refid="tag_8h">tag.h</innerfile>
+    <innerfile refid="type_8h">type.h</innerfile>
+    <innerfile refid="value_8h">value.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/nbt/"/>
+  </compounddef>
+</doxygen>

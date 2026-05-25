@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Preconditions" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Preconditions</compoundname>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classendstone_1_1Preconditions_1afa34146371395492185fbf2f29f9ac6f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>static void endstone::Preconditions::checkArgument</definition>
+        <argsstring>(bool condition, fmt::format_string&lt; Args... &gt; format, Args &amp;&amp;...args)</argsstring>
+        <name>checkArgument</name>
+        <qualifiedname>endstone::Preconditions::checkArgument</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>condition</declname>
+        </param>
+        <param>
+          <type>fmt::format_string&lt; Args... &gt;</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Args</ref> &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/check.h" line="26" column="17" bodyfile="include/endstone/check.h" bodystart="26" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Preconditions_1a7e66cfe150961a5377a0149d7b609df1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>static void endstone::Preconditions::checkState</definition>
+        <argsstring>(bool condition, fmt::format_string&lt; Args... &gt; format, Args &amp;&amp;...args)</argsstring>
+        <name>checkState</name>
+        <qualifiedname>endstone::Preconditions::checkState</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>condition</declname>
+        </param>
+        <param>
+          <type>fmt::format_string&lt; Args... &gt;</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">Args</ref> &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/check.h" line="35" column="17" bodyfile="include/endstone/check.h" bodystart="35" bodyend="41"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/check.h" line="23" column="1" bodyfile="include/endstone/check.h" bodystart="23" bodyend="42"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Preconditions_1afa34146371395492185fbf2f29f9ac6f" prot="public" virt="non-virtual"><scope>endstone::Preconditions</scope><name>checkArgument</name></member>
+      <member refid="classendstone_1_1Preconditions_1a7e66cfe150961a5377a0149d7b609df1" prot="public" virt="non-virtual"><scope>endstone::Preconditions</scope><name>checkState</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="dir_7eabd153c13720ffd29490c98a6f4dde" kind="dir">
+    <compoundname>include/endstone/event/chunk</compoundname>
+    <innerfile refid="chunk__event_8h">chunk_event.h</innerfile>
+    <innerfile refid="chunk__load__event_8h">chunk_load_event.h</innerfile>
+    <innerfile refid="chunk__unload__event_8h">chunk_unload_event.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/event/chunk/"/>
+  </compounddef>
+</doxygen>

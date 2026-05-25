@@ -1,0 +1,483 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Block" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Block</compoundname>
+    <includes refid="block_8h" local="no">endstone/block/block.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Block_1a8a7ea0b990c4c610f75cf53bd5c6647b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Block::~Block</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Block</name>
+        <qualifiedname>endstone::Block::~Block</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="39" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a990361ef55dd7f6c01bf463d0c4206ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Block::getType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getType</name>
+        <qualifiedname>endstone::Block::getType</qualifiedname>
+        <briefdescription>
+<para>Get the type of the block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method returns the type of the block as a string, for example, minecraft:acacia_stairs.</para>
+<para><simplesect kind="return"><para>The type of the block. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="48" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a14bfc4111312b3f9355f0d0f56205242" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Block::setType</definition>
+        <argsstring>(std::string type)=0</argsstring>
+        <name>setType</name>
+        <qualifiedname>endstone::Block::setType</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Sets the type of this block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Material to change this block to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="55" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a2dc49fca3aceebd374fefa0c1744a9fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Block::setType</definition>
+        <argsstring>(std::string type, bool apply_physics)=0</argsstring>
+        <name>setType</name>
+        <qualifiedname>endstone::Block::setType</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>apply_physics</declname>
+        </param>
+        <briefdescription>
+<para>Sets the type of this block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Material to change this block to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>apply_physics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>False to cancel physics on the changed block. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="63" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a5293fd07d6c423a5a7132944eec13282" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; BlockData &gt; endstone::Block::getData</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getData</name>
+        <qualifiedname>endstone::Block::getData</qualifiedname>
+        <briefdescription>
+<para>Gets the complete block data for this block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>block specific data </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="70" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a6748189136ea7daf91f4eb02c8b9cbea" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Block::setData</definition>
+        <argsstring>(const BlockData &amp;data)=0</argsstring>
+        <name>setData</name>
+        <qualifiedname>endstone::Block::setData</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Sets the complete data for this block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new block specific data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="77" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1af96ad69e1b31b403559e95535a1619cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::Block::setData</definition>
+        <argsstring>(const BlockData &amp;data, bool apply_physics)=0</argsstring>
+        <name>setData</name>
+        <qualifiedname>endstone::Block::setData</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>apply_physics</declname>
+        </param>
+        <briefdescription>
+<para>Sets the complete data for this block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new block specific data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>apply_physics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>False to cancel physics on the changed block. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="85" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1ade7ede2f68266c797efbb8b5a237304b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; Block &gt; endstone::Block::getRelative</definition>
+        <argsstring>(int offset_x, int offset_y, int offset_z)=0</argsstring>
+        <name>getRelative</name>
+        <qualifiedname>endstone::Block::getRelative</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>offset_x</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>offset_y</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>offset_z</declname>
+        </param>
+        <briefdescription>
+<para>Gets the block at the given offsets. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>offset_x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>X-coordinate offset </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset_y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Y-coordinate offset </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>offset_z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z-coordinate offset </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> at the given offsets </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="95" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1ae60ad017cb35887e0cad09c2d76b354b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; Block &gt; endstone::Block::getRelative</definition>
+        <argsstring>(BlockFace face)=0</argsstring>
+        <name>getRelative</name>
+        <qualifiedname>endstone::Block::getRelative</qualifiedname>
+        <param>
+          <type><ref refid="namespaceendstone_1aec620d05bd961a002c83b008e178a785" kindref="member">BlockFace</ref></type>
+          <declname>face</declname>
+        </param>
+        <briefdescription>
+<para>Gets the block at the given face. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method is equal to getRelative(face, 1)</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>face</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Face of this block to return </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> at the given face </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="105" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a360bc161449ffdd18506c4775408af14" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; Block &gt; endstone::Block::getRelative</definition>
+        <argsstring>(BlockFace face, int distance)=0</argsstring>
+        <name>getRelative</name>
+        <qualifiedname>endstone::Block::getRelative</qualifiedname>
+        <param>
+          <type><ref refid="namespaceendstone_1aec620d05bd961a002c83b008e178a785" kindref="member">BlockFace</ref></type>
+          <declname>face</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+<para>Gets the block at the given distance of the given face. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>face</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Face of this block to return </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>distance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Distance to get the block at </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> at the given face </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="114" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a8d18ed25f0fc34c51152ec0a1dd09854" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
+        <definition>virtual Dimension &amp; endstone::Block::getDimension</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getDimension</name>
+        <qualifiedname>endstone::Block::getDimension</qualifiedname>
+        <briefdescription>
+<para>Gets the dimension which contains this <ref refid="classendstone_1_1Block" kindref="compound">Block</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> containing this block </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="121" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a1ec1fc7c6fe1aab63db232b0f0684c76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Block::getX</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getX</name>
+        <qualifiedname>endstone::Block::getX</qualifiedname>
+        <briefdescription>
+<para>Gets the x-coordinate of this block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>x-coordinate </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="128" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a390b31ef485c4b5176842bd3a59b01bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Block::getY</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getY</name>
+        <qualifiedname>endstone::Block::getY</qualifiedname>
+        <briefdescription>
+<para>Gets the y-coordinate of this block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>x-coordinate </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="135" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a9509b72c86339e30a4b50567f6d5279c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>virtual int endstone::Block::getZ</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getZ</name>
+        <qualifiedname>endstone::Block::getZ</qualifiedname>
+        <briefdescription>
+<para>Gets the z-coordinate of this block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>x-coordinate </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="142" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a19e164bc3cf23481d01886dfeda41c85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <definition>virtual Location endstone::Block::getLocation</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getLocation</name>
+        <qualifiedname>endstone::Block::getLocation</qualifiedname>
+        <briefdescription>
+<para>Gets the <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> of the block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> of block </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="149" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a95bac5d6f459fcfe924ba470d9b9da81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; BlockState &gt; endstone::Block::captureState</definition>
+        <argsstring>() const =0</argsstring>
+        <name>captureState</name>
+        <qualifiedname>endstone::Block::captureState</qualifiedname>
+        <briefdescription>
+<para>Captures the current state of this block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The returned object will never be updated, and you are not guaranteed that (for example) a sign is still a sign after you capture its state.</para>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> with the current state of this block. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="159" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1acf80e005f3032354d7cd7ed0057be6e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt; Block &gt; endstone::Block::clone</definition>
+        <argsstring>() const =0</argsstring>
+        <name>clone</name>
+        <qualifiedname>endstone::Block::clone</qualifiedname>
+        <briefdescription>
+<para>Creates a copy of the current block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="166" column="30"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a block. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This is a live object, and only one <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> may exist for any given location in a dimension. </para>
+    </detaileddescription>
+    <location file="include/endstone/block/block.h" line="37" column="1" bodyfile="include/endstone/block/block.h" bodystart="37" bodyend="167"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Block_1a95bac5d6f459fcfe924ba470d9b9da81" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>captureState</name></member>
+      <member refid="classendstone_1_1Block_1acf80e005f3032354d7cd7ed0057be6e7" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>clone</name></member>
+      <member refid="classendstone_1_1Block_1a5293fd07d6c423a5a7132944eec13282" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getData</name></member>
+      <member refid="classendstone_1_1Block_1a8d18ed25f0fc34c51152ec0a1dd09854" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Block_1a19e164bc3cf23481d01886dfeda41c85" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getLocation</name></member>
+      <member refid="classendstone_1_1Block_1ade7ede2f68266c797efbb8b5a237304b" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getRelative</name></member>
+      <member refid="classendstone_1_1Block_1ae60ad017cb35887e0cad09c2d76b354b" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getRelative</name></member>
+      <member refid="classendstone_1_1Block_1a360bc161449ffdd18506c4775408af14" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getRelative</name></member>
+      <member refid="classendstone_1_1Block_1a990361ef55dd7f6c01bf463d0c4206ef" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getType</name></member>
+      <member refid="classendstone_1_1Block_1a1ec1fc7c6fe1aab63db232b0f0684c76" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getX</name></member>
+      <member refid="classendstone_1_1Block_1a390b31ef485c4b5176842bd3a59b01bc" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getY</name></member>
+      <member refid="classendstone_1_1Block_1a9509b72c86339e30a4b50567f6d5279c" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getZ</name></member>
+      <member refid="classendstone_1_1Block_1a6748189136ea7daf91f4eb02c8b9cbea" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>setData</name></member>
+      <member refid="classendstone_1_1Block_1af96ad69e1b31b403559e95535a1619cc" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>setData</name></member>
+      <member refid="classendstone_1_1Block_1a14bfc4111312b3f9355f0d0f56205242" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>setType</name></member>
+      <member refid="classendstone_1_1Block_1a2dc49fca3aceebd374fefa0c1744a9fd" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>setType</name></member>
+      <member refid="classendstone_1_1Block_1a8a7ea0b990c4c610f75cf53bd5c6647b" prot="public" virt="virtual"><scope>endstone::Block</scope><name>~Block</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

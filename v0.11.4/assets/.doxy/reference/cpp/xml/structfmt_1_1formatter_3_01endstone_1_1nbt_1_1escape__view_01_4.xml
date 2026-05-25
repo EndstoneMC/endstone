@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structfmt_1_1formatter_3_01endstone_1_1nbt_1_1escape__view_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>fmt::formatter&lt; endstone::nbt::escape_view &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">formatter&lt; string_view &gt;</basecompoundref>
+    <templateparamlist>
+    </templateparamlist>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structfmt_1_1formatter_3_01endstone_1_1nbt_1_1escape__view_01_4_1a5b2e1d6a5af133a4851080bcb0892050" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FormatContext</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto fmt::formatter&lt; endstone::nbt::escape_view &gt;::format</definition>
+        <argsstring>(const endstone::nbt::escape_view &amp;v, FormatContext &amp;ctx) const -&gt; format_context::iterator</argsstring>
+        <name>format</name>
+        <qualifiedname>fmt::formatter&lt; endstone::nbt::escape_view &gt;::format</qualifiedname>
+        <param>
+          <type>const endstone::nbt::escape_view &amp;</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>FormatContext &amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/nbt/tag.h" line="717" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="717" bodyend="766"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>fmt::formatter&lt; endstone::nbt::escape_view &gt;</label>
+        <link refid="structfmt_1_1formatter_3_01endstone_1_1nbt_1_1escape__view_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>formatter&lt; string_view &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>fmt::formatter&lt; endstone::nbt::escape_view &gt;</label>
+        <link refid="structfmt_1_1formatter_3_01endstone_1_1nbt_1_1escape__view_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>formatter&lt; string_view &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/nbt/tag.h" line="715" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="715" bodyend="767"/>
+    <listofallmembers>
+      <member refid="structfmt_1_1formatter_3_01endstone_1_1nbt_1_1escape__view_01_4_1a5b2e1d6a5af133a4851080bcb0892050" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; endstone::nbt::escape_view &gt;</scope><name>format</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
