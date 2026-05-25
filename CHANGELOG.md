@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added support for BDS version 1.26.20.
 
+### Fixed
+
+- Fixed optional `message`-type command parameters being received as `['']` instead of `[]` when the argument was omitted.
+- Fixed `Player.send_message` silently sending malformed packets when given an empty message. Empty messages are now rejected with an error.
+
 ## [0.11.3] - 2026-04-02
 
 ### Added
@@ -1039,7 +1044,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.2...HEAD
 [Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.3...HEAD
 [0.11.3]: https://github.com/EndstoneMC/endstone/compare/v0.11.2...v0.11.3
 [0.11.2]: https://github.com/EndstoneMC/endstone/compare/v0.11.1...v0.11.2
