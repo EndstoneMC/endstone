@@ -76,6 +76,7 @@ public:
     virtual void flush(std::function<void()> &&) = 0;
     [[nodiscard]] virtual bool isLocal() const = 0;
     [[nodiscard]] virtual bool isEncrypted() const = 0;
+    [[nodiscard]] virtual bool isLan() const = 0;
 
 protected:
     virtual DataStatus _receivePacket(std::string &out_data, const PacketRecvTimepointPtr &timepoint_ptr) = 0;

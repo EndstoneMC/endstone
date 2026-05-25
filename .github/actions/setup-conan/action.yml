@@ -51,4 +51,9 @@ runs:
         if [ "$RUNNER_OS" = "Linux" ]; then
           CONAN_ARGS="$CONAN_ARGS -s compiler.libcxx=libc++"
         fi
+        if [ "$RUNNER_OS" = "Windows" ]; then
+          # Build Endstone itself with clang-cl ('&:' scopes the conf to the consumer;
+          # dependencies still build with MSVC).
+          CONAN_ARGS="$CONAN_ARGS -c &:tools.build:compiler_executables={\"c\":\"clang-cl\",\"cpp\":\"clang-cl\"}"
+        fi
         conan install . $CONAN_ARGS

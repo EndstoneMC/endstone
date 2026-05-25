@@ -22,8 +22,9 @@ How it works:
   4. Group results by C++ scope and write a per-platform symbols file.
 
 With `--pdb`, a Windows config's symbols are resolved by name from a PDB
-instead (via `pdbtool` -- install it with `cargo install pdbtool`); the
-download, the scan, and the byte signatures all go unused.
+instead (via `pdbtool` -- install it with `cargo install pdbtool`). Names with
+no public record in the PDB -- lambdas, function-local statics -- fall back to
+a byte-pattern scan of the PE (read next to the PDB, or downloaded).
 
 The signature configs live in `scripts/configs/` next to this script. Each
 scanned config produces `src/bedrock/symbol_generator/symbols/<platform>.toml`,
@@ -39,7 +40,7 @@ pass the platform config(s) to scan:
     # Windows only
     uv run --script scripts/dump_symbols.py scripts/configs/windows.toml
 
-    # Windows from a PDB (resolve by name; no binary download or scan)
+    # Windows from a PDB (resolve by name, byte-pattern fallback for the rest)
     uv run --script scripts/dump_symbols.py scripts/configs/windows.toml --pdb bedrock_server.pdb
 
 Config format -- each `scripts/configs/<platform>.toml` has top-level `version`
@@ -425,11 +426,49 @@ def _undecorate(name: str) -> str:
     return ""
 
 
+def _scan_pe_fallback(
+    pdb_path: Path, config: dict, unresolved: list, result: dict[str, int]
+) -> None:
+    """
+    Byte-pattern scan the PE for `unresolved` config entries -- symbols the PDB
+    has no public record of (lambdas, function-local statics). Updates `result`
+    in place. The PE is read from next to the PDB when present, else downloaded.
+    """
+    exe_name = str(config.get("executable", "bedrock_server.exe"))
+    local_exe = pdb_path.parent / exe_name
+    if local_exe.is_file():
+        logger.info(f"Byte-pattern fallback for {len(unresolved)} symbol(s) via {local_exe}")
+        raw = local_exe.read_bytes()
+    else:
+        logger.info(f"Byte-pattern fallback for {len(unresolved)} symbol(s); downloading PE")
+        zip_path = download_server(str(config["version"]), "windows")
+        with ZipFile(zip_path, "r") as zf:
+            with zf.open(exe_name) as fh:
+                raw = fh.read()
+
+    text_section = lief.parse(raw).get_section(".text")
+    if text_section is None:
+        raise click.ClickException("No .text section in the PE for the byte-pattern fallback")
+
+    for entry in unresolved:
+        sig = Signature(**entry)
+        try:
+            offset = find_signature(text_section, sig)
+        except NameError as e:
+            logger.error(f"Fallback scan failed: {e}")
+            continue
+        result[sig.name] = offset
+        logger.info(f"Found signature (fallback): {sig.name} => 0x{offset:x}")
+
+
 def scan_pdb(pdb_path: Path, config: dict) -> dict[str, int]:
     """
-    Resolve every config symbol by name from a PDB, returning name -> RVA. The
-    byte-signature fields are ignored; only each entry's `name` is used.
-    Unresolved symbols map to 0.
+    Resolve every config symbol by name from a PDB, returning name -> RVA.
+
+    Each entry's `name` is looked up in the PDB's public symbol table. Names the
+    PDB has no public record for -- lambdas, function-local statics -- fall back
+    to a byte-pattern scan of the PE via `find_signature`. Symbols that neither
+    path resolves map to 0.
     """
     if sys.platform != "win32":
         raise click.ClickException("--pdb requires Windows; PDB lookup uses pdbtool and dbghelp")
@@ -459,8 +498,13 @@ def scan_pdb(pdb_path: Path, config: dict) -> dict[str, int]:
         else:
             logger.error(f"Symbol not found in PDB: {name}")
 
+    # Names the PDB has no public record for fall back to a byte-pattern scan.
+    unresolved = [entry for entry in config["signatures"] if result[str(entry["name"])] == 0]
+    if unresolved:
+        _scan_pe_fallback(pdb_path, config, unresolved, result)
+
     found = len([v for v in result.values() if v != 0])
-    logger.info(f"Finished PDB lookup: {found}/{len(names)} symbols resolved")
+    logger.info(f"Finished symbol resolution: {found}/{len(names)} symbols resolved")
     return result
 
 
@@ -480,8 +524,8 @@ def scan_pdb(pdb_path: Path, config: dict) -> dict[str, int]:
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
     default=None,
     help="PDB for the Windows binary. When given, the windows config's symbols "
-    "are resolved by name from the PDB -- the download, the .text scan, and the "
-    "byte-signature fields are all skipped.",
+    "are resolved by name from the PDB; names the PDB lacks fall back to a "
+    "byte-pattern scan of the PE (read next to the PDB, or downloaded).",
 )
 def main(inputs: tuple[Path, ...], pdb_path: Path | None) -> None:
     for config_path in inputs:

@@ -16,8 +16,8 @@
 
 #include <memory>
 
-#include "bedrock/certificates/certificate.h"
 #include "bedrock/certificates/identity/player_authentication_info.h"
+#include "bedrock/certificates/web_token.h"
 #include "bedrock/util/new_type.h"
 
 struct RawGameServerToken : NewType<std::string> {};
@@ -30,12 +30,8 @@ public:
     };
 
     GameServerToken();
-    GameServerToken(std::unique_ptr<Certificate>, VerificationOptions);
 
-    operator bool() const
-    {
-        return isValid();
-    }
+    operator bool() const { return isValid(); }
 
     [[nodiscard]] bool isValid() const;
 

@@ -37,12 +37,12 @@ std::string EndstoneDimension::getName() const
 
 Dimension::Type EndstoneDimension::getType() const
 {
-    switch (getHandle().getDimensionId().runtime_id) {
-    case VanillaDimensions::Overworld.runtime_id:
+    switch (getHandle().getDimensionId().value) {
+    case VanillaDimensions::Overworld.value:
         return Type::Overworld;
-    case VanillaDimensions::Nether.runtime_id:
+    case VanillaDimensions::Nether.value:
         return Type::Nether;
-    case VanillaDimensions::TheEnd.runtime_id:
+    case VanillaDimensions::TheEnd.value:
         return Type::TheEnd;
     default:
         return Type::Custom;
@@ -145,5 +145,5 @@ std::vector<Actor *> EndstoneDimension::getActors() const
 endstone::Dimension &Dimension::getEndstoneDimension() const
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    return *server.getEndstoneLevel()->getDimension(getDimensionId().runtime_id);
+    return *server.getEndstoneLevel()->getDimension(getDimensionId().value);
 }

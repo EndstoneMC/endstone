@@ -85,6 +85,23 @@ struct ActorDefinitionEndedEvent {
     const std::vector<ActorDefinitionModifier> definition_modifiers;
 };
 
+struct ActorUpgradeTriggeredEvent {
+    Actor &actor;
+    const std::string upgrade;
+};
+
+struct ActorUpgradeStartedEvent {
+    Actor &actor;
+    const std::string upgrade;
+    std::vector<ActorDefinitionModifier> &definition_modifiers;
+};
+
+struct ActorUpgradeEndedEvent {
+    Actor &actor;
+    const std::string upgrade;
+    const std::vector<ActorDefinitionModifier> definition_modifiers;
+};
+
 struct ActorGriefingBlockEvent {
     WeakRef<EntityContext> actor_context;
     gsl::not_null<const Block *> block;
@@ -221,8 +238,9 @@ struct ActorGameplayEvent<void>
                         ActorCarriedItemChangedEvent, ActorDefinitionTriggeredEvent, ActorDefinitionEndedEvent,
                         ActorDiedEvent, ActorDroppedItemEvent, ActorEquippedArmorEvent, ActorHurtEvent, ActorHealEvent,
                         ActorHealthChangedEvent, ActorKilledEvent, ActorPlacedItemEvent, ActorRemovedEvent,
-                        ActorRemoveEffectEvent, ActorStartRidingEvent, ActorUseItemEvent, KnockBackEvent,
-                        MountTamingEvent, ActorItemEventAfterDroppedItem> {};
+                        ActorRemoveEffectEvent, ActorStartRidingEvent, ActorUpgradeTriggeredEvent,
+                        ActorUpgradeEndedEvent, ActorUseItemEvent, KnockBackEvent, MountTamingEvent,
+                        ActorItemEventAfterDroppedItem> {};
 
 template <>
 struct ActorGameplayEvent<CoordinatorResult>
@@ -237,4 +255,4 @@ struct MutableActorGameplayEvent<void> : MutableEventVariant<ActorItemEventBefor
 template <>
 struct MutableActorGameplayEvent<CoordinatorResult>
     : MutableEventVariant<ActorDefinitionStartedEvent, ActorAddEffectEvent, ActorBeforeAcquireItemEvent,
-                          ActorBeforeHealEvent, ActorBeforeHurtEvent> {};
+                          ActorBeforeHealEvent, ActorBeforeHurtEvent, ActorUpgradeStartedEvent> {};

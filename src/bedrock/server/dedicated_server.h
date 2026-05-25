@@ -28,7 +28,7 @@ class EndstoneServer;
 
 class DedicatedServer : public IMinecraftApp, public Bedrock::AppIsland {
 public:
-    enum class StartResult : int {
+    enum class ServerExitCode : int {
         Success = 0,
         PortOccupied = 1,
         InvalidSettings = 2,
@@ -37,7 +37,7 @@ public:
     };
     DedicatedServer();
     ~DedicatedServer() override;
-    ENDSTONE_HOOK StartResult start(const std::string &session_id, const Bedrock::ActivationArguments &args);
+    ENDSTONE_HOOK ServerExitCode start(const std::string &session_id, const Bedrock::ActivationArguments &args);
     bool stop() override;
     [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<FileArchiver> getFileArchiver() const;
 
@@ -57,7 +57,7 @@ private:
     Bedrock::NonOwnerPointer<Core::FileSystem> file_system_;
     Bedrock::UniqueOwnerPointer<ServerInstanceEventCoordinator> server_instance_event_coordinator_;
     std::atomic<bool> wants_to_quit_;
-    std::atomic<StartResult> result_;
+    std::atomic<ServerExitCode> result_;
     std::unique_ptr<ConsoleInputReader> console_input_reader_;
     //...
 };

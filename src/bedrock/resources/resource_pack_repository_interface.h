@@ -39,8 +39,6 @@ public:
     [[nodiscard]] virtual std::shared_ptr<ResourcePack> getEditorPack() const = 0;
     [[nodiscard]] virtual std::shared_ptr<ResourcePack> getVanillaPack() const = 0;
     virtual bool setServicePacks(std::vector<PackIdVersion>) = 0;
-    [[nodiscard]] virtual bool hasServicePacks(std::vector<PackIdVersion> const &) const = 0;
-    [[nodiscard]] virtual std::vector<PackIdVersion> const &getServicePacks() const = 0;
     virtual void addServicePacksToStack(ResourcePackStack &) const = 0;
     virtual void addCachedResourcePacks(ContentKeyMap const *) = 0;
     virtual void addWorldResourcePacks(Core::Path const &) = 0;

@@ -137,4 +137,4 @@ private:
     DataID data_;
     bool has_runtime_id_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(Block, 280, 288);
+BEDROCK_STATIC_ASSERT_SIZE(Block, 296, 304);

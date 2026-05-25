@@ -14,14 +14,18 @@
 
 #pragma once
 
-#include "bedrock/world/level/block/block_type.h"
 #include "bedrock/world/level/block/block_event.h"
+#include "bedrock/world/level/block/block_type.h"
 
 class LeavesBlock : public BlockType {
 public:
     static constexpr int REQUIRED_WOOD_RANGE = 4;
+#ifdef _WIN32
     ENDSTONE_HOOK void randomTick(BlockEvents::BlockRandomTickEvent &event_data) const;
+#elif __linux__
+    ENDSTONE_HOOK static void randomTick(BlockEvents::BlockRandomTickEvent &event_data);
+#endif
 
 protected:
-    void _die(BlockSource &region, const BlockPos &pos) const;
+    static void _die(BlockSource &region, const BlockPos &pos) /*const*/;  // Endstone: non-static const -> static
 };

@@ -57,7 +57,7 @@ public:
     Item(const std::string &, short);
 
     virtual ~Item() = 0;
-    virtual bool initServer(Json::Value const &, SemVersion const &, PackLoadContext &, JsonBetaState) = 0;
+    virtual void initServer(ItemComprehensiveLoadResult &&, SemVersion const &, PackLoadContext &) = 0;
     virtual void tearDown() = 0;
     virtual Item &setDescriptionId(std::string const &) = 0;
     virtual std::string const &getDescriptionId() const = 0;
@@ -175,7 +175,8 @@ public:
     virtual bool shouldEmitInUseGameEvents() const = 0;
     virtual bool useInterruptedByAttacking() const = 0;
     virtual bool hasSameRelevantUserData(ItemStackBase const &, ItemStackBase const &) const = 0;
-    virtual void initClient(Json::Value const &, SemVersion const &, JsonBetaState, PackLoadContext &) = 0;
+    virtual void initClient(ItemComprehensiveLoadResult &&, SemVersion const &, PackLoadContext &,
+                            ItemIconInfoFactory) = 0;
     virtual Item &setIconInfo(std::string const &, int) = 0;
     virtual ResolvedItemIconInfo getIconInfo(ItemStackBase const &, int, bool) const = 0;
     virtual std::string getInteractText(Player const &) const = 0;
@@ -208,7 +209,7 @@ public:
     ItemDescriptor buildDescriptor(std::int16_t, const CompoundTag *) const;
     [[nodiscard]] float getFurnaceBurnIntervalMultipler() const;
     [[nodiscard]] const std::string &getCreativeGroup() const;
-    [[nodiscard]] CreativeItemCategory getCreativeCategory() const;
+    [[nodiscard]] SharedTypes::CreativeItemCategory getCreativeCategory() const;
     [[nodiscard]] std::int16_t getDamageValue(const CompoundTag *tag) const;
     [[nodiscard]] bool hasDamageValue(const CompoundTag *tag) const;
     void removeDamageValue(ItemStackBase &item) const;
@@ -251,7 +252,7 @@ protected:
     int max_use_duration_;
     BaseGameVersion min_required_base_game_version_;
     WeakPtr<BlockType> block_type_;
-    CreativeItemCategory creative_category_;
+    SharedTypes::CreativeItemCategory creative_category_;
     Item *crafting_remaining_item_;
     std::string creative_group_;  // +400
     float furnace_burn_interval_modifier_;

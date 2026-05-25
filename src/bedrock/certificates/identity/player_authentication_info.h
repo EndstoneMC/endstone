@@ -16,6 +16,7 @@
 
 #include <string>
 
+#include "bedrock/certificates/identity/minecraft_account_permissions.h"
 #include "bedrock/platform/uuid.h"
 
 enum class PlayerAuthenticationType : int {
@@ -34,6 +35,7 @@ struct PlayerAuthenticationInfo {
     std::string xbox_live_name;
     std::string nintendo_name;
     std::string play_station_name;
+    MinecraftAccountPermissions permissions;
     std::string public_key;
     mce::UUID authenticated_uuid;
     bool is_host;

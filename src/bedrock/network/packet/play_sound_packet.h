@@ -14,15 +14,33 @@
 
 #pragma once
 
+#include <optional>
 #include <string>
 
+#include "bedrock/audio/server_sound_handle.h"
+#include "bedrock/core/math/vec3.h"
 #include "bedrock/network/network_block_position.h"
 #include "bedrock/network/packet.h"
 
-class PlaySoundPacket : public Packet {
-public:
+struct PlaySoundPacketPayload {
+    PlaySoundPacketPayload();
+    PlaySoundPacketPayload(std::string name, const Vec3 &pos, float volume, float pitch,
+                           std::optional<ServerSoundHandle> server_sound_handle);
+
     std::string name;
     NetworkBlockPosition pos;
     float volume;
     float pitch;
+    std::optional<ServerSoundHandle> server_sound_handle;
+};
+
+class PlaySoundPacket : public Packet {
+public:
+    static constexpr bool SHARE_WITH_HANDLER = false;
+
+    PlaySoundPacket();
+    PlaySoundPacket(PlaySoundPacketPayload payload);
+
+    PlaySoundPacketPayload payload;
+    SerializationMode serialization_mode;
 };

@@ -98,14 +98,11 @@ const ItemStack &Player::setSelectedSlot(int slot)
     const auto &item = container.getItem(slot);
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlayerEquipment);
     const auto pk = std::static_pointer_cast<MobEquipmentPacket>(packet);
-    pk->runtime_id = getRuntimeID();
-    pk->item = item;
-    pk->slot = slot;
-    pk->selected_slot = slot;
-    pk->container_id = CONTAINER_ID_INVENTORY;
-    pk->slot_byte = static_cast<char>(slot);
-    pk->selected_slot_byte = static_cast<char>(slot);
-    pk->container_id_byte = CONTAINER_ID_INVENTORY;
+    pk->payload.runtime_id = getRuntimeID();
+    pk->payload.item = item;
+    pk->payload.slot = slot;
+    pk->payload.selected_slot = slot;
+    pk->payload.container_id = CONTAINER_ID_INVENTORY;
     getDimension().sendPacketForEntity(*this, *pk, nullptr);
     return item;
 }

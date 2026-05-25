@@ -10,7 +10,6 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/bedrock_event_logger.cpp
         bedrock_hooks/campfire_block_actor.cpp
         bedrock_hooks/console_input_reader.cpp
-        bedrock_hooks/certificate.cpp
         bedrock_hooks/dedicated_server.cpp
         bedrock_hooks/explosion.cpp
         bedrock_hooks/fire_block.cpp

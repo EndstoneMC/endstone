@@ -26,8 +26,9 @@ public:
         std::uint8_t raw;
         struct {
             bool is_on_ground : 1;
-            bool teleported : 1;
+            bool force_move : 1;
             bool force_move_local_entity : 1;
+            bool force_completion : 1;
         };
     };
     ActorRuntimeID runtime_id;  // +0

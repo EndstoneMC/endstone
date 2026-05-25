@@ -382,6 +382,14 @@ std::int16_t ItemStackBase::getId() const
     return item_->getId();
 }
 
+int ItemStackBase::getIdAux() const
+{
+    if (item_.isNull()) {
+        return 0;
+    }
+    return item_->buildIdAux(getAuxValue(), getUserData());
+}
+
 bool ItemStackBase::isBlock() const
 {
     return !item_.isNull() && !item_->getBlockType().isNull();
@@ -588,8 +596,20 @@ void ItemStackBase::init(const Item &item, int count, int aux_value, const Compo
 
 void ItemStackBase::init(const int id, const int count, const int aux_value, const bool do_remap)
 {
-    void (ItemStackBase::*fp)(int id, int count, int aux_value, bool do_remap) = &ItemStackBase::init;
-    BEDROCK_CALL(fp, this, id, count, aux_value, do_remap);
+    count_ = count < 0 ? 0 : static_cast<std::uint8_t>(count);
+    if (!block_) {
+        aux_value_ = aux_value > 0 ? static_cast<std::int16_t>(aux_value) : 0;
+    }
+    _setItem(id, do_remap);
+    pick_up_time_ = std::chrono::steady_clock::now();
+    if (count_ == 0) {
+        setNull(std::nullopt);
+    }
+}
+
+bool ItemStackBase::_setItem(const int id, const bool do_remap)
+{
+    return BEDROCK_CALL(&ItemStackBase::_setItem, this, id, do_remap);
 }
 
 void ItemStackBase::_updateCompareHashes()

@@ -18,5 +18,9 @@
 
 I18n &getI18n()
 {
+#ifdef _WIN32
+    return BEDROCK_CALL(&getI18n);
+#else
     return *BEDROCK_VAR(I18n *, "getI18n::result");
+#endif
 }

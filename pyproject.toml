@@ -1,12 +1,10 @@
 [build-system]
-requires = ["scikit-build-core-conan>=0.7.1"]
+requires = ["scikit-build-core-conan"]
 build-backend = "scikit_build_core_conan.build"
 
 [project]
 name = "endstone"
-authors = [
-    { name = "Vincent Wu", email = "magicdroidx@gmail.com" }
-]
+authors = [{ name = "Vincent Wu", email = "magicdroidx@gmail.com" }]
 description = "Endstone offers a plugin API for Bedrock Dedicated Servers, supporting both Python and C++."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -72,15 +70,15 @@ metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
 sdist.include = ["endstone/_version.py"]
 
 [tool.scikit-build-core-conan]
-config = ["tools.cmake.cmaketoolchain:generator=Ninja"]
+settings-all = ["build_type=Release", "&:build_type=RelWithDebInfo"]
 
 [[tool.scikit-build-core-conan.overrides]]
 if.platform-system = "win32"
-settings = ["compiler.cppstd=20"]
+profile-all = "windows"
 
 [[tool.scikit-build-core-conan.overrides]]
 if.platform-system = "linux"
-settings = ["compiler.cppstd=20", "compiler.libcxx=libc++"]
+profile-all = "linux"
 
 [tool.setuptools_scm]
 write_to = "endstone/_version.py"

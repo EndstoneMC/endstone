@@ -16,7 +16,7 @@
 
 #include "bedrock/symbol.h"
 
-void BlockTypeRegistry::forEachBlockType(brstd::function_ref<bool(const BlockType &)> callback)
+void BlockTypeRegistry::forEachBlockType(brstd::function_ref<bool(const BlockType &)> callback) const
 {
     BEDROCK_CALL(&BlockTypeRegistry::forEachBlockType, this, callback);
 }
