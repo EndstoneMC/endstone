@@ -1,4 +1,4 @@
-timestamp = 1778978027
+timestamp = 1779729774
 version = "1.26.20"
 
 [symbols]
@@ -45,7 +45,7 @@ version = "1.26.20"
 # FurnaceBlockActor
 "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 65467968
 # InventoryTransaction
-"?executeWorldInteraction@InventoryTransaction@@SA?AW4InventoryTransactionError@@PEAXAEAVPlayer@@AEBVInventoryAction@@@Z" = 48046080
+"?executeWorldInteraction@InventoryTransaction@@SA?AW4InventoryTransactionError@@PEAXAEAVPlayer@@AEBVInventoryAction@@@Z" = 48048704
 # Item
 "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z" = 19850960
 # ItemInstance

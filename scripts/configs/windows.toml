@@ -216,7 +216,7 @@ pattern = "48 89 74 24 ? 57 48 83 EC ? 80 79 ? ? 48 8B F9"
 name = "?executeWorldInteraction@InventoryTransaction@@SA?AW4InventoryTransactionError@@PEAXAEAVPlayer@@AEBVInventoryAction@@@Z"
 relative = false
 extra = 0
-pattern = "56 53 48 83 EC ? ? ? ? ? 41 8B 48"
+pattern = "56 57 53 48 83 EC ? 41 8B 40"
 
 [[signatures]]
 name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"
