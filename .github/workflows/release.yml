@@ -1,17 +1,9 @@
 name: Release
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: "Version to release (e.g. 0.11.3)"
-        required: true
-        type: string
-      dry_run:
-        description: "Preview without making changes"
-        required: false
-        type: boolean
-        default: false
+  push:
+    tags:
+      - 'v*'
 
 permissions:
   contents: write
@@ -27,87 +19,28 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Validate version
+      - name: Extract version from tag
         run: |
-          VERSION="${{ inputs.version }}"
+          VERSION="${GITHUB_REF_NAME#v}"
           if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "::error::Invalid version format: $VERSION (expected X.Y.Z)"
-            exit 1
-          fi
-          if git tag -l "v$VERSION" | grep -q .; then
-            echo "::error::Tag v$VERSION already exists"
+            echo "::error::Invalid tag format: $GITHUB_REF_NAME (expected vX.Y.Z)"
             exit 1
           fi
           echo "VERSION=$VERSION" >> "$GITHUB_ENV"
 
-      - name: Extract unreleased changelog
+      - name: Extract release notes from CHANGELOG.md
         run: |
-          BODY=$(sed -n '/^## \[Unreleased\]/,/^## \[/{/^## \[/d; p}' CHANGELOG.md)
+          BODY=$(sed -n "/^## \[$VERSION\]/,/^## \[/{/^## \[/d; p}" CHANGELOG.md)
           BODY=$(echo "$BODY" | sed '/./,$!d' | sed -e :a -e '/^\n*$/{$d;N;ba}')
           if [ -z "$BODY" ]; then
-            echo "::error::Unreleased section in CHANGELOG.md is empty"
+            echo "::error::No [$VERSION] section found in CHANGELOG.md. Stamp the changelog before tagging."
             exit 1
           fi
           echo "$BODY" > /tmp/release_body.md
-          echo "Extracted changelog:"
+          echo "Extracted release notes:"
           echo "$BODY"
 
-      - name: Preview
-        if: inputs.dry_run
-        run: |
-          DATE=$(date -u +%Y-%m-%d)
-          echo "=== Dry Run ==="
-          echo "Version: $VERSION"
-          echo "Tag: v$VERSION"
-          echo "Date: $DATE"
-          echo ""
-          echo "=== Release Body ==="
-          cat /tmp/release_body.md
-
-      - name: Update CHANGELOG.md
-        if: ${{ !inputs.dry_run }}
-        run: |
-          DATE=$(date -u +%Y-%m-%d)
-
-          # Stamp the [Unreleased] section with the new version
-          sed -i "s/^## \[Unreleased\]/## [Unreleased]\n\n## [$VERSION] - $DATE/" CHANGELOG.md
-
-          # Determine the previous version tag for the compare link
-          PREV_TAG=$(git tag --sort=-v:refname | head -n1)
-
-          # Add reference links: insert new version link after the last existing link
-          # and add/update the [Unreleased] compare link
-          if grep -q '^\[Unreleased\]:' CHANGELOG.md; then
-            sed -i "s|^\[Unreleased\]:.*|[Unreleased]: https://github.com/${{ github.repository }}/compare/v$VERSION...HEAD|" CHANGELOG.md
-          else
-            # No [Unreleased] link exists yet — add it before the first version link
-            sed -i "0,/^\[0\./s|^\[0\.|[Unreleased]: https://github.com/${{ github.repository }}/compare/v$VERSION...HEAD\n[0.|" CHANGELOG.md
-          fi
-
-          # Insert the new version compare link after the [Unreleased] link
-          if [ -n "$PREV_TAG" ]; then
-            sed -i "/^\[Unreleased\]:/a [$VERSION]: https://github.com/${{ github.repository }}/compare/$PREV_TAG...v$VERSION" CHANGELOG.md
-          else
-            sed -i "/^\[Unreleased\]:/a [$VERSION]: https://github.com/${{ github.repository }}/releases/tag/v$VERSION" CHANGELOG.md
-          fi
-
-      - name: Commit and tag
-        if: ${{ !inputs.dry_run }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add CHANGELOG.md
-          git commit -m "Release $VERSION"
-          git tag "v$VERSION"
-
-      - name: Push
-        if: ${{ !inputs.dry_run }}
-        run: |
-          git push origin ${{ github.ref_name }}
-          git push origin "v$VERSION"
-
-      - name: Create GitHub release
-        if: ${{ !inputs.dry_run }}
+      - name: Create or update GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -116,6 +49,14 @@ jobs:
             printf '\n**Full Changelog**: https://github.com/%s/compare/%s...v%s\n' \
               "${{ github.repository }}" "$PREV_TAG" "$VERSION" >> /tmp/release_body.md
           fi
-          gh release create "v$VERSION" \
-            --title "v$VERSION" \
-            --notes-file /tmp/release_body.md
+          # Idempotent: wheel.yml's softprops/action-gh-release@v2 may have
+          # already auto-created the release while uploading the portable zip.
+          if gh release view "v$VERSION" >/dev/null 2>&1; then
+            gh release edit "v$VERSION" \
+              --title "v$VERSION" \
+              --notes-file /tmp/release_body.md
+          else
+            gh release create "v$VERSION" \
+              --title "v$VERSION" \
+              --notes-file /tmp/release_body.md
+          fi
