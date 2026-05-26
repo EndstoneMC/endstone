@@ -92,8 +92,8 @@
 | define  | [**ENDSTONE\_TOSTRING**](detail_8h.md#define-endstone_tostring) (x) `ENDSTONE\_STRINGIFY(x)`<br> |
 | define  | [**ENDSTONE\_VERSION**](detail_8h.md#define-endstone_version)  `/* multi line expression */`<br> |
 | define  | [**ENDSTONE\_VERSION\_MAJOR**](detail_8h.md#define-endstone_version_major)  `0`<br> |
-| define  | [**ENDSTONE\_VERSION\_MINOR**](detail_8h.md#define-endstone_version_minor)  `11`<br> |
-| define  | [**ENDSTONE\_VERSION\_PATCH**](detail_8h.md#define-endstone_version_patch)  `4`<br> |
+| define  | [**ENDSTONE\_VERSION\_MINOR**](detail_8h.md#define-endstone_version_minor)  `12`<br> |
+| define  | [**ENDSTONE\_VERSION\_PATCH**](detail_8h.md#define-endstone_version_patch)  `0`<br> |
 | define  | [**MINECRAFT\_VERSION**](detail_8h.md#define-minecraft_version)  `ENDSTONE\_TOSTRING(MINECRAFT\_VERSION\_MINOR) "." ENDSTONE\_TOSTRING(MINECRAFT\_VERSION\_PATCH)`<br> |
 | define  | [**MINECRAFT\_VERSION\_MAJOR**](detail_8h.md#define-minecraft_version_major)  `1`<br> |
 | define  | [**MINECRAFT\_VERSION\_MINOR**](detail_8h.md#define-minecraft_version_minor)  `26`<br> |
@@ -178,7 +178,7 @@
 ### define ENDSTONE\_VERSION\_MINOR 
 
 ```C++
-#define ENDSTONE_VERSION_MINOR `11`
+#define ENDSTONE_VERSION_MINOR `12`
 ```
 
 
@@ -191,7 +191,7 @@
 ### define ENDSTONE\_VERSION\_PATCH 
 
 ```C++
-#define ENDSTONE_VERSION_PATCH `4`
+#define ENDSTONE_VERSION_PATCH `0`
 ```
 
 

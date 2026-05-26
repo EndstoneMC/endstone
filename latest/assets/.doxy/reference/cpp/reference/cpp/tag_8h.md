@@ -10,6 +10,7 @@
 
 
 
+* `#include <bit>`
 * `#include <cstddef>`
 * `#include <cstdint>`
 * `#include <regex>`
@@ -27,6 +28,7 @@
 * `#include "endstone/nbt/list.h"`
 * `#include "endstone/nbt/type.h"`
 * `#include "endstone/nbt/value.h"`
+* `#include "endstone/nbt/io.h"`
 
 
 

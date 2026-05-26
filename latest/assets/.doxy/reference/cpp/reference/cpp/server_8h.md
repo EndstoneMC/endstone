@@ -16,20 +16,20 @@
 * `#include <stdexcept>`
 * `#include <string>`
 * `#include <string_view>`
+* `#include <typeinfo>`
 * `#include <utility>`
 * `#include <vector>`
 * `#include "endstone/ban/ip_ban_list.h"`
 * `#include "endstone/ban/player_ban_list.h"`
 * `#include "endstone/block/block_data.h"`
 * `#include "endstone/boss/boss_bar.h"`
+* `#include "endstone/command/command_sender.h"`
 * `#include "endstone/lang/language.h"`
-* `#include "endstone/level/level.h"`
 * `#include "endstone/logger.h"`
 * `#include "endstone/map/map_view.h"`
-* `#include "endstone/player.h"`
+* `#include "endstone/message.h"`
 * `#include "endstone/plugin/service_manager.h"`
 * `#include "endstone/scoreboard/scoreboard.h"`
-* `#include "endstone/util/result.h"`
 * `#include "endstone/util/uuid.h"`
 
 

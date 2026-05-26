@@ -37,7 +37,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_type.h" line="41" column="19"/>
+        <location file="include/endstone/block/block_type.h" line="39" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockType_1aa415d093dbd60f47b0cb358d70c2ddb7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_type.h" line="49" column="30"/>
+        <location file="include/endstone/block/block_type.h" line="47" column="30"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -86,7 +86,7 @@
         <link refid="classendstone_1_1Registry_1_1Type"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/block/block_type.h" line="30" column="1" bodyfile="include/endstone/block/block_type.h" bodystart="30" bodyend="50"/>
+    <location file="include/endstone/block/block_type.h" line="30" column="1" bodyfile="include/endstone/block/block_type.h" bodystart="30" bodyend="48"/>
     <listofallmembers>
       <member refid="classendstone_1_1BlockType_1aeae830d84b5168ebccfe9775be5e8bfc" prot="public" virt="non-virtual"><scope>endstone::BlockType</scope><name>Air</name></member>
       <member refid="classendstone_1_1BlockType_1aa415d093dbd60f47b0cb358d70c2ddb7" prot="public" virt="pure-virtual"><scope>endstone::BlockType</scope><name>createBlockData</name></member>

@@ -37,9 +37,9 @@ namespace endstone {
 class BlockPlaceEvent : public Cancellable<BlockEvent> {
 public:
     ENDSTONE_EVENT(BlockPlaceEvent);
-    explicit BlockPlaceEvent(std::unique_ptr<BlockState> placed_block, std::unique_ptr<Block> replaced_block,
+    explicit BlockPlaceEvent(std::unique_ptr<Block> placed_block, std::unique_ptr<BlockState> replaced_state,
                              std::unique_ptr<Block> placed_against, Player &player)
-        : Cancellable(std::move(replaced_block)), placed_block_(std::move(placed_block)),
+        : Cancellable(std::move(placed_block)), replaced_state_(std::move(replaced_state)),
           placed_against_(std::move(placed_against)), player_(player)
     {
     }
@@ -47,18 +47,16 @@ public:
 
     [[nodiscard]] Player &getPlayer() const { return player_; }
 
-    [[nodiscard]] BlockState &getBlockPlacedState() const { return *placed_block_; }
+    [[nodiscard]] Block &getBlockPlaced() const { return getBlock(); }
 
-    [[nodiscard]] Block &getBlockReplaced() const { return getBlock(); }
+    [[nodiscard]] BlockState &getBlockReplacedState() const { return *replaced_state_; }
 
     [[nodiscard]] Block &getBlockAgainst() const { return *placed_against_; }
 
 private:
-    std::unique_ptr<BlockState> placed_block_;
+    std::unique_ptr<BlockState> replaced_state_;
     std::unique_ptr<Block> placed_against_;
     Player &player_;
-    // TODO(event): add ItemStack item
-    // TODO(event): add BlockState placedBlockState
 };
 
 }  // namespace endstone

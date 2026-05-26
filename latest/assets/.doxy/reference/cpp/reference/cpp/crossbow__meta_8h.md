@@ -10,7 +10,7 @@
 
 
 
-* `#include <vector>`
+* `#include <optional>`
 * `#include "endstone/inventory/meta/item_meta.h"`
 
 
@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) <br>_Represents the meta for a crossbow that can have charged projectiles._  |
+| class | [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) <br>_Represents the meta for a crossbow that can have a charged projectile._  |
 
 
 

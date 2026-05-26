@@ -12,6 +12,7 @@
 
 * `#include <memory>`
 * `#include <utility>`
+* `#include "endstone/actor/mob.h"`
 * `#include "endstone/damage/damage_source.h"`
 * `#include "endstone/event/actor/actor_event.h"`
 

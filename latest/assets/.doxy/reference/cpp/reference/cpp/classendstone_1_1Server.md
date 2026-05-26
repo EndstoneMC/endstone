@@ -60,7 +60,7 @@ _Represents a server implementation._
 | ---: | :--- |
 |   | [**Server**](#function-server-12) () = default<br> |
 |   | [**Server**](#function-server-22) ([**const**](classendstone_1_1Identifier.md) [**Server**](classendstone_1_1Server.md) &) = delete<br> |
-| virtual [**IRegistry**](classendstone_1_1IRegistry.md) \* | [**\_getRegistry**](#function-_getregistry) ([**const**](classendstone_1_1Identifier.md) std::string & type) const = 0<br>_Returns the registry for the given type._  |
+| virtual [**IRegistry**](classendstone_1_1IRegistry.md) \* | [**\_getRegistry**](#function-_getregistry) ([**const**](classendstone_1_1Identifier.md) std::type\_info & type) const = 0<br>_Returns the registry for the given type._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**broadcast**](#function-broadcast) ([**const**](classendstone_1_1Identifier.md) Message & message, [**const**](classendstone_1_1Identifier.md) std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-12) ([**const**](classendstone_1_1Identifier.md) Message & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-22) ([**const**](classendstone_1_1Identifier.md) fmt::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
@@ -206,7 +206,7 @@ endstone::Server::Server (
 _Returns the registry for the given type._ 
 ```C++
 virtual IRegistry * endstone::Server::_getRegistry (
-    const std::string & type
+    const std::type_info & type
 ) const = 0
 ```
 

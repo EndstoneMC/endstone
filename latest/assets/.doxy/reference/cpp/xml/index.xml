@@ -19,9 +19,7 @@
     <member refid="classendstone_1_1ActionForm_1ad6432d9fec3543615bc2a79a33c846a5" kind="function"><name>setOnSubmit</name></member>
   </compound>
   <compound refid="classendstone_1_1Actor" kind="class"><name>endstone::Actor</name>
-    <member refid="classendstone_1_1Actor_1acbd7afe34e58507083765ae5d27ff9c0" kind="function"><name>asMob</name></member>
-    <member refid="classendstone_1_1Actor_1a6c81fe219b046d28cdf13c5c400793c6" kind="function"><name>asItem</name></member>
-    <member refid="classendstone_1_1Actor_1a35dbee5875715f9edd8be8b117377129" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1Actor_1aa0f55b8bda747d969190c12da00e4fe8" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" kind="function"><name>getRuntimeId</name></member>
     <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" kind="function"><name>getLocation</name></member>
     <member refid="classendstone_1_1Actor_1a991a21714a41b82ee7785c0dbf176c3a" kind="function"><name>getVelocity</name></member>
@@ -69,6 +67,7 @@
     <member refid="classendstone_1_1ActorEvent_1a07f53f59692095b4a31a6e3d95128015" kind="function"><name>ActorEvent</name></member>
     <member refid="classendstone_1_1ActorEvent_1a9fff5524effc04e99bb28d49a9b37b6f" kind="function"><name>~ActorEvent</name></member>
     <member refid="classendstone_1_1ActorEvent_1a49c459c96e831dbab2333ec2187ea552" kind="function"><name>getActor</name></member>
+    <member refid="classendstone_1_1ActorEvent_1a7a63d377ca9e669fbac6e7c9305e1ddb" kind="function"><name>getActorType</name></member>
   </compound>
   <compound refid="classendstone_1_1ActorExplodeEvent" kind="class"><name>endstone::ActorExplodeEvent</name>
     <member refid="classendstone_1_1ActorExplodeEvent_1ab00296fbcda8ba6a5495a4d8bc15e2bc" kind="typedef"><name>BlockList</name></member>
@@ -111,6 +110,143 @@
     <member refid="classendstone_1_1ActorTeleportEvent_1ac71b31960417257ca1b2abaf7fc3e5e2" kind="function"><name>setFrom</name></member>
     <member refid="classendstone_1_1ActorTeleportEvent_1ab0bce5bf080702eb2808d46e7e1ab612" kind="function"><name>getTo</name></member>
     <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" kind="function"><name>setTo</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ActorType" kind="class"><name>endstone::ActorType</name>
+    <member refid="classendstone_1_1ActorType_1a2963964779e1b9af72af24df5863b010" kind="variable"><name>Allay</name></member>
+    <member refid="classendstone_1_1ActorType_1a9cbd7152881d4131b032d5963b768f94" kind="variable"><name>Armadillo</name></member>
+    <member refid="classendstone_1_1ActorType_1a51d6ebcec7d05d20d405ef336c7e8a75" kind="variable"><name>Axolotl</name></member>
+    <member refid="classendstone_1_1ActorType_1a3c775c7da38385cad6c29bdad84afe21" kind="variable"><name>Bat</name></member>
+    <member refid="classendstone_1_1ActorType_1a0b9ffd91ee648910535715c2822c9028" kind="variable"><name>Bee</name></member>
+    <member refid="classendstone_1_1ActorType_1afbaa3e151a74c29e71d2ca75c0a8466c" kind="variable"><name>Camel</name></member>
+    <member refid="classendstone_1_1ActorType_1a64fe2cd7c8c1f14ddddfc170363d57e0" kind="variable"><name>CamelHusk</name></member>
+    <member refid="classendstone_1_1ActorType_1a60e0d5ad8b61c27be5ec67f7a334f31d" kind="variable"><name>Cat</name></member>
+    <member refid="classendstone_1_1ActorType_1abc6646722c8692c96c727f7d26567e56" kind="variable"><name>Chicken</name></member>
+    <member refid="classendstone_1_1ActorType_1a7bf3cf06ed3e85deb9199a88e6d220bb" kind="variable"><name>Cod</name></member>
+    <member refid="classendstone_1_1ActorType_1a268f42aed1495368c046b97613ef06be" kind="variable"><name>CopperGolem</name></member>
+    <member refid="classendstone_1_1ActorType_1a338c364be666c4af500a54bd1bcdb318" kind="variable"><name>Cow</name></member>
+    <member refid="classendstone_1_1ActorType_1a34feaae10c34f5d5422256c7ef6ee134" kind="variable"><name>Dolphin</name></member>
+    <member refid="classendstone_1_1ActorType_1aeb2f5917c497c307d2fd788a9eb08acf" kind="variable"><name>Donkey</name></member>
+    <member refid="classendstone_1_1ActorType_1a5e48507eb02490e4b19a7c1266b80021" kind="variable"><name>Fox</name></member>
+    <member refid="classendstone_1_1ActorType_1a4d6be59150245afeb6fe7a4e8de2192d" kind="variable"><name>Frog</name></member>
+    <member refid="classendstone_1_1ActorType_1a30728d8edd9c4c2b23feafb789ea45e1" kind="variable"><name>GlowSquid</name></member>
+    <member refid="classendstone_1_1ActorType_1a8f1e3f1c80d54dc9a09262c7d1236e23" kind="variable"><name>Goat</name></member>
+    <member refid="classendstone_1_1ActorType_1a6f9fe8a722a7a80eded09983dd592e17" kind="variable"><name>HappyGhast</name></member>
+    <member refid="classendstone_1_1ActorType_1a59df07f1781aa384515c3396dac019b6" kind="variable"><name>Hoglin</name></member>
+    <member refid="classendstone_1_1ActorType_1ac92833c570a35d0c35e0e92d71d00cd4" kind="variable"><name>Horse</name></member>
+    <member refid="classendstone_1_1ActorType_1a65f86790262256febd11d3bb08b6a10f" kind="variable"><name>IronGolem</name></member>
+    <member refid="classendstone_1_1ActorType_1a1766e16a39859d07d61b4eae00c28b7c" kind="variable"><name>Llama</name></member>
+    <member refid="classendstone_1_1ActorType_1aa49e4904ecedd04fc95c48c63ab758d3" kind="variable"><name>Mooshroom</name></member>
+    <member refid="classendstone_1_1ActorType_1aaa574db24c873a420026610bdce2f4d1" kind="variable"><name>Mule</name></member>
+    <member refid="classendstone_1_1ActorType_1a2a647e3612f50f22e1559902bec0e870" kind="variable"><name>Nautilus</name></member>
+    <member refid="classendstone_1_1ActorType_1ac8fdf3f898b505d54dcc3c219fa91622" kind="variable"><name>Ocelot</name></member>
+    <member refid="classendstone_1_1ActorType_1aa6495b101e0beaa93a32d7f9ae7c02c2" kind="variable"><name>Panda</name></member>
+    <member refid="classendstone_1_1ActorType_1a74ce1be1bbc323b9f8765673b22e4ae3" kind="variable"><name>Parrot</name></member>
+    <member refid="classendstone_1_1ActorType_1a564047a2ab6fc51f8c753cfe659ebde6" kind="variable"><name>Pig</name></member>
+    <member refid="classendstone_1_1ActorType_1a363465ebac374f1760e28eb7cb13a497" kind="variable"><name>PolarBear</name></member>
+    <member refid="classendstone_1_1ActorType_1a1048f0bf6dccc2a716bf73ab472e80b1" kind="variable"><name>Pufferfish</name></member>
+    <member refid="classendstone_1_1ActorType_1a0ae7bfa967a5e921fa37a6d2a2af364a" kind="variable"><name>Rabbit</name></member>
+    <member refid="classendstone_1_1ActorType_1a6c45b37830734c8e511eea834021b082" kind="variable"><name>Salmon</name></member>
+    <member refid="classendstone_1_1ActorType_1a74e5f04a74c767eda82cb683da3d6f01" kind="variable"><name>Sheep</name></member>
+    <member refid="classendstone_1_1ActorType_1a56d141db83dd9cbb1f78f323baf9595e" kind="variable"><name>SkeletonHorse</name></member>
+    <member refid="classendstone_1_1ActorType_1a64954f5de6da1c9ced13e6acb26e36af" kind="variable"><name>Sniffer</name></member>
+    <member refid="classendstone_1_1ActorType_1a56212a4c23a856ea406beac345416fa4" kind="variable"><name>SnowGolem</name></member>
+    <member refid="classendstone_1_1ActorType_1a0f48768187f5745f55d843967cee5f58" kind="variable"><name>Squid</name></member>
+    <member refid="classendstone_1_1ActorType_1a1d6f5bbea51f7e366e19e7f2939d73e9" kind="variable"><name>Strider</name></member>
+    <member refid="classendstone_1_1ActorType_1a29314390bae6d07a6ac93118d4d1d250" kind="variable"><name>Tadpole</name></member>
+    <member refid="classendstone_1_1ActorType_1acd612c91ef6b15d975d3da74168e44c2" kind="variable"><name>TraderLlama</name></member>
+    <member refid="classendstone_1_1ActorType_1ae90adcead939ad73532e9b7e5696bf15" kind="variable"><name>Tropicalfish</name></member>
+    <member refid="classendstone_1_1ActorType_1ad6fc984d51f2baa794029b918e3605a7" kind="variable"><name>Turtle</name></member>
+    <member refid="classendstone_1_1ActorType_1ad4962c4d50c7b211240f357b8089cca4" kind="variable"><name>WanderingTrader</name></member>
+    <member refid="classendstone_1_1ActorType_1add0f7c30beb39030157e9d8363f2407a" kind="variable"><name>Wolf</name></member>
+    <member refid="classendstone_1_1ActorType_1aa1d7a9b32a26593653339b7dbf6a040c" kind="variable"><name>ZombieHorse</name></member>
+    <member refid="classendstone_1_1ActorType_1a2fa1ed1495de733ea77bc4227b61d548" kind="variable"><name>Blaze</name></member>
+    <member refid="classendstone_1_1ActorType_1a378762e5812423f2f9d9cfed24f5eee0" kind="variable"><name>Bogged</name></member>
+    <member refid="classendstone_1_1ActorType_1afb1d2d3f09c3235f9b2fda3321714503" kind="variable"><name>Breeze</name></member>
+    <member refid="classendstone_1_1ActorType_1afa0e5997fb23459ea372aa36c8c6fa65" kind="variable"><name>CaveSpider</name></member>
+    <member refid="classendstone_1_1ActorType_1acf3ed9b8e1f7881eb9f7c73c7be7dfb0" kind="variable"><name>Creaking</name></member>
+    <member refid="classendstone_1_1ActorType_1a8ca53359919aa9374bf9c3f4f219d992" kind="variable"><name>Creeper</name></member>
+    <member refid="classendstone_1_1ActorType_1a145bfaa4534730dfdda5ad1ed9aa1353" kind="variable"><name>Drowned</name></member>
+    <member refid="classendstone_1_1ActorType_1a0344ccfc93bd768d6859c6bee8cfa44c" kind="variable"><name>ElderGuardian</name></member>
+    <member refid="classendstone_1_1ActorType_1a5df0ddc9bb588842599125c3b22536a1" kind="variable"><name>ElderGuardianGhost</name></member>
+    <member refid="classendstone_1_1ActorType_1a448fc4417c9b93469d6272927c565140" kind="variable"><name>Enderman</name></member>
+    <member refid="classendstone_1_1ActorType_1a862a257cd40244978d86d1d443e2acdc" kind="variable"><name>Endermite</name></member>
+    <member refid="classendstone_1_1ActorType_1a41f90388498bc592a92f0df09810d6e6" kind="variable"><name>EvocationIllager</name></member>
+    <member refid="classendstone_1_1ActorType_1af2269cee60f5347383eb27507164f5d5" kind="variable"><name>Ghast</name></member>
+    <member refid="classendstone_1_1ActorType_1add42657123d40c25585cdf823005db9d" kind="variable"><name>Guardian</name></member>
+    <member refid="classendstone_1_1ActorType_1a26980ab164395fb2cecac8402d2ebb5f" kind="variable"><name>Husk</name></member>
+    <member refid="classendstone_1_1ActorType_1a6e20c21909a3048c39e800ca8e46f45d" kind="variable"><name>MagmaCube</name></member>
+    <member refid="classendstone_1_1ActorType_1a72c99507d1e954c92c88d42f9ded4cc3" kind="variable"><name>Parched</name></member>
+    <member refid="classendstone_1_1ActorType_1a967bc4835b4e2c759dce3f368b72d831" kind="variable"><name>Phantom</name></member>
+    <member refid="classendstone_1_1ActorType_1ad4b0ed83c1ecd1dfea0cf6aaf50bac7e" kind="variable"><name>Piglin</name></member>
+    <member refid="classendstone_1_1ActorType_1aeba9fcb04d497caad638acce1c3ae940" kind="variable"><name>PiglinBrute</name></member>
+    <member refid="classendstone_1_1ActorType_1a68c47f1a6bf163669ec5f94208f6c9e3" kind="variable"><name>Pillager</name></member>
+    <member refid="classendstone_1_1ActorType_1a131c53b1c5fc224880ad4f41e9268207" kind="variable"><name>Ravager</name></member>
+    <member refid="classendstone_1_1ActorType_1a1801cc6d9fcf2a66958e4fc5a33d1219" kind="variable"><name>Shulker</name></member>
+    <member refid="classendstone_1_1ActorType_1accf107bea5846a59f95f8b95dfb6d878" kind="variable"><name>Silverfish</name></member>
+    <member refid="classendstone_1_1ActorType_1a2afc4f40a9d5dd1db0bc71aa03150861" kind="variable"><name>Skeleton</name></member>
+    <member refid="classendstone_1_1ActorType_1a04408c84bd3875ef4bd256710456c579" kind="variable"><name>Slime</name></member>
+    <member refid="classendstone_1_1ActorType_1ac26bb49e22609d4f73eb80bd8a3cb1f9" kind="variable"><name>Spider</name></member>
+    <member refid="classendstone_1_1ActorType_1ad1d271f92627b922e3394b54c2bcb239" kind="variable"><name>Stray</name></member>
+    <member refid="classendstone_1_1ActorType_1acefb1e90f94c9a8beed6d91bf252eb61" kind="variable"><name>Vex</name></member>
+    <member refid="classendstone_1_1ActorType_1ab61a995e9fbe281c5dfcf2df7d514d7c" kind="variable"><name>Vindicator</name></member>
+    <member refid="classendstone_1_1ActorType_1aea159eb50cbdda697192cdffff841c6e" kind="variable"><name>Warden</name></member>
+    <member refid="classendstone_1_1ActorType_1a9b700d0bb2e6647e1157b1a1bfbcaf48" kind="variable"><name>Witch</name></member>
+    <member refid="classendstone_1_1ActorType_1a20490c6c685d2c08599349186742a7ca" kind="variable"><name>Wither</name></member>
+    <member refid="classendstone_1_1ActorType_1aa0ab628de6861c91a938b97ece5c3df8" kind="variable"><name>WitherSkeleton</name></member>
+    <member refid="classendstone_1_1ActorType_1a98786096e7ce179f49c4bffb8b526fa1" kind="variable"><name>Zoglin</name></member>
+    <member refid="classendstone_1_1ActorType_1afbb02668f2e5f806d9cb092de72a01d3" kind="variable"><name>Zombie</name></member>
+    <member refid="classendstone_1_1ActorType_1a50333650e9f33ed3e71b00d03a8434d2" kind="variable"><name>ZombieNautilus</name></member>
+    <member refid="classendstone_1_1ActorType_1a247ed61f99c456997006a040af8d56f8" kind="variable"><name>ZombiePigman</name></member>
+    <member refid="classendstone_1_1ActorType_1a393582c7b5d5ee4eea0272909a8e77ab" kind="variable"><name>ZombieVillager</name></member>
+    <member refid="classendstone_1_1ActorType_1a0cd587036af64d5409fd33497f38dbe8" kind="variable"><name>ZombieVillagerV2</name></member>
+    <member refid="classendstone_1_1ActorType_1ad47ee939f9f146f98907e0c9371929e6" kind="variable"><name>Villager</name></member>
+    <member refid="classendstone_1_1ActorType_1afda72adcddc77f67ad56611f3efdc9be" kind="variable"><name>VillagerV2</name></member>
+    <member refid="classendstone_1_1ActorType_1ac591b53b8f3aa18f307f00151dbf6372" kind="variable"><name>Agent</name></member>
+    <member refid="classendstone_1_1ActorType_1aca8e74b25834de29c30b89c9278b37e8" kind="variable"><name>ArmorStand</name></member>
+    <member refid="classendstone_1_1ActorType_1a19a784206b48adff4ec6f749f3123380" kind="variable"><name>EnderDragon</name></member>
+    <member refid="classendstone_1_1ActorType_1a2f10c38022c93d00c8e57b6eef85dc41" kind="variable"><name>Npc</name></member>
+    <member refid="classendstone_1_1ActorType_1a4876c40e25367f5ab339d8c49ea1f229" kind="variable"><name>Player</name></member>
+    <member refid="classendstone_1_1ActorType_1a72e5654a3f22422c25e48ac68cf8707e" kind="variable"><name>TripodCamera</name></member>
+    <member refid="classendstone_1_1ActorType_1ab0476b55e3c2290c70bd366d07875ed8" kind="variable"><name>AreaEffectCloud</name></member>
+    <member refid="classendstone_1_1ActorType_1a8affc1ae39b1622c5cdf033f416d4e7d" kind="variable"><name>Arrow</name></member>
+    <member refid="classendstone_1_1ActorType_1a4627e211a50d63cf873edf3c539fd44e" kind="variable"><name>Balloon</name></member>
+    <member refid="classendstone_1_1ActorType_1ad8b96a4f2a652b3432b31b4c17616a5e" kind="variable"><name>Boat</name></member>
+    <member refid="classendstone_1_1ActorType_1a23da6abda61da91c44681133eec4b3da" kind="variable"><name>BreezeWindChargeProjectile</name></member>
+    <member refid="classendstone_1_1ActorType_1a1287b2046026c78de565d8d756043180" kind="variable"><name>ChestBoat</name></member>
+    <member refid="classendstone_1_1ActorType_1a70602ad894433fb59d6661ef6fa76d54" kind="variable"><name>ChestMinecart</name></member>
+    <member refid="classendstone_1_1ActorType_1ad0c47f1bd6a02278afba42ad37fc8e87" kind="variable"><name>CommandBlockMinecart</name></member>
+    <member refid="classendstone_1_1ActorType_1a11c7f20858cf713055d137c6dbd8fdad" kind="variable"><name>DragonFireball</name></member>
+    <member refid="classendstone_1_1ActorType_1a10312249776a7000b9644e0ebfdd1cce" kind="variable"><name>Egg</name></member>
+    <member refid="classendstone_1_1ActorType_1ace3af7d8d24722c9f2be2d5a1b4fd314" kind="variable"><name>EnderCrystal</name></member>
+    <member refid="classendstone_1_1ActorType_1a935a236ba8ad7343ba15cfbb29f745ed" kind="variable"><name>EnderPearl</name></member>
+    <member refid="classendstone_1_1ActorType_1ad364c7deacfeda2bbaf1aa3f75da0666" kind="variable"><name>EvocationFang</name></member>
+    <member refid="classendstone_1_1ActorType_1ab50b364796a6b0c43d76cfbdfa778b7b" kind="variable"><name>EyeOfEnderSignal</name></member>
+    <member refid="classendstone_1_1ActorType_1a554a8595e1026625ecbb3ba0c79cbd1b" kind="variable"><name>FallingBlock</name></member>
+    <member refid="classendstone_1_1ActorType_1aa79cef5c7cdec1071225413cba40e4de" kind="variable"><name>Fireball</name></member>
+    <member refid="classendstone_1_1ActorType_1a2f7b8c4fc99bbbe6bc95fdc0ca7589bd" kind="variable"><name>FireworksRocket</name></member>
+    <member refid="classendstone_1_1ActorType_1a516d10eb0838e59a13297d8f53bbb223" kind="variable"><name>FishingHook</name></member>
+    <member refid="classendstone_1_1ActorType_1ad5741e92431149036d54bbbd22448401" kind="variable"><name>HopperMinecart</name></member>
+    <member refid="classendstone_1_1ActorType_1ab3268edef5073d1f4694eabc2d9c24dd" kind="variable"><name>IceBomb</name></member>
+    <member refid="classendstone_1_1ActorType_1a1610d2f9e42c0ceab6882544461330b1" kind="variable"><name>Item</name></member>
+    <member refid="classendstone_1_1ActorType_1a4e2c51d8436f098ace580c599b0e8b64" kind="variable"><name>LeashKnot</name></member>
+    <member refid="classendstone_1_1ActorType_1abce42d61795eedea65fbb1092bd7aadd" kind="variable"><name>LightningBolt</name></member>
+    <member refid="classendstone_1_1ActorType_1a159dfb932c0ed47a201d4e9a95b0773f" kind="variable"><name>LingeringPotion</name></member>
+    <member refid="classendstone_1_1ActorType_1a57f1d9729d329a774b8299a9ec63b6bf" kind="variable"><name>LlamaSpit</name></member>
+    <member refid="classendstone_1_1ActorType_1a89fdafdb64f8e2c21858fcb5c35a2140" kind="variable"><name>Minecart</name></member>
+    <member refid="classendstone_1_1ActorType_1a9892815c9ad54c4164f363913a6d1f98" kind="variable"><name>OminousItemSpawner</name></member>
+    <member refid="classendstone_1_1ActorType_1aab585c42c10b550625792266d88d2f78" kind="variable"><name>Painting</name></member>
+    <member refid="classendstone_1_1ActorType_1a8ae376f6bfff8559af63411bcb6b00e6" kind="variable"><name>ShulkerBullet</name></member>
+    <member refid="classendstone_1_1ActorType_1a6299ee66ddec207115545295e0c5e09a" kind="variable"><name>SmallFireball</name></member>
+    <member refid="classendstone_1_1ActorType_1a29fffc6b602b66cf822deadcf195f80e" kind="variable"><name>Snowball</name></member>
+    <member refid="classendstone_1_1ActorType_1a19759eb1d885d87d697f6bd737c7dc52" kind="variable"><name>SplashPotion</name></member>
+    <member refid="classendstone_1_1ActorType_1a3892f79d93f31d2642e22b2de07332fe" kind="variable"><name>ThrownTrident</name></member>
+    <member refid="classendstone_1_1ActorType_1acc4b1f25e653c2eb1084b718f7d40494" kind="variable"><name>Tnt</name></member>
+    <member refid="classendstone_1_1ActorType_1a09513b0939ac3746009ecaa11b742d2a" kind="variable"><name>TntMinecart</name></member>
+    <member refid="classendstone_1_1ActorType_1a8e5eb621321dfd5ab91f4236ec18b4fe" kind="variable"><name>WindChargeProjectile</name></member>
+    <member refid="classendstone_1_1ActorType_1abb297841aaa189b3eb54b493e20eb82d" kind="variable"><name>WitherSkull</name></member>
+    <member refid="classendstone_1_1ActorType_1ae025111327c7912ef303231d6f42cfbf" kind="variable"><name>WitherSkullDangerous</name></member>
+    <member refid="classendstone_1_1ActorType_1a8170481e030b764965d2e3bcc812a7b9" kind="variable"><name>XpBottle</name></member>
+    <member refid="classendstone_1_1ActorType_1adc3e87e80db7f0ea2bddf087fe7cd622" kind="variable"><name>XpOrb</name></member>
   </compound>
   <compound refid="classendstone_1_1nbt_1_1ArrayTag" kind="class"><name>endstone::nbt::ArrayTag</name>
     <member refid="classendstone_1_1nbt_1_1ArrayTag_1adf7d5bc7fc62e0182b232f3087f7d1e6" kind="typedef"><name>value_type</name></member>
@@ -261,6 +397,7 @@
   <compound refid="classendstone_1_1BlockData" kind="class"><name>endstone::BlockData</name>
     <member refid="classendstone_1_1BlockData_1afe42c3c7cc62c74f14f95c02e58c576e" kind="function"><name>~BlockData</name></member>
     <member refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1BlockData_1a52cc5370535fbc33bdd878238b16898f" kind="function"><name>getTranslationKey</name></member>
     <member refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" kind="function"><name>getBlockStates</name></member>
     <member refid="classendstone_1_1BlockData_1a7993d0ad6b7bdffea9d3a8e76734b179" kind="function"><name>getRuntimeId</name></member>
   </compound>
@@ -308,15 +445,15 @@
     <member refid="classendstone_1_1BlockPistonRetractEvent_1a4045e305bbfc65226b898f11a7ec8389" kind="function"><name>BlockPistonEvent</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockPlaceEvent" kind="class"><name>endstone::BlockPlaceEvent</name>
-    <member refid="classendstone_1_1BlockPlaceEvent_1a5ff8f8ed7c32f7d49f2cd81196fe0d93" kind="variable"><name>placed_block_</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a734430257551b89b05bb7c71d7a4ab0b" kind="variable"><name>replaced_state_</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1ab58f51c0b2c6e6faad8b5f990bcdd2fa" kind="variable"><name>placed_against_</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1a916d00309007668efdf242a1207e45e3" kind="variable"><name>player_</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1a846257ca82a9d7256f551ee36cfaae75" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1BlockPlaceEvent_1a73ef62fcb9caa9f9f873d9ddc6c46e9c" kind="function"><name>BlockPlaceEvent</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1ad5b26cf51663093d84d7430dd1bf05f5" kind="function"><name>BlockPlaceEvent</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1ab1bb2ece0d15adb5704b90587d971bed" kind="function"><name>~BlockPlaceEvent</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1aaa28353cb0631c1c63a84504abf7067e" kind="function"><name>getPlayer</name></member>
-    <member refid="classendstone_1_1BlockPlaceEvent_1aaa914dd3891c83edd97b8e3cdaf3b3c5" kind="function"><name>getBlockPlacedState</name></member>
-    <member refid="classendstone_1_1BlockPlaceEvent_1a5f25a2818f05265737b236b4568e2225" kind="function"><name>getBlockReplaced</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a6b8bc3f1e4367d32c1fcfc4e3825e07d" kind="function"><name>getBlockPlaced</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a1f1656bfe3b37ec3d8eaf09b13d145bc" kind="function"><name>getBlockReplacedState</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1a822e71386ca87244c89763e333cfe7b2" kind="function"><name>getBlockAgainst</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockState" kind="class"><name>endstone::BlockState</name>
@@ -553,11 +690,6 @@
     <member refid="classendstone_1_1CommandMap_1a8b44b32258c2a2d0dabfcc3618f1f383" kind="function"><name>getCommand</name></member>
   </compound>
   <compound refid="classendstone_1_1CommandSender" kind="class"><name>endstone::CommandSender</name>
-    <member refid="classendstone_1_1CommandSender_1a4f5be88d28d49e1c7424acd1c30fc893" kind="function"><name>asCommandSender</name></member>
-    <member refid="classendstone_1_1CommandSender_1a635ff0815f93ba402b40486e5b3a4fdb" kind="function"><name>asConsole</name></member>
-    <member refid="classendstone_1_1CommandSender_1ad60565f649ada2e97dd8f62c8d791027" kind="function"><name>asBlock</name></member>
-    <member refid="classendstone_1_1CommandSender_1aa3ff3e9752f3a3a7a84bc9058d7abbdc" kind="function"><name>asActor</name></member>
-    <member refid="classendstone_1_1CommandSender_1a13a510a2f1e21138d8dfa9f9c898e136" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kind="function"><name>sendErrorMessage</name></member>
@@ -583,10 +715,10 @@
     <member refid="classendstone_1_1CommandSenderWrapper_1a281c847b554cf4a5c6f6e22052bd3293" kind="function"><name>removeAttachment</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1a02337d177f390cee414977a16b3e07bd" kind="function"><name>recalculatePermissions</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1aeeb41c929000b7f74f64d289d509edba" kind="function"><name>getEffectivePermissions</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1a1ad4a226bbf1e73d89839d743585b678" kind="function"><name>asConsole</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1a6bcf6c6209c022c36c8d7d923a55f8f2" kind="function"><name>asBlock</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1a44729e5299e551a8058e457a60c64900" kind="function"><name>asActor</name></member>
-    <member refid="classendstone_1_1CommandSenderWrapper_1a367f090917a2dc9a34bfad1fb0fb29c2" kind="function"><name>asPlayer</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a32447f67b4a1cf445b8020fdf06518f5" kind="function"><name>getClassTypeId</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a98f9818a93988f413831e2c4e9d59db6" kind="function"><name>isInstanceOf</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a47cca1b9fe1b2823c19740b77e5c142a" kind="function"><name>getWrapped</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a2b78cec4928359c7f88126a5b696c5f2" kind="function"><name>getWrapped</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1ae4c0dbf8ed831f306f660688e294dcce" kind="function"><name>getServer</name></member>
     <member refid="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642" kind="function"><name>getName</name></member>
   </compound>
@@ -637,10 +769,9 @@
     <member refid="classendstone_1_1Criteria_1a62d2a81d1b34cb0c271bdf470b0064de" kind="function"><name>getDefaultRenderType</name></member>
   </compound>
   <compound refid="classendstone_1_1CrossbowMeta" kind="class"><name>endstone::CrossbowMeta</name>
-    <member refid="classendstone_1_1CrossbowMeta_1a459324fd5f1e597c8d86ab5f97bb2a81" kind="function"><name>hasChargedProjectiles</name></member>
-    <member refid="classendstone_1_1CrossbowMeta_1a38213a27173640679f1cceef0e727157" kind="function"><name>getChargedProjectiles</name></member>
-    <member refid="classendstone_1_1CrossbowMeta_1abf1ebaf64014c75db3c3d97005eabf4c" kind="function"><name>setChargedProjectiles</name></member>
-    <member refid="classendstone_1_1CrossbowMeta_1a6fdf10d11b9d51a4171436247750be58" kind="function"><name>addChargedProjectile</name></member>
+    <member refid="classendstone_1_1CrossbowMeta_1a25247a3a96495bcc9ef5580b287c954e" kind="function"><name>hasChargedProjectile</name></member>
+    <member refid="classendstone_1_1CrossbowMeta_1aff2f865a581e87ef8a8103ba3074175c" kind="function"><name>getChargedProjectile</name></member>
+    <member refid="classendstone_1_1CrossbowMeta_1a7e5fc67e1426488549f3a1adf42c746c" kind="function"><name>setChargedProjectile</name></member>
   </compound>
   <compound refid="classendstone_1_1DamageSource" kind="class"><name>endstone::DamageSource</name>
     <member refid="classendstone_1_1DamageSource_1ad7317c28b8853f400f518106f3f9d659" kind="function"><name>~DamageSource</name></member>
@@ -650,14 +781,12 @@
     <member refid="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" kind="function"><name>isIndirect</name></member>
   </compound>
   <compound refid="classendstone_1_1Dimension" kind="class"><name>endstone::Dimension</name>
-    <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356b" kind="enum"><name>Type</name></member>
-    <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356ba50181b144eb2554dc2e45cd3d437e92f" kind="enumvalue"><name>Overworld</name></member>
-    <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356ba9134d6dfbf3aa9b4528acc8bf44dfb92" kind="enumvalue"><name>Nether</name></member>
-    <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356ba3a2445d89edbcab66b2cf292dac1bb58" kind="enumvalue"><name>TheEnd</name></member>
-    <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356ba90589c47f06eb971d548591f23c285af" kind="enumvalue"><name>Custom</name></member>
+    <member refid="classendstone_1_1Dimension_1a99f35a38b77ed0d0927993dab3d588ef" kind="variable"><name>Overworld</name></member>
+    <member refid="classendstone_1_1Dimension_1a726839b7867bac84ebe5633eafedd341" kind="variable"><name>Nether</name></member>
+    <member refid="classendstone_1_1Dimension_1a578cf42cbf66c4b659b662f729e5c0ae" kind="variable"><name>TheEnd</name></member>
     <member refid="classendstone_1_1Dimension_1a24406b7020898c1be0ce62e57ffce62d" kind="function"><name>~Dimension</name></member>
-    <member refid="classendstone_1_1Dimension_1a3cd59f6145706ead47d173255a10a39d" kind="function"><name>getName</name></member>
-    <member refid="classendstone_1_1Dimension_1a9d9baf77525291924f80c682cc3d012c" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1Dimension_1a3789147f11d07882e8a6d9d2b484838d" kind="function"><name>getId</name></member>
+    <member refid="classendstone_1_1Dimension_1ab1287961d58e20d3ac2d66240a232e8b" kind="function"><name>getTranslationKey</name></member>
     <member refid="classendstone_1_1Dimension_1a541fd7f166a3d746dde92b57e4843f6a" kind="function"><name>getLevel</name></member>
     <member refid="classendstone_1_1Dimension_1a3dee0a686f00cf7c2c861a798ccf2346" kind="function"><name>getBlockAt</name></member>
     <member refid="classendstone_1_1Dimension_1afd372293472494681775452163da7aed" kind="function"><name>getBlockAt</name></member>
@@ -666,7 +795,7 @@
     <member refid="classendstone_1_1Dimension_1aaf801dc0b5f2d696178b5770d7466d79" kind="function"><name>getHighestBlockAt</name></member>
     <member refid="classendstone_1_1Dimension_1a065a2b1242a809b89dd1502b2ad828b6" kind="function"><name>getLoadedChunks</name></member>
     <member refid="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" kind="function"><name>dropItem</name></member>
-    <member refid="classendstone_1_1Dimension_1a04d2c983f8a2311339d6b3b716fa66a0" kind="function"><name>spawnActor</name></member>
+    <member refid="classendstone_1_1Dimension_1a0106dd8b17e3394081568a0ba631cb26" kind="function"><name>spawnActor</name></member>
     <member refid="classendstone_1_1Dimension_1aabf69434e780cefd4856459196439fe1" kind="function"><name>getActors</name></member>
   </compound>
   <compound refid="classendstone_1_1DimensionEvent" kind="class"><name>endstone::DimensionEvent</name>
@@ -795,6 +924,7 @@
     <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" kind="function"><name>isAsynchronous</name></member>
     <member refid="classendstone_1_1Event_1a262e0232aa1ac5f2db91298dc404c9ec" kind="function"><name>isCancellable</name></member>
+    <member refid="classendstone_1_1Event_1ac3037db7fc05c40795004e40ed8399fb" kind="function"><name>isCancelled</name></member>
   </compound>
   <compound refid="classendstone_1_1EventHandler" kind="class"><name>endstone::EventHandler</name>
     <member refid="classendstone_1_1EventHandler_1adb860867df4a0ec561d94c5861fd0546" kind="variable"><name>event_</name></member>
@@ -1043,7 +1173,12 @@
     <member refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" kind="function"><name>removeBan</name></member>
   </compound>
   <compound refid="classendstone_1_1IRegistry" kind="class"><name>endstone::IRegistry</name>
+    <member refid="classendstone_1_1IRegistry_1a0e0e0b2531a45e47cdbcfde16e8f4812" kind="friend"><name>python::PyRegistry</name></member>
     <member refid="classendstone_1_1IRegistry_1a06d066c86d938e8ab986cb51eadae54f" kind="function"><name>~IRegistry</name></member>
+    <member refid="classendstone_1_1IRegistry_1af9fcd05fdd3d73506763e7cc923cf4cb" kind="function"><name>size</name></member>
+    <member refid="classendstone_1_1IRegistry_1a25e5e92882a43fd4da14e6922d75007a" kind="function"><name>get0</name></member>
+    <member refid="classendstone_1_1IRegistry_1acc8156c0ec4f22dee71f290fc030eb25" kind="function"><name>forEach0</name></member>
+    <member refid="classendstone_1_1IRegistry_1a4d46fa889687149d8c026b1c91261543" kind="function"><name>getTypeId</name></member>
   </compound>
   <compound refid="classendstone_1_1Item" kind="class"><name>endstone::Item</name>
     <member refid="classendstone_1_1Item_1aecc6e7de84c65dbe99809fc47c1284e6" kind="function"><name>getItemStack</name></member>
@@ -1063,14 +1198,6 @@
     <member refid="classendstone_1_1ItemFactory_1a084aacc2614dd8e9cc3b29ff499fddd3" kind="function"><name>asMetaFor</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemMeta" kind="class"><name>endstone::ItemMeta</name>
-    <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" kind="enum"><name>Type</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a7d74f3b92b19da5e606d737d339a9679" kind="enumvalue"><name>Item</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a2b1f94ef23b79bf90eb891cae1df7a90" kind="enumvalue"><name>Book</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044ae465122849ce9927cdf194629e621d60" kind="enumvalue"><name>CrossBow</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a46f3ea056caa3126b91f3f70beea068c" kind="enumvalue"><name>Map</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044a045832581ae0029f5f722f0dcc2346e7" kind="enumvalue"><name>WritableBook</name></member>
-    <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" kind="function"><name>~ItemMeta</name></member>
-    <member refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" kind="function"><name>hasDisplayName</name></member>
     <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" kind="function"><name>getDisplayName</name></member>
     <member refid="classendstone_1_1ItemMeta_1a282788eea1a8f607e7fcf4cbc181951f" kind="function"><name>setDisplayName</name></member>
@@ -1095,8 +1222,6 @@
     <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" kind="function"><name>setRepairCost</name></member>
     <member refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" kind="function"><name>clone</name></member>
     <member refid="classendstone_1_1ItemMeta_1aa9ac1cb2bb1fb71ff465001603b3cddf" kind="function"><name>getExtras</name></member>
-    <member refid="classendstone_1_1ItemMeta_1af179bd7b745731e3d0f1e66828e45149" kind="function"><name>as</name></member>
-    <member refid="classendstone_1_1ItemMeta_1af5d8b132d9add8051466b9b19e3bfa61" kind="function"><name>as</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
     <member refid="classendstone_1_1ItemStack_1a71f2c93560b6bc5092a50098ceccd3fc" kind="friend"><name>core::EndstoneItemStack</name></member>
@@ -1161,7 +1286,7 @@
     <member refid="classendstone_1_1Level_1a2a0a6904b53c1d0952c6bdcfce91d0cd" kind="function"><name>getTime</name></member>
     <member refid="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" kind="function"><name>setTime</name></member>
     <member refid="classendstone_1_1Level_1ac4329b1323d1e61be61c1efeb4e8ecd9" kind="function"><name>getDimensions</name></member>
-    <member refid="classendstone_1_1Level_1ad688e6ab223f171816d8ed7956075c7e" kind="function"><name>getDimension</name></member>
+    <member refid="classendstone_1_1Level_1a0b7bf9c026e8c41c7f741fc04e2fbb54" kind="function"><name>getDimension</name></member>
     <member refid="classendstone_1_1Level_1a353a8752c7825d35373287ede5e4019a" kind="function"><name>getSeed</name></member>
   </compound>
   <compound refid="classendstone_1_1LevelEvent" kind="class"><name>endstone::LevelEvent</name>
@@ -1456,6 +1581,14 @@
     <member refid="classendstone_1_1Nullable_1a259337d8c5e717cdda7397808ed2afd4" kind="function"><name>operator==</name></member>
     <member refid="classendstone_1_1Nullable_1a291404abed60f7a3680dd5599a413c9e" kind="function"><name>operator!=</name></member>
   </compound>
+  <compound refid="classendstone_1_1Object" kind="class"><name>endstone::Object</name>
+    <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" kind="function"><name>~Object</name></member>
+    <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" kind="function"><name>getClassTypeId</name></member>
+    <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" kind="function"><name>isInstanceOf</name></member>
+    <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" kind="function"><name>as</name></member>
+    <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" kind="function"><name>as</name></member>
+    <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" kind="function"><name>is</name></member>
+  </compound>
   <compound refid="classendstone_1_1Objective" kind="class"><name>endstone::Objective</name>
     <member refid="classendstone_1_1Objective_1aa8fe81958a62274b81fe7d9d8ff515fd" kind="function"><name>~Objective</name></member>
     <member refid="classendstone_1_1Objective_1a04d9acb8c652c173e744b34e79bdaf12" kind="function"><name>getName</name></member>
@@ -1516,7 +1649,6 @@
     <member refid="classendstone_1_1PacketSendEvent_1a7521c9aa7ee4395b01ae312d7a14b65b" kind="function"><name>getSubClientId</name></member>
   </compound>
   <compound refid="classendstone_1_1Permissible" kind="class"><name>endstone::Permissible</name>
-    <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" kind="function"><name>~Permissible</name></member>
     <member refid="classendstone_1_1Permissible_1a6d78baa46215c951dc25cb5e55af085c" kind="function"><name>getPermissionLevel</name></member>
     <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" kind="function"><name>isPermissionSet</name></member>
     <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" kind="function"><name>isPermissionSet</name></member>
@@ -1527,7 +1659,6 @@
     <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" kind="function"><name>removeAttachment</name></member>
     <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" kind="function"><name>recalculatePermissions</name></member>
     <member refid="classendstone_1_1Permissible_1ad9307f3eef07e6e03a55b4fe9aab9be6" kind="function"><name>getEffectivePermissions</name></member>
-    <member refid="classendstone_1_1Permissible_1a49323c37f310044720678e27513b44dc" kind="function"><name>asCommandSender</name></member>
   </compound>
   <compound refid="classendstone_1_1Permission" kind="class"><name>endstone::Permission</name>
     <member refid="classendstone_1_1Permission_1a03f4834144ee871a3c6610d2e52dbc9b" kind="variable"><name>DefaultPermission</name></member>
@@ -1591,6 +1722,7 @@
   <compound refid="classendstone_1_1Player" kind="class"><name>endstone::Player</name>
     <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" kind="typedef"><name>FormVariant</name></member>
     <member refid="classendstone_1_1Player_1a03b944357fe64bdbb905d0b65695a9af" kind="function"><name>getName</name></member>
+    <member refid="classendstone_1_1Player_1a2f6259d8ac07fb50c56757844786683b" kind="function"><name>getUniqueId</name></member>
     <member refid="classendstone_1_1Player_1abac4577ca5fcd890b21f148b3df1e441" kind="function"><name>isOp</name></member>
     <member refid="classendstone_1_1Player_1ab0988eb2cd4067117f2419a5a06fcedb" kind="function"><name>setOp</name></member>
     <member refid="classendstone_1_1Player_1a47c04697994e74cdac0e8b7c4d6b09c7" kind="function"><name>getXuid</name></member>
@@ -2091,6 +2223,10 @@
     <member refid="classendstone_1_1Registry_1a3c9abfdf664a59b267798fd1dfc1a884" kind="function"><name>getOrThrow</name></member>
     <member refid="classendstone_1_1Registry_1a341f0a7dbb53815740f1c23b47ccddec" kind="function"><name>getOrThrow</name></member>
     <member refid="classendstone_1_1Registry_1ad4ccf75b2d21093309be4663cbc9e71b" kind="function"><name>forEach</name></member>
+    <member refid="classendstone_1_1Registry_1a8fafff73ec8ea9f5d6ff286ee77b4b53" kind="function"><name>size</name></member>
+    <member refid="classendstone_1_1Registry_1a663584327493863b52e18adf72c98758" kind="function"><name>get0</name></member>
+    <member refid="classendstone_1_1Registry_1ab2224379085df2cf418b866d7a0451c0" kind="function"><name>forEach0</name></member>
+    <member refid="classendstone_1_1Registry_1a1374ad3271083c33111f0fc75c87fb94" kind="function"><name>getTypeId</name></member>
   </compound>
   <compound refid="classendstone_1_1Scheduler" kind="class"><name>endstone::Scheduler</name>
     <member refid="classendstone_1_1Scheduler_1a869448c7e94100977f5c3026c6a16a45" kind="function"><name>~Scheduler</name></member>
@@ -2190,7 +2326,7 @@
     <member refid="classendstone_1_1Server_1a6aabbee05ed99ba41702ae926c6374b2" kind="function"><name>getBanList</name></member>
     <member refid="classendstone_1_1Server_1a8ab4971ec939f666bf3b98d1a80c7af3" kind="function"><name>getIpBanList</name></member>
     <member refid="classendstone_1_1Server_1a846007f57bf27a84e78f49b218c2fa7c" kind="function"><name>getServiceManager</name></member>
-    <member refid="classendstone_1_1Server_1a9ea05521ca2c068fb9acf07dd7af2eeb" kind="function"><name>_getRegistry</name></member>
+    <member refid="classendstone_1_1Server_1a845f601298b9157c2407118293d1d917" kind="function"><name>_getRegistry</name></member>
     <member refid="classendstone_1_1Server_1a767171af5232bcf5c1d1502f4903edea" kind="function"><name>getRegistry</name></member>
     <member refid="classendstone_1_1Server_1a1934abd049be85a1a3bf8170a0c56d49" kind="function"><name>getMap</name></member>
     <member refid="classendstone_1_1Server_1a4d65ff2e2b62f582c1615497bb8b5d83" kind="function"><name>createMap</name></member>
@@ -2351,6 +2487,8 @@
     <member refid="classendstone_1_1nbt_1_1Tag_1a8df34ad15f6774c092a3150d59ceaa4d" kind="function"><name>get_if</name></member>
     <member refid="classendstone_1_1nbt_1_1Tag_1aabd493b83ae07849c9a46fa48d6cbf72" kind="function"><name>visit</name></member>
     <member refid="classendstone_1_1nbt_1_1Tag_1a379ae7f659e414ac89271d8633401656" kind="function"><name>visit</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a282028a9a347d259cc65049cadcdbedd" kind="function"><name>dump</name></member>
+    <member refid="classendstone_1_1nbt_1_1Tag_1a267f7fa0521b527b4a5adafde12eb62e" kind="function"><name>dump</name></member>
     <member refid="classendstone_1_1nbt_1_1Tag_1a2c3640f9a0f98e5029c9b2905322784e" kind="friend"><name>operator==</name></member>
     <member refid="classendstone_1_1nbt_1_1Tag_1a7ed7ce4f905d733b1977d9e1d6f60ba1" kind="friend"><name>operator!=</name></member>
   </compound>
@@ -2522,7 +2660,7 @@
     <member refid="classendstone_1_1WritableBookMeta_1a8ac8922569392b56172011e714c38b37" kind="function"><name>setPages</name></member>
     <member refid="classendstone_1_1WritableBookMeta_1af78248585a392637bb362107854f5d87" kind="function"><name>setPages</name></member>
     <member refid="classendstone_1_1WritableBookMeta_1a40c40653c9f6d88d170e9aa5b9838df8" kind="function"><name>addPage</name></member>
-    <member refid="classendstone_1_1WritableBookMeta_1a8c6bbef3da6c8cf8005b7d6c1ca9ac15" kind="function"><name>addPage</name></member>
+    <member refid="classendstone_1_1WritableBookMeta_1a3c41804905f522ef1e9de5f616787da1" kind="function"><name>addPages</name></member>
     <member refid="classendstone_1_1WritableBookMeta_1a207196509c31e42333531d547b0f1af0" kind="function"><name>getPageCount</name></member>
   </compound>
   <compound refid="namespaceendstone" kind="namespace"><name>endstone</name>
@@ -2604,12 +2742,14 @@
     <member refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9" kind="enum"><name>RenderType</name></member>
     <member refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9aa0faef0851b4294c06f2b94bb1cb2044" kind="enumvalue"><name>Integer</name></member>
     <member refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9a6af4bf214d6cf054f9528da5b6054817" kind="enumvalue"><name>Hearts</name></member>
+    <member refid="namespaceendstone_1a94ee63841c0963c0a0676b0783e03486" kind="typedef"><name>ActorTypeId</name></member>
     <member refid="namespaceendstone_1ac2d399872c391e7ce2ec1896ba62e669" kind="typedef"><name>AttributeId</name></member>
     <member refid="namespaceendstone_1a688abbe501a61374454a55553d25e08f" kind="typedef"><name>BlockStates</name></member>
     <member refid="namespaceendstone_1a4b4a61600576d63a4a5aeb9758ee1096" kind="typedef"><name>BlockTypeId</name></member>
     <member refid="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" kind="typedef"><name>EffectId</name></member>
     <member refid="namespaceendstone_1a996c90f609bfd792a8245bb60fd3e4ea" kind="typedef"><name>EnchantmentId</name></member>
     <member refid="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" kind="typedef"><name>ItemTypeId</name></member>
+    <member refid="namespaceendstone_1a56604f8e64cbfad4e739248ea315914e" kind="typedef"><name>DimensionId</name></member>
     <member refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kind="typedef"><name>Message</name></member>
     <member refid="namespaceendstone_1a33e1574322a8aca1ebab711faea30a4a" kind="typedef"><name>ByteTag</name></member>
     <member refid="namespaceendstone_1acb2bf69099c0af04c6c085cb2b3241c8" kind="typedef"><name>ShortTag</name></member>
@@ -2661,13 +2801,45 @@
     <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca4ee29ca12c7d126654bd0e5275de6135" kind="enumvalue"><name>List</name></member>
     <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28ca26154ea007c65f860de5333a555a56cf" kind="enumvalue"><name>Compound</name></member>
     <member refid="type_8h_1a4ad7d0adad58bd6416997ecb276da28caa4cf98abdafab708d30b8d2ae8d57be8" kind="enumvalue"><name>IntArray</name></member>
+    <member refid="io_8h_1af796a45b5e4965a0f5ab29f066240000" kind="function"><name>dump</name></member>
+    <member refid="io_8h_1a46968b69587d386ec526d18731120e67" kind="function"><name>dump</name></member>
+    <member refid="io_8h_1a8094ac05e4e8d2f17d20bfc3094ce332" kind="function"><name>load</name></member>
+    <member refid="io_8h_1a6d3226badab86c4f8832004bbdd875be" kind="function"><name>load</name></member>
     <member refid="tag_8h_1a3311af8ab3020c12798741271ff1aca8" kind="function"><name>escaped</name></member>
+  </compound>
+  <compound refid="namespaceendstone_1_1nbt_1_1detail" kind="namespace"><name>endstone::nbt::detail</name>
+    <member refid="io_8h_1a61767e5461bd967b1af5d1c10370d8c8" kind="function"><name>write_bytes</name></member>
+    <member refid="io_8h_1a64600a49d631c3d7e563604afb9d6efc" kind="function"><name>read_bytes</name></member>
+    <member refid="io_8h_1a5cc240457c15ae932cc22d7122c937c4" kind="function"><name>write_value</name></member>
+    <member refid="io_8h_1a4c91eef182c4df2effd71055570c1340" kind="function"><name>read_value</name></member>
+    <member refid="io_8h_1af614c4721898f0a9d582d0060da9a41e" kind="function"><name>write_varint</name></member>
+    <member refid="io_8h_1a24e64c8633f2bb6815d146f97477efd8" kind="function"><name>read_varint</name></member>
+    <member refid="io_8h_1a708afbe713e875109c5e66336c120b1a" kind="function"><name>zigzag_encode32</name></member>
+    <member refid="io_8h_1a136417e48ba3dcc21bbf3fcc8917fb37" kind="function"><name>zigzag_decode32</name></member>
+    <member refid="io_8h_1a8dff3df41f422bcc25ed68b4f1010dfc" kind="function"><name>write_zigzag32</name></member>
+    <member refid="io_8h_1ae710bdcde9f404a84ed94c56313bee23" kind="function"><name>read_zigzag32</name></member>
+    <member refid="io_8h_1ade89cb60c8befd1221275d47e7d77e0f" kind="function"><name>write_varint64</name></member>
+    <member refid="io_8h_1a5a793eea948cd225a34a0e1dfeb12798" kind="function"><name>read_varint64</name></member>
+    <member refid="io_8h_1a0928bcdca98f5e2d09366c0df69a7019" kind="function"><name>zigzag_encode64</name></member>
+    <member refid="io_8h_1a8a0f2ffe8c3b43f827100807734d8096" kind="function"><name>zigzag_decode64</name></member>
+    <member refid="io_8h_1af1c18639a65a5c8e35839c5f8a5317f1" kind="function"><name>write_zigzag64</name></member>
+    <member refid="io_8h_1aa90f30c5c2dadf18441de21b0f758f10" kind="function"><name>read_zigzag64</name></member>
+    <member refid="io_8h_1a23af777240bd6316ae8e22fcf517078f" kind="function"><name>write_string</name></member>
+    <member refid="io_8h_1a6d06cf034ea052c88684574daa92b063" kind="function"><name>read_string</name></member>
+    <member refid="io_8h_1ab98be424e9f66ce2909c998541c21d71" kind="function"><name>write_length</name></member>
+    <member refid="io_8h_1ab8629d7a0eefd4bc0ebf83bd2f0bd2b5" kind="function"><name>read_length</name></member>
+    <member refid="io_8h_1ad4669bbd058fe46a64cdec8b575650b0" kind="function"><name>write_tag_payload</name></member>
+    <member refid="io_8h_1a606207e3a37f3992b18bf36fc8ac6484" kind="function"><name>read_tag_payload</name></member>
+  </compound>
+  <compound refid="namespaceendstone_1_1python" kind="namespace"><name>endstone::python</name>
   </compound>
   <compound refid="namespacefmt" kind="namespace"><name>fmt</name>
   </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>
   <compound refid="actor_8h" kind="file"><name>actor.h</name>
+  </compound>
+  <compound refid="actor__type_8h" kind="file"><name>actor_type.h</name>
   </compound>
   <compound refid="item_8h" kind="file"><name>item.h</name>
   </compound>
@@ -2933,7 +3105,6 @@
   <compound refid="crossbow__meta_8h" kind="file"><name>crossbow_meta.h</name>
   </compound>
   <compound refid="item__meta_8h" kind="file"><name>item_meta.h</name>
-    <member refid="item__meta_8h_1a7c2989b6ef2b0f3dc96626220c05596d" kind="define"><name>ENDSTONE_ITEM_META_TYPE</name></member>
   </compound>
   <compound refid="map__meta_8h" kind="file"><name>map_meta.h</name>
   </compound>
@@ -2971,6 +3142,8 @@
   </compound>
   <compound refid="compound_8h" kind="file"><name>compound.h</name>
   </compound>
+  <compound refid="io_8h" kind="file"><name>io.h</name>
+  </compound>
   <compound refid="list_8h" kind="file"><name>list.h</name>
   </compound>
   <compound refid="tag_8h" kind="file"><name>tag.h</name>
@@ -2978,6 +3151,8 @@
   <compound refid="type_8h" kind="file"><name>type.h</name>
   </compound>
   <compound refid="value_8h" kind="file"><name>value.h</name>
+  </compound>
+  <compound refid="object_8h" kind="file"><name>object.h</name>
   </compound>
   <compound refid="offline__player_8h" kind="file"><name>offline_player.h</name>
   </compound>
@@ -3016,7 +3191,6 @@
   <compound refid="potion__type_8h" kind="file"><name>potion_type.h</name>
   </compound>
   <compound refid="registry_8h" kind="file"><name>registry.h</name>
-    <member refid="registry_8h_1afdb56fce672f84a423d8c9d0501a34e1" kind="define"><name>ENDSTONE_REGISTRY_TYPE</name></member>
   </compound>
   <compound refid="scheduler_8h" kind="file"><name>scheduler.h</name>
   </compound>

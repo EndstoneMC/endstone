@@ -131,6 +131,7 @@
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1ActorEvent_1a49c459c96e831dbab2333ec2187ea552" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>getActor</name></member>
+      <member refid="classendstone_1_1ActorEvent_1a7a63d377ca9e669fbac6e7c9305e1ddb" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>getActorType</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::ActorSpawnEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa" prot="public" virt="virtual"><scope>endstone::ActorSpawnEvent</scope><name>isCancelled</name></member>

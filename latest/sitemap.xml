@@ -13,6 +13,10 @@
          <lastmod>2026-05-26</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/getting-started/faq/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/getting-started/installation/</loc>
          <lastmod>2026-05-26</lastmod>
     </url>
@@ -198,6 +202,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorTeleportEvent/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorType/</loc>
          <lastmod>2026-05-26</lastmod>
     </url>
     <url>
@@ -541,6 +549,10 @@
          <lastmod>2026-05-26</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Object/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Objective/</loc>
          <lastmod>2026-05-26</lastmod>
     </url>
@@ -865,7 +877,15 @@
          <lastmod>2026-05-26</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/namespaceendstone_1_1nbt_1_1detail/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/structendstone_1_1overloaded/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/namespaceendstone_1_1python/</loc>
          <lastmod>2026-05-26</lastmod>
     </url>
     <url>
@@ -1078,6 +1098,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor_8h_source/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__type_8h/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/actor__type_8h_source/</loc>
          <lastmod>2026-05-26</lastmod>
     </url>
     <url>
@@ -2273,6 +2301,14 @@
          <lastmod>2026-05-26</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/io_8h/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/io_8h_source/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/list_8h/</loc>
          <lastmod>2026-05-26</lastmod>
     </url>
@@ -2598,6 +2634,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/message_8h_source/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/object_8h/</loc>
+         <lastmod>2026-05-26</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/object_8h_source/</loc>
          <lastmod>2026-05-26</lastmod>
     </url>
     <url>

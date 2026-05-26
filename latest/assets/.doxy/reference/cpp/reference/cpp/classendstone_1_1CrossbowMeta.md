@@ -8,7 +8,7 @@
 
 
 
-_Represents the meta for a crossbow that can have charged projectiles._ 
+_Represents the meta for a crossbow that can have a charged projectile._ 
 
 * `#include <endstone/inventory/meta/crossbow_meta.h>`
 
@@ -31,13 +31,26 @@ Inherits the following classes: [endstone::ItemMeta](classendstone_1_1ItemMeta.m
 
 
 
-## Public Types inherited from endstone::ItemMeta
 
-See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 
-| Type | Name |
-| ---: | :--- |
-| enum  | [**Type**](classendstone_1_1ItemMeta.md#enum-type)  <br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -80,10 +93,9 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**addChargedProjectile**](#function-addchargedprojectile) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Adds a charged projectile to this item._  |
-| virtual std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getChargedProjectiles**](#function-getchargedprojectiles) () const = 0<br>_Returns an immutable list of the projectiles charged on this item._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasChargedProjectiles**](#function-haschargedprojectiles) () const = 0<br>_Returns whether the item has any charged projectiles._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setChargedProjectiles**](#function-setchargedprojectiles) (std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; projectiles) = 0<br>_Sets the projectiles charged on this item._  |
+| virtual std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getChargedProjectile**](#function-getchargedprojectile) () const = 0<br>_Returns the charged projectile, or std::nullopt if none._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasChargedProjectile**](#function-haschargedprojectile) () const = 0<br>_Returns whether the crossbow has a charged projectile._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setChargedProjectile**](#function-setchargedprojectile) (std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; projectile) = 0<br>_Sets the charged projectile. Pass std::nullopt to clear._  |
 
 
 ## Public Functions inherited from endstone::ItemMeta
@@ -93,8 +105,6 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 | Type | Name |
 | ---: | :--- |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**addEnchant**](classendstone_1_1ItemMeta.md#function-addenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id, [**int**](classendstone_1_1Identifier.md) level, [**bool**](classendstone_1_1Identifier.md) force) = 0<br>_Adds the specified enchantment to this item meta._  |
-|  [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1ItemMeta.md#function-as-12) () <br> |
-|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1ItemMeta.md#function-as-22) () const<br> |
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](classendstone_1_1ItemMeta.md#function-clone) () const = 0<br>_Creates a clone of the current metadata._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getDamage**](classendstone_1_1ItemMeta.md#function-getdamage) () const = 0<br>_Gets the damage._  |
 | virtual std::string | [**getDisplayName**](classendstone_1_1ItemMeta.md#function-getdisplayname) () const = 0<br>_Gets the display name that is set._  |
@@ -103,7 +113,6 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 | virtual [**const**](classendstone_1_1Identifier.md) core::ItemMetaExtras & | [**getExtras**](classendstone_1_1ItemMeta.md#function-getextras) () const = 0<br> |
 | virtual std::vector&lt; std::string &gt; | [**getLore**](classendstone_1_1ItemMeta.md#function-getlore) () const = 0<br>_Gets the lore that is set._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getRepairCost**](classendstone_1_1ItemMeta.md#function-getrepaircost) () const = 0<br>_Gets the repair penalty._  |
-| virtual Type | [**getType**](classendstone_1_1ItemMeta.md#function-gettype) () const = 0<br>_Gets the type of this item meta._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasConflictingEnchant**](classendstone_1_1ItemMeta.md#function-hasconflictingenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br> |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasDamage**](classendstone_1_1ItemMeta.md#function-hasdamage) () const = 0<br>_Checks to see if this item has damage._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasDisplayName**](classendstone_1_1ItemMeta.md#function-hasdisplayname) () const = 0<br>_Checks for existence of a display name._  |
@@ -119,7 +128,46 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setLore**](classendstone_1_1ItemMeta.md#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) = 0<br>_Sets the lore for this item or removes lore when given_ `std::nullopt` _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setRepairCost**](classendstone_1_1ItemMeta.md#function-setrepaircost) ([**int**](classendstone_1_1Identifier.md) cost) = 0<br>_Sets the repair penalty._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setUnbreakable**](classendstone_1_1ItemMeta.md#function-setunbreakable) ([**bool**](classendstone_1_1Identifier.md) unbreakable) = 0<br>_Sets the unbreakable tag. An unbreakable item will not lose durability._  |
-| virtual  | [**~ItemMeta**](classendstone_1_1ItemMeta.md#function-itemmeta) () = default<br> |
+
+
+## Public Functions inherited from endstone::Object
+
+See [endstone::Object](classendstone_1_1Object.md)
+
+| Type | Name |
+| ---: | :--- |
+|  [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1Object.md#function-as-12) () <br>_Attempts to cast this object to the given type T._  |
+|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1Object.md#function-as-22) () const<br>_Attempts to cast this object to the given type T._  |
+| virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](classendstone_1_1Object.md#function-getclasstypeid) () const = 0<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**is**](classendstone_1_1Object.md#function-is) () const<br>_Checks if this object is an instance of the given type T (or a subclass of T)._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](classendstone_1_1Object.md#function-isinstanceof) ([**const**](classendstone_1_1Identifier.md) std::type\_info & target) const = 0<br> |
+| virtual  | [**~Object**](classendstone_1_1Object.md#function-object) () = default<br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -179,12 +227,62 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 
 
 
-### function addChargedProjectile 
+### function getChargedProjectile 
 
-_Adds a charged projectile to this item._ 
+_Returns the charged projectile, or std::nullopt if none._ 
 ```C++
-virtual void endstone::CrossbowMeta::addChargedProjectile (
-    const  ItemStack & item
+virtual std::optional< ItemStack > endstone::CrossbowMeta::getChargedProjectile () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the charged projectile 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function hasChargedProjectile 
+
+_Returns whether the crossbow has a charged projectile._ 
+```C++
+virtual bool endstone::CrossbowMeta::hasChargedProjectile () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+whether a charged projectile is present 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setChargedProjectile 
+
+_Sets the charged projectile. Pass std::nullopt to clear._ 
+```C++
+virtual void endstone::CrossbowMeta::setChargedProjectile (
+    std::optional< ItemStack > projectile
 ) = 0
 ```
 
@@ -195,84 +293,7 @@ virtual void endstone::CrossbowMeta::addChargedProjectile (
 **Parameters:**
 
 
-* `item` projectile 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getChargedProjectiles 
-
-_Returns an immutable list of the projectiles charged on this item._ 
-```C++
-virtual std::vector< ItemStack > endstone::CrossbowMeta::getChargedProjectiles () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-charged projectiles 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function hasChargedProjectiles 
-
-_Returns whether the item has any charged projectiles._ 
-```C++
-virtual bool endstone::CrossbowMeta::hasChargedProjectiles () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-whether charged projectiles are present 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function setChargedProjectiles 
-
-_Sets the projectiles charged on this item._ 
-```C++
-virtual void endstone::CrossbowMeta::setChargedProjectiles (
-    std::vector< ItemStack > projectiles
-) = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `projectiles` the projectiles to set 
+* `projectile` the projectile to set, or std::nullopt to clear 
 
 
 

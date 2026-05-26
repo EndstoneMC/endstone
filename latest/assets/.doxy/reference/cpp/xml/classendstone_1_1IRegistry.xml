@@ -1,8 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
-  <compounddef id="classendstone_1_1IRegistry" kind="class" language="C++" prot="public">
+  <compounddef id="classendstone_1_1IRegistry" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::IRegistry</compoundname>
     <derivedcompoundref refid="classendstone_1_1Registry" prot="public" virt="non-virtual">endstone::Registry&lt; T &gt;</derivedcompoundref>
+    <sectiondef kind="friend">
+      <memberdef kind="friend" id="classendstone_1_1IRegistry_1a0e0e0b2531a45e47cdbcfde16e8f4812" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref></type>
+        <definition>friend class python::PyRegistry</definition>
+        <argsstring></argsstring>
+        <name>python::PyRegistry</name>
+        <qualifiedname>endstone::IRegistry::PyRegistry</qualifiedname>
+        <param>
+          <type>python::PyRegistry</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/registry.h" line="39" column="18" bodyfile="include/endstone/registry.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1IRegistry_1a06d066c86d938e8ab986cb51eadae54f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -16,7 +35,77 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="31" column="13"/>
+        <location file="include/endstone/registry.h" line="35" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1IRegistry_1af9fcd05fdd3d73506763e7cc923cf4cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::size_t</type>
+        <definition>virtual std::size_t endstone::IRegistry::size</definition>
+        <argsstring>() const =0</argsstring>
+        <name>size</name>
+        <qualifiedname>endstone::IRegistry::size</qualifiedname>
+        <reimplementedby refid="classendstone_1_1Registry_1a8fafff73ec8ea9f5d6ff286ee77b4b53">size</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/registry.h" line="36" column="26"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classendstone_1_1IRegistry_1a25e5e92882a43fd4da14e6922d75007a" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> *</type>
+        <definition>virtual const void * endstone::IRegistry::get0</definition>
+        <argsstring>(std::string_view id) const noexcept=0</argsstring>
+        <name>get0</name>
+        <qualifiedname>endstone::IRegistry::get0</qualifiedname>
+        <reimplementedby refid="classendstone_1_1Registry_1a663584327493863b52e18adf72c98758">get0</reimplementedby>
+        <param>
+          <type>std::string_view</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/registry.h" line="40" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1IRegistry_1acc8156c0ec4f22dee71f290fc030eb25" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
+        <definition>virtual void endstone::IRegistry::forEach0</definition>
+        <argsstring>(std::function&lt; bool(const void *)&gt; func) const =0</argsstring>
+        <name>forEach0</name>
+        <qualifiedname>endstone::IRegistry::forEach0</qualifiedname>
+        <reimplementedby refid="classendstone_1_1Registry_1ab2224379085df2cf418b866d7a0451c0">forEach0</reimplementedby>
+        <param>
+          <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref> *)&gt;</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/registry.h" line="41" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1IRegistry_1a4d46fa889687149d8c026b1c91261543" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::type_info &amp;</type>
+        <definition>virtual const std::type_info &amp; endstone::IRegistry::getTypeId</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>getTypeId</name>
+        <qualifiedname>endstone::IRegistry::getTypeId</qualifiedname>
+        <reimplementedby refid="classendstone_1_1Registry_1a1374ad3271083c33111f0fc75c87fb94">getTypeId</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/registry.h" line="42" column="35"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -35,8 +124,13 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/registry.h" line="29" column="1" bodyfile="include/endstone/registry.h" bodystart="29" bodyend="32"/>
+    <location file="include/endstone/registry.h" line="33" column="1" bodyfile="include/endstone/registry.h" bodystart="33" bodyend="43"/>
     <listofallmembers>
+      <member refid="classendstone_1_1IRegistry_1acc8156c0ec4f22dee71f290fc030eb25" prot="protected" virt="pure-virtual"><scope>endstone::IRegistry</scope><name>forEach0</name></member>
+      <member refid="classendstone_1_1IRegistry_1a25e5e92882a43fd4da14e6922d75007a" prot="protected" virt="pure-virtual"><scope>endstone::IRegistry</scope><name>get0</name></member>
+      <member refid="classendstone_1_1IRegistry_1a4d46fa889687149d8c026b1c91261543" prot="protected" virt="pure-virtual"><scope>endstone::IRegistry</scope><name>getTypeId</name></member>
+      <member refid="classendstone_1_1IRegistry_1a0e0e0b2531a45e47cdbcfde16e8f4812" prot="public" virt="non-virtual"><scope>endstone::IRegistry</scope><name>python::PyRegistry</name></member>
+      <member refid="classendstone_1_1IRegistry_1af9fcd05fdd3d73506763e7cc923cf4cb" prot="public" virt="pure-virtual"><scope>endstone::IRegistry</scope><name>size</name></member>
       <member refid="classendstone_1_1IRegistry_1a06d066c86d938e8ab986cb51eadae54f" prot="public" virt="virtual"><scope>endstone::IRegistry</scope><name>~IRegistry</name></member>
     </listofallmembers>
   </compounddef>

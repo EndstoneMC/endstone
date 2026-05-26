@@ -27,33 +27,18 @@
 #include <memory>
 #include <optional>
 #include <string>
-#include <type_traits>
 #include <unordered_map>
 #include <vector>
 
 #include "endstone/enchantments/enchantment.h"
-
-#define ENDSTONE_ITEM_META_TYPE(type) static constexpr auto MetaType = Type::type;
+#include "endstone/object.h"
 
 namespace endstone {
 namespace core {
 class ItemMetaExtras;
 }
-class ItemMeta {
+class ItemMeta : public Object {
 public:
-    enum class Type {
-        Item,
-        Book,
-        CrossBow,
-        Map,
-        WritableBook,
-    };
-
-    ENDSTONE_ITEM_META_TYPE(Item)
-
-    virtual ~ItemMeta() = default;
-
-    [[nodiscard]] virtual Type getType() const = 0;
 
     [[nodiscard]] virtual bool hasDisplayName() const = 0;
 
@@ -102,25 +87,6 @@ public:
 
     [[nodiscard]] virtual const core::ItemMetaExtras &getExtras() const = 0;
 
-    template <typename T>
-        requires std::is_base_of_v<ItemMeta, T>
-    T *as()
-    {
-        if (this->getType() == T::MetaType) {
-            return static_cast<T *>(this);
-        }
-        return nullptr;
-    }
-
-    template <typename T>
-        requires std::is_base_of_v<ItemMeta, T>
-    const T *as() const
-    {
-        if (this->getType() == T::MetaType) {
-            return static_cast<const T *>(this);
-        }
-        return nullptr;
-    }
 };
 }  // namespace endstone
 ```

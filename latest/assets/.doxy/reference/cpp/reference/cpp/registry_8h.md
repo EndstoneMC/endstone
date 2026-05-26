@@ -36,6 +36,7 @@
 | Type | Name |
 | ---: | :--- |
 | namespace | [**endstone**](namespaceendstone.md) <br>_Represents a button with text and an optional icon._  |
+| namespace | [**python**](namespaceendstone_1_1python.md) <br> |
 
 
 ## Classes
@@ -95,30 +96,7 @@
 
 
 
-## Macros
 
-| Type | Name |
-| ---: | :--- |
-| define  | [**ENDSTONE\_REGISTRY\_TYPE**](registry_8h.md#define-endstone_registry_type) (type) `static constexpr auto RegistryType = #type;`<br> |
-
-## Macro Definition Documentation
-
-
-
-
-
-### define ENDSTONE\_REGISTRY\_TYPE 
-
-```C++
-#define ENDSTONE_REGISTRY_TYPE (
-    type
-) `static constexpr auto RegistryType = #type;`
-```
-
-
-
-
-<hr>
 
 ------------------------------
 The documentation for this class was generated from the following file `include/endstone/registry.h`

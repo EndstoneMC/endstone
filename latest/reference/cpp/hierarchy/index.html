@@ -448,6 +448,8 @@ For latest updates join the chat on
       
         
       
+        
+      
     
     
     
@@ -592,6 +594,34 @@ For latest updates join the chat on
     
   
     Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
   
 
     
@@ -2594,7 +2624,7 @@ For latest updates join the chat on
 
 
   
-    <a href="https://github.com/EndstoneMC/endstone/edit/main/docs/reference/cpp/hierarchy.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/EndstoneMC/endstone/edit/develop/docs/reference/cpp/hierarchy.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2603,7 +2633,7 @@ For latest updates join the chat on
     
       
     
-    <a href="https://github.com/EndstoneMC/endstone/raw/main/docs/reference/cpp/hierarchy.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/EndstoneMC/endstone/raw/develop/docs/reference/cpp/hierarchy.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
@@ -2614,6 +2644,16 @@ For latest updates join the chat on
 <p>This inheritance list is sorted roughly, but not completely, alphabetically:</p>
 <ul>
 <li><strong>class</strong> <a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a> <em>Represents a generic form.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Object/"><strong>endstone::Object</strong></a> <em>Base class providing runtime type identification and safe casting.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a> <em>Represents the metadata of a generic item.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1CrossbowMeta/"><strong>endstone::CrossbowMeta</strong></a> <em>Represents the meta for a crossbow that can have a charged projectile.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a> <em>Represents the metadata for a map item.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1WritableBookMeta/"><strong>endstone::WritableBookMeta</strong></a> <em>Represents the meta for a writable book that can have pages.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1BookMeta/"><strong>endstone::BookMeta</strong></a> <em>Represents the meta for a written book that can have a title, an author, and pages.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
 <li><strong>class</strong> <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a> <em>Represents an object that may become a server operator and can be assigned permissions.</em>     <ul>
 <li><strong>class</strong> <a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a> <em>Represents a command sender.</em>     <ul>
 <li><strong>class</strong> <a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a> <em>Represents a base actor in the level.</em>     <ul>
@@ -2627,6 +2667,8 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1BlockCommandSender/"><strong>endstone::BlockCommandSender</strong></a> <em>Represents a block command sender.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a> <em>Represents a wrapper that forwards commands to the wrapped</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>and captures its output.</em></li>
 <li><strong>class</strong> <a href="../classendstone_1_1ConsoleCommandSender/"><strong>endstone::ConsoleCommandSender</strong></a> <em>Represents a console command sender.</em> </li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2683,6 +2725,13 @@ For latest updates join the chat on
 </li>
 </ul>
 </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Registry_1_1Type/"><strong>endstone::Registry::Type</strong></a> <em>CRTP base for registry-backed types identified by an</em> <a href="../classendstone_1_1Identifier/"><em><strong>Identifier</strong></em></a> <em>.</em>    <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1ActorType/"><strong>endstone::ActorType</strong></a> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1BlockType/"><strong>endstone::BlockType</strong></a> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Enchantment/"><strong>endstone::Enchantment</strong></a> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1ItemType/"><strong>endstone::ItemType</strong></a> </li>
+</ul>
+</li>
 <li><strong>class</strong> <a href="../classendstone_1_1Attribute/"><strong>endstone::Attribute</strong></a> <em>All attribute types.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a> <em>Represents a mutable instance of an attribute and its associated modifiers and values.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1AttributeModifier/"><strong>endstone::AttributeModifier</strong></a> <em>Represents an attribute modifier.</em> </li>
@@ -2695,21 +2744,6 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a> <em>Represents a block.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1BlockData/"><strong>endstone::BlockData</strong></a> <em>Represents the data related to a live block.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a> <em>Represents a captured state of a block, which will not update automatically.</em> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1Registry_1_1Type/"><strong>endstone::Registry::Type</strong></a> <em>CRTP base for registry-backed types identified by an</em> <a href="../classendstone_1_1Identifier/"><em><strong>Identifier</strong></em></a> <em>.</em>    <ul>
-<li><strong>class</strong> <a href="../classendstone_1_1BlockType/"><strong>endstone::BlockType</strong></a> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1Enchantment/"><strong>endstone::Enchantment</strong></a> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1ItemType/"><strong>endstone::ItemType</strong></a> </li>
-</ul>
-</li>
-<li><strong>class</strong> <a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a> <em>Represents the metadata of a generic item.</em>     <ul>
-<li><strong>class</strong> <a href="../classendstone_1_1CrossbowMeta/"><strong>endstone::CrossbowMeta</strong></a> <em>Represents the meta for a crossbow that can have charged projectiles.</em> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a> <em>Represents the metadata for a map item.</em> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1WritableBookMeta/"><strong>endstone::WritableBookMeta</strong></a> <em>Represents the meta for a writable book that can have pages.</em>     <ul>
-<li><strong>class</strong> <a href="../classendstone_1_1BookMeta/"><strong>endstone::BookMeta</strong></a> <em>Represents the meta for a written book that can have a title, an author, and pages.</em> </li>
-</ul>
-</li>
-</ul>
-</li>
 <li><strong>class</strong> <a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a> <em>Represents a boss bar that is displayed to players.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Button/"><strong>endstone::Button</strong></a> <em>Represents a button with text and an optional icon.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Chunk/"><strong>endstone::Chunk</strong></a> <em>Represents a chunk of blocks.</em> </li>
@@ -2767,10 +2801,7 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1NotNull/"><strong>endstone::NotNull</strong></a> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Nullable/"><strong>endstone::Nullable</strong></a> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a> <em>Represents an objective on a scoreboard that can show scores specific to entries.</em> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1OfflinePlayer/"><strong>endstone::OfflinePlayer</strong></a> <em>Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online.</em>     <ul>
-<li><strong>class</strong> <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a> <em>Represents a player.</em> </li>
-</ul>
-</li>
+<li><strong>class</strong> <a href="../classendstone_1_1OfflinePlayer/"><strong>endstone::OfflinePlayer</strong></a> <em>Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a> <em>Represents a unique permission that may be attached to a</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>.</em></li>
 <li><strong>class</strong> <a href="../classendstone_1_1PermissionAttachment/"><strong>endstone::PermissionAttachment</strong></a> <em>Holds information about a permission attachment on a</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>object.</em></li>
 <li><strong>class</strong> <a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>endstone::PermissionAttachmentInfo</strong></a> <em>Holds information on a permission and which</em> <a href="../classendstone_1_1PermissionAttachment/"><em><strong>PermissionAttachment</strong></em></a> <em>provides it.</em></li>
@@ -2802,6 +2833,162 @@ For latest updates join the chat on
 <li><strong>struct</strong> <a href="../structendstone_1_1nbt_1_1escape__view/"><strong>endstone::nbt::escape_view</strong></a> </li>
 <li><strong>struct</strong> <a href="../structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4/"><strong>std::hash&lt; endstone::Identifier&lt; T &gt; &gt;</strong></a> </li>
 <li><strong>struct</strong> <a href="../structstd_1_1hash_3_01endstone_1_1UUID_01_4/"><strong>std::hash&lt; endstone::UUID &gt;</strong></a> </li>
+<li><strong>class</strong> <strong>std::enable_shared_from_this&lt; Permissible &gt;</strong>    <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a> <em>Represents an object that may become a server operator and can be assigned permissions.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a> <em>Represents a command sender.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a> <em>Represents a base actor in the level.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a> <em>Represents a base actor in the level.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a> <em>Represents a mobile entity (i.e. living entity), such as a monster or player.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a> <em>Represents a player.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1BlockCommandSender/"><strong>endstone::BlockCommandSender</strong></a> <em>Represents a block command sender.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a> <em>Represents a wrapper that forwards commands to the wrapped</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>and captures its output.</em></li>
+<li><strong>class</strong> <a href="../classendstone_1_1ConsoleCommandSender/"><strong>endstone::ConsoleCommandSender</strong></a> <em>Represents a console command sender.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a> <em>Represents an object that may become a server operator and can be assigned permissions.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a> <em>Represents a command sender.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a> <em>Represents a base actor in the level.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a> <em>Represents a base actor in the level.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a> <em>Represents a mobile entity (i.e. living entity), such as a monster or player.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a> <em>Represents a player.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1BlockCommandSender/"><strong>endstone::BlockCommandSender</strong></a> <em>Represents a block command sender.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a> <em>Represents a wrapper that forwards commands to the wrapped</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>and captures its output.</em></li>
+<li><strong>class</strong> <a href="../classendstone_1_1ConsoleCommandSender/"><strong>endstone::ConsoleCommandSender</strong></a> <em>Represents a console command sender.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a> <em>Represents an object that may become a server operator and can be assigned permissions.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a> <em>Represents a command sender.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a> <em>Represents a base actor in the level.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a> <em>Represents a base actor in the level.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a> <em>Represents a mobile entity (i.e. living entity), such as a monster or player.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a> <em>Represents a player.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1BlockCommandSender/"><strong>endstone::BlockCommandSender</strong></a> <em>Represents a block command sender.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a> <em>Represents a wrapper that forwards commands to the wrapped</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>and captures its output.</em></li>
+<li><strong>class</strong> <a href="../classendstone_1_1ConsoleCommandSender/"><strong>endstone::ConsoleCommandSender</strong></a> <em>Represents a console command sender.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a> <em>Represents an object that may become a server operator and can be assigned permissions.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a> <em>Represents a command sender.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a> <em>Represents a base actor in the level.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a> <em>Represents a base actor in the level.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a> <em>Represents a mobile entity (i.e. living entity), such as a monster or player.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a> <em>Represents a player.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1BlockCommandSender/"><strong>endstone::BlockCommandSender</strong></a> <em>Represents a block command sender.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a> <em>Represents a wrapper that forwards commands to the wrapped</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>and captures its output.</em></li>
+<li><strong>class</strong> <a href="../classendstone_1_1ConsoleCommandSender/"><strong>endstone::ConsoleCommandSender</strong></a> <em>Represents a console command sender.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a> <em>Represents an object that may become a server operator and can be assigned permissions.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a> <em>Represents a command sender.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a> <em>Represents a base actor in the level.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a> <em>Represents a base actor in the level.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a> <em>Represents a mobile entity (i.e. living entity), such as a monster or player.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a> <em>Represents a player.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1BlockCommandSender/"><strong>endstone::BlockCommandSender</strong></a> <em>Represents a block command sender.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a> <em>Represents a wrapper that forwards commands to the wrapped</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>and captures its output.</em></li>
+<li><strong>class</strong> <a href="../classendstone_1_1ConsoleCommandSender/"><strong>endstone::ConsoleCommandSender</strong></a> <em>Represents a console command sender.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a> <em>Represents an object that may become a server operator and can be assigned permissions.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a> <em>Represents a command sender.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a> <em>Represents a base actor in the level.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a> <em>Represents a base actor in the level.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a> <em>Represents a mobile entity (i.e. living entity), such as a monster or player.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a> <em>Represents a player.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1BlockCommandSender/"><strong>endstone::BlockCommandSender</strong></a> <em>Represents a block command sender.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a> <em>Represents a wrapper that forwards commands to the wrapped</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>and captures its output.</em></li>
+<li><strong>class</strong> <a href="../classendstone_1_1ConsoleCommandSender/"><strong>endstone::ConsoleCommandSender</strong></a> <em>Represents a console command sender.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a> <em>Represents an object that may become a server operator and can be assigned permissions.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a> <em>Represents a command sender.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a> <em>Represents a base actor in the level.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a> <em>Represents a base actor in the level.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a> <em>Represents a mobile entity (i.e. living entity), such as a monster or player.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a> <em>Represents a player.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1BlockCommandSender/"><strong>endstone::BlockCommandSender</strong></a> <em>Represents a block command sender.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a> <em>Represents a wrapper that forwards commands to the wrapped</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>and captures its output.</em></li>
+<li><strong>class</strong> <a href="../classendstone_1_1ConsoleCommandSender/"><strong>endstone::ConsoleCommandSender</strong></a> <em>Represents a console command sender.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a> <em>Represents an object that may become a server operator and can be assigned permissions.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a> <em>Represents a command sender.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a> <em>Represents a base actor in the level.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a> <em>Represents a base actor in the level.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a> <em>Represents a mobile entity (i.e. living entity), such as a monster or player.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a> <em>Represents a player.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1BlockCommandSender/"><strong>endstone::BlockCommandSender</strong></a> <em>Represents a block command sender.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a> <em>Represents a wrapper that forwards commands to the wrapped</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>and captures its output.</em></li>
+<li><strong>class</strong> <a href="../classendstone_1_1ConsoleCommandSender/"><strong>endstone::ConsoleCommandSender</strong></a> <em>Represents a console command sender.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a> <em>Represents an object that may become a server operator and can be assigned permissions.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a> <em>Represents a command sender.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a> <em>Represents a base actor in the level.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Item/"><strong>endstone::Item</strong></a> <em>Represents a base actor in the level.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a> <em>Represents a mobile entity (i.e. living entity), such as a monster or player.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a> <em>Represents a player.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>class</strong> <a href="../classendstone_1_1BlockCommandSender/"><strong>endstone::BlockCommandSender</strong></a> <em>Represents a block command sender.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a> <em>Represents a wrapper that forwards commands to the wrapped</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>and captures its output.</em></li>
+<li><strong>class</strong> <a href="../classendstone_1_1ConsoleCommandSender/"><strong>endstone::ConsoleCommandSender</strong></a> <em>Represents a console command sender.</em> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><strong>class</strong> <strong>EventType</strong>    <ul>
 <li><strong>class</strong> <a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a> <em>A type characterizing events that may be cancelled by a plugin or the server.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a> <em>A type characterizing events that may be cancelled by a plugin or the server.</em> </li>
@@ -2970,7 +3157,7 @@ For latest updates join the chat on
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 - 2025 EndstoneMC
+      Copyright &copy; 2023 - 2026 EndstoneMC
     </div>
   
   

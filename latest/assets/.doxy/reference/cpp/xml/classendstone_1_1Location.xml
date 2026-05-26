@@ -200,7 +200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="60" column="22" bodyfile="include/endstone/level/dimension.h" bodystart="144" bodyend="147"/>
+        <location file="include/endstone/level/location.h" line="60" column="22" bodyfile="include/endstone/level/dimension.h" bodystart="143" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a5ba25937640328506266b859ef860a64" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -674,7 +674,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="253" column="12" bodyfile="include/endstone/level/dimension.h" bodystart="149" bodyend="155"/>
+        <location file="include/endstone/level/location.h" line="253" column="12" bodyfile="include/endstone/level/dimension.h" bodystart="148" bodyend="154"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a253139f4781dfc8a8ee7c1363d7745a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>

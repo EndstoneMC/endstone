@@ -38,9 +38,6 @@ class BlockType : public Registry<BlockType>::Type {
 public:
     static constexpr auto Air = BlockTypeId::minecraft("air");
 
-    ENDSTONE_REGISTRY_TYPE(BlockType)
-
-    
     [[nodiscard]] virtual bool hasItemType() const = 0;
 
     [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData() const = 0;

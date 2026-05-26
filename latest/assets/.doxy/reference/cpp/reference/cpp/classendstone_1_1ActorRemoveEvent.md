@@ -93,7 +93,7 @@ Inherits the following classes: [endstone::ActorEvent](classendstone_1_1ActorEve
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorEvent**](#function-actorevent) ([**ActorType**](classendstone_1_1Identifier.md) & actor) <br> |
+|   | [**ActorEvent**](#function-actorevent) ([**ActorType**](classendstone_1_1ActorType.md) & actor) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md)) <br> |
 
 
@@ -103,8 +103,9 @@ See [endstone::ActorEvent](classendstone_1_1ActorEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) ([**ActorType**](classendstone_1_1Identifier.md) & actor) <br> |
-|  [**ActorType**](classendstone_1_1Identifier.md) & | [**getActor**](classendstone_1_1ActorEvent.md#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
+|   | [**ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) ([**ActorType**](classendstone_1_1ActorType.md) & actor) <br> |
+|  [**ActorType**](classendstone_1_1ActorType.md) & | [**getActor**](classendstone_1_1ActorEvent.md#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
+|  [**const**](classendstone_1_1Identifier.md) [**endstone::ActorType**](classendstone_1_1ActorType.md) & | [**getActorType**](classendstone_1_1ActorEvent.md#function-getactortype) () const<br>_Returns the type of the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
 |   | [**~ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) () override<br> |
 
 

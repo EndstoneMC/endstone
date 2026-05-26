@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="35" column="19"/>
+        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="33" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a88f4642c54fda6ad370504b494050db0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="45" column="26"/>
+        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="43" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1ac40efd712c8fe6ecc7bb8c7fd503de97" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -99,7 +99,7 @@ Pages are 1-indexed.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="57" column="18"/>
+        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="55" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a488476c1a3cd831188fdeb8f8ae26d3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -117,7 +117,7 @@ Pages are 1-indexed.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="64" column="26"/>
+        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="62" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a8ac8922569392b56172011e714c38b37" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -140,7 +140,7 @@ Pages are 1-indexed.</para>
 <para>Clears the existing book pages, and sets the book to use the provided pages. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>Maximum 50 pages with 798 characters per page.</para>
+<para><simplesect kind="note"><para>Maximum 50 pages with 256 characters per page.</para>
 </simplesect>
 <parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -155,7 +155,7 @@ Pages are 1-indexed.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="74" column="10" bodyfile="include/endstone/inventory/meta/writable_book_meta.h" bodystart="74" bodyend="77"/>
+        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="72" column="10" bodyfile="include/endstone/inventory/meta/writable_book_meta.h" bodystart="72" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1af78248585a392637bb362107854f5d87" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -168,7 +168,7 @@ Pages are 1-indexed.</para>
           <declname>pages</declname>
         </param>
         <briefdescription>
-<para>Maximum 50 pages with 798 characters per page. </para>
+<para>Maximum 50 pages with 256 characters per page. </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="note"><para>Clears the existing book pages, and sets the book to use the provided pages.</para>
@@ -187,7 +187,7 @@ Pages are 1-indexed.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="86" column="18"/>
+        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="84" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a40c40653c9f6d88d170e9aa5b9838df8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -210,7 +210,7 @@ Pages are 1-indexed.</para>
 <para>Adds new pages to the end of the book. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>Up to a maximum of 50 pages with 798 characters per page.</para>
+<para><simplesect kind="note"><para>Up to a maximum of 50 pages with 256 characters per page.</para>
 </simplesect>
 <parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -225,14 +225,14 @@ Pages are 1-indexed.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="96" column="10" bodyfile="include/endstone/inventory/meta/writable_book_meta.h" bodystart="96" bodyend="99"/>
+        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="94" column="10" bodyfile="include/endstone/inventory/meta/writable_book_meta.h" bodystart="94" bodyend="97"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a8c6bbef3da6c8cf8005b7d6c1ca9ac15" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a3c41804905f522ef1e9de5f616787da1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
-        <definition>virtual void endstone::WritableBookMeta::addPage</definition>
+        <definition>virtual void endstone::WritableBookMeta::addPages</definition>
         <argsstring>(std::vector&lt; std::string &gt; pages)=0</argsstring>
-        <name>addPage</name>
-        <qualifiedname>endstone::WritableBookMeta::addPage</qualifiedname>
+        <name>addPages</name>
+        <qualifiedname>endstone::WritableBookMeta::addPages</qualifiedname>
         <param>
           <type>std::vector&lt; std::string &gt;</type>
           <declname>pages</declname>
@@ -241,7 +241,7 @@ Pages are 1-indexed.</para>
 <para>Adds new pages to the end of the book. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>Up to a maximum of 50 pages with 798 characters per page.</para>
+<para><simplesect kind="note"><para>Up to a maximum of 50 pages with 256 characters per page.</para>
 </simplesect>
 <parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -256,7 +256,7 @@ Pages are 1-indexed.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="108" column="18"/>
+        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="106" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1WritableBookMeta_1a207196509c31e42333531d547b0f1af0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -274,7 +274,7 @@ Pages are 1-indexed.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="115" column="18"/>
+        <location file="include/endstone/inventory/meta/writable_book_meta.h" line="113" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -283,7 +283,7 @@ Pages are 1-indexed.</para>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3">
+      <node id="4">
         <label>endstone::BookMeta</label>
         <link refid="classendstone_1_1BookMeta"/>
         <childnode refid="1" relation="public-inheritance">
@@ -292,6 +292,12 @@ Pages are 1-indexed.</para>
       <node id="2">
         <label>endstone::ItemMeta</label>
         <link refid="classendstone_1_1ItemMeta"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
       </node>
       <node id="1">
         <label>endstone::WritableBookMeta</label>
@@ -304,6 +310,12 @@ Pages are 1-indexed.</para>
       <node id="2">
         <label>endstone::ItemMeta</label>
         <link refid="classendstone_1_1ItemMeta"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
       </node>
       <node id="1">
         <label>endstone::WritableBookMeta</label>
@@ -312,14 +324,15 @@ Pages are 1-indexed.</para>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/inventory/meta/writable_book_meta.h" line="26" column="1" bodyfile="include/endstone/inventory/meta/writable_book_meta.h" bodystart="26" bodyend="116"/>
+    <location file="include/endstone/inventory/meta/writable_book_meta.h" line="26" column="1" bodyfile="include/endstone/inventory/meta/writable_book_meta.h" bodystart="26" bodyend="114"/>
     <listofallmembers>
       <member refid="classendstone_1_1ItemMeta_1ac1ee49d00e1cdd56816e0e775bff4241" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>addEnchant</name></member>
       <member refid="classendstone_1_1WritableBookMeta_1a40c40653c9f6d88d170e9aa5b9838df8" prot="public" virt="non-virtual"><scope>endstone::WritableBookMeta</scope><name>addPage</name></member>
-      <member refid="classendstone_1_1WritableBookMeta_1a8c6bbef3da6c8cf8005b7d6c1ca9ac15" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>addPage</name></member>
-      <member refid="classendstone_1_1ItemMeta_1af179bd7b745731e3d0f1e66828e45149" prot="public" virt="non-virtual"><scope>endstone::WritableBookMeta</scope><name>as</name></member>
-      <member refid="classendstone_1_1ItemMeta_1af5d8b132d9add8051466b9b19e3bfa61" prot="public" virt="non-virtual"><scope>endstone::WritableBookMeta</scope><name>as</name></member>
+      <member refid="classendstone_1_1WritableBookMeta_1a3c41804905f522ef1e9de5f616787da1" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>addPages</name></member>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::WritableBookMeta</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::WritableBookMeta</scope><name>as</name></member>
       <member refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>clone</name></member>
+      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>getClassTypeId</name></member>
       <member refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>getDamage</name></member>
       <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>getDisplayName</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4ada54133ca59faa19c55d38b3be845f" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>getEnchantLevel</name></member>
@@ -330,7 +343,6 @@ Pages are 1-indexed.</para>
       <member refid="classendstone_1_1WritableBookMeta_1a207196509c31e42333531d547b0f1af0" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>getPageCount</name></member>
       <member refid="classendstone_1_1WritableBookMeta_1a488476c1a3cd831188fdeb8f8ae26d3d" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>getPages</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>getRepairCost</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>getType</name></member>
       <member refid="classendstone_1_1ItemMeta_1af5939a3ac6202136120dcab179c8e9d6" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>hasConflictingEnchant</name></member>
       <member refid="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>hasDamage</name></member>
       <member refid="classendstone_1_1ItemMeta_1a0a8bf5690f51d5e1438308d1858a1df4" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>hasDisplayName</name></member>
@@ -339,6 +351,8 @@ Pages are 1-indexed.</para>
       <member refid="classendstone_1_1ItemMeta_1a52d6ef7084538f60809b6baff98afdfa" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>hasLore</name></member>
       <member refid="classendstone_1_1WritableBookMeta_1a778ade876436bcd7dc30d4d2a44729bf" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>hasPages</name></member>
       <member refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>hasRepairCost</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::WritableBookMeta</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>isUnbreakable</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad00a6e480dbda4f8e054f48cd318756f" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>removeEnchant</name></member>
       <member refid="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>removeEnchants</name></member>
@@ -350,8 +364,7 @@ Pages are 1-indexed.</para>
       <member refid="classendstone_1_1WritableBookMeta_1af78248585a392637bb362107854f5d87" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>setPages</name></member>
       <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>setRepairCost</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" prot="public" virt="pure-virtual"><scope>endstone::WritableBookMeta</scope><name>setUnbreakable</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" prot="public" virt="non-virtual"><scope>endstone::WritableBookMeta</scope><name>Type</name></member>
-      <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" prot="public" virt="virtual"><scope>endstone::WritableBookMeta</scope><name>~ItemMeta</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::WritableBookMeta</scope><name>~Object</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

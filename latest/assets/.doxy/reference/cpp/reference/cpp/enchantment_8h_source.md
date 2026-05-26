@@ -31,7 +31,6 @@ class ItemStack;
 using EnchantmentId = Identifier<class Enchantment>;
 class Enchantment : public Registry<Enchantment>::Type {
 public:
-    ENDSTONE_REGISTRY_TYPE(Enchantment)
     static constexpr auto Protection = EnchantmentId::minecraft("protection");
 
     static constexpr auto FireProtection = EnchantmentId::minecraft("fire_protection");

@@ -32,8 +32,6 @@
 namespace endstone {
 class MapMeta : public ItemMeta {
 public:
-    ENDSTONE_ITEM_META_TYPE(Map)
-
     using MapId = std::int64_t;
     [[nodiscard]] virtual bool hasMapId() const = 0;
 

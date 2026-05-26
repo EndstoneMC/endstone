@@ -5,6 +5,7 @@
 
 ## a
 
+* **ActorTypeId** ([**endstone**](namespaceendstone.md))
 * **AttributeId** ([**endstone**](namespaceendstone.md))
 
 
@@ -22,8 +23,10 @@
 
 ## d
 
+* **DimensionId** ([**endstone**](namespaceendstone.md))
 * **DisplaySlot** ([**endstone**](namespaceendstone.md))
 * **DoubleTag** ([**endstone**](namespaceendstone.md))
+* **dump** ([**endstone::nbt**](namespaceendstone_1_1nbt.md))
 
 
 ## e
@@ -63,6 +66,7 @@
 ## l
 
 * **LongTag** ([**endstone**](namespaceendstone.md))
+* **load** ([**endstone::nbt**](namespaceendstone_1_1nbt.md))
 
 
 ## m
@@ -95,6 +99,15 @@
 
 * **RenderType** ([**endstone**](namespaceendstone.md))
 * **Result** ([**endstone**](namespaceendstone.md))
+* **read\_bytes** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **read\_length** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **read\_string** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **read\_tag\_payload** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **read\_value** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **read\_varint** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **read\_varint64** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **read\_zigzag32** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **read\_zigzag64** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
 
 
 ## s
@@ -110,6 +123,27 @@
 
 * **TaskId** ([**endstone**](namespaceendstone.md))
 * **Type** ([**endstone::nbt**](namespaceendstone_1_1nbt.md))
+
+
+## w
+
+* **write\_bytes** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **write\_length** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **write\_string** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **write\_tag\_payload** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **write\_value** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **write\_varint** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **write\_varint64** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **write\_zigzag32** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **write\_zigzag64** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+
+
+## z
+
+* **zigzag\_decode32** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **zigzag\_decode64** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **zigzag\_encode32** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
+* **zigzag\_encode64** ([**endstone::nbt::detail**](namespaceendstone_1_1nbt_1_1detail.md))
 
 
 

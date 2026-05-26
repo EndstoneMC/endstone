@@ -1,0 +1,265 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Object" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Object</compoundname>
+    <derivedcompoundref refid="classendstone_1_1ItemMeta" prot="public" virt="non-virtual">endstone::ItemMeta</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1Permissible" prot="public" virt="non-virtual">endstone::Permissible</derivedcompoundref>
+    <includes refid="object_8h" local="no">endstone/object.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Object::~Object</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Object</name>
+        <qualifiedname>endstone::Object::~Object</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/object.h" line="31" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::type_info &amp;</type>
+        <definition>virtual const std::type_info &amp; endstone::Object::getClassTypeId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getClassTypeId</name>
+        <qualifiedname>endstone::Object::getClassTypeId</qualifiedname>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a32447f67b4a1cf445b8020fdf06518f5">getClassTypeId</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/object.h" line="36" column="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Object::isInstanceOf</definition>
+        <argsstring>(const std::type_info &amp;target) const =0</argsstring>
+        <name>isInstanceOf</name>
+        <qualifiedname>endstone::Object::isInstanceOf</qualifiedname>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a98f9818a93988f413831e2c4e9d59db6">isInstanceOf</reimplementedby>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::type_info &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/object.h" line="41" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> *</type>
+        <definition>T * endstone::Object::as</definition>
+        <argsstring>()</argsstring>
+        <name>as</name>
+        <qualifiedname>endstone::Object::as</qualifiedname>
+    <requiresclause>std::is_base_of_v&lt;Object, T&gt;    </requiresclause>
+        <briefdescription>
+<para>Attempts to cast this object to the given type T. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns nullptr if this object is not an instance of T (or a subclass of T).</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target type to cast to (must derive from <ref refid="classendstone_1_1Object" kindref="compound">Object</ref>) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to this as T, or nullptr if the cast is invalid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/object.h" line="53" column="7" bodyfile="include/endstone/object.h" bodystart="53" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> *</type>
+        <definition>const T * endstone::Object::as</definition>
+        <argsstring>() const</argsstring>
+        <name>as</name>
+        <qualifiedname>endstone::Object::as</qualifiedname>
+    <requiresclause>std::is_base_of_v&lt;Object, T&gt;    </requiresclause>
+        <briefdescription>
+<para>Attempts to cast this object to the given type T.   </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns nullptr if this object is not an instance of T (or a subclass of T).</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target type to cast to (must derive from <ref refid="classendstone_1_1Object" kindref="compound">Object</ref>) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to this as T, or nullptr if the cast is invalid   </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/object.h" line="66" column="13" bodyfile="include/endstone/object.h" bodystart="66" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">typename</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Object::is</definition>
+        <argsstring>() const</argsstring>
+        <name>is</name>
+        <qualifiedname>endstone::Object::is</qualifiedname>
+    <requiresclause>std::is_base_of_v&lt;Object, T&gt;    </requiresclause>
+        <briefdescription>
+<para>Checks if this object is an instance of the given type T (or a subclass of T). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type to check against (must derive from <ref refid="classendstone_1_1Object" kindref="compound">Object</ref>) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if this object is an instance of T </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/object.h" line="82" column="11" bodyfile="include/endstone/object.h" bodystart="82" bodyend="85"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Base class providing runtime type identification and safe casting. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>All endstone types that support runtime type narrowing (e.g., <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref>, <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref>) inherit from <ref refid="classendstone_1_1Object" kindref="compound">Object</ref>. Subclasses implement getClassTypeId() and isInstanceOf(), and the type hierarchy is registered with entt::meta at startup. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9">
+        <label>endstone::Actor</label>
+        <link refid="classendstone_1_1Actor"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>endstone::BlockCommandSender</label>
+        <link refid="classendstone_1_1BlockCommandSender"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>endstone::BookMeta</label>
+        <link refid="classendstone_1_1BookMeta"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>endstone::CommandSenderWrapper</label>
+        <link refid="classendstone_1_1CommandSenderWrapper"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>endstone::ConsoleCommandSender</label>
+        <link refid="classendstone_1_1ConsoleCommandSender"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::CrossbowMeta</label>
+        <link refid="classendstone_1_1CrossbowMeta"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>endstone::Item</label>
+        <link refid="classendstone_1_1Item"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::ItemMeta</label>
+        <link refid="classendstone_1_1ItemMeta"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::MapMeta</label>
+        <link refid="classendstone_1_1MapMeta"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>endstone::Mob</label>
+        <link refid="classendstone_1_1Mob"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+      <node id="7">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>endstone::Player</label>
+        <link refid="classendstone_1_1Player"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::WritableBookMeta</label>
+        <link refid="classendstone_1_1WritableBookMeta"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="include/endstone/object.h" line="29" column="1" bodyfile="include/endstone/object.h" bodystart="29" bodyend="86"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Object</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::Object</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::Object</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::Object</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::Object</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::Object</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

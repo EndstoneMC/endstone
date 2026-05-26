@@ -16,7 +16,7 @@ _CRTP base for registry-backed types identified by an_ [_**Identifier**_](classe
 
 
 
-Inherited by the following classes: [endstone::BlockType](classendstone_1_1BlockType.md),  [endstone::Enchantment](classendstone_1_1Enchantment.md),  [endstone::ItemType](classendstone_1_1ItemType.md)
+Inherited by the following classes: [endstone::ActorType](classendstone_1_1ActorType.md),  [endstone::BlockType](classendstone_1_1BlockType.md),  [endstone::Enchantment](classendstone_1_1Enchantment.md),  [endstone::ItemType](classendstone_1_1ItemType.md)
 
 
 

@@ -1,0 +1,2210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ActorType" kind="class" language="C++" prot="public">
+    <compoundname>endstone::ActorType</compoundname>
+    <basecompoundref refid="classendstone_1_1Registry_1_1Type" prot="public" virt="non-virtual">endstone::Registry&lt; T &gt;::Type</basecompoundref>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a2963964779e1b9af72af24df5863b010" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Allay</definition>
+        <argsstring></argsstring>
+        <name>Allay</name>
+        <qualifiedname>endstone::ActorType::Allay</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;allay&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="28" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a9cbd7152881d4131b032d5963b768f94" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Armadillo</definition>
+        <argsstring></argsstring>
+        <name>Armadillo</name>
+        <qualifiedname>endstone::ActorType::Armadillo</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;armadillo&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="29" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a51d6ebcec7d05d20d405ef336c7e8a75" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Axolotl</definition>
+        <argsstring></argsstring>
+        <name>Axolotl</name>
+        <qualifiedname>endstone::ActorType::Axolotl</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;axolotl&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="30" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a3c775c7da38385cad6c29bdad84afe21" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Bat</definition>
+        <argsstring></argsstring>
+        <name>Bat</name>
+        <qualifiedname>endstone::ActorType::Bat</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;bat&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="31" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a0b9ffd91ee648910535715c2822c9028" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Bee</definition>
+        <argsstring></argsstring>
+        <name>Bee</name>
+        <qualifiedname>endstone::ActorType::Bee</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;bee&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="32" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1afbaa3e151a74c29e71d2ca75c0a8466c" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Camel</definition>
+        <argsstring></argsstring>
+        <name>Camel</name>
+        <qualifiedname>endstone::ActorType::Camel</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;camel&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="33" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a64fe2cd7c8c1f14ddddfc170363d57e0" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::CamelHusk</definition>
+        <argsstring></argsstring>
+        <name>CamelHusk</name>
+        <qualifiedname>endstone::ActorType::CamelHusk</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;camel_husk&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="34" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a60e0d5ad8b61c27be5ec67f7a334f31d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Cat</definition>
+        <argsstring></argsstring>
+        <name>Cat</name>
+        <qualifiedname>endstone::ActorType::Cat</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;cat&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="35" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1abc6646722c8692c96c727f7d26567e56" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Chicken</definition>
+        <argsstring></argsstring>
+        <name>Chicken</name>
+        <qualifiedname>endstone::ActorType::Chicken</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;chicken&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="36" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a7bf3cf06ed3e85deb9199a88e6d220bb" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Cod</definition>
+        <argsstring></argsstring>
+        <name>Cod</name>
+        <qualifiedname>endstone::ActorType::Cod</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;cod&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="37" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a268f42aed1495368c046b97613ef06be" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::CopperGolem</definition>
+        <argsstring></argsstring>
+        <name>CopperGolem</name>
+        <qualifiedname>endstone::ActorType::CopperGolem</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;copper_golem&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="38" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a338c364be666c4af500a54bd1bcdb318" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Cow</definition>
+        <argsstring></argsstring>
+        <name>Cow</name>
+        <qualifiedname>endstone::ActorType::Cow</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;cow&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="39" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a34feaae10c34f5d5422256c7ef6ee134" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Dolphin</definition>
+        <argsstring></argsstring>
+        <name>Dolphin</name>
+        <qualifiedname>endstone::ActorType::Dolphin</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;dolphin&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="40" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1aeb2f5917c497c307d2fd788a9eb08acf" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Donkey</definition>
+        <argsstring></argsstring>
+        <name>Donkey</name>
+        <qualifiedname>endstone::ActorType::Donkey</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;donkey&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="41" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a5e48507eb02490e4b19a7c1266b80021" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Fox</definition>
+        <argsstring></argsstring>
+        <name>Fox</name>
+        <qualifiedname>endstone::ActorType::Fox</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;fox&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="42" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a4d6be59150245afeb6fe7a4e8de2192d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Frog</definition>
+        <argsstring></argsstring>
+        <name>Frog</name>
+        <qualifiedname>endstone::ActorType::Frog</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;frog&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="43" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a30728d8edd9c4c2b23feafb789ea45e1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::GlowSquid</definition>
+        <argsstring></argsstring>
+        <name>GlowSquid</name>
+        <qualifiedname>endstone::ActorType::GlowSquid</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;glow_squid&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="44" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a8f1e3f1c80d54dc9a09262c7d1236e23" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Goat</definition>
+        <argsstring></argsstring>
+        <name>Goat</name>
+        <qualifiedname>endstone::ActorType::Goat</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;goat&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="45" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a6f9fe8a722a7a80eded09983dd592e17" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::HappyGhast</definition>
+        <argsstring></argsstring>
+        <name>HappyGhast</name>
+        <qualifiedname>endstone::ActorType::HappyGhast</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;happy_ghast&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="46" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a59df07f1781aa384515c3396dac019b6" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Hoglin</definition>
+        <argsstring></argsstring>
+        <name>Hoglin</name>
+        <qualifiedname>endstone::ActorType::Hoglin</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;hoglin&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="47" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ac92833c570a35d0c35e0e92d71d00cd4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Horse</definition>
+        <argsstring></argsstring>
+        <name>Horse</name>
+        <qualifiedname>endstone::ActorType::Horse</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;horse&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="48" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a65f86790262256febd11d3bb08b6a10f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::IronGolem</definition>
+        <argsstring></argsstring>
+        <name>IronGolem</name>
+        <qualifiedname>endstone::ActorType::IronGolem</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;iron_golem&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="49" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a1766e16a39859d07d61b4eae00c28b7c" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Llama</definition>
+        <argsstring></argsstring>
+        <name>Llama</name>
+        <qualifiedname>endstone::ActorType::Llama</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;llama&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="50" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1aa49e4904ecedd04fc95c48c63ab758d3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Mooshroom</definition>
+        <argsstring></argsstring>
+        <name>Mooshroom</name>
+        <qualifiedname>endstone::ActorType::Mooshroom</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;mooshroom&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="51" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1aaa574db24c873a420026610bdce2f4d1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Mule</definition>
+        <argsstring></argsstring>
+        <name>Mule</name>
+        <qualifiedname>endstone::ActorType::Mule</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;mule&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="52" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a2a647e3612f50f22e1559902bec0e870" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Nautilus</definition>
+        <argsstring></argsstring>
+        <name>Nautilus</name>
+        <qualifiedname>endstone::ActorType::Nautilus</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;nautilus&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="53" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ac8fdf3f898b505d54dcc3c219fa91622" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Ocelot</definition>
+        <argsstring></argsstring>
+        <name>Ocelot</name>
+        <qualifiedname>endstone::ActorType::Ocelot</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;ocelot&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="54" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1aa6495b101e0beaa93a32d7f9ae7c02c2" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Panda</definition>
+        <argsstring></argsstring>
+        <name>Panda</name>
+        <qualifiedname>endstone::ActorType::Panda</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;panda&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="55" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a74ce1be1bbc323b9f8765673b22e4ae3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Parrot</definition>
+        <argsstring></argsstring>
+        <name>Parrot</name>
+        <qualifiedname>endstone::ActorType::Parrot</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;parrot&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="56" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a564047a2ab6fc51f8c753cfe659ebde6" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Pig</definition>
+        <argsstring></argsstring>
+        <name>Pig</name>
+        <qualifiedname>endstone::ActorType::Pig</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;pig&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="57" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a363465ebac374f1760e28eb7cb13a497" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::PolarBear</definition>
+        <argsstring></argsstring>
+        <name>PolarBear</name>
+        <qualifiedname>endstone::ActorType::PolarBear</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;polar_bear&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="58" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a1048f0bf6dccc2a716bf73ab472e80b1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Pufferfish</definition>
+        <argsstring></argsstring>
+        <name>Pufferfish</name>
+        <qualifiedname>endstone::ActorType::Pufferfish</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;pufferfish&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="59" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a0ae7bfa967a5e921fa37a6d2a2af364a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Rabbit</definition>
+        <argsstring></argsstring>
+        <name>Rabbit</name>
+        <qualifiedname>endstone::ActorType::Rabbit</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;rabbit&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="60" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a6c45b37830734c8e511eea834021b082" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Salmon</definition>
+        <argsstring></argsstring>
+        <name>Salmon</name>
+        <qualifiedname>endstone::ActorType::Salmon</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;salmon&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="61" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a74e5f04a74c767eda82cb683da3d6f01" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Sheep</definition>
+        <argsstring></argsstring>
+        <name>Sheep</name>
+        <qualifiedname>endstone::ActorType::Sheep</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;sheep&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="62" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a56d141db83dd9cbb1f78f323baf9595e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::SkeletonHorse</definition>
+        <argsstring></argsstring>
+        <name>SkeletonHorse</name>
+        <qualifiedname>endstone::ActorType::SkeletonHorse</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;skeleton_horse&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="63" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a64954f5de6da1c9ced13e6acb26e36af" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Sniffer</definition>
+        <argsstring></argsstring>
+        <name>Sniffer</name>
+        <qualifiedname>endstone::ActorType::Sniffer</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;sniffer&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="64" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a56212a4c23a856ea406beac345416fa4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::SnowGolem</definition>
+        <argsstring></argsstring>
+        <name>SnowGolem</name>
+        <qualifiedname>endstone::ActorType::SnowGolem</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;snow_golem&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="65" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a0f48768187f5745f55d843967cee5f58" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Squid</definition>
+        <argsstring></argsstring>
+        <name>Squid</name>
+        <qualifiedname>endstone::ActorType::Squid</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;squid&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="66" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a1d6f5bbea51f7e366e19e7f2939d73e9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Strider</definition>
+        <argsstring></argsstring>
+        <name>Strider</name>
+        <qualifiedname>endstone::ActorType::Strider</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;strider&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="67" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a29314390bae6d07a6ac93118d4d1d250" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Tadpole</definition>
+        <argsstring></argsstring>
+        <name>Tadpole</name>
+        <qualifiedname>endstone::ActorType::Tadpole</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;tadpole&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="68" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1acd612c91ef6b15d975d3da74168e44c2" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::TraderLlama</definition>
+        <argsstring></argsstring>
+        <name>TraderLlama</name>
+        <qualifiedname>endstone::ActorType::TraderLlama</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;trader_llama&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="69" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ae90adcead939ad73532e9b7e5696bf15" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Tropicalfish</definition>
+        <argsstring></argsstring>
+        <name>Tropicalfish</name>
+        <qualifiedname>endstone::ActorType::Tropicalfish</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;tropicalfish&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="70" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ad6fc984d51f2baa794029b918e3605a7" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Turtle</definition>
+        <argsstring></argsstring>
+        <name>Turtle</name>
+        <qualifiedname>endstone::ActorType::Turtle</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;turtle&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="71" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ad4962c4d50c7b211240f357b8089cca4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::WanderingTrader</definition>
+        <argsstring></argsstring>
+        <name>WanderingTrader</name>
+        <qualifiedname>endstone::ActorType::WanderingTrader</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;wandering_trader&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="72" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1add0f7c30beb39030157e9d8363f2407a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Wolf</definition>
+        <argsstring></argsstring>
+        <name>Wolf</name>
+        <qualifiedname>endstone::ActorType::Wolf</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;wolf&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="73" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1aa1d7a9b32a26593653339b7dbf6a040c" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::ZombieHorse</definition>
+        <argsstring></argsstring>
+        <name>ZombieHorse</name>
+        <qualifiedname>endstone::ActorType::ZombieHorse</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;zombie_horse&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="74" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a2fa1ed1495de733ea77bc4227b61d548" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Blaze</definition>
+        <argsstring></argsstring>
+        <name>Blaze</name>
+        <qualifiedname>endstone::ActorType::Blaze</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;blaze&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="77" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a378762e5812423f2f9d9cfed24f5eee0" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Bogged</definition>
+        <argsstring></argsstring>
+        <name>Bogged</name>
+        <qualifiedname>endstone::ActorType::Bogged</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;bogged&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="78" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1afb1d2d3f09c3235f9b2fda3321714503" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Breeze</definition>
+        <argsstring></argsstring>
+        <name>Breeze</name>
+        <qualifiedname>endstone::ActorType::Breeze</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;breeze&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="79" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1afa0e5997fb23459ea372aa36c8c6fa65" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::CaveSpider</definition>
+        <argsstring></argsstring>
+        <name>CaveSpider</name>
+        <qualifiedname>endstone::ActorType::CaveSpider</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;cave_spider&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="80" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1acf3ed9b8e1f7881eb9f7c73c7be7dfb0" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Creaking</definition>
+        <argsstring></argsstring>
+        <name>Creaking</name>
+        <qualifiedname>endstone::ActorType::Creaking</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;creaking&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="81" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a8ca53359919aa9374bf9c3f4f219d992" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Creeper</definition>
+        <argsstring></argsstring>
+        <name>Creeper</name>
+        <qualifiedname>endstone::ActorType::Creeper</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;creeper&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="82" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a145bfaa4534730dfdda5ad1ed9aa1353" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Drowned</definition>
+        <argsstring></argsstring>
+        <name>Drowned</name>
+        <qualifiedname>endstone::ActorType::Drowned</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;drowned&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="83" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a0344ccfc93bd768d6859c6bee8cfa44c" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::ElderGuardian</definition>
+        <argsstring></argsstring>
+        <name>ElderGuardian</name>
+        <qualifiedname>endstone::ActorType::ElderGuardian</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;elder_guardian&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="84" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a5df0ddc9bb588842599125c3b22536a1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::ElderGuardianGhost</definition>
+        <argsstring></argsstring>
+        <name>ElderGuardianGhost</name>
+        <qualifiedname>endstone::ActorType::ElderGuardianGhost</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;elder_guardian_ghost&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="85" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a448fc4417c9b93469d6272927c565140" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Enderman</definition>
+        <argsstring></argsstring>
+        <name>Enderman</name>
+        <qualifiedname>endstone::ActorType::Enderman</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;enderman&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="86" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a862a257cd40244978d86d1d443e2acdc" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Endermite</definition>
+        <argsstring></argsstring>
+        <name>Endermite</name>
+        <qualifiedname>endstone::ActorType::Endermite</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;endermite&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="87" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a41f90388498bc592a92f0df09810d6e6" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::EvocationIllager</definition>
+        <argsstring></argsstring>
+        <name>EvocationIllager</name>
+        <qualifiedname>endstone::ActorType::EvocationIllager</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;evocation_illager&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="88" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1af2269cee60f5347383eb27507164f5d5" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Ghast</definition>
+        <argsstring></argsstring>
+        <name>Ghast</name>
+        <qualifiedname>endstone::ActorType::Ghast</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;ghast&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="89" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1add42657123d40c25585cdf823005db9d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Guardian</definition>
+        <argsstring></argsstring>
+        <name>Guardian</name>
+        <qualifiedname>endstone::ActorType::Guardian</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;guardian&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="90" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a26980ab164395fb2cecac8402d2ebb5f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Husk</definition>
+        <argsstring></argsstring>
+        <name>Husk</name>
+        <qualifiedname>endstone::ActorType::Husk</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;husk&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="91" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a6e20c21909a3048c39e800ca8e46f45d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::MagmaCube</definition>
+        <argsstring></argsstring>
+        <name>MagmaCube</name>
+        <qualifiedname>endstone::ActorType::MagmaCube</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;magma_cube&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="92" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a72c99507d1e954c92c88d42f9ded4cc3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Parched</definition>
+        <argsstring></argsstring>
+        <name>Parched</name>
+        <qualifiedname>endstone::ActorType::Parched</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;parched&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="93" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a967bc4835b4e2c759dce3f368b72d831" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Phantom</definition>
+        <argsstring></argsstring>
+        <name>Phantom</name>
+        <qualifiedname>endstone::ActorType::Phantom</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;phantom&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="94" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ad4b0ed83c1ecd1dfea0cf6aaf50bac7e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Piglin</definition>
+        <argsstring></argsstring>
+        <name>Piglin</name>
+        <qualifiedname>endstone::ActorType::Piglin</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;piglin&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="95" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1aeba9fcb04d497caad638acce1c3ae940" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::PiglinBrute</definition>
+        <argsstring></argsstring>
+        <name>PiglinBrute</name>
+        <qualifiedname>endstone::ActorType::PiglinBrute</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;piglin_brute&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="96" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a68c47f1a6bf163669ec5f94208f6c9e3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Pillager</definition>
+        <argsstring></argsstring>
+        <name>Pillager</name>
+        <qualifiedname>endstone::ActorType::Pillager</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;pillager&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="97" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a131c53b1c5fc224880ad4f41e9268207" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Ravager</definition>
+        <argsstring></argsstring>
+        <name>Ravager</name>
+        <qualifiedname>endstone::ActorType::Ravager</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;ravager&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="98" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a1801cc6d9fcf2a66958e4fc5a33d1219" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Shulker</definition>
+        <argsstring></argsstring>
+        <name>Shulker</name>
+        <qualifiedname>endstone::ActorType::Shulker</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;shulker&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="99" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1accf107bea5846a59f95f8b95dfb6d878" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Silverfish</definition>
+        <argsstring></argsstring>
+        <name>Silverfish</name>
+        <qualifiedname>endstone::ActorType::Silverfish</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;silverfish&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="100" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a2afc4f40a9d5dd1db0bc71aa03150861" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Skeleton</definition>
+        <argsstring></argsstring>
+        <name>Skeleton</name>
+        <qualifiedname>endstone::ActorType::Skeleton</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;skeleton&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="101" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a04408c84bd3875ef4bd256710456c579" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Slime</definition>
+        <argsstring></argsstring>
+        <name>Slime</name>
+        <qualifiedname>endstone::ActorType::Slime</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;slime&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="102" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ac26bb49e22609d4f73eb80bd8a3cb1f9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Spider</definition>
+        <argsstring></argsstring>
+        <name>Spider</name>
+        <qualifiedname>endstone::ActorType::Spider</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;spider&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="103" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ad1d271f92627b922e3394b54c2bcb239" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Stray</definition>
+        <argsstring></argsstring>
+        <name>Stray</name>
+        <qualifiedname>endstone::ActorType::Stray</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;stray&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="104" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1acefb1e90f94c9a8beed6d91bf252eb61" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Vex</definition>
+        <argsstring></argsstring>
+        <name>Vex</name>
+        <qualifiedname>endstone::ActorType::Vex</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;vex&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="105" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ab61a995e9fbe281c5dfcf2df7d514d7c" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Vindicator</definition>
+        <argsstring></argsstring>
+        <name>Vindicator</name>
+        <qualifiedname>endstone::ActorType::Vindicator</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;vindicator&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="106" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1aea159eb50cbdda697192cdffff841c6e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Warden</definition>
+        <argsstring></argsstring>
+        <name>Warden</name>
+        <qualifiedname>endstone::ActorType::Warden</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;warden&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="107" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a9b700d0bb2e6647e1157b1a1bfbcaf48" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Witch</definition>
+        <argsstring></argsstring>
+        <name>Witch</name>
+        <qualifiedname>endstone::ActorType::Witch</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;witch&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="108" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a20490c6c685d2c08599349186742a7ca" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Wither</definition>
+        <argsstring></argsstring>
+        <name>Wither</name>
+        <qualifiedname>endstone::ActorType::Wither</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;wither&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="109" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1aa0ab628de6861c91a938b97ece5c3df8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::WitherSkeleton</definition>
+        <argsstring></argsstring>
+        <name>WitherSkeleton</name>
+        <qualifiedname>endstone::ActorType::WitherSkeleton</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;wither_skeleton&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="110" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a98786096e7ce179f49c4bffb8b526fa1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Zoglin</definition>
+        <argsstring></argsstring>
+        <name>Zoglin</name>
+        <qualifiedname>endstone::ActorType::Zoglin</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;zoglin&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="111" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1afbb02668f2e5f806d9cb092de72a01d3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Zombie</definition>
+        <argsstring></argsstring>
+        <name>Zombie</name>
+        <qualifiedname>endstone::ActorType::Zombie</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;zombie&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="112" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a50333650e9f33ed3e71b00d03a8434d2" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::ZombieNautilus</definition>
+        <argsstring></argsstring>
+        <name>ZombieNautilus</name>
+        <qualifiedname>endstone::ActorType::ZombieNautilus</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;zombie_nautilus&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="113" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a247ed61f99c456997006a040af8d56f8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::ZombiePigman</definition>
+        <argsstring></argsstring>
+        <name>ZombiePigman</name>
+        <qualifiedname>endstone::ActorType::ZombiePigman</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;zombie_pigman&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="114" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a393582c7b5d5ee4eea0272909a8e77ab" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::ZombieVillager</definition>
+        <argsstring></argsstring>
+        <name>ZombieVillager</name>
+        <qualifiedname>endstone::ActorType::ZombieVillager</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;zombie_villager&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="115" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a0cd587036af64d5409fd33497f38dbe8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::ZombieVillagerV2</definition>
+        <argsstring></argsstring>
+        <name>ZombieVillagerV2</name>
+        <qualifiedname>endstone::ActorType::ZombieVillagerV2</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;zombie_villager_v2&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="116" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ad47ee939f9f146f98907e0c9371929e6" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Villager</definition>
+        <argsstring></argsstring>
+        <name>Villager</name>
+        <qualifiedname>endstone::ActorType::Villager</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;villager&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="119" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1afda72adcddc77f67ad56611f3efdc9be" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::VillagerV2</definition>
+        <argsstring></argsstring>
+        <name>VillagerV2</name>
+        <qualifiedname>endstone::ActorType::VillagerV2</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;villager_v2&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="120" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ac591b53b8f3aa18f307f00151dbf6372" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Agent</definition>
+        <argsstring></argsstring>
+        <name>Agent</name>
+        <qualifiedname>endstone::ActorType::Agent</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;agent&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="123" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1aca8e74b25834de29c30b89c9278b37e8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::ArmorStand</definition>
+        <argsstring></argsstring>
+        <name>ArmorStand</name>
+        <qualifiedname>endstone::ActorType::ArmorStand</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;armor_stand&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="124" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a19a784206b48adff4ec6f749f3123380" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::EnderDragon</definition>
+        <argsstring></argsstring>
+        <name>EnderDragon</name>
+        <qualifiedname>endstone::ActorType::EnderDragon</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;ender_dragon&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="125" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a2f10c38022c93d00c8e57b6eef85dc41" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Npc</definition>
+        <argsstring></argsstring>
+        <name>Npc</name>
+        <qualifiedname>endstone::ActorType::Npc</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;npc&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="126" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a4876c40e25367f5ab339d8c49ea1f229" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Player</definition>
+        <argsstring></argsstring>
+        <name>Player</name>
+        <qualifiedname>endstone::ActorType::Player</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;player&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="127" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a72e5654a3f22422c25e48ac68cf8707e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::TripodCamera</definition>
+        <argsstring></argsstring>
+        <name>TripodCamera</name>
+        <qualifiedname>endstone::ActorType::TripodCamera</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;tripod_camera&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="128" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ab0476b55e3c2290c70bd366d07875ed8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::AreaEffectCloud</definition>
+        <argsstring></argsstring>
+        <name>AreaEffectCloud</name>
+        <qualifiedname>endstone::ActorType::AreaEffectCloud</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;area_effect_cloud&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="131" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a8affc1ae39b1622c5cdf033f416d4e7d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Arrow</definition>
+        <argsstring></argsstring>
+        <name>Arrow</name>
+        <qualifiedname>endstone::ActorType::Arrow</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;arrow&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="132" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a4627e211a50d63cf873edf3c539fd44e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Balloon</definition>
+        <argsstring></argsstring>
+        <name>Balloon</name>
+        <qualifiedname>endstone::ActorType::Balloon</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;balloon&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="133" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ad8b96a4f2a652b3432b31b4c17616a5e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Boat</definition>
+        <argsstring></argsstring>
+        <name>Boat</name>
+        <qualifiedname>endstone::ActorType::Boat</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;boat&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="134" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a23da6abda61da91c44681133eec4b3da" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::BreezeWindChargeProjectile</definition>
+        <argsstring></argsstring>
+        <name>BreezeWindChargeProjectile</name>
+        <qualifiedname>endstone::ActorType::BreezeWindChargeProjectile</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;breeze_wind_charge_projectile&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="135" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a1287b2046026c78de565d8d756043180" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::ChestBoat</definition>
+        <argsstring></argsstring>
+        <name>ChestBoat</name>
+        <qualifiedname>endstone::ActorType::ChestBoat</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;chest_boat&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="136" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a70602ad894433fb59d6661ef6fa76d54" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::ChestMinecart</definition>
+        <argsstring></argsstring>
+        <name>ChestMinecart</name>
+        <qualifiedname>endstone::ActorType::ChestMinecart</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;chest_minecart&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="137" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ad0c47f1bd6a02278afba42ad37fc8e87" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::CommandBlockMinecart</definition>
+        <argsstring></argsstring>
+        <name>CommandBlockMinecart</name>
+        <qualifiedname>endstone::ActorType::CommandBlockMinecart</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;command_block_minecart&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="138" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a11c7f20858cf713055d137c6dbd8fdad" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::DragonFireball</definition>
+        <argsstring></argsstring>
+        <name>DragonFireball</name>
+        <qualifiedname>endstone::ActorType::DragonFireball</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;dragon_fireball&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="139" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a10312249776a7000b9644e0ebfdd1cce" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Egg</definition>
+        <argsstring></argsstring>
+        <name>Egg</name>
+        <qualifiedname>endstone::ActorType::Egg</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;egg&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="140" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ace3af7d8d24722c9f2be2d5a1b4fd314" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::EnderCrystal</definition>
+        <argsstring></argsstring>
+        <name>EnderCrystal</name>
+        <qualifiedname>endstone::ActorType::EnderCrystal</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;ender_crystal&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="141" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a935a236ba8ad7343ba15cfbb29f745ed" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::EnderPearl</definition>
+        <argsstring></argsstring>
+        <name>EnderPearl</name>
+        <qualifiedname>endstone::ActorType::EnderPearl</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;ender_pearl&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="142" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ad364c7deacfeda2bbaf1aa3f75da0666" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::EvocationFang</definition>
+        <argsstring></argsstring>
+        <name>EvocationFang</name>
+        <qualifiedname>endstone::ActorType::EvocationFang</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;evocation_fang&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="143" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ab50b364796a6b0c43d76cfbdfa778b7b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::EyeOfEnderSignal</definition>
+        <argsstring></argsstring>
+        <name>EyeOfEnderSignal</name>
+        <qualifiedname>endstone::ActorType::EyeOfEnderSignal</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;eye_of_ender_signal&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="144" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a554a8595e1026625ecbb3ba0c79cbd1b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::FallingBlock</definition>
+        <argsstring></argsstring>
+        <name>FallingBlock</name>
+        <qualifiedname>endstone::ActorType::FallingBlock</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;falling_block&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="145" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1aa79cef5c7cdec1071225413cba40e4de" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Fireball</definition>
+        <argsstring></argsstring>
+        <name>Fireball</name>
+        <qualifiedname>endstone::ActorType::Fireball</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;fireball&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="146" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a2f7b8c4fc99bbbe6bc95fdc0ca7589bd" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::FireworksRocket</definition>
+        <argsstring></argsstring>
+        <name>FireworksRocket</name>
+        <qualifiedname>endstone::ActorType::FireworksRocket</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;fireworks_rocket&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="147" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a516d10eb0838e59a13297d8f53bbb223" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::FishingHook</definition>
+        <argsstring></argsstring>
+        <name>FishingHook</name>
+        <qualifiedname>endstone::ActorType::FishingHook</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;fishing_hook&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="148" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ad5741e92431149036d54bbbd22448401" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::HopperMinecart</definition>
+        <argsstring></argsstring>
+        <name>HopperMinecart</name>
+        <qualifiedname>endstone::ActorType::HopperMinecart</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;hopper_minecart&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="149" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ab3268edef5073d1f4694eabc2d9c24dd" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::IceBomb</definition>
+        <argsstring></argsstring>
+        <name>IceBomb</name>
+        <qualifiedname>endstone::ActorType::IceBomb</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;ice_bomb&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="150" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a1610d2f9e42c0ceab6882544461330b1" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Item</definition>
+        <argsstring></argsstring>
+        <name>Item</name>
+        <qualifiedname>endstone::ActorType::Item</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;item&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="151" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a4e2c51d8436f098ace580c599b0e8b64" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::LeashKnot</definition>
+        <argsstring></argsstring>
+        <name>LeashKnot</name>
+        <qualifiedname>endstone::ActorType::LeashKnot</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;leash_knot&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="152" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1abce42d61795eedea65fbb1092bd7aadd" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::LightningBolt</definition>
+        <argsstring></argsstring>
+        <name>LightningBolt</name>
+        <qualifiedname>endstone::ActorType::LightningBolt</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;lightning_bolt&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="153" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a159dfb932c0ed47a201d4e9a95b0773f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::LingeringPotion</definition>
+        <argsstring></argsstring>
+        <name>LingeringPotion</name>
+        <qualifiedname>endstone::ActorType::LingeringPotion</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;lingering_potion&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="154" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a57f1d9729d329a774b8299a9ec63b6bf" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::LlamaSpit</definition>
+        <argsstring></argsstring>
+        <name>LlamaSpit</name>
+        <qualifiedname>endstone::ActorType::LlamaSpit</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;llama_spit&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="155" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a89fdafdb64f8e2c21858fcb5c35a2140" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Minecart</definition>
+        <argsstring></argsstring>
+        <name>Minecart</name>
+        <qualifiedname>endstone::ActorType::Minecart</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;minecart&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="156" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a9892815c9ad54c4164f363913a6d1f98" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::OminousItemSpawner</definition>
+        <argsstring></argsstring>
+        <name>OminousItemSpawner</name>
+        <qualifiedname>endstone::ActorType::OminousItemSpawner</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;ominous_item_spawner&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="157" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1aab585c42c10b550625792266d88d2f78" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Painting</definition>
+        <argsstring></argsstring>
+        <name>Painting</name>
+        <qualifiedname>endstone::ActorType::Painting</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;painting&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="158" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a8ae376f6bfff8559af63411bcb6b00e6" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::ShulkerBullet</definition>
+        <argsstring></argsstring>
+        <name>ShulkerBullet</name>
+        <qualifiedname>endstone::ActorType::ShulkerBullet</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;shulker_bullet&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="159" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a6299ee66ddec207115545295e0c5e09a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::SmallFireball</definition>
+        <argsstring></argsstring>
+        <name>SmallFireball</name>
+        <qualifiedname>endstone::ActorType::SmallFireball</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;small_fireball&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="160" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a29fffc6b602b66cf822deadcf195f80e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Snowball</definition>
+        <argsstring></argsstring>
+        <name>Snowball</name>
+        <qualifiedname>endstone::ActorType::Snowball</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;snowball&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="161" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a19759eb1d885d87d697f6bd737c7dc52" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::SplashPotion</definition>
+        <argsstring></argsstring>
+        <name>SplashPotion</name>
+        <qualifiedname>endstone::ActorType::SplashPotion</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;splash_potion&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="162" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a3892f79d93f31d2642e22b2de07332fe" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::ThrownTrident</definition>
+        <argsstring></argsstring>
+        <name>ThrownTrident</name>
+        <qualifiedname>endstone::ActorType::ThrownTrident</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;thrown_trident&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="163" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1acc4b1f25e653c2eb1084b718f7d40494" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::Tnt</definition>
+        <argsstring></argsstring>
+        <name>Tnt</name>
+        <qualifiedname>endstone::ActorType::Tnt</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;tnt&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="164" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a09513b0939ac3746009ecaa11b742d2a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::TntMinecart</definition>
+        <argsstring></argsstring>
+        <name>TntMinecart</name>
+        <qualifiedname>endstone::ActorType::TntMinecart</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;tnt_minecart&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="165" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a8e5eb621321dfd5ab91f4236ec18b4fe" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::WindChargeProjectile</definition>
+        <argsstring></argsstring>
+        <name>WindChargeProjectile</name>
+        <qualifiedname>endstone::ActorType::WindChargeProjectile</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;wind_charge_projectile&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="166" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1abb297841aaa189b3eb54b493e20eb82d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::WitherSkull</definition>
+        <argsstring></argsstring>
+        <name>WitherSkull</name>
+        <qualifiedname>endstone::ActorType::WitherSkull</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;wither_skull&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="167" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1ae025111327c7912ef303231d6f42cfbf" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::WitherSkullDangerous</definition>
+        <argsstring></argsstring>
+        <name>WitherSkullDangerous</name>
+        <qualifiedname>endstone::ActorType::WitherSkullDangerous</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;wither_skull_dangerous&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="168" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1a8170481e030b764965d2e3bcc812a7b9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::XpBottle</definition>
+        <argsstring></argsstring>
+        <name>XpBottle</name>
+        <qualifiedname>endstone::ActorType::XpBottle</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;xp_bottle&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="169" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ActorType_1adc3e87e80db7f0ea2bddf087fe7cd622" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
+        <definition>constexpr auto endstone::ActorType::XpOrb</definition>
+        <argsstring></argsstring>
+        <name>XpOrb</name>
+        <qualifiedname>endstone::ActorType::XpOrb</qualifiedname>
+        <initializer>= ActorTypeId::minecraft(&quot;xp_orb&quot;)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor_type.h" line="170" column="27" bodyfile="include/endstone/actor/actor_type.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::ActorType</label>
+        <link refid="classendstone_1_1ActorType"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Registry&lt; T &gt;::Type</label>
+        <link refid="classendstone_1_1Registry_1_1Type"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::ActorType</label>
+        <link refid="classendstone_1_1ActorType"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Registry&lt; T &gt;::Type</label>
+        <link refid="classendstone_1_1Registry_1_1Type"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/actor/actor_type.h" line="25" column="1" bodyfile="include/endstone/actor/actor_type.h" bodystart="25" bodyend="171"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ActorType_1ac591b53b8f3aa18f307f00151dbf6372" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Agent</name></member>
+      <member refid="classendstone_1_1ActorType_1a2963964779e1b9af72af24df5863b010" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Allay</name></member>
+      <member refid="classendstone_1_1ActorType_1ab0476b55e3c2290c70bd366d07875ed8" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>AreaEffectCloud</name></member>
+      <member refid="classendstone_1_1ActorType_1a9cbd7152881d4131b032d5963b768f94" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Armadillo</name></member>
+      <member refid="classendstone_1_1ActorType_1aca8e74b25834de29c30b89c9278b37e8" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ArmorStand</name></member>
+      <member refid="classendstone_1_1ActorType_1a8affc1ae39b1622c5cdf033f416d4e7d" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Arrow</name></member>
+      <member refid="classendstone_1_1ActorType_1a51d6ebcec7d05d20d405ef336c7e8a75" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Axolotl</name></member>
+      <member refid="classendstone_1_1ActorType_1a4627e211a50d63cf873edf3c539fd44e" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Balloon</name></member>
+      <member refid="classendstone_1_1ActorType_1a3c775c7da38385cad6c29bdad84afe21" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Bat</name></member>
+      <member refid="classendstone_1_1ActorType_1a0b9ffd91ee648910535715c2822c9028" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Bee</name></member>
+      <member refid="classendstone_1_1ActorType_1a2fa1ed1495de733ea77bc4227b61d548" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Blaze</name></member>
+      <member refid="classendstone_1_1ActorType_1ad8b96a4f2a652b3432b31b4c17616a5e" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Boat</name></member>
+      <member refid="classendstone_1_1ActorType_1a378762e5812423f2f9d9cfed24f5eee0" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Bogged</name></member>
+      <member refid="classendstone_1_1ActorType_1afb1d2d3f09c3235f9b2fda3321714503" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Breeze</name></member>
+      <member refid="classendstone_1_1ActorType_1a23da6abda61da91c44681133eec4b3da" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>BreezeWindChargeProjectile</name></member>
+      <member refid="classendstone_1_1ActorType_1afbaa3e151a74c29e71d2ca75c0a8466c" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Camel</name></member>
+      <member refid="classendstone_1_1ActorType_1a64fe2cd7c8c1f14ddddfc170363d57e0" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>CamelHusk</name></member>
+      <member refid="classendstone_1_1ActorType_1a60e0d5ad8b61c27be5ec67f7a334f31d" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Cat</name></member>
+      <member refid="classendstone_1_1ActorType_1afa0e5997fb23459ea372aa36c8c6fa65" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>CaveSpider</name></member>
+      <member refid="classendstone_1_1ActorType_1a1287b2046026c78de565d8d756043180" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ChestBoat</name></member>
+      <member refid="classendstone_1_1ActorType_1a70602ad894433fb59d6661ef6fa76d54" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ChestMinecart</name></member>
+      <member refid="classendstone_1_1ActorType_1abc6646722c8692c96c727f7d26567e56" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Chicken</name></member>
+      <member refid="classendstone_1_1ActorType_1a7bf3cf06ed3e85deb9199a88e6d220bb" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Cod</name></member>
+      <member refid="classendstone_1_1ActorType_1ad0c47f1bd6a02278afba42ad37fc8e87" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>CommandBlockMinecart</name></member>
+      <member refid="classendstone_1_1ActorType_1a268f42aed1495368c046b97613ef06be" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>CopperGolem</name></member>
+      <member refid="classendstone_1_1ActorType_1a338c364be666c4af500a54bd1bcdb318" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Cow</name></member>
+      <member refid="classendstone_1_1ActorType_1acf3ed9b8e1f7881eb9f7c73c7be7dfb0" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Creaking</name></member>
+      <member refid="classendstone_1_1ActorType_1a8ca53359919aa9374bf9c3f4f219d992" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Creeper</name></member>
+      <member refid="classendstone_1_1ActorType_1a34feaae10c34f5d5422256c7ef6ee134" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Dolphin</name></member>
+      <member refid="classendstone_1_1ActorType_1aeb2f5917c497c307d2fd788a9eb08acf" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Donkey</name></member>
+      <member refid="classendstone_1_1ActorType_1a11c7f20858cf713055d137c6dbd8fdad" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>DragonFireball</name></member>
+      <member refid="classendstone_1_1ActorType_1a145bfaa4534730dfdda5ad1ed9aa1353" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Drowned</name></member>
+      <member refid="classendstone_1_1ActorType_1a10312249776a7000b9644e0ebfdd1cce" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Egg</name></member>
+      <member refid="classendstone_1_1ActorType_1a0344ccfc93bd768d6859c6bee8cfa44c" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ElderGuardian</name></member>
+      <member refid="classendstone_1_1ActorType_1a5df0ddc9bb588842599125c3b22536a1" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ElderGuardianGhost</name></member>
+      <member refid="classendstone_1_1ActorType_1ace3af7d8d24722c9f2be2d5a1b4fd314" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>EnderCrystal</name></member>
+      <member refid="classendstone_1_1ActorType_1a19a784206b48adff4ec6f749f3123380" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>EnderDragon</name></member>
+      <member refid="classendstone_1_1ActorType_1a448fc4417c9b93469d6272927c565140" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Enderman</name></member>
+      <member refid="classendstone_1_1ActorType_1a862a257cd40244978d86d1d443e2acdc" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Endermite</name></member>
+      <member refid="classendstone_1_1ActorType_1a935a236ba8ad7343ba15cfbb29f745ed" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>EnderPearl</name></member>
+      <member refid="classendstone_1_1ActorType_1ad364c7deacfeda2bbaf1aa3f75da0666" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>EvocationFang</name></member>
+      <member refid="classendstone_1_1ActorType_1a41f90388498bc592a92f0df09810d6e6" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>EvocationIllager</name></member>
+      <member refid="classendstone_1_1ActorType_1ab50b364796a6b0c43d76cfbdfa778b7b" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>EyeOfEnderSignal</name></member>
+      <member refid="classendstone_1_1ActorType_1a554a8595e1026625ecbb3ba0c79cbd1b" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>FallingBlock</name></member>
+      <member refid="classendstone_1_1ActorType_1aa79cef5c7cdec1071225413cba40e4de" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Fireball</name></member>
+      <member refid="classendstone_1_1ActorType_1a2f7b8c4fc99bbbe6bc95fdc0ca7589bd" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>FireworksRocket</name></member>
+      <member refid="classendstone_1_1ActorType_1a516d10eb0838e59a13297d8f53bbb223" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>FishingHook</name></member>
+      <member refid="classendstone_1_1ActorType_1a5e48507eb02490e4b19a7c1266b80021" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Fox</name></member>
+      <member refid="classendstone_1_1ActorType_1a4d6be59150245afeb6fe7a4e8de2192d" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Frog</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1adb225834ec0af1fdd72f998cbee22946" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>get</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1ac7979c573cb4a71caf8f0d766048e95a" prot="public" virt="pure-virtual"><scope>endstone::ActorType</scope><name>getId</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a3d82ceca29e75e71a8ad56c5d0f12aa7" prot="public" virt="pure-virtual"><scope>endstone::ActorType</scope><name>getTranslationKey</name></member>
+      <member refid="classendstone_1_1ActorType_1af2269cee60f5347383eb27507164f5d5" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Ghast</name></member>
+      <member refid="classendstone_1_1ActorType_1a30728d8edd9c4c2b23feafb789ea45e1" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>GlowSquid</name></member>
+      <member refid="classendstone_1_1ActorType_1a8f1e3f1c80d54dc9a09262c7d1236e23" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Goat</name></member>
+      <member refid="classendstone_1_1ActorType_1add42657123d40c25585cdf823005db9d" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Guardian</name></member>
+      <member refid="classendstone_1_1ActorType_1a6f9fe8a722a7a80eded09983dd592e17" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>HappyGhast</name></member>
+      <member refid="classendstone_1_1ActorType_1a59df07f1781aa384515c3396dac019b6" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Hoglin</name></member>
+      <member refid="classendstone_1_1ActorType_1ad5741e92431149036d54bbbd22448401" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>HopperMinecart</name></member>
+      <member refid="classendstone_1_1ActorType_1ac92833c570a35d0c35e0e92d71d00cd4" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Horse</name></member>
+      <member refid="classendstone_1_1ActorType_1a26980ab164395fb2cecac8402d2ebb5f" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Husk</name></member>
+      <member refid="classendstone_1_1ActorType_1ab3268edef5073d1f4694eabc2d9c24dd" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>IceBomb</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a7d2793f0ec3a8f4e7ab9b8afbd777e82" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Id</name></member>
+      <member refid="classendstone_1_1ActorType_1a65f86790262256febd11d3bb08b6a10f" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>IronGolem</name></member>
+      <member refid="classendstone_1_1ActorType_1a1610d2f9e42c0ceab6882544461330b1" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Item</name></member>
+      <member refid="classendstone_1_1ActorType_1a4e2c51d8436f098ace580c599b0e8b64" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>LeashKnot</name></member>
+      <member refid="classendstone_1_1ActorType_1abce42d61795eedea65fbb1092bd7aadd" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>LightningBolt</name></member>
+      <member refid="classendstone_1_1ActorType_1a159dfb932c0ed47a201d4e9a95b0773f" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>LingeringPotion</name></member>
+      <member refid="classendstone_1_1ActorType_1a1766e16a39859d07d61b4eae00c28b7c" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Llama</name></member>
+      <member refid="classendstone_1_1ActorType_1a57f1d9729d329a774b8299a9ec63b6bf" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>LlamaSpit</name></member>
+      <member refid="classendstone_1_1ActorType_1a6e20c21909a3048c39e800ca8e46f45d" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>MagmaCube</name></member>
+      <member refid="classendstone_1_1ActorType_1a89fdafdb64f8e2c21858fcb5c35a2140" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Minecart</name></member>
+      <member refid="classendstone_1_1ActorType_1aa49e4904ecedd04fc95c48c63ab758d3" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Mooshroom</name></member>
+      <member refid="classendstone_1_1ActorType_1aaa574db24c873a420026610bdce2f4d1" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Mule</name></member>
+      <member refid="classendstone_1_1ActorType_1a2a647e3612f50f22e1559902bec0e870" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Nautilus</name></member>
+      <member refid="classendstone_1_1ActorType_1a2f10c38022c93d00c8e57b6eef85dc41" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Npc</name></member>
+      <member refid="classendstone_1_1ActorType_1ac8fdf3f898b505d54dcc3c219fa91622" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Ocelot</name></member>
+      <member refid="classendstone_1_1ActorType_1a9892815c9ad54c4164f363913a6d1f98" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>OminousItemSpawner</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1ab333d4c3e969abfb5dd01c4ce34d7154" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>operator Id</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a9e32d0cd444cf6e98cece1f89fd16fb4" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1aece109daae5dede57edc8c23ef174aff" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1ae1f1c16d4904b521e7f727ae1e9715e7" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a0e07b4427e10e44725cefa814de62a11" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1ActorType_1aab585c42c10b550625792266d88d2f78" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Painting</name></member>
+      <member refid="classendstone_1_1ActorType_1aa6495b101e0beaa93a32d7f9ae7c02c2" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Panda</name></member>
+      <member refid="classendstone_1_1ActorType_1a72c99507d1e954c92c88d42f9ded4cc3" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Parched</name></member>
+      <member refid="classendstone_1_1ActorType_1a74ce1be1bbc323b9f8765673b22e4ae3" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Parrot</name></member>
+      <member refid="classendstone_1_1ActorType_1a967bc4835b4e2c759dce3f368b72d831" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Phantom</name></member>
+      <member refid="classendstone_1_1ActorType_1a564047a2ab6fc51f8c753cfe659ebde6" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Pig</name></member>
+      <member refid="classendstone_1_1ActorType_1ad4b0ed83c1ecd1dfea0cf6aaf50bac7e" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Piglin</name></member>
+      <member refid="classendstone_1_1ActorType_1aeba9fcb04d497caad638acce1c3ae940" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>PiglinBrute</name></member>
+      <member refid="classendstone_1_1ActorType_1a68c47f1a6bf163669ec5f94208f6c9e3" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Pillager</name></member>
+      <member refid="classendstone_1_1ActorType_1a4876c40e25367f5ab339d8c49ea1f229" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Player</name></member>
+      <member refid="classendstone_1_1ActorType_1a363465ebac374f1760e28eb7cb13a497" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>PolarBear</name></member>
+      <member refid="classendstone_1_1ActorType_1a1048f0bf6dccc2a716bf73ab472e80b1" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Pufferfish</name></member>
+      <member refid="classendstone_1_1ActorType_1a0ae7bfa967a5e921fa37a6d2a2af364a" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Rabbit</name></member>
+      <member refid="classendstone_1_1ActorType_1a131c53b1c5fc224880ad4f41e9268207" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Ravager</name></member>
+      <member refid="classendstone_1_1ActorType_1a6c45b37830734c8e511eea834021b082" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Salmon</name></member>
+      <member refid="classendstone_1_1ActorType_1a74e5f04a74c767eda82cb683da3d6f01" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Sheep</name></member>
+      <member refid="classendstone_1_1ActorType_1a1801cc6d9fcf2a66958e4fc5a33d1219" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Shulker</name></member>
+      <member refid="classendstone_1_1ActorType_1a8ae376f6bfff8559af63411bcb6b00e6" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ShulkerBullet</name></member>
+      <member refid="classendstone_1_1ActorType_1accf107bea5846a59f95f8b95dfb6d878" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Silverfish</name></member>
+      <member refid="classendstone_1_1ActorType_1a2afc4f40a9d5dd1db0bc71aa03150861" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Skeleton</name></member>
+      <member refid="classendstone_1_1ActorType_1a56d141db83dd9cbb1f78f323baf9595e" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>SkeletonHorse</name></member>
+      <member refid="classendstone_1_1ActorType_1a04408c84bd3875ef4bd256710456c579" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Slime</name></member>
+      <member refid="classendstone_1_1ActorType_1a6299ee66ddec207115545295e0c5e09a" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>SmallFireball</name></member>
+      <member refid="classendstone_1_1ActorType_1a64954f5de6da1c9ced13e6acb26e36af" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Sniffer</name></member>
+      <member refid="classendstone_1_1ActorType_1a29fffc6b602b66cf822deadcf195f80e" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Snowball</name></member>
+      <member refid="classendstone_1_1ActorType_1a56212a4c23a856ea406beac345416fa4" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>SnowGolem</name></member>
+      <member refid="classendstone_1_1ActorType_1ac26bb49e22609d4f73eb80bd8a3cb1f9" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Spider</name></member>
+      <member refid="classendstone_1_1ActorType_1a19759eb1d885d87d697f6bd737c7dc52" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>SplashPotion</name></member>
+      <member refid="classendstone_1_1ActorType_1a0f48768187f5745f55d843967cee5f58" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Squid</name></member>
+      <member refid="classendstone_1_1ActorType_1ad1d271f92627b922e3394b54c2bcb239" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Stray</name></member>
+      <member refid="classendstone_1_1ActorType_1a1d6f5bbea51f7e366e19e7f2939d73e9" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Strider</name></member>
+      <member refid="classendstone_1_1ActorType_1a29314390bae6d07a6ac93118d4d1d250" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Tadpole</name></member>
+      <member refid="classendstone_1_1ActorType_1a3892f79d93f31d2642e22b2de07332fe" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ThrownTrident</name></member>
+      <member refid="classendstone_1_1ActorType_1acc4b1f25e653c2eb1084b718f7d40494" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Tnt</name></member>
+      <member refid="classendstone_1_1ActorType_1a09513b0939ac3746009ecaa11b742d2a" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>TntMinecart</name></member>
+      <member refid="classendstone_1_1ActorType_1acd612c91ef6b15d975d3da74168e44c2" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>TraderLlama</name></member>
+      <member refid="classendstone_1_1ActorType_1a72e5654a3f22422c25e48ac68cf8707e" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>TripodCamera</name></member>
+      <member refid="classendstone_1_1ActorType_1ae90adcead939ad73532e9b7e5696bf15" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Tropicalfish</name></member>
+      <member refid="classendstone_1_1ActorType_1ad6fc984d51f2baa794029b918e3605a7" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Turtle</name></member>
+      <member refid="classendstone_1_1ActorType_1acefb1e90f94c9a8beed6d91bf252eb61" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Vex</name></member>
+      <member refid="classendstone_1_1ActorType_1ad47ee939f9f146f98907e0c9371929e6" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Villager</name></member>
+      <member refid="classendstone_1_1ActorType_1afda72adcddc77f67ad56611f3efdc9be" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>VillagerV2</name></member>
+      <member refid="classendstone_1_1ActorType_1ab61a995e9fbe281c5dfcf2df7d514d7c" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Vindicator</name></member>
+      <member refid="classendstone_1_1ActorType_1ad4962c4d50c7b211240f357b8089cca4" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>WanderingTrader</name></member>
+      <member refid="classendstone_1_1ActorType_1aea159eb50cbdda697192cdffff841c6e" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Warden</name></member>
+      <member refid="classendstone_1_1ActorType_1a8e5eb621321dfd5ab91f4236ec18b4fe" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>WindChargeProjectile</name></member>
+      <member refid="classendstone_1_1ActorType_1a9b700d0bb2e6647e1157b1a1bfbcaf48" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Witch</name></member>
+      <member refid="classendstone_1_1ActorType_1a20490c6c685d2c08599349186742a7ca" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Wither</name></member>
+      <member refid="classendstone_1_1ActorType_1aa0ab628de6861c91a938b97ece5c3df8" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>WitherSkeleton</name></member>
+      <member refid="classendstone_1_1ActorType_1abb297841aaa189b3eb54b493e20eb82d" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>WitherSkull</name></member>
+      <member refid="classendstone_1_1ActorType_1ae025111327c7912ef303231d6f42cfbf" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>WitherSkullDangerous</name></member>
+      <member refid="classendstone_1_1ActorType_1add0f7c30beb39030157e9d8363f2407a" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Wolf</name></member>
+      <member refid="classendstone_1_1ActorType_1a8170481e030b764965d2e3bcc812a7b9" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>XpBottle</name></member>
+      <member refid="classendstone_1_1ActorType_1adc3e87e80db7f0ea2bddf087fe7cd622" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>XpOrb</name></member>
+      <member refid="classendstone_1_1ActorType_1a98786096e7ce179f49c4bffb8b526fa1" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Zoglin</name></member>
+      <member refid="classendstone_1_1ActorType_1afbb02668f2e5f806d9cb092de72a01d3" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>Zombie</name></member>
+      <member refid="classendstone_1_1ActorType_1aa1d7a9b32a26593653339b7dbf6a040c" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ZombieHorse</name></member>
+      <member refid="classendstone_1_1ActorType_1a50333650e9f33ed3e71b00d03a8434d2" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ZombieNautilus</name></member>
+      <member refid="classendstone_1_1ActorType_1a247ed61f99c456997006a040af8d56f8" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ZombiePigman</name></member>
+      <member refid="classendstone_1_1ActorType_1a393582c7b5d5ee4eea0272909a8e77ab" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ZombieVillager</name></member>
+      <member refid="classendstone_1_1ActorType_1a0cd587036af64d5409fd33497f38dbe8" prot="public" virt="non-virtual"><scope>endstone::ActorType</scope><name>ZombieVillagerV2</name></member>
+      <member refid="classendstone_1_1Registry_1_1Type_1a2262020b59996fe1363c1e1058711944" prot="public" virt="virtual"><scope>endstone::ActorType</scope><name>~Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

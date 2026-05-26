@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="33" column="5" bodyfile="include/endstone/inventory/meta/book_meta.h" bodystart="33" bodyend="46"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="31" column="5" bodyfile="include/endstone/inventory/meta/book_meta.h" bodystart="31" bodyend="44"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="53" column="19"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="51" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1ad3ccd6d94c0ccca6f27161bd66a7865d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="62" column="26"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="60" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1aaf83599af609f13ffcff2529058f82a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -113,7 +113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="73" column="18"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="71" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1a998af616da38d1fae1540ed543a50858" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -131,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="80" column="19"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="78" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1a04ea1998ed105347d0c6424104963835" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="89" column="26"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="87" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1a23263421a05082ce203afb1e454f8a30" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -180,7 +180,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="96" column="18"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="94" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1a8c94e32c426cf5b285e89cfd752db167" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="103" column="19"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="101" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1af1d15866a2ba5d5a3465ef4cb7720468" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737" kindref="member">Generation</ref> &gt;</type>
@@ -218,7 +218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="112" column="28"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="110" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1a4dce971cb64a6ad8ed115498bedce599" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -247,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="119" column="18"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="117" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -265,6 +265,12 @@
       <node id="3">
         <label>endstone::ItemMeta</label>
         <link refid="classendstone_1_1ItemMeta"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
       </node>
       <node id="2">
         <label>endstone::WritableBookMeta</label>
@@ -283,6 +289,12 @@
       <node id="3">
         <label>endstone::ItemMeta</label>
         <link refid="classendstone_1_1ItemMeta"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
       </node>
       <node id="2">
         <label>endstone::WritableBookMeta</label>
@@ -291,16 +303,17 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/inventory/meta/book_meta.h" line="26" column="1" bodyfile="include/endstone/inventory/meta/book_meta.h" bodystart="26" bodyend="120"/>
+    <location file="include/endstone/inventory/meta/book_meta.h" line="26" column="1" bodyfile="include/endstone/inventory/meta/book_meta.h" bodystart="26" bodyend="118"/>
     <listofallmembers>
       <member refid="classendstone_1_1ItemMeta_1ac1ee49d00e1cdd56816e0e775bff4241" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>addEnchant</name></member>
       <member refid="classendstone_1_1WritableBookMeta_1a40c40653c9f6d88d170e9aa5b9838df8" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>addPage</name></member>
-      <member refid="classendstone_1_1WritableBookMeta_1a8c6bbef3da6c8cf8005b7d6c1ca9ac15" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>addPage</name></member>
-      <member refid="classendstone_1_1ItemMeta_1af179bd7b745731e3d0f1e66828e45149" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>as</name></member>
-      <member refid="classendstone_1_1ItemMeta_1af5d8b132d9add8051466b9b19e3bfa61" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>as</name></member>
+      <member refid="classendstone_1_1WritableBookMeta_1a3c41804905f522ef1e9de5f616787da1" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>addPages</name></member>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>as</name></member>
       <member refid="classendstone_1_1ItemMeta_1a6e2422771cf3c695b96dfbf279e17b4d" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>clone</name></member>
       <member refid="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>Generation</name></member>
       <member refid="classendstone_1_1BookMeta_1a04ea1998ed105347d0c6424104963835" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getAuthor</name></member>
+      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getClassTypeId</name></member>
       <member refid="classendstone_1_1ItemMeta_1a3892649cd822bf85b603d6a2b64b7ebd" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getDamage</name></member>
       <member refid="classendstone_1_1ItemMeta_1a612f7b82c6ece41678ed8881acab96ee" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getDisplayName</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4ada54133ca59faa19c55d38b3be845f" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getEnchantLevel</name></member>
@@ -313,7 +326,6 @@
       <member refid="classendstone_1_1WritableBookMeta_1a488476c1a3cd831188fdeb8f8ae26d3d" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getPages</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad8d3243a6a5621568ef2f4ce505c42d7" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getRepairCost</name></member>
       <member refid="classendstone_1_1BookMeta_1ad3ccd6d94c0ccca6f27161bd66a7865d" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getTitle</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a56697c8ef6a8e62f40571cbc7632ef95" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>getType</name></member>
       <member refid="classendstone_1_1BookMeta_1a998af616da38d1fae1540ed543a50858" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasAuthor</name></member>
       <member refid="classendstone_1_1ItemMeta_1af5939a3ac6202136120dcab179c8e9d6" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasConflictingEnchant</name></member>
       <member refid="classendstone_1_1ItemMeta_1ae2ded35522da3ad4a77ca127cd78d938" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasDamage</name></member>
@@ -325,6 +337,8 @@
       <member refid="classendstone_1_1WritableBookMeta_1a778ade876436bcd7dc30d4d2a44729bf" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasPages</name></member>
       <member refid="classendstone_1_1ItemMeta_1a90cfeecd88da173df9c5b06a731ec6ed" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasRepairCost</name></member>
       <member refid="classendstone_1_1BookMeta_1a8ecca25a84dbcdcc05131d5aa52b0792" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>hasTitle</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>isInstanceOf</name></member>
       <member refid="classendstone_1_1ItemMeta_1a6b272eb7b84e7cdce4c161402d9531fe" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>isUnbreakable</name></member>
       <member refid="classendstone_1_1ItemMeta_1ad00a6e480dbda4f8e054f48cd318756f" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>removeEnchant</name></member>
       <member refid="classendstone_1_1ItemMeta_1ada041111e07c6434bc9ac04a0b82cd61" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>removeEnchants</name></member>
@@ -339,8 +353,7 @@
       <member refid="classendstone_1_1ItemMeta_1a5377c0928c991a4e9ea1294b1f38bc1d" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setRepairCost</name></member>
       <member refid="classendstone_1_1BookMeta_1aaf83599af609f13ffcff2529058f82a5" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setTitle</name></member>
       <member refid="classendstone_1_1ItemMeta_1a4cd10bea89892329e54fec6ffc67a137" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>setUnbreakable</name></member>
-      <member refid="classendstone_1_1ItemMeta_1a138046832c99ba93e098144fc295e044" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>Type</name></member>
-      <member refid="classendstone_1_1ItemMeta_1ad87efd61083beac19969df0c0dcacff7" prot="public" virt="virtual"><scope>endstone::BookMeta</scope><name>~ItemMeta</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::BookMeta</scope><name>~Object</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

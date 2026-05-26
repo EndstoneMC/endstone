@@ -32,9 +32,6 @@
 namespace endstone {
 class WritableBookMeta : public ItemMeta {
 public:
-    ENDSTONE_ITEM_META_TYPE(WritableBook)
-
-    
     [[nodiscard]] virtual bool hasPages() const = 0;
 
     [[nodiscard]] virtual std::string getPage(int page) const = 0;
@@ -54,10 +51,10 @@ public:
     template <std::convertible_to<std::string>... Args>
     void addPage(Args &&...pages)
     {
-        addPage(std::vector<std::string>{&pages...});
+        addPages(std::vector<std::string>{&pages...});
     }
 
-    virtual void addPage(std::vector<std::string> pages) = 0;
+    virtual void addPages(std::vector<std::string> pages) = 0;
 
     [[nodiscard]] virtual int getPageCount() const = 0;
 };

@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="28" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="28" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="27" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1acaea890abfefd73050a4cf0edee110e3" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="33" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="33" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="32" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="32" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ab2074a3f3553a44007dc4c063ac9c13e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="38" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="38" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="37" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aaf7ba432745dd23f545fdd5903d24b99" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="43" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="43" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="42" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a4cd9bf3365fcfe936485603a35c190a8" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="48" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="48" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="47" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ad73ef8fb1ba8e9a764a10cffd9d8cfd8" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="53" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="53" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="52" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ab5d4bfd41a822904898c7cc1f0a36fe7" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="58" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="58" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="57" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a373f86003904932ed3a62bb52e795273" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -130,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="63" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="63" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="62" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a42951020e8e528fe120e6e33b3fcd6de" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -146,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="68" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="68" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="67" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aee48de274b3bd83def274e5a40a1b136" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -162,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="73" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="73" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="72" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a9ea3c26bb9d6f4f053f280aba3d7b62b" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -178,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="78" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="78" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="77" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a0fdbd9dc57cb3132b60edf77206dd392" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -194,7 +194,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="83" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="83" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="82" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a57e30cdc84b6a98c63b1176492ec91d1" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -210,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="88" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="88" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="87" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a90c315ec1e40433fed2d0decd2489b8d" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -226,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="93" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="93" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="92" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a2aa552f6157d47f02488e9222dc49a36" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -242,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="98" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="98" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="97" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a3c9103b8d052cd17fce10e2dd6af2a10" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -258,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="103" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="103" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="102" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1abd056d3405bbfca06914bbcfe13255f8" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -274,7 +274,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="108" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="108" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="107" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1afd8d1c7a403e5d937083adb4cd3927c1" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -290,7 +290,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="113" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="113" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="112" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a77cbd7b93fbfcc75fb8afcfb7b33b6cb" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -306,7 +306,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="118" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="118" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="117" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aaeb31319b930697876162d77036cf711" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -322,7 +322,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="123" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="123" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="122" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a1dc5996465eee694835cabee30cad131" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -338,7 +338,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="128" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="128" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="127" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a39447ccc523ab709f9aad17dd6dfba06" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -354,7 +354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="133" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="133" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="132" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a7e9b6f58f298705ddc3ed1563f358e6f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -370,7 +370,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="138" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="138" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="137" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="137" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a226dfe99a6d5f65ef9e944aeedf0252a" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -386,7 +386,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="143" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="143" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="142" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="142" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ac0116f71196e9d556d8ec3ec31ee6dde" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -402,7 +402,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="148" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="148" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="147" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a4d2377f98184f466cfe11b4e4b931d2d" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -418,7 +418,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="153" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="153" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="152" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="152" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aa6585b6679cde360f39eec335a1dea5f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -434,7 +434,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="158" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="158" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="157" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="157" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1afa3ddb9920176f9ae34c0365ce2fb678" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -450,7 +450,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="163" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="163" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="162" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="162" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ab225e12bdf8a6349260ca6364997eb4f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -466,7 +466,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="168" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="168" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="167" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="167" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aab652fd5d6b61b4c8603dcf77277b27b" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -482,7 +482,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="173" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="173" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="172" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a05e9349874f0a9f9d346f7f9f4d3da0f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -498,7 +498,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="178" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="178" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="177" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="177" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1af880cae983ce48ce9db53be0bf179575" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -514,7 +514,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="183" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="183" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="182" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="182" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a8d0b2beb68bd080060160e20991f0db2" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -530,7 +530,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="188" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="188" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="187" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="187" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ab6cdd60f5254e0f6c09fc0d9809541fe" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -546,7 +546,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="193" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="193" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="192" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="192" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a515c9a244378f0c8ed5ddc4ba0cf78a6" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -562,7 +562,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="198" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="198" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="197" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="197" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ae7c1ce0070b7ce7a3e658468baafef60" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -578,7 +578,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="203" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="203" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="202" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="202" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a7a7a32218950752913898d3ca937400d" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -594,7 +594,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="208" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="208" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="207" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="207" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a50546b69e92f614ef004d1e75b539a52" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -610,7 +610,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="213" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="213" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="212" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="212" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a94d6dbb5f544f8b1ac328dcd02c9bc1c" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -626,7 +626,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="218" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="218" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="217" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="217" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a72cc616fb733110b6e50e0aea44858b3" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -642,7 +642,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="223" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="223" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="222" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="222" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a940db5ad3f732d219e93c15790e1dcda" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -658,7 +658,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="228" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="228" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="227" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="227" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a0132e6577e1f0b7a07dd407d112ea227" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -674,7 +674,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="233" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="233" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="232" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="232" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -694,7 +694,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="240" column="18"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="239" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -712,7 +712,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="247" column="18"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="246" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -743,7 +743,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="255" column="19"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="254" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -775,7 +775,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="265" column="19"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="264" column="19"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -806,7 +806,7 @@
         <link refid="classendstone_1_1Registry_1_1Type"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/enchantments/enchantment.h" line="22" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="22" bodyend="266"/>
+    <location file="include/endstone/enchantments/enchantment.h" line="22" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="22" bodyend="265"/>
     <listofallmembers>
       <member refid="classendstone_1_1Enchantment_1a42951020e8e528fe120e6e33b3fcd6de" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>AquaAffinity</name></member>
       <member refid="classendstone_1_1Enchantment_1a0fdbd9dc57cb3132b60edf77206dd392" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>BaneOfArthropods</name></member>

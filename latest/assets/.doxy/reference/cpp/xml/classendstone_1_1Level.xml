@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="31" column="13"/>
+        <location file="include/endstone/level/level.h" line="32" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="38" column="26"/>
+        <location file="include/endstone/level/level.h" line="39" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a6eac0b57be7148b605cbe9961261a833" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> * &gt;</type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="45" column="26"/>
+        <location file="include/endstone/level/level.h" line="46" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a2a0a6904b53c1d0952c6bdcfce91d0cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -70,7 +70,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="52" column="18"/>
+        <location file="include/endstone/level/level.h" line="53" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="59" column="18"/>
+        <location file="include/endstone/level/level.h" line="60" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1ac4329b1323d1e61be61c1efeb4e8ecd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> * &gt;</type>
@@ -117,38 +117,38 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="66" column="26"/>
+        <location file="include/endstone/level/level.h" line="67" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Level_1ad688e6ab223f171816d8ed7956075c7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Level_1a0b7bf9c026e8c41c7f741fc04e2fbb54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> *</type>
         <definition>virtual Dimension * endstone::Level::getDimension</definition>
-        <argsstring>(std::string name) const =0</argsstring>
+        <argsstring>(DimensionId id) const =0</argsstring>
         <name>getDimension</name>
         <qualifiedname>endstone::Level::getDimension</qualifiedname>
         <param>
-          <type>std::string</type>
-          <declname>name</declname>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">DimensionId</ref></type>
+          <declname>id</declname>
         </param>
         <briefdescription>
-<para>Gets the dimension with the given name. </para>
+<para>Gets the dimension with the given id. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>name</parametername>
+<parametername>id</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the name of the dimension to retrieve. For example, &quot;overworld&quot;, &quot;nether&quot; or &quot;the_end&quot;.</para>
+<para>the id of the dimension to retrieve.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> with the given name, or nullptr if none exists </para>
+<simplesect kind="return"><para>The <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> with the given id, or nullptr if none exists </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="75" column="24"/>
+        <location file="include/endstone/level/level.h" line="76" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Level_1a353a8752c7825d35373287ede5e4019a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int64_t</type>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/level.h" line="82" column="27"/>
+        <location file="include/endstone/level/level.h" line="83" column="27"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -174,10 +174,10 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/level/level.h" line="29" column="1" bodyfile="include/endstone/level/level.h" bodystart="29" bodyend="83"/>
+    <location file="include/endstone/level/level.h" line="30" column="1" bodyfile="include/endstone/level/level.h" bodystart="30" bodyend="84"/>
     <listofallmembers>
       <member refid="classendstone_1_1Level_1a6eac0b57be7148b605cbe9961261a833" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getActors</name></member>
-      <member refid="classendstone_1_1Level_1ad688e6ab223f171816d8ed7956075c7e" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Level_1a0b7bf9c026e8c41c7f741fc04e2fbb54" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Level_1ac4329b1323d1e61be61c1efeb4e8ecd9" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getDimensions</name></member>
       <member refid="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getName</name></member>
       <member refid="classendstone_1_1Level_1a353a8752c7825d35373287ede5e4019a" prot="public" virt="pure-virtual"><scope>endstone::Level</scope><name>getSeed</name></member>

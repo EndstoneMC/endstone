@@ -13,13 +13,11 @@
 * **ENDSTONE\_VERSION\_MINOR** ([**detail.h**](detail_8h.md))
 * **ENDSTONE\_VERSION\_PATCH** ([**detail.h**](detail_8h.md))
 * **ENDSTONE\_EVENT** ([**event.h**](event_8h.md))
-* **ENDSTONE\_ITEM\_META\_TYPE** ([**item\_meta.h**](item__meta_8h.md))
 * **ENDSTONE\_EXPORT** ([**plugin.h**](plugin_8h.md))
 * **ENDSTONE\_PLUGIN** ([**plugin.h**](plugin_8h.md))
 * **ENDSTONE\_CHECK** ([**result.h**](result_8h.md))
 * **ENDSTONE\_CHECKF** ([**result.h**](result_8h.md))
 * **ENDSTONE\_CHECK\_RESULT** ([**result.h**](result_8h.md))
-* **ENDSTONE\_REGISTRY\_TYPE** ([**registry.h**](registry_8h.md))
 
 
 ## m

@@ -14,6 +14,7 @@ _Represents the metadata of a generic item._
 
 
 
+Inherits the following classes: [endstone::Object](classendstone_1_1Object.md)
 
 
 Inherited by the following classes: [endstone::CrossbowMeta](classendstone_1_1CrossbowMeta.md),  [endstone::MapMeta](classendstone_1_1MapMeta.md),  [endstone::WritableBookMeta](classendstone_1_1WritableBookMeta.md)
@@ -29,11 +30,26 @@ Inherited by the following classes: [endstone::CrossbowMeta](classendstone_1_1Cr
 
 
 
-## Public Types
 
-| Type | Name |
-| ---: | :--- |
-| enum  | [**Type**](#enum-type)  <br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -59,8 +75,6 @@ Inherited by the following classes: [endstone::CrossbowMeta](classendstone_1_1Cr
 | Type | Name |
 | ---: | :--- |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**addEnchant**](#function-addenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id, [**int**](classendstone_1_1Identifier.md) level, [**bool**](classendstone_1_1Identifier.md) force) = 0<br>_Adds the specified enchantment to this item meta._  |
-|  [**T**](classendstone_1_1Identifier.md) \* | [**as**](#function-as-12) () <br> |
-|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**as**](#function-as-22) () const<br> |
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](#function-clone) () const = 0<br>_Creates a clone of the current metadata._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getDamage**](#function-getdamage) () const = 0<br>_Gets the damage._  |
 | virtual std::string | [**getDisplayName**](#function-getdisplayname) () const = 0<br>_Gets the display name that is set._  |
@@ -69,7 +83,6 @@ Inherited by the following classes: [endstone::CrossbowMeta](classendstone_1_1Cr
 | virtual [**const**](classendstone_1_1Identifier.md) core::ItemMetaExtras & | [**getExtras**](#function-getextras) () const = 0<br> |
 | virtual std::vector&lt; std::string &gt; | [**getLore**](#function-getlore) () const = 0<br>_Gets the lore that is set._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getRepairCost**](#function-getrepaircost) () const = 0<br>_Gets the repair penalty._  |
-| virtual Type | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this item meta._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasConflictingEnchant**](#function-hasconflictingenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br> |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasDamage**](#function-hasdamage) () const = 0<br>_Checks to see if this item has damage._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasDisplayName**](#function-hasdisplayname) () const = 0<br>_Checks for existence of a display name._  |
@@ -85,7 +98,20 @@ Inherited by the following classes: [endstone::CrossbowMeta](classendstone_1_1Cr
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setLore**](#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) = 0<br>_Sets the lore for this item or removes lore when given_ `std::nullopt` _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setRepairCost**](#function-setrepaircost) ([**int**](classendstone_1_1Identifier.md) cost) = 0<br>_Sets the repair penalty._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setUnbreakable**](#function-setunbreakable) ([**bool**](classendstone_1_1Identifier.md) unbreakable) = 0<br>_Sets the unbreakable tag. An unbreakable item will not lose durability._  |
-| virtual  | [**~ItemMeta**](#function-itemmeta) () = default<br> |
+
+
+## Public Functions inherited from endstone::Object
+
+See [endstone::Object](classendstone_1_1Object.md)
+
+| Type | Name |
+| ---: | :--- |
+|  [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1Object.md#function-as-12) () <br>_Attempts to cast this object to the given type T._  |
+|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1Object.md#function-as-22) () const<br>_Attempts to cast this object to the given type T._  |
+| virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](classendstone_1_1Object.md#function-getclasstypeid) () const = 0<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**is**](classendstone_1_1Object.md#function-is) () const<br>_Checks if this object is an instance of the given type T (or a subclass of T)._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](classendstone_1_1Object.md#function-isinstanceof) ([**const**](classendstone_1_1Identifier.md) std::type\_info & target) const = 0<br> |
+| virtual  | [**~Object**](classendstone_1_1Object.md#function-object) () = default<br> |
 
 
 
@@ -114,27 +140,32 @@ Inherited by the following classes: [endstone::CrossbowMeta](classendstone_1_1Cr
 
 
 
-## Public Types Documentation
 
 
 
 
-### enum Type 
-
-```C++
-enum endstone::ItemMeta::Type {
-    Item,
-    Book,
-    CrossBow,
-    Map,
-    WritableBook
-};
-```
 
 
 
 
-<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Public Functions Documentation
 
 
@@ -173,34 +204,6 @@ true if the item meta changed as a result of this call, false otherwise
 
 
         
-
-<hr>
-
-
-
-### function as [1/2]
-
-```C++
-template<typename  T>
-inline T * endstone::ItemMeta::as () 
-```
-
-
-
-
-<hr>
-
-
-
-### function as [2/2]
-
-```C++
-template<typename  T>
-inline const  T * endstone::ItemMeta::as () const
-```
-
-
-
 
 <hr>
 
@@ -395,31 +398,6 @@ virtual int endstone::ItemMeta::getRepairCost () const = 0
 **Returns:**
 
 the repair penalty 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getType 
-
-_Gets the type of this item meta._ 
-```C++
-virtual Type endstone::ItemMeta::getType () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-type of this item meta 
 
 
 
@@ -829,19 +807,6 @@ virtual void endstone::ItemMeta::setUnbreakable (
 
 
         
-
-<hr>
-
-
-
-### function ~ItemMeta 
-
-```C++
-virtual endstone::ItemMeta::~ItemMeta () = default
-```
-
-
-
 
 <hr>
 

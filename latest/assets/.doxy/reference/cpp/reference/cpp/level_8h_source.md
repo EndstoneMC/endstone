@@ -30,6 +30,7 @@
 #include <vector>
 
 #include "endstone/actor/actor.h"
+#include "endstone/level/dimension.h"
 
 namespace endstone {
 
@@ -47,7 +48,7 @@ public:
 
     [[nodiscard]] virtual std::vector<Dimension *> getDimensions() const = 0;
 
-    [[nodiscard]] virtual Dimension *getDimension(std::string name) const = 0;
+    [[nodiscard]] virtual Dimension *getDimension(DimensionId id) const = 0;
 
     [[nodiscard]] virtual std::int64_t getSeed() const = 0;
 };

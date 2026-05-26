@@ -31,6 +31,7 @@
     <innerfile refid="identifier_8h">identifier.h</innerfile>
     <innerfile refid="logger_8h">logger.h</innerfile>
     <innerfile refid="message_8h">message.h</innerfile>
+    <innerfile refid="object_8h">object.h</innerfile>
     <innerfile refid="offline__player_8h">offline_player.h</innerfile>
     <innerfile refid="player_8h">player.h</innerfile>
     <innerfile refid="registry_8h">registry.h</innerfile>

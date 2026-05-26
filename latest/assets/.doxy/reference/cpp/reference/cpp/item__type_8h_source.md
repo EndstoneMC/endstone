@@ -33,9 +33,6 @@ class ItemType : public Registry<ItemType>::Type {
 public:
     static constexpr auto Air = ItemTypeId::minecraft("air");
 
-    ENDSTONE_REGISTRY_TYPE(ItemType)
-
-    
     [[nodiscard]] std::string getTranslationKey() const override = 0;
 
     [[nodiscard]] virtual std::string getTranslationKey(int data) const = 0;

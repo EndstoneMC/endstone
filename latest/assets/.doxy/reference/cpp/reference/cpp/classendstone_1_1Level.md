@@ -53,7 +53,7 @@ _Represents a level, which may contain actors, chunks and blocks._
 | Type | Name |
 | ---: | :--- |
 | virtual std::vector&lt; [**Actor**](classendstone_1_1Actor.md) \* &gt; | [**getActors**](#function-getactors) () const = 0<br>_Get a list of all actors in this level._  |
-| virtual [**Dimension**](classendstone_1_1Dimension.md) \* | [**getDimension**](#function-getdimension) (std::string name) const = 0<br>_Gets the dimension with the given name._  |
+| virtual [**Dimension**](classendstone_1_1Dimension.md) \* | [**getDimension**](#function-getdimension) ([**DimensionId**](classendstone_1_1Identifier.md) id) const = 0<br>_Gets the dimension with the given id._  |
 | virtual std::vector&lt; [**Dimension**](classendstone_1_1Dimension.md) \* &gt; | [**getDimensions**](#function-getdimensions) () const = 0<br>_Gets a list of all dimensions within this level._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the unique name of this level._  |
 | virtual std::int64\_t | [**getSeed**](#function-getseed) () const = 0<br>_Gets the Seed for this level._  |
@@ -120,10 +120,10 @@ A List of all actors currently residing in this level
 
 ### function getDimension 
 
-_Gets the dimension with the given name._ 
+_Gets the dimension with the given id._ 
 ```C++
 virtual Dimension * endstone::Level::getDimension (
-    std::string name
+    DimensionId id
 ) const = 0
 ```
 
@@ -134,13 +134,13 @@ virtual Dimension * endstone::Level::getDimension (
 **Parameters:**
 
 
-* `name` the name of the dimension to retrieve. For example, "overworld", "nether" or "the\_end".
+* `id` the id of the dimension to retrieve.
 
 
 
 **Returns:**
 
-The [**Dimension**](classendstone_1_1Dimension.md) with the given name, or nullptr if none exists 
+The [**Dimension**](classendstone_1_1Dimension.md) with the given id, or nullptr if none exists 
 
 
 

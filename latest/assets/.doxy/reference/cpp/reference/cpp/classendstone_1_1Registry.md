@@ -85,6 +85,7 @@ Inherits the following classes: [endstone::IRegistry](classendstone_1_1IRegistry
 | virtual [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**get**](#function-get-22) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; id) noexcept const = 0<br>_Get the object by its identifier._  |
 | virtual [**T**](classendstone_1_1Identifier.md) & | [**getOrThrow**](#function-getorthrow-12) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; id) <br>_Get the object by its identifier or throw if missing._  |
 | virtual [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & | [**getOrThrow**](#function-getorthrow-22) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; id) const<br>_Get the object by its identifier or throw if missing._  |
+| virtual std::size\_t | [**size**](#function-size) () override const = 0<br> |
 
 
 ## Public Functions inherited from endstone::IRegistry
@@ -93,6 +94,7 @@ See [endstone::IRegistry](classendstone_1_1IRegistry.md)
 
 | Type | Name |
 | ---: | :--- |
+| virtual std::size\_t | [**size**](classendstone_1_1IRegistry.md#function-size) () const = 0<br> |
 | virtual  | [**~IRegistry**](classendstone_1_1IRegistry.md#function-iregistry) () = default<br> |
 
 
@@ -142,6 +144,15 @@ See [endstone::IRegistry](classendstone_1_1IRegistry.md)
 
 
 
+## Protected Functions inherited from endstone::IRegistry
+
+See [endstone::IRegistry](classendstone_1_1IRegistry.md)
+
+| Type | Name |
+| ---: | :--- |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**forEach0**](classendstone_1_1IRegistry.md#function-foreach0) (std::function&lt; [**bool**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**void**](classendstone_1_1Identifier.md) \*)&gt; func) const = 0<br> |
+| virtual [**const**](classendstone_1_1Identifier.md) [**void**](classendstone_1_1Identifier.md) \* | [**get0**](classendstone_1_1IRegistry.md#function-get0) (std::string\_view id) noexcept const = 0<br> |
+| virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getTypeId**](classendstone_1_1IRegistry.md#function-gettypeid) () noexcept const = 0<br> |
 
 
 
@@ -351,6 +362,21 @@ const T& Const reference to the object with the given identifier.
 
 
         
+
+<hr>
+
+
+
+### function size 
+
+```C++
+virtual std::size_t endstone::Registry::size () override const = 0
+```
+
+
+
+Implements [*endstone::IRegistry::size*](classendstone_1_1IRegistry.md#function-size)
+
 
 <hr>
 

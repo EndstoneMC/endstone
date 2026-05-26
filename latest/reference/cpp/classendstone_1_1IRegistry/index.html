@@ -442,6 +442,8 @@ For latest updates join the chat on
       
         
       
+        
+      
     
     
     
@@ -586,6 +588,34 @@ For latest updates join the chat on
     
   
     Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
   
 
     
@@ -2566,6 +2596,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#protected-functions" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Functions
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2579,9 +2620,108 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-size" class="md-nav__link">
+      <span class="md-ellipsis">
+        function size
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-iregistry" class="md-nav__link">
       <span class="md-ellipsis">
         function ~IRegistry
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#protected-functions-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Functions Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Protected Functions Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-foreach0" class="md-nav__link">
+      <span class="md-ellipsis">
+        function forEach0
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-get0" class="md-nav__link">
+      <span class="md-ellipsis">
+        function get0
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-gettypeid" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getTypeId
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#friends-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Friends Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Friends Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#friend-pyregistry" class="md-nav__link">
+      <span class="md-ellipsis">
+        friend PyRegistry
       </span>
     </a>
 
@@ -2612,7 +2752,7 @@ For latest updates join the chat on
 
 
   
-    <a href="https://github.com/EndstoneMC/endstone/edit/main/docs/reference/cpp/classendstone_1_1IRegistry.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/EndstoneMC/endstone/edit/develop/docs/reference/cpp/classendstone_1_1IRegistry.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2621,7 +2761,7 @@ For latest updates join the chat on
     
       
     
-    <a href="https://github.com/EndstoneMC/endstone/raw/main/docs/reference/cpp/classendstone_1_1IRegistry.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/EndstoneMC/endstone/raw/develop/docs/reference/cpp/classendstone_1_1IRegistry.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
@@ -2641,14 +2781,72 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual std::size_t</td>
+<td style="text-align: left;"><a href="#function-size"><strong>size</strong></a> () const = 0<br></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual</td>
 <td style="text-align: left;"><a href="#function-iregistry"><strong>~IRegistry</strong></a> () = default<br></td>
 </tr>
 </tbody>
 </table>
+<h2 id="protected-functions">Protected Functions<a class="headerlink" href="#protected-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
+<td style="text-align: left;"><a href="#function-foreach0"><strong>forEach0</strong></a> (std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a>(<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>void</strong></a> *)&gt; func) const = 0<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>void</strong></a> *</td>
+<td style="text-align: left;"><a href="#function-get0"><strong>get0</strong></a> (std::string_view id) noexcept const = 0<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::type_info &amp;</td>
+<td style="text-align: left;"><a href="#function-gettypeid"><strong>getTypeId</strong></a> () noexcept const = 0<br></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-size">function size<a class="headerlink" href="#function-size" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">IRegistry</span><span class="o">::</span><span class="n">size</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div>
+<hr>
+
 <h3 id="function-iregistry">function ~IRegistry<a class="headerlink" href="#function-iregistry" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">IRegistry</span><span class="o">::~</span><span class="n">IRegistry</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">IRegistry</span><span class="o">::~</span><span class="n">IRegistry</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+</span></code></pre></div>
+<hr>
+<h2 id="protected-functions-documentation">Protected Functions Documentation<a class="headerlink" href="#protected-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-foreach0">function forEach0<a class="headerlink" href="#function-foreach0" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">IRegistry</span><span class="o">::</span><span class="n">forEach0</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">func</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="function-get0">function get0<a class="headerlink" href="#function-get0" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">IRegistry</span><span class="o">::</span><span class="n">get0</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">id</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="function-gettypeid">function getTypeId<a class="headerlink" href="#function-gettypeid" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">type_info</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">IRegistry</span><span class="o">::</span><span class="n">getTypeId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div>
+<hr>
+<h2 id="friends-documentation">Friends Documentation<a class="headerlink" href="#friends-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="friend-pyregistry">friend PyRegistry<a class="headerlink" href="#friend-pyregistry" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">IRegistry</span><span class="o">::</span><span class="n">PyRegistry</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">python</span><span class="o">::</span><span class="n">PyRegistry</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
@@ -2693,7 +2891,7 @@ For latest updates join the chat on
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 - 2025 EndstoneMC
+      Copyright &copy; 2023 - 2026 EndstoneMC
     </div>
   
   
