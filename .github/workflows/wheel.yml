@@ -82,7 +82,7 @@ jobs:
           path: ./wheelhouse/*.whl
 
   portable:
-    name: Portable (${{ matrix.platform }})
+    name: Portable (${{ matrix.os }}-${{ matrix.arch }})
     runs-on: ubuntu-latest
     needs: [ build_wheels ]
     strategy:
@@ -90,11 +90,13 @@ jobs:
       matrix:
         include:
           - platform: win_amd64
+            os: windows
+            arch: x64
             script: .github/portable/start.cmd
-            archive: zip
           - platform: manylinux_x86_64
+            os: linux
+            arch: x64
             script: .github/portable/start.sh
-            archive: tar.gz
 
     steps:
       - name: Checkout Code
@@ -113,30 +115,26 @@ jobs:
 
       - name: Stage bundle
         run: |
-          bundle="endstone-${{ matrix.platform }}-portable"
+          wheel=$(ls wheelhouse/endstone-*.whl | head -n1)
+          version=$(basename "$wheel" | cut -d'-' -f2)
+          bundle="endstone-${version}-${{ matrix.os }}-${{ matrix.arch }}"
           mkdir -p "dist/$bundle"
           cp "${{ matrix.script }}" "dist/$bundle/"
           cp CHANGELOG.md LICENSE "dist/$bundle/"
-          cp wheelhouse/*.whl "dist/$bundle/"
+          cp "$wheel" "dist/$bundle/"
           chmod +x "dist/$bundle/$(basename "${{ matrix.script }}")"
           echo "BUNDLE_NAME=$bundle" >> "$GITHUB_ENV"
 
       - name: Create archive
         run: |
           cd dist
-          if [ "${{ matrix.archive }}" = "zip" ]; then
-            zip -r "../${BUNDLE_NAME}.zip" "$BUNDLE_NAME"
-            echo "BUNDLE_FILE=${BUNDLE_NAME}.zip" >> "$GITHUB_ENV"
-          else
-            tar -czf "../${BUNDLE_NAME}.tar.gz" "$BUNDLE_NAME"
-            echo "BUNDLE_FILE=${BUNDLE_NAME}.tar.gz" >> "$GITHUB_ENV"
-          fi
+          zip -r "../${BUNDLE_NAME}.zip" "$BUNDLE_NAME"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: endstone-${{ matrix.platform }}-portable
-          path: ${{ env.BUNDLE_FILE }}
+          name: endstone-${{ matrix.os }}-${{ matrix.arch }}-portable
+          path: ${{ env.BUNDLE_NAME }}.zip
 
   release:
     name: Release
