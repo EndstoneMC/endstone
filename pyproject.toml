@@ -47,9 +47,9 @@ dynamic = ["version"]
 dev = ["endstone-stubgen", "pytest"]
 
 [project.urls]
-Changelog = "https://endstone.readthedocs.io/en/latest/changelog"
+Changelog = "https://endstone.dev/latest/changelog"
 Discussions = "https://github.com/orgs/EndstoneMC/discussions"
-Documentation = "https://endstone.readthedocs.io"
+Documentation = "https://endstone.dev"
 Homepage = "https://github.com/EndstoneMC/endstone"
 Issues = "https://github.com/EndstoneMC/endstone/issues"
 

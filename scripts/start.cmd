@@ -9,7 +9,7 @@ if exist bin\python\python.exe (
 
 if "%PYTHON_BINARY%"=="" (
 	echo Couldn't find a Python binary in "%~dp0bin\python"
-	echo Please refer to the installation instructions at https://endstone.readthedocs.io/en/latest/getting-started/installation
+	echo Please refer to the installation instructions at https://endstone.dev/latest/getting-started/installation
 	echo:
 	pause
 	exit 1
