@@ -42,7 +42,7 @@ jobs:
       - name: Set up Conan
         uses: ./.github/actions/setup-conan
         with:
-          build-type: RelWithDebInfo
+          build-type: Release
           install-dependencies: 'false'
 
       - name: Set up MSVC (Windows)
