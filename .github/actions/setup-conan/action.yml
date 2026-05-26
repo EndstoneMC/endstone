@@ -24,8 +24,9 @@ runs:
         python-version: ${{ inputs.python-version }}
         cache: 'pip'
 
-    - name: Cache Conan packages
-      uses: actions/cache@v5
+    - name: Restore Conan cache
+      id: conan-cache
+      uses: actions/cache/restore@v5
       with:
         path: .conan2/p
         key: ${{ runner.os }}-conan-${{ inputs.build-type }}-${{ hashFiles('conanfile.py', '.conan2/profiles/*') }}
@@ -57,3 +58,10 @@ runs:
           CONAN_ARGS="$CONAN_ARGS -c &:tools.build:compiler_executables={\"c\":\"clang-cl\",\"cpp\":\"clang-cl\"}"
         fi
         conan install . $CONAN_ARGS
+
+    - name: Save Conan cache
+      if: inputs.install-dependencies == 'true' && github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/') && steps.conan-cache.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v5
+      with:
+        path: .conan2/p
+        key: ${{ runner.os }}-conan-${{ inputs.build-type }}-${{ hashFiles('conanfile.py', '.conan2/profiles/*') }}
