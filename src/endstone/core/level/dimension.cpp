@@ -16,7 +16,6 @@
 
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
-#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/core/actor/item.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/inventory/item_stack.h"
@@ -31,17 +30,7 @@ EndstoneDimension::EndstoneDimension(WeakRef<::Dimension> dimension, EndstoneLev
 
 DimensionId EndstoneDimension::getId() const
 {
-    switch (getHandle().getDimensionId().value) {
-    case VanillaDimensions::Overworld.value:
-        return Dimension::Overworld;
-    case VanillaDimensions::Nether.value:
-        return Dimension::Nether;
-    case VanillaDimensions::TheEnd.value:
-        return Dimension::TheEnd;
-    default:
-        // TODO(fixme): return actual id after 1.26.20 update with custom dimension
-        return DimensionId(getHandle().getName());
-    }
+    return DimensionId(getHandle().getTypeId());
 }
 
 std::string EndstoneDimension::getTranslationKey() const
