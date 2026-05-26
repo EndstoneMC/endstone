@@ -82,63 +82,61 @@ jobs:
           path: ./wheelhouse/*.whl
 
   portable:
-    name: Windows Portable
-    runs-on: windows-2022
+    name: Portable (${{ matrix.platform }})
+    runs-on: ubuntu-latest
     needs: [ build_wheels ]
-    env:
-      WP_URL: https://github.com/winpython/winpython/releases/download/17.2.20250920final/WinPython64-3.13.7.0dot.exe
-      WP_SHA256: 75001c40e8507db4c408f298ce8f49d483efb5ebfa9bdfb50a0509d31bd028f5
-      WP_BINARY_DIR: WPy64-31700\python
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: win_amd64
+            script: .github/portable/start.cmd
+            archive: zip
+          - platform: manylinux_x86_64
+            script: .github/portable/start.sh
+            archive: tar.gz
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
         with:
           sparse-checkout: |
-            scripts/start.cmd
+            .github/portable
             CHANGELOG.md
             LICENSE
 
       - name: Download Wheel Artifact
         uses: actions/download-artifact@v7
         with:
-          name: endstone-wheels-cp313-win_amd64
+          name: endstone-wheels-cp313-${{ matrix.platform }}
           path: wheelhouse
 
-      - name: Install Winpython
+      - name: Stage bundle
         run: |
-          Invoke-WebRequest -OutFile winpython.exe ${{ env.WP_URL }}
-          $file_hash = (Get-FileHash winpython.exe ).Hash
-          if ($file_hash -ne "${{ env.WP_SHA256 }}") { exit(1) }
-          .\winpython.exe -y
+          bundle="endstone-${{ matrix.platform }}-portable"
+          mkdir -p "dist/$bundle"
+          cp "${{ matrix.script }}" "dist/$bundle/"
+          cp CHANGELOG.md LICENSE "dist/$bundle/"
+          cp wheelhouse/*.whl "dist/$bundle/"
+          chmod +x "dist/$bundle/$(basename "${{ matrix.script }}")"
+          echo "BUNDLE_NAME=$bundle" >> "$GITHUB_ENV"
 
-      - name: Install Endstone
-        shell: pwsh
+      - name: Create archive
         run: |
-          $file = Get-ChildItem -Path .\wheelhouse -Filter *.whl | Select-Object -First 1
-          ${{ env.WP_BINARY_DIR }}\python.exe -m pip install $file.FullName
-
-      - name: Clean Up
-        run: |
-          ${{ env.WP_BINARY_DIR }}\python.exe -m pip install pyclean
-          ${{ env.WP_BINARY_DIR }}\python.exe -m pyclean ${{ env.WP_BINARY_DIR }}
-
-      - name: Create Bundle
-        run: |
-          New-Item dist\endstone-win_amd64-portable\bin\python -ItemType Directory
-          Copy-Item -Path ${{ env.WP_BINARY_DIR }}\* -Destination dist\endstone-win_amd64-portable\bin\python -Recurse
-          Copy-Item -Path scripts\start.cmd -Destination dist\endstone-win_amd64-portable
-          Copy-Item -Path CHANGELOG.md -Destination dist\endstone-win_amd64-portable
-          Copy-Item -Path LICENSE -Destination dist\endstone-win_amd64-portable
-
-      - name: Create Zip
-        run: 7z a endstone-win_amd64-portable.zip .\dist\endstone-win_amd64-portable\*
+          cd dist
+          if [ "${{ matrix.archive }}" = "zip" ]; then
+            zip -r "../${BUNDLE_NAME}.zip" "$BUNDLE_NAME"
+            echo "BUNDLE_FILE=${BUNDLE_NAME}.zip" >> "$GITHUB_ENV"
+          else
+            tar -czf "../${BUNDLE_NAME}.tar.gz" "$BUNDLE_NAME"
+            echo "BUNDLE_FILE=${BUNDLE_NAME}.tar.gz" >> "$GITHUB_ENV"
+          fi
 
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: endstone-win_amd64-portable
-          path: endstone-win_amd64-portable.zip
+          name: endstone-${{ matrix.platform }}-portable
+          path: ${{ env.BUNDLE_FILE }}
 
   release:
     name: Release
@@ -163,11 +161,12 @@ jobs:
         with:
           packages-dir: dist/wheels
 
-      - name: Download portable artifact
+      - name: Download portable artifacts
         uses: actions/download-artifact@v7
         with:
-          name: endstone-win_amd64-portable
+          pattern: endstone-*-portable
           path: dist/portable
+          merge-multiple: true
 
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v3

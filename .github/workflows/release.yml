@@ -49,8 +49,8 @@ jobs:
             printf '\n**Full Changelog**: https://github.com/%s/compare/%s...v%s\n' \
               "${{ github.repository }}" "$PREV_TAG" "$VERSION" >> /tmp/release_body.md
           fi
-          # Idempotent: wheel.yml's softprops/action-gh-release@v2 may have
-          # already auto-created the release while uploading the portable zip.
+          # Idempotent: wheel.yml's softprops/action-gh-release@v3 may have
+          # already auto-created the release while uploading the portable archives.
           if gh release view "v$VERSION" >/dev/null 2>&1; then
             gh release edit "v$VERSION" \
               --title "v$VERSION" \
