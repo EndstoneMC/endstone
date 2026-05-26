@@ -46,4 +46,4 @@ runs:
             *) echo "::error::No tracked profile for RUNNER_OS=$RUNNER_OS" && exit 1 ;;
           esac
         fi
-        conan install . --profile="$profile" --build=missing -s build_type=${{ inputs.build-type }}
+        conan install . -pr:a "$profile" --build=missing -s build_type=${{ inputs.build-type }}
