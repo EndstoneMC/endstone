@@ -24,18 +24,23 @@
 
 #pragma once
 
-#include <optional>
+#include <vector>
 
 #include "endstone/inventory/meta/item_meta.h"
 
 namespace endstone {
 class CrossbowMeta : public ItemMeta {
 public:
-    [[nodiscard]] virtual bool hasChargedProjectile() const = 0;
+    ENDSTONE_ITEM_META_TYPE(CrossBow)
 
-    [[nodiscard]] virtual std::optional<ItemStack> getChargedProjectile() const = 0;
+    
+    [[nodiscard]] virtual bool hasChargedProjectiles() const = 0;
 
-    virtual void setChargedProjectile(std::optional<ItemStack> projectile) = 0;
+    [[nodiscard]] virtual std::vector<ItemStack> getChargedProjectiles() const = 0;
+
+    virtual void setChargedProjectiles(std::vector<ItemStack> projectiles) = 0;
+
+    virtual void addChargedProjectile(const ItemStack &item) = 0;
 };
 }  // namespace endstone
 ```

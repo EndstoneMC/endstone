@@ -36,7 +36,7 @@ public:
 
     [[nodiscard]] ActorType &getActor() const { return actor_; }
 
-    [[nodiscard]] const endstone::ActorType &getActorType() const { return actor_.getType(); }
+    // TODO(event): add getActorType method
 
 private:
     ActorType &actor_;

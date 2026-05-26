@@ -442,8 +442,6 @@ For latest updates join the chat on
       
         
       
-        
-      
     
     
     
@@ -588,34 +586,6 @@ For latest updates join the chat on
     
   
     Contributing
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../getting-started/faq/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    FAQ
   
 
     
@@ -2606,6 +2576,47 @@ For latest updates join the chat on
     
 </li>
       
+        <li class="md-nav__item">
+    <a href="#macros" class="md-nav__link">
+      <span class="md-ellipsis">
+        Macros
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#macro-definition-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Macro Definition Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Macro Definition Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#define-endstone_item_meta_type" class="md-nav__link">
+      <span class="md-ellipsis">
+        define ENDSTONE_ITEM_META_TYPE
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
     </ul>
   
 </nav>
@@ -2623,7 +2634,7 @@ For latest updates join the chat on
 
 
   
-    <a href="https://github.com/EndstoneMC/endstone/edit/develop/docs/reference/cpp/item__meta_8h.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/EndstoneMC/endstone/edit/main/docs/reference/cpp/item__meta_8h.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2632,7 +2643,7 @@ For latest updates join the chat on
     
       
     
-    <a href="https://github.com/EndstoneMC/endstone/raw/develop/docs/reference/cpp/item__meta_8h.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/EndstoneMC/endstone/raw/main/docs/reference/cpp/item__meta_8h.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
@@ -2646,10 +2657,10 @@ For latest updates join the chat on
 <li><code>#include &lt;memory&gt;</code></li>
 <li><code>#include &lt;optional&gt;</code></li>
 <li><code>#include &lt;string&gt;</code></li>
+<li><code>#include &lt;type_traits&gt;</code></li>
 <li><code>#include &lt;unordered_map&gt;</code></li>
 <li><code>#include &lt;vector&gt;</code></li>
 <li><code>#include "endstone/enchantments/enchantment.h"</code></li>
-<li><code>#include "endstone/object.h"</code></li>
 </ul>
 <h2 id="namespaces">Namespaces<a class="headerlink" href="#namespaces" title="Permanent link">&para;</a></h2>
 <table>
@@ -2685,6 +2696,29 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
+<h2 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">define</td>
+<td style="text-align: left;"><a href="./#define-endstone_item_meta_type"><strong>ENDSTONE_ITEM_META_TYPE</strong></a> (type) <code>static constexpr auto MetaType = Type::type;</code><br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="macro-definition-documentation">Macro Definition Documentation<a class="headerlink" href="#macro-definition-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="define-endstone_item_meta_type">define ENDSTONE_ITEM_META_TYPE<a class="headerlink" href="#define-endstone_item_meta_type" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#define ENDSTONE_ITEM_META_TYPE (</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">type</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="err">`</span><span class="k">static</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">MetaType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Type</span><span class="o">::</span><span class="n">type</span><span class="p">;</span><span class="err">`</span>
+</span></code></pre></div>
+<hr>
+
 <hr />
 <p>The documentation for this class was generated from the following file <code>include/endstone/inventory/meta/item_meta.h</code></p>
 
@@ -2726,7 +2760,7 @@ For latest updates join the chat on
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2023 - 2026 EndstoneMC
+      Copyright &copy; 2023 - 2025 EndstoneMC
     </div>
   
   

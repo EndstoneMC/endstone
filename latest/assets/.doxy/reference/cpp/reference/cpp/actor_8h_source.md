@@ -28,15 +28,20 @@
 #include <string>
 #include <vector>
 
-#include "endstone/actor/actor_type.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/level/location.h"
 
 namespace endstone {
+class Item;
+class Mob;
 class Level;
 class Actor : public CommandSender {
 public:
-    [[nodiscard]] virtual const ActorType &getType() const = 0;
+    [[nodiscard]] virtual Mob *asMob() const = 0;
+
+    [[nodiscard]] virtual Item *asItem() const = 0;
+
+    [[nodiscard]] virtual std::string getType() const = 0;
 
     [[nodiscard]] virtual std::uint64_t getRuntimeId() const = 0;
 

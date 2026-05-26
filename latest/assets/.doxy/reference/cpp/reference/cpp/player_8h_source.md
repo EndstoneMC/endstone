@@ -36,8 +36,8 @@
 #include "endstone/form/modal_form.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
-#include "endstone/level/location.h"
 #include "endstone/map/map_view.h"
+#include "endstone/offline_player.h"
 #include "endstone/scoreboard/scoreboard.h"
 #include "endstone/skin.h"
 #include "endstone/util/socket_address.h"
@@ -45,14 +45,12 @@
 
 namespace endstone {
 
-class Player : public Mob {
+class Player : public Mob, public OfflinePlayer {
 protected:
     using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
 
 public:
     [[nodiscard]] std::string getName() const override = 0;
-
-    [[nodiscard]] virtual UUID getUniqueId() const = 0;
 
     [[nodiscard]] virtual bool isOp() const = 0;
 

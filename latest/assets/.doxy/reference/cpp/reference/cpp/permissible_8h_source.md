@@ -28,7 +28,6 @@
 #include <string>
 #include <unordered_set>
 
-#include "endstone/object.h"
 #include "endstone/permissions/permission_attachment_info.h"
 #include "endstone/permissions/permission_level.h"
 #include "endstone/util/result.h"
@@ -40,8 +39,10 @@ class Plugin;
 class Permission;
 class PermissionAttachment;
 
-class Permissible : public Object, public std::enable_shared_from_this<Permissible> {
+class Permissible {
 public:
+    virtual ~Permissible() = default;
+
     [[nodiscard]] virtual PermissionLevel getPermissionLevel() const = 0;
 
     [[nodiscard]] virtual bool isPermissionSet(std::string name) const = 0;
@@ -61,6 +62,8 @@ public:
     virtual void recalculatePermissions() = 0;
 
     [[nodiscard]] virtual std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const = 0;
+
+    [[nodiscard]] virtual CommandSender *asCommandSender() const = 0;
 };
 }  // namespace endstone
 ```

@@ -32,26 +32,13 @@ Inherited by the following classes: [endstone::BookMeta](classendstone_1_1BookMe
 
 
 
+## Public Types inherited from endstone::ItemMeta
 
+See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+| Type | Name |
+| ---: | :--- |
+| enum  | [**Type**](classendstone_1_1ItemMeta.md#enum-type)  <br> |
 
 
 
@@ -94,15 +81,15 @@ Inherited by the following classes: [endstone::BookMeta](classendstone_1_1BookMe
 
 | Type | Name |
 | ---: | :--- |
-|  [**void**](classendstone_1_1Identifier.md) | [**addPage**](#function-addpage) ([**Args**](classendstone_1_1Identifier.md) &&... pages) <br>_Adds new pages to the end of the book._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**addPages**](#function-addpages) (std::vector&lt; std::string &gt; pages) = 0<br>_Adds new pages to the end of the book._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**addPage**](#function-addpage-12) ([**Args**](classendstone_1_1Identifier.md) &&... pages) <br>_Adds new pages to the end of the book._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**addPage**](#function-addpage-22) (std::vector&lt; std::string &gt; pages) = 0<br>_Adds new pages to the end of the book._  |
 | virtual std::string | [**getPage**](#function-getpage) ([**int**](classendstone_1_1Identifier.md) page) const = 0<br>_Gets the specified page in the book. The given page must exist._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getPageCount**](#function-getpagecount) () const = 0<br>_Gets the number of pages in the book._  |
 | virtual std::vector&lt; std::string &gt; | [**getPages**](#function-getpages) () const = 0<br>_Gets all the pages in the book._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPages**](#function-haspages) () const = 0<br>_Checks for the existence of pages in the book._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setPage**](#function-setpage) ([**int**](classendstone_1_1Identifier.md) page, std::string data) = 0<br>_Sets the specified page in the book. Pages of the book must be contiguous._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setPages**](#function-setpages-12) ([**Args**](classendstone_1_1Identifier.md) &&... pages) <br>_Clears the existing book pages, and sets the book to use the provided pages._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setPages**](#function-setpages-22) (std::vector&lt; std::string &gt; pages) = 0<br>_Maximum 50 pages with 256 characters per page._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setPages**](#function-setpages-22) (std::vector&lt; std::string &gt; pages) = 0<br>_Maximum 50 pages with 798 characters per page._  |
 
 
 ## Public Functions inherited from endstone::ItemMeta
@@ -112,6 +99,8 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 | Type | Name |
 | ---: | :--- |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**addEnchant**](classendstone_1_1ItemMeta.md#function-addenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id, [**int**](classendstone_1_1Identifier.md) level, [**bool**](classendstone_1_1Identifier.md) force) = 0<br>_Adds the specified enchantment to this item meta._  |
+|  [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1ItemMeta.md#function-as-12) () <br> |
+|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1ItemMeta.md#function-as-22) () const<br> |
 | virtual std::unique\_ptr&lt; [**ItemMeta**](classendstone_1_1ItemMeta.md) &gt; | [**clone**](classendstone_1_1ItemMeta.md#function-clone) () const = 0<br>_Creates a clone of the current metadata._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getDamage**](classendstone_1_1ItemMeta.md#function-getdamage) () const = 0<br>_Gets the damage._  |
 | virtual std::string | [**getDisplayName**](classendstone_1_1ItemMeta.md#function-getdisplayname) () const = 0<br>_Gets the display name that is set._  |
@@ -120,6 +109,7 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 | virtual [**const**](classendstone_1_1Identifier.md) core::ItemMetaExtras & | [**getExtras**](classendstone_1_1ItemMeta.md#function-getextras) () const = 0<br> |
 | virtual std::vector&lt; std::string &gt; | [**getLore**](classendstone_1_1ItemMeta.md#function-getlore) () const = 0<br>_Gets the lore that is set._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getRepairCost**](classendstone_1_1ItemMeta.md#function-getrepaircost) () const = 0<br>_Gets the repair penalty._  |
+| virtual Type | [**getType**](classendstone_1_1ItemMeta.md#function-gettype) () const = 0<br>_Gets the type of this item meta._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasConflictingEnchant**](classendstone_1_1ItemMeta.md#function-hasconflictingenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br> |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasDamage**](classendstone_1_1ItemMeta.md#function-hasdamage) () const = 0<br>_Checks to see if this item has damage._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasDisplayName**](classendstone_1_1ItemMeta.md#function-hasdisplayname) () const = 0<br>_Checks for existence of a display name._  |
@@ -135,46 +125,7 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setLore**](classendstone_1_1ItemMeta.md#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) = 0<br>_Sets the lore for this item or removes lore when given_ `std::nullopt` _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setRepairCost**](classendstone_1_1ItemMeta.md#function-setrepaircost) ([**int**](classendstone_1_1Identifier.md) cost) = 0<br>_Sets the repair penalty._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setUnbreakable**](classendstone_1_1ItemMeta.md#function-setunbreakable) ([**bool**](classendstone_1_1Identifier.md) unbreakable) = 0<br>_Sets the unbreakable tag. An unbreakable item will not lose durability._  |
-
-
-## Public Functions inherited from endstone::Object
-
-See [endstone::Object](classendstone_1_1Object.md)
-
-| Type | Name |
-| ---: | :--- |
-|  [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1Object.md#function-as-12) () <br>_Attempts to cast this object to the given type T._  |
-|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1Object.md#function-as-22) () const<br>_Attempts to cast this object to the given type T._  |
-| virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](classendstone_1_1Object.md#function-getclasstypeid) () const = 0<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**is**](classendstone_1_1Object.md#function-is) () const<br>_Checks if this object is an instance of the given type T (or a subclass of T)._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](classendstone_1_1Object.md#function-isinstanceof) ([**const**](classendstone_1_1Identifier.md) std::type\_info & target) const = 0<br> |
-| virtual  | [**~Object**](classendstone_1_1Object.md#function-object) () = default<br> |
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+| virtual  | [**~ItemMeta**](classendstone_1_1ItemMeta.md#function-itemmeta) () = default<br> |
 
 
 
@@ -234,7 +185,7 @@ See [endstone::Object](classendstone_1_1Object.md)
 
 
 
-### function addPage 
+### function addPage [1/2]
 
 _Adds new pages to the end of the book._ 
 ```C++
@@ -250,7 +201,7 @@ inline void endstone::WritableBookMeta::addPage (
 
 **Note:**
 
-Up to a maximum of 50 pages with 256 characters per page.
+Up to a maximum of 50 pages with 798 characters per page.
 
 
 
@@ -269,11 +220,11 @@ Up to a maximum of 50 pages with 256 characters per page.
 
 
 
-### function addPages 
+### function addPage [2/2]
 
 _Adds new pages to the end of the book._ 
 ```C++
-virtual void endstone::WritableBookMeta::addPages (
+virtual void endstone::WritableBookMeta::addPage (
     std::vector< std::string > pages
 ) = 0
 ```
@@ -284,7 +235,7 @@ virtual void endstone::WritableBookMeta::addPages (
 
 **Note:**
 
-Up to a maximum of 50 pages with 256 characters per page.
+Up to a maximum of 50 pages with 798 characters per page.
 
 
 
@@ -474,7 +425,7 @@ inline void endstone::WritableBookMeta::setPages (
 
 **Note:**
 
-Maximum 50 pages with 256 characters per page.
+Maximum 50 pages with 798 characters per page.
 
 
 
@@ -495,7 +446,7 @@ Maximum 50 pages with 256 characters per page.
 
 ### function setPages [2/2]
 
-_Maximum 50 pages with 256 characters per page._ 
+_Maximum 50 pages with 798 characters per page._ 
 ```C++
 virtual void endstone::WritableBookMeta::setPages (
     std::vector< std::string > pages

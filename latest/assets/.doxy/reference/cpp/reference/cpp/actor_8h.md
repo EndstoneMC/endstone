@@ -13,7 +13,6 @@
 * `#include <cstdint>`
 * `#include <string>`
 * `#include <vector>`
-* `#include "endstone/actor/actor_type.h"`
 * `#include "endstone/command/command_sender.h"`
 * `#include "endstone/level/location.h"`
 

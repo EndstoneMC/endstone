@@ -32,6 +32,9 @@
 namespace endstone {
 class BookMeta : public WritableBookMeta {
 public:
+    ENDSTONE_ITEM_META_TYPE(Book)
+
+    
     enum class Generation {
         Original,
         CopyOfOriginal,

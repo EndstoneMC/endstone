@@ -28,19 +28,17 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 
 
 
-
-
-
-
-
-
-## Public Static Attributes
+## Public Types
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Nether**](#variable-nether)   = `DimensionId::minecraft("nether")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Overworld**](#variable-overworld)   = `DimensionId::minecraft("overworld")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TheEnd**](#variable-theend)   = `DimensionId::minecraft("the\_end")`<br> |
+| enum  | [**Type**](#enum-type)  <br>_Represents various dimension types._  |
+
+
+
+
+
+
 
 
 
@@ -66,11 +64,11 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getHighestBlockAt**](#function-gethighestblockat-12) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) z) const = 0<br>_Gets the highest non-empty (impassable) block at the given coordinates._  |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getHighestBlockAt**](#function-gethighestblockat-22) ([**Location**](classendstone_1_1Location.md) location) const = 0<br>_Gets the highest non-empty (impassable) block at the given_ [_**Location**_](classendstone_1_1Location.md) _._ |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getHighestBlockYAt**](#function-gethighestblockyat) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) z) const = 0<br>_Gets the highest non-empty (impassable) coordinate at the given coordinates._  |
-| virtual [**DimensionId**](classendstone_1_1Identifier.md) | [**getId**](#function-getid) () const = 0<br>_Return the identifier of this dimension._  |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the level to which this dimension belongs._  |
 | virtual std::vector&lt; std::unique\_ptr&lt; [**Chunk**](classendstone_1_1Chunk.md) &gt; &gt; | [**getLoadedChunks**](#function-getloadedchunks) () = 0<br>_Gets a list of all loaded Chunks._  |
-| virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
-| virtual [**Actor**](classendstone_1_1Actor.md) \* | [**spawnActor**](#function-spawnactor) ([**Location**](classendstone_1_1Location.md) location, [**ActorTypeId**](classendstone_1_1Identifier.md) type) = 0<br>_Creates an actor at the given_ [_**Location**_](classendstone_1_1Location.md) _._ |
+| virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this dimension._  |
+| virtual [**Type**](classendstone_1_1Dimension.md#enum-type) | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this dimension._  |
+| virtual [**Actor**](classendstone_1_1Actor.md) \* | [**spawnActor**](#function-spawnactor) ([**Location**](classendstone_1_1Location.md) location, std::string type) = 0<br>_Creates an actor at the given_ [_**Location**_](classendstone_1_1Location.md) _._ |
 | virtual  | [**~Dimension**](#function-dimension) () = default<br> |
 
 
@@ -100,41 +98,21 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 
 
 
-## Public Static Attributes Documentation
+## Public Types Documentation
 
 
 
 
-### variable Nether 
+### enum Type 
 
+_Represents various dimension types._ 
 ```C++
-constexpr auto endstone::Dimension::Nether;
-```
-
-
-
-
-<hr>
-
-
-
-### variable Overworld 
-
-```C++
-constexpr auto endstone::Dimension::Overworld;
-```
-
-
-
-
-<hr>
-
-
-
-### variable TheEnd 
-
-```C++
-constexpr auto endstone::Dimension::TheEnd;
+enum endstone::Dimension::Type {
+    Overworld = 0,
+    Nether = 1,
+    TheEnd = 2,
+    Custom = 999
+};
 ```
 
 
@@ -385,31 +363,6 @@ Y-coordinate of the highest non-empty block
 
 
 
-### function getId 
-
-_Return the identifier of this dimension._ 
-```C++
-virtual DimensionId endstone::Dimension::getId () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-this dimension's identifier 
-
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function getLevel 
 
 _Gets the level to which this dimension belongs._ 
@@ -460,11 +413,11 @@ All loaded chunks
 
 
 
-### function getTranslationKey 
+### function getName 
 
-_Get the translation key, suitable for use in a translation component._ 
+_Gets the name of this dimension._ 
 ```C++
-virtual std::string endstone::Dimension::getTranslationKey () const = 0
+virtual std::string endstone::Dimension::getName () const = 0
 ```
 
 
@@ -473,7 +426,32 @@ virtual std::string endstone::Dimension::getTranslationKey () const = 0
 
 **Returns:**
 
-the translation key 
+Name of this dimension 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getType 
+
+_Gets the type of this dimension._ 
+```C++
+virtual Type endstone::Dimension::getType () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+Type of this dimension 
 
 
 
@@ -491,7 +469,7 @@ _Creates an actor at the given_ [_**Location**_](classendstone_1_1Location.md) _
 ```C++
 virtual Actor * endstone::Dimension::spawnActor (
     Location location,
-    ActorTypeId type
+    std::string type
 ) = 0
 ```
 
@@ -503,7 +481,7 @@ virtual Actor * endstone::Dimension::spawnActor (
 
 
 * `location` The location to spawn the actor 
-* `type` The actor type to spawn 
+* `type` The actor to spawn 
 
 
 

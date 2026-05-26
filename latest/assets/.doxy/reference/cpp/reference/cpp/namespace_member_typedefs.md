@@ -5,7 +5,6 @@
 
 ## a
 
-* **ActorTypeId** ([**endstone**](namespaceendstone.md))
 * **AttributeId** ([**endstone**](namespaceendstone.md))
 
 
@@ -19,7 +18,6 @@
 
 ## d
 
-* **DimensionId** ([**endstone**](namespaceendstone.md))
 * **DoubleTag** ([**endstone**](namespaceendstone.md))
 
 

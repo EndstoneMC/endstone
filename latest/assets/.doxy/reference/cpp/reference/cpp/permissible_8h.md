@@ -13,7 +13,6 @@
 * `#include <memory>`
 * `#include <string>`
 * `#include <unordered_set>`
-* `#include "endstone/object.h"`
 * `#include "endstone/permissions/permission_attachment_info.h"`
 * `#include "endstone/permissions/permission_level.h"`
 * `#include "endstone/util/result.h"`

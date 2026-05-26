@@ -6,13 +6,6 @@
 ## a
 
 * **actor\_** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md), [**endstone::PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md))
-* **Agent** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Allay** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **AreaEffectCloud** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Armadillo** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **ArmorStand** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Arrow** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Axolotl** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Absorption** ([**endstone::Attribute**](classendstone_1_1Attribute.md), [**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **AttackDamage** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **amount\_** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md))
@@ -34,14 +27,6 @@
 ## b
 
 * **blocks\_** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md), [**endstone::BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md))
-* **Balloon** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Bat** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Bee** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Blaze** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Boat** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Bogged** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Breeze** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **BreezeWindChargeProjectile** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **block\_** ([**endstone::BlockEvent**](classendstone_1_1BlockEvent.md))
 * **BIT\_MASK** ([**endstone::Color**](classendstone_1_1Color.md))
 * **blue\_** ([**endstone::Color**](classendstone_1_1Color.md))
@@ -69,19 +54,6 @@
 
 * **content\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **controls\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
-* **Camel** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **CamelHusk** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Cat** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **CaveSpider** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **ChestBoat** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **ChestMinecart** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Chicken** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Cod** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **CommandBlockMinecart** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **CopperGolem** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Cow** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Creaking** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Creeper** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **created\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **chunk\_** ([**endstone::ChunkEvent**](classendstone_1_1ChunkEvent.md))
 * **command\_map\_** ([**endstone::Command**](classendstone_1_1Command.md))
@@ -107,10 +79,6 @@
 
 * **damage\_** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md))
 * **damage\_source\_** ([**endstone::ActorDamageEvent**](classendstone_1_1ActorDamageEvent.md), [**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
-* **Dolphin** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Donkey** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **DragonFireball** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Drowned** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **DateFormat** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **direction\_** ([**endstone::BlockPistonEvent**](classendstone_1_1BlockPistonEvent.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **DEFAULT\_ALPHA** ([**endstone::Color**](classendstone_1_1Color.md))
@@ -143,17 +111,6 @@
 
 ## e
 
-* **Egg** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **ElderGuardian** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **ElderGuardianGhost** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **EnderCrystal** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **EnderDragon** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **EnderPearl** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Enderman** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Endermite** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **EvocationFang** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **EvocationIllager** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **EyeOfEnderSignal** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **expiration\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **Escape** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **entries\_** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md))
@@ -168,12 +125,6 @@
 ## f
 
 * **from\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md))
-* **FallingBlock** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Fireball** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **FireworksRocket** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **FishingHook** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Fox** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Frog** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **FollowRange** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **FatalPoison** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **FireResistance** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
@@ -189,10 +140,6 @@
 
 ## g
 
-* **Ghast** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **GlowSquid** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Goat** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Guardian** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **green\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Gold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Gray** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -202,11 +149,6 @@
 
 ## h
 
-* **HappyGhast** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Hoglin** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **HopperMinecart** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Horse** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Husk** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Health** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **Haste** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **HealthBoost** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
@@ -222,9 +164,6 @@
 
 ## i
 
-* **IceBomb** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **IronGolem** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Item** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **icon\_** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **Italic** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Infested** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
@@ -259,11 +198,6 @@
 ## l
 
 * **location\_** ([**endstone::ActorExplodeEvent**](classendstone_1_1ActorExplodeEvent.md))
-* **LeashKnot** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **LightningBolt** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **LingeringPotion** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Llama** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **LlamaSpit** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **LavaMovementSpeed** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **Luck** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **LightPurple** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -304,10 +238,6 @@
 ## m
 
 * **mob\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
-* **MagmaCube** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Minecart** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Mooshroom** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Mule** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **MovementSpeed** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **message\_** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md), [**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md), [**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))
 * **MaterialAmethyst** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -340,11 +270,8 @@
 
 ## n
 
-* **Nautilus** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Npc** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **name\_** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md), [**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md), [**endstone::detail::PermissionBuilder**](classendstone_1_1detail_1_1PermissionBuilder.md))
 * **new\_state\_** ([**endstone::BlockGrowEvent**](classendstone_1_1BlockGrowEvent.md))
-* **Nether** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **Nausea** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **NightVision** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **namespace\_** ([**endstone::Identifier**](classendstone_1_1Identifier.md))
@@ -358,14 +285,11 @@
 ## o
 
 * **on\_submit\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
-* **Ocelot** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **OminousItemSpawner** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **operation\_** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md))
 * **on\_click\_** ([**endstone::Button**](classendstone_1_1Button.md))
 * **Obfuscated** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **on\_error\_** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **on\_message\_** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
-* **Overworld** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **options\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **Oozing** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **on\_close\_** ([**endstone::Form**](classendstone_1_1Form.md))
@@ -375,18 +299,6 @@
 
 ## p
 
-* **Painting** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Panda** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Parched** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Parrot** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Phantom** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Pig** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Piglin** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **PiglinBrute** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Pillager** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Player** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **PolarBear** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Pufferfish** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **PlayerExhaustion** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **PlayerExperience** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **PlayerHunger** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
@@ -394,6 +306,7 @@
 * **PlayerSaturation** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **player\_** ([**endstone::BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md), [**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md), [**endstone::PacketReceiveEvent**](classendstone_1_1PacketReceiveEvent.md), [**endstone::PacketSendEvent**](classendstone_1_1PacketSendEvent.md), [**endstone::PlayerEvent**](classendstone_1_1PlayerEvent.md))
 * **placed\_against\_** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
+* **placed\_block\_** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
 * **permissions\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::detail::CommandBuilder**](classendstone_1_1detail_1_1CommandBuilder.md))
 * **Poison** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **Piercing** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
@@ -430,11 +343,8 @@
 ## r
 
 * **raw\_knockback\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
-* **Rabbit** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Ravager** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **reason\_** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md), [**endstone::PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md))
 * **result\_** ([**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md))
-* **replaced\_state\_** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
 * **recipients\_** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **red\_** ([**endstone::Color**](classendstone_1_1Color.md))
 * **Red** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -450,23 +360,6 @@
 ## s
 
 * **source\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md), [**endstone::BanEntry**](classendstone_1_1BanEntry.md), [**endstone::BlockCookEvent**](classendstone_1_1BlockCookEvent.md))
-* **Salmon** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Sheep** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Shulker** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **ShulkerBullet** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Silverfish** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Skeleton** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **SkeletonHorse** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Slime** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **SmallFireball** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Sniffer** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **SnowGolem** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Snowball** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Spider** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **SplashPotion** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Squid** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Stray** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Strider** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **sender\_** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **Saturation** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **SlowFalling** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
@@ -501,16 +394,7 @@
 ## t
 
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::BlockFromToEvent**](classendstone_1_1BlockFromToEvent.md), [**endstone::PlayerDimensionChangeEvent**](classendstone_1_1PlayerDimensionChangeEvent.md), [**endstone::PlayerMoveEvent**](classendstone_1_1PlayerMoveEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
-* **Tadpole** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **ThrownTrident** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Tnt** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **TntMinecart** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **TraderLlama** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **TripodCamera** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Tropicalfish** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Turtle** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **text\_** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
-* **TheEnd** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **TrialOmen** ([**endstone::EffectType**](classendstone_1_1EffectType.md))
 * **Thorns** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **title\_** ([**endstone::Form**](classendstone_1_1Form.md))
@@ -529,10 +413,6 @@
 
 ## v
 
-* **Vex** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Villager** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **VillagerV2** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Vindicator** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **valid\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **visible\_** ([**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **value\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md), [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md))
@@ -543,21 +423,13 @@
 
 ## w
 
-* **WanderingTrader** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Warden** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **WindChargeProjectile** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Witch** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Wither** ([**endstone::ActorType**](classendstone_1_1ActorType.md), [**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
-* **WitherSkeleton** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **WitherSkull** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **WitherSkullDangerous** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Wolf** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **White** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **WHITE** ([**endstone::Colors**](classendstone_1_1Colors.md))
 * **WaterBreathing** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **Weakness** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **Weaving** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **WindCharged** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
+* **Wither** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **WindBurst** ([**endstone::Enchantment**](classendstone_1_1Enchantment.md))
 * **width\_** ([**endstone::Image**](classendstone_1_1Image.md))
 * **website\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -567,8 +439,6 @@
 
 ## x
 
-* **XpBottle** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **XpOrb** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **x\_** ([**endstone::Location**](classendstone_1_1Location.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **xuid\_** ([**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md))
 
@@ -582,13 +452,6 @@
 
 ## z
 
-* **Zoglin** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **Zombie** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **ZombieHorse** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **ZombieNautilus** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **ZombiePigman** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **ZombieVillager** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **ZombieVillagerV2** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **ZombieSpawnReinforcements** ([**endstone::Attribute**](classendstone_1_1Attribute.md))
 * **z\_** ([**endstone::Location**](classendstone_1_1Location.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 

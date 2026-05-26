@@ -24,7 +24,6 @@
 
 #pragma once
 
-#include <bit>
 #include <cstddef>
 #include <cstdint>
 #include <regex>
@@ -288,11 +287,6 @@ public:
     {
         return std::visit(visitor, storage_);
     }
-
-    [[nodiscard]] std::string dump(std::endian byte_order = std::endian::little, bool network = false) const;
-
-    [[nodiscard]] std::string dump(const std::string &name, std::endian byte_order = std::endian::little,
-                                   bool network = false) const;
 
     friend bool operator==(const Tag &a, const Tag &b) noexcept { return a.storage_ == b.storage_; }
 
@@ -781,9 +775,6 @@ struct fmt::formatter<endstone::nbt::escape_view> : formatter<string_view> {
         return fmt::format_to(ctx.out(), "{}", out);
     }
 };
-
-// ---- io.h must be included after all types are fully defined ----
-#include "endstone/nbt/io.h"
 ```
 
 

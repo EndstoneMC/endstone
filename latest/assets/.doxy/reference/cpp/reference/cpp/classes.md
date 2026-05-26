@@ -24,8 +24,6 @@
 ([**endstone**](namespaceendstone.md))
 * [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md)
 ([**endstone**](namespaceendstone.md))
-* [**ActorType**](classendstone_1_1ActorType.md)
-([**endstone**](namespaceendstone.md))
 * [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md)
 ([**endstone::nbt**](namespaceendstone_1_1nbt.md))
 * [**Attribute**](classendstone_1_1Attribute.md)
@@ -307,8 +305,6 @@
 
 ## o
 
-* [**Object**](classendstone_1_1Object.md)
-([**endstone**](namespaceendstone.md))
 * [**Objective**](classendstone_1_1Objective.md)
 ([**endstone**](namespaceendstone.md))
 * [**OfflinePlayer**](classendstone_1_1OfflinePlayer.md)

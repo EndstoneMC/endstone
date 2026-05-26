@@ -12,7 +12,6 @@
     <innerclass refid="classendstone_1_1ActorRemoveEvent" prot="public">endstone::ActorRemoveEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorSpawnEvent" prot="public">endstone::ActorSpawnEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorTeleportEvent" prot="public">endstone::ActorTeleportEvent</innerclass>
-    <innerclass refid="classendstone_1_1ActorType" prot="public">endstone::ActorType</innerclass>
     <innerclass refid="classendstone_1_1Attribute" prot="public">endstone::Attribute</innerclass>
     <innerclass refid="classendstone_1_1AttributeInstance" prot="public">endstone::AttributeInstance</innerclass>
     <innerclass refid="classendstone_1_1AttributeModifier" prot="public">endstone::AttributeModifier</innerclass>
@@ -98,7 +97,6 @@
     <innerclass refid="classendstone_1_1ModalForm" prot="public">endstone::ModalForm</innerclass>
     <innerclass refid="classendstone_1_1NotNull" prot="public">endstone::NotNull</innerclass>
     <innerclass refid="classendstone_1_1Nullable" prot="public">endstone::Nullable</innerclass>
-    <innerclass refid="classendstone_1_1Object" prot="public">endstone::Object</innerclass>
     <innerclass refid="classendstone_1_1Objective" prot="public">endstone::Objective</innerclass>
     <innerclass refid="classendstone_1_1OfflinePlayer" prot="public">endstone::OfflinePlayer</innerclass>
     <innerclass refid="structendstone_1_1overloaded" prot="public">endstone::overloaded</innerclass>
@@ -176,7 +174,6 @@
     <innernamespace refid="namespaceendstone_1_1core">endstone::core</innernamespace>
     <innernamespace refid="namespaceendstone_1_1detail">endstone::detail</innernamespace>
     <innernamespace refid="namespaceendstone_1_1nbt">endstone::nbt</innernamespace>
-    <innernamespace refid="namespaceendstone_1_1python">endstone::python</innernamespace>
     <sectiondef kind="enum">
       <memberdef kind="enum" id="namespaceendstone_1aec620d05bd961a002c83b008e178a785" prot="public" static="no" strong="yes">
         <type></type>
@@ -864,20 +861,6 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="namespaceendstone_1a94ee63841c0963c0a0676b0783e03486" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1ActorType" kindref="compound">ActorType</ref> &gt;</type>
-        <definition>using endstone::ActorTypeId = typedef Identifier&lt;ActorType&gt;</definition>
-        <argsstring></argsstring>
-        <name>ActorTypeId</name>
-        <qualifiedname>endstone::ActorTypeId</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/actor/actor_type.h" line="24" column="1" bodyfile="include/endstone/actor/actor_type.h" bodystart="24" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1ac2d399872c391e7ce2ec1896ba62e669" prot="public" static="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Attribute" kindref="compound">Attribute</ref> &gt;</type>
         <definition>using endstone::AttributeId = typedef Identifier&lt;class Attribute&gt;</definition>
@@ -963,20 +946,6 @@
         </inbodydescription>
         <location file="include/endstone/inventory/item_type.h" line="24" column="1" bodyfile="include/endstone/inventory/item_type.h" bodystart="24" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1a56604f8e64cbfad4e739248ea315914e" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt;</type>
-        <definition>using endstone::DimensionId = typedef Identifier&lt;Dimension&gt;</definition>
-        <argsstring></argsstring>
-        <name>DimensionId</name>
-        <qualifiedname>endstone::DimensionId</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="31" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="31" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" prot="public" static="no">
         <type>std::variant&lt; std::string, <ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref> &gt;</type>
         <definition>using endstone::Message = typedef std::variant&lt;std::string, Translatable&gt;</definition>
@@ -1003,7 +972,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="39" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="39" bodyend="-1"/>
+        <location file="include/endstone/nbt/tag.h" line="38" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1acb2bf69099c0af04c6c085cb2b3241c8" prot="public" static="no">
         <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::int16_t &gt;</type>
@@ -1017,7 +986,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="40" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="40" bodyend="-1"/>
+        <location file="include/endstone/nbt/tag.h" line="39" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1ac3fa2364d5a39f92bac2643e995aef4f" prot="public" static="no">
         <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::int32_t &gt;</type>
@@ -1031,7 +1000,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="41" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="41" bodyend="-1"/>
+        <location file="include/endstone/nbt/tag.h" line="40" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1a461a40b18afe2f2f141107df466d3f23" prot="public" static="no">
         <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::int64_t &gt;</type>
@@ -1045,7 +1014,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="42" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="42" bodyend="-1"/>
+        <location file="include/endstone/nbt/tag.h" line="41" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1aad298a7519bf969fb5c39873086bb6a6" prot="public" static="no">
         <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">float</ref> &gt;</type>
@@ -1059,7 +1028,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="43" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="43" bodyend="-1"/>
+        <location file="include/endstone/nbt/tag.h" line="42" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1abc87a5b4504a532abbacdec96b88f91d" prot="public" static="no">
         <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">double</ref> &gt;</type>
@@ -1073,7 +1042,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="44" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="44" bodyend="-1"/>
+        <location file="include/endstone/nbt/tag.h" line="43" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1a3dfcef30e05aaccd7b8316021b9b43dd" prot="public" static="no">
         <type><ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">nbt::ArrayTag</ref>&lt; std::uint8_t &gt;</type>
@@ -1087,7 +1056,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="45" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="45" bodyend="-1"/>
+        <location file="include/endstone/nbt/tag.h" line="44" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1a9f9696219c347f4a15b1e1495af99f66" prot="public" static="no">
         <type><ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">nbt::ValueTag</ref>&lt; std::string &gt;</type>
@@ -1101,7 +1070,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="46" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="46" bodyend="-1"/>
+        <location file="include/endstone/nbt/tag.h" line="45" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1a32ff16a28255aeb30f8d6905e6100a2b" prot="public" static="no">
         <type><ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">nbt::ArrayTag</ref>&lt; std::int32_t &gt;</type>
@@ -1115,7 +1084,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="47" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="47" bodyend="-1"/>
+        <location file="include/endstone/nbt/tag.h" line="46" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1afe5c52ae8db67deff2df8c157cd1c71e" prot="public" static="no">
         <type>std::function&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">void</ref>(<ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;)&gt;</type>
@@ -1215,7 +1184,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="432" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="432" bodyend="435"/>
+        <location file="include/endstone/nbt/tag.h" line="410" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="410" bodyend="413"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1a34cad5224fa76351c8c972f96d3714d4" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -1237,7 +1206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="437" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="437" bodyend="440"/>
+        <location file="include/endstone/nbt/tag.h" line="415" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="415" bodyend="418"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1a80c7553c9d56b35db5a0dc38e593353b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -1259,7 +1228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="571" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="571" bodyend="574"/>
+        <location file="include/endstone/nbt/tag.h" line="549" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="549" bodyend="552"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1ab04db219712717856d6a5330ef2b4534" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -1281,7 +1250,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="576" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="576" bodyend="579"/>
+        <location file="include/endstone/nbt/tag.h" line="554" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="554" bodyend="557"/>
       </memberdef>
       <memberdef kind="function" id="namespaceendstone_1ad7d0fbae7e1dd31cae1c84965a2f65a8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -1496,6 +1465,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/actor/actor.h" line="25" column="1"/>
+    <location file="include/endstone/actor/actor.h" line="24" column="1"/>
   </compounddef>
 </doxygen>
