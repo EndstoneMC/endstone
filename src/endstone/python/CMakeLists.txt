@@ -61,6 +61,14 @@ include(GNUInstallDirs)
 install(TARGETS _python DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)
 if (WIN32)
     install(TARGETS _detours DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)
+    install(PROGRAMS
+            "${SENTRY_NATIVE_BIN_DIR}/crashpad_handler.exe"
+            "${SENTRY_NATIVE_BIN_DIR}/crashpad_wer.dll"
+            DESTINATION "endstone" COMPONENT endstone_wheel)
+else ()
+    install(PROGRAMS
+            "${SENTRY_NATIVE_BIN_DIR}/crashpad_handler"
+            DESTINATION "endstone" COMPONENT endstone_wheel)
 endif ()
 if (MSVC)
     install(FILES $<TARGET_PDB_FILE:_python> DESTINATION "endstone" COMPONENT endstone_wheel OPTIONAL)

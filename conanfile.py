@@ -1,3 +1,5 @@
+import os
+
 from conan import ConanFile
 from conan.errors import ConanInvalidConfiguration
 from conan.tools.build import check_min_cppstd
@@ -71,7 +73,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("nlohmann_json/3.12.0")
         self.requires("pybind11/3.0.1")
         self.requires("replxx/0.0.4")
-        self.requires("sentry-native/0.7.17")
+        self.requires("sentry-native/0.14.0")
         self.requires("spdlog/1.15.3")
         self.requires("tomlplusplus/3.3.0")
         self.requires("zstr/1.0.7")
@@ -108,4 +110,6 @@ class EndstoneRecipe(ConanFile):
         tc = CMakeToolchain(self)
         if self._with_devtools:
             tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = True
+        sentry_bin = os.path.join(self.dependencies["sentry-native"].package_folder, "bin")
+        tc.variables["SENTRY_NATIVE_BIN_DIR"] = sentry_bin.replace("\\", "/")
         tc.generate()
