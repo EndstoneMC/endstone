@@ -1,0 +1,14 @@
+{
+ "remotes": [
+  {
+   "name": "endstone",
+   "url": "https://conan.cloudsmith.io/endstone/conan/",
+   "verify_ssl": true
+  },
+  {
+   "name": "conancenter",
+   "url": "https://center2.conan.io",
+   "verify_ssl": true
+  }
+ ]
+}

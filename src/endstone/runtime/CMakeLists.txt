@@ -3,6 +3,7 @@ project(endstone_runtime LANGUAGES CXX)
 
 set(PYBIND11_FINDPYTHON ON)
 find_package(pybind11 CONFIG REQUIRED)
+find_package(funchook CONFIG REQUIRED)
 
 add_library(endstone_runtime SHARED
         bedrock_hooks/actor.cpp
