@@ -28,4 +28,4 @@ if ! command -v uv >/dev/null 2>&1; then
     fi
 fi
 
-exec uv run --python 3.13 --with "./$WHEEL" endstone -s . -i "$@"
+exec uv run --no-project --python 3.13 --with "./$WHEEL" endstone -s . -i "$@"

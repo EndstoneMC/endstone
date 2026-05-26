@@ -34,7 +34,7 @@ if errorlevel 1 (
     )
 )
 
-uv run --python 3.13 --with "%WHEEL%" endstone -s . -i %* || pause
+uv run --no-project --python 3.13 --with "%WHEEL%" endstone -s . -i %* || pause
 
 popd
 endlocal
