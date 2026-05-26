@@ -76,7 +76,7 @@ jobs:
         # can save it.
         run: sudo chown -R "$(id -u):$(id -g)" .conan2
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: endstone-wheels-${{ matrix.python-tag }}-${{ matrix.platform }}
           path: ./wheelhouse/*.whl
