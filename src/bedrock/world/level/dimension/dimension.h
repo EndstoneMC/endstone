@@ -45,14 +45,14 @@ class IDimension {
 public:
     virtual ~IDimension() = 0;
     [[nodiscard]] virtual bool isNaturalDimension() const = 0;
-    virtual AutomaticID<Dimension, int> getDimensionId() const = 0;
+    virtual DimensionType getDimensionId() const = 0;
     virtual void sendPacketForPosition(BlockPos const &, Packet const &, Player const *) = 0;
     virtual void sendPacketForEntity(Actor const &actor, Packet const &packet, Player const *except) = 0;
     virtual void flushLevelChunkGarbageCollector() = 0;
     virtual void initializeWithLevelStorageManagerConnector(ILevelStorageManagerConnector &) = 0;
     virtual BiomeRegistry &getBiomeRegistry() = 0;
     [[nodiscard]] virtual BiomeRegistry const &getBiomeRegistry() const = 0;
-    virtual Vec3 translatePosAcrossDimension(Vec3 const &, AutomaticID<Dimension, int>) = 0;
+    virtual Vec3 translatePosAcrossDimension(Vec3 const &, DimensionType) = 0;
     virtual void forEachPlayer(std::function<bool(Player &)>) = 0;
     virtual Actor *fetchEntity(ActorUniqueID, bool) = 0;
     [[nodiscard]] virtual BlockSource &getBlockSourceFromMainChunkSource() const = 0;
@@ -96,6 +96,7 @@ public:
     CircuitSystem &getCircuitSystem();
     [[nodiscard]] bool isRedstoneTick() const;
     [[nodiscard]] const std::string &getName() const;
+    [[nodiscard]] const std::string &getTypeId() const;
     WeakRef<Dimension> getWeakRef();
     [[nodiscard]] endstone::Dimension &getEndstoneDimension() const;  // Endstone
 
@@ -117,13 +118,14 @@ private:
     std::shared_ptr<LevelChunkMetaData> target_metadata_;
     std::unique_ptr<RuntimeLightingManager> runtime_lighting_manager_;
     std::string name_;
+    std::string type_id_;
     DimensionType id_;
     const DimensionIdType registry_id_;
-    bool ultra_warm_;  // +390
+    bool ultra_warm_;  // +422
     bool has_ceiling_;
     bool has_skylight_;
     Brightness sky_darken_;
-    std::unique_ptr<BlockEventDispatcher> dispatcher_;  // +400
+    std::unique_ptr<BlockEventDispatcher> dispatcher_;  // +432
     std::unique_ptr<TaskGroup> task_group_;
     std::unique_ptr<TaskGroup> chunk_gen_task_group_;
     std::unique_ptr<PostprocessingManager> post_processing_manager_;

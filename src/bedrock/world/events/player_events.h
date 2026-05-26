@@ -92,7 +92,15 @@ struct PlayerOpenContainerEvent {
     const BlockPos block_pos;
     ActorUniqueID entity_unique_id;
 };
+struct PlayerOpenedContainerEvent {
+    WeakEntityRef player;
+    ContainerType container_type;
+    std::variant<BlockPos, ActorUniqueID> owner;
+};
 struct PlayerCloseContainerEvent {};
+struct PlayerClosedContainerEvent {
+    WeakEntityRef player;
+};
 struct PlayerHasInvalidContainerEvent {};
 struct PlayerShootArrowEvent {
     WeakRef<EntityContext> player;
@@ -259,8 +267,9 @@ struct PlayerGameplayEvent<void>
           PlayerSkinLoadedClientEvent, PlayerAddEvent, PlayerAddExpEvent, PlayerAddLevelEvent, PlayerArmorExchangeEvent,
           PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent, PlayerEatFoodEvent, PlayerDamageEvent,
           PlayerDisconnectEvent, PlayerFormCloseEvent, PlayerFormResponseEvent, PlayerDataDrivenScreenClosedEvent,
-          PlayerInputModeChangeEvent, PlayerInitialSpawnEvent, PlayerOpenContainerEvent, PlayerCloseContainerEvent,
-          PlayerHasInvalidContainerEvent, PlayerShootArrowEvent, PlayerSwingStartEvent, PlayerRespawnEvent,
+          PlayerInputModeChangeEvent, PlayerInitialSpawnEvent, PlayerOpenContainerEvent, PlayerOpenedContainerEvent,
+          PlayerCloseContainerEvent, PlayerClosedContainerEvent, PlayerHasInvalidContainerEvent,
+          PlayerShootArrowEvent, PlayerSwingStartEvent, PlayerRespawnEvent,
           PlayerSleepStateChangeEvent, PlayerStopLoadingEvent, PlayerUpdateInteractionEvent,
           PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent, PlayerDimensionChangeAfterEvent,
           PlayerInteractWithEntityAfterEvent, PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent,

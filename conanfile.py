@@ -1,3 +1,5 @@
+import os
+
 from conan import ConanFile
 from conan.errors import ConanInvalidConfiguration
 from conan.tools.build import check_min_cppstd
@@ -7,16 +9,13 @@ from conan.tools.cmake import CMakeDeps, CMakeToolchain, cmake_layout
 class EndstoneRecipe(ConanFile):
     name = "endstone"
     package_type = "library"
-
-    # Optional metadata
     license = "Apache-2.0"
     url = "https://github.com/EndstoneMC/endstone"
     homepage = "https://github.com/EndstoneMC/endstone"
     description = "Endstone offers a plugin API for Bedrock Dedicated Servers, supporting both Python and C++."
     topics = ("plugin", "python", "c++", "minecraft", "bedrock")
 
-    # Binary configuration
-    settings = "os", "compiler", "build_type", "arch"
+    settings = "os", "arch", "compiler", "build_type"
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {
         "shared": False,
@@ -32,28 +31,19 @@ class EndstoneRecipe(ConanFile):
         return 20
 
     @property
-    def _is_dev_build(self):
-        return "dev" in self.version
-
-    @property
     def _with_devtools(self):
         return self.settings.os == "Windows"
 
-    def validate(self):
-        check_min_cppstd(self, self._min_cppstd)
+    def config_options(self):
+        if self.settings.os == "Windows":
+            del self.options.fPIC
 
-        if self.settings.arch != "x86_64":
-            raise ConanInvalidConfiguration(
-                f"{self.ref} can only be built on x86_64. {self.settings.arch} is not supported."
-            )
+    def configure(self):
+        if self.options.shared:
+            self.options.rm_safe("fPIC")
 
-        if self.settings.os not in ["Windows", "Linux"]:
-            raise ConanInvalidConfiguration(
-                f"{self.ref} can only be built on Windows or Linux. {self.settings.os} is not supported."
-            )
-
-        if self.settings.os == "Linux" and not self.settings.compiler.libcxx == "libc++":
-            raise ConanInvalidConfiguration(f"{self.ref} requires C++ standard libraries libc++ on Linux.")
+    def layout(self):
+        cmake_layout(self)
 
     def requirements(self):
         self.requires("base64/0.5.2")
@@ -64,44 +54,52 @@ class EndstoneRecipe(ConanFile):
         self.requires("entt/3.15.0")
         self.requires("expected-lite/0.8.0")
         self.requires("fmt/11.2.0", transitive_headers=True, transitive_libs=True)
+        self.requires("funchook/1.1.3")
         self.requires("glm/1.0.1")
         self.requires("magic_enum/0.9.7")
         self.requires("ms-gsl/4.2.0")
         self.requires("nlohmann_json/3.12.0")
         self.requires("pybind11/3.0.1")
         self.requires("replxx/0.0.4")
-        self.requires("sentry-native/0.7.17")
+        self.requires("sentry-native/0.14.0")
         self.requires("spdlog/1.15.3")
         self.requires("tomlplusplus/3.3.0")
         self.requires("zstr/1.0.7")
 
-        if self.settings.os == "Linux":
+        if self.settings.os == "Windows":
+            self.requires("detours/cci.20220630")
+        elif self.settings.os == "Linux":
             self.requires("libelf/0.8.13")
 
         if self._with_devtools:
             self.requires("glfw/3.4")
             self.requires("imgui/1.91.8-docking")
 
+    def build_requirements(self):
         self.test_requires("gtest/1.16.0")
 
-    def config_options(self):
-        if self.settings.os == "Windows":
-            self.options.rm_safe("fPIC")
+    def validate(self):
+        check_min_cppstd(self, self._min_cppstd)
 
-        # if self.settings.os in ("FreeBSD", "Linux"):
-        #     self.options["sentry-native/*"].backend = "inproc"
+        if self.settings.arch != "x86_64":
+            raise ConanInvalidConfiguration(
+                f"{self.ref} can only be built on x86_64. {self.settings.arch} is not supported."
+            )
 
-    def configure(self):
-        if self.options.shared:
-            self.options.rm_safe("fPIC")
+        if self.settings.os not in ("Windows", "Linux"):
+            raise ConanInvalidConfiguration(
+                f"{self.ref} can only be built on Windows or Linux. {self.settings.os} is not supported."
+            )
 
-    def layout(self):
-        cmake_layout(self)
+        if self.settings.os == "Linux" and self.settings.compiler.libcxx != "libc++":
+            raise ConanInvalidConfiguration(f"{self.ref} requires libc++ on Linux.")
 
     def generate(self):
-        deps = CMakeDeps(self)
-        deps.generate()
+        CMakeDeps(self).generate()
+
         tc = CMakeToolchain(self)
         if self._with_devtools:
             tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = True
+        sentry_bin = os.path.join(self.dependencies["sentry-native"].package_folder, "bin")
+        tc.variables["SENTRY_NATIVE_BIN_DIR"] = sentry_bin.replace("\\", "/")
         tc.generate()

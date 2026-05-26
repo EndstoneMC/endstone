@@ -25,7 +25,7 @@
 
 namespace py = pybind11;
 
-DedicatedServer::StartResult DedicatedServer::start(const std::string &session_id,
+DedicatedServer::ServerExitCode DedicatedServer::start(const std::string &session_id,
                                                     const Bedrock::ActivationArguments &args)
 {
     // Save the current stdin, as it will be altered after the initialisation of python interpreter

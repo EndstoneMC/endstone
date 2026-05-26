@@ -17,7 +17,7 @@
 #include <cstdint>
 
 enum class CurrentCmdVersion : std::int32_t {
-    Latest = 45
+    Latest = 46
 };
 
 struct CommandVersion {

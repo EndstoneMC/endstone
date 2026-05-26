@@ -66,13 +66,7 @@ int main(int argc, char **argv)
 
     try {
         auto table = toml::parse_file(input_file);
-#ifdef _WIN32
-        return generate_include_file(output_file, *table["windows"].as_table());
-#elif __linux__
-        return generate_include_file(output_file, *table["linux"].as_table());
-#else
-#error Unsupported platform
-#endif
+        return generate_include_file(output_file, *table["symbols"].as_table());
     }
     catch (const toml::parse_error &err) {
         std::cerr << "Failed to parse TOML file: " << err.description() << '\n';

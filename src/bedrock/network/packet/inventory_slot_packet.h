@@ -14,20 +14,33 @@
 
 #pragma once
 
-#include <string>
-#include <vector>
+#include <cstdint>
+#include <optional>
 
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/cerealize/core/packet_serialization_helper.h"
+#include "bedrock/network/packet/serialize/serialized_packet.h"
 #include "bedrock/world/container_id.h"
 #include "bedrock/world/containers/container_enum.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/item/network_item_stack_descriptor.h"
 
+struct InventorySlotPacketPayload {
+    InventorySlotPacketPayload();
+    InventorySlotPacketPayload(ContainerID id, std::uint32_t slot, const ItemStack &item);
+    InventorySlotPacketPayload(ContainerID id, std::uint32_t slot, const ItemStack &item,
+                               const FullContainerName &full_container_name, const ItemStack &storage_item);
+    ContainerID inventory_id;
+    std::uint32_t slot;
+    std::optional<FullContainerName> full_container_name;
+    std::optional<NetworkItemStackDescriptor> storage_item;
+    NetworkItemStackDescriptor item;
+};
+
 class InventorySlotPacket : public Packet {
 public:
-    ContainerID inventory_id;
-    FullContainerName full_container_name;
-    NetworkItemStackDescriptor storage_item;
-    uint32_t slot;
-    NetworkItemStackDescriptor item;
+    InventorySlotPacketPayload payload;
+    SerializationMode serialization_mode = SerializationMode::CerealOnly;
+    InventorySlotPacket();
+    InventorySlotPacket(InventorySlotPacketPayload payload);
 };

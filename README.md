@@ -11,11 +11,12 @@
 </p>
 
 [![CI](https://github.com/EndstoneMC/endstone/actions/workflows/ci.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/ci.yml)
-[![Minecraft](https://img.shields.io/badge/minecraft-v26.12_(Bedrock)-black)](https://feedback.minecraft.net/hc/en-us/sections/360001186971-Release-Changelogs)
+[![Minecraft](https://img.shields.io/badge/minecraft-v26.20_(Bedrock)-black)](https://feedback.minecraft.net/hc/en-us/sections/360001186971-Release-Changelogs)
 [![PyPI - Version](https://img.shields.io/pypi/v/endstone)](https://pypi.org/project/endstone)
 [![Python](https://img.shields.io/pypi/pyversions/endstone?logo=python&logoColor=white)](https://www.python.org/)
 [![GitHub License](https://img.shields.io/github/license/endstonemc/endstone)](LICENSE)
 [![Discord](https://img.shields.io/discord/1230982180742631457?logo=discord&logoColor=white&color=5865F2)](https://discord.gg/xxgPuc2XN9)
+[![Hosted By: Cloudsmith](https://img.shields.io/badge/OSS%20hosting%20by-cloudsmith-blue?logo=cloudsmith&logoColor=white)](https://cloudsmith.io/~endstone/repos/conan/packages/)
 
 </div>
 
@@ -125,10 +126,12 @@ We welcome contributions from the community! Whether it's bug reports, feature r
 
 Endstone is licensed under the [Apache-2.0 license](LICENSE).
 
-<div align="center">
+## Acknowledgements
 
-**Sponsored by [Bisect Hosting](https://bisecthosting.com/endstone)**
+Endstone is proudly sponsored by [Bisect Hosting](https://bisecthosting.com/endstone), which offers managed Minecraft server hosting.
 
 [![Bisect Hosting](docs/assets/bisecthosting-banner.webp)](https://bisecthosting.com/endstone)
 
-</div>
+Package repository hosting is graciously provided by [Cloudsmith](https://cloudsmith.com), which offers free package management for open-source projects.
+
+[![Hosted By: Cloudsmith](https://img.shields.io/badge/OSS%20hosting%20by-cloudsmith-blue?logo=cloudsmith)](https://cloudsmith.com)

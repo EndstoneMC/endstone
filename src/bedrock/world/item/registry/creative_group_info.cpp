@@ -24,7 +24,7 @@ const ItemInstance &CreativeGroupInfo::getIcon() const
     return icon_;
 }
 
-CreativeItemCategory CreativeGroupInfo::getCreativeCategory() const
+SharedTypes::CreativeItemCategory CreativeGroupInfo::getCreativeCategory() const
 {
     return category_;
 }

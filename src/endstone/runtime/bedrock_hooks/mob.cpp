@@ -28,12 +28,10 @@
 #include "endstone/event/actor/actor_knockback_event.h"
 #include "endstone/runtime/hook.h"
 
-void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizontal_force, float vertical_force,
-                    float height_cap)
+void Mob::knockback(Actor *source, int damage, float dx, float dz, const KnockbackParameters &parameters)
 {
     const auto before = getPosDelta();
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::knockback, this, source, damage, dx, dz, horizontal_force, vertical_force,
-                                height_cap);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Mob::knockback, this, source, damage, dx, dz, parameters);
     const auto after = getPosDelta();
     auto diff = after - before;
 

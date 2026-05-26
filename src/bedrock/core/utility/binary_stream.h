@@ -65,6 +65,7 @@ public:
     ~BinaryStream() override = default;
     virtual void writeBool(bool value, char const *doc_field_name, char const *doc_field_notes);
     virtual void writeByte(uint8_t value, char const *doc_field_name, char const *doc_field_notes);
+    virtual void writeSignedByte(int8_t value, char const *doc_field_name, char const *doc_field_notes);
     virtual void writeUnsignedShort(uint16_t value, char const *doc_field_name, char const *doc_field_notes);
     virtual void writeSignedShort(int16_t value, char const *doc_field_name, char const *doc_field_notes);
     virtual void writeUnsignedInt(uint32_t value, char const *doc_field_name, char const *doc_field_notes);

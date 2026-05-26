@@ -291,14 +291,6 @@ void dumpRecipes(VanillaData &data, ::Level &level)
             data.recipes.shaped.push_back(recipe);
             break;
         }
-        case CraftingDataEntryType::FurnaceRecipe: {
-            data.recipes.furnace.push_back(recipe);
-            break;
-        }
-        case CraftingDataEntryType::FurnaceAuxRecipe: {
-            data.recipes.furnace_aux.push_back(recipe);
-            break;
-        }
         case CraftingDataEntryType::MultiRecipe: {
             data.recipes.multi.push_back(recipe);
             break;

@@ -27,7 +27,7 @@
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/core/string/string_hash.h"
-#include "bedrock/core/utility/automatic_id.h"
+#include "bedrock/util/new_type.h"
 #include "bedrock/entity/components/aabb_shape_component.h"
 #include "bedrock/entity/components/actor_rotation_component.h"
 #include "bedrock/entity/components/actor_walk_animation_component.h"
@@ -76,6 +76,8 @@ struct BuiltInActorComponents {
     gsl::not_null<ActorRotationComponent *> actor_rotation_component;
     gsl::not_null<ActorWalkAnimationComponent *> walk_animation_component;
 };
+
+struct ActorVersion : NewType<unsigned int> {};
 
 class Actor {
 public:
@@ -413,7 +415,6 @@ public:
     bool always_fire_immune;
     bool inherit_rotation_when_riding;
     bool forced_loading;
-    bool force_send_motion_packet;
     bool highlighted_this_frame;
     bool initialized;
     bool processed_on_chunk_discard;
@@ -426,6 +427,7 @@ private:
     ILevel *level_;
     HashedString actor_renderer_id_;
     ActorCategory categories_;
+    ActorVersion version_;
     BuiltInActorComponents built_in_components_;
 
 protected:

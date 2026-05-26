@@ -21,7 +21,7 @@ bool Dimension::isBrightOutside() const
 
 std::string Dimension::getLocalizationKey() const
 {
-    return fmt::format("dimension.dimensionName{}", id_.runtime_id);
+    return fmt::format("dimension.dimensionName{}", id_.value);
 }
 
 Level &Dimension::getLevel() const

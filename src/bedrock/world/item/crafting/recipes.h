@@ -16,6 +16,7 @@
 
 #include <functional>
 #include <memory>
+#include <unordered_set>
 
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/resources/resource_pack_manager.h"
@@ -36,13 +37,6 @@ public:
     static constexpr int RECIPE_TOP_PRIORITY = 0;
     static constexpr int DEFAULT_PRIORITY = 50;
 
-    struct FurnaceRecipeKey {
-        FurnaceRecipeKey(int id, const HashedString &tag) : id(id), tag(tag) {}
-        bool operator<(const FurnaceRecipeKey &) const;
-        int id;
-        HashedString tag;
-    };
-
     Recipes();
     Recipes(Level *);
     [[nodiscard]] ItemInstance getFurnaceRecipeResult(const ItemStackBase &, const HashedString &) const;
@@ -51,13 +45,14 @@ private:
     ResourcePackManager *resource_pack_manager_;
     ExternalRecipeStore external_recipe_store_;
     std::map<HashedString, std::map<std::string, std::shared_ptr<Recipe>>> recipes_;
-    std::map<FurnaceRecipeKey, ItemInstance> furnace_recipes_;
     bool initializing_;
     std::map<ItemInstance, std::unordered_map<std::string, Recipe *>, SortItemInstanceIdAux> recipes_by_output_;
     std::unordered_map<TypedServerNetId<RecipeNetIdTag, std::uint32_t, 0U>, Recipe *> recipes_by_net_id_;
     std::unordered_map<std::uint64_t, std::unordered_map<std::uint64_t, std::shared_ptr<std::vector<ItemInstance>>>>
         recipes_by_input_;
     std::vector<gsl::not_null<Recipe *>> unlockable_recipes_;
+    std::unordered_set<std::string> unique_unlockable_recipe_ids_;
+    std::unordered_map<int, std::unordered_map<int, ItemInstance>> furnace_results_;
     RecipeListenerList listeners_;
     Level *level_;
 };

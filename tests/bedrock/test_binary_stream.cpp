@@ -59,6 +59,9 @@ TEST(ReadOnlyBinaryStreamTest, GetByteReadsCorrectly)
     EXPECT_TRUE(result_c.ignoreError());
     EXPECT_EQ(result_c.discardError().value(), 0x43);
     EXPECT_EQ(stream.getReadPointer(), 3U);
+
+    // The whole buffer should have been consumed.
+    EXPECT_EQ(stream.getUnreadLength(), 0U);
 }
 
 TEST(ReadOnlyBinaryStreamTest, GetUnsignedVarIntSingleByte)
@@ -73,6 +76,9 @@ TEST(ReadOnlyBinaryStreamTest, GetUnsignedVarIntSingleByte)
     auto result_b = stream.getUnsignedVarInt();
     EXPECT_TRUE(result_b.ignoreError());
     EXPECT_EQ(result_b.discardError().value(), 127U);
+
+    // The whole buffer should have been consumed.
+    EXPECT_EQ(stream.getUnreadLength(), 0U);
 }
 
 TEST(ReadOnlyBinaryStreamTest, GetUnsignedVarIntMultiByte)
@@ -87,6 +93,9 @@ TEST(ReadOnlyBinaryStreamTest, GetUnsignedVarIntMultiByte)
     auto result_b = stream.getUnsignedVarInt();
     EXPECT_TRUE(result_b.ignoreError());
     EXPECT_EQ(result_b.discardError().value(), 65535U);
+
+    // The whole buffer should have been consumed.
+    EXPECT_EQ(stream.getUnreadLength(), 0U);
 }
 
 TEST(ReadOnlyBinaryStreamTest, ReadOverflowProducesError)

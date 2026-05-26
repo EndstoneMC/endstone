@@ -30,8 +30,9 @@ enum class AttributeBuffType : int {
     FatalPoison = 8,
     SelfHeal = 9,
     SelfDestruct = 10,
-    Unknown = 11,
-    None = 12,
+    TotemOfUndying = 11,
+    Unknown = 12,
+    None = 13,
 };
 
 class AttributeBuff {

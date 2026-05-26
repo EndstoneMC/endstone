@@ -31,12 +31,12 @@ EndstoneDimension::EndstoneDimension(WeakRef<::Dimension> dimension, EndstoneLev
 
 DimensionId EndstoneDimension::getId() const
 {
-    switch (getHandle().getDimensionId().runtime_id) {
-    case VanillaDimensions::Overworld.runtime_id:
+    switch (getHandle().getDimensionId().value) {
+    case VanillaDimensions::Overworld.value:
         return Dimension::Overworld;
-    case VanillaDimensions::Nether.runtime_id:
+    case VanillaDimensions::Nether.value:
         return Dimension::Nether;
-    case VanillaDimensions::TheEnd.runtime_id:
+    case VanillaDimensions::TheEnd.value:
         return Dimension::TheEnd;
     default:
         // TODO(fixme): return actual id after 1.26.20 update with custom dimension

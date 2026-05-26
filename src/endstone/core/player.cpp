@@ -239,7 +239,7 @@ void EndstonePlayer::kick(std::string message) const
     auto *component = getHandle().tryGetComponent<UserEntityIdentifierComponent>();
     server_.getServer().getMinecraft()->getServerNetworkHandler()->disconnectClientWithMessage(
         component->getNetworkId(), component->getSubClientId(), Connection::DisconnectFailReason::Kicked, message,
-        std::nullopt, false);
+        std::nullopt);
 }
 
 bool EndstonePlayer::performCommand(std::string command) const
@@ -271,10 +271,11 @@ void EndstonePlayer::playSound(Location location, std::string sound, float volum
 {
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::PlaySound);
     const auto pk = std::static_pointer_cast<PlaySoundPacket>(packet);
-    pk->name = sound;
-    pk->pos = {static_cast<int>(location.getX()), static_cast<int>(location.getY()), static_cast<int>(location.getZ())};
-    pk->volume = volume;
-    pk->pitch = pitch;
+    pk->payload.name = sound;
+    pk->payload.pos = {static_cast<int>(location.getX()), static_cast<int>(location.getY()),
+                       static_cast<int>(location.getZ())};
+    pk->payload.volume = volume;
+    pk->payload.pitch = pitch;
     getHandle().sendNetworkPacket(*packet);
 }
 
@@ -482,7 +483,7 @@ void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
                                    std::optional<std::string> molang_variables_json) const
 {
     BinaryStream stream;
-    stream.writeByte(getHandle().getDimension().getDimensionId().runtime_id, "Dimension Id", nullptr);
+    stream.writeByte(getHandle().getDimension().getDimensionId().value, "Dimension Id", nullptr);
     stream.writeVarInt64(-1, "Actor Unique ID", nullptr);  // -1 = self
     stream.writeFloat(x, "X", nullptr);
     stream.writeFloat(y, "Y", nullptr);
@@ -596,11 +597,7 @@ void EndstonePlayer::sendForm(FormVariant form)
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ShowModalForm);
     std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
     pk->payload.form_id = ++form_ids_;
-    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) {
-                                           return FormCodec::toJson(arg);
-                                       }},
-                                       form)
-                                .dump();
+    pk->payload.form_json = std::visit(overloaded{[](auto &&arg) { return FormCodec::toJson(arg); }}, form).dump();
     forms_.emplace(pk->payload.form_id, std::move(form));
     getHandle().sendNetworkPacket(*packet);
 }
@@ -629,7 +626,7 @@ void EndstonePlayer::sendMap(MapView &map)
     pk.start_x_ = 0;
     pk.start_y_ = 0;
     pk.map_origin_ = view.map_.getOrigin();
-    pk.dimension_ = view.map_.getDimensionId().runtime_id;
+    pk.dimension_ = view.map_.getDimensionId().value;
     pk.width_ = MapConstants::MAP_SIZE;
     pk.height_ = MapConstants::MAP_SIZE;
     pk.type_ = ClientboundMapItemDataPacket::Type::TextureUpdate | ClientboundMapItemDataPacket::Type::DecorationUpdate;
@@ -649,7 +646,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
     case MinecraftPacketIds::PlayerEquipment: {
         auto &pk = static_cast<MobEquipmentPacket &>(packet);
         auto from_slot = this->inventory_->getHeldItemSlot();
-        auto to_slot = pk.selected_slot;
+        auto to_slot = pk.payload.selected_slot;
         if (from_slot == to_slot) {
             return true;
         }
@@ -859,16 +856,19 @@ void EndstonePlayer::doFirstSpawn()
 }
 
 void EndstonePlayer::initFromConnectionRequest(
-    std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request)
+    std::variant<std::reference_wrapper<const ::ConnectionRequest>,
+                 std::reference_wrapper<const ::SubClientConnectionRequest>>
+        request)
 {
     std::visit(
-        [&](auto &&req) {
-            if (auto locale = req->getLanguageCode(); !locale.empty()) {
+        [&](auto &&ref) {
+            const auto &req = ref.get();
+            if (auto locale = req.getLanguageCode(); !locale.empty()) {
                 locale_ = locale;
             }
 
             // https://github.com/GeyserMC/Geyser/blob/master/common/src/main/java/org/geysermc/floodgate/util/DeviceOs.java
-            auto platform = req->getDeviceOS();
+            auto platform = req.getDeviceOS();
             switch (platform) {
             case BuildPlatform::Google:
                 device_os_ = "Android";
@@ -900,12 +900,18 @@ void EndstonePlayer::initFromConnectionRequest(
                 break;
             }
 
-            if (auto device_id = req->getDeviceId(); !device_id.empty()) {
+            if (auto device_id = req.getDeviceId(); !device_id.empty()) {
                 device_id_ = device_id;
             }
 
-            if (auto game_version = req->getGameVersionString(); !game_version.empty()) {
-                game_version_ = game_version;
+            using ReqType = std::remove_cvref_t<decltype(req)>;
+            if constexpr (std::is_same_v<ReqType, ::ConnectionRequest>) {
+                if (auto game_version = req.getGameVersionString(); !game_version.empty()) {
+                    game_version_ = game_version;
+                }
+                else {
+                    game_version_ = server_.getMinecraftVersion();
+                }
             }
             else {
                 game_version_ = server_.getMinecraftVersion();

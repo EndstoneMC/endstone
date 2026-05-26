@@ -16,7 +16,6 @@
 
 #include <entt/entt.hpp>
 
-#include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
@@ -34,7 +33,7 @@ EndstoneLevel::EndstoneLevel(::Level &level) : server_(EndstoneServer::getInstan
     level.getOrCreateDimension(VanillaDimensions::Nether);
     level.getOrCreateDimension(VanillaDimensions::TheEnd);
     auto add_dimension = [this](::Dimension &dimension) {
-        dimensions_[dimension.getDimensionId().runtime_id] =
+        dimensions_[dimension.getDimensionId().value] =
             std::make_unique<EndstoneDimension>(dimension.getWeakRef(), *this);
     };
     level.forEachDimension([&](::Dimension &dimension) {
@@ -101,7 +100,7 @@ Dimension *EndstoneLevel::getDimension(DimensionId id) const
 
 Dimension *EndstoneLevel::getDimension(DimensionType type) const
 {
-    if (const auto it = dimensions_.find(type.runtime_id); it != dimensions_.end()) {
+    if (const auto it = dimensions_.find(type.value); it != dimensions_.end()) {
         return it->second.get();
     }
     return nullptr;

@@ -35,7 +35,7 @@ function(endstone_add_plugin target_name)
     target_link_libraries(${target_name} PRIVATE endstone::endstone)
     set_target_properties(${target_name} PROPERTIES PREFIX "endstone_")
 
-    if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    if (UNIX AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
         target_link_libraries(${target_name} PRIVATE -static-libgcc -static-libstdc++ libc++.a libc++abi.a)
     endif ()
 endfunction()

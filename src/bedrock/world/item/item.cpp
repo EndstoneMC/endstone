@@ -14,7 +14,6 @@
 
 #include "bedrock/world/item/item.h"
 
-#include "bedrock/server/commands/command_utils.h"
 #include "bedrock/world/level/block/block.h"
 
 const std::string Item::TAG_DAMAGE = "Damage";
@@ -94,7 +93,7 @@ const std::string &Item::getCreativeGroup() const
     return creative_group_;
 }
 
-CreativeItemCategory Item::getCreativeCategory() const
+SharedTypes::CreativeItemCategory Item::getCreativeCategory() const
 {
     return creative_category_;
 }

@@ -14,18 +14,9 @@
 
 #pragma once
 
-template <typename T, typename ValueType>
-class AutomaticID {
+#include <cstdint>
+
+class ServerSoundHandle {
 public:
-    ValueType runtime_id;
-
-    bool operator==(const AutomaticID &other) const
-    {
-        return runtime_id == other.runtime_id;
-    }
-
-    bool operator!=(const AutomaticID &other) const
-    {
-        return !(*this == other);
-    }
+    std::uint64_t value_;
 };

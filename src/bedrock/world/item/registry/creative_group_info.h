@@ -22,20 +22,21 @@
 
 class CreativeGroupInfo : public Bedrock::EnableNonOwnerReferences {
 public:
-    CreativeGroupInfo(CreativeItemRegistryPtr, CreativeItemCategory, const HashedString &, uint32_t,
+    CreativeGroupInfo(CreativeItemRegistryPtr, SharedTypes::CreativeItemCategory, const HashedString &, uint32_t,
                       const ItemInstance &);
-    CreativeGroupInfo(CreativeItemRegistryPtr, CreativeItemCategory, HashedString &&, uint32_t, ItemInstance &&);
-    CreativeGroupInfo(CreativeItemRegistryPtr, CreativeItemCategory, std::uint32_t);
+    CreativeGroupInfo(CreativeItemRegistryPtr, SharedTypes::CreativeItemCategory, HashedString &&, uint32_t,
+                      ItemInstance &&);
+    CreativeGroupInfo(CreativeItemRegistryPtr, SharedTypes::CreativeItemCategory, std::uint32_t);
 
     CreativeItemGroupCategoryPtr getGroupCategory();
     const std::string &getName() const;
     const ItemInstance &getIcon() const;
-    CreativeItemCategory getCreativeCategory() const;
+    SharedTypes::CreativeItemCategory getCreativeCategory() const;
     std::uint32_t getIndex() const;
     const std::vector<unsigned int> &getItems() const;
 
 private:
-    CreativeItemCategory category_;           // +24
+    SharedTypes::CreativeItemCategory category_;  // +24
     CreativeItemRegistryPtr registry_;        // +32
     HashedString name_;                       // +40
     ItemInstance icon_;                       // +80

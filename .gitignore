@@ -20,6 +20,8 @@ stubs/*
 .cache/*
 dist/*
 endstone/_version.py
+__pycache__/
+*.py[cod]
 conan_provider.cmake
 
 # Python virtual environment

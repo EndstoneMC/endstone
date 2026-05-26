@@ -14,7 +14,6 @@ find_package(Microsoft.GSL REQUIRED)
 
 add_library(bedrock STATIC
         shared_constants.cpp
-        certificates/certificate.cpp
         certificates/web_token.cpp
         config/player_capabilities.cpp
         core/file/path.cpp
@@ -40,6 +39,7 @@ add_library(bedrock STATIC
         nbt/list_tag.cpp
         nbt/nbt_io.cpp
         nbt/tag.cpp
+        network/base_connection_request.cpp
         network/connection_request.cpp
         network/network_identifier.cpp
         network/packet/types/world/actor/serialized_abilities_data.cpp
@@ -47,7 +47,6 @@ add_library(bedrock STATIC
         network/network_system.cpp
         network/packet.cpp
         network/server_network_handler.cpp
-        network/sub_client_connection_request.cpp
         platform/assigned_thread.cpp
         platform/uuid.cpp
         resources/base_game_version.cpp

@@ -63,6 +63,7 @@ public:
     [[nodiscard]] WeakPtr<Item> getItemPtr() const;
     [[nodiscard]] const Block *getBlock() const;
     [[nodiscard]] std::int16_t getId() const;
+    [[nodiscard]] int getIdAux() const;
     [[nodiscard]] bool isBlock() const;
     [[nodiscard]] bool isValid_DeprecatedSeeComment() const;
     explicit operator bool() const;

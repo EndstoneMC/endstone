@@ -15,12 +15,13 @@
 #pragma once
 
 #include "bedrock/forward.h"
+#include "bedrock/world/level/dimension/dimension_type.h"
 
 struct AddLimboActorHelper;
 
 class IPlayerDimensionTransferConnector {
 public:
-    virtual Bedrock::PubSub::Connector<void(AutomaticID<Dimension, int>)> &
+    virtual Bedrock::PubSub::Connector<void(DimensionType)> &
     getOnAnyPlayerChangeDimensionPreSuspendRegionConnector() = 0;
     virtual Bedrock::PubSub::Connector<void()> &getOnAnyPlayerChangeDimensionPrepareRegionCompleteConnector() = 0;
 };

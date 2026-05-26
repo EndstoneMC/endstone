@@ -18,6 +18,8 @@
 
 #include "bedrock/forward.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/hurt_effects_settings.h"
+#include "bedrock/world/actor/knockback_parameters.h"
 #include "bedrock/world/item/clock_sprite_calculator.h"
 #include "bedrock/world/item/compass_sprite_calculator.h"
 
@@ -41,13 +43,14 @@ public:
     Mob(Level &, EntityContext &);
 
     ~Mob() override = 0;
-    ENDSTONE_HOOK virtual void knockback(Actor *, int, float, float, float, float, float);
+    ENDSTONE_HOOK virtual void knockback(Actor *, int damage, float xd, float zd,
+                                         const KnockbackParameters &parameters);
     virtual void spawnAnim() = 0;
     virtual void setSprinting(bool) = 0;
     // virtual LevelSoundEvent getDeathSound() = 0;
     [[nodiscard]] virtual float getSpeed() const = 0;
     virtual void setSpeed(float) = 0;
-    virtual void hurtEffects(ActorDamageSource const &, float, bool, bool) = 0;
+    virtual void hurtEffects(ActorDamageSource const &, float, HurtEffectsSettings const &) = 0;
     virtual void damageCarriedItemOnAttack(Actor &target, float) = 0;
     virtual void aiStep() = 0;
     virtual void pushActors() = 0;

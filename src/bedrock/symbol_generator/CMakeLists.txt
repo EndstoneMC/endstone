@@ -7,10 +7,16 @@ add_executable(symbol_generator main.cpp)
 
 target_link_libraries(symbol_generator PRIVATE tomlplusplus::tomlplusplus)
 
+if (WIN32)
+    set(symbols_file ${CMAKE_CURRENT_SOURCE_DIR}/symbols/windows.toml)
+else ()
+    set(symbols_file ${CMAKE_CURRENT_SOURCE_DIR}/symbols/linux.toml)
+endif ()
+
 add_custom_target(generate_symbols ALL
-        COMMAND symbol_generator ${CMAKE_CURRENT_SOURCE_DIR}/symbols.toml ${CMAKE_BINARY_DIR}/generated/bedrock_symbols.generated.h
+        COMMAND symbol_generator ${symbols_file} ${CMAKE_BINARY_DIR}/generated/bedrock_symbols.generated.h
         DEPENDS symbol_generator
-        COMMENT "Generating bedrock_symbols.generated.h from symbols.toml"
+        COMMENT "Generating bedrock_symbols.generated.h from ${symbols_file}"
 )
 
 add_library(bedrock_symbols INTERFACE)

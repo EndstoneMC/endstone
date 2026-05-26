@@ -14,6 +14,8 @@
 
 #pragma once
 
+namespace SharedTypes {
+
 enum class CreativeItemCategory : int {
     All = 0,
     Construction = 1,
@@ -24,3 +26,5 @@ enum class CreativeItemCategory : int {
     Undefined = 6,
     NUM_CATEGORIES = 7,
 };
+
+}  // namespace SharedTypes

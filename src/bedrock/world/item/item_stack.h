@@ -37,6 +37,7 @@ public:
     void setNull(std::optional<std::string>) override;
     [[nodiscard]] std::string toString() const override;
     [[nodiscard]] std::string toDebugString() const override;
+    [[nodiscard]] bool isBundle() const;
 
     [[nodiscard]] const ItemStackNetIdVariant &getItemStackNetIdVariant() const;
 

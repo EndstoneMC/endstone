@@ -181,12 +181,13 @@ public:
         BlockStateValues = 0x100053,
         BlockStateArray = 0x100054,
         BlockStateArrayCont = 0x100055,
-        Command = 0x100056,
-        SlashCommand = 0x100057,
-        CodeBuilderArg = 0x100058,
-        CodeBuilderArgs = 0x100059,
-        CodeBuilderSelectParam = 0x10005a,
-        CodeBuilderSelector = 0x10005b,
+        ClockTimeMarkerName = 0x100056,
+        Command = 0x100057,
+        SlashCommand = 0x100058,
+        CodeBuilderArg = 0x100059,
+        CodeBuilderArgs = 0x10005a,
+        CodeBuilderSelectParam = 0x10005b,
+        CodeBuilderSelector = 0x10005c,
     };
 
     class Symbol {
@@ -283,6 +284,14 @@ public:
     struct Factorization;
     using ParseFunction = bool (CommandRegistry::*)(void *, const ParseToken &, const CommandOrigin &, int,
                                                     std::string &, std::vector<std::string> &) const;
+    struct ParamParseRule {
+        ParseFunction parse;
+        Symbol symbol;
+    };
+    template<typename T>
+    struct ParseRuleFor {
+        static const ParamParseRule instance;
+    }; 
     struct Enum {
         std::string name;
         Bedrock::typeid_t<CommandRegistry> type;
@@ -419,33 +428,35 @@ enum class CommandParameterOption : std::uint8_t {
 
 class CommandParameterData {
     using ParseFunction = CommandRegistry::ParseFunction;
+    using ParamParseRule = CommandRegistry::ParamParseRule;
     using CustomStorageGetFn = CommandRegistry::CustomStorageGetFn;
     using CustomStorageIsSetFn = CommandRegistry::CustomStorageIsSetFn;
 
 public:
-    CommandParameterData(Bedrock::typeid_t<CommandRegistry> type_index, ParseFunction parse, char const *name,
-                         CommandParameterDataType param_type, char const *enum_name_or_postfix,
+    CommandParameterData(Bedrock::typeid_t<CommandRegistry> type_index, const ParamParseRule *parse_rule,
+                         char const *name, CommandParameterDataType param_type, char const *enum_name_or_postfix,
                          char const *chained_subcommand, int offset, bool is_optional, int set_offset)
-        : type_index(type_index), parse(parse), name(name), enum_name_or_postfix(enum_name_or_postfix),
+        : type_index(type_index), parse_rule(parse_rule), name(name), enum_name_or_postfix(enum_name_or_postfix),
           chained_subcommand(chained_subcommand), param_type(param_type), offset(offset), set_offset(set_offset),
           is_optional(is_optional)
     {
     }
-    CommandParameterData(Bedrock::typeid_t<CommandRegistry>, ParseFunction, const char *, int, bool, CustomStorageGetFn,
-                         CustomStorageIsSetFn);
+    CommandParameterData(Bedrock::typeid_t<CommandRegistry>, const ParamParseRule *, const char *, int, bool,
+                         CustomStorageGetFn, CustomStorageIsSetFn);
 
     Bedrock::typeid_t<CommandRegistry> type_index;                 // +0
-    ParseFunction parse;                                           // +8
-    std::string name;                                              // +16
-    const char *enum_name_or_postfix;                              // +48
-    int enum_or_postfix_symbol{-1};                                // +56
-    const char *chained_subcommand;                                // +64
-    int chained_subcommand_symbol{-1};                             // +72
-    CommandParameterDataType param_type;                           // +76
-    int offset;                                                    // +80
-    int set_offset;                                                // +84
-    bool is_optional;                                              // +88
-    CommandParameterOption options{CommandParameterOption::None};  // +89
+    const ParamParseRule *parse_rule;                              // +8
+    ParseFunction parse_override{nullptr};                         // +16
+    std::string name;                                              // +24
+    const char *enum_name_or_postfix;                              // +56
+    int enum_or_postfix_symbol{-1};                                // +64
+    const char *chained_subcommand;                                // +72
+    int chained_subcommand_symbol{-1};                             // +80
+    CommandParameterDataType param_type;                           // +84
+    int offset;                                                    // +88
+    int set_offset;                                                // +92
+    bool is_optional;                                              // +96
+    CommandParameterOption options{CommandParameterOption::None};  // +97
     CustomStorageGetFn value_get_fn{nullptr};
     CustomStorageIsSetFn value_is_set_fn{nullptr};
 };

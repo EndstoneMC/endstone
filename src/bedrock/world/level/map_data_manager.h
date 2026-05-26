@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
 #include "bedrock/world/level/dimension_manager.h"
 #include "bedrock/world/level/gameplay_user_manager_connector.h"
 #include "bedrock/world/level/map_data_manager_options.h"
@@ -27,8 +28,8 @@ public:
     virtual ~MapDataManager() = default;
     virtual void registerOnGameplayUserAddedSubscription(IGameplayUserManagerConnector &);
     void registerOnSaveLevelDataSubscription(ILevelStorageManagerConnector &level_storage_manager_connector);
-    MapItemSavedData *getMapSavedData(const ActorUniqueID uuid);
-    const size_t getMapDataMapSize() const;
+    ENDSTONE_HOOK_LINUX MapItemSavedData *getMapSavedData(const ActorUniqueID uuid);
+    [[nodiscard]] const size_t getMapDataMapSize() const;
     MapItemSavedData &createMapSavedData(const ActorUniqueID &uuid, const BlockPos &origin, DimensionType dimension,
                                          int return_scale_level);
     MapItemSavedData &createMapSavedData(const std::vector<ActorUniqueID> &map_ids, const BlockPos &origin,
@@ -47,7 +48,7 @@ public:
 
 protected:
     virtual void _copyAndLockMap(const ActorUniqueID original_map_uuid, const ActorUniqueID new_map_uuid);
-    ENDSTONE_HOOK MapItemSavedData *_loadMapData(const ActorUniqueID &uuid);
+    ENDSTONE_HOOK_WIN32 MapItemSavedData *_loadMapData(const ActorUniqueID &uuid);
     void _onSaveLevelData(LevelStorage &level_storage);
     DimensionManager &dimension_manager_;
     LevelStorage *level_storage_;

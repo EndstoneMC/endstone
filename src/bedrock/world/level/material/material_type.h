@@ -14,7 +14,9 @@
 
 #pragma once
 
-enum class MaterialType : unsigned int {
+#include <cstdint>
+
+enum class MaterialType : std::uint8_t {
     Air = 0,
     Dirt = 1,
     Wood = 2,
@@ -41,4 +43,5 @@ enum class MaterialType : unsigned int {
     Solid = 23,
     NonSolid = 24,
     Any = 25,
+    _Size = 26,
 };

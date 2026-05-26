@@ -14,19 +14,28 @@
 
 #include "bedrock/world/item/crafting/recipes.h"
 
+#include "bedrock/world/item/item.h"
+
 ItemInstance Recipes::getFurnaceRecipeResult(const ItemStackBase &item, const HashedString &tag) const
 {
-    if (!item || furnace_recipes_.empty()) {
+    if (!item) {
         return ItemInstance();
     }
 
-    for (const auto &[key, value] : furnace_recipes_) {
-        auto id = key.id >> 16;
-        auto aux = static_cast<std::uint16_t>(key.id);
-        if (id == item.getId() && key.tag == tag &&
-            (aux == ItemDescriptor::ANY_AUX_VALUE || aux == item.getAuxValue())) {
-            return value;
-        }
+    const auto outer = furnace_results_.find(static_cast<int>(tag.getHash()));
+    if (outer == furnace_results_.end()) {
+        return ItemInstance();
+    }
+    const auto &results = outer->second;
+
+    if (const auto exact = results.find(item.getIdAux()); exact != results.end()) {
+        return exact->second;
+    }
+
+    const auto any_id_aux =
+        item.getItem()->buildIdAux(static_cast<std::int16_t>(ItemDescriptor::ANY_AUX_VALUE), item.getUserData());
+    if (const auto any = results.find(any_id_aux); any != results.end()) {
+        return any->second;
     }
 
     return ItemInstance();

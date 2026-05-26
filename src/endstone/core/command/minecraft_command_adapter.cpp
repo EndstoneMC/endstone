@@ -146,3 +146,7 @@ bool CommandRegistry::parse<endstone::core::MinecraftCommandAdapter>(void *stora
     }
     return true;
 }
+
+template <>
+const CommandRegistry::ParamParseRule CommandRegistry::ParseRuleFor<endstone::core::MinecraftCommandAdapter>::instance{
+    &CommandRegistry::parse<endstone::core::MinecraftCommandAdapter>, {}};

@@ -12,20 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/certificates/certificate.h"
+#pragma once
 
-Json::Value Certificate::getExtraData(const std::string &key, const Json::Value &default_value) const
-{
-    const auto extra_data = unverified_certificate_.raw_token_.getData().get("extraData", {});
-    return extra_data.get(key, default_value);
-}
-
-bool Certificate::isValid() const
-{
-    return is_valid_;
-}
-
-bool Certificate::isSelfSigned() const
-{
-    return is_self_signed_;
-}
+struct KnockbackParameters {
+    float horizontal_power;
+    float vertical_power;
+    float vertical_velocity_cap;
+    float scale_previous_velocity;
+    bool scale_with_damage;
+};

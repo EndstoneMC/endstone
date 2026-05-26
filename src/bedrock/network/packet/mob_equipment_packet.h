@@ -14,32 +14,35 @@
 
 #pragma once
 
-#include <string>
-
 #include "bedrock/network/packet.h"
-#include "bedrock/network/packet/inventory_transaction_packet.h"
+#include "bedrock/world/actor/actor_runtime_id.h"
+#include "bedrock/world/container_id.h"
+#include "bedrock/world/item/item_stack.h"
+#include "bedrock/world/item/network_item_stack_descriptor.h"
 
-class MobEquipmentPacket : public InventoryPacket {
-public:
+struct MobEquipmentPacketPayload {
     static constexpr bool SHARE_WITH_HANDLER = true;
 
-    MobEquipmentPacket();
-    MobEquipmentPacket(ActorRuntimeID, const ItemStack &, int, int, ContainerID);
-    MobEquipmentPacket(ActorRuntimeID, const NetworkItemStackDescriptor &, int, int, ContainerID);
-
-    [[nodiscard]] MinecraftPacketIds getId() const override;
-    [[nodiscard]] std::string_view getName() const override;
-    void handle(ServerPlayer &, BlockPalette &, const MoveInputComponent &, ActorRotationComponent &,
-                bool) const override;
-    [[nodiscard]] const ComplexInventoryTransaction *getComplexInventoryTransaction() const override;
-    void write(BinaryStream &) const override;
+    MobEquipmentPacketPayload();
+    MobEquipmentPacketPayload(ActorRuntimeID runtime_id, const ItemStack &item, int slot, int selected_slot,
+                              ContainerID container_id);
+    MobEquipmentPacketPayload(ActorRuntimeID runtime_id, const NetworkItemStackDescriptor &item, int slot,
+                              int selected_slot, ContainerID container_id);
 
     ActorRuntimeID runtime_id;
     NetworkItemStackDescriptor item;
     int slot;
     int selected_slot;
     ContainerID container_id;
-    char slot_byte;
-    char selected_slot_byte;
-    char container_id_byte;
+};
+
+class MobEquipmentPacket : public Packet {
+public:
+    static constexpr bool SHARE_WITH_HANDLER = true;
+
+    MobEquipmentPacket();
+    MobEquipmentPacket(MobEquipmentPacketPayload payload);
+
+    MobEquipmentPacketPayload payload;
+    SerializationMode serialization_mode;
 };
