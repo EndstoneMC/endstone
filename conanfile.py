@@ -76,6 +76,9 @@ class EndstoneRecipe(ConanFile):
         self.requires("tomlplusplus/3.3.0")
         self.requires("zstr/1.0.7")
 
+        if self.settings.os == "Windows":
+            self.requires("detours/cci.20220630")
+
         if self.settings.os == "Linux":
             self.requires("libelf/0.8.13")
 

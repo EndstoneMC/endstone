@@ -33,8 +33,9 @@ target_link_libraries(_python PRIVATE endstone::endstone pybind11::module)
 target_compile_definitions(_python PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
 
 if (WIN32)
+    find_package(detours CONFIG REQUIRED)
     pybind11_add_module(_detours MODULE _detours.cpp)
-    target_link_libraries(_detours PRIVATE detours)
+    target_link_libraries(_detours PRIVATE detours::detours)
 endif ()
 
 if (MSVC)
