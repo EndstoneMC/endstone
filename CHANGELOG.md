@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **BREAKING**: Portable bundles now ship for both Windows (`endstone-win_amd64-portable.zip`) and Linux (`endstone-manylinux_x86_64-portable.tar.gz`), and use [uv](https://docs.astral.sh/uv/) to provision Python on demand instead of bundling a Python interpreter. The included `start.cmd` / `start.sh` installs uv on first run if it isn't already on `PATH`, then launches the server via `uv run` against the bundled wheel. The old `bin/python/` directory is gone, and the start script now passes `-s . -i`, so the server folder is the directory containing the script (previously `./bedrock_server`). Move existing server data into the script's directory when upgrading.
+- **BREAKING**: Portable bundles now ship for both Windows (`endstone-win_amd64-portable.zip`) and Linux (`endstone-manylinux_x86_64-portable.tar.gz`), and use [uv](https://docs.astral.sh/uv/) to provision Python on demand instead of bundling a Python interpreter. The included `start.cmd` / `start.sh` installs uv on first run if it isn't already on `PATH`, then launches the server via `uv run` against the bundled wheel. The old `bin/python/` directory is gone; the server folder (`./bedrock_server/`) is unchanged.
 
 ## [0.11.4] - 2026-05-25
 
