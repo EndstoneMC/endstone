@@ -37,30 +37,25 @@ hooks into the BDS binary to expose a high-level Bukkit-like API for plugin deve
 
 ## Development Setup
 
-### 1. Install Dependencies
-
-First, install Conan and set up your profile:
+### 1. Install Conan
 
 ```bash
 pip install conan
-conan profile detect
 ```
 
-### 2. Install Project Dependencies with Conan
+The repo ships a Jinja-templated default profile at `.conan2/profiles/default` that auto-detects the host compiler and pins the right settings (clang-cl on Windows, clang/libc++ on Linux, Ninja generator). **Do not run `conan profile detect`** — it would overwrite this file.
 
-**Windows:**
+### 2. Install Project Dependencies
 
 ```shell
-conan install . --build=missing -s compiler.cppstd=20 -c tools.cmake.cmaketoolchain:generator=Ninja
+conan install . --build=missing
 ```
 
-**Linux:**
-
-```bash
-conan install . --build=missing -s compiler.cppstd=20 -s compiler.libcxx=libc++ -c tools.cmake.cmaketoolchain:generator=Ninja
-```
+> Windows: run from a Visual Studio Developer prompt with clang-cl/lld-link on PATH.
 
 ### 3. Activate Conan Build Environment
+
+Only needed for the manual `cmake --preset` path below; `pip install`-based builds don't need it.
 
 **Windows (cmd):**
 
@@ -91,8 +86,18 @@ cmake --build --preset conan-release
 
 ### Install from Source (builds Python wheel)
 
+The PEP 517 backend (`conan-py-build`) runs Conan internally, so no separate `conan install` is required:
+
 ```bash
 pip install -U .
+# or with uv:
+uv pip install -U .
+```
+
+To keep the C++ build tree persistent across reinstalls (much faster after the first build), pass a build dir via `config_settings`:
+
+```bash
+pip install -U . -C build-dir=./build
 ```
 
 ## Testing

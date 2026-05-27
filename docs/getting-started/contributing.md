@@ -32,34 +32,30 @@ cd endstone
 ### Install the package manager (conan)
 
 The dependencies needed for the development of **Endstone** are provided by [Conan package manager](https://docs.conan.io/2) (`>=2.0`). To install
-the package manager, run the following commands in your Python environment.
+the package manager, run the following command in your Python environment.
 
 ```shell
 pip install conan
-conan profile detect
 ```
+
+The repository ships a Jinja-templated default profile at `.conan2/profiles/default` that auto-detects the host compiler and pins the right settings (clang-cl on Windows, clang/libc++ on Linux, Ninja generator). **Do not run `conan profile detect`** — it would overwrite this file.
 
 ### Install dependencies
 
-First of all, run the following commands to install the dependencies of this project:
+Run the following command to install the project's dependencies:
 
-=== ":fontawesome-brands-windows: Command Prompt"
+=== ":fontawesome-brands-windows: Command Prompt / PowerShell"
     ```shell
-    conan install . --build=missing -s compiler.cppstd=20 -c tools.cmake.cmaketoolchain:generator=Ninja
-    ```
-
-=== ":fontawesome-brands-windows: PowerShell"
-    ```shell
-    conan install . --build=missing -s compiler.cppstd=20 -c tools.cmake.cmaketoolchain:generator=Ninja -c tools.env.virtualenv:powershell=True
+    conan install . --build=missing
     ```
 
 === ":fontawesome-brands-linux: Linux"
 
     ```shell
-    conan install . --build=missing -s compiler.cppstd=20 -s compiler.libcxx=libc++ -c tools.cmake.cmaketoolchain:generator=Ninja
+    conan install . --build=missing
     ```
 
-Now, activate the build virtual environment created by conan.
+Now, activate the build virtual environment created by conan (only required for the manual `cmake --preset` path below; the `pip install` path does not need it):
 
 === ":fontawesome-brands-windows: Command Prompt"
     ```cmd
@@ -93,10 +89,18 @@ cmake --build --preset conan-release
 
 ### Install
 
-To install **Endstone** from your local sources, simply run:
+The PEP 517 backend (`conan-py-build`) runs Conan internally, so installing from sources does not need a separate `conan install` step:
 
 ```shell
 pip install -U .
+# or with uv:
+uv pip install -U .
+```
+
+To keep the C++ build tree persistent across reinstalls (much faster after the first build), pass a build dir via `config_settings`:
+
+```shell
+pip install -U . -C build-dir=./build
 ```
 
 ## Documentation
