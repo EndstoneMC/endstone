@@ -82,32 +82,20 @@ jobs:
         uses: lukka/get-cmake@latest
 
       - name: Restore Conan cache
-        id: conan-cache
         uses: ./.github/actions/conan-cache/restore
-        with:
-          build-type: Debug
 
       - name: Set up Conan
         uses: ./.github/actions/setup-conan
-        with:
-          build-type: Debug
 
       - name: Build with CMake
         run: |
+          mkdir -p build/Debug
           cd build/Debug
-          cmake ../.. -G Ninja -DCMAKE_TOOLCHAIN_FILE="generators/conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
+          cmake ../.. -G Ninja -DCMAKE_TOOLCHAIN_FILE="../Release/generators/conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
           cmake --build .
 
       - name: Run Tests
         run: ctest --test-dir build/Debug
-
-      - name: Save Conan cache
-        if: |
-          (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-          && steps.conan-cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/conan-cache/save
-        with:
-          build-type: Debug
 
       - name: Generate Coverage Report
         run: |
