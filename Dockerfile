@@ -1,4 +1,4 @@
-FROM python:3.12-slim-bullseye AS base
+FROM python:3.13-slim-bullseye AS base
 
 LABEL maintainer="Endstone <hello@endstone.dev>"
 
@@ -48,7 +48,7 @@ RUN --mount=type=secret,id=sentry-auth-token,env=SENTRY_AUTH_TOKEN \
     && pytest tests
 
 # Final stage
-FROM python:3.12-slim-bookworm AS final
+FROM python:3.13-slim-bookworm AS final
 
 # Install runtime dependencies
 RUN apt-get update -y -qq \

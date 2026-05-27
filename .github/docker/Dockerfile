@@ -2,7 +2,7 @@
 # runtime image. The from-source Dockerfile at the repo root is for
 # local development.
 
-FROM python:3.12-slim-bookworm
+FROM python:3.13-slim-bookworm
 
 LABEL maintainer="Endstone <hello@endstone.dev>"
 
