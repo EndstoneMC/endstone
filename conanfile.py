@@ -37,7 +37,7 @@ class EndstoneRecipe(ConanFile):
 
     @property
     def _with_devtools(self):
-        return self.settings.os == "Windows"
+        return True
 
     def validate(self):
         check_min_cppstd(self, self._min_cppstd)
@@ -80,7 +80,7 @@ class EndstoneRecipe(ConanFile):
 
         if self._with_devtools:
             self.requires("glfw/3.4")
-            self.requires("imgui/1.91.8-docking")
+            self.requires("imgui/1.92.8-docking")
 
         self.test_requires("gtest/1.16.0")
 
