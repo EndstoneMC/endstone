@@ -86,12 +86,21 @@ jobs:
 
       - name: Set up Conan
         uses: ./.github/actions/setup-conan
+        with:
+          install-dependencies: 'false'
+
+      - name: Install dependencies (Endstone=Debug, deps=Release)
+        # The `&:` prefix scopes the override to the consumer only, so dep
+        # binaries are pulled from the same Release cache the build job uses.
+        # Endstone's build_type is Debug, putting the toolchain and CMakeDeps
+        # configs under build/Debug/generators/ and matching the
+        # CMAKE_BUILD_TYPE=Debug we use at cmake configure time.
+        run: conan install . --build=missing -s "&:build_type=Debug"
 
       - name: Build with CMake
         run: |
-          mkdir -p build/Debug
           cd build/Debug
-          cmake ../.. -G Ninja -DCMAKE_TOOLCHAIN_FILE="../Release/generators/conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
+          cmake ../.. -G Ninja -DCMAKE_TOOLCHAIN_FILE="generators/conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
           cmake --build .
 
       - name: Run Tests
