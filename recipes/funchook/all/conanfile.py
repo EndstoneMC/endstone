@@ -51,13 +51,9 @@ class FunchookConan(ConanFile):
 
     def validate(self):
         if str(self.settings.arch) not in ("x86_64", "armv8", "arm64"):
-            raise ConanInvalidConfiguration(
-                f"{self.ref} only supports x86_64 and arm64 architectures."
-            )
+            raise ConanInvalidConfiguration(f"{self.ref} only supports x86_64 and arm64 architectures.")
         if self.options.disasm == "distorm" and str(self.settings.arch) in ("armv8", "arm64"):
-            raise ConanInvalidConfiguration(
-                "distorm does not support arm64, use disasm=capstone."
-            )
+            raise ConanInvalidConfiguration("distorm does not support arm64, use disasm=capstone.")
 
     def source(self):
         sources = self.conan_data["sources"][self.version]

@@ -426,9 +426,7 @@ def _undecorate(name: str) -> str:
     return ""
 
 
-def _scan_pe_fallback(
-    pdb_path: Path, config: dict, unresolved: list, result: dict[str, int]
-) -> None:
+def _scan_pe_fallback(pdb_path: Path, config: dict, unresolved: list, result: dict[str, int]) -> None:
     """
     Byte-pattern scan the PE for `unresolved` config entries -- symbols the PDB
     has no public record of (lambdas, function-local statics). Updates `result`
@@ -541,9 +539,7 @@ def main(inputs: tuple[Path, ...], pdb_path: Path | None) -> None:
             sigs = scan_pdb(pdb_path, config)
         else:
             if pdb_path is not None:
-                logger.warning(
-                    f"--pdb applies only to a windows config; scanning {config_path} by signature"
-                )
+                logger.warning(f"--pdb applies only to a windows config; scanning {config_path} by signature")
 
             zip_path = download_server(version, platform)
 

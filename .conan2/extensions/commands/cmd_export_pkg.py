@@ -3,12 +3,11 @@ import os
 from conan.api.output import ConanOutput
 from conan.cli import make_abs_path
 from conan.cli.args import add_lockfile_args, add_profiles_args, add_reference_args
-from conan.cli.command import conan_command, OnceArgument
-from conan.cli.commands.create import _get_test_conanfile_path
+from conan.cli.command import OnceArgument, conan_command
 from conan.cli.formatters.graph import format_graph_json
 from conan.errors import ConanException
+from conan.internal.graph.graph import BINARY_BUILD, RECIPE_INCACHE
 from conan.internal.methods import run_package_method
-from conan.internal.graph.graph import RECIPE_INCACHE, BINARY_BUILD
 
 
 @conan_command(group="Creator", formatters={"json": format_graph_json})
