@@ -14,20 +14,16 @@ Endstone is a plugin API for Minecraft Bedrock Dedicated Servers (BDS), supporti
 - CMake, Ninja, Conan 2.0+
 
 ### Install dependencies with Conan
+The project ships `.conan2/profiles/default` (a Jinja-templated profile) that auto-detects the host compiler and pins the right settings: clang-cl on Windows, clang/libc++ on Linux, Ninja generator. Do not run `conan profile detect` — it would overwrite this file. Just:
+
 ```shell
 pip install conan
-
-# Windows — run from a Visual Studio Developer prompt; clang-cl/lld-link must be on PATH.
-# Dependencies build with MSVC; the '&:' conf builds Endstone itself with clang-cl.
-conan profile detect
-conan install . --build=missing -s compiler.cppstd=20 -c tools.cmake.cmaketoolchain:generator=Ninja -c "&:tools.build:compiler_executables={'c':'clang-cl','cpp':'clang-cl'}"
-
-# Linux
-conan profile detect
-conan install . --build=missing -s compiler.cppstd=20 -s compiler.libcxx=libc++ -c tools.cmake.cmaketoolchain:generator=Ninja
+conan install . --build=missing
 ```
 
-### Activate Conan build environment
+> Windows: run from a Visual Studio Developer prompt with clang-cl/lld-link on PATH.
+
+### Activate Conan build environment (only for the manual CMake path)
 ```shell
 # Windows (cmd)
 .\build\Release\generators\conanbuild.bat
@@ -46,8 +42,18 @@ cmake --build --preset conan-release
 ```
 
 ### Install from source (builds Python wheel)
+The PEP 517 backend (`conan-py-build`) runs Conan internally, so no separate `conan install` step is required:
+
 ```shell
 pip install -U .
+# or with uv:
+uv pip install -U .
+```
+
+To keep the C++ build tree persistent across reinstalls (much faster after the first build), pass a build dir via `config_settings`:
+
+```shell
+pip install -U . -C build-dir=./build
 ```
 
 ## Testing
