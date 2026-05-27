@@ -1,5 +1,5 @@
 name: 'Save Conan cache'
-description: 'Save .conan2/p to the Actions cache so subsequent runs can reuse the built deps.'
+description: 'Save .conan2/p to the Actions cache for the given build type.'
 
 inputs:
   build-type:

@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      - stable
+      - develop
       - v*
     tags:
       - 'v*'
@@ -40,6 +40,7 @@ jobs:
           submodules: true
 
       - name: Restore Conan cache
+        id: conan-cache
         uses: ./.github/actions/conan-cache/restore
 
       - name: Set up Conan
@@ -80,13 +81,10 @@ jobs:
         run: sudo chown -R "$(id -u):$(id -g)" .conan2
 
       - name: Save Conan cache
-        # wheel.yml owns the cache: its Linux build runs inside the
-        # manylinux_2_31 container (glibc 2.31), producing binaries
-        # that link cleanly both there and on newer hosts. ci.yml's
-        # host binaries (glibc 2.35) would be forward-incompatible
-        # with the container, so ci.yml is restore-only.
-        # Save once per (os, build-type) - cp313 is the canonical wheel.
-        if: matrix.python-tag == 'cp313' && github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')
+        if: |
+          (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+          && !startsWith(github.ref, 'refs/tags/')
+          && steps.conan-cache.outputs.cache-hit != 'true'
         uses: ./.github/actions/conan-cache/save
 
       - uses: actions/upload-artifact@v7

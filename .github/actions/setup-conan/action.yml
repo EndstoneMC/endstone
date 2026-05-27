@@ -7,7 +7,7 @@ inputs:
     required: false
     default: 'Release'
   profile:
-    description: 'Conan profile name to use (must exist under .conan2/profiles/). Empty means auto-pick by runner.os: Linux -> linux, Windows -> windows.'
+    description: 'Conan profile name. Empty auto-picks from runner.os.'
     required: false
     default: ''
   python-version:
