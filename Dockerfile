@@ -38,7 +38,11 @@ ENV CC=clang \
 WORKDIR /usr/src/endstone
 
 # Install C++ dependencies with Conan first so this layer is cached across
-# source-only changes.
+# source-only changes. .conanrc points conan at the project-local .conan2/
+# home, whose remotes.json registers the EndstoneMC Cloudsmith remote that
+# hosts funchook and other recipes not on conancenter.
+COPY .conanrc .conanrc
+COPY .conan2/remotes.json .conan2/remotes.json
 COPY conanfile.py conanfile.py
 RUN python -m pip install --upgrade pip \
     && pip install conan cmake ninja \
