@@ -7,7 +7,7 @@ cd "$SCRIPT_DIR"
 WHEEL=$(ls -1 endstone-*.whl 2>/dev/null | head -n 1 || true)
 if [[ -z "$WHEEL" ]]; then
     echo "Couldn't find an endstone wheel next to $SCRIPT_DIR/start.sh."
-    echo "Please re-extract the portable archive without removing the .whl file."
+    echo "Please re-extract the bundle archive without removing the .whl file."
     exit 1
 fi
 

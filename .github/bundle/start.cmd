@@ -10,7 +10,7 @@ for %%f in ("%~dp0endstone-*.whl") do set "WHEEL=%%f"
 
 if "%WHEEL%"=="" (
     echo Couldn't find an endstone wheel next to "%~dp0start.cmd".
-    echo Please re-extract the portable archive without removing the .whl file.
+    echo Please re-extract the bundle archive without removing the .whl file.
     echo:
     pause
     popd
