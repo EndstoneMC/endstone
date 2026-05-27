@@ -40,14 +40,15 @@ WORKDIR /usr/src/endstone
 # Install C++ dependencies with Conan first so this layer is cached across
 # source-only changes. .conanrc points conan at the project-local .conan2/
 # home, whose remotes.json registers the EndstoneMC Cloudsmith remote that
-# hosts funchook and other recipes not on conancenter.
+# hosts funchook and other recipes not on conancenter; profiles/default.jinja
+# carries the compiler/libcxx/generator settings for both Linux and Windows.
 COPY .conanrc .conanrc
 COPY .conan2/remotes.json .conan2/remotes.json
+COPY .conan2/profiles/default .conan2/profiles/default
 COPY conanfile.py conanfile.py
 RUN python -m pip install --upgrade pip \
     && pip install conan cmake ninja \
-    && conan profile detect \
-    && conan install . --build=missing --build=m4/* -s compiler.cppstd=20 -s compiler.libcxx=libc++ -c tools.cmake.cmaketoolchain:generator=Ninja
+    && conan install . --build=missing --build=m4/*
 
 # Copy the rest of the project files.
 COPY . .
