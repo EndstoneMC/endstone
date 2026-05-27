@@ -1,0 +1,287 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - develop
+      - v*
+    tags:
+      - 'v*'
+
+permissions: read-all
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
+jobs:
+  wheels:
+    name: Wheel (${{ matrix.python-tag }}-${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, windows-2022 ]
+        python-tag: [ "cp310", "cp311", "cp312", "cp313", "cp314" ]
+        include:
+          - os: ubuntu-latest
+            platform: manylinux_x86_64
+          - os: windows-2022
+            platform: win_amd64
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - name: Restore Conan cache
+        id: conan-cache
+        uses: ./.github/actions/conan-cache/restore
+
+      - name: Set up Conan
+        uses: ./.github/actions/setup-conan
+        with:
+          build-type: Release
+          install-dependencies: 'false'
+
+      - name: Set up MSVC (Windows)
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x86_64
+
+      - name: Set up CMake and Ninja
+        uses: lukka/get-cmake@latest
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v3.4.1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          CIBW_BUILD: ${{ matrix.python-tag }}-${{ matrix.platform }}
+          CIBW_BUILD_VERBOSITY: 1
+          CIBW_ENVIRONMENT_PASS_LINUX: "SENTRY_AUTH_TOKEN"
+          # cibuildwheel copies the project into the Linux container
+          # rather than bind-mounting it, so conan writes to
+          # /project/.conan2 (per .conanrc) are isolated from the host
+          # and lost on container cleanup. Bind-mount the workspace's
+          # .conan2 over the container's /project/.conan2 so packages
+          # persist to the host for actions/cache to save.
+          CIBW_CONTAINER_ENGINE: "docker; create_args: --volume ${{ github.workspace }}/.conan2:/project/.conan2"
+
+      - name: Reclaim ownership of project-local Conan home (Linux)
+        if: always() && runner.os == 'Linux'
+        # The volume-mounted .conan2 is written by root inside the
+        # container; hand it back to the runner user so actions/cache
+        # can save it.
+        run: sudo chown -R "$(id -u):$(id -g)" .conan2
+
+      - name: Save Conan cache
+        if: |
+          (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+          && !startsWith(github.ref, 'refs/tags/')
+          && steps.conan-cache.outputs.cache-hit != 'true'
+        uses: ./.github/actions/conan-cache/save
+
+      - uses: actions/upload-artifact@v7
+        with:
+          path: ./wheelhouse/*.whl
+          archive: false
+
+  bundle:
+    name: Bundle (${{ matrix.os }}-${{ matrix.arch }})
+    runs-on: ubuntu-latest
+    needs: [ wheels ]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: win_amd64
+            os: windows
+            arch: x86_64
+            script: .github/bundle/start.cmd
+            wheel-platform: win_amd64
+          - platform: manylinux_x86_64
+            os: linux
+            arch: x86_64
+            script: .github/bundle/start.sh
+            wheel-platform: manylinux_*x86_64
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            .github/bundle
+            CHANGELOG.md
+            LICENSE
+
+      - name: Download Wheel Artifact
+        uses: actions/download-artifact@v8
+        with:
+          pattern: endstone-*-cp313-cp313-${{ matrix.wheel-platform }}.whl
+          path: wheelhouse
+          merge-multiple: true
+          skip-decompress: true
+
+      - name: Stage bundle
+        run: |
+          wheel=$(ls wheelhouse/endstone-*.whl | head -n1)
+          version=$(basename "$wheel" | cut -d'-' -f2)
+          bundle="endstone-${version}-${{ matrix.os }}-${{ matrix.arch }}"
+          mkdir -p "dist/$bundle"
+          cp "${{ matrix.script }}" "dist/$bundle/"
+          cp CHANGELOG.md LICENSE "dist/$bundle/"
+          cp "$wheel" "dist/$bundle/"
+          chmod +x "dist/$bundle/$(basename "${{ matrix.script }}")"
+          echo "BUNDLE_NAME=$bundle" >> "$GITHUB_ENV"
+
+      - name: Create archive
+        run: |
+          cd dist
+          zip -r "../${BUNDLE_NAME}.zip" "$BUNDLE_NAME"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          path: ${{ env.BUNDLE_NAME }}.zip
+          archive: false
+
+  docker:
+    name: Docker (${{ matrix.name }})
+    runs-on: ubuntu-latest
+    needs: [ wheels ]
+    permissions:
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: GHCR
+            registry: ghcr.io
+            image: ghcr.io/endstonemc/endstone
+            username: github_actor
+            password: GITHUB_TOKEN
+          - name: Docker Hub
+            registry: docker.io
+            image: endstone/endstone
+            username: DOCKERHUB_USERNAME
+            password: DOCKERHUB_TOKEN
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+        with:
+          sparse-checkout: |
+            .github/docker
+            docker
+
+      - name: Download Wheel Artifact
+        uses: actions/download-artifact@v8
+        with:
+          pattern: endstone-*-cp313-cp313-manylinux_*x86_64.whl
+          path: artifacts
+          merge-multiple: true
+          skip-decompress: true
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: Login to ${{ matrix.name }}
+        uses: docker/login-action@v4
+        with:
+          registry: ${{ matrix.registry }}
+          username: ${{ matrix.username == 'github_actor' && github.actor || secrets[matrix.username] }}
+          password: ${{ secrets[matrix.password] }}
+
+      - name: Extract Metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ matrix.image }}
+          tags: |
+            type=pep440,pattern={{version}}
+            type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/tags/') }}
+
+      - name: Build and Push
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: .github/docker/Dockerfile
+          platforms: linux/amd64
+          push: ${{ startsWith(github.ref, 'refs/tags/') }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=min
+
+  release:
+    name: Release
+    if: startsWith(github.ref, 'refs/tags/') && github.repository == 'EndstoneMC/endstone'
+    runs-on: ubuntu-latest
+    needs: [ wheels, bundle ]
+    environment: pypi
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Download wheel artifacts
+        uses: actions/download-artifact@v8
+        with:
+          pattern: endstone-*.whl
+          path: dist/wheels
+          merge-multiple: true
+          skip-decompress: true
+
+      - name: Download bundle artifacts
+        uses: actions/download-artifact@v8
+        with:
+          pattern: endstone-*.zip
+          path: dist/bundle
+          merge-multiple: true
+          skip-decompress: true
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/wheels
+
+      - name: Extract version from tag
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Invalid tag format: $GITHUB_REF_NAME (expected vX.Y.Z)"
+            exit 1
+          fi
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Extract release notes from CHANGELOG.md
+        run: |
+          BODY=$(sed -n "/^## \[$VERSION\]/,/^## \[/{/^## \[/d; p}" CHANGELOG.md)
+          BODY=$(echo "$BODY" | sed '/./,$!d' | sed -e :a -e '/^\n*$/{$d;N;ba}')
+          if [ -z "$BODY" ]; then
+            echo "::error::No [$VERSION] section found in CHANGELOG.md. Stamp the changelog before tagging."
+            exit 1
+          fi
+          PREV_TAG=$(git tag --sort=-v:refname | sed -n '2p')
+          if [ -n "$PREV_TAG" ]; then
+            BODY="$BODY"$'\n\n'"**Full Changelog**: https://github.com/${{ github.repository }}/compare/${PREV_TAG}...v${VERSION}"
+          fi
+          printf '%s\n' "$BODY" > /tmp/release_body.md
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: v${{ env.VERSION }}
+          body_path: /tmp/release_body.md
+          files: dist/bundle/*

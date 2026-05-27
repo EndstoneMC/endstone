@@ -33,7 +33,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `block_placed_state`/`block_replaced` renamed to `block_placed`/`block_replaced_state` to match Bukkit.
 - **BREAKING**: The Docker image now stores server data in `/data` instead of `/home/endstone/bedrock_server`.
   Update your volume mount accordingly (e.g. `-v ./data:/data`).
+- **BREAKING**: Standalone bundles now ship for both Windows (`endstone-<version>-windows-x86_64.zip`) and Linux (`endstone-<version>-linux-x86_64.zip`), and use [uv](https://docs.astral.sh/uv/) to provision Python on demand instead of shipping a Python interpreter. The included `start.cmd` / `start.sh` installs uv on first run if it isn't already on `PATH`, then launches the server via `uv run` against the bundled wheel. The old `bin/python/` directory is gone; the server folder (`./bedrock_server/`) is unchanged.
 
+### Removed
+
+- **BREAKING**: Removed `scripts/autoinstall.sh`. The Linux bundle's `start.sh` now provisions Python via uv on any distro without sudo, superseding the script's apt/dnf/pacman bootstrap.
 
 ### Fixed
 
