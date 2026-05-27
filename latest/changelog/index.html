@@ -2619,6 +2619,8 @@ For latest updates join the chat on
             
                 
             
+                
+            
         </ul>
     </nav>
     
@@ -3960,6 +3962,8 @@ For latest updates join the chat on
     
     <nav class="md-nav" aria-label="Unreleased">
         <ul class="md-nav__list">
+            
+                
             
                 
             
@@ -5327,6 +5331,11 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
   <code>block_placed_state</code>/<code>block_replaced</code> renamed to <code>block_placed</code>/<code>block_replaced_state</code> to match Bukkit.</li>
 <li><strong>BREAKING</strong>: The Docker image now stores server data in <code>/data</code> instead of <code>/home/endstone/bedrock_server</code>.
   Update your volume mount accordingly (e.g. <code>-v ./data:/data</code>).</li>
+<li><strong>BREAKING</strong>: Standalone bundles now ship for both Windows (<code>endstone-&lt;version&gt;-windows-x86_64.zip</code>) and Linux (<code>endstone-&lt;version&gt;-linux-x86_64.zip</code>), and use <a href="https://docs.astral.sh/uv/">uv</a> to provision Python on demand instead of shipping a Python interpreter. The included <code>start.cmd</code> / <code>start.sh</code> installs uv on first run if it isn't already on <code>PATH</code>, then launches the server via <code>uv run</code> against the bundled wheel. The old <code>bin/python/</code> directory is gone; the server folder (<code>./bedrock_server/</code>) is unchanged.</li>
+</ul>
+<h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>BREAKING</strong>: Removed <code>scripts/autoinstall.sh</code>. The Linux bundle's <code>start.sh</code> now provisions Python via uv on any distro without sudo, superseding the script's apt/dnf/pacman bootstrap.</li>
 </ul>
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
 <ul>
