@@ -1,4 +1,5 @@
 import os
+import sys
 
 from conan import ConanFile
 from conan.errors import ConanInvalidConfiguration
@@ -102,6 +103,10 @@ class EndstoneRecipe(ConanFile):
             tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = True
         sentry_bin = os.path.join(self.dependencies["sentry-native"].package_folder, "bin")
         tc.variables["SENTRY_NATIVE_BIN_DIR"] = sentry_bin.replace("\\", "/")
+        # Pin pybind11's Python search to the interpreter running conan-py-build
+        python_root = sys.base_exec_prefix.replace("\\", "/")
+        tc.variables["Python_ROOT_DIR"] = python_root
+        tc.variables["Python3_ROOT_DIR"] = python_root
         tc.generate()
 
     def build(self):
