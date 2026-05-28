@@ -100,7 +100,7 @@ jobs:
             LICENSE
 
       - name: Download Wheel Artifact
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: endstone-wheels-cp313-win_amd64
           path: wheelhouse
@@ -152,7 +152,7 @@ jobs:
 
     steps:
       - name: Download wheel artifacts
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           pattern: endstone-wheels-*
           path: dist/wheels
@@ -164,7 +164,7 @@ jobs:
           packages-dir: dist/wheels
 
       - name: Download portable artifact
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: endstone-win_amd64-portable
           path: dist/portable
