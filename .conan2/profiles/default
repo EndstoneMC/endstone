@@ -20,6 +20,3 @@ tools.cmake.cmaketoolchain:generator=Ninja
 {% if platform.system() == "Windows" %}
 tools.build:compiler_executables={"c": "clang-cl", "cpp": "clang-cl"}
 {% endif %}
-
-[tool_requires]
-ninja/[*]
