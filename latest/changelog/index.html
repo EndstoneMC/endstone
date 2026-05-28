@@ -5310,6 +5310,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Added <code>/restart</code> command (console-only) that gracefully restarts the server without manually relaunching.</li>
 <li>Added support for custom Python events with optional cancellation.</li>
 <li>Added <code>ActorType</code> to the registry API.</li>
+<li>Added the <code>endstone.Identifier</code> type for namespaced ids: <code>dim.id.namespace == "minecraft"</code>, <code>dim.id.key == "overworld"</code>, and type checkers can now tell <code>Identifier[Dimension]</code> apart from <code>Identifier[ActorType]</code>. Plain strings are still accepted where an <code>Identifier</code> is required (e.g. <code>level.get_dimension("overworld")</code>).</li>
 <li>Added <code>BlockData.translation_key</code> for retrieving the translation key of a block.</li>
 <li>Added <code>WritableBookMeta</code>, <code>BookMeta</code>, and <code>CrossbowMeta</code> item meta types.</li>
 <li>Added binary NBT serialization (<code>dump</code>/<code>load</code>) with support for multiple formats.</li>
@@ -5332,6 +5333,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><strong>BREAKING</strong>: The Docker image now stores server data in <code>/data</code> instead of <code>/home/endstone/bedrock_server</code>.
   Update your volume mount accordingly (e.g. <code>-v ./data:/data</code>).</li>
 <li><strong>BREAKING</strong>: Standalone bundles now ship for both Windows (<code>endstone-&lt;version&gt;-windows-x86_64.zip</code>) and Linux (<code>endstone-&lt;version&gt;-linux-x86_64.zip</code>), and use <a href="https://docs.astral.sh/uv/">uv</a> to provision Python on demand instead of shipping a Python interpreter. The included <code>start.cmd</code> / <code>start.sh</code> installs uv on first run if it isn't already on <code>PATH</code>, then launches the server via <code>uv run</code> against the bundled wheel. The old <code>bin/python/</code> directory is gone; the server folder (<code>./bedrock_server/</code>) is unchanged.</li>
+<li><code>str()</code> on <code>BlockType</code>, <code>Enchantment</code>, and <code>ItemType</code> now returns a plain <code>"namespace:key"</code> string instead of the underlying <code>Identifier</code> repr.</li>
 </ul>
 <h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">&para;</a></h3>
 <ul>
