@@ -25,7 +25,7 @@ public:
     virtual ~ItemFactory() = default;
 
     /**
-     * @brief This creates a new item meta for the item type.
+     * This creates a new item meta for the item type.
      *
      * @param type The item type to consider as base for the meta
      * @return a new ItemMeta that could be applied to an item stack of the specified item type
@@ -33,7 +33,7 @@ public:
     [[nodiscard]] virtual std::unique_ptr<ItemMeta> getItemMeta(ItemTypeId type) const = 0;
 
     /**
-     * @brief This method checks the item meta to confirm that it is applicable (no data lost if applied) to the
+     * This method checks the item meta to confirm that it is applicable (no data lost if applied) to the
      * specified ItemStack.
      *
      * @param meta Meta to check
@@ -43,16 +43,16 @@ public:
     [[nodiscard]] virtual bool isApplicable(const ItemMeta *meta, ItemTypeId type) const = 0;
 
     /**
-     * @brief This method is used to compare two ItemMeta objects.
+     * This method is used to compare two ItemMeta objects.
      *
-     * @param meta1 First meta to compare, and may be null to indicate no data
-     * @param meta2 Second meta to compare, and may be null to indicate no data
+     * @param meta1 First meta to compare; may be nullptr to indicate no data.
+     * @param meta2 Second meta to compare; may be nullptr to indicate no data.
      * @return false if one of the meta has data the other does not, otherwise true
      */
     [[nodiscard]] virtual bool equals(const ItemMeta *meta1, const ItemMeta *meta2) const = 0;
 
     /**
-     * @brief Returns an appropriate item meta for the specified item type.
+     * Returns an appropriate item meta for the specified item type.
      *
      * The item meta returned will always be a valid meta for a given ItemStack of the specified item type. It may be a
      * more or less specific meta, and could also be the same meta or meta type as the parameter. The item meta returned

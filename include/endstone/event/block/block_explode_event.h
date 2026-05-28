@@ -25,7 +25,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a block explodes (e.g. bed in the Nether, respawn anchor in the Overworld).
+ * Called when a block explodes (e.g. bed in the Nether, respawn anchor in the Overworld).
  *
  * <p>
  * If a BlockExplodeEvent is cancelled, the explosion will not occur.
@@ -42,14 +42,14 @@ public:
     ~BlockExplodeEvent() override = default;
 
     /**
-     * @brief Returns the list of blocks that would have been removed or were removed from the explosion event.
+     * Returns the list of blocks that would have been removed or were removed from the explosion event.
      *
      * @return All blown-up blocks
      */
     [[nodiscard]] const BlockList &getBlockList() const { return blocks_; }
 
     /**
-     * @brief Returns the list of blocks that would have been removed or were removed from the explosion event.
+     * Returns the list of blocks that would have been removed or were removed from the explosion event.
      *
      * @return All blown-up blocks
      */

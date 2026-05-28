@@ -20,7 +20,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a Weather-related event
+ * Represents a Weather-related event.
  */
 class WeatherEvent : public Event {
 public:
@@ -28,7 +28,7 @@ public:
     ~WeatherEvent() override = default;
 
     /**
-     * Returns the Level where this event is occurring
+     * Returns the Level where this event is occurring.
      *
      * @return Level this event is occurring in
      */

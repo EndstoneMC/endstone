@@ -29,7 +29,7 @@ class BlockState;
 class Dimension;
 
 /**
- * @brief Represents a block.
+ * Represents a block.
  *
  * <p>
  * This is a live object, and only one Block may exist for any given location in a dimension.
@@ -39,7 +39,7 @@ public:
     virtual ~Block() = default;
 
     /**
-     * @brief Get the type of the block.
+     * Get the type of the block.
      *
      * This method returns the type of the block as a string, for example, minecraft:acacia_stairs.
      *
@@ -48,36 +48,36 @@ public:
     [[nodiscard]] virtual std::string getType() const = 0;
 
     /**
-     * @brief Sets the type of this block
+     * Sets the type of this block.
      *
-     * @param type Material to change this block to
+     * @param type New type for this block (e.g. minecraft:stone).
      */
     virtual void setType(std::string type) = 0;
 
     /**
-     * @brief Sets the type of this block
+     * Sets the type of this block.
      *
-     * @param type Material to change this block to
+     * @param type New type for this block (e.g. minecraft:stone).
      * @param apply_physics False to cancel physics on the changed block.
      */
     virtual void setType(std::string type, bool apply_physics) = 0;
 
     /**
-     * @brief Gets the complete block data for this block
+     * Gets the complete block data for this block.
      *
      * @return block specific data
      */
     [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
 
     /**
-     * @brief Sets the complete data for this block
+     * Sets the complete data for this block.
      *
      * @param data new block specific data
      */
     virtual void setData(const BlockData &data) = 0;
 
     /**
-     * @brief Sets the complete data for this block
+     * Sets the complete data for this block.
      *
      * @param data new block specific data
      * @param apply_physics False to cancel physics on the changed block.
@@ -85,7 +85,7 @@ public:
     virtual void setData(const BlockData &data, bool apply_physics) = 0;
 
     /**
-     * @brief Gets the block at the given offsets
+     * Gets the block at the given offsets.
      *
      * @param offset_x X-coordinate offset
      * @param offset_y Y-coordinate offset
@@ -95,9 +95,9 @@ public:
     virtual std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
 
     /**
-     * @brief Gets the block at the given face
-     * <p>
-     * This method is equal to getRelative(face, 1)
+     * Gets the block at the given face.
+     *
+     * This method is equal to getRelative(face, 1).
      *
      * @param face Face of this block to return
      * @return Block at the given face
@@ -105,7 +105,7 @@ public:
     virtual std::unique_ptr<Block> getRelative(BlockFace face) = 0;
 
     /**
-     * @brief Gets the block at the given distance of the given face
+     * Gets the block at the given distance of the given face.
      *
      * @param face Face of this block to return
      * @param distance Distance to get the block at
@@ -114,42 +114,42 @@ public:
     virtual std::unique_ptr<Block> getRelative(BlockFace face, int distance) = 0;
 
     /**
-     * @brief Gets the dimension which contains this Block
+     * Gets the dimension which contains this Block.
      *
      * @return Dimension containing this block
      */
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
 
     /**
-     * @brief Gets the x-coordinate of this block
+     * Gets the x-coordinate of this block.
      *
      * @return x-coordinate
      */
     [[nodiscard]] virtual int getX() const = 0;
 
     /**
-     * @brief Gets the y-coordinate of this block
+     * Gets the y-coordinate of this block.
      *
-     * @return x-coordinate
+     * @return y-coordinate
      */
     [[nodiscard]] virtual int getY() const = 0;
 
     /**
-     * @brief Gets the z-coordinate of this block
+     * Gets the z-coordinate of this block.
      *
-     * @return x-coordinate
+     * @return z-coordinate
      */
     [[nodiscard]] virtual int getZ() const = 0;
 
     /**
-     * @brief Gets the Location of the block
+     * Gets the Location of the block.
      *
      * @return Location of block
      */
     [[nodiscard]] virtual Location getLocation() const = 0;
 
     /**
-     * @brief Captures the current state of this block.
+     * Captures the current state of this block.
      * <p>
      * The returned object will never be updated, and you are not guaranteed that (for example) a sign is still a
      * sign after you capture its state.
@@ -159,7 +159,7 @@ public:
     [[nodiscard]] virtual std::unique_ptr<BlockState> captureState() const = 0;
 
     /**
-     * @brief Creates a copy of the current block.
+     * Creates a copy of the current block.
      *
      * @return Block
      */

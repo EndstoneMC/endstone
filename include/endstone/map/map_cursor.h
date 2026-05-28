@@ -22,12 +22,12 @@
 
 namespace endstone {
 /**
- * @brief Represents a cursor on a map.
+ * Represents a cursor on a map.
  */
 class MapCursor {
 public:
     /**
-     * @brief Represents the standard types of map cursors.
+     * Represents the standard types of map cursors.
      */
     enum class Type {
         Player = 0,
@@ -58,7 +58,7 @@ public:
     };
 
     /**
-     * @brief Initialize the map cursor.
+     * Initialize the map cursor.
      *
      * @param x The x coordinate, from -128 to 127.
      * @param y The y coordinate, from -128 to 127.
@@ -73,56 +73,56 @@ public:
     }
 
     /**
-     * @brief Get the X position of this cursor.
+     * Get the X position of this cursor.
      *
      * @return The X coordinate.
      */
     [[nodiscard]] std::int8_t getX() const { return x_; }
 
     /**
-     * @brief Get the Y position of this cursor.
+     * Get the Y position of this cursor.
      *
      * @return The Y coordinate.
      */
     [[nodiscard]] std::int8_t getY() const { return y_; }
 
     /**
-     * @brief Get the direction of this cursor.
+     * Get the direction of this cursor.
      *
      * @return The facing of the cursor, from 0 to 15.
      */
     [[nodiscard]] std::int8_t getDirection() const { return direction_; }
 
     /**
-     * @brief Get the type of this cursor.
+     * Get the type of this cursor.
      *
      * @return The type (color/style) of the map cursor.
      */
     [[nodiscard]] Type getType() const { return type_; }
 
     /**
-     * @brief Get the visibility status of this cursor.
+     * Get the visibility status of this cursor.
      *
      * @return True if visible, false otherwise.
      */
     [[nodiscard]] bool isVisible() const { return visible_; }
 
     /**
-     * @brief Set the X position of this cursor.
+     * Set the X position of this cursor.
      *
      * @param x The X coordinate.
      */
     void setX(const std::int8_t x) { x_ = x; }
 
     /**
-     * @brief Set the Y position of this cursor.
+     * Set the Y position of this cursor.
      *
      * @param y The Y coordinate.
      */
     void setY(const std::int8_t y) { y_ = y; }
 
     /**
-     * @brief Set the direction of this cursor.
+     * Set the direction of this cursor.
      *
      * @param direction The facing of the cursor, from 0 to 15.
      */
@@ -134,7 +134,7 @@ public:
     }
 
     /**
-     * @brief Set the type of this cursor.
+     * Set the type of this cursor.
      *
      * @param type The type (color/style) of the map cursor.
      */
@@ -148,7 +148,7 @@ public:
     void setVisible(bool visible) { visible_ = visible; }
 
     /**
-     * @brief Gets the caption on this cursor.
+     * Gets the caption on this cursor.
      *
      * @return caption
      */
@@ -156,7 +156,7 @@ public:
     [[nodiscard]] std::string getCaption() const { return caption_; }
 
     /**
-     * @brief Sets the caption on this cursor.
+     * Sets the caption on this cursor.
      *
      * @param caption new caption
      */

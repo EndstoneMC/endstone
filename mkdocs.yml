@@ -93,6 +93,7 @@ plugins:
             EXCLUDE_PATTERNS: "*/detail/*"
             RECURSIVE: YES
             STRIP_FROM_INC_PATH: "include/"
+            JAVADOC_AUTOBRIEF: YES
 
 theme:
   name: 'material'

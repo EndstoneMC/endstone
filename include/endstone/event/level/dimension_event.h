@@ -20,14 +20,14 @@
 namespace endstone {
 
 /**
- * @brief Represents events within a level
+ * Represents events within a dimension.
  */
 class DimensionEvent : public LevelEvent {
 public:
     explicit DimensionEvent(Dimension &dimension) : LevelEvent(dimension.getLevel()), dimension_(dimension) {};
 
     /**
-     * Gets the dimension primarily involved with this event
+     * Gets the dimension primarily involved with this event.
      *
      * @return Dimension which caused this event
      */

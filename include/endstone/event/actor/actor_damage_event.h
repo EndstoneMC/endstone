@@ -24,7 +24,7 @@
 namespace endstone {
 
 /**
- * @brief Called when an Actor is damaged
+ * Called when an Actor is damaged.
  */
 class ActorDamageEvent : public Cancellable<ActorEvent<Mob>> {
 public:
@@ -35,21 +35,21 @@ public:
     }
 
     /**
-     * @brief Gets the raw amount of damage caused by the event
+     * Gets the raw amount of damage caused by the event.
      *
      * @return The raw amount of damage caused by the event
      */
     [[nodiscard]] float getDamage() const { return damage_; }
 
     /**
-     * @brief Sets the raw amount of damage caused by the event.
+     * Sets the raw amount of damage caused by the event.
      *
      * @param damage The raw amount of damage caused by the event
      */
     void setDamage(const float damage) { damage_ = damage; }
 
     /**
-     * @brief Get the source of damage.
+     * Get the source of damage.
      *
      * @return a DamageSource detailing the source of the damage.
      */

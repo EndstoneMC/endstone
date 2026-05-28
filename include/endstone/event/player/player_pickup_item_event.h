@@ -21,7 +21,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player picks an item up from the ground.
+ * Called when a player picks an item up from the ground.
  */
 class PlayerPickupItemEvent : public Cancellable<PlayerEvent> {
 public:
@@ -30,7 +30,7 @@ public:
     explicit PlayerPickupItemEvent(Player &player, Item &item) : Cancellable(player), item_(item) {};
 
     /**
-     * @brief Gets the Item picked up by the entity.
+     * Gets the Item picked up by the entity.
      *
      * @return Item
      */

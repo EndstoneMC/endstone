@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a message is sent by `/scriptevent` command
+ * Called when a message is sent by `/scriptevent` command.
  */
 class ScriptMessageEvent : public Cancellable<ServerEvent> {
 public:
@@ -48,9 +48,9 @@ public:
     [[nodiscard]] const std::string &getMessage() const { return message_; }
 
     /**
-     * Gets the command sender who initiated the command
+     * Gets the command sender who sent the script message.
      *
-     * @return Command sender who initiated the command
+     * @return Command sender who sent the script message.
      */
     [[nodiscard]] const CommandSender &getSender() const { return sender_; }
 

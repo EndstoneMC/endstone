@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a chunk is loaded
+ * Called when a chunk is loaded.
  */
 class ChunkLoadEvent : public ChunkEvent {
 public:

@@ -17,7 +17,7 @@
 #include <cstdint>
 namespace endstone {
 /**
- * @brief Represents a color with red, green, blue, and alpha components.
+ * Represents a color with red, green, blue, and alpha components.
  */
 class Color {
 public:
@@ -31,7 +31,7 @@ public:
     }
 
     /**
-     * @brief Creates a new Color object from a red, green, blue, and alpha
+     * Creates a new Color object from a red, green, blue, and alpha.
      *
      * @param red integer from 0-255
      * @param green integer from 0-255
@@ -47,7 +47,7 @@ public:
     }
 
     /**
-     * @brief Creates a new Color object from a red, green, and blue
+     * Creates a new Color object from a red, green, and blue.
      *
      * @param red integer from 0-255
      * @param green integer from 0-255
@@ -61,7 +61,7 @@ public:
     }
 
     /**
-     * @brief Creates a new Color object from a blue, green, and red
+     * Creates a new Color object from a blue, green, and red.
      *
      * @param blue integer from 0-255
      * @param green integer from 0-255
@@ -75,7 +75,7 @@ public:
     }
 
     /**
-     * @brief Creates a new color object from an integer that contains the red, green, blue, and alpha bytes.
+     * Creates a new color object from an integer that contains the red, green, blue, and alpha bytes.
      *
      * @param rgba the integer storing the red, green, blue, and alpha values
      *
@@ -87,7 +87,7 @@ public:
     }
 
     /**
-     * @brief Creates a new color object from an integer that contains the alpha, blue, green, and red bytes.
+     * Creates a new color object from an integer that contains the alpha, blue, green, and red bytes.
      *
      * @param abgr the integer storing the alpha, blue, green, and red values
      *
@@ -99,7 +99,7 @@ public:
     }
 
     /**
-     * @brief Creates a new color object from an integer that contains the red, green,
+     * Creates a new color object from an integer that contains the red, green,
      * and blue bytes in the lowest order 24 bits.
      *
      * @param rgb the integer storing the red, green, and blue values
@@ -111,14 +111,14 @@ public:
     static Color fromBGR(const int bgr) { return fromBGR(bgr >> 16 & BIT_MASK, bgr >> 8 & BIT_MASK, bgr & BIT_MASK); }
 
     /**
-     * @brief Gets the red component of the color.
+     * Gets the red component of the color.
      *
      * @return The red component (0–255) of the color.
      */
     [[nodiscard]] int getRed() const { return BIT_MASK & red_; }
 
     /**
-     * @brief Creates a new Color object with specified component
+     * Creates a new Color object with specified component.
      *
      * @param red the red component, from 0 to 255
      *
@@ -127,14 +127,14 @@ public:
     [[nodiscard]] Color setRed(const int red) const { return fromRGBA(red, getGreen(), getBlue(), getAlpha()); }
 
     /**
-     * @brief Gets the green component of the color.
+     * Gets the green component of the color.
      *
      * @return The green component (0–255) of the color.
      */
     [[nodiscard]] int getGreen() const { return BIT_MASK & green_; }
 
     /**
-     * @brief Creates a new Color object with specified component
+     * Creates a new Color object with specified component.
      *
      * @param green the green component, from 0 to 255
      *
@@ -143,14 +143,14 @@ public:
     [[nodiscard]] Color setGreen(const int green) const { return fromRGBA(getRed(), green, getBlue(), getAlpha()); }
 
     /**
-     * @brief Gets the blue component of the color.
+     * Gets the blue component of the color.
      *
      * @return The blue component (0–255) of the color.
      */
     [[nodiscard]] int getBlue() const { return BIT_MASK & blue_; }
 
     /**
-     * @brief Creates a new Color object with specified component
+     * Creates a new Color object with specified component.
      *
      * @param blue the blue component, from 0 to 255
      *
@@ -159,14 +159,14 @@ public:
     [[nodiscard]] Color setBlue(const int blue) const { return fromRGBA(getRed(), getGreen(), blue, getAlpha()); }
 
     /**
-     * @brief Gets the alpha component of the color.
+     * Gets the alpha component of the color.
      *
      * @return The alpha component (0–255) of the color.
      */
     [[nodiscard]] int getAlpha() const { return BIT_MASK & alpha_; }
 
     /**
-     * @brief Creates a new Color object with specified component
+     * Creates a new Color object with specified component.
      *
      * @param alpha the alpha component, from 0 to 255
      *
@@ -175,28 +175,28 @@ public:
     [[nodiscard]] Color setAlpha(const int alpha) const { return fromRGBA(getRed(), getGreen(), getBlue(), alpha); }
 
     /**
-     * @brief Gets the color as an RGBA integer.
+     * Gets the color as an RGBA integer.
      *
      * @return An integer representation of this color, as 0xRRGGBBAA
      */
     [[nodiscard]] int asRGBA() const { return getRed() << 24 | getGreen() << 16 | getBlue() << 8 | getAlpha(); }
 
     /**
-     * @brief Gets the color as an ABGR integer.
+     * Gets the color as an ABGR integer.
      *
      * @return An integer representation of this color, as 0xAABBGGRR
      */
     [[nodiscard]] int asABGR() const { return getAlpha() << 24 | getBlue() << 16 | getGreen() << 8 | getRed(); }
 
     /**
-     * @brief Gets the color as an RGB integer.
+     * Gets the color as an RGB integer.
      *
      * @return An integer representation of this color, as 0xRRGGBB
      */
     [[nodiscard]] int asRGB() const { return getRed() << 16 | getGreen() << 8 | getBlue(); }
 
     /**
-     * @brief Gets the color as an BGR integer.
+     * Gets the color as an BGR integer.
      *
      * @return An integer representation of this color, as 0xBBGGRR
      */

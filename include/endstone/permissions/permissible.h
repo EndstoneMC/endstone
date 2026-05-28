@@ -31,19 +31,19 @@ class Permission;
 class PermissionAttachment;
 
 /**
- * @brief Represents an object that may become a server operator and can be assigned permissions.
+ * Represents an object that may become a server operator and can be assigned permissions.
  */
 class Permissible : public Object, public std::enable_shared_from_this<Permissible> {
 public:
     /**
-     * @brief Gets the permission level of this object
+     * Gets the permission level of this object.
      *
      * @return The permission level
      */
     [[nodiscard]] virtual PermissionLevel getPermissionLevel() const = 0;
 
     /**
-     * @brief Checks if this object contains an override for the specified permission, by fully qualified name
+     * Checks if this object contains an override for the specified permission, by fully qualified name.
      *
      * @param name Name of the permission
      * @return true if the permission is set, otherwise false
@@ -51,7 +51,7 @@ public:
     [[nodiscard]] virtual bool isPermissionSet(std::string name) const = 0;
 
     /**
-     * @brief Checks if this object contains an override for the specified Permission
+     * Checks if this object contains an override for the specified Permission.
      *
      * @param perm Permission to check
      * @return true if the permission is set, otherwise false
@@ -59,7 +59,7 @@ public:
     [[nodiscard]] virtual bool isPermissionSet(const Permission &perm) const = 0;
 
     /**
-     * @brief Gets the value of the specified permission, if set.
+     * Gets the value of the specified permission, if set.
      * If a permission override is not set on this object, the default value of the permission will be returned.
      *
      * @param name Name of the permission
@@ -68,7 +68,7 @@ public:
     [[nodiscard]] virtual bool hasPermission(std::string name) const = 0;
 
     /**
-     * @brief Gets the value of the specified permission, if set.
+     * Gets the value of the specified permission, if set.
      * If a permission override is not set on this object, the default value of the permission will be returned.
      *
      * @param perm Permission to get
@@ -77,9 +77,9 @@ public:
     [[nodiscard]] virtual bool hasPermission(const Permission &perm) const = 0;
 
     /**
-     * @brief Adds a new PermissionAttachment with a single permission by name and value
+     * Adds a new PermissionAttachment with a single permission by name and value.
      *
-     * @param plugin Plugin responsible for this attachment, may not be null or disabled
+     * @param plugin Plugin responsible for this attachment; must not be disabled.
      * @param name Name of the permission to attach
      * @param value Value of the permission
      * @return The PermissionAttachment that was just created
@@ -87,15 +87,15 @@ public:
     virtual PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
 
     /**
-     * @brief Adds a new empty PermissionAttachment to this object
+     * Adds a new empty PermissionAttachment to this object.
      *
-     * @param plugin Plugin responsible for this attachment, may not be null or disabled
+     * @param plugin Plugin responsible for this attachment; must not be disabled.
      * @return The PermissionAttachment that was just created
      */
     virtual PermissionAttachment *addAttachment(Plugin &plugin) = 0;
 
     /**
-     * @brief Removes the given PermissionAttachment from this object
+     * Removes the given PermissionAttachment from this object.
      *
      * @param attachment Attachment to remove
      * @return true if the specified attachment was removed successfully, false when it isn't part of this object
@@ -103,13 +103,13 @@ public:
     virtual bool removeAttachment(PermissionAttachment &attachment) = 0;
 
     /**
-     * @brief Recalculates the permissions for this object, if the attachments have changed values.
+     * Recalculates the permissions for this object, if the attachments have changed values.
      * This should very rarely need to be called from a plugin.
      */
     virtual void recalculatePermissions() = 0;
 
     /**
-     * @brief Gets a set containing all the permissions currently in effect by this object
+     * Gets a set containing all the permissions currently in effect by this object.
      *
      * @return Set of currently effective permissions
      */

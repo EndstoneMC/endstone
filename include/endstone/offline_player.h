@@ -21,7 +21,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a reference to a player identity and the data belonging to a player that is stored on the disk and
+ * Represents a reference to a player identity and the data belonging to a player that is stored on the disk and
  * can, thus, be retrieved without the player needing to be online.
  */
 class OfflinePlayer {
@@ -29,17 +29,17 @@ public:
     virtual ~OfflinePlayer() = default;
 
     /**
-     * @brief Returns the name of this player
+     * Returns the name of this player.
      *
      * @note Names are no longer unique past a single game session. For persistent storage
      *       it is recommended that you use getUniqueId() instead.
      *
-     * @return Player name or null if we have not seen a name for this player yet
+     * @return Player name, or an empty string if we have not seen a name for this player yet.
      */
     [[nodiscard]] virtual std::string getName() const = 0;
 
     /**
-     * @brief Returns the UUID of this player
+     * Returns the UUID of this player.
      *
      * @return Player UUID
      */

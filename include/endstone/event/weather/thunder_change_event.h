@@ -22,7 +22,7 @@
 namespace endstone {
 
 /**
- * @brief Called when the thunder state in a world is changing.
+ * Called when the thunder state in a world is changing.
  */
 class ThunderChangeEvent : public Cancellable<WeatherEvent> {
 public:
@@ -31,7 +31,7 @@ public:
     ~ThunderChangeEvent() override = default;
 
     /**
-     * Gets the state of thunder that the world is being set to
+     * Gets the state of thunder that the world is being set to.
      *
      * @return true if the weather is being set to thundering, false otherwise
      */

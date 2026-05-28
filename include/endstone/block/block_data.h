@@ -29,28 +29,28 @@ namespace endstone {
 using BlockStates = std::unordered_map<std::string, std::variant<bool, std::string, int>>;
 
 /**
- * @brief Represents the data related to a live block
+ * Represents the data related to a live block.
  */
 class BlockData {
 public:
     virtual ~BlockData() = default;
 
     /**
-     * @brief Get the block type represented by this block data.
+     * Get the block type represented by this block data.
      *
      * @return the block type
      */
     [[nodiscard]] virtual std::string getType() const = 0;
 
     /**
-     * @brief Get the translation key for this block.
+     * Get the translation key for this block.
      *
      * @return the translation key for this block
      */
     [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
     /**
-     * @brief Gets the block states, which when passed into a method such as Server::createBlockData(type, block_states)
+     * Gets the block states, which when passed into a method such as Server::createBlockData(type, block_states)
      * will unambiguously recreate this instance.
      *
      * @return the block states for this block
@@ -58,7 +58,7 @@ public:
     [[nodiscard]] virtual BlockStates getBlockStates() const = 0;
 
     /**
-     * @brief Get the runtime ID for this block.
+     * Get the runtime ID for this block.
      *
      * @return the runtime id for this block
      */

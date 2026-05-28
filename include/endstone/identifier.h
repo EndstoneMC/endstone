@@ -22,13 +22,13 @@
 
 namespace endstone {
 /**
- * @brief Represents a identifier consisting of two components: a namespace and a key.
+ * Represents a identifier consisting of two components: a namespace and a key.
  */
 template <typename T>
 class Identifier {
 public:
     /**
-     * @brief The namespace representing all inbuilt keys.
+     * The namespace representing all inbuilt keys.
      */
     static constexpr std::string_view Minecraft = "minecraft";
 

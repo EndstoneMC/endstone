@@ -23,14 +23,14 @@
 namespace endstone {
 
 /**
- * @brief Represents an Block-related event
+ * Represents an Block-related event.
  */
 class BlockEvent : public Event {
 public:
     explicit BlockEvent(std::unique_ptr<Block> block) : block_(std::move(block)) {};
 
     /**
-     * @brief Gets the block involved in this event.
+     * Gets the block involved in this event.
      *
      * @return The Block which block is involved in this event
      */

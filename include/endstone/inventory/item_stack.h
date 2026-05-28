@@ -30,12 +30,12 @@ class EndstoneItemStack;
 }
 
 /**
- * @brief Represents a stack of items.
+ * Represents a stack of items.
  */
 class ItemStack {
 public:
     /**
-     *@brief An item stack
+     * An item stack.
      *
      * @param type the type
      * @param amount the amount in the stack
@@ -63,70 +63,70 @@ public:
     ~ItemStack() = default;
 
     /**
-     * @brief Gets the type of this item
+     * Gets the type of this item.
      *
      * @return Type of the items in this stack
      */
     [[nodiscard]] const ItemType &getType() const { return impl_->getType(); }
 
     /**
-     * @brief Sets the type of this item
+     * Sets the type of this item.
      *
      * @param type New type to set the items in this stack to
      */
     void setType(ItemTypeId type) { impl_->setType(type); }
 
     /**
-     * @brief Gets the amount of items in this stack
+     * Gets the amount of items in this stack.
      *
      * @return Amount of items in this stack
      */
     [[nodiscard]] int getAmount() const { return impl_->getAmount(); }
 
     /**
-     * @brief Sets the amount of items in this stack
+     * Sets the amount of items in this stack.
      *
      * @param amount New amount of items in this stack
      */
     void setAmount(int amount) { impl_->setAmount(amount); }
 
     /**
-     * @brief Gets the data for this stack of items
+     * Gets the data for this stack of items.
      *
      * @return Data for this item
      */
     [[nodiscard]] int getData() const { return impl_->getData(); }
 
     /**
-     * @brief Sets the data for this stack of items
+     * Sets the data for this stack of items.
      *
      * @param data New data for this item
      */
     void setData(int data) { impl_->setData(data); }
 
     /**
-     * @brief Get the translation key, suitable for use in a translation component.
+     * Get the translation key, suitable for use in a translation component.
      *
      * @return the translation key
      */
     [[nodiscard]] std::string getTranslationKey() const { return impl_->getTranslationKey(); }
 
     /**
-     * @brief Get the maximum stack size for this item.
+     * Get the maximum stack size for this item.
      *
      * @return The maximum you can stack this item to.
      */
     [[nodiscard]] int getMaxStackSize() const { return impl_->getMaxStackSize(); }
 
     /**
-     * @brief Gets the NBT compound tag of this item stack.
+     * Gets the NBT compound tag of this item stack.
      *
      * @return the NBT compound tag
      */
     [[nodiscard]] CompoundTag getNbt() const { return impl_->getNbt(); }
 
     /**
-     * @brief Sets the NBT compound tag of this item stack.
+     * Sets the NBT compound tag of this item stack.
      *
      * @param nbt the NBT compound tag to set
      */
@@ -143,7 +143,7 @@ public:
     bool operator!=(const ItemStack &other) const { return !(*this == other); }
 
     /**
-     * @brief Checks if the two stacks are equal, but does not consider stack size (amount).
+     * Checks if the two stacks are equal, but does not consider stack size (amount).
      *
      * @param other the item stack to compare to
      * @return true if the two stacks are equal, ignoring the amount
@@ -157,23 +157,23 @@ public:
     }
 
     /**
-     * @brief Gets a copy of this ItemStack's ItemMeta.
+     * Gets a copy of this ItemStack's ItemMeta.
      *
      * @return a copy of the current ItemStack's ItemMeta
      */
     [[nodiscard]] std::unique_ptr<ItemMeta> getItemMeta() const { return impl_->getItemMeta(); }
 
     /**
-     * @brief Checks to see if any metadata has been defined.
+     * Checks to see if any metadata has been defined.
      *
      * @return Returns true if some metadata has been set for this item
      */
     [[nodiscard]] bool hasItemMeta() const { return impl_->hasItemMeta(); }
 
     /**
-     * @brief Set the ItemMeta of this ItemStack.
+     * Set the ItemMeta of this ItemStack.
      *
-     * @param meta new ItemMeta, or null to indicate meta data be cleared.
+     * @param meta new ItemMeta, or nullptr to clear the meta data.
      * @return True if successfully applied ItemMeta
      */
     bool setItemMeta(ItemMeta *meta) { return impl_->setItemMeta(meta); }

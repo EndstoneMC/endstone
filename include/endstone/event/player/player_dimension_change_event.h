@@ -20,7 +20,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player switches to another dimension.
+ * Called when a player switches to another dimension.
  */
 class PlayerDimensionChangeEvent : public PlayerEvent {
 public:
@@ -32,14 +32,14 @@ public:
     }
 
     /**
-     * @brief Gets the dimension the player is switching from.
+     * Gets the dimension the player is switching from.
      *
      * @return player's previous dimension
      */
     [[nodiscard]] Dimension &getFrom() const { return from_; }
 
     /**
-     * @brief Gets the dimension the player is switching to.
+     * Gets the dimension the player is switching to.
      *
      * @return player's new dimension
      */

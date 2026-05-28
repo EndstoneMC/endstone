@@ -28,14 +28,14 @@ namespace endstone {
 using PermissionRemovedExecutor = std::function<void(const PermissionAttachment &)>;
 
 /**
- * @brief Holds information about a permission attachment on a Permissible object.
+ * Holds information about a permission attachment on a Permissible object.
  */
 class PermissionAttachment {
 public:
     PermissionAttachment(Plugin &plugin, Permissible &permissible) : permissible_(permissible), plugin_(plugin) {}
 
     /**
-     * Gets the plugin responsible for this attachment
+     * Gets the plugin responsible for this attachment.
      *
      * @return Plugin responsible for this permission attachment
      */
@@ -49,15 +49,15 @@ public:
     void setRemovalCallback(PermissionRemovedExecutor ex) { removed_ = std::move(ex); }
 
     /**
-     * Gets the class that was previously set to be called when this attachment was removed from a Permissible. May be
-     * empty.
+     * Gets the executor that was previously set to be called when this attachment was removed from a Permissible.
+     * May be empty.
      *
      * @return Executor to be called when this is removed
      */
     [[nodiscard]] PermissionRemovedExecutor getRemovalCallback() const { return removed_; }
 
     /**
-     * Gets the Permissible that this is attached to
+     * Gets the Permissible that this is attached to.
      *
      * @return Permissible containing this attachment
      */
@@ -72,7 +72,7 @@ public:
     [[nodiscard]] std::unordered_map<std::string, bool> getPermissions() const { return permissions_; }
 
     /**
-     * Sets a permission to the given value, by its fully qualified name
+     * Sets a permission to the given value, by its fully qualified name.
      *
      * @param name Name of the permission
      * @param value New value of the permission
@@ -85,7 +85,7 @@ public:
     }
 
     /**
-     * Sets a permission to the given value
+     * Sets a permission to the given value.
      *
      * @param perm Permission to set
      * @param value New value of the permission
@@ -114,7 +114,7 @@ public:
     void unsetPermission(Permission &perm) { unsetPermission(perm.getName()); }
 
     /**
-     * Removes this attachment from its registered Permissible
+     * Removes this attachment from its registered Permissible.
      *
      * @return true if the permissible was removed successfully, false if it did not exist
      */

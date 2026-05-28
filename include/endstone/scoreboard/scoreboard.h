@@ -27,46 +27,46 @@
 namespace endstone {
 
 /**
- * @brief Represents a scoreboard
+ * Represents a scoreboard.
  */
 class Scoreboard : public std::enable_shared_from_this<Scoreboard> {
 public:
     virtual ~Scoreboard() = default;
 
     /**
-     * @brief Registers an Objective on this Scoreboard
+     * Registers an Objective on this Scoreboard.
      *
      * @param name Name of the Objective
      * @param criteria Criteria for the Objective
-     * @return A reference to the newly registered Objective.
+     * @return The newly registered Objective.
      */
     virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) = 0;
 
     /**
-     * @brief Registers an Objective on this Scoreboard
+     * Registers an Objective on this Scoreboard.
      *
      * @param name Name of the Objective
      * @param criteria Criteria type for the Objective
      * @param display_name Name displayed to players for the Objective.
-     * @return A reference to the newly registered Objective.
+     * @return The newly registered Objective.
      */
     virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
                                                     std::string display_name) = 0;
 
     /**
-     * @brief Registers an Objective on this Scoreboard
+     * Registers an Objective on this Scoreboard.
      *
      * @param name Name of the Objective
      * @param criteria Criteria type for the Objective
      * @param display_name Name displayed to players for the Objective.
      * @param render_type Manner of rendering the Objective
-     * @return A reference to the newly registered Objective.
+     * @return The newly registered Objective.
      */
     virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
                                                     RenderType render_type) = 0;
 
     /**
-     * @brief Gets an Objective on this Scoreboard by name
+     * Gets an Objective on this Scoreboard by name.
      *
      * @param name Name of the Objective
      * @return the Objective or <code>nullptr</code> if it does not exist
@@ -74,7 +74,7 @@ public:
     [[nodiscard]] virtual std::unique_ptr<Objective> getObjective(std::string name) const = 0;
 
     /**
-     * @brief Gets the Objective currently displayed in a DisplaySlot on this Scoreboard
+     * Gets the Objective currently displayed in a DisplaySlot on this Scoreboard.
      *
      * @param slot The DisplaySlot
      * @return the Objective currently displayed or <code>nullptr</code> if nothing is displayed in that DisplaySlot
@@ -82,14 +82,14 @@ public:
     [[nodiscard]] virtual std::unique_ptr<Objective> getObjective(DisplaySlot slot) const = 0;
 
     /**
-     * @brief Gets all Objectives on this Scoreboard
+     * Gets all Objectives on this Scoreboard.
      *
      * @return A list of all Objectives on this Scoreboard
      */
     [[nodiscard]] virtual std::vector<std::unique_ptr<Objective>> getObjectives() const = 0;
 
     /**
-     * @brief Gets all Objectives of a Criteria on the Scoreboard
+     * Gets all Objectives of a Criteria on the Scoreboard.
      *
      * @param criteria Criteria type to search by
      * @return A list of Objectives using the specified Criteria
@@ -98,7 +98,7 @@ public:
         Criteria::Type criteria) const = 0;
 
     /**
-     * @brief Gets all scores for an entry on this Scoreboard
+     * Gets all scores for an entry on this Scoreboard.
      *
      * @param entry the entry whose scores are being retrieved
      * @return a list of all scores tracked for the entry
@@ -106,21 +106,21 @@ public:
     [[nodiscard]] virtual std::vector<std::unique_ptr<Score>> getScores(ScoreEntry entry) const = 0;
 
     /**
-     * @brief Removes all scores for an entry on this Scoreboard
+     * Removes all scores for an entry on this Scoreboard.
      *
      * @param entry the entry to drop all current scores for
      */
     virtual void resetScores(ScoreEntry entry) = 0;
 
     /**
-     * @brief Gets all entries tracked by this Scoreboard
+     * Gets all entries tracked by this Scoreboard.
      *
      * @return A list of all tracked entries
      */
     [[nodiscard]] virtual std::vector<ScoreEntry> getEntries() const = 0;
 
     /**
-     * @brief Clears any objective in the specified slot.
+     * Clears any objective in the specified slot.
      *
      * @param slot the slot to remove objectives
      */

@@ -27,7 +27,7 @@ class Chunk;
 class Dimension;
 
 /**
- * @brief Represents a 3-dimensional location in a dimension within a level.
+ * Represents a 3-dimensional location in a dimension within a level.
  */
 class Location {
 public:
@@ -39,28 +39,28 @@ public:
     }
 
     /**
-     * @brief Sets the dimension that this position resides in
+     * Sets the dimension that this position resides in.
      *
      * @param dimension New dimension that this position resides in
      */
     void setDimension(Dimension &dimension) { dimension_ = &dimension; }
 
     /**
-     * @brief Gets the dimension that this location resides in
+     * Gets the dimension that this location resides in.
      *
      * @return Dimension that contains this location
      */
     [[nodiscard]] Dimension &getDimension() const { return *dimension_; }
 
     /**
-     * @brief Gets the block at the represented location
+     * Gets the block at the represented location.
      *
      * @return Block at the represented location
      */
     [[nodiscard]] std::unique_ptr<Block> getBlock() const;
 
     /**
-     * @brief Sets the x-coordinate of this location
+     * Sets the x-coordinate of this location.
      *
      * @param x X-coordinate
      */
@@ -71,21 +71,21 @@ public:
     }
 
     /**
-     * @brief Gets the x-coordinate of this location
+     * Gets the x-coordinate of this location.
      *
      * @return x-coordinate
      */
     [[nodiscard]] constexpr float getX() const { return x_; }
 
     /**
-     * @brief Gets the floored value of the X component, indicating the block that this location is contained with.
+     * Gets the floored value of the X component, indicating the block that this location is contained with.
      *
      * @return block X
      */
     [[nodiscard]] int getBlockX() const { return static_cast<int>(std::floorf(x_)); }
 
     /**
-     * @brief Sets the y-coordinate of this location
+     * Sets the y-coordinate of this location.
      *
      * @param y y-coordinate
      */
@@ -96,21 +96,21 @@ public:
     }
 
     /**
-     * @brief Gets the y-coordinate of this location
+     * Gets the y-coordinate of this location.
      *
      * @return y-coordinate
      */
     [[nodiscard]] constexpr float getY() const { return y_; }
 
     /**
-     * @brief Gets the floored value of the Y component, indicating the block that this location is contained with.
+     * Gets the floored value of the Y component, indicating the block that this location is contained with.
      *
      * @return block Y
      */
     [[nodiscard]] int getBlockY() const { return static_cast<int>(std::floorf(y_)); }
 
     /**
-     * @brief Sets the z-coordinate of this location
+     * Sets the z-coordinate of this location.
      *
      * @param z z-coordinate
      */
@@ -121,28 +121,28 @@ public:
     }
 
     /**
-     * @brief Gets the z-coordinate of this location
+     * Gets the z-coordinate of this location.
      *
      * @return z-coordinate
      */
     [[nodiscard]] constexpr float getZ() const { return z_; }
 
     /**
-     * @brief Gets the floored value of the Z component, indicating the block that this location is contained with.
+     * Gets the floored value of the Z component, indicating the block that this location is contained with.
      *
      * @return block Z
      */
     [[nodiscard]] int getBlockZ() const { return static_cast<int>(std::floorf(z_)); }
 
     /**
-     * @brief Gets the pitch of this location, measured in degrees.
+     * Gets the pitch of this location, measured in degrees.
      *
      * @return the incline's pitch
      */
     [[nodiscard]] float getPitch() const { return pitch_; }
 
     /**
-     * @brief Sets the pitch of this location, measured in degrees.
+     * Sets the pitch of this location, measured in degrees.
      *
      * - A pitch of 0 represents level forward facing.
      * - A pitch of 90 represents downward facing, or negative y
@@ -156,14 +156,14 @@ public:
     void setPitch(float pitch) { pitch_ = pitch; }
 
     /**
-     * @brief Gets the yaw of this location, measured in degrees.
+     * Gets the yaw of this location, measured in degrees.
      *
      * @return the rotation's yaw
      */
     [[nodiscard]] float getYaw() const { return yaw_; }
 
     /**
-     * @brief Sets the yaw of this location, measured in degrees.
+     * Sets the yaw of this location, measured in degrees.
      *
      * - A yaw of 0 or 360 represents the positive z direction.
      * - A yaw of 180 represents the negative z direction.
@@ -179,7 +179,7 @@ public:
     void setYaw(float yaw) { yaw_ = yaw; }
 
     /**
-     * @brief Gets a unit-vector pointing in the direction that this Location is facing.
+     * Gets a unit-vector pointing in the direction that this Location is facing.
      *
      * @return a vector pointing the direction of this location's pitch and yaw
      */
@@ -196,7 +196,7 @@ public:
     }
 
     /**
-     * @brief Sets the yaw and pitch to point in the direction of the vector.
+     * Sets the yaw and pitch to point in the direction of the vector.
      *
      * @param vector the direction vector
      * @return the same location
@@ -219,7 +219,7 @@ public:
     }
 
     /**
-     * @brief Gets the magnitude of the location, defined as sqrt(x^2+y^2+z^2).
+     * Gets the magnitude of the location, defined as sqrt(x^2+y^2+z^2).
      *
      * Not world-aware and orientation independent.
      *
@@ -228,7 +228,7 @@ public:
     [[nodiscard]] float length() const { return std::sqrt(lengthSquared()); }
 
     /**
-     * @brief Gets the magnitude of the location squared.
+     * Gets the magnitude of the location squared.
      *
      * Not world-aware and orientation independent.
      *
@@ -237,7 +237,7 @@ public:
     [[nodiscard]] constexpr float lengthSquared() const { return (x_ * x_) + (y_ * y_) + (z_ * z_); }
 
     /**
-     * @brief Get the distance between this location and another.
+     * Get the distance between this location and another.
      *
      * @param other The other location
      * @return the distance
@@ -245,7 +245,7 @@ public:
     [[nodiscard]] float distance(const Location &other) const { return std::sqrt(distanceSquared(other)); }
 
     /**
-     * @brief Get the squared distance between this location and another.
+     * Get the squared distance between this location and another.
      *
      * @param other The other location
      * @return the distance
@@ -295,7 +295,7 @@ public:
     }
 
     /**
-     * @brief Zero this vector's components. Not world-aware.
+     * Zero this vector's components. Not world-aware.
      *
      * @return the same location
      */
@@ -320,7 +320,7 @@ public:
     operator Vector() const noexcept { return {x_, y_, z_}; }
 
     /**
-     * @brief Normalizes the given yaw angle to a value between <code>+/-180</code> degrees.
+     * Normalizes the given yaw angle to a value between <code>+/-180</code> degrees.
      *
      * @param yaw the yaw in degrees
      * @return the normalized yaw in degrees
@@ -338,7 +338,7 @@ public:
     }
 
     /**
-     * @brief Normalizes the given pitch angle to a value between <code>+/-90</code> degrees.
+     * Normalizes the given pitch angle to a value between <code>+/-90</code> degrees.
      *
      * @param pitch the pitch in degrees
      * @return the normalized pitch in degrees

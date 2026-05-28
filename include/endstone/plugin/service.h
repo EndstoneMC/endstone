@@ -17,7 +17,7 @@
 #include <memory>
 namespace endstone {
 /**
- * @brief Services represent a list of methods.
+ * Services represent a list of methods.
  */
 class Service : public std::enable_shared_from_this<Service> {
 public:

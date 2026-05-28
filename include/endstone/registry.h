@@ -43,7 +43,7 @@ protected:
 };
 
 /**
- * @brief Abstract registry interface for objects with identifiers.
+ * Abstract registry interface for objects with identifiers.
  *
  * Provides lookup by identifier (nullable or exception-throwing) and iteration.
  *
@@ -53,7 +53,7 @@ template <typename T>
 class Registry : public IRegistry {
 public:
     /**
-     * @brief CRTP base for registry-backed types identified by an Identifier.
+     * CRTP base for registry-backed types identified by an Identifier.
      *
      * Provides getId(), getTranslationKey() pure virtual declarations,
      * comparison operators, implicit conversion to Id, and a static get() method.
@@ -65,21 +65,21 @@ public:
         virtual ~Type() = default;
 
         /**
-         * @brief Return the identifier of this object.
+         * Return the identifier of this object.
          *
          * @return this object's identifier
          */
         [[nodiscard]] virtual Id getId() const = 0;
 
         /**
-         * @brief Get the translation key, suitable for use in a translation component.
+         * Get the translation key, suitable for use in a translation component.
          *
          * @return the translation key
          */
         [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
         /**
-         * @brief Look up a registry entry by identifier.
+         * Look up a registry entry by identifier.
          *
          * @param id Identifier to look up.
          * @return Pointer to the entry, or nullptr if not found.
@@ -97,7 +97,7 @@ public:
     };
 
     /**
-     * @brief Get the object by its identifier.
+     * Get the object by its identifier.
      *
      * Returns a raw pointer to the object, or nullptr if not found.
      *
@@ -107,7 +107,7 @@ public:
     virtual T *get(Identifier<T> id) noexcept = 0;
 
     /**
-     * @brief Get the object by its identifier.
+     * Get the object by its identifier.
      *
      * Returns a raw pointer to the object, or nullptr if not found.
      *
@@ -117,7 +117,7 @@ public:
     virtual const T *get(Identifier<T> id) const noexcept = 0;
 
     /**
-     * @brief Get the object by its identifier or throw if missing.
+     * Get the object by its identifier or throw if missing.
      *
      * @param id identifier of the object to retrieve.
      * @return T& Reference to the object with the given identifier.
@@ -132,7 +132,7 @@ public:
     }
 
     /**
-     * @brief Get the object by its identifier or throw if missing.
+     * Get the object by its identifier or throw if missing.
      *
      * @param id identifier of the object to retrieve.
      * @return const T& Const reference to the object with the given identifier.
@@ -147,7 +147,7 @@ public:
     }
 
     /**
-     * @brief Apply a function to each stored element.
+     * Apply a function to each stored element.
      *
      * Iterates over all stored elements and applies the provided function to them.
      * The iteration continues until the function returns false or all elements

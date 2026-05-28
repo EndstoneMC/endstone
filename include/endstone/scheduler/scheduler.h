@@ -24,7 +24,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a scheduler that executes various tasks.
+ * Represents a scheduler that executes various tasks.
  */
 class Scheduler {
 public:
@@ -63,7 +63,7 @@ public:
                                                std::uint64_t period) = 0;
 
     /**
-     * @brief Returns a task that will be executed asynchronously on the next server tick.
+     * Returns a task that will be executed asynchronously on the next server tick.
      * @remark Asynchronous tasks should never access any Endstone API
      *
      * @param plugin the reference to the plugin scheduling task
@@ -73,7 +73,7 @@ public:
     virtual std::shared_ptr<Task> runTaskAsync(Plugin &plugin, std::function<void()> task) = 0;
 
     /**
-     * @brief Returns a task that will be executed asynchronously after the specified number of server ticks.
+     * Returns a task that will be executed asynchronously after the specified number of server ticks.
      * @remark Asynchronous tasks should never access any Endstone API
      *
      * @param plugin the reference to the plugin scheduling task
@@ -85,7 +85,7 @@ public:
                                                     std::uint64_t delay) = 0;
 
     /**
-     * @brief Returns a task that will be executed repeatedly (and asynchronously) until cancelled, starting after the
+     * Returns a task that will be executed repeatedly (and asynchronously) until cancelled, starting after the
      * specified number of server ticks.
      * @remark Asynchronous tasks should never access any Endstone API
      *
@@ -101,7 +101,7 @@ public:
     /**
      * Removes task from scheduler.
      *
-     * @param taskId Id number of task to be removed
+     * @param id Id number of task to be removed
      */
     virtual void cancelTask(TaskId id) = 0;
 
@@ -116,8 +116,7 @@ public:
     /**
      * Check if the task currently running.
      *
-     * @param taskId The task to check.
-     *
+     * @param id The id of the task to check.
      * @return If the task is currently running.
      */
     virtual bool isRunning(TaskId id) = 0;
@@ -125,8 +124,7 @@ public:
     /**
      * Check if the task queued to be run later.
      *
-     * @param taskId The task to check.
-     *
+     * @param id The id of the task to check.
      * @return If the task is queued to be run.
      */
     virtual bool isQueued(TaskId id) = 0;

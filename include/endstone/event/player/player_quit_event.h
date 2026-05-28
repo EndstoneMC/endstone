@@ -22,7 +22,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player leaves a server.
+ * Called when a player leaves a server.
  */
 class PlayerQuitEvent : public PlayerEvent {
 public:
@@ -34,14 +34,14 @@ public:
     }
 
     /**
-     * @brief Gets the quit message to send to all online players.
+     * Gets the quit message to send to all online players.
      *
      * @return Message to appear to other players on the server.
      */
     [[nodiscard]] std::optional<Message> getQuitMessage() const { return quit_message_; }
 
     /**
-     * @brief Sets the quit message to send to all online players.
+     * Sets the quit message to send to all online players.
      *
      * @param message Message to appear to other players on the server.
      */

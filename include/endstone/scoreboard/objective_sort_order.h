@@ -17,15 +17,15 @@
 namespace endstone {
 
 /**
- * @brief Represents the sort order of objectives on a DisplaySlot.
+ * Represents the sort order of objectives on a DisplaySlot.
  */
 enum class ObjectiveSortOrder {
     /**
-     * @brief Sorts the objectives in the ascending order
+     * Sorts the objectives in the ascending order.
      */
     Ascending,
     /**
-     * @brief Sorts the objectives in the descending order
+     * Sorts the objectives in the descending order.
      */
     Descending,
 };

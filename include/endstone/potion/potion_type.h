@@ -19,7 +19,7 @@
 namespace endstone {
 using PotionId = Identifier<class PotionType>;
 /**
- * @brief All potion types.
+ * All potion types.
  */
 class PotionType {
     static constexpr std::string_view Minecraft = "minecraft:potion_type";

@@ -16,7 +16,7 @@
 
 namespace endstone {
 /**
- * @brief Represents the face of a block
+ * Represents the face of a block.
  */
 enum class BlockFace {
     Down,

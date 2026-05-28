@@ -21,13 +21,13 @@
 namespace endstone {
 
 /**
- * @brief Represents a scoreboard criteria.
+ * Represents a scoreboard criteria.
  */
 class Criteria {
 public:
     enum class Type {
         /**
-         * @brief The dummy criteria. Not changed by the server.
+         * The dummy criteria. Not changed by the server.
          */
         Dummy,
     };
@@ -35,14 +35,14 @@ public:
     virtual ~Criteria() = default;
 
     /**
-     * @brief Get the name of this criteria (its unique id).
+     * Get the name of this criteria (its unique id).
      *
      * @return the name
      */
     [[nodiscard]] virtual std::string getName() const = 0;
 
     /**
-     * @brief Get whether or not this criteria is read only. If read only, scoreboards with this criteria cannot have
+     * Get whether or not this criteria is read only. If read only, scoreboards with this criteria cannot have
      * their scores changed.
      *
      * @return true if read only, false otherwise

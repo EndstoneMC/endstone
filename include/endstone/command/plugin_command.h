@@ -26,7 +26,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a Command belonging to a Plugin.
+ * Represents a Command belonging to a Plugin.
  */
 class PluginCommand : public Command {
 public:
@@ -56,14 +56,14 @@ public:
     }
 
     /**
-     * Sets the CommandExecutor to run when parsing this command
+     * Sets the CommandExecutor to run when parsing this command.
      *
      * @param executor New executor to run
      */
     virtual void setExecutor(std::shared_ptr<CommandExecutor> executor) { executor_ = std::move(executor); }
 
     /**
-     * Gets the CommandExecutor associated with this command
+     * Gets the CommandExecutor associated with this command.
      *
      * @return CommandExecutor object linked to this command
      */
@@ -76,7 +76,7 @@ public:
     }
 
     /**
-     * Gets the owner of this PluginCommand
+     * Gets the owner of this PluginCommand.
      *
      * @return Plugin that owns this command
      */

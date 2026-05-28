@@ -25,7 +25,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a captured state of a block, which will not update automatically.
+ * Represents a captured state of a block, which will not update automatically.
  *
  * <p>
  * Unlike Block, which only one object can exist per coordinate, BlockState can exist multiple times for any given
@@ -37,77 +37,77 @@ public:
     virtual ~BlockState() = default;
 
     /**
-     * @brief Gets the block represented by this block state.
+     * Gets the block represented by this block state.
      *
      * @return the block represented by this block state
      */
     [[nodiscard]] virtual std::unique_ptr<Block> getBlock() const = 0;
 
     /**
-     * @brief Gets the type of this block state.
+     * Gets the type of this block state.
      *
      * @return block type
      */
     [[nodiscard]] virtual std::string getType() const = 0;
 
     /**
-     * @brief Sets the type of this block state.
+     * Sets the type of this block state.
      *
      * @param type Block type to change this block state to
      */
     virtual void setType(std::string type) = 0;
 
     /**
-     * @brief Gets the data for this block state.
+     * Gets the data for this block state.
      *
      * @return block specific data
      */
     [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
 
     /**
-     * @brief Sets the data for this block state.
+     * Sets the data for this block state.
      *
      * @param data New block specific data
      */
     virtual void setData(const BlockData &data) = 0;
 
     /**
-     * @brief Gets the dimension which contains the block represented by this block state.
+     * Gets the dimension which contains the block represented by this block state.
      *
      * @return the dimension containing the block represented by this block state
      */
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
 
     /**
-     * @brief Gets the x-coordinate of this block state.
+     * Gets the x-coordinate of this block state.
      *
      * @return x-coordinate
      */
     [[nodiscard]] virtual int getX() const = 0;
 
     /**
-     * @brief Gets the y-coordinate of this block state.
+     * Gets the y-coordinate of this block state.
      *
      * @return y-coordinate
      */
     [[nodiscard]] virtual int getY() const = 0;
 
     /**
-     * @brief Gets the z-coordinate of this block state.
+     * Gets the z-coordinate of this block state.
      *
      * @return z-coordinate
      */
     [[nodiscard]] virtual int getZ() const = 0;
 
     /**
-     * @brief Gets the location of this block state.
+     * Gets the location of this block state.
      *
      * @return the location
      */
     [[nodiscard]] virtual Location getLocation() const = 0;
 
     /**
-     * @brief Attempts to update the block represented by this state, setting it to yhe new values as defined by this
+     * Attempts to update the block represented by this state, setting it to yhe new values as defined by this
      * state. <p> This has the same effect as calling update(false). That is to say, this will not modify the state of a
      * block if it is no longer the same type as it was when this state was taken. It will return false in this
      * eventuality.
@@ -117,7 +117,7 @@ public:
     virtual bool update() = 0;
 
     /**
-     * @brief Attempts to update the block represented by this state, setting it to the new values as defined by this
+     * Attempts to update the block represented by this state, setting it to the new values as defined by this
      * state. <p> This has the same effect as calling update(force, true). That is to say, this will trigger a physics
      * update to surrounding blocks.
      *
@@ -127,7 +127,7 @@ public:
     virtual bool update(bool force) = 0;
 
     /**
-     * @brief Attempts to update the block represented by this state, setting it to the new values as defined by this
+     * Attempts to update the block represented by this state, setting it to the new values as defined by this
      * state. <p> Unless force is true, this will not modify the state of a block if it is no longer the same type as it
      * was when this state was taken. It will return false in this eventuality. <p> If force is true, it will set the
      * type of the block to match the new state, set the state data and then return true. <p> If apply_physics is true,

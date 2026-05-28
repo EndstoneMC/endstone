@@ -21,7 +21,7 @@
 namespace endstone {
 using EffectId = Identifier<class EffectType>;
 /**
- * @brief All effect types.
+ * All effect types.
  */
 class EffectType {
 public:
@@ -148,7 +148,7 @@ public:
     static constexpr auto Levitation = EffectId::minecraft("levitation");
 
     /**
-     * Inflicts damage to the entity over time, and can kill both undead and non-undead mobs, similar to Wither
+     * Inflicts damage to the entity over time, and can kill both undead and non-undead mobs, similar to Wither.
      */
     static constexpr auto FatalPoison = EffectId::minecraft("fatal_poison");
 

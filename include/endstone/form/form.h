@@ -24,7 +24,7 @@ namespace endstone {
 class Player;
 
 /**
- * @brief Represents a generic form.
+ * Represents a generic form.
  *
  * The Form class provides a base abstraction for different types of forms.
  * It supports three types of forms: Action, Message, and Modal.
@@ -37,14 +37,14 @@ public:
     explicit Form() = default;
 
     /**
-     * @brief Gets the title of the form.
+     * Gets the title of the form.
      *
      * @return The title of the form.
      */
     [[nodiscard]] Message getTitle() const { return title_; }
 
     /**
-     * @brief Sets the title of the form.
+     * Sets the title of the form.
      *
      * @param title The title of the form to be set.
      * @return A reference to the current form.
@@ -56,7 +56,7 @@ public:
     }
 
     /**
-     * @brief Sets the on close callback of the form.
+     * Sets the on close callback of the form.
      *
      * @param on_close The callback to be set.
      * @return A reference to the current form.
@@ -68,7 +68,7 @@ public:
     }
 
     /**
-     * @brief Gets the on close callback of the form.
+     * Gets the on close callback of the form.
      *
      * @return The on close callback of the form.
      */

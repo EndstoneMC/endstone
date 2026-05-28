@@ -16,7 +16,7 @@
 
 namespace endstone {
 /**
- * @brief Helper type for visitors.
+ * Helper type for visitors.
  * @tparam Func Types of function objects.
  */
 template <typename... Func>
@@ -25,7 +25,7 @@ struct overloaded : Func... {
 };
 
 /**
- * @brief Deduction guide.
+ * Deduction guide.
  * @tparam Func Types of function objects.
  */
 template <typename... Func>

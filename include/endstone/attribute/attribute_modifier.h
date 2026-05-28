@@ -19,25 +19,25 @@
 
 namespace endstone {
 /**
- * @brief Represents an attribute modifier.
+ * Represents an attribute modifier.
  */
 class AttributeModifier {
 public:
     /**
-     * @brief Operation to be applied.
+     * Operation to be applied.
      */
     enum class Operation {
         /**
-         * @brief Adds (or subtracts) the specified amount to the base value.
+         * Adds (or subtracts) the specified amount to the base value.
          */
         Add,
         /**
-         * @brief Multiplies the current value of the attribute by (1 + x),
+         * Multiplies the current value of the attribute by (1 + x),
          *        where x is the sum of the modifiers' amounts.
          */
         MultiplyBase,
         /**
-         * @brief For every modifier, multiplies the current value of the attribute by (1 + x),
+         * For every modifier, multiplies the current value of the attribute by (1 + x),
          *        where x is the amount of the particular modifier.
          *
          * @note Functions the same as MultiplyBase if there is only a single modifier.
@@ -57,28 +57,28 @@ public:
     }
 
     /**
-     * @brief Get the unique ID for this modifier.
+     * Get the unique ID for this modifier.
      *
      * @return unique id
      */
     [[nodiscard]] UUID getUniqueId() const { return uuid_; }
 
     /**
-     * @brief Get the name of this modifier.
+     * Get the name of this modifier.
      *
      * @return name
      */
     [[nodiscard]] std::string getName() const { return name_; }
 
     /**
-     * @brief Get the amount by which this modifier will apply the operation.
+     * Get the amount by which this modifier will apply the operation.
      *
      * @return modification amount
      */
     [[nodiscard]] float getAmount() const { return amount_; }
 
     /**
-     * @brief Get the operation this modifier will apply.
+     * Get the operation this modifier will apply.
      *
      * @return operation
      */

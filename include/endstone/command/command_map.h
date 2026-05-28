@@ -25,7 +25,7 @@ namespace endstone {
 class Command;
 
 /**
- * @brief Represents a command map that manages all commands of the Server.
+ * Represents a command map that manages all commands of the Server.
  */
 class CommandMap {
 public:
@@ -46,7 +46,7 @@ public:
     virtual bool registerCommand(std::shared_ptr<Command> command) = 0;
 
     /**
-     * @brief Looks for the requested command and executes it if found.
+     * Looks for the requested command and executes it if found.
      *
      * @param sender The command's sender
      * @param command_line command + arguments. Example: "/test abc 123"
@@ -60,7 +60,7 @@ public:
     virtual void clearCommands() = 0;
 
     /**
-     * Gets the command registered to the specified name
+     * Gets the command registered to the specified name.
      *
      * @param name Name of the command to retrieve
      * @return Command with the specified name or nullptr if a command with that label doesn't exist

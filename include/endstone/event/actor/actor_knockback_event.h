@@ -21,7 +21,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a living entity receives knockback.
+ * Called when a living entity receives knockback.
  */
 class ActorKnockbackEvent : public Cancellable<ActorEvent<Mob>> {
 public:
@@ -33,7 +33,7 @@ public:
     }
 
     /**
-     * @brief Get the source actor that has caused knockback to the defender, if exists.
+     * Get the source actor that has caused knockback to the defender, if exists.
      *
      * @return actor that caused knockback, or nullptr if the knockback is not caused by an actor.
      */
@@ -43,14 +43,14 @@ public:
      * Gets the knockback that will be applied to the entity.
      *
      * <p>
-     * <b>Note:</b> this method returns a copy, changes must be applied with setKnockback(Vector)
+     * <b>Note:</b> this method returns a copy; changes must be applied via setKnockback().
      *
      * @return the knockback
      */
     [[nodiscard]] Vector getKnockback() const { return knockback_; }
 
     /**
-     * @brief Sets the knockback that will be applied to the entity.
+     * Sets the knockback that will be applied to the entity.
      *
      * @param knockback the knockback to apply
      */

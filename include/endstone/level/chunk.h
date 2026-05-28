@@ -19,35 +19,35 @@
 namespace endstone {
 
 /**
- * @brief Represents a chunk of blocks.
+ * Represents a chunk of blocks.
  */
 class Chunk {
 public:
     virtual ~Chunk() = default;
 
     /**
-     * @brief Gets the X-coordinate of this chunk
+     * Gets the X-coordinate of this chunk.
      *
      * @return X-coordinate
      */
     [[nodiscard]] virtual int getX() const = 0;
 
     /**
-     * @brief Gets the Z-coordinate of this chunk
+     * Gets the Z-coordinate of this chunk.
      *
      * @return Z-coordinate
      */
     [[nodiscard]] virtual int getZ() const = 0;
 
     /**
-     * @brief Gets the level containing this chunk
+     * Gets the level containing this chunk.
      *
      * @return Parent Level
      */
     [[nodiscard]] virtual Level &getLevel() const = 0;
 
     /**
-     * @brief Gets the dimension containing this chunk
+     * Gets the dimension containing this chunk.
      *
      * @return Parent Dimension
      */

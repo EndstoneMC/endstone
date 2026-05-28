@@ -18,7 +18,7 @@
 
 namespace endstone {
 /**
- * @brief Called when a block is formed or spreads based on world conditions.
+ * Called when a block is formed or spreads based on world conditions.
  *
  * Use BlockSpreadEvent to catch blocks that actually spread and don't just "randomly" form.
  *

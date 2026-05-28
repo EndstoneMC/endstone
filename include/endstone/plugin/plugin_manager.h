@@ -32,7 +32,7 @@ class Plugin;
 class PluginLoader;
 
 /**
- * @brief Represents a plugin manager that handles all plugins from the Server.
+ * Represents a plugin manager that handles all plugins from the Server.
  */
 class PluginManager {
 public:
@@ -42,7 +42,7 @@ public:
     virtual ~PluginManager() = default;
 
     /**
-     * Registers the specified plugin loader
+     * Registers the specified plugin loader.
      *
      * @param loader PluginLoader to register
      */
@@ -50,7 +50,8 @@ public:
 
     /**
      * Checks if the given plugin is loaded and returns it when applicable.
-     * Please note that the name of the plugin is case-sensitive
+     *
+     * Please note that the name of the plugin is case-sensitive.
      *
      * @param name Name of the plugin to check
      * @return Plugin if it exists, otherwise nullptr
@@ -58,14 +59,15 @@ public:
     [[nodiscard]] virtual Plugin *getPlugin(const std::string &name) const = 0;
 
     /**
-     * Gets a list of all currently loaded plugins
+     * Gets a list of all currently loaded plugins.
      *
      * @return List of Plugins
      */
     [[nodiscard]] virtual std::vector<Plugin *> getPlugins() const = 0;
 
     /**
-     * Checks if the given plugin is enabled or not
+     * Checks if the given plugin is enabled or not.
+     *
      * Please note that the name of the plugin is case-sensitive.
      *
      * @param name Name of the plugin to check
@@ -74,7 +76,7 @@ public:
     [[nodiscard]] virtual bool isPluginEnabled(const std::string &name) const = 0;
 
     /**
-     * Checks if the given plugin is enabled or not
+     * Checks if the given plugin is enabled or not.
      *
      * @param plugin Plugin to check
      * @return true if the plugin is enabled, otherwise false
@@ -82,7 +84,7 @@ public:
     [[nodiscard]] virtual bool isPluginEnabled(Plugin *plugin) const = 0;
 
     /**
-     * Loads the plugin in the specified file
+     * Loads the plugin in the specified file.
      *
      * File must be valid according to the current enabled Plugin interfaces
      *
@@ -92,7 +94,7 @@ public:
     virtual Plugin *loadPlugin(std::string file) = 0;
 
     /**
-     * Loads the plugin contained within the specified directory
+     * Loads the plugin contained within the specified directory.
      *
      * @param directory Directory to check for plugins
      * @return A list of all plugins loaded
@@ -100,7 +102,7 @@ public:
     virtual std::vector<Plugin *> loadPlugins(std::string directory) = 0;
 
     /**
-     * Loads the plugins in the list of the files
+     * Loads the plugins in the list of the files.
      *
      * @param files List of files containing plugins to load
      * @return A list of all plugins loaded
@@ -108,33 +110,35 @@ public:
     virtual std::vector<Plugin *> loadPlugins(std::vector<std::string> files) = 0;
 
     /**
-     * Enables the specified plugin
-     * Attempting to enable a plugin that is already enabled will have no effect
+     * Enables the specified plugin.
+     *
+     * Attempting to enable a plugin that is already enabled will have no effect.
      *
      * @param plugin Plugin to enable
      */
     virtual void enablePlugin(Plugin &plugin) const = 0;
 
     /**
-     * Enable all the loaded plugins
+     * Enable all the loaded plugins.
      */
     virtual void enablePlugins() const = 0;
 
     /**
-     * Disables the specified plugin
-     * Attempting to disable a plugin that is not enabled will have no effect
+     * Disables the specified plugin.
+     *
+     * Attempting to disable a plugin that is not enabled will have no effect.
      *
      * @param plugin Plugin to disable
      */
     virtual void disablePlugin(Plugin &plugin) = 0;
 
     /**
-     * Disables all the loaded plugins
+     * Disables all the loaded plugins.
      */
     virtual void disablePlugins() = 0;
 
     /**
-     * Disables and removes all plugins
+     * Disables and removes all plugins.
      */
     virtual void clearPlugins() = 0;
 
@@ -146,7 +150,7 @@ public:
     virtual void callEvent(Event &event) = 0;
 
     /**
-     * Registers the given event
+     * Registers the given event.
      *
      * @param event Event name to register
      * @param executor EventExecutor to register
@@ -159,10 +163,10 @@ public:
                                Plugin &plugin, bool ignore_cancelled) = 0;
 
     /**
-     * Gets a Permission from its fully qualified name
+     * Gets a Permission from its fully qualified name.
      *
      * @param name Name of the permission
-     * @return Permission, or null if none
+     * @return Permission, or nullptr if none
      */
     [[nodiscard]] virtual Permission *getPermission(std::string name) const = 0;
 
@@ -170,7 +174,8 @@ public:
      * Adds a Permission to this plugin manager.
      *
      * @param perm Permission to add
-     * @return Permission, or nullptr if a permission is already defined with the given name of the new permission
+     * @return A reference to the newly added permission.
+     * @throws std::runtime_error if a permission with the same name is already defined.
      */
     virtual Permission &addPermission(std::unique_ptr<Permission> perm) = 0;
 
@@ -195,7 +200,7 @@ public:
     virtual void removePermission(std::string name) = 0;
 
     /**
-     * Gets the default permissions for the given permission level
+     * Gets the default permissions for the given permission level.
      *
      * @param level Which set of default permissions to get
      * @return The default permissions
@@ -229,7 +234,7 @@ public:
     virtual void unsubscribeFromPermission(std::string permission, Permissible &permissible) = 0;
 
     /**
-     * Gets a set containing all subscribed Permissibles to the given permission, by name
+     * Gets a set containing all subscribed Permissibles to the given permission, by name.
      *
      * @param permission Permission to query for
      * @return Set containing all subscribed permissions
@@ -238,7 +243,7 @@ public:
         std::string permission) const = 0;
 
     /**
-     * Subscribes to the given Default permissions by permission level
+     * Subscribes to the given Default permissions by permission level.
      *
      * If the specified defaults change in any form, the Permissible will be asked to recalculate.
      *
@@ -248,7 +253,7 @@ public:
     virtual void subscribeToDefaultPerms(PermissionLevel level, Permissible &permissible) = 0;
 
     /**
-     * Unsubscribes from the given Default permissions by permission level
+     * Unsubscribes from the given Default permissions by permission level.
      *
      * @param level Default list to unsubscribe from
      * @param permissible Permissible subscribing
@@ -256,7 +261,7 @@ public:
     virtual void unsubscribeFromDefaultPerms(PermissionLevel level, Permissible &permissible) = 0;
 
     /**
-     * Gets a set containing all subscribed Permissibles to the given default list, by permission level
+     * Gets a set containing all subscribed Permissibles to the given default list, by permission level.
      *
      * @param level Default list to query for
      * @return Set containing all subscribed permissions

@@ -37,7 +37,7 @@ class EndstonePluginManager;
 }
 
 /**
- * @brief Represents a Plugin.
+ * Represents a Plugin.
  */
 class Plugin : public CommandExecutor {
 public:
@@ -48,14 +48,14 @@ public:
     ~Plugin() override = default;
 
     /**
-     * @brief Returns the details of this plugin
+     * Returns the details of this plugin.
      *
      * @return Details of this plugin
      */
     [[nodiscard]] virtual const PluginDescription &getDescription() const = 0;
 
     /**
-     * @brief Called after a plugin is loaded but before it has been enabled.
+     * Called after a plugin is loaded but before it has been enabled.
      *
      * When multiple plugins are loaded, the onLoad() for all plugins is
      * called before any onEnable() is called.
@@ -63,17 +63,17 @@ public:
     virtual void onLoad() {}
 
     /**
-     * @brief Called when this plugin is enabled
+     * Called when this plugin is enabled.
      */
     virtual void onEnable() {}
 
     /**
-     * @brief Called when this plugin is disabled
+     * Called when this plugin is disabled.
      */
     virtual void onDisable() {}
 
     /**
-     * @brief Returns the plugin logger associated with this server's logger. The
+     * Returns the plugin logger associated with this server's logger. The
      * returned logger automatically tags all log messages with the plugin's
      * name.
      *
@@ -82,29 +82,28 @@ public:
     [[nodiscard]] Logger &getLogger() const { return *logger_; }
 
     /**
-     * @brief Returns a value indicating whether this plugin is currently
-     * enabled
+     * Returns a value indicating whether this plugin is currently enabled.
      *
      * @return true if this plugin is enabled, otherwise false
      */
     [[nodiscard]] bool isEnabled() const { return enabled_; }
 
     /**
-     * @brief Gets the associated PluginLoader responsible for this plugin
+     * Gets the associated PluginLoader responsible for this plugin.
      *
      * @return PluginLoader that controls this plugin
      */
     [[nodiscard]] PluginLoader &getPluginLoader() const { return *loader_; }
 
     /**
-     * @brief Returns the Server instance currently running this plugin
+     * Returns the Server instance currently running this plugin.
      *
      * @return Server running this plugin
      */
     [[nodiscard]] Server &getServer() const { return *server_; }
 
     /**
-     * @brief Returns the name of the plugin.
+     * Returns the name of the plugin.
      *
      * This should return the bare name of the plugin and should be used for
      * comparison.
@@ -114,10 +113,10 @@ public:
     [[nodiscard]] std::string getName() const { return getDescription().getName(); };
 
     /**
-     * @brief Gets the command with the given name, specific to this plugin.
+     * Gets the command with the given name, specific to this plugin.
      *
      * @param name name or alias of the command
-     * @return the plugin command if found, otherwise null
+     * @return the plugin command if found, otherwise nullptr
      */
     [[nodiscard]] PluginCommand *getCommand(std::string name) const
     {
@@ -126,7 +125,7 @@ public:
     }
 
     /**
-     * @brief Returns the folder that the plugin data's files are located in.
+     * Returns the folder that the plugin data's files are located in.
      * The folder may not yet exist.
      *
      * @return The folder
@@ -156,7 +155,7 @@ protected:
     friend class core::EndstonePluginManager;
 
     /**
-     * Sets the enabled state of this plugin
+     * Sets the enabled state of this plugin.
      *
      * @param enabled true if enabled, otherwise false
      */

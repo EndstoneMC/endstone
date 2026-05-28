@@ -21,41 +21,41 @@
 
 namespace endstone {
 /**
- * @brief Represents the metadata for a map item.
+ * Represents the metadata for a map item.
  */
 class MapMeta : public ItemMeta {
 public:
     using MapId = std::int64_t;
     /**
-     * @brief Checks for existence of a map ID number.
+     * Checks for existence of a map ID number.
      *
      * @return true if this has a map ID number.
      */
     [[nodiscard]] virtual bool hasMapId() const = 0;
 
     /**
-     * @brief Gets the map ID that is set. This is used to determine what map is displayed.
+     * Gets the map ID that is set. This is used to determine what map is displayed.
      *
      * @return the map ID that is set
      */
     [[nodiscard]] virtual MapId getMapId() const = 0;
 
     /**
-     * @brief Sets the map ID. This is used to determine what map is displayed.
+     * Sets the map ID. This is used to determine what map is displayed.
      *
      * @param id the map id to set
      */
     virtual void setMapId(MapId id) = 0;
 
     /**
-     * @brief Checks for existence of an associated map.
+     * Checks for existence of an associated map.
      *
      * @return true if this item has an associated map
      */
     [[nodiscard]] virtual bool hasMapView() const = 0;
 
     /**
-     * @brief Gets the map view associated with this map item.
+     * Gets the map view associated with this map item.
      *
      * @note Plugins should check that hasMapView() returns true before calling this method.
      *
@@ -64,7 +64,7 @@ public:
     [[nodiscard]] virtual MapView *getMapView() const = 0;
 
     /**
-     * @brief Sets the associated map. This is used to determine what map is displayed.
+     * Sets the associated map. This is used to determine what map is displayed.
      *
      * @param map the map to set
      */

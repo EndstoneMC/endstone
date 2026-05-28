@@ -280,7 +280,7 @@ public:
     }
 
     /**
-     * @brief Serialize this tag to binary NBT with an empty root name.
+     * Serialize this tag to binary NBT with an empty root name.
      *
      * @param byte_order std::endian::little (Bedrock) or std::endian::big (Java).
      * @param network If true, use Bedrock network varint encoding.
@@ -290,7 +290,7 @@ public:
     [[nodiscard]] std::string dump(std::endian byte_order = std::endian::little, bool network = false) const;
 
     /**
-     * @brief Serialize this tag to binary NBT with a root name.
+     * Serialize this tag to binary NBT with a root name.
      *
      * @param name The root tag name.
      * @param byte_order std::endian::little (Bedrock) or std::endian::big (Java).

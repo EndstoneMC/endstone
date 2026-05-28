@@ -18,7 +18,7 @@
 
 namespace endstone {
 /**
- * @brief Represents an actor type.
+ * Represents an actor type.
  */
 class ActorType;
 using ActorTypeId = Identifier<ActorType>;

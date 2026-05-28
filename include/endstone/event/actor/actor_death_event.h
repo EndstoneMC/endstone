@@ -24,7 +24,7 @@
 namespace endstone {
 
 /**
- * @brief Called when an Actor dies
+ * Called when an Actor dies.
  */
 class ActorDeathEvent : public ActorEvent<Mob> {
 public:
@@ -35,7 +35,7 @@ public:
     }
 
     /**
-     * @brief Gets the source of damage which caused the death.
+     * Gets the source of damage which caused the death.
      *
      * @return a DamageSource detailing the source of the damage for the death.
      */

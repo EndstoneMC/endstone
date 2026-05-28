@@ -17,7 +17,7 @@
 namespace endstone {
 
 /**
- * @brief Represents the various type of game modes that Players may have.
+ * Represents the various type of game modes that Players may have.
  */
 enum class GameMode {
     /**

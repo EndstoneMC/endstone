@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a map is initialized.
+ * Called when a map is initialized.
  */
 class MapInitializeEvent : public ServerEvent {
 public:
@@ -32,7 +32,7 @@ public:
     explicit MapInitializeEvent(MapView &map) : map_(map) {}
 
     /**
-     * @brief Gets the map initialized in this event.
+     * Gets the map initialized in this event.
      *
      * @return Map for this event
      */

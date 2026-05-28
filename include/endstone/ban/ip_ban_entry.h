@@ -21,14 +21,14 @@
 
 namespace endstone {
 /**
- * @brief Represents an entry for a banned IP address.
+ * Represents an entry for a banned IP address.
  */
 class IpBanEntry : public BanEntry {
 public:
     explicit IpBanEntry(std::string address) : address_(std::move(address)) {}
 
     /**
-     * @brief Gets the banned IP address.
+     * Gets the banned IP address.
      *
      * @return the IP address
      */

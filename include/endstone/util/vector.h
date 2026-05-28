@@ -23,17 +23,17 @@
 namespace endstone {
 
 /**
- * @brief Represents a 3-dimensional vector.
+ * Represents a 3-dimensional vector.
  */
 class Vector {
 public:
     /**
-     * @brief Construct the vector with all components as 0.
+     * Construct the vector with all components as 0.
      */
     constexpr Vector() = default;
 
     /**
-     * @brief Construct the vector with provided components.
+     * Construct the vector with provided components.
      *
      * @param x X component
      * @param y Y component
@@ -50,14 +50,14 @@ public:
     Vector &operator=(Vector &&other) noexcept = default;
 
     /**
-     * @brief Gets the X component.
+     * Gets the X component.
      *
      * @return The X component.
      */
     [[nodiscard]] constexpr float getX() const { return x_; }
 
     /**
-     * @brief Set the X component.
+     * Set the X component.
      *
      * @param x The new X component.
      * @return This vector.
@@ -70,14 +70,14 @@ public:
     }
 
     /**
-     * @brief Gets the Y component.
+     * Gets the Y component.
      *
      * @return The Y component.
      */
     [[nodiscard]] constexpr float getY() const { return y_; }
 
     /**
-     * @brief Set the Y component.
+     * Set the Y component.
      *
      * @param y The new Y component.
      * @return This vector.
@@ -90,14 +90,14 @@ public:
     }
 
     /**
-     * @brief Gets the Z component.
+     * Gets the Z component.
      *
      * @return The Z component.
      */
     [[nodiscard]] constexpr float getZ() const { return z_; }
 
     /**
-     * @brief Set the Z component.
+     * Set the Z component.
      *
      * @param z The new Z component.
      * @return This vector.
@@ -110,21 +110,21 @@ public:
     }
 
     /**
-     * @brief Gets the floored value of the X component, indicating the block that this vector is contained with.
+     * Gets the floored value of the X component, indicating the block that this vector is contained with.
      *
      * @return block X
      */
     [[nodiscard]] int getBlockX() const { return static_cast<int>(std::floor(x_)); }
 
     /**
-     * @brief Gets the floored value of the Y component, indicating the block that this vector is contained with.
+     * Gets the floored value of the Y component, indicating the block that this vector is contained with.
      *
      * @return block y
      */
     [[nodiscard]] int getBlockY() const { return static_cast<int>(std::floor(y_)); }
 
     /**
-     * @brief Gets the floored value of the Z component, indicating the block that this vector is contained with.
+     * Gets the floored value of the Z component, indicating the block that this vector is contained with.
      *
      * @return block z
      */
@@ -240,21 +240,21 @@ public:
     bool operator!=(const Vector &other) const noexcept { return !(*this == other); }
 
     /**
-     * @brief Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2).
+     * Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2).
      *
      * @return the magnitude
      */
     [[nodiscard]] float length() const { return std::sqrt(lengthSquared()); }
 
     /**
-     * @brief Gets the magnitude of the vector squared.
+     * Gets the magnitude of the vector squared.
      *
      * @return the magnitude
      */
     [[nodiscard]] constexpr float lengthSquared() const { return (x_ * x_) + (y_ * y_) + (z_ * z_); }
 
     /**
-     * @brief Get the distance between this vector and another.
+     * Get the distance between this vector and another.
      *
      * @param other The other vector
      * @return the distance
@@ -262,7 +262,7 @@ public:
     [[nodiscard]] float distance(const Vector &other) const { return std::sqrt(distanceSquared(other)); }
 
     /**
-     * @brief Get the squared distance between this vector and another.
+     * Get the squared distance between this vector and another.
      *
      * @param other The other vector
      * @return the distance
@@ -274,7 +274,7 @@ public:
     }
 
     /**
-     * @brief Gets the angle between this vector and another in radians.
+     * Gets the angle between this vector and another in radians.
      *
      * @param other The other vector
      * @return angle in radians
@@ -286,7 +286,7 @@ public:
     }
 
     /**
-     * @brief Sets this vector to the midpoint between this vector and another.
+     * Sets this vector to the midpoint between this vector and another.
      *
      * @param other The other vector
      * @return this same vector (now a midpoint)
@@ -300,7 +300,7 @@ public:
     }
 
     /**
-     * @brief Gets a new midpoint vector between this vector and another.
+     * Gets a new midpoint vector between this vector and another.
      *
      * @param other The other vector
      * @return a new midpoint vector
@@ -314,7 +314,7 @@ public:
     }
 
     /**
-     * @brief Calculates the dot product of this vector with another. The dot product
+     * Calculates the dot product of this vector with another. The dot product
      * is defined as x1*x2+y1*y2+z1*z2. The returned value is a scalar.
      *
      * @param other The other vector
@@ -326,7 +326,7 @@ public:
     }
 
     /**
-     * @brief Calculates the cross-product of this vector with another.
+     * Calculates the cross-product of this vector with another.
      *
      * The cross-product is defined as:
      * - x = y1 * z2 - y2 * z1
@@ -348,7 +348,7 @@ public:
     }
 
     /**
-     * @brief Calculates the cross-product of this vector with another without mutating the original.
+     * Calculates the cross-product of this vector with another without mutating the original.
      *
      * The cross-product is defined as:
      * - x = y1 * z2 - y2 * z1
@@ -367,7 +367,7 @@ public:
     }
 
     /**
-     * @brief Converts this vector to a unit vector (a vector with length of 1).
+     * Converts this vector to a unit vector (a vector with length of 1).
      *
      * @return the same vector
      */
@@ -381,7 +381,7 @@ public:
     }
 
     /**
-     * @brief Zero this vector's components.
+     * Zero this vector's components.
      *
      * @return the same vector
      */
@@ -394,14 +394,14 @@ public:
     }
 
     /**
-     * @brief Check whether or not each component of this vector is equal to 0.
+     * Check whether or not each component of this vector is equal to 0.
      *
      * @return true if equal to zero, false if at least one component is non-zero
      */
     [[nodiscard]] constexpr bool isZero() const { return x_ == 0 && y_ == 0 && z_ == 0; }
 
     /**
-     * @brief Converts each component of value <code>-0.0</code> to <code>0.0</code>.
+     * Converts each component of value <code>-0.0</code> to <code>0.0</code>.
      *
      * @return This vector.
      */
@@ -420,7 +420,7 @@ public:
     }
 
     /**
-     * @brief Returns whether this vector is in an axis-aligned bounding box.
+     * Returns whether this vector is in an axis-aligned bounding box.
      *
      * The minimum and maximum vectors given must be truly the minimum and maximum X, Y and Z components.
      *
@@ -435,7 +435,7 @@ public:
     }
 
     /**
-     * @brief Returns whether this vector is within a sphere.
+     * Returns whether this vector is within a sphere.
      *
      * @param origin Sphere origin.
      * @param radius Sphere radius
@@ -449,7 +449,7 @@ public:
     }
 
     /**
-     * @brief Returns if a vector is normalized
+     * Returns if a vector is normalized.
      *
      * @return whether the vector is normalized
      */
@@ -460,7 +460,7 @@ public:
     }
 
     /**
-     * @brief Rotates the vector around the x-axis.
+     * Rotates the vector around the x-axis.
      *
      * @param angle the angle to rotate the vector about. This angle is passed in radians
      *
@@ -476,7 +476,7 @@ public:
     }
 
     /**
-     * @brief Rotates the vector around the y-axis.
+     * Rotates the vector around the y-axis.
      *
      * @param angle the angle to rotate the vector about. This angle is passed in radians
      *
@@ -492,7 +492,7 @@ public:
     }
 
     /**
-     * @brief Rotates the vector around the z-axis
+     * Rotates the vector around the z-axis.
      *
      * @param angle the angle to rotate the vector about. This angle is passed in radians
      *
@@ -508,7 +508,7 @@ public:
     }
 
     /**
-     * @brief Rotates the vector around a given arbitrary axis in 3-dimensional space.
+     * Rotates the vector around a given arbitrary axis in 3-dimensional space.
      *
      * Rotation will follow the general Right-Hand-Rule, which means rotation
      * will be counterclockwise when the axis is pointing towards the observer.
@@ -531,7 +531,7 @@ public:
     }
 
     /**
-     * @brief Rotates the vector around a given arbitrary axis in 3-dimensional space.
+     * Rotates the vector around a given arbitrary axis in 3-dimensional space.
      *
      * Rotation will follow the general Right-Hand-Rule, which means rotation
      * will be counterclockwise when the axis is pointing towards the observer.

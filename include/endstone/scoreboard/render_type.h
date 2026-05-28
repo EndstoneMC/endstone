@@ -18,11 +18,11 @@
 namespace endstone {
 
 /**
- * @brief Controls the way in which an Objective is rendered on the client side.
+ * Controls the way in which an Objective is rendered on the client side.
  */
 enum class RenderType : std::uint8_t {
     /**
-     * @brief Display integer value.
+     * Display integer value.
      */
     Integer,
     /**

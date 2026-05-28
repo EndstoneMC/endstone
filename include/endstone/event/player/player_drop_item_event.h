@@ -23,7 +23,7 @@
 
 namespace endstone {
 /**
- * @brief Called when a player drops an item from their inventory
+ * Called when a player drops an item from their inventory.
  */
 class PlayerDropItemEvent final : public Cancellable<PlayerEvent> {
 public:
@@ -32,7 +32,7 @@ public:
     explicit PlayerDropItemEvent(Player &player, ItemStack drop) : Cancellable(player), drop_(std::move(drop)) {}
 
     /**
-     * @brief Gets the ItemStack dropped by the player
+     * Gets the ItemStack dropped by the player.
      *
      * @return ItemDrop dropped by the player
      */

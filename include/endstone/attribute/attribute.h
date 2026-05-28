@@ -19,56 +19,56 @@
 namespace endstone {
 using AttributeId = Identifier<class Attribute>;
 /**
- * @brief All attribute types.
+ * All attribute types.
  */
 class Attribute {
 public:
-    /** @brief Health of an entity. */
+    /** Health of an entity. */
     static constexpr auto Health = AttributeId::minecraft("health");
 
-    /** @brief Range at which an entity will follow others. */
+    /** Range at which an entity will follow others. */
     static constexpr auto FollowRange = AttributeId::minecraft("follow_range");
 
-    /** @brief Resistance of an entity to knockback. */
+    /** Resistance of an entity to knockback. */
     static constexpr auto KnockbackResistance = AttributeId::minecraft("knockback_resistance");
 
-    /** @brief Movement speed of an entity. */
+    /** Movement speed of an entity. */
     static constexpr auto MovementSpeed = AttributeId::minecraft("movement");
 
-    /** @brief Movement speed of an entity underwater. */
+    /** Movement speed of an entity underwater. */
     static constexpr auto UnderwaterMovementSpeed = AttributeId::minecraft("underwater_movement");
 
-    /** @brief Movement speed of an entity in lava. */
+    /** Movement speed of an entity in lava. */
     static constexpr auto LavaMovementSpeed = AttributeId::minecraft("lava_movement");
 
-    /** @brief Attack damage of an entity. */
+    /** Attack damage of an entity. */
     static constexpr auto AttackDamage = AttributeId::minecraft("attack_damage");
 
-    /** @brief Absorption of an entity. */
+    /** Absorption of an entity. */
     static constexpr auto Absorption = AttributeId::minecraft("absorption");
 
-    /** @brief Luck bonus of an entity. */
+    /** Luck bonus of an entity. */
     static constexpr auto Luck = AttributeId::minecraft("luck");
 
-    /** @brief Strength with which an entity will jump. */
+    /** Strength with which an entity will jump. */
     static constexpr auto JumpStrength = AttributeId::minecraft("jump_strength");
 
-    /** @brief Hunger level of a player. */
+    /** Hunger level of a player. */
     static constexpr auto PlayerHunger = AttributeId::minecraft("player.hunger");
 
-    /** @brief Saturation level of a player. */
+    /** Saturation level of a player. */
     static constexpr auto PlayerSaturation = AttributeId::minecraft("player.saturation");
 
-    /** @brief Exhaustion level of a player. */
+    /** Exhaustion level of a player. */
     static constexpr auto PlayerExhaustion = AttributeId::minecraft("player.exhaustion");
 
-    /** @brief Experience level of a player. */
+    /** Experience level of a player. */
     static constexpr auto PlayerLevel = AttributeId::minecraft("player.level");
 
-    /** @brief Progress toward the next experience level of a player. */
+    /** Progress toward the next experience level of a player. */
     static constexpr auto PlayerExperience = AttributeId::minecraft("player.experience");
 
-    /** @brief Chance of a zombie to spawn reinforcements. */
+    /** Chance of a zombie to spawn reinforcements. */
     static constexpr auto ZombieSpawnReinforcements = AttributeId::minecraft("zombie.spawn_reinforcements");
 };
 }  // namespace endstone

@@ -20,7 +20,7 @@
 namespace endstone {
 
 /**
- * @brief Represents an IP Socket Address (hostname + port number).
+ * Represents an IP Socket Address (hostname + port number).
  */
 class SocketAddress {
 public:

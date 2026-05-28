@@ -21,37 +21,37 @@
 
 namespace endstone {
 /**
- * @brief Represents the meta for a written book that can have a title, an author, and pages.
+ * Represents the meta for a written book that can have a title, an author, and pages.
  */
 class BookMeta : public WritableBookMeta {
 public:
     /**
-     * @brief Represents the generation (or level of copying) of a written book
+     * Represents the generation (or level of copying) of a written book.
      */
     enum class Generation {
         /**
-         * @brief Book written into a book-and-quill. Can be copied. (Default value)
+         * Book written into a book-and-quill. Can be copied. (Default value).
          */
         Original,
         /**
-         * @brief Book that was copied from an original. Can be copied.
+         * Book that was copied from an original. Can be copied.
          */
         CopyOfOriginal,
         /**
-         * @brief Book that was copied from a copy of an original. Can't be copied.
+         * Book that was copied from a copy of an original. Can't be copied.
          */
         CopyOfCopy,
     };
 
     /**
-     * @brief Checks for the existence of a title in the book.
+     * Checks for the existence of a title in the book.
      *
      * @return true if the book has a title
      */
     [[nodiscard]] virtual bool hasTitle() const = 0;
 
     /**
-     * @brief Gets the title of the book.
+     * Gets the title of the book.
      *
      * @note Plugins should check that hasTitle() returns true before calling this method.
      *
@@ -60,25 +60,23 @@ public:
     [[nodiscard]] virtual std::string getTitle() const = 0;
 
     /**
-     * @brief Sets the title of the book.
+     * Sets the title of the book.
      *
      * @note Limited to 32 characters. Removes title when given std::nullopt.
      *
      * @param title the title to set
-     *
-     * @return true if the title was successfully set
      */
     virtual void setTitle(std::optional<std::string> title) = 0;
 
     /**
-     * @brief Checks for the existence of an author in the book.
+     * Checks for the existence of an author in the book.
      *
      * @return true if the book has an author
      */
     [[nodiscard]] virtual bool hasAuthor() const = 0;
 
     /**
-     * @brief Gets the author of the book.
+     * Gets the author of the book.
      *
      * @note Plugins should check that hasAuthor() returns true before calling this method.
      *
@@ -87,21 +85,21 @@ public:
     [[nodiscard]] virtual std::string getAuthor() const = 0;
 
     /**
-     * @brief Sets the author of the book. Removes author when given std::nullopt.
+     * Sets the author of the book. Removes author when given std::nullopt.
      *
      * @param author the author to set
      */
     virtual void setAuthor(std::optional<std::string> author) = 0;
 
     /**
-     * @brief Checks for the existence of generation level in the book.
+     * Checks for the existence of generation level in the book.
      *
      * @return true if the book has a generation level
      */
     [[nodiscard]] virtual bool hasGeneration() const = 0;
 
     /**
-     * @brief Gets the generation of the book.
+     * Gets the generation of the book.
      *
      * @note Plugins should check that hasGeneration() returns true before calling this method.
      *
@@ -110,7 +108,7 @@ public:
     [[nodiscard]] virtual std::optional<Generation> getGeneration() const = 0;
 
     /**
-     * @brief Sets the generation of the book. Removes generation when given std::nullopt.
+     * Sets the generation of the book. Removes generation when given std::nullopt.
      *
      * @param generation the generation to set
      */

@@ -23,7 +23,7 @@
 
 namespace endstone {
 /**
- * @brief Called when a player is finishing consuming an item (food, potion, milk bucket).
+ * Called when a player is finishing consuming an item (food, potion, milk bucket).
  *
  * @note If the ItemStack is modified the server will use the effects of the new item and not remove the original one
  * from the player's inventory.
@@ -41,14 +41,14 @@ public:
     }
 
     /**
-     * @brief Gets the item that is being consumed.
+     * Gets the item that is being consumed.
      *
      * @return an ItemStack for the item being consumed
      */
     [[nodiscard]] const ItemStack &getItem() const { return item_; }
 
     /**
-     * @brief Get the hand used to consume the item.
+     * Get the hand used to consume the item.
      *
      * @return the hand
      */

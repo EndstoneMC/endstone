@@ -20,14 +20,14 @@
 namespace endstone {
 
 /**
- * @brief Represents events within a level
+ * Represents events within a level.
  */
 class LevelEvent : public Event {
 public:
     explicit LevelEvent(Level &level) : level_(level) {};
 
     /**
-     * Gets the level primarily involved with this event
+     * Gets the level primarily involved with this event.
      *
      * @return Level which caused this event
      */

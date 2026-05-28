@@ -21,19 +21,19 @@
 
 namespace endstone {
 /**
- * @brief Represents the meta for a writable book that can have pages
+ * Represents the meta for a writable book that can have pages.
  */
 class WritableBookMeta : public ItemMeta {
 public:
     /**
-     * @brief Checks for the existence of pages in the book.
+     * Checks for the existence of pages in the book.
      *
      * @return true if the book has pages
      */
     [[nodiscard]] virtual bool hasPages() const = 0;
 
     /**
-     * @brief Gets the specified page in the book. The given page must exist.
+     * Gets the specified page in the book. The given page must exist.
      *
      * @note Pages are 1-indexed.
      *
@@ -43,7 +43,7 @@ public:
     [[nodiscard]] virtual std::string getPage(int page) const = 0;
 
     /**
-     * @brief Sets the specified page in the book. Pages of the book must be contiguous.
+     * Sets the specified page in the book. Pages of the book must be contiguous.
      *
      * @note The data can be up to 1024 characters in length, additional characters are truncated.
      *
@@ -55,14 +55,14 @@ public:
     virtual void setPage(int page, std::string data) = 0;
 
     /**
-     * @brief Gets all the pages in the book.
+     * Gets all the pages in the book.
      *
      * @return list of all the pages in the book
      */
     [[nodiscard]] virtual std::vector<std::string> getPages() const = 0;
 
     /**
-     * @brief Clears the existing book pages, and sets the book to use the provided pages.
+     * Clears the existing book pages, and sets the book to use the provided pages.
      *
      * @note Maximum 50 pages with 256 characters per page.
      *
@@ -75,16 +75,16 @@ public:
     }
 
     /**
-     * @note Clears the existing book pages, and sets the book to use the provided pages.
+     * Clears the existing book pages, and sets the book to use the provided pages.
      *
-     * @brief Maximum 50 pages with 256 characters per page.
+     * @note Maximum 50 pages with 256 characters per page.
      *
      * @param pages A list of strings, each being a page
      */
     virtual void setPages(std::vector<std::string> pages) = 0;
 
     /**
-     * @brief Adds new pages to the end of the book.
+     * Adds new pages to the end of the book.
      *
      * @note Up to a maximum of 50 pages with 256 characters per page.
      *
@@ -97,7 +97,7 @@ public:
     }
 
     /**
-     * @brief Adds new pages to the end of the book.
+     * Adds new pages to the end of the book.
      *
      * @note Up to a maximum of 50 pages with 256 characters per page.
      *
@@ -106,7 +106,7 @@ public:
     virtual void addPages(std::vector<std::string> pages) = 0;
 
     /**
-     * @brief Gets the number of pages in the book.
+     * Gets the number of pages in the book.
      *
      * @return the number of pages in the book
      */

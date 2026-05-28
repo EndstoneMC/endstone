@@ -437,7 +437,7 @@ inline Tag read_tag_payload(std::string_view &in, Type type, std::endian byte_or
 }  // namespace detail
 
 /**
- * @brief Serialize an NBT tag to binary format with an empty name.
+ * Serialize an NBT tag to binary format with an empty name.
  *
  * @param tag The tag to serialize.
  * @param byte_order Byte order: std::endian::little (Bedrock) or std::endian::big (Java).
@@ -454,7 +454,7 @@ inline std::string dump(const Tag &tag, std::endian byte_order = std::endian::li
 }
 
 /**
- * @brief Serialize an NBT tag to binary format with a name.
+ * Serialize an NBT tag to binary format with a name.
  *
  * @param tag The tag to serialize.
  * @param name The root tag name (e.g. "" for Bedrock level.dat, or a descriptive name).
@@ -473,7 +473,7 @@ inline std::string dump(const Tag &tag, const std::string &name, std::endian byt
 }
 
 /**
- * @brief Deserialize binary NBT data into a Tag, populating the root tag name.
+ * Deserialize binary NBT data into a Tag, populating the root tag name.
  *
  * @param data Binary NBT data. Consumed from front via string_view.
  * @param[out] name The deserialized root tag name.
@@ -495,7 +495,7 @@ inline Tag load(std::string_view data, std::string &name, std::endian byte_order
 }
 
 /**
- * @brief Deserialize binary NBT data into a Tag, discarding the root tag name.
+ * Deserialize binary NBT data into a Tag, discarding the root tag name.
  *
  * @param data Binary NBT data.
  * @param byte_order Byte order used in the binary data.

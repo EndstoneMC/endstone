@@ -22,54 +22,54 @@
 
 namespace endstone {
 /**
- * @brief Represents a base actor in the level.
+ * Represents a dropped item that can be picked up by players.
  */
 class Item : public Actor {
 public:
     /**
-     * @brief Gets the item stack associated with this item drop.
+     * Gets the item stack associated with this item drop.
      *
      * @return An item stack.
      */
     [[nodiscard]] virtual ItemStack getItemStack() const = 0;
 
     /**
-     * @brief Sets the item stack associated with this item drop.
+     * Sets the item stack associated with this item drop.
      *
      * @param stack An item stack.
      */
     virtual void setItemStack(const ItemStack &stack) = 0;
 
     /**
-     * @brief Gets the delay before this Item is available to be picked up by players
+     * Gets the delay before this Item is available to be picked up by players.
      *
      * @return Remaining delay
      */
     [[nodiscard]] virtual int getPickupDelay() const = 0;
 
     /**
-     * @brief Sets the delay before this Item is available to be picked up by players
+     * Sets the delay before this Item is available to be picked up by players.
      *
      * @param delay New delay
      */
     virtual void setPickupDelay(int delay) = 0;
 
     /**
-     * @brief Sets if this Item should live forever
+     * Sets if this Item should live forever.
      *
      * @param unlimited true if the lifetime is unlimited
      */
     virtual void setUnlimitedLifetime(bool unlimited) = 0;
 
     /**
-     * @brief Gets if this Item lives forever
+     * Gets if this Item lives forever.
      *
      * @return true if the lifetime is unlimited
      */
     [[nodiscard]] virtual bool isUnlimitedLifetime() const = 0;
 
     /**
-     * @brief Set the thrower of this item.
+     * Set the thrower of this item.
      *
      * @note The thrower is the entity which dropped the item.
      *
@@ -78,7 +78,7 @@ public:
     virtual void setThrower(std::optional<std::int64_t> thrower) = 0;
 
     /**
-     * @brief Get the thrower of this item.
+     * Get the thrower of this item.
      *
      * @note The thrower is the entity which dropped the item.
      *

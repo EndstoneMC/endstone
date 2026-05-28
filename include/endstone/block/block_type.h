@@ -23,7 +23,7 @@ namespace endstone {
 class BlockData;
 
 /**
- * @brief Represents a block type.
+ * Represents a block type.
  */
 class BlockType;
 using BlockTypeId = Identifier<BlockType>;
@@ -32,14 +32,14 @@ public:
     static constexpr auto Air = BlockTypeId::minecraft("air");
 
     /**
-     * @brief Returns true if this BlockType has a corresponding ItemType.
+     * Returns true if this BlockType has a corresponding ItemType.
      *
      * @return true if there is a corresponding ItemType, otherwise false
      */
     [[nodiscard]] virtual bool hasItemType() const = 0;
 
     /**
-     * @brief Creates a new BlockData instance for this block type, with all
+     * Creates a new BlockData instance for this block type, with all
      * properties initialized to unspecified defaults.
      *
      * @return new data instance

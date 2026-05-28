@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a toggle button with a label.
+ * Represents a toggle button with a label.
  */
 class Toggle {
 public:
@@ -33,14 +33,14 @@ public:
     }
 
     /**
-     * @brief Gets the label of the toggle.
+     * Gets the label of the toggle.
      *
      * @return The label of the toggle.
      */
     [[nodiscard]] Message getLabel() const { return label_; }
 
     /**
-     * @brief Sets the label of the toggle.
+     * Sets the label of the toggle.
      *
      * @param label The new label for the toggle.
      * @return A reference to the current toggle.
@@ -52,14 +52,14 @@ public:
     }
 
     /**
-     * @brief Gets the default value of the toggle.
+     * Gets the default value of the toggle.
      *
      * @return The default value of the toggle.
      */
     [[nodiscard]] bool getDefaultValue() const { return default_value_; }
 
     /**
-     * @brief Sets the default value of the toggle.
+     * Sets the default value of the toggle.
      *
      * @param value The new default value for the toggle.
      * @return A reference to the current toggle.

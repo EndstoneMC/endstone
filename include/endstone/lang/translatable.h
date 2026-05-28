@@ -21,7 +21,7 @@
 namespace endstone {
 
 /**
- * @brief Represents an object with a text representation that can be translated by the Minecraft client.
+ * Represents an object with a text representation that can be translated by the Minecraft client.
  */
 class Translatable {
 public:
@@ -31,21 +31,21 @@ public:
     }
 
     /**
-     * @brief Get the text to be translated.
+     * Get the text to be translated.
      *
      * @return the text to be translated
      */
     [[nodiscard]] const std::string &getText() const { return text_; }
 
     /**
-     * @brief Get the translation parameters.
+     * Get the translation parameters.
      *
      * @return the translation parameters
      */
     [[nodiscard]] const std::vector<std::string> &getParameters() const { return params_; }
 
     /**
-     * @brief Check if the message to be translated is empty
+     * Check if the message to be translated is empty.
      *
      * @return true if the message to be translated is empty, false otherwise
      */

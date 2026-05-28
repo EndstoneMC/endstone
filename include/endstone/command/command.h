@@ -27,7 +27,7 @@ namespace endstone {
 class PluginCommand;
 
 /**
- * @brief Represents a Command, which executes various tasks upon user input
+ * Represents a Command, which executes various tasks upon user input.
  */
 class Command {
 public:
@@ -44,7 +44,7 @@ public:
     virtual ~Command() = default;
 
     /**
-     * Executes the command, returning its success
+     * Executes the command, returning its success.
      *
      * @param sender Source of the command
      * @param args Arguments passed to the command
@@ -56,7 +56,7 @@ public:
     }
 
     /**
-     * Returns the name of this command
+     * Returns the name of this command.
      *
      * @return Name of this command
      */
@@ -78,7 +78,7 @@ public:
     }
 
     /**
-     * Gets a brief description of this command
+     * Gets a brief description of this command.
      *
      * @return Description of this command
      */
@@ -97,7 +97,7 @@ public:
     }
 
     /**
-     * Returns a list of aliases of this command
+     * Returns a list of aliases of this command.
      *
      * @return List of aliases
      */
@@ -123,14 +123,14 @@ public:
     }
 
     /**
-     * Returns a list of usages of this command
+     * Returns a list of usages of this command.
      *
      * @return List of usages
      */
     [[nodiscard]] std::vector<std::string> getUsages() const { return usages_; }
 
     /**
-     * Sets the usages of this command
+     * Sets the usages of this command.
      *
      * @param usages List of usages
      */
@@ -147,14 +147,14 @@ public:
     }
 
     /**
-     * Gets the permissions required by users to be able to perform this command
+     * Gets the permissions required by users to be able to perform this command.
      *
      * @return List of permission names, or empty if none
      */
     [[nodiscard]] std::vector<std::string> getPermissions() const { return permissions_; }
 
     /**
-     * Sets the permissions required by users to be able to perform this command
+     * Sets the permissions required by users to be able to perform this command.
      *
      * @param permissions List of permission names
      */
@@ -214,7 +214,7 @@ public:
     }
 
     /**
-     * Unregisters this command from a CommandMap
+     * Unregisters this command from a CommandMap.
      *
      * @param command_map the CommandMap to unregister from
      * @return true if the unregistration was successful, false otherwise
@@ -230,7 +230,7 @@ public:
     }
 
     /**
-     * Returns the current registered state of this command
+     * Returns the current registered state of this command.
      *
      * @return true if this command is currently registered false otherwise
      */

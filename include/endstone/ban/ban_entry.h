@@ -21,7 +21,7 @@
 
 namespace endstone {
 /**
- * @brief A single entry from a ban list.
+ * A single entry from a ban list.
  */
 class BanEntry {
 public:
@@ -30,14 +30,14 @@ public:
     inline static const std::string DateFormat = "%FT%T%Ez";
 
     /**
-     * @brief Gets the date this ban entry was created.
+     * Gets the date this ban entry was created.
      *
      * @return the creation date
      */
     [[nodiscard]] Date getCreated() const { return created_; }
 
     /**
-     * @brief Sets the date this ban entry was created.
+     * Sets the date this ban entry was created.
      *
      * @param created the new created date
      * @see save() saving changes
@@ -45,14 +45,14 @@ public:
     void setCreated(Date created) { created_ = created; }
 
     /**
-     * @brief Gets the source of this ban.
+     * Gets the source of this ban.
      *
      * @return the source of the ban
      */
     [[nodiscard]] std::string getSource() const { return source_; }
 
     /**
-     * @brief Sets the source of this ban.
+     * Sets the source of this ban.
      *
      * @param source the new source
      * @see save() saving changes
@@ -60,28 +60,28 @@ public:
     void setSource(std::string source) { source_ = std::move(source); }
 
     /**
-     * @brief Gets the date this ban expires on, or std::nullopt for no defined end date.
+     * Gets the date this ban expires on, or std::nullopt for no defined end date.
      *
      * @return the expiration date
      */
     [[nodiscard]] std::optional<Date> getExpiration() const { return expiration_; }
 
     /**
-     * @brief Sets the date this ban expires on. std::nullopt values are considered "infinite" bans.
+     * Sets the date this ban expires on. std::nullopt values are considered "infinite" bans.
      *
      * @param expiration the new expiration date, or std::nullopt to indicate an infinite ban
      */
     void setExpiration(std::optional<Date> expiration) { expiration_ = expiration; }
 
     /**
-     * @brief Gets the reason for this ban.
+     * Gets the reason for this ban.
      *
      * @return the ban reason
      */
     [[nodiscard]] std::string getReason() const { return reason_; }
 
     /**
-     * @brief Sets the reason for this ban.
+     * Sets the reason for this ban.
      *
      * @param reason the new reason, empty values assume the implementation default
      * @see save() saving changes

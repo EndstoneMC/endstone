@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a step slider with a set of predefined options.
+ * Represents a step slider with a set of predefined options.
  */
 class StepSlider : public Dropdown {
 public:

@@ -56,7 +56,7 @@ class Server;
 
 namespace detail {
 /**
- * @brief Cast a function pointer to void pointer
+ * Cast a function pointer to void pointer.
  *
  * @tparam Return The return type of the function.
  * @tparam Args The argument types of the function.
@@ -77,7 +77,7 @@ void *fp_cast(Return (*fp)(Args...))
 }
 
 /**
- * @brief Cast a member function pointer to void pointer.
+ * Cast a member function pointer to void pointer.
  *
  * @tparam Return The return type of the member function.
  * @tparam Class The class type that the member function belongs to.
@@ -99,7 +99,7 @@ void *fp_cast(Return (Class::*fp)(Args...))
 }
 
 /**
- * @brief Cast a constant member function pointer to void pointer.
+ * Cast a constant member function pointer to void pointer.
  *
  * @tparam Return The return type of the constant member function.
  * @tparam Class The class type that the constant member function belongs to.
@@ -138,7 +138,7 @@ Return (Class::*fp_cast(Return (Class::*fp)(Arg...), void *address))(Arg...)
 }
 
 /**
- * @brief Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)
+ * Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier).
  */
 template <typename Return, typename Class, typename... Arg>
 Return (Class::*fp_cast(Return (Class::*fp)(Arg...) const, void *address))(Arg...) const
@@ -152,7 +152,7 @@ Return (Class::*fp_cast(Return (Class::*fp)(Arg...) const, void *address))(Arg..
 }
 
 /**
- * Gets the current Server singleton
+ * Gets the current Server singleton.
  *
  * @return Server instance being run
  */

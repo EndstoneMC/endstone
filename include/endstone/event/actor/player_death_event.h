@@ -23,7 +23,7 @@
 
 namespace endstone {
 /**
- * @brief Called when a Player dies
+ * Called when a Player dies.
  */
 class PlayerDeathEvent : public ActorDeathEvent {
 public:
@@ -35,21 +35,21 @@ public:
     }
 
     /**
-     * @brief Returns the Player involved in this event
+     * Returns the Player involved in this event.
      *
      * @return Player which is involved in this event
      */
     [[nodiscard]] Player &getPlayer() const { return static_cast<Player &>(getActor()); }
 
     /**
-     * @brief Get the death message that will appear to everyone on the server.
+     * Get the death message that will appear to everyone on the server.
      *
      * @return Message to appear to other players on the server.
      */
     [[nodiscard]] std::optional<Message> getDeathMessage() const { return death_message_; }
 
     /**
-     * @brief Set the death message that will appear to everyone on the server.
+     * Set the death message that will appear to everyone on the server.
      *
      * @param death_message Message to appear to other players on the server.
      */

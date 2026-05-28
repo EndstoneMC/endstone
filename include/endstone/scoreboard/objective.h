@@ -27,82 +27,82 @@ namespace endstone {
 class Scoreboard;
 
 /**
- * @brief Represents an objective on a scoreboard that can show scores specific to entries.
+ * Represents an objective on a scoreboard that can show scores specific to entries.
  */
 class Objective {
 public:
     virtual ~Objective() = default;
 
     /**
-     * @brief Gets the name of this Objective
+     * Gets the name of this Objective.
      *
      * @return this objective's name
      */
     [[nodiscard]] virtual std::string getName() const = 0;
 
     /**
-     * @brief Gets the name displayed to players for this objective
+     * Gets the name displayed to players for this objective.
      *
      * @return this objective's display name
      */
     [[nodiscard]] virtual std::string getDisplayName() const = 0;
 
     /**
-     * @brief Sets the name displayed to players for this objective.
+     * Sets the name displayed to players for this objective.
      *
      * @param display_name Display name to set
      */
     virtual void setDisplayName(std::string display_name) = 0;
 
     /**
-     * @brief Gets the criteria this objective tracks.
+     * Gets the criteria this objective tracks.
      *
      * @return this objective's criteria.
      */
     [[nodiscard]] virtual const Criteria &getCriteria() const = 0;
 
     /**
-     * @brief Gets if the objective's scores can be modified directly by a plugin.
+     * Gets if the objective's scores can be modified directly by a plugin.
      *
      * @return true if scores are modifiable
      */
     [[nodiscard]] virtual bool isModifiable() const = 0;
 
     /**
-     * @brief Gets the scoreboard to which this objective is attached.
+     * Gets the scoreboard to which this objective is attached.
      *
      * @return Owning scoreboard
      */
     [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
 
     /**
-     * @brief Unregisters this objective from the associated Scoreboard.
+     * Unregisters this objective from the associated Scoreboard.
      */
     virtual void unregister() const = 0;
 
     /**
-     * @brief Gets if the objective is currently displayed in a slot.
+     * Gets if the objective is currently displayed in a slot.
      *
      * @return true if the objective is displayed
      */
     [[nodiscard]] virtual bool isDisplayed() const = 0;
 
     /**
-     * @brief Gets the display slot this objective is displayed at.
+     * Gets the display slot this objective is displayed at.
      *
      * @return the display slot for this objective
      */
     [[nodiscard]] virtual std::optional<DisplaySlot> getDisplaySlot() const = 0;
 
     /**
-     * @brief Gets the sort order for this objective.
+     * Gets the sort order for this objective.
      *
      * @return The sort order for this objective.
      */
     [[nodiscard]] virtual std::optional<ObjectiveSortOrder> getSortOrder() const = 0;
 
     /**
-     * @brief Sets the display slot for this objective.
+     * Sets the display slot for this objective.
      * This will remove it from any other display slot.
      *
      * @param slot The display slot where this objective should be displayed.
@@ -110,14 +110,14 @@ public:
     virtual void setDisplaySlot(std::optional<DisplaySlot> slot) = 0;
 
     /**
-     * @brief Sets the sort order for this objective.
+     * Sets the sort order for this objective.
      *
      * @param order The sort order for this objective in the display slot.
      */
     virtual void setSortOrder(ObjectiveSortOrder order) = 0;
 
     /**
-     * @brief Sets the display slot and sort order for this objective.
+     * Sets the display slot and sort order for this objective.
      * This will remove it from any other display slot.
      *
      * @param slot The display slot where this objective should be displayed.
@@ -133,14 +133,14 @@ public:
     [[nodiscard]] virtual RenderType getRenderType() const = 0;
 
     /**
-     * @brief Sets manner in which this objective will be rendered.
+     * Sets manner in which this objective will be rendered.
      *
      * @param render_type new render type
      */
     // virtual Result<void> setRenderType(RenderType render_type) = 0;
 
     /**
-     * @brief Gets an entry's Score for this objective.
+     * Gets an entry's Score for this objective.
      *
      * @param entry Entry for the Score
      * @return Score tracking the Objective and entry specified

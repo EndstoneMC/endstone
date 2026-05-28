@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Called whenever a player runs a command.
+ * Called whenever a player runs a command.
  */
 class PlayerCommandEvent : public Cancellable<PlayerEvent> {
 public:

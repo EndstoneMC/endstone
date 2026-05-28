@@ -21,7 +21,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player is leaving a bed.
+ * Called when a player is leaving a bed.
  */
 class PlayerBedLeaveEvent final : public PlayerEvent {
 public:
@@ -31,7 +31,7 @@ public:
     ~PlayerBedLeaveEvent() override = default;
 
     /**
-     * @brief Returns the bed block involved in this event.
+     * Returns the bed block involved in this event.
      *
      * @return The bed block involved in this event.
      */

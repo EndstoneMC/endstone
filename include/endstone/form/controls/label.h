@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a text label.
+ * Represents a text label.
  */
 class Label {
 public:
@@ -31,14 +31,14 @@ public:
     explicit Label(Message text) : text_(std::move(text)) {}
 
     /**
-     * @brief Gets the text of the label.
+     * Gets the text of the label.
      *
      * @return The text of the label.
      */
     [[nodiscard]] Message getText() const { return text_; }
 
     /**
-     * @brief Sets the text of the label.
+     * Sets the text of the label.
      *
      * @param text The new text for the label.
      * @return A reference to the current label.

@@ -27,12 +27,12 @@ namespace endstone {
 class Server;
 
 /**
- * @brief Represents a command sender.
+ * Represents a command sender.
  */
 class CommandSender : public Permissible {
 public:
     /**
-     * @brief Sends this sender a message
+     * Sends this sender a message.
      *
      * @param message Message to be displayed
      */
@@ -50,7 +50,7 @@ public:
     }
 
     /**
-     * @brief Sends this sender a error message
+     * Sends this sender a error message.
      *
      * @param message Error message to be displayed
      */
@@ -63,14 +63,14 @@ public:
     }
 
     /**
-     * @brief Returns the server instance that this command is running on
+     * Returns the server instance that this command is running on.
      *
      * @return Server instance
      */
     [[nodiscard]] virtual Server &getServer() const = 0;
 
     /**
-     * @brief Gets the name of this command sender
+     * Gets the name of this command sender.
      *
      * @return Name of the sender
      */

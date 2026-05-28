@@ -25,7 +25,7 @@ public:
 };
 
 /**
- * @brief A type characterizing events that may be cancelled by a plugin or the server.
+ * A type characterizing events that may be cancelled by a plugin or the server.
  */
 template <typename EventType>
 class Cancellable : public EventType, public ICancellable {
@@ -33,15 +33,16 @@ public:
     using EventType::EventType;
 
     /**
-     * @brief Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will
-     * still pass to other plugins
+     * Gets the cancellation state of this event.
+     *
+     * A cancelled event will not be executed in the server, but will still pass to other plugins.
      *
      * @return true if this event is cancelled
      */
     [[nodiscard]] bool isCancelled() const override { return EventType::cancelled_; }
 
     /**
-     * @brief Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will
+     * Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will
      * still pass to other plugins.
      *
      * @param cancel true if you wish to cancel this event
@@ -49,7 +50,7 @@ public:
     void setCancelled(bool cancel) override { EventType::cancelled_ = cancel; }
 
     /**
-     * @brief Cancel this event. A cancelled event will not be executed in the server, but will still pass to other
+     * Cancel this event. A cancelled event will not be executed in the server, but will still pass to other
      * plugins.
      */
     void cancel() final { setCancelled(true); }

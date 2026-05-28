@@ -28,14 +28,14 @@
 namespace endstone {
 
 /**
- * @brief A list of event handlers. Should be instantiated on a per-event basis.
+ * A list of event handlers. Should be instantiated on a per-event basis.
  */
 class HandlerList {
 public:
     explicit HandlerList(std::string event) : event_(std::move(event)) {}
 
     /**
-     * Register a new handler
+     * Register a new handler.
      *
      * @param handler Event handler to register
      * @return the pointer to the registered handler
@@ -55,7 +55,7 @@ public:
     }
 
     /**
-     * Remove a handler from a specific order slot
+     * Remove a handler from a specific order slot.
      *
      * @param handler Event handler to remove
      */
@@ -73,7 +73,7 @@ public:
     }
 
     /**
-     * Remove a specific plugin's handlers from this handler
+     * Remove a specific plugin's handlers from this handler.
      *
      * @param plugin Plugin to remove
      */
@@ -90,7 +90,7 @@ public:
     }
 
     /**
-     * Get the baked registered handlers associated with this handler list
+     * Get the baked registered handlers associated with this handler list.
      *
      * @return the array of registered handlers
      */

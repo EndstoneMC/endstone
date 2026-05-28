@@ -20,7 +20,7 @@
 namespace endstone {
 
 /**
- * @brief Represents an event that is called when a player right-clicks an actor.
+ * Represents an event that is called when a player right-clicks an actor.
  */
 class PlayerInteractActorEvent : public Cancellable<PlayerEvent> {
 public:
@@ -29,7 +29,7 @@ public:
     ~PlayerInteractActorEvent() override = default;
 
     /**
-     * @brief Gets the actor that was right-clicked by the player.
+     * Gets the actor that was right-clicked by the player.
      *
      * @return actor right-clicked by player
      */

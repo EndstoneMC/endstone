@@ -19,7 +19,7 @@
 
 namespace endstone {
 /**
- * @brief Called when a player changes their currently held item.
+ * Called when a player changes their currently held item.
  */
 class PlayerItemHeldEvent final : public Cancellable<PlayerEvent> {
 public:
@@ -31,14 +31,14 @@ public:
     }
 
     /**
-     * @brief Gets the previous held slot index.
+     * Gets the previous held slot index.
      *
      * @return Previous slot index
      */
     [[nodiscard]] int getPreviousSlot() const { return previous_; }
 
     /**
-     * @brief Gets the new held slot index.
+     * Gets the new held slot index.
      *
      * @return New slot index
      */

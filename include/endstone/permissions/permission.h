@@ -28,7 +28,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a unique permission that may be attached to a Permissible.
+ * Represents a unique permission that may be attached to a Permissible.
  */
 class Permission {
 public:
@@ -45,7 +45,7 @@ public:
     }
 
     /**
-     * Returns the unique fully qualified name of this Permission
+     * Returns the unique fully qualified name of this Permission.
      *
      * @return Fully qualified name
      */
@@ -53,7 +53,8 @@ public:
 
     /**
      * Gets the children of this permission.
-     * If you change this map in any form, you must call recalculatePermissibles() to recalculate all Permissibles
+     *
+     * If you change this map in any form, you must call recalculatePermissibles() to recalculate all Permissibles.
      *
      * @return Permission children
      */
@@ -81,7 +82,7 @@ public:
     }
 
     /**
-     * Gets a brief description of this permission, may be empty
+     * Gets a brief description of this permission, may be empty.
      *
      * @return Brief description of this permission
      */

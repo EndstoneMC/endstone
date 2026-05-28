@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player uses an emote.
+ * Called when a player uses an emote.
  */
 class PlayerEmoteEvent : public Cancellable<PlayerEvent> {
 public:
@@ -35,14 +35,14 @@ public:
     ~PlayerEmoteEvent() override = default;
 
     /**
-     * @brief Gets the emote piece ID
+     * Gets the emote piece ID.
      *
      * @return The emote piece ID
      */
     [[nodiscard]] std::string getEmoteId() const { return emote_id_; }
 
     /**
-     * @brief Gets the muted state for the emote.
+     * Gets the muted state for the emote.
      *
      * This method determines whether the emote is being executed without sending a chat message about the emote.
      *
@@ -51,7 +51,7 @@ public:
     [[nodiscard]] bool isMuted() const { return muted_; }
 
     /**
-     * @brief Sets the muted state for the emote.
+     * Sets the muted state for the emote.
      *
      * @note If set to true, the emote will be executed silently, and no chat messages will be sent.
      *

@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player is about to teleport because it is in contact with a portal.
+ * Called when a player is about to teleport because it is in contact with a portal.
  */
 class PlayerPortalEvent : public PlayerTeleportEvent {
 public:

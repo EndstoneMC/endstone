@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a divider.
+ * Represents a divider.
  */
 class Divider {
 public:

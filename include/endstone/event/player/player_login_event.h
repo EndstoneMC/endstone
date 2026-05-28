@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player attempts to login in.
+ * Called when a player attempts to login in.
  */
 class PlayerLoginEvent : public Cancellable<PlayerEvent> {
 public:
@@ -35,14 +35,14 @@ public:
     ~PlayerLoginEvent() override = default;
 
     /**
-     * Gets the current kick message that will be used if event is cancelled
+     * Gets the current kick message that will be used if event is cancelled.
      *
      * @return Current kick message
      */
     [[nodiscard]] const std::string &getKickMessage() const { return message_; }
 
     /**
-     * Sets the kick message to display if event is cancelled
+     * Sets the kick message to display if event is cancelled.
      *
      * @param message New kick message
      */

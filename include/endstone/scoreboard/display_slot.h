@@ -17,19 +17,19 @@
 namespace endstone {
 
 /**
- * @brief Locations for displaying objectives to the player
+ * Locations for displaying objectives to the player.
  */
 enum class DisplaySlot {
     /**
-     * @brief Displays the score below the player's name.
+     * Displays the score below the player's name.
      */
     BelowName,
     /**
-     * @brief Displays the score in the player list on the pause screen.
+     * Displays the score in the player list on the pause screen.
      */
     PlayerList,
     /**
-     * @brief Displays the score on the side of the player's screen.
+     * Displays the score on the side of the player's screen.
      */
     SideBar,
 };

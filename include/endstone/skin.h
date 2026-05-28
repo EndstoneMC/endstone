@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a player skin.
+ * Represents a player skin.
  */
 class Skin {
 public:
@@ -34,28 +34,28 @@ public:
     }
 
     /**
-     * @brief Gets the skin id.
+     * Gets the skin id.
      *
      * @return the skin id.
      */
     [[nodiscard]] const std::string &getId() const { return id_; }
 
     /**
-     * @brief Gets the skin image.
+     * Gets the skin image.
      *
      * @return the skin image.
      */
     [[nodiscard]] const Image &getImage() const { return image_; }
 
     /**
-     * @brief Gets the cape id.
+     * Gets the cape id.
      *
      * @return the cape id.
      */
     [[nodiscard]] const std::optional<std::string> &getCapeId() const { return cape_id_; }
 
     /**
-     * @brief Gets the cape image.
+     * Gets the cape image.
      *
      * @return the cape image.
      */

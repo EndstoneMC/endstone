@@ -25,33 +25,33 @@
 namespace endstone {
 class Level;
 /**
- * @brief Represents a base actor in the level.
+ * Represents a base actor in the level.
  */
 class Actor : public CommandSender {
 public:
     /**
-     * @brief Get the type of the actor.
+     * Get the type of the actor.
      *
      * @return The type of the actor.
      */
     [[nodiscard]] virtual const ActorType &getType() const = 0;
 
     /**
-     * Returns the runtime id for this actor
+     * Returns the runtime id for this actor.
      *
      * @return Runtime id for this actor
      */
     [[nodiscard]] virtual std::uint64_t getRuntimeId() const = 0;
 
     /**
-     * Gets the actor's current position
+     * Gets the actor's current position.
      *
      * @return a new copy of Location containing the position of this actor
      */
     [[nodiscard]] virtual Location getLocation() const = 0;
 
     /**
-     * Gets this actor's current velocity
+     * Gets this actor's current velocity.
      *
      * @return Current traveling velocity of this actor
      */
@@ -79,21 +79,21 @@ public:
     [[nodiscard]] virtual bool isInLava() const = 0;
 
     /**
-     * Gets the current Level this actor resides in
+     * Gets the current Level this actor resides in.
      *
      * @return The current Level this actor resides in
      */
     [[nodiscard]] virtual Level &getLevel() const = 0;
 
     /**
-     * Gets the current Dimension this actor resides in
+     * Gets the current Dimension this actor resides in.
      *
      * @return The current Dimension this actor resides in
      */
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
 
     /**
-     * @return Sets the actor's rotation.
+     * Sets the actor's rotation.
      * <p>
      * Note that if the actor is affected by AI, it may override this rotation.
      *
@@ -103,9 +103,10 @@ public:
     virtual void setRotation(float yaw, float pitch) = 0;
 
     /**
-     * @return Teleports this actor to the given location.
+     * Teleports this actor to the given location.
      *
      * @param location New location to teleport this actor to
+     * @return true if the teleport was successful.
      */
     virtual bool teleport(const Location &location) = 0;
 
@@ -113,11 +114,12 @@ public:
      * Teleports this actor to the target Actor.
      *
      * @param target Actor to teleport this actor to
+     * @return true if the teleport was successful.
      */
     virtual bool teleport(const Actor &target) = 0;
 
     /**
-     * @brief Returns a unique id for this actor
+     * Returns a unique id for this actor.
      *
      * @return Actor id
      */
@@ -131,7 +133,7 @@ public:
     virtual void remove() = 0;
 
     /**
-     * @brief Returns true if this actor has been marked for removal.
+     * Returns true if this actor has been marked for removal.
      *
      * @return True if it is dead.
      */
@@ -145,14 +147,14 @@ public:
     [[nodiscard]] virtual bool isValid() const = 0;
 
     /**
-     * @brief Returns a list of scoreboard tags for this actor.
+     * Returns a list of scoreboard tags for this actor.
      *
      * @return a list of scoreboard tags for this actor
      */
     [[nodiscard]] virtual std::vector<std::string> getScoreboardTags() const = 0;
 
     /**
-     * @brief Adds a tag to this actor.
+     * Adds a tag to this actor.
      *
      * @param tag the tag to add
      * @return true if the tag was successfully added, false if the tag already exists.
@@ -160,7 +162,7 @@ public:
     [[nodiscard]] virtual bool addScoreboardTag(std::string tag) const = 0;
 
     /**
-     * @brief Removes a given tag from this actor.
+     * Removes a given tag from this actor.
      *
      * @param tag the tag to remove
      * @return true if the tag was successfully removed, false if the tag does not exist.
@@ -168,56 +170,56 @@ public:
     [[nodiscard]] virtual bool removeScoreboardTag(std::string tag) const = 0;
 
     /**
-     * @brief Checks if the actor's name tag is currently visible.
+     * Checks if the actor's name tag is currently visible.
      *
      * @return True if the name tag is visible, false otherwise.
      */
     [[nodiscard]] virtual bool isNameTagVisible() const = 0;
 
     /**
-     * @brief Sets if the actor's name tag is visible or not.
+     * Sets if the actor's name tag is visible or not.
      *
      * @param visible True to make the name tag visible, false to hide it.
      */
     virtual void setNameTagVisible(bool visible) = 0;
 
     /**
-     * @brief Checks if the actor's name tag is always visible.
+     * Checks if the actor's name tag is always visible.
      *
      * @return True if the name tag is always visible, false otherwise.
      */
     [[nodiscard]] virtual bool isNameTagAlwaysVisible() const = 0;
 
     /**
-     * @brief Sets whether the actor's name tag should always be visible.
+     * Sets whether the actor's name tag should always be visible.
      *
      * @param visible True to make the name tag always visible, false to disable always visibility.
      */
     virtual void setNameTagAlwaysVisible(bool visible) = 0;
 
     /**
-     * @brief Gets the current name tag of the actor.
+     * Gets the current name tag of the actor.
      *
      * @return The name tag.
      */
     [[nodiscard]] virtual std::string getNameTag() const = 0;
 
     /**
-     * @brief Sets the name tag for the actor.
+     * Sets the name tag for the actor.
      *
      * @param name The new name tag to set.
      */
     virtual void setNameTag(std::string name) = 0;
 
     /**
-     * @brief Gets the current score tag of the actor.
+     * Gets the current score tag of the actor.
      *
      * @return The score tag.
      */
     [[nodiscard]] virtual std::string getScoreTag() const = 0;
 
     /**
-     * @brief Sets the score tag for the actor.
+     * Sets the score tag for the actor.
      *
      * @param score The new score tag to set.
      */

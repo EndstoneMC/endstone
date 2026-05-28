@@ -25,7 +25,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a block is placed by a player.
+ * Called when a block is placed by a player.
  * <p>
  * If a BlockPlaceEvent is cancelled, the block will not be placed.
  */
@@ -41,28 +41,28 @@ public:
     ~BlockPlaceEvent() override = default;
 
     /**
-     * @brief Gets the player who placed the block involved in this event.
+     * Gets the player who placed the block involved in this event.
      *
      * @return The Player who placed the block involved in this event
      */
     [[nodiscard]] Player &getPlayer() const { return player_; }
 
     /**
-     * @brief Gets the block placed.
+     * Gets the block placed.
      *
      * @return The Block that was placed.
      */
     [[nodiscard]] Block &getBlockPlaced() const { return getBlock(); }
 
     /**
-     * @brief Gets the BlockState for the block which was replaced.
+     * Gets the BlockState for the block which was replaced.
      *
      * @return The BlockState of the block that was replaced.
      */
     [[nodiscard]] BlockState &getBlockReplacedState() const { return *replaced_state_; }
 
     /**
-     * @brief Gets the block that this block was placed against
+     * Gets the block that this block was placed against.
      *
      * @return Block the block that the new block was placed against
      */

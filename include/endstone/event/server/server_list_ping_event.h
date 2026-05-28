@@ -25,7 +25,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a server ping is coming in.
+ * Called when a server ping is coming in.
  */
 class ServerListPingEvent : public Cancellable<ServerEvent> {
 public:
@@ -43,84 +43,84 @@ public:
     }
 
     /**
-     * @brief Get the address the ping is coming from.
+     * Get the address the ping is coming from.
      *
      * @return the address
      */
     [[nodiscard]] SocketAddress getAddress() const { return address_; }
 
     /**
-     * @brief Get the unique identifier of the server.
+     * Get the unique identifier of the server.
      *
      * @return The server guid
      */
     [[nodiscard]] std::string getServerGuid() const { return server_guid_; }
 
     /**
-     * @brief Set the unique identifier of the server.
+     * Set the unique identifier of the server.
      *
      * @param guid the server guid
      */
     void setServerGuid(std::string guid) { server_guid_ = std::move(guid); }
 
     /**
-     * @brief Get the local port of the server.
+     * Get the local port of the server.
      *
      * @return The local port
      */
     [[nodiscard]] int getLocalPort() const { return local_port_; }
 
     /**
-     * @brief Set the local port of the server.
+     * Set the local port of the server.
      *
      * @param port the local port
      */
     void setLocalPort(int port) { local_port_ = port; }
 
     /**
-     * @brief Get the local port of the server for IPv6 support
+     * Get the local port of the server for IPv6 support.
      *
      * @return The local port for IPv6
      */
     [[nodiscard]] int getLocalPortV6() const { return local_port_v6_; }
 
     /**
-     * @brief Set the local port of the server for IPv6 support.
+     * Set the local port of the server for IPv6 support.
      *
      * @param port the local port for IPv6
      */
     void setLocalPortV6(int port) { local_port_v6_ = port; }
 
     /**
-     * @brief Get the message of the day message.
+     * Get the message of the day message.
      *
      * @return the message of the day
      */
     [[nodiscard]] std::string getMotd() const { return motd_; }
 
     /**
-     * @brief Change the message of the day message.
+     * Change the message of the day message.
      *
      * @param motd the message of the day
      */
     void setMotd(std::string motd) { motd_ = std::move(motd); }
 
     /**
-     * @brief Get the network protocol version of this server
+     * Get the network protocol version of this server.
      *
      * @return the network protocol version
      */
     [[nodiscard]] int getNetworkProtocolVersion() const { return network_protocol_version_; }
 
     /**
-     * @brief Get the network version of Minecraft that is supported by this server
+     * Get the network version of Minecraft that is supported by this server.
      *
      * @return the network version of Minecraft
      */
     [[nodiscard]] std::string getMinecraftVersionNetwork() const { return minecraft_version_network_; }
 
     /**
-     * @brief Set the network version of Minecraft that is supported by this server
+     * Set the network version of Minecraft that is supported by this server.
      *
      * @param minecraft_version_network the network version of Minecraft
      */
@@ -130,56 +130,56 @@ public:
     }
 
     /**
-     * @brief Get the number of players online
+     * Get the number of players online.
      *
      * @return the number of players
      */
     [[nodiscard]] int getNumPlayers() const { return num_players_; }
 
     /**
-     * @brief Set the number of players online.
+     * Set the number of players online.
      *
      * @param num_players the number of players
      */
     void setNumPlayers(int num_players) { num_players_ = num_players; }
 
     /**
-     * @brief Get the maximum number of players allowed.
+     * Get the maximum number of players allowed.
      *
      * @return the maximum number of players
      */
     [[nodiscard]] int getMaxPlayers() const { return max_players_; }
 
     /**
-     * @brief Set the maximum number of players allowed.
+     * Set the maximum number of players allowed.
      *
      * @param max_players the maximum number of players
      */
     void setMaxPlayers(int max_players) { max_players_ = max_players; }
 
     /**
-     * @brief Get the level name.
+     * Get the level name.
      *
      * @return the level name
      */
     [[nodiscard]] std::string getLevelName() const { return level_name_; }
 
     /**
-     * @brief Set the level name.
+     * Set the level name.
      *
      * @param level_name the level name
      */
     void setLevelName(std::string level_name) { level_name_ = std::move(level_name); }
 
     /**
-     * @brief Get the current game mode.
+     * Get the current game mode.
      *
      * @return the game mode
      */
     [[nodiscard]] GameMode getGameMode() const { return game_mode_; }
 
     /**
-     * @brief Set the current game mode.
+     * Set the current game mode.
      *
      * @param game_mode the game mode
      */

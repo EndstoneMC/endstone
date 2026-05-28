@@ -26,7 +26,7 @@ namespace endstone {
 class Plugin;
 
 /**
- * @brief Represent a service manager that manages services and service providers.
+ * Represent a service manager that manages services and service providers.
  *
  * Services are an interface specifying a list of methods that a provider must implement.
  * Providers are implementations of these services.
@@ -36,7 +36,7 @@ public:
     virtual ~ServiceManager() = default;
 
     /**
-     * @brief Register a provider of a service.
+     * Register a provider of a service.
      *
      * @param name service name
      * @param provider service provider to register
@@ -47,14 +47,14 @@ public:
                                  ServicePriority priority) = 0;
 
     /**
-     * @brief Unregister all the services registered by a particular plugin.
+     * Unregister all the services registered by a particular plugin.
      *
      * @param plugin The plugin
      */
     virtual void unregisterAll(const Plugin &plugin) = 0;
 
     /**
-     * @brief Unregister a particular provider for a particular service.
+     * Unregister a particular provider for a particular service.
      *
      * @param name The service name
      * @param provider The service provider implementation
@@ -62,18 +62,18 @@ public:
     virtual void unregister(std::string name, const Service &provider) = 0;
 
     /**
-     * @brief Unregister a particular provider.
+     * Unregister a particular provider.
      *
      * @param provider The service provider implementation
      */
     virtual void unregister(const Service &provider) = 0;
 
     /**
-     * @brief Queries for a provider. This may return null if no provider has been registered for a service. The highest
-     * priority provider is returned.
+     * Queries for a provider. This may return an empty shared_ptr if no provider has been registered for the service.
+     * The highest priority provider is returned.
      *
      * @param name The service name
-     * @return provider or null
+     * @return The highest priority provider, or an empty shared_ptr if none is registered.
      */
     virtual std::shared_ptr<Service> get(std::string name) const = 0;
 

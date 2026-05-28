@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a slider with a label.
+ * Represents a slider with a label.
  */
 class Slider {
 public:
@@ -34,17 +34,17 @@ public:
     }
 
     /**
-     * @brief Gets the label of the toggle.
+     * Gets the label of the slider.
      *
-     * @return The label of the toggle.
+     * @return The label of the slider.
      */
     [[nodiscard]] Message getLabel() const { return label_; }
 
     /**
-     * @brief Sets the label of the toggle.
+     * Sets the label of the slider.
      *
-     * @param label The new label for the toggle.
-     * @return A reference to the current toggle.
+     * @param label The new label for the slider.
+     * @return A reference to the current slider, for function chaining.
      */
     Slider &setLabel(Message label)
     {
@@ -53,14 +53,14 @@ public:
     }
 
     /**
-     * @brief Gets the minimum value of the slider.
+     * Gets the minimum value of the slider.
      *
      * @return The minimum value of the slider.
      */
     [[nodiscard]] float getMin() const { return min_; }
 
     /**
-     * @brief Sets the minimum value of the slider.
+     * Sets the minimum value of the slider.
      *
      * @param min The new minimum value for the slider.
      * @return A reference to the current slider, for function chaining.
@@ -72,14 +72,14 @@ public:
     }
 
     /**
-     * @brief Gets the maximum value of the slider.
+     * Gets the maximum value of the slider.
      *
      * @return The maximum value of the slider.
      */
     [[nodiscard]] float getMax() const { return max_; }
 
     /**
-     * @brief Sets the maximum value of the slider.
+     * Sets the maximum value of the slider.
      *
      * @param max The new maximum value for the slider.
      * @return A reference to the current slider, for function chaining.
@@ -91,14 +91,14 @@ public:
     }
 
     /**
-     * @brief Gets the step size of the slider.
+     * Gets the step size of the slider.
      *
      * @return The step size of the slider.
      */
     [[nodiscard]] float getStep() const { return step_; }
 
     /**
-     * @brief Sets the step size of the slider.
+     * Sets the step size of the slider.
      *
      * @param step The new step size for the slider.
      * @return A reference to the current slider, for function chaining.
@@ -110,14 +110,14 @@ public:
     }
 
     /**
-     * @brief Gets the default value of the slider.
+     * Gets the default value of the slider.
      *
      * @return The default value of the slider.
      */
     [[nodiscard]] std::optional<float> getDefaultValue() const { return default_value_; }
 
     /**
-     * @brief Sets the default value of the slider.
+     * Sets the default value of the slider.
      *
      * @param default_value The new default value for the slider.
      * @return A reference to the current slider, for function chaining.

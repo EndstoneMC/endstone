@@ -36,7 +36,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a player.
+ * Represents a player.
  */
 class Player : public Mob {
 protected:
@@ -44,49 +44,49 @@ protected:
 
 public:
     /**
-     * @brief Returns the name of this player
+     * Returns the name of this player.
      *
-     * @return Player name or null if we have not seen a name for this player yet
+     * @return Player name, or an empty string if we have not seen a name for this player yet.
      */
     [[nodiscard]] std::string getName() const override = 0;
 
     /**
-     * @brief Returns the UUID of this player
+     * Returns the UUID of this player.
      *
      * @return Player UUID
      */
     [[nodiscard]] virtual UUID getUniqueId() const = 0;
 
     /**
-     * @brief Checks if this player is a server operator
+     * Checks if this player is a server operator.
      *
      * @return true if this is an operator, otherwise false
      */
     [[nodiscard]] virtual bool isOp() const = 0;
 
     /**
-     * @brief Sets the operator status of this player
+     * Sets the operator status of this player.
      *
      * @param value New operator value
      */
     virtual void setOp(bool value) = 0;
 
     /**
-     * @brief Returns the Xbox User ID (XUID) of this player
+     * Returns the Xbox User ID (XUID) of this player.
      *
      * @return Player XUID
      */
     [[nodiscard]] virtual std::string getXuid() const = 0;
 
     /**
-     * @brief Gets the socket address of this player
+     * Gets the socket address of this player.
      *
      * @return the player's socket address
      */
     [[nodiscard]] virtual SocketAddress getAddress() const = 0;
 
     /**
-     * @brief Transfers the player to another server
+     * Transfers the player to another server.
      *
      * @param host Server address to transfer the player to.
      * @param port Server port to transfer the player to
@@ -94,7 +94,7 @@ public:
     virtual void transfer(std::string host, int port) const = 0;
 
     /**
-     * @brief Kicks player with custom kick message.
+     * Kicks player with custom kick message.
      *
      * @param message kick message
      */
@@ -103,7 +103,7 @@ public:
     // TODO: chat
 
     /**
-     * @brief Makes the player perform the given command
+     * Makes the player perform the given command.
      *
      * @param command Command to perform
      * @return true if the command was successful, otherwise false
@@ -111,28 +111,28 @@ public:
     virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
 
     /**
-     * @brief Returns if the player is in sneak mode
+     * Returns if the player is in sneak mode.
      *
      * @return true if player is in sneak mode
      */
     [[nodiscard]] virtual bool isSneaking() const = 0;
 
     /**
-     * @brief Sets the sneak mode of the player
+     * Sets the sneak mode of the player.
      *
      * @param sneak true if player should appear sneaking
      */
     virtual void setSneaking(bool sneak) = 0;
 
     /**
-     * @brief Gets whether the player is sprinting or not.
+     * Gets whether the player is sprinting or not.
      *
      * @return true if player is sprinting.
      */
     [[nodiscard]] virtual bool isSprinting() const = 0;
 
     /**
-     * @brief Sets whether the player is sprinting or not.
+     * Sets whether the player is sprinting or not.
      *
      * @param sprinting true if the player should be sprinting
      */
@@ -141,7 +141,7 @@ public:
     // TODO: playNote
 
     /**
-     * @brief Play a sound for a player at the location.
+     * Play a sound for a player at the location.
      *
      * @param location The location to play the sound
      * @param sound The internal sound name to play
@@ -151,44 +151,44 @@ public:
     virtual void playSound(Location location, std::string sound, float volume, float pitch) = 0;
 
     /**
-     * @brief Stop the specified sound from playing.
+     * Stop the specified sound from playing.
      *
      * @param sound the sound to stop
      */
     virtual void stopSound(std::string sound) = 0;
 
     /**
-     * @brief Stop all sounds from playing.
+     * Stop all sounds from playing.
      */
     virtual void stopAllSounds() = 0;
 
     // TODO: playEffect
 
     /**
-     * @brief Gives the player the amount of experience specified.
+     * Gives the player the amount of experience specified.
      *
      * @param amount Exp amount to give
      */
     virtual void giveExp(int amount) = 0;
 
     /**
-     * @brief Gives the player the amount of experience levels specified.
+     * Gives the player the amount of experience levels specified.
      *
      * @param amount amount of experience levels to give or take
      */
     virtual void giveExpLevels(int amount) = 0;
 
     /**
-     * @brief Gets the players current experience progress towards the next level.
+     * Gets the players current experience progress towards the next level.
      *
      * This is a percentage value. 0.0 is "no progress" and 1.0 is "next level".
      *
-     * @return Current experience points
+     * @return Current experience progress, between 0.0 and 1.0.
      */
     [[nodiscard]] virtual float getExpProgress() const = 0;
 
     /**
-     * @brief Sets the players current experience progress towards the next level
+     * Sets the players current experience progress towards the next level.
      *
      * This is a percentage value. 0.0 is "no progress" and 1.0 is "next level".
      *
@@ -197,21 +197,21 @@ public:
     virtual void setExpProgress(float progress) = 0;
 
     /**
-     * @brief Gets the players current experience level
+     * Gets the players current experience level.
      *
      * @return Current experience level
      */
     [[nodiscard]] virtual int getExpLevel() const = 0;
 
     /**
-     * @brief Sets the players current experience level
+     * Sets the players current experience level.
      *
      * @param level New experience level
      */
     virtual void setExpLevel(int level) = 0;
 
     /**
-     * @brief Gets the players total experience points.
+     * Gets the players total experience points.
      *
      * This refers to the total amount of experience the player has collected
      * over time and is not currently displayed to the client.
@@ -221,35 +221,35 @@ public:
     [[nodiscard]] virtual int getTotalExp() const = 0;
 
     /**
-     * @brief Determines if the Player is allowed to fly via jump key double-tap.
+     * Determines if the Player is allowed to fly via jump key double-tap.
      *
      * @return True if the player is allowed to fly.
      */
     [[nodiscard]] virtual bool getAllowFlight() const = 0;
 
     /**
-     * @brief Sets if the Player is allowed to fly via jump key double-tap.
+     * Sets if the Player is allowed to fly via jump key double-tap.
      *
      * @param flight If flight should be allowed.
      */
     virtual void setAllowFlight(bool flight) = 0;
 
     /**
-     * @brief Checks to see if this player is currently flying or not.
+     * Checks to see if this player is currently flying or not.
      *
      * @return True if the player is flying, else false.
      */
     [[nodiscard]] virtual bool isFlying() const = 0;
 
     /**
-     * @brief Makes this player start or stop flying.
+     * Makes this player start or stop flying.
      *
      * @param value True to fly.
      */
     virtual void setFlying(bool value) = 0;
 
     /**
-     * @brief Gets the current allowed speed that a client can fly.
+     * Gets the current allowed speed that a client can fly.
      *
      * @return The current allowed speed, default is 0.05.
      */
@@ -263,7 +263,7 @@ public:
     virtual void setFlySpeed(float value) const = 0;
 
     /**
-     * @brief Gets the current allowed speed that a client can walk.
+     * Gets the current allowed speed that a client can walk.
      *
      * @return The current allowed speed, default is 0.10.
      */
@@ -277,35 +277,35 @@ public:
     virtual void setWalkSpeed(float value) const = 0;
 
     /**
-     *@brief Gets the Scoreboard displayed to this player
+     * Gets the Scoreboard displayed to this player.
      *
      * @return The current scoreboard seen by this player
      */
     [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
 
     /**
-     * @breif Sets the player's visible Scoreboard.
+     * Sets the player's visible Scoreboard.
      *
      * @param scoreboard New Scoreboard for the player
      */
     void virtual setScoreboard(Scoreboard &scoreboard) = 0;
 
     /**
-     * @brief Sends this player a popup message
+     * Sends this player a popup message.
      *
      * @param message Message to be displayed
      */
     virtual void sendPopup(std::string message) const = 0;
 
     /**
-     * @brief Sends this player a tip message
+     * Sends this player a tip message.
      *
      * @param message Message to be displayed
      */
     virtual void sendTip(std::string message) const = 0;
 
     /**
-     * @brief Sends this player a toast notification.
+     * Sends this player a toast notification.
      *
      * @param title The title of the toast notification.
      * @param content The content of the toast notification.
@@ -313,7 +313,7 @@ public:
     virtual void sendToast(std::string title, std::string content) const = 0;
 
     /**
-     * @brief Sends a title and a subtitle message to the player. If they are empty strings, the display will be
+     * Sends a title and a subtitle message to the player. If they are empty strings, the display will be
      * updated as such. The titles will be displayed with the default timings.
      *
      * @param title Title text
@@ -322,7 +322,7 @@ public:
     virtual void sendTitle(std::string title, std::string subtitle) const = 0;
 
     /**
-     * @brief Sends a title and a subtitle message to the player. If they are empty strings, the display will be
+     * Sends a title and a subtitle message to the player. If they are empty strings, the display will be
      * updated as such.
      *
      * @param title Title text
@@ -334,13 +334,13 @@ public:
     virtual void sendTitle(std::string title, std::string subtitle, int fade_in, int stay, int fade_out) const = 0;
 
     /**
-     * @brief Resets the title displayed to the player. This will clear the displayed title / subtitle and reset
+     * Resets the title displayed to the player. This will clear the displayed title / subtitle and reset
      * timings to their default values.
      */
     virtual void resetTitle() const = 0;
 
     /**
-     * @brief Spawns the particle at the target location.
+     * Spawns the particle at the target location.
      *
      * @param name the name of the particle effect to spawn
      * @param location the location to spawn at
@@ -348,7 +348,7 @@ public:
     virtual void spawnParticle(std::string name, Location location) const = 0;
 
     /**
-     * @brief Spawns the particle at the target location.
+     * Spawns the particle at the target location.
      *
      * @param name the name of the particle effect to spawn
      * @param x the position on the x axis to spawn at
@@ -358,7 +358,7 @@ public:
     virtual void spawnParticle(std::string name, float x, float y, float z) const = 0;
 
     /**
-     * @brief Spawns the particle at the target location.
+     * Spawns the particle at the target location.
      *
      * @param name the name of the particle effect to spawn
      * @param location the location to spawn at
@@ -368,7 +368,7 @@ public:
                                std::optional<std::string> molang_variables_json) const = 0;
 
     /**
-     * @brief Spawns the particle at the target location.
+     * Spawns the particle at the target location.
      *
      * @param name the name of the particle effect to spawn
      * @param x the position on the x axis to spawn at
@@ -382,21 +382,21 @@ public:
     // TODO: getClientViewDistance
 
     /**
-     * @brief Gets the player's average ping
+     * Gets the player's average ping.
      *
      * @return player ping
      */
     [[nodiscard]] virtual std::chrono::milliseconds getPing() const = 0;
 
     /**
-     * @brief Gets the player's current locale.
+     * Gets the player's current locale.
      *
      * @return the player's locale
      */
     [[nodiscard]] virtual std::string getLocale() const = 0;
 
     /**
-     * @brief Send the list of commands to the client.
+     * Send the list of commands to the client.
      *
      * Generally useful to ensure the client has a complete list of commands after permission changes are done.
      */
@@ -404,75 +404,75 @@ public:
 
     // === EntityHuman === //
     /**
-     * @brief Get the player's inventory.
+     * Get the player's inventory.
      *
      * @return The inventory of the player, this also contains the armor slots.
      */
     [[nodiscard]] virtual PlayerInventory &getInventory() const = 0;
 
     /**
-     * @brief Get the player's EnderChest inventory
+     * Get the player's EnderChest inventory.
      *
      * @return The EnderChest of the player
      */
     [[nodiscard]] virtual Inventory &getEnderChest() const = 0;
 
     /**
-     * @brief Gets this player's current GameMode
+     * Gets this player's current GameMode.
      *
      * @return Current game mode
      */
     [[nodiscard]] virtual GameMode getGameMode() const = 0;
 
     /**
-     * @brief Sets this player's current GameMode
+     * Sets this player's current GameMode.
      *
      * @param mode New game mode
      */
     virtual void setGameMode(GameMode mode) = 0;
 
     /**
-     * @brief Gets the player's current device's operation system (OS).
+     * Gets the player's current device's operation system (OS).
      *
      * @return the player's device OS
      */
     [[nodiscard]] virtual std::string getDeviceOS() const = 0;
 
     /**
-     * @brief Gets the player's current device id.
+     * Gets the player's current device id.
      *
      * @return the player's device id
      */
     [[nodiscard]] virtual std::string getDeviceId() const = 0;
 
     /**
-     * @brief Gets the player's current game version.
+     * Gets the player's current game version.
      *
      * @return the player's game version
      */
     [[nodiscard]] virtual std::string getGameVersion() const = 0;
 
     /**
-     * @brief Gets the player's skin.
+     * Gets the player's skin.
      *
      * @return the player's skin
      */
     [[nodiscard]] virtual Skin getSkin() const = 0;
 
     /**
-     * @brief Sends a form to the player.
+     * Sends a form to the player.
      *
      * @param form The form to send
      */
     virtual void sendForm(FormVariant form) = 0;
 
     /**
-     * @brief Closes the forms that are currently open for the player.
+     * Closes the forms that are currently open for the player.
      */
     virtual void closeForm() = 0;
 
     /**
-     * @brief Sends a packet to the player.
+     * Sends a packet to the player.
      *
      * @param packet_id The packet ID to be sent.
      * @param payload The payload of the packet to be transmitted.
@@ -480,7 +480,7 @@ public:
     virtual void sendPacket(int packet_id, std::string_view payload) const = 0;
 
     /**
-     * @brief Render a map and send it to the player in its entirety.
+     * Render a map and send it to the player in its entirety.
      *
      * This may be used when streaming the map in the normal manner is not desirable.
      *

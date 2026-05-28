@@ -28,7 +28,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a plugin loader, which handles direct access to specific types of plugins.
+ * Represents a plugin loader, which handles direct access to specific types of plugins.
  */
 class PluginLoader {
 public:
@@ -39,7 +39,7 @@ public:
     virtual ~PluginLoader() = default;
 
     /**
-     * Loads the plugin contained in the specified file
+     * Loads the plugin contained in the specified file.
      *
      * @param file File to attempt to load
      * @return Plugin that was contained in the specified file, or nullptr if unsuccessful
@@ -47,7 +47,7 @@ public:
     [[nodiscard]] virtual Plugin *loadPlugin(std::string file) = 0;
 
     /**
-     * @brief Loads the plugin contained within the specified directory
+     * Loads the plugin contained within the specified directory.
      *
      * @param directory Directory to check for plugins
      * @return A list of all plugins loaded
@@ -90,15 +90,16 @@ public:
     }
 
     /**
-     * @brief Returns a list of all filename filters expected by this PluginLoader
+     * Returns a list of all filename filters expected by this PluginLoader.
      *
      * @return The filters
      */
     [[nodiscard]] virtual std::vector<std::string> getPluginFileFilters() const = 0;
 
     /**
-     * @brief Enables the specified plugin
-     * Attempting to enable a plugin that is already enabled will have no effect
+     * Enables the specified plugin.
+     *
+     * Attempting to enable a plugin that is already enabled will have no effect.
      *
      * @param plugin Plugin to enable
      */
@@ -120,8 +121,9 @@ public:
     }
 
     /**
-     * @brief Disables the specified plugin
-     * Attempting to disable a plugin that is not enabled will have no effect
+     * Disables the specified plugin.
+     *
+     * Attempting to disable a plugin that is not enabled will have no effect.
      *
      * @param plugin Plugin to disable
      */
@@ -143,7 +145,7 @@ public:
     }
 
     /**
-     * @brief Retrieves the Server object associated with the PluginLoader.
+     * Retrieves the Server object associated with the PluginLoader.
      *
      * This function returns a reference to the Server object that the PluginLoader is associated with.
      *

@@ -17,16 +17,15 @@
 namespace endstone {
 
 /**
- * @brief Represents the order in which a plugin should be initialized and enabled.
+ * Represents the order in which a plugin should be initialized and enabled.
  */
 enum class PluginLoadOrder {
     /**
-     * Indicates that the plugin will be loaded at startup
+     * Indicates that the plugin will be loaded at startup.
      */
     Startup,
     /**
-     * Indicates that the plugin will be loaded after the first/default world
-     * was created
+     * Indicates that the plugin will be loaded after the default level has been created.
      */
     PostWorld,
 };

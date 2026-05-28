@@ -24,7 +24,7 @@
 namespace endstone {
 
 /**
- * @brief Called when the server receives a packet from a connected client.
+ * Called when the server receives a packet from a connected client.
  */
 class PacketReceiveEvent : public Cancellable<ServerEvent> {
 public:
@@ -37,23 +37,23 @@ public:
     }
 
     /**
-     * @brief Gets the ID of the packet.
+     * Gets the ID of the packet.
      *
      * @return The packet ID.
      */
     [[nodiscard]] int getPacketId() const { return packet_id_; }
 
     /**
-     * @brief Gets the raw packet data **excluding** the header.
+     * Gets the raw packet data **excluding** the header.
      *
      * @return The packet payload data.
      */
     [[nodiscard]] std::string_view getPayload() const { return payload_; }
 
     /**
-     * @brief Sets the raw packet data **excluding** the header.
+     * Sets the raw packet data **excluding** the header.
      *
-     * @return The packet payload data.
+     * @param payload The new packet payload data.
      */
     void setPayload(std::string_view payload)
     {
@@ -62,7 +62,7 @@ public:
     }
 
     /**
-     * @brief Returns the player involved in this event
+     * Returns the player involved in this event.
      *
      * @note This may return nullptr if the packet is sent before the player completes the login process.
      *
@@ -71,14 +71,14 @@ public:
     [[nodiscard]] Player *getPlayer() const { return player_; }
 
     /**
-     * @brief Gets the network address to which this packet is being sent.
+     * Gets the network address of the client that sent this packet.
      *
-     * @return The SocketAddress of the destination client.
+     * @return The SocketAddress of the source client.
      */
     [[nodiscard]] SocketAddress getAddress() const { return address_; }
 
     /**
-     * @brief Gets the SubClient ID.
+     * Gets the SubClient ID.
      *
      * @note Range is 0 to 3 (0 = primary client; 1-3 = split-screen clients).
      *

@@ -20,7 +20,7 @@
 namespace endstone {
 
 /**
- * @brief Called when an Actor is spawned into a world.
+ * Called when an Actor is spawned into a world.
  *
  * If an Actor Spawn event is cancelled, the actor will not spawn.
  */

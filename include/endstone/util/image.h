@@ -25,7 +25,7 @@
 
 namespace endstone {
 /**
- * @brief Represents an RGBA image.
+ * Represents an RGBA image.
  *
  * Each pixel is four bytes: R, G, B, A, in row-major order.
  */
@@ -34,21 +34,21 @@ public:
     enum class Type {
         Invalid = 0,
         /**
-         * @brief 8-bit pixels, grayscale
+         * 8-bit pixels, grayscale.
          */
         Grayscale = 1,
         /**
-         * @brief 3x8-bit pixels, true color
+         * 3x8-bit pixels, true color.
          */
         RGB = 3,
         /**
-         * 4x8-bit pixels, true color with transparency mask
+         * 4x8-bit pixels, true color with transparency mask.
          */
         RGBA = 4,
     };
 
     /**
-     * @brief Create an empty image (all pixels transparent black).
+     * Create an empty image (all pixels transparent black).
      *
      * @param type   Image type
      * @param width  Image width in pixels
@@ -73,21 +73,21 @@ public:
     }
 
     /**
-     * @brief Get the image width.
+     * Get the image width.
      *
      * @return Image width in pixels
      */
     [[nodiscard]] int getWidth() const { return width_; }
 
     /**
-     * @brief Get the image height.
+     * Get the image height.
      *
      * @return Image height in pixels
      */
     [[nodiscard]] int getHeight() const { return height_; }
 
     /**
-     * @brief Get the image depth.
+     * Get the image depth.
      *
      * @return Image depth
      */
@@ -106,7 +106,7 @@ public:
     }
 
     /**
-     * @brief Get the color of a pixel.
+     * Get the color of a pixel.
      *
      * @param x X coordinate (0 ≤ x < width)
      * @param y Y coordinate (0 ≤ y < height)
@@ -139,7 +139,7 @@ public:
     }
 
     /**
-     * @brief Set the color of a pixel.
+     * Set the color of a pixel.
      * @param x     X coordinate (0 ≤ x < width)
      * @param y     Y coordinate (0 ≤ y < height)
      * @param color New color for the pixel
@@ -168,19 +168,19 @@ public:
     }
 
     /**
-     * @brief Gets the raw pixel buffer (row-major, H x W x D).
+     * Gets the raw pixel buffer (row-major, H x W x D).
      *
      * @return The underlying image data buffer
      */
     [[nodiscard]] std::string_view getData() const { return data_; }
 
     /**
-     * @brief Creates an image from the pixel data in a byte array.
+     * Creates an image from the pixel data in a byte array.
      *
      * @param type     Image type
      * @param width    Image width in pixels
      * @param height   Image height in pixels
-     * @param array
+     * @param array    Raw pixel data, sized according to <code>type</code>, <code>width</code> and <code>height</code>.
      * @return         The image on success, or an error on failure.
      */
     static Result<Image> fromArray(Type type, const int width, const int height,
@@ -191,12 +191,12 @@ public:
     }
 
     /**
-     * @brief Creates an image from the pixel data in a byte buffer.
+     * Creates an image from the pixel data in a byte buffer.
      *
      * @param type     Image type
      * @param width    Image width in pixels
      * @param height   Image height in pixels
-     * @param buffer
+     * @param buffer   Raw pixel data, sized according to <code>type</code>, <code>width</code> and <code>height</code>.
      * @return         The image on success, or an error on failure.
      */
     static Result<Image> fromBuffer(Type type, const int width, const int height, std::string_view buffer)

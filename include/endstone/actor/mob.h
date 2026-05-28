@@ -18,18 +18,18 @@
 
 namespace endstone {
 /**
- * @brief Represents a mobile entity (i.e. living entity), such as a monster or player.
+ * Represents a mobile entity (i.e. living entity), such as a monster or player.
  */
 class Mob : public Actor {
 public:
     /**
-     * @brief Checks to see if an actor is gliding, such as using an Elytra.
+     * Checks to see if an actor is gliding, such as using an Elytra.
      * @return True if this actor is gliding.
      */
     [[nodiscard]] virtual bool isGliding() const = 0;
 
     /**
-     * @brief Gets the entity's health from 0 to its max possible value, where 0 is dead.
+     * Gets the entity's health from 0 to its max possible value, where 0 is dead.
      *
      * @return Health represented from 0 to max
      */
@@ -43,14 +43,14 @@ public:
     virtual void setHealth(int health) const = 0;
 
     /**
-     * @brief Gets the maximum health this entity has.
+     * Gets the maximum health this entity has.
      *
      * @return Maximum health
      */
     [[nodiscard]] virtual int getMaxHealth() const = 0;
 
     /**
-     * @brief Sets the maximum health this entity can have.
+     * Sets the maximum health this entity can have.
      *
      * If the health of the entity is above the value provided, it will be set to that value.
      *

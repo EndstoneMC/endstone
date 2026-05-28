@@ -21,7 +21,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a plugin is enabled.
+ * Called when a plugin is enabled.
  */
 class PluginEnableEvent : public ServerEvent {
 public:
@@ -29,7 +29,7 @@ public:
     explicit PluginEnableEvent(Plugin &plugin) : plugin_(plugin) {}
 
     /**
-     * Gets the plugin involved in this event
+     * Gets the plugin involved in this event.
      *
      * @return Plugin for this event
      */

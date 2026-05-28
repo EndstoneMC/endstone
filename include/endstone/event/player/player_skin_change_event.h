@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player changes their skin.
+ * Called when a player changes their skin.
  */
 class PlayerSkinChangeEvent : public Cancellable<PlayerEvent> {
 public:
@@ -35,21 +35,21 @@ public:
     }
 
     /**
-     * @brief Gets the player's new skin.
+     * Gets the player's new skin.
      *
      * @return The skin that will be applied.
      */
     [[nodiscard]] Skin getNewSkin() const { return new_skin_; }
 
     /**
-     * @brief Gets the message to send to all online players for this skin change.
+     * Gets the message to send to all online players for this skin change.
      *
      * @return Message to appear to other players on the server.
      */
     [[nodiscard]] std::optional<Message> getSkinChangeMessage() const { return message_; }
 
     /**
-     * @brief Sets the message to send to all online players for this skin change.
+     * Sets the message to send to all online players for this skin change.
      *
      * @param message Message to appear to other players on the server.
      */

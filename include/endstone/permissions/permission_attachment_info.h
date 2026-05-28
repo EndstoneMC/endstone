@@ -23,7 +23,7 @@ class Permissible;
 class PermissionAttachment;
 
 /**
- * @brief Holds information on a permission and which PermissionAttachment provides it.
+ * Holds information on a permission and which PermissionAttachment provides it.
  */
 class PermissionAttachmentInfo {
 
@@ -35,21 +35,21 @@ public:
     }
 
     /**
-     * Gets the permissible this is attached to
+     * Gets the permissible this is attached to.
      *
      * @return Permissible this permission is for
      */
     [[nodiscard]] Permissible &getPermissible() const { return permissible_; }
 
     /**
-     * Gets the permission being set
+     * Gets the permission being set.
      *
      * @return Name of the permission
      */
     [[nodiscard]] std::string getPermission() const { return permission_; }
 
     /**
-     * Gets the attachment providing this permission. This may be null for default permissions (usually parent
+     * Gets the attachment providing this permission. This may be nullptr for default permissions (usually parent
      * permissions).
      *
      * @return Attachment
@@ -57,7 +57,7 @@ public:
     [[nodiscard]] PermissionAttachment *getAttachment() const { return attachment_; }
 
     /**
-     * Gets the value of this permission
+     * Gets the value of this permission.
      *
      * @return Value of the permission
      */

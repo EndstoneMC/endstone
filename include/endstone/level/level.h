@@ -25,49 +25,49 @@
 namespace endstone {
 
 /**
- * @brief Represents a level, which may contain actors, chunks and blocks
+ * Represents a level, which may contain actors, chunks and blocks.
  */
 class Level {
 public:
     virtual ~Level() = default;
 
     /**
-     * @brief Gets the unique name of this level
+     * Gets the unique name of this level.
      *
      * @return Name of this level
      */
     [[nodiscard]] virtual std::string getName() const = 0;
 
     /**
-     * @brief Get a list of all actors in this level
+     * Get a list of all actors in this level.
      *
      * @return A List of all actors currently residing in this level
      */
     [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
 
     /**
-     * @brief Gets the relative in-game time of this level.
+     * Gets the relative in-game time of this level.
      *
      * @return The current relative time
      */
     [[nodiscard]] virtual int getTime() const = 0;
 
     /**
-     * @brief Sets the relative in-game time on the server.
+     * Sets the relative in-game time on the server.
      *
      * @param time The new relative time to set the in-game time to
      */
     virtual void setTime(int time) = 0;
 
     /**
-     * @brief Gets a list of all dimensions within this level.
+     * Gets a list of all dimensions within this level.
      *
      * @return a list of dimensions
      */
     [[nodiscard]] virtual std::vector<Dimension *> getDimensions() const = 0;
 
     /**
-     * @brief Gets the dimension with the given id.
+     * Gets the dimension with the given id.
      *
      * @param id the id of the dimension to retrieve.
      *
@@ -76,7 +76,7 @@ public:
     [[nodiscard]] virtual Dimension *getDimension(DimensionId id) const = 0;
 
     /**
-     * @brief Gets the Seed for this level.
+     * Gets the Seed for this level.
      *
      * @return This level's Seed
      */

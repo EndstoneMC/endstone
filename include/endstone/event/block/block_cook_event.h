@@ -22,7 +22,7 @@
 
 namespace endstone {
 /**
- * @brief Called when an ItemStack is successfully cooked in a block.
+ * Called when an ItemStack is successfully cooked in a block.
  */
 class BlockCookEvent : public Cancellable<BlockEvent> {
 public:
@@ -34,21 +34,21 @@ public:
     }
 
     /**
-     * @brief Gets the smelted ItemStack for this event
+     * Gets the smelted ItemStack for this event.
      *
      * @return smelting source ItemStack
      */
     [[nodiscard]] const ItemStack &getSource() const { return source_; }
 
     /**
-     * @brief Gets the resultant ItemStack for this event
+     * Gets the resultant ItemStack for this event.
      *
      * @return smelting result ItemStack
      */
     [[nodiscard]] const ItemStack &getResult() const { return result_; }
 
     /**
-     * @brief Sets the resultant ItemStack for this event
+     * Sets the resultant ItemStack for this event.
      *
      * @param result new result ItemStack
      */

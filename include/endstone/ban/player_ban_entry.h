@@ -24,7 +24,7 @@
 namespace endstone {
 
 /**
- * @brief Represents an entry for a banned player.
+ * Represents an entry for a banned player.
  */
 class PlayerBanEntry : public BanEntry {
 public:
@@ -35,21 +35,21 @@ public:
     }
 
     /**
-     * @brief Gets the banned player's name.
+     * Gets the banned player's name.
      *
      * @return the player name
      */
     [[nodiscard]] std::string getName() const { return name_; }
 
     /**
-     * @brief Gets the banned player's unique id.
+     * Gets the banned player's unique id.
      *
      * @return the player's unique id, or std::nullopt if not available
      */
     [[nodiscard]] std::optional<UUID> getUniqueId() const { return uuid_; }
 
     /**
-     * @brief Gets the banned player's xbox user id (xuid).
+     * Gets the banned player's xbox user id (xuid).
      *
      * @return the player's xbox user id (xuid), or std::nullopt if not available
      */

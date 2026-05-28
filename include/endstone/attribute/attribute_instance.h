@@ -20,56 +20,56 @@
 
 namespace endstone {
 /**
- * @brief Represents a mutable instance of an attribute and its associated modifiers and values.
+ * Represents a mutable instance of an attribute and its associated modifiers and values.
  */
 class AttributeInstance {
 public:
     virtual ~AttributeInstance() = default;
 
     /**
-     * @brief The attribute type pertaining to this instance.
+     * The attribute type pertaining to this instance.
      *
      * @return the attribute type
      */
     [[nodiscard]] virtual AttributeId getType() const = 0;
 
     /**
-     * @brief Base value of this instance before modifiers are applied.
+     * Base value of this instance before modifiers are applied.
      *
      * @return base value
      */
     [[nodiscard]] virtual float getBaseValue() const = 0;
 
     /**
-     * @brief Set the base value of this instance.
+     * Set the base value of this instance.
      *
      * @param value new base value
      */
     virtual void setBaseValue(float value) = 0;
 
     /**
-     * @brief Get the value of this instance after all associated modifiers have been applied.
+     * Get the value of this instance after all associated modifiers have been applied.
      *
      * @return the total attribute value
      */
     [[nodiscard]] virtual float getValue() const = 0;
 
     /**
-     * @brief Get all modifiers present on this instance.
+     * Get all modifiers present on this instance.
      *
      * @return a copied collection of all modifiers
      */
     [[nodiscard]] virtual std::vector<AttributeModifier> getModifiers() const = 0;
 
     /**
-     * @brief Add a modifier to this instance.
+     * Add a modifier to this instance.
      *
      * @param modifier to add
      */
     virtual void addModifier(const AttributeModifier &modifier) = 0;
 
     /**
-     * @brief Remove a modifier from this instance.
+     * Remove a modifier from this instance.
      *
      * @param modifier to remove
      */

@@ -19,7 +19,7 @@
 namespace endstone {
 class ItemStack;
 /**
- * @brief Represents an item type.
+ * Represents an item type.
  */
 using ItemTypeId = Identifier<ItemType>;
 class ItemType : public Registry<ItemType>::Type {
@@ -27,14 +27,14 @@ public:
     static constexpr auto Air = ItemTypeId::minecraft("air");
 
     /**
-     * @brief Get the translation key, suitable for use in a translation component.
+     * Get the translation key, suitable for use in a translation component.
      *
      * @return the translation key
      */
     [[nodiscard]] std::string getTranslationKey() const override = 0;
 
     /**
-     * @brief Get the translation key, suitable for use in a translation component.
+     * Get the translation key, suitable for use in a translation component.
      *
      * @param data Data for this item type
      *
@@ -43,28 +43,28 @@ public:
     [[nodiscard]] virtual std::string getTranslationKey(int data) const = 0;
 
     /**
-     * @brief Gets the maximum amount of this item type that can be held in a stack
+     * Gets the maximum amount of this item type that can be held in a stack.
      *
      * @return Maximum stack size for this item type
      */
     [[nodiscard]] virtual int getMaxStackSize() const = 0;
 
     /**
-     * @brief Gets the maximum durability of this item type
+     * Gets the maximum durability of this item type.
      *
      * @return Maximum durability for this item type
      */
     [[nodiscard]] virtual int getMaxDurability() const = 0;
 
     /**
-     * @brief Constructs a new ItemStack with this item type that has the amount 1.
+     * Constructs a new ItemStack with this item type that has the amount 1.
      *
      * @return the constructed item stack.
      */
     [[nodiscard]] virtual ItemStack createItemStack() const = 0;
 
     /**
-     * @brief Constructs a new ItemStack with this item type.
+     * Constructs a new ItemStack with this item type.
      *
      * @param amount the amount in the stack
      * @return An ItemStack of this item type

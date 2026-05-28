@@ -30,7 +30,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a form with buttons that let the player take action.
+ * Represents a form with buttons that let the player take action.
  */
 class ActionForm : public Form<ActionForm> {
 public:
@@ -40,14 +40,14 @@ public:
     explicit ActionForm() = default;
 
     /**
-     * @brief Get the content of the form.
+     * Get the content of the form.
      *
      * @return The content of the form.
      */
     [[nodiscard]] Message getContent() const { return content_; }
 
     /**
-     * @brief Set the content of the form.
+     * Set the content of the form.
      *
      * @param text The text to set as the content.
      * @return A reference to the current form.
@@ -59,7 +59,7 @@ public:
     }
 
     /**
-     * @brief Adds a button to the form.
+     * Adds a button to the form.
      *
      * @param text The text of the button
      * @param icon The path or URL to the icon image
@@ -75,7 +75,7 @@ public:
     }
 
     /**
-     * @brief Adds a label to the form.
+     * Adds a label to the form.
      *
      * @param text The text of the label
      * @return A reference to the current form.
@@ -87,7 +87,7 @@ public:
     }
 
     /**
-     * @brief Adds a header to the form.
+     * Adds a header to the form.
      *
      * @param text The text of the header
      * @return A reference to the current form.
@@ -99,7 +99,7 @@ public:
     }
 
     /**
-     * @brief Adds a divider to the form.
+     * Adds a divider to the form.
      *
      * @return A reference to the current form.
      */
@@ -110,14 +110,14 @@ public:
     }
 
     /**
-     * @brief Get the controls of the action form.
+     * Get the controls of the action form.
      *
      * @return A list of controls in the action form.
      */
     [[nodiscard]] const std::vector<Control> &getControls() const { return controls_; }
 
     /**
-     * @brief Set the controls of the action form.
+     * Set the controls of the action form.
      *
      * @param controls The list of controls to set.
      * @return A reference to the current form.
@@ -129,14 +129,14 @@ public:
     }
 
     /**
-     * @brief Gets the on submit callback of the form.
+     * Gets the on submit callback of the form.
      *
      * @return The on submit callback of the form.
      */
     [[nodiscard]] OnSubmitCallback getOnSubmit() const { return on_submit_; }
 
     /**
-     * @brief Sets the on submit callback of the form.
+     * Sets the on submit callback of the form.
      *
      * @param on_submit The callback to be set.
      * @return A reference to the current form.

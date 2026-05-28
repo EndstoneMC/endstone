@@ -34,7 +34,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a modal form with controls.
+ * Represents a modal form with controls.
  */
 class ModalForm : public Form<ModalForm> {
 public:
@@ -42,7 +42,7 @@ public:
     using OnSubmitCallback = std::function<void(Player *, std::string)>;
 
     /**
-     * @brief Adds a control to the form.
+     * Adds a control to the form.
      *
      * @param control The control to add to the form.
      * @return A reference to the current form.
@@ -54,14 +54,14 @@ public:
     }
 
     /**
-     * @brief Gets the controls of the modal form.
+     * Gets the controls of the modal form.
      *
      * @return A list of controls in the modal form.
      */
     [[nodiscard]] std::vector<Control> getControls() const { return controls_; }
 
     /**
-     * @brief Sets the controls of the modal form.
+     * Sets the controls of the modal form.
      *
      * @param controls The list of controls to set.
      * @return A reference to the current form.
@@ -73,14 +73,14 @@ public:
     }
 
     /**
-     * @brief Gets the submit button text of the form.
+     * Gets the submit button text of the form.
      *
      * @return The submit button text of the form.
      */
     [[nodiscard]] std::optional<Message> getSubmitButton() const { return submit_button_text_; }
 
     /**
-     * @brief Sets the submit button text of the form.
+     * Sets the submit button text of the form.
      *
      * @param text The submit button text to set.
      * @return A reference to the current form.
@@ -92,14 +92,14 @@ public:
     }
 
     /**
-     * @brief Get the icon of the form.
+     * Get the icon of the form.
      *
      * @return The path or URL to the icon file
      */
     [[nodiscard]] std::optional<std::string> getIcon() const { return icon_; }
 
     /**
-     * @brief Sets the icon of the form.
+     * Sets the icon of the form.
      *
      * @param icon The path or URL to the icon file.
      * @return A reference to the current form.
@@ -111,14 +111,14 @@ public:
     }
 
     /**
-     * @brief Gets the on submit callback of the form.
+     * Gets the on submit callback of the form.
      *
      * @return The on submit callback of the form.
      */
     [[nodiscard]] OnSubmitCallback getOnSubmit() const { return on_submit_; }
 
     /**
-     * @brief Sets the on submit callback of the form.
+     * Sets the on submit callback of the form.
      *
      * @param on_submit The callback to be set.
      * @return A reference to the current form.

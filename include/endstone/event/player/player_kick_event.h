@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player gets kicked from the server
+ * Called when a player gets kicked from the server.
  */
 class PlayerKickEvent : public Cancellable<PlayerEvent> {
 public:
@@ -32,14 +32,14 @@ public:
     explicit PlayerKickEvent(Player &player, std::string reason) : Cancellable(player), reason_(std::move(reason)) {}
 
     /**
-     * @brief Gets the reason why the player is getting kicked
+     * Gets the reason why the player is getting kicked.
      *
      * @return string kick reason
      */
     [[nodiscard]] std::string getReason() const { return reason_; }
 
     /**
-     * @brief Sets the reason why the player is getting kicked
+     * Sets the reason why the player is getting kicked.
      *
      * @param reason kick reason
      */

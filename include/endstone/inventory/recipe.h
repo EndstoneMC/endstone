@@ -18,14 +18,14 @@
 
 namespace endstone {
 /**
- * @brief Represents some type of crafting recipe.
+ * Represents some type of crafting recipe.
  */
 class Recipe {
 public:
     virtual ~Recipe() = default;
 
     /**
-     * @brief Get the result of this recipe.
+     * Get the result of this recipe.
      *
      * @return The result stack
      */

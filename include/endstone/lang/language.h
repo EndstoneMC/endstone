@@ -22,14 +22,14 @@
 namespace endstone {
 
 /**
- * @brief Represents the interface for translating text into different languages.
+ * Represents the interface for translating text into different languages.
  */
 class Language {
 public:
     virtual ~Language() = default;
 
     /**
-     * @brief Translates a given text into the current locale.
+     * Translates a given text into the current locale.
      *
      * @param text The text to be translated.
      * @return The translated text in the current locale.
@@ -37,7 +37,7 @@ public:
     [[nodiscard]] virtual std::string translate(std::string text) const = 0;
 
     /**
-     * @brief Translates a given text into a specific locale.
+     * Translates a given text into a specific locale.
      *
      * @param text The text to be translated.
      * @param locale The locale identifier for the desired translation (e.g., "en_US").
@@ -46,7 +46,7 @@ public:
     [[nodiscard]] virtual std::string translate(std::string text, std::string locale) const = 0;
 
     /**
-     * @brief Translates a given text using a set of parameters for the current locale.
+     * Translates a given text using a set of parameters for the current locale.
      *
      * @param text The text to be translated.
      * @param params A list of parameters to be used in the translation.
@@ -55,7 +55,7 @@ public:
     [[nodiscard]] virtual std::string translate(std::string text, std::vector<std::string> params) const = 0;
 
     /**
-     * @brief Translates a given text using a set of parameters for a specific locale.
+     * Translates a given text using a set of parameters for a specific locale.
      *
      * @param text The text to be translated.
      * @param params A list of parameters to be used in the translation.
@@ -66,7 +66,7 @@ public:
                                                 std::string locale) const = 0;
 
     /**
-     * @brief Translates a Translatable object into the current locale.
+     * Translates a Translatable object into the current locale.
      *
      * @param translatable A Translatable object containing text and parameters.
      * @return The translated text in the current locale.
@@ -74,7 +74,7 @@ public:
     [[nodiscard]] virtual std::string translate(Translatable translatable) const = 0;
 
     /**
-     * @brief Translates a Translatable object into a specific locale.
+     * Translates a Translatable object into a specific locale.
      *
      * @param translatable A Translatable object containing text and parameters.
      * @param locale The locale identifier for the desired translation (e.g., "en_US").
@@ -83,7 +83,7 @@ public:
     [[nodiscard]] virtual std::string translate(Translatable translatable, std::string locale) const = 0;
 
     /**
-     * @brief Gets the current locale.
+     * Gets the current locale.
      *
      * @return A string representing the current locale (e.g., "en_US").
      */

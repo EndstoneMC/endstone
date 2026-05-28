@@ -22,7 +22,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a player related event
+ * Represents a player related event.
  */
 class PlayerEvent : public Event {
 public:
@@ -30,7 +30,7 @@ public:
     ~PlayerEvent() override = default;
 
     /**
-     * Returns the player involved in this event
+     * Returns the player involved in this event.
      *
      * @return Player who is involved in this event
      */

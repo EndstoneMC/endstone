@@ -25,7 +25,7 @@
 namespace endstone {
 
 /**
- * @brief Called when the console runs a command, early in the process.
+ * Called when a command is run by a non-player, early in the command handling process.
  *
  * You should not use this except for a few cases like logging commands, blocking commands on certain places, or
  * applying modifiers.
@@ -38,18 +38,18 @@ public:
     ServerCommandEvent(CommandSender &sender, std::string command) : sender_(sender), command_(std::move(command)) {}
 
     /**
-     * Gets the command that the server is attempting to execute from the console
+     * Gets the command that the server is attempting to execute from the console.
      *
      * @return Command the server is attempting to execute
      */
     [[nodiscard]] std::string getCommand() const { return command_; }
 
     /**
-     * Sets the command that the server will execute
+     * Sets the command that the server will execute.
      *
-     * @param message New message that the server will execute
+     * @param command New command that the server will execute.
      */
-    void setCommand(std::string message) { command_ = std::move(message); }
+    void setCommand(std::string command) { command_ = std::move(command); }
 
     /**
      * Get the command sender.

@@ -22,7 +22,7 @@
 
 namespace endstone {
 /**
- * @brief Called when a block grows naturally in the world.
+ * Called when a block grows naturally in the world.
  *
  * If a Block Grow event is cancelled, the block will not grow.
  */
@@ -35,9 +35,9 @@ public:
     }
 
     /**
-     * @brief Gets the state of the block where it will form or spread to.
+     * Gets the state of the block after it has grown.
      *
-     * @return The block state for this events block
+     * @return The new state of the block.
      */
     [[nodiscard]] BlockState &getNewState() const { return *new_state_; }
 

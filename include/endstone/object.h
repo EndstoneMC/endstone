@@ -20,7 +20,7 @@
 namespace endstone {
 
 /**
- * @brief Base class providing runtime type identification and safe casting.
+ * Base class providing runtime type identification and safe casting.
  *
  * All endstone types that support runtime type narrowing (e.g., Permissible, ItemMeta)
  * inherit from Object. Subclasses implement getClassTypeId() and isInstanceOf(),
@@ -41,7 +41,7 @@ public:
     [[nodiscard]] virtual bool isInstanceOf(const std::type_info &target) const = 0;
 
     /**
-     * @brief Attempts to cast this object to the given type T.
+     * Attempts to cast this object to the given type T.
      *
      * Returns nullptr if this object is not an instance of T (or a subclass of T).
      *
@@ -72,7 +72,7 @@ public:
     }
 
     /**
-     * @brief Checks if this object is an instance of the given type T (or a subclass of T).
+     * Checks if this object is an instance of the given type T (or a subclass of T).
      *
      * @tparam T Type to check against (must derive from Object)
      * @return True if this object is an instance of T

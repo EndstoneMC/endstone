@@ -20,26 +20,26 @@
 
 namespace endstone {
 /**
- * @brief Represents the meta for a crossbow that can have a charged projectile.
+ * Represents the meta for a crossbow that can have a charged projectile.
  */
 class CrossbowMeta : public ItemMeta {
 public:
     /**
-     * @brief Returns whether the crossbow has a charged projectile.
+     * Returns whether the crossbow has a charged projectile.
      *
      * @return whether a charged projectile is present
      */
     [[nodiscard]] virtual bool hasChargedProjectile() const = 0;
 
     /**
-     * @brief Returns the charged projectile, or std::nullopt if none.
+     * Returns the charged projectile, or std::nullopt if none.
      *
      * @return the charged projectile
      */
     [[nodiscard]] virtual std::optional<ItemStack> getChargedProjectile() const = 0;
 
     /**
-     * @brief Sets the charged projectile. Pass std::nullopt to clear.
+     * Sets the charged projectile. Pass std::nullopt to clear.
      *
      * @param projectile the projectile to set, or std::nullopt to clear
      */

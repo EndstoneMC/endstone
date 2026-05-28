@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player jumps.
+ * Called when a player jumps.
  */
 class PlayerJumpEvent : public PlayerMoveEvent {
 public:

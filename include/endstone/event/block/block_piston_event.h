@@ -24,7 +24,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a piston block is triggered
+ * Called when a piston block is triggered.
  */
 class BlockPistonEvent : public Cancellable<BlockEvent> {
 public:
@@ -34,7 +34,7 @@ public:
     }
 
     /**
-     * @brief Return the direction in which the piston will operate.
+     * Return the direction in which the piston will operate.
      *
      * @return direction of the piston
      */

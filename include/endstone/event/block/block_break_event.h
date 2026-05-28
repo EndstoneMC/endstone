@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a block is broken by a player.
+ * Called when a block is broken by a player.
  *
  * <p>
  * If a BlockBreakEvent is cancelled, the block will not break and experience will not drop.
@@ -38,7 +38,7 @@ public:
     ~BlockBreakEvent() override = default;
 
     /**
-     * @brief Gets the Player that is breaking the block involved in this event.
+     * Gets the Player that is breaking the block involved in this event.
      *
      * @return The Player that is breaking the block involved in this event
      */

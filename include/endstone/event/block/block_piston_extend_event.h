@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a piston extends
+ * Called when a piston extends.
  */
 class BlockPistonExtendEvent final : public BlockPistonEvent {
 public:

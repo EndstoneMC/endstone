@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a non-player entity is teleported from one location to another.
+ * Called when a non-player entity is teleported from one location to another.
  *
  * This may be as a result of natural causes (Enderman, Shulker), pathfinding (Wolf), or commands (/teleport).
  */
@@ -37,28 +37,28 @@ public:
     ~ActorTeleportEvent() override = default;
 
     /**
-     * @brief Gets the location that this actor moved from
+     * Gets the location that this actor moved from.
      *
      * @return Location this actor moved from
      */
     [[nodiscard]] const Location &getFrom() const { return from_; }
 
     /**
-     * @brief Sets the location that this actor moved from
+     * Sets the location that this actor moved from.
      *
      * @param from New location this actor moved from
      */
     void setFrom(const Location &from) { from_ = from; }
 
     /**
-     * @brief Gets the location that this actor moved to
+     * Gets the location that this actor moved to.
      *
      * @return Location this actor moved to
      */
     [[nodiscard]] const Location &getTo() const { return to_; }
 
     /**
-     * @brief Sets the location that this actor moved to
+     * Sets the location that this actor moved to.
      *
      * @param to New Location this actor moved to
      */

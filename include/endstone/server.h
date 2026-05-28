@@ -54,7 +54,7 @@ template <typename T>
 class Registry;
 
 /**
- * @brief Represents a server implementation.
+ * Represents a server implementation.
  */
 class Server {
 public:
@@ -65,71 +65,71 @@ public:
     virtual ~Server() = default;
 
     /**
-     * @brief Gets the name of this server implementation.
+     * Gets the name of this server implementation.
      *
      * @return name of this server implementation
      */
     [[nodiscard]] virtual std::string getName() const = 0;
 
     /**
-     * @brief Gets the version string of this server implementation.
+     * Gets the version string of this server implementation.
      *
      * @return version of this server implementation
      */
     [[nodiscard]] virtual std::string getVersion() const = 0;
 
     /**
-     * @brief Gets the Minecraft version that this server is running.
+     * Gets the Minecraft version that this server is running.
      *
      * @return version of Minecraft
      */
     [[nodiscard]] virtual std::string getMinecraftVersion() const = 0;
 
     /**
-     * @brief Gets the network protocol version that this server supports.
+     * Gets the network protocol version that this server supports.
      *
      * @return version of network protocol
      */
     [[nodiscard]] virtual int getProtocolVersion() const = 0;
 
     /**
-     * @brief Returns the primary logger associated with this server instance.
+     * Returns the primary logger associated with this server instance.
      *
      * @return Logger associated with this server
      */
     [[nodiscard]] virtual Logger &getLogger() const = 0;
 
     /**
-     * @brief Gets the current language interface used by the server.
+     * Gets the current language interface used by the server.
      *
      * @return Language interface used by the server for translations.
      */
     [[nodiscard]] virtual Language &getLanguage() const = 0;
 
     /**
-     * @brief Gets the plugin manager for interfacing with plugins.
+     * Gets the plugin manager for interfacing with plugins.
      *
      * @return a plugin manager for this Server instance
      */
     [[nodiscard]] virtual PluginManager &getPluginManager() const = 0;
 
     /**
-     * @brief Gets a PluginCommand with the given name or alias.
+     * Gets a PluginCommand with the given name or alias.
      *
      * @param name the name of the command to retrieve
-     * @return a plugin command if found, null otherwise
+     * @return a plugin command if found, nullptr otherwise
      */
     [[nodiscard]] virtual PluginCommand *getPluginCommand(std::string name) const = 0;
 
     /**
-     * @brief Gets a CommandSender for this server.
+     * Gets a CommandSender for this server.
      *
      * @return a console command sender
      */
     [[nodiscard]] virtual ConsoleCommandSender &getCommandSender() const = 0;
 
     /**
-     * @brief Dispatches a command on this server, and executes it if found.
+     * Dispatches a command on this server, and executes it if found.
      *
      * @param sender the apparent sender of the command
      * @param command_line the command + arguments.
@@ -138,96 +138,96 @@ public:
     [[nodiscard]] virtual bool dispatchCommand(CommandSender &sender, std::string command_line) const = 0;
 
     /**
-     * @brief Gets the scheduler for managing scheduled events.
+     * Gets the scheduler for managing scheduled events.
      *
      * @return a scheduling service for this server
      */
     [[nodiscard]] virtual Scheduler &getScheduler() const = 0;
 
     /**
-     * @brief Gets the server level.
+     * Gets the server level.
      *
      * @return the server level
      */
     [[nodiscard]] virtual Level *getLevel() const = 0;
 
     /**
-     * @brief Gets a list of all currently online players.
+     * Gets a list of all currently online players.
      *
      * @return a list of currently online players.
      */
     [[nodiscard]] virtual std::vector<Player *> getOnlinePlayers() const = 0;
 
     /**
-     * @brief Get the maximum amount of players which can login to this server.
+     * Get the maximum amount of players which can login to this server.
      *
      * @return the amount of players this server allows
      */
     [[nodiscard]] virtual int getMaxPlayers() const = 0;
 
     /**
-     * @brief  Set the maximum amount of players allowed to be logged in at once.
+     * Set the maximum amount of players allowed to be logged in at once.
      *
      * @param max_players The maximum amount of concurrent players
      */
     virtual void setMaxPlayers(int max_players) = 0;
 
     /**
-     * @brief Gets the player with the given UUID.
+     * Gets the player with the given UUID.
      *
      * @param id UUID of the player to retrieve
-     * @return a player object if one was found, null otherwise
+     * @return a player object if one was found, nullptr otherwise
      */
     [[nodiscard]] virtual Player *getPlayer(endstone::UUID id) const = 0;
 
     /**
-     * @brief Get the game port that the server runs on.
+     * Get the game port that the server runs on.
      *
      * @return the port number of this server
      */
     [[nodiscard]] virtual int getPort() const = 0;
 
     /**
-     * @brief Get the game port (IPv6) that the server runs on.
+     * Get the game port (IPv6) that the server runs on.
      *
      * @return the port number of this server
      */
     [[nodiscard]] virtual int getPortV6() const = 0;
 
     /**
-     * @brief Gets whether the Server is in online mode or not.
+     * Gets whether the Server is in online mode or not.
      *
      * @return true if the server authenticates clients, false otherwise
      */
     [[nodiscard]] virtual bool getOnlineMode() const = 0;
 
     /**
-     * @brief Gets the player with the exact given name, case-insensitive.
+     * Gets the player with the exact given name, case-insensitive.
      *
      * @param name Exact name of the player to retrieve
-     * @return a player object if one was found, null otherwise
+     * @return a player object if one was found, nullptr otherwise
      */
     [[nodiscard]] virtual Player *getPlayer(std::string name) const = 0;
 
     /**
-     * @brief Shutdowns the server, stopping everything.
+     * Shutdowns the server, stopping everything.
      */
     virtual void shutdown() = 0;
 
     /**
-     * @brief Reloads the server configuration, functions, scripts and plugins.
+     * Reloads the server configuration, functions, scripts and plugins.
      */
     virtual void reload() = 0;
 
     /**
-     * @brief Reload only the Minecraft data for the server.
+     * Reload only the Minecraft data for the server.
      *
      * This includes functions and script files from all behaviour packs.
      */
     virtual void reloadData() = 0;
 
     /**
-     * @brief Broadcasts the specified message to every user with the given permission name.
+     * Broadcasts the specified message to every user with the given permission name.
      *
      * @param message message to broadcast
      * @param permission the required permission Permissibles must have to receive the broadcast
@@ -235,7 +235,7 @@ public:
     virtual void broadcast(const Message &message, const std::string &permission) const = 0;
 
     /**
-     * @brief Broadcasts the specified message to every user with permission endstone.broadcast.user
+     * Broadcasts the specified message to every user with permission endstone.broadcast.user.
      *
      * @param message the message
      */
@@ -253,14 +253,14 @@ public:
     }
 
     /**
-     * @brief Checks the current thread against the expected primary server thread
+     * Checks the current thread against the expected primary server thread.
      *
      * @return true if the current thread matches the expected primary thread, false otherwise
      */
     [[nodiscard]] virtual bool isPrimaryThread() const = 0;
 
     /**
-     * Gets the instance of the item factory (for ItemMeta).
+     * Gets the instance of the item factory.
      *
      * @return the item factory
      * @see ItemFactory
@@ -268,7 +268,7 @@ public:
     [[nodiscard]] virtual ItemFactory &getItemFactory() const = 0;
 
     /**
-     * @brief Gets the primary Scoreboard controlled by the server.
+     * Gets the primary Scoreboard controlled by the server.
      * <p>
      * This Scoreboard is saved by the server, is affected by the /scoreboard command, and is the scoreboard shown by
      * default to players. This will only exist after the level has been loaded.
@@ -278,7 +278,7 @@ public:
     [[nodiscard]] virtual Scoreboard *getScoreboard() const = 0;
 
     /**
-     * @brief Creates a new Scoreboard to be tracked by the server.
+     * Creates a new Scoreboard to be tracked by the server.
      * <p>
      * This will not be saved by the server and is not affected by the /scoreboard command.
      *
@@ -287,55 +287,55 @@ public:
     [[nodiscard]] virtual std::shared_ptr<Scoreboard> createScoreboard() = 0;
 
     /**
-     * @brief Gets the current milliseconds per tick (MSPT).
+     * Gets the current milliseconds per tick (MSPT).
      *
-     * @return The average current of milliseconds per tick.
+     * @return The current number of milliseconds per tick.
      */
     virtual float getCurrentMillisecondsPerTick() = 0;
 
     /**
-     * @brief Gets the average milliseconds per tick (MSPT).
+     * Gets the average milliseconds per tick (MSPT).
      *
      * @return The average number of milliseconds per tick.
      */
     virtual float getAverageMillisecondsPerTick() = 0;
 
     /**
-     * @brief Gets the current ticks per second (TPS).
+     * Gets the current ticks per second (TPS).
      *
      * @return The current ticks per second
      */
     virtual float getCurrentTicksPerSecond() = 0;
     /**
-     * @brief Gets the average ticks per second (TPS).
+     * Gets the average ticks per second (TPS).
      *
      * @return The average ticks per second
      */
     virtual float getAverageTicksPerSecond() = 0;
 
     /**
-     * @brief Gets the current tick usage of the server.
+     * Gets the current tick usage of the server.
      *
      * @return The current tick usage in percentage.
      */
     virtual float getCurrentTickUsage() = 0;
 
     /**
-     * @brief Gets the average tick usage of the server.
+     * Gets the average tick usage of the server.
      *
      * @return The average tick usage in percentage.
      */
     virtual float getAverageTickUsage() = 0;
 
     /**
-     * @brief Gets the start time of the server.
+     * Gets the start time of the server.
      *
      * @return The start time of the server.
      */
     [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
 
     /**
-     * @brief Creates a boss bar instance to display to players. The progress defaults to 1.0.
+     * Creates a boss bar instance to display to players. The progress defaults to 1.0.
      *
      * @param title the title of the boss bar
      * @param color the color of the boss bar
@@ -346,7 +346,7 @@ public:
                                                                  BarStyle style) const = 0;
 
     /**
-     * @brief Creates a boss bar instance to display to players. The progress defaults to 1.0.
+     * Creates a boss bar instance to display to players. The progress defaults to 1.0.
      *
      * @param title the title of the boss bar
      * @param color the color of the boss bar
@@ -358,7 +358,7 @@ public:
                                                                  std::vector<BarFlag> flags) const = 0;
 
     /**
-     * @brief Creates a new BlockData instance for the specified block type, with all properties initialized to
+     * Creates a new BlockData instance for the specified block type, with all properties initialized to
      * defaults.
      *
      * @param type the block type
@@ -367,7 +367,7 @@ public:
     [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(std::string type) const = 0;
 
     /**
-     * @brief Creates a new BlockData instance for the specified block type, with all properties initialized to
+     * Creates a new BlockData instance for the specified block type, with all properties initialized to
      * defaults, except for those provided in data.
      *
      * @param type the block type
@@ -399,13 +399,13 @@ public:
     [[nodiscard]] virtual ServiceManager &getServiceManager() const = 0;
 
     /**
-     * @brief Returns the registry for the given type.
+     * Returns the registry for the given type.
      *
-     * If no registry is present for the given type null will be returned.
+     * If no registry is present for the given type, nullptr will be returned.
      *
      * @param type of the registry to get
      *
-     * @return the corresponding registry or null if not present
+     * @return the corresponding registry, or nullptr if not present
      */
     [[nodiscard]] virtual IRegistry *_getRegistry(const std::type_info &type) const = 0;
 
@@ -416,16 +416,16 @@ public:
     }
 
     /**
-     * @brief Gets the map from the given item ID.
+     * Gets the map from the given item ID.
      *
      * @param id the id of the map to get
      *
-     * @return a map view if it exists, or null otherwise
+     * @return a map view if it exists, or nullptr otherwise
      */
     [[nodiscard]] virtual MapView *getMap(std::int64_t id) const = 0;
 
     /**
-     * @brief Create a new map with an automatically assigned ID.
+     * Create a new map with an automatically assigned ID.
      *
      * @param dimension the Dimension the map will belong to
      *
@@ -434,12 +434,12 @@ public:
     [[nodiscard]] virtual MapView &createMap(const Dimension &dimension) const = 0;
 
     /**
-     * @brief Used for all administrative messages, such as an operator using a command.
+     * Used for all administrative messages, such as an operator using a command.
      */
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
 
     /**
-     * @brief Used for all announcement messages, such as informing users that a player has joined.
+     * Used for all announcement messages, such as informing users that a player has joined.
      */
     inline static const std::string BroadcastChannelUser = "endstone.broadcast.user";
 };

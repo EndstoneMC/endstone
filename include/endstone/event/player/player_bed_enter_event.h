@@ -21,7 +21,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player is almost about to enter the bed.
+ * Called when a player is almost about to enter the bed.
  */
 class PlayerBedEnterEvent : public Cancellable<PlayerEvent> {
 public:
@@ -30,7 +30,7 @@ public:
     explicit PlayerBedEnterEvent(Player &player, Block &bed) : Cancellable(player), bed_(bed) {}
 
     // /**
-    //  * @brief Represents the default possible outcomes of this event.
+    //  * Represents the default possible outcomes of this event.
     //  */
     // enum class BedEnterResult : int {
     //     /**
@@ -65,7 +65,7 @@ public:
     // }
 
     // /**
-    //  * @brief This describes the default outcome of this event.
+    //  * This describes the default outcome of this event.
     //  *
     //  * @return The bed enter result representing the default outcome of this event
     //  */
@@ -75,7 +75,7 @@ public:
     // }
     //
     // /**
-    //  * @brief This controls the action to take with the bed that was clicked on.
+    //  * This controls the action to take with the bed that was clicked on.
     //  *
     //  * @return the action to take with the interacted bed
     //  */
@@ -85,7 +85,7 @@ public:
     // }
     //
     // /**
-    //  * @brief Sets the action to take with the interacted bed.
+    //  * Sets the action to take with the interacted bed.
     //  *
     //  * - Result::Allow will result in the player sleeping, regardless of the default outcome described by
     //  * getBedEnterResult().
@@ -100,7 +100,7 @@ public:
     // }
     //
     // /**
-    //  * @brief Gets the cancellation state of this event. Set to true if you want to prevent the player from sleeping.
+    //  * Gets the cancellation state of this event. Set to true if you want to prevent the player from sleeping.
     //  *
     //  * @note Canceling the event has the same effect as setting useBed() to Result::Deny.
     //  *
@@ -113,7 +113,7 @@ public:
     // }
     //
     // /**
-    //  * @brief Sets the cancellation state of this event. A canceled event will not be executed in the server, but
+    //  * Sets the cancellation state of this event. A canceled event will not be executed in the server, but
     //  will
     //  * still pass to other plugins.
     //  *
@@ -132,7 +132,7 @@ public:
     // }
 
     /**
-     * @brief Returns the bed block involved in this event.
+     * Returns the bed block involved in this event.
      *
      * @return The bed block involved in this event.
      */

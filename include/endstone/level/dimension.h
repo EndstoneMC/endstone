@@ -31,7 +31,7 @@ class Dimension;
 using DimensionId = Identifier<Dimension>;
 
 /**
- * @brief Represents a dimension within a Level.
+ * Represents a dimension within a Level.
  */
 class Dimension {
 public:
@@ -42,28 +42,28 @@ public:
     virtual ~Dimension() = default;
 
     /**
-     * @brief Return the identifier of this dimension.
+     * Return the identifier of this dimension.
      *
      * @return this dimension's identifier
      */
     [[nodiscard]] virtual DimensionId getId() const = 0;
 
     /**
-     * @brief Get the translation key, suitable for use in a translation component.
+     * Get the translation key, suitable for use in a translation component.
      *
      * @return the translation key
      */
     [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
     /**
-     * @brief Gets the level to which this dimension belongs
+     * Gets the level to which this dimension belongs.
      *
      * @return Level containing this dimension.
      */
     [[nodiscard]] virtual Level &getLevel() const = 0;
 
     /**
-     * @brief Gets the Block at the given coordinates
+     * Gets the Block at the given coordinates.
      *
      * @param x X-coordinate of the block
      * @param y Y-coordinate of the block
@@ -73,7 +73,7 @@ public:
     [[nodiscard]] virtual std::unique_ptr<Block> getBlockAt(int x, int y, int z) const = 0;
 
     /**
-     * @brief Gets the Block at the given Location.
+     * Gets the Block at the given Location.
      *
      * @param location Location of the block
      * @return Block at the given coordinates
@@ -81,7 +81,7 @@ public:
     [[nodiscard]] virtual std::unique_ptr<Block> getBlockAt(Location location) const = 0;
 
     /**
-     * @brief Gets the highest non-empty (impassable) coordinate at the given coordinates.
+     * Gets the highest non-empty (impassable) coordinate at the given coordinates.
      *
      * @param x X-coordinate of the blocks
      * @param z Z-coordinate of the blocks
@@ -90,7 +90,7 @@ public:
     [[nodiscard]] virtual int getHighestBlockYAt(int x, int z) const = 0;
 
     /**
-     * @brief Gets the highest non-empty (impassable) block at the given coordinates.
+     * Gets the highest non-empty (impassable) block at the given coordinates.
      *
      * @param x X-coordinate of the block
      * @param z Z-coordinate of the block
@@ -99,7 +99,7 @@ public:
     [[nodiscard]] virtual std::unique_ptr<Block> getHighestBlockAt(int x, int z) const = 0;
 
     /**
-     * @brief Gets the highest non-empty (impassable) block at the given Location.
+     * Gets the highest non-empty (impassable) block at the given Location.
      *
      * @param location Coordinates to get the highest block
      * @return Highest non-empty block
@@ -107,14 +107,14 @@ public:
     [[nodiscard]] virtual std::unique_ptr<Block> getHighestBlockAt(Location location) const = 0;
 
     /**
-     * @brief Gets a list of all loaded Chunks
+     * Gets a list of all loaded Chunks.
      *
      * @return All loaded chunks
      */
     [[nodiscard]] virtual std::vector<std::unique_ptr<Chunk>> getLoadedChunks() = 0;
 
     /**
-     * @brief Drops an item at the specified Location
+     * Drops an item at the specified Location.
      *
      * @param location Location to drop the item
      * @param item ItemStack to drop
@@ -124,7 +124,7 @@ public:
     [[nodiscard]] virtual Item &dropItem(Location location, const ItemStack &item) = 0;
 
     /**
-     * @brief Creates an actor at the given Location
+     * Creates an actor at the given Location.
      *
      * @param location The location to spawn the actor
      * @param type The actor type to spawn
@@ -133,7 +133,7 @@ public:
     [[nodiscard]] virtual Actor *spawnActor(Location location, ActorTypeId type) = 0;
 
     /**
-     * @brief Get a list of all actors in this dimension
+     * Get a list of all actors in this dimension.
      *
      * @return A List of all actors currently residing in this dimension
      */

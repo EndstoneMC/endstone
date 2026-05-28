@@ -24,7 +24,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output
+ * Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output.
  */
 class CommandSenderWrapper final : public CommandSender {
 public:
@@ -78,7 +78,7 @@ public:
     }
 
     /**
-     * @brief Returns a reference to the wrapped CommandSender
+     * Returns a reference to the wrapped CommandSender.
      *
      * @return The underlying command sender
      */

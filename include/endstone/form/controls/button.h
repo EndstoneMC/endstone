@@ -22,14 +22,14 @@
 #include "endstone/message.h"
 
 /**
- * @brief Represents a button with text and an optional icon.
+ * Represents a button with text and an optional icon.
  */
 namespace endstone {
 
 class Player;
 
 /**
- * @brief Represents a button with text and an optional icon.
+ * Represents a button with text and an optional icon.
  */
 class Button {
 public:
@@ -42,14 +42,14 @@ public:
     }
 
     /**
-     * @brief Gets the text of the button.
+     * Gets the text of the button.
      *
      * @return The text.
      */
     [[nodiscard]] Message getText() const { return text_; }
 
     /**
-     * @brief Sets the text of the button.
+     * Sets the text of the button.
      *
      * @param text The new text for the button.
      * @return A reference to the current button.
@@ -61,14 +61,14 @@ public:
     }
 
     /**
-     * @brief Get the icon of the button.
+     * Get the icon of the button.
      *
      * @return The path or URL to the icon file
      */
     [[nodiscard]] std::optional<std::string> getIcon() const { return icon_; }
 
     /**
-     * @brief Sets the icon for the button.
+     * Sets the icon for the button.
      *
      * @param icon The path or URL to the icon file.
      * @return A reference to the current button.
@@ -80,14 +80,14 @@ public:
     }
 
     /**
-     * @brief Gets the on click callback of the button.
+     * Gets the on click callback of the button.
      *
      * @return The on click callback of the button.
      */
     [[nodiscard]] OnClickCallback getOnClick() const { return on_click_; }
 
     /**
-     * @brief Sets the on click callback of the button.
+     * Sets the on click callback of the button.
      *
      * @param on_click The callback to be set.
      * @return A reference to the current button.

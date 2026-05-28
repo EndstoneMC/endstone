@@ -27,7 +27,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a registered EventHandler which associates with a Plugin
+ * Represents a registered EventHandler which associates with a Plugin.
  */
 class EventHandler {
 public:
@@ -39,27 +39,27 @@ public:
     }
 
     /**
-     * Gets the plugin for this registration
+     * Gets the plugin for this registration.
      *
      * @return Registered Plugin
      */
     [[nodiscard]] Plugin &getPlugin() const { return plugin_; }
     /**
-     * Gets the priority for this registration
+     * Gets the priority for this registration.
      *
      * @return Registered Priority
      */
     [[nodiscard]] EventPriority getPriority() const { return priority_; }
 
     /**
-     * Whether this listener accepts cancelled events
+     * Whether this listener accepts cancelled events.
      *
      * @return True when ignoring cancelled events
      */
     [[nodiscard]] bool isIgnoreCancelled() const { return ignore_cancelled_; }
 
     /**
-     * Calls the event executor
+     * Calls the event executor.
      *
      * @param event The event
      */
@@ -75,7 +75,7 @@ public:
     };
 
     /**
-     * Gets the event type for this registration
+     * Gets the event type for this registration.
      *
      * @return Registered event type
      */

@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player respawns.
+ * Called when a player respawns.
  */
 class PlayerRespawnEvent : public PlayerEvent {
 public:

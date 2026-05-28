@@ -22,21 +22,21 @@
 namespace endstone {
 
 /**
- * @brief Represents a form with two buttons.
+ * Represents a form with two buttons.
  */
 class MessageForm : public Form<MessageForm> {
 public:
     using OnSubmitCallback = std::function<void(Player *, int)>;
 
     /**
-     * @brief Get the content of the form.
+     * Get the content of the form.
      *
      * @return The content of the form.
      */
     [[nodiscard]] Message getContent() const { return content_; }
 
     /**
-     * @brief Set the content of the form.
+     * Set the content of the form.
      *
      * @param text The text to set as the content.
      * @return A reference to the current form.
@@ -48,14 +48,14 @@ public:
     }
 
     /**
-     * @brief Get the text of button1.
+     * Get the text of button1.
      *
      * @return The text of button1.
      */
     [[nodiscard]] Message getButton1() const { return button1_text_; }
 
     /**
-     * @brief Set the text of button1.
+     * Set the text of button1.
      *
      * @param text The text to set as the button1 text.
      * @return A reference to the current form.
@@ -67,14 +67,14 @@ public:
     }
 
     /**
-     * @brief Get the text of button2.
+     * Get the text of button2.
      *
      * @return The text of button2.
      */
     [[nodiscard]] Message getButton2() const { return button2_text_; }
 
     /**
-     * @brief Set the text of button2.
+     * Set the text of button2.
      *
      * @param text The text to set as the button2 text.
      * @return A reference to the current form.
@@ -86,14 +86,14 @@ public:
     }
 
     /**
-     * @brief Gets the on submit callback of the form.
+     * Gets the on submit callback of the form.
      *
      * @return The on submit callback of the form.
      */
     [[nodiscard]] OnSubmitCallback getOnSubmit() const { return on_submit_; }
 
     /**
-     * @brief Sets the on submit callback of the form.
+     * Sets the on submit callback of the form.
      *
      * @param on_submit The callback to be set.
      * @return A reference to the current form.

@@ -19,7 +19,7 @@
 
 namespace endstone {
 /**
- * @brief Represents an Actor-related event
+ * Represents an Actor-related event.
  */
 template <typename ActorType>
 class ActorEvent : public Event {
@@ -28,14 +28,14 @@ public:
     ~ActorEvent() override = default;
 
     /**
-     * @brief Returns the Actor involved in this event
+     * Returns the Actor involved in this event.
      *
      * @return Actor which is involved in this event
      */
     [[nodiscard]] ActorType &getActor() const { return actor_; }
 
     /**
-     * @brief Returns the type of the Actor involved in this event.
+     * Returns the type of the Actor involved in this event.
      *
      * @return ActorType of the Actor involved in this event
      */

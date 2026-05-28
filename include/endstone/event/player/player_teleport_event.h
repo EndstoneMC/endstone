@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player is teleported from one location to another.
+ * Called when a player is teleported from one location to another.
  */
 class PlayerTeleportEvent : public PlayerMoveEvent {
 public:

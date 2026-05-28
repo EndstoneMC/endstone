@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a console command sender
+ * Represents a console command sender.
  */
 class ConsoleCommandSender : public CommandSender {};
 

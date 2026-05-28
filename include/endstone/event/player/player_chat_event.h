@@ -25,7 +25,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player sends a chat message.
+ * Called when a player sends a chat message.
  */
 class PlayerChatEvent final : public Cancellable<PlayerEvent> {
 public:
@@ -38,28 +38,28 @@ public:
     }
 
     /**
-     * @brief Gets the message that the player is attempting to send.
+     * Gets the message that the player is attempting to send.
      *
      * @return Message the player is attempting to send
      */
     [[nodiscard]] std::string getMessage() const { return message_; }
 
     /**
-     * @brief Sets the message that the player will send.
+     * Sets the message that the player will send.
      *
      * @param message New message that the player will send
      */
     void setMessage(std::string message) { message_ = std::move(message); }
 
     /**
-     * @brief Sets the player that this message will display as
+     * Sets the player that this message will be displayed as being sent by.
      *
-     * @param player New player which this event will execute as
+     * @param player The player to display this message as.
      */
     void setPlayer(Player &player) { player_ = player; }
 
     /**
-     * @brief Gets the format to use to display this chat message
+     * Gets the format to use to display this chat message.
      *
      * See <a href="https://en.cppreference.com/w/cpp/utility/format/spec.html">the format string syntax</a>
      *
@@ -68,7 +68,7 @@ public:
     [[nodiscard]] std::string getFormat() const { return format_; }
 
     /**
-     * @brief Sets the format to use to display this chat message
+     * Sets the format to use to display this chat message.
      *
      * @param format format string
      */
@@ -76,7 +76,7 @@ public:
     void setFormat(std::string format) { format_ = std::move(format); }
 
     /**
-     * @brief Gets a set of recipients that this chat message will be displayed to
+     * Gets a set of recipients that this chat message will be displayed to.
      *
      * @return All Players who will see this chat message
      */

@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a text input field.
+ * Represents a text input field.
  */
 class TextInput {
 public:
@@ -34,14 +34,14 @@ public:
     }
 
     /**
-     * @brief Gets the label of the text input field.
+     * Gets the label of the text input field.
      *
      * @return The label of the text input field.
      */
     [[nodiscard]] Message getLabel() const { return label_; }
 
     /**
-     * @brief Sets the label of the text input field.
+     * Sets the label of the text input field.
      *
      * @param label The new label for the text input field.
      * @return A reference to the text input field itself.
@@ -53,14 +53,14 @@ public:
     }
 
     /**
-     * @brief Gets the placeholder of the text input field.
+     * Gets the placeholder of the text input field.
      *
      * @return The placeholder of the text input field.
      */
     [[nodiscard]] Message getPlaceholder() const { return placeholder_; }
 
     /**
-     * @brief Sets the placeholder of the text input field.
+     * Sets the placeholder of the text input field.
      *
      * @param placeholder The new placeholder for the text input field.
      * @return A reference to the text input field itself.
@@ -72,14 +72,14 @@ public:
     }
 
     /**
-     * @brief Gets the default text of the text input field.
+     * Gets the default text of the text input field.
      *
      * @return The default text of the text input field.
      */
     [[nodiscard]] std::optional<std::string> getDefaultValue() const { return default_text_; }
 
     /**
-     * @brief Sets the default text of the text input field.
+     * Sets the default text of the text input field.
      *
      * @param text The new default text for the text input field.
      * @return A reference to the text input field itself.

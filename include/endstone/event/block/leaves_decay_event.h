@@ -20,7 +20,7 @@
 namespace endstone {
 
 /**
- * @brief Called when leaves are decaying naturally.
+ * Called when leaves are decaying naturally.
  *
  * @note If a Leaves Decay event is cancelled, the leaves will not decay.
  */

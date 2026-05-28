@@ -22,7 +22,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a player joins a server.
+ * Called when a player joins a server.
  */
 class PlayerJoinEvent : public PlayerEvent {
 public:
@@ -34,14 +34,14 @@ public:
     }
 
     /**
-     * @brief Gets the join message to send to all online players.
+     * Gets the join message to send to all online players.
      *
      * @return Message to appear to other players on the server.
      */
     [[nodiscard]] std::optional<Message> getJoinMessage() const { return join_message_; }
 
     /**
-     * @brief Sets the join message to send to all online players.
+     * Sets the join message to send to all online players.
      *
      * @param message Message to appear to other players on the server.
      */

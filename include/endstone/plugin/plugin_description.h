@@ -29,7 +29,7 @@
 namespace endstone {
 
 /**
- * @brief Represents the basic information about a plugin that the plugin loader needs to know.
+ * Represents the basic information about a plugin that the plugin loader needs to know.
  */
 class PluginDescription {
 public:

@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * @brief Called when a piston retracts
+ * Called when a piston retracts.
  */
 class BlockPistonRetractEvent final : public BlockPistonEvent {
 public:

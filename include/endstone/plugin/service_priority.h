@@ -16,7 +16,7 @@
 
 namespace endstone {
 /**
- * @brief Represents various priorities of a provider.
+ * Represents various priorities of a provider.
  */
 enum class ServicePriority {
     Lowest,

@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * @brief All supported color and format codes.
+ * All supported color and format codes.
  */
 struct ColorFormat {
     // Escape

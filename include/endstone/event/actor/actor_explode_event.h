@@ -26,7 +26,7 @@
 namespace endstone {
 
 /**
- * @brief Called when an actor explodes
+ * Called when an actor explodes.
  */
 class ActorExplodeEvent : public Cancellable<ActorEvent<Actor>> {
     using BlockList = std::vector<std::unique_ptr<Block>>;
@@ -40,7 +40,7 @@ public:
     ~ActorExplodeEvent() override = default;
 
     /**
-     * @brief Returns the location where the explosion happened.
+     * Returns the location where the explosion happened.
      * <p>
      * It is not possible to get this value from the Entity as the Entity no longer exists in the world.
      *
@@ -49,14 +49,14 @@ public:
     [[nodiscard]] const Location &getLocation() const { return location_; }
 
     /**
-     * @brief Returns the list of blocks that would have been removed or were removed from the explosion event.
+     * Returns the list of blocks that would have been removed or were removed from the explosion event.
      *
      * @return All blown-up blocks
      */
     [[nodiscard]] const BlockList &getBlockList() const { return blocks_; }
 
     /**
-     * @brief Returns the list of blocks that would have been removed or were removed from the explosion event.
+     * Returns the list of blocks that would have been removed or were removed from the explosion event.
      *
      * @return All blown-up blocks
      */

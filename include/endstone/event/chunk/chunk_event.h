@@ -20,14 +20,14 @@
 namespace endstone {
 
 /**
- * @brief Represents a Chunk related event
+ * Represents a Chunk related event.
  */
 class ChunkEvent : public DimensionEvent {
 public:
     explicit ChunkEvent(Chunk &chunk) : DimensionEvent(chunk.getDimension()), chunk_(chunk) {};
 
     /**
-     * Gets the chunk being loaded/unloaded
+     * Gets the chunk being loaded/unloaded.
      *
      * @return Chunk that triggered this event
      */

@@ -25,12 +25,12 @@ namespace endstone {
 class Dimension;
 
 /**
- * @brief Represents a map item.
+ * Represents a map item.
  */
 class MapView {
 public:
     /**
-     * @brief An enum representing all possible scales a map can be set to.
+     * An enum representing all possible scales a map can be set to.
      */
     enum class Scale : uint8_t {
         Closest = 0,
@@ -43,14 +43,14 @@ public:
     virtual ~MapView() = default;
 
     /**
-     * @brief Get the ID of this map item for use with MapMeta.
+     * Get the ID of this map item for use with MapMeta.
      *
      * @return The unique ID of the map.
      */
     [[nodiscard]] virtual std::int64_t getId() const = 0;
 
     /**
-     * @brief Check whether this map is virtual.
+     * Check whether this map is virtual.
      *
      * A map is virtual if its lowermost MapRenderer is plugin-provided.
      *
@@ -59,77 +59,77 @@ public:
     [[nodiscard]] virtual bool isVirtual() const = 0;
 
     /**
-     * @brief Get the scale of this map.
+     * Get the scale of this map.
      *
      * @return The scale of the map.
      */
     [[nodiscard]] virtual Scale getScale() const = 0;
 
     /**
-     * @brief Set the scale of this map.
+     * Set the scale of this map.
      *
      * @param scale The scale to set.
      */
     virtual void setScale(Scale scale) = 0;
 
     /**
-     * @brief Get the center X position of this map.
+     * Get the center X position of this map.
      *
      * @return The center X position.
      */
     [[nodiscard]] virtual int getCenterX() const = 0;
 
     /**
-     * @brief Get the center Z position of this map.
+     * Get the center Z position of this map.
      *
      * @return The center Z position.
      */
     [[nodiscard]] virtual int getCenterZ() const = 0;
 
     /**
-     * @brief Set the center X position of this map.
+     * Set the center X position of this map.
      *
      * @param x The center X position.
      */
     virtual void setCenterX(int x) = 0;
 
     /**
-     * @brief Set the center Z position of this map.
+     * Set the center Z position of this map.
      *
      * @param z The center Z position.
      */
     virtual void setCenterZ(int z) = 0;
 
     /**
-     * @brief Get the dimension that this map is associated with.
+     * Get the dimension that this map is associated with.
      *
-     * @return Pointer to the World this map is associated with, or nullptr.
+     * @return Pointer to the Dimension this map is associated with, or nullptr.
      */
     [[nodiscard]] virtual Dimension *getDimension() const = 0;
 
     /**
-     * @brief Set the dimension that this map is associated with.
+     * Set the dimension that this map is associated with.
      *
      * @param dimension The Dimension to associate this map with.
      */
     virtual void setDimension(const Dimension &dimension) = 0;
 
     /**
-     * @brief Get a list of MapRenderers currently in effect.
+     * Get a list of MapRenderers currently in effect.
      *
      * @return A list of references to each MapRenderer.
      */
     [[nodiscard]] virtual std::vector<std::shared_ptr<MapRenderer>> getRenderers() const = 0;
 
     /**
-     * @brief Add a renderer to this map.
+     * Add a renderer to this map.
      *
      * @param renderer The MapRenderer to add.
      */
     virtual void addRenderer(std::shared_ptr<MapRenderer> renderer) = 0;
 
     /**
-     * @brief Remove a renderer from this map.
+     * Remove a renderer from this map.
      *
      * @param renderer The MapRenderer to remove.
      *
@@ -138,7 +138,7 @@ public:
     virtual bool removeRenderer(const std::shared_ptr<MapRenderer> &renderer) = 0;
 
     /**
-     * @brief Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is
+     * Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is
      * outside of map's range.
      *
      * @return True if unlimited tracking is enabled.
@@ -146,7 +146,7 @@ public:
     [[nodiscard]] virtual bool isUnlimitedTracking() const = 0;
 
     /**
-     * @brief Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is
+     * Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is
      * outside of map's range.
      *
      * @param unlimited True to enable unlimited tracking.
@@ -154,14 +154,14 @@ public:
     virtual void setUnlimitedTracking(bool unlimited) = 0;
 
     /**
-     * @brief Gets whether the map is locked or not. A locked map may not be explored further.
+     * Gets whether the map is locked or not. A locked map may not be explored further.
      *
      * @return True if the map is locked.
      */
     [[nodiscard]] virtual bool isLocked() const = 0;
 
     /**
-     * @brief Sets whether the map is locked or not. A locked map may not be explored further.
+     * Sets whether the map is locked or not. A locked map may not be explored further.
      *
      * @param locked True to lock the map.
      */

@@ -26,12 +26,12 @@ class EndstoneMapView;
 }
 
 /**
- * @brief Represents a renderer for a map.
+ * Represents a renderer for a map.
  */
 class MapRenderer {
 public:
     /**
-     * @brief Initialize the map renderer base with the given contextual status.
+     * Initialize the map renderer base with the given contextual status.
      *
      * @param is_contextual Whether the renderer is contextual. See isContextual().
      */
@@ -45,21 +45,21 @@ private:
 
 public:
     /**
-     * @brief Get whether the renderer is contextual, i.e. has different canvases for different players.
+     * Get whether the renderer is contextual, i.e. has different canvases for different players.
      *
      * @return true if contextual, false otherwise.
      */
     [[nodiscard]] bool isContextual() const { return is_contextual_; }
 
     /**
-     * @brief Initialize this MapRenderer for the given map.
+     * Initialize this MapRenderer for the given map.
      *
      * @param map The MapView being initialized.
      */
     virtual void initialize(MapView &map) {}
 
     /**
-     * @brief Render to the given map.
+     * Render to the given map.
      *
      * @param map The MapView being rendered to.
      * @param canvas The canvas to use for rendering.

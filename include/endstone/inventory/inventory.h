@@ -27,27 +27,27 @@ namespace endstone {
 class ItemStack;
 class ItemType;
 /**
- * @brief Interface to the various inventories.
+ * Interface to the various inventories.
  */
 class Inventory {
 public:
     virtual ~Inventory() = default;
     /**
-     * @brief Returns the size of the inventory
+     * Returns the size of the inventory.
      *
      * @return The size of the inventory
      */
     [[nodiscard]] virtual int getSize() const = 0;
 
     /**
-     * @brief Returns the maximum stack size for an ItemStack in this inventory.
+     * Returns the maximum stack size for an ItemStack in this inventory.
      *
      * @return The maximum size for an ItemStack in this inventory.
      */
     [[nodiscard]] virtual int getMaxStackSize() const = 0;
 
     /**
-     * @brief Returns the ItemStack found in the slot at the given index
+     * Returns the ItemStack found in the slot at the given index.
      *
      * @param index The index of the Slot's ItemStack to return
      *
@@ -56,7 +56,7 @@ public:
     [[nodiscard]] virtual std::optional<ItemStack> getItem(int index) const = 0;
 
     /**
-     * @brief Stores the ItemStack at the given index of the inventory.
+     * Stores the ItemStack at the given index of the inventory.
      *
      * @param index The index where to put the ItemStack
      * @param item The ItemStack to set
@@ -64,7 +64,7 @@ public:
     virtual void setItem(int index, std::optional<ItemStack> item) = 0;
 
     /**
-     * @brief Stores the given ItemStacks in the inventory.
+     * Stores the given ItemStacks in the inventory.
      *
      * @note This will try to fill existing stacks and empty slots as well as it can.
      *
@@ -78,7 +78,7 @@ public:
     virtual std::unordered_map<int, ItemStack> addItem(std::vector<ItemStack> items) = 0;
 
     /**
-     * @brief Removes the given ItemStacks from the inventory.
+     * Removes the given ItemStacks from the inventory.
      *
      * @note It will try to remove 'as much as possible' from the types and amounts you give as arguments.
      *
@@ -92,7 +92,7 @@ public:
     virtual std::unordered_map<int, ItemStack> removeItem(std::vector<ItemStack> items) = 0;
 
     /**
-     * @brief Stores the given ItemStacks in the inventory.
+     * Stores the given ItemStacks in the inventory.
      *
      * @note This will try to fill existing stacks and empty slots as well as it can.
      *
@@ -110,7 +110,7 @@ public:
     }
 
     /**
-     * @brief Removes the given ItemStacks from the inventory.
+     * Removes the given ItemStacks from the inventory.
      *
      * @note It will try to remove 'as much as possible' from the types and amounts you give as arguments.
      *
@@ -127,14 +127,14 @@ public:
     }
 
     /**
-     * @brief Returns all ItemStacks from the inventory
+     * Returns all ItemStacks from the inventory.
      *
      * @return An array of ItemStacks from the inventory. Empty slots are represented as std::nullopt.
      */
     [[nodiscard]] virtual std::vector<std::optional<ItemStack>> getContents() const = 0;
 
     /**
-     * @brief Completely replaces the inventory's contents. Removes all existing contents and replaces it with the
+     * Completely replaces the inventory's contents. Removes all existing contents and replaces it with the
      * ItemStacks given in the array.
      *
      * @param items A complete replacement for the contents; the length must be less than or equal to getSize().
@@ -142,7 +142,7 @@ public:
     virtual void setContents(std::vector<std::optional<ItemStack>> items) = 0;
 
     /**
-     * @brief Checks if the inventory contains any ItemStacks with the given ItemType.
+     * Checks if the inventory contains any ItemStacks with the given ItemType.
      *
      * @param type The item type to check for
      *
@@ -151,7 +151,7 @@ public:
     [[nodiscard]] virtual bool contains(const std::string &type) const = 0;
 
     /**
-     * @brief Checks if the inventory contains any ItemStacks with the given ItemStack.
+     * Checks if the inventory contains any ItemStacks with the given ItemStack.
      *
      * @note This will only return true if both the type and the amount of the stack match.
      *
@@ -161,7 +161,7 @@ public:
     [[nodiscard]] virtual bool contains(const ItemStack &item) const = 0;
 
     /**
-     * @brief Checks if the inventory contains at least the minimum amount specified of exactly matching ItemStacks.
+     * Checks if the inventory contains at least the minimum amount specified of exactly matching ItemStacks.
      *
      * @note An ItemStack only counts if both the type and the amount of the stack match.
      *
@@ -173,7 +173,7 @@ public:
     [[nodiscard]] virtual bool contains(const ItemStack &item, int amount) const = 0;
 
     /**
-     * @brief Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum
+     * Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum
      * amount specified.
      *
      * @param type The ItemType to check for
@@ -184,7 +184,7 @@ public:
     [[nodiscard]] virtual bool containsAtLeast(const std::string &type, int amount) const = 0;
 
     /**
-     * @brief Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least the
+     * Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least the
      * minimum amount specified.
      *
      * @param item the ItemStack to match against
@@ -195,7 +195,7 @@ public:
     [[nodiscard]] virtual bool containsAtLeast(const ItemStack &item, int amount) const = 0;
 
     /**
-     * @brief Finds all slots in the inventory containing any ItemStacks with the given ItemType.
+     * Finds all slots in the inventory containing any ItemStacks with the given ItemType.
      *
      * The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot.
      * If no matching ItemStack is found, an empty map is returned.
@@ -207,7 +207,7 @@ public:
     [[nodiscard]] virtual std::unordered_map<int, ItemStack> all(const std::string &type) const = 0;
 
     /**
-     * @brief Finds all slots in the inventory containing any ItemStacks with the given ItemStack.
+     * Finds all slots in the inventory containing any ItemStacks with the given ItemStack.
      *
      * @note This will only match slots if both the type and the amount of the stack match
      *
@@ -221,7 +221,7 @@ public:
     [[nodiscard]] virtual std::unordered_map<int, ItemStack> all(const ItemStack &item) const = 0;
 
     /**
-     * @brief Finds the first slot in the inventory containing an ItemStack with the given ItemType
+     * Finds the first slot in the inventory containing an ItemStack with the given ItemType.
      *
      * @param type The ItemType to look for
      *
@@ -230,7 +230,7 @@ public:
     [[nodiscard]] virtual int first(const std::string &type) const = 0;
 
     /**
-     * @brief Returns the first slot in the inventory containing an ItemStack with the given stack.
+     * Returns the first slot in the inventory containing an ItemStack with the given stack.
      *
      * @param item The ItemStack to match against
      *
@@ -239,14 +239,14 @@ public:
     [[nodiscard]] virtual int first(const ItemStack &item) const = 0;
 
     /**
-     * @brief Returns the first empty Slot.
+     * Returns the first empty Slot.
      *
      * @return The first empty Slot found, or -1 if no empty slots.
      */
     [[nodiscard]] virtual int firstEmpty() const = 0;
 
     /**
-     * @brief Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks
+     * Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks
      * in any slot of this inventory.
      *
      * @return true if empty, false otherwise
@@ -254,14 +254,14 @@ public:
     [[nodiscard]] virtual bool isEmpty() const = 0;
 
     /**
-     * @brief Removes all stacks in the inventory matching the given ItemType.
+     * Removes all stacks in the inventory matching the given ItemType.
      *
      * @param type The ItemType to remove
      */
     virtual void remove(const std::string &type) = 0;
 
     /**
-     * @brief Removes all stacks in the inventory matching the given stack.
+     * Removes all stacks in the inventory matching the given stack.
      *
      * @note This will only match a slot if both the type and the amount of the stack match
      *
@@ -270,14 +270,14 @@ public:
     virtual void remove(const ItemStack &item) = 0;
 
     /**
-     * @brief Clears out a particular slot in the index.
+     * Clears out a particular slot in the index.
      *
      * @param index The index to empty.
      */
     virtual void clear(int index) = 0;
 
     /**
-     * @brief Clears out the whole Inventory.
+     * Clears out the whole Inventory.
      */
     virtual void clear() = 0;
 };

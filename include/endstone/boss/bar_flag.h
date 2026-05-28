@@ -17,11 +17,11 @@
 namespace endstone {
 enum class BarFlag {
     /**
-     * @brief Darkens the sky like during fighting a wither.
+     * Darkens the sky like during fighting a wither.
      */
     DarkenSky,
     /**
-     * @brief Creates fog around the world.
+     * Creates fog around the world.
      */
     CreateFog,
 };

@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a header with a label.
+ * Represents a header with a label.
  */
 class Header {
 public:
@@ -31,14 +31,14 @@ public:
     explicit Header(Message label) : label_(std::move(label)) {}
 
     /**
-     * @brief Gets the label of the header.
+     * Gets the label of the header.
      *
      * @return The label of the header.
      */
     [[nodiscard]] Message getLabel() const { return label_; }
 
     /**
-     * @brief Sets the label of the header.
+     * Sets the label of the header.
      *
      * @param label The new label for the header.
      * @return A reference to the current header.

@@ -22,7 +22,7 @@
 
 namespace endstone {
 /**
- * @brief Represents events with a source block and a destination block, currently only applies to
+ * Represents events with a source block and a destination block, currently only applies to
  * liquid (lava and water) and teleporting dragon eggs.
  *
  * If a Block From To event is cancelled, the block will not move (the liquid will not flow).
@@ -36,7 +36,7 @@ public:
     }
 
     /**
-     * @brief Convenience method for getting the faced Block.
+     * Convenience method for getting the faced Block.
      *
      * @return The faced Block
      */

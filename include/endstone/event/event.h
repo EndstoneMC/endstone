@@ -35,7 +35,7 @@ enum class EventResult {
 };
 
 /**
- * @brief Represents an event.
+ * Represents an event.
  */
 class Event {
 public:

@@ -17,23 +17,23 @@
 namespace endstone {
 enum class BarStyle {
     /**
-     * @brief Makes the boss bar solid (no segments)
+     * Makes the boss bar solid (no segments).
      */
     Solid,
     /**
-     * @brief Splits the boss bar into 6 segments
+     * Splits the boss bar into 6 segments.
      */
     Segmented6,
     /**
-     * @brief Splits the boss bar into 10 segments
+     * Splits the boss bar into 10 segments.
      */
     Segmented10,
     /**
-     * @brief Splits the boss bar into 12 segments
+     * Splits the boss bar into 12 segments.
      */
     Segmented12,
     /**
-     * @brief Splits the boss bar into 20 segments
+     * Splits the boss bar into 20 segments.
      */
     Segmented20,
 };
