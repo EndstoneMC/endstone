@@ -5,6 +5,7 @@ Classes relating to the blocks in a world, including special states.
 import enum
 import typing
 
+from endstone import Identifier
 from endstone.level import Dimension, Location
 
 __all__ = ["Block", "BlockData", "BlockFace", "BlockState", "BlockType"]
@@ -97,7 +98,7 @@ class BlockType:
     Represents a block type.
     """
     @property
-    def id(self) -> str:
+    def id(self) -> Identifier[BlockType]:
         """
         Return the identifier of this block type.
         """
@@ -120,13 +121,16 @@ class BlockType:
         """
         ...
     @staticmethod
-    def get(name: str) -> BlockType:
+    def get(name: Identifier[BlockType] | str) -> BlockType:
         """
         Attempts to get the BlockType with the given name.
         """
         ...
     def __str__(self) -> str: ...
     def __repr__(self) -> str: ...
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
 
 class BlockData:
     """

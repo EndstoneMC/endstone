@@ -5,6 +5,8 @@ Classes relevant to attributes.
 import enum
 import uuid
 
+from endstone import Identifier
+
 __all__ = ["Attribute", "AttributeInstance", "AttributeModifier"]
 
 class Attribute:
@@ -12,22 +14,22 @@ class Attribute:
     All attribute types.
     """
 
-    HEALTH = "minecraft:health"
-    FOLLOW_RANGE = "minecraft:follow_range"
-    KNOCKBACK_RESISTANCE = "minecraft:knockback_resistance"
-    MOVEMENT_SPEED = "minecraft:movement"
-    UNDERWATER_MOVEMENT_SPEED = "minecraft:underwater_movement"
-    LAVA_MOVEMENT_SPEED = "minecraft:lava_movement"
-    ATTACK_DAMAGE = "minecraft:attack_damage"
-    ABSORPTION = "minecraft:absorption"
-    LUCK = "minecraft:luck"
-    JUMP_STRENGTH = "minecraft:jump_strength"
-    PLAYER_HUNGER = "minecraft:player.hunger"
-    PLAYER_SATURATION = "minecraft:player.saturation"
-    PLAYER_EXHAUSTION = "minecraft:player.exhaustion"
-    PLAYER_LEVEL = "minecraft:player.level"
-    PLAYER_EXPERIENCE = "minecraft:player.experience"
-    ZOMBIE_SPAWN_REINFORCEMENTS = "minecraft:zombie.spawn_reinforcements"
+    HEALTH: Identifier[Attribute] = "minecraft:health"
+    FOLLOW_RANGE: Identifier[Attribute] = "minecraft:follow_range"
+    KNOCKBACK_RESISTANCE: Identifier[Attribute] = "minecraft:knockback_resistance"
+    MOVEMENT_SPEED: Identifier[Attribute] = "minecraft:movement"
+    UNDERWATER_MOVEMENT_SPEED: Identifier[Attribute] = "minecraft:underwater_movement"
+    LAVA_MOVEMENT_SPEED: Identifier[Attribute] = "minecraft:lava_movement"
+    ATTACK_DAMAGE: Identifier[Attribute] = "minecraft:attack_damage"
+    ABSORPTION: Identifier[Attribute] = "minecraft:absorption"
+    LUCK: Identifier[Attribute] = "minecraft:luck"
+    JUMP_STRENGTH: Identifier[Attribute] = "minecraft:jump_strength"
+    PLAYER_HUNGER: Identifier[Attribute] = "minecraft:player.hunger"
+    PLAYER_SATURATION: Identifier[Attribute] = "minecraft:player.saturation"
+    PLAYER_EXHAUSTION: Identifier[Attribute] = "minecraft:player.exhaustion"
+    PLAYER_LEVEL: Identifier[Attribute] = "minecraft:player.level"
+    PLAYER_EXPERIENCE: Identifier[Attribute] = "minecraft:player.experience"
+    ZOMBIE_SPAWN_REINFORCEMENTS: Identifier[Attribute] = "minecraft:zombie.spawn_reinforcements"
 
 class AttributeModifier:
     """
@@ -85,7 +87,7 @@ class AttributeInstance:
     Represents a mutable instance of an attribute and its associated modifiers and values.
     """
     @property
-    def type(self) -> str:
+    def type(self) -> Identifier[Attribute]:
         """
         The attribute type pertaining to this instance.
         """

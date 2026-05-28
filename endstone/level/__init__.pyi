@@ -1,6 +1,7 @@
 import typing
 
-from endstone.actor import Actor, Item
+from endstone import Identifier
+from endstone.actor import Actor, ActorType, Item
 from endstone.block import Block
 from endstone.inventory import ItemStack
 from endstone.util import Vector
@@ -34,7 +35,7 @@ class Level:
         Gets a list of all dimensions within this level.
         """
         ...
-    def get_dimension(self, id: str) -> Dimension:
+    def get_dimension(self, id: Identifier[Dimension] | str) -> Dimension:
         """
         Gets the dimension with the given id.
         """
@@ -51,11 +52,11 @@ class Dimension:
     Represents a dimension within a Level.
     """
 
-    OVERWORLD = "minecraft:overworld"
-    NETHER = "minecraft:nether"
-    THE_END = "minecraft:the_end"
+    OVERWORLD: Identifier[Dimension] = "minecraft:overworld"
+    NETHER: Identifier[Dimension] = "minecraft:nether"
+    THE_END: Identifier[Dimension] = "minecraft:the_end"
     @property
-    def id(self) -> str:
+    def id(self) -> Identifier[Dimension]:
         """
         Gets the identifier of this dimension
         """
@@ -112,7 +113,7 @@ class Dimension:
         Drops an item at the specified Location
         """
         ...
-    def spawn_actor(self, location: Location, type: str) -> Actor:
+    def spawn_actor(self, location: Location, type: Identifier[ActorType] | str) -> Actor:
         """
         Creates an actor at the given Location
         """

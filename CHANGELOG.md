@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `/restart` command (console-only) that gracefully restarts the server without manually relaunching.
 - Added support for custom Python events with optional cancellation.
 - Added `ActorType` to the registry API.
+- Added the `endstone.Identifier` type for namespaced ids: `dim.id.namespace == "minecraft"`, `dim.id.key == "overworld"`, and type checkers can now tell `Identifier[Dimension]` apart from `Identifier[ActorType]`. Plain strings are still accepted where an `Identifier` is required (e.g. `level.get_dimension("overworld")`).
 - Added `BlockData.translation_key` for retrieving the translation key of a block.
 - Added `WritableBookMeta`, `BookMeta`, and `CrossbowMeta` item meta types.
 - Added binary NBT serialization (`dump`/`load`) with support for multiple formats.
@@ -34,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: The Docker image now stores server data in `/data` instead of `/home/endstone/bedrock_server`.
   Update your volume mount accordingly (e.g. `-v ./data:/data`).
 - **BREAKING**: Standalone bundles now ship for both Windows (`endstone-<version>-windows-x86_64.zip`) and Linux (`endstone-<version>-linux-x86_64.zip`), and use [uv](https://docs.astral.sh/uv/) to provision Python on demand instead of shipping a Python interpreter. The included `start.cmd` / `start.sh` installs uv on first run if it isn't already on `PATH`, then launches the server via `uv run` against the bundled wheel. The old `bin/python/` directory is gone; the server folder (`./bedrock_server/`) is unchanged.
+- `str()` on `BlockType`, `Enchantment`, and `ItemType` now returns a plain `"namespace:key"` string instead of the underlying `Identifier` repr.
 
 ### Removed
 

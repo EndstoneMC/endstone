@@ -84,6 +84,29 @@ __all__ = [
 
 _T = typing.TypeVar("_T")
 
+class Identifier(typing.Generic[_T]):
+    """
+    Represents a namespaced identifier consisting of a namespace and a key.
+    """
+    def __init__(self, id: str) -> None: ...
+    @property
+    def namespace(self) -> str:
+        """
+        The namespace component of this identifier.
+        """
+        ...
+    @property
+    def key(self) -> str:
+        """
+        The key component of this identifier.
+        """
+        ...
+    def __str__(self) -> str: ...
+    def __repr__(self) -> str: ...
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
+
 class Server:
     """
     Represents a server implementation.
@@ -779,31 +802,6 @@ class Skin:
         """
         ...
 
-__minecraft_version__ = "26.12"
-
-class Identifier(typing.Generic[_T]):
-    """
-    Represents a namespaced identifier consisting of a namespace and a key.
-    """
-    def __init__(self, id: str) -> None: ...
-    @property
-    def namespace(self) -> str:
-        """
-        The namespace component of this identifier.
-        """
-        ...
-    @property
-    def key(self) -> str:
-        """
-        The key component of this identifier.
-        """
-        ...
-    def __str__(self) -> str: ...
-    def __repr__(self) -> str: ...
-    def __hash__(self) -> int: ...
-    def __eq__(self, other: object) -> bool: ...
-    def __ne__(self, other: object) -> bool: ...
-
 class Registry(typing.Generic[_T]):
     """
     Presents a registry
@@ -822,3 +820,5 @@ class Registry(typing.Generic[_T]):
     def __iter__(self) -> list: ...
     def __contains__(self, id: Identifier[_T] | str) -> bool: ...
     def __len__(self) -> int: ...
+
+__minecraft_version__ = "26.20"
