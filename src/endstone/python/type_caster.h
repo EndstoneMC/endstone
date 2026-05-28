@@ -302,10 +302,10 @@ public:
         return pybind11::cast(std::move(id)).release();
     }
 
-    // PYBIND11_TYPE_CASTER(endstone::Identifier<T>, const_name("@Identifier[") + value_conv::name +
-    //                                                   const_name("] | str@Identifier[") + value_conv::name +
-    //                                                   const_name("]@"));
-    PYBIND11_TYPE_CASTER(endstone::Identifier<T>, const_name("endstone.Identifier[") + value_conv::name + const_name("]"));
+    // The caster accepts a str at runtime, so parameter annotations are widened
+    // to `endstone.Identifier[T] | str` while return annotations stay narrow.
+    PYBIND11_TYPE_CASTER(endstone::Identifier<T>,
+                         const_name("endstone.Identifier[") + value_conv::name + io_name("] | str", "]"));
 
 private:
     std::string storage_;

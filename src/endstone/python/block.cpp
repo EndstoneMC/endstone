@@ -51,7 +51,12 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .def_static("get", &BlockType::get, py::arg("name"), "Attempts to get the BlockType with the given name.",
                     py::return_value_policy::reference)
         .def("__str__", [](const BlockType &self) { return std::string(self.getId()); })
-        .def("__repr__", [](const BlockType &self) { return fmt::format("BlockType({})", self.getId()); });
+        .def("__repr__", [](const BlockType &self) { return fmt::format("BlockType({})", self.getId()); })
+        .def("__hash__", [](const BlockType &self) { return std::hash<BlockTypeId>{}(self.getId()); })
+        .def(py::self == py::self)
+        .def(py::self != py::self)
+        .def(py::self == std::string_view())
+        .def(py::self != std::string_view());
 
     py::class_<BlockState>(m, "BlockState",
                            "Represents a captured state of a block, which will not update automatically.")

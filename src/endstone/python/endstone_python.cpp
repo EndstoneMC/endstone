@@ -70,8 +70,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
         .def_property_readonly(
             "key", [](const PyIdentifier &self) { return self.key_; }, "The key component of this identifier.")
         .def("__str__", &PyIdentifier::str)
-        .def("__repr__",
-             [](const PyIdentifier &self) { return "Identifier(" + self.str() + ")"; })
+        .def("__repr__", &PyIdentifier::str)
         .def("__hash__",
              [](const PyIdentifier &self) { return py::hash(py::str(self.str())); })
         .def("__eq__",

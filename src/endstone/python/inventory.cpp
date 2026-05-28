@@ -45,6 +45,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_static("get", &ItemType::get, py::arg("name"), "Attempts to get the ItemType with the given name.",
                     py::return_value_policy::reference)
         .def("__str__", [](const ItemType &self) { return std::string(self.getId()); })
+        .def("__hash__", [](const ItemType &self) { return std::hash<ItemTypeId>{}(self.getId()); })
         .def(py::self == py::self)
         .def(py::self != py::self)
         .def(py::self == std::string_view())
