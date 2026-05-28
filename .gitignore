@@ -12,7 +12,6 @@ CTestTestfile.cmake
 conan_provider.cmake
 _deps
 .idea/*
-.vscode/
 build/*
 bedrock_server/*
 bedrock_server_preview/*

@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Endstone: Run",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "endstone",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONSAFEPATH": "1"
+            },
+            "justMyCode": false,
+            "preLaunchTask": "Endstone: Rebuild and install"
+        }
+    ]
+}
