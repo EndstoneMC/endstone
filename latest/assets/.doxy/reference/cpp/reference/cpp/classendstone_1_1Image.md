@@ -372,7 +372,7 @@ static inline Result< Image > endstone::Image::fromArray (
 * `type` [**Image**](classendstone_1_1Image.md) type 
 * `width` [**Image**](classendstone_1_1Image.md) width in pixels 
 * `height` [**Image**](classendstone_1_1Image.md) height in pixels 
-* `array` 
+* `array` Raw pixel data, sized according to `type`, `width` and `height`. 
 
 
 
@@ -412,7 +412,7 @@ static inline Result< Image > endstone::Image::fromBuffer (
 * `type` [**Image**](classendstone_1_1Image.md) type 
 * `width` [**Image**](classendstone_1_1Image.md) width in pixels 
 * `height` [**Image**](classendstone_1_1Image.md) height in pixels 
-* `buffer` 
+* `buffer` Raw pixel data, sized according to `type`, `width` and `height`. 
 
 
 

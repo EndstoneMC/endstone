@@ -67,7 +67,7 @@ _Represents a cursor on a map._
 |  [**void**](classendstone_1_1Identifier.md) | [**setCaption**](#function-setcaption) (std::string caption) <br>_Sets the caption on this cursor._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setDirection**](#function-setdirection) (std::int8\_t direction) <br>_Set the direction of this cursor._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype) ([**Type**](classendstone_1_1MapCursor.md#enum-type) type) <br>_Set the type of this cursor._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setVisible**](#function-setvisible) ([**bool**](classendstone_1_1Identifier.md) visible) <br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**setVisible**](#function-setvisible) ([**bool**](classendstone_1_1Identifier.md) visible) <br>_Set the visibility status of this cursor._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setX**](#function-setx) ([**const**](classendstone_1_1Identifier.md) std::int8\_t x) <br>_Set the X position of this cursor._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setY**](#function-sety) ([**const**](classendstone_1_1Identifier.md) std::int8\_t y) <br>_Set the Y position of this cursor._  |
 
@@ -414,15 +414,13 @@ inline void endstone::MapCursor::setType (
 
 ### function setVisible 
 
+_Set the visibility status of this cursor._ 
 ```C++
 inline void endstone::MapCursor::setVisible (
     bool visible
 ) 
 ```
 
-
-
-Set the visibility status of this cursor.
 
 
 

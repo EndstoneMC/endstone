@@ -604,9 +604,9 @@
           <declname>visible</declname>
         </param>
         <briefdescription>
+<para>Set the visibility status of this cursor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set the visibility status of this cursor.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>visible</parametername>

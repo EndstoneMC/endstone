@@ -117,9 +117,9 @@
         <name>getPlugin</name>
         <qualifiedname>endstone::EventHandler::getPlugin</qualifiedname>
         <briefdescription>
+<para>Gets the plugin for this registration. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the plugin for this registration</para>
 <para><simplesect kind="return"><para>Registered <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> </para>
 </simplesect>
 </para>
@@ -135,9 +135,9 @@
         <name>getPriority</name>
         <qualifiedname>endstone::EventHandler::getPriority</qualifiedname>
         <briefdescription>
+<para>Gets the priority for this registration. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the priority for this registration</para>
 <para><simplesect kind="return"><para>Registered Priority </para>
 </simplesect>
 </para>
@@ -153,9 +153,9 @@
         <name>isIgnoreCancelled</name>
         <qualifiedname>endstone::EventHandler::isIgnoreCancelled</qualifiedname>
         <briefdescription>
+<para>Whether this listener accepts cancelled events. </para>
         </briefdescription>
         <detaileddescription>
-<para>Whether this listener accepts cancelled events</para>
 <para><simplesect kind="return"><para>True when ignoring cancelled events </para>
 </simplesect>
 </para>
@@ -175,9 +175,9 @@
           <declname>event</declname>
         </param>
         <briefdescription>
+<para>Calls the event executor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Calls the event executor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>event</parametername>
@@ -200,9 +200,9 @@
         <name>getEventType</name>
         <qualifiedname>endstone::EventHandler::getEventType</qualifiedname>
         <briefdescription>
+<para>Gets the event type for this registration. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the event type for this registration</para>
 <para><simplesect kind="return"><para>Registered event type </para>
 </simplesect>
 </para>

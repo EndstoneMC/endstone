@@ -54,11 +54,11 @@ _Represents a plugin loader, which handles direct access to specific types of pl
 | ---: | :--- |
 |   | [**PluginLoader**](#function-pluginloader-12) ([**Server**](classendstone_1_1Server.md) & server) <br> |
 |   | [**PluginLoader**](#function-pluginloader-22) ([**const**](classendstone_1_1Identifier.md) [**PluginLoader**](classendstone_1_1PluginLoader.md) &) = delete<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**disablePlugin**](#function-disableplugin) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) const<br>_Disables the specified plugin Attempting to disable a plugin that is not enabled will have no effect._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**enablePlugin**](#function-enableplugin) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) const<br>_Enables the specified plugin Attempting to enable a plugin that is already enabled will have no effect._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**disablePlugin**](#function-disableplugin) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) const<br>_Disables the specified plugin._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**enablePlugin**](#function-enableplugin) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) const<br>_Enables the specified plugin._  |
 | virtual std::vector&lt; std::string &gt; | [**getPluginFileFilters**](#function-getpluginfilefilters) () const = 0<br>_Returns a list of all filename filters expected by this_ [_**PluginLoader**_](classendstone_1_1PluginLoader.md) _._ |
 |  [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () const<br>_Retrieves the_ [_**Server**_](classendstone_1_1Server.md) _object associated with the_[_**PluginLoader**_](classendstone_1_1PluginLoader.md) _._ |
-| virtual [**Plugin**](classendstone_1_1Plugin.md) \* | [**loadPlugin**](#function-loadplugin) (std::string file) = 0<br> |
+| virtual [**Plugin**](classendstone_1_1Plugin.md) \* | [**loadPlugin**](#function-loadplugin) (std::string file) = 0<br>_Loads the plugin contained in the specified file._  |
 | virtual std::vector&lt; [**Plugin**](classendstone_1_1Plugin.md) \* &gt; | [**loadPlugins**](#function-loadplugins) (std::string directory) <br>_Loads the plugin contained within the specified directory._  |
 |  [**PluginLoader**](classendstone_1_1PluginLoader.md) & | [**operator=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**PluginLoader**](classendstone_1_1PluginLoader.md) &) = delete<br> |
 | virtual  | [**~PluginLoader**](#function-pluginloader) () = default<br> |
@@ -132,13 +132,16 @@ endstone::PluginLoader::PluginLoader (
 
 ### function disablePlugin 
 
-_Disables the specified plugin Attempting to disable a plugin that is not enabled will have no effect._ 
+_Disables the specified plugin._ 
 ```C++
 inline virtual void endstone::PluginLoader::disablePlugin (
     Plugin & plugin
 ) const
 ```
 
+
+
+Attempting to disable a plugin that is not enabled will have no effect.
 
 
 
@@ -159,13 +162,16 @@ inline virtual void endstone::PluginLoader::disablePlugin (
 
 ### function enablePlugin 
 
-_Enables the specified plugin Attempting to enable a plugin that is already enabled will have no effect._ 
+_Enables the specified plugin._ 
 ```C++
 inline virtual void endstone::PluginLoader::enablePlugin (
     Plugin & plugin
 ) const
 ```
 
+
+
+Attempting to enable a plugin that is already enabled will have no effect.
 
 
 
@@ -239,15 +245,13 @@ The [**Server**](classendstone_1_1Server.md) reference.
 
 ### function loadPlugin 
 
+_Loads the plugin contained in the specified file._ 
 ```C++
 virtual Plugin * endstone::PluginLoader::loadPlugin (
     std::string file
 ) = 0
 ```
 
-
-
-Loads the plugin contained in the specified file
 
 
 

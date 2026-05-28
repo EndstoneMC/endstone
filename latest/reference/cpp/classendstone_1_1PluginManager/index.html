@@ -3086,79 +3086,79 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-addpermission"><strong>addPermission</strong></a> (std::unique_ptr&lt; <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &gt; perm) = 0<br></td>
+<td style="text-align: left;"><a href="#function-addpermission"><strong>addPermission</strong></a> (std::unique_ptr&lt; <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &gt; perm) = 0<br><em>Adds a</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>to this plugin manager.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-callevent"><strong>callEvent</strong></a> (<a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp; event) = 0<br></td>
+<td style="text-align: left;"><a href="#function-callevent"><strong>callEvent</strong></a> (<a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp; event) = 0<br><em>Calls an event which will be passed to plugins.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-clearplugins"><strong>clearPlugins</strong></a> () = 0<br></td>
+<td style="text-align: left;"><a href="#function-clearplugins"><strong>clearPlugins</strong></a> () = 0<br><em>Disables and removes all plugins.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-disableplugin"><strong>disablePlugin</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br></td>
+<td style="text-align: left;"><a href="#function-disableplugin"><strong>disablePlugin</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br><em>Disables the specified plugin.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-disableplugins"><strong>disablePlugins</strong></a> () = 0<br></td>
+<td style="text-align: left;"><a href="#function-disableplugins"><strong>disablePlugins</strong></a> () = 0<br><em>Disables all the loaded plugins.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-enableplugin"><strong>enablePlugin</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-enableplugin"><strong>enablePlugin</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) const = 0<br><em>Enables the specified plugin.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-enableplugins"><strong>enablePlugins</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="#function-enableplugins"><strong>enablePlugins</strong></a> () const = 0<br><em>Enable all the loaded plugins.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unordered_set&lt; <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-getdefaultpermsubscriptions"><strong>getDefaultPermSubscriptions</strong></a> (PermissionLevel level) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-getdefaultpermsubscriptions"><strong>getDefaultPermSubscriptions</strong></a> (PermissionLevel level) const = 0<br><em>Gets a set containing all subscribed Permissibles to the given default list, by permission level.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-getdefaultpermissions"><strong>getDefaultPermissions</strong></a> (PermissionLevel level) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-getdefaultpermissions"><strong>getDefaultPermissions</strong></a> (PermissionLevel level) const = 0<br><em>Gets the default permissions for the given permission level.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-getpermission"><strong>getPermission</strong></a> (std::string name) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-getpermission"><strong>getPermission</strong></a> (std::string name) const = 0<br><em>Gets a</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>from its fully qualified name.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unordered_set&lt; <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-getpermissionsubscriptions"><strong>getPermissionSubscriptions</strong></a> (std::string permission) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-getpermissionsubscriptions"><strong>getPermissionSubscriptions</strong></a> (std::string permission) const = 0<br><em>Gets a set containing all subscribed Permissibles to the given permission, by name.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unordered_set&lt; <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-getpermissions"><strong>getPermissions</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="#function-getpermissions"><strong>getPermissions</strong></a> () const = 0<br><em>Gets a set of all registered permissions.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-getplugin"><strong>getPlugin</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; name) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-getplugin"><strong>getPlugin</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; name) const = 0<br><em>Checks if the given plugin is loaded and returns it when applicable.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-getplugins"><strong>getPlugins</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="#function-getplugins"><strong>getPlugins</strong></a> () const = 0<br><em>Gets a list of all currently loaded plugins.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-ispluginenabled-12"><strong>isPluginEnabled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; name) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-ispluginenabled-12"><strong>isPluginEnabled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; name) const = 0<br><em>Checks if the given plugin is enabled or not.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-ispluginenabled-22"><strong>isPluginEnabled</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> * plugin) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-ispluginenabled-22"><strong>isPluginEnabled</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> * plugin) const = 0<br><em>Checks if the given plugin is enabled or not.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-loadplugin"><strong>loadPlugin</strong></a> (std::string file) = 0<br></td>
+<td style="text-align: left;"><a href="#function-loadplugin"><strong>loadPlugin</strong></a> (std::string file) = 0<br><em>Loads the plugin in the specified file.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-loadplugins-12"><strong>loadPlugins</strong></a> (std::string directory) = 0<br></td>
+<td style="text-align: left;"><a href="#function-loadplugins-12"><strong>loadPlugins</strong></a> (std::string directory) = 0<br><em>Loads the plugin contained within the specified directory.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-loadplugins-22"><strong>loadPlugins</strong></a> (std::vector&lt; std::string &gt; files) = 0<br></td>
+<td style="text-align: left;"><a href="#function-loadplugins-22"><strong>loadPlugins</strong></a> (std::vector&lt; std::string &gt; files) = 0<br><em>Loads the plugins in the list of the files.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>PluginManager</strong></a> &amp;</td>
@@ -3166,39 +3166,39 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-recalculatepermissiondefaults"><strong>recalculatePermissionDefaults</strong></a> (<a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) = 0<br></td>
+<td style="text-align: left;"><a href="#function-recalculatepermissiondefaults"><strong>recalculatePermissionDefaults</strong></a> (<a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) = 0<br><em>Recalculates the defaults for the given</em> <code>Permission</code> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-registerevent"><strong>registerEvent</strong></a> (std::string event, std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a>(<a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;)&gt; executor, <a href="../namespaceendstone/#enum-eventpriority"><strong>EventPriority</strong></a> priority, <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> ignore_cancelled) = 0<br></td>
+<td style="text-align: left;"><a href="#function-registerevent"><strong>registerEvent</strong></a> (std::string event, std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a>(<a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;)&gt; executor, <a href="../namespaceendstone/#enum-eventpriority"><strong>EventPriority</strong></a> priority, <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> ignore_cancelled) = 0<br><em>Registers the given event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-registerloader"><strong>registerLoader</strong></a> (std::unique_ptr&lt; <a href="../classendstone_1_1PluginLoader/"><strong>PluginLoader</strong></a> &gt; loader) = 0<br></td>
+<td style="text-align: left;"><a href="#function-registerloader"><strong>registerLoader</strong></a> (std::unique_ptr&lt; <a href="../classendstone_1_1PluginLoader/"><strong>PluginLoader</strong></a> &gt; loader) = 0<br><em>Registers the specified plugin loader.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-removepermission-12"><strong>removePermission</strong></a> (<a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) = 0<br></td>
+<td style="text-align: left;"><a href="#function-removepermission-12"><strong>removePermission</strong></a> (<a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) = 0<br><em>Removes a</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>registration from this plugin manager.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-removepermission-22"><strong>removePermission</strong></a> (std::string name) = 0<br></td>
+<td style="text-align: left;"><a href="#function-removepermission-22"><strong>removePermission</strong></a> (std::string name) = 0<br><em>Removes a</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>registration from this plugin manager.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-subscribetodefaultperms"><strong>subscribeToDefaultPerms</strong></a> (PermissionLevel level, <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &amp; permissible) = 0<br></td>
+<td style="text-align: left;"><a href="#function-subscribetodefaultperms"><strong>subscribeToDefaultPerms</strong></a> (PermissionLevel level, <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &amp; permissible) = 0<br><em>Subscribes to the given Default permissions by permission level.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-subscribetopermission"><strong>subscribeToPermission</strong></a> (std::string permission, <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &amp; permissible) = 0<br></td>
+<td style="text-align: left;"><a href="#function-subscribetopermission"><strong>subscribeToPermission</strong></a> (std::string permission, <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &amp; permissible) = 0<br><em>Subscribes the given</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>for information about the requested</em><a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>, by name.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-unsubscribefromdefaultperms"><strong>unsubscribeFromDefaultPerms</strong></a> (PermissionLevel level, <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &amp; permissible) = 0<br></td>
+<td style="text-align: left;"><a href="#function-unsubscribefromdefaultperms"><strong>unsubscribeFromDefaultPerms</strong></a> (PermissionLevel level, <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &amp; permissible) = 0<br><em>Unsubscribes from the given Default permissions by permission level.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-unsubscribefrompermission"><strong>unsubscribeFromPermission</strong></a> (std::string permission, <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &amp; permissible) = 0<br></td>
+<td style="text-align: left;"><a href="#function-unsubscribefrompermission"><strong>unsubscribeFromPermission</strong></a> (std::string permission, <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> &amp; permissible) = 0<br><em>Unsubscribes the given</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>for information about the requested</em><a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>, by name.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -3220,25 +3220,29 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-addpermission">function addPermission<a class="headerlink" href="#function-addpermission" title="Permanent link">&para;</a></h3>
+<p><em>Adds a</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>to this plugin manager.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">addPermission</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">perm</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Adds a <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> to this plugin manager.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>perm</code> <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> to add </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p><a href="../classendstone_1_1Permission/"><strong>Permission</strong></a>, or nullptr if a permission is already defined with the given name of the new permission </p>
+<p>A reference to the newly added permission. </p>
+<p><strong>Exception:</strong></p>
+<ul>
+<li><code>std::runtime_error</code> if a permission with the same name is already defined. </li>
+</ul>
 <hr>
 
 <h3 id="function-callevent">function callEvent<a class="headerlink" href="#function-callevent" title="Permanent link">&para;</a></h3>
+<p><em>Calls an event which will be passed to plugins.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">callEvent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">event</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Calls an event which will be passed to plugins.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>event</code> <a href="../classendstone_1_1Event/"><strong>Event</strong></a> to be called </li>
@@ -3246,17 +3250,18 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-clearplugins">function clearPlugins<a class="headerlink" href="#function-clearplugins" title="Permanent link">&para;</a></h3>
+<p><em>Disables and removes all plugins.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">clearPlugins</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Disables and removes all plugins </p>
+</span></code></pre></div></p>
 <hr>
 
 <h3 id="function-disableplugin">function disablePlugin<a class="headerlink" href="#function-disableplugin" title="Permanent link">&para;</a></h3>
+<p><em>Disables the specified plugin.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">disablePlugin</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Disables the specified plugin Attempting to disable a plugin that is not enabled will have no effect</p>
+</span></code></pre></div></p>
+<p>Attempting to disable a plugin that is not enabled will have no effect.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>plugin</code> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> to disable </li>
@@ -3264,17 +3269,18 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-disableplugins">function disablePlugins<a class="headerlink" href="#function-disableplugins" title="Permanent link">&para;</a></h3>
+<p><em>Disables all the loaded plugins.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">disablePlugins</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Disables all the loaded plugins </p>
+</span></code></pre></div></p>
 <hr>
 
 <h3 id="function-enableplugin">function enablePlugin<a class="headerlink" href="#function-enableplugin" title="Permanent link">&para;</a></h3>
+<p><em>Enables the specified plugin.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">enablePlugin</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Enables the specified plugin Attempting to enable a plugin that is already enabled will have no effect</p>
+</span></code></pre></div></p>
+<p>Attempting to enable a plugin that is already enabled will have no effect.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>plugin</code> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> to enable </li>
@@ -3282,17 +3288,17 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-enableplugins">function enablePlugins<a class="headerlink" href="#function-enableplugins" title="Permanent link">&para;</a></h3>
+<p><em>Enable all the loaded plugins.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">enablePlugins</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Enable all the loaded plugins </p>
+</span></code></pre></div></p>
 <hr>
 
 <h3 id="function-getdefaultpermsubscriptions">function getDefaultPermSubscriptions<a class="headerlink" href="#function-getdefaultpermsubscriptions" title="Permanent link">&para;</a></h3>
+<p><em>Gets a set containing all subscribed Permissibles to the given default list, by permission level.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permissible</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">getDefaultPermSubscriptions</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">PermissionLevel</span><span class="w"> </span><span class="n">level</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Gets a set containing all subscribed Permissibles to the given default list, by permission level</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>level</code> Default list to query for </li>
@@ -3302,11 +3308,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getdefaultpermissions">function getDefaultPermissions<a class="headerlink" href="#function-getdefaultpermissions" title="Permanent link">&para;</a></h3>
+<p><em>Gets the default permissions for the given permission level.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">getDefaultPermissions</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">PermissionLevel</span><span class="w"> </span><span class="n">level</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Gets the default permissions for the given permission level</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>level</code> Which set of default permissions to get </li>
@@ -3316,25 +3322,25 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getpermission">function getPermission<a class="headerlink" href="#function-getpermission" title="Permanent link">&para;</a></h3>
+<p><em>Gets a</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>from its fully qualified name.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">getPermission</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Gets a <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> from its fully qualified name</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>name</code> Name of the permission </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p><a href="../classendstone_1_1Permission/"><strong>Permission</strong></a>, or null if none </p>
+<p><a href="../classendstone_1_1Permission/"><strong>Permission</strong></a>, or nullptr if none </p>
 <hr>
 
 <h3 id="function-getpermissionsubscriptions">function getPermissionSubscriptions<a class="headerlink" href="#function-getpermissionsubscriptions" title="Permanent link">&para;</a></h3>
+<p><em>Gets a set containing all subscribed Permissibles to the given permission, by name.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permissible</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">getPermissionSubscriptions</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">permission</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Gets a set containing all subscribed Permissibles to the given permission, by name</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>permission</code> <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> to query for </li>
@@ -3344,20 +3350,21 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getpermissions">function getPermissions<a class="headerlink" href="#function-getpermissions" title="Permanent link">&para;</a></h3>
+<p><em>Gets a set of all registered permissions.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">getPermissions</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Gets a set of all registered permissions.</p>
+</span></code></pre></div></p>
 <p>This set is a copy and will not be modified live.</p>
 <p><strong>Returns:</strong></p>
 <p>Set containing all current registered permissions </p>
 <hr>
 
 <h3 id="function-getplugin">function getPlugin<a class="headerlink" href="#function-getplugin" title="Permanent link">&para;</a></h3>
+<p><em>Checks if the given plugin is loaded and returns it when applicable.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">getPlugin</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Checks if the given plugin is loaded and returns it when applicable. Please note that the name of the plugin is case-sensitive</p>
+</span></code></pre></div></p>
+<p>Please note that the name of the plugin is case-sensitive.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>name</code> Name of the plugin to check </li>
@@ -3367,19 +3374,20 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getplugins">function getPlugins<a class="headerlink" href="#function-getplugins" title="Permanent link">&para;</a></h3>
+<p><em>Gets a list of all currently loaded plugins.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">getPlugins</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Gets a list of all currently loaded plugins</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>List of Plugins </p>
 <hr>
 
 <h3 id="function-ispluginenabled-12">function isPluginEnabled [&frac12;]<a class="headerlink" href="#function-ispluginenabled-12" title="Permanent link">&para;</a></h3>
+<p><em>Checks if the given plugin is enabled or not.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">isPluginEnabled</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Checks if the given plugin is enabled or not Please note that the name of the plugin is case-sensitive.</p>
+</span></code></pre></div></p>
+<p>Please note that the name of the plugin is case-sensitive.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>name</code> Name of the plugin to check </li>
@@ -3389,11 +3397,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-ispluginenabled-22">function isPluginEnabled [2/2]<a class="headerlink" href="#function-ispluginenabled-22" title="Permanent link">&para;</a></h3>
+<p><em>Checks if the given plugin is enabled or not.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">isPluginEnabled</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">plugin</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Checks if the given plugin is enabled or not</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>plugin</code> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> to check </li>
@@ -3403,11 +3411,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-loadplugin">function loadPlugin<a class="headerlink" href="#function-loadplugin" title="Permanent link">&para;</a></h3>
+<p><em>Loads the plugin in the specified file.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">loadPlugin</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">file</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Loads the plugin in the specified file</p>
+</span></code></pre></div></p>
 <p>File must be valid according to the current enabled <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> interfaces</p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3418,11 +3426,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-loadplugins-12">function loadPlugins [&frac12;]<a class="headerlink" href="#function-loadplugins-12" title="Permanent link">&para;</a></h3>
+<p><em>Loads the plugin contained within the specified directory.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">loadPlugins</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">directory</span>
 </span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Loads the plugin contained within the specified directory</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>directory</code> Directory to check for plugins </li>
@@ -3432,11 +3440,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-loadplugins-22">function loadPlugins [2/2]<a class="headerlink" href="#function-loadplugins-22" title="Permanent link">&para;</a></h3>
+<p><em>Loads the plugins in the list of the files.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">loadPlugins</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">files</span>
 </span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Loads the plugins in the list of the files</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>files</code> List of files containing plugins to load </li>
@@ -3453,11 +3461,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-recalculatepermissiondefaults">function recalculatePermissionDefaults<a class="headerlink" href="#function-recalculatepermissiondefaults" title="Permanent link">&para;</a></h3>
+<p><em>Recalculates the defaults for the given</em> <code>Permission</code> <em>.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">recalculatePermissionDefaults</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span>
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Recalculates the defaults for the given <code>Permission</code>.</p>
+</span></code></pre></div></p>
 <p>This will have no effect if the specified permission is not registered here.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3466,6 +3474,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-registerevent">function registerEvent<a class="headerlink" href="#function-registerevent" title="Permanent link">&para;</a></h3>
+<p><em>Registers the given event.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">registerEvent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">event</span><span class="p">,</span>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Event</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">executor</span><span class="p">,</span>
@@ -3473,8 +3482,7 @@ For latest updates join the chat on
 </span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
 </span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">ignore_cancelled</span>
 </span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Registers the given event</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>event</code> <a href="../classendstone_1_1Event/"><strong>Event</strong></a> name to register </li>
@@ -3486,11 +3494,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-registerloader">function registerLoader<a class="headerlink" href="#function-registerloader" title="Permanent link">&para;</a></h3>
+<p><em>Registers the specified plugin loader.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">registerLoader</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">PluginLoader</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">loader</span>
 </span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Registers the specified plugin loader</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>loader</code> <a href="../classendstone_1_1PluginLoader/"><strong>PluginLoader</strong></a> to register </li>
@@ -3498,11 +3506,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-removepermission-12">function removePermission [&frac12;]<a class="headerlink" href="#function-removepermission-12" title="Permanent link">&para;</a></h3>
+<p><em>Removes a</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>registration from this plugin manager.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">removePermission</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span>
 </span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Removes a <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> registration from this plugin manager.</p>
+</span></code></pre></div></p>
 <p>If the specified permission does not exist in this plugin manager, nothing will happen. Removing a permission registration will <strong>not</strong> remove the permission from any Permissibles that have it.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3511,11 +3519,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-removepermission-22">function removePermission [2/2]<a class="headerlink" href="#function-removepermission-22" title="Permanent link">&para;</a></h3>
+<p><em>Removes a</em> <a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>registration from this plugin manager.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">removePermission</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Removes a <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> registration from this plugin manager.</p>
+</span></code></pre></div></p>
 <p>If the specified permission does not exist in this plugin manager, nothing will happen. Removing a permission registration will <strong>not</strong> remove the permission from any Permissibles that have it.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3524,12 +3532,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-subscribetodefaultperms">function subscribeToDefaultPerms<a class="headerlink" href="#function-subscribetodefaultperms" title="Permanent link">&para;</a></h3>
+<p><em>Subscribes to the given Default permissions by permission level.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">subscribeToDefaultPerms</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="n">PermissionLevel</span><span class="w"> </span><span class="n">level</span><span class="p">,</span>
 </span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">    </span><span class="n">Permissible</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">permissible</span>
 </span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Subscribes to the given Default permissions by permission level</p>
+</span></code></pre></div></p>
 <p>If the specified defaults change in any form, the <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> will be asked to recalculate.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3539,12 +3547,13 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-subscribetopermission">function subscribeToPermission<a class="headerlink" href="#function-subscribetopermission" title="Permanent link">&para;</a></h3>
+<p><em>Subscribes the given</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>for information about the requested</em><a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>, by name.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">subscribeToPermission</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">permission</span><span class="p">,</span>
 </span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">    </span><span class="n">Permissible</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">permissible</span>
 </span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Subscribes the given <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> for information about the requested <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a>, by name. If the specified <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> changes in any form, the <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> will be asked to recalculate.</p>
+</span></code></pre></div></p>
+<p>If the specified <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> changes in any form, the <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> will be asked to recalculate.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>permission</code> <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> to subscribe to </li>
@@ -3553,12 +3562,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-unsubscribefromdefaultperms">function unsubscribeFromDefaultPerms<a class="headerlink" href="#function-unsubscribefromdefaultperms" title="Permanent link">&para;</a></h3>
+<p><em>Unsubscribes from the given Default permissions by permission level.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">unsubscribeFromDefaultPerms</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">    </span><span class="n">PermissionLevel</span><span class="w"> </span><span class="n">level</span><span class="p">,</span>
 </span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">    </span><span class="n">Permissible</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">permissible</span>
 </span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Unsubscribes from the given Default permissions by permission level</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>level</code> Default list to unsubscribe from </li>
@@ -3567,12 +3576,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-unsubscribefrompermission">function unsubscribeFromPermission<a class="headerlink" href="#function-unsubscribefrompermission" title="Permanent link">&para;</a></h3>
+<p><em>Unsubscribes the given</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>for information about the requested</em><a href="../classendstone_1_1Permission/"><em><strong>Permission</strong></em></a> <em>, by name.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginManager</span><span class="o">::</span><span class="n">unsubscribeFromPermission</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">permission</span><span class="p">,</span>
 </span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">    </span><span class="n">Permissible</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">permissible</span>
 </span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Unsubscribes the given <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> for information about the requested <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a>, by name.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>permission</code> <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> to unsubscribe from </li>

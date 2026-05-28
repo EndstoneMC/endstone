@@ -8,7 +8,7 @@
 
 
 
-_A list of event handlers. Should be instantiated on a per-event basis._ 
+_A list of event handlers._ [More...](#detailed-description)
 
 * `#include <endstone/event/handler_list.h>`
 
@@ -53,10 +53,10 @@ _A list of event handlers. Should be instantiated on a per-event basis._
 | Type | Name |
 | ---: | :--- |
 |   | [**HandlerList**](#function-handlerlist) (std::string event) <br> |
-|  std::vector&lt; [**EventHandler**](classendstone_1_1EventHandler.md) \* &gt; | [**getHandlers**](#function-gethandlers) () const<br> |
-|  [**EventHandler**](classendstone_1_1EventHandler.md) \* | [**registerHandler**](#function-registerhandler) (std::unique\_ptr&lt; [**EventHandler**](classendstone_1_1EventHandler.md) &gt; handler) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**unregister**](#function-unregister-12) ([**const**](classendstone_1_1Identifier.md) [**EventHandler**](classendstone_1_1EventHandler.md) & handler) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**unregister**](#function-unregister-22) ([**const**](classendstone_1_1Identifier.md) [**Plugin**](classendstone_1_1Plugin.md) & plugin) <br> |
+|  std::vector&lt; [**EventHandler**](classendstone_1_1EventHandler.md) \* &gt; | [**getHandlers**](#function-gethandlers) () const<br>_Get the baked registered handlers associated with this handler list._  |
+|  [**EventHandler**](classendstone_1_1EventHandler.md) \* | [**registerHandler**](#function-registerhandler) (std::unique\_ptr&lt; [**EventHandler**](classendstone_1_1EventHandler.md) &gt; handler) <br>_Register a new handler._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**unregister**](#function-unregister-12) ([**const**](classendstone_1_1Identifier.md) [**EventHandler**](classendstone_1_1EventHandler.md) & handler) <br>_Remove a handler from a specific order slot._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**unregister**](#function-unregister-22) ([**const**](classendstone_1_1Identifier.md) [**Plugin**](classendstone_1_1Plugin.md) & plugin) <br>_Remove a specific plugin's handlers from this handler._  |
 
 
 
@@ -90,6 +90,13 @@ _A list of event handlers. Should be instantiated on a per-event basis._
 
 
 
+## Detailed Description
+
+
+Should be instantiated on a per-event basis. 
+
+
+    
 ## Public Functions Documentation
 
 
@@ -112,13 +119,11 @@ inline explicit endstone::HandlerList::HandlerList (
 
 ### function getHandlers 
 
+_Get the baked registered handlers associated with this handler list._ 
 ```C++
 inline std::vector< EventHandler * > endstone::HandlerList::getHandlers () const
 ```
 
-
-
-Get the baked registered handlers associated with this handler list
 
 
 
@@ -139,15 +144,13 @@ the array of registered handlers
 
 ### function registerHandler 
 
+_Register a new handler._ 
 ```C++
 inline EventHandler * endstone::HandlerList::registerHandler (
     std::unique_ptr< EventHandler > handler
 ) 
 ```
 
-
-
-Register a new handler
 
 
 
@@ -175,15 +178,13 @@ the pointer to the registered handler
 
 ### function unregister [1/2]
 
+_Remove a handler from a specific order slot._ 
 ```C++
 inline void endstone::HandlerList::unregister (
     const  EventHandler & handler
 ) 
 ```
 
-
-
-Remove a handler from a specific order slot
 
 
 
@@ -204,15 +205,13 @@ Remove a handler from a specific order slot
 
 ### function unregister [2/2]
 
+_Remove a specific plugin's handlers from this handler._ 
 ```C++
 inline void endstone::HandlerList::unregister (
     const  Plugin & plugin
 ) 
 ```
 
-
-
-Remove a specific plugin's handlers from this handler
 
 
 

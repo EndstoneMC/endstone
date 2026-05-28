@@ -128,9 +128,10 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Called when a block explodes (e.g. bed in the Nether, respawn anchor in the Overworld). </para>
+<para>Called when a block explodes (e.g. </para>
     </briefdescription>
     <detaileddescription>
+<para>bed in the Nether, respawn anchor in the Overworld).</para>
 <para>If a <ref refid="classendstone_1_1BlockExplodeEvent" kindref="compound">BlockExplodeEvent</ref> is cancelled, the explosion will not occur. </para>
     </detaileddescription>
     <inheritancegraph>

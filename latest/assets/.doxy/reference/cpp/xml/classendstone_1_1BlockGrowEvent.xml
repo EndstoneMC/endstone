@@ -68,10 +68,10 @@
         <name>getNewState</name>
         <qualifiedname>endstone::BlockGrowEvent::getNewState</qualifiedname>
         <briefdescription>
-<para>Gets the state of the block where it will form or spread to. </para>
+<para>Gets the state of the block after it has grown. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The block state for this events block </para>
+<para><simplesect kind="return"><para>The new state of the block. </para>
 </simplesect>
 </para>
         </detaileddescription>

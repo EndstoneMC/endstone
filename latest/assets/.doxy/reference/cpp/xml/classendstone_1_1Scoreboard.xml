@@ -54,7 +54,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A reference to the newly registered <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref>. </para>
+<simplesect kind="return"><para>The newly registered <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref>. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -109,7 +109,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A reference to the newly registered <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref>. </para>
+<simplesect kind="return"><para>The newly registered <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref>. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -176,7 +176,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A reference to the newly registered <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref>. </para>
+<simplesect kind="return"><para>The newly registered <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref>. </para>
 </simplesect>
 </para>
         </detaileddescription>

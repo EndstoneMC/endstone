@@ -90,9 +90,10 @@
         <name>isContextual</name>
         <qualifiedname>endstone::MapRenderer::isContextual</qualifiedname>
         <briefdescription>
-<para>Get whether the renderer is contextual, i.e. has different canvases for different players. </para>
+<para>Get whether the renderer is contextual, i.e. </para>
         </briefdescription>
         <detaileddescription>
+<para>has different canvases for different players.</para>
 <para><simplesect kind="return"><para>true if contextual, false otherwise. </para>
 </simplesect>
 </para>

@@ -268,7 +268,7 @@
         <qualifiedname>endstone::Enchantment::SilkTouch</qualifiedname>
         <initializer>= EnchantmentId::minecraft(&quot;silk_touch&quot;)</initializer>
         <briefdescription>
-<para>Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone) </para>
+<para>Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone). </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>

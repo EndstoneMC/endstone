@@ -2758,11 +2758,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp;</td>
-<td style="text-align: left;"><a href="#function-getkickmessage"><strong>getKickMessage</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getkickmessage"><strong>getKickMessage</strong></a> () const<br><em>Gets the current kick message that will be used if event is cancelled.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setkickmessage"><strong>setKickMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; message) <br></td>
+<td style="text-align: left;"><a href="#function-setkickmessage"><strong>setKickMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; message) <br><em>Sets the kick message to display if event is cancelled.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -2782,15 +2782,15 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () override const<br><em>Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () override const<br><em>Gets the cancellation state of this event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> cancel) override<br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> cancel) override<br><em>Sets the cancellation state of this event.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2839,19 +2839,19 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getkickmessage">function getKickMessage<a class="headerlink" href="#function-getkickmessage" title="Permanent link">&para;</a></h3>
+<p><em>Gets the current kick message that will be used if event is cancelled.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerLoginEvent</span><span class="o">::</span><span class="n">getKickMessage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets the current kick message that will be used if event is cancelled</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Current kick message </p>
 <hr>
 
 <h3 id="function-setkickmessage">function setKickMessage<a class="headerlink" href="#function-setkickmessage" title="Permanent link">&para;</a></h3>
+<p><em>Sets the kick message to display if event is cancelled.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerLoginEvent</span><span class="o">::</span><span class="n">setKickMessage</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Sets the kick message to display if event is cancelled</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>message</code> New kick message </li>

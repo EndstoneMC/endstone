@@ -73,9 +73,9 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Executes the command, returning its success. </para>
         </briefdescription>
         <detaileddescription>
-<para>Executes the command, returning its success</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>sender</parametername>
@@ -112,9 +112,9 @@
           <declname>executor</declname>
         </param>
         <briefdescription>
+<para>Sets the <ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> to run when parsing this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the <ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> to run when parsing this command</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>executor</parametername>
@@ -137,9 +137,9 @@
         <name>getExecutor</name>
         <qualifiedname>endstone::PluginCommand::getExecutor</qualifiedname>
         <briefdescription>
+<para>Gets the <ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> associated with this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the <ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> associated with this command</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> object linked to this command </para>
 </simplesect>
 </para>
@@ -155,9 +155,9 @@
         <name>getPlugin</name>
         <qualifiedname>endstone::PluginCommand::getPlugin</qualifiedname>
         <briefdescription>
+<para>Gets the owner of this <ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the owner of this <ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref></para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> that owns this command </para>
 </simplesect>
 </para>

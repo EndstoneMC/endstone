@@ -318,9 +318,10 @@
           <declname>items</declname>
         </param>
         <briefdescription>
-<para>Completely replaces the inventory&apos;s contents. Removes all existing contents and replaces it with the ItemStacks given in the array. </para>
+<para>Completely replaces the inventory&apos;s contents. </para>
         </briefdescription>
         <detaileddescription>
+<para>Removes all existing contents and replaces it with the ItemStacks given in the array.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>items</parametername>
@@ -684,9 +685,10 @@ The returned map contains entries where, the key is the slot index, and the valu
         <name>isEmpty</name>
         <qualifiedname>endstone::Inventory::isEmpty</qualifiedname>
         <briefdescription>
-<para>Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory. </para>
+<para>Check whether this inventory is empty. </para>
         </briefdescription>
         <detaileddescription>
+<para>An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.</para>
 <para><simplesect kind="return"><para>true if empty, false otherwise </para>
 </simplesect>
 </para>

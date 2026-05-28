@@ -52,11 +52,11 @@ _Represents a task being executed by the scheduler._
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](#function-cancel) () = 0<br> |
-| virtual [**Plugin**](classendstone_1_1Plugin.md) \* | [**getOwner**](#function-getowner) () const = 0<br> |
-| virtual TaskId | [**getTaskId**](#function-gettaskid) () const = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](#function-iscancelled) () const = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isSync**](#function-issync) () const = 0<br> |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](#function-cancel) () = 0<br>_Attempts to cancel this task._  |
+| virtual [**Plugin**](classendstone_1_1Plugin.md) \* | [**getOwner**](#function-getowner) () const = 0<br>_Returns the_ [_**Plugin**_](classendstone_1_1Plugin.md) _that owns this task._ |
+| virtual TaskId | [**getTaskId**](#function-gettaskid) () const = 0<br>_Returns the taskId for the task._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](#function-iscancelled) () const = 0<br>_Returns true if this task has been cancelled._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isSync**](#function-issync) () const = 0<br>_Returns true if the_ [_**Task**_](classendstone_1_1Task.md) _is a sync task._ |
 | virtual  | [**~Task**](#function-task) () = default<br> |
 
 
@@ -93,16 +93,13 @@ _Represents a task being executed by the scheduler._
 
 ### function cancel 
 
+_Attempts to cancel this task._ 
 ```C++
 virtual void endstone::Task::cancel () = 0
 ```
 
 
 
-Attempts to cancel this task. 
-
-
-        
 
 <hr>
 
@@ -110,13 +107,11 @@ Attempts to cancel this task.
 
 ### function getOwner 
 
+_Returns the_ [_**Plugin**_](classendstone_1_1Plugin.md) _that owns this task._
 ```C++
 virtual Plugin * endstone::Task::getOwner () const = 0
 ```
 
-
-
-Returns the [**Plugin**](classendstone_1_1Plugin.md) that owns this task.
 
 
 
@@ -137,13 +132,11 @@ The [**Plugin**](classendstone_1_1Plugin.md) that owns the task
 
 ### function getTaskId 
 
+_Returns the taskId for the task._ 
 ```C++
 virtual TaskId endstone::Task::getTaskId () const = 0
 ```
 
-
-
-Returns the taskId for the task.
 
 
 
@@ -164,13 +157,11 @@ Returns the taskId for the task.
 
 ### function isCancelled 
 
+_Returns true if this task has been cancelled._ 
 ```C++
 virtual bool endstone::Task::isCancelled () const = 0
 ```
 
-
-
-Returns true if this task has been cancelled.
 
 
 
@@ -191,13 +182,11 @@ true if the task has been cancelled
 
 ### function isSync 
 
+_Returns true if the_ [_**Task**_](classendstone_1_1Task.md) _is a sync task._
 ```C++
 virtual bool endstone::Task::isSync () const = 0
 ```
 
-
-
-Returns true if the [**Task**](classendstone_1_1Task.md) is a sync task.
 
 
 

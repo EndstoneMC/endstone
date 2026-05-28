@@ -14,8 +14,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a base actor in the level._ 
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._ 
+                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
                     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
@@ -35,7 +35,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::BlockEvent**](classendstone_1_1BlockEvent.md) _Represents an Block-related event._     
         * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
     * **class** [**endstone::LevelEvent**](classendstone_1_1LevelEvent.md) _Represents events within a level._     
-        * **class** [**endstone::DimensionEvent**](classendstone_1_1DimensionEvent.md) _Represents events within a level._     
+        * **class** [**endstone::DimensionEvent**](classendstone_1_1DimensionEvent.md) _Represents events within a dimension._     
             * **class** [**endstone::ChunkEvent**](classendstone_1_1ChunkEvent.md) _Represents a_ [_**Chunk**_](classendstone_1_1Chunk.md) _related event._    
                 * **class** [**endstone::ChunkLoadEvent**](classendstone_1_1ChunkLoadEvent.md) _Called when a chunk is loaded._ 
                 * **class** [**endstone::ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md) _Called when a chunk is unloaded._ 
@@ -92,7 +92,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::StepSlider**](classendstone_1_1StepSlider.md) _Represents a step slider with a set of predefined options._ 
 * **class** [**endstone::EffectType**](classendstone_1_1EffectType.md) _All effect types._ 
 * **class** [**endstone::EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
-* **class** [**endstone::HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers. Should be instantiated on a per-event basis._ 
+* **class** [**endstone::HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers._ 
 * **class** [**endstone::Header**](classendstone_1_1Header.md) _Represents a header with a label._ 
 * **class** [**endstone::IRegistry**](classendstone_1_1IRegistry.md)     
     * **class** [**endstone::Registry**](classendstone_1_1Registry.md) _Abstract registry interface for objects with identifiers._ 
@@ -135,7 +135,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::TextInput**](classendstone_1_1TextInput.md) _Represents a text input field._ 
 * **class** [**endstone::Toggle**](classendstone_1_1Toggle.md) _Represents a toggle button with a label._ 
 * **class** [**endstone::Translatable**](classendstone_1_1Translatable.md) _Represents an object with a text representation that can be translated by the Minecraft client._ 
-* **class** [**endstone::UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)_
+* **class** [**endstone::UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)._
 * **class** [**endstone::Vector**](classendstone_1_1Vector.md) _Represents a 3-dimensional vector._ 
 * **class** [**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md) 
 * **class** [**endstone::ItemStack::Impl**](classendstone_1_1ItemStack_1_1Impl.md) 
@@ -150,8 +150,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a base actor in the level._ 
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._ 
+                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
                     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
@@ -159,8 +159,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a base actor in the level._ 
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._ 
+                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
                     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
@@ -168,8 +168,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a base actor in the level._ 
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._ 
+                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
                     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
@@ -177,8 +177,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a base actor in the level._ 
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._ 
+                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
                     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
@@ -186,8 +186,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a base actor in the level._ 
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._ 
+                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
                     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
@@ -195,8 +195,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a base actor in the level._ 
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._ 
+                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
                     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
@@ -204,8 +204,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a base actor in the level._ 
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._ 
+                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
                     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
@@ -213,8 +213,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a base actor in the level._ 
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._ 
+                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
                     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._
@@ -222,8 +222,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
         * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
             * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a base actor in the level._ 
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+                * **class** [**endstone::Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._ 
+                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
                     * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
             * **class** [**endstone::BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._ 
             * **class** [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._

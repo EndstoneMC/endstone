@@ -108,7 +108,7 @@ Names are no longer unique past a single game session. For persistent storage it
 
 **Returns:**
 
-[**Player**](classendstone_1_1Player.md) name or null if we have not seen a name for this player yet 
+[**Player**](classendstone_1_1Player.md) name, or an empty string if we have not seen a name for this player yet. 
 
 
 

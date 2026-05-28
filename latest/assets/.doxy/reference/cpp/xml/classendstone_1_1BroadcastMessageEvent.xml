@@ -85,9 +85,9 @@
         <name>getMessage</name>
         <qualifiedname>endstone::BroadcastMessageEvent::getMessage</qualifiedname>
         <briefdescription>
+<para>Get the message to broadcast. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the message to broadcast.</para>
 <para><simplesect kind="return"><para>Message to broadcast </para>
 </simplesect>
 </para>
@@ -107,9 +107,9 @@
           <declname>message</declname>
         </param>
         <briefdescription>
+<para>Set the message to broadcast. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set the message to broadcast.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>message</parametername>
@@ -132,9 +132,9 @@
         <name>getRecipients</name>
         <qualifiedname>endstone::BroadcastMessageEvent::getRecipients</qualifiedname>
         <briefdescription>
+<para>Gets a set of recipients that this broadcast message will be displayed to. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets a set of recipients that this broadcast message will be displayed to.</para>
 <para><simplesect kind="return"><para>All CommandSenders who will see this broadcast message </para>
 </simplesect>
 </para>

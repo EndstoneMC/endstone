@@ -38,7 +38,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**Item**](classendstone_1_1Item.md) <br>_Represents a base actor in the level._  |
+| class | [**Item**](classendstone_1_1Item.md) <br>_Represents a dropped item that can be picked up by players._  |
 
 
 

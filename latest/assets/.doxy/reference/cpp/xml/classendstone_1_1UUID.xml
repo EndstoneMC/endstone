@@ -155,7 +155,7 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Implementation of Universally Unique <ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref> (<ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref>) </para>
+<para>Implementation of Universally Unique <ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref> (<ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref>). </para>
     </briefdescription>
     <detaileddescription>
 <para>Adapted from <ulink url="https://github.com/boostorg/uuid/blob/develop/include/boost/uuid/uuid.hpp">https://github.com/boostorg/uuid/blob/develop/include/boost/uuid/uuid.hpp</ulink> </para>

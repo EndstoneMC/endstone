@@ -192,9 +192,9 @@
         <name>getEventName</name>
         <qualifiedname>endstone::Event::getEventName</qualifiedname>
         <briefdescription>
+<para>Gets a user-friendly identifier for this event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets a user-friendly identifier for this event.</para>
 <para><simplesect kind="return"><para>name of this event </para>
 </simplesect>
 </para>
@@ -210,9 +210,9 @@
         <name>isAsynchronous</name>
         <qualifiedname>endstone::Event::isAsynchronous</qualifiedname>
         <briefdescription>
+<para>Any custom event that should not by synchronized with other events must use the specific constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Any custom event that should not by synchronized with other events must use the specific constructor.</para>
 <para><simplesect kind="return"><para>false by default, true if the event fires asynchronously </para>
 </simplesect>
 </para>

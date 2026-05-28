@@ -3023,7 +3023,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-hasconflictingenchant"><strong>hasConflictingEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-hasconflictingenchant"><strong>hasConflictingEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id) const = 0<br><em>Checks if the specified enchantment conflicts with any enchantments in this</em> <a href="./"><em><strong>ItemMeta</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -3051,7 +3051,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-isunbreakable"><strong>isUnbreakable</strong></a> () const = 0<br><em>Return if the unbreakable tag is true. An unbreakable item will not lose durability.</em></td>
+<td style="text-align: left;"><a href="#function-isunbreakable"><strong>isUnbreakable</strong></a> () const = 0<br><em>Return if the unbreakable tag is true.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -3079,7 +3079,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setunbreakable"><strong>setUnbreakable</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> unbreakable) = 0<br><em>Sets the unbreakable tag. An unbreakable item will not lose durability.</em></td>
+<td style="text-align: left;"><a href="#function-setunbreakable"><strong>setUnbreakable</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> unbreakable) = 0<br><em>Sets the unbreakable tag.</em></td>
 </tr>
 </tbody>
 </table>
@@ -3207,11 +3207,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-hasconflictingenchant">function hasConflictingEnchant<a class="headerlink" href="#function-hasconflictingenchant" title="Permanent link">&para;</a></h3>
+<p><em>Checks if the specified enchantment conflicts with any enchantments in this</em> <a href="./"><em><strong>ItemMeta</strong></em></a> <em>.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">hasConflictingEnchant</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">EnchantmentId</span><span class="w"> </span><span class="n">id</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Checks if the specified enchantment conflicts with any enchantments in this <a href="./"><strong>ItemMeta</strong></a>.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>id</code> <a href="../classendstone_1_1Enchantment/"><strong>Enchantment</strong></a> id to test </li>
@@ -3275,9 +3275,10 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-isunbreakable">function isUnbreakable<a class="headerlink" href="#function-isunbreakable" title="Permanent link">&para;</a></h3>
-<p><em>Return if the unbreakable tag is true. An unbreakable item will not lose durability.</em> 
+<p><em>Return if the unbreakable tag is true.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">isUnbreakable</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
+<p>An unbreakable item will not lose durability.</p>
 <p><strong>Returns:</strong></p>
 <p>true if the unbreakable tag is true </p>
 <hr>
@@ -3351,11 +3352,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setunbreakable">function setUnbreakable<a class="headerlink" href="#function-setunbreakable" title="Permanent link">&para;</a></h3>
-<p><em>Sets the unbreakable tag. An unbreakable item will not lose durability.</em> 
+<p><em>Sets the unbreakable tag.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ItemMeta</span><span class="o">::</span><span class="n">setUnbreakable</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">unbreakable</span>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
+<p>An unbreakable item will not lose durability.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>unbreakable</code> true if set unbreakable </li>

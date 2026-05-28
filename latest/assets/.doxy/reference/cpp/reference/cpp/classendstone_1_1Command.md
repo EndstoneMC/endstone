@@ -55,22 +55,22 @@ Inherited by the following classes: [endstone::PluginCommand](classendstone_1_1P
 | ---: | :--- |
 |   | [**Command**](#function-command) (std::string name, std::string description="", std::vector&lt; std::string &gt; usages={}, std::vector&lt; std::string &gt; aliases={}, std::vector&lt; std::string &gt; permissions={}) <br> |
 | virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**asPluginCommand**](#function-asplugincommand) () const<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**execute**](#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) const<br> |
-|  std::vector&lt; std::string &gt; | [**getAliases**](#function-getaliases) () const<br> |
-|  std::string | [**getDescription**](#function-getdescription) () const<br> |
-|  std::string | [**getName**](#function-getname) () const<br> |
-|  std::vector&lt; std::string &gt; | [**getPermissions**](#function-getpermissions) () const<br> |
-|  std::vector&lt; std::string &gt; | [**getUsages**](#function-getusages) () const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**isRegistered**](#function-isregistered) () const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**registerTo**](#function-registerto) ([**const**](classendstone_1_1Identifier.md) [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setAliases**](#function-setaliases) (Alias... aliases) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setDescription**](#function-setdescription) (std::string description) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setName**](#function-setname) (std::string name) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setPermissions**](#function-setpermissions) (Permission... permissions) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setUsages**](#function-setusages) (Usage... usages) <br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**testPermission**](#function-testpermission) ([**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**testPermissionSilently**](#function-testpermissionsilently) ([**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**unregisterFrom**](#function-unregisterfrom) ([**const**](classendstone_1_1Identifier.md) [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**execute**](#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) const<br>_Executes the command, returning its success._  |
+|  std::vector&lt; std::string &gt; | [**getAliases**](#function-getaliases) () const<br>_Returns a list of aliases of this command._  |
+|  std::string | [**getDescription**](#function-getdescription) () const<br>_Gets a brief description of this command._  |
+|  std::string | [**getName**](#function-getname) () const<br>_Returns the name of this command._  |
+|  std::vector&lt; std::string &gt; | [**getPermissions**](#function-getpermissions) () const<br>_Gets the permissions required by users to be able to perform this command._  |
+|  std::vector&lt; std::string &gt; | [**getUsages**](#function-getusages) () const<br>_Returns a list of usages of this command._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**isRegistered**](#function-isregistered) () const<br>_Returns the current registered state of this command._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**registerTo**](#function-registerto) ([**const**](classendstone_1_1Identifier.md) [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br>_Registers this command to a_ [_**CommandMap**_](classendstone_1_1CommandMap.md) _._ |
+|  [**void**](classendstone_1_1Identifier.md) | [**setAliases**](#function-setaliases) (Alias... aliases) <br>_Sets the list of aliases to request on registration for this command._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setDescription**](#function-setdescription) (std::string description) <br>_Sets a brief description of this command._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setName**](#function-setname) (std::string name) <br>_Sets the name of this command._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setPermissions**](#function-setpermissions) (Permission... permissions) <br>_Sets the permissions required by users to be able to perform this command._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setUsages**](#function-setusages) (Usage... usages) <br>_Sets the usages of this command._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**testPermission**](#function-testpermission) ([**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br>_Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._ |
+|  [**bool**](classendstone_1_1Identifier.md) | [**testPermissionSilently**](#function-testpermissionsilently) ([**const**](classendstone_1_1Identifier.md) [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br>_Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._ |
+|  [**bool**](classendstone_1_1Identifier.md) | [**unregisterFrom**](#function-unregisterfrom) ([**const**](classendstone_1_1Identifier.md) [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br>_Unregisters this command from a_ [_**CommandMap**_](classendstone_1_1CommandMap.md) _._ |
 | virtual  | [**~Command**](#function-command) () = default<br> |
 
 
@@ -139,6 +139,7 @@ inline virtual PluginCommand * endstone::Command::asPluginCommand () const
 
 ### function execute 
 
+_Executes the command, returning its success._ 
 ```C++
 inline virtual bool endstone::Command::execute (
     CommandSender & sender,
@@ -146,9 +147,6 @@ inline virtual bool endstone::Command::execute (
 ) const
 ```
 
-
-
-Executes the command, returning its success
 
 
 
@@ -177,13 +175,11 @@ true if the execution was successful, otherwise false
 
 ### function getAliases 
 
+_Returns a list of aliases of this command._ 
 ```C++
 inline std::vector< std::string > endstone::Command::getAliases () const
 ```
 
-
-
-Returns a list of aliases of this command
 
 
 
@@ -204,13 +200,11 @@ List of aliases
 
 ### function getDescription 
 
+_Gets a brief description of this command._ 
 ```C++
 inline std::string endstone::Command::getDescription () const
 ```
 
-
-
-Gets a brief description of this command
 
 
 
@@ -231,13 +225,11 @@ Description of this command
 
 ### function getName 
 
+_Returns the name of this command._ 
 ```C++
 inline std::string endstone::Command::getName () const
 ```
 
-
-
-Returns the name of this command
 
 
 
@@ -258,13 +250,11 @@ Name of this command
 
 ### function getPermissions 
 
+_Gets the permissions required by users to be able to perform this command._ 
 ```C++
 inline std::vector< std::string > endstone::Command::getPermissions () const
 ```
 
-
-
-Gets the permissions required by users to be able to perform this command
 
 
 
@@ -285,13 +275,11 @@ List of permission names, or empty if none
 
 ### function getUsages 
 
+_Returns a list of usages of this command._ 
 ```C++
 inline std::vector< std::string > endstone::Command::getUsages () const
 ```
 
-
-
-Returns a list of usages of this command
 
 
 
@@ -312,13 +300,11 @@ List of usages
 
 ### function isRegistered 
 
+_Returns the current registered state of this command._ 
 ```C++
 inline bool endstone::Command::isRegistered () const
 ```
 
-
-
-Returns the current registered state of this command
 
 
 
@@ -339,15 +325,13 @@ true if this command is currently registered false otherwise
 
 ### function registerTo 
 
+_Registers this command to a_ [_**CommandMap**_](classendstone_1_1CommandMap.md) _._
 ```C++
 inline bool endstone::Command::registerTo (
     const  CommandMap & command_map
 ) 
 ```
 
-
-
-Registers this command to a [**CommandMap**](classendstone_1_1CommandMap.md).
 
 
 
@@ -375,6 +359,7 @@ true if the registration was successful, false otherwise
 
 ### function setAliases 
 
+_Sets the list of aliases to request on registration for this command._ 
 ```C++
 template<typename... Alias>
 inline void endstone::Command::setAliases (
@@ -382,9 +367,6 @@ inline void endstone::Command::setAliases (
 ) 
 ```
 
-
-
-Sets the list of aliases to request on registration for this command.
 
 
 
@@ -405,15 +387,13 @@ Sets the list of aliases to request on registration for this command.
 
 ### function setDescription 
 
+_Sets a brief description of this command._ 
 ```C++
 inline void endstone::Command::setDescription (
     std::string description
 ) 
 ```
 
-
-
-Sets a brief description of this command.
 
 
 
@@ -434,15 +414,13 @@ Sets a brief description of this command.
 
 ### function setName 
 
+_Sets the name of this command._ 
 ```C++
 inline void endstone::Command::setName (
     std::string name
 ) 
 ```
 
-
-
-Sets the name of this command.
 
 
 May only be used before registering the command.
@@ -466,6 +444,7 @@ May only be used before registering the command.
 
 ### function setPermissions 
 
+_Sets the permissions required by users to be able to perform this command._ 
 ```C++
 template<typename... Permission>
 inline void endstone::Command::setPermissions (
@@ -473,9 +452,6 @@ inline void endstone::Command::setPermissions (
 ) 
 ```
 
-
-
-Sets the permissions required by users to be able to perform this command
 
 
 
@@ -496,6 +472,7 @@ Sets the permissions required by users to be able to perform this command
 
 ### function setUsages 
 
+_Sets the usages of this command._ 
 ```C++
 template<typename... Usage>
 inline void endstone::Command::setUsages (
@@ -503,9 +480,6 @@ inline void endstone::Command::setUsages (
 ) 
 ```
 
-
-
-Sets the usages of this command
 
 
 
@@ -526,6 +500,7 @@ Sets the usages of this command
 
 ### function testPermission 
 
+_Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._
 ```C++
 inline bool endstone::Command::testPermission (
     const  CommandSender & target
@@ -534,7 +509,7 @@ inline bool endstone::Command::testPermission (
 
 
 
-Tests the given [**CommandSender**](classendstone_1_1CommandSender.md) to see if they can perform this command. If they do not have permission, they will be informed that they cannot do this.
+If they do not have permission, they will be informed that they cannot do this.
 
 
 
@@ -562,6 +537,7 @@ true if they can use it, otherwise false
 
 ### function testPermissionSilently 
 
+_Tests the given_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _to see if they can perform this command._
 ```C++
 inline bool endstone::Command::testPermissionSilently (
     const  CommandSender & target
@@ -570,7 +546,7 @@ inline bool endstone::Command::testPermissionSilently (
 
 
 
-Tests the given [**CommandSender**](classendstone_1_1CommandSender.md) to see if they can perform this command. No error is sent to the sender.
+No error is sent to the sender.
 
 
 
@@ -598,15 +574,13 @@ true if they can use it, otherwise false
 
 ### function unregisterFrom 
 
+_Unregisters this command from a_ [_**CommandMap**_](classendstone_1_1CommandMap.md) _._
 ```C++
 inline bool endstone::Command::unregisterFrom (
     const  CommandMap & command_map
 ) 
 ```
 
-
-
-Unregisters this command from a [**CommandMap**](classendstone_1_1CommandMap.md)
 
 
 

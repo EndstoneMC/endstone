@@ -130,7 +130,7 @@ virtual Objective & endstone::Score::getObjective () const = 0
 
 **Returns:**
 
-the owning objective's scoreboard 
+the owning objective 
 
 
 

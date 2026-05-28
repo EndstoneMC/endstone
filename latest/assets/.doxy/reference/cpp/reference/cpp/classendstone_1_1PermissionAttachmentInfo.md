@@ -53,10 +53,10 @@ _Holds information on a permission and which_ [_**PermissionAttachment**_](class
 | Type | Name |
 | ---: | :--- |
 |   | [**PermissionAttachmentInfo**](#function-permissionattachmentinfo) ([**Permissible**](classendstone_1_1Permissible.md) & permissible, std::string permission, [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* attachment, [**bool**](classendstone_1_1Identifier.md) value) <br> |
-|  [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**getAttachment**](#function-getattachment) () const<br> |
-|  [**Permissible**](classendstone_1_1Permissible.md) & | [**getPermissible**](#function-getpermissible) () const<br> |
-|  std::string | [**getPermission**](#function-getpermission) () const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**getValue**](#function-getvalue) () const<br> |
+|  [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**getAttachment**](#function-getattachment) () const<br>_Gets the attachment providing this permission._  |
+|  [**Permissible**](classendstone_1_1Permissible.md) & | [**getPermissible**](#function-getpermissible) () const<br>_Gets the permissible this is attached to._  |
+|  std::string | [**getPermission**](#function-getpermission) () const<br>_Gets the permission being set._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**getValue**](#function-getvalue) () const<br>_Gets the value of this permission._  |
 
 
 
@@ -110,13 +110,14 @@ inline endstone::PermissionAttachmentInfo::PermissionAttachmentInfo (
 
 ### function getAttachment 
 
+_Gets the attachment providing this permission._ 
 ```C++
 inline PermissionAttachment * endstone::PermissionAttachmentInfo::getAttachment () const
 ```
 
 
 
-Gets the attachment providing this permission. This may be null for default permissions (usually parent permissions).
+This may be nullptr for default permissions (usually parent permissions).
 
 
 
@@ -137,13 +138,11 @@ Attachment
 
 ### function getPermissible 
 
+_Gets the permissible this is attached to._ 
 ```C++
 inline Permissible & endstone::PermissionAttachmentInfo::getPermissible () const
 ```
 
-
-
-Gets the permissible this is attached to
 
 
 
@@ -164,13 +163,11 @@ Gets the permissible this is attached to
 
 ### function getPermission 
 
+_Gets the permission being set._ 
 ```C++
 inline std::string endstone::PermissionAttachmentInfo::getPermission () const
 ```
 
-
-
-Gets the permission being set
 
 
 
@@ -191,13 +188,11 @@ Name of the permission
 
 ### function getValue 
 
+_Gets the value of this permission._ 
 ```C++
 inline bool endstone::PermissionAttachmentInfo::getValue () const
 ```
 
-
-
-Gets the value of this permission
 
 
 

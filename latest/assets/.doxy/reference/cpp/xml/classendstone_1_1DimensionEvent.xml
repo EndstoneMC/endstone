@@ -47,9 +47,9 @@
         <name>getDimension</name>
         <qualifiedname>endstone::DimensionEvent::getDimension</qualifiedname>
         <briefdescription>
+<para>Gets the dimension primarily involved with this event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the dimension primarily involved with this event</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> which caused this event </para>
 </simplesect>
 </para>
@@ -60,7 +60,7 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Represents events within a level. </para>
+<para>Represents events within a dimension. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>

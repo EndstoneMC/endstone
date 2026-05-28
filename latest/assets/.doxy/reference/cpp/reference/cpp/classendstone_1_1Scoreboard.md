@@ -122,7 +122,7 @@ virtual std::unique_ptr< Objective > endstone::Scoreboard::addObjective (
 
 **Returns:**
 
-A reference to the newly registered [**Objective**](classendstone_1_1Objective.md). 
+The newly registered [**Objective**](classendstone_1_1Objective.md). 
 
 
 
@@ -160,7 +160,7 @@ virtual std::unique_ptr< Objective > endstone::Scoreboard::addObjective (
 
 **Returns:**
 
-A reference to the newly registered [**Objective**](classendstone_1_1Objective.md). 
+The newly registered [**Objective**](classendstone_1_1Objective.md). 
 
 
 
@@ -200,7 +200,7 @@ virtual std::unique_ptr< Objective > endstone::Scoreboard::addObjective (
 
 **Returns:**
 
-A reference to the newly registered [**Objective**](classendstone_1_1Objective.md). 
+The newly registered [**Objective**](classendstone_1_1Objective.md). 
 
 
 

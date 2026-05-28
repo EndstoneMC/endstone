@@ -131,10 +131,10 @@
         <name>getKnockback</name>
         <qualifiedname>endstone::ActorKnockbackEvent::getKnockback</qualifiedname>
         <briefdescription>
+<para>Gets the knockback that will be applied to the entity. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the knockback that will be applied to the entity.</para>
-<para><bold>Note:</bold> this method returns a copy, changes must be applied with <ref refid="classendstone_1_1ActorKnockbackEvent_1a4d0589c39958cc0b744f76ba1d6e7714" kindref="member">setKnockback(Vector)</ref></para>
+<para><bold>Note:</bold> this method returns a copy; changes must be applied via <ref refid="classendstone_1_1ActorKnockbackEvent_1a4d0589c39958cc0b744f76ba1d6e7714" kindref="member">setKnockback()</ref>.</para>
 <para><simplesect kind="return"><para>the knockback </para>
 </simplesect>
 </para>

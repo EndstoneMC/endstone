@@ -29,7 +29,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> The corresponding entry, or nullptr if none found. </para>
+<simplesect kind="return"><para>The corresponding entry, or nullptr if none found. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -84,7 +84,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> The corresponding entry, or nullptr if none found. </para>
+<simplesect kind="return"><para>The corresponding entry, or nullptr if none found. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -116,9 +116,10 @@
           <declname>source</declname>
         </param>
         <briefdescription>
-<para>Adds a ban to this list. If a previous ban exists, this will update the previous entry. </para>
+<para>Adds a ban to this list. </para>
         </briefdescription>
         <detaileddescription>
+<para>If a previous ban exists, this will update the previous entry.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>name</parametername>
@@ -191,9 +192,10 @@
           <declname>source</declname>
         </param>
         <briefdescription>
-<para>Adds a ban to this list. If a previous ban exists, this will update the previous entry. </para>
+<para>Adds a ban to this list. </para>
         </briefdescription>
         <detaileddescription>
+<para>If a previous ban exists, this will update the previous entry.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>name</parametername>
@@ -275,9 +277,10 @@
           <declname>source</declname>
         </param>
         <briefdescription>
-<para>Adds a ban to this list. If a previous ban exists, this will update the previous entry. </para>
+<para>Adds a ban to this list. </para>
         </briefdescription>
         <detaileddescription>
+<para>If a previous ban exists, this will update the previous entry.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>name</parametername>
@@ -350,9 +353,10 @@
           <declname>source</declname>
         </param>
         <briefdescription>
-<para>Adds a ban to this list. If a previous ban exists, this will update the previous entry. </para>
+<para>Adds a ban to this list. </para>
         </briefdescription>
         <detaileddescription>
+<para>If a previous ban exists, this will update the previous entry.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>name</parametername>

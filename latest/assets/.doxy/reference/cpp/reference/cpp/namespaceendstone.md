@@ -59,7 +59,7 @@ _Represents a button with text and an optional icon._
 | class | [**BlockCookEvent**](classendstone_1_1BlockCookEvent.md) <br>_Called when an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _is successfully cooked in a block._ |
 | class | [**BlockData**](classendstone_1_1BlockData.md) <br>_Represents the data related to a live block._  |
 | class | [**BlockEvent**](classendstone_1_1BlockEvent.md) <br>_Represents an Block-related event._  |
-| class | [**BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md) <br>_Called when a block explodes (e.g. bed in the Nether, respawn anchor in the Overworld)._  |
+| class | [**BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md) <br>_Called when a block explodes (e.g._  |
 | class | [**BlockFormEvent**](classendstone_1_1BlockFormEvent.md) <br>_Called when a block is formed or spreads based on world conditions._  |
 | class | [**BlockFromToEvent**](classendstone_1_1BlockFromToEvent.md) <br>_Represents events with a source block and a destination block, currently only applies to liquid (lava and water) and teleporting dragon eggs._  |
 | class | [**BlockGrowEvent**](classendstone_1_1BlockGrowEvent.md) <br>_Called when a block grows naturally in the world._  |
@@ -92,7 +92,7 @@ _Represents a button with text and an optional icon._
 | class | [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) <br>_Represents the meta for a crossbow that can have a charged projectile._  |
 | class | [**DamageSource**](classendstone_1_1DamageSource.md) <br>_Represents a source of damage._  |
 | class | [**Dimension**](classendstone_1_1Dimension.md) <br>_Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._ |
-| class | [**DimensionEvent**](classendstone_1_1DimensionEvent.md) <br>_Represents events within a level._  |
+| class | [**DimensionEvent**](classendstone_1_1DimensionEvent.md) <br>_Represents events within a dimension._  |
 | class | [**Divider**](classendstone_1_1Divider.md) <br>_Represents a divider._  |
 | class | [**Dropdown**](classendstone_1_1Dropdown.md) <br>_Represents a dropdown with a set of predefined options._  |
 | class | [**EffectType**](classendstone_1_1EffectType.md) <br>_All effect types._  |
@@ -100,7 +100,7 @@ _Represents a button with text and an optional icon._
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
 | class | [**Form**](classendstone_1_1Form.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents a generic form._  |
-| class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers. Should be instantiated on a per-event basis._  |
+| class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers._  |
 | class | [**Header**](classendstone_1_1Header.md) <br>_Represents a header with a label._  |
 | class | [**ICancellable**](classendstone_1_1ICancellable.md) <br> |
 | class | [**IRegistry**](classendstone_1_1IRegistry.md) <br> |
@@ -109,7 +109,7 @@ _Represents a button with text and an optional icon._
 | class | [**Inventory**](classendstone_1_1Inventory.md) <br>_Interface to the various inventories._  |
 | class | [**IpBanEntry**](classendstone_1_1IpBanEntry.md) <br>_Represents an entry for a banned IP address._  |
 | class | [**IpBanList**](classendstone_1_1IpBanList.md) <br>_Represents a ban list, containing banned IP addresses._  |
-| class | [**Item**](classendstone_1_1Item.md) <br>_Represents a base actor in the level._  |
+| class | [**Item**](classendstone_1_1Item.md) <br>_Represents a dropped item that can be picked up by players._  |
 | class | [**ItemFactory**](classendstone_1_1ItemFactory.md) <br> |
 | class | [**ItemMeta**](classendstone_1_1ItemMeta.md) <br>_Represents the metadata of a generic item._  |
 | class | [**ItemStack**](classendstone_1_1ItemStack.md) <br>_Represents a stack of items._  |
@@ -129,7 +129,7 @@ _Represents a button with text and an optional icon._
 | class | [**MapRenderer**](classendstone_1_1MapRenderer.md) <br>_Represents a renderer for a map._  |
 | class | [**MapView**](classendstone_1_1MapView.md) <br>_Represents a map item._  |
 | class | [**MessageForm**](classendstone_1_1MessageForm.md) <br>_Represents a form with two buttons._  |
-| class | [**Mob**](classendstone_1_1Mob.md) <br>_Represents a mobile entity (i.e. living entity), such as a monster or player._  |
+| class | [**Mob**](classendstone_1_1Mob.md) <br>_Represents a mobile entity (i.e._  |
 | class | [**ModalForm**](classendstone_1_1ModalForm.md) <br>_Represents a modal form with controls._  |
 | class | [**NotNull**](classendstone_1_1NotNull.md) &lt;[**class**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
 | class | [**Nullable**](classendstone_1_1Nullable.md) &lt;[**class**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
@@ -187,7 +187,7 @@ _Represents a button with text and an optional icon._
 | class | [**Scoreboard**](classendstone_1_1Scoreboard.md) <br>_Represents a scoreboard._  |
 | class | [**ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md) <br>_Called when a message is sent by_ `/scriptevent` _command._ |
 | class | [**Server**](classendstone_1_1Server.md) <br>_Represents a server implementation._  |
-| class | [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) <br>_Called when the console runs a command, early in the process._  |
+| class | [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) <br>_Called when a command is run by a non-player, early in the command handling process._  |
 | class | [**ServerEvent**](classendstone_1_1ServerEvent.md) <br>_Represents a Server-related event._  |
 | class | [**ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md) <br>_Called when a server ping is coming in._  |
 | class | [**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) <br>_Called when either the server startup or reload has completed._  |
@@ -202,7 +202,7 @@ _Represents a button with text and an optional icon._
 | class | [**ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md) <br>_Called when the thunder state in a world is changing._  |
 | class | [**Toggle**](classendstone_1_1Toggle.md) <br>_Represents a toggle button with a label._  |
 | class | [**Translatable**](classendstone_1_1Translatable.md) <br>_Represents an object with a text representation that can be translated by the Minecraft client._  |
-| class | [**UUID**](classendstone_1_1UUID.md) <br>_Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)_ |
+| class | [**UUID**](classendstone_1_1UUID.md) <br>_Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)._ |
 | class | [**Vector**](classendstone_1_1Vector.md) <br>_Represents a 3-dimensional vector._  |
 | class | [**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) <br>_Called when the weather (rain) state in a world is changing._  |
 | class | [**WeatherEvent**](classendstone_1_1WeatherEvent.md) <br>_Represents a Weather-related event._  |
@@ -247,7 +247,7 @@ _Represents a button with text and an optional icon._
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**PotionType**](classendstone_1_1PotionType.md) &gt; | [**PotionId**](#typedef-potionid)  <br> |
 | enum std::uint8\_t | [**RenderType**](#enum-rendertype)  <br>_Controls the way in which an_ [_**Objective**_](classendstone_1_1Objective.md) _is rendered on the client side._ |
 | typedef nonstd::expected&lt; [**T**](classendstone_1_1Identifier.md), std::string &gt; | [**Result**](#typedef-result)  <br> |
-| typedef std::variant&lt; [**Player**](classendstone_1_1Player.md) \*, [**Actor**](classendstone_1_1Actor.md) \*, std::string &gt; | [**ScoreEntry**](#typedef-scoreentry)  <br> |
+| typedef std::variant&lt; [**Player**](classendstone_1_1Player.md) \*, [**Actor**](classendstone_1_1Actor.md) \*, std::string &gt; | [**ScoreEntry**](#typedef-scoreentry)  <br>_An entry for a score._  |
 | enum  | [**ServicePriority**](#enum-servicepriority)  <br>_Represents various priorities of a provider._  |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::int16\_t &gt; | [**ShortTag**](#typedef-shorttag)  <br> |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::string &gt; | [**StringTag**](#typedef-stringtag)  <br> |
@@ -838,16 +838,13 @@ using endstone::Result = typedef nonstd::expected<T, std::string>;
 
 ### typedef ScoreEntry 
 
+_An entry for a score._ 
 ```C++
 using endstone::ScoreEntry = typedef std::variant<Player *, Actor *, std::string>;
 ```
 
 
 
-An entry for a score. 
-
-
-        
 
 <hr>
 

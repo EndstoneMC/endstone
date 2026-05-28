@@ -53,9 +53,9 @@
           <declname>health</declname>
         </param>
         <briefdescription>
+<para>Sets the entity&apos;s health from 0 to its possible value, where 0 is dead. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the entity&apos;s health from 0 to its possible value, where 0 is dead.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>health</parametername>
@@ -123,9 +123,10 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Represents a mobile entity (i.e. living entity), such as a monster or player. </para>
+<para>Represents a mobile entity (i.e. </para>
     </briefdescription>
     <detaileddescription>
+<para>living entity), such as a monster or player. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">

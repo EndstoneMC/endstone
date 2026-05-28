@@ -155,7 +155,7 @@
           <declname>player</declname>
         </param>
         <briefdescription>
-<para>Sets the player that this message will display as. </para>
+<para>Sets the player that this message will be displayed as being sent by. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -163,7 +163,7 @@
 <parametername>player</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>New player which this event will execute as </para>
+<para>The player to display this message as. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

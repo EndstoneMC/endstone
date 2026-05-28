@@ -35,9 +35,10 @@
           <declname>page</declname>
         </param>
         <briefdescription>
-<para>Gets the specified page in the book. The given page must exist. </para>
+<para>Gets the specified page in the book. </para>
         </briefdescription>
         <detaileddescription>
+<para>The given page must exist.</para>
 <para><simplesect kind="note"><para>Pages are 1-indexed.</para>
 </simplesect>
 <parameterlist kind="param"><parameteritem>
@@ -72,9 +73,10 @@
           <declname>data</declname>
         </param>
         <briefdescription>
-<para>Sets the specified page in the book. Pages of the book must be contiguous. </para>
+<para>Sets the specified page in the book. </para>
         </briefdescription>
         <detaileddescription>
+<para>Pages of the book must be contiguous.</para>
 <para><simplesect kind="note"><para>The data can be up to 1024 characters in length, additional characters are truncated.</para>
 </simplesect>
 Pages are 1-indexed.</para>
@@ -168,13 +170,12 @@ Pages are 1-indexed.</para>
           <declname>pages</declname>
         </param>
         <briefdescription>
-<para>Maximum 50 pages with 256 characters per page. </para>
+<para>Clears the existing book pages, and sets the book to use the provided pages. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>Clears the existing book pages, and sets the book to use the provided pages.</para>
+<para><simplesect kind="note"><para>Maximum 50 pages with 256 characters per page.</para>
 </simplesect>
-</para>
-<para><parameterlist kind="param"><parameteritem>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>pages</parametername>
 </parameternamelist>

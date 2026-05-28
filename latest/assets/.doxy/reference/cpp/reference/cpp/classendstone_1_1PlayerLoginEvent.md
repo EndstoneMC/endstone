@@ -95,8 +95,8 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md)) <br> |
 |   | [**PlayerLoginEvent**](#function-playerloginevent) ([**Player**](classendstone_1_1Player.md) & player, std::string message="") <br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string & | [**getKickMessage**](#function-getkickmessage) () const<br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setKickMessage**](#function-setkickmessage) ([**const**](classendstone_1_1Identifier.md) std::string & message) <br> |
+|  [**const**](classendstone_1_1Identifier.md) std::string & | [**getKickMessage**](#function-getkickmessage) () const<br>_Gets the current kick message that will be used if event is cancelled._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setKickMessage**](#function-setkickmessage) ([**const**](classendstone_1_1Identifier.md) std::string & message) <br>_Sets the kick message to display if event is cancelled._  |
 |   | [**~PlayerLoginEvent**](#function-playerloginevent) () override<br> |
 
 
@@ -106,9 +106,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -239,13 +239,11 @@ inline explicit endstone::PlayerLoginEvent::PlayerLoginEvent (
 
 ### function getKickMessage 
 
+_Gets the current kick message that will be used if event is cancelled._ 
 ```C++
 inline const std::string & endstone::PlayerLoginEvent::getKickMessage () const
 ```
 
-
-
-Gets the current kick message that will be used if event is cancelled
 
 
 
@@ -266,15 +264,13 @@ Current kick message
 
 ### function setKickMessage 
 
+_Sets the kick message to display if event is cancelled._ 
 ```C++
 inline void endstone::PlayerLoginEvent::setKickMessage (
     const std::string & message
 ) 
 ```
 
-
-
-Sets the kick message to display if event is cancelled
 
 
 

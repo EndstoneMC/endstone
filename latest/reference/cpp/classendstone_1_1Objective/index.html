@@ -2912,7 +2912,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../namespaceendstone/#enum-rendertype"><strong>RenderType</strong></a></td>
-<td style="text-align: left;"><a href="#function-getrendertype"><strong>getRenderType</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="#function-getrendertype"><strong>getRenderType</strong></a> () const = 0<br><em>Gets manner in which this objective will be rendered.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1Score/"><strong>Score</strong></a> &gt;</td>
@@ -2944,7 +2944,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setdisplay"><strong>setDisplay</strong></a> (std::optional&lt; <a href="../namespaceendstone/#enum-displayslot"><strong>DisplaySlot</strong></a> &gt; slot, <a href="../namespaceendstone/#enum-objectivesortorder"><strong>ObjectiveSortOrder</strong></a> order) = 0<br><em>Sets the display slot and sort order for this objective. This will remove it from any other display slot.</em></td>
+<td style="text-align: left;"><a href="#function-setdisplay"><strong>setDisplay</strong></a> (std::optional&lt; <a href="../namespaceendstone/#enum-displayslot"><strong>DisplaySlot</strong></a> &gt; slot, <a href="../namespaceendstone/#enum-objectivesortorder"><strong>ObjectiveSortOrder</strong></a> order) = 0<br><em>Sets the display slot and sort order for this objective.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -2952,7 +2952,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setdisplayslot"><strong>setDisplaySlot</strong></a> (std::optional&lt; <a href="../namespaceendstone/#enum-displayslot"><strong>DisplaySlot</strong></a> &gt; slot) = 0<br><em>Sets the display slot for this objective. This will remove it from any other display slot.</em></td>
+<td style="text-align: left;"><a href="#function-setdisplayslot"><strong>setDisplaySlot</strong></a> (std::optional&lt; <a href="../namespaceendstone/#enum-displayslot"><strong>DisplaySlot</strong></a> &gt; slot) = 0<br><em>Sets the display slot for this objective.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -3002,9 +3002,9 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getrendertype">function getRenderType<a class="headerlink" href="#function-getrendertype" title="Permanent link">&para;</a></h3>
+<p><em>Gets manner in which this objective will be rendered.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">RenderType</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">getRenderType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Gets manner in which this objective will be rendered.</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the render type </p>
 <hr>
@@ -3017,11 +3017,7 @@ For latest updates join the chat on
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>render_type</code> new render type</li>
-</ul>
-<p>Gets an entry's <a href="../classendstone_1_1Score/"><strong>Score</strong></a> for this objective.</p>
-<p><strong>Parameters:</strong></p>
-<ul>
+<li><code>render_type</code> new render type Gets an entry's <a href="../classendstone_1_1Score/"><strong>Score</strong></a> for this objective.</li>
 <li><code>entry</code> Entry for the <a href="../classendstone_1_1Score/"><strong>Score</strong></a> </li>
 </ul>
 <p><strong>Returns:</strong></p>
@@ -3075,12 +3071,13 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setdisplay">function setDisplay<a class="headerlink" href="#function-setdisplay" title="Permanent link">&para;</a></h3>
-<p><em>Sets the display slot and sort order for this objective. This will remove it from any other display slot.</em> 
+<p><em>Sets the display slot and sort order for this objective.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setDisplay</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">DisplaySlot</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">slot</span><span class="p">,</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="n">ObjectiveSortOrder</span><span class="w"> </span><span class="n">order</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
+<p>This will remove it from any other display slot.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>slot</code> The display slot where this objective should be displayed. </li>
@@ -3101,11 +3098,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setdisplayslot">function setDisplaySlot<a class="headerlink" href="#function-setdisplayslot" title="Permanent link">&para;</a></h3>
-<p><em>Sets the display slot for this objective. This will remove it from any other display slot.</em> 
+<p><em>Sets the display slot for this objective.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setDisplaySlot</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">DisplaySlot</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">slot</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
+<p>This will remove it from any other display slot.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>slot</code> The display slot where this objective should be displayed. </li>

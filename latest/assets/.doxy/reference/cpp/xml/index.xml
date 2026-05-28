@@ -2337,7 +2337,7 @@
     <member refid="classendstone_1_1ServerCommandEvent_1a00d02732fd83d82492e41b0da23f3c25" kind="function"><name>ENDSTONE_EVENT</name></member>
     <member refid="classendstone_1_1ServerCommandEvent_1a8c99c3360b322ea0d6fcf42b3b0ab4b0" kind="function"><name>ServerCommandEvent</name></member>
     <member refid="classendstone_1_1ServerCommandEvent_1a93827eb1ca9e938792f2abcf9fd1a09c" kind="function"><name>getCommand</name></member>
-    <member refid="classendstone_1_1ServerCommandEvent_1a738f83bdce175aed3493f4e15f7834a9" kind="function"><name>setCommand</name></member>
+    <member refid="classendstone_1_1ServerCommandEvent_1a3f806b7e5dd8a489495e633a39515df0" kind="function"><name>setCommand</name></member>
     <member refid="classendstone_1_1ServerCommandEvent_1a989fc72b2d7b7feb85a88dc3aa50bca7" kind="function"><name>getSender</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerEvent" kind="class"><name>endstone::ServerEvent</name>

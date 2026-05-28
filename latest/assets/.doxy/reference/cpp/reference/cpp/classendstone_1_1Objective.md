@@ -56,7 +56,7 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 | virtual std::string | [**getDisplayName**](#function-getdisplayname) () const = 0<br>_Gets the name displayed to players for this objective._  |
 | virtual std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; | [**getDisplaySlot**](#function-getdisplayslot) () const = 0<br>_Gets the display slot this objective is displayed at._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this_ [_**Objective**_](classendstone_1_1Objective.md) _._ |
-| virtual [**RenderType**](namespaceendstone.md#enum-rendertype) | [**getRenderType**](#function-getrendertype) () const = 0<br> |
+| virtual [**RenderType**](namespaceendstone.md#enum-rendertype) | [**getRenderType**](#function-getrendertype) () const = 0<br>_Gets manner in which this objective will be rendered._  |
 | virtual std::unique\_ptr&lt; [**Score**](classendstone_1_1Score.md) &gt; | [**getScore**](#function-getscore) ([**ScoreEntry**](namespaceendstone.md#typedef-scoreentry) entry) const = 0<br>_Sets manner in which this objective will be rendered._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the scoreboard to which this objective is attached._  |
 | virtual std::optional&lt; [**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) &gt; | [**getSortOrder**](#function-getsortorder) () const = 0<br>_Gets the sort order for this objective._  |
@@ -64,9 +64,9 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isModifiable**](#function-ismodifiable) () const = 0<br>_Gets if the objective's scores can be modified directly by a plugin._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Objective**](classendstone_1_1Objective.md) & other) const = 0<br> |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**Objective**](classendstone_1_1Objective.md) & other) const = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setDisplay**](#function-setdisplay) (std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; slot, [**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) order) = 0<br>_Sets the display slot and sort order for this objective. This will remove it from any other display slot._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setDisplay**](#function-setdisplay) (std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; slot, [**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) order) = 0<br>_Sets the display slot and sort order for this objective._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setDisplayName**](#function-setdisplayname) (std::string display\_name) = 0<br>_Sets the name displayed to players for this objective._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setDisplaySlot**](#function-setdisplayslot) (std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; slot) = 0<br>_Sets the display slot for this objective. This will remove it from any other display slot._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setDisplaySlot**](#function-setdisplayslot) (std::optional&lt; [**DisplaySlot**](namespaceendstone.md#enum-displayslot) &gt; slot) = 0<br>_Sets the display slot for this objective._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setSortOrder**](#function-setsortorder) ([**ObjectiveSortOrder**](namespaceendstone.md#enum-objectivesortorder) order) = 0<br>_Sets the sort order for this objective._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**unregister**](#function-unregister) () const = 0<br>_Unregisters this objective from the associated_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual  | [**~Objective**](#function-objective) () = default<br> |
@@ -205,13 +205,11 @@ this objective's name
 
 ### function getRenderType 
 
+_Gets manner in which this objective will be rendered._ 
 ```C++
 virtual RenderType endstone::Objective::getRenderType () const = 0
 ```
 
-
-
-Gets manner in which this objective will be rendered.
 
 
 
@@ -246,16 +244,7 @@ virtual std::unique_ptr< Score > endstone::Objective::getScore (
 **Parameters:**
 
 
-* `render_type` new render type
-
-Gets an entry's [**Score**](classendstone_1_1Score.md) for this objective.
-
-
-
-
-**Parameters:**
-
-
+* `render_type` new render type Gets an entry's [**Score**](classendstone_1_1Score.md) for this objective.
 * `entry` Entry for the [**Score**](classendstone_1_1Score.md) 
 
 
@@ -406,7 +395,7 @@ virtual bool endstone::Objective::operator== (
 
 ### function setDisplay 
 
-_Sets the display slot and sort order for this objective. This will remove it from any other display slot._ 
+_Sets the display slot and sort order for this objective._ 
 ```C++
 virtual void endstone::Objective::setDisplay (
     std::optional< DisplaySlot > slot,
@@ -414,6 +403,9 @@ virtual void endstone::Objective::setDisplay (
 ) = 0
 ```
 
+
+
+This will remove it from any other display slot.
 
 
 
@@ -462,13 +454,16 @@ virtual void endstone::Objective::setDisplayName (
 
 ### function setDisplaySlot 
 
-_Sets the display slot for this objective. This will remove it from any other display slot._ 
+_Sets the display slot for this objective._ 
 ```C++
 virtual void endstone::Objective::setDisplaySlot (
     std::optional< DisplaySlot > slot
 ) = 0
 ```
 
+
+
+This will remove it from any other display slot.
 
 
 

@@ -111,7 +111,7 @@
 <para>Gets the <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> being tracked by this <ref refid="classendstone_1_1Score" kindref="compound">Score</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the owning objective&apos;s scoreboard </para>
+<para><simplesect kind="return"><para>the owning objective </para>
 </simplesect>
 </para>
         </detaileddescription>

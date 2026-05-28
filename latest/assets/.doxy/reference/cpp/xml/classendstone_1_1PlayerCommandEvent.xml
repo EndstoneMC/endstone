@@ -81,9 +81,9 @@
         <name>getCommand</name>
         <qualifiedname>endstone::PlayerCommandEvent::getCommand</qualifiedname>
         <briefdescription>
+<para>Gets the command that the player is attempting to send. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the command that the player is attempting to send.</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Command" kindref="compound">Command</ref> the player is attempting to send </para>
 </simplesect>
 </para>
@@ -103,9 +103,9 @@
           <declname>command</declname>
         </param>
         <briefdescription>
+<para>Sets the command that the player will send. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the command that the player will send.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>command</parametername>

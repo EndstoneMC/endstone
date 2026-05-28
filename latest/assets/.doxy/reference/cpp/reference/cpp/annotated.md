@@ -27,7 +27,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**BlockCookEvent**](classendstone_1_1BlockCookEvent.md) _Called when an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _is successfully cooked in a block._    
     * **class** [**BlockData**](classendstone_1_1BlockData.md) _Represents the data related to a live block._     
     * **class** [**BlockEvent**](classendstone_1_1BlockEvent.md) _Represents an Block-related event._     
-    * **class** [**BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md) _Called when a block explodes (e.g. bed in the Nether, respawn anchor in the Overworld)._     
+    * **class** [**BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md) _Called when a block explodes (e.g._     
     * **class** [**BlockFormEvent**](classendstone_1_1BlockFormEvent.md) _Called when a block is formed or spreads based on world conditions._     
     * **class** [**BlockFromToEvent**](classendstone_1_1BlockFromToEvent.md) _Represents events with a source block and a destination block, currently only applies to liquid (lava and water) and teleporting dragon eggs._     
     * **class** [**BlockGrowEvent**](classendstone_1_1BlockGrowEvent.md) _Called when a block grows naturally in the world._     
@@ -60,7 +60,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) _Represents the meta for a crossbow that can have a charged projectile._     
     * **class** [**DamageSource**](classendstone_1_1DamageSource.md) _Represents a source of damage._     
     * **class** [**Dimension**](classendstone_1_1Dimension.md) _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._    
-    * **class** [**DimensionEvent**](classendstone_1_1DimensionEvent.md) _Represents events within a level._     
+    * **class** [**DimensionEvent**](classendstone_1_1DimensionEvent.md) _Represents events within a dimension._     
     * **class** [**Divider**](classendstone_1_1Divider.md) _Represents a divider._     
     * **class** [**Dropdown**](classendstone_1_1Dropdown.md) _Represents a dropdown with a set of predefined options._     
     * **class** [**EffectType**](classendstone_1_1EffectType.md) _All effect types._     
@@ -68,7 +68,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Event**](classendstone_1_1Event.md) _Represents an event._     
     * **class** [**EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._    
     * **class** [**Form**](classendstone_1_1Form.md) _Represents a generic form._     
-    * **class** [**HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers. Should be instantiated on a per-event basis._     
+    * **class** [**HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers._     
     * **class** [**Header**](classendstone_1_1Header.md) _Represents a header with a label._     
     * **class** [**ICancellable**](classendstone_1_1ICancellable.md)     
     * **class** [**IRegistry**](classendstone_1_1IRegistry.md)     
@@ -77,7 +77,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
     * **class** [**IpBanEntry**](classendstone_1_1IpBanEntry.md) _Represents an entry for a banned IP address._     
     * **class** [**IpBanList**](classendstone_1_1IpBanList.md) _Represents a ban list, containing banned IP addresses._     
-    * **class** [**Item**](classendstone_1_1Item.md) _Represents a base actor in the level._     
+    * **class** [**Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._     
     * **class** [**ItemFactory**](classendstone_1_1ItemFactory.md)     
     * **class** [**ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
     * **class** [**ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._     
@@ -97,7 +97,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**MapRenderer**](classendstone_1_1MapRenderer.md) _Represents a renderer for a map._     
     * **class** [**MapView**](classendstone_1_1MapView.md) _Represents a map item._     
     * **class** [**MessageForm**](classendstone_1_1MessageForm.md) _Represents a form with two buttons._     
-    * **class** [**Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+    * **class** [**Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
     * **class** [**ModalForm**](classendstone_1_1ModalForm.md) _Represents a modal form with controls._     
     * **class** [**NotNull**](classendstone_1_1NotNull.md)     
     * **class** [**Nullable**](classendstone_1_1Nullable.md)     
@@ -156,7 +156,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Scoreboard**](classendstone_1_1Scoreboard.md) _Represents a scoreboard._     
     * **class** [**ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md) _Called when a message is sent by_ `/scriptevent` _command._    
     * **class** [**Server**](classendstone_1_1Server.md) _Represents a server implementation._     
-    * **class** [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) _Called when the console runs a command, early in the process._     
+    * **class** [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) _Called when a command is run by a non-player, early in the command handling process._     
     * **class** [**ServerEvent**](classendstone_1_1ServerEvent.md) _Represents a Server-related event._     
     * **class** [**ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md) _Called when a server ping is coming in._     
     * **class** [**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) _Called when either the server startup or reload has completed._     
@@ -171,7 +171,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md) _Called when the thunder state in a world is changing._     
     * **class** [**Toggle**](classendstone_1_1Toggle.md) _Represents a toggle button with a label._     
     * **class** [**Translatable**](classendstone_1_1Translatable.md) _Represents an object with a text representation that can be translated by the Minecraft client._     
-    * **class** [**UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)_    
+    * **class** [**UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)._    
     * **class** [**Vector**](classendstone_1_1Vector.md) _Represents a 3-dimensional vector._     
     * **class** [**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) _Called when the weather (rain) state in a world is changing._     
     * **class** [**WeatherEvent**](classendstone_1_1WeatherEvent.md) _Represents a Weather-related event._     

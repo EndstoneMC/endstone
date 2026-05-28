@@ -41,7 +41,7 @@ public:
 
     [[nodiscard]] std::string getCommand() const { return command_; }
 
-    void setCommand(std::string message) { command_ = std::move(message); }
+    void setCommand(std::string command) { command_ = std::move(command); }
 
     [[nodiscard]] CommandSender &getSender() const { return sender_; }
 

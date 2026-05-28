@@ -98,12 +98,12 @@ Inherits the following classes: [endstone::ItemMeta](classendstone_1_1ItemMeta.m
 
 | Type | Name |
 | ---: | :--- |
-| virtual MapId | [**getMapId**](#function-getmapid) () const = 0<br>_Gets the map ID that is set. This is used to determine what map is displayed._  |
+| virtual MapId | [**getMapId**](#function-getmapid) () const = 0<br>_Gets the map ID that is set._  |
 | virtual [**MapView**](classendstone_1_1MapView.md) \* | [**getMapView**](#function-getmapview) () const = 0<br>_Gets the map view associated with this map item._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasMapId**](#function-hasmapid) () const = 0<br>_Checks for existence of a map ID number._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasMapView**](#function-hasmapview) () const = 0<br>_Checks for existence of an associated map._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setMapId**](#function-setmapid) (MapId id) = 0<br>_Sets the map ID. This is used to determine what map is displayed._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setMapView**](#function-setmapview) ([**const**](classendstone_1_1Identifier.md) [**MapView**](classendstone_1_1MapView.md) \* map) = 0<br>_Sets the associated map. This is used to determine what map is displayed._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setMapId**](#function-setmapid) (MapId id) = 0<br>_Sets the map ID._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setMapView**](#function-setmapview) ([**const**](classendstone_1_1Identifier.md) [**MapView**](classendstone_1_1MapView.md) \* map) = 0<br>_Sets the associated map._  |
 
 
 ## Public Functions inherited from endstone::ItemMeta
@@ -121,21 +121,21 @@ See [endstone::ItemMeta](classendstone_1_1ItemMeta.md)
 | virtual [**const**](classendstone_1_1Identifier.md) core::ItemMetaExtras & | [**getExtras**](classendstone_1_1ItemMeta.md#function-getextras) () const = 0<br> |
 | virtual std::vector&lt; std::string &gt; | [**getLore**](classendstone_1_1ItemMeta.md#function-getlore) () const = 0<br>_Gets the lore that is set._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getRepairCost**](classendstone_1_1ItemMeta.md#function-getrepaircost) () const = 0<br>_Gets the repair penalty._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasConflictingEnchant**](classendstone_1_1ItemMeta.md#function-hasconflictingenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasConflictingEnchant**](classendstone_1_1ItemMeta.md#function-hasconflictingenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br>_Checks if the specified enchantment conflicts with any enchantments in this_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasDamage**](classendstone_1_1ItemMeta.md#function-hasdamage) () const = 0<br>_Checks to see if this item has damage._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasDisplayName**](classendstone_1_1ItemMeta.md#function-hasdisplayname) () const = 0<br>_Checks for existence of a display name._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasEnchant**](classendstone_1_1ItemMeta.md#function-hasenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br>_Checks for existence of the specified enchantment._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasEnchants**](classendstone_1_1ItemMeta.md#function-hasenchants) () const = 0<br>_Checks for the existence of any enchantments._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasLore**](classendstone_1_1ItemMeta.md#function-haslore) () const = 0<br>_Checks for existence of lore._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasRepairCost**](classendstone_1_1ItemMeta.md#function-hasrepaircost) () const = 0<br>_Checks to see if this has a repair penalty._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isUnbreakable**](classendstone_1_1ItemMeta.md#function-isunbreakable) () const = 0<br>_Return if the unbreakable tag is true. An unbreakable item will not lose durability._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isUnbreakable**](classendstone_1_1ItemMeta.md#function-isunbreakable) () const = 0<br>_Return if the unbreakable tag is true._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**removeEnchant**](classendstone_1_1ItemMeta.md#function-removeenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) = 0<br>_Removes the specified enchantment from this item meta._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**removeEnchants**](classendstone_1_1ItemMeta.md#function-removeenchants) () = 0<br>_Removes all enchantments from this item meta._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setDamage**](classendstone_1_1ItemMeta.md#function-setdamage) ([**int**](classendstone_1_1Identifier.md) damage) = 0<br>_Sets the damage._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setDisplayName**](classendstone_1_1ItemMeta.md#function-setdisplayname) (std::optional&lt; std::string &gt; name) = 0<br>_Sets the display name._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setLore**](classendstone_1_1ItemMeta.md#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) = 0<br>_Sets the lore for this item or removes lore when given_ `std::nullopt` _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setRepairCost**](classendstone_1_1ItemMeta.md#function-setrepaircost) ([**int**](classendstone_1_1Identifier.md) cost) = 0<br>_Sets the repair penalty._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setUnbreakable**](classendstone_1_1ItemMeta.md#function-setunbreakable) ([**bool**](classendstone_1_1Identifier.md) unbreakable) = 0<br>_Sets the unbreakable tag. An unbreakable item will not lose durability._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setUnbreakable**](classendstone_1_1ItemMeta.md#function-setunbreakable) ([**bool**](classendstone_1_1Identifier.md) unbreakable) = 0<br>_Sets the unbreakable tag._  |
 
 
 ## Public Functions inherited from endstone::Object
@@ -252,11 +252,14 @@ using endstone::MapMeta::MapId =  std::int64_t;
 
 ### function getMapId 
 
-_Gets the map ID that is set. This is used to determine what map is displayed._ 
+_Gets the map ID that is set._ 
 ```C++
 virtual MapId endstone::MapMeta::getMapId () const = 0
 ```
 
+
+
+This is used to determine what map is displayed.
 
 
 
@@ -359,13 +362,16 @@ true if this item has an associated map
 
 ### function setMapId 
 
-_Sets the map ID. This is used to determine what map is displayed._ 
+_Sets the map ID._ 
 ```C++
 virtual void endstone::MapMeta::setMapId (
     MapId id
 ) = 0
 ```
 
+
+
+This is used to determine what map is displayed.
 
 
 
@@ -386,13 +392,16 @@ virtual void endstone::MapMeta::setMapId (
 
 ### function setMapView 
 
-_Sets the associated map. This is used to determine what map is displayed._ 
+_Sets the associated map._ 
 ```C++
 virtual void endstone::MapMeta::setMapView (
     const  MapView * map
 ) = 0
 ```
 
+
+
+This is used to determine what map is displayed.
 
 
 

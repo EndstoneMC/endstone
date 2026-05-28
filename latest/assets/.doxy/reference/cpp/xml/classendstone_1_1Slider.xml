@@ -132,10 +132,10 @@
         <name>getLabel</name>
         <qualifiedname>endstone::Slider::getLabel</qualifiedname>
         <briefdescription>
-<para>Gets the label of the toggle. </para>
+<para>Gets the label of the slider. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The label of the toggle. </para>
+<para><simplesect kind="return"><para>The label of the slider. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -154,7 +154,7 @@
           <declname>label</declname>
         </param>
         <briefdescription>
-<para>Sets the label of the toggle. </para>
+<para>Sets the label of the slider. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -162,11 +162,11 @@
 <parametername>label</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The new label for the toggle. </para>
+<para>The new label for the slider. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A reference to the current toggle. </para>
+<simplesect kind="return"><para>A reference to the current slider, for function chaining. </para>
 </simplesect>
 </para>
         </detaileddescription>

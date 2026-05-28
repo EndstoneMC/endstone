@@ -99,9 +99,9 @@
         <name>getPermissible</name>
         <qualifiedname>endstone::PermissionAttachmentInfo::getPermissible</qualifiedname>
         <briefdescription>
+<para>Gets the permissible this is attached to. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the permissible this is attached to</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> this permission is for </para>
 </simplesect>
 </para>
@@ -117,9 +117,9 @@
         <name>getPermission</name>
         <qualifiedname>endstone::PermissionAttachmentInfo::getPermission</qualifiedname>
         <briefdescription>
+<para>Gets the permission being set. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the permission being set</para>
 <para><simplesect kind="return"><para>Name of the permission </para>
 </simplesect>
 </para>
@@ -135,9 +135,10 @@
         <name>getAttachment</name>
         <qualifiedname>endstone::PermissionAttachmentInfo::getAttachment</qualifiedname>
         <briefdescription>
+<para>Gets the attachment providing this permission. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the attachment providing this permission. This may be null for default permissions (usually parent permissions).</para>
+<para>This may be nullptr for default permissions (usually parent permissions).</para>
 <para><simplesect kind="return"><para>Attachment </para>
 </simplesect>
 </para>
@@ -153,9 +154,9 @@
         <name>getValue</name>
         <qualifiedname>endstone::PermissionAttachmentInfo::getValue</qualifiedname>
         <briefdescription>
+<para>Gets the value of this permission. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the value of this permission</para>
 <para><simplesect kind="return"><para>Value of the permission </para>
 </simplesect>
 </para>

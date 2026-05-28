@@ -217,9 +217,10 @@
           <declname>slot</declname>
         </param>
         <briefdescription>
-<para>Sets the display slot for this objective. This will remove it from any other display slot. </para>
+<para>Sets the display slot for this objective. </para>
         </briefdescription>
         <detaileddescription>
+<para>This will remove it from any other display slot.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>slot</parametername>
@@ -279,9 +280,10 @@
           <declname>order</declname>
         </param>
         <briefdescription>
-<para>Sets the display slot and sort order for this objective. This will remove it from any other display slot. </para>
+<para>Sets the display slot and sort order for this objective. </para>
         </briefdescription>
         <detaileddescription>
+<para>This will remove it from any other display slot.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>slot</parametername>
@@ -312,9 +314,9 @@
         <name>getRenderType</name>
         <qualifiedname>endstone::Objective::getRenderType</qualifiedname>
         <briefdescription>
+<para>Gets manner in which this objective will be rendered. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets manner in which this objective will be rendered.</para>
 <para><simplesect kind="return"><para>the render type </para>
 </simplesect>
 </para>
@@ -342,12 +344,10 @@
 <parametername>render_type</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>new render type</para>
+<para>new render type Gets an entry&apos;s <ref refid="classendstone_1_1Score" kindref="compound">Score</ref> for this objective.</para>
 </parameterdescription>
 </parameteritem>
-</parameterlist>
-Gets an entry&apos;s <ref refid="classendstone_1_1Score" kindref="compound">Score</ref> for this objective.</para>
-<para><parameterlist kind="param"><parameteritem>
+<parameteritem>
 <parameternamelist>
 <parametername>entry</parametername>
 </parameternamelist>

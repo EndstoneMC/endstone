@@ -43,7 +43,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers. Should be instantiated on a per-event basis._  |
+| class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers._  |
 
 
 

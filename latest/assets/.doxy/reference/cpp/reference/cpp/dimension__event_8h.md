@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**DimensionEvent**](classendstone_1_1DimensionEvent.md) <br>_Represents events within a level._  |
+| class | [**DimensionEvent**](classendstone_1_1DimensionEvent.md) <br>_Represents events within a dimension._  |
 
 
 

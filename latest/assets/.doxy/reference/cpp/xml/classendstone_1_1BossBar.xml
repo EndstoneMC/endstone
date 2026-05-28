@@ -277,10 +277,10 @@
           <declname>progress</declname>
         </param>
         <briefdescription>
-<para>Sets the progress of the bar. Values should be between 0.0 (empty) and 1.0 (full) </para>
+<para>Sets the progress of the bar. </para>
         </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
+<para>Values should be between 0.0 (empty) and 1.0 (full). <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>progress</parametername>
 </parameternamelist>

@@ -53,16 +53,16 @@ _Holds information about a permission attachment on a_ [_**Permissible**_](class
 | Type | Name |
 | ---: | :--- |
 |   | [**PermissionAttachment**](#function-permissionattachment) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, [**Permissible**](classendstone_1_1Permissible.md) & permissible) <br> |
-|  [**Permissible**](classendstone_1_1Permissible.md) & | [**getPermissible**](#function-getpermissible) () const<br> |
-|  std::unordered\_map&lt; std::string, [**bool**](classendstone_1_1Identifier.md) &gt; | [**getPermissions**](#function-getpermissions) () const<br> |
-|  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br> |
-|  PermissionRemovedExecutor | [**getRemovalCallback**](#function-getremovalcallback) () const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**remove**](#function-remove) () <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setPermission**](#function-setpermission-12) (std::string name, [**bool**](classendstone_1_1Identifier.md) value) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setPermission**](#function-setpermission-22) ([**Permission**](classendstone_1_1Permission.md) & perm, [**bool**](classendstone_1_1Identifier.md) value) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setRemovalCallback**](#function-setremovalcallback) (PermissionRemovedExecutor ex) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**unsetPermission**](#function-unsetpermission-12) (std::string name) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**unsetPermission**](#function-unsetpermission-22) ([**Permission**](classendstone_1_1Permission.md) & perm) <br> |
+|  [**Permissible**](classendstone_1_1Permissible.md) & | [**getPermissible**](#function-getpermissible) () const<br>_Gets the_ [_**Permissible**_](classendstone_1_1Permissible.md) _that this is attached to._ |
+|  std::unordered\_map&lt; std::string, [**bool**](classendstone_1_1Identifier.md) &gt; | [**getPermissions**](#function-getpermissions) () const<br>_Gets a copy of all set permissions and values contained within this attachment._  |
+|  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br>_Gets the plugin responsible for this attachment._  |
+|  PermissionRemovedExecutor | [**getRemovalCallback**](#function-getremovalcallback) () const<br>_Gets the executor that was previously set to be called when this attachment was removed from a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._ |
+|  [**bool**](classendstone_1_1Identifier.md) | [**remove**](#function-remove) () <br>_Removes this attachment from its registered_ [_**Permissible**_](classendstone_1_1Permissible.md) _._ |
+|  [**void**](classendstone_1_1Identifier.md) | [**setPermission**](#function-setpermission-12) (std::string name, [**bool**](classendstone_1_1Identifier.md) value) <br>_Sets a permission to the given value, by its fully qualified name._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setPermission**](#function-setpermission-22) ([**Permission**](classendstone_1_1Permission.md) & perm, [**bool**](classendstone_1_1Identifier.md) value) <br>_Sets a permission to the given value._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setRemovalCallback**](#function-setremovalcallback) (PermissionRemovedExecutor ex) <br>_Sets an executor to be called for when this attachment is removed from a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._ |
+|  [**void**](classendstone_1_1Identifier.md) | [**unsetPermission**](#function-unsetpermission-12) (std::string name) <br>_Removes the specified permission from this attachment._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**unsetPermission**](#function-unsetpermission-22) ([**Permission**](classendstone_1_1Permission.md) & perm) <br>_Removes the specified permission from this attachment._  |
 
 
 
@@ -114,13 +114,11 @@ inline endstone::PermissionAttachment::PermissionAttachment (
 
 ### function getPermissible 
 
+_Gets the_ [_**Permissible**_](classendstone_1_1Permissible.md) _that this is attached to._
 ```C++
 inline Permissible & endstone::PermissionAttachment::getPermissible () const
 ```
 
-
-
-Gets the [**Permissible**](classendstone_1_1Permissible.md) that this is attached to
 
 
 
@@ -141,13 +139,14 @@ Gets the [**Permissible**](classendstone_1_1Permissible.md) that this is attache
 
 ### function getPermissions 
 
+_Gets a copy of all set permissions and values contained within this attachment._ 
 ```C++
 inline std::unordered_map< std::string, bool > endstone::PermissionAttachment::getPermissions () const
 ```
 
 
 
-Gets a copy of all set permissions and values contained within this attachment. This map may be modified but will not affect the attachment, as it is a copy.
+This map may be modified but will not affect the attachment, as it is a copy.
 
 
 
@@ -168,13 +167,11 @@ Copy of all permissions and values expressed by this attachment
 
 ### function getPlugin 
 
+_Gets the plugin responsible for this attachment._ 
 ```C++
 inline Plugin & endstone::PermissionAttachment::getPlugin () const
 ```
 
-
-
-Gets the plugin responsible for this attachment
 
 
 
@@ -195,13 +192,14 @@ Gets the plugin responsible for this attachment
 
 ### function getRemovalCallback 
 
+_Gets the executor that was previously set to be called when this attachment was removed from a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._
 ```C++
 inline PermissionRemovedExecutor endstone::PermissionAttachment::getRemovalCallback () const
 ```
 
 
 
-Gets the class that was previously set to be called when this attachment was removed from a [**Permissible**](classendstone_1_1Permissible.md). May be empty.
+May be empty.
 
 
 
@@ -222,13 +220,11 @@ Executor to be called when this is removed
 
 ### function remove 
 
+_Removes this attachment from its registered_ [_**Permissible**_](classendstone_1_1Permissible.md) _._
 ```C++
 inline bool endstone::PermissionAttachment::remove () 
 ```
 
-
-
-Removes this attachment from its registered [**Permissible**](classendstone_1_1Permissible.md)
 
 
 
@@ -249,6 +245,7 @@ true if the permissible was removed successfully, false if it did not exist
 
 ### function setPermission [1/2]
 
+_Sets a permission to the given value, by its fully qualified name._ 
 ```C++
 inline void endstone::PermissionAttachment::setPermission (
     std::string name,
@@ -256,9 +253,6 @@ inline void endstone::PermissionAttachment::setPermission (
 ) 
 ```
 
-
-
-Sets a permission to the given value, by its fully qualified name
 
 
 
@@ -280,6 +274,7 @@ Sets a permission to the given value, by its fully qualified name
 
 ### function setPermission [2/2]
 
+_Sets a permission to the given value._ 
 ```C++
 inline void endstone::PermissionAttachment::setPermission (
     Permission & perm,
@@ -287,9 +282,6 @@ inline void endstone::PermissionAttachment::setPermission (
 ) 
 ```
 
-
-
-Sets a permission to the given value
 
 
 
@@ -311,6 +303,7 @@ Sets a permission to the given value
 
 ### function setRemovalCallback 
 
+_Sets an executor to be called for when this attachment is removed from a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._
 ```C++
 inline void endstone::PermissionAttachment::setRemovalCallback (
     PermissionRemovedExecutor ex
@@ -319,7 +312,7 @@ inline void endstone::PermissionAttachment::setRemovalCallback (
 
 
 
-Sets an executor to be called for when this attachment is removed from a [**Permissible**](classendstone_1_1Permissible.md). May be empty.
+May be empty.
 
 
 
@@ -340,6 +333,7 @@ Sets an executor to be called for when this attachment is removed from a [**Perm
 
 ### function unsetPermission [1/2]
 
+_Removes the specified permission from this attachment._ 
 ```C++
 inline void endstone::PermissionAttachment::unsetPermission (
     std::string name
@@ -348,7 +342,7 @@ inline void endstone::PermissionAttachment::unsetPermission (
 
 
 
-Removes the specified permission from this attachment. If the permission does not exist in this attachment, nothing will happen.
+If the permission does not exist in this attachment, nothing will happen.
 
 
 
@@ -369,6 +363,7 @@ Removes the specified permission from this attachment. If the permission does no
 
 ### function unsetPermission [2/2]
 
+_Removes the specified permission from this attachment._ 
 ```C++
 inline void endstone::PermissionAttachment::unsetPermission (
     Permission & perm
@@ -377,7 +372,7 @@ inline void endstone::PermissionAttachment::unsetPermission (
 
 
 
-Removes the specified permission from this attachment. If the permission does not exist in this attachment, nothing will happen.
+If the permission does not exist in this attachment, nothing will happen.
 
 
 

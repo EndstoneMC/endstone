@@ -63,9 +63,9 @@
         <name>getPlugin</name>
         <qualifiedname>endstone::PluginDisableEvent::getPlugin</qualifiedname>
         <briefdescription>
+<para>Gets the plugin involved in this event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the plugin involved in this event</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> for this event </para>
 </simplesect>
 </para>

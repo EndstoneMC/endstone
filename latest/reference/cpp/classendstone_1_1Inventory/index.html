@@ -3073,7 +3073,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-isempty"><strong>isEmpty</strong></a> () const = 0<br><em>Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.</em></td>
+<td style="text-align: left;"><a href="#function-isempty"><strong>isEmpty</strong></a> () const = 0<br><em>Check whether this inventory is empty.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -3093,7 +3093,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setcontents"><strong>setContents</strong></a> (std::vector&lt; std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &gt; items) = 0<br><em>Completely replaces the inventory's contents. Removes all existing contents and replaces it with the ItemStacks given in the array.</em></td>
+<td style="text-align: left;"><a href="#function-setcontents"><strong>setContents</strong></a> (std::vector&lt; std::optional&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &gt; items) = 0<br><em>Completely replaces the inventory's contents.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -3348,9 +3348,10 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-isempty">function isEmpty<a class="headerlink" href="#function-isempty" title="Permanent link">&para;</a></h3>
-<p><em>Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.</em> 
+<p><em>Check whether this inventory is empty.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Inventory</span><span class="o">::</span><span class="n">isEmpty</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
+<p>An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.</p>
 <p><strong>Returns:</strong></p>
 <p>true if empty, false otherwise </p>
 <hr>
@@ -3419,11 +3420,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setcontents">function setContents<a class="headerlink" href="#function-setcontents" title="Permanent link">&para;</a></h3>
-<p><em>Completely replaces the inventory's contents. Removes all existing contents and replaces it with the ItemStacks given in the array.</em> 
+<p><em>Completely replaces the inventory's contents.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Inventory</span><span class="o">::</span><span class="n">setContents</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ItemStack</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
+<p>Removes all existing contents and replaces it with the ItemStacks given in the array.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>items</code> A complete replacement for the contents; the length must be less than or equal to <a href="./#function-getsize"><strong>getSize()</strong></a>. </li>

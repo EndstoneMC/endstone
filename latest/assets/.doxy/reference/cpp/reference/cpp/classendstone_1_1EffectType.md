@@ -38,43 +38,43 @@ _All effect types._
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Absorption**](#variable-absorption)   = `EffectId::minecraft("absorption")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**BadOmen**](#variable-badomen)   = `EffectId::minecraft("bad\_omen")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Blindness**](#variable-blindness)   = `EffectId::minecraft("blindness")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**BreathOfTheNautilus**](#variable-breathofthenautilus)   = `EffectId::minecraft("breath\_of\_the\_nautilus")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ConduitPower**](#variable-conduitpower)   = `EffectId::minecraft("conduit\_power")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Darkness**](#variable-darkness)   = `EffectId::minecraft("darkness")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FatalPoison**](#variable-fatalpoison)   = `EffectId::minecraft("fatal\_poison")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FireResistance**](#variable-fireresistance)   = `EffectId::minecraft("fire\_resistance")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Haste**](#variable-haste)   = `EffectId::minecraft("haste")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**HealthBoost**](#variable-healthboost)   = `EffectId::minecraft("health\_boost")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**HeroOfTheVillage**](#variable-heroofthevillage)   = `EffectId::minecraft("hero\_of\_the\_village")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Hunger**](#variable-hunger)   = `EffectId::minecraft("hunger")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Infested**](#variable-infested)   = `EffectId::minecraft("infested")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**InstantDamage**](#variable-instantdamage)   = `EffectId::minecraft("instant\_damage")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**InstantHealth**](#variable-instanthealth)   = `EffectId::minecraft("instant\_health")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Invisibility**](#variable-invisibility)   = `EffectId::minecraft("invisibility")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**JumpBoost**](#variable-jumpboost)   = `EffectId::minecraft("jump\_boost")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Levitation**](#variable-levitation)   = `EffectId::minecraft("levitation")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**MiningFatigue**](#variable-miningfatigue)   = `EffectId::minecraft("mining\_fatigue")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Nausea**](#variable-nausea)   = `EffectId::minecraft("nausea")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**NightVision**](#variable-nightvision)   = `EffectId::minecraft("night\_vision")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Oozing**](#variable-oozing)   = `EffectId::minecraft("oozing")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Poison**](#variable-poison)   = `EffectId::minecraft("poison")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**RaidOmen**](#variable-raidomen)   = `EffectId::minecraft("raid\_omen")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Regeneration**](#variable-regeneration)   = `EffectId::minecraft("regeneration")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Resistance**](#variable-resistance)   = `EffectId::minecraft("resistance")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Saturation**](#variable-saturation)   = `EffectId::minecraft("saturation")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SlowFalling**](#variable-slowfalling)   = `EffectId::minecraft("slow\_falling")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Slowness**](#variable-slowness)   = `EffectId::minecraft("slowness")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Speed**](#variable-speed)   = `EffectId::minecraft("speed")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Strength**](#variable-strength)   = `EffectId::minecraft("strength")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TrialOmen**](#variable-trialomen)   = `EffectId::minecraft("trial\_omen")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WaterBreathing**](#variable-waterbreathing)   = `EffectId::minecraft("water\_breathing")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Weakness**](#variable-weakness)   = `EffectId::minecraft("weakness")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Weaving**](#variable-weaving)   = `EffectId::minecraft("weaving")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WindCharged**](#variable-windcharged)   = `EffectId::minecraft("wind\_charged")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Wither**](#variable-wither)   = `EffectId::minecraft("wither")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Absorption**](#variable-absorption)   = `EffectId::minecraft("absorption")`<br>_Increases the maximum health of an entity with health that cannot be regenerated, but is refilled every 30 seconds._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**BadOmen**](#variable-badomen)   = `EffectId::minecraft("bad\_omen")`<br>_Triggers an ominous event when the player enters a village or trial chambers._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Blindness**](#variable-blindness)   = `EffectId::minecraft("blindness")`<br>_Blinds an entity._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**BreathOfTheNautilus**](#variable-breathofthenautilus)   = `EffectId::minecraft("breath\_of\_the\_nautilus")`<br>_Prevents the rider's oxygen bar from depleting while riding a nautilus or zombie nautilus._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ConduitPower**](#variable-conduitpower)   = `EffectId::minecraft("conduit\_power")`<br>_Effects granted by a nearby conduit._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Darkness**](#variable-darkness)   = `EffectId::minecraft("darkness")`<br>_Causes the player's vision to dim occasionally._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FatalPoison**](#variable-fatalpoison)   = `EffectId::minecraft("fatal\_poison")`<br>_Inflicts damage to the entity over time, and can kill both undead and non-undead mobs, similar to Wither._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FireResistance**](#variable-fireresistance)   = `EffectId::minecraft("fire\_resistance")`<br>_Stops fire damage._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Haste**](#variable-haste)   = `EffectId::minecraft("haste")`<br>_Increases dig speed._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**HealthBoost**](#variable-healthboost)   = `EffectId::minecraft("health\_boost")`<br>_Increases the maximum health of an entity._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**HeroOfTheVillage**](#variable-heroofthevillage)   = `EffectId::minecraft("hero\_of\_the\_village")`<br>_Reduces the cost of villager trades._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Hunger**](#variable-hunger)   = `EffectId::minecraft("hunger")`<br>_Increases hunger._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Infested**](#variable-infested)   = `EffectId::minecraft("infested")`<br>_Chance of spawning silverfish when hurt._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**InstantDamage**](#variable-instantdamage)   = `EffectId::minecraft("instant\_damage")`<br>_Hurts an entity._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**InstantHealth**](#variable-instanthealth)   = `EffectId::minecraft("instant\_health")`<br>_Heals an entity._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Invisibility**](#variable-invisibility)   = `EffectId::minecraft("invisibility")`<br>_Grants invisibility._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**JumpBoost**](#variable-jumpboost)   = `EffectId::minecraft("jump\_boost")`<br>_Increases jump height._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Levitation**](#variable-levitation)   = `EffectId::minecraft("levitation")`<br>_Causes the entity to float into the air._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**MiningFatigue**](#variable-miningfatigue)   = `EffectId::minecraft("mining\_fatigue")`<br>_Decreases dig speed._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Nausea**](#variable-nausea)   = `EffectId::minecraft("nausea")`<br>_Warps vision on the client._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**NightVision**](#variable-nightvision)   = `EffectId::minecraft("night\_vision")`<br>_Allows an entity to see in the dark._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Oozing**](#variable-oozing)   = `EffectId::minecraft("oozing")`<br>_Causes slimes to spawn upon death._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Poison**](#variable-poison)   = `EffectId::minecraft("poison")`<br>_Deals damage to an entity over time._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**RaidOmen**](#variable-raidomen)   = `EffectId::minecraft("raid\_omen")`<br>_Triggers a raid when a player enters a village._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Regeneration**](#variable-regeneration)   = `EffectId::minecraft("regeneration")`<br>_Regenerates health._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Resistance**](#variable-resistance)   = `EffectId::minecraft("resistance")`<br>_Decreases damage dealt to an entity._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Saturation**](#variable-saturation)   = `EffectId::minecraft("saturation")`<br>_Increases the food level of an entity each tick._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SlowFalling**](#variable-slowfalling)   = `EffectId::minecraft("slow\_falling")`<br>_Slows entity fall rate._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Slowness**](#variable-slowness)   = `EffectId::minecraft("slowness")`<br>_Decreases movement speed._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Speed**](#variable-speed)   = `EffectId::minecraft("speed")`<br>_Increases movement speed._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Strength**](#variable-strength)   = `EffectId::minecraft("strength")`<br>_Increases damage dealt._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TrialOmen**](#variable-trialomen)   = `EffectId::minecraft("trial\_omen")`<br>_Causes trial spawners to become ominous._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WaterBreathing**](#variable-waterbreathing)   = `EffectId::minecraft("water\_breathing")`<br>_Allows breathing underwater._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Weakness**](#variable-weakness)   = `EffectId::minecraft("weakness")`<br>_Decreases damage dealt by an entity._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Weaving**](#variable-weaving)   = `EffectId::minecraft("weaving")`<br>_Creates cobwebs upon death._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WindCharged**](#variable-windcharged)   = `EffectId::minecraft("wind\_charged")`<br>_Emits a wind burst upon death._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Wither**](#variable-wither)   = `EffectId::minecraft("wither")`<br>_Deals damage to an entity over time and gives the health to the shooter._  |
 
 
 
@@ -124,16 +124,13 @@ _All effect types._
 
 ### variable Absorption 
 
+_Increases the maximum health of an entity with health that cannot be regenerated, but is refilled every 30 seconds._ 
 ```C++
 constexpr auto endstone::EffectType::Absorption;
 ```
 
 
 
-Increases the maximum health of an entity with health that cannot be regenerated, but is refilled every 30 seconds. 
-
-
-        
 
 <hr>
 
@@ -141,13 +138,14 @@ Increases the maximum health of an entity with health that cannot be regenerated
 
 ### variable BadOmen 
 
+_Triggers an ominous event when the player enters a village or trial chambers._ 
 ```C++
 constexpr auto endstone::EffectType::BadOmen;
 ```
 
 
 
-Triggers an ominous event when the player enters a village or trial chambers.
+
  oof. 
 
 
@@ -159,16 +157,13 @@ Triggers an ominous event when the player enters a village or trial chambers.
 
 ### variable Blindness 
 
+_Blinds an entity._ 
 ```C++
 constexpr auto endstone::EffectType::Blindness;
 ```
 
 
 
-Blinds an entity. 
-
-
-        
 
 <hr>
 
@@ -176,16 +171,13 @@ Blinds an entity.
 
 ### variable BreathOfTheNautilus 
 
+_Prevents the rider's oxygen bar from depleting while riding a nautilus or zombie nautilus._ 
 ```C++
 constexpr auto endstone::EffectType::BreathOfTheNautilus;
 ```
 
 
 
-Prevents the rider's oxygen bar from depleting while riding a nautilus or zombie nautilus. 
-
-
-        
 
 <hr>
 
@@ -193,13 +185,14 @@ Prevents the rider's oxygen bar from depleting while riding a nautilus or zombie
 
 ### variable ConduitPower 
 
+_Effects granted by a nearby conduit._ 
 ```C++
 constexpr auto endstone::EffectType::ConduitPower;
 ```
 
 
 
-Effects granted by a nearby conduit. Includes enhanced underwater abilities. 
+Includes enhanced underwater abilities. 
 
 
         
@@ -210,16 +203,13 @@ Effects granted by a nearby conduit. Includes enhanced underwater abilities.
 
 ### variable Darkness 
 
+_Causes the player's vision to dim occasionally._ 
 ```C++
 constexpr auto endstone::EffectType::Darkness;
 ```
 
 
 
-Causes the player's vision to dim occasionally. 
-
-
-        
 
 <hr>
 
@@ -227,16 +217,13 @@ Causes the player's vision to dim occasionally.
 
 ### variable FatalPoison 
 
+_Inflicts damage to the entity over time, and can kill both undead and non-undead mobs, similar to Wither._ 
 ```C++
 constexpr auto endstone::EffectType::FatalPoison;
 ```
 
 
 
-Inflicts damage to the entity over time, and can kill both undead and non-undead mobs, similar to Wither 
-
-
-        
 
 <hr>
 
@@ -244,16 +231,13 @@ Inflicts damage to the entity over time, and can kill both undead and non-undead
 
 ### variable FireResistance 
 
+_Stops fire damage._ 
 ```C++
 constexpr auto endstone::EffectType::FireResistance;
 ```
 
 
 
-Stops fire damage. 
-
-
-        
 
 <hr>
 
@@ -261,16 +245,13 @@ Stops fire damage.
 
 ### variable Haste 
 
+_Increases dig speed._ 
 ```C++
 constexpr auto endstone::EffectType::Haste;
 ```
 
 
 
-Increases dig speed. 
-
-
-        
 
 <hr>
 
@@ -278,16 +259,13 @@ Increases dig speed.
 
 ### variable HealthBoost 
 
+_Increases the maximum health of an entity._ 
 ```C++
 constexpr auto endstone::EffectType::HealthBoost;
 ```
 
 
 
-Increases the maximum health of an entity. 
-
-
-        
 
 <hr>
 
@@ -295,13 +273,14 @@ Increases the maximum health of an entity.
 
 ### variable HeroOfTheVillage 
 
+_Reduces the cost of villager trades._ 
 ```C++
 constexpr auto endstone::EffectType::HeroOfTheVillage;
 ```
 
 
 
-Reduces the cost of villager trades.
+
  \o/. 
 
 
@@ -313,16 +292,13 @@ Reduces the cost of villager trades.
 
 ### variable Hunger 
 
+_Increases hunger._ 
 ```C++
 constexpr auto endstone::EffectType::Hunger;
 ```
 
 
 
-Increases hunger. 
-
-
-        
 
 <hr>
 
@@ -330,16 +306,13 @@ Increases hunger.
 
 ### variable Infested 
 
+_Chance of spawning silverfish when hurt._ 
 ```C++
 constexpr auto endstone::EffectType::Infested;
 ```
 
 
 
-Chance of spawning silverfish when hurt. 
-
-
-        
 
 <hr>
 
@@ -347,16 +320,13 @@ Chance of spawning silverfish when hurt.
 
 ### variable InstantDamage 
 
+_Hurts an entity._ 
 ```C++
 constexpr auto endstone::EffectType::InstantDamage;
 ```
 
 
 
-Hurts an entity. 
-
-
-        
 
 <hr>
 
@@ -364,16 +334,13 @@ Hurts an entity.
 
 ### variable InstantHealth 
 
+_Heals an entity._ 
 ```C++
 constexpr auto endstone::EffectType::InstantHealth;
 ```
 
 
 
-Heals an entity. 
-
-
-        
 
 <hr>
 
@@ -381,16 +348,13 @@ Heals an entity.
 
 ### variable Invisibility 
 
+_Grants invisibility._ 
 ```C++
 constexpr auto endstone::EffectType::Invisibility;
 ```
 
 
 
-Grants invisibility. 
-
-
-        
 
 <hr>
 
@@ -398,16 +362,13 @@ Grants invisibility.
 
 ### variable JumpBoost 
 
+_Increases jump height._ 
 ```C++
 constexpr auto endstone::EffectType::JumpBoost;
 ```
 
 
 
-Increases jump height. 
-
-
-        
 
 <hr>
 
@@ -415,16 +376,13 @@ Increases jump height.
 
 ### variable Levitation 
 
+_Causes the entity to float into the air._ 
 ```C++
 constexpr auto endstone::EffectType::Levitation;
 ```
 
 
 
-Causes the entity to float into the air. 
-
-
-        
 
 <hr>
 
@@ -432,16 +390,13 @@ Causes the entity to float into the air.
 
 ### variable MiningFatigue 
 
+_Decreases dig speed._ 
 ```C++
 constexpr auto endstone::EffectType::MiningFatigue;
 ```
 
 
 
-Decreases dig speed. 
-
-
-        
 
 <hr>
 
@@ -449,16 +404,13 @@ Decreases dig speed.
 
 ### variable Nausea 
 
+_Warps vision on the client._ 
 ```C++
 constexpr auto endstone::EffectType::Nausea;
 ```
 
 
 
-Warps vision on the client. 
-
-
-        
 
 <hr>
 
@@ -466,16 +418,13 @@ Warps vision on the client.
 
 ### variable NightVision 
 
+_Allows an entity to see in the dark._ 
 ```C++
 constexpr auto endstone::EffectType::NightVision;
 ```
 
 
 
-Allows an entity to see in the dark. 
-
-
-        
 
 <hr>
 
@@ -483,16 +432,13 @@ Allows an entity to see in the dark.
 
 ### variable Oozing 
 
+_Causes slimes to spawn upon death._ 
 ```C++
 constexpr auto endstone::EffectType::Oozing;
 ```
 
 
 
-Causes slimes to spawn upon death. 
-
-
-        
 
 <hr>
 
@@ -500,16 +446,13 @@ Causes slimes to spawn upon death.
 
 ### variable Poison 
 
+_Deals damage to an entity over time._ 
 ```C++
 constexpr auto endstone::EffectType::Poison;
 ```
 
 
 
-Deals damage to an entity over time. 
-
-
-        
 
 <hr>
 
@@ -517,16 +460,13 @@ Deals damage to an entity over time.
 
 ### variable RaidOmen 
 
+_Triggers a raid when a player enters a village._ 
 ```C++
 constexpr auto endstone::EffectType::RaidOmen;
 ```
 
 
 
-Triggers a raid when a player enters a village. 
-
-
-        
 
 <hr>
 
@@ -534,16 +474,13 @@ Triggers a raid when a player enters a village.
 
 ### variable Regeneration 
 
+_Regenerates health._ 
 ```C++
 constexpr auto endstone::EffectType::Regeneration;
 ```
 
 
 
-Regenerates health. 
-
-
-        
 
 <hr>
 
@@ -551,16 +488,13 @@ Regenerates health.
 
 ### variable Resistance 
 
+_Decreases damage dealt to an entity._ 
 ```C++
 constexpr auto endstone::EffectType::Resistance;
 ```
 
 
 
-Decreases damage dealt to an entity. 
-
-
-        
 
 <hr>
 
@@ -568,16 +502,13 @@ Decreases damage dealt to an entity.
 
 ### variable Saturation 
 
+_Increases the food level of an entity each tick._ 
 ```C++
 constexpr auto endstone::EffectType::Saturation;
 ```
 
 
 
-Increases the food level of an entity each tick. 
-
-
-        
 
 <hr>
 
@@ -585,16 +516,13 @@ Increases the food level of an entity each tick.
 
 ### variable SlowFalling 
 
+_Slows entity fall rate._ 
 ```C++
 constexpr auto endstone::EffectType::SlowFalling;
 ```
 
 
 
-Slows entity fall rate. 
-
-
-        
 
 <hr>
 
@@ -602,16 +530,13 @@ Slows entity fall rate.
 
 ### variable Slowness 
 
+_Decreases movement speed._ 
 ```C++
 constexpr auto endstone::EffectType::Slowness;
 ```
 
 
 
-Decreases movement speed. 
-
-
-        
 
 <hr>
 
@@ -619,16 +544,13 @@ Decreases movement speed.
 
 ### variable Speed 
 
+_Increases movement speed._ 
 ```C++
 constexpr auto endstone::EffectType::Speed;
 ```
 
 
 
-Increases movement speed. 
-
-
-        
 
 <hr>
 
@@ -636,16 +558,13 @@ Increases movement speed.
 
 ### variable Strength 
 
+_Increases damage dealt._ 
 ```C++
 constexpr auto endstone::EffectType::Strength;
 ```
 
 
 
-Increases damage dealt. 
-
-
-        
 
 <hr>
 
@@ -653,16 +572,13 @@ Increases damage dealt.
 
 ### variable TrialOmen 
 
+_Causes trial spawners to become ominous._ 
 ```C++
 constexpr auto endstone::EffectType::TrialOmen;
 ```
 
 
 
-Causes trial spawners to become ominous. 
-
-
-        
 
 <hr>
 
@@ -670,16 +586,13 @@ Causes trial spawners to become ominous.
 
 ### variable WaterBreathing 
 
+_Allows breathing underwater._ 
 ```C++
 constexpr auto endstone::EffectType::WaterBreathing;
 ```
 
 
 
-Allows breathing underwater. 
-
-
-        
 
 <hr>
 
@@ -687,16 +600,13 @@ Allows breathing underwater.
 
 ### variable Weakness 
 
+_Decreases damage dealt by an entity._ 
 ```C++
 constexpr auto endstone::EffectType::Weakness;
 ```
 
 
 
-Decreases damage dealt by an entity. 
-
-
-        
 
 <hr>
 
@@ -704,16 +614,13 @@ Decreases damage dealt by an entity.
 
 ### variable Weaving 
 
+_Creates cobwebs upon death._ 
 ```C++
 constexpr auto endstone::EffectType::Weaving;
 ```
 
 
 
-Creates cobwebs upon death. 
-
-
-        
 
 <hr>
 
@@ -721,16 +628,13 @@ Creates cobwebs upon death.
 
 ### variable WindCharged 
 
+_Emits a wind burst upon death._ 
 ```C++
 constexpr auto endstone::EffectType::WindCharged;
 ```
 
 
 
-Emits a wind burst upon death. 
-
-
-        
 
 <hr>
 
@@ -738,16 +642,13 @@ Emits a wind burst upon death.
 
 ### variable Wither 
 
+_Deals damage to an entity over time and gives the health to the shooter._ 
 ```C++
 constexpr auto endstone::EffectType::Wither;
 ```
 
 
 
-Deals damage to an entity over time and gives the health to the shooter. 
-
-
-        
 
 <hr>
 

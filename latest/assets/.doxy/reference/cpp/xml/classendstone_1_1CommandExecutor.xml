@@ -38,9 +38,9 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Executes the given command, returning its success. </para>
         </briefdescription>
         <detaileddescription>
-<para>Executes the given command, returning its success.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>sender</parametername>

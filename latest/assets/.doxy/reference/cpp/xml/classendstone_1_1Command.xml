@@ -160,9 +160,9 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Executes the command, returning its success. </para>
         </briefdescription>
         <detaileddescription>
-<para>Executes the command, returning its success</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>sender</parametername>
@@ -195,9 +195,9 @@
         <name>getName</name>
         <qualifiedname>endstone::Command::getName</qualifiedname>
         <briefdescription>
+<para>Returns the name of this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the name of this command</para>
 <para><simplesect kind="return"><para>Name of this command </para>
 </simplesect>
 </para>
@@ -217,9 +217,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>Sets the name of this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the name of this command.</para>
 <para>May only be used before registering the command.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -243,9 +243,9 @@
         <name>getDescription</name>
         <qualifiedname>endstone::Command::getDescription</qualifiedname>
         <briefdescription>
+<para>Gets a brief description of this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets a brief description of this command</para>
 <para><simplesect kind="return"><para>Description of this command </para>
 </simplesect>
 </para>
@@ -265,9 +265,9 @@
           <declname>description</declname>
         </param>
         <briefdescription>
+<para>Sets a brief description of this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets a brief description of this command.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>description</parametername>
@@ -290,9 +290,9 @@
         <name>getAliases</name>
         <qualifiedname>endstone::Command::getAliases</qualifiedname>
         <briefdescription>
+<para>Returns a list of aliases of this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a list of aliases of this command</para>
 <para><simplesect kind="return"><para>List of aliases </para>
 </simplesect>
 </para>
@@ -319,9 +319,9 @@
           <declname>aliases</declname>
         </param>
         <briefdescription>
+<para>Sets the list of aliases to request on registration for this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the list of aliases to request on registration for this command.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>aliases</parametername>
@@ -344,9 +344,9 @@
         <name>getUsages</name>
         <qualifiedname>endstone::Command::getUsages</qualifiedname>
         <briefdescription>
+<para>Returns a list of usages of this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns a list of usages of this command</para>
 <para><simplesect kind="return"><para>List of usages </para>
 </simplesect>
 </para>
@@ -373,9 +373,9 @@
           <declname>usages</declname>
         </param>
         <briefdescription>
+<para>Sets the usages of this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the usages of this command</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>usages</parametername>
@@ -398,9 +398,9 @@
         <name>getPermissions</name>
         <qualifiedname>endstone::Command::getPermissions</qualifiedname>
         <briefdescription>
+<para>Gets the permissions required by users to be able to perform this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the permissions required by users to be able to perform this command</para>
 <para><simplesect kind="return"><para>List of permission names, or empty if none </para>
 </simplesect>
 </para>
@@ -427,9 +427,9 @@
           <declname>permissions</declname>
         </param>
         <briefdescription>
+<para>Sets the permissions required by users to be able to perform this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the permissions required by users to be able to perform this command</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>permissions</parametername>
@@ -456,9 +456,10 @@
           <declname>target</declname>
         </param>
         <briefdescription>
+<para>Tests the given <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> to see if they can perform this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tests the given <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> to see if they can perform this command. If they do not have permission, they will be informed that they cannot do this.</para>
+<para>If they do not have permission, they will be informed that they cannot do this.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>target</parametername>
@@ -487,9 +488,10 @@
           <declname>target</declname>
         </param>
         <briefdescription>
+<para>Tests the given <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> to see if they can perform this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Tests the given <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> to see if they can perform this command. No error is sent to the sender.</para>
+<para>No error is sent to the sender.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>target</parametername>
@@ -518,9 +520,9 @@
           <declname>command_map</declname>
         </param>
         <briefdescription>
+<para>Registers this command to a <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Registers this command to a <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref>.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>command_map</parametername>
@@ -549,9 +551,9 @@
           <declname>command_map</declname>
         </param>
         <briefdescription>
+<para>Unregisters this command from a <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Unregisters this command from a <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref></para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>command_map</parametername>
@@ -576,9 +578,9 @@
         <name>isRegistered</name>
         <qualifiedname>endstone::Command::isRegistered</qualifiedname>
         <briefdescription>
+<para>Returns the current registered state of this command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the current registered state of this command</para>
 <para><simplesect kind="return"><para>true if this command is currently registered false otherwise </para>
 </simplesect>
 </para>

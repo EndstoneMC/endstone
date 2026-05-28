@@ -2816,7 +2816,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-drawimage"><strong>drawImage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> y, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Image/"><strong>Image</strong></a> &amp; image) = 0<br><em>Draw an image to the map. The image will be clipped if necessary.</em></td>
+<td style="text-align: left;"><a href="#function-drawimage"><strong>drawImage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> y, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Image/"><strong>Image</strong></a> &amp; image) = 0<br><em>Draw an image to the map.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::uint32_t</td>
@@ -2865,13 +2865,14 @@ For latest updates join the chat on
 <p>Each canvas is associated with a specific <a href="../classendstone_1_1MapRenderer/"><strong>MapRenderer</strong></a> and represents that renderer's layer on the map. </p>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-drawimage">function drawImage<a class="headerlink" href="#function-drawimage" title="Permanent link">&para;</a></h3>
-<p><em>Draw an image to the map. The image will be clipped if necessary.</em> 
+<p><em>Draw an image to the map.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapCanvas</span><span class="o">::</span><span class="n">drawImage</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Image</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">image</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
+<p>The image will be clipped if necessary.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>x</code> The x coordinate of the image. </li>
@@ -2917,7 +2918,7 @@ For latest updates join the chat on
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">MapCursor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MapCanvas</span><span class="o">::</span><span class="n">getCursors</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>The MapCursorCollection associated with this canvas. </p>
+<p>The cursors associated with this canvas. </p>
 <hr>
 
 <h3 id="function-getmapview">function getMapView<a class="headerlink" href="#function-getmapview" title="Permanent link">&para;</a></h3>
@@ -2968,7 +2969,7 @@ For latest updates join the chat on
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>cursors</code> The MapCursorCollection to associate with this canvas. </li>
+<li><code>cursors</code> The cursors to associate with this canvas. </li>
 </ul>
 <hr>
 

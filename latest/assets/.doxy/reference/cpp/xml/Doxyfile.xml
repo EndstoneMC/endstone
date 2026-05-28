@@ -34,7 +34,7 @@
     <value><![CDATA[include/]]></value>
   </option>
   <option  id='SHORT_NAMES' default='yes' type='bool'><value>NO</value></option>
-  <option  id='JAVADOC_AUTOBRIEF' default='yes' type='bool'><value>NO</value></option>
+  <option  id='JAVADOC_AUTOBRIEF' default='no' type='bool'><value>YES</value></option>
   <option  id='JAVADOC_BANNER' default='yes' type='bool'><value>NO</value></option>
   <option  id='QT_AUTOBRIEF' default='yes' type='bool'><value>NO</value></option>
   <option  id='MULTILINE_CPP_IS_BRIEF' default='yes' type='bool'><value>NO</value></option>

@@ -95,7 +95,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md)) <br> |
 |   | [**ThunderChangeEvent**](#function-thunderchangeevent) ([**Level**](classendstone_1_1Level.md) & level, [**bool**](classendstone_1_1Identifier.md) to) <br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**toThunderState**](#function-tothunderstate) () const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**toThunderState**](#function-tothunderstate) () const<br>_Gets the state of thunder that the world is being set to._  |
 |   | [**~ThunderChangeEvent**](#function-thunderchangeevent) () override<br> |
 
 
@@ -105,9 +105,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -238,13 +238,11 @@ inline endstone::ThunderChangeEvent::ThunderChangeEvent (
 
 ### function toThunderState 
 
+_Gets the state of thunder that the world is being set to._ 
 ```C++
 inline bool endstone::ThunderChangeEvent::toThunderState () const
 ```
 
-
-
-Gets the state of thunder that the world is being set to
 
 
 

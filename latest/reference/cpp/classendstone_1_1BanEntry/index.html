@@ -2899,7 +2899,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setexpiration"><strong>setExpiration</strong></a> (std::optional&lt; Date &gt; expiration) <br><em>Sets the date this ban expires on. std::nullopt values are considered "infinite" bans.</em></td>
+<td style="text-align: left;"><a href="#function-setexpiration"><strong>setExpiration</strong></a> (std::optional&lt; Date &gt; expiration) <br><em>Sets the date this ban expires on.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -2968,11 +2968,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setexpiration">function setExpiration<a class="headerlink" href="#function-setexpiration" title="Permanent link">&para;</a></h3>
-<p><em>Sets the date this ban expires on. std::nullopt values are considered "infinite" bans.</em> 
+<p><em>Sets the date this ban expires on.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">setExpiration</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">expiration</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
+<p>std::nullopt values are considered "infinite" bans.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>expiration</code> the new expiration date, or std::nullopt to indicate an infinite ban </li>

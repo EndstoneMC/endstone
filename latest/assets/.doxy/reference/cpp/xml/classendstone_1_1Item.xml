@@ -199,7 +199,7 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Represents a base actor in the level. </para>
+<para>Represents a dropped item that can be picked up by players. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>

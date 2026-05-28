@@ -2640,6 +2640,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#detailed-description" class="md-nav__link">
+      <span class="md-ellipsis">
+        Detailed Description
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2756,7 +2767,7 @@ For latest updates join the chat on
 
 <h1 id="class-endstonemob">Class endstone::Mob<a class="headerlink" href="#class-endstonemob" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>Mob</strong></a></p>
-<p><em>Represents a mobile entity (i.e. living entity), such as a monster or player.</em> </p>
+<p><em>Represents a mobile entity (i.e.</em> <a href="#detailed-description">More...</a></p>
 <ul>
 <li><code>#include &lt;endstone/actor/mob.h&gt;</code></li>
 </ul>
@@ -2785,7 +2796,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-sethealth"><strong>setHealth</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> health) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-sethealth"><strong>setHealth</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> health) const = 0<br><em>Sets the entity's health from 0 to its possible value, where 0 is dead.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -2809,7 +2820,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getdimension"><strong>getDimension</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getdimension"><strong>getDimension</strong></a> () const = 0<br><em>Gets the current</em> <a href="../classendstone_1_1Dimension/"><em><strong>Dimension</strong></em></a> <em>this actor resides in.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::int64_t</td>
@@ -2817,11 +2828,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Level/"><strong>Level</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getlevel"><strong>getLevel</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getlevel"><strong>getLevel</strong></a> () const = 0<br><em>Gets the current</em> <a href="../classendstone_1_1Level/"><em><strong>Level</strong></em></a> <em>this actor resides in.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Location/"><strong>Location</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getlocation"><strong>getLocation</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getlocation"><strong>getLocation</strong></a> () const = 0<br><em>Gets the actor's current position.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
@@ -2829,7 +2840,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::uint64_t</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getruntimeid"><strong>getRuntimeId</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getruntimeid"><strong>getRuntimeId</strong></a> () const = 0<br><em>Returns the runtime id for this actor.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
@@ -2845,7 +2856,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getvelocity"><strong>getVelocity</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-getvelocity"><strong>getVelocity</strong></a> () const = 0<br><em>Gets this actor's current velocity.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -2853,11 +2864,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-isinlava"><strong>isInLava</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-isinlava"><strong>isInLava</strong></a> () const = 0<br><em>Returns true if the actor is in lava.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-isinwater"><strong>isInWater</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-isinwater"><strong>isInWater</strong></a> () const = 0<br><em>Returns true if the actor is in water.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -2869,15 +2880,15 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-isonground"><strong>isOnGround</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-isonground"><strong>isOnGround</strong></a> () const = 0<br><em>Returns true if the actor is supported by a block.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-isvalid"><strong>isValid</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-isvalid"><strong>isValid</strong></a> () const = 0<br><em>Returns false if the entity has died, been despawned for some other reason, or has not been added to the level.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-remove"><strong>remove</strong></a> () = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-remove"><strong>remove</strong></a> () = 0<br><em>Remove this actor from the level.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -2897,7 +2908,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-setrotation"><strong>setRotation</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>float</strong></a> yaw, <a href="../classendstone_1_1Identifier/"><strong>float</strong></a> pitch) = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-setrotation"><strong>setRotation</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>float</strong></a> yaw, <a href="../classendstone_1_1Identifier/"><strong>float</strong></a> pitch) = 0<br><em>Sets the actor's rotation.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -2905,11 +2916,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-teleport-12"><strong>teleport</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp; location) = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-teleport-12"><strong>teleport</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp; location) = 0<br><em>Teleports this actor to the given location.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-teleport-22"><strong>teleport</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &amp; target) = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Actor/#function-teleport-22"><strong>teleport</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &amp; target) = 0<br><em>Teleports this actor to the target</em> <a href="../classendstone_1_1Actor/"><em><strong>Actor</strong></em></a> <em>.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2977,11 +2988,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-haspermission-12"><strong>hasPermission</strong></a> (std::string name) const = 0<br><em>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-haspermission-12"><strong>hasPermission</strong></a> (std::string name) const = 0<br><em>Gets the value of the specified permission, if set.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-haspermission-22"><strong>hasPermission</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) const = 0<br><em>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-haspermission-22"><strong>hasPermission</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Permission/"><strong>Permission</strong></a> &amp; perm) const = 0<br><em>Gets the value of the specified permission, if set.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -2993,7 +3004,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-recalculatepermissions"><strong>recalculatePermissions</strong></a> () = 0<br><em>Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-recalculatepermissions"><strong>recalculatePermissions</strong></a> () = 0<br><em>Recalculates the permissions for this object, if the attachments have changed values.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -3037,6 +3048,8 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
+<h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
+<p>living entity), such as a monster or player. </p>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-gethealth">function getHealth<a class="headerlink" href="#function-gethealth" title="Permanent link">&para;</a></h3>
 <p><em>Gets the entity's health from 0 to its max possible value, where 0 is dead.</em> 
@@ -3063,11 +3076,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-sethealth">function setHealth<a class="headerlink" href="#function-sethealth" title="Permanent link">&para;</a></h3>
+<p><em>Sets the entity's health from 0 to its possible value, where 0 is dead.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Mob</span><span class="o">::</span><span class="n">setHealth</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">health</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Sets the entity's health from 0 to its possible value, where 0 is dead.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>health</code> New health represented from 0 to max </li>

@@ -30,7 +30,7 @@
         <detaileddescription>
 <para><simplesect kind="note"><para>Names are no longer unique past a single game session. For persistent storage it is recommended that you use <ref refid="classendstone_1_1OfflinePlayer_1aa1c48a8a74d2fcb7eefc8892f032ab99" kindref="member">getUniqueId()</ref> instead.</para>
 </simplesect>
-<simplesect kind="return"><para><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> name or null if we have not seen a name for this player yet </para>
+<simplesect kind="return"><para><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> name, or an empty string if we have not seen a name for this player yet. </para>
 </simplesect>
 </para>
         </detaileddescription>

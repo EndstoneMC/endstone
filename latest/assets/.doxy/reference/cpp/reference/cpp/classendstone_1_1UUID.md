@@ -8,7 +8,7 @@
 
 
 
-_Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)_[More...](#detailed-description)
+_Implementation of Universally Unique_ [_**Identifier**_](classendstone_1_1Identifier.md) _(_[_**UUID**_](classendstone_1_1UUID.md) _)._[More...](#detailed-description)
 
 * `#include <endstone/util/uuid.h>`
 

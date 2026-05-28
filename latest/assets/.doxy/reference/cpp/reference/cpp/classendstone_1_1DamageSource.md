@@ -106,7 +106,7 @@ Not to be confused with [**DamageSource::getDamagingActor()**](classendstone_1_1
 
 **Returns:**
 
-an [**Actor**](classendstone_1_1Actor.md) or null 
+an [**Actor**](classendstone_1_1Actor.md), or nullptr if none. 
 
 
 
@@ -134,7 +134,7 @@ Not to be confused with [**DamageSource::getActor()**](classendstone_1_1DamageSo
 
 **Returns:**
 
-an [**Actor**](classendstone_1_1Actor.md) or null 
+an [**Actor**](classendstone_1_1Actor.md), or nullptr if none. 
 
 
 

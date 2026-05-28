@@ -344,7 +344,7 @@
         <enumvalue id="namespaceendstone_1a3d4c6e783e6c22f3e7b6d872099c4734ae41480b6bbfbf7407974a88d3d34f4fa" prot="public">
           <name>Solid</name>
           <briefdescription>
-<para>Makes the boss bar solid (no segments) </para>
+<para>Makes the boss bar solid (no segments). </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -396,25 +396,26 @@
         <enumvalue id="namespaceendstone_1a5415420c66b97075d7306679e05c931aa3682d1665cf331373000c20680732d3a" prot="public">
           <name>Deny</name>
           <briefdescription>
+<para>Deny the event. </para>
           </briefdescription>
           <detaileddescription>
-<para>Deny the event. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="namespaceendstone_1a5415420c66b97075d7306679e05c931aa7a1920d61156abc05a60135aefe8bc67" prot="public">
           <name>Default</name>
           <briefdescription>
+<para>Neither deny nor allow the event. </para>
           </briefdescription>
           <detaileddescription>
-<para>Neither deny nor allow the event. The server will proceed with its normal handling. </para>
+<para>The server will proceed with its normal handling. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="namespaceendstone_1a5415420c66b97075d7306679e05c931aa45f0fb72a0defdfdb01de4b5a5a6876b" prot="public">
           <name>Allow</name>
           <briefdescription>
+<para>Allow / Force the event. </para>
           </briefdescription>
           <detaileddescription>
-<para>Allow / Force the event. </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
@@ -433,54 +434,55 @@
           <name>Lowest</name>
           <initializer>= 0</initializer>
           <briefdescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is of very low importance and should be run first, to allow other plugins to further customise the outcome. </para>
           </briefdescription>
           <detaileddescription>
-<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is of very low importance and should be run first, to allow other plugins to further customise the outcome </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a28d0edd045e05cf5af64e35ae0c4c6ef" prot="public">
           <name>Low</name>
           <initializer>= 1</initializer>
           <briefdescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is of low importance. </para>
           </briefdescription>
           <detaileddescription>
-<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is of low importance </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a960b44c579bc2f6818d2daaf9e4c16f0" prot="public">
           <name>Normal</name>
           <initializer>= 2</initializer>
           <briefdescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is neither important nor unimportant, and may be run normally. </para>
           </briefdescription>
           <detaileddescription>
-<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is neither important nor unimportant, and may be run normally </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a655d20c1ca69519ca647684edbb2db35" prot="public">
           <name>High</name>
           <initializer>= 3</initializer>
           <briefdescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is of high importance. </para>
           </briefdescription>
           <detaileddescription>
-<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is of high importance </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342a582996407922dab08d5cf2b3d2a7c1c9" prot="public">
           <name>Highest</name>
           <initializer>= 4</initializer>
           <briefdescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is critical and must have the final say in what happens to the event. </para>
           </briefdescription>
           <detaileddescription>
-<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> call is critical and must have the final say in what happens to the event </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="namespaceendstone_1acf7f444050737b9ee9b7084c0ff5b342ad2986ac8cb6bd55892099c1ffd6b1f6f" prot="public">
           <name>Monitor</name>
           <initializer>= 5</initializer>
           <briefdescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> is listened to purely for monitoring the outcome of an event. </para>
           </briefdescription>
           <detaileddescription>
-<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> is listened to purely for monitoring the outcome of an event. No modifications to the event should be made under this priority </para>
+<para>No modifications to the event should be made under this priority. </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
@@ -501,36 +503,37 @@
           <name>Survival</name>
           <initializer>= 0</initializer>
           <briefdescription>
+<para>Survival mode is the &quot;normal&quot; gameplay type, with no special features. </para>
           </briefdescription>
           <detaileddescription>
-<para>Survival mode is the &quot;normal&quot; gameplay type, with no special features. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa047c6bd032387e5c84e1e718f58f7e5a" prot="public">
           <name>Creative</name>
           <initializer>= 1</initializer>
           <briefdescription>
+<para>Creative mode may fly, build instantly, become invulnerable and create free items. </para>
           </briefdescription>
           <detaileddescription>
-<para>Creative mode may fly, build instantly, become invulnerable and create free items. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aadc1d2a4d591857f0a0dd38b4ebcf5a72" prot="public">
           <name>Adventure</name>
           <initializer>= 2</initializer>
           <briefdescription>
+<para>Adventure mode cannot break blocks without the correct tools. </para>
           </briefdescription>
           <detaileddescription>
-<para>Adventure mode cannot break blocks without the correct tools. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="namespaceendstone_1a3185831693a75ff4595095c0fe568c2aa38721bd8d7c0aa7e0e6999ae0c2cc98d" prot="public">
           <name>Spectator</name>
           <initializer>= 3</initializer>
           <briefdescription>
+<para>Spectator mode cannot interact with the world in anyway and is invisible to normal players. </para>
           </briefdescription>
           <detaileddescription>
-<para>Spectator mode cannot interact with the world in anyway and is invisible to normal players. This grants the player the ability to no-clip through the world. </para>
+<para>This grants the player the ability to no-clip through the world. </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
@@ -697,17 +700,17 @@
         <enumvalue id="namespaceendstone_1acbd28364660dc397ef62ea1902defe6ba13e685964c2548aa748f7ea263bad4e5" prot="public">
           <name>Startup</name>
           <briefdescription>
+<para>Indicates that the plugin will be loaded at startup. </para>
           </briefdescription>
           <detaileddescription>
-<para>Indicates that the plugin will be loaded at startup </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="namespaceendstone_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" prot="public">
           <name>PostWorld</name>
           <briefdescription>
+<para>Indicates that the plugin will be loaded after the default level has been created. </para>
           </briefdescription>
           <detaileddescription>
-<para>Indicates that the plugin will be loaded after the first/default world was created </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
@@ -717,7 +720,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin_load_order.h" line="22" column="1" bodyfile="include/endstone/plugin/plugin_load_order.h" bodystart="22" bodyend="32"/>
+        <location file="include/endstone/plugin/plugin_load_order.h" line="22" column="1" bodyfile="include/endstone/plugin/plugin_load_order.h" bodystart="22" bodyend="31"/>
       </memberdef>
       <memberdef kind="enum" id="namespaceendstone_1a5e726f9a35fad2caa785b6225c768ca5" prot="public" static="no" strong="yes">
         <type></type>
@@ -848,9 +851,9 @@
         <enumvalue id="namespaceendstone_1ae444241ed516d06f778078ee798db9e9a6af4bf214d6cf054f9528da5b6054817" prot="public">
           <name>Hearts</name>
           <briefdescription>
+<para>Display number of hearts corresponding to value. </para>
           </briefdescription>
           <detaileddescription>
-<para>Display number of hearts corresponding to value. </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
@@ -1166,9 +1169,9 @@
         <name>ScoreEntry</name>
         <qualifiedname>endstone::ScoreEntry</qualifiedname>
         <briefdescription>
+<para>An entry for a score. </para>
         </briefdescription>
         <detaileddescription>
-<para>An entry for a score. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

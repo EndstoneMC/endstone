@@ -56,7 +56,7 @@
 <parametername>type</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Material to change this block to </para>
+<para>New type for this block (e.g. minecraft:stone). </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -89,7 +89,7 @@
 <parametername>type</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Material to change this block to </para>
+<para>New type for this block (e.g. minecraft:stone). </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -264,7 +264,7 @@
 <para>Gets the block at the given face. </para>
         </briefdescription>
         <detaileddescription>
-<para>This method is equal to getRelative(face, 1)</para>
+<para>This method is equal to getRelative(face, 1).</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>face</parametername>
@@ -371,7 +371,7 @@
 <para>Gets the y-coordinate of this block. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>x-coordinate </para>
+<para><simplesect kind="return"><para>y-coordinate </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -389,7 +389,7 @@
 <para>Gets the z-coordinate of this block. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>x-coordinate </para>
+<para><simplesect kind="return"><para>z-coordinate </para>
 </simplesect>
 </para>
         </detaileddescription>

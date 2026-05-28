@@ -32,7 +32,7 @@
 <para>Returns the name of this player. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> name or null if we have not seen a name for this player yet </para>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> name, or an empty string if we have not seen a name for this player yet. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -514,7 +514,7 @@
         </briefdescription>
         <detaileddescription>
 <para>This is a percentage value. 0.0 is &quot;no progress&quot; and 1.0 is &quot;next level&quot;.</para>
-<para><simplesect kind="return"><para>Current experience points </para>
+<para><simplesect kind="return"><para>Current experience progress, between 0.0 and 1.0. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -741,9 +741,9 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>Sets the speed at which a client will fly. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the speed at which a client will fly.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>value</parametername>
@@ -788,9 +788,9 @@
           <declname>value</declname>
         </param>
         <briefdescription>
+<para>Sets the speed at which a client will walk. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the speed at which a client will walk.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>value</parametername>
@@ -835,9 +835,9 @@
           <declname>scoreboard</declname>
         </param>
         <briefdescription>
+<para>Sets the player&apos;s visible <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>@breif Sets the player&apos;s visible <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref>.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>scoreboard</parametername>
@@ -967,9 +967,10 @@
           <declname>subtitle</declname>
         </param>
         <briefdescription>
-<para>Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such. The titles will be displayed with the default timings. </para>
+<para>Sends a title and a subtitle message to the player. </para>
         </briefdescription>
         <detaileddescription>
+<para>If they are empty strings, the display will be updated as such. The titles will be displayed with the default timings.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>title</parametername>
@@ -1020,9 +1021,10 @@
           <declname>fade_out</declname>
         </param>
         <briefdescription>
-<para>Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such. </para>
+<para>Sends a title and a subtitle message to the player. </para>
         </briefdescription>
         <detaileddescription>
+<para>If they are empty strings, the display will be updated as such.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>title</parametername>
@@ -1077,9 +1079,10 @@
         <name>resetTitle</name>
         <qualifiedname>endstone::Player::resetTitle</qualifiedname>
         <briefdescription>
-<para>Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values. </para>
+<para>Resets the title displayed to the player. </para>
         </briefdescription>
         <detaileddescription>
+<para>This will clear the displayed title / subtitle and reset timings to their default values. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

@@ -66,9 +66,9 @@
         <name>getPlayer</name>
         <qualifiedname>endstone::PlayerEvent::getPlayer</qualifiedname>
         <briefdescription>
+<para>Returns the player involved in this event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the player involved in this event</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> who is involved in this event </para>
 </simplesect>
 </para>

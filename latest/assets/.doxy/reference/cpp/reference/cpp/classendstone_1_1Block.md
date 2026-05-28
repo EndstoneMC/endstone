@@ -286,7 +286,7 @@ virtual std::unique_ptr< Block > endstone::Block::getRelative (
 
 
 
-This method is equal to getRelative(face, 1)
+This method is equal to getRelative(face, 1).
 
 
 
@@ -414,7 +414,7 @@ virtual int endstone::Block::getY () const = 0
 
 **Returns:**
 
-x-coordinate 
+y-coordinate 
 
 
 
@@ -439,7 +439,7 @@ virtual int endstone::Block::getZ () const = 0
 
 **Returns:**
 
-x-coordinate 
+z-coordinate 
 
 
 
@@ -523,7 +523,7 @@ virtual void endstone::Block::setType (
 **Parameters:**
 
 
-* `type` Material to change this block to 
+* `type` New type for this block (e.g. minecraft:stone). 
 
 
 
@@ -551,7 +551,7 @@ virtual void endstone::Block::setType (
 **Parameters:**
 
 
-* `type` Material to change this block to 
+* `type` New type for this block (e.g. minecraft:stone). 
 * `apply_physics` False to cancel physics on the changed block. 
 
 

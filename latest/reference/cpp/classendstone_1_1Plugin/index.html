@@ -2978,7 +2978,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::filesystem::path &amp;</td>
-<td style="text-align: left;"><a href="#function-getdatafolder"><strong>getDataFolder</strong></a> () const<br><em>Returns the folder that the plugin data's files are located in. The folder may not yet exist.</em></td>
+<td style="text-align: left;"><a href="#function-getdatafolder"><strong>getDataFolder</strong></a> () const<br><em>Returns the folder that the plugin data's files are located in.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1PluginDescription/"><strong>PluginDescription</strong></a> &amp;</td>
@@ -2986,7 +2986,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Logger/"><strong>Logger</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getlogger"><strong>getLogger</strong></a> () const<br><em>Returns the plugin logger associated with this server's logger. The returned logger automatically tags all log messages with the plugin's name.</em></td>
+<td style="text-align: left;"><a href="#function-getlogger"><strong>getLogger</strong></a> () const<br><em>Returns the plugin logger associated with this server's logger.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string</td>
@@ -3046,7 +3046,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1CommandExecutor/#function-oncommand"><strong>onCommand</strong></a> (<a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp; sender, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Command/"><strong>Command</strong></a> &amp; command, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::vector&lt; std::string &gt; &amp; args) <br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1CommandExecutor/#function-oncommand"><strong>onCommand</strong></a> (<a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp; sender, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Command/"><strong>Command</strong></a> &amp; command, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::vector&lt; std::string &gt; &amp; args) <br><em>Executes the given command, returning its success.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -3065,7 +3065,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setenabled"><strong>setEnabled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> enabled) <br></td>
+<td style="text-align: left;"><a href="#function-setenabled"><strong>setEnabled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> enabled) <br><em>Sets the enabled state of this plugin.</em></td>
 </tr>
 </tbody>
 </table>
@@ -3093,13 +3093,14 @@ For latest updates join the chat on
 <li><code>name</code> name or alias of the command </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p>the plugin command if found, otherwise null </p>
+<p>the plugin command if found, otherwise nullptr </p>
 <hr>
 
 <h3 id="function-getdatafolder">function getDataFolder<a class="headerlink" href="#function-getdatafolder" title="Permanent link">&para;</a></h3>
-<p><em>Returns the folder that the plugin data's files are located in. The folder may not yet exist.</em> 
+<p><em>Returns the folder that the plugin data's files are located in.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Plugin</span><span class="o">::</span><span class="n">getDataFolder</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
+<p>The folder may not yet exist.</p>
 <p><strong>Returns:</strong></p>
 <p>The folder </p>
 <hr>
@@ -3113,9 +3114,10 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getlogger">function getLogger<a class="headerlink" href="#function-getlogger" title="Permanent link">&para;</a></h3>
-<p><em>Returns the plugin logger associated with this server's logger. The returned logger automatically tags all log messages with the plugin's name.</em> 
+<p><em>Returns the plugin logger associated with this server's logger.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Plugin</span><span class="o">::</span><span class="n">getLogger</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
+<p>The returned logger automatically tags all log messages with the plugin's name.</p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1Logger/"><strong>Logger</strong></a> associated with this plugin </p>
 <hr>
@@ -3206,11 +3208,11 @@ For latest updates join the chat on
 <hr>
 <h2 id="protected-functions-documentation">Protected Functions Documentation<a class="headerlink" href="#protected-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-setenabled">function setEnabled<a class="headerlink" href="#function-setenabled" title="Permanent link">&para;</a></h3>
+<p><em>Sets the enabled state of this plugin.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Plugin</span><span class="o">::</span><span class="n">setEnabled</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">enabled</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Sets the enabled state of this plugin</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>enabled</code> true if enabled, otherwise false </li>

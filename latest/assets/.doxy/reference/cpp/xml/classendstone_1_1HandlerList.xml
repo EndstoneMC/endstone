@@ -106,9 +106,9 @@
           <declname>handler</declname>
         </param>
         <briefdescription>
+<para>Register a new handler. </para>
         </briefdescription>
         <detaileddescription>
-<para>Register a new handler</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>handler</parametername>
@@ -137,9 +137,9 @@
           <declname>handler</declname>
         </param>
         <briefdescription>
+<para>Remove a handler from a specific order slot. </para>
         </briefdescription>
         <detaileddescription>
-<para>Remove a handler from a specific order slot</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>handler</parametername>
@@ -166,9 +166,9 @@
           <declname>plugin</declname>
         </param>
         <briefdescription>
+<para>Remove a specific plugin&apos;s handlers from this handler. </para>
         </briefdescription>
         <detaileddescription>
-<para>Remove a specific plugin&apos;s handlers from this handler</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>plugin</parametername>
@@ -191,9 +191,9 @@
         <name>getHandlers</name>
         <qualifiedname>endstone::HandlerList::getHandlers</qualifiedname>
         <briefdescription>
+<para>Get the baked registered handlers associated with this handler list. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the baked registered handlers associated with this handler list</para>
 <para><simplesect kind="return"><para>the array of registered handlers </para>
 </simplesect>
 </para>
@@ -220,9 +220,10 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>A list of event handlers. Should be instantiated on a per-event basis. </para>
+<para>A list of event handlers. </para>
     </briefdescription>
     <detaileddescription>
+<para>Should be instantiated on a per-event basis. </para>
     </detaileddescription>
     <location file="include/endstone/event/handler_list.h" line="33" column="1" bodyfile="include/endstone/event/handler_list.h" bodystart="33" bodyend="128"/>
     <listofallmembers>

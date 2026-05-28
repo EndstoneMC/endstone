@@ -111,9 +111,9 @@
           <declname>command</declname>
         </param>
         <briefdescription>
+<para>Registers a command. </para>
         </briefdescription>
         <detaileddescription>
-<para>Registers a command.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>command</parametername>
@@ -181,9 +181,9 @@
         <name>clearCommands</name>
         <qualifiedname>endstone::CommandMap::clearCommands</qualifiedname>
         <briefdescription>
+<para>Clears all registered commands. </para>
         </briefdescription>
         <detaileddescription>
-<para>Clears all registered commands. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -200,9 +200,9 @@
           <declname>name</declname>
         </param>
         <briefdescription>
+<para>Gets the command registered to the specified name. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the command registered to the specified name</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>name</parametername>

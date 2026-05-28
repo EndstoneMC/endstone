@@ -20,7 +20,7 @@
           <name>Grayscale</name>
           <initializer>= 1</initializer>
           <briefdescription>
-<para>8-bit pixels, grayscale </para>
+<para>8-bit pixels, grayscale. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -29,7 +29,7 @@
           <name>RGB</name>
           <initializer>= 3</initializer>
           <briefdescription>
-<para>3x8-bit pixels, true color </para>
+<para>3x8-bit pixels, true color. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -38,9 +38,9 @@
           <name>RGBA</name>
           <initializer>= 4</initializer>
           <briefdescription>
+<para>4x8-bit pixels, true color with transparency mask. </para>
           </briefdescription>
           <detaileddescription>
-<para>4x8-bit pixels, true color with transparency mask </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
@@ -425,7 +425,7 @@
 <parametername>array</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para>
+<para>Raw pixel data, sized according to <computeroutput>type</computeroutput>, <computeroutput>width</computeroutput> and <computeroutput>height</computeroutput>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -492,7 +492,7 @@
 <parametername>buffer</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para>
+<para>Raw pixel data, sized according to <computeroutput>type</computeroutput>, <computeroutput>width</computeroutput> and <computeroutput>height</computeroutput>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

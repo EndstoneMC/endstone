@@ -82,9 +82,9 @@
         <name>getKickMessage</name>
         <qualifiedname>endstone::PlayerLoginEvent::getKickMessage</qualifiedname>
         <briefdescription>
+<para>Gets the current kick message that will be used if event is cancelled. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the current kick message that will be used if event is cancelled</para>
 <para><simplesect kind="return"><para>Current kick message </para>
 </simplesect>
 </para>
@@ -104,9 +104,9 @@
           <declname>message</declname>
         </param>
         <briefdescription>
+<para>Sets the kick message to display if event is cancelled. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the kick message to display if event is cancelled</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>message</parametername>

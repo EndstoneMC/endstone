@@ -2758,15 +2758,15 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp;</td>
-<td style="text-align: left;"><a href="#function-getmessage"><strong>getMessage</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getmessage"><strong>getMessage</strong></a> () const<br><em>Get the message to send.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp;</td>
-<td style="text-align: left;"><a href="#function-getmessageid"><strong>getMessageId</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getmessageid"><strong>getMessageId</strong></a> () const<br><em>Get the message id to send.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getsender"><strong>getSender</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getsender"><strong>getSender</strong></a> () const<br><em>Gets the command sender who sent the script message.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2782,15 +2782,15 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () override const<br><em>Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () override const<br><em>Gets the cancellation state of this event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> cancel) override<br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> cancel) override<br><em>Sets the cancellation state of this event.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2840,27 +2840,27 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getmessage">function getMessage<a class="headerlink" href="#function-getmessage" title="Permanent link">&para;</a></h3>
+<p><em>Get the message to send.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ScriptMessageEvent</span><span class="o">::</span><span class="n">getMessage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the message to send.</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Message to send </p>
 <hr>
 
 <h3 id="function-getmessageid">function getMessageId<a class="headerlink" href="#function-getmessageid" title="Permanent link">&para;</a></h3>
+<p><em>Get the message id to send.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ScriptMessageEvent</span><span class="o">::</span><span class="n">getMessageId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the message id to send.</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Message id to send </p>
 <hr>
 
 <h3 id="function-getsender">function getSender<a class="headerlink" href="#function-getsender" title="Permanent link">&para;</a></h3>
+<p><em>Gets the command sender who sent the script message.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ScriptMessageEvent</span><span class="o">::</span><span class="n">getSender</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets the command sender who initiated the command</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p><a href="../classendstone_1_1Command/"><strong>Command</strong></a> sender who initiated the command </p>
+<p><a href="../classendstone_1_1Command/"><strong>Command</strong></a> sender who sent the script message. </p>
 <hr>
 
 <hr />

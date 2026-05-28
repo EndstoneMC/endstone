@@ -12,9 +12,9 @@
         <qualifiedname>endstone::EffectType::Speed</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;speed&quot;)</initializer>
         <briefdescription>
+<para>Increases movement speed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Increases movement speed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -28,9 +28,9 @@
         <qualifiedname>endstone::EffectType::Slowness</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;slowness&quot;)</initializer>
         <briefdescription>
+<para>Decreases movement speed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Decreases movement speed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -44,9 +44,9 @@
         <qualifiedname>endstone::EffectType::Haste</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;haste&quot;)</initializer>
         <briefdescription>
+<para>Increases dig speed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Increases dig speed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -60,9 +60,9 @@
         <qualifiedname>endstone::EffectType::MiningFatigue</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;mining_fatigue&quot;)</initializer>
         <briefdescription>
+<para>Decreases dig speed. </para>
         </briefdescription>
         <detaileddescription>
-<para>Decreases dig speed. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -76,9 +76,9 @@
         <qualifiedname>endstone::EffectType::Strength</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;strength&quot;)</initializer>
         <briefdescription>
+<para>Increases damage dealt. </para>
         </briefdescription>
         <detaileddescription>
-<para>Increases damage dealt. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -92,9 +92,9 @@
         <qualifiedname>endstone::EffectType::InstantHealth</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;instant_health&quot;)</initializer>
         <briefdescription>
+<para>Heals an entity. </para>
         </briefdescription>
         <detaileddescription>
-<para>Heals an entity. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -108,9 +108,9 @@
         <qualifiedname>endstone::EffectType::InstantDamage</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;instant_damage&quot;)</initializer>
         <briefdescription>
+<para>Hurts an entity. </para>
         </briefdescription>
         <detaileddescription>
-<para>Hurts an entity. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -124,9 +124,9 @@
         <qualifiedname>endstone::EffectType::JumpBoost</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;jump_boost&quot;)</initializer>
         <briefdescription>
+<para>Increases jump height. </para>
         </briefdescription>
         <detaileddescription>
-<para>Increases jump height. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -140,9 +140,9 @@
         <qualifiedname>endstone::EffectType::Nausea</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;nausea&quot;)</initializer>
         <briefdescription>
+<para>Warps vision on the client. </para>
         </briefdescription>
         <detaileddescription>
-<para>Warps vision on the client. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -156,9 +156,9 @@
         <qualifiedname>endstone::EffectType::Regeneration</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;regeneration&quot;)</initializer>
         <briefdescription>
+<para>Regenerates health. </para>
         </briefdescription>
         <detaileddescription>
-<para>Regenerates health. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -172,9 +172,9 @@
         <qualifiedname>endstone::EffectType::Resistance</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;resistance&quot;)</initializer>
         <briefdescription>
+<para>Decreases damage dealt to an entity. </para>
         </briefdescription>
         <detaileddescription>
-<para>Decreases damage dealt to an entity. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -188,9 +188,9 @@
         <qualifiedname>endstone::EffectType::FireResistance</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;fire_resistance&quot;)</initializer>
         <briefdescription>
+<para>Stops fire damage. </para>
         </briefdescription>
         <detaileddescription>
-<para>Stops fire damage. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -204,9 +204,9 @@
         <qualifiedname>endstone::EffectType::WaterBreathing</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;water_breathing&quot;)</initializer>
         <briefdescription>
+<para>Allows breathing underwater. </para>
         </briefdescription>
         <detaileddescription>
-<para>Allows breathing underwater. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -220,9 +220,9 @@
         <qualifiedname>endstone::EffectType::Invisibility</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;invisibility&quot;)</initializer>
         <briefdescription>
+<para>Grants invisibility. </para>
         </briefdescription>
         <detaileddescription>
-<para>Grants invisibility. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -236,9 +236,9 @@
         <qualifiedname>endstone::EffectType::Blindness</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;blindness&quot;)</initializer>
         <briefdescription>
+<para>Blinds an entity. </para>
         </briefdescription>
         <detaileddescription>
-<para>Blinds an entity. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -252,9 +252,9 @@
         <qualifiedname>endstone::EffectType::NightVision</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;night_vision&quot;)</initializer>
         <briefdescription>
+<para>Allows an entity to see in the dark. </para>
         </briefdescription>
         <detaileddescription>
-<para>Allows an entity to see in the dark. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -268,9 +268,9 @@
         <qualifiedname>endstone::EffectType::Hunger</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;hunger&quot;)</initializer>
         <briefdescription>
+<para>Increases hunger. </para>
         </briefdescription>
         <detaileddescription>
-<para>Increases hunger. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -284,9 +284,9 @@
         <qualifiedname>endstone::EffectType::Weakness</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;weakness&quot;)</initializer>
         <briefdescription>
+<para>Decreases damage dealt by an entity. </para>
         </briefdescription>
         <detaileddescription>
-<para>Decreases damage dealt by an entity. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -300,9 +300,9 @@
         <qualifiedname>endstone::EffectType::Poison</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;poison&quot;)</initializer>
         <briefdescription>
+<para>Deals damage to an entity over time. </para>
         </briefdescription>
         <detaileddescription>
-<para>Deals damage to an entity over time. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -316,9 +316,9 @@
         <qualifiedname>endstone::EffectType::Wither</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;wither&quot;)</initializer>
         <briefdescription>
+<para>Deals damage to an entity over time and gives the health to the shooter. </para>
         </briefdescription>
         <detaileddescription>
-<para>Deals damage to an entity over time and gives the health to the shooter. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -332,9 +332,9 @@
         <qualifiedname>endstone::EffectType::HealthBoost</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;health_boost&quot;)</initializer>
         <briefdescription>
+<para>Increases the maximum health of an entity. </para>
         </briefdescription>
         <detaileddescription>
-<para>Increases the maximum health of an entity. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -348,9 +348,9 @@
         <qualifiedname>endstone::EffectType::Absorption</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;absorption&quot;)</initializer>
         <briefdescription>
+<para>Increases the maximum health of an entity with health that cannot be regenerated, but is refilled every 30 seconds. </para>
         </briefdescription>
         <detaileddescription>
-<para>Increases the maximum health of an entity with health that cannot be regenerated, but is refilled every 30 seconds. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -364,9 +364,9 @@
         <qualifiedname>endstone::EffectType::Saturation</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;saturation&quot;)</initializer>
         <briefdescription>
+<para>Increases the food level of an entity each tick. </para>
         </briefdescription>
         <detaileddescription>
-<para>Increases the food level of an entity each tick. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -380,9 +380,9 @@
         <qualifiedname>endstone::EffectType::Levitation</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;levitation&quot;)</initializer>
         <briefdescription>
+<para>Causes the entity to float into the air. </para>
         </briefdescription>
         <detaileddescription>
-<para>Causes the entity to float into the air. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -396,9 +396,9 @@
         <qualifiedname>endstone::EffectType::FatalPoison</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;fatal_poison&quot;)</initializer>
         <briefdescription>
+<para>Inflicts damage to the entity over time, and can kill both undead and non-undead mobs, similar to Wither. </para>
         </briefdescription>
         <detaileddescription>
-<para>Inflicts damage to the entity over time, and can kill both undead and non-undead mobs, similar to Wither </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -412,9 +412,10 @@
         <qualifiedname>endstone::EffectType::ConduitPower</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;conduit_power&quot;)</initializer>
         <briefdescription>
+<para>Effects granted by a nearby conduit. </para>
         </briefdescription>
         <detaileddescription>
-<para>Effects granted by a nearby conduit. Includes enhanced underwater abilities. </para>
+<para>Includes enhanced underwater abilities. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -428,9 +429,9 @@
         <qualifiedname>endstone::EffectType::SlowFalling</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;slow_falling&quot;)</initializer>
         <briefdescription>
+<para>Slows entity fall rate. </para>
         </briefdescription>
         <detaileddescription>
-<para>Slows entity fall rate. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -444,9 +445,10 @@
         <qualifiedname>endstone::EffectType::BadOmen</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;bad_omen&quot;)</initializer>
         <briefdescription>
+<para>Triggers an ominous event when the player enters a village or trial chambers. </para>
         </briefdescription>
         <detaileddescription>
-<para>Triggers an ominous event when the player enters a village or trial chambers.<linebreak/>
+<para><linebreak/>
  oof. </para>
         </detaileddescription>
         <inbodydescription>
@@ -461,9 +463,10 @@
         <qualifiedname>endstone::EffectType::HeroOfTheVillage</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;hero_of_the_village&quot;)</initializer>
         <briefdescription>
+<para>Reduces the cost of villager trades. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reduces the cost of villager trades.<linebreak/>
+<para><linebreak/>
  \o/. </para>
         </detaileddescription>
         <inbodydescription>
@@ -478,9 +481,9 @@
         <qualifiedname>endstone::EffectType::Darkness</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;darkness&quot;)</initializer>
         <briefdescription>
+<para>Causes the player&apos;s vision to dim occasionally. </para>
         </briefdescription>
         <detaileddescription>
-<para>Causes the player&apos;s vision to dim occasionally. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -494,9 +497,9 @@
         <qualifiedname>endstone::EffectType::TrialOmen</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;trial_omen&quot;)</initializer>
         <briefdescription>
+<para>Causes trial spawners to become ominous. </para>
         </briefdescription>
         <detaileddescription>
-<para>Causes trial spawners to become ominous. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -510,9 +513,9 @@
         <qualifiedname>endstone::EffectType::WindCharged</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;wind_charged&quot;)</initializer>
         <briefdescription>
+<para>Emits a wind burst upon death. </para>
         </briefdescription>
         <detaileddescription>
-<para>Emits a wind burst upon death. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -526,9 +529,9 @@
         <qualifiedname>endstone::EffectType::Weaving</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;weaving&quot;)</initializer>
         <briefdescription>
+<para>Creates cobwebs upon death. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates cobwebs upon death. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -542,9 +545,9 @@
         <qualifiedname>endstone::EffectType::Oozing</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;oozing&quot;)</initializer>
         <briefdescription>
+<para>Causes slimes to spawn upon death. </para>
         </briefdescription>
         <detaileddescription>
-<para>Causes slimes to spawn upon death. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -558,9 +561,9 @@
         <qualifiedname>endstone::EffectType::Infested</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;infested&quot;)</initializer>
         <briefdescription>
+<para>Chance of spawning silverfish when hurt. </para>
         </briefdescription>
         <detaileddescription>
-<para>Chance of spawning silverfish when hurt. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -574,9 +577,9 @@
         <qualifiedname>endstone::EffectType::RaidOmen</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;raid_omen&quot;)</initializer>
         <briefdescription>
+<para>Triggers a raid when a player enters a village. </para>
         </briefdescription>
         <detaileddescription>
-<para>Triggers a raid when a player enters a village. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -590,9 +593,9 @@
         <qualifiedname>endstone::EffectType::BreathOfTheNautilus</qualifiedname>
         <initializer>= EffectId::minecraft(&quot;breath_of_the_nautilus&quot;)</initializer>
         <briefdescription>
+<para>Prevents the rider&apos;s oxygen bar from depleting while riding a nautilus or zombie nautilus. </para>
         </briefdescription>
         <detaileddescription>
-<para>Prevents the rider&apos;s oxygen bar from depleting while riding a nautilus or zombie nautilus. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

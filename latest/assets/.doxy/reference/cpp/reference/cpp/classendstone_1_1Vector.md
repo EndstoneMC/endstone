@@ -60,7 +60,7 @@ _Represents a 3-dimensional vector._
 |  [**constexpr**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & | [**crossProduct**](#function-crossproduct) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) <br>_Calculates the cross-product of this vector with another._  |
 |  [**float**](classendstone_1_1Identifier.md) | [**distance**](#function-distance) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Get the distance between this vector and another._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**distanceSquared**](#function-distancesquared) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Get the squared distance between this vector and another._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**dot**](#function-dot) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Calculates the dot product of this vector with another. The dot product is defined as x1\*x2+y1\*y2+z1\*z2. The returned value is a scalar._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**dot**](#function-dot) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) const<br>_Calculates the dot product of this vector with another._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getBlockX**](#function-getblockx) () const<br>_Gets the floored value of the X component, indicating the block that this vector is contained with._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getBlockY**](#function-getblocky) () const<br>_Gets the floored value of the Y component, indicating the block that this vector is contained with._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getBlockZ**](#function-getblockz) () const<br>_Gets the floored value of the Z component, indicating the block that this vector is contained with._  |
@@ -365,13 +365,16 @@ the distance
 
 ### function dot 
 
-_Calculates the dot product of this vector with another. The dot product is defined as x1\*x2+y1\*y2+z1\*z2. The returned value is a scalar._ 
+_Calculates the dot product of this vector with another._ 
 ```C++
 inline constexpr  float endstone::Vector::dot (
     const  Vector & other
 ) const
 ```
 
+
+
+The dot product is defined as x1\*x2+y1\*y2+z1\*z2. The returned value is a scalar.
 
 
 

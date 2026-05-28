@@ -96,7 +96,7 @@ Inherited by the following classes: [endstone::BlockFormEvent](classendstone_1_1
 | ---: | :--- |
 |   | [**BlockGrowEvent**](#function-blockgrowevent) (std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block, std::unique\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; new\_state) <br> |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**BlockGrowEvent**](classendstone_1_1BlockGrowEvent.md)) <br> |
-|  [**BlockState**](classendstone_1_1BlockState.md) & | [**getNewState**](#function-getnewstate) () const<br>_Gets the state of the block where it will form or spread to._  |
+|  [**BlockState**](classendstone_1_1BlockState.md) & | [**getNewState**](#function-getnewstate) () const<br>_Gets the state of the block after it has grown._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -105,9 +105,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -245,7 +245,7 @@ endstone::BlockGrowEvent::ENDSTONE_EVENT (
 
 ### function getNewState 
 
-_Gets the state of the block where it will form or spread to._ 
+_Gets the state of the block after it has grown._ 
 ```C++
 inline BlockState & endstone::BlockGrowEvent::getNewState () const
 ```
@@ -256,7 +256,7 @@ inline BlockState & endstone::BlockGrowEvent::getNewState () const
 
 **Returns:**
 
-The block state for this events block 
+The new state of the block. 
 
 
 

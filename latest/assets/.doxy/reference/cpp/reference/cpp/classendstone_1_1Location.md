@@ -83,7 +83,7 @@ _Represents a 3-dimensional location in a dimension within a level._
 |  [**constexpr**](classendstone_1_1Identifier.md) [**void**](classendstone_1_1Identifier.md) | [**setY**](#function-sety) ([**T**](classendstone_1_1Identifier.md) y) <br>_Sets the y-coordinate of this location._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setYaw**](#function-setyaw) ([**float**](classendstone_1_1Identifier.md) yaw) <br>_Sets the yaw of this location, measured in degrees._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**void**](classendstone_1_1Identifier.md) | [**setZ**](#function-setz) ([**T**](classendstone_1_1Identifier.md) z) <br>_Sets the z-coordinate of this location._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & | [**zero**](#function-zero) () <br>_Zero this vector's components. Not world-aware._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & | [**zero**](#function-zero) () <br>_Zero this vector's components._  |
 
 
 ## Public Static Functions
@@ -886,11 +886,14 @@ inline constexpr  void endstone::Location::setZ (
 
 ### function zero 
 
-_Zero this vector's components. Not world-aware._ 
+_Zero this vector's components._ 
 ```C++
 inline constexpr  Location & endstone::Location::zero () 
 ```
 
+
+
+Not world-aware.
 
 
 

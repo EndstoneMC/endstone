@@ -53,11 +53,11 @@ _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**EventHandler**](#function-eventhandler) (std::string event, std::function&lt; [**void**](classendstone_1_1Identifier.md)([**Event**](classendstone_1_1Event.md) &)&gt; executor, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority, [**Plugin**](classendstone_1_1Plugin.md) & plugin, [**bool**](classendstone_1_1Identifier.md) ignore\_cancelled) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**callEvent**](#function-callevent) ([**Event**](classendstone_1_1Event.md) & event) const<br> |
-|  std::string | [**getEventType**](#function-geteventtype) () const<br> |
-|  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br> |
-|  [**EventPriority**](namespaceendstone.md#enum-eventpriority) | [**getPriority**](#function-getpriority) () const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**isIgnoreCancelled**](#function-isignorecancelled) () const<br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**callEvent**](#function-callevent) ([**Event**](classendstone_1_1Event.md) & event) const<br>_Calls the event executor._  |
+|  std::string | [**getEventType**](#function-geteventtype) () const<br>_Gets the event type for this registration._  |
+|  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br>_Gets the plugin for this registration._  |
+|  [**EventPriority**](namespaceendstone.md#enum-eventpriority) | [**getPriority**](#function-getpriority) () const<br>_Gets the priority for this registration._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**isIgnoreCancelled**](#function-isignorecancelled) () const<br>_Whether this listener accepts cancelled events._  |
 
 
 
@@ -112,15 +112,13 @@ inline endstone::EventHandler::EventHandler (
 
 ### function callEvent 
 
+_Calls the event executor._ 
 ```C++
 inline void endstone::EventHandler::callEvent (
     Event & event
 ) const
 ```
 
-
-
-Calls the event executor
 
 
 
@@ -141,13 +139,11 @@ Calls the event executor
 
 ### function getEventType 
 
+_Gets the event type for this registration._ 
 ```C++
 inline std::string endstone::EventHandler::getEventType () const
 ```
 
-
-
-Gets the event type for this registration
 
 
 
@@ -168,13 +164,11 @@ Registered event type
 
 ### function getPlugin 
 
+_Gets the plugin for this registration._ 
 ```C++
 inline Plugin & endstone::EventHandler::getPlugin () const
 ```
 
-
-
-Gets the plugin for this registration
 
 
 
@@ -195,13 +189,11 @@ Registered [**Plugin**](classendstone_1_1Plugin.md)
 
 ### function getPriority 
 
+_Gets the priority for this registration._ 
 ```C++
 inline EventPriority endstone::EventHandler::getPriority () const
 ```
 
-
-
-Gets the priority for this registration
 
 
 
@@ -222,13 +214,11 @@ Registered Priority
 
 ### function isIgnoreCancelled 
 
+_Whether this listener accepts cancelled events._ 
 ```C++
 inline bool endstone::EventHandler::isIgnoreCancelled () const
 ```
 
-
-
-Whether this listener accepts cancelled events
 
 
 

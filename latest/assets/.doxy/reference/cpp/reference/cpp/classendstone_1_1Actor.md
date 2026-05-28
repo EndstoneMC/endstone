@@ -115,32 +115,32 @@ Inherited by the following classes: [endstone::Item](classendstone_1_1Item.md), 
 | Type | Name |
 | ---: | :--- |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**addScoreboardTag**](#function-addscoreboardtag) (std::string tag) const = 0<br>_Adds a tag to this actor._  |
-| virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br> |
+| virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the current_ [_**Dimension**_](classendstone_1_1Dimension.md) _this actor resides in._ |
 | virtual std::int64\_t | [**getId**](#function-getid) () const = 0<br>_Returns a unique id for this actor._  |
-| virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br> |
-| virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br> |
+| virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the current_ [_**Level**_](classendstone_1_1Level.md) _this actor resides in._ |
+| virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the actor's current position._  |
 | virtual std::string | [**getNameTag**](#function-getnametag) () const = 0<br>_Gets the current name tag of the actor._  |
-| virtual std::uint64\_t | [**getRuntimeId**](#function-getruntimeid) () const = 0<br> |
+| virtual std::uint64\_t | [**getRuntimeId**](#function-getruntimeid) () const = 0<br>_Returns the runtime id for this actor._  |
 | virtual std::string | [**getScoreTag**](#function-getscoretag) () const = 0<br>_Gets the current score tag of the actor._  |
 | virtual std::vector&lt; std::string &gt; | [**getScoreboardTags**](#function-getscoreboardtags) () const = 0<br>_Returns a list of scoreboard tags for this actor._  |
 | virtual [**const**](classendstone_1_1Identifier.md) [**ActorType**](classendstone_1_1ActorType.md) & | [**getType**](#function-gettype) () const = 0<br>_Get the type of the actor._  |
-| virtual [**Vector**](classendstone_1_1Vector.md) | [**getVelocity**](#function-getvelocity) () const = 0<br> |
+| virtual [**Vector**](classendstone_1_1Vector.md) | [**getVelocity**](#function-getvelocity) () const = 0<br>_Gets this actor's current velocity._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isDead**](#function-isdead) () const = 0<br>_Returns true if this actor has been marked for removal._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInLava**](#function-isinlava) () const = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInWater**](#function-isinwater) () const = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInLava**](#function-isinlava) () const = 0<br>_Returns true if the actor is in lava._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInWater**](#function-isinwater) () const = 0<br>_Returns true if the actor is in water._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isNameTagAlwaysVisible**](#function-isnametagalwaysvisible) () const = 0<br>_Checks if the actor's name tag is always visible._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isNameTagVisible**](#function-isnametagvisible) () const = 0<br>_Checks if the actor's name tag is currently visible._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isOnGround**](#function-isonground) () const = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isValid**](#function-isvalid) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**remove**](#function-remove) () = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isOnGround**](#function-isonground) () const = 0<br>_Returns true if the actor is supported by a block._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isValid**](#function-isvalid) () const = 0<br>_Returns false if the entity has died, been despawned for some other reason, or has not been added to the level._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**remove**](#function-remove) () = 0<br>_Remove this actor from the level._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**removeScoreboardTag**](#function-removescoreboardtag) (std::string tag) const = 0<br>_Removes a given tag from this actor._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setNameTag**](#function-setnametag) (std::string name) = 0<br>_Sets the name tag for the actor._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setNameTagAlwaysVisible**](#function-setnametagalwaysvisible) ([**bool**](classendstone_1_1Identifier.md) visible) = 0<br>_Sets whether the actor's name tag should always be visible._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setNameTagVisible**](#function-setnametagvisible) ([**bool**](classendstone_1_1Identifier.md) visible) = 0<br>_Sets if the actor's name tag is visible or not._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setRotation**](#function-setrotation) ([**float**](classendstone_1_1Identifier.md) yaw, [**float**](classendstone_1_1Identifier.md) pitch) = 0<br> |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setRotation**](#function-setrotation) ([**float**](classendstone_1_1Identifier.md) yaw, [**float**](classendstone_1_1Identifier.md) pitch) = 0<br>_Sets the actor's rotation._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setScoreTag**](#function-setscoretag) (std::string score) = 0<br>_Sets the score tag for the actor._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**teleport**](#function-teleport-12) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & location) = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**teleport**](#function-teleport-22) ([**const**](classendstone_1_1Identifier.md) [**Actor**](classendstone_1_1Actor.md) & target) = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**teleport**](#function-teleport-12) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & location) = 0<br>_Teleports this actor to the given location._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**teleport**](#function-teleport-22) ([**const**](classendstone_1_1Identifier.md) [**Actor**](classendstone_1_1Actor.md) & target) = 0<br>_Teleports this actor to the target_ [_**Actor**_](classendstone_1_1Actor.md) _._ |
 
 
 ## Public Functions inherited from endstone::CommandSender
@@ -167,11 +167,11 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 | virtual [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**addAttachment**](classendstone_1_1Permissible.md#function-addattachment-22) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br>_Adds a new empty_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _to this object._ |
 | virtual std::unordered\_set&lt; [**PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md) \* &gt; | [**getEffectivePermissions**](classendstone_1_1Permissible.md#function-geteffectivepermissions) () const = 0<br>_Gets a set containing all the permissions currently in effect by this object._  |
 | virtual PermissionLevel | [**getPermissionLevel**](classendstone_1_1Permissible.md#function-getpermissionlevel) () const = 0<br>_Gets the permission level of this object._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPermission**](classendstone_1_1Permissible.md#function-haspermission-12) (std::string name) const = 0<br>_Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPermission**](classendstone_1_1Permissible.md#function-haspermission-22) ([**const**](classendstone_1_1Identifier.md) [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br>_Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPermission**](classendstone_1_1Permissible.md#function-haspermission-12) (std::string name) const = 0<br>_Gets the value of the specified permission, if set._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasPermission**](classendstone_1_1Permissible.md#function-haspermission-22) ([**const**](classendstone_1_1Identifier.md) [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br>_Gets the value of the specified permission, if set._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isPermissionSet**](classendstone_1_1Permissible.md#function-ispermissionset-12) (std::string name) const = 0<br>_Checks if this object contains an override for the specified permission, by fully qualified name._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isPermissionSet**](classendstone_1_1Permissible.md#function-ispermissionset-22) ([**const**](classendstone_1_1Identifier.md) [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br>_Checks if this object contains an override for the specified_ [_**Permission**_](classendstone_1_1Permission.md) _._ |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**recalculatePermissions**](classendstone_1_1Permissible.md#function-recalculatepermissions) () = 0<br>_Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**recalculatePermissions**](classendstone_1_1Permissible.md#function-recalculatepermissions) () = 0<br>_Recalculates the permissions for this object, if the attachments have changed values._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**removeAttachment**](classendstone_1_1Permissible.md#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br>_Removes the given_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _from this object._ |
 
 
@@ -334,13 +334,11 @@ true if the tag was successfully added, false if the tag already exists.
 
 ### function getDimension 
 
+_Gets the current_ [_**Dimension**_](classendstone_1_1Dimension.md) _this actor resides in._
 ```C++
 virtual Dimension & endstone::Actor::getDimension () const = 0
 ```
 
-
-
-Gets the current [**Dimension**](classendstone_1_1Dimension.md) this actor resides in
 
 
 
@@ -386,13 +384,11 @@ virtual std::int64_t endstone::Actor::getId () const = 0
 
 ### function getLevel 
 
+_Gets the current_ [_**Level**_](classendstone_1_1Level.md) _this actor resides in._
 ```C++
 virtual Level & endstone::Actor::getLevel () const = 0
 ```
 
-
-
-Gets the current [**Level**](classendstone_1_1Level.md) this actor resides in
 
 
 
@@ -413,13 +409,11 @@ The current [**Level**](classendstone_1_1Level.md) this actor resides in
 
 ### function getLocation 
 
+_Gets the actor's current position._ 
 ```C++
 virtual Location endstone::Actor::getLocation () const = 0
 ```
 
-
-
-Gets the actor's current position
 
 
 
@@ -465,13 +459,11 @@ The name tag.
 
 ### function getRuntimeId 
 
+_Returns the runtime id for this actor._ 
 ```C++
 virtual std::uint64_t endstone::Actor::getRuntimeId () const = 0
 ```
 
-
-
-Returns the runtime id for this actor
 
 
 
@@ -567,13 +559,11 @@ The type of the actor.
 
 ### function getVelocity 
 
+_Gets this actor's current velocity._ 
 ```C++
 virtual Vector endstone::Actor::getVelocity () const = 0
 ```
 
-
-
-Gets this actor's current velocity
 
 
 
@@ -619,13 +609,11 @@ True if it is dead.
 
 ### function isInLava 
 
+_Returns true if the actor is in lava._ 
 ```C++
 virtual bool endstone::Actor::isInLava () const = 0
 ```
 
-
-
-Returns true if the actor is in lava.
 
 
 
@@ -646,13 +634,11 @@ True if the actor is in lava.
 
 ### function isInWater 
 
+_Returns true if the actor is in water._ 
 ```C++
 virtual bool endstone::Actor::isInWater () const = 0
 ```
 
-
-
-Returns true if the actor is in water.
 
 
 
@@ -723,13 +709,11 @@ True if the name tag is visible, false otherwise.
 
 ### function isOnGround 
 
+_Returns true if the actor is supported by a block._ 
 ```C++
 virtual bool endstone::Actor::isOnGround () const = 0
 ```
 
-
-
-Returns true if the actor is supported by a block.
 
 
 
@@ -750,13 +734,11 @@ True if actor is on ground.
 
 ### function isValid 
 
+_Returns false if the entity has died, been despawned for some other reason, or has not been added to the level._ 
 ```C++
 virtual bool endstone::Actor::isValid () const = 0
 ```
 
-
-
-Returns false if the entity has died, been despawned for some other reason, or has not been added to the level.
 
 
 
@@ -777,13 +759,11 @@ True if valid.
 
 ### function remove 
 
+_Remove this actor from the level._ 
 ```C++
 virtual void endstone::Actor::remove () = 0
 ```
 
-
-
-Remove this actor from the level.
 
 
 If you are trying to remove a [**Player**](classendstone_1_1Player.md), use [**Player::kick**](classendstone_1_1Player.md#function-kick) instead. 
@@ -912,6 +892,7 @@ virtual void endstone::Actor::setNameTagVisible (
 
 ### function setRotation 
 
+_Sets the actor's rotation._ 
 ```C++
 virtual void endstone::Actor::setRotation (
     float yaw,
@@ -919,13 +900,6 @@ virtual void endstone::Actor::setRotation (
 ) = 0
 ```
 
-
-
-
-
-**Returns:**
-
-Sets the actor's rotation. 
 
 
 Note that if the actor is affected by AI, it may override this rotation.
@@ -977,6 +951,7 @@ virtual void endstone::Actor::setScoreTag (
 
 ### function teleport [1/2]
 
+_Teleports this actor to the given location._ 
 ```C++
 virtual bool endstone::Actor::teleport (
     const  Location & location
@@ -987,17 +962,17 @@ virtual bool endstone::Actor::teleport (
 
 
 
-**Returns:**
-
-Teleports this actor to the given location.
-
-
-
-
 **Parameters:**
 
 
 * `location` New location to teleport this actor to 
+
+
+
+**Returns:**
+
+true if the teleport was successful. 
+
 
 
 
@@ -1010,6 +985,7 @@ Teleports this actor to the given location.
 
 ### function teleport [2/2]
 
+_Teleports this actor to the target_ [_**Actor**_](classendstone_1_1Actor.md) _._
 ```C++
 virtual bool endstone::Actor::teleport (
     const  Actor & target
@@ -1018,15 +994,19 @@ virtual bool endstone::Actor::teleport (
 
 
 
-Teleports this actor to the target [**Actor**](classendstone_1_1Actor.md).
-
-
 
 
 **Parameters:**
 
 
 * `target` [**Actor**](classendstone_1_1Actor.md) to teleport this actor to 
+
+
+
+**Returns:**
+
+true if the teleport was successful. 
+
 
 
 

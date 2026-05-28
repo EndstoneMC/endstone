@@ -249,7 +249,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>a plugin command if found, null otherwise </para>
+<simplesect kind="return"><para>a plugin command if found, nullptr otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -442,7 +442,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>a player object if one was found, null otherwise </para>
+<simplesect kind="return"><para>a player object if one was found, nullptr otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -527,7 +527,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>a player object if one was found, null otherwise </para>
+<simplesect kind="return"><para>a player object if one was found, nullptr otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -705,9 +705,9 @@
         <name>getItemFactory</name>
         <qualifiedname>endstone::Server::getItemFactory</qualifiedname>
         <briefdescription>
+<para>Gets the instance of the item factory. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the instance of the item factory (for <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref>).</para>
 <para><simplesect kind="return"><para>the item factory </para>
 </simplesect>
 <simplesect kind="see"><para><ref refid="classendstone_1_1ItemFactory" kindref="compound">ItemFactory</ref> </para>
@@ -766,7 +766,7 @@
 <para>Gets the current milliseconds per tick (MSPT). </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The average current of milliseconds per tick. </para>
+<para><simplesect kind="return"><para>The current number of milliseconds per tick. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -901,9 +901,10 @@
           <declname>style</declname>
         </param>
         <briefdescription>
-<para>Creates a boss bar instance to display to players. The progress defaults to 1.0. </para>
+<para>Creates a boss bar instance to display to players. </para>
         </briefdescription>
         <detaileddescription>
+<para>The progress defaults to 1.0.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>title</parametername>
@@ -960,9 +961,10 @@
           <declname>flags</declname>
         </param>
         <briefdescription>
-<para>Creates a boss bar instance to display to players. The progress defaults to 1.0. </para>
+<para>Creates a boss bar instance to display to players. </para>
         </briefdescription>
         <detaileddescription>
+<para>The progress defaults to 1.0.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>title</parametername>
@@ -1085,9 +1087,9 @@
         <name>getBanList</name>
         <qualifiedname>endstone::Server::getBanList</qualifiedname>
         <briefdescription>
+<para>Gets the player ban list. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the player ban list.</para>
 <para><simplesect kind="return"><para>The player ban list </para>
 </simplesect>
 </para>
@@ -1103,9 +1105,9 @@
         <name>getIpBanList</name>
         <qualifiedname>endstone::Server::getIpBanList</qualifiedname>
         <briefdescription>
+<para>Gets the IP ban list. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the IP ban list.</para>
 <para><simplesect kind="return"><para>The IP ban list </para>
 </simplesect>
 </para>
@@ -1121,9 +1123,9 @@
         <name>getServiceManager</name>
         <qualifiedname>endstone::Server::getServiceManager</qualifiedname>
         <briefdescription>
+<para>Gets the service manager. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the service manager.</para>
 <para><simplesect kind="return"><para>The service manager </para>
 </simplesect>
 </para>
@@ -1146,7 +1148,7 @@
 <para>Returns the registry for the given type. </para>
         </briefdescription>
         <detaileddescription>
-<para>If no registry is present for the given type null will be returned.</para>
+<para>If no registry is present for the given type, nullptr will be returned.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>type</parametername>
@@ -1156,7 +1158,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>the corresponding registry or null if not present </para>
+<simplesect kind="return"><para>the corresponding registry, or nullptr if not present </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -1206,7 +1208,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>a map view if it exists, or null otherwise </para>
+<simplesect kind="return"><para>a map view if it exists, or nullptr otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>

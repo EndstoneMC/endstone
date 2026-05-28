@@ -46,7 +46,7 @@
 <para>Get the cursors associated with this canvas. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The MapCursorCollection associated with this canvas. </para>
+<para><simplesect kind="return"><para>The cursors associated with this canvas. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -73,7 +73,7 @@
 <parametername>cursors</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The MapCursorCollection to associate with this canvas. </para>
+<para>The cursors to associate with this canvas. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -380,9 +380,10 @@
           <declname>image</declname>
         </param>
         <briefdescription>
-<para>Draw an image to the map. The image will be clipped if necessary. </para>
+<para>Draw an image to the map. </para>
         </briefdescription>
         <detaileddescription>
+<para>The image will be clipped if necessary.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>x</parametername>

@@ -2607,6 +2607,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#detailed-description" class="md-nav__link">
+      <span class="md-ellipsis">
+        Detailed Description
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2753,7 +2764,7 @@ For latest updates join the chat on
 
 <h1 id="class-endstonehandlerlist">Class endstone::HandlerList<a class="headerlink" href="#class-endstonehandlerlist" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>HandlerList</strong></a></p>
-<p><em>A list of event handlers. Should be instantiated on a per-event basis.</em> </p>
+<p><em>A list of event handlers.</em> <a href="#detailed-description">More...</a></p>
 <ul>
 <li><code>#include &lt;endstone/event/handler_list.h&gt;</code></li>
 </ul>
@@ -2772,19 +2783,19 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">std::vector&lt; <a href="../classendstone_1_1EventHandler/"><strong>EventHandler</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-gethandlers"><strong>getHandlers</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-gethandlers"><strong>getHandlers</strong></a> () const<br><em>Get the baked registered handlers associated with this handler list.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1EventHandler/"><strong>EventHandler</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-registerhandler"><strong>registerHandler</strong></a> (std::unique_ptr&lt; <a href="../classendstone_1_1EventHandler/"><strong>EventHandler</strong></a> &gt; handler) <br></td>
+<td style="text-align: left;"><a href="#function-registerhandler"><strong>registerHandler</strong></a> (std::unique_ptr&lt; <a href="../classendstone_1_1EventHandler/"><strong>EventHandler</strong></a> &gt; handler) <br><em>Register a new handler.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-unregister-12"><strong>unregister</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1EventHandler/"><strong>EventHandler</strong></a> &amp; handler) <br></td>
+<td style="text-align: left;"><a href="#function-unregister-12"><strong>unregister</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1EventHandler/"><strong>EventHandler</strong></a> &amp; handler) <br><em>Remove a handler from a specific order slot.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-unregister-22"><strong>unregister</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) <br></td>
+<td style="text-align: left;"><a href="#function-unregister-22"><strong>unregister</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) <br><em>Remove a specific plugin's handlers from this handler.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2803,6 +2814,8 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
+<h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
+<p>Should be instantiated on a per-event basis. </p>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-handlerlist">function HandlerList<a class="headerlink" href="#function-handlerlist" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">HandlerList</span><span class="o">::</span><span class="n">HandlerList</span><span class="w"> </span><span class="p">(</span>
@@ -2812,19 +2825,19 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-gethandlers">function getHandlers<a class="headerlink" href="#function-gethandlers" title="Permanent link">&para;</a></h3>
+<p><em>Get the baked registered handlers associated with this handler list.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">EventHandler</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">HandlerList</span><span class="o">::</span><span class="n">getHandlers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the baked registered handlers associated with this handler list</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the array of registered handlers </p>
 <hr>
 
 <h3 id="function-registerhandler">function registerHandler<a class="headerlink" href="#function-registerhandler" title="Permanent link">&para;</a></h3>
+<p><em>Register a new handler.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">EventHandler</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">HandlerList</span><span class="o">::</span><span class="n">registerHandler</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">EventHandler</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">handler</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Register a new handler</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>handler</code> <a href="../classendstone_1_1Event/"><strong>Event</strong></a> handler to register </li>
@@ -2834,11 +2847,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-unregister-12">function unregister [&frac12;]<a class="headerlink" href="#function-unregister-12" title="Permanent link">&para;</a></h3>
+<p><em>Remove a handler from a specific order slot.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">HandlerList</span><span class="o">::</span><span class="n">unregister</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">EventHandler</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">handler</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Remove a handler from a specific order slot</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>handler</code> <a href="../classendstone_1_1Event/"><strong>Event</strong></a> handler to remove </li>
@@ -2846,11 +2859,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-unregister-22">function unregister [2/2]<a class="headerlink" href="#function-unregister-22" title="Permanent link">&para;</a></h3>
+<p><em>Remove a specific plugin's handlers from this handler.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">HandlerList</span><span class="o">::</span><span class="n">unregister</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Remove a specific plugin's handlers from this handler</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>plugin</code> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> to remove </li>

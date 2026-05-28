@@ -527,7 +527,7 @@
 <parametername>meta</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>new <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref>, or null to indicate meta data be cleared. </para>
+<para>new <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref>, or nullptr to clear the meta data. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

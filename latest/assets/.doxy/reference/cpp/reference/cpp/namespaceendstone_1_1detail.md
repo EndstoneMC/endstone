@@ -35,7 +35,7 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**Return**](classendstone_1_1Identifier.md)(\*)(Arg...) | [**fp\_cast**](#variable-fp_cast)  <br>_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)_  |
+|  [**Return**](classendstone_1_1Identifier.md)(\*)(Arg...) | [**fp\_cast**](#variable-fp_cast)  <br>_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)._  |
 
 
 
@@ -58,7 +58,7 @@
 | ---: | :--- |
 |  [**void**](classendstone_1_1Identifier.md) \* | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(\*)(Args...) fp) <br>_Cast a function pointer to void pointer._  |
 |  [**void**](classendstone_1_1Identifier.md) \* | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(Class::\*)(Args...) fp) <br>_Cast a member function pointer to void pointer._  |
-|  [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () <br> |
+|  [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () <br>_Gets the current_ [_**Server**_](classendstone_1_1Server.md) _singleton._ |
 
 
 
@@ -94,7 +94,7 @@
 
 ### variable fp\_cast 
 
-_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)_ 
+_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)._ 
 ```C++
 Return(Class::*)(Arg...) endstone::detail::fp_cast(Return(Class::*fp)(Arg...) const, void *address);
 ```
@@ -223,13 +223,11 @@ A void pointer to the constant member function.
 
 ### function getServer 
 
+_Gets the current_ [_**Server**_](classendstone_1_1Server.md) _singleton._
 ```C++
 inline Server & endstone::detail::getServer () 
 ```
 
-
-
-Gets the current [**Server**](classendstone_1_1Server.md) singleton
 
 
 

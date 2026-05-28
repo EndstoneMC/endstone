@@ -114,7 +114,7 @@
 <parametername>meta1</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>First meta to compare, and may be null to indicate no data </para>
+<para>First meta to compare; may be nullptr to indicate no data. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -122,7 +122,7 @@
 <parametername>meta2</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Second meta to compare, and may be null to indicate no data </para>
+<para>Second meta to compare; may be nullptr to indicate no data. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

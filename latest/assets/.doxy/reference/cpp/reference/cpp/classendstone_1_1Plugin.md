@@ -76,9 +76,9 @@ Inherits the following classes: [endstone::CommandExecutor](classendstone_1_1Com
 |   | [**Plugin**](#function-plugin-12) () = default<br> |
 |   | [**Plugin**](#function-plugin-22) ([**const**](classendstone_1_1Identifier.md) [**Plugin**](classendstone_1_1Plugin.md) &) = delete<br> |
 |  [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**getCommand**](#function-getcommand) (std::string name) const<br>_Gets the command with the given name, specific to this plugin._  |
-|  [**const**](classendstone_1_1Identifier.md) std::filesystem::path & | [**getDataFolder**](#function-getdatafolder) () const<br>_Returns the folder that the plugin data's files are located in. The folder may not yet exist._  |
+|  [**const**](classendstone_1_1Identifier.md) std::filesystem::path & | [**getDataFolder**](#function-getdatafolder) () const<br>_Returns the folder that the plugin data's files are located in._  |
 | virtual [**const**](classendstone_1_1Identifier.md) [**PluginDescription**](classendstone_1_1PluginDescription.md) & | [**getDescription**](#function-getdescription) () const = 0<br>_Returns the details of this plugin._  |
-|  [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const<br>_Returns the plugin logger associated with this server's logger. The returned logger automatically tags all log messages with the plugin's name._  |
+|  [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const<br>_Returns the plugin logger associated with this server's logger._  |
 |  std::string | [**getName**](#function-getname) () const<br>_Returns the name of the plugin._  |
 |  [**PluginLoader**](classendstone_1_1PluginLoader.md) & | [**getPluginLoader**](#function-getpluginloader) () const<br>_Gets the associated_ [_**PluginLoader**_](classendstone_1_1PluginLoader.md) _responsible for this plugin._ |
 |  [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () const<br>_Returns the_ [_**Server**_](classendstone_1_1Server.md) _instance currently running this plugin._ |
@@ -98,7 +98,7 @@ See [endstone::CommandExecutor](classendstone_1_1CommandExecutor.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**onCommand**](classendstone_1_1CommandExecutor.md#function-oncommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Identifier.md) [**Command**](classendstone_1_1Command.md) & command, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) <br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**onCommand**](classendstone_1_1CommandExecutor.md#function-oncommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Identifier.md) [**Command**](classendstone_1_1Command.md) & command, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) <br>_Executes the given command, returning its success._  |
 | virtual  | [**~CommandExecutor**](classendstone_1_1CommandExecutor.md#function-commandexecutor) () = default<br> |
 
 
@@ -150,7 +150,7 @@ See [endstone::CommandExecutor](classendstone_1_1CommandExecutor.md)
 
 | Type | Name |
 | ---: | :--- |
-|  [**void**](classendstone_1_1Identifier.md) | [**setEnabled**](#function-setenabled) ([**bool**](classendstone_1_1Identifier.md) enabled) <br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**setEnabled**](#function-setenabled) ([**bool**](classendstone_1_1Identifier.md) enabled) <br>_Sets the enabled state of this plugin._  |
 
 
 
@@ -214,7 +214,7 @@ inline PluginCommand * endstone::Plugin::getCommand (
 
 **Returns:**
 
-the plugin command if found, otherwise null 
+the plugin command if found, otherwise nullptr 
 
 
 
@@ -228,11 +228,14 @@ the plugin command if found, otherwise null
 
 ### function getDataFolder 
 
-_Returns the folder that the plugin data's files are located in. The folder may not yet exist._ 
+_Returns the folder that the plugin data's files are located in._ 
 ```C++
 inline const std::filesystem::path & endstone::Plugin::getDataFolder () const
 ```
 
+
+
+The folder may not yet exist.
 
 
 
@@ -278,11 +281,14 @@ Details of this plugin
 
 ### function getLogger 
 
-_Returns the plugin logger associated with this server's logger. The returned logger automatically tags all log messages with the plugin's name._ 
+_Returns the plugin logger associated with this server's logger._ 
 ```C++
 inline Logger & endstone::Plugin::getLogger () const
 ```
 
+
+
+The returned logger automatically tags all log messages with the plugin's name.
 
 
 
@@ -519,15 +525,13 @@ endstone::Plugin::~Plugin () override
 
 ### function setEnabled 
 
+_Sets the enabled state of this plugin._ 
 ```C++
 inline void endstone::Plugin::setEnabled (
     bool enabled
 ) 
 ```
 
-
-
-Sets the enabled state of this plugin
 
 
 

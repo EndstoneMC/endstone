@@ -61,9 +61,9 @@
         <name>getLevel</name>
         <qualifiedname>endstone::WeatherEvent::getLevel</qualifiedname>
         <briefdescription>
+<para>Returns the <ref refid="classendstone_1_1Level" kindref="compound">Level</ref> where this event is occurring. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the <ref refid="classendstone_1_1Level" kindref="compound">Level</ref> where this event is occurring</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> this event is occurring in </para>
 </simplesect>
 </para>

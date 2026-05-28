@@ -532,7 +532,7 @@ inline bool endstone::ItemStack::setItemMeta (
 **Parameters:**
 
 
-* `meta` new [**ItemMeta**](classendstone_1_1ItemMeta.md), or null to indicate meta data be cleared. 
+* `meta` new [**ItemMeta**](classendstone_1_1ItemMeta.md), or nullptr to clear the meta data. 
 
 
 

@@ -12,25 +12,28 @@
         <enumvalue id="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737a0a52da7a03a6de3beefe54f8c03ad80d" prot="public">
           <name>Original</name>
           <briefdescription>
-<para>Book written into a book-and-quill. Can be copied. (Default value) </para>
+<para>Book written into a book-and-quill. </para>
           </briefdescription>
           <detaileddescription>
+<para>Can be copied. (Default value). </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737ab028302606d3dcce368a38da653d1d3b" prot="public">
           <name>CopyOfOriginal</name>
           <briefdescription>
-<para>Book that was copied from an original. Can be copied. </para>
+<para>Book that was copied from an original. </para>
           </briefdescription>
           <detaileddescription>
+<para>Can be copied. </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737a85ea8fafde61a221012d107d97171871" prot="public">
           <name>CopyOfCopy</name>
           <briefdescription>
-<para>Book that was copied from a copy of an original. Can&apos;t be copied. </para>
+<para>Book that was copied from a copy of an original. </para>
           </briefdescription>
           <detaileddescription>
+<para>Can&apos;t be copied. </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
@@ -103,17 +106,15 @@
 <parametername>title</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>the title to set</para>
+<para>the title to set </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if the title was successfully set </para>
-</simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="71" column="18"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="69" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1a998af616da38d1fae1540ed543a50858" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -131,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="78" column="19"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="76" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1a04ea1998ed105347d0c6424104963835" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -151,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="87" column="26"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="85" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1a23263421a05082ce203afb1e454f8a30" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -164,9 +165,10 @@
           <declname>author</declname>
         </param>
         <briefdescription>
-<para>Sets the author of the book. Removes author when given std::nullopt. </para>
+<para>Sets the author of the book. </para>
         </briefdescription>
         <detaileddescription>
+<para>Removes author when given std::nullopt.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>author</parametername>
@@ -180,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="94" column="18"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="92" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1a8c94e32c426cf5b285e89cfd752db167" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -198,7 +200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="101" column="19"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="99" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1af1d15866a2ba5d5a3465ef4cb7720468" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1BookMeta_1a0575b8edcc2727899e4e44fcc941e737" kindref="member">Generation</ref> &gt;</type>
@@ -218,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="110" column="28"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="108" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BookMeta_1a4dce971cb64a6ad8ed115498bedce599" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -231,9 +233,10 @@
           <declname>generation</declname>
         </param>
         <briefdescription>
-<para>Sets the generation of the book. Removes generation when given std::nullopt. </para>
+<para>Sets the generation of the book. </para>
         </briefdescription>
         <detaileddescription>
+<para>Removes generation when given std::nullopt.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>generation</parametername>
@@ -247,7 +250,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/meta/book_meta.h" line="117" column="18"/>
+        <location file="include/endstone/inventory/meta/book_meta.h" line="115" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -303,7 +306,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/inventory/meta/book_meta.h" line="26" column="1" bodyfile="include/endstone/inventory/meta/book_meta.h" bodystart="26" bodyend="118"/>
+    <location file="include/endstone/inventory/meta/book_meta.h" line="26" column="1" bodyfile="include/endstone/inventory/meta/book_meta.h" bodystart="26" bodyend="116"/>
     <listofallmembers>
       <member refid="classendstone_1_1ItemMeta_1ac1ee49d00e1cdd56816e0e775bff4241" prot="public" virt="pure-virtual"><scope>endstone::BookMeta</scope><name>addEnchant</name></member>
       <member refid="classendstone_1_1WritableBookMeta_1a40c40653c9f6d88d170e9aa5b9838df8" prot="public" virt="non-virtual"><scope>endstone::BookMeta</scope><name>addPage</name></member>

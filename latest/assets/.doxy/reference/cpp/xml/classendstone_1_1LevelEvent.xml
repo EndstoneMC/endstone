@@ -47,9 +47,9 @@
         <name>getLevel</name>
         <qualifiedname>endstone::LevelEvent::getLevel</qualifiedname>
         <briefdescription>
+<para>Gets the level primarily involved with this event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the level primarily involved with this event</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> which caused this event </para>
 </simplesect>
 </para>

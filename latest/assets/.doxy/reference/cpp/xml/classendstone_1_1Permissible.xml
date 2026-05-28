@@ -102,9 +102,10 @@
           <declname>name</declname>
         </param>
         <briefdescription>
-<para>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned. </para>
+<para>Gets the value of the specified permission, if set. </para>
         </briefdescription>
         <detaileddescription>
+<para>If a permission override is not set on this object, the default value of the permission will be returned.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>name</parametername>
@@ -134,9 +135,10 @@
           <declname>perm</declname>
         </param>
         <briefdescription>
-<para>Gets the value of the specified permission, if set. If a permission override is not set on this object, the default value of the permission will be returned. </para>
+<para>Gets the value of the specified permission, if set. </para>
         </briefdescription>
         <detaileddescription>
+<para>If a permission override is not set on this object, the default value of the permission will be returned.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>perm</parametername>
@@ -182,7 +184,7 @@
 <parametername>plugin</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> responsible for this attachment, may not be null or disabled </para>
+<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> responsible for this attachment; must not be disabled. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -230,7 +232,7 @@
 <parametername>plugin</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> responsible for this attachment, may not be null or disabled </para>
+<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> responsible for this attachment; must not be disabled. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -282,9 +284,10 @@
         <qualifiedname>endstone::Permissible::recalculatePermissions</qualifiedname>
         <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a02337d177f390cee414977a16b3e07bd">recalculatePermissions</reimplementedby>
         <briefdescription>
-<para>Recalculates the permissions for this object, if the attachments have changed values. This should very rarely need to be called from a plugin. </para>
+<para>Recalculates the permissions for this object, if the attachments have changed values. </para>
         </briefdescription>
         <detaileddescription>
+<para>This should very rarely need to be called from a plugin. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

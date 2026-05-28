@@ -100,7 +100,7 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 |  std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getRecipients**](#function-getrecipients) () const<br>_Gets a set of recipients that this chat message will be displayed to._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setFormat**](#function-setformat) (std::string format) <br>_Sets the format to use to display this chat message._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setMessage**](#function-setmessage) (std::string message) <br>_Sets the message that the player will send._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setPlayer**](#function-setplayer) ([**Player**](classendstone_1_1Player.md) & player) <br>_Sets the player that this message will display as._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setPlayer**](#function-setplayer) ([**Player**](classendstone_1_1Player.md) & player) <br>_Sets the player that this message will be displayed as being sent by._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -109,9 +109,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -376,7 +376,7 @@ inline void endstone::PlayerChatEvent::setMessage (
 
 ### function setPlayer 
 
-_Sets the player that this message will display as._ 
+_Sets the player that this message will be displayed as being sent by._ 
 ```C++
 inline void endstone::PlayerChatEvent::setPlayer (
     Player & player
@@ -390,7 +390,7 @@ inline void endstone::PlayerChatEvent::setPlayer (
 **Parameters:**
 
 
-* `player` New player which this event will execute as 
+* `player` The player to display this message as. 
 
 
 

@@ -55,12 +55,12 @@ _Represents a slider with a label._
 |   | [**Slider**](#function-slider-12) () = default<br> |
 |   | [**Slider**](#function-slider-22) (Message label, [**float**](classendstone_1_1Identifier.md) min, [**float**](classendstone_1_1Identifier.md) max, [**float**](classendstone_1_1Identifier.md) step, std::optional&lt; [**float**](classendstone_1_1Identifier.md) &gt; default\_value=std::nullopt) <br> |
 |  std::optional&lt; [**float**](classendstone_1_1Identifier.md) &gt; | [**getDefaultValue**](#function-getdefaultvalue) () const<br>_Gets the default value of the slider._  |
-|  Message | [**getLabel**](#function-getlabel) () const<br>_Gets the label of the toggle._  |
+|  Message | [**getLabel**](#function-getlabel) () const<br>_Gets the label of the slider._  |
 |  [**float**](classendstone_1_1Identifier.md) | [**getMax**](#function-getmax) () const<br>_Gets the maximum value of the slider._  |
 |  [**float**](classendstone_1_1Identifier.md) | [**getMin**](#function-getmin) () const<br>_Gets the minimum value of the slider._  |
 |  [**float**](classendstone_1_1Identifier.md) | [**getStep**](#function-getstep) () const<br>_Gets the step size of the slider._  |
 |  [**Slider**](classendstone_1_1Slider.md) & | [**setDefaultValue**](#function-setdefaultvalue) (std::optional&lt; [**float**](classendstone_1_1Identifier.md) &gt; default\_value) <br>_Sets the default value of the slider._  |
-|  [**Slider**](classendstone_1_1Slider.md) & | [**setLabel**](#function-setlabel) (Message label) <br>_Sets the label of the toggle._  |
+|  [**Slider**](classendstone_1_1Slider.md) & | [**setLabel**](#function-setlabel) (Message label) <br>_Sets the label of the slider._  |
 |  [**Slider**](classendstone_1_1Slider.md) & | [**setMax**](#function-setmax) ([**float**](classendstone_1_1Identifier.md) max) <br>_Sets the maximum value of the slider._  |
 |  [**Slider**](classendstone_1_1Slider.md) & | [**setMin**](#function-setmin) ([**float**](classendstone_1_1Identifier.md) min) <br>_Sets the minimum value of the slider._  |
 |  [**Slider**](classendstone_1_1Slider.md) & | [**setStep**](#function-setstep) ([**float**](classendstone_1_1Identifier.md) step) <br>_Sets the step size of the slider._  |
@@ -156,7 +156,7 @@ The default value of the slider.
 
 ### function getLabel 
 
-_Gets the label of the toggle._ 
+_Gets the label of the slider._ 
 ```C++
 inline Message endstone::Slider::getLabel () const
 ```
@@ -167,7 +167,7 @@ inline Message endstone::Slider::getLabel () const
 
 **Returns:**
 
-The label of the toggle. 
+The label of the slider. 
 
 
 
@@ -290,7 +290,7 @@ A reference to the current slider, for function chaining.
 
 ### function setLabel 
 
-_Sets the label of the toggle._ 
+_Sets the label of the slider._ 
 ```C++
 inline Slider & endstone::Slider::setLabel (
     Message label
@@ -304,13 +304,13 @@ inline Slider & endstone::Slider::setLabel (
 **Parameters:**
 
 
-* `label` The new label for the toggle. 
+* `label` The new label for the slider. 
 
 
 
 **Returns:**
 
-A reference to the current toggle. 
+A reference to the current slider, for function chaining. 
 
 
 

@@ -12,33 +12,33 @@
         <enumvalue id="classendstone_1_1PlayerInteractEvent_1aeb83b5a442ff89d6ffa627d6de378ce8a5662aee6b1ac337204b328d44fc4820d" prot="public">
           <name>LeftClickBlock</name>
           <briefdescription>
+<para>Left-clicking a block. </para>
           </briefdescription>
           <detaileddescription>
-<para>Left-clicking a block </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="classendstone_1_1PlayerInteractEvent_1aeb83b5a442ff89d6ffa627d6de378ce8aad2783b23ef59758356afa3690f496a8" prot="public">
           <name>RightClickBlock</name>
           <briefdescription>
+<para>Right-clicking a block. </para>
           </briefdescription>
           <detaileddescription>
-<para>Right-clicking a block </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="classendstone_1_1PlayerInteractEvent_1aeb83b5a442ff89d6ffa627d6de378ce8a6e035f7d71a48e6f995e99cf42930fa3" prot="public">
           <name>LeftClickAir</name>
           <briefdescription>
+<para>Left-clicking the air. </para>
           </briefdescription>
           <detaileddescription>
-<para>Left-clicking the air </para>
           </detaileddescription>
         </enumvalue>
         <enumvalue id="classendstone_1_1PlayerInteractEvent_1aeb83b5a442ff89d6ffa627d6de378ce8ad23c62a9cf269e4288f73e1b42e07c7d" prot="public">
           <name>RightClickAir</name>
           <briefdescription>
+<para>Right-clicking the air. </para>
           </briefdescription>
           <detaileddescription>
-<para>Right-clicking the air </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>

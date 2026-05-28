@@ -40,7 +40,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) <br>_Called when the console runs a command, early in the process._  |
+| class | [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) <br>_Called when a command is run by a non-player, early in the command handling process._  |
 
 
 

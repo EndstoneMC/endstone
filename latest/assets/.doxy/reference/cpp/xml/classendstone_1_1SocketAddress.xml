@@ -77,9 +77,9 @@
         <name>getHostname</name>
         <qualifiedname>endstone::SocketAddress::getHostname</qualifiedname>
         <briefdescription>
+<para>Gets the hostname. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the hostname.</para>
 <para><simplesect kind="return"><para>The hostname of this socket address </para>
 </simplesect>
 </para>
@@ -95,9 +95,9 @@
         <name>getPort</name>
         <qualifiedname>endstone::SocketAddress::getPort</qualifiedname>
         <briefdescription>
+<para>Gets the port number. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the port number.</para>
 <para><simplesect kind="return"><para>The port number of this socket address </para>
 </simplesect>
 </para>

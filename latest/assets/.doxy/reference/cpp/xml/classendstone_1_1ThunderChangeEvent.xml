@@ -81,9 +81,9 @@
         <name>toThunderState</name>
         <qualifiedname>endstone::ThunderChangeEvent::toThunderState</qualifiedname>
         <briefdescription>
+<para>Gets the state of thunder that the world is being set to. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the state of thunder that the world is being set to</para>
 <para><simplesect kind="return"><para>true if the weather is being set to thundering, false otherwise </para>
 </simplesect>
 </para>

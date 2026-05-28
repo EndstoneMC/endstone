@@ -40,7 +40,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md) <br>_Called when a block explodes (e.g. bed in the Nether, respawn anchor in the Overworld)._  |
+| class | [**BlockExplodeEvent**](classendstone_1_1BlockExplodeEvent.md) <br>_Called when a block explodes (e.g._  |
 
 
 

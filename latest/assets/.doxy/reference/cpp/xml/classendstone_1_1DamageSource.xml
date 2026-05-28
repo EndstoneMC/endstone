@@ -47,7 +47,7 @@
         </briefdescription>
         <detaileddescription>
 <para>Not to be confused with <ref refid="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" kindref="member">DamageSource::getDamagingActor()</ref>, the returned actor is the actor to which the damage is ultimately attributed if the receiver is killed. If, for example, the receiver was damaged by a projectile, the shooter/thrower would be returned.</para>
-<para><simplesect kind="return"><para>an <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> or null </para>
+<para><simplesect kind="return"><para>an <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref>, or nullptr if none. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -66,7 +66,7 @@
         </briefdescription>
         <detaileddescription>
 <para>Not to be confused with <ref refid="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" kindref="member">DamageSource::getActor()</ref>, the returned actor is the actor that actually inflicted the damage. If, for example, the receiver was damaged by a projectile, the projectile would be returned.</para>
-<para><simplesect kind="return"><para>an <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> or null </para>
+<para><simplesect kind="return"><para>an <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref>, or nullptr if none. </para>
 </simplesect>
 </para>
         </detaileddescription>

@@ -192,8 +192,15 @@
 <para>Sets the raw packet data <bold>excluding</bold> the header. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The packet payload data. </para>
-</simplesect>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new packet payload data. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
 </para>
         </detaileddescription>
         <inbodydescription>

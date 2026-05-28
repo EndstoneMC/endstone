@@ -228,9 +228,10 @@
           <declname>expiration</declname>
         </param>
         <briefdescription>
-<para>Sets the date this ban expires on. std::nullopt values are considered &quot;infinite&quot; bans. </para>
+<para>Sets the date this ban expires on. </para>
         </briefdescription>
         <detaileddescription>
+<para>std::nullopt values are considered &quot;infinite&quot; bans.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>expiration</parametername>

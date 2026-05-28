@@ -2695,7 +2695,7 @@ For latest updates join the chat on
 
 <h1 id="class-endstonedimensionevent">Class endstone::DimensionEvent<a class="headerlink" href="#class-endstonedimensionevent" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>DimensionEvent</strong></a></p>
-<p><em>Represents events within a level.</em> </p>
+<p><em>Represents events within a dimension.</em> </p>
 <ul>
 <li><code>#include &lt;endstone/event/level/dimension_event.h&gt;</code></li>
 </ul>
@@ -2716,7 +2716,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getdimension"><strong>getDimension</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getdimension"><strong>getDimension</strong></a> () const<br><em>Gets the dimension primarily involved with this event.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2736,7 +2736,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Level/"><strong>Level</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1LevelEvent/#function-getlevel"><strong>getLevel</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1LevelEvent/#function-getlevel"><strong>getLevel</strong></a> () const<br><em>Gets the level primarily involved with this event.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2764,11 +2764,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-geteventname"><strong>getEventName</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-geteventname"><strong>getEventName</strong></a> () const = 0<br><em>Gets a user-friendly identifier for this event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-isasynchronous"><strong>isAsynchronous</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Event/#function-isasynchronous"><strong>isAsynchronous</strong></a> () const<br><em>Any custom event that should not by synchronized with other events must use the specific constructor.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Event/"><strong>Event</strong></a> &amp;</td>
@@ -2793,9 +2793,9 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getdimension">function getDimension<a class="headerlink" href="#function-getdimension" title="Permanent link">&para;</a></h3>
+<p><em>Gets the dimension primarily involved with this event.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">DimensionEvent</span><span class="o">::</span><span class="n">getDimension</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets the dimension primarily involved with this event</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> which caused this event </p>
 <hr>

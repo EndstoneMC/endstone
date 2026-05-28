@@ -192,8 +192,15 @@
 <para>Sets the raw packet data <bold>excluding</bold> the header. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The packet payload data. </para>
-</simplesect>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>payload</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new packet payload data. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
 </para>
         </detaileddescription>
         <inbodydescription>
@@ -227,10 +234,10 @@
         <name>getAddress</name>
         <qualifiedname>endstone::PacketReceiveEvent::getAddress</qualifiedname>
         <briefdescription>
-<para>Gets the network address to which this packet is being sent. </para>
+<para>Gets the network address of the client that sent this packet. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The <ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref> of the destination client. </para>
+<para><simplesect kind="return"><para>The <ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref> of the source client. </para>
 </simplesect>
 </para>
         </detaileddescription>

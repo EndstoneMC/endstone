@@ -56,8 +56,8 @@ Inherited by the following classes: [endstone::ActorEvent](classendstone_1_1Acto
 |   | [**Event**](#function-event-13) ([**bool**](classendstone_1_1Identifier.md) async=[**false**](classendstone_1_1Identifier.md)) <br> |
 |   | [**Event**](#function-event-23) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
 |   | [**Event**](#function-event-33) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
-| virtual std::string | [**getEventName**](#function-geteventname) () const = 0<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**isAsynchronous**](#function-isasynchronous) () const<br> |
+| virtual std::string | [**getEventName**](#function-geteventname) () const = 0<br>_Gets a user-friendly identifier for this event._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**isAsynchronous**](#function-isasynchronous) () const<br>_Any custom event that should not by synchronized with other events must use the specific constructor._  |
 |  [**Event**](classendstone_1_1Event.md) & | [**operator=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Event**](classendstone_1_1Event.md) &) = delete<br> |
 |  [**Event**](classendstone_1_1Event.md) & | [**operator=**](#function-operator_1) ([**Event**](classendstone_1_1Event.md) &&) = default<br> |
 | virtual  | [**~Event**](#function-event) () = default<br> |
@@ -141,13 +141,11 @@ endstone::Event::Event (
 
 ### function getEventName 
 
+_Gets a user-friendly identifier for this event._ 
 ```C++
 virtual std::string endstone::Event::getEventName () const = 0
 ```
 
-
-
-Gets a user-friendly identifier for this event.
 
 
 
@@ -168,13 +166,11 @@ name of this event
 
 ### function isAsynchronous 
 
+_Any custom event that should not by synchronized with other events must use the specific constructor._ 
 ```C++
 inline bool endstone::Event::isAsynchronous () const
 ```
 
-
-
-Any custom event that should not by synchronized with other events must use the specific constructor.
 
 
 

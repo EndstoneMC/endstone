@@ -71,12 +71,12 @@ Inherited by the following classes: [endstone::PlayerInventory](classendstone_1_
 | virtual std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getItem**](#function-getitem) ([**int**](classendstone_1_1Identifier.md) index) const = 0<br>_Returns the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _found in the slot at the given index._ |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br>_Returns the maximum stack size for an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _in this inventory._ |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getSize**](#function-getsize) () const = 0<br>_Returns the size of the inventory._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isEmpty**](#function-isempty) () const = 0<br>_Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isEmpty**](#function-isempty) () const = 0<br>_Check whether this inventory is empty._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**remove**](#function-remove-12) ([**const**](classendstone_1_1Identifier.md) std::string & type) = 0<br>_Removes all stacks in the inventory matching the given_ [_**ItemType**_](classendstone_1_1ItemType.md) _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**remove**](#function-remove-22) ([**const**](classendstone_1_1Identifier.md) [**ItemStack**](classendstone_1_1ItemStack.md) & item) = 0<br>_Removes all stacks in the inventory matching the given stack._  |
 | virtual std::unordered\_map&lt; [**int**](classendstone_1_1Identifier.md), [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**removeItem**](#function-removeitem-12) (std::vector&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; items) = 0<br>_Removes the given ItemStacks from the inventory._  |
 |  std::unordered\_map&lt; [**int**](classendstone_1_1Identifier.md), [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**removeItem**](#function-removeitem-22) ([**Args**](classendstone_1_1Identifier.md) &&... items) <br>_Removes the given ItemStacks from the inventory._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setContents**](#function-setcontents) (std::vector&lt; std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; &gt; items) = 0<br>_Completely replaces the inventory's contents. Removes all existing contents and replaces it with the ItemStacks given in the array._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setContents**](#function-setcontents) (std::vector&lt; std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; &gt; items) = 0<br>_Completely replaces the inventory's contents._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setItem**](#function-setitem) ([**int**](classendstone_1_1Identifier.md) index, std::optional&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; item) = 0<br>_Stores the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _at the given index of the inventory._ |
 | virtual  | [**~Inventory**](#function-inventory) () = default<br> |
 
@@ -725,11 +725,14 @@ The size of the inventory
 
 ### function isEmpty 
 
-_Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory._ 
+_Check whether this inventory is empty._ 
 ```C++
 virtual bool endstone::Inventory::isEmpty () const = 0
 ```
 
+
+
+An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.
 
 
 
@@ -908,13 +911,16 @@ A map containing items that couldn't be removed.
 
 ### function setContents 
 
-_Completely replaces the inventory's contents. Removes all existing contents and replaces it with the ItemStacks given in the array._ 
+_Completely replaces the inventory's contents._ 
 ```C++
 virtual void endstone::Inventory::setContents (
     std::vector< std::optional< ItemStack > > items
 ) = 0
 ```
 
+
+
+Removes all existing contents and replaces it with the ItemStacks given in the array.
 
 
 

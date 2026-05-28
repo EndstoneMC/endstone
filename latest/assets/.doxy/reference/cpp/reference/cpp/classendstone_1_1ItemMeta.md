@@ -83,21 +83,21 @@ Inherited by the following classes: [endstone::CrossbowMeta](classendstone_1_1Cr
 | virtual [**const**](classendstone_1_1Identifier.md) core::ItemMetaExtras & | [**getExtras**](#function-getextras) () const = 0<br> |
 | virtual std::vector&lt; std::string &gt; | [**getLore**](#function-getlore) () const = 0<br>_Gets the lore that is set._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getRepairCost**](#function-getrepaircost) () const = 0<br>_Gets the repair penalty._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasConflictingEnchant**](#function-hasconflictingenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasConflictingEnchant**](#function-hasconflictingenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br>_Checks if the specified enchantment conflicts with any enchantments in this_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasDamage**](#function-hasdamage) () const = 0<br>_Checks to see if this item has damage._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasDisplayName**](#function-hasdisplayname) () const = 0<br>_Checks for existence of a display name._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasEnchant**](#function-hasenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) const = 0<br>_Checks for existence of the specified enchantment._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasEnchants**](#function-hasenchants) () const = 0<br>_Checks for the existence of any enchantments._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasLore**](#function-haslore) () const = 0<br>_Checks for existence of lore._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasRepairCost**](#function-hasrepaircost) () const = 0<br>_Checks to see if this has a repair penalty._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isUnbreakable**](#function-isunbreakable) () const = 0<br>_Return if the unbreakable tag is true. An unbreakable item will not lose durability._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isUnbreakable**](#function-isunbreakable) () const = 0<br>_Return if the unbreakable tag is true._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**removeEnchant**](#function-removeenchant) ([**EnchantmentId**](classendstone_1_1Identifier.md) id) = 0<br>_Removes the specified enchantment from this item meta._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**removeEnchants**](#function-removeenchants) () = 0<br>_Removes all enchantments from this item meta._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setDamage**](#function-setdamage) ([**int**](classendstone_1_1Identifier.md) damage) = 0<br>_Sets the damage._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setDisplayName**](#function-setdisplayname) (std::optional&lt; std::string &gt; name) = 0<br>_Sets the display name._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setLore**](#function-setlore) (std::optional&lt; std::vector&lt; std::string &gt; &gt; lore) = 0<br>_Sets the lore for this item or removes lore when given_ `std::nullopt` _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setRepairCost**](#function-setrepaircost) ([**int**](classendstone_1_1Identifier.md) cost) = 0<br>_Sets the repair penalty._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setUnbreakable**](#function-setunbreakable) ([**bool**](classendstone_1_1Identifier.md) unbreakable) = 0<br>_Sets the unbreakable tag. An unbreakable item will not lose durability._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setUnbreakable**](#function-setunbreakable) ([**bool**](classendstone_1_1Identifier.md) unbreakable) = 0<br>_Sets the unbreakable tag._  |
 
 
 ## Public Functions inherited from endstone::Object
@@ -411,15 +411,13 @@ the repair penalty
 
 ### function hasConflictingEnchant 
 
+_Checks if the specified enchantment conflicts with any enchantments in this_ [_**ItemMeta**_](classendstone_1_1ItemMeta.md) _._
 ```C++
 virtual bool endstone::ItemMeta::hasConflictingEnchant (
     EnchantmentId id
 ) const = 0
 ```
 
-
-
-Checks if the specified enchantment conflicts with any enchantments in this [**ItemMeta**](classendstone_1_1ItemMeta.md).
 
 
 
@@ -606,11 +604,14 @@ true if this has a repair penalty
 
 ### function isUnbreakable 
 
-_Return if the unbreakable tag is true. An unbreakable item will not lose durability._ 
+_Return if the unbreakable tag is true._ 
 ```C++
 virtual bool endstone::ItemMeta::isUnbreakable () const = 0
 ```
 
+
+
+An unbreakable item will not lose durability.
 
 
 
@@ -787,13 +788,16 @@ virtual void endstone::ItemMeta::setRepairCost (
 
 ### function setUnbreakable 
 
-_Sets the unbreakable tag. An unbreakable item will not lose durability._ 
+_Sets the unbreakable tag._ 
 ```C++
 virtual void endstone::ItemMeta::setUnbreakable (
     bool unbreakable
 ) = 0
 ```
 
+
+
+An unbreakable item will not lose durability.
 
 
 

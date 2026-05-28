@@ -11,9 +11,10 @@
         <enumvalue id="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1abcf036b6f33e182d4705f4f5b1af13ac" prot="public">
           <name>Dummy</name>
           <briefdescription>
-<para>The dummy criteria. Not changed by the server. </para>
+<para>The dummy criteria. </para>
           </briefdescription>
           <detaileddescription>
+<para>Not changed by the server. </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
@@ -65,9 +66,10 @@
         <name>isReadOnly</name>
         <qualifiedname>endstone::Criteria::isReadOnly</qualifiedname>
         <briefdescription>
-<para>Get whether or not this criteria is read only. If read only, scoreboards with this criteria cannot have their scores changed. </para>
+<para>Get whether or not this criteria is read only. </para>
         </briefdescription>
         <detaileddescription>
+<para>If read only, scoreboards with this criteria cannot have their scores changed.</para>
 <para><simplesect kind="return"><para>true if read only, false otherwise </para>
 </simplesect>
 </para>
@@ -83,9 +85,9 @@
         <name>getDefaultRenderType</name>
         <qualifiedname>endstone::Criteria::getDefaultRenderType</qualifiedname>
         <briefdescription>
+<para>Get the RenderType used by default for this criteria. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the RenderType used by default for this criteria.</para>
 <para><simplesect kind="return"><para>the default render type </para>
 </simplesect>
 </para>

@@ -340,9 +340,10 @@
         <name>getName</name>
         <qualifiedname>endstone::PluginDescription::getName</qualifiedname>
         <briefdescription>
+<para>Gives the name of the plugin. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives the name of the plugin. This name is a unique identifier for plugins.</para>
+<para>This name is a unique identifier for plugins.</para>
 <para><simplesect kind="return"><para>the name of the plugin </para>
 </simplesect>
 </para>
@@ -358,9 +359,9 @@
         <name>getVersion</name>
         <qualifiedname>endstone::PluginDescription::getVersion</qualifiedname>
         <briefdescription>
+<para>Gives the version of the plugin. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives the version of the plugin.</para>
 <para><simplesect kind="return"><para>the version of the plugin </para>
 </simplesect>
 </para>
@@ -376,9 +377,9 @@
         <name>getFullName</name>
         <qualifiedname>endstone::PluginDescription::getFullName</qualifiedname>
         <briefdescription>
+<para>Returns the name of a plugin, including the version. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the name of a plugin, including the version.</para>
 <para><simplesect kind="return"><para>a descriptive name of the plugin and respective version </para>
 </simplesect>
 </para>
@@ -394,9 +395,9 @@
         <name>getAPIVersion</name>
         <qualifiedname>endstone::PluginDescription::getAPIVersion</qualifiedname>
         <briefdescription>
+<para>Gives the API version which this plugin is designed to support. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives the API version which this plugin is designed to support.</para>
 <para><simplesect kind="return"><para>the API version supported by the plugin </para>
 </simplesect>
 </para>
@@ -412,9 +413,10 @@
         <name>getDescription</name>
         <qualifiedname>endstone::PluginDescription::getDescription</qualifiedname>
         <briefdescription>
+<para>Gives a human-friendly description of the functionality the plugin provides. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives a human-friendly description of the functionality the plugin provides. <simplesect kind="return"><para>description of this plugin, or empty if not specified </para>
+<para><simplesect kind="return"><para>description of this plugin, or empty if not specified </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -429,9 +431,9 @@
         <name>getLoad</name>
         <qualifiedname>endstone::PluginDescription::getLoad</qualifiedname>
         <briefdescription>
+<para>Gives the phase of server startup that the plugin should be loaded. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives the phase of server startup that the plugin should be loaded.</para>
 <para><simplesect kind="return"><para>the phase when the plugin should be loaded </para>
 </simplesect>
 </para>
@@ -447,9 +449,9 @@
         <name>getAuthors</name>
         <qualifiedname>endstone::PluginDescription::getAuthors</qualifiedname>
         <briefdescription>
+<para>Gives the list of authors for the plugin. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives the list of authors for the plugin.</para>
 <para><simplesect kind="return"><para>an immutable list of the plugin&apos;s authors </para>
 </simplesect>
 </para>
@@ -465,9 +467,9 @@
         <name>getContributors</name>
         <qualifiedname>endstone::PluginDescription::getContributors</qualifiedname>
         <briefdescription>
+<para>Gives the list of contributors for the plugin. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives the list of contributors for the plugin.</para>
 <para><simplesect kind="return"><para>an immutable list of the plugin&apos;s contributions </para>
 </simplesect>
 </para>
@@ -483,9 +485,9 @@
         <name>getWebsite</name>
         <qualifiedname>endstone::PluginDescription::getWebsite</qualifiedname>
         <briefdescription>
+<para>Gives the plugin&apos;s or plugin&apos;s author&apos;s website. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives the plugin&apos;s or plugin&apos;s author&apos;s website.</para>
 <para><simplesect kind="return"><para>the website of this plugin, or empty if not specified </para>
 </simplesect>
 </para>
@@ -501,9 +503,9 @@
         <name>getPrefix</name>
         <qualifiedname>endstone::PluginDescription::getPrefix</qualifiedname>
         <briefdescription>
+<para>Gives the token to prefix plugin-specific logging messages with. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives the token to prefix plugin-specific logging messages with.</para>
 <para><simplesect kind="return"><para>the prefixed logging token, or empty if not specified </para>
 </simplesect>
 </para>
@@ -519,9 +521,10 @@
         <name>getProvides</name>
         <qualifiedname>endstone::PluginDescription::getProvides</qualifiedname>
         <briefdescription>
+<para>Gives the list of other plugin APIs which this plugin provides. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives the list of other plugin APIs which this plugin provides. These are usable for other plugins to depend on.</para>
+<para>These are usable for other plugins to depend on.</para>
 <para><simplesect kind="return"><para>immutable list of the plugin APIs which this plugin provides </para>
 </simplesect>
 </para>
@@ -537,9 +540,9 @@
         <name>getDepend</name>
         <qualifiedname>endstone::PluginDescription::getDepend</qualifiedname>
         <briefdescription>
+<para>Gives a list of other plugins that the plugin requires. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives a list of other plugins that the plugin requires.</para>
 <para><simplesect kind="return"><para>immutable list of the plugin&apos;s dependencies </para>
 </simplesect>
 </para>
@@ -555,9 +558,9 @@
         <name>getSoftDepend</name>
         <qualifiedname>endstone::PluginDescription::getSoftDepend</qualifiedname>
         <briefdescription>
+<para>Gives a list of other plugins that the plugin requires for full functionality. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives a list of other plugins that the plugin requires for full functionality.</para>
 <para><simplesect kind="return"><para>immutable list of the plugin&apos;s preferred dependencies </para>
 </simplesect>
 </para>
@@ -573,9 +576,9 @@
         <name>getLoadBefore</name>
         <qualifiedname>endstone::PluginDescription::getLoadBefore</qualifiedname>
         <briefdescription>
+<para>Gets the list of plugins that should consider this plugin a soft-dependency. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the list of plugins that should consider this plugin a soft-dependency.</para>
 <para><simplesect kind="return"><para>immutable list of plugins that should consider this plugin a soft-dependency </para>
 </simplesect>
 </para>
@@ -591,9 +594,9 @@
         <name>getDefaultPermission</name>
         <qualifiedname>endstone::PluginDescription::getDefaultPermission</qualifiedname>
         <briefdescription>
+<para>Gives the default value of permissions registered for the plugin. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives the default value of permissions registered for the plugin.</para>
 <para><simplesect kind="return"><para>the default value for the plugin&apos;s permissions </para>
 </simplesect>
 </para>
@@ -609,9 +612,9 @@
         <name>getCommands</name>
         <qualifiedname>endstone::PluginDescription::getCommands</qualifiedname>
         <briefdescription>
+<para>Gives the list of commands the plugin will register at runtime. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives the list of commands the plugin will register at runtime.</para>
 <para><simplesect kind="return"><para>the commands this plugin will register </para>
 </simplesect>
 </para>
@@ -627,9 +630,9 @@
         <name>getPermissions</name>
         <qualifiedname>endstone::PluginDescription::getPermissions</qualifiedname>
         <briefdescription>
+<para>Gives the list of permissions the plugin will register at runtime, immediately proceeding enabling. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gives the list of permissions the plugin will register at runtime, immediately proceeding enabling.</para>
 <para><simplesect kind="return"><para>the permissions this plugin will register </para>
 </simplesect>
 </para>

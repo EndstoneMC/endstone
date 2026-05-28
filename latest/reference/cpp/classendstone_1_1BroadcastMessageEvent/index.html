@@ -2769,15 +2769,15 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> Message &amp;</td>
-<td style="text-align: left;"><a href="#function-getmessage"><strong>getMessage</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getmessage"><strong>getMessage</strong></a> () const<br><em>Get the message to broadcast.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::unordered_set&lt; <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> * &gt; &amp;</td>
-<td style="text-align: left;"><a href="#function-getrecipients"><strong>getRecipients</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getrecipients"><strong>getRecipients</strong></a> () const<br><em>Gets a set of recipients that this broadcast message will be displayed to.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setmessage"><strong>setMessage</strong></a> (Message message) <br></td>
+<td style="text-align: left;"><a href="#function-setmessage"><strong>setMessage</strong></a> (Message message) <br><em>Set the message to broadcast.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2793,15 +2793,15 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-cancel"><strong>cancel</strong></a> () <br><em>Cancel this event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () override const<br><em>Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-iscancelled"><strong>isCancelled</strong></a> () override const<br><em>Gets the cancellation state of this event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> cancel) override<br><em>Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Cancellable/#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> cancel) override<br><em>Sets the cancellation state of this event.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2853,27 +2853,27 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getmessage">function getMessage<a class="headerlink" href="#function-getmessage" title="Permanent link">&para;</a></h3>
+<p><em>Get the message to broadcast.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BroadcastMessageEvent</span><span class="o">::</span><span class="n">getMessage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Get the message to broadcast.</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Message to broadcast </p>
 <hr>
 
 <h3 id="function-getrecipients">function getRecipients<a class="headerlink" href="#function-getrecipients" title="Permanent link">&para;</a></h3>
+<p><em>Gets a set of recipients that this broadcast message will be displayed to.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BroadcastMessageEvent</span><span class="o">::</span><span class="n">getRecipients</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets a set of recipients that this broadcast message will be displayed to.</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>All CommandSenders who will see this broadcast message </p>
 <hr>
 
 <h3 id="function-setmessage">function setMessage<a class="headerlink" href="#function-setmessage" title="Permanent link">&para;</a></h3>
+<p><em>Set the message to broadcast.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BroadcastMessageEvent</span><span class="o">::</span><span class="n">setMessage</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">message</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Set the message to broadcast.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>message</code> New message to broadcast </li>

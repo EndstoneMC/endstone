@@ -902,9 +902,10 @@
           <declname>other</declname>
         </param>
         <briefdescription>
-<para>Calculates the dot product of this vector with another. The dot product is defined as x1*x2+y1*y2+z1*z2. The returned value is a scalar. </para>
+<para>Calculates the dot product of this vector with another. </para>
         </briefdescription>
         <detaileddescription>
+<para>The dot product is defined as x1*x2+y1*y2+z1*z2. The returned value is a scalar.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>other</parametername>

@@ -53,7 +53,7 @@ Inherited by the following classes: [endstone::Plugin](classendstone_1_1Plugin.m
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**onCommand**](#function-oncommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Identifier.md) [**Command**](classendstone_1_1Command.md) & command, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) <br> |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**onCommand**](#function-oncommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, [**const**](classendstone_1_1Identifier.md) [**Command**](classendstone_1_1Command.md) & command, [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & args) <br>_Executes the given command, returning its success._  |
 | virtual  | [**~CommandExecutor**](#function-commandexecutor) () = default<br> |
 
 
@@ -90,6 +90,7 @@ Inherited by the following classes: [endstone::Plugin](classendstone_1_1Plugin.m
 
 ### function onCommand 
 
+_Executes the given command, returning its success._ 
 ```C++
 inline virtual bool endstone::CommandExecutor::onCommand (
     CommandSender & sender,
@@ -98,9 +99,6 @@ inline virtual bool endstone::CommandExecutor::onCommand (
 ) 
 ```
 
-
-
-Executes the given command, returning its success.
 
 
 

@@ -81,9 +81,9 @@
         <name>getCommand</name>
         <qualifiedname>endstone::ServerCommandEvent::getCommand</qualifiedname>
         <briefdescription>
+<para>Gets the command that the server is attempting to execute from the console. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the command that the server is attempting to execute from the console</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Command" kindref="compound">Command</ref> the server is attempting to execute </para>
 </simplesect>
 </para>
@@ -92,26 +92,26 @@
         </inbodydescription>
         <location file="include/endstone/event/server/server_command_event.h" line="45" column="18" bodyfile="include/endstone/event/server/server_command_event.h" bodystart="45" bodyend="45"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ServerCommandEvent_1a738f83bdce175aed3493f4e15f7834a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ServerCommandEvent_1a3f806b7e5dd8a489495e633a39515df0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
         <definition>void endstone::ServerCommandEvent::setCommand</definition>
-        <argsstring>(std::string message)</argsstring>
+        <argsstring>(std::string command)</argsstring>
         <name>setCommand</name>
         <qualifiedname>endstone::ServerCommandEvent::setCommand</qualifiedname>
         <param>
           <type>std::string</type>
-          <declname>message</declname>
+          <declname>command</declname>
         </param>
         <briefdescription>
+<para>Sets the command that the server will execute. </para>
         </briefdescription>
         <detaileddescription>
-<para>Sets the command that the server will execute</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>message</parametername>
+<parametername>command</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>New message that the server will execute </para>
+<para>New command that the server will execute. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -128,9 +128,9 @@
         <name>getSender</name>
         <qualifiedname>endstone::ServerCommandEvent::getSender</qualifiedname>
         <briefdescription>
+<para>Get the command sender. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the command sender.</para>
 <para><simplesect kind="return"><para>The sender </para>
 </simplesect>
 </para>
@@ -141,7 +141,7 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Called when the console runs a command, early in the process. </para>
+<para>Called when a command is run by a non-player, early in the command handling process. </para>
     </briefdescription>
     <detaileddescription>
 <para>You should not use this except for a few cases like logging commands, blocking commands on certain places, or applying modifiers.</para>
@@ -225,7 +225,7 @@
       <member refid="classendstone_1_1ServerCommandEvent_1a7cffd99adc29d5cbf698c13bbffaaa4a" prot="private" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>sender_</name></member>
       <member refid="classendstone_1_1ServerCommandEvent_1a8c99c3360b322ea0d6fcf42b3b0ab4b0" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>ServerCommandEvent</name></member>
       <member refid="classendstone_1_1Cancellable_1aa12df44bcb66924d06a689d0dd07865e" prot="public" virt="virtual"><scope>endstone::ServerCommandEvent</scope><name>setCancelled</name></member>
-      <member refid="classendstone_1_1ServerCommandEvent_1a738f83bdce175aed3493f4e15f7834a9" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>setCommand</name></member>
+      <member refid="classendstone_1_1ServerCommandEvent_1a3f806b7e5dd8a489495e633a39515df0" prot="public" virt="non-virtual"><scope>endstone::ServerCommandEvent</scope><name>setCommand</name></member>
       <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::ServerCommandEvent</scope><name>~Event</name></member>
       <member refid="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" virt="virtual"><scope>endstone::ServerCommandEvent</scope><name>~ICancellable</name></member>
     </listofallmembers>

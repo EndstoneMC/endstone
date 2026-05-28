@@ -58,17 +58,17 @@ _Represents a unique permission that may be attached to a_ [_**Permissible**_](c
 | Type | Name |
 | ---: | :--- |
 |   | [**Permission**](#function-permission) (std::string name, std::string description="", [**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) default\_value=DefaultPermission, std::unordered\_map&lt; std::string, [**bool**](classendstone_1_1Identifier.md) &gt; children={}) <br> |
-|  [**Permission**](classendstone_1_1Permission.md) \* | [**addParent**](#function-addparent-12) (std::string name, [**bool**](classendstone_1_1Identifier.md) value) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**addParent**](#function-addparent-22) ([**Permission**](classendstone_1_1Permission.md) & perm, [**bool**](classendstone_1_1Identifier.md) value) const<br> |
-|  std::unordered\_map&lt; std::string, [**bool**](classendstone_1_1Identifier.md) &gt; & | [**getChildren**](#function-getchildren) () <br> |
-|  [**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) | [**getDefault**](#function-getdefault) () const<br> |
-|  std::string | [**getDescription**](#function-getdescription) () const<br> |
-|  std::string | [**getName**](#function-getname) () const<br> |
-|  std::unordered\_set&lt; [**Permissible**](classendstone_1_1Permissible.md) \* &gt; | [**getPermissibles**](#function-getpermissibles) () const<br> |
+|  [**Permission**](classendstone_1_1Permission.md) \* | [**addParent**](#function-addparent-12) (std::string name, [**bool**](classendstone_1_1Identifier.md) value) <br>_Adds this permission to the specified parent permission._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**addParent**](#function-addparent-22) ([**Permission**](classendstone_1_1Permission.md) & perm, [**bool**](classendstone_1_1Identifier.md) value) const<br>_Adds this permission to the specified parent permission._  |
+|  std::unordered\_map&lt; std::string, [**bool**](classendstone_1_1Identifier.md) &gt; & | [**getChildren**](#function-getchildren) () <br>_Gets the children of this permission._  |
+|  [**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) | [**getDefault**](#function-getdefault) () const<br>_Gets the default value of this permission._  |
+|  std::string | [**getDescription**](#function-getdescription) () const<br>_Gets a brief description of this permission, may be empty._  |
+|  std::string | [**getName**](#function-getname) () const<br>_Returns the unique fully qualified name of this_ [_**Permission**_](classendstone_1_1Permission.md) _._ |
+|  std::unordered\_set&lt; [**Permissible**](classendstone_1_1Permissible.md) \* &gt; | [**getPermissibles**](#function-getpermissibles) () const<br>_Gets a set containing every_ [_**Permissible**_](classendstone_1_1Permissible.md) _that has this permission._ |
 |  [**void**](classendstone_1_1Identifier.md) | [**init**](#function-init) ([**PluginManager**](classendstone_1_1PluginManager.md) & plugin\_manager) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**recalculatePermissibles**](#function-recalculatepermissibles) () <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setDefault**](#function-setdefault) ([**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) value) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setDescription**](#function-setdescription) (std::string value) <br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**recalculatePermissibles**](#function-recalculatepermissibles) () <br>_Recalculates all Permissibles that contain this permission._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setDefault**](#function-setdefault) ([**PermissionDefault**](namespaceendstone.md#enum-permissiondefault) value) <br>_Sets the default value of this permission._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setDescription**](#function-setdescription) (std::string value) <br>_Sets the description of this permission._  |
 
 
 
@@ -137,6 +137,7 @@ inline explicit endstone::Permission::Permission (
 
 ### function addParent [1/2]
 
+_Adds this permission to the specified parent permission._ 
 ```C++
 inline Permission * endstone::Permission::addParent (
     std::string name,
@@ -144,9 +145,6 @@ inline Permission * endstone::Permission::addParent (
 ) 
 ```
 
-
-
-Adds this permission to the specified parent permission.
 
 
 If the parent permission does not exist, it will be created and registered.
@@ -178,6 +176,7 @@ Parent permission it created or loaded
 
 ### function addParent [2/2]
 
+_Adds this permission to the specified parent permission._ 
 ```C++
 inline void endstone::Permission::addParent (
     Permission & perm,
@@ -185,9 +184,6 @@ inline void endstone::Permission::addParent (
 ) const
 ```
 
-
-
-Adds this permission to the specified parent permission.
 
 
 
@@ -209,13 +205,14 @@ Adds this permission to the specified parent permission.
 
 ### function getChildren 
 
+_Gets the children of this permission._ 
 ```C++
 inline std::unordered_map< std::string, bool > & endstone::Permission::getChildren () 
 ```
 
 
 
-Gets the children of this permission. If you change this map in any form, you must call [**recalculatePermissibles()**](classendstone_1_1Permission.md#function-recalculatepermissibles) to recalculate all Permissibles
+If you change this map in any form, you must call [**recalculatePermissibles()**](classendstone_1_1Permission.md#function-recalculatepermissibles) to recalculate all Permissibles.
 
 
 
@@ -236,13 +233,11 @@ Gets the children of this permission. If you change this map in any form, you mu
 
 ### function getDefault 
 
+_Gets the default value of this permission._ 
 ```C++
 inline PermissionDefault endstone::Permission::getDefault () const
 ```
 
-
-
-Gets the default value of this permission.
 
 
 
@@ -263,13 +258,11 @@ Default value of this permission.
 
 ### function getDescription 
 
+_Gets a brief description of this permission, may be empty._ 
 ```C++
 inline std::string endstone::Permission::getDescription () const
 ```
 
-
-
-Gets a brief description of this permission, may be empty
 
 
 
@@ -290,13 +283,11 @@ Brief description of this permission
 
 ### function getName 
 
+_Returns the unique fully qualified name of this_ [_**Permission**_](classendstone_1_1Permission.md) _._
 ```C++
 inline std::string endstone::Permission::getName () const
 ```
 
-
-
-Returns the unique fully qualified name of this [**Permission**](classendstone_1_1Permission.md)
 
 
 
@@ -317,13 +308,14 @@ Fully qualified name
 
 ### function getPermissibles 
 
+_Gets a set containing every_ [_**Permissible**_](classendstone_1_1Permissible.md) _that has this permission._
 ```C++
 inline std::unordered_set< Permissible * > endstone::Permission::getPermissibles () const
 ```
 
 
 
-Gets a set containing every [**Permissible**](classendstone_1_1Permissible.md) that has this permission. This set cannot be modified.
+This set cannot be modified.
 
 
 
@@ -359,13 +351,11 @@ inline void endstone::Permission::init (
 
 ### function recalculatePermissibles 
 
+_Recalculates all Permissibles that contain this permission._ 
 ```C++
 inline void endstone::Permission::recalculatePermissibles () 
 ```
 
-
-
-Recalculates all Permissibles that contain this permission.
 
 
 This should be called after modifying the children, and is automatically called after modifying the default value 
@@ -379,15 +369,13 @@ This should be called after modifying the children, and is automatically called 
 
 ### function setDefault 
 
+_Sets the default value of this permission._ 
 ```C++
 inline void endstone::Permission::setDefault (
     PermissionDefault value
 ) 
 ```
 
-
-
-Sets the default value of this permission.
 
 
 This will not be saved to disk, and is a temporary operation until the server reloads permissions. Changing this default will cause all Permissibles that contain this permission to recalculate their permissions
@@ -411,15 +399,13 @@ This will not be saved to disk, and is a temporary operation until the server re
 
 ### function setDescription 
 
+_Sets the description of this permission._ 
 ```C++
 inline void endstone::Permission::setDescription (
     std::string value
 ) 
 ```
 
-
-
-Sets the description of this permission.
 
 
 This will not be saved to disk, and is a temporary operation until the server reloads permissions.

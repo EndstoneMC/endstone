@@ -48,9 +48,9 @@
         <name>getChunk</name>
         <qualifiedname>endstone::ChunkEvent::getChunk</qualifiedname>
         <briefdescription>
+<para>Gets the chunk being loaded/unloaded. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the chunk being loaded/unloaded</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref> that triggered this event </para>
 </simplesect>
 </para>

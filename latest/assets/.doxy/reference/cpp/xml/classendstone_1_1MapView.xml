@@ -261,7 +261,7 @@
 <para>Get the dimension that this map is associated with. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>Pointer to the World this map is associated with, or nullptr. </para>
+<para><simplesect kind="return"><para>Pointer to the <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> this map is associated with, or nullptr. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -430,9 +430,10 @@
         <name>isLocked</name>
         <qualifiedname>endstone::MapView::isLocked</qualifiedname>
         <briefdescription>
-<para>Gets whether the map is locked or not. A locked map may not be explored further. </para>
+<para>Gets whether the map is locked or not. </para>
         </briefdescription>
         <detaileddescription>
+<para>A locked map may not be explored further.</para>
 <para><simplesect kind="return"><para>True if the map is locked. </para>
 </simplesect>
 </para>
@@ -452,9 +453,10 @@
           <declname>locked</declname>
         </param>
         <briefdescription>
-<para>Sets whether the map is locked or not. A locked map may not be explored further. </para>
+<para>Sets whether the map is locked or not. </para>
         </briefdescription>
         <detaileddescription>
+<para>A locked map may not be explored further.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>locked</parametername>

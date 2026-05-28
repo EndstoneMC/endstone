@@ -23,7 +23,7 @@
         <name>fp_cast</name>
         <qualifiedname>endstone::detail::fp_cast</qualifiedname>
         <briefdescription>
-<para>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier) </para>
+<para>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier). </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
@@ -204,9 +204,9 @@
         <name>getServer</name>
         <qualifiedname>endstone::detail::getServer</qualifiedname>
         <briefdescription>
+<para>Gets the current <ref refid="classendstone_1_1Server" kindref="compound">Server</ref> singleton. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the current <ref refid="classendstone_1_1Server" kindref="compound">Server</ref> singleton</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> instance being run </para>
 </simplesect>
 </para>

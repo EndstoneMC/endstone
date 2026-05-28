@@ -46,9 +46,10 @@
         <name>getMapId</name>
         <qualifiedname>endstone::MapMeta::getMapId</qualifiedname>
         <briefdescription>
-<para>Gets the map ID that is set. This is used to determine what map is displayed. </para>
+<para>Gets the map ID that is set. </para>
         </briefdescription>
         <detaileddescription>
+<para>This is used to determine what map is displayed.</para>
 <para><simplesect kind="return"><para>the map ID that is set </para>
 </simplesect>
 </para>
@@ -68,9 +69,10 @@
           <declname>id</declname>
         </param>
         <briefdescription>
-<para>Sets the map ID. This is used to determine what map is displayed. </para>
+<para>Sets the map ID. </para>
         </briefdescription>
         <detaileddescription>
+<para>This is used to determine what map is displayed.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>id</parametername>
@@ -135,9 +137,10 @@
           <declname>map</declname>
         </param>
         <briefdescription>
-<para>Sets the associated map. This is used to determine what map is displayed. </para>
+<para>Sets the associated map. </para>
         </briefdescription>
         <detaileddescription>
+<para>This is used to determine what map is displayed.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>map</parametername>

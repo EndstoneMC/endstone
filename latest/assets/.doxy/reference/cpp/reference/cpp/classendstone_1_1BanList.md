@@ -59,8 +59,8 @@ _Represents a ban list, containing bans._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**addBan**](#function-addban-12) (std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**addBan**](#function-addban-22) (std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**addBan**](#function-addban-12) (std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list._  |
+| virtual [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**addBan**](#function-addban-22) (std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list._  |
 | virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**getBanEntry**](#function-getbanentry) (std::string target) const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by target._ |
 | virtual std::vector&lt; [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; &gt; | [**getEntries**](#function-getentries) () const = 0<br>_Gets a vector containing pointers to every_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _in this list._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isBanned**](#function-isbanned) (std::string target) const = 0<br>_Checks if a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _exists for the target, indicating an active ban status._ |
@@ -130,7 +130,7 @@ using endstone::BanList< T >::EntryType =  T;
 
 ### function addBan [1/2]
 
-_Adds a ban to this list. If a previous ban exists, this will update the previous entry._ 
+_Adds a ban to this list._ 
 ```C++
 virtual NotNull < T > endstone::BanList::addBan (
     std::string target,
@@ -140,6 +140,9 @@ virtual NotNull < T > endstone::BanList::addBan (
 ) = 0
 ```
 
+
+
+If a previous ban exists, this will update the previous entry.
 
 
 
@@ -156,7 +159,7 @@ virtual NotNull < T > endstone::BanList::addBan (
 
 **Returns:**
 
-T& The entry for the newly created ban, or the entry for the (updated) previous ban. 
+The entry for the newly created ban, or the entry for the (updated) previous ban. 
 
 
 
@@ -170,7 +173,7 @@ T& The entry for the newly created ban, or the entry for the (updated) previous 
 
 ### function addBan [2/2]
 
-_Adds a ban to this list. If a previous ban exists, this will update the previous entry._ 
+_Adds a ban to this list._ 
 ```C++
 virtual NotNull < T > endstone::BanList::addBan (
     std::string target,
@@ -180,6 +183,9 @@ virtual NotNull < T > endstone::BanList::addBan (
 ) = 0
 ```
 
+
+
+If a previous ban exists, this will update the previous entry.
 
 
 
@@ -196,7 +202,7 @@ virtual NotNull < T > endstone::BanList::addBan (
 
 **Returns:**
 
-T& The entry for the newly created ban, or the entry for the (updated) previous ban. 
+The entry for the newly created ban, or the entry for the (updated) previous ban. 
 
 
 
@@ -230,7 +236,7 @@ virtual Nullable < T > endstone::BanList::getBanEntry (
 
 **Returns:**
 
-T\* The corresponding entry, or nullptr if none found. 
+The corresponding entry, or nullptr if none found. 
 
 
 

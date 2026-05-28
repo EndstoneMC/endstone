@@ -25,9 +25,9 @@
         <name>getTaskId</name>
         <qualifiedname>endstone::Task::getTaskId</qualifiedname>
         <briefdescription>
+<para>Returns the taskId for the task. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the taskId for the task.</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Task" kindref="compound">Task</ref> id number </para>
 </simplesect>
 </para>
@@ -43,9 +43,9 @@
         <name>getOwner</name>
         <qualifiedname>endstone::Task::getOwner</qualifiedname>
         <briefdescription>
+<para>Returns the <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> that owns this task. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> that owns this task.</para>
 <para><simplesect kind="return"><para>The <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> that owns the task </para>
 </simplesect>
 </para>
@@ -61,9 +61,9 @@
         <name>isSync</name>
         <qualifiedname>endstone::Task::isSync</qualifiedname>
         <briefdescription>
+<para>Returns true if the <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> is a sync task. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns true if the <ref refid="classendstone_1_1Task" kindref="compound">Task</ref> is a sync task.</para>
 <para><simplesect kind="return"><para>true if the task is run by server thread </para>
 </simplesect>
 </para>
@@ -79,9 +79,9 @@
         <name>isCancelled</name>
         <qualifiedname>endstone::Task::isCancelled</qualifiedname>
         <briefdescription>
+<para>Returns true if this task has been cancelled. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns true if this task has been cancelled.</para>
 <para><simplesect kind="return"><para>true if the task has been cancelled </para>
 </simplesect>
 </para>
@@ -97,9 +97,9 @@
         <name>cancel</name>
         <qualifiedname>endstone::Task::cancel</qualifiedname>
         <briefdescription>
+<para>Attempts to cancel this task. </para>
         </briefdescription>
         <detaileddescription>
-<para>Attempts to cancel this task. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

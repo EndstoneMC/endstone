@@ -66,21 +66,21 @@ _Represents a server implementation._
 |  [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-22) ([**const**](classendstone_1_1Identifier.md) fmt::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
 | virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) (std::string type) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._ |
 | virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) (std::string type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
-| virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, BarColor color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
-| virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, BarColor color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style, std::vector&lt; [**BarFlag**](namespaceendstone.md#enum-barflag) &gt; flags) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
+| virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, BarColor color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) const = 0<br>_Creates a boss bar instance to display to players._  |
+| virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, BarColor color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style, std::vector&lt; [**BarFlag**](namespaceendstone.md#enum-barflag) &gt; flags) const = 0<br>_Creates a boss bar instance to display to players._  |
 | virtual [**MapView**](classendstone_1_1MapView.md) & | [**createMap**](#function-createmap) ([**const**](classendstone_1_1Identifier.md) [**Dimension**](classendstone_1_1Dimension.md) & dimension) const = 0<br>_Create a new map with an automatically assigned ID._  |
 | virtual std::shared\_ptr&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**createScoreboard**](#function-createscoreboard) () = 0<br>_Creates a new_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _to be tracked by the server._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**dispatchCommand**](#function-dispatchcommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command\_line) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getAverageMillisecondsPerTick**](#function-getaveragemillisecondspertick) () = 0<br>_Gets the average milliseconds per tick (MSPT)._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getAverageTickUsage**](#function-getaveragetickusage) () = 0<br>_Gets the average tick usage of the server._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getAverageTicksPerSecond**](#function-getaveragetickspersecond) () = 0<br>_Gets the average ticks per second (TPS)._  |
-| virtual [**PlayerBanList**](classendstone_1_1PlayerBanList.md) & | [**getBanList**](#function-getbanlist) () const = 0<br> |
+| virtual [**PlayerBanList**](classendstone_1_1PlayerBanList.md) & | [**getBanList**](#function-getbanlist) () const = 0<br>_Gets the player ban list._  |
 | virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) & | [**getCommandSender**](#function-getcommandsender) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._ |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getCurrentMillisecondsPerTick**](#function-getcurrentmillisecondspertick) () = 0<br>_Gets the current milliseconds per tick (MSPT)._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getCurrentTickUsage**](#function-getcurrenttickusage) () = 0<br>_Gets the current tick usage of the server._  |
 | virtual [**float**](classendstone_1_1Identifier.md) | [**getCurrentTicksPerSecond**](#function-getcurrenttickspersecond) () = 0<br>_Gets the current ticks per second (TPS)._  |
-| virtual [**IpBanList**](classendstone_1_1IpBanList.md) & | [**getIpBanList**](#function-getipbanlist) () const = 0<br> |
-| virtual [**ItemFactory**](classendstone_1_1ItemFactory.md) & | [**getItemFactory**](#function-getitemfactory) () const = 0<br> |
+| virtual [**IpBanList**](classendstone_1_1IpBanList.md) & | [**getIpBanList**](#function-getipbanlist) () const = 0<br>_Gets the IP ban list._  |
+| virtual [**ItemFactory**](classendstone_1_1ItemFactory.md) & | [**getItemFactory**](#function-getitemfactory) () const = 0<br>_Gets the instance of the item factory._  |
 | virtual [**Language**](classendstone_1_1Language.md) & | [**getLanguage**](#function-getlanguage) () const = 0<br>_Gets the current language interface used by the server._  |
 | virtual [**Level**](classendstone_1_1Level.md) \* | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the server level._  |
 | virtual [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const = 0<br>_Returns the primary logger associated with this server instance._  |
@@ -100,7 +100,7 @@ _Represents a server implementation._
 |  [**const**](classendstone_1_1Identifier.md) [**Registry**](classendstone_1_1Registry.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; & | [**getRegistry**](#function-getregistry) () const<br> |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) \* | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the primary_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _controlled by the server._ |
-| virtual [**ServiceManager**](classendstone_1_1ServiceManager.md) & | [**getServiceManager**](#function-getservicemanager) () const = 0<br> |
+| virtual [**ServiceManager**](classendstone_1_1ServiceManager.md) & | [**getServiceManager**](#function-getservicemanager) () const = 0<br>_Gets the service manager._  |
 | virtual std::chrono::system\_clock::time\_point | [**getStartTime**](#function-getstarttime) () = 0<br>_Gets the start time of the server._  |
 | virtual std::string | [**getVersion**](#function-getversion) () const = 0<br>_Gets the version string of this server implementation._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isPrimaryThread**](#function-isprimarythread) () const = 0<br>_Checks the current thread against the expected primary server thread._  |
@@ -212,7 +212,7 @@ virtual IRegistry * endstone::Server::_getRegistry (
 
 
 
-If no registry is present for the given type null will be returned.
+If no registry is present for the given type, nullptr will be returned.
 
 
 
@@ -226,7 +226,7 @@ If no registry is present for the given type null will be returned.
 
 **Returns:**
 
-the corresponding registry or null if not present 
+the corresponding registry, or nullptr if not present 
 
 
 
@@ -383,7 +383,7 @@ new data instance
 
 ### function createBossBar [1/2]
 
-_Creates a boss bar instance to display to players. The progress defaults to 1.0._ 
+_Creates a boss bar instance to display to players._ 
 ```C++
 virtual std::unique_ptr< BossBar > endstone::Server::createBossBar (
     std::string title,
@@ -392,6 +392,9 @@ virtual std::unique_ptr< BossBar > endstone::Server::createBossBar (
 ) const = 0
 ```
 
+
+
+The progress defaults to 1.0.
 
 
 
@@ -421,7 +424,7 @@ the created boss bar
 
 ### function createBossBar [2/2]
 
-_Creates a boss bar instance to display to players. The progress defaults to 1.0._ 
+_Creates a boss bar instance to display to players._ 
 ```C++
 virtual std::unique_ptr< BossBar > endstone::Server::createBossBar (
     std::string title,
@@ -431,6 +434,9 @@ virtual std::unique_ptr< BossBar > endstone::Server::createBossBar (
 ) const = 0
 ```
 
+
+
+The progress defaults to 1.0.
 
 
 
@@ -634,13 +640,11 @@ The average ticks per second
 
 ### function getBanList 
 
+_Gets the player ban list._ 
 ```C++
 virtual PlayerBanList & endstone::Server::getBanList () const = 0
 ```
 
-
-
-Gets the player ban list.
 
 
 
@@ -697,7 +701,7 @@ virtual float endstone::Server::getCurrentMillisecondsPerTick () = 0
 
 **Returns:**
 
-The average current of milliseconds per tick. 
+The current number of milliseconds per tick. 
 
 
 
@@ -761,13 +765,11 @@ The current ticks per second
 
 ### function getIpBanList 
 
+_Gets the IP ban list._ 
 ```C++
 virtual IpBanList & endstone::Server::getIpBanList () const = 0
 ```
 
-
-
-Gets the IP ban list.
 
 
 
@@ -788,13 +790,11 @@ The IP ban list
 
 ### function getItemFactory 
 
+_Gets the instance of the item factory._ 
 ```C++
 virtual ItemFactory & endstone::Server::getItemFactory () const = 0
 ```
 
-
-
-Gets the instance of the item factory (for [**ItemMeta**](classendstone_1_1ItemMeta.md)).
 
 
 
@@ -913,7 +913,7 @@ virtual MapView * endstone::Server::getMap (
 
 **Returns:**
 
-a map view if it exists, or null otherwise 
+a map view if it exists, or nullptr otherwise 
 
 
 
@@ -1072,7 +1072,7 @@ virtual Player * endstone::Server::getPlayer (
 
 **Returns:**
 
-a player object if one was found, null otherwise 
+a player object if one was found, nullptr otherwise 
 
 
 
@@ -1106,7 +1106,7 @@ virtual Player * endstone::Server::getPlayer (
 
 **Returns:**
 
-a player object if one was found, null otherwise 
+a player object if one was found, nullptr otherwise 
 
 
 
@@ -1140,7 +1140,7 @@ virtual PluginCommand * endstone::Server::getPluginCommand (
 
 **Returns:**
 
-a plugin command if found, null otherwise 
+a plugin command if found, nullptr otherwise 
 
 
 
@@ -1321,13 +1321,11 @@ the default server scoreboard
 
 ### function getServiceManager 
 
+_Gets the service manager._ 
 ```C++
 virtual ServiceManager & endstone::Server::getServiceManager () const = 0
 ```
 
-
-
-Gets the service manager.
 
 
 

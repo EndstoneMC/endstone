@@ -780,9 +780,10 @@
         <name>zero</name>
         <qualifiedname>endstone::Location::zero</qualifiedname>
         <briefdescription>
-<para>Zero this vector&apos;s components. Not world-aware. </para>
+<para>Zero this vector&apos;s components. </para>
         </briefdescription>
         <detaileddescription>
+<para>Not world-aware.</para>
 <para><simplesect kind="return"><para>the same location </para>
 </simplesect>
 </para>

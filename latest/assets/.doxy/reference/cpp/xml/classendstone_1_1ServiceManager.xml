@@ -193,9 +193,10 @@
           <declname>name</declname>
         </param>
         <briefdescription>
-<para>Queries for a provider. This may return null if no provider has been registered for a service. The highest priority provider is returned. </para>
+<para>Queries for a provider. </para>
         </briefdescription>
         <detaileddescription>
+<para>This may return an empty shared_ptr if no provider has been registered for the service. The highest priority provider is returned.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>name</parametername>
@@ -205,7 +206,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>provider or null </para>
+<simplesect kind="return"><para>The highest priority provider, or an empty shared_ptr if none is registered. </para>
 </simplesect>
 </para>
         </detaileddescription>

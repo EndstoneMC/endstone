@@ -68,7 +68,7 @@ Inherited by the following classes: [endstone::IpBanEntry](classendstone_1_1IpBa
 |  std::string | [**getReason**](#function-getreason) () const<br>_Gets the reason for this ban._  |
 |  std::string | [**getSource**](#function-getsource) () const<br>_Gets the source of this ban._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setCreated**](#function-setcreated) (Date created) <br>_Sets the date this ban entry was created._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setExpiration**](#function-setexpiration) (std::optional&lt; Date &gt; expiration) <br>_Sets the date this ban expires on. std::nullopt values are considered "infinite" bans._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setExpiration**](#function-setexpiration) (std::optional&lt; Date &gt; expiration) <br>_Sets the date this ban expires on._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setReason**](#function-setreason) (std::string reason) <br>_Sets the reason for this ban._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setSource**](#function-setsource) (std::string source) <br>_Sets the source of this ban._  |
 
@@ -266,13 +266,16 @@ inline void endstone::BanEntry::setCreated (
 
 ### function setExpiration 
 
-_Sets the date this ban expires on. std::nullopt values are considered "infinite" bans._ 
+_Sets the date this ban expires on._ 
 ```C++
 inline void endstone::BanEntry::setExpiration (
     std::optional< Date > expiration
 ) 
 ```
 
+
+
+std::nullopt values are considered "infinite" bans.
 
 
 

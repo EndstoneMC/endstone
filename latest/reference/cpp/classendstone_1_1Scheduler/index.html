@@ -2818,27 +2818,27 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-canceltask"><strong>cancelTask</strong></a> (TaskId id) = 0<br></td>
+<td style="text-align: left;"><a href="#function-canceltask"><strong>cancelTask</strong></a> (TaskId id) = 0<br><em>Removes task from scheduler.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-canceltasks"><strong>cancelTasks</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br></td>
+<td style="text-align: left;"><a href="#function-canceltasks"><strong>cancelTasks</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br><em>Removes all tasks associated with a particular plugin from the scheduler.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-getpendingtasks"><strong>getPendingTasks</strong></a> () = 0<br></td>
+<td style="text-align: left;"><a href="#function-getpendingtasks"><strong>getPendingTasks</strong></a> () = 0<br><em>Returns a vector of all pending tasks.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-isqueued"><strong>isQueued</strong></a> (TaskId id) = 0<br></td>
+<td style="text-align: left;"><a href="#function-isqueued"><strong>isQueued</strong></a> (TaskId id) = 0<br><em>Check if the task queued to be run later.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-isrunning"><strong>isRunning</strong></a> (TaskId id) = 0<br></td>
+<td style="text-align: left;"><a href="#function-isrunning"><strong>isRunning</strong></a> (TaskId id) = 0<br><em>Check if the task currently running.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-runtask"><strong>runTask</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a>()&gt; task) = 0<br></td>
+<td style="text-align: left;"><a href="#function-runtask"><strong>runTask</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a>()&gt; task) = 0<br><em>Returns a task that will be executed synchronously on the next server tick.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> &gt;</td>
@@ -2846,7 +2846,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-runtasklater"><strong>runTaskLater</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a>()&gt; task, std::uint64_t delay) = 0<br></td>
+<td style="text-align: left;"><a href="#function-runtasklater"><strong>runTaskLater</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a>()&gt; task, std::uint64_t delay) = 0<br><em>Returns a task that will be executed synchronously after the specified number of server ticks.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> &gt;</td>
@@ -2854,7 +2854,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-runtasktimer"><strong>runTaskTimer</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a>()&gt; task, std::uint64_t delay, std::uint64_t period) = 0<br></td>
+<td style="text-align: left;"><a href="#function-runtasktimer"><strong>runTaskTimer</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, std::function&lt; <a href="../classendstone_1_1Identifier/"><strong>void</strong></a>()&gt; task, std::uint64_t delay, std::uint64_t period) = 0<br><em>Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the specified number of server ticks.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Task/"><strong>Task</strong></a> &gt;</td>
@@ -2868,23 +2868,23 @@ For latest updates join the chat on
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-canceltask">function cancelTask<a class="headerlink" href="#function-canceltask" title="Permanent link">&para;</a></h3>
+<p><em>Removes task from scheduler.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">cancelTask</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">TaskId</span><span class="w"> </span><span class="n">id</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Removes task from scheduler.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>taskId</code> Id number of task to be removed </li>
+<li><code>id</code> Id number of task to be removed </li>
 </ul>
 <hr>
 
 <h3 id="function-canceltasks">function cancelTasks<a class="headerlink" href="#function-canceltasks" title="Permanent link">&para;</a></h3>
+<p><em>Removes all tasks associated with a particular plugin from the scheduler.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">cancelTasks</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Removes all tasks associated with a particular plugin from the scheduler.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>plugin</code> Owner of tasks to be removed </li>
@@ -2892,49 +2892,49 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getpendingtasks">function getPendingTasks<a class="headerlink" href="#function-getpendingtasks" title="Permanent link">&para;</a></h3>
+<p><em>Returns a vector of all pending tasks.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">getPendingTasks</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Returns a vector of all pending tasks.</p>
+</span></code></pre></div></p>
 <p>The ordering of the tasks is NOT related to their order of execution.</p>
 <p><strong>Returns:</strong></p>
 <p>Pending tasks </p>
 <hr>
 
 <h3 id="function-isqueued">function isQueued<a class="headerlink" href="#function-isqueued" title="Permanent link">&para;</a></h3>
+<p><em>Check if the task queued to be run later.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">isQueued</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">TaskId</span><span class="w"> </span><span class="n">id</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Check if the task queued to be run later.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>taskId</code> The task to check.</li>
+<li><code>id</code> The id of the task to check. </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>If the task is queued to be run. </p>
 <hr>
 
 <h3 id="function-isrunning">function isRunning<a class="headerlink" href="#function-isrunning" title="Permanent link">&para;</a></h3>
+<p><em>Check if the task currently running.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">isRunning</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">TaskId</span><span class="w"> </span><span class="n">id</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Check if the task currently running.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>taskId</code> The task to check.</li>
+<li><code>id</code> The id of the task to check. </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>If the task is currently running. </p>
 <hr>
 
 <h3 id="function-runtask">function runTask<a class="headerlink" href="#function-runtask" title="Permanent link">&para;</a></h3>
+<p><em>Returns a task that will be executed synchronously on the next server tick.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">runTask</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Returns a task that will be executed synchronously on the next server tick.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>plugin</code> the reference to the plugin scheduling task </li>
@@ -2963,13 +2963,13 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-runtasklater">function runTaskLater<a class="headerlink" href="#function-runtasklater" title="Permanent link">&para;</a></h3>
+<p><em>Returns a task that will be executed synchronously after the specified number of server ticks.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">runTaskLater</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span><span class="p">,</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">delay</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Returns a task that will be executed synchronously after the specified number of server ticks.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>plugin</code> the reference to the plugin scheduling task </li>
@@ -3001,14 +3001,14 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-runtasktimer">function runTaskTimer<a class="headerlink" href="#function-runtasktimer" title="Permanent link">&para;</a></h3>
+<p><em>Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the specified number of server ticks.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Task</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scheduler</span><span class="o">::</span><span class="n">runTaskTimer</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span><span class="p">,</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="n">task</span><span class="p">,</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">delay</span><span class="p">,</span>
 </span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">period</span>
 </span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the specified number of server ticks.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>plugin</code> the reference to the plugin scheduling task </li>

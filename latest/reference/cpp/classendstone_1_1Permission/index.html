@@ -2878,31 +2878,31 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>Permission</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-addparent-12"><strong>addParent</strong></a> (std::string name, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> value) <br></td>
+<td style="text-align: left;"><a href="#function-addparent-12"><strong>addParent</strong></a> (std::string name, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> value) <br><em>Adds this permission to the specified parent permission.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-addparent-22"><strong>addParent</strong></a> (<a href="./"><strong>Permission</strong></a> &amp; perm, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> value) const<br></td>
+<td style="text-align: left;"><a href="#function-addparent-22"><strong>addParent</strong></a> (<a href="./"><strong>Permission</strong></a> &amp; perm, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> value) const<br><em>Adds this permission to the specified parent permission.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::unordered_map&lt; std::string, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="#function-getchildren"><strong>getChildren</strong></a> () <br></td>
+<td style="text-align: left;"><a href="#function-getchildren"><strong>getChildren</strong></a> () <br><em>Gets the children of this permission.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../namespaceendstone/#enum-permissiondefault"><strong>PermissionDefault</strong></a></td>
-<td style="text-align: left;"><a href="#function-getdefault"><strong>getDefault</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getdefault"><strong>getDefault</strong></a> () const<br><em>Gets the default value of this permission.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string</td>
-<td style="text-align: left;"><a href="#function-getdescription"><strong>getDescription</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getdescription"><strong>getDescription</strong></a> () const<br><em>Gets a brief description of this permission, may be empty.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string</td>
-<td style="text-align: left;"><a href="#function-getname"><strong>getName</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getname"><strong>getName</strong></a> () const<br><em>Returns the unique fully qualified name of this</em> <a href="./"><em><strong>Permission</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::unordered_set&lt; <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-getpermissibles"><strong>getPermissibles</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getpermissibles"><strong>getPermissibles</strong></a> () const<br><em>Gets a set containing every</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>that has this permission.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -2910,15 +2910,15 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-recalculatepermissibles"><strong>recalculatePermissibles</strong></a> () <br></td>
+<td style="text-align: left;"><a href="#function-recalculatepermissibles"><strong>recalculatePermissibles</strong></a> () <br><em>Recalculates all Permissibles that contain this permission.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setdefault"><strong>setDefault</strong></a> (<a href="../namespaceendstone/#enum-permissiondefault"><strong>PermissionDefault</strong></a> value) <br></td>
+<td style="text-align: left;"><a href="#function-setdefault"><strong>setDefault</strong></a> (<a href="../namespaceendstone/#enum-permissiondefault"><strong>PermissionDefault</strong></a> value) <br><em>Sets the default value of this permission.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setdescription"><strong>setDescription</strong></a> (std::string value) <br></td>
+<td style="text-align: left;"><a href="#function-setdescription"><strong>setDescription</strong></a> (std::string value) <br><em>Sets the description of this permission.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2939,12 +2939,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-addparent-12">function addParent [&frac12;]<a class="headerlink" href="#function-addparent-12" title="Permanent link">&para;</a></h3>
+<p><em>Adds this permission to the specified parent permission.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">addParent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Adds this permission to the specified parent permission.</p>
+</span></code></pre></div></p>
 <p>If the parent permission does not exist, it will be created and registered.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2956,12 +2956,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-addparent-22">function addParent [2/2]<a class="headerlink" href="#function-addparent-22" title="Permanent link">&para;</a></h3>
+<p><em>Adds this permission to the specified parent permission.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">addParent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Permission</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">perm</span><span class="p">,</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Adds this permission to the specified parent permission.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>perm</code> Parent permission to register with </li>
@@ -2970,41 +2970,43 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getchildren">function getChildren<a class="headerlink" href="#function-getchildren" title="Permanent link">&para;</a></h3>
+<p><em>Gets the children of this permission.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">getChildren</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Gets the children of this permission. If you change this map in any form, you must call <a href="./#function-recalculatepermissibles"><strong>recalculatePermissibles()</strong></a> to recalculate all Permissibles</p>
+</span></code></pre></div></p>
+<p>If you change this map in any form, you must call <a href="./#function-recalculatepermissibles"><strong>recalculatePermissibles()</strong></a> to recalculate all Permissibles.</p>
 <p><strong>Returns:</strong></p>
 <p><a href="./"><strong>Permission</strong></a> children </p>
 <hr>
 
 <h3 id="function-getdefault">function getDefault<a class="headerlink" href="#function-getdefault" title="Permanent link">&para;</a></h3>
+<p><em>Gets the default value of this permission.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">PermissionDefault</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">getDefault</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets the default value of this permission.</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Default value of this permission. </p>
 <hr>
 
 <h3 id="function-getdescription">function getDescription<a class="headerlink" href="#function-getdescription" title="Permanent link">&para;</a></h3>
+<p><em>Gets a brief description of this permission, may be empty.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">getDescription</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets a brief description of this permission, may be empty</p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Brief description of this permission </p>
 <hr>
 
 <h3 id="function-getname">function getName<a class="headerlink" href="#function-getname" title="Permanent link">&para;</a></h3>
+<p><em>Returns the unique fully qualified name of this</em> <a href="./"><em><strong>Permission</strong></em></a> <em>.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Returns the unique fully qualified name of this <a href="./"><strong>Permission</strong></a></p>
+</span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Fully qualified name </p>
 <hr>
 
 <h3 id="function-getpermissibles">function getPermissibles<a class="headerlink" href="#function-getpermissibles" title="Permanent link">&para;</a></h3>
+<p><em>Gets a set containing every</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>that has this permission.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_set</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Permissible</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">getPermissibles</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Gets a set containing every <a href="../classendstone_1_1Permissible/"><strong>Permissible</strong></a> that has this permission. This set cannot be modified.</p>
+</span></code></pre></div></p>
+<p>This set cannot be modified.</p>
 <p><strong>Returns:</strong></p>
 <p>Set containing permissibles with this permission </p>
 <hr>
@@ -3017,18 +3019,18 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-recalculatepermissibles">function recalculatePermissibles<a class="headerlink" href="#function-recalculatepermissibles" title="Permanent link">&para;</a></h3>
+<p><em>Recalculates all Permissibles that contain this permission.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">recalculatePermissibles</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Recalculates all Permissibles that contain this permission.</p>
+</span></code></pre></div></p>
 <p>This should be called after modifying the children, and is automatically called after modifying the default value </p>
 <hr>
 
 <h3 id="function-setdefault">function setDefault<a class="headerlink" href="#function-setdefault" title="Permanent link">&para;</a></h3>
+<p><em>Sets the default value of this permission.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">setDefault</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">PermissionDefault</span><span class="w"> </span><span class="n">value</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Sets the default value of this permission.</p>
+</span></code></pre></div></p>
 <p>This will not be saved to disk, and is a temporary operation until the server reloads permissions. Changing this default will cause all Permissibles that contain this permission to recalculate their permissions</p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3037,11 +3039,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setdescription">function setDescription<a class="headerlink" href="#function-setdescription" title="Permanent link">&para;</a></h3>
+<p><em>Sets the description of this permission.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permission</span><span class="o">::</span><span class="n">setDescription</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">value</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
-<p>Sets the description of this permission.</p>
+</span></code></pre></div></p>
 <p>This will not be saved to disk, and is a temporary operation until the server reloads permissions.</p>
 <p><strong>Parameters:</strong></p>
 <ul>

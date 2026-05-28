@@ -2893,11 +2893,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setauthor"><strong>setAuthor</strong></a> (std::optional&lt; std::string &gt; author) = 0<br><em>Sets the author of the book. Removes author when given std::nullopt.</em></td>
+<td style="text-align: left;"><a href="#function-setauthor"><strong>setAuthor</strong></a> (std::optional&lt; std::string &gt; author) = 0<br><em>Sets the author of the book.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setgeneration"><strong>setGeneration</strong></a> (std::optional&lt; <a href="./#enum-generation"><strong>Generation</strong></a> &gt; generation) = 0<br><em>Sets the generation of the book. Removes generation when given std::nullopt.</em></td>
+<td style="text-align: left;"><a href="#function-setgeneration"><strong>setGeneration</strong></a> (std::optional&lt; <a href="./#enum-generation"><strong>Generation</strong></a> &gt; generation) = 0<br><em>Sets the generation of the book.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -2925,7 +2925,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="../classendstone_1_1WritableBookMeta/#function-getpage"><strong>getPage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> page) const = 0<br><em>Gets the specified page in the book. The given page must exist.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1WritableBookMeta/#function-getpage"><strong>getPage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> page) const = 0<br><em>Gets the specified page in the book.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
@@ -2941,7 +2941,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1WritableBookMeta/#function-setpage"><strong>setPage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> page, std::string data) = 0<br><em>Sets the specified page in the book. Pages of the book must be contiguous.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1WritableBookMeta/#function-setpage"><strong>setPage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> page, std::string data) = 0<br><em>Sets the specified page in the book.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -2949,7 +2949,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1WritableBookMeta/#function-setpages-22"><strong>setPages</strong></a> (std::vector&lt; std::string &gt; pages) = 0<br><em>Maximum 50 pages with 256 characters per page.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1WritableBookMeta/#function-setpages-22"><strong>setPages</strong></a> (std::vector&lt; std::string &gt; pages) = 0<br><em>Clears the existing book pages, and sets the book to use the provided pages.</em></td>
 </tr>
 </tbody>
 </table>
@@ -3001,7 +3001,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-hasconflictingenchant"><strong>hasConflictingEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id) const = 0<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-hasconflictingenchant"><strong>hasConflictingEnchant</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EnchantmentId</strong></a> id) const = 0<br><em>Checks if the specified enchantment conflicts with any enchantments in this</em> <a href="../classendstone_1_1ItemMeta/"><em><strong>ItemMeta</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -3029,7 +3029,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-isunbreakable"><strong>isUnbreakable</strong></a> () const = 0<br><em>Return if the unbreakable tag is true. An unbreakable item will not lose durability.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-isunbreakable"><strong>isUnbreakable</strong></a> () const = 0<br><em>Return if the unbreakable tag is true.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -3057,7 +3057,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-setunbreakable"><strong>setUnbreakable</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> unbreakable) = 0<br><em>Sets the unbreakable tag. An unbreakable item will not lose durability.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1ItemMeta/#function-setunbreakable"><strong>setUnbreakable</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> unbreakable) = 0<br><em>Sets the unbreakable tag.</em></td>
 </tr>
 </tbody>
 </table>
@@ -3163,11 +3163,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setauthor">function setAuthor<a class="headerlink" href="#function-setauthor" title="Permanent link">&para;</a></h3>
-<p><em>Sets the author of the book. Removes author when given std::nullopt.</em> 
+<p><em>Sets the author of the book.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BookMeta</span><span class="o">::</span><span class="n">setAuthor</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">author</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
+<p>Removes author when given std::nullopt.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>author</code> the author to set </li>
@@ -3175,11 +3176,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-setgeneration">function setGeneration<a class="headerlink" href="#function-setgeneration" title="Permanent link">&para;</a></h3>
-<p><em>Sets the generation of the book. Removes generation when given std::nullopt.</em> 
+<p><em>Sets the generation of the book.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BookMeta</span><span class="o">::</span><span class="n">setGeneration</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Generation</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">generation</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
+<p>Removes generation when given std::nullopt.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>generation</code> the generation to set </li>
@@ -3196,10 +3198,8 @@ For latest updates join the chat on
 <p>Limited to 32 characters. Removes title when given std::nullopt.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>title</code> the title to set</li>
+<li><code>title</code> the title to set </li>
 </ul>
-<p><strong>Returns:</strong></p>
-<p>true if the title was successfully set </p>
 <hr>
 
 <hr />

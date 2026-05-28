@@ -52,7 +52,7 @@ _Represents a canvas for drawing to a map._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**drawImage**](#function-drawimage) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) y, [**const**](classendstone_1_1Identifier.md) [**Image**](classendstone_1_1Image.md) & image) = 0<br>_Draw an image to the map. The image will be clipped if necessary._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**drawImage**](#function-drawimage) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) y, [**const**](classendstone_1_1Identifier.md) [**Image**](classendstone_1_1Image.md) & image) = 0<br>_Draw an image to the map._  |
 | virtual std::uint32\_t | [**getBasePixel**](#function-getbasepixel) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) y) const = 0<br>_Get a pixel from the layers below this canvas._  |
 | virtual [**Color**](classendstone_1_1Color.md) | [**getBasePixelColor**](#function-getbasepixelcolor) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) y) const = 0<br>_Get a pixel from the layers below this canvas._  |
 | virtual std::vector&lt; [**MapCursor**](classendstone_1_1MapCursor.md) &gt; | [**getCursors**](#function-getcursors) () const = 0<br>_Get the cursors associated with this canvas._  |
@@ -112,7 +112,7 @@ Each canvas is associated with a specific [**MapRenderer**](classendstone_1_1Map
 
 ### function drawImage 
 
-_Draw an image to the map. The image will be clipped if necessary._ 
+_Draw an image to the map._ 
 ```C++
 virtual void endstone::MapCanvas::drawImage (
     int x,
@@ -121,6 +121,9 @@ virtual void endstone::MapCanvas::drawImage (
 ) = 0
 ```
 
+
+
+The image will be clipped if necessary.
 
 
 
@@ -226,7 +229,7 @@ virtual std::vector< MapCursor > endstone::MapCanvas::getCursors () const = 0
 
 **Returns:**
 
-The MapCursorCollection associated with this canvas. 
+The cursors associated with this canvas. 
 
 
 
@@ -351,7 +354,7 @@ virtual void endstone::MapCanvas::setCursors (
 **Parameters:**
 
 
-* `cursors` The MapCursorCollection to associate with this canvas. 
+* `cursors` The cursors to associate with this canvas. 
 
 
 

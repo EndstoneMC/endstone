@@ -349,9 +349,9 @@
           <declname>id</declname>
         </param>
         <briefdescription>
+<para>Checks if the specified enchantment conflicts with any enchantments in this <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para>Checks if the specified enchantment conflicts with any enchantments in this <ref refid="classendstone_1_1ItemMeta" kindref="compound">ItemMeta</ref>.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>id</parametername>
@@ -376,9 +376,10 @@
         <name>isUnbreakable</name>
         <qualifiedname>endstone::ItemMeta::isUnbreakable</qualifiedname>
         <briefdescription>
-<para>Return if the unbreakable tag is true. An unbreakable item will not lose durability. </para>
+<para>Return if the unbreakable tag is true. </para>
         </briefdescription>
         <detaileddescription>
+<para>An unbreakable item will not lose durability.</para>
 <para><simplesect kind="return"><para>true if the unbreakable tag is true </para>
 </simplesect>
 </para>
@@ -398,9 +399,10 @@
           <declname>unbreakable</declname>
         </param>
         <briefdescription>
-<para>Sets the unbreakable tag. An unbreakable item will not lose durability. </para>
+<para>Sets the unbreakable tag. </para>
         </briefdescription>
         <detaileddescription>
+<para>An unbreakable item will not lose durability.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>unbreakable</parametername>

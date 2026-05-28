@@ -99,9 +99,9 @@
         <name>getMessageId</name>
         <qualifiedname>endstone::ScriptMessageEvent::getMessageId</qualifiedname>
         <briefdescription>
+<para>Get the message id to send. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the message id to send.</para>
 <para><simplesect kind="return"><para>Message id to send </para>
 </simplesect>
 </para>
@@ -117,9 +117,9 @@
         <name>getMessage</name>
         <qualifiedname>endstone::ScriptMessageEvent::getMessage</qualifiedname>
         <briefdescription>
+<para>Get the message to send. </para>
         </briefdescription>
         <detaileddescription>
-<para>Get the message to send.</para>
 <para><simplesect kind="return"><para>Message to send </para>
 </simplesect>
 </para>
@@ -135,10 +135,10 @@
         <name>getSender</name>
         <qualifiedname>endstone::ScriptMessageEvent::getSender</qualifiedname>
         <briefdescription>
+<para>Gets the command sender who sent the script message. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the command sender who initiated the command</para>
-<para><simplesect kind="return"><para><ref refid="classendstone_1_1Command" kindref="compound">Command</ref> sender who initiated the command </para>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Command" kindref="compound">Command</ref> sender who sent the script message. </para>
 </simplesect>
 </para>
         </detaileddescription>

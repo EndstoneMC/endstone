@@ -52,9 +52,10 @@
           <declname>projectile</declname>
         </param>
         <briefdescription>
-<para>Sets the charged projectile. Pass std::nullopt to clear. </para>
+<para>Sets the charged projectile. </para>
         </briefdescription>
         <detaileddescription>
+<para>Pass std::nullopt to clear.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>projectile</parametername>

@@ -52,16 +52,16 @@ _Represents a scheduler that executes various tasks._
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancelTask**](#function-canceltask) (TaskId id) = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancelTasks**](#function-canceltasks) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br> |
-| virtual std::vector&lt; [**Task**](classendstone_1_1Task.md) \* &gt; | [**getPendingTasks**](#function-getpendingtasks) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isQueued**](#function-isqueued) (TaskId id) = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isRunning**](#function-isrunning) (TaskId id) = 0<br> |
-| virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTask**](#function-runtask) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task) = 0<br> |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancelTask**](#function-canceltask) (TaskId id) = 0<br>_Removes task from scheduler._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancelTasks**](#function-canceltasks) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br>_Removes all tasks associated with a particular plugin from the scheduler._  |
+| virtual std::vector&lt; [**Task**](classendstone_1_1Task.md) \* &gt; | [**getPendingTasks**](#function-getpendingtasks) () = 0<br>_Returns a vector of all pending tasks._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isQueued**](#function-isqueued) (TaskId id) = 0<br>_Check if the task queued to be run later._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isRunning**](#function-isrunning) (TaskId id) = 0<br>_Check if the task currently running._  |
+| virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTask**](#function-runtask) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task) = 0<br>_Returns a task that will be executed synchronously on the next server tick._  |
 | virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskAsync**](#function-runtaskasync) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task) = 0<br>_Returns a task that will be executed asynchronously on the next server tick._  |
-| virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskLater**](#function-runtasklater) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay) = 0<br> |
+| virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskLater**](#function-runtasklater) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay) = 0<br>_Returns a task that will be executed synchronously after the specified number of server ticks._  |
 | virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskLaterAsync**](#function-runtasklaterasync) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay) = 0<br>_Returns a task that will be executed asynchronously after the specified number of server ticks._  |
-| virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskTimer**](#function-runtasktimer) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay, std::uint64\_t period) = 0<br> |
+| virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskTimer**](#function-runtasktimer) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay, std::uint64\_t period) = 0<br>_Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the specified number of server ticks._  |
 | virtual std::shared\_ptr&lt; [**Task**](classendstone_1_1Task.md) &gt; | [**runTaskTimerAsync**](#function-runtasktimerasync) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, std::function&lt; [**void**](classendstone_1_1Identifier.md)()&gt; task, std::uint64\_t delay, std::uint64\_t period) = 0<br>_Returns a task that will be executed repeatedly (and asynchronously) until cancelled, starting after the specified number of server ticks._  |
 | virtual  | [**~Scheduler**](#function-scheduler) () = default<br> |
 
@@ -99,6 +99,7 @@ _Represents a scheduler that executes various tasks._
 
 ### function cancelTask 
 
+_Removes task from scheduler._ 
 ```C++
 virtual void endstone::Scheduler::cancelTask (
     TaskId id
@@ -107,15 +108,12 @@ virtual void endstone::Scheduler::cancelTask (
 
 
 
-Removes task from scheduler.
-
-
 
 
 **Parameters:**
 
 
-* `taskId` Id number of task to be removed 
+* `id` Id number of task to be removed 
 
 
 
@@ -128,15 +126,13 @@ Removes task from scheduler.
 
 ### function cancelTasks 
 
+_Removes all tasks associated with a particular plugin from the scheduler._ 
 ```C++
 virtual void endstone::Scheduler::cancelTasks (
     Plugin & plugin
 ) = 0
 ```
 
-
-
-Removes all tasks associated with a particular plugin from the scheduler.
 
 
 
@@ -157,13 +153,11 @@ Removes all tasks associated with a particular plugin from the scheduler.
 
 ### function getPendingTasks 
 
+_Returns a vector of all pending tasks._ 
 ```C++
 virtual std::vector< Task * > endstone::Scheduler::getPendingTasks () = 0
 ```
 
-
-
-Returns a vector of all pending tasks.
 
 
 The ordering of the tasks is NOT related to their order of execution.
@@ -187,6 +181,7 @@ Pending tasks
 
 ### function isQueued 
 
+_Check if the task queued to be run later._ 
 ```C++
 virtual bool endstone::Scheduler::isQueued (
     TaskId id
@@ -195,15 +190,12 @@ virtual bool endstone::Scheduler::isQueued (
 
 
 
-Check if the task queued to be run later.
-
-
 
 
 **Parameters:**
 
 
-* `taskId` The task to check.
+* `id` The id of the task to check. 
 
 
 
@@ -223,6 +215,7 @@ If the task is queued to be run.
 
 ### function isRunning 
 
+_Check if the task currently running._ 
 ```C++
 virtual bool endstone::Scheduler::isRunning (
     TaskId id
@@ -231,15 +224,12 @@ virtual bool endstone::Scheduler::isRunning (
 
 
 
-Check if the task currently running.
-
-
 
 
 **Parameters:**
 
 
-* `taskId` The task to check.
+* `id` The id of the task to check. 
 
 
 
@@ -259,6 +249,7 @@ If the task is currently running.
 
 ### function runTask 
 
+_Returns a task that will be executed synchronously on the next server tick._ 
 ```C++
 virtual std::shared_ptr< Task > endstone::Scheduler::runTask (
     Plugin & plugin,
@@ -266,9 +257,6 @@ virtual std::shared_ptr< Task > endstone::Scheduler::runTask (
 ) = 0
 ```
 
-
-
-Returns a task that will be executed synchronously on the next server tick.
 
 
 
@@ -340,6 +328,7 @@ a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if t
 
 ### function runTaskLater 
 
+_Returns a task that will be executed synchronously after the specified number of server ticks._ 
 ```C++
 virtual std::shared_ptr< Task > endstone::Scheduler::runTaskLater (
     Plugin & plugin,
@@ -348,9 +337,6 @@ virtual std::shared_ptr< Task > endstone::Scheduler::runTaskLater (
 ) = 0
 ```
 
-
-
-Returns a task that will be executed synchronously after the specified number of server ticks.
 
 
 
@@ -425,6 +411,7 @@ a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if t
 
 ### function runTaskTimer 
 
+_Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the specified number of server ticks._ 
 ```C++
 virtual std::shared_ptr< Task > endstone::Scheduler::runTaskTimer (
     Plugin & plugin,
@@ -434,9 +421,6 @@ virtual std::shared_ptr< Task > endstone::Scheduler::runTaskTimer (
 ) = 0
 ```
 
-
-
-Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the specified number of server ticks.
 
 
 

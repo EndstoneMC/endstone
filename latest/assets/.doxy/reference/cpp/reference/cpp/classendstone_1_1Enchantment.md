@@ -86,7 +86,7 @@ See [endstone::Registry::Type](classendstone_1_1Registry_1_1Type.md)
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Respiration**](#variable-respiration)   = `EnchantmentId::minecraft("respiration")`<br>_Decreases the rate of air loss whilst underwater._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Riptide**](#variable-riptide)   = `EnchantmentId::minecraft("riptide")`<br>_When it is rainy, launches the player in the direction their trident is thrown._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Sharpness**](#variable-sharpness)   = `EnchantmentId::minecraft("sharpness")`<br>_Increases damage against all targets._  |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SilkTouch**](#variable-silktouch)   = `EnchantmentId::minecraft("silk\_touch")`<br>_Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone)_  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SilkTouch**](#variable-silktouch)   = `EnchantmentId::minecraft("silk\_touch")`<br>_Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone)._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Smite**](#variable-smite)   = `EnchantmentId::minecraft("smite")`<br>_Increases damage against undead targets._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SoulSpeed**](#variable-soulspeed)   = `EnchantmentId::minecraft("soul\_speed")`<br>_Walk quicker on soul blocks._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SwiftSneak**](#variable-swiftsneak)   = `EnchantmentId::minecraft("swift\_sneak")`<br>_Walk quicker while sneaking._  |
@@ -703,7 +703,7 @@ constexpr auto endstone::Enchantment::Sharpness;
 
 ### variable SilkTouch 
 
-_Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone)_ 
+_Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone)._ 
 ```C++
 constexpr auto endstone::Enchantment::SilkTouch;
 ```

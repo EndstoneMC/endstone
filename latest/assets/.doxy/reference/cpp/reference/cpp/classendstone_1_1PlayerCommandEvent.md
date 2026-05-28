@@ -95,8 +95,8 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md)) <br> |
 |   | [**PlayerCommandEvent**](#function-playercommandevent) ([**Player**](classendstone_1_1Player.md) & player, std::string command) <br> |
-|  std::string | [**getCommand**](#function-getcommand) () const<br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setCommand**](#function-setcommand) (std::string command) <br> |
+|  std::string | [**getCommand**](#function-getcommand) () const<br>_Gets the command that the player is attempting to send._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setCommand**](#function-setcommand) (std::string command) <br>_Sets the command that the player will send._  |
 |   | [**~PlayerCommandEvent**](#function-playercommandevent) () override<br> |
 
 
@@ -106,9 +106,9 @@ See [endstone::Cancellable](classendstone_1_1Cancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1Cancellable.md#function-cancel) () <br>_Cancel this event._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1Cancellable.md#function-iscancelled) () override const<br>_Gets the cancellation state of this event._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1Cancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) override<br>_Sets the cancellation state of this event._  |
 
 
 ## Public Functions inherited from endstone::ICancellable
@@ -239,13 +239,11 @@ inline explicit endstone::PlayerCommandEvent::PlayerCommandEvent (
 
 ### function getCommand 
 
+_Gets the command that the player is attempting to send._ 
 ```C++
 inline std::string endstone::PlayerCommandEvent::getCommand () const
 ```
 
-
-
-Gets the command that the player is attempting to send.
 
 
 
@@ -266,15 +264,13 @@ Gets the command that the player is attempting to send.
 
 ### function setCommand 
 
+_Sets the command that the player will send._ 
 ```C++
 inline void endstone::PlayerCommandEvent::setCommand (
     std::string command
 ) 
 ```
 
-
-
-Sets the command that the player will send.
 
 
 
