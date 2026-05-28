@@ -22,5 +22,5 @@ tools.build:compiler_executables={"c": "clang-cl", "cpp": "clang-cl"}
 {% endif %}
 
 [tool_requires]
-cmake/4.3.2
-ninja/1.13.2
+!(ninja/*): cmake/[*]
+ninja/[*]
