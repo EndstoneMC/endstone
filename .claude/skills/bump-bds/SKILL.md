@@ -39,17 +39,15 @@ private working references only.
 scripts/configs/{windows,linux}.toml          signature configs, hand-maintained
         |  scripts/dump_symbols.py
         v
-src/bedrock/symbol_generator/symbols/{windows,linux}.toml   resolved offsets
-        |  symbol_generator (CMake target)
-        v
-bedrock_symbols.generated.h                    std::array of name -> offset
+src/bedrock/symbols/{windows,linux}.h         std::array of name -> offset (committed)
 ```
 
 `src/bedrock/symbol.h` `get_symbol()` looks a symbol up by `__FUNCDNAME__` - the
 mangled name of Endstone's own declaration in `src/bedrock/`. The symbol-table
 key IS the signature of Endstone's reimplementation. Unresolved symbols are
-written as `0` and skipped by the generator (that hook is disabled; the build
-still succeeds).
+written as `0` and dropped by the dumper (that hook is disabled; the build
+still succeeds, unless any TU actually consumes the missing name - then
+`consteval` `get_symbol()` throws at compile time).
 
 ## Prerequisites
 
@@ -361,14 +359,14 @@ Re-cut it from the new binary:
   deletes a class, also remove: its `src/endstone/runtime/bedrock_hooks/*.cpp`
   hook, the source-list entries in the relevant `CMakeLists.txt` files, the
   `[[signatures]]` blocks in both `scripts/configs/*.toml`, the entries in the
-  generated `src/bedrock/symbol_generator/symbols/*.toml`, and any dependent
+  generated `src/bedrock/symbols/*.h`, and any dependent
   declaration that named the type. `grep` the tree for the class name afterward
   to confirm nothing dangles.
 
 ### Symbol table is not optional for the build
 
 - `get_symbol()` is `consteval` and **throws** when a name is absent; the
-  generator **drops every `0`-valued entry** from `bedrock_symbols.generated.h`.
+  dumper **drops every `0`-valued entry** from `src/bedrock/symbols/<platform>.h`.
   So an unresolved symbol that any TU consumes via `BEDROCK_CALL` /
   `BEDROCK_VAR` / `BEDROCK_CTOR` is a hard **compile** error
   (`C7595: call to immediate function is not a constant expression`), not a
@@ -378,11 +376,11 @@ Re-cut it from the new binary:
   the old `name` in `scripts/configs/{windows,linux}.toml` goes stale - update
   it and re-dump, or that hook's TU stops compiling.
 - **Temporary verification trick.** To compile-check the Phase-2 port before
-  Phase 1 is finished, *temporarily* comment out the `if (val == 0) { ...
-  continue; }` skip in `src/bedrock/symbol_generator/main.cpp` so every entry -
-  including unresolved `0`s - lands in the generated table. `get_symbol` then
+  Phase 1 is finished, *temporarily* comment out the `if offset == 0: continue`
+  skip in `write_symbols_header` in `scripts/dump_symbols.py` so every entry -
+  including unresolved `0`s - lands in the generated header. `get_symbol` then
   finds every key and the build goes green, so real ABI/source errors surface.
-  **Revert it before committing** - the generator must keep dropping `0`s and
+  **Revert it before committing** - the dumper must keep dropping `0`s and
   `get_symbol` must keep throwing so a genuinely missing symbol stays a loud
   error. The real fix is always Phase 1 (re-dump / update stale `name`s).
 

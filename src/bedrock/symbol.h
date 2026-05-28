@@ -26,8 +26,13 @@
 
 #include "endstone/detail.h"
 
+#ifdef _WIN32
+#include "bedrock/symbols/windows.h"
+#else
+#include "bedrock/symbols/linux.h"
+#endif
+
 namespace endstone::runtime {
-#include "bedrock_symbols.generated.h"
 
 void *get_module_base();
 std::string get_module_pathname();
