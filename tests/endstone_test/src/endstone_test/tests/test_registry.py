@@ -1,5 +1,6 @@
 import pytest
 from endstone import Server
+from endstone._python import Identifier
 from endstone.actor import ActorType
 from endstone.enchantments import Enchantment
 from endstone.inventory import ItemType
@@ -13,7 +14,7 @@ def _get_enum_constants(cls):
     return {
         name: getattr(cls, name)
         for name in dir(cls)
-        if not name.startswith("_") and isinstance(getattr(cls, name), str)
+        if not name.startswith("_") and isinstance(getattr(cls, name), Identifier)
     }
 
 

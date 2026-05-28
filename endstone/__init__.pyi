@@ -50,6 +50,7 @@ __all__ = [
     "__version__",
     "ColorFormat",
     "GameMode",
+    "Identifier",
     "Logger",
     "OfflinePlayer",
     "Player",
@@ -82,6 +83,29 @@ __all__ = [
 ]
 
 _T = typing.TypeVar("_T")
+
+class Identifier(typing.Generic[_T]):
+    """
+    Represents a namespaced identifier consisting of a namespace and a key.
+    """
+    def __init__(self, id: str) -> None: ...
+    @property
+    def namespace(self) -> str:
+        """
+        The namespace component of this identifier.
+        """
+        ...
+    @property
+    def key(self) -> str:
+        """
+        The key component of this identifier.
+        """
+        ...
+    def __str__(self) -> str: ...
+    def __repr__(self) -> str: ...
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
 
 class Server:
     """
@@ -778,23 +802,23 @@ class Skin:
         """
         ...
 
-__minecraft_version__ = "26.12"
-
 class Registry(typing.Generic[_T]):
     """
     Presents a registry
     """
-    def get(self, key: str) -> _T | None:
+    def get(self, id: Identifier[_T] | str) -> _T | None:
         """
         Get the object by its key.
         """
         ...
-    def get_or_throw(self, key: str) -> _T:
+    def get_or_throw(self, id: Identifier[_T] | str) -> _T:
         """
         Get the object by its key or throw if missing.
         """
         ...
-    def __getitem__(self, key: str) -> _T: ...
+    def __getitem__(self, id: Identifier[_T] | str) -> _T: ...
     def __iter__(self) -> list: ...
-    def __contains__(self, key: str) -> bool: ...
+    def __contains__(self, id: Identifier[_T] | str) -> bool: ...
     def __len__(self) -> int: ...
+
+__minecraft_version__ = "26.20"

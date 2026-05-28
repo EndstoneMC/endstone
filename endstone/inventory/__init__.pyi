@@ -5,6 +5,7 @@ Classes relating to player inventories and item interactions.
 import enum
 import typing
 
+from endstone import Identifier
 from endstone.enchantments import Enchantment
 from endstone.map import MapView
 from endstone.nbt import CompoundTag
@@ -28,7 +29,7 @@ class ItemStack:
     """
     Represents a stack of items.
     """
-    def __init__(self, type: str, amount: int = 1, data: int = 0) -> None: ...
+    def __init__(self, type: Identifier[ItemType] | str, amount: int = 1, data: int = 0) -> None: ...
     @property
     def type(self) -> ItemType:
         """
@@ -110,7 +111,7 @@ class ItemType:
     Represents an item type.
     """
     @property
-    def id(self) -> str:
+    def id(self) -> Identifier[ItemType]:
         """
         Return the identifier of this item type.
         """
@@ -144,12 +145,13 @@ class ItemType:
         """
         ...
     @staticmethod
-    def get(name: str) -> ItemType:
+    def get(name: Identifier[ItemType] | str) -> ItemType:
         """
         Attempts to get the ItemType with the given name.
         """
         ...
     def __str__(self) -> str: ...
+    def __hash__(self) -> int: ...
     def __eq__(self, other: object) -> bool: ...
     def __ne__(self, other: object) -> bool: ...
 
@@ -210,12 +212,12 @@ class ItemMeta:
         Checks for the existence of any enchantments.
         """
         ...
-    def has_enchant(self, id: str) -> bool:
+    def has_enchant(self, id: Identifier[Enchantment] | str) -> bool:
         """
         Checks for existence of the specified enchantment.
         """
         ...
-    def get_enchant_level(self, id: str) -> int:
+    def get_enchant_level(self, id: Identifier[Enchantment] | str) -> int:
         """
         Checks for the level of the specified enchantment.
         """
@@ -226,12 +228,12 @@ class ItemMeta:
         Returns a copy the enchantments in this ItemMeta.
         """
         ...
-    def add_enchant(self, id: str, level: int, force: bool = False) -> bool:
+    def add_enchant(self, id: Identifier[Enchantment] | str, level: int, force: bool = False) -> bool:
         """
         Adds the specified enchantment to this item meta.
         """
         ...
-    def remove_enchant(self, id: str) -> bool:
+    def remove_enchant(self, id: Identifier[Enchantment] | str) -> bool:
         """
         Removes the specified enchantment from this item meta.
         """
@@ -409,12 +411,12 @@ class CrossbowMeta(ItemMeta):
     def charged_projectile(self, arg1: ItemStack | None) -> None: ...
 
 class ItemFactory:
-    def get_item_meta(self, type: str) -> ItemMeta:
+    def get_item_meta(self, type: Identifier[ItemType] | str) -> ItemMeta:
         """
         This creates a new item meta for the item type.
         """
         ...
-    def is_applicable(self, meta: ItemMeta, type: str) -> bool:
+    def is_applicable(self, meta: ItemMeta, type: Identifier[ItemType] | str) -> bool:
         """
         This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified ItemStack
         """
@@ -424,7 +426,7 @@ class ItemFactory:
         This method is used to compare two ItemMeta objects.
         """
         ...
-    def as_meta_for(self, meta: ItemMeta, type: str) -> ItemMeta:
+    def as_meta_for(self, meta: ItemMeta, type: Identifier[ItemType] | str) -> ItemMeta:
         """
         Returns an appropriate item meta for the specified item type.
         """
