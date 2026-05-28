@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Endstone: Rebuild and install",
+            "label": "Install",
             "type": "shell",
             "command": "rm -rf ./build/package && uv pip install -U . -C build-dir=./build -v",
             "windows": {
@@ -24,6 +24,36 @@
                 "focus": false,
                 "panel": "dedicated",
                 "clear": true
+            }
+        },
+        {
+            "label": "Run",
+            "type": "shell",
+            "command": "uv run --no-project endstone",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": "Install",
+            "dependsOrder": "sequence",
+            "isBackground": true,
+            "problemMatcher": {
+                "pattern": [
+                    {
+                        "regexp": "^never-matches-anything$"
+                    }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^.+$",
+                    "endsPattern": "^.+$"
+                }
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "clear": false
             }
         }
     ]
