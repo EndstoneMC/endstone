@@ -47,7 +47,7 @@ COPY .conan2/remotes.json .conan2/remotes.json
 COPY .conan2/profiles/default .conan2/profiles/default
 COPY conanfile.py conanfile.py
 RUN python -m pip install --upgrade pip \
-    && pip install conan cmake ninja \
+    && pip install conan \
     && conan install . --build=missing --build=m4/*
 
 # Copy the rest of the project files.
