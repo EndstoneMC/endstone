@@ -1,0 +1,16 @@
+Fix malformed `#include < time.h >` (spaces inside angle brackets)
+
+MSVC silently accepted this, but clang-cl (and any standards-conformant
+preprocessor) rejects the embedded whitespace.
+
+--- a/Source/gettimeofday.h
++++ b/Source/gettimeofday.h
+@@ -12,7 +12,7 @@
+ #define __GET_TIME_OF_DAY_H
+
+ #if defined(_WIN32) && !defined(__GNUC__)  &&!defined(__GCCXML__)
+-#include < time.h >
++#include <time.h>
+ struct timezone
+ {
+   int  tz_minuteswest; /* minutes W of Greenwich */
