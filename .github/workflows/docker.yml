@@ -58,7 +58,7 @@ jobs:
 
       - name: Set up Docker Buildx
         if: steps.guard.outputs.skip != 'true'
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       - name: Login to ${{ matrix.registry_name }}
         if: steps.guard.outputs.skip != 'true'
