@@ -78,8 +78,6 @@ class EndstoneRecipe(ConanFile):
             self.requires("imgui/1.91.8-docking")
 
     def build_requirements(self):
-        self.tool_requires("cmake/4.3.2")
-        self.tool_requires("ninja/1.13.2")
         self.test_requires("gtest/1.16.0")
 
     def validate(self):
