@@ -1,0 +1,13 @@
+sources:
+  "4.081":
+    url: "https://github.com/facebookarchive/RakNet/archive/1a169895a900c9fc4841c556e16514182b75faf8.tar.gz"
+    sha256: "79d42a4daef9201ba93a4204257d740ffa6d225e37805b8a3b915c350b721144"
+
+patches:
+  "4.081":
+    - patch_file: "patches/4.081-fix-gettimeofday-include.patch"
+      patch_description: "Fix malformed `#include < time.h >` (spaces inside angle brackets) that modern preprocessors reject."
+      patch_type: "portability"
+    - patch_file: "patches/4.081-linux-portability.patch"
+      patch_description: "Add <netdb.h> and LinuxStrings.h to the POSIX socket include block (getaddrinfo, hostent, _stricmp shim)."
+      patch_type: "portability"
