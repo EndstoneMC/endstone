@@ -18,8 +18,12 @@
 #include <unordered_set>
 
 #ifdef _WIN32
+#ifndef NOMINMAX
 #define NOMINMAX
+#endif
+#ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
+#endif
 #include <Windows.h>
 #endif
 
@@ -120,6 +124,7 @@ const exception_slot EXCEPTION_DEFINITIONS[] = {
     EXCEPTION_DEF(EXCEPTION_SINGLE_STEP, "SingleStep"),
     EXCEPTION_DEF(EXCEPTION_STACK_OVERFLOW, "StackOverflow")};
 
+#undef EXCEPTION_DEF
 #endif
 
 #ifdef __linux__
@@ -137,6 +142,8 @@ const signal_slot SIGNAL_DEFINITIONS[] = {SIGNAL_DEF(SIGILL, "IllegalInstruction
                                           SIGNAL_DEF(SIGBUS, "BusError"),
                                           SIGNAL_DEF(SIGFPE, "FloatingPointException"),
                                           SIGNAL_DEF(SIGSEGV, "Segfault")};
+
+#undef SIGNAL_DEF
 #endif
 
 bool should_print(const sentry_ucontext_t *ctx)
