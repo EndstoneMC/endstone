@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fmt/format.h>
+#include <format>
 
 #include "endstone_python.h"
 
@@ -47,12 +47,12 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .def_static("get", &BlockType::get, py::arg("name"), "Attempts to get the BlockType with the given name.",
                     py::return_value_policy::reference)
         .def("__str__", &BlockType::getId)
-        .def("__repr__", [](const BlockType &self) { return fmt::format("BlockType({})", self.getId()); });
+        .def("__repr__", [](const BlockType &self) { return std::format("BlockType({})", self.getId()); });
 
     block_data.def_property_readonly("type", &BlockData::getType, "Get the block type represented by this block data.")
         .def_property_readonly("block_states", &BlockData::getBlockStates, "Gets the block states for this block.")
         .def_property_readonly("runtime_id", &BlockData::getRuntimeId, "Gets the runtime id for this block.")
-        .def("__str__", [](const BlockData &self) { return fmt::format("{}", self); });
+        .def("__str__", [](const BlockData &self) { return std::format("{}", self); });
 
     block_state
         .def_property_readonly("block", &BlockState::getBlock, "Gets the block represented by this block state.")
@@ -66,7 +66,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .def_property_readonly("location", &BlockState::getLocation, "Gets the location of this block state.")
         .def("update", py::overload_cast<bool, bool>(&BlockState::update), py::arg("force") = false,
              py::arg("apply_physics") = true, "Attempts to update the block represented by this state.")
-        .def("__str__", [](const BlockState &self) { return fmt::format("{}", self); });
+        .def("__str__", [](const BlockState &self) { return std::format("{}", self); });
 
     block.def_property_readonly("type", &Block::getType, "Gets or sets the type of the block.")
         .def("set_type", py::overload_cast<std::string, bool>(&Block::setType), py::arg("type"),
@@ -87,7 +87,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .def("capture_state", &Block::captureState,
              "Captures the current state of this block. The returned object will never be updated, and you are not "
              "guaranteed that (for example) a sign is still a sign after you capture its state.")
-        .def("__str__", [](const Block &self) { return fmt::format("{}", self); });
+        .def("__str__", [](const Block &self) { return std::format("{}", self); });
 }
 
 }  // namespace endstone::python

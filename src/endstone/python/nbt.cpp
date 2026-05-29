@@ -90,7 +90,7 @@ auto bind_value_tag(py::module &m, const char *name, Args &&...args)
                    .def(py::self != value_type())
                    .def(value_type() == py::self)
                    .def(value_type() != py::self)
-                   .def("__str__", [](const T &self) { return fmt::format("{}", self); })
+                   .def("__str__", [](const T &self) { return std::format("{}", self); })
                    .def("__repr__", [](const py::object &self) {
                        auto tag_name = py::type::of(self).attr("__name__").cast<std::string>();
                        return py::str("{}({})").format(tag_name, py::repr(self.attr("value")));
@@ -178,7 +178,7 @@ static void bind_array_tag(py::module_ &m, const char *name, Args &&...args)
         .def(storage_type() != py::self);
 
     // --- __repr__ ---
-    cls.def("__str__", [](const T &self) { return fmt::format("{}", self); });
+    cls.def("__str__", [](const T &self) { return std::format("{}", self); });
     cls.def("__repr__", [](const py::object &self) {
         auto tag_name = py::type::of(self).attr("__name__").cast<std::string>();
         py::list lst;
@@ -221,7 +221,7 @@ static void bind_list_tag(py::module &m)
              py::arg("iterable"))
         .def("__len__", [](const ListTag &self) { return static_cast<py::ssize_t>(self.size()); })
         .def("__bool__", [](const ListTag &self) { return !self.empty(); })
-        .def("__str__", [](const ListTag &self) { return fmt::format("{}", self); })
+        .def("__str__", [](const ListTag &self) { return std::format("{}", self); })
         .def("__repr__",
              [](const ListTag &self) {
                  py::list lst;
@@ -367,7 +367,7 @@ static void bind_compound_tag(py::module &m)
                  }
                  return d;
              })
-        .def("__str__", [](const CompoundTag &self) { return fmt::format("{}", self); })
+        .def("__str__", [](const CompoundTag &self) { return std::format("{}", self); })
         .def("__repr__", [](const CompoundTag &self) {
             py::dict d;
             for (const auto &[k, v] : self) {

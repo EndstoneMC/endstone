@@ -89,7 +89,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
         allow_client_packs_ = tbl.at_path("settings.allow-client-packs").value_or(false);
     }
     catch (const toml::parse_error &err) {
-        EndstoneServer::getLogger().error("Failed to parse config file: {}", err);
+        EndstoneServer::getLogger().error("Failed to parse config file: {}", err.what());
     }
 }
 

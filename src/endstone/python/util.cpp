@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fmt/format.h>
+#include <format>
 
 #include "endstone_python.h"
 
@@ -28,7 +28,7 @@ void init_util(py::module &m, py::class_<Vector> &vector)
         .def_property_readonly("port", &SocketAddress::getPort, "Gets the port number.")
         .def("__repr__",
              [](const SocketAddress &self) {
-                 return fmt::format("SocketAddress(hostname='{}', port={})", self.getHostname(), self.getPort());
+                 return std::format("SocketAddress(hostname='{}', port={})", self.getHostname(), self.getPort());
              })
         .def("__str__",
              [](const SocketAddress &self) { return self.getHostname() + ":" + std::to_string(self.getPort()); });
@@ -102,8 +102,8 @@ void init_util(py::module &m, py::class_<Vector> &vector)
             "Rotates the vector around a given arbitrary axis in 3-dimensional space.")
         .def("__matmul__", &Vector::dot, py::arg("other"), "Dot product (v @ u).")
         .def("__repr__",
-             [](const Vector &v) { return fmt::format("Vector(x={}, y={}, z={})", v.getX(), v.getY(), v.getZ()); })
-        .def("__str__", [](const Vector &v) { return fmt::format("{}", v); });
+             [](const Vector &v) { return std::format("Vector(x={}, y={}, z={})", v.getX(), v.getY(), v.getZ()); })
+        .def("__str__", [](const Vector &v) { return std::format("{}", v); });
 }
 
 }  // namespace endstone::python

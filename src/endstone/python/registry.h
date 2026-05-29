@@ -79,7 +79,7 @@ void bind_registry(py::module &m, Args &&...args)
                 if (auto *p = self.get(id)) {
                     return *p;
                 }
-                throw py::key_error(fmt::format("No registry entry found for identifier: {}", id));
+                throw py::key_error(std::format("No registry entry found for identifier: {}", id));
             },
             py::arg("id"), py::return_value_policy::reference, "Get the object by its identifier or throw if missing.")
         .def(
@@ -88,7 +88,7 @@ void bind_registry(py::module &m, Args &&...args)
                 if (auto *p = self.get(id)) {
                     return *p;
                 }
-                throw py::key_error(fmt::format("No registry entry found for identifier: {}", id));
+                throw py::key_error(std::format("No registry entry found for identifier: {}", id));
             },
             py::arg("id"), py::return_value_policy::reference)
         .def(

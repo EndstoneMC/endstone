@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <format>
 #include <memory>
 #include <stdexcept>
 #include <string>
@@ -45,7 +46,7 @@ public:
     {
         auto *item_type = ItemType::get(type);
         if (!item_type) {
-            throw std::invalid_argument(fmt::format("Unknown item type: {}", type));
+            throw std::invalid_argument(std::format("Unknown item type: {}", type));
         }
         *this = item_type->createItemStack(amount);
         impl_->setData(data);
@@ -207,12 +208,12 @@ private:
 }  // namespace endstone
 
 template <>
-struct fmt::formatter<endstone::ItemStack> : formatter<string_view> {
+struct std::formatter<endstone::ItemStack> : std::formatter<std::string_view> {
     using Type = endstone::ItemStack;
 
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "ItemStack({} x {})", val.getType(), val.getAmount());
+        return std::format_to(ctx.out(), "ItemStack({} x {})", val.getType(), val.getAmount());
     }
-};  // namespace fmt
+};

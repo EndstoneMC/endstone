@@ -98,11 +98,11 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     item_stack
         .def(py::init([](ItemTypeId type, const int amount, const int data) {
                  if (const auto *item = ItemType::get(type); !item) {
-                     throw std::runtime_error(fmt::format("Unknown item type: {}", type));
+                     throw std::runtime_error(std::format("Unknown item type: {}", type));
                  }
                  if (amount < 1 || amount > 0xff) {
                      throw std::runtime_error(
-                         fmt::format("Item stack amount must be between 1 to 255, got {}.", amount));
+                         std::format("Item stack amount must be between 1 to 255, got {}.", amount));
                  }
                  return ItemStack(type, amount, data);
              }),
@@ -125,7 +125,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property("nbt", &ItemStack::getNbt, &ItemStack::setNbt, "Gets or sets the NBT compound tag of this item stack.")
         .def(py::self == py::self)
         .def(py::self != py::self)
-        .def("__str__", [](const ItemStack &self) { return fmt::format("{}", self); });
+        .def("__str__", [](const ItemStack &self) { return std::format("{}", self); });
 
     py::class_<Inventory>(m, "Inventory", "Interface to the various inventories.")
         .def_property_readonly("size", &Inventory::getSize, "Returns the size of the inventory")

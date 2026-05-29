@@ -56,7 +56,6 @@ class EndstoneRecipe(ConanFile):
         self.requires("date/3.0.4")
         self.requires("entt/3.15.0")
         self.requires("expected-lite/0.8.0")
-        self.requires("fmt/11.2.0", transitive_headers=True, transitive_libs=True)
         self.requires("funchook/1.1.3")
         self.requires("glm/1.0.1")
         self.requires("magic_enum/0.9.7")
@@ -77,10 +76,10 @@ class EndstoneRecipe(ConanFile):
 
         if self._with_devtools:
             self.requires("glfw/3.4")
-            self.requires("imgui/1.91.8-docking")
+            self.requires("imgui/1.92.8-docking")
 
     def build_requirements(self):
-        self.test_requires("gtest/1.16.0")
+        self.test_requires("gtest/1.17.0")
 
     def validate(self):
         check_min_cppstd(self, self._min_cppstd)

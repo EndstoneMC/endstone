@@ -16,12 +16,11 @@
 
 #include <cstdint>
 #include <string>
+#include <format>
 #include <unordered_map>
 #include <variant>
 
-#include <fmt/format.h>
-#include <fmt/ranges.h>
-
+#include "endstone/util/format.h"
 #include "endstone/variant.h"
 
 namespace endstone {
@@ -60,53 +59,52 @@ public:
 
 }  // namespace endstone
 
-namespace fmt {
-
 template <>
-struct formatter<endstone::BlockStates::mapped_type> : formatter<string_view> {
+struct std::formatter<endstone::BlockStates::mapped_type> : std::formatter<std::string_view> {
     using Type = endstone::BlockStates::mapped_type;
 
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
         return std::visit(endstone::overloaded{
-                              [&ctx](const std::string &arg) { return fmt::format_to(ctx.out(), "{:?}", arg); },
-                              [&ctx](auto &&arg) { return fmt::format_to(ctx.out(), "{}", arg); },
+                              [&ctx](const std::string &arg) {
+                                  return std::format_to(ctx.out(), "{}", endstone::detail::quoted(arg));
+                              },
+                              [&ctx](auto &&arg) { return std::format_to(ctx.out(), "{}", arg); },
                           },
                           val);
     }
 };
 
 template <>
-struct formatter<endstone::BlockStates::value_type> : formatter<string_view> {
+struct std::formatter<endstone::BlockStates::value_type> : std::formatter<std::string_view> {
     using Type = endstone::BlockStates::value_type;
 
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{:?}={}", val.first, val.second);
+        return std::format_to(ctx.out(), "{}={}", endstone::detail::quoted(val.first), val.second);
     }
 };
 
 template <>
-struct formatter<endstone::BlockStates> : formatter<string_view> {
+struct std::formatter<endstone::BlockStates> : std::formatter<std::string_view> {
     using Type = endstone::BlockStates;
 
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "[{}]", fmt::join(val.begin(), val.end(), ","));
+        return std::format_to(ctx.out(), "[{}]", endstone::detail::join(val.begin(), val.end(), ","));
     }
 };
 
 template <>
-struct formatter<endstone::BlockData> : formatter<string_view> {
+struct std::formatter<endstone::BlockData> : std::formatter<std::string_view> {
     using Type = endstone::BlockData;
 
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "BlockData(type={}, block_states={})", val.getType(), val.getBlockStates());
+        return std::format_to(ctx.out(), "BlockData(type={}, block_states={})", val.getType(), val.getBlockStates());
     }
 };
-}  // namespace fmt

@@ -34,8 +34,8 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
                                py::return_value_policy::reference)
         .def_property_readonly("dimension", &Chunk::getDimension, "Gets the dimension containing this chunk",
                                py::return_value_policy::reference)
-        .def("__repr__", [](const Chunk &self) { return fmt::format("{}", self); })
-        .def("__str__", [](const Chunk &self) { return fmt::format("{}", self); });
+        .def("__repr__", [](const Chunk &self) { return std::format("{}", self); })
+        .def("__str__", [](const Chunk &self) { return std::format("{}", self); });
 
     py::native_enum<Dimension::Type>(dimension, "Type", "enum.Enum", "Represents various dimension types.")
         .value("OVERWORLD", Dimension::Type::Overworld)
@@ -116,8 +116,8 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         .def("zero", &Location::zero, "Zero this vector's components.", py::return_value_policy::reference)
         .def(py::self == py::self)
         .def(py::self != py::self)
-        .def("__repr__", [](const Location &self) { return fmt::format("{}", self); })
-        .def("__str__", [](const Location &self) { return fmt::format("{}", self); })
+        .def("__repr__", [](const Location &self) { return std::format("{}", self); })
+        .def("__str__", [](const Location &self) { return std::format("{}", self); })
         .def_static("normalize_yaw", &Location::normalizeYaw, py::arg("yaw"),
                     "Normalizes the given yaw angle to a value between `+/-180` degrees.")
         .def_static("normalize_pitch", &Location::normalizePitch, py::arg("pitch"),

@@ -46,7 +46,7 @@ PackSourceLoadResult EndstonePackSource::_loadImpl(PackSourceLoadOptions &&optio
     }
 
     auto &server = entt::locator<EndstoneServer>::value_or();
-    server.getLogger().info("Loading packs from '{}' ({})", path_, magic_enum::enum_name(pack_type_));
+    server.getLogger().info("Loading packs from '{}' ({})", path_.string(), magic_enum::enum_name(pack_type_));
 
     PackSourceLoadResult result;
     for (const auto &entry : fs::directory_iterator(path_)) {

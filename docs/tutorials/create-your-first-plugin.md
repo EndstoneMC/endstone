@@ -22,8 +22,8 @@ toc_depth: 2
     -   [JetBrains CLion]
     -   [CMake] (>= 3.15)
     -   C++ Compiler
-        -   **:fontawesome-brands-windows: Windows**: [Visual Studio] 2017 or newer
-        -   **:fontawesome-brands-linux: Linux**: [LLVM Toolchain] 5 or newer with Clang and libc++
+        -   **:fontawesome-brands-windows: Windows**: [Visual Studio] 2022 or newer
+        -   **:fontawesome-brands-linux: Linux**: [LLVM Toolchain] 18 or newer with Clang and libc++
 
 ## Create a new project
 
