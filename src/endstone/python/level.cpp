@@ -34,8 +34,8 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
                                py::return_value_policy::reference)
         .def_property_readonly("dimension", &Chunk::getDimension, "The dimension containing this chunk.",
                                py::return_value_policy::reference)
-        .def("__repr__", [](const Chunk &self) { return fmt::format("{}", self); })
-        .def("__str__", [](const Chunk &self) { return fmt::format("{}", self); });
+        .def("__repr__", [](const Chunk &self) { return std::format("{}", self); })
+        .def("__str__", [](const Chunk &self) { return std::format("{}", self); });
 
     dimension
         .def_property_readonly_static("OVERWORLD", [](const py::object &) { return Dimension::Overworld; })
@@ -206,8 +206,8 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
              py::return_value_policy::reference)
         .def(py::self == py::self)
         .def(py::self != py::self)
-        .def("__repr__", [](const Location &self) { return fmt::format("{}", self); })
-        .def("__str__", [](const Location &self) { return fmt::format("{}", self); })
+        .def("__repr__", [](const Location &self) { return std::format("{}", self); })
+        .def("__str__", [](const Location &self) { return std::format("{}", self); })
         .def_static("normalize_yaw", &Location::normalizeYaw, py::arg("yaw"), R"doc(
     Normalizes the given yaw angle to a value between ``+/-180`` degrees.
 

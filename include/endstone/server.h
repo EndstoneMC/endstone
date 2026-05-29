@@ -16,6 +16,7 @@
 
 #include <chrono>
 #include <cstdint>
+#include <format>
 #include <memory>
 #include <stdexcept>
 #include <string>
@@ -242,10 +243,10 @@ public:
     virtual void broadcastMessage(const Message &message) const = 0;
 
     template <typename... Args>
-    void broadcastMessage(const fmt::format_string<Args...> format, Args &&...args) const
+    void broadcastMessage(const std::format_string<Args...> format, Args &&...args) const
     {
         try {
-            broadcastMessage(fmt::format(format, std::forward<Args>(args)...));
+            broadcastMessage(std::format(format, std::forward<Args>(args)...));
         }
         catch (std::exception &e) {
             getLogger().log(Logger::Error, e.what());

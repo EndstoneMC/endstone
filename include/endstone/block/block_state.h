@@ -17,7 +17,7 @@
 #include <memory>
 #include <string>
 
-#include <fmt/format.h>
+#include <format>
 
 #include "endstone/block/block.h"
 #include "endstone/util/result.h"
@@ -141,16 +141,14 @@ public:
 };
 }  // namespace endstone
 
-namespace fmt {
 template <>
-struct formatter<endstone::BlockState> : formatter<string_view> {
+struct std::formatter<endstone::BlockState> : std::formatter<std::string_view> {
     using Type = endstone::BlockState;
 
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "BlockState(pos=BlockPos(x={}, y={}, z={}), type={}, data={})", val.getX(),
+        return std::format_to(ctx.out(), "BlockState(pos=BlockPos(x={}, y={}, z={}), type={}, data={})", val.getX(),
                               val.getY(), val.getZ(), val.getType(), *val.getData());
     }
 };
-}  // namespace fmt

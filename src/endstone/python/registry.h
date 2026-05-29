@@ -81,7 +81,7 @@ public:
         if (const auto *p = registry_.get0(id.str())) {
             return cast(p);
         }
-        throw py::key_error(fmt::format("No registry entry found for identifier: {}", id.str()));
+        throw py::key_error(std::format("No registry entry found for identifier: {}", id.str()));
     }
 
     [[nodiscard]] py::iterator iter() const

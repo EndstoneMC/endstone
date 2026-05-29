@@ -16,7 +16,8 @@
 
 #include <string>
 
-#include <fmt/format.h>
+#include <format>
+
 #include <pybind11/pybind11.h>
 
 #include "endstone/event/cancellable.h"
@@ -39,7 +40,7 @@ public:
         if (module.starts_with("endstone.")) {
             return qualname;
         }
-        return fmt::format("{}.{}", module, qualname);
+        return std::format("{}.{}", module, qualname);
     }
 
     [[nodiscard]] bool isCancelled() const override

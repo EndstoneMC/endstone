@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fmt/format.h>
+#include <format>
 
 #include "endstone_python.h"
 
@@ -298,7 +298,7 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
                     "Attempts to get the ActorType with the given name.",
                     py::return_value_policy::reference)
         .def("__str__", [](const ActorType &self) { return std::string(self.getId()); })
-        .def("__repr__", [](const ActorType &self) { return fmt::format("ActorType({})", self.getId()); })
+        .def("__repr__", [](const ActorType &self) { return std::format("ActorType({})", self.getId()); })
         .def("__hash__", [](const ActorType &self) { return std::hash<ActorTypeId>{}(self.getId()); })
         .def(py::self == py::self)
         .def(py::self != py::self);

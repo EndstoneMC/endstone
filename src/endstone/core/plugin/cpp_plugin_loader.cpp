@@ -67,7 +67,7 @@ Plugin *CppPluginLoader::loadPlugin(std::string file)
 
     // Check if file exists
     if (!exists(path)) {
-        logger.error("Could not load plugin from '{}': Provided file does not exist.", path);
+        logger.error("Could not load plugin from '{}': Provided file does not exist.", path.string());
         return nullptr;
     }
 
@@ -78,7 +78,7 @@ Plugin *CppPluginLoader::loadPlugin(std::string file)
         copy_file(path, temp_path, fs::copy_options::overwrite_existing);
     }
     catch (const fs::filesystem_error &e) {
-        logger.error("Could not load plugin from '{}': {}", path, e.what());
+        logger.error("Could not load plugin from '{}': {}", path.string(), e.what());
         return nullptr;
     }
 
@@ -86,7 +86,7 @@ Plugin *CppPluginLoader::loadPlugin(std::string file)
     // https://github.com/EndstoneMC/endstone/issues/228
     auto *module = LOAD_LIBRARY(temp_path.string().c_str());
     if (!module) {
-        logger.error("Failed to load c++ plugin from {}: LoadLibrary failed with code {}.", path, GET_ERROR());
+        logger.error("Failed to load c++ plugin from {}: LoadLibrary failed with code {}.", path.string(), GET_ERROR());
         return nullptr;
     }
 
@@ -94,14 +94,15 @@ Plugin *CppPluginLoader::loadPlugin(std::string file)
     auto init_plugin = GET_FUNCTION(module, "init_endstone_plugin");
     if (!init_plugin) {
         CLOSE_LIBRARY(module);
-        logger.error("Failed to load c++ plugin from {}: No entry point. Did you forget ENDSTONE_PLUGIN?", path);
+        logger.error("Failed to load c++ plugin from {}: No entry point. Did you forget ENDSTONE_PLUGIN?",
+                     path.string());
         return nullptr;
     }
 
     auto *plugin = reinterpret_cast<InitPlugin>(init_plugin)();
     if (!plugin) {
         CLOSE_LIBRARY(module);
-        logger.error("Failed to load c++ plugin from {}: Invalid plugin instance.", path);
+        logger.error("Failed to load c++ plugin from {}: Invalid plugin instance.", path.string());
         return nullptr;
     }
 

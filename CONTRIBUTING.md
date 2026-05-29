@@ -23,14 +23,14 @@ hooks into the BDS binary to expose a high-level Bukkit-like API for plugin deve
 
 **Windows:**
 
-- MSVC 2017+ (Visual Studio 2022 recommended)
+- Clang 18+ (clang-cl) with the MSVC toolchain (Visual Studio 2022)
 - CMake
 - Ninja
 - Conan 2.0+
 
 **Linux:**
 
-- Clang 20+ with libc++
+- Clang 18+ with libc++
 - CMake
 - Ninja
 - Conan 2.0+

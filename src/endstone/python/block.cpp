@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <fmt/format.h>
+#include <format>
 
 #include "endstone_python.h"
 
@@ -44,7 +44,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
     will unambiguously recreate this instance.
 )doc")
         .def_property_readonly("runtime_id", &BlockData::getRuntimeId, "The runtime id for this block.")
-        .def("__str__", [](const BlockData &self) { return fmt::format("{}", self); });
+        .def("__str__", [](const BlockData &self) { return std::format("{}", self); });
 
     block_type.def_property_readonly("id", &BlockType::getId, "The identifier of this block type.")
         .def_property_readonly("translation_key", &BlockType::getTranslationKey,
@@ -67,7 +67,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         The BlockType, or None if no block type with that name exists.
 )doc", py::return_value_policy::reference)
         .def("__str__", [](const BlockType &self) { return std::string(self.getId()); })
-        .def("__repr__", [](const BlockType &self) { return fmt::format("BlockType({})", self.getId()); })
+        .def("__repr__", [](const BlockType &self) { return std::format("BlockType({})", self.getId()); })
         .def("__hash__", [](const BlockType &self) { return std::hash<BlockTypeId>{}(self.getId()); })
         .def(py::self == py::self)
         .def(py::self != py::self)
@@ -111,7 +111,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
     Returns:
         True if the update was successful, False otherwise.
 )doc")
-        .def("__str__", [](const BlockState &self) { return fmt::format("{}", self); });
+        .def("__str__", [](const BlockState &self) { return std::format("{}", self); });
 
     block.def_property_readonly("type", &Block::getType,
                                 "The type of the block, as a string (e.g. ``minecraft:acacia_stairs``).")
@@ -170,7 +170,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
     Returns:
         A BlockState snapshot of the current state of this block.
 )doc")
-        .def("__str__", [](const Block &self) { return fmt::format("{}", self); });
+        .def("__str__", [](const Block &self) { return std::format("{}", self); });
 }
 
 }  // namespace endstone::python

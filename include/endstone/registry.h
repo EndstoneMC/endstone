@@ -19,7 +19,7 @@
 #include <stdexcept>
 #include <string>
 
-#include <fmt/format.h>
+#include <format>
 
 #include "detail.h"
 #include "identifier.h"
@@ -128,7 +128,7 @@ public:
         if (auto *p = get(id)) {
             return *p;
         }
-        throw std::invalid_argument(fmt::format("No registry entry found for identifier: {}", id));
+        throw std::invalid_argument(std::format("No registry entry found for identifier: {}", id));
     }
 
     /**
@@ -143,7 +143,7 @@ public:
         if (auto *p = get(id)) {
             return *p;
         }
-        throw std::invalid_argument(fmt::format("No registry entry found for identifier: {}", id));
+        throw std::invalid_argument(std::format("No registry entry found for identifier: {}", id));
     }
 
     /**
@@ -177,10 +177,10 @@ private:
 
 template <typename T>
     requires requires(const T &t) { { t.getId() } -> std::convertible_to<endstone::Identifier<T>>; }
-struct fmt::formatter<T> : formatter<string_view> {
+struct std::formatter<T> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const T &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}", val.getId());
+        return std::format_to(ctx.out(), "{}", val.getId());
     }
 };

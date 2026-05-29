@@ -17,6 +17,7 @@
 #include <bit>
 #include <cstddef>
 #include <cstdint>
+#include <format>
 #include <regex>
 #include <stdexcept>
 #include <string>
@@ -25,9 +26,7 @@
 #include <utility>
 #include <variant>
 
-#include <fmt/format.h>
-#include <fmt/ranges.h>
-
+#include "endstone/util/format.h"
 #include "endstone/detail.h"
 #include "endstone/nbt/array.h"
 #include "endstone/nbt/compound.h"
@@ -590,7 +589,7 @@ inline escape_view escaped(std::string_view value)
 }  // namespace endstone
 
 template <>
-struct fmt::formatter<endstone::nbt::Tag> : formatter<string_view> {
+struct std::formatter<endstone::nbt::Tag> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::nbt::Tag &tag, FormatContext &ctx) const -> format_context::iterator
     {
@@ -600,147 +599,147 @@ struct fmt::formatter<endstone::nbt::Tag> : formatter<string_view> {
                 return ctx.out();
             }
             else {
-                return fmt::format_to(ctx.out(), "{}", arg);
+                return std::format_to(ctx.out(), "{}", arg);
             }
         });
     }
 };
 
 template <>
-struct fmt::formatter<endstone::ByteTag> : formatter<string_view> {
+struct std::formatter<endstone::ByteTag> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::ByteTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}b", tag.value());
+        return std::format_to(ctx.out(), "{}b", tag.value());
     }
 };
 
 template <>
-struct fmt::formatter<endstone::ShortTag> : formatter<string_view> {
+struct std::formatter<endstone::ShortTag> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::ShortTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}s", tag.value());
+        return std::format_to(ctx.out(), "{}s", tag.value());
     }
 };
 
 template <>
-struct fmt::formatter<endstone::IntTag> : formatter<string_view> {
+struct std::formatter<endstone::IntTag> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::IntTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}", tag.value());
+        return std::format_to(ctx.out(), "{}", tag.value());
     }
 };
 
 template <>
-struct fmt::formatter<endstone::LongTag> : formatter<string_view> {
+struct std::formatter<endstone::LongTag> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::LongTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}L", tag.value());
+        return std::format_to(ctx.out(), "{}L", tag.value());
     }
 };
 
 template <>
-struct fmt::formatter<endstone::FloatTag> : formatter<string_view> {
+struct std::formatter<endstone::FloatTag> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::FloatTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
-        std::string s = fmt::format("{:g}", tag.value());
+        std::string s = std::format("{:g}", tag.value());
         if (s.find('.') == std::string::npos && s.find('e') == std::string::npos) {
             s += ".0";
         }
-        return fmt::format_to(ctx.out(), "{}f", s);
+        return std::format_to(ctx.out(), "{}f", s);
     }
 };
 
 template <>
-struct fmt::formatter<endstone::DoubleTag> : formatter<string_view> {
+struct std::formatter<endstone::DoubleTag> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::DoubleTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
-        std::string s = fmt::format("{:g}", tag.value());
+        std::string s = std::format("{:g}", tag.value());
         if (s.find('.') == std::string::npos && s.find('e') == std::string::npos) {
             s += ".0";
         }
-        return fmt::format_to(ctx.out(), "{}d", s);
+        return std::format_to(ctx.out(), "{}d", s);
     }
 };
 
 template <>
-struct fmt::formatter<endstone::ByteArrayTag> : formatter<string_view> {
+struct std::formatter<endstone::ByteArrayTag> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::ByteArrayTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
         auto out = ctx.out();
-        out = fmt::format_to(out, "[B;");
+        out = std::format_to(out, "[B;");
         auto it = tag.begin();
-        out = fmt::format_to(out, "{}b", *it);
+        out = std::format_to(out, "{}b", *it);
         ++it;
         while (it != tag.end()) {
-            fmt::format_to(out, ",{}b", *it);
+            std::format_to(out, ",{}b", *it);
             ++it;
         }
-        out = fmt::format_to(out, "]");
+        out = std::format_to(out, "]");
         return out;
     }
 };
 
 template <>
-struct fmt::formatter<endstone::StringTag> : formatter<string_view> {
+struct std::formatter<endstone::StringTag> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::StringTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}", endstone::nbt::escaped(tag.value()));
+        return std::format_to(ctx.out(), "{}", endstone::nbt::escaped(tag.value()));
     }
 };
 
 template <>
-struct fmt::formatter<endstone::IntArrayTag> : formatter<string_view> {
+struct std::formatter<endstone::IntArrayTag> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::IntArrayTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "[I;{}]", fmt::join(tag.begin(), tag.end(), ","));
+        return std::format_to(ctx.out(), "[I;{}]", endstone::detail::join(tag.begin(), tag.end(), ","));
     }
 };
 
 template <>
-struct fmt::formatter<endstone::ListTag> : formatter<string_view> {
+struct std::formatter<endstone::ListTag> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::ListTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "[{}]", fmt::join(tag.begin(), tag.end(), ","));
+        return std::format_to(ctx.out(), "[{}]", endstone::detail::join(tag.begin(), tag.end(), ","));
     }
 };
 
 template <>
-struct fmt::formatter<endstone::CompoundTag::map_type::value_type> : formatter<string_view> {
+struct std::formatter<endstone::CompoundTag::map_type::value_type> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::CompoundTag::map_type::value_type &pair, FormatContext &ctx) const
         -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}:{}", endstone::nbt::escaped(pair.first), pair.second);
+        return std::format_to(ctx.out(), "{}:{}", endstone::nbt::escaped(pair.first), pair.second);
     }
 };
 
 template <>
-struct fmt::formatter<endstone::CompoundTag> : formatter<string_view> {
+struct std::formatter<endstone::CompoundTag> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::CompoundTag &tag, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{{{}}}", fmt::join(tag.begin(), tag.end(), ","));
+        return std::format_to(ctx.out(), "{{{}}}", endstone::detail::join(tag.begin(), tag.end(), ","));
     }
 };
 
 template <>
-struct fmt::formatter<endstone::nbt::escape_view> : formatter<string_view> {
+struct std::formatter<endstone::nbt::escape_view> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::nbt::escape_view &v, FormatContext &ctx) const -> format_context::iterator
     {
         static const std::regex simple_value("[A-Za-z0-9._+-]+");
         if (std::regex_match(v.value.begin(), v.value.end(), simple_value)) {
-            return fmt::format_to(ctx.out(), "{}", v.value);
+            return std::format_to(ctx.out(), "{}", v.value);
         }
 
         std::string out = " ";  // placeholder for chosen quote char
@@ -784,7 +783,7 @@ struct fmt::formatter<endstone::nbt::escape_view> : formatter<string_view> {
 
         out[0] = quote;
         out.push_back(quote);
-        return fmt::format_to(ctx.out(), "{}", out);
+        return std::format_to(ctx.out(), "{}", out);
     }
 };
 

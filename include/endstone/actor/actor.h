@@ -15,6 +15,7 @@
 #pragma once
 
 #include <cstdint>
+#include <format>
 #include <string>
 #include <vector>
 
@@ -229,12 +230,12 @@ public:
 }  // namespace endstone
 
 template <>
-struct fmt::formatter<endstone::Actor> : formatter<string_view> {
+struct std::formatter<endstone::Actor> : std::formatter<std::string_view> {
     using Type = endstone::Actor;
 
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}", val.getName());
+        return std::format_to(ctx.out(), "{}", val.getName());
     }
-};  // namespace fmt
+};

@@ -3,16 +3,6 @@ project(endstone LANGUAGES CXX)
 
 include(FetchContent)
 
-find_package(fmt QUIET)
-if (NOT fmt_FOUND)
-    FetchContent_Declare(
-            fmt
-            GIT_REPOSITORY https://github.com/fmtlib/fmt.git
-            GIT_TAG 11.2.0
-    )
-    FetchContent_MakeAvailable(fmt)
-endif ()
-
 find_package(expected-lite QUIET)
 if (NOT expected-lite_FOUND)
     FetchContent_Declare(
@@ -26,7 +16,7 @@ endif ()
 add_library(endstone INTERFACE)
 add_library(endstone::endstone ALIAS endstone)
 target_include_directories(endstone INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(endstone INTERFACE fmt::fmt nonstd::expected-lite)
+target_link_libraries(endstone INTERFACE nonstd::expected-lite)
 
 function(endstone_add_plugin target_name)
     cmake_parse_arguments(PARSE_ARGV 1 ARG "" "" "")

@@ -66,7 +66,7 @@ public:
     {
         E *result = get(id);
         if (!result) {
-            throw std::out_of_range{fmt::format("EndstoneRegistry: identifier not found: {}", id)};
+            throw std::out_of_range{std::format("EndstoneRegistry: identifier not found: {}", id)};
         }
         return *result;
     }
@@ -75,7 +75,7 @@ public:
     {
         const E *result = get(id);
         if (!result) {
-            throw std::out_of_range{fmt::format("EndstoneRegistry: identifier not found: {}", id)};
+            throw std::out_of_range{std::format("EndstoneRegistry: identifier not found: {}", id)};
         }
         return *result;
     }

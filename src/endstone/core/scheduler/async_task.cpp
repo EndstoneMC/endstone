@@ -60,10 +60,10 @@ void EndstoneAsyncTask::run()
         }
 
         if (!removed) {
-            getOwner()->getLogger().error("Unable to remove worker {} on task {} for {}", thread_id, getTaskId(),
-                                          getOwner()->getDescription().getFullName());
+            getOwner()->getLogger().error(fmt::format("Unable to remove worker {} on task {} for {}", thread_id,
+                                                      getTaskId(), getOwner()->getDescription().getFullName()));
             if (exception.has_value()) {
-                getOwner()->getLogger().error("{}", exception);
+                getOwner()->getLogger().error(fmt::format("{}", exception));
             }
         }
 

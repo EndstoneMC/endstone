@@ -42,7 +42,7 @@ void init_damage(py::module &m)
     Damage is considered indirect if actor is not equal to damaging_actor. This will be the case, for
     example, if a skeleton shot an arrow or a player threw a potion.
 )doc")
-        .def("__str__", [](const DamageSource &self) { return fmt::format("{}", self); });
+        .def("__str__", [](const DamageSource &self) { return std::format("{}", self); });
 }
 
 }  // namespace endstone::python
