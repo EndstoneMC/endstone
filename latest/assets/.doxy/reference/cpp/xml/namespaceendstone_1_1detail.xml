@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/detail.h" line="124" column="1" bodyfile="include/endstone/detail.h" bodystart="124" bodyend="127"/>
+        <location file="include/endstone/detail.h" line="128" column="1" bodyfile="include/endstone/detail.h" bodystart="128" bodyend="131"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/detail.h" line="69" column="6" bodyfile="include/endstone/detail.h" bodystart="69" bodyend="77"/>
+        <location file="include/endstone/detail.h" line="73" column="6" bodyfile="include/endstone/detail.h" bodystart="73" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="detail_8h_1acf4444f81858c5237ba18a115b01108e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -196,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/detail.h" line="91" column="6" bodyfile="include/endstone/detail.h" bodystart="91" bodyend="99"/>
+        <location file="include/endstone/detail.h" line="95" column="6" bodyfile="include/endstone/detail.h" bodystart="95" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="detail_8h_1aecf7182420334f85f53fac02ff6ca4c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
@@ -214,7 +214,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/detail.h" line="159" column="15" bodyfile="include/endstone/detail.h" bodystart="159" bodyend="188"/>
+        <location file="include/endstone/detail.h" line="163" column="15" bodyfile="include/endstone/detail.h" bodystart="163" bodyend="192"/>
       </memberdef>
       <memberdef kind="function" id="format_8h_1a2b4e26cb3a0bd4ab7f195af6db0356ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -302,6 +302,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/detail.h" line="57" column="1"/>
+    <location file="include/endstone/detail.h" line="61" column="1"/>
   </compounddef>
 </doxygen>
