@@ -55,9 +55,9 @@ COPY . .
 
 # Build, repair and test the project.
 RUN --mount=type=secret,id=sentry-auth-token,env=SENTRY_AUTH_TOKEN \
-    pip install wheel auditwheel==6.2.0 sentry-cli setuptools "patchelf>=0.14" pytest \
+    pip install wheel setuptools pytest uv \
     && python -m pip wheel . --no-deps --wheel-dir=dist --verbose \
-    && python scripts/repair_wheel.py -o endstone -p endstone -w wheelhouse dist/*.whl \
+    && uv run --script scripts/repair_wheel.py -o endstone -p endstone -w wheelhouse dist/*.whl \
     && pip install wheelhouse/*-${AUDITWHEEL_PLAT}.whl \
     && pytest tests
 
