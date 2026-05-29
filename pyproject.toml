@@ -86,8 +86,8 @@ skip = ["pp*"]
 test-command = "pytest {package}/tests --ignore={package}/tests/endstone_test"
 test-requires = "pytest"
 repair-wheel-command = [
-    "pip install auditwheel==6.2.0 sentry-cli",
-    'python scripts/repair_wheel.py -o endstone -p endstone -w {dest_dir} {wheel}',
+    "pip install uv",
+    'uv run --script scripts/repair_wheel.py -o endstone -p endstone -w {dest_dir} {wheel}',
 ]
 
 [tool.cibuildwheel.linux]
