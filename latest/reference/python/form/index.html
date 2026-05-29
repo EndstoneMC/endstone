@@ -4579,7 +4579,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the content of the form.</p>
+                <p>The content of the form.</p>
               </div>
             </td>
           </tr>
@@ -4596,7 +4596,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the controls of the action form.</p>
+                <p>The controls of the action form.</p>
               </div>
             </td>
           </tr>
@@ -4613,7 +4613,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the on close callback.</p>
+                <p>The on close callback of the form.</p>
               </div>
             </td>
           </tr>
@@ -4630,7 +4630,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the on submit callback.</p>
+                <p>The on submit callback of the form.</p>
               </div>
             </td>
           </tr>
@@ -4647,7 +4647,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the title of the form.</p>
+                <p>The title of the form.</p>
               </div>
             </td>
           </tr>
@@ -4684,7 +4684,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the content of the form.</p>
+        <p>The content of the form.</p>
 
     </div>
 
@@ -4709,7 +4709,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the controls of the action form.</p>
+        <p>The controls of the action form.</p>
 
     </div>
 
@@ -4734,7 +4734,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the on close callback.</p>
+        <p>The on close callback of the form.</p>
 
     </div>
 
@@ -4759,7 +4759,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the on submit callback.</p>
+        <p>The on submit callback of the form.</p>
 
     </div>
 
@@ -4784,7 +4784,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the title of the form.</p>
+        <p>The title of the form.</p>
 
     </div>
 
@@ -4813,6 +4813,92 @@ For latest updates join the chat on
         <p>Adds a button to the form.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>text</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone.lang.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The text of the button.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>icon</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The path or URL to the icon image.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>on_click</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a>[[<a class="autorefs autorefs-internal" title="            endstone.Player" href="../player/#endstone.Player">Player</a>], None] | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The on click callback of the button.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            ActionForm (endstone.form.ActionForm)" href="#endstone.form.ActionForm">ActionForm</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A reference to the current form.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     </div>
 
 </div>
@@ -4831,6 +4917,29 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Adds a divider to the form.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            ActionForm (endstone.form.ActionForm)" href="#endstone.form.ActionForm">ActionForm</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A reference to the current form.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -4853,6 +4962,60 @@ For latest updates join the chat on
         <p>Adds a header to the form.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>text</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone.lang.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The text of the header.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            ActionForm (endstone.form.ActionForm)" href="#endstone.form.ActionForm">ActionForm</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A reference to the current form.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     </div>
 
 </div>
@@ -4871,6 +5034,60 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Adds a label to the form.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>text</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-internal" title="            Translatable (endstone.lang.Translatable)" href="../lang/#endstone.lang.Translatable">Translatable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The text of the label.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            ActionForm (endstone.form.ActionForm)" href="#endstone.form.ActionForm">ActionForm</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A reference to the current form.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -4943,7 +5160,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the icon path or URL of the button</p>
+                <p>The path or URL to the icon file.</p>
               </div>
             </td>
           </tr>
@@ -4960,7 +5177,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the on click callback.</p>
+                <p>The on click callback of the button.</p>
               </div>
             </td>
           </tr>
@@ -4977,7 +5194,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the text of the button</p>
+                <p>The text of the button.</p>
               </div>
             </td>
           </tr>
@@ -5014,7 +5231,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the icon path or URL of the button</p>
+        <p>The path or URL to the icon file.</p>
 
     </div>
 
@@ -5039,7 +5256,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the on click callback.</p>
+        <p>The on click callback of the button.</p>
 
     </div>
 
@@ -5064,7 +5281,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the text of the button</p>
+        <p>The text of the button.</p>
 
     </div>
 
@@ -5212,7 +5429,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the optional default index of the dropdown.</p>
+                <p>The optional default index of the dropdown.</p>
               </div>
             </td>
           </tr>
@@ -5229,7 +5446,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the label of the dropdown.</p>
+                <p>The label of the dropdown.</p>
               </div>
             </td>
           </tr>
@@ -5246,7 +5463,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the options of the dropdown.</p>
+                <p>The options of the dropdown.</p>
               </div>
             </td>
           </tr>
@@ -5283,7 +5500,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the optional default index of the dropdown.</p>
+        <p>The optional default index of the dropdown.</p>
 
     </div>
 
@@ -5308,7 +5525,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the label of the dropdown.</p>
+        <p>The label of the dropdown.</p>
 
     </div>
 
@@ -5333,7 +5550,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the options of the dropdown.</p>
+        <p>The options of the dropdown.</p>
 
     </div>
 
@@ -5424,7 +5641,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the label of the header.</p>
+                <p>The label of the header.</p>
               </div>
             </td>
           </tr>
@@ -5461,7 +5678,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the label of the header.</p>
+        <p>The label of the header.</p>
 
     </div>
 
@@ -5532,7 +5749,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the text of the label.</p>
+                <p>The text of the label.</p>
               </div>
             </td>
           </tr>
@@ -5569,7 +5786,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the text of the label.</p>
+        <p>The text of the label.</p>
 
     </div>
 
@@ -5647,7 +5864,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the text of button1.</p>
+                <p>The text of button1.</p>
               </div>
             </td>
           </tr>
@@ -5664,7 +5881,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the text of button2.</p>
+                <p>The text of button2.</p>
               </div>
             </td>
           </tr>
@@ -5681,7 +5898,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the content of the form.</p>
+                <p>The content of the form.</p>
               </div>
             </td>
           </tr>
@@ -5698,7 +5915,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the on close callback.</p>
+                <p>The on close callback of the form.</p>
               </div>
             </td>
           </tr>
@@ -5715,7 +5932,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the on submit callback.</p>
+                <p>The on submit callback of the form.</p>
               </div>
             </td>
           </tr>
@@ -5732,7 +5949,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the title of the form.</p>
+                <p>The title of the form.</p>
               </div>
             </td>
           </tr>
@@ -5769,7 +5986,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the text of button1.</p>
+        <p>The text of button1.</p>
 
     </div>
 
@@ -5794,7 +6011,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the text of button2.</p>
+        <p>The text of button2.</p>
 
     </div>
 
@@ -5819,7 +6036,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the content of the form.</p>
+        <p>The content of the form.</p>
 
     </div>
 
@@ -5844,7 +6061,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the on close callback.</p>
+        <p>The on close callback of the form.</p>
 
     </div>
 
@@ -5869,7 +6086,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the on submit callback.</p>
+        <p>The on submit callback of the form.</p>
 
     </div>
 
@@ -5894,7 +6111,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the title of the form.</p>
+        <p>The title of the form.</p>
 
     </div>
 
@@ -6005,7 +6222,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the controls of the modal form.</p>
+                <p>The controls of the modal form.</p>
               </div>
             </td>
           </tr>
@@ -6022,7 +6239,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the icon of the form.</p>
+                <p>The path or URL to the icon file.</p>
               </div>
             </td>
           </tr>
@@ -6039,7 +6256,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the on close callback.</p>
+                <p>The on close callback of the form.</p>
               </div>
             </td>
           </tr>
@@ -6056,7 +6273,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the on submit callback.</p>
+                <p>The on submit callback of the form.</p>
               </div>
             </td>
           </tr>
@@ -6073,7 +6290,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the submit button message of the form.</p>
+                <p>The submit button text of the form.</p>
               </div>
             </td>
           </tr>
@@ -6090,7 +6307,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the title of the form.</p>
+                <p>The title of the form.</p>
               </div>
             </td>
           </tr>
@@ -6136,7 +6353,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the controls of the modal form.</p>
+        <p>The controls of the modal form.</p>
 
     </div>
 
@@ -6161,7 +6378,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the icon of the form.</p>
+        <p>The path or URL to the icon file.</p>
 
     </div>
 
@@ -6186,7 +6403,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the on close callback.</p>
+        <p>The on close callback of the form.</p>
 
     </div>
 
@@ -6211,7 +6428,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the on submit callback.</p>
+        <p>The on submit callback of the form.</p>
 
     </div>
 
@@ -6236,7 +6453,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the submit button message of the form.</p>
+        <p>The submit button text of the form.</p>
 
     </div>
 
@@ -6261,7 +6478,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the title of the form.</p>
+        <p>The title of the form.</p>
 
     </div>
 
@@ -6369,7 +6586,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the optional default value of the slider.</p>
+                <p>The optional default value of the slider.</p>
               </div>
             </td>
           </tr>
@@ -6386,7 +6603,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the label of the slider.</p>
+                <p>The label of the slider.</p>
               </div>
             </td>
           </tr>
@@ -6403,7 +6620,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the maximum value of the slider.</p>
+                <p>The maximum value of the slider.</p>
               </div>
             </td>
           </tr>
@@ -6420,7 +6637,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the minimum value of the slider.</p>
+                <p>The minimum value of the slider.</p>
               </div>
             </td>
           </tr>
@@ -6437,7 +6654,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the step size of the slider.</p>
+                <p>The step size of the slider.</p>
               </div>
             </td>
           </tr>
@@ -6474,7 +6691,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the optional default value of the slider.</p>
+        <p>The optional default value of the slider.</p>
 
     </div>
 
@@ -6499,7 +6716,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the label of the slider.</p>
+        <p>The label of the slider.</p>
 
     </div>
 
@@ -6524,7 +6741,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the maximum value of the slider.</p>
+        <p>The maximum value of the slider.</p>
 
     </div>
 
@@ -6549,7 +6766,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the minimum value of the slider.</p>
+        <p>The minimum value of the slider.</p>
 
     </div>
 
@@ -6574,7 +6791,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the step size of the slider.</p>
+        <p>The step size of the slider.</p>
 
     </div>
 
@@ -6670,7 +6887,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the optional default index of the step slider.</p>
+                <p>The optional default index of the step slider.</p>
               </div>
             </td>
           </tr>
@@ -6687,7 +6904,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the label of the step slider.</p>
+                <p>The label of the step slider.</p>
               </div>
             </td>
           </tr>
@@ -6704,7 +6921,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the options of the step slider.</p>
+                <p>The options of the step slider.</p>
               </div>
             </td>
           </tr>
@@ -6741,7 +6958,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the optional default index of the step slider.</p>
+        <p>The optional default index of the step slider.</p>
 
     </div>
 
@@ -6766,7 +6983,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the label of the step slider.</p>
+        <p>The label of the step slider.</p>
 
     </div>
 
@@ -6791,7 +7008,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the options of the step slider.</p>
+        <p>The options of the step slider.</p>
 
     </div>
 
@@ -6886,7 +7103,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the optional default text of the text input field.</p>
+                <p>The optional default text of the text input field.</p>
               </div>
             </td>
           </tr>
@@ -6903,7 +7120,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the label of the text input field.</p>
+                <p>The label of the text input field.</p>
               </div>
             </td>
           </tr>
@@ -6920,7 +7137,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the placeholder of the text input field.</p>
+                <p>The placeholder of the text input field.</p>
               </div>
             </td>
           </tr>
@@ -6957,7 +7174,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the optional default text of the text input field.</p>
+        <p>The optional default text of the text input field.</p>
 
     </div>
 
@@ -6982,7 +7199,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the label of the text input field.</p>
+        <p>The label of the text input field.</p>
 
     </div>
 
@@ -7007,7 +7224,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the placeholder of the text input field.</p>
+        <p>The placeholder of the text input field.</p>
 
     </div>
 
@@ -7081,7 +7298,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the value of the toggle.</p>
+                <p>The default value of the toggle.</p>
               </div>
             </td>
           </tr>
@@ -7098,7 +7315,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the label of the toggle.</p>
+                <p>The label of the toggle.</p>
               </div>
             </td>
           </tr>
@@ -7135,7 +7352,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the value of the toggle.</p>
+        <p>The default value of the toggle.</p>
 
     </div>
 
@@ -7160,7 +7377,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the label of the toggle.</p>
+        <p>The label of the toggle.</p>
 
     </div>
 

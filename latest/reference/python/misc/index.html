@@ -6981,7 +6981,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Get the name of this Logger instance.</p>
+                <p>The name of this Logger instance.</p>
               </div>
             </td>
           </tr>
@@ -7191,7 +7191,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Get the name of this Logger instance.</p>
+        <p>The name of this Logger instance.</p>
 
     </div>
 
@@ -7597,6 +7597,60 @@ For latest updates join the chat on
         <p>Check if the Logger instance is enabled for the given log Level.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>level</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Level (endstone.Logger.Level)" href="#endstone.Logger.Level">Level</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The log level to check.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if the logger is enabled for the Level, False otherwise.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     </div>
 
 </div>
@@ -7615,6 +7669,37 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Set the logging level for this Logger instance.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>level</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Level (endstone.Logger.Level)" href="#endstone.Logger.Level">Level</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The desired log level.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -7914,7 +7999,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the hostname.</p>
+                <p>The hostname of this socket address.</p>
               </div>
             </td>
           </tr>
@@ -7930,7 +8015,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the port number.</p>
+                <p>The port number of this socket address.</p>
               </div>
             </td>
           </tr>
@@ -7966,7 +8051,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the hostname.</p>
+        <p>The hostname of this socket address.</p>
 
     </div>
 
@@ -7990,7 +8075,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the port number.</p>
+        <p>The port number of this socket address.</p>
 
     </div>
 
@@ -8060,7 +8145,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            cross_product (endstone.util.Vector.cross_product)" href="#endstone.util.Vector.cross_product">cross_product</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Calculates the cross-product of this vector with another.</p>
+                  <p>Calculates the cross-product of this vector with another without mutating the original.</p>
                 </div>
               </td>
             </tr>
@@ -8068,7 +8153,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            distance (endstone.util.Vector.distance)" href="#endstone.util.Vector.distance">distance</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>The distance between this Vector and another</p>
+                  <p>Get the distance between this vector and another.</p>
                 </div>
               </td>
             </tr>
@@ -8076,7 +8161,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            distance_squared (endstone.util.Vector.distance_squared)" href="#endstone.util.Vector.distance_squared">distance_squared</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>The squared distance between this Vector and another</p>
+                  <p>Get the squared distance between this vector and another.</p>
                 </div>
               </td>
             </tr>
@@ -8124,7 +8209,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            normalize_zero (endstone.util.Vector.normalize_zero)" href="#endstone.util.Vector.normalize_zero">normalize_zero</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Converts each component of value <code>-0.0</code> to <code>0.0</code></p>
+                  <p>Converts each component of value <code>-0.0</code> to <code>0.0</code>.</p>
                 </div>
               </td>
             </tr>
@@ -8196,7 +8281,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the floored value of the X component, indicating the block that this vector is contained with.</p>
+                <p>The floored value of the X component, indicating the block that this vector is contained with.</p>
               </div>
             </td>
           </tr>
@@ -8212,7 +8297,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the floored value of the Y component, indicating the block that this vector is contained with.</p>
+                <p>The floored value of the Y component, indicating the block that this vector is contained with.</p>
               </div>
             </td>
           </tr>
@@ -8228,7 +8313,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the floored value of the Z component, indicating the block that this vector is contained with.</p>
+                <p>The floored value of the Z component, indicating the block that this vector is contained with.</p>
               </div>
             </td>
           </tr>
@@ -8244,7 +8329,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Returns if a vector is normalized.</p>
+                <p>True if this vector is normalized.</p>
               </div>
             </td>
           </tr>
@@ -8260,7 +8345,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Check whether or not each component of this vector is equal to 0.</p>
+                <p>True if each component of this vector is equal to 0.</p>
               </div>
             </td>
           </tr>
@@ -8276,7 +8361,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The magnitude of the Vector</p>
+                <p>The magnitude of the vector, defined as sqrt(x^2 + y^2 + z^2).</p>
               </div>
             </td>
           </tr>
@@ -8292,7 +8377,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The squared magnitude of the Vector</p>
+                <p>The magnitude of the vector squared.</p>
               </div>
             </td>
           </tr>
@@ -8309,7 +8394,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The X component of the vector</p>
+                <p>The X component of the vector.</p>
               </div>
             </td>
           </tr>
@@ -8326,7 +8411,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The Y component of the vector</p>
+                <p>The Y component of the vector.</p>
               </div>
             </td>
           </tr>
@@ -8343,7 +8428,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The Z component of the vector</p>
+                <p>The Z component of the vector.</p>
               </div>
             </td>
           </tr>
@@ -8379,7 +8464,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the floored value of the X component, indicating the block that this vector is contained with.</p>
+        <p>The floored value of the X component, indicating the block that this vector is contained with.</p>
 
     </div>
 
@@ -8403,7 +8488,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the floored value of the Y component, indicating the block that this vector is contained with.</p>
+        <p>The floored value of the Y component, indicating the block that this vector is contained with.</p>
 
     </div>
 
@@ -8427,7 +8512,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the floored value of the Z component, indicating the block that this vector is contained with.</p>
+        <p>The floored value of the Z component, indicating the block that this vector is contained with.</p>
 
     </div>
 
@@ -8451,7 +8536,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Returns if a vector is normalized.</p>
+        <p>True if this vector is normalized.</p>
 
     </div>
 
@@ -8475,7 +8560,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Check whether or not each component of this vector is equal to 0.</p>
+        <p>True if each component of this vector is equal to 0.</p>
 
     </div>
 
@@ -8499,7 +8584,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>The magnitude of the Vector</p>
+        <p>The magnitude of the vector, defined as sqrt(x^2 + y^2 + z^2).</p>
 
     </div>
 
@@ -8523,7 +8608,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>The squared magnitude of the Vector</p>
+        <p>The magnitude of the vector squared.</p>
 
     </div>
 
@@ -8548,7 +8633,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>The X component of the vector</p>
+        <p>The X component of the vector.</p>
 
     </div>
 
@@ -8573,7 +8658,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>The Y component of the vector</p>
+        <p>The Y component of the vector.</p>
 
     </div>
 
@@ -8598,7 +8683,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>The Z component of the vector</p>
+        <p>The Z component of the vector.</p>
 
     </div>
 
@@ -8623,6 +8708,60 @@ For latest updates join the chat on
         <p>Gets the angle between this vector and another in radians.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>other</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Vector (endstone.util.Vector)" href="#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The other vector.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The angle in radians.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     </div>
 
 </div>
@@ -8640,7 +8779,61 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Calculates the cross-product of this vector with another.</p>
+        <p>Calculates the cross-product of this vector with another without mutating the original.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>other</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Vector (endstone.util.Vector)" href="#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The other vector.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Vector (endstone.util.Vector)" href="#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A new vector containing the cross-product.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -8660,7 +8853,61 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>The distance between this Vector and another</p>
+        <p>Get the distance between this vector and another.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>other</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Vector (endstone.util.Vector)" href="#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The other vector.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The distance.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -8680,7 +8927,61 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>The squared distance between this Vector and another</p>
+        <p>Get the squared distance between this vector and another.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>other</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Vector (endstone.util.Vector)" href="#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The other vector.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The squared distance.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -8701,6 +9002,61 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Calculates the dot product of this vector with another.</p>
+<p>The dot product is defined as x1*x2 + y1*y2 + z1*z2. The returned value is a scalar.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>other</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Vector (endstone.util.Vector)" href="#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The other vector.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The dot product.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -8721,6 +9077,77 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Returns whether this vector is in an axis-aligned bounding box.</p>
+<p>The minimum and maximum vectors given must be truly the minimum and maximum X, Y and Z components.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>min</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Vector (endstone.util.Vector)" href="#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Minimum vector.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Vector (endstone.util.Vector)" href="#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum vector.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether this vector is in the AABB.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -8743,6 +9170,76 @@ For latest updates join the chat on
         <p>Returns whether this vector is within a sphere.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>origin</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Vector (endstone.util.Vector)" href="#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sphere origin.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>radius</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sphere radius.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether this vector is in the sphere.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     </div>
 
 </div>
@@ -8761,6 +9258,60 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Gets a new midpoint vector between this vector and another.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>other</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Vector (endstone.util.Vector)" href="#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The other vector.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Vector (endstone.util.Vector)" href="#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A new midpoint vector.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -8800,7 +9351,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Converts each component of value <code>-0.0</code> to <code>0.0</code></p>
+        <p>Converts each component of value <code>-0.0</code> to <code>0.0</code>.</p>
 
 
     </div>
@@ -8823,6 +9374,72 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Rotates the vector around a given arbitrary axis in 3-dimensional space.</p>
+<p>Rotation will follow the general Right-Hand-Rule, which means rotation will be counterclockwise when the axis
+is pointing towards the observer.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>axis</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Vector (endstone.util.Vector)" href="#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The axis to rotate the vector around.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>angle</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The angle to rotate the vector around the axis.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>normalize</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>When True (default), the axis vector is normalized before being used for the rotation, preserving
+the length of this vector.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -8845,6 +9462,37 @@ For latest updates join the chat on
         <p>Rotates the vector around the x-axis.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>angle</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The angle to rotate the vector about, in radians.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     </div>
 
 </div>
@@ -8865,6 +9513,37 @@ For latest updates join the chat on
         <p>Rotates the vector around the y-axis.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>angle</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The angle to rotate the vector about, in radians.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     </div>
 
 </div>
@@ -8883,6 +9562,37 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Rotates the vector around the z-axis.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>angle</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The angle to rotate the vector about, in radians.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>

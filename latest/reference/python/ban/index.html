@@ -3415,7 +3415,7 @@ For latest updates join the chat on
             <td><code><a class="autorefs autorefs-internal" title="            IpBanEntry (endstone.ban.IpBanEntry)" href="#endstone.ban.IpBanEntry">IpBanEntry</a></code></td>
             <td>
               <div class="doc-md-description">
-                <p>Represents a ban entry for an IP address.</p>
+                <p>Represents an entry for a banned IP address.</p>
               </div>
             </td>
           </tr>
@@ -3423,7 +3423,7 @@ For latest updates join the chat on
             <td><code><a class="autorefs autorefs-internal" title="            IpBanList (endstone.ban.IpBanList)" href="#endstone.ban.IpBanList">IpBanList</a></code></td>
             <td>
               <div class="doc-md-description">
-                <p>Represents a ban list containing banned IP addresses.</p>
+                <p>Represents a ban list, containing banned IP addresses.</p>
               </div>
             </td>
           </tr>
@@ -3431,7 +3431,7 @@ For latest updates join the chat on
             <td><code><a class="autorefs autorefs-internal" title="            PlayerBanEntry (endstone.ban.PlayerBanEntry)" href="#endstone.ban.PlayerBanEntry">PlayerBanEntry</a></code></td>
             <td>
               <div class="doc-md-description">
-                <p>Represents a ban entry for a player.</p>
+                <p>Represents an entry for a banned player.</p>
               </div>
             </td>
           </tr>
@@ -3439,7 +3439,7 @@ For latest updates join the chat on
             <td><code><a class="autorefs autorefs-internal" title="            PlayerBanList (endstone.ban.PlayerBanList)" href="#endstone.ban.PlayerBanList">PlayerBanList</a></code></td>
             <td>
               <div class="doc-md-description">
-                <p>Represents a ban list containing banned players.</p>
+                <p>Represents a ban list, containing banned players.</p>
               </div>
             </td>
           </tr>
@@ -3515,7 +3515,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the date this ban entry was created.</p>
+                <p>The date this ban entry was created.</p>
               </div>
             </td>
           </tr>
@@ -3532,7 +3532,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the date this ban expires on.</p>
+                <p>The date this ban expires on, or None for no defined end date.</p>
               </div>
             </td>
           </tr>
@@ -3549,7 +3549,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the reason for this ban.</p>
+                <p>The reason for this ban.</p>
               </div>
             </td>
           </tr>
@@ -3566,7 +3566,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets or sets the source of this ban.</p>
+                <p>The source of this ban.</p>
               </div>
             </td>
           </tr>
@@ -3603,7 +3603,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the date this ban entry was created.</p>
+        <p>The date this ban entry was created.</p>
 
     </div>
 
@@ -3628,7 +3628,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the date this ban expires on.</p>
+        <p>The date this ban expires on, or None for no defined end date.</p>
 
     </div>
 
@@ -3653,7 +3653,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the reason for this ban.</p>
+        <p>The reason for this ban.</p>
 
     </div>
 
@@ -3678,7 +3678,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets or sets the source of this ban.</p>
+        <p>The source of this ban.</p>
 
     </div>
 
@@ -3713,7 +3713,7 @@ For latest updates join the chat on
 
 
 
-        <p>Represents a ban entry for an IP address.</p>
+        <p>Represents an entry for a banned IP address.</p>
 
 
 
@@ -3750,7 +3750,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the banned IP address.</p>
+                <p>The banned IP address.</p>
               </div>
             </td>
           </tr>
@@ -3786,7 +3786,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the banned IP address.</p>
+        <p>The banned IP address.</p>
 
     </div>
 
@@ -3818,7 +3818,7 @@ For latest updates join the chat on
 
 
 
-        <p>Represents a ban list containing banned IP addresses.</p>
+        <p>Represents a ban list, containing banned IP addresses.</p>
 
 
 
@@ -3844,7 +3844,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            add_ban (endstone.ban.IpBanList.add_ban)" href="#endstone.ban.IpBanList.add_ban">add_ban</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Adds a ban to this list, or updates an existing one.</p>
+                  <p>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</p>
                 </div>
               </td>
             </tr>
@@ -3860,7 +3860,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            is_banned (endstone.ban.IpBanList.is_banned)" href="#endstone.ban.IpBanList.is_banned">is_banned</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Checks if a BanEntry exists for the target by IP address.</p>
+                  <p>Checks if a BanEntry exists for the target, indicating an active ban status.</p>
                 </div>
               </td>
             </tr>
@@ -3868,7 +3868,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            remove_ban (endstone.ban.IpBanList.remove_ban)" href="#endstone.ban.IpBanList.remove_ban">remove_ban</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Removes an IP address from the ban list.</p>
+                  <p>Removes the specified IP address from this list, therefore indicating a "not banned" status.</p>
                 </div>
               </td>
             </tr>
@@ -3900,7 +3900,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets a vector of pointers to entries in the ban list.</p>
+                <p>A vector containing pointers to every entry tracked by this list.</p>
               </div>
             </td>
           </tr>
@@ -3936,7 +3936,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets a vector of pointers to entries in the ban list.</p>
+        <p>A vector containing pointers to every entry tracked by this list.</p>
 
     </div>
 
@@ -3963,7 +3963,109 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Adds a ban to this list, or updates an existing one.</p>
+        <p>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>address</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The IP address of the target.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>reason</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The reason for the ban, None indicates implementation default.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>expires</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="datetime.datetime" href="https://docs.python.org/3/library/datetime.html#datetime.datetime">datetime</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The date for the ban's expiration (unban), or None to imply forever.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The source of the ban, None indicates implementation default.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            IpBanEntry (endstone.ban.IpBanEntry)" href="#endstone.ban.IpBanEntry">IpBanEntry</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The entry for the newly created ban, or the entry for the (updated) previous ban.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -3986,6 +4088,60 @@ For latest updates join the chat on
         <p>Gets a BanEntry by IP address.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>address</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The IP address to search for.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            IpBanEntry (endstone.ban.IpBanEntry)" href="#endstone.ban.IpBanEntry">IpBanEntry</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The corresponding entry, or None if none found.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     </div>
 
 </div>
@@ -4003,7 +4159,61 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Checks if a BanEntry exists for the target by IP address.</p>
+        <p>Checks if a BanEntry exists for the target, indicating an active ban status.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>address</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The IP address to find.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if a BanEntry exists for the target, indicating an active ban status, False otherwise.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -4023,7 +4233,38 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Removes an IP address from the ban list.</p>
+        <p>Removes the specified IP address from this list, therefore indicating a "not banned" status.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>address</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The IP address to remove from this list.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -4060,7 +4301,7 @@ For latest updates join the chat on
 
 
 
-        <p>Represents a ban entry for a player.</p>
+        <p>Represents an entry for a banned player.</p>
 
 
 
@@ -4097,7 +4338,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the banned player's name.</p>
+                <p>The banned player's name.</p>
               </div>
             </td>
           </tr>
@@ -4113,7 +4354,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the banned player's unique ID, or None if not available.</p>
+                <p>The banned player's unique id, or None if not available.</p>
               </div>
             </td>
           </tr>
@@ -4129,7 +4370,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the banned player's Xbox user ID (XUID), or None if not available.</p>
+                <p>The banned player's xbox user id (xuid), or None if not available.</p>
               </div>
             </td>
           </tr>
@@ -4165,7 +4406,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the banned player's name.</p>
+        <p>The banned player's name.</p>
 
     </div>
 
@@ -4189,7 +4430,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the banned player's unique ID, or None if not available.</p>
+        <p>The banned player's unique id, or None if not available.</p>
 
     </div>
 
@@ -4213,7 +4454,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the banned player's Xbox user ID (XUID), or None if not available.</p>
+        <p>The banned player's xbox user id (xuid), or None if not available.</p>
 
     </div>
 
@@ -4245,7 +4486,7 @@ For latest updates join the chat on
 
 
 
-        <p>Represents a ban list containing banned players.</p>
+        <p>Represents a ban list, containing banned players.</p>
 
 
 
@@ -4271,7 +4512,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            add_ban (endstone.ban.PlayerBanList.add_ban)" href="#endstone.ban.PlayerBanList.add_ban">add_ban</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Adds a ban to this list, or updates an existing one.</p>
+                  <p>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</p>
                 </div>
               </td>
             </tr>
@@ -4287,7 +4528,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            is_banned (endstone.ban.PlayerBanList.is_banned)" href="#endstone.ban.PlayerBanList.is_banned">is_banned</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Checks if a BanEntry exists for the target by name, UUID, or XUID.</p>
+                  <p>Checks if a BanEntry exists for the target, indicating an active ban status.</p>
                 </div>
               </td>
             </tr>
@@ -4295,7 +4536,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            remove_ban (endstone.ban.PlayerBanList.remove_ban)" href="#endstone.ban.PlayerBanList.remove_ban">remove_ban</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Removes a player from the ban list by name, UUID, or XUID.</p>
+                  <p>Removes the specified player from this list, therefore indicating a "not banned" status.</p>
                 </div>
               </td>
             </tr>
@@ -4327,7 +4568,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets a vector of pointers to entries in the ban list.</p>
+                <p>A vector containing pointers to every entry tracked by this list.</p>
               </div>
             </td>
           </tr>
@@ -4363,7 +4604,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets a vector of pointers to entries in the ban list.</p>
+        <p>A vector containing pointers to every entry tracked by this list.</p>
 
     </div>
 
@@ -4392,7 +4633,141 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Adds a ban to this list, or updates an existing one.</p>
+        <p>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The name of the target.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>uuid</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="uuid.UUID" href="https://docs.python.org/3/library/uuid.html#uuid.UUID">UUID</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The UUID of the target, None if not used.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>xuid</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The XUID of the target, None if not used.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>reason</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The reason for the ban, None indicates implementation default.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>expires</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="datetime.datetime" href="https://docs.python.org/3/library/datetime.html#datetime.datetime">datetime</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The date for the ban's expiration (unban), or None to imply forever.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The source of the ban, None indicates implementation default.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            PlayerBanEntry (endstone.ban.PlayerBanEntry)" href="#endstone.ban.PlayerBanEntry">PlayerBanEntry</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The entry for the newly created ban, or the entry for the (updated) previous ban.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -4419,6 +4794,92 @@ For latest updates join the chat on
         <p>Gets a BanEntry by player name, UUID, or XUID.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The player name to search for.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>uuid</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="uuid.UUID" href="https://docs.python.org/3/library/uuid.html#uuid.UUID">UUID</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The UUID of the player to search for, None if not used.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>xuid</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The XUID of the player to search for, None if not used.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            PlayerBanEntry (endstone.ban.PlayerBanEntry)" href="#endstone.ban.PlayerBanEntry">PlayerBanEntry</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The corresponding entry, or None if none found.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     </div>
 
 </div>
@@ -4440,7 +4901,93 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Checks if a BanEntry exists for the target by name, UUID, or XUID.</p>
+        <p>Checks if a BanEntry exists for the target, indicating an active ban status.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The player name to find.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>uuid</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="uuid.UUID" href="https://docs.python.org/3/library/uuid.html#uuid.UUID">UUID</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The UUID of the target, None if not used.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>xuid</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The XUID of the target, None if not used.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if a BanEntry exists for the target, indicating an active ban status, False otherwise.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -4464,7 +5011,70 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Removes a player from the ban list by name, UUID, or XUID.</p>
+        <p>Removes the specified player from this list, therefore indicating a "not banned" status.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The player name to remove from this list.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>uuid</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="uuid.UUID" href="https://docs.python.org/3/library/uuid.html#uuid.UUID">UUID</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The unique id of the player, None if not used.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>xuid</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The xbox user id (xuid) of the player, None if not used.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>

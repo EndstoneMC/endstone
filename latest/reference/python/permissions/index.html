@@ -3851,7 +3851,7 @@ For latest updates join the chat on
             <td><code><a class="autorefs autorefs-internal" title="            PermissionAttachment (endstone.permissions.PermissionAttachment)" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></code></td>
             <td>
               <div class="doc-md-description">
-                <p>Holds information about a permission attachment on a Permissible object</p>
+                <p>Holds information about a permission attachment on a Permissible object.</p>
               </div>
             </td>
           </tr>
@@ -3859,7 +3859,7 @@ For latest updates join the chat on
             <td><code><a class="autorefs autorefs-internal" title="            PermissionAttachmentInfo (endstone.permissions.PermissionAttachmentInfo)" href="#endstone.permissions.PermissionAttachmentInfo">PermissionAttachmentInfo</a></code></td>
             <td>
               <div class="doc-md-description">
-                <p>Holds information on a permission and which PermissionAttachment provides it</p>
+                <p>Holds information on a permission and which PermissionAttachment provides it.</p>
               </div>
             </td>
           </tr>
@@ -3963,7 +3963,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            recalculate_permissions (endstone.permissions.Permissible.recalculate_permissions)" href="#endstone.permissions.Permissible.recalculate_permissions">recalculate_permissions</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Recalculates the permissions.</p>
+                  <p>Recalculates the permissions for this object, if the attachments have changed values.</p>
                 </div>
               </td>
             </tr>
@@ -3971,7 +3971,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            remove_attachment (endstone.permissions.Permissible.remove_attachment)" href="#endstone.permissions.Permissible.remove_attachment">remove_attachment</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Removes a given PermissionAttachment.</p>
+                  <p>Removes the given PermissionAttachment from this object.</p>
                 </div>
               </td>
             </tr>
@@ -4003,7 +4003,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets effective permissions.</p>
+                <p>A set containing all the permissions currently in effect by this object.</p>
               </div>
             </td>
           </tr>
@@ -4019,7 +4019,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the permission level of this object</p>
+                <p>The permission level of this object.</p>
               </div>
             </td>
           </tr>
@@ -4055,7 +4055,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets effective permissions.</p>
+        <p>A set containing all the permissions currently in effect by this object.</p>
 
     </div>
 
@@ -4079,7 +4079,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the permission level of this object</p>
+        <p>The permission level of this object.</p>
 
     </div>
 
@@ -4166,7 +4166,8 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Recalculates the permissions.</p>
+        <p>Recalculates the permissions for this object, if the attachments have changed values.</p>
+<p>This should very rarely need to be called from a plugin.</p>
 
 
     </div>
@@ -4186,7 +4187,61 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Removes a given PermissionAttachment.</p>
+        <p>Removes the given PermissionAttachment from this object.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>attachment</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            PermissionAttachment (endstone.permissions.PermissionAttachment)" href="#endstone.permissions.PermissionAttachment">PermissionAttachment</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Attachment to remove.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if the specified attachment was removed successfully, False when it isn't part of this object.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -4290,7 +4345,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the children of this permission.</p>
+                <p>The children of this permission.</p>
               </div>
             </td>
           </tr>
@@ -4324,7 +4379,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The brief description of this permission</p>
+                <p>A brief description of this permission.</p>
               </div>
             </td>
           </tr>
@@ -4340,7 +4395,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the unique fully qualified name of this Permission.</p>
+                <p>The unique fully qualified name of this Permission.</p>
               </div>
             </td>
           </tr>
@@ -4356,7 +4411,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets a set containing every Permissible that has this permission.</p>
+                <p>A set containing every Permissible that has this permission.</p>
               </div>
             </td>
           </tr>
@@ -4392,7 +4447,8 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the children of this permission.</p>
+        <p>The children of this permission.</p>
+<p>If you change this map in any form, you must call <code>recalculate_permissibles()</code> to recalculate all Permissibles.</p>
 
     </div>
 
@@ -4442,7 +4498,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>The brief description of this permission</p>
+        <p>A brief description of this permission.</p>
 
     </div>
 
@@ -4466,7 +4522,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the unique fully qualified name of this Permission.</p>
+        <p>The unique fully qualified name of this Permission.</p>
 
     </div>
 
@@ -4490,7 +4546,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets a set containing every Permissible that has this permission.</p>
+        <p>A set containing every Permissible that has this permission.</p>
 
     </div>
 
@@ -4534,6 +4590,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Recalculates all Permissibles that contain this permission.</p>
+<p>This should be called after modifying the children, and is automatically called after modifying the default value.</p>
 
 
     </div>
@@ -4566,7 +4623,7 @@ For latest updates join the chat on
 
 
 
-        <p>Holds information about a permission attachment on a Permissible object</p>
+        <p>Holds information about a permission attachment on a Permissible object.</p>
 
 
 
@@ -4640,7 +4697,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the Permissible that this is attached to.</p>
+                <p>The Permissible that this is attached to.</p>
               </div>
             </td>
           </tr>
@@ -4656,7 +4713,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets a copy of all set permissions and values contained within this attachment.</p>
+                <p>A copy of all set permissions and values contained within this attachment.</p>
               </div>
             </td>
           </tr>
@@ -4672,7 +4729,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the plugin responsible for this attachment.</p>
+                <p>The plugin responsible for this permission attachment.</p>
               </div>
             </td>
           </tr>
@@ -4689,7 +4746,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The callback to be called when this attachment is removed.</p>
+                <p>The callback to be called when this attachment is removed. May be empty.</p>
               </div>
             </td>
           </tr>
@@ -4725,7 +4782,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the Permissible that this is attached to.</p>
+        <p>The Permissible that this is attached to.</p>
 
     </div>
 
@@ -4749,7 +4806,8 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets a copy of all set permissions and values contained within this attachment.</p>
+        <p>A copy of all set permissions and values contained within this attachment.</p>
+<p>This map may be modified but will not affect the attachment, as it is a copy.</p>
 
     </div>
 
@@ -4773,7 +4831,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the plugin responsible for this attachment.</p>
+        <p>The plugin responsible for this permission attachment.</p>
 
     </div>
 
@@ -4798,7 +4856,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>The callback to be called when this attachment is removed.</p>
+        <p>The callback to be called when this attachment is removed. May be empty.</p>
 
     </div>
 
@@ -4821,6 +4879,29 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Removes this attachment from its registered Permissible.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if the attachment was removed successfully, False if it did not exist.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -4898,7 +4979,7 @@ For latest updates join the chat on
 
 
 
-        <p>Holds information on a permission and which PermissionAttachment provides it</p>
+        <p>Holds information on a permission and which PermissionAttachment provides it.</p>
 
 
 
@@ -4935,7 +5016,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the attachment providing this permission.</p>
+                <p>The attachment providing this permission.</p>
               </div>
             </td>
           </tr>
@@ -4951,7 +5032,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Get the permissible this is attached to</p>
+                <p>The Permissible this permission is for.</p>
               </div>
             </td>
           </tr>
@@ -4967,7 +5048,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the permission being set</p>
+                <p>The name of the permission being set.</p>
               </div>
             </td>
           </tr>
@@ -4983,7 +5064,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the value of this permission</p>
+                <p>The value of this permission.</p>
               </div>
             </td>
           </tr>
@@ -5019,7 +5100,8 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the attachment providing this permission.</p>
+        <p>The attachment providing this permission.</p>
+<p>This may be None for default permissions (usually parent permissions).</p>
 
     </div>
 
@@ -5043,7 +5125,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Get the permissible this is attached to</p>
+        <p>The Permissible this permission is for.</p>
 
     </div>
 
@@ -5067,7 +5149,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the permission being set</p>
+        <p>The name of the permission being set.</p>
 
     </div>
 
@@ -5091,7 +5173,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the value of this permission</p>
+        <p>The value of this permission.</p>
 
     </div>
 

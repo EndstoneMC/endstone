@@ -4118,7 +4118,7 @@ For latest updates join the chat on
    (endstone.enchantments.Enchantment.get)" href="#endstone.enchantments.Enchantment.get">get</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Attempts to get the Enchantment with the given name.</p>
+                  <p>Look up a registry entry by identifier.</p>
                 </div>
               </td>
             </tr>
@@ -4847,7 +4847,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Return the identifier for this enchantment.</p>
+                <p>The identifier of this enchantment.</p>
               </div>
             </td>
           </tr>
@@ -4863,7 +4863,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the maximum level that this Enchantment may become.</p>
+                <p>The maximum level that this Enchantment may become.</p>
               </div>
             </td>
           </tr>
@@ -4879,7 +4879,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Gets the level that this Enchantment should start at (also known as minimum level).</p>
+                <p>The level that this Enchantment should start at (also known as minimum level).</p>
               </div>
             </td>
           </tr>
@@ -4895,7 +4895,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Get the translation key, suitable for use in a translation component.</p>
+                <p>The translation key, suitable for use in a translation component.</p>
               </div>
             </td>
           </tr>
@@ -5904,7 +5904,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Return the identifier for this enchantment.</p>
+        <p>The identifier of this enchantment.</p>
 
     </div>
 
@@ -5928,7 +5928,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the maximum level that this Enchantment may become.</p>
+        <p>The maximum level that this Enchantment may become.</p>
 
     </div>
 
@@ -5952,7 +5952,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Gets the level that this Enchantment should start at (also known as minimum level).</p>
+        <p>The level that this Enchantment should start at (also known as minimum level).</p>
 
     </div>
 
@@ -5976,7 +5976,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Get the translation key, suitable for use in a translation component.</p>
+        <p>The translation key, suitable for use in a translation component.</p>
 
     </div>
 
@@ -6002,6 +6002,60 @@ For latest updates join the chat on
 <p>This does not check if it conflicts with any enchantments already applied to the item.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>item</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            ItemStack (endstone.inventory.ItemStack)" href="../inventory/#endstone.inventory.ItemStack">ItemStack</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Item to test.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if the enchantment may be applied, False otherwise.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     </div>
 
 </div>
@@ -6020,6 +6074,60 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>Check if this enchantment conflicts with another enchantment.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>other</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Enchantment (endstone.enchantments.Enchantment)" href="#endstone.enchantments.Enchantment">Enchantment</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The enchantment to check against.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if there is a conflict.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -6043,7 +6151,61 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Attempts to get the Enchantment with the given name.</p>
+        <p>Look up a registry entry by identifier.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="endstone.Identifier">Identifier</span>[<a class="autorefs autorefs-internal" title="            Enchantment (endstone.enchantments.Enchantment)" href="#endstone.enchantments.Enchantment">Enchantment</a>] | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Identifier to look up.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Enchantment (endstone.enchantments.Enchantment)" href="#endstone.enchantments.Enchantment">Enchantment</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The Enchantment, or None if not found.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>

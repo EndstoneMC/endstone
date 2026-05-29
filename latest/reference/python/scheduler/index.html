@@ -3111,7 +3111,7 @@ For latest updates join the chat on
             <td><code><a class="autorefs autorefs-internal" title="            Scheduler (endstone.scheduler.Scheduler)" href="#endstone.scheduler.Scheduler">Scheduler</a></code></td>
             <td>
               <div class="doc-md-description">
-                <p>Represents a scheduler that executes various tasks</p>
+                <p>Represents a scheduler that executes various tasks.</p>
               </div>
             </td>
           </tr>
@@ -3119,7 +3119,7 @@ For latest updates join the chat on
             <td><code><a class="autorefs autorefs-internal" title="            Task (endstone.scheduler.Task)" href="#endstone.scheduler.Task">Task</a></code></td>
             <td>
               <div class="doc-md-description">
-                <p>Represents a task being executed by the scheduler</p>
+                <p>Represents a task being executed by the scheduler.</p>
               </div>
             </td>
           </tr>
@@ -3157,7 +3157,7 @@ For latest updates join the chat on
 
 
 
-        <p>Represents a scheduler that executes various tasks</p>
+        <p>Represents a scheduler that executes various tasks.</p>
 
 
 
@@ -3199,7 +3199,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            get_pending_tasks (endstone.scheduler.Scheduler.get_pending_tasks)" href="#endstone.scheduler.Scheduler.get_pending_tasks">get_pending_tasks</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Returns a vector of all pending tasks.</p>
+                  <p>Returns a list of all pending tasks.</p>
                 </div>
               </td>
             </tr>
@@ -3207,7 +3207,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            is_queued (endstone.scheduler.Scheduler.is_queued)" href="#endstone.scheduler.Scheduler.is_queued">is_queued</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Check if the task queued to be run later.</p>
+                  <p>Check if the task is queued to be run later.</p>
                 </div>
               </td>
             </tr>
@@ -3215,7 +3215,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            is_running (endstone.scheduler.Scheduler.is_running)" href="#endstone.scheduler.Scheduler.is_running">is_running</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Check if the task currently running.</p>
+                  <p>Check if the task is currently running.</p>
                 </div>
               </td>
             </tr>
@@ -3223,7 +3223,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            run_task (endstone.scheduler.Scheduler.run_task)" href="#endstone.scheduler.Scheduler.run_task">run_task</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Returns a task that will be executed synchronously</p>
+                  <p>Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the</p>
                 </div>
               </td>
             </tr>
@@ -3262,6 +3262,37 @@ For latest updates join the chat on
         <p>Removes task from scheduler.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>id</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Id number of task to be removed.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     </div>
 
 </div>
@@ -3282,6 +3313,37 @@ For latest updates join the chat on
         <p>Removes all tasks associated with a particular plugin from the scheduler.</p>
 
 
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>plugin</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Plugin (endstone.plugin.Plugin)" href="../plugin/#endstone.plugin.Plugin">Plugin</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Owner of tasks to be removed.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
     </div>
 
 </div>
@@ -3299,7 +3361,8 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Returns a vector of all pending tasks.</p>
+        <p>Returns a list of all pending tasks.</p>
+<p>The ordering of the tasks is NOT related to their order of execution.</p>
 
 
     </div>
@@ -3319,7 +3382,61 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Check if the task queued to be run later.</p>
+        <p>Check if the task is queued to be run later.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>id</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The id of the task to check.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if the task is queued to be run.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -3339,7 +3456,61 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Check if the task currently running.</p>
+        <p>Check if the task is currently running.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>id</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The id of the task to check.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>True if the task is currently running.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -3364,7 +3535,110 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Returns a task that will be executed synchronously</p>
+        <p>Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the
+specified number of server ticks.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>plugin</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Plugin (endstone.plugin.Plugin)" href="../plugin/#endstone.plugin.Plugin">Plugin</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The reference to the plugin scheduling the task.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>task</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="collections.abc.Callable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a>[[], None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The task to be run.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>delay</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The ticks to wait before running the task.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>period</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The ticks to wait between runs.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Task (endstone.scheduler.Task)" href="#endstone.scheduler.Task">Task</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A Task that contains the id number (None if task is empty).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -3394,7 +3668,7 @@ For latest updates join the chat on
 
 
 
-        <p>Represents a task being executed by the scheduler</p>
+        <p>Represents a task being executed by the scheduler.</p>
 
 
 
@@ -3452,7 +3726,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Returns true if the task has been cancelled.</p>
+                <p>True if this task has been cancelled.</p>
               </div>
             </td>
           </tr>
@@ -3468,7 +3742,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Returns true if the task is run by server thread.</p>
+                <p>True if the task is run by the server thread.</p>
               </div>
             </td>
           </tr>
@@ -3484,7 +3758,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Returns the Plugin that owns the task.</p>
+                <p>The Plugin that owns this task.</p>
               </div>
             </td>
           </tr>
@@ -3500,7 +3774,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Returns the task id.</p>
+                <p>The task id number.</p>
               </div>
             </td>
           </tr>
@@ -3536,7 +3810,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Returns true if the task has been cancelled.</p>
+        <p>True if this task has been cancelled.</p>
 
     </div>
 
@@ -3560,7 +3834,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Returns true if the task is run by server thread.</p>
+        <p>True if the task is run by the server thread.</p>
 
     </div>
 
@@ -3584,7 +3858,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Returns the Plugin that owns the task.</p>
+        <p>The Plugin that owns this task.</p>
 
     </div>
 
@@ -3608,7 +3882,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>Returns the task id.</p>
+        <p>The task id number.</p>
 
     </div>
 
