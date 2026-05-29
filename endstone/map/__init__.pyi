@@ -9,7 +9,12 @@ import numpy
 from endstone import Player
 from endstone.level import Dimension
 
-__all__ = ["MapCanvas", "MapCursor", "MapRenderer", "MapView"]
+__all__ = [
+    "MapCanvas",
+    "MapCursor",
+    "MapRenderer",
+    "MapView",
+]
 
 class MapCursor:
     """
@@ -49,7 +54,7 @@ class MapCursor:
     @property
     def x(self) -> int:
         """
-        Get or set the X position of this cursor.
+        The X position of this cursor.
         """
         ...
     @x.setter
@@ -57,7 +62,7 @@ class MapCursor:
     @property
     def y(self) -> int:
         """
-        Get or set the Y position of this cursor.
+        The Y position of this cursor.
         """
         ...
     @y.setter
@@ -65,7 +70,7 @@ class MapCursor:
     @property
     def direction(self) -> int:
         """
-        Get or set the direction of this cursor
+        The facing of the cursor, from 0 to 15.
         """
         ...
     @direction.setter
@@ -73,7 +78,7 @@ class MapCursor:
     @property
     def type(self) -> Type:
         """
-        Get or set the type of this cursor.
+        The type (color/style) of this map cursor.
         """
         ...
     @type.setter
@@ -81,7 +86,7 @@ class MapCursor:
     @property
     def is_visible(self) -> bool:
         """
-        Get or set the visibility statis of this cursor.
+        The visibility status of this cursor.
         """
         ...
     @is_visible.setter
@@ -89,7 +94,7 @@ class MapCursor:
     @property
     def caption(self) -> str:
         """
-        Get or set the caption on this cursor.
+        The caption on this cursor.
         """
         ...
     @caption.setter
@@ -118,19 +123,21 @@ class MapView:
     @property
     def id(self) -> int:
         """
-        Get the ID of this map item for use with MapMeta.
+        The unique ID of this map item for use with MapMeta.
         """
         ...
     @property
     def is_virtual(self) -> bool:
         """
-        Check whether this map is virtual.
+        Whether this map is virtual.
+
+        A map is virtual if its lowermost MapRenderer is plugin-provided.
         """
         ...
     @property
     def scale(self) -> Scale:
         """
-        Get or set the scale of this map.
+        The scale of this map.
         """
         ...
     @scale.setter
@@ -138,7 +145,7 @@ class MapView:
     @property
     def center_x(self) -> int:
         """
-        Get or set the center X position of this map.
+        The center X position of this map.
         """
         ...
     @center_x.setter
@@ -146,7 +153,7 @@ class MapView:
     @property
     def center_z(self) -> int:
         """
-        Get or set the center Z position of this map.
+        The center Z position of this map.
         """
         ...
     @center_z.setter
@@ -154,7 +161,7 @@ class MapView:
     @property
     def dimension(self) -> Dimension:
         """
-        Get or set the dimension that this map is associated with.
+        The dimension that this map is associated with.
         """
         ...
     @dimension.setter
@@ -162,23 +169,33 @@ class MapView:
     @property
     def renderers(self) -> list[MapRenderer]:
         """
-        Get a copied list of MapRenderers currently in effect.
+        A list of MapRenderers currently in effect.
         """
         ...
     def add_renderer(self, renderer: MapRenderer) -> None:
         """
         Add a renderer to this map.
+
+        Args:
+            renderer: The MapRenderer to add.
         """
         ...
     def remove_renderer(self, renderer: MapRenderer) -> bool:
         """
         Remove a renderer from this map.
+
+        Args:
+            renderer: The MapRenderer to remove.
+
+        Returns:
+            True if the renderer was successfully removed.
         """
         ...
     @property
     def is_unlimited_tracking(self) -> bool:
         """
-        Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range.
+        Whether the map will show a smaller position cursor (True), or no position cursor (False) when cursor is
+        outside of map's range.
         """
         ...
     @is_unlimited_tracking.setter
@@ -194,18 +211,21 @@ class MapView:
 
 class MapCanvas:
     """
-    Represents a canvas for drawing to a map. Each canvas is associated with a specific MapRenderer and represents that renderer's layer on the map.
+    Represents a canvas for drawing to a map.
+
+    Each canvas is associated with a specific MapRenderer and represents that
+    renderer's layer on the map.
     """
     @property
     def map_view(self) -> MapView:
         """
-        Get the map this canvas is attached to.
+        The MapView this canvas is attached to.
         """
         ...
     @property
     def cursors(self) -> list[MapCursor]:
         """
-        Get the cursorS associated with this canvas.
+        The cursors associated with this canvas.
         """
         ...
     @cursors.setter
@@ -213,26 +233,55 @@ class MapCanvas:
     def set_pixel_color(self, x: int, y: int, color: tuple[int, ...]) -> None:
         """
         Draw a pixel to the canvas.
+
+        Args:
+            x: The x coordinate, from 0 to 127.
+            y: The y coordinate, from 0 to 127.
+            color: The color.
         """
         ...
     def get_pixel_color(self, x: int, y: int) -> tuple[int, ...]:
         """
         Get a pixel from the canvas.
+
+        Args:
+            x: The x coordinate, from 0 to 127.
+            y: The y coordinate, from 0 to 127.
+
+        Returns:
+            The color.
         """
         ...
     def set_pixel(self, x: int, y: int, color: int) -> None:
         """
         Draw a pixel to the canvas.
+
+        Args:
+            x: The x coordinate, from 0 to 127.
+            y: The y coordinate, from 0 to 127.
+            color: The color.
         """
         ...
     def get_pixel(self, x: int, y: int) -> int:
         """
         Get a pixel from the canvas.
+
+        Args:
+            x: The x coordinate, from 0 to 127.
+            y: The y coordinate, from 0 to 127.
+
+        Returns:
+            The color.
         """
         ...
     def draw_image(self, x: int, y: int, image: numpy.ndarray[numpy.uint8]) -> None:
         """
         Draw an image to the map. The image will be clipped if necessary.
+
+        Args:
+            x: The x coordinate of the image.
+            y: The y coordinate of the image.
+            image: The Image to draw.
         """
         ...
 
@@ -248,10 +297,18 @@ class MapRenderer:
     def initialize(self, view: MapView) -> None:
         """
         Initialize this MapRenderer for the given map.
+
+        Args:
+            view: The MapView being initialized.
         """
         ...
     def render(self, view: MapView, canvas: MapCanvas, player: Player) -> None:
         """
         Render to the given map.
+
+        Args:
+            view: The MapView being rendered to.
+            canvas: The canvas to use for rendering.
+            player: The player who triggered the rendering.
         """
         ...

@@ -4,7 +4,9 @@ Classes relating to the effects that can be applied to entities.
 
 from endstone import Identifier
 
-__all__ = ["EffectType"]
+__all__ = [
+    "EffectType",
+]
 
 class EffectType:
     """

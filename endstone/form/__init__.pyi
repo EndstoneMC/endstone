@@ -28,7 +28,7 @@ class Dropdown:
     @property
     def label(self) -> str | Translatable:
         """
-        Gets or sets the label of the dropdown.
+        The label of the dropdown.
         """
         ...
     @label.setter
@@ -36,7 +36,7 @@ class Dropdown:
     @property
     def options(self) -> list[str]:
         """
-        Gets or sets the options of the dropdown.
+        The options of the dropdown.
         """
         ...
     @options.setter
@@ -44,7 +44,7 @@ class Dropdown:
     @property
     def default_index(self) -> int | None:
         """
-        Gets or sets the optional default index of the dropdown.
+        The optional default index of the dropdown.
         """
         ...
     @default_index.setter
@@ -63,7 +63,7 @@ class Label:
     @property
     def text(self) -> str | Translatable:
         """
-        Gets or sets the text of the label.
+        The text of the label.
         """
         ...
     @text.setter
@@ -84,7 +84,7 @@ class Slider:
     @property
     def label(self) -> str | Translatable:
         """
-        Gets or sets the label of the slider.
+        The label of the slider.
         """
         ...
     @label.setter
@@ -92,7 +92,7 @@ class Slider:
     @property
     def min(self) -> float:
         """
-        Gets or sets the minimum value of the slider.
+        The minimum value of the slider.
         """
         ...
     @min.setter
@@ -100,7 +100,7 @@ class Slider:
     @property
     def max(self) -> float:
         """
-        Gets or sets the maximum value of the slider.
+        The maximum value of the slider.
         """
         ...
     @max.setter
@@ -108,7 +108,7 @@ class Slider:
     @property
     def step(self) -> float:
         """
-        Gets or sets the step size of the slider.
+        The step size of the slider.
         """
         ...
     @step.setter
@@ -116,7 +116,7 @@ class Slider:
     @property
     def default_value(self) -> float | None:
         """
-        Gets or sets the optional default value of the slider.
+        The optional default value of the slider.
         """
         ...
     @default_value.setter
@@ -132,7 +132,7 @@ class StepSlider:
     @property
     def label(self) -> str | Translatable:
         """
-        Gets or sets the label of the step slider.
+        The label of the step slider.
         """
         ...
     @label.setter
@@ -140,7 +140,7 @@ class StepSlider:
     @property
     def options(self) -> list[str]:
         """
-        Gets or sets the options of the step slider.
+        The options of the step slider.
         """
         ...
     @options.setter
@@ -148,7 +148,7 @@ class StepSlider:
     @property
     def default_index(self) -> int | None:
         """
-        Gets or sets the optional default index of the step slider.
+        The optional default index of the step slider.
         """
         ...
     @default_index.setter
@@ -169,7 +169,7 @@ class TextInput:
     @property
     def label(self) -> str | Translatable:
         """
-        Gets or sets the label of the text input field.
+        The label of the text input field.
         """
         ...
     @label.setter
@@ -177,7 +177,7 @@ class TextInput:
     @property
     def placeholder(self) -> str | Translatable:
         """
-        Gets or sets the placeholder of the text input field.
+        The placeholder of the text input field.
         """
         ...
     @placeholder.setter
@@ -185,7 +185,7 @@ class TextInput:
     @property
     def default_value(self) -> str | None:
         """
-        Gets or sets the optional default text of the text input field.
+        The optional default text of the text input field.
         """
         ...
     @default_value.setter
@@ -199,7 +199,7 @@ class Toggle:
     @property
     def label(self) -> str | Translatable:
         """
-        Gets or sets the label of the toggle.
+        The label of the toggle.
         """
         ...
     @label.setter
@@ -207,7 +207,7 @@ class Toggle:
     @property
     def default_value(self) -> bool:
         """
-        Gets or sets the value of the toggle.
+        The default value of the toggle.
         """
         ...
     @default_value.setter
@@ -227,7 +227,7 @@ class Header:
     @property
     def label(self) -> str | Translatable:
         """
-        Gets or sets the label of the header.
+        The label of the header.
         """
         ...
     @label.setter
@@ -246,7 +246,7 @@ class Button:
     @property
     def text(self) -> str | Translatable:
         """
-        Gets or sets the text of the button
+        The text of the button.
         """
         ...
     @text.setter
@@ -254,7 +254,7 @@ class Button:
     @property
     def icon(self) -> str | None:
         """
-        Gets or sets the icon path or URL of the button
+        The path or URL to the icon file.
         """
         ...
     @icon.setter
@@ -262,7 +262,7 @@ class Button:
     @property
     def on_click(self) -> collections.abc.Callable[[Player], None]:
         """
-        Gets or sets the on click callback.
+        The on click callback of the button.
         """
         ...
     @on_click.setter
@@ -284,7 +284,7 @@ class MessageForm:
     @property
     def title(self) -> str | Translatable:
         """
-        Gets or sets the title of the form.
+        The title of the form.
         """
         ...
     @title.setter
@@ -292,7 +292,7 @@ class MessageForm:
     @property
     def on_submit(self) -> collections.abc.Callable[[Player, int], None]:
         """
-        Gets or sets the on submit callback.
+        The on submit callback of the form.
         """
         ...
     @on_submit.setter
@@ -300,7 +300,7 @@ class MessageForm:
     @property
     def on_close(self) -> collections.abc.Callable[[Player], None]:
         """
-        Gets or sets the on close callback.
+        The on close callback of the form.
         """
         ...
     @on_close.setter
@@ -308,7 +308,7 @@ class MessageForm:
     @property
     def content(self) -> str | Translatable:
         """
-        Gets or sets the content of the form.
+        The content of the form.
         """
         ...
     @content.setter
@@ -316,7 +316,7 @@ class MessageForm:
     @property
     def button1(self) -> str | Translatable:
         """
-        Gets or sets the text of button1.
+        The text of button1.
         """
         ...
     @button1.setter
@@ -324,7 +324,7 @@ class MessageForm:
     @property
     def button2(self) -> str | Translatable:
         """
-        Gets or sets the text of button2.
+        The text of button2.
         """
         ...
     @button2.setter
@@ -345,7 +345,7 @@ class ActionForm:
     @property
     def title(self) -> str | Translatable:
         """
-        Gets or sets the title of the form.
+        The title of the form.
         """
         ...
     @title.setter
@@ -353,7 +353,7 @@ class ActionForm:
     @property
     def on_submit(self) -> collections.abc.Callable[[Player, int], None]:
         """
-        Gets or sets the on submit callback.
+        The on submit callback of the form.
         """
         ...
     @on_submit.setter
@@ -361,7 +361,7 @@ class ActionForm:
     @property
     def on_close(self) -> collections.abc.Callable[[Player], None]:
         """
-        Gets or sets the on close callback.
+        The on close callback of the form.
         """
         ...
     @on_close.setter
@@ -369,7 +369,7 @@ class ActionForm:
     @property
     def content(self) -> str | Translatable:
         """
-        Gets or sets the content of the form.
+        The content of the form.
         """
         ...
     @content.setter
@@ -382,27 +382,50 @@ class ActionForm:
     ) -> ActionForm:
         """
         Adds a button to the form.
+
+        Args:
+            text: The text of the button.
+            icon: The path or URL to the icon image.
+            on_click: The on click callback of the button.
+
+        Returns:
+            A reference to the current form.
         """
         ...
     def add_label(self, text: str | Translatable) -> ActionForm:
         """
         Adds a label to the form.
+
+        Args:
+            text: The text of the label.
+
+        Returns:
+            A reference to the current form.
         """
         ...
     def add_header(self, text: str | Translatable) -> ActionForm:
         """
         Adds a header to the form.
+
+        Args:
+            text: The text of the header.
+
+        Returns:
+            A reference to the current form.
         """
         ...
     def add_divider(self) -> ActionForm:
         """
         Adds a divider to the form.
+
+        Returns:
+            A reference to the current form.
         """
         ...
     @property
     def controls(self) -> list[Button | Divider | Header | Label]:
         """
-        Gets or sets the controls of the action form.
+        The controls of the action form.
         """
         ...
     @controls.setter
@@ -431,7 +454,7 @@ class ModalForm:
     @property
     def title(self) -> str | Translatable:
         """
-        Gets or sets the title of the form.
+        The title of the form.
         """
         ...
     @title.setter
@@ -439,7 +462,7 @@ class ModalForm:
     @property
     def on_submit(self) -> collections.abc.Callable[[Player, str], None]:
         """
-        Gets or sets the on submit callback.
+        The on submit callback of the form.
         """
         ...
     @on_submit.setter
@@ -447,7 +470,7 @@ class ModalForm:
     @property
     def on_close(self) -> collections.abc.Callable[[Player], None]:
         """
-        Gets or sets the on close callback.
+        The on close callback of the form.
         """
         ...
     @on_close.setter
@@ -455,7 +478,7 @@ class ModalForm:
     @property
     def controls(self) -> list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle | Divider | Header]:
         """
-        Gets or sets the controls of the modal form.
+        The controls of the modal form.
         """
         ...
     @controls.setter
@@ -465,7 +488,7 @@ class ModalForm:
     @property
     def icon(self) -> str | None:
         """
-        Gets or sets the icon of the form.
+        The path or URL to the icon file.
         """
         ...
     @icon.setter
@@ -473,7 +496,7 @@ class ModalForm:
     @property
     def submit_button(self) -> str | Translatable | None:
         """
-        Gets or sets the submit button message of the form.
+        The submit button text of the form.
         """
         ...
     @submit_button.setter

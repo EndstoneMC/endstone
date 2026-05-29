@@ -26,8 +26,8 @@ void init_lang(py::module_ &m)
                  return Translatable(std::move(text), params.value_or(std::vector<std::string>{}));
              }),
              py::arg("text"), py::arg("params") = py::none())
-        .def_property_readonly("text", &Translatable::getText, "Get the text to be translated.")
-        .def_property_readonly("params", &Translatable::getParameters, "Get the translation parameters.");
+        .def_property_readonly("text", &Translatable::getText, "The text to be translated.")
+        .def_property_readonly("params", &Translatable::getParameters, "The translation parameters.");
 
     py::class_<Language>(m, "Language", "Represents the interface for translating text into different languages.")
         .def(
@@ -37,16 +37,33 @@ void init_lang(py::module_ &m)
                 return self.translate(text, params.value_or(std::vector<std::string>{}),
                                       locale.value_or(self.getLocale()));
             },
-            "Translates a given text using a set of parameters for a specific locale.", py::arg("text"),
-            py::arg("params") = std::nullopt, py::arg("locale") = std::nullopt)
+            py::arg("text"), py::arg("params") = std::nullopt, py::arg("locale") = std::nullopt, R"doc(
+    Translates a given text using a set of parameters for a specific locale.
+
+    Args:
+        text: The text to be translated.
+        params: A list of parameters to be used in the translation.
+        locale: The locale identifier for the desired translation (e.g., ``en_US``). Defaults to the current locale.
+
+    Returns:
+        The translated text in the specified locale, with parameters applied.
+)doc")
         .def(
             "translate",
             [](const Language &self, const Translatable &translatable, const std::optional<std::string> &locale) {
                 return self.translate(translatable, locale.value_or(self.getLocale()));
             },
-            "Translates a Translatable object into a specific locale.", py::arg("translatable"),
-            py::arg("locale") = std::nullopt)
-        .def_property_readonly("locale", &Language::getLocale, "Gets the current locale.");
+            py::arg("translatable"), py::arg("locale") = std::nullopt, R"doc(
+    Translates a Translatable object into a specific locale.
+
+    Args:
+        translatable: A Translatable object containing text and parameters.
+        locale: The locale identifier for the desired translation (e.g., ``en_US``). Defaults to the current locale.
+
+    Returns:
+        The translated text in the specified locale.
+)doc")
+        .def_property_readonly("locale", &Language::getLocale, "The current locale.");
 }
 
 }  // namespace endstone::python

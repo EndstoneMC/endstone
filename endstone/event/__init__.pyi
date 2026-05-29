@@ -130,13 +130,13 @@ class Event:
     @property
     def event_name(self) -> str:
         """
-        Gets a user-friendly identifier for this event.
+        A user-friendly identifier for this event.
         """
         ...
     @property
     def is_asynchronous(self) -> bool:
         """
-        Whether the event fires asynchronously.
+        False by default, True if the event fires asynchronously.
         """
         ...
 
@@ -147,12 +147,12 @@ class EventResult(enum.Enum):
 
 class Cancellable:
     """
-    Represents an event that may be cancelled by a plugin or the server.
+    A type characterizing events that may be cancelled by a plugin or the server.
     """
     @property
     def is_cancelled(self) -> bool:
         """
-        Gets or sets the cancellation state of this event.
+        The cancellation state of this event.
 
         A cancelled event will not be executed in the server, but will still pass to other plugins.
         """
@@ -174,7 +174,7 @@ class ActorEvent(Event):
     @property
     def actor(self) -> Actor:
         """
-        Returns the Actor involved in this event
+        The Actor which is involved in this event.
         """
         ...
 
@@ -185,7 +185,7 @@ class MobEvent(Event):
     @property
     def actor(self) -> Mob:
         """
-        Returns the Mob involved in this event
+        The Mob which is involved in this event.
         """
         ...
 
@@ -196,7 +196,7 @@ class ActorDamageEvent(MobEvent, Cancellable):
     @property
     def damage(self) -> float:
         """
-        Gets or sets the amount of damage caused by the event
+        The raw amount of damage caused by the event.
         """
         ...
     @damage.setter
@@ -204,7 +204,7 @@ class ActorDamageEvent(MobEvent, Cancellable):
     @property
     def damage_source(self) -> DamageSource:
         """
-        Gets the source of damage.
+        A DamageSource detailing the source of the damage.
         """
         ...
 
@@ -215,24 +215,24 @@ class ActorDeathEvent(MobEvent):
     @property
     def damage_source(self) -> DamageSource:
         """
-        Gets the source of damage which caused the death.
+        A DamageSource detailing the source of the damage for the death.
         """
         ...
 
 class PlayerDeathEvent(ActorDeathEvent):
     """
-    Called when a player dies
+    Called when a Player dies.
     """
     @property
     def player(self) -> Player:
         """
-        Gets the Player that is breaking the block involved in this event.
+        The Player which is involved in this event.
         """
         ...
     @property
     def death_message(self) -> str | Translatable | None:
         """
-        Gets or sets the death message that will appear to everyone on the server.
+        The death message that will appear to everyone on the server.
         """
         ...
     @death_message.setter
@@ -240,18 +240,21 @@ class PlayerDeathEvent(ActorDeathEvent):
 
 class ActorExplodeEvent(ActorEvent, Cancellable):
     """
-    Called when an Actor explodes.
+    Called when an actor explodes.
     """
     @property
     def location(self) -> Location:
         """
-        Returns the location where the explosion happened.
+        The location where the explosion happened.
+
+        It is not possible to get this value from the Entity as the Entity no longer exists in the
+        world.
         """
         ...
     @property
     def block_list(self) -> list[Block]:
         """
-        Gets or sets the list of blocks that would have been removed or were removed from the explosion event.
+        The list of blocks that would have been removed or were removed from the explosion event.
         """
         ...
     @block_list.setter
@@ -264,13 +267,15 @@ class ActorKnockbackEvent(MobEvent, Cancellable):
     @property
     def source(self) -> Actor:
         """
-        Get the source actor that has caused knockback to the defender, if exists.
+        The source actor that has caused knockback to the defender, or None if the knockback is not caused by an actor.
         """
         ...
     @property
     def knockback(self) -> Vector:
         """
-        Gets or sets the knockback that will be applied to the entity.
+        The knockback that will be applied to the entity.
+
+        Note: the getter returns a copy; changes must be applied via the setter.
         """
         ...
     @knockback.setter
@@ -279,21 +284,29 @@ class ActorKnockbackEvent(MobEvent, Cancellable):
 class ActorRemoveEvent(ActorEvent):
     """
     Called when an Actor is removed.
+
+    This event should only be used for monitoring. Modifying the actor during or after this event
+    leads to undefined behaviours. This event will not be called for Players.
     """
 
 class ActorSpawnEvent(ActorEvent, Cancellable):
     """
     Called when an Actor is spawned into a world.
+
+    If an Actor Spawn event is cancelled, the actor will not spawn.
     """
 
 class ActorTeleportEvent(ActorEvent, Cancellable):
     """
     Called when a non-player entity is teleported from one location to another.
+
+    This may be as a result of natural causes (Enderman, Shulker), pathfinding (Wolf), or commands
+    (/teleport).
     """
     @property
     def from_location(self) -> Location:
         """
-        Gets or sets the location that this actor moved from.
+        The location that this actor moved from.
         """
         ...
     @from_location.setter
@@ -301,7 +314,7 @@ class ActorTeleportEvent(ActorEvent, Cancellable):
     @property
     def to_location(self) -> Location:
         """
-        Gets or sets the location that this actor moved to.
+        The location that this actor moved to.
         """
         ...
     @to_location.setter
@@ -309,34 +322,38 @@ class ActorTeleportEvent(ActorEvent, Cancellable):
 
 class BlockEvent(Event):
     """
-    Represents an Block-related event
+    Represents an Block-related event.
     """
     @property
     def block(self) -> Block:
         """
-        Gets the block involved in this event.
+        The Block which is involved in this event.
         """
         ...
 
 class BlockBreakEvent(BlockEvent, Cancellable):
     """
     Called when a block is broken by a player.
+
+    If a BlockBreakEvent is cancelled, the block will not break and experience will not drop.
     """
     @property
     def player(self) -> Player:
         """
-        Gets the Player that is breaking the block involved in this event.
+        The Player that is breaking the block involved in this event.
         """
         ...
 
 class BlockExplodeEvent(BlockEvent, Cancellable):
     """
-    Called when a block explodes.
+    Called when a block explodes (e.g. bed in the Nether, respawn anchor in the Overworld).
+
+    If a BlockExplodeEvent is cancelled, the explosion will not occur.
     """
     @property
     def block_list(self) -> list[Block]:
         """
-        Gets or sets the list of blocks that would have been removed or were removed from the explosion event.
+        The list of blocks that would have been removed or were removed from the explosion event.
         """
         ...
     @block_list.setter
@@ -349,13 +366,13 @@ class BlockCookEvent(BlockEvent, Cancellable):
     @property
     def source(self) -> ItemStack:
         """
-        Gets the smelted ItemStack for this event
+        The smelted (source) ItemStack for this event.
         """
         ...
     @property
     def result(self) -> ItemStack:
         """
-        Gets or sets the resultant ItemStack for this event
+        The resultant ItemStack for this event.
         """
         ...
     @result.setter
@@ -364,41 +381,53 @@ class BlockCookEvent(BlockEvent, Cancellable):
 class BlockGrowEvent(BlockEvent, Cancellable):
     """
     Called when a block grows naturally in the world.
+
     If a Block Grow event is cancelled, the block will not grow.
     """
     @property
     def new_state(self) -> BlockState:
         """
-        Gets the state of the block where it will form or spread to.
+        The new state of the block after it has grown.
         """
         ...
 
 class BlockFormEvent(BlockGrowEvent):
     """
     Called when a block is formed or spreads based on world conditions.
+
+    Use BlockSpreadEvent to catch blocks that actually spread and don't just "randomly" form.
+
+    Examples:
+        - Snow forming due to a snow storm.
+        - Ice forming in a snowy Biome like Taiga or Tundra.
+        - Obsidian / Cobblestone forming due to contact with water.
+        - Concrete forming due to mixing of concrete powder and water.
+
     If a Block Form event is cancelled, the block will not be formed.
     """
 
 class BlockFromToEvent(BlockEvent, Cancellable):
     """
-    Represents events with a source block and a destination block, currently only applies to liquid (lava and water) and teleporting dragon eggs.
+    Represents events with a source block and a destination block, currently only applies to liquid
+    (lava and water) and teleporting dragon eggs.
+
     If a Block From To event is cancelled, the block will not move (the liquid will not flow).
     """
     @property
     def to_block(self) -> Block:
         """
-        Gets the faced Block.
+        The faced Block.
         """
         ...
 
 class BlockPistonEvent(BlockEvent, Cancellable):
     """
-    Called when a piston block is triggered
+    Called when a piston block is triggered.
     """
     @property
     def direction(self) -> BlockFace:
         """
-        Return the direction in which the piston will operate.
+        The direction in which the piston will operate.
         """
         ...
 
@@ -415,89 +444,92 @@ class BlockPistonRetractEvent(BlockPistonEvent):
 class BlockPlaceEvent(BlockEvent, Cancellable):
     """
     Called when a block is placed by a player.
+
+    If a BlockPlaceEvent is cancelled, the block will not be placed.
     """
     @property
     def player(self) -> Player:
         """
-        Gets the player who placed the block involved in this event.
+        The Player who placed the block involved in this event.
         """
         ...
     @property
     def block_placed(self) -> Block:
         """
-        Gets the block placed.
+        The Block that was placed.
         """
         ...
     @property
     def block_replaced_state(self) -> BlockState:
         """
-        Gets the BlockState for the block which was replaced.
+        The BlockState of the block that was replaced.
         """
         ...
     @property
     def block_against(self) -> Block:
         """
-        Gets the block that this block was placed against
+        The block that the new block was placed against.
         """
         ...
 
 class LeavesDecayEvent(BlockEvent, Cancellable):
     """
     Called when leaves are decaying naturally.
+
     If a Leaves Decay event is cancelled, the leaves will not decay.
     """
 
 class LevelEvent(Event):
     """
-    Represents events within a level
+    Represents events within a level.
     """
     @property
     def level(self) -> Level:
         """
-        Gets the level primarily involved with this event
+        The Level primarily involved with this event.
         """
         ...
 
 class DimensionEvent(LevelEvent):
     """
-    Represents events within a dimension
+    Represents events within a dimension.
     """
     @property
     def dimension(self) -> Dimension:
         """
-        Gets the dimension primarily involved with this event
+        The Dimension primarily involved with this event.
         """
         ...
 
 class ChunkEvent(DimensionEvent):
     """
-    Represents a Chunk related event
+    Represents a Chunk related event.
     """
     @property
     def chunk(self) -> Chunk:
         """
-        Gets the chunk being loaded/unloaded
+        The Chunk being loaded/unloaded.
         """
         ...
 
 class ChunkLoadEvent(ChunkEvent):
     """
-    Called when a chunk is loaded
+    Called when a chunk is loaded.
     """
 
 class ChunkUnloadEvent(ChunkEvent):
     """
-    Called when a chunk is unloaded
+    Called when a chunk is unloaded.
     """
 
 class PlayerEvent(Event):
     """
-    Represents a player related event
+    Represents a player related event.
     """
     @property
     def player(self) -> Player:
         """
-        Returns the player involved in this event.
+        The Player who is involved in this event.
         """
         ...
 
@@ -508,7 +540,7 @@ class PlayerBedEnterEvent(PlayerEvent, Cancellable):
     @property
     def bed(self) -> Block:
         """
-        Returns the bed block involved in this event.
+        The bed block involved in this event.
         """
         ...
 
@@ -519,7 +551,7 @@ class PlayerBedLeaveEvent(PlayerEvent):
     @property
     def bed(self) -> Block:
         """
-        Returns the bed block involved in this event.
+        The bed block involved in this event.
         """
         ...
 
@@ -530,7 +562,7 @@ class PlayerChatEvent(PlayerEvent, Cancellable):
     @property
     def message(self) -> str:
         """
-        Gets or sets the message that the player will send.
+        The message that the player is attempting to send.
         """
         ...
     @message.setter
@@ -538,7 +570,7 @@ class PlayerChatEvent(PlayerEvent, Cancellable):
     @property
     def player(self) -> Player:
         """
-        Gets or sets the player that this message will display as
+        The player that this message will be displayed as being sent by.
         """
         ...
     @player.setter
@@ -546,7 +578,9 @@ class PlayerChatEvent(PlayerEvent, Cancellable):
     @property
     def format(self) -> str:
         """
-        Sets the format to use to display this chat message
+        The format to use to display this chat message.
+
+        See the format string syntax at https://en.cppreference.com/w/cpp/utility/format/spec.html.
         """
         ...
     @format.setter
@@ -554,7 +588,7 @@ class PlayerChatEvent(PlayerEvent, Cancellable):
     @property
     def recipients(self) -> list[Player]:
         """
-        Gets a set of recipients that this chat message will be displayed to
+        The set of Players who will see this chat message.
         """
         ...
 
@@ -565,7 +599,7 @@ class PlayerCommandEvent(PlayerEvent, Cancellable):
     @property
     def command(self) -> str:
         """
-        Gets or sets the command that the player will send.
+        The command that the player is attempting to send.
         """
         ...
     @command.setter
@@ -578,41 +612,43 @@ class PlayerDimensionChangeEvent(PlayerEvent):
     @property
     def from_dimension(self) -> Dimension:
         """
-        Gets the dimension the player is switching from.
+        The player's previous dimension.
         """
         ...
     @property
     def to_dimension(self) -> Dimension:
         """
-        Gets the dimension the player is switching to.
+        The player's new dimension.
         """
         ...
 
 class PlayerDropItemEvent(PlayerEvent, Cancellable):
     """
-    Called when a player drops an item from their inventory
+    Called when a player drops an item from their inventory.
     """
     @property
     def item(self) -> ItemStack:
         """
-        Gets the ItemStack dropped by the player
+        The ItemStack dropped by the player.
         """
         ...
 
 class PlayerEmoteEvent(PlayerEvent, Cancellable):
     """
-    Called when a player uses and emote
+    Called when a player uses an emote.
     """
     @property
     def emote_id(self) -> str:
         """
-        Gets the emote piece ID
+        The emote piece ID.
         """
         ...
     @property
     def is_muted(self) -> bool:
         """
-        Gets or sets the muted state for the emote.
+        The muted state for the emote.
+
+        When True, the emote is executed without sending a chat message about the emote.
         """
         ...
     @is_muted.setter
@@ -625,7 +661,7 @@ class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
     @property
     def new_game_mode(self) -> GameMode:
         """
-        Gets the GameMode the player is switched to.
+        The GameMode the player is switched to.
         """
         ...
 
@@ -646,43 +682,46 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
     @property
     def action(self) -> Action:
         """
-        Returns the action type of interaction
+        The action type of this interaction.
         """
         ...
     @property
     def has_item(self) -> bool:
         """
-        Check if this event involved an item
+        True if this event involved an item.
         """
         ...
     @property
     def item(self) -> ItemStack | None:
         """
-        Returns the item in hand represented by this event
+        The item in hand represented by this event, or None if no item.
         """
         ...
     @property
     def has_block(self) -> bool:
         """
-        Check if this event involved a block
+        True if this event involved a block.
         """
         ...
     @property
     def block(self) -> Block:
         """
-        Returns the clicked block
+        The block clicked with this item.
         """
         ...
     @property
     def block_face(self) -> BlockFace:
         """
-        Returns the face of the block that was clicked
+        The face of the block that was clicked.
         """
         ...
     @property
     def clicked_position(self) -> Vector | None:
         """
-        Gets the exact position on the block the player interacted with.
+        The exact position on the block the player interacted with.
+
+        This will be None outside of Action.RIGHT_CLICK_BLOCK. All vector components are between 0.0 and
+        1.0 inclusive.
         """
         ...
 
@@ -693,24 +732,30 @@ class PlayerInteractActorEvent(PlayerEvent, Cancellable):
     @property
     def actor(self) -> Actor:
         """
-        Gets the actor that was right-clicked by the player.
+        The actor that was right-clicked by the player.
         """
         ...
 
 class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
     """
     Called when a player is finishing consuming an item (food, potion, milk bucket).
+
+    If the ItemStack is modified the server will use the effects of the new item and not remove the
+    original one from the player's inventory.
+
+    If the event is cancelled the effect will not be applied and the item will not be removed from
+    the player's inventory.
     """
     @property
     def item(self) -> ItemStack:
         """
-        Gets the item that is being consumed.
+        An ItemStack for the item being consumed.
         """
         ...
     @property
     def hand(self) -> EquipmentSlot:
         """
-        Get the hand used to consume the item.
+        The hand used to consume the item.
         """
         ...
 
@@ -721,24 +766,24 @@ class PlayerItemHeldEvent(PlayerEvent, Cancellable):
     @property
     def new_slot(self) -> int:
         """
-        Gets the new held slot index
+        The new held slot index.
         """
         ...
     @property
     def previous_slot(self) -> int:
         """
-        Gets the previous held slot index.
+        The previous held slot index.
         """
         ...
 
 class PlayerJoinEvent(PlayerEvent):
     """
-    Called when a player joins a server
+    Called when a player joins a server.
     """
     @property
     def join_message(self) -> str | Translatable | None:
         """
-        Gets or sets the join message to send to all online players.
+        The join message to send to all online players.
         """
         ...
     @join_message.setter
@@ -746,12 +791,12 @@ class PlayerJoinEvent(PlayerEvent):
 
 class PlayerKickEvent(PlayerEvent, Cancellable):
     """
-    Called when a player gets kicked from the server
+    Called when a player gets kicked from the server.
     """
     @property
     def reason(self) -> str:
         """
-        Gets or sets the reason why the player is getting kicked
+        The reason why the player is getting kicked.
         """
         ...
     @reason.setter
@@ -764,7 +809,7 @@ class PlayerLoginEvent(PlayerEvent, Cancellable):
     @property
     def kick_message(self) -> str:
         """
-        Gets or sets kick message to display if event is cancelled
+        The kick message to display if the event is cancelled.
         """
         ...
     @kick_message.setter
@@ -777,7 +822,7 @@ class PlayerMoveEvent(PlayerEvent, Cancellable):
     @property
     def from_location(self) -> Location:
         """
-        Gets or sets the location that this player moved from.
+        The location that this player moved from.
         """
         ...
     @from_location.setter
@@ -785,7 +830,7 @@ class PlayerMoveEvent(PlayerEvent, Cancellable):
     @property
     def to_location(self) -> Location:
         """
-        Gets or sets the location that this player moved to.
+        The location that this player moved to.
         """
         ...
     @to_location.setter
@@ -803,7 +848,7 @@ class PlayerQuitEvent(PlayerEvent):
     @property
     def quit_message(self) -> str | Translatable | None:
         """
-        Gets or sets the quit message to send to all online players.
+        The quit message to send to all online players.
         """
         ...
     @quit_message.setter
@@ -821,13 +866,13 @@ class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
     @property
     def new_skin(self) -> Skin:
         """
-        Gets the player's new skin.
+        The skin that will be applied.
         """
         ...
     @property
     def skin_change_message(self) -> str | Translatable | None:
         """
-        Gets or sets the message to send to all online players for this skin change.
+        The message to send to all online players for this skin change.
         """
         ...
     @skin_change_message.setter
@@ -850,23 +895,25 @@ class PlayerPickupItemEvent(PlayerEvent, Cancellable):
     @property
     def item(self) -> Item:
         """
-        Gets the Item picked up by the entity.
+        The Item picked up by the entity.
         """
         ...
 
 class ServerEvent(Event):
     """
-    Represents a server-related event
+    Represents a Server-related event.
     """
 
 class BroadcastMessageEvent(ServerEvent, Cancellable):
     """
-    Event triggered for server broadcast messages such as from Server.broadcast
+    Event triggered for server broadcast messages such as from Server.broadcast.
+
+    This event should be async if fired from an async thread.
     """
     @property
     def message(self) -> str | Translatable:
         """
-        Gets or sets the message to broadcast.
+        The message to broadcast.
         """
         ...
     @message.setter
@@ -874,7 +921,7 @@ class BroadcastMessageEvent(ServerEvent, Cancellable):
     @property
     def recipients(self) -> set[CommandSender]:
         """
-        Gets a set of recipients that this broadcast message will be displayed to.
+        The set of CommandSenders who will see this broadcast message.
         """
         ...
 
@@ -885,7 +932,7 @@ class MapInitializeEvent(ServerEvent):
     @property
     def map(self) -> MapView:
         """
-        Gets the map initialized in this event.
+        The Map initialized in this event.
         """
         ...
 
@@ -896,13 +943,13 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     @property
     def packet_id(self) -> int:
         """
-        Gets the ID of the packet.
+        The ID of the packet.
         """
         ...
     @property
     def payload(self) -> bytes:
         """
-        Gets or sets the raw packet data **excluding** the header.
+        The raw packet data, excluding the header.
         """
         ...
     @payload.setter
@@ -910,20 +957,23 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     @property
     def player(self) -> Player:
         """
-        Gets the player involved in this event
-        NOTE: This may return None if the packet is sent before the player completes the login process.
+        The Player who is involved in this event.
+
+        This may return None if the packet is sent before the player completes the login process.
         """
         ...
     @property
     def address(self) -> SocketAddress:
         """
-        Gets the network address to which this packet is being sent.
+        The network address of the client that sent this packet.
         """
         ...
     @property
     def sub_client_id(self) -> int:
         """
-        Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).
+        The SubClient ID.
+
+        Range is 0 to 3 (0 = primary client; 1-3 = split-screen clients).
         """
         ...
 
@@ -934,13 +984,13 @@ class PacketSendEvent(ServerEvent, Cancellable):
     @property
     def packet_id(self) -> int:
         """
-        Gets the ID of the packet.
+        The ID of the packet.
         """
         ...
     @property
     def payload(self) -> bytes:
         """
-        Gets or sets the raw packet data **excluding** the header.
+        The raw packet data, excluding the header.
         """
         ...
     @payload.setter
@@ -948,20 +998,23 @@ class PacketSendEvent(ServerEvent, Cancellable):
     @property
     def player(self) -> Player:
         """
-        Gets the player involved in this event
-        NOTE: This may return None if the packet is sent before the player completes the login process.
+        The Player who is involved in this event.
+
+        This may return None if the packet is sent before the player completes the login process.
         """
         ...
     @property
     def address(self) -> SocketAddress:
         """
-        Gets the network address to which this packet is being sent.
+        The network address to which this packet is being sent.
         """
         ...
     @property
     def sub_client_id(self) -> int:
         """
-        Gets the SubClient ID (0 = primary client; 1-3 = split-screen clients).
+        The SubClient ID.
+
+        Range is 0 to 3 (0 = primary client; 1-3 = split-screen clients).
         """
         ...
 
@@ -970,52 +1023,65 @@ class PluginEnableEvent(ServerEvent):
     Called when a plugin is enabled.
     """
     @property
-    def plugin(self) -> Plugin: ...
+    def plugin(self) -> Plugin:
+        """
+        The Plugin involved in this event.
+        """
+        ...
 
 class PluginDisableEvent(ServerEvent):
     """
     Called when a plugin is disabled.
     """
     @property
-    def plugin(self) -> Plugin: ...
+    def plugin(self) -> Plugin:
+        """
+        The Plugin involved in this event.
+        """
+        ...
 
 class ScriptMessageEvent(ServerEvent, Cancellable):
     """
-    Called when a message is sent by `/scriptevent` command
+    Called when a message is sent by the ``/scriptevent`` command.
     """
     @property
     def message_id(self) -> str:
         """
-        Get the message id to send.
+        The message id to send.
         """
         ...
     @property
     def message(self) -> str:
         """
-        Get the message to send.
+        The message to send.
         """
         ...
     @property
     def sender(self) -> CommandSender:
         """
-        Gets the command sender who initiated the command.
+        The command sender who sent the script message.
         """
         ...
 
 class ServerCommandEvent(ServerEvent, Cancellable):
     """
-    Called when the console runs a command, early in the process.
+    Called when a command is run by a non-player, early in the command handling process.
+
+    You should not use this except for a few cases like logging commands, blocking commands on
+    certain places, or applying modifiers.
+
+    The command message contains a slash '/' at the start.
     """
     @property
     def sender(self) -> CommandSender:
         """
-        Get the command sender.
+        The command sender.
         """
         ...
     @property
     def command(self) -> str:
         """
-        Gets or sets the command that the server will execute
+        The command that the server is attempting to execute from the console.
         """
         ...
     @command.setter
@@ -1028,13 +1094,13 @@ class ServerListPingEvent(ServerEvent, Cancellable):
     @property
     def address(self) -> SocketAddress:
         """
-        Get the address the ping is coming from.
+        The address the ping is coming from.
         """
         ...
     @property
     def server_guid(self) -> str:
         """
-        Get or set the unique identifier of the server.
+        The unique identifier of the server.
         """
         ...
     @server_guid.setter
@@ -1042,7 +1108,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
     @property
     def local_port(self) -> int:
         """
-        Get or set the local port of the server.
+        The local port of the server.
         """
         ...
     @local_port.setter
@@ -1050,7 +1116,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
     @property
     def local_port_v6(self) -> int:
         """
-        Get or set the local port of the server for IPv6 support
+        The local port of the server for IPv6 support.
         """
         ...
     @local_port_v6.setter
@@ -1058,7 +1124,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
     @property
     def motd(self) -> str:
         """
-        Gets or sets the message of the day message.
+        The message of the day.
         """
         ...
     @motd.setter
@@ -1066,13 +1132,13 @@ class ServerListPingEvent(ServerEvent, Cancellable):
     @property
     def network_protocol_version(self) -> int:
         """
-        Get the network protocol version of this server
+        The network protocol version of this server.
         """
         ...
     @property
     def minecraft_version_network(self) -> str:
         """
-        Gets or sets the network version of Minecraft that is supported by this server
+        The network version of Minecraft that is supported by this server.
         """
         ...
     @minecraft_version_network.setter
@@ -1080,7 +1146,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
     @property
     def num_players(self) -> int:
         """
-        Gets or sets the number of players online.
+        The number of players online.
         """
         ...
     @num_players.setter
@@ -1088,7 +1154,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
     @property
     def max_players(self) -> int:
         """
-        Gets or sets the maximum number of players allowed.
+        The maximum number of players allowed.
         """
         ...
     @max_players.setter
@@ -1096,7 +1162,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
     @property
     def level_name(self) -> str:
         """
-        Gets or sets the level name.
+        The level name.
         """
         ...
     @level_name.setter
@@ -1104,7 +1170,7 @@ class ServerListPingEvent(ServerEvent, Cancellable):
     @property
     def game_mode(self) -> GameMode:
         """
-        Gets or sets the current game mode.
+        The current game mode.
         """
         ...
     @game_mode.setter
@@ -1119,16 +1185,20 @@ class ServerLoadEvent(Event):
 
     STARTUP = LoadType.STARTUP
     @property
-    def type(self) -> LoadType: ...
+    def type(self) -> LoadType:
+        """
+        The load type of this event.
+        """
+        ...
 
 class WeatherEvent(Event):
     """
-    Represents a weather-related event
+    Represents a Weather-related event.
     """
     @property
     def level(self) -> Level:
         """
-        Returns the Level where this event is occurring
+        The Level where this event is occurring.
         """
         ...
 
@@ -1139,7 +1209,7 @@ class ThunderChangeEvent(WeatherEvent, Cancellable):
     @property
     def to_thunder_state(self) -> bool:
         """
-        Gets the state of thunder that the world is being set to
+        True if the weather is being set to thundering, False otherwise.
         """
         ...
 
@@ -1150,7 +1220,7 @@ class WeatherChangeEvent(WeatherEvent, Cancellable):
     @property
     def to_weather_state(self) -> bool:
         """
-        Gets the state of weather that the world is being set to
+        True if the weather is being set to raining, False otherwise.
         """
         ...
 

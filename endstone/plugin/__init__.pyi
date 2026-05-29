@@ -34,50 +34,72 @@ class PluginLoadOrder(enum.Enum):
 
 class PluginLoader:
     """
-    Represents a plugin loader, which handles direct access to specific types of plugins
+    Represents a plugin loader, which handles direct access to specific types of plugins.
     """
     def __init__(self, server: Server) -> None: ...
     def load_plugin(self, file: str) -> Plugin:
         """
-        Loads the plugin contained in the specified file
+        Loads the plugin contained in the specified file.
+
+        Args:
+            file: File to attempt to load.
+
+        Returns:
+            Plugin that was contained in the specified file, or None if unsuccessful.
         """
         ...
     def load_plugins(self, directory: str) -> list[Plugin]:
         """
-        Loads the plugin contained within the specified directory
+        Loads the plugin contained within the specified directory.
+
+        Args:
+            directory: Directory to check for plugins.
+
+        Returns:
+            A list of all plugins loaded.
         """
         ...
     def enable_plugin(self, plugin: Plugin) -> None:
         """
-        Enables the specified plugin
+        Enables the specified plugin.
+
+        Attempting to enable a plugin that is already enabled will have no effect.
+
+        Args:
+            plugin: Plugin to enable.
         """
         ...
     def disable_plugin(self, plugin: Plugin) -> None:
         """
-        Disables the specified plugin
+        Disables the specified plugin.
+
+        Attempting to disable a plugin that is not enabled will have no effect.
+
+        Args:
+            plugin: Plugin to disable.
         """
         ...
     @property
     def plugin_file_filters(self) -> list[str]:
         """
-        Returns a list of all filename filters expected by this PluginLoader
+        A list of all filename filters expected by this PluginLoader.
         """
         ...
     @property
     def server(self) -> Server:
         """
-        Retrieves the Server object associated with the PluginLoader.
+        The Server object associated with the PluginLoader.
         """
         ...
 
 class PluginCommand(Command):
     """
-    Represents a Command belonging to a Plugin
+    Represents a Command belonging to a Plugin.
     """
     @property
     def executor(self) -> CommandExecutor:
         """
-        The CommandExecutor to run when parsing this command
+        The CommandExecutor to run when parsing this command.
         """
         ...
     @executor.setter
@@ -85,7 +107,7 @@ class PluginCommand(Command):
     @property
     def plugin(self) -> Plugin:
         """
-        The owner of this PluginCommand
+        The owner of this PluginCommand.
         """
         ...
 
@@ -116,103 +138,103 @@ class PluginDescription:
     @property
     def name(self) -> str:
         """
-        Gives the name of the plugin. This name is a unique identifier for plugins.
+        The name of the plugin. This name is a unique identifier for plugins.
         """
         ...
     @property
     def version(self) -> str:
         """
-        Gives the version of the plugin.
+        The version of the plugin.
         """
         ...
     @property
     def full_name(self) -> str:
         """
-        Returns the name of a plugin, including the version.
+        A descriptive name of the plugin and respective version.
         """
         ...
     @property
     def api_version(self) -> str:
         """
-        Gives the API version which this plugin is designed to support.
+        The API version which this plugin is designed to support.
         """
         ...
     @property
     def description(self) -> str:
         """
-        Gives a human-friendly description of the functionality the plugin provides.
+        A human-friendly description of the functionality the plugin provides.
         """
         ...
     @property
     def load(self) -> PluginLoadOrder:
         """
-        Gives the phase of server startup that the plugin should be loaded.
+        The phase of server startup that the plugin should be loaded.
         """
         ...
     @property
     def authors(self) -> list[str]:
         """
-        Gives the list of authors for the plugin.
+        The list of authors for the plugin.
         """
         ...
     @property
     def contributors(self) -> list[str]:
         """
-        Gives the list of contributors for the plugin.
+        The list of contributors for the plugin.
         """
         ...
     @property
     def website(self) -> str:
         """
-        Gives the plugin's or plugin's author's website.
+        The plugin's or plugin's author's website.
         """
         ...
     @property
     def prefix(self) -> str:
         """
-        Gives the token to prefix plugin-specific logging messages with.
+        The token to prefix plugin-specific logging messages with.
         """
         ...
     @property
     def provides(self) -> list[str]:
         """
-        Gives the list of other plugin APIs which this plugin provides. These are usable for other plugins to depend on.
+        The list of other plugin APIs which this plugin provides. These are usable for other plugins to depend on.
         """
         ...
     @property
     def depend(self) -> list[str]:
         """
-        Gives a list of other plugins that the plugin requires.
+        The list of other plugins that the plugin requires.
         """
         ...
     @property
     def soft_depend(self) -> list[str]:
         """
-        Gives a list of other plugins that the plugin requires for full functionality.
+        The list of other plugins that the plugin requires for full functionality.
         """
         ...
     @property
     def load_before(self) -> list[str]:
         """
-        Gets the list of plugins that should consider this plugin a soft-dependency.
+        The list of plugins that should consider this plugin a soft-dependency.
         """
         ...
     @property
     def default_permission(self) -> PermissionDefault:
         """
-        Gives the default value of permissions registered for the plugin.
+        The default value of permissions registered for the plugin.
         """
         ...
     @property
     def commands(self) -> list[Command]:
         """
-        Gives the list of commands the plugin will register at runtime.
+        The list of commands the plugin will register at runtime.
         """
         ...
     @property
     def permissions(self) -> list[Permission]:
         """
-        Gives the list of permissions the plugin will register at runtime, immediately proceeding enabling.
+        The list of permissions the plugin will register at runtime, immediately proceeding enabling.
         """
         ...
 
@@ -368,76 +390,131 @@ class Plugin:
 
 class PluginManager:
     """
-    Represents a plugin manager that handles all plugins from the Server
+    Represents a plugin manager that handles all plugins from the Server.
     """
     def get_plugin(self, name: str) -> Plugin:
         """
         Checks if the given plugin is loaded and returns it when applicable.
+
+        Please note that the name of the plugin is case-sensitive.
+
+        Args:
+            name: Name of the plugin to check.
+
+        Returns:
+            Plugin if it exists, otherwise None.
         """
         ...
     @property
     def plugins(self) -> list[Plugin]:
         """
-        Gets a list of all currently loaded plugins
+        List of all currently loaded plugins.
         """
         ...
     @typing.overload
     def is_plugin_enabled(self, plugin: str) -> bool:
         """
-        Checks if the given plugin is enabled or not
+        Checks if the given plugin is enabled or not.
+
+        Please note that the name of the plugin is case-sensitive.
+
+        Args:
+            plugin: Name of the plugin to check.
+
+        Returns:
+            True if the plugin is enabled, otherwise False.
         """
         ...
     @typing.overload
     def is_plugin_enabled(self, plugin: Plugin) -> bool:
         """
-        Checks if the given plugin is enabled or not
+        Checks if the given plugin is enabled or not.
+
+        Args:
+            plugin: Plugin to check.
+
+        Returns:
+            True if the plugin is enabled, otherwise False.
         """
         ...
     def load_plugin(self, file: str) -> Plugin:
         """
-        Loads the plugin in the specified file
+        Loads the plugin in the specified file.
+
+        File must be valid according to the current enabled Plugin interfaces.
+
+        Args:
+            file: File containing the plugin to load.
+
+        Returns:
+            The Plugin loaded, or None if it was invalid.
         """
         ...
     @typing.overload
     def load_plugins(self, directory: str) -> list[Plugin]:
         """
-        Loads the plugin contained within the specified directory
+        Loads the plugin contained within the specified directory.
+
+        Args:
+            directory: Directory to check for plugins.
+
+        Returns:
+            A list of all plugins loaded.
         """
         ...
     @typing.overload
     def load_plugins(self, files: list[str]) -> list[Plugin]:
         """
-        Loads the plugins in the list of the files
+        Loads the plugins in the list of the files.
+
+        Args:
+            files: List of files containing plugins to load.
+
+        Returns:
+            A list of all plugins loaded.
         """
         ...
     def enable_plugin(self, plugin: Plugin) -> None:
         """
-        Enables the specified plugin
+        Enables the specified plugin.
+
+        Attempting to enable a plugin that is already enabled will have no effect.
+
+        Args:
+            plugin: Plugin to enable.
         """
         ...
     def enable_plugins(self) -> None:
         """
-        Enable all the loaded plugins
+        Enable all the loaded plugins.
         """
         ...
     def disable_plugin(self, plugin: Plugin) -> None:
         """
-        Disables the specified plugin
+        Disables the specified plugin.
+
+        Attempting to disable a plugin that is not enabled will have no effect.
+
+        Args:
+            plugin: Plugin to disable.
         """
         ...
     def disable_plugins(self) -> None:
         """
-        Disables all the loaded plugins
+        Disables all the loaded plugins.
         """
         ...
     def clear_plugins(self) -> None:
         """
-        Disables and removes all plugins
+        Disables and removes all plugins.
         """
         ...
     def call_event(self, event: Event) -> None:
         """
         Calls an event which will be passed to plugins.
+
+        Args:
+            event: Event to be called.
         """
         ...
     def register_event(
@@ -449,70 +526,138 @@ class PluginManager:
         ignore_cancelled: bool,
     ) -> None:
         """
-        Registers the given event
+        Registers the given event.
+
+        Args:
+            name: Event name to register.
+            executor: EventExecutor to register.
+            priority: Priority of this event.
+            plugin: Plugin to register.
+            ignore_cancelled: Do not call executor if event was already cancelled.
         """
         ...
     def get_permission(self, name: str) -> Permission:
         """
         Gets a Permission from its fully qualified name.
+
+        Args:
+            name: Name of the permission.
+
+        Returns:
+            Permission, or None if none.
         """
         ...
     @typing.overload
     def remove_permission(self, perm: Permission) -> None:
         """
-        Removes a Permission registration from this plugin manager by permission object.
+        Removes a Permission registration from this plugin manager.
+
+        If the specified permission does not exist in this plugin manager, nothing will happen.
+        Removing a permission registration will not remove the permission from any Permissibles that have it.
+
+        Args:
+            perm: Permission to remove.
         """
         ...
     @typing.overload
     def remove_permission(self, name: str) -> None:
         """
-        Removes a Permission registration from this plugin manager by name.
+        Removes a Permission registration from this plugin manager.
+
+        If the specified permission does not exist in this plugin manager, nothing will happen.
+        Removing a permission registration will not remove the permission from any Permissibles that have it.
+
+        Args:
+            name: Permission to remove.
         """
         ...
     def get_default_permissions(self, level: PermissionLevel) -> list[Permission]:
         """
         Gets the default permissions for the given permission level.
+
+        Args:
+            level: Which set of default permissions to get.
+
+        Returns:
+            The default permissions.
         """
         ...
     def recalculate_permission_defaults(self, perm: Permission) -> None:
         """
         Recalculates the defaults for the given Permission.
+
+        This will have no effect if the specified permission is not registered here.
+
+        Args:
+            perm: Permission to recalculate.
         """
         ...
     def subscribe_to_permission(self, permission: str, permissible: Permissible) -> None:
         """
-        Subscribes the given Permissible for information about the requested Permission.
+        Subscribes the given Permissible for information about the requested Permission, by name.
+
+        If the specified Permission changes in any form, the Permissible will be asked to recalculate.
+
+        Args:
+            permission: Permission to subscribe to.
+            permissible: Permissible subscribing.
         """
         ...
     def unsubscribe_from_permission(self, permission: str, permissible: Permissible) -> None:
         """
-        Unsubscribes the given Permissible for information about the requested Permission.
+        Unsubscribes the given Permissible for information about the requested Permission, by name.
+
+        Args:
+            permission: Permission to unsubscribe from.
+            permissible: Permissible subscribing.
         """
         ...
     def get_permission_subscriptions(self, permission: str) -> set[Permissible]:
         """
-        Gets a set containing all subscribed Permissibles to the given permission.
+        Gets a set containing all subscribed Permissibles to the given permission, by name.
+
+        Args:
+            permission: Permission to query for.
+
+        Returns:
+            Set containing all subscribed permissions.
         """
         ...
     def subscribe_to_default_perms(self, level: PermissionLevel, permissible: Permissible) -> None:
         """
         Subscribes to the given Default permissions by permission level.
+
+        If the specified defaults change in any form, the Permissible will be asked to recalculate.
+
+        Args:
+            level: Default list to subscribe to.
+            permissible: Permissible subscribing.
         """
         ...
     def unsubscribe_from_default_perms(self, level: PermissionLevel, permissible: Permissible) -> None:
         """
         Unsubscribes from the given Default permissions by permission level.
+
+        Args:
+            level: Default list to unsubscribe from.
+            permissible: Permissible subscribing.
         """
         ...
     def get_default_perm_subscriptions(self, level: PermissionLevel) -> set[Permissible]:
         """
         Gets a set containing all subscribed Permissibles to the given default list, by permission level.
+
+        Args:
+            level: Default list to query for.
+
+        Returns:
+            Set containing all subscribed permissions.
         """
         ...
     @property
     def permissions(self) -> set[Permission]:
         """
-        Gets a set of all registered permissions.
+        Set of all registered permissions.
         """
         ...
 
@@ -529,34 +674,65 @@ class ServicePriority(enum.IntEnum):
 
 class Service:
     """
-    Represents a list of methods.
+    Services represent a list of methods.
     """
     def __init__(self) -> None: ...
 
 class ServiceManager:
     """
     Represent a service manager that manages services and service providers.
+
+    Services are an interface specifying a list of methods that a provider must implement.
+    Providers are implementations of these services.
     """
     def register(self, name: str, provider: Service, plugin: Plugin, priority: ServicePriority) -> None:
         """
         Register a provider of a service.
+
+        Args:
+            name: Service name.
+            provider: Service provider to register.
+            plugin: Plugin associated with the service.
+            priority: Priority of the provider.
         """
         ...
     def unregister_all(self, plugin: Plugin) -> None:
         """
         Unregister all the services registered by a particular plugin.
+
+        Args:
+            plugin: The plugin.
         """
         ...
     @typing.overload
     def unregister(self, name: str, provider: Service) -> None:
         """
         Unregister a particular provider for a particular service.
+
+        Args:
+            name: The service name.
+            provider: The service provider implementation.
         """
         ...
     @typing.overload
     def unregister(self, provider: Service) -> None:
         """
         Unregister a particular provider.
+
+        Args:
+            provider: The service provider implementation.
         """
         ...
-    def load(self, name: str) -> Service: ...
+    def load(self, name: str) -> Service:
+        """
+        Queries for a provider.
+
+        This may return None if no provider has been registered for the service. The highest priority provider is returned.
+
+        Args:
+            name: The service name.
+
+        Returns:
+            The highest priority provider, or None if none is registered.
+        """
+        ...

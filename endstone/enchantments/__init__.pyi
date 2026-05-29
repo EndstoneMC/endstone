@@ -5,7 +5,9 @@ Classes relating to the specialized enhancements to ItemStacks.
 from endstone import Identifier
 from endstone.inventory import ItemStack
 
-__all__ = ["Enchantment"]
+__all__ = [
+    "Enchantment",
+]
 
 class Enchantment:
     PROTECTION: Identifier[Enchantment] = "minecraft:protection"
@@ -52,30 +54,36 @@ class Enchantment:
     @property
     def id(self) -> Identifier[Enchantment]:
         """
-        Return the identifier for this enchantment.
+        The identifier of this enchantment.
         """
         ...
     @property
     def translation_key(self) -> str:
         """
-        Get the translation key, suitable for use in a translation component.
+        The translation key, suitable for use in a translation component.
         """
         ...
     @property
     def max_level(self) -> int:
         """
-        Gets the maximum level that this Enchantment may become.
+        The maximum level that this Enchantment may become.
         """
         ...
     @property
     def start_level(self) -> int:
         """
-        Gets the level that this Enchantment should start at (also known as minimum level).
+        The level that this Enchantment should start at (also known as minimum level).
         """
         ...
     def conflicts_with(self, other: Enchantment) -> bool:
         """
         Check if this enchantment conflicts with another enchantment.
+
+        Args:
+            other: The enchantment to check against.
+
+        Returns:
+            True if there is a conflict.
         """
         ...
     def can_enchant_item(self, item: ItemStack) -> bool:
@@ -83,12 +91,24 @@ class Enchantment:
         Checks if this Enchantment may be applied to the given ItemStack.
 
         This does not check if it conflicts with any enchantments already applied to the item.
+
+        Args:
+            item: Item to test.
+
+        Returns:
+            True if the enchantment may be applied, False otherwise.
         """
         ...
     @staticmethod
     def get(name: Identifier[Enchantment] | str) -> Enchantment:
         """
-        Attempts to get the Enchantment with the given name.
+        Look up a registry entry by identifier.
+
+        Args:
+            name: Identifier to look up.
+
+        Returns:
+            The Enchantment, or None if not found.
         """
         ...
     def __str__(self) -> str: ...

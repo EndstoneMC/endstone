@@ -6,25 +6,30 @@ from endstone.block import Block
 from endstone.inventory import ItemStack
 from endstone.util import Vector
 
-__all__ = ["Chunk", "Dimension", "Level", "Location"]
+__all__ = [
+    "Chunk",
+    "Dimension",
+    "Level",
+    "Location",
+]
 
 class Level:
     @property
     def name(self) -> str:
         """
-        Gets the unique name of this level
+        The unique name of this level.
         """
         ...
     @property
     def actors(self) -> list[Actor]:
         """
-        Get a list of all actors in this level
+        A list of all actors currently residing in this level.
         """
         ...
     @property
     def time(self) -> int:
         """
-        Gets and sets the relative in-game time on the server
+        The relative in-game time of this level.
         """
         ...
     @time.setter
@@ -32,18 +37,24 @@ class Level:
     @property
     def dimensions(self) -> list[Dimension]:
         """
-        Gets a list of all dimensions within this level.
+        A list of all dimensions within this level.
         """
         ...
     def get_dimension(self, id: Identifier[Dimension] | str) -> Dimension:
         """
         Gets the dimension with the given id.
+
+        Args:
+            id: The id of the dimension to retrieve.
+
+        Returns:
+            The Dimension with the given id, or None if none exists.
         """
         ...
     @property
     def seed(self) -> int:
         """
-        Gets the Seed for this level.
+        The Seed for this level.
         """
         ...
 
@@ -58,70 +69,118 @@ class Dimension:
     @property
     def id(self) -> Identifier[Dimension]:
         """
-        Gets the identifier of this dimension
+        The identifier of this dimension.
         """
         ...
     @property
     def translation_key(self) -> str:
         """
-        Gets the translation key for this dimension
+        The translation key, suitable for use in a translation component.
         """
         ...
     @property
     def level(self) -> Level:
         """
-        Gets the level to which this dimension belongs
+        The level to which this dimension belongs.
         """
         ...
     @typing.overload
     def get_block_at(self, location: Location) -> Block:
         """
-        Gets the Block at the given Location
+        Gets the Block at the given Location.
+
+        Args:
+            location: Location of the block.
+
+        Returns:
+            Block at the given coordinates.
         """
         ...
     @typing.overload
     def get_block_at(self, x: int, y: int, z: int) -> Block:
         """
-        Gets the Block at the given coordinates
+        Gets the Block at the given coordinates.
+
+        Args:
+            x: X-coordinate of the block.
+            y: Y-coordinate of the block.
+            z: Z-coordinate of the block.
+
+        Returns:
+            Block at the given coordinates.
         """
         ...
     def get_highest_block_y_at(self, x: int, z: int) -> int:
         """
         Gets the highest non-empty (impassable) coordinate at the given coordinates.
+
+        Args:
+            x: X-coordinate of the blocks.
+            z: Z-coordinate of the blocks.
+
+        Returns:
+            Y-coordinate of the highest non-empty block.
         """
         ...
     @typing.overload
     def get_highest_block_at(self, location: Location) -> Block:
         """
         Gets the highest non-empty (impassable) block at the given Location.
+
+        Args:
+            location: Coordinates to get the highest block.
+
+        Returns:
+            Highest non-empty block.
         """
         ...
     @typing.overload
     def get_highest_block_at(self, x: int, z: int) -> Block:
         """
         Gets the highest non-empty (impassable) block at the given coordinates.
+
+        Args:
+            x: X-coordinate of the block.
+            z: Z-coordinate of the block.
+
+        Returns:
+            Highest non-empty block.
         """
         ...
     @property
     def loaded_chunks(self) -> list[Chunk]:
         """
-        Gets a list of all loaded Chunks
+        A list of all loaded Chunks.
         """
         ...
     def drop_item(self, location: Location, item: ItemStack) -> Item:
         """
-        Drops an item at the specified Location
+        Drops an item at the specified Location.
+
+        Args:
+            location: Location to drop the item.
+            item: ItemStack to drop.
+
+        Returns:
+            Item entity created as a result of this method.
         """
         ...
     def spawn_actor(self, location: Location, type: Identifier[ActorType] | str) -> Actor:
         """
-        Creates an actor at the given Location
+        Creates an actor at the given Location.
+
+        Args:
+            location: The location to spawn the actor.
+            type: The actor type to spawn.
+
+        Returns:
+            Resulting Actor of this method.
         """
         ...
     @property
     def actors(self) -> list[Actor]:
         """
-        Get a list of all actors in this dimension
+        A list of all actors currently residing in this dimension.
         """
         ...
 
@@ -135,7 +194,7 @@ class Location:
     @property
     def dimension(self) -> Dimension:
         """
-        The Dimension that contains this position
+        The Dimension that contains this position.
         """
         ...
     @dimension.setter
@@ -143,7 +202,7 @@ class Location:
     @property
     def block(self) -> Block:
         """
-        Gets the block at the represented location
+        The block at the represented location.
         """
         ...
     @property
@@ -165,7 +224,7 @@ class Location:
     @property
     def x(self) -> float:
         """
-        The x-coordinate of this location
+        The x-coordinate of this location.
         """
         ...
     @x.setter
@@ -173,7 +232,7 @@ class Location:
     @property
     def y(self) -> float:
         """
-        The y-coordinate of this location
+        The y-coordinate of this location.
         """
         ...
     @y.setter
@@ -181,7 +240,7 @@ class Location:
     @property
     def z(self) -> float:
         """
-        The z-coordinate of this location
+        The z-coordinate of this location.
         """
         ...
     @z.setter
@@ -189,25 +248,25 @@ class Location:
     @property
     def block_x(self) -> int:
         """
-        Gets the floored value of the X component, indicating the block that this location is contained with.
+        The floored value of the X component, indicating the block that this location is contained with.
         """
         ...
     @property
     def block_y(self) -> int:
         """
-        Gets the floored value of the Y component, indicating the block that this location is contained with.
+        The floored value of the Y component, indicating the block that this location is contained with.
         """
         ...
     @property
     def block_z(self) -> int:
         """
-        Gets the floored value of the Z component, indicating the block that this location is contained with.
+        The floored value of the Z component, indicating the block that this location is contained with.
         """
         ...
     @property
     def direction(self) -> Vector:
         """
-        Gets or sets a vector of yaw and pitch that points in the direction of the vector
+        A unit-vector pointing in the direction that this Location is facing.
         """
         ...
     @direction.setter
@@ -215,23 +274,39 @@ class Location:
     @property
     def length(self) -> float:
         """
-        The magnitude of the Location
+        The magnitude of the location, defined as ``sqrt(x^2+y^2+z^2)``.
+
+        Not world-aware and orientation independent.
         """
         ...
     @property
     def length_squared(self) -> float:
         """
-        The squared magnitude of the Location
+        The magnitude of the location squared.
+
+        Not world-aware and orientation independent.
         """
         ...
     def distance(self, other: Location) -> float:
         """
-        The distance between this Location and another
+        Get the distance between this location and another.
+
+        Args:
+            other: The other location.
+
+        Returns:
+            The distance.
         """
         ...
     def distance_squared(self, other: Location) -> float:
         """
-        The squared distance between this Location and another
+        Get the squared distance between this location and another.
+
+        Args:
+            other: The other location.
+
+        Returns:
+            The distance.
         """
         ...
     @typing.overload
@@ -245,7 +320,7 @@ class Location:
     def __imul__(self, arg0: float) -> Location: ...
     def zero(self) -> Location:
         """
-        Zero this vector's components.
+        Zero this location's components. Not world-aware.
         """
         ...
     def __eq__(self, other: object) -> bool: ...
@@ -255,13 +330,25 @@ class Location:
     @staticmethod
     def normalize_yaw(yaw: float) -> float:
         """
-        Normalizes the given yaw angle to a value between `+/-180` degrees.
+        Normalizes the given yaw angle to a value between ``+/-180`` degrees.
+
+        Args:
+            yaw: The yaw in degrees.
+
+        Returns:
+            The normalized yaw in degrees.
         """
         ...
     @staticmethod
     def normalize_pitch(pitch: float) -> float:
         """
-        Normalizes the given pitch angle to a value between `+/-90` degrees.
+        Normalizes the given pitch angle to a value between ``+/-90`` degrees.
+
+        Args:
+            pitch: The pitch in degrees.
+
+        Returns:
+            The normalized pitch in degrees.
         """
         ...
 
@@ -272,25 +359,25 @@ class Chunk:
     @property
     def x(self) -> int:
         """
-        Gets the X-coordinate of this chunk
+        X-coordinate of this chunk.
         """
         ...
     @property
     def z(self) -> int:
         """
-        Gets the Z-coordinate of this chunk
+        Z-coordinate of this chunk.
         """
         ...
     @property
     def level(self) -> Level:
         """
-        Gets the level containing this chunk
+        The level containing this chunk.
         """
         ...
     @property
     def dimension(self) -> Dimension:
         """
-        Gets the dimension containing this chunk
+        The dimension containing this chunk.
         """
         ...
     def __repr__(self) -> str: ...

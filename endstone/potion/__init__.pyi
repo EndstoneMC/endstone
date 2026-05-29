@@ -4,7 +4,9 @@ Classes relating to potion effects.
 
 from endstone import Identifier
 
-__all__ = ["PotionType"]
+__all__ = [
+    "PotionType",
+]
 
 class PotionType:
     """

@@ -6,7 +6,12 @@ import enum
 
 from endstone import Player
 
-__all__ = ["BarColor", "BarFlag", "BarStyle", "BossBar"]
+__all__ = [
+    "BarColor",
+    "BarFlag",
+    "BarStyle",
+    "BossBar",
+]
 
 class BarColor(enum.Enum):
     PINK = 0
@@ -31,23 +36,23 @@ class BarFlag(enum.Enum):
 class BarStyle(enum.Enum):
     SOLID = 0
     """
-    Makes the boss bar solid (no segments)
+    Makes the boss bar solid (no segments).
     """
     SEGMENTED_6 = 1
     """
-    Splits the boss bar into 6 segments
+    Splits the boss bar into 6 segments.
     """
     SEGMENTED_10 = 2
     """
-    Splits the boss bar into 10 segments
+    Splits the boss bar into 10 segments.
     """
     SEGMENTED_12 = 3
     """
-    Splits the boss bar into 12 segments
+    Splits the boss bar into 12 segments.
     """
     SEGMENTED_20 = 4
     """
-    Splits the boss bar into 20 segments
+    Splits the boss bar into 20 segments.
     """
 
 class BossBar:
@@ -82,6 +87,8 @@ class BossBar:
     def progress(self) -> float:
         """
         The progress of the bar between 0.0 and 1.0.
+
+        Values should be between 0.0 (empty) and 1.0 (full).
         """
         ...
     @progress.setter
@@ -89,34 +96,52 @@ class BossBar:
     @property
     def is_visible(self) -> bool:
         """
-        If the boss bar is displayed to attached players.
+        Whether the boss bar is displayed to attached players.
         """
         ...
     @is_visible.setter
     def is_visible(self, arg1: bool) -> None: ...
     def has_flag(self, flag: BarFlag) -> bool:
         """
-        Checks whether this boss bar has the passed flag set.
+        Returns whether this boss bar has the passed flag set.
+
+        Args:
+            flag: The flag to check.
+
+        Returns:
+            Whether it has the flag.
         """
         ...
     def add_flag(self, flag: BarFlag) -> None:
         """
-        Adds an optional flag to this boss bar.
+        Add an optional flag to this boss bar.
+
+        Args:
+            flag: An optional flag to set on the boss bar.
         """
         ...
     def remove_flag(self, flag: BarFlag) -> None:
         """
-        Removes an existing flag on this boss bar.
+        Remove an existing flag on this boss bar.
+
+        Args:
+            flag: The existing flag to remove.
         """
         ...
     def add_player(self, player: Player) -> None:
         """
         Adds the player to this boss bar causing it to display on their screen.
+
+        Args:
+            player: The player to add.
         """
         ...
     def remove_player(self, player: Player) -> None:
         """
         Removes the player from this boss bar causing it to be removed from their screen.
+
+        Args:
+            player: The player to remove.
         """
         ...
     def remove_all(self) -> None:
@@ -127,6 +152,6 @@ class BossBar:
     @property
     def players(self) -> list[Player]:
         """
-        Returns all players viewing this boss bar.
+        All players viewing this boss bar.
         """
         ...

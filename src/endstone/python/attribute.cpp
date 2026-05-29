@@ -79,12 +79,12 @@ void init_attribute(py::module_ &m)
     modifier
         .def(py::init<std::string, float, AttributeModifier::Operation>(), py::arg("name"), py::arg("amount"),
              py::arg("operation"))
-        .def_property_readonly("unique_id", &AttributeModifier::getUniqueId, "Get the unique ID for this modifier.")
-        .def_property_readonly("name", &AttributeModifier::getName, "Get the name of this modifier.")
+        .def_property_readonly("unique_id", &AttributeModifier::getUniqueId, "The unique ID for this modifier.")
+        .def_property_readonly("name", &AttributeModifier::getName, "The name of this modifier.")
         .def_property_readonly("amount", &AttributeModifier::getAmount,
-                               "Get the amount by which this modifier will apply the operation.")
+                               "The amount by which this modifier will apply the operation.")
         .def_property_readonly("operation", &AttributeModifier::getOperation,
-                               "Get the operation this modifier will apply.");
+                               "The operation this modifier will apply.");
 
     py::class_<AttributeInstance>(
         m, "AttributeInstance",
@@ -93,11 +93,20 @@ void init_attribute(py::module_ &m)
         .def_property("base_value", &AttributeInstance::getBaseValue, &AttributeInstance::setBaseValue,
                       "Base value of this instance before modifiers are applied.")
         .def_property_readonly("value", &AttributeInstance::getValue,
-                               "Get the value of this instance after all associated modifiers have been applied.")
+                               "The value of this instance after all associated modifiers have been applied.")
         .def_property_readonly("modifiers", &AttributeInstance::getModifiers,
-                               "Get all modifiers present on this instance.")
-        .def("add_modifier", &AttributeInstance::addModifier, py::arg("modifier"), "Add a modifier to this instance.")
-        .def("remove_modifier", &AttributeInstance::removeModifier, py::arg("modifier"),
-             "Remove a modifier from this instance.");
+                               "All modifiers present on this instance.")
+        .def("add_modifier", &AttributeInstance::addModifier, py::arg("modifier"), R"doc(
+    Add a modifier to this instance.
+
+    Args:
+        modifier: Modifier to add.
+)doc")
+        .def("remove_modifier", &AttributeInstance::removeModifier, py::arg("modifier"), R"doc(
+    Remove a modifier from this instance.
+
+    Args:
+        modifier: Modifier to remove.
+)doc");
 }
 }  // namespace endstone::python

@@ -7,7 +7,11 @@ import uuid
 
 from endstone import Identifier
 
-__all__ = ["Attribute", "AttributeInstance", "AttributeModifier"]
+__all__ = [
+    "Attribute",
+    "AttributeInstance",
+    "AttributeModifier",
+]
 
 class Attribute:
     """
@@ -60,25 +64,25 @@ class AttributeModifier:
     @property
     def unique_id(self) -> uuid.UUID:
         """
-        Get the unique ID for this modifier.
+        The unique ID for this modifier.
         """
         ...
     @property
     def name(self) -> str:
         """
-        Get the name of this modifier.
+        The name of this modifier.
         """
         ...
     @property
     def amount(self) -> float:
         """
-        Get the amount by which this modifier will apply the operation.
+        The amount by which this modifier will apply the operation.
         """
         ...
     @property
     def operation(self) -> Operation:
         """
-        Get the operation this modifier will apply.
+        The operation this modifier will apply.
         """
         ...
 
@@ -103,22 +107,28 @@ class AttributeInstance:
     @property
     def value(self) -> float:
         """
-        Get the value of this instance after all associated modifiers have been applied.
+        The value of this instance after all associated modifiers have been applied.
         """
         ...
     @property
     def modifiers(self) -> list[AttributeModifier]:
         """
-        Get all modifiers present on this instance.
+        All modifiers present on this instance.
         """
         ...
     def add_modifier(self, modifier: AttributeModifier) -> None:
         """
         Add a modifier to this instance.
+
+        Args:
+            modifier: Modifier to add.
         """
         ...
     def remove_modifier(self, modifier: AttributeModifier) -> None:
         """
         Remove a modifier from this instance.
+
+        Args:
+            modifier: Modifier to remove.
         """
         ...

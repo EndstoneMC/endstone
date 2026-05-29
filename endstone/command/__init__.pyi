@@ -24,24 +24,30 @@ class CommandSender(Permissible):
     """
     def send_message(self, message: str | Translatable) -> None:
         """
-        Sends this sender a message
+        Sends this sender a message.
+
+        Args:
+            message: Message to be displayed.
         """
         ...
     def send_error_message(self, message: str | Translatable) -> None:
         """
-        Sends this sender an error message
+        Sends this sender a error message.
+
+        Args:
+            message: Error message to be displayed.
         """
         ...
     @property
     def server(self) -> Server:
         """
-        Returns the server instance that this command is running on
+        The server instance that this command is running on.
         """
         ...
     @property
     def name(self) -> str:
         """
-        Gets the name of this command sender
+        The name of this command sender.
         """
         ...
 
@@ -52,13 +58,13 @@ class BlockCommandSender(CommandSender):
     @property
     def block(self) -> Block:
         """
-        Returns the block this command sender belongs to
+        The block this command sender belongs to.
         """
         ...
 
 class CommandSenderWrapper(CommandSender):
     """
-    Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output
+    Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output.
     """
     def __init__(
         self,
@@ -74,7 +80,7 @@ class ConsoleCommandSender(CommandSender):
 
 class Command:
     """
-    Represents a Command, which executes various tasks upon user input
+    Represents a Command, which executes various tasks upon user input.
     """
     def __init__(
         self,
@@ -88,23 +94,46 @@ class Command:
     ) -> None: ...
     def execute(self, sender: CommandSender, args: list[str]) -> bool:
         """
-        Executes the command, returning its success
+        Executes the command, returning its success.
+
+        Args:
+            sender: Source of the command.
+            args: Arguments passed to the command.
+
+        Returns:
+            True if the execution was successful, False otherwise.
         """
         ...
     def test_permission(self, target: CommandSender) -> bool:
         """
         Tests the given CommandSender to see if they can perform this command.
+
+        If they do not have permission, they will be informed that they cannot do this.
+
+        Args:
+            target: User to test.
+
+        Returns:
+            True if they can use it, False otherwise.
         """
         ...
     def test_permission_silently(self, target: CommandSender) -> bool:
         """
-        Tests the given CommandSender to see if they can perform this command. No error is sent to the sender.
+        Tests the given CommandSender to see if they can perform this command.
+
+        No error is sent to the sender.
+
+        Args:
+            target: User to test.
+
+        Returns:
+            True if they can use it, False otherwise.
         """
         ...
     @property
     def name(self) -> str:
         """
-        Name of this command.
+        The name of this command.
         """
         ...
     @name.setter
@@ -112,7 +141,7 @@ class Command:
     @property
     def description(self) -> str:
         """
-        Brief description of this command
+        A brief description of this command.
         """
         ...
     @description.setter
@@ -120,7 +149,7 @@ class Command:
     @property
     def aliases(self) -> list[str]:
         """
-        List of aliases of this command
+        A list of aliases of this command.
         """
         ...
     @aliases.setter
@@ -128,7 +157,7 @@ class Command:
     @property
     def usages(self) -> list[str]:
         """
-        List of usages of this command
+        A list of usages of this command.
         """
         ...
     @usages.setter
@@ -136,7 +165,7 @@ class Command:
     @property
     def permissions(self) -> list[str]:
         """
-        The permissions required by users to be able to perform this command
+        The permissions required by users to be able to perform this command.
         """
         ...
     @permissions.setter
@@ -144,17 +173,25 @@ class Command:
     @property
     def is_registered(self) -> bool:
         """
-        Returns the current registered state of this command
+        The current registered state of this command.
         """
         ...
 
 class CommandExecutor:
     """
-    Represents a class which contains a single method for executing commands
+    Represents a class which contains a single method for executing commands.
     """
     def __init__(self) -> None: ...
     def on_command(self, sender: CommandSender, command: Command, args: list[str]) -> bool:
         """
         Executes the given command, returning its success.
+
+        Args:
+            sender: Source of the command.
+            command: Command which was executed.
+            args: Passed command arguments.
+
+        Returns:
+            True if the execution is successful, False otherwise.
         """
         ...

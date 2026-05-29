@@ -33,7 +33,7 @@ class ItemStack:
     @property
     def type(self) -> ItemType:
         """
-        Gets or sets the type of this item.
+        The type of this item.
         """
         ...
     @type.setter
@@ -41,7 +41,7 @@ class ItemStack:
     @property
     def amount(self) -> int:
         """
-        Gets or sets the amount of items in this stack.
+        The amount of items in this stack.
         """
         ...
     @amount.setter
@@ -49,7 +49,7 @@ class ItemStack:
     @property
     def data(self) -> int:
         """
-        Gets or sets the data for this stack of items.
+        The data for this stack of items.
         """
         ...
     @data.setter
@@ -57,35 +57,47 @@ class ItemStack:
     @property
     def translation_key(self) -> str:
         """
-        Get the translation key for this item.
+        The translation key for this item.
         """
         ...
     @property
     def max_stack_size(self) -> int:
         """
-        Get the maximum stack size for this item.
+        The maximum stack size for this item.
         """
         ...
     def is_similar(self, other: ItemStack) -> bool:
         """
         Checks if the two stacks are equal, but does not consider stack size (amount).
+
+        Args:
+            other: The item stack to compare to.
+
+        Returns:
+            True if the two stacks are equal, ignoring the amount.
         """
         ...
     @property
     def item_meta(self) -> ItemMeta:
         """
-        Gets a copy of the ItemMeta of this ItemStack.
+        A copy of the ItemMeta of this ItemStack.
         """
         ...
     def set_item_meta(self, meta: ItemMeta) -> bool:
         """
         Set the ItemMeta of this ItemStack.
+
+        Args:
+            meta: New ItemMeta, or None to clear the metadata.
+
+        Returns:
+            True if successfully applied ItemMeta.
         """
         ...
     @property
     def nbt(self) -> CompoundTag:
         """
-        Gets or sets the NBT compound tag of this item stack.
+        The NBT compound tag of this item stack.
         """
         ...
     @nbt.setter
@@ -113,35 +125,47 @@ class ItemType:
     @property
     def id(self) -> Identifier[ItemType]:
         """
-        Return the identifier of this item type.
+        The identifier of this item type.
         """
         ...
     @property
     def translation_key(self) -> str:
         """
-        Get the translation key, suitable for use in a translation component.
+        The translation key, suitable for use in a translation component.
         """
         ...
     def get_translation_key(self, data: int = 0) -> str:
         """
         Get the translation key, suitable for use in a translation component.
+
+        Args:
+            data: Data for this item type.
+
+        Returns:
+            The translation key.
         """
         ...
     @property
     def max_stack_size(self) -> int:
         """
-        Gets the maximum amount of this item type that can be held in a stack.
+        The maximum amount of this item type that can be held in a stack.
         """
         ...
     @property
     def max_durability(self) -> int:
         """
-        Gets the maximum durability of this item type
+        The maximum durability of this item type.
         """
         ...
     def create_item_stack(self, amount: int = 1) -> ItemStack:
         """
         Constructs a new ItemStack with this item type.
+
+        Args:
+            amount: The amount in the stack.
+
+        Returns:
+            An ItemStack of this item type.
         """
         ...
     @staticmethod
@@ -162,18 +186,21 @@ class ItemMeta:
     def clone(self) -> ItemMeta:
         """
         Creates a clone of the current metadata.
+
+        Returns:
+            A copy of the metadata containing the same state as the original.
         """
         ...
     @property
     def has_display_name(self) -> bool:
         """
-        Checks for existence of a display name.
+        Whether this has a display name.
         """
         ...
     @property
     def display_name(self) -> str:
         """
-        Gets or sets the display name.
+        The display name that is set.
         """
         ...
     @display_name.setter
@@ -181,13 +208,13 @@ class ItemMeta:
     @property
     def has_lore(self) -> bool:
         """
-        Checks for existence of lore.
+        Whether this has lore.
         """
         ...
     @property
     def lore(self) -> list[str]:
         """
-        Gets or sets the lore for this item.
+        The lore for this item.
         """
         ...
     @lore.setter
@@ -195,13 +222,13 @@ class ItemMeta:
     @property
     def has_damage(self) -> bool:
         """
-        Checks to see if this item has damage.
+        Whether this item has damage.
         """
         ...
     @property
     def damage(self) -> int:
         """
-        Gets or sets the damage.
+        The damage.
         """
         ...
     @damage.setter
@@ -209,33 +236,61 @@ class ItemMeta:
     @property
     def has_enchants(self) -> bool:
         """
-        Checks for the existence of any enchantments.
+        Whether an enchantment exists on this meta.
         """
         ...
     def has_enchant(self, id: Identifier[Enchantment] | str) -> bool:
         """
         Checks for existence of the specified enchantment.
+
+        Args:
+            id: Enchantment id to check.
+
+        Returns:
+            True if this enchantment exists for this meta.
         """
         ...
     def get_enchant_level(self, id: Identifier[Enchantment] | str) -> int:
         """
         Checks for the level of the specified enchantment.
+
+        Args:
+            id: Enchantment id to check.
+
+        Returns:
+            The level that the specified enchantment has, or 0 if none.
         """
         ...
     @property
     def enchants(self) -> dict[Enchantment, int]:
         """
-        Returns a copy the enchantments in this ItemMeta.
+        Returns a copy of the enchantments in this ItemMeta.
+
+        Returns an empty map if none.
         """
         ...
     def add_enchant(self, id: Identifier[Enchantment] | str, level: int, force: bool = False) -> bool:
         """
         Adds the specified enchantment to this item meta.
+
+        Args:
+            id: Enchantment id to add.
+            level: Level for the enchantment.
+            force: This indicates the enchantment should be applied, ignoring the level limit.
+
+        Returns:
+            True if the item meta changed as a result of this call, False otherwise.
         """
         ...
     def remove_enchant(self, id: Identifier[Enchantment] | str) -> bool:
         """
         Removes the specified enchantment from this item meta.
+
+        Args:
+            id: Enchantment id to remove.
+
+        Returns:
+            True if the item meta changed as a result of this call, False otherwise.
         """
         ...
     def remove_enchants(self) -> None:
@@ -246,13 +301,13 @@ class ItemMeta:
     @property
     def has_repair_cost(self) -> bool:
         """
-        Checks to see if this item has a repair penalty.
+        Whether this item has a repair penalty.
         """
         ...
     @property
     def repair_cost(self) -> int:
         """
-        Gets or sets the repair penalty.
+        The repair penalty.
         """
         ...
     @repair_cost.setter
@@ -260,7 +315,7 @@ class ItemMeta:
     @property
     def is_unbreakable(self) -> bool:
         """
-        Gets or sets the unbreakable tag. An unbreakable item will not lose durability.
+        The unbreakable tag. An unbreakable item will not lose durability.
         """
         ...
     @is_unbreakable.setter
@@ -273,13 +328,13 @@ class MapMeta(ItemMeta):
     @property
     def has_map_id(self) -> bool:
         """
-        Checks for existence of a map ID number.
+        Whether this has a map ID number.
         """
         ...
     @property
     def map_id(self) -> int:
         """
-        Gets or sets the map ID. This is used to determine what map is displayed.
+        The map ID. This is used to determine what map is displayed.
         """
         ...
     @map_id.setter
@@ -287,13 +342,13 @@ class MapMeta(ItemMeta):
     @property
     def has_map_view(self) -> bool:
         """
-        Checks for existence of an associated map.
+        Whether this item has an associated map.
         """
         ...
     @property
     def map_view(self) -> MapView:
         """
-        Gets or sets the map view that is associated with this map item.
+        The map view associated with this map item.
         """
         ...
     @map_view.setter
@@ -301,28 +356,46 @@ class MapMeta(ItemMeta):
 
 class WritableBookMeta(ItemMeta):
     """
-    Represents the metadata for a writable book.
+    Represents the meta for a writable book that can have pages.
     """
     @property
     def has_pages(self) -> bool:
         """
-        Checks for the existence of pages in the book.
+        Whether the book has pages.
         """
         ...
     def get_page(self, page: int) -> str:
         """
-        Gets the specified page in the book.
+        Gets the specified page in the book. The given page must exist.
+
+        Note:
+            Pages are 1-indexed.
+
+        Args:
+            page: The page number to get, in range [1, page_count].
+
+        Returns:
+            The page from the book.
         """
         ...
     def set_page(self, page: int, data: str) -> None:
         """
-        Sets the specified page in the book.
+        Sets the specified page in the book. Pages of the book must be contiguous.
+
+        Note:
+            The data can be up to 1024 characters in length, additional characters are truncated.
+
+        Pages are 1-indexed.
+
+        Args:
+            page: The page number to set, in range [1, page_count].
+            data: The data to set for that page.
         """
         ...
     @property
     def pages(self) -> list[str]:
         """
-        Gets or sets all the pages in the book.
+        All the pages in the book.
         """
         ...
     @pages.setter
@@ -330,12 +403,18 @@ class WritableBookMeta(ItemMeta):
     def add_page(self, *args: str) -> None:
         """
         Adds new pages to the end of the book.
+
+        Note:
+            Up to a maximum of 50 pages with 256 characters per page.
+
+        Args:
+            pages: A list of strings, each being a page.
         """
         ...
     @property
     def page_count(self) -> int:
         """
-        Gets the number of pages in the book.
+        The number of pages in the book.
         """
         ...
 
@@ -346,18 +425,18 @@ class BookMetaGeneration(enum.Enum):
 
 class BookMeta(WritableBookMeta):
     """
-    Represents the metadata for a written book.
+    Represents the meta for a written book that can have a title, an author, and pages.
     """
     @property
     def has_title(self) -> bool:
         """
-        Checks for the existence of a title in the book.
+        Whether the book has a title.
         """
         ...
     @property
     def title(self) -> str:
         """
-        Gets or sets the title of the book.
+        The title of the book.
         """
         ...
     @title.setter
@@ -365,13 +444,13 @@ class BookMeta(WritableBookMeta):
     @property
     def has_author(self) -> bool:
         """
-        Checks for the existence of an author in the book.
+        Whether the book has an author.
         """
         ...
     @property
     def author(self) -> str:
         """
-        Gets or sets the author of the book.
+        The author of the book.
         """
         ...
     @author.setter
@@ -379,13 +458,13 @@ class BookMeta(WritableBookMeta):
     @property
     def has_generation(self) -> bool:
         """
-        Checks for the existence of generation level in the book.
+        Whether the book has a generation level.
         """
         ...
     @property
     def generation(self) -> BookMetaGeneration | None:
         """
-        Gets or sets the generation of the book.
+        The generation of the book.
         """
         ...
     @generation.setter
@@ -393,18 +472,18 @@ class BookMeta(WritableBookMeta):
 
 class CrossbowMeta(ItemMeta):
     """
-    Represents the metadata for a crossbow.
+    Represents the meta for a crossbow that can have a charged projectile.
     """
     @property
     def has_charged_projectile(self) -> bool:
         """
-        Returns whether the crossbow has a charged projectile.
+        Whether the crossbow has a charged projectile.
         """
         ...
     @property
     def charged_projectile(self) -> ItemStack | None:
         """
-        Gets or sets the charged projectile.
+        The charged projectile, or None if none.
         """
         ...
     @charged_projectile.setter
@@ -414,21 +493,52 @@ class ItemFactory:
     def get_item_meta(self, type: Identifier[ItemType] | str) -> ItemMeta:
         """
         This creates a new item meta for the item type.
+
+        Args:
+            type: The item type to consider as base for the meta.
+
+        Returns:
+            A new ItemMeta that could be applied to an item stack of the specified item type.
         """
         ...
     def is_applicable(self, meta: ItemMeta, type: Identifier[ItemType] | str) -> bool:
         """
-        This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified ItemStack
+        This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified ItemStack.
+
+        Args:
+            meta: Meta to check.
+            type: The item type that meta will be applied to.
+
+        Returns:
+            True if the meta can be applied without losing data, False otherwise.
         """
         ...
     def equals(self, meta1: ItemMeta, meta2: ItemMeta) -> bool:
         """
         This method is used to compare two ItemMeta objects.
+
+        Args:
+            meta1: First meta to compare; may be None to indicate no data.
+            meta2: Second meta to compare; may be None to indicate no data.
+
+        Returns:
+            False if one of the meta has data the other does not, otherwise True.
         """
         ...
     def as_meta_for(self, meta: ItemMeta, type: Identifier[ItemType] | str) -> ItemMeta:
         """
         Returns an appropriate item meta for the specified item type.
+
+        The item meta returned will always be a valid meta for a given ItemStack of the specified item type. It may be a
+        more or less specific meta, and could also be the same meta or meta type as the parameter. The item meta returned
+        will also always be the most appropriate meta.
+
+        Args:
+            meta: The meta to convert.
+            type: The item type to convert the meta for.
+
+        Returns:
+            An appropriate item meta for the specified item type.
         """
         ...
 
@@ -439,47 +549,69 @@ class Inventory:
     @property
     def size(self) -> int:
         """
-        Returns the size of the inventory
+        The size of the inventory.
         """
         ...
     @property
     def max_stack_size(self) -> int:
         """
-        Returns the maximum stack size for an ItemStack in this inventory.
+        The maximum stack size for an ItemStack in this inventory.
         """
         ...
     def get_item(self, index: int) -> ItemStack | None:
         """
-        Returns the ItemStack found in the slot at the given index
+        Returns the ItemStack found in the slot at the given index.
+
+        Args:
+            index: The index of the Slot's ItemStack to return.
+
+        Returns:
+            The ItemStack in the slot.
         """
         ...
     def set_item(self, index: int, item: ItemStack | None) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
+
+        Args:
+            index: The index where to put the ItemStack.
+            item: The ItemStack to set.
         """
         ...
     def add_item(self, *args) -> dict[int, ItemStack]:
         """
         Stores the given ItemStacks in the inventory.
-        This will try to fill existing stacks and empty slots as well as it can.
 
-        The returned map contains what it couldn't store, where the key is the index, and the value is the ItemStack.
-        If all items are stored, it will return an empty dict.
+        Note:
+            This will try to fill existing stacks and empty slots as well as it can.
+
+        Note:
+            The returned map contains what it couldn't store, where the key is the index, and the value is the
+            ItemStack. If all items are stored, it will return an empty dict.
+
+        Returns:
+            A map containing items that couldn't be added.
         """
         ...
     def remove_item(self, *args) -> dict[int, ItemStack]:
         """
         Removes the given ItemStacks from the inventory.
-        It will try to remove 'as much as possible' from the types and amounts you give as arguments.
 
-        The returned HashMap contains what it couldn't remove, where the key is the index, and the value is the ItemStack.
-        If all the given ItemStacks are removed, it will return an empty dict.
+        Note:
+            It will try to remove 'as much as possible' from the types and amounts you give as arguments.
+
+        Note:
+            The returned map contains what it couldn't remove, where the key is the index, and the value is the
+            ItemStack. If all the given ItemStacks are removed, it will return an empty dict.
+
+        Returns:
+            A map containing items that couldn't be removed.
         """
         ...
     @property
     def contents(self) -> list[ItemStack | None]:
         """
-        Returns all ItemStacks from the inventory
+        All ItemStacks from the inventory. Empty slots are represented as None.
         """
         ...
     @contents.setter
@@ -488,93 +620,172 @@ class Inventory:
     def contains(self, item: ItemStack, amount: int) -> bool:
         """
         Checks if the inventory contains at least the minimum amount specified of exactly matching ItemStacks.
-        An ItemStack only counts if both the type and the amount of the stack match.
+
+        Note:
+            An ItemStack only counts if both the type and the amount of the stack match.
+
+        Args:
+            item: The ItemStack to match against.
+            amount: How many identical stacks to check for.
+
+        Returns:
+            True if amount less than 1 or if amount of exactly matching ItemStacks were found, False otherwise.
         """
         ...
     @typing.overload
     def contains(self, item: ItemStack) -> bool:
         """
         Checks if the inventory contains any ItemStacks with the given ItemStack.
-        This will only return true if both the type and the amount of the stack match.
+
+        Note:
+            This will only return True if both the type and the amount of the stack match.
+
+        Args:
+            item: The ItemStack to match against.
+
+        Returns:
+            True if any exactly matching ItemStacks were found, False otherwise.
         """
         ...
     @typing.overload
     def contains(self, type: str) -> bool:
         """
         Checks if the inventory contains any ItemStacks with the given ItemType.
+
+        Args:
+            type: The item type to check for.
+
+        Returns:
+            True if an ItemStack is found with the given ItemType.
         """
         ...
     @typing.overload
     def contains_at_least(self, item: ItemStack, amount: int) -> bool:
         """
-        Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least the minimum amount specified.
+        Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least the
+        minimum amount specified.
+
+        Args:
+            item: The ItemStack to match against.
+            amount: The minimum amount.
+
+        Returns:
+            True if amount less than 1 or enough ItemStacks were found to add to the given amount, False otherwise.
         """
         ...
     @typing.overload
     def contains_at_least(self, type: str, amount: int) -> bool:
         """
-        Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum amount specified.
+        Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum
+        amount specified.
+
+        Args:
+            type: The ItemType to check for.
+            amount: The minimum amount.
+
+        Returns:
+            True if amount is less than 1, True if enough ItemStacks were found to add to the given amount.
         """
         ...
     @typing.overload
     def all(self, item: ItemStack) -> dict[int, ItemStack]:
         """
         Finds all slots in the inventory containing any ItemStacks with the given ItemStack.
-        This will only match slots if both the type and the amount of the stack match
-        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
+
+        Note:
+            This will only match slots if both the type and the amount of the stack match.
+
+        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot.
+        If no matching ItemStack is found, an empty map is returned.
+
+        Args:
+            item: The ItemStack to match against.
+
+        Returns:
+            A map from slot indexes to item at index.
         """
         ...
     @typing.overload
     def all(self, type: str) -> dict[int, ItemStack]:
         """
         Finds all slots in the inventory containing any ItemStacks with the given ItemType.
-        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
+
+        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot.
+        If no matching ItemStack is found, an empty map is returned.
+
+        Args:
+            type: The ItemType to match against.
+
+        Returns:
+            A map from slot indexes to item at index.
         """
         ...
     @typing.overload
     def first(self, item: ItemStack) -> int:
         """
         Returns the first slot in the inventory containing an ItemStack with the given stack.
-        This will only match slots if both the type and the amount of the stack match
-        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
+
+        Args:
+            item: The ItemStack to match against.
+
+        Returns:
+            The slot index of the given ItemStack or -1 if not found.
         """
         ...
     @typing.overload
     def first(self, type: str) -> int:
         """
         Finds the first slot in the inventory containing an ItemStack with the given ItemType.
-        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot. If no matching ItemStack is found, an empty dict is returned.
+
+        Args:
+            type: The ItemType to look for.
+
+        Returns:
+            The slot index of the given ItemType or -1 if not found.
         """
         ...
     @property
     def first_empty(self) -> int:
         """
-        Returns the first empty Slot.
+        The first empty Slot found, or -1 if no empty slots.
         """
         ...
     @property
     def is_empty(self) -> bool:
         """
-        Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.
+        Whether this inventory is empty.
+
+        An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.
         """
         ...
     @typing.overload
     def remove(self, item: ItemStack) -> None:
         """
         Removes all stacks in the inventory matching the given stack.
-        This will only match a slot if both the type and the amount of the stack match
+
+        Note:
+            This will only match a slot if both the type and the amount of the stack match.
+
+        Args:
+            item: The ItemStack to match against.
         """
         ...
     @typing.overload
     def remove(self, type: str) -> None:
         """
         Removes all stacks in the inventory matching the given ItemType.
+
+        Args:
+            type: The ItemType to remove.
         """
         ...
     @typing.overload
     def clear(self, index: int) -> None:
         """
         Clears out a particular slot in the index.
+
+        Args:
+            index: The index to empty.
         """
         ...
     @typing.overload
@@ -585,12 +796,12 @@ class Inventory:
         ...
     def __len__(self) -> int:
         """
-        Returns the size of the inventory
+        Returns the size of the inventory.
         """
         ...
     def __getitem__(self, index: int) -> ItemStack | None:
         """
-        Returns the ItemStack found in the slot at the given index
+        Returns the ItemStack found in the slot at the given index.
         """
         ...
     def __setitem__(self, index: int, item: ItemStack | None) -> None:
@@ -618,7 +829,7 @@ class PlayerInventory(Inventory):
     @property
     def helmet(self) -> ItemStack | None:
         """
-        Gets or sets the ItemStack in the helmet slot
+        The ItemStack in the helmet slot.
         """
         ...
     @helmet.setter
@@ -626,7 +837,7 @@ class PlayerInventory(Inventory):
     @property
     def chestplate(self) -> ItemStack | None:
         """
-        Gets or sets the ItemStack in the chestplate slot
+        The ItemStack in the chestplate slot.
         """
         ...
     @chestplate.setter
@@ -634,7 +845,7 @@ class PlayerInventory(Inventory):
     @property
     def leggings(self) -> ItemStack | None:
         """
-        Gets or sets the ItemStack in the leg slot
+        The ItemStack in the leg slot.
         """
         ...
     @leggings.setter
@@ -642,7 +853,7 @@ class PlayerInventory(Inventory):
     @property
     def boots(self) -> ItemStack | None:
         """
-        Gets or sets the ItemStack in the boots slot
+        The ItemStack in the boots slot.
         """
         ...
     @boots.setter
@@ -650,7 +861,7 @@ class PlayerInventory(Inventory):
     @property
     def item_in_main_hand(self) -> ItemStack | None:
         """
-        Gets or sets the item the player is currently holding in their main hand.
+        The item the player is currently holding in their main hand.
         """
         ...
     @item_in_main_hand.setter
@@ -658,7 +869,7 @@ class PlayerInventory(Inventory):
     @property
     def item_in_off_hand(self) -> ItemStack | None:
         """
-        Gets or sets the item the player is currently holding in their off hand.
+        The item the player is currently holding in their off hand.
         """
         ...
     @item_in_off_hand.setter
@@ -666,7 +877,7 @@ class PlayerInventory(Inventory):
     @property
     def held_item_slot(self) -> int:
         """
-        Gets or sets the slot number of the currently held item
+        The slot number of the currently held item.
         """
         ...
     @held_item_slot.setter

@@ -21,7 +21,7 @@ _CLASS_RE = re.compile(r"^(?P<indent> *)class (?P<name>\w+)(?:\([^)]*\))?\s*:")
 # between two identifier-like halves.
 _IDENTIFIER_CONST_RE = re.compile(
     r"^(?P<indent> +)(?P<name>\w+)\s*=\s*"
-    r"(?:(?:endstone\.)?Identifier\((?P<wrapped>[^)]*)\)|(?P<bare>[\w.]+:[\w.]+))\s*$"
+    r"(?:(?:endstone\.)?Identifier\((?P<wrapped>[^)]*)\)|(?P<bare>[\w.]+(?::[\w.]+)+))\s*$"
 )
 
 
@@ -49,10 +49,7 @@ def _retype_identifier_constants(text: str) -> str:
             owner = next((name for w, name in reversed(stack) if w < indent), None)
             if owner:
                 key = (const.group("wrapped") or const.group("bare")).strip().strip("'\"")
-                out.append(
-                    f'{const.group("indent")}{const.group("name")}: '
-                    f'Identifier[{owner}] = "{key}"\n'
-                )
+                out.append(f'{const.group("indent")}{const.group("name")}: Identifier[{owner}] = "{key}"\n')
                 continue
         out.append(line)
     return "".join(out)

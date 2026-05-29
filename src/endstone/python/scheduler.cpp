@@ -20,25 +20,64 @@ namespace endstone::python {
 
 void init_scheduler(py::module &m)
 {
-    py::class_<Task, std::shared_ptr<Task>>(m, "Task", "Represents a task being executed by the scheduler")
-        .def_property_readonly("task_id", &Task::getTaskId, "Returns the task id.")
+    py::class_<Task, std::shared_ptr<Task>>(m, "Task", "Represents a task being executed by the scheduler.")
+        .def_property_readonly("task_id", &Task::getTaskId, "The task id number.")
         .def_property_readonly("owner", &Task::getOwner, py::return_value_policy::reference,
-                               "Returns the Plugin that owns the task.")
-        .def_property_readonly("is_sync", &Task::isSync, "Returns true if the task is run by server thread.")
-        .def_property_readonly("is_cancelled", &Task::isCancelled, "Returns true if the task has been cancelled.")
+                               "The Plugin that owns this task.")
+        .def_property_readonly("is_sync", &Task::isSync, "True if the task is run by the server thread.")
+        .def_property_readonly("is_cancelled", &Task::isCancelled, "True if this task has been cancelled.")
         .def("cancel", &Task::cancel, "Attempts to cancel this task.");
 
-    py::class_<Scheduler>(m, "Scheduler", "Represents a scheduler that executes various tasks")
+    py::class_<Scheduler>(m, "Scheduler", "Represents a scheduler that executes various tasks.")
         .def("run_task", &Scheduler::runTaskTimer, py::arg("plugin"), py::arg("task"), py::arg("delay") = 0,
-             py::arg("period") = 0, "Returns a task that will be executed synchronously",
-             py::return_value_policy::reference)
-        .def("cancel_task", &Scheduler::cancelTask, py::arg("id"), "Removes task from scheduler.")
-        .def("cancel_tasks", &Scheduler::cancelTasks, py::arg("plugin"),
-             "Removes all tasks associated with a particular plugin from the scheduler.")
-        .def("is_running", &Scheduler::isRunning, py::arg("id"), "Check if the task currently running.")
-        .def("is_queued", &Scheduler::isQueued, py::arg("id"), "Check if the task queued to be run later.")
-        .def("get_pending_tasks", &Scheduler::getPendingTasks, "Returns a vector of all pending tasks.",
-             py::return_value_policy::reference_internal);
+             py::arg("period") = 0, py::return_value_policy::reference, R"doc(
+    Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the
+    specified number of server ticks.
+
+    Args:
+        plugin: The reference to the plugin scheduling the task.
+        task: The task to be run.
+        delay: The ticks to wait before running the task.
+        period: The ticks to wait between runs.
+
+    Returns:
+        A Task that contains the id number (None if task is empty).
+)doc")
+        .def("cancel_task", &Scheduler::cancelTask, py::arg("id"), R"doc(
+    Removes task from scheduler.
+
+    Args:
+        id: Id number of task to be removed.
+)doc")
+        .def("cancel_tasks", &Scheduler::cancelTasks, py::arg("plugin"), R"doc(
+    Removes all tasks associated with a particular plugin from the scheduler.
+
+    Args:
+        plugin: Owner of tasks to be removed.
+)doc")
+        .def("is_running", &Scheduler::isRunning, py::arg("id"), R"doc(
+    Check if the task is currently running.
+
+    Args:
+        id: The id of the task to check.
+
+    Returns:
+        True if the task is currently running.
+)doc")
+        .def("is_queued", &Scheduler::isQueued, py::arg("id"), R"doc(
+    Check if the task is queued to be run later.
+
+    Args:
+        id: The id of the task to check.
+
+    Returns:
+        True if the task is queued to be run.
+)doc")
+        .def("get_pending_tasks", &Scheduler::getPendingTasks, py::return_value_policy::reference_internal, R"doc(
+    Returns a list of all pending tasks.
+
+    The ordering of the tasks is NOT related to their order of execution.
+)doc");
 }
 
 }  // namespace endstone::python

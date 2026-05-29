@@ -10,7 +10,12 @@ from endstone.inventory import ItemStack
 from endstone.level import Dimension, Level, Location
 from endstone.util import Vector
 
-__all__ = ["Actor", "ActorType", "Item", "Mob"]
+__all__ = [
+    "Actor",
+    "ActorType",
+    "Item",
+    "Mob",
+]
 
 class Actor(CommandSender):
     """
@@ -19,117 +24,149 @@ class Actor(CommandSender):
     @property
     def type(self) -> ActorType:
         """
-        Gets the type of the actor.
+        The type of the actor.
         """
         ...
     @property
     def runtime_id(self) -> int:
         """
-        Returns the runtime id for this actor.
+        The runtime id for this actor.
         """
         ...
     @property
     def location(self) -> Location:
         """
-        Gets the actor's current position.
+        A new copy of Location containing the position of this actor.
         """
         ...
     @property
     def velocity(self) -> Vector:
         """
-        Gets this actor's current velocity.
+        The current traveling velocity of this actor.
         """
         ...
     @property
     def is_on_ground(self) -> bool:
         """
-        Returns true if the actor is supported by a block, i.e. on ground.
+        True if the actor is supported by a block, i.e. on ground.
         """
         ...
     @property
     def is_in_water(self) -> bool:
         """
-        Returns true if the actor is in water.
+        True if the actor is in water.
         """
         ...
     @property
     def is_in_lava(self) -> bool:
         """
-        Returns true if the actor is in lava.
+        True if the actor is in lava.
         """
         ...
     @property
     def level(self) -> Level:
         """
-        Gets the current Level this actor resides in.
+        The current Level this actor resides in.
         """
         ...
     @property
     def dimension(self) -> Dimension:
         """
-        Gets the current Dimension this actor resides in.
+        The current Dimension this actor resides in.
         """
         ...
     def set_rotation(self, yaw: float, pitch: float) -> None:
         """
         Sets the actor's rotation.
+
+        Note that if the actor is affected by AI, it may override this rotation.
+
+        Args:
+            yaw: Rotation around the up axis (Y axis).
+            pitch: Rotation around the right axis (X axis).
         """
         ...
     @typing.overload
     def teleport(self, location: Location) -> bool:
         """
         Teleports this actor to the given location.
+
+        Args:
+            location: New location to teleport this actor to.
+
+        Returns:
+            True if the teleport was successful.
         """
         ...
     @typing.overload
     def teleport(self, target: Actor) -> bool:
         """
         Teleports this actor to the target Actor.
+
+        Args:
+            target: Actor to teleport this actor to.
+
+        Returns:
+            True if the teleport was successful.
         """
         ...
     @property
     def id(self) -> int:
         """
-        Returns a unique id for this actor.
+        A unique id for this actor.
         """
         ...
     def remove(self) -> None:
         """
         Remove this actor from the level.
+
+        If you are trying to remove a Player, use Player.kick instead.
         """
         ...
     @property
     def is_valid(self) -> bool:
         """
-        Returns false if the entity has died, been despawned for some other reason, or has not been added to the level.
+        False if the entity has died, been despawned for some other reason, or has not been added to the level.
         """
         ...
     @property
     def is_dead(self) -> bool:
         """
-        Returns true if this actor has been marked for removal.
+        True if this actor has been marked for removal.
         """
         ...
     @property
     def scoreboard_tags(self) -> list[str]:
         """
-        Returns a list of scoreboard tags for this actor.
+        A list of scoreboard tags for this actor.
         """
         ...
     def add_scoreboard_tag(self, tag: str) -> bool:
         """
         Adds a tag to this actor.
+
+        Args:
+            tag: The tag to add.
+
+        Returns:
+            True if the tag was successfully added, False if the tag already exists.
         """
         ...
     def remove_scoreboard_tag(self, tag: str) -> bool:
         """
         Removes a given tag from this actor.
+
+        Args:
+            tag: The tag to remove.
+
+        Returns:
+            True if the tag was successfully removed, False if the tag does not exist.
         """
         ...
     @property
     def is_name_tag_visible(self) -> bool:
         """
-        Gets or sets if the actor's name tag is visible or not.
+        Whether the actor's name tag is currently visible.
         """
         ...
     @is_name_tag_visible.setter
@@ -137,7 +174,7 @@ class Actor(CommandSender):
     @property
     def is_name_tag_always_visible(self) -> bool:
         """
-        Gets or sets if the actor's name tag is always visible or not.
+        Whether the actor's name tag is always visible.
         """
         ...
     @is_name_tag_always_visible.setter
@@ -145,7 +182,7 @@ class Actor(CommandSender):
     @property
     def name_tag(self) -> str:
         """
-        Gets or sets the current name tag of the actor.
+        The current name tag of the actor.
         """
         ...
     @name_tag.setter
@@ -153,7 +190,7 @@ class Actor(CommandSender):
     @property
     def score_tag(self) -> str:
         """
-        Gets or sets the current score tag of the actor.
+        The current score tag of the actor.
         """
         ...
     @score_tag.setter
@@ -166,13 +203,13 @@ class Mob(Actor):
     @property
     def is_gliding(self) -> bool:
         """
-        Checks to see if an actor is gliding, such as using an Elytra.
+        True if this actor is gliding, such as using an Elytra.
         """
         ...
     @property
     def health(self) -> int:
         """
-        Gets or sets the entity's health from 0 to its max possible value, where 0 is dead.
+        The entity's health from 0 to its max possible value, where 0 is dead.
         """
         ...
     @health.setter
@@ -180,7 +217,11 @@ class Mob(Actor):
     @property
     def max_health(self) -> int:
         """
-        Gets or sets the maximum health this entity has.
+        The maximum health this entity has.
+
+        If the health of the entity is above the value provided, it will be set to that value. An entity
+        with a health bar (e.g. Player, EnderDragon, Wither, etc.) will have their bar scaled
+        accordingly.
         """
         ...
     @max_health.setter
@@ -329,13 +370,13 @@ class ActorType:
     @property
     def id(self) -> Identifier[ActorType]:
         """
-        Return the identifier of this actor type.
+        The identifier of this actor type.
         """
         ...
     @property
     def translation_key(self) -> str:
         """
-        Get the translation key, suitable for use in a translation component.
+        The translation key, suitable for use in a translation component.
         """
         ...
     @staticmethod
@@ -352,12 +393,12 @@ class ActorType:
 
 class Item(Actor):
     """
-    Represents a base actor in the level.
+    Represents a dropped item that can be picked up by players.
     """
     @property
     def item_stack(self) -> ItemStack:
         """
-        Gets or sets the item stack associated with this item drop.
+        The item stack associated with this item drop.
         """
         ...
     @item_stack.setter
@@ -365,7 +406,7 @@ class Item(Actor):
     @property
     def pickup_delay(self) -> int:
         """
-        Gets or sets the delay before this Item is available to be picked up by players.
+        The delay before this Item is available to be picked up by players.
         """
         ...
     @pickup_delay.setter
@@ -373,7 +414,7 @@ class Item(Actor):
     @property
     def is_unlimited_lifetime(self) -> bool:
         """
-        Gets or sets if this Item lives forever
+        Whether this Item lives forever.
         """
         ...
     @is_unlimited_lifetime.setter
@@ -381,7 +422,7 @@ class Item(Actor):
     @property
     def thrower(self) -> int | None:
         """
-        Gets or sets the thrower of this item.
+        The thrower of this item (the entity which dropped the item), as a unique id.
         """
         ...
     @thrower.setter

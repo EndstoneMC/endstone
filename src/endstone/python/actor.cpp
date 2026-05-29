@@ -291,10 +291,11 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
             "ZOMBIE_VILLAGER", [](const py::object &) { return ActorType::ZombieVillager; })
         .def_property_readonly_static(
             "ZOMBIE_VILLAGER_V2", [](const py::object &) { return ActorType::ZombieVillagerV2; })
-        .def_property_readonly("id", &ActorType::getId, "Return the identifier of this actor type.")
+        .def_property_readonly("id", &ActorType::getId, "The identifier of this actor type.")
         .def_property_readonly("translation_key", &ActorType::getTranslationKey,
-                               "Get the translation key, suitable for use in a translation component.")
-        .def_static("get", &ActorType::get, py::arg("name"), "Attempts to get the ActorType with the given name.",
+                               "The translation key, suitable for use in a translation component.")
+        .def_static("get", &ActorType::get, py::arg("name"),
+                    "Attempts to get the ActorType with the given name.",
                     py::return_value_policy::reference)
         .def("__str__", [](const ActorType &self) { return std::string(self.getId()); })
         .def("__repr__", [](const ActorType &self) { return fmt::format("ActorType({})", self.getId()); })
@@ -303,58 +304,106 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def(py::self != py::self);
 
     actor.def_property_readonly("type", &Actor::getType, py::return_value_policy::reference,
-                                "Gets the type of the actor.")
-        .def_property_readonly("runtime_id", &Actor::getRuntimeId, "Returns the runtime id for this actor.")
-        .def_property_readonly("location", &Actor::getLocation, "Gets the actor's current position.")
-        .def_property_readonly("velocity", &Actor::getVelocity, "Gets this actor's current velocity.")
+                                "The type of the actor.")
+        .def_property_readonly("runtime_id", &Actor::getRuntimeId, "The runtime id for this actor.")
+        .def_property_readonly("location", &Actor::getLocation,
+                               "A new copy of Location containing the position of this actor.")
+        .def_property_readonly("velocity", &Actor::getVelocity, "The current traveling velocity of this actor.")
         .def_property_readonly("is_on_ground", &Actor::isOnGround,
-                               "Returns true if the actor is supported by a block, i.e. on ground.")
-        .def_property_readonly("is_in_water", &Actor::isInWater, "Returns true if the actor is in water.")
-        .def_property_readonly("is_in_lava", &Actor::isInLava, "Returns true if the actor is in lava.")
-        .def_property_readonly("level", &Actor::getLevel, "Gets the current Level this actor resides in.",
+                               "True if the actor is supported by a block, i.e. on ground.")
+        .def_property_readonly("is_in_water", &Actor::isInWater, "True if the actor is in water.")
+        .def_property_readonly("is_in_lava", &Actor::isInLava, "True if the actor is in lava.")
+        .def_property_readonly("level", &Actor::getLevel, "The current Level this actor resides in.",
                                py::return_value_policy::reference)
-        .def_property_readonly("dimension", &Actor::getDimension, "Gets the current Dimension this actor resides in.",
+        .def_property_readonly("dimension", &Actor::getDimension, "The current Dimension this actor resides in.",
                                py::return_value_policy::reference)
-        .def("set_rotation", &Actor::setRotation, "Sets the actor's rotation.", py::arg("yaw"), py::arg("pitch"))
-        .def("teleport", py::overload_cast<const Location &>(&Actor::teleport),
-             "Teleports this actor to the given location.", py::arg("location"))
-        .def("teleport", py::overload_cast<const Actor &>(&Actor::teleport),
-             "Teleports this actor to the target Actor.", py::arg("target"))
-        .def_property_readonly("id", &Actor::getId, "Returns a unique id for this actor.")
-        .def("remove", &Actor::remove, "Remove this actor from the level.")
+        .def("set_rotation", &Actor::setRotation, py::arg("yaw"), py::arg("pitch"), R"doc(
+    Sets the actor's rotation.
+
+    Note that if the actor is affected by AI, it may override this rotation.
+
+    Args:
+        yaw: Rotation around the up axis (Y axis).
+        pitch: Rotation around the right axis (X axis).
+)doc")
+        .def("teleport", py::overload_cast<const Location &>(&Actor::teleport), py::arg("location"), R"doc(
+    Teleports this actor to the given location.
+
+    Args:
+        location: New location to teleport this actor to.
+
+    Returns:
+        True if the teleport was successful.
+)doc")
+        .def("teleport", py::overload_cast<const Actor &>(&Actor::teleport), py::arg("target"), R"doc(
+    Teleports this actor to the target Actor.
+
+    Args:
+        target: Actor to teleport this actor to.
+
+    Returns:
+        True if the teleport was successful.
+)doc")
+        .def_property_readonly("id", &Actor::getId, "A unique id for this actor.")
+        .def("remove", &Actor::remove, R"doc(
+    Remove this actor from the level.
+
+    If you are trying to remove a Player, use Player.kick instead.
+)doc")
         .def_property_readonly("is_valid", &Actor::isValid,
-                               "Returns false if the entity has died, been despawned for some other reason, or has not "
+                               "False if the entity has died, been despawned for some other reason, or has not "
                                "been added to the level.")
-        .def_property_readonly("is_dead", &Actor::isDead, "Returns true if this actor has been marked for removal.")
+        .def_property_readonly("is_dead", &Actor::isDead, "True if this actor has been marked for removal.")
         .def_property_readonly("scoreboard_tags", &Actor::getScoreboardTags,
-                               "Returns a list of scoreboard tags for this actor.")
-        .def("add_scoreboard_tag", &Actor::addScoreboardTag, "Adds a tag to this actor.", py::arg("tag"))
-        .def("remove_scoreboard_tag", &Actor::removeScoreboardTag, "Removes a given tag from this actor.",
-             py::arg("tag"))
+                               "A list of scoreboard tags for this actor.")
+        .def("add_scoreboard_tag", &Actor::addScoreboardTag, py::arg("tag"), R"doc(
+    Adds a tag to this actor.
+
+    Args:
+        tag: The tag to add.
+
+    Returns:
+        True if the tag was successfully added, False if the tag already exists.
+)doc")
+        .def("remove_scoreboard_tag", &Actor::removeScoreboardTag, py::arg("tag"), R"doc(
+    Removes a given tag from this actor.
+
+    Args:
+        tag: The tag to remove.
+
+    Returns:
+        True if the tag was successfully removed, False if the tag does not exist.
+)doc")
         .def_property("is_name_tag_visible", &Actor::isNameTagVisible, &Actor::setNameTagVisible,
-                      "Gets or sets if the actor's name tag is visible or not.")
+                      "Whether the actor's name tag is currently visible.")
         .def_property("is_name_tag_always_visible", &Actor::isNameTagAlwaysVisible, &Actor::setNameTagAlwaysVisible,
-                      "Gets or sets if the actor's name tag is always visible or not.")
+                      "Whether the actor's name tag is always visible.")
         .def_property("name_tag", &Actor::getNameTag, &Actor::setNameTag,
-                      "Gets or sets the current name tag of the actor.")
+                      "The current name tag of the actor.")
         .def_property("score_tag", &Actor::getScoreTag, &Actor::setScoreTag,
-                      "Gets or sets the current score tag of the actor.");
+                      "The current score tag of the actor.");
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
-                              "Checks to see if an actor is gliding, such as using an Elytra.")
+                              "True if this actor is gliding, such as using an Elytra.")
         .def_property("health", &Mob::getHealth, &Mob::setHealth,
-                      "Gets or sets the entity's health from 0 to its max possible value, where 0 is dead.")
-        .def_property("max_health", &Mob::getMaxHealth, &Mob::setMaxHealth,
-                      "Gets or sets the maximum health this entity has.");
+                      "The entity's health from 0 to its max possible value, where 0 is dead.")
+        .def_property("max_health", &Mob::getMaxHealth, &Mob::setMaxHealth, R"doc(
+    The maximum health this entity has.
 
-    py_class<Item>(m, "Item", "Represents a base actor in the level.")
+    If the health of the entity is above the value provided, it will be set to that value. An entity
+    with a health bar (e.g. Player, EnderDragon, Wither, etc.) will have their bar scaled
+    accordingly.
+)doc");
+
+    py_class<Item>(m, "Item", "Represents a dropped item that can be picked up by players.")
         .def_property("item_stack", &Item::getItemStack, &Item::setItemStack,
-                      "Gets or sets the item stack associated with this item drop.")
+                      "The item stack associated with this item drop.")
         .def_property("pickup_delay", &Item::getPickupDelay, &Item::setPickupDelay,
-                      "Gets or sets the delay before this Item is available to be picked up by players.")
+                      "The delay before this Item is available to be picked up by players.")
         .def_property("is_unlimited_lifetime", &Item::isUnlimitedLifetime, &Item::setUnlimitedLifetime,
-                      "Gets or sets if this Item lives forever")
-        .def_property("thrower", &Item::getThrower, &Item::setThrower, "Gets or sets the thrower of this item.");
+                      "Whether this Item lives forever.")
+        .def_property("thrower", &Item::getThrower, &Item::setThrower,
+                      "The thrower of this item (the entity which dropped the item), as a unique id.");
 }
 
 }  // namespace endstone::python

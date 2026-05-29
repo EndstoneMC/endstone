@@ -95,14 +95,17 @@ static void bind_dump(PyClass &cls)
             }
             return py::bytes(result);
         },
-        py::arg("name") = py::none(), py::arg("byte_order") = "little", py::arg("network") = false,
-        "Serialize this tag to binary NBT format.\n\n"
-        "Args:\n"
-        "    name: Optional root tag name. If None, an empty name is used.\n"
-        "    byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).\n"
-        "    network: If True, use Bedrock network varint encoding for lengths and Int/Long values.\n\n"
-        "Returns:\n"
-        "    bytes: The binary NBT data.");
+        py::arg("name") = py::none(), py::arg("byte_order") = "little", py::arg("network") = false, R"doc(
+    Serialize this tag to binary NBT format.
+
+    Args:
+        name: Optional root tag name. If None, an empty name is used.
+        byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+        network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+
+    Returns:
+        bytes: The binary NBT data.
+)doc");
 }
 
 template <typename T, typename... Args>
@@ -112,7 +115,7 @@ auto bind_value_tag(py::module &m, const char *name, Args &&...args)
     auto cls = py::class_<T, nbt::TagBase>(m, name, std::forward<Args>(args)...)
                    .def(py::init<>())
                    .def(py::init<const value_type &>(), py::arg("value"))
-                   .def_property_readonly("value", &T::value)
+                   .def_property_readonly("value", &T::value, "The underlying value of this tag.")
                    .def(py::self == py::self)
                    .def(py::self != py::self)
                    .def(py::self == value_type())
@@ -239,7 +242,7 @@ static void bind_array_tag(py::module_ &m, const char *name, Args &&...args)
 
 static void bind_list_tag(py::module &m)
 {
-    auto cls = py::class_<ListTag, nbt::TagBase>(m, "ListTag")
+    auto cls = py::class_<ListTag, nbt::TagBase>(m, "ListTag", "An NBT list tag of homogeneously-typed tags.")
                    .def(py::init<>())
                    .def(py::init([](py::iterable iter) {
                             ListTag lt;
@@ -326,7 +329,7 @@ static void bind_list_tag(py::module &m)
 static void bind_compound_tag(py::module &m)
 {
     auto cls =
-        py::class_<CompoundTag, nbt::TagBase>(m, "CompoundTag")
+        py::class_<CompoundTag, nbt::TagBase>(m, "CompoundTag", "A named NBT compound tag mapping string keys to tags.")
             .def(py::init<>())
             .def(py::init([](py::dict d) {
                      CompoundTag c;
@@ -413,16 +416,17 @@ static void bind_compound_tag(py::module &m)
 
 void init_nbt(py::module_ &m)
 {
-    (void)py::class_<nbt::TagBase>(m, "Tag");
-    bind_value_tag<ByteTag>(m, "ByteTag");
-    bind_value_tag<ShortTag>(m, "ShortTag");
-    bind_value_tag<IntTag>(m, "IntTag");
-    bind_value_tag<LongTag>(m, "LongTag");
-    bind_value_tag<FloatTag>(m, "FloatTag");
-    bind_value_tag<DoubleTag>(m, "DoubleTag");
-    bind_array_tag<ByteArrayTag>(m, "ByteArrayTag", py::buffer_protocol());
-    bind_value_tag<StringTag>(m, "StringTag");
-    bind_array_tag<IntArrayTag>(m, "IntArrayTag");
+    (void)py::class_<nbt::TagBase>(m, "Tag", "Base class for all NBT tag variants.");
+    bind_value_tag<ByteTag>(m, "ByteTag", "An NBT tag holding an unsigned 8-bit integer value.");
+    bind_value_tag<ShortTag>(m, "ShortTag", "An NBT tag holding a signed 16-bit integer value.");
+    bind_value_tag<IntTag>(m, "IntTag", "An NBT tag holding a signed 32-bit integer value.");
+    bind_value_tag<LongTag>(m, "LongTag", "An NBT tag holding a signed 64-bit integer value.");
+    bind_value_tag<FloatTag>(m, "FloatTag", "An NBT tag holding a 32-bit floating-point value.");
+    bind_value_tag<DoubleTag>(m, "DoubleTag", "An NBT tag holding a 64-bit floating-point value.");
+    bind_array_tag<ByteArrayTag>(m, "ByteArrayTag", "An NBT tag holding an array of unsigned 8-bit integers.",
+                                 py::buffer_protocol());
+    bind_value_tag<StringTag>(m, "StringTag", "An NBT tag holding a string value.");
+    bind_array_tag<IntArrayTag>(m, "IntArrayTag", "An NBT tag holding an array of signed 32-bit integers.");
     bind_list_tag(m);
     bind_compound_tag(m);
 
@@ -436,13 +440,16 @@ void init_nbt(py::module_ &m)
             auto tag = nbt::load(sv, name, endian, network);
             return std::make_tuple(std::move(tag), std::move(name));
         },
-        py::arg("data"), py::arg("byte_order") = "little", py::arg("network") = false,
-        "Deserialize binary NBT data into a tag.\n\n"
-        "Args:\n"
-        "    data: Binary NBT data (bytes).\n"
-        "    byte_order: Byte order of the binary data, either ``'little'`` (Bedrock) or ``'big'`` (Java).\n"
-        "    network: If True, expect Bedrock network varint encoding.\n\n"
-        "Returns:\n"
-        "    tuple[Tag, str]: A tuple of (tag, name) where name is the root tag name.");
+        py::arg("data"), py::arg("byte_order") = "little", py::arg("network") = false, R"doc(
+    Deserialize binary NBT data into a tag.
+
+    Args:
+        data: Binary NBT data (bytes).
+        byte_order: Byte order of the binary data, either ``'little'`` (Bedrock) or ``'big'`` (Java).
+        network: If True, expect Bedrock network varint encoding.
+
+    Returns:
+        tuple[Tag, str]: A tuple of (tag, name) where name is the root tag name.
+)doc");
 }
 }  // namespace endstone::python
