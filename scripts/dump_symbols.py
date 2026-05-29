@@ -601,9 +601,7 @@ def write_symbols_header(
     lines.append("")
     lines.append("namespace endstone::runtime {")
     lines.append("")
-    lines.append(
-        f"static constexpr std::array<std::pair<std::string_view, std::size_t>, {non_zero}> symbols = {{{{"
-    )
+    lines.append(f"static constexpr std::array<std::pair<std::string_view, std::size_t>, {non_zero}> symbols = {{{{")
     for scope, scoped_sigs in sorted(group_by_scope.items(), key=lambda x: x[0] or ""):
         if scope is not None:
             lines.append(f"    // {scope}")

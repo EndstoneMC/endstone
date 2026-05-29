@@ -69,7 +69,6 @@ def main() -> None:
     module.exports.append("Registry")
     module.set_member("Identifier", package.get_member("Identifier"))
     module.exports.append("Identifier")
-    module.exports = sorted(set(module.exports))
     module["Server.get_registry"] = package["Server.get_registry"]
     module.set_member("__version__", package.get_member("__version__"))
     module.imports.setdefault("__version__", package.imports.get("__version__"))
@@ -100,9 +99,6 @@ def main() -> None:
         text = text.replace("collections.abc.Sequence", "list")
         text = text.replace("typing.SupportsFloat", "float")
         text = text.replace("typing.SupportsInt", "int")
-        # Pybind11ImportFix injects a bogus `from . import endstone` in submodules
-        # alongside the correct `import endstone`. Strip the relative-import form.
-        text = text.replace("from . import endstone\n", "")
         if relative_path == Path(".") / "__init__.pyi":
             text = text.replace("from endstone._version import __version__", "from ._version import __version__")
         else:
