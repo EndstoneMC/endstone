@@ -8,11 +8,27 @@ on:
       - synchronize
       - reopened
       - ready_for_review
+    paths: &code-paths
+      - 'src/**'
+      - 'include/**'
+      - 'endstone/**'
+      - 'tests/**'
+      - 'recipes/**'
+      - 'scripts/**'
+      - 'CMakeLists.txt'
+      - 'conanfile.py'
+      - 'pyproject.toml'
+      - 'codecov.yml'
+      - '.conan2/**'
+      - '.conanrc'
+      - '.github/workflows/ci.yml'
+      - '.github/actions/**'
   push:
     branches:
       - main
       - develop
       - v*
+    paths: *code-paths
 
 permissions: read-all
 

@@ -2,9 +2,8 @@ name: Docker
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - develop
+  schedule:
+    - cron: '0 0 * * *'  # 00:00 UTC nightly
 
 permissions: read-all
 
@@ -27,10 +26,22 @@ jobs:
           fetch-depth: 0
           submodules: true
 
+      - name: Check for new commits
+        id: check
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] \
+             || [ "$(git rev-list --count --since='24 hours ago' HEAD)" -gt 0 ]; then
+            echo "build=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No new commits in the last 24h; skipping nightly build."
+          fi
+
       - name: Set up Docker Buildx
+        if: steps.check.outputs.build == 'true'
         uses: docker/setup-buildx-action@v4
 
       - name: Login to GHCR
+        if: steps.check.outputs.build == 'true'
         uses: docker/login-action@v4
         with:
           registry: ghcr.io
@@ -38,12 +49,13 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and Push
+        if: steps.check.outputs.build == 'true'
         uses: docker/build-push-action@v7
         with:
           context: .
           file: Dockerfile
           platforms: linux/amd64
-          push: ${{ github.event_name == 'push' }}
+          push: true
           tags: ghcr.io/endstonemc/endstone:nightly
           cache-from: type=gha
           cache-to: type=gha,mode=min

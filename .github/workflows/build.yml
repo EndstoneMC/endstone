@@ -17,9 +17,46 @@ concurrency:
   cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
 
 jobs:
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    outputs:
+      code: ${{ steps.filter.outputs.code }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
+      - name: Filter changed paths
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            code:
+              - 'src/**'
+              - 'include/**'
+              - 'endstone/**'
+              - 'tests/**'
+              - 'recipes/**'
+              - 'scripts/**'
+              - 'CMakeLists.txt'
+              - 'conanfile.py'
+              - 'pyproject.toml'
+              - '.conan2/**'
+              - '.conanrc'
+              - '.github/bundle/**'
+              - '.github/docker/**'
+              - 'docker/**'
+              - '.github/workflows/build.yml'
+              - '.github/actions/**'
+
   wheels:
     name: Wheel (${{ matrix.python-tag }}-${{ matrix.platform }})
     runs-on: ${{ matrix.os }}
+    needs: changes
+    if: >-
+      startsWith(github.ref, 'refs/tags/')
+      || github.event_name == 'workflow_dispatch'
+      || needs.changes.outputs.code == 'true'
     strategy:
       fail-fast: false
       matrix:
