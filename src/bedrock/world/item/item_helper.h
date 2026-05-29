@@ -59,5 +59,5 @@ enum class ItemAcquisitionMethod : int {
 enum class ItemCommandVisibility : std::uint8_t {
     Visible = 0,
     Hidden = 1,
-    DeferToLegacyBlock = 2,
+    DeferToBlockType = 2,
 };

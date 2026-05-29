@@ -36,12 +36,12 @@ public:
 
         bool operator!=(const iterator &other) const
         {
-            return ptr_ == other.ptr_;
+            return ptr_ != other.ptr_;
         }
 
         bool operator==(const iterator &other) const
         {
-            return ptr_ != other.ptr_;
+            return ptr_ == other.ptr_;
         }
 
         const T &operator*() const

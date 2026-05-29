@@ -48,12 +48,12 @@ public:
 
     [[nodiscard]] const NetworkItemStackDescriptor &getToItemDescriptor() const
     {
-        return from_item_descriptor_;
+        return to_item_descriptor_;
     }
 
     [[nodiscard]] const NetworkItemStackDescriptor &getFromItemDescriptor() const
     {
-        return to_item_descriptor_;
+        return from_item_descriptor_;
     }
 
 private:

@@ -26,7 +26,7 @@ enum class AbilitiesLayer : std::uint16_t {
     Commands = 3,
     Editor = 4,
     LoadingScreen = 5,
-    LayerCount = 6
+    Count = 6
 };
 
 class LayeredAbilities {
@@ -34,7 +34,7 @@ public:
     [[nodiscard]] Ability &getAbility(AbilitiesIndex index)
     {
         Ability *ability;
-        for (auto i = static_cast<int>(AbilitiesLayer::LayerCount) - 1; i >= 0; i--) {
+        for (auto i = static_cast<int>(AbilitiesLayer::Count) - 1; i >= 0; i--) {
             auto &abilities = layers_[i];
             ability = &abilities.getAbility(index);
             if (ability->getType() != Ability::Type::Unset) {
@@ -47,7 +47,7 @@ public:
     [[nodiscard]] const Ability &getAbility(AbilitiesIndex index) const
     {
         const Ability *ability;
-        for (auto i = static_cast<int>(AbilitiesLayer::LayerCount) - 1; i >= 0; i--) {
+        for (auto i = static_cast<int>(AbilitiesLayer::Count) - 1; i >= 0; i--) {
             const auto &abilities = layers_[i];
             ability = &abilities.getAbility(index);
             if (ability->getType() != Ability::Type::Unset) {
@@ -104,19 +104,19 @@ public:
 
     void forEachLayer(const std::function<void(AbilitiesLayer, Abilities &)> &callback)
     {
-        for (auto i = static_cast<int>(AbilitiesLayer::LayerCount) - 1; i >= 0; i--) {
+        for (auto i = static_cast<int>(AbilitiesLayer::Count) - 1; i >= 0; i--) {
             callback(static_cast<AbilitiesLayer>(i), layers_.at(i));
         }
     }
 
     void forEachLayer(const std::function<void(AbilitiesLayer, const Abilities &)> &callback) const
     {
-        for (auto i = static_cast<int>(AbilitiesLayer::LayerCount) - 1; i >= 0; i--) {
+        for (auto i = static_cast<int>(AbilitiesLayer::Count) - 1; i >= 0; i--) {
             callback(static_cast<AbilitiesLayer>(i), layers_.at(i));
         }
     }
 
 private:
     PermissionsHandler permissions_;
-    std::array<Abilities, static_cast<int>(AbilitiesLayer::LayerCount)> layers_;
+    std::array<Abilities, static_cast<int>(AbilitiesLayer::Count)> layers_;
 };

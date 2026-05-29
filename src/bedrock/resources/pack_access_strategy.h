@@ -15,19 +15,23 @@
 #pragma once
 
 #include <memory>
-#include <unordered_set>
+#include <shared_mutex>
 
 #include <gsl/gsl>
 
-#include "bedrock/core/file/path.h"
+#include "bedrock/core/threading/lockbox.h"
 #include "bedrock/resources/preload_cache.h"
+
+class PackAssetSet;
 
 class PackAccessStrategy {
 public:
     virtual ~PackAccessStrategy() = 0;
 
-private:
-    bool asset_set_populated_;
-    std::unordered_set<Core::Path> asset_set_;
+protected:
     gsl::not_null<std::shared_ptr<Bedrock::Resources::PreloadCache>> preloaded_;
+
+private:
+    Bedrock::Threading::SharedLockbox<gsl::not_null<std::unique_ptr<PackAssetSet>>, std::shared_timed_mutex>
+        asset_set_;
 };

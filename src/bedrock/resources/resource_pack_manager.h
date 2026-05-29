@@ -38,6 +38,7 @@ private:
     bool initializing_;                                                            // +240
     bool pending_restack_;                                                         // +241
     bool use_global_pack_stack_;                                                   // +242
+    bool gameplay_resources_loaded_;                                               // +243
     Bedrock::Threading::SharedMutex full_stack_access_;                            // +248
     Bedrock::NotNullNonOwnerPtr<const IContentTierManager> content_tier_manager_;  // +256
     SemVersion full_stack_min_engine_version_DEPRECATED_DONOTUSE_;                 // +272 NOLINT

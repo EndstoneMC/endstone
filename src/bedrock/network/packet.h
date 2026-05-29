@@ -253,13 +253,13 @@ enum class MinecraftPacketIds : int {
     PlayerUpdateEntityOverridesPacket = 325,
     PlayerLocation = 326,
     ClientboundControlSchemeSetPacket = 327,
-    ServerScriptDebugDrawerPacket = 328,
+    PrimitiveShapesPacket = 328,
     ServerboundPackSettingChangePacket = 329,
     ClientboundDataStore = 330,
     GraphicsParameterOverridePacket = 331,
     ServerboundDataStore = 332,
     ClientboundDataDrivenUIShowScreen = 333,
-    ClientboundDataDrivenUICloseAllScreens = 334,
+    ClientboundDataDrivenUICloseScreen = 334,
     ClientboundDataDrivenUIReload = 335,
     ClientboundTextureShiftPacket = 336,
     VoxelShapesPacket = 337,
@@ -271,7 +271,9 @@ enum class MinecraftPacketIds : int {
     ServerboundDataDrivenScreenClosed = 343,
     SyncWorldClocks = 344,
     ClientboundAttributeLayerSyncPacket = 345,
-    EndId = 346,
+    ServerStoreInfo = 346,
+    ServerPresenceInfo = 347,
+    EndId = 348,
 };
 
 class NetEventCallback;

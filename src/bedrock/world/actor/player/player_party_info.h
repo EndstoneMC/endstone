@@ -14,8 +14,9 @@
 
 #pragma once
 
-struct FallDistanceComponent {
-    float value;
-    bool ignores_fall_damage;
-    bool spawn_particles_when_hitting_ground;
+#include <string>
+
+struct PlayerPartyInfo {
+    std::string party_id;
+    bool is_leader;
 };

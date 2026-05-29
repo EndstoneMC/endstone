@@ -102,6 +102,8 @@ enum class BlockProperty : std::uint64_t {
     SculkReplaceable_DEPRECATED = 0x400000000000,
     Climbable = 0x800000000000,
     CanHaltWhenClimbing = 0x1000000000000,
+    CanDamperVibrations = 0x2000000000000,
+    CanOccludeVibrations = 0x4000000000000,
     _entt_enum_as_bitmask
 };
 

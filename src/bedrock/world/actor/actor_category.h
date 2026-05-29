@@ -21,7 +21,7 @@ enum class ActorCategory : std::uint32_t {
     Monster = 1 << 2,
     Humanoid = 1 << 3,
     Animal = 1 << 4,
-    Water = 1 << 5,
+    WaterSpawning = 1 << 5,
     Pathable = 1 << 6,
     Tamable = 1 << 7,
     Ridable = 1 << 8,
@@ -38,7 +38,7 @@ enum class ActorCategory : std::uint32_t {
     BoatRideable = Boat | Ridable,
     MinecartRidable = Minecart | Ridable,
     HumanoidMonster = Humanoid | Monster,
-    WaterAnimal = Water | Animal,
+    WaterAnimal = WaterSpawning | Animal,
     TamableAnimal = Tamable | Animal,
     UndeadMob = Undead | Monster,  // #blameMojang - misleading name, it's Undead | Monster, not Undead | Mob
     ZombieMonster = Zombie | Monster,

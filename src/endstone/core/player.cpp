@@ -879,7 +879,7 @@ void EndstonePlayer::initFromConnectionRequest(
             case BuildPlatform::GearVR_Deprecated:
                 device_os_ = "Gear VR";
                 break;
-            case BuildPlatform::UWP:
+            case BuildPlatform::UWP_Deprecated:
             case BuildPlatform::Win32:
                 device_os_ = "Windows";
                 break;

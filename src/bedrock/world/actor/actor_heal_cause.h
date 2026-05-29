@@ -20,5 +20,6 @@ enum class ActorHealCause : std::uint8_t {
     Regeneration = 1,
     Heal = 2,
     SelfHeal = 3,
+    TotemOfUndying = 4,
 };
 ActorHealCause getActorHealCause(AttributeBuffType buffType);

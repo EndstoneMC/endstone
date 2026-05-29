@@ -40,7 +40,7 @@ struct ServerPlayerMovementComponent {
         return policy_;
     }
 
-    std::bitset<3UL> server_has_movement_authority;
+    std::bitset<4UL> server_has_movement_authority;
     bool server_has_inventory_authority;
     std::optional<float> accept_client_pos_if_within_distance_sq;
     uint64_t player_tick_credits;

@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
 #include "bedrock/core/file/path.h"
 #include "bedrock/core/utility/enable_non_owner_references.h"
 
@@ -28,5 +29,6 @@ public:
 private:
     void _readConfigFile(const Core::Path &);
     std::vector<std::pair<std::string, std::string>> pack_cdn_urls_;
+    const Core::Path path_;
 };
-static_assert(sizeof(CDNConfig) == 48);
+BEDROCK_STATIC_ASSERT_SIZE(CDNConfig, 80, 72);

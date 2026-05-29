@@ -14,10 +14,8 @@
 
 #pragma once
 
-#include <cstdint>
-
 namespace DBHelpers {
-enum class Category : std::uint8_t {
+enum class Category : unsigned int {
     Uncategorized = 0,
     Actor = 1,
     Biome = 2,

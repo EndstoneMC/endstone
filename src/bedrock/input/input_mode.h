@@ -21,6 +21,6 @@ enum class InputMode : unsigned int {
     Mouse = 1,
     Touch = 2,
     GamePad = 3,
-    MotionController = 4,
+    MotionController_Deprecated = 4,
     Count = 5,
 };

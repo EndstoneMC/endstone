@@ -174,6 +174,7 @@ enum class ActorType : int {
     ZombieNautilus = 150 | WaterAnimal | Undead,
     Parched = 151 | SkeletonMonster,
     CamelHusk = 152 | Undead,
+    SulfurCube = 153 | Monster,
 };
 
 constexpr ActorType operator&(const ActorType lhs, const ActorType rhs)

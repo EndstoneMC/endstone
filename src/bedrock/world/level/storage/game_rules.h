@@ -15,9 +15,11 @@
 #pragma once
 
 #include <functional>
+#include <variant>
 
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/utility/pub_sub/publisher.h"
+#include "bedrock/network/packet/cerealize/schema/dynamic/dynamic_value.h"
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/util/new_type.h"
 
@@ -30,30 +32,7 @@ public:
         Float = 3,
     };
 
-    union Value {
-        bool bool_val;
-        int int_val;
-        float float_val;
-        Value() = default;
-        Value(const bool val) : bool_val(val) {}
-        Value(const int val) : int_val(val) {}
-        Value(const float val) : float_val(val) {}
-        Value &operator=(const bool val)
-        {
-            bool_val = val;
-            return *this;
-        }
-        Value &operator=(const int val)
-        {
-            int_val = val;
-            return *this;
-        }
-        Value &operator=(const float val)
-        {
-            float_val = val;
-            return *this;
-        }
-    };
+    using Value = std::variant<cereal::NullType, bool, int, float>;
 
     using TagDataNotFoundCallback = std::function<void(GameRule &, const BaseGameVersion &)>;
     using ValidateValueCallback = std::function<bool(const Value &, class ValidationError *)>;
@@ -61,7 +40,7 @@ public:
     GameRule();
     [[nodiscard]] bool getBool() const
     {
-        return value_.bool_val;
+        return std::get<bool>(value_);
     }
 
 private:
@@ -77,7 +56,7 @@ private:
     TagDataNotFoundCallback tag_not_found_callback_;
     ValidateValueCallback validate_value_callback_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(GameRule, 176, 144);
+BEDROCK_STATIC_ASSERT_SIZE(GameRule, 184, 152);
 
 struct GameRuleId : NewType<int> {
     GameRuleId() = default;

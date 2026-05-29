@@ -17,7 +17,7 @@
 class DenyList {
     enum class Duration : int {
         Session = 0,
-        OneTime = 1,
+        OneTimeForInvalidPlayer = 1,
         Invalid = 2,
     };
 
@@ -25,7 +25,6 @@ public:
     struct Entry {
         mce::UUID uuid;
         std::optional<std::string> xuid;
-        std::string blocked_message;
         Duration duration;
     };
 

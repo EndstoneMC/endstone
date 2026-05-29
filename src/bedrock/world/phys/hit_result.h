@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/entity/weak_entity_ref.h"
+#include "bedrock/world/phys/aabb.h"
 
 enum class HitResultType : int {
     TILE = 0,
@@ -39,6 +40,7 @@ private:
     BlockPos block_{BlockPos::ZERO};
     Vec3 pos_{Vec3::ZERO};
     WeakEntityRef entity_{nullptr};
+    AABB entity_aabb_{0, 0, 0, 0, 0, 0};
     bool is_hit_liquid_{false};
     FacingID liquid_facing_{0};
     BlockPos liquid_{BlockPos::ZERO};

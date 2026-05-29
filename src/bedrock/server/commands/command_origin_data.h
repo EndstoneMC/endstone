@@ -33,7 +33,7 @@ enum class CommandOriginType : char {
     EntityServer = 11,
     Precompiled = 12,
     GameDirectorEntityServer = 13,
-    Script = 14,
+    Scripting = 14,
     ExecuteContext = 15,
 };
 

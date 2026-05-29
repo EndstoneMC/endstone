@@ -115,8 +115,8 @@ private:
     PermissionsFile *permissions_file_;
     DenyList server_deny_list_;
     NetworkServerConfig network_server_config_;
-    bool has_displayed_pack_errors_;
     std::shared_ptr<ScriptPackSettingsCache> pack_settings_cache_;
+    bool has_displayed_pack_errors_;
     NetworkIdentifier my_id_;
     int max_chunk_radius_;
     MinecraftCommands &minecraft_commands_;

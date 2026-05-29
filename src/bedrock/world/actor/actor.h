@@ -385,7 +385,6 @@ private:
 
 public:
     bool added;
-    int send_rate_counter;
     ActorDefinitionGroup *definitions;
     std::unique_ptr<ActorDefinitionDescriptor> current_description;
     std::shared_ptr<RopeSystem> leash_rope_system;

@@ -24,7 +24,7 @@ enum class SoftEnumUpdateType : uint8_t {
 
 class UpdateSoftEnumPacket : public Packet {
 public:
+    SoftEnumUpdateType type;
     std::string enum_name;
     std::vector<std::string> values;
-    SoftEnumUpdateType type;
 };

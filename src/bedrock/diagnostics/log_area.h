@@ -32,7 +32,7 @@ enum LogRule : unsigned int {
 };
 }  // namespace BedrockLog
 
-enum class LogAreaID {
+enum class LogAreaID : unsigned int {
     All,
     Platform,
     Entity,

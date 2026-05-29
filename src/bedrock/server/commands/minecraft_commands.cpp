@@ -32,7 +32,7 @@ CommandOutputType MinecraftCommands::getOutputType(const CommandOrigin &origin)
     case CommandOriginType::Test:
     case CommandOriginType::AutomationPlayer:
     case CommandOriginType::ClientAutomation:
-    case CommandOriginType::Script: {
+    case CommandOriginType::Scripting: {
         return CommandOutputType::DataSet;
     }
     case CommandOriginType::DedicatedServer: {

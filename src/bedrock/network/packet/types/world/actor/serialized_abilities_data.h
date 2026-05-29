@@ -49,7 +49,7 @@ private:
     PlayerPermissionLevel player_permissions_;    // +9
     std::vector<SerializedLayer> layers_;         // +16
 
-    inline static const std::array<SerializedAbilitiesLayer, static_cast<int>(AbilitiesLayer::LayerCount)>
+    inline static const std::array<SerializedAbilitiesLayer, static_cast<int>(AbilitiesLayer::Count)>
         // NOLINTNEXTLINE(*-identifier-naming)
         ABILITIES_LAYER_MAP = {SerializedAbilitiesLayer::CustomCache, SerializedAbilitiesLayer::Base,
                                SerializedAbilitiesLayer::Spectator,   SerializedAbilitiesLayer::Commands,

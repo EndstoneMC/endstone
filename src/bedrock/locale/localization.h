@@ -15,6 +15,7 @@
 #pragma once
 
 #include <map>
+#include <memory>
 #include <string>
 
 #include "bedrock/platform/threading/mutex_details.h"
@@ -31,5 +32,6 @@ private:
     std::string code_;
     Map strings_;
     Map case_sensitive_cache_;
-    Bedrock::Threading::SharedMutex case_sensitive_cache_mutex_;
+    std::unique_ptr<Bedrock::Threading::SharedMutex> case_sensitive_cache_mutex_;
+    bool may_contain_identifier_;
 };
