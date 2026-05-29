@@ -27,7 +27,7 @@
 #include <string>
 #include <utility>
 
-#include <fmt/format.h>
+#include <format>
 
 #include "endstone/message.h"
 #include "endstone/permissions/permissible.h"
@@ -41,10 +41,10 @@ public:
     virtual void sendMessage(const Message &message) const = 0;
 
     template <typename... Args>
-    void sendMessage(const fmt::format_string<Args...> format, Args &&...args) const
+    void sendMessage(const std::format_string<Args...> format, Args &&...args) const
     {
         try {
-            sendMessage(fmt::format(format, std::forward<Args>(args)...));
+            sendMessage(std::format(format, std::forward<Args>(args)...));
         }
         catch (std::exception &e) {
             sendErrorMessage(e.what());
@@ -54,9 +54,9 @@ public:
     virtual void sendErrorMessage(const Message &message) const = 0;
 
     template <typename... Args>
-    void sendErrorMessage(const fmt::format_string<Args...> format, Args &&...args) const
+    void sendErrorMessage(const std::format_string<Args...> format, Args &&...args) const
     {
-        sendErrorMessage(fmt::format(format, std::forward<Args>(args)...));
+        sendErrorMessage(std::format(format, std::forward<Args>(args)...));
     }
 
     [[nodiscard]] virtual Server &getServer() const = 0;

@@ -67,7 +67,7 @@
         <label>cstring</label>
       </node>
       <node id="13">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="14">
         <label>nonstd/expected.hpp</label>

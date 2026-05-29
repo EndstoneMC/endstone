@@ -34,7 +34,7 @@
         <label>cstddef</label>
       </node>
       <node id="7">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="3">
         <label>memory</label>

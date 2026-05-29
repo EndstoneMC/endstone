@@ -12,7 +12,7 @@
 
 * `#include <string>`
 * `#include <utility>`
-* `#include <fmt/format.h>`
+* `#include <format>`
 * `#include "endstone/message.h"`
 * `#include "endstone/permissions/permissible.h"`
 

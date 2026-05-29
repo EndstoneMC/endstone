@@ -25,6 +25,11 @@
 
 
 
+## Classes
+
+| Type | Name |
+| ---: | :--- |
+| struct | [**JoinView**](structendstone_1_1detail_1_1JoinView.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**It**](classendstone_1_1Identifier.md), [**typename**](classendstone_1_1Identifier.md) [**Sentinel**](classendstone_1_1Identifier.md)&gt;<br>_A lightweight, formattable view over a range that renders its elements separated by a delimiter._  |
 
 
 
@@ -59,6 +64,9 @@
 |  [**void**](classendstone_1_1Identifier.md) \* | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(\*)(Args...) fp) <br>_Cast a function pointer to void pointer._  |
 |  [**void**](classendstone_1_1Identifier.md) \* | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(Class::\*)(Args...) fp) <br>_Cast a member function pointer to void pointer._  |
 |  [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () <br>_Gets the current_ [_**Server**_](classendstone_1_1Server.md) _singleton._ |
+|  [**JoinView**](structendstone_1_1detail_1_1JoinView.md)&lt; [**It**](classendstone_1_1Identifier.md), [**Sentinel**](classendstone_1_1Identifier.md) &gt; | [**join**](#function-join) ([**It**](classendstone_1_1Identifier.md) begin, [**Sentinel**](classendstone_1_1Identifier.md) end, std::string\_view sep) <br> |
+|  [**auto**](classendstone_1_1Identifier.md) | [**join**](#function-join) ([**const**](classendstone_1_1Identifier.md) [**Range**](classendstone_1_1Identifier.md) & range, std::string\_view sep) <br> |
+|  std::string | [**quoted**](#function-quoted) (std::string\_view value) <br>_Quotes and escapes a string the way the_ `{:?}` _debug presentation does._ |
 
 
 
@@ -238,6 +246,61 @@ inline Server & endstone::detail::getServer ()
 
 
 
+
+
+        
+
+<hr>
+
+
+
+### function join 
+
+```C++
+template<typename It, typename Sentinel>
+JoinView < It , Sentinel > endstone::detail::join (
+    It begin,
+    Sentinel end,
+    std::string_view sep
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function join 
+
+```C++
+template<typename Range>
+auto endstone::detail::join (
+    const  Range & range,
+    std::string_view sep
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function quoted 
+
+_Quotes and escapes a string the way the_ `{:?}` _debug presentation does._
+```C++
+inline std::string endstone::detail::quoted (
+    std::string_view value
+) 
+```
+
+
+
+`std::format` only gained the `?` (debug) specifier in C++23, so this provides equivalent behaviour under C++20. 
 
 
         

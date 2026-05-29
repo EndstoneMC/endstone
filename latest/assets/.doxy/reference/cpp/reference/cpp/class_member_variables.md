@@ -63,6 +63,7 @@
 * **block\_face\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **BroadcastChannelAdmin** ([**endstone::Server**](classendstone_1_1Server.md))
 * **BroadcastChannelUser** ([**endstone::Server**](classendstone_1_1Server.md))
+* **begin** ([**endstone::detail::JoinView**](structendstone_1_1detail_1_1JoinView.md))
 
 
 ## c
@@ -163,6 +164,7 @@
 * **elements\_** ([**endstone::ListTag**](classendstone_1_1ListTag.md))
 * **emote\_id\_** ([**endstone::PlayerEmoteEvent**](classendstone_1_1PlayerEmoteEvent.md))
 * **enabled\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
+* **end** ([**endstone::detail::JoinView**](structendstone_1_1detail_1_1JoinView.md))
 
 
 ## f
@@ -494,6 +496,7 @@
 * **Swiftness** ([**endstone::PotionType**](classendstone_1_1PotionType.md))
 * **server\_guid\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **step\_** ([**endstone::Slider**](classendstone_1_1Slider.md))
+* **sep** ([**endstone::detail::JoinView**](structendstone_1_1detail_1_1JoinView.md))
 * **storage\_** ([**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
 * **soft\_depend** ([**endstone::detail::PluginDescriptionBuilder**](structendstone_1_1detail_1_1PluginDescriptionBuilder.md))
 

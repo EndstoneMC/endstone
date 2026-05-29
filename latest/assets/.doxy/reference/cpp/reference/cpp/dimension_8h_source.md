@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include <format>
 #include <memory>
 #include <string>
 #include <vector>
@@ -88,11 +89,11 @@ inline float Location::distanceSquared(const Location &other) const
 }  // namespace endstone
 
 template <>
-struct fmt::formatter<endstone::Dimension> : formatter<string_view> {
+struct std::formatter<endstone::Dimension> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::Dimension &self, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "Dimension(id={})", self.getId());
+        return std::format_to(ctx.out(), "Dimension(id={})", self.getId());
     }
 };
 ```

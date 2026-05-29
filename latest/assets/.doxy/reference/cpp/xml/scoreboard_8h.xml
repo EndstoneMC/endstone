@@ -103,7 +103,7 @@
         <label>cstdint</label>
       </node>
       <node id="16">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="2">
         <label>memory</label>

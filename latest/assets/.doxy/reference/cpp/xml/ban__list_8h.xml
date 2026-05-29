@@ -68,7 +68,7 @@
         <label>cstddef</label>
       </node>
       <node id="13">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="10">
         <label>memory</label>

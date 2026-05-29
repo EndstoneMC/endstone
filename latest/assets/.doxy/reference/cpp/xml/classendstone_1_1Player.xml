@@ -1808,11 +1808,11 @@
       <member refid="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>removeScoreboardTag</name></member>
       <member refid="classendstone_1_1Player_1a95e6751b89ba7f4572997bf0d315c82a" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>resetTitle</name></member>
       <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
-      <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1ab61032bb4ef9bb659a21c69616e2567c" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1Player_1acfa7b2445c386d21b05ee441c614cf9e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendForm</name></member>
       <member refid="classendstone_1_1Player_1a4724e064b700532ef4ea3155cab9910d" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendMap</name></member>
       <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendMessage</name></member>
-      <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a5b5362b6c8db65d78676386397ad9f6c" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Player_1a68b095f25d166158a3e03d1840194896" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendPacket</name></member>
       <member refid="classendstone_1_1Player_1a57b35a3e8772c746590f3331bd41fab2" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendPopup</name></member>
       <member refid="classendstone_1_1Player_1ace6a01c98934469d0d7a1d3c61f444be" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendTip</name></member>

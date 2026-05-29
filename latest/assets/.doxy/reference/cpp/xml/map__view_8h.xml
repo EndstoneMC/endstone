@@ -112,7 +112,7 @@
         <label>cstring</label>
       </node>
       <node id="12">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="3">
         <label>memory</label>

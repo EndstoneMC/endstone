@@ -13,7 +13,7 @@
 * `#include <algorithm>`
 * `#include <cmath>`
 * `#include <concepts>`
-* `#include <fmt/format.h>`
+* `#include <format>`
 
 
 
@@ -39,7 +39,7 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Vector**](classendstone_1_1Vector.md) <br>_Represents a 3-dimensional vector._  |
-| struct | [**formatter&lt; endstone::Vector &gt;**](structfmt_1_1formatter_3_01endstone_1_1Vector_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::Vector &gt;**](structstd_1_1formatter_3_01endstone_1_1Vector_01_4.md) &lt;&gt;<br> |
 
 
 

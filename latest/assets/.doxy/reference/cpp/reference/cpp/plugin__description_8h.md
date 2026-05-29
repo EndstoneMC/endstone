@@ -14,7 +14,7 @@
 * `#include <string>`
 * `#include <utility>`
 * `#include <vector>`
-* `#include <fmt/format.h>`
+* `#include <format>`
 * `#include "endstone/command/command.h"`
 * `#include "endstone/detail.h"`
 * `#include "endstone/permissions/permission.h"`

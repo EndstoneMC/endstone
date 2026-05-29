@@ -657,9 +657,9 @@
       <member refid="classendstone_1_1CommandSenderWrapper_1a281c847b554cf4a5c6f6e22052bd3293" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>removeAttachment</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a41ad90af25dd6fb6255edf5ff2c099b5" prot="private" virt="non-virtual"><scope>endstone::CommandSenderWrapper</scope><name>sender_</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1aeb7bc0ed994ee4aacd4834f5c97c5bdf" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>sendErrorMessage</name></member>
-      <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual" ambiguityscope="endstone::CommandSender::"><scope>endstone::CommandSenderWrapper</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1ab61032bb4ef9bb659a21c69616e2567c" prot="public" virt="non-virtual" ambiguityscope="endstone::CommandSender::"><scope>endstone::CommandSenderWrapper</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSenderWrapper_1a46ff186c06fed5c771888c5d9167852c" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>sendMessage</name></member>
-      <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual" ambiguityscope="endstone::CommandSender::"><scope>endstone::CommandSenderWrapper</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a5b5362b6c8db65d78676386397ad9f6c" prot="public" virt="non-virtual" ambiguityscope="endstone::CommandSender::"><scope>endstone::CommandSenderWrapper</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::CommandSenderWrapper</scope><name>~Object</name></member>
     </listofallmembers>
   </compounddef>

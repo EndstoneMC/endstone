@@ -2585,6 +2585,17 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+    <a href="#classes" class="md-nav__link">
+      <span class="md-ellipsis">
+        Classes
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-attributes" class="md-nav__link">
       <span class="md-ellipsis">
         Public Attributes
@@ -2687,6 +2698,45 @@ For latest updates join the chat on
 </li>
                 
             
+                
+                    <li class="md-nav__item">
+    <a href="#function-join" class="md-nav__link">
+      <span class="md-ellipsis">
+        function join
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-join_1" class="md-nav__link">
+      <span class="md-ellipsis">
+        function join
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-quoted" class="md-nav__link">
+      <span class="md-ellipsis">
+        function quoted
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
         </ul>
     </nav>
     
@@ -2727,6 +2777,21 @@ For latest updates join the chat on
 
 <h1 id="namespace-endstonedetail">Namespace endstone::detail<a class="headerlink" href="#namespace-endstonedetail" title="Permanent link">&para;</a></h1>
 <p><a href="../namespaces/"><strong>Namespace List</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>detail</strong></a></p>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structendstone_1_1detail_1_1JoinView/"><strong>JoinView</strong></a> &lt;<a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> <a href="../classendstone_1_1Identifier/"><strong>It</strong></a>, <a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> <a href="../classendstone_1_1Identifier/"><strong>Sentinel</strong></a>&gt;<br><em>A lightweight, formattable view over a range that renders its elements separated by a delimiter.</em></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-attributes">Public Attributes<a class="headerlink" href="#public-attributes" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2762,6 +2827,18 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Server/"><strong>Server</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getserver"><strong>getServer</strong></a> () <br><em>Gets the current</em> <a href="../classendstone_1_1Server/"><em><strong>Server</strong></em></a> <em>singleton.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../structendstone_1_1detail_1_1JoinView/"><strong>JoinView</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>It</strong></a>, <a href="../classendstone_1_1Identifier/"><strong>Sentinel</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-join"><strong>join</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>It</strong></a> begin, <a href="../classendstone_1_1Identifier/"><strong>Sentinel</strong></a> end, std::string_view sep) <br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
+<td style="text-align: left;"><a href="#function-join"><strong>join</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>Range</strong></a> &amp; range, std::string_view sep) <br></td>
+</tr>
+<tr>
+<td style="text-align: right;">std::string</td>
+<td style="text-align: left;"><a href="#function-quoted"><strong>quoted</strong></a> (std::string_view value) <br><em>Quotes and escapes a string the way the</em> <code>{:?}</code> <em>debug presentation does.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2832,6 +2909,34 @@ For latest updates join the chat on
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1Server/"><strong>Server</strong></a> instance being run </p>
+<hr>
+
+<h3 id="function-join">function join<a class="headerlink" href="#function-join" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">It</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">Sentinel</span><span class="o">&gt;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">JoinView</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">It</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">Sentinel</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">join</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">It</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">Sentinel</span><span class="w"> </span><span class="n">end</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">sep</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="function-join_1">function join<a class="headerlink" href="#function-join_1" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Range</span><span class="o">&gt;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">join</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Range</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">range</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">sep</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="function-quoted">function quoted<a class="headerlink" href="#function-quoted" title="Permanent link">&para;</a></h3>
+<p><em>Quotes and escapes a string the way the</em> <code>{:?}</code> <em>debug presentation does.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">quoted</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><code>std::format</code> only gained the <code>?</code> (debug) specifier in C++23, so this provides equivalent behaviour under C++20. </p>
 <hr>
 
 <hr />

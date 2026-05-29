@@ -59,7 +59,7 @@
         </childnode>
       </node>
       <node id="11">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="2">
         <label>memory</label>

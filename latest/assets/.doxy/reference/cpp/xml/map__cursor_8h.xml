@@ -34,7 +34,7 @@
         <label>cstdint</label>
       </node>
       <node id="7">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="6">
         <label>stdexcept</label>

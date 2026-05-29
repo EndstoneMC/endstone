@@ -140,7 +140,7 @@
         <label>algorithm</label>
       </node>
       <node id="11">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="2">
         <label>map</label>

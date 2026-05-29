@@ -10,6 +10,7 @@
 
 
 
+* `#include <format>`
 * `#include <string>`
 * `#include <string_view>`
 * `#include "endstone/actor/actor.h"`
@@ -31,7 +32,6 @@
 | Type | Name |
 | ---: | :--- |
 | namespace | [**endstone**](namespaceendstone.md) <br>_Represents a button with text and an optional icon._  |
-| namespace | [**fmt**](namespacefmt.md) <br> |
 
 
 ## Classes
@@ -39,7 +39,7 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**DamageSource**](classendstone_1_1DamageSource.md) <br>_Represents a source of damage._  |
-| struct | [**formatter&lt; endstone::DamageSource &gt;**](structfmt_1_1formatter_3_01endstone_1_1DamageSource_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::DamageSource &gt;**](structstd_1_1formatter_3_01endstone_1_1DamageSource_01_4.md) &lt;&gt;<br> |
 
 
 

@@ -138,7 +138,7 @@
         <label>algorithm</label>
       </node>
       <node id="16">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="3">
         <label>functional</label>

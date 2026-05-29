@@ -6,7 +6,7 @@
     <includes local="no">string</includes>
     <includes local="no">utility</includes>
     <includes local="no">vector</includes>
-    <includes local="no">fmt/format.h</includes>
+    <includes local="no">format</includes>
     <includes refid="command_8h" local="yes">endstone/command/command.h</includes>
     <includes refid="detail_8h" local="yes">endstone/detail.h</includes>
     <includes refid="permission_8h" local="yes">endstone/permissions/permission.h</includes>
@@ -229,7 +229,7 @@
         <label>dlfcn.h</label>
       </node>
       <node id="6">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="31">
         <label>functional</label>
@@ -360,7 +360,7 @@
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;format&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/command/command.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/detail.h&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -387,7 +387,7 @@
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>name_<sp/>=<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">name</ref>);</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::replace(name_.begin(),<sp/>name_.end(),<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;_&apos;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>version_<sp/>=<sp/>std::move(version);</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>full_name_<sp/>=<sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;{}<sp/>v{}&quot;</highlight><highlight class="normal">,<sp/>name_,<sp/>version_);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>full_name_<sp/>=<sp/>std::format(</highlight><highlight class="stringliteral">&quot;{}<sp/>v{}&quot;</highlight><highlight class="normal">,<sp/>name_,<sp/>version_);</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>api_version_<sp/>=<sp/>ENDSTONE_API_VERSION;</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>

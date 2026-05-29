@@ -28,7 +28,7 @@
 #include <string>
 #include <string_view>
 
-#include <fmt/format.h>
+#include <format>
 
 namespace endstone {
 template <typename T>
@@ -74,7 +74,7 @@ public:
         if (key_.empty()) {
             return "";
         }
-        return fmt::format("{}:{}", namespace_, key_);
+        return std::format("{}:{}", namespace_, key_);
     }
 
     static constexpr Identifier minecraft(const std::string_view key) noexcept { return {Minecraft, key}; }
@@ -96,11 +96,11 @@ struct std::hash<endstone::Identifier<T>> {
 };
 
 template <typename T>
-struct fmt::formatter<endstone::Identifier<T>> : formatter<string_view> {
+struct std::formatter<endstone::Identifier<T>> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::Identifier<T> &id, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}:{}", id.getNamespace(), id.getKey());
+        return std::format_to(ctx.out(), "{}:{}", id.getNamespace(), id.getKey());
     }
 };
 ```

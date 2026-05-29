@@ -24,6 +24,8 @@
 
 #pragma once
 
+#include <format>
+
 #include "endstone/actor/actor.h"
 
 namespace endstone {
@@ -44,11 +46,11 @@ public:
 }  // namespace endstone
 
 template <>
-struct fmt::formatter<endstone::Chunk> : formatter<string_view> {
+struct std::formatter<endstone::Chunk> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::Chunk &self, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "Chunk(x={}, z={})", self.getX(), self.getZ());
+        return std::format_to(ctx.out(), "Chunk(x={}, z={})", self.getX(), self.getZ());
     }
 };
 ```

@@ -26,7 +26,7 @@
         </childnode>
       </node>
       <node id="6">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="4">
         <label>functional</label>

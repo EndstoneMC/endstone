@@ -2776,7 +2776,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-senderrormessage-22"><strong>sendErrorMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> fmt::format_string&lt; Args... &gt; format, <a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) const<br></td>
+<td style="text-align: left;"><a href="#function-senderrormessage-22"><strong>sendErrorMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::format_string&lt; Args... &gt; format, <a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
@@ -2784,7 +2784,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-sendmessage-22"><strong>sendMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> fmt::format_string&lt; Args... &gt; format, <a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) const<br></td>
+<td style="text-align: left;"><a href="#function-sendmessage-22"><strong>sendMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::format_string&lt; Args... &gt; format, <a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) const<br></td>
 </tr>
 </tbody>
 </table>
@@ -2908,7 +2908,7 @@ For latest updates join the chat on
 <h3 id="function-senderrormessage-22">function sendErrorMessage [2/2]<a class="headerlink" href="#function-senderrormessage-22" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSender</span><span class="o">::</span><span class="n">sendErrorMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">fmt</span><span class="o">::</span><span class="n">format_string</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Args</span><span class="p">...</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">format</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format_string</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Args</span><span class="p">...</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">format</span><span class="p">,</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
@@ -2929,7 +2929,7 @@ For latest updates join the chat on
 <h3 id="function-sendmessage-22">function sendMessage [2/2]<a class="headerlink" href="#function-sendmessage-22" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">CommandSender</span><span class="o">::</span><span class="n">sendMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">fmt</span><span class="o">::</span><span class="n">format_string</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Args</span><span class="p">...</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">format</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format_string</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Args</span><span class="p">...</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">format</span><span class="p">,</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>

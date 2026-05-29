@@ -35,7 +35,7 @@
         </childnode>
       </node>
       <node id="7">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="8">
         <label>nonstd/expected.hpp</label>

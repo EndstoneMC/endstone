@@ -125,7 +125,7 @@
         <label>algorithm</label>
       </node>
       <node id="15">
-        <label>fmt/format.h</label>
+        <label>format</label>
       </node>
       <node id="19">
         <label>functional</label>

@@ -10,6 +10,7 @@
 
 
 
+* `#include <format>`
 * `#include <memory>`
 * `#include <string>`
 * `#include <vector>`
@@ -44,7 +45,7 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Dimension**](classendstone_1_1Dimension.md) <br>_Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._ |
-| struct | [**formatter&lt; endstone::Dimension &gt;**](structfmt_1_1formatter_3_01endstone_1_1Dimension_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::Dimension &gt;**](structstd_1_1formatter_3_01endstone_1_1Dimension_01_4.md) &lt;&gt;<br> |
 
 
 

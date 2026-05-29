@@ -10,6 +10,7 @@
 
 
 
+* `#include <format>`
 * `#include <memory>`
 * `#include <string>`
 * `#include "endstone/block/block_data.h"`
@@ -34,7 +35,6 @@
 | Type | Name |
 | ---: | :--- |
 | namespace | [**endstone**](namespaceendstone.md) <br>_Represents a button with text and an optional icon._  |
-| namespace | [**fmt**](namespacefmt.md) <br> |
 
 
 ## Classes
@@ -42,7 +42,7 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Block**](classendstone_1_1Block.md) <br>_Represents a block._  |
-| struct | [**formatter&lt; endstone::Block &gt;**](structfmt_1_1formatter_3_01endstone_1_1Block_01_4.md) &lt;&gt;<br> |
+| struct | [**formatter&lt; endstone::Block &gt;**](structstd_1_1formatter_3_01endstone_1_1Block_01_4.md) &lt;&gt;<br> |
 
 
 
