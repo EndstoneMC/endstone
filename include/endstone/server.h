@@ -30,6 +30,7 @@
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
 #include "endstone/command/command_sender.h"
+#include "endstone/identifier.h"
 #include "endstone/lang/language.h"
 #include "endstone/logger.h"
 #include "endstone/map/map_view.h"
@@ -40,6 +41,7 @@
 
 namespace endstone {
 
+class BlockType;
 class ConsoleCommandSender;
 class Enchantment;
 class ItemFactory;
@@ -365,7 +367,7 @@ public:
      * @param type the block type
      * @return new data instance
      */
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(std::string type) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(Identifier<BlockType> type) const = 0;
 
     /**
      * Creates a new BlockData instance for the specified block type, with all properties initialized to
@@ -375,7 +377,7 @@ public:
      * @param block_states block states, for example `{"old_leaf_type":"birch", "persistent_bit":true}`
      * @return new data instance
      */
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(std::string type,
+    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(Identifier<BlockType> type,
                                                                      BlockStates block_states) const = 0;
 
     /**

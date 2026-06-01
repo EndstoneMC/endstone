@@ -101,6 +101,12 @@ def main() -> None:
         text = text.replace("typing.SupportsInt", "int")
         if relative_path == Path(".") / "__init__.pyi":
             text = text.replace("from endstone._version import __version__", "from ._version import __version__")
+            # `Identifier` is defined in this very module, so the `endstone.Identifier`
+            # qualifier the bindings emit is a self-reference. Strip it to the bare name
+            # and drop the now-redundant `import endstone` self-import.
+            if "endstone.Identifier" in text:
+                text = text.replace("endstone.Identifier", "Identifier")
+                text = text.replace("import endstone\n", "")
         else:
             # Retype `NAME = Identifier(...)` class constants to `NAME: Identifier[<owner>]`
             # so the generic parameter survives. Tracks the enclosing class by indentation.

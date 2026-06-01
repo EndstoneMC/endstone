@@ -36,6 +36,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Update your volume mount accordingly (e.g. `-v ./data:/data`).
 - **BREAKING**: Standalone bundles now ship for both Windows (`endstone-<version>-windows-x86_64.zip`) and Linux (`endstone-<version>-linux-x86_64.zip`), and use [uv](https://docs.astral.sh/uv/) to provision Python on demand instead of shipping a Python interpreter. The included `start.cmd` / `start.sh` installs uv on first run if it isn't already on `PATH`, then launches the server via `uv run` against the bundled wheel. The old `bin/python/` directory is gone; the server folder (`./bedrock_server/`) is unchanged.
 - `str()` on `BlockType`, `Enchantment`, and `ItemType` now returns a plain `"namespace:key"` string instead of the underlying `Identifier` repr.
+- `Block.set_type`, `BlockState.type`, `Server.create_block_data`, and `Inventory.contains`/`contains_at_least`/`all`/`first`/`remove` now take an `Identifier` (e.g. `BlockType.AIR`, `ItemType.AIR`) instead of a plain string, matching `ItemStack.type` and `Dimension.spawn_actor`. Plain `"namespace:key"` strings are still accepted.
+- **BREAKING**: `Block.type`, `BlockState.type`, and `BlockData.type` now return a `BlockType` object instead of a string, matching `ItemStack.type`. The returned object still compares equal to its `"namespace:key"` string and stringifies to it, but is no longer a `str`.
 
 ### Removed
 

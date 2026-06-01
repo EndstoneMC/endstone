@@ -65,9 +65,10 @@ public:
     MOCK_METHOD(std::unique_ptr<endstone::BossBar>, createBossBar,
                 (std::string, endstone::BarColor, endstone::BarStyle, std::vector<endstone::BarFlag>),
                 (const, override));
-    MOCK_METHOD(std::unique_ptr<endstone::BlockData>, createBlockData, (std::string), (const, override));
-    MOCK_METHOD(std::unique_ptr<endstone::BlockData>, createBlockData, (std::string, endstone::BlockStates),
+    MOCK_METHOD(std::unique_ptr<endstone::BlockData>, createBlockData, (endstone::Identifier<endstone::BlockType>),
                 (const, override));
+    MOCK_METHOD(std::unique_ptr<endstone::BlockData>, createBlockData,
+                (endstone::Identifier<endstone::BlockType>, endstone::BlockStates), (const, override));
     MOCK_METHOD(endstone::PlayerBanList &, getBanList, (), (const, override));
     MOCK_METHOD(endstone::IpBanList &, getIpBanList, (), (const, override));
 };

@@ -30,9 +30,9 @@ class EndstoneBlockSnapshot : public Block {
 public:
     explicit EndstoneBlockSnapshot(std::unique_ptr<EndstoneBlockState> state);
 
-    [[nodiscard]] std::string getType() const override;
-    void setType(std::string type) override;
-    void setType(std::string type, bool apply_physics) override;
+    [[nodiscard]] const BlockType &getType() const override;
+    void setType(BlockTypeId type) override;
+    void setType(BlockTypeId type, bool apply_physics) override;
     [[nodiscard]] std::unique_ptr<BlockData> getData() const override;
     void setData(const BlockData &data) override;
     void setData(const BlockData &data, bool apply_physics) override;

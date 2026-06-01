@@ -25,6 +25,8 @@
 
 namespace endstone {
 
+class BlockType;
+
 using BlockStates = std::unordered_map<std::string, std::variant<bool, std::string, int>>;
 
 /**
@@ -39,7 +41,7 @@ public:
      *
      * @return the block type
      */
-    [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual const BlockType &getType() const = 0;
 
     /**
      * Get the translation key for this block.

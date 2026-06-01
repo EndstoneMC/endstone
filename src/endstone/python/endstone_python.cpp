@@ -530,8 +530,8 @@ void init_server(py::class_<Server> &server)
 )doc")
         .def(
             "create_block_data",
-            [](const Server &self, std::string type, const std::optional<BlockStates> &block_states) {
-                return self.createBlockData(std::move(type), block_states.value_or(BlockStates{}));
+            [](const Server &self, BlockTypeId type, const std::optional<BlockStates> &block_states) {
+                return self.createBlockData(type, block_states.value_or(BlockStates{}));
             },
             py::arg("type"), py::arg("block_states") = std::nullopt, R"doc(
     Creates a new BlockData instance for the specified block type, with all properties initialized to defaults,

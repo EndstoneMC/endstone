@@ -37,7 +37,7 @@ class ItemStack:
         """
         ...
     @type.setter
-    def type(self, arg1: str) -> None: ...
+    def type(self, arg1: Identifier[ItemType] | str) -> None: ...
     @property
     def amount(self) -> int:
         """
@@ -648,7 +648,7 @@ class Inventory:
         """
         ...
     @typing.overload
-    def contains(self, type: str) -> bool:
+    def contains(self, type: Identifier[ItemType] | str) -> bool:
         """
         Checks if the inventory contains any ItemStacks with the given ItemType.
 
@@ -674,7 +674,7 @@ class Inventory:
         """
         ...
     @typing.overload
-    def contains_at_least(self, type: str, amount: int) -> bool:
+    def contains_at_least(self, type: Identifier[ItemType] | str, amount: int) -> bool:
         """
         Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum
         amount specified.
@@ -706,7 +706,7 @@ class Inventory:
         """
         ...
     @typing.overload
-    def all(self, type: str) -> dict[int, ItemStack]:
+    def all(self, type: Identifier[ItemType] | str) -> dict[int, ItemStack]:
         """
         Finds all slots in the inventory containing any ItemStacks with the given ItemType.
 
@@ -733,7 +733,7 @@ class Inventory:
         """
         ...
     @typing.overload
-    def first(self, type: str) -> int:
+    def first(self, type: Identifier[ItemType] | str) -> int:
         """
         Finds the first slot in the inventory containing an ItemStack with the given ItemType.
 
@@ -771,7 +771,7 @@ class Inventory:
         """
         ...
     @typing.overload
-    def remove(self, type: str) -> None:
+    def remove(self, type: Identifier[ItemType] | str) -> None:
         """
         Removes all stacks in the inventory matching the given ItemType.
 
@@ -816,7 +816,7 @@ class Inventory:
         """
         ...
     @typing.overload
-    def __contains__(self, type: str) -> bool:
+    def __contains__(self, type: Identifier[ItemType] | str) -> bool:
         """
         Checks if the inventory contains any ItemStacks with the given ItemType.
         """

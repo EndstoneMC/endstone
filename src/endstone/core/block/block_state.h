@@ -26,8 +26,8 @@ public:
     explicit EndstoneBlockState(const EndstoneBlock &block);
     explicit EndstoneBlockState(Dimension &dimension, BlockPos block_pos, const ::Block &block);
     [[nodiscard]] std::unique_ptr<Block> getBlock() const override;
-    [[nodiscard]] std::string getType() const override;
-    void setType(std::string type) override;
+    [[nodiscard]] const BlockType &getType() const override;
+    void setType(BlockTypeId type) override;
     [[nodiscard]] std::unique_ptr<BlockData> getData() const override;
     void setData(const BlockData &data) override;
     [[nodiscard]] Dimension &getDimension() const override;

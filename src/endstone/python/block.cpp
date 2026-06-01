@@ -34,7 +34,8 @@ void init_block(py::module_ &m, py::class_<Block> &block)
     auto block_type = py::class_<BlockType>(m, "BlockType", "Represents a block type.");
 
     py::class_<BlockData>(m, "BlockData", "Represents the data related to a live block.")
-        .def_property_readonly("type", &BlockData::getType, "The block type represented by this block data.")
+        .def_property_readonly("type", &BlockData::getType, py::return_value_policy::reference,
+                               "The block type represented by this block data.")
         .def_property_readonly("translation_key", &BlockData::getTranslationKey,
                                "The translation key for this block.")
         .def_property_readonly("block_states", &BlockData::getBlockStates, R"doc(
@@ -83,7 +84,8 @@ void init_block(py::module_ &m, py::class_<Block> &block)
     another type entirely, causing your BlockState to become invalid.
 )doc")
         .def_property_readonly("block", &BlockState::getBlock, "The block represented by this block state.")
-        .def_property("type", &BlockState::getType, &BlockState::setType, "The type of this block state.")
+        .def_property("type", &BlockState::getType, &BlockState::setType, py::return_value_policy::reference,
+                      "The type of this block state.")
         .def_property("data", &BlockState::getData, &BlockState::setData, "The data for this block state.")
         .def_property_readonly("dimension", &BlockState::getDimension, py::return_value_policy::reference,
                                "The dimension which contains the block represented by this block state.")
@@ -113,9 +115,9 @@ void init_block(py::module_ &m, py::class_<Block> &block)
 )doc")
         .def("__str__", [](const BlockState &self) { return std::format("{}", self); });
 
-    block.def_property_readonly("type", &Block::getType,
-                                "The type of the block, as a string (e.g. ``minecraft:acacia_stairs``).")
-        .def("set_type", py::overload_cast<std::string, bool>(&Block::setType), py::arg("type"),
+    block.def_property_readonly("type", &Block::getType, py::return_value_policy::reference,
+                                "The type of the block.")
+        .def("set_type", py::overload_cast<BlockTypeId, bool>(&Block::setType), py::arg("type"),
              py::arg("apply_physics") = true, R"doc(
     Sets the type of this block.
 

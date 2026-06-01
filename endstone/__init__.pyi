@@ -8,7 +8,7 @@ import numpy
 
 from endstone.actor import Mob
 from endstone.ban import IpBanList, PlayerBanList
-from endstone.block import BlockData
+from endstone.block import BlockData, BlockType
 from endstone.boss import BarColor, BarFlag, BarStyle, BossBar
 from endstone.command import CommandSender, ConsoleCommandSender
 from endstone.form import ActionForm, MessageForm, ModalForm
@@ -380,7 +380,9 @@ class Server:
         """
         ...
     def create_block_data(
-        self, type: str, block_states: collections.abc.Mapping[str, bool | str | int] | None = None
+        self,
+        type: Identifier[BlockType] | str,
+        block_states: collections.abc.Mapping[str, bool | str | int] | None = None,
     ) -> BlockData:
         """
         Creates a new BlockData instance for the specified block type, with all properties initialized to defaults,

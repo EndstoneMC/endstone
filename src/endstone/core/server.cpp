@@ -604,12 +604,12 @@ std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarCol
     return std::make_unique<EndstoneBossBar>(std::move(title), color, style, flags);
 }
 
-std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type) const
+std::unique_ptr<BlockData> EndstoneServer::createBlockData(Identifier<BlockType> type) const
 {
     return createBlockData(type, {});
 }
 
-std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type, BlockStates block_states) const
+std::unique_ptr<BlockData> EndstoneServer::createBlockData(Identifier<BlockType> type, BlockStates block_states) const
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
@@ -618,7 +618,8 @@ std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type, Blo
                    }},
                    state.second);
     }
-    const auto block_descriptor = ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(type, states);
+    const auto block_descriptor =
+        ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(std::string(type), states);
     const auto *block = block_descriptor.tryGetBlockNoLogging();
     Preconditions::checkArgument(block != nullptr, "Block type {} cannot be found in the registry.", type);
     return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(*block));

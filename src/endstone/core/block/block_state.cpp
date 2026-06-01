@@ -37,16 +37,16 @@ std::unique_ptr<Block> EndstoneBlockState::getBlock() const
     return EndstoneBlock::at(block_source_, block_pos_);
 }
 
-std::string EndstoneBlockState::getType() const
+const BlockType &EndstoneBlockState::getType() const
 {
-    return block_->getName().getString();
+    return *BlockType::get(block_->getName().getString());
 }
 
-void EndstoneBlockState::setType(std::string type)
+void EndstoneBlockState::setType(BlockTypeId type)
 {
     if (getType() != type) {
         using ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor;
-        const auto block_descriptor = createBlockDescriptor(type, std::nullopt);
+        const auto block_descriptor = createBlockDescriptor(std::string(type), std::nullopt);
         auto *block = const_cast<::Block *>(block_descriptor.tryGetBlockNoLogging());
         Preconditions::checkArgument(block != nullptr, "BlockState::setType failed: unknown block type {}.", type);
         block_ = block;

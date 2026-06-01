@@ -21,12 +21,12 @@ class Block:
     Represents a block.
     """
     @property
-    def type(self) -> str:
+    def type(self) -> BlockType:
         """
-        The type of the block, as a string (e.g. ``minecraft:acacia_stairs``).
+        The type of the block.
         """
         ...
-    def set_type(self, type: str, apply_physics: bool = True) -> None:
+    def set_type(self, type: Identifier[BlockType] | str, apply_physics: bool = True) -> None:
         """
         Sets the type of this block.
 
@@ -181,7 +181,7 @@ class BlockData:
     Represents the data related to a live block.
     """
     @property
-    def type(self) -> str:
+    def type(self) -> BlockType:
         """
         The block type represented by this block data.
         """
@@ -225,13 +225,13 @@ class BlockState:
         """
         ...
     @property
-    def type(self) -> str:
+    def type(self) -> BlockType:
         """
         The type of this block state.
         """
         ...
     @type.setter
-    def type(self, arg1: str) -> None: ...
+    def type(self, arg1: Identifier[BlockType] | str) -> None: ...
     @property
     def data(self) -> BlockData:
         """

@@ -25,19 +25,19 @@ EndstoneBlockSnapshot::EndstoneBlockSnapshot(std::unique_ptr<EndstoneBlockState>
 {
 }
 
-std::string EndstoneBlockSnapshot::getType() const
+const BlockType &EndstoneBlockSnapshot::getType() const
 {
     return state_->getType();
 }
 
-void EndstoneBlockSnapshot::setType(std::string type)
+void EndstoneBlockSnapshot::setType(BlockTypeId type)
 {
-    state_->setType(std::move(type));
+    state_->setType(type);
 }
 
-void EndstoneBlockSnapshot::setType(std::string type, bool /*apply_physics*/)
+void EndstoneBlockSnapshot::setType(BlockTypeId type, bool /*apply_physics*/)
 {
-    state_->setType(std::move(type));
+    state_->setType(type);
 }
 
 std::unique_ptr<BlockData> EndstoneBlockSnapshot::getData() const

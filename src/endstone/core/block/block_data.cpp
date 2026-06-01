@@ -15,14 +15,15 @@
 #include "endstone/core/block/block_data.h"
 
 #include "bedrock/nbt/nbt_io.h"
+#include "endstone/block/block_type.h"
 
 namespace endstone::core {
 
 EndstoneBlockData::EndstoneBlockData(::Block &block) : block_(block) {}
 
-std::string EndstoneBlockData::getType() const
+const BlockType &EndstoneBlockData::getType() const
 {
-    return block_.getBlockType().getName().getString();
+    return *BlockType::get(block_.getBlockType().getName().getString());
 }
 
 std::string EndstoneBlockData::getTranslationKey() const

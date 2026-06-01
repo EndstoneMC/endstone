@@ -21,11 +21,11 @@
 #include <utility>
 #include <vector>
 
+#include "endstone/inventory/item_type.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
 class ItemStack;
-class ItemType;
 /**
  * Interface to the various inventories.
  */
@@ -148,7 +148,7 @@ public:
      *
      * @return true if an ItemStack is found with the given ItemType
      */
-    [[nodiscard]] virtual bool contains(const std::string &type) const = 0;
+    [[nodiscard]] virtual bool contains(ItemTypeId type) const = 0;
 
     /**
      * Checks if the inventory contains any ItemStacks with the given ItemStack.
@@ -181,7 +181,7 @@ public:
      *
      * @return true if amount is less than 1, true if enough ItemStacks were found to add to the given amount
      */
-    [[nodiscard]] virtual bool containsAtLeast(const std::string &type, int amount) const = 0;
+    [[nodiscard]] virtual bool containsAtLeast(ItemTypeId type, int amount) const = 0;
 
     /**
      * Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least the
@@ -204,7 +204,7 @@ public:
      *
      * @return A map from slot indexes to item at index
      */
-    [[nodiscard]] virtual std::unordered_map<int, ItemStack> all(const std::string &type) const = 0;
+    [[nodiscard]] virtual std::unordered_map<int, ItemStack> all(ItemTypeId type) const = 0;
 
     /**
      * Finds all slots in the inventory containing any ItemStacks with the given ItemStack.
@@ -227,7 +227,7 @@ public:
      *
      * @return The slot index of the given ItemType or -1 if not found
      */
-    [[nodiscard]] virtual int first(const std::string &type) const = 0;
+    [[nodiscard]] virtual int first(ItemTypeId type) const = 0;
 
     /**
      * Returns the first slot in the inventory containing an ItemStack with the given stack.
@@ -258,7 +258,7 @@ public:
      *
      * @param type The ItemType to remove
      */
-    virtual void remove(const std::string &type) = 0;
+    virtual void remove(ItemTypeId type) = 0;
 
     /**
      * Removes all stacks in the inventory matching the given stack.

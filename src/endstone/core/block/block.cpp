@@ -28,17 +28,17 @@ EndstoneBlock::EndstoneBlock(BlockSource &block_source, BlockPos block_pos)
 {
 }
 
-std::string EndstoneBlock::getType() const
+const BlockType &EndstoneBlock::getType() const
 {
-    return block_source_.get().getBlock(block_pos_).getName().getString();
+    return *BlockType::get(block_source_.get().getBlock(block_pos_).getName().getString());
 }
 
-void EndstoneBlock::setType(std::string type)
+void EndstoneBlock::setType(BlockTypeId type)
 {
     return setType(type, true);
 }
 
-void EndstoneBlock::setType(std::string type, bool apply_physics)
+void EndstoneBlock::setType(BlockTypeId type, bool apply_physics)
 {
     const auto &server = EndstoneServer::getInstance();
     return setData(*server.createBlockData(type), apply_physics);
@@ -58,11 +58,11 @@ void EndstoneBlock::setData(const BlockData &data, bool apply_physics)
 {
     const ::Block &block = static_cast<const EndstoneBlockData &>(data).getHandle();
     if (apply_physics) {
-        block_source_.get().setBlock(block_pos_, block, BlockType::UPDATE_NEIGHBORS | BlockType::UPDATE_CLIENTS,
+        block_source_.get().setBlock(block_pos_, block, ::BlockType::UPDATE_NEIGHBORS | ::BlockType::UPDATE_CLIENTS,
                                      nullptr, nullptr);
     }
     else {
-        block_source_.get().setBlock(block_pos_, block, BlockType::UPDATE_CLIENTS, nullptr, nullptr);  // NETWORK
+        block_source_.get().setBlock(block_pos_, block, ::BlockType::UPDATE_CLIENTS, nullptr, nullptr);  // NETWORK
     }
 }
 

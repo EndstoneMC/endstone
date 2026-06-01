@@ -166,7 +166,7 @@ public:
         }
     }
 
-    [[nodiscard]] bool contains(const std::string &type) const override
+    [[nodiscard]] bool contains(ItemTypeId type) const override
     {
         for (const auto &item : getContents()) {
             if (item.has_value() && item->getType() == type) {
@@ -200,7 +200,7 @@ public:
         return false;
     }
 
-    [[nodiscard]] bool containsAtLeast(const std::string &type, int amount) const override
+    [[nodiscard]] bool containsAtLeast(ItemTypeId type, int amount) const override
     {
         if (amount <= 0) {
             return true;
@@ -208,7 +208,8 @@ public:
 
         for (const auto &item : getContents()) {
             if (item.has_value() && item->getType() == type) {
-                if ((amount -= item->getAmount()) <= 0) {
+                amount -= item->getAmount();
+                if (amount <= 0) {
                     return true;
                 }
             }
@@ -223,14 +224,17 @@ public:
         }
 
         for (const auto &i : getContents()) {
-            if (i.has_value() && item.isSimilar(i.value()) && (amount -= i->getAmount()) <= 0) {
-                return true;
+            if (i.has_value() && item.isSimilar(i.value())) {
+                amount -= i->getAmount();
+                if (amount <= 0) {
+                    return true;
+                }
             }
         }
         return false;
     }
 
-    [[nodiscard]] std::unordered_map<int, ItemStack> all(const std::string &type) const override
+    [[nodiscard]] std::unordered_map<int, ItemStack> all(ItemTypeId type) const override
     {
         std::unordered_map<int, ItemStack> slots;
         auto inventory = getContents();
@@ -256,7 +260,7 @@ public:
         return slots;
     }
 
-    [[nodiscard]] int first(const std::string &type) const override
+    [[nodiscard]] int first(ItemTypeId type) const override
     {
         const auto inventory = getContents();
         for (auto i = 0; i < inventory.size(); i++) {
@@ -289,7 +293,7 @@ public:
         return container_.isEmpty();
     }
 
-    void remove(const std::string &type) override
+    void remove(ItemTypeId type) override
     {
         const auto inventory = getContents();
         for (auto i = 0; i < inventory.size(); i++) {

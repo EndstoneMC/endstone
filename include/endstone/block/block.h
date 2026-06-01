@@ -20,6 +20,7 @@
 
 #include "endstone/block/block_data.h"
 #include "endstone/block/block_face.h"
+#include "endstone/block/block_type.h"
 #include "endstone/level/location.h"
 #include "endstone/util/result.h"
 
@@ -42,26 +43,24 @@ public:
     /**
      * Get the type of the block.
      *
-     * This method returns the type of the block as a string, for example, minecraft:acacia_stairs.
-     *
      * @return The type of the block.
      */
-    [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual const BlockType &getType() const = 0;
 
     /**
      * Sets the type of this block.
      *
-     * @param type New type for this block (e.g. minecraft:stone).
+     * @param type New type for this block (e.g. BlockType::Air or "minecraft:stone").
      */
-    virtual void setType(std::string type) = 0;
+    virtual void setType(BlockTypeId type) = 0;
 
     /**
      * Sets the type of this block.
      *
-     * @param type New type for this block (e.g. minecraft:stone).
+     * @param type New type for this block (e.g. BlockType::Air or "minecraft:stone").
      * @param apply_physics False to cancel physics on the changed block.
      */
-    virtual void setType(std::string type, bool apply_physics) = 0;
+    virtual void setType(BlockTypeId type, bool apply_physics) = 0;
 
     /**
      * Gets the complete block data for this block.

@@ -271,9 +271,8 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
                  return ItemStack(type, amount, data);
              }),
              py::arg("type"), py::arg("amount") = 1, py::arg("data") = 0)
-        .def_property(
-            "type", &ItemStack::getType, [](ItemStack &self, const std::string &type) { self.setType(type); },
-            py::return_value_policy::reference, "The type of this item.")
+        .def_property("type", &ItemStack::getType, &ItemStack::setType, py::return_value_policy::reference,
+                      "The type of this item.")
         .def_property("amount", &ItemStack::getAmount, &ItemStack::setAmount, "The amount of items in this stack.")
         .def_property("data", &ItemStack::getData, &ItemStack::setData, "The data for this stack of items.")
         .def_property_readonly("translation_key", &ItemStack::getTranslationKey,
@@ -399,7 +398,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Returns:
         True if any exactly matching ItemStacks were found, False otherwise.
 )doc")
-        .def("contains", py::overload_cast<const std::string &>(&Inventory::contains, py::const_), py::arg("type"),
+        .def("contains", py::overload_cast<ItemTypeId>(&Inventory::contains, py::const_), py::arg("type"),
              R"doc(
     Checks if the inventory contains any ItemStacks with the given ItemType.
 
@@ -421,7 +420,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Returns:
         True if amount less than 1 or enough ItemStacks were found to add to the given amount, False otherwise.
 )doc")
-        .def("contains_at_least", py::overload_cast<const std::string &, int>(&Inventory::containsAtLeast, py::const_),
+        .def("contains_at_least", py::overload_cast<ItemTypeId, int>(&Inventory::containsAtLeast, py::const_),
              py::arg("type"), py::arg("amount"), R"doc(
     Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum
     amount specified.
@@ -448,7 +447,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Returns:
         A map from slot indexes to item at index.
 )doc")
-        .def("all", py::overload_cast<const std::string &>(&Inventory::all, py::const_), py::arg("type"), R"doc(
+        .def("all", py::overload_cast<ItemTypeId>(&Inventory::all, py::const_), py::arg("type"), R"doc(
     Finds all slots in the inventory containing any ItemStacks with the given ItemType.
 
     The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot.
@@ -469,7 +468,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Returns:
         The slot index of the given ItemStack or -1 if not found.
 )doc")
-        .def("first", py::overload_cast<const std::string &>(&Inventory::first, py::const_), py::arg("type"), R"doc(
+        .def("first", py::overload_cast<ItemTypeId>(&Inventory::first, py::const_), py::arg("type"), R"doc(
     Finds the first slot in the inventory containing an ItemStack with the given ItemType.
 
     Args:
@@ -494,7 +493,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Args:
         item: The ItemStack to match against.
 )doc")
-        .def("remove", py::overload_cast<const std::string &>(&Inventory::remove), py::arg("type"), R"doc(
+        .def("remove", py::overload_cast<ItemTypeId>(&Inventory::remove), py::arg("type"), R"doc(
     Removes all stacks in the inventory matching the given ItemType.
 
     Args:
@@ -514,7 +513,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
              "Stores the ItemStack at the given index of the inventory.")
         .def("__contains__", py::overload_cast<const ItemStack &>(&Inventory::contains, py::const_), py::arg("item"),
              "Checks if the inventory contains any ItemStacks with the given ItemStack.")
-        .def("__contains__", py::overload_cast<const std::string &>(&Inventory::contains, py::const_), py::arg("type"),
+        .def("__contains__", py::overload_cast<ItemTypeId>(&Inventory::contains, py::const_), py::arg("type"),
              "Checks if the inventory contains any ItemStacks with the given ItemType.");
 
     py::class_<PlayerInventory, Inventory>(

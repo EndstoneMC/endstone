@@ -20,6 +20,7 @@
 #include <format>
 
 #include "endstone/block/block.h"
+#include "endstone/block/block_type.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -48,14 +49,14 @@ public:
      *
      * @return block type
      */
-    [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual const BlockType &getType() const = 0;
 
     /**
      * Sets the type of this block state.
      *
      * @param type Block type to change this block state to
      */
-    virtual void setType(std::string type) = 0;
+    virtual void setType(BlockTypeId type) = 0;
 
     /**
      * Gets the data for this block state.
