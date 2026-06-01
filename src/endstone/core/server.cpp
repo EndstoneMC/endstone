@@ -604,12 +604,12 @@ std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarCol
     return std::make_unique<EndstoneBossBar>(std::move(title), color, style, flags);
 }
 
-std::unique_ptr<BlockData> EndstoneServer::createBlockData(Identifier<BlockType> type) const
+std::unique_ptr<BlockData> EndstoneServer::createBlockData(BlockTypeId type) const
 {
     return createBlockData(type, {});
 }
 
-std::unique_ptr<BlockData> EndstoneServer::createBlockData(Identifier<BlockType> type, BlockStates block_states) const
+std::unique_ptr<BlockData> EndstoneServer::createBlockData(BlockTypeId type, BlockStates block_states) const
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {

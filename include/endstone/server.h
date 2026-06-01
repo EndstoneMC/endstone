@@ -56,6 +56,10 @@ class PluginManager;
 template <typename T>
 class Registry;
 
+// Mirrors the alias in block/block_type.h; redeclared here because that header
+// (via registry.h) includes this one, so it cannot be included before Server.
+using BlockTypeId = Identifier<BlockType>;
+
 /**
  * Represents a server implementation.
  */
@@ -376,7 +380,7 @@ public:
      * @param type the block type
      * @return new data instance
      */
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(Identifier<BlockType> type) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(BlockTypeId type) const = 0;
 
     /**
      * Creates a new BlockData instance for the specified block type, with all properties initialized to
@@ -386,7 +390,7 @@ public:
      * @param block_states block states, for example `{"old_leaf_type":"birch", "persistent_bit":true}`
      * @return new data instance
      */
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(Identifier<BlockType> type,
+    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(BlockTypeId type,
                                                                      BlockStates block_states) const = 0;
 
     /**
