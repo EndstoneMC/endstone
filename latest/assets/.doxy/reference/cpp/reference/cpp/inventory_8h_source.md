@@ -31,11 +31,11 @@
 #include <utility>
 #include <vector>
 
+#include "endstone/inventory/item_type.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
 class ItemStack;
-class ItemType;
 class Inventory {
 public:
     virtual ~Inventory() = default;
@@ -67,21 +67,21 @@ public:
 
     virtual void setContents(std::vector<std::optional<ItemStack>> items) = 0;
 
-    [[nodiscard]] virtual bool contains(const std::string &type) const = 0;
+    [[nodiscard]] virtual bool contains(ItemTypeId type) const = 0;
 
     [[nodiscard]] virtual bool contains(const ItemStack &item) const = 0;
 
     [[nodiscard]] virtual bool contains(const ItemStack &item, int amount) const = 0;
 
-    [[nodiscard]] virtual bool containsAtLeast(const std::string &type, int amount) const = 0;
+    [[nodiscard]] virtual bool containsAtLeast(ItemTypeId type, int amount) const = 0;
 
     [[nodiscard]] virtual bool containsAtLeast(const ItemStack &item, int amount) const = 0;
 
-    [[nodiscard]] virtual std::unordered_map<int, ItemStack> all(const std::string &type) const = 0;
+    [[nodiscard]] virtual std::unordered_map<int, ItemStack> all(ItemTypeId type) const = 0;
 
     [[nodiscard]] virtual std::unordered_map<int, ItemStack> all(const ItemStack &item) const = 0;
 
-    [[nodiscard]] virtual int first(const std::string &type) const = 0;
+    [[nodiscard]] virtual int first(ItemTypeId type) const = 0;
 
     [[nodiscard]] virtual int first(const ItemStack &item) const = 0;
 
@@ -89,7 +89,7 @@ public:
 
     [[nodiscard]] virtual bool isEmpty() const = 0;
 
-    virtual void remove(const std::string &type) = 0;
+    virtual void remove(ItemTypeId type) = 0;
 
     virtual void remove(const ItemStack &item) = 0;
 

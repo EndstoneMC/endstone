@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_data.h" line="99" column="5" bodyfile="include/endstone/block/block_data.h" bodystart="99" bodyend="-1"/>
+        <location file="include/endstone/block/block_data.h" line="101" column="5" bodyfile="include/endstone/block/block_data.h" bodystart="101" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_data.h" line="102" column="10" bodyfile="include/endstone/block/block_data.h" bodystart="102" bodyend="105"/>
+        <location file="include/endstone/block/block_data.h" line="104" column="10" bodyfile="include/endstone/block/block_data.h" bodystart="104" bodyend="107"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -76,7 +76,7 @@
         <label>std::formatter&lt; std::string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/block/block_data.h" line="98" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="98" bodyend="106"/>
+    <location file="include/endstone/block/block_data.h" line="100" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="100" bodyend="108"/>
     <listofallmembers>
       <member refid="structstd_1_1formatter_3_01endstone_1_1BlockStates_01_4_1afca8c51877173c17a78a65bf76512057" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::BlockStates &gt;</scope><name>format</name></member>
       <member refid="structstd_1_1formatter_3_01endstone_1_1BlockStates_01_4_1a72f4a86f7aadfadc2b561b214372a13c" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::BlockStates &gt;</scope><name>Type</name></member>

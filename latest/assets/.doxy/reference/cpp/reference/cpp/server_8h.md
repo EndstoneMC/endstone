@@ -25,6 +25,7 @@
 * `#include "endstone/block/block_data.h"`
 * `#include "endstone/boss/boss_bar.h"`
 * `#include "endstone/command/command_sender.h"`
+* `#include "endstone/identifier.h"`
 * `#include "endstone/lang/language.h"`
 * `#include "endstone/logger.h"`
 * `#include "endstone/map/map_view.h"`

@@ -15,6 +15,7 @@
 * `#include <string>`
 * `#include "endstone/block/block_data.h"`
 * `#include "endstone/block/block_face.h"`
+* `#include "endstone/block/block_type.h"`
 * `#include "endstone/level/location.h"`
 * `#include "endstone/util/result.h"`
 

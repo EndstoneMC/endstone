@@ -30,6 +30,7 @@
 
 #include "endstone/block/block_data.h"
 #include "endstone/block/block_face.h"
+#include "endstone/block/block_type.h"
 #include "endstone/level/location.h"
 #include "endstone/util/result.h"
 
@@ -43,11 +44,11 @@ class Block {
 public:
     virtual ~Block() = default;
 
-    [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual const BlockType &getType() const = 0;
 
-    virtual void setType(std::string type) = 0;
+    virtual void setType(BlockTypeId type) = 0;
 
-    virtual void setType(std::string type, bool apply_physics) = 0;
+    virtual void setType(BlockTypeId type, bool apply_physics) = 0;
 
     [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
 

@@ -14,6 +14,7 @@
 * `#include <string>`
 * `#include <format>`
 * `#include "endstone/block/block.h"`
+* `#include "endstone/block/block_type.h"`
 * `#include "endstone/util/result.h"`
 
 

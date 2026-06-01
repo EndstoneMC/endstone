@@ -40,6 +40,7 @@
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
 #include "endstone/command/command_sender.h"
+#include "endstone/identifier.h"
 #include "endstone/lang/language.h"
 #include "endstone/logger.h"
 #include "endstone/map/map_view.h"
@@ -50,6 +51,7 @@
 
 namespace endstone {
 
+class BlockType;
 class ConsoleCommandSender;
 class Enchantment;
 class ItemFactory;
@@ -160,9 +162,9 @@ public:
     [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
                                                                  std::vector<BarFlag> flags) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(std::string type) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(Identifier<BlockType> type) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(std::string type,
+    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(Identifier<BlockType> type,
                                                                      BlockStates block_states) const = 0;
 
     [[nodiscard]] virtual PlayerBanList &getBanList() const = 0;

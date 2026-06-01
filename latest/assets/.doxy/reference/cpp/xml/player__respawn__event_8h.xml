@@ -437,7 +437,15 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
         <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="98">
+        <label>endstone/inventory/item_type.h</label>
+        <link refid="item__type_8h_source"/>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="96">
@@ -627,9 +635,9 @@
         </childnode>
         <childnode refid="70" relation="include">
         </childnode>
-        <childnode refid="98" relation="include">
-        </childnode>
         <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
@@ -787,6 +795,8 @@
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
         <childnode refid="59" relation="include">
         </childnode>
         <childnode refid="60" relation="include">
@@ -802,7 +812,7 @@
         <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="98">
+      <node id="99">
         <label>endstone/skin.h</label>
         <link refid="skin_8h_source"/>
         <childnode refid="9" relation="include">
@@ -872,7 +882,7 @@
         <childnode refid="58" relation="include">
         </childnode>
       </node>
-      <node id="99">
+      <node id="100">
         <label>endstone/util/socket_address.h</label>
         <link refid="socket__address_8h_source"/>
         <childnode refid="14" relation="include">

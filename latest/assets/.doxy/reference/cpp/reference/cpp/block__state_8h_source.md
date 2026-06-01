@@ -30,6 +30,7 @@
 #include <format>
 
 #include "endstone/block/block.h"
+#include "endstone/block/block_type.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -40,9 +41,9 @@ public:
 
     [[nodiscard]] virtual std::unique_ptr<Block> getBlock() const = 0;
 
-    [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual const BlockType &getType() const = 0;
 
-    virtual void setType(std::string type) = 0;
+    virtual void setType(BlockTypeId type) = 0;
 
     [[nodiscard]] virtual std::unique_ptr<BlockData> getData() const = 0;
 

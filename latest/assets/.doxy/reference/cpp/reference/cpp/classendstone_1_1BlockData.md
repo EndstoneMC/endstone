@@ -55,7 +55,7 @@ _Represents the data related to a live block._
 | virtual BlockStates | [**getBlockStates**](#function-getblockstates) () const = 0<br>_Gets the block states, which when passed into a method such as Server::createBlockData(type, block\_states) will unambiguously recreate this instance._  |
 | virtual std::uint32\_t | [**getRuntimeId**](#function-getruntimeid) () const = 0<br>_Get the runtime ID for this block._  |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key for this block._  |
-| virtual std::string | [**getType**](#function-gettype) () const = 0<br>_Get the block type represented by this block data._  |
+| virtual [**const**](classendstone_1_1Identifier.md) [**BlockType**](classendstone_1_1BlockType.md) & | [**getType**](#function-gettype) () const = 0<br>_Get the block type represented by this block data._  |
 | virtual  | [**~BlockData**](#function-blockdata) () = default<br> |
 
 
@@ -169,7 +169,7 @@ the translation key for this block
 
 _Get the block type represented by this block data._ 
 ```C++
-virtual std::string endstone::BlockData::getType () const = 0
+virtual const  BlockType & endstone::BlockData::getType () const = 0
 ```
 
 

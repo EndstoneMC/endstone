@@ -85,6 +85,10 @@
       <node id="88">
         <label>include/endstone/block/block_type.h</label>
         <link refid="block__type_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
       <node id="6">
         <label>include/endstone/command/block_command_sender.h</label>
@@ -496,6 +500,12 @@
         <childnode refid="30" relation="include">
         </childnode>
       </node>
+      <node id="99">
+        <label>include/endstone/inventory/inventory.h</label>
+        <link refid="inventory_8h_source"/>
+        <childnode refid="100" relation="include">
+        </childnode>
+      </node>
       <node id="91">
         <label>include/endstone/inventory/item_factory.h</label>
         <link refid="item__factory_8h_source"/>
@@ -521,6 +531,8 @@
       <node id="98">
         <label>include/endstone/inventory/item_type.h</label>
         <link refid="item__type_8h_source"/>
+        <childnode refid="99" relation="include">
+        </childnode>
         <childnode refid="91" relation="include">
         </childnode>
         <childnode refid="92" relation="include">
@@ -556,6 +568,12 @@
         <label>include/endstone/inventory/meta/writable_book_meta.h</label>
         <link refid="writable__book__meta_8h_source"/>
         <childnode refid="97" relation="include">
+        </childnode>
+      </node>
+      <node id="100">
+        <label>include/endstone/inventory/player_inventory.h</label>
+        <link refid="player__inventory_8h_source"/>
+        <childnode refid="50" relation="include">
         </childnode>
       </node>
       <node id="93">

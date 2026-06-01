@@ -139,6 +139,8 @@
         </childnode>
         <childnode refid="97" relation="include">
         </childnode>
+        <childnode refid="98" relation="include">
+        </childnode>
         <childnode refid="76" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
@@ -165,6 +167,14 @@
       <node id="97">
         <label>endstone/block/block_face.h</label>
         <link refid="block__face_8h_source"/>
+      </node>
+      <node id="98">
+        <label>endstone/block/block_type.h</label>
+        <link refid="block__type_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
       </node>
       <node id="43">
         <label>endstone/boss/bar_color.h</label>
@@ -324,7 +334,7 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="98">
+      <node id="99">
         <label>endstone/level/chunk.h</label>
         <link refid="chunk_8h_source"/>
         <childnode refid="10" relation="include">
@@ -353,7 +363,7 @@
         </childnode>
         <childnode refid="82" relation="include">
         </childnode>
-        <childnode refid="98" relation="include">
+        <childnode refid="99" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -780,6 +790,8 @@
         <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>

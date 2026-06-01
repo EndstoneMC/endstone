@@ -60,14 +60,14 @@ _Represents a block._ [More...](#detailed-description)
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-13) ([**int**](classendstone_1_1Identifier.md) offset\_x, [**int**](classendstone_1_1Identifier.md) offset\_y, [**int**](classendstone_1_1Identifier.md) offset\_z) = 0<br>_Gets the block at the given offsets._  |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-23) ([**BlockFace**](namespaceendstone.md#enum-blockface) face) = 0<br>_Gets the block at the given face._  |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-33) ([**BlockFace**](namespaceendstone.md#enum-blockface) face, [**int**](classendstone_1_1Identifier.md) distance) = 0<br>_Gets the block at the given distance of the given face._  |
-| virtual std::string | [**getType**](#function-gettype) () const = 0<br>_Get the type of the block._  |
+| virtual [**const**](classendstone_1_1Identifier.md) [**BlockType**](classendstone_1_1BlockType.md) & | [**getType**](#function-gettype) () const = 0<br>_Get the type of the block._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setData**](#function-setdata-12) ([**const**](classendstone_1_1Identifier.md) [**BlockData**](classendstone_1_1BlockData.md) & data) = 0<br>_Sets the complete data for this block._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setData**](#function-setdata-22) ([**const**](classendstone_1_1Identifier.md) [**BlockData**](classendstone_1_1BlockData.md) & data, [**bool**](classendstone_1_1Identifier.md) apply\_physics) = 0<br>_Sets the complete data for this block._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype-12) (std::string type) = 0<br>_Sets the type of this block._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype-22) (std::string type, [**bool**](classendstone_1_1Identifier.md) apply\_physics) = 0<br>_Sets the type of this block._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype-12) ([**BlockTypeId**](classendstone_1_1Identifier.md) type) = 0<br>_Sets the type of this block._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setType**](#function-settype-22) ([**BlockTypeId**](classendstone_1_1Identifier.md) type, [**bool**](classendstone_1_1Identifier.md) apply\_physics) = 0<br>_Sets the type of this block._  |
 | virtual  | [**~Block**](#function-block) () = default<br> |
 
 
@@ -352,12 +352,9 @@ virtual std::unique_ptr< Block > endstone::Block::getRelative (
 
 _Get the type of the block._ 
 ```C++
-virtual std::string endstone::Block::getType () const = 0
+virtual const  BlockType & endstone::Block::getType () const = 0
 ```
 
-
-
-This method returns the type of the block as a string, for example, minecraft:acacia\_stairs.
 
 
 
@@ -512,7 +509,7 @@ virtual void endstone::Block::setData (
 _Sets the type of this block._ 
 ```C++
 virtual void endstone::Block::setType (
-    std::string type
+    BlockTypeId type
 ) = 0
 ```
 
@@ -523,7 +520,7 @@ virtual void endstone::Block::setType (
 **Parameters:**
 
 
-* `type` New type for this block (e.g. minecraft:stone). 
+* `type` New type for this block (e.g. BlockType::Air or "minecraft:stone"). 
 
 
 
@@ -539,7 +536,7 @@ virtual void endstone::Block::setType (
 _Sets the type of this block._ 
 ```C++
 virtual void endstone::Block::setType (
-    std::string type,
+    BlockTypeId type,
     bool apply_physics
 ) = 0
 ```
@@ -551,7 +548,7 @@ virtual void endstone::Block::setType (
 **Parameters:**
 
 
-* `type` New type for this block (e.g. minecraft:stone). 
+* `type` New type for this block (e.g. BlockType::Air or "minecraft:stone"). 
 * `apply_physics` False to cancel physics on the changed block. 
 
 

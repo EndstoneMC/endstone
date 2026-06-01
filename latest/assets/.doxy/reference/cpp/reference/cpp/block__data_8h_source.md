@@ -35,13 +35,15 @@
 
 namespace endstone {
 
+class BlockType;
+
 using BlockStates = std::unordered_map<std::string, std::variant<bool, std::string, int>>;
 
 class BlockData {
 public:
     virtual ~BlockData() = default;
 
-    [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual const BlockType &getType() const = 0;
 
     [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
