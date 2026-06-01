@@ -176,8 +176,13 @@ static void bind_array_tag(py::module_ &m, const char *name, Args &&...args)
     }
 
     // --- Basic container methods ---
-    cls.def("clear", &T::clear)
-        .def("append", &T::push_back, py::arg("value"))
+    cls.def("clear", &T::clear, "Removes all values from this tag.")
+        .def("append", &T::push_back, py::arg("value"), R"doc(
+    Appends a value to the end of this tag.
+
+    Args:
+        value: The value to append.
+)doc")
         .def(
             "extend",
             [](T &self, const py::iterable &it) {
@@ -185,7 +190,12 @@ static void bind_array_tag(py::module_ &m, const char *name, Args &&...args)
                     self.push_back(py::cast<value_type>(h));
                 }
             },
-            py::arg("iterable"));
+            py::arg("iterable"), R"doc(
+    Appends all values from an iterable to the end of this tag.
+
+    Args:
+        iterable: An iterable of values to append.
+)doc");
 
     // --- Python sequence protocol ---
     cls.def("__len__", [](const T &self) { return self.size(); })
@@ -291,9 +301,14 @@ static void bind_list_tag(py::module &m)
                    .def(
                        "__iter__", [](ListTag &self) { return py::make_iterator(self.begin(), self.end()); },
                        py::keep_alive<0, 1>())
-                   .def("clear", &ListTag::clear)
+                   .def("clear", &ListTag::clear, "Removes all tags from this list.")
                    .def(
-                       "append", [](ListTag &self, const nbt::Tag &v) { self.emplace_back(v); }, py::arg("tag"))
+                       "append", [](ListTag &self, const nbt::Tag &v) { self.emplace_back(v); }, py::arg("tag"), R"doc(
+    Appends a tag to the end of this list.
+
+    Args:
+        tag: The tag to append. It must have the same type as the existing elements.
+)doc")
                    .def(
                        "extend",
                        [](ListTag &self, py::iterable it) {
@@ -301,7 +316,12 @@ static void bind_list_tag(py::module &m)
                                self.emplace_back(py::cast<nbt::Tag>(h));
                            }
                        },
-                       py::arg("iterable"))
+                       py::arg("iterable"), R"doc(
+    Appends all tags from an iterable to the end of this list.
+
+    Args:
+        iterable: An iterable of tags to append. Each tag must have the same type as the existing elements.
+)doc")
                    .def(
                        "pop",
                        [](ListTag &self, py::ssize_t index) {
@@ -310,7 +330,15 @@ static void bind_list_tag(py::module &m)
                            self.erase(self.cbegin() + static_cast<std::ptrdiff_t>(idx));
                            return out;
                        },
-                       py::arg("index") = -1)
+                       py::arg("index") = -1, R"doc(
+    Removes and returns the tag at the given index.
+
+    Args:
+        index: The index of the tag to remove. Defaults to the last tag.
+
+    Returns:
+        The removed tag.
+)doc")
                    .def("to_list",
                         [](const ListTag &self) {
                             py::list lst;
@@ -318,9 +346,10 @@ static void bind_list_tag(py::module &m)
                                 lst.append(tag_to_python(elem));
                             }
                             return lst;
-                        })
-                   .def("size", &ListTag::size)
-                   .def("empty", &ListTag::empty)
+                        },
+                        "Converts this list to a plain Python list of native values.")
+                   .def("size", &ListTag::size, "The number of tags in this list.")
+                   .def("empty", &ListTag::empty, "Returns True if this list contains no tags.")
                    .def(py::self == py::self)
                    .def(py::self != py::self);
     bind_dump<ListTag>(cls);
@@ -357,8 +386,17 @@ static void bind_compound_tag(py::module &m)
                     }
                     return self.at(key);
                 },
-                py::return_value_policy::reference_internal, py::arg("key"), py::arg("default"))
-            .def("clear", &CompoundTag::clear)
+                py::return_value_policy::reference_internal, py::arg("key"), py::arg("default"), R"doc(
+    Returns the tag for the given key, inserting a default if the key is not present.
+
+    Args:
+        key: The key to look up.
+        default: The tag to insert and return if the key is not present.
+
+    Returns:
+        The tag associated with the key, or the newly inserted default.
+)doc")
+            .def("clear", &CompoundTag::clear, "Removes all entries from this compound tag.")
             .def(
                 "pop",
                 [](CompoundTag &self, const std::string &key) {
@@ -369,7 +407,18 @@ static void bind_compound_tag(py::module &m)
                     }
                     throw py::key_error("key not found: " + key);
                 },
-                py::arg("key"))
+                py::arg("key"), R"doc(
+    Removes the entry with the given key and returns its tag.
+
+    Args:
+        key: The key to remove.
+
+    Returns:
+        The tag that was associated with the key.
+
+    Raises:
+        KeyError: If the key is not present.
+)doc")
             .def(
                 "pop",
                 [](CompoundTag &self, const std::string &key, py::object default_value) -> py::object {
@@ -380,19 +429,28 @@ static void bind_compound_tag(py::module &m)
                     }
                     return default_value;
                 },
-                py::arg("key"), py::arg("default") = py::none())
+                py::arg("key"), py::arg("default") = py::none(), R"doc(
+    Removes the entry with the given key and returns its tag, or a default if the key is not present.
+
+    Args:
+        key: The key to remove.
+        default: The value to return if the key is not present.
+
+    Returns:
+        The tag that was associated with the key, or the default if the key is not present.
+)doc")
             .def(
                 "__iter__", [](CompoundTag &self) { return py::make_key_iterator(self.begin(), self.end()); },
                 py::keep_alive<0, 1>())
             .def(
                 "keys", [](CompoundTag &self) { return py::make_key_iterator(self.begin(), self.end()); },
-                py::keep_alive<0, 1>())
+                py::keep_alive<0, 1>(), "Returns an iterator over the keys in this compound tag.")
             .def(
                 "values", [](CompoundTag &self) { return py::make_value_iterator(self.begin(), self.end()); },
-                py::keep_alive<0, 1>())
+                py::keep_alive<0, 1>(), "Returns an iterator over the tags in this compound tag.")
             .def(
                 "items", [](CompoundTag &self) { return py::make_iterator(self.begin(), self.end()); },
-                py::keep_alive<0, 1>())
+                py::keep_alive<0, 1>(), "Returns an iterator over the (key, tag) pairs in this compound tag.")
             .def(py::self == py::self)
             .def(py::self != py::self)
             .def("to_dict",
@@ -402,7 +460,8 @@ static void bind_compound_tag(py::module &m)
                          d[py::str(k)] = tag_to_python(v);
                      }
                      return d;
-                 })
+                 },
+                 "Converts this compound tag to a plain Python dict of native values.")
             .def("__str__", [](const CompoundTag &self) { return std::format("{}", self); })
             .def("__repr__", [](const CompoundTag &self) {
                 py::dict d;

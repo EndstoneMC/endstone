@@ -15,9 +15,21 @@
 #pragma once
 
 namespace endstone {
+/**
+ * Represents the permission level of a Permissible.
+ */
 enum class PermissionLevel {
+    /**
+     * The default permission level granted to ordinary players.
+     */
     Default = 0,
+    /**
+     * The permission level granted to server operators.
+     */
     Operator = 1,
+    /**
+     * The permission level granted to the console.
+     */
     Console = 2,
 };
 }  // namespace endstone

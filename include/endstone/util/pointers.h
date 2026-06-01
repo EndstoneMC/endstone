@@ -21,6 +21,11 @@
 #include "endstone/check.h"
 
 namespace endstone {
+/**
+ * A wrapper around a std::shared_ptr that is guaranteed never to be null.
+ *
+ * Construction from a null pointer throws, and the pointer-mutating operators are deleted.
+ */
 template <class T>
 class NotNull {
 public:
@@ -51,6 +56,11 @@ private:
     pointer_type ptr_;
 };
 
+/**
+ * A wrapper around a std::shared_ptr that may be null.
+ *
+ * Convertible from a NotNull of the same type, and contextually convertible to bool to test for a value.
+ */
 template <class T>
 class Nullable {
 public:

@@ -24,6 +24,14 @@ public:
     static constexpr int BIT_MASK = 0xff;
     static constexpr int DEFAULT_ALPHA = 255;
 
+    /**
+     * Constructs a new Color from red, green, blue, and alpha components.
+     *
+     * @param red the red component, from 0 to 255
+     * @param green the green component, from 0 to 255
+     * @param blue the blue component, from 0 to 255
+     * @param alpha the alpha component, from 0 to 255
+     */
     constexpr Color(const std::uint8_t red, const std::uint8_t green, const std::uint8_t blue,
                     const std::uint8_t alpha = DEFAULT_ALPHA)
         : red_(red), green_(green), blue_(blue), alpha_(alpha)
@@ -108,6 +116,14 @@ public:
      */
     static Color fromRGB(const int rgb) { return fromRGB(rgb >> 16 & BIT_MASK, rgb >> 8 & BIT_MASK, rgb & BIT_MASK); }
 
+    /**
+     * Creates a new color object from an integer that contains the blue, green,
+     * and red bytes in the lowest order 24 bits.
+     *
+     * @param bgr the integer storing the blue, green, and red values
+     *
+     * @return a new color object for specified values
+     */
     static Color fromBGR(const int bgr) { return fromBGR(bgr >> 16 & BIT_MASK, bgr >> 8 & BIT_MASK, bgr & BIT_MASK); }
 
     /**
@@ -213,9 +229,18 @@ private:
     std::uint8_t red_, green_, blue_, alpha_;
 };
 
+/**
+ * Provides a collection of predefined colors.
+ */
 class Colors {
 public:
+    /**
+     * The color white.
+     */
     static constexpr auto WHITE = Color(Color::DEFAULT_ALPHA, 255, 255, 255);
+    /**
+     * The color black.
+     */
     static constexpr auto BLACK = Color(Color::DEFAULT_ALPHA, 0, 0, 0);
 };
 }  // namespace endstone

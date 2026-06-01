@@ -38,9 +38,12 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         .def("__str__", [](const Chunk &self) { return std::format("{}", self); });
 
     dimension
-        .def_property_readonly_static("OVERWORLD", [](const py::object &) { return Dimension::Overworld; })
-        .def_property_readonly_static("NETHER", [](const py::object &) { return Dimension::Nether; })
-        .def_property_readonly_static("THE_END", [](const py::object &) { return Dimension::TheEnd; })
+        .def_property_readonly_static("OVERWORLD", [](const py::object &) { return Dimension::Overworld; },
+                                      "The identifier of the Overworld dimension.")
+        .def_property_readonly_static("NETHER", [](const py::object &) { return Dimension::Nether; },
+                                      "The identifier of the Nether dimension.")
+        .def_property_readonly_static("THE_END", [](const py::object &) { return Dimension::TheEnd; },
+                                      "The identifier of the End dimension.")
         .def_property_readonly("id", &Dimension::getId, "The identifier of this dimension.")
         .def_property_readonly("translation_key", &Dimension::getTranslationKey,
                                "The translation key, suitable for use in a translation component.")

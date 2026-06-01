@@ -31,6 +31,9 @@ class PlayerInteractEvent : public Cancellable<PlayerEvent> {
 public:
     ENDSTONE_EVENT(PlayerInteractEvent);
 
+    /**
+     * Represents the type of interaction that triggered this event.
+     */
     enum class Action {
         /**
          * Left-clicking a block.

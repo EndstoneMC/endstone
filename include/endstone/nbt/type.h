@@ -16,7 +16,16 @@
 
 #include <cstdint>
 namespace endstone::nbt {
+/**
+ * Common base for all NBT tag types.
+ */
 struct TagBase {};
+
+/**
+ * Identifies the kind of payload an NBT tag holds.
+ *
+ * The numeric values match the tag ids used in the binary NBT format.
+ */
 enum class Type : std::uint8_t {
     End = 0,
     Byte = 1,

@@ -27,6 +27,14 @@ namespace endstone {
  */
 class Skin {
 public:
+    /**
+     * Constructs a skin from its id and image, with an optional cape.
+     *
+     * @param id The skin id.
+     * @param image The skin image.
+     * @param cape_id The cape id, or std::nullopt if the skin has no cape.
+     * @param cape_image The cape image, or std::nullopt if the skin has no cape.
+     */
     Skin(std::string id, Image image, std::optional<std::string> cape_id = std::nullopt,
          std::optional<Image> cape_image = std::nullopt)
         : id_(std::move(id)), image_(std::move(image)), cape_id_(std::move(cape_id)), cape_image_(std::move(cape_image))

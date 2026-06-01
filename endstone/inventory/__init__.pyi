@@ -490,6 +490,9 @@ class CrossbowMeta(ItemMeta):
     def charged_projectile(self, arg1: ItemStack | None) -> None: ...
 
 class ItemFactory:
+    """
+    An interface to the methods used to create item metadata.
+    """
     def get_item_meta(self, type: Identifier[ItemType] | str) -> ItemMeta:
         """
         This creates a new item meta for the item type.

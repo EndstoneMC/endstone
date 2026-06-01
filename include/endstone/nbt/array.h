@@ -23,6 +23,13 @@
 #include "endstone/nbt/type.h"
 
 namespace endstone::nbt {
+/**
+ * An NBT tag holding a contiguous array of fixed-width values (e.g. byte array, int array).
+ *
+ * Provides a std::vector-like interface over the underlying storage.
+ *
+ * @tparam T the element type
+ */
 template <typename T>
 class ArrayTag : public TagBase {
 public:

@@ -21,18 +21,42 @@
 
 namespace endstone::nbt {
 class Tag;
+/**
+ * An NBT tag wrapping a single scalar payload of type T (e.g. byte, int, float, string).
+ *
+ * @tparam T the underlying payload type
+ */
 template <typename T>
 class ValueTag : public TagBase {
 public:
     using value_type = T;
 
     constexpr ValueTag() = default;
+
+    /**
+     * Construct a value tag from a copy of the given payload.
+     *
+     * @param v the payload value
+     */
     constexpr explicit ValueTag(const T &v) : value_(v) {}
+
+    /**
+     * Construct a value tag by moving the given payload.
+     *
+     * @param v the payload value
+     */
     constexpr explicit ValueTag(T &&v) : value_(std::move(v)) {}
 
-    // Read-only implicit conversion to payload
+    /**
+     * Implicitly converts to a read-only reference to the underlying payload.
+     */
     operator const T &() const noexcept { return value_; }
 
+    /**
+     * Get the underlying payload.
+     *
+     * @return a reference to the wrapped value
+     */
     const T &value() const noexcept { return value_; }
 
     // Equality with same wrapper

@@ -22,6 +22,9 @@
 
 namespace endstone {
 
+/**
+ * A message that is either a plain string or a Translatable that is resolved client-side.
+ */
 using Message = std::variant<std::string, Translatable>;
 
 }  // namespace endstone

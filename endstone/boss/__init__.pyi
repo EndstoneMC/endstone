@@ -14,6 +14,10 @@ __all__ = [
 ]
 
 class BarColor(enum.Enum):
+    """
+    Represents the color of a boss bar.
+    """
+
     PINK = 0
     BLUE = 1
     RED = 2
@@ -24,6 +28,10 @@ class BarColor(enum.Enum):
     WHITE = 7
 
 class BarFlag(enum.Enum):
+    """
+    Represents an optional flag that changes the appearance or behaviour of a boss bar.
+    """
+
     DARKEN_SKY = 0
     """
     Darkens the sky like during fighting a wither.
@@ -34,6 +42,10 @@ class BarFlag(enum.Enum):
     """
 
 class BarStyle(enum.Enum):
+    """
+    Represents the segment style of a boss bar.
+    """
+
     SOLID = 0
     """
     Makes the boss bar solid (no segments).

@@ -20,7 +20,7 @@ namespace endstone::python {
 
 void init_boss(py::module_ &m)
 {
-    py::native_enum<BarColor>(m, "BarColor", "enum.Enum")  //
+    py::native_enum<BarColor>(m, "BarColor", "enum.Enum", "Represents the color of a boss bar.")  //
         .value("PINK", BarColor::Pink)
         .value("BLUE", BarColor::Blue)
         .value("RED", BarColor::Red)
@@ -31,12 +31,13 @@ void init_boss(py::module_ &m)
         .value("WHITE", BarColor::White)
         .finalize();
 
-    py::native_enum<BarFlag>(m, "BarFlag", "enum.Enum")  //
+    py::native_enum<BarFlag>(m, "BarFlag", "enum.Enum",
+                             "Represents an optional flag that changes the appearance or behaviour of a boss bar.")  //
         .value("DARKEN_SKY", BarFlag::DarkenSky, "Darkens the sky like during fighting a wither.")
         .value("CREATE_FOG", BarFlag::CreateFog, "Creates fog around the world.")
         .finalize();
 
-    py::native_enum<BarStyle>(m, "BarStyle", "enum.Enum")  //
+    py::native_enum<BarStyle>(m, "BarStyle", "enum.Enum", "Represents the segment style of a boss bar.")  //
         .value("SOLID", BarStyle::Solid, "Makes the boss bar solid (no segments).")
         .value("SEGMENTED_6", BarStyle::Segmented6, "Splits the boss bar into 6 segments.")
         .value("SEGMENTED_10", BarStyle::Segmented10, "Splits the boss bar into 10 segments.")

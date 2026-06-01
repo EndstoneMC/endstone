@@ -22,7 +22,10 @@ namespace endstone::python {
 
 void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 {
-    py::native_enum<EventResult>(m, "EventResult", "enum.Enum")
+    py::native_enum<EventResult>(
+        m, "EventResult", "enum.Enum",
+        "Represents the result a plugin can apply to an event whose default behaviour can be allowed, denied, or "
+        "left to the server.")
         .value("DENY", EventResult::Deny)
         .value("DEFAULT", EventResult::Default)
         .value("ALLOW", EventResult::Allow)
@@ -297,7 +300,8 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                                "The GameMode the player is switched to.");
     auto player_interact_event = py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
         m, "PlayerInteractEvent", "Represents an event that is called when a player right-clicks a block.");
-    py::native_enum<PlayerInteractEvent::Action>(player_interact_event, "Action", "enum.Enum")
+    py::native_enum<PlayerInteractEvent::Action>(player_interact_event, "Action", "enum.Enum",
+                                                 "Represents the type of interaction that triggered this event.")
         .value("LEFT_CLICK_BLOCK", PlayerInteractEvent::Action::LeftClickBlock)
         .value("RIGHT_CLICK_BLOCK", PlayerInteractEvent::Action::RightClickBlock)
         .value("LEFT_CLICK_AIR", PlayerInteractEvent::Action::LeftClickAir)
@@ -486,7 +490,8 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 
     auto server_load_event = py::class_<ServerLoadEvent, Event>(
         m, "ServerLoadEvent", "Called when either the server startup or reload has completed.");
-    py::native_enum<ServerLoadEvent::LoadType>(server_load_event, "LoadType", "enum.Enum")
+    py::native_enum<ServerLoadEvent::LoadType>(server_load_event, "LoadType", "enum.Enum",
+                                               "Represents the context in which the server was loaded.")
         .value("STARTUP", ServerLoadEvent::LoadType::Startup)
         .export_values()
         .finalize();

@@ -22,7 +22,8 @@ namespace endstone::python {
 
 void init_enchantments(py::module_ &m)
 {
-    py::class_<Enchantment, std::shared_ptr<Enchantment>>(m, "Enchantment")
+    py::class_<Enchantment, std::shared_ptr<Enchantment>>(
+        m, "Enchantment", "Represents an enchantment that may be added to armor, weapons, tools or other items.")
         .def_property_readonly_static(
             "PROTECTION", [](const py::object &) { return Enchantment::Protection; },
             "Provides protection against environmental damage.")

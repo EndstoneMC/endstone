@@ -10,6 +10,10 @@ __all__ = [
 ]
 
 class Enchantment:
+    """
+    Represents an enchantment that may be added to armor, weapons, tools or other items.
+    """
+
     PROTECTION: Identifier[Enchantment] = "minecraft:protection"
     FIRE_PROTECTION: Identifier[Enchantment] = "minecraft:fire_protection"
     FEATHER_FALLING: Identifier[Enchantment] = "minecraft:feather_falling"

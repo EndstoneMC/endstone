@@ -28,6 +28,12 @@ namespace nbt {
 class Tag;
 }
 
+/**
+ * An NBT tag holding an ordered sequence of child tags that all share the same type.
+ *
+ * Provides a std::vector-like interface. The element type is fixed by the first element added;
+ * attempting to add a tag of a different type, or an End tag, throws std::invalid_argument.
+ */
 class ListTag : public nbt::TagBase {
 public:
     using value_type = nbt::Tag;

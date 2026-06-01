@@ -28,6 +28,11 @@ namespace nbt {
 class Tag;
 }
 
+/**
+ * An NBT tag holding a set of named child tags, keyed by string.
+ *
+ * Provides a std::map-like interface mapping each key to its Tag value.
+ */
 class CompoundTag : public nbt::TagBase {
 public:
     using key_type = std::string;

@@ -46,6 +46,14 @@ using StringTag = nbt::ValueTag<std::string>;
 using IntArrayTag = nbt::ArrayTag<std::int32_t>;
 
 namespace nbt {
+/**
+ * A single NBT tag that may hold any of the supported payload types.
+ *
+ * A Tag behaves as a tagged union over every NBT type (byte, short, int, long, float, double,
+ * string, byte array, int array, list and compound). A default-constructed Tag is empty (the End
+ * type). Indexing or inserting into an empty Tag promotes it to a ListTag or CompoundTag as
+ * appropriate.
+ */
 class Tag {
 public:
     using Storage = std::variant<std::monostate, ByteTag, ShortTag, IntTag, LongTag, FloatTag, DoubleTag, StringTag,
@@ -75,6 +83,11 @@ public:
     Tag(const CompoundTag &v) : storage_(v) {}
     Tag(CompoundTag &&v) : storage_(std::move(v)) {}
 
+    /**
+     * Get the type of payload currently held by this tag.
+     *
+     * @return the tag type, or Type::End if the tag is empty
+     */
     Type type() const noexcept
     {
         switch (storage_.index()) {
@@ -107,6 +120,14 @@ public:
         }
     }
 
+    /**
+     * Get the number of elements held by this tag.
+     *
+     * For a list, compound or array this is the element count; for a string it is the character
+     * count; scalar tags report 1 and an empty tag reports 0.
+     *
+     * @return the element count
+     */
     [[nodiscard]] std::size_t size() const noexcept
     {
         return std::visit(
@@ -129,8 +150,22 @@ public:
             storage_);
     }
 
+    /**
+     * Check whether this tag holds no elements.
+     *
+     * @return true if size() is 0
+     */
     [[nodiscard]] bool empty() const noexcept { return size() == 0; }
 
+    /**
+     * Access the child tag with the given key, treating this tag as a compound.
+     *
+     * An empty tag is promoted to a CompoundTag, and a missing key is inserted with an empty value.
+     *
+     * @param key the key to access
+     * @return a reference to the child tag
+     * @throws std::runtime_error if this tag is not a compound
+     */
     Tag &operator[](const std::string &key)
     {
         if (std::holds_alternative<std::monostate>(storage_)) {
@@ -143,6 +178,15 @@ public:
         return (*comp)[key];
     }
 
+    /**
+     * Access the child tag at the given index, treating this tag as a list.
+     *
+     * An empty tag is promoted to a ListTag.
+     *
+     * @param index the index to access
+     * @return a reference to the child tag
+     * @throws std::runtime_error if this tag is not a list
+     */
     Tag &operator[](std::size_t index)
     {
         if (std::holds_alternative<std::monostate>(storage_)) {
@@ -155,6 +199,16 @@ public:
         return (*list)[index];
     }
 
+    /**
+     * Access the child tag with the given key, treating this tag as a compound, with bounds checking.
+     *
+     * An empty tag is promoted to a CompoundTag.
+     *
+     * @param key the key to access
+     * @return a reference to the child tag
+     * @throws std::runtime_error if this tag is not a compound
+     * @throws std::out_of_range if the key is not present
+     */
     Tag &at(const std::string &key)
     {
         if (std::holds_alternative<std::monostate>(storage_)) {
@@ -167,6 +221,14 @@ public:
         return comp->at(key);
     }
 
+    /**
+     * Access the child tag with the given key, treating this tag as a compound, with bounds checking.
+     *
+     * @param key the key to access
+     * @return a const reference to the child tag
+     * @throws std::runtime_error if this tag is not a compound
+     * @throws std::out_of_range if the key is not present
+     */
     [[nodiscard]] const Tag &at(const std::string &key) const
     {
         const auto comp = std::get_if<CompoundTag>(&storage_);
@@ -176,6 +238,16 @@ public:
         return comp->at(key);
     }
 
+    /**
+     * Access the child tag at the given index, treating this tag as a list, with bounds checking.
+     *
+     * An empty tag is promoted to a ListTag.
+     *
+     * @param index the index to access
+     * @return a reference to the child tag
+     * @throws std::runtime_error if this tag is not a list
+     * @throws std::out_of_range if the index is out of range
+     */
     Tag &at(std::size_t index)
     {
         if (std::holds_alternative<std::monostate>(storage_)) {
@@ -188,6 +260,14 @@ public:
         return list->at(index);
     }
 
+    /**
+     * Access the child tag at the given index, treating this tag as a list, with bounds checking.
+     *
+     * @param index the index to access
+     * @return a const reference to the child tag
+     * @throws std::runtime_error if this tag is not a list
+     * @throws std::out_of_range if the index is out of range
+     */
     [[nodiscard]] const Tag &at(std::size_t index) const
     {
         const auto list = std::get_if<ListTag>(&storage_);
@@ -197,6 +277,12 @@ public:
         return list->at(index);
     }
 
+    /**
+     * Check whether this tag is a compound containing the given key.
+     *
+     * @param key the key to look up
+     * @return true if this tag is a compound and contains the key, false otherwise
+     */
     [[nodiscard]] bool contains(const std::string &key) const noexcept
     {
         const auto comp = std::get_if<CompoundTag>(&storage_);
@@ -206,6 +292,15 @@ public:
         return comp->contains(key);
     }
 
+    /**
+     * Construct a child tag in place at the end of this list.
+     *
+     * An empty tag is promoted to a ListTag.
+     *
+     * @param args the arguments forwarded to the element constructor
+     * @return a reference to this tag's underlying list
+     * @throws std::runtime_error if this tag is not a list
+     */
     template <class... Args>
     ListTag &emplace_back(Args &&...args)
     {
@@ -220,6 +315,15 @@ public:
         return *list;
     }
 
+    /**
+     * Construct an entry in place in this compound.
+     *
+     * An empty tag is promoted to a CompoundTag.
+     *
+     * @param args the arguments forwarded to construct the key/value entry
+     * @return a pair of an iterator to the entry and a bool that is true if a new entry was inserted
+     * @throws std::runtime_error if this tag is not a compound
+     */
     template <class... Args>
     std::pair<CompoundTag::iterator, bool> emplace(Args &&...args)
     {
@@ -233,6 +337,13 @@ public:
         return comp->emplace(std::forward<Args>(args)...);
     }
 
+    /**
+     * Get the payload as the given tag type.
+     *
+     * @tparam T the tag type to retrieve
+     * @return a reference to the held value
+     * @throws std::runtime_error if this tag does not currently hold a T
+     */
     template <typename T>
     T &get()
     {
@@ -242,6 +353,13 @@ public:
         throw std::runtime_error("Tag::get<T>() kind mismatch");
     }
 
+    /**
+     * Get the payload as the given tag type.
+     *
+     * @tparam T the tag type to retrieve
+     * @return a const reference to the held value
+     * @throws std::runtime_error if this tag does not currently hold a T
+     */
     template <typename T>
     const T &get() const
     {
@@ -251,6 +369,12 @@ public:
         throw std::runtime_error("Tag::get<T>() kind mismatch");
     }
 
+    /**
+     * Get a pointer to the payload if this tag holds the given type.
+     *
+     * @tparam T the tag type to retrieve
+     * @return a pointer to the held value, or nullptr if this tag does not hold a T
+     */
     template <typename T>
     T *get_if() noexcept
     {
@@ -260,18 +384,38 @@ public:
         return nullptr;
     }
 
+    /**
+     * Get a pointer to the payload if this tag holds the given type.
+     *
+     * @tparam T the tag type to retrieve
+     * @return a const pointer to the held value, or nullptr if this tag does not hold a T
+     */
     template <typename T>
     const T *get_if() const noexcept
     {
         return std::get_if<T>(&storage_);
     }
 
+    /**
+     * Apply a visitor to the payload currently held by this tag.
+     *
+     * @tparam Fn the visitor type, callable with any of the tag payload types (including std::monostate)
+     * @param visitor the visitor to invoke
+     * @return whatever the visitor returns
+     */
     template <typename Fn>
     decltype(auto) visit(Fn &&visitor) const &
     {
         return std::visit(visitor, storage_);
     }
 
+    /**
+     * Apply a visitor to the payload currently held by this tag.
+     *
+     * @tparam Fn the visitor type, callable with any of the tag payload types (including std::monostate)
+     * @param visitor the visitor to invoke
+     * @return whatever the visitor returns
+     */
     template <typename Fn>
     decltype(auto) visit(Fn &&visitor) &
     {

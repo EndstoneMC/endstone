@@ -18,14 +18,37 @@
 #include <vector>
 
 namespace endstone {
+/**
+ * Represents the equipment slots on an entity.
+ */
 enum class EquipmentSlot {
+    /**
+     * The main hand slot.
+     */
     Hand,
+    /**
+     * The off-hand slot.
+     */
     OffHand,
+    /**
+     * The boots (feet) armor slot.
+     */
     Feet,
+    /**
+     * The leggings (legs) armor slot.
+     */
     Legs,
+    /**
+     * The chestplate (chest) armor slot.
+     */
     Chest,
+    /**
+     * The helmet (head) armor slot.
+     */
     Head,
     /**
+     * The body armor slot.
+     *
      * @note Only for certain entities such as horses and wolves.
      */
     Body

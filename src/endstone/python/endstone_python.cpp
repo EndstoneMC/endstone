@@ -187,7 +187,8 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
         .def_property_readonly("unique_id", &OfflinePlayer::getUniqueId, "The UUID of this player.");
     auto player = py_class<Player>(m, "Player", "Represents a player.");
     auto item_stack = py::class_<ItemStack>(m_inventory, "ItemStack", "Represents a stack of items.");
-    auto level = py::class_<Level>(m_level, "Level");
+    auto level =
+        py::class_<Level>(m_level, "Level", "Represents a level, which may contain actors, chunks and blocks.");
     auto dimension = py::class_<Dimension>(m_level, "Dimension", "Represents a dimension within a Level.");
     auto vector = py::class_<Vector>(m_util, "Vector", "Represents a 3-dimensional vector.");
     auto location =
@@ -228,43 +229,83 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
 void init_color_format(py::module_ &m)
 {
     py::class_<ColorFormat>(m, "ColorFormat", "All supported color and format codes.")
-        .def_property_readonly_static("BLACK", [](const py::object &) { return ColorFormat::Black; })
-        .def_property_readonly_static("DARK_BLUE", [](const py::object &) { return ColorFormat::DarkBlue; })
-        .def_property_readonly_static("DARK_GREEN", [](const py::object &) { return ColorFormat::DarkGreen; })
-        .def_property_readonly_static("DARK_AQUA", [](const py::object &) { return ColorFormat::DarkAqua; })
-        .def_property_readonly_static("DARK_RED", [](const py::object &) { return ColorFormat::DarkRed; })
-        .def_property_readonly_static("DARK_PURPLE", [](const py::object &) { return ColorFormat::DarkPurple; })
-        .def_property_readonly_static("GOLD", [](const py::object &) { return ColorFormat::Gold; })
-        .def_property_readonly_static("GRAY", [](const py::object &) { return ColorFormat::Gray; })
-        .def_property_readonly_static("DARK_GRAY", [](const py::object &) { return ColorFormat::DarkGray; })
-        .def_property_readonly_static("BLUE", [](const py::object &) { return ColorFormat::Blue; })
-        .def_property_readonly_static("GREEN", [](const py::object &) { return ColorFormat::Green; })
-        .def_property_readonly_static("AQUA", [](const py::object &) { return ColorFormat::Aqua; })
-        .def_property_readonly_static("RED", [](const py::object &) { return ColorFormat::Red; })
-        .def_property_readonly_static("LIGHT_PURPLE", [](const py::object &) { return ColorFormat::LightPurple; })
-        .def_property_readonly_static("YELLOW", [](const py::object &) { return ColorFormat::Yellow; })
-        .def_property_readonly_static("WHITE", [](const py::object &) { return ColorFormat::White; })
-        .def_property_readonly_static("MINECOIN_GOLD", [](const py::object &) { return ColorFormat::MinecoinGold; })
-        .def_property_readonly_static("MATERIAL_QUARTZ", [](const py::object &) { return ColorFormat::MaterialQuartz; })
-        .def_property_readonly_static("MATERIAL_IRON", [](const py::object &) { return ColorFormat::MaterialIron; })
-        .def_property_readonly_static("MATERIAL_NETHERITE",
-                                      [](const py::object &) { return ColorFormat::MaterialNetherite; })
-        .def_property_readonly_static("MATERIAL_REDSTONE",
-                                      [](const py::object &) { return ColorFormat::MaterialRedstone; })
-        .def_property_readonly_static("MATERIAL_COPPER", [](const py::object &) { return ColorFormat::MaterialCopper; })
-        .def_property_readonly_static("MATERIAL_GOLD", [](const py::object &) { return ColorFormat::MaterialGold; })
-        .def_property_readonly_static("MATERIAL_EMERALD",
-                                      [](const py::object &) { return ColorFormat::MaterialEmerald; })
-        .def_property_readonly_static("MATERIAL_DIAMOND",
-                                      [](const py::object &) { return ColorFormat::MaterialDiamond; })
-        .def_property_readonly_static("MATERIAL_LAPIS", [](const py::object &) { return ColorFormat::MaterialLapis; })
-        .def_property_readonly_static("MATERIAL_AMETHYST",
-                                      [](const py::object &) { return ColorFormat::MaterialAmethyst; })
-        .def_property_readonly_static("MATERIAL_RESIN", [](const py::object &) { return ColorFormat::MaterialResin; })
-        .def_property_readonly_static("OBFUSCATED", [](const py::object &) { return ColorFormat::Obfuscated; })
-        .def_property_readonly_static("BOLD", [](const py::object &) { return ColorFormat::Bold; })
-        .def_property_readonly_static("ITALIC", [](const py::object &) { return ColorFormat::Italic; })
-        .def_property_readonly_static("RESET", [](const py::object &) { return ColorFormat::Reset; });
+        .def_property_readonly_static(
+            "BLACK", [](const py::object &) { return ColorFormat::Black; }, "Black (§0).")
+        .def_property_readonly_static(
+            "DARK_BLUE", [](const py::object &) { return ColorFormat::DarkBlue; }, "Dark blue (§1).")
+        .def_property_readonly_static(
+            "DARK_GREEN", [](const py::object &) { return ColorFormat::DarkGreen; }, "Dark green (§2).")
+        .def_property_readonly_static(
+            "DARK_AQUA", [](const py::object &) { return ColorFormat::DarkAqua; }, "Dark aqua (§3).")
+        .def_property_readonly_static(
+            "DARK_RED", [](const py::object &) { return ColorFormat::DarkRed; }, "Dark red (§4).")
+        .def_property_readonly_static(
+            "DARK_PURPLE", [](const py::object &) { return ColorFormat::DarkPurple; }, "Dark purple (§5).")
+        .def_property_readonly_static(
+            "GOLD", [](const py::object &) { return ColorFormat::Gold; }, "Gold (§6).")
+        .def_property_readonly_static(
+            "GRAY", [](const py::object &) { return ColorFormat::Gray; }, "Gray (§7).")
+        .def_property_readonly_static(
+            "DARK_GRAY", [](const py::object &) { return ColorFormat::DarkGray; }, "Dark gray (§8).")
+        .def_property_readonly_static(
+            "BLUE", [](const py::object &) { return ColorFormat::Blue; }, "Blue (§9).")
+        .def_property_readonly_static(
+            "GREEN", [](const py::object &) { return ColorFormat::Green; }, "Green (§a).")
+        .def_property_readonly_static(
+            "AQUA", [](const py::object &) { return ColorFormat::Aqua; }, "Aqua (§b).")
+        .def_property_readonly_static(
+            "RED", [](const py::object &) { return ColorFormat::Red; }, "Red (§c).")
+        .def_property_readonly_static(
+            "LIGHT_PURPLE", [](const py::object &) { return ColorFormat::LightPurple; }, "Light purple (§d).")
+        .def_property_readonly_static(
+            "YELLOW", [](const py::object &) { return ColorFormat::Yellow; }, "Yellow (§e).")
+        .def_property_readonly_static(
+            "WHITE", [](const py::object &) { return ColorFormat::White; }, "White (§f).")
+        .def_property_readonly_static(
+            "MINECOIN_GOLD", [](const py::object &) { return ColorFormat::MinecoinGold; }, "Minecoin gold (§g).")
+        .def_property_readonly_static(
+            "MATERIAL_QUARTZ", [](const py::object &) { return ColorFormat::MaterialQuartz; },
+            "Quartz material color (§h).")
+        .def_property_readonly_static(
+            "MATERIAL_IRON", [](const py::object &) { return ColorFormat::MaterialIron; },
+            "Iron material color (§i).")
+        .def_property_readonly_static(
+            "MATERIAL_NETHERITE", [](const py::object &) { return ColorFormat::MaterialNetherite; },
+            "Netherite material color (§j).")
+        .def_property_readonly_static(
+            "MATERIAL_REDSTONE", [](const py::object &) { return ColorFormat::MaterialRedstone; },
+            "Redstone material color (§m).")
+        .def_property_readonly_static(
+            "MATERIAL_COPPER", [](const py::object &) { return ColorFormat::MaterialCopper; },
+            "Copper material color (§n).")
+        .def_property_readonly_static(
+            "MATERIAL_GOLD", [](const py::object &) { return ColorFormat::MaterialGold; },
+            "Gold material color (§p).")
+        .def_property_readonly_static(
+            "MATERIAL_EMERALD", [](const py::object &) { return ColorFormat::MaterialEmerald; },
+            "Emerald material color (§q).")
+        .def_property_readonly_static(
+            "MATERIAL_DIAMOND", [](const py::object &) { return ColorFormat::MaterialDiamond; },
+            "Diamond material color (§s).")
+        .def_property_readonly_static(
+            "MATERIAL_LAPIS", [](const py::object &) { return ColorFormat::MaterialLapis; },
+            "Lapis material color (§t).")
+        .def_property_readonly_static(
+            "MATERIAL_AMETHYST", [](const py::object &) { return ColorFormat::MaterialAmethyst; },
+            "Amethyst material color (§u).")
+        .def_property_readonly_static(
+            "MATERIAL_RESIN", [](const py::object &) { return ColorFormat::MaterialResin; },
+            "Resin material color (§v).")
+        .def_property_readonly_static(
+            "OBFUSCATED", [](const py::object &) { return ColorFormat::Obfuscated; },
+            "Makes the text obfuscated, randomly cycling through characters (§k).")
+        .def_property_readonly_static(
+            "BOLD", [](const py::object &) { return ColorFormat::Bold; }, "Makes the text bold (§l).")
+        .def_property_readonly_static(
+            "ITALIC", [](const py::object &) { return ColorFormat::Italic; }, "Makes the text italic (§o).")
+        .def_property_readonly_static(
+            "RESET", [](const py::object &) { return ColorFormat::Reset; },
+            "Resets all colors and formatting codes (§r).");
 }
 
 void init_game_mode(py::module_ &m)

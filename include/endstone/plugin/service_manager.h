@@ -77,6 +77,15 @@ public:
      */
     virtual std::shared_ptr<Service> get(std::string name) const = 0;
 
+    /**
+     * Queries for a provider and casts it to the requested service type.
+     *
+     * The highest priority provider is returned.
+     *
+     * @tparam T The service type to cast the provider to
+     * @param name The service name
+     * @return The highest priority provider cast to T, or an empty shared_ptr if none is registered.
+     */
     template <typename T>
     std::shared_ptr<T> load(std::string name) const
     {

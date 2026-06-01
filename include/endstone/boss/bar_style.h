@@ -15,6 +15,9 @@
 #pragma once
 
 namespace endstone {
+/**
+ * Represents the segment style of a boss bar.
+ */
 enum class BarStyle {
     /**
      * Makes the boss bar solid (no segments).

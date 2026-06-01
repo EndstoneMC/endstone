@@ -20,10 +20,25 @@ namespace endstone {
  * Represents the possible default values for permissions.
  */
 enum class PermissionDefault {
+    /**
+     * Permission is granted by default to everyone.
+     */
     True,
+    /**
+     * Permission is denied by default to everyone.
+     */
     False,
+    /**
+     * Permission is granted by default only to server operators.
+     */
     Operator,
+    /**
+     * Permission is granted by default only to non-operators.
+     */
     NotOperator,
+    /**
+     * Permission is granted by default only to the console.
+     */
     Console
 };
 

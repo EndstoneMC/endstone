@@ -30,21 +30,52 @@ namespace endstone {
  */
 class UUID {
 public:
+    /**
+     * Returns an iterator to the first byte.
+     *
+     * @return Pointer to the first byte
+     */
     std::uint8_t *begin() noexcept { return data; }
 
+    /**
+     * @copydoc begin()
+     */
     [[nodiscard]] const uint8_t *begin() const noexcept { return data; }
 
+    /**
+     * Returns an iterator past the last byte.
+     *
+     * @return Pointer past the last byte
+     */
     std::uint8_t *end() noexcept { return data + size(); }
 
+    /**
+     * @copydoc end()
+     */
     [[nodiscard]] const uint8_t *end() const noexcept { return data + size(); }
 
+    /**
+     * Returns the number of bytes in a UUID.
+     *
+     * @return The size in bytes (always 16)
+     */
     [[nodiscard]] static constexpr std::size_t size() noexcept { return 16; }
 
+    /**
+     * Checks whether this UUID is nil (all bytes are zero).
+     *
+     * @return true if every byte is zero, false otherwise
+     */
     [[nodiscard]] bool isNil() const noexcept
     {
         return std::all_of(std::begin(data), std::end(data), [](const auto &val) { return val == 0U; });
     }
 
+    /**
+     * Returns the version number encoded in this UUID.
+     *
+     * @return The UUID version (1-5), or -1 if it is not a recognized version
+     */
     [[nodiscard]] int version() const noexcept
     {
         // version is stored in octet 9 which is index 6, since indexes count backwards
@@ -67,6 +98,11 @@ public:
         return -1;
     }
 
+    /**
+     * Swaps the contents of this UUID with another.
+     *
+     * @param rhs The UUID to swap with
+     */
     void swap(UUID &rhs) noexcept
     {
         UUID tmp = *this;
@@ -74,6 +110,11 @@ public:
         rhs = tmp;
     }
 
+    /**
+     * Returns the canonical hyphenated string representation of this UUID.
+     *
+     * @return The UUID formatted as a 36-character string
+     */
     [[nodiscard]] std::string str() const
     {
         std::string result;

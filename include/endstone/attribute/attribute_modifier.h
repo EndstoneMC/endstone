@@ -46,11 +46,26 @@ public:
         Multiply
     };
 
+    /**
+     * Construct a new attribute modifier with an auto-generated unique id.
+     *
+     * @param name the name of the modifier
+     * @param amount the amount by which the modifier applies its operation
+     * @param operation the operation to apply
+     */
     AttributeModifier(std::string name, float amount, Operation operation)
         : name_(std::move(name)), amount_(amount), operation_(operation)
     {
     }
 
+    /**
+     * Construct a new attribute modifier with the given unique id.
+     *
+     * @param name the name of the modifier
+     * @param uuid the unique id of the modifier
+     * @param amount the amount by which the modifier applies its operation
+     * @param operation the operation to apply
+     */
     AttributeModifier(std::string name, UUID uuid, float amount, Operation operation)
         : name_(std::move(name)), uuid_(uuid), amount_(amount), operation_(operation)
     {

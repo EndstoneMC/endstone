@@ -21,6 +21,9 @@
 
 namespace endstone {
 
+/**
+ * Holds either a value of type T on success or an error message on failure.
+ */
 template <typename T>
 using Result = nonstd::expected<T, std::string>;
 

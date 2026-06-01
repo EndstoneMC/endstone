@@ -25,6 +25,9 @@ namespace endstone {
  */
 class Criteria {
 public:
+    /**
+     * Represents the built-in criteria types.
+     */
     enum class Type {
         /**
          * The dummy criteria. Not changed by the server.

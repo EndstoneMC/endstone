@@ -244,6 +244,15 @@ public:
      */
     virtual void broadcastMessage(const Message &message) const = 0;
 
+    /**
+     * Broadcasts a formatted message to every user with permission endstone.broadcast.user.
+     *
+     * Formats the message using std::format before broadcasting. If formatting throws,
+     * the exception message is logged at the Error level instead.
+     *
+     * @param format The format string.
+     * @param args The arguments to substitute into the format string.
+     */
     template <typename... Args>
     void broadcastMessage(const std::format_string<Args...> format, Args &&...args) const
     {
@@ -412,6 +421,12 @@ public:
      */
     [[nodiscard]] virtual IRegistry *_getRegistry(const std::type_info &type) const = 0;
 
+    /**
+     * Returns the registry for the given element type.
+     *
+     * @tparam T The element type whose registry to retrieve.
+     * @return the corresponding registry.
+     */
     template <typename T>
     [[nodiscard]] const Registry<T> &getRegistry() const
     {

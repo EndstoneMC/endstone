@@ -16,11 +16,30 @@
 
 namespace endstone {
 
+/**
+ * Interface for events that may be cancelled by a plugin or the server.
+ */
 class ICancellable {
 public:
     virtual ~ICancellable() = default;
+
+    /**
+     * Gets the cancellation state of this event.
+     *
+     * @return true if this event is cancelled
+     */
     [[nodiscard]] virtual bool isCancelled() const = 0;
+
+    /**
+     * Sets the cancellation state of this event.
+     *
+     * @param cancel true if you wish to cancel this event
+     */
     virtual void setCancelled(bool cancel) = 0;
+
+    /**
+     * Cancels this event.
+     */
     virtual void cancel() = 0;
 };
 

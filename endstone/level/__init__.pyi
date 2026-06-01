@@ -14,6 +14,9 @@ __all__ = [
 ]
 
 class Level:
+    """
+    Represents a level, which may contain actors, chunks and blocks.
+    """
     @property
     def name(self) -> str:
         """

@@ -27,13 +27,27 @@ class ServerLoadEvent : public ServerEvent {
 public:
     ENDSTONE_EVENT(ServerLoadEvent);
 
+    /**
+     * Represents the context in which the server was loaded.
+     */
     enum class LoadType {
+        /**
+         * The server finished its initial startup.
+         */
         Startup,
+        /**
+         * The server finished a reload.
+         */
         Reload
     };
 
     explicit ServerLoadEvent(LoadType type) : type_(type) {}
 
+    /**
+     * Gets the context in which the server was loaded.
+     *
+     * @return the load type for this event
+     */
     [[nodiscard]] LoadType getType() const { return type_; }
 
 private:

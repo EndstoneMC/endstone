@@ -166,6 +166,9 @@ public:
         perm.recalculatePermissibles();
     }
 
+    /**
+     * @internal Internal use only.
+     */
     void init(PluginManager &plugin_manager) { plugin_manager_ = &plugin_manager; }
 
 private:

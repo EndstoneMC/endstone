@@ -20,8 +20,19 @@
 #include <format>
 
 namespace endstone {
+/**
+ * Static helpers for validating method arguments and object state.
+ */
 class Preconditions {
 public:
+    /**
+     * Ensures the truth of an expression involving one or more parameters to the calling method.
+     *
+     * @param condition The expression that must hold.
+     * @param format A format string describing the failure, used when the condition is false.
+     * @param args Arguments to substitute into the format string.
+     * @throws std::invalid_argument if condition is false.
+     */
     template <typename... Args>
     static void checkArgument(bool condition, std::format_string<Args...> format, Args &&...args)
     {
@@ -31,6 +42,14 @@ public:
         }
     }
 
+    /**
+     * Ensures the truth of an expression involving the state of the calling instance.
+     *
+     * @param condition The expression that must hold.
+     * @param format A format string describing the failure, used when the condition is false.
+     * @param args Arguments to substitute into the format string.
+     * @throws std::runtime_error if condition is false.
+     */
     template <typename... Args>
     static void checkState(bool condition, std::format_string<Args...> format, Args &&...args)
     {

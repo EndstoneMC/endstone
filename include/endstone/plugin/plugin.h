@@ -132,6 +132,14 @@ public:
      */
     [[nodiscard]] const std::filesystem::path &getDataFolder() const { return data_folder_; }
 
+    /**
+     * Registers a member function as a handler for the given event type.
+     *
+     * @param func Member function pointer to invoke when the event is fired
+     * @param instance The object on which to invoke the member function
+     * @param priority The priority at which to register this handler
+     * @param ignore_cancelled If true, the handler is not invoked when the event has already been cancelled
+     */
     template <typename EventType, typename T>
     void registerEvent(void (T::*func)(EventType &), T &instance, EventPriority priority = EventPriority::Normal,
                        bool ignore_cancelled = false)
@@ -141,6 +149,13 @@ public:
             *this, ignore_cancelled);
     }
 
+    /**
+     * Registers a function as a handler for the given event type.
+     *
+     * @param func Function to invoke when the event is fired
+     * @param priority The priority at which to register this handler
+     * @param ignore_cancelled If true, the handler is not invoked when the event has already been cancelled
+     */
     template <typename EventType>
     void registerEvent(std::function<void(EventType &)> func, EventPriority priority = EventPriority::Normal,
                        bool ignore_cancelled = false)

@@ -19,6 +19,9 @@
 namespace endstone {
 class ItemStack;
 using EnchantmentId = Identifier<class Enchantment>;
+/**
+ * Represents an enchantment that may be added to armor, weapons, tools or other items.
+ */
 class Enchantment : public Registry<Enchantment>::Type {
 public:
     /**

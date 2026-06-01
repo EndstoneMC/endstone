@@ -20,6 +20,9 @@
 #include "item_type.h"
 
 namespace endstone {
+/**
+ * An interface to the methods used to create item metadata.
+ */
 class ItemFactory {
 public:
     virtual ~ItemFactory() = default;

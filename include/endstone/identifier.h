@@ -32,10 +32,28 @@ public:
      */
     static constexpr std::string_view Minecraft = "minecraft";
 
+    /**
+     * Constructs an identifier by parsing a string. See the string_view overload for the parsing rules.
+     *
+     * @param s The identifier string.
+     */
     constexpr Identifier(const char *s) noexcept : Identifier(std::string_view{s}) {}
 
+    /**
+     * Constructs an identifier by parsing a string. See the string_view overload for the parsing rules.
+     *
+     * @param s The identifier string.
+     */
     constexpr Identifier(const std::string &s) noexcept : Identifier(std::string_view{s}) {}
 
+    /**
+     * Constructs an identifier by parsing a string.
+     *
+     * If the string contains a colon, the part before the last colon is taken as the namespace and the
+     * remainder as the key. Otherwise the whole string is the key and the namespace defaults to minecraft.
+     *
+     * @param identifier The identifier string.
+     */
     constexpr Identifier(const std::string_view &identifier) noexcept
     {
         const auto pos = identifier.rfind(':');
@@ -49,13 +67,29 @@ public:
         }
     }
 
+    /**
+     * Constructs an identifier from a separate namespace and key.
+     *
+     * @param namespace_ The namespace component.
+     * @param key The key component.
+     */
     constexpr Identifier(const std::string_view &namespace_, const std::string_view &key) noexcept
         : namespace_(namespace_), key_(key)
     {
     }
 
+    /**
+     * Gets the namespace component of this identifier.
+     *
+     * @return the namespace
+     */
     [[nodiscard]] constexpr std::string_view getNamespace() const noexcept { return namespace_; }
 
+    /**
+     * Gets the key component of this identifier.
+     *
+     * @return the key
+     */
     [[nodiscard]] constexpr std::string_view getKey() const noexcept { return key_; }
 
     constexpr bool operator==(const Identifier &other) const noexcept
@@ -73,6 +107,12 @@ public:
         return std::format("{}:{}", namespace_, key_);
     }
 
+    /**
+     * Creates an identifier in the minecraft namespace with the given key.
+     *
+     * @param key The key component.
+     * @return an identifier with the namespace set to minecraft.
+     */
     static constexpr Identifier minecraft(const std::string_view key) noexcept { return {Minecraft, key}; }
 
 private:

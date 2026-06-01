@@ -141,6 +141,10 @@ class Event:
         ...
 
 class EventResult(enum.Enum):
+    """
+    Represents the result a plugin can apply to an event whose default behaviour can be allowed, denied, or left to the server.
+    """
+
     DENY = 0
     DEFAULT = 1
     ALLOW = 2
@@ -670,6 +674,10 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
     Represents an event that is called when a player right-clicks a block.
     """
     class Action(enum.Enum):
+        """
+        Represents the type of interaction that triggered this event.
+        """
+
         LEFT_CLICK_BLOCK = 0
         RIGHT_CLICK_BLOCK = 1
         LEFT_CLICK_AIR = 2
@@ -1181,6 +1189,10 @@ class ServerLoadEvent(Event):
     Called when either the server startup or reload has completed.
     """
     class LoadType(enum.Enum):
+        """
+        Represents the context in which the server was loaded.
+        """
+
         STARTUP = 0
 
     STARTUP = LoadType.STARTUP

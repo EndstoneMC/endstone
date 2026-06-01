@@ -25,6 +25,11 @@ namespace endstone {
  */
 class IpBanEntry : public BanEntry {
 public:
+    /**
+     * Construct a ban entry for the given IP address.
+     *
+     * @param address the IP address being banned
+     */
     explicit IpBanEntry(std::string address) : address_(std::move(address)) {}
 
     /**

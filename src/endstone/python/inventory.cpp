@@ -214,7 +214,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property("charged_projectile", &CrossbowMeta::getChargedProjectile, &CrossbowMeta::setChargedProjectile,
                       "The charged projectile, or None if none.");
 
-    py::class_<ItemFactory>(m, "ItemFactory")
+    py::class_<ItemFactory>(m, "ItemFactory", "An interface to the methods used to create item metadata.")
         .def("get_item_meta", &ItemFactory::getItemMeta, py::arg("type"), R"doc(
     This creates a new item meta for the item type.
 

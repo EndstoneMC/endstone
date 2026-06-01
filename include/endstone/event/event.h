@@ -19,6 +19,10 @@
 
 namespace endstone {
 
+/**
+ * Represents the result a plugin can apply to an event whose default behaviour can be allowed, denied, or left
+ * to the server.
+ */
 enum class EventResult {
     /**
      * Deny the event.

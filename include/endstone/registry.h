@@ -30,9 +30,21 @@ namespace python {
 class PyRegistry;
 }
 
+/**
+ * Type-erased base interface for registries.
+ *
+ * Allows registries of any element type to be handled uniformly without knowing the
+ * concrete element type. Prefer the typed Registry interface in plugin code.
+ */
 class IRegistry {
 public:
     virtual ~IRegistry() = default;
+
+    /**
+     * Gets the number of entries in this registry.
+     *
+     * @return the entry count
+     */
     [[nodiscard]] virtual std::size_t size() const = 0;
 
 protected:
@@ -60,6 +72,9 @@ public:
      */
     class Type {
     public:
+        /**
+         * The identifier type used to look up this object in its registry.
+         */
         using Id = Identifier<T>;
 
         virtual ~Type() = default;

@@ -236,6 +236,11 @@ public:
      */
     [[nodiscard]] bool isRegistered() const { return command_map_ != nullptr; }
 
+    /**
+     * Returns this command as a PluginCommand if it is one.
+     *
+     * @return this command cast to a PluginCommand, or nullptr if it is not a PluginCommand
+     */
     [[nodiscard]] virtual PluginCommand *asPluginCommand() const { return nullptr; }
 
 private:

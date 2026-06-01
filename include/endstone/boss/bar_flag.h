@@ -15,6 +15,9 @@
 #pragma once
 
 namespace endstone {
+/**
+ * Represents an optional flag that changes the appearance or behaviour of a boss bar.
+ */
 enum class BarFlag {
     /**
      * Darkens the sky like during fighting a wither.

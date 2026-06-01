@@ -31,7 +31,13 @@ namespace endstone {
  */
 class Image {
 public:
+    /**
+     * Represents the pixel format of an image.
+     */
     enum class Type {
+        /**
+         * An invalid or uninitialized image type.
+         */
         Invalid = 0,
         /**
          * 8-bit pixels, grayscale.

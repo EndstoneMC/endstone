@@ -28,6 +28,13 @@ namespace endstone {
  */
 class PlayerBanEntry : public BanEntry {
 public:
+    /**
+     * Construct a ban entry for the given player.
+     *
+     * @param name the name of the player being banned
+     * @param uuid the unique id of the player, or std::nullopt if not available
+     * @param xuid the xbox user id (xuid) of the player, or std::nullopt if not available
+     */
     explicit PlayerBanEntry(std::string name, std::optional<UUID> uuid = std::nullopt,
                             std::optional<std::string> xuid = std::nullopt)
         : name_(std::move(name)), uuid_(uuid), xuid_(std::move(xuid))

@@ -15,6 +15,9 @@
 #pragma once
 
 namespace endstone {
+/**
+ * Represents the color of a boss bar.
+ */
 enum class BarColor {
     Pink = 0,
     Blue = 1,

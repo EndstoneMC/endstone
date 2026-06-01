@@ -25,6 +25,12 @@ namespace endstone {
  */
 class Translatable {
 public:
+    /**
+     * Construct a translatable from the text to be translated and its parameters.
+     *
+     * @param text the text (translation key) to be translated
+     * @param params the parameters to substitute into the translation
+     */
     explicit Translatable(std::string text, std::vector<std::string> params = {})
         : text_(std::move(text)), params_(std::move(params))
     {

@@ -22,6 +22,9 @@ class ItemStack;
  * Represents an item type.
  */
 using ItemTypeId = Identifier<ItemType>;
+/**
+ * Represents an item type.
+ */
 class ItemType : public Registry<ItemType>::Type {
 public:
     static constexpr auto Air = ItemTypeId::minecraft("air");
