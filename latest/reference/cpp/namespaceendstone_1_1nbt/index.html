@@ -2788,19 +2788,19 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1nbt_1_1ArrayTag/"><strong>ArrayTag</strong></a> &lt;<a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a>&gt;<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1nbt_1_1ArrayTag/"><strong>ArrayTag</strong></a> &lt;<a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a>&gt;<br><em>An NBT tag holding a contiguous array of fixed-width values (e.g.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1nbt_1_1Tag/"><strong>Tag</strong></a> <br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1nbt_1_1Tag/"><strong>Tag</strong></a> <br><em>A single NBT tag that may hold any of the supported payload types.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">struct</td>
-<td style="text-align: left;"><a href="../structendstone_1_1nbt_1_1TagBase/"><strong>TagBase</strong></a> <br></td>
+<td style="text-align: left;"><a href="../structendstone_1_1nbt_1_1TagBase/"><strong>TagBase</strong></a> <br><em>Common base for all NBT tag types.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1nbt_1_1ValueTag/"><strong>ValueTag</strong></a> &lt;<a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a>&gt;<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1nbt_1_1ValueTag/"><strong>ValueTag</strong></a> &lt;<a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a>&gt;<br><em>An NBT tag wrapping a single scalar payload of type T (e.g.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2815,7 +2815,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">enum std::uint8_t</td>
-<td style="text-align: left;"><a href="#enum-type"><strong>Type</strong></a>  <br></td>
+<td style="text-align: left;"><a href="#enum-type"><strong>Type</strong></a>  <br><em>Identifies the kind of payload an NBT tag holds.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2848,6 +2848,7 @@ For latest updates join the chat on
 </table>
 <h2 id="public-types-documentation">Public Types Documentation<a class="headerlink" href="#public-types-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="enum-type">enum Type<a class="headerlink" href="#enum-type" title="Permanent link">&para;</a></h3>
+<p><em>Identifies the kind of payload an NBT tag holds.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Type</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">End</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Byte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
@@ -2862,7 +2863,8 @@ For latest updates join the chat on
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">Compound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">IntArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">11</span>
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">};</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p>The numeric values match the tag ids used in the binary NBT format. </p>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-dump">function dump<a class="headerlink" href="#function-dump" title="Permanent link">&para;</a></h3>

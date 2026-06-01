@@ -8,8 +8,9 @@
 
 
 
+_Type-erased base interface for registries._ [More...](#detailed-description)
 
-
+* `#include <endstone/registry.h>`
 
 
 
@@ -52,7 +53,7 @@ Inherited by the following classes: [endstone::Registry](classendstone_1_1Regist
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::size\_t | [**size**](#function-size) () const = 0<br> |
+| virtual std::size\_t | [**size**](#function-size) () const = 0<br>_Gets the number of entries in this registry._  |
 | virtual  | [**~IRegistry**](#function-iregistry) () = default<br> |
 
 
@@ -89,6 +90,13 @@ Inherited by the following classes: [endstone::Registry](classendstone_1_1Regist
 
 
 
+## Detailed Description
+
+
+Allows registries of any element type to be handled uniformly without knowing the concrete element type. Prefer the typed [**Registry**](classendstone_1_1Registry.md) interface in plugin code. 
+
+
+    
 ## Public Functions Documentation
 
 
@@ -96,12 +104,24 @@ Inherited by the following classes: [endstone::Registry](classendstone_1_1Regist
 
 ### function size 
 
+_Gets the number of entries in this registry._ 
 ```C++
 virtual std::size_t endstone::IRegistry::size () const = 0
 ```
 
 
 
+
+
+**Returns:**
+
+the entry count 
+
+
+
+
+
+        
 
 <hr>
 

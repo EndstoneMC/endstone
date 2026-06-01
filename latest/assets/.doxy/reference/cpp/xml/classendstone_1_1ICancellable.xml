@@ -9,6 +9,7 @@
     <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; PlayerEvent &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; WeatherEvent &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1Cancellable" prot="public" virt="non-virtual">endstone::Cancellable&lt; EventType &gt;</derivedcompoundref>
+    <includes refid="cancellable_8h" local="no">endstone/event/cancellable.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1ICancellable_1ab6d311fcaa18971f69a1b23f5a856301" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -22,7 +23,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/cancellable.h" line="21" column="13"/>
+        <location file="include/endstone/event/cancellable.h" line="24" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ICancellable_1ad7d9998d26e5339233a01cf718a779ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -38,12 +39,16 @@
         <reimplementedby refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa">isCancelled</reimplementedby>
         <reimplementedby refid="classendstone_1_1Cancellable_1a268b73cc5bda0fa5923336d031814faa">isCancelled</reimplementedby>
         <briefdescription>
+<para>Gets the cancellation state of this event. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>true if this event is cancelled </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/cancellable.h" line="22" column="19"/>
+        <location file="include/endstone/event/cancellable.h" line="31" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ICancellable_1a348a8d847632c98e42510134d82086ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -63,12 +68,23 @@
           <declname>cancel</declname>
         </param>
         <briefdescription>
+<para>Sets the cancellation state of this event. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cancel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true if you wish to cancel this event </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/cancellable.h" line="23" column="18"/>
+        <location file="include/endstone/event/cancellable.h" line="38" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ICancellable_1a65036acf5f2520cb11d833b4a4daee29" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -84,15 +100,17 @@
         <reimplementedby refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327">cancel</reimplementedby>
         <reimplementedby refid="classendstone_1_1Cancellable_1a3512b47db69c6001f5c0450051308327">cancel</reimplementedby>
         <briefdescription>
+<para>Cancels this event. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/cancellable.h" line="24" column="18"/>
+        <location file="include/endstone/event/cancellable.h" line="43" column="18"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Interface for events that may be cancelled by a plugin or the server. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
@@ -396,7 +414,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/event/cancellable.h" line="19" column="1" bodyfile="include/endstone/event/cancellable.h" bodystart="19" bodyend="25"/>
+    <location file="include/endstone/event/cancellable.h" line="22" column="1" bodyfile="include/endstone/event/cancellable.h" bodystart="22" bodyend="44"/>
     <listofallmembers>
       <member refid="classendstone_1_1ICancellable_1a65036acf5f2520cb11d833b4a4daee29" prot="public" virt="pure-virtual"><scope>endstone::ICancellable</scope><name>cancel</name></member>
       <member refid="classendstone_1_1ICancellable_1ad7d9998d26e5339233a01cf718a779ef" prot="public" virt="pure-virtual"><scope>endstone::ICancellable</scope><name>isCancelled</name></member>

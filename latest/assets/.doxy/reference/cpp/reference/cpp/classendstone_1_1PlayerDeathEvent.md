@@ -114,10 +114,10 @@ Inherits the following classes: [endstone::ActorDeathEvent](classendstone_1_1Act
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md)) <br> |
-|   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source, std::optional&lt; Message &gt; death\_message) <br> |
-|  std::optional&lt; Message &gt; | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
+|   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, std::unique\_ptr&lt; [**DamageSource**](classendstone_1_1DamageSource.md) &gt; damage\_source, std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; death\_message) <br> |
+|  std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
 |  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](#function-getplayer) () const<br>_Returns the_ [_**Player**_](classendstone_1_1Player.md) _involved in this event._ |
-|  [**void**](classendstone_1_1Identifier.md) | [**setDeathMessage**](#function-setdeathmessage) (std::optional&lt; Message &gt; death\_message) <br>_Set the death message that will appear to everyone on the server._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setDeathMessage**](#function-setdeathmessage) (std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; death\_message) <br>_Set the death message that will appear to everyone on the server._  |
 
 
 ## Public Functions inherited from endstone::ActorDeathEvent

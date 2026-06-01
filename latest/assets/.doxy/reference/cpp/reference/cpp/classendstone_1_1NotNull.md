@@ -10,8 +10,9 @@
 
 
 
+_A wrapper around a std::shared\_ptr that is guaranteed never to be null._ [More...](#detailed-description)
 
-
+* `#include <endstone/util/pointers.h>`
 
 
 
@@ -103,6 +104,13 @@
 
 
 
+## Detailed Description
+
+
+Construction from a null pointer throws, and the pointer-mutating operators are deleted. 
+
+
+    
 ## Public Types Documentation
 
 

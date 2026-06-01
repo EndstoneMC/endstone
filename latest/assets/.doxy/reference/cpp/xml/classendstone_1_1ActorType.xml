@@ -10,7 +10,7 @@
         <argsstring></argsstring>
         <name>Allay</name>
         <qualifiedname>endstone::ActorType::Allay</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;allay&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;allay&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -25,7 +25,7 @@
         <argsstring></argsstring>
         <name>Armadillo</name>
         <qualifiedname>endstone::ActorType::Armadillo</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;armadillo&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;armadillo&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -40,7 +40,7 @@
         <argsstring></argsstring>
         <name>Axolotl</name>
         <qualifiedname>endstone::ActorType::Axolotl</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;axolotl&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;axolotl&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -55,7 +55,7 @@
         <argsstring></argsstring>
         <name>Bat</name>
         <qualifiedname>endstone::ActorType::Bat</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;bat&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;bat&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -70,7 +70,7 @@
         <argsstring></argsstring>
         <name>Bee</name>
         <qualifiedname>endstone::ActorType::Bee</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;bee&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;bee&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -85,7 +85,7 @@
         <argsstring></argsstring>
         <name>Camel</name>
         <qualifiedname>endstone::ActorType::Camel</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;camel&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;camel&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -100,7 +100,7 @@
         <argsstring></argsstring>
         <name>CamelHusk</name>
         <qualifiedname>endstone::ActorType::CamelHusk</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;camel_husk&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;camel_husk&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -115,7 +115,7 @@
         <argsstring></argsstring>
         <name>Cat</name>
         <qualifiedname>endstone::ActorType::Cat</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;cat&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;cat&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -130,7 +130,7 @@
         <argsstring></argsstring>
         <name>Chicken</name>
         <qualifiedname>endstone::ActorType::Chicken</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;chicken&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;chicken&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -145,7 +145,7 @@
         <argsstring></argsstring>
         <name>Cod</name>
         <qualifiedname>endstone::ActorType::Cod</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;cod&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;cod&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -160,7 +160,7 @@
         <argsstring></argsstring>
         <name>CopperGolem</name>
         <qualifiedname>endstone::ActorType::CopperGolem</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;copper_golem&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;copper_golem&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -175,7 +175,7 @@
         <argsstring></argsstring>
         <name>Cow</name>
         <qualifiedname>endstone::ActorType::Cow</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;cow&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;cow&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -190,7 +190,7 @@
         <argsstring></argsstring>
         <name>Dolphin</name>
         <qualifiedname>endstone::ActorType::Dolphin</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;dolphin&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;dolphin&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -205,7 +205,7 @@
         <argsstring></argsstring>
         <name>Donkey</name>
         <qualifiedname>endstone::ActorType::Donkey</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;donkey&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;donkey&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -220,7 +220,7 @@
         <argsstring></argsstring>
         <name>Fox</name>
         <qualifiedname>endstone::ActorType::Fox</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;fox&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;fox&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -235,7 +235,7 @@
         <argsstring></argsstring>
         <name>Frog</name>
         <qualifiedname>endstone::ActorType::Frog</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;frog&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;frog&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -250,7 +250,7 @@
         <argsstring></argsstring>
         <name>GlowSquid</name>
         <qualifiedname>endstone::ActorType::GlowSquid</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;glow_squid&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;glow_squid&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -265,7 +265,7 @@
         <argsstring></argsstring>
         <name>Goat</name>
         <qualifiedname>endstone::ActorType::Goat</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;goat&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;goat&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -280,7 +280,7 @@
         <argsstring></argsstring>
         <name>HappyGhast</name>
         <qualifiedname>endstone::ActorType::HappyGhast</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;happy_ghast&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;happy_ghast&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -295,7 +295,7 @@
         <argsstring></argsstring>
         <name>Hoglin</name>
         <qualifiedname>endstone::ActorType::Hoglin</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;hoglin&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;hoglin&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -310,7 +310,7 @@
         <argsstring></argsstring>
         <name>Horse</name>
         <qualifiedname>endstone::ActorType::Horse</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;horse&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;horse&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -325,7 +325,7 @@
         <argsstring></argsstring>
         <name>IronGolem</name>
         <qualifiedname>endstone::ActorType::IronGolem</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;iron_golem&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;iron_golem&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -340,7 +340,7 @@
         <argsstring></argsstring>
         <name>Llama</name>
         <qualifiedname>endstone::ActorType::Llama</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;llama&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;llama&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -355,7 +355,7 @@
         <argsstring></argsstring>
         <name>Mooshroom</name>
         <qualifiedname>endstone::ActorType::Mooshroom</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;mooshroom&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;mooshroom&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -370,7 +370,7 @@
         <argsstring></argsstring>
         <name>Mule</name>
         <qualifiedname>endstone::ActorType::Mule</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;mule&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;mule&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -385,7 +385,7 @@
         <argsstring></argsstring>
         <name>Nautilus</name>
         <qualifiedname>endstone::ActorType::Nautilus</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;nautilus&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;nautilus&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -400,7 +400,7 @@
         <argsstring></argsstring>
         <name>Ocelot</name>
         <qualifiedname>endstone::ActorType::Ocelot</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;ocelot&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;ocelot&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -415,7 +415,7 @@
         <argsstring></argsstring>
         <name>Panda</name>
         <qualifiedname>endstone::ActorType::Panda</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;panda&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;panda&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -430,7 +430,7 @@
         <argsstring></argsstring>
         <name>Parrot</name>
         <qualifiedname>endstone::ActorType::Parrot</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;parrot&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;parrot&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -445,7 +445,7 @@
         <argsstring></argsstring>
         <name>Pig</name>
         <qualifiedname>endstone::ActorType::Pig</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;pig&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;pig&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -460,7 +460,7 @@
         <argsstring></argsstring>
         <name>PolarBear</name>
         <qualifiedname>endstone::ActorType::PolarBear</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;polar_bear&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;polar_bear&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -475,7 +475,7 @@
         <argsstring></argsstring>
         <name>Pufferfish</name>
         <qualifiedname>endstone::ActorType::Pufferfish</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;pufferfish&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;pufferfish&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -490,7 +490,7 @@
         <argsstring></argsstring>
         <name>Rabbit</name>
         <qualifiedname>endstone::ActorType::Rabbit</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;rabbit&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;rabbit&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -505,7 +505,7 @@
         <argsstring></argsstring>
         <name>Salmon</name>
         <qualifiedname>endstone::ActorType::Salmon</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;salmon&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;salmon&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -520,7 +520,7 @@
         <argsstring></argsstring>
         <name>Sheep</name>
         <qualifiedname>endstone::ActorType::Sheep</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;sheep&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;sheep&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -535,7 +535,7 @@
         <argsstring></argsstring>
         <name>SkeletonHorse</name>
         <qualifiedname>endstone::ActorType::SkeletonHorse</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;skeleton_horse&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;skeleton_horse&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -550,7 +550,7 @@
         <argsstring></argsstring>
         <name>Sniffer</name>
         <qualifiedname>endstone::ActorType::Sniffer</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;sniffer&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;sniffer&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -565,7 +565,7 @@
         <argsstring></argsstring>
         <name>SnowGolem</name>
         <qualifiedname>endstone::ActorType::SnowGolem</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;snow_golem&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;snow_golem&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -580,7 +580,7 @@
         <argsstring></argsstring>
         <name>Squid</name>
         <qualifiedname>endstone::ActorType::Squid</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;squid&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;squid&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -595,7 +595,7 @@
         <argsstring></argsstring>
         <name>Strider</name>
         <qualifiedname>endstone::ActorType::Strider</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;strider&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;strider&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -610,7 +610,7 @@
         <argsstring></argsstring>
         <name>Tadpole</name>
         <qualifiedname>endstone::ActorType::Tadpole</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;tadpole&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;tadpole&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -625,7 +625,7 @@
         <argsstring></argsstring>
         <name>TraderLlama</name>
         <qualifiedname>endstone::ActorType::TraderLlama</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;trader_llama&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;trader_llama&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -640,7 +640,7 @@
         <argsstring></argsstring>
         <name>Tropicalfish</name>
         <qualifiedname>endstone::ActorType::Tropicalfish</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;tropicalfish&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;tropicalfish&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -655,7 +655,7 @@
         <argsstring></argsstring>
         <name>Turtle</name>
         <qualifiedname>endstone::ActorType::Turtle</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;turtle&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;turtle&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -670,7 +670,7 @@
         <argsstring></argsstring>
         <name>WanderingTrader</name>
         <qualifiedname>endstone::ActorType::WanderingTrader</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;wandering_trader&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;wandering_trader&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -685,7 +685,7 @@
         <argsstring></argsstring>
         <name>Wolf</name>
         <qualifiedname>endstone::ActorType::Wolf</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;wolf&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;wolf&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -700,7 +700,7 @@
         <argsstring></argsstring>
         <name>ZombieHorse</name>
         <qualifiedname>endstone::ActorType::ZombieHorse</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;zombie_horse&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;zombie_horse&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -715,7 +715,7 @@
         <argsstring></argsstring>
         <name>Blaze</name>
         <qualifiedname>endstone::ActorType::Blaze</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;blaze&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;blaze&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -730,7 +730,7 @@
         <argsstring></argsstring>
         <name>Bogged</name>
         <qualifiedname>endstone::ActorType::Bogged</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;bogged&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;bogged&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -745,7 +745,7 @@
         <argsstring></argsstring>
         <name>Breeze</name>
         <qualifiedname>endstone::ActorType::Breeze</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;breeze&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;breeze&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -760,7 +760,7 @@
         <argsstring></argsstring>
         <name>CaveSpider</name>
         <qualifiedname>endstone::ActorType::CaveSpider</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;cave_spider&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;cave_spider&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -775,7 +775,7 @@
         <argsstring></argsstring>
         <name>Creaking</name>
         <qualifiedname>endstone::ActorType::Creaking</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;creaking&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;creaking&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -790,7 +790,7 @@
         <argsstring></argsstring>
         <name>Creeper</name>
         <qualifiedname>endstone::ActorType::Creeper</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;creeper&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;creeper&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -805,7 +805,7 @@
         <argsstring></argsstring>
         <name>Drowned</name>
         <qualifiedname>endstone::ActorType::Drowned</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;drowned&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;drowned&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -820,7 +820,7 @@
         <argsstring></argsstring>
         <name>ElderGuardian</name>
         <qualifiedname>endstone::ActorType::ElderGuardian</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;elder_guardian&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;elder_guardian&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -835,7 +835,7 @@
         <argsstring></argsstring>
         <name>ElderGuardianGhost</name>
         <qualifiedname>endstone::ActorType::ElderGuardianGhost</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;elder_guardian_ghost&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;elder_guardian_ghost&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -850,7 +850,7 @@
         <argsstring></argsstring>
         <name>Enderman</name>
         <qualifiedname>endstone::ActorType::Enderman</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;enderman&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;enderman&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -865,7 +865,7 @@
         <argsstring></argsstring>
         <name>Endermite</name>
         <qualifiedname>endstone::ActorType::Endermite</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;endermite&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;endermite&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -880,7 +880,7 @@
         <argsstring></argsstring>
         <name>EvocationIllager</name>
         <qualifiedname>endstone::ActorType::EvocationIllager</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;evocation_illager&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;evocation_illager&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -895,7 +895,7 @@
         <argsstring></argsstring>
         <name>Ghast</name>
         <qualifiedname>endstone::ActorType::Ghast</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;ghast&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;ghast&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -910,7 +910,7 @@
         <argsstring></argsstring>
         <name>Guardian</name>
         <qualifiedname>endstone::ActorType::Guardian</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;guardian&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;guardian&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -925,7 +925,7 @@
         <argsstring></argsstring>
         <name>Husk</name>
         <qualifiedname>endstone::ActorType::Husk</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;husk&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;husk&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -940,7 +940,7 @@
         <argsstring></argsstring>
         <name>MagmaCube</name>
         <qualifiedname>endstone::ActorType::MagmaCube</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;magma_cube&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;magma_cube&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -955,7 +955,7 @@
         <argsstring></argsstring>
         <name>Parched</name>
         <qualifiedname>endstone::ActorType::Parched</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;parched&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;parched&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -970,7 +970,7 @@
         <argsstring></argsstring>
         <name>Phantom</name>
         <qualifiedname>endstone::ActorType::Phantom</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;phantom&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;phantom&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -985,7 +985,7 @@
         <argsstring></argsstring>
         <name>Piglin</name>
         <qualifiedname>endstone::ActorType::Piglin</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;piglin&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;piglin&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1000,7 +1000,7 @@
         <argsstring></argsstring>
         <name>PiglinBrute</name>
         <qualifiedname>endstone::ActorType::PiglinBrute</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;piglin_brute&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;piglin_brute&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1015,7 +1015,7 @@
         <argsstring></argsstring>
         <name>Pillager</name>
         <qualifiedname>endstone::ActorType::Pillager</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;pillager&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;pillager&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1030,7 +1030,7 @@
         <argsstring></argsstring>
         <name>Ravager</name>
         <qualifiedname>endstone::ActorType::Ravager</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;ravager&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;ravager&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1045,7 +1045,7 @@
         <argsstring></argsstring>
         <name>Shulker</name>
         <qualifiedname>endstone::ActorType::Shulker</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;shulker&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;shulker&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1060,7 +1060,7 @@
         <argsstring></argsstring>
         <name>Silverfish</name>
         <qualifiedname>endstone::ActorType::Silverfish</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;silverfish&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;silverfish&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1075,7 +1075,7 @@
         <argsstring></argsstring>
         <name>Skeleton</name>
         <qualifiedname>endstone::ActorType::Skeleton</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;skeleton&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;skeleton&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1090,7 +1090,7 @@
         <argsstring></argsstring>
         <name>Slime</name>
         <qualifiedname>endstone::ActorType::Slime</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;slime&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;slime&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1105,7 +1105,7 @@
         <argsstring></argsstring>
         <name>Spider</name>
         <qualifiedname>endstone::ActorType::Spider</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;spider&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;spider&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1120,7 +1120,7 @@
         <argsstring></argsstring>
         <name>Stray</name>
         <qualifiedname>endstone::ActorType::Stray</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;stray&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;stray&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1135,7 +1135,7 @@
         <argsstring></argsstring>
         <name>Vex</name>
         <qualifiedname>endstone::ActorType::Vex</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;vex&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;vex&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1150,7 +1150,7 @@
         <argsstring></argsstring>
         <name>Vindicator</name>
         <qualifiedname>endstone::ActorType::Vindicator</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;vindicator&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;vindicator&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1165,7 +1165,7 @@
         <argsstring></argsstring>
         <name>Warden</name>
         <qualifiedname>endstone::ActorType::Warden</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;warden&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;warden&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1180,7 +1180,7 @@
         <argsstring></argsstring>
         <name>Witch</name>
         <qualifiedname>endstone::ActorType::Witch</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;witch&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;witch&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1195,7 +1195,7 @@
         <argsstring></argsstring>
         <name>Wither</name>
         <qualifiedname>endstone::ActorType::Wither</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;wither&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;wither&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1210,7 +1210,7 @@
         <argsstring></argsstring>
         <name>WitherSkeleton</name>
         <qualifiedname>endstone::ActorType::WitherSkeleton</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;wither_skeleton&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;wither_skeleton&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1225,7 +1225,7 @@
         <argsstring></argsstring>
         <name>Zoglin</name>
         <qualifiedname>endstone::ActorType::Zoglin</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;zoglin&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;zoglin&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1240,7 +1240,7 @@
         <argsstring></argsstring>
         <name>Zombie</name>
         <qualifiedname>endstone::ActorType::Zombie</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;zombie&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;zombie&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1255,7 +1255,7 @@
         <argsstring></argsstring>
         <name>ZombieNautilus</name>
         <qualifiedname>endstone::ActorType::ZombieNautilus</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;zombie_nautilus&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;zombie_nautilus&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1270,7 +1270,7 @@
         <argsstring></argsstring>
         <name>ZombiePigman</name>
         <qualifiedname>endstone::ActorType::ZombiePigman</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;zombie_pigman&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;zombie_pigman&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1285,7 +1285,7 @@
         <argsstring></argsstring>
         <name>ZombieVillager</name>
         <qualifiedname>endstone::ActorType::ZombieVillager</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;zombie_villager&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;zombie_villager&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1300,7 +1300,7 @@
         <argsstring></argsstring>
         <name>ZombieVillagerV2</name>
         <qualifiedname>endstone::ActorType::ZombieVillagerV2</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;zombie_villager_v2&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;zombie_villager_v2&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1315,7 +1315,7 @@
         <argsstring></argsstring>
         <name>Villager</name>
         <qualifiedname>endstone::ActorType::Villager</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;villager&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;villager&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1330,7 +1330,7 @@
         <argsstring></argsstring>
         <name>VillagerV2</name>
         <qualifiedname>endstone::ActorType::VillagerV2</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;villager_v2&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;villager_v2&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1345,7 +1345,7 @@
         <argsstring></argsstring>
         <name>Agent</name>
         <qualifiedname>endstone::ActorType::Agent</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;agent&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;agent&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1360,7 +1360,7 @@
         <argsstring></argsstring>
         <name>ArmorStand</name>
         <qualifiedname>endstone::ActorType::ArmorStand</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;armor_stand&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;armor_stand&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1375,7 +1375,7 @@
         <argsstring></argsstring>
         <name>EnderDragon</name>
         <qualifiedname>endstone::ActorType::EnderDragon</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;ender_dragon&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;ender_dragon&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1390,7 +1390,7 @@
         <argsstring></argsstring>
         <name>Npc</name>
         <qualifiedname>endstone::ActorType::Npc</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;npc&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;npc&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1405,7 +1405,7 @@
         <argsstring></argsstring>
         <name>Player</name>
         <qualifiedname>endstone::ActorType::Player</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;player&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;player&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1420,7 +1420,7 @@
         <argsstring></argsstring>
         <name>TripodCamera</name>
         <qualifiedname>endstone::ActorType::TripodCamera</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;tripod_camera&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;tripod_camera&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1435,7 +1435,7 @@
         <argsstring></argsstring>
         <name>AreaEffectCloud</name>
         <qualifiedname>endstone::ActorType::AreaEffectCloud</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;area_effect_cloud&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;area_effect_cloud&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1450,7 +1450,7 @@
         <argsstring></argsstring>
         <name>Arrow</name>
         <qualifiedname>endstone::ActorType::Arrow</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;arrow&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;arrow&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1465,7 +1465,7 @@
         <argsstring></argsstring>
         <name>Balloon</name>
         <qualifiedname>endstone::ActorType::Balloon</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;balloon&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;balloon&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1480,7 +1480,7 @@
         <argsstring></argsstring>
         <name>Boat</name>
         <qualifiedname>endstone::ActorType::Boat</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;boat&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;boat&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1495,7 +1495,7 @@
         <argsstring></argsstring>
         <name>BreezeWindChargeProjectile</name>
         <qualifiedname>endstone::ActorType::BreezeWindChargeProjectile</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;breeze_wind_charge_projectile&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;breeze_wind_charge_projectile&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1510,7 +1510,7 @@
         <argsstring></argsstring>
         <name>ChestBoat</name>
         <qualifiedname>endstone::ActorType::ChestBoat</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;chest_boat&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;chest_boat&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1525,7 +1525,7 @@
         <argsstring></argsstring>
         <name>ChestMinecart</name>
         <qualifiedname>endstone::ActorType::ChestMinecart</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;chest_minecart&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;chest_minecart&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1540,7 +1540,7 @@
         <argsstring></argsstring>
         <name>CommandBlockMinecart</name>
         <qualifiedname>endstone::ActorType::CommandBlockMinecart</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;command_block_minecart&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;command_block_minecart&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1555,7 +1555,7 @@
         <argsstring></argsstring>
         <name>DragonFireball</name>
         <qualifiedname>endstone::ActorType::DragonFireball</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;dragon_fireball&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;dragon_fireball&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1570,7 +1570,7 @@
         <argsstring></argsstring>
         <name>Egg</name>
         <qualifiedname>endstone::ActorType::Egg</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;egg&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;egg&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1585,7 +1585,7 @@
         <argsstring></argsstring>
         <name>EnderCrystal</name>
         <qualifiedname>endstone::ActorType::EnderCrystal</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;ender_crystal&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;ender_crystal&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1600,7 +1600,7 @@
         <argsstring></argsstring>
         <name>EnderPearl</name>
         <qualifiedname>endstone::ActorType::EnderPearl</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;ender_pearl&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;ender_pearl&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1615,7 +1615,7 @@
         <argsstring></argsstring>
         <name>EvocationFang</name>
         <qualifiedname>endstone::ActorType::EvocationFang</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;evocation_fang&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;evocation_fang&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1630,7 +1630,7 @@
         <argsstring></argsstring>
         <name>EyeOfEnderSignal</name>
         <qualifiedname>endstone::ActorType::EyeOfEnderSignal</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;eye_of_ender_signal&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;eye_of_ender_signal&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1645,7 +1645,7 @@
         <argsstring></argsstring>
         <name>FallingBlock</name>
         <qualifiedname>endstone::ActorType::FallingBlock</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;falling_block&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;falling_block&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1660,7 +1660,7 @@
         <argsstring></argsstring>
         <name>Fireball</name>
         <qualifiedname>endstone::ActorType::Fireball</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;fireball&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;fireball&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1675,7 +1675,7 @@
         <argsstring></argsstring>
         <name>FireworksRocket</name>
         <qualifiedname>endstone::ActorType::FireworksRocket</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;fireworks_rocket&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;fireworks_rocket&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1690,7 +1690,7 @@
         <argsstring></argsstring>
         <name>FishingHook</name>
         <qualifiedname>endstone::ActorType::FishingHook</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;fishing_hook&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;fishing_hook&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1705,7 +1705,7 @@
         <argsstring></argsstring>
         <name>HopperMinecart</name>
         <qualifiedname>endstone::ActorType::HopperMinecart</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;hopper_minecart&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;hopper_minecart&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1720,7 +1720,7 @@
         <argsstring></argsstring>
         <name>IceBomb</name>
         <qualifiedname>endstone::ActorType::IceBomb</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;ice_bomb&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;ice_bomb&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1735,7 +1735,7 @@
         <argsstring></argsstring>
         <name>Item</name>
         <qualifiedname>endstone::ActorType::Item</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;item&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;item&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1750,7 +1750,7 @@
         <argsstring></argsstring>
         <name>LeashKnot</name>
         <qualifiedname>endstone::ActorType::LeashKnot</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;leash_knot&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;leash_knot&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1765,7 +1765,7 @@
         <argsstring></argsstring>
         <name>LightningBolt</name>
         <qualifiedname>endstone::ActorType::LightningBolt</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;lightning_bolt&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;lightning_bolt&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1780,7 +1780,7 @@
         <argsstring></argsstring>
         <name>LingeringPotion</name>
         <qualifiedname>endstone::ActorType::LingeringPotion</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;lingering_potion&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;lingering_potion&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1795,7 +1795,7 @@
         <argsstring></argsstring>
         <name>LlamaSpit</name>
         <qualifiedname>endstone::ActorType::LlamaSpit</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;llama_spit&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;llama_spit&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1810,7 +1810,7 @@
         <argsstring></argsstring>
         <name>Minecart</name>
         <qualifiedname>endstone::ActorType::Minecart</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;minecart&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;minecart&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1825,7 +1825,7 @@
         <argsstring></argsstring>
         <name>OminousItemSpawner</name>
         <qualifiedname>endstone::ActorType::OminousItemSpawner</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;ominous_item_spawner&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;ominous_item_spawner&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1840,7 +1840,7 @@
         <argsstring></argsstring>
         <name>Painting</name>
         <qualifiedname>endstone::ActorType::Painting</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;painting&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;painting&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1855,7 +1855,7 @@
         <argsstring></argsstring>
         <name>ShulkerBullet</name>
         <qualifiedname>endstone::ActorType::ShulkerBullet</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;shulker_bullet&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;shulker_bullet&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1870,7 +1870,7 @@
         <argsstring></argsstring>
         <name>SmallFireball</name>
         <qualifiedname>endstone::ActorType::SmallFireball</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;small_fireball&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;small_fireball&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1885,7 +1885,7 @@
         <argsstring></argsstring>
         <name>Snowball</name>
         <qualifiedname>endstone::ActorType::Snowball</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;snowball&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;snowball&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1900,7 +1900,7 @@
         <argsstring></argsstring>
         <name>SplashPotion</name>
         <qualifiedname>endstone::ActorType::SplashPotion</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;splash_potion&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;splash_potion&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1915,7 +1915,7 @@
         <argsstring></argsstring>
         <name>ThrownTrident</name>
         <qualifiedname>endstone::ActorType::ThrownTrident</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;thrown_trident&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;thrown_trident&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1930,7 +1930,7 @@
         <argsstring></argsstring>
         <name>Tnt</name>
         <qualifiedname>endstone::ActorType::Tnt</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;tnt&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;tnt&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1945,7 +1945,7 @@
         <argsstring></argsstring>
         <name>TntMinecart</name>
         <qualifiedname>endstone::ActorType::TntMinecart</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;tnt_minecart&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;tnt_minecart&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1960,7 +1960,7 @@
         <argsstring></argsstring>
         <name>WindChargeProjectile</name>
         <qualifiedname>endstone::ActorType::WindChargeProjectile</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;wind_charge_projectile&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;wind_charge_projectile&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1975,7 +1975,7 @@
         <argsstring></argsstring>
         <name>WitherSkull</name>
         <qualifiedname>endstone::ActorType::WitherSkull</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;wither_skull&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;wither_skull&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1990,7 +1990,7 @@
         <argsstring></argsstring>
         <name>WitherSkullDangerous</name>
         <qualifiedname>endstone::ActorType::WitherSkullDangerous</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;wither_skull_dangerous&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;wither_skull_dangerous&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -2005,7 +2005,7 @@
         <argsstring></argsstring>
         <name>XpBottle</name>
         <qualifiedname>endstone::ActorType::XpBottle</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;xp_bottle&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;xp_bottle&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -2020,7 +2020,7 @@
         <argsstring></argsstring>
         <name>XpOrb</name>
         <qualifiedname>endstone::ActorType::XpOrb</qualifiedname>
-        <initializer>= ActorTypeId::minecraft(&quot;xp_orb&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">ActorTypeId::minecraft</ref>(&quot;xp_orb&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

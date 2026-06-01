@@ -6,7 +6,7 @@
     <includes refid="player__quit__event_8h" local="no">endstone/event/player/player_quit_event.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerQuitEvent_1ae70ebd19593a4a08fee645106ba8678a" prot="private" static="no" mutable="no">
-        <type>std::optional&lt; Message &gt;</type>
+        <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
         <definition>std::optional&lt;Message&gt; endstone::PlayerQuitEvent::quit_message_</definition>
         <argsstring></argsstring>
         <name>quit_message_</name>
@@ -49,7 +49,7 @@
           <declname>player</declname>
         </param>
         <param>
-          <type>std::optional&lt; Message &gt;</type>
+          <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
           <declname>quit_message</declname>
         </param>
         <briefdescription>
@@ -61,7 +61,7 @@
         <location file="include/endstone/event/player/player_quit_event.h" line="31" column="14" bodyfile="include/endstone/event/player/player_quit_event.h" bodystart="31" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerQuitEvent_1a1dc49d81c8a458e1a45d8d2c33f03f15" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::optional&lt; Message &gt;</type>
+        <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
         <definition>std::optional&lt; Message &gt; endstone::PlayerQuitEvent::getQuitMessage</definition>
         <argsstring>() const</argsstring>
         <name>getQuitMessage</name>
@@ -85,7 +85,7 @@
         <name>setQuitMessage</name>
         <qualifiedname>endstone::PlayerQuitEvent::setQuitMessage</qualifiedname>
         <param>
-          <type>std::optional&lt; Message &gt;</type>
+          <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
           <declname>message</declname>
         </param>
         <briefdescription>

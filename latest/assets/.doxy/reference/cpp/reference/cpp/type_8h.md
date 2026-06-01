@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| struct | [**TagBase**](structendstone_1_1nbt_1_1TagBase.md) <br> |
+| struct | [**TagBase**](structendstone_1_1nbt_1_1TagBase.md) <br>_Common base for all NBT tag types._  |
 
 
 

@@ -110,12 +110,14 @@
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Identifies the kind of payload an NBT tag holds. </para>
         </briefdescription>
         <detaileddescription>
+<para>The numeric values match the tag ids used in the binary NBT format. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/type.h" line="20" column="1" bodyfile="include/endstone/nbt/type.h" bodystart="20" bodyend="33"/>
+        <location file="include/endstone/nbt/type.h" line="29" column="1" bodyfile="include/endstone/nbt/type.h" bodystart="29" bodyend="42"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -405,7 +407,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="584" column="20" bodyfile="include/endstone/nbt/tag.h" bodystart="584" bodyend="587"/>
+        <location file="include/endstone/nbt/tag.h" line="728" column="20" bodyfile="include/endstone/nbt/tag.h" bodystart="728" bodyend="731"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

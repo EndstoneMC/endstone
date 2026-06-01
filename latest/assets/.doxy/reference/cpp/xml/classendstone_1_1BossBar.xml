@@ -66,7 +66,7 @@
         <location file="include/endstone/boss/boss_bar.h" line="43" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1adf1bfb4dc7ac123c729edc425c6dbf38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>BarColor</type>
+        <type><ref refid="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6" kindref="member">BarColor</ref></type>
         <definition>virtual BarColor endstone::BossBar::getColor</definition>
         <argsstring>() const =0</argsstring>
         <name>getColor</name>
@@ -90,7 +90,7 @@
         <name>setColor</name>
         <qualifiedname>endstone::BossBar::setColor</qualifiedname>
         <param>
-          <type>BarColor</type>
+          <type><ref refid="namespaceendstone_1a554d2e220ce8a5afd95c31e6065a75f6" kindref="member">BarColor</ref></type>
           <declname>color</declname>
         </param>
         <briefdescription>

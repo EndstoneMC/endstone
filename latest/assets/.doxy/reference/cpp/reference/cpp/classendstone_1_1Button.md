@@ -58,13 +58,13 @@ _Represents a button with text and an optional icon._
 | Type | Name |
 | ---: | :--- |
 |   | [**Button**](#function-button-12) () = default<br> |
-|   | [**Button**](#function-button-22) (Message text, std::optional&lt; std::string &gt; icon=std::nullopt, OnClickCallback on\_click={}) <br> |
+|   | [**Button**](#function-button-22) ([**Message**](namespaceendstone.md#typedef-message) text, std::optional&lt; std::string &gt; icon=std::nullopt, OnClickCallback on\_click={}) <br> |
 |  std::optional&lt; std::string &gt; | [**getIcon**](#function-geticon) () const<br>_Get the icon of the button._  |
 |  OnClickCallback | [**getOnClick**](#function-getonclick) () const<br>_Gets the on click callback of the button._  |
-|  Message | [**getText**](#function-gettext) () const<br>_Gets the text of the button._  |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**getText**](#function-gettext) () const<br>_Gets the text of the button._  |
 |  [**Button**](classendstone_1_1Button.md) & | [**setIcon**](#function-seticon) (std::string icon) <br>_Sets the icon for the button._  |
 |  [**Button**](classendstone_1_1Button.md) & | [**setOnClick**](#function-setonclick) (OnClickCallback on\_click) <br>_Sets the on click callback of the button._  |
-|  [**Button**](classendstone_1_1Button.md) & | [**setText**](#function-settext) (Message text) <br>_Sets the text of the button._  |
+|  [**Button**](classendstone_1_1Button.md) & | [**setText**](#function-settext) ([**Message**](namespaceendstone.md#typedef-message) text) <br>_Sets the text of the button._  |
 
 
 

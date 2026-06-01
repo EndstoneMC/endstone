@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="182" column="10" bodyfile="include/endstone/registry.h" bodystart="182" bodyend="185"/>
+        <location file="include/endstone/registry.h" line="197" column="10" bodyfile="include/endstone/registry.h" bodystart="197" bodyend="200"/>
       </memberdef>
     </sectiondef>
     <requiresclause>requires(const T &amp;t) { { t.getId() } -&gt; std::convertible_to&lt;<ref refid="classendstone_1_1Identifier" kindref="compound">endstone::Identifier</ref>&lt;T&gt;&gt;; }    </requiresclause>
@@ -64,7 +64,7 @@
         <label>std::formatter&lt; std::string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/registry.h" line="180" column="1" bodyfile="include/endstone/registry.h" bodystart="180" bodyend="186"/>
+    <location file="include/endstone/registry.h" line="195" column="1" bodyfile="include/endstone/registry.h" bodystart="195" bodyend="201"/>
     <listofallmembers>
       <member refid="structstd_1_1formatter_3_01T_01_4_1a6b85600bb4badb8e36b91ccbd22510c8" prot="public" virt="non-virtual"><scope>std::formatter&lt; T &gt;</scope><name>format</name></member>
     </listofallmembers>

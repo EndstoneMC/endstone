@@ -10,8 +10,9 @@
 
 
 
+_An NBT tag holding a contiguous array of fixed-width values (e.g._ [More...](#detailed-description)
 
-
+* `#include <endstone/nbt/array.h>`
 
 
 
@@ -163,6 +164,26 @@ Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1
 
 
 
+## Detailed Description
+
+
+byte array, int array).
+
+
+Provides a std::vector-like interface over the underlying storage.
+
+
+
+
+**Template parameters:**
+
+
+* `T` the element type 
+
+
+
+
+    
 ## Public Types Documentation
 
 

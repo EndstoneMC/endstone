@@ -2765,7 +2765,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">enum</td>
-<td style="text-align: left;"><a href="#enum-loadtype"><strong>LoadType</strong></a>  <br></td>
+<td style="text-align: left;"><a href="#enum-loadtype"><strong>LoadType</strong></a>  <br><em>Represents the context in which the server was loaded.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2784,11 +2784,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-serverloadevent"><strong>ServerLoadEvent</strong></a> (LoadType type) <br></td>
+<td style="text-align: left;"><a href="#function-serverloadevent"><strong>ServerLoadEvent</strong></a> (<a href="./#enum-loadtype"><strong>LoadType</strong></a> type) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">LoadType</td>
-<td style="text-align: left;"><a href="#function-gettype"><strong>getType</strong></a> () const<br></td>
+<td style="text-align: right;"><a href="./#enum-loadtype"><strong>LoadType</strong></a></td>
+<td style="text-align: left;"><a href="#function-gettype"><strong>getType</strong></a> () const<br><em>Gets the context in which the server was loaded.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2862,11 +2862,12 @@ For latest updates join the chat on
 </table>
 <h2 id="public-types-documentation">Public Types Documentation<a class="headerlink" href="#public-types-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="enum-loadtype">enum LoadType<a class="headerlink" href="#enum-loadtype" title="Permanent link">&para;</a></h3>
+<p><em>Represents the context in which the server was loaded.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">ServerLoadEvent</span><span class="o">::</span><span class="n">LoadType</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Startup</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Reload</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">};</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-endstone_event">function ENDSTONE_EVENT<a class="headerlink" href="#function-endstone_event" title="Permanent link">&para;</a></h3>
@@ -2884,8 +2885,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-gettype">function getType<a class="headerlink" href="#function-gettype" title="Permanent link">&para;</a></h3>
+<p><em>Gets the context in which the server was loaded.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">LoadType</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ServerLoadEvent</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the load type for this event </p>
 <hr>
 
 <hr />

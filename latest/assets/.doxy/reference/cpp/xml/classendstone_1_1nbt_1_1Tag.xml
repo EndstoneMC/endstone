@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1nbt_1_1Tag" kind="class" language="C++" prot="public">
     <compoundname>endstone::nbt::Tag</compoundname>
+    <includes refid="tag_8h" local="no">endstone/nbt/tag.h</includes>
     <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classendstone_1_1nbt_1_1Tag_1a65420eb0cb900ced2c3de8f8254e97dc" prot="public" static="no">
         <type>std::variant&lt; std::monostate, <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ByteTag</ref>, <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">ShortTag</ref>, <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">IntTag</ref>, <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">LongTag</ref>, <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">FloatTag</ref>, <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">DoubleTag</ref>, <ref refid="classendstone_1_1nbt_1_1ValueTag" kindref="compound">StringTag</ref>, <ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">ByteArrayTag</ref>, <ref refid="classendstone_1_1nbt_1_1ArrayTag" kindref="compound">IntArrayTag</ref>, <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref>, <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> &gt;</type>
@@ -15,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="51" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="52" bodyend="-1"/>
+        <location file="include/endstone/nbt/tag.h" line="59" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="60" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -31,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="307" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="307" bodyend="-1"/>
+        <location file="include/endstone/nbt/tag.h" line="451" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="451" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -47,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="54" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="54" bodyend="54"/>
+        <location file="include/endstone/nbt/tag.h" line="62" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1aa422827b8110cfca46383ef9b765f828" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -65,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="55" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="55" bodyend="55"/>
+        <location file="include/endstone/nbt/tag.h" line="63" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1ae884e02b3c07de5ec375f3bcb1e92685" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -83,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="56" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="56" bodyend="56"/>
+        <location file="include/endstone/nbt/tag.h" line="64" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a22e467bc18068dac9a232128a3d26223" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -101,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="57" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="57" bodyend="57"/>
+        <location file="include/endstone/nbt/tag.h" line="65" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a982b0fc3471d27dfcff9b5d332232626" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -119,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="58" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="58" bodyend="58"/>
+        <location file="include/endstone/nbt/tag.h" line="66" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a65525ac13840d3e673031d3b72e3ab77" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -137,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="59" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="59" bodyend="59"/>
+        <location file="include/endstone/nbt/tag.h" line="67" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1aabd34e3af3d5bbe9b505d4383d1abd63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -155,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="60" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="60" bodyend="60"/>
+        <location file="include/endstone/nbt/tag.h" line="68" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a0efe924290133bca9ee1df95249f7af0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -173,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="61" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="61" bodyend="61"/>
+        <location file="include/endstone/nbt/tag.h" line="69" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="69" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a645f3b7d6ffc9876763930eda55e7de0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -191,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="62" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="62" bodyend="62"/>
+        <location file="include/endstone/nbt/tag.h" line="70" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1aca1890299b986d091b75c0e68ce10a44" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -209,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="63" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="63" bodyend="63"/>
+        <location file="include/endstone/nbt/tag.h" line="71" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="71" bodyend="71"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a7d63b7f1bb1073bfb7fd0e363b89baf1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -227,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="64" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="64" bodyend="64"/>
+        <location file="include/endstone/nbt/tag.h" line="72" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="72" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a79ae318b34e3241f18d3c0c58103ce64" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -245,7 +246,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="65" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="65" bodyend="65"/>
+        <location file="include/endstone/nbt/tag.h" line="73" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="73" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a2b3b936c7e42060da6e8f4b915232817" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -263,7 +264,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="66" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="66" bodyend="66"/>
+        <location file="include/endstone/nbt/tag.h" line="74" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="74" bodyend="74"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a996735df152a52ba7c2bb55ef22295c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -281,7 +282,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="67" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="67" bodyend="67"/>
+        <location file="include/endstone/nbt/tag.h" line="75" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a7355ab39afc6f2e6577df18f37dda68f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -299,7 +300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="68" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="68" bodyend="68"/>
+        <location file="include/endstone/nbt/tag.h" line="76" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="76" bodyend="76"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1abf15a6145c4672e56352304fbb9982f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -317,7 +318,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="69" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="69" bodyend="69"/>
+        <location file="include/endstone/nbt/tag.h" line="77" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="77" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a45320cc92a48fa28c3b0a94866deb8ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -335,7 +336,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="70" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="70" bodyend="70"/>
+        <location file="include/endstone/nbt/tag.h" line="78" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="78" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a3249d6c5fd252a71d51814eaa11017b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -353,7 +354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="71" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="71" bodyend="71"/>
+        <location file="include/endstone/nbt/tag.h" line="79" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="79" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a21a4faad160867106162049753758994" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -371,7 +372,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="72" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="72" bodyend="72"/>
+        <location file="include/endstone/nbt/tag.h" line="80" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="80" bodyend="80"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a08066da578958c63394fc1a3e3bd21b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -389,7 +390,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="73" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="73" bodyend="73"/>
+        <location file="include/endstone/nbt/tag.h" line="81" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a4bcf5591b9e38a8ce6f6bd4bf4fd7c8d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -407,7 +408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="74" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="74" bodyend="74"/>
+        <location file="include/endstone/nbt/tag.h" line="82" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a19ca10466d066d9321154283b86c72dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -425,7 +426,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="75" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="75" bodyend="75"/>
+        <location file="include/endstone/nbt/tag.h" line="83" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a62aeaa12b7839a31f6f2332cabd94792" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -443,7 +444,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="76" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="76" bodyend="76"/>
+        <location file="include/endstone/nbt/tag.h" line="84" column="5" bodyfile="include/endstone/nbt/tag.h" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1aba0d5feb9ff784f93ceb4800d7ef12ff" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>Type</type>
@@ -452,12 +453,16 @@
         <name>type</name>
         <qualifiedname>endstone::nbt::Tag::type</qualifiedname>
         <briefdescription>
+<para>Get the type of payload currently held by this tag. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>the tag type, or Type::End if the tag is empty </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="78" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="78" bodyend="108"/>
+        <location file="include/endstone/nbt/tag.h" line="91" column="10" bodyfile="include/endstone/nbt/tag.h" bodystart="91" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a26db240afe64881bc025116ca2d55fa6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>std::size_t</type>
@@ -466,12 +471,17 @@
         <name>size</name>
         <qualifiedname>endstone::nbt::Tag::size</qualifiedname>
         <briefdescription>
+<para>Get the number of elements held by this tag. </para>
         </briefdescription>
         <detaileddescription>
+<para>For a list, compound or array this is the element count; for a string it is the character count; scalar tags report 1 and an empty tag reports 0.</para>
+<para><simplesect kind="return"><para>the element count </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="110" column="18" bodyfile="include/endstone/nbt/tag.h" bodystart="110" bodyend="130"/>
+        <location file="include/endstone/nbt/tag.h" line="131" column="18" bodyfile="include/endstone/nbt/tag.h" bodystart="131" bodyend="151"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1aeb19a5459ba7bc4776803729e469185a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -480,12 +490,16 @@
         <name>empty</name>
         <qualifiedname>endstone::nbt::Tag::empty</qualifiedname>
         <briefdescription>
+<para>Check whether this tag holds no elements. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>true if <ref refid="classendstone_1_1nbt_1_1Tag_1a26db240afe64881bc025116ca2d55fa6" kindref="member">size()</ref> is 0 </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="132" column="11" bodyfile="include/endstone/nbt/tag.h" bodystart="132" bodyend="132"/>
+        <location file="include/endstone/nbt/tag.h" line="158" column="11" bodyfile="include/endstone/nbt/tag.h" bodystart="158" bodyend="158"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1ab8baf612fad7aded5d5f934f97998c8c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref> &amp;</type>
@@ -498,12 +512,35 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Access the child tag with the given key, treating this tag as a compound. </para>
         </briefdescription>
         <detaileddescription>
+<para>An empty tag is promoted to a <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref>, and a missing key is inserted with an empty value.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to access </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to the child tag </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if this tag is not a compound </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="134" column="9" bodyfile="include/endstone/nbt/tag.h" bodystart="134" bodyend="144"/>
+        <location file="include/endstone/nbt/tag.h" line="169" column="9" bodyfile="include/endstone/nbt/tag.h" bodystart="169" bodyend="179"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a8349c0a0cf78f2b111d6be17e497aa53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref> &amp;</type>
@@ -516,12 +553,35 @@
           <declname>index</declname>
         </param>
         <briefdescription>
+<para>Access the child tag at the given index, treating this tag as a list. </para>
         </briefdescription>
         <detaileddescription>
+<para>An empty tag is promoted to a <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index to access </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to the child tag </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if this tag is not a list </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="146" column="9" bodyfile="include/endstone/nbt/tag.h" bodystart="146" bodyend="156"/>
+        <location file="include/endstone/nbt/tag.h" line="190" column="9" bodyfile="include/endstone/nbt/tag.h" bodystart="190" bodyend="200"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1abba33187eb3dfb40d6e523801ca5cd0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref> &amp;</type>
@@ -534,12 +594,43 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Access the child tag with the given key, treating this tag as a compound, with bounds checking. </para>
         </briefdescription>
         <detaileddescription>
+<para>An empty tag is promoted to a <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to access </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to the child tag </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if this tag is not a compound </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>std::out_of_range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the key is not present </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="158" column="9" bodyfile="include/endstone/nbt/tag.h" bodystart="158" bodyend="168"/>
+        <location file="include/endstone/nbt/tag.h" line="212" column="9" bodyfile="include/endstone/nbt/tag.h" bodystart="212" bodyend="222"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a4c5cc695bd404b999dbefadfea56acc7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref> &amp;</type>
@@ -552,12 +643,42 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Access the child tag with the given key, treating this tag as a compound, with bounds checking. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to access </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a const reference to the child tag </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if this tag is not a compound </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>std::out_of_range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the key is not present </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="170" column="16" bodyfile="include/endstone/nbt/tag.h" bodystart="170" bodyend="177"/>
+        <location file="include/endstone/nbt/tag.h" line="232" column="16" bodyfile="include/endstone/nbt/tag.h" bodystart="232" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1ac8a9c057f0ecf10c78ef8f37b14ab39b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref> &amp;</type>
@@ -570,12 +691,43 @@
           <declname>index</declname>
         </param>
         <briefdescription>
+<para>Access the child tag at the given index, treating this tag as a list, with bounds checking. </para>
         </briefdescription>
         <detaileddescription>
+<para>An empty tag is promoted to a <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index to access </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to the child tag </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if this tag is not a list </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>std::out_of_range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the index is out of range </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="179" column="9" bodyfile="include/endstone/nbt/tag.h" bodystart="179" bodyend="189"/>
+        <location file="include/endstone/nbt/tag.h" line="251" column="9" bodyfile="include/endstone/nbt/tag.h" bodystart="251" bodyend="261"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a3e8551954ca4cb61dcb485d25744f1dc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref> &amp;</type>
@@ -588,12 +740,42 @@
           <declname>index</declname>
         </param>
         <briefdescription>
+<para>Access the child tag at the given index, treating this tag as a list, with bounds checking. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index to access </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a const reference to the child tag </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if this tag is not a list </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>std::out_of_range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the index is out of range </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="191" column="16" bodyfile="include/endstone/nbt/tag.h" bodystart="191" bodyend="198"/>
+        <location file="include/endstone/nbt/tag.h" line="271" column="16" bodyfile="include/endstone/nbt/tag.h" bodystart="271" bodyend="278"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a2dd1775a1705a9a4ecbc5629a8c19e62" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -606,12 +788,25 @@
           <declname>key</declname>
         </param>
         <briefdescription>
+<para>Check whether this tag is a compound containing the given key. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key to look up </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if this tag is a compound and contains the key, false otherwise </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="200" column="11" bodyfile="include/endstone/nbt/tag.h" bodystart="200" bodyend="207"/>
+        <location file="include/endstone/nbt/tag.h" line="286" column="11" bodyfile="include/endstone/nbt/tag.h" bodystart="286" bodyend="293"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a528f7da975aac9ebad73be59fc7b8678" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -631,12 +826,35 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Construct a child tag in place at the end of this list. </para>
         </briefdescription>
         <detaileddescription>
+<para>An empty tag is promoted to a <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the arguments forwarded to the element constructor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to this tag&apos;s underlying list </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if this tag is not a list </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="210" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="210" bodyend="221"/>
+        <location file="include/endstone/nbt/tag.h" line="305" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="305" bodyend="316"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a9d3e67f5050d86c41f30753f6f9fd57e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -656,12 +874,35 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Construct an entry in place in this compound. </para>
         </briefdescription>
         <detaileddescription>
+<para>An empty tag is promoted to a <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the arguments forwarded to construct the key/value entry </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a pair of an iterator to the entry and a bool that is true if a new entry was inserted </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if this tag is not a compound </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="224" column="15" bodyfile="include/endstone/nbt/tag.h" bodystart="224" bodyend="234"/>
+        <location file="include/endstone/nbt/tag.h" line="328" column="15" bodyfile="include/endstone/nbt/tag.h" bodystart="328" bodyend="338"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a26110c6aaf31930e18bb728fb897337b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -675,12 +916,34 @@
         <name>get</name>
         <qualifiedname>endstone::nbt::Tag::get</qualifiedname>
         <briefdescription>
+<para>Get the payload as the given tag type. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tag type to retrieve </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a reference to the held value </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if this tag does not currently hold a T </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="237" column="7" bodyfile="include/endstone/nbt/tag.h" bodystart="237" bodyend="243"/>
+        <location file="include/endstone/nbt/tag.h" line="348" column="7" bodyfile="include/endstone/nbt/tag.h" bodystart="348" bodyend="354"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a3984d3363305d9c9dce444d6b5f33c92" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -694,12 +957,34 @@
         <name>get</name>
         <qualifiedname>endstone::nbt::Tag::get</qualifiedname>
         <briefdescription>
+<para>Get the payload as the given tag type. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tag type to retrieve </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a const reference to the held value </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if this tag does not currently hold a T </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="246" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="246" bodyend="252"/>
+        <location file="include/endstone/nbt/tag.h" line="364" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="364" bodyend="370"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1ae35d3d4115dc33bf97d080ea081b88e0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <templateparamlist>
@@ -713,12 +998,25 @@
         <name>get_if</name>
         <qualifiedname>endstone::nbt::Tag::get_if</qualifiedname>
         <briefdescription>
+<para>Get a pointer to the payload if this tag holds the given type. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tag type to retrieve </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a pointer to the held value, or nullptr if this tag does not hold a T </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="255" column="7" bodyfile="include/endstone/nbt/tag.h" bodystart="255" bodyend="261"/>
+        <location file="include/endstone/nbt/tag.h" line="379" column="7" bodyfile="include/endstone/nbt/tag.h" bodystart="379" bodyend="385"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a8df34ad15f6774c092a3150d59ceaa4d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <templateparamlist>
@@ -732,12 +1030,25 @@
         <name>get_if</name>
         <qualifiedname>endstone::nbt::Tag::get_if</qualifiedname>
         <briefdescription>
+<para>Get a pointer to the payload if this tag holds the given type. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the tag type to retrieve </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a const pointer to the held value, or nullptr if this tag does not hold a T </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="264" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="264" bodyend="267"/>
+        <location file="include/endstone/nbt/tag.h" line="394" column="13" bodyfile="include/endstone/nbt/tag.h" bodystart="394" bodyend="397"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1aabd493b83ae07849c9a46fa48d6cbf72" prot="public" static="no" const="yes" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
         <templateparamlist>
@@ -755,12 +1066,34 @@
           <declname>visitor</declname>
         </param>
         <briefdescription>
+<para>Apply a visitor to the payload currently held by this tag. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Fn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the visitor type, callable with any of the tag payload types (including std::monostate) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>visitor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the visitor to invoke </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>whatever the visitor returns </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="270" column="14" bodyfile="include/endstone/nbt/tag.h" bodystart="270" bodyend="273"/>
+        <location file="include/endstone/nbt/tag.h" line="407" column="14" bodyfile="include/endstone/nbt/tag.h" bodystart="407" bodyend="410"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a379ae7f659e414ac89271d8633401656" prot="public" static="no" const="no" explicit="no" inline="yes" refqual="lvalue" virt="non-virtual">
         <templateparamlist>
@@ -778,12 +1111,34 @@
           <declname>visitor</declname>
         </param>
         <briefdescription>
+<para>Apply a visitor to the payload currently held by this tag. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Fn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the visitor type, callable with any of the tag payload types (including std::monostate) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>visitor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the visitor to invoke </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>whatever the visitor returns </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="276" column="14" bodyfile="include/endstone/nbt/tag.h" bodystart="276" bodyend="279"/>
+        <location file="include/endstone/nbt/tag.h" line="420" column="14" bodyfile="include/endstone/nbt/tag.h" bodystart="420" bodyend="423"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a282028a9a347d259cc65049cadcdbedd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -830,7 +1185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="289" column="18" bodyfile="include/endstone/nbt/io.h" bodystart="514" bodyend="517"/>
+        <location file="include/endstone/nbt/tag.h" line="433" column="18" bodyfile="include/endstone/nbt/io.h" bodystart="514" bodyend="517"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1nbt_1_1Tag_1a267f7fa0521b527b4a5adafde12eb62e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -887,7 +1242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="299" column="18" bodyfile="include/endstone/nbt/io.h" bodystart="519" bodyend="522"/>
+        <location file="include/endstone/nbt/tag.h" line="443" column="18" bodyfile="include/endstone/nbt/io.h" bodystart="519" bodyend="522"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="friend">
@@ -911,7 +1266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="302" column="17" bodyfile="include/endstone/nbt/tag.h" bodystart="302" bodyend="302"/>
+        <location file="include/endstone/nbt/tag.h" line="446" column="17" bodyfile="include/endstone/nbt/tag.h" bodystart="446" bodyend="446"/>
       </memberdef>
       <memberdef kind="friend" id="classendstone_1_1nbt_1_1Tag_1a7ed7ce4f905d733b1977d9e1d6f60ba1" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -933,14 +1288,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/nbt/tag.h" line="304" column="17" bodyfile="include/endstone/nbt/tag.h" bodystart="304" bodyend="304"/>
+        <location file="include/endstone/nbt/tag.h" line="448" column="17" bodyfile="include/endstone/nbt/tag.h" bodystart="448" bodyend="448"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>A single NBT tag that may hold any of the supported payload types. </para>
     </briefdescription>
     <detaileddescription>
+<para>A <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref> behaves as a tagged union over every NBT type (byte, short, int, long, float, double, string, byte array, int array, list and compound). A default-constructed <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref> is empty (the End type). Indexing or inserting into an empty <ref refid="classendstone_1_1nbt_1_1Tag" kindref="compound">Tag</ref> promotes it to a <ref refid="classendstone_1_1ListTag" kindref="compound">ListTag</ref> or <ref refid="classendstone_1_1CompoundTag" kindref="compound">CompoundTag</ref> as appropriate. </para>
     </detaileddescription>
-    <location file="include/endstone/nbt/tag.h" line="49" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="49" bodyend="308"/>
+    <location file="include/endstone/nbt/tag.h" line="57" column="1" bodyfile="include/endstone/nbt/tag.h" bodystart="57" bodyend="452"/>
     <listofallmembers>
       <member refid="classendstone_1_1nbt_1_1Tag_1abba33187eb3dfb40d6e523801ca5cd0d" prot="public" virt="non-virtual"><scope>endstone::nbt::Tag</scope><name>at</name></member>
       <member refid="classendstone_1_1nbt_1_1Tag_1a4c5cc695bd404b999dbefadfea56acc7" prot="public" virt="non-virtual"><scope>endstone::nbt::Tag</scope><name>at</name></member>

@@ -651,7 +651,7 @@
         <name>getDefaultPermissions</name>
         <qualifiedname>endstone::PluginManager::getDefaultPermissions</qualifiedname>
         <param>
-          <type>PermissionLevel</type>
+          <type><ref refid="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbb" kindref="member">PermissionLevel</ref></type>
           <declname>level</declname>
         </param>
         <briefdescription>
@@ -826,7 +826,7 @@
         <name>subscribeToDefaultPerms</name>
         <qualifiedname>endstone::PluginManager::subscribeToDefaultPerms</qualifiedname>
         <param>
-          <type>PermissionLevel</type>
+          <type><ref refid="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbb" kindref="member">PermissionLevel</ref></type>
           <declname>level</declname>
         </param>
         <param>
@@ -868,7 +868,7 @@
         <name>unsubscribeFromDefaultPerms</name>
         <qualifiedname>endstone::PluginManager::unsubscribeFromDefaultPerms</qualifiedname>
         <param>
-          <type>PermissionLevel</type>
+          <type><ref refid="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbb" kindref="member">PermissionLevel</ref></type>
           <declname>level</declname>
         </param>
         <param>
@@ -909,7 +909,7 @@
         <name>getDefaultPermSubscriptions</name>
         <qualifiedname>endstone::PluginManager::getDefaultPermSubscriptions</qualifiedname>
         <param>
-          <type>PermissionLevel</type>
+          <type><ref refid="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbb" kindref="member">PermissionLevel</ref></type>
           <declname>level</declname>
         </param>
         <briefdescription>

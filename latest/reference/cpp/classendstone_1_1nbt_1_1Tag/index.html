@@ -2607,6 +2607,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#detailed-description" class="md-nav__link">
+      <span class="md-ellipsis">
+        Detailed Description
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-types-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Types Documentation
@@ -3290,6 +3301,10 @@ For latest updates join the chat on
 
 <h1 id="class-endstonenbttag">Class endstone::nbt::Tag<a class="headerlink" href="#class-endstonenbttag" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone_1_1nbt/"><strong>nbt</strong></a> <strong>&gt;</strong> <a href="./"><strong>Tag</strong></a></p>
+<p><em>A single NBT tag that may hold any of the supported payload types.</em> <a href="#detailed-description">More...</a></p>
+<ul>
+<li><code>#include &lt;endstone/nbt/tag.h&gt;</code></li>
+</ul>
 <h2 id="public-types">Public Types<a class="headerlink" href="#public-types" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -3408,23 +3423,23 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>Tag</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-at-14"><strong>at</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; key) <br></td>
+<td style="text-align: left;"><a href="#function-at-14"><strong>at</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; key) <br><em>Access the child tag with the given key, treating this tag as a compound, with bounds checking.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="./"><strong>Tag</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-at-24"><strong>at</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; key) const<br></td>
+<td style="text-align: left;"><a href="#function-at-24"><strong>at</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; key) const<br><em>Access the child tag with the given key, treating this tag as a compound, with bounds checking.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>Tag</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-at-34"><strong>at</strong></a> (std::size_t index) <br></td>
+<td style="text-align: left;"><a href="#function-at-34"><strong>at</strong></a> (std::size_t index) <br><em>Access the child tag at the given index, treating this tag as a list, with bounds checking.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="./"><strong>Tag</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-at-44"><strong>at</strong></a> (std::size_t index) const<br></td>
+<td style="text-align: left;"><a href="#function-at-44"><strong>at</strong></a> (std::size_t index) const<br><em>Access the child tag at the given index, treating this tag as a list, with bounds checking.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-contains"><strong>contains</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; key) noexcept const<br></td>
+<td style="text-align: left;"><a href="#function-contains"><strong>contains</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; key) noexcept const<br><em>Check whether this tag is a compound containing the given key.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string</td>
@@ -3436,58 +3451,60 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">std::pair&lt; CompoundTag::iterator, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-emplace"><strong>emplace</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) <br></td>
+<td style="text-align: left;"><a href="#function-emplace"><strong>emplace</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) <br><em>Construct an entry in place in this compound.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1ListTag/"><strong>ListTag</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-emplace_back"><strong>emplace_back</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) <br></td>
+<td style="text-align: left;"><a href="#function-emplace_back"><strong>emplace_back</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) <br><em>Construct a child tag in place at the end of this list.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-empty"><strong>empty</strong></a> () noexcept const<br></td>
+<td style="text-align: left;"><a href="#function-empty"><strong>empty</strong></a> () noexcept const<br><em>Check whether this tag holds no elements.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-get-12"><strong>get</strong></a> () <br></td>
+<td style="text-align: left;"><a href="#function-get-12"><strong>get</strong></a> () <br><em>Get the payload as the given tag type.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-get-22"><strong>get</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-get-22"><strong>get</strong></a> () const<br><em>Get the payload as the given tag type.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>T</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-get_if-12"><strong>get_if</strong></a> () noexcept<br></td>
+<td style="text-align: left;"><a href="#function-get_if-12"><strong>get_if</strong></a> () noexcept<br><em>Get a pointer to the payload if this tag holds the given type.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-get_if-22"><strong>get_if</strong></a> () noexcept const<br></td>
+<td style="text-align: left;"><a href="#function-get_if-22"><strong>get_if</strong></a> () noexcept const<br><em>Get a pointer to the payload if this tag holds the given type.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>Tag</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-operator"><strong>operator[]</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; key) <br></td>
+<td style="text-align: left;"><a href="#function-operator"><strong>operator[]</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; key) <br><em>Access the child tag with the given key, treating this tag as a compound.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>Tag</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-operator_1"><strong>operator[]</strong></a> (std::size_t index) <br></td>
+<td style="text-align: left;"><a href="#function-operator_1"><strong>operator[]</strong></a> (std::size_t index) <br><em>Access the child tag at the given index, treating this tag as a list.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::size_t</td>
-<td style="text-align: left;"><a href="#function-size"><strong>size</strong></a> () noexcept const<br></td>
+<td style="text-align: left;"><a href="#function-size"><strong>size</strong></a> () noexcept const<br><em>Get the number of elements held by this tag.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">Type</td>
-<td style="text-align: left;"><a href="#function-type"><strong>type</strong></a> () noexcept const<br></td>
+<td style="text-align: left;"><a href="#function-type"><strong>type</strong></a> () noexcept const<br><em>Get the type of payload currently held by this tag.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>decltype</strong></a>(<a href="../classendstone_1_1Identifier/"><strong>auto</strong></a>)</td>
-<td style="text-align: left;"><a href="#function-visit-12"><strong>visit</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Fn</strong></a> &amp;&amp; visitor) const<br></td>
+<td style="text-align: left;"><a href="#function-visit-12"><strong>visit</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Fn</strong></a> &amp;&amp; visitor) const<br><em>Apply a visitor to the payload currently held by this tag.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>decltype</strong></a>(<a href="../classendstone_1_1Identifier/"><strong>auto</strong></a>)</td>
-<td style="text-align: left;"><a href="#function-visit-22"><strong>visit</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Fn</strong></a> &amp;&amp; visitor) <br></td>
+<td style="text-align: left;"><a href="#function-visit-22"><strong>visit</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Fn</strong></a> &amp;&amp; visitor) <br><em>Apply a visitor to the payload currently held by this tag.</em></td>
 </tr>
 </tbody>
 </table>
+<h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
+<p>A <a href="./"><strong>Tag</strong></a> behaves as a tagged union over every NBT type (byte, short, int, long, float, double, string, byte array, int array, list and compound). A default-constructed <a href="./"><strong>Tag</strong></a> is empty (the End type). Indexing or inserting into an empty <a href="./"><strong>Tag</strong></a> promotes it to a <a href="../classendstone_1_1ListTag/"><strong>ListTag</strong></a> or <a href="../classendstone_1_1CompoundTag/"><strong>CompoundTag</strong></a> as appropriate. </p>
 <h2 id="public-types-documentation">Public Types Documentation<a class="headerlink" href="#public-types-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="typedef-storage">typedef Storage<a class="headerlink" href="#typedef-storage" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">Storage</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">monostate</span><span class="p">,</span><span class="w"> </span><span class="n">ByteTag</span><span class="p">,</span><span class="w"> </span><span class="n">ShortTag</span><span class="p">,</span><span class="w"> </span><span class="n">IntTag</span><span class="p">,</span><span class="w"> </span><span class="n">LongTag</span><span class="p">,</span><span class="w"> </span><span class="n">FloatTag</span><span class="p">,</span><span class="w"> </span><span class="n">DoubleTag</span><span class="p">,</span><span class="w"> </span><span class="n">StringTag</span><span class="p">,</span><span class="w"> </span><span class="n">ByteArrayTag</span><span class="p">,</span><span class="w"> </span><span class="n">IntArrayTag</span><span class="p">,</span><span class="w"> </span><span class="n">ListTag</span><span class="p">,</span><span class="w"> </span><span class="n">CompoundTag</span><span class="o">&gt;</span><span class="p">;</span>
@@ -3654,38 +3671,95 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-at-14">function at [&frac14;]<a class="headerlink" href="#function-at-14" title="Permanent link">&para;</a></h3>
+<p><em>Access the child tag with the given key, treating this tag as a compound, with bounds checking.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">at</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p>An empty tag is promoted to a <a href="../classendstone_1_1CompoundTag/"><strong>CompoundTag</strong></a>.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>key</code> the key to access </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>a reference to the child tag </p>
+<p><strong>Exception:</strong></p>
+<ul>
+<li><code>std::runtime_error</code> if this tag is not a compound </li>
+<li><code>std::out_of_range</code> if the key is not present </li>
+</ul>
 <hr>
 
 <h3 id="function-at-24">function at [2/4]<a class="headerlink" href="#function-at-24" title="Permanent link">&para;</a></h3>
+<p><em>Access the child tag with the given key, treating this tag as a compound, with bounds checking.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">Tag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">at</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>key</code> the key to access </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>a const reference to the child tag </p>
+<p><strong>Exception:</strong></p>
+<ul>
+<li><code>std::runtime_error</code> if this tag is not a compound </li>
+<li><code>std::out_of_range</code> if the key is not present </li>
+</ul>
 <hr>
 
 <h3 id="function-at-34">function at [&frac34;]<a class="headerlink" href="#function-at-34" title="Permanent link">&para;</a></h3>
+<p><em>Access the child tag at the given index, treating this tag as a list, with bounds checking.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">at</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span>
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p>An empty tag is promoted to a <a href="../classendstone_1_1ListTag/"><strong>ListTag</strong></a>.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>index</code> the index to access </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>a reference to the child tag </p>
+<p><strong>Exception:</strong></p>
+<ul>
+<li><code>std::runtime_error</code> if this tag is not a list </li>
+<li><code>std::out_of_range</code> if the index is out of range </li>
+</ul>
 <hr>
 
 <h3 id="function-at-44">function at [4/4]<a class="headerlink" href="#function-at-44" title="Permanent link">&para;</a></h3>
+<p><em>Access the child tag at the given index, treating this tag as a list, with bounds checking.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">Tag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">at</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span>
 </span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>index</code> the index to access </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>a const reference to the child tag </p>
+<p><strong>Exception:</strong></p>
+<ul>
+<li><code>std::runtime_error</code> if this tag is not a list </li>
+<li><code>std::out_of_range</code> if the index is out of range </li>
+</ul>
 <hr>
 
 <h3 id="function-contains">function contains<a class="headerlink" href="#function-contains" title="Permanent link">&para;</a></h3>
+<p><em>Check whether this tag is a compound containing the given key.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">contains</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>key</code> the key to look up </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>true if this tag is a compound and contains the key, false otherwise </p>
 <hr>
 
 <h3 id="function-dump-12">function dump [&frac12;]<a class="headerlink" href="#function-dump-12" title="Permanent link">&para;</a></h3>
@@ -3724,88 +3798,204 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-emplace">function emplace<a class="headerlink" href="#function-emplace" title="Permanent link">&para;</a></h3>
+<p><em>Construct an entry in place in this compound.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
 </span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="w"> </span><span class="n">CompoundTag</span><span class="o">::</span><span class="n">iterator</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">emplace</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">    </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span>
 </span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p>An empty tag is promoted to a <a href="../classendstone_1_1CompoundTag/"><strong>CompoundTag</strong></a>.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>args</code> the arguments forwarded to construct the key/value entry </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>a pair of an iterator to the entry and a bool that is true if a new entry was inserted </p>
+<p><strong>Exception:</strong></p>
+<ul>
+<li><code>std::runtime_error</code> if this tag is not a compound </li>
+</ul>
 <hr>
 
 <h3 id="function-emplace_back">function emplace_back<a class="headerlink" href="#function-emplace_back" title="Permanent link">&para;</a></h3>
+<p><em>Construct a child tag in place at the end of this list.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
 </span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">ListTag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">emplace_back</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">    </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span>
 </span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p>An empty tag is promoted to a <a href="../classendstone_1_1ListTag/"><strong>ListTag</strong></a>.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>args</code> the arguments forwarded to the element constructor </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>a reference to this tag's underlying list </p>
+<p><strong>Exception:</strong></p>
+<ul>
+<li><code>std::runtime_error</code> if this tag is not a list </li>
+</ul>
 <hr>
 
 <h3 id="function-empty">function empty<a class="headerlink" href="#function-empty" title="Permanent link">&para;</a></h3>
+<p><em>Check whether this tag holds no elements.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">empty</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>true if <a href="./#function-size"><strong>size()</strong></a> is 0 </p>
 <hr>
 
 <h3 id="function-get-12">function get [&frac12;]<a class="headerlink" href="#function-get-12" title="Permanent link">&para;</a></h3>
+<p><em>Get the payload as the given tag type.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="o">&gt;</span>
 </span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">get</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>T</code> the tag type to retrieve </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>a reference to the held value </p>
+<p><strong>Exception:</strong></p>
+<ul>
+<li><code>std::runtime_error</code> if this tag does not currently hold a T </li>
+</ul>
 <hr>
 
 <h3 id="function-get-22">function get [2/2]<a class="headerlink" href="#function-get-22" title="Permanent link">&para;</a></h3>
+<p><em>Get the payload as the given tag type.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="o">&gt;</span>
 </span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">get</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>T</code> the tag type to retrieve </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>a const reference to the held value </p>
+<p><strong>Exception:</strong></p>
+<ul>
+<li><code>std::runtime_error</code> if this tag does not currently hold a T </li>
+</ul>
 <hr>
 
 <h3 id="function-get_if-12">function get_if [&frac12;]<a class="headerlink" href="#function-get_if-12" title="Permanent link">&para;</a></h3>
+<p><em>Get a pointer to the payload if this tag holds the given type.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="o">&gt;</span>
 </span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">get_if</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>T</code> the tag type to retrieve </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>a pointer to the held value, or nullptr if this tag does not hold a T </p>
 <hr>
 
 <h3 id="function-get_if-22">function get_if [2/2]<a class="headerlink" href="#function-get_if-22" title="Permanent link">&para;</a></h3>
+<p><em>Get a pointer to the payload if this tag holds the given type.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="o">&gt;</span>
 </span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">get_if</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>T</code> the tag type to retrieve </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>a const pointer to the held value, or nullptr if this tag does not hold a T </p>
 <hr>
 
 <h3 id="function-operator">function operator[]<a class="headerlink" href="#function-operator" title="Permanent link">&para;</a></h3>
+<p><em>Access the child tag with the given key, treating this tag as a compound.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="k">operator</span><span class="p">[]</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p>An empty tag is promoted to a <a href="../classendstone_1_1CompoundTag/"><strong>CompoundTag</strong></a>, and a missing key is inserted with an empty value.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>key</code> the key to access </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>a reference to the child tag </p>
+<p><strong>Exception:</strong></p>
+<ul>
+<li><code>std::runtime_error</code> if this tag is not a compound </li>
+</ul>
 <hr>
 
 <h3 id="function-operator_1">function operator[]<a class="headerlink" href="#function-operator_1" title="Permanent link">&para;</a></h3>
+<p><em>Access the child tag at the given index, treating this tag as a list.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="k">operator</span><span class="p">[]</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">index</span>
 </span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p>An empty tag is promoted to a <a href="../classendstone_1_1ListTag/"><strong>ListTag</strong></a>.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>index</code> the index to access </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>a reference to the child tag </p>
+<p><strong>Exception:</strong></p>
+<ul>
+<li><code>std::runtime_error</code> if this tag is not a list </li>
+</ul>
 <hr>
 
 <h3 id="function-size">function size<a class="headerlink" href="#function-size" title="Permanent link">&para;</a></h3>
+<p><em>Get the number of elements held by this tag.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">size</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p>For a list, compound or array this is the element count; for a string it is the character count; scalar tags report 1 and an empty tag reports 0.</p>
+<p><strong>Returns:</strong></p>
+<p>the element count </p>
 <hr>
 
 <h3 id="function-type">function type<a class="headerlink" href="#function-type" title="Permanent link">&para;</a></h3>
+<p><em>Get the type of payload currently held by this tag.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">type</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the tag type, or Type::End if the tag is empty </p>
 <hr>
 
 <h3 id="function-visit-12">function visit [&frac12;]<a class="headerlink" href="#function-visit-12" title="Permanent link">&para;</a></h3>
+<p><em>Apply a visitor to the payload currently held by this tag.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">Fn</span><span class="o">&gt;</span>
 </span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="kr">inline</span><span class="w"> </span><span class="k">decltype</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">visit</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="w">    </span><span class="n">Fn</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">visitor</span>
 </span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>Fn</code> the visitor type, callable with any of the tag payload types (including std::monostate) </li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>visitor</code> the visitor to invoke </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>whatever the visitor returns </p>
 <hr>
 
 <h3 id="function-visit-22">function visit [2/2]<a class="headerlink" href="#function-visit-22" title="Permanent link">&para;</a></h3>
+<p><em>Apply a visitor to the payload currently held by this tag.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">Fn</span><span class="o">&gt;</span>
 </span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="kr">inline</span><span class="w"> </span><span class="k">decltype</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">visit</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="w">    </span><span class="n">Fn</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">visitor</span>
 </span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>Fn</code> the visitor type, callable with any of the tag payload types (including std::monostate) </li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>visitor</code> the visitor to invoke </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>whatever the visitor returns </p>
 <hr>
 <h2 id="friends-documentation">Friends Documentation<a class="headerlink" href="#friends-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="friend-operator">friend operator!=<a class="headerlink" href="#friend-operator" title="Permanent link">&para;</a></h3>

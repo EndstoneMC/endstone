@@ -42,12 +42,13 @@
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Represents the type of interaction that triggered this event. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="34" column="5" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="34" bodyend="51"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="37" column="5" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="37" bodyend="54"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -63,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="113" column="19" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="113" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="116" column="19" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerInteractEvent_1a2f5e0873feb15167e8f7c54131583a37" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1PlayerInteractEvent_1aeb83b5a442ff89d6ffa627d6de378ce8" kindref="member">Action</ref></type>
@@ -77,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="114" column="12" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="114" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="117" column="12" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerInteractEvent_1afd6bde577a6cfc48fa9f7ac6cf99ef2d" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> *</type>
@@ -91,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="115" column="11" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="115" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="118" column="11" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerInteractEvent_1a6eae7ed2b14249eeea133f6297d0a960" prot="private" static="no" mutable="no">
         <type><ref refid="namespaceendstone_1aec620d05bd961a002c83b008e178a785" kindref="member">BlockFace</ref></type>
@@ -105,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="116" column="15" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="116" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="119" column="15" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1PlayerInteractEvent_1a2422fd19cb89414301e869a69d01f781" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &gt;</type>
@@ -119,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="117" column="19" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="117" bodyend="-1"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="120" column="19" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="120" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -176,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="53" column="5" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="53" bodyend="58"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="56" column="5" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="56" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a17117725b022db37efc279e4f35b06c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1PlayerInteractEvent_1aeb83b5a442ff89d6ffa627d6de378ce8" kindref="member">Action</ref></type>
@@ -194,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="65" column="13" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="65" bodyend="65"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="68" column="13" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a24de1e03d7c563bc8cddc7ee7e4c73c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -212,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="72" column="11" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="72" bodyend="72"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="75" column="11" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="75" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a92aa3c03c76e22d5e668077cdc30ddb2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::optional&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt; &amp;</type>
@@ -230,7 +231,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="79" column="26" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="79" bodyend="79"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="82" column="26" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a34e1b96ac0ad624c40e8877a4696111e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -248,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="86" column="11" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="86" bodyend="86"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="89" column="11" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="89" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a4f26cb5a7a2306ab9c37aab371498bb2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> *</type>
@@ -266,7 +267,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="93" column="12" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="93" bodyend="93"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="96" column="12" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="96" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1ad38f34d2deabcbd5503b3ceaafd033c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespaceendstone_1aec620d05bd961a002c83b008e178a785" kindref="member">BlockFace</ref></type>
@@ -284,7 +285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="100" column="16" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="100" bodyend="100"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="103" column="16" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="103" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a622c8efa38141c112f17c9b420efd818" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref> &gt;</type>
@@ -306,7 +307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_interact_event.h" line="110" column="20" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="110" bodyend="110"/>
+        <location file="include/endstone/event/player/player_interact_event.h" line="113" column="20" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="113" bodyend="113"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -374,7 +375,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_interact_event.h" line="30" column="1" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="30" bodyend="118"/>
+    <location file="include/endstone/event/player/player_interact_event.h" line="30" column="1" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="30" bodyend="121"/>
     <listofallmembers>
       <member refid="classendstone_1_1PlayerInteractEvent_1aeb83b5a442ff89d6ffa627d6de378ce8" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>Action</name></member>
       <member refid="classendstone_1_1PlayerInteractEvent_1a2f5e0873feb15167e8f7c54131583a37" prot="private" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>action_</name></member>

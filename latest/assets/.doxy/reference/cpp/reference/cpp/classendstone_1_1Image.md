@@ -32,7 +32,7 @@ _Represents an RGBA image._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-| enum  | [**Type**](#enum-type)  <br> |
+| enum  | [**Type**](#enum-type)  <br>_Represents the pixel format of an image._  |
 
 
 
@@ -71,8 +71,8 @@ _Represents an RGBA image._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-|  Result&lt; [**Image**](classendstone_1_1Image.md) &gt; | [**fromArray**](#function-fromarray) ([**Type**](classendstone_1_1Image.md#enum-type) type, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) width, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) height, [**const**](classendstone_1_1Identifier.md) std::vector&lt; [**unsigned**](classendstone_1_1Identifier.md) [**char**](classendstone_1_1Identifier.md) &gt; & array) <br>_Creates an image from the pixel data in a byte array._  |
-|  Result&lt; [**Image**](classendstone_1_1Image.md) &gt; | [**fromBuffer**](#function-frombuffer) ([**Type**](classendstone_1_1Image.md#enum-type) type, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) width, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) height, std::string\_view buffer) <br>_Creates an image from the pixel data in a byte buffer._  |
+|  [**Result**](namespaceendstone.md#typedef-result)&lt; [**Image**](classendstone_1_1Image.md) &gt; | [**fromArray**](#function-fromarray) ([**Type**](classendstone_1_1Image.md#enum-type) type, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) width, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) height, [**const**](classendstone_1_1Identifier.md) std::vector&lt; [**unsigned**](classendstone_1_1Identifier.md) [**char**](classendstone_1_1Identifier.md) &gt; & array) <br>_Creates an image from the pixel data in a byte array._  |
+|  [**Result**](namespaceendstone.md#typedef-result)&lt; [**Image**](classendstone_1_1Image.md) &gt; | [**fromBuffer**](#function-frombuffer) ([**Type**](classendstone_1_1Image.md#enum-type) type, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) width, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) height, std::string\_view buffer) <br>_Creates an image from the pixel data in a byte buffer._  |
 
 
 
@@ -113,6 +113,7 @@ Each pixel is four bytes: R, G, B, A, in row-major order.
 
 ### enum Type 
 
+_Represents the pixel format of an image._ 
 ```C++
 enum endstone::Image::Type {
     Invalid = 0,
@@ -354,7 +355,7 @@ inline void endstone::Image::setColor (
 
 _Creates an image from the pixel data in a byte array._ 
 ```C++
-static inline Result< Image > endstone::Image::fromArray (
+static inline Result < Image > endstone::Image::fromArray (
     Type type,
     const  int width,
     const  int height,
@@ -394,7 +395,7 @@ The image on success, or an error on failure.
 
 _Creates an image from the pixel data in a byte buffer._ 
 ```C++
-static inline Result< Image > endstone::Image::fromBuffer (
+static inline Result < Image > endstone::Image::fromBuffer (
     Type type,
     const  int width,
     const  int height,

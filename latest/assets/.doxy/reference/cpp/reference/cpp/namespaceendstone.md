@@ -80,13 +80,13 @@ _Represents a button with text and an optional icon._
 | class | [**ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md) <br>_Called when a chunk is unloaded._  |
 | class | [**Color**](classendstone_1_1Color.md) <br>_Represents a color with red, green, blue, and alpha components._  |
 | struct | [**ColorFormat**](structendstone_1_1ColorFormat.md) <br>_All supported color and format codes._  |
-| class | [**Colors**](classendstone_1_1Colors.md) <br> |
+| class | [**Colors**](classendstone_1_1Colors.md) <br>_Provides a collection of predefined colors._  |
 | class | [**Command**](classendstone_1_1Command.md) <br>_Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._ |
 | class | [**CommandExecutor**](classendstone_1_1CommandExecutor.md) <br>_Represents a class which contains a single method for executing commands._  |
 | class | [**CommandMap**](classendstone_1_1CommandMap.md) <br>_Represents a command map that manages all commands of the_ [_**Server**_](classendstone_1_1Server.md) _._ |
 | class | [**CommandSender**](classendstone_1_1CommandSender.md) <br>_Represents a command sender._  |
 | class | [**CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) <br>_Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._ |
-| class | [**CompoundTag**](classendstone_1_1CompoundTag.md) <br> |
+| class | [**CompoundTag**](classendstone_1_1CompoundTag.md) <br>_An NBT tag holding a set of named child tags, keyed by string._  |
 | class | [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) <br>_Represents a console command sender._  |
 | class | [**Criteria**](classendstone_1_1Criteria.md) <br>_Represents a scoreboard criteria._  |
 | class | [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) <br>_Represents the meta for a crossbow that can have a charged projectile._  |
@@ -96,30 +96,30 @@ _Represents a button with text and an optional icon._
 | class | [**Divider**](classendstone_1_1Divider.md) <br>_Represents a divider._  |
 | class | [**Dropdown**](classendstone_1_1Dropdown.md) <br>_Represents a dropdown with a set of predefined options._  |
 | class | [**EffectType**](classendstone_1_1EffectType.md) <br>_All effect types._  |
-| class | [**Enchantment**](classendstone_1_1Enchantment.md) <br> |
+| class | [**Enchantment**](classendstone_1_1Enchantment.md) <br>_Represents an enchantment that may be added to armor, weapons, tools or other items._  |
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
 | class | [**Form**](classendstone_1_1Form.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents a generic form._  |
 | class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers._  |
 | class | [**Header**](classendstone_1_1Header.md) <br>_Represents a header with a label._  |
-| class | [**ICancellable**](classendstone_1_1ICancellable.md) <br> |
-| class | [**IRegistry**](classendstone_1_1IRegistry.md) <br> |
+| class | [**ICancellable**](classendstone_1_1ICancellable.md) <br>_Interface for events that may be cancelled by a plugin or the server._  |
+| class | [**IRegistry**](classendstone_1_1IRegistry.md) <br>_Type-erased base interface for registries._  |
 | class | [**Identifier**](classendstone_1_1Identifier.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents a identifier consisting of two components: a namespace and a key._  |
 | class | [**Image**](classendstone_1_1Image.md) <br>_Represents an RGBA image._  |
 | class | [**Inventory**](classendstone_1_1Inventory.md) <br>_Interface to the various inventories._  |
 | class | [**IpBanEntry**](classendstone_1_1IpBanEntry.md) <br>_Represents an entry for a banned IP address._  |
 | class | [**IpBanList**](classendstone_1_1IpBanList.md) <br>_Represents a ban list, containing banned IP addresses._  |
 | class | [**Item**](classendstone_1_1Item.md) <br>_Represents a dropped item that can be picked up by players._  |
-| class | [**ItemFactory**](classendstone_1_1ItemFactory.md) <br> |
+| class | [**ItemFactory**](classendstone_1_1ItemFactory.md) <br>_An interface to the methods used to create item metadata._  |
 | class | [**ItemMeta**](classendstone_1_1ItemMeta.md) <br>_Represents the metadata of a generic item._  |
 | class | [**ItemStack**](classendstone_1_1ItemStack.md) <br>_Represents a stack of items._  |
-| class | [**ItemType**](classendstone_1_1ItemType.md) <br> |
+| class | [**ItemType**](classendstone_1_1ItemType.md) <br>_Represents an item type._  |
 | class | [**Label**](classendstone_1_1Label.md) <br>_Represents a text label._  |
 | class | [**Language**](classendstone_1_1Language.md) <br>_Represents the interface for translating text into different languages._  |
 | class | [**LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md) <br>_Called when leaves are decaying naturally._  |
 | class | [**Level**](classendstone_1_1Level.md) <br>_Represents a level, which may contain actors, chunks and blocks._  |
 | class | [**LevelEvent**](classendstone_1_1LevelEvent.md) <br>_Represents events within a level._  |
-| class | [**ListTag**](classendstone_1_1ListTag.md) <br> |
+| class | [**ListTag**](classendstone_1_1ListTag.md) <br>_An NBT tag holding an ordered sequence of child tags that all share the same type._  |
 | class | [**Location**](classendstone_1_1Location.md) <br>_Represents a 3-dimensional location in a dimension within a level._  |
 | class | [**Logger**](classendstone_1_1Logger.md) <br>[_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._ |
 | class | [**MapCanvas**](classendstone_1_1MapCanvas.md) <br>_Represents a canvas for drawing to a map._  |
@@ -131,8 +131,8 @@ _Represents a button with text and an optional icon._
 | class | [**MessageForm**](classendstone_1_1MessageForm.md) <br>_Represents a form with two buttons._  |
 | class | [**Mob**](classendstone_1_1Mob.md) <br>_Represents a mobile entity (i.e._  |
 | class | [**ModalForm**](classendstone_1_1ModalForm.md) <br>_Represents a modal form with controls._  |
-| class | [**NotNull**](classendstone_1_1NotNull.md) &lt;[**class**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
-| class | [**Nullable**](classendstone_1_1Nullable.md) &lt;[**class**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
+| class | [**NotNull**](classendstone_1_1NotNull.md) &lt;[**class**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_A wrapper around a std::shared\_ptr that is guaranteed never to be null._  |
+| class | [**Nullable**](classendstone_1_1Nullable.md) &lt;[**class**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_A wrapper around a std::shared\_ptr that may be null._  |
 | class | [**Object**](classendstone_1_1Object.md) <br>_Base class providing runtime type identification and safe casting._  |
 | class | [**Objective**](classendstone_1_1Objective.md) <br>_Represents an objective on a scoreboard that can show scores specific to entries._  |
 | class | [**OfflinePlayer**](classendstone_1_1OfflinePlayer.md) <br>_Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online._  |
@@ -179,7 +179,7 @@ _Represents a button with text and an optional icon._
 | class | [**PluginLoader**](classendstone_1_1PluginLoader.md) <br>_Represents a plugin loader, which handles direct access to specific types of plugins._  |
 | class | [**PluginManager**](classendstone_1_1PluginManager.md) <br>_Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._ |
 | class | [**PotionType**](classendstone_1_1PotionType.md) <br>_All potion types._  |
-| class | [**Preconditions**](classendstone_1_1Preconditions.md) <br> |
+| class | [**Preconditions**](classendstone_1_1Preconditions.md) <br>_Static helpers for validating method arguments and object state._  |
 | class | [**Recipe**](classendstone_1_1Recipe.md) <br>_Represents some type of crafting recipe._  |
 | class | [**Registry**](classendstone_1_1Registry.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Abstract registry interface for objects with identifiers._  |
 | class | [**Scheduler**](classendstone_1_1Scheduler.md) <br>_Represents a scheduler that executes various tasks._  |
@@ -216,9 +216,9 @@ _Represents a button with text and an optional icon._
 | ---: | :--- |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**ActorType**](classendstone_1_1ActorType.md) &gt; | [**ActorTypeId**](#typedef-actortypeid)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**Attribute**](classendstone_1_1Attribute.md) &gt; | [**AttributeId**](#typedef-attributeid)  <br> |
-| enum  | [**BarColor**](#enum-barcolor)  <br> |
-| enum  | [**BarFlag**](#enum-barflag)  <br> |
-| enum  | [**BarStyle**](#enum-barstyle)  <br> |
+| enum  | [**BarColor**](#enum-barcolor)  <br>_Represents the color of a boss bar._  |
+| enum  | [**BarFlag**](#enum-barflag)  <br>_Represents an optional flag that changes the appearance or behaviour of a boss bar._  |
+| enum  | [**BarStyle**](#enum-barstyle)  <br>_Represents the segment style of a boss bar._  |
 | enum  | [**BlockFace**](#enum-blockface)  <br>_Represents the face of a block._  |
 | typedef std::unordered\_map&lt; std::string, std::variant&lt; [**bool**](classendstone_1_1Identifier.md), std::string, [**int**](classendstone_1_1Identifier.md) &gt; &gt; | [**BlockStates**](#typedef-blockstates)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**BlockType**](classendstone_1_1BlockType.md) &gt; | [**BlockTypeId**](#typedef-blocktypeid)  <br> |
@@ -229,24 +229,24 @@ _Represents a button with text and an optional icon._
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; [**double**](classendstone_1_1Identifier.md) &gt; | [**DoubleTag**](#typedef-doubletag)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**EffectType**](classendstone_1_1EffectType.md) &gt; | [**EffectId**](#typedef-effectid)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**Enchantment**](classendstone_1_1Enchantment.md) &gt; | [**EnchantmentId**](#typedef-enchantmentid)  <br> |
-| enum  | [**EquipmentSlot**](#enum-equipmentslot)  <br> |
+| enum  | [**EquipmentSlot**](#enum-equipmentslot)  <br>_Represents the equipment slots on an entity._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
-| enum  | [**EventResult**](#enum-eventresult)  <br> |
+| enum  | [**EventResult**](#enum-eventresult)  <br>_Represents the result a plugin can apply to an event whose default behaviour can be allowed, denied, or left to the server._  |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; [**float**](classendstone_1_1Identifier.md) &gt; | [**FloatTag**](#typedef-floattag)  <br> |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
 | typedef [**nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md)&lt; std::int32\_t &gt; | [**IntArrayTag**](#typedef-intarraytag)  <br> |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::int32\_t &gt; | [**IntTag**](#typedef-inttag)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**ItemType**](classendstone_1_1ItemType.md) &gt; | [**ItemTypeId**](#typedef-itemtypeid)  <br>_Represents an item type._  |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::int64\_t &gt; | [**LongTag**](#typedef-longtag)  <br> |
-| typedef std::variant&lt; std::string, [**Translatable**](classendstone_1_1Translatable.md) &gt; | [**Message**](#typedef-message)  <br> |
+| typedef std::variant&lt; std::string, [**Translatable**](classendstone_1_1Translatable.md) &gt; | [**Message**](#typedef-message)  <br>_A message that is either a plain string or a_ [_**Translatable**_](classendstone_1_1Translatable.md) _that is resolved client-side._ |
 | enum  | [**ObjectiveSortOrder**](#enum-objectivesortorder)  <br>_Represents the sort order of objectives on a DisplaySlot._  |
 | enum  | [**PermissionDefault**](#enum-permissiondefault)  <br>_Represents the possible default values for permissions._  |
-| enum  | [**PermissionLevel**](#enum-permissionlevel)  <br> |
+| enum  | [**PermissionLevel**](#enum-permissionlevel)  <br>_Represents the permission level of a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._ |
 | typedef std::function&lt; [**void**](classendstone_1_1Identifier.md)([**const**](classendstone_1_1Identifier.md) [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
 | enum  | [**PluginLoadOrder**](#enum-pluginloadorder)  <br>_Represents the order in which a plugin should be initialized and enabled._  |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**PotionType**](classendstone_1_1PotionType.md) &gt; | [**PotionId**](#typedef-potionid)  <br> |
 | enum std::uint8\_t | [**RenderType**](#enum-rendertype)  <br>_Controls the way in which an_ [_**Objective**_](classendstone_1_1Objective.md) _is rendered on the client side._ |
-| typedef nonstd::expected&lt; [**T**](classendstone_1_1Identifier.md), std::string &gt; | [**Result**](#typedef-result)  <br> |
+| typedef nonstd::expected&lt; [**T**](classendstone_1_1Identifier.md), std::string &gt; | [**Result**](#typedef-result)  <br>_Holds either a value of type T on success or an error message on failure._  |
 | typedef std::variant&lt; [**Player**](classendstone_1_1Player.md) \*, [**Actor**](classendstone_1_1Actor.md) \*, std::string &gt; | [**ScoreEntry**](#typedef-scoreentry)  <br>_An entry for a score._  |
 | enum  | [**ServicePriority**](#enum-servicepriority)  <br>_Represents various priorities of a provider._  |
 | typedef [**nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)&lt; std::int16\_t &gt; | [**ShortTag**](#typedef-shorttag)  <br> |
@@ -350,6 +350,7 @@ using endstone::AttributeId = typedef Identifier<class Attribute>;
 
 ### enum BarColor 
 
+_Represents the color of a boss bar._ 
 ```C++
 enum endstone::BarColor {
     Pink = 0,
@@ -372,6 +373,7 @@ enum endstone::BarColor {
 
 ### enum BarFlag 
 
+_Represents an optional flag that changes the appearance or behaviour of a boss bar._ 
 ```C++
 enum endstone::BarFlag {
     DarkenSky,
@@ -388,6 +390,7 @@ enum endstone::BarFlag {
 
 ### enum BarStyle 
 
+_Represents the segment style of a boss bar._ 
 ```C++
 enum endstone::BarStyle {
     Solid,
@@ -550,6 +553,7 @@ using endstone::EnchantmentId = typedef Identifier<class Enchantment>;
 
 ### enum EquipmentSlot 
 
+_Represents the equipment slots on an entity._ 
 ```C++
 enum endstone::EquipmentSlot {
     Hand,
@@ -596,6 +600,7 @@ Listeners with lower priority are called first will listeners with higher priori
 
 ### enum EventResult 
 
+_Represents the result a plugin can apply to an event whose default behaviour can be allowed, denied, or left to the server._ 
 ```C++
 enum endstone::EventResult {
     Deny,
@@ -698,6 +703,7 @@ using endstone::LongTag = typedef nbt::ValueTag<std::int64_t>;
 
 ### typedef Message 
 
+_A message that is either a plain string or a_ [_**Translatable**_](classendstone_1_1Translatable.md) _that is resolved client-side._
 ```C++
 using endstone::Message = typedef std::variant<std::string, Translatable>;
 ```
@@ -748,6 +754,7 @@ enum endstone::PermissionDefault {
 
 ### enum PermissionLevel 
 
+_Represents the permission level of a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._
 ```C++
 enum endstone::PermissionLevel {
     Default = 0,
@@ -825,6 +832,7 @@ enum endstone::RenderType {
 
 ### typedef Result 
 
+_Holds either a value of type T on success or an error message on failure._ 
 ```C++
 using endstone::Result = typedef nonstd::expected<T, std::string>;
 ```

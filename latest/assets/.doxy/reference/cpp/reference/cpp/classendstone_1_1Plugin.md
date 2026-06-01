@@ -87,8 +87,8 @@ Inherits the following classes: [endstone::CommandExecutor](classendstone_1_1Com
 | virtual [**void**](classendstone_1_1Identifier.md) | [**onEnable**](#function-onenable) () <br>_Called when this plugin is enabled._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**onLoad**](#function-onload) () <br>_Called after a plugin is loaded but before it has been enabled._  |
 |  [**Plugin**](classendstone_1_1Plugin.md) & | [**operator=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Plugin**](classendstone_1_1Plugin.md) &) = delete<br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**registerEvent**](#function-registerevent-12) ([**void**](classendstone_1_1Identifier.md)(T::\*)(EventType &) func, [**T**](classendstone_1_1Identifier.md) & instance, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority=EventPriority::Normal, [**bool**](classendstone_1_1Identifier.md) ignore\_cancelled=[**false**](classendstone_1_1Identifier.md)) <br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**registerEvent**](#function-registerevent-22) (std::function&lt; [**void**](classendstone_1_1Identifier.md)(EventType &)&gt; func, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority=EventPriority::Normal, [**bool**](classendstone_1_1Identifier.md) ignore\_cancelled=[**false**](classendstone_1_1Identifier.md)) <br> |
+|  [**void**](classendstone_1_1Identifier.md) | [**registerEvent**](#function-registerevent-12) ([**void**](classendstone_1_1Identifier.md)(T::\*)(EventType &) func, [**T**](classendstone_1_1Identifier.md) & instance, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority=EventPriority::Normal, [**bool**](classendstone_1_1Identifier.md) ignore\_cancelled=[**false**](classendstone_1_1Identifier.md)) <br>_Registers a member function as a handler for the given event type._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**registerEvent**](#function-registerevent-22) (std::function&lt; [**void**](classendstone_1_1Identifier.md)(EventType &)&gt; func, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority=EventPriority::Normal, [**bool**](classendstone_1_1Identifier.md) ignore\_cancelled=[**false**](classendstone_1_1Identifier.md)) <br>_Registers a function as a handler for the given event type._  |
 |   | [**~Plugin**](#function-plugin) () override<br> |
 
 
@@ -473,6 +473,7 @@ Plugin & endstone::Plugin::operator= (
 
 ### function registerEvent [1/2]
 
+_Registers a member function as a handler for the given event type._ 
 ```C++
 template<typename EventType, typename  T>
 inline void endstone::Plugin::registerEvent (
@@ -486,12 +487,27 @@ inline void endstone::Plugin::registerEvent (
 
 
 
+
+**Parameters:**
+
+
+* `func` Member function pointer to invoke when the event is fired 
+* `instance` The object on which to invoke the member function 
+* `priority` The priority at which to register this handler 
+* `ignore_cancelled` If true, the handler is not invoked when the event has already been cancelled 
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function registerEvent [2/2]
 
+_Registers a function as a handler for the given event type._ 
 ```C++
 template<typename EventType>
 inline void endstone::Plugin::registerEvent (
@@ -503,6 +519,19 @@ inline void endstone::Plugin::registerEvent (
 
 
 
+
+
+**Parameters:**
+
+
+* `func` Function to invoke when the event is fired 
+* `priority` The priority at which to register this handler 
+* `ignore_cancelled` If true, the handler is not invoked when the event has already been cancelled 
+
+
+
+
+        
 
 <hr>
 

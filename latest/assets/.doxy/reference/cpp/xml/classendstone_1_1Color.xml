@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="213" column="18" bodyfile="include/endstone/util/color.h" bodystart="213" bodyend="-1"/>
+        <location file="include/endstone/util/color.h" line="229" column="18" bodyfile="include/endstone/util/color.h" bodystart="229" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Color_1ad816c65b8a4163978e154bb0bcea61ae" prot="private" static="no" mutable="no">
         <type>std::uint8_t</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="213" column="23" bodyfile="include/endstone/util/color.h" bodystart="213" bodyend="-1"/>
+        <location file="include/endstone/util/color.h" line="229" column="23" bodyfile="include/endstone/util/color.h" bodystart="229" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Color_1a4b065c127f1420adfd3b12251134e76a" prot="private" static="no" mutable="no">
         <type>std::uint8_t</type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="213" column="30" bodyfile="include/endstone/util/color.h" bodystart="213" bodyend="-1"/>
+        <location file="include/endstone/util/color.h" line="229" column="30" bodyfile="include/endstone/util/color.h" bodystart="229" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Color_1ab466f486228d182461f45e7edf7df72a" prot="private" static="no" mutable="no">
         <type>std::uint8_t</type>
@@ -90,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="213" column="36" bodyfile="include/endstone/util/color.h" bodystart="213" bodyend="-1"/>
+        <location file="include/endstone/util/color.h" line="229" column="36" bodyfile="include/endstone/util/color.h" bodystart="229" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -118,12 +118,47 @@
           <defval>DEFAULT_ALPHA</defval>
         </param>
         <briefdescription>
+<para>Constructs a new <ref refid="classendstone_1_1Color" kindref="compound">Color</ref> from red, green, blue, and alpha components. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>red</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the red component, from 0 to 255 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>green</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the green component, from 0 to 255 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>blue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the blue component, from 0 to 255 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>alpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the alpha component, from 0 to 255 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="27" column="15" bodyfile="include/endstone/util/color.h" bodystart="27" bodyend="31"/>
+        <location file="include/endstone/util/color.h" line="35" column="15" bodyfile="include/endstone/util/color.h" bodystart="35" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a0ba516557cf1a2286149c620d95e00c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -141,7 +176,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="118" column="10" bodyfile="include/endstone/util/color.h" bodystart="118" bodyend="118"/>
+        <location file="include/endstone/util/color.h" line="134" column="10" bodyfile="include/endstone/util/color.h" bodystart="134" bodyend="134"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a7d26234561ee9fddae879d6478eb499a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -172,7 +207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="127" column="12" bodyfile="include/endstone/util/color.h" bodystart="127" bodyend="127"/>
+        <location file="include/endstone/util/color.h" line="143" column="12" bodyfile="include/endstone/util/color.h" bodystart="143" bodyend="143"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a301d32f39f8cffa44020cc9a62212ea1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -190,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="134" column="10" bodyfile="include/endstone/util/color.h" bodystart="134" bodyend="134"/>
+        <location file="include/endstone/util/color.h" line="150" column="10" bodyfile="include/endstone/util/color.h" bodystart="150" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a36434953290e46e9ddd28c601d5bb2a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -221,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="143" column="12" bodyfile="include/endstone/util/color.h" bodystart="143" bodyend="143"/>
+        <location file="include/endstone/util/color.h" line="159" column="12" bodyfile="include/endstone/util/color.h" bodystart="159" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a9ed18343f473ed0a5b69a34040c9c6ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -239,7 +274,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="150" column="10" bodyfile="include/endstone/util/color.h" bodystart="150" bodyend="150"/>
+        <location file="include/endstone/util/color.h" line="166" column="10" bodyfile="include/endstone/util/color.h" bodystart="166" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1af81f642c487f131432314f199d87a3f7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -270,7 +305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="159" column="12" bodyfile="include/endstone/util/color.h" bodystart="159" bodyend="159"/>
+        <location file="include/endstone/util/color.h" line="175" column="12" bodyfile="include/endstone/util/color.h" bodystart="175" bodyend="175"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a6696f9d17391d894745ddc0c202707b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -288,7 +323,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="166" column="10" bodyfile="include/endstone/util/color.h" bodystart="166" bodyend="166"/>
+        <location file="include/endstone/util/color.h" line="182" column="10" bodyfile="include/endstone/util/color.h" bodystart="182" bodyend="182"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a46bc2c368b9aa77c3ce4203a5634df09" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -319,7 +354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="175" column="12" bodyfile="include/endstone/util/color.h" bodystart="175" bodyend="175"/>
+        <location file="include/endstone/util/color.h" line="191" column="12" bodyfile="include/endstone/util/color.h" bodystart="191" bodyend="191"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1aafd4045f6c816b868c35dc494c2713b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -337,7 +372,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="182" column="10" bodyfile="include/endstone/util/color.h" bodystart="182" bodyend="182"/>
+        <location file="include/endstone/util/color.h" line="198" column="10" bodyfile="include/endstone/util/color.h" bodystart="198" bodyend="198"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a1fa78483f74d710d98d3114ce46eab57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -355,7 +390,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="189" column="10" bodyfile="include/endstone/util/color.h" bodystart="189" bodyend="189"/>
+        <location file="include/endstone/util/color.h" line="205" column="10" bodyfile="include/endstone/util/color.h" bodystart="205" bodyend="205"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1ae79fd7ce5bc89837d82073ffdb7fab65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -373,7 +408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="196" column="10" bodyfile="include/endstone/util/color.h" bodystart="196" bodyend="196"/>
+        <location file="include/endstone/util/color.h" line="212" column="10" bodyfile="include/endstone/util/color.h" bodystart="212" bodyend="212"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a49132ac0dcd6eb30d0c88b060e2145aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -391,7 +426,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="203" column="10" bodyfile="include/endstone/util/color.h" bodystart="203" bodyend="203"/>
+        <location file="include/endstone/util/color.h" line="219" column="10" bodyfile="include/endstone/util/color.h" bodystart="219" bodyend="219"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1aba327588593d6e8fd59114d831fb0b60" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -409,7 +444,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="205" column="10" bodyfile="include/endstone/util/color.h" bodystart="205" bodyend="208"/>
+        <location file="include/endstone/util/color.h" line="221" column="10" bodyfile="include/endstone/util/color.h" bodystart="221" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a4748a2087280419ccb2fda334d14c1a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -427,7 +462,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="210" column="10" bodyfile="include/endstone/util/color.h" bodystart="210" bodyend="210"/>
+        <location file="include/endstone/util/color.h" line="226" column="10" bodyfile="include/endstone/util/color.h" bodystart="226" bodyend="226"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -496,7 +531,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="43" column="18" bodyfile="include/endstone/util/color.h" bodystart="43" bodyend="47"/>
+        <location file="include/endstone/util/color.h" line="51" column="18" bodyfile="include/endstone/util/color.h" bodystart="51" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a3f965d8636ea47e5a62530307c04014c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -551,7 +586,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="58" column="18" bodyfile="include/endstone/util/color.h" bodystart="58" bodyend="61"/>
+        <location file="include/endstone/util/color.h" line="66" column="18" bodyfile="include/endstone/util/color.h" bodystart="66" bodyend="69"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a00ae30f8b06d51e5e8ab5110bfcf1cf4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -606,7 +641,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="72" column="18" bodyfile="include/endstone/util/color.h" bodystart="72" bodyend="75"/>
+        <location file="include/endstone/util/color.h" line="80" column="18" bodyfile="include/endstone/util/color.h" bodystart="80" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a8628bd7f2a35f86ee5f6094adf709062" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -637,7 +672,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="84" column="18" bodyfile="include/endstone/util/color.h" bodystart="84" bodyend="87"/>
+        <location file="include/endstone/util/color.h" line="92" column="18" bodyfile="include/endstone/util/color.h" bodystart="92" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a1686c805a67696bc39ed6249afc3aa64" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -668,7 +703,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="96" column="18" bodyfile="include/endstone/util/color.h" bodystart="96" bodyend="99"/>
+        <location file="include/endstone/util/color.h" line="104" column="18" bodyfile="include/endstone/util/color.h" bodystart="104" bodyend="107"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1a4e2df47fd025c918c1792618126441b8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -699,7 +734,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="109" column="18" bodyfile="include/endstone/util/color.h" bodystart="109" bodyend="109"/>
+        <location file="include/endstone/util/color.h" line="117" column="18" bodyfile="include/endstone/util/color.h" bodystart="117" bodyend="117"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Color_1ae402c9d9efd5c7c77b8719332519c210" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Color" kindref="compound">Color</ref></type>
@@ -712,12 +747,25 @@
           <declname>bgr</declname>
         </param>
         <briefdescription>
+<para>Creates a new color object from an integer that contains the blue, green, and red bytes in the lowest order 24 bits. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bgr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the integer storing the blue, green, and red values</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a new color object for specified values </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="111" column="18" bodyfile="include/endstone/util/color.h" bodystart="111" bodyend="111"/>
+        <location file="include/endstone/util/color.h" line="127" column="18" bodyfile="include/endstone/util/color.h" bodystart="127" bodyend="127"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -725,7 +773,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/util/color.h" line="22" column="1" bodyfile="include/endstone/util/color.h" bodystart="22" bodyend="214"/>
+    <location file="include/endstone/util/color.h" line="22" column="1" bodyfile="include/endstone/util/color.h" bodystart="22" bodyend="230"/>
     <listofallmembers>
       <member refid="classendstone_1_1Color_1ab466f486228d182461f45e7edf7df72a" prot="private" virt="non-virtual"><scope>endstone::Color</scope><name>alpha_</name></member>
       <member refid="classendstone_1_1Color_1a1fa78483f74d710d98d3114ce46eab57" prot="public" virt="non-virtual"><scope>endstone::Color</scope><name>asABGR</name></member>

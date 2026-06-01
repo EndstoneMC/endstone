@@ -29,10 +29,10 @@
 namespace endstone {
 
 struct ColorFormat {
-    // Escape
     inline static const std::string Escape = "§";
 
     // Color code
+
     inline static const std::string Black = Escape + '0';
     inline static const std::string DarkBlue = Escape + '1';
     inline static const std::string DarkGreen = Escape + '2';
@@ -63,6 +63,7 @@ struct ColorFormat {
     inline static const std::string MaterialResin = Escape + 'v';
 
     // Format code
+
     inline static const std::string Obfuscated = Escape + 'k';
     inline static const std::string Bold = Escape + 'l';
     inline static const std::string Italic = Escape + 'o';

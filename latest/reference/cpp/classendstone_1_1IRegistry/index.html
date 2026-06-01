@@ -2607,6 +2607,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#detailed-description" class="md-nav__link">
+      <span class="md-ellipsis">
+        Detailed Description
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2770,6 +2781,10 @@ For latest updates join the chat on
 
 <h1 id="class-endstoneiregistry">Class endstone::IRegistry<a class="headerlink" href="#class-endstoneiregistry" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>IRegistry</strong></a></p>
+<p><em>Type-erased base interface for registries.</em> <a href="#detailed-description">More...</a></p>
+<ul>
+<li><code>#include &lt;endstone/registry.h&gt;</code></li>
+</ul>
 <p>Inherited by the following classes: <a href="../classendstone_1_1Registry/">endstone::Registry</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
@@ -2782,7 +2797,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual std::size_t</td>
-<td style="text-align: left;"><a href="#function-size"><strong>size</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="#function-size"><strong>size</strong></a> () const = 0<br><em>Gets the number of entries in this registry.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2813,10 +2828,15 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
+<h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
+<p>Allows registries of any element type to be handled uniformly without knowing the concrete element type. Prefer the typed <a href="../classendstone_1_1Registry/"><strong>Registry</strong></a> interface in plugin code. </p>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-size">function size<a class="headerlink" href="#function-size" title="Permanent link">&para;</a></h3>
+<p><em>Gets the number of entries in this registry.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">IRegistry</span><span class="o">::</span><span class="n">size</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the entry count </p>
 <hr>
 
 <h3 id="function-iregistry">function ~IRegistry<a class="headerlink" href="#function-iregistry" title="Permanent link">&para;</a></h3>

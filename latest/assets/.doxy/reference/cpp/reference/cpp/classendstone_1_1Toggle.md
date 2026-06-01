@@ -53,11 +53,11 @@ _Represents a toggle button with a label._
 | Type | Name |
 | ---: | :--- |
 |   | [**Toggle**](#function-toggle-12) () = default<br> |
-|   | [**Toggle**](#function-toggle-22) (Message label, [**bool**](classendstone_1_1Identifier.md) default\_value=[**false**](classendstone_1_1Identifier.md)) <br> |
+|   | [**Toggle**](#function-toggle-22) ([**Message**](namespaceendstone.md#typedef-message) label, [**bool**](classendstone_1_1Identifier.md) default\_value=[**false**](classendstone_1_1Identifier.md)) <br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**getDefaultValue**](#function-getdefaultvalue) () const<br>_Gets the default value of the toggle._  |
-|  Message | [**getLabel**](#function-getlabel) () const<br>_Gets the label of the toggle._  |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**getLabel**](#function-getlabel) () const<br>_Gets the label of the toggle._  |
 |  [**Toggle**](classendstone_1_1Toggle.md) & | [**setDefaultValue**](#function-setdefaultvalue) ([**bool**](classendstone_1_1Identifier.md) value) <br>_Sets the default value of the toggle._  |
-|  [**Toggle**](classendstone_1_1Toggle.md) & | [**setLabel**](#function-setlabel) (Message label) <br>_Sets the label of the toggle._  |
+|  [**Toggle**](classendstone_1_1Toggle.md) & | [**setLabel**](#function-setlabel) ([**Message**](namespaceendstone.md#typedef-message) label) <br>_Sets the label of the toggle._  |
 
 
 

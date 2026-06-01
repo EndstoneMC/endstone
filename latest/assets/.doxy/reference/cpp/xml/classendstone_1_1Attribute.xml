@@ -10,7 +10,7 @@
         <argsstring></argsstring>
         <name>Health</name>
         <qualifiedname>endstone::Attribute::Health</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;health&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;health&quot;)</initializer>
         <briefdescription>
 <para>Health of an entity. </para>
         </briefdescription>
@@ -26,7 +26,7 @@
         <argsstring></argsstring>
         <name>FollowRange</name>
         <qualifiedname>endstone::Attribute::FollowRange</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;follow_range&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;follow_range&quot;)</initializer>
         <briefdescription>
 <para>Range at which an entity will follow others. </para>
         </briefdescription>
@@ -42,7 +42,7 @@
         <argsstring></argsstring>
         <name>KnockbackResistance</name>
         <qualifiedname>endstone::Attribute::KnockbackResistance</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;knockback_resistance&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;knockback_resistance&quot;)</initializer>
         <briefdescription>
 <para>Resistance of an entity to knockback. </para>
         </briefdescription>
@@ -58,7 +58,7 @@
         <argsstring></argsstring>
         <name>MovementSpeed</name>
         <qualifiedname>endstone::Attribute::MovementSpeed</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;movement&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;movement&quot;)</initializer>
         <briefdescription>
 <para>Movement speed of an entity. </para>
         </briefdescription>
@@ -74,7 +74,7 @@
         <argsstring></argsstring>
         <name>UnderwaterMovementSpeed</name>
         <qualifiedname>endstone::Attribute::UnderwaterMovementSpeed</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;underwater_movement&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;underwater_movement&quot;)</initializer>
         <briefdescription>
 <para>Movement speed of an entity underwater. </para>
         </briefdescription>
@@ -90,7 +90,7 @@
         <argsstring></argsstring>
         <name>LavaMovementSpeed</name>
         <qualifiedname>endstone::Attribute::LavaMovementSpeed</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;lava_movement&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;lava_movement&quot;)</initializer>
         <briefdescription>
 <para>Movement speed of an entity in lava. </para>
         </briefdescription>
@@ -106,7 +106,7 @@
         <argsstring></argsstring>
         <name>AttackDamage</name>
         <qualifiedname>endstone::Attribute::AttackDamage</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;attack_damage&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;attack_damage&quot;)</initializer>
         <briefdescription>
 <para>Attack damage of an entity. </para>
         </briefdescription>
@@ -122,7 +122,7 @@
         <argsstring></argsstring>
         <name>Absorption</name>
         <qualifiedname>endstone::Attribute::Absorption</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;absorption&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;absorption&quot;)</initializer>
         <briefdescription>
 <para>Absorption of an entity. </para>
         </briefdescription>
@@ -138,7 +138,7 @@
         <argsstring></argsstring>
         <name>Luck</name>
         <qualifiedname>endstone::Attribute::Luck</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;luck&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;luck&quot;)</initializer>
         <briefdescription>
 <para>Luck bonus of an entity. </para>
         </briefdescription>
@@ -154,7 +154,7 @@
         <argsstring></argsstring>
         <name>JumpStrength</name>
         <qualifiedname>endstone::Attribute::JumpStrength</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;jump_strength&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;jump_strength&quot;)</initializer>
         <briefdescription>
 <para>Strength with which an entity will jump. </para>
         </briefdescription>
@@ -170,7 +170,7 @@
         <argsstring></argsstring>
         <name>PlayerHunger</name>
         <qualifiedname>endstone::Attribute::PlayerHunger</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;player.hunger&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;player.hunger&quot;)</initializer>
         <briefdescription>
 <para>Hunger level of a player. </para>
         </briefdescription>
@@ -186,7 +186,7 @@
         <argsstring></argsstring>
         <name>PlayerSaturation</name>
         <qualifiedname>endstone::Attribute::PlayerSaturation</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;player.saturation&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;player.saturation&quot;)</initializer>
         <briefdescription>
 <para>Saturation level of a player. </para>
         </briefdescription>
@@ -202,7 +202,7 @@
         <argsstring></argsstring>
         <name>PlayerExhaustion</name>
         <qualifiedname>endstone::Attribute::PlayerExhaustion</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;player.exhaustion&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;player.exhaustion&quot;)</initializer>
         <briefdescription>
 <para>Exhaustion level of a player. </para>
         </briefdescription>
@@ -218,7 +218,7 @@
         <argsstring></argsstring>
         <name>PlayerLevel</name>
         <qualifiedname>endstone::Attribute::PlayerLevel</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;player.level&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;player.level&quot;)</initializer>
         <briefdescription>
 <para>Experience level of a player. </para>
         </briefdescription>
@@ -234,7 +234,7 @@
         <argsstring></argsstring>
         <name>PlayerExperience</name>
         <qualifiedname>endstone::Attribute::PlayerExperience</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;player.experience&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;player.experience&quot;)</initializer>
         <briefdescription>
 <para>Progress toward the next experience level of a player. </para>
         </briefdescription>
@@ -250,7 +250,7 @@
         <argsstring></argsstring>
         <name>ZombieSpawnReinforcements</name>
         <qualifiedname>endstone::Attribute::ZombieSpawnReinforcements</qualifiedname>
-        <initializer>= AttributeId::minecraft(&quot;zombie.spawn_reinforcements&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">AttributeId::minecraft</ref>(&quot;zombie.spawn_reinforcements&quot;)</initializer>
         <briefdescription>
 <para>Chance of a zombie to spawn reinforcements. </para>
         </briefdescription>

@@ -33,7 +33,7 @@ Inherits the following classes: [endstone::ServerEvent](classendstone_1_1ServerE
 
 | Type | Name |
 | ---: | :--- |
-| enum  | [**LoadType**](#enum-loadtype)  <br> |
+| enum  | [**LoadType**](#enum-loadtype)  <br>_Represents the context in which the server was loaded._  |
 
 
 
@@ -99,8 +99,8 @@ Inherits the following classes: [endstone::ServerEvent](classendstone_1_1ServerE
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md)) <br> |
-|   | [**ServerLoadEvent**](#function-serverloadevent) (LoadType type) <br> |
-|  LoadType | [**getType**](#function-gettype) () const<br> |
+|   | [**ServerLoadEvent**](#function-serverloadevent) ([**LoadType**](classendstone_1_1ServerLoadEvent.md#enum-loadtype) type) <br> |
+|  [**LoadType**](classendstone_1_1ServerLoadEvent.md#enum-loadtype) | [**getType**](#function-gettype) () const<br>_Gets the context in which the server was loaded._  |
 
 
 ## Public Functions inherited from endstone::ServerEvent
@@ -215,6 +215,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 ### enum LoadType 
 
+_Represents the context in which the server was loaded._ 
 ```C++
 enum endstone::ServerLoadEvent::LoadType {
     Startup,
@@ -263,12 +264,24 @@ inline explicit endstone::ServerLoadEvent::ServerLoadEvent (
 
 ### function getType 
 
+_Gets the context in which the server was loaded._ 
 ```C++
 inline LoadType endstone::ServerLoadEvent::getType () const
 ```
 
 
 
+
+
+**Returns:**
+
+the load type for this event 
+
+
+
+
+
+        
 
 <hr>
 

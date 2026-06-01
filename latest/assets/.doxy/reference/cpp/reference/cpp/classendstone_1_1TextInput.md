@@ -53,13 +53,13 @@ _Represents a text input field._
 | Type | Name |
 | ---: | :--- |
 |   | [**TextInput**](#function-textinput-12) () = default<br> |
-|   | [**TextInput**](#function-textinput-22) (Message label, Message placeholder, std::optional&lt; std::string &gt; default\_text=std::nullopt) <br> |
+|   | [**TextInput**](#function-textinput-22) ([**Message**](namespaceendstone.md#typedef-message) label, [**Message**](namespaceendstone.md#typedef-message) placeholder, std::optional&lt; std::string &gt; default\_text=std::nullopt) <br> |
 |  std::optional&lt; std::string &gt; | [**getDefaultValue**](#function-getdefaultvalue) () const<br>_Gets the default text of the text input field._  |
-|  Message | [**getLabel**](#function-getlabel) () const<br>_Gets the label of the text input field._  |
-|  Message | [**getPlaceholder**](#function-getplaceholder) () const<br>_Gets the placeholder of the text input field._  |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**getLabel**](#function-getlabel) () const<br>_Gets the label of the text input field._  |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**getPlaceholder**](#function-getplaceholder) () const<br>_Gets the placeholder of the text input field._  |
 |  [**TextInput**](classendstone_1_1TextInput.md) & | [**setDefaultValue**](#function-setdefaultvalue) (std::optional&lt; std::string &gt; text) <br>_Sets the default text of the text input field._  |
-|  [**TextInput**](classendstone_1_1TextInput.md) & | [**setLabel**](#function-setlabel) (Message label) <br>_Sets the label of the text input field._  |
-|  [**TextInput**](classendstone_1_1TextInput.md) & | [**setPlaceholder**](#function-setplaceholder) (Message placeholder) <br>_Sets the placeholder of the text input field._  |
+|  [**TextInput**](classendstone_1_1TextInput.md) & | [**setLabel**](#function-setlabel) ([**Message**](namespaceendstone.md#typedef-message) label) <br>_Sets the label of the text input field._  |
+|  [**TextInput**](classendstone_1_1TextInput.md) & | [**setPlaceholder**](#function-setplaceholder) ([**Message**](namespaceendstone.md#typedef-message) placeholder) <br>_Sets the placeholder of the text input field._  |
 
 
 

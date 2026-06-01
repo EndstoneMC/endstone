@@ -6,7 +6,9 @@
     <derivedcompoundref refid="classendstone_1_1ListTag" prot="public" virt="non-virtual">endstone::ListTag</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1nbt_1_1ArrayTag" prot="public" virt="non-virtual">endstone::nbt::ArrayTag&lt; T &gt;</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1nbt_1_1ValueTag" prot="public" virt="non-virtual">endstone::nbt::ValueTag&lt; T &gt;</derivedcompoundref>
+    <includes refid="type_8h" local="no">endstone/nbt/type.h</includes>
     <briefdescription>
+<para>Common base for all NBT tag types. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
@@ -40,7 +42,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/nbt/type.h" line="19" column="1" bodyfile="include/endstone/nbt/type.h" bodystart="19" bodyend="19"/>
+    <location file="include/endstone/nbt/type.h" line="22" column="1" bodyfile="include/endstone/nbt/type.h" bodystart="22" bodyend="22"/>
     <listofallmembers>
     </listofallmembers>
   </compounddef>

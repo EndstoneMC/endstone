@@ -8,8 +8,9 @@
 
 
 
+_An NBT tag holding an ordered sequence of child tags that all share the same type._ [More...](#detailed-description)
 
-
+* `#include <endstone/nbt/list.h>`
 
 
 
@@ -158,6 +159,13 @@ Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1
 
 
 
+## Detailed Description
+
+
+Provides a std::vector-like interface. The element type is fixed by the first element added; attempting to add a tag of a different type, or an End tag, throws std::invalid\_argument. 
+
+
+    
 ## Public Types Documentation
 
 

@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_modifier.h" line="88" column="17" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="88" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute_modifier.h" line="103" column="17" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1AttributeModifier_1a5880929fc276e39a791a721e86bcad31" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_modifier.h" line="89" column="10" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="89" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute_modifier.h" line="104" column="10" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1AttributeModifier_1af426b1b9feca243b95fbbfd48e2b0c38" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_modifier.h" line="90" column="11" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="90" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute_modifier.h" line="105" column="11" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1AttributeModifier_1a0a377d2a916ff12ebc4aa1f1946eb3e3" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170" kindref="member">Operation</ref></type>
@@ -100,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_modifier.h" line="91" column="15" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="91" bodyend="-1"/>
+        <location file="include/endstone/attribute/attribute_modifier.h" line="106" column="15" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="106" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -123,12 +123,39 @@
           <declname>operation</declname>
         </param>
         <briefdescription>
+<para>Construct a new attribute modifier with an auto-generated unique id. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the name of the modifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>amount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the amount by which the modifier applies its operation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>operation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the operation to apply </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_modifier.h" line="49" column="5" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="49" bodyend="52"/>
+        <location file="include/endstone/attribute/attribute_modifier.h" line="56" column="5" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="56" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeModifier_1a68268eea7481e9f421c98071ce7c6f9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -153,12 +180,47 @@
           <declname>operation</declname>
         </param>
         <briefdescription>
+<para>Construct a new attribute modifier with the given unique id. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the name of the modifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the unique id of the modifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>amount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the amount by which the modifier applies its operation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>operation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the operation to apply </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_modifier.h" line="54" column="5" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="54" bodyend="57"/>
+        <location file="include/endstone/attribute/attribute_modifier.h" line="69" column="5" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="69" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeModifier_1a66328bc61adfc27c551f3454aef023e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref></type>
@@ -176,7 +238,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_modifier.h" line="64" column="11" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="64" bodyend="64"/>
+        <location file="include/endstone/attribute/attribute_modifier.h" line="79" column="11" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="79" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeModifier_1ae1aadfb08a50d17d93502dac5cbe3b13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
@@ -194,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_modifier.h" line="71" column="18" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="71" bodyend="71"/>
+        <location file="include/endstone/attribute/attribute_modifier.h" line="86" column="18" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="86" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeModifier_1a64fd4cca69b16a3a740e0ee4aec93bb3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">float</ref></type>
@@ -212,7 +274,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_modifier.h" line="78" column="12" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="78" bodyend="78"/>
+        <location file="include/endstone/attribute/attribute_modifier.h" line="93" column="12" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="93" bodyend="93"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1AttributeModifier_1a710ed8941c3fc3afd04d3babe85bf0bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170" kindref="member">Operation</ref></type>
@@ -230,7 +292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/attribute/attribute_modifier.h" line="85" column="16" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="85" bodyend="85"/>
+        <location file="include/endstone/attribute/attribute_modifier.h" line="100" column="16" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="100" bodyend="100"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -238,7 +300,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/attribute/attribute_modifier.h" line="24" column="1" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="24" bodyend="92"/>
+    <location file="include/endstone/attribute/attribute_modifier.h" line="24" column="1" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="24" bodyend="107"/>
     <listofallmembers>
       <member refid="classendstone_1_1AttributeModifier_1af426b1b9feca243b95fbbfd48e2b0c38" prot="private" virt="non-virtual"><scope>endstone::AttributeModifier</scope><name>amount_</name></member>
       <member refid="classendstone_1_1AttributeModifier_1ae8d729ea4343d6e5c4c21beaae9df562" prot="public" virt="non-virtual"><scope>endstone::AttributeModifier</scope><name>AttributeModifier</name></member>

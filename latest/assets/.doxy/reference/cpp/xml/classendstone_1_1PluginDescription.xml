@@ -207,7 +207,7 @@
         <argsstring></argsstring>
         <name>default_permission_</name>
         <qualifiedname>endstone::PluginDescription::default_permission_</qualifiedname>
-        <initializer>= PermissionDefault::Operator</initializer>
+        <initializer>= <ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481ae1b3ec89ead7f83a9245ed5c9cacfdbf" kindref="member">PermissionDefault::Operator</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -313,7 +313,7 @@
         <param>
           <type><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481" kindref="member">PermissionDefault</ref></type>
           <declname>default_permission</declname>
-          <defval>PermissionDefault::Operator</defval>
+          <defval><ref refid="namespaceendstone_1a2d8e7efa02701e05bf89e43b98227481ae1b3ec89ead7f83a9245ed5c9cacfdbf" kindref="member">PermissionDefault::Operator</ref></defval>
         </param>
         <param>
           <type>std::vector&lt; <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &gt;</type>

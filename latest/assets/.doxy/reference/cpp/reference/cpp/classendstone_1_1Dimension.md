@@ -38,9 +38,9 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Nether**](#variable-nether)   = `DimensionId::minecraft("nether")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Overworld**](#variable-overworld)   = `DimensionId::minecraft("overworld")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TheEnd**](#variable-theend)   = `DimensionId::minecraft("the\_end")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Nether**](#variable-nether)   = `[**DimensionId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("nether")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Overworld**](#variable-overworld)   = `[**DimensionId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("overworld")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TheEnd**](#variable-theend)   = `[**DimensionId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("the\_end")`<br> |
 
 
 

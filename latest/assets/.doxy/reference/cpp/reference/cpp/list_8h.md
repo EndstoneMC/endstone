@@ -42,7 +42,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**ListTag**](classendstone_1_1ListTag.md) <br> |
+| class | [**ListTag**](classendstone_1_1ListTag.md) <br>_An NBT tag holding an ordered sequence of child tags that all share the same type._  |
 
 
 

@@ -174,8 +174,12 @@
         <qualifiedname>endstone::PluginCommand::asPluginCommand</qualifiedname>
         <reimplements refid="classendstone_1_1Command_1ae3f04d6fbd6fe48c29c1b2951f77a5c0">asPluginCommand</reimplements>
         <briefdescription>
+<para>Returns this command as a <ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> if it is one. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>this command cast to a <ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref>, or nullptr if it is not a <ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>

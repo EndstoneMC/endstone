@@ -10,8 +10,9 @@
 
 
 
+_A wrapper around a std::shared\_ptr that may be null._ [More...](#detailed-description)
 
-
+* `#include <endstone/util/pointers.h>`
 
 
 
@@ -93,6 +94,13 @@
 
 
 
+## Detailed Description
+
+
+Convertible from a [**NotNull**](classendstone_1_1NotNull.md) of the same type, and contextually convertible to bool to test for a value. 
+
+
+    
 ## Public Functions Documentation
 
 

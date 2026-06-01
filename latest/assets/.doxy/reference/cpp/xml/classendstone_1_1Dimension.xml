@@ -10,7 +10,7 @@
         <argsstring></argsstring>
         <name>Overworld</name>
         <qualifiedname>endstone::Dimension::Overworld</qualifiedname>
-        <initializer>= DimensionId::minecraft(&quot;overworld&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">DimensionId::minecraft</ref>(&quot;overworld&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -25,7 +25,7 @@
         <argsstring></argsstring>
         <name>Nether</name>
         <qualifiedname>endstone::Dimension::Nether</qualifiedname>
-        <initializer>= DimensionId::minecraft(&quot;nether&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">DimensionId::minecraft</ref>(&quot;nether&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -40,7 +40,7 @@
         <argsstring></argsstring>
         <name>TheEnd</name>
         <qualifiedname>endstone::Dimension::TheEnd</qualifiedname>
-        <initializer>= DimensionId::minecraft(&quot;the_end&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">DimensionId::minecraft</ref>(&quot;the_end&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

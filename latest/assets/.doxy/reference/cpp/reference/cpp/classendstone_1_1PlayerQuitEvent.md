@@ -94,9 +94,9 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md)) <br> |
-|   | [**PlayerQuitEvent**](#function-playerquitevent) ([**Player**](classendstone_1_1Player.md) & player, std::optional&lt; Message &gt; quit\_message) <br> |
-|  std::optional&lt; Message &gt; | [**getQuitMessage**](#function-getquitmessage) () const<br>_Gets the quit message to send to all online players._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setQuitMessage**](#function-setquitmessage) (std::optional&lt; Message &gt; message) <br>_Sets the quit message to send to all online players._  |
+|   | [**PlayerQuitEvent**](#function-playerquitevent) ([**Player**](classendstone_1_1Player.md) & player, std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; quit\_message) <br> |
+|  std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; | [**getQuitMessage**](#function-getquitmessage) () const<br>_Gets the quit message to send to all online players._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setQuitMessage**](#function-setquitmessage) (std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; message) <br>_Sets the quit message to send to all online players._  |
 
 
 ## Public Functions inherited from endstone::PlayerEvent

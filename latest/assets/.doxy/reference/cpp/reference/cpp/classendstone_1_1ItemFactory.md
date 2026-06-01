@@ -8,8 +8,9 @@
 
 
 
+_An interface to the methods used to create item metadata._ 
 
-
+* `#include <endstone/inventory/item_factory.h>`
 
 
 

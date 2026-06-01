@@ -90,11 +90,11 @@ See [endstone::Form](classendstone_1_1Form.md)
 |  std::vector&lt; Control &gt; | [**getControls**](#function-getcontrols) () const<br>_Gets the controls of the modal form._  |
 |  std::optional&lt; std::string &gt; | [**getIcon**](#function-geticon) () const<br>_Get the icon of the form._  |
 |  OnSubmitCallback | [**getOnSubmit**](#function-getonsubmit) () const<br>_Gets the on submit callback of the form._  |
-|  std::optional&lt; Message &gt; | [**getSubmitButton**](#function-getsubmitbutton) () const<br>_Gets the submit button text of the form._  |
+|  std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; | [**getSubmitButton**](#function-getsubmitbutton) () const<br>_Gets the submit button text of the form._  |
 |  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setControls**](#function-setcontrols) (std::vector&lt; Control &gt; controls) <br>_Sets the controls of the modal form._  |
 |  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setIcon**](#function-seticon) (std::optional&lt; std::string &gt; icon) <br>_Sets the icon of the form._  |
 |  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setOnSubmit**](#function-setonsubmit) (OnSubmitCallback on\_submit) <br>_Sets the on submit callback of the form._  |
-|  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setSubmitButton**](#function-setsubmitbutton) (std::optional&lt; Message &gt; text) <br>_Sets the submit button text of the form._  |
+|  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setSubmitButton**](#function-setsubmitbutton) (std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; text) <br>_Sets the submit button text of the form._  |
 
 
 ## Public Functions inherited from endstone::Form
@@ -105,9 +105,9 @@ See [endstone::Form](classendstone_1_1Form.md)
 | ---: | :--- |
 |   | [**Form**](classendstone_1_1Form.md#function-form) () = default<br> |
 |  OnCloseCallback | [**getOnClose**](classendstone_1_1Form.md#function-getonclose) () const<br>_Gets the on close callback of the form._  |
-|  Message | [**getTitle**](classendstone_1_1Form.md#function-gettitle) () const<br>_Gets the title of the form._  |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**getTitle**](classendstone_1_1Form.md#function-gettitle) () const<br>_Gets the title of the form._  |
 |  [**T**](classendstone_1_1Identifier.md) & | [**setOnClose**](classendstone_1_1Form.md#function-setonclose) (OnCloseCallback on\_close) <br>_Sets the on close callback of the form._  |
-|  [**T**](classendstone_1_1Identifier.md) & | [**setTitle**](classendstone_1_1Form.md#function-settitle) (Message title) <br>_Sets the title of the form._  |
+|  [**T**](classendstone_1_1Identifier.md) & | [**setTitle**](classendstone_1_1Form.md#function-settitle) ([**Message**](namespaceendstone.md#typedef-message) title) <br>_Sets the title of the form._  |
 
 
 
@@ -131,7 +131,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 |  OnCloseCallback | [**on\_close\_**](classendstone_1_1Form.md#variable-on_close_)  <br> |
-|  Message | [**title\_**](classendstone_1_1Form.md#variable-title_)  <br> |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**title\_**](classendstone_1_1Form.md#variable-title_)  <br> |
 
 
 

@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Preconditions" kind="class" language="C++" prot="public">
     <compoundname>endstone::Preconditions</compoundname>
+    <includes refid="check_8h" local="no">endstone/check.h</includes>
     <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classendstone_1_1Preconditions_1a67ef7267ef07164ae88052ed43750426" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -29,12 +30,48 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Ensures the truth of an expression involving one or more parameters to the calling method. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>condition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The expression that must hold. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A format string describing the failure, used when the condition is false. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments to substitute into the format string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::invalid_argument</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if condition is false. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/check.h" line="26" column="17" bodyfile="include/endstone/check.h" bodystart="26" bodyend="32"/>
+        <location file="include/endstone/check.h" line="37" column="17" bodyfile="include/endstone/check.h" bodystart="37" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Preconditions_1a5fb6820ed9c6e4629a00776f25d11ef5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -62,19 +99,56 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Ensures the truth of an expression involving the state of the calling instance. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>condition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The expression that must hold. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A format string describing the failure, used when the condition is false. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments to substitute into the format string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::runtime_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if condition is false. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/check.h" line="35" column="17" bodyfile="include/endstone/check.h" bodystart="35" bodyend="41"/>
+        <location file="include/endstone/check.h" line="54" column="17" bodyfile="include/endstone/check.h" bodystart="54" bodyend="60"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Static helpers for validating method arguments and object state. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/check.h" line="23" column="1" bodyfile="include/endstone/check.h" bodystart="23" bodyend="42"/>
+    <location file="include/endstone/check.h" line="26" column="1" bodyfile="include/endstone/check.h" bodystart="26" bodyend="61"/>
     <listofallmembers>
       <member refid="classendstone_1_1Preconditions_1a67ef7267ef07164ae88052ed43750426" prot="public" virt="non-virtual"><scope>endstone::Preconditions</scope><name>checkArgument</name></member>
       <member refid="classendstone_1_1Preconditions_1a5fb6820ed9c6e4629a00776f25d11ef5" prot="public" virt="non-virtual"><scope>endstone::Preconditions</scope><name>checkState</name></member>

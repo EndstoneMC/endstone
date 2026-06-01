@@ -36,7 +36,7 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**Color**](classendstone_1_1Color.md) <br>_Represents a color with red, green, blue, and alpha components._  |
-| class | [**Colors**](classendstone_1_1Colors.md) <br> |
+| class | [**Colors**](classendstone_1_1Colors.md) <br>_Provides a collection of predefined colors._  |
 
 
 

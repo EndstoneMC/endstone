@@ -53,14 +53,14 @@ _Represents a slider with a label._
 | Type | Name |
 | ---: | :--- |
 |   | [**Slider**](#function-slider-12) () = default<br> |
-|   | [**Slider**](#function-slider-22) (Message label, [**float**](classendstone_1_1Identifier.md) min, [**float**](classendstone_1_1Identifier.md) max, [**float**](classendstone_1_1Identifier.md) step, std::optional&lt; [**float**](classendstone_1_1Identifier.md) &gt; default\_value=std::nullopt) <br> |
+|   | [**Slider**](#function-slider-22) ([**Message**](namespaceendstone.md#typedef-message) label, [**float**](classendstone_1_1Identifier.md) min, [**float**](classendstone_1_1Identifier.md) max, [**float**](classendstone_1_1Identifier.md) step, std::optional&lt; [**float**](classendstone_1_1Identifier.md) &gt; default\_value=std::nullopt) <br> |
 |  std::optional&lt; [**float**](classendstone_1_1Identifier.md) &gt; | [**getDefaultValue**](#function-getdefaultvalue) () const<br>_Gets the default value of the slider._  |
-|  Message | [**getLabel**](#function-getlabel) () const<br>_Gets the label of the slider._  |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**getLabel**](#function-getlabel) () const<br>_Gets the label of the slider._  |
 |  [**float**](classendstone_1_1Identifier.md) | [**getMax**](#function-getmax) () const<br>_Gets the maximum value of the slider._  |
 |  [**float**](classendstone_1_1Identifier.md) | [**getMin**](#function-getmin) () const<br>_Gets the minimum value of the slider._  |
 |  [**float**](classendstone_1_1Identifier.md) | [**getStep**](#function-getstep) () const<br>_Gets the step size of the slider._  |
 |  [**Slider**](classendstone_1_1Slider.md) & | [**setDefaultValue**](#function-setdefaultvalue) (std::optional&lt; [**float**](classendstone_1_1Identifier.md) &gt; default\_value) <br>_Sets the default value of the slider._  |
-|  [**Slider**](classendstone_1_1Slider.md) & | [**setLabel**](#function-setlabel) (Message label) <br>_Sets the label of the slider._  |
+|  [**Slider**](classendstone_1_1Slider.md) & | [**setLabel**](#function-setlabel) ([**Message**](namespaceendstone.md#typedef-message) label) <br>_Sets the label of the slider._  |
 |  [**Slider**](classendstone_1_1Slider.md) & | [**setMax**](#function-setmax) ([**float**](classendstone_1_1Identifier.md) max) <br>_Sets the maximum value of the slider._  |
 |  [**Slider**](classendstone_1_1Slider.md) & | [**setMin**](#function-setmin) ([**float**](classendstone_1_1Identifier.md) min) <br>_Sets the minimum value of the slider._  |
 |  [**Slider**](classendstone_1_1Slider.md) & | [**setStep**](#function-setstep) ([**float**](classendstone_1_1Identifier.md) step) <br>_Sets the step size of the slider._  |

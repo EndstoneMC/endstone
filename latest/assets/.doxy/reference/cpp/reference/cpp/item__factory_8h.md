@@ -37,7 +37,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**ItemFactory**](classendstone_1_1ItemFactory.md) <br> |
+| class | [**ItemFactory**](classendstone_1_1ItemFactory.md) <br>_An interface to the methods used to create item metadata._  |
 
 
 

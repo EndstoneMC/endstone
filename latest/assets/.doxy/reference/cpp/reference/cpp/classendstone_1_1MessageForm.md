@@ -85,13 +85,13 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
-|  Message | [**getButton1**](#function-getbutton1) () const<br>_Get the text of button1._  |
-|  Message | [**getButton2**](#function-getbutton2) () const<br>_Get the text of button2._  |
-|  Message | [**getContent**](#function-getcontent) () const<br>_Get the content of the form._  |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**getButton1**](#function-getbutton1) () const<br>_Get the text of button1._  |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**getButton2**](#function-getbutton2) () const<br>_Get the text of button2._  |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**getContent**](#function-getcontent) () const<br>_Get the content of the form._  |
 |  OnSubmitCallback | [**getOnSubmit**](#function-getonsubmit) () const<br>_Gets the on submit callback of the form._  |
-|  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setButton1**](#function-setbutton1) (Message text) <br>_Set the text of button1._  |
-|  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setButton2**](#function-setbutton2) (Message text) <br>_Set the text of button2._  |
-|  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setContent**](#function-setcontent) (Message text) <br>_Set the content of the form._  |
+|  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setButton1**](#function-setbutton1) ([**Message**](namespaceendstone.md#typedef-message) text) <br>_Set the text of button1._  |
+|  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setButton2**](#function-setbutton2) ([**Message**](namespaceendstone.md#typedef-message) text) <br>_Set the text of button2._  |
+|  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setContent**](#function-setcontent) ([**Message**](namespaceendstone.md#typedef-message) text) <br>_Set the content of the form._  |
 |  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setOnSubmit**](#function-setonsubmit) (OnSubmitCallback on\_submit) <br>_Sets the on submit callback of the form._  |
 
 
@@ -103,9 +103,9 @@ See [endstone::Form](classendstone_1_1Form.md)
 | ---: | :--- |
 |   | [**Form**](classendstone_1_1Form.md#function-form) () = default<br> |
 |  OnCloseCallback | [**getOnClose**](classendstone_1_1Form.md#function-getonclose) () const<br>_Gets the on close callback of the form._  |
-|  Message | [**getTitle**](classendstone_1_1Form.md#function-gettitle) () const<br>_Gets the title of the form._  |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**getTitle**](classendstone_1_1Form.md#function-gettitle) () const<br>_Gets the title of the form._  |
 |  [**T**](classendstone_1_1Identifier.md) & | [**setOnClose**](classendstone_1_1Form.md#function-setonclose) (OnCloseCallback on\_close) <br>_Sets the on close callback of the form._  |
-|  [**T**](classendstone_1_1Identifier.md) & | [**setTitle**](classendstone_1_1Form.md#function-settitle) (Message title) <br>_Sets the title of the form._  |
+|  [**T**](classendstone_1_1Identifier.md) & | [**setTitle**](classendstone_1_1Form.md#function-settitle) ([**Message**](namespaceendstone.md#typedef-message) title) <br>_Sets the title of the form._  |
 
 
 
@@ -129,7 +129,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 |  OnCloseCallback | [**on\_close\_**](classendstone_1_1Form.md#variable-on_close_)  <br> |
-|  Message | [**title\_**](classendstone_1_1Form.md#variable-title_)  <br> |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**title\_**](classendstone_1_1Form.md#variable-title_)  <br> |
 
 
 

@@ -10,8 +10,9 @@
 
 
 
+_An NBT tag wrapping a single scalar payload of type T (e.g._ [More...](#detailed-description)
 
-
+* `#include <endstone/nbt/value.h>`
 
 
 
@@ -80,10 +81,10 @@ Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1
 | Type | Name |
 | ---: | :--- |
 |  [**constexpr**](classendstone_1_1Identifier.md) | [**ValueTag**](#function-valuetag-13) () = default<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**ValueTag**](#function-valuetag-23) ([**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & v) <br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**ValueTag**](#function-valuetag-33) ([**T**](classendstone_1_1Identifier.md) && v) <br> |
-|   | [**operator const T &**](#function-operator-const-t-&) () noexcept const<br> |
-|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & | [**value**](#function-value) () noexcept const<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) | [**ValueTag**](#function-valuetag-23) ([**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & v) <br>_Construct a value tag from a copy of the given payload._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) | [**ValueTag**](#function-valuetag-33) ([**T**](classendstone_1_1Identifier.md) && v) <br>_Construct a value tag by moving the given payload._  |
+|   | [**operator const T &**](#function-operator-const-t-&) () noexcept const<br>_Implicitly converts to a read-only reference to the underlying payload._  |
+|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & | [**value**](#function-value) () noexcept const<br>_Get the underlying payload._  |
 
 
 
@@ -140,6 +141,23 @@ Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1
 
 
 
+## Detailed Description
+
+
+byte, int, float, string).
+
+
+
+
+**Template parameters:**
+
+
+* `T` the underlying payload type 
+
+
+
+
+    
 ## Public Types Documentation
 
 
@@ -175,6 +193,7 @@ constexpr endstone::nbt::ValueTag::ValueTag () = default
 
 ### function ValueTag [2/3]
 
+_Construct a value tag from a copy of the given payload._ 
 ```C++
 inline explicit constexpr endstone::nbt::ValueTag::ValueTag (
     const  T & v
@@ -184,12 +203,24 @@ inline explicit constexpr endstone::nbt::ValueTag::ValueTag (
 
 
 
+
+**Parameters:**
+
+
+* `v` the payload value 
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function ValueTag [3/3]
 
+_Construct a value tag by moving the given payload._ 
 ```C++
 inline explicit constexpr endstone::nbt::ValueTag::ValueTag (
     T && v
@@ -199,12 +230,24 @@ inline explicit constexpr endstone::nbt::ValueTag::ValueTag (
 
 
 
+
+**Parameters:**
+
+
+* `v` the payload value 
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function operator const T & 
 
+_Implicitly converts to a read-only reference to the underlying payload._ 
 ```C++
 inline endstone::nbt::ValueTag::operator const T & () noexcept const
 ```
@@ -218,12 +261,24 @@ inline endstone::nbt::ValueTag::operator const T & () noexcept const
 
 ### function value 
 
+_Get the underlying payload._ 
 ```C++
 inline const  T & endstone::nbt::ValueTag::value () noexcept const
 ```
 
 
 
+
+
+**Returns:**
+
+a reference to the wrapped value 
+
+
+
+
+
+        
 
 <hr>## Friends Documentation
 

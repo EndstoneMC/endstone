@@ -34,17 +34,17 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
-| class | [**Tag**](classendstone_1_1nbt_1_1Tag.md) <br> |
-| struct | [**TagBase**](structendstone_1_1nbt_1_1TagBase.md) <br> |
-| class | [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br> |
+| class | [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_An NBT tag holding a contiguous array of fixed-width values (e.g._  |
+| class | [**Tag**](classendstone_1_1nbt_1_1Tag.md) <br>_A single NBT tag that may hold any of the supported payload types._  |
+| struct | [**TagBase**](structendstone_1_1nbt_1_1TagBase.md) <br>_Common base for all NBT tag types._  |
+| class | [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_An NBT tag wrapping a single scalar payload of type T (e.g._  |
 
 
 ## Public Types
 
 | Type | Name |
 | ---: | :--- |
-| enum std::uint8\_t | [**Type**](#enum-type)  <br> |
+| enum std::uint8\_t | [**Type**](#enum-type)  <br>_Identifies the kind of payload an NBT tag holds._  |
 
 
 
@@ -108,6 +108,7 @@
 
 ### enum Type 
 
+_Identifies the kind of payload an NBT tag holds._ 
 ```C++
 enum endstone::nbt::Type {
     End = 0,
@@ -127,6 +128,10 @@ enum endstone::nbt::Type {
 
 
 
+The numeric values match the tag ids used in the binary NBT format. 
+
+
+        
 
 <hr>
 ## Public Functions Documentation

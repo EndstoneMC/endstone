@@ -2673,7 +2673,7 @@ For latest updates join the chat on
 </li>
 </ul>
 </li>
-<li><strong>class</strong> <a href="../classendstone_1_1ICancellable/"><strong>endstone::ICancellable</strong></a>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1ICancellable/"><strong>endstone::ICancellable</strong></a> <em>Interface for events that may be cancelled by a plugin or the server.</em>     <ul>
 <li><strong>class</strong> <a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a> <em>A type characterizing events that may be cancelled by a plugin or the server.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a> <em>A type characterizing events that may be cancelled by a plugin or the server.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Cancellable/"><strong>endstone::Cancellable</strong></a> <em>A type characterizing events that may be cancelled by a plugin or the server.</em> </li>
@@ -2728,8 +2728,8 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1Registry_1_1Type/"><strong>endstone::Registry::Type</strong></a> <em>CRTP base for registry-backed types identified by an</em> <a href="../classendstone_1_1Identifier/"><em><strong>Identifier</strong></em></a> <em>.</em>    <ul>
 <li><strong>class</strong> <a href="../classendstone_1_1ActorType/"><strong>endstone::ActorType</strong></a> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1BlockType/"><strong>endstone::BlockType</strong></a> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1Enchantment/"><strong>endstone::Enchantment</strong></a> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1ItemType/"><strong>endstone::ItemType</strong></a> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Enchantment/"><strong>endstone::Enchantment</strong></a> <em>Represents an enchantment that may be added to armor, weapons, tools or other items.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1ItemType/"><strong>endstone::ItemType</strong></a> <em>Represents an item type.</em> </li>
 </ul>
 </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Attribute/"><strong>endstone::Attribute</strong></a> <em>All attribute types.</em> </li>
@@ -2748,7 +2748,7 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1Button/"><strong>endstone::Button</strong></a> <em>Represents a button with text and an optional icon.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Chunk/"><strong>endstone::Chunk</strong></a> <em>Represents a chunk of blocks.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a> <em>Represents a color with red, green, blue, and alpha components.</em> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1Colors/"><strong>endstone::Colors</strong></a> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Colors/"><strong>endstone::Colors</strong></a> <em>Provides a collection of predefined colors.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a> <em>Represents a</em> <a href="../classendstone_1_1Command/"><em><strong>Command</strong></em></a> <em>, which executes various tasks upon user input.</em>    <ul>
 <li><strong>class</strong> <a href="../classendstone_1_1PluginCommand/"><strong>endstone::PluginCommand</strong></a> <em>Represents a</em> <a href="../classendstone_1_1Command/"><em><strong>Command</strong></em></a> <em>belonging to a</em><a href="../classendstone_1_1Plugin/"><em><strong>Plugin</strong></em></a> <em>.</em></li>
 </ul>
@@ -2758,11 +2758,11 @@ For latest updates join the chat on
 </ul>
 </li>
 <li><strong>class</strong> <a href="../classendstone_1_1CommandMap/"><strong>endstone::CommandMap</strong></a> <em>Represents a command map that manages all commands of the</em> <a href="../classendstone_1_1Server/"><em><strong>Server</strong></em></a> <em>.</em></li>
-<li><strong>struct</strong> <a href="../structendstone_1_1nbt_1_1TagBase/"><strong>endstone::nbt::TagBase</strong></a>     <ul>
-<li><strong>class</strong> <a href="../classendstone_1_1CompoundTag/"><strong>endstone::CompoundTag</strong></a> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1ListTag/"><strong>endstone::ListTag</strong></a> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1nbt_1_1ArrayTag/"><strong>endstone::nbt::ArrayTag</strong></a> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1nbt_1_1ValueTag/"><strong>endstone::nbt::ValueTag</strong></a> </li>
+<li><strong>struct</strong> <a href="../structendstone_1_1nbt_1_1TagBase/"><strong>endstone::nbt::TagBase</strong></a> <em>Common base for all NBT tag types.</em>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1CompoundTag/"><strong>endstone::CompoundTag</strong></a> <em>An NBT tag holding a set of named child tags, keyed by string.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1ListTag/"><strong>endstone::ListTag</strong></a> <em>An NBT tag holding an ordered sequence of child tags that all share the same type.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1nbt_1_1ArrayTag/"><strong>endstone::nbt::ArrayTag</strong></a> <em>An NBT tag holding a contiguous array of fixed-width values (e.g.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1nbt_1_1ValueTag/"><strong>endstone::nbt::ValueTag</strong></a> <em>An NBT tag wrapping a single scalar payload of type T (e.g.</em> </li>
 </ul>
 </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Criteria/"><strong>endstone::Criteria</strong></a> <em>Represents a scoreboard criteria.</em> </li>
@@ -2777,7 +2777,7 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a> <em>Represents a registered</em> <a href="../classendstone_1_1EventHandler/"><em><strong>EventHandler</strong></em></a> <em>which associates with a</em><a href="../classendstone_1_1Plugin/"><em><strong>Plugin</strong></em></a> <em>.</em></li>
 <li><strong>class</strong> <a href="../classendstone_1_1HandlerList/"><strong>endstone::HandlerList</strong></a> <em>A list of event handlers.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Header/"><strong>endstone::Header</strong></a> <em>Represents a header with a label.</em> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1IRegistry/"><strong>endstone::IRegistry</strong></a>     <ul>
+<li><strong>class</strong> <a href="../classendstone_1_1IRegistry/"><strong>endstone::IRegistry</strong></a> <em>Type-erased base interface for registries.</em>     <ul>
 <li><strong>class</strong> <a href="../classendstone_1_1Registry/"><strong>endstone::Registry</strong></a> <em>Abstract registry interface for objects with identifiers.</em> </li>
 </ul>
 </li>
@@ -2787,7 +2787,7 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1PlayerInventory/"><strong>endstone::PlayerInventory</strong></a> <em>Interface to the inventory of a</em> <a href="../classendstone_1_1Player/"><em><strong>Player</strong></em></a> <em>, including the four armor slots and any extra slots.</em></li>
 </ul>
 </li>
-<li><strong>class</strong> <a href="../classendstone_1_1ItemFactory/"><strong>endstone::ItemFactory</strong></a> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1ItemFactory/"><strong>endstone::ItemFactory</strong></a> <em>An interface to the methods used to create item metadata.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a> <em>Represents a stack of items.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Label/"><strong>endstone::Label</strong></a> <em>Represents a text label.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Language/"><strong>endstone::Language</strong></a> <em>Represents the interface for translating text into different languages.</em> </li>
@@ -2798,8 +2798,8 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1MapCursor/"><strong>endstone::MapCursor</strong></a> <em>Represents a cursor on a map.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1MapRenderer/"><strong>endstone::MapRenderer</strong></a> <em>Represents a renderer for a map.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a> <em>Represents a map item.</em> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1NotNull/"><strong>endstone::NotNull</strong></a> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1Nullable/"><strong>endstone::Nullable</strong></a> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1NotNull/"><strong>endstone::NotNull</strong></a> <em>A wrapper around a std::shared_ptr that is guaranteed never to be null.</em> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Nullable/"><strong>endstone::Nullable</strong></a> <em>A wrapper around a std::shared_ptr that may be null.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a> <em>Represents an objective on a scoreboard that can show scores specific to entries.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1OfflinePlayer/"><strong>endstone::OfflinePlayer</strong></a> <em>Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a> <em>Represents a unique permission that may be attached to a</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>.</em></li>
@@ -2809,7 +2809,7 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1PluginLoader/"><strong>endstone::PluginLoader</strong></a> <em>Represents a plugin loader, which handles direct access to specific types of plugins.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a> <em>Represents a plugin manager that handles all plugins from the</em> <a href="../classendstone_1_1Server/"><em><strong>Server</strong></em></a> <em>.</em></li>
 <li><strong>class</strong> <a href="../classendstone_1_1PotionType/"><strong>endstone::PotionType</strong></a> <em>All potion types.</em> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1Preconditions/"><strong>endstone::Preconditions</strong></a> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1Preconditions/"><strong>endstone::Preconditions</strong></a> <em>Static helpers for validating method arguments and object state.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Recipe/"><strong>endstone::Recipe</strong></a> <em>Represents some type of crafting recipe.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Scheduler/"><strong>endstone::Scheduler</strong></a> <em>Represents a scheduler that executes various tasks.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1Score/"><strong>endstone::Score</strong></a> <em>Represents a score for an objective on a scoreboard.</em> </li>
@@ -2824,7 +2824,7 @@ For latest updates join the chat on
 <li><strong>class</strong> <a href="../classendstone_1_1Translatable/"><strong>endstone::Translatable</strong></a> <em>Represents an object with a text representation that can be translated by the Minecraft client.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1UUID/"><strong>endstone::UUID</strong></a> <em>Implementation of Universally Unique</em> <a href="../classendstone_1_1Identifier/"><em><strong>Identifier</strong></em></a> <em>(</em><a href="../classendstone_1_1UUID/"><em><strong>UUID</strong></em></a> <em>).</em></li>
 <li><strong>class</strong> <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a> <em>Represents a 3-dimensional vector.</em> </li>
-<li><strong>class</strong> <a href="../classendstone_1_1nbt_1_1Tag/"><strong>endstone::nbt::Tag</strong></a> </li>
+<li><strong>class</strong> <a href="../classendstone_1_1nbt_1_1Tag/"><strong>endstone::nbt::Tag</strong></a> <em>A single NBT tag that may hold any of the supported payload types.</em> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1ItemStack_1_1Impl/"><strong>endstone::ItemStack::Impl</strong></a> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1detail_1_1CommandBuilder/"><strong>endstone::detail::CommandBuilder</strong></a> </li>
 <li><strong>class</strong> <a href="../classendstone_1_1detail_1_1PermissionBuilder/"><strong>endstone::detail::PermissionBuilder</strong></a> </li>

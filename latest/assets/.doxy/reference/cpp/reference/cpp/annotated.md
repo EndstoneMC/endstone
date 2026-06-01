@@ -48,13 +48,13 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ChunkUnloadEvent**](classendstone_1_1ChunkUnloadEvent.md) _Called when a chunk is unloaded._     
     * **class** [**Color**](classendstone_1_1Color.md) _Represents a color with red, green, blue, and alpha components._     
     * **struct** [**ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._     
-    * **class** [**Colors**](classendstone_1_1Colors.md)     
+    * **class** [**Colors**](classendstone_1_1Colors.md) _Provides a collection of predefined colors._     
     * **class** [**Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
     * **class** [**CommandExecutor**](classendstone_1_1CommandExecutor.md) _Represents a class which contains a single method for executing commands._     
     * **class** [**CommandMap**](classendstone_1_1CommandMap.md) _Represents a command map that manages all commands of the_ [_**Server**_](classendstone_1_1Server.md) _._    
     * **class** [**CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
     * **class** [**CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md) _Represents a wrapper that forwards commands to the wrapped_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _and captures its output._    
-    * **class** [**CompoundTag**](classendstone_1_1CompoundTag.md)     
+    * **class** [**CompoundTag**](classendstone_1_1CompoundTag.md) _An NBT tag holding a set of named child tags, keyed by string._     
     * **class** [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
     * **class** [**Criteria**](classendstone_1_1Criteria.md) _Represents a scoreboard criteria._     
     * **class** [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) _Represents the meta for a crossbow that can have a charged projectile._     
@@ -64,30 +64,30 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Divider**](classendstone_1_1Divider.md) _Represents a divider._     
     * **class** [**Dropdown**](classendstone_1_1Dropdown.md) _Represents a dropdown with a set of predefined options._     
     * **class** [**EffectType**](classendstone_1_1EffectType.md) _All effect types._     
-    * **class** [**Enchantment**](classendstone_1_1Enchantment.md)     
+    * **class** [**Enchantment**](classendstone_1_1Enchantment.md) _Represents an enchantment that may be added to armor, weapons, tools or other items._     
     * **class** [**Event**](classendstone_1_1Event.md) _Represents an event._     
     * **class** [**EventHandler**](classendstone_1_1EventHandler.md) _Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._    
     * **class** [**Form**](classendstone_1_1Form.md) _Represents a generic form._     
     * **class** [**HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers._     
     * **class** [**Header**](classendstone_1_1Header.md) _Represents a header with a label._     
-    * **class** [**ICancellable**](classendstone_1_1ICancellable.md)     
-    * **class** [**IRegistry**](classendstone_1_1IRegistry.md)     
+    * **class** [**ICancellable**](classendstone_1_1ICancellable.md) _Interface for events that may be cancelled by a plugin or the server._     
+    * **class** [**IRegistry**](classendstone_1_1IRegistry.md) _Type-erased base interface for registries._     
     * **class** [**Identifier**](classendstone_1_1Identifier.md) _Represents a identifier consisting of two components: a namespace and a key._     
     * **class** [**Image**](classendstone_1_1Image.md) _Represents an RGBA image._     
     * **class** [**Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
     * **class** [**IpBanEntry**](classendstone_1_1IpBanEntry.md) _Represents an entry for a banned IP address._     
     * **class** [**IpBanList**](classendstone_1_1IpBanList.md) _Represents a ban list, containing banned IP addresses._     
     * **class** [**Item**](classendstone_1_1Item.md) _Represents a dropped item that can be picked up by players._     
-    * **class** [**ItemFactory**](classendstone_1_1ItemFactory.md)     
+    * **class** [**ItemFactory**](classendstone_1_1ItemFactory.md) _An interface to the methods used to create item metadata._     
     * **class** [**ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
     * **class** [**ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._     
-    * **class** [**ItemType**](classendstone_1_1ItemType.md)     
+    * **class** [**ItemType**](classendstone_1_1ItemType.md) _Represents an item type._     
     * **class** [**Label**](classendstone_1_1Label.md) _Represents a text label._     
     * **class** [**Language**](classendstone_1_1Language.md) _Represents the interface for translating text into different languages._     
     * **class** [**LeavesDecayEvent**](classendstone_1_1LeavesDecayEvent.md) _Called when leaves are decaying naturally._     
     * **class** [**Level**](classendstone_1_1Level.md) _Represents a level, which may contain actors, chunks and blocks._     
     * **class** [**LevelEvent**](classendstone_1_1LevelEvent.md) _Represents events within a level._     
-    * **class** [**ListTag**](classendstone_1_1ListTag.md)     
+    * **class** [**ListTag**](classendstone_1_1ListTag.md) _An NBT tag holding an ordered sequence of child tags that all share the same type._     
     * **class** [**Location**](classendstone_1_1Location.md) _Represents a 3-dimensional location in a dimension within a level._     
     * **class** [**Logger**](classendstone_1_1Logger.md) [_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._    
     * **class** [**MapCanvas**](classendstone_1_1MapCanvas.md) _Represents a canvas for drawing to a map._     
@@ -99,8 +99,8 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**MessageForm**](classendstone_1_1MessageForm.md) _Represents a form with two buttons._     
     * **class** [**Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e._     
     * **class** [**ModalForm**](classendstone_1_1ModalForm.md) _Represents a modal form with controls._     
-    * **class** [**NotNull**](classendstone_1_1NotNull.md)     
-    * **class** [**Nullable**](classendstone_1_1Nullable.md)     
+    * **class** [**NotNull**](classendstone_1_1NotNull.md) _A wrapper around a std::shared\_ptr that is guaranteed never to be null._     
+    * **class** [**Nullable**](classendstone_1_1Nullable.md) _A wrapper around a std::shared\_ptr that may be null._     
     * **class** [**Object**](classendstone_1_1Object.md) _Base class providing runtime type identification and safe casting._     
     * **class** [**Objective**](classendstone_1_1Objective.md) _Represents an objective on a scoreboard that can show scores specific to entries._     
     * **class** [**OfflinePlayer**](classendstone_1_1OfflinePlayer.md) _Represents a reference to a player identity and the data belonging to a player that is stored on the disk and can, thus, be retrieved without the player needing to be online._     
@@ -147,7 +147,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PluginLoader**](classendstone_1_1PluginLoader.md) _Represents a plugin loader, which handles direct access to specific types of plugins._     
     * **class** [**PluginManager**](classendstone_1_1PluginManager.md) _Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._    
     * **class** [**PotionType**](classendstone_1_1PotionType.md) _All potion types._     
-    * **class** [**Preconditions**](classendstone_1_1Preconditions.md)     
+    * **class** [**Preconditions**](classendstone_1_1Preconditions.md) _Static helpers for validating method arguments and object state._     
     * **class** [**Recipe**](classendstone_1_1Recipe.md) _Represents some type of crafting recipe._     
     * **class** [**Registry**](classendstone_1_1Registry.md) _Abstract registry interface for objects with identifiers._     
         * **class** [**Type**](classendstone_1_1Registry_1_1Type.md) _CRTP base for registry-backed types identified by an_ [_**Identifier**_](classendstone_1_1Identifier.md) _._    
@@ -180,10 +180,10 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **namespace** [**detail**](namespaceendstone_1_1detail.md)     
         * **struct** [**JoinView**](structendstone_1_1detail_1_1JoinView.md) _A lightweight, formattable view over a range that renders its elements separated by a delimiter._     
     * **namespace** [**nbt**](namespaceendstone_1_1nbt.md)     
-        * **class** [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md)     
-        * **class** [**Tag**](classendstone_1_1nbt_1_1Tag.md)     
-        * **struct** [**TagBase**](structendstone_1_1nbt_1_1TagBase.md) 
-        * **class** [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md)     
+        * **class** [**ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md) _An NBT tag holding a contiguous array of fixed-width values (e.g._     
+        * **class** [**Tag**](classendstone_1_1nbt_1_1Tag.md) _A single NBT tag that may hold any of the supported payload types._     
+        * **struct** [**TagBase**](structendstone_1_1nbt_1_1TagBase.md) _Common base for all NBT tag types._ 
+        * **class** [**ValueTag**](classendstone_1_1nbt_1_1ValueTag.md) _An NBT tag wrapping a single scalar payload of type T (e.g._     
         * **namespace** [**detail**](namespaceendstone_1_1nbt_1_1detail.md)     
     * **struct** [**overloaded**](structendstone_1_1overloaded.md) _Helper type for visitors._ 
     * **namespace** [**python**](namespaceendstone_1_1python.md) 

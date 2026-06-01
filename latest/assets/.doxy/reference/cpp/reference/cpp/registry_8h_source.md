@@ -43,6 +43,7 @@ class PyRegistry;
 class IRegistry {
 public:
     virtual ~IRegistry() = default;
+
     [[nodiscard]] virtual std::size_t size() const = 0;
 
 protected:

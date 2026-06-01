@@ -12,6 +12,7 @@
           <name>Trace</name>
           <initializer>= 0</initializer>
           <briefdescription>
+<para>The most fine-grained level, used for detailed tracing. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -20,6 +21,7 @@
           <name>Debug</name>
           <initializer>= 1</initializer>
           <briefdescription>
+<para>Detailed information useful for debugging. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -28,6 +30,7 @@
           <name>Info</name>
           <initializer>= 2</initializer>
           <briefdescription>
+<para>Informational messages about normal operation. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -36,6 +39,7 @@
           <name>Warning</name>
           <initializer>= 3</initializer>
           <briefdescription>
+<para>Indicates a potential problem that does not stop execution. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -44,6 +48,7 @@
           <name>Error</name>
           <initializer>= 4</initializer>
           <briefdescription>
+<para>Indicates a failure that prevents an operation from completing. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -52,6 +57,7 @@
           <name>Critical</name>
           <initializer>= 5</initializer>
           <briefdescription>
+<para>Indicates a severe failure that may abort the server. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -60,6 +66,7 @@
           <name>Off</name>
           <initializer>= 6</initializer>
           <briefdescription>
+<para>Disables all logging when set as the logger&apos;s level. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -71,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="36" column="5" bodyfile="include/endstone/logger.h" bodystart="36" bodyend="44"/>
+        <location file="include/endstone/logger.h" line="36" column="5" bodyfile="include/endstone/logger.h" bodystart="36" bodyend="65"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -87,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="46" column="5"/>
+        <location file="include/endstone/logger.h" line="67" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a44faaf98cb5398fbb95d7a81228caa2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -101,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="48" column="13"/>
+        <location file="include/endstone/logger.h" line="69" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a310b9bd648301066760d387ca2fe7e2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -130,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="54" column="18"/>
+        <location file="include/endstone/logger.h" line="75" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a6985fcd498c81e1cf5c68bebd6f41df3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -161,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="62" column="19"/>
+        <location file="include/endstone/logger.h" line="83" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a129515baf5eca9a21431973581919acb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string_view</type>
@@ -179,7 +186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="69" column="31"/>
+        <location file="include/endstone/logger.h" line="90" column="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a6e50e094bca4b5102bc61a41fe32195e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -220,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="77" column="18"/>
+        <location file="include/endstone/logger.h" line="98" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a3b7d2fa2f33b6bd24c778d173adb9a75" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -252,12 +259,40 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Log a formatted message at the given level. </para>
         </briefdescription>
         <detaileddescription>
+<para>Formats the message using std::format and logs the result. If formatting throws, the exception message is logged at the Error level instead.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The level at which the message should be logged. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The arguments to substitute into the format string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="80" column="10" bodyfile="include/endstone/logger.h" bodystart="80" bodyend="88"/>
+        <location file="include/endstone/logger.h" line="111" column="10" bodyfile="include/endstone/logger.h" bodystart="111" bodyend="119"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a1850152708633dc08fc18d605b19371e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -270,12 +305,23 @@
           <declname>message</declname>
         </param>
         <briefdescription>
+<para>Log a message at the Trace level. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message to log. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="90" column="10" bodyfile="include/endstone/logger.h" bodystart="90" bodyend="90"/>
+        <location file="include/endstone/logger.h" line="126" column="10" bodyfile="include/endstone/logger.h" bodystart="126" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a0d1b7c69a3ab8ca0b9217b736495144b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -303,12 +349,31 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Log a formatted message at the Trace level. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The arguments to substitute into the format string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="93" column="10" bodyfile="include/endstone/logger.h" bodystart="93" bodyend="96"/>
+        <location file="include/endstone/logger.h" line="135" column="10" bodyfile="include/endstone/logger.h" bodystart="135" bodyend="138"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1ac1666731787d092e739d07b2807929e2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -321,12 +386,23 @@
           <declname>message</declname>
         </param>
         <briefdescription>
+<para>Log a message at the Debug level. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message to log. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="98" column="10" bodyfile="include/endstone/logger.h" bodystart="98" bodyend="98"/>
+        <location file="include/endstone/logger.h" line="145" column="10" bodyfile="include/endstone/logger.h" bodystart="145" bodyend="145"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a7544e998780b370af572193d079aeec5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -354,12 +430,31 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Log a formatted message at the Debug level. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The arguments to substitute into the format string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="101" column="10" bodyfile="include/endstone/logger.h" bodystart="101" bodyend="104"/>
+        <location file="include/endstone/logger.h" line="154" column="10" bodyfile="include/endstone/logger.h" bodystart="154" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a1ec8137441e804605aab3bc15569ce92" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -372,12 +467,23 @@
           <declname>message</declname>
         </param>
         <briefdescription>
+<para>Log a message at the Info level. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message to log. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="106" column="10" bodyfile="include/endstone/logger.h" bodystart="106" bodyend="106"/>
+        <location file="include/endstone/logger.h" line="164" column="10" bodyfile="include/endstone/logger.h" bodystart="164" bodyend="164"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1aecba7bcea1e576f25c498cfc3ab1951c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -405,12 +511,31 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Log a formatted message at the Info level. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The arguments to substitute into the format string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="109" column="10" bodyfile="include/endstone/logger.h" bodystart="109" bodyend="112"/>
+        <location file="include/endstone/logger.h" line="173" column="10" bodyfile="include/endstone/logger.h" bodystart="173" bodyend="176"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a371caa58890632671d272beaffbd7bc6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -423,12 +548,23 @@
           <declname>message</declname>
         </param>
         <briefdescription>
+<para>Log a message at the Warning level. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message to log. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="114" column="10" bodyfile="include/endstone/logger.h" bodystart="114" bodyend="114"/>
+        <location file="include/endstone/logger.h" line="183" column="10" bodyfile="include/endstone/logger.h" bodystart="183" bodyend="183"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a131782e655710d6c66922bd30e2da677" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -456,12 +592,31 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Log a formatted message at the Warning level. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The arguments to substitute into the format string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="117" column="10" bodyfile="include/endstone/logger.h" bodystart="117" bodyend="120"/>
+        <location file="include/endstone/logger.h" line="192" column="10" bodyfile="include/endstone/logger.h" bodystart="192" bodyend="195"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a8537f43ecc79575866258125aa874394" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -474,12 +629,23 @@
           <declname>message</declname>
         </param>
         <briefdescription>
+<para>Log a message at the Error level. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message to log. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="122" column="10" bodyfile="include/endstone/logger.h" bodystart="122" bodyend="122"/>
+        <location file="include/endstone/logger.h" line="202" column="10" bodyfile="include/endstone/logger.h" bodystart="202" bodyend="202"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a808d7a538beaaa7db1d966df28611fb2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -507,12 +673,31 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Log a formatted message at the Error level. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The arguments to substitute into the format string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="125" column="10" bodyfile="include/endstone/logger.h" bodystart="125" bodyend="128"/>
+        <location file="include/endstone/logger.h" line="211" column="10" bodyfile="include/endstone/logger.h" bodystart="211" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a799b52643e31638b0e9ea99ba238dc96" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -525,12 +710,23 @@
           <declname>message</declname>
         </param>
         <briefdescription>
+<para>Log a message at the Critical level. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message to log. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="130" column="10" bodyfile="include/endstone/logger.h" bodystart="130" bodyend="130"/>
+        <location file="include/endstone/logger.h" line="221" column="10" bodyfile="include/endstone/logger.h" bodystart="221" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1ade24ed497365b2667b0bef88c45b213f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -558,12 +754,31 @@
           <declname>args</declname>
         </param>
         <briefdescription>
+<para>Log a formatted message at the Critical level. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The format string. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The arguments to substitute into the format string. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="133" column="10" bodyfile="include/endstone/logger.h" bodystart="133" bodyend="136"/>
+        <location file="include/endstone/logger.h" line="230" column="10" bodyfile="include/endstone/logger.h" bodystart="230" bodyend="233"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -571,7 +786,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/logger.h" line="31" column="1" bodyfile="include/endstone/logger.h" bodystart="31" bodyend="137"/>
+    <location file="include/endstone/logger.h" line="31" column="1" bodyfile="include/endstone/logger.h" bodystart="31" bodyend="234"/>
     <listofallmembers>
       <member refid="classendstone_1_1Logger_1a799b52643e31638b0e9ea99ba238dc96" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>critical</name></member>
       <member refid="classendstone_1_1Logger_1ade24ed497365b2667b0bef88c45b213f" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>critical</name></member>

@@ -94,9 +94,9 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md)) <br> |
-|   | [**PlayerJoinEvent**](#function-playerjoinevent) ([**Player**](classendstone_1_1Player.md) & player, std::optional&lt; Message &gt; join\_message) <br> |
-|  std::optional&lt; Message &gt; | [**getJoinMessage**](#function-getjoinmessage) () const<br>_Gets the join message to send to all online players._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setJoinMessage**](#function-setjoinmessage) (std::optional&lt; Message &gt; message) <br>_Sets the join message to send to all online players._  |
+|   | [**PlayerJoinEvent**](#function-playerjoinevent) ([**Player**](classendstone_1_1Player.md) & player, std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; join\_message) <br> |
+|  std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; | [**getJoinMessage**](#function-getjoinmessage) () const<br>_Gets the join message to send to all online players._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setJoinMessage**](#function-setjoinmessage) (std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; message) <br>_Sets the join message to send to all online players._  |
 
 
 ## Public Functions inherited from endstone::PlayerEvent

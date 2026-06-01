@@ -2799,6 +2799,10 @@ For latest updates join the chat on
 
 <h1 id="class-endstoneitemtype">Class endstone::ItemType<a class="headerlink" href="#class-endstoneitemtype" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>ItemType</strong></a></p>
+<p><em>Represents an item type.</em> </p>
+<ul>
+<li><code>#include &lt;endstone/inventory/item_type.h&gt;</code></li>
+</ul>
 <p>Inherits the following classes: <a href="../classendstone_1_1Registry_1_1Type/">endstone::Registry::Type</a></p>
 <h2 id="public-types-inherited-from-endstoneregistrytype">Public Types inherited from endstone::Registry::Type<a class="headerlink" href="#public-types-inherited-from-endstoneregistrytype" title="Permanent link">&para;</a></h2>
 <p>See <a href="../classendstone_1_1Registry_1_1Type/">endstone::Registry::Type</a></p>
@@ -2812,7 +2816,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>Identifier</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a>  <br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a>  <br><em>The identifier type used to look up this object in its registry.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2827,7 +2831,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-air"><strong>Air</strong></a>   = <code>ItemTypeId::minecraft("air")</code><br></td>
+<td style="text-align: left;"><a href="#variable-air"><strong>Air</strong></a>   = <code>[**ItemTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("air")</code><br></td>
 </tr>
 </tbody>
 </table>
@@ -2877,7 +2881,7 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>Id</strong></a></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-getid"><strong>getId</strong></a> () const = 0<br><em>Return the identifier of this object.</em></td>
 </tr>
 <tr>
@@ -2890,7 +2894,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator"><strong>operator!=</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>Id</strong></a> &amp; other) const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator"><strong>operator!=</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -2898,7 +2902,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator_2"><strong>operator==</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>Id</strong></a> &amp; other) const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator_2"><strong>operator==</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -2922,7 +2926,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-get"><strong>get</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Id</strong></a> id) <br><em>Look up a registry entry by identifier.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-get"><strong>get</strong></a> (<a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a> id) <br><em>Look up a registry entry by identifier.</em></td>
 </tr>
 </tbody>
 </table>

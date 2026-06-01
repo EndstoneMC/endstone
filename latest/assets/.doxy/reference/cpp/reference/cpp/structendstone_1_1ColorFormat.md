@@ -38,39 +38,39 @@ _All supported color and format codes._
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Aqua**](#variable-aqua)   = `Escape + '[**b**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Black**](#variable-black)   = `Escape + '0'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Blue**](#variable-blue)   = `Escape + '9'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Bold**](#variable-bold)   = `Escape + '[**l**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**DarkAqua**](#variable-darkaqua)   = `Escape + '3'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**DarkBlue**](#variable-darkblue)   = `Escape + '1'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**DarkGray**](#variable-darkgray)   = `Escape + '8'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**DarkGreen**](#variable-darkgreen)   = `Escape + '2'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**DarkPurple**](#variable-darkpurple)   = `Escape + '5'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**DarkRed**](#variable-darkred)   = `Escape + '4'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Escape**](#variable-escape)   = `"§"`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Gold**](#variable-gold)   = `Escape + '6'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Gray**](#variable-gray)   = `Escape + '7'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Green**](#variable-green)   = `Escape + '[**a**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Italic**](#variable-italic)   = `Escape + '[**o**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**LightPurple**](#variable-lightpurple)   = `Escape + '[**d**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialAmethyst**](#variable-materialamethyst)   = `Escape + '[**u**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialCopper**](#variable-materialcopper)   = `Escape + '[**n**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialDiamond**](#variable-materialdiamond)   = `Escape + '[**s**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialEmerald**](#variable-materialemerald)   = `Escape + '[**q**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialGold**](#variable-materialgold)   = `Escape + '[**p**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialIron**](#variable-materialiron)   = `Escape + '[**i**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialLapis**](#variable-materiallapis)   = `Escape + '[**t**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialNetherite**](#variable-materialnetherite)   = `Escape + '[**j**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialQuartz**](#variable-materialquartz)   = `Escape + '[**h**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialRedstone**](#variable-materialredstone)   = `Escape + '[**m**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialResin**](#variable-materialresin)   = `Escape + '[**v**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**MinecoinGold**](#variable-minecoingold)   = `Escape + '[**g**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Obfuscated**](#variable-obfuscated)   = `Escape + '[**k**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Red**](#variable-red)   = `Escape + '[**c**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Reset**](#variable-reset)   = `Escape + '[**r**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**White**](#variable-white)   = `Escape + '[**f**](classendstone_1_1Identifier.md)'`<br> |
-|  [**const**](classendstone_1_1Identifier.md) std::string | [**Yellow**](#variable-yellow)   = `Escape + '[**e**](classendstone_1_1Identifier.md)'`<br> |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Aqua**](#variable-aqua)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**b**](classendstone_1_1Identifier.md)'`<br>_Aqua (§b)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Black**](#variable-black)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '0'`<br>_Black (§0)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Blue**](#variable-blue)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '9'`<br>_Blue (§9)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Bold**](#variable-bold)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**l**](classendstone_1_1Identifier.md)'`<br>_Makes the text bold (§l)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**DarkAqua**](#variable-darkaqua)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '3'`<br>_Dark aqua (§3)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**DarkBlue**](#variable-darkblue)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '1'`<br>_Dark blue (§1)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**DarkGray**](#variable-darkgray)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '8'`<br>_Dark gray (§8)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**DarkGreen**](#variable-darkgreen)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '2'`<br>_Dark green (§2)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**DarkPurple**](#variable-darkpurple)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '5'`<br>_Dark purple (§5)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**DarkRed**](#variable-darkred)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '4'`<br>_Dark red (§4)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Escape**](#variable-escape)   = `"§"`<br>_The escape character (§) that prefixes every color and format code._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Gold**](#variable-gold)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '6'`<br>_Gold (§6)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Gray**](#variable-gray)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '7'`<br>_Gray (§7)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Green**](#variable-green)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**a**](classendstone_1_1Identifier.md)'`<br>_Green (§a)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Italic**](#variable-italic)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**o**](classendstone_1_1Identifier.md)'`<br>_Makes the text italic (§o)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**LightPurple**](#variable-lightpurple)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**d**](classendstone_1_1Identifier.md)'`<br>_Light purple (§d)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialAmethyst**](#variable-materialamethyst)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**u**](classendstone_1_1Identifier.md)'`<br>_Amethyst material color (§u)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialCopper**](#variable-materialcopper)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**n**](classendstone_1_1Identifier.md)'`<br>_Copper material color (§n)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialDiamond**](#variable-materialdiamond)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**s**](classendstone_1_1Identifier.md)'`<br>_Diamond material color (§s)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialEmerald**](#variable-materialemerald)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**q**](classendstone_1_1Identifier.md)'`<br>_Emerald material color (§q)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialGold**](#variable-materialgold)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**p**](classendstone_1_1Identifier.md)'`<br>_Gold material color (§p)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialIron**](#variable-materialiron)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**i**](classendstone_1_1Identifier.md)'`<br>_Iron material color (§i)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialLapis**](#variable-materiallapis)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**t**](classendstone_1_1Identifier.md)'`<br>_Lapis material color (§t)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialNetherite**](#variable-materialnetherite)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**j**](classendstone_1_1Identifier.md)'`<br>_Netherite material color (§j)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialQuartz**](#variable-materialquartz)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**h**](classendstone_1_1Identifier.md)'`<br>_Quartz material color (§h)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialRedstone**](#variable-materialredstone)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**m**](classendstone_1_1Identifier.md)'`<br>_Redstone material color (§m)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**MaterialResin**](#variable-materialresin)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**v**](classendstone_1_1Identifier.md)'`<br>_Resin material color (§v)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**MinecoinGold**](#variable-minecoingold)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**g**](classendstone_1_1Identifier.md)'`<br>_Minecoin gold (§g)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Obfuscated**](#variable-obfuscated)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**k**](classendstone_1_1Identifier.md)'`<br>_Makes the text obfuscated, randomly cycling through characters (§k)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Red**](#variable-red)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**c**](classendstone_1_1Identifier.md)'`<br>_Red (§c)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Reset**](#variable-reset)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**r**](classendstone_1_1Identifier.md)'`<br>_Resets all colors and formatting codes (§r)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**White**](#variable-white)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**f**](classendstone_1_1Identifier.md)'`<br>_White (§f)._  |
+|  [**const**](classendstone_1_1Identifier.md) std::string | [**Yellow**](#variable-yellow)   = `[**Escape**](structendstone_1_1ColorFormat.md#variable-escape) + '[**e**](classendstone_1_1Identifier.md)'`<br>_Yellow (§e)._  |
 
 
 
@@ -120,6 +120,7 @@ _All supported color and format codes._
 
 ### variable Aqua 
 
+_Aqua (§b)._ 
 ```C++
 const std::string endstone::ColorFormat::Aqua;
 ```
@@ -133,6 +134,7 @@ const std::string endstone::ColorFormat::Aqua;
 
 ### variable Black 
 
+_Black (§0)._ 
 ```C++
 const std::string endstone::ColorFormat::Black;
 ```
@@ -146,6 +148,7 @@ const std::string endstone::ColorFormat::Black;
 
 ### variable Blue 
 
+_Blue (§9)._ 
 ```C++
 const std::string endstone::ColorFormat::Blue;
 ```
@@ -159,6 +162,7 @@ const std::string endstone::ColorFormat::Blue;
 
 ### variable Bold 
 
+_Makes the text bold (§l)._ 
 ```C++
 const std::string endstone::ColorFormat::Bold;
 ```
@@ -172,6 +176,7 @@ const std::string endstone::ColorFormat::Bold;
 
 ### variable DarkAqua 
 
+_Dark aqua (§3)._ 
 ```C++
 const std::string endstone::ColorFormat::DarkAqua;
 ```
@@ -185,6 +190,7 @@ const std::string endstone::ColorFormat::DarkAqua;
 
 ### variable DarkBlue 
 
+_Dark blue (§1)._ 
 ```C++
 const std::string endstone::ColorFormat::DarkBlue;
 ```
@@ -198,6 +204,7 @@ const std::string endstone::ColorFormat::DarkBlue;
 
 ### variable DarkGray 
 
+_Dark gray (§8)._ 
 ```C++
 const std::string endstone::ColorFormat::DarkGray;
 ```
@@ -211,6 +218,7 @@ const std::string endstone::ColorFormat::DarkGray;
 
 ### variable DarkGreen 
 
+_Dark green (§2)._ 
 ```C++
 const std::string endstone::ColorFormat::DarkGreen;
 ```
@@ -224,6 +232,7 @@ const std::string endstone::ColorFormat::DarkGreen;
 
 ### variable DarkPurple 
 
+_Dark purple (§5)._ 
 ```C++
 const std::string endstone::ColorFormat::DarkPurple;
 ```
@@ -237,6 +246,7 @@ const std::string endstone::ColorFormat::DarkPurple;
 
 ### variable DarkRed 
 
+_Dark red (§4)._ 
 ```C++
 const std::string endstone::ColorFormat::DarkRed;
 ```
@@ -250,6 +260,7 @@ const std::string endstone::ColorFormat::DarkRed;
 
 ### variable Escape 
 
+_The escape character (§) that prefixes every color and format code._ 
 ```C++
 const std::string endstone::ColorFormat::Escape;
 ```
@@ -263,6 +274,7 @@ const std::string endstone::ColorFormat::Escape;
 
 ### variable Gold 
 
+_Gold (§6)._ 
 ```C++
 const std::string endstone::ColorFormat::Gold;
 ```
@@ -276,6 +288,7 @@ const std::string endstone::ColorFormat::Gold;
 
 ### variable Gray 
 
+_Gray (§7)._ 
 ```C++
 const std::string endstone::ColorFormat::Gray;
 ```
@@ -289,6 +302,7 @@ const std::string endstone::ColorFormat::Gray;
 
 ### variable Green 
 
+_Green (§a)._ 
 ```C++
 const std::string endstone::ColorFormat::Green;
 ```
@@ -302,6 +316,7 @@ const std::string endstone::ColorFormat::Green;
 
 ### variable Italic 
 
+_Makes the text italic (§o)._ 
 ```C++
 const std::string endstone::ColorFormat::Italic;
 ```
@@ -315,6 +330,7 @@ const std::string endstone::ColorFormat::Italic;
 
 ### variable LightPurple 
 
+_Light purple (§d)._ 
 ```C++
 const std::string endstone::ColorFormat::LightPurple;
 ```
@@ -328,6 +344,7 @@ const std::string endstone::ColorFormat::LightPurple;
 
 ### variable MaterialAmethyst 
 
+_Amethyst material color (§u)._ 
 ```C++
 const std::string endstone::ColorFormat::MaterialAmethyst;
 ```
@@ -341,6 +358,7 @@ const std::string endstone::ColorFormat::MaterialAmethyst;
 
 ### variable MaterialCopper 
 
+_Copper material color (§n)._ 
 ```C++
 const std::string endstone::ColorFormat::MaterialCopper;
 ```
@@ -354,6 +372,7 @@ const std::string endstone::ColorFormat::MaterialCopper;
 
 ### variable MaterialDiamond 
 
+_Diamond material color (§s)._ 
 ```C++
 const std::string endstone::ColorFormat::MaterialDiamond;
 ```
@@ -367,6 +386,7 @@ const std::string endstone::ColorFormat::MaterialDiamond;
 
 ### variable MaterialEmerald 
 
+_Emerald material color (§q)._ 
 ```C++
 const std::string endstone::ColorFormat::MaterialEmerald;
 ```
@@ -380,6 +400,7 @@ const std::string endstone::ColorFormat::MaterialEmerald;
 
 ### variable MaterialGold 
 
+_Gold material color (§p)._ 
 ```C++
 const std::string endstone::ColorFormat::MaterialGold;
 ```
@@ -393,6 +414,7 @@ const std::string endstone::ColorFormat::MaterialGold;
 
 ### variable MaterialIron 
 
+_Iron material color (§i)._ 
 ```C++
 const std::string endstone::ColorFormat::MaterialIron;
 ```
@@ -406,6 +428,7 @@ const std::string endstone::ColorFormat::MaterialIron;
 
 ### variable MaterialLapis 
 
+_Lapis material color (§t)._ 
 ```C++
 const std::string endstone::ColorFormat::MaterialLapis;
 ```
@@ -419,6 +442,7 @@ const std::string endstone::ColorFormat::MaterialLapis;
 
 ### variable MaterialNetherite 
 
+_Netherite material color (§j)._ 
 ```C++
 const std::string endstone::ColorFormat::MaterialNetherite;
 ```
@@ -432,6 +456,7 @@ const std::string endstone::ColorFormat::MaterialNetherite;
 
 ### variable MaterialQuartz 
 
+_Quartz material color (§h)._ 
 ```C++
 const std::string endstone::ColorFormat::MaterialQuartz;
 ```
@@ -445,6 +470,7 @@ const std::string endstone::ColorFormat::MaterialQuartz;
 
 ### variable MaterialRedstone 
 
+_Redstone material color (§m)._ 
 ```C++
 const std::string endstone::ColorFormat::MaterialRedstone;
 ```
@@ -458,6 +484,7 @@ const std::string endstone::ColorFormat::MaterialRedstone;
 
 ### variable MaterialResin 
 
+_Resin material color (§v)._ 
 ```C++
 const std::string endstone::ColorFormat::MaterialResin;
 ```
@@ -471,6 +498,7 @@ const std::string endstone::ColorFormat::MaterialResin;
 
 ### variable MinecoinGold 
 
+_Minecoin gold (§g)._ 
 ```C++
 const std::string endstone::ColorFormat::MinecoinGold;
 ```
@@ -484,6 +512,7 @@ const std::string endstone::ColorFormat::MinecoinGold;
 
 ### variable Obfuscated 
 
+_Makes the text obfuscated, randomly cycling through characters (§k)._ 
 ```C++
 const std::string endstone::ColorFormat::Obfuscated;
 ```
@@ -497,6 +526,7 @@ const std::string endstone::ColorFormat::Obfuscated;
 
 ### variable Red 
 
+_Red (§c)._ 
 ```C++
 const std::string endstone::ColorFormat::Red;
 ```
@@ -510,6 +540,7 @@ const std::string endstone::ColorFormat::Red;
 
 ### variable Reset 
 
+_Resets all colors and formatting codes (§r)._ 
 ```C++
 const std::string endstone::ColorFormat::Reset;
 ```
@@ -523,6 +554,7 @@ const std::string endstone::ColorFormat::Reset;
 
 ### variable White 
 
+_White (§f)._ 
 ```C++
 const std::string endstone::ColorFormat::White;
 ```
@@ -536,6 +568,7 @@ const std::string endstone::ColorFormat::White;
 
 ### variable Yellow 
 
+_Yellow (§e)._ 
 ```C++
 const std::string endstone::ColorFormat::Yellow;
 ```

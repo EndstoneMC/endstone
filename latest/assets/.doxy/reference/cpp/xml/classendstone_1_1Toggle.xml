@@ -5,7 +5,7 @@
     <includes refid="toggle_8h" local="no">endstone/form/controls/toggle.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1Toggle_1ab70b5d10613173b8cbe80b53c5f769a3" prot="private" static="no" mutable="no">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::Toggle::label_</definition>
         <argsstring></argsstring>
         <name>label_</name>
@@ -55,7 +55,7 @@
         <name>Toggle</name>
         <qualifiedname>endstone::Toggle::Toggle</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>label</declname>
         </param>
         <param>
@@ -72,7 +72,7 @@
         <location file="include/endstone/form/controls/toggle.h" line="31" column="14" bodyfile="include/endstone/form/controls/toggle.h" bodystart="31" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Toggle_1a0448b55baf2e8096ee855c46059e0161" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::Toggle::getLabel</definition>
         <argsstring>() const</argsstring>
         <name>getLabel</name>
@@ -96,7 +96,7 @@
         <name>setLabel</name>
         <qualifiedname>endstone::Toggle::setLabel</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>label</declname>
         </param>
         <briefdescription>

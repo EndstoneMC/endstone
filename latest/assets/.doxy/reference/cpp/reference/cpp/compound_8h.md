@@ -42,7 +42,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**CompoundTag**](classendstone_1_1CompoundTag.md) <br> |
+| class | [**CompoundTag**](classendstone_1_1CompoundTag.md) <br>_An NBT tag holding a set of named child tags, keyed by string._  |
 
 
 

@@ -22,7 +22,7 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1MessageForm_1abca52d7cf32aaab113aa3a0d65f1046f" prot="private" static="no" mutable="no">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::MessageForm::content_</definition>
         <argsstring></argsstring>
         <name>content_</name>
@@ -36,7 +36,7 @@
         <location file="include/endstone/form/message_form.h" line="108" column="13" bodyfile="include/endstone/form/message_form.h" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1MessageForm_1ad837135cec90cf369d35feaa1f598344" prot="private" static="no" mutable="no">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::MessageForm::button1_text_</definition>
         <argsstring></argsstring>
         <name>button1_text_</name>
@@ -50,7 +50,7 @@
         <location file="include/endstone/form/message_form.h" line="109" column="13" bodyfile="include/endstone/form/message_form.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1MessageForm_1a9daa7ae62d33ecc513163c78f912de8a" prot="private" static="no" mutable="no">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::MessageForm::button2_text_</definition>
         <argsstring></argsstring>
         <name>button2_text_</name>
@@ -80,7 +80,7 @@
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1MessageForm_1a3eeebb5301611304a07f8a10d558ca04" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::MessageForm::getContent</definition>
         <argsstring>() const</argsstring>
         <name>getContent</name>
@@ -104,7 +104,7 @@
         <name>setContent</name>
         <qualifiedname>endstone::MessageForm::setContent</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>text</declname>
         </param>
         <briefdescription>
@@ -129,7 +129,7 @@
         <location file="include/endstone/form/message_form.h" line="44" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="44" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MessageForm_1ab6620076abada4c6e93bbc1bc24ce62f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::MessageForm::getButton1</definition>
         <argsstring>() const</argsstring>
         <name>getButton1</name>
@@ -153,7 +153,7 @@
         <name>setButton1</name>
         <qualifiedname>endstone::MessageForm::setButton1</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>text</declname>
         </param>
         <briefdescription>
@@ -178,7 +178,7 @@
         <location file="include/endstone/form/message_form.h" line="63" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="63" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1MessageForm_1ac7b3d87630849182d65b4ae83ab6b0f8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::MessageForm::getButton2</definition>
         <argsstring>() const</argsstring>
         <name>getButton2</name>
@@ -202,7 +202,7 @@
         <name>setButton2</name>
         <qualifiedname>endstone::MessageForm::setButton2</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>text</declname>
         </param>
         <briefdescription>

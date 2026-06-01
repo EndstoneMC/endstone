@@ -52,7 +52,7 @@ _Represents a player skin._
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Skin**](#function-skin) (std::string id, [**Image**](classendstone_1_1Image.md) image, std::optional&lt; std::string &gt; cape\_id=std::nullopt, std::optional&lt; [**Image**](classendstone_1_1Image.md) &gt; cape\_image=std::nullopt) <br> |
+|   | [**Skin**](#function-skin) (std::string id, [**Image**](classendstone_1_1Image.md) image, std::optional&lt; std::string &gt; cape\_id=std::nullopt, std::optional&lt; [**Image**](classendstone_1_1Image.md) &gt; cape\_image=std::nullopt) <br>_Constructs a skin from its id and image, with an optional cape._  |
 |  [**const**](classendstone_1_1Identifier.md) std::optional&lt; std::string &gt; & | [**getCapeId**](#function-getcapeid) () const<br>_Gets the cape id._  |
 |  [**const**](classendstone_1_1Identifier.md) [**Image**](classendstone_1_1Image.md) \* | [**getCapeImage**](#function-getcapeimage) () const<br>_Gets the cape image._  |
 |  [**const**](classendstone_1_1Identifier.md) std::string & | [**getId**](#function-getid) () const<br>_Gets the skin id._  |
@@ -92,6 +92,7 @@ _Represents a player skin._
 
 ### function Skin 
 
+_Constructs a skin from its id and image, with an optional cape._ 
 ```C++
 inline endstone::Skin::Skin (
     std::string id,
@@ -103,6 +104,20 @@ inline endstone::Skin::Skin (
 
 
 
+
+
+**Parameters:**
+
+
+* `id` The skin id. 
+* `image` The skin image. 
+* `cape_id` The cape id, or std::nullopt if the skin has no cape. 
+* `cape_image` The cape image, or std::nullopt if the skin has no cape. 
+
+
+
+
+        
 
 <hr>
 

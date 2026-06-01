@@ -5,7 +5,7 @@
     <includes refid="slider_8h" local="no">endstone/form/controls/slider.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1Slider_1a6ab24261f08b33fd1b3476c7bd1a08bc" prot="private" static="no" mutable="no">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::Slider::label_</definition>
         <argsstring></argsstring>
         <name>label_</name>
@@ -97,7 +97,7 @@
         <name>Slider</name>
         <qualifiedname>endstone::Slider::Slider</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>label</declname>
         </param>
         <param>
@@ -126,7 +126,7 @@
         <location file="include/endstone/form/controls/slider.h" line="31" column="14" bodyfile="include/endstone/form/controls/slider.h" bodystart="31" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Slider_1ab8e94955a47d5eaedac0e06ab350f7f2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::Slider::getLabel</definition>
         <argsstring>() const</argsstring>
         <name>getLabel</name>
@@ -150,7 +150,7 @@
         <name>setLabel</name>
         <qualifiedname>endstone::Slider::setLabel</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>label</declname>
         </param>
         <briefdescription>

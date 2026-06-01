@@ -3,6 +3,7 @@
   <compounddef id="classendstone_1_1Enchantment" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Enchantment</compoundname>
     <basecompoundref refid="classendstone_1_1Registry_1_1Type" prot="public" virt="non-virtual">endstone::Registry&lt; T &gt;::Type</basecompoundref>
+    <includes refid="enchantment_8h" local="no">endstone/enchantments/enchantment.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ac7918f3e3cab412ff65c436a05b85889" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -10,7 +11,7 @@
         <argsstring></argsstring>
         <name>Protection</name>
         <qualifiedname>endstone::Enchantment::Protection</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;protection&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;protection&quot;)</initializer>
         <briefdescription>
 <para>Provides protection against environmental damage. </para>
         </briefdescription>
@@ -18,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="27" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="27" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="30" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1acaea890abfefd73050a4cf0edee110e3" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -26,7 +27,7 @@
         <argsstring></argsstring>
         <name>FireProtection</name>
         <qualifiedname>endstone::Enchantment::FireProtection</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;fire_protection&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;fire_protection&quot;)</initializer>
         <briefdescription>
 <para>Provides protection against fire damage. </para>
         </briefdescription>
@@ -34,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="32" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="32" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="35" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="35" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ab2074a3f3553a44007dc4c063ac9c13e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -42,7 +43,7 @@
         <argsstring></argsstring>
         <name>FeatherFalling</name>
         <qualifiedname>endstone::Enchantment::FeatherFalling</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;feather_falling&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;feather_falling&quot;)</initializer>
         <briefdescription>
 <para>Provides protection against fall damage. </para>
         </briefdescription>
@@ -50,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="37" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="37" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="40" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aaf7ba432745dd23f545fdd5903d24b99" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -58,7 +59,7 @@
         <argsstring></argsstring>
         <name>BlastProtection</name>
         <qualifiedname>endstone::Enchantment::BlastProtection</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;blast_protection&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;blast_protection&quot;)</initializer>
         <briefdescription>
 <para>Provides protection against explosive damage. </para>
         </briefdescription>
@@ -66,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="42" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="42" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="45" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a4cd9bf3365fcfe936485603a35c190a8" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -74,7 +75,7 @@
         <argsstring></argsstring>
         <name>ProjectileProtection</name>
         <qualifiedname>endstone::Enchantment::ProjectileProtection</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;projectile_protection&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;projectile_protection&quot;)</initializer>
         <briefdescription>
 <para>Provides protection against projectile damage. </para>
         </briefdescription>
@@ -82,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="47" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="47" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="50" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ad73ef8fb1ba8e9a764a10cffd9d8cfd8" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -90,7 +91,7 @@
         <argsstring></argsstring>
         <name>Thorns</name>
         <qualifiedname>endstone::Enchantment::Thorns</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;thorns&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;thorns&quot;)</initializer>
         <briefdescription>
 <para>Damages the attacker. </para>
         </briefdescription>
@@ -98,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="52" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="52" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="55" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ab5d4bfd41a822904898c7cc1f0a36fe7" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -106,7 +107,7 @@
         <argsstring></argsstring>
         <name>Respiration</name>
         <qualifiedname>endstone::Enchantment::Respiration</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;respiration&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;respiration&quot;)</initializer>
         <briefdescription>
 <para>Decreases the rate of air loss whilst underwater. </para>
         </briefdescription>
@@ -114,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="57" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="57" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="60" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a373f86003904932ed3a62bb52e795273" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -122,7 +123,7 @@
         <argsstring></argsstring>
         <name>DepthStrider</name>
         <qualifiedname>endstone::Enchantment::DepthStrider</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;depth_strider&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;depth_strider&quot;)</initializer>
         <briefdescription>
 <para>Increases walking speed while in water. </para>
         </briefdescription>
@@ -130,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="62" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="62" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="65" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="65" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a42951020e8e528fe120e6e33b3fcd6de" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -138,7 +139,7 @@
         <argsstring></argsstring>
         <name>AquaAffinity</name>
         <qualifiedname>endstone::Enchantment::AquaAffinity</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;aqua_affinity&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;aqua_affinity&quot;)</initializer>
         <briefdescription>
 <para>Increases the speed at which a player may mine underwater. </para>
         </briefdescription>
@@ -146,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="67" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="67" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="70" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aee48de274b3bd83def274e5a40a1b136" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -154,7 +155,7 @@
         <argsstring></argsstring>
         <name>Sharpness</name>
         <qualifiedname>endstone::Enchantment::Sharpness</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;sharpness&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;sharpness&quot;)</initializer>
         <briefdescription>
 <para>Increases damage against all targets. </para>
         </briefdescription>
@@ -162,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="72" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="72" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="75" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a9ea3c26bb9d6f4f053f280aba3d7b62b" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -170,7 +171,7 @@
         <argsstring></argsstring>
         <name>Smite</name>
         <qualifiedname>endstone::Enchantment::Smite</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;smite&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;smite&quot;)</initializer>
         <briefdescription>
 <para>Increases damage against undead targets. </para>
         </briefdescription>
@@ -178,7 +179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="77" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="77" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="80" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="80" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a0fdbd9dc57cb3132b60edf77206dd392" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -186,7 +187,7 @@
         <argsstring></argsstring>
         <name>BaneOfArthropods</name>
         <qualifiedname>endstone::Enchantment::BaneOfArthropods</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;bane_of_arthropods&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;bane_of_arthropods&quot;)</initializer>
         <briefdescription>
 <para>Increases damage against arthropod targets. </para>
         </briefdescription>
@@ -194,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="82" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="82" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="85" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a57e30cdc84b6a98c63b1176492ec91d1" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -202,7 +203,7 @@
         <argsstring></argsstring>
         <name>Knockback</name>
         <qualifiedname>endstone::Enchantment::Knockback</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;knockback&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;knockback&quot;)</initializer>
         <briefdescription>
 <para>All damage to other targets will knock them back when hit. </para>
         </briefdescription>
@@ -210,7 +211,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="87" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="87" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="90" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a90c315ec1e40433fed2d0decd2489b8d" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -218,7 +219,7 @@
         <argsstring></argsstring>
         <name>FireAspect</name>
         <qualifiedname>endstone::Enchantment::FireAspect</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;fire_aspect&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;fire_aspect&quot;)</initializer>
         <briefdescription>
 <para>When attacking a target, has a chance to set them on fire. </para>
         </briefdescription>
@@ -226,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="92" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="92" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="95" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a2aa552f6157d47f02488e9222dc49a36" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -234,7 +235,7 @@
         <argsstring></argsstring>
         <name>Looting</name>
         <qualifiedname>endstone::Enchantment::Looting</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;looting&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;looting&quot;)</initializer>
         <briefdescription>
 <para>Provides a chance of gaining extra loot when killing monsters. </para>
         </briefdescription>
@@ -242,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="97" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="97" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="100" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a3c9103b8d052cd17fce10e2dd6af2a10" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -250,7 +251,7 @@
         <argsstring></argsstring>
         <name>Efficiency</name>
         <qualifiedname>endstone::Enchantment::Efficiency</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;efficiency&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;efficiency&quot;)</initializer>
         <briefdescription>
 <para>Increases the rate at which you mine/dig. </para>
         </briefdescription>
@@ -258,7 +259,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="102" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="102" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="105" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1abd056d3405bbfca06914bbcfe13255f8" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -266,7 +267,7 @@
         <argsstring></argsstring>
         <name>SilkTouch</name>
         <qualifiedname>endstone::Enchantment::SilkTouch</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;silk_touch&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;silk_touch&quot;)</initializer>
         <briefdescription>
 <para>Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone). </para>
         </briefdescription>
@@ -274,7 +275,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="107" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="107" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="110" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1afd8d1c7a403e5d937083adb4cd3927c1" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -282,7 +283,7 @@
         <argsstring></argsstring>
         <name>Unbreaking</name>
         <qualifiedname>endstone::Enchantment::Unbreaking</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;unbreaking&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;unbreaking&quot;)</initializer>
         <briefdescription>
 <para>Decreases the rate at which a tool looses durability. </para>
         </briefdescription>
@@ -290,7 +291,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="112" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="112" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="115" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a77cbd7b93fbfcc75fb8afcfb7b33b6cb" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -298,7 +299,7 @@
         <argsstring></argsstring>
         <name>Fortune</name>
         <qualifiedname>endstone::Enchantment::Fortune</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;fortune&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;fortune&quot;)</initializer>
         <briefdescription>
 <para>Provides a chance of gaining extra loot when destroying blocks. </para>
         </briefdescription>
@@ -306,7 +307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="117" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="117" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="120" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aaeb31319b930697876162d77036cf711" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -314,7 +315,7 @@
         <argsstring></argsstring>
         <name>Power</name>
         <qualifiedname>endstone::Enchantment::Power</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;power&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;power&quot;)</initializer>
         <briefdescription>
 <para>Provides extra damage when shooting arrows from bows. </para>
         </briefdescription>
@@ -322,7 +323,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="122" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="122" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="125" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a1dc5996465eee694835cabee30cad131" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -330,7 +331,7 @@
         <argsstring></argsstring>
         <name>Punch</name>
         <qualifiedname>endstone::Enchantment::Punch</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;punch&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;punch&quot;)</initializer>
         <briefdescription>
 <para>Provides a knockback when an entity is hit by an arrow from a bow. </para>
         </briefdescription>
@@ -338,7 +339,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="127" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="127" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="130" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="130" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a39447ccc523ab709f9aad17dd6dfba06" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -346,7 +347,7 @@
         <argsstring></argsstring>
         <name>Flame</name>
         <qualifiedname>endstone::Enchantment::Flame</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;flame&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;flame&quot;)</initializer>
         <briefdescription>
 <para>Sets entities on fire when hit by arrows shot from a bow. </para>
         </briefdescription>
@@ -354,7 +355,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="132" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="132" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="135" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="135" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a7e9b6f58f298705ddc3ed1563f358e6f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -362,7 +363,7 @@
         <argsstring></argsstring>
         <name>Infinity</name>
         <qualifiedname>endstone::Enchantment::Infinity</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;infinity&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;infinity&quot;)</initializer>
         <briefdescription>
 <para>Provides infinite arrows when shooting a bow. </para>
         </briefdescription>
@@ -370,7 +371,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="137" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="137" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="140" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a226dfe99a6d5f65ef9e944aeedf0252a" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -378,7 +379,7 @@
         <argsstring></argsstring>
         <name>LuckOfTheSea</name>
         <qualifiedname>endstone::Enchantment::LuckOfTheSea</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;luck_of_the_sea&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;luck_of_the_sea&quot;)</initializer>
         <briefdescription>
 <para>Decreases odds of catching worthless junk. </para>
         </briefdescription>
@@ -386,7 +387,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="142" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="142" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="145" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ac0116f71196e9d556d8ec3ec31ee6dde" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -394,7 +395,7 @@
         <argsstring></argsstring>
         <name>Lure</name>
         <qualifiedname>endstone::Enchantment::Lure</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;lure&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;lure&quot;)</initializer>
         <briefdescription>
 <para>Increases rate of fish biting your hook. </para>
         </briefdescription>
@@ -402,7 +403,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="147" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="147" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="150" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a4d2377f98184f466cfe11b4e4b931d2d" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -410,7 +411,7 @@
         <argsstring></argsstring>
         <name>FrostWalker</name>
         <qualifiedname>endstone::Enchantment::FrostWalker</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;frost_walker&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;frost_walker&quot;)</initializer>
         <briefdescription>
 <para>Freezes any still water adjacent to ice / frost which player is walking on. </para>
         </briefdescription>
@@ -418,7 +419,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="152" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="152" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="155" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="155" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aa6585b6679cde360f39eec335a1dea5f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -426,7 +427,7 @@
         <argsstring></argsstring>
         <name>Mending</name>
         <qualifiedname>endstone::Enchantment::Mending</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;mending&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;mending&quot;)</initializer>
         <briefdescription>
 <para>Allows mending the item using experience orbs. </para>
         </briefdescription>
@@ -434,7 +435,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="157" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="157" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="160" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="160" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1afa3ddb9920176f9ae34c0365ce2fb678" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -442,7 +443,7 @@
         <argsstring></argsstring>
         <name>CurseOfBinding</name>
         <qualifiedname>endstone::Enchantment::CurseOfBinding</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;binding&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;binding&quot;)</initializer>
         <briefdescription>
 <para><ref refid="classendstone_1_1Item" kindref="compound">Item</ref> cannot be removed. </para>
         </briefdescription>
@@ -450,7 +451,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="162" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="162" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="165" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="165" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ab225e12bdf8a6349260ca6364997eb4f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -458,7 +459,7 @@
         <argsstring></argsstring>
         <name>CurseOfVanishing</name>
         <qualifiedname>endstone::Enchantment::CurseOfVanishing</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;vanishing&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;vanishing&quot;)</initializer>
         <briefdescription>
 <para><ref refid="classendstone_1_1Item" kindref="compound">Item</ref> disappears instead of dropping. </para>
         </briefdescription>
@@ -466,7 +467,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="167" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="167" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="170" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1aab652fd5d6b61b4c8603dcf77277b27b" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -474,7 +475,7 @@
         <argsstring></argsstring>
         <name>Impaling</name>
         <qualifiedname>endstone::Enchantment::Impaling</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;impaling&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;impaling&quot;)</initializer>
         <briefdescription>
 <para>Deals more damage to mobs that live in the ocean. </para>
         </briefdescription>
@@ -482,7 +483,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="172" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="172" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="175" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="175" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a05e9349874f0a9f9d346f7f9f4d3da0f" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -490,7 +491,7 @@
         <argsstring></argsstring>
         <name>Riptide</name>
         <qualifiedname>endstone::Enchantment::Riptide</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;riptide&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;riptide&quot;)</initializer>
         <briefdescription>
 <para>When it is rainy, launches the player in the direction their trident is thrown. </para>
         </briefdescription>
@@ -498,7 +499,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="177" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="177" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="180" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="180" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1af880cae983ce48ce9db53be0bf179575" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -506,7 +507,7 @@
         <argsstring></argsstring>
         <name>Loyalty</name>
         <qualifiedname>endstone::Enchantment::Loyalty</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;loyalty&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;loyalty&quot;)</initializer>
         <briefdescription>
 <para>Causes a thrown trident to return to the player who threw it. </para>
         </briefdescription>
@@ -514,7 +515,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="182" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="182" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="185" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="185" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a8d0b2beb68bd080060160e20991f0db2" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -522,7 +523,7 @@
         <argsstring></argsstring>
         <name>Channeling</name>
         <qualifiedname>endstone::Enchantment::Channeling</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;channeling&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;channeling&quot;)</initializer>
         <briefdescription>
 <para>Strikes lightning when a mob is hit with a trident if conditions are stormy. </para>
         </briefdescription>
@@ -530,7 +531,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="187" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="187" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="190" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="190" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ab6cdd60f5254e0f6c09fc0d9809541fe" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -538,7 +539,7 @@
         <argsstring></argsstring>
         <name>Multishot</name>
         <qualifiedname>endstone::Enchantment::Multishot</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;multishot&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;multishot&quot;)</initializer>
         <briefdescription>
 <para>Shoot multiple arrows from crossbows. </para>
         </briefdescription>
@@ -546,7 +547,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="192" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="192" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="195" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="195" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a515c9a244378f0c8ed5ddc4ba0cf78a6" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -554,7 +555,7 @@
         <argsstring></argsstring>
         <name>Piercing</name>
         <qualifiedname>endstone::Enchantment::Piercing</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;piercing&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;piercing&quot;)</initializer>
         <briefdescription>
 <para>Crossbow projectiles pierce entities. </para>
         </briefdescription>
@@ -562,7 +563,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="197" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="197" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="200" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="200" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1ae7c1ce0070b7ce7a3e658468baafef60" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -570,7 +571,7 @@
         <argsstring></argsstring>
         <name>QuickCharge</name>
         <qualifiedname>endstone::Enchantment::QuickCharge</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;quick_charge&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;quick_charge&quot;)</initializer>
         <briefdescription>
 <para>Charges crossbows quickly. </para>
         </briefdescription>
@@ -578,7 +579,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="202" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="202" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="205" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="205" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a7a7a32218950752913898d3ca937400d" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -586,7 +587,7 @@
         <argsstring></argsstring>
         <name>SoulSpeed</name>
         <qualifiedname>endstone::Enchantment::SoulSpeed</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;soul_speed&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;soul_speed&quot;)</initializer>
         <briefdescription>
 <para>Walk quicker on soul blocks. </para>
         </briefdescription>
@@ -594,7 +595,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="207" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="207" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="210" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="210" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a50546b69e92f614ef004d1e75b539a52" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -602,7 +603,7 @@
         <argsstring></argsstring>
         <name>SwiftSneak</name>
         <qualifiedname>endstone::Enchantment::SwiftSneak</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;swift_sneak&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;swift_sneak&quot;)</initializer>
         <briefdescription>
 <para>Walk quicker while sneaking. </para>
         </briefdescription>
@@ -610,7 +611,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="212" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="212" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="215" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="215" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a94d6dbb5f544f8b1ac328dcd02c9bc1c" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -618,7 +619,7 @@
         <argsstring></argsstring>
         <name>WindBurst</name>
         <qualifiedname>endstone::Enchantment::WindBurst</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;wind_burst&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;wind_burst&quot;)</initializer>
         <briefdescription>
 <para>Emits wind burst upon hitting enemy. </para>
         </briefdescription>
@@ -626,7 +627,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="217" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="217" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="220" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="220" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a72cc616fb733110b6e50e0aea44858b3" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -634,7 +635,7 @@
         <argsstring></argsstring>
         <name>Density</name>
         <qualifiedname>endstone::Enchantment::Density</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;density&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;density&quot;)</initializer>
         <briefdescription>
 <para>Increases fall damage of maces. </para>
         </briefdescription>
@@ -642,7 +643,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="222" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="222" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="225" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="225" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a940db5ad3f732d219e93c15790e1dcda" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -650,7 +651,7 @@
         <argsstring></argsstring>
         <name>Breach</name>
         <qualifiedname>endstone::Enchantment::Breach</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;breach&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;breach&quot;)</initializer>
         <briefdescription>
 <para>Reduces armor effectiveness against maces. </para>
         </briefdescription>
@@ -658,7 +659,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="227" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="227" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="230" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="230" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Enchantment_1a0132e6577e1f0b7a07dd407d112ea227" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -666,7 +667,7 @@
         <argsstring></argsstring>
         <name>Lunge</name>
         <qualifiedname>endstone::Enchantment::Lunge</qualifiedname>
-        <initializer>= EnchantmentId::minecraft(&quot;lunge&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EnchantmentId::minecraft</ref>(&quot;lunge&quot;)</initializer>
         <briefdescription>
 <para>Applied to spears, causes jab attacks to propel the wielder forward horizontally. </para>
         </briefdescription>
@@ -674,7 +675,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="232" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="232" bodyend="-1"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="235" column="27" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="235" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -694,7 +695,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="239" column="18"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="242" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1acbc90855ee54a401ea5e8e3e45e80d09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -712,7 +713,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="246" column="18"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="249" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a037e2e31c6eb1ea2dcf82fe33dc7d89e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -743,7 +744,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="254" column="19"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="257" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Enchantment_1a2cf0c30780f0ccb58f1ac2576c35ab35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -775,10 +776,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/enchantments/enchantment.h" line="264" column="19"/>
+        <location file="include/endstone/enchantments/enchantment.h" line="267" column="19"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Represents an enchantment that may be added to armor, weapons, tools or other items. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
@@ -806,7 +808,7 @@
         <link refid="classendstone_1_1Registry_1_1Type"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/enchantments/enchantment.h" line="22" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="22" bodyend="265"/>
+    <location file="include/endstone/enchantments/enchantment.h" line="25" column="1" bodyfile="include/endstone/enchantments/enchantment.h" bodystart="25" bodyend="268"/>
     <listofallmembers>
       <member refid="classendstone_1_1Enchantment_1a42951020e8e528fe120e6e33b3fcd6de" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>AquaAffinity</name></member>
       <member refid="classendstone_1_1Enchantment_1a0fdbd9dc57cb3132b60edf77206dd392" prot="public" virt="non-virtual"><scope>endstone::Enchantment</scope><name>BaneOfArthropods</name></member>

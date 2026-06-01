@@ -2727,7 +2727,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-skin"><strong>Skin</strong></a> (std::string id, <a href="../classendstone_1_1Image/"><strong>Image</strong></a> image, std::optional&lt; std::string &gt; cape_id=std::nullopt, std::optional&lt; <a href="../classendstone_1_1Image/"><strong>Image</strong></a> &gt; cape_image=std::nullopt) <br></td>
+<td style="text-align: left;"><a href="#function-skin"><strong>Skin</strong></a> (std::string id, <a href="../classendstone_1_1Image/"><strong>Image</strong></a> image, std::optional&lt; std::string &gt; cape_id=std::nullopt, std::optional&lt; <a href="../classendstone_1_1Image/"><strong>Image</strong></a> &gt; cape_image=std::nullopt) <br><em>Constructs a skin from its id and image, with an optional cape.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::optional&lt; std::string &gt; &amp;</td>
@@ -2749,13 +2749,21 @@ For latest updates join the chat on
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-skin">function Skin<a class="headerlink" href="#function-skin" title="Permanent link">&para;</a></h3>
+<p><em>Constructs a skin from its id and image, with an optional cape.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">Skin</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">id</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Image</span><span class="w"> </span><span class="n">image</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">cape_id</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">cape_image</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>id</code> The skin id. </li>
+<li><code>image</code> The skin image. </li>
+<li><code>cape_id</code> The cape id, or std::nullopt if the skin has no cape. </li>
+<li><code>cape_image</code> The cape image, or std::nullopt if the skin has no cape. </li>
+</ul>
 <hr>
 
 <h3 id="function-getcapeid">function getCapeId<a class="headerlink" href="#function-getcapeid" title="Permanent link">&para;</a></h3>

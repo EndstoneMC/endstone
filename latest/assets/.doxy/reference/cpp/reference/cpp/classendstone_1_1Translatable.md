@@ -52,7 +52,7 @@ _Represents an object with a text representation that can be translated by the M
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Translatable**](#function-translatable) (std::string text, std::vector&lt; std::string &gt; params={}) <br> |
+|   | [**Translatable**](#function-translatable) (std::string text, std::vector&lt; std::string &gt; params={}) <br>_Construct a translatable from the text to be translated and its parameters._  |
 |  [**bool**](classendstone_1_1Identifier.md) | [**empty**](#function-empty) () const<br>_Check if the message to be translated is empty._  |
 |  [**const**](classendstone_1_1Identifier.md) std::vector&lt; std::string &gt; & | [**getParameters**](#function-getparameters) () const<br>_Get the translation parameters._  |
 |  [**const**](classendstone_1_1Identifier.md) std::string & | [**getText**](#function-gettext) () const<br>_Get the text to be translated._  |
@@ -91,6 +91,7 @@ _Represents an object with a text representation that can be translated by the M
 
 ### function Translatable 
 
+_Construct a translatable from the text to be translated and its parameters._ 
 ```C++
 inline explicit endstone::Translatable::Translatable (
     std::string text,
@@ -100,6 +101,18 @@ inline explicit endstone::Translatable::Translatable (
 
 
 
+
+
+**Parameters:**
+
+
+* `text` the text (translation key) to be translated 
+* `params` the parameters to substitute into the translation 
+
+
+
+
+        
 
 <hr>
 

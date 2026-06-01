@@ -29,8 +29,11 @@ namespace endstone {
 class ICancellable {
 public:
     virtual ~ICancellable() = default;
+
     [[nodiscard]] virtual bool isCancelled() const = 0;
+
     virtual void setCancelled(bool cancel) = 0;
+
     virtual void cancel() = 0;
 };
 

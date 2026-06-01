@@ -2607,6 +2607,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#detailed-description" class="md-nav__link">
+      <span class="md-ellipsis">
+        Detailed Description
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-types-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Types Documentation
@@ -3148,6 +3159,10 @@ For latest updates join the chat on
 <h1 id="class-endstonenbtarraytag">Class endstone::nbt::ArrayTag<a class="headerlink" href="#class-endstonenbtarraytag" title="Permanent link">&para;</a></h1>
 <p><strong>template &lt;<a href="../classendstone_1_1Identifier/"><strong>typename</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a>&gt;</strong></p>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone_1_1nbt/"><strong>nbt</strong></a> <strong>&gt;</strong> <a href="./"><strong>ArrayTag</strong></a></p>
+<p><em>An NBT tag holding a contiguous array of fixed-width values (e.g.</em> <a href="#detailed-description">More...</a></p>
+<ul>
+<li><code>#include &lt;endstone/nbt/array.h&gt;</code></li>
+</ul>
 <p>Inherits the following classes: <a href="../structendstone_1_1nbt_1_1TagBase/">endstone::nbt::TagBase</a></p>
 <h2 id="public-types">Public Types<a class="headerlink" href="#public-types" title="Permanent link">&para;</a></h2>
 <table>
@@ -3287,6 +3302,13 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
+<h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
+<p>byte array, int array).</p>
+<p>Provides a std::vector-like interface over the underlying storage.</p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>T</code> the element type </li>
+</ul>
 <h2 id="public-types-documentation">Public Types Documentation<a class="headerlink" href="#public-types-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="typedef-const_iterator">typedef const_iterator<a class="headerlink" href="#typedef-const_iterator" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">ArrayTag</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">const_iterator</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="k">typename</span><span class="w"> </span><span class="nc">storage_type</span><span class="o">::</span><span class="n">const_iterator</span><span class="p">;</span>

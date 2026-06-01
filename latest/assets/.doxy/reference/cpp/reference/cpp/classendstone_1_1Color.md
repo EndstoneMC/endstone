@@ -58,7 +58,7 @@ _Represents a color with red, green, blue, and alpha components._
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**Color**](#function-color) ([**const**](classendstone_1_1Identifier.md) std::uint8\_t red, [**const**](classendstone_1_1Identifier.md) std::uint8\_t green, [**const**](classendstone_1_1Identifier.md) std::uint8\_t blue, [**const**](classendstone_1_1Identifier.md) std::uint8\_t alpha=DEFAULT\_ALPHA) <br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) | [**Color**](#function-color) ([**const**](classendstone_1_1Identifier.md) std::uint8\_t red, [**const**](classendstone_1_1Identifier.md) std::uint8\_t green, [**const**](classendstone_1_1Identifier.md) std::uint8\_t blue, [**const**](classendstone_1_1Identifier.md) std::uint8\_t alpha=DEFAULT\_ALPHA) <br>_Constructs a new_ [_**Color**_](classendstone_1_1Color.md) _from red, green, blue, and alpha components._ |
 |  [**int**](classendstone_1_1Identifier.md) | [**asABGR**](#function-asabgr) () const<br>_Gets the color as an ABGR integer._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**asBGR**](#function-asbgr) () const<br>_Gets the color as an BGR integer._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**asRGB**](#function-asrgb) () const<br>_Gets the color as an RGB integer._  |
@@ -81,7 +81,7 @@ _Represents a color with red, green, blue, and alpha components._
 | ---: | :--- |
 |  [**Color**](classendstone_1_1Color.md) | [**fromABGR**](#function-fromabgr) ([**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) abgr) <br>_Creates a new color object from an integer that contains the alpha, blue, green, and red bytes._  |
 |  [**Color**](classendstone_1_1Color.md) | [**fromBGR**](#function-frombgr-12) ([**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) blue, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) green, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) red) <br>_Creates a new_ [_**Color**_](classendstone_1_1Color.md) _object from a blue, green, and red._ |
-|  [**Color**](classendstone_1_1Color.md) | [**fromBGR**](#function-frombgr-22) ([**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) bgr) <br> |
+|  [**Color**](classendstone_1_1Color.md) | [**fromBGR**](#function-frombgr-22) ([**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) bgr) <br>_Creates a new color object from an integer that contains the blue, green, and red bytes in the lowest order 24 bits._  |
 |  [**Color**](classendstone_1_1Color.md) | [**fromRGB**](#function-fromrgb-12) ([**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) red, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) green, [**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) blue) <br>_Creates a new_ [_**Color**_](classendstone_1_1Color.md) _object from a red, green, and blue._ |
 |  [**Color**](classendstone_1_1Color.md) | [**fromRGB**](#function-fromrgb-22) ([**const**](classendstone_1_1Identifier.md) [**int**](classendstone_1_1Identifier.md) rgb) <br>_Creates a new color object from an integer that contains the red, green, and blue bytes in the lowest order 24 bits._  |
 |  [**Color**](classendstone_1_1Color.md) | [**fromRGBA**](#function-fromrgba-12) ([**int**](classendstone_1_1Identifier.md) red, [**int**](classendstone_1_1Identifier.md) green, [**int**](classendstone_1_1Identifier.md) blue, [**int**](classendstone_1_1Identifier.md) alpha) <br>_Creates a new_ [_**Color**_](classendstone_1_1Color.md) _object from a red, green, blue, and alpha._ |
@@ -147,6 +147,7 @@ constexpr int endstone::Color::DEFAULT_ALPHA;
 
 ### function Color 
 
+_Constructs a new_ [_**Color**_](classendstone_1_1Color.md) _from red, green, blue, and alpha components._
 ```C++
 inline constexpr endstone::Color::Color (
     const std::uint8_t red,
@@ -158,6 +159,20 @@ inline constexpr endstone::Color::Color (
 
 
 
+
+
+**Parameters:**
+
+
+* `red` the red component, from 0 to 255 
+* `green` the green component, from 0 to 255 
+* `blue` the blue component, from 0 to 255 
+* `alpha` the alpha component, from 0 to 255 
+
+
+
+
+        
 
 <hr>
 
@@ -605,6 +620,7 @@ a new [**Color**](classendstone_1_1Color.md) object for the red, green, blue
 
 ### function fromBGR [2/2]
 
+_Creates a new color object from an integer that contains the blue, green, and red bytes in the lowest order 24 bits._ 
 ```C++
 static inline Color endstone::Color::fromBGR (
     const  int bgr
@@ -613,6 +629,24 @@ static inline Color endstone::Color::fromBGR (
 
 
 
+
+
+**Parameters:**
+
+
+* `bgr` the integer storing the blue, green, and red values
+
+
+
+**Returns:**
+
+a new color object for specified values 
+
+
+
+
+
+        
 
 <hr>
 

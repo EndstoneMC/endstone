@@ -6,7 +6,7 @@
     <includes refid="dropdown_8h" local="no">endstone/form/controls/dropdown.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1Dropdown_1a63178f8424835d566da0e3d6d62bb2b1" prot="private" static="no" mutable="no">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::Dropdown::label_</definition>
         <argsstring></argsstring>
         <name>label_</name>
@@ -70,7 +70,7 @@
         <name>Dropdown</name>
         <qualifiedname>endstone::Dropdown::Dropdown</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>label</declname>
         </param>
         <param>
@@ -91,7 +91,7 @@
         <location file="include/endstone/form/controls/dropdown.h" line="32" column="14" bodyfile="include/endstone/form/controls/dropdown.h" bodystart="32" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dropdown_1a424095abea8be681ef3ebc756663b879" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::Dropdown::getLabel</definition>
         <argsstring>() const</argsstring>
         <name>getLabel</name>
@@ -115,7 +115,7 @@
         <name>setLabel</name>
         <qualifiedname>endstone::Dropdown::setLabel</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>label</declname>
         </param>
         <briefdescription>

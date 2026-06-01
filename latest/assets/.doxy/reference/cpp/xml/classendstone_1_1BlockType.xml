@@ -10,7 +10,7 @@
         <argsstring></argsstring>
         <name>Air</name>
         <qualifiedname>endstone::BlockType::Air</qualifiedname>
-        <initializer>= BlockTypeId::minecraft(&quot;air&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">BlockTypeId::minecraft</ref>(&quot;air&quot;)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>

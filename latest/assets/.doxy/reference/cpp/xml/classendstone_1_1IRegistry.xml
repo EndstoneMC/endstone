@@ -3,6 +3,7 @@
   <compounddef id="classendstone_1_1IRegistry" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::IRegistry</compoundname>
     <derivedcompoundref refid="classendstone_1_1Registry" prot="public" virt="non-virtual">endstone::Registry&lt; T &gt;</derivedcompoundref>
+    <includes refid="registry_8h" local="no">endstone/registry.h</includes>
     <sectiondef kind="friend">
       <memberdef kind="friend" id="classendstone_1_1IRegistry_1a0e0e0b2531a45e47cdbcfde16e8f4812" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref></type>
@@ -19,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="39" column="18" bodyfile="include/endstone/registry.h" bodystart="39" bodyend="-1"/>
+        <location file="include/endstone/registry.h" line="51" column="18" bodyfile="include/endstone/registry.h" bodystart="51" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -35,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="35" column="13"/>
+        <location file="include/endstone/registry.h" line="41" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1IRegistry_1af9fcd05fdd3d73506763e7cc923cf4cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::size_t</type>
@@ -45,12 +46,16 @@
         <qualifiedname>endstone::IRegistry::size</qualifiedname>
         <reimplementedby refid="classendstone_1_1Registry_1a8fafff73ec8ea9f5d6ff286ee77b4b53">size</reimplementedby>
         <briefdescription>
+<para>Gets the number of entries in this registry. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>the entry count </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="36" column="26"/>
+        <location file="include/endstone/registry.h" line="48" column="26"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -71,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="40" column="25"/>
+        <location file="include/endstone/registry.h" line="52" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1IRegistry_1acc8156c0ec4f22dee71f290fc030eb25" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">void</ref></type>
@@ -90,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="41" column="18"/>
+        <location file="include/endstone/registry.h" line="53" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1IRegistry_1a4d46fa889687149d8c026b1c91261543" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::type_info &amp;</type>
@@ -105,12 +110,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/registry.h" line="42" column="35"/>
+        <location file="include/endstone/registry.h" line="54" column="35"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Type-erased base interface for registries. </para>
     </briefdescription>
     <detaileddescription>
+<para>Allows registries of any element type to be handled uniformly without knowing the concrete element type. Prefer the typed <ref refid="classendstone_1_1Registry" kindref="compound">Registry</ref> interface in plugin code. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1">
@@ -124,7 +131,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/registry.h" line="33" column="1" bodyfile="include/endstone/registry.h" bodystart="33" bodyend="43"/>
+    <location file="include/endstone/registry.h" line="39" column="1" bodyfile="include/endstone/registry.h" bodystart="39" bodyend="55"/>
     <listofallmembers>
       <member refid="classendstone_1_1IRegistry_1acc8156c0ec4f22dee71f290fc030eb25" prot="protected" virt="pure-virtual"><scope>endstone::IRegistry</scope><name>forEach0</name></member>
       <member refid="classendstone_1_1IRegistry_1a25e5e92882a43fd4da14e6922d75007a" prot="protected" virt="pure-virtual"><scope>endstone::IRegistry</scope><name>get0</name></member>

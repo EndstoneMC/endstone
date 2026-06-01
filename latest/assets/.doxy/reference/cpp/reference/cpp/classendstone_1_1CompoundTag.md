@@ -8,8 +8,9 @@
 
 
 
+_An NBT tag holding a set of named child tags, keyed by string._ [More...](#detailed-description)
 
-
+* `#include <endstone/nbt/compound.h>`
 
 
 
@@ -163,6 +164,13 @@ Inherits the following classes: [endstone::nbt::TagBase](structendstone_1_1nbt_1
 
 
 
+## Detailed Description
+
+
+Provides a std::map-like interface mapping each key to its Tag value. 
+
+
+    
 ## Public Types Documentation
 
 

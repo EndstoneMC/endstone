@@ -3423,15 +3423,15 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-broadcast"><strong>broadcast</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> Message &amp; message, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; permission) const = 0<br><em>Broadcasts the specified message to every user with the given permission name.</em></td>
+<td style="text-align: left;"><a href="#function-broadcast"><strong>broadcast</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../namespaceendstone/#typedef-message"><strong>Message</strong></a> &amp; message, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::string &amp; permission) const = 0<br><em>Broadcasts the specified message to every user with the given permission name.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-broadcastmessage-12"><strong>broadcastMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> Message &amp; message) const = 0<br><em>Broadcasts the specified message to every user with permission endstone.broadcast.user.</em></td>
+<td style="text-align: left;"><a href="#function-broadcastmessage-12"><strong>broadcastMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../namespaceendstone/#typedef-message"><strong>Message</strong></a> &amp; message) const = 0<br><em>Broadcasts the specified message to every user with permission endstone.broadcast.user.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-broadcastmessage-22"><strong>broadcastMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::format_string&lt; Args... &gt; format, <a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) const<br></td>
+<td style="text-align: left;"><a href="#function-broadcastmessage-22"><strong>broadcastMessage</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::format_string&lt; Args... &gt; format, <a href="../classendstone_1_1Identifier/"><strong>Args</strong></a> &amp;&amp;... args) const<br><em>Broadcasts a formatted message to every user with permission endstone.broadcast.user.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &gt;</td>
@@ -3443,11 +3443,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1BossBar/"><strong>BossBar</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-createbossbar-12"><strong>createBossBar</strong></a> (std::string title, BarColor color, <a href="../namespaceendstone/#enum-barstyle"><strong>BarStyle</strong></a> style) const = 0<br><em>Creates a boss bar instance to display to players.</em></td>
+<td style="text-align: left;"><a href="#function-createbossbar-12"><strong>createBossBar</strong></a> (std::string title, <a href="../namespaceendstone/#enum-barcolor"><strong>BarColor</strong></a> color, <a href="../namespaceendstone/#enum-barstyle"><strong>BarStyle</strong></a> style) const = 0<br><em>Creates a boss bar instance to display to players.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1BossBar/"><strong>BossBar</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-createbossbar-22"><strong>createBossBar</strong></a> (std::string title, BarColor color, <a href="../namespaceendstone/#enum-barstyle"><strong>BarStyle</strong></a> style, std::vector&lt; <a href="../namespaceendstone/#enum-barflag"><strong>BarFlag</strong></a> &gt; flags) const = 0<br><em>Creates a boss bar instance to display to players.</em></td>
+<td style="text-align: left;"><a href="#function-createbossbar-22"><strong>createBossBar</strong></a> (std::string title, <a href="../namespaceendstone/#enum-barcolor"><strong>BarColor</strong></a> color, <a href="../namespaceendstone/#enum-barstyle"><strong>BarStyle</strong></a> style, std::vector&lt; <a href="../namespaceendstone/#enum-barflag"><strong>BarFlag</strong></a> &gt; flags) const = 0<br><em>Creates a boss bar instance to display to players.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1MapView/"><strong>MapView</strong></a> &amp;</td>
@@ -3567,7 +3567,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Registry/"><strong>Registry</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt; &amp;</td>
-<td style="text-align: left;"><a href="#function-getregistry"><strong>getRegistry</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getregistry"><strong>getRegistry</strong></a> () const<br><em>Returns the registry for the given element type.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Scheduler/"><strong>Scheduler</strong></a> &amp;</td>
@@ -3662,7 +3662,7 @@ For latest updates join the chat on
 <h3 id="function-broadcast">function broadcast<a class="headerlink" href="#function-broadcast" title="Permanent link">&para;</a></h3>
 <p><em>Broadcasts the specified message to every user with the given permission name.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">broadcast</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">permission</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
@@ -3676,7 +3676,7 @@ For latest updates join the chat on
 <h3 id="function-broadcastmessage-12">function broadcastMessage [&frac12;]<a class="headerlink" href="#function-broadcastmessage-12" title="Permanent link">&para;</a></h3>
 <p><em>Broadcasts the specified message to every user with permission endstone.broadcast.user.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">broadcastMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -3686,12 +3686,19 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-broadcastmessage-22">function broadcastMessage [2/2]<a class="headerlink" href="#function-broadcastmessage-22" title="Permanent link">&para;</a></h3>
+<p><em>Broadcasts a formatted message to every user with permission endstone.broadcast.user.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">broadcastMessage</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">format_string</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Args</span><span class="p">...</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">format</span><span class="p">,</span>
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span>
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p>Formats the message using std::format before broadcasting. If formatting throws, the exception message is logged at the Error level instead.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>format</code> The format string. </li>
+<li><code>args</code> The arguments to substitute into the format string. </li>
+</ul>
 <hr>
 
 <h3 id="function-createblockdata-12">function createBlockData [&frac12;]<a class="headerlink" href="#function-createblockdata-12" title="Permanent link">&para;</a></h3>
@@ -4037,9 +4044,16 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-getregistry">function getRegistry<a class="headerlink" href="#function-getregistry" title="Permanent link">&para;</a></h3>
+<p><em>Returns the registry for the given element type.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w">  </span><span class="nc">T</span><span class="o">&gt;</span>
 </span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="n">Registry</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getRegistry</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>T</code> The element type whose registry to retrieve. </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>the corresponding registry. </p>
 <hr>
 
 <h3 id="function-getscheduler">function getScheduler<a class="headerlink" href="#function-getscheduler" title="Permanent link">&para;</a></h3>

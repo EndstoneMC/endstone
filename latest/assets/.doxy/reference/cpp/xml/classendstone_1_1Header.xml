@@ -5,7 +5,7 @@
     <includes refid="header_8h" local="no">endstone/form/controls/header.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1Header_1a2775bffd0b0910fa6ee50cf2a8a0b079" prot="private" static="no" mutable="no">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::Header::label_</definition>
         <argsstring></argsstring>
         <name>label_</name>
@@ -41,7 +41,7 @@
         <name>Header</name>
         <qualifiedname>endstone::Header::Header</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>label</declname>
         </param>
         <briefdescription>
@@ -53,7 +53,7 @@
         <location file="include/endstone/form/controls/header.h" line="31" column="14" bodyfile="include/endstone/form/controls/header.h" bodystart="31" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Header_1a7fbe4814c5ff46425f28d46fc89e7042" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::Header::getLabel</definition>
         <argsstring>() const</argsstring>
         <name>getLabel</name>
@@ -77,7 +77,7 @@
         <name>setLabel</name>
         <qualifiedname>endstone::Header::setLabel</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>label</declname>
         </param>
         <briefdescription>

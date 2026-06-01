@@ -6,7 +6,7 @@
     <includes refid="player__death__event_8h" local="no">endstone/event/actor/player_death_event.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerDeathEvent_1a6480e2399396eaa3fb8ed7bfcb56da21" prot="private" static="no" mutable="no">
-        <type>std::optional&lt; Message &gt;</type>
+        <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
         <definition>std::optional&lt;Message&gt; endstone::PlayerDeathEvent::death_message_</definition>
         <argsstring></argsstring>
         <name>death_message_</name>
@@ -53,7 +53,7 @@
           <declname>damage_source</declname>
         </param>
         <param>
-          <type>std::optional&lt; Message &gt;</type>
+          <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
           <declname>death_message</declname>
         </param>
         <briefdescription>
@@ -83,7 +83,7 @@
         <location file="include/endstone/event/actor/player_death_event.h" line="42" column="13" bodyfile="include/endstone/event/actor/player_death_event.h" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerDeathEvent_1ac10543a6ddb7eb32aed23e72c94b7d61" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::optional&lt; Message &gt;</type>
+        <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
         <definition>std::optional&lt; Message &gt; endstone::PlayerDeathEvent::getDeathMessage</definition>
         <argsstring>() const</argsstring>
         <name>getDeathMessage</name>
@@ -107,7 +107,7 @@
         <name>setDeathMessage</name>
         <qualifiedname>endstone::PlayerDeathEvent::setDeathMessage</qualifiedname>
         <param>
-          <type>std::optional&lt; Message &gt;</type>
+          <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
           <declname>death_message</declname>
         </param>
         <briefdescription>

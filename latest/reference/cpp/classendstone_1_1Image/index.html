@@ -2872,7 +2872,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">enum</td>
-<td style="text-align: left;"><a href="#enum-type"><strong>Type</strong></a>  <br></td>
+<td style="text-align: left;"><a href="#enum-type"><strong>Type</strong></a>  <br><em>Represents the pixel format of an image.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2929,11 +2929,11 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">Result&lt; <a href="./"><strong>Image</strong></a> &gt;</td>
+<td style="text-align: right;"><a href="../namespaceendstone/#typedef-result"><strong>Result</strong></a>&lt; <a href="./"><strong>Image</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-fromarray"><strong>fromArray</strong></a> (<a href="./#enum-type"><strong>Type</strong></a> type, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> width, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> height, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::vector&lt; <a href="../classendstone_1_1Identifier/"><strong>unsigned</strong></a> <a href="../classendstone_1_1Identifier/"><strong>char</strong></a> &gt; &amp; array) <br><em>Creates an image from the pixel data in a byte array.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">Result&lt; <a href="./"><strong>Image</strong></a> &gt;</td>
+<td style="text-align: right;"><a href="../namespaceendstone/#typedef-result"><strong>Result</strong></a>&lt; <a href="./"><strong>Image</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-frombuffer"><strong>fromBuffer</strong></a> (<a href="./#enum-type"><strong>Type</strong></a> type, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> width, <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> height, std::string_view buffer) <br><em>Creates an image from the pixel data in a byte buffer.</em></td>
 </tr>
 </tbody>
@@ -2942,13 +2942,14 @@ For latest updates join the chat on
 <p>Each pixel is four bytes: R, G, B, A, in row-major order. </p>
 <h2 id="public-types-documentation">Public Types Documentation<a class="headerlink" href="#public-types-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="enum-type">enum Type<a class="headerlink" href="#enum-type" title="Permanent link">&para;</a></h3>
+<p><em>Represents the pixel format of an image.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">Type</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">Invalid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Grayscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">RGB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">RGBA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">};</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-image-12">function Image [&frac12;]<a class="headerlink" href="#function-image-12" title="Permanent link">&para;</a></h3>
@@ -3044,7 +3045,7 @@ For latest updates join the chat on
 <h2 id="public-static-functions-documentation">Public Static Functions Documentation<a class="headerlink" href="#public-static-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-fromarray">function fromArray<a class="headerlink" href="#function-fromarray" title="Permanent link">&para;</a></h3>
 <p><em>Creates an image from the pixel data in a byte array.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">fromArray</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">fromArray</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">type</span><span class="p">,</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span>
 </span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">,</span>
@@ -3064,7 +3065,7 @@ For latest updates join the chat on
 
 <h3 id="function-frombuffer">function fromBuffer<a class="headerlink" href="#function-frombuffer" title="Permanent link">&para;</a></h3>
 <p><em>Creates an image from the pixel data in a byte buffer.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">fromBuffer</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">Result</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">fromBuffer</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">type</span><span class="p">,</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">,</span>

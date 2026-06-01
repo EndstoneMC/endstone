@@ -2877,27 +2877,27 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>constexpr</strong></a></td>
-<td style="text-align: left;"><a href="#function-identifier-14"><strong>Identifier</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>char</strong></a> * s) noexcept<br></td>
+<td style="text-align: left;"><a href="#function-identifier-14"><strong>Identifier</strong></a> (<a href="./"><strong>const</strong></a> <a href="./"><strong>char</strong></a> * s) noexcept<br><em>Constructs an identifier by parsing a string.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>constexpr</strong></a></td>
-<td style="text-align: left;"><a href="#function-identifier-24"><strong>Identifier</strong></a> (<a href="./"><strong>const</strong></a> std::string &amp; s) noexcept<br></td>
+<td style="text-align: left;"><a href="#function-identifier-24"><strong>Identifier</strong></a> (<a href="./"><strong>const</strong></a> std::string &amp; s) noexcept<br><em>Constructs an identifier by parsing a string.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>constexpr</strong></a></td>
-<td style="text-align: left;"><a href="#function-identifier-34"><strong>Identifier</strong></a> (<a href="./"><strong>const</strong></a> std::string_view &amp; identifier) noexcept<br></td>
+<td style="text-align: left;"><a href="#function-identifier-34"><strong>Identifier</strong></a> (<a href="./"><strong>const</strong></a> std::string_view &amp; identifier) noexcept<br><em>Constructs an identifier by parsing a string.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>constexpr</strong></a></td>
-<td style="text-align: left;"><a href="#function-identifier-44"><strong>Identifier</strong></a> (<a href="./"><strong>const</strong></a> std::string_view &amp; namespace_, <a href="./"><strong>const</strong></a> std::string_view &amp; key) noexcept<br></td>
+<td style="text-align: left;"><a href="#function-identifier-44"><strong>Identifier</strong></a> (<a href="./"><strong>const</strong></a> std::string_view &amp; namespace_, <a href="./"><strong>const</strong></a> std::string_view &amp; key) noexcept<br><em>Constructs an identifier from a separate namespace and key.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> std::string_view</td>
-<td style="text-align: left;"><a href="#function-getkey"><strong>getKey</strong></a> () noexcept const<br></td>
+<td style="text-align: left;"><a href="#function-getkey"><strong>getKey</strong></a> () noexcept const<br><em>Gets the key component of this identifier.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> std::string_view</td>
-<td style="text-align: left;"><a href="#function-getnamespace"><strong>getNamespace</strong></a> () noexcept const<br></td>
+<td style="text-align: left;"><a href="#function-getnamespace"><strong>getNamespace</strong></a> () noexcept const<br><em>Gets the namespace component of this identifier.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -2924,7 +2924,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>constexpr</strong></a> <a href="./"><strong>Identifier</strong></a></td>
-<td style="text-align: left;"><a href="#function-minecraft"><strong>minecraft</strong></a> (<a href="./"><strong>const</strong></a> std::string_view key) noexcept<br></td>
+<td style="text-align: left;"><a href="#function-minecraft"><strong>minecraft</strong></a> (<a href="./"><strong>const</strong></a> std::string_view key) noexcept<br><em>Creates an identifier in the minecraft namespace with the given key.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2936,42 +2936,72 @@ For latest updates join the chat on
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-identifier-14">function Identifier [&frac14;]<a class="headerlink" href="#function-identifier-14" title="Permanent link">&para;</a></h3>
+<p><em>Constructs an identifier by parsing a string.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">Identifier</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">s</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p>See the string_view overload for the parsing rules.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>s</code> The identifier string. </li>
+</ul>
 <hr>
 
 <h3 id="function-identifier-24">function Identifier [2/4]<a class="headerlink" href="#function-identifier-24" title="Permanent link">&para;</a></h3>
+<p><em>Constructs an identifier by parsing a string.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">Identifier</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">s</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p>See the string_view overload for the parsing rules.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>s</code> The identifier string. </li>
+</ul>
 <hr>
 
 <h3 id="function-identifier-34">function Identifier [&frac34;]<a class="headerlink" href="#function-identifier-34" title="Permanent link">&para;</a></h3>
+<p><em>Constructs an identifier by parsing a string.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">Identifier</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">identifier</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p>If the string contains a colon, the part before the last colon is taken as the namespace and the remainder as the key. Otherwise the whole string is the key and the namespace defaults to minecraft.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>identifier</code> The identifier string. </li>
+</ul>
 <hr>
 
 <h3 id="function-identifier-44">function Identifier [4/4]<a class="headerlink" href="#function-identifier-44" title="Permanent link">&para;</a></h3>
+<p><em>Constructs an identifier from a separate namespace and key.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">Identifier</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">namespace_</span><span class="p">,</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>namespace_</code> The namespace component. </li>
+<li><code>key</code> The key component. </li>
+</ul>
 <hr>
 
 <h3 id="function-getkey">function getKey<a class="headerlink" href="#function-getkey" title="Permanent link">&para;</a></h3>
+<p><em>Gets the key component of this identifier.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">getKey</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the key </p>
 <hr>
 
 <h3 id="function-getnamespace">function getNamespace<a class="headerlink" href="#function-getnamespace" title="Permanent link">&para;</a></h3>
+<p><em>Gets the namespace component of this identifier.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">getNamespace</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the namespace </p>
 <hr>
 
 <h3 id="function-string">function string<a class="headerlink" href="#function-string" title="Permanent link">&para;</a></h3>
@@ -2994,10 +3024,17 @@ For latest updates join the chat on
 <hr>
 <h2 id="public-static-functions-documentation">Public Static Functions Documentation<a class="headerlink" href="#public-static-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-minecraft">function minecraft<a class="headerlink" href="#function-minecraft" title="Permanent link">&para;</a></h3>
+<p><em>Creates an identifier in the minecraft namespace with the given key.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">Identifier</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Identifier</span><span class="o">::</span><span class="n">minecraft</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">key</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>key</code> The key component. </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>an identifier with the namespace set to minecraft. </p>
 <hr>
 
 <hr />

@@ -24,14 +24,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/identifier.h" line="86" column="17" bodyfile="include/endstone/identifier.h" bodystart="86" bodyend="91"/>
+        <location file="include/endstone/identifier.h" line="126" column="17" bodyfile="include/endstone/identifier.h" bodystart="126" bodyend="131"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/identifier.h" line="85" column="1" bodyfile="include/endstone/identifier.h" bodystart="85" bodyend="92"/>
+    <location file="include/endstone/identifier.h" line="125" column="1" bodyfile="include/endstone/identifier.h" bodystart="125" bodyend="132"/>
     <listofallmembers>
       <member refid="structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4_1a779cbc2cf32eff5779c321ccafc4df0e" prot="public" virt="non-virtual"><scope>std::hash&lt; endstone::Identifier&lt; T &gt; &gt;</scope><name>operator()</name></member>
     </listofallmembers>

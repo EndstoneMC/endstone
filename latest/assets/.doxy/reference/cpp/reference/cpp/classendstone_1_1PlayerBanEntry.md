@@ -87,7 +87,7 @@ See [endstone::BanEntry](classendstone_1_1BanEntry.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerBanEntry**](#function-playerbanentry) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid=std::nullopt, std::optional&lt; std::string &gt; xuid=std::nullopt) <br> |
+|   | [**PlayerBanEntry**](#function-playerbanentry) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid=std::nullopt, std::optional&lt; std::string &gt; xuid=std::nullopt) <br>_Construct a ban entry for the given player._  |
 |  std::string | [**getName**](#function-getname) () const<br>_Gets the banned player's name._  |
 |  std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; | [**getUniqueId**](#function-getuniqueid) () const<br>_Gets the banned player's unique id._  |
 |  std::optional&lt; std::string &gt; | [**getXuid**](#function-getxuid) () const<br>_Gets the banned player's xbox user id (xuid)._  |
@@ -168,6 +168,7 @@ See [endstone::BanEntry](classendstone_1_1BanEntry.md)
 
 ### function PlayerBanEntry 
 
+_Construct a ban entry for the given player._ 
 ```C++
 inline explicit endstone::PlayerBanEntry::PlayerBanEntry (
     std::string name,
@@ -178,6 +179,19 @@ inline explicit endstone::PlayerBanEntry::PlayerBanEntry (
 
 
 
+
+
+**Parameters:**
+
+
+* `name` the name of the player being banned 
+* `uuid` the unique id of the player, or std::nullopt if not available 
+* `xuid` the xbox user id (xuid) of the player, or std::nullopt if not available 
+
+
+
+
+        
 
 <hr>
 

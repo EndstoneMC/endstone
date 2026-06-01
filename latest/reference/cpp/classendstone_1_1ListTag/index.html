@@ -2607,6 +2607,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#detailed-description" class="md-nav__link">
+      <span class="md-ellipsis">
+        Detailed Description
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-types-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Types Documentation
@@ -3056,6 +3067,10 @@ For latest updates join the chat on
 
 <h1 id="class-endstonelisttag">Class endstone::ListTag<a class="headerlink" href="#class-endstonelisttag" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>ListTag</strong></a></p>
+<p><em>An NBT tag holding an ordered sequence of child tags that all share the same type.</em> <a href="#detailed-description">More...</a></p>
+<ul>
+<li><code>#include &lt;endstone/nbt/list.h&gt;</code></li>
+</ul>
 <p>Inherits the following classes: <a href="../structendstone_1_1nbt_1_1TagBase/">endstone::nbt::TagBase</a></p>
 <h2 id="public-types">Public Types<a class="headerlink" href="#public-types" title="Permanent link">&para;</a></h2>
 <table>
@@ -3183,6 +3198,8 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
+<h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
+<p>Provides a std::vector-like interface. The element type is fixed by the first element added; attempting to add a tag of a different type, or an End tag, throws std::invalid_argument. </p>
 <h2 id="public-types-documentation">Public Types Documentation<a class="headerlink" href="#public-types-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="typedef-const_iterator">typedef const_iterator<a class="headerlink" href="#typedef-const_iterator" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ListTag</span><span class="o">::</span><span class="n">const_iterator</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">container_type</span><span class="o">::</span><span class="n">const_iterator</span><span class="p">;</span>

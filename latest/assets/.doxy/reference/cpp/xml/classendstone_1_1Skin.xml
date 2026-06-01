@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/skin.h" line="65" column="17" bodyfile="include/endstone/skin.h" bodystart="65" bodyend="-1"/>
+        <location file="include/endstone/skin.h" line="73" column="17" bodyfile="include/endstone/skin.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Skin_1aa836b4be3c7a31992075e8e0bb889524" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Image" kindref="compound">Image</ref></type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/skin.h" line="66" column="11" bodyfile="include/endstone/skin.h" bodystart="66" bodyend="-1"/>
+        <location file="include/endstone/skin.h" line="74" column="11" bodyfile="include/endstone/skin.h" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Skin_1a7dc86a18a4cd9717572d333e0ca9637a" prot="private" static="no" mutable="no">
         <type>std::optional&lt; std::string &gt;</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/skin.h" line="67" column="19" bodyfile="include/endstone/skin.h" bodystart="67" bodyend="-1"/>
+        <location file="include/endstone/skin.h" line="75" column="19" bodyfile="include/endstone/skin.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Skin_1af20c4875f8a119304d9f85b8f3f0b436" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classendstone_1_1Image" kindref="compound">Image</ref> &gt;</type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/skin.h" line="68" column="19" bodyfile="include/endstone/skin.h" bodystart="68" bodyend="-1"/>
+        <location file="include/endstone/skin.h" line="76" column="19" bodyfile="include/endstone/skin.h" bodystart="76" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -87,12 +87,47 @@
           <defval>std::nullopt</defval>
         </param>
         <briefdescription>
+<para>Constructs a skin from its id and image, with an optional cape. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The skin id. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The skin image. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cape_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cape id, or std::nullopt if the skin has no cape. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cape_image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The cape image, or std::nullopt if the skin has no cape. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/skin.h" line="30" column="5" bodyfile="include/endstone/skin.h" bodystart="30" bodyend="34"/>
+        <location file="include/endstone/skin.h" line="38" column="5" bodyfile="include/endstone/skin.h" bodystart="38" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Skin_1a1ee37c6cbb142562db8016e5361f32fb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::string &amp;</type>
@@ -110,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/skin.h" line="41" column="24" bodyfile="include/endstone/skin.h" bodystart="41" bodyend="41"/>
+        <location file="include/endstone/skin.h" line="49" column="24" bodyfile="include/endstone/skin.h" bodystart="49" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Skin_1a8493d696282383696dbb73d0e8a6175d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Image" kindref="compound">Image</ref> &amp;</type>
@@ -128,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/skin.h" line="48" column="18" bodyfile="include/endstone/skin.h" bodystart="48" bodyend="48"/>
+        <location file="include/endstone/skin.h" line="56" column="18" bodyfile="include/endstone/skin.h" bodystart="56" bodyend="56"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Skin_1a97566d8b87ee36b861f2a0dc086f768a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::optional&lt; std::string &gt; &amp;</type>
@@ -146,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/skin.h" line="55" column="26" bodyfile="include/endstone/skin.h" bodystart="55" bodyend="55"/>
+        <location file="include/endstone/skin.h" line="63" column="26" bodyfile="include/endstone/skin.h" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Skin_1a12cda5900a5d279f30afb27e21e8fd76" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Image" kindref="compound">Image</ref> *</type>
@@ -164,7 +199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/skin.h" line="62" column="18" bodyfile="include/endstone/skin.h" bodystart="62" bodyend="62"/>
+        <location file="include/endstone/skin.h" line="70" column="18" bodyfile="include/endstone/skin.h" bodystart="70" bodyend="70"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -172,7 +207,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/skin.h" line="28" column="1" bodyfile="include/endstone/skin.h" bodystart="28" bodyend="69"/>
+    <location file="include/endstone/skin.h" line="28" column="1" bodyfile="include/endstone/skin.h" bodystart="28" bodyend="77"/>
     <listofallmembers>
       <member refid="classendstone_1_1Skin_1a7dc86a18a4cd9717572d333e0ca9637a" prot="private" virt="non-virtual"><scope>endstone::Skin</scope><name>cape_id_</name></member>
       <member refid="classendstone_1_1Skin_1af20c4875f8a119304d9f85b8f3f0b436" prot="private" virt="non-virtual"><scope>endstone::Skin</scope><name>cape_image_</name></member>

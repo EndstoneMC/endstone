@@ -50,7 +50,7 @@
         <location file="include/endstone/form/modal_form.h" line="133" column="17" bodyfile="include/endstone/form/modal_form.h" bodystart="133" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ModalForm_1a9c20fa164938a772d5a6fe6a460be120" prot="private" static="no" mutable="no">
-        <type>std::optional&lt; Message &gt;</type>
+        <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
         <definition>std::optional&lt;Message&gt; endstone::ModalForm::submit_button_text_</definition>
         <argsstring></argsstring>
         <name>submit_button_text_</name>
@@ -174,7 +174,7 @@
         <location file="include/endstone/form/modal_form.h" line="69" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="69" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ModalForm_1a5e57d1511c91d8af59d8df8ad3f29803" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::optional&lt; Message &gt;</type>
+        <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
         <definition>std::optional&lt; Message &gt; endstone::ModalForm::getSubmitButton</definition>
         <argsstring>() const</argsstring>
         <name>getSubmitButton</name>
@@ -198,7 +198,7 @@
         <name>setSubmitButton</name>
         <qualifiedname>endstone::ModalForm::setSubmitButton</qualifiedname>
         <param>
-          <type>std::optional&lt; Message &gt;</type>
+          <type>std::optional&lt; <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &gt;</type>
           <declname>text</declname>
         </param>
         <briefdescription>

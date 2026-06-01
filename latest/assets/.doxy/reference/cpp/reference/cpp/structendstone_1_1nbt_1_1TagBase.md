@@ -8,8 +8,9 @@
 
 
 
+_Common base for all NBT tag types._ 
 
-
+* `#include <endstone/nbt/type.h>`
 
 
 

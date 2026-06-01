@@ -2699,6 +2699,10 @@ For latest updates join the chat on
 
 <h1 id="class-endstoneicancellable">Class endstone::ICancellable<a class="headerlink" href="#class-endstoneicancellable" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>ICancellable</strong></a></p>
+<p><em>Interface for events that may be cancelled by a plugin or the server.</em> </p>
+<ul>
+<li><code>#include &lt;endstone/event/cancellable.h&gt;</code></li>
+</ul>
 <p>Inherited by the following classes: <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a>,  <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a>,  <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a>,  <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a>,  <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a>,  <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a>,  <a href="../classendstone_1_1Cancellable/">endstone::Cancellable</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
@@ -2711,15 +2715,15 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-cancel"><strong>cancel</strong></a> () = 0<br></td>
+<td style="text-align: left;"><a href="#function-cancel"><strong>cancel</strong></a> () = 0<br><em>Cancels this event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-iscancelled"><strong>isCancelled</strong></a> () const = 0<br></td>
+<td style="text-align: left;"><a href="#function-iscancelled"><strong>isCancelled</strong></a> () const = 0<br><em>Gets the cancellation state of this event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> cancel) = 0<br></td>
+<td style="text-align: left;"><a href="#function-setcancelled"><strong>setCancelled</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> cancel) = 0<br><em>Sets the cancellation state of this event.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2729,20 +2733,29 @@ For latest updates join the chat on
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-cancel">function cancel<a class="headerlink" href="#function-cancel" title="Permanent link">&para;</a></h3>
+<p><em>Cancels this event.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ICancellable</span><span class="o">::</span><span class="n">cancel</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
 <hr>
 
 <h3 id="function-iscancelled">function isCancelled<a class="headerlink" href="#function-iscancelled" title="Permanent link">&para;</a></h3>
+<p><em>Gets the cancellation state of this event.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ICancellable</span><span class="o">::</span><span class="n">isCancelled</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>true if this event is cancelled </p>
 <hr>
 
 <h3 id="function-setcancelled">function setCancelled<a class="headerlink" href="#function-setcancelled" title="Permanent link">&para;</a></h3>
+<p><em>Sets the cancellation state of this event.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ICancellable</span><span class="o">::</span><span class="n">setCancelled</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">cancel</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>cancel</code> true if you wish to cancel this event </li>
+</ul>
 <hr>
 
 <h3 id="function-icancellable">function ~ICancellable<a class="headerlink" href="#function-icancellable" title="Permanent link">&para;</a></h3>

@@ -32,7 +32,7 @@ _Represents a scoreboard criteria._
 
 | Type | Name |
 | ---: | :--- |
-| enum  | [**Type**](#enum-type)  <br> |
+| enum  | [**Type**](#enum-type)  <br>_Represents the built-in criteria types._  |
 
 
 
@@ -96,6 +96,7 @@ _Represents a scoreboard criteria._
 
 ### enum Type 
 
+_Represents the built-in criteria types._ 
 ```C++
 enum endstone::Criteria::Type {
     Dummy

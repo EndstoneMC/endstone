@@ -61,9 +61,9 @@ _Represents a generic form._ [More...](#detailed-description)
 | ---: | :--- |
 |   | [**Form**](#function-form) () = default<br> |
 |  OnCloseCallback | [**getOnClose**](#function-getonclose) () const<br>_Gets the on close callback of the form._  |
-|  Message | [**getTitle**](#function-gettitle) () const<br>_Gets the title of the form._  |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**getTitle**](#function-gettitle) () const<br>_Gets the title of the form._  |
 |  [**T**](classendstone_1_1Identifier.md) & | [**setOnClose**](#function-setonclose) (OnCloseCallback on\_close) <br>_Sets the on close callback of the form._  |
-|  [**T**](classendstone_1_1Identifier.md) & | [**setTitle**](#function-settitle) (Message title) <br>_Sets the title of the form._  |
+|  [**T**](classendstone_1_1Identifier.md) & | [**setTitle**](#function-settitle) ([**Message**](namespaceendstone.md#typedef-message) title) <br>_Sets the title of the form._  |
 
 
 
@@ -77,7 +77,7 @@ _Represents a generic form._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 |  OnCloseCallback | [**on\_close\_**](#variable-on_close_)  <br> |
-|  Message | [**title\_**](#variable-title_)  <br> |
+|  [**Message**](namespaceendstone.md#typedef-message) | [**title\_**](#variable-title_)  <br> |
 
 
 

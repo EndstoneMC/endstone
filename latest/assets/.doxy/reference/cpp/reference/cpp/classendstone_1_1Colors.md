@@ -8,8 +8,9 @@
 
 
 
+_Provides a collection of predefined colors._ 
 
-
+* `#include <endstone/util/color.h>`
 
 
 
@@ -37,8 +38,8 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**BLACK**](#variable-black)   = `[**Color**](classendstone_1_1Color.md)(Color::DEFAULT\_ALPHA, 0, 0, 0)`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WHITE**](#variable-white)   = `[**Color**](classendstone_1_1Color.md)(Color::DEFAULT\_ALPHA, 255, 255, 255)`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**BLACK**](#variable-black)   = `[**Color**](classendstone_1_1Color.md)(Color::DEFAULT\_ALPHA, 0, 0, 0)`<br>_The color black._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WHITE**](#variable-white)   = `[**Color**](classendstone_1_1Color.md)(Color::DEFAULT\_ALPHA, 255, 255, 255)`<br>_The color white._  |
 
 
 
@@ -88,6 +89,7 @@
 
 ### variable BLACK 
 
+_The color black._ 
 ```C++
 constexpr auto endstone::Colors::BLACK;
 ```
@@ -101,6 +103,7 @@ constexpr auto endstone::Colors::BLACK;
 
 ### variable WHITE 
 
+_The color white._ 
 ```C++
 constexpr auto endstone::Colors::WHITE;
 ```

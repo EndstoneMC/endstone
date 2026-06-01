@@ -4387,7 +4387,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            append (endstone.nbt.ByteArrayTag.append)" href="#endstone.nbt.ByteArrayTag.append">append</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Appends a value to the end of this tag.</p>
                 </div>
               </td>
             </tr>
@@ -4395,7 +4395,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            clear (endstone.nbt.ByteArrayTag.clear)" href="#endstone.nbt.ByteArrayTag.clear">clear</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Removes all values from this tag.</p>
                 </div>
               </td>
             </tr>
@@ -4411,7 +4411,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            extend (endstone.nbt.ByteArrayTag.extend)" href="#endstone.nbt.ByteArrayTag.extend">extend</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Appends all values from an iterable to the end of this tag.</p>
                 </div>
               </td>
             </tr>
@@ -4447,6 +4447,39 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
+        <p>Appends a value to the end of this tag.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>value</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The value to append.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
     </div>
 
@@ -4464,6 +4497,8 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Removes all values from this tag.</p>
 
 
     </div>
@@ -4592,6 +4627,39 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Appends all values from an iterable to the end of this tag.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>iterable</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="collections.abc.Iterable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable">Iterable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An iterable of values to append.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -4895,7 +4963,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            clear (endstone.nbt.CompoundTag.clear)" href="#endstone.nbt.CompoundTag.clear">clear</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Removes all entries from this compound tag.</p>
                 </div>
               </td>
             </tr>
@@ -4911,7 +4979,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            items (endstone.nbt.CompoundTag.items)" href="#endstone.nbt.CompoundTag.items">items</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Returns an iterator over the (key, tag) pairs in this compound tag.</p>
                 </div>
               </td>
             </tr>
@@ -4919,7 +4987,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            keys (endstone.nbt.CompoundTag.keys)" href="#endstone.nbt.CompoundTag.keys">keys</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Returns an iterator over the keys in this compound tag.</p>
                 </div>
               </td>
             </tr>
@@ -4935,7 +5003,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            setdefault (endstone.nbt.CompoundTag.setdefault)" href="#endstone.nbt.CompoundTag.setdefault">setdefault</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Returns the tag for the given key, inserting a default if the key is not present.</p>
                 </div>
               </td>
             </tr>
@@ -4943,7 +5011,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            to_dict (endstone.nbt.CompoundTag.to_dict)" href="#endstone.nbt.CompoundTag.to_dict">to_dict</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Converts this compound tag to a plain Python dict of native values.</p>
                 </div>
               </td>
             </tr>
@@ -4951,7 +5019,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            values (endstone.nbt.CompoundTag.values)" href="#endstone.nbt.CompoundTag.values">values</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Returns an iterator over the tags in this compound tag.</p>
                 </div>
               </td>
             </tr>
@@ -4986,6 +5054,8 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Removes all entries from this compound tag.</p>
 
 
     </div>
@@ -5115,6 +5185,8 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
+        <p>Returns an iterator over the (key, tag) pairs in this compound tag.</p>
+
 
     </div>
 
@@ -5132,6 +5204,8 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Returns an iterator over the keys in this compound tag.</p>
 
 
     </div>
@@ -5172,6 +5246,78 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
+        <p>Returns the tag for the given key, inserting a default if the key is not present.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>key</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The key to look up.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>default</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Tag (endstone.nbt.Tag)" href="#endstone.nbt.Tag">Tag</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The tag to insert and return if the key is not present.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Tag (endstone.nbt.Tag)" href="#endstone.nbt.Tag">Tag</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The tag associated with the key, or the newly inserted default.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
     </div>
 
@@ -5190,6 +5336,8 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
+        <p>Converts this compound tag to a plain Python dict of native values.</p>
+
 
     </div>
 
@@ -5207,6 +5355,8 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Returns an iterator over the tags in this compound tag.</p>
 
 
     </div>
@@ -5752,7 +5902,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            append (endstone.nbt.IntArrayTag.append)" href="#endstone.nbt.IntArrayTag.append">append</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Appends a value to the end of this tag.</p>
                 </div>
               </td>
             </tr>
@@ -5760,7 +5910,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            clear (endstone.nbt.IntArrayTag.clear)" href="#endstone.nbt.IntArrayTag.clear">clear</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Removes all values from this tag.</p>
                 </div>
               </td>
             </tr>
@@ -5776,7 +5926,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            extend (endstone.nbt.IntArrayTag.extend)" href="#endstone.nbt.IntArrayTag.extend">extend</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Appends all values from an iterable to the end of this tag.</p>
                 </div>
               </td>
             </tr>
@@ -5812,6 +5962,39 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
+        <p>Appends a value to the end of this tag.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>value</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The value to append.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
     </div>
 
@@ -5829,6 +6012,8 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Removes all values from this tag.</p>
 
 
     </div>
@@ -5957,6 +6142,39 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Appends all values from an iterable to the end of this tag.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>iterable</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="collections.abc.Iterable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable">Iterable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An iterable of values to append.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -6260,7 +6478,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            append (endstone.nbt.ListTag.append)" href="#endstone.nbt.ListTag.append">append</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Appends a tag to the end of this list.</p>
                 </div>
               </td>
             </tr>
@@ -6268,7 +6486,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            clear (endstone.nbt.ListTag.clear)" href="#endstone.nbt.ListTag.clear">clear</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Removes all tags from this list.</p>
                 </div>
               </td>
             </tr>
@@ -6284,7 +6502,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            empty (endstone.nbt.ListTag.empty)" href="#endstone.nbt.ListTag.empty">empty</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Returns True if this list contains no tags.</p>
                 </div>
               </td>
             </tr>
@@ -6292,7 +6510,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            extend (endstone.nbt.ListTag.extend)" href="#endstone.nbt.ListTag.extend">extend</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Appends all tags from an iterable to the end of this list.</p>
                 </div>
               </td>
             </tr>
@@ -6300,7 +6518,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            pop (endstone.nbt.ListTag.pop)" href="#endstone.nbt.ListTag.pop">pop</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Removes and returns the tag at the given index.</p>
                 </div>
               </td>
             </tr>
@@ -6308,7 +6526,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            size (endstone.nbt.ListTag.size)" href="#endstone.nbt.ListTag.size">size</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>The number of tags in this list.</p>
                 </div>
               </td>
             </tr>
@@ -6316,7 +6534,7 @@ For latest updates join the chat on
               <td><code><a class="autorefs autorefs-internal" title="            to_list (endstone.nbt.ListTag.to_list)" href="#endstone.nbt.ListTag.to_list">to_list</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  
+                  <p>Converts this list to a plain Python list of native values.</p>
                 </div>
               </td>
             </tr>
@@ -6352,6 +6570,39 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
+        <p>Appends a tag to the end of this list.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>tag</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Tag (endstone.nbt.Tag)" href="#endstone.nbt.Tag">Tag</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The tag to append. It must have the same type as the existing elements.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
     </div>
 
@@ -6369,6 +6620,8 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Removes all tags from this list.</p>
 
 
     </div>
@@ -6498,6 +6751,8 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
+        <p>Returns True if this list contains no tags.</p>
+
 
     </div>
 
@@ -6515,6 +6770,39 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Appends all tags from an iterable to the end of this list.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>iterable</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="collections.abc.Iterable" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable">Iterable</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>An iterable of tags to append. Each tag must have the same type as the existing elements.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -6534,6 +6822,62 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
+        <p>Removes and returns the tag at the given index.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>index</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The index of the tag to remove. Defaults to the last tag.</p>
+              </div>
+            </td>
+            <td>
+                  <code>-1</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="            Tag (endstone.nbt.Tag)" href="#endstone.nbt.Tag">Tag</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The removed tag.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
     </div>
 
@@ -6552,6 +6896,8 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
+        <p>The number of tags in this list.</p>
+
 
     </div>
 
@@ -6569,6 +6915,8 @@ For latest updates join the chat on
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Converts this list to a plain Python list of native values.</p>
 
 
     </div>

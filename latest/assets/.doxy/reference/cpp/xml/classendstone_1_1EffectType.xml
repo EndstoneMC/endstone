@@ -10,7 +10,7 @@
         <argsstring></argsstring>
         <name>Speed</name>
         <qualifiedname>endstone::EffectType::Speed</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;speed&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;speed&quot;)</initializer>
         <briefdescription>
 <para>Increases movement speed. </para>
         </briefdescription>
@@ -26,7 +26,7 @@
         <argsstring></argsstring>
         <name>Slowness</name>
         <qualifiedname>endstone::EffectType::Slowness</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;slowness&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;slowness&quot;)</initializer>
         <briefdescription>
 <para>Decreases movement speed. </para>
         </briefdescription>
@@ -42,7 +42,7 @@
         <argsstring></argsstring>
         <name>Haste</name>
         <qualifiedname>endstone::EffectType::Haste</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;haste&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;haste&quot;)</initializer>
         <briefdescription>
 <para>Increases dig speed. </para>
         </briefdescription>
@@ -58,7 +58,7 @@
         <argsstring></argsstring>
         <name>MiningFatigue</name>
         <qualifiedname>endstone::EffectType::MiningFatigue</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;mining_fatigue&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;mining_fatigue&quot;)</initializer>
         <briefdescription>
 <para>Decreases dig speed. </para>
         </briefdescription>
@@ -74,7 +74,7 @@
         <argsstring></argsstring>
         <name>Strength</name>
         <qualifiedname>endstone::EffectType::Strength</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;strength&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;strength&quot;)</initializer>
         <briefdescription>
 <para>Increases damage dealt. </para>
         </briefdescription>
@@ -90,7 +90,7 @@
         <argsstring></argsstring>
         <name>InstantHealth</name>
         <qualifiedname>endstone::EffectType::InstantHealth</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;instant_health&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;instant_health&quot;)</initializer>
         <briefdescription>
 <para>Heals an entity. </para>
         </briefdescription>
@@ -106,7 +106,7 @@
         <argsstring></argsstring>
         <name>InstantDamage</name>
         <qualifiedname>endstone::EffectType::InstantDamage</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;instant_damage&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;instant_damage&quot;)</initializer>
         <briefdescription>
 <para>Hurts an entity. </para>
         </briefdescription>
@@ -122,7 +122,7 @@
         <argsstring></argsstring>
         <name>JumpBoost</name>
         <qualifiedname>endstone::EffectType::JumpBoost</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;jump_boost&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;jump_boost&quot;)</initializer>
         <briefdescription>
 <para>Increases jump height. </para>
         </briefdescription>
@@ -138,7 +138,7 @@
         <argsstring></argsstring>
         <name>Nausea</name>
         <qualifiedname>endstone::EffectType::Nausea</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;nausea&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;nausea&quot;)</initializer>
         <briefdescription>
 <para>Warps vision on the client. </para>
         </briefdescription>
@@ -154,7 +154,7 @@
         <argsstring></argsstring>
         <name>Regeneration</name>
         <qualifiedname>endstone::EffectType::Regeneration</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;regeneration&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;regeneration&quot;)</initializer>
         <briefdescription>
 <para>Regenerates health. </para>
         </briefdescription>
@@ -170,7 +170,7 @@
         <argsstring></argsstring>
         <name>Resistance</name>
         <qualifiedname>endstone::EffectType::Resistance</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;resistance&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;resistance&quot;)</initializer>
         <briefdescription>
 <para>Decreases damage dealt to an entity. </para>
         </briefdescription>
@@ -186,7 +186,7 @@
         <argsstring></argsstring>
         <name>FireResistance</name>
         <qualifiedname>endstone::EffectType::FireResistance</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;fire_resistance&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;fire_resistance&quot;)</initializer>
         <briefdescription>
 <para>Stops fire damage. </para>
         </briefdescription>
@@ -202,7 +202,7 @@
         <argsstring></argsstring>
         <name>WaterBreathing</name>
         <qualifiedname>endstone::EffectType::WaterBreathing</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;water_breathing&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;water_breathing&quot;)</initializer>
         <briefdescription>
 <para>Allows breathing underwater. </para>
         </briefdescription>
@@ -218,7 +218,7 @@
         <argsstring></argsstring>
         <name>Invisibility</name>
         <qualifiedname>endstone::EffectType::Invisibility</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;invisibility&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;invisibility&quot;)</initializer>
         <briefdescription>
 <para>Grants invisibility. </para>
         </briefdescription>
@@ -234,7 +234,7 @@
         <argsstring></argsstring>
         <name>Blindness</name>
         <qualifiedname>endstone::EffectType::Blindness</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;blindness&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;blindness&quot;)</initializer>
         <briefdescription>
 <para>Blinds an entity. </para>
         </briefdescription>
@@ -250,7 +250,7 @@
         <argsstring></argsstring>
         <name>NightVision</name>
         <qualifiedname>endstone::EffectType::NightVision</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;night_vision&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;night_vision&quot;)</initializer>
         <briefdescription>
 <para>Allows an entity to see in the dark. </para>
         </briefdescription>
@@ -266,7 +266,7 @@
         <argsstring></argsstring>
         <name>Hunger</name>
         <qualifiedname>endstone::EffectType::Hunger</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;hunger&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;hunger&quot;)</initializer>
         <briefdescription>
 <para>Increases hunger. </para>
         </briefdescription>
@@ -282,7 +282,7 @@
         <argsstring></argsstring>
         <name>Weakness</name>
         <qualifiedname>endstone::EffectType::Weakness</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;weakness&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;weakness&quot;)</initializer>
         <briefdescription>
 <para>Decreases damage dealt by an entity. </para>
         </briefdescription>
@@ -298,7 +298,7 @@
         <argsstring></argsstring>
         <name>Poison</name>
         <qualifiedname>endstone::EffectType::Poison</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;poison&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;poison&quot;)</initializer>
         <briefdescription>
 <para>Deals damage to an entity over time. </para>
         </briefdescription>
@@ -314,7 +314,7 @@
         <argsstring></argsstring>
         <name>Wither</name>
         <qualifiedname>endstone::EffectType::Wither</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;wither&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;wither&quot;)</initializer>
         <briefdescription>
 <para>Deals damage to an entity over time and gives the health to the shooter. </para>
         </briefdescription>
@@ -330,7 +330,7 @@
         <argsstring></argsstring>
         <name>HealthBoost</name>
         <qualifiedname>endstone::EffectType::HealthBoost</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;health_boost&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;health_boost&quot;)</initializer>
         <briefdescription>
 <para>Increases the maximum health of an entity. </para>
         </briefdescription>
@@ -346,7 +346,7 @@
         <argsstring></argsstring>
         <name>Absorption</name>
         <qualifiedname>endstone::EffectType::Absorption</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;absorption&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;absorption&quot;)</initializer>
         <briefdescription>
 <para>Increases the maximum health of an entity with health that cannot be regenerated, but is refilled every 30 seconds. </para>
         </briefdescription>
@@ -362,7 +362,7 @@
         <argsstring></argsstring>
         <name>Saturation</name>
         <qualifiedname>endstone::EffectType::Saturation</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;saturation&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;saturation&quot;)</initializer>
         <briefdescription>
 <para>Increases the food level of an entity each tick. </para>
         </briefdescription>
@@ -378,7 +378,7 @@
         <argsstring></argsstring>
         <name>Levitation</name>
         <qualifiedname>endstone::EffectType::Levitation</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;levitation&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;levitation&quot;)</initializer>
         <briefdescription>
 <para>Causes the entity to float into the air. </para>
         </briefdescription>
@@ -394,7 +394,7 @@
         <argsstring></argsstring>
         <name>FatalPoison</name>
         <qualifiedname>endstone::EffectType::FatalPoison</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;fatal_poison&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;fatal_poison&quot;)</initializer>
         <briefdescription>
 <para>Inflicts damage to the entity over time, and can kill both undead and non-undead mobs, similar to Wither. </para>
         </briefdescription>
@@ -410,7 +410,7 @@
         <argsstring></argsstring>
         <name>ConduitPower</name>
         <qualifiedname>endstone::EffectType::ConduitPower</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;conduit_power&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;conduit_power&quot;)</initializer>
         <briefdescription>
 <para>Effects granted by a nearby conduit. </para>
         </briefdescription>
@@ -427,7 +427,7 @@
         <argsstring></argsstring>
         <name>SlowFalling</name>
         <qualifiedname>endstone::EffectType::SlowFalling</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;slow_falling&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;slow_falling&quot;)</initializer>
         <briefdescription>
 <para>Slows entity fall rate. </para>
         </briefdescription>
@@ -443,7 +443,7 @@
         <argsstring></argsstring>
         <name>BadOmen</name>
         <qualifiedname>endstone::EffectType::BadOmen</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;bad_omen&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;bad_omen&quot;)</initializer>
         <briefdescription>
 <para>Triggers an ominous event when the player enters a village or trial chambers. </para>
         </briefdescription>
@@ -461,7 +461,7 @@
         <argsstring></argsstring>
         <name>HeroOfTheVillage</name>
         <qualifiedname>endstone::EffectType::HeroOfTheVillage</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;hero_of_the_village&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;hero_of_the_village&quot;)</initializer>
         <briefdescription>
 <para>Reduces the cost of villager trades. </para>
         </briefdescription>
@@ -479,7 +479,7 @@
         <argsstring></argsstring>
         <name>Darkness</name>
         <qualifiedname>endstone::EffectType::Darkness</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;darkness&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;darkness&quot;)</initializer>
         <briefdescription>
 <para>Causes the player&apos;s vision to dim occasionally. </para>
         </briefdescription>
@@ -495,7 +495,7 @@
         <argsstring></argsstring>
         <name>TrialOmen</name>
         <qualifiedname>endstone::EffectType::TrialOmen</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;trial_omen&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;trial_omen&quot;)</initializer>
         <briefdescription>
 <para>Causes trial spawners to become ominous. </para>
         </briefdescription>
@@ -511,7 +511,7 @@
         <argsstring></argsstring>
         <name>WindCharged</name>
         <qualifiedname>endstone::EffectType::WindCharged</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;wind_charged&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;wind_charged&quot;)</initializer>
         <briefdescription>
 <para>Emits a wind burst upon death. </para>
         </briefdescription>
@@ -527,7 +527,7 @@
         <argsstring></argsstring>
         <name>Weaving</name>
         <qualifiedname>endstone::EffectType::Weaving</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;weaving&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;weaving&quot;)</initializer>
         <briefdescription>
 <para>Creates cobwebs upon death. </para>
         </briefdescription>
@@ -543,7 +543,7 @@
         <argsstring></argsstring>
         <name>Oozing</name>
         <qualifiedname>endstone::EffectType::Oozing</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;oozing&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;oozing&quot;)</initializer>
         <briefdescription>
 <para>Causes slimes to spawn upon death. </para>
         </briefdescription>
@@ -559,7 +559,7 @@
         <argsstring></argsstring>
         <name>Infested</name>
         <qualifiedname>endstone::EffectType::Infested</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;infested&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;infested&quot;)</initializer>
         <briefdescription>
 <para>Chance of spawning silverfish when hurt. </para>
         </briefdescription>
@@ -575,7 +575,7 @@
         <argsstring></argsstring>
         <name>RaidOmen</name>
         <qualifiedname>endstone::EffectType::RaidOmen</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;raid_omen&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;raid_omen&quot;)</initializer>
         <briefdescription>
 <para>Triggers a raid when a player enters a village. </para>
         </briefdescription>
@@ -591,7 +591,7 @@
         <argsstring></argsstring>
         <name>BreathOfTheNautilus</name>
         <qualifiedname>endstone::EffectType::BreathOfTheNautilus</qualifiedname>
-        <initializer>= EffectId::minecraft(&quot;breath_of_the_nautilus&quot;)</initializer>
+        <initializer>= <ref refid="classendstone_1_1Identifier_1aced1fc62bee261849335ffd6bb7fa591" kindref="member">EffectId::minecraft</ref>(&quot;breath_of_the_nautilus&quot;)</initializer>
         <briefdescription>
 <para>Prevents the rider&apos;s oxygen bar from depleting while riding a nautilus or zombie nautilus. </para>
         </briefdescription>

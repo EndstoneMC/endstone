@@ -5,7 +5,7 @@
     <includes refid="text__input_8h" local="no">endstone/form/controls/text_input.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1TextInput_1a4ee0deba99c54cabcf389ab0a672d89a" prot="private" static="no" mutable="no">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::TextInput::label_</definition>
         <argsstring></argsstring>
         <name>label_</name>
@@ -19,7 +19,7 @@
         <location file="include/endstone/form/controls/text_input.h" line="94" column="13" bodyfile="include/endstone/form/controls/text_input.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1TextInput_1a4a9230a84959d6a2cb00b31b5afb8529" prot="private" static="no" mutable="no">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::TextInput::placeholder_</definition>
         <argsstring></argsstring>
         <name>placeholder_</name>
@@ -69,11 +69,11 @@
         <name>TextInput</name>
         <qualifiedname>endstone::TextInput::TextInput</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>label</declname>
         </param>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>placeholder</declname>
         </param>
         <param>
@@ -90,7 +90,7 @@
         <location file="include/endstone/form/controls/text_input.h" line="31" column="14" bodyfile="include/endstone/form/controls/text_input.h" bodystart="31" bodyend="34"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1TextInput_1ad71cdf754913ee542a4ba0149824e214" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::TextInput::getLabel</definition>
         <argsstring>() const</argsstring>
         <name>getLabel</name>
@@ -114,7 +114,7 @@
         <name>setLabel</name>
         <qualifiedname>endstone::TextInput::setLabel</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>label</declname>
         </param>
         <briefdescription>
@@ -139,7 +139,7 @@
         <location file="include/endstone/form/controls/text_input.h" line="49" column="15" bodyfile="include/endstone/form/controls/text_input.h" bodystart="49" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1TextInput_1aca59bfd3c2b319af6e30336193dcf025" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::TextInput::getPlaceholder</definition>
         <argsstring>() const</argsstring>
         <name>getPlaceholder</name>
@@ -163,7 +163,7 @@
         <name>setPlaceholder</name>
         <qualifiedname>endstone::TextInput::setPlaceholder</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>placeholder</declname>
         </param>
         <briefdescription>

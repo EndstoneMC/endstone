@@ -8,7 +8,7 @@
     <includes refid="permissible_8h" local="no">endstone/permissions/permissible.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Permissible_1a6d78baa46215c951dc25cb5e55af085c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>PermissionLevel</type>
+        <type><ref refid="namespaceendstone_1a5f41ada04481978d28d91ff75eac7dbb" kindref="member">PermissionLevel</ref></type>
         <definition>virtual PermissionLevel endstone::Permissible::getPermissionLevel</definition>
         <argsstring>() const =0</argsstring>
         <name>getPermissionLevel</name>

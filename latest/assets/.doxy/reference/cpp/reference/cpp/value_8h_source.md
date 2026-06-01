@@ -37,10 +37,11 @@ public:
     using value_type = T;
 
     constexpr ValueTag() = default;
+
     constexpr explicit ValueTag(const T &v) : value_(v) {}
+
     constexpr explicit ValueTag(T &&v) : value_(std::move(v)) {}
 
-    // Read-only implicit conversion to payload
     operator const T &() const noexcept { return value_; }
 
     const T &value() const noexcept { return value_; }

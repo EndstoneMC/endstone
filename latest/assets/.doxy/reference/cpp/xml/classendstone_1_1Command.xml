@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="247" column="17" bodyfile="include/endstone/command/command.h" bodystart="247" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="252" column="17" bodyfile="include/endstone/command/command.h" bodystart="252" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Command_1a402ad7e2575662204296a8a7c8a02c46" prot="private" static="no" mutable="no">
         <type>std::string</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="248" column="17" bodyfile="include/endstone/command/command.h" bodystart="248" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="253" column="17" bodyfile="include/endstone/command/command.h" bodystart="253" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Command_1abe0ff7e4cf40cad6b6dcb7e1a9c4bef2" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="249" column="17" bodyfile="include/endstone/command/command.h" bodystart="249" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="254" column="17" bodyfile="include/endstone/command/command.h" bodystart="254" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Command_1a1cb2033591a7c1015ad86df7418059c7" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="250" column="17" bodyfile="include/endstone/command/command.h" bodystart="250" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="255" column="17" bodyfile="include/endstone/command/command.h" bodystart="255" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Command_1a787227a863a60818990e90ccf2a898f7" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="251" column="17" bodyfile="include/endstone/command/command.h" bodystart="251" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="256" column="17" bodyfile="include/endstone/command/command.h" bodystart="256" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Command_1a5a849b3fce28dcd10f8f0944e54c3580" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> *</type>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="252" column="22" bodyfile="include/endstone/command/command.h" bodystart="252" bodyend="-1"/>
+        <location file="include/endstone/command/command.h" line="257" column="22" bodyfile="include/endstone/command/command.h" bodystart="257" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -597,12 +597,16 @@
         <qualifiedname>endstone::Command::asPluginCommand</qualifiedname>
         <reimplementedby refid="classendstone_1_1PluginCommand_1a8d5cd569a483b56fc16e95757384a531">asPluginCommand</reimplementedby>
         <briefdescription>
+<para>Returns this command as a <ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> if it is one. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>this command cast to a <ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref>, or nullptr if it is not a <ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="239" column="28" bodyfile="include/endstone/command/command.h" bodystart="239" bodyend="239"/>
+        <location file="include/endstone/command/command.h" line="244" column="28" bodyfile="include/endstone/command/command.h" bodystart="244" bodyend="244"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -622,7 +626,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command.h" line="242" column="11" bodyfile="include/endstone/command/command.h" bodystart="242" bodyend="245"/>
+        <location file="include/endstone/command/command.h" line="247" column="11" bodyfile="include/endstone/command/command.h" bodystart="247" bodyend="250"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -642,7 +646,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/command/command.h" line="32" column="1" bodyfile="include/endstone/command/command.h" bodystart="32" bodyend="253"/>
+    <location file="include/endstone/command/command.h" line="32" column="1" bodyfile="include/endstone/command/command.h" bodystart="32" bodyend="258"/>
     <listofallmembers>
       <member refid="classendstone_1_1Command_1abe0ff7e4cf40cad6b6dcb7e1a9c4bef2" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>aliases_</name></member>
       <member refid="classendstone_1_1Command_1adac361e9cc0668151e63edebe173a8af" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>allowChangesFrom</name></member>

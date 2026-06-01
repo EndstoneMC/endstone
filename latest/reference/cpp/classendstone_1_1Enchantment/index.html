@@ -3306,6 +3306,10 @@ For latest updates join the chat on
 
 <h1 id="class-endstoneenchantment">Class endstone::Enchantment<a class="headerlink" href="#class-endstoneenchantment" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>Enchantment</strong></a></p>
+<p><em>Represents an enchantment that may be added to armor, weapons, tools or other items.</em> </p>
+<ul>
+<li><code>#include &lt;endstone/enchantments/enchantment.h&gt;</code></li>
+</ul>
 <p>Inherits the following classes: <a href="../classendstone_1_1Registry_1_1Type/">endstone::Registry::Type</a></p>
 <h2 id="public-types-inherited-from-endstoneregistrytype">Public Types inherited from endstone::Registry::Type<a class="headerlink" href="#public-types-inherited-from-endstoneregistrytype" title="Permanent link">&para;</a></h2>
 <p>See <a href="../classendstone_1_1Registry_1_1Type/">endstone::Registry::Type</a></p>
@@ -3319,7 +3323,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">typedef <a href="../classendstone_1_1Identifier/"><strong>Identifier</strong></a>&lt; <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a>  <br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a>  <br><em>The identifier type used to look up this object in its registry.</em></td>
 </tr>
 </tbody>
 </table>
@@ -3334,171 +3338,171 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-aquaaffinity"><strong>AquaAffinity</strong></a>   = <code>EnchantmentId::minecraft("aqua\_affinity")</code><br><em>Increases the speed at which a player may mine underwater.</em></td>
+<td style="text-align: left;"><a href="#variable-aquaaffinity"><strong>AquaAffinity</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("aqua\_affinity")</code><br><em>Increases the speed at which a player may mine underwater.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-baneofarthropods"><strong>BaneOfArthropods</strong></a>   = <code>EnchantmentId::minecraft("bane\_of\_arthropods")</code><br><em>Increases damage against arthropod targets.</em></td>
+<td style="text-align: left;"><a href="#variable-baneofarthropods"><strong>BaneOfArthropods</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("bane\_of\_arthropods")</code><br><em>Increases damage against arthropod targets.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-blastprotection"><strong>BlastProtection</strong></a>   = <code>EnchantmentId::minecraft("blast\_protection")</code><br><em>Provides protection against explosive damage.</em></td>
+<td style="text-align: left;"><a href="#variable-blastprotection"><strong>BlastProtection</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("blast\_protection")</code><br><em>Provides protection against explosive damage.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-breach"><strong>Breach</strong></a>   = <code>EnchantmentId::minecraft("breach")</code><br><em>Reduces armor effectiveness against maces.</em></td>
+<td style="text-align: left;"><a href="#variable-breach"><strong>Breach</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("breach")</code><br><em>Reduces armor effectiveness against maces.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-channeling"><strong>Channeling</strong></a>   = <code>EnchantmentId::minecraft("channeling")</code><br><em>Strikes lightning when a mob is hit with a trident if conditions are stormy.</em></td>
+<td style="text-align: left;"><a href="#variable-channeling"><strong>Channeling</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("channeling")</code><br><em>Strikes lightning when a mob is hit with a trident if conditions are stormy.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-curseofbinding"><strong>CurseOfBinding</strong></a>   = <code>EnchantmentId::minecraft("binding")</code><br><a href="../classendstone_1_1Item/"><em><strong>Item</strong></em></a> <em>cannot be removed.</em></td>
+<td style="text-align: left;"><a href="#variable-curseofbinding"><strong>CurseOfBinding</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("binding")</code><br><a href="../classendstone_1_1Item/"><em><strong>Item</strong></em></a> <em>cannot be removed.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-curseofvanishing"><strong>CurseOfVanishing</strong></a>   = <code>EnchantmentId::minecraft("vanishing")</code><br><a href="../classendstone_1_1Item/"><em><strong>Item</strong></em></a> <em>disappears instead of dropping.</em></td>
+<td style="text-align: left;"><a href="#variable-curseofvanishing"><strong>CurseOfVanishing</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("vanishing")</code><br><a href="../classendstone_1_1Item/"><em><strong>Item</strong></em></a> <em>disappears instead of dropping.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-density"><strong>Density</strong></a>   = <code>EnchantmentId::minecraft("density")</code><br><em>Increases fall damage of maces.</em></td>
+<td style="text-align: left;"><a href="#variable-density"><strong>Density</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("density")</code><br><em>Increases fall damage of maces.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-depthstrider"><strong>DepthStrider</strong></a>   = <code>EnchantmentId::minecraft("depth\_strider")</code><br><em>Increases walking speed while in water.</em></td>
+<td style="text-align: left;"><a href="#variable-depthstrider"><strong>DepthStrider</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("depth\_strider")</code><br><em>Increases walking speed while in water.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-efficiency"><strong>Efficiency</strong></a>   = <code>EnchantmentId::minecraft("efficiency")</code><br><em>Increases the rate at which you mine/dig.</em></td>
+<td style="text-align: left;"><a href="#variable-efficiency"><strong>Efficiency</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("efficiency")</code><br><em>Increases the rate at which you mine/dig.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-featherfalling"><strong>FeatherFalling</strong></a>   = <code>EnchantmentId::minecraft("feather\_falling")</code><br><em>Provides protection against fall damage.</em></td>
+<td style="text-align: left;"><a href="#variable-featherfalling"><strong>FeatherFalling</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("feather\_falling")</code><br><em>Provides protection against fall damage.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-fireaspect"><strong>FireAspect</strong></a>   = <code>EnchantmentId::minecraft("fire\_aspect")</code><br><em>When attacking a target, has a chance to set them on fire.</em></td>
+<td style="text-align: left;"><a href="#variable-fireaspect"><strong>FireAspect</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("fire\_aspect")</code><br><em>When attacking a target, has a chance to set them on fire.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-fireprotection"><strong>FireProtection</strong></a>   = <code>EnchantmentId::minecraft("fire\_protection")</code><br><em>Provides protection against fire damage.</em></td>
+<td style="text-align: left;"><a href="#variable-fireprotection"><strong>FireProtection</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("fire\_protection")</code><br><em>Provides protection against fire damage.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-flame"><strong>Flame</strong></a>   = <code>EnchantmentId::minecraft("flame")</code><br><em>Sets entities on fire when hit by arrows shot from a bow.</em></td>
+<td style="text-align: left;"><a href="#variable-flame"><strong>Flame</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("flame")</code><br><em>Sets entities on fire when hit by arrows shot from a bow.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-fortune"><strong>Fortune</strong></a>   = <code>EnchantmentId::minecraft("fortune")</code><br><em>Provides a chance of gaining extra loot when destroying blocks.</em></td>
+<td style="text-align: left;"><a href="#variable-fortune"><strong>Fortune</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("fortune")</code><br><em>Provides a chance of gaining extra loot when destroying blocks.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-frostwalker"><strong>FrostWalker</strong></a>   = <code>EnchantmentId::minecraft("frost\_walker")</code><br><em>Freezes any still water adjacent to ice / frost which player is walking on.</em></td>
+<td style="text-align: left;"><a href="#variable-frostwalker"><strong>FrostWalker</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("frost\_walker")</code><br><em>Freezes any still water adjacent to ice / frost which player is walking on.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-impaling"><strong>Impaling</strong></a>   = <code>EnchantmentId::minecraft("impaling")</code><br><em>Deals more damage to mobs that live in the ocean.</em></td>
+<td style="text-align: left;"><a href="#variable-impaling"><strong>Impaling</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("impaling")</code><br><em>Deals more damage to mobs that live in the ocean.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-infinity"><strong>Infinity</strong></a>   = <code>EnchantmentId::minecraft("infinity")</code><br><em>Provides infinite arrows when shooting a bow.</em></td>
+<td style="text-align: left;"><a href="#variable-infinity"><strong>Infinity</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("infinity")</code><br><em>Provides infinite arrows when shooting a bow.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-knockback"><strong>Knockback</strong></a>   = <code>EnchantmentId::minecraft("knockback")</code><br><em>All damage to other targets will knock them back when hit.</em></td>
+<td style="text-align: left;"><a href="#variable-knockback"><strong>Knockback</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("knockback")</code><br><em>All damage to other targets will knock them back when hit.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-looting"><strong>Looting</strong></a>   = <code>EnchantmentId::minecraft("looting")</code><br><em>Provides a chance of gaining extra loot when killing monsters.</em></td>
+<td style="text-align: left;"><a href="#variable-looting"><strong>Looting</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("looting")</code><br><em>Provides a chance of gaining extra loot when killing monsters.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-loyalty"><strong>Loyalty</strong></a>   = <code>EnchantmentId::minecraft("loyalty")</code><br><em>Causes a thrown trident to return to the player who threw it.</em></td>
+<td style="text-align: left;"><a href="#variable-loyalty"><strong>Loyalty</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("loyalty")</code><br><em>Causes a thrown trident to return to the player who threw it.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-luckofthesea"><strong>LuckOfTheSea</strong></a>   = <code>EnchantmentId::minecraft("luck\_of\_the\_sea")</code><br><em>Decreases odds of catching worthless junk.</em></td>
+<td style="text-align: left;"><a href="#variable-luckofthesea"><strong>LuckOfTheSea</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("luck\_of\_the\_sea")</code><br><em>Decreases odds of catching worthless junk.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-lunge"><strong>Lunge</strong></a>   = <code>EnchantmentId::minecraft("lunge")</code><br><em>Applied to spears, causes jab attacks to propel the wielder forward horizontally.</em></td>
+<td style="text-align: left;"><a href="#variable-lunge"><strong>Lunge</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("lunge")</code><br><em>Applied to spears, causes jab attacks to propel the wielder forward horizontally.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-lure"><strong>Lure</strong></a>   = <code>EnchantmentId::minecraft("lure")</code><br><em>Increases rate of fish biting your hook.</em></td>
+<td style="text-align: left;"><a href="#variable-lure"><strong>Lure</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("lure")</code><br><em>Increases rate of fish biting your hook.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-mending"><strong>Mending</strong></a>   = <code>EnchantmentId::minecraft("mending")</code><br><em>Allows mending the item using experience orbs.</em></td>
+<td style="text-align: left;"><a href="#variable-mending"><strong>Mending</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("mending")</code><br><em>Allows mending the item using experience orbs.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-multishot"><strong>Multishot</strong></a>   = <code>EnchantmentId::minecraft("multishot")</code><br><em>Shoot multiple arrows from crossbows.</em></td>
+<td style="text-align: left;"><a href="#variable-multishot"><strong>Multishot</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("multishot")</code><br><em>Shoot multiple arrows from crossbows.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-piercing"><strong>Piercing</strong></a>   = <code>EnchantmentId::minecraft("piercing")</code><br><em>Crossbow projectiles pierce entities.</em></td>
+<td style="text-align: left;"><a href="#variable-piercing"><strong>Piercing</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("piercing")</code><br><em>Crossbow projectiles pierce entities.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-power"><strong>Power</strong></a>   = <code>EnchantmentId::minecraft("power")</code><br><em>Provides extra damage when shooting arrows from bows.</em></td>
+<td style="text-align: left;"><a href="#variable-power"><strong>Power</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("power")</code><br><em>Provides extra damage when shooting arrows from bows.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-projectileprotection"><strong>ProjectileProtection</strong></a>   = <code>EnchantmentId::minecraft("projectile\_protection")</code><br><em>Provides protection against projectile damage.</em></td>
+<td style="text-align: left;"><a href="#variable-projectileprotection"><strong>ProjectileProtection</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("projectile\_protection")</code><br><em>Provides protection against projectile damage.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-protection"><strong>Protection</strong></a>   = <code>EnchantmentId::minecraft("protection")</code><br><em>Provides protection against environmental damage.</em></td>
+<td style="text-align: left;"><a href="#variable-protection"><strong>Protection</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("protection")</code><br><em>Provides protection against environmental damage.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-punch"><strong>Punch</strong></a>   = <code>EnchantmentId::minecraft("punch")</code><br><em>Provides a knockback when an entity is hit by an arrow from a bow.</em></td>
+<td style="text-align: left;"><a href="#variable-punch"><strong>Punch</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("punch")</code><br><em>Provides a knockback when an entity is hit by an arrow from a bow.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-quickcharge"><strong>QuickCharge</strong></a>   = <code>EnchantmentId::minecraft("quick\_charge")</code><br><em>Charges crossbows quickly.</em></td>
+<td style="text-align: left;"><a href="#variable-quickcharge"><strong>QuickCharge</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("quick\_charge")</code><br><em>Charges crossbows quickly.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-respiration"><strong>Respiration</strong></a>   = <code>EnchantmentId::minecraft("respiration")</code><br><em>Decreases the rate of air loss whilst underwater.</em></td>
+<td style="text-align: left;"><a href="#variable-respiration"><strong>Respiration</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("respiration")</code><br><em>Decreases the rate of air loss whilst underwater.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-riptide"><strong>Riptide</strong></a>   = <code>EnchantmentId::minecraft("riptide")</code><br><em>When it is rainy, launches the player in the direction their trident is thrown.</em></td>
+<td style="text-align: left;"><a href="#variable-riptide"><strong>Riptide</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("riptide")</code><br><em>When it is rainy, launches the player in the direction their trident is thrown.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-sharpness"><strong>Sharpness</strong></a>   = <code>EnchantmentId::minecraft("sharpness")</code><br><em>Increases damage against all targets.</em></td>
+<td style="text-align: left;"><a href="#variable-sharpness"><strong>Sharpness</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("sharpness")</code><br><em>Increases damage against all targets.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-silktouch"><strong>SilkTouch</strong></a>   = <code>EnchantmentId::minecraft("silk\_touch")</code><br><em>Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone).</em></td>
+<td style="text-align: left;"><a href="#variable-silktouch"><strong>SilkTouch</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("silk\_touch")</code><br><em>Allows blocks to drop themselves instead of fragments (for example, stone instead of cobblestone).</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-smite"><strong>Smite</strong></a>   = <code>EnchantmentId::minecraft("smite")</code><br><em>Increases damage against undead targets.</em></td>
+<td style="text-align: left;"><a href="#variable-smite"><strong>Smite</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("smite")</code><br><em>Increases damage against undead targets.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-soulspeed"><strong>SoulSpeed</strong></a>   = <code>EnchantmentId::minecraft("soul\_speed")</code><br><em>Walk quicker on soul blocks.</em></td>
+<td style="text-align: left;"><a href="#variable-soulspeed"><strong>SoulSpeed</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("soul\_speed")</code><br><em>Walk quicker on soul blocks.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-swiftsneak"><strong>SwiftSneak</strong></a>   = <code>EnchantmentId::minecraft("swift\_sneak")</code><br><em>Walk quicker while sneaking.</em></td>
+<td style="text-align: left;"><a href="#variable-swiftsneak"><strong>SwiftSneak</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("swift\_sneak")</code><br><em>Walk quicker while sneaking.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-thorns"><strong>Thorns</strong></a>   = <code>EnchantmentId::minecraft("thorns")</code><br><em>Damages the attacker.</em></td>
+<td style="text-align: left;"><a href="#variable-thorns"><strong>Thorns</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("thorns")</code><br><em>Damages the attacker.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-unbreaking"><strong>Unbreaking</strong></a>   = <code>EnchantmentId::minecraft("unbreaking")</code><br><em>Decreases the rate at which a tool looses durability.</em></td>
+<td style="text-align: left;"><a href="#variable-unbreaking"><strong>Unbreaking</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("unbreaking")</code><br><em>Decreases the rate at which a tool looses durability.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
-<td style="text-align: left;"><a href="#variable-windburst"><strong>WindBurst</strong></a>   = <code>EnchantmentId::minecraft("wind\_burst")</code><br><em>Emits wind burst upon hitting enemy.</em></td>
+<td style="text-align: left;"><a href="#variable-windburst"><strong>WindBurst</strong></a>   = <code>[**EnchantmentId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("wind\_burst")</code><br><em>Emits wind burst upon hitting enemy.</em></td>
 </tr>
 </tbody>
 </table>
@@ -3540,7 +3544,7 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>Id</strong></a></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-getid"><strong>getId</strong></a> () const = 0<br><em>Return the identifier of this object.</em></td>
 </tr>
 <tr>
@@ -3553,7 +3557,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator"><strong>operator!=</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>Id</strong></a> &amp; other) const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator"><strong>operator!=</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -3561,7 +3565,7 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator_2"><strong>operator==</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>Id</strong></a> &amp; other) const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-operator_2"><strong>operator==</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a> &amp; other) const<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
@@ -3585,7 +3589,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> *</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-get"><strong>get</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Id</strong></a> id) <br><em>Look up a registry entry by identifier.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Registry_1_1Type/#function-get"><strong>get</strong></a> (<a href="../classendstone_1_1Registry_1_1Type/#typedef-id"><strong>Id</strong></a> id) <br><em>Look up a registry entry by identifier.</em></td>
 </tr>
 </tbody>
 </table>

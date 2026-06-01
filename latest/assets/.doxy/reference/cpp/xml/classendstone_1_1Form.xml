@@ -26,7 +26,7 @@
     </sectiondef>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classendstone_1_1Form_1af2a1436a2dd61dc1d76898e5078ef9ff" prot="protected" static="no" mutable="no">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::Form&lt; T &gt;::title_</definition>
         <argsstring></argsstring>
         <name>title_</name>
@@ -70,7 +70,7 @@
         <location file="include/endstone/form/form.h" line="37" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::Form&lt; T &gt;::getTitle</definition>
         <argsstring>() const</argsstring>
         <name>getTitle</name>
@@ -94,7 +94,7 @@
         <name>setTitle</name>
         <qualifiedname>endstone::Form::setTitle</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>title</declname>
         </param>
         <briefdescription>

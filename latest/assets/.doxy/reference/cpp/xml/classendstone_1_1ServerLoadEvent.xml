@@ -12,6 +12,7 @@
         <enumvalue id="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529a13e685964c2548aa748f7ea263bad4e5" prot="public">
           <name>Startup</name>
           <briefdescription>
+<para>The server finished its initial startup. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -19,22 +20,24 @@
         <enumvalue id="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529a4d1c8263ba1036754f8db14a98f9f006" prot="public">
           <name>Reload</name>
           <briefdescription>
+<para>The server finished a reload. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Represents the context in which the server was loaded. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_load_event.h" line="30" column="5" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="30" bodyend="33"/>
+        <location file="include/endstone/event/server/server_load_event.h" line="33" column="5" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="33" bodyend="42"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1ServerLoadEvent_1a0c38ee1be7f8172c828fcc32a8591554" prot="private" static="no" mutable="no">
-        <type>LoadType</type>
+        <type><ref refid="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529" kindref="member">LoadType</ref></type>
         <definition>LoadType endstone::ServerLoadEvent::type_</definition>
         <argsstring></argsstring>
         <name>type_</name>
@@ -45,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_load_event.h" line="40" column="14" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="40" bodyend="-1"/>
+        <location file="include/endstone/event/server/server_load_event.h" line="54" column="14" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="54" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -73,7 +76,7 @@
         <name>ServerLoadEvent</name>
         <qualifiedname>endstone::ServerLoadEvent::ServerLoadEvent</qualifiedname>
         <param>
-          <type>LoadType</type>
+          <type><ref refid="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529" kindref="member">LoadType</ref></type>
           <declname>type</declname>
         </param>
         <briefdescription>
@@ -82,21 +85,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_load_event.h" line="35" column="14" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="35" bodyend="35"/>
+        <location file="include/endstone/event/server/server_load_event.h" line="44" column="14" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ServerLoadEvent_1ad6f8ab066b197a8175518ac9e8dcabae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>LoadType</type>
+        <type><ref refid="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529" kindref="member">LoadType</ref></type>
         <definition>LoadType endstone::ServerLoadEvent::getType</definition>
         <argsstring>() const</argsstring>
         <name>getType</name>
         <qualifiedname>endstone::ServerLoadEvent::getType</qualifiedname>
         <briefdescription>
+<para>Gets the context in which the server was loaded. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>the load type for this event </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/server/server_load_event.h" line="37" column="15" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="37" bodyend="37"/>
+        <location file="include/endstone/event/server/server_load_event.h" line="51" column="15" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="51" bodyend="51"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -140,7 +147,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/server/server_load_event.h" line="26" column="1" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="26" bodyend="41"/>
+    <location file="include/endstone/event/server/server_load_event.h" line="26" column="1" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="26" bodyend="55"/>
     <listofallmembers>
       <member refid="classendstone_1_1ServerLoadEvent_1a86582c22d969f60f0e8b1f57caf8338e" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>Event</name></member>

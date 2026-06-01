@@ -8,8 +8,9 @@
 
 
 
+_A single NBT tag that may hold any of the supported payload types._ [More...](#detailed-description)
 
-
+* `#include <endstone/nbt/tag.h>`
 
 
 
@@ -79,26 +80,26 @@
 |   | [**Tag**](#function-tag-2123) ([**ListTag**](classendstone_1_1ListTag.md) && v) <br> |
 |   | [**Tag**](#function-tag-2223) ([**const**](classendstone_1_1Identifier.md) [**CompoundTag**](classendstone_1_1CompoundTag.md) & v) <br> |
 |   | [**Tag**](#function-tag-2323) ([**CompoundTag**](classendstone_1_1CompoundTag.md) && v) <br> |
-|  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-14) ([**const**](classendstone_1_1Identifier.md) std::string & key) <br> |
-|  [**const**](classendstone_1_1Identifier.md) [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-24) ([**const**](classendstone_1_1Identifier.md) std::string & key) const<br> |
-|  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-34) (std::size\_t index) <br> |
-|  [**const**](classendstone_1_1Identifier.md) [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-44) (std::size\_t index) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**contains**](#function-contains) ([**const**](classendstone_1_1Identifier.md) std::string & key) noexcept const<br> |
+|  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-14) ([**const**](classendstone_1_1Identifier.md) std::string & key) <br>_Access the child tag with the given key, treating this tag as a compound, with bounds checking._  |
+|  [**const**](classendstone_1_1Identifier.md) [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-24) ([**const**](classendstone_1_1Identifier.md) std::string & key) const<br>_Access the child tag with the given key, treating this tag as a compound, with bounds checking._  |
+|  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-34) (std::size\_t index) <br>_Access the child tag at the given index, treating this tag as a list, with bounds checking._  |
+|  [**const**](classendstone_1_1Identifier.md) [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**at**](#function-at-44) (std::size\_t index) const<br>_Access the child tag at the given index, treating this tag as a list, with bounds checking._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**contains**](#function-contains) ([**const**](classendstone_1_1Identifier.md) std::string & key) noexcept const<br>_Check whether this tag is a compound containing the given key._  |
 |  std::string | [**dump**](#function-dump-12) (std::endian byte\_order=std::endian::little, [**bool**](classendstone_1_1Identifier.md) network=[**false**](classendstone_1_1Identifier.md)) const<br>_Serialize this tag to binary NBT with an empty root name._  |
 |  std::string | [**dump**](#function-dump-22) ([**const**](classendstone_1_1Identifier.md) std::string & name, std::endian byte\_order=std::endian::little, [**bool**](classendstone_1_1Identifier.md) network=[**false**](classendstone_1_1Identifier.md)) const<br>_Serialize this tag to binary NBT with a root name._  |
-|  std::pair&lt; CompoundTag::iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**emplace**](#function-emplace) ([**Args**](classendstone_1_1Identifier.md) &&... args) <br> |
-|  [**ListTag**](classendstone_1_1ListTag.md) & | [**emplace\_back**](#function-emplace_back) ([**Args**](classendstone_1_1Identifier.md) &&... args) <br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**empty**](#function-empty) () noexcept const<br> |
-|  [**T**](classendstone_1_1Identifier.md) & | [**get**](#function-get-12) () <br> |
-|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & | [**get**](#function-get-22) () const<br> |
-|  [**T**](classendstone_1_1Identifier.md) \* | [**get\_if**](#function-get_if-12) () noexcept<br> |
-|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**get\_if**](#function-get_if-22) () noexcept const<br> |
-|  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**operator[]**](#function-operator) ([**const**](classendstone_1_1Identifier.md) std::string & key) <br> |
-|  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**operator[]**](#function-operator_1) (std::size\_t index) <br> |
-|  std::size\_t | [**size**](#function-size) () noexcept const<br> |
-|  Type | [**type**](#function-type) () noexcept const<br> |
-|  [**decltype**](classendstone_1_1Identifier.md)([**auto**](classendstone_1_1Identifier.md)) | [**visit**](#function-visit-12) ([**Fn**](classendstone_1_1Identifier.md) && visitor) const<br> |
-|  [**decltype**](classendstone_1_1Identifier.md)([**auto**](classendstone_1_1Identifier.md)) | [**visit**](#function-visit-22) ([**Fn**](classendstone_1_1Identifier.md) && visitor) <br> |
+|  std::pair&lt; CompoundTag::iterator, [**bool**](classendstone_1_1Identifier.md) &gt; | [**emplace**](#function-emplace) ([**Args**](classendstone_1_1Identifier.md) &&... args) <br>_Construct an entry in place in this compound._  |
+|  [**ListTag**](classendstone_1_1ListTag.md) & | [**emplace\_back**](#function-emplace_back) ([**Args**](classendstone_1_1Identifier.md) &&... args) <br>_Construct a child tag in place at the end of this list._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**empty**](#function-empty) () noexcept const<br>_Check whether this tag holds no elements._  |
+|  [**T**](classendstone_1_1Identifier.md) & | [**get**](#function-get-12) () <br>_Get the payload as the given tag type._  |
+|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & | [**get**](#function-get-22) () const<br>_Get the payload as the given tag type._  |
+|  [**T**](classendstone_1_1Identifier.md) \* | [**get\_if**](#function-get_if-12) () noexcept<br>_Get a pointer to the payload if this tag holds the given type._  |
+|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**get\_if**](#function-get_if-22) () noexcept const<br>_Get a pointer to the payload if this tag holds the given type._  |
+|  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**operator[]**](#function-operator) ([**const**](classendstone_1_1Identifier.md) std::string & key) <br>_Access the child tag with the given key, treating this tag as a compound._  |
+|  [**Tag**](classendstone_1_1nbt_1_1Tag.md) & | [**operator[]**](#function-operator_1) (std::size\_t index) <br>_Access the child tag at the given index, treating this tag as a list._  |
+|  std::size\_t | [**size**](#function-size) () noexcept const<br>_Get the number of elements held by this tag._  |
+|  Type | [**type**](#function-type) () noexcept const<br>_Get the type of payload currently held by this tag._  |
+|  [**decltype**](classendstone_1_1Identifier.md)([**auto**](classendstone_1_1Identifier.md)) | [**visit**](#function-visit-12) ([**Fn**](classendstone_1_1Identifier.md) && visitor) const<br>_Apply a visitor to the payload currently held by this tag._  |
+|  [**decltype**](classendstone_1_1Identifier.md)([**auto**](classendstone_1_1Identifier.md)) | [**visit**](#function-visit-22) ([**Fn**](classendstone_1_1Identifier.md) && visitor) <br>_Apply a visitor to the payload currently held by this tag._  |
 
 
 
@@ -127,6 +128,13 @@
 
 
 
+## Detailed Description
+
+
+A [**Tag**](classendstone_1_1nbt_1_1Tag.md) behaves as a tagged union over every NBT type (byte, short, int, long, float, double, string, byte array, int array, list and compound). A default-constructed [**Tag**](classendstone_1_1nbt_1_1Tag.md) is empty (the End type). Indexing or inserting into an empty [**Tag**](classendstone_1_1nbt_1_1Tag.md) promotes it to a [**ListTag**](classendstone_1_1ListTag.md) or [**CompoundTag**](classendstone_1_1CompoundTag.md) as appropriate. 
+
+
+    
 ## Public Types Documentation
 
 
@@ -492,6 +500,7 @@ inline endstone::nbt::Tag::Tag (
 
 ### function at [1/4]
 
+_Access the child tag with the given key, treating this tag as a compound, with bounds checking._ 
 ```C++
 inline Tag & endstone::nbt::Tag::at (
     const std::string & key
@@ -500,6 +509,35 @@ inline Tag & endstone::nbt::Tag::at (
 
 
 
+An empty tag is promoted to a [**CompoundTag**](classendstone_1_1CompoundTag.md).
+
+
+
+
+**Parameters:**
+
+
+* `key` the key to access 
+
+
+
+**Returns:**
+
+a reference to the child tag 
+
+
+
+
+**Exception:**
+
+
+* `std::runtime_error` if this tag is not a compound 
+* `std::out_of_range` if the key is not present 
+
+
+
+
+        
 
 <hr>
 
@@ -507,6 +545,7 @@ inline Tag & endstone::nbt::Tag::at (
 
 ### function at [2/4]
 
+_Access the child tag with the given key, treating this tag as a compound, with bounds checking._ 
 ```C++
 inline const  Tag & endstone::nbt::Tag::at (
     const std::string & key
@@ -516,12 +555,39 @@ inline const  Tag & endstone::nbt::Tag::at (
 
 
 
+
+**Parameters:**
+
+
+* `key` the key to access 
+
+
+
+**Returns:**
+
+a const reference to the child tag 
+
+
+
+
+**Exception:**
+
+
+* `std::runtime_error` if this tag is not a compound 
+* `std::out_of_range` if the key is not present 
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function at [3/4]
 
+_Access the child tag at the given index, treating this tag as a list, with bounds checking._ 
 ```C++
 inline Tag & endstone::nbt::Tag::at (
     std::size_t index
@@ -530,6 +596,35 @@ inline Tag & endstone::nbt::Tag::at (
 
 
 
+An empty tag is promoted to a [**ListTag**](classendstone_1_1ListTag.md).
+
+
+
+
+**Parameters:**
+
+
+* `index` the index to access 
+
+
+
+**Returns:**
+
+a reference to the child tag 
+
+
+
+
+**Exception:**
+
+
+* `std::runtime_error` if this tag is not a list 
+* `std::out_of_range` if the index is out of range 
+
+
+
+
+        
 
 <hr>
 
@@ -537,6 +632,7 @@ inline Tag & endstone::nbt::Tag::at (
 
 ### function at [4/4]
 
+_Access the child tag at the given index, treating this tag as a list, with bounds checking._ 
 ```C++
 inline const  Tag & endstone::nbt::Tag::at (
     std::size_t index
@@ -546,12 +642,39 @@ inline const  Tag & endstone::nbt::Tag::at (
 
 
 
+
+**Parameters:**
+
+
+* `index` the index to access 
+
+
+
+**Returns:**
+
+a const reference to the child tag 
+
+
+
+
+**Exception:**
+
+
+* `std::runtime_error` if this tag is not a list 
+* `std::out_of_range` if the index is out of range 
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function contains 
 
+_Check whether this tag is a compound containing the given key._ 
 ```C++
 inline bool endstone::nbt::Tag::contains (
     const std::string & key
@@ -560,6 +683,24 @@ inline bool endstone::nbt::Tag::contains (
 
 
 
+
+
+**Parameters:**
+
+
+* `key` the key to look up 
+
+
+
+**Returns:**
+
+true if this tag is a compound and contains the key, false otherwise 
+
+
+
+
+
+        
 
 <hr>
 
@@ -644,6 +785,7 @@ Binary NBT data.
 
 ### function emplace 
 
+_Construct an entry in place in this compound._ 
 ```C++
 template<class... Args>
 inline std::pair< CompoundTag::iterator, bool > endstone::nbt::Tag::emplace (
@@ -653,6 +795,34 @@ inline std::pair< CompoundTag::iterator, bool > endstone::nbt::Tag::emplace (
 
 
 
+An empty tag is promoted to a [**CompoundTag**](classendstone_1_1CompoundTag.md).
+
+
+
+
+**Parameters:**
+
+
+* `args` the arguments forwarded to construct the key/value entry 
+
+
+
+**Returns:**
+
+a pair of an iterator to the entry and a bool that is true if a new entry was inserted 
+
+
+
+
+**Exception:**
+
+
+* `std::runtime_error` if this tag is not a compound 
+
+
+
+
+        
 
 <hr>
 
@@ -660,6 +830,7 @@ inline std::pair< CompoundTag::iterator, bool > endstone::nbt::Tag::emplace (
 
 ### function emplace\_back 
 
+_Construct a child tag in place at the end of this list._ 
 ```C++
 template<class... Args>
 inline ListTag & endstone::nbt::Tag::emplace_back (
@@ -669,6 +840,34 @@ inline ListTag & endstone::nbt::Tag::emplace_back (
 
 
 
+An empty tag is promoted to a [**ListTag**](classendstone_1_1ListTag.md).
+
+
+
+
+**Parameters:**
+
+
+* `args` the arguments forwarded to the element constructor 
+
+
+
+**Returns:**
+
+a reference to this tag's underlying list 
+
+
+
+
+**Exception:**
+
+
+* `std::runtime_error` if this tag is not a list 
+
+
+
+
+        
 
 <hr>
 
@@ -676,6 +875,7 @@ inline ListTag & endstone::nbt::Tag::emplace_back (
 
 ### function empty 
 
+_Check whether this tag holds no elements._ 
 ```C++
 inline bool endstone::nbt::Tag::empty () noexcept const
 ```
@@ -683,12 +883,24 @@ inline bool endstone::nbt::Tag::empty () noexcept const
 
 
 
+
+**Returns:**
+
+true if [**size()**](classendstone_1_1nbt_1_1Tag.md#function-size) is 0 
+
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function get [1/2]
 
+_Get the payload as the given tag type._ 
 ```C++
 template<typename  T>
 inline T & endstone::nbt::Tag::get () 
@@ -697,12 +909,38 @@ inline T & endstone::nbt::Tag::get ()
 
 
 
+
+**Template parameters:**
+
+
+* `T` the tag type to retrieve 
+
+
+
+**Returns:**
+
+a reference to the held value 
+
+
+
+
+**Exception:**
+
+
+* `std::runtime_error` if this tag does not currently hold a T 
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function get [2/2]
 
+_Get the payload as the given tag type._ 
 ```C++
 template<typename  T>
 inline const  T & endstone::nbt::Tag::get () const
@@ -711,12 +949,38 @@ inline const  T & endstone::nbt::Tag::get () const
 
 
 
+
+**Template parameters:**
+
+
+* `T` the tag type to retrieve 
+
+
+
+**Returns:**
+
+a const reference to the held value 
+
+
+
+
+**Exception:**
+
+
+* `std::runtime_error` if this tag does not currently hold a T 
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function get\_if [1/2]
 
+_Get a pointer to the payload if this tag holds the given type._ 
 ```C++
 template<typename  T>
 inline T * endstone::nbt::Tag::get_if () noexcept
@@ -725,12 +989,31 @@ inline T * endstone::nbt::Tag::get_if () noexcept
 
 
 
+
+**Template parameters:**
+
+
+* `T` the tag type to retrieve 
+
+
+
+**Returns:**
+
+a pointer to the held value, or nullptr if this tag does not hold a T 
+
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function get\_if [2/2]
 
+_Get a pointer to the payload if this tag holds the given type._ 
 ```C++
 template<typename  T>
 inline const  T * endstone::nbt::Tag::get_if () noexcept const
@@ -739,12 +1022,31 @@ inline const  T * endstone::nbt::Tag::get_if () noexcept const
 
 
 
+
+**Template parameters:**
+
+
+* `T` the tag type to retrieve 
+
+
+
+**Returns:**
+
+a const pointer to the held value, or nullptr if this tag does not hold a T 
+
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function operator[] 
 
+_Access the child tag with the given key, treating this tag as a compound._ 
 ```C++
 inline Tag & endstone::nbt::Tag::operator[] (
     const std::string & key
@@ -753,6 +1055,34 @@ inline Tag & endstone::nbt::Tag::operator[] (
 
 
 
+An empty tag is promoted to a [**CompoundTag**](classendstone_1_1CompoundTag.md), and a missing key is inserted with an empty value.
+
+
+
+
+**Parameters:**
+
+
+* `key` the key to access 
+
+
+
+**Returns:**
+
+a reference to the child tag 
+
+
+
+
+**Exception:**
+
+
+* `std::runtime_error` if this tag is not a compound 
+
+
+
+
+        
 
 <hr>
 
@@ -760,6 +1090,7 @@ inline Tag & endstone::nbt::Tag::operator[] (
 
 ### function operator[] 
 
+_Access the child tag at the given index, treating this tag as a list._ 
 ```C++
 inline Tag & endstone::nbt::Tag::operator[] (
     std::size_t index
@@ -768,6 +1099,34 @@ inline Tag & endstone::nbt::Tag::operator[] (
 
 
 
+An empty tag is promoted to a [**ListTag**](classendstone_1_1ListTag.md).
+
+
+
+
+**Parameters:**
+
+
+* `index` the index to access 
+
+
+
+**Returns:**
+
+a reference to the child tag 
+
+
+
+
+**Exception:**
+
+
+* `std::runtime_error` if this tag is not a list 
+
+
+
+
+        
 
 <hr>
 
@@ -775,12 +1134,27 @@ inline Tag & endstone::nbt::Tag::operator[] (
 
 ### function size 
 
+_Get the number of elements held by this tag._ 
 ```C++
 inline std::size_t endstone::nbt::Tag::size () noexcept const
 ```
 
 
 
+For a list, compound or array this is the element count; for a string it is the character count; scalar tags report 1 and an empty tag reports 0.
+
+
+
+
+**Returns:**
+
+the element count 
+
+
+
+
+
+        
 
 <hr>
 
@@ -788,6 +1162,7 @@ inline std::size_t endstone::nbt::Tag::size () noexcept const
 
 ### function type 
 
+_Get the type of payload currently held by this tag._ 
 ```C++
 inline Type endstone::nbt::Tag::type () noexcept const
 ```
@@ -795,12 +1170,24 @@ inline Type endstone::nbt::Tag::type () noexcept const
 
 
 
+
+**Returns:**
+
+the tag type, or Type::End if the tag is empty 
+
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function visit [1/2]
 
+_Apply a visitor to the payload currently held by this tag._ 
 ```C++
 template<typename  Fn>
 inline decltype ( auto ) endstone::nbt::Tag::visit (
@@ -811,12 +1198,38 @@ inline decltype ( auto ) endstone::nbt::Tag::visit (
 
 
 
+
+**Template parameters:**
+
+
+* `Fn` the visitor type, callable with any of the tag payload types (including std::monostate) 
+
+
+
+**Parameters:**
+
+
+* `visitor` the visitor to invoke 
+
+
+
+**Returns:**
+
+whatever the visitor returns 
+
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function visit [2/2]
 
+_Apply a visitor to the payload currently held by this tag._ 
 ```C++
 template<typename  Fn>
 inline decltype ( auto ) endstone::nbt::Tag::visit (
@@ -826,6 +1239,31 @@ inline decltype ( auto ) endstone::nbt::Tag::visit (
 
 
 
+
+
+**Template parameters:**
+
+
+* `Fn` the visitor type, callable with any of the tag payload types (including std::monostate) 
+
+
+
+**Parameters:**
+
+
+* `visitor` the visitor to invoke 
+
+
+
+**Returns:**
+
+whatever the visitor returns 
+
+
+
+
+
+        
 
 <hr>## Friends Documentation
 

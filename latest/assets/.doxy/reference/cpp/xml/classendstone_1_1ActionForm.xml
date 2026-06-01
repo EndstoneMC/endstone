@@ -36,7 +36,7 @@
     </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1ActionForm_1a5a2382f4992f2611612841261e5c5255" prot="private" static="no" mutable="no">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::ActionForm::content_</definition>
         <argsstring></argsstring>
         <name>content_</name>
@@ -94,7 +94,7 @@
         <location file="include/endstone/form/action_form.h" line="40" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1aff5268af0e4b5386b406fdd90092aff3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>Message</type>
+        <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
         <definition>Message endstone::ActionForm::getContent</definition>
         <argsstring>() const</argsstring>
         <name>getContent</name>
@@ -118,7 +118,7 @@
         <name>setContent</name>
         <qualifiedname>endstone::ActionForm::setContent</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>text</declname>
         </param>
         <briefdescription>
@@ -149,7 +149,7 @@
         <name>addButton</name>
         <qualifiedname>endstone::ActionForm::addButton</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> Message &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &amp;</type>
           <declname>text</declname>
         </param>
         <param>
@@ -206,7 +206,7 @@
         <name>addLabel</name>
         <qualifiedname>endstone::ActionForm::addLabel</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> Message &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &amp;</type>
           <declname>text</declname>
         </param>
         <briefdescription>
@@ -237,7 +237,7 @@
         <name>addHeader</name>
         <qualifiedname>endstone::ActionForm::addHeader</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> Message &amp;</type>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref> &amp;</type>
           <declname>text</declname>
         </param>
         <briefdescription>

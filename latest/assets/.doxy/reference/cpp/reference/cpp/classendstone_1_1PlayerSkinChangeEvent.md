@@ -94,10 +94,10 @@ Inherits the following classes: [endstone::Cancellable](classendstone_1_1Cancell
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md)) <br> |
-|   | [**PlayerSkinChangeEvent**](#function-playerskinchangeevent) ([**Player**](classendstone_1_1Player.md) & player, [**Skin**](classendstone_1_1Skin.md) new\_skin, std::optional&lt; Message &gt; message) <br> |
+|   | [**PlayerSkinChangeEvent**](#function-playerskinchangeevent) ([**Player**](classendstone_1_1Player.md) & player, [**Skin**](classendstone_1_1Skin.md) new\_skin, std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; message) <br> |
 |  [**Skin**](classendstone_1_1Skin.md) | [**getNewSkin**](#function-getnewskin) () const<br>_Gets the player's new skin._  |
-|  std::optional&lt; Message &gt; | [**getSkinChangeMessage**](#function-getskinchangemessage) () const<br>_Gets the message to send to all online players for this skin change._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**setSkinChangeMessage**](#function-setskinchangemessage) (std::optional&lt; Message &gt; message) <br>_Sets the message to send to all online players for this skin change._  |
+|  std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; | [**getSkinChangeMessage**](#function-getskinchangemessage) () const<br>_Gets the message to send to all online players for this skin change._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setSkinChangeMessage**](#function-setskinchangemessage) (std::optional&lt; [**Message**](namespaceendstone.md#typedef-message) &gt; message) <br>_Sets the message to send to all online players for this skin change._  |
 
 
 ## Public Functions inherited from endstone::Cancellable
@@ -117,9 +117,9 @@ See [endstone::ICancellable](classendstone_1_1ICancellable.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) = 0<br> |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](classendstone_1_1ICancellable.md#function-cancel) () = 0<br>_Cancels this event._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](classendstone_1_1ICancellable.md#function-iscancelled) () const = 0<br>_Gets the cancellation state of this event._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](classendstone_1_1ICancellable.md#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) = 0<br>_Sets the cancellation state of this event._  |
 | virtual  | [**~ICancellable**](classendstone_1_1ICancellable.md#function-icancellable) () = default<br> |
 
 

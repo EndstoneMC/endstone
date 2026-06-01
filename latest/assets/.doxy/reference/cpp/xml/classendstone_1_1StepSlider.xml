@@ -26,7 +26,7 @@
         <name>Dropdown</name>
         <qualifiedname>endstone::StepSlider::Dropdown</qualifiedname>
         <param>
-          <type>Message</type>
+          <type><ref refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kindref="member">Message</ref></type>
           <declname>label</declname>
         </param>
         <param>

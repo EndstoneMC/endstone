@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Colors" kind="class" language="C++" prot="public">
     <compoundname>endstone::Colors</compoundname>
+    <includes refid="color_8h" local="no">endstone/util/color.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1Colors_1ac77fd4dd5e4eccb3e00e32064e71efdc" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -11,12 +12,13 @@
         <qualifiedname>endstone::Colors::WHITE</qualifiedname>
         <initializer>= <ref refid="classendstone_1_1Color" kindref="compound">Color</ref>(Color::DEFAULT_ALPHA, 255, 255, 255)</initializer>
         <briefdescription>
+<para>The color white. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="218" column="27" bodyfile="include/endstone/util/color.h" bodystart="218" bodyend="-1"/>
+        <location file="include/endstone/util/color.h" line="240" column="27" bodyfile="include/endstone/util/color.h" bodystart="240" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Colors_1a28bf16e643dd4b9a31c84551f8f5dd47" prot="public" static="yes" constexpr="yes" mutable="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">auto</ref></type>
@@ -26,19 +28,21 @@
         <qualifiedname>endstone::Colors::BLACK</qualifiedname>
         <initializer>= <ref refid="classendstone_1_1Color" kindref="compound">Color</ref>(Color::DEFAULT_ALPHA, 0, 0, 0)</initializer>
         <briefdescription>
+<para>The color black. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/color.h" line="219" column="27" bodyfile="include/endstone/util/color.h" bodystart="219" bodyend="-1"/>
+        <location file="include/endstone/util/color.h" line="244" column="27" bodyfile="include/endstone/util/color.h" bodystart="244" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
+<para>Provides a collection of predefined colors. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/util/color.h" line="216" column="1" bodyfile="include/endstone/util/color.h" bodystart="216" bodyend="220"/>
+    <location file="include/endstone/util/color.h" line="235" column="1" bodyfile="include/endstone/util/color.h" bodystart="235" bodyend="245"/>
     <listofallmembers>
       <member refid="classendstone_1_1Colors_1a28bf16e643dd4b9a31c84551f8f5dd47" prot="public" virt="non-virtual"><scope>endstone::Colors</scope><name>BLACK</name></member>
       <member refid="classendstone_1_1Colors_1ac77fd4dd5e4eccb3e00e32064e71efdc" prot="public" virt="non-virtual"><scope>endstone::Colors</scope><name>WHITE</name></member>

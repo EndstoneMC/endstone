@@ -8,8 +8,9 @@
 
 
 
+_Interface for events that may be cancelled by a plugin or the server._ 
 
-
+* `#include <endstone/event/cancellable.h>`
 
 
 
@@ -52,9 +53,9 @@ Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Can
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](#function-cancel) () = 0<br> |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](#function-iscancelled) () const = 0<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) = 0<br> |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**cancel**](#function-cancel) () = 0<br>_Cancels this event._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isCancelled**](#function-iscancelled) () const = 0<br>_Gets the cancellation state of this event._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setCancelled**](#function-setcancelled) ([**bool**](classendstone_1_1Identifier.md) cancel) = 0<br>_Sets the cancellation state of this event._  |
 | virtual  | [**~ICancellable**](#function-icancellable) () = default<br> |
 
 
@@ -91,6 +92,7 @@ Inherited by the following classes: [endstone::Cancellable](classendstone_1_1Can
 
 ### function cancel 
 
+_Cancels this event._ 
 ```C++
 virtual void endstone::ICancellable::cancel () = 0
 ```
@@ -104,6 +106,7 @@ virtual void endstone::ICancellable::cancel () = 0
 
 ### function isCancelled 
 
+_Gets the cancellation state of this event._ 
 ```C++
 virtual bool endstone::ICancellable::isCancelled () const = 0
 ```
@@ -111,12 +114,24 @@ virtual bool endstone::ICancellable::isCancelled () const = 0
 
 
 
+
+**Returns:**
+
+true if this event is cancelled 
+
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function setCancelled 
 
+_Sets the cancellation state of this event._ 
 ```C++
 virtual void endstone::ICancellable::setCancelled (
     bool cancel
@@ -125,6 +140,17 @@ virtual void endstone::ICancellable::setCancelled (
 
 
 
+
+
+**Parameters:**
+
+
+* `cancel` true if you wish to cancel this event 
+
+
+
+
+        
 
 <hr>
 

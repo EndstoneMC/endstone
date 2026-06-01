@@ -36,7 +36,7 @@ See [endstone::Registry::Type](classendstone_1_1Registry_1_1Type.md)
 
 | Type | Name |
 | ---: | :--- |
-| typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**Id**](classendstone_1_1Registry_1_1Type.md#typedef-id)  <br> |
+| typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**Id**](classendstone_1_1Registry_1_1Type.md#typedef-id)  <br>_The identifier type used to look up this object in its registry._  |
 
 
 
@@ -51,141 +51,141 @@ See [endstone::Registry::Type](classendstone_1_1Registry_1_1Type.md)
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Agent**](#variable-agent)   = `ActorTypeId::minecraft("agent")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Allay**](#variable-allay)   = `ActorTypeId::minecraft("allay")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**AreaEffectCloud**](#variable-areaeffectcloud)   = `ActorTypeId::minecraft("area\_effect\_cloud")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Armadillo**](#variable-armadillo)   = `ActorTypeId::minecraft("armadillo")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ArmorStand**](#variable-armorstand)   = `ActorTypeId::minecraft("armor\_stand")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Arrow**](#variable-arrow)   = `ActorTypeId::minecraft("arrow")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Axolotl**](#variable-axolotl)   = `ActorTypeId::minecraft("axolotl")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Balloon**](#variable-balloon)   = `ActorTypeId::minecraft("balloon")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Bat**](#variable-bat)   = `ActorTypeId::minecraft("bat")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Bee**](#variable-bee)   = `ActorTypeId::minecraft("bee")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Blaze**](#variable-blaze)   = `ActorTypeId::minecraft("blaze")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Boat**](#variable-boat)   = `ActorTypeId::minecraft("boat")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Bogged**](#variable-bogged)   = `ActorTypeId::minecraft("bogged")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Breeze**](#variable-breeze)   = `ActorTypeId::minecraft("breeze")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**BreezeWindChargeProjectile**](#variable-breezewindchargeprojectile)   = `ActorTypeId::minecraft("breeze\_wind\_charge\_projectile")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Camel**](#variable-camel)   = `ActorTypeId::minecraft("camel")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**CamelHusk**](#variable-camelhusk)   = `ActorTypeId::minecraft("camel\_husk")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Cat**](#variable-cat)   = `ActorTypeId::minecraft("cat")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**CaveSpider**](#variable-cavespider)   = `ActorTypeId::minecraft("cave\_spider")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ChestBoat**](#variable-chestboat)   = `ActorTypeId::minecraft("chest\_boat")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ChestMinecart**](#variable-chestminecart)   = `ActorTypeId::minecraft("chest\_minecart")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Chicken**](#variable-chicken)   = `ActorTypeId::minecraft("chicken")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Cod**](#variable-cod)   = `ActorTypeId::minecraft("cod")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**CommandBlockMinecart**](#variable-commandblockminecart)   = `ActorTypeId::minecraft("command\_block\_minecart")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**CopperGolem**](#variable-coppergolem)   = `ActorTypeId::minecraft("copper\_golem")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Cow**](#variable-cow)   = `ActorTypeId::minecraft("cow")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Creaking**](#variable-creaking)   = `ActorTypeId::minecraft("creaking")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Creeper**](#variable-creeper)   = `ActorTypeId::minecraft("creeper")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Dolphin**](#variable-dolphin)   = `ActorTypeId::minecraft("dolphin")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Donkey**](#variable-donkey)   = `ActorTypeId::minecraft("donkey")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**DragonFireball**](#variable-dragonfireball)   = `ActorTypeId::minecraft("dragon\_fireball")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Drowned**](#variable-drowned)   = `ActorTypeId::minecraft("drowned")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Egg**](#variable-egg)   = `ActorTypeId::minecraft("egg")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ElderGuardian**](#variable-elderguardian)   = `ActorTypeId::minecraft("elder\_guardian")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ElderGuardianGhost**](#variable-elderguardianghost)   = `ActorTypeId::minecraft("elder\_guardian\_ghost")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**EnderCrystal**](#variable-endercrystal)   = `ActorTypeId::minecraft("ender\_crystal")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**EnderDragon**](#variable-enderdragon)   = `ActorTypeId::minecraft("ender\_dragon")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**EnderPearl**](#variable-enderpearl)   = `ActorTypeId::minecraft("ender\_pearl")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Enderman**](#variable-enderman)   = `ActorTypeId::minecraft("enderman")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Endermite**](#variable-endermite)   = `ActorTypeId::minecraft("endermite")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**EvocationFang**](#variable-evocationfang)   = `ActorTypeId::minecraft("evocation\_fang")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**EvocationIllager**](#variable-evocationillager)   = `ActorTypeId::minecraft("evocation\_illager")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**EyeOfEnderSignal**](#variable-eyeofendersignal)   = `ActorTypeId::minecraft("eye\_of\_ender\_signal")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FallingBlock**](#variable-fallingblock)   = `ActorTypeId::minecraft("falling\_block")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Fireball**](#variable-fireball)   = `ActorTypeId::minecraft("fireball")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FireworksRocket**](#variable-fireworksrocket)   = `ActorTypeId::minecraft("fireworks\_rocket")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FishingHook**](#variable-fishinghook)   = `ActorTypeId::minecraft("fishing\_hook")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Fox**](#variable-fox)   = `ActorTypeId::minecraft("fox")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Frog**](#variable-frog)   = `ActorTypeId::minecraft("frog")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Ghast**](#variable-ghast)   = `ActorTypeId::minecraft("ghast")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**GlowSquid**](#variable-glowsquid)   = `ActorTypeId::minecraft("glow\_squid")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Goat**](#variable-goat)   = `ActorTypeId::minecraft("goat")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Guardian**](#variable-guardian)   = `ActorTypeId::minecraft("guardian")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**HappyGhast**](#variable-happyghast)   = `ActorTypeId::minecraft("happy\_ghast")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Hoglin**](#variable-hoglin)   = `ActorTypeId::minecraft("hoglin")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**HopperMinecart**](#variable-hopperminecart)   = `ActorTypeId::minecraft("hopper\_minecart")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Horse**](#variable-horse)   = `ActorTypeId::minecraft("horse")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Husk**](#variable-husk)   = `ActorTypeId::minecraft("husk")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**IceBomb**](#variable-icebomb)   = `ActorTypeId::minecraft("ice\_bomb")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**IronGolem**](#variable-irongolem)   = `ActorTypeId::minecraft("iron\_golem")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Item**](#variable-item)   = `ActorTypeId::minecraft("item")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LeashKnot**](#variable-leashknot)   = `ActorTypeId::minecraft("leash\_knot")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LightningBolt**](#variable-lightningbolt)   = `ActorTypeId::minecraft("lightning\_bolt")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LingeringPotion**](#variable-lingeringpotion)   = `ActorTypeId::minecraft("lingering\_potion")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Llama**](#variable-llama)   = `ActorTypeId::minecraft("llama")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LlamaSpit**](#variable-llamaspit)   = `ActorTypeId::minecraft("llama\_spit")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**MagmaCube**](#variable-magmacube)   = `ActorTypeId::minecraft("magma\_cube")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Minecart**](#variable-minecart)   = `ActorTypeId::minecraft("minecart")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Mooshroom**](#variable-mooshroom)   = `ActorTypeId::minecraft("mooshroom")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Mule**](#variable-mule)   = `ActorTypeId::minecraft("mule")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Nautilus**](#variable-nautilus)   = `ActorTypeId::minecraft("nautilus")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Npc**](#variable-npc)   = `ActorTypeId::minecraft("npc")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Ocelot**](#variable-ocelot)   = `ActorTypeId::minecraft("ocelot")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**OminousItemSpawner**](#variable-ominousitemspawner)   = `ActorTypeId::minecraft("ominous\_item\_spawner")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Painting**](#variable-painting)   = `ActorTypeId::minecraft("painting")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Panda**](#variable-panda)   = `ActorTypeId::minecraft("panda")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Parched**](#variable-parched)   = `ActorTypeId::minecraft("parched")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Parrot**](#variable-parrot)   = `ActorTypeId::minecraft("parrot")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Phantom**](#variable-phantom)   = `ActorTypeId::minecraft("phantom")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Pig**](#variable-pig)   = `ActorTypeId::minecraft("pig")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Piglin**](#variable-piglin)   = `ActorTypeId::minecraft("piglin")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**PiglinBrute**](#variable-piglinbrute)   = `ActorTypeId::minecraft("piglin\_brute")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Pillager**](#variable-pillager)   = `ActorTypeId::minecraft("pillager")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Player**](#variable-player)   = `ActorTypeId::minecraft("player")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**PolarBear**](#variable-polarbear)   = `ActorTypeId::minecraft("polar\_bear")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Pufferfish**](#variable-pufferfish)   = `ActorTypeId::minecraft("pufferfish")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Rabbit**](#variable-rabbit)   = `ActorTypeId::minecraft("rabbit")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Ravager**](#variable-ravager)   = `ActorTypeId::minecraft("ravager")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Salmon**](#variable-salmon)   = `ActorTypeId::minecraft("salmon")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Sheep**](#variable-sheep)   = `ActorTypeId::minecraft("sheep")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Shulker**](#variable-shulker)   = `ActorTypeId::minecraft("shulker")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ShulkerBullet**](#variable-shulkerbullet)   = `ActorTypeId::minecraft("shulker\_bullet")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Silverfish**](#variable-silverfish)   = `ActorTypeId::minecraft("silverfish")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Skeleton**](#variable-skeleton)   = `ActorTypeId::minecraft("skeleton")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SkeletonHorse**](#variable-skeletonhorse)   = `ActorTypeId::minecraft("skeleton\_horse")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Slime**](#variable-slime)   = `ActorTypeId::minecraft("slime")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SmallFireball**](#variable-smallfireball)   = `ActorTypeId::minecraft("small\_fireball")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Sniffer**](#variable-sniffer)   = `ActorTypeId::minecraft("sniffer")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SnowGolem**](#variable-snowgolem)   = `ActorTypeId::minecraft("snow\_golem")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Snowball**](#variable-snowball)   = `ActorTypeId::minecraft("snowball")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Spider**](#variable-spider)   = `ActorTypeId::minecraft("spider")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SplashPotion**](#variable-splashpotion)   = `ActorTypeId::minecraft("splash\_potion")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Squid**](#variable-squid)   = `ActorTypeId::minecraft("squid")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Stray**](#variable-stray)   = `ActorTypeId::minecraft("stray")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Strider**](#variable-strider)   = `ActorTypeId::minecraft("strider")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Tadpole**](#variable-tadpole)   = `ActorTypeId::minecraft("tadpole")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ThrownTrident**](#variable-throwntrident)   = `ActorTypeId::minecraft("thrown\_trident")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Tnt**](#variable-tnt)   = `ActorTypeId::minecraft("tnt")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TntMinecart**](#variable-tntminecart)   = `ActorTypeId::minecraft("tnt\_minecart")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TraderLlama**](#variable-traderllama)   = `ActorTypeId::minecraft("trader\_llama")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TripodCamera**](#variable-tripodcamera)   = `ActorTypeId::minecraft("tripod\_camera")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Tropicalfish**](#variable-tropicalfish)   = `ActorTypeId::minecraft("tropicalfish")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Turtle**](#variable-turtle)   = `ActorTypeId::minecraft("turtle")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Vex**](#variable-vex)   = `ActorTypeId::minecraft("vex")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Villager**](#variable-villager)   = `ActorTypeId::minecraft("villager")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**VillagerV2**](#variable-villagerv2)   = `ActorTypeId::minecraft("villager\_v2")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Vindicator**](#variable-vindicator)   = `ActorTypeId::minecraft("vindicator")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WanderingTrader**](#variable-wanderingtrader)   = `ActorTypeId::minecraft("wandering\_trader")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Warden**](#variable-warden)   = `ActorTypeId::minecraft("warden")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WindChargeProjectile**](#variable-windchargeprojectile)   = `ActorTypeId::minecraft("wind\_charge\_projectile")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Witch**](#variable-witch)   = `ActorTypeId::minecraft("witch")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Wither**](#variable-wither)   = `ActorTypeId::minecraft("wither")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WitherSkeleton**](#variable-witherskeleton)   = `ActorTypeId::minecraft("wither\_skeleton")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WitherSkull**](#variable-witherskull)   = `ActorTypeId::minecraft("wither\_skull")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WitherSkullDangerous**](#variable-witherskulldangerous)   = `ActorTypeId::minecraft("wither\_skull\_dangerous")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Wolf**](#variable-wolf)   = `ActorTypeId::minecraft("wolf")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**XpBottle**](#variable-xpbottle)   = `ActorTypeId::minecraft("xp\_bottle")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**XpOrb**](#variable-xporb)   = `ActorTypeId::minecraft("xp\_orb")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Zoglin**](#variable-zoglin)   = `ActorTypeId::minecraft("zoglin")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Zombie**](#variable-zombie)   = `ActorTypeId::minecraft("zombie")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ZombieHorse**](#variable-zombiehorse)   = `ActorTypeId::minecraft("zombie\_horse")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ZombieNautilus**](#variable-zombienautilus)   = `ActorTypeId::minecraft("zombie\_nautilus")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ZombiePigman**](#variable-zombiepigman)   = `ActorTypeId::minecraft("zombie\_pigman")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ZombieVillager**](#variable-zombievillager)   = `ActorTypeId::minecraft("zombie\_villager")`<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ZombieVillagerV2**](#variable-zombievillagerv2)   = `ActorTypeId::minecraft("zombie\_villager\_v2")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Agent**](#variable-agent)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("agent")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Allay**](#variable-allay)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("allay")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**AreaEffectCloud**](#variable-areaeffectcloud)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("area\_effect\_cloud")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Armadillo**](#variable-armadillo)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("armadillo")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ArmorStand**](#variable-armorstand)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("armor\_stand")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Arrow**](#variable-arrow)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("arrow")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Axolotl**](#variable-axolotl)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("axolotl")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Balloon**](#variable-balloon)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("balloon")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Bat**](#variable-bat)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("bat")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Bee**](#variable-bee)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("bee")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Blaze**](#variable-blaze)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("blaze")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Boat**](#variable-boat)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("boat")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Bogged**](#variable-bogged)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("bogged")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Breeze**](#variable-breeze)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("breeze")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**BreezeWindChargeProjectile**](#variable-breezewindchargeprojectile)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("breeze\_wind\_charge\_projectile")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Camel**](#variable-camel)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("camel")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**CamelHusk**](#variable-camelhusk)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("camel\_husk")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Cat**](#variable-cat)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("cat")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**CaveSpider**](#variable-cavespider)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("cave\_spider")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ChestBoat**](#variable-chestboat)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("chest\_boat")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ChestMinecart**](#variable-chestminecart)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("chest\_minecart")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Chicken**](#variable-chicken)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("chicken")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Cod**](#variable-cod)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("cod")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**CommandBlockMinecart**](#variable-commandblockminecart)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("command\_block\_minecart")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**CopperGolem**](#variable-coppergolem)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("copper\_golem")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Cow**](#variable-cow)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("cow")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Creaking**](#variable-creaking)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("creaking")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Creeper**](#variable-creeper)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("creeper")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Dolphin**](#variable-dolphin)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("dolphin")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Donkey**](#variable-donkey)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("donkey")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**DragonFireball**](#variable-dragonfireball)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("dragon\_fireball")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Drowned**](#variable-drowned)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("drowned")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Egg**](#variable-egg)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("egg")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ElderGuardian**](#variable-elderguardian)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("elder\_guardian")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ElderGuardianGhost**](#variable-elderguardianghost)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("elder\_guardian\_ghost")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**EnderCrystal**](#variable-endercrystal)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("ender\_crystal")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**EnderDragon**](#variable-enderdragon)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("ender\_dragon")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**EnderPearl**](#variable-enderpearl)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("ender\_pearl")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Enderman**](#variable-enderman)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("enderman")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Endermite**](#variable-endermite)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("endermite")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**EvocationFang**](#variable-evocationfang)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("evocation\_fang")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**EvocationIllager**](#variable-evocationillager)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("evocation\_illager")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**EyeOfEnderSignal**](#variable-eyeofendersignal)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("eye\_of\_ender\_signal")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FallingBlock**](#variable-fallingblock)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("falling\_block")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Fireball**](#variable-fireball)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("fireball")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FireworksRocket**](#variable-fireworksrocket)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("fireworks\_rocket")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**FishingHook**](#variable-fishinghook)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("fishing\_hook")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Fox**](#variable-fox)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("fox")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Frog**](#variable-frog)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("frog")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Ghast**](#variable-ghast)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("ghast")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**GlowSquid**](#variable-glowsquid)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("glow\_squid")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Goat**](#variable-goat)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("goat")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Guardian**](#variable-guardian)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("guardian")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**HappyGhast**](#variable-happyghast)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("happy\_ghast")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Hoglin**](#variable-hoglin)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("hoglin")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**HopperMinecart**](#variable-hopperminecart)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("hopper\_minecart")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Horse**](#variable-horse)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("horse")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Husk**](#variable-husk)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("husk")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**IceBomb**](#variable-icebomb)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("ice\_bomb")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**IronGolem**](#variable-irongolem)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("iron\_golem")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Item**](#variable-item)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("item")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LeashKnot**](#variable-leashknot)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("leash\_knot")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LightningBolt**](#variable-lightningbolt)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("lightning\_bolt")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LingeringPotion**](#variable-lingeringpotion)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("lingering\_potion")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Llama**](#variable-llama)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("llama")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**LlamaSpit**](#variable-llamaspit)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("llama\_spit")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**MagmaCube**](#variable-magmacube)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("magma\_cube")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Minecart**](#variable-minecart)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("minecart")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Mooshroom**](#variable-mooshroom)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("mooshroom")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Mule**](#variable-mule)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("mule")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Nautilus**](#variable-nautilus)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("nautilus")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Npc**](#variable-npc)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("npc")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Ocelot**](#variable-ocelot)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("ocelot")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**OminousItemSpawner**](#variable-ominousitemspawner)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("ominous\_item\_spawner")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Painting**](#variable-painting)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("painting")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Panda**](#variable-panda)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("panda")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Parched**](#variable-parched)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("parched")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Parrot**](#variable-parrot)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("parrot")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Phantom**](#variable-phantom)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("phantom")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Pig**](#variable-pig)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("pig")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Piglin**](#variable-piglin)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("piglin")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**PiglinBrute**](#variable-piglinbrute)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("piglin\_brute")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Pillager**](#variable-pillager)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("pillager")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Player**](#variable-player)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("player")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**PolarBear**](#variable-polarbear)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("polar\_bear")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Pufferfish**](#variable-pufferfish)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("pufferfish")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Rabbit**](#variable-rabbit)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("rabbit")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Ravager**](#variable-ravager)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("ravager")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Salmon**](#variable-salmon)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("salmon")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Sheep**](#variable-sheep)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("sheep")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Shulker**](#variable-shulker)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("shulker")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ShulkerBullet**](#variable-shulkerbullet)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("shulker\_bullet")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Silverfish**](#variable-silverfish)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("silverfish")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Skeleton**](#variable-skeleton)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("skeleton")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SkeletonHorse**](#variable-skeletonhorse)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("skeleton\_horse")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Slime**](#variable-slime)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("slime")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SmallFireball**](#variable-smallfireball)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("small\_fireball")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Sniffer**](#variable-sniffer)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("sniffer")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SnowGolem**](#variable-snowgolem)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("snow\_golem")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Snowball**](#variable-snowball)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("snowball")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Spider**](#variable-spider)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("spider")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**SplashPotion**](#variable-splashpotion)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("splash\_potion")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Squid**](#variable-squid)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("squid")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Stray**](#variable-stray)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("stray")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Strider**](#variable-strider)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("strider")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Tadpole**](#variable-tadpole)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("tadpole")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ThrownTrident**](#variable-throwntrident)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("thrown\_trident")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Tnt**](#variable-tnt)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("tnt")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TntMinecart**](#variable-tntminecart)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("tnt\_minecart")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TraderLlama**](#variable-traderllama)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("trader\_llama")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**TripodCamera**](#variable-tripodcamera)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("tripod\_camera")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Tropicalfish**](#variable-tropicalfish)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("tropicalfish")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Turtle**](#variable-turtle)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("turtle")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Vex**](#variable-vex)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("vex")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Villager**](#variable-villager)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("villager")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**VillagerV2**](#variable-villagerv2)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("villager\_v2")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Vindicator**](#variable-vindicator)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("vindicator")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WanderingTrader**](#variable-wanderingtrader)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("wandering\_trader")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Warden**](#variable-warden)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("warden")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WindChargeProjectile**](#variable-windchargeprojectile)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("wind\_charge\_projectile")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Witch**](#variable-witch)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("witch")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Wither**](#variable-wither)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("wither")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WitherSkeleton**](#variable-witherskeleton)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("wither\_skeleton")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WitherSkull**](#variable-witherskull)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("wither\_skull")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**WitherSkullDangerous**](#variable-witherskulldangerous)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("wither\_skull\_dangerous")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Wolf**](#variable-wolf)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("wolf")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**XpBottle**](#variable-xpbottle)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("xp\_bottle")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**XpOrb**](#variable-xporb)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("xp\_orb")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Zoglin**](#variable-zoglin)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("zoglin")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**Zombie**](#variable-zombie)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("zombie")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ZombieHorse**](#variable-zombiehorse)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("zombie\_horse")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ZombieNautilus**](#variable-zombienautilus)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("zombie\_nautilus")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ZombiePigman**](#variable-zombiepigman)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("zombie\_pigman")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ZombieVillager**](#variable-zombievillager)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("zombie\_villager")`<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**auto**](classendstone_1_1Identifier.md) | [**ZombieVillagerV2**](#variable-zombievillagerv2)   = `[**ActorTypeId::minecraft**](classendstone_1_1Identifier.md#function-minecraft)("zombie\_villager\_v2")`<br> |
 
 
 
@@ -222,12 +222,12 @@ See [endstone::Registry::Type](classendstone_1_1Registry_1_1Type.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**Id**](classendstone_1_1Identifier.md) | [**getId**](classendstone_1_1Registry_1_1Type.md#function-getid) () const = 0<br>_Return the identifier of this object._  |
+| virtual [**Id**](classendstone_1_1Registry_1_1Type.md#typedef-id) | [**getId**](classendstone_1_1Registry_1_1Type.md#function-getid) () const = 0<br>_Return the identifier of this object._  |
 | virtual std::string | [**getTranslationKey**](classendstone_1_1Registry_1_1Type.md#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
 |   | [**operator Id**](classendstone_1_1Registry_1_1Type.md#function-operator-id) () const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](classendstone_1_1Registry_1_1Type.md#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Id**](classendstone_1_1Identifier.md) & other) const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](classendstone_1_1Registry_1_1Type.md#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Id**](classendstone_1_1Registry_1_1Type.md#typedef-id) & other) const<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](classendstone_1_1Registry_1_1Type.md#function-operator_1) ([**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & other) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](classendstone_1_1Registry_1_1Type.md#function-operator_2) ([**const**](classendstone_1_1Identifier.md) [**Id**](classendstone_1_1Identifier.md) & other) const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](classendstone_1_1Registry_1_1Type.md#function-operator_2) ([**const**](classendstone_1_1Identifier.md) [**Id**](classendstone_1_1Registry_1_1Type.md#typedef-id) & other) const<br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](classendstone_1_1Registry_1_1Type.md#function-operator_3) ([**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) & other) const<br> |
 | virtual  | [**~Type**](classendstone_1_1Registry_1_1Type.md#function-type) () = default<br> |
 
@@ -240,7 +240,7 @@ See [endstone::Registry::Type](classendstone_1_1Registry_1_1Type.md)
 
 | Type | Name |
 | ---: | :--- |
-|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**get**](classendstone_1_1Registry_1_1Type.md#function-get) ([**Id**](classendstone_1_1Identifier.md) id) <br>_Look up a registry entry by identifier._  |
+|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**get**](classendstone_1_1Registry_1_1Type.md#function-get) ([**Id**](classendstone_1_1Registry_1_1Type.md#typedef-id) id) <br>_Look up a registry entry by identifier._  |
 
 
 

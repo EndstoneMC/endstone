@@ -2874,35 +2874,35 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;">std::uint8_t *</td>
-<td style="text-align: left;"><a href="#function-begin-12"><strong>begin</strong></a> () noexcept<br></td>
+<td style="text-align: left;"><a href="#function-begin-12"><strong>begin</strong></a> () noexcept<br><em>Returns an iterator to the first byte.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>uint8_t</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-begin-22"><strong>begin</strong></a> () noexcept const<br></td>
+<td style="text-align: left;"><a href="#function-begin-22"><strong>begin</strong></a> () noexcept const<br><em>Returns an iterator to the first byte.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::uint8_t *</td>
-<td style="text-align: left;"><a href="#function-end-12"><strong>end</strong></a> () noexcept<br></td>
+<td style="text-align: left;"><a href="#function-end-12"><strong>end</strong></a> () noexcept<br><em>Returns an iterator past the last byte.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>uint8_t</strong></a> *</td>
-<td style="text-align: left;"><a href="#function-end-22"><strong>end</strong></a> () noexcept const<br></td>
+<td style="text-align: left;"><a href="#function-end-22"><strong>end</strong></a> () noexcept const<br><em>Returns an iterator past the last byte.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
-<td style="text-align: left;"><a href="#function-isnil"><strong>isNil</strong></a> () noexcept const<br></td>
+<td style="text-align: left;"><a href="#function-isnil"><strong>isNil</strong></a> () noexcept const<br><em>Checks whether this</em> <a href="./"><em><strong>UUID</strong></em></a> <em>is nil (all bytes are zero).</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::string</td>
-<td style="text-align: left;"><a href="#function-str"><strong>str</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-str"><strong>str</strong></a> () const<br><em>Returns the canonical hyphenated string representation of this</em> <a href="./"><em><strong>UUID</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>void</strong></a></td>
-<td style="text-align: left;"><a href="#function-swap"><strong>swap</strong></a> (<a href="./"><strong>UUID</strong></a> &amp; rhs) noexcept<br></td>
+<td style="text-align: left;"><a href="#function-swap"><strong>swap</strong></a> (<a href="./"><strong>UUID</strong></a> &amp; rhs) noexcept<br><em>Swaps the contents of this</em> <a href="./"><em><strong>UUID</strong></em></a> <em>with another.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
-<td style="text-align: left;"><a href="#function-version"><strong>version</strong></a> () noexcept const<br></td>
+<td style="text-align: left;"><a href="#function-version"><strong>version</strong></a> () noexcept const<br><em>Returns the version number encoded in this</em> <a href="./"><em><strong>UUID</strong></em></a> <em>.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2917,7 +2917,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> std::size_t</td>
-<td style="text-align: left;"><a href="#function-size"><strong>size</strong></a> () noexcept<br></td>
+<td style="text-align: left;"><a href="#function-size"><strong>size</strong></a> () noexcept<br><em>Returns the number of bytes in a</em> <a href="./"><em><strong>UUID</strong></em></a> <em>.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2930,50 +2930,79 @@ For latest updates join the chat on
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-begin-12">function begin [&frac12;]<a class="headerlink" href="#function-begin-12" title="Permanent link">&para;</a></h3>
+<p><em>Returns an iterator to the first byte.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">UUID</span><span class="o">::</span><span class="n">begin</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>Pointer to the first byte </p>
 <hr>
 
 <h3 id="function-begin-22">function begin [2/2]<a class="headerlink" href="#function-begin-22" title="Permanent link">&para;</a></h3>
+<p><em>Returns an iterator to the first byte.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">UUID</span><span class="o">::</span><span class="n">begin</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>Pointer to the first byte   </p>
 <hr>
 
 <h3 id="function-end-12">function end [&frac12;]<a class="headerlink" href="#function-end-12" title="Permanent link">&para;</a></h3>
+<p><em>Returns an iterator past the last byte.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">UUID</span><span class="o">::</span><span class="n">end</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>Pointer past the last byte </p>
 <hr>
 
 <h3 id="function-end-22">function end [2/2]<a class="headerlink" href="#function-end-22" title="Permanent link">&para;</a></h3>
+<p><em>Returns an iterator past the last byte.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">UUID</span><span class="o">::</span><span class="n">end</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>Pointer past the last byte   </p>
 <hr>
 
 <h3 id="function-isnil">function isNil<a class="headerlink" href="#function-isnil" title="Permanent link">&para;</a></h3>
+<p><em>Checks whether this</em> <a href="./"><em><strong>UUID</strong></em></a> <em>is nil (all bytes are zero).</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">UUID</span><span class="o">::</span><span class="n">isNil</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>true if every byte is zero, false otherwise </p>
 <hr>
 
 <h3 id="function-str">function str<a class="headerlink" href="#function-str" title="Permanent link">&para;</a></h3>
+<p><em>Returns the canonical hyphenated string representation of this</em> <a href="./"><em><strong>UUID</strong></em></a> <em>.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">UUID</span><span class="o">::</span><span class="n">str</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>The <a href="./"><strong>UUID</strong></a> formatted as a 36-character string </p>
 <hr>
 
 <h3 id="function-swap">function swap<a class="headerlink" href="#function-swap" title="Permanent link">&para;</a></h3>
+<p><em>Swaps the contents of this</em> <a href="./"><em><strong>UUID</strong></em></a> <em>with another.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">UUID</span><span class="o">::</span><span class="n">swap</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>rhs</code> The <a href="./"><strong>UUID</strong></a> to swap with </li>
+</ul>
 <hr>
 
 <h3 id="function-version">function version<a class="headerlink" href="#function-version" title="Permanent link">&para;</a></h3>
+<p><em>Returns the version number encoded in this</em> <a href="./"><em><strong>UUID</strong></em></a> <em>.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">UUID</span><span class="o">::</span><span class="n">version</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>The <a href="./"><strong>UUID</strong></a> version (1-5), or -1 if it is not a recognized version </p>
 <hr>
 <h2 id="public-static-functions-documentation">Public Static Functions Documentation<a class="headerlink" href="#public-static-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-size">function size<a class="headerlink" href="#function-size" title="Permanent link">&para;</a></h3>
+<p><em>Returns the number of bytes in a</em> <a href="./"><em><strong>UUID</strong></em></a> <em>.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">UUID</span><span class="o">::</span><span class="n">size</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>The size in bytes (always 16) </p>
 <hr>
 
 <hr />

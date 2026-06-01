@@ -87,7 +87,7 @@ See [endstone::BanEntry](classendstone_1_1BanEntry.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**IpBanEntry**](#function-ipbanentry) (std::string address) <br> |
+|   | [**IpBanEntry**](#function-ipbanentry) (std::string address) <br>_Construct a ban entry for the given IP address._  |
 |  std::string | [**getAddress**](#function-getaddress) () const<br>_Gets the banned IP address._  |
 
 
@@ -166,6 +166,7 @@ See [endstone::BanEntry](classendstone_1_1BanEntry.md)
 
 ### function IpBanEntry 
 
+_Construct a ban entry for the given IP address._ 
 ```C++
 inline explicit endstone::IpBanEntry::IpBanEntry (
     std::string address
@@ -174,6 +175,17 @@ inline explicit endstone::IpBanEntry::IpBanEntry (
 
 
 
+
+
+**Parameters:**
+
+
+* `address` the IP address being banned 
+
+
+
+
+        
 
 <hr>
 

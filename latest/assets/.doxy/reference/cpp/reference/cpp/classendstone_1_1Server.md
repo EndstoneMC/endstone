@@ -61,13 +61,13 @@ _Represents a server implementation._
 |   | [**Server**](#function-server-12) () = default<br> |
 |   | [**Server**](#function-server-22) ([**const**](classendstone_1_1Identifier.md) [**Server**](classendstone_1_1Server.md) &) = delete<br> |
 | virtual [**IRegistry**](classendstone_1_1IRegistry.md) \* | [**\_getRegistry**](#function-_getregistry) ([**const**](classendstone_1_1Identifier.md) std::type\_info & type) const = 0<br>_Returns the registry for the given type._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**broadcast**](#function-broadcast) ([**const**](classendstone_1_1Identifier.md) Message & message, [**const**](classendstone_1_1Identifier.md) std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-12) ([**const**](classendstone_1_1Identifier.md) Message & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br> |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**broadcast**](#function-broadcast) ([**const**](classendstone_1_1Identifier.md) [**Message**](namespaceendstone.md#typedef-message) & message, [**const**](classendstone_1_1Identifier.md) std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-12) ([**const**](classendstone_1_1Identifier.md) [**Message**](namespaceendstone.md#typedef-message) & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br>_Broadcasts a formatted message to every user with permission endstone.broadcast.user._  |
 | virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**BlockType**](classendstone_1_1BlockType.md) &gt; type) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._ |
 | virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**BlockType**](classendstone_1_1BlockType.md) &gt; type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
-| virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, BarColor color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) const = 0<br>_Creates a boss bar instance to display to players._  |
-| virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, BarColor color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style, std::vector&lt; [**BarFlag**](namespaceendstone.md#enum-barflag) &gt; flags) const = 0<br>_Creates a boss bar instance to display to players._  |
+| virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) const = 0<br>_Creates a boss bar instance to display to players._  |
+| virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style, std::vector&lt; [**BarFlag**](namespaceendstone.md#enum-barflag) &gt; flags) const = 0<br>_Creates a boss bar instance to display to players._  |
 | virtual [**MapView**](classendstone_1_1MapView.md) & | [**createMap**](#function-createmap) ([**const**](classendstone_1_1Identifier.md) [**Dimension**](classendstone_1_1Dimension.md) & dimension) const = 0<br>_Create a new map with an automatically assigned ID._  |
 | virtual std::shared\_ptr&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**createScoreboard**](#function-createscoreboard) () = 0<br>_Creates a new_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _to be tracked by the server._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**dispatchCommand**](#function-dispatchcommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command\_line) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
@@ -97,7 +97,7 @@ _Represents a server implementation._
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getPort**](#function-getport) () const = 0<br>_Get the game port that the server runs on._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getPortV6**](#function-getportv6) () const = 0<br>_Get the game port (IPv6) that the server runs on._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getProtocolVersion**](#function-getprotocolversion) () const = 0<br>_Gets the network protocol version that this server supports._  |
-|  [**const**](classendstone_1_1Identifier.md) [**Registry**](classendstone_1_1Registry.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; & | [**getRegistry**](#function-getregistry) () const<br> |
+|  [**const**](classendstone_1_1Identifier.md) [**Registry**](classendstone_1_1Registry.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; & | [**getRegistry**](#function-getregistry) () const<br>_Returns the registry for the given element type._  |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) \* | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the primary_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _controlled by the server._ |
 | virtual [**ServiceManager**](classendstone_1_1ServiceManager.md) & | [**getServiceManager**](#function-getservicemanager) () const = 0<br>_Gets the service manager._  |
@@ -243,7 +243,7 @@ the corresponding registry, or nullptr if not present
 _Broadcasts the specified message to every user with the given permission name._ 
 ```C++
 virtual void endstone::Server::broadcast (
-    const Message & message,
+    const  Message & message,
     const std::string & permission
 ) const = 0
 ```
@@ -272,7 +272,7 @@ virtual void endstone::Server::broadcast (
 _Broadcasts the specified message to every user with permission endstone.broadcast.user._ 
 ```C++
 virtual void endstone::Server::broadcastMessage (
-    const Message & message
+    const  Message & message
 ) const = 0
 ```
 
@@ -296,6 +296,7 @@ virtual void endstone::Server::broadcastMessage (
 
 ### function broadcastMessage [2/2]
 
+_Broadcasts a formatted message to every user with permission endstone.broadcast.user._ 
 ```C++
 template<typename... Args>
 inline void endstone::Server::broadcastMessage (
@@ -306,6 +307,21 @@ inline void endstone::Server::broadcastMessage (
 
 
 
+Formats the message using std::format before broadcasting. If formatting throws, the exception message is logged at the Error level instead.
+
+
+
+
+**Parameters:**
+
+
+* `format` The format string. 
+* `args` The arguments to substitute into the format string. 
+
+
+
+
+        
 
 <hr>
 
@@ -1254,6 +1270,7 @@ version of network protocol
 
 ### function getRegistry 
 
+_Returns the registry for the given element type._ 
 ```C++
 template<typename  T>
 inline const  Registry < T > & endstone::Server::getRegistry () const
@@ -1261,6 +1278,24 @@ inline const  Registry < T > & endstone::Server::getRegistry () const
 
 
 
+
+
+**Template parameters:**
+
+
+* `T` The element type whose registry to retrieve. 
+
+
+
+**Returns:**
+
+the corresponding registry. 
+
+
+
+
+
+        
 
 <hr>
 

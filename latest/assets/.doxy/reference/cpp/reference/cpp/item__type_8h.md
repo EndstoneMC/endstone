@@ -35,7 +35,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**ItemType**](classendstone_1_1ItemType.md) <br> |
+| class | [**ItemType**](classendstone_1_1ItemType.md) <br>_Represents an item type._  |
 
 
 
