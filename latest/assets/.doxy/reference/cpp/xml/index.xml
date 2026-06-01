@@ -2329,8 +2329,8 @@
     <member refid="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" kind="function"><name>getStartTime</name></member>
     <member refid="classendstone_1_1Server_1a7e443c131695f212023c111ae764d404" kind="function"><name>createBossBar</name></member>
     <member refid="classendstone_1_1Server_1a2536be1d6e7e8756a2827762ab9896ba" kind="function"><name>createBossBar</name></member>
-    <member refid="classendstone_1_1Server_1a3f5fe3cd2905fdb0409abbf2eb246a89" kind="function"><name>createBlockData</name></member>
-    <member refid="classendstone_1_1Server_1a39726c20c8fe459387fd8601694c9125" kind="function"><name>createBlockData</name></member>
+    <member refid="classendstone_1_1Server_1ae2678a43db95834aae4ba4f6f46dbe2e" kind="function"><name>createBlockData</name></member>
+    <member refid="classendstone_1_1Server_1ac9fbdd4fd77575ce27b9091eceafb1a3" kind="function"><name>createBlockData</name></member>
     <member refid="classendstone_1_1Server_1a6aabbee05ed99ba41702ae926c6374b2" kind="function"><name>getBanList</name></member>
     <member refid="classendstone_1_1Server_1a8ab4971ec939f666bf3b98d1a80c7af3" kind="function"><name>getIpBanList</name></member>
     <member refid="classendstone_1_1Server_1a846007f57bf27a84e78f49b218c2fa7c" kind="function"><name>getServiceManager</name></member>
@@ -2753,7 +2753,7 @@
     <member refid="namespaceendstone_1a94ee63841c0963c0a0676b0783e03486" kind="typedef"><name>ActorTypeId</name></member>
     <member refid="namespaceendstone_1ac2d399872c391e7ce2ec1896ba62e669" kind="typedef"><name>AttributeId</name></member>
     <member refid="namespaceendstone_1a688abbe501a61374454a55553d25e08f" kind="typedef"><name>BlockStates</name></member>
-    <member refid="namespaceendstone_1a4b4a61600576d63a4a5aeb9758ee1096" kind="typedef"><name>BlockTypeId</name></member>
+    <member refid="namespaceendstone_1a42f3cb333492510ff60b8097153fa66a" kind="typedef"><name>BlockTypeId</name></member>
     <member refid="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" kind="typedef"><name>EffectId</name></member>
     <member refid="namespaceendstone_1a996c90f609bfd792a8245bb60fd3e4ea" kind="typedef"><name>EnchantmentId</name></member>
     <member refid="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" kind="typedef"><name>ItemTypeId</name></member>

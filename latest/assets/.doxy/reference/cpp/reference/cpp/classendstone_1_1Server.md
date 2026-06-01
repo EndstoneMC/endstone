@@ -64,8 +64,8 @@ _Represents a server implementation._
 | virtual [**void**](classendstone_1_1Identifier.md) | [**broadcast**](#function-broadcast) ([**const**](classendstone_1_1Identifier.md) [**Message**](namespaceendstone.md#typedef-message) & message, [**const**](classendstone_1_1Identifier.md) std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-12) ([**const**](classendstone_1_1Identifier.md) [**Message**](namespaceendstone.md#typedef-message) & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br>_Broadcasts a formatted message to every user with permission endstone.broadcast.user._  |
-| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**BlockType**](classendstone_1_1BlockType.md) &gt; type) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._ |
-| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) ([**Identifier**](classendstone_1_1Identifier.md)&lt; [**BlockType**](classendstone_1_1BlockType.md) &gt; type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
+| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) ([**BlockTypeId**](classendstone_1_1Identifier.md) type) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._ |
+| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) ([**BlockTypeId**](classendstone_1_1Identifier.md) type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) const = 0<br>_Creates a boss bar instance to display to players._  |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style, std::vector&lt; [**BarFlag**](namespaceendstone.md#enum-barflag) &gt; flags) const = 0<br>_Creates a boss bar instance to display to players._  |
 | virtual [**MapView**](classendstone_1_1MapView.md) & | [**createMap**](#function-createmap) ([**const**](classendstone_1_1Identifier.md) [**Dimension**](classendstone_1_1Dimension.md) & dimension) const = 0<br>_Create a new map with an automatically assigned ID._  |
@@ -332,7 +332,7 @@ Formats the message using std::format before broadcasting. If formatting throws,
 _Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._
 ```C++
 virtual std::unique_ptr< BlockData > endstone::Server::createBlockData (
-    Identifier < BlockType > type
+    BlockTypeId type
 ) const = 0
 ```
 
@@ -366,7 +366,7 @@ new data instance
 _Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._
 ```C++
 virtual std::unique_ptr< BlockData > endstone::Server::createBlockData (
-    Identifier < BlockType > type,
+    BlockTypeId type,
     BlockStates block_states
 ) const = 0
 ```

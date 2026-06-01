@@ -445,7 +445,7 @@ using endstone::BlockStates = typedef std::unordered_map<std::string, std::varia
 ### typedef BlockTypeId 
 
 ```C++
-using endstone::BlockTypeId = typedef Identifier<BlockType>;
+typedef Identifier< BlockType > endstone::BlockTypeId;
 ```
 
 

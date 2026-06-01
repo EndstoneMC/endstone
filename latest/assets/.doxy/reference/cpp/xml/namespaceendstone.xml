@@ -930,9 +930,9 @@
         </inbodydescription>
         <location file="include/endstone/block/block_data.h" line="30" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="30" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1a4b4a61600576d63a4a5aeb9758ee1096" prot="public" static="no">
+      <memberdef kind="typedef" id="namespaceendstone_1a42f3cb333492510ff60b8097153fa66a" prot="public" static="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1BlockType" kindref="compound">BlockType</ref> &gt;</type>
-        <definition>using endstone::BlockTypeId = typedef Identifier&lt;BlockType&gt;</definition>
+        <definition>typedef Identifier&lt; BlockType &gt; endstone::BlockTypeId</definition>
         <argsstring></argsstring>
         <name>BlockTypeId</name>
         <qualifiedname>endstone::BlockTypeId</qualifiedname>

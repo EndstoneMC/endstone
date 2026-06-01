@@ -66,6 +66,10 @@ class PluginManager;
 template <typename T>
 class Registry;
 
+// Mirrors the alias in block/block_type.h; redeclared here because that header
+// (via registry.h) includes this one, so it cannot be included before Server.
+using BlockTypeId = Identifier<BlockType>;
+
 class Server {
 public:
     Server() = default;
@@ -162,9 +166,9 @@ public:
     [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
                                                                  std::vector<BarFlag> flags) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(Identifier<BlockType> type) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(BlockTypeId type) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(Identifier<BlockType> type,
+    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(BlockTypeId type,
                                                                      BlockStates block_states) const = 0;
 
     [[nodiscard]] virtual PlayerBanList &getBanList() const = 0;
