@@ -56,7 +56,7 @@ private:
     TagDataNotFoundCallback tag_not_found_callback_;
     ValidateValueCallback validate_value_callback_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(GameRule, 184, 152);
+BEDROCK_STATIC_ASSERT_SIZE(GameRule, 184, 144);
 
 struct GameRuleId : NewType<int> {
     GameRuleId() = default;
