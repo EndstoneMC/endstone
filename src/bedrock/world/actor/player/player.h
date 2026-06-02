@@ -176,6 +176,7 @@ public:
 
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] PlayerPermissionLevel getPlayerPermissionLevel() const;
+    [[nodiscard]] bool isRespawningFromTheEnd() const { return respawning_from_the_end_; }
 
     // Abilities
     [[nodiscard]] LayeredAbilities &getAbilities();

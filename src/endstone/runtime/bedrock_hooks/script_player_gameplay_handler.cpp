@@ -124,7 +124,9 @@ bool handleEvent(const ::PlayerRespawnEvent &event)
 {
     if (const auto *player = WeakEntityRef(event.player).tryUnwrap<::Player>(); player) {
         const auto &server = endstone::core::EndstoneServer::getInstance();
-        endstone::PlayerRespawnEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>()};
+        const auto reason = player->isRespawningFromTheEnd() ? endstone::PlayerRespawnEvent::RespawnReason::EndPortal
+                                                             : endstone::PlayerRespawnEvent::RespawnReason::Death;
+        endstone::PlayerRespawnEvent e{player->getEndstoneActor<endstone::core::EndstonePlayer>(), reason};
         server.getPluginManager().callEvent(e);
     }
     return true;
