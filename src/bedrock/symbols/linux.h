@@ -10,7 +10,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbols = {{
     {"BlockState::StateListNode::mHead", 224329040},
     {"Enchant::mEnchants", 224184928},
     {"getI18n::result", 222926576},
@@ -18,9 +18,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 66> symbol
     {"_ZN5Actor10teleportToERK4Vec3biib", 153144112},
     // ActorFactory
     {"_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2", 153774592},
-    // BatchedNetworkPeer
-    {"_ZN18BatchedNetworkPeer10sendPacketERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEN11NetworkPeer11ReliabilityE15Compressibility", 97628816},
-    {"_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE", 97629232},
+    // NetworkSystem (issue #356) -- PLACEHOLDER offset; regenerate before running.
+    {"_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE", 0},
     // BedrockLog::LogDetails
     {"_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag", 216599584},
     // BlockDescriptor::ResolveHelper

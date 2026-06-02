@@ -120,6 +120,13 @@ const std::string &BinaryStream::getBuffer() const
     return *buffer_;
 }
 
+std::string BinaryStream::getAndReleaseData()
+{
+    std::string data = std::move(*buffer_);
+    reset();
+    return data;
+}
+
 void BinaryStream::reset()
 {
     buffer_->clear();

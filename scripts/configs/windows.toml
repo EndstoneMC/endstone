@@ -44,18 +44,12 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-# Batched Network TaskGroup
-name = "?sendPacket@BatchedNetworkPeer@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Reliability@NetworkPeer@@W4Compressibility@@@Z"
+# Issue #356: spliced AsyncBatchedNetworkPeer. onNewIncomingConnection's vtable slot is in a non-primary
+# subobject vtable, so it is hooked by RVA. TODO: no byte pattern yet -- resolve by name via
+# `dump_symbols.py --pdb` against the 1.26.20 PDB.
+name = "?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@@Z"
 relative = false
 extra = 0
-pattern = "48 89 5C 24 ? 48 89 74 24 ? 57 48 81 EC ? ? ? ? 41 8B F1"
-
-[[signatures]]
-# Batched Network TaskGroup
-name = "?_receivePacket@BatchedNetworkPeer@@MEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z"
-relative = false
-extra = 0
-pattern = "48 89 5C 24 ? 55 56 57 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 48 8B DA 48 8B F1 BF"
 
 [[signatures]]
 name = "?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z"

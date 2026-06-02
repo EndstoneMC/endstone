@@ -21,6 +21,7 @@
 #include "bedrock/scripting/event_handlers/script_player_gameplay_handler.h"
 #include "bedrock/scripting/event_handlers/script_scripting_event_handler.h"
 #include "bedrock/scripting/event_handlers/script_server_network_event_handler.h"
+#include "endstone/core/network/network_thread_pool.h"
 #include "endstone/core/server.h"
 #include "endstone/detail.h"
 #include "endstone/runtime/hook.h"
@@ -128,11 +129,13 @@ public:
         hookEventHandler(*level.getScriptingEventCoordinator().scripting_event_handler);
         hookEventHandler(*level.getServerNetworkEventCoordinator().server_network_event_handler);
         server.setLevel(level);
+        endstone::core::NetworkThreadPool::getInstance().start();  // async network workers (issue #356)
         return ::EventResult::KeepGoing;
     }
 
     ::EventResult onServerThreadStopped(ServerInstance &instance) override
     {
+        endstone::core::NetworkThreadPool::getInstance().stop();  // join async network workers before teardown
         if (entt::locator<endstone::core::EndstoneServer>::has_value()) {
             auto &server = endstone::core::EndstoneServer::getInstance();
             server.disablePlugins();

@@ -7,7 +7,6 @@ find_package(funchook CONFIG REQUIRED)
 
 add_library(endstone_runtime SHARED
         bedrock_hooks/actor.cpp
-        bedrock_hooks/batched_network_peer.cpp
         bedrock_hooks/bedrock_event_logger.cpp
         bedrock_hooks/campfire_block_actor.cpp
         bedrock_hooks/console_input_reader.cpp
@@ -23,6 +22,7 @@ add_library(endstone_runtime SHARED
         bedrock_hooks/map_data_manager.cpp
         bedrock_hooks/minecraft_commands.cpp
         bedrock_hooks/mob.cpp
+        bedrock_hooks/network_system.cpp
         bedrock_hooks/packet.cpp
         bedrock_hooks/piston_block_actor.cpp
         bedrock_hooks/player.cpp

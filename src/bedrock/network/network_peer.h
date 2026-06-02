@@ -17,6 +17,10 @@
 #include <chrono>
 #include <functional>
 
+namespace endstone::core {
+class AsyncBatchedNetworkPeer;  // Endstone
+}  // namespace endstone::core
+
 enum class DevConnectionQuality : int {
     OFF = 0,
     NO_LIMIT = 1,
@@ -82,5 +86,6 @@ protected:
     virtual DataStatus _receivePacket(std::string &out_data, const PacketRecvTimepointPtr &timepoint_ptr) = 0;
     std::shared_ptr<NetworkPeer> peer_;
 
-    friend class BatchedNetworkPeer;  // Endstone
+    friend class BatchedNetworkPeer;                       // Endstone
+    friend class endstone::core::AsyncBatchedNetworkPeer;  // Endstone: splices itself in place of the old Batched
 };
