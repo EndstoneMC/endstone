@@ -365,7 +365,16 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
         .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
                       "The quit message to send to all online players.");
-    py::class_<PlayerRespawnEvent, PlayerEvent>(m, "PlayerRespawnEvent", "Called when a player respawns.");
+    auto player_respawn_event =
+        py::class_<PlayerRespawnEvent, PlayerEvent>(m, "PlayerRespawnEvent", "Called when a player respawns.");
+    py::native_enum<PlayerRespawnEvent::RespawnReason>(player_respawn_event, "RespawnReason", "enum.Enum",
+                                                       "An enum to specify the reason a respawn occurred.")
+        .value("DEATH", PlayerRespawnEvent::RespawnReason::Death)
+        .value("END_PORTAL", PlayerRespawnEvent::RespawnReason::EndPortal)
+        .export_values()
+        .finalize();
+    player_respawn_event.def_property_readonly("respawn_reason", &PlayerRespawnEvent::getRespawnReason,
+                                               "The reason this respawn occurred.");
     py::class_<PlayerSkinChangeEvent, PlayerEvent, ICancellable>(m, "PlayerSkinChangeEvent",
                                                                  "Called when a player changes their skin.")
         .def_property_readonly("new_skin", &PlayerSkinChangeEvent::getNewSkin, "The skin that will be applied.")

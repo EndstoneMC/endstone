@@ -866,6 +866,22 @@ class PlayerRespawnEvent(PlayerEvent):
     """
     Called when a player respawns.
     """
+    class RespawnReason(enum.Enum):
+        """
+        An enum to specify the reason a respawn occurred.
+        """
+
+        DEATH = 0
+        END_PORTAL = 1
+
+    DEATH = RespawnReason.DEATH
+    END_PORTAL = RespawnReason.END_PORTAL
+    @property
+    def respawn_reason(self) -> RespawnReason:
+        """
+        The reason this respawn occurred.
+        """
+        ...
 
 class PlayerSkinChangeEvent(PlayerEvent, Cancellable):
     """

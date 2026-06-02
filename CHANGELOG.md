@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `PUID`/`PGID` environment variables to the Docker image to keep server files owned by your host user.
 - Added a `docker-compose.yml` for running the server with Docker Compose.
 - Added graceful shutdown on Linux: stopping the server (e.g. via `docker stop`) now lets the Bedrock server save the world before it exits.
+- Added `PlayerRespawnEvent.respawn_reason` (`RespawnReason.DEATH` / `RespawnReason.END_PORTAL`) so plugins can tell a normal death respawn apart from a player returning to the Overworld through the End exit portal.
 
 ### Changed
 
