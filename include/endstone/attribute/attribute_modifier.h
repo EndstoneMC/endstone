@@ -17,6 +17,8 @@
 #include <string>
 #include <utility>
 
+#include "endstone/util/uuid.h"
+
 namespace endstone {
 /**
  * Represents an attribute modifier.

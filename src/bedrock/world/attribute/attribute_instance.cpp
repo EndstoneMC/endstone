@@ -14,6 +14,7 @@
 
 #include "bedrock/world/attribute/attribute_instance.h"
 
+#include "bedrock/world/attribute/attribute_instance_delegate.h"
 #include "bedrock/world/attribute/attribute_map.h"
 
 const Attribute *AttributeInstance::getAttribute() const
@@ -83,5 +84,83 @@ void AttributeInstance::_setDirty(AttributeModificationContext context)
 {
     if (context.attribute_map) {
         context.attribute_map->onAttributeModified(*this);
+    }
+}
+
+float AttributeInstance::_calculateValue()
+{
+    for (const auto &modifier : modifier_list) {
+        if (modifier.getOperation() == AttributeModifierOperation::OPERATION_ADDITION) {
+            int operand = static_cast<int>(modifier.getOperand());
+            current_values_[operand] += modifier.getAmount();
+        }
+    }
+    for (const auto &modifier : modifier_list) {
+        if (modifier.getOperation() == AttributeModifierOperation::OPERATION_MULTIPLY_BASE) {
+            int operand = static_cast<int>(modifier.getOperand());
+            current_values_[operand] *= modifier.getAmount();
+        }
+    }
+    for (const auto &modifier : modifier_list) {
+        if (modifier.getOperation() == AttributeModifierOperation::OPERATION_MULTIPLY_TOTAL) {
+            int operand = static_cast<int>(modifier.getOperand());
+            current_values_[operand] *= (1.0F + modifier.getAmount());
+        }
+    }
+    // todo(attribute): check logic
+    // if ((current_value_ == default_value_ && !modifier_list.empty()) ||
+    //     (modifier_list.empty() && !attribute_->isClientSyncable())) {
+    //     current_value_ = default_value_;
+    // }
+    return _sanitizeValue(current_value_);
+}
+
+float AttributeInstance::_sanitizeValue(float value)
+{
+    float cap_limit = current_max_value_;
+    for (const auto &modifier : modifier_list) {
+        if (modifier.getOperation() == AttributeModifierOperation::OPERATION_CAP) {
+            float amount = modifier.getAmount();
+            cap_limit = std::min(cap_limit, amount);
+        }
+    }
+    float result = std::max(value, current_min_value_);
+    result = std::min(result, cap_limit);
+    return result;
+}
+
+void AttributeInstance::addModifier(const AttributeModifier &modifier, AttributeModificationContext context)
+{
+    if (modifier.isInstantaneous()) {
+        return;
+    }
+    for (const auto &existing_modifier : modifier_list) {
+        if (existing_modifier == modifier) {
+            return;
+        }
+    }
+    modifier_list.push_back(modifier);
+    float new_value = _calculateValue();
+    current_value_ = new_value;
+    _setDirty(context);
+}
+
+void AttributeInstance::removeModifier(const AttributeModifier &modifier, AttributeModificationContext context)
+{
+    auto begin = modifier_list.begin();
+    auto end = modifier_list.end();
+    for (auto it = begin; it != end; ++it) {
+        if (*it != modifier) {
+            continue;
+        }
+        modifier_list.erase(it);
+        float new_value = _calculateValue();
+        current_value_ = new_value;
+        _setDirty(context);
+        if (delegate_) {
+            // todo(attribute): check logic
+            delegate_->notify(0, context);
+        }
+        break;
     }
 }

@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "endstone/actor/actor_type.h"
+#include "endstone/attribute/attribute_instance.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/level/location.h"
 
@@ -225,6 +226,29 @@ public:
      * @param score The new score tag to set.
      */
     virtual void setScoreTag(std::string score) = 0;
+
+    /**
+     * @brief Check the attribute is present in the object.
+     *
+     * @param id The attribute to check
+     */
+    [[nodiscard]] virtual bool hasAttribute(AttributeId id) const = 0;
+
+    /**
+     * @brief Gets the specified attribute instance from the object. This instance will be backed directly to the object
+     * and any changes will be visible at once.
+     *
+     * @param id The attribute to get
+     */
+    [[nodiscard]] virtual std::unique_ptr<AttributeInstance> getAttribute(AttributeId id) = 0;
+
+    /**
+     * @brief Gets all attributes instances from the object. This instance will be backed directly to the object
+     * and any changes will be visible at once.
+     *
+     * @return All attributes instances from the object.
+     */
+    [[nodiscard]] virtual std::vector<std::unique_ptr<AttributeInstance>> getAttributes() = 0;
 };
 
 }  // namespace endstone
