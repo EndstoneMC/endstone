@@ -16,6 +16,7 @@
 
 #include <atomic>
 #include <mutex>
+#include <optional>
 
 #include <moodycamel/concurrentqueue.h>
 
@@ -61,6 +62,7 @@ private:
     std::unordered_map<TaskId, std::shared_ptr<EndstoneTask>> tasks_{};
     std::mutex tasks_mtx_{};
     std::map<std::uint64_t, std::vector<std::shared_ptr<EndstoneTask>>> queue_{};
+    std::optional<std::uint64_t> base_tick_{};
     std::uint64_t current_tick_{0};
     std::atomic<TaskId> current_task_{0};
     TaskComparator cmp_{};

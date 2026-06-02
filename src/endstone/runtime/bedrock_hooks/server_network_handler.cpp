@@ -59,7 +59,7 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
     // Malicious clients can simply ignore this and keep spamming packets indefinitely.
     // Fix: don't ask, just close the connection.
     if (sub_id == SubClientId::PrimaryClient) {
-        server.getServer().getNetwork().closeConnection(id, reason, message);
+        server.getServer().getNetwork().setCloseConnection(id);
     }
 }
 
