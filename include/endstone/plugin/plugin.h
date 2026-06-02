@@ -116,9 +116,9 @@ public:
      * Gets the command with the given name, specific to this plugin.
      *
      * @param name name or alias of the command
-     * @return the plugin command if found, otherwise nullptr
+     * @return the plugin command if found, otherwise a null handle
      */
-    [[nodiscard]] PluginCommand *getCommand(std::string name) const
+    [[nodiscard]] Nullable<PluginCommand> getCommand(std::string name) const
     {
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
         return getServer().getPluginCommand(name);

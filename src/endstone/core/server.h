@@ -58,7 +58,7 @@ public:
     [[nodiscard]] Language &getLanguage() const override;
     [[nodiscard]] EndstoneCommandMap &getCommandMap() const;
     [[nodiscard]] PluginManager &getPluginManager() const override;
-    [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
+    [[nodiscard]] Nullable<PluginCommand> getPluginCommand(std::string name) const override;
     [[nodiscard]] ConsoleCommandSender &getCommandSender() const override;
     [[nodiscard]] std::shared_ptr<ConsoleCommandSender> getCommandSenderPtr() const;
     [[nodiscard]] bool dispatchCommand(CommandSender &sender, std::string command_line) const override;
@@ -92,7 +92,7 @@ public:
     [[nodiscard]] bool isPrimaryThread() const override;
 
     [[nodiscard]] ItemFactory &getItemFactory() const override;
-    [[nodiscard]] Scoreboard *getScoreboard() const override;
+    [[nodiscard]] Nullable<Scoreboard> getScoreboard() const override;
     [[nodiscard]] std::shared_ptr<Scoreboard> createScoreboard() override;
     float getCurrentMillisecondsPerTick() override;
     float getAverageMillisecondsPerTick() override;

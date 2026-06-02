@@ -22,15 +22,14 @@ void init_damage(py::module &m)
 {
     py::classh<DamageSource>(m, "DamageSource", "Represents a source of damage.")
         .def_property_readonly("type", &DamageSource::getType, "The damage type.")
-        .def_property_readonly("actor", &DamageSource::getActor, py::return_value_policy::reference, R"doc(
+        .def_property_readonly("actor", &DamageSource::getActor, R"doc(
     The actor that caused the damage to occur.
 
     Not to be confused with `damaging_actor`, the returned actor is the actor to which the damage is
     ultimately attributed if the receiver is killed. If, for example, the receiver was damaged by a projectile, the
     shooter/thrower would be returned.
 )doc")
-        .def_property_readonly("damaging_actor", &DamageSource::getDamagingActor, py::return_value_policy::reference,
-                               R"doc(
+        .def_property_readonly("damaging_actor", &DamageSource::getDamagingActor, R"doc(
     The actor that directly caused the damage.
 
     Not to be confused with `actor`, the returned actor is the actor that actually inflicted the
