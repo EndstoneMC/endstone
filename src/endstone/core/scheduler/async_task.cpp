@@ -47,6 +47,7 @@ void EndstoneAsyncTask::run()
                                         getOwner()->getName(), getTaskId(), e.what());
     }
 
+    bool finished = false;
     {
         std::lock_guard lock{mutex_};
         bool removed = false;
@@ -67,10 +68,15 @@ void EndstoneAsyncTask::run()
             }
         }
 
-        if (getPeriod() == 0 && workers_.empty()) {
-            // The last worker is responsible for removing ourselves from the scheduler task list
-            getScheduler().removeTask(getTaskId());
-        }
+        // The last worker is responsible for removing ourselves from the scheduler task list once the
+        // task is done (one-shot) or has been cancelled while still running.
+        finished = workers_.empty() && (getPeriod() == 0 || isCancelled());
+    }
+
+    // Remove ourselves outside the lock: removeTask() takes the scheduler's tasks_mtx_, which must
+    // never be held together with our own mutex_ (the cancel path takes them in the opposite order).
+    if (finished) {
+        getScheduler().removeTask(getTaskId());
     }
 }
 
@@ -78,9 +84,15 @@ void EndstoneAsyncTask::doCancel()
 {
     // Set cancelled flag to true to not accept new runs
     EndstoneTask::doCancel();
-    std::lock_guard lock{mutex_};
-    // Do not remove the task unless we are idle
-    if (workers_.empty()) {
+    bool idle;
+    {
+        std::lock_guard lock{mutex_};
+        // Do not remove the task unless we are idle; a running worker will remove it when it finishes.
+        idle = workers_.empty();
+    }
+    // Remove ourselves outside the lock: removeTask() takes the scheduler's tasks_mtx_, which must
+    // never be held together with our own mutex_ (the cancel path takes them in the opposite order).
+    if (idle) {
         getScheduler().removeTask(getTaskId());
     }
 }
