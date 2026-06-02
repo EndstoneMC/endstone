@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/damage/damage_source.h" line="75" column="5" bodyfile="include/endstone/damage/damage_source.h" bodystart="75" bodyend="-1"/>
+        <location file="include/endstone/damage/damage_source.h" line="76" column="5" bodyfile="include/endstone/damage/damage_source.h" bodystart="76" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/damage/damage_source.h" line="78" column="10" bodyfile="include/endstone/damage/damage_source.h" bodystart="78" bodyend="96"/>
+        <location file="include/endstone/damage/damage_source.h" line="79" column="10" bodyfile="include/endstone/damage/damage_source.h" bodystart="79" bodyend="97"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -76,7 +76,7 @@
         <label>std::formatter&lt; std::string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/damage/damage_source.h" line="74" column="1" bodyfile="include/endstone/damage/damage_source.h" bodystart="74" bodyend="97"/>
+    <location file="include/endstone/damage/damage_source.h" line="75" column="1" bodyfile="include/endstone/damage/damage_source.h" bodystart="75" bodyend="98"/>
     <listofallmembers>
       <member refid="structstd_1_1formatter_3_01endstone_1_1DamageSource_01_4_1ac0ef98ded719763985f88aa676a73250" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::DamageSource &gt;</scope><name>format</name></member>
       <member refid="structstd_1_1formatter_3_01endstone_1_1DamageSource_01_4_1ad079bb7bc7eb46e37687d7621abac811" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::DamageSource &gt;</scope><name>Type</name></member>

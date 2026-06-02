@@ -74,7 +74,11 @@ public:
 
     [[maybe_unused]] [[nodiscard]] Plugin &getPlugin() const { return owner_; }
 
-    [[nodiscard]] PluginCommand *asPluginCommand() const override { return const_cast<PluginCommand *>(this); }
+    [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(PluginCommand); }
+    [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override
+    {
+        return typeid(PluginCommand) == target || typeid(Command) == target || typeid(Object) == target;
+    }
 
 private:
     Plugin &owner_;

@@ -16,6 +16,7 @@
 * `#include <vector>`
 * `#include "endstone/command/command_map.h"`
 * `#include "endstone/command/command_sender.h"`
+* `#include "endstone/object.h"`
 
 
 

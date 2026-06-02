@@ -32,6 +32,7 @@
 * `#include "endstone/message.h"`
 * `#include "endstone/plugin/service_manager.h"`
 * `#include "endstone/scoreboard/scoreboard.h"`
+* `#include "endstone/util/pointers.h"`
 * `#include "endstone/util/uuid.h"`
 
 

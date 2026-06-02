@@ -5327,8 +5327,8 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li><strong>BREAKING</strong>: Replaced <code>Dimension::Type</code> enum with <code>DimensionId</code>, a namespaced identifier that supports custom
   dimensions. Use <code>Dimension.OVERWORLD</code>, <code>Dimension.NETHER</code>, <code>Dimension.THE_END</code> constants or look up by identifier.
   <code>Dimension.name</code> has been replaced by <code>Dimension.id</code>.</li>
-<li><strong>BREAKING</strong>: Replaced <code>asPlayer()</code>, <code>asMob()</code>, <code>asConsole()</code>, etc. with <code>as&lt;T&gt;()</code>/<code>is&lt;T&gt;()</code> on all <code>CommandSender</code>
-  and <code>Actor</code> subtypes. In Python, use <code>isinstance()</code> as before.</li>
+<li><strong>BREAKING</strong>: Replaced <code>asPlayer()</code>, <code>asMob()</code>, <code>asConsole()</code>, <code>asPluginCommand()</code>, etc. with <code>as&lt;T&gt;()</code>/<code>is&lt;T&gt;()</code> on
+  all <code>CommandSender</code>, <code>Actor</code>, and <code>Command</code> subtypes. In Python, use <code>isinstance()</code> as before.</li>
 <li><strong>BREAKING</strong>: <code>Player</code> no longer inherits from <code>OfflinePlayer</code>.</li>
 <li><strong>BREAKING</strong>: <code>BlockPlaceEvent.block</code> now returns the placed block instead of the replaced block.
   <code>block_placed_state</code>/<code>block_replaced</code> renamed to <code>block_placed</code>/<code>block_replaced_state</code> to match Bukkit.</li>
@@ -5349,6 +5349,8 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Fixed <code>Player.send_message</code> accepting empty messages.</li>
 <li>Fixed command argument parsing dropping optional message parameters with empty tokens.</li>
 <li>Fixed plugin manager destruction order causing access violations on shutdown.</li>
+<li>Fixed a crash (<code>resource deadlock would occur</code>) when reloading the server or cancelling tasks while an asynchronous task scheduled with <code>run_task_timer_async</code>/<code>run_task_later_async</code> was pending. The plugin no longer fails to re-enable after <code>/reload</code> (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/351" title="GitHub Issue: squidfunk/mkdocs-material #351">#351</a>).</li>
+<li>Fixed scheduled tasks ignoring their delay when registered during plugin enable or <code>ServerLoadEvent</code> on a world that has already been played for a while — they now correctly wait for the requested delay instead of running immediately on the first tick (<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/317" title="GitHub Issue: squidfunk/mkdocs-material #317">#317</a>).</li>
 </ul>
 <h2 id="0114-2026-05-25"><a href="https://github.com/EndstoneMC/endstone/compare/v0.11.3...v0.11.4">0.11.4</a> - 2026-05-25<a class="headerlink" href="#0114-2026-05-25" title="Permanent link">&para;</a></h2>
 <h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>

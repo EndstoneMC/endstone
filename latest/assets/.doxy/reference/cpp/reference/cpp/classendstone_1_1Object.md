@@ -16,7 +16,7 @@ _Base class providing runtime type identification and safe casting._ [More...](#
 
 
 
-Inherited by the following classes: [endstone::ItemMeta](classendstone_1_1ItemMeta.md),  [endstone::Permissible](classendstone_1_1Permissible.md)
+Inherited by the following classes: [endstone::Command](classendstone_1_1Command.md),  [endstone::ItemMeta](classendstone_1_1ItemMeta.md),  [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
 

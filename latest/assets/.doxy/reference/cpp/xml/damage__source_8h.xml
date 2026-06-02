@@ -6,6 +6,7 @@
     <includes local="no">string</includes>
     <includes local="no">string_view</includes>
     <includes refid="actor_8h" local="yes">endstone/actor/actor.h</includes>
+    <includes refid="pointers_8h" local="yes">endstone/util/pointers.h</includes>
     <includedby refid="actor__damage__event_8h" local="yes">include/endstone/event/actor/actor_damage_event.h</includedby>
     <includedby refid="actor__death__event_8h" local="yes">include/endstone/event/actor/actor_death_event.h</includedby>
     <incdepgraph>
@@ -22,7 +23,7 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="74" relation="include">
         </childnode>
@@ -61,7 +62,7 @@
         <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="29">
         <label>endstone/ban/ip_ban_entry.h</label>
         <link refid="ip__ban__entry_8h_source"/>
         <childnode refid="3" relation="include">
@@ -84,10 +85,10 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="31">
         <label>endstone/ban/player_ban_entry.h</label>
         <link refid="player__ban__entry_8h_source"/>
         <childnode refid="23" relation="include">
@@ -98,10 +99,10 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="30">
         <label>endstone/ban/player_ban_list.h</label>
         <link refid="player__ban__list_8h_source"/>
         <childnode refid="18" relation="include">
@@ -114,10 +115,10 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="35">
         <label>endstone/block/block_data.h</label>
         <link refid="block__data_8h_source"/>
         <childnode refid="6" relation="include">
@@ -126,42 +127,42 @@
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
         <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
-      <node id="41">
+      <node id="42">
         <label>endstone/boss/bar_color.h</label>
         <link refid="bar__color_8h_source"/>
       </node>
-      <node id="42">
+      <node id="43">
         <label>endstone/boss/bar_flag.h</label>
         <link refid="bar__flag_8h_source"/>
       </node>
-      <node id="43">
+      <node id="44">
         <label>endstone/boss/bar_style.h</label>
         <link refid="bar__style_8h_source"/>
       </node>
-      <node id="40">
+      <node id="41">
         <label>endstone/boss/boss_bar.h</label>
         <link refid="boss__bar_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
         <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
       </node>
-      <node id="27">
+      <node id="28">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
         <childnode refid="12" relation="include">
@@ -171,7 +172,7 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="44">
+      <node id="45">
         <label>endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
         <childnode refid="3" relation="include">
@@ -180,9 +181,9 @@
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -195,6 +196,8 @@
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -226,10 +229,10 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
-      <node id="46">
+      <node id="47">
         <label>endstone/lang/translatable.h</label>
         <link refid="translatable_8h_source"/>
         <childnode refid="3" relation="include">
@@ -266,7 +269,7 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
@@ -296,7 +299,7 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="58">
@@ -317,36 +320,36 @@
         <childnode refid="58" relation="include">
         </childnode>
       </node>
-      <node id="45">
+      <node id="46">
         <label>endstone/message.h</label>
         <link refid="message_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
-      <node id="49">
+      <node id="50">
         <label>endstone/object.h</label>
         <link refid="object_8h_source"/>
-        <childnode refid="50" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
       </node>
-      <node id="47">
+      <node id="48">
         <label>endstone/permissions/permissible.h</label>
         <link refid="permissible_8h_source"/>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
-        </childnode>
         <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
         </childnode>
         <childnode refid="51" relation="include">
         </childnode>
@@ -462,7 +465,7 @@
         <link refid="score__entry_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -512,13 +515,13 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -528,13 +531,15 @@
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
         <childnode refid="66" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
       <node id="61">
@@ -543,12 +548,12 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="38">
         <label>endstone/util/format.h</label>
         <link refid="format_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -558,11 +563,11 @@
       <node id="62">
         <label>endstone/util/image.h</label>
         <link refid="image_8h_source"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -578,11 +583,15 @@
         <link refid="pointers_8h_source"/>
         <childnode refid="15" relation="include">
         </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
         <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
       </node>
       <node id="53">
@@ -595,16 +604,16 @@
         <childnode refid="54" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="32">
         <label>endstone/util/uuid.h</label>
         <link refid="uuid_8h_source"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -614,7 +623,7 @@
       <node id="77">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
-        <childnode refid="32" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="75" relation="include">
         </childnode>
@@ -623,11 +632,11 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="40">
         <label>endstone/variant.h</label>
         <link refid="variant_8h_source"/>
       </node>
-      <node id="32">
+      <node id="33">
         <label>algorithm</label>
       </node>
       <node id="18">
@@ -645,7 +654,7 @@
       <node id="6">
         <label>cstdint</label>
       </node>
-      <node id="33">
+      <node id="34">
         <label>cstring</label>
       </node>
       <node id="14">
@@ -657,7 +666,7 @@
       <node id="11">
         <label>functional</label>
       </node>
-      <node id="38">
+      <node id="39">
         <label>iterator</label>
       </node>
       <node id="19">
@@ -681,22 +690,22 @@
       <node id="4">
         <label>string_view</label>
       </node>
-      <node id="50">
+      <node id="27">
         <label>type_traits</label>
       </node>
       <node id="20">
         <label>typeinfo</label>
       </node>
-      <node id="35">
+      <node id="36">
         <label>unordered_map</label>
       </node>
-      <node id="48">
+      <node id="49">
         <label>unordered_set</label>
       </node>
       <node id="21">
         <label>utility</label>
       </node>
-      <node id="36">
+      <node id="37">
         <label>variant</label>
       </node>
       <node id="7">
@@ -756,49 +765,50 @@
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/actor/actor.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28" refid="classendstone_1_1DamageSource" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1DamageSource" kindref="compound">DamageSource</ref><sp/>{</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1DamageSource" kindref="compound">~DamageSource</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37" refid="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48" refid="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>*<ref refid="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" kindref="member">getActor</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58" refid="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref><sp/>*<ref refid="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" kindref="member">getDamagingActor</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68" refid="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" kindref="member">isIndirect</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
-<codeline lineno="74" refid="structstd_1_1formatter_3_01endstone_1_1DamageSource_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">std::formatter&lt;<ref refid="namespaceendstone" kindref="compound">endstone</ref>::DamageSource&gt;<sp/>:<sp/>std::formatter&lt;std::string_view&gt;<sp/>{</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1DamageSource" kindref="compound">Type</ref><sp/>=<sp/><ref refid="classendstone_1_1DamageSource" kindref="compound">endstone::DamageSource</ref>;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1DamageSource" kindref="compound">Type</ref><sp/>&amp;val,<sp/>FormatContext<sp/>&amp;ctx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>-&gt;<sp/>format_context::iterator</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>ctx.out();</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>std::format_to(it,<sp/></highlight><highlight class="stringliteral">&quot;DamageSource(type={}&quot;</highlight><highlight class="normal">,<sp/>val.<ref refid="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" kindref="member">getType</ref>());</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*actor<sp/>=<sp/>val.<ref refid="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" kindref="member">getActor</ref>())<sp/>{</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>std::format_to(it,<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>actor={}&quot;</highlight><highlight class="normal">,<sp/>*actor);</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>std::format_to(it,<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>actor=None&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*damaging_actor<sp/>=<sp/>val.<ref refid="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" kindref="member">getDamagingActor</ref>())<sp/>{</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>std::format_to(it,<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>damaging_actor={}&quot;</highlight><highlight class="normal">,<sp/>*damaging_actor);</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>std::format_to(it,<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>damaging_actor=None&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>std::format_to(it,<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="97"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/util/pointers.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classendstone_1_1DamageSource" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1DamageSource" kindref="compound">DamageSource</ref><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1DamageSource" kindref="compound">~DamageSource</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classendstone_1_1DamageSource_1a4db47c0262336513f37cb47c7bac0b73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Nullable&lt;Actor&gt;</ref><sp/><ref refid="classendstone_1_1DamageSource_1a4db47c0262336513f37cb47c7bac0b73" kindref="member">getActor</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classendstone_1_1DamageSource_1aaffa76098f44b6d00d74775316c05139" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Nullable&lt;Actor&gt;</ref><sp/><ref refid="classendstone_1_1DamageSource_1aaffa76098f44b6d00d74775316c05139" kindref="member">getDamagingActor</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1DamageSource_1ab078db3a18d08b41dd6c73de066c2b02" kindref="member">isIndirect</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="75" refid="structstd_1_1formatter_3_01endstone_1_1DamageSource_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">std::formatter&lt;<ref refid="namespaceendstone" kindref="compound">endstone</ref>::DamageSource&gt;<sp/>:<sp/>std::formatter&lt;std::string_view&gt;<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1DamageSource" kindref="compound">Type</ref><sp/>=<sp/><ref refid="classendstone_1_1DamageSource" kindref="compound">endstone::DamageSource</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1DamageSource" kindref="compound">Type</ref><sp/>&amp;val,<sp/>FormatContext<sp/>&amp;ctx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>-&gt;<sp/>format_context::iterator</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>ctx.out();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>std::format_to(it,<sp/></highlight><highlight class="stringliteral">&quot;DamageSource(type={}&quot;</highlight><highlight class="normal">,<sp/>val.<ref refid="classendstone_1_1DamageSource_1a545bb2e2d0cbf576bd70595194e88a74" kindref="member">getType</ref>());</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>actor<sp/>=<sp/>val.<ref refid="classendstone_1_1DamageSource_1a4db47c0262336513f37cb47c7bac0b73" kindref="member">getActor</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>std::format_to(it,<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>actor={}&quot;</highlight><highlight class="normal">,<sp/>*actor);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>std::format_to(it,<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>actor=None&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>damaging_actor<sp/>=<sp/>val.<ref refid="classendstone_1_1DamageSource_1aaffa76098f44b6d00d74775316c05139" kindref="member">getDamagingActor</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>std::format_to(it,<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>damaging_actor={}&quot;</highlight><highlight class="normal">,<sp/>*damaging_actor);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>std::format_to(it,<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>damaging_actor=None&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>=<sp/>std::format_to(it,<sp/></highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>it;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="include/endstone/damage/damage_source.h"/>
   </compounddef>

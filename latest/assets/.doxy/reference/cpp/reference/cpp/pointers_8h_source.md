@@ -25,16 +25,23 @@
 #pragma once
 
 #include <cstddef>
+#include <functional>
 #include <memory>
+#include <type_traits>
 #include <utility>
 
 #include "endstone/check.h"
 
 namespace endstone {
 template <class T>
+class Nullable;
+
+template <class T>
 class NotNull {
 public:
     using pointer_type = std::shared_ptr<T>;
+    using element_type = T;
+
     NotNull() = delete;
     NotNull(std::shared_ptr<T> ptr) : ptr_(std::move(ptr))
     {
@@ -42,6 +49,19 @@ public:
     }
     NotNull(const NotNull &other) = default;
     NotNull &operator=(const NotNull &other) = default;
+
+    template <class U>
+        requires(!std::is_same_v<U, T>) && std::is_convertible_v<U *, T *>
+    NotNull(std::shared_ptr<U> ptr) : NotNull(std::shared_ptr<T>(std::move(ptr)))
+    {
+    }
+
+    template <class U>
+        requires(!std::is_same_v<U, T>) && std::is_convertible_v<U *, T *>
+    NotNull(const NotNull<U> &other) : ptr_(other.get())
+    {
+    }
+
     const pointer_type &get() const noexcept { return ptr_; }
     T *operator->() const noexcept { return ptr_.get(); }
     T &operator*() const noexcept { return *get(); }
@@ -64,23 +84,105 @@ private:
 template <class T>
 class Nullable {
 public:
+    using pointer_type = std::shared_ptr<T>;
+    using element_type = T;
+
     constexpr Nullable() noexcept = default;
     constexpr Nullable(std::nullptr_t) noexcept {}
     Nullable(std::shared_ptr<T> ptr) : ptr_(std::move(ptr)) {}
     Nullable(const NotNull<T> &other) : ptr_(other.get()) {}
-    const std::shared_ptr<T> &get() const noexcept { return ptr_; }
+
+    template <class U>
+        requires(!std::is_same_v<U, T>) && std::is_convertible_v<U *, T *>
+    Nullable(std::shared_ptr<U> ptr) : ptr_(std::move(ptr))
+    {
+    }
+
+    template <class U>
+        requires(!std::is_same_v<U, T>) && std::is_convertible_v<U *, T *>
+    Nullable(const Nullable<U> &other) : ptr_(other.get())
+    {
+    }
+
+    template <class U>
+        requires(!std::is_same_v<U, T>) && std::is_convertible_v<U *, T *>
+    Nullable(const NotNull<U> &other) : ptr_(other.get())
+    {
+    }
+
+    const pointer_type &get() const noexcept { return ptr_; }
     T *operator->() const noexcept { return ptr_.get(); }
     T &operator*() const noexcept { return *get(); }
     explicit operator bool() const noexcept { return ptr_ != nullptr; }
-    bool operator==(const Nullable &) const = default;
-    bool operator!=(const Nullable &) const = default;
+
+    T &value() const
+    {
+        Preconditions::checkState(ptr_ != nullptr, "Nullable holds no value.");
+        return *ptr_;
+    }
+
+    pointer_type value_or(pointer_type default_value) const { return ptr_ ? ptr_ : std::move(default_value); }
+
     bool operator==(std::nullptr_t) const noexcept { return ptr_ == nullptr; }
-    bool operator!=(std::nullptr_t) const noexcept { return ptr_ != nullptr; }
 
 private:
     std::shared_ptr<T> ptr_;
 };
+
+// Handle-to-handle comparisons (pointer identity), provided for both wrappers so they can be used as
+// keys in ordered/unordered containers. These delegate to the underlying shared_ptr comparisons.
+#define ENDSTONE_DEFINE_PTR_COMPARISONS(Wrapper)                                                  \
+    template <class T, class U>                                                                    \
+    bool operator==(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                         \
+    {                                                                                              \
+        return lhs.get() == rhs.get();                                                            \
+    }                                                                                              \
+    template <class T, class U>                                                                    \
+    bool operator!=(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                         \
+    {                                                                                              \
+        return lhs.get() != rhs.get();                                                            \
+    }                                                                                              \
+    template <class T, class U>                                                                    \
+    bool operator<(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                          \
+    {                                                                                              \
+        return lhs.get() < rhs.get();                                                             \
+    }                                                                                              \
+    template <class T, class U>                                                                    \
+    bool operator<=(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                         \
+    {                                                                                              \
+        return lhs.get() <= rhs.get();                                                            \
+    }                                                                                              \
+    template <class T, class U>                                                                    \
+    bool operator>(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                          \
+    {                                                                                              \
+        return lhs.get() > rhs.get();                                                             \
+    }                                                                                              \
+    template <class T, class U>                                                                    \
+    bool operator>=(const Wrapper<T> &lhs, const Wrapper<U> &rhs) noexcept                         \
+    {                                                                                              \
+        return lhs.get() >= rhs.get();                                                            \
+    }
+
+ENDSTONE_DEFINE_PTR_COMPARISONS(NotNull)
+ENDSTONE_DEFINE_PTR_COMPARISONS(Nullable)
+#undef ENDSTONE_DEFINE_PTR_COMPARISONS
 }  // namespace endstone
+
+template <class T>
+struct std::hash<endstone::NotNull<T>> {
+    std::size_t operator()(const endstone::NotNull<T> &value) const noexcept
+    {
+        return std::hash<std::shared_ptr<T>>{}(value.get());
+    }
+};
+
+template <class T>
+struct std::hash<endstone::Nullable<T>> {
+    std::size_t operator()(const endstone::Nullable<T> &value) const noexcept
+    {
+        return std::hash<std::shared_ptr<T>>{}(value.get());
+    }
+};
 ```
 
 

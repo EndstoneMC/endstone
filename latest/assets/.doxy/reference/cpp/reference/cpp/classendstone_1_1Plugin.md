@@ -75,7 +75,7 @@ Inherits the following classes: [endstone::CommandExecutor](classendstone_1_1Com
 | ---: | :--- |
 |   | [**Plugin**](#function-plugin-12) () = default<br> |
 |   | [**Plugin**](#function-plugin-22) ([**const**](classendstone_1_1Identifier.md) [**Plugin**](classendstone_1_1Plugin.md) &) = delete<br> |
-|  [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**getCommand**](#function-getcommand) (std::string name) const<br>_Gets the command with the given name, specific to this plugin._  |
+|  [**Nullable**](classendstone_1_1Nullable.md)&lt; [**PluginCommand**](classendstone_1_1PluginCommand.md) &gt; | [**getCommand**](#function-getcommand) (std::string name) const<br>_Gets the command with the given name, specific to this plugin._  |
 |  [**const**](classendstone_1_1Identifier.md) std::filesystem::path & | [**getDataFolder**](#function-getdatafolder) () const<br>_Returns the folder that the plugin data's files are located in._  |
 | virtual [**const**](classendstone_1_1Identifier.md) [**PluginDescription**](classendstone_1_1PluginDescription.md) & | [**getDescription**](#function-getdescription) () const = 0<br>_Returns the details of this plugin._  |
 |  [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const<br>_Returns the plugin logger associated with this server's logger._  |
@@ -196,7 +196,7 @@ endstone::Plugin::Plugin (
 
 _Gets the command with the given name, specific to this plugin._ 
 ```C++
-inline PluginCommand * endstone::Plugin::getCommand (
+inline Nullable < PluginCommand > endstone::Plugin::getCommand (
     std::string name
 ) const
 ```
@@ -214,7 +214,7 @@ inline PluginCommand * endstone::Plugin::getCommand (
 
 **Returns:**
 
-the plugin command if found, otherwise nullptr 
+the plugin command if found, otherwise a null handle 
 
 
 

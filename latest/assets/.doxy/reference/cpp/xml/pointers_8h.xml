@@ -3,19 +3,23 @@
   <compounddef id="pointers_8h" kind="file" language="C++">
     <compoundname>pointers.h</compoundname>
     <includes local="no">cstddef</includes>
+    <includes local="no">functional</includes>
     <includes local="no">memory</includes>
+    <includes local="no">type_traits</includes>
     <includes local="no">utility</includes>
     <includes refid="check_8h" local="yes">endstone/check.h</includes>
     <includedby refid="ban__list_8h" local="yes">include/endstone/ban/ban_list.h</includedby>
+    <includedby refid="damage__source_8h" local="yes">include/endstone/damage/damage_source.h</includedby>
+    <includedby refid="server_8h" local="yes">include/endstone/server.h</includedby>
     <incdepgraph>
-      <node id="5">
+      <node id="7">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -29,20 +33,30 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>cstddef</label>
       </node>
-      <node id="7">
+      <node id="9">
         <label>format</label>
       </node>
       <node id="3">
-        <label>memory</label>
-      </node>
-      <node id="6">
-        <label>stdexcept</label>
+        <label>functional</label>
       </node>
       <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="8">
+        <label>stdexcept</label>
+      </node>
+      <node id="5">
+        <label>type_traits</label>
+      </node>
+      <node id="6">
         <label>utility</label>
       </node>
     </incdepgraph>
@@ -724,11 +738,60 @@
         <link refid="pointers_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1NotNull" prot="public">endstone::NotNull</innerclass>
     <innerclass refid="classendstone_1_1Nullable" prot="public">endstone::Nullable</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01endstone_1_1NotNull_3_01T_01_4_01_4" prot="public">std::hash&lt; endstone::NotNull&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01endstone_1_1Nullable_3_01T_01_4_01_4" prot="public">std::hash&lt; endstone::Nullable&lt; T &gt; &gt;</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="pointers_8h_1afdca486fb63dec1dd51291673b8e4306" prot="public" static="no">
+        <name>ENDSTONE_DEFINE_PTR_COMPARISONS</name>
+        <param><defname>Wrapper</defname></param>
+        <initializer>    template &lt;class T, class U&gt;                                                                    \
+    bool operator==(const Wrapper&lt;T&gt; &amp;lhs, const Wrapper&lt;U&gt; &amp;rhs) noexcept                         \
+    {                                                                                              \
+        return lhs.get() == rhs.get();                                                            \
+    }                                                                                              \
+    template &lt;class T, class U&gt;                                                                    \
+    bool operator!=(const Wrapper&lt;T&gt; &amp;lhs, const Wrapper&lt;U&gt; &amp;rhs) noexcept                         \
+    {                                                                                              \
+        return lhs.get() != rhs.get();                                                            \
+    }                                                                                              \
+    template &lt;class T, class U&gt;                                                                    \
+    bool operator&lt;(const Wrapper&lt;T&gt; &amp;lhs, const Wrapper&lt;U&gt; &amp;rhs) noexcept                          \
+    {                                                                                              \
+        return lhs.get() &lt; rhs.get();                                                             \
+    }                                                                                              \
+    template &lt;class T, class U&gt;                                                                    \
+    bool operator&lt;=(const Wrapper&lt;T&gt; &amp;lhs, const Wrapper&lt;U&gt; &amp;rhs) noexcept                         \
+    {                                                                                              \
+        return lhs.get() &lt;= rhs.get();                                                            \
+    }                                                                                              \
+    template &lt;class T, class U&gt;                                                                    \
+    bool operator&gt;(const Wrapper&lt;T&gt; &amp;lhs, const Wrapper&lt;U&gt; &amp;rhs) noexcept                          \
+    {                                                                                              \
+        return lhs.get() &gt; rhs.get();                                                             \
+    }                                                                                              \
+    template &lt;class T, class U&gt;                                                                    \
+    bool operator&gt;=(const Wrapper&lt;T&gt; &amp;lhs, const Wrapper&lt;U&gt; &amp;rhs) noexcept                         \
+    {                                                                                              \
+        return lhs.get() &gt;= rhs.get();                                                            \
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="143" column="9" bodyfile="include/endstone/util/pointers.h" bodystart="143" bodyend="173"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -751,62 +814,164 @@
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/check.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="30" refid="classendstone_1_1NotNull" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>{</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">pointer_type<sp/>=<sp/>std::shared_ptr&lt;T&gt;;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>(std::shared_ptr&lt;T&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">ptr</ref>)<sp/>:<sp/>ptr_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">ptr</ref>))</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Preconditions_1a67ef7267ef07164ae88052ed43750426" kindref="member">Preconditions::checkArgument</ref>(ptr_<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;pointer<sp/>must<sp/>not<sp/>be<sp/>null.&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>&amp;operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pointer_type<sp/>&amp;get()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_;<sp/>}</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*operator-&gt;()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_.get();<sp/>}</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;operator*()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*get();<sp/>}</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>(std::nullptr_t)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>&amp;operator=(std::nullptr_t)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>&amp;operator++()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>&amp;operator--()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>operator++(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>operator--(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>&amp;operator+=(std::ptrdiff_t)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>&amp;operator-=(std::ptrdiff_t)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator[](std::ptrdiff_t)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>swap(<ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/>std::swap(ptr_,<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>.ptr_);<sp/>}</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>pointer_type<sp/>ptr_;</highlight></codeline>
-<codeline lineno="57"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
-<codeline lineno="65" refid="classendstone_1_1Nullable" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref><sp/>{</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>(std::nullptr_t)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{}</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>(std::shared_ptr&lt;T&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">ptr</ref>)<sp/>:<sp/>ptr_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">ptr</ref>))<sp/>{}</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;T&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/>:<sp/>ptr_(<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>.get())<sp/>{}</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;T&gt;<sp/>&amp;get()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_;<sp/>}</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>*operator-&gt;()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_.get();<sp/>}</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;operator*()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*get();<sp/>}</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref><sp/>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref><sp/>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(std::nullptr_t)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator!=(std::nullptr_t)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;T&gt;<sp/>ptr_;</highlight></codeline>
-<codeline lineno="82"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="83"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/check.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceendstone" kindref="compound">endstone</ref><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Nullable;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="37" refid="classendstone_1_1NotNull" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">pointer_type<sp/>=<sp/>std::shared_ptr&lt;T&gt;;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">element_type</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref>;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>(std::shared_ptr&lt;T&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">ptr</ref>)<sp/>:<sp/>ptr_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">ptr</ref>))</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Preconditions_1a67ef7267ef07164ae88052ed43750426" kindref="member">Preconditions::checkArgument</ref>(ptr_<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;pointer<sp/>must<sp/>not<sp/>be<sp/>null.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>&amp;operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(!std::is_same_v&lt;U,<sp/>T&gt;)<sp/>&amp;&amp;<sp/>std::is_convertible_v&lt;U<sp/>*,<sp/>T<sp/>*&gt;</highlight></codeline>
+<codeline lineno="53" refid="classendstone_1_1NotNull_1ac30007a7e20399423e2f46a16809a6cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull_1ac30007a7e20399423e2f46a16809a6cf" kindref="member">NotNull</ref>(std::shared_ptr&lt;U&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">ptr</ref>)<sp/>:<sp/><ref refid="classendstone_1_1NotNull_1ac30007a7e20399423e2f46a16809a6cf" kindref="member">NotNull</ref>(std::shared_ptr&lt;T&gt;(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">ptr</ref>)))</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(!std::is_same_v&lt;U,<sp/>T&gt;)<sp/>&amp;&amp;<sp/>std::is_convertible_v&lt;U<sp/>*,<sp/>T<sp/>*&gt;</highlight></codeline>
+<codeline lineno="60" refid="classendstone_1_1NotNull_1acc1708655120fd354d50f8ec5b10bb63" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1NotNull_1acc1708655120fd354d50f8ec5b10bb63" kindref="member">NotNull</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;U&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/>:<sp/>ptr_(<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>.get())</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pointer_type<sp/>&amp;get()<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">noexcept</ref><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_;<sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*operator-&gt;()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_.get();<sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>&amp;operator*()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*get();<sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>NotNull(std::nullptr_t)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>NotNull<sp/>&amp;operator=(std::nullptr_t)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>NotNull<sp/>&amp;operator++()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>NotNull<sp/>&amp;operator--()<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>NotNull<sp/>operator++(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>NotNull<sp/>operator--(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>NotNull<sp/>&amp;operator+=(std::ptrdiff_t)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>NotNull<sp/>&amp;operator-=(std::ptrdiff_t)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator[](std::ptrdiff_t)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>swap(NotNull<sp/>&amp;other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/>std::swap(ptr_,<sp/>other.ptr_);<sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>pointer_type<sp/>ptr_;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="89" refid="classendstone_1_1Nullable" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">pointer_type<sp/>=<sp/>std::shared_ptr&lt;T&gt;;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Identifier" kindref="compound">element_type</ref><sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>(std::nullptr_t)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>(std::shared_ptr&lt;T&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">ptr</ref>)<sp/>:<sp/>ptr_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">ptr</ref>))<sp/>{}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;T&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/>:<sp/>ptr_(<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>.get())<sp/>{}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(!std::is_same_v&lt;U,<sp/>T&gt;)<sp/>&amp;&amp;<sp/>std::is_convertible_v&lt;U<sp/>*,<sp/>T<sp/>*&gt;</highlight></codeline>
+<codeline lineno="102" refid="classendstone_1_1Nullable_1adeb179477cd1861ddda20e2b579f10bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Nullable_1adeb179477cd1861ddda20e2b579f10bd" kindref="member">Nullable</ref>(std::shared_ptr&lt;U&gt;<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">ptr</ref>)<sp/>:<sp/>ptr_(std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">ptr</ref>))</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(!std::is_same_v&lt;U,<sp/>T&gt;)<sp/>&amp;&amp;<sp/>std::is_convertible_v&lt;U<sp/>*,<sp/>T<sp/>*&gt;</highlight></codeline>
+<codeline lineno="109" refid="classendstone_1_1Nullable_1a2425514992f0b3af7f75265fbf4d2bd9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Nullable_1a2425514992f0b3af7f75265fbf4d2bd9" kindref="member">Nullable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">Nullable&lt;U&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/>:<sp/>ptr_(<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>.get())</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>U&gt;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(!std::is_same_v&lt;U,<sp/>T&gt;)<sp/>&amp;&amp;<sp/>std::is_convertible_v&lt;U<sp/>*,<sp/>T<sp/>*&gt;</highlight></codeline>
+<codeline lineno="116" refid="classendstone_1_1Nullable_1a6dd4e47403c33a6c1417898650546c71" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Nullable_1a6dd4e47403c33a6c1417898650546c71" kindref="member">Nullable</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">NotNull&lt;U&gt;</ref><sp/>&amp;<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>)<sp/>:<sp/>ptr_(<ref refid="classendstone_1_1Identifier" kindref="compound">other</ref>.get())</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>pointer_type<sp/>&amp;get()<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">noexcept</ref><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_;<sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>*operator-&gt;()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_.get();<sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>&amp;operator*()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*get();<sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>bool()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classendstone_1_1Nullable_1aacfe83683413e2745f4482346f0a0a2a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref><sp/>&amp;<ref refid="classendstone_1_1Nullable_1aacfe83683413e2745f4482346f0a0a2a" kindref="member">value</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="127"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Preconditions_1a5fb6820ed9c6e4629a00776f25d11ef5" kindref="member">Preconditions::checkState</ref>(ptr_<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Nullable<sp/>holds<sp/>no<sp/>value.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*ptr_;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="classendstone_1_1Nullable_1ac6d37b889dcdf009ec8da6a17718100f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>pointer_type<sp/><ref refid="classendstone_1_1Nullable_1ac6d37b889dcdf009ec8da6a17718100f" kindref="member">value_or</ref>(pointer_type<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">default_value</ref>)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_<sp/>?<sp/>ptr_<sp/>:<sp/>std::move(<ref refid="classendstone_1_1Identifier" kindref="compound">default_value</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator==(std::nullptr_t)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr_<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;T&gt;<sp/>ptr_;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Handle-to-handle<sp/>comparisons<sp/>(pointer<sp/>identity),<sp/>provided<sp/>for<sp/>both<sp/>wrappers<sp/>so<sp/>they<sp/>can<sp/>be<sp/>used<sp/>as</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="comment">//<sp/>keys<sp/>in<sp/>ordered/unordered<sp/>containers.<sp/>These<sp/>delegate<sp/>to<sp/>the<sp/>underlying<sp/>shared_ptr<sp/>comparisons.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_DEFINE_PTR_COMPARISONS(Wrapper)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="144"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;class<sp/>T,<sp/>class<sp/>U&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="145"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>bool<sp/>operator==(const<sp/>Wrapper&lt;T&gt;<sp/>&amp;lhs,<sp/>const<sp/>Wrapper&lt;U&gt;<sp/>&amp;rhs)<sp/>noexcept<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="146"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="147"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>lhs.get()<sp/>==<sp/>rhs.get();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="148"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="149"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;class<sp/>T,<sp/>class<sp/>U&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="150"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>bool<sp/>operator!=(const<sp/>Wrapper&lt;T&gt;<sp/>&amp;lhs,<sp/>const<sp/>Wrapper&lt;U&gt;<sp/>&amp;rhs)<sp/>noexcept<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="151"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="152"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>lhs.get()<sp/>!=<sp/>rhs.get();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="153"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="154"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;class<sp/>T,<sp/>class<sp/>U&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="155"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>bool<sp/>operator&lt;(const<sp/>Wrapper&lt;T&gt;<sp/>&amp;lhs,<sp/>const<sp/>Wrapper&lt;U&gt;<sp/>&amp;rhs)<sp/>noexcept<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="156"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="157"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>lhs.get()<sp/>&lt;<sp/>rhs.get();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="158"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="159"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;class<sp/>T,<sp/>class<sp/>U&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="160"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>bool<sp/>operator&lt;=(const<sp/>Wrapper&lt;T&gt;<sp/>&amp;lhs,<sp/>const<sp/>Wrapper&lt;U&gt;<sp/>&amp;rhs)<sp/>noexcept<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="161"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="162"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>lhs.get()<sp/>&lt;=<sp/>rhs.get();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="163"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="164"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;class<sp/>T,<sp/>class<sp/>U&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="165"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>bool<sp/>operator&gt;(const<sp/>Wrapper&lt;T&gt;<sp/>&amp;lhs,<sp/>const<sp/>Wrapper&lt;U&gt;<sp/>&amp;rhs)<sp/>noexcept<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="166"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="167"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>lhs.get()<sp/>&gt;<sp/>rhs.get();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="168"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="169"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>template<sp/>&lt;class<sp/>T,<sp/>class<sp/>U&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="170"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>bool<sp/>operator&gt;=(const<sp/>Wrapper&lt;T&gt;<sp/>&amp;lhs,<sp/>const<sp/>Wrapper&lt;U&gt;<sp/>&amp;rhs)<sp/>noexcept<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="171"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="172"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>lhs.get()<sp/>&gt;=<sp/>rhs.get();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="173"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal">ENDSTONE_DEFINE_PTR_COMPARISONS(NotNull)</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">ENDSTONE_DEFINE_PTR_COMPARISONS(Nullable)</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>ENDSTONE_DEFINE_PTR_COMPARISONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="181" refid="structstd_1_1hash_3_01endstone_1_1NotNull_3_01T_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">std::hash&lt;<ref refid="namespaceendstone" kindref="compound">endstone</ref>::NotNull&lt;T&gt;&gt;<sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/>operator()(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">endstone::NotNull&lt;T&gt;</ref><sp/>&amp;value)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::hash&lt;std::shared_ptr&lt;T&gt;&gt;{}(value.get());</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="189" refid="structstd_1_1hash_3_01endstone_1_1Nullable_3_01T_01_4_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">std::hash&lt;<ref refid="namespaceendstone" kindref="compound">endstone</ref>::Nullable&lt;T&gt;&gt;<sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/>operator()(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Identifier" kindref="compound">endstone::Nullable&lt;T&gt;</ref><sp/>&amp;value)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::hash&lt;std::shared_ptr&lt;T&gt;&gt;{}(value.get());</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="include/endstone/util/pointers.h"/>
   </compounddef>

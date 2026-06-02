@@ -14,6 +14,7 @@
 * `#include <string>`
 * `#include <string_view>`
 * `#include "endstone/actor/actor.h"`
+* `#include "endstone/util/pointers.h"`
 
 
 

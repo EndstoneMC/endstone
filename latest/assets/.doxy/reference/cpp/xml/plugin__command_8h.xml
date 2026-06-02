@@ -163,6 +163,8 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
       </node>
       <node id="24">
         <label>endstone/command/command_executor.h</label>
@@ -637,6 +639,8 @@
         </childnode>
         <childnode refid="76" relation="include">
         </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
         <childnode refid="55" relation="include">
         </childnode>
       </node>
@@ -681,7 +685,11 @@
         <link refid="pointers_8h_source"/>
         <childnode refid="42" relation="include">
         </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
@@ -867,13 +875,17 @@
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
 <codeline lineno="83" refid="classendstone_1_1PluginCommand_1a7f812a8e80c3f2c9fc578b3a77513c9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">maybe_unused</ref>]]<sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;<ref refid="classendstone_1_1PluginCommand_1a7f812a8e80c3f2c9fc578b3a77513c9a" kindref="member">getPlugin</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>owner_;<sp/>}</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85" refid="classendstone_1_1PluginCommand_1a8d5cd569a483b56fc16e95757384a531" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/><ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref><sp/>*<ref refid="classendstone_1_1PluginCommand_1a8d5cd569a483b56fc16e95757384a531" kindref="member">asPluginCommand</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;owner_;</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;CommandExecutor&gt;<sp/>executor_;</highlight></codeline>
-<codeline lineno="90"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="91"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::type_info<sp/>&amp;getClassTypeId()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(<ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isInstanceOf(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::type_info<sp/>&amp;target)</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
+<codeline lineno="87"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(PluginCommand)<sp/>==<sp/>target<sp/>||<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(Command)<sp/>==<sp/>target<sp/>||<sp/></highlight><highlight class="keyword">typeid</highlight><highlight class="normal">(Object)<sp/>==<sp/>target;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>Plugin<sp/>&amp;owner_;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;CommandExecutor&gt;<sp/>executor_;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/command/plugin_command.h"/>
   </compounddef>

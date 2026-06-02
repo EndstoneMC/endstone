@@ -8,6 +8,36 @@
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
       </param>
     </templateparamlist>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classendstone_1_1Nullable_1a17dd9bbe7ad92cfadd0303ca9e2e578c" prot="public" static="no">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
+        <definition>using endstone::Nullable&lt; T &gt;::pointer_type =  std::shared_ptr&lt;T&gt;</definition>
+        <argsstring></argsstring>
+        <name>pointer_type</name>
+        <qualifiedname>endstone::Nullable::pointer_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="91" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classendstone_1_1Nullable_1ada4c5090737238271fd71bab23f72af0" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref></type>
+        <definition>using endstone::Nullable&lt; T &gt;::element_type =  T</definition>
+        <argsstring></argsstring>
+        <name>element_type</name>
+        <qualifiedname>endstone::Nullable::element_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="92" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1Nullable_1a43199191f56f06851b84da5ed7397866" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt;</type>
@@ -21,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="81" column="21" bodyfile="include/endstone/util/pointers.h" bodystart="81" bodyend="-1"/>
+        <location file="include/endstone/util/pointers.h" line="138" column="21" bodyfile="include/endstone/util/pointers.h" bodystart="138" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -37,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="67" column="15"/>
+        <location file="include/endstone/util/pointers.h" line="94" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Nullable_1a95d356e50120ae553389540e258b7914" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
@@ -54,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="68" column="15" bodyfile="include/endstone/util/pointers.h" bodystart="68" bodyend="68"/>
+        <location file="include/endstone/util/pointers.h" line="95" column="15" bodyfile="include/endstone/util/pointers.h" bodystart="95" bodyend="95"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Nullable_1a1b48f38d468889789f2152ee0d5245b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -72,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="69" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="69" bodyend="69"/>
+        <location file="include/endstone/util/pointers.h" line="96" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="96" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Nullable_1a8eb27147b53813746191b965b614b46f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -90,11 +120,89 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="70" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="70" bodyend="70"/>
+        <location file="include/endstone/util/pointers.h" line="97" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="97" bodyend="97"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Nullable_1a328e3b82139d5757b5ec8aa0330c28d5" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::shared_ptr&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &gt; &amp;</type>
-        <definition>const std::shared_ptr&lt; T &gt; &amp; endstone::Nullable&lt; T &gt;::get</definition>
+      <memberdef kind="function" id="classendstone_1_1Nullable_1adeb179477cd1861ddda20e2b579f10bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">U</ref></type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>endstone::Nullable&lt; T &gt;::Nullable</definition>
+        <argsstring>(std::shared_ptr&lt; U &gt; ptr)</argsstring>
+        <name>Nullable</name>
+        <qualifiedname>endstone::Nullable::Nullable</qualifiedname>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">U</ref> &gt;</type>
+          <declname>ptr</declname>
+        </param>
+    <requiresclause>(!std::is_same_v&lt;U, T&gt;) &amp;&amp; std::is_convertible_v&lt;U *, T *&gt;    </requiresclause>
+        <briefdescription>
+<para>Covariant conversion from a shared_ptr of a convertible (e.g. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>derived) type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="102" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="102" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Nullable_1a2425514992f0b3af7f75265fbf4d2bd9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">U</ref></type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>endstone::Nullable&lt; T &gt;::Nullable</definition>
+        <argsstring>(const Nullable&lt; U &gt; &amp;other)</argsstring>
+        <name>Nullable</name>
+        <qualifiedname>endstone::Nullable::Nullable</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">U</ref> &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+    <requiresclause>(!std::is_same_v&lt;U, T&gt;) &amp;&amp; std::is_convertible_v&lt;U *, T *&gt;    </requiresclause>
+        <briefdescription>
+<para>Covariant conversion from a <ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref> of a convertible (e.g. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>derived) type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="109" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="109" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Nullable_1a6dd4e47403c33a6c1417898650546c71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type><ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">U</ref></type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>endstone::Nullable&lt; T &gt;::Nullable</definition>
+        <argsstring>(const NotNull&lt; U &gt; &amp;other)</argsstring>
+        <name>Nullable</name>
+        <qualifiedname>endstone::Nullable::Nullable</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">U</ref> &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+    <requiresclause>(!std::is_same_v&lt;U, T&gt;) &amp;&amp; std::is_convertible_v&lt;U *, T *&gt;    </requiresclause>
+        <briefdescription>
+<para>Covariant conversion from a <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> of a convertible (e.g. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>derived) type. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/pointers.h" line="116" column="5" bodyfile="include/endstone/util/pointers.h" bodystart="116" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Nullable_1af36b09fb8d2827784466aa006dddde61" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> pointer_type &amp;</type>
+        <definition>const pointer_type &amp; endstone::Nullable&lt; T &gt;::get</definition>
         <argsstring>() const noexcept</argsstring>
         <name>get</name>
         <qualifiedname>endstone::Nullable::get</qualifiedname>
@@ -104,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="71" column="27" bodyfile="include/endstone/util/pointers.h" bodystart="71" bodyend="71"/>
+        <location file="include/endstone/util/pointers.h" line="120" column="24" bodyfile="include/endstone/util/pointers.h" bodystart="120" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Nullable_1a7906d265f380f7a31adcef433165b028" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> *</type>
@@ -118,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="72" column="7" bodyfile="include/endstone/util/pointers.h" bodystart="72" bodyend="72"/>
+        <location file="include/endstone/util/pointers.h" line="121" column="7" bodyfile="include/endstone/util/pointers.h" bodystart="121" bodyend="121"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Nullable_1a992e605330beee0c1ae9f0a30c8b4dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
@@ -132,7 +240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="73" column="7" bodyfile="include/endstone/util/pointers.h" bodystart="73" bodyend="73"/>
+        <location file="include/endstone/util/pointers.h" line="122" column="7" bodyfile="include/endstone/util/pointers.h" bodystart="122" bodyend="122"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Nullable_1a7529b952cd5553e62038f8c15751940c" prot="public" static="no" const="yes" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -146,41 +254,41 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="74" column="14" bodyfile="include/endstone/util/pointers.h" bodystart="74" bodyend="74"/>
+        <location file="include/endstone/util/pointers.h" line="123" column="14" bodyfile="include/endstone/util/pointers.h" bodystart="123" bodyend="123"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Nullable_1af4a60d3d270dacfafefdca5fe4151e0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
-        <definition>bool endstone::Nullable&lt; T &gt;::operator==</definition>
-        <argsstring>(const Nullable &amp;) const =default</argsstring>
-        <name>operator==</name>
-        <qualifiedname>endstone::Nullable::operator==</qualifiedname>
-        <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref> &amp;</type>
-        </param>
+      <memberdef kind="function" id="classendstone_1_1Nullable_1aacfe83683413e2745f4482346f0a0a2a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">T</ref> &amp;</type>
+        <definition>T &amp; endstone::Nullable&lt; T &gt;::value</definition>
+        <argsstring>() const</argsstring>
+        <name>value</name>
+        <qualifiedname>endstone::Nullable::value</qualifiedname>
         <briefdescription>
+<para>Returns a reference to the contained value, throwing <computeroutput>std::runtime_error</computeroutput> if this is null. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="75" column="10"/>
+        <location file="include/endstone/util/pointers.h" line="126" column="7" bodyfile="include/endstone/util/pointers.h" bodystart="126" bodyend="130"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Nullable_1a43d84a519ac2652879a5e6e7ad35210d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
-        <definition>bool endstone::Nullable&lt; T &gt;::operator!=</definition>
-        <argsstring>(const Nullable &amp;) const =default</argsstring>
-        <name>operator!=</name>
-        <qualifiedname>endstone::Nullable::operator!=</qualifiedname>
+      <memberdef kind="function" id="classendstone_1_1Nullable_1ac6d37b889dcdf009ec8da6a17718100f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>pointer_type</type>
+        <definition>pointer_type endstone::Nullable&lt; T &gt;::value_or</definition>
+        <argsstring>(pointer_type default_value) const</argsstring>
+        <name>value_or</name>
+        <qualifiedname>endstone::Nullable::value_or</qualifiedname>
         <param>
-          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref> &amp;</type>
+          <type>pointer_type</type>
+          <declname>default_value</declname>
         </param>
         <briefdescription>
+<para>Returns the contained pointer if present, otherwise the supplied default. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="76" column="10"/>
+        <location file="include/endstone/util/pointers.h" line="133" column="18" bodyfile="include/endstone/util/pointers.h" bodystart="133" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Nullable_1a259337d8c5e717cdda7397808ed2afd4" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -197,47 +305,34 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="77" column="10" bodyfile="include/endstone/util/pointers.h" bodystart="77" bodyend="77"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Nullable_1a291404abed60f7a3680dd5599a413c9e" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
-        <definition>bool endstone::Nullable&lt; T &gt;::operator!=</definition>
-        <argsstring>(std::nullptr_t) const noexcept</argsstring>
-        <name>operator!=</name>
-        <qualifiedname>endstone::Nullable::operator!=</qualifiedname>
-        <param>
-          <type>std::nullptr_t</type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/util/pointers.h" line="78" column="10" bodyfile="include/endstone/util/pointers.h" bodystart="78" bodyend="78"/>
+        <location file="include/endstone/util/pointers.h" line="135" column="10" bodyfile="include/endstone/util/pointers.h" bodystart="135" bodyend="135"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
 <para>A wrapper around a std::shared_ptr that may be null. </para>
     </briefdescription>
     <detaileddescription>
-<para>Convertible from a <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref> of the same type, and contextually convertible to bool to test for a value. </para>
+<para>Convertible from a <ref refid="classendstone_1_1NotNull" kindref="compound">NotNull</ref>, and contextually convertible to bool to test for a value. </para>
     </detaileddescription>
-    <location file="include/endstone/util/pointers.h" line="65" column="1" bodyfile="include/endstone/util/pointers.h" bodystart="65" bodyend="82"/>
+    <location file="include/endstone/util/pointers.h" line="89" column="1" bodyfile="include/endstone/util/pointers.h" bodystart="89" bodyend="139"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Nullable_1a328e3b82139d5757b5ec8aa0330c28d5" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>get</name></member>
+      <member refid="classendstone_1_1Nullable_1ada4c5090737238271fd71bab23f72af0" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>element_type</name></member>
+      <member refid="classendstone_1_1Nullable_1af36b09fb8d2827784466aa006dddde61" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>get</name></member>
       <member refid="classendstone_1_1Nullable_1a75e9f13e2db7e8dd75f4eba526d5ece4" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>Nullable</name></member>
       <member refid="classendstone_1_1Nullable_1a95d356e50120ae553389540e258b7914" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>Nullable</name></member>
       <member refid="classendstone_1_1Nullable_1a1b48f38d468889789f2152ee0d5245b0" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>Nullable</name></member>
       <member refid="classendstone_1_1Nullable_1a8eb27147b53813746191b965b614b46f" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>Nullable</name></member>
+      <member refid="classendstone_1_1Nullable_1adeb179477cd1861ddda20e2b579f10bd" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>Nullable</name></member>
+      <member refid="classendstone_1_1Nullable_1a2425514992f0b3af7f75265fbf4d2bd9" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>Nullable</name></member>
+      <member refid="classendstone_1_1Nullable_1a6dd4e47403c33a6c1417898650546c71" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>Nullable</name></member>
       <member refid="classendstone_1_1Nullable_1a7529b952cd5553e62038f8c15751940c" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>operator bool</name></member>
-      <member refid="classendstone_1_1Nullable_1a43d84a519ac2652879a5e6e7ad35210d" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>operator!=</name></member>
-      <member refid="classendstone_1_1Nullable_1a291404abed60f7a3680dd5599a413c9e" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>operator!=</name></member>
       <member refid="classendstone_1_1Nullable_1a992e605330beee0c1ae9f0a30c8b4dd2" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>operator*</name></member>
       <member refid="classendstone_1_1Nullable_1a7906d265f380f7a31adcef433165b028" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>operator-&gt;</name></member>
-      <member refid="classendstone_1_1Nullable_1af4a60d3d270dacfafefdca5fe4151e0d" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>operator==</name></member>
       <member refid="classendstone_1_1Nullable_1a259337d8c5e717cdda7397808ed2afd4" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1Nullable_1a17dd9bbe7ad92cfadd0303ca9e2e578c" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>pointer_type</name></member>
       <member refid="classendstone_1_1Nullable_1a43199191f56f06851b84da5ed7397866" prot="private" virt="non-virtual"><scope>endstone::Nullable</scope><name>ptr_</name></member>
+      <member refid="classendstone_1_1Nullable_1aacfe83683413e2745f4482346f0a0a2a" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>value</name></member>
+      <member refid="classendstone_1_1Nullable_1ac6d37b889dcdf009ec8da6a17718100f" prot="public" virt="non-virtual"><scope>endstone::Nullable</scope><name>value_or</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

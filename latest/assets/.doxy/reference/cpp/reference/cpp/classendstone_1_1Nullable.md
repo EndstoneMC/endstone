@@ -30,6 +30,12 @@ _A wrapper around a std::shared\_ptr that may be null._ [More...](#detailed-desc
 
 
 
+## Public Types
+
+| Type | Name |
+| ---: | :--- |
+| typedef [**T**](classendstone_1_1Identifier.md) | [**element\_type**](#typedef-element_type)  <br> |
+| typedef std::shared\_ptr&lt; [**T**](classendstone_1_1Identifier.md) &gt; | [**pointer\_type**](#typedef-pointer_type)  <br> |
 
 
 
@@ -54,18 +60,20 @@ _A wrapper around a std::shared\_ptr that may be null._ [More...](#detailed-desc
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**Nullable**](#function-nullable-14) () noexcept<br> |
-|  [**constexpr**](classendstone_1_1Identifier.md) | [**Nullable**](#function-nullable-24) (std::nullptr\_t) noexcept<br> |
-|   | [**Nullable**](#function-nullable-34) (std::shared\_ptr&lt; [**T**](classendstone_1_1Identifier.md) &gt; ptr) <br> |
-|   | [**Nullable**](#function-nullable-44) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; & other) <br> |
-|  [**const**](classendstone_1_1Identifier.md) std::shared\_ptr&lt; [**T**](classendstone_1_1Identifier.md) &gt; & | [**get**](#function-get) () noexcept const<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) | [**Nullable**](#function-nullable-17) () noexcept<br> |
+|  [**constexpr**](classendstone_1_1Identifier.md) | [**Nullable**](#function-nullable-27) (std::nullptr\_t) noexcept<br> |
+|   | [**Nullable**](#function-nullable-37) (std::shared\_ptr&lt; [**T**](classendstone_1_1Identifier.md) &gt; ptr) <br> |
+|   | [**Nullable**](#function-nullable-47) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; & other) <br> |
+|   | [**Nullable**](#function-nullable-57) (std::shared\_ptr&lt; [**U**](classendstone_1_1Identifier.md) &gt; ptr) <br>_Covariant conversion from a shared\_ptr of a convertible (e.g._  |
+|   | [**Nullable**](#function-nullable-67) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; & other) <br>_Covariant conversion from a_ [_**Nullable**_](classendstone_1_1Nullable.md) _of a convertible (e.g._ |
+|   | [**Nullable**](#function-nullable-77) ([**const**](classendstone_1_1Identifier.md) [**NotNull**](classendstone_1_1NotNull.md)&lt; [**U**](classendstone_1_1Identifier.md) &gt; & other) <br>_Covariant conversion from a_ [_**NotNull**_](classendstone_1_1NotNull.md) _of a convertible (e.g._ |
+|  [**const**](classendstone_1_1Identifier.md) pointer\_type & | [**get**](#function-get) () noexcept const<br> |
 |   | [**operator bool**](#function-operator-bool) () noexcept const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md) &) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator!=**](#function-operator_1) (std::nullptr\_t) noexcept const<br> |
-|  [**T**](classendstone_1_1Identifier.md) & | [**operator\***](#function-operator_2) () noexcept const<br> |
+|  [**T**](classendstone_1_1Identifier.md) & | [**operator\***](#function-operator) () noexcept const<br> |
 |  [**T**](classendstone_1_1Identifier.md) \* | [**operator-&gt;**](#function-operator-) () noexcept const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_3) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md) &) const<br> |
-|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_4) (std::nullptr\_t) noexcept const<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_1) (std::nullptr\_t) noexcept const<br> |
+|  [**T**](classendstone_1_1Identifier.md) & | [**value**](#function-value) () const<br>_Returns a reference to the contained value, throwing_ `std::runtime_error` _if this is null._ |
+|  pointer\_type | [**value\_or**](#function-value_or) (pointer\_type default\_value) const<br>_Returns the contained pointer if present, otherwise the supplied default._  |
 
 
 
@@ -97,16 +105,44 @@ _A wrapper around a std::shared\_ptr that may be null._ [More...](#detailed-desc
 ## Detailed Description
 
 
-Convertible from a [**NotNull**](classendstone_1_1NotNull.md) of the same type, and contextually convertible to bool to test for a value. 
+Convertible from a [**NotNull**](classendstone_1_1NotNull.md), and contextually convertible to bool to test for a value. 
 
 
     
+## Public Types Documentation
+
+
+
+
+### typedef element\_type 
+
+```C++
+using endstone::Nullable< T >::element_type =  T;
+```
+
+
+
+
+<hr>
+
+
+
+### typedef pointer\_type 
+
+```C++
+using endstone::Nullable< T >::pointer_type =  std::shared_ptr<T>;
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
 
 
 
-### function Nullable [1/4]
+### function Nullable [1/7]
 
 ```C++
 constexpr endstone::Nullable::Nullable () noexcept
@@ -119,7 +155,7 @@ constexpr endstone::Nullable::Nullable () noexcept
 
 
 
-### function Nullable [2/4]
+### function Nullable [2/7]
 
 ```C++
 inline constexpr endstone::Nullable::Nullable (
@@ -134,7 +170,7 @@ inline constexpr endstone::Nullable::Nullable (
 
 
 
-### function Nullable [3/4]
+### function Nullable [3/7]
 
 ```C++
 inline endstone::Nullable::Nullable (
@@ -149,7 +185,7 @@ inline endstone::Nullable::Nullable (
 
 
 
-### function Nullable [4/4]
+### function Nullable [4/7]
 
 ```C++
 inline endstone::Nullable::Nullable (
@@ -164,10 +200,73 @@ inline endstone::Nullable::Nullable (
 
 
 
+### function Nullable [5/7]
+
+_Covariant conversion from a shared\_ptr of a convertible (e.g._ 
+```C++
+template<class  U>
+inline endstone::Nullable::Nullable (
+    std::shared_ptr< U > ptr
+) 
+```
+
+
+
+derived) type. 
+
+
+        
+
+<hr>
+
+
+
+### function Nullable [6/7]
+
+_Covariant conversion from a_ [_**Nullable**_](classendstone_1_1Nullable.md) _of a convertible (e.g._
+```C++
+template<class  U>
+inline endstone::Nullable::Nullable (
+    const  Nullable < U > & other
+) 
+```
+
+
+
+derived) type. 
+
+
+        
+
+<hr>
+
+
+
+### function Nullable [7/7]
+
+_Covariant conversion from a_ [_**NotNull**_](classendstone_1_1NotNull.md) _of a convertible (e.g._
+```C++
+template<class  U>
+inline endstone::Nullable::Nullable (
+    const  NotNull < U > & other
+) 
+```
+
+
+
+derived) type. 
+
+
+        
+
+<hr>
+
+
+
 ### function get 
 
 ```C++
-inline const std::shared_ptr< T > & endstone::Nullable::get () noexcept const
+inline const pointer_type & endstone::Nullable::get () noexcept const
 ```
 
 
@@ -181,36 +280,6 @@ inline const std::shared_ptr< T > & endstone::Nullable::get () noexcept const
 
 ```C++
 inline explicit endstone::Nullable::operator bool () noexcept const
-```
-
-
-
-
-<hr>
-
-
-
-### function operator!= 
-
-```C++
-bool endstone::Nullable::operator!= (
-    const  Nullable &
-) const
-```
-
-
-
-
-<hr>
-
-
-
-### function operator!= 
-
-```C++
-inline bool endstone::Nullable::operator!= (
-    std::nullptr_t
-) noexcept const
 ```
 
 
@@ -249,9 +318,9 @@ inline T * endstone::Nullable::operator-> () noexcept const
 ### function operator== 
 
 ```C++
-bool endstone::Nullable::operator== (
-    const  Nullable &
-) const
+inline bool endstone::Nullable::operator== (
+    std::nullptr_t
+) noexcept const
 ```
 
 
@@ -261,12 +330,27 @@ bool endstone::Nullable::operator== (
 
 
 
-### function operator== 
+### function value 
 
+_Returns a reference to the contained value, throwing_ `std::runtime_error` _if this is null._
 ```C++
-inline bool endstone::Nullable::operator== (
-    std::nullptr_t
-) noexcept const
+inline T & endstone::Nullable::value () const
+```
+
+
+
+
+<hr>
+
+
+
+### function value\_or 
+
+_Returns the contained pointer if present, otherwise the supplied default._ 
+```C++
+inline pointer_type endstone::Nullable::value_or (
+    pointer_type default_value
+) const
 ```
 
 

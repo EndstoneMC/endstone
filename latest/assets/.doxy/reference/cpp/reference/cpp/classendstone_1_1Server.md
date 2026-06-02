@@ -90,16 +90,16 @@ _Represents a server implementation._
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this server implementation._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**getOnlineMode**](#function-getonlinemode) () const = 0<br>_Gets whether the_ [_**Server**_](classendstone_1_1Server.md) _is in online mode or not._ |
 | virtual std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getOnlinePlayers**](#function-getonlineplayers) () const = 0<br>_Gets a list of all currently online players._  |
-| virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-12) ([**endstone::UUID**](classendstone_1_1UUID.md) id) const = 0<br>_Gets the player with the given_ [_**UUID**_](classendstone_1_1UUID.md) _._ |
-| virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-22) (std::string name) const = 0<br>_Gets the player with the exact given name, case-insensitive._  |
-| virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**getPluginCommand**](#function-getplugincommand) (std::string name) const = 0<br>_Gets a_ [_**PluginCommand**_](classendstone_1_1PluginCommand.md) _with the given name or alias._ |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; | [**getPlayer**](#function-getplayer-12) ([**endstone::UUID**](classendstone_1_1UUID.md) id) const = 0<br>_Gets the player with the given_ [_**UUID**_](classendstone_1_1UUID.md) _._ |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Player**](classendstone_1_1Player.md) &gt; | [**getPlayer**](#function-getplayer-22) (std::string name) const = 0<br>_Gets the player with the exact given name, case-insensitive._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**PluginCommand**](classendstone_1_1PluginCommand.md) &gt; | [**getPluginCommand**](#function-getplugincommand) (std::string name) const = 0<br>_Gets a_ [_**PluginCommand**_](classendstone_1_1PluginCommand.md) _with the given name or alias._ |
 | virtual [**PluginManager**](classendstone_1_1PluginManager.md) & | [**getPluginManager**](#function-getpluginmanager) () const = 0<br>_Gets the plugin manager for interfacing with plugins._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getPort**](#function-getport) () const = 0<br>_Get the game port that the server runs on._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getPortV6**](#function-getportv6) () const = 0<br>_Get the game port (IPv6) that the server runs on._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getProtocolVersion**](#function-getprotocolversion) () const = 0<br>_Gets the network protocol version that this server supports._  |
 |  [**const**](classendstone_1_1Identifier.md) [**Registry**](classendstone_1_1Registry.md)&lt; [**T**](classendstone_1_1Identifier.md) &gt; & | [**getRegistry**](#function-getregistry) () const<br>_Returns the registry for the given element type._  |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
-| virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) \* | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the primary_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _controlled by the server._ |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the primary_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _controlled by the server._ |
 | virtual [**ServiceManager**](classendstone_1_1ServiceManager.md) & | [**getServiceManager**](#function-getservicemanager) () const = 0<br>_Gets the service manager._  |
 | virtual std::chrono::system\_clock::time\_point | [**getStartTime**](#function-getstarttime) () = 0<br>_Gets the start time of the server._  |
 | virtual std::string | [**getVersion**](#function-getversion) () const = 0<br>_Gets the version string of this server implementation._  |
@@ -1070,7 +1070,7 @@ a list of currently online players.
 
 _Gets the player with the given_ [_**UUID**_](classendstone_1_1UUID.md) _._
 ```C++
-virtual Player * endstone::Server::getPlayer (
+virtual Nullable < Player > endstone::Server::getPlayer (
     endstone::UUID id
 ) const = 0
 ```
@@ -1088,7 +1088,7 @@ virtual Player * endstone::Server::getPlayer (
 
 **Returns:**
 
-a player object if one was found, nullptr otherwise 
+a player object if one was found, a null handle otherwise 
 
 
 
@@ -1104,7 +1104,7 @@ a player object if one was found, nullptr otherwise
 
 _Gets the player with the exact given name, case-insensitive._ 
 ```C++
-virtual Player * endstone::Server::getPlayer (
+virtual Nullable < Player > endstone::Server::getPlayer (
     std::string name
 ) const = 0
 ```
@@ -1122,7 +1122,7 @@ virtual Player * endstone::Server::getPlayer (
 
 **Returns:**
 
-a player object if one was found, nullptr otherwise 
+a player object if one was found, a null handle otherwise 
 
 
 
@@ -1138,7 +1138,7 @@ a player object if one was found, nullptr otherwise
 
 _Gets a_ [_**PluginCommand**_](classendstone_1_1PluginCommand.md) _with the given name or alias._
 ```C++
-virtual PluginCommand * endstone::Server::getPluginCommand (
+virtual Nullable < PluginCommand > endstone::Server::getPluginCommand (
     std::string name
 ) const = 0
 ```
@@ -1156,7 +1156,7 @@ virtual PluginCommand * endstone::Server::getPluginCommand (
 
 **Returns:**
 
-a plugin command if found, nullptr otherwise 
+a plugin command if found, a null handle otherwise 
 
 
 
@@ -1330,7 +1330,7 @@ a scheduling service for this server
 
 _Gets the primary_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _controlled by the server._
 ```C++
-virtual Scoreboard * endstone::Server::getScoreboard () const = 0
+virtual Nullable < Scoreboard > endstone::Server::getScoreboard () const = 0
 ```
 
 
@@ -1342,7 +1342,7 @@ This [**Scoreboard**](classendstone_1_1Scoreboard.md) is saved by the server, is
 
 **Returns:**
 
-the default server scoreboard 
+the default server scoreboard, or a null handle if the level has not been loaded yet 
 
 
 

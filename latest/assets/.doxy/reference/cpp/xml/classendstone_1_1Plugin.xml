@@ -335,9 +335,9 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin.h" line="113" column="18" bodyfile="include/endstone/plugin/plugin.h" bodystart="113" bodyend="113"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Plugin_1ade724d92b6cebdf4c11d3a4c04e3f49f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> *</type>
-        <definition>PluginCommand * endstone::Plugin::getCommand</definition>
+      <memberdef kind="function" id="classendstone_1_1Plugin_1a74ca5de3e7ae662093ca26789c2a3b89" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Nullable" kindref="compound">Nullable</ref>&lt; <ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> &gt;</type>
+        <definition>Nullable&lt; PluginCommand &gt; endstone::Plugin::getCommand</definition>
         <argsstring>(std::string name) const</argsstring>
         <name>getCommand</name>
         <qualifiedname>endstone::Plugin::getCommand</qualifiedname>
@@ -358,13 +358,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>the plugin command if found, otherwise nullptr </para>
+<simplesect kind="return"><para>the plugin command if found, otherwise a null handle </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin.h" line="121" column="20" bodyfile="include/endstone/plugin/plugin.h" bodystart="121" bodyend="125"/>
+        <location file="include/endstone/plugin/plugin.h" line="121" column="15" bodyfile="include/endstone/plugin/plugin.h" bodystart="121" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Plugin_1a3181846afa77e1801c009aa535b25ea0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> std::filesystem::path &amp;</type>
@@ -586,7 +586,7 @@
       <member refid="classendstone_1_1Plugin_1af89a58b391c1b932c5d3580fc2ccb764" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>core::EndstonePluginManager</name></member>
       <member refid="classendstone_1_1Plugin_1a9ca34c145db5a8a408d70fff3080e032" prot="private" virt="non-virtual"><scope>endstone::Plugin</scope><name>data_folder_</name></member>
       <member refid="classendstone_1_1Plugin_1aee2a3ea3a977bc44ea80f5a74ca5c454" prot="private" virt="non-virtual"><scope>endstone::Plugin</scope><name>enabled_</name></member>
-      <member refid="classendstone_1_1Plugin_1ade724d92b6cebdf4c11d3a4c04e3f49f" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>getCommand</name></member>
+      <member refid="classendstone_1_1Plugin_1a74ca5de3e7ae662093ca26789c2a3b89" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>getCommand</name></member>
       <member refid="classendstone_1_1Plugin_1a3181846afa77e1801c009aa535b25ea0" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>getDataFolder</name></member>
       <member refid="classendstone_1_1Plugin_1afbb41d0901dc0ba90e6f07e33f1222ea" prot="public" virt="pure-virtual"><scope>endstone::Plugin</scope><name>getDescription</name></member>
       <member refid="classendstone_1_1Plugin_1a0d49600964b786ccf286a80537c14882" prot="public" virt="non-virtual"><scope>endstone::Plugin</scope><name>getLogger</name></member>

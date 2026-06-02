@@ -25,6 +25,7 @@
 ## e
 
 * **EntryType** ([**endstone::BanList**](classendstone_1_1BanList.md))
+* **element\_type** ([**endstone::NotNull**](classendstone_1_1NotNull.md), [**endstone::Nullable**](classendstone_1_1Nullable.md))
 
 
 ## f
@@ -58,7 +59,7 @@
 
 ## p
 
-* **pointer\_type** ([**endstone::NotNull**](classendstone_1_1NotNull.md))
+* **pointer\_type** ([**endstone::NotNull**](classendstone_1_1NotNull.md), [**endstone::Nullable**](classendstone_1_1Nullable.md))
 
 
 ## s

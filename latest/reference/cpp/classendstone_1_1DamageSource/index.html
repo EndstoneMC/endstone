@@ -2726,11 +2726,11 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> *</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getactor"><strong>getActor</strong></a> () const = 0<br><em>Get the actor that caused the damage to occur.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> *</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getdamagingactor"><strong>getDamagingActor</strong></a> () const = 0<br><em>Get the actor that directly caused the damage.</em></td>
 </tr>
 <tr>
@@ -2750,20 +2750,20 @@ For latest updates join the chat on
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-getactor">function getActor<a class="headerlink" href="#function-getactor" title="Permanent link">&para;</a></h3>
 <p><em>Get the actor that caused the damage to occur.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">DamageSource</span><span class="o">::</span><span class="n">getActor</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">DamageSource</span><span class="o">::</span><span class="n">getActor</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>Not to be confused with <a href="./#function-getdamagingactor"><strong>DamageSource::getDamagingActor()</strong></a>, the returned actor is the actor to which the damage is ultimately attributed if the receiver is killed. If, for example, the receiver was damaged by a projectile, the shooter/thrower would be returned.</p>
 <p><strong>Returns:</strong></p>
-<p>an <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a>, or nullptr if none. </p>
+<p>an <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a>, or a null handle if none. </p>
 <hr>
 
 <h3 id="function-getdamagingactor">function getDamagingActor<a class="headerlink" href="#function-getdamagingactor" title="Permanent link">&para;</a></h3>
 <p><em>Get the actor that directly caused the damage.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">DamageSource</span><span class="o">::</span><span class="n">getDamagingActor</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">DamageSource</span><span class="o">::</span><span class="n">getDamagingActor</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>Not to be confused with <a href="./#function-getactor"><strong>DamageSource::getActor()</strong></a>, the returned actor is the actor that actually inflicted the damage. If, for example, the receiver was damaged by a projectile, the projectile would be returned.</p>
 <p><strong>Returns:</strong></p>
-<p>an <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a>, or nullptr if none. </p>
+<p>an <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a>, or a null handle if none. </p>
 <hr>
 
 <h3 id="function-gettype">function getType<a class="headerlink" href="#function-gettype" title="Permanent link">&para;</a></h3>

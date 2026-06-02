@@ -29,6 +29,7 @@
 #include <string_view>
 
 #include "endstone/actor/actor.h"
+#include "endstone/util/pointers.h"
 
 namespace endstone {
 
@@ -38,9 +39,9 @@ public:
 
     [[nodiscard]] virtual std::string_view getType() const = 0;
 
-    [[nodiscard]] virtual Actor *getActor() const = 0;
+    [[nodiscard]] virtual Nullable<Actor> getActor() const = 0;
 
-    [[nodiscard]] virtual Actor *getDamagingActor() const = 0;
+    [[nodiscard]] virtual Nullable<Actor> getDamagingActor() const = 0;
 
     [[nodiscard]] virtual bool isIndirect() const = 0;
 };
@@ -56,13 +57,13 @@ struct std::formatter<endstone::DamageSource> : std::formatter<std::string_view>
     {
         auto it = ctx.out();
         it = std::format_to(it, "DamageSource(type={}", val.getType());
-        if (auto *actor = val.getActor()) {
+        if (auto actor = val.getActor()) {
             it = std::format_to(it, ", actor={}", *actor);
         }
         else {
             it = std::format_to(it, ", actor=None");
         }
-        if (auto *damaging_actor = val.getDamagingActor()) {
+        if (auto damaging_actor = val.getDamagingActor()) {
             it = std::format_to(it, ", damaging_actor={}", *damaging_actor);
         }
         else {

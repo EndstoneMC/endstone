@@ -29,7 +29,6 @@
 * **asRGB** ([**endstone::Color**](classendstone_1_1Color.md))
 * **asRGBA** ([**endstone::Color**](classendstone_1_1Color.md))
 * **allowChangesFrom** ([**endstone::Command**](classendstone_1_1Command.md))
-* **asPluginCommand** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **addAttachment** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **at** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md), [**endstone::ListTag**](classendstone_1_1ListTag.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md), [**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
 * **addOption** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
@@ -238,13 +237,13 @@
 * **getGreen** ([**endstone::Color**](classendstone_1_1Color.md))
 * **getRed** ([**endstone::Color**](classendstone_1_1Color.md))
 * **getAliases** ([**endstone::Command**](classendstone_1_1Command.md))
+* **getClassTypeId** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Object**](classendstone_1_1Object.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **getDescription** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **getName** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Criteria**](classendstone_1_1Criteria.md), [**endstone::Level**](classendstone_1_1Level.md), [**endstone::Logger**](classendstone_1_1Logger.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::OfflinePlayer**](classendstone_1_1OfflinePlayer.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::Player**](classendstone_1_1Player.md), [**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **getPermissions** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getUsages** ([**endstone::Command**](classendstone_1_1Command.md))
 * **getCommand** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md), [**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **getServer** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
-* **getClassTypeId** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Object**](classendstone_1_1Object.md))
 * **getEffectivePermissions** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **getPermissionLevel** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **getWrapped** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
@@ -503,8 +502,8 @@
 * **isVisible** ([**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md))
 * **isCancellable** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::Event**](classendstone_1_1Event.md))
 * **isCancelled** ([**endstone::Cancellable**](classendstone_1_1Cancellable.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::ICancellable**](classendstone_1_1ICancellable.md), [**endstone::Task**](classendstone_1_1Task.md))
+* **isInstanceOf** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Object**](classendstone_1_1Object.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **isRegistered** ([**endstone::Command**](classendstone_1_1Command.md))
-* **isInstanceOf** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Object**](classendstone_1_1Object.md))
 * **isPermissionSet** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **insert** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md), [**endstone::nbt::ArrayTag**](classendstone_1_1nbt_1_1ArrayTag.md))
 * **insert\_or\_assign** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md))
@@ -595,7 +594,7 @@
 
 ## o
 
-* **operator!=** ([**endstone::Color**](classendstone_1_1Color.md), [**endstone::Identifier**](classendstone_1_1Identifier.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::Location**](classendstone_1_1Location.md), [**endstone::Nullable**](classendstone_1_1Nullable.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Registry::Type**](classendstone_1_1Registry_1_1Type.md), [**endstone::Vector**](classendstone_1_1Vector.md))
+* **operator!=** ([**endstone::Color**](classendstone_1_1Color.md), [**endstone::Identifier**](classendstone_1_1Identifier.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::Location**](classendstone_1_1Location.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Registry::Type**](classendstone_1_1Registry_1_1Type.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **operator==** ([**endstone::Color**](classendstone_1_1Color.md), [**endstone::Identifier**](classendstone_1_1Identifier.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::Location**](classendstone_1_1Location.md), [**endstone::Nullable**](classendstone_1_1Nullable.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Registry::Type**](classendstone_1_1Registry_1_1Type.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **onCommand** ([**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md))
 * **operator=** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::NotNull**](classendstone_1_1NotNull.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md), [**endstone::Server**](classendstone_1_1Server.md), [**endstone::Vector**](classendstone_1_1Vector.md))
@@ -618,7 +617,7 @@
 * **operator/** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **operator/=** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **operator const T &** ([**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md))
-* **operator()** ([**std::hash&lt; endstone::Identifier&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md), [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md))
+* **operator()** ([**std::hash&lt; endstone::Identifier&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md), [**std::hash&lt; endstone::NotNull&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1NotNull_3_01T_01_4_01_4.md), [**std::hash&lt; endstone::Nullable&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Nullable_3_01T_01_4_01_4.md), [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md))
 
 
 ## p
@@ -912,11 +911,12 @@
 
 ## v
 
+* **value** ([**endstone::Nullable**](classendstone_1_1Nullable.md), [**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md))
+* **value\_or** ([**endstone::Nullable**](classendstone_1_1Nullable.md))
 * **version** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **Vector** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **visit** ([**endstone::nbt::Tag**](classendstone_1_1nbt_1_1Tag.md))
 * **ValueTag** ([**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md))
-* **value** ([**endstone::nbt::ValueTag**](classendstone_1_1nbt_1_1ValueTag.md))
 
 
 ## w

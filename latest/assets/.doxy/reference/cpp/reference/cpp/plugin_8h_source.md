@@ -72,7 +72,7 @@ public:
 
     [[nodiscard]] std::string getName() const { return getDescription().getName(); };
 
-    [[nodiscard]] PluginCommand *getCommand(std::string name) const
+    [[nodiscard]] Nullable<PluginCommand> getCommand(std::string name) const
     {
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
         return getServer().getPluginCommand(name);

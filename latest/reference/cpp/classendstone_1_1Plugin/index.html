@@ -2973,7 +2973,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-plugin-22"><strong>Plugin</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="./"><strong>Plugin</strong></a> &amp;) = delete<br></td>
 </tr>
 <tr>
-<td style="text-align: right;"><a href="../classendstone_1_1PluginCommand/"><strong>PluginCommand</strong></a> *</td>
+<td style="text-align: right;"><a href="../classendstone_1_1Nullable/"><strong>Nullable</strong></a>&lt; <a href="../classendstone_1_1PluginCommand/"><strong>PluginCommand</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getcommand"><strong>getCommand</strong></a> (std::string name) const<br><em>Gets the command with the given name, specific to this plugin.</em></td>
 </tr>
 <tr>
@@ -3084,7 +3084,7 @@ For latest updates join the chat on
 
 <h3 id="function-getcommand">function getCommand<a class="headerlink" href="#function-getcommand" title="Permanent link">&para;</a></h3>
 <p><em>Gets the command with the given name, specific to this plugin.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">PluginCommand</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Plugin</span><span class="o">::</span><span class="n">getCommand</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Nullable</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">PluginCommand</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Plugin</span><span class="o">::</span><span class="n">getCommand</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
@@ -3093,7 +3093,7 @@ For latest updates join the chat on
 <li><code>name</code> name or alias of the command </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p>the plugin command if found, otherwise nullptr </p>
+<p>the plugin command if found, otherwise a null handle </p>
 <hr>
 
 <h3 id="function-getdatafolder">function getDataFolder<a class="headerlink" href="#function-getdatafolder" title="Permanent link">&para;</a></h3>

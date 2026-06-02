@@ -38,7 +38,7 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="17">
         <label>endstone/ban/ip_ban_entry.h</label>
         <link refid="ip__ban__entry_8h_source"/>
         <childnode refid="4" relation="include">
@@ -61,17 +61,17 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="14">
         <label>endstone/check.h</label>
         <link refid="check_8h_source"/>
-        <childnode refid="13" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -81,9 +81,13 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -92,20 +96,26 @@
       <node id="10">
         <label>cstddef</label>
       </node>
-      <node id="14">
+      <node id="16">
         <label>format</label>
       </node>
       <node id="11">
+        <label>functional</label>
+      </node>
+      <node id="12">
         <label>memory</label>
       </node>
       <node id="3">
         <label>optional</label>
       </node>
-      <node id="13">
+      <node id="15">
         <label>stdexcept</label>
       </node>
       <node id="4">
         <label>string</label>
+      </node>
+      <node id="13">
+        <label>type_traits</label>
       </node>
       <node id="8">
         <label>utility</label>

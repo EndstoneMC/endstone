@@ -224,5 +224,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **struct** [**formatter&lt; endstone::nbt::Tag &gt;**](structstd_1_1formatter_3_01endstone_1_1nbt_1_1Tag_01_4.md)     
     * **struct** [**formatter&lt; endstone::nbt::escape\_view &gt;**](structstd_1_1formatter_3_01endstone_1_1nbt_1_1escape__view_01_4.md)     
     * **struct** [**hash&lt; endstone::Identifier&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4.md)     
+    * **struct** [**hash&lt; endstone::NotNull&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1NotNull_3_01T_01_4_01_4.md)     
+    * **struct** [**hash&lt; endstone::Nullable&lt; T &gt; &gt;**](structstd_1_1hash_3_01endstone_1_1Nullable_3_01T_01_4_01_4.md)     
     * **struct** [**hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md)     
 

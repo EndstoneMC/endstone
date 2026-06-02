@@ -52,8 +52,8 @@ _Represents a source of damage._
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**Actor**](classendstone_1_1Actor.md) \* | [**getActor**](#function-getactor) () const = 0<br>_Get the actor that caused the damage to occur._  |
-| virtual [**Actor**](classendstone_1_1Actor.md) \* | [**getDamagingActor**](#function-getdamagingactor) () const = 0<br>_Get the actor that directly caused the damage._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Actor**](classendstone_1_1Actor.md) &gt; | [**getActor**](#function-getactor) () const = 0<br>_Get the actor that caused the damage to occur._  |
+| virtual [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Actor**](classendstone_1_1Actor.md) &gt; | [**getDamagingActor**](#function-getdamagingactor) () const = 0<br>_Get the actor that directly caused the damage._  |
 | virtual std::string\_view | [**getType**](#function-gettype) () const = 0<br>_Get the damage type._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isIndirect**](#function-isindirect) () const = 0<br>_Get if this damage is indirect._  |
 | virtual  | [**~DamageSource**](#function-damagesource) () = default<br> |
@@ -94,7 +94,7 @@ _Represents a source of damage._
 
 _Get the actor that caused the damage to occur._ 
 ```C++
-virtual Actor * endstone::DamageSource::getActor () const = 0
+virtual Nullable < Actor > endstone::DamageSource::getActor () const = 0
 ```
 
 
@@ -106,7 +106,7 @@ Not to be confused with [**DamageSource::getDamagingActor()**](classendstone_1_1
 
 **Returns:**
 
-an [**Actor**](classendstone_1_1Actor.md), or nullptr if none. 
+an [**Actor**](classendstone_1_1Actor.md), or a null handle if none. 
 
 
 
@@ -122,7 +122,7 @@ an [**Actor**](classendstone_1_1Actor.md), or nullptr if none.
 
 _Get the actor that directly caused the damage._ 
 ```C++
-virtual Actor * endstone::DamageSource::getDamagingActor () const = 0
+virtual Nullable < Actor > endstone::DamageSource::getDamagingActor () const = 0
 ```
 
 
@@ -134,7 +134,7 @@ Not to be confused with [**DamageSource::getActor()**](classendstone_1_1DamageSo
 
 **Returns:**
 
-an [**Actor**](classendstone_1_1Actor.md), or nullptr if none. 
+an [**Actor**](classendstone_1_1Actor.md), or a null handle if none. 
 
 
 

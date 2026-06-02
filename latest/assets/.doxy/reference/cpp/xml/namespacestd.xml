@@ -33,6 +33,8 @@
     <innerclass refid="structstd_1_1formatter_3_01endstone_1_1Vector_01_4" prot="public">std::formatter&lt; endstone::Vector &gt;</innerclass>
     <innerclass refid="structstd_1_1formatter_3_01T_01_4" prot="public">std::formatter&lt; T &gt;</innerclass>
     <innerclass refid="structstd_1_1hash_3_01endstone_1_1Identifier_3_01T_01_4_01_4" prot="public">std::hash&lt; endstone::Identifier&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01endstone_1_1NotNull_3_01T_01_4_01_4" prot="public">std::hash&lt; endstone::NotNull&lt; T &gt; &gt;</innerclass>
+    <innerclass refid="structstd_1_1hash_3_01endstone_1_1Nullable_3_01T_01_4_01_4" prot="public">std::hash&lt; endstone::Nullable&lt; T &gt; &gt;</innerclass>
     <innerclass refid="structstd_1_1hash_3_01endstone_1_1UUID_01_4" prot="public">std::hash&lt; endstone::UUID &gt;</innerclass>
     <briefdescription>
     </briefdescription>

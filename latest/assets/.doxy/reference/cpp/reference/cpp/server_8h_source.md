@@ -47,6 +47,7 @@
 #include "endstone/message.h"
 #include "endstone/plugin/service_manager.h"
 #include "endstone/scoreboard/scoreboard.h"
+#include "endstone/util/pointers.h"
 #include "endstone/util/uuid.h"
 
 namespace endstone {
@@ -92,7 +93,7 @@ public:
 
     [[nodiscard]] virtual PluginManager &getPluginManager() const = 0;
 
-    [[nodiscard]] virtual PluginCommand *getPluginCommand(std::string name) const = 0;
+    [[nodiscard]] virtual Nullable<PluginCommand> getPluginCommand(std::string name) const = 0;
 
     [[nodiscard]] virtual ConsoleCommandSender &getCommandSender() const = 0;
 
@@ -108,7 +109,7 @@ public:
 
     virtual void setMaxPlayers(int max_players) = 0;
 
-    [[nodiscard]] virtual Player *getPlayer(endstone::UUID id) const = 0;
+    [[nodiscard]] virtual Nullable<Player> getPlayer(endstone::UUID id) const = 0;
 
     [[nodiscard]] virtual int getPort() const = 0;
 
@@ -116,7 +117,7 @@ public:
 
     [[nodiscard]] virtual bool getOnlineMode() const = 0;
 
-    [[nodiscard]] virtual Player *getPlayer(std::string name) const = 0;
+    [[nodiscard]] virtual Nullable<Player> getPlayer(std::string name) const = 0;
 
     virtual void shutdown() = 0;
 
@@ -143,7 +144,7 @@ public:
 
     [[nodiscard]] virtual ItemFactory &getItemFactory() const = 0;
 
-    [[nodiscard]] virtual Scoreboard *getScoreboard() const = 0;
+    [[nodiscard]] virtual Nullable<Scoreboard> getScoreboard() const = 0;
 
     [[nodiscard]] virtual std::shared_ptr<Scoreboard> createScoreboard() = 0;
 
