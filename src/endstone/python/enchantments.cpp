@@ -150,9 +150,9 @@ void init_enchantments(py::module_ &m)
         .def_property_readonly("translation_key", &Enchantment::getTranslationKey,
                                "The translation key, suitable for use in a translation component.")
         .def_property_readonly("max_level", &Enchantment::getMaxLevel,
-                               "The maximum level that this Enchantment may become.")
+                               "The maximum level that this `Enchantment` may become.")
         .def_property_readonly("start_level", &Enchantment::getStartLevel,
-                               "The level that this Enchantment should start at (also known as minimum level).")
+                               "The level that this `Enchantment` should start at (also known as minimum level).")
         .def("conflicts_with", &Enchantment::conflictsWith, py::arg("other"), R"doc(
     Check if this enchantment conflicts with another enchantment.
 
@@ -160,10 +160,10 @@ void init_enchantments(py::module_ &m)
         other: The enchantment to check against.
 
     Returns:
-        True if there is a conflict.
+        `True` if there is a conflict.
 )doc")
         .def("can_enchant_item", &Enchantment::canEnchantItem, py::arg("item"), R"doc(
-    Checks if this Enchantment may be applied to the given ItemStack.
+    Checks if this `Enchantment` may be applied to the given `ItemStack`.
 
     This does not check if it conflicts with any enchantments already applied to the item.
 
@@ -171,7 +171,7 @@ void init_enchantments(py::module_ &m)
         item: Item to test.
 
     Returns:
-        True if the enchantment may be applied, False otherwise.
+        `True` if the enchantment may be applied, `False` otherwise.
 )doc")
         .def_static("get", &Enchantment::get, py::arg("name"), R"doc(
     Look up a registry entry by identifier.
@@ -180,7 +180,7 @@ void init_enchantments(py::module_ &m)
         name: Identifier to look up.
 
     Returns:
-        The Enchantment, or None if not found.
+        The `Enchantment`, or `None` if not found.
 )doc", py::return_value_policy::reference)
         .def("__str__", [](const Enchantment &self) { return std::string(self.getId()); })
         .def("__hash__", [](const Enchantment &self) { return std::hash<EnchantmentId>{}(self.getId()); })

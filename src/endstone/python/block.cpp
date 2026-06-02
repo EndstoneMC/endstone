@@ -41,7 +41,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .def_property_readonly("block_states", &BlockData::getBlockStates, R"doc(
     The block states for this block.
 
-    When passed into ``Server.create_block_data(type, block_states)`` these
+    When passed into `Server.create_block_data(type, block_states)` these
     will unambiguously recreate this instance.
 )doc")
         .def_property_readonly("runtime_id", &BlockData::getRuntimeId, "The runtime id for this block.")
@@ -51,21 +51,21 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .def_property_readonly("translation_key", &BlockType::getTranslationKey,
                                "The translation key, suitable for use in a translation component.")
         .def_property_readonly("has_item_type", &BlockType::hasItemType,
-                               "True if this BlockType has a corresponding ItemType.")
+                               "`True` if this `BlockType` has a corresponding `ItemType`.")
         .def("create_block_data", &BlockType::createBlockData, R"doc(
-    Creates a new BlockData instance for this block type, with all properties initialized to defaults.
+    Creates a new `BlockData` instance for this block type, with all properties initialized to defaults.
 
     Returns:
-        A new BlockData instance.
+        A new `BlockData` instance.
 )doc")
         .def_static("get", &BlockType::get, py::arg("name"), R"doc(
-    Attempts to get the BlockType with the given name.
+    Attempts to get the `BlockType` with the given name.
 
     Args:
-        name: The identifier of the block type (e.g. ``minecraft:stone``).
+        name: The identifier of the block type (e.g. `minecraft:stone`).
 
     Returns:
-        The BlockType, or None if no block type with that name exists.
+        The `BlockType`, or `None` if no block type with that name exists.
 )doc", py::return_value_policy::reference)
         .def("__str__", [](const BlockType &self) { return std::string(self.getId()); })
         .def("__repr__", [](const BlockType &self) { return std::format("BlockType({})", self.getId()); })
@@ -78,10 +78,10 @@ void init_block(py::module_ &m, py::class_<Block> &block)
     py::class_<BlockState>(m, "BlockState", R"doc(
     Represents a captured state of a block, which will not update automatically.
 
-    Unlike Block, which only one object can exist per coordinate, BlockState can
-    exist multiple times for any given Block. Note that another plugin may change
+    Unlike `Block`, which only one object can exist per coordinate, `BlockState` can
+    exist multiple times for any given `Block`. Note that another plugin may change
     the state of the block, and you will not know, or they may change the block to
-    another type entirely, causing your BlockState to become invalid.
+    another type entirely, causing your `BlockState` to become invalid.
 )doc")
         .def_property_readonly("block", &BlockState::getBlock, "The block represented by this block state.")
         .def_property("type", &BlockState::getType, &BlockState::setType, py::return_value_policy::reference,
@@ -97,21 +97,21 @@ void init_block(py::module_ &m, py::class_<Block> &block)
              py::arg("apply_physics") = true, R"doc(
     Attempts to update the block represented by this state, setting it to the new values defined by this state.
 
-    Unless ``force`` is True, this will not modify the state of a block if it is no longer the
-    same type as it was when this state was taken; in that case it returns False.
+    Unless `force` is `True`, this will not modify the state of a block if it is no longer the
+    same type as it was when this state was taken; in that case it returns `False`.
 
-    If ``force`` is True, the block type is set to match the new state, the state data is applied,
-    and True is returned.
+    If `force` is `True`, the block type is set to match the new state, the state data is applied,
+    and `True` is returned.
 
-    If ``apply_physics`` is True, a physics update is triggered on surrounding blocks, which
+    If `apply_physics` is `True`, a physics update is triggered on surrounding blocks, which
     could cause them to update or disappear.
 
     Args:
-        force: True to forcefully set the state.
-        apply_physics: False to cancel updating physics on surrounding blocks.
+        force: `True` to forcefully set the state.
+        apply_physics: `False` to cancel updating physics on surrounding blocks.
 
     Returns:
-        True if the update was successful, False otherwise.
+        `True` if the update was successful, `False` otherwise.
 )doc")
         .def("__str__", [](const BlockState &self) { return std::format("{}", self); });
 
@@ -122,8 +122,8 @@ void init_block(py::module_ &m, py::class_<Block> &block)
     Sets the type of this block.
 
     Args:
-        type: New type for this block (e.g. ``minecraft:stone``).
-        apply_physics: False to cancel physics on the changed block.
+        type: New type for this block (e.g. `minecraft:stone`).
+        apply_physics: `False` to cancel physics on the changed block.
 )doc")
         .def_property_readonly("data", &Block::getData, "The complete block data for this block.")
         .def("set_data", py::overload_cast<const BlockData &, bool>(&Block::setData), py::arg("data"),
@@ -132,7 +132,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
 
     Args:
         data: New block-specific data.
-        apply_physics: False to cancel physics on the changed block.
+        apply_physics: `False` to cancel physics on the changed block.
 )doc")
         .def("get_relative", py::overload_cast<int, int, int>(&Block::getRelative), py::arg("offset_x"),
              py::arg("offset_y"), py::arg("offset_z"), R"doc(
@@ -144,7 +144,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         offset_z: Z-coordinate offset.
 
     Returns:
-        Block at the given offsets.
+        `Block` at the given offsets.
 )doc")
         .def("get_relative", py::overload_cast<BlockFace, int>(&Block::getRelative), py::arg("face"),
              py::arg("distance") = 1, R"doc(
@@ -155,9 +155,9 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         distance: Distance from this block to get the block at.
 
     Returns:
-        Block at the given face.
+        `Block` at the given face.
 )doc")
-        .def_property_readonly("dimension", &Block::getDimension, "The dimension which contains this Block.",
+        .def_property_readonly("dimension", &Block::getDimension, "The dimension which contains this `Block`.",
                                py::return_value_policy::reference)
         .def_property_readonly("x", &Block::getX, "X-coordinate of this block.")
         .def_property_readonly("y", &Block::getY, "Y-coordinate of this block.")
@@ -170,7 +170,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
     sign is still a sign after you capture its state.
 
     Returns:
-        A BlockState snapshot of the current state of this block.
+        A `BlockState` snapshot of the current state of this block.
 )doc")
         .def("__str__", [](const Block &self) { return std::format("{}", self); });
 }

@@ -100,8 +100,8 @@ public:
      * Checks if a BanEntry exists for the target, indicating an active ban status.
      *
      * @param name The player name to find.
-     * @return true If a BanEntry exists for the target, indicating an active ban status.
-     * @return false Otherwise.
+     * @return `true` If a BanEntry exists for the target, indicating an active ban status.
+     * @return `false` Otherwise.
      */
     [[nodiscard]] bool isBanned(std::string name) const override = 0;
 
@@ -111,8 +111,8 @@ public:
      * @param name The player name to find.
      * @param uuid The UUID of the target, std::nullopt if not used.
      * @param xuid The XUID of the target, std::nullopt if not used.
-     * @return true If a BanEntry exists for the target, indicating an active ban status.
-     * @return false Otherwise.
+     * @return `true` If a BanEntry exists for the target, indicating an active ban status.
+     * @return `false` Otherwise.
      */
     [[nodiscard]] virtual bool isBanned(std::string name, std::optional<UUID> uuid,
                                         std::optional<std::string> xuid) const = 0;

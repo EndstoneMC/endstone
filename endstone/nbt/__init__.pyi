@@ -52,9 +52,9 @@ class ByteTag(Tag):
         Serialize this tag to binary NBT format.
 
         Args:
-            name: Optional root tag name. If None, an empty name is used.
-            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+            name: Optional root tag name. If `None`, an empty name is used.
+            byte_order: Byte order for encoding, either `'little'` (Bedrock) or `'big'` (Java).
+            network: If `True`, use Bedrock network varint encoding for lengths and Int/Long values.
 
         Returns:
             bytes: The binary NBT data.
@@ -87,9 +87,9 @@ class ShortTag(Tag):
         Serialize this tag to binary NBT format.
 
         Args:
-            name: Optional root tag name. If None, an empty name is used.
-            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+            name: Optional root tag name. If `None`, an empty name is used.
+            byte_order: Byte order for encoding, either `'little'` (Bedrock) or `'big'` (Java).
+            network: If `True`, use Bedrock network varint encoding for lengths and Int/Long values.
 
         Returns:
             bytes: The binary NBT data.
@@ -122,9 +122,9 @@ class IntTag(Tag):
         Serialize this tag to binary NBT format.
 
         Args:
-            name: Optional root tag name. If None, an empty name is used.
-            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+            name: Optional root tag name. If `None`, an empty name is used.
+            byte_order: Byte order for encoding, either `'little'` (Bedrock) or `'big'` (Java).
+            network: If `True`, use Bedrock network varint encoding for lengths and Int/Long values.
 
         Returns:
             bytes: The binary NBT data.
@@ -157,9 +157,9 @@ class LongTag(Tag):
         Serialize this tag to binary NBT format.
 
         Args:
-            name: Optional root tag name. If None, an empty name is used.
-            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+            name: Optional root tag name. If `None`, an empty name is used.
+            byte_order: Byte order for encoding, either `'little'` (Bedrock) or `'big'` (Java).
+            network: If `True`, use Bedrock network varint encoding for lengths and Int/Long values.
 
         Returns:
             bytes: The binary NBT data.
@@ -192,9 +192,9 @@ class FloatTag(Tag):
         Serialize this tag to binary NBT format.
 
         Args:
-            name: Optional root tag name. If None, an empty name is used.
-            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+            name: Optional root tag name. If `None`, an empty name is used.
+            byte_order: Byte order for encoding, either `'little'` (Bedrock) or `'big'` (Java).
+            network: If `True`, use Bedrock network varint encoding for lengths and Int/Long values.
 
         Returns:
             bytes: The binary NBT data.
@@ -227,9 +227,9 @@ class DoubleTag(Tag):
         Serialize this tag to binary NBT format.
 
         Args:
-            name: Optional root tag name. If None, an empty name is used.
-            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+            name: Optional root tag name. If `None`, an empty name is used.
+            byte_order: Byte order for encoding, either `'little'` (Bedrock) or `'big'` (Java).
+            network: If `True`, use Bedrock network varint encoding for lengths and Int/Long values.
 
         Returns:
             bytes: The binary NBT data.
@@ -294,9 +294,9 @@ class ByteArrayTag(Tag):
         Serialize this tag to binary NBT format.
 
         Args:
-            name: Optional root tag name. If None, an empty name is used.
-            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+            name: Optional root tag name. If `None`, an empty name is used.
+            byte_order: Byte order for encoding, either `'little'` (Bedrock) or `'big'` (Java).
+            network: If `True`, use Bedrock network varint encoding for lengths and Int/Long values.
 
         Returns:
             bytes: The binary NBT data.
@@ -328,9 +328,9 @@ class StringTag(Tag):
         Serialize this tag to binary NBT format.
 
         Args:
-            name: Optional root tag name. If None, an empty name is used.
-            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+            name: Optional root tag name. If `None`, an empty name is used.
+            byte_order: Byte order for encoding, either `'little'` (Bedrock) or `'big'` (Java).
+            network: If `True`, use Bedrock network varint encoding for lengths and Int/Long values.
 
         Returns:
             bytes: The binary NBT data.
@@ -382,9 +382,9 @@ class IntArrayTag(Tag):
         Serialize this tag to binary NBT format.
 
         Args:
-            name: Optional root tag name. If None, an empty name is used.
-            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+            name: Optional root tag name. If `None`, an empty name is used.
+            byte_order: Byte order for encoding, either `'little'` (Bedrock) or `'big'` (Java).
+            network: If `True`, use Bedrock network varint encoding for lengths and Int/Long values.
 
         Returns:
             bytes: The binary NBT data.
@@ -451,7 +451,7 @@ class ListTag(Tag):
         ...
     def empty(self) -> bool:
         """
-        Returns True if this list contains no tags.
+        Returns `True` if this list contains no tags.
         """
         ...
     def __eq__(self, other: object) -> bool: ...
@@ -463,9 +463,9 @@ class ListTag(Tag):
         Serialize this tag to binary NBT format.
 
         Args:
-            name: Optional root tag name. If None, an empty name is used.
-            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+            name: Optional root tag name. If `None`, an empty name is used.
+            byte_order: Byte order for encoding, either `'little'` (Bedrock) or `'big'` (Java).
+            network: If `True`, use Bedrock network varint encoding for lengths and Int/Long values.
 
         Returns:
             bytes: The binary NBT data.
@@ -562,9 +562,9 @@ class CompoundTag(Tag):
         Serialize this tag to binary NBT format.
 
         Args:
-            name: Optional root tag name. If None, an empty name is used.
-            byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-            network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+            name: Optional root tag name. If `None`, an empty name is used.
+            byte_order: Byte order for encoding, either `'little'` (Bedrock) or `'big'` (Java).
+            network: If `True`, use Bedrock network varint encoding for lengths and Int/Long values.
 
         Returns:
             bytes: The binary NBT data.
@@ -577,8 +577,8 @@ def load(data: bytes, byte_order: typing.Literal["little", "big"] = "little", ne
 
     Args:
         data: Binary NBT data (bytes).
-        byte_order: Byte order of the binary data, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-        network: If True, expect Bedrock network varint encoding.
+        byte_order: Byte order of the binary data, either `'little'` (Bedrock) or `'big'` (Java).
+        network: If `True`, expect Bedrock network varint encoding.
 
     Returns:
         tuple[Tag, str]: A tuple of (tag, name) where name is the root tag name.

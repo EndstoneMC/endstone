@@ -23,7 +23,7 @@ class DamageSource:
         """
         The actor that caused the damage to occur.
 
-        Not to be confused with damaging_actor, the returned actor is the actor to which the damage is
+        Not to be confused with `damaging_actor`, the returned actor is the actor to which the damage is
         ultimately attributed if the receiver is killed. If, for example, the receiver was damaged by a projectile, the
         shooter/thrower would be returned.
         """
@@ -33,7 +33,7 @@ class DamageSource:
         """
         The actor that directly caused the damage.
 
-        Not to be confused with actor, the returned actor is the actor that actually inflicted the
+        Not to be confused with `actor`, the returned actor is the actor that actually inflicted the
         damage. If, for example, the receiver was damaged by a projectile, the projectile would be returned.
         """
         ...
@@ -42,7 +42,7 @@ class DamageSource:
         """
         Whether this damage is indirect.
 
-        Damage is considered indirect if actor is not equal to damaging_actor. This will be the case, for
+        Damage is considered indirect if `actor` is not equal to `damaging_actor`. This will be the case, for
         example, if a skeleton shot an arrow or a player threw a potion.
         """
         ...

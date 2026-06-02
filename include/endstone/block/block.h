@@ -50,14 +50,14 @@ public:
     /**
      * Sets the type of this block.
      *
-     * @param type New type for this block (e.g. BlockType::Air or "minecraft:stone").
+     * @param type New type for this block (e.g. BlockType::Air or `minecraft:stone`).
      */
     virtual void setType(BlockTypeId type) = 0;
 
     /**
      * Sets the type of this block.
      *
-     * @param type New type for this block (e.g. BlockType::Air or "minecraft:stone").
+     * @param type New type for this block (e.g. BlockType::Air or `minecraft:stone`).
      * @param apply_physics False to cancel physics on the changed block.
      */
     virtual void setType(BlockTypeId type, bool apply_physics) = 0;

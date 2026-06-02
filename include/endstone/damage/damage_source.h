@@ -63,7 +63,7 @@ public:
      * Damage is considered indirect if DamageSource::getActor() is not equal to DamageSource::getDamagingActor(). This
      * will be the case, for example, if a skeleton shot an arrow or a player threw a potion.
      *
-     * @return true if is indirect, false otherwise.
+     * @return `true` if is indirect, `false` otherwise.
      */
     [[nodiscard]] virtual bool isIndirect() const = 0;
 };

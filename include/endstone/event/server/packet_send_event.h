@@ -65,7 +65,7 @@ public:
     /**
      * Returns the player involved in this event.
      *
-     * @note This may return nullptr if the packet is sent before the player completes the login process.
+     * @note This may return `nullptr` if the packet is sent before the player completes the login process.
      *
      * @return Player who is involved in this event
      */

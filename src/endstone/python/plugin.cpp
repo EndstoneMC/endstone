@@ -181,7 +181,7 @@ void init_plugin(py::module &m)
         .def("on_load", &Plugin::onLoad, R"doc(
     Called after a plugin is loaded but before it has been enabled.
 
-    When multiple plugins are loaded, the on_load() for all plugins is called before any on_enable() is called.
+    When multiple plugins are loaded, the `on_load()` for all plugins is called before any `on_enable()` is called.
 )doc")
         .def("on_enable", &Plugin::onEnable, "Called when this plugin is enabled.")
         .def("on_disable", &Plugin::onDisable, "Called when this plugin is disabled.")
@@ -192,9 +192,9 @@ void init_plugin(py::module &m)
     The returned logger automatically tags all log messages with the plugin's name.
 )doc")
         .def_property_readonly("plugin_loader", &Plugin::getPluginLoader, py::return_value_policy::reference,
-                               "The associated PluginLoader responsible for this plugin.")
+                               "The associated `PluginLoader` responsible for this plugin.")
         .def_property_readonly("server", &Plugin::getServer, py::return_value_policy::reference,
-                               "The Server instance currently running this plugin.")
+                               "The `Server` instance currently running this plugin.")
         .def_property_readonly("is_enabled", &Plugin::isEnabled, "Whether this plugin is currently enabled.")
         .def_property_readonly("name", &Plugin::getName, R"doc(
     The name of the plugin.
@@ -208,7 +208,7 @@ void init_plugin(py::module &m)
         name: Name or alias of the command.
 
     Returns:
-        The plugin command if found, otherwise None.
+        The plugin command if found, otherwise `None`.
 )doc")
         .def_property_readonly("data_folder", &Plugin::getDataFolder,
                                "The folder that the plugin data's files are located in. The folder may not yet exist.");
@@ -222,7 +222,7 @@ void init_plugin(py::module &m)
         file: File to attempt to load.
 
     Returns:
-        Plugin that was contained in the specified file, or None if unsuccessful.
+        `Plugin` that was contained in the specified file, or `None` if unsuccessful.
 )doc")
         .def("load_plugins", &PluginLoader::loadPlugins, py::arg("directory"),
              py::return_value_policy::reference_internal, R"doc(
@@ -251,12 +251,12 @@ void init_plugin(py::module &m)
         plugin: Plugin to disable.
 )doc")
         .def_property_readonly("plugin_file_filters", &PluginLoader::getPluginFileFilters,
-                               "A list of all filename filters expected by this PluginLoader.")
+                               "A list of all filename filters expected by this `PluginLoader`.")
         .def_property_readonly("server", &PluginLoader::getServer, py::return_value_policy::reference,
-                               "The Server object associated with the PluginLoader.");
+                               "The `Server` object associated with the `PluginLoader`.");
 
     py::class_<PluginManager>(m, "PluginManager",
-                              "Represents a plugin manager that handles all plugins from the Server.")
+                              "Represents a plugin manager that handles all plugins from the `Server`.")
         .def("get_plugin", &PluginManager::getPlugin, py::arg("name"), py::return_value_policy::reference, R"doc(
     Checks if the given plugin is loaded and returns it when applicable.
 
@@ -266,7 +266,7 @@ void init_plugin(py::module &m)
         name: Name of the plugin to check.
 
     Returns:
-        Plugin if it exists, otherwise None.
+        `Plugin` if it exists, otherwise `None`.
 )doc")
         .def_property_readonly("plugins", &PluginManager::getPlugins, "List of all currently loaded plugins.")
         .def("is_plugin_enabled", py::overload_cast<const std::string &>(&PluginManager::isPluginEnabled, py::const_),
@@ -279,7 +279,7 @@ void init_plugin(py::module &m)
         plugin: Name of the plugin to check.
 
     Returns:
-        True if the plugin is enabled, otherwise False.
+        `True` if the plugin is enabled, otherwise `False`.
 )doc")
         .def("is_plugin_enabled", py::overload_cast<Plugin *>(&PluginManager::isPluginEnabled, py::const_),
              py::arg("plugin"), R"doc(
@@ -289,18 +289,18 @@ void init_plugin(py::module &m)
         plugin: Plugin to check.
 
     Returns:
-        True if the plugin is enabled, otherwise False.
+        `True` if the plugin is enabled, otherwise `False`.
 )doc")
         .def("load_plugin", &PluginManager::loadPlugin, py::arg("file"), py::return_value_policy::reference, R"doc(
     Loads the plugin in the specified file.
 
-    File must be valid according to the current enabled Plugin interfaces.
+    File must be valid according to the current enabled `Plugin` interfaces.
 
     Args:
         file: File containing the plugin to load.
 
     Returns:
-        The Plugin loaded, or None if it was invalid.
+        The `Plugin` loaded, or `None` if it was invalid.
 )doc")
         .def("load_plugins", py::overload_cast<std::string>(&PluginManager::loadPlugins), py::arg("directory"),
              py::return_value_policy::reference_internal, R"doc(
@@ -360,37 +360,37 @@ void init_plugin(py::module &m)
 
     Args:
         name: Event name to register.
-        executor: EventExecutor to register.
+        executor: `EventExecutor` to register.
         priority: Priority of this event.
         plugin: Plugin to register.
         ignore_cancelled: Do not call executor if event was already cancelled.
 )doc")
         .def("get_permission", &PluginManager::getPermission, py::arg("name"), py::return_value_policy::reference,
              R"doc(
-    Gets a Permission from its fully qualified name.
+    Gets a `Permission` from its fully qualified name.
 
     Args:
         name: Name of the permission.
 
     Returns:
-        Permission, or None if none.
+        `Permission`, or `None` if none.
 )doc")
         .def("remove_permission", py::overload_cast<Permission &>(&PluginManager::removePermission), py::arg("perm"),
              R"doc(
-    Removes a Permission registration from this plugin manager.
+    Removes a `Permission` registration from this plugin manager.
 
     If the specified permission does not exist in this plugin manager, nothing will happen.
-    Removing a permission registration will not remove the permission from any Permissibles that have it.
+    Removing a permission registration will not remove the permission from any `Permissibles` that have it.
 
     Args:
         perm: Permission to remove.
 )doc")
         .def("remove_permission", py::overload_cast<std::string>(&PluginManager::removePermission), py::arg("name"),
              R"doc(
-    Removes a Permission registration from this plugin manager.
+    Removes a `Permission` registration from this plugin manager.
 
     If the specified permission does not exist in this plugin manager, nothing will happen.
-    Removing a permission registration will not remove the permission from any Permissibles that have it.
+    Removing a permission registration will not remove the permission from any `Permissibles` that have it.
 
     Args:
         name: Permission to remove.
@@ -406,7 +406,7 @@ void init_plugin(py::module &m)
         The default permissions.
 )doc")
         .def("recalculate_permission_defaults", &PluginManager::recalculatePermissionDefaults, py::arg("perm"), R"doc(
-    Recalculates the defaults for the given Permission.
+    Recalculates the defaults for the given `Permission`.
 
     This will have no effect if the specified permission is not registered here.
 
@@ -415,9 +415,9 @@ void init_plugin(py::module &m)
 )doc")
         .def("subscribe_to_permission", &PluginManager::subscribeToPermission, py::arg("permission"),
              py::arg("permissible"), R"doc(
-    Subscribes the given Permissible for information about the requested Permission, by name.
+    Subscribes the given `Permissible` for information about the requested `Permission`, by name.
 
-    If the specified Permission changes in any form, the Permissible will be asked to recalculate.
+    If the specified `Permission` changes in any form, the `Permissible` will be asked to recalculate.
 
     Args:
         permission: Permission to subscribe to.
@@ -425,7 +425,7 @@ void init_plugin(py::module &m)
 )doc")
         .def("unsubscribe_from_permission", &PluginManager::unsubscribeFromPermission, py::arg("permission"),
              py::arg("permissible"), R"doc(
-    Unsubscribes the given Permissible for information about the requested Permission, by name.
+    Unsubscribes the given `Permissible` for information about the requested `Permission`, by name.
 
     Args:
         permission: Permission to unsubscribe from.
@@ -433,7 +433,7 @@ void init_plugin(py::module &m)
 )doc")
         .def("get_permission_subscriptions", &PluginManager::getPermissionSubscriptions, py::arg("permission"),
              py::return_value_policy::reference_internal, R"doc(
-    Gets a set containing all subscribed Permissibles to the given permission, by name.
+    Gets a set containing all subscribed `Permissibles` to the given permission, by name.
 
     Args:
         permission: Permission to query for.
@@ -445,7 +445,7 @@ void init_plugin(py::module &m)
              py::arg("permissible"), R"doc(
     Subscribes to the given Default permissions by permission level.
 
-    If the specified defaults change in any form, the Permissible will be asked to recalculate.
+    If the specified defaults change in any form, the `Permissible` will be asked to recalculate.
 
     Args:
         level: Default list to subscribe to.
@@ -461,7 +461,7 @@ void init_plugin(py::module &m)
 )doc")
         .def("get_default_perm_subscriptions", &PluginManager::getDefaultPermSubscriptions, py::arg("level"),
              py::return_value_policy::reference_internal, R"doc(
-    Gets a set containing all subscribed Permissibles to the given default list, by permission level.
+    Gets a set containing all subscribed `Permissibles` to the given default list, by permission level.
 
     Args:
         level: Default list to query for.
@@ -475,8 +475,8 @@ void init_plugin(py::module &m)
     plugin_command
         .def_property("executor", &PluginCommand::getExecutor,
                       py::cpp_function(&PluginCommand::setExecutor, py::keep_alive<1, 2>()),
-                      py::return_value_policy::reference, "The CommandExecutor to run when parsing this command.")
-        .def_property_readonly("plugin", &PluginCommand::getPlugin, "The owner of this PluginCommand.");
+                      py::return_value_policy::reference, "The `CommandExecutor` to run when parsing this command.")
+        .def_property_readonly("plugin", &PluginCommand::getPlugin, "The owner of this `PluginCommand`.");
 
     py::native_enum<ServicePriority>(m, "ServicePriority", "enum.IntEnum",
                                      "Represents various priorities of a provider.")
@@ -529,13 +529,13 @@ void init_plugin(py::module &m)
         .def("load", &ServiceManager::get, py::arg("name"), R"doc(
     Queries for a provider.
 
-    This may return None if no provider has been registered for the service. The highest priority provider is returned.
+    This may return `None` if no provider has been registered for the service. The highest priority provider is returned.
 
     Args:
         name: The service name.
 
     Returns:
-        The highest priority provider, or None if none is registered.
+        The highest priority provider, or `None` if none is registered.
 )doc");
 }
 

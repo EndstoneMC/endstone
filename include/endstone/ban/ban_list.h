@@ -62,8 +62,8 @@ public:
      * Checks if a BanEntry exists for the target, indicating an active ban status.
      *
      * @param target The target to find.
-     * @return true If a BanEntry exists for the target, indicating an active ban status.
-     * @return false Otherwise.
+     * @return `true` If a BanEntry exists for the target, indicating an active ban status.
+     * @return `false` Otherwise.
      */
     [[nodiscard]] virtual bool isBanned(std::string target) const = 0;
 

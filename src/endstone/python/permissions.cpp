@@ -34,12 +34,12 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
     permission  //
         .def(py::init(&createPermission), py::arg("name"), py::arg("description") = py::none(),
              py::arg("default") = py::none(), py::arg("children") = py::none())
-        .def_property_readonly("name", &Permission::getName, "The unique fully qualified name of this Permission.")
+        .def_property_readonly("name", &Permission::getName, "The unique fully qualified name of this `Permission`.")
         .def_property_readonly("children", &Permission::getChildren, py::return_value_policy::reference_internal,
                                R"doc(
     The children of this permission.
 
-    If you change this map in any form, you must call ``recalculate_permissibles()`` to recalculate all Permissibles.
+    If you change this map in any form, you must call `recalculate_permissibles()` to recalculate all `Permissibles`.
 )doc")
         .def_property("default", &Permission::getDefault, &Permission::setDefault,
                       "The default value of this permission.")
@@ -47,9 +47,9 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
                       "A brief description of this permission.")
         .def_property_readonly("permissibles", &Permission::getPermissibles,
                                py::return_value_policy::reference_internal,
-                               "A set containing every Permissible that has this permission.")
+                               "A set containing every `Permissible` that has this permission.")
         .def("recalculate_permissibles", &Permission::recalculatePermissibles, R"doc(
-    Recalculates all Permissibles that contain this permission.
+    Recalculates all `Permissibles` that contain this permission.
 
     This should be called after modifying the children, and is automatically called after modifying the default value.
 )doc")
@@ -76,18 +76,18 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
 )doc");
 
     py::class_<PermissionAttachment>(m, "PermissionAttachment",
-                                     "Holds information about a permission attachment on a Permissible object.")
+                                     "Holds information about a permission attachment on a `Permissible` object.")
         .def(py::init<Plugin &, Permissible &>(), py::arg("plugin"), py::arg("permissible"))
         .def_property_readonly("plugin", &PermissionAttachment::getPlugin, py::return_value_policy::reference,
                                "The plugin responsible for this permission attachment.")
         .def("remove", &PermissionAttachment::remove, R"doc(
-    Removes this attachment from its registered Permissible.
+    Removes this attachment from its registered `Permissible`.
 
     Returns:
-        True if the attachment was removed successfully, False if it did not exist.
+        `True` if the attachment was removed successfully, `False` if it did not exist.
 )doc")
         .def_property_readonly("permissible", &PermissionAttachment::getPermissible, py::return_value_policy::reference,
-                               "The Permissible that this is attached to.")
+                               "The `Permissible` that this is attached to.")
         .def_property_readonly("permissions", &PermissionAttachment::getPermissions,
                                py::return_value_policy::reference_internal, R"doc(
     A copy of all set permissions and values contained within this attachment.
@@ -134,18 +134,18 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
 
     py::class_<PermissionAttachmentInfo>(
         m, "PermissionAttachmentInfo",
-        "Holds information on a permission and which PermissionAttachment provides it.")
+        "Holds information on a permission and which `PermissionAttachment` provides it.")
         .def(py::init<Permissible &, std::string, PermissionAttachment *, bool>(), py::arg("permissible"),
              py::arg("permission"), py::arg("attachment"), py::arg("value"))
         .def_property_readonly("permissible", &PermissionAttachmentInfo::getPermissible,
-                               py::return_value_policy::reference, "The Permissible this permission is for.")
+                               py::return_value_policy::reference, "The `Permissible` this permission is for.")
         .def_property_readonly("permission", &PermissionAttachmentInfo::getPermission,
                                "The name of the permission being set.")
         .def_property_readonly("attachment", &PermissionAttachmentInfo::getAttachment,
                                py::return_value_policy::reference, R"doc(
     The attachment providing this permission.
 
-    This may be None for default permissions (usually parent permissions).
+    This may be `None` for default permissions (usually parent permissions).
 )doc")
         .def_property_readonly("value", &PermissionAttachmentInfo::getValue, "The value of this permission.");
 
@@ -160,17 +160,17 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
         name: Name of the permission.
 
     Returns:
-        True if the permission is set, False otherwise.
+        `True` if the permission is set, `False` otherwise.
 )doc")
         .def("is_permission_set", py::overload_cast<const Permission &>(&Permissible::isPermissionSet, py::const_),
              py::arg("perm"), R"doc(
-    Checks if this object contains an override for the specified Permission.
+    Checks if this object contains an override for the specified `Permission`.
 
     Args:
         perm: Permission to check.
 
     Returns:
-        True if the permission is set, False otherwise.
+        `True` if the permission is set, `False` otherwise.
 )doc")
         .def("has_permission", py::overload_cast<std::string>(&Permissible::hasPermission, py::const_), py::arg("name"),
              R"doc(
@@ -198,7 +198,7 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
 )doc")
         .def("add_attachment", py::overload_cast<Plugin &, const std::string &, bool>(&Permissible::addAttachment),
              py::arg("plugin"), py::arg("name"), py::arg("value"), py::return_value_policy::reference, R"doc(
-    Adds a new PermissionAttachment with a single permission by name and value.
+    Adds a new `PermissionAttachment` with a single permission by name and value.
 
     Args:
         plugin: Plugin responsible for this attachment; must not be disabled.
@@ -206,26 +206,26 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
         value: Value of the permission.
 
     Returns:
-        The PermissionAttachment that was just created.
+        The `PermissionAttachment` that was just created.
 )doc")
         .def("add_attachment", py::overload_cast<Plugin &>(&Permissible::addAttachment), py::arg("plugin"),
              py::return_value_policy::reference, R"doc(
-    Adds a new empty PermissionAttachment to this object.
+    Adds a new empty `PermissionAttachment` to this object.
 
     Args:
         plugin: Plugin responsible for this attachment; must not be disabled.
 
     Returns:
-        The PermissionAttachment that was just created.
+        The `PermissionAttachment` that was just created.
 )doc")
         .def("remove_attachment", &Permissible::removeAttachment, py::arg("attachment"), R"doc(
-    Removes the given PermissionAttachment from this object.
+    Removes the given `PermissionAttachment` from this object.
 
     Args:
         attachment: Attachment to remove.
 
     Returns:
-        True if the specified attachment was removed successfully, False when it isn't part of this object.
+        `True` if the specified attachment was removed successfully, `False` when it isn't part of this object.
 )doc")
         .def("recalculate_permissions", &Permissible::recalculatePermissions, R"doc(
     Recalculates the permissions for this object, if the attachments have changed values.

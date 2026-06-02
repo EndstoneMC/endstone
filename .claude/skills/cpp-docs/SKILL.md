@@ -72,6 +72,38 @@ the wording to Bedrock semantics — don't copy blindly. Anything Java-only
 (Material lookups, ChunkSnapshot, MetadataValue, ...) should be dropped, not
 translated.
 
+## Cross-references
+
+Doxygen turns recognised names into clickable links automatically — that's the
+accepted way; reach for a command only when auto-linking can't express it. The
+key difference from the Python side: in Doxygen these become real links, so
+prefer auto-linking over backticks for anything that *is* a documented entity.
+
+- **Class / enum / type:** write the bare name. `Dimension`, `ItemStack`,
+  `BlockState` auto-link (any documented name with at least one uppercase
+  letter). Prefix `%` to suppress an unwanted link (`%Material`); all-lowercase
+  names need `@ref`. Do **not** put a documented type name in backticks — that
+  kills the link.
+- **Method / function:** give Doxygen a signal — parentheses or a scope.
+  `getType()` (current/base class), `Block::setType()`, or the JavaDoc form
+  `Block#setType`. Inside a class's own block the scope can be dropped
+  (`captureState()`); from elsewhere qualify it (`Block::getType()`). A bare
+  method name with no `()` and no scope will **not** link — add `()`.
+- **Member / constant:** `Class::member_` or `Class#member_`.
+- **"See also" list:** `@see Block::getType(), ItemFactory` — every name in the
+  paragraph auto-links. This is the home for related-method pointers.
+- **Code that is NOT a documented entity:** literals, keywords, ids, and values
+  go in backticks or `@c` — `` `minecraft:stone` ``, `@c true`,
+  `` `endstone.broadcast.user` ``. Doxygen does not link inside code spans, so
+  never backtick a name you want linked.
+- **Custom link text (rare):** `@link Block::setType() the new type @endlink`
+  for a code entity; `@ref some-page "text"` for a page/section/anchor. Default
+  to plain auto-linking; only use these when the visible text must differ from
+  the symbol.
+
+`{@link ...}` / `{@code ...}` are JavaDoc, not Doxygen — convert leftovers:
+`{@link Foo}` → `Foo` (or `@link Foo @endlink`), `{@code x}` → `` `x` ``.
+
 ## Writing new docs
 
 Skeleton for a new public method:

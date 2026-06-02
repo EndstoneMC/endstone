@@ -107,7 +107,7 @@ public:
      * Teleports this actor to the given location.
      *
      * @param location New location to teleport this actor to
-     * @return true if the teleport was successful.
+     * @return `true` if the teleport was successful.
      */
     virtual bool teleport(const Location &location) = 0;
 
@@ -115,7 +115,7 @@ public:
      * Teleports this actor to the target Actor.
      *
      * @param target Actor to teleport this actor to
-     * @return true if the teleport was successful.
+     * @return `true` if the teleport was successful.
      */
     virtual bool teleport(const Actor &target) = 0;
 
@@ -129,7 +129,7 @@ public:
     /**
      * Remove this actor from the level.
      *
-     * If you are trying to remove a Player, use Player::kick instead.
+     * If you are trying to remove a Player, use Player::kick() instead.
      */
     virtual void remove() = 0;
 
@@ -158,7 +158,7 @@ public:
      * Adds a tag to this actor.
      *
      * @param tag the tag to add
-     * @return true if the tag was successfully added, false if the tag already exists.
+     * @return `true` if the tag was successfully added, `false` if the tag already exists.
      */
     [[nodiscard]] virtual bool addScoreboardTag(std::string tag) const = 0;
 
@@ -166,7 +166,7 @@ public:
      * Removes a given tag from this actor.
      *
      * @param tag the tag to remove
-     * @return true if the tag was successfully removed, false if the tag does not exist.
+     * @return `true` if the tag was successfully removed, `false` if the tag does not exist.
      */
     [[nodiscard]] virtual bool removeScoreboardTag(std::string tag) const = 0;
 

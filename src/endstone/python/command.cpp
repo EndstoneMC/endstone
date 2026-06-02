@@ -69,7 +69,7 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
 
     py_class<CommandSenderWrapper>(
         m, "CommandSenderWrapper",
-        "Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output.")
+        "Represents a wrapper that forwards commands to the wrapped `CommandSender` and captures its output.")
         .def(py::init<CommandSender &, CommandSenderWrapper::Callback, CommandSenderWrapper::Callback>(),
              py::arg("sender"), py::arg("on_message") = CommandSenderWrapper::Callback{},
              py::arg("on_error") = CommandSenderWrapper::Callback{});
@@ -88,10 +88,10 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
         args: Arguments passed to the command.
 
     Returns:
-        True if the execution was successful, False otherwise.
+        `True` if the execution was successful, `False` otherwise.
 )doc")
         .def("test_permission", &Command::testPermission, py::arg("target"), R"doc(
-    Tests the given CommandSender to see if they can perform this command.
+    Tests the given `CommandSender` to see if they can perform this command.
 
     If they do not have permission, they will be informed that they cannot do this.
 
@@ -99,10 +99,10 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
         target: User to test.
 
     Returns:
-        True if they can use it, False otherwise.
+        `True` if they can use it, `False` otherwise.
 )doc")
         .def("test_permission_silently", &Command::testPermissionSilently, py::arg("target"), R"doc(
-    Tests the given CommandSender to see if they can perform this command.
+    Tests the given `CommandSender` to see if they can perform this command.
 
     No error is sent to the sender.
 
@@ -110,7 +110,7 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
         target: User to test.
 
     Returns:
-        True if they can use it, False otherwise.
+        `True` if they can use it, `False` otherwise.
 )doc")
         .def_property("name", &Command::getName, &Command::setName, "The name of this command.")
         .def_property("description", &Command::getDescription, &Command::setDescription,
@@ -142,7 +142,7 @@ void init_command(py::module &m, py_class<CommandSender> &command_sender)
         args: Passed command arguments.
 
     Returns:
-        True if the execution is successful, False otherwise.
+        `True` if the execution is successful, `False` otherwise.
 )doc");
 }
 

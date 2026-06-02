@@ -50,9 +50,9 @@ void init_boss(py::module_ &m)
         .def_property("color", &BossBar::getColor, &BossBar::setColor, "The color of this boss bar.")
         .def_property("style", &BossBar::getStyle, &BossBar::setStyle, "The style of this boss bar.")
         .def_property("progress", &BossBar::getProgress, &BossBar::setProgress, R"doc(
-    The progress of the bar between 0.0 and 1.0.
+    The progress of the bar between `0.0` and `1.0`.
 
-    Values should be between 0.0 (empty) and 1.0 (full).
+    Values should be between `0.0` (empty) and `1.0` (full).
 )doc")
         .def_property("is_visible", &BossBar::isVisible, &BossBar::setVisible,
                       "Whether the boss bar is displayed to attached players.")

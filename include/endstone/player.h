@@ -60,7 +60,7 @@ public:
     /**
      * Checks if this player is a server operator.
      *
-     * @return true if this is an operator, otherwise false
+     * @return `true` if this is an operator, otherwise `false`
      */
     [[nodiscard]] virtual bool isOp() const = 0;
 
@@ -106,35 +106,35 @@ public:
      * Makes the player perform the given command.
      *
      * @param command Command to perform
-     * @return true if the command was successful, otherwise false
+     * @return `true` if the command was successful, otherwise `false`
      */
     virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
 
     /**
      * Returns if the player is in sneak mode.
      *
-     * @return true if player is in sneak mode
+     * @return `true` if player is in sneak mode
      */
     [[nodiscard]] virtual bool isSneaking() const = 0;
 
     /**
      * Sets the sneak mode of the player.
      *
-     * @param sneak true if player should appear sneaking
+     * @param sneak `true` if player should appear sneaking
      */
     virtual void setSneaking(bool sneak) = 0;
 
     /**
      * Gets whether the player is sprinting or not.
      *
-     * @return true if player is sprinting.
+     * @return `true` if player is sprinting.
      */
     [[nodiscard]] virtual bool isSprinting() const = 0;
 
     /**
      * Sets whether the player is sprinting or not.
      *
-     * @param sprinting true if the player should be sprinting
+     * @param sprinting `true` if the player should be sprinting
      */
     virtual void setSprinting(bool sprinting) = 0;
 
@@ -181,16 +181,16 @@ public:
     /**
      * Gets the players current experience progress towards the next level.
      *
-     * This is a percentage value. 0.0 is "no progress" and 1.0 is "next level".
+     * This is a percentage value. `0.0` is "no progress" and `1.0` is "next level".
      *
-     * @return Current experience progress, between 0.0 and 1.0.
+     * @return Current experience progress, between `0.0` and `1.0`.
      */
     [[nodiscard]] virtual float getExpProgress() const = 0;
 
     /**
      * Sets the players current experience progress towards the next level.
      *
-     * This is a percentage value. 0.0 is "no progress" and 1.0 is "next level".
+     * This is a percentage value. `0.0` is "no progress" and `1.0` is "next level".
      *
      * @param progress New experience progress
      */
@@ -223,7 +223,7 @@ public:
     /**
      * Determines if the Player is allowed to fly via jump key double-tap.
      *
-     * @return True if the player is allowed to fly.
+     * @return `true` if the player is allowed to fly.
      */
     [[nodiscard]] virtual bool getAllowFlight() const = 0;
 
@@ -237,21 +237,21 @@ public:
     /**
      * Checks to see if this player is currently flying or not.
      *
-     * @return True if the player is flying, else false.
+     * @return `true` if the player is flying, else `false`.
      */
     [[nodiscard]] virtual bool isFlying() const = 0;
 
     /**
      * Makes this player start or stop flying.
      *
-     * @param value True to fly.
+     * @param value `true` to fly.
      */
     virtual void setFlying(bool value) = 0;
 
     /**
      * Gets the current allowed speed that a client can fly.
      *
-     * @return The current allowed speed, default is 0.05.
+     * @return The current allowed speed, default is `0.05`.
      */
     [[nodiscard]] virtual float getFlySpeed() const = 0;
 
@@ -265,7 +265,7 @@ public:
     /**
      * Gets the current allowed speed that a client can walk.
      *
-     * @return The current allowed speed, default is 0.10.
+     * @return The current allowed speed, default is `0.10`.
      */
     [[nodiscard]] virtual float getWalkSpeed() const = 0;
 
@@ -327,9 +327,9 @@ public:
      *
      * @param title Title text
      * @param subtitle Subtitle text
-     * @param fade_in time in ticks for titles to fade in. Defaults to 10.
-     * @param stay time in ticks for titles to stay. Defaults to 70.
-     * @param fade_out time in ticks for titles to fade out. Defaults to 20.
+     * @param fade_in time in ticks for titles to fade in. Defaults to `10`.
+     * @param stay time in ticks for titles to stay. Defaults to `70`.
+     * @param fade_out time in ticks for titles to fade out. Defaults to `20`.
      */
     virtual void sendTitle(std::string title, std::string subtitle, int fade_in, int stay, int fade_out) const = 0;
 

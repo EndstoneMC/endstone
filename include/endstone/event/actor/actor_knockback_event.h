@@ -35,7 +35,7 @@ public:
     /**
      * Get the source actor that has caused knockback to the defender, if exists.
      *
-     * @return actor that caused knockback, or nullptr if the knockback is not caused by an actor.
+     * @return actor that caused knockback, or `nullptr` if the knockback is not caused by an actor.
      */
     [[nodiscard]] Actor *getSource() const { return source_; }
 

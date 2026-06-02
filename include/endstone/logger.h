@@ -78,7 +78,7 @@ public:
      * Check if the Logger instance is enabled for the given log Level.
      *
      * @param level The log level to check
-     * @return true if the logger is enabled for the Level, false otherwise.
+     * @return `true` if the logger is enabled for the Level, `false` otherwise.
      */
     [[nodiscard]] virtual bool isEnabledFor(Level level) const = 0;
 

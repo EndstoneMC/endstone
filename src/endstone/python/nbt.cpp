@@ -99,9 +99,9 @@ static void bind_dump(PyClass &cls)
     Serialize this tag to binary NBT format.
 
     Args:
-        name: Optional root tag name. If None, an empty name is used.
-        byte_order: Byte order for encoding, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-        network: If True, use Bedrock network varint encoding for lengths and Int/Long values.
+        name: Optional root tag name. If `None`, an empty name is used.
+        byte_order: Byte order for encoding, either `'little'` (Bedrock) or `'big'` (Java).
+        network: If `True`, use Bedrock network varint encoding for lengths and Int/Long values.
 
     Returns:
         bytes: The binary NBT data.
@@ -349,7 +349,7 @@ static void bind_list_tag(py::module &m)
                         },
                         "Converts this list to a plain Python list of native values.")
                    .def("size", &ListTag::size, "The number of tags in this list.")
-                   .def("empty", &ListTag::empty, "Returns True if this list contains no tags.")
+                   .def("empty", &ListTag::empty, "Returns `True` if this list contains no tags.")
                    .def(py::self == py::self)
                    .def(py::self != py::self);
     bind_dump<ListTag>(cls);
@@ -504,8 +504,8 @@ void init_nbt(py::module_ &m)
 
     Args:
         data: Binary NBT data (bytes).
-        byte_order: Byte order of the binary data, either ``'little'`` (Bedrock) or ``'big'`` (Java).
-        network: If True, expect Bedrock network varint encoding.
+        byte_order: Byte order of the binary data, either `'little'` (Bedrock) or `'big'` (Java).
+        network: If `True`, expect Bedrock network varint encoding.
 
     Returns:
         tuple[Tag, str]: A tuple of (tag, name) where name is the root tag name.

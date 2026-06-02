@@ -36,7 +36,7 @@ class Actor(CommandSender):
     @property
     def location(self) -> Location:
         """
-        A new copy of Location containing the position of this actor.
+        A new copy of `Location` containing the position of this actor.
         """
         ...
     @property
@@ -48,31 +48,31 @@ class Actor(CommandSender):
     @property
     def is_on_ground(self) -> bool:
         """
-        True if the actor is supported by a block, i.e. on ground.
+        `True` if the actor is supported by a block, i.e. on ground.
         """
         ...
     @property
     def is_in_water(self) -> bool:
         """
-        True if the actor is in water.
+        `True` if the actor is in water.
         """
         ...
     @property
     def is_in_lava(self) -> bool:
         """
-        True if the actor is in lava.
+        `True` if the actor is in lava.
         """
         ...
     @property
     def level(self) -> Level:
         """
-        The current Level this actor resides in.
+        The current `Level` this actor resides in.
         """
         ...
     @property
     def dimension(self) -> Dimension:
         """
-        The current Dimension this actor resides in.
+        The current `Dimension` this actor resides in.
         """
         ...
     def set_rotation(self, yaw: float, pitch: float) -> None:
@@ -95,19 +95,19 @@ class Actor(CommandSender):
             location: New location to teleport this actor to.
 
         Returns:
-            True if the teleport was successful.
+            `True` if the teleport was successful.
         """
         ...
     @typing.overload
     def teleport(self, target: Actor) -> bool:
         """
-        Teleports this actor to the target Actor.
+        Teleports this actor to the target `Actor`.
 
         Args:
-            target: Actor to teleport this actor to.
+            target: `Actor` to teleport this actor to.
 
         Returns:
-            True if the teleport was successful.
+            `True` if the teleport was successful.
         """
         ...
     @property
@@ -120,19 +120,19 @@ class Actor(CommandSender):
         """
         Remove this actor from the level.
 
-        If you are trying to remove a Player, use Player.kick instead.
+        If you are trying to remove a `Player`, use `Player.kick` instead.
         """
         ...
     @property
     def is_valid(self) -> bool:
         """
-        False if the entity has died, been despawned for some other reason, or has not been added to the level.
+        `False` if the entity has died, been despawned for some other reason, or has not been added to the level.
         """
         ...
     @property
     def is_dead(self) -> bool:
         """
-        True if this actor has been marked for removal.
+        `True` if this actor has been marked for removal.
         """
         ...
     @property
@@ -149,7 +149,7 @@ class Actor(CommandSender):
             tag: The tag to add.
 
         Returns:
-            True if the tag was successfully added, False if the tag already exists.
+            `True` if the tag was successfully added, `False` if the tag already exists.
         """
         ...
     def remove_scoreboard_tag(self, tag: str) -> bool:
@@ -160,7 +160,7 @@ class Actor(CommandSender):
             tag: The tag to remove.
 
         Returns:
-            True if the tag was successfully removed, False if the tag does not exist.
+            `True` if the tag was successfully removed, `False` if the tag does not exist.
         """
         ...
     @property
@@ -203,7 +203,7 @@ class Mob(Actor):
     @property
     def is_gliding(self) -> bool:
         """
-        True if this actor is gliding, such as using an Elytra.
+        `True` if this actor is gliding, such as using an Elytra.
         """
         ...
     @property
@@ -220,7 +220,7 @@ class Mob(Actor):
         The maximum health this entity has.
 
         If the health of the entity is above the value provided, it will be set to that value. An entity
-        with a health bar (e.g. Player, EnderDragon, Wither, etc.) will have their bar scaled
+        with a health bar (e.g. `Player`, `EnderDragon`, `Wither`, etc.) will have their bar scaled
         accordingly.
         """
         ...
@@ -382,7 +382,7 @@ class ActorType:
     @staticmethod
     def get(name: Identifier[ActorType] | str) -> ActorType:
         """
-        Attempts to get the ActorType with the given name.
+        Attempts to get the `ActorType` with the given name.
         """
         ...
     def __str__(self) -> str: ...
@@ -406,7 +406,7 @@ class Item(Actor):
     @property
     def pickup_delay(self) -> int:
         """
-        The delay before this Item is available to be picked up by players.
+        The delay before this `Item` is available to be picked up by players.
         """
         ...
     @pickup_delay.setter
@@ -414,7 +414,7 @@ class Item(Actor):
     @property
     def is_unlimited_lifetime(self) -> bool:
         """
-        Whether this Item lives forever.
+        Whether this `Item` lives forever.
         """
         ...
     @is_unlimited_lifetime.setter

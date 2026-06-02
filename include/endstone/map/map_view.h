@@ -138,7 +138,7 @@ public:
     virtual bool removeRenderer(const std::shared_ptr<MapRenderer> &renderer) = 0;
 
     /**
-     * Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is
+     * Whether the map will show a smaller position cursor (`true`), or no position cursor (`false`) when cursor is
      * outside of map's range.
      *
      * @return True if unlimited tracking is enabled.
@@ -146,7 +146,7 @@ public:
     [[nodiscard]] virtual bool isUnlimitedTracking() const = 0;
 
     /**
-     * Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is
+     * Whether the map will show a smaller position cursor (`true`), or no position cursor (`false`) when cursor is
      * outside of map's range.
      *
      * @param unlimited True to enable unlimited tracking.

@@ -53,7 +53,7 @@ public:
     /**
      * Check if the message to be translated is empty.
      *
-     * @return true if the message to be translated is empty, false otherwise
+     * @return `true` if the message to be translated is empty, `false` otherwise
      */
     [[nodiscard]] bool empty() const { return text_.empty(); }
 

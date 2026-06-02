@@ -47,7 +47,7 @@ public:
     /**
      * Get whether the renderer is contextual, i.e. has different canvases for different players.
      *
-     * @return true if contextual, false otherwise.
+     * @return `true` if contextual, `false` otherwise.
      */
     [[nodiscard]] bool isContextual() const { return is_contextual_; }
 

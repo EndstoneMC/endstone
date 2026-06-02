@@ -54,6 +54,26 @@ multi-line Google-style docstrings and the conventions to use going forward.
   - C++ getter+setter pair exposed via `def_property("name", &T::get,
     &T::set)` → "Gets or sets ..." style.
 
+## Inline code and references
+
+Docstring prose is rendered as **Markdown** (the docs site compiles each
+fragment with a Markdown compiler; mkdocstrings does the same). So:
+
+- Wrap code entities in **single backticks**: types (`` `ItemStack` ``),
+  methods (`` `get_relative()` ``), attributes/parameters named in prose
+  (`` `apply_physics` ``), literal values and ids (`` `minecraft:stone` ``,
+  `` `True` `` / `` `None` ``), and dotted paths (`` `endstone.broadcast.user` ``).
+  Don't backtick plain English.
+- Use **single** backticks, not RST-style double (`` ``x`` ``). Double renders
+  the same under CommonMark but isn't idiomatic; when porting a C++ doc that
+  used double backticks, collapse to single.
+- **No cross-reference autolinks in prose.** Unlike the C++/Doxygen side there
+  is no autoref here — `[`Foo`][]` does not resolve, and Sphinx roles
+  (`:class:`) are wrong. Type *annotations in the signature* already auto-link
+  (`signature_crossrefs`), so prose backticks are for readability, not links.
+- Fenced ` ```py ` blocks are for multi-line examples (an `Examples:` section),
+  not inline references.
+
 ## Authoring rules
 
 ### Properties (`def_property*`)

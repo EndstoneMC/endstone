@@ -74,24 +74,24 @@ class ItemStack:
             other: The item stack to compare to.
 
         Returns:
-            True if the two stacks are equal, ignoring the amount.
+            `True` if the two stacks are equal, ignoring the amount.
         """
         ...
     @property
     def item_meta(self) -> ItemMeta:
         """
-        A copy of the ItemMeta of this ItemStack.
+        A copy of the `ItemMeta` of this `ItemStack`.
         """
         ...
     def set_item_meta(self, meta: ItemMeta) -> bool:
         """
-        Set the ItemMeta of this ItemStack.
+        Set the `ItemMeta` of this `ItemStack`.
 
         Args:
-            meta: New ItemMeta, or None to clear the metadata.
+            meta: New `ItemMeta`, or `None` to clear the metadata.
 
         Returns:
-            True if successfully applied ItemMeta.
+            `True` if successfully applied `ItemMeta`.
         """
         ...
     @property
@@ -159,19 +159,19 @@ class ItemType:
         ...
     def create_item_stack(self, amount: int = 1) -> ItemStack:
         """
-        Constructs a new ItemStack with this item type.
+        Constructs a new `ItemStack` with this item type.
 
         Args:
             amount: The amount in the stack.
 
         Returns:
-            An ItemStack of this item type.
+            An `ItemStack` of this item type.
         """
         ...
     @staticmethod
     def get(name: Identifier[ItemType] | str) -> ItemType:
         """
-        Attempts to get the ItemType with the given name.
+        Attempts to get the `ItemType` with the given name.
         """
         ...
     def __str__(self) -> str: ...
@@ -247,7 +247,7 @@ class ItemMeta:
             id: Enchantment id to check.
 
         Returns:
-            True if this enchantment exists for this meta.
+            `True` if this enchantment exists for this meta.
         """
         ...
     def get_enchant_level(self, id: Identifier[Enchantment] | str) -> int:
@@ -264,7 +264,7 @@ class ItemMeta:
     @property
     def enchants(self) -> dict[Enchantment, int]:
         """
-        Returns a copy of the enchantments in this ItemMeta.
+        Returns a copy of the enchantments in this `ItemMeta`.
 
         Returns an empty map if none.
         """
@@ -279,7 +279,7 @@ class ItemMeta:
             force: This indicates the enchantment should be applied, ignoring the level limit.
 
         Returns:
-            True if the item meta changed as a result of this call, False otherwise.
+            `True` if the item meta changed as a result of this call, `False` otherwise.
         """
         ...
     def remove_enchant(self, id: Identifier[Enchantment] | str) -> bool:
@@ -290,7 +290,7 @@ class ItemMeta:
             id: Enchantment id to remove.
 
         Returns:
-            True if the item meta changed as a result of this call, False otherwise.
+            `True` if the item meta changed as a result of this call, `False` otherwise.
         """
         ...
     def remove_enchants(self) -> None:
@@ -372,7 +372,7 @@ class WritableBookMeta(ItemMeta):
             Pages are 1-indexed.
 
         Args:
-            page: The page number to get, in range [1, page_count].
+            page: The page number to get, in range [1, `page_count`].
 
         Returns:
             The page from the book.
@@ -388,7 +388,7 @@ class WritableBookMeta(ItemMeta):
         Pages are 1-indexed.
 
         Args:
-            page: The page number to set, in range [1, page_count].
+            page: The page number to set, in range [1, `page_count`].
             data: The data to set for that page.
         """
         ...
@@ -483,7 +483,7 @@ class CrossbowMeta(ItemMeta):
     @property
     def charged_projectile(self) -> ItemStack | None:
         """
-        The charged projectile, or None if none.
+        The charged projectile, or `None` if none.
         """
         ...
     @charged_projectile.setter
@@ -501,38 +501,38 @@ class ItemFactory:
             type: The item type to consider as base for the meta.
 
         Returns:
-            A new ItemMeta that could be applied to an item stack of the specified item type.
+            A new `ItemMeta` that could be applied to an item stack of the specified item type.
         """
         ...
     def is_applicable(self, meta: ItemMeta, type: Identifier[ItemType] | str) -> bool:
         """
-        This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified ItemStack.
+        This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified `ItemStack`.
 
         Args:
             meta: Meta to check.
             type: The item type that meta will be applied to.
 
         Returns:
-            True if the meta can be applied without losing data, False otherwise.
+            `True` if the meta can be applied without losing data, `False` otherwise.
         """
         ...
     def equals(self, meta1: ItemMeta, meta2: ItemMeta) -> bool:
         """
-        This method is used to compare two ItemMeta objects.
+        This method is used to compare two `ItemMeta` objects.
 
         Args:
-            meta1: First meta to compare; may be None to indicate no data.
-            meta2: Second meta to compare; may be None to indicate no data.
+            meta1: First meta to compare; may be `None` to indicate no data.
+            meta2: Second meta to compare; may be `None` to indicate no data.
 
         Returns:
-            False if one of the meta has data the other does not, otherwise True.
+            `False` if one of the meta has data the other does not, otherwise `True`.
         """
         ...
     def as_meta_for(self, meta: ItemMeta, type: Identifier[ItemType] | str) -> ItemMeta:
         """
         Returns an appropriate item meta for the specified item type.
 
-        The item meta returned will always be a valid meta for a given ItemStack of the specified item type. It may be a
+        The item meta returned will always be a valid meta for a given `ItemStack` of the specified item type. It may be a
         more or less specific meta, and could also be the same meta or meta type as the parameter. The item meta returned
         will also always be the most appropriate meta.
 
@@ -558,39 +558,39 @@ class Inventory:
     @property
     def max_stack_size(self) -> int:
         """
-        The maximum stack size for an ItemStack in this inventory.
+        The maximum stack size for an `ItemStack` in this inventory.
         """
         ...
     def get_item(self, index: int) -> ItemStack | None:
         """
-        Returns the ItemStack found in the slot at the given index.
+        Returns the `ItemStack` found in the slot at the given index.
 
         Args:
-            index: The index of the Slot's ItemStack to return.
+            index: The index of the Slot's `ItemStack` to return.
 
         Returns:
-            The ItemStack in the slot.
+            The `ItemStack` in the slot.
         """
         ...
     def set_item(self, index: int, item: ItemStack | None) -> None:
         """
-        Stores the ItemStack at the given index of the inventory.
+        Stores the `ItemStack` at the given index of the inventory.
 
         Args:
-            index: The index where to put the ItemStack.
-            item: The ItemStack to set.
+            index: The index where to put the `ItemStack`.
+            item: The `ItemStack` to set.
         """
         ...
     def add_item(self, *args) -> dict[int, ItemStack]:
         """
-        Stores the given ItemStacks in the inventory.
+        Stores the given `ItemStack` objects in the inventory.
 
         Note:
             This will try to fill existing stacks and empty slots as well as it can.
 
         Note:
             The returned map contains what it couldn't store, where the key is the index, and the value is the
-            ItemStack. If all items are stored, it will return an empty dict.
+            `ItemStack`. If all items are stored, it will return an empty dict.
 
         Returns:
             A map containing items that couldn't be added.
@@ -598,14 +598,14 @@ class Inventory:
         ...
     def remove_item(self, *args) -> dict[int, ItemStack]:
         """
-        Removes the given ItemStacks from the inventory.
+        Removes the given `ItemStack` objects from the inventory.
 
         Note:
             It will try to remove 'as much as possible' from the types and amounts you give as arguments.
 
         Note:
             The returned map contains what it couldn't remove, where the key is the index, and the value is the
-            ItemStack. If all the given ItemStacks are removed, it will return an empty dict.
+            `ItemStack`. If all the given `ItemStack` objects are removed, it will return an empty dict.
 
         Returns:
             A map containing items that couldn't be removed.
@@ -614,7 +614,7 @@ class Inventory:
     @property
     def contents(self) -> list[ItemStack | None]:
         """
-        All ItemStacks from the inventory. Empty slots are represented as None.
+        All `ItemStack` objects from the inventory. Empty slots are represented as `None`.
         """
         ...
     @contents.setter
@@ -622,87 +622,87 @@ class Inventory:
     @typing.overload
     def contains(self, item: ItemStack, amount: int) -> bool:
         """
-        Checks if the inventory contains at least the minimum amount specified of exactly matching ItemStacks.
+        Checks if the inventory contains at least the minimum amount specified of exactly matching `ItemStack` objects.
 
         Note:
-            An ItemStack only counts if both the type and the amount of the stack match.
+            An `ItemStack` only counts if both the type and the amount of the stack match.
 
         Args:
-            item: The ItemStack to match against.
+            item: The `ItemStack` to match against.
             amount: How many identical stacks to check for.
 
         Returns:
-            True if amount less than 1 or if amount of exactly matching ItemStacks were found, False otherwise.
+            `True` if amount less than 1 or if amount of exactly matching `ItemStack` objects were found, `False` otherwise.
         """
         ...
     @typing.overload
     def contains(self, item: ItemStack) -> bool:
         """
-        Checks if the inventory contains any ItemStacks with the given ItemStack.
+        Checks if the inventory contains any `ItemStack` objects with the given `ItemStack`.
 
         Note:
-            This will only return True if both the type and the amount of the stack match.
+            This will only return `True` if both the type and the amount of the stack match.
 
         Args:
-            item: The ItemStack to match against.
+            item: The `ItemStack` to match against.
 
         Returns:
-            True if any exactly matching ItemStacks were found, False otherwise.
+            `True` if any exactly matching `ItemStack` objects were found, `False` otherwise.
         """
         ...
     @typing.overload
     def contains(self, type: Identifier[ItemType] | str) -> bool:
         """
-        Checks if the inventory contains any ItemStacks with the given ItemType.
+        Checks if the inventory contains any `ItemStack` objects with the given `ItemType`.
 
         Args:
             type: The item type to check for.
 
         Returns:
-            True if an ItemStack is found with the given ItemType.
+            `True` if an `ItemStack` is found with the given `ItemType`.
         """
         ...
     @typing.overload
     def contains_at_least(self, item: ItemStack, amount: int) -> bool:
         """
-        Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least the
+        Checks if the inventory contains `ItemStack` objects matching the given `ItemStack` whose amounts sum to at least the
         minimum amount specified.
 
         Args:
-            item: The ItemStack to match against.
+            item: The `ItemStack` to match against.
             amount: The minimum amount.
 
         Returns:
-            True if amount less than 1 or enough ItemStacks were found to add to the given amount, False otherwise.
+            `True` if amount less than 1 or enough `ItemStack` objects were found to add to the given amount, `False` otherwise.
         """
         ...
     @typing.overload
     def contains_at_least(self, type: Identifier[ItemType] | str, amount: int) -> bool:
         """
-        Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum
+        Checks if the inventory contains any `ItemStack` objects with the given `ItemType`, adding to at least the minimum
         amount specified.
 
         Args:
-            type: The ItemType to check for.
+            type: The `ItemType` to check for.
             amount: The minimum amount.
 
         Returns:
-            True if amount is less than 1, True if enough ItemStacks were found to add to the given amount.
+            `True` if amount is less than 1, `True` if enough `ItemStack` objects were found to add to the given amount.
         """
         ...
     @typing.overload
     def all(self, item: ItemStack) -> dict[int, ItemStack]:
         """
-        Finds all slots in the inventory containing any ItemStacks with the given ItemStack.
+        Finds all slots in the inventory containing any `ItemStack` objects with the given `ItemStack`.
 
         Note:
             This will only match slots if both the type and the amount of the stack match.
 
-        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot.
-        If no matching ItemStack is found, an empty map is returned.
+        The returned map contains entries where, the key is the slot index, and the value is the `ItemStack` in that slot.
+        If no matching `ItemStack` is found, an empty map is returned.
 
         Args:
-            item: The ItemStack to match against.
+            item: The `ItemStack` to match against.
 
         Returns:
             A map from slot indexes to item at index.
@@ -711,13 +711,13 @@ class Inventory:
     @typing.overload
     def all(self, type: Identifier[ItemType] | str) -> dict[int, ItemStack]:
         """
-        Finds all slots in the inventory containing any ItemStacks with the given ItemType.
+        Finds all slots in the inventory containing any `ItemStack` objects with the given `ItemType`.
 
-        The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot.
-        If no matching ItemStack is found, an empty map is returned.
+        The returned map contains entries where, the key is the slot index, and the value is the `ItemStack` in that slot.
+        If no matching `ItemStack` is found, an empty map is returned.
 
         Args:
-            type: The ItemType to match against.
+            type: The `ItemType` to match against.
 
         Returns:
             A map from slot indexes to item at index.
@@ -726,25 +726,25 @@ class Inventory:
     @typing.overload
     def first(self, item: ItemStack) -> int:
         """
-        Returns the first slot in the inventory containing an ItemStack with the given stack.
+        Returns the first slot in the inventory containing an `ItemStack` with the given stack.
 
         Args:
-            item: The ItemStack to match against.
+            item: The `ItemStack` to match against.
 
         Returns:
-            The slot index of the given ItemStack or -1 if not found.
+            The slot index of the given `ItemStack` or -1 if not found.
         """
         ...
     @typing.overload
     def first(self, type: Identifier[ItemType] | str) -> int:
         """
-        Finds the first slot in the inventory containing an ItemStack with the given ItemType.
+        Finds the first slot in the inventory containing an `ItemStack` with the given `ItemType`.
 
         Args:
-            type: The ItemType to look for.
+            type: The `ItemType` to look for.
 
         Returns:
-            The slot index of the given ItemType or -1 if not found.
+            The slot index of the given `ItemType` or -1 if not found.
         """
         ...
     @property
@@ -758,7 +758,7 @@ class Inventory:
         """
         Whether this inventory is empty.
 
-        An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.
+        An inventory is considered to be empty if there are no `ItemStack` objects in any slot of this inventory.
         """
         ...
     @typing.overload
@@ -770,16 +770,16 @@ class Inventory:
             This will only match a slot if both the type and the amount of the stack match.
 
         Args:
-            item: The ItemStack to match against.
+            item: The `ItemStack` to match against.
         """
         ...
     @typing.overload
     def remove(self, type: Identifier[ItemType] | str) -> None:
         """
-        Removes all stacks in the inventory matching the given ItemType.
+        Removes all stacks in the inventory matching the given `ItemType`.
 
         Args:
-            type: The ItemType to remove.
+            type: The `ItemType` to remove.
         """
         ...
     @typing.overload
@@ -794,7 +794,7 @@ class Inventory:
     @typing.overload
     def clear(self) -> None:
         """
-        Clears out the whole Inventory.
+        Clears out the whole `Inventory`.
         """
         ...
     def __len__(self) -> int:
@@ -832,7 +832,7 @@ class PlayerInventory(Inventory):
     @property
     def helmet(self) -> ItemStack | None:
         """
-        The ItemStack in the helmet slot.
+        The `ItemStack` in the helmet slot.
         """
         ...
     @helmet.setter
@@ -840,7 +840,7 @@ class PlayerInventory(Inventory):
     @property
     def chestplate(self) -> ItemStack | None:
         """
-        The ItemStack in the chestplate slot.
+        The `ItemStack` in the chestplate slot.
         """
         ...
     @chestplate.setter
@@ -848,7 +848,7 @@ class PlayerInventory(Inventory):
     @property
     def leggings(self) -> ItemStack | None:
         """
-        The ItemStack in the leg slot.
+        The `ItemStack` in the leg slot.
         """
         ...
     @leggings.setter
@@ -856,7 +856,7 @@ class PlayerInventory(Inventory):
     @property
     def boots(self) -> ItemStack | None:
         """
-        The ItemStack in the boots slot.
+        The `ItemStack` in the boots slot.
         """
         ...
     @boots.setter

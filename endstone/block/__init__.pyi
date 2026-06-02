@@ -31,8 +31,8 @@ class Block:
         Sets the type of this block.
 
         Args:
-            type: New type for this block (e.g. ``minecraft:stone``).
-            apply_physics: False to cancel physics on the changed block.
+            type: New type for this block (e.g. `minecraft:stone`).
+            apply_physics: `False` to cancel physics on the changed block.
         """
         ...
     @property
@@ -47,7 +47,7 @@ class Block:
 
         Args:
             data: New block-specific data.
-            apply_physics: False to cancel physics on the changed block.
+            apply_physics: `False` to cancel physics on the changed block.
         """
         ...
     @typing.overload
@@ -61,7 +61,7 @@ class Block:
             offset_z: Z-coordinate offset.
 
         Returns:
-            Block at the given offsets.
+            `Block` at the given offsets.
         """
         ...
     @typing.overload
@@ -74,13 +74,13 @@ class Block:
             distance: Distance from this block to get the block at.
 
         Returns:
-            Block at the given face.
+            `Block` at the given face.
         """
         ...
     @property
     def dimension(self) -> Dimension:
         """
-        The dimension which contains this Block.
+        The dimension which contains this `Block`.
         """
         ...
     @property
@@ -115,7 +115,7 @@ class Block:
         sign is still a sign after you capture its state.
 
         Returns:
-            A BlockState snapshot of the current state of this block.
+            A `BlockState` snapshot of the current state of this block.
         """
         ...
     def __str__(self) -> str: ...
@@ -147,27 +147,27 @@ class BlockType:
     @property
     def has_item_type(self) -> bool:
         """
-        True if this BlockType has a corresponding ItemType.
+        `True` if this `BlockType` has a corresponding `ItemType`.
         """
         ...
     def create_block_data(self) -> BlockData:
         """
-        Creates a new BlockData instance for this block type, with all properties initialized to defaults.
+        Creates a new `BlockData` instance for this block type, with all properties initialized to defaults.
 
         Returns:
-            A new BlockData instance.
+            A new `BlockData` instance.
         """
         ...
     @staticmethod
     def get(name: Identifier[BlockType] | str) -> BlockType:
         """
-        Attempts to get the BlockType with the given name.
+        Attempts to get the `BlockType` with the given name.
 
         Args:
-            name: The identifier of the block type (e.g. ``minecraft:stone``).
+            name: The identifier of the block type (e.g. `minecraft:stone`).
 
         Returns:
-            The BlockType, or None if no block type with that name exists.
+            The `BlockType`, or `None` if no block type with that name exists.
         """
         ...
     def __str__(self) -> str: ...
@@ -197,7 +197,7 @@ class BlockData:
         """
         The block states for this block.
 
-        When passed into ``Server.create_block_data(type, block_states)`` these
+        When passed into `Server.create_block_data(type, block_states)` these
         will unambiguously recreate this instance.
         """
         ...
@@ -213,10 +213,10 @@ class BlockState:
     """
     Represents a captured state of a block, which will not update automatically.
 
-    Unlike Block, which only one object can exist per coordinate, BlockState can
-    exist multiple times for any given Block. Note that another plugin may change
+    Unlike `Block`, which only one object can exist per coordinate, `BlockState` can
+    exist multiple times for any given `Block`. Note that another plugin may change
     the state of the block, and you will not know, or they may change the block to
-    another type entirely, causing your BlockState to become invalid.
+    another type entirely, causing your `BlockState` to become invalid.
     """
     @property
     def block(self) -> Block:
@@ -274,21 +274,21 @@ class BlockState:
         """
         Attempts to update the block represented by this state, setting it to the new values defined by this state.
 
-        Unless ``force`` is True, this will not modify the state of a block if it is no longer the
-        same type as it was when this state was taken; in that case it returns False.
+        Unless `force` is `True`, this will not modify the state of a block if it is no longer the
+        same type as it was when this state was taken; in that case it returns `False`.
 
-        If ``force`` is True, the block type is set to match the new state, the state data is applied,
-        and True is returned.
+        If `force` is `True`, the block type is set to match the new state, the state data is applied,
+        and `True` is returned.
 
-        If ``apply_physics`` is True, a physics update is triggered on surrounding blocks, which
+        If `apply_physics` is `True`, a physics update is triggered on surrounding blocks, which
         could cause them to update or disappear.
 
         Args:
-            force: True to forcefully set the state.
-            apply_physics: False to cancel updating physics on surrounding blocks.
+            force: `True` to forcefully set the state.
+            apply_physics: `False` to cancel updating physics on surrounding blocks.
 
         Returns:
-            True if the update was successful, False otherwise.
+            `True` if the update was successful, `False` otherwise.
         """
         ...
     def __str__(self) -> str: ...

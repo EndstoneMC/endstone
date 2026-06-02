@@ -441,7 +441,7 @@ inline Tag read_tag_payload(std::string_view &in, Type type, std::endian byte_or
  *
  * @param tag The tag to serialize.
  * @param byte_order Byte order: std::endian::little (Bedrock) or std::endian::big (Java).
- * @param network If true, use Bedrock network varint encoding for lengths and Int/Long values.
+ * @param network If `true`, use Bedrock network varint encoding for lengths and Int/Long values.
  * @return Binary NBT data as [type:1][name:""][payload].
  */
 inline std::string dump(const Tag &tag, std::endian byte_order = std::endian::little, bool network = false)
@@ -457,9 +457,9 @@ inline std::string dump(const Tag &tag, std::endian byte_order = std::endian::li
  * Serialize an NBT tag to binary format with a name.
  *
  * @param tag The tag to serialize.
- * @param name The root tag name (e.g. "" for Bedrock level.dat, or a descriptive name).
+ * @param name The root tag name (e.g. "" for Bedrock `level.dat`, or a descriptive name).
  * @param byte_order Byte order: std::endian::little (Bedrock) or std::endian::big (Java).
- * @param network If true, use Bedrock network varint encoding for lengths and Int/Long values.
+ * @param network If `true`, use Bedrock network varint encoding for lengths and Int/Long values.
  * @return Binary NBT data as [type:1][name:string][payload].
  */
 inline std::string dump(const Tag &tag, const std::string &name, std::endian byte_order = std::endian::little,
@@ -478,7 +478,7 @@ inline std::string dump(const Tag &tag, const std::string &name, std::endian byt
  * @param data Binary NBT data. Consumed from front via string_view.
  * @param[out] name The deserialized root tag name.
  * @param byte_order Byte order used in the binary data.
- * @param network If true, expect Bedrock network varint encoding.
+ * @param network If `true`, expect Bedrock network varint encoding.
  * @return The deserialized tag.
  * @throws std::runtime_error If the data is truncated or malformed.
  */
@@ -499,7 +499,7 @@ inline Tag load(std::string_view data, std::string &name, std::endian byte_order
  *
  * @param data Binary NBT data.
  * @param byte_order Byte order used in the binary data.
- * @param network If true, expect Bedrock network varint encoding.
+ * @param network If `true`, expect Bedrock network varint encoding.
  * @return The deserialized tag.
  * @throws std::runtime_error If the data is truncated or malformed.
  */

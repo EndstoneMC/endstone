@@ -52,19 +52,19 @@ class Permissible:
             name: Name of the permission.
 
         Returns:
-            True if the permission is set, False otherwise.
+            `True` if the permission is set, `False` otherwise.
         """
         ...
     @typing.overload
     def is_permission_set(self, perm: Permission) -> bool:
         """
-        Checks if this object contains an override for the specified Permission.
+        Checks if this object contains an override for the specified `Permission`.
 
         Args:
             perm: Permission to check.
 
         Returns:
-            True if the permission is set, False otherwise.
+            `True` if the permission is set, `False` otherwise.
         """
         ...
     @typing.overload
@@ -98,7 +98,7 @@ class Permissible:
     @typing.overload
     def add_attachment(self, plugin: Plugin, name: str, value: bool) -> PermissionAttachment:
         """
-        Adds a new PermissionAttachment with a single permission by name and value.
+        Adds a new `PermissionAttachment` with a single permission by name and value.
 
         Args:
             plugin: Plugin responsible for this attachment; must not be disabled.
@@ -106,30 +106,30 @@ class Permissible:
             value: Value of the permission.
 
         Returns:
-            The PermissionAttachment that was just created.
+            The `PermissionAttachment` that was just created.
         """
         ...
     @typing.overload
     def add_attachment(self, plugin: Plugin) -> PermissionAttachment:
         """
-        Adds a new empty PermissionAttachment to this object.
+        Adds a new empty `PermissionAttachment` to this object.
 
         Args:
             plugin: Plugin responsible for this attachment; must not be disabled.
 
         Returns:
-            The PermissionAttachment that was just created.
+            The `PermissionAttachment` that was just created.
         """
         ...
     def remove_attachment(self, attachment: PermissionAttachment) -> bool:
         """
-        Removes the given PermissionAttachment from this object.
+        Removes the given `PermissionAttachment` from this object.
 
         Args:
             attachment: Attachment to remove.
 
         Returns:
-            True if the specified attachment was removed successfully, False when it isn't part of this object.
+            `True` if the specified attachment was removed successfully, `False` when it isn't part of this object.
         """
         ...
     def recalculate_permissions(self) -> None:
@@ -148,7 +148,7 @@ class Permissible:
 
 class Permission:
     """
-    Represents a unique permission that may be attached to a Permissible
+    Represents a unique permission that may be attached to a `Permissible`
     """
     def __init__(
         self,
@@ -162,7 +162,7 @@ class Permission:
     @property
     def name(self) -> str:
         """
-        The unique fully qualified name of this Permission.
+        The unique fully qualified name of this `Permission`.
         """
         ...
     @property
@@ -170,7 +170,7 @@ class Permission:
         """
         The children of this permission.
 
-        If you change this map in any form, you must call ``recalculate_permissibles()`` to recalculate all Permissibles.
+        If you change this map in any form, you must call `recalculate_permissibles()` to recalculate all `Permissibles`.
         """
         ...
     @property
@@ -192,12 +192,12 @@ class Permission:
     @property
     def permissibles(self) -> set[Permissible]:
         """
-        A set containing every Permissible that has this permission.
+        A set containing every `Permissible` that has this permission.
         """
         ...
     def recalculate_permissibles(self) -> None:
         """
-        Recalculates all Permissibles that contain this permission.
+        Recalculates all `Permissibles` that contain this permission.
 
         This should be called after modifying the children, and is automatically called after modifying the default value.
         """
@@ -230,7 +230,7 @@ class Permission:
 
 class PermissionAttachment:
     """
-    Holds information about a permission attachment on a Permissible object.
+    Holds information about a permission attachment on a `Permissible` object.
     """
     def __init__(self, plugin: Plugin, permissible: Permissible) -> None: ...
     @property
@@ -241,16 +241,16 @@ class PermissionAttachment:
         ...
     def remove(self) -> bool:
         """
-        Removes this attachment from its registered Permissible.
+        Removes this attachment from its registered `Permissible`.
 
         Returns:
-            True if the attachment was removed successfully, False if it did not exist.
+            `True` if the attachment was removed successfully, `False` if it did not exist.
         """
         ...
     @property
     def permissible(self) -> Permissible:
         """
-        The Permissible that this is attached to.
+        The `Permissible` that this is attached to.
         """
         ...
     @property
@@ -314,7 +314,7 @@ class PermissionAttachment:
 
 class PermissionAttachmentInfo:
     """
-    Holds information on a permission and which PermissionAttachment provides it.
+    Holds information on a permission and which `PermissionAttachment` provides it.
     """
     def __init__(
         self, permissible: Permissible, permission: str, attachment: PermissionAttachment, value: bool
@@ -322,7 +322,7 @@ class PermissionAttachmentInfo:
     @property
     def permissible(self) -> Permissible:
         """
-        The Permissible this permission is for.
+        The `Permissible` this permission is for.
         """
         ...
     @property
@@ -336,7 +336,7 @@ class PermissionAttachmentInfo:
         """
         The attachment providing this permission.
 
-        This may be None for default permissions (usually parent permissions).
+        This may be `None` for default permissions (usually parent permissions).
         """
         ...
     @property

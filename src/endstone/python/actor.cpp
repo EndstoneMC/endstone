@@ -295,7 +295,7 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property_readonly("translation_key", &ActorType::getTranslationKey,
                                "The translation key, suitable for use in a translation component.")
         .def_static("get", &ActorType::get, py::arg("name"),
-                    "Attempts to get the ActorType with the given name.",
+                    "Attempts to get the `ActorType` with the given name.",
                     py::return_value_policy::reference)
         .def("__str__", [](const ActorType &self) { return std::string(self.getId()); })
         .def("__repr__", [](const ActorType &self) { return std::format("ActorType({})", self.getId()); })
@@ -307,15 +307,15 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
                                 "The type of the actor.")
         .def_property_readonly("runtime_id", &Actor::getRuntimeId, "The runtime id for this actor.")
         .def_property_readonly("location", &Actor::getLocation,
-                               "A new copy of Location containing the position of this actor.")
+                               "A new copy of `Location` containing the position of this actor.")
         .def_property_readonly("velocity", &Actor::getVelocity, "The current traveling velocity of this actor.")
         .def_property_readonly("is_on_ground", &Actor::isOnGround,
-                               "True if the actor is supported by a block, i.e. on ground.")
-        .def_property_readonly("is_in_water", &Actor::isInWater, "True if the actor is in water.")
-        .def_property_readonly("is_in_lava", &Actor::isInLava, "True if the actor is in lava.")
-        .def_property_readonly("level", &Actor::getLevel, "The current Level this actor resides in.",
+                               "`True` if the actor is supported by a block, i.e. on ground.")
+        .def_property_readonly("is_in_water", &Actor::isInWater, "`True` if the actor is in water.")
+        .def_property_readonly("is_in_lava", &Actor::isInLava, "`True` if the actor is in lava.")
+        .def_property_readonly("level", &Actor::getLevel, "The current `Level` this actor resides in.",
                                py::return_value_policy::reference)
-        .def_property_readonly("dimension", &Actor::getDimension, "The current Dimension this actor resides in.",
+        .def_property_readonly("dimension", &Actor::getDimension, "The current `Dimension` this actor resides in.",
                                py::return_value_policy::reference)
         .def("set_rotation", &Actor::setRotation, py::arg("yaw"), py::arg("pitch"), R"doc(
     Sets the actor's rotation.
@@ -333,27 +333,27 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         location: New location to teleport this actor to.
 
     Returns:
-        True if the teleport was successful.
+        `True` if the teleport was successful.
 )doc")
         .def("teleport", py::overload_cast<const Actor &>(&Actor::teleport), py::arg("target"), R"doc(
-    Teleports this actor to the target Actor.
+    Teleports this actor to the target `Actor`.
 
     Args:
-        target: Actor to teleport this actor to.
+        target: `Actor` to teleport this actor to.
 
     Returns:
-        True if the teleport was successful.
+        `True` if the teleport was successful.
 )doc")
         .def_property_readonly("id", &Actor::getId, "A unique id for this actor.")
         .def("remove", &Actor::remove, R"doc(
     Remove this actor from the level.
 
-    If you are trying to remove a Player, use Player.kick instead.
+    If you are trying to remove a `Player`, use `Player.kick` instead.
 )doc")
         .def_property_readonly("is_valid", &Actor::isValid,
-                               "False if the entity has died, been despawned for some other reason, or has not "
+                               "`False` if the entity has died, been despawned for some other reason, or has not "
                                "been added to the level.")
-        .def_property_readonly("is_dead", &Actor::isDead, "True if this actor has been marked for removal.")
+        .def_property_readonly("is_dead", &Actor::isDead, "`True` if this actor has been marked for removal.")
         .def_property_readonly("scoreboard_tags", &Actor::getScoreboardTags,
                                "A list of scoreboard tags for this actor.")
         .def("add_scoreboard_tag", &Actor::addScoreboardTag, py::arg("tag"), R"doc(
@@ -363,7 +363,7 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         tag: The tag to add.
 
     Returns:
-        True if the tag was successfully added, False if the tag already exists.
+        `True` if the tag was successfully added, `False` if the tag already exists.
 )doc")
         .def("remove_scoreboard_tag", &Actor::removeScoreboardTag, py::arg("tag"), R"doc(
     Removes a given tag from this actor.
@@ -372,7 +372,7 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         tag: The tag to remove.
 
     Returns:
-        True if the tag was successfully removed, False if the tag does not exist.
+        `True` if the tag was successfully removed, `False` if the tag does not exist.
 )doc")
         .def_property("is_name_tag_visible", &Actor::isNameTagVisible, &Actor::setNameTagVisible,
                       "Whether the actor's name tag is currently visible.")
@@ -384,14 +384,14 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
                       "The current score tag of the actor.");
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
-                              "True if this actor is gliding, such as using an Elytra.")
+                              "`True` if this actor is gliding, such as using an Elytra.")
         .def_property("health", &Mob::getHealth, &Mob::setHealth,
                       "The entity's health from 0 to its max possible value, where 0 is dead.")
         .def_property("max_health", &Mob::getMaxHealth, &Mob::setMaxHealth, R"doc(
     The maximum health this entity has.
 
     If the health of the entity is above the value provided, it will be set to that value. An entity
-    with a health bar (e.g. Player, EnderDragon, Wither, etc.) will have their bar scaled
+    with a health bar (e.g. `Player`, `EnderDragon`, `Wither`, etc.) will have their bar scaled
     accordingly.
 )doc");
 
@@ -399,9 +399,9 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property("item_stack", &Item::getItemStack, &Item::setItemStack,
                       "The item stack associated with this item drop.")
         .def_property("pickup_delay", &Item::getPickupDelay, &Item::setPickupDelay,
-                      "The delay before this Item is available to be picked up by players.")
+                      "The delay before this `Item` is available to be picked up by players.")
         .def_property("is_unlimited_lifetime", &Item::isUnlimitedLifetime, &Item::setUnlimitedLifetime,
-                      "Whether this Item lives forever.")
+                      "Whether this `Item` lives forever.")
         .def_property("thrower", &Item::getThrower, &Item::setThrower,
                       "The thrower of this item (the entity which dropped the item), as a unique id.");
 }

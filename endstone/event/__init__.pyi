@@ -94,7 +94,7 @@ _F = typing.TypeVar("_F", bound=(typing.Callable[..., None]))
 
 class EventPriority(enum.IntEnum):
     """
-    Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR
+    Listeners are called in following order: `LOWEST` -> `LOW` -> `NORMAL` -> `HIGH` -> `HIGHEST` -> `MONITOR`
     """
 
     LOWEST = 0
@@ -136,7 +136,7 @@ class Event:
     @property
     def is_asynchronous(self) -> bool:
         """
-        False by default, True if the event fires asynchronously.
+        `False` by default, `True` if the event fires asynchronously.
         """
         ...
 
@@ -173,29 +173,29 @@ class Cancellable:
 
 class ActorEvent(Event):
     """
-    Represents an Actor-related event.
+    Represents an `Actor`-related event.
     """
     @property
     def actor(self) -> Actor:
         """
-        The Actor which is involved in this event.
+        The `Actor` which is involved in this event.
         """
         ...
 
 class MobEvent(Event):
     """
-    Represents an Mob-related event.
+    Represents an `Mob`-related event.
     """
     @property
     def actor(self) -> Mob:
         """
-        The Mob which is involved in this event.
+        The `Mob` which is involved in this event.
         """
         ...
 
 class ActorDamageEvent(MobEvent, Cancellable):
     """
-    Called when an Actor is damaged.
+    Called when an `Actor` is damaged.
     """
     @property
     def damage(self) -> float:
@@ -208,29 +208,29 @@ class ActorDamageEvent(MobEvent, Cancellable):
     @property
     def damage_source(self) -> DamageSource:
         """
-        A DamageSource detailing the source of the damage.
+        A `DamageSource` detailing the source of the damage.
         """
         ...
 
 class ActorDeathEvent(MobEvent):
     """
-    Called when an Actor dies.
+    Called when an `Actor` dies.
     """
     @property
     def damage_source(self) -> DamageSource:
         """
-        A DamageSource detailing the source of the damage for the death.
+        A `DamageSource` detailing the source of the damage for the death.
         """
         ...
 
 class PlayerDeathEvent(ActorDeathEvent):
     """
-    Called when a Player dies.
+    Called when a `Player` dies.
     """
     @property
     def player(self) -> Player:
         """
-        The Player which is involved in this event.
+        The `Player` which is involved in this event.
         """
         ...
     @property
@@ -251,7 +251,7 @@ class ActorExplodeEvent(ActorEvent, Cancellable):
         """
         The location where the explosion happened.
 
-        It is not possible to get this value from the Entity as the Entity no longer exists in the
+        It is not possible to get this value from the `Entity` as the `Entity` no longer exists in the
         world.
         """
         ...
@@ -271,7 +271,7 @@ class ActorKnockbackEvent(MobEvent, Cancellable):
     @property
     def source(self) -> Actor:
         """
-        The source actor that has caused knockback to the defender, or None if the knockback is not caused by an actor.
+        The source actor that has caused knockback to the defender, or `None` if the knockback is not caused by an actor.
         """
         ...
     @property
@@ -287,15 +287,15 @@ class ActorKnockbackEvent(MobEvent, Cancellable):
 
 class ActorRemoveEvent(ActorEvent):
     """
-    Called when an Actor is removed.
+    Called when an `Actor` is removed.
 
     This event should only be used for monitoring. Modifying the actor during or after this event
-    leads to undefined behaviours. This event will not be called for Players.
+    leads to undefined behaviours. This event will not be called for `Player`s.
     """
 
 class ActorSpawnEvent(ActorEvent, Cancellable):
     """
-    Called when an Actor is spawned into a world.
+    Called when an `Actor` is spawned into a world.
 
     If an Actor Spawn event is cancelled, the actor will not spawn.
     """
@@ -326,12 +326,12 @@ class ActorTeleportEvent(ActorEvent, Cancellable):
 
 class BlockEvent(Event):
     """
-    Represents an Block-related event.
+    Represents an `Block`-related event.
     """
     @property
     def block(self) -> Block:
         """
-        The Block which is involved in this event.
+        The `Block` which is involved in this event.
         """
         ...
 
@@ -339,12 +339,12 @@ class BlockBreakEvent(BlockEvent, Cancellable):
     """
     Called when a block is broken by a player.
 
-    If a BlockBreakEvent is cancelled, the block will not break and experience will not drop.
+    If a `BlockBreakEvent` is cancelled, the block will not break and experience will not drop.
     """
     @property
     def player(self) -> Player:
         """
-        The Player that is breaking the block involved in this event.
+        The `Player` that is breaking the block involved in this event.
         """
         ...
 
@@ -352,7 +352,7 @@ class BlockExplodeEvent(BlockEvent, Cancellable):
     """
     Called when a block explodes (e.g. bed in the Nether, respawn anchor in the Overworld).
 
-    If a BlockExplodeEvent is cancelled, the explosion will not occur.
+    If a `BlockExplodeEvent` is cancelled, the explosion will not occur.
     """
     @property
     def block_list(self) -> list[Block]:
@@ -365,18 +365,18 @@ class BlockExplodeEvent(BlockEvent, Cancellable):
 
 class BlockCookEvent(BlockEvent, Cancellable):
     """
-    Called when an ItemStack is successfully cooked in a block.
+    Called when an `ItemStack` is successfully cooked in a block.
     """
     @property
     def source(self) -> ItemStack:
         """
-        The smelted (source) ItemStack for this event.
+        The smelted (source) `ItemStack` for this event.
         """
         ...
     @property
     def result(self) -> ItemStack:
         """
-        The resultant ItemStack for this event.
+        The resultant `ItemStack` for this event.
         """
         ...
     @result.setter
@@ -399,7 +399,7 @@ class BlockFormEvent(BlockGrowEvent):
     """
     Called when a block is formed or spreads based on world conditions.
 
-    Use BlockSpreadEvent to catch blocks that actually spread and don't just "randomly" form.
+    Use `BlockSpreadEvent` to catch blocks that actually spread and don't just "randomly" form.
 
     Examples:
         - Snow forming due to a snow storm.
@@ -420,7 +420,7 @@ class BlockFromToEvent(BlockEvent, Cancellable):
     @property
     def to_block(self) -> Block:
         """
-        The faced Block.
+        The faced `Block`.
         """
         ...
 
@@ -449,24 +449,24 @@ class BlockPlaceEvent(BlockEvent, Cancellable):
     """
     Called when a block is placed by a player.
 
-    If a BlockPlaceEvent is cancelled, the block will not be placed.
+    If a `BlockPlaceEvent` is cancelled, the block will not be placed.
     """
     @property
     def player(self) -> Player:
         """
-        The Player who placed the block involved in this event.
+        The `Player` who placed the block involved in this event.
         """
         ...
     @property
     def block_placed(self) -> Block:
         """
-        The Block that was placed.
+        The `Block` that was placed.
         """
         ...
     @property
     def block_replaced_state(self) -> BlockState:
         """
-        The BlockState of the block that was replaced.
+        The `BlockState` of the block that was replaced.
         """
         ...
     @property
@@ -490,7 +490,7 @@ class LevelEvent(Event):
     @property
     def level(self) -> Level:
         """
-        The Level primarily involved with this event.
+        The `Level` primarily involved with this event.
         """
         ...
 
@@ -501,18 +501,18 @@ class DimensionEvent(LevelEvent):
     @property
     def dimension(self) -> Dimension:
         """
-        The Dimension primarily involved with this event.
+        The `Dimension` primarily involved with this event.
         """
         ...
 
 class ChunkEvent(DimensionEvent):
     """
-    Represents a Chunk related event.
+    Represents a `Chunk` related event.
     """
     @property
     def chunk(self) -> Chunk:
         """
-        The Chunk being loaded/unloaded.
+        The `Chunk` being loaded/unloaded.
         """
         ...
 
@@ -533,7 +533,7 @@ class PlayerEvent(Event):
     @property
     def player(self) -> Player:
         """
-        The Player who is involved in this event.
+        The `Player` who is involved in this event.
         """
         ...
 
@@ -592,7 +592,7 @@ class PlayerChatEvent(PlayerEvent, Cancellable):
     @property
     def recipients(self) -> list[Player]:
         """
-        The set of Players who will see this chat message.
+        The set of `Player`s who will see this chat message.
         """
         ...
 
@@ -633,7 +633,7 @@ class PlayerDropItemEvent(PlayerEvent, Cancellable):
     @property
     def item(self) -> ItemStack:
         """
-        The ItemStack dropped by the player.
+        The `ItemStack` dropped by the player.
         """
         ...
 
@@ -652,7 +652,7 @@ class PlayerEmoteEvent(PlayerEvent, Cancellable):
         """
         The muted state for the emote.
 
-        When True, the emote is executed without sending a chat message about the emote.
+        When `True`, the emote is executed without sending a chat message about the emote.
         """
         ...
     @is_muted.setter
@@ -660,12 +660,12 @@ class PlayerEmoteEvent(PlayerEvent, Cancellable):
 
 class PlayerGameModeChangeEvent(PlayerEvent, Cancellable):
     """
-    Called when the GameMode of the player is changed.
+    Called when the `GameMode` of the player is changed.
     """
     @property
     def new_game_mode(self) -> GameMode:
         """
-        The GameMode the player is switched to.
+        The `GameMode` the player is switched to.
         """
         ...
 
@@ -696,19 +696,19 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
     @property
     def has_item(self) -> bool:
         """
-        True if this event involved an item.
+        `True` if this event involved an item.
         """
         ...
     @property
     def item(self) -> ItemStack | None:
         """
-        The item in hand represented by this event, or None if no item.
+        The item in hand represented by this event, or `None` if no item.
         """
         ...
     @property
     def has_block(self) -> bool:
         """
-        True if this event involved a block.
+        `True` if this event involved a block.
         """
         ...
     @property
@@ -728,7 +728,7 @@ class PlayerInteractEvent(PlayerEvent, Cancellable):
         """
         The exact position on the block the player interacted with.
 
-        This will be None outside of Action.RIGHT_CLICK_BLOCK. All vector components are between 0.0 and
+        This will be `None` outside of `Action.RIGHT_CLICK_BLOCK`. All vector components are between 0.0 and
         1.0 inclusive.
         """
         ...
@@ -748,7 +748,7 @@ class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
     """
     Called when a player is finishing consuming an item (food, potion, milk bucket).
 
-    If the ItemStack is modified the server will use the effects of the new item and not remove the
+    If the `ItemStack` is modified the server will use the effects of the new item and not remove the
     original one from the player's inventory.
 
     If the event is cancelled the effect will not be applied and the item will not be removed from
@@ -757,7 +757,7 @@ class PlayerItemConsumeEvent(PlayerEvent, Cancellable):
     @property
     def item(self) -> ItemStack:
         """
-        An ItemStack for the item being consumed.
+        An `ItemStack` for the item being consumed.
         """
         ...
     @property
@@ -914,7 +914,7 @@ class ServerEvent(Event):
 
 class BroadcastMessageEvent(ServerEvent, Cancellable):
     """
-    Event triggered for server broadcast messages such as from Server.broadcast.
+    Event triggered for server broadcast messages such as from `Server.broadcast`.
 
     This event should be async if fired from an async thread.
     """
@@ -929,7 +929,7 @@ class BroadcastMessageEvent(ServerEvent, Cancellable):
     @property
     def recipients(self) -> set[CommandSender]:
         """
-        The set of CommandSenders who will see this broadcast message.
+        The set of `CommandSender`s who will see this broadcast message.
         """
         ...
 
@@ -940,7 +940,7 @@ class MapInitializeEvent(ServerEvent):
     @property
     def map(self) -> MapView:
         """
-        The Map initialized in this event.
+        The `Map` initialized in this event.
         """
         ...
 
@@ -965,9 +965,9 @@ class PacketReceiveEvent(ServerEvent, Cancellable):
     @property
     def player(self) -> Player:
         """
-        The Player who is involved in this event.
+        The `Player` who is involved in this event.
 
-        This may return None if the packet is sent before the player completes the login process.
+        This may return `None` if the packet is sent before the player completes the login process.
         """
         ...
     @property
@@ -1006,9 +1006,9 @@ class PacketSendEvent(ServerEvent, Cancellable):
     @property
     def player(self) -> Player:
         """
-        The Player who is involved in this event.
+        The `Player` who is involved in this event.
 
-        This may return None if the packet is sent before the player completes the login process.
+        This may return `None` if the packet is sent before the player completes the login process.
         """
         ...
     @property
@@ -1033,7 +1033,7 @@ class PluginEnableEvent(ServerEvent):
     @property
     def plugin(self) -> Plugin:
         """
-        The Plugin involved in this event.
+        The `Plugin` involved in this event.
         """
         ...
 
@@ -1044,13 +1044,13 @@ class PluginDisableEvent(ServerEvent):
     @property
     def plugin(self) -> Plugin:
         """
-        The Plugin involved in this event.
+        The `Plugin` involved in this event.
         """
         ...
 
 class ScriptMessageEvent(ServerEvent, Cancellable):
     """
-    Called when a message is sent by the ``/scriptevent`` command.
+    Called when a message is sent by the `/scriptevent` command.
     """
     @property
     def message_id(self) -> str:
@@ -1210,7 +1210,7 @@ class WeatherEvent(Event):
     @property
     def level(self) -> Level:
         """
-        The Level where this event is occurring.
+        The `Level` where this event is occurring.
         """
         ...
 
@@ -1221,7 +1221,7 @@ class ThunderChangeEvent(WeatherEvent, Cancellable):
     @property
     def to_thunder_state(self) -> bool:
         """
-        True if the weather is being set to thundering, False otherwise.
+        `True` if the weather is being set to thundering, `False` otherwise.
         """
         ...
 
@@ -1232,7 +1232,7 @@ class WeatherChangeEvent(WeatherEvent, Cancellable):
     @property
     def to_weather_state(self) -> bool:
         """
-        True if the weather is being set to raining, False otherwise.
+        `True` if the weather is being set to raining, `False` otherwise.
         """
         ...
 

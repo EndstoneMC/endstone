@@ -34,7 +34,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     event.def(py::init<bool>(), py::arg("is_async") = false)
         .def_property_readonly("event_name", &Event::getEventName, "A user-friendly identifier for this event.")
         .def_property_readonly("is_asynchronous", &Event::isAsynchronous,
-                               "False by default, True if the event fires asynchronously.");
+                               "`False` by default, `True` if the event fires asynchronously.");
 
     py::class_<ICancellable>(m, "Cancellable",
                              "A type characterizing events that may be cancelled by a plugin or the server.")
@@ -50,24 +50,24 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 )doc");
 
     // Actor events
-    py::class_<ActorEvent<Actor>, Event>(m, "ActorEvent", "Represents an Actor-related event.")
+    py::class_<ActorEvent<Actor>, Event>(m, "ActorEvent", "Represents an `Actor`-related event.")
         .def_property_readonly("actor", &ActorEvent<Actor>::getActor, py::return_value_policy::reference,
-                               "The Actor which is involved in this event.");
-    py::class_<ActorEvent<Mob>, Event>(m, "MobEvent", "Represents an Mob-related event.")
+                               "The `Actor` which is involved in this event.");
+    py::class_<ActorEvent<Mob>, Event>(m, "MobEvent", "Represents an `Mob`-related event.")
         .def_property_readonly("actor", &ActorEvent<Mob>::getActor, py::return_value_policy::reference,
-                               "The Mob which is involved in this event.");
+                               "The `Mob` which is involved in this event.");
     py::class_<ActorDamageEvent, ActorEvent<Mob>, ICancellable>(m, "ActorDamageEvent",
-                                                                "Called when an Actor is damaged.")
+                                                                "Called when an `Actor` is damaged.")
         .def_property("damage", &ActorDamageEvent::getDamage, &ActorDamageEvent::setDamage,
                       "The raw amount of damage caused by the event.")
         .def_property_readonly("damage_source", &ActorDamageEvent::getDamageSource, py::return_value_policy::reference,
-                               "A DamageSource detailing the source of the damage.");
-    py::class_<ActorDeathEvent, ActorEvent<Mob>>(m, "ActorDeathEvent", "Called when an Actor dies.")
+                               "A `DamageSource` detailing the source of the damage.");
+    py::class_<ActorDeathEvent, ActorEvent<Mob>>(m, "ActorDeathEvent", "Called when an `Actor` dies.")
         .def_property_readonly("damage_source", &ActorDeathEvent::getDamageSource, py::return_value_policy::reference,
-                               "A DamageSource detailing the source of the damage for the death.");
-    py::class_<PlayerDeathEvent, ActorDeathEvent>(m, "PlayerDeathEvent", "Called when a Player dies.")
+                               "A `DamageSource` detailing the source of the damage for the death.");
+    py::class_<PlayerDeathEvent, ActorDeathEvent>(m, "PlayerDeathEvent", "Called when a `Player` dies.")
         .def_property_readonly("player", &PlayerDeathEvent::getPlayer, py::return_value_policy::reference,
-                               "The Player which is involved in this event.")
+                               "The `Player` which is involved in this event.")
         .def_property("death_message", &PlayerDeathEvent::getDeathMessage, &PlayerDeathEvent::setDeathMessage,
                       "The death message that will appear to everyone on the server.");
     py::class_<ActorExplodeEvent, ActorEvent<Actor>, ICancellable>(m, "ActorExplodeEvent",
@@ -75,7 +75,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("location", &ActorExplodeEvent::getLocation, R"doc(
     The location where the explosion happened.
 
-    It is not possible to get this value from the Entity as the Entity no longer exists in the
+    It is not possible to get this value from the `Entity` as the `Entity` no longer exists in the
     world.
 )doc")
         .def_property(
@@ -102,7 +102,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<ActorKnockbackEvent, ActorEvent<Mob>, ICancellable>(m, "ActorKnockbackEvent",
                                                                    "Called when a living entity receives knockback.")
         .def_property_readonly("source", &ActorKnockbackEvent::getSource, py::return_value_policy::reference,
-                               "The source actor that has caused knockback to the defender, or None if the "
+                               "The source actor that has caused knockback to the defender, or `None` if the "
                                "knockback is not caused by an actor.")
         .def_property("knockback", &ActorKnockbackEvent::getKnockback, &ActorKnockbackEvent::setKnockback, R"doc(
     The knockback that will be applied to the entity.
@@ -110,13 +110,13 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     Note: the getter returns a copy; changes must be applied via the setter.
 )doc");
     py::class_<ActorRemoveEvent, ActorEvent<Actor>>(m, "ActorRemoveEvent", R"doc(
-    Called when an Actor is removed.
+    Called when an `Actor` is removed.
 
     This event should only be used for monitoring. Modifying the actor during or after this event
-    leads to undefined behaviours. This event will not be called for Players.
+    leads to undefined behaviours. This event will not be called for `Player`s.
 )doc");
     py::class_<ActorSpawnEvent, ActorEvent<Actor>, ICancellable>(m, "ActorSpawnEvent", R"doc(
-    Called when an Actor is spawned into a world.
+    Called when an `Actor` is spawned into a world.
 
     If an Actor Spawn event is cancelled, the actor will not spawn.
 )doc");
@@ -132,20 +132,20 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The location that this actor moved to.");
 
     // Block events
-    py::class_<BlockEvent, Event>(m, "BlockEvent", "Represents an Block-related event.")
+    py::class_<BlockEvent, Event>(m, "BlockEvent", "Represents an `Block`-related event.")
         .def_property_readonly("block", &BlockEvent::getBlock, py::return_value_policy::reference,
-                               "The Block which is involved in this event.");
+                               "The `Block` which is involved in this event.");
     py::class_<BlockBreakEvent, BlockEvent, ICancellable>(m, "BlockBreakEvent", R"doc(
     Called when a block is broken by a player.
 
-    If a BlockBreakEvent is cancelled, the block will not break and experience will not drop.
+    If a `BlockBreakEvent` is cancelled, the block will not break and experience will not drop.
 )doc")
         .def_property_readonly("player", &BlockBreakEvent::getPlayer, py::return_value_policy::reference,
-                               "The Player that is breaking the block involved in this event.");
+                               "The `Player` that is breaking the block involved in this event.");
     py::class_<BlockExplodeEvent, BlockEvent, ICancellable>(m, "BlockExplodeEvent", R"doc(
     Called when a block explodes (e.g. bed in the Nether, respawn anchor in the Overworld).
 
-    If a BlockExplodeEvent is cancelled, the explosion will not occur.
+    If a `BlockExplodeEvent` is cancelled, the explosion will not occur.
 )doc")
         .def_property(
             "block_list",
@@ -169,11 +169,11 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
             py::return_value_policy::reference_internal,
             "The list of blocks that would have been removed or were removed from the explosion event.");
     py::class_<BlockCookEvent, BlockEvent, ICancellable>(m, "BlockCookEvent",
-                                                         "Called when an ItemStack is successfully cooked in a block.")
+                                                         "Called when an `ItemStack` is successfully cooked in a block.")
         .def_property_readonly("source", &BlockCookEvent::getSource, py::return_value_policy::reference,
-                               "The smelted (source) ItemStack for this event.")
+                               "The smelted (source) `ItemStack` for this event.")
         .def_property("result", &BlockCookEvent::getResult, &BlockCookEvent::setResult,
-                      "The resultant ItemStack for this event.");
+                      "The resultant `ItemStack` for this event.");
     py::class_<BlockGrowEvent, BlockEvent, ICancellable>(m, "BlockGrowEvent", R"doc(
     Called when a block grows naturally in the world.
 
@@ -184,7 +184,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<BlockFormEvent, BlockGrowEvent>(m, "BlockFormEvent", R"doc(
     Called when a block is formed or spreads based on world conditions.
 
-    Use BlockSpreadEvent to catch blocks that actually spread and don't just "randomly" form.
+    Use `BlockSpreadEvent` to catch blocks that actually spread and don't just "randomly" form.
 
     Examples:
         - Snow forming due to a snow storm.
@@ -201,7 +201,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     If a Block From To event is cancelled, the block will not move (the liquid will not flow).
 )doc")
         .def_property_readonly("to_block", &BlockFromToEvent::getToBlock, py::return_value_policy::reference,
-                               "The faced Block.");
+                               "The faced `Block`.");
     py::class_<BlockPistonEvent, BlockEvent, ICancellable>(m, "BlockPistonEvent",
                                                            "Called when a piston block is triggered.")
         .def_property_readonly("direction", &BlockPistonEvent::getDirection,
@@ -212,15 +212,15 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<BlockPlaceEvent, BlockEvent, ICancellable>(m, "BlockPlaceEvent", R"doc(
     Called when a block is placed by a player.
 
-    If a BlockPlaceEvent is cancelled, the block will not be placed.
+    If a `BlockPlaceEvent` is cancelled, the block will not be placed.
 )doc")
         .def_property_readonly("player", &BlockPlaceEvent::getPlayer, py::return_value_policy::reference,
-                               "The Player who placed the block involved in this event.")
+                               "The `Player` who placed the block involved in this event.")
         .def_property_readonly("block_placed", &BlockPlaceEvent::getBlockPlaced, py::return_value_policy::reference,
-                               "The Block that was placed.")
+                               "The `Block` that was placed.")
         .def_property_readonly("block_replaced_state", &BlockPlaceEvent::getBlockReplacedState,
                                py::return_value_policy::reference,
-                               "The BlockState of the block that was replaced.")
+                               "The `BlockState` of the block that was replaced.")
         .def_property_readonly("block_against", &BlockPlaceEvent::getBlockAgainst, py::return_value_policy::reference,
                                "The block that the new block was placed against.");
     py::class_<LeavesDecayEvent, BlockEvent, ICancellable>(m, "LeavesDecayEvent", R"doc(
@@ -232,22 +232,22 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     // Level events
     py::class_<LevelEvent, Event>(m, "LevelEvent", "Represents events within a level.")
         .def_property_readonly("level", &LevelEvent::getLevel, py::return_value_policy::reference,
-                               "The Level primarily involved with this event.");
+                               "The `Level` primarily involved with this event.");
     py::class_<DimensionEvent, LevelEvent>(m, "DimensionEvent", "Represents events within a dimension.")
         .def_property_readonly("dimension", &DimensionEvent::getDimension, py::return_value_policy::reference,
-                               "The Dimension primarily involved with this event.");
+                               "The `Dimension` primarily involved with this event.");
 
     // Chunk events
-    py::class_<ChunkEvent, DimensionEvent>(m, "ChunkEvent", "Represents a Chunk related event.")
+    py::class_<ChunkEvent, DimensionEvent>(m, "ChunkEvent", "Represents a `Chunk` related event.")
         .def_property_readonly("chunk", &ChunkEvent::getChunk, py::return_value_policy::reference,
-                               "The Chunk being loaded/unloaded.");
+                               "The `Chunk` being loaded/unloaded.");
     py::class_<ChunkLoadEvent, ChunkEvent>(m, "ChunkLoadEvent", "Called when a chunk is loaded.");
     py::class_<ChunkUnloadEvent, ChunkEvent>(m, "ChunkUnloadEvent", "Called when a chunk is unloaded.");
 
     // Player events
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event.")
         .def_property_readonly("player", &PlayerEvent::getPlayer, py::return_value_policy::reference,
-                               "The Player who is involved in this event.");
+                               "The `Player` who is involved in this event.");
     auto player_bed_enter_event = py::class_<PlayerBedEnterEvent, PlayerEvent, ICancellable>(
         m, "PlayerBedEnterEvent", "Called when a player is almost about to enter the bed.");
     player_bed_enter_event.def_property_readonly("bed", &PlayerBedEnterEvent::getBed,
@@ -271,7 +271,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 )doc")
         .def_property_readonly("recipients", &PlayerChatEvent::getRecipients,
                                py::return_value_policy::reference_internal,
-                               "The set of Players who will see this chat message.");
+                               "The set of `Player`s who will see this chat message.");
     py::class_<PlayerCommandEvent, PlayerEvent, ICancellable>(m, "PlayerCommandEvent",
                                                               "Called whenever a player runs a command.")
         .def_property("command", &PlayerCommandEvent::getCommand, &PlayerCommandEvent::setCommand,
@@ -285,19 +285,19 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerDropItemEvent, PlayerEvent, ICancellable>(
         m, "PlayerDropItemEvent", "Called when a player drops an item from their inventory.")
         .def_property_readonly("item", &PlayerDropItemEvent::getItem, py::return_value_policy::reference,
-                               "The ItemStack dropped by the player.");
+                               "The `ItemStack` dropped by the player.");
     py::class_<PlayerEmoteEvent, PlayerEvent, ICancellable>(m, "PlayerEmoteEvent",
                                                             "Called when a player uses an emote.")
         .def_property_readonly("emote_id", &PlayerEmoteEvent::getEmoteId, "The emote piece ID.")
         .def_property("is_muted", &PlayerEmoteEvent::isMuted, &PlayerEmoteEvent::setMuted, R"doc(
     The muted state for the emote.
 
-    When True, the emote is executed without sending a chat message about the emote.
+    When `True`, the emote is executed without sending a chat message about the emote.
 )doc");
     py::class_<PlayerGameModeChangeEvent, PlayerEvent, ICancellable>(
-        m, "PlayerGameModeChangeEvent", "Called when the GameMode of the player is changed.")
+        m, "PlayerGameModeChangeEvent", "Called when the `GameMode` of the player is changed.")
         .def_property_readonly("new_game_mode", &PlayerGameModeChangeEvent::getNewGameMode,
-                               "The GameMode the player is switched to.");
+                               "The `GameMode` the player is switched to.");
     auto player_interact_event = py::class_<PlayerInteractEvent, PlayerEvent, ICancellable>(
         m, "PlayerInteractEvent", "Represents an event that is called when a player right-clicks a block.");
     py::native_enum<PlayerInteractEvent::Action>(player_interact_event, "Action", "enum.Enum",
@@ -310,10 +310,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .finalize();
     player_interact_event
         .def_property_readonly("action", &PlayerInteractEvent::getAction, "The action type of this interaction.")
-        .def_property_readonly("has_item", &PlayerInteractEvent::hasItem, "True if this event involved an item.")
+        .def_property_readonly("has_item", &PlayerInteractEvent::hasItem, "`True` if this event involved an item.")
         .def_property_readonly("item", &PlayerInteractEvent::getItem,
-                               "The item in hand represented by this event, or None if no item.")
-        .def_property_readonly("has_block", &PlayerInteractEvent::hasBlock, "True if this event involved a block.")
+                               "The item in hand represented by this event, or `None` if no item.")
+        .def_property_readonly("has_block", &PlayerInteractEvent::hasBlock, "`True` if this event involved a block.")
         .def_property_readonly("block", &PlayerInteractEvent::getBlock, py::return_value_policy::reference,
                                "The block clicked with this item.")
         .def_property_readonly("block_face", &PlayerInteractEvent::getBlockFace,
@@ -321,7 +321,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
         .def_property_readonly("clicked_position", &PlayerInteractEvent::getClickedPosition, R"doc(
     The exact position on the block the player interacted with.
 
-    This will be None outside of Action.RIGHT_CLICK_BLOCK. All vector components are between 0.0 and
+    This will be `None` outside of `Action.RIGHT_CLICK_BLOCK`. All vector components are between 0.0 and
     1.0 inclusive.
 )doc");
     py::class_<PlayerInteractActorEvent, PlayerEvent, ICancellable>(
@@ -331,14 +331,14 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     py::class_<PlayerItemConsumeEvent, PlayerEvent, ICancellable>(m, "PlayerItemConsumeEvent", R"doc(
     Called when a player is finishing consuming an item (food, potion, milk bucket).
 
-    If the ItemStack is modified the server will use the effects of the new item and not remove the
+    If the `ItemStack` is modified the server will use the effects of the new item and not remove the
     original one from the player's inventory.
 
     If the event is cancelled the effect will not be applied and the item will not be removed from
     the player's inventory.
 )doc")
         .def_property_readonly("item", &PlayerItemConsumeEvent::getItem,
-                               "An ItemStack for the item being consumed.")
+                               "An `ItemStack` for the item being consumed.")
         .def_property_readonly("hand", &PlayerItemConsumeEvent::getHand, "The hand used to consume the item.");
     py::class_<PlayerItemHeldEvent, PlayerEvent, ICancellable>(
         m, "PlayerItemHeldEvent", "Called when a player changes their currently held item.")
@@ -384,7 +384,7 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
     // Server events
     py::class_<ServerEvent, Event>(m, "ServerEvent", "Represents a Server-related event.");
     py::class_<BroadcastMessageEvent, ServerEvent, ICancellable>(m, "BroadcastMessageEvent", R"doc(
-    Event triggered for server broadcast messages such as from Server.broadcast.
+    Event triggered for server broadcast messages such as from `Server.broadcast`.
 
     This event should be async if fired from an async thread.
 )doc")
@@ -392,10 +392,10 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
                       "The message to broadcast.")
         .def_property_readonly("recipients", &BroadcastMessageEvent::getRecipients,
                                py::return_value_policy::reference_internal,
-                               "The set of CommandSenders who will see this broadcast message.");
+                               "The set of `CommandSender`s who will see this broadcast message.");
     py::class_<MapInitializeEvent, ServerEvent>(m, "MapInitializeEvent", "Called when a map is initialized.")
         .def_property_readonly("map", &MapInitializeEvent::getMap, py::return_value_policy::reference,
-                               "The Map initialized in this event.");
+                               "The `Map` initialized in this event.");
     py::class_<PacketReceiveEvent, ServerEvent, ICancellable>(
         m, "PacketReceiveEvent", "Called when the server receives a packet from a connected client.")
         .def_property_readonly("packet_id", &PacketReceiveEvent::getPacketId, "The ID of the packet.")
@@ -404,9 +404,9 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
             [](PacketReceiveEvent &self, const py::bytes &payload) { self.setPayload(payload); },
             "The raw packet data, excluding the header.")
         .def_property_readonly("player", &PacketReceiveEvent::getPlayer, py::return_value_policy::reference, R"doc(
-    The Player who is involved in this event.
+    The `Player` who is involved in this event.
 
-    This may return None if the packet is sent before the player completes the login process.
+    This may return `None` if the packet is sent before the player completes the login process.
 )doc")
         .def_property_readonly("address", &PacketReceiveEvent::getAddress,
                                "The network address of the client that sent this packet.")
@@ -424,9 +424,9 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
             [](PacketSendEvent &self, const py::bytes &payload) { self.setPayload(payload); },
             "The raw packet data, excluding the header.")
         .def_property_readonly("player", &PacketSendEvent::getPlayer, py::return_value_policy::reference, R"doc(
-    The Player who is involved in this event.
+    The `Player` who is involved in this event.
 
-    This may return None if the packet is sent before the player completes the login process.
+    This may return `None` if the packet is sent before the player completes the login process.
 )doc")
         .def_property_readonly("address", &PacketSendEvent::getAddress,
                                "The network address to which this packet is being sent.")
@@ -438,14 +438,14 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 
     py::class_<PluginEnableEvent, ServerEvent>(m, "PluginEnableEvent", "Called when a plugin is enabled.")
         .def_property_readonly("plugin", &PluginEnableEvent::getPlugin, py::return_value_policy::reference,
-                               "The Plugin involved in this event.");
+                               "The `Plugin` involved in this event.");
 
     py::class_<PluginDisableEvent, ServerEvent>(m, "PluginDisableEvent", "Called when a plugin is disabled.")
         .def_property_readonly("plugin", &PluginDisableEvent::getPlugin, py::return_value_policy::reference,
-                               "The Plugin involved in this event.");
+                               "The `Plugin` involved in this event.");
 
     py::class_<ScriptMessageEvent, ServerEvent, ICancellable>(
-        m, "ScriptMessageEvent", "Called when a message is sent by the ``/scriptevent`` command.")
+        m, "ScriptMessageEvent", "Called when a message is sent by the `/scriptevent` command.")
         .def_property_readonly("message_id", &ScriptMessageEvent::getMessageId, "The message id to send.")
         .def_property_readonly("message", &ScriptMessageEvent::getMessage, "The message to send.")
         .def_property_readonly("sender", &ScriptMessageEvent::getSender,
@@ -499,15 +499,15 @@ void init_event(py::module_ &m, py::class_<Event, PyEvent> &event)
 
     py::class_<WeatherEvent, Event>(m, "WeatherEvent", "Represents a Weather-related event.")
         .def_property_readonly("level", &WeatherChangeEvent::getLevel, py::return_value_policy::reference,
-                               "The Level where this event is occurring.");
+                               "The `Level` where this event is occurring.");
     py::class_<ThunderChangeEvent, WeatherEvent, ICancellable>(m, "ThunderChangeEvent",
                                                                "Called when the thunder state in a world is changing.")
         .def_property_readonly("to_thunder_state", &ThunderChangeEvent::toThunderState,
-                               "True if the weather is being set to thundering, False otherwise.");
+                               "`True` if the weather is being set to thundering, `False` otherwise.");
     py::class_<WeatherChangeEvent, WeatherEvent, ICancellable>(
         m, "WeatherChangeEvent", "Called when the weather (rain) state in a world is changing.")
         .def_property_readonly("to_weather_state", &WeatherChangeEvent::toWeatherState,
-                               "True if the weather is being set to raining, False otherwise.");
+                               "`True` if the weather is being set to raining, `False` otherwise.");
 }
 
 }  // namespace endstone::python

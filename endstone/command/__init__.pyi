@@ -64,7 +64,7 @@ class BlockCommandSender(CommandSender):
 
 class CommandSenderWrapper(CommandSender):
     """
-    Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output.
+    Represents a wrapper that forwards commands to the wrapped `CommandSender` and captures its output.
     """
     def __init__(
         self,
@@ -101,12 +101,12 @@ class Command:
             args: Arguments passed to the command.
 
         Returns:
-            True if the execution was successful, False otherwise.
+            `True` if the execution was successful, `False` otherwise.
         """
         ...
     def test_permission(self, target: CommandSender) -> bool:
         """
-        Tests the given CommandSender to see if they can perform this command.
+        Tests the given `CommandSender` to see if they can perform this command.
 
         If they do not have permission, they will be informed that they cannot do this.
 
@@ -114,12 +114,12 @@ class Command:
             target: User to test.
 
         Returns:
-            True if they can use it, False otherwise.
+            `True` if they can use it, `False` otherwise.
         """
         ...
     def test_permission_silently(self, target: CommandSender) -> bool:
         """
-        Tests the given CommandSender to see if they can perform this command.
+        Tests the given `CommandSender` to see if they can perform this command.
 
         No error is sent to the sender.
 
@@ -127,7 +127,7 @@ class Command:
             target: User to test.
 
         Returns:
-            True if they can use it, False otherwise.
+            `True` if they can use it, `False` otherwise.
         """
         ...
     @property
@@ -192,6 +192,6 @@ class CommandExecutor:
             args: Passed command arguments.
 
         Returns:
-            True if the execution is successful, False otherwise.
+            `True` if the execution is successful, `False` otherwise.
         """
         ...

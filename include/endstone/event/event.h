@@ -61,7 +61,7 @@ public:
     /**
      * Any custom event that should not by synchronized with other events must use the specific constructor.
      *
-     * @return false by default, true if the event fires asynchronously
+     * @return `false` by default, `true` if the event fires asynchronously
      */
     [[nodiscard]] bool isAsynchronous() const { return async_; }
 

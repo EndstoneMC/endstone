@@ -50,7 +50,7 @@ public:
      * Constructs an identifier by parsing a string.
      *
      * If the string contains a colon, the part before the last colon is taken as the namespace and the
-     * remainder as the key. Otherwise the whole string is the key and the namespace defaults to minecraft.
+     * remainder as the key. Otherwise the whole string is the key and the namespace defaults to `minecraft`.
      *
      * @param identifier The identifier string.
      */
@@ -108,10 +108,10 @@ public:
     }
 
     /**
-     * Creates an identifier in the minecraft namespace with the given key.
+     * Creates an identifier in the `minecraft` namespace with the given key.
      *
      * @param key The key component.
-     * @return an identifier with the namespace set to minecraft.
+     * @return an identifier with the namespace set to `minecraft`.
      */
     static constexpr Identifier minecraft(const std::string_view key) noexcept { return {Minecraft, key}; }
 

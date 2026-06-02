@@ -60,7 +60,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
 
     // Identifier (registered early, before classes that use it via type caster)
     py::class_<PyIdentifier>(m, "Identifier",
-                             "Represents an identifier consisting of two components: a namespace and a key.")
+                             "Represents an identifier consisting of two components: a `namespace` and a `key`.")
         .def(py::init<std::string>(), py::arg("id"))
         .def(py::init<std::string, std::string>(), py::arg("namespace_"), py::arg("key"))
         .def_property_readonly(
@@ -129,7 +129,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
 
     py::native_enum<EventPriority>(
         m_event, "EventPriority", "enum.IntEnum",
-        "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR")
+        "Listeners are called in following order: `LOWEST` -> `LOW` -> `NORMAL` -> `HIGH` -> `HIGHEST` -> `MONITOR`")
         .value("LOWEST", EventPriority::Lowest,
                "Event call is of very low importance and should be run first, to allow other plugins to further "
                "customise the outcome")
@@ -167,7 +167,7 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
         m_permissions, "Permissible",
         "Represents an object that may become a server operator and can be assigned permissions.");
     auto permission = py::class_<Permission>(m_permissions, "Permission",
-                                             "Represents a unique permission that may be attached to a Permissible");
+                                             "Represents a unique permission that may be attached to a `Permissible`");
     auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
     auto block = py::class_<Block>(m_block, "Block", "Represents a block.");
     auto command_sender = py_class<CommandSender>(m_command, "CommandSender", "Represents a command sender.");
@@ -182,14 +182,14 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     The name of this player.
 
     Names are no longer unique past a single game session. For persistent storage it is recommended that
-    you use ``unique_id`` instead. May be an empty string if we have not seen a name for this player yet.
+    you use `unique_id` instead. May be an empty string if we have not seen a name for this player yet.
 )doc")
         .def_property_readonly("unique_id", &OfflinePlayer::getUniqueId, "The UUID of this player.");
     auto player = py_class<Player>(m, "Player", "Represents a player.");
     auto item_stack = py::class_<ItemStack>(m_inventory, "ItemStack", "Represents a stack of items.");
     auto level =
         py::class_<Level>(m_level, "Level", "Represents a level, which may contain actors, chunks and blocks.");
-    auto dimension = py::class_<Dimension>(m_level, "Dimension", "Represents a dimension within a Level.");
+    auto dimension = py::class_<Dimension>(m_level, "Dimension", "Represents a dimension within a `Level`.");
     auto vector = py::class_<Vector>(m_util, "Vector", "Represents a 3-dimensional vector.");
     auto location =
         py::class_<Location>(m_level, "Location", "Represents a 3-dimensional location in a dimension within a level.");
@@ -321,7 +321,7 @@ void init_game_mode(py::module_ &m)
 
 void init_logger(py::module &m)
 {
-    auto logger = py::class_<Logger>(m, "Logger", "Logger class which can format and output varies levels of logs.");
+    auto logger = py::class_<Logger>(m, "Logger", "`Logger` class which can format and output varies levels of logs.");
 
     py::native_enum<Logger::Level>(logger, "Level", "enum.IntEnum", "Specifies the log level.")
         .value("TRACE", Logger::Level::Trace)
@@ -334,39 +334,39 @@ void init_logger(py::module &m)
         .finalize();
 
     logger.def("set_level", &Logger::setLevel, py::arg("level"), R"doc(
-    Set the logging level for this Logger instance.
+    Set the logging level for this `Logger` instance.
 
     Args:
         level: The desired log level.
 )doc")
         .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"), R"doc(
-    Check if the Logger instance is enabled for the given log Level.
+    Check if the `Logger` instance is enabled for the given log `Level`.
 
     Args:
         level: The log level to check.
 
     Returns:
-        True if the logger is enabled for the Level, False otherwise.
+        `True` if the logger is enabled for the `Level`, `False` otherwise.
 )doc")
         .def(
             "trace", [](const Logger &self, const std::string_view message) { self.log(Logger::Trace, message); },
-            py::arg("message"), "Log a message at the TRACE level.")
+            py::arg("message"), "Log a message at the `TRACE` level.")
         .def(
             "debug", [](const Logger &self, const std::string_view message) { self.log(Logger::Debug, message); },
-            py::arg("message"), "Log a message at the DEBUG level.")
+            py::arg("message"), "Log a message at the `DEBUG` level.")
         .def(
             "info", [](const Logger &self, const std::string_view message) { self.log(Logger::Info, message); },
-            py::arg("message"), "Log a message at the INFO level.")
+            py::arg("message"), "Log a message at the `INFO` level.")
         .def(
             "warning", [](const Logger &self, const std::string_view message) { self.log(Logger::Warning, message); },
-            py::arg("message"), "Log a message at the WARNING level.")
+            py::arg("message"), "Log a message at the `WARNING` level.")
         .def(
             "error", [](const Logger &self, const std::string_view message) { self.log(Logger::Error, message); },
-            py::arg("message"), "Log a message at the ERROR level.")
+            py::arg("message"), "Log a message at the `ERROR` level.")
         .def(
             "critical", [](const Logger &self, const std::string_view message) { self.log(Logger::Critical, message); },
-            py::arg("message"), "Log a message at the CRITICAL level.")
-        .def_property_readonly("name", &Logger::getName, "The name of this Logger instance.");
+            py::arg("message"), "Log a message at the `CRITICAL` level.")
+        .def_property_readonly("name", &Logger::getName, "The name of this `Logger` instance.");
 }
 
 void init_registry(py::module_ &m)
@@ -383,7 +383,7 @@ void init_registry(py::module_ &m)
         id: Identifier to look up.
 
     Returns:
-        The object, or None if it does not exist.
+        The object, or `None` if it does not exist.
 )doc")
         .def("get_or_throw", &PyRegistry::getOrThrow, py::arg("id"), R"doc(
     Get the object by its identifier or raise if missing.
@@ -419,16 +419,16 @@ void init_server(py::class_<Server> &server)
                                "The plugin manager for interfacing with plugins.")
         .def("get_plugin_command", &Server::getPluginCommand, py::arg("name"), py::return_value_policy::reference,
              R"doc(
-    Gets a PluginCommand with the given name or alias.
+    Gets a `PluginCommand` with the given name or alias.
 
     Args:
         name: The name of the command to retrieve.
 
     Returns:
-        A PluginCommand if found, None otherwise.
+        A `PluginCommand` if found, `None` otherwise.
 )doc")
         .def_property_readonly("command_sender", &Server::getCommandSender, py::return_value_policy::reference,
-                               "A console CommandSender for this server.")
+                               "A console `CommandSender` for this server.")
         .def("dispatch_command", &Server::dispatchCommand, py::arg("sender"), py::arg("command_line"), R"doc(
     Dispatches a command on this server, and executes it if found.
 
@@ -437,7 +437,7 @@ void init_server(py::class_<Server> &server)
         command_line: The command + arguments.
 
     Returns:
-        True if execution is successful, False otherwise.
+        `True` if execution is successful, `False` otherwise.
 )doc")
         .def_property_readonly("scheduler", &Server::getScheduler, py::return_value_policy::reference,
                                "The scheduler for managing scheduled events.")
@@ -459,13 +459,13 @@ void init_server(py::class_<Server> &server)
             py::arg("type"), R"doc(
     Returns the registry for the given type.
 
-    If no registry is present for the given type, None will be returned.
+    If no registry is present for the given type, `None` will be returned.
 
     Args:
         type: Type of the registry to get.
 
     Returns:
-        The corresponding registry, or None if not present.
+        The corresponding registry, or `None` if not present.
 )doc")
         .def_property_readonly("level", &Server::getLevel, py::return_value_policy::reference_internal,
                                "The server level.")
@@ -481,7 +481,7 @@ void init_server(py::class_<Server> &server)
         name: Exact name of the player to retrieve.
 
     Returns:
-        A player object if one was found, None otherwise.
+        A player object if one was found, `None` otherwise.
 )doc")
         .def("get_player", py::overload_cast<UUID>(&Server::getPlayer, py::const_), py::arg("unique_id").noconvert(),
              py::return_value_policy::reference, R"doc(
@@ -491,7 +491,7 @@ void init_server(py::class_<Server> &server)
         unique_id: UUID of the player to retrieve.
 
     Returns:
-        A player object if one was found, None otherwise.
+        A player object if one was found, `None` otherwise.
 )doc")
         .def_property_readonly("online_mode", &Server::getOnlineMode,
                                "Whether the Server is in online mode or not.")
@@ -514,28 +514,28 @@ void init_server(py::class_<Server> &server)
         .def(
             "broadcast_message", [](const Server &self, const Message &message) { self.broadcastMessage(message); },
             py::arg("message"), R"doc(
-    Broadcasts the specified message to every user with permission ``endstone.broadcast.user``.
+    Broadcasts the specified message to every user with permission `endstone.broadcast.user`.
 
     Args:
         message: The message.
 )doc")
         .def_property_readonly("item_factory", &Server::getItemFactory,
-                               "The instance of the item factory (for ItemMeta).",
+                               "The instance of the item factory (for `ItemMeta`).",
                                py::return_value_policy::reference)
         .def_property_readonly("scoreboard", &Server::getScoreboard, R"doc(
-    The primary Scoreboard controlled by the server.
+    The primary `Scoreboard` controlled by the server.
 
-    This Scoreboard is saved by the server, is affected by the ``/scoreboard`` command, and is the
+    This `Scoreboard` is saved by the server, is affected by the `/scoreboard` command, and is the
     scoreboard shown by default to players. This will only exist after the level has been loaded.
 )doc",
                                py::return_value_policy::reference)
         .def("create_scoreboard", &Server::createScoreboard, R"doc(
-    Creates a new Scoreboard to be tracked by the server.
+    Creates a new `Scoreboard` to be tracked by the server.
 
-    This will not be saved by the server and is not affected by the ``/scoreboard`` command.
+    This will not be saved by the server and is not affected by the `/scoreboard` command.
 
     Returns:
-        The newly created Scoreboard.
+        The newly created `Scoreboard`.
 )doc",
              py::return_value_policy::reference)
         .def_property_readonly("current_mspt", &Server::getCurrentMillisecondsPerTick,
@@ -575,12 +575,12 @@ void init_server(py::class_<Server> &server)
                 return self.createBlockData(type, block_states.value_or(BlockStates{}));
             },
             py::arg("type"), py::arg("block_states") = std::nullopt, R"doc(
-    Creates a new BlockData instance for the specified block type, with all properties initialized to defaults,
-    except for those provided in ``block_states``.
+    Creates a new `BlockData` instance for the specified block type, with all properties initialized to defaults,
+    except for those provided in `block_states`.
 
     Args:
         type: The block type.
-        block_states: Block states, for example ``{"old_leaf_type":"birch", "persistent_bit":True}``.
+        block_states: Block states, for example `{"old_leaf_type":"birch", "persistent_bit":True}`.
 
     Returns:
         New data instance.
@@ -596,13 +596,13 @@ void init_server(py::class_<Server> &server)
         id: The id of the map to get.
 
     Returns:
-        A map view if it exists, or None otherwise.
+        A map view if it exists, or `None` otherwise.
 )doc")
         .def("create_map", &Server::createMap, py::arg("dimension"), py::return_value_policy::reference, R"doc(
     Create a new map with an automatically assigned ID.
 
     Args:
-        dimension: The Dimension the map will belong to.
+        dimension: The `Dimension` the map will belong to.
 
     Returns:
         A newly created map view.
@@ -650,7 +650,7 @@ void init_player(py::module_ &m, py_class<Player> &player)
         command: Command to perform.
 
     Returns:
-        True if the command was successful, False otherwise.
+        `True` if the command was successful, `False` otherwise.
 )doc")
         .def_property("is_sneaking", &Player::isSneaking, &Player::setSneaking,
                       "Whether the player is in sneak mode.")
@@ -726,7 +726,7 @@ void init_player(py::module_ &m, py_class<Player> &player)
         .def_property("walk_speed", &Player::getWalkSpeed, &Player::setWalkSpeed,
                       "The current allowed speed that a client can walk. Default is 0.10.")
         .def_property("scoreboard", &Player::getScoreboard, &Player::setScoreboard,
-                      "The player's visible Scoreboard.", py::return_value_policy::reference)
+                      "The player's visible `Scoreboard`.", py::return_value_policy::reference)
         .def("send_title", py::overload_cast<std::string, std::string, int, int, int>(&Player::sendTitle, py::const_),
              py::arg("title"), py::arg("subtitle"), py::arg("fade_in") = 10, py::arg("stay") = 70,
              py::arg("fade_out") = 20, R"doc(
@@ -780,11 +780,11 @@ void init_player(py::module_ &m, py_class<Player> &player)
     Generally useful to ensure the client has a complete list of commands after permission changes are done.
 )doc")
 
-        .def_property("game_mode", &Player::getGameMode, &Player::setGameMode, "The player's current GameMode.")
+        .def_property("game_mode", &Player::getGameMode, &Player::setGameMode, "The player's current `GameMode`.")
         .def_property_readonly("inventory", &Player::getInventory, py::return_value_policy::reference,
                                "The player's inventory. This also contains the armor slots.")
         .def_property_readonly("ender_chest", &Player::getEnderChest, py::return_value_policy::reference,
-                               "The player's EnderChest inventory.")
+                               "The player's `EnderChest` inventory.")
         .def_property_readonly("locale", &Player::getLocale, "The player's current locale.")
         .def_property_readonly("device_os", &Player::getDeviceOS,
                                "The player's current device's operation system (OS).")

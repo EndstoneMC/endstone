@@ -58,8 +58,8 @@ public:
      * Checks if a BanEntry exists for the target, indicating an active ban status.
      *
      * @param address The IP address to find.
-     * @return true If a BanEntry exists for the target, indicating an active ban status.
-     * @return false Otherwise.
+     * @return `true` If a BanEntry exists for the target, indicating an active ban status.
+     * @return `false` Otherwise.
      */
     [[nodiscard]] bool isBanned(std::string address) const override = 0;
 

@@ -75,7 +75,7 @@ public:
      * Checks if this object is an instance of the given type T (or a subclass of T).
      *
      * @tparam T Type to check against (must derive from Object)
-     * @return True if this object is an instance of T
+     * @return `true` if this object is an instance of T
      */
     template <typename T>
         requires std::is_base_of_v<Object, T>

@@ -40,7 +40,7 @@ public:
      * Translates a given text into a specific locale.
      *
      * @param text The text to be translated.
-     * @param locale The locale identifier for the desired translation (e.g., "en_US").
+     * @param locale The locale identifier for the desired translation (e.g., `en_US`).
      * @return The translated text in the specified locale.
      */
     [[nodiscard]] virtual std::string translate(std::string text, std::string locale) const = 0;
@@ -59,7 +59,7 @@ public:
      *
      * @param text The text to be translated.
      * @param params A list of parameters to be used in the translation.
-     * @param locale The locale identifier for the desired translation (e.g., "en_US").
+     * @param locale The locale identifier for the desired translation (e.g., `en_US`).
      * @return The translated text in the specified locale, with parameters applied.
      */
     [[nodiscard]] virtual std::string translate(std::string text, std::vector<std::string> params,
@@ -77,7 +77,7 @@ public:
      * Translates a Translatable object into a specific locale.
      *
      * @param translatable A Translatable object containing text and parameters.
-     * @param locale The locale identifier for the desired translation (e.g., "en_US").
+     * @param locale The locale identifier for the desired translation (e.g., `en_US`).
      * @return The translated text in the specified locale.
      */
     [[nodiscard]] virtual std::string translate(Translatable translatable, std::string locale) const = 0;
@@ -85,7 +85,7 @@ public:
     /**
      * Gets the current locale.
      *
-     * @return A string representing the current locale (e.g., "en_US").
+     * @return A string representing the current locale (e.g., `en_US`).
      */
     [[nodiscard]] virtual std::string getLocale() const = 0;
 };

@@ -33,7 +33,7 @@ public:
     /**
      * Gets the state of thunder that the world is being set to.
      *
-     * @return true if the weather is being set to thundering, false otherwise
+     * @return `true` if the weather is being set to thundering, `false` otherwise
      */
     [[nodiscard]] bool toThunderState() const { return to_; }
 

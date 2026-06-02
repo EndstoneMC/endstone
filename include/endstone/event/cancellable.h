@@ -26,14 +26,14 @@ public:
     /**
      * Gets the cancellation state of this event.
      *
-     * @return true if this event is cancelled
+     * @return `true` if this event is cancelled
      */
     [[nodiscard]] virtual bool isCancelled() const = 0;
 
     /**
      * Sets the cancellation state of this event.
      *
-     * @param cancel true if you wish to cancel this event
+     * @param cancel `true` if you wish to cancel this event
      */
     virtual void setCancelled(bool cancel) = 0;
 
@@ -56,7 +56,7 @@ public:
      *
      * A cancelled event will not be executed in the server, but will still pass to other plugins.
      *
-     * @return true if this event is cancelled
+     * @return `true` if this event is cancelled
      */
     [[nodiscard]] bool isCancelled() const override { return EventType::cancelled_; }
 
@@ -64,7 +64,7 @@ public:
      * Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will
      * still pass to other plugins.
      *
-     * @param cancel true if you wish to cancel this event
+     * @param cancel `true` if you wish to cancel this event
      */
     void setCancelled(bool cancel) override { EventType::cancelled_ = cancel; }
 

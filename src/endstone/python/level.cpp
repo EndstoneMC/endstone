@@ -51,17 +51,17 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
                                py::return_value_policy::reference)
         .def("get_block_at", py::overload_cast<Location>(&Dimension::getBlockAt, py::const_),
              py::arg("location").noconvert(), R"doc(
-    Gets the Block at the given Location.
+    Gets the `Block` at the given `Location`.
 
     Args:
-        location: Location of the block.
+        location: `Location` of the block.
 
     Returns:
-        Block at the given coordinates.
+        `Block` at the given coordinates.
 )doc")
         .def("get_block_at", py::overload_cast<int, int, int>(&Dimension::getBlockAt, py::const_), py::arg("x"),
              py::arg("y"), py::arg("z"), R"doc(
-    Gets the Block at the given coordinates.
+    Gets the `Block` at the given coordinates.
 
     Args:
         x: X-coordinate of the block.
@@ -69,7 +69,7 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         z: Z-coordinate of the block.
 
     Returns:
-        Block at the given coordinates.
+        `Block` at the given coordinates.
 )doc")
         .def("get_highest_block_y_at", &Dimension::getHighestBlockYAt, py::arg("x"), py::arg("z"), R"doc(
     Gets the highest non-empty (impassable) coordinate at the given coordinates.
@@ -83,7 +83,7 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
 )doc")
         .def("get_highest_block_at", py::overload_cast<Location>(&Dimension::getHighestBlockAt, py::const_),
              py::arg("location").noconvert(), R"doc(
-    Gets the highest non-empty (impassable) block at the given Location.
+    Gets the highest non-empty (impassable) block at the given `Location`.
 
     Args:
         location: Coordinates to get the highest block.
@@ -102,28 +102,28 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
     Returns:
         Highest non-empty block.
 )doc")
-        .def_property_readonly("loaded_chunks", &Dimension::getLoadedChunks, "A list of all loaded Chunks.")
+        .def_property_readonly("loaded_chunks", &Dimension::getLoadedChunks, "A list of all loaded `Chunk`s.")
         .def("drop_item", &Dimension::dropItem, py::arg("location"), py::arg("item"),
              py::return_value_policy::reference, R"doc(
-    Drops an item at the specified Location.
+    Drops an item at the specified `Location`.
 
     Args:
-        location: Location to drop the item.
-        item: ItemStack to drop.
+        location: `Location` to drop the item.
+        item: `ItemStack` to drop.
 
     Returns:
-        Item entity created as a result of this method.
+        `Item` entity created as a result of this method.
 )doc")
         .def("spawn_actor", &Dimension::spawnActor, py::arg("location"), py::arg("type"),
              py::return_value_policy::reference, R"doc(
-    Creates an actor at the given Location.
+    Creates an actor at the given `Location`.
 
     Args:
         location: The location to spawn the actor.
         type: The actor type to spawn.
 
     Returns:
-        Resulting Actor of this method.
+        Resulting `Actor` of this method.
 )doc")
         .def_property_readonly("actors", &Dimension::getActors, py::return_value_policy::reference_internal,
                                "A list of all actors currently residing in this dimension.");
@@ -141,7 +141,7 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         id: The id of the dimension to retrieve.
 
     Returns:
-        The Dimension with the given id, or None if none exists.
+        The `Dimension` with the given id, or `None` if none exists.
 )doc",
              py::return_value_policy::reference)
         .def_property_readonly("seed", &Level::getSeed, "The Seed for this level.");
@@ -150,7 +150,7 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         .def(py::init(&create_location), py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"),
              py::arg("pitch") = 0.0, py::arg("yaw") = 0.0)
         .def_property("dimension", &Location::getDimension, &Location::setDimension, py::return_value_policy::reference,
-                      "The Dimension that contains this position.")
+                      "The `Dimension` that contains this position.")
         .def_property_readonly("block", &Location::getBlock, "The block at the represented location.")
         .def_property("pitch", &Location::getPitch, &Location::setPitch,
                       "The pitch of this location, measured in degrees.")
@@ -171,9 +171,9 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
             "block_z", &Location::getBlockZ,
             "The floored value of the Z component, indicating the block that this location is contained with.")
         .def_property("direction", &Location::getDirection, &Location::setDirection,
-                      "A unit-vector pointing in the direction that this Location is facing.")
+                      "A unit-vector pointing in the direction that this `Location` is facing.")
         .def_property_readonly("length", &Location::length, R"doc(
-    The magnitude of the location, defined as ``sqrt(x^2+y^2+z^2)``.
+    The magnitude of the location, defined as `sqrt(x^2+y^2+z^2)`.
 
     Not world-aware and orientation independent.
 )doc")
@@ -212,7 +212,7 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         .def("__repr__", [](const Location &self) { return std::format("{}", self); })
         .def("__str__", [](const Location &self) { return std::format("{}", self); })
         .def_static("normalize_yaw", &Location::normalizeYaw, py::arg("yaw"), R"doc(
-    Normalizes the given yaw angle to a value between ``+/-180`` degrees.
+    Normalizes the given yaw angle to a value between `+/-180` degrees.
 
     Args:
         yaw: The yaw in degrees.
@@ -221,7 +221,7 @@ void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> 
         The normalized yaw in degrees.
 )doc")
         .def_static("normalize_pitch", &Location::normalizePitch, py::arg("pitch"), R"doc(
-    Normalizes the given pitch angle to a value between ``+/-90`` degrees.
+    Normalizes the given pitch angle to a value between `+/-90` degrees.
 
     Args:
         pitch: The pitch in degrees.

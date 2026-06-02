@@ -140,7 +140,7 @@ public:
      *
      * @param sender the apparent sender of the command
      * @param command_line the command + arguments.
-     * @return true if execution is successful, false otherwise
+     * @return `true` if execution is successful, `false` otherwise
      */
     [[nodiscard]] virtual bool dispatchCommand(CommandSender &sender, std::string command_line) const = 0;
 
@@ -204,7 +204,7 @@ public:
     /**
      * Gets whether the Server is in online mode or not.
      *
-     * @return true if the server authenticates clients, false otherwise
+     * @return `true` if the server authenticates clients, `false` otherwise
      */
     [[nodiscard]] virtual bool getOnlineMode() const = 0;
 
@@ -242,14 +242,14 @@ public:
     virtual void broadcast(const Message &message, const std::string &permission) const = 0;
 
     /**
-     * Broadcasts the specified message to every user with permission endstone.broadcast.user.
+     * Broadcasts the specified message to every user with permission `endstone.broadcast.user`.
      *
      * @param message the message
      */
     virtual void broadcastMessage(const Message &message) const = 0;
 
     /**
-     * Broadcasts a formatted message to every user with permission endstone.broadcast.user.
+     * Broadcasts a formatted message to every user with permission `endstone.broadcast.user`.
      *
      * Formats the message using std::format before broadcasting. If formatting throws,
      * the exception message is logged at the Error level instead.
@@ -271,7 +271,7 @@ public:
     /**
      * Checks the current thread against the expected primary server thread.
      *
-     * @return true if the current thread matches the expected primary thread, false otherwise
+     * @return `true` if the current thread matches the expected primary thread, `false` otherwise
      */
     [[nodiscard]] virtual bool isPrimaryThread() const = 0;
 
@@ -286,7 +286,7 @@ public:
     /**
      * Gets the primary Scoreboard controlled by the server.
      * <p>
-     * This Scoreboard is saved by the server, is affected by the /scoreboard command, and is the scoreboard shown by
+     * This Scoreboard is saved by the server, is affected by the `/scoreboard` command, and is the scoreboard shown by
      * default to players. This will only exist after the level has been loaded.
      *
      * @return the default server scoreboard
@@ -296,7 +296,7 @@ public:
     /**
      * Creates a new Scoreboard to be tracked by the server.
      * <p>
-     * This will not be saved by the server and is not affected by the /scoreboard command.
+     * This will not be saved by the server and is not affected by the `/scoreboard` command.
      *
      * @return the newly created Scoreboard
      */

@@ -33,7 +33,7 @@ public:
     /**
      * Gets the state of weather that the world is being set to.
      *
-     * @return true if the weather is being set to raining, false otherwise
+     * @return `true` if the weather is being set to raining, `false` otherwise
      */
     [[nodiscard]] bool toWeatherState() const { return to_; }
 

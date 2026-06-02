@@ -45,7 +45,7 @@ class PluginLoader:
             file: File to attempt to load.
 
         Returns:
-            Plugin that was contained in the specified file, or None if unsuccessful.
+            `Plugin` that was contained in the specified file, or `None` if unsuccessful.
         """
         ...
     def load_plugins(self, directory: str) -> list[Plugin]:
@@ -82,13 +82,13 @@ class PluginLoader:
     @property
     def plugin_file_filters(self) -> list[str]:
         """
-        A list of all filename filters expected by this PluginLoader.
+        A list of all filename filters expected by this `PluginLoader`.
         """
         ...
     @property
     def server(self) -> Server:
         """
-        The Server object associated with the PluginLoader.
+        The `Server` object associated with the `PluginLoader`.
         """
         ...
 
@@ -99,7 +99,7 @@ class PluginCommand(Command):
     @property
     def executor(self) -> CommandExecutor:
         """
-        The CommandExecutor to run when parsing this command.
+        The `CommandExecutor` to run when parsing this command.
         """
         ...
     @executor.setter
@@ -107,7 +107,7 @@ class PluginCommand(Command):
     @property
     def plugin(self) -> Plugin:
         """
-        The owner of this PluginCommand.
+        The owner of this `PluginCommand`.
         """
         ...
 
@@ -390,7 +390,7 @@ class Plugin:
 
 class PluginManager:
     """
-    Represents a plugin manager that handles all plugins from the Server.
+    Represents a plugin manager that handles all plugins from the `Server`.
     """
     def get_plugin(self, name: str) -> Plugin:
         """
@@ -402,7 +402,7 @@ class PluginManager:
             name: Name of the plugin to check.
 
         Returns:
-            Plugin if it exists, otherwise None.
+            `Plugin` if it exists, otherwise `None`.
         """
         ...
     @property
@@ -422,7 +422,7 @@ class PluginManager:
             plugin: Name of the plugin to check.
 
         Returns:
-            True if the plugin is enabled, otherwise False.
+            `True` if the plugin is enabled, otherwise `False`.
         """
         ...
     @typing.overload
@@ -434,20 +434,20 @@ class PluginManager:
             plugin: Plugin to check.
 
         Returns:
-            True if the plugin is enabled, otherwise False.
+            `True` if the plugin is enabled, otherwise `False`.
         """
         ...
     def load_plugin(self, file: str) -> Plugin:
         """
         Loads the plugin in the specified file.
 
-        File must be valid according to the current enabled Plugin interfaces.
+        File must be valid according to the current enabled `Plugin` interfaces.
 
         Args:
             file: File containing the plugin to load.
 
         Returns:
-            The Plugin loaded, or None if it was invalid.
+            The `Plugin` loaded, or `None` if it was invalid.
         """
         ...
     @typing.overload
@@ -530,7 +530,7 @@ class PluginManager:
 
         Args:
             name: Event name to register.
-            executor: EventExecutor to register.
+            executor: `EventExecutor` to register.
             priority: Priority of this event.
             plugin: Plugin to register.
             ignore_cancelled: Do not call executor if event was already cancelled.
@@ -538,22 +538,22 @@ class PluginManager:
         ...
     def get_permission(self, name: str) -> Permission:
         """
-        Gets a Permission from its fully qualified name.
+        Gets a `Permission` from its fully qualified name.
 
         Args:
             name: Name of the permission.
 
         Returns:
-            Permission, or None if none.
+            `Permission`, or `None` if none.
         """
         ...
     @typing.overload
     def remove_permission(self, perm: Permission) -> None:
         """
-        Removes a Permission registration from this plugin manager.
+        Removes a `Permission` registration from this plugin manager.
 
         If the specified permission does not exist in this plugin manager, nothing will happen.
-        Removing a permission registration will not remove the permission from any Permissibles that have it.
+        Removing a permission registration will not remove the permission from any `Permissibles` that have it.
 
         Args:
             perm: Permission to remove.
@@ -562,10 +562,10 @@ class PluginManager:
     @typing.overload
     def remove_permission(self, name: str) -> None:
         """
-        Removes a Permission registration from this plugin manager.
+        Removes a `Permission` registration from this plugin manager.
 
         If the specified permission does not exist in this plugin manager, nothing will happen.
-        Removing a permission registration will not remove the permission from any Permissibles that have it.
+        Removing a permission registration will not remove the permission from any `Permissibles` that have it.
 
         Args:
             name: Permission to remove.
@@ -584,7 +584,7 @@ class PluginManager:
         ...
     def recalculate_permission_defaults(self, perm: Permission) -> None:
         """
-        Recalculates the defaults for the given Permission.
+        Recalculates the defaults for the given `Permission`.
 
         This will have no effect if the specified permission is not registered here.
 
@@ -594,9 +594,9 @@ class PluginManager:
         ...
     def subscribe_to_permission(self, permission: str, permissible: Permissible) -> None:
         """
-        Subscribes the given Permissible for information about the requested Permission, by name.
+        Subscribes the given `Permissible` for information about the requested `Permission`, by name.
 
-        If the specified Permission changes in any form, the Permissible will be asked to recalculate.
+        If the specified `Permission` changes in any form, the `Permissible` will be asked to recalculate.
 
         Args:
             permission: Permission to subscribe to.
@@ -605,7 +605,7 @@ class PluginManager:
         ...
     def unsubscribe_from_permission(self, permission: str, permissible: Permissible) -> None:
         """
-        Unsubscribes the given Permissible for information about the requested Permission, by name.
+        Unsubscribes the given `Permissible` for information about the requested `Permission`, by name.
 
         Args:
             permission: Permission to unsubscribe from.
@@ -614,7 +614,7 @@ class PluginManager:
         ...
     def get_permission_subscriptions(self, permission: str) -> set[Permissible]:
         """
-        Gets a set containing all subscribed Permissibles to the given permission, by name.
+        Gets a set containing all subscribed `Permissibles` to the given permission, by name.
 
         Args:
             permission: Permission to query for.
@@ -627,7 +627,7 @@ class PluginManager:
         """
         Subscribes to the given Default permissions by permission level.
 
-        If the specified defaults change in any form, the Permissible will be asked to recalculate.
+        If the specified defaults change in any form, the `Permissible` will be asked to recalculate.
 
         Args:
             level: Default list to subscribe to.
@@ -645,7 +645,7 @@ class PluginManager:
         ...
     def get_default_perm_subscriptions(self, level: PermissionLevel) -> set[Permissible]:
         """
-        Gets a set containing all subscribed Permissibles to the given default list, by permission level.
+        Gets a set containing all subscribed `Permissibles` to the given default list, by permission level.
 
         Args:
             level: Default list to query for.
@@ -727,12 +727,12 @@ class ServiceManager:
         """
         Queries for a provider.
 
-        This may return None if no provider has been registered for the service. The highest priority provider is returned.
+        This may return `None` if no provider has been registered for the service. The highest priority provider is returned.
 
         Args:
             name: The service name.
 
         Returns:
-            The highest priority provider, or None if none is registered.
+            The highest priority provider, or `None` if none is registered.
         """
         ...

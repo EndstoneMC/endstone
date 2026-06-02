@@ -130,8 +130,8 @@ void init_util(py::module &m, py::class_<Vector> &vector)
         .def("normalize", &Vector::normalize, "Converts this vector to a unit vector (a vector with length of 1).")
         .def("zero", &Vector::zero, "Zero this vector's components.")
         .def_property_readonly("is_zero", &Vector::isZero,
-                               "True if each component of this vector is equal to 0.")
-        .def("normalize_zero", &Vector::normalizeZeros, "Converts each component of value ``-0.0`` to ``0.0``.")
+                               "`True` if each component of this vector is equal to 0.")
+        .def("normalize_zero", &Vector::normalizeZeros, "Converts each component of value `-0.0` to `0.0`.")
         .def("is_in_aabb", &Vector::isInAABB, py::arg("min"), py::arg("max"), R"doc(
     Returns whether this vector is in an axis-aligned bounding box.
 
@@ -142,7 +142,7 @@ void init_util(py::module &m, py::class_<Vector> &vector)
         max: Maximum vector.
 
     Returns:
-        Whether this vector is in the AABB.
+        Whether this vector is in the `AABB`.
 )doc")
         .def("is_in_sphere", &Vector::isInSphere, py::arg("origin"), py::arg("radius"), R"doc(
     Returns whether this vector is within a sphere.
@@ -154,7 +154,7 @@ void init_util(py::module &m, py::class_<Vector> &vector)
     Returns:
         Whether this vector is in the sphere.
 )doc")
-        .def_property_readonly("is_normalized", &Vector::isNormalized, "True if this vector is normalized.")
+        .def_property_readonly("is_normalized", &Vector::isNormalized, "`True` if this vector is normalized.")
         .def("rotate_around_x", &Vector::rotateAroundX, py::arg("angle"), R"doc(
     Rotates the vector around the x-axis.
 
@@ -188,7 +188,7 @@ void init_util(py::module &m, py::class_<Vector> &vector)
     Args:
         axis: The axis to rotate the vector around.
         angle: The angle to rotate the vector around the axis.
-        normalize: When True (default), the axis vector is normalized before being used for the rotation, preserving
+        normalize: When `True` (default), the axis vector is normalized before being used for the rotation, preserving
             the length of this vector.
 )doc")
         .def("__matmul__", &Vector::dot, py::arg("other"), "Dot product (v @ u).")

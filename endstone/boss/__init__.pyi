@@ -98,9 +98,9 @@ class BossBar:
     @property
     def progress(self) -> float:
         """
-        The progress of the bar between 0.0 and 1.0.
+        The progress of the bar between `0.0` and `1.0`.
 
-        Values should be between 0.0 (empty) and 1.0 (full).
+        Values should be between `0.0` (empty) and `1.0` (full).
         """
         ...
     @progress.setter

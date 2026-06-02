@@ -50,15 +50,15 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
                                "The maximum durability of this item type.")
         .def("create_item_stack", py::overload_cast<int>(&ItemType::createItemStack, py::const_), py::arg("amount") = 1,
              R"doc(
-    Constructs a new ItemStack with this item type.
+    Constructs a new `ItemStack` with this item type.
 
     Args:
         amount: The amount in the stack.
 
     Returns:
-        An ItemStack of this item type.
+        An `ItemStack` of this item type.
 )doc")
-        .def_static("get", &ItemType::get, py::arg("name"), "Attempts to get the ItemType with the given name.",
+        .def_static("get", &ItemType::get, py::arg("name"), "Attempts to get the `ItemType` with the given name.",
                     py::return_value_policy::reference)
         .def("__str__", [](const ItemType &self) { return std::string(self.getId()); })
         .def("__hash__", [](const ItemType &self) { return std::hash<ItemTypeId>{}(self.getId()); })
@@ -90,7 +90,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         id: Enchantment id to check.
 
     Returns:
-        True if this enchantment exists for this meta.
+        `True` if this enchantment exists for this meta.
 )doc")
         .def("get_enchant_level", &ItemMeta::getEnchantLevel, py::arg("id"), R"doc(
     Checks for the level of the specified enchantment.
@@ -102,7 +102,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         The level that the specified enchantment has, or 0 if none.
 )doc")
         .def_property_readonly("enchants", &ItemMeta::getEnchants, R"doc(
-    Returns a copy of the enchantments in this ItemMeta.
+    Returns a copy of the enchantments in this `ItemMeta`.
 
     Returns an empty map if none.
 )doc")
@@ -115,7 +115,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         force: This indicates the enchantment should be applied, ignoring the level limit.
 
     Returns:
-        True if the item meta changed as a result of this call, False otherwise.
+        `True` if the item meta changed as a result of this call, `False` otherwise.
 )doc")
         .def("remove_enchant", &ItemMeta::removeEnchant, py::arg("id"), R"doc(
     Removes the specified enchantment from this item meta.
@@ -124,7 +124,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         id: Enchantment id to remove.
 
     Returns:
-        True if the item meta changed as a result of this call, False otherwise.
+        `True` if the item meta changed as a result of this call, `False` otherwise.
 )doc")
         .def("remove_enchants", &ItemMeta::removeEnchants, "Removes all enchantments from this item meta.")
         .def_property_readonly("has_repair_cost", &ItemMeta::hasRepairCost,
@@ -150,7 +150,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         Pages are 1-indexed.
 
     Args:
-        page: The page number to get, in range [1, page_count].
+        page: The page number to get, in range [1, `page_count`].
 
     Returns:
         The page from the book.
@@ -164,7 +164,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Pages are 1-indexed.
 
     Args:
-        page: The page number to set, in range [1, page_count].
+        page: The page number to set, in range [1, `page_count`].
         data: The data to set for that page.
 )doc")
         .def_property(
@@ -212,7 +212,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property_readonly("has_charged_projectile", &CrossbowMeta::hasChargedProjectile,
                                "Whether the crossbow has a charged projectile.")
         .def_property("charged_projectile", &CrossbowMeta::getChargedProjectile, &CrossbowMeta::setChargedProjectile,
-                      "The charged projectile, or None if none.");
+                      "The charged projectile, or `None` if none.");
 
     py::class_<ItemFactory>(m, "ItemFactory", "An interface to the methods used to create item metadata.")
         .def("get_item_meta", &ItemFactory::getItemMeta, py::arg("type"), R"doc(
@@ -222,32 +222,32 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         type: The item type to consider as base for the meta.
 
     Returns:
-        A new ItemMeta that could be applied to an item stack of the specified item type.
+        A new `ItemMeta` that could be applied to an item stack of the specified item type.
 )doc")
         .def("is_applicable", &ItemFactory::isApplicable, py::arg("meta"), py::arg("type"), R"doc(
-    This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified ItemStack.
+    This method checks the item meta to confirm that it is applicable (no data lost if applied) to the specified `ItemStack`.
 
     Args:
         meta: Meta to check.
         type: The item type that meta will be applied to.
 
     Returns:
-        True if the meta can be applied without losing data, False otherwise.
+        `True` if the meta can be applied without losing data, `False` otherwise.
 )doc")
         .def("equals", &ItemFactory::equals, py::arg("meta1"), py::arg("meta2"), R"doc(
-    This method is used to compare two ItemMeta objects.
+    This method is used to compare two `ItemMeta` objects.
 
     Args:
-        meta1: First meta to compare; may be None to indicate no data.
-        meta2: Second meta to compare; may be None to indicate no data.
+        meta1: First meta to compare; may be `None` to indicate no data.
+        meta2: Second meta to compare; may be `None` to indicate no data.
 
     Returns:
-        False if one of the meta has data the other does not, otherwise True.
+        `False` if one of the meta has data the other does not, otherwise `True`.
 )doc")
         .def("as_meta_for", &ItemFactory::asMetaFor, py::arg("meta"), py::arg("type"), R"doc(
     Returns an appropriate item meta for the specified item type.
 
-    The item meta returned will always be a valid meta for a given ItemStack of the specified item type. It may be a
+    The item meta returned will always be a valid meta for a given `ItemStack` of the specified item type. It may be a
     more or less specific meta, and could also be the same meta or meta type as the parameter. The item meta returned
     will also always be the most appropriate meta.
 
@@ -286,17 +286,17 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         other: The item stack to compare to.
 
     Returns:
-        True if the two stacks are equal, ignoring the amount.
+        `True` if the two stacks are equal, ignoring the amount.
 )doc")
-        .def_property_readonly("item_meta", &ItemStack::getItemMeta, "A copy of the ItemMeta of this ItemStack.")
+        .def_property_readonly("item_meta", &ItemStack::getItemMeta, "A copy of the `ItemMeta` of this `ItemStack`.")
         .def("set_item_meta", &ItemStack::setItemMeta, py::arg("meta"), R"doc(
-    Set the ItemMeta of this ItemStack.
+    Set the `ItemMeta` of this `ItemStack`.
 
     Args:
-        meta: New ItemMeta, or None to clear the metadata.
+        meta: New `ItemMeta`, or `None` to clear the metadata.
 
     Returns:
-        True if successfully applied ItemMeta.
+        `True` if successfully applied `ItemMeta`.
 )doc")
         .def_property("nbt", &ItemStack::getNbt, &ItemStack::setNbt, "The NBT compound tag of this item stack.")
         .def(py::self == py::self)
@@ -306,22 +306,22 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     py::class_<Inventory>(m, "Inventory", "Interface to the various inventories.")
         .def_property_readonly("size", &Inventory::getSize, "The size of the inventory.")
         .def_property_readonly("max_stack_size", &Inventory::getMaxStackSize,
-                               "The maximum stack size for an ItemStack in this inventory.")
+                               "The maximum stack size for an `ItemStack` in this inventory.")
         .def("get_item", &Inventory::getItem, py::arg("index"), R"doc(
-    Returns the ItemStack found in the slot at the given index.
+    Returns the `ItemStack` found in the slot at the given index.
 
     Args:
-        index: The index of the Slot's ItemStack to return.
+        index: The index of the Slot's `ItemStack` to return.
 
     Returns:
-        The ItemStack in the slot.
+        The `ItemStack` in the slot.
 )doc")
         .def("set_item", &Inventory::setItem, py::arg("index"), py::arg("item"), R"doc(
-    Stores the ItemStack at the given index of the inventory.
+    Stores the `ItemStack` at the given index of the inventory.
 
     Args:
-        index: The index where to put the ItemStack.
-        item: The ItemStack to set.
+        index: The index where to put the `ItemStack`.
+        item: The `ItemStack` to set.
 )doc")
         .def(
             "add_item",
@@ -334,14 +334,14 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
                 return self.addItem(std::move(items));
             },
             R"doc(
-    Stores the given ItemStacks in the inventory.
+    Stores the given `ItemStack` objects in the inventory.
 
     Note:
         This will try to fill existing stacks and empty slots as well as it can.
 
     Note:
         The returned map contains what it couldn't store, where the key is the index, and the value is the
-        ItemStack. If all items are stored, it will return an empty dict.
+        `ItemStack`. If all items are stored, it will return an empty dict.
 
     Returns:
         A map containing items that couldn't be added.
@@ -357,132 +357,132 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
                 return self.removeItem(std::move(items));
             },
             R"doc(
-    Removes the given ItemStacks from the inventory.
+    Removes the given `ItemStack` objects from the inventory.
 
     Note:
         It will try to remove 'as much as possible' from the types and amounts you give as arguments.
 
     Note:
         The returned map contains what it couldn't remove, where the key is the index, and the value is the
-        ItemStack. If all the given ItemStacks are removed, it will return an empty dict.
+        `ItemStack`. If all the given `ItemStack` objects are removed, it will return an empty dict.
 
     Returns:
         A map containing items that couldn't be removed.
 )doc")
         .def_property("contents", &Inventory::getContents, &Inventory::setContents,
-                      "All ItemStacks from the inventory. Empty slots are represented as None.")
+                      "All `ItemStack` objects from the inventory. Empty slots are represented as `None`.")
         .def("contains", py::overload_cast<const ItemStack &, int>(&Inventory::contains, py::const_),
              py::arg("item"), py::arg("amount"), R"doc(
-    Checks if the inventory contains at least the minimum amount specified of exactly matching ItemStacks.
+    Checks if the inventory contains at least the minimum amount specified of exactly matching `ItemStack` objects.
 
     Note:
-        An ItemStack only counts if both the type and the amount of the stack match.
+        An `ItemStack` only counts if both the type and the amount of the stack match.
 
     Args:
-        item: The ItemStack to match against.
+        item: The `ItemStack` to match against.
         amount: How many identical stacks to check for.
 
     Returns:
-        True if amount less than 1 or if amount of exactly matching ItemStacks were found, False otherwise.
+        `True` if amount less than 1 or if amount of exactly matching `ItemStack` objects were found, `False` otherwise.
 )doc")
         .def("contains", py::overload_cast<const ItemStack &>(&Inventory::contains, py::const_), py::arg("item"),
              R"doc(
-    Checks if the inventory contains any ItemStacks with the given ItemStack.
+    Checks if the inventory contains any `ItemStack` objects with the given `ItemStack`.
 
     Note:
-        This will only return True if both the type and the amount of the stack match.
+        This will only return `True` if both the type and the amount of the stack match.
 
     Args:
-        item: The ItemStack to match against.
+        item: The `ItemStack` to match against.
 
     Returns:
-        True if any exactly matching ItemStacks were found, False otherwise.
+        `True` if any exactly matching `ItemStack` objects were found, `False` otherwise.
 )doc")
         .def("contains", py::overload_cast<ItemTypeId>(&Inventory::contains, py::const_), py::arg("type"),
              R"doc(
-    Checks if the inventory contains any ItemStacks with the given ItemType.
+    Checks if the inventory contains any `ItemStack` objects with the given `ItemType`.
 
     Args:
         type: The item type to check for.
 
     Returns:
-        True if an ItemStack is found with the given ItemType.
+        `True` if an `ItemStack` is found with the given `ItemType`.
 )doc")
         .def("contains_at_least", py::overload_cast<const ItemStack &, int>(&Inventory::containsAtLeast, py::const_),
              py::arg("item"), py::arg("amount"), R"doc(
-    Checks if the inventory contains ItemStacks matching the given ItemStack whose amounts sum to at least the
+    Checks if the inventory contains `ItemStack` objects matching the given `ItemStack` whose amounts sum to at least the
     minimum amount specified.
 
     Args:
-        item: The ItemStack to match against.
+        item: The `ItemStack` to match against.
         amount: The minimum amount.
 
     Returns:
-        True if amount less than 1 or enough ItemStacks were found to add to the given amount, False otherwise.
+        `True` if amount less than 1 or enough `ItemStack` objects were found to add to the given amount, `False` otherwise.
 )doc")
         .def("contains_at_least", py::overload_cast<ItemTypeId, int>(&Inventory::containsAtLeast, py::const_),
              py::arg("type"), py::arg("amount"), R"doc(
-    Checks if the inventory contains any ItemStacks with the given ItemType, adding to at least the minimum
+    Checks if the inventory contains any `ItemStack` objects with the given `ItemType`, adding to at least the minimum
     amount specified.
 
     Args:
-        type: The ItemType to check for.
+        type: The `ItemType` to check for.
         amount: The minimum amount.
 
     Returns:
-        True if amount is less than 1, True if enough ItemStacks were found to add to the given amount.
+        `True` if amount is less than 1, `True` if enough `ItemStack` objects were found to add to the given amount.
 )doc")
         .def("all", py::overload_cast<const ItemStack &>(&Inventory::all, py::const_), py::arg("item"), R"doc(
-    Finds all slots in the inventory containing any ItemStacks with the given ItemStack.
+    Finds all slots in the inventory containing any `ItemStack` objects with the given `ItemStack`.
 
     Note:
         This will only match slots if both the type and the amount of the stack match.
 
-    The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot.
-    If no matching ItemStack is found, an empty map is returned.
+    The returned map contains entries where, the key is the slot index, and the value is the `ItemStack` in that slot.
+    If no matching `ItemStack` is found, an empty map is returned.
 
     Args:
-        item: The ItemStack to match against.
+        item: The `ItemStack` to match against.
 
     Returns:
         A map from slot indexes to item at index.
 )doc")
         .def("all", py::overload_cast<ItemTypeId>(&Inventory::all, py::const_), py::arg("type"), R"doc(
-    Finds all slots in the inventory containing any ItemStacks with the given ItemType.
+    Finds all slots in the inventory containing any `ItemStack` objects with the given `ItemType`.
 
-    The returned map contains entries where, the key is the slot index, and the value is the ItemStack in that slot.
-    If no matching ItemStack is found, an empty map is returned.
+    The returned map contains entries where, the key is the slot index, and the value is the `ItemStack` in that slot.
+    If no matching `ItemStack` is found, an empty map is returned.
 
     Args:
-        type: The ItemType to match against.
+        type: The `ItemType` to match against.
 
     Returns:
         A map from slot indexes to item at index.
 )doc")
         .def("first", py::overload_cast<const ItemStack &>(&Inventory::first, py::const_), py::arg("item"), R"doc(
-    Returns the first slot in the inventory containing an ItemStack with the given stack.
+    Returns the first slot in the inventory containing an `ItemStack` with the given stack.
 
     Args:
-        item: The ItemStack to match against.
+        item: The `ItemStack` to match against.
 
     Returns:
-        The slot index of the given ItemStack or -1 if not found.
+        The slot index of the given `ItemStack` or -1 if not found.
 )doc")
         .def("first", py::overload_cast<ItemTypeId>(&Inventory::first, py::const_), py::arg("type"), R"doc(
-    Finds the first slot in the inventory containing an ItemStack with the given ItemType.
+    Finds the first slot in the inventory containing an `ItemStack` with the given `ItemType`.
 
     Args:
-        type: The ItemType to look for.
+        type: The `ItemType` to look for.
 
     Returns:
-        The slot index of the given ItemType or -1 if not found.
+        The slot index of the given `ItemType` or -1 if not found.
 )doc")
         .def_property_readonly("first_empty", &Inventory::firstEmpty,
                                "The first empty Slot found, or -1 if no empty slots.")
         .def_property_readonly("is_empty", &Inventory::isEmpty, R"doc(
     Whether this inventory is empty.
 
-    An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.
+    An inventory is considered to be empty if there are no `ItemStack` objects in any slot of this inventory.
 )doc")
         .def("remove", py::overload_cast<const ItemStack &>(&Inventory::remove), py::arg("item"), R"doc(
     Removes all stacks in the inventory matching the given stack.
@@ -491,13 +491,13 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         This will only match a slot if both the type and the amount of the stack match.
 
     Args:
-        item: The ItemStack to match against.
+        item: The `ItemStack` to match against.
 )doc")
         .def("remove", py::overload_cast<ItemTypeId>(&Inventory::remove), py::arg("type"), R"doc(
-    Removes all stacks in the inventory matching the given ItemType.
+    Removes all stacks in the inventory matching the given `ItemType`.
 
     Args:
-        type: The ItemType to remove.
+        type: The `ItemType` to remove.
 )doc")
         .def("clear", py::overload_cast<int>(&Inventory::clear), py::arg("index"), R"doc(
     Clears out a particular slot in the index.
@@ -505,7 +505,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
     Args:
         index: The index to empty.
 )doc")
-        .def("clear", py::overload_cast<>(&Inventory::clear), "Clears out the whole Inventory.")
+        .def("clear", py::overload_cast<>(&Inventory::clear), "Clears out the whole `Inventory`.")
         .def("__len__", &Inventory::getSize, "Returns the size of the inventory.")
         .def("__getitem__", &Inventory::getItem, py::arg("index"),
              "Returns the ItemStack found in the slot at the given index.")
@@ -520,13 +520,13 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         m, "PlayerInventory",
         "Interface to the inventory of a Player, including the four armor slots and any extra slots.")
         .def_property("helmet", &PlayerInventory::getHelmet, &PlayerInventory::setHelmet,
-                      "The ItemStack in the helmet slot.")
+                      "The `ItemStack` in the helmet slot.")
         .def_property("chestplate", &PlayerInventory::getChestplate, &PlayerInventory::setChestplate,
-                      "The ItemStack in the chestplate slot.")
+                      "The `ItemStack` in the chestplate slot.")
         .def_property("leggings", &PlayerInventory::getLeggings, &PlayerInventory::setLeggings,
-                      "The ItemStack in the leg slot.")
+                      "The `ItemStack` in the leg slot.")
         .def_property("boots", &PlayerInventory::getBoots, &PlayerInventory::setBoots,
-                      "The ItemStack in the boots slot.")
+                      "The `ItemStack` in the boots slot.")
         .def_property("item_in_main_hand", &PlayerInventory::getItemInMainHand, &PlayerInventory::setItemInMainHand,
                       "The item the player is currently holding in their main hand.")
         .def_property("item_in_off_hand", &PlayerInventory::getItemInOffHand, &PlayerInventory::setItemInOffHand,

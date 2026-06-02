@@ -24,19 +24,19 @@ class Task:
     @property
     def owner(self) -> Plugin:
         """
-        The Plugin that owns this task.
+        The `Plugin` that owns this task.
         """
         ...
     @property
     def is_sync(self) -> bool:
         """
-        True if the task is run by the server thread.
+        `True` if the task is run by the server thread.
         """
         ...
     @property
     def is_cancelled(self) -> bool:
         """
-        True if this task has been cancelled.
+        `True` if this task has been cancelled.
         """
         ...
     def cancel(self) -> None:
@@ -63,7 +63,7 @@ class Scheduler:
             period: The ticks to wait between runs.
 
         Returns:
-            A Task that contains the id number (None if task is empty).
+            A `Task` that contains the id number (`None` if task is empty).
         """
         ...
     def cancel_task(self, id: int) -> None:
@@ -90,7 +90,7 @@ class Scheduler:
             id: The id of the task to check.
 
         Returns:
-            True if the task is currently running.
+            `True` if the task is currently running.
         """
         ...
     def is_queued(self, id: int) -> bool:
@@ -101,7 +101,7 @@ class Scheduler:
             id: The id of the task to check.
 
         Returns:
-            True if the task is queued to be run.
+            `True` if the task is queued to be run.
         """
         ...
     def get_pending_tasks(self) -> list[Task]:

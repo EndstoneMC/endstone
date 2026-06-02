@@ -51,7 +51,7 @@ class Level:
             id: The id of the dimension to retrieve.
 
         Returns:
-            The Dimension with the given id, or None if none exists.
+            The `Dimension` with the given id, or `None` if none exists.
         """
         ...
     @property
@@ -63,7 +63,7 @@ class Level:
 
 class Dimension:
     """
-    Represents a dimension within a Level.
+    Represents a dimension within a `Level`.
     """
 
     OVERWORLD: Identifier[Dimension] = "minecraft:overworld"
@@ -90,19 +90,19 @@ class Dimension:
     @typing.overload
     def get_block_at(self, location: Location) -> Block:
         """
-        Gets the Block at the given Location.
+        Gets the `Block` at the given `Location`.
 
         Args:
-            location: Location of the block.
+            location: `Location` of the block.
 
         Returns:
-            Block at the given coordinates.
+            `Block` at the given coordinates.
         """
         ...
     @typing.overload
     def get_block_at(self, x: int, y: int, z: int) -> Block:
         """
-        Gets the Block at the given coordinates.
+        Gets the `Block` at the given coordinates.
 
         Args:
             x: X-coordinate of the block.
@@ -110,7 +110,7 @@ class Dimension:
             z: Z-coordinate of the block.
 
         Returns:
-            Block at the given coordinates.
+            `Block` at the given coordinates.
         """
         ...
     def get_highest_block_y_at(self, x: int, z: int) -> int:
@@ -128,7 +128,7 @@ class Dimension:
     @typing.overload
     def get_highest_block_at(self, location: Location) -> Block:
         """
-        Gets the highest non-empty (impassable) block at the given Location.
+        Gets the highest non-empty (impassable) block at the given `Location`.
 
         Args:
             location: Coordinates to get the highest block.
@@ -153,31 +153,31 @@ class Dimension:
     @property
     def loaded_chunks(self) -> list[Chunk]:
         """
-        A list of all loaded Chunks.
+        A list of all loaded `Chunk`s.
         """
         ...
     def drop_item(self, location: Location, item: ItemStack) -> Item:
         """
-        Drops an item at the specified Location.
+        Drops an item at the specified `Location`.
 
         Args:
-            location: Location to drop the item.
-            item: ItemStack to drop.
+            location: `Location` to drop the item.
+            item: `ItemStack` to drop.
 
         Returns:
-            Item entity created as a result of this method.
+            `Item` entity created as a result of this method.
         """
         ...
     def spawn_actor(self, location: Location, type: Identifier[ActorType] | str) -> Actor:
         """
-        Creates an actor at the given Location.
+        Creates an actor at the given `Location`.
 
         Args:
             location: The location to spawn the actor.
             type: The actor type to spawn.
 
         Returns:
-            Resulting Actor of this method.
+            Resulting `Actor` of this method.
         """
         ...
     @property
@@ -197,7 +197,7 @@ class Location:
     @property
     def dimension(self) -> Dimension:
         """
-        The Dimension that contains this position.
+        The `Dimension` that contains this position.
         """
         ...
     @dimension.setter
@@ -269,7 +269,7 @@ class Location:
     @property
     def direction(self) -> Vector:
         """
-        A unit-vector pointing in the direction that this Location is facing.
+        A unit-vector pointing in the direction that this `Location` is facing.
         """
         ...
     @direction.setter
@@ -277,7 +277,7 @@ class Location:
     @property
     def length(self) -> float:
         """
-        The magnitude of the location, defined as ``sqrt(x^2+y^2+z^2)``.
+        The magnitude of the location, defined as `sqrt(x^2+y^2+z^2)`.
 
         Not world-aware and orientation independent.
         """
@@ -333,7 +333,7 @@ class Location:
     @staticmethod
     def normalize_yaw(yaw: float) -> float:
         """
-        Normalizes the given yaw angle to a value between ``+/-180`` degrees.
+        Normalizes the given yaw angle to a value between `+/-180` degrees.
 
         Args:
             yaw: The yaw in degrees.
@@ -345,7 +345,7 @@ class Location:
     @staticmethod
     def normalize_pitch(pitch: float) -> float:
         """
-        Normalizes the given pitch angle to a value between ``+/-90`` degrees.
+        Normalizes the given pitch angle to a value between `+/-90` degrees.
 
         Args:
             pitch: The pitch in degrees.

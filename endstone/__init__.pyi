@@ -156,19 +156,19 @@ class Server:
         ...
     def get_plugin_command(self, name: str) -> PluginCommand:
         """
-        Gets a PluginCommand with the given name or alias.
+        Gets a `PluginCommand` with the given name or alias.
 
         Args:
             name: The name of the command to retrieve.
 
         Returns:
-            A PluginCommand if found, None otherwise.
+            A `PluginCommand` if found, `None` otherwise.
         """
         ...
     @property
     def command_sender(self) -> ConsoleCommandSender:
         """
-        A console CommandSender for this server.
+        A console `CommandSender` for this server.
         """
         ...
     def dispatch_command(self, sender: CommandSender, command_line: str) -> bool:
@@ -180,7 +180,7 @@ class Server:
             command_line: The command + arguments.
 
         Returns:
-            True if execution is successful, False otherwise.
+            `True` if execution is successful, `False` otherwise.
         """
         ...
     @property
@@ -229,7 +229,7 @@ class Server:
             name: Exact name of the player to retrieve.
 
         Returns:
-            A player object if one was found, None otherwise.
+            A player object if one was found, `None` otherwise.
         """
         ...
     @typing.overload
@@ -241,7 +241,7 @@ class Server:
             unique_id: UUID of the player to retrieve.
 
         Returns:
-            A player object if one was found, None otherwise.
+            A player object if one was found, `None` otherwise.
         """
         ...
     @property
@@ -290,7 +290,7 @@ class Server:
         ...
     def broadcast_message(self, message: str | Translatable) -> None:
         """
-        Broadcasts the specified message to every user with permission ``endstone.broadcast.user``.
+        Broadcasts the specified message to every user with permission `endstone.broadcast.user`.
 
         Args:
             message: The message.
@@ -299,26 +299,26 @@ class Server:
     @property
     def item_factory(self) -> ItemFactory:
         """
-        The instance of the item factory (for ItemMeta).
+        The instance of the item factory (for `ItemMeta`).
         """
         ...
     @property
     def scoreboard(self) -> Scoreboard:
         """
-        The primary Scoreboard controlled by the server.
+        The primary `Scoreboard` controlled by the server.
 
-        This Scoreboard is saved by the server, is affected by the ``/scoreboard`` command, and is the
+        This `Scoreboard` is saved by the server, is affected by the `/scoreboard` command, and is the
         scoreboard shown by default to players. This will only exist after the level has been loaded.
         """
         ...
     def create_scoreboard(self) -> Scoreboard:
         """
-        Creates a new Scoreboard to be tracked by the server.
+        Creates a new `Scoreboard` to be tracked by the server.
 
-        This will not be saved by the server and is not affected by the ``/scoreboard`` command.
+        This will not be saved by the server and is not affected by the `/scoreboard` command.
 
         Returns:
-            The newly created Scoreboard.
+            The newly created `Scoreboard`.
         """
         ...
     @property
@@ -385,12 +385,12 @@ class Server:
         block_states: collections.abc.Mapping[str, bool | str | int] | None = None,
     ) -> BlockData:
         """
-        Creates a new BlockData instance for the specified block type, with all properties initialized to defaults,
-        except for those provided in ``block_states``.
+        Creates a new `BlockData` instance for the specified block type, with all properties initialized to defaults,
+        except for those provided in `block_states`.
 
         Args:
             type: The block type.
-            block_states: Block states, for example ``{"old_leaf_type":"birch", "persistent_bit":True}``.
+            block_states: Block states, for example `{"old_leaf_type":"birch", "persistent_bit":True}`.
 
         Returns:
             New data instance.
@@ -416,7 +416,7 @@ class Server:
             id: The id of the map to get.
 
         Returns:
-            A map view if it exists, or None otherwise.
+            A map view if it exists, or `None` otherwise.
         """
         ...
     def create_map(self, dimension: Dimension) -> MapView:
@@ -424,7 +424,7 @@ class Server:
         Create a new map with an automatically assigned ID.
 
         Args:
-            dimension: The Dimension the map will belong to.
+            dimension: The `Dimension` the map will belong to.
 
         Returns:
             A newly created map view.
@@ -442,7 +442,7 @@ class OfflinePlayer:
         The name of this player.
 
         Names are no longer unique past a single game session. For persistent storage it is recommended that
-        you use ``unique_id`` instead. May be an empty string if we have not seen a name for this player yet.
+        you use `unique_id` instead. May be an empty string if we have not seen a name for this player yet.
         """
         ...
     @property
@@ -515,7 +515,7 @@ class Player(Mob):
             command: Command to perform.
 
         Returns:
-            True if the command was successful, False otherwise.
+            `True` if the command was successful, `False` otherwise.
         """
         ...
     @property
@@ -661,7 +661,7 @@ class Player(Mob):
     @property
     def scoreboard(self) -> Scoreboard:
         """
-        The player's visible Scoreboard.
+        The player's visible `Scoreboard`.
         """
         ...
     @scoreboard.setter
@@ -727,7 +727,7 @@ class Player(Mob):
     @property
     def game_mode(self) -> GameMode:
         """
-        The player's current GameMode.
+        The player's current `GameMode`.
         """
         ...
     @game_mode.setter
@@ -741,7 +741,7 @@ class Player(Mob):
     @property
     def ender_chest(self) -> Inventory:
         """
-        The player's EnderChest inventory.
+        The player's `EnderChest` inventory.
         """
         ...
     @property
@@ -857,7 +857,7 @@ class GameMode(enum.Enum):
 
 class Logger:
     """
-    Logger class which can format and output varies levels of logs.
+    `Logger` class which can format and output varies levels of logs.
     """
     class Level(enum.IntEnum):
         """
@@ -879,7 +879,7 @@ class Logger:
     CRITICAL = Level.CRITICAL
     def set_level(self, level: Level) -> None:
         """
-        Set the logging level for this Logger instance.
+        Set the logging level for this `Logger` instance.
 
         Args:
             level: The desired log level.
@@ -887,49 +887,49 @@ class Logger:
         ...
     def is_enabled_for(self, level: Level) -> bool:
         """
-        Check if the Logger instance is enabled for the given log Level.
+        Check if the `Logger` instance is enabled for the given log `Level`.
 
         Args:
             level: The log level to check.
 
         Returns:
-            True if the logger is enabled for the Level, False otherwise.
+            `True` if the logger is enabled for the `Level`, `False` otherwise.
         """
         ...
     def trace(self, message: str) -> None:
         """
-        Log a message at the TRACE level.
+        Log a message at the `TRACE` level.
         """
         ...
     def debug(self, message: str) -> None:
         """
-        Log a message at the DEBUG level.
+        Log a message at the `DEBUG` level.
         """
         ...
     def info(self, message: str) -> None:
         """
-        Log a message at the INFO level.
+        Log a message at the `INFO` level.
         """
         ...
     def warning(self, message: str) -> None:
         """
-        Log a message at the WARNING level.
+        Log a message at the `WARNING` level.
         """
         ...
     def error(self, message: str) -> None:
         """
-        Log a message at the ERROR level.
+        Log a message at the `ERROR` level.
         """
         ...
     def critical(self, message: str) -> None:
         """
-        Log a message at the CRITICAL level.
+        Log a message at the `CRITICAL` level.
         """
         ...
     @property
     def name(self) -> str:
         """
-        The name of this Logger instance.
+        The name of this `Logger` instance.
         """
         ...
 

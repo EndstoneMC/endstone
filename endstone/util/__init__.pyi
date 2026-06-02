@@ -190,12 +190,12 @@ class Vector:
     @property
     def is_zero(self) -> bool:
         """
-        True if each component of this vector is equal to 0.
+        `True` if each component of this vector is equal to 0.
         """
         ...
     def normalize_zero(self) -> Vector:
         """
-        Converts each component of value ``-0.0`` to ``0.0``.
+        Converts each component of value `-0.0` to `0.0`.
         """
         ...
     def is_in_aabb(self, min: Vector, max: Vector) -> bool:
@@ -209,7 +209,7 @@ class Vector:
             max: Maximum vector.
 
         Returns:
-            Whether this vector is in the AABB.
+            Whether this vector is in the `AABB`.
         """
         ...
     def is_in_sphere(self, origin: Vector, radius: float) -> bool:
@@ -227,7 +227,7 @@ class Vector:
     @property
     def is_normalized(self) -> bool:
         """
-        True if this vector is normalized.
+        `True` if this vector is normalized.
         """
         ...
     def rotate_around_x(self, angle: float) -> Vector:
@@ -264,7 +264,7 @@ class Vector:
         Args:
             axis: The axis to rotate the vector around.
             angle: The angle to rotate the vector around the axis.
-            normalize: When True (default), the axis vector is normalized before being used for the rotation, preserving
+            normalize: When `True` (default), the axis vector is normalized before being used for the rotation, preserving
                 the length of this vector.
         """
         ...

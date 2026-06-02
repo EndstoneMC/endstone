@@ -105,8 +105,8 @@ public:
     /**
      * Gets the exact position on the block the player interacted with.
      *
-     * @note This will be std::nullopt outside of Action.RightClickBlock
-     * @note All vector components are between 0.0 and 1.0 inclusive.
+     * @note This will be std::nullopt outside of Action::RightClickBlock
+     * @note All vector components are between `0.0` and `1.0` inclusive.
      *
      * @return the clicked position.
      */

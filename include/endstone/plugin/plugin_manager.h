@@ -208,7 +208,7 @@ public:
     [[nodiscard]] virtual std::vector<Permission *> getDefaultPermissions(PermissionLevel level) const = 0;
 
     /**
-     * Recalculates the defaults for the given {@link Permission}.
+     * Recalculates the defaults for the given Permission.
      *
      * This will have no effect if the specified permission is not registered here.
      *

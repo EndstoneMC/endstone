@@ -43,7 +43,7 @@ void init_lang(py::module_ &m)
     Args:
         text: The text to be translated.
         params: A list of parameters to be used in the translation.
-        locale: The locale identifier for the desired translation (e.g., ``en_US``). Defaults to the current locale.
+        locale: The locale identifier for the desired translation (e.g., `en_US`). Defaults to the current locale.
 
     Returns:
         The translated text in the specified locale, with parameters applied.
@@ -54,11 +54,11 @@ void init_lang(py::module_ &m)
                 return self.translate(translatable, locale.value_or(self.getLocale()));
             },
             py::arg("translatable"), py::arg("locale") = std::nullopt, R"doc(
-    Translates a Translatable object into a specific locale.
+    Translates a `Translatable` object into a specific locale.
 
     Args:
-        translatable: A Translatable object containing text and parameters.
-        locale: The locale identifier for the desired translation (e.g., ``en_US``). Defaults to the current locale.
+        translatable: A `Translatable` object containing text and parameters.
+        locale: The locale identifier for the desired translation (e.g., `en_US`). Defaults to the current locale.
 
     Returns:
         The translated text in the specified locale.

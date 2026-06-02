@@ -82,10 +82,10 @@ void init_map(py::module_ &m)
     py::class_<MapCanvas>(m, "MapCanvas", R"doc(
     Represents a canvas for drawing to a map.
 
-    Each canvas is associated with a specific MapRenderer and represents that
+    Each canvas is associated with a specific `MapRenderer` and represents that
     renderer's layer on the map.
 )doc")
-        .def_property_readonly("map_view", &MapCanvas::getMapView, "The MapView this canvas is attached to.",
+        .def_property_readonly("map_view", &MapCanvas::getMapView, "The `MapView` this canvas is attached to.",
                                py::return_value_policy::reference)
         .def_property("cursors", &MapCanvas::getCursors, &MapCanvas::setCursors,
                       "The cursors associated with this canvas.")
@@ -131,23 +131,23 @@ void init_map(py::module_ &m)
     Args:
         x: The x coordinate of the image.
         y: The y coordinate of the image.
-        image: The Image to draw.
+        image: The `Image` to draw.
 )doc");
 
     py::class_<MapRenderer, PyMapRenderer, py::smart_holder>(m, "MapRenderer", "Represents a renderer for a map.")
         .def(py::init<bool>(), py::arg("is_contextual") = false,
              "Initialize the map renderer base with the given contextual status.")
         .def("initialize", &MapRenderer::initialize, py::arg("view"), R"doc(
-    Initialize this MapRenderer for the given map.
+    Initialize this `MapRenderer` for the given map.
 
     Args:
-        view: The MapView being initialized.
+        view: The `MapView` being initialized.
 )doc")
         .def("render", &MapRenderer::render, py::arg("view"), py::arg("canvas"), py::arg("player"), R"doc(
     Render to the given map.
 
     Args:
-        view: The MapView being rendered to.
+        view: The `MapView` being rendered to.
         canvas: The canvas to use for rendering.
         player: The player who triggered the rendering.
 )doc");
@@ -162,36 +162,36 @@ void init_map(py::module_ &m)
         .export_values()
         .finalize();
 
-    view.def_property_readonly("id", &MapView::getId, "The unique ID of this map item for use with MapMeta.")
+    view.def_property_readonly("id", &MapView::getId, "The unique ID of this map item for use with `MapMeta`.")
         .def_property_readonly("is_virtual", &MapView::isVirtual, R"doc(
     Whether this map is virtual.
 
-    A map is virtual if its lowermost MapRenderer is plugin-provided.
+    A map is virtual if its lowermost `MapRenderer` is plugin-provided.
 )doc")
         .def_property("scale", &MapView::getScale, &MapView::setScale, "The scale of this map.")
         .def_property("center_x", &MapView::getCenterX, &MapView::setCenterX, "The center X position of this map.")
         .def_property("center_z", &MapView::getCenterZ, &MapView::setCenterZ, "The center Z position of this map.")
         .def_property("dimension", &MapView::getDimension, &MapView::setDimension,
                       "The dimension that this map is associated with.", py::return_value_policy::reference)
-        .def_property_readonly("renderers", &MapView::getRenderers, "A list of MapRenderers currently in effect.",
+        .def_property_readonly("renderers", &MapView::getRenderers, "A list of `MapRenderer`s currently in effect.",
                                py::return_value_policy::reference_internal)
         .def("add_renderer", &MapView::addRenderer, py::arg("renderer"), R"doc(
     Add a renderer to this map.
 
     Args:
-        renderer: The MapRenderer to add.
+        renderer: The `MapRenderer` to add.
 )doc")
         .def("remove_renderer", &MapView::removeRenderer, py::arg("renderer"), R"doc(
     Remove a renderer from this map.
 
     Args:
-        renderer: The MapRenderer to remove.
+        renderer: The `MapRenderer` to remove.
 
     Returns:
-        True if the renderer was successfully removed.
+        `True` if the renderer was successfully removed.
 )doc")
         .def_property("is_unlimited_tracking", &MapView::isUnlimitedTracking, &MapView::setUnlimitedTracking, R"doc(
-    Whether the map will show a smaller position cursor (True), or no position cursor (False) when cursor is
+    Whether the map will show a smaller position cursor (`True`), or no position cursor (`False`) when cursor is
     outside of map's range.
 )doc")
         .def_property("locked", &MapView::isLocked, &MapView::setLocked,

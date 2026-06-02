@@ -34,7 +34,7 @@ public:
     /**
      * Returns true if this BlockType has a corresponding ItemType.
      *
-     * @return true if there is a corresponding ItemType, otherwise false
+     * @return `true` if there is a corresponding ItemType, otherwise `false`
      */
     [[nodiscard]] virtual bool hasItemType() const = 0;
 

@@ -70,13 +70,13 @@ class Enchantment:
     @property
     def max_level(self) -> int:
         """
-        The maximum level that this Enchantment may become.
+        The maximum level that this `Enchantment` may become.
         """
         ...
     @property
     def start_level(self) -> int:
         """
-        The level that this Enchantment should start at (also known as minimum level).
+        The level that this `Enchantment` should start at (also known as minimum level).
         """
         ...
     def conflicts_with(self, other: Enchantment) -> bool:
@@ -87,12 +87,12 @@ class Enchantment:
             other: The enchantment to check against.
 
         Returns:
-            True if there is a conflict.
+            `True` if there is a conflict.
         """
         ...
     def can_enchant_item(self, item: ItemStack) -> bool:
         """
-        Checks if this Enchantment may be applied to the given ItemStack.
+        Checks if this `Enchantment` may be applied to the given `ItemStack`.
 
         This does not check if it conflicts with any enchantments already applied to the item.
 
@@ -100,7 +100,7 @@ class Enchantment:
             item: Item to test.
 
         Returns:
-            True if the enchantment may be applied, False otherwise.
+            `True` if the enchantment may be applied, `False` otherwise.
         """
         ...
     @staticmethod
@@ -112,7 +112,7 @@ class Enchantment:
             name: Identifier to look up.
 
         Returns:
-            The Enchantment, or None if not found.
+            The `Enchantment`, or `None` if not found.
         """
         ...
     def __str__(self) -> str: ...

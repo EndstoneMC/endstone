@@ -153,7 +153,7 @@ public:
     /**
      * Check whether this tag holds no elements.
      *
-     * @return true if size() is 0
+     * @return `true` if size() is 0
      */
     [[nodiscard]] bool empty() const noexcept { return size() == 0; }
 
@@ -281,7 +281,7 @@ public:
      * Check whether this tag is a compound containing the given key.
      *
      * @param key the key to look up
-     * @return true if this tag is a compound and contains the key, false otherwise
+     * @return `true` if this tag is a compound and contains the key, `false` otherwise
      */
     [[nodiscard]] bool contains(const std::string &key) const noexcept
     {
@@ -321,7 +321,7 @@ public:
      * An empty tag is promoted to a CompoundTag.
      *
      * @param args the arguments forwarded to construct the key/value entry
-     * @return a pair of an iterator to the entry and a bool that is true if a new entry was inserted
+     * @return a pair of an iterator to the entry and a bool that is `true` if a new entry was inserted
      * @throws std::runtime_error if this tag is not a compound
      */
     template <class... Args>
@@ -426,7 +426,7 @@ public:
      * Serialize this tag to binary NBT with an empty root name.
      *
      * @param byte_order std::endian::little (Bedrock) or std::endian::big (Java).
-     * @param network If true, use Bedrock network varint encoding.
+     * @param network If `true`, use Bedrock network varint encoding.
      * @return Binary NBT data.
      * @see endstone::nbt::dump(), endstone::nbt::load()
      */
@@ -437,7 +437,7 @@ public:
      *
      * @param name The root tag name.
      * @param byte_order std::endian::little (Bedrock) or std::endian::big (Java).
-     * @param network If true, use Bedrock network varint encoding.
+     * @param network If `true`, use Bedrock network varint encoding.
      * @return Binary NBT data.
      */
     [[nodiscard]] std::string dump(const std::string &name, std::endian byte_order = std::endian::little,

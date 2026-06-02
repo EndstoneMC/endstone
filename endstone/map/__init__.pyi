@@ -123,7 +123,7 @@ class MapView:
     @property
     def id(self) -> int:
         """
-        The unique ID of this map item for use with MapMeta.
+        The unique ID of this map item for use with `MapMeta`.
         """
         ...
     @property
@@ -131,7 +131,7 @@ class MapView:
         """
         Whether this map is virtual.
 
-        A map is virtual if its lowermost MapRenderer is plugin-provided.
+        A map is virtual if its lowermost `MapRenderer` is plugin-provided.
         """
         ...
     @property
@@ -169,7 +169,7 @@ class MapView:
     @property
     def renderers(self) -> list[MapRenderer]:
         """
-        A list of MapRenderers currently in effect.
+        A list of `MapRenderer`s currently in effect.
         """
         ...
     def add_renderer(self, renderer: MapRenderer) -> None:
@@ -177,7 +177,7 @@ class MapView:
         Add a renderer to this map.
 
         Args:
-            renderer: The MapRenderer to add.
+            renderer: The `MapRenderer` to add.
         """
         ...
     def remove_renderer(self, renderer: MapRenderer) -> bool:
@@ -185,16 +185,16 @@ class MapView:
         Remove a renderer from this map.
 
         Args:
-            renderer: The MapRenderer to remove.
+            renderer: The `MapRenderer` to remove.
 
         Returns:
-            True if the renderer was successfully removed.
+            `True` if the renderer was successfully removed.
         """
         ...
     @property
     def is_unlimited_tracking(self) -> bool:
         """
-        Whether the map will show a smaller position cursor (True), or no position cursor (False) when cursor is
+        Whether the map will show a smaller position cursor (`True`), or no position cursor (`False`) when cursor is
         outside of map's range.
         """
         ...
@@ -213,13 +213,13 @@ class MapCanvas:
     """
     Represents a canvas for drawing to a map.
 
-    Each canvas is associated with a specific MapRenderer and represents that
+    Each canvas is associated with a specific `MapRenderer` and represents that
     renderer's layer on the map.
     """
     @property
     def map_view(self) -> MapView:
         """
-        The MapView this canvas is attached to.
+        The `MapView` this canvas is attached to.
         """
         ...
     @property
@@ -281,7 +281,7 @@ class MapCanvas:
         Args:
             x: The x coordinate of the image.
             y: The y coordinate of the image.
-            image: The Image to draw.
+            image: The `Image` to draw.
         """
         ...
 
@@ -296,10 +296,10 @@ class MapRenderer:
         ...
     def initialize(self, view: MapView) -> None:
         """
-        Initialize this MapRenderer for the given map.
+        Initialize this `MapRenderer` for the given map.
 
         Args:
-            view: The MapView being initialized.
+            view: The `MapView` being initialized.
         """
         ...
     def render(self, view: MapView, canvas: MapCanvas, player: Player) -> None:
@@ -307,7 +307,7 @@ class MapRenderer:
         Render to the given map.
 
         Args:
-            view: The MapView being rendered to.
+            view: The `MapView` being rendered to.
             canvas: The canvas to use for rendering.
             player: The player who triggered the rendering.
         """

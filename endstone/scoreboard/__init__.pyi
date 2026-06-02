@@ -20,7 +20,7 @@ __all__ = [
 
 class RenderType(enum.Enum):
     """
-    Controls the way in which an Objective is rendered on the client side.
+    Controls the way in which an `Objective` is rendered on the client side.
     """
 
     INTEGER = 0
@@ -46,7 +46,7 @@ class DisplaySlot(enum.Enum):
 
 class ObjectiveSortOrder(enum.Enum):
     """
-    Represents the sort order of objectives on a DisplaySlot.
+    Represents the sort order of objectives on a `DisplaySlot`.
     """
 
     ASCENDING = 0
@@ -70,62 +70,62 @@ class Scoreboard:
         render_type: RenderType = RenderType.INTEGER,
     ) -> Objective:
         """
-        Registers an Objective on this Scoreboard.
+        Registers an `Objective` on this `Scoreboard`.
 
         Args:
-            name: Name of the Objective.
-            criteria: Criteria type for the Objective.
-            display_name: Name displayed to players for the Objective. Defaults to ``name``.
-            render_type: Manner of rendering the Objective.
+            name: Name of the `Objective`.
+            criteria: `Criteria` type for the `Objective`.
+            display_name: Name displayed to players for the `Objective`. Defaults to `name`.
+            render_type: Manner of rendering the `Objective`.
 
         Returns:
-            The newly registered Objective.
+            The newly registered `Objective`.
         """
         ...
     @typing.overload
     def get_objective(self, name: str) -> Objective:
         """
-        Gets an Objective on this Scoreboard by name.
+        Gets an `Objective` on this `Scoreboard` by name.
 
         Args:
-            name: Name of the Objective.
+            name: Name of the `Objective`.
 
         Returns:
-            The Objective, or None if it does not exist.
+            The `Objective`, or `None` if it does not exist.
         """
         ...
     @typing.overload
     def get_objective(self, slot: DisplaySlot) -> Objective:
         """
-        Gets the Objective currently displayed in a DisplaySlot on this Scoreboard.
+        Gets the `Objective` currently displayed in a `DisplaySlot` on this `Scoreboard`.
 
         Args:
-            slot: The DisplaySlot.
+            slot: The `DisplaySlot`.
 
         Returns:
-            The Objective currently displayed, or None if nothing is displayed in that DisplaySlot.
+            The `Objective` currently displayed, or `None` if nothing is displayed in that `DisplaySlot`.
         """
         ...
     @property
     def objectives(self) -> list[Objective]:
         """
-        A list of all Objectives on this Scoreboard.
+        A list of all `Objectives` on this `Scoreboard`.
         """
         ...
     def get_objectives_by_criteria(self, criteria: Criteria.Type) -> list[Objective]:
         """
-        Gets all Objectives of a Criteria on the Scoreboard.
+        Gets all `Objectives` of a `Criteria` on the `Scoreboard`.
 
         Args:
-            criteria: Criteria type to search by.
+            criteria: `Criteria` type to search by.
 
         Returns:
-            A list of Objectives using the specified Criteria.
+            A list of `Objectives` using the specified `Criteria`.
         """
         ...
     def get_scores(self, entry: Player | Actor | str) -> list[Score]:
         """
-        Gets all scores for an entry on this Scoreboard.
+        Gets all scores for an entry on this `Scoreboard`.
 
         Args:
             entry: The entry whose scores are being retrieved.
@@ -136,7 +136,7 @@ class Scoreboard:
         ...
     def reset_scores(self, entry: Player | Actor | str) -> None:
         """
-        Removes all scores for an entry on this Scoreboard.
+        Removes all scores for an entry on this `Scoreboard`.
 
         Args:
             entry: The entry to drop all current scores for.
@@ -145,7 +145,7 @@ class Scoreboard:
     @property
     def entries(self) -> list[Player | Actor | str]:
         """
-        A list of all entries tracked by this Scoreboard.
+        A list of all entries tracked by this `Scoreboard`.
         """
         ...
     def clear_slot(self, slot: DisplaySlot) -> None:
@@ -164,7 +164,7 @@ class Objective:
     @property
     def name(self) -> str:
         """
-        The name of this Objective.
+        The name of this `Objective`.
         """
         ...
     @property
@@ -184,7 +184,7 @@ class Objective:
     @property
     def is_modifiable(self) -> bool:
         """
-        True if the objective's scores can be modified directly by a plugin.
+        `True` if the objective's scores can be modified directly by a plugin.
         """
         ...
     @property
@@ -195,13 +195,13 @@ class Objective:
         ...
     def unregister(self) -> None:
         """
-        Unregisters this objective from the associated Scoreboard.
+        Unregisters this objective from the associated `Scoreboard`.
         """
         ...
     @property
     def is_displayed(self) -> bool:
         """
-        True if the objective is currently displayed in a slot.
+        `True` if the objective is currently displayed in a slot.
         """
         ...
     @property
@@ -239,13 +239,13 @@ class Objective:
         ...
     def get_score(self, entry: Player | Actor | str) -> Score:
         """
-        Gets an entry's Score for this objective.
+        Gets an entry's `Score` for this objective.
 
         Args:
-            entry: Entry for the Score.
+            entry: Entry for the `Score`.
 
         Returns:
-            Score tracking the Objective and entry specified.
+            `Score` tracking the `Objective` and entry specified.
         """
         ...
     def __eq__(self, other: object) -> bool: ...
@@ -275,7 +275,7 @@ class Criteria:
     @property
     def is_read_only(self) -> bool:
         """
-        True if this criteria is read only.
+        `True` if this criteria is read only.
 
         If read only, scoreboards with this criteria cannot have their scores changed.
         """
@@ -283,7 +283,7 @@ class Criteria:
     @property
     def default_render_type(self) -> RenderType:
         """
-        The RenderType used by default for this criteria.
+        The `RenderType` used by default for this criteria.
         """
         ...
 
@@ -294,7 +294,7 @@ class Score:
     @property
     def entry(self) -> Player | Actor | str:
         """
-        The entry being tracked by this Score.
+        The entry being tracked by this `Score`.
         """
         ...
     @property
@@ -308,13 +308,13 @@ class Score:
     @property
     def is_score_set(self) -> bool:
         """
-        True if this score has been set at any point in time.
+        `True` if this score has been set at any point in time.
         """
         ...
     @property
     def objective(self) -> Objective:
         """
-        The Objective being tracked by this Score.
+        The `Objective` being tracked by this `Score`.
         """
         ...
     @property
