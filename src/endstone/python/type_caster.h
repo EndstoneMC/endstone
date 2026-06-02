@@ -383,31 +383,38 @@ public:
     PYBIND11_TYPE_CASTER(endstone::nbt::Tag, const_name("endstone.nbt.Tag"));
 };
 
+// NotNull<T> is not default-constructible, so PYBIND11_TYPE_CASTER (which declares a default-constructed `value`
+// member) cannot be used. Store the validated shared_ptr and materialize a NotNull on demand.
 template <typename T>
 class type_caster<endstone::NotNull<T>> {
-public:
     using value_conv = make_caster<std::shared_ptr<T>>;
+    std::shared_ptr<T> value_;
+
+public:
+    static constexpr auto name = value_conv::name;  // NOLINT(readability-identifier-naming)
+
     bool load(handle src, bool convert)
     {
-        if (!src) {
-            return false;
-        }
-        if (src.is_none()) {
+        if (!src || src.is_none()) {
             return false;
         }
         value_conv caster;
         if (!caster.load(src, convert)) {
             return false;
         }
-        value = cast_op<std::shared_ptr<T>>(std::move(caster));
-        return true;
+        value_ = cast_op<std::shared_ptr<T>>(std::move(caster));
+        return value_ != nullptr;  // reject null: NotNull must hold a value
     }
 
     static handle cast(const endstone::NotNull<T> &src, return_value_policy policy, handle parent)
     {
         return value_conv::cast(src.get(), policy, parent);
     }
-    PYBIND11_TYPE_CASTER(endstone::NotNull<T>, value_conv::name);
+
+    template <typename>
+    using cast_op_type = endstone::NotNull<T>;  // NOLINT(readability-identifier-naming)
+    // NOLINTNEXTLINE(google-explicit-constructor)
+    operator endstone::NotNull<T>() { return endstone::NotNull<T>(value_); }
 };
 
 template <typename T>
