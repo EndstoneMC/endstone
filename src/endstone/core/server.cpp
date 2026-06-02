@@ -439,22 +439,26 @@ void EndstoneServer::setMaxPlayers(int max_players)
     getServer().getMinecraft()->getServerNetworkHandler()->setMaxNumPlayers(max_players);
 }
 
-Player *EndstoneServer::getPlayer(UUID id) const
+Nullable<Player> EndstoneServer::getPlayer(UUID id) const
 {
     if (auto *player = level_->getHandle().getPlayer(EndstoneUUID::toMinecraft(id))) {
-        return &player->getEndstoneActor<EndstonePlayer>();
+        return player->getEndstoneActorPtr<EndstonePlayer>();
     }
     return nullptr;
 }
 
-Player *EndstoneServer::getPlayer(std::string name) const
+Nullable<Player> EndstoneServer::getPlayer(std::string name) const
 {
-    for (const auto &player : getOnlinePlayers()) {
-        if (boost::iequals(player->getName(), name)) {
-            return player;
+    Nullable<Player> result;
+    level_->getHandle().forEachPlayer([&](const ::Player &player) {
+        auto endstone_player = player.getEndstoneActorPtr<EndstonePlayer>();
+        if (boost::iequals(endstone_player->getName(), name)) {
+            result = std::move(endstone_player);
+            return false;  // found a match; stop iterating
         }
-    }
-    return nullptr;
+        return true;
+    });
+    return result;
 }
 
 int EndstoneServer::getPort() const

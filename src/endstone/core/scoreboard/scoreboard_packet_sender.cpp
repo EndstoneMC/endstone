@@ -49,7 +49,7 @@ void ScoreboardPacketSender::sendToServer(::Packet &packet)
 void ScoreboardPacketSender::sendToClient(const UserEntityIdentifierComponent *user_identifider, const ::Packet &packet)
 {
     auto uuid = EndstoneUUID::fromMinecraft(user_identifider->getClientUUID());
-    auto *player = server_.getPlayer(uuid);
+    auto player = server_.getPlayer(uuid);
     if (!player) {
         return;
     }

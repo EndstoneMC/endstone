@@ -474,7 +474,7 @@ void init_server(py::class_<Server> &server)
         .def_property("max_players", &Server::getMaxPlayers, &Server::setMaxPlayers,
                       "The maximum amount of players which can login to this server.")
         .def("get_player", py::overload_cast<std::string>(&Server::getPlayer, py::const_), py::arg("name").noconvert(),
-             py::return_value_policy::reference, R"doc(
+             R"doc(
     Gets the player with the exact given name, case-insensitive.
 
     Args:
@@ -484,7 +484,7 @@ void init_server(py::class_<Server> &server)
         A player object if one was found, `None` otherwise.
 )doc")
         .def("get_player", py::overload_cast<UUID>(&Server::getPlayer, py::const_), py::arg("unique_id").noconvert(),
-             py::return_value_policy::reference, R"doc(
+             R"doc(
     Gets the player with the given UUID.
 
     Args:
