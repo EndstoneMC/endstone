@@ -26,7 +26,7 @@ namespace endstone::python {
 void init_actor(py::module_ &, py_class<Actor> &actor, py_class<Mob> &mob);
 void init_attribute(py::module_ &);
 void init_ban(py::module_ &);
-void init_block(py::module_ &, py::class_<Block> &block);
+void init_block(py::module_ &, py::classh<Block> &block);
 void init_boss(py::module_ &);
 void init_color_format(py::module_ &);
 void init_command(py::module &, py_class<CommandSender> &command_sender);
@@ -38,19 +38,19 @@ void init_form(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_inventory(py::module_ &, py::class_<ItemStack> &item_stack);
 void init_lang(py::module_ &);
-void init_level(py::module_ &, py::class_<Level> &level, py::class_<Dimension> &dimension,
+void init_level(py::module_ &, py::classh<Level> &level, py::classh<Dimension> &dimension,
                 py::class_<Location> &location);
 void init_logger(py::module_ &);
 void init_map(py::module_ &);
 void init_nbt(py::module_ &);
-void init_permissions(py::module_ &, py_class<Permissible> &permissible, py::class_<Permission> &permission);
+void init_permissions(py::module_ &, py_class<Permissible> &permissible, py::classh<Permission> &permission);
 void init_player(py::module_ &, py_class<Player> &player);
 void init_plugin(py::module_ &);
 void init_potion(py::module_ &);
 void init_registry(py::module_ &);
 void init_scheduler(py::module_ &);
 void init_scoreboard(py::module_ &);
-void init_server(py::class_<Server> &server);
+void init_server(py::classh<Server> &server);
 void init_util(py::module_ &, py::class_<Vector> &);
 
 PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
@@ -166,15 +166,15 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto permissible = py_class<Permissible>(
         m_permissions, "Permissible",
         "Represents an object that may become a server operator and can be assigned permissions.");
-    auto permission = py::class_<Permission>(m_permissions, "Permission",
+    auto permission = py::classh<Permission>(m_permissions, "Permission",
                                              "Represents a unique permission that may be attached to a `Permissible`");
-    auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
-    auto block = py::class_<Block>(m_block, "Block", "Represents a block.");
+    auto server = py::classh<Server>(m, "Server", "Represents a server implementation.");
+    auto block = py::classh<Block>(m_block, "Block", "Represents a block.");
     auto command_sender = py_class<CommandSender>(m_command, "CommandSender", "Represents a command sender.");
     auto actor = py_class<Actor>(m_actor, "Actor", "Represents a base actor in the level.");
     auto mob =
         py_class<Mob>(m_actor, "Mob", "Represents a mobile entity (i.e. living entity), such as a monster or player.");
-    py::class_<OfflinePlayer>(m, "OfflinePlayer", R"doc(
+    py::classh<OfflinePlayer>(m, "OfflinePlayer", R"doc(
     Represents a reference to a player identity and the data belonging to a player that is stored on the disk
     and can, thus, be retrieved without the player needing to be online.
 )doc")
@@ -188,8 +188,8 @@ PYBIND11_MODULE(_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto player = py_class<Player>(m, "Player", "Represents a player.");
     auto item_stack = py::class_<ItemStack>(m_inventory, "ItemStack", "Represents a stack of items.");
     auto level =
-        py::class_<Level>(m_level, "Level", "Represents a level, which may contain actors, chunks and blocks.");
-    auto dimension = py::class_<Dimension>(m_level, "Dimension", "Represents a dimension within a `Level`.");
+        py::classh<Level>(m_level, "Level", "Represents a level, which may contain actors, chunks and blocks.");
+    auto dimension = py::classh<Dimension>(m_level, "Dimension", "Represents a dimension within a `Level`.");
     auto vector = py::class_<Vector>(m_util, "Vector", "Represents a 3-dimensional vector.");
     auto location =
         py::class_<Location>(m_level, "Location", "Represents a 3-dimensional location in a dimension within a level.");
@@ -321,7 +321,7 @@ void init_game_mode(py::module_ &m)
 
 void init_logger(py::module &m)
 {
-    auto logger = py::class_<Logger>(m, "Logger", "`Logger` class which can format and output varies levels of logs.");
+    auto logger = py::classh<Logger>(m, "Logger", "`Logger` class which can format and output varies levels of logs.");
 
     py::native_enum<Logger::Level>(logger, "Level", "enum.IntEnum", "Specifies the log level.")
         .value("TRACE", Logger::Level::Trace)
@@ -403,7 +403,7 @@ void init_registry(py::module_ &m)
         .def("__len__", &PyRegistry::size);
 }
 
-void init_server(py::class_<Server> &server)
+void init_server(py::classh<Server> &server)
 {
     server.def_property_readonly("name", &Server::getName, "The name of this server implementation.")
         .def_property_readonly("version", &Server::getVersion, "The version string of this server implementation.")

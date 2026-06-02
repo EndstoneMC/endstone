@@ -77,7 +77,7 @@ void init_map(py::module_ &m)
                       "The visibility status of this cursor.")
         .def_property("caption", &MapCursor::getCaption, &MapCursor::setCaption, "The caption on this cursor.");
 
-    auto view = py::class_<MapView>(m, "MapView", "Represents a map item.");
+    auto view = py::classh<MapView>(m, "MapView", "Represents a map item.");
 
     py::class_<MapCanvas>(m, "MapCanvas", R"doc(
     Represents a canvas for drawing to a map.

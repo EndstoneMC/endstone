@@ -88,7 +88,7 @@ void init_attribute(py::module_ &m)
         .def_property_readonly("operation", &AttributeModifier::getOperation,
                                "The operation this modifier will apply.");
 
-    py::class_<AttributeInstance>(
+    py::classh<AttributeInstance>(
         m, "AttributeInstance",
         "Represents a mutable instance of an attribute and its associated modifiers and values.")
         .def_property_readonly("type", &AttributeInstance::getType, "The attribute type pertaining to this instance.")

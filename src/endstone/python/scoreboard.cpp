@@ -39,7 +39,7 @@ void init_scoreboard(py::module_ &m)
         .finalize();
 
     auto scoreboard = py::class_<Scoreboard, std::shared_ptr<Scoreboard>>(m, "Scoreboard", "Represents a scoreboard.");
-    auto objective = py::class_<Objective>(
+    auto objective = py::classh<Objective>(
         m, "Objective", "Represents an objective on a scoreboard that can show scores specific to entries.");
 
     auto criteria = py::class_<Criteria>(m, "Criteria", "Represents a scoreboard criteria.");
@@ -58,7 +58,7 @@ void init_scoreboard(py::module_ &m)
         .def_property_readonly("default_render_type", &Criteria::getDefaultRenderType,
                                "The `RenderType` used by default for this criteria.");
 
-    py::class_<Score>(m, "Score", "Represents a score for an objective on a scoreboard.")
+    py::classh<Score>(m, "Score", "Represents a score for an objective on a scoreboard.")
         .def_property_readonly("entry", &Score::getEntry, "The entry being tracked by this `Score`.",
                                py::return_value_policy::reference_internal)
         .def_property("value", &Score::getValue, &Score::setValue, "The current score.")

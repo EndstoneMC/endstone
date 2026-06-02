@@ -29,7 +29,7 @@ void init_lang(py::module_ &m)
         .def_property_readonly("text", &Translatable::getText, "The text to be translated.")
         .def_property_readonly("params", &Translatable::getParameters, "The translation parameters.");
 
-    py::class_<Language>(m, "Language", "Represents the interface for translating text into different languages.")
+    py::classh<Language>(m, "Language", "Represents the interface for translating text into different languages.")
         .def(
             "translate",
             [](const Language &self, const std::string &text, const std::optional<std::vector<std::string>> &params,

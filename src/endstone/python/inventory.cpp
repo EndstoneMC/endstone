@@ -67,7 +67,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def(py::self == std::string_view())
         .def(py::self != std::string_view());
 
-    py::class_<ItemMeta>(m, "ItemMeta", "Represents the metadata of a generic item.")
+    py::classh<ItemMeta>(m, "ItemMeta", "Represents the metadata of a generic item.")
         .def("clone", &ItemMeta::clone, R"doc(
     Creates a clone of the current metadata.
 
@@ -133,7 +133,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property("is_unbreakable", &ItemMeta::isUnbreakable, &ItemMeta::setUnbreakable,
                       "The unbreakable tag. An unbreakable item will not lose durability.");
 
-    py::class_<MapMeta, ItemMeta>(m, "MapMeta", "Represents the metadata for a map item.")
+    py::classh<MapMeta, ItemMeta>(m, "MapMeta", "Represents the metadata for a map item.")
         .def_property_readonly("has_map_id", &MapMeta::hasMapId, "Whether this has a map ID number.")
         .def_property("map_id", &MapMeta::getMapId, &MapMeta::setMapId,
                       "The map ID. This is used to determine what map is displayed.")
@@ -141,7 +141,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property("map_view", &MapMeta::getMapView, &MapMeta::setMapView, py::return_value_policy::reference,
                       "The map view associated with this map item.");
 
-    py::class_<WritableBookMeta, ItemMeta>(m, "WritableBookMeta", "Represents the meta for a writable book that can have pages.")
+    py::classh<WritableBookMeta, ItemMeta>(m, "WritableBookMeta", "Represents the meta for a writable book that can have pages.")
         .def_property_readonly("has_pages", &WritableBookMeta::hasPages, "Whether the book has pages.")
         .def("get_page", &WritableBookMeta::getPage, py::arg("page"), R"doc(
     Gets the specified page in the book. The given page must exist.
@@ -198,7 +198,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .value("COPY_OF_COPY", BookMeta::Generation::CopyOfCopy)
         .finalize();
 
-    py::class_<BookMeta, WritableBookMeta>(m, "BookMeta",
+    py::classh<BookMeta, WritableBookMeta>(m, "BookMeta",
                                             "Represents the meta for a written book that can have a title, an author, and pages.")
         .def_property_readonly("has_title", &BookMeta::hasTitle, "Whether the book has a title.")
         .def_property("title", &BookMeta::getTitle, &BookMeta::setTitle, "The title of the book.")
@@ -207,14 +207,14 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def_property_readonly("has_generation", &BookMeta::hasGeneration, "Whether the book has a generation level.")
         .def_property("generation", &BookMeta::getGeneration, &BookMeta::setGeneration, "The generation of the book.");
 
-    py::class_<CrossbowMeta, ItemMeta>(m, "CrossbowMeta",
+    py::classh<CrossbowMeta, ItemMeta>(m, "CrossbowMeta",
                                         "Represents the meta for a crossbow that can have a charged projectile.")
         .def_property_readonly("has_charged_projectile", &CrossbowMeta::hasChargedProjectile,
                                "Whether the crossbow has a charged projectile.")
         .def_property("charged_projectile", &CrossbowMeta::getChargedProjectile, &CrossbowMeta::setChargedProjectile,
                       "The charged projectile, or `None` if none.");
 
-    py::class_<ItemFactory>(m, "ItemFactory", "An interface to the methods used to create item metadata.")
+    py::classh<ItemFactory>(m, "ItemFactory", "An interface to the methods used to create item metadata.")
         .def("get_item_meta", &ItemFactory::getItemMeta, py::arg("type"), R"doc(
     This creates a new item meta for the item type.
 
@@ -303,7 +303,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def(py::self != py::self)
         .def("__str__", [](const ItemStack &self) { return std::format("{}", self); });
 
-    py::class_<Inventory>(m, "Inventory", "Interface to the various inventories.")
+    py::classh<Inventory>(m, "Inventory", "Interface to the various inventories.")
         .def_property_readonly("size", &Inventory::getSize, "The size of the inventory.")
         .def_property_readonly("max_stack_size", &Inventory::getMaxStackSize,
                                "The maximum stack size for an `ItemStack` in this inventory.")
@@ -516,7 +516,7 @@ void init_inventory(py::module_ &m, py::class_<ItemStack> &item_stack)
         .def("__contains__", py::overload_cast<ItemTypeId>(&Inventory::contains, py::const_), py::arg("type"),
              "Checks if the inventory contains any ItemStacks with the given ItemType.");
 
-    py::class_<PlayerInventory, Inventory>(
+    py::classh<PlayerInventory, Inventory>(
         m, "PlayerInventory",
         "Interface to the inventory of a Player, including the four armor slots and any extra slots.")
         .def_property("helmet", &PlayerInventory::getHelmet, &PlayerInventory::setHelmet,

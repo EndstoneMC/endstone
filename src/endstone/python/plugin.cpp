@@ -49,7 +49,7 @@ public:
     }
 };
 
-class PyPluginLoader : public PluginLoader {
+class PyPluginLoader : public PluginLoader, public py::trampoline_self_life_support {
 public:
     using PluginLoader::PluginLoader;
 
@@ -128,7 +128,7 @@ void init_plugin(py::module &m)
         .value("POSTWORLD", PluginLoadOrder::PostWorld)
         .finalize();
 
-    auto plugin_loader = py::class_<PluginLoader, PyPluginLoader>(
+    auto plugin_loader = py::classh<PluginLoader, PyPluginLoader>(
         m, "PluginLoader", "Represents a plugin loader, which handles direct access to specific types of plugins.");
     auto plugin_command = py::class_<PluginCommand, Command, std::shared_ptr<PluginCommand>>(
         m, "PluginCommand", "Represents a Command belonging to a Plugin.");
@@ -255,7 +255,7 @@ void init_plugin(py::module &m)
         .def_property_readonly("server", &PluginLoader::getServer, py::return_value_policy::reference,
                                "The `Server` object associated with the `PluginLoader`.");
 
-    py::class_<PluginManager>(m, "PluginManager",
+    py::classh<PluginManager>(m, "PluginManager",
                               "Represents a plugin manager that handles all plugins from the `Server`.")
         .def("get_plugin", &PluginManager::getPlugin, py::arg("name"), py::return_value_policy::reference, R"doc(
     Checks if the given plugin is loaded and returns it when applicable.
@@ -490,7 +490,7 @@ void init_plugin(py::module &m)
     py::class_<Service, std::shared_ptr<Service>>(m, "Service", "Services represent a list of methods.")
         .def(py::init<>());
 
-    py::class_<ServiceManager>(m, "ServiceManager", R"doc(
+    py::classh<ServiceManager>(m, "ServiceManager", R"doc(
     Represent a service manager that manages services and service providers.
 
     Services are an interface specifying a list of methods that a provider must implement.

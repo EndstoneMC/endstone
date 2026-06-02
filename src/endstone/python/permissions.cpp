@@ -29,7 +29,7 @@ Permission createPermission(std::string name, const std::optional<std::string> &
 }
 }  // namespace
 
-void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::class_<Permission> &permission)
+void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::classh<Permission> &permission)
 {
     permission  //
         .def(py::init(&createPermission), py::arg("name"), py::arg("description") = py::none(),
@@ -75,7 +75,7 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
         value: The value to set this permission to.
 )doc");
 
-    py::class_<PermissionAttachment>(m, "PermissionAttachment",
+    py::classh<PermissionAttachment>(m, "PermissionAttachment",
                                      "Holds information about a permission attachment on a `Permissible` object.")
         .def(py::init<Plugin &, Permissible &>(), py::arg("plugin"), py::arg("permissible"))
         .def_property_readonly("plugin", &PermissionAttachment::getPlugin, py::return_value_policy::reference,
@@ -132,7 +132,7 @@ void init_permissions(py::module_ &m, py_class<Permissible> &permissible, py::cl
                       &PermissionAttachment::setRemovalCallback,
                       "The callback to be called when this attachment is removed. May be empty.");
 
-    py::class_<PermissionAttachmentInfo>(
+    py::classh<PermissionAttachmentInfo>(
         m, "PermissionAttachmentInfo",
         "Holds information on a permission and which `PermissionAttachment` provides it.")
         .def(py::init<Permissible &, std::string, PermissionAttachment *, bool>(), py::arg("permissible"),
