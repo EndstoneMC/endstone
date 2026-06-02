@@ -28,7 +28,7 @@ void init_scheduler(py::module &m)
         .def_property_readonly("is_cancelled", &Task::isCancelled, "`True` if this task has been cancelled.")
         .def("cancel", &Task::cancel, "Attempts to cancel this task.");
 
-    py::class_<Scheduler>(m, "Scheduler", "Represents a scheduler that executes various tasks.")
+    py::classh<Scheduler>(m, "Scheduler", "Represents a scheduler that executes various tasks.")
         .def("run_task", &Scheduler::runTaskTimer, py::arg("plugin"), py::arg("task"), py::arg("delay") = 0,
              py::arg("period") = 0, py::return_value_policy::reference, R"doc(
     Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the

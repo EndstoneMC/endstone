@@ -20,7 +20,7 @@ namespace py = pybind11;
 
 namespace endstone::python {
 
-void init_block(py::module_ &m, py::class_<Block> &block)
+void init_block(py::module_ &m, py::classh<Block> &block)
 {
     py::native_enum<BlockFace>(m, "BlockFace", "enum.Enum")
         .value("DOWN", BlockFace::Down)
@@ -33,7 +33,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
 
     auto block_type = py::class_<BlockType>(m, "BlockType", "Represents a block type.");
 
-    py::class_<BlockData>(m, "BlockData", "Represents the data related to a live block.")
+    py::classh<BlockData>(m, "BlockData", "Represents the data related to a live block.")
         .def_property_readonly("type", &BlockData::getType, py::return_value_policy::reference,
                                "The block type represented by this block data.")
         .def_property_readonly("translation_key", &BlockData::getTranslationKey,
@@ -75,7 +75,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .def(py::self == std::string_view())
         .def(py::self != std::string_view());
 
-    py::class_<BlockState>(m, "BlockState", R"doc(
+    py::classh<BlockState>(m, "BlockState", R"doc(
     Represents a captured state of a block, which will not update automatically.
 
     Unlike `Block`, which only one object can exist per coordinate, `BlockState` can

@@ -24,10 +24,10 @@ Location create_location(Dimension &dimension, float x, float y, float z, float 
 }
 }  // namespace
 
-void init_level(py::module_ &m, py::class_<Level> &level, py::class_<Dimension> &dimension,
+void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> &dimension,
                 py::class_<Location> &location)
 {
-    py::class_<Chunk>(m, "Chunk", "Represents a chunk of blocks.")
+    py::classh<Chunk>(m, "Chunk", "Represents a chunk of blocks.")
         .def_property_readonly("x", &Chunk::getX, "X-coordinate of this chunk.")
         .def_property_readonly("z", &Chunk::getZ, "Z-coordinate of this chunk.")
         .def_property_readonly("level", &Chunk::getLevel, "The level containing this chunk.",

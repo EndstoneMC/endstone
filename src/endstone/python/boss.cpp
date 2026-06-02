@@ -45,7 +45,7 @@ void init_boss(py::module_ &m)
         .value("SEGMENTED_20", BarStyle::Segmented20, "Splits the boss bar into 20 segments.")
         .finalize();
 
-    py::class_<BossBar>(m, "BossBar", "Represents a boss bar that is displayed to players.")
+    py::classh<BossBar>(m, "BossBar", "Represents a boss bar that is displayed to players.")
         .def_property("title", &BossBar::getTitle, &BossBar::setTitle, "The title of this boss bar.")
         .def_property("color", &BossBar::getColor, &BossBar::setColor, "The color of this boss bar.")
         .def_property("style", &BossBar::getStyle, &BossBar::setStyle, "The style of this boss bar.")
