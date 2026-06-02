@@ -3756,12 +3756,24 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1AttributeInstance/"><strong>AttributeInstance</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Mob/#function-getattribute"><strong>getAttribute</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>AttributeId</strong></a> id) = 0<br><em>Gets the specified attribute instance from the object.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::vector&lt; std::unique_ptr&lt; <a href="../classendstone_1_1AttributeInstance/"><strong>AttributeInstance</strong></a> &gt; &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Mob/#function-getattributes"><strong>getAttributes</strong></a> () = 0<br><em>Gets all attribute instances from the object.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Mob/#function-gethealth"><strong>getHealth</strong></a> () const = 0<br><em>Gets the entity's health from 0 to its max possible value, where 0 is dead.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
 <td style="text-align: left;"><a href="../classendstone_1_1Mob/#function-getmaxhealth"><strong>getMaxHealth</strong></a> () const = 0<br><em>Gets the maximum health this entity has.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Mob/#function-hasattribute"><strong>hasAttribute</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>AttributeId</strong></a> id) const = 0<br><em>Checks whether the given attribute is present on the object.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>

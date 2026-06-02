@@ -1745,6 +1745,8 @@
       <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" prot="protected" virt="non-virtual"><scope>endstone::Player</scope><name>FormVariant</name></member>
       <member refid="classendstone_1_1Player_1ae4202aac53995316c87c800d8dc900a6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAddress</name></member>
       <member refid="classendstone_1_1Player_1a981dfc3f6b3fd184569c64904401300f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAllowFlight</name></member>
+      <member refid="classendstone_1_1Mob_1afdff3c5af17582670df6a26bfd2c4c4e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAttribute</name></member>
+      <member refid="classendstone_1_1Mob_1af787b489d14574b8afa4dc8e29adbf65" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAttributes</name></member>
       <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getClassTypeId</name></member>
       <member refid="classendstone_1_1Player_1ab370677b653ca04c9c9bab16703521f8" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getDeviceId</name></member>
       <member refid="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getDeviceOS</name></member>
@@ -1781,6 +1783,7 @@
       <member refid="classendstone_1_1Player_1a47c04697994e74cdac0e8b7c4d6b09c7" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getXuid</name></member>
       <member refid="classendstone_1_1Player_1a1b4b6ce04b9dc31318a3d81144c85692" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>giveExp</name></member>
       <member refid="classendstone_1_1Player_1aed4057a9b18e9a6a6413acf3e6aa0d07" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>giveExpLevels</name></member>
+      <member refid="classendstone_1_1Mob_1a2d038feb9ba603941bb670b61f486192" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>hasAttribute</name></member>
       <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>is</name></member>

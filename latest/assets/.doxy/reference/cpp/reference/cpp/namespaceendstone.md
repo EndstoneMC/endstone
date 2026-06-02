@@ -50,7 +50,7 @@ _Represents a button with text and an optional icon._
 | class | [**ActorType**](classendstone_1_1ActorType.md) <br> |
 | class | [**Attribute**](classendstone_1_1Attribute.md) <br>_All attribute types._  |
 | class | [**AttributeInstance**](classendstone_1_1AttributeInstance.md) <br>_Represents a mutable instance of an attribute and its associated modifiers and values._  |
-| class | [**AttributeModifier**](classendstone_1_1AttributeModifier.md) <br>_Represents an attribute modifier._  |
+| class | [**AttributeModifier**](classendstone_1_1AttributeModifier.md) <br>_Concrete implementation of an attribute modifier._  |
 | class | [**BanEntry**](classendstone_1_1BanEntry.md) <br>_A single entry from a ban list._  |
 | class | [**BanList**](classendstone_1_1BanList.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents a ban list, containing bans._  |
 | class | [**Block**](classendstone_1_1Block.md) <br>_Represents a block._  |
@@ -216,6 +216,7 @@ _Represents a button with text and an optional icon._
 | ---: | :--- |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**ActorType**](classendstone_1_1ActorType.md) &gt; | [**ActorTypeId**](#typedef-actortypeid)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**Attribute**](classendstone_1_1Attribute.md) &gt; | [**AttributeId**](#typedef-attributeid)  <br> |
+| typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**class**](classendstone_1_1Identifier.md) [**AttributeModifier**](classendstone_1_1AttributeModifier.md) &gt; | [**AttributeModifierId**](#typedef-attributemodifierid)  <br> |
 | enum  | [**BarColor**](#enum-barcolor)  <br>_Represents the color of a boss bar._  |
 | enum  | [**BarFlag**](#enum-barflag)  <br>_Represents an optional flag that changes the appearance or behaviour of a boss bar._  |
 | enum  | [**BarStyle**](#enum-barstyle)  <br>_Represents the segment style of a boss bar._  |
@@ -339,6 +340,19 @@ using endstone::ActorTypeId = typedef Identifier<ActorType>;
 
 ```C++
 using endstone::AttributeId = typedef Identifier<class Attribute>;
+```
+
+
+
+
+<hr>
+
+
+
+### typedef AttributeModifierId 
+
+```C++
+using endstone::AttributeModifierId = typedef Identifier<class AttributeModifier>;
 ```
 
 

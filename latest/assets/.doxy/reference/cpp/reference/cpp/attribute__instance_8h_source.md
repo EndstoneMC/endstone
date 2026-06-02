@@ -24,8 +24,10 @@
 
 #pragma once
 
+#include <optional>
 #include <vector>
 
+#include "endstone/attribute/attribute.h"
 #include "endstone/attribute/attribute_modifier.h"
 
 namespace endstone {
@@ -39,13 +41,27 @@ public:
 
     virtual void setBaseValue(float value) = 0;
 
+    [[nodiscard]] virtual float getMinValue() const = 0;
+
+    virtual void setMinValue(float value) = 0;
+
+    [[nodiscard]] virtual float getMaxValue() const = 0;
+
+    virtual void setMaxValue(float value) = 0;
+
     [[nodiscard]] virtual float getValue() const = 0;
 
     [[nodiscard]] virtual std::vector<AttributeModifier> getModifiers() const = 0;
 
+    [[nodiscard]] virtual std::optional<AttributeModifier> getModifier(AttributeModifierId id) const = 0;
+
     virtual void addModifier(const AttributeModifier &modifier) = 0;
 
+    virtual void addTransientModifier(const AttributeModifier &modifier) = 0;
+
     virtual void removeModifier(const AttributeModifier &modifier) = 0;
+
+    virtual void removeModifier(AttributeModifierId id) = 0;
 };
 }  // namespace endstone
 ```

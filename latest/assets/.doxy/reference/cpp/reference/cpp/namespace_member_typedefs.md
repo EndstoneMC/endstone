@@ -7,6 +7,7 @@
 
 * **ActorTypeId** ([**endstone**](namespaceendstone.md))
 * **AttributeId** ([**endstone**](namespaceendstone.md))
+* **AttributeModifierId** ([**endstone**](namespaceendstone.md))
 
 
 ## b

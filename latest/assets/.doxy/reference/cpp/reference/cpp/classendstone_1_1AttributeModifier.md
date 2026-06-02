@@ -8,7 +8,7 @@
 
 
 
-_Represents an attribute modifier._ 
+_Concrete implementation of an attribute modifier._ 
 
 * `#include <endstone/attribute/attribute_modifier.h>`
 
@@ -57,12 +57,10 @@ _Represents an attribute modifier._
 
 | Type | Name |
 | ---: | :--- |
-|   | [**AttributeModifier**](#function-attributemodifier-12) (std::string name, [**float**](classendstone_1_1Identifier.md) amount, [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) operation) <br>_Construct a new attribute modifier with an auto-generated unique id._  |
-|   | [**AttributeModifier**](#function-attributemodifier-22) (std::string name, [**UUID**](classendstone_1_1UUID.md) uuid, [**float**](classendstone_1_1Identifier.md) amount, [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) operation) <br>_Construct a new attribute modifier with the given unique id._  |
-|  [**float**](classendstone_1_1Identifier.md) | [**getAmount**](#function-getamount) () const<br>_Get the amount by which this modifier will apply the operation._  |
-|  std::string | [**getName**](#function-getname) () const<br>_Get the name of this modifier._  |
+|   | [**AttributeModifier**](#function-attributemodifier) ([**AttributeModifierId**](classendstone_1_1Identifier.md) id, [**float**](classendstone_1_1Identifier.md) amount, [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) operation) <br>_Construct a new attribute modifier._  |
+|  [**float**](classendstone_1_1Identifier.md) | [**getAmount**](#function-getamount) () const<br>_Get the amount by which this modifier will apply its operation._  |
+|  [**AttributeModifierId**](classendstone_1_1Identifier.md) | [**getId**](#function-getid) () const<br>_Get the id of this modifier._  |
 |  [**Operation**](classendstone_1_1AttributeModifier.md#enum-operation) | [**getOperation**](#function-getoperation) () const<br>_Get the operation this modifier will apply._  |
-|  [**UUID**](classendstone_1_1UUID.md) | [**getUniqueId**](#function-getuniqueid) () const<br>_Get the unique ID for this modifier._  |
 
 
 
@@ -103,7 +101,8 @@ _Operation to be applied._
 enum endstone::AttributeModifier::Operation {
     Add,
     MultiplyBase,
-    Multiply
+    Multiply,
+    Cap
 };
 ```
 
@@ -116,12 +115,12 @@ enum endstone::AttributeModifier::Operation {
 
 
 
-### function AttributeModifier [1/2]
+### function AttributeModifier 
 
-_Construct a new attribute modifier with an auto-generated unique id._ 
+_Construct a new attribute modifier._ 
 ```C++
 inline endstone::AttributeModifier::AttributeModifier (
-    std::string name,
+    AttributeModifierId id,
     float amount,
     Operation operation
 ) 
@@ -134,40 +133,7 @@ inline endstone::AttributeModifier::AttributeModifier (
 **Parameters:**
 
 
-* `name` the name of the modifier 
-* `amount` the amount by which the modifier applies its operation 
-* `operation` the operation to apply 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function AttributeModifier [2/2]
-
-_Construct a new attribute modifier with the given unique id._ 
-```C++
-inline endstone::AttributeModifier::AttributeModifier (
-    std::string name,
-    UUID uuid,
-    float amount,
-    Operation operation
-) 
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `name` the name of the modifier 
-* `uuid` the unique id of the modifier 
+* `id` the id of the modifier 
 * `amount` the amount by which the modifier applies its operation 
 * `operation` the operation to apply 
 
@@ -182,7 +148,7 @@ inline endstone::AttributeModifier::AttributeModifier (
 
 ### function getAmount 
 
-_Get the amount by which this modifier will apply the operation._ 
+_Get the amount by which this modifier will apply its operation._ 
 ```C++
 inline float endstone::AttributeModifier::getAmount () const
 ```
@@ -205,11 +171,11 @@ modification amount
 
 
 
-### function getName 
+### function getId 
 
-_Get the name of this modifier._ 
+_Get the id of this modifier._ 
 ```C++
-inline std::string endstone::AttributeModifier::getName () const
+inline AttributeModifierId endstone::AttributeModifier::getId () const
 ```
 
 
@@ -218,7 +184,7 @@ inline std::string endstone::AttributeModifier::getName () const
 
 **Returns:**
 
-name 
+id 
 
 
 
@@ -244,31 +210,6 @@ inline Operation endstone::AttributeModifier::getOperation () const
 **Returns:**
 
 operation 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getUniqueId 
-
-_Get the unique ID for this modifier._ 
-```C++
-inline UUID endstone::AttributeModifier::getUniqueId () const
-```
-
-
-
-
-
-**Returns:**
-
-unique id 
 
 
 

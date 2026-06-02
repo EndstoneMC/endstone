@@ -5310,6 +5310,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Added <code>/restart</code> command (console-only) that gracefully restarts the server without manually relaunching.</li>
 <li>Added support for custom Python events with optional cancellation.</li>
 <li>Added <code>ActorType</code> to the registry API.</li>
+<li>Added an attribute API: <code>Mob.get_attribute()</code>, <code>Mob.has_attribute()</code>, and <code>Mob.attributes</code> expose a living entity's attributes (health, movement speed, attack damage, etc.). Each <code>AttributeInstance</code> reports its current, base, minimum, and maximum value, and lets you add or remove <code>AttributeModifier</code>s at runtime.</li>
 <li>Added the <code>endstone.Identifier</code> type for namespaced ids: <code>dim.id.namespace == "minecraft"</code>, <code>dim.id.key == "overworld"</code>, and type checkers can now tell <code>Identifier[Dimension]</code> apart from <code>Identifier[ActorType]</code>. Plain strings are still accepted where an <code>Identifier</code> is required (e.g. <code>level.get_dimension("overworld")</code>).</li>
 <li>Added <code>BlockData.translation_key</code> for retrieving the translation key of a block.</li>
 <li>Added <code>WritableBookMeta</code>, <code>BookMeta</code>, and <code>CrossbowMeta</code> item meta types.</li>

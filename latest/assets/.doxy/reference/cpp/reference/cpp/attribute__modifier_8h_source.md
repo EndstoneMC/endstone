@@ -25,38 +25,34 @@
 #pragma once
 
 #include <string>
-#include <utility>
+
+#include "endstone/identifier.h"
 
 namespace endstone {
+using AttributeModifierId = Identifier<class AttributeModifier>;
+
 class AttributeModifier {
 public:
     enum class Operation {
         Add,
         MultiplyBase,
-        Multiply
+        Multiply,
+        Cap
     };
 
-    AttributeModifier(std::string name, float amount, Operation operation)
-        : name_(std::move(name)), amount_(amount), operation_(operation)
+    AttributeModifier(AttributeModifierId id, float amount, Operation operation)
+        : id_(std::string(id)), amount_(amount), operation_(operation)
     {
     }
 
-    AttributeModifier(std::string name, UUID uuid, float amount, Operation operation)
-        : name_(std::move(name)), uuid_(uuid), amount_(amount), operation_(operation)
-    {
-    }
-
-    [[nodiscard]] UUID getUniqueId() const { return uuid_; }
-
-    [[nodiscard]] std::string getName() const { return name_; }
+    [[nodiscard]] AttributeModifierId getId() const { return AttributeModifierId{id_}; }
 
     [[nodiscard]] float getAmount() const { return amount_; }
 
     [[nodiscard]] Operation getOperation() const { return operation_; }
 
 private:
-    std::string name_;
-    UUID uuid_;
+    std::string id_;
     float amount_;
     Operation operation_;
 };

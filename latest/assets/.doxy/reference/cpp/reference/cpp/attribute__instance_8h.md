@@ -10,7 +10,9 @@
 
 
 
+* `#include <optional>`
 * `#include <vector>`
+* `#include "endstone/attribute/attribute.h"`
 * `#include "endstone/attribute/attribute_modifier.h"`
 
 

@@ -134,8 +134,11 @@ Inherited by the following classes: [endstone::Player](classendstone_1_1Player.m
 
 | Type | Name |
 | ---: | :--- |
+| virtual std::unique\_ptr&lt; [**AttributeInstance**](classendstone_1_1AttributeInstance.md) &gt; | [**getAttribute**](#function-getattribute) ([**AttributeId**](classendstone_1_1Identifier.md) id) = 0<br>_Gets the specified attribute instance from the object._  |
+| virtual std::vector&lt; std::unique\_ptr&lt; [**AttributeInstance**](classendstone_1_1AttributeInstance.md) &gt; &gt; | [**getAttributes**](#function-getattributes) () = 0<br>_Gets all attribute instances from the object._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getHealth**](#function-gethealth) () const = 0<br>_Gets the entity's health from 0 to its max possible value, where 0 is dead._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxHealth**](#function-getmaxhealth) () const = 0<br>_Gets the maximum health this entity has._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasAttribute**](#function-hasattribute) ([**AttributeId**](classendstone_1_1Identifier.md) id) const = 0<br>_Checks whether the given attribute is present on the object._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isGliding**](#function-isgliding) () const = 0<br>_Checks to see if an actor is gliding, such as using an Elytra._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setHealth**](#function-sethealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br>_Sets the entity's health from 0 to its possible value, where 0 is dead._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setMaxHealth**](#function-setmaxhealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br>_Sets the maximum health this entity can have._  |
@@ -364,6 +367,54 @@ living entity), such as a monster or player.
 
 
 
+### function getAttribute 
+
+_Gets the specified attribute instance from the object._ 
+```C++
+virtual std::unique_ptr< AttributeInstance > endstone::Mob::getAttribute (
+    AttributeId id
+) = 0
+```
+
+
+
+This instance will be backed directly to the object and any changes will be visible at once.
+
+
+
+
+**Parameters:**
+
+
+* `id` The attribute to get 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getAttributes 
+
+_Gets all attribute instances from the object._ 
+```C++
+virtual std::vector< std::unique_ptr< AttributeInstance > > endstone::Mob::getAttributes () = 0
+```
+
+
+
+This instance will be backed directly to the object and any changes will be visible at once. 
+
+
+        
+
+<hr>
+
+
+
 ### function getHealth 
 
 _Gets the entity's health from 0 to its max possible value, where 0 is dead._ 
@@ -404,6 +455,33 @@ virtual int endstone::Mob::getMaxHealth () const = 0
 
 Maximum health 
 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function hasAttribute 
+
+_Checks whether the given attribute is present on the object._ 
+```C++
+virtual bool endstone::Mob::hasAttribute (
+    AttributeId id
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `id` The attribute to check 
 
 
 

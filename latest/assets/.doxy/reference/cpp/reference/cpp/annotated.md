@@ -18,7 +18,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ActorType**](classendstone_1_1ActorType.md)     
     * **class** [**Attribute**](classendstone_1_1Attribute.md) _All attribute types._     
     * **class** [**AttributeInstance**](classendstone_1_1AttributeInstance.md) _Represents a mutable instance of an attribute and its associated modifiers and values._     
-    * **class** [**AttributeModifier**](classendstone_1_1AttributeModifier.md) _Represents an attribute modifier._     
+    * **class** [**AttributeModifier**](classendstone_1_1AttributeModifier.md) _Concrete implementation of an attribute modifier._     
     * **class** [**BanEntry**](classendstone_1_1BanEntry.md) _A single entry from a ban list._     
     * **class** [**BanList**](classendstone_1_1BanList.md) _Represents a ban list, containing bans._     
     * **class** [**Block**](classendstone_1_1Block.md) _Represents a block._     

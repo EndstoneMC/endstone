@@ -916,6 +916,20 @@
         </inbodydescription>
         <location file="include/endstone/attribute/attribute.h" line="20" column="1" bodyfile="include/endstone/attribute/attribute.h" bodystart="20" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a41bbb2fa08f8ead1e9b082a4fd4ef454" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1AttributeModifier" kindref="compound">AttributeModifier</ref> &gt;</type>
+        <definition>using endstone::AttributeModifierId = typedef Identifier&lt;class AttributeModifier&gt;</definition>
+        <argsstring></argsstring>
+        <name>AttributeModifierId</name>
+        <qualifiedname>endstone::AttributeModifierId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/attribute/attribute_modifier.h" line="22" column="1" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1a688abbe501a61374454a55553d25e08f" prot="public" static="no">
         <type>std::unordered_map&lt; std::string, std::variant&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>, std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt; &gt;</type>
         <definition>using endstone::BlockStates = typedef std::unordered_map&lt;std::string, std::variant&lt;bool, std::string, int&gt; &gt;</definition>

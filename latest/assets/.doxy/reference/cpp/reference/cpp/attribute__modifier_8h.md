@@ -11,7 +11,7 @@
 
 
 * `#include <string>`
-* `#include <utility>`
+* `#include "endstone/identifier.h"`
 
 
 
@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**AttributeModifier**](classendstone_1_1AttributeModifier.md) <br>_Represents an attribute modifier._  |
+| class | [**AttributeModifier**](classendstone_1_1AttributeModifier.md) <br>_Concrete implementation of an attribute modifier._  |
 
 
 

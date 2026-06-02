@@ -24,7 +24,11 @@
 
 #pragma once
 
+#include <memory>
+#include <vector>
+
 #include "endstone/actor/actor.h"
+#include "endstone/attribute/attribute_instance.h"
 
 namespace endstone {
 class Mob : public Actor {
@@ -38,6 +42,12 @@ public:
     [[nodiscard]] virtual int getMaxHealth() const = 0;
 
     virtual void setMaxHealth(int health) const = 0;
+
+    [[nodiscard]] virtual bool hasAttribute(AttributeId id) const = 0;
+
+    [[nodiscard]] virtual std::unique_ptr<AttributeInstance> getAttribute(AttributeId id) = 0;
+
+    [[nodiscard]] virtual std::vector<std::unique_ptr<AttributeInstance>> getAttributes() = 0;
 };
 }  // namespace endstone
 ```

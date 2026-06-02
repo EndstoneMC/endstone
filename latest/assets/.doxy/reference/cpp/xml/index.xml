@@ -309,24 +309,29 @@
     <member refid="classendstone_1_1AttributeInstance_1aa711627cc0ae50ca8e77c79c5acaf90d" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1AttributeInstance_1aec4bae985b1028f0267083cffb79d5a7" kind="function"><name>getBaseValue</name></member>
     <member refid="classendstone_1_1AttributeInstance_1acd02e0d33c2bbe142d65550de035f3a3" kind="function"><name>setBaseValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1a08ffa1345942dc141349743e7c4a23ef" kind="function"><name>getMinValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1aed8de981ed56795ba8a69d2b8e8b998d" kind="function"><name>setMinValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1a972e00db97932fc2967b16f6ce52ea22" kind="function"><name>getMaxValue</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1ac2d5639ad6fbf2807eb8fbdd213e0c5f" kind="function"><name>setMaxValue</name></member>
     <member refid="classendstone_1_1AttributeInstance_1aa8337efa45ce9c7c5ce034fb9b22b52c" kind="function"><name>getValue</name></member>
     <member refid="classendstone_1_1AttributeInstance_1ae4e8c5dbda550816b24c08fd0a216edf" kind="function"><name>getModifiers</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1ab6f32770bd3f41a24d24dddfc1b24513" kind="function"><name>getModifier</name></member>
     <member refid="classendstone_1_1AttributeInstance_1aa1ede5a54c73d13f0b7c5b564cc037bf" kind="function"><name>addModifier</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1a4bf17780e8dfa10a25357b3efd446256" kind="function"><name>addTransientModifier</name></member>
     <member refid="classendstone_1_1AttributeInstance_1a7dfee14fcbe2ecc529574f9b6176c4a1" kind="function"><name>removeModifier</name></member>
+    <member refid="classendstone_1_1AttributeInstance_1ab5d588a02725706aa06aa2f46808381c" kind="function"><name>removeModifier</name></member>
   </compound>
   <compound refid="classendstone_1_1AttributeModifier" kind="class"><name>endstone::AttributeModifier</name>
     <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170" kind="enum"><name>Operation</name></member>
     <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170aec211f7c20af43e742bf2570c3cb84f9" kind="enumvalue"><name>Add</name></member>
     <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170aa628faa951168de439b8cec76f62b73b" kind="enumvalue"><name>MultiplyBase</name></member>
     <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170ae257376d913f3b53cbb4a9b19d770648" kind="enumvalue"><name>Multiply</name></member>
-    <member refid="classendstone_1_1AttributeModifier_1a418ee3df70b3aa734b3aaaa94a4ab6ff" kind="variable"><name>name_</name></member>
-    <member refid="classendstone_1_1AttributeModifier_1a5880929fc276e39a791a721e86bcad31" kind="variable"><name>uuid_</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1abd3c67841a00cb00230ef52c06d10170a88d53497f4a92958c67c73a9f2f52df3" kind="enumvalue"><name>Cap</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1af7d11b6dd7bfa23b55043b842e8b094b" kind="variable"><name>id_</name></member>
     <member refid="classendstone_1_1AttributeModifier_1af426b1b9feca243b95fbbfd48e2b0c38" kind="variable"><name>amount_</name></member>
     <member refid="classendstone_1_1AttributeModifier_1a0a377d2a916ff12ebc4aa1f1946eb3e3" kind="variable"><name>operation_</name></member>
-    <member refid="classendstone_1_1AttributeModifier_1ae8d729ea4343d6e5c4c21beaae9df562" kind="function"><name>AttributeModifier</name></member>
-    <member refid="classendstone_1_1AttributeModifier_1a68268eea7481e9f421c98071ce7c6f9e" kind="function"><name>AttributeModifier</name></member>
-    <member refid="classendstone_1_1AttributeModifier_1a66328bc61adfc27c551f3454aef023e3" kind="function"><name>getUniqueId</name></member>
-    <member refid="classendstone_1_1AttributeModifier_1ae1aadfb08a50d17d93502dac5cbe3b13" kind="function"><name>getName</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1ac82c41a9a1cb45e6cc391c4396431f58" kind="function"><name>AttributeModifier</name></member>
+    <member refid="classendstone_1_1AttributeModifier_1a2c0796e64738866257abb3a008f3df83" kind="function"><name>getId</name></member>
     <member refid="classendstone_1_1AttributeModifier_1a64fd4cca69b16a3a740e0ee4aec93bb3" kind="function"><name>getAmount</name></member>
     <member refid="classendstone_1_1AttributeModifier_1a710ed8941c3fc3afd04d3babe85bf0bb" kind="function"><name>getOperation</name></member>
   </compound>
@@ -1535,6 +1540,9 @@
     <member refid="classendstone_1_1Mob_1addd7c205b763c7a9a6b1bf8ec1c811fd" kind="function"><name>setHealth</name></member>
     <member refid="classendstone_1_1Mob_1a4efbe682a6adc265c113e1ef77b752fb" kind="function"><name>getMaxHealth</name></member>
     <member refid="classendstone_1_1Mob_1ae54b4e6eb8b5509bec9c330dfc5b46be" kind="function"><name>setMaxHealth</name></member>
+    <member refid="classendstone_1_1Mob_1a2d038feb9ba603941bb670b61f486192" kind="function"><name>hasAttribute</name></member>
+    <member refid="classendstone_1_1Mob_1afdff3c5af17582670df6a26bfd2c4c4e" kind="function"><name>getAttribute</name></member>
+    <member refid="classendstone_1_1Mob_1af787b489d14574b8afa4dc8e29adbf65" kind="function"><name>getAttributes</name></member>
   </compound>
   <compound refid="classendstone_1_1ModalForm" kind="class"><name>endstone::ModalForm</name>
     <member refid="classendstone_1_1ModalForm_1a8e10f5a1239c36f705b0a61711efa6ef" kind="typedef"><name>Control</name></member>
@@ -2752,6 +2760,7 @@
     <member refid="namespaceendstone_1ae444241ed516d06f778078ee798db9e9a6af4bf214d6cf054f9528da5b6054817" kind="enumvalue"><name>Hearts</name></member>
     <member refid="namespaceendstone_1a94ee63841c0963c0a0676b0783e03486" kind="typedef"><name>ActorTypeId</name></member>
     <member refid="namespaceendstone_1ac2d399872c391e7ce2ec1896ba62e669" kind="typedef"><name>AttributeId</name></member>
+    <member refid="namespaceendstone_1a41bbb2fa08f8ead1e9b082a4fd4ef454" kind="typedef"><name>AttributeModifierId</name></member>
     <member refid="namespaceendstone_1a688abbe501a61374454a55553d25e08f" kind="typedef"><name>BlockStates</name></member>
     <member refid="namespaceendstone_1a42f3cb333492510ff60b8097153fa66a" kind="typedef"><name>BlockTypeId</name></member>
     <member refid="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" kind="typedef"><name>EffectId</name></member>

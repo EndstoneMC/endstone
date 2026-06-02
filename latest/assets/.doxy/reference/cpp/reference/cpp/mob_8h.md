@@ -10,7 +10,10 @@
 
 
 
+* `#include <memory>`
+* `#include <vector>`
 * `#include "endstone/actor/actor.h"`
+* `#include "endstone/attribute/attribute_instance.h"`
 
 
 
