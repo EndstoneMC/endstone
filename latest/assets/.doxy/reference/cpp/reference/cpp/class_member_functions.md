@@ -376,6 +376,7 @@
 * **getJoinMessage** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
 * **getKickMessage** ([**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md))
 * **getQuitMessage** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))
+* **getRespawnReason** ([**endstone::PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md))
 * **getNewSkin** ([**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md))
 * **getSkinChangeMessage** ([**endstone::PlayerSkinChangeEvent**](classendstone_1_1PlayerSkinChangeEvent.md))
 * **getDataFolder** ([**endstone::Plugin**](classendstone_1_1Plugin.md))

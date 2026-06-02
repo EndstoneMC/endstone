@@ -29,6 +29,11 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 
 
+## Public Types
+
+| Type | Name |
+| ---: | :--- |
+| enum  | [**RespawnReason**](#enum-respawnreason)  <br>_An enum to specify the reason a respawn occurred._  |
 
 
 
@@ -94,7 +99,8 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 | Type | Name |
 | ---: | :--- |
 |   | [**ENDSTONE\_EVENT**](#function-endstone_event) ([**PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md)) <br> |
-|   | [**PlayerRespawnEvent**](#function-playerrespawnevent) ([**Player**](classendstone_1_1Player.md) & player) <br> |
+|   | [**PlayerRespawnEvent**](#function-playerrespawnevent) ([**Player**](classendstone_1_1Player.md) & player, [**RespawnReason**](classendstone_1_1PlayerRespawnEvent.md#enum-respawnreason) reason) <br> |
+|  [**RespawnReason**](classendstone_1_1PlayerRespawnEvent.md#enum-respawnreason) | [**getRespawnReason**](#function-getrespawnreason) () const<br>_Gets the reason this respawn occurred._  |
 |   | [**~PlayerRespawnEvent**](#function-playerrespawnevent) () override<br> |
 
 
@@ -210,6 +216,25 @@ See [endstone::PlayerEvent](classendstone_1_1PlayerEvent.md)
 
 
 
+## Public Types Documentation
+
+
+
+
+### enum RespawnReason 
+
+_An enum to specify the reason a respawn occurred._ 
+```C++
+enum endstone::PlayerRespawnEvent::RespawnReason {
+    Death,
+    EndPortal
+};
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
 
@@ -233,13 +258,39 @@ endstone::PlayerRespawnEvent::ENDSTONE_EVENT (
 ### function PlayerRespawnEvent 
 
 ```C++
-inline explicit endstone::PlayerRespawnEvent::PlayerRespawnEvent (
-    Player & player
+inline endstone::PlayerRespawnEvent::PlayerRespawnEvent (
+    Player & player,
+    RespawnReason reason
 ) 
 ```
 
 
 
+
+<hr>
+
+
+
+### function getRespawnReason 
+
+_Gets the reason this respawn occurred._ 
+```C++
+inline RespawnReason endstone::PlayerRespawnEvent::getRespawnReason () const
+```
+
+
+
+
+
+**Returns:**
+
+the reason the respawn occurred. 
+
+
+
+
+
+        
 
 <hr>
 

@@ -24,6 +24,11 @@
 * **Operation** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md))
 
 
+## r
+
+* **RespawnReason** ([**endstone::PlayerRespawnEvent**](classendstone_1_1PlayerRespawnEvent.md))
+
+
 ## s
 
 * **Scale** ([**endstone::MapView**](classendstone_1_1MapView.md))

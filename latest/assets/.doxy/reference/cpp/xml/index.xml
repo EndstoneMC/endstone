@@ -2005,9 +2005,14 @@
     <member refid="classendstone_1_1PlayerQuitEvent_1a33ac4f643cbabfbaec170ba5ef88551a" kind="function"><name>setQuitMessage</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerRespawnEvent" kind="class"><name>endstone::PlayerRespawnEvent</name>
+    <member refid="classendstone_1_1PlayerRespawnEvent_1aa0664aac960e4ad3aae6a8f048510afa" kind="enum"><name>RespawnReason</name></member>
+    <member refid="classendstone_1_1PlayerRespawnEvent_1aa0664aac960e4ad3aae6a8f048510afaa6097f89e3092d4ccd249c9d479785c1f" kind="enumvalue"><name>Death</name></member>
+    <member refid="classendstone_1_1PlayerRespawnEvent_1aa0664aac960e4ad3aae6a8f048510afaa062e93e3280a8b546122cb569f437f07" kind="enumvalue"><name>EndPortal</name></member>
+    <member refid="classendstone_1_1PlayerRespawnEvent_1a290bf37d4ba36157f3da2694493821bf" kind="variable"><name>reason_</name></member>
     <member refid="classendstone_1_1PlayerRespawnEvent_1af12128ed120eac17e1edea474ab96d92" kind="function"><name>ENDSTONE_EVENT</name></member>
-    <member refid="classendstone_1_1PlayerRespawnEvent_1abb6a9abde0432b56b4ce24b1ebfdbcbb" kind="function"><name>PlayerRespawnEvent</name></member>
+    <member refid="classendstone_1_1PlayerRespawnEvent_1a5e02769c3ce64a5277d1ce1778239ed2" kind="function"><name>PlayerRespawnEvent</name></member>
     <member refid="classendstone_1_1PlayerRespawnEvent_1a6d85e0d878c46548c97daab6e89bad91" kind="function"><name>~PlayerRespawnEvent</name></member>
+    <member refid="classendstone_1_1PlayerRespawnEvent_1a06c6d2fad9c2925ddab52de6a6af0b21" kind="function"><name>getRespawnReason</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerSkinChangeEvent" kind="class"><name>endstone::PlayerSkinChangeEvent</name>
     <member refid="classendstone_1_1PlayerSkinChangeEvent_1a57dfa1e3c9e9fe052d06911c8665dae2" kind="variable"><name>new_skin_</name></member>

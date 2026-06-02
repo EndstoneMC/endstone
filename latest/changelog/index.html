@@ -5320,6 +5320,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Added <code>PUID</code>/<code>PGID</code> environment variables to the Docker image to keep server files owned by your host user.</li>
 <li>Added a <code>docker-compose.yml</code> for running the server with Docker Compose.</li>
 <li>Added graceful shutdown on Linux: stopping the server (e.g. via <code>docker stop</code>) now lets the Bedrock server save the world before it exits.</li>
+<li>Added <code>PlayerRespawnEvent.respawn_reason</code> (<code>RespawnReason.DEATH</code> / <code>RespawnReason.END_PORTAL</code>) so plugins can tell a normal death respawn apart from a player returning to the Overworld through the End exit portal.</li>
 </ul>
 <h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
 <ul>

@@ -4,6 +4,53 @@
     <compoundname>endstone::PlayerRespawnEvent</compoundname>
     <basecompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</basecompoundref>
     <includes refid="player__respawn__event_8h" local="no">endstone/event/player/player_respawn_event.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classendstone_1_1PlayerRespawnEvent_1aa0664aac960e4ad3aae6a8f048510afa" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>RespawnReason</name>
+        <qualifiedname>endstone::PlayerRespawnEvent::RespawnReason</qualifiedname>
+        <enumvalue id="classendstone_1_1PlayerRespawnEvent_1aa0664aac960e4ad3aae6a8f048510afaa6097f89e3092d4ccd249c9d479785c1f" prot="public">
+          <name>Death</name>
+          <briefdescription>
+<para>When the player dies and respawns. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1PlayerRespawnEvent_1aa0664aac960e4ad3aae6a8f048510afaa062e93e3280a8b546122cb569f437f07" prot="public">
+          <name>EndPortal</name>
+          <briefdescription>
+<para>When the player exits the End through the end portal. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>An enum to specify the reason a respawn occurred. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_respawn_event.h" line="29" column="5" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="29" bodyend="38"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerRespawnEvent_1a290bf37d4ba36157f3da2694493821bf" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1PlayerRespawnEvent_1aa0664aac960e4ad3aae6a8f048510afa" kindref="member">RespawnReason</ref></type>
+        <definition>RespawnReason endstone::PlayerRespawnEvent::reason_</definition>
+        <argsstring></argsstring>
+        <name>reason_</name>
+        <qualifiedname>endstone::PlayerRespawnEvent::reason_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_respawn_event.h" line="55" column="19" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1PlayerRespawnEvent_1af12128ed120eac17e1edea474ab96d92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -20,17 +67,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_respawn_event.h" line="26" column="5"/>
+        <location file="include/endstone/event/player/player_respawn_event.h" line="40" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerRespawnEvent_1abb6a9abde0432b56b4ce24b1ebfdbcbb" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerRespawnEvent_1a5e02769c3ce64a5277d1ce1778239ed2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::PlayerRespawnEvent::PlayerRespawnEvent</definition>
-        <argsstring>(Player &amp;player)</argsstring>
+        <argsstring>(Player &amp;player, RespawnReason reason)</argsstring>
         <name>PlayerRespawnEvent</name>
         <qualifiedname>endstone::PlayerRespawnEvent::PlayerRespawnEvent</qualifiedname>
         <param>
           <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
           <declname>player</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1PlayerRespawnEvent_1aa0664aac960e4ad3aae6a8f048510afa" kindref="member">RespawnReason</ref></type>
+          <declname>reason</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -38,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_respawn_event.h" line="27" column="14" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="27" bodyend="27"/>
+        <location file="include/endstone/event/player/player_respawn_event.h" line="41" column="5" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PlayerRespawnEvent_1a6d85e0d878c46548c97daab6e89bad91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -52,7 +103,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/player/player_respawn_event.h" line="28" column="5"/>
+        <location file="include/endstone/event/player/player_respawn_event.h" line="42" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerRespawnEvent_1a06c6d2fad9c2925ddab52de6a6af0b21" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1PlayerRespawnEvent_1aa0664aac960e4ad3aae6a8f048510afa" kindref="member">RespawnReason</ref></type>
+        <definition>RespawnReason endstone::PlayerRespawnEvent::getRespawnReason</definition>
+        <argsstring>() const</argsstring>
+        <name>getRespawnReason</name>
+        <qualifiedname>endstone::PlayerRespawnEvent::getRespawnReason</qualifiedname>
+        <briefdescription>
+<para>Gets the reason this respawn occurred. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the reason the respawn occurred. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_respawn_event.h" line="49" column="20" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="49" bodyend="52"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -96,7 +165,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/player/player_respawn_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="24" bodyend="29"/>
+    <location file="include/endstone/event/player/player_respawn_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_respawn_event.h" bodystart="24" bodyend="56"/>
     <listofallmembers>
       <member refid="classendstone_1_1PlayerRespawnEvent_1af12128ed120eac17e1edea474ab96d92" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>ENDSTONE_EVENT</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>Event</name></member>
@@ -104,12 +173,15 @@
       <member refid="classendstone_1_1Event_1ad20bafd16e0671578e37390b95e5104c" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a3ad904b05886ce30c7299500d9a57fdb" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerRespawnEvent_1a06c6d2fad9c2925ddab52de6a6af0b21" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>getRespawnReason</name></member>
       <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>isAsynchronous</name></member>
       <member refid="classendstone_1_1Event_1a44a4ff424a8b690c01a2afe10ae68d8f" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Event_1a1d7fc5400782d20be99a3636aa7f53b9" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a263609667f42005d6cfe9f3a128477bd" prot="protected" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>PlayerEvent</name></member>
-      <member refid="classendstone_1_1PlayerRespawnEvent_1abb6a9abde0432b56b4ce24b1ebfdbcbb" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>PlayerRespawnEvent</name></member>
+      <member refid="classendstone_1_1PlayerRespawnEvent_1a5e02769c3ce64a5277d1ce1778239ed2" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>PlayerRespawnEvent</name></member>
+      <member refid="classendstone_1_1PlayerRespawnEvent_1a290bf37d4ba36157f3da2694493821bf" prot="private" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>reason_</name></member>
+      <member refid="classendstone_1_1PlayerRespawnEvent_1aa0664aac960e4ad3aae6a8f048510afa" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>RespawnReason</name></member>
       <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerRespawnEvent</scope><name>~Event</name></member>
       <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>~PlayerEvent</name></member>
       <member refid="classendstone_1_1PlayerRespawnEvent_1a6d85e0d878c46548c97daab6e89bad91" prot="public" virt="non-virtual"><scope>endstone::PlayerRespawnEvent</scope><name>~PlayerRespawnEvent</name></member>

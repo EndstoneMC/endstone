@@ -30,9 +30,22 @@ namespace endstone {
 
 class PlayerRespawnEvent : public PlayerEvent {
 public:
+    enum class RespawnReason {
+        Death,
+        EndPortal,
+    };
+
     ENDSTONE_EVENT(PlayerRespawnEvent);
-    explicit PlayerRespawnEvent(Player &player) : PlayerEvent(player) {}
+    PlayerRespawnEvent(Player &player, RespawnReason reason) : PlayerEvent(player), reason_(reason) {}
     ~PlayerRespawnEvent() override = default;
+
+    [[nodiscard]] RespawnReason getRespawnReason() const
+    {
+        return reason_;
+    }
+
+private:
+    RespawnReason reason_;
 };
 
 }  // namespace endstone
