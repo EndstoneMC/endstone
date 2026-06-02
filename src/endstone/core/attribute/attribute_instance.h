@@ -50,7 +50,11 @@ public:
 
     [[nodiscard]] float getMinValue() const override { return handle_.instance->getMinValue(); }
 
+    void setMinValue(float value) override { handle_.instance->setMinValue(value, handle_.context); }
+
     [[nodiscard]] float getMaxValue() const override { return handle_.instance->getMaxValue(); }
+
+    void setMaxValue(float value) override { handle_.instance->setMaxValue(value, handle_.context); }
 
     [[nodiscard]] float getValue() const override { return handle_.instance->getCurrentValue(); }
 

@@ -94,10 +94,10 @@ void init_attribute(py::module_ &m)
         .def_property_readonly("type", &AttributeInstance::getType, "The attribute type pertaining to this instance.")
         .def_property("base_value", &AttributeInstance::getBaseValue, &AttributeInstance::setBaseValue,
                       "Base value of this instance before modifiers are applied.")
-        .def_property_readonly("min_value", &AttributeInstance::getMinValue,
-                               "The minimum value this instance is allowed to take. Bedrock-specific.")
-        .def_property_readonly("max_value", &AttributeInstance::getMaxValue,
-                               "The maximum value this instance is allowed to take. Bedrock-specific.")
+        .def_property("min_value", &AttributeInstance::getMinValue, &AttributeInstance::setMinValue,
+                      "The minimum value this instance is allowed to take. Bedrock-specific.")
+        .def_property("max_value", &AttributeInstance::getMaxValue, &AttributeInstance::setMaxValue,
+                      "The maximum value this instance is allowed to take. Bedrock-specific.")
         .def_property_readonly("value", &AttributeInstance::getValue,
                                "The value of this instance after all associated modifiers have been applied.")
         .def_property_readonly("modifiers", &AttributeInstance::getModifiers,

@@ -59,6 +59,15 @@ public:
     [[nodiscard]] virtual float getMinValue() const = 0;
 
     /**
+     * Set the minimum value this instance is allowed to take.
+     *
+     * @note Bedrock-specific. The value is re-clamped to the new range on the next recalculation.
+     *
+     * @param value new minimum value
+     */
+    virtual void setMinValue(float value) = 0;
+
+    /**
      * The maximum value this instance is allowed to take.
      *
      * @note Bedrock-specific. The value of this instance is clamped to the range [min, max].
@@ -66,6 +75,17 @@ public:
      * @return maximum value
      */
     [[nodiscard]] virtual float getMaxValue() const = 0;
+
+    /**
+     * Set the maximum value this instance is allowed to take.
+     *
+     * For example, raising the maximum of an entity's `minecraft:health` attribute increases its maximum health.
+     *
+     * @note Bedrock-specific. The value is re-clamped to the new range on the next recalculation.
+     *
+     * @param value new maximum value
+     */
+    virtual void setMaxValue(float value) = 0;
 
     /**
      * Get the value of this instance after all associated modifiers have been applied.

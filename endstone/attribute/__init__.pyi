@@ -109,12 +109,16 @@ class AttributeInstance:
         The minimum value this instance is allowed to take. Bedrock-specific.
         """
         ...
+    @min_value.setter
+    def min_value(self, arg1: float) -> None: ...
     @property
     def max_value(self) -> float:
         """
         The maximum value this instance is allowed to take. Bedrock-specific.
         """
         ...
+    @max_value.setter
+    def max_value(self, arg1: float) -> None: ...
     @property
     def value(self) -> float:
         """

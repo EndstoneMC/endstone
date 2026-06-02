@@ -13,6 +13,21 @@ def test_health_attribute_matches_properties(player: Player) -> None:
     assert math.ceil(health.max_value) == player.max_health
 
 
+def test_set_max_value(player: Player) -> None:
+    # Setting the max of `minecraft:health` raises the player's maximum health, visible through the separate
+    # max_health property.
+    health = player.get_attribute(Attribute.HEALTH)
+    assert health is not None
+    original = health.max_value
+    try:
+        health.max_value = 40.0
+        assert health.max_value == 40.0
+        assert player.max_health == 40
+    finally:
+        health.max_value = original
+    assert player.max_health == math.ceil(original)
+
+
 def test_attribute(player: Player) -> None:
     attr = player.get_attribute(Attribute.HEALTH)
     assert attr is not None
