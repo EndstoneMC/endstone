@@ -179,6 +179,19 @@ void EndstoneScheduler::addTask(std::shared_ptr<EndstoneTask> task)
 
 void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
 {
+    // The tick we receive is the level's persisted, ever-increasing server tick, not a zero-based
+    // session counter (BDS has no equivalent of Bukkit's MinecraftServer.tickCount). Anchor a base
+    // on the first heartbeat and work in session-relative ticks from here on, so that delays
+    // registered before the first heartbeat (e.g. in Plugin::onEnable or ServerLoadEvent) are
+    // measured from "now" instead of from tick 0 -- which on a played-in world is already far in
+    // the past, causing those tasks to fire immediately. (#317)
+    if (!base_tick_) {
+        base_tick_ = current_tick;
+    }
+    // +1 so the first heartbeat is tick 1: the counter advances 0 -> 1 on the first tick, matching
+    // the contract that a task registered with delay N runs on the Nth tick.
+    current_tick = current_tick - *base_tick_ + 1;
+
     // Consume the tasks in the pending queue
     std::shared_ptr<EndstoneTask> pending_task;
     while (pending_.try_dequeue(pending_task)) {
