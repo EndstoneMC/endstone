@@ -19,6 +19,7 @@
 
 #include "bedrock/world/attribute/attribute.h"
 #include "bedrock/world/attribute/attribute_buff.h"
+#include "bedrock/world/attribute/attribute_modifier.h"
 #include "bedrock/world/attribute/mutable_attribute_with_context.h"
 
 class AttributeInstanceDelegate;
@@ -40,14 +41,21 @@ public:
     void setMinValue(float min, AttributeModificationContext context);
     void setCurrentValue(float value, AttributeModificationContext context);
     void addBuff(const AttributeBuff &, AttributeModificationContext);
+    void removeBuff(const AttributeBuff &buff);
+    [[nodiscard]] std::vector<AttributeModifier> getModifiers() const;
+    void addModifier(const AttributeModifier &modifier, AttributeModificationContext context);
+    void removeModifier(const AttributeModifier &modifier, AttributeModificationContext context);
+    bool removeModifier(const mce::UUID &id, AttributeModificationContext context);
 
 private:
     friend class BaseAttributeMap;
 
     void _setDirty(AttributeModificationContext context);
+    float _calculateValue();
+    float _sanitizeValue(float value);
 
     Attribute *attribute_;
-    std::vector<void *> modifier_list_;
+    std::vector<AttributeModifier> modifier_list_;
     std::vector<void *> temporal_buffs_;
     std::vector<void *> listeners_;
     std::shared_ptr<AttributeInstanceDelegate> delegate_;
@@ -66,6 +74,6 @@ private:
             float current_max_value_;
             float current_value_;
         };
-    } ;
+    };
 };
 static_assert(sizeof(AttributeInstance) == 128);

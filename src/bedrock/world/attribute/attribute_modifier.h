@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/platform/uuid.h"
 #include "bedrock/world/attribute/attribute.h"
 
 enum class AttributeModifierOperation : int {
@@ -35,8 +36,8 @@ public:
 
     [[nodiscard]] const mce::UUID &getId() const;
     [[nodiscard]] const std::string &getName() const;
-    [[nodiscard]] int getOperation() const;
-    [[nodiscard]] int getOperand() const;
+    [[nodiscard]] AttributeModifierOperation getOperation() const;
+    [[nodiscard]] AttributeOperands getOperand() const;
     [[nodiscard]] float getAmount() const;
     [[nodiscard]] bool isSerializable() const;
     void setSerialize(bool);

@@ -15,11 +15,14 @@
 #pragma once
 
 #include <string>
-#include <utility>
+
+#include "endstone/identifier.h"
 
 namespace endstone {
+using AttributeModifierId = Identifier<class AttributeModifier>;
+
 /**
- * Represents an attribute modifier.
+ * Concrete implementation of an attribute modifier.
  */
 class AttributeModifier {
 public:
@@ -33,60 +36,46 @@ public:
         Add,
         /**
          * Multiplies the current value of the attribute by (1 + x),
-         *        where x is the sum of the modifiers' amounts.
+         * where x is the sum of the modifiers' amounts.
          */
         MultiplyBase,
         /**
          * For every modifier, multiplies the current value of the attribute by (1 + x),
-         *        where x is the amount of the particular modifier.
+         * where x is the amount of the particular modifier.
          *
          * @note Functions the same as MultiplyBase if there is only a single modifier.
          *       However, for multiple modifiers it multiplies the modifiers rather than adding them.
          */
-        Multiply
+        Multiply,
+        /**
+         * Caps the value of the attribute at the modifier's amount.
+         *
+         * @note Bedrock-specific operation with no Bukkit equivalent.
+         */
+        Cap
     };
 
     /**
-     * Construct a new attribute modifier with an auto-generated unique id.
+     * Construct a new attribute modifier.
      *
-     * @param name the name of the modifier
+     * @param id the id of the modifier
      * @param amount the amount by which the modifier applies its operation
      * @param operation the operation to apply
      */
-    AttributeModifier(std::string name, float amount, Operation operation)
-        : name_(std::move(name)), amount_(amount), operation_(operation)
+    AttributeModifier(AttributeModifierId id, float amount, Operation operation)
+        : id_(std::string(id)), amount_(amount), operation_(operation)
     {
     }
 
     /**
-     * Construct a new attribute modifier with the given unique id.
+     * Get the id of this modifier.
      *
-     * @param name the name of the modifier
-     * @param uuid the unique id of the modifier
-     * @param amount the amount by which the modifier applies its operation
-     * @param operation the operation to apply
+     * @return id
      */
-    AttributeModifier(std::string name, UUID uuid, float amount, Operation operation)
-        : name_(std::move(name)), uuid_(uuid), amount_(amount), operation_(operation)
-    {
-    }
+    [[nodiscard]] AttributeModifierId getId() const { return AttributeModifierId{id_}; }
 
     /**
-     * Get the unique ID for this modifier.
-     *
-     * @return unique id
-     */
-    [[nodiscard]] UUID getUniqueId() const { return uuid_; }
-
-    /**
-     * Get the name of this modifier.
-     *
-     * @return name
-     */
-    [[nodiscard]] std::string getName() const { return name_; }
-
-    /**
-     * Get the amount by which this modifier will apply the operation.
+     * Get the amount by which this modifier will apply its operation.
      *
      * @return modification amount
      */
@@ -100,8 +89,7 @@ public:
     [[nodiscard]] Operation getOperation() const { return operation_; }
 
 private:
-    std::string name_;
-    UUID uuid_;
+    std::string id_;
     float amount_;
     Operation operation_;
 };

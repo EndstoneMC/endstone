@@ -14,9 +14,11 @@
 
 #pragma once
 
+#include "bedrock/entity/components/attributes_component.h"
 #include "bedrock/world/actor/mob.h"
 #include "endstone/actor/mob.h"
 #include "endstone/core/actor/actor.h"
+#include "endstone/core/attribute/attribute_instance.h"
 
 namespace endstone::core {
 template <typename Interface, typename Handle>
@@ -69,6 +71,26 @@ public:
         Preconditions::checkArgument(health > 0, "Max health amount ({}) must be greater than 0", health);
         auto mutable_attr = Base::getHandle().getMutableAttribute("minecraft:health");
         mutable_attr->setMaxValue(static_cast<float>(health));
+    }
+
+    [[nodiscard]] bool hasAttribute(AttributeId id) const override
+    {
+        return Base::getHandle().getAttribute({id}) != nullptr;
+    }
+
+    [[nodiscard]] std::unique_ptr<AttributeInstance> getAttribute(AttributeId id) override
+    {
+        return std::make_unique<EndstoneAttributeInstance>(Base::getHandle().getMutableAttribute({id}));
+    }
+
+    [[nodiscard]] std::vector<std::unique_ptr<AttributeInstance>> getAttributes() override
+    {
+        std::vector<std::unique_ptr<AttributeInstance>> attributes;
+        auto component = Base::getHandle().template getPersistentComponent<AttributesComponent>();
+        for (auto &attribute : component->attributes.getAttributes()) {
+            attributes.emplace_back(std::make_unique<EndstoneAttributeInstance>(attribute));
+        }
+        return attributes;
     }
 };
 
