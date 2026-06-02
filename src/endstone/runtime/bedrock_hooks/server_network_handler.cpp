@@ -57,18 +57,8 @@ void ServerNetworkHandler::disconnectClientWithMessage(const NetworkIdentifier &
     // #blameMojang - BDS politely asks clients to disconnect and waits for acknowledgment.
     // Malicious clients can simply ignore this and keep spamming packets indefinitely.
     // Fix: don't ask, just close the connection.
-    //
-    // Guard: only force-close if the connection still exists AND is not already marked for closure.
-    // For a natural disconnect (player closes game), the BDS network layer sets should_close_connection_=true
-    // and fires onConnectionClosed *before* reaching disconnectClientWithMessage. Calling closeConnection
-    // again would trigger a second onConnectionClosed dispatch on already-freed BDS/Script API objects,
-    // causing EXCEPTION_ACCESS_VIOLATION — especially after /reload reinitialises the script runtime.
     if (sub_id == SubClientId::PrimaryClient) {
-        auto &network = server.getServer().getNetwork();
-        const auto *connection = network._getConnectionFromId(id);
-        if (connection != nullptr && !connection->shouldCloseConnection()) {
-            network.closeConnection(id, reason, message);
-        }
+        server.getServer().getNetwork().setCloseConnection(id);
     }
 }
 
