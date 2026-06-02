@@ -21,15 +21,14 @@
 
 #include "endstone/command/command_map.h"
 #include "endstone/command/command_sender.h"
+#include "endstone/object.h"
 
 namespace endstone {
-
-class PluginCommand;
 
 /**
  * Represents a Command, which executes various tasks upon user input.
  */
-class Command {
+class Command : public Object {
 public:
     explicit Command(std::string name, std::string description = "", std::vector<std::string> usages = {},
                      std::vector<std::string> aliases = {}, std::vector<std::string> permissions = {})
@@ -236,12 +235,11 @@ public:
      */
     [[nodiscard]] bool isRegistered() const { return command_map_ != nullptr; }
 
-    /**
-     * Returns this command as a PluginCommand if it is one.
-     *
-     * @return this command cast to a PluginCommand, or nullptr if it is not a PluginCommand
-     */
-    [[nodiscard]] virtual PluginCommand *asPluginCommand() const { return nullptr; }
+    [[nodiscard]] const std::type_info &getClassTypeId() const override { return typeid(Command); }
+    [[nodiscard]] bool isInstanceOf(const std::type_info &target) const override
+    {
+        return typeid(Command) == target || typeid(Object) == target;
+    }
 
 private:
     [[nodiscard]] bool allowChangesFrom(const CommandMap &command_map) const

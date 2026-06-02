@@ -28,8 +28,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **BREAKING**: Replaced `Dimension::Type` enum with `DimensionId`, a namespaced identifier that supports custom
   dimensions. Use `Dimension.OVERWORLD`, `Dimension.NETHER`, `Dimension.THE_END` constants or look up by identifier.
   `Dimension.name` has been replaced by `Dimension.id`.
-- **BREAKING**: Replaced `asPlayer()`, `asMob()`, `asConsole()`, etc. with `as<T>()`/`is<T>()` on all `CommandSender`
-  and `Actor` subtypes. In Python, use `isinstance()` as before.
+- **BREAKING**: Replaced `asPlayer()`, `asMob()`, `asConsole()`, `asPluginCommand()`, etc. with `as<T>()`/`is<T>()` on
+  all `CommandSender`, `Actor`, and `Command` subtypes. In Python, use `isinstance()` as before.
 - **BREAKING**: `Player` no longer inherits from `OfflinePlayer`.
 - **BREAKING**: `BlockPlaceEvent.block` now returns the placed block instead of the replaced block.
   `block_placed_state`/`block_replaced` renamed to `block_placed`/`block_replaced_state` to match Bukkit.
