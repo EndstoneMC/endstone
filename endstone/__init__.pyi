@@ -154,7 +154,7 @@ class Server:
         The plugin manager for interfacing with plugins.
         """
         ...
-    def get_plugin_command(self, name: str) -> PluginCommand:
+    def get_plugin_command(self, name: str) -> PluginCommand | None:
         """
         Gets a `PluginCommand` with the given name or alias.
 
@@ -303,7 +303,7 @@ class Server:
         """
         ...
     @property
-    def scoreboard(self) -> Scoreboard:
+    def scoreboard(self) -> Scoreboard | None:
         """
         The primary `Scoreboard` controlled by the server.
 

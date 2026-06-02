@@ -19,7 +19,7 @@ class DamageSource:
         """
         ...
     @property
-    def actor(self) -> Actor:
+    def actor(self) -> Actor | None:
         """
         The actor that caused the damage to occur.
 
@@ -29,7 +29,7 @@ class DamageSource:
         """
         ...
     @property
-    def damaging_actor(self) -> Actor:
+    def damaging_actor(self) -> Actor | None:
         """
         The actor that directly caused the damage.
 

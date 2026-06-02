@@ -201,7 +201,7 @@ void init_plugin(py::module &m)
 
     This is the bare name of the plugin and should be used for comparison.
 )doc")
-        .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::arg("name"), R"doc(
+        .def("get_command", &Plugin::getCommand, py::arg("name"), R"doc(
     Gets the command with the given name, specific to this plugin.
 
     Args:

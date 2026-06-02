@@ -29,20 +29,20 @@ std::string_view EndstoneDamageSource::getType() const
     return type_;
 }
 
-Actor *EndstoneDamageSource::getActor() const
+Nullable<Actor> EndstoneDamageSource::getActor() const
 {
     const auto *level = EndstoneServer::getInstance().getEndstoneLevel();
     if (const auto *actor = level->getHandle().fetchEntity(damage_source_.getEntityUniqueID(), false); actor) {
-        return &actor->getEndstoneActor();
+        return actor->getEndstoneActorPtr();
     }
     return nullptr;
 }
 
-Actor *EndstoneDamageSource::getDamagingActor() const
+Nullable<Actor> EndstoneDamageSource::getDamagingActor() const
 {
     const auto *level = EndstoneServer::getInstance().getEndstoneLevel();
     if (const auto *actor = level->getHandle().fetchEntity(damage_source_.getDamagingEntityUniqueID(), false); actor) {
-        return &actor->getEndstoneActor();
+        return actor->getEndstoneActorPtr();
     }
     return nullptr;
 }

@@ -321,10 +321,10 @@ PluginManager &EndstoneServer::getPluginManager() const
     return *plugin_manager_;
 }
 
-PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
+Nullable<PluginCommand> EndstoneServer::getPluginCommand(std::string name) const
 {
-    if (auto command = command_map_->getCommand(name)) {
-        return command->asPluginCommand();
+    if (auto command = command_map_->getCommand(name); command && command->asPluginCommand()) {
+        return std::static_pointer_cast<PluginCommand>(command);
     }
     return nullptr;
 }
@@ -545,9 +545,9 @@ ItemFactory &EndstoneServer::getItemFactory() const
     return EndstoneItemFactory::instance();
 }
 
-Scoreboard *EndstoneServer::getScoreboard() const
+Nullable<Scoreboard> EndstoneServer::getScoreboard() const
 {
-    return scoreboard_.get();
+    return scoreboard_;
 }
 
 std::shared_ptr<Scoreboard> EndstoneServer::createScoreboard()

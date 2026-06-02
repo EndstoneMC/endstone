@@ -125,9 +125,9 @@ public:
      * Gets a PluginCommand with the given name or alias.
      *
      * @param name the name of the command to retrieve
-     * @return a plugin command if found, nullptr otherwise
+     * @return a plugin command if found, a null handle otherwise
      */
-    [[nodiscard]] virtual PluginCommand *getPluginCommand(std::string name) const = 0;
+    [[nodiscard]] virtual Nullable<PluginCommand> getPluginCommand(std::string name) const = 0;
 
     /**
      * Gets a CommandSender for this server.
@@ -290,9 +290,9 @@ public:
      * This Scoreboard is saved by the server, is affected by the `/scoreboard` command, and is the scoreboard shown by
      * default to players. This will only exist after the level has been loaded.
      *
-     * @return the default server scoreboard
+     * @return the default server scoreboard, or a null handle if the level has not been loaded yet
      */
-    [[nodiscard]] virtual Scoreboard *getScoreboard() const = 0;
+    [[nodiscard]] virtual Nullable<Scoreboard> getScoreboard() const = 0;
 
     /**
      * Creates a new Scoreboard to be tracked by the server.

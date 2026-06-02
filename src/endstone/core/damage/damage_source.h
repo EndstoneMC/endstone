@@ -24,8 +24,8 @@ public:
     explicit EndstoneDamageSource(const ActorDamageSource &damage_source);
 
     [[nodiscard]] std::string_view getType() const override;
-    [[nodiscard]] Actor *getActor() const override;
-    [[nodiscard]] Actor *getDamagingActor() const override;
+    [[nodiscard]] Nullable<Actor> getActor() const override;
+    [[nodiscard]] Nullable<Actor> getDamagingActor() const override;
     [[nodiscard]] bool isIndirect() const override;
 
 private:

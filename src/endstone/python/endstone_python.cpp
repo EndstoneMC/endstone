@@ -417,8 +417,7 @@ void init_server(py::classh<Server> &server)
                                "The current language interface used by the server for translations.")
         .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference,
                                "The plugin manager for interfacing with plugins.")
-        .def("get_plugin_command", &Server::getPluginCommand, py::arg("name"), py::return_value_policy::reference,
-             R"doc(
+        .def("get_plugin_command", &Server::getPluginCommand, py::arg("name"), R"doc(
     Gets a `PluginCommand` with the given name or alias.
 
     Args:
@@ -527,8 +526,7 @@ void init_server(py::classh<Server> &server)
 
     This `Scoreboard` is saved by the server, is affected by the `/scoreboard` command, and is the
     scoreboard shown by default to players. This will only exist after the level has been loaded.
-)doc",
-                               py::return_value_policy::reference)
+)doc")
         .def("create_scoreboard", &Server::createScoreboard, R"doc(
     Creates a new `Scoreboard` to be tracked by the server.
 
