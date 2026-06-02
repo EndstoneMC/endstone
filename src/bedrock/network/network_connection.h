@@ -60,6 +60,7 @@ protected:
     std::array<std::vector<PausedPacket>, 2UL> paused_packets_;
 
 private:
+    friend class NetworkSystem;
     bool disconnected_;
     bool should_close_connection_;  // +377
     bool encryption_disabled_;

@@ -14,6 +14,8 @@
 
 #include "bedrock/network/network_system.h"
 
+#include <chrono>
+
 Bedrock::NotNullNonOwnerPtr<RemoteConnector> NetworkSystem::getRemoteConnector()
 {
     return remote_connector_.get();
@@ -45,6 +47,14 @@ NetworkConnection *NetworkSystem::_getConnectionFromId(const NetworkIdentifier &
         }
     }
     return nullptr;
+}
+
+void NetworkSystem::setCloseConnection(const NetworkIdentifier &id)
+{
+    if (auto *connection = _getConnectionFromId(id)) {
+        connection->should_close_connection_ = true;
+        connection->closed_time = std::chrono::steady_clock::now();
+    }
 }
 
 void NetworkSystem::_sendInternal(const NetworkIdentifier &id, const Packet &packet, const std::string &data)
