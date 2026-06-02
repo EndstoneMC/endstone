@@ -73,16 +73,18 @@ void init_attribute(py::module_ &m)
         .value("MULTIPLY", AttributeModifier::Operation::Multiply,
                "For every modifier, multiplies the current value of the attribute by (1 + x), "
                "where x is the amount of the particular modifier.")
+        .value("CAP", AttributeModifier::Operation::Cap,
+               "Caps the value of the attribute at the modifier's amount. Bedrock-specific operation with no Bukkit "
+               "equivalent.")
         .export_values()
         .finalize();
 
     modifier
-        .def(py::init<std::string, float, AttributeModifier::Operation>(), py::arg("name"), py::arg("amount"),
+        .def(py::init<AttributeModifierId, float, AttributeModifier::Operation>(), py::arg("id"), py::arg("amount"),
              py::arg("operation"))
-        .def_property_readonly("unique_id", &AttributeModifier::getUniqueId, "The unique ID for this modifier.")
-        .def_property_readonly("name", &AttributeModifier::getName, "The name of this modifier.")
+        .def_property_readonly("id", &AttributeModifier::getId, "The id of this modifier.")
         .def_property_readonly("amount", &AttributeModifier::getAmount,
-                               "The amount by which this modifier will apply the operation.")
+                               "The amount by which this modifier will apply its operation.")
         .def_property_readonly("operation", &AttributeModifier::getOperation,
                                "The operation this modifier will apply.");
 
@@ -92,21 +94,48 @@ void init_attribute(py::module_ &m)
         .def_property_readonly("type", &AttributeInstance::getType, "The attribute type pertaining to this instance.")
         .def_property("base_value", &AttributeInstance::getBaseValue, &AttributeInstance::setBaseValue,
                       "Base value of this instance before modifiers are applied.")
+        .def_property_readonly("min_value", &AttributeInstance::getMinValue,
+                               "The minimum value this instance is allowed to take. Bedrock-specific.")
+        .def_property_readonly("max_value", &AttributeInstance::getMaxValue,
+                               "The maximum value this instance is allowed to take. Bedrock-specific.")
         .def_property_readonly("value", &AttributeInstance::getValue,
                                "The value of this instance after all associated modifiers have been applied.")
         .def_property_readonly("modifiers", &AttributeInstance::getModifiers,
                                "All modifiers present on this instance.")
+        .def("get_modifier", &AttributeInstance::getModifier, py::arg("id"), R"doc(
+    Gets the modifier with the corresponding id.
+
+    Args:
+        id: The id of the modifier.
+
+    Returns:
+        The modifier, or ``None`` if no modifier with the given id is present.
+)doc")
         .def("add_modifier", &AttributeInstance::addModifier, py::arg("modifier"), R"doc(
     Add a modifier to this instance.
 
     Args:
         modifier: Modifier to add.
 )doc")
-        .def("remove_modifier", &AttributeInstance::removeModifier, py::arg("modifier"), R"doc(
+        .def("add_transient_modifier", &AttributeInstance::addTransientModifier, py::arg("modifier"), R"doc(
+    Add a transient modifier to this instance. Transient modifiers are not persisted (saved with the NBT data).
+
+    Args:
+        modifier: Modifier to add.
+)doc")
+        .def("remove_modifier", py::overload_cast<const AttributeModifier &>(&AttributeInstance::removeModifier),
+             py::arg("modifier"), R"doc(
     Remove a modifier from this instance.
 
     Args:
         modifier: Modifier to remove.
+)doc")
+        .def("remove_modifier", py::overload_cast<AttributeModifierId>(&AttributeInstance::removeModifier),
+             py::arg("id"), R"doc(
+    Remove a modifier with the corresponding id from this instance.
+
+    Args:
+        id: The id of the modifier to remove.
 )doc");
 }
 }  // namespace endstone::python

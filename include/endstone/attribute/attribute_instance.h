@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <optional>
 #include <vector>
 
 #include "endstone/attribute/attribute.h"
@@ -49,6 +50,24 @@ public:
     virtual void setBaseValue(float value) = 0;
 
     /**
+     * The minimum value this instance is allowed to take.
+     *
+     * @note Bedrock-specific. The value of this instance is clamped to the range [min, max].
+     *
+     * @return minimum value
+     */
+    [[nodiscard]] virtual float getMinValue() const = 0;
+
+    /**
+     * The maximum value this instance is allowed to take.
+     *
+     * @note Bedrock-specific. The value of this instance is clamped to the range [min, max].
+     *
+     * @return maximum value
+     */
+    [[nodiscard]] virtual float getMaxValue() const = 0;
+
+    /**
      * Get the value of this instance after all associated modifiers have been applied.
      *
      * @return the total attribute value
@@ -63,6 +82,14 @@ public:
     [[nodiscard]] virtual std::vector<AttributeModifier> getModifiers() const = 0;
 
     /**
+     * Gets the modifier with the corresponding id.
+     *
+     * @param id the id of the modifier
+     * @return the modifier, or std::nullopt if no modifier with the given id is present
+     */
+    [[nodiscard]] virtual std::optional<AttributeModifier> getModifier(AttributeModifierId id) const = 0;
+
+    /**
      * Add a modifier to this instance.
      *
      * @param modifier to add
@@ -70,10 +97,24 @@ public:
     virtual void addModifier(const AttributeModifier &modifier) = 0;
 
     /**
+     * Add a transient modifier to this instance. Transient modifiers are not persisted (saved with the NBT data).
+     *
+     * @param modifier to add
+     */
+    virtual void addTransientModifier(const AttributeModifier &modifier) = 0;
+
+    /**
      * Remove a modifier from this instance.
      *
      * @param modifier to remove
      */
     virtual void removeModifier(const AttributeModifier &modifier) = 0;
+
+    /**
+     * Remove a modifier with the corresponding id from this instance.
+     *
+     * @param id the id of the modifier to remove
+     */
+    virtual void removeModifier(AttributeModifierId id) = 0;
 };
 }  // namespace endstone

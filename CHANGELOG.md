@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `/restart` command (console-only) that gracefully restarts the server without manually relaunching.
 - Added support for custom Python events with optional cancellation.
 - Added `ActorType` to the registry API.
+- Added an attribute API: `Mob.get_attribute()`, `Mob.has_attribute()`, and `Mob.attributes` expose a living entity's attributes (health, movement speed, attack damage, etc.). Each `AttributeInstance` reports its current, base, minimum, and maximum value, and lets you add or remove `AttributeModifier`s at runtime.
 - Added the `endstone.Identifier` type for namespaced ids: `dim.id.namespace == "minecraft"`, `dim.id.key == "overworld"`, and type checkers can now tell `Identifier[Dimension]` apart from `Identifier[ActorType]`. Plain strings are still accepted where an `Identifier` is required (e.g. `level.get_dimension("overworld")`).
 - Added `BlockData.translation_key` for retrieving the translation key of a block.
 - Added `WritableBookMeta`, `BookMeta`, and `CrossbowMeta` item meta types.

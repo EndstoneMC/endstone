@@ -381,16 +381,7 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property("name_tag", &Actor::getNameTag, &Actor::setNameTag,
                       "The current name tag of the actor.")
         .def_property("score_tag", &Actor::getScoreTag, &Actor::setScoreTag,
-                      "The current score tag of the actor.")
-        .def("has_attribute", &Actor::hasAttribute, "Check the attribute is present in the object.",
-             py::arg("attribute"))
-        .def("get_attribute", &Actor::getAttribute,
-             "Gets the specified attribute instance from the object. This instance will be backed directly to the "
-             "object and any changes will be visible at once.",
-             py::arg("attribute"))
-        .def_property_readonly("attributes", &Actor::getAttributes,
-                               "Gets all attribute instances from the object. This instance will be backed directly to "
-                               "the object and any changes will be visible at once.");
+                      "The current score tag of the actor.");
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
                               "`True` if this actor is gliding, such as using an Elytra.")
@@ -402,7 +393,15 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
     If the health of the entity is above the value provided, it will be set to that value. An entity
     with a health bar (e.g. `Player`, `EnderDragon`, `Wither`, etc.) will have their bar scaled
     accordingly.
-)doc");
+)doc")
+        .def("has_attribute", &Mob::hasAttribute, py::arg("attribute"),
+             "Checks whether the given attribute is present on the object.")
+        .def("get_attribute", &Mob::getAttribute, py::arg("attribute"),
+             "Gets the specified attribute instance from the object. This instance will be backed directly to the "
+             "object and any changes will be visible at once.")
+        .def_property_readonly("attributes", &Mob::getAttributes,
+                               "Gets all attribute instances from the object. This instance will be backed directly to "
+                               "the object and any changes will be visible at once.");
 
     py_class<Item>(m, "Item", "Represents a dropped item that can be picked up by players.")
         .def_property("item_stack", &Item::getItemStack, &Item::setItemStack,

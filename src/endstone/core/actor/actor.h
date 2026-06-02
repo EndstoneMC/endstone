@@ -20,7 +20,6 @@
 #include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/actor/actor.h"
-#include "endstone/core/attribute/attribute_instance.h"
 #include "endstone/core/level/dimension.h"
 #include "endstone/core/permissions/permissible_base.h"
 #include "endstone/core/server.h"
@@ -235,23 +234,6 @@ public:
     [[nodiscard]] std::string getScoreTag() const override { return getHandle().getScoreTag(); }
 
     void setScoreTag(std::string score) override { getHandle().setScoreTag(score); }
-
-    [[nodiscard]] bool hasAttribute(AttributeId id) const override { return getHandle().getAttribute({id}) != nullptr; }
-
-    [[nodiscard]] std::unique_ptr<AttributeInstance> getAttribute(AttributeId id) override
-    {
-        return std::make_unique<EndstoneAttributeInstance>(getHandle().getMutableAttribute({id}));
-    }
-
-    [[nodiscard]] std::vector<std::unique_ptr<AttributeInstance>> getAttributes() override
-    {
-        std::vector<std::unique_ptr<AttributeInstance>> attributes;
-        auto component = getHandle().template getPersistentComponent<AttributesComponent>();
-        for (auto &attribute : component->attributes.getAttributes()) {
-            attributes.emplace_back(std::make_unique<EndstoneAttributeInstance>(attribute));
-        }
-        return attributes;
-    }
 
     Handle &getHandle() const
     {

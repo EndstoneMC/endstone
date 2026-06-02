@@ -14,7 +14,9 @@
 
 #include "bedrock/world/attribute/attribute_instance.h"
 
-#include "bedrock/world/attribute/attribute_instance_delegate.h"
+#include <algorithm>
+#include <cmath>
+
 #include "bedrock/world/attribute/attribute_map.h"
 
 const Attribute *AttributeInstance::getAttribute() const
@@ -87,80 +89,112 @@ void AttributeInstance::_setDirty(AttributeModificationContext context)
     }
 }
 
+std::vector<AttributeModifier> AttributeInstance::getModifiers() const
+{
+    // Returns every modifier, grouped by operation in ascending order (addition, multiply-base, multiply-total, cap).
+    std::vector<AttributeModifier> modifiers;
+    for (int operation = 0; operation < static_cast<int>(AttributeModifierOperation::TOTAL_OPERATIONS); ++operation) {
+        for (const auto &modifier : modifier_list_) {
+            if (static_cast<int>(modifier.getOperation()) == operation) {
+                modifiers.push_back(modifier);
+            }
+        }
+    }
+    return modifiers;
+}
+
 float AttributeInstance::_calculateValue()
 {
-    for (const auto &modifier : modifier_list) {
+    // Start from the base (default) values; additions accumulate onto this base, which the multiply-base operation
+    // reads from before any multiplications are applied.
+    float base[3] = {default_values_[0], default_values_[1], default_values_[2]};
+    for (const auto &modifier : modifier_list_) {
         if (modifier.getOperation() == AttributeModifierOperation::OPERATION_ADDITION) {
-            int operand = static_cast<int>(modifier.getOperand());
-            current_values_[operand] += modifier.getAmount();
+            base[static_cast<int>(modifier.getOperand())] += modifier.getAmount();
         }
     }
-    for (const auto &modifier : modifier_list) {
+
+    float values[3] = {base[0], base[1], base[2]};
+    for (const auto &modifier : modifier_list_) {
         if (modifier.getOperation() == AttributeModifierOperation::OPERATION_MULTIPLY_BASE) {
-            int operand = static_cast<int>(modifier.getOperand());
-            current_values_[operand] *= modifier.getAmount();
+            const auto operand = static_cast<int>(modifier.getOperand());
+            values[operand] += base[operand] * modifier.getAmount();
         }
     }
-    for (const auto &modifier : modifier_list) {
+    for (const auto &modifier : modifier_list_) {
         if (modifier.getOperation() == AttributeModifierOperation::OPERATION_MULTIPLY_TOTAL) {
-            int operand = static_cast<int>(modifier.getOperand());
-            current_values_[operand] *= (1.0F + modifier.getAmount());
+            const auto operand = static_cast<int>(modifier.getOperand());
+            values[operand] *= 1.0F + modifier.getAmount();
         }
     }
-    // todo(attribute): check logic
-    // if ((current_value_ == default_value_ && !modifier_list.empty()) ||
-    //     (modifier_list.empty() && !attribute_->isClientSyncable())) {
-    //     current_value_ = default_value_;
-    // }
-    return _sanitizeValue(current_value_);
+
+    float result = values[2];
+    if (modifier_list_.empty()) {
+        if (attribute_->getRedefinitionMode() == RedefinitionMode::KeepCurrent) {
+            result = current_value_;
+        }
+    }
+    else if (values[2] == default_value_) {
+        result = current_value_;
+    }
+
+    current_values_[0] = values[0];
+    current_values_[1] = values[1];
+    current_values_[2] = values[2];
+    return _sanitizeValue(result);
 }
 
 float AttributeInstance::_sanitizeValue(float value)
 {
-    float cap_limit = current_max_value_;
-    for (const auto &modifier : modifier_list) {
+    float cap = current_max_value_;
+    for (const auto &modifier : modifier_list_) {
         if (modifier.getOperation() == AttributeModifierOperation::OPERATION_CAP) {
-            float amount = modifier.getAmount();
-            cap_limit = std::min(cap_limit, amount);
+            cap = std::fmin(modifier.getAmount(), cap);
         }
     }
-    float result = std::max(value, current_min_value_);
-    result = std::min(result, cap_limit);
-    return result;
+    if (value <= cap) {
+        return std::fmax(current_min_value_, value);
+    }
+    return cap;
 }
 
 void AttributeInstance::addModifier(const AttributeModifier &modifier, AttributeModificationContext context)
 {
-    if (modifier.isInstantaneous()) {
-        return;
-    }
-    for (const auto &existing_modifier : modifier_list) {
-        if (existing_modifier == modifier) {
-            return;
+    if (!modifier.isInstantaneous()) {
+        // Skip if an equal modifier (same id, name, operation and operand) is already present.
+        for (const auto &existing : modifier_list_) {
+            if (existing == modifier) {
+                return;
+            }
         }
+        modifier_list_.push_back(modifier);
     }
-    modifier_list.push_back(modifier);
-    float new_value = _calculateValue();
-    current_value_ = new_value;
-    _setDirty(context);
+    current_value_ = _calculateValue();
+    if (context.attribute_map) {
+        context.attribute_map->onAttributeModified(*this);
+    }
 }
 
 void AttributeInstance::removeModifier(const AttributeModifier &modifier, AttributeModificationContext context)
 {
-    auto begin = modifier_list.begin();
-    auto end = modifier_list.end();
-    for (auto it = begin; it != end; ++it) {
-        if (*it != modifier) {
-            continue;
-        }
-        modifier_list.erase(it);
-        float new_value = _calculateValue();
-        current_value_ = new_value;
-        _setDirty(context);
-        if (delegate_) {
-            // todo(attribute): check logic
-            delegate_->notify(0, context);
-        }
-        break;
+    std::erase_if(modifier_list_, [&](const AttributeModifier &existing) { return existing == modifier; });
+    current_value_ = _calculateValue();
+    if (context.attribute_map) {
+        context.attribute_map->onAttributeModified(*this);
     }
+}
+
+bool AttributeInstance::removeModifier(const mce::UUID &id, AttributeModificationContext context)
+{
+    const auto it = std::ranges::find_if(modifier_list_,
+                                         [&](const AttributeModifier &existing) { return existing.getId() == id; });
+    if (it == modifier_list_.end()) {
+        return false;
+    }
+    modifier_list_.erase(it);
+    current_value_ = _calculateValue();
+    if (context.attribute_map) {
+        context.attribute_map->onAttributeModified(*this);
+    }
+    return true;
 }

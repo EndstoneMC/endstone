@@ -42,22 +42,20 @@ public:
     void setCurrentValue(float value, AttributeModificationContext context);
     void addBuff(const AttributeBuff &, AttributeModificationContext);
     void removeBuff(const AttributeBuff &buff);
+    [[nodiscard]] std::vector<AttributeModifier> getModifiers() const;
     void addModifier(const AttributeModifier &modifier, AttributeModificationContext context);
-    void removeModifier(const AttributeModifier &modifier, AttributeModificationContext context);  // todo
+    void removeModifier(const AttributeModifier &modifier, AttributeModificationContext context);
+    bool removeModifier(const mce::UUID &id, AttributeModificationContext context);
 
 private:
     friend class BaseAttributeMap;
 
     void _setDirty(AttributeModificationContext context);
     float _calculateValue();
-    float _sanitizeValue(float);
+    float _sanitizeValue(float value);
 
     Attribute *attribute_;
-
-public:
-    std::vector<AttributeModifier> modifier_list;
-
-private:
+    std::vector<AttributeModifier> modifier_list_;
     std::vector<void *> temporal_buffs_;
     std::vector<void *> listeners_;
     std::shared_ptr<AttributeInstanceDelegate> delegate_;
