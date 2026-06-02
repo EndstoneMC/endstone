@@ -56,7 +56,7 @@ bool BanCommand::execute(CommandSender &sender, const std::vector<std::string> &
     std::optional<UUID> uuid;
     std::optional<std::string> xuid;
 
-    const auto *player = server.getPlayer(name);
+    const auto player = server.getPlayer(name);
     if (player) {
         name = player->getName();
         uuid = player->getUniqueId();

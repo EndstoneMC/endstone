@@ -76,8 +76,8 @@ public:
     [[nodiscard]] std::vector<Player *> getOnlinePlayers() const override;
     [[nodiscard]] int getMaxPlayers() const override;
     void setMaxPlayers(int max_players) override;
-    [[nodiscard]] Player *getPlayer(UUID id) const override;
-    [[nodiscard]] Player *getPlayer(std::string name) const override;
+    [[nodiscard]] Nullable<Player> getPlayer(UUID id) const override;
+    [[nodiscard]] Nullable<Player> getPlayer(std::string name) const override;
 
     [[nodiscard]] int getPort() const override;
     [[nodiscard]] int getPortV6() const override;

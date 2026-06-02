@@ -139,8 +139,8 @@ std::vector<Player *> EndstoneBossBar::getPlayers() const
     std::vector<Player *> players;
     const auto &server = entt::locator<EndstoneServer>::value();
     for (auto it = players_.begin(); it != players_.end();) {
-        if (auto *player = server.getPlayer(*it); player) {
-            players.emplace_back(player);
+        if (auto player = server.getPlayer(*it); player) {
+            players.emplace_back(&*player);
             ++it;
         }
         else {

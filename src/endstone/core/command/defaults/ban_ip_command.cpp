@@ -44,7 +44,7 @@ bool BanIpCommand::execute(CommandSender &sender, const std::vector<std::string>
     auto &ban_list = server.getIpBanList();
     const auto &name_or_address = args.front();
     std::string address;
-    const Player *player = nullptr;
+    Nullable<Player> player;
 
     if (sockaddr_in sa_v4{}; inet_pton(AF_INET, name_or_address.c_str(), &(sa_v4.sin_addr)) == 1) {
         address = name_or_address;

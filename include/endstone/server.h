@@ -37,6 +37,7 @@
 #include "endstone/message.h"
 #include "endstone/plugin/service_manager.h"
 #include "endstone/scoreboard/scoreboard.h"
+#include "endstone/util/pointers.h"
 #include "endstone/util/uuid.h"
 
 namespace endstone {
@@ -183,9 +184,9 @@ public:
      * Gets the player with the given UUID.
      *
      * @param id UUID of the player to retrieve
-     * @return a player object if one was found, nullptr otherwise
+     * @return a player object if one was found, a null handle otherwise
      */
-    [[nodiscard]] virtual Player *getPlayer(endstone::UUID id) const = 0;
+    [[nodiscard]] virtual Nullable<Player> getPlayer(endstone::UUID id) const = 0;
 
     /**
      * Get the game port that the server runs on.
@@ -212,9 +213,9 @@ public:
      * Gets the player with the exact given name, case-insensitive.
      *
      * @param name Exact name of the player to retrieve
-     * @return a player object if one was found, nullptr otherwise
+     * @return a player object if one was found, a null handle otherwise
      */
-    [[nodiscard]] virtual Player *getPlayer(std::string name) const = 0;
+    [[nodiscard]] virtual Nullable<Player> getPlayer(std::string name) const = 0;
 
     /**
      * Shutdowns the server, stopping everything.

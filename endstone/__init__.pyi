@@ -221,7 +221,7 @@ class Server:
     @max_players.setter
     def max_players(self, arg1: int) -> None: ...
     @typing.overload
-    def get_player(self, name: str) -> Player:
+    def get_player(self, name: str) -> Player | None:
         """
         Gets the player with the exact given name, case-insensitive.
 
@@ -233,7 +233,7 @@ class Server:
         """
         ...
     @typing.overload
-    def get_player(self, unique_id: uuid.UUID) -> Player:
+    def get_player(self, unique_id: uuid.UUID) -> Player | None:
         """
         Gets the player with the given UUID.
 
