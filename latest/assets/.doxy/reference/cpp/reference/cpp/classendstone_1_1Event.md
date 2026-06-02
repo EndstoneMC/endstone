@@ -177,7 +177,7 @@ inline bool endstone::Event::isAsynchronous () const
 
 **Returns:**
 
-false by default, true if the event fires asynchronously 
+`false` by default, `true` if the event fires asynchronously 
 
 
 

@@ -2879,7 +2879,7 @@ For latest updates join the chat on
 <ul>
 <li><code>tag</code> The tag to serialize. </li>
 <li><code>byte_order</code> Byte order: std::endian::little (Bedrock) or std::endian::big (Java). </li>
-<li><code>network</code> If true, use Bedrock network varint encoding for lengths and Int/Long values. </li>
+<li><code>network</code> If <code>true</code>, use Bedrock network varint encoding for lengths and Int/Long values. </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>Binary NBT data as [type:1][name:""][payload]. </p>
@@ -2897,9 +2897,9 @@ For latest updates join the chat on
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>tag</code> The tag to serialize. </li>
-<li><code>name</code> The root tag name (e.g. "" for Bedrock level.dat, or a descriptive name). </li>
+<li><code>name</code> The root tag name (e.g. "" for Bedrock <code>level.dat</code>, or a descriptive name). </li>
 <li><code>byte_order</code> Byte order: std::endian::little (Bedrock) or std::endian::big (Java). </li>
-<li><code>network</code> If true, use Bedrock network varint encoding for lengths and Int/Long values. </li>
+<li><code>network</code> If <code>true</code>, use Bedrock network varint encoding for lengths and Int/Long values. </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>Binary NBT data as [type:1][name:string][payload]. </p>
@@ -2919,7 +2919,7 @@ For latest updates join the chat on
 <li><code>data</code> Binary NBT data. Consumed from front via string_view. </li>
 <li><code>name</code> The deserialized root tag name. </li>
 <li><code>byte_order</code> Byte order used in the binary data. </li>
-<li><code>network</code> If true, expect Bedrock network varint encoding. </li>
+<li><code>network</code> If <code>true</code>, expect Bedrock network varint encoding. </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>The deserialized tag. </p>
@@ -2941,7 +2941,7 @@ For latest updates join the chat on
 <ul>
 <li><code>data</code> Binary NBT data. </li>
 <li><code>byte_order</code> Byte order used in the binary data. </li>
-<li><code>network</code> If true, expect Bedrock network varint encoding. </li>
+<li><code>network</code> If <code>true</code>, expect Bedrock network varint encoding. </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>The deserialized tag. </p>

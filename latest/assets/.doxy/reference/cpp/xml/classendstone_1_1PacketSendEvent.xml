@@ -217,7 +217,7 @@
 <para>Returns the player involved in this event. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>This may return nullptr if the packet is sent before the player completes the login process.</para>
+<para><simplesect kind="note"><para>This may return <computeroutput>nullptr</computeroutput> if the packet is sent before the player completes the login process.</para>
 </simplesect>
 <simplesect kind="return"><para><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> who is involved in this event </para>
 </simplesect>

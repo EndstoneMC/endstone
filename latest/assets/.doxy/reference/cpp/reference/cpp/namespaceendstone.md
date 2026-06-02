@@ -71,7 +71,7 @@ _Represents a button with text and an optional icon._
 | class | [**BlockType**](classendstone_1_1BlockType.md) <br> |
 | class | [**BookMeta**](classendstone_1_1BookMeta.md) <br>_Represents the meta for a written book that can have a title, an author, and pages._  |
 | class | [**BossBar**](classendstone_1_1BossBar.md) <br>_Represents a boss bar that is displayed to players._  |
-| class | [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) <br>[_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._ |
+| class | [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) <br>[_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast()**_](classendstone_1_1Server.md#function-broadcast) _._ |
 | class | [**Button**](classendstone_1_1Button.md) <br>_Represents a button with text and an optional icon._  |
 | class | [**Cancellable**](classendstone_1_1Cancellable.md) &lt;[**typename**](classendstone_1_1Identifier.md) EventType&gt;<br>_A type characterizing events that may be cancelled by a plugin or the server._  |
 | class | [**Chunk**](classendstone_1_1Chunk.md) <br>_Represents a chunk of blocks._  |

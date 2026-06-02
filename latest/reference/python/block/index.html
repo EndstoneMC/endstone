@@ -4017,7 +4017,7 @@ For latest updates join the chat on
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The dimension which contains this Block.</p>
+                <p>The dimension which contains this <code>Block</code>.</p>
               </div>
             </td>
           </tr>
@@ -4157,7 +4157,7 @@ For latest updates join the chat on
 
     <div class="doc doc-contents ">
 
-        <p>The dimension which contains this Block.</p>
+        <p>The dimension which contains this <code>Block</code>.</p>
 
     </div>
 
@@ -4319,7 +4319,7 @@ sign is still a sign after you capture its state.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A BlockState snapshot of the current state of this block.</p>
+                <p>A <code>BlockState</code> snapshot of the current state of this block.</p>
               </div>
             </td>
           </tr>
@@ -4408,7 +4408,7 @@ sign is still a sign after you capture its state.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>False to cancel physics on the changed block.</p>
+                <p><code>False</code> to cancel physics on the changed block.</p>
               </div>
             </td>
             <td>
@@ -4478,7 +4478,7 @@ sign is still a sign after you capture its state.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>False to cancel physics on the changed block.</p>
+                <p><code>False</code> to cancel physics on the changed block.</p>
               </div>
             </td>
             <td>
@@ -5043,10 +5043,10 @@ will unambiguously recreate this instance.</p>
 
 
         <p>Represents a captured state of a block, which will not update automatically.</p>
-<p>Unlike Block, which only one object can exist per coordinate, BlockState can
-exist multiple times for any given Block. Note that another plugin may change
+<p>Unlike <code>Block</code>, which only one object can exist per coordinate, <code>BlockState</code> can
+exist multiple times for any given <code>Block</code>. Note that another plugin may change
 the state of the block, and you will not know, or they may change the block to
-another type entirely, causing your BlockState to become invalid.</p>
+another type entirely, causing your <code>BlockState</code> to become invalid.</p>
 
 
 
@@ -5449,11 +5449,11 @@ another type entirely, causing your BlockState to become invalid.</p>
     <div class="doc doc-contents ">
 
         <p>Attempts to update the block represented by this state, setting it to the new values defined by this state.</p>
-<p>Unless <code>force</code> is True, this will not modify the state of a block if it is no longer the
-same type as it was when this state was taken; in that case it returns False.</p>
-<p>If <code>force</code> is True, the block type is set to match the new state, the state data is applied,
-and True is returned.</p>
-<p>If <code>apply_physics</code> is True, a physics update is triggered on surrounding blocks, which
+<p>Unless <code>force</code> is <code>True</code>, this will not modify the state of a block if it is no longer the
+same type as it was when this state was taken; in that case it returns <code>False</code>.</p>
+<p>If <code>force</code> is <code>True</code>, the block type is set to match the new state, the state data is applied,
+and <code>True</code> is returned.</p>
+<p>If <code>apply_physics</code> is <code>True</code>, a physics update is triggered on surrounding blocks, which
 could cause them to update or disappear.</p>
 
 
@@ -5477,7 +5477,7 @@ could cause them to update or disappear.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>True to forcefully set the state.</p>
+                <p><code>True</code> to forcefully set the state.</p>
               </div>
             </td>
             <td>
@@ -5493,7 +5493,7 @@ could cause them to update or disappear.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>False to cancel updating physics on surrounding blocks.</p>
+                <p><code>False</code> to cancel updating physics on surrounding blocks.</p>
               </div>
             </td>
             <td>
@@ -5519,7 +5519,7 @@ could cause them to update or disappear.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>True if the update was successful, False otherwise.</p>
+                <p><code>True</code> if the update was successful, <code>False</code> otherwise.</p>
               </div>
             </td>
           </tr>
@@ -5580,7 +5580,7 @@ could cause them to update or disappear.</p>
               <td><code><a class="autorefs autorefs-internal" title="            create_block_data (endstone.block.BlockType.create_block_data)" href="#endstone.block.BlockType.create_block_data">create_block_data</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Creates a new BlockData instance for this block type, with all properties initialized to defaults.</p>
+                  <p>Creates a new <code>BlockData</code> instance for this block type, with all properties initialized to defaults.</p>
                 </div>
               </td>
             </tr>
@@ -5593,7 +5593,7 @@ could cause them to update or disappear.</p>
    (endstone.block.BlockType.get)" href="#endstone.block.BlockType.get">get</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Attempts to get the BlockType with the given name.</p>
+                  <p>Attempts to get the <code>BlockType</code> with the given name.</p>
                 </div>
               </td>
             </tr>
@@ -5625,7 +5625,7 @@ could cause them to update or disappear.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>True if this BlockType has a corresponding ItemType.</p>
+                <p><code>True</code> if this <code>BlockType</code> has a corresponding <code>ItemType</code>.</p>
               </div>
             </td>
           </tr>
@@ -5693,7 +5693,7 @@ could cause them to update or disappear.</p>
 
     <div class="doc doc-contents ">
 
-        <p>True if this BlockType has a corresponding ItemType.</p>
+        <p><code>True</code> if this <code>BlockType</code> has a corresponding <code>ItemType</code>.</p>
 
     </div>
 
@@ -5763,7 +5763,7 @@ could cause them to update or disappear.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Creates a new BlockData instance for this block type, with all properties initialized to defaults.</p>
+        <p>Creates a new <code>BlockData</code> instance for this block type, with all properties initialized to defaults.</p>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -5781,7 +5781,7 @@ could cause them to update or disappear.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A new BlockData instance.</p>
+                <p>A new <code>BlockData</code> instance.</p>
               </div>
             </td>
           </tr>
@@ -5810,7 +5810,7 @@ could cause them to update or disappear.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Attempts to get the BlockType with the given name.</p>
+        <p>Attempts to get the <code>BlockType</code> with the given name.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -5859,7 +5859,7 @@ could cause them to update or disappear.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The BlockType, or None if no block type with that name exists.</p>
+                <p>The <code>BlockType</code>, or <code>None</code> if no block type with that name exists.</p>
               </div>
             </td>
           </tr>

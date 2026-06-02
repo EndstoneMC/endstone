@@ -493,7 +493,7 @@
 <para>Check whether this tag holds no elements. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if <ref refid="classendstone_1_1nbt_1_1Tag_1a26db240afe64881bc025116ca2d55fa6" kindref="member">size()</ref> is 0 </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if <ref refid="classendstone_1_1nbt_1_1Tag_1a26db240afe64881bc025116ca2d55fa6" kindref="member">size()</ref> is 0 </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -800,7 +800,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if this tag is a compound and contains the key, false otherwise </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if this tag is a compound and contains the key, <computeroutput>false</computeroutput> otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -887,7 +887,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>a pair of an iterator to the entry and a bool that is true if a new entry was inserted </para>
+<simplesect kind="return"><para>a pair of an iterator to the entry and a bool that is <computeroutput>true</computeroutput> if a new entry was inserted </para>
 </simplesect>
 <parameterlist kind="exception"><parameteritem>
 <parameternamelist>
@@ -1173,7 +1173,7 @@
 <parametername>network</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>If true, use Bedrock network varint encoding. </para>
+<para>If <computeroutput>true</computeroutput>, use Bedrock network varint encoding. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -1232,7 +1232,7 @@
 <parametername>network</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>If true, use Bedrock network varint encoding. </para>
+<para>If <computeroutput>true</computeroutput>, use Bedrock network varint encoding. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

@@ -331,7 +331,7 @@ inline Player * endstone::PacketReceiveEvent::getPlayer () const
 
 **Note:**
 
-This may return nullptr if the packet is sent before the player completes the login process.
+This may return `nullptr` if the packet is sent before the player completes the login process.
 
 
 

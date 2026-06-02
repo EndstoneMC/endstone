@@ -310,7 +310,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if execution is successful, false otherwise </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if execution is successful, <computeroutput>false</computeroutput> otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -496,7 +496,7 @@
 <para>Gets whether the <ref refid="classendstone_1_1Server" kindref="compound">Server</ref> is in online mode or not. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if the server authenticates clients, false otherwise </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the server authenticates clients, <computeroutput>false</computeroutput> otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -633,7 +633,7 @@
           <declname>message</declname>
         </param>
         <briefdescription>
-<para>Broadcasts the specified message to every user with permission endstone.broadcast.user. </para>
+<para>Broadcasts the specified message to every user with permission <computeroutput>endstone.broadcast.user</computeroutput>. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -673,7 +673,7 @@
           <declname>args</declname>
         </param>
         <briefdescription>
-<para>Broadcasts a formatted message to every user with permission endstone.broadcast.user. </para>
+<para>Broadcasts a formatted message to every user with permission <computeroutput>endstone.broadcast.user</computeroutput>. </para>
         </briefdescription>
         <detaileddescription>
 <para>Formats the message using std::format before broadcasting. If formatting throws, the exception message is logged at the Error level instead.</para>
@@ -710,7 +710,7 @@
 <para>Checks the current thread against the expected primary server thread. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if the current thread matches the expected primary thread, false otherwise </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the current thread matches the expected primary thread, <computeroutput>false</computeroutput> otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -748,7 +748,7 @@
 <para>Gets the primary <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> controlled by the server. </para>
         </briefdescription>
         <detaileddescription>
-<para>This <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> is saved by the server, is affected by the /scoreboard command, and is the scoreboard shown by default to players. This will only exist after the level has been loaded.</para>
+<para>This <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> is saved by the server, is affected by the <computeroutput>/scoreboard</computeroutput> command, and is the scoreboard shown by default to players. This will only exist after the level has been loaded.</para>
 <para><simplesect kind="return"><para>the default server scoreboard </para>
 </simplesect>
 </para>
@@ -767,7 +767,7 @@
 <para>Creates a new <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> to be tracked by the server. </para>
         </briefdescription>
         <detaileddescription>
-<para>This will not be saved by the server and is not affected by the /scoreboard command.</para>
+<para>This will not be saved by the server and is not affected by the <computeroutput>/scoreboard</computeroutput> command.</para>
 <para><simplesect kind="return"><para>the newly created <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> </para>
 </simplesect>
 </para>

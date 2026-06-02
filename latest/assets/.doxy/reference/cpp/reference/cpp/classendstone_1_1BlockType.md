@@ -221,7 +221,7 @@ virtual bool endstone::BlockType::hasItemType () const = 0
 
 **Returns:**
 
-true if there is a corresponding [**ItemType**](classendstone_1_1ItemType.md), otherwise false 
+`true` if there is a corresponding [**ItemType**](classendstone_1_1ItemType.md), otherwise `false` 
 
 
 

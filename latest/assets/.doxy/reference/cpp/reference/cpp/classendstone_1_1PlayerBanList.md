@@ -472,14 +472,14 @@ virtual bool endstone::PlayerBanList::isBanned (
 
 **Returns:**
 
-true If a [**BanEntry**](classendstone_1_1BanEntry.md) exists for the target, indicating an active ban status. 
+`true` If a [**BanEntry**](classendstone_1_1BanEntry.md) exists for the target, indicating an active ban status. 
 
 
 
 
 **Returns:**
 
-false Otherwise. 
+`false` Otherwise. 
 
 
 
@@ -519,14 +519,14 @@ virtual bool endstone::PlayerBanList::isBanned (
 
 **Returns:**
 
-true If a [**BanEntry**](classendstone_1_1BanEntry.md) exists for the target, indicating an active ban status. 
+`true` If a [**BanEntry**](classendstone_1_1BanEntry.md) exists for the target, indicating an active ban status. 
 
 
 
 
 **Returns:**
 
-false Otherwise. 
+`false` Otherwise. 
 
 
 

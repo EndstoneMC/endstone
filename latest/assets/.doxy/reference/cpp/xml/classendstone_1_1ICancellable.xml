@@ -42,7 +42,7 @@
 <para>Gets the cancellation state of this event. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if this event is cancelled </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if this event is cancelled </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -76,7 +76,7 @@
 <parametername>cancel</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>true if you wish to cancel this event </para>
+<para><computeroutput>true</computeroutput> if you wish to cancel this event </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

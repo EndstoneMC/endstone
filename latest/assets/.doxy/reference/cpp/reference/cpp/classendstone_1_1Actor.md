@@ -320,7 +320,7 @@ virtual bool endstone::Actor::addScoreboardTag (
 
 **Returns:**
 
-true if the tag was successfully added, false if the tag already exists. 
+`true` if the tag was successfully added, `false` if the tag already exists. 
 
 
 
@@ -766,7 +766,7 @@ virtual void endstone::Actor::remove () = 0
 
 
 
-If you are trying to remove a [**Player**](classendstone_1_1Player.md), use [**Player::kick**](classendstone_1_1Player.md#function-kick) instead. 
+If you are trying to remove a [**Player**](classendstone_1_1Player.md), use [**Player::kick()**](classendstone_1_1Player.md#function-kick) instead. 
 
 
         
@@ -797,7 +797,7 @@ virtual bool endstone::Actor::removeScoreboardTag (
 
 **Returns:**
 
-true if the tag was successfully removed, false if the tag does not exist. 
+`true` if the tag was successfully removed, `false` if the tag does not exist. 
 
 
 
@@ -971,7 +971,7 @@ virtual bool endstone::Actor::teleport (
 
 **Returns:**
 
-true if the teleport was successful. 
+`true` if the teleport was successful. 
 
 
 
@@ -1005,7 +1005,7 @@ virtual bool endstone::Actor::teleport (
 
 **Returns:**
 
-true if the teleport was successful. 
+`true` if the teleport was successful. 
 
 
 

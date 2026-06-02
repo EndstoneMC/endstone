@@ -84,7 +84,7 @@
 <para>Gets the state of weather that the world is being set to. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if the weather is being set to raining, false otherwise </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the weather is being set to raining, <computeroutput>false</computeroutput> otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>

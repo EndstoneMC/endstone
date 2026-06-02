@@ -68,7 +68,7 @@
 <para>Checks if this player is a server operator. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if this is an operator, otherwise false </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if this is an operator, otherwise <computeroutput>false</computeroutput> </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -234,7 +234,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if the command was successful, otherwise false </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the command was successful, otherwise <computeroutput>false</computeroutput> </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -252,7 +252,7 @@
 <para>Returns if the player is in sneak mode. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if player is in sneak mode </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if player is in sneak mode </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -279,7 +279,7 @@
 <parametername>sneak</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>true if player should appear sneaking </para>
+<para><computeroutput>true</computeroutput> if player should appear sneaking </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -299,7 +299,7 @@
 <para>Gets whether the player is sprinting or not. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if player is sprinting. </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if player is sprinting. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -326,7 +326,7 @@
 <parametername>sprinting</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>true if the player should be sprinting </para>
+<para><computeroutput>true</computeroutput> if the player should be sprinting </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -513,8 +513,8 @@
 <para>Gets the players current experience progress towards the next level. </para>
         </briefdescription>
         <detaileddescription>
-<para>This is a percentage value. 0.0 is &quot;no progress&quot; and 1.0 is &quot;next level&quot;.</para>
-<para><simplesect kind="return"><para>Current experience progress, between 0.0 and 1.0. </para>
+<para>This is a percentage value. <computeroutput>0.0</computeroutput> is &quot;no progress&quot; and <computeroutput>1.0</computeroutput> is &quot;next level&quot;.</para>
+<para><simplesect kind="return"><para>Current experience progress, between <computeroutput>0.0</computeroutput> and <computeroutput>1.0</computeroutput>. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -536,7 +536,7 @@
 <para>Sets the players current experience progress towards the next level. </para>
         </briefdescription>
         <detaileddescription>
-<para>This is a percentage value. 0.0 is &quot;no progress&quot; and 1.0 is &quot;next level&quot;.</para>
+<para>This is a percentage value. <computeroutput>0.0</computeroutput> is &quot;no progress&quot; and <computeroutput>1.0</computeroutput> is &quot;next level&quot;.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>progress</parametername>
@@ -628,7 +628,7 @@
 <para>Determines if the <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> is allowed to fly via jump key double-tap. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>True if the player is allowed to fly. </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the player is allowed to fly. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -675,7 +675,7 @@
 <para>Checks to see if this player is currently flying or not. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>True if the player is flying, else false. </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the player is flying, else <computeroutput>false</computeroutput>. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -702,7 +702,7 @@
 <parametername>value</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>True to fly. </para>
+<para><computeroutput>true</computeroutput> to fly. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -722,7 +722,7 @@
 <para>Gets the current allowed speed that a client can fly. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The current allowed speed, default is 0.05. </para>
+<para><simplesect kind="return"><para>The current allowed speed, default is <computeroutput>0.05</computeroutput>. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -769,7 +769,7 @@
 <para>Gets the current allowed speed that a client can walk. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The current allowed speed, default is 0.10. </para>
+<para><simplesect kind="return"><para>The current allowed speed, default is <computeroutput>0.10</computeroutput>. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -1046,7 +1046,7 @@
 <parametername>fade_in</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>time in ticks for titles to fade in. Defaults to 10. </para>
+<para>time in ticks for titles to fade in. Defaults to <computeroutput>10</computeroutput>. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -1054,7 +1054,7 @@
 <parametername>stay</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>time in ticks for titles to stay. Defaults to 70. </para>
+<para>time in ticks for titles to stay. Defaults to <computeroutput>70</computeroutput>. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -1062,7 +1062,7 @@
 <parametername>fade_out</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>time in ticks for titles to fade out. Defaults to 20. </para>
+<para>time in ticks for titles to fade out. Defaults to <computeroutput>20</computeroutput>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

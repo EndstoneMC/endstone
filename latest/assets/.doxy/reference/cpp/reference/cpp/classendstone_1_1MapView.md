@@ -65,7 +65,7 @@ _Represents a map item._
 | virtual std::vector&lt; std::shared\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; &gt; | [**getRenderers**](#function-getrenderers) () const = 0<br>_Get a list of MapRenderers currently in effect._  |
 | virtual [**Scale**](classendstone_1_1MapView.md#enum-scale) | [**getScale**](#function-getscale) () const = 0<br>_Get the scale of this map._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isLocked**](#function-islocked) () const = 0<br>_Gets whether the map is locked or not._  |
-| virtual [**bool**](classendstone_1_1Identifier.md) | [**isUnlimitedTracking**](#function-isunlimitedtracking) () const = 0<br>_Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isUnlimitedTracking**](#function-isunlimitedtracking) () const = 0<br>_Whether the map will show a smaller position cursor (_ `true` _), or no position cursor (_`false` _) when cursor is outside of map's range._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isVirtual**](#function-isvirtual) () const = 0<br>_Check whether this map is virtual._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**removeRenderer**](#function-removerenderer) ([**const**](classendstone_1_1Identifier.md) std::shared\_ptr&lt; [**MapRenderer**](classendstone_1_1MapRenderer.md) &gt; & renderer) = 0<br>_Remove a renderer from this map._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setCenterX**](#function-setcenterx) ([**int**](classendstone_1_1Identifier.md) x) = 0<br>_Set the center X position of this map._  |
@@ -73,7 +73,7 @@ _Represents a map item._
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setDimension**](#function-setdimension) ([**const**](classendstone_1_1Identifier.md) [**Dimension**](classendstone_1_1Dimension.md) & dimension) = 0<br>_Set the dimension that this map is associated with._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setLocked**](#function-setlocked) ([**bool**](classendstone_1_1Identifier.md) locked) = 0<br>_Sets whether the map is locked or not._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setScale**](#function-setscale) ([**Scale**](classendstone_1_1MapView.md#enum-scale) scale) = 0<br>_Set the scale of this map._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**setUnlimitedTracking**](#function-setunlimitedtracking) ([**bool**](classendstone_1_1Identifier.md) unlimited) = 0<br>_Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**setUnlimitedTracking**](#function-setunlimitedtracking) ([**bool**](classendstone_1_1Identifier.md) unlimited) = 0<br>_Whether the map will show a smaller position cursor (_ `true` _), or no position cursor (_`false` _) when cursor is outside of map's range._ |
 | virtual  | [**~MapView**](#function-mapview) () = default<br> |
 
 
@@ -337,7 +337,7 @@ True if the map is locked.
 
 ### function isUnlimitedTracking 
 
-_Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range._ 
+_Whether the map will show a smaller position cursor (_ `true` _), or no position cursor (_`false` _) when cursor is outside of map's range._
 ```C++
 virtual bool endstone::MapView::isUnlimitedTracking () const = 0
 ```
@@ -562,7 +562,7 @@ virtual void endstone::MapView::setScale (
 
 ### function setUnlimitedTracking 
 
-_Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map's range._ 
+_Whether the map will show a smaller position cursor (_ `true` _), or no position cursor (_`false` _) when cursor is outside of map's range._
 ```C++
 virtual void endstone::MapView::setUnlimitedTracking (
     bool unlimited

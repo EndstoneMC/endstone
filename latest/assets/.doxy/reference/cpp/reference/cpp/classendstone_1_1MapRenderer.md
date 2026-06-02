@@ -160,7 +160,7 @@ has different canvases for different players.
 
 **Returns:**
 
-true if contextual, false otherwise. 
+`true` if contextual, `false` otherwise. 
 
 
 

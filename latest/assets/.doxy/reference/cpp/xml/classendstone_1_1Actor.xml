@@ -234,7 +234,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if the teleport was successful. </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the teleport was successful. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -265,7 +265,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if the teleport was successful. </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the teleport was successful. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -301,7 +301,7 @@
 <para>Remove this actor from the level. </para>
         </briefdescription>
         <detaileddescription>
-<para>If you are trying to remove a <ref refid="classendstone_1_1Player" kindref="compound">Player</ref>, use <ref refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" kindref="member">Player::kick</ref> instead. </para>
+<para>If you are trying to remove a <ref refid="classendstone_1_1Player" kindref="compound">Player</ref>, use <ref refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" kindref="member">Player::kick()</ref> instead. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -384,7 +384,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if the tag was successfully added, false if the tag already exists. </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the tag was successfully added, <computeroutput>false</computeroutput> if the tag already exists. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -415,7 +415,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if the tag was successfully removed, false if the tag does not exist. </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the tag was successfully removed, <computeroutput>false</computeroutput> if the tag does not exist. </para>
 </simplesect>
 </para>
         </detaileddescription>

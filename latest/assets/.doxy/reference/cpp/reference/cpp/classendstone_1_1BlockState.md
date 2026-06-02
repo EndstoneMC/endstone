@@ -369,14 +369,14 @@ virtual bool endstone::BlockState::update () = 0
 
 
 
-This has the same effect as calling [**update(false)**](classendstone_1_1BlockState.md#function-update-23). That is to say, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return false in this eventuality.
+This has the same effect as calling [**update(false)**](classendstone_1_1BlockState.md#function-update-23). That is to say, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return `false` in this eventuality.
 
 
 
 
 **Returns:**
 
-true if the update was successful, otherwise false 
+`true` if the update was successful, otherwise `false` 
 
 
 
@@ -407,13 +407,13 @@ This has the same effect as calling [**update(force, true)**](classendstone_1_1B
 **Parameters:**
 
 
-* `force` true to forcefully set the state 
+* `force` `true` to forcefully set the state 
 
 
 
 **Returns:**
 
-true if the update was successful, otherwise false 
+`true` if the update was successful, otherwise `false` 
 
 
 
@@ -437,13 +437,13 @@ virtual bool endstone::BlockState::update (
 
 
 
-Unless force is true, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return false in this eventuality. 
+Unless force is `true`, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return `false` in this eventuality. 
 
 
-If force is true, it will set the type of the block to match the new state, set the state data and then return true. 
+If force is `true`, it will set the type of the block to match the new state, set the state data and then return `true`. 
 
 
-If apply\_physics is true, it will trigger a physics update on surrounding blocks which could cause them to update or disappear.
+If apply\_physics is `true`, it will trigger a physics update on surrounding blocks which could cause them to update or disappear.
 
 
 
@@ -451,14 +451,14 @@ If apply\_physics is true, it will trigger a physics update on surrounding block
 **Parameters:**
 
 
-* `force` true to forcefully set the state 
-* `apply_physics` false to cancel updating physics on surrounding blocks 
+* `force` `true` to forcefully set the state 
+* `apply_physics` `false` to cancel updating physics on surrounding blocks 
 
 
 
 **Returns:**
 
-true if the update was successful, otherwise false 
+`true` if the update was successful, otherwise `false` 
 
 
 

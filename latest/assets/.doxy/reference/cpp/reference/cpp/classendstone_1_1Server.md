@@ -62,8 +62,8 @@ _Represents a server implementation._
 |   | [**Server**](#function-server-22) ([**const**](classendstone_1_1Identifier.md) [**Server**](classendstone_1_1Server.md) &) = delete<br> |
 | virtual [**IRegistry**](classendstone_1_1IRegistry.md) \* | [**\_getRegistry**](#function-_getregistry) ([**const**](classendstone_1_1Identifier.md) std::type\_info & type) const = 0<br>_Returns the registry for the given type._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**broadcast**](#function-broadcast) ([**const**](classendstone_1_1Identifier.md) [**Message**](namespaceendstone.md#typedef-message) & message, [**const**](classendstone_1_1Identifier.md) std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-12) ([**const**](classendstone_1_1Identifier.md) [**Message**](namespaceendstone.md#typedef-message) & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
-|  [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br>_Broadcasts a formatted message to every user with permission endstone.broadcast.user._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-12) ([**const**](classendstone_1_1Identifier.md) [**Message**](namespaceendstone.md#typedef-message) & message) const = 0<br>_Broadcasts the specified message to every user with permission_ `endstone.broadcast.user` _._ |
+|  [**void**](classendstone_1_1Identifier.md) | [**broadcastMessage**](#function-broadcastmessage-22) ([**const**](classendstone_1_1Identifier.md) std::format\_string&lt; Args... &gt; format, [**Args**](classendstone_1_1Identifier.md) &&... args) const<br>_Broadcasts a formatted message to every user with permission_ `endstone.broadcast.user` _._ |
 | virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) ([**BlockTypeId**](classendstone_1_1Identifier.md) type) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._ |
 | virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) ([**BlockTypeId**](classendstone_1_1Identifier.md) type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, [**BarColor**](namespaceendstone.md#enum-barcolor) color, [**BarStyle**](namespaceendstone.md#enum-barstyle) style) const = 0<br>_Creates a boss bar instance to display to players._  |
@@ -269,7 +269,7 @@ virtual void endstone::Server::broadcast (
 
 ### function broadcastMessage [1/2]
 
-_Broadcasts the specified message to every user with permission endstone.broadcast.user._ 
+_Broadcasts the specified message to every user with permission_ `endstone.broadcast.user` _._
 ```C++
 virtual void endstone::Server::broadcastMessage (
     const  Message & message
@@ -296,7 +296,7 @@ virtual void endstone::Server::broadcastMessage (
 
 ### function broadcastMessage [2/2]
 
-_Broadcasts a formatted message to every user with permission endstone.broadcast.user._ 
+_Broadcasts a formatted message to every user with permission_ `endstone.broadcast.user` _._
 ```C++
 template<typename... Args>
 inline void endstone::Server::broadcastMessage (
@@ -524,7 +524,7 @@ virtual std::shared_ptr< Scoreboard > endstone::Server::createScoreboard () = 0
 
 
 
-This will not be saved by the server and is not affected by the /scoreboard command.
+This will not be saved by the server and is not affected by the `/scoreboard` command.
 
 
 
@@ -567,7 +567,7 @@ virtual bool endstone::Server::dispatchCommand (
 
 **Returns:**
 
-true if execution is successful, false otherwise 
+`true` if execution is successful, `false` otherwise 
 
 
 
@@ -1029,7 +1029,7 @@ virtual bool endstone::Server::getOnlineMode () const = 0
 
 **Returns:**
 
-true if the server authenticates clients, false otherwise 
+`true` if the server authenticates clients, `false` otherwise 
 
 
 
@@ -1335,7 +1335,7 @@ virtual Scoreboard * endstone::Server::getScoreboard () const = 0
 
 
 
-This [**Scoreboard**](classendstone_1_1Scoreboard.md) is saved by the server, is affected by the /scoreboard command, and is the scoreboard shown by default to players. This will only exist after the level has been loaded.
+This [**Scoreboard**](classendstone_1_1Scoreboard.md) is saved by the server, is affected by the `/scoreboard` command, and is the scoreboard shown by default to players. This will only exist after the level has been loaded.
 
 
 
@@ -1442,7 +1442,7 @@ virtual bool endstone::Server::isPrimaryThread () const = 0
 
 **Returns:**
 
-true if the current thread matches the expected primary thread, false otherwise 
+`true` if the current thread matches the expected primary thread, `false` otherwise 
 
 
 

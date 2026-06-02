@@ -84,7 +84,7 @@
 <para>Gets the state of thunder that the world is being set to. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if the weather is being set to thundering, false otherwise </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the weather is being set to thundering, <computeroutput>false</computeroutput> otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>

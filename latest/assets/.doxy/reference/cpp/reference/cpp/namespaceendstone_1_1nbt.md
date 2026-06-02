@@ -159,7 +159,7 @@ inline std::string endstone::nbt::dump (
 
 * `tag` The tag to serialize. 
 * `byte_order` Byte order: std::endian::little (Bedrock) or std::endian::big (Java). 
-* `network` If true, use Bedrock network varint encoding for lengths and Int/Long values. 
+* `network` If `true`, use Bedrock network varint encoding for lengths and Int/Long values. 
 
 
 
@@ -197,9 +197,9 @@ inline std::string endstone::nbt::dump (
 
 
 * `tag` The tag to serialize. 
-* `name` The root tag name (e.g. "" for Bedrock level.dat, or a descriptive name). 
+* `name` The root tag name (e.g. "" for Bedrock `level.dat`, or a descriptive name). 
 * `byte_order` Byte order: std::endian::little (Bedrock) or std::endian::big (Java). 
-* `network` If true, use Bedrock network varint encoding for lengths and Int/Long values. 
+* `network` If `true`, use Bedrock network varint encoding for lengths and Int/Long values. 
 
 
 
@@ -239,7 +239,7 @@ inline Tag endstone::nbt::load (
 * `data` Binary NBT data. Consumed from front via string\_view. 
 * `name` The deserialized root tag name. 
 * `byte_order` Byte order used in the binary data. 
-* `network` If true, expect Bedrock network varint encoding. 
+* `network` If `true`, expect Bedrock network varint encoding. 
 
 
 
@@ -284,7 +284,7 @@ inline Tag endstone::nbt::load (
 
 * `data` Binary NBT data. 
 * `byte_order` Byte order used in the binary data. 
-* `network` If true, expect Bedrock network varint encoding. 
+* `network` If `true`, expect Bedrock network varint encoding. 
 
 
 

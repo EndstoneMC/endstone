@@ -520,7 +520,7 @@ virtual void endstone::Block::setType (
 **Parameters:**
 
 
-* `type` New type for this block (e.g. BlockType::Air or "minecraft:stone"). 
+* `type` New type for this block (e.g. BlockType::Air or `minecraft:stone`). 
 
 
 
@@ -548,7 +548,7 @@ virtual void endstone::Block::setType (
 **Parameters:**
 
 
-* `type` New type for this block (e.g. BlockType::Air or "minecraft:stone"). 
+* `type` New type for this block (e.g. BlockType::Air or `minecraft:stone`). 
 * `apply_physics` False to cancel physics on the changed block. 
 
 

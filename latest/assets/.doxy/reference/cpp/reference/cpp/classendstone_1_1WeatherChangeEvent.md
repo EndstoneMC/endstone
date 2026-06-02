@@ -249,7 +249,7 @@ inline bool endstone::WeatherChangeEvent::toWeatherState () const
 
 **Returns:**
 
-true if the weather is being set to raining, false otherwise 
+`true` if the weather is being set to raining, `false` otherwise 
 
 
 

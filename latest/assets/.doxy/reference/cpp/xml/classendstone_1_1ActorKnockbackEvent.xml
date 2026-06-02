@@ -116,7 +116,7 @@
 <para>Get the source actor that has caused knockback to the defender, if exists. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>actor that caused knockback, or nullptr if the knockback is not caused by an actor. </para>
+<para><simplesect kind="return"><para>actor that caused knockback, or <computeroutput>nullptr</computeroutput> if the knockback is not caused by an actor. </para>
 </simplesect>
 </para>
         </detaileddescription>

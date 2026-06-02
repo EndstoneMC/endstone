@@ -230,8 +230,8 @@
 <para>Attempts to update the block represented by this state, setting it to yhe new values as defined by this state. </para>
         </briefdescription>
         <detaileddescription>
-<para>This has the same effect as calling <ref refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" kindref="member">update(false)</ref>. That is to say, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return false in this eventuality.</para>
-<para><simplesect kind="return"><para>true if the update was successful, otherwise false </para>
+<para>This has the same effect as calling <ref refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" kindref="member">update(false)</ref>. That is to say, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return <computeroutput>false</computeroutput> in this eventuality.</para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the update was successful, otherwise <computeroutput>false</computeroutput> </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -259,11 +259,11 @@
 <parametername>force</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>true to forcefully set the state </para>
+<para><computeroutput>true</computeroutput> to forcefully set the state </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if the update was successful, otherwise false </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the update was successful, otherwise <computeroutput>false</computeroutput> </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -289,15 +289,15 @@
 <para>Attempts to update the block represented by this state, setting it to the new values as defined by this state. </para>
         </briefdescription>
         <detaileddescription>
-<para>Unless force is true, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return false in this eventuality. </para>
-<para>If force is true, it will set the type of the block to match the new state, set the state data and then return true. </para>
-<para>If apply_physics is true, it will trigger a physics update on surrounding blocks which could cause them to update or disappear.</para>
+<para>Unless force is <computeroutput>true</computeroutput>, this will not modify the state of a block if it is no longer the same type as it was when this state was taken. It will return <computeroutput>false</computeroutput> in this eventuality. </para>
+<para>If force is <computeroutput>true</computeroutput>, it will set the type of the block to match the new state, set the state data and then return <computeroutput>true</computeroutput>. </para>
+<para>If apply_physics is <computeroutput>true</computeroutput>, it will trigger a physics update on surrounding blocks which could cause them to update or disappear.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>force</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>true to forcefully set the state </para>
+<para><computeroutput>true</computeroutput> to forcefully set the state </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -305,11 +305,11 @@
 <parametername>apply_physics</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>false to cancel updating physics on surrounding blocks </para>
+<para><computeroutput>false</computeroutput> to cancel updating physics on surrounding blocks </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if the update was successful, otherwise false </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the update was successful, otherwise <computeroutput>false</computeroutput> </para>
 </simplesect>
 </para>
         </detaileddescription>

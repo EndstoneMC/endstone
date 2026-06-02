@@ -421,7 +421,7 @@ virtual bool endstone::Logger::isEnabledFor (
 
 **Returns:**
 
-true if the logger is enabled for the [**Level**](classendstone_1_1Level.md), false otherwise. 
+`true` if the logger is enabled for the [**Level**](classendstone_1_1Level.md), `false` otherwise. 
 
 
 

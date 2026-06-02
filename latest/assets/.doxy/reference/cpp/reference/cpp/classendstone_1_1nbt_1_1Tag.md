@@ -694,7 +694,7 @@ inline bool endstone::nbt::Tag::contains (
 
 **Returns:**
 
-true if this tag is a compound and contains the key, false otherwise 
+`true` if this tag is a compound and contains the key, `false` otherwise 
 
 
 
@@ -724,7 +724,7 @@ inline std::string endstone::nbt::Tag::dump (
 
 
 * `byte_order` std::endian::little (Bedrock) or std::endian::big (Java). 
-* `network` If true, use Bedrock network varint encoding. 
+* `network` If `true`, use Bedrock network varint encoding. 
 
 
 
@@ -765,7 +765,7 @@ inline std::string endstone::nbt::Tag::dump (
 
 * `name` The root tag name. 
 * `byte_order` std::endian::little (Bedrock) or std::endian::big (Java). 
-* `network` If true, use Bedrock network varint encoding. 
+* `network` If `true`, use Bedrock network varint encoding. 
 
 
 
@@ -809,7 +809,7 @@ An empty tag is promoted to a [**CompoundTag**](classendstone_1_1CompoundTag.md)
 
 **Returns:**
 
-a pair of an iterator to the entry and a bool that is true if a new entry was inserted 
+a pair of an iterator to the entry and a bool that is `true` if a new entry was inserted 
 
 
 
@@ -886,7 +886,7 @@ inline bool endstone::nbt::Tag::empty () noexcept const
 
 **Returns:**
 
-true if [**size()**](classendstone_1_1nbt_1_1Tag.md#function-size) is 0 
+`true` if [**size()**](classendstone_1_1nbt_1_1Tag.md#function-size) is 0 
 
 
 

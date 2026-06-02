@@ -3759,7 +3759,7 @@ For latest updates join the chat on
 <li><code>key</code> the key to look up </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p>true if this tag is a compound and contains the key, false otherwise </p>
+<p><code>true</code> if this tag is a compound and contains the key, <code>false</code> otherwise </p>
 <hr>
 
 <h3 id="function-dump-12">function dump [&frac12;]<a class="headerlink" href="#function-dump-12" title="Permanent link">&para;</a></h3>
@@ -3772,7 +3772,7 @@ For latest updates join the chat on
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>byte_order</code> std::endian::little (Bedrock) or std::endian::big (Java). </li>
-<li><code>network</code> If true, use Bedrock network varint encoding. </li>
+<li><code>network</code> If <code>true</code>, use Bedrock network varint encoding. </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>Binary NBT data. </p>
@@ -3791,7 +3791,7 @@ For latest updates join the chat on
 <ul>
 <li><code>name</code> The root tag name. </li>
 <li><code>byte_order</code> std::endian::little (Bedrock) or std::endian::big (Java). </li>
-<li><code>network</code> If true, use Bedrock network varint encoding. </li>
+<li><code>network</code> If <code>true</code>, use Bedrock network varint encoding. </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>Binary NBT data. </p>
@@ -3810,7 +3810,7 @@ For latest updates join the chat on
 <li><code>args</code> the arguments forwarded to construct the key/value entry </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p>a pair of an iterator to the entry and a bool that is true if a new entry was inserted </p>
+<p>a pair of an iterator to the entry and a bool that is <code>true</code> if a new entry was inserted </p>
 <p><strong>Exception:</strong></p>
 <ul>
 <li><code>std::runtime_error</code> if this tag is not a compound </li>
@@ -3842,7 +3842,7 @@ For latest updates join the chat on
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">nbt</span><span class="o">::</span><span class="n">Tag</span><span class="o">::</span><span class="n">empty</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>true if <a href="./#function-size"><strong>size()</strong></a> is 0 </p>
+<p><code>true</code> if <a href="./#function-size"><strong>size()</strong></a> is 0 </p>
 <hr>
 
 <h3 id="function-get-12">function get [&frac12;]<a class="headerlink" href="#function-get-12" title="Permanent link">&para;</a></h3>

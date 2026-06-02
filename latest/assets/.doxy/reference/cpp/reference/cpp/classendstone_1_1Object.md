@@ -205,7 +205,7 @@ inline bool endstone::Object::is () const
 
 **Returns:**
 
-True if this object is an instance of T 
+`true` if this object is an instance of T 
 
 
 

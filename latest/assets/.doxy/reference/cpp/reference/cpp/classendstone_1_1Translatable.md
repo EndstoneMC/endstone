@@ -131,7 +131,7 @@ inline bool endstone::Translatable::empty () const
 
 **Returns:**
 
-true if the message to be translated is empty, false otherwise 
+`true` if the message to be translated is empty, `false` otherwise 
 
 
 

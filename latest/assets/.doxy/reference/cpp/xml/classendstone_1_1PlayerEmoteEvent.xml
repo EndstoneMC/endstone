@@ -121,7 +121,7 @@
         </briefdescription>
         <detaileddescription>
 <para>This method determines whether the emote is being executed without sending a chat message about the emote.</para>
-<para><simplesect kind="return"><para>true if the emote is muted, false otherwise. </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the emote is muted, <computeroutput>false</computeroutput> otherwise. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -143,14 +143,14 @@
 <para>Sets the muted state for the emote. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>If set to true, the emote will be executed silently, and no chat messages will be sent.</para>
+<para><simplesect kind="note"><para>If set to <computeroutput>true</computeroutput>, the emote will be executed silently, and no chat messages will be sent.</para>
 </simplesect>
 <parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>muted</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>true to mute the emote and disable chat messages, false to unmute it. </para>
+<para><computeroutput>true</computeroutput> to mute the emote and disable chat messages, <computeroutput>false</computeroutput> to unmute it. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

@@ -525,7 +525,7 @@ virtual bool endstone::Player::getAllowFlight () const = 0
 
 **Returns:**
 
-True if the player is allowed to fly. 
+`true` if the player is allowed to fly. 
 
 
 
@@ -646,14 +646,14 @@ virtual float endstone::Player::getExpProgress () const = 0
 
 
 
-This is a percentage value. 0.0 is "no progress" and 1.0 is "next level".
+This is a percentage value. `0.0` is "no progress" and `1.0` is "next level".
 
 
 
 
 **Returns:**
 
-Current experience progress, between 0.0 and 1.0. 
+Current experience progress, between `0.0` and `1.0`. 
 
 
 
@@ -678,7 +678,7 @@ virtual float endstone::Player::getFlySpeed () const = 0
 
 **Returns:**
 
-The current allowed speed, default is 0.05. 
+The current allowed speed, default is `0.05`. 
 
 
 
@@ -958,7 +958,7 @@ virtual float endstone::Player::getWalkSpeed () const = 0
 
 **Returns:**
 
-The current allowed speed, default is 0.10. 
+The current allowed speed, default is `0.10`. 
 
 
 
@@ -1062,7 +1062,7 @@ virtual bool endstone::Player::isFlying () const = 0
 
 **Returns:**
 
-True if the player is flying, else false. 
+`true` if the player is flying, else `false`. 
 
 
 
@@ -1087,7 +1087,7 @@ virtual bool endstone::Player::isOp () const = 0
 
 **Returns:**
 
-true if this is an operator, otherwise false 
+`true` if this is an operator, otherwise `false` 
 
 
 
@@ -1112,7 +1112,7 @@ virtual bool endstone::Player::isSneaking () const = 0
 
 **Returns:**
 
-true if player is in sneak mode 
+`true` if player is in sneak mode 
 
 
 
@@ -1137,7 +1137,7 @@ virtual bool endstone::Player::isSprinting () const = 0
 
 **Returns:**
 
-true if player is sprinting. 
+`true` if player is sprinting. 
 
 
 
@@ -1198,7 +1198,7 @@ virtual bool endstone::Player::performCommand (
 
 **Returns:**
 
-true if the command was successful, otherwise false 
+`true` if the command was successful, otherwise `false` 
 
 
 
@@ -1458,9 +1458,9 @@ If they are empty strings, the display will be updated as such.
 
 * `title` Title text 
 * `subtitle` Subtitle text 
-* `fade_in` time in ticks for titles to fade in. Defaults to 10. 
-* `stay` time in ticks for titles to stay. Defaults to 70. 
-* `fade_out` time in ticks for titles to fade out. Defaults to 20. 
+* `fade_in` time in ticks for titles to fade in. Defaults to `10`. 
+* `stay` time in ticks for titles to stay. Defaults to `70`. 
+* `fade_out` time in ticks for titles to fade out. Defaults to `20`. 
 
 
 
@@ -1565,7 +1565,7 @@ virtual void endstone::Player::setExpProgress (
 
 
 
-This is a percentage value. 0.0 is "no progress" and 1.0 is "next level".
+This is a percentage value. `0.0` is "no progress" and `1.0` is "next level".
 
 
 
@@ -1627,7 +1627,7 @@ virtual void endstone::Player::setFlying (
 **Parameters:**
 
 
-* `value` True to fly. 
+* `value` `true` to fly. 
 
 
 
@@ -1735,7 +1735,7 @@ virtual void endstone::Player::setSneaking (
 **Parameters:**
 
 
-* `sneak` true if player should appear sneaking 
+* `sneak` `true` if player should appear sneaking 
 
 
 
@@ -1762,7 +1762,7 @@ virtual void endstone::Player::setSprinting (
 **Parameters:**
 
 
-* `sprinting` true if the player should be sprinting 
+* `sprinting` `true` if the player should be sprinting 
 
 
 

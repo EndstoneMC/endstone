@@ -85,7 +85,7 @@
         </briefdescription>
         <detaileddescription>
 <para>Damage is considered indirect if <ref refid="classendstone_1_1DamageSource_1aa918ccf5242cf6d8ed707457c227f9c5" kindref="member">DamageSource::getActor()</ref> is not equal to <ref refid="classendstone_1_1DamageSource_1a022af0acc2aab4bd95e5ce916186a4ff" kindref="member">DamageSource::getDamagingActor()</ref>. This will be the case, for example, if a skeleton shot an arrow or a player threw a potion.</para>
-<para><simplesect kind="return"><para>true if is indirect, false otherwise. </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if is indirect, <computeroutput>false</computeroutput> otherwise. </para>
 </simplesect>
 </para>
         </detaileddescription>

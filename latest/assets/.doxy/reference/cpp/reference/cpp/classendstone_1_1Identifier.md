@@ -74,7 +74,7 @@ _Represents a identifier consisting of two components: a namespace and a key._
 
 | Type | Name |
 | ---: | :--- |
-|  [**constexpr**](classendstone_1_1Identifier.md) [**Identifier**](classendstone_1_1Identifier.md) | [**minecraft**](#function-minecraft) ([**const**](classendstone_1_1Identifier.md) std::string\_view key) noexcept<br>_Creates an identifier in the minecraft namespace with the given key._  |
+|  [**constexpr**](classendstone_1_1Identifier.md) [**Identifier**](classendstone_1_1Identifier.md) | [**minecraft**](#function-minecraft) ([**const**](classendstone_1_1Identifier.md) std::string\_view key) noexcept<br>_Creates an identifier in the_ `minecraft` _namespace with the given key._ |
 
 
 
@@ -193,7 +193,7 @@ inline constexpr endstone::Identifier::Identifier (
 
 
 
-If the string contains a colon, the part before the last colon is taken as the namespace and the remainder as the key. Otherwise the whole string is the key and the namespace defaults to minecraft.
+If the string contains a colon, the part before the last colon is taken as the namespace and the remainder as the key. Otherwise the whole string is the key and the namespace defaults to `minecraft`.
 
 
 
@@ -338,7 +338,7 @@ inline constexpr  bool endstone::Identifier::operator== (
 
 ### function minecraft 
 
-_Creates an identifier in the minecraft namespace with the given key._ 
+_Creates an identifier in the_ `minecraft` _namespace with the given key._
 ```C++
 static inline constexpr  Identifier endstone::Identifier::minecraft (
     const std::string_view key
@@ -358,7 +358,7 @@ static inline constexpr  Identifier endstone::Identifier::minecraft (
 
 **Returns:**
 
-an identifier with the namespace set to minecraft. 
+an identifier with the namespace set to `minecraft`. 
 
 
 

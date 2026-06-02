@@ -55,7 +55,7 @@
 <parametername>type</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>New type for this block (e.g. BlockType::Air or &quot;minecraft:stone&quot;). </para>
+<para>New type for this block (e.g. BlockType::Air or <computeroutput>minecraft:stone</computeroutput>). </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -88,7 +88,7 @@
 <parametername>type</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>New type for this block (e.g. BlockType::Air or &quot;minecraft:stone&quot;). </para>
+<para>New type for this block (e.g. BlockType::Air or <computeroutput>minecraft:stone</computeroutput>). </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>

@@ -8,7 +8,7 @@
 
 
 
-[_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._[More...](#detailed-description)
+[_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast()**_](classendstone_1_1Server.md#function-broadcast) _._[More...](#detailed-description)
 
 * `#include <endstone/event/server/broadcast_message_event.h>`
 

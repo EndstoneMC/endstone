@@ -122,7 +122,7 @@
 <para>Check if the message to be translated is empty. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if the message to be translated is empty, false otherwise </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the message to be translated is empty, <computeroutput>false</computeroutput> otherwise </para>
 </simplesect>
 </para>
         </detaileddescription>

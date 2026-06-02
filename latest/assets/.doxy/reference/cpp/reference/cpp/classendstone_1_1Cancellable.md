@@ -185,7 +185,7 @@ A cancelled event will not be executed in the server, but will still pass to oth
 
 **Returns:**
 
-true if this event is cancelled 
+`true` if this event is cancelled 
 
 
 
@@ -218,7 +218,7 @@ A cancelled event will not be executed in the server, but will still pass to oth
 **Parameters:**
 
 
-* `cancel` true if you wish to cancel this event 
+* `cancel` `true` if you wish to cancel this event 
 
 
 

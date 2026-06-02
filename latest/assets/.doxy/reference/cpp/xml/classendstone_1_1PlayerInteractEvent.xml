@@ -297,9 +297,9 @@
 <para>Gets the exact position on the block the player interacted with. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>This will be std::nullopt outside of <ref refid="classendstone_1_1PlayerInteractEvent_1aeb83b5a442ff89d6ffa627d6de378ce8aad2783b23ef59758356afa3690f496a8" kindref="member">Action.RightClickBlock</ref> </para>
+<para><simplesect kind="note"><para>This will be std::nullopt outside of <ref refid="classendstone_1_1PlayerInteractEvent_1aeb83b5a442ff89d6ffa627d6de378ce8aad2783b23ef59758356afa3690f496a8" kindref="member">Action::RightClickBlock</ref> </para>
 </simplesect>
-<simplesect kind="note"><para>All vector components are between 0.0 and 1.0 inclusive.</para>
+<simplesect kind="note"><para>All vector components are between <computeroutput>0.0</computeroutput> and <computeroutput>1.0</computeroutput> inclusive.</para>
 </simplesect>
 <simplesect kind="return"><para>the clicked position. </para>
 </simplesect>

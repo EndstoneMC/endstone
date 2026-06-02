@@ -187,7 +187,7 @@ Damage is considered indirect if [**DamageSource::getActor()**](classendstone_1_
 
 **Returns:**
 
-true if is indirect, false otherwise. 
+`true` if is indirect, `false` otherwise. 
 
 
 

@@ -162,7 +162,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true if the logger is enabled for the <ref refid="classendstone_1_1Level" kindref="compound">Level</ref>, false otherwise. </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the logger is enabled for the <ref refid="classendstone_1_1Level" kindref="compound">Level</ref>, <computeroutput>false</computeroutput> otherwise. </para>
 </simplesect>
 </para>
         </detaileddescription>

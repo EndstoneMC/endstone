@@ -249,7 +249,7 @@ inline bool endstone::ThunderChangeEvent::toThunderState () const
 
 **Returns:**
 
-true if the weather is being set to thundering, false otherwise 
+`true` if the weather is being set to thundering, `false` otherwise 
 
 
 

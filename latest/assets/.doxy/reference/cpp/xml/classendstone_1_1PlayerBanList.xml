@@ -457,9 +457,9 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true If a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> exists for the target, indicating an active ban status. </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> If a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> exists for the target, indicating an active ban status. </para>
 </simplesect>
-<simplesect kind="return"><para>false Otherwise. </para>
+<simplesect kind="return"><para><computeroutput>false</computeroutput> Otherwise. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -514,9 +514,9 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true If a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> exists for the target, indicating an active ban status. </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> If a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> exists for the target, indicating an active ban status. </para>
 </simplesect>
-<simplesect kind="return"><para>false Otherwise. </para>
+<simplesect kind="return"><para><computeroutput>false</computeroutput> Otherwise. </para>
 </simplesect>
 </para>
         </detaileddescription>

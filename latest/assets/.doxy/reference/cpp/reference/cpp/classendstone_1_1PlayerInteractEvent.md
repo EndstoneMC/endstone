@@ -359,14 +359,14 @@ inline std::optional< Vector > endstone::PlayerInteractEvent::getClickedPosition
 
 **Note:**
 
-This will be std::nullopt outside of Action.RightClickBlock 
+This will be std::nullopt outside of Action::RightClickBlock 
 
 
 
 
 **Note:**
 
-All vector components are between 0.0 and 1.0 inclusive.
+All vector components are between `0.0` and `1.0` inclusive.
 
 
 

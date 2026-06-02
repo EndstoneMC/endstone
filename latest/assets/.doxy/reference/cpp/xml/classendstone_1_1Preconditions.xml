@@ -46,7 +46,7 @@
 <parametername>format</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A format string describing the failure, used when the condition is false. </para>
+<para>A format string describing the failure, used when the condition is <computeroutput>false</computeroutput>. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -63,7 +63,7 @@
 <parametername>std::invalid_argument</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>if condition is false. </para>
+<para>if condition is <computeroutput>false</computeroutput>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -115,7 +115,7 @@
 <parametername>format</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A format string describing the failure, used when the condition is false. </para>
+<para>A format string describing the failure, used when the condition is <computeroutput>false</computeroutput>. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -132,7 +132,7 @@
 <parametername>std::runtime_error</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>if condition is false. </para>
+<para>if condition is <computeroutput>false</computeroutput>. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

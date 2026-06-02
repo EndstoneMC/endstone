@@ -117,7 +117,7 @@ virtual bool endstone::ICancellable::isCancelled () const = 0
 
 **Returns:**
 
-true if this event is cancelled 
+`true` if this event is cancelled 
 
 
 
@@ -145,7 +145,7 @@ virtual void endstone::ICancellable::setCancelled (
 **Parameters:**
 
 
-* `cancel` true if you wish to cancel this event 
+* `cancel` `true` if you wish to cancel this event 
 
 
 

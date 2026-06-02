@@ -74,7 +74,7 @@ _Represents a plugin manager that handles all plugins from the_ [_**Server**_](c
 | virtual std::vector&lt; [**Plugin**](classendstone_1_1Plugin.md) \* &gt; | [**loadPlugins**](#function-loadplugins-12) (std::string directory) = 0<br>_Loads the plugin contained within the specified directory._  |
 | virtual std::vector&lt; [**Plugin**](classendstone_1_1Plugin.md) \* &gt; | [**loadPlugins**](#function-loadplugins-22) (std::vector&lt; std::string &gt; files) = 0<br>_Loads the plugins in the list of the files._  |
 |  [**PluginManager**](classendstone_1_1PluginManager.md) & | [**operator=**](#function-operator) ([**PluginManager**](classendstone_1_1PluginManager.md) [**const**](classendstone_1_1Identifier.md) &) = delete<br> |
-| virtual [**void**](classendstone_1_1Identifier.md) | [**recalculatePermissionDefaults**](#function-recalculatepermissiondefaults) ([**Permission**](classendstone_1_1Permission.md) & perm) = 0<br>_Recalculates the defaults for the given_ `Permission` _._ |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**recalculatePermissionDefaults**](#function-recalculatepermissiondefaults) ([**Permission**](classendstone_1_1Permission.md) & perm) = 0<br>_Recalculates the defaults for the given_ [_**Permission**_](classendstone_1_1Permission.md) _._ |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**registerEvent**](#function-registerevent) (std::string event, std::function&lt; [**void**](classendstone_1_1Identifier.md)([**Event**](classendstone_1_1Event.md) &)&gt; executor, [**EventPriority**](namespaceendstone.md#enum-eventpriority) priority, [**Plugin**](classendstone_1_1Plugin.md) & plugin, [**bool**](classendstone_1_1Identifier.md) ignore\_cancelled) = 0<br>_Registers the given event._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**registerLoader**](#function-registerloader) (std::unique\_ptr&lt; [**PluginLoader**](classendstone_1_1PluginLoader.md) &gt; loader) = 0<br>_Registers the specified plugin loader._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**removePermission**](#function-removepermission-12) ([**Permission**](classendstone_1_1Permission.md) & perm) = 0<br>_Removes a_ [_**Permission**_](classendstone_1_1Permission.md) _registration from this plugin manager._ |
@@ -734,7 +734,7 @@ PluginManager & endstone::PluginManager::operator= (
 
 ### function recalculatePermissionDefaults 
 
-_Recalculates the defaults for the given_ `Permission` _._
+_Recalculates the defaults for the given_ [_**Permission**_](classendstone_1_1Permission.md) _._
 ```C++
 virtual void endstone::PluginManager::recalculatePermissionDefaults (
     Permission & perm

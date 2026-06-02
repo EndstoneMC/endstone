@@ -213,7 +213,7 @@
 <para>Any custom event that should not by synchronized with other events must use the specific constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>false by default, true if the event fires asynchronously </para>
+<para><simplesect kind="return"><para><computeroutput>false</computeroutput> by default, <computeroutput>true</computeroutput> if the event fires asynchronously </para>
 </simplesect>
 </para>
         </detaileddescription>

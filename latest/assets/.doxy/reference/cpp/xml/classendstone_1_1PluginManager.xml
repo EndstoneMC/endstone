@@ -686,7 +686,7 @@
           <declname>perm</declname>
         </param>
         <briefdescription>
-<para>Recalculates the defaults for the given <computeroutput><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref></computeroutput>. </para>
+<para>Recalculates the defaults for the given <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref>. </para>
         </briefdescription>
         <detaileddescription>
 <para>This will have no effect if the specified permission is not registered here.</para>

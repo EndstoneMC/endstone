@@ -166,7 +166,7 @@
 <parametername>network</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>If true, use Bedrock network varint encoding for lengths and Int/Long values. </para>
+<para>If <computeroutput>true</computeroutput>, use Bedrock network varint encoding for lengths and Int/Long values. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -219,7 +219,7 @@
 <parametername>name</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The root tag name (e.g. &quot;&quot; for Bedrock level.dat, or a descriptive name). </para>
+<para>The root tag name (e.g. &quot;&quot; for Bedrock <computeroutput>level.dat</computeroutput>, or a descriptive name). </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -235,7 +235,7 @@
 <parametername>network</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>If true, use Bedrock network varint encoding for lengths and Int/Long values. </para>
+<para>If <computeroutput>true</computeroutput>, use Bedrock network varint encoding for lengths and Int/Long values. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -304,7 +304,7 @@
 <parametername>network</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>If true, expect Bedrock network varint encoding. </para>
+<para>If <computeroutput>true</computeroutput>, expect Bedrock network varint encoding. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -370,7 +370,7 @@
 <parametername>network</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>If true, expect Bedrock network varint encoding. </para>
+<para>If <computeroutput>true</computeroutput>, expect Bedrock network varint encoding. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

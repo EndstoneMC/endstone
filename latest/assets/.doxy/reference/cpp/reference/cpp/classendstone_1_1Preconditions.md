@@ -107,7 +107,7 @@ static inline void endstone::Preconditions::checkArgument (
 
 
 * `condition` The expression that must hold. 
-* `format` A format string describing the failure, used when the condition is false. 
+* `format` A format string describing the failure, used when the condition is `false`. 
 * `args` Arguments to substitute into the format string. 
 
 
@@ -115,7 +115,7 @@ static inline void endstone::Preconditions::checkArgument (
 **Exception:**
 
 
-* `std::invalid_argument` if condition is false. 
+* `std::invalid_argument` if condition is `false`. 
 
 
 
@@ -146,7 +146,7 @@ static inline void endstone::Preconditions::checkState (
 
 
 * `condition` The expression that must hold. 
-* `format` A format string describing the failure, used when the condition is false. 
+* `format` A format string describing the failure, used when the condition is `false`. 
 * `args` Arguments to substitute into the format string. 
 
 
@@ -154,7 +154,7 @@ static inline void endstone::Preconditions::checkState (
 **Exception:**
 
 
-* `std::runtime_error` if condition is false. 
+* `std::runtime_error` if condition is `false`. 
 
 
 

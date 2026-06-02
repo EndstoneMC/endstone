@@ -279,7 +279,7 @@ inline Actor * endstone::ActorKnockbackEvent::getSource () const
 
 **Returns:**
 
-actor that caused knockback, or nullptr if the knockback is not caused by an actor. 
+actor that caused knockback, or `nullptr` if the knockback is not caused by an actor. 
 
 
 

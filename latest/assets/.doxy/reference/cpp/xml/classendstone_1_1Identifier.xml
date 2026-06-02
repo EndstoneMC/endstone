@@ -131,7 +131,7 @@
 <para>Constructs an identifier by parsing a string. </para>
         </briefdescription>
         <detaileddescription>
-<para>If the string contains a colon, the part before the last colon is taken as the namespace and the remainder as the key. Otherwise the whole string is the key and the namespace defaults to minecraft.</para>
+<para>If the string contains a colon, the part before the last colon is taken as the namespace and the remainder as the key. Otherwise the whole string is the key and the namespace defaults to <computeroutput>minecraft</computeroutput>.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>identifier</parametername>
@@ -287,7 +287,7 @@
           <declname>key</declname>
         </param>
         <briefdescription>
-<para>Creates an identifier in the minecraft namespace with the given key. </para>
+<para>Creates an identifier in the <computeroutput>minecraft</computeroutput> namespace with the given key. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -299,7 +299,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>an identifier with the namespace set to minecraft. </para>
+<simplesect kind="return"><para>an identifier with the namespace set to <computeroutput>minecraft</computeroutput>. </para>
 </simplesect>
 </para>
         </detaileddescription>

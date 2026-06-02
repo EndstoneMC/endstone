@@ -80,7 +80,7 @@
 <parametername>locale</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The locale identifier for the desired translation (e.g., &quot;en_US&quot;). </para>
+<para>The locale identifier for the desired translation (e.g., <computeroutput>en_US</computeroutput>). </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -178,7 +178,7 @@
 <parametername>locale</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The locale identifier for the desired translation (e.g., &quot;en_US&quot;). </para>
+<para>The locale identifier for the desired translation (e.g., <computeroutput>en_US</computeroutput>). </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -252,7 +252,7 @@
 <parametername>locale</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The locale identifier for the desired translation (e.g., &quot;en_US&quot;). </para>
+<para>The locale identifier for the desired translation (e.g., <computeroutput>en_US</computeroutput>). </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -274,7 +274,7 @@
 <para>Gets the current locale. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>A string representing the current locale (e.g., &quot;en_US&quot;). </para>
+<para><simplesect kind="return"><para>A string representing the current locale (e.g., <computeroutput>en_US</computeroutput>). </para>
 </simplesect>
 </para>
         </detaileddescription>

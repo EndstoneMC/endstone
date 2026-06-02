@@ -3051,7 +3051,7 @@ For latest updates join the chat on
     <div class="doc doc-contents ">
 
         <p>The actor that caused the damage to occur.</p>
-<p>Not to be confused with damaging_actor, the returned actor is the actor to which the damage is
+<p>Not to be confused with <code>damaging_actor</code>, the returned actor is the actor to which the damage is
 ultimately attributed if the receiver is killed. If, for example, the receiver was damaged by a projectile, the
 shooter/thrower would be returned.</p>
 
@@ -3078,7 +3078,7 @@ shooter/thrower would be returned.</p>
     <div class="doc doc-contents ">
 
         <p>The actor that directly caused the damage.</p>
-<p>Not to be confused with actor, the returned actor is the actor that actually inflicted the
+<p>Not to be confused with <code>actor</code>, the returned actor is the actor that actually inflicted the
 damage. If, for example, the receiver was damaged by a projectile, the projectile would be returned.</p>
 
     </div>
@@ -3104,7 +3104,7 @@ damage. If, for example, the receiver was damaged by a projectile, the projectil
     <div class="doc doc-contents ">
 
         <p>Whether this damage is indirect.</p>
-<p>Damage is considered indirect if actor is not equal to damaging_actor. This will be the case, for
+<p>Damage is considered indirect if <code>actor</code> is not equal to <code>damaging_actor</code>. This will be the case, for
 example, if a skeleton shot an arrow or a player threw a potion.</p>
 
     </div>

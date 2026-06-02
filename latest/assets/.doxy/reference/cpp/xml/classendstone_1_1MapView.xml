@@ -383,7 +383,7 @@
         <name>isUnlimitedTracking</name>
         <qualifiedname>endstone::MapView::isUnlimitedTracking</qualifiedname>
         <briefdescription>
-<para>Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map&apos;s range. </para>
+<para>Whether the map will show a smaller position cursor (<computeroutput>true</computeroutput>), or no position cursor (<computeroutput>false</computeroutput>) when cursor is outside of map&apos;s range. </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>True if unlimited tracking is enabled. </para>
@@ -405,7 +405,7 @@
           <declname>unlimited</declname>
         </param>
         <briefdescription>
-<para>Whether the map will show a smaller position cursor (true), or no position cursor (false) when cursor is outside of map&apos;s range. </para>
+<para>Whether the map will show a smaller position cursor (<computeroutput>true</computeroutput>), or no position cursor (<computeroutput>false</computeroutput>) when cursor is outside of map&apos;s range. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>

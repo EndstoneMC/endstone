@@ -280,7 +280,7 @@ This method determines whether the emote is being executed without sending a cha
 
 **Returns:**
 
-true if the emote is muted, false otherwise. 
+`true` if the emote is muted, `false` otherwise. 
 
 
 
@@ -307,7 +307,7 @@ inline void endstone::PlayerEmoteEvent::setMuted (
 
 **Note:**
 
-If set to true, the emote will be executed silently, and no chat messages will be sent.
+If set to `true`, the emote will be executed silently, and no chat messages will be sent.
 
 
 
@@ -315,7 +315,7 @@ If set to true, the emote will be executed silently, and no chat messages will b
 **Parameters:**
 
 
-* `muted` true to mute the emote and disable chat messages, false to unmute it. 
+* `muted` `true` to mute the emote and disable chat messages, `false` to unmute it. 
 
 
 

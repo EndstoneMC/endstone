@@ -31,7 +31,7 @@
 <para>Returns true if this <ref refid="classendstone_1_1BlockType" kindref="compound">BlockType</ref> has a corresponding <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref>. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if there is a corresponding <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref>, otherwise false </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if there is a corresponding <ref refid="classendstone_1_1ItemType" kindref="compound">ItemType</ref>, otherwise <computeroutput>false</computeroutput> </para>
 </simplesect>
 </para>
         </detaileddescription>

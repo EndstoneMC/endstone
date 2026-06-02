@@ -106,7 +106,7 @@ virtual std::string endstone::Language::getLocale () const = 0
 
 **Returns:**
 
-A string representing the current locale (e.g., "en\_US"). 
+A string representing the current locale (e.g., `en_US`). 
 
 
 
@@ -170,7 +170,7 @@ virtual std::string endstone::Language::translate (
 
 
 * `text` The text to be translated. 
-* `locale` The locale identifier for the desired translation (e.g., "en\_US"). 
+* `locale` The locale identifier for the desired translation (e.g., `en_US`). 
 
 
 
@@ -244,7 +244,7 @@ virtual std::string endstone::Language::translate (
 
 * `text` The text to be translated. 
 * `params` A list of parameters to be used in the translation. 
-* `locale` The locale identifier for the desired translation (e.g., "en\_US"). 
+* `locale` The locale identifier for the desired translation (e.g., `en_US`). 
 
 
 
@@ -314,7 +314,7 @@ virtual std::string endstone::Language::translate (
 
 
 * `translatable` A [**Translatable**](classendstone_1_1Translatable.md) object containing text and parameters. 
-* `locale` The locale identifier for the desired translation (e.g., "en\_US"). 
+* `locale` The locale identifier for the desired translation (e.g., `en_US`). 
 
 
 

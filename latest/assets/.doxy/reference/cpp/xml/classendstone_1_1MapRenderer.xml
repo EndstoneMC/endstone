@@ -94,7 +94,7 @@
         </briefdescription>
         <detaileddescription>
 <para>has different canvases for different players.</para>
-<para><simplesect kind="return"><para>true if contextual, false otherwise. </para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if contextual, <computeroutput>false</computeroutput> otherwise. </para>
 </simplesect>
 </para>
         </detaileddescription>

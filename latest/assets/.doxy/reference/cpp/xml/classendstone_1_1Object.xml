@@ -147,7 +147,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>True if this object is an instance of T </para>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if this object is an instance of T </para>
 </simplesect>
 </para>
         </detaileddescription>
