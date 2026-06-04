@@ -25,29 +25,23 @@
 namespace endstone::core {
 
 /**
- * The worker pool that drives async network packet processing (issue #356), modelled on Netty's EventLoopGroup:
- * a boost::asio io_context backed by a fixed pool of worker threads. RAII -- the threads start in the constructor
- * and are joined in the destructor -- so EndstoneServer just holds it in a std::unique_ptr (its lifetime is the
- * pool's lifetime). Each connection binds to one EventLoop (a serialized asio strand) obtained via next(); the
- * EventLoop is handed to the AsyncBatchedNetworkPeer at construction and owns that connection's inner-chain codec.
+ * The async network worker pool (issue #356), modelled on Netty's EventLoopGroup: a boost::asio io_context driven by
+ * a fixed pool of worker threads, started in the constructor and joined in the destructor (so EndstoneServer just
+ * owns it by unique_ptr). Each connection binds to one EventLoop -- a strand -- obtained via next().
  */
 class EventLoopGroup {
 public:
     using EventLoop = boost::asio::strand<boost::asio::io_context::executor_type>;
 
-    /**
-     * Start `threads` worker threads. 0 = auto = max(1, hardware_concurrency() - 2).
-     */
+    // 0 threads = auto = max(1, hardware_concurrency() - 2).
     explicit EventLoopGroup(std::size_t threads = 0);
     ~EventLoopGroup();
 
     EventLoopGroup(const EventLoopGroup &) = delete;
     EventLoopGroup &operator=(const EventLoopGroup &) = delete;
 
-    /**
-     * Return an EventLoop to bind a new connection to. (Each call creates a fresh strand multiplexed onto the
-     * shared worker threads, so per-connection ops are serialized while different connections run in parallel.)
-     */
+    // A fresh strand multiplexed onto the shared threads: per-connection ops are serialized, different connections
+    // run in parallel.
     [[nodiscard]] EventLoop next() { return boost::asio::make_strand(io_context_); }
 
 private:

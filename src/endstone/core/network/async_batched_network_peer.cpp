@@ -92,8 +92,8 @@ void patchPacket(const ClientboundMapItemDataPacket &packet, EndstonePlayer &pla
     for (const auto &cursor : render.cursors) {
         if (cursor.isVisible()) {
             pk.decorations_.emplace_back(std::make_shared<MapDecoration>(
-                static_cast<MapDecoration::Type>(cursor.getType()), cursor.getX(), cursor.getY(),
-                cursor.getDirection(), cursor.getCaption(), mce::Color::WHITE  // TODO(map): support different colors
+                static_cast<MapDecoration::Type>(cursor.getType()), cursor.getX(), cursor.getY(), cursor.getDirection(),
+                cursor.getCaption(), mce::Color::WHITE  // TODO(map): support different colors
                 ));
         }
     }
@@ -113,7 +113,8 @@ void patchPacket(Packet &packet, Player *player)
         break;
     case MinecraftPacketIds::MapData:
         if (player) {
-            patchPacket(static_cast<const ClientboundMapItemDataPacket &>(packet), static_cast<EndstonePlayer &>(*player));
+            patchPacket(static_cast<const ClientboundMapItemDataPacket &>(packet),
+                        static_cast<EndstonePlayer &>(*player));
         }
         break;
     default:
@@ -126,41 +127,33 @@ AsyncBatchedNetworkPeer::AsyncBatchedNetworkPeer(std::shared_ptr<NetworkPeer> co
                                                  EventLoopGroup::EventLoop event_loop)
     : event_loop_(std::move(event_loop))
 {
-    peer_ = std::move(compressed_peer);  // NetworkPeer::peer_ (inner chain root); async_enabled_ defaults false
-}
-
-AsyncBatchedNetworkPeer::~AsyncBatchedNetworkPeer()
-{
-    // Posted strand tasks capture shared_from_this(), so this destructor only runs once no task is in flight -- no
-    // fence or blocking is needed. closing_ just stops any queued work from doing more.
-    closing_ = true;
+    peer_ = std::move(compressed_peer);  // inherited NetworkPeer::peer_ -- the inner chain root
 }
 
 void AsyncBatchedNetworkPeer::splice(NetworkConnection &connection, EventLoopGroup &group)
 {
     auto old_batched = connection.batched_peer.lock();
     if (!old_batched) {
-        return;  // local / encryption-disabled fast path: no Batched layer to replace
+        return;  // no Batched layer (local / encryption-disabled)
     }
 
-    // Wrap the SAME CompressedNetworkPeer the old Batched wrapped (copied shared_ptr keeps the inner chain alive).
+    // Wrap the same inner chain the old Batched wrapped; the copied shared_ptr keeps it alive.
     auto new_async = std::make_shared<AsyncBatchedNetworkPeer>(old_batched->peer_, group.next());
 
     if (connection.peer == old_batched) {
-        connection.peer = new_async;  // Batched was outermost (no PacketTrace)
+        connection.peer = new_async;
     }
     else {
-        NetworkPeer *cur = connection.peer.get();  // walk PacketTrace (-> Latency?) -> ... to the holder
+        NetworkPeer *cur = connection.peer.get();  // walk PacketTrace -> ... down to the holder of old_batched
         while (cur->peer_ && cur->peer_ != old_batched) {
             cur = cur->peer_.get();
         }
         if (cur->peer_ != old_batched) {
             return;  // unexpected chain shape; leave BDS untouched
         }
-        cur->peer_ = new_async;  // splice in place of the old Batched
+        cur->peer_ = new_async;
     }
-    connection.batched_peer = new_async;  // type-compatible (we derive from BatchedNetworkPeer)
-    // Stay synchronous; the recv loop is armed lazily once mAsyncEnabled flips post-auth (see update()).
+    connection.batched_peer = new_async;  // assignable because we derive from BatchedNetworkPeer
 }
 
 const NetworkIdentifier &AsyncBatchedNetworkPeer::getId() const
@@ -250,7 +243,7 @@ std::optional<std::string> AsyncBatchedNetworkPeer::handleReceiveEvent(const std
     ReadOnlyBinaryStream stream(data, false);
     auto result = stream.getUnsignedVarInt().discardError();
     if (!result) {
-        return std::nullopt;  // broken sub-packet; skip
+        return std::nullopt;
     }
 
     const auto header = PacketHeader::fromRaw(result.value());
@@ -262,14 +255,15 @@ std::optional<std::string> AsyncBatchedNetworkPeer::handleReceiveEvent(const std
 
     const auto payload = stream.getView().substr(stream.getReadPointer());
     PacketReceiveEvent e{player, static_cast<int>(header.getPacketId()), payload,
-                         EndstoneSocketAddress::fromNetworkIdentifier(id), static_cast<int>(header.getRecipientSubId())};
+                         EndstoneSocketAddress::fromNetworkIdentifier(id),
+                         static_cast<int>(header.getRecipientSubId())};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
         return std::nullopt;
     }
 
     if (e.getPayload().data() == payload.data()) {
-        return data;  // unchanged
+        return data;
     }
 
     std::string out(data.substr(0, stream.getReadPointer()));
@@ -277,145 +271,57 @@ std::optional<std::string> AsyncBatchedNetworkPeer::handleReceiveEvent(const std
     return out;
 }
 
-void AsyncBatchedNetworkPeer::sendPacket(const std::string &data, Reliability /*reliability*/,
-                                         Compressibility compressible)
+void AsyncBatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliability, Compressibility compressible)
 {
     auto patched = handleSendEvent(data);
     if (!patched) {
-        return;  // cancelled or broken
-    }
-    outgoing_.writeString(*patched, "Data", nullptr);
-    if (compressible == Compressibility::Compressible) {
-        compressible_bytes_ += patched->size();
-    }
-}
-
-NetworkPeer::NetworkStatus AsyncBatchedNetworkPeer::getNetworkStatus() const
-{
-    return peer_->getNetworkStatus();
-}
-
-bool AsyncBatchedNetworkPeer::isLocal() const
-{
-    return peer_->isLocal();
-}
-
-bool AsyncBatchedNetworkPeer::isEncrypted() const
-{
-    return peer_->isEncrypted();
-}
-
-bool AsyncBatchedNetworkPeer::isLan() const
-{
-    return peer_->isLan();
-}
-
-Compressibility AsyncBatchedNetworkPeer::computeCompressibility() const
-{
-    const auto total = static_cast<float>(outgoing_.getBuffer().size());
-    if (total <= 0.0F) {
-        return Compressibility::Incompressible;
-    }
-    const auto ratio = static_cast<float>(compressible_bytes_) / total;
-    // BDS: little compressible content -> don't compress.
-    return ratio <= 0.2F ? Compressibility::Incompressible : Compressibility::Compressible;
-}
-
-void AsyncBatchedNetworkPeer::flushSync()
-{
-    if (outgoing_.getBuffer().empty()) {
         return;
     }
-    const auto compressible = computeCompressibility();
-    std::string batch = outgoing_.getAndReleaseData();
-    compressible_bytes_ = 0;
-    peer_->sendPacket(batch, Reliability::ReliableOrdered, compressible);
+    BatchedNetworkPeer::sendPacket(*patched, reliability, compressible);
 }
 
 void AsyncBatchedNetworkPeer::flush(std::function<void()> &&callback)
 {
-    if (!async_enabled_) {
-        flushSync();
+    if (!activated_) {
+        BatchedNetworkPeer::flush(std::move(callback));
+        return;
+    }
+
+    std::string batch = outgoing_data_.getAndReleaseData();
+    if (batch.empty()) {
         if (callback) {
             callback();
         }
         return;
     }
 
-    if (outgoing_.getBuffer().empty()) {
-        if (callback) {
-            callback();
-        }
-        return;
-    }
-
-    const auto compressible = computeCompressibility();
-    auto batch = std::make_shared<std::string>(outgoing_.getAndReleaseData());
+    const auto compressible = getCompressibleState(batch.size());
     compressible_bytes_ = 0;
 
+    auto data = std::make_shared<std::string>(std::move(batch));
     auto self = shared_from_this();
-    boost::asio::post(event_loop_, [self, batch, compressible] {
-        if (!self->closing_) {
-            self->peer_->sendPacket(*batch, NetworkPeer::Reliability::ReliableOrdered, compressible);
-        }
+    boost::asio::post(event_loop_, [self, data, compressible] {
+        self->peer_->sendPacket(*data, Reliability::ReliableOrdered, compressible);
     });
 
-    // The batch is handed off (owned by the posted task), so the completion callback can run now, on the main
-    // thread, where BDS callers expect it -- it signals "flushed to the send path", which is true once enqueued.
+    // The batch is handed off to the posted task, so the callback runs here on the main thread, where BDS expects it.
     if (callback) {
         callback();
     }
 }
 
-NetworkPeer::DataStatus AsyncBatchedNetworkPeer::splitNext(std::string &out)
-{
-    for (;;) {
-        if (!incoming_ || incoming_->getUnreadLength() == 0) {
-            std::string batch;
-            auto timepoint = std::make_shared<NetworkPeer::PacketRecvTimepoint>();
-            const auto status = peer_->_receivePacket(batch, timepoint);
-            if (status != DataStatus::HasData) {
-                return status;
-            }
-            incoming_buffer_ = std::move(batch);
-            incoming_.emplace(incoming_buffer_, false);
-        }
-
-        auto &stream = *incoming_;
-        auto len_result = stream.getUnsignedVarInt().discardError();
-        if (!len_result) {
-            incoming_.reset();
-            return DataStatus::BrokenData;
-        }
-        const auto len = len_result.value();
-        const auto view = stream.getView();
-        const auto start = stream.getReadPointer();
-        if (start + len > view.size()) {
-            incoming_.reset();
-            return DataStatus::BrokenData;
-        }
-        out.assign(view.substr(start, len));
-        stream.setReadPointer(start + len);
-        return DataStatus::HasData;
-    }
-}
-
 void AsyncBatchedNetworkPeer::recvLoop()
 {
-    // Backpressure: once this many decoded sub-packets await the main thread, stop draining RakNet (it buffers
-    // upstream) until the main thread catches up. Never dropped (would break the decrypt counter/HMAC chain).
-    constexpr std::size_t inbound_capacity = 1024;
-    while (!closing_) {
-        if (inbound_.size_approx() >= inbound_capacity) {
+    constexpr std::size_t recv_queue_capacity = 1024;
+    // Decode batches on the worker until the main thread falls behind; the rest waits in the inner peer (never
+    // dropped -- that would desync the decrypt counter).
+    while (recv_queue_.size_approx() < recv_queue_capacity) {
+        std::string packet;
+        auto timepoint = std::make_shared<PacketRecvTimepoint>();
+        if (BatchedNetworkPeer::_receivePacket(packet, timepoint) != DataStatus::HasData) {
             break;
         }
-
-        std::string packet;
-        const auto status = splitNext(packet);
-        if (status != DataStatus::HasData) {
-            break;  // NoData / BrokenData
-        }
-        inbound_.enqueue(std::move(packet));
+        recv_queue_.enqueue(std::move(packet));
     }
     recv_scheduled_ = false;
 }
@@ -426,24 +332,22 @@ NetworkPeer::DataStatus AsyncBatchedNetworkPeer::_receivePacket(std::string &out
     for (;;) {
         std::string raw;
         DataStatus status;
-        if (!activated_) {
-            // Pre-activation: split synchronously on the main thread (no strand running yet).
-            (void)timepoint_ptr;
-            status = splitNext(raw);
+        if (activated_) {
+            status = recv_queue_.try_dequeue(raw) ? DataStatus::HasData : DataStatus::NoData;
         }
         else {
-            status = inbound_.try_dequeue(raw) ? DataStatus::HasData : DataStatus::NoData;
+            status = BatchedNetworkPeer::_receivePacket(raw, timepoint_ptr);
         }
 
         if (status != DataStatus::HasData) {
             return status;
         }
 
-        auto patched = handleReceiveEvent(raw);
-        if (!patched) {
-            continue;  // cancelled -> try the next packet
+        auto data = handleReceiveEvent(raw);
+        if (!data) {
+            continue;
         }
-        out_data = std::move(*patched);
+        out_data = std::move(*data);
         return DataStatus::HasData;
     }
 }
@@ -451,29 +355,22 @@ NetworkPeer::DataStatus AsyncBatchedNetworkPeer::_receivePacket(std::string &out
 void AsyncBatchedNetworkPeer::update()
 {
     if (!activated_ && async_enabled_) {
-        // Transition to async: drain any pending pre-auth batch synchronously, then start the recv loop.
         activated_ = true;
-        flushSync();
+        BatchedNetworkPeer::flush({});  // drain the pre-auth batch before the event loop takes over the inner chain
     }
 
-    if (activated_) {
-        // Re-arm the recv loop once per tick if it isn't already scheduled. recvLoop, sends and the inner-chain
-        // update all run on the one strand, so they are serialized -- no cross-direction races on the inner chain.
-        if (!recv_scheduled_.exchange(true)) {
-            auto self = shared_from_this();
-            boost::asio::post(event_loop_, [self] { self->recvLoop(); });
-        }
+    if (!activated_) {
+        BatchedNetworkPeer::update();
+        return;
+    }
+
+    // One event loop serializes recv, send and the inner-chain update. Re-arm recvLoop at most once per tick.
+    if (!recv_scheduled_.exchange(true)) {
         auto self = shared_from_this();
-        boost::asio::post(event_loop_, [self] {
-            if (!self->closing_) {
-                self->peer_->update();
-            }
-        });
+        boost::asio::post(event_loop_, [self] { self->recvLoop(); });
     }
-    else {
-        flushSync();
-        peer_->update();
-    }
+    auto self = shared_from_this();
+    boost::asio::post(event_loop_, [self] { self->peer_->update(); });
 }
 
 }  // namespace endstone::core

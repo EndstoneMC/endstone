@@ -17,8 +17,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     {"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z", 20200608},
     // ActorFactory
     {"?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z", 20677152},
-    // NetworkSystem (issue #356) -- PLACEHOLDER offset; regenerate via dump_symbols.py --pdb before running.
-    {"?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@@Z", 0},
     // BedrockLog::LogDetails
     {"?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z", 16685648},
     // BlockDescriptor::ResolveHelper
@@ -79,6 +77,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     // Mob
     {"?knockback@Mob@@UEAAXPEAVActor@@HMMAEBUKnockbackParameters@@@Z", 28431008},
     // NetworkSystem
+    {"?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@@Z", 6502960},
     {"?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z", 6396960},
     // Pack
     {"?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z", 7228160},

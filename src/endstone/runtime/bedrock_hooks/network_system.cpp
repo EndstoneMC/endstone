@@ -22,9 +22,7 @@
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
-// Issue #356: after BDS builds the connection (the chain is constructed inside NetworkConnection's ctor), splice
-// an AsyncBatchedNetworkPeer in place of the BatchedNetworkPeer so per-connection decrypt/decompress/compress/
-// encrypt can move to a strand once the client authenticates.
+// Issue #356: once BDS has built the connection's peer chain, splice in our AsyncBatchedNetworkPeer.
 bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::shared_ptr<NetworkPeer> &&peer)
 {
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&NetworkSystem::onNewIncomingConnection, this, id, std::move(peer));

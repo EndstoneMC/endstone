@@ -44,9 +44,8 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-# Issue #356: spliced AsyncBatchedNetworkPeer. onNewIncomingConnection's vtable slot is in a non-primary
-# subobject vtable, so it is hooked by RVA. TODO: no byte pattern yet -- resolve by name via
-# `dump_symbols.py --pdb` against the 1.26.20 PDB.
+# Issue #356: hooked by RVA (its vtable slot is in a non-primary subobject vtable). No byte pattern -- resolved by
+# name from the PDB via `dump_symbols.py --pdb`.
 name = "?onNewIncomingConnection@NetworkSystem@@EEAA_NAEBVNetworkIdentifier@@$$QEAV?$shared_ptr@VNetworkPeer@@@std@@@Z"
 relative = false
 extra = 0
