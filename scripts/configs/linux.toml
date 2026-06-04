@@ -46,18 +46,10 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-# Batched Network TaskGroup
-name = "_ZN18BatchedNetworkPeer10sendPacketERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEN11NetworkPeer11ReliabilityE15Compressibility"
+name = "_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE"
 relative = false
 extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 89 CD 49 89 F6 48 89 FB 48 83 C7"
-
-[[signatures]]
-# Batched Network TaskGroup
-name = "_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE"
-relative = false
-extra = 0
-pattern = "41 57 41 56 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 48 8B 8F"
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 D5 49 89 F6 49 89 FA"
 
 [[signatures]]
 # Server stop requested.

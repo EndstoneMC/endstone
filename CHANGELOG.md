@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a `docker-compose.yml` for running the server with Docker Compose.
 - Added graceful shutdown on Linux: stopping the server (e.g. via `docker stop`) now lets the Bedrock server save the world before it exits.
 - Added `PlayerRespawnEvent.respawn_reason` (`RespawnReason.DEATH` / `RespawnReason.END_PORTAL`) so plugins can tell a normal death respawn apart from a player returning to the Overworld through the End exit portal.
+- Added experimental asynchronous network processing: per-connection packet encryption and compression are offloaded to a pool of worker threads instead of the main thread, which can improve tick rate with many players. Configure it under `[network]` in `endstone.toml` — `async` toggles it and `threads` sets the worker count (`0` = automatic). A warning is logged while it is enabled.
 
 ### Changed
 

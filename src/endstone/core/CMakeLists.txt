@@ -85,7 +85,10 @@ add_library(endstone_core
         map/map_canvas.cpp
         map/map_renderer.cpp
         map/map_view.cpp
+        network/async_batched_network_peer.cpp
+        network/buffered_raknet_peer.cpp
         network/data_packet.cpp
+        network/event_loop_group.cpp
         packs/endstone_pack_source.cpp
         permissions/default_permissions.cpp
         permissions/permissible_base.cpp

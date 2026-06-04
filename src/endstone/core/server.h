@@ -40,6 +40,7 @@ namespace endstone::core {
 class EndstoneConsoleCommandSender;
 class EndstoneMetrics;
 class EndstonePlayer;
+class EventLoopGroup;
 class EndstoneServer : public Server {
 public:
     explicit EndstoneServer();
@@ -127,11 +128,13 @@ public:
     void initPackSource(const PackSourceFactory &pack_source_factory);
     [[nodiscard]] PackSource &getPackSource() const;
     [[nodiscard]] bool getAllowClientPacks() const;
+    [[nodiscard]] bool isAsyncNetworkEnabled() const;  // issue #356
     [[nodiscard]] bool logCommands() const;
     [[nodiscard]] bool isServerTextEnabled(ServerTextEvent event) const;
 
     [[nodiscard]] ServerInstance &getServer() const;
     [[nodiscard]] RakNetConnector &getRakNetConnector() const;
+    [[nodiscard]] EventLoopGroup &getEventLoopGroup() const;  // async network worker pool (issue #356)
 
     [[nodiscard]] static EndstoneServer &getInstance();
 
@@ -160,6 +163,7 @@ private:
     std::chrono::system_clock::time_point start_time_;
     IResourcePackRepository *resource_pack_repository_ = nullptr;
     std::unique_ptr<EndstonePackSource> resource_pack_source_;
+    std::unique_ptr<EventLoopGroup> event_loop_group_;
     int tick_counter_ = 0;
     float current_mspt_ = SharedConstants::MilliSecondsPerTick * 1.0F;
     float average_mspt_[SharedConstants::TicksPerSecond] = {SharedConstants::MilliSecondsPerTick};
@@ -169,6 +173,7 @@ private:
     float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
     // TODO(config): move the following the a separate class/struct
     bool allow_client_packs_ = false;
+    bool async_network_enabled_ = false;
     bool log_commands_ = true;
     ServerTextSettings text_settings_;
     ::Bedrock::PubSub::Subscription on_gameplay_user_removed_;

@@ -15,7 +15,6 @@
 #include "endstone/core/server.h"
 
 #include <filesystem>
-#include "endstone/core/type.h"
 #include <iostream>
 #include <memory>
 
@@ -31,6 +30,7 @@
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/level/block/block_descriptor.h"
 #include "bedrock/world/scores/server_scoreboard.h"
+#include "endstone/actor/actor_type.h"
 #include "endstone/color_format.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/core/block/block_data.h"
@@ -48,13 +48,14 @@
 #include "endstone/core/map/map_view.h"
 #include "endstone/core/message.h"
 #include "endstone/core/metrics.h"
+#include "endstone/core/network/event_loop_group.h"
 #include "endstone/core/permissions/default_permissions.h"
 #include "endstone/core/player.h"
 #include "endstone/core/plugin/cpp_plugin_loader.h"
 #include "endstone/core/plugin/python_plugin_loader.h"
-#include "endstone/actor/actor_type.h"
 #include "endstone/core/registry.h"
 #include "endstone/core/signal_handler.h"
+#include "endstone/core/type.h"
 #include "endstone/core/util/uuid.h"
 #include "endstone/event/chunk/chunk_load_event.h"
 #include "endstone/event/chunk/chunk_unload_event.h"
@@ -85,13 +86,24 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger(""))
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
     start_time_ = std::chrono::system_clock::now();
 
+    int network_threads = 0;
     try {
         toml::table tbl = toml::parse_file("endstone.toml");
         log_commands_ = tbl.at_path("commands.log").value_or(true);
         allow_client_packs_ = tbl.at_path("settings.allow-client-packs").value_or(false);
+        async_network_enabled_ = tbl.at_path("network.async").value_or(false);
+        network_threads = tbl.at_path("network.threads").value_or(0);
     }
     catch (const toml::parse_error &err) {
         EndstoneServer::getLogger().error("Failed to parse config file: {}", err.what());
+    }
+
+    if (async_network_enabled_) {
+        event_loop_group_ = std::make_unique<EventLoopGroup>(
+            network_threads > 0 ? static_cast<std::size_t>(network_threads) : 0);
+        EndstoneServer::getLogger().warning(
+            "Async network processing is enabled. This feature is EXPERIMENTAL. If you encounter any "
+            "issues, turn it off by setting [network] async = false in endstone.toml.");
     }
 }
 
@@ -233,6 +245,11 @@ PackSource &EndstoneServer::getPackSource() const
 bool EndstoneServer::getAllowClientPacks() const
 {
     return allow_client_packs_;
+}
+
+bool EndstoneServer::isAsyncNetworkEnabled() const
+{
+    return async_network_enabled_;
 }
 
 bool EndstoneServer::logCommands() const
@@ -617,10 +634,7 @@ std::unique_ptr<BlockData> EndstoneServer::createBlockData(BlockTypeId type, Blo
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
-        std::visit(overloaded{[&](auto &&arg) {
-                       states.emplace(state.first, arg);
-                   }},
-                   state.second);
+        std::visit(overloaded{[&](auto &&arg) { states.emplace(state.first, arg); }}, state.second);
     }
     const auto block_descriptor =
         ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(std::string(type), states);
@@ -745,6 +759,11 @@ RakNetConnector &EndstoneServer::getRakNetConnector() const
 {
     return static_cast<RakNetConnector &>(
         *getServer().getMinecraft()->getServerNetworkHandler()->network_.getRemoteConnector());
+}
+
+EventLoopGroup &EndstoneServer::getEventLoopGroup() const
+{
+    return *event_loop_group_;
 }
 
 EndstoneServer &EndstoneServer::getInstance()

@@ -14,22 +14,51 @@
 
 #pragma once
 
-#include <chrono>
+#include <atomic>
+#include <cstdint>
+#include <functional>
+#include <memory>
+#include <optional>
+#include <string>
 
 #include "bedrock/bedrock.h"
-#include "network_identifier.h"
+#include "bedrock/core/threading/spsc_queue.h"
+#include "bedrock/core/utility/binary_stream.h"
+#include "bedrock/forward.h"
 #include "network_peer.h"
 
 class BatchedNetworkPeer : public NetworkPeer {
 public:
-    ~BatchedNetworkPeer() override;
-    ENDSTONE_HOOK void sendPacket(const std::string &data, Reliability reliability,
-                                  Compressibility compressible) override;
+    ~BatchedNetworkPeer() override = default;
+
+    void sendPacket(const std::string &data, Reliability reliability, Compressibility compressible) override;
+    [[nodiscard]] NetworkStatus getNetworkStatus() const override;
+    void update() override;
+    void flush(std::function<void()> &&callback) override;
+    [[nodiscard]] bool isLocal() const override;
+    [[nodiscard]] bool isEncrypted() const override;
+    [[nodiscard]] bool isLan() const override;
 
 protected:
-    ENDSTONE_HOOK DataStatus _receivePacket(std::string &out_data,
-                                            const PacketRecvTimepointPtr &timepoint_ptr) override;
+    BatchedNetworkPeer() = default;
+    DataStatus _receivePacket(std::string &out_data, const PacketRecvTimepointPtr &timepoint_ptr) override;
+    [[nodiscard]] Compressibility getCompressibleState(std::size_t data_to_send) const;  // Endstone: private -> protected
 
-private:
-    [[nodiscard]] const NetworkIdentifier &getId() const;  // Endstone
+    struct DataCallback {
+        std::string data;
+        Compressibility compressible;
+        std::function<void()> callback;
+    };
+
+    BinaryStream outgoing_data_;
+    std::size_t compressible_bytes_{0};
+    std::string incoming_data_buffer_;
+    std::optional<ReadOnlyBinaryStream> incoming_data_;
+    std::unique_ptr<TaskGroup> task_group_;
+    SPSCQueue<DataCallback> send_queue_;
+    std::atomic_bool task_running_{false};
+    std::atomic<std::uint64_t> queued_packets_{0};
+    std::uint64_t sent_packets_{0};
+    bool async_enabled_{false};
 };
+BEDROCK_STATIC_ASSERT_SIZE(BatchedNetworkPeer, 344, 320);
