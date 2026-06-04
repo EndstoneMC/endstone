@@ -16,7 +16,6 @@
 
 #include <boost/asio/post.hpp>
 
-#include "bedrock/network/network_connection.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
 #include "bedrock/network/packet/resource_pack_stack_packet.h"
@@ -128,32 +127,6 @@ AsyncBatchedNetworkPeer::AsyncBatchedNetworkPeer(std::shared_ptr<NetworkPeer> co
     : event_loop_(std::move(event_loop))
 {
     peer_ = std::move(compressed_peer);  // inherited NetworkPeer::peer_ -- the inner chain root
-}
-
-void AsyncBatchedNetworkPeer::splice(NetworkConnection &connection, EventLoopGroup &group)
-{
-    auto old_batched = connection.batched_peer.lock();
-    if (!old_batched) {
-        return;  // no Batched layer (local / encryption-disabled)
-    }
-
-    // Wrap the same inner chain the old Batched wrapped; the copied shared_ptr keeps it alive.
-    auto new_async = std::make_shared<AsyncBatchedNetworkPeer>(old_batched->peer_, group.next());
-
-    if (connection.peer == old_batched) {
-        connection.peer = new_async;
-    }
-    else {
-        NetworkPeer *cur = connection.peer.get();  // walk PacketTrace -> ... down to the holder of old_batched
-        while (cur->peer_ && cur->peer_ != old_batched) {
-            cur = cur->peer_.get();
-        }
-        if (cur->peer_ != old_batched) {
-            return;  // unexpected chain shape; leave BDS untouched
-        }
-        cur->peer_ = new_async;
-    }
-    connection.batched_peer = new_async;  // assignable because we derive from BatchedNetworkPeer
 }
 
 const NetworkIdentifier &AsyncBatchedNetworkPeer::getId() const

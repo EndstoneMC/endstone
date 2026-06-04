@@ -26,8 +26,6 @@
 #include "bedrock/network/network_peer.h"
 #include "endstone/core/network/event_loop_group.h"
 
-class NetworkConnection;
-
 namespace endstone::core {
 
 /**
@@ -41,10 +39,6 @@ class AsyncBatchedNetworkPeer : public BatchedNetworkPeer,
                                 public std::enable_shared_from_this<AsyncBatchedNetworkPeer> {
 public:
     AsyncBatchedNetworkPeer(std::shared_ptr<NetworkPeer> compressed_peer, EventLoopGroup::EventLoop event_loop);
-
-    // Replace `connection`'s BatchedNetworkPeer with an async one, keeping PacketTrace and the inner chain. Runs on
-    // the main thread at connection setup. No-op if there's no Batched layer or the chain shape is unexpected.
-    static void splice(NetworkConnection &connection, EventLoopGroup &group);
 
     void sendPacket(const std::string &data, Reliability reliability, Compressibility compressible) override;
     void update() override;

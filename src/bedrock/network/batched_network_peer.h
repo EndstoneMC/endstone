@@ -23,14 +23,9 @@
 
 #include "bedrock/core/threading/spsc_queue.h"
 #include "bedrock/core/utility/binary_stream.h"
-#include "bedrock/forward.h"  // class TaskGroup {}
+#include "bedrock/forward.h"
 #include "network_peer.h"
 
-// Faithful reimplementation of BDS's BatchedNetworkPeer (size 344, mAsyncEnabled at +0x150): it batches outgoing
-// packets and splits incoming batches exactly as BDS does. endstone::core::AsyncBatchedNetworkPeer subclasses it and
-// overrides only the send/receive paths to run the inner-chain codec on a worker thread. Deriving from this also lets
-// BDS's enableAsyncFlush write mAsyncEnabled through a BatchedNetworkPeer* onto our inherited field, and lets
-// NetworkConnection::batched_peer (a weak_ptr<BatchedNetworkPeer>) hold our spliced object.
 class BatchedNetworkPeer : public NetworkPeer {
 public:
     ~BatchedNetworkPeer() override = default;
@@ -46,7 +41,7 @@ public:
 protected:
     BatchedNetworkPeer() = default;
     DataStatus _receivePacket(std::string &out_data, const PacketRecvTimepointPtr &timepoint_ptr) override;
-    [[nodiscard]] Compressibility getCompressibleState(std::size_t data_to_send) const;  // Endstone: protected, was private
+    [[nodiscard]] Compressibility getCompressibleState(std::size_t data_to_send) const;  // Endstone: private -> protected
 
     struct DataCallback {
         std::string data;
@@ -65,5 +60,4 @@ protected:
     std::uint64_t sent_packets_{0};
     bool async_enabled_{false};
 };
-static_assert(sizeof(BatchedNetworkPeer) == 344,
-              "BatchedNetworkPeer must match BDS layout so mAsyncEnabled stays at offset 0x150");
+static_assert(sizeof(BatchedNetworkPeer) == 344);
