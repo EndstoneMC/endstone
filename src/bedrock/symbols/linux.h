@@ -18,8 +18,6 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     {"_ZN5Actor10teleportToERK4Vec3biib", 153144112},
     // ActorFactory
     {"_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2", 153774592},
-    // NetworkSystem (issue #356) -- PLACEHOLDER offset; regenerate before running.
-    {"_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE", 0},
     // BedrockLog::LogDetails
     {"_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag", 216599584},
     // BlockDescriptor::ResolveHelper
@@ -79,6 +77,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     // Mob
     {"_ZN3Mob9knockbackEP5ActoriffRK19KnockbackParameters", 151104464},
     // NetworkSystem
+    {"_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE", 117548432},
     {"_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId", 117476256},
     // Pack
     {"_ZN4Pack10createPackERK15IPackIOProviderRK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEP16PackSourceReportRKN4Core4PathE", 134353376},

@@ -46,11 +46,10 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-# Issue #356: spliced AsyncBatchedNetworkPeer; onNewIncomingConnection hooked by RVA.
-# TODO: no byte pattern yet -- resolve by name when regenerating.
 name = "_ZN13NetworkSystem23onNewIncomingConnectionERK17NetworkIdentifierONSt3__110shared_ptrI11NetworkPeerEE"
 relative = false
 extra = 0
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 D5 49 89 F6 49 89 FA"
 
 [[signatures]]
 # Server stop requested.
