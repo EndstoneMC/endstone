@@ -18,6 +18,7 @@
 #include <utility>
 
 #include "endstone/core/network/async_batched_network_peer.h"
+#include "endstone/core/network/buffered_raknet_peer.h"
 #include "endstone/core/network/event_loop_group.h"
 #include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
@@ -35,27 +36,31 @@ bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::sh
         return result;
     }
     auto batched = connection->batched_peer.lock();
-    if (!batched) {
-        throw std::runtime_error("Invalid connection state: expected a valid BatchedNetworkPeer");
+    if (!batched || !batched->peer_) {
+        throw std::runtime_error("Invalid connection state: expected a BatchedNetworkPeer with an inner peer");
+    }
+
+    // Wrap the chain's RakNet leaf (the childless peer) so its read buffer is only ever touched on the main thread; the
+    // wrapper is transparent to AsyncBatchedNetworkPeer, which just sees the inner chain root.
+    auto *leaf = &batched->peer_;
+    while ((*leaf)->peer_) {
+        leaf = &(*leaf)->peer_;
+    }
+    *leaf = std::make_shared<endstone::core::BufferedRakNetPeer>(*leaf);
+
+    // Replace the BatchedNetworkPeer with our async one wherever the chain holds it (PacketTrace -> ... -> batched).
+    auto *slot = &connection->peer;
+    while (*slot && *slot != batched) {
+        slot = &(*slot)->peer_;
+    }
+    if (*slot != batched) {
+        throw std::runtime_error("Expected BatchedNetworkPeer in the new connection's peer chain, but none found");
     }
 
     auto &server = endstone::core::EndstoneServer::getInstance();
-    auto async_batched =
-        std::make_shared<endstone::core::AsyncBatchedNetworkPeer>(batched->peer_, server.getEventLoopGroup().next());
-
-    if (connection->peer == batched) {
-        connection->peer = async_batched;
-    }
-    else {
-        NetworkPeer *cur = connection->peer.get();  // walk PacketTrace -> ... down to the holder of BatchedNetworkPeer
-        while (cur->peer_ && cur->peer_ != batched) {
-            cur = cur->peer_.get();
-        }
-        if (cur->peer_ != batched) {
-            throw std::runtime_error("Expected BatchedNetworkPeer in new connection's peer chain, but none found");
-        }
-        cur->peer_ = async_batched;
-    }
+    auto async_batched = std::make_shared<endstone::core::AsyncBatchedNetworkPeer>(id, batched->peer_,
+                                                                                   server.getEventLoopGroup().next());
+    *slot = async_batched;
     connection->batched_peer = async_batched;
     return result;
 }

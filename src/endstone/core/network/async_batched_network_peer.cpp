@@ -21,7 +21,6 @@
 #include "bedrock/network/packet/resource_pack_stack_packet.h"
 #include "bedrock/network/packet/resource_packs_info_packet.h"
 #include "bedrock/network/packet/start_game_packet.h"
-#include "bedrock/network/raknet_connector.h"
 #include "bedrock/network/server_network_system.h"
 #include "endstone/core/level/level.h"
 #include "endstone/core/map/map_view.h"
@@ -122,20 +121,16 @@ void patchPacket(Packet &packet, Player *player)
 }
 }  // namespace
 
-AsyncBatchedNetworkPeer::AsyncBatchedNetworkPeer(std::shared_ptr<NetworkPeer> compressed_peer,
+AsyncBatchedNetworkPeer::AsyncBatchedNetworkPeer(NetworkIdentifier id, std::shared_ptr<NetworkPeer> peer,
                                                  EventLoopGroup::EventLoop event_loop)
-    : event_loop_(std::move(event_loop))
+    : id_(std::move(id)), event_loop_(std::move(event_loop))
 {
-    peer_ = std::move(compressed_peer);  // inherited NetworkPeer::peer_ -- the inner chain root
+    peer_ = std::move(peer);
 }
 
 const NetworkIdentifier &AsyncBatchedNetworkPeer::getId() const
 {
-    auto peer = peer_;
-    while (peer->peer_) {
-        peer = peer->peer_;
-    }
-    return static_cast<RakNetConnector::RakNetNetworkPeer &>(*peer).getId();
+    return id_;
 }
 
 std::optional<std::string> AsyncBatchedNetworkPeer::handleSendEvent(const std::string &data)
@@ -337,13 +332,12 @@ void AsyncBatchedNetworkPeer::update()
         return;
     }
 
-    // One event loop serializes recv, send and the inner-chain update. Re-arm recvLoop at most once per tick.
+    flush({});
     if (!recv_scheduled_.exchange(true)) {
         auto self = shared_from_this();
         boost::asio::post(event_loop_, [self] { self->recvLoop(); });
     }
-    auto self = shared_from_this();
-    boost::asio::post(event_loop_, [self] { self->peer_->update(); });
+    peer_->update();
 }
 
 }  // namespace endstone::core

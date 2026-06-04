@@ -19,6 +19,10 @@
 
 class NetworkSystem;  // Endstone
 
+namespace endstone::core {
+class BufferedRakNetPeer;  // Endstone
+}  // namespace endstone::core
+
 enum class DevConnectionQuality : int {
     OFF = 0,
     NO_LIMIT = 1,
@@ -74,16 +78,30 @@ public:
     virtual ~NetworkPeer() = default;
     virtual void sendPacket(const std::string &, Reliability, Compressibility) = 0;
     [[nodiscard]] virtual NetworkStatus getNetworkStatus() const = 0;
-    virtual void update() = 0;
-    virtual void flush(std::function<void()> &&) = 0;
-    [[nodiscard]] virtual bool isLocal() const = 0;
-    [[nodiscard]] virtual bool isEncrypted() const = 0;
-    [[nodiscard]] virtual bool isLan() const = 0;
+
+    virtual void update()
+    {
+        if (peer_) {
+            peer_->update();
+        }
+    }
+
+    virtual void flush(std::function<void()> &&callback)
+    {
+        if (peer_) {
+            peer_->flush(std::move(callback));
+        }
+    }
+    
+    [[nodiscard]] virtual bool isLocal() const { return peer_ && peer_->isLocal(); }
+    [[nodiscard]] virtual bool isEncrypted() const { return peer_ && peer_->isEncrypted(); }
+    [[nodiscard]] virtual bool isLan() const { return peer_ && peer_->isLan(); }
 
 protected:
     virtual DataStatus _receivePacket(std::string &out_data, const PacketRecvTimepointPtr &timepoint_ptr) = 0;
     std::shared_ptr<NetworkPeer> peer_;
 
-    friend class BatchedNetworkPeer;  // Endstone
-    friend class NetworkSystem;       // Endstone
+    friend class BatchedNetworkPeer;                  // Endstone
+    friend class NetworkSystem;                       // Endstone
+    friend class endstone::core::BufferedRakNetPeer;  // Endstone
 };

@@ -38,7 +38,8 @@ namespace endstone::core {
 class AsyncBatchedNetworkPeer : public BatchedNetworkPeer,
                                 public std::enable_shared_from_this<AsyncBatchedNetworkPeer> {
 public:
-    AsyncBatchedNetworkPeer(std::shared_ptr<NetworkPeer> compressed_peer, EventLoopGroup::EventLoop event_loop);
+    AsyncBatchedNetworkPeer(NetworkIdentifier id, std::shared_ptr<NetworkPeer> peer,
+                            EventLoopGroup::EventLoop event_loop);
 
     void sendPacket(const std::string &data, Reliability reliability, Compressibility compressible) override;
     void update() override;
@@ -56,6 +57,7 @@ private:
 
     void recvLoop();
 
+    NetworkIdentifier id_;
     EventLoopGroup::EventLoop event_loop_;
     SPSCQueue<std::string> recv_queue_;
     std::atomic<bool> recv_scheduled_{false};
