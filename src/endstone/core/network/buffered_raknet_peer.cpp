@@ -36,7 +36,7 @@ NetworkPeer::NetworkStatus BufferedRakNetPeer::getNetworkStatus() const
 void BufferedRakNetPeer::update()
 {
     auto timepoint = std::make_shared<PacketRecvTimepoint>();
-    for (;;) {
+    while (true) {
         ReceivedPacket packet;
         if (peer_->_receivePacket(packet.data, timepoint) != DataStatus::HasData) {
             break;

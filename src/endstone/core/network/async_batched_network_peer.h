@@ -52,10 +52,6 @@ protected:
 private:
     [[nodiscard]] const NetworkIdentifier &getId() const;
 
-    // PacketSendEvent / PacketReceiveEvent + packet patching. Main thread only; nullopt means a plugin cancelled.
-    std::optional<std::string> handleSendEvent(const std::string &data);
-    std::optional<std::string> handleReceiveEvent(const std::string &data);
-
     void recvLoop();
 
     NetworkIdentifier id_;

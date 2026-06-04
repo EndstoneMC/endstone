@@ -133,28 +133,26 @@ const NetworkIdentifier &AsyncBatchedNetworkPeer::getId() const
     return id_;
 }
 
-std::optional<std::string> AsyncBatchedNetworkPeer::handleSendEvent(const std::string &data)
+void AsyncBatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliability, Compressibility compressible)
 {
+    // PacketSendEvent + packet patching, on the main thread. Cancel drops the packet; an unchanged payload is sent
+    // as-is (`data`), and only a plugin-modified payload is rebuilt into a fresh buffer.
+    const auto &server = EndstoneServer::getInstance();
+
     ReadOnlyBinaryStream stream(data, false);
     auto result = stream.getUnsignedVarInt().discardError();
     if (!result) {
-        const auto &server = EndstoneServer::getInstance();
         server.getLogger().critical("AsyncBatchedNetworkPeer::sendPacket: Failed to parse raw packet header!");
-        return std::nullopt;
+        return;
     }
 
     auto header = PacketHeader::fromRaw(result.value());
     const auto &id = getId();
-
-    const auto &server = EndstoneServer::getInstance();
     const auto *server_player =
         server.getServer().getMinecraft()->getServerNetworkHandler()->getServerPlayer(id, header.getSenderSubId());
-    Player *player = nullptr;
-    if (server_player) {
-        player = &server_player->getEndstoneActor<EndstonePlayer>();
-    }
+    Player *player = server_player ? &server_player->getEndstoneActor<EndstonePlayer>() : nullptr;
 
-    auto payload = stream.getView().substr(stream.getReadPointer());
+    const auto payload = stream.getView().substr(stream.getReadPointer());
     PacketSendEvent e{player, static_cast<int>(header.getPacketId()), payload,
                       EndstoneSocketAddress::fromNetworkIdentifier(id), static_cast<int>(header.getSenderSubId())};
 
@@ -167,14 +165,14 @@ std::optional<std::string> AsyncBatchedNetworkPeer::handleSendEvent(const std::s
         if (!packet) {
             server.getLogger().critical("AsyncBatchedNetworkPeer::sendPacket: Unknown packet id: {}",
                                         static_cast<int>(header.getPacketId()));
-            return std::nullopt;
+            return;
         }
 
         auto &network = server.getServer().getNetwork();
         if (!packet->readNoHeader(stream, network.getPacketReflectionCtx(), header.getSenderSubId()).ignoreError()) {
             server.getLogger().critical("AsyncBatchedNetworkPeer::sendPacket: Failed to parse packet with id: {}",
                                         static_cast<int>(packet->getId()));
-            return std::nullopt;
+            return;
         }
 
         patchPacket(*packet, player);
@@ -191,61 +189,18 @@ std::optional<std::string> AsyncBatchedNetworkPeer::handleSendEvent(const std::s
 
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
-        return std::nullopt;
+        return;
     }
 
     if (e.getPayload().data() != payload.data()) {
         BinaryStream out;
         header.write(out);
         out.writeRawBytes(e.getPayload());
-        return out.getBuffer();
+        BatchedNetworkPeer::sendPacket(out.getBuffer(), reliability, compressible);
     }
-    return data;
-}
-
-std::optional<std::string> AsyncBatchedNetworkPeer::handleReceiveEvent(const std::string &data)
-{
-    const auto &server = EndstoneServer::getInstance();
-    auto network_handler = server.getServer().getMinecraft()->getServerNetworkHandler();
-
-    ReadOnlyBinaryStream stream(data, false);
-    auto result = stream.getUnsignedVarInt().discardError();
-    if (!result) {
-        return std::nullopt;
+    else {
+        BatchedNetworkPeer::sendPacket(data, reliability, compressible);
     }
-
-    const auto header = PacketHeader::fromRaw(result.value());
-    const auto &id = getId();
-    EndstonePlayer *player = nullptr;
-    if (const auto *p = network_handler->getServerPlayer(id, header.getRecipientSubId())) {
-        player = &p->getEndstoneActor<EndstonePlayer>();
-    }
-
-    const auto payload = stream.getView().substr(stream.getReadPointer());
-    PacketReceiveEvent e{player, static_cast<int>(header.getPacketId()), payload,
-                         EndstoneSocketAddress::fromNetworkIdentifier(id),
-                         static_cast<int>(header.getRecipientSubId())};
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
-        return std::nullopt;
-    }
-
-    if (e.getPayload().data() == payload.data()) {
-        return data;
-    }
-
-    std::string out(data.substr(0, stream.getReadPointer()));
-    out.append(e.getPayload().data(), e.getPayload().size());
-    return out;
-}
-
-void AsyncBatchedNetworkPeer::sendPacket(const std::string &data, Reliability reliability, Compressibility compressible)
-{
-    auto patched = handleSendEvent(data);
-    if (!patched) {
-        return;
-    }
-    BatchedNetworkPeer::sendPacket(*patched, reliability, compressible);
 }
 
 void AsyncBatchedNetworkPeer::flush(std::function<void()> &&callback)
@@ -297,7 +252,12 @@ void AsyncBatchedNetworkPeer::recvLoop()
 NetworkPeer::DataStatus AsyncBatchedNetworkPeer::_receivePacket(std::string &out_data,
                                                                 const PacketRecvTimepointPtr &timepoint_ptr)
 {
-    for (;;) {
+    // PacketReceiveEvent + patching, on the main thread. Cancel/malformed packets are dropped and we fetch the next;
+    // an unchanged payload is moved straight into out_data, only a plugin-modified one is rebuilt in place.
+    const auto &server = EndstoneServer::getInstance();
+    auto network_handler = server.getServer().getMinecraft()->getServerNetworkHandler();
+
+    while (true) {
         std::string raw;
         DataStatus status;
         if (activated_) {
@@ -311,11 +271,35 @@ NetworkPeer::DataStatus AsyncBatchedNetworkPeer::_receivePacket(std::string &out
             return status;
         }
 
-        auto data = handleReceiveEvent(raw);
-        if (!data) {
+        ReadOnlyBinaryStream stream(raw, false);
+        auto result = stream.getUnsignedVarInt().discardError();
+        if (!result) {
             continue;
         }
-        out_data = std::move(*data);
+
+        const auto header = PacketHeader::fromRaw(result.value());
+        const auto &id = getId();
+        EndstonePlayer *player = nullptr;
+        if (const auto *p = network_handler->getServerPlayer(id, header.getRecipientSubId())) {
+            player = &p->getEndstoneActor<EndstonePlayer>();
+        }
+
+        const auto payload = stream.getView().substr(stream.getReadPointer());
+        PacketReceiveEvent e{player, static_cast<int>(header.getPacketId()), payload,
+                             EndstoneSocketAddress::fromNetworkIdentifier(id),
+                             static_cast<int>(header.getRecipientSubId())};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            continue;
+        }
+
+        if (e.getPayload().data() != payload.data()) {
+            out_data.assign(raw, 0, stream.getReadPointer());
+            out_data.append(e.getPayload().data(), e.getPayload().size());
+        }
+        else {
+            out_data = std::move(raw);
+        }
         return DataStatus::HasData;
     }
 }
