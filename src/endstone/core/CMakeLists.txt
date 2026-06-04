@@ -87,7 +87,7 @@ add_library(endstone_core
         map/map_view.cpp
         network/async_batched_network_peer.cpp
         network/data_packet.cpp
-        network/network_thread_pool.cpp
+        network/event_loop_group.cpp
         packs/endstone_pack_source.cpp
         permissions/default_permissions.cpp
         permissions/permissible_base.cpp

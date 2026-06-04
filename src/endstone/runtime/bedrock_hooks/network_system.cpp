@@ -18,7 +18,8 @@
 #include <utility>
 
 #include "endstone/core/network/async_batched_network_peer.h"
-#include "endstone/core/network/network_thread_pool.h"
+#include "endstone/core/network/event_loop_group.h"
+#include "endstone/core/server.h"
 #include "endstone/runtime/hook.h"
 
 // Issue #356: after BDS builds the connection (the chain is constructed inside NetworkConnection's ctor), splice
@@ -31,11 +32,9 @@ bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::sh
         return result;
     }
 
-    auto &pool = endstone::core::NetworkThreadPool::getInstance();
-    if (pool.isRunning()) {
-        if (auto *connection = _getConnectionFromId(id)) {
-            endstone::core::AsyncBatchedNetworkPeer::splice(*connection, pool);
-        }
+    if (auto *connection = _getConnectionFromId(id)) {
+        auto &group = endstone::core::EndstoneServer::getInstance().getEventLoopGroup();
+        endstone::core::AsyncBatchedNetworkPeer::splice(*connection, group);
     }
     return result;
 }

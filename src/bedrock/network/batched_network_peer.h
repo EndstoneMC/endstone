@@ -14,21 +14,23 @@
 
 #pragma once
 
-#include <cstddef>
+#include <atomic>
+#include <cstdint>
+#include <functional>
+#include <memory>
+#include <optional>
+#include <string>
 
+#include "bedrock/core/threading/spsc_queue.h"
+#include "bedrock/core/utility/binary_stream.h"
+#include "bedrock/forward.h"  // class TaskGroup {}
 #include "network_peer.h"
 
-// Endstone: layout-faithful reconstruction of BDS's BatchedNetworkPeer (size 344, mAsyncEnabled @ +0x150).
-//
-// endstone::core::AsyncBatchedNetworkPeer derives from this so that:
-//   1. BDS's NetworkSystem::enableAsyncFlush, which writes `mAsyncEnabled = 1` directly through a
-//      BatchedNetworkPeer* at offset +0x150, lands the write on our inherited field (no corruption); and
-//   2. NetworkConnection::batched_peer (a std::weak_ptr<BatchedNetworkPeer>) can hold our spliced object.
-//
-// We never construct a standalone BatchedNetworkPeer nor touch the reserved members. The heavy BDS members
-// (mOutgoingData, mIncomingData, mTaskGroup, mSendQueue, ...) are opaque storage we own but ignore; the async
-// peer uses its own asio strand + queue. The base is left abstract on purpose (NetworkPeer's pure virtuals are
-// overridden by AsyncBatchedNetworkPeer), so no BDS ctor/dtor/vtable needs to be linked.
+// Reconstruction of BDS's BatchedNetworkPeer (size 344, mAsyncEnabled at +0x150). endstone::core::
+// AsyncBatchedNetworkPeer derives from this so BDS's NetworkSystem::enableAsyncFlush, which writes mAsyncEnabled
+// directly through a BatchedNetworkPeer* at that offset, lands on our inherited field, and so
+// NetworkConnection::batched_peer (a std::weak_ptr<BatchedNetworkPeer>) can hold our spliced object. Endstone never
+// runs BDS's batching on these members; the async peer uses its own strand + queue and leaves them default.
 class BatchedNetworkPeer : public NetworkPeer {
 public:
     ~BatchedNetworkPeer() override = default;
@@ -36,8 +38,22 @@ public:
 protected:
     BatchedNetworkPeer() = default;
 
-    std::byte reserved_[0x150 - sizeof(NetworkPeer)];  // BDS: mOutgoingData .. mSentPackets (unused by Endstone)
-    bool mAsyncEnabled;                                // BDS: +0x150, set by enableAsyncFlush after auth
+    struct DataCallback {
+        std::string data;
+        Compressibility compressible;
+        std::function<void()> callback;
+    };
+
+    BinaryStream outgoing_data_;
+    std::size_t compressible_bytes_{0};
+    std::string incoming_data_buffer_;
+    std::optional<ReadOnlyBinaryStream> incoming_data_;
+    std::unique_ptr<TaskGroup> task_group_;
+    SPSCQueue<DataCallback, 512> send_queue_;
+    std::atomic_bool task_running_{false};
+    std::atomic<std::uint64_t> queued_packets_{0};
+    std::uint64_t sent_packets_{0};
+    bool async_enabled_{false};
 };
 static_assert(sizeof(BatchedNetworkPeer) == 344,
               "BatchedNetworkPeer must match BDS layout so mAsyncEnabled stays at offset 0x150");
