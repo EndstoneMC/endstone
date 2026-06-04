@@ -122,7 +122,7 @@ void patchPacket(Packet &packet, Player *player)
 }  // namespace
 
 AsyncBatchedNetworkPeer::AsyncBatchedNetworkPeer(NetworkIdentifier id, std::shared_ptr<NetworkPeer> peer,
-                                                 EventLoopGroup::EventLoop event_loop)
+                                                 std::optional<EventLoopGroup::EventLoop> event_loop)
     : id_(std::move(id)), event_loop_(std::move(event_loop))
 {
     peer_ = std::move(peer);
@@ -268,7 +268,7 @@ void AsyncBatchedNetworkPeer::flush(std::function<void()> &&callback)
 
     auto data = std::make_shared<std::string>(std::move(batch));
     auto self = shared_from_this();
-    boost::asio::post(event_loop_, [self, data, compressible] {
+    boost::asio::post(*event_loop_, [self, data, compressible] {
         self->peer_->sendPacket(*data, Reliability::ReliableOrdered, compressible);
     });
 
@@ -322,7 +322,8 @@ NetworkPeer::DataStatus AsyncBatchedNetworkPeer::_receivePacket(std::string &out
 
 void AsyncBatchedNetworkPeer::update()
 {
-    if (!activated_ && async_enabled_) {
+    // event_loop_ is set only when async networking is enabled; without it we never activate (sync passthrough).
+    if (!activated_ && async_enabled_ && event_loop_) {
         activated_ = true;
         BatchedNetworkPeer::flush({});  // drain the pre-auth batch before the event loop takes over the inner chain
     }
@@ -335,7 +336,7 @@ void AsyncBatchedNetworkPeer::update()
     flush({});
     if (!recv_scheduled_.exchange(true)) {
         auto self = shared_from_this();
-        boost::asio::post(event_loop_, [self] { self->recvLoop(); });
+        boost::asio::post(*event_loop_, [self] { self->recvLoop(); });
     }
     peer_->update();
 }

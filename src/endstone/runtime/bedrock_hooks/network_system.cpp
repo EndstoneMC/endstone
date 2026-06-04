@@ -15,6 +15,7 @@
 #include "bedrock/network/network_system.h"
 
 #include <memory>
+#include <optional>
 #include <utility>
 
 #include "endstone/core/network/async_batched_network_peer.h"
@@ -31,11 +32,6 @@ bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::sh
         return result;
     }
 
-    auto &server = endstone::core::EndstoneServer::getInstance();
-    if (!server.isAsyncNetworkEnabled()) {
-        return result;  // [network] async = false -> leave BDS's synchronous peer chain untouched
-    }
-
     auto *connection = _getConnectionFromId(id);
     if (!connection) {
         return result;
@@ -45,15 +41,22 @@ bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::sh
         throw std::runtime_error("Invalid connection state: expected a BatchedNetworkPeer with an inner peer");
     }
 
-    // Wrap the chain's RakNet leaf (the childless peer) so its read buffer is only ever touched on the main thread; the
-    // wrapper is transparent to AsyncBatchedNetworkPeer, which just sees the inner chain root.
-    auto *leaf = &batched->peer_;
-    while ((*leaf)->peer_) {
-        leaf = &(*leaf)->peer_;
+    // Only stand up the async machinery when enabled. The AsyncBatchedNetworkPeer is spliced in either way (so the
+    // packet events still fire); without an event loop it stays a synchronous main-thread passthrough.
+    auto &server = endstone::core::EndstoneServer::getInstance();
+    std::optional<endstone::core::EventLoopGroup::EventLoop> event_loop;
+    if (server.isAsyncNetworkEnabled()) {
+        // Wrap the chain's RakNet leaf (the childless peer) so its read buffer is only ever touched on the main
+        // thread; the wrapper is transparent to AsyncBatchedNetworkPeer, which just sees the inner chain root.
+        auto *leaf = &batched->peer_;
+        while ((*leaf)->peer_) {
+            leaf = &(*leaf)->peer_;
+        }
+        *leaf = std::make_shared<endstone::core::BufferedRakNetPeer>(*leaf);
+        event_loop = server.getEventLoopGroup().next();
     }
-    *leaf = std::make_shared<endstone::core::BufferedRakNetPeer>(*leaf);
 
-    // Replace the BatchedNetworkPeer with our async one wherever the chain holds it (PacketTrace -> ... -> batched).
+    // Replace the BatchedNetworkPeer with our peer wherever the chain holds it (PacketTrace -> ... -> batched).
     auto *slot = &connection->peer;
     while (*slot && *slot != batched) {
         slot = &(*slot)->peer_;
@@ -62,8 +65,8 @@ bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::sh
         throw std::runtime_error("Expected BatchedNetworkPeer in the new connection's peer chain, but none found");
     }
 
-    auto async_batched = std::make_shared<endstone::core::AsyncBatchedNetworkPeer>(id, batched->peer_,
-                                                                                   server.getEventLoopGroup().next());
+    auto async_batched =
+        std::make_shared<endstone::core::AsyncBatchedNetworkPeer>(id, batched->peer_, std::move(event_loop));
     *slot = async_batched;
     connection->batched_peer = async_batched;
     return result;
