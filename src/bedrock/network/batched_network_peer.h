@@ -21,6 +21,7 @@
 #include <optional>
 #include <string>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/core/threading/spsc_queue.h"
 #include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/forward.h"
@@ -60,4 +61,4 @@ protected:
     std::uint64_t sent_packets_{0};
     bool async_enabled_{false};
 };
-static_assert(sizeof(BatchedNetworkPeer) == 344);
+BEDROCK_STATIC_ASSERT_SIZE(BatchedNetworkPeer, 344, 320);
