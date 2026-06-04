@@ -128,6 +128,7 @@ public:
     void initPackSource(const PackSourceFactory &pack_source_factory);
     [[nodiscard]] PackSource &getPackSource() const;
     [[nodiscard]] bool getAllowClientPacks() const;
+    [[nodiscard]] bool isAsyncNetworkEnabled() const;  // issue #356
     [[nodiscard]] bool logCommands() const;
     [[nodiscard]] bool isServerTextEnabled(ServerTextEvent event) const;
 
@@ -172,6 +173,7 @@ private:
     float average_usage_[SharedConstants::TicksPerSecond] = {0.0F};
     // TODO(config): move the following the a separate class/struct
     bool allow_client_packs_ = false;
+    bool async_network_enabled_ = false;
     bool log_commands_ = true;
     ServerTextSettings text_settings_;
     ::Bedrock::PubSub::Subscription on_gameplay_user_removed_;

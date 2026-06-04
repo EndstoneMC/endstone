@@ -7,3 +7,12 @@ log = true
 # Allow clients to use their own packs when texturepack-required is true.
 # Has no effect if texturepack-required is false.
 allow-client-packs = false
+
+[network]
+# EXPERIMENTAL: process per-connection packet encryption/compression on a pool of worker threads instead of the
+# main thread. This can improve tick rate with many players, but the feature is new — if you run into any network
+# issues, turn it off.
+async = true
+
+# Number of worker threads used when 'async' is true. 0 = automatic (CPU cores minus 2, at least 1).
+threads = 0

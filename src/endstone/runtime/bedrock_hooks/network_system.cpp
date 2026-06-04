@@ -31,6 +31,11 @@ bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::sh
         return result;
     }
 
+    auto &server = endstone::core::EndstoneServer::getInstance();
+    if (!server.isAsyncNetworkEnabled()) {
+        return result;  // [network] async = false -> leave BDS's synchronous peer chain untouched
+    }
+
     auto *connection = _getConnectionFromId(id);
     if (!connection) {
         return result;
@@ -57,7 +62,6 @@ bool NetworkSystem::onNewIncomingConnection(const NetworkIdentifier &id, std::sh
         throw std::runtime_error("Expected BatchedNetworkPeer in the new connection's peer chain, but none found");
     }
 
-    auto &server = endstone::core::EndstoneServer::getInstance();
     auto async_batched = std::make_shared<endstone::core::AsyncBatchedNetworkPeer>(id, batched->peer_,
                                                                                    server.getEventLoopGroup().next());
     *slot = async_batched;
