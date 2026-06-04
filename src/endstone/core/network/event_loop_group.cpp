@@ -16,27 +16,38 @@
 
 namespace endstone::core {
 
-EventLoopGroup::EventLoopGroup(std::size_t threads) : work_guard_(boost::asio::make_work_guard(io_context_))
+EventLoopGroup::EventLoopGroup(std::size_t threads)
 {
     if (threads == 0) {
         const auto hardware = std::thread::hardware_concurrency();
         threads = hardware > 3 ? static_cast<std::size_t>(hardware) - 2 : 1;
     }
-    workers_.reserve(threads);
+    loops_.reserve(threads);
     for (std::size_t i = 0; i < threads; ++i) {
-        workers_.emplace_back([this] { io_context_.run(); });
+        auto loop = std::make_unique<Loop>();
+        auto *io = &loop->io_context;
+        loop->thread = std::thread([io] { io->run(); });
+        loops_.push_back(std::move(loop));
     }
 }
 
 EventLoopGroup::~EventLoopGroup()
 {
-    work_guard_.reset();  // let run() return once outstanding work drains
-    io_context_.stop();   // ... and stop promptly regardless
-    for (auto &worker : workers_) {
-        if (worker.joinable()) {
-            worker.join();
+    for (auto &loop : loops_) {
+        loop->work_guard.reset();  // let run() return once outstanding work drains
+        loop->io_context.stop();   // ... and stop promptly regardless
+    }
+    for (auto &loop : loops_) {
+        if (loop->thread.joinable()) {
+            loop->thread.join();
         }
     }
+}
+
+EventLoopGroup::EventLoop EventLoopGroup::next()
+{
+    const auto index = next_.fetch_add(1, std::memory_order_relaxed) % loops_.size();
+    return loops_[index]->io_context.get_executor();
 }
 
 }  // namespace endstone::core

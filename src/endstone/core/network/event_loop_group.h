@@ -14,24 +14,29 @@
 
 #pragma once
 
+#include <atomic>
 #include <cstddef>
+#include <memory>
 #include <thread>
 #include <vector>
 
 #include <boost/asio/executor_work_guard.hpp>
 #include <boost/asio/io_context.hpp>
-#include <boost/asio/strand.hpp>
 
 namespace endstone::core {
 
 /**
- * The async network worker pool (issue #356), modelled on Netty's EventLoopGroup: a boost::asio io_context driven by
- * a fixed pool of worker threads, started in the constructor and joined in the destructor (so EndstoneServer just
- * owns it by unique_ptr). Each connection binds to one EventLoop -- a strand -- obtained via next().
+ * The async network worker pool (issue #356), modelled on Netty's EventLoopGroup. Unlike a single shared io_context
+ * with a strand per connection, each EventLoop here is its OWN single-threaded io_context: a connection binds to one
+ * via next() and keeps it for life, so all of that connection's async work runs on the same thread. That makes the
+ * work both serialized AND thread-affine -- the connection's cipher/compression/buffer state stays hot on one core,
+ * with none of a strand's cross-thread hand-off or dispatch overhead. Many connections share one EventLoop (round-
+ * robin), exactly like Netty channels sharing an event loop.
  */
 class EventLoopGroup {
 public:
-    using EventLoop = boost::asio::strand<boost::asio::io_context::executor_type>;
+    // A connection's bound executor. Posting to it runs the work on that loop's single dedicated thread.
+    using EventLoop = boost::asio::io_context::executor_type;
 
     // 0 threads = auto = max(1, hardware_concurrency() - 2).
     explicit EventLoopGroup(std::size_t threads = 0);
@@ -40,14 +45,21 @@ public:
     EventLoopGroup(const EventLoopGroup &) = delete;
     EventLoopGroup &operator=(const EventLoopGroup &) = delete;
 
-    // A fresh strand multiplexed onto the shared threads: per-connection ops are serialized, different connections
-    // run in parallel.
-    [[nodiscard]] EventLoop next() { return boost::asio::make_strand(io_context_); }
+    // Round-robin the next EventLoop. The returned executor stays valid until this group is destroyed.
+    [[nodiscard]] EventLoop next();
 
 private:
-    boost::asio::io_context io_context_;
-    boost::asio::executor_work_guard<boost::asio::io_context::executor_type> work_guard_;
-    std::vector<std::thread> workers_;
+    // io_context + thread are non-movable, so each loop lives behind a stable heap pointer (the thread captures it).
+    struct Loop {
+        boost::asio::io_context io_context;
+        boost::asio::executor_work_guard<boost::asio::io_context::executor_type> work_guard;
+        std::thread thread;
+
+        Loop() : work_guard(boost::asio::make_work_guard(io_context)) {}
+    };
+
+    std::vector<std::unique_ptr<Loop>> loops_;
+    std::atomic<std::size_t> next_{0};
 };
 
 }  // namespace endstone::core
