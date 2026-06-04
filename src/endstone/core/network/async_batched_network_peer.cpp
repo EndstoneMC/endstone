@@ -205,6 +205,7 @@ void AsyncBatchedNetworkPeer::sendPacket(const std::string &data, Reliability re
 
 void AsyncBatchedNetworkPeer::flush(std::function<void()> &&callback)
 {
+    // Virtual entry point from the outer peer chain: passthrough until we activate.
     if (!activated_) {
         BatchedNetworkPeer::flush(std::move(callback));
         return;
@@ -306,18 +307,19 @@ NetworkPeer::DataStatus AsyncBatchedNetworkPeer::_receivePacket(std::string &out
 
 void AsyncBatchedNetworkPeer::update()
 {
-    // event_loop_ is set only when async networking is enabled; without it we never activate (sync passthrough).
-    if (!activated_ && async_enabled_ && event_loop_) {
-        activated_ = true;
-        BatchedNetworkPeer::flush({});  // drain the pre-auth batch before the event loop takes over the inner chain
-    }
-
     if (!activated_) {
-        BatchedNetworkPeer::update();
-        return;
+        // event_loop_ is set only when async networking is enabled; without it we stay a sync passthrough.
+        if (async_enabled_ && event_loop_) {
+            activated_ = true;
+            BatchedNetworkPeer::flush(nullptr);  // drain pending sync batch once, at the transition
+        }
+        else {
+            BatchedNetworkPeer::update();
+            return;
+        }
     }
 
-    flush({});
+    flush(nullptr);
     if (!recv_scheduled_.exchange(true)) {
         auto self = shared_from_this();
         boost::asio::post(*event_loop_, [self] { self->recvLoop(); });
