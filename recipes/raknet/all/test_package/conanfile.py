@@ -20,12 +20,22 @@ class RakNetTestConan(ConanFile):
         tc = CMakeToolchain(self)
         tc.generate()
 
+    @property
+    def _is_mojang(self):
+        # The mojang variant adds pure virtuals whose RakPeer overrides are left
+        # undefined, so a concrete RakPeer cannot be linked into an executable.
+        return "mojang" in str(self.tested_reference_str)
+
     def build(self):
+        if self._is_mojang:
+            return
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
 
     def test(self):
+        if self._is_mojang:
+            return
         if can_run(self):
             exe = os.path.join(self.cpp.build.bindir, "test_package")
             self.run(exe, env="conanrun")
