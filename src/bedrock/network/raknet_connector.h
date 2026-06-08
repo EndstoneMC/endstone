@@ -14,7 +14,8 @@
 
 #pragma once
 
-#include "bedrock/deps/raknet/rak_peer_interface.h"
+#include <RakPeerInterface.h>
+
 #include "bedrock/network/disconnection_request_info.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/rak_peer_helper.h"

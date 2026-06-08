@@ -14,13 +14,14 @@
 
 #pragma once
 
+#include <RakNetTypes.h>
+
 #include <cstdint>
 #include <string>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/common_types.h"
 #include "bedrock/deps/nethernet/network_id.h"
-#include "bedrock/deps/raknet/raknet_types.h"
 
 class NetworkIdentifier {
 public:

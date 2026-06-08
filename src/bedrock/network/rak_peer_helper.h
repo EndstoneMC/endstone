@@ -14,9 +14,10 @@
 
 #pragma once
 
+#include <RakNetTypes.h>
+#include <RakPeerInterface.h>
+
 #include "bedrock/bedrock.h"
-#include "bedrock/deps/raknet/rak_peer_interface.h"
-#include "bedrock/deps/raknet/raknet_types.h"
 #include "bedrock/network/connection_definition.h"
 
 class RakPeerHelper {

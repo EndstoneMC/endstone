@@ -14,9 +14,10 @@
 
 #pragma once
 
+#include <PacketPriority.h>
+
 #include "bedrock/common_types.h"
 #include "bedrock/core/utility/binary_stream.h"
-#include "bedrock/deps/raknet/packet_priority.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/network_peer.h"
 #include "bedrock/network/packet/cerealize/core/serialization_mode.h"
