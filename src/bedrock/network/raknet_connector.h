@@ -14,6 +14,17 @@
 
 #pragma once
 
+// RakNet pulls in <winsock2.h>/<windows.h>; keep their min()/max() macros and
+// extra Win32 surface out of the translation unit.
+#ifdef _WIN32
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#endif
+
 #include <RakPeerInterface.h>
 
 #include "bedrock/network/disconnection_request_info.h"
