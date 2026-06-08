@@ -33,7 +33,9 @@ patches:
     - patch_file: "patches/4.081-disable-plugins.patch"
       patch_description: "Disable all optional RakNet plugins"
       patch_type: "conan"
-    # Mojang-specific divergence (ABI + wire protocol) goes below, e.g.:
-    # - patch_file: "patches/4.081-mojang-<topic>.patch"
-    #   patch_description: "..."
-    #   patch_type: "conan"
+    - patch_file: "patches/4.081-mojang-define-overrides.patch"
+      patch_description: "Mojang RakNet define overrides (protocol version 11, 20 internal IDs)"
+      patch_type: "conan"
+    - patch_file: "patches/4.081-mojang-rakpeer-vtable.patch"
+      patch_description: "Mojang RakPeerInterface vtable additions"
+      patch_type: "conan"
