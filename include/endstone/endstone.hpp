@@ -42,6 +42,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "block/block_face.h"
 #include "block/block_state.h"
 #include "block/block_type.h"
+#include "block/container.h"
 #include "boss/bar_color.h"
 #include "boss/bar_flag.h"
 #include "boss/bar_style.h"

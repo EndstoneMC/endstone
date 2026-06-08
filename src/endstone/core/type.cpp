@@ -23,6 +23,8 @@
 #include "endstone/actor/actor.h"
 #include "endstone/actor/item.h"
 #include "endstone/actor/mob.h"
+#include "endstone/block/block_state.h"
+#include "endstone/block/container.h"
 #include "endstone/command/block_command_sender.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/command/console_command_sender.h"
@@ -66,6 +68,10 @@ void registerTypes()
     registerType<WritableBookMeta>().base<ItemMeta>();
     registerType<BookMeta>().base<WritableBookMeta>();
     registerType<CrossbowMeta>().base<ItemMeta>();
+
+    // BlockState hierarchy
+    registerType<BlockState>();
+    registerType<Container>().base<BlockState>();
 }
 
 bool isTypeInstanceOf(const std::type_info &from, const std::type_info &target)

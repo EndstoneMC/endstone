@@ -21,6 +21,7 @@
 
 #include "endstone/block/block.h"
 #include "endstone/block/block_type.h"
+#include "endstone/object.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
@@ -33,9 +34,9 @@ namespace endstone {
  * Block. Note that another plugin may change the state of the block, and you will not know, or they may change the
  * block to another type entirely, causing your BlockState to become invalid.
  */
-class BlockState {
+class BlockState : public Object {
 public:
-    virtual ~BlockState() = default;
+    ~BlockState() override = default;
 
     /**
      * Gets the block represented by this block state.

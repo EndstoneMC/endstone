@@ -14,10 +14,12 @@
 
 #include "endstone/core/block/block.h"
 
+#include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/core/block/block_data.h"
 #include "endstone/core/block/block_face.h"
 #include "endstone/core/block/block_state.h"
+#include "endstone/core/block/container.h"
 #include "endstone/core/server.h"
 
 using endstone::core::EndstoneServer;
@@ -109,6 +111,14 @@ Location EndstoneBlock::getLocation() const
 
 std::unique_ptr<BlockState> EndstoneBlock::captureState() const
 {
+    if (const auto *block_entity = block_source_.get().getBlockEntity(block_pos_)) {
+        // TODO(block-state): once we add type-specific block states (Sign, Furnace, CreatureSpawner, ...),
+        // dispatch on BlockActor::getType() via a BlockActorType -> factory registry (cf. CraftBukkit's
+        // CraftBlockStates), keeping this generic getContainer() check as the fallback for container blocks.
+        if (auto *container = const_cast<BlockActor *>(block_entity)->getContainer()) {
+            return std::make_unique<EndstoneContainer>(*this, *container);
+        }
+    }
     return std::make_unique<EndstoneBlockState>(*this);
 }
 

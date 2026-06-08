@@ -115,6 +115,16 @@ void init_block(py::module_ &m, py::classh<Block> &block)
 )doc")
         .def("__str__", [](const BlockState &self) { return std::format("{}", self); });
 
+    py::classh<Container, BlockState>(m, "Container", R"doc(
+    Represents a captured state of a container block, such as a chest.
+)doc")
+        .def_property_readonly("inventory", &Container::getInventory, py::return_value_policy::reference_internal, R"doc(
+    The inventory of the block represented by this block state.
+
+    If the block was changed to a different type in the meantime, the returned inventory might no
+    longer be valid.
+)doc");
+
     block.def_property_readonly("type", &Block::getType, py::return_value_policy::reference,
                                 "The type of the block.")
         .def("set_type", py::overload_cast<BlockTypeId, bool>(&Block::setType), py::arg("type"),

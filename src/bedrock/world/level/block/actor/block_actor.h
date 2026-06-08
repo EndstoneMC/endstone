@@ -15,6 +15,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #include "bedrock/core/container/enum_set.h"
 #include "bedrock/safety/redactable_string.h"
@@ -23,7 +24,10 @@
 #include "bedrock/world/level/block/actor/block_actor_type.h"
 #include "bedrock/world/level/block/block.h"
 
+class Container;
+class IConstBlockSource;
 class ILevel;
+class PistonBlockActor;
 
 class BlockActor {
 public:
@@ -48,6 +52,28 @@ public:
     [[nodiscard]] virtual bool isPermanentlyRendered() const = 0;
     [[nodiscard]] virtual bool isWithinRenderDistance(const Vec3 &) const = 0;
     virtual void tick(BlockSource &) = 0;
+    virtual void onChanged(BlockSource &) = 0;
+    virtual void onPlace(BlockSource &) = 0;
+    virtual void onMove() = 0;
+    virtual void onRemoved(BlockSource &) = 0;
+    [[nodiscard]] virtual bool isPreserved(BlockSource &) const = 0;
+    virtual bool shouldPreserve(BlockSource &) = 0;
+    virtual void triggerEvent(int, int) = 0;
+    virtual void onNeighborChanged(BlockSource &, const BlockPos &) = 0;
+    [[nodiscard]] virtual float getShadowRadius(BlockSource &) const = 0;
+    [[nodiscard]] virtual bool hasAlphaLayer() const = 0;
+    virtual BlockActor *getCrackEntity(BlockSource &, const BlockPos &) = 0;
+    [[nodiscard]] virtual AABB getCollisionShape(const IConstBlockSource &) const = 0;
+    virtual void getDebugText(std::vector<std::string> &, const BlockPos &, const BlockSource *) const = 0;
+    [[nodiscard]] virtual const Bedrock::Safety::RedactableString &getCustomName() const = 0;
+    [[nodiscard]] virtual std::string getName() const = 0;
+    virtual void setFilteredNameTag(const std::string &) = 0;
+    virtual void setCustomName(const Bedrock::Safety::RedactableString &) = 0;
+    virtual std::string getImmersiveReaderText(BlockSource &) = 0;
+    virtual PistonBlockActor *getOwningPiston(BlockSource &) = 0;
+    [[nodiscard]] virtual const PistonBlockActor *getOwningPiston(BlockSource &) const = 0;
+    virtual Container *getContainer() = 0;
+    [[nodiscard]] virtual const Container *getContainer() const = 0;
 
     void setChanged() { properties_.insert(Property::Changed); }
 

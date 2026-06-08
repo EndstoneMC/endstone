@@ -6,6 +6,7 @@ import enum
 import typing
 
 from endstone import Identifier
+from endstone.inventory import Inventory
 from endstone.level import Dimension, Location
 
 __all__ = [
@@ -14,6 +15,7 @@ __all__ = [
     "BlockFace",
     "BlockState",
     "BlockType",
+    "Container",
 ]
 
 class Block:
@@ -292,3 +294,17 @@ class BlockState:
         """
         ...
     def __str__(self) -> str: ...
+
+class Container(BlockState):
+    """
+    Represents a captured state of a container block, such as a chest.
+    """
+    @property
+    def inventory(self) -> Inventory:
+        """
+        The inventory of the block represented by this block state.
+
+        If the block was changed to a different type in the meantime, the returned inventory might no
+        longer be valid.
+        """
+        ...
