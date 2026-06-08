@@ -121,7 +121,7 @@ Runtime tests verify the API works correctly within a live Bedrock Dedicated Ser
 **Install the test plugin:**
 
 ```bash
-pip install -e tests/endstone_test
+pip install -e plugins/test
 ```
 
 **Run runtime tests:**
@@ -307,9 +307,11 @@ endstone/
 │       │   └── bedrock_hooks/  # Hook files for BDS subsystems
 │       └── python/           # Python bindings via pybind11
 ├── endstone/                  # Python package (CLI, plugin loader, metrics)
+├── plugins/                   # First-party Python plugins
+│   ├── devtools/             # Registry inspector (Dear ImGui)
+│   └── test/                 # Runtime test plugin (pip install -e plugins/test)
 ├── tests/                     # Test files
 │   ├── bedrock/              # C++ tests for bedrock layer
-│   ├── endstone_test/        # Runtime test plugin (pip install -e tests/endstone_test)
 │   ├── *.cpp                 # C++ unit tests
 │   └── *.py                  # Python unit tests
 └── conanfile.py              # Dependency management

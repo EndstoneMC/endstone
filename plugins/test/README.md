@@ -11,7 +11,7 @@ This plugin is used for runtime testing of the Endstone API. Unlike unit tests t
 Install the plugin as a Python package from the project root:
 
 ```shell
-pip install -e tests/endstone_test
+pip install -e plugins/test
 ```
 
 The plugin will be automatically discovered and loaded by Endstone on server startup.
@@ -23,7 +23,7 @@ Tests run automatically when the plugin is enabled (after the world loads). Test
 ## Project Structure
 
 ```
-tests/endstone_test/
+plugins/test/
 ├── pyproject.toml                    # Package configuration
 ├── README.md
 └── src/

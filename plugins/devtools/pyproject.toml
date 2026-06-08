@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "endstone-devtools"
+version = "0.1.0"
+description = "Inspect Endstone's registries in a Dear ImGui window, rendered out-of-process."
+keywords = ["endstone", "plugin", "devtools", "imgui"]
+authors = [{ name = "The Endstone Project" }]
+requires-python = ">=3.10"
+dependencies = ["imgui-bundle"]
+
+[project.entry-points."endstone"]
+# Target the submodule directly so the package __init__ stays import-free.
+# See src/endstone_devtools/__init__.py for why that matters.
+devtools = "endstone_devtools.plugin:DevToolsPlugin"
+
+[tool.ruff.lint]
+extend-select = ["I", "F"]
