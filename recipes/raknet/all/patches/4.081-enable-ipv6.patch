@@ -1,0 +1,14 @@
+Enable IPv6 support
+
+Upstream defaults RAKNET_SUPPORT_IPV6 to 0; turn it on (affects the
+SystemAddress layout).
+
+--- a/Source/RakNetDefines.h
++++ b/Source/RakNetDefines.h
+@@ -129,5 +129,5 @@
+ #endif
+
+ #ifndef RAKNET_SUPPORT_IPV6
+-#define RAKNET_SUPPORT_IPV6 0
++#define RAKNET_SUPPORT_IPV6 1
+ #endif

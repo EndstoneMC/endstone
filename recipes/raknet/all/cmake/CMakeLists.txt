@@ -26,7 +26,7 @@ set_target_properties(raknet PROPERTIES OUTPUT_NAME raknet)
 target_include_directories(raknet
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Source>
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/raknet>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
 if(WIN32)
@@ -57,7 +57,7 @@ install(TARGETS raknet
 )
 
 install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/Source/"
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/raknet
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
     FILES_MATCHING PATTERN "*.h"
 )
 

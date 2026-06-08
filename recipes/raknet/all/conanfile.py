@@ -9,7 +9,6 @@ from conan.tools.files import (
     copy,
     export_conandata_patches,
     get,
-    replace_in_file,
     rmdir,
 )
 
@@ -32,14 +31,10 @@ class RakNetConan(ConanFile):
     options = {
         "shared": [True, False],
         "fPIC": [True, False],
-        "protocol_version": ["ANY"],
-        "max_internal_ids": ["ANY"],
     }
     default_options = {
         "shared": False,
         "fPIC": True,
-        "protocol_version": 6,
-        "max_internal_ids": 10,
     }
 
     def config_options(self):
@@ -56,10 +51,6 @@ class RakNetConan(ConanFile):
     def validate(self):
         if str(self.settings.arch) not in ("x86_64", "x86", "armv8", "arm64"):
             raise ConanInvalidConfiguration(f"{self.ref} only supports x86, x86_64 and arm64 architectures.")
-        for opt in ("protocol_version", "max_internal_ids"):
-            value = str(getattr(self.options, opt))
-            if not value.isdigit() or int(value) <= 0:
-                raise ConanInvalidConfiguration(f"raknet:{opt} must be a positive integer (got {value!r}).")
 
     def source(self):
         get(self, **self.conan_data["sources"][self.version], strip_root=True)
@@ -67,7 +58,6 @@ class RakNetConan(ConanFile):
         file_map = {
             "CMakeLists.txt": ".",
             "raknetConfig.cmake.in": ".",
-            "NativeFeatureIncludesOverrides.h": "Source",
         }
         for filename, dest_subdir in file_map.items():
             shutil.copy(
@@ -81,31 +71,7 @@ class RakNetConan(ConanFile):
         tc.generate()
         CMakeDeps(self).generate()
 
-    def _patch_sources_for_options(self):
-        protocol_version = str(self.options.protocol_version)
-        max_internal_ids = str(self.options.max_internal_ids)
-        replace_in_file(
-            self,
-            os.path.join(self.source_folder, "Source", "RakNetVersion.h"),
-            "#define RAKNET_PROTOCOL_VERSION 6",
-            f"#define RAKNET_PROTOCOL_VERSION {protocol_version}",
-        )
-        defines_path = os.path.join(self.source_folder, "Source", "RakNetDefines.h")
-        replace_in_file(
-            self,
-            defines_path,
-            "#define MAXIMUM_NUMBER_OF_INTERNAL_IDS 10",
-            f"#define MAXIMUM_NUMBER_OF_INTERNAL_IDS {max_internal_ids}",
-        )
-        replace_in_file(
-            self,
-            defines_path,
-            "#define RAKNET_SUPPORT_IPV6 0",
-            "#define RAKNET_SUPPORT_IPV6 1",
-        )
-
     def build(self):
-        self._patch_sources_for_options()
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
@@ -119,7 +85,6 @@ class RakNetConan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["raknet"]
-        self.cpp_info.includedirs = ["include", "include/raknet"]
         self.cpp_info.set_property("cmake_file_name", "raknet")
         self.cpp_info.set_property("cmake_target_name", "raknet::raknet")
         if self.settings.os == "Windows":

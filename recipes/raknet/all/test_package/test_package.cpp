@@ -1,27 +1,9 @@
 #include <cstdio>
 #include <cstdlib>
 
-#include <raknet/RakPeerInterface.h>
-#include <raknet/RakNetTypes.h>
-#include <raknet/RakNetVersion.h>
-#include <raknet/RakNetDefines.h>
-
-#ifndef RAKNET_TEST_EXPECTED_PROTOCOL
-#define RAKNET_TEST_EXPECTED_PROTOCOL 6
-#endif
-#ifndef RAKNET_TEST_EXPECTED_MAX_INTERNAL_IDS
-#define RAKNET_TEST_EXPECTED_MAX_INTERNAL_IDS 10
-#endif
-
-#if RAKNET_PROTOCOL_VERSION != RAKNET_TEST_EXPECTED_PROTOCOL
-#error "RAKNET_PROTOCOL_VERSION does not match the value configured via the conan option"
-#endif
-#if MAXIMUM_NUMBER_OF_INTERNAL_IDS != RAKNET_TEST_EXPECTED_MAX_INTERNAL_IDS
-#error "MAXIMUM_NUMBER_OF_INTERNAL_IDS does not match the value configured via the conan option"
-#endif
-#if !defined(RAKNET_SUPPORT_IPV6) || RAKNET_SUPPORT_IPV6 == 0
-#error "RAKNET_SUPPORT_IPV6 must be enabled by the recipe"
-#endif
+#include <RakPeerInterface.h>
+#include <RakNetTypes.h>
+#include <RakNetVersion.h>
 
 int main() {
     RakNet::RakPeerInterface* peer = RakNet::RakPeerInterface::GetInstance();

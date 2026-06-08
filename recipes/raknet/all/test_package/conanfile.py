@@ -18,9 +18,6 @@ class RakNetTestConan(ConanFile):
 
     def generate(self):
         tc = CMakeToolchain(self)
-        raknet_opts = self.dependencies["raknet"].options
-        tc.cache_variables["RAKNET_TEST_EXPECTED_PROTOCOL"] = str(raknet_opts.protocol_version)
-        tc.cache_variables["RAKNET_TEST_EXPECTED_MAX_INTERNAL_IDS"] = str(raknet_opts.max_internal_ids)
         tc.generate()
 
     def build(self):
