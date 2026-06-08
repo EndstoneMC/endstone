@@ -14,10 +14,11 @@
 
 #include "endstone/core/player.h"
 
+#include <RakPeerInterface.h>
+
 #include <magic_enum/magic_enum.hpp>
 #include <nlohmann/json.hpp>
 
-#include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
@@ -861,10 +862,9 @@ void EndstonePlayer::doFirstSpawn()
     updateCommands();
 }
 
-void EndstonePlayer::initFromConnectionRequest(
-    std::variant<std::reference_wrapper<const ::ConnectionRequest>,
-                 std::reference_wrapper<const ::SubClientConnectionRequest>>
-        request)
+void EndstonePlayer::initFromConnectionRequest(std::variant<std::reference_wrapper<const ::ConnectionRequest>,
+                                                            std::reference_wrapper<const ::SubClientConnectionRequest>>
+                                                   request)
 {
     std::visit(
         [&](auto &&ref) {

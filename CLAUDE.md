@@ -112,6 +112,12 @@ C++ plugins link against `endstone::endstone` (header-only) and use the `endston
 
 Core dependencies managed via Conan: fmt, boost, pybind11, spdlog, nlohmann_json, entt, magic_enum, sentry-native. See `conanfile.py` for full list.
 
+## Conan Recipes
+
+Custom third-party recipes live under `recipes/` and are published to the `endstone` Cloudsmith remote.
+
+- **Upload recipes only, never prebuilt binaries.** Let consumers and CI build the binaries from source: `conan upload "<name>/<version>" -r endstone --only-recipe -c`.
+
 ## Git Conventions
 
 - Never add a `Co-Authored-By` line for Claude when creating commits.

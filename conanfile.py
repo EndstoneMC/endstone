@@ -61,6 +61,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("ms-gsl/4.2.0")
         self.requires("nlohmann_json/3.12.0")
         self.requires("pybind11/3.0.1")
+        self.requires("raknet/4.081-mojang")
         self.requires("replxx/0.0.4")
         self.requires("sentry-native/0.14.0")
         self.requires("spdlog/1.15.3")
