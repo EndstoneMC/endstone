@@ -117,6 +117,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md)
 ([**endstone**](namespaceendstone.md))
+* [**Container**](classendstone_1_1Container.md)
+([**endstone**](namespaceendstone.md))
 * [**Criteria**](classendstone_1_1Criteria.md)
 ([**endstone**](namespaceendstone.md))
 * [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md)

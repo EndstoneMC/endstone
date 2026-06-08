@@ -6,6 +6,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 
 * **class** [**endstone::Form**](classendstone_1_1Form.md) _Represents a generic form._ 
 * **class** [**endstone::Object**](classendstone_1_1Object.md) _Base class providing runtime type identification and safe casting._     
+    * **class** [**endstone::BlockState**](classendstone_1_1BlockState.md) _Represents a captured state of a block, which will not update automatically._     
+        * **class** [**endstone::Container**](classendstone_1_1Container.md) _Represents a captured state of a container block, such as a chest._ 
     * **class** [**endstone::Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
         * **class** [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _belonging to a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
     * **class** [**endstone::ItemMeta**](classendstone_1_1ItemMeta.md) _Represents the metadata of a generic item._     
@@ -70,7 +72,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::BanList**](classendstone_1_1BanList.md) _Represents a ban list, containing bans._ 
 * **class** [**endstone::Block**](classendstone_1_1Block.md) _Represents a block._ 
 * **class** [**endstone::BlockData**](classendstone_1_1BlockData.md) _Represents the data related to a live block._ 
-* **class** [**endstone::BlockState**](classendstone_1_1BlockState.md) _Represents a captured state of a block, which will not update automatically._ 
 * **class** [**endstone::BossBar**](classendstone_1_1BossBar.md) _Represents a boss bar that is displayed to players._ 
 * **class** [**endstone::Button**](classendstone_1_1Button.md) _Represents a button with text and an optional icon._ 
 * **class** [**endstone::Chunk**](classendstone_1_1Chunk.md) _Represents a chunk of blocks._ 

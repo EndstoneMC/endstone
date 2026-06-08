@@ -2596,6 +2596,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#public-functions-inherited-from-endstoneobject" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Functions inherited from endstone::Object
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#detailed-description" class="md-nav__link">
       <span class="md-ellipsis">
         Detailed Description
@@ -2844,6 +2855,8 @@ For latest updates join the chat on
 <ul>
 <li><code>#include &lt;endstone/block/block_state.h&gt;</code></li>
 </ul>
+<p>Inherits the following classes: <a href="../classendstone_1_1Object/">endstone::Object</a></p>
+<p>Inherited by the following classes: <a href="../classendstone_1_1Container/">endstone::Container</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2906,8 +2919,44 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-update-33"><strong>update</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> force, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> apply_physics) = 0<br><em>Attempts to update the block represented by this state, setting it to the new values as defined by this state.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="#function-blockstate"><strong>~BlockState</strong></a> () override<br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions-inherited-from-endstoneobject">Public Functions inherited from endstone::Object<a class="headerlink" href="#public-functions-inherited-from-endstoneobject" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1Object/">endstone::Object</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>T</strong></a> *</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Object/#function-as-12"><strong>as</strong></a> () <br><em>Attempts to cast this object to the given type T.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="../classendstone_1_1Identifier/"><strong>T</strong></a> *</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Object/#function-as-22"><strong>as</strong></a> () const<br><em>Attempts to cast this object to the given type T.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::type_info &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Object/#function-getclasstypeid"><strong>getClassTypeId</strong></a> () const = 0<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Object/#function-is"><strong>is</strong></a> () const<br><em>Checks if this object is an instance of the given type T (or a subclass of T).</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Object/#function-isinstanceof"><strong>isInstanceOf</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> std::type_info &amp; target) const = 0<br></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual</td>
-<td style="text-align: left;"><a href="#function-blockstate"><strong>~BlockState</strong></a> () = default<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Object/#function-object"><strong>~Object</strong></a> () = default<br></td>
 </tr>
 </tbody>
 </table>
@@ -3046,7 +3095,7 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-blockstate">function ~BlockState<a class="headerlink" href="#function-blockstate" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BlockState</span><span class="o">::~</span><span class="n">BlockState</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">BlockState</span><span class="o">::~</span><span class="n">BlockState</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div>
 <hr>
 

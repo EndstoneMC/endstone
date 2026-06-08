@@ -122,13 +122,13 @@
         <link refid="block_8h_source"/>
         <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="66" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="67" relation="include">
+        <childnode refid="68" relation="include">
         </childnode>
-        <childnode refid="70" relation="include">
+        <childnode refid="71" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -140,10 +140,16 @@
       <node id="65">
         <label>include/endstone/block/block_state.h</label>
         <link refid="block__state_8h_source"/>
+        <childnode refid="66" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="66">
+        <label>include/endstone/block/container.h</label>
+        <link refid="container_8h_source"/>
+      </node>
+      <node id="67">
         <label>include/endstone/command/block_command_sender.h</label>
         <link refid="block__command__sender_8h_source"/>
       </node>
@@ -207,19 +213,17 @@
         <label>include/endstone/event/actor/player_death_event.h</label>
         <link refid="player__death__event_8h_source"/>
       </node>
-      <node id="68">
+      <node id="69">
         <label>include/endstone/event/block/block_break_event.h</label>
         <link refid="block__break__event_8h_source"/>
       </node>
-      <node id="69">
+      <node id="70">
         <label>include/endstone/event/block/block_cook_event.h</label>
         <link refid="block__cook__event_8h_source"/>
       </node>
-      <node id="67">
+      <node id="68">
         <label>include/endstone/event/block/block_event.h</label>
         <link refid="block__event_8h_source"/>
-        <childnode refid="68" relation="include">
-        </childnode>
         <childnode refid="69" relation="include">
         </childnode>
         <childnode refid="70" relation="include">
@@ -228,44 +232,46 @@
         </childnode>
         <childnode refid="72" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+      </node>
+      <node id="71">
+        <label>include/endstone/event/block/block_explode_event.h</label>
+        <link refid="block__explode__event_8h_source"/>
+      </node>
+      <node id="74">
+        <label>include/endstone/event/block/block_form_event.h</label>
+        <link refid="block__form__event_8h_source"/>
+      </node>
+      <node id="72">
+        <label>include/endstone/event/block/block_from_to_event.h</label>
+        <link refid="block__from__to__event_8h_source"/>
+      </node>
+      <node id="73">
+        <label>include/endstone/event/block/block_grow_event.h</label>
+        <link refid="block__grow__event_8h_source"/>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
+      <node id="75">
+        <label>include/endstone/event/block/block_piston_event.h</label>
+        <link refid="block__piston__event_8h_source"/>
+        <childnode refid="76" relation="include">
         </childnode>
         <childnode refid="77" relation="include">
         </childnode>
       </node>
-      <node id="70">
-        <label>include/endstone/event/block/block_explode_event.h</label>
-        <link refid="block__explode__event_8h_source"/>
-      </node>
-      <node id="73">
-        <label>include/endstone/event/block/block_form_event.h</label>
-        <link refid="block__form__event_8h_source"/>
-      </node>
-      <node id="71">
-        <label>include/endstone/event/block/block_from_to_event.h</label>
-        <link refid="block__from__to__event_8h_source"/>
-      </node>
-      <node id="72">
-        <label>include/endstone/event/block/block_grow_event.h</label>
-        <link refid="block__grow__event_8h_source"/>
-        <childnode refid="73" relation="include">
-        </childnode>
-      </node>
-      <node id="74">
-        <label>include/endstone/event/block/block_piston_event.h</label>
-        <link refid="block__piston__event_8h_source"/>
-        <childnode refid="75" relation="include">
-        </childnode>
-        <childnode refid="76" relation="include">
-        </childnode>
-      </node>
-      <node id="75">
+      <node id="76">
         <label>include/endstone/event/block/block_piston_extend_event.h</label>
         <link refid="block__piston__extend__event_8h_source"/>
       </node>
-      <node id="76">
+      <node id="77">
         <label>include/endstone/event/block/block_piston_retract_event.h</label>
         <link refid="block__piston__retract__event_8h_source"/>
       </node>
@@ -273,7 +279,7 @@
         <label>include/endstone/event/block/block_place_event.h</label>
         <link refid="block__place__event_8h_source"/>
       </node>
-      <node id="77">
+      <node id="78">
         <label>include/endstone/event/block/leaves_decay_event.h</label>
         <link refid="leaves__decay__event_8h_source"/>
       </node>

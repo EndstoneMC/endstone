@@ -7,6 +7,7 @@
     <innerfile refid="block__face_8h">block_face.h</innerfile>
     <innerfile refid="block__state_8h">block_state.h</innerfile>
     <innerfile refid="block__type_8h">block_type.h</innerfile>
+    <innerfile refid="container_8h">container.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

@@ -462,7 +462,7 @@
     <member refid="classendstone_1_1BlockPlaceEvent_1a822e71386ca87244c89763e333cfe7b2" kind="function"><name>getBlockAgainst</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockState" kind="class"><name>endstone::BlockState</name>
-    <member refid="classendstone_1_1BlockState_1a7e3b8131f58cbb0ba1cd3338d8b90c12" kind="function"><name>~BlockState</name></member>
+    <member refid="classendstone_1_1BlockState_1a0f5a2bfe6eb4e93737f1cb9f47b54154" kind="function"><name>~BlockState</name></member>
     <member refid="classendstone_1_1BlockState_1af4b36588a23e8df26ea57425c206265f" kind="function"><name>getBlock</name></member>
     <member refid="classendstone_1_1BlockState_1aae3431979452c2b71ba615ecaa110615" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1BlockState_1adf633410dbefd527bd7a7e423223de02" kind="function"><name>setType</name></member>
@@ -765,6 +765,9 @@
     <member refid="classendstone_1_1CompoundTag_1a404460491f274507de8f3386c3d86946" kind="friend"><name>operator!=</name></member>
   </compound>
   <compound refid="classendstone_1_1ConsoleCommandSender" kind="class"><name>endstone::ConsoleCommandSender</name>
+  </compound>
+  <compound refid="classendstone_1_1Container" kind="class"><name>endstone::Container</name>
+    <member refid="classendstone_1_1Container_1a9d0b9daf34f014c3e79fffeff6043758" kind="function"><name>getInventory</name></member>
   </compound>
   <compound refid="classendstone_1_1Criteria" kind="class"><name>endstone::Criteria</name>
     <member refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" kind="enum"><name>Type</name></member>
@@ -2910,6 +2913,8 @@
   <compound refid="block__state_8h" kind="file"><name>block_state.h</name>
   </compound>
   <compound refid="block__type_8h" kind="file"><name>block_type.h</name>
+  </compound>
+  <compound refid="container_8h" kind="file"><name>container.h</name>
   </compound>
   <compound refid="bar__color_8h" kind="file"><name>bar_color.h</name>
   </compound>

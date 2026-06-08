@@ -31,13 +31,14 @@
 
 #include "endstone/block/block.h"
 #include "endstone/block/block_type.h"
+#include "endstone/object.h"
 #include "endstone/util/result.h"
 
 namespace endstone {
 
-class BlockState {
+class BlockState : public Object {
 public:
-    virtual ~BlockState() = default;
+    ~BlockState() override = default;
 
     [[nodiscard]] virtual std::unique_ptr<Block> getBlock() const = 0;
 

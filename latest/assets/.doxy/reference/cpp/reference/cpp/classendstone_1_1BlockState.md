@@ -14,6 +14,28 @@ _Represents a captured state of a block, which will not update automatically._ [
 
 
 
+Inherits the following classes: [endstone::Object](classendstone_1_1Object.md)
+
+
+Inherited by the following classes: [endstone::Container](classendstone_1_1Container.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -65,7 +87,47 @@ _Represents a captured state of a block, which will not update automatically._ [
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**update**](#function-update-13) () = 0<br>_Attempts to update the block represented by this state, setting it to yhe new values as defined by this state._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**update**](#function-update-23) ([**bool**](classendstone_1_1Identifier.md) force) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**update**](#function-update-33) ([**bool**](classendstone_1_1Identifier.md) force, [**bool**](classendstone_1_1Identifier.md) apply\_physics) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
-| virtual  | [**~BlockState**](#function-blockstate) () = default<br> |
+|   | [**~BlockState**](#function-blockstate) () override<br> |
+
+
+## Public Functions inherited from endstone::Object
+
+See [endstone::Object](classendstone_1_1Object.md)
+
+| Type | Name |
+| ---: | :--- |
+|  [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1Object.md#function-as-12) () <br>_Attempts to cast this object to the given type T._  |
+|  [**const**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md) \* | [**as**](classendstone_1_1Object.md#function-as-22) () const<br>_Attempts to cast this object to the given type T._  |
+| virtual [**const**](classendstone_1_1Identifier.md) std::type\_info & | [**getClassTypeId**](classendstone_1_1Object.md#function-getclasstypeid) () const = 0<br> |
+|  [**bool**](classendstone_1_1Identifier.md) | [**is**](classendstone_1_1Object.md#function-is) () const<br>_Checks if this object is an instance of the given type T (or a subclass of T)._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isInstanceOf**](classendstone_1_1Object.md#function-isinstanceof) ([**const**](classendstone_1_1Identifier.md) std::type\_info & target) const = 0<br> |
+| virtual  | [**~Object**](classendstone_1_1Object.md#function-object) () = default<br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -473,7 +535,7 @@ If apply\_physics is `true`, it will trigger a physics update on surrounding blo
 ### function ~BlockState 
 
 ```C++
-virtual endstone::BlockState::~BlockState () = default
+endstone::BlockState::~BlockState () override
 ```
 
 

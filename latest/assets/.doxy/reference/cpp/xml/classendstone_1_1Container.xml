@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Container" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Container</compoundname>
+    <basecompoundref refid="classendstone_1_1BlockState" prot="public" virt="non-virtual">endstone::BlockState</basecompoundref>
+    <includes refid="container_8h" local="no">endstone/block/container.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Container_1a9d0b9daf34f014c3e79fffeff6043758" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Inventory" kindref="compound">Inventory</ref> &amp;</type>
+        <definition>virtual Inventory &amp; endstone::Container::getInventory</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getInventory</name>
+        <qualifiedname>endstone::Container::getInventory</qualifiedname>
+        <briefdescription>
+<para>Gets the inventory of the block represented by this block state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If the block was changed to a different type in the meantime, the returned inventory might no longer be valid.</para>
+<para><simplesect kind="return"><para>the inventory of the block </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/container.h" line="35" column="24"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents a captured state of a container block, such as a chest. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::BlockState</label>
+        <link refid="classendstone_1_1BlockState"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Container</label>
+        <link refid="classendstone_1_1Container"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::BlockState</label>
+        <link refid="classendstone_1_1BlockState"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Container</label>
+        <link refid="classendstone_1_1Container"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Object</label>
+        <link refid="classendstone_1_1Object"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/block/container.h" line="25" column="1" bodyfile="include/endstone/block/container.h" bodystart="25" bodyend="36"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Object_1a798b5128ce018bbbe8ca949ba78c3db1" prot="public" virt="non-virtual"><scope>endstone::Container</scope><name>as</name></member>
+      <member refid="classendstone_1_1Object_1ae0f38a62da4c186fce272145e2590cc1" prot="public" virt="non-virtual"><scope>endstone::Container</scope><name>as</name></member>
+      <member refid="classendstone_1_1BlockState_1af4b36588a23e8df26ea57425c206265f" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1Object_1aaaeb27e8e442e5adb772ae0d1af1c33f" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>getClassTypeId</name></member>
+      <member refid="classendstone_1_1BlockState_1a18ebe2b1c527ebb7b915157bb2d0c557" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>getData</name></member>
+      <member refid="classendstone_1_1BlockState_1a0d30c01fe70f8e5b591a23fe36490738" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Container_1a9d0b9daf34f014c3e79fffeff6043758" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>getInventory</name></member>
+      <member refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>getLocation</name></member>
+      <member refid="classendstone_1_1BlockState_1aae3431979452c2b71ba615ecaa110615" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>getType</name></member>
+      <member refid="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>getX</name></member>
+      <member refid="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>getY</name></member>
+      <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>getZ</name></member>
+      <member refid="classendstone_1_1Object_1ae8213ae15ad1b14e4631399c6b18960a" prot="public" virt="non-virtual"><scope>endstone::Container</scope><name>is</name></member>
+      <member refid="classendstone_1_1Object_1a20376536a5f64ef02b2569af132171d4" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>isInstanceOf</name></member>
+      <member refid="classendstone_1_1BlockState_1ac85e292da7159b3835cc3919e68c08c7" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>setData</name></member>
+      <member refid="classendstone_1_1BlockState_1adf633410dbefd527bd7a7e423223de02" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>setType</name></member>
+      <member refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" virt="pure-virtual"><scope>endstone::Container</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a0f5a2bfe6eb4e93737f1cb9f47b54154" prot="public" virt="non-virtual"><scope>endstone::Container</scope><name>~BlockState</name></member>
+      <member refid="classendstone_1_1Object_1adfddc886af4b1d0e09ddac7d0391b4d2" prot="public" virt="virtual"><scope>endstone::Container</scope><name>~Object</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

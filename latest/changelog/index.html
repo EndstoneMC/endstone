@@ -5321,6 +5321,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Added a <code>docker-compose.yml</code> for running the server with Docker Compose.</li>
 <li>Added graceful shutdown on Linux: stopping the server (e.g. via <code>docker stop</code>) now lets the Bedrock server save the world before it exits.</li>
 <li>Added <code>PlayerRespawnEvent.respawn_reason</code> (<code>RespawnReason.DEATH</code> / <code>RespawnReason.END_PORTAL</code>) so plugins can tell a normal death respawn apart from a player returning to the Overworld through the End exit portal.</li>
+<li>Added a <code>Container</code> block state for reading and modifying the contents of container blocks such as chests, barrels, hoppers, dispensers, droppers, shulker boxes, and furnaces. <code>block.capture_state()</code> now returns a <code>Container</code> for these blocks, exposing the block's items via <code>container.inventory</code>.</li>
 </ul>
 <h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
 <ul>

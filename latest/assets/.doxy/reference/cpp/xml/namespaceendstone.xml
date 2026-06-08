@@ -53,6 +53,7 @@
     <innerclass refid="classendstone_1_1CommandSenderWrapper" prot="public">endstone::CommandSenderWrapper</innerclass>
     <innerclass refid="classendstone_1_1CompoundTag" prot="public">endstone::CompoundTag</innerclass>
     <innerclass refid="classendstone_1_1ConsoleCommandSender" prot="public">endstone::ConsoleCommandSender</innerclass>
+    <innerclass refid="classendstone_1_1Container" prot="public">endstone::Container</innerclass>
     <innerclass refid="classendstone_1_1Criteria" prot="public">endstone::Criteria</innerclass>
     <innerclass refid="classendstone_1_1CrossbowMeta" prot="public">endstone::CrossbowMeta</innerclass>
     <innerclass refid="classendstone_1_1DamageSource" prot="public">endstone::DamageSource</innerclass>
