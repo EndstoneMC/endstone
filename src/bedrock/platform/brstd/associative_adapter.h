@@ -16,10 +16,12 @@
 
 namespace brstd {
 
+#ifndef NO_UNIQUE_ADDRESS
 #ifdef _MSC_VER
 #define NO_UNIQUE_ADDRESS [[msvc::no_unique_address]]
 #else
 #define NO_UNIQUE_ADDRESS [[no_unique_address]]
+#endif
 #endif
 
 struct no_value_t {};
@@ -201,6 +203,35 @@ public:
     }
 
     const_iterator find(const key_type &key) const
+    {
+        auto first = containers_.keys.begin();
+        auto last = containers_.keys.end();
+        auto it = std::lower_bound(first, last, key, compare_);
+        if (it != last && !compare_(*it, key) && !compare_(key, *it)) {
+            auto offset = static_cast<difference_type>(it - first);
+            return const_iterator(it, containers_.values.begin() + offset);
+        }
+        return end();
+    }
+
+    // Heterogeneous lookup, enabled when the comparator is transparent (defines is_transparent).
+    template <typename K>
+        requires requires { typename key_compare::is_transparent; }
+    iterator find(const K &key)
+    {
+        auto first = containers_.keys.begin();
+        auto last = containers_.keys.end();
+        auto it = std::lower_bound(first, last, key, compare_);
+        if (it != last && !compare_(*it, key) && !compare_(key, *it)) {
+            auto offset = static_cast<difference_type>(it - first);
+            return iterator(it, containers_.values.begin() + offset);
+        }
+        return end();
+    }
+
+    template <typename K>
+        requires requires { typename key_compare::is_transparent; }
+    const_iterator find(const K &key) const
     {
         auto first = containers_.keys.begin();
         auto last = containers_.keys.end();

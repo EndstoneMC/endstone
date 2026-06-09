@@ -15,7 +15,6 @@
 #pragma once
 
 #include <atomic>
-#include <functional>
 #include <unordered_map>
 
 #include <gsl/gsl>
@@ -24,14 +23,16 @@
 #include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/core/utility/pub_sub/subscription.h"
 #include "bedrock/platform/brstd/flat_set.h"
+#include "bedrock/platform/brstd/function_ref.h"
 #include "bedrock/util/tag_registry.h"
 #include "bedrock/world/level/biome/biome.h"
 #include "bedrock/world/level/biome/registry/well_known_biome_tags.h"
 
 class BiomeRegistry : public Bedrock::EnableNonOwnerReferences {
 public:
-    void forEachBiome(std::function<void(Biome const &)>) const;
-    void forEachNonConstBiome(std::function<void(Biome &)>);
+    void forEachBiome(brstd::function_ref<void(const Biome &)>) const;
+    void forEachNonConstBiome(brstd::function_ref<void(Biome &)>);
+    [[nodiscard]] const Biome *lookupById(BiomeIdType id) const;
     struct SeasonTextureRowSettings {
         float temperature;
         float downfall;
@@ -40,7 +41,15 @@ public:
 
 private:
     using BiomeNameLookupMap = std::unordered_map<HashType64, std::unique_ptr<Biome>>;
-    struct BiomeComparator {};
+    struct BiomeComparator {
+        using is_transparent = void;
+        bool operator()(const gsl::not_null<Biome *> &a, const gsl::not_null<Biome *> &b) const
+        {
+            return a->getId().value < b->getId().value;
+        }
+        bool operator()(const gsl::not_null<Biome *> &a, BiomeIdType b) const { return a->getId().value < b.value; }
+        bool operator()(BiomeIdType a, const gsl::not_null<Biome *> &b) const { return a.value < b->getId().value; }
+    };
 
     BiomeTagRegistry tag_registry_;
 

@@ -37,6 +37,7 @@ static_assert(_ITERATOR_DEBUG_LEVEL == 0,
 #include "ban/ip_ban_list.h"
 #include "ban/player_ban_entry.h"
 #include "ban/player_ban_list.h"
+#include "block/biome.h"
 #include "block/block.h"
 #include "block/block_data.h"
 #include "block/block_face.h"

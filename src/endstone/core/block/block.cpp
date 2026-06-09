@@ -16,6 +16,7 @@
 
 #include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/dimension/dimension.h"
+#include "endstone/block/biome.h"
 #include "endstone/core/block/block_data.h"
 #include "endstone/core/block/block_face.h"
 #include "endstone/core/block/block_state.h"
@@ -87,6 +88,12 @@ std::unique_ptr<Block> EndstoneBlock::getRelative(BlockFace face, int distance)
 Dimension &EndstoneBlock::getDimension() const
 {
     return block_source_.get().getDimension().getEndstoneDimension();
+}
+
+const Biome &EndstoneBlock::getBiome() const
+{
+    const auto &biome = block_source_.get().getBiome(block_pos_);
+    return EndstoneServer::getInstance().getRegistry<Biome>().getOrThrow(biome.getFullName());
 }
 
 int EndstoneBlock::getX() const

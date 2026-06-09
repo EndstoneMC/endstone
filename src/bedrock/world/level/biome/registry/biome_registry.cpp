@@ -14,7 +14,7 @@
 
 #include "bedrock/world/level/biome/registry/biome_registry.h"
 
-void BiomeRegistry::forEachBiome(std::function<void(Biome const &)> callback) const
+void BiomeRegistry::forEachBiome(brstd::function_ref<void(const Biome &)> callback) const
 {
     for (const auto &biome : biomes_by_id) {
         if (biome && biome != empty_biome) {
@@ -23,11 +23,20 @@ void BiomeRegistry::forEachBiome(std::function<void(Biome const &)> callback) co
     }
 }
 
-void BiomeRegistry::forEachNonConstBiome(std::function<void(Biome &)> callback)
+void BiomeRegistry::forEachNonConstBiome(brstd::function_ref<void(Biome &)> callback)
 {
     for (const auto &biome : biomes_by_id) {
         if (biome && biome != empty_biome) {
             callback(*biome);
         }
     }
+}
+
+const Biome *BiomeRegistry::lookupById(BiomeIdType id) const
+{
+    const auto it = biomes_by_id.find(id);
+    if (it != biomes_by_id.end()) {
+        return *it;
+    }
+    return nullptr;
 }

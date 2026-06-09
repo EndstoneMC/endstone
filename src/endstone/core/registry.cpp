@@ -18,8 +18,11 @@
 #include "bedrock/world/item/enchanting/enchant.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/registry/item_registry_manager.h"
+#include "bedrock/world/level/biome/biome.h"
+#include "bedrock/world/level/biome/registry/biome_registry.h"
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 #include "endstone/core/actor/actor_type.h"
+#include "endstone/core/block/biome.h"
 #include "endstone/core/block/block_type.h"
 #include "endstone/core/enchantments/enchantment.h"
 #include "endstone/core/inventory/item_type.h"
@@ -136,6 +139,38 @@ std::unique_ptr<Registry<ActorType>> EndstoneRegistry<ActorType, std::string>::c
     for (const auto &name : level.getActorFactory().generateActorIdentifierList()) {
         registry->cache_.emplace(ActorTypeId(name), std::make_unique<EndstoneActorType>(name));
     }
+    return registry;
+}
+
+template <>
+std::vector<Identifier<Biome>> EndstoneRegistry<Biome, ::Biome>::identifiers() const
+{
+    std::vector<Identifier<Biome>> keys;
+    keys.reserve(cache_.size());
+    for (const auto &[key, _] : cache_) {
+        keys.emplace_back(key);
+    }
+    return keys;
+}
+
+template <>
+const ::Biome *EndstoneRegistry<Biome, ::Biome>::getMinecraft(Identifier<Biome> id) const
+{
+    // cache is pre-populated, getMinecraft should not be called
+    return nullptr;
+}
+
+template <>
+std::unique_ptr<Registry<Biome>> EndstoneRegistry<Biome, ::Biome>::create()
+{
+    auto registry = std::make_unique<EndstoneRegistry>(
+        [](auto, const auto &handle) { return std::make_unique<EndstoneBiome>(handle); });
+    const auto &server = EndstoneServer::getInstance();
+    const auto &level = server.getEndstoneLevel()->getHandle();
+    level.getBiomeRegistry().forEachBiome([&](const ::Biome &biome) {
+        auto entry = std::make_unique<EndstoneBiome>(biome);
+        registry->cache_.emplace(std::string(entry->getId()), std::move(entry));
+    });
     return registry;
 }
 

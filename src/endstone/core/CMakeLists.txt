@@ -37,6 +37,7 @@ add_library(endstone_core
         actor/item.cpp
         ban/ip_ban_list.cpp
         ban/player_ban_list.cpp
+        block/biome.cpp
         block/block.cpp
         block/block_data.cpp
         block/block_face.cpp

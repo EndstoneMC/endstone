@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added graceful shutdown on Linux: stopping the server (e.g. via `docker stop`) now lets the Bedrock server save the world before it exits.
 - Added `PlayerRespawnEvent.respawn_reason` (`RespawnReason.DEATH` / `RespawnReason.END_PORTAL`) so plugins can tell a normal death respawn apart from a player returning to the Overworld through the End exit portal.
 - Added a `Container` block state for reading and modifying the contents of container blocks such as chests, barrels, hoppers, dispensers, droppers, shulker boxes, and furnaces. `block.capture_state()` now returns a `Container` for these blocks, exposing the block's items via `container.inventory`.
+- Added a `Biome` type and `Block.biome` for reading the biome at a block. Biomes can be looked up by name with `Biome.get("minecraft:plains")` and enumerated via `server.get_registry(Biome)`.
 
 ### Changed
 

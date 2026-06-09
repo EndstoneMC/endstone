@@ -51,14 +51,13 @@ bool handleEvent(const BlockTryPlaceByPlayerEvent &event)
 
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
     auto &endstone_player = player->getEndstoneActor<endstone::core::EndstonePlayer>();
-    auto &dimension = endstone_player.getDimension();
     auto &block_source = player->getDimension().getBlockSourceFromMainChunkSource();
     const auto block_face = static_cast<endstone::BlockFace>(event.face);
 
-    // Create placed block as adapter wrapping the permutation state
-    auto placed_state =
-        std::make_unique<endstone::core::EndstoneBlockState>(dimension, event.pos, event.permutation_to_place);
-    auto block_placed = std::make_unique<endstone::core::EndstoneBlockSnapshot>(std::move(placed_state));
+    // Placed block: a live block at the target position whose type/data are overridden by the
+    // permutation about to be placed (the world is not yet mutated when this event fires).
+    auto block_placed = std::make_unique<endstone::core::EndstoneBlockSnapshot>(block_source, event.pos,
+                                                                                event.permutation_to_place);
 
     // Capture replaced block state from current world state
     auto block_at_pos = endstone::core::EndstoneBlock::at(block_source, event.pos);

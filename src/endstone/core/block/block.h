@@ -33,6 +33,7 @@ public:
     std::unique_ptr<Block> getRelative(BlockFace face) override;
     std::unique_ptr<Block> getRelative(BlockFace face, int distance) override;
     [[nodiscard]] Dimension &getDimension() const override;
+    [[nodiscard]] const Biome &getBiome() const override;
     [[nodiscard]] int getX() const override;
     [[nodiscard]] int getY() const override;
     [[nodiscard]] int getZ() const override;
@@ -46,7 +47,7 @@ public:
     static std::unique_ptr<EndstoneBlock> at(BlockSource &block_source, BlockPos block_pos);
     static BlockFace toBlockFace(Direction::Type direction);
 
-private:
+protected:
     std::reference_wrapper<BlockSource> block_source_;
     BlockPos block_pos_;
 };

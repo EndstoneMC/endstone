@@ -14,21 +14,26 @@
 
 #pragma once
 
-#include "endstone/block/block.h"
-#include "endstone/core/block/block_state.h"
+#include "endstone/core/block/block.h"
+
+class Block;
 
 namespace endstone::core {
 
 /**
- * @brief A Block implementation backed by a captured BlockState.
+ * @brief A live Block whose type and data are overridden by a captured permutation.
  *
- * This allows representing a block that doesn't yet exist in the world (e.g., a placed block
- * before placement actually occurs). Read methods delegate to the captured state, while
- * getRelative() returns live blocks from the world.
+ * Represents a block that doesn't yet exist in the world (e.g. a block about to be placed, before
+ * placement actually occurs). Type/data reads return the captured permutation; everything positional
+ * — getRelative(), getBiome(), coordinates, dimension — is inherited from EndstoneBlock and reads the
+ * live world. setType()/setData() mutate the captured permutation only; they never write to the world.
  */
-class EndstoneBlockSnapshot : public Block {
+class EndstoneBlockSnapshot : public EndstoneBlock {
 public:
-    explicit EndstoneBlockSnapshot(std::unique_ptr<EndstoneBlockState> state);
+    EndstoneBlockSnapshot(BlockSource &block_source, BlockPos block_pos, const ::Block &placed)
+        : EndstoneBlock(block_source, block_pos), placed_(const_cast<::Block *>(&placed))
+    {
+    }
 
     [[nodiscard]] const BlockType &getType() const override;
     void setType(BlockTypeId type) override;
@@ -36,19 +41,11 @@ public:
     [[nodiscard]] std::unique_ptr<BlockData> getData() const override;
     void setData(const BlockData &data) override;
     void setData(const BlockData &data, bool apply_physics) override;
-    std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) override;
-    std::unique_ptr<Block> getRelative(BlockFace face) override;
-    std::unique_ptr<Block> getRelative(BlockFace face, int distance) override;
-    [[nodiscard]] Dimension &getDimension() const override;
-    [[nodiscard]] int getX() const override;
-    [[nodiscard]] int getY() const override;
-    [[nodiscard]] int getZ() const override;
-    [[nodiscard]] Location getLocation() const override;
     [[nodiscard]] std::unique_ptr<BlockState> captureState() const override;
     [[nodiscard]] std::unique_ptr<Block> clone() const override;
 
 private:
-    std::unique_ptr<EndstoneBlockState> state_;
+    ::Block *placed_;
 };
 
 }  // namespace endstone::core

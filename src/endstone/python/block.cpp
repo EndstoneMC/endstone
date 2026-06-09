@@ -75,6 +75,27 @@ void init_block(py::module_ &m, py::classh<Block> &block)
         .def(py::self == std::string_view())
         .def(py::self != std::string_view());
 
+    py::class_<Biome>(m, "Biome", "Represents a biome.")
+        .def_property_readonly("id", &Biome::getId, "The identifier of this biome.")
+        .def_property_readonly("translation_key", &Biome::getTranslationKey,
+                               "The translation key, suitable for use in a translation component.")
+        .def_static("get", &Biome::get, py::arg("name"), R"doc(
+    Attempts to get the `Biome` with the given name.
+
+    Args:
+        name: The identifier of the biome (e.g. `minecraft:plains`).
+
+    Returns:
+        The `Biome`, or `None` if no biome with that name exists.
+)doc", py::return_value_policy::reference)
+        .def("__str__", [](const Biome &self) { return std::string(self.getId()); })
+        .def("__repr__", [](const Biome &self) { return std::format("Biome({})", self.getId()); })
+        .def("__hash__", [](const Biome &self) { return std::hash<BiomeId>{}(self.getId()); })
+        .def(py::self == py::self)
+        .def(py::self != py::self)
+        .def(py::self == std::string_view())
+        .def(py::self != std::string_view());
+
     py::classh<BlockState>(m, "BlockState", R"doc(
     Represents a captured state of a block, which will not update automatically.
 
@@ -169,6 +190,8 @@ void init_block(py::module_ &m, py::classh<Block> &block)
 )doc")
         .def_property_readonly("dimension", &Block::getDimension, "The dimension which contains this `Block`.",
                                py::return_value_policy::reference)
+        .def_property_readonly("biome", &Block::getBiome, py::return_value_policy::reference,
+                               "The biome that this block resides in.")
         .def_property_readonly("x", &Block::getX, "X-coordinate of this block.")
         .def_property_readonly("y", &Block::getY, "Y-coordinate of this block.")
         .def_property_readonly("z", &Block::getZ, "Z-coordinate of this block.")

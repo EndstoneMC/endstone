@@ -14,9 +14,26 @@
 
 #include "bedrock/world/level/block_source.h"
 
+#include "bedrock/world/level/biome/registry/biome_registry.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
+#include "bedrock/world/level/chunk/chunk_block_pos.h"
+#include "bedrock/world/level/chunk/level_chunk.h"
+#include "bedrock/world/level/dimension/dimension.h"
 
 bool BlockSource::isEmptyBlock(const BlockPos &pos) const
 {
     return getBlock(pos).getName() == BedrockBlockNames::Air;
+}
+
+const Biome &BlockSource::getBiome(const BlockPos &pos) const
+{
+    if (const LevelChunk *chunk = getChunkAt(pos)) {
+        const auto min_height = getMinHeight();
+        if (pos.y >= min_height && pos.y < getMaxHeight()) {
+            return chunk->getBiome(ChunkBlockPos(pos, min_height));
+        }
+    }
+    // No chunk or outside the dimension's vertical range: the dimension's default biome.
+    auto &dimension = getDimension();
+    return *dimension.getBiomeRegistry().lookupById(dimension.getDefaultBiomeId());
 }

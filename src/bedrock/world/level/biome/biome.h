@@ -17,6 +17,7 @@
 #include <cstdint>
 
 #include "bedrock/common_types.h"
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/world/level/biome/components/biome_component_storage.h"
 #include "bedrock/world/level/biome/mob_spawner_data.h"
 #include "bedrock/world/level/block_pos.h"

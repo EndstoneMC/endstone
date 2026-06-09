@@ -18,6 +18,14 @@
 #include <system_error>
 #include <thread>
 
+#ifndef NO_UNIQUE_ADDRESS
+#ifdef _MSC_VER
+#define NO_UNIQUE_ADDRESS [[msvc::no_unique_address]]
+#else
+#define NO_UNIQUE_ADDRESS [[no_unique_address]]
+#endif
+#endif
+
 class SpinLockImpl {
     static const uint32_t LOOP_LIMIT_BEFORE_YIELD = 3000;
 
@@ -87,8 +95,9 @@ public:
     }
 
 private:
-    std::hash<std::thread::id> thread_hasher_{};  // +0
-    const std::size_t no_thread_id_;              // +8
-    std::atomic<std::size_t> owner_thread_;       // +16
-    std::uint32_t owner_ref_count_{0};            // +24
+    NO_UNIQUE_ADDRESS std::hash<std::thread::id> thread_hasher_{};  // +0 (empty)
+    const std::size_t no_thread_id_;                               // +0
+    std::atomic<std::size_t> owner_thread_;                        // +8
+    std::uint32_t owner_ref_count_{0};                             // +16
 };
+static_assert(sizeof(SpinLockImpl) == 24);

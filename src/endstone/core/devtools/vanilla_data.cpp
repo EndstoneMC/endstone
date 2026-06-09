@@ -20,6 +20,7 @@
 #include "bedrock/network/packet/crafting_data_packet.h"
 #include "bedrock/util/string_byte_output.h"
 #include "bedrock/world/item/registry/creative_item_registry.h"
+#include "bedrock/world/level/biome/biome.h"
 #include "bedrock/world/level/block/actor/furnace_block_actor.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/core/base64.h"
@@ -364,7 +365,7 @@ void dumpBiomes(VanillaData &data, ::Level &level)
 {
     auto &biomes = data.biomes;
     level.getBiomeRegistry().forEachBiome(
-        [&biomes](const Biome &biome) { biomes[biome.getFullName()] = {{"id", biome.getId()}}; });
+        [&biomes](const ::Biome &biome) { biomes[biome.getFullName()] = {{"id", biome.getId()}}; });
 }
 
 }  // namespace

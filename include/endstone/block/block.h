@@ -26,6 +26,8 @@
 
 namespace endstone {
 
+class Biome;
+
 class BlockState;
 
 class Dimension;
@@ -119,6 +121,13 @@ public:
      * @return Dimension containing this block
      */
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
+
+    /**
+     * Gets the biome that this block resides in.
+     *
+     * @return the biome that this block resides in
+     */
+    [[nodiscard]] virtual const Biome &getBiome() const = 0;
 
     /**
      * Gets the x-coordinate of this block.

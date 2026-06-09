@@ -10,6 +10,7 @@ from endstone.inventory import Inventory
 from endstone.level import Dimension, Location
 
 __all__ = [
+    "Biome",
     "Block",
     "BlockData",
     "BlockFace",
@@ -83,6 +84,12 @@ class Block:
     def dimension(self) -> Dimension:
         """
         The dimension which contains this `Block`.
+        """
+        ...
+    @property
+    def biome(self) -> Biome:
+        """
+        The biome that this block resides in.
         """
         ...
     @property
@@ -210,6 +217,40 @@ class BlockData:
         """
         ...
     def __str__(self) -> str: ...
+
+class Biome:
+    """
+    Represents a biome.
+    """
+    @property
+    def id(self) -> Identifier[Biome]:
+        """
+        The identifier of this biome.
+        """
+        ...
+    @property
+    def translation_key(self) -> str:
+        """
+        The translation key, suitable for use in a translation component.
+        """
+        ...
+    @staticmethod
+    def get(name: Identifier[Biome] | str) -> Biome:
+        """
+        Attempts to get the `Biome` with the given name.
+
+        Args:
+            name: The identifier of the biome (e.g. `minecraft:plains`).
+
+        Returns:
+            The `Biome`, or `None` if no biome with that name exists.
+        """
+        ...
+    def __str__(self) -> str: ...
+    def __repr__(self) -> str: ...
+    def __hash__(self) -> int: ...
+    def __eq__(self, other: object) -> bool: ...
+    def __ne__(self, other: object) -> bool: ...
 
 class BlockState:
     """

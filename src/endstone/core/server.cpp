@@ -33,6 +33,7 @@
 #include "bedrock/world/scores/server_scoreboard.h"
 #include "endstone/color_format.h"
 #include "endstone/command/plugin_command.h"
+#include "endstone/core/block/biome.h"
 #include "endstone/core/block/block_data.h"
 #include "endstone/core/block/block_type.h"
 #include "endstone/core/boss/boss_bar.h"
@@ -192,6 +193,7 @@ void EndstoneServer::setLevel(::Level &level)
 void EndstoneServer::initRegistries()
 {
     registries_[typeid(ActorType)] = EndstoneRegistry<ActorType, std::string>::create();
+    registries_[typeid(Biome)] = EndstoneRegistry<Biome, ::Biome>::create();
     registries_[typeid(BlockType)] = EndstoneRegistry<BlockType, ::BlockType>::create();
     registries_[typeid(Enchantment)] = EndstoneRegistry<Enchantment, ::Enchant>::create();
     registries_[typeid(ItemType)] = EndstoneRegistry<ItemType, ::Item>::create();

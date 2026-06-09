@@ -83,7 +83,7 @@ public:
     [[nodiscard]] virtual bool isValidSpawn(int, int) const = 0;
     [[nodiscard]] virtual Color getBrightnessDependentFogColor(const Color &, float) const = 0;
     [[nodiscard]] virtual Height getCloudHeight() const = 0;
-    [[nodiscard]] virtual HashedString getDefaultBiome() const = 0;
+    [[nodiscard]] virtual BiomeIdType getDefaultBiomeId() const = 0;
     [[nodiscard]] virtual bool mayRespawnViaBed() const = 0;
     [[nodiscard]] virtual BlockPos getSpawnPos() const = 0;
     [[nodiscard]] virtual int getSpawnYPosition() const = 0;
