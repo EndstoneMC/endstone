@@ -2,7 +2,7 @@
 
 # File effect\_type.h
 
-[**File List**](files.md) **>** [**effect**](dir_aaf7aa7272c9e0e62216386f1c427eea.md) **>** [**effect\_type.h**](effect__type_8h.md)
+[**File List**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**potion**](dir_3aeea1eb013bc4968668ceaff3f9e2f0.md) **>** [**effect\_type.h**](effect__type_8h.md)
 
 [Go to the documentation of this file](effect__type_8h.md)
 
@@ -24,7 +24,7 @@
 
 #pragma once
 
-#include <string>
+#include <string_view>
 
 #include "endstone/identifier.h"
 

@@ -134,12 +134,17 @@ Inherited by the following classes: [endstone::Player](classendstone_1_1Player.m
 
 | Type | Name |
 | ---: | :--- |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**addEffect**](#function-addeffect) ([**const**](classendstone_1_1Identifier.md) [**Effect**](classendstone_1_1Effect.md) & effect) = 0<br>_Adds the given_ [_**Effect**_](classendstone_1_1Effect.md) _to this entity._ |
+| virtual std::vector&lt; [**Effect**](classendstone_1_1Effect.md) &gt; | [**getActiveEffects**](#function-getactiveeffects) () const = 0<br>_Returns all currently active Effects on this entity._  |
 | virtual std::unique\_ptr&lt; [**AttributeInstance**](classendstone_1_1AttributeInstance.md) &gt; | [**getAttribute**](#function-getattribute) ([**AttributeId**](classendstone_1_1Identifier.md) id) = 0<br>_Gets the specified attribute instance from the object._  |
 | virtual std::vector&lt; std::unique\_ptr&lt; [**AttributeInstance**](classendstone_1_1AttributeInstance.md) &gt; &gt; | [**getAttributes**](#function-getattributes) () = 0<br>_Gets all attribute instances from the object._  |
+| virtual std::optional&lt; [**Effect**](classendstone_1_1Effect.md) &gt; | [**getEffect**](#function-geteffect) ([**EffectId**](classendstone_1_1Identifier.md) type) const = 0<br>_Returns the active_ [_**Effect**_](classendstone_1_1Effect.md) _of the specified type._ |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getHealth**](#function-gethealth) () const = 0<br>_Gets the entity's health from 0 to its max possible value, where 0 is dead._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxHealth**](#function-getmaxhealth) () const = 0<br>_Gets the maximum health this entity has._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**hasAttribute**](#function-hasattribute) ([**AttributeId**](classendstone_1_1Identifier.md) id) const = 0<br>_Checks whether the given attribute is present on the object._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**hasEffect**](#function-haseffect) ([**EffectId**](classendstone_1_1Identifier.md) type) const = 0<br>_Returns whether the entity already has an existing effect of the given type applied to it._  |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isGliding**](#function-isgliding) () const = 0<br>_Checks to see if an actor is gliding, such as using an Elytra._  |
+| virtual [**void**](classendstone_1_1Identifier.md) | [**removeEffect**](#function-removeeffect) ([**EffectId**](classendstone_1_1Identifier.md) type) = 0<br>_Removes any effects of the given type that are present on this entity._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setHealth**](#function-sethealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br>_Sets the entity's health from 0 to its possible value, where 0 is dead._  |
 | virtual [**void**](classendstone_1_1Identifier.md) | [**setMaxHealth**](#function-setmaxhealth) ([**int**](classendstone_1_1Identifier.md) health) const = 0<br>_Sets the maximum health this entity can have._  |
 
@@ -367,6 +372,61 @@ living entity), such as a monster or player.
 
 
 
+### function addEffect 
+
+_Adds the given_ [_**Effect**_](classendstone_1_1Effect.md) _to this entity._
+```C++
+virtual void endstone::Mob::addEffect (
+    const  Effect & effect
+) = 0
+```
+
+
+
+Only one effect of any given type may be active at any one time. If this entity already has an effect of the same type, it will be overwritten with the new one.
+
+
+
+
+**Parameters:**
+
+
+* `effect` [**Effect**](classendstone_1_1Effect.md) to be added 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getActiveEffects 
+
+_Returns all currently active Effects on this entity._ 
+```C++
+virtual std::vector< Effect > endstone::Mob::getActiveEffects () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+a vector of Effects 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getAttribute 
 
 _Gets the specified attribute instance from the object._ 
@@ -407,6 +467,43 @@ virtual std::vector< std::unique_ptr< AttributeInstance > > endstone::Mob::getAt
 
 
 This instance will be backed directly to the object and any changes will be visible at once. 
+
+
+        
+
+<hr>
+
+
+
+### function getEffect 
+
+_Returns the active_ [_**Effect**_](classendstone_1_1Effect.md) _of the specified type._
+```C++
+virtual std::optional< Effect > endstone::Mob::getEffect (
+    EffectId type
+) const = 0
+```
+
+
+
+If the effect is not present on the entity then std::nullopt will be returned.
+
+
+
+
+**Parameters:**
+
+
+* `type` the effect type to check 
+
+
+
+**Returns:**
+
+the active effect, or std::nullopt if not present 
+
+
+
 
 
         
@@ -492,6 +589,40 @@ virtual bool endstone::Mob::hasAttribute (
 
 
 
+### function hasEffect 
+
+_Returns whether the entity already has an existing effect of the given type applied to it._ 
+```C++
+virtual bool endstone::Mob::hasEffect (
+    EffectId type
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `type` the effect type to check 
+
+
+
+**Returns:**
+
+whether the entity has the given potion effect active 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function isGliding 
 
 _Checks to see if an actor is gliding, such as using an Elytra._ 
@@ -507,6 +638,33 @@ virtual bool endstone::Mob::isGliding () const = 0
 
 True if this actor is gliding. 
 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function removeEffect 
+
+_Removes any effects of the given type that are present on this entity._ 
+```C++
+virtual void endstone::Mob::removeEffect (
+    EffectId type
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `type` the effect type to remove 
 
 
 

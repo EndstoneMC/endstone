@@ -2,6 +2,8 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="dir_3aeea1eb013bc4968668ceaff3f9e2f0" kind="dir">
     <compoundname>include/endstone/potion</compoundname>
+    <innerfile refid="effect_8h">effect.h</innerfile>
+    <innerfile refid="effect__type_8h">effect_type.h</innerfile>
     <innerfile refid="potion__type_8h">potion_type.h</innerfile>
     <briefdescription>
     </briefdescription>

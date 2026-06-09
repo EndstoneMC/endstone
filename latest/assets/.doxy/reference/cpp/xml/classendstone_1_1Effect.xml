@@ -1,0 +1,376 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Effect" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Effect</compoundname>
+    <includes refid="effect_8h" local="no">endstone/potion/effect.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Effect_1afc6cc0784a5191143e1e7d6d8cbc7405" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">EffectId</ref></type>
+        <definition>EffectId endstone::Effect::type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <qualifiedname>endstone::Effect::type_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="111" column="14" bodyfile="include/endstone/potion/effect.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Effect_1adf17cad27f9cb4282fa32acc217142ed" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
+        <definition>std::optional&lt;int&gt; endstone::Effect::duration_</definition>
+        <argsstring></argsstring>
+        <name>duration_</name>
+        <qualifiedname>endstone::Effect::duration_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="112" column="19" bodyfile="include/endstone/potion/effect.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Effect_1a165d8cc836879054846845673b8c85ca" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>int endstone::Effect::amplifier_</definition>
+        <argsstring></argsstring>
+        <name>amplifier_</name>
+        <qualifiedname>endstone::Effect::amplifier_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="113" column="9" bodyfile="include/endstone/potion/effect.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Effect_1ae13ff245456a118db0400735cf71e93f" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Effect::ambient_</definition>
+        <argsstring></argsstring>
+        <name>ambient_</name>
+        <qualifiedname>endstone::Effect::ambient_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="114" column="10" bodyfile="include/endstone/potion/effect.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Effect_1a4471d33b9eac9cb09b25c4cddd756f21" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Effect::particles_</definition>
+        <argsstring></argsstring>
+        <name>particles_</name>
+        <qualifiedname>endstone::Effect::particles_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="115" column="10" bodyfile="include/endstone/potion/effect.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Effect_1a0d259ad579a79056b7689a95897a590d" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>bool endstone::Effect::icon_</definition>
+        <argsstring></argsstring>
+        <name>icon_</name>
+        <qualifiedname>endstone::Effect::icon_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="116" column="10" bodyfile="include/endstone/potion/effect.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Effect_1a7f5f24c0ebbe1c6338156454485c6f3e" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref></type>
+        <definition>constexpr endstone::Effect::Effect</definition>
+        <argsstring>(EffectId type, std::optional&lt; int &gt; duration, int amplifier, bool ambient=false, bool particles=true, bool icon=true)</argsstring>
+        <name>Effect</name>
+        <qualifiedname>endstone::Effect::Effect</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">EffectId</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
+          <declname>duration</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>amplifier</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>ambient</declname>
+          <defval><ref refid="classendstone_1_1Identifier" kindref="compound">false</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>particles</declname>
+          <defval><ref refid="classendstone_1_1Identifier" kindref="compound">true</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+          <declname>icon</declname>
+          <defval><ref refid="classendstone_1_1Identifier" kindref="compound">true</ref></defval>
+        </param>
+        <briefdescription>
+<para>Creates an effect. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>effect type </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>duration</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>measured in ticks, or std::nullopt for an infinite duration, see <ref refid="classendstone_1_1Effect_1a003813fb5cbb2ba724f92b69cbfce4a6" kindref="member">Effect::getDuration</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>amplifier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the amplifier for the effect, see <ref refid="classendstone_1_1Effect_1a91ce745e26d2562e5772584d0503c9ae" kindref="member">Effect::getAmplifier</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ambient</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the ambient status, see <ref refid="classendstone_1_1Effect_1a4580a201f072fe91eb971d9942eaf5b1" kindref="member">Effect::isAmbient</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>particles</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the particle status, see <ref refid="classendstone_1_1Effect_1aca83a1f167d206e7b98229351ecba836" kindref="member">Effect::hasParticles</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>icon</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the icon status, see <ref refid="classendstone_1_1Effect_1a0f62cd4a080fdea5d1c69df1fc0abc60" kindref="member">Effect::hasIcon</ref> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="41" column="15" bodyfile="include/endstone/potion/effect.h" bodystart="41" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Effect_1a117cee9fbf59f4dbd6b77ef7b28abf83" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Effect::operator==</definition>
+        <argsstring>(const Effect &amp;other) const noexcept</argsstring>
+        <name>operator==</name>
+        <qualifiedname>endstone::Effect::operator==</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Effect" kindref="compound">Effect</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="48" column="20" bodyfile="include/endstone/potion/effect.h" bodystart="48" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Effect_1aef0742af66eb674b3483db3c238af655" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Effect::operator!=</definition>
+        <argsstring>(const Effect &amp;other) const noexcept</argsstring>
+        <name>operator!=</name>
+        <qualifiedname>endstone::Effect::operator!=</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">const</ref> <ref refid="classendstone_1_1Effect" kindref="compound">Effect</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="54" column="20" bodyfile="include/endstone/potion/effect.h" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Effect_1a5855ab257f20b70e387e2dcc14bb206c" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">EffectId</ref></type>
+        <definition>constexpr EffectId endstone::Effect::getType</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getType</name>
+        <qualifiedname>endstone::Effect::getType</qualifiedname>
+        <briefdescription>
+<para>Gets the type of this effect. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="61" column="25" bodyfile="include/endstone/potion/effect.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Effect_1a003813fb5cbb2ba724f92b69cbfce4a6" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> std::optional&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt;</type>
+        <definition>constexpr std::optional&lt; int &gt; endstone::Effect::getDuration</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getDuration</name>
+        <qualifiedname>endstone::Effect::getDuration</qualifiedname>
+        <briefdescription>
+<para>Gets the duration of this effect, in ticks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the duration in ticks, or std::nullopt if this effect is infinite </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="68" column="30" bodyfile="include/endstone/potion/effect.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Effect_1a928e3a7e3cf0e5bfaa93a7e2ef69bbf2" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Effect::isInfinite</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isInfinite</name>
+        <qualifiedname>endstone::Effect::isInfinite</qualifiedname>
+        <briefdescription>
+<para>Returns whether this effect has an infinite duration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Effects with an infinite duration never expire unless manually removed.</para>
+<para><simplesect kind="return"><para>whether this effect is infinite </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="77" column="21" bodyfile="include/endstone/potion/effect.h" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Effect_1a91ce745e26d2562e5772584d0503c9ae" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+        <definition>constexpr int endstone::Effect::getAmplifier</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getAmplifier</name>
+        <qualifiedname>endstone::Effect::getAmplifier</qualifiedname>
+        <briefdescription>
+<para>Gets the amplifier of this effect. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A higher amplifier means the effect happens more often over its duration and in some cases has more effect on its target.</para>
+<para><simplesect kind="return"><para>the amplifier </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="87" column="20" bodyfile="include/endstone/potion/effect.h" bodystart="87" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Effect_1a4580a201f072fe91eb971d9942eaf5b1" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Effect::isAmbient</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isAmbient</name>
+        <qualifiedname>endstone::Effect::isAmbient</qualifiedname>
+        <briefdescription>
+<para>Makes the effect produce more, translucent, particles. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>whether this effect is ambient </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="94" column="21" bodyfile="include/endstone/potion/effect.h" bodystart="94" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Effect_1aca83a1f167d206e7b98229351ecba836" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Effect::hasParticles</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>hasParticles</name>
+        <qualifiedname>endstone::Effect::hasParticles</qualifiedname>
+        <briefdescription>
+<para>Gets whether this effect has particles. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>whether this effect has particles </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="101" column="21" bodyfile="include/endstone/potion/effect.h" bodystart="101" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Effect_1a0f62cd4a080fdea5d1c69df1fc0abc60" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">constexpr</ref> <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>constexpr bool endstone::Effect::hasIcon</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>hasIcon</name>
+        <qualifiedname>endstone::Effect::hasIcon</qualifiedname>
+        <briefdescription>
+<para>Gets whether this effect has an icon. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>whether this effect has an icon </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect.h" line="108" column="21" bodyfile="include/endstone/potion/effect.h" bodystart="108" bodyend="108"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents an effect that can be added to a <ref refid="classendstone_1_1Mob" kindref="compound">Mob</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>An effect is an immutable description of an effect type together with a duration, amplifier and a set of display options. Applying it to a <ref refid="classendstone_1_1Mob" kindref="compound">Mob</ref> (e.g. via <ref refid="classendstone_1_1Mob_1a2836f61e2312723e336e43e41f0604f3" kindref="member">Mob::addEffect</ref>) installs the effect; querying a <ref refid="classendstone_1_1Mob" kindref="compound">Mob</ref>&apos;s active effects yields <ref refid="classendstone_1_1Effect" kindref="compound">Effect</ref> values describing what is currently in force. </para>
+    </detaileddescription>
+    <location file="include/endstone/potion/effect.h" line="29" column="1" bodyfile="include/endstone/potion/effect.h" bodystart="29" bodyend="117"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Effect_1ae13ff245456a118db0400735cf71e93f" prot="private" virt="non-virtual"><scope>endstone::Effect</scope><name>ambient_</name></member>
+      <member refid="classendstone_1_1Effect_1a165d8cc836879054846845673b8c85ca" prot="private" virt="non-virtual"><scope>endstone::Effect</scope><name>amplifier_</name></member>
+      <member refid="classendstone_1_1Effect_1adf17cad27f9cb4282fa32acc217142ed" prot="private" virt="non-virtual"><scope>endstone::Effect</scope><name>duration_</name></member>
+      <member refid="classendstone_1_1Effect_1a7f5f24c0ebbe1c6338156454485c6f3e" prot="public" virt="non-virtual"><scope>endstone::Effect</scope><name>Effect</name></member>
+      <member refid="classendstone_1_1Effect_1a91ce745e26d2562e5772584d0503c9ae" prot="public" virt="non-virtual"><scope>endstone::Effect</scope><name>getAmplifier</name></member>
+      <member refid="classendstone_1_1Effect_1a003813fb5cbb2ba724f92b69cbfce4a6" prot="public" virt="non-virtual"><scope>endstone::Effect</scope><name>getDuration</name></member>
+      <member refid="classendstone_1_1Effect_1a5855ab257f20b70e387e2dcc14bb206c" prot="public" virt="non-virtual"><scope>endstone::Effect</scope><name>getType</name></member>
+      <member refid="classendstone_1_1Effect_1a0f62cd4a080fdea5d1c69df1fc0abc60" prot="public" virt="non-virtual"><scope>endstone::Effect</scope><name>hasIcon</name></member>
+      <member refid="classendstone_1_1Effect_1aca83a1f167d206e7b98229351ecba836" prot="public" virt="non-virtual"><scope>endstone::Effect</scope><name>hasParticles</name></member>
+      <member refid="classendstone_1_1Effect_1a0d259ad579a79056b7689a95897a590d" prot="private" virt="non-virtual"><scope>endstone::Effect</scope><name>icon_</name></member>
+      <member refid="classendstone_1_1Effect_1a4580a201f072fe91eb971d9942eaf5b1" prot="public" virt="non-virtual"><scope>endstone::Effect</scope><name>isAmbient</name></member>
+      <member refid="classendstone_1_1Effect_1a928e3a7e3cf0e5bfaa93a7e2ef69bbf2" prot="public" virt="non-virtual"><scope>endstone::Effect</scope><name>isInfinite</name></member>
+      <member refid="classendstone_1_1Effect_1aef0742af66eb674b3483db3c238af655" prot="public" virt="non-virtual"><scope>endstone::Effect</scope><name>operator!=</name></member>
+      <member refid="classendstone_1_1Effect_1a117cee9fbf59f4dbd6b77ef7b28abf83" prot="public" virt="non-virtual"><scope>endstone::Effect</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1Effect_1a4471d33b9eac9cb09b25c4cddd756f21" prot="private" virt="non-virtual"><scope>endstone::Effect</scope><name>particles_</name></member>
+      <member refid="classendstone_1_1Effect_1afc6cc0784a5191143e1e7d6d8cbc7405" prot="private" virt="non-virtual"><scope>endstone::Effect</scope><name>type_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

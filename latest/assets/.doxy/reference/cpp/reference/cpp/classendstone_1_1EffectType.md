@@ -10,7 +10,7 @@
 
 _All effect types._ 
 
-* `#include <endstone/effect/effect_type.h>`
+* `#include <endstone/potion/effect_type.h>`
 
 
 
@@ -653,5 +653,5 @@ constexpr auto endstone::EffectType::Wither;
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/effect/effect_type.h`
+The documentation for this class was generated from the following file `include/endstone/potion/effect_type.h`
 

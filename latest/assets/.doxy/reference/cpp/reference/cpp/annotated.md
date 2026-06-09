@@ -65,6 +65,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**DimensionEvent**](classendstone_1_1DimensionEvent.md) _Represents events within a dimension._     
     * **class** [**Divider**](classendstone_1_1Divider.md) _Represents a divider._     
     * **class** [**Dropdown**](classendstone_1_1Dropdown.md) _Represents a dropdown with a set of predefined options._     
+    * **class** [**Effect**](classendstone_1_1Effect.md) _Represents an effect that can be added to a_ [_**Mob**_](classendstone_1_1Mob.md) _._    
     * **class** [**EffectType**](classendstone_1_1EffectType.md) _All effect types._     
     * **class** [**Enchantment**](classendstone_1_1Enchantment.md) _Represents an enchantment that may be added to armor, weapons, tools or other items._     
     * **class** [**Event**](classendstone_1_1Event.md) _Represents an event._     

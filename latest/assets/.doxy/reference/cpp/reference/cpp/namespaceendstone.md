@@ -97,6 +97,7 @@ _Represents a button with text and an optional icon._
 | class | [**DimensionEvent**](classendstone_1_1DimensionEvent.md) <br>_Represents events within a dimension._  |
 | class | [**Divider**](classendstone_1_1Divider.md) <br>_Represents a divider._  |
 | class | [**Dropdown**](classendstone_1_1Dropdown.md) <br>_Represents a dropdown with a set of predefined options._  |
+| class | [**Effect**](classendstone_1_1Effect.md) <br>_Represents an effect that can be added to a_ [_**Mob**_](classendstone_1_1Mob.md) _._ |
 | class | [**EffectType**](classendstone_1_1EffectType.md) <br>_All effect types._  |
 | class | [**Enchantment**](classendstone_1_1Enchantment.md) <br>_Represents an enchantment that may be added to armor, weapons, tools or other items._  |
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |

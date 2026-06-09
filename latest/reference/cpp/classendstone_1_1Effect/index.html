@@ -10,7 +10,7 @@
         <meta name="author" content="Vincent Wu">
       
       
-        <link rel="canonical" href="https://endstone.dev/latest/reference/cpp/dir_aaf7aa7272c9e0e62216386f1c427eea/">
+        <link rel="canonical" href="https://endstone.dev/latest/reference/cpp/classendstone_1_1Effect/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>Dir include/endstone/effect - Endstone</title>
+        <title>Class endstone::Effect - Endstone</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dir-includeendstoneeffect" class="md-skip">
+        <a href="#class-endstoneeffect" class="md-skip">
           Skip to content
         </a>
       
@@ -138,7 +138,7 @@ For latest updates join the chat on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dir include/endstone/effect
+              Class endstone::Effect
             
           </span>
         </div>
@@ -2585,13 +2585,171 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#files" class="md-nav__link">
+    <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
-        Files
+        Public Functions
       </span>
     </a>
 
     <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#detailed-description" class="md-nav__link">
+      <span class="md-ellipsis">
+        Detailed Description
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#public-functions-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Functions Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Public Functions Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-effect" class="md-nav__link">
+      <span class="md-ellipsis">
+        function Effect
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getamplifier" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getAmplifier
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getduration" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getDuration
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-gettype" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getType
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-hasicon" class="md-nav__link">
+      <span class="md-ellipsis">
+        function hasIcon
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-hasparticles" class="md-nav__link">
+      <span class="md-ellipsis">
+        function hasParticles
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-isambient" class="md-nav__link">
+      <span class="md-ellipsis">
+        function isAmbient
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-isinfinite" class="md-nav__link">
+      <span class="md-ellipsis">
+        function isInfinite
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-operator" class="md-nav__link">
+      <span class="md-ellipsis">
+        function operator!=
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-operator_1" class="md-nav__link">
+      <span class="md-ellipsis">
+        function operator==
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
     
 </li>
       
@@ -2612,7 +2770,7 @@ For latest updates join the chat on
 
 
   
-    <a href="https://github.com/EndstoneMC/endstone/edit/develop/docs/reference/cpp/dir_aaf7aa7272c9e0e62216386f1c427eea.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/EndstoneMC/endstone/edit/develop/docs/reference/cpp/classendstone_1_1Effect.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2621,16 +2779,20 @@ For latest updates join the chat on
     
       
     
-    <a href="https://github.com/EndstoneMC/endstone/raw/develop/docs/reference/cpp/dir_aaf7aa7272c9e0e62216386f1c427eea.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/EndstoneMC/endstone/raw/develop/docs/reference/cpp/classendstone_1_1Effect.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="dir-includeendstoneeffect">Dir include/endstone/effect<a class="headerlink" href="#dir-includeendstoneeffect" title="Permanent link">&para;</a></h1>
-<p><a href="../files/"><strong>FileList</strong></a> <strong>&gt;</strong> <a href="./"><strong>effect</strong></a></p>
-<h2 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h2>
+<h1 id="class-endstoneeffect">Class endstone::Effect<a class="headerlink" href="#class-endstoneeffect" title="Permanent link">&para;</a></h1>
+<p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>Effect</strong></a></p>
+<p><em>Represents an effect that can be added to a</em> <a href="../classendstone_1_1Mob/"><em><strong>Mob</strong></em></a> <em>.</em><a href="#detailed-description">More...</a></p>
+<ul>
+<li><code>#include &lt;endstone/potion/effect.h&gt;</code></li>
+</ul>
+<h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2640,13 +2802,146 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">file</td>
-<td style="text-align: left;"><a href="../effect__type_8h/"><strong>effect_type.h</strong></a> <br></td>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a></td>
+<td style="text-align: left;"><a href="#function-effect"><strong>Effect</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>EffectId</strong></a> type, std::optional&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> &gt; duration, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> amplifier, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> ambient=<a href="../classendstone_1_1Identifier/"><strong>false</strong></a>, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> particles=<a href="../classendstone_1_1Identifier/"><strong>true</strong></a>, <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a> icon=<a href="../classendstone_1_1Identifier/"><strong>true</strong></a>) <br><em>Creates an effect.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>int</strong></a></td>
+<td style="text-align: left;"><a href="#function-getamplifier"><strong>getAmplifier</strong></a> () noexcept const<br><em>Gets the amplifier of this effect.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> std::optional&lt; <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getduration"><strong>getDuration</strong></a> () noexcept const<br><em>Gets the duration of this effect, in ticks.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>EffectId</strong></a></td>
+<td style="text-align: left;"><a href="#function-gettype"><strong>getType</strong></a> () noexcept const<br><em>Gets the type of this effect.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-hasicon"><strong>hasIcon</strong></a> () noexcept const<br><em>Gets whether this effect has an icon.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-hasparticles"><strong>hasParticles</strong></a> () noexcept const<br><em>Gets whether this effect has particles.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-isambient"><strong>isAmbient</strong></a> () noexcept const<br><em>Makes the effect produce more, translucent, particles.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-isinfinite"><strong>isInfinite</strong></a> () noexcept const<br><em>Returns whether this effect has an infinite duration.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-operator"><strong>operator!=</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="./"><strong>Effect</strong></a> &amp; other) noexcept const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>constexpr</strong></a> <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-operator_1"><strong>operator==</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>const</strong></a> <a href="./"><strong>Effect</strong></a> &amp; other) noexcept const<br></td>
 </tr>
 </tbody>
 </table>
+<h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
+<p>An effect is an immutable description of an effect type together with a duration, amplifier and a set of display options. Applying it to a <a href="../classendstone_1_1Mob/"><strong>Mob</strong></a> (e.g. via <a href="../classendstone_1_1Mob/#function-addeffect"><strong>Mob::addEffect</strong></a>) installs the effect; querying a <a href="../classendstone_1_1Mob/"><strong>Mob</strong></a>'s active effects yields <a href="./"><strong>Effect</strong></a> values describing what is currently in force. </p>
+<h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-effect">function Effect<a class="headerlink" href="#function-effect" title="Permanent link">&para;</a></h3>
+<p><em>Creates an effect.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Effect</span><span class="o">::</span><span class="n">Effect</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">EffectId</span><span class="w"> </span><span class="n">type</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">duration</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">amplifier</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">ambient</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">particles</span><span class="o">=</span><span class="nb">true</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">icon</span><span class="o">=</span><span class="nb">true</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>type</code> effect type </li>
+<li><code>duration</code> measured in ticks, or std::nullopt for an infinite duration, see <a href="./#function-getduration"><strong>Effect::getDuration</strong></a> </li>
+<li><code>amplifier</code> the amplifier for the effect, see <a href="./#function-getamplifier"><strong>Effect::getAmplifier</strong></a> </li>
+<li><code>ambient</code> the ambient status, see <a href="./#function-isambient"><strong>Effect::isAmbient</strong></a> </li>
+<li><code>particles</code> the particle status, see <a href="./#function-hasparticles"><strong>Effect::hasParticles</strong></a> </li>
+<li><code>icon</code> the icon status, see <a href="./#function-hasicon"><strong>Effect::hasIcon</strong></a> </li>
+</ul>
+<hr>
+
+<h3 id="function-getamplifier">function getAmplifier<a class="headerlink" href="#function-getamplifier" title="Permanent link">&para;</a></h3>
+<p><em>Gets the amplifier of this effect.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Effect</span><span class="o">::</span><span class="n">getAmplifier</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p>A higher amplifier means the effect happens more often over its duration and in some cases has more effect on its target.</p>
+<p><strong>Returns:</strong></p>
+<p>the amplifier </p>
+<hr>
+
+<h3 id="function-getduration">function getDuration<a class="headerlink" href="#function-getduration" title="Permanent link">&para;</a></h3>
+<p><em>Gets the duration of this effect, in ticks.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Effect</span><span class="o">::</span><span class="n">getDuration</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the duration in ticks, or std::nullopt if this effect is infinite </p>
+<hr>
+
+<h3 id="function-gettype">function getType<a class="headerlink" href="#function-gettype" title="Permanent link">&para;</a></h3>
+<p><em>Gets the type of this effect.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="n">EffectId</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Effect</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the type </p>
+<hr>
+
+<h3 id="function-hasicon">function hasIcon<a class="headerlink" href="#function-hasicon" title="Permanent link">&para;</a></h3>
+<p><em>Gets whether this effect has an icon.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Effect</span><span class="o">::</span><span class="n">hasIcon</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>whether this effect has an icon </p>
+<hr>
+
+<h3 id="function-hasparticles">function hasParticles<a class="headerlink" href="#function-hasparticles" title="Permanent link">&para;</a></h3>
+<p><em>Gets whether this effect has particles.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Effect</span><span class="o">::</span><span class="n">hasParticles</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>whether this effect has particles </p>
+<hr>
+
+<h3 id="function-isambient">function isAmbient<a class="headerlink" href="#function-isambient" title="Permanent link">&para;</a></h3>
+<p><em>Makes the effect produce more, translucent, particles.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Effect</span><span class="o">::</span><span class="n">isAmbient</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>whether this effect is ambient </p>
+<hr>
+
+<h3 id="function-isinfinite">function isInfinite<a class="headerlink" href="#function-isinfinite" title="Permanent link">&para;</a></h3>
+<p><em>Returns whether this effect has an infinite duration.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Effect</span><span class="o">::</span><span class="n">isInfinite</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p>Effects with an infinite duration never expire unless manually removed.</p>
+<p><strong>Returns:</strong></p>
+<p>whether this effect is infinite </p>
+<hr>
+
+<h3 id="function-operator">function operator!=<a class="headerlink" href="#function-operator" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Effect</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Effect</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="function-operator_1">function operator==<a class="headerlink" href="#function-operator_1" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">constexpr</span><span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Effect</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">const</span><span class="w">  </span><span class="n">Effect</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div>
+<hr>
+
 <hr />
-<p>The documentation for this class was generated from the following file <code>include/endstone/effect/</code></p>
+<p>The documentation for this class was generated from the following file <code>include/endstone/potion/effect.h</code></p>
 
 
 

@@ -62,6 +62,7 @@
     <innerclass refid="classendstone_1_1DimensionEvent" prot="public">endstone::DimensionEvent</innerclass>
     <innerclass refid="classendstone_1_1Divider" prot="public">endstone::Divider</innerclass>
     <innerclass refid="classendstone_1_1Dropdown" prot="public">endstone::Dropdown</innerclass>
+    <innerclass refid="classendstone_1_1Effect" prot="public">endstone::Effect</innerclass>
     <innerclass refid="classendstone_1_1EffectType" prot="public">endstone::EffectType</innerclass>
     <innerclass refid="classendstone_1_1Enchantment" prot="public">endstone::Enchantment</innerclass>
     <innerclass refid="classendstone_1_1Event" prot="public">endstone::Event</innerclass>
@@ -974,20 +975,6 @@
         </inbodydescription>
         <location file="include/endstone/block/block_type.h" line="29" column="1" bodyfile="include/endstone/block/block_type.h" bodystart="29" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" prot="public" static="no">
-        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1EffectType" kindref="compound">EffectType</ref> &gt;</type>
-        <definition>using endstone::EffectId = typedef Identifier&lt;class EffectType&gt;</definition>
-        <argsstring></argsstring>
-        <name>EffectId</name>
-        <qualifiedname>endstone::EffectId</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/effect/effect_type.h" line="22" column="1" bodyfile="include/endstone/effect/effect_type.h" bodystart="22" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1a996c90f609bfd792a8245bb60fd3e4ea" prot="public" static="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1Enchantment" kindref="compound">Enchantment</ref> &gt;</type>
         <definition>using endstone::EnchantmentId = typedef Identifier&lt;class Enchantment&gt;</definition>
@@ -1185,6 +1172,20 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/permissions/permission_attachment.h" line="28" column="1" bodyfile="include/endstone/permissions/permission_attachment.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1EffectType" kindref="compound">EffectType</ref> &gt;</type>
+        <definition>using endstone::EffectId = typedef Identifier&lt;class EffectType&gt;</definition>
+        <argsstring></argsstring>
+        <name>EffectId</name>
+        <qualifiedname>endstone::EffectId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/potion/effect_type.h" line="22" column="1" bodyfile="include/endstone/potion/effect_type.h" bodystart="22" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1a752231e730d011e08a0c9329945d4d6f" prot="public" static="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">class</ref> <ref refid="classendstone_1_1PotionType" kindref="compound">PotionType</ref> &gt;</type>

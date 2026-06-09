@@ -3248,6 +3248,7 @@ For latest updates join the chat on
 <li><strong>asMetaFor</strong> (<a href="../classendstone_1_1ItemFactory/"><strong>endstone::ItemFactory</strong></a>)</li>
 <li><strong>addEnchant</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>addRenderer</strong> (<a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>
+<li><strong>addEffect</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
 <li><strong>addControl</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>as</strong> (<a href="../classendstone_1_1Object/"><strong>endstone::Object</strong></a>)</li>
 <li><strong>addParent</strong> (<a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a>)</li>
@@ -3348,6 +3349,7 @@ For latest updates join the chat on
 <li><strong>empty</strong> (<a href="../classendstone_1_1CompoundTag/"><strong>endstone::CompoundTag</strong></a>, <a href="../classendstone_1_1ListTag/"><strong>endstone::ListTag</strong></a>, <a href="../classendstone_1_1Translatable/"><strong>endstone::Translatable</strong></a>, <a href="../classendstone_1_1nbt_1_1ArrayTag/"><strong>endstone::nbt::ArrayTag</strong></a>, <a href="../classendstone_1_1nbt_1_1Tag/"><strong>endstone::nbt::Tag</strong></a>)</li>
 <li><strong>end</strong> (<a href="../classendstone_1_1CompoundTag/"><strong>endstone::CompoundTag</strong></a>, <a href="../classendstone_1_1ListTag/"><strong>endstone::ListTag</strong></a>, <a href="../classendstone_1_1UUID/"><strong>endstone::UUID</strong></a>, <a href="../classendstone_1_1nbt_1_1ArrayTag/"><strong>endstone::nbt::ArrayTag</strong></a>)</li>
 <li><strong>erase</strong> (<a href="../classendstone_1_1CompoundTag/"><strong>endstone::CompoundTag</strong></a>, <a href="../classendstone_1_1ListTag/"><strong>endstone::ListTag</strong></a>, <a href="../classendstone_1_1nbt_1_1ArrayTag/"><strong>endstone::nbt::ArrayTag</strong></a>)</li>
+<li><strong>Effect</strong> (<a href="../classendstone_1_1Effect/"><strong>endstone::Effect</strong></a>)</li>
 <li><strong>Event</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>, <a href="../classendstone_1_1ServerEvent/"><strong>endstone::ServerEvent</strong></a>)</li>
 <li><strong>EventHandler</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
 <li><strong>equals</strong> (<a href="../classendstone_1_1ItemFactory/"><strong>endstone::ItemFactory</strong></a>)</li>
@@ -3384,7 +3386,7 @@ For latest updates join the chat on
 <li><strong>getRuntimeId</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1BlockData/"><strong>endstone::BlockData</strong></a>)</li>
 <li><strong>getScoreTag</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>getScoreboardTags</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
-<li><strong>getType</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>, <a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1BlockData/"><strong>endstone::BlockData</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>, <a href="../classendstone_1_1DamageSource/"><strong>endstone::DamageSource</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1MapCursor/"><strong>endstone::MapCursor</strong></a>, <a href="../classendstone_1_1ServerLoadEvent/"><strong>endstone::ServerLoadEvent</strong></a>, <a href="../classendstone_1_1ItemStack_1_1Impl/"><strong>endstone::ItemStack::Impl</strong></a>)</li>
+<li><strong>getType</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1AttributeInstance/"><strong>endstone::AttributeInstance</strong></a>, <a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>, <a href="../classendstone_1_1BlockData/"><strong>endstone::BlockData</strong></a>, <a href="../classendstone_1_1BlockState/"><strong>endstone::BlockState</strong></a>, <a href="../classendstone_1_1DamageSource/"><strong>endstone::DamageSource</strong></a>, <a href="../classendstone_1_1Effect/"><strong>endstone::Effect</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1MapCursor/"><strong>endstone::MapCursor</strong></a>, <a href="../classendstone_1_1ServerLoadEvent/"><strong>endstone::ServerLoadEvent</strong></a>, <a href="../classendstone_1_1ItemStack_1_1Impl/"><strong>endstone::ItemStack::Impl</strong></a>)</li>
 <li><strong>getVelocity</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>getDamage</strong> (<a href="../classendstone_1_1ActorDamageEvent/"><strong>endstone::ActorDamageEvent</strong></a>, <a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>getDamageSource</strong> (<a href="../classendstone_1_1ActorDamageEvent/"><strong>endstone::ActorDamageEvent</strong></a>, <a href="../classendstone_1_1ActorDeathEvent/"><strong>endstone::ActorDeathEvent</strong></a>)</li>
@@ -3465,6 +3467,8 @@ For latest updates join the chat on
 <li><strong>getDefaultIndex</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>)</li>
 <li><strong>getLabel</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>, <a href="../classendstone_1_1Header/"><strong>endstone::Header</strong></a>, <a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>, <a href="../classendstone_1_1TextInput/"><strong>endstone::TextInput</strong></a>, <a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>
 <li><strong>getOptions</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>)</li>
+<li><strong>getAmplifier</strong> (<a href="../classendstone_1_1Effect/"><strong>endstone::Effect</strong></a>)</li>
+<li><strong>getDuration</strong> (<a href="../classendstone_1_1Effect/"><strong>endstone::Effect</strong></a>)</li>
 <li><strong>getMaxLevel</strong> (<a href="../classendstone_1_1Enchantment/"><strong>endstone::Enchantment</strong></a>)</li>
 <li><strong>getStartLevel</strong> (<a href="../classendstone_1_1Enchantment/"><strong>endstone::Enchantment</strong></a>)</li>
 <li><strong>getEventName</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
@@ -3521,8 +3525,10 @@ For latest updates join the chat on
 <li><strong>getScale</strong> (<a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>
 <li><strong>getButton1</strong> (<a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>)</li>
 <li><strong>getButton2</strong> (<a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>)</li>
+<li><strong>getActiveEffects</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
 <li><strong>getAttribute</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
 <li><strong>getAttributes</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
+<li><strong>getEffect</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
 <li><strong>getHealth</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
 <li><strong>getMaxHealth</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
 <li><strong>getSubmitButton</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
@@ -3676,6 +3682,8 @@ For latest updates join the chat on
 <li><strong>hasFlag</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
 <li><strong>hasPermission</strong> (<a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a>, <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
 <li><strong>hasChargedProjectile</strong> (<a href="../classendstone_1_1CrossbowMeta/"><strong>endstone::CrossbowMeta</strong></a>)</li>
+<li><strong>hasIcon</strong> (<a href="../classendstone_1_1Effect/"><strong>endstone::Effect</strong></a>)</li>
+<li><strong>hasParticles</strong> (<a href="../classendstone_1_1Effect/"><strong>endstone::Effect</strong></a>)</li>
 <li><strong>HandlerList</strong> (<a href="../classendstone_1_1HandlerList/"><strong>endstone::HandlerList</strong></a>)</li>
 <li><strong>Header</strong> (<a href="../classendstone_1_1Header/"><strong>endstone::Header</strong></a>)</li>
 <li><strong>hasConflictingEnchant</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
@@ -3689,6 +3697,7 @@ For latest updates join the chat on
 <li><strong>hasMapId</strong> (<a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a>)</li>
 <li><strong>hasMapView</strong> (<a href="../classendstone_1_1MapMeta/"><strong>endstone::MapMeta</strong></a>)</li>
 <li><strong>hasAttribute</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
+<li><strong>hasEffect</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
 <li><strong>hasBlock</strong> (<a href="../classendstone_1_1PlayerInteractEvent/"><strong>endstone::PlayerInteractEvent</strong></a>)</li>
 <li><strong>hasItem</strong> (<a href="../classendstone_1_1PlayerInteractEvent/"><strong>endstone::PlayerInteractEvent</strong></a>)</li>
 <li><strong>hasPages</strong> (<a href="../classendstone_1_1WritableBookMeta/"><strong>endstone::WritableBookMeta</strong></a>)</li>
@@ -3713,6 +3722,8 @@ For latest updates join the chat on
 <li><strong>insert_or_assign</strong> (<a href="../classendstone_1_1CompoundTag/"><strong>endstone::CompoundTag</strong></a>)</li>
 <li><strong>isReadOnly</strong> (<a href="../classendstone_1_1Criteria/"><strong>endstone::Criteria</strong></a>)</li>
 <li><strong>isIndirect</strong> (<a href="../classendstone_1_1DamageSource/"><strong>endstone::DamageSource</strong></a>)</li>
+<li><strong>isAmbient</strong> (<a href="../classendstone_1_1Effect/"><strong>endstone::Effect</strong></a>)</li>
+<li><strong>isInfinite</strong> (<a href="../classendstone_1_1Effect/"><strong>endstone::Effect</strong></a>)</li>
 <li><strong>isAsynchronous</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
 <li><strong>isIgnoreCancelled</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
 <li><strong>Identifier</strong> (<a href="../classendstone_1_1Identifier/"><strong>endstone::Identifier</strong></a>)</li>
@@ -3793,8 +3804,8 @@ For latest updates join the chat on
 </ul>
 <h2 id="o">o<a class="headerlink" href="#o" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>operator!=</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>, <a href="../classendstone_1_1Identifier/"><strong>endstone::Identifier</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>, <a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>, <a href="../classendstone_1_1Registry_1_1Type/"><strong>endstone::Registry::Type</strong></a>, <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
-<li><strong>operator==</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>, <a href="../classendstone_1_1Identifier/"><strong>endstone::Identifier</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>, <a href="../classendstone_1_1Nullable/"><strong>endstone::Nullable</strong></a>, <a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>, <a href="../classendstone_1_1Registry_1_1Type/"><strong>endstone::Registry::Type</strong></a>, <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
+<li><strong>operator!=</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>, <a href="../classendstone_1_1Effect/"><strong>endstone::Effect</strong></a>, <a href="../classendstone_1_1Identifier/"><strong>endstone::Identifier</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>, <a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>, <a href="../classendstone_1_1Registry_1_1Type/"><strong>endstone::Registry::Type</strong></a>, <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
+<li><strong>operator==</strong> (<a href="../classendstone_1_1Color/"><strong>endstone::Color</strong></a>, <a href="../classendstone_1_1Effect/"><strong>endstone::Effect</strong></a>, <a href="../classendstone_1_1Identifier/"><strong>endstone::Identifier</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>, <a href="../classendstone_1_1Nullable/"><strong>endstone::Nullable</strong></a>, <a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>, <a href="../classendstone_1_1Registry_1_1Type/"><strong>endstone::Registry::Type</strong></a>, <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
 <li><strong>onCommand</strong> (<a href="../classendstone_1_1CommandExecutor/"><strong>endstone::CommandExecutor</strong></a>)</li>
 <li><strong>operator=</strong> (<a href="../classendstone_1_1CommandMap/"><strong>endstone::CommandMap</strong></a>, <a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>, <a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>, <a href="../classendstone_1_1NotNull/"><strong>endstone::NotNull</strong></a>, <a href="../classendstone_1_1Plugin/"><strong>endstone::Plugin</strong></a>, <a href="../classendstone_1_1PluginLoader/"><strong>endstone::PluginLoader</strong></a>, <a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>, <a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>, <a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
 <li><strong>operator[]</strong> (<a href="../classendstone_1_1CompoundTag/"><strong>endstone::CompoundTag</strong></a>, <a href="../classendstone_1_1ListTag/"><strong>endstone::ListTag</strong></a>, <a href="../classendstone_1_1NotNull/"><strong>endstone::NotNull</strong></a>, <a href="../classendstone_1_1nbt_1_1ArrayTag/"><strong>endstone::nbt::ArrayTag</strong></a>, <a href="../classendstone_1_1nbt_1_1Tag/"><strong>endstone::nbt::Tag</strong></a>)</li>
@@ -3881,6 +3892,7 @@ For latest updates join the chat on
 <li><strong>removeEnchants</strong> (<a href="../classendstone_1_1ItemMeta/"><strong>endstone::ItemMeta</strong></a>)</li>
 <li><strong>render</strong> (<a href="../classendstone_1_1MapRenderer/"><strong>endstone::MapRenderer</strong></a>)</li>
 <li><strong>removeRenderer</strong> (<a href="../classendstone_1_1MapView/"><strong>endstone::MapView</strong></a>)</li>
+<li><strong>removeEffect</strong> (<a href="../classendstone_1_1Mob/"><strong>endstone::Mob</strong></a>)</li>
 <li><strong>recalculatePermissibles</strong> (<a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a>)</li>
 <li><strong>resetTitle</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>registerEvent</strong> (<a href="../classendstone_1_1Plugin/"><strong>endstone::Plugin</strong></a>, <a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>

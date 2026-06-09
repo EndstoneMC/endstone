@@ -5323,9 +5323,11 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Added <code>PlayerRespawnEvent.respawn_reason</code> (<code>RespawnReason.DEATH</code> / <code>RespawnReason.END_PORTAL</code>) so plugins can tell a normal death respawn apart from a player returning to the Overworld through the End exit portal.</li>
 <li>Added a <code>Container</code> block state for reading and modifying the contents of container blocks such as chests, barrels, hoppers, dispensers, droppers, shulker boxes, and furnaces. <code>block.capture_state()</code> now returns a <code>Container</code> for these blocks, exposing the block's items via <code>container.inventory</code>.</li>
 <li>Added a <code>Biome</code> type and <code>Block.biome</code> for reading the biome at a block. Biomes can be looked up by name with <code>Biome.get("minecraft:plains")</code> and enumerated via <code>server.get_registry(Biome)</code>.</li>
+<li>Added an effect API: <code>Mob.add_effect()</code>, <code>Mob.remove_effect()</code>, <code>Mob.has_effect()</code>, <code>Mob.get_effect()</code>, and <code>Mob.active_effects</code> apply, remove, and query a living entity's status effects (speed, regeneration, poison, etc.). Effects are described by the new <code>Effect</code> type, carrying an effect type, duration in ticks, amplifier, and ambient/particles/icon display flags.</li>
 </ul>
 <h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
 <ul>
+<li><strong>BREAKING</strong>: Moved <code>EffectType</code> from the <code>endstone.effect</code> module to <code>endstone.potion</code> (<code>endstone.potion.EffectType</code>), mirroring Bukkit. The <code>endstone.effect</code> submodule has been removed; update imports accordingly. In C++, the header moved from <code>endstone/effect/effect_type.h</code> to <code>endstone/potion/effect_type.h</code>.</li>
 <li><strong>BREAKING</strong>: Replaced <code>Dimension::Type</code> enum with <code>DimensionId</code>, a namespaced identifier that supports custom
   dimensions. Use <code>Dimension.OVERWORLD</code>, <code>Dimension.NETHER</code>, <code>Dimension.THE_END</code> constants or look up by identifier.
   <code>Dimension.name</code> has been replaced by <code>Dimension.id</code>.</li>

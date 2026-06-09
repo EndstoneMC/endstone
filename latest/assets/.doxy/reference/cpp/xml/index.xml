@@ -832,6 +832,24 @@
     <member refid="classendstone_1_1Dropdown_1a2783fb46d09ac9838ffbc1064c8b79e8" kind="function"><name>getDefaultIndex</name></member>
     <member refid="classendstone_1_1Dropdown_1a370ff769dafb86ac4ed83ddef6e3b4b4" kind="function"><name>setDefaultIndex</name></member>
   </compound>
+  <compound refid="classendstone_1_1Effect" kind="class"><name>endstone::Effect</name>
+    <member refid="classendstone_1_1Effect_1afc6cc0784a5191143e1e7d6d8cbc7405" kind="variable"><name>type_</name></member>
+    <member refid="classendstone_1_1Effect_1adf17cad27f9cb4282fa32acc217142ed" kind="variable"><name>duration_</name></member>
+    <member refid="classendstone_1_1Effect_1a165d8cc836879054846845673b8c85ca" kind="variable"><name>amplifier_</name></member>
+    <member refid="classendstone_1_1Effect_1ae13ff245456a118db0400735cf71e93f" kind="variable"><name>ambient_</name></member>
+    <member refid="classendstone_1_1Effect_1a4471d33b9eac9cb09b25c4cddd756f21" kind="variable"><name>particles_</name></member>
+    <member refid="classendstone_1_1Effect_1a0d259ad579a79056b7689a95897a590d" kind="variable"><name>icon_</name></member>
+    <member refid="classendstone_1_1Effect_1a7f5f24c0ebbe1c6338156454485c6f3e" kind="function"><name>Effect</name></member>
+    <member refid="classendstone_1_1Effect_1a117cee9fbf59f4dbd6b77ef7b28abf83" kind="function"><name>operator==</name></member>
+    <member refid="classendstone_1_1Effect_1aef0742af66eb674b3483db3c238af655" kind="function"><name>operator!=</name></member>
+    <member refid="classendstone_1_1Effect_1a5855ab257f20b70e387e2dcc14bb206c" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1Effect_1a003813fb5cbb2ba724f92b69cbfce4a6" kind="function"><name>getDuration</name></member>
+    <member refid="classendstone_1_1Effect_1a928e3a7e3cf0e5bfaa93a7e2ef69bbf2" kind="function"><name>isInfinite</name></member>
+    <member refid="classendstone_1_1Effect_1a91ce745e26d2562e5772584d0503c9ae" kind="function"><name>getAmplifier</name></member>
+    <member refid="classendstone_1_1Effect_1a4580a201f072fe91eb971d9942eaf5b1" kind="function"><name>isAmbient</name></member>
+    <member refid="classendstone_1_1Effect_1aca83a1f167d206e7b98229351ecba836" kind="function"><name>hasParticles</name></member>
+    <member refid="classendstone_1_1Effect_1a0f62cd4a080fdea5d1c69df1fc0abc60" kind="function"><name>hasIcon</name></member>
+  </compound>
   <compound refid="classendstone_1_1EffectType" kind="class"><name>endstone::EffectType</name>
     <member refid="classendstone_1_1EffectType_1a1bc785783704de4311b5dd145b80f0a1" kind="variable"><name>Speed</name></member>
     <member refid="classendstone_1_1EffectType_1a81907192deb4d3e74681ddf020e4630f" kind="variable"><name>Slowness</name></member>
@@ -1556,6 +1574,11 @@
     <member refid="classendstone_1_1Mob_1a2d038feb9ba603941bb670b61f486192" kind="function"><name>hasAttribute</name></member>
     <member refid="classendstone_1_1Mob_1afdff3c5af17582670df6a26bfd2c4c4e" kind="function"><name>getAttribute</name></member>
     <member refid="classendstone_1_1Mob_1af787b489d14574b8afa4dc8e29adbf65" kind="function"><name>getAttributes</name></member>
+    <member refid="classendstone_1_1Mob_1a2836f61e2312723e336e43e41f0604f3" kind="function"><name>addEffect</name></member>
+    <member refid="classendstone_1_1Mob_1aeac9fd85c147eaa5d63981f67604e348" kind="function"><name>removeEffect</name></member>
+    <member refid="classendstone_1_1Mob_1a412db4e15e78c57b8c712f5b3ca39f7c" kind="function"><name>hasEffect</name></member>
+    <member refid="classendstone_1_1Mob_1a3f4d776ae80d887fc4ddb1900b08983c" kind="function"><name>getEffect</name></member>
+    <member refid="classendstone_1_1Mob_1ac89ab5a920e0700ff422802f59bbd4ed" kind="function"><name>getActiveEffects</name></member>
   </compound>
   <compound refid="classendstone_1_1ModalForm" kind="class"><name>endstone::ModalForm</name>
     <member refid="classendstone_1_1ModalForm_1a8e10f5a1239c36f705b0a61711efa6ef" kind="typedef"><name>Control</name></member>
@@ -2790,7 +2813,6 @@
     <member refid="namespaceendstone_1a1249f5439dec411ef9392f2ca08e0775" kind="typedef"><name>BiomeId</name></member>
     <member refid="namespaceendstone_1a688abbe501a61374454a55553d25e08f" kind="typedef"><name>BlockStates</name></member>
     <member refid="namespaceendstone_1a42f3cb333492510ff60b8097153fa66a" kind="typedef"><name>BlockTypeId</name></member>
-    <member refid="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" kind="typedef"><name>EffectId</name></member>
     <member refid="namespaceendstone_1a996c90f609bfd792a8245bb60fd3e4ea" kind="typedef"><name>EnchantmentId</name></member>
     <member refid="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" kind="typedef"><name>ItemTypeId</name></member>
     <member refid="namespaceendstone_1a56604f8e64cbfad4e739248ea315914e" kind="typedef"><name>DimensionId</name></member>
@@ -2805,6 +2827,7 @@
     <member refid="namespaceendstone_1a9f9696219c347f4a15b1e1495af99f66" kind="typedef"><name>StringTag</name></member>
     <member refid="namespaceendstone_1a32ff16a28255aeb30f8d6905e6100a2b" kind="typedef"><name>IntArrayTag</name></member>
     <member refid="namespaceendstone_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
+    <member refid="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" kind="typedef"><name>EffectId</name></member>
     <member refid="namespaceendstone_1a752231e730d011e08a0c9329945d4d6f" kind="typedef"><name>PotionId</name></member>
     <member refid="namespaceendstone_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="namespaceendstone_1a6d9b2d7c129a48a5e7dea2125d37e94d" kind="typedef"><name>ScoreEntry</name></member>
@@ -2965,8 +2988,6 @@
     <member refid="detail_8h_1a46e1c4a8288cedb15ba0b66506e3cbcc" kind="define"><name>MINECRAFT_VERSION_MINOR</name></member>
     <member refid="detail_8h_1ab5ab678dbebc4266524cc369b4cf7634" kind="define"><name>MINECRAFT_VERSION_PATCH</name></member>
     <member refid="detail_8h_1a3c68e4ff339423244580011bee4b7e0f" kind="define"><name>MINECRAFT_VERSION</name></member>
-  </compound>
-  <compound refid="effect__type_8h" kind="file"><name>effect_type.h</name>
   </compound>
   <compound refid="enchantment_8h" kind="file"><name>enchantment.h</name>
   </compound>
@@ -3237,6 +3258,10 @@
   </compound>
   <compound refid="service__priority_8h" kind="file"><name>service_priority.h</name>
   </compound>
+  <compound refid="effect_8h" kind="file"><name>effect.h</name>
+  </compound>
+  <compound refid="effect__type_8h" kind="file"><name>effect_type.h</name>
+  </compound>
   <compound refid="potion__type_8h" kind="file"><name>potion_type.h</name>
   </compound>
   <compound refid="registry_8h" kind="file"><name>registry.h</name>
@@ -3308,8 +3333,6 @@
   <compound refid="dir_035306890ec6a3fa870e30b726ac5ffc" kind="dir"><name>include/endstone/form/controls</name>
   </compound>
   <compound refid="dir_d35032eb9ca22acb8eface5f2c8b6a35" kind="dir"><name>include/endstone/damage</name>
-  </compound>
-  <compound refid="dir_aaf7aa7272c9e0e62216386f1c427eea" kind="dir"><name>include/endstone/effect</name>
   </compound>
   <compound refid="dir_5154bf3e53eefb0e1f350f5612107967" kind="dir"><name>include/endstone/enchantments</name>
   </compound>

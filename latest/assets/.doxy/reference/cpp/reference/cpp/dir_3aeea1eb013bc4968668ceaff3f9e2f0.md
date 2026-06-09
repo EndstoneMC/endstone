@@ -21,6 +21,8 @@
 
 | Type | Name |
 | ---: | :--- |
+| file | [**effect.h**](effect_8h.md) <br> |
+| file | [**effect\_type.h**](effect__type_8h.md) <br> |
 | file | [**potion\_type.h**](potion__type_8h.md) <br> |
 
 
