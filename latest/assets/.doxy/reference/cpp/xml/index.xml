@@ -361,6 +361,8 @@
     <member refid="classendstone_1_1BanList_1a7fd3e0a897b072736e9df35d91b12c19" kind="function"><name>isBanned</name></member>
     <member refid="classendstone_1_1BanList_1abefb6ec9f4a696e98609579e3b87718a" kind="function"><name>removeBan</name></member>
   </compound>
+  <compound refid="classendstone_1_1Biome" kind="class"><name>endstone::Biome</name>
+  </compound>
   <compound refid="classendstone_1_1Block" kind="class"><name>endstone::Block</name>
     <member refid="classendstone_1_1Block_1a8a7ea0b990c4c610f75cf53bd5c6647b" kind="function"><name>~Block</name></member>
     <member refid="classendstone_1_1Block_1aeaba4f4bba5f4d96265c8b127c2e10b3" kind="function"><name>getType</name></member>
@@ -373,6 +375,7 @@
     <member refid="classendstone_1_1Block_1ae60ad017cb35887e0cad09c2d76b354b" kind="function"><name>getRelative</name></member>
     <member refid="classendstone_1_1Block_1a360bc161449ffdd18506c4775408af14" kind="function"><name>getRelative</name></member>
     <member refid="classendstone_1_1Block_1a8d18ed25f0fc34c51152ec0a1dd09854" kind="function"><name>getDimension</name></member>
+    <member refid="classendstone_1_1Block_1ac5f09887cfba8b183dcc71af4f21ce41" kind="function"><name>getBiome</name></member>
     <member refid="classendstone_1_1Block_1a1ec1fc7c6fe1aab63db232b0f0684c76" kind="function"><name>getX</name></member>
     <member refid="classendstone_1_1Block_1a390b31ef485c4b5176842bd3a59b01bc" kind="function"><name>getY</name></member>
     <member refid="classendstone_1_1Block_1a9509b72c86339e30a4b50567f6d5279c" kind="function"><name>getZ</name></member>
@@ -2784,6 +2787,7 @@
     <member refid="namespaceendstone_1a94ee63841c0963c0a0676b0783e03486" kind="typedef"><name>ActorTypeId</name></member>
     <member refid="namespaceendstone_1ac2d399872c391e7ce2ec1896ba62e669" kind="typedef"><name>AttributeId</name></member>
     <member refid="namespaceendstone_1a41bbb2fa08f8ead1e9b082a4fd4ef454" kind="typedef"><name>AttributeModifierId</name></member>
+    <member refid="namespaceendstone_1a1249f5439dec411ef9392f2ca08e0775" kind="typedef"><name>BiomeId</name></member>
     <member refid="namespaceendstone_1a688abbe501a61374454a55553d25e08f" kind="typedef"><name>BlockStates</name></member>
     <member refid="namespaceendstone_1a42f3cb333492510ff60b8097153fa66a" kind="typedef"><name>BlockTypeId</name></member>
     <member refid="namespaceendstone_1a1de715f3cef3cb85cbef38b7ec0ee3db" kind="typedef"><name>EffectId</name></member>
@@ -2903,6 +2907,8 @@
   <compound refid="player__ban__entry_8h" kind="file"><name>player_ban_entry.h</name>
   </compound>
   <compound refid="player__ban__list_8h" kind="file"><name>player_ban_list.h</name>
+  </compound>
+  <compound refid="biome_8h" kind="file"><name>biome.h</name>
   </compound>
   <compound refid="block_8h" kind="file"><name>block.h</name>
   </compound>

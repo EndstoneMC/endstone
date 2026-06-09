@@ -18,6 +18,7 @@
     <innerclass refid="classendstone_1_1AttributeModifier" prot="public">endstone::AttributeModifier</innerclass>
     <innerclass refid="classendstone_1_1BanEntry" prot="public">endstone::BanEntry</innerclass>
     <innerclass refid="classendstone_1_1BanList" prot="public">endstone::BanList</innerclass>
+    <innerclass refid="classendstone_1_1Biome" prot="public">endstone::Biome</innerclass>
     <innerclass refid="classendstone_1_1Block" prot="public">endstone::Block</innerclass>
     <innerclass refid="classendstone_1_1BlockBreakEvent" prot="public">endstone::BlockBreakEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockCommandSender" prot="public">endstone::BlockCommandSender</innerclass>
@@ -930,6 +931,20 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/attribute/attribute_modifier.h" line="22" column="1" bodyfile="include/endstone/attribute/attribute_modifier.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespaceendstone_1a1249f5439dec411ef9392f2ca08e0775" prot="public" static="no">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Biome" kindref="compound">Biome</ref> &gt;</type>
+        <definition>using endstone::BiomeId = typedef Identifier&lt;Biome&gt;</definition>
+        <argsstring></argsstring>
+        <name>BiomeId</name>
+        <qualifiedname>endstone::BiomeId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/biome.h" line="25" column="1" bodyfile="include/endstone/block/biome.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespaceendstone_1a688abbe501a61374454a55553d25e08f" prot="public" static="no">
         <type>std::unordered_map&lt; std::string, std::variant&lt; <ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref>, std::string, <ref refid="classendstone_1_1Identifier" kindref="compound">int</ref> &gt; &gt;</type>

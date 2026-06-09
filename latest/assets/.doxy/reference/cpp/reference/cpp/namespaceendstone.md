@@ -53,6 +53,7 @@ _Represents a button with text and an optional icon._
 | class | [**AttributeModifier**](classendstone_1_1AttributeModifier.md) <br>_Concrete implementation of an attribute modifier._  |
 | class | [**BanEntry**](classendstone_1_1BanEntry.md) <br>_A single entry from a ban list._  |
 | class | [**BanList**](classendstone_1_1BanList.md) &lt;[**typename**](classendstone_1_1Identifier.md) [**T**](classendstone_1_1Identifier.md)&gt;<br>_Represents a ban list, containing bans._  |
+| class | [**Biome**](classendstone_1_1Biome.md) <br> |
 | class | [**Block**](classendstone_1_1Block.md) <br>_Represents a block._  |
 | class | [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) <br>_Called when a block is broken by a player._  |
 | class | [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md) <br>_Represents a block command sender._  |
@@ -221,6 +222,7 @@ _Represents a button with text and an optional icon._
 | enum  | [**BarColor**](#enum-barcolor)  <br>_Represents the color of a boss bar._  |
 | enum  | [**BarFlag**](#enum-barflag)  <br>_Represents an optional flag that changes the appearance or behaviour of a boss bar._  |
 | enum  | [**BarStyle**](#enum-barstyle)  <br>_Represents the segment style of a boss bar._  |
+| typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**Biome**](classendstone_1_1Biome.md) &gt; | [**BiomeId**](#typedef-biomeid)  <br> |
 | enum  | [**BlockFace**](#enum-blockface)  <br>_Represents the face of a block._  |
 | typedef std::unordered\_map&lt; std::string, std::variant&lt; [**bool**](classendstone_1_1Identifier.md), std::string, [**int**](classendstone_1_1Identifier.md) &gt; &gt; | [**BlockStates**](#typedef-blockstates)  <br> |
 | typedef [**Identifier**](classendstone_1_1Identifier.md)&lt; [**BlockType**](classendstone_1_1BlockType.md) &gt; | [**BlockTypeId**](#typedef-blocktypeid)  <br> |
@@ -414,6 +416,19 @@ enum endstone::BarStyle {
     Segmented12,
     Segmented20
 };
+```
+
+
+
+
+<hr>
+
+
+
+### typedef BiomeId 
+
+```C++
+using endstone::BiomeId = typedef Identifier<Biome>;
 ```
 
 

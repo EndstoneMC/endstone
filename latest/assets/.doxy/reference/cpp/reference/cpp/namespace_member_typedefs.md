@@ -12,6 +12,7 @@
 
 ## b
 
+* **BiomeId** ([**endstone**](namespaceendstone.md))
 * **BlockStates** ([**endstone**](namespaceendstone.md))
 * **BlockTypeId** ([**endstone**](namespaceendstone.md))
 * **ByteArrayTag** ([**endstone**](namespaceendstone.md))

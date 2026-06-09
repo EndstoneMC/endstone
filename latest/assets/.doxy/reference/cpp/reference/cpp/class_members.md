@@ -376,6 +376,7 @@
 * **getReason** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md), [**endstone::PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md))
 * **getBanEntry** ([**endstone::BanList**](classendstone_1_1BanList.md), [**endstone::IpBanList**](classendstone_1_1IpBanList.md), [**endstone::PlayerBanList**](classendstone_1_1PlayerBanList.md))
 * **getEntries** ([**endstone::BanList**](classendstone_1_1BanList.md), [**endstone::IpBanList**](classendstone_1_1IpBanList.md), [**endstone::PlayerBanList**](classendstone_1_1PlayerBanList.md), [**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
+* **getBiome** ([**endstone::Block**](classendstone_1_1Block.md))
 * **getData** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::Image**](classendstone_1_1Image.md), [**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ItemStack::Impl**](classendstone_1_1ItemStack_1_1Impl.md))
 * **getRelative** ([**endstone::Block**](classendstone_1_1Block.md))
 * **getX** ([**endstone::Block**](classendstone_1_1Block.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::Chunk**](classendstone_1_1Chunk.md), [**endstone::Location**](classendstone_1_1Location.md), [**endstone::MapCursor**](classendstone_1_1MapCursor.md), [**endstone::Vector**](classendstone_1_1Vector.md))

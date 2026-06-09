@@ -28,6 +28,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**player\_ban\_entry.h**](player__ban__entry_8h.md)     
             * **file** [**player\_ban\_list.h**](player__ban__list_8h.md)     
         * **dir** [**block**](dir_faca67fc60a7463eb1bd30eabe023cf1.md)     
+            * **file** [**biome.h**](biome_8h.md)     
             * **file** [**block.h**](block_8h.md)     
             * **file** [**block\_data.h**](block__data_8h.md)     
             * **file** [**block\_face.h**](block__face_8h.md)     

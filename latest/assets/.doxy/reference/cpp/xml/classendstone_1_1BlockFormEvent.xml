@@ -52,7 +52,7 @@
 <para>Use BlockSpreadEvent to catch blocks that actually spread and don&apos;t just &quot;randomly&quot; form.</para>
 <para>Examples:<itemizedlist>
 <listitem><para>Snow forming due to a snow storm.</para>
-</listitem><listitem><para>Ice forming in a snowy Biome like Taiga or Tundra.</para>
+</listitem><listitem><para>Ice forming in a snowy <ref refid="classendstone_1_1Biome" kindref="compound">Biome</ref> like Taiga or Tundra.</para>
 </listitem><listitem><para>Obsidian / Cobblestone forming due to contact with water.</para>
 </listitem><listitem><para>Concrete forming due to mixing of concrete powder and water.</para>
 </listitem></itemizedlist>

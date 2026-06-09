@@ -60,6 +60,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
         * **class** [**endstone::Cancellable**](classendstone_1_1Cancellable.md) _A type characterizing events that may be cancelled by a plugin or the server._ 
 * **class** [**endstone::Registry::Type**](classendstone_1_1Registry_1_1Type.md) _CRTP base for registry-backed types identified by an_ [_**Identifier**_](classendstone_1_1Identifier.md) _._    
     * **class** [**endstone::ActorType**](classendstone_1_1ActorType.md) 
+    * **class** [**endstone::Biome**](classendstone_1_1Biome.md) 
     * **class** [**endstone::BlockType**](classendstone_1_1BlockType.md) 
     * **class** [**endstone::Enchantment**](classendstone_1_1Enchantment.md) _Represents an enchantment that may be added to armor, weapons, tools or other items._ 
     * **class** [**endstone::ItemType**](classendstone_1_1ItemType.md) _Represents an item type._ 

@@ -3,6 +3,7 @@
   <compounddef id="classendstone_1_1Registry_1_1Type" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Registry::Type</compoundname>
     <derivedcompoundref refid="classendstone_1_1ActorType" prot="public" virt="non-virtual">endstone::ActorType</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1Biome" prot="public" virt="non-virtual">endstone::Biome</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1BlockType" prot="public" virt="non-virtual">endstone::BlockType</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1Enchantment" prot="public" virt="non-virtual">endstone::Enchantment</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ItemType" prot="public" virt="non-virtual">endstone::ItemType</derivedcompoundref>
@@ -210,18 +211,24 @@
         </childnode>
       </node>
       <node id="3">
+        <label>endstone::Biome</label>
+        <link refid="classendstone_1_1Biome"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
         <label>endstone::BlockType</label>
         <link refid="classendstone_1_1BlockType"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>endstone::Enchantment</label>
         <link refid="classendstone_1_1Enchantment"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
+      <node id="6">
         <label>endstone::ItemType</label>
         <link refid="classendstone_1_1ItemType"/>
         <childnode refid="1" relation="public-inheritance">

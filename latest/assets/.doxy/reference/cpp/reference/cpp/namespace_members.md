@@ -15,6 +15,7 @@
 * **BarColor** ([**endstone**](namespaceendstone.md))
 * **BarFlag** ([**endstone**](namespaceendstone.md))
 * **BarStyle** ([**endstone**](namespaceendstone.md))
+* **BiomeId** ([**endstone**](namespaceendstone.md))
 * **BlockFace** ([**endstone**](namespaceendstone.md))
 * **BlockStates** ([**endstone**](namespaceendstone.md))
 * **BlockTypeId** ([**endstone**](namespaceendstone.md))

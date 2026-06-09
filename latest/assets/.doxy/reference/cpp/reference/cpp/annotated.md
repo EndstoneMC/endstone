@@ -21,6 +21,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**AttributeModifier**](classendstone_1_1AttributeModifier.md) _Concrete implementation of an attribute modifier._     
     * **class** [**BanEntry**](classendstone_1_1BanEntry.md) _A single entry from a ban list._     
     * **class** [**BanList**](classendstone_1_1BanList.md) _Represents a ban list, containing bans._     
+    * **class** [**Biome**](classendstone_1_1Biome.md) 
     * **class** [**Block**](classendstone_1_1Block.md) _Represents a block._     
     * **class** [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) _Called when a block is broken by a player._     
     * **class** [**BlockCommandSender**](classendstone_1_1BlockCommandSender.md) _Represents a block command sender._     
