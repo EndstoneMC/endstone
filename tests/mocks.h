@@ -27,7 +27,7 @@ public:
     MOCK_METHOD(endstone::Logger &, getLogger, (), (const, override));
     MOCK_METHOD(endstone::Language &, getLanguage, (), (const, override));
     MOCK_METHOD(endstone::PluginManager &, getPluginManager, (), (const, override));
-    MOCK_METHOD(endstone::PluginCommand *, getPluginCommand, (std::string), (const, override));
+    MOCK_METHOD(endstone::Nullable<endstone::PluginCommand>, getPluginCommand, (std::string), (const, override));
     MOCK_METHOD(endstone::ConsoleCommandSender &, getCommandSender, (), (const, override));
     MOCK_METHOD(bool, dispatchCommand, (endstone::CommandSender &, std::string), (const, override));
     MOCK_METHOD(endstone::Scheduler &, getScheduler, (), (const, override));
@@ -39,8 +39,8 @@ public:
     MOCK_METHOD(std::vector<endstone::Player *>, getOnlinePlayers, (), (const, override));
     MOCK_METHOD(int, getMaxPlayers, (), (const, override));
     MOCK_METHOD(void, setMaxPlayers, (int), (override));
-    MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID), (const, override));
-    MOCK_METHOD(endstone::Player *, getPlayer, (std::string), (const, override));
+    MOCK_METHOD(endstone::Nullable<endstone::Player>, getPlayer, (endstone::UUID), (const, override));
+    MOCK_METHOD(endstone::Nullable<endstone::Player>, getPlayer, (std::string), (const, override));
     MOCK_METHOD(int, getPort, (), (const, override));
     MOCK_METHOD(int, getPortV6, (), (const, override));
     MOCK_METHOD(bool, getOnlineMode, (), (const, override));
@@ -51,7 +51,7 @@ public:
     MOCK_METHOD(void, broadcastMessage, (const endstone::Message &), (const, override));
     MOCK_METHOD(bool, isPrimaryThread, (), (const, override));
     MOCK_METHOD(endstone::ItemFactory &, getItemFactory, (), (const, override));
-    MOCK_METHOD(endstone::Scoreboard *, getScoreboard, (), (const, override));
+    MOCK_METHOD(endstone::Nullable<endstone::Scoreboard>, getScoreboard, (), (const, override));
     MOCK_METHOD(std::shared_ptr<endstone::Scoreboard>, createScoreboard, (), (override));
     MOCK_METHOD(float, getCurrentMillisecondsPerTick, (), (override));
     MOCK_METHOD(float, getAverageMillisecondsPerTick, (), (override));

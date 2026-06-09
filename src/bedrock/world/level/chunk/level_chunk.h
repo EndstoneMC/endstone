@@ -47,7 +47,7 @@ public:
     Bedrock::Threading::SharedMutex biomes_mutex;
     std::uint16_t biome_stack_size_3d;
 };
-BEDROCK_STATIC_ASSERT_SIZE(LevelChunkBiomes, 552, 600);
+BEDROCK_STATIC_ASSERT_SIZE(LevelChunkBiomes, 552, 688);
 
 struct ColumnCachedData {
     int grass_color;
