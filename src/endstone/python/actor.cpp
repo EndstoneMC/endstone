@@ -381,7 +381,9 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
         .def_property("name_tag", &Actor::getNameTag, &Actor::setNameTag,
                       "The current name tag of the actor.")
         .def_property("score_tag", &Actor::getScoreTag, &Actor::setScoreTag,
-                      "The current score tag of the actor.");
+                      "The current score tag of the actor.")
+        .def_property("nbt", &Actor::getNbt, &Actor::setNbt,
+                      "The NBT compound tag of this actor.");
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
                               "`True` if this actor is gliding, such as using an Elytra.")
