@@ -20,9 +20,11 @@
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/components/actor_type_flag_component.h"
 #include "bedrock/entity/components/actor_unique_id_component.h"
+#include "bedrock/entity/components/autonomous_actor_component.h"
 #include "bedrock/entity/components/dimension_transition_component.h"
 #include "bedrock/entity/components/dimension_type_component.h"
 #include "bedrock/entity/components/fall_distance_component.h"
+#include "bedrock/entity/components/global_actor_component.h"
 #include "bedrock/entity/components/is_dead_flag_component.h"
 #include "bedrock/entity/components/passenger_component.h"
 #include "bedrock/entity/components/player_component.h"
@@ -621,14 +623,15 @@ void Actor::saveWithoutId(CompoundTag &entity_tag) const
         entity_tag.putInt("PortalCooldown", component->current_portal_cooldown_ticks);
     }
 
-    // IsGlobal (placeholder)
-    entity_tag.putBoolean("IsGlobal", false);
+    // IsGlobal
+    entity_tag.putBoolean("IsGlobal", hasComponent<GlobalActorComponent>());
 
-    // IsAutonomous (placeholder)
-    entity_tag.putBoolean("IsAutonomous", false);
-
-    // LastDimensionId — only written when IsAutonomous is true
-    // (skipped since IsAutonomous is false)
+    // IsAutonomous / LastDimensionId
+    auto is_autonomous = hasComponent<AutonomousActorComponent>();
+    entity_tag.putBoolean("IsAutonomous", is_autonomous);
+    if (is_autonomous) {
+        entity_tag.putInt("LastDimensionId", getDimensionId().value);
+    }
 
     // LinksTag
     {
