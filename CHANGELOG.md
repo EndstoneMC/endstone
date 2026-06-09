@@ -25,9 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `PlayerRespawnEvent.respawn_reason` (`RespawnReason.DEATH` / `RespawnReason.END_PORTAL`) so plugins can tell a normal death respawn apart from a player returning to the Overworld through the End exit portal.
 - Added a `Container` block state for reading and modifying the contents of container blocks such as chests, barrels, hoppers, dispensers, droppers, shulker boxes, and furnaces. `block.capture_state()` now returns a `Container` for these blocks, exposing the block's items via `container.inventory`.
 - Added a `Biome` type and `Block.biome` for reading the biome at a block. Biomes can be looked up by name with `Biome.get("minecraft:plains")` and enumerated via `server.get_registry(Biome)`.
+- Added an effect API: `Mob.add_effect()`, `Mob.remove_effect()`, `Mob.has_effect()`, `Mob.get_effect()`, and `Mob.active_effects` apply, remove, and query a living entity's status effects (speed, regeneration, poison, etc.). Effects are described by the new `Effect` type, carrying an effect type, duration in ticks, amplifier, and ambient/particles/icon display flags.
 
 ### Changed
 
+- **BREAKING**: Moved `EffectType` from the `endstone.effect` module to `endstone.potion` (`endstone.potion.EffectType`), mirroring Bukkit. The `endstone.effect` submodule has been removed; update imports accordingly. In C++, the header moved from `endstone/effect/effect_type.h` to `endstone/potion/effect_type.h`.
 - **BREAKING**: Replaced `Dimension::Type` enum with `DimensionId`, a namespaced identifier that supports custom
   dimensions. Use `Dimension.OVERWORLD`, `Dimension.NETHER`, `Dimension.THE_END` constants or look up by identifier.
   `Dimension.name` has been replaced by `Dimension.id`.

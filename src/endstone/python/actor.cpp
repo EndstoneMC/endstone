@@ -401,7 +401,18 @@ void init_actor(py::module_ &m, py_class<Actor> &actor, py_class<Mob> &mob)
              "object and any changes will be visible at once.")
         .def_property_readonly("attributes", &Mob::getAttributes,
                                "Gets all attribute instances from the object. This instance will be backed directly to "
-                               "the object and any changes will be visible at once.");
+                               "the object and any changes will be visible at once.")
+        .def("add_effect", &Mob::addEffect, py::arg("effect"),
+             "Adds the given potion effect to this entity. Only one effect of any given type may be active at any one "
+             "time; an existing effect of the same type will be overwritten.")
+        .def("remove_effect", &Mob::removeEffect, py::arg("type"),
+             "Removes any effects of the given type that are present on this entity.")
+        .def("has_effect", &Mob::hasEffect, py::arg("type"),
+             "Returns whether the entity already has an existing effect of the given type applied to it.")
+        .def("get_effect", &Mob::getEffect, py::arg("type"),
+             "Returns the active potion effect of the specified type, or None if the effect is not present.")
+        .def_property_readonly("active_effects", &Mob::getActiveEffects,
+                               "Returns all currently active potion effects on this entity.");
 
     py_class<Item>(m, "Item", "Represents a dropped item that can be picked up by players.")
         .def_property("item_stack", &Item::getItemStack, &Item::setItemStack,

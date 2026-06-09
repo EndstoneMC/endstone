@@ -15,10 +15,12 @@
 #pragma once
 
 #include <memory>
+#include <optional>
 #include <vector>
 
 #include "endstone/actor/actor.h"
 #include "endstone/attribute/attribute_instance.h"
+#include "endstone/potion/effect.h"
 
 namespace endstone {
 /**
@@ -84,5 +86,47 @@ public:
      * changes will be visible at once.
      */
     [[nodiscard]] virtual std::vector<std::unique_ptr<AttributeInstance>> getAttributes() = 0;
+
+    /**
+     * Adds the given Effect to this entity.
+     *
+     * Only one effect of any given type may be active at any one time. If this entity already has an effect of the
+     * same type, it will be overwritten with the new one.
+     *
+     * @param effect Effect to be added
+     */
+    virtual void addEffect(const Effect &effect) = 0;
+
+    /**
+     * Removes any effects of the given type that are present on this entity.
+     *
+     * @param type the effect type to remove
+     */
+    virtual void removeEffect(EffectId type) = 0;
+
+    /**
+     * Returns whether the entity already has an existing effect of the given type applied to it.
+     *
+     * @param type the effect type to check
+     * @return whether the entity has the given potion effect active
+     */
+    [[nodiscard]] virtual bool hasEffect(EffectId type) const = 0;
+
+    /**
+     * Returns the active Effect of the specified type.
+     *
+     * If the effect is not present on the entity then std::nullopt will be returned.
+     *
+     * @param type the effect type to check
+     * @return the active effect, or std::nullopt if not present
+     */
+    [[nodiscard]] virtual std::optional<Effect> getEffect(EffectId type) const = 0;
+
+    /**
+     * Returns all currently active Effects on this entity.
+     *
+     * @return a vector of Effects
+     */
+    [[nodiscard]] virtual std::vector<Effect> getActiveEffects() const = 0;
 };
 }  // namespace endstone

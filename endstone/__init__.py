@@ -24,7 +24,6 @@ __getattr__, __dir__, __all__ = lazy.attach(
             "boss",
             "command",
             "damage",
-            "effect",
             "enchantments",
             "event",
             "form",
