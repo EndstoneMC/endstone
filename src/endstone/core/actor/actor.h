@@ -16,11 +16,13 @@
 
 #include "bedrock/entity/components/post_tick_position_delta_component.h"
 #include "bedrock/entity/weak_entity_ref.h"
+#include "bedrock/dataloadhelper/default_data_load_helper.h"
 #include "bedrock/server/commands/command_utils.h"
 #include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/actor/actor.h"
 #include "endstone/core/level/dimension.h"
+#include "endstone/core/nbt.h"
 #include "endstone/core/permissions/permissible_base.h"
 #include "endstone/core/server.h"
 #include "endstone/core/type.h"
@@ -234,6 +236,24 @@ public:
     [[nodiscard]] std::string getScoreTag() const override { return getHandle().getScoreTag(); }
 
     void setScoreTag(std::string score) override { getHandle().setScoreTag(score); }
+
+    [[nodiscard]] CompoundTag getNbt() const override
+    {
+        auto tag = ::CompoundTag();
+        if (!getHandle().save(tag)) {
+            return {};
+        }
+        auto result = nbt::fromMinecraft(tag);
+        return result.get<CompoundTag>();
+    }
+
+    void setNbt(const CompoundTag &nbt) override
+    {
+        auto tag = nbt::toMinecraft(nbt);
+        auto &bedrock_tag = static_cast<::CompoundTag &>(*tag);
+        DefaultDataLoadHelper dataLoadHelper;
+        getHandle().load(bedrock_tag, dataLoadHelper);
+    }
 
     Handle &getHandle() const
     {

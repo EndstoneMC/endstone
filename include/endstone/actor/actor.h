@@ -22,6 +22,7 @@
 #include "endstone/actor/actor_type.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/level/location.h"
+#include "endstone/nbt/compound.h"
 
 namespace endstone {
 class Level;
@@ -225,6 +226,20 @@ public:
      * @param score The new score tag to set.
      */
     virtual void setScoreTag(std::string score) = 0;
+
+    /**
+     * Gets a copy of the entity's NBT compound tag.
+     *
+     * @return the NBT data
+     */
+    [[nodiscard]] virtual CompoundTag getNbt() const = 0;
+
+    /**
+     * Sets the entity's NBT compound tag.
+     *
+     * @param nbt the NBT data to set
+     */
+    virtual void setNbt(const CompoundTag &nbt) = 0;
 };
 
 }  // namespace endstone
