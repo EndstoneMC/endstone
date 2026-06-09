@@ -155,3 +155,106 @@ void SynchedActorDataEntityWrapper::set<BlockPos>(SynchedActorData::ID id, const
         data->dirty_flags_.set(item.getId(), true);
     }
 }
+
+SynchedActorData::TypeShort SynchedActorData::getShort(ID id) const
+{
+    if (!hasData(id)) {
+        return 0;
+    }
+    auto *item = _find(id);
+    if (item->getType() != DataItemType::Short) {
+        return 0;
+    }
+    return static_cast<DataItem2<TypeShort> *>(item)->data;
+}
+
+SynchedActorData::TypeInt SynchedActorData::getInt(ID id) const
+{
+    if (!hasData(id)) {
+        return 0;
+    }
+    auto *item = _find(id);
+    if (item->getType() != DataItemType::Int) {
+        return 0;
+    }
+    return static_cast<DataItem2<TypeInt> *>(item)->data;
+}
+
+SynchedActorData::TypeFloat SynchedActorData::getFloat(ID id) const
+{
+    if (!hasData(id)) {
+        return 0;
+    }
+    auto *item = _find(id);
+    if (item->getType() != DataItemType::Float) {
+        return 0;
+    }
+    return static_cast<DataItem2<TypeFloat> *>(item)->data;
+}
+
+const CompoundTag &SynchedActorData::getCompoundTag(ID id) const
+{
+    static const CompoundTag empty;
+    if (!hasData(id)) {
+        return empty;
+    }
+    auto *item = _find(id);
+    if (item->getType() != DataItemType::CompoundTag) {
+        return empty;
+    }
+    return static_cast<DataItem2<CompoundTag> *>(item)->data;
+}
+
+BlockPos SynchedActorData::getPosition(ID id) const
+{
+    if (!hasData(id)) {
+        return {};
+    }
+    auto *item = _find(id);
+    if (item->getType() != DataItemType::Pos) {
+        return {};
+    }
+    return static_cast<DataItem2<BlockPos> *>(item)->data;
+}
+
+SynchedActorData::TypeVec3 SynchedActorData::getVec3(ID id) const
+{
+    if (!hasData(id)) {
+        return {};
+    }
+    auto *item = _find(id);
+    if (item->getType() != DataItemType::Vec3) {
+        return {};
+    }
+    return static_cast<DataItem2<TypeVec3> *>(item)->data;
+}
+
+SynchedActorData::TypeShort SynchedActorDataEntityWrapper::getShort(SynchedActorData::ID id) const
+{
+    return data_->data.getShort(id);
+}
+
+SynchedActorData::TypeInt SynchedActorDataEntityWrapper::getInt(SynchedActorData::ID id) const
+{
+    return data_->data.getInt(id);
+}
+
+SynchedActorData::TypeFloat SynchedActorDataEntityWrapper::getFloat(SynchedActorData::ID id) const
+{
+    return data_->data.getFloat(id);
+}
+
+const CompoundTag &SynchedActorDataEntityWrapper::getCompoundTag(SynchedActorData::ID id) const
+{
+    return data_->data.getCompoundTag(id);
+}
+
+BlockPos SynchedActorDataEntityWrapper::getPosition(SynchedActorData::ID id) const
+{
+    return data_->data.getPosition(id);
+}
+
+SynchedActorData::TypeVec3 SynchedActorDataEntityWrapper::getVec3(SynchedActorData::ID id) const
+{
+    return data_->data.getVec3(id);
+}

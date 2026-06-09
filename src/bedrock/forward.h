@@ -88,6 +88,7 @@ class CopperBehavior;
 class CraftingContainer;
 class CraftingContext;
 class DataLoadHelper;
+class DefaultDataLoadHelper;
 class DeathTickingComponent;
 class DimensionBrightnessRamp;
 class DimensionConversionData;

@@ -33,8 +33,10 @@
 #include "bedrock/entity/systems/tag_system.h"
 #include "bedrock/entity/utilities/rotation_utility.h"
 #include "bedrock/entity/utilities/synched_actor_data_access.h"
+#include "bedrock/nbt/compound_tag.h"
 #include "bedrock/symbol.h"
 #include "bedrock/world/actor/actor_collision.h"
+#include "bedrock/world/actor/actor_definition_diff_list.h"
 #include "bedrock/world/actor/actor_environment.h"
 #include "bedrock/world/actor/armor_slot.h"
 #include "bedrock/world/actor/mob_jump.h"
@@ -504,4 +506,180 @@ void Actor::queueBBUpdateFromDefinition()
 bool Actor::getChainedDamageEffects() const
 {
     return chained_damage_effects_;
+}
+
+void Actor::_serializeComponents(CompoundTag &) const
+{
+    // TODO(killcerr): Use BEDROCK_CALL to call the original function once the symbol is added
+    // The function iterates through the DefinitionInstanceGroup (at Actor+0x90)
+    // and calls IDefinitionInstance::_save(EntityContext const&, CompoundTag&) on
+    // each registered definition (ExplodeDefinition, AgeableDefinition, etc.)
+}
+
+ActorUniqueID Actor::getOwnerId() const
+{
+    return ActorUniqueID(entity_data.getInt64(static_cast<SynchedActorData::ID>(ActorDataIDs::OWNER)));
+}
+
+void Actor::saveEntityFlags(CompoundTag &entity_tag) const
+{
+    entity_tag.putBoolean("LootDropped", loot_dropped_);
+    entity_tag.putByte("Color", entity_data.getInt8(static_cast<SynchedActorData::ID>(ActorDataIDs::COLOR_INDEX)));
+    entity_tag.putByte("Color2", entity_data.getInt8(static_cast<SynchedActorData::ID>(ActorDataIDs::COLOR_2_INDEX)));
+    entity_tag.putInt("Strength", entity_data.getInt(static_cast<SynchedActorData::ID>(ActorDataIDs::STRENGTH)));
+    entity_tag.putInt("StrengthMax", entity_data.getInt(static_cast<SynchedActorData::ID>(ActorDataIDs::STRENGTH_MAX)));
+    entity_tag.putBoolean("Sheared", getStatusFlag(ActorFlags::SHEARED));
+    entity_tag.putBoolean("IsIllagerCaptain", getStatusFlag(ActorFlags::IS_ILLAGER_CAPTAIN));
+    entity_tag.putInt64("OwnerNew", getOwnerId().raw_id);
+    entity_tag.putBoolean("Sitting", getStatusFlag(ActorFlags::SITTING));
+    entity_tag.putBoolean("IsBaby", getStatusFlag(ActorFlags::BABY));
+    entity_tag.putBoolean("IsTamed", getStatusFlag(ActorFlags::TAMED));
+    entity_tag.putBoolean("IsTrusting", getStatusFlag(ActorFlags::TRUSTING));
+    entity_tag.putBoolean("IsOrphaned", getStatusFlag(ActorFlags::ORPHANED));
+    entity_tag.putBoolean("IsAngry", getStatusFlag(ActorFlags::ANGRY));
+    entity_tag.putBoolean("IsOutOfControl", getStatusFlag(ActorFlags::OUT_OF_CONTROL));
+    entity_tag.putInt("Variant", entity_data.getInt(static_cast<SynchedActorData::ID>(ActorDataIDs::VARIANT)));
+    entity_tag.putInt("MarkVariant", entity_data.getInt(static_cast<SynchedActorData::ID>(ActorDataIDs::MARK_VARIANT)));
+    entity_tag.putBoolean("Saddled", getStatusFlag(ActorFlags::SADDLED));
+    entity_tag.putBoolean("Chested", getStatusFlag(ActorFlags::CHESTED));
+    entity_tag.putBoolean("ShowBottom", getStatusFlag(ActorFlags::SHOW_BOTTOM));
+    entity_tag.putBoolean("IsGliding", getStatusFlag(ActorFlags::GLIDING));
+    entity_tag.putBoolean("IsSwimming", getStatusFlag(ActorFlags::SWIMMING));
+    entity_tag.putBoolean("IsEating", getStatusFlag(ActorFlags::EATING));
+    entity_tag.putBoolean("IsScared", getStatusFlag(ActorFlags::SCARED));
+    entity_tag.putBoolean("IsStunned", getStatusFlag(ActorFlags::STUNNED));
+    entity_tag.putBoolean("IsRoaring", getStatusFlag(ActorFlags::ROARING));
+    entity_tag.putInt("SkinID", entity_data.getInt(static_cast<SynchedActorData::ID>(ActorDataIDs::SKIN_ID)));
+}
+
+std::unique_ptr<ListTag> Actor::saveLinks() const
+{
+    auto links = std::make_unique<ListTag>();
+    int index = 0;
+    for (const auto &passenger : ActorRiding::getPassengers(getEntity())) {
+        auto link = CompoundTag();
+        link.putInt64("entityID", passenger.actor_id.raw_id);
+        link.putInt("linkID", index);
+        links->add(std::make_unique<CompoundTag>(std::move(link)));
+        ++index;
+    }
+    return links;
+}
+
+void Actor::saveWithoutId(CompoundTag &entity_tag) const
+{
+    // UniqueID
+    entity_tag.putInt64("UniqueID", getOrCreateUniqueID().raw_id);
+
+    // Pos - [x, y, z] (float list)
+    {
+        auto pos_list = ListTag();
+        auto pos = getPosition();
+        pos_list.add(std::make_unique<FloatTag>(pos.x));
+        pos_list.add(std::make_unique<FloatTag>(pos.y));
+        pos_list.add(std::make_unique<FloatTag>(pos.z));
+        entity_tag.put("Pos", std::move(pos_list));
+    }
+
+    // Rotation - [yaw, pitch]
+    {
+        auto rot_list = ListTag();
+        auto rot = getRotation();
+        rot_list.add(std::make_unique<FloatTag>(rot.x));
+        rot_list.add(std::make_unique<FloatTag>(rot.y));
+        entity_tag.put("Rotation", std::move(rot_list));
+    }
+
+    // Motion - [dx, dy, dz] (float list)
+    {
+        auto motion_list = ListTag();
+        auto motion = getPosDelta();
+        motion_list.add(std::make_unique<FloatTag>(motion.x));
+        motion_list.add(std::make_unique<FloatTag>(motion.y));
+        motion_list.add(std::make_unique<FloatTag>(motion.z));
+        entity_tag.put("Motion", std::move(motion_list));
+    }
+
+    // CustomName
+    auto name = getNameTag();
+    if (!name.empty()) {
+        entity_tag.putString("CustomName", name);
+        entity_tag.putBoolean("CustomNameVisible", getStatusFlag(ActorFlags::CAN_SHOW_NAME));
+    }
+
+    // FallDistance
+    entity_tag.putFloat("FallDistance", getFallDistance());
+
+    // OnGround
+    entity_tag.putByte("OnGround", isOnGround() ? 1 : 0);
+
+    // Invulnerable
+    entity_tag.putByte("Invulnerable", invulnerable ? 1 : 0);
+
+    // PortalCooldown
+    if (auto *component = tryGetComponent<PortalCooldownDurationComponent>(); component) {
+        entity_tag.putInt("PortalCooldown", component->current_portal_cooldown_ticks);
+    }
+
+    // IsGlobal (placeholder)
+    entity_tag.putBoolean("IsGlobal", false);
+
+    // IsAutonomous (placeholder)
+    entity_tag.putBoolean("IsAutonomous", false);
+
+    // LastDimensionId — only written when IsAutonomous is true
+    // (skipped since IsAutonomous is false)
+
+    // LinksTag
+    {
+        auto links = saveLinks();
+        if (links && links->size() > 0) {
+            entity_tag.put("LinksTag", std::move(*links));
+        }
+    }
+
+    // Entity flags
+    saveEntityFlags(entity_tag);
+
+    // Subclass-specific data
+    const_cast<Actor *>(this)->addAdditionalSaveData(entity_tag);
+}
+
+bool Actor::save(CompoundTag &entity_tag) const
+{
+    if (!definition_list_) {
+        return false;
+    }
+
+    const auto &stack = definition_list_->getDefinitionStack();
+    auto first_name = getActorIdentifier().getCanonicalName();
+
+    // identifier — from first stack entry's descriptor
+    if (!stack.empty() && stack[0].desc) {
+        // Read mRuntimeIdentifier.mRuntimeId from descriptor at offset 48
+        const auto *desc_ptr = reinterpret_cast<const char *>(stack[0].desc);
+        const auto &rt_id = *reinterpret_cast<const std::string *>(desc_ptr + 48);
+        if (!rt_id.empty()) {
+            first_name = rt_id;
+        }
+    }
+    entity_tag.putString("identifier", first_name);
+
+    // definitions
+    {
+        auto def_list = ListTag();
+        for (const auto &entry : stack) {
+            const auto *desc_ptr = reinterpret_cast<const char *>(entry.desc);
+            const auto &rt_id = *reinterpret_cast<const std::string *>(desc_ptr + 48);
+            def_list.add(std::make_unique<StringTag>(std::string(entry.add ? "+" : "-") + rt_id));
+        }
+        entity_tag.put("definitions", std::move(def_list));
+    }
+
+    saveWithoutId(entity_tag);
+    _serializeComponents(entity_tag);
+
+    // TODO(killcerr): EconomyTradeableComponent::addAdditionalSaveData
+
+    return true;
 }

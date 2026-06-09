@@ -27,7 +27,6 @@
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/core/string/string_hash.h"
-#include "bedrock/util/new_type.h"
 #include "bedrock/entity/components/aabb_shape_component.h"
 #include "bedrock/entity/components/actor_rotation_component.h"
 #include "bedrock/entity/components/actor_walk_animation_component.h"
@@ -39,6 +38,7 @@
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/shared_types/legacy/level_sound_event.h"
 #include "bedrock/util/molang_variable_map.h"
+#include "bedrock/util/new_type.h"
 #include "bedrock/util/variant_parameter_list.h"
 #include "bedrock/world/actor/actor_category.h"
 #include "bedrock/world/actor/actor_damage_source.h"
@@ -265,10 +265,15 @@ protected:
     [[nodiscard]] virtual bool _shouldProvideFeedbackOnHandContainerItemSet(HandSlot, ItemStack const &) const = 0;
     [[nodiscard]] virtual bool _shouldProvideFeedbackOnArmorSet(ArmorSlot, ItemStack const &) const = 0;
     virtual ActorHurtResult _hurt(ActorDamageSource const &, float, bool, bool) = 0;
+    void _serializeComponents(CompoundTag &tag) const;
 
 public:
     virtual void readAdditionalSaveData(CompoundTag const &, DataLoadHelper &) = 0;
     virtual void addAdditionalSaveData(CompoundTag &) = 0;
+    bool save(CompoundTag &entity_tag) const;
+    void saveEntityFlags(CompoundTag &entity_tag) const;
+    std::unique_ptr<ListTag> saveLinks() const;
+    void saveWithoutId(CompoundTag &entity_tag) const;
 
 public:
     Actor(ILevel &, EntityContext &);
@@ -331,6 +336,7 @@ public:
     [[nodiscard]] float getFallDistance() const;
     void setFallDistance(float);
     [[nodiscard]] bool isDead() const;
+    [[nodiscard]] ActorUniqueID getOwnerId() const;
     EntityContext &getEntity();
     [[nodiscard]] const EntityContext &getEntity() const;
     [[nodiscard]] WeakRef<EntityContext> getWeakEntity() const;

@@ -23,6 +23,7 @@ add_library(bedrock STATIC
         core/utility/binary_stream.cpp
         core/utility/serialize_simple_types.cpp
         crypto/encoding/base64.cpp
+        dataloadhelper/default_data_load_helper.cpp
         deps/json/value.cpp
         entity/gamerefs_entity/entity_context.cpp
         entity/gamerefs_entity/entity_registry.cpp
@@ -82,6 +83,7 @@ add_library(bedrock STATIC
         world/actor/player/player_item_in_use.cpp
         world/actor/player/serialized_skin.cpp
         world/actor/provider/actor_offset.cpp
+        world/actor/provider/actor_riding.cpp
         world/attribute/attribute_instance.cpp
         world/attribute/attribute_map.cpp
         world/attribute/mutable_attribute_with_context.cpp
