@@ -14,26 +14,4 @@
 
 #pragma once
 
-#include <optional>
-
-struct EffectDuration {
-    EffectDuration() = default;
-    explicit EffectDuration(const int value) : value_(value){};
-
-    [[nodiscard]] bool isInfinite() const
-    {
-        return value_ == INFINITE_DURATION_VALUE;
-    }
-
-    [[nodiscard]] std::optional<int> getValue() const
-    {
-        if (isInfinite()) {
-            return std::nullopt;
-        }
-        return value_;
-    }
-
-private:
-    int value_{INFINITE_DURATION_VALUE};
-    static constexpr int INFINITE_DURATION_VALUE = -1;
-};
+struct ShouldBeSimulatedComponent {};

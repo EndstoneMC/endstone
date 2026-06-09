@@ -14,8 +14,12 @@
 
 #pragma once
 
+#include <string>
+
 #include "bedrock/entity/components/attributes_component.h"
 #include "bedrock/world/actor/mob.h"
+#include "bedrock/world/effect/mob_effect.h"
+#include "bedrock/world/effect/mob_effect_instance.h"
 #include "endstone/actor/mob.h"
 #include "endstone/core/actor/actor.h"
 #include "endstone/core/attribute/attribute_instance.h"
@@ -43,15 +47,9 @@ public:
         return Base::teleport(location);
     }
 
-    [[nodiscard]] bool isGliding() const override
-    {
-        return Base::getHandle().isGliding();
-    }
+    [[nodiscard]] bool isGliding() const override { return Base::getHandle().isGliding(); }
 
-    [[nodiscard]] int getHealth() const override
-    {
-        return Base::getHandle().getHealth();
-    }
+    [[nodiscard]] int getHealth() const override { return Base::getHandle().getHealth(); }
 
     void setHealth(int health) const override
     {
@@ -61,10 +59,7 @@ public:
         mutable_attr->setCurrentValue(static_cast<float>(health));
     }
 
-    [[nodiscard]] int getMaxHealth() const override
-    {
-        return Base::getHandle().getMaxHealth();
-    }
+    [[nodiscard]] int getMaxHealth() const override { return Base::getHandle().getMaxHealth(); }
 
     void setMaxHealth(int health) const override
     {
@@ -91,6 +86,62 @@ public:
             attributes.emplace_back(std::make_unique<EndstoneAttributeInstance>(attribute));
         }
         return attributes;
+    }
+
+    void addEffect(const Effect &effect) override
+    {
+        const auto *mob_effect = ::MobEffect::getByName(std::string{effect.getType().getKey()});
+        Preconditions::checkArgument(mob_effect != nullptr, "Unknown effect type: {}", effect.getType());
+        const ::MobEffectInstance instance{
+            mob_effect->getId(),   ::EffectDuration{effect.getDuration().value_or(-1)},  // -1 == infinite
+            effect.getAmplifier(), effect.isAmbient(),
+            effect.hasParticles(), effect.hasIcon()};
+        Base::getHandle().addEffect(instance);
+    }
+
+    void removeEffect(EffectId type) override
+    {
+        const auto *mob_effect = ::MobEffect::getByName(std::string{type.getKey()});
+        Preconditions::checkArgument(mob_effect != nullptr, "Unknown effect type: {}", type);
+        Base::getHandle().removeEffect(static_cast<int>(mob_effect->getId()));
+    }
+
+    [[nodiscard]] bool hasEffect(EffectId type) const override { return getEffect(type).has_value(); }
+
+    [[nodiscard]] std::optional<Effect> getEffect(EffectId type) const override
+    {
+        const auto *mob_effect = ::MobEffect::getByName(std::string{type.getKey()});
+        if (mob_effect == nullptr) {
+            return std::nullopt;
+        }
+
+        const auto *instance = Base::getHandle().getEffect(*mob_effect);
+        if (instance == nullptr) {
+            return std::nullopt;
+        }
+
+        return Effect{
+            EffectId{EffectId::Minecraft, instance->getResourceName()},
+            instance->getDuration().getValue(),
+            instance->getAmplifier(),
+            instance->isAmbient(),
+            instance->isEffectVisible(),
+            instance->displaysOnScreenTextureAnimation(),
+        };
+    }
+
+    [[nodiscard]] std::vector<Effect> getActiveEffects() const override
+    {
+        std::vector<Effect> effects;
+        for (const auto &instance : Base::getHandle().getAllEffects()) {
+            if (instance == ::MobEffectInstance::NO_EFFECT) {  // skip unoccupied slots
+                continue;
+            }
+            effects.emplace_back(EffectId{EffectId::Minecraft, instance.getResourceName()},
+                                 instance.getDuration().getValue(), instance.getAmplifier(), instance.isAmbient(),
+                                 instance.isEffectVisible(), instance.displaysOnScreenTextureAnimation());
+        }
+        return effects;
     }
 };
 

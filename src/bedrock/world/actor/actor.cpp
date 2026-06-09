@@ -24,10 +24,12 @@
 #include "bedrock/entity/components/dimension_type_component.h"
 #include "bedrock/entity/components/fall_distance_component.h"
 #include "bedrock/entity/components/is_dead_flag_component.h"
+#include "bedrock/entity/components/mob_effects_component.h"
 #include "bedrock/entity/components/passenger_component.h"
 #include "bedrock/entity/components/player_component.h"
 #include "bedrock/entity/components/portal_cooldown_duration_component.h"
 #include "bedrock/entity/components/runtime_id_component.h"
+#include "bedrock/entity/components/should_be_simulated_component.h"
 #include "bedrock/entity/components/should_update_bounding_box_request_component.h"
 #include "bedrock/entity/components/tags_component.h"
 #include "bedrock/entity/systems/tag_system.h"
@@ -426,6 +428,49 @@ MutableAttributeWithContext Actor::getMutableAttribute(const HashedString &name)
 {
     auto component = getPersistentComponent<AttributesComponent>();
     return component->attributes.getMutableInstanceWithContext(name);
+}
+
+void Actor::addEffect(const MobEffectInstance &effect)
+{
+    BEDROCK_CALL(&Actor::addEffect, this, effect);
+}
+
+void Actor::removeEffect(int effect_id)
+{
+    // Same lookup as getEffect, but on the mutable component so the slot can be cleared in place.
+    auto &effects = getPersistentComponent<MobEffectsComponent>()->mob_effects;
+    const auto id = static_cast<MobEffectId>(effect_id);
+    if (id >= effects.size() || effects[id] == MobEffectInstance::NO_EFFECT) {
+        return;
+    }
+    auto &instance = effects[id];
+    onEffectRemoved(instance);
+    // strips the effect's attribute modifiers only on server-simulated entities.
+    if (hasComponent<ShouldBeSimulatedComponent>()) {
+        auto &attributes = entity_context_.getOrAddComponent<AttributesComponent>();
+        instance.removeEffects(attributes.attributes);
+    }
+    instance = MobEffectInstance::NO_EFFECT;  // reset the slot
+}
+
+const MobEffectInstanceList &Actor::getAllEffects() const
+{
+    return getPersistentComponent<MobEffectsComponent>()->mob_effects;
+}
+
+const MobEffectInstance *Actor::getEffect(const MobEffect &effect) const
+{
+    return getEffect(effect.getId());
+}
+
+const MobEffectInstance *Actor::getEffect(MobEffectId effect_id) const
+{
+    // The effects list is dense and indexed by effect id; an unoccupied slot holds NO_EFFECT.
+    const auto &effects = getAllEffects();
+    if (effect_id < effects.size() && effects[effect_id] != MobEffectInstance::NO_EFFECT) {
+        return &effects[effect_id];
+    }
+    return nullptr;
 }
 
 float Actor::getFallDistance() const

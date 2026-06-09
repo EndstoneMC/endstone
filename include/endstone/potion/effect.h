@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <optional>
+
 #include "endstone/potion/effect_type.h"
 
 namespace endstone {
@@ -30,14 +32,14 @@ public:
      * Creates an effect.
      *
      * @param type effect type
-     * @param duration measured in ticks, see Effect::getDuration
+     * @param duration measured in ticks, or std::nullopt for an infinite duration, see Effect::getDuration
      * @param amplifier the amplifier for the effect, see Effect::getAmplifier
      * @param ambient the ambient status, see Effect::isAmbient
      * @param particles the particle status, see Effect::hasParticles
      * @param icon the icon status, see Effect::hasIcon
      */
-    constexpr Effect(EffectId type, int duration, int amplifier, bool ambient = false, bool particles = true,
-                     bool icon = true)
+    constexpr Effect(EffectId type, std::optional<int> duration, int amplifier, bool ambient = false,
+                     bool particles = true, bool icon = true)
         : type_(type), duration_(duration), amplifier_(amplifier), ambient_(ambient), particles_(particles),
           icon_(icon)
     {
@@ -61,9 +63,18 @@ public:
     /**
      * Gets the duration of this effect, in ticks.
      *
-     * @return the duration
+     * @return the duration in ticks, or std::nullopt if this effect is infinite
      */
-    [[nodiscard]] constexpr int getDuration() const noexcept { return duration_; }
+    [[nodiscard]] constexpr std::optional<int> getDuration() const noexcept { return duration_; }
+
+    /**
+     * Returns whether this effect has an infinite duration.
+     *
+     * Effects with an infinite duration never expire unless manually removed.
+     *
+     * @return whether this effect is infinite
+     */
+    [[nodiscard]] constexpr bool isInfinite() const noexcept { return !duration_.has_value(); }
 
     /**
      * Gets the amplifier of this effect.
@@ -98,7 +109,7 @@ public:
 
 private:
     EffectId type_;
-    int duration_;
+    std::optional<int> duration_;
     int amplifier_;
     bool ambient_;
     bool particles_;

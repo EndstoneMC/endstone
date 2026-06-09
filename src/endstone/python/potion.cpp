@@ -20,18 +20,22 @@ namespace endstone::python {
 void init_potion(py::module_ &m)
 {
     py::class_<Effect>(m, "Effect", "Represents an effect that can be added to a `Mob`.")
-        .def(py::init<EffectId, int, int, bool, bool, bool>(), py::arg("type"), py::arg("duration"),
+        .def(py::init<EffectId, std::optional<int>, int, bool, bool, bool>(), py::arg("type"), py::arg("duration"),
              py::arg("amplifier"), py::arg("ambient") = false, py::arg("particles") = true, py::arg("icon") = true,
-             "Creates an effect.")
+             "Creates an effect. A duration of None represents an infinite duration.")
         .def(py::self == py::self)  // NOLINT(misc-redundant-expression)
         .def(py::self != py::self)  // NOLINT(misc-redundant-expression)
         .def("__repr__",
              [](const Effect &self) {
-                 return std::format("Effect(type='{}', duration={}, amplifier={})", self.getType(),
-                                    self.getDuration(), self.getAmplifier());
+                 const auto duration = self.isInfinite() ? std::string("infinite")
+                                                         : std::to_string(self.getDuration().value());
+                 return std::format("Effect(type='{}', duration={}, amplifier={})", self.getType(), duration,
+                                    self.getAmplifier());
              })
         .def_property_readonly("type", &Effect::getType, "Gets the type of this effect.")
-        .def_property_readonly("duration", &Effect::getDuration, "Gets the duration of this effect, in ticks.")
+        .def_property_readonly("duration", &Effect::getDuration,
+                               "Gets the duration of this effect in ticks, or None if this effect is infinite.")
+        .def_property_readonly("infinite", &Effect::isInfinite, "Whether this effect has an infinite duration.")
         .def_property_readonly("amplifier", &Effect::getAmplifier, "Gets the amplifier of this effect.")
         .def_property_readonly("ambient", &Effect::isAmbient,
                                "Whether this effect produces more, translucent, particles.")
