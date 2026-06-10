@@ -124,10 +124,11 @@ std::vector<Actor *> EndstoneDimension::getActors() const
 
 ::Dimension &EndstoneDimension::getHandle() const
 {
-    if (!dimension_.isSet()) {
+    auto handle = dimension_.unwrap();
+    if (!handle) {
         throw std::runtime_error("Trying to access a dimension that is no longer valid.");
     }
-    return *dimension_.unwrap();
+    return *handle;
 }
 }  // namespace endstone::core
 
