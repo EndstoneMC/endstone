@@ -19,6 +19,7 @@
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
+#include "bedrock/world/level/dimension_manager.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/core/actor/actor.h"
 #include "endstone/core/level/dimension.h"
@@ -104,6 +105,19 @@ Dimension *EndstoneLevel::getDimension(DimensionType type) const
         return it->second.get();
     }
     return nullptr;
+}
+
+Dimension *EndstoneLevel::createDimension(const DimensionCreator &creator)
+{
+    const std::string name = creator.getId();  // "namespace:key"
+    auto &dimension_manager = level_.getDimensionManager();
+    // serverRegisterCustomDimension returns nullopt if the name is already registered; in that case resolve the
+    // existing type so we return the dimension that already exists.
+    const auto type = dimension_manager.serverRegisterCustomDimension(name).value_or(dimension_manager.getDimensionId(name));
+    // Force the dimension to be instantiated. This fires OnNewDimensionCreated, which our ctor subscribes to and
+    // which wraps the new ::Dimension into an EndstoneDimension stored in dimensions_.
+    dimension_manager.getOrCreateDimension(type);
+    return getDimension(type);
 }
 
 std::int64_t EndstoneLevel::getSeed() const

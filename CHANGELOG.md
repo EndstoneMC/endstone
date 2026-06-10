@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `ActorType` to the registry API.
 - Added an attribute API: `Mob.get_attribute()`, `Mob.has_attribute()`, and `Mob.attributes` expose a living entity's attributes (health, movement speed, attack damage, etc.). Each `AttributeInstance` reports its current, base, minimum, and maximum value, and lets you add or remove `AttributeModifier`s at runtime.
 - Added the `endstone.Identifier` type for namespaced ids: `dim.id.namespace == "minecraft"`, `dim.id.key == "overworld"`, and type checkers can now tell `Identifier[Dimension]` apart from `Identifier[ActorType]`. Plain strings are still accepted where an `Identifier` is required (e.g. `level.get_dimension("overworld")`).
+- Added `Level.create_dimension()` and `DimensionCreator` for creating custom dimensions at runtime, mirroring the Script API. A custom dimension is an empty (void) dimension identified by a namespaced id, e.g. `level.create_dimension("myplugin:void_realm")`; populate it with blocks, structures or actors afterward. Custom dimensions persist across server restarts, and creating one that already exists returns the existing dimension.
 - Added `BlockData.translation_key` for retrieving the translation key of a block.
 - Added `WritableBookMeta`, `BookMeta`, and `CrossbowMeta` item meta types.
 - Added binary NBT serialization (`dump`/`load`) with support for multiple formats.

@@ -38,6 +38,7 @@ public:
     [[nodiscard]] std::vector<Dimension *> getDimensions() const override;
     [[nodiscard]] Dimension *getDimension(DimensionId id) const override;
     [[nodiscard]] Dimension *getDimension(DimensionType type) const;
+    [[nodiscard]] Dimension *createDimension(const DimensionCreator &creator) override;
     [[nodiscard]] std::int64_t getSeed() const override;
 
     [[nodiscard]] EndstoneServer &getServer() const;

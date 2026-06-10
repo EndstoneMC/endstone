@@ -128,6 +128,18 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         .def_property_readonly("actors", &Dimension::getActors, py::return_value_policy::reference_internal,
                                "A list of all actors currently residing in this dimension.");
 
+    py::class_<DimensionCreator>(m, "DimensionCreator",
+                                 "Represents the options that may be used to create a custom dimension.")
+        .def(py::init<DimensionId>(), py::arg("id"), R"doc(
+    Creates an instance of a DimensionCreator for the given dimension id.
+
+    Args:
+        id: The identifier of the dimension to create, e.g. `myplugin:void_realm`.
+)doc")
+        .def_property_readonly("id", &DimensionCreator::getId,
+                               "The identifier of the dimension that is being created.");
+    py::implicitly_convertible<DimensionId, DimensionCreator>();
+
     level.def_property_readonly("name", &Level::getName, "The unique name of this level.")
         .def_property_readonly("actors", &Level::getActors, "A list of all actors currently residing in this level.",
                                py::return_value_policy::reference_internal)
@@ -142,6 +154,20 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
 
     Returns:
         The `Dimension` with the given id, or `None` if none exists.
+)doc",
+             py::return_value_policy::reference)
+        .def("create_dimension", &Level::createDimension, py::arg("creator"), R"doc(
+    Creates a new custom dimension within this level.
+
+    Custom dimensions are empty (void) dimensions identified by a namespaced id, e.g. `myplugin:void_realm`;
+    populate them with blocks, structures or actors afterward. Custom dimensions persist across server restarts.
+    If a dimension with the requested name already exists, that existing dimension is returned instead.
+
+    Args:
+        creator: The options to use when creating the dimension. An identifier or plain string is also accepted as the name.
+
+    Returns:
+        The newly created (or existing) `Dimension`, or `None` if it could not be created.
 )doc",
              py::return_value_policy::reference)
         .def_property_readonly("seed", &Level::getSeed, "The Seed for this level.");

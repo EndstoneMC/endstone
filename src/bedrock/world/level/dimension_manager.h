@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <optional>
+#include <string_view>
+
 #include "bedrock/core/utility/pub_sub/connector.h"
 #include "bedrock/world/level/dimension/dimension.h"
 
@@ -32,9 +35,11 @@ public:
     Bedrock::PubSub::Connector<void(Dimension &)> &getOnNewDimensionCreatedConnector() override;
     Bedrock::PubSub::Connector<void(DimensionManager &)> &getOnReadyForCustomDimensionRegistrationConnector() override;
     void shutdown();
+    std::optional<DimensionType> serverRegisterCustomDimension(std::string_view name);
     WeakRef<Dimension> getRandomDimension(Random &random);
     WeakRef<Dimension> getOrCreateDimension(DimensionType dimension_type);
     WeakRef<Dimension> getDimension(DimensionType dimension_type) const;
+    DimensionType getDimensionId(std::string_view name) const;
     bool hasDimensions() const;
     int getNumDimensions() const;
     void forEachDimension(std::function<bool(Dimension &)> callback);
