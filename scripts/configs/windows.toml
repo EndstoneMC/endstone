@@ -42,7 +42,7 @@ rip_offset = 1
 name = "?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z"
 relative = false
 extra = 0
-# function prologue (callers share OwnerPtr boilerplate, no unique call site)
+# function prologue (first-match call site only ~½ shorter; direct is safer)
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4C 89 CF 4C 89 C3 48 89 D6 49 89 CE 4C 8B 4D"
 
 [[signatures]]
@@ -135,7 +135,7 @@ rip_offset = 1
 name = "?addEnumValues@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z"
 relative = false
 extra = 0
-# function prologue (call-site capture-all had 60+ false positives)
+# function prologue (shorter than the string-anchored call-site pattern)
 pattern = "55 41 57 41 56 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 48 89 D6 48 89 CF 0F 57 C0 0F 29 45 ? 48 C7 45 ? ? ? ? ? 49 8B 18"
 
 [[signatures]]
@@ -151,22 +151,26 @@ rip_offset = 1
 name = "?registerAlias@CommandRegistry@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z"
 relative = false
 extra = 0
-# function prologue (call sites not unique within 32)
+# function prologue (first-match call site only ~⅓ shorter; direct is safer)
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 49 89 CF 48 8B 42"
 
 [[signatures]]
 name = "?registerCommand@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBDW4CommandPermissionLevel@@UCommandFlag@@3@Z"
 relative = false
 extra = 0
-# function prologue (call sites not unique within 32)
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 45 ? 48 89 D7 48 89 CE"
+# pre-call arg-setup (lea r8=desc literal) in a command setup (first match resolves to target)
+pattern = "4C 8D 05 ? ? ? ? 48 8D 55 ? 48 89 F1 41 B1 ? E8 ? ? ? ?"
+rip_relative = true
+rip_offset = 18
 
 [[signatures]]
 name = "?registerOverloadInternal@CommandRegistry@@AEAAXAEAUSignature@1@AEAUOverload@1@@Z"
 relative = false
 extra = 0
-# function prologue (call sites not unique within 32)
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 48 89 55 ? 48 89 CF 48 8B 81"
+# capture-all: _registerOverload template instance call site (first match resolves to target)
+pattern = "E8 ? ? ? ? 48 8B 4D ? 48 8B 01 48 85 C0 74 ? 48 8B 40 ? FF 15"
+rip_relative = true
+rip_offset = 1
 
 [[signatures]]
 name = "?serializeAvailableCommands@CommandRegistry@@QEBA?AVAvailableCommandsPacket@@XZ"
@@ -215,8 +219,10 @@ rip_offset = 1
 name = "?explode@Explosion@@QEAA_NAEAVIRandom@@@Z"
 relative = false
 extra = 0
-# function prologue (only call sites are thunks)
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 BD ? ? ? ? 44 0F 29 B5 ? ? ? ? 44 0F 29 AD ? ? ? ? 44 0F 29 A5 ? ? ? ? 44 0F 29 9D ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? F3 0F 10 41"
+# capture-all: Level::explode call site (first match resolves to target)
+pattern = "E8 ? ? ? ? 89 C6 48 8B 4D ? 48 85 C9 74 ? 48 8B 55 ? 48 29 CA 48 81 FA"
+rip_relative = true
+rip_offset = 1
 
 [[signatures]]
 name = "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z"
@@ -342,15 +348,19 @@ rip_offset = 1
 name = "?knockback@Mob@@UEAAXPEAVActor@@HMMAEBUKnockbackParameters@@@Z"
 relative = false
 extra = 0
-# function prologue (sole non-vtable call site not unique)
-pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 0F 28 F3"
+# pre-call float-arg spill in ServerPlayer::knockback (unique)
+pattern = "F3 0F 10 44 24 ? 48 8B 44 24 ? 48 89 44 24 ? F3 0F 11 44 24 ? E8 ? ? ? ?"
+rip_relative = true
+rip_offset = 23
 
 [[signatures]]
 name = "?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z"
 relative = false
 extra = 0
-# function prologue (call sites are tail-call thunks)
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 45 89 CD"
+# pre-jmp in LoopbackPacketSender::sendToClient tail-call thunk (unique)
+pattern = "48 8B 4E ? 48 83 C1 ? 48 83 C4 ? 5B 5D 5F 5E E9 ? ? ? ?"
+rip_relative = true
+rip_offset = 17
 
 [[signatures]]
 name = "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z"
@@ -393,8 +403,10 @@ pattern = "55 41 57 41 56 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 4
 name = "?stopSleepInBed@Player@@UEAAX_N0@Z"
 relative = false
 extra = 0
-# function prologue (sole non-vtable call site not unique)
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 45 89 C6"
+# pre-call arg-setup in ServerPlayer::stopSleepInBed (unique)
+pattern = "FF 15 ? ? ? ? 48 89 F9 89 F2 41 89 D8 E8 ? ? ? ?"
+rip_relative = true
+rip_offset = 15
 
 [[signatures]]
 name = "?take@Player@@QEAA_NAEAVActor@@HH@Z"
@@ -448,7 +460,7 @@ rip_offset = 1
 name = "?deserialize@ResourcePackStack@@SA?AV?$unique_ptr@VResourcePackStack@@U?$default_delete@VResourcePackStack@@@std@@@std@@AEAV?$basic_istream@DU?$char_traits@D@std@@@3@AEBV?$not_null@V?$NonOwnerPointer@$$CBVIResourcePackRepository@@@Bedrock@@@gsl@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@@Z"
 relative = false
 extra = 0
-# function prologue (call sites in large fns not unique)
+# function prologue (first-match call site only ~⅓ shorter; direct is safer)
 pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4C 89 4D ? 4C 89 C7 48 89 D6 48 89 CB B9"
 
 [[signatures]]
@@ -480,8 +492,10 @@ pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? 
 name = "?disconnectClientWithMessage@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@@Z"
 relative = false
 extra = 0
-# function prologue (call sites not unique)
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 44 89 C3 48 89 D6"
+# pre-call arg-setup (r9d=DisconnectFailReason) in ServerNetworkHandler::disconnect (unique)
+pattern = "48 8B 8D ? ? ? ? 4C 89 FA 41 B9 ? ? ? ? E8 ? ? ? ?"
+rip_relative = true
+rip_offset = 17
 
 [[signatures]]
 name = "?initializeServer@ServerInstance@@QEAA_N$$QEAUServerInstanceInitArguments@@@Z"

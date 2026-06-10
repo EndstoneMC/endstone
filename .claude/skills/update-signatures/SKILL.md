@@ -166,44 +166,78 @@ larger offsets (5/6/7/8/10/12/15/29) only because their pattern began at the
 *argument setup before* the call; the new E8-first patterns make those obsolete -
 **update `rip_offset` to match the new pattern**, don't leave the old value.
 
-### Multi-match "capture-all" - rarely works, verify it
+### Resolving "hard" call sites - capture-all, pre-call, string anchors
 
-Uniqueness isn't strictly required: a pattern that matches *several* call sites
-that **all** call the same target resolves fine (every match's `E8` computes the
-same offset). But the generic arg-setup shape (`lea rdx,[rbp]; lea r8,[rbp];
-mov rcx,[rbp]; call`) precedes *any* 3-arg call, so it has **massive false
-positives** (a real run found 60+ matches scattered across the binary). The only
-thing unique to a given function's calls is the (varying) call target, which
-can't be encoded position-independently. So capture-all only works with a longer
-idiom genuinely specific to that function's call sites - and you **must verify**
-it: `find_bytes` the candidate, and confirm *every* match's call target equals
-the windows.h VA (no match in unrelated code). If you can't prove zero false
-positives, don't use it.
+`find_signature` in dump_symbols uses `re.search`, which returns the **first**
+match in `.text` and computes the target from the call displacement there. So a
+call-site pattern does **not** need to be unique - the bar is just **"the first
+match resolves to the target function."** False positives at *higher* addresses
+are harmless (never reached). This unlocks several techniques, in rough order of
+preference. The tool for all of them is `make_signature_for_range(start, end,
+wildcard_operands:true)` - it encodes a fixed byte range operand-wildcarded with
+**no uniqueness requirement** (unlike `make_signature`, which gives up when not
+unique). After building a candidate, `find_bytes` it to inspect matches; the
+final dump_symbols diff is the real arbiter (a wrong first match = a wrong
+offset in the diff).
 
-### Escape hatch - convert a hard rip entry to DIRECT
+1. **Forward capture-all** (`rip_offset=1`): `make_signature_for_range` from the
+   call site forward ~28 bytes. Works if the *first* match in `.text` is a true
+   caller (common when callers are homogeneous - template instantiations - or the
+   lowest-address caller sits early in `.text`). The generic 3-arg shape
+   (`lea rdx,[rbp]; lea r8,[rbp]; mov rcx,[rbp]; call`) is **too generic** - it
+   precedes *any* such call, its first match is usually a false positive
+   (`addEnumValues`' arg-setup matched 60+ scattered sites), and even
+   `registerOverloadInternal`'s distinctive `call; load; null-check; virtual-call`
+   collided with a sibling function called identically. You need following bytes
+   specific to this function's call sites.
 
-When no call site is uniquely signaturable within 32 bytes, signature the
-**function itself** with `make_signature_for_function(name)` (prologues are
-distinctive) and rewrite the entry to direct form: replace `pattern` and
-**delete the `rip_relative` and `rip_offset` lines**. The resolved address is the
-same function, so the table is still correct; leaving `rip_relative=true` on a
-prologue pattern would make the dumper RIP-decode prologue bytes into a
-silently-wrong address - worse than a miss. Flag every such form change in the
-summary so it can be vetoed. Recurring triggers seen in practice:
+2. **Pre-call anchoring** (what the old configs' `rip_offset` 15/29 did): include
+   the **argument-setup bytes before the `E8`** to reach uniqueness.
+   `rip_offset = (call_addr − pattern_start) + 1`. A distinctive pre-call op - a
+   `lea r8,[rip]` (string-literal arg), a `mov r9d,<enum imm>`, a specific
+   register shuffle - often makes it unique (got `knockback`, `stopSleepInBed`,
+   `disconnectClientWithMessage`, `send` down to single matches). Decode the few
+   instructions before the call (`get_bytes` + hand-decode, or `disasm`) to find
+   an instruction-aligned start.
 
-- **All callers in one giant function** (e.g. `addEnumValues`, called only from
-  the `CommandRegistry` ctor) - every call site shares the same post-call code.
-- **`void`-return functions** (`registerAlias`, `registerCommand`) - generic
-  post-call setup, never unique forward.
-- **Only tail-call thunks** call it (`send@NetworkSystem`, `Send_…360NoVDP`) -
-  the unique signatures all start `E9`.
-- **A single non-vtable call site** that isn't unique even at 32 (`knockback`,
-  `stopSleepInBed`).
+3. **String-literal anchoring** (most stable): if a nearby `movabs rax,"<name>"`
+   builds a well-known **enum/command name** that feeds the call, anchor on those
+   literal ASCII bytes. Minecraft's core names (`"GameMode"`, `"RValueParam"`, …)
+   don't change between builds, so this is *more* durable than a register-
+   allocation-dependent prologue, not less. `rip_offset = (call_addr − movabs) + 1`.
+   (Watch which call the string actually feeds - stack slots get reused, so a
+   name may flow into a *sibling* method, not the one you want.)
 
-Note the trade-off: a direct prologue is **version-specific** and the long
-`xmm`-save prologues (`44 0F 29 ..` runs, e.g. `explode`, `knockback`) are the
-most likely to drift on the next BDS rebuild. Prefer a stable call site when one
-exists; fall back to direct only when none does.
+4. **Direct prologue** (escape hatch): `make_signature_for_function(name)`, then
+   delete `rip_relative`/`rip_offset`. Always available, but version-specific.
+
+### Choosing between a call-site pattern and the direct prologue
+
+**Prefer the direct prologue unless the call-site pattern is enough shorter to
+be worth it - and the bar depends on safety.** A direct prologue can only *miss*
+→ `0` → a loud `consteval` compile error, whereas a **non-unique (first-match)**
+call-site pattern can **silently mis-resolve** to a wrong non-zero address if a
+future build reorders a same-idiom call below the true caller (the hazard
+`bump-bds` warns about). So:
+
+- **Unique** call-site pattern (single `find_bytes` match): no mis-resolve risk -
+  keep it when it is at least **~⅓ shorter** than the prologue.
+- **First-match** call-site pattern (multiple matches, first one correct):
+  carries the mis-resolve risk - keep it only when **significantly shorter
+  (≈½ or less)**; otherwise revert to direct for maintainability.
+- The decisive win is avoiding the long `xmm`-save prologues (`44 0F 29 ..` runs -
+  `explode` is ~90 bytes vs a ~25-byte call site). When the prologue is already
+  compact (`addEnumValues` 51B vs a 53B anchored call site; `createSpawnedActor`
+  /`registerAlias`/`deserialize` ~40-50B vs call sites only ⅓ shorter), **keep
+  direct**.
+
+Tag the provenance comment with the safety level: `# capture-all (first match)`
+vs `# … (unique)`. A **unique** pre-call/string-anchored pattern has no
+mis-resolve risk - prefer it over a first-match one when both are short. Rewrite
+to direct form by deleting the `rip_relative`/`rip_offset` lines; leaving
+`rip_relative=true` on a prologue pattern makes the dumper RIP-decode prologue
+bytes into a silently-wrong address - worse than a miss. Flag every form change
+in the summary.
 
 ## Step 4 - data globals (`BlockState::StateListNode::mHead`, `Enchant::mEnchants`)
 
