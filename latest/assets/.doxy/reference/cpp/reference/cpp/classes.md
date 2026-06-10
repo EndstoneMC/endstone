@@ -133,6 +133,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**Dimension**](classendstone_1_1Dimension.md)
 ([**endstone**](namespaceendstone.md))
+* [**DimensionCreator**](classendstone_1_1DimensionCreator.md)
+([**endstone**](namespaceendstone.md))
 * [**DimensionEvent**](classendstone_1_1DimensionEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**Divider**](classendstone_1_1Divider.md)

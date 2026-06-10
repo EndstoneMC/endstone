@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classendstone_1_1DimensionCreator" kind="class" language="C++" prot="public">
+    <compoundname>endstone::DimensionCreator</compoundname>
+    <includes refid="dimension__creator_8h" local="no">endstone/level/dimension_creator.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1DimensionCreator_1ab87578fc4fe5d00c14226a717fc58e9f" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::DimensionCreator::id_</definition>
+        <argsstring></argsstring>
+        <name>id_</name>
+        <qualifiedname>endstone::DimensionCreator::id_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/dimension_creator.h" line="60" column="17" bodyfile="include/endstone/level/dimension_creator.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1DimensionCreator_1a62a33bbe60b72aeed86ce79f813bcb1e" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::DimensionCreator::DimensionCreator</definition>
+        <argsstring>(DimensionId id)</argsstring>
+        <name>DimensionCreator</name>
+        <qualifiedname>endstone::DimensionCreator::DimensionCreator</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">DimensionId</ref></type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Creates an instance of a <ref refid="classendstone_1_1DimensionCreator" kindref="compound">DimensionCreator</ref> for the given dimension id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the identifier of the dimension to create, e.g. <computeroutput>myplugin:void_realm</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/dimension_creator.h" line="35" column="14" bodyfile="include/endstone/level/dimension_creator.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1DimensionCreator_1a86b5d5562361744ef3add4ae2b076b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">DimensionId</ref></type>
+        <definition>DimensionId endstone::DimensionCreator::getId</definition>
+        <argsstring>() const</argsstring>
+        <name>getId</name>
+        <qualifiedname>endstone::DimensionCreator::getId</qualifiedname>
+        <briefdescription>
+<para>Gets the identifier of the dimension that is being created. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the dimension identifier </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/dimension_creator.h" line="42" column="18" bodyfile="include/endstone/level/dimension_creator.h" bodystart="42" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1DimensionCreator_1ad257f475b0ca20ea00706f5d4f6e3fe1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1DimensionCreator" kindref="compound">DimensionCreator</ref> &amp;</type>
+        <definition>DimensionCreator &amp; endstone::DimensionCreator::id</definition>
+        <argsstring>(DimensionId id)</argsstring>
+        <name>id</name>
+        <qualifiedname>endstone::DimensionCreator::id</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">DimensionId</ref></type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Sets the identifier of the dimension that is being created. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the dimension identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>this <ref refid="classendstone_1_1DimensionCreator" kindref="compound">DimensionCreator</ref>, for chaining </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/dimension_creator.h" line="53" column="22" bodyfile="include/endstone/level/dimension_creator.h" bodystart="53" bodyend="57"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Represents the options that may be used to create a custom <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/level/dimension_creator.h" line="28" column="1" bodyfile="include/endstone/level/dimension_creator.h" bodystart="28" bodyend="61"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1DimensionCreator_1a62a33bbe60b72aeed86ce79f813bcb1e" prot="public" virt="non-virtual"><scope>endstone::DimensionCreator</scope><name>DimensionCreator</name></member>
+      <member refid="classendstone_1_1DimensionCreator_1a86b5d5562361744ef3add4ae2b076b00" prot="public" virt="non-virtual"><scope>endstone::DimensionCreator</scope><name>getId</name></member>
+      <member refid="classendstone_1_1DimensionCreator_1ad257f475b0ca20ea00706f5d4f6e3fe1" prot="public" virt="non-virtual"><scope>endstone::DimensionCreator</scope><name>id</name></member>
+      <member refid="classendstone_1_1DimensionCreator_1ab87578fc4fe5d00c14226a717fc58e9f" prot="private" virt="non-virtual"><scope>endstone::DimensionCreator</scope><name>id_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

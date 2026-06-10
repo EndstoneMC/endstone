@@ -165,6 +165,7 @@ Here is a list of all files with brief descriptions:
         * **dir** [**level**](dir_8e239ca1e5fd0d936d66a30330d3a329.md)     
             * **file** [**chunk.h**](chunk_8h.md)     
             * **file** [**dimension.h**](dimension_8h.md)     
+            * **file** [**dimension\_creator.h**](dimension__creator_8h.md)     
             * **file** [**level.h**](level_8h.md)     
             * **file** [**location.h**](location_8h.md)     
         * **dir** [**map**](dir_35fd4abc90217931459f3a8776f2bf4e.md)     

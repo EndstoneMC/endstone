@@ -810,6 +810,12 @@
     <member refid="classendstone_1_1Dimension_1a0106dd8b17e3394081568a0ba631cb26" kind="function"><name>spawnActor</name></member>
     <member refid="classendstone_1_1Dimension_1aabf69434e780cefd4856459196439fe1" kind="function"><name>getActors</name></member>
   </compound>
+  <compound refid="classendstone_1_1DimensionCreator" kind="class"><name>endstone::DimensionCreator</name>
+    <member refid="classendstone_1_1DimensionCreator_1ab87578fc4fe5d00c14226a717fc58e9f" kind="variable"><name>id_</name></member>
+    <member refid="classendstone_1_1DimensionCreator_1a62a33bbe60b72aeed86ce79f813bcb1e" kind="function"><name>DimensionCreator</name></member>
+    <member refid="classendstone_1_1DimensionCreator_1a86b5d5562361744ef3add4ae2b076b00" kind="function"><name>getId</name></member>
+    <member refid="classendstone_1_1DimensionCreator_1ad257f475b0ca20ea00706f5d4f6e3fe1" kind="function"><name>id</name></member>
+  </compound>
   <compound refid="classendstone_1_1DimensionEvent" kind="class"><name>endstone::DimensionEvent</name>
     <member refid="classendstone_1_1DimensionEvent_1a06fb7621f6fd742856ae7b24537365d7" kind="variable"><name>dimension_</name></member>
     <member refid="classendstone_1_1DimensionEvent_1ad3a003262de859e49042454c65cfe383" kind="function"><name>DimensionEvent</name></member>
@@ -1331,6 +1337,7 @@
     <member refid="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" kind="function"><name>setTime</name></member>
     <member refid="classendstone_1_1Level_1ac4329b1323d1e61be61c1efeb4e8ecd9" kind="function"><name>getDimensions</name></member>
     <member refid="classendstone_1_1Level_1a0b7bf9c026e8c41c7f741fc04e2fbb54" kind="function"><name>getDimension</name></member>
+    <member refid="classendstone_1_1Level_1acea8456414ed22d1640e8d3669ed4218" kind="function"><name>createDimension</name></member>
     <member refid="classendstone_1_1Level_1a353a8752c7825d35373287ede5e4019a" kind="function"><name>getSeed</name></member>
   </compound>
   <compound refid="classendstone_1_1LevelEvent" kind="class"><name>endstone::LevelEvent</name>
@@ -2815,7 +2822,7 @@
     <member refid="namespaceendstone_1a42f3cb333492510ff60b8097153fa66a" kind="typedef"><name>BlockTypeId</name></member>
     <member refid="namespaceendstone_1a996c90f609bfd792a8245bb60fd3e4ea" kind="typedef"><name>EnchantmentId</name></member>
     <member refid="namespaceendstone_1a38ff2441d6476b407a46c5868fd25cd3" kind="typedef"><name>ItemTypeId</name></member>
-    <member refid="namespaceendstone_1a56604f8e64cbfad4e739248ea315914e" kind="typedef"><name>DimensionId</name></member>
+    <member refid="namespaceendstone_1a50a151fb732635e869fd9c0a4ef78c2c" kind="typedef"><name>DimensionId</name></member>
     <member refid="namespaceendstone_1ab1be61859bf80a227cf5d0b12a26ef78" kind="typedef"><name>Message</name></member>
     <member refid="namespaceendstone_1a33e1574322a8aca1ebab711faea30a4a" kind="typedef"><name>ByteTag</name></member>
     <member refid="namespaceendstone_1acb2bf69099c0af04c6c085cb2b3241c8" kind="typedef"><name>ShortTag</name></member>
@@ -3191,6 +3198,8 @@
   <compound refid="chunk_8h" kind="file"><name>chunk.h</name>
   </compound>
   <compound refid="dimension_8h" kind="file"><name>dimension.h</name>
+  </compound>
+  <compound refid="dimension__creator_8h" kind="file"><name>dimension_creator.h</name>
   </compound>
   <compound refid="level_8h" kind="file"><name>level.h</name>
   </compound>

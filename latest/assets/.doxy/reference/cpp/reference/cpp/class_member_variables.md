@@ -230,7 +230,7 @@
 * **IceBomb** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **IronGolem** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
 * **Item** ([**endstone::ActorType**](classendstone_1_1ActorType.md))
-* **id\_** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md), [**endstone::Skin**](classendstone_1_1Skin.md))
+* **id\_** ([**endstone::AttributeModifier**](classendstone_1_1AttributeModifier.md), [**endstone::DimensionCreator**](classendstone_1_1DimensionCreator.md), [**endstone::Skin**](classendstone_1_1Skin.md))
 * **icon\_** ([**endstone::Button**](classendstone_1_1Button.md), [**endstone::Effect**](classendstone_1_1Effect.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **Italic** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Infested** ([**endstone::EffectType**](classendstone_1_1EffectType.md), [**endstone::PotionType**](classendstone_1_1PotionType.md))

@@ -366,6 +366,14 @@
         <childnode refid="99" relation="include">
         </childnode>
       </node>
+      <node id="100">
+        <label>endstone/level/dimension_creator.h</label>
+        <link refid="dimension__creator_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
       <node id="5">
         <label>endstone/level/level.h</label>
         <link refid="level_8h_source"/>
@@ -380,6 +388,8 @@
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
         </childnode>
       </node>
       <node id="76">

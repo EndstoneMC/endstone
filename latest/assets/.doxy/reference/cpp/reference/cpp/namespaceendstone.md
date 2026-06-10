@@ -94,6 +94,7 @@ _Represents a button with text and an optional icon._
 | class | [**CrossbowMeta**](classendstone_1_1CrossbowMeta.md) <br>_Represents the meta for a crossbow that can have a charged projectile._  |
 | class | [**DamageSource**](classendstone_1_1DamageSource.md) <br>_Represents a source of damage._  |
 | class | [**Dimension**](classendstone_1_1Dimension.md) <br>_Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._ |
+| class | [**DimensionCreator**](classendstone_1_1DimensionCreator.md) <br>_Represents the options that may be used to create a custom_ [_**Dimension**_](classendstone_1_1Dimension.md) _._ |
 | class | [**DimensionEvent**](classendstone_1_1DimensionEvent.md) <br>_Represents events within a dimension._  |
 | class | [**Divider**](classendstone_1_1Divider.md) <br>_Represents a divider._  |
 | class | [**Dropdown**](classendstone_1_1Dropdown.md) <br>_Represents a dropdown with a set of predefined options._  |
@@ -515,7 +516,7 @@ using endstone::ByteTag = typedef nbt::ValueTag<std::uint8_t>;
 ### typedef DimensionId 
 
 ```C++
-using endstone::DimensionId = typedef Identifier<Dimension>;
+typedef Identifier< class Dimension > endstone::DimensionId;
 ```
 
 

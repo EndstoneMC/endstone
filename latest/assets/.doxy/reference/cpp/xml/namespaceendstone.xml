@@ -59,6 +59,7 @@
     <innerclass refid="classendstone_1_1CrossbowMeta" prot="public">endstone::CrossbowMeta</innerclass>
     <innerclass refid="classendstone_1_1DamageSource" prot="public">endstone::DamageSource</innerclass>
     <innerclass refid="classendstone_1_1Dimension" prot="public">endstone::Dimension</innerclass>
+    <innerclass refid="classendstone_1_1DimensionCreator" prot="public">endstone::DimensionCreator</innerclass>
     <innerclass refid="classendstone_1_1DimensionEvent" prot="public">endstone::DimensionEvent</innerclass>
     <innerclass refid="classendstone_1_1Divider" prot="public">endstone::Divider</innerclass>
     <innerclass refid="classendstone_1_1Dropdown" prot="public">endstone::Dropdown</innerclass>
@@ -1004,9 +1005,9 @@
         </inbodydescription>
         <location file="include/endstone/inventory/item_type.h" line="24" column="1" bodyfile="include/endstone/inventory/item_type.h" bodystart="24" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespaceendstone_1a56604f8e64cbfad4e739248ea315914e" prot="public" static="no">
+      <memberdef kind="typedef" id="namespaceendstone_1a50a151fb732635e869fd9c0a4ef78c2c" prot="public" static="no">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">Identifier</ref>&lt; <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &gt;</type>
-        <definition>using endstone::DimensionId = typedef Identifier&lt;Dimension&gt;</definition>
+        <definition>typedef Identifier&lt; class Dimension &gt; endstone::DimensionId</definition>
         <argsstring></argsstring>
         <name>DimensionId</name>
         <qualifiedname>endstone::DimensionId</qualifiedname>
