@@ -18,7 +18,7 @@ namespace py = pybind11;
 
 namespace endstone::python {
 namespace {
-Location create_location(Dimension &dimension, float x, float y, float z, float pitch, float yaw)
+Location create_location(const Nullable<Dimension> &dimension, float x, float y, float z, float pitch, float yaw)
 {
     return {dimension, x, y, z, pitch, yaw};
 }
@@ -49,6 +49,7 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
                                "The translation key, suitable for use in a translation component.")
         .def_property_readonly("level", &Dimension::getLevel, "The level to which this dimension belongs.",
                                py::return_value_policy::reference)
+        .def_property_readonly("is_valid", &Dimension::isValid, "Whether this dimension is still valid (loaded).")
         .def("get_block_at", py::overload_cast<Location>(&Dimension::getBlockAt, py::const_),
              py::arg("location").noconvert(), R"doc(
     Gets the `Block` at the given `Location`.
@@ -175,8 +176,8 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
     location
         .def(py::init(&create_location), py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"),
              py::arg("pitch") = 0.0, py::arg("yaw") = 0.0)
-        .def_property("dimension", &Location::getDimension, &Location::setDimension, py::return_value_policy::reference,
-                      "The `Dimension` that contains this position.")
+        .def_property("dimension", &Location::getDimension, &Location::setDimension,
+                      "The `Dimension` that contains this position, or `None` if it is not set.")
         .def_property_readonly("block", &Location::getBlock, "The block at the represented location.")
         .def_property("pitch", &Location::getPitch, &Location::setPitch,
                       "The pitch of this location, measured in degrees.")

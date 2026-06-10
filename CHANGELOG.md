@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **BREAKING**: `Location.dimension` (`Location::getDimension()`) now holds the dimension by a weak reference, mirroring Bukkit's `Location.getWorld()`. It returns `None`/null when no dimension is set, the dimension when it is loaded, and throws/raises when the dimension has been unloaded. New `Location.is_dimension_loaded` and `Dimension.is_valid` let you check before accessing. `Location` is now constructed from a nullable dimension.
 - **BREAKING**: `Server.getLevel()` (`server.level`) now returns a `Level` reference and throws (raises in Python) if the level has not been loaded yet, instead of returning a nullable pointer / `None`. Access it only once the level is available.
 - **BREAKING**: Moved `EffectType` from the `endstone.effect` module to `endstone.potion` (`endstone.potion.EffectType`), mirroring Bukkit. The `endstone.effect` submodule has been removed; update imports accordingly. In C++, the header moved from `endstone/effect/effect_type.h` to `endstone/potion/effect_type.h`.
 - **BREAKING**: Replaced `Dimension::Type` enum with `DimensionId`, a namespaced identifier that supports custom

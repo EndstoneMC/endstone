@@ -47,7 +47,7 @@ public:
 private:
     EndstoneServer &server_;
     ::Level &level_;
-    std::map<int, std::unique_ptr<Dimension>> dimensions_;
+    std::map<int, std::shared_ptr<Dimension>> dimensions_;
 };
 
 }  // namespace endstone::core

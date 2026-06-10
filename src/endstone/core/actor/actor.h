@@ -130,7 +130,7 @@ public:
         auto [x, y, z] = getHandle().getPosition();
         y -= ActorOffset::getHeightOffset(getHandle().getEntity());
         const auto &[pitch, yaw] = getHandle().getRotation();
-        return {getDimension(), x, y, z, pitch, yaw};
+        return {getDimension().shared_from_this(), x, y, z, pitch, yaw};
     }
 
     [[nodiscard]] Vector getVelocity() const override
@@ -175,9 +175,10 @@ public:
 
         setRotation(location.getYaw(), location.getPitch());
         Vec3 to_location{location.getX(), location.getY(), location.getZ()};
-        if (&location.getDimension() != &getDimension()) {
+        const auto location_dimension = location.getDimension();
+        if (&location_dimension.value() != &getDimension()) {
             const auto to_dimension =
-                static_cast<EndstoneDimension &>(location.getDimension()).getHandle().getDimensionId();
+                static_cast<EndstoneDimension &>(location_dimension.value()).getHandle().getDimensionId();
             getHandle().getLevel().entityChangeDimension(getHandle(), to_dimension, to_location);
         }
         else {

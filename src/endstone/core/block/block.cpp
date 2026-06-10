@@ -113,7 +113,7 @@ int EndstoneBlock::getZ() const
 
 Location EndstoneBlock::getLocation() const
 {
-    return {getDimension(), getX(), getY(), getZ()};
+    return {getDimension().shared_from_this(), getX(), getY(), getZ()};
 }
 
 std::unique_ptr<BlockState> EndstoneBlock::captureState() const

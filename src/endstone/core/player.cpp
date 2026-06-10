@@ -176,12 +176,13 @@ bool EndstonePlayer::teleport(const Location &location)
 
     setRotation(location.getYaw(), location.getPitch());
     Vec3 to_location{location.getX(), location.getY(), location.getZ()};
-    if (&location.getDimension() != &getDimension()) {
+    const auto location_dimension = location.getDimension();
+    if (&location_dimension.value() != &getDimension()) {
         auto current_location = getLocation();
         Vec3 from_location{current_location.getX(), current_location.getY(), current_location.getZ()};
         const auto from_dimension = static_cast<EndstoneDimension &>(getDimension()).getHandle().getDimensionId();
         const auto to_dimension =
-            static_cast<EndstoneDimension &>(location.getDimension()).getHandle().getDimensionId();
+            static_cast<EndstoneDimension &>(location_dimension.value()).getHandle().getDimensionId();
         getHandle().getLevel().requestPlayerChangeDimension(
             getHandle(),
             ChangeDimensionRequest{from_dimension, to_dimension, from_location, to_location, false, false});

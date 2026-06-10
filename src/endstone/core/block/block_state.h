@@ -106,7 +106,7 @@ public:
 
     [[nodiscard]] Location getLocation() const override
     {
-        return Location{getDimension(), getX(), getY(), getZ()};
+        return Location{getDimension().shared_from_this(), getX(), getY(), getZ()};
     }
 
     bool update() override

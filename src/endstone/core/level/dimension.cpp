@@ -43,6 +43,11 @@ Level &EndstoneDimension::getLevel() const
     return level_;
 }
 
+bool EndstoneDimension::isValid() const
+{
+    return dimension_.isSet();
+}
+
 std::unique_ptr<Block> EndstoneDimension::getBlockAt(int x, int y, int z) const
 {
     return EndstoneBlock::at(getHandle().getBlockSourceFromMainChunkSource(), BlockPos(x, y, z));

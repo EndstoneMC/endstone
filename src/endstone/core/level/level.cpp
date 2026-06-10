@@ -35,7 +35,7 @@ EndstoneLevel::EndstoneLevel(::Level &level) : server_(EndstoneServer::getInstan
     level.getOrCreateDimension(VanillaDimensions::TheEnd);
     auto add_dimension = [this](::Dimension &dimension) {
         dimensions_[dimension.getDimensionId().value] =
-            std::make_unique<EndstoneDimension>(dimension.getWeakRef(), *this);
+            std::make_shared<EndstoneDimension>(dimension.getWeakRef(), *this);
     };
     level.forEachDimension([&](::Dimension &dimension) {
         add_dimension(dimension);
