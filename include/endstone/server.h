@@ -156,8 +156,9 @@ public:
      * Gets the server level.
      *
      * @return the server level
+     * @throws std::runtime_error if the level has not been loaded yet
      */
-    [[nodiscard]] virtual Level *getLevel() const = 0;
+    [[nodiscard]] virtual Level &getLevel() const = 0;
 
     /**
      * Gets a list of all currently online players.

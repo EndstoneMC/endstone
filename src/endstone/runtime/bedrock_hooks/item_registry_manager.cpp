@@ -27,10 +27,10 @@ ItemRegistryRef ItemRegistryManager::getItemRegistry()
         return invalid;
     }
 
-    auto *level = server.getLevel();
+    auto *level = server.getEndstoneLevel();
     if (!level) {
         server.getLogger().error("ItemRegistryManager::getItemRegistry is called before the level is loaded.");
         return invalid;
     }
-    return static_cast<endstone::core::EndstoneLevel *>(level)->getHandle().getItemRegistry();
+    return level->getHandle().getItemRegistry();
 }

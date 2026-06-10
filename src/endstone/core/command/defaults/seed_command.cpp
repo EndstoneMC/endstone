@@ -36,7 +36,7 @@ bool SeedCommand::execute(CommandSender &sender, const std::vector<std::string> 
     }
 
     const auto &server = EndstoneServer::getInstance();
-    sender.sendMessage("Seed: {}", server.getLevel()->getSeed());
+    sender.sendMessage("Seed: {}", server.getLevel().getSeed());
     return true;
 }
 

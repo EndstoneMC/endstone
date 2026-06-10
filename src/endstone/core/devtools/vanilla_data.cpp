@@ -381,8 +381,8 @@ VanillaData *VanillaData::get()
 
     if (entt::locator<EndstoneServer>::has_value()) {
         auto &server = entt::locator<EndstoneServer>::value();
-        if (auto *server_level = server.getLevel(); server_level) {
-            auto &level = static_cast<EndstoneLevel *>(server_level)->getHandle();
+        if (auto *server_level = server.getEndstoneLevel(); server_level) {
+            auto &level = server_level->getHandle();
             auto &scheduler = static_cast<EndstoneScheduler &>(server.getScheduler());
             if (should_run) {
                 scheduler.runTask([&]() {

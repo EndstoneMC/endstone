@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **BREAKING**: `Server.getLevel()` (`server.level`) now returns a `Level` reference and throws (raises in Python) if the level has not been loaded yet, instead of returning a nullable pointer / `None`. Access it only once the level is available.
 - **BREAKING**: Moved `EffectType` from the `endstone.effect` module to `endstone.potion` (`endstone.potion.EffectType`), mirroring Bukkit. The `endstone.effect` submodule has been removed; update imports accordingly. In C++, the header moved from `endstone/effect/effect_type.h` to `endstone/potion/effect_type.h`.
 - **BREAKING**: Replaced `Dimension::Type` enum with `DimensionId`, a namespaced identifier that supports custom
   dimensions. Use `Dimension.OVERWORLD`, `Dimension.NETHER`, `Dimension.THE_END` constants or look up by identifier.

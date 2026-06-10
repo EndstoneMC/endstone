@@ -91,10 +91,10 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
     sender.sendMessage("{}Total memory: {}{:.2f} MB", ColorFormat::Gold, ColorFormat::Red,
                        get_total_virtual_memory() / 1024.0F / 1024.0F);
 
-    auto *level = server.getLevel();
-    sender.sendMessage("{}Level \"{}\":", ColorFormat::Gold, level->getName());
-    auto actors = server.getLevel()->getActors();
-    for (const auto &dimension : server.getLevel()->getDimensions()) {
+    auto &level = server.getLevel();
+    sender.sendMessage("{}Level \"{}\":", ColorFormat::Gold, level.getName());
+    auto actors = level.getActors();
+    for (const auto &dimension : level.getDimensions()) {
         auto actor_count = 0;
         for (const auto &actor : actors) {
             if (&actor->getDimension() == dimension) {

@@ -22,7 +22,7 @@
 void WeatherManager::updateWeather(float rain_level, int rain_time, float lightning_level, int lightning_time)
 {
     const auto &server = endstone::core::EndstoneServer::getInstance();
-    if (auto *level = server.getLevel()) {
+    if (auto *level = server.getEndstoneLevel()) {
         auto is_raining = weather_manager_proxy_->getRainLevel() > 0;
         auto will_be_raining = rain_level > 0;
         if (is_raining != will_be_raining) {

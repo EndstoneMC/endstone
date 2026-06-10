@@ -157,9 +157,7 @@ public:
 
     [[nodiscard]] Level &getLevel() const override
     {
-        {
-            return *server_.getLevel();
-        }
+        return server_.getLevel();
     }
 
     [[nodiscard]] Dimension &getDimension() const override

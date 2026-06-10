@@ -142,7 +142,7 @@ std::vector<ScoreEntry> EndstoneScoreboard::getEntries() const
             break;
         }
         case IdentityDefinition::Type::Entity: {
-            auto actors = server.getLevel()->getActors();
+            auto actors = server.getLevel().getActors();
             for (const auto &actor : actors) {
                 if (ActorUniqueID(actor->getId()) == id_ref.getEntityId()) {
                     result.emplace_back(actor);

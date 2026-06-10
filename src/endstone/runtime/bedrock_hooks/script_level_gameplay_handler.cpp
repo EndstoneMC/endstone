@@ -45,7 +45,7 @@ bool handleEvent(const LevelAddedActorEvent &event)
 bool handleEvent(LevelWeatherChangedEvent &event)
 {
     const auto &server = entt::locator<endstone::core::EndstoneServer>::value();
-    auto &level = *server.getLevel();
+    auto &level = server.getLevel();
     if (event.is_raining != event.will_be_raining) {
         endstone::WeatherChangeEvent e(level, event.will_be_raining);
         server.getPluginManager().callEvent(e);

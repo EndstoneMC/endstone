@@ -410,9 +410,12 @@ EndstoneScheduler &EndstoneServer::getEndstoneScheduler() const
     return *scheduler_;
 }
 
-Level *EndstoneServer::getLevel() const
+Level &EndstoneServer::getLevel() const
 {
-    return level_.get();
+    if (!level_) {
+        throw std::runtime_error("Level has not been loaded yet.");
+    }
+    return *level_;
 }
 
 EndstoneLevel *EndstoneServer::getEndstoneLevel() const
