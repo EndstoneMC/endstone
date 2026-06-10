@@ -524,7 +524,15 @@ def scan_pdb(pdb_path: Path, config: dict) -> dict[str, int]:
     "are resolved by name from the PDB; names the PDB lacks fall back to a "
     "byte-pattern scan of the PE (read next to the PDB, or downloaded).",
 )
-def main(inputs: tuple[Path, ...], pdb_path: Path | None) -> None:
+@click.option(
+    "--dry-run",
+    is_flag=True,
+    default=False,
+    help="Scan and report how many signatures resolve, without writing the "
+    "symbols header. Handy for checking how a config's patterns hold against a "
+    "different BDS version (bump the config 'version' and dry-run it).",
+)
+def main(inputs: tuple[Path, ...], pdb_path: Path | None, dry_run: bool) -> None:
     for config_path in inputs:
         with config_path.open("r") as f:
             config = tomlkit.load(f)
@@ -567,8 +575,15 @@ def main(inputs: tuple[Path, ...], pdb_path: Path | None) -> None:
             group_by_scope[get_scope(name)][name] = offset
 
         output_file = OUTPUT_DIR / f"{platform}.h"
-        write_symbols_header(output_file, platform, version, group_by_scope)
-        logger.info(f"Wrote {output_file}")
+        if dry_run:
+            resolved = sum(1 for v in sigs.values() if v != 0)
+            logger.info(
+                f"Dry run for BDS {version} ({platform}): {resolved}/{len(sigs)} "
+                f"signatures resolved; not writing {output_file}"
+            )
+        else:
+            write_symbols_header(output_file, platform, version, group_by_scope)
+            logger.info(f"Wrote {output_file}")
 
 
 # --- Header writer ------------------------------------------------------------
