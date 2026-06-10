@@ -7,7 +7,8 @@ filename = "bedrock_server"
 name = "BlockState::StateListNode::mHead"
 relative = false
 extra = 0
-pattern = "48 89 0D ? ? ? ? 48 8D 05 ? ? ? ? 48 89 05 ? ? ? ? 48 8B 54 24"
+# rip-relative load in CustomBlockStateVariant ctor
+pattern = "48 8B 0D ? ? ? ? 48 85 C9 74 ? 48 89 41"
 rip_relative = true
 rip_offset = 3
 
@@ -15,7 +16,8 @@ rip_offset = 3
 name = "Enchant::mEnchants"
 relative = false
 extra = 0
-pattern = "48 8B 0D ? ? ? ? 48 83 C1 ? 48 8B D0 E8 ? ? ? ? 48 8D 4D"
+# rip-relative load in CreatorMetadataUtils::_generateEnchantmentsMetadataJson
+pattern = "48 8B 1D ? ? ? ? 48 8B 05 ? ? ? ? 48 89 45"
 rip_relative = true
 rip_offset = 3
 
@@ -31,7 +33,8 @@ rip_offset = 1
 name = "?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 48 8B 8B ? ? ? ? ? ? ? 48 8B 80 ? ? ? ? FF 15 ? ? ? ? 8B 7D"
+# xref call site in Agent::teleportTo
+pattern = "E8 ? ? ? ? 48 89 F1 E8 ? ? ? ? F3 0F 10 40 ? E8"
 rip_relative = true
 rip_offset = 1
 
@@ -39,29 +42,31 @@ rip_offset = 1
 name = "?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 90 8B 7D"
-rip_relative = true
-rip_offset = 1
+# function prologue (callers share OwnerPtr boilerplate, no unique call site)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4C 89 CF 4C 89 C3 48 89 D6 49 89 CE 4C 8B 4D"
 
 [[signatures]]
 # Batched Network TaskGroup
 name = "?sendPacket@BatchedNetworkPeer@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Reliability@NetworkPeer@@W4Compressibility@@@Z"
 relative = false
 extra = 0
-pattern = "48 89 5C 24 ? 48 89 74 24 ? 57 48 81 EC ? ? ? ? 41 8B F1"
+# function prologue
+pattern = "55 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 CB 48 89 D7"
 
 [[signatures]]
 # Batched Network TaskGroup
 name = "?_receivePacket@BatchedNetworkPeer@@MEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z"
 relative = false
 extra = 0
-pattern = "48 89 5C 24 ? 55 56 57 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 48 8B DA 48 8B F1 BF"
+# function prologue
+pattern = "41 57 41 56 56 57 55 53 48 81 EC ? ? ? ? 48 89 D3"
 
 [[signatures]]
 name = "?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? EB ? 48 8B 74 24 ? 40 84 ED"
+# xref call site in BedrockLog::log_va
+pattern = "E8 ? ? ? ? FF 47 ? 48 8B 4C 24"
 rip_relative = true
 rip_offset = 1
 
@@ -69,15 +74,17 @@ rip_offset = 1
 name = "?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z"
 relative = false
 extra = 0
-pattern = "40 0F B6 D6 48 8B CF E8 ? ? ? ? 90 48 8B 7B"
+# xref call site in BlockDescriptor::matches
+pattern = "E8 ? ? ? ? 48 8B 4D ? E8 ? ? ? ? 8B 9E"
 rip_relative = true
-rip_offset = 8
+rip_offset = 1
 
 [[signatures]]
 name = "?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 48 85 C0 74 ? 44 0F B7 45"
+# xref call site in CommandBlockName::resolveBlock
+pattern = "E8 ? ? ? ? 48 85 C0 74 ? 48 89 46 ? 0F 57 C0"
 rip_relative = true
 rip_offset = 1
 
@@ -85,7 +92,8 @@ rip_offset = 1
 name = "?spawnResources@BlockType@@QEBAXAEAVBlockSource@@AEBVBlockPos@@AEBVBlock@@AEAVIRandom@@AEBUResourceDropsContext@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 48 8B 7F ? 48 8D 15"
+# xref call site in BaseRailBlock::tick
+pattern = "E8 ? ? ? ? 48 8B 7F ? 0F 57 C0 0F 29 44 24"
 rip_relative = true
 rip_offset = 1
 
@@ -93,7 +101,8 @@ rip_offset = 1
 name = "?forEachBlockType@BlockTypeRegistry@@QEBAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 4C 8B BF ? ? ? ? 48 8D 44 24"
+# xref call site in ItemRegistry::finishedRegistration
+pattern = "E8 ? ? ? ? 48 8B 4E ? 48 85 C9 74 ? 48 8B 06 F0 FF 41 ? 48 89 45"
 rip_relative = true
 rip_offset = 1
 
@@ -101,13 +110,15 @@ rip_offset = 1
 name = "?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z"
 relative = false
 extra = 0
-pattern = "48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 49 63 F8"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 45 89 C6 48 89 D7"
 
 [[signatures]]
 name = "?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 44 39 ? ? 41 0F 95 C6 45"
+# xref call site in BaseCommandBlock::_performCommand
+pattern = "E8 ? ? ? ? 48 8D 4D ? E8 ? ? ? ? 89 87"
 rip_relative = true
 rip_offset = 1
 
@@ -115,7 +126,8 @@ rip_offset = 1
 name = "?load@CommandOriginLoader@@SA?AV?$unique_ptr@VCommandOrigin@@U?$default_delete@VCommandOrigin@@@std@@@std@@AEBVCompoundTag@@AEAVServerLevel@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 90 48 8B 45 ? 48 8B 4D ? 48 85 C9"
+# xref call site in VirtualCommandOrigin::load
+pattern = "E8 ? ? ? ? 48 8D 4D ? 4C 89 FA 49 89 D8"
 rip_relative = true
 rip_offset = 1
 
@@ -123,15 +135,15 @@ rip_offset = 1
 name = "?addEnumValues@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z"
 relative = false
 extra = 0
-pattern = "4C 8D 43 ? 48 8D 95 ? ? ? ? 49 8B CC E8 ? ? ? ? 4C 8D 43"
-rip_relative = true
-rip_offset = 15
+# function prologue (call-site capture-all had 60+ false positives)
+pattern = "55 41 57 41 56 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 48 89 D6 48 89 CF 0F 57 C0 0F 29 45 ? 48 C7 45 ? ? ? ? ? 49 8B 18"
 
 [[signatures]]
 name = "?describe@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVCommandParameterData@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 90 3B FE"
+# xref call site in CommandRegistry::describe(Signature,Overload)
+pattern = "E8 ? ? ? ? 45 39 FD"
 rip_relative = true
 rip_offset = 1
 
@@ -139,31 +151,29 @@ rip_offset = 1
 name = "?registerAlias@CommandRegistry@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z"
 relative = false
 extra = 0
-pattern = "90 4C 8D 44 24 ? 48 8D 54 24 ? 48 8B CB E8 ? ? ? ? 48 8D 44 24"
-rip_relative = true
-rip_offset = 15
+# function prologue (call sites not unique within 32)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 49 89 CF 48 8B 42"
 
 [[signatures]]
 name = "?registerCommand@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBDW4CommandPermissionLevel@@UCommandFlag@@3@Z"
 relative = false
 extra = 0
-pattern = "66 C7 44 24 ? 80 00 66 C7 44 24 ? 40 00 ? ? ? 4C 8D 05 ? ? ? ? 48 8D 55 ? E8"
-rip_relative = true
-rip_offset = 29
+# function prologue (call sites not unique within 32)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 45 ? 48 89 D7 48 89 CE"
 
 [[signatures]]
 name = "?registerOverloadInternal@CommandRegistry@@AEAAXAEAUSignature@1@AEAUOverload@1@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 90 ? ? ? 48 85 C0 74 ? ? 8B ? 48 8B 40 ? FF 15 ? ? ? ? 90 48 8D"
-rip_relative = true
-rip_offset = 1
+# function prologue (call sites not unique within 32)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 48 89 55 ? 48 89 CF 48 8B 81"
 
 [[signatures]]
 name = "?serializeAvailableCommands@CommandRegistry@@QEBA?AVAvailableCommandsPacket@@XZ"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 90 45 0F B6 CE"
+# xref call site in ServerNetworkHandler::sendLoginMessageLocal
+pattern = "E8 ? ? ? ? 49 8B 06 48 8B 40 ? 4C 89 F1 48 89 F2 49 89 D8 45 31 C9"
 rip_relative = true
 rip_offset = 1
 
@@ -171,7 +181,8 @@ rip_offset = 1
 name = "?symbolToString@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VSymbol@1@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 90 49 8B D4 49 83 7C 24"
+# xref call site in Command::sendTelemetry
+pattern = "E8 ? ? ? ? 4C 89 64 24 ? 48 8D 55 ? 48 89 F1"
 rip_relative = true
 rip_offset = 1
 
@@ -179,21 +190,24 @@ rip_offset = 1
 name = "?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z"
 relative = false
 extra = 0
-pattern = "49 8B ? 48 8D 4D ? E8 ? ? ? ? 4C 8B ? 48 8D 54 24"
+# xref call site in CommandOutputParameter ctor
+pattern = "E8 ? ? ? ? C7 46 ? ? ? ? ? 48 89 F0 48 83 C4 ? 5E C3 CC CC CC 56 57"
 rip_relative = true
-rip_offset = 8
+rip_offset = 1
 
 [[signatures]]
 name = "?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z"
 relative = false
 extra = 0
-pattern = "48 8B C4 48 89 58 ? 48 89 70 ? 48 89 78 ? 55 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 70 ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 45 0F B6 E8"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 44 88 45 ? 48 89 D7"
 
 [[signatures]]
 name = "?start@DedicatedServer@@QEAA?AW4ServerExitCode@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 8B F0 48 8D 8D ? ? ? ? E8 ? ? ? ? 48 8D 8D"
+# xref call site in main
+pattern = "E8 ? ? ? ? 89 C6 48 8D 8D ? ? ? ? E8 ? ? ? ? 48 8D 4D"
 rip_relative = true
 rip_offset = 1
 
@@ -201,15 +215,15 @@ rip_offset = 1
 name = "?explode@Explosion@@QEAA_NAEAVIRandom@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 0F B6 F8 33 DB"
-rip_relative = true
-rip_offset = 1
+# function prologue (only call sites are thunks)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 BD ? ? ? ? 44 0F 29 B5 ? ? ? ? 44 0F 29 AD ? ? ? ? 44 0F 29 A5 ? ? ? ? 44 0F 29 9D ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? F3 0F 10 41"
 
 [[signatures]]
 name = "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z"
 relative = false
 extra = 0
-pattern = "48 89 74 24 ? 57 48 83 EC ? 80 79 ? ? 48 8B F9"
+# function prologue
+pattern = "56 57 48 83 EC ? 0F 29 74 24 ? 0F 57 C0"
 
 [[signatures]]
 # name is arbitrary, this is actually hooking a lambda function
@@ -222,7 +236,8 @@ pattern = "56 57 53 48 83 EC ? 41 8B 40"
 name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 48 8B CB E8 ? ? ? ? 48 8B 5C 24 ? 48 89 47 ? 48 83 C4"
+# xref call site in ShieldItem::readUserData
+pattern = "E8 ? ? ? ? 48 89 F1 E8 ? ? ? ? 48 89 F9 48 89 C2 48 83 C4"
 rip_relative = true
 rip_offset = 1
 
@@ -230,7 +245,8 @@ rip_offset = 1
 name = "?fromTag@ItemInstance@@SA?AV1@AEBVCompoundTag@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 90 48 8D 8E ? ? ? ? 48 8B D0 E8 ? ? ? ? 90 48 8D 4D"
+# xref call site in MerchantRecipe::load
+pattern = "E8 ? ? ? ? 48 89 F9 48 89 DA E8 ? ? ? ? 48 8D 4D ? E8 ? ? ? ? 48 8D 05"
 rip_relative = true
 rip_offset = 1
 
@@ -238,7 +254,8 @@ rip_offset = 1
 name = "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 41 83 CE ? 44 89 74 24 ? 48 8B 9D"
+# xref call site in ItemRegistry::lookupByName overload
+pattern = "E8 ? ? ? ? 48 8B 5D ? 48 85 DB 74 ? 48 8B 0B 48 85 C9 74 ? E8 ? ? ? ? 98"
 rip_relative = true
 rip_offset = 1
 
@@ -246,37 +263,42 @@ rip_offset = 1
 name = "?_loadBlocksForCanPlaceOnCanDestroy@ItemStackBase@@CA_NAEAV?$vector@PEBVBlockType@@V?$allocator@PEBVBlockType@@@std@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z"
 relative = false
 extra = 0
-pattern = "48 8B D0 48 8B CF E8 ? ? ? ? 0F B6 E8"
+# xref call site in ItemStackBase::_loadComponents
+pattern = "E8 ? ? ? ? FF C5 48 89 F9 E8 ? ? ? ? 39 C5 7C"
 rip_relative = true
-rip_offset = 7
+rip_offset = 1
 
 [[signatures]]
 name = "?_setItem@ItemStackBase@@AEAA_NH_N@Z"
 relative = false
 extra = 0
-pattern = "C6 44 24 ? 00 E8 ? ? ? ? 48 8B 4D"
+# xref call site in ItemStackBase::_setItemFromBlockName
+pattern = "E8 ? ? ? ? 0F B7 45 ? 66 89 46 ? 48 8D 4D"
 rip_relative = true
-rip_offset = 6
+rip_offset = 1
 
 [[signatures]]
 name = "?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z"
 relative = false
 extra = 0
-pattern = "40 55 53 57 41 54 41 55 48 8D AC 24"
+# function prologue (tail-call thunk)
+pattern = "48 89 D1 E9 ? ? ? ? CC CC CC CC CC CC CC CC 56 57 53 48 83 EC ? 4C 89 C6"
 
 [[signatures]]
 name = "?tick@Level@@UEAAXXZ"
 relative = false
 extra = 0
-pattern = "48 8B 4B 40 E8 ? ? ? ? 48 8B 4B 48 48"
+# xref call site in GameSession::tick
+pattern = "E8 ? ? ? ? 48 8B 4E ? 48 85 C9 74 ? 48 8B 41"
 rip_relative = true
-rip_offset = 5
+rip_offset = 1
 
 [[signatures]]
 name = "?_trySpreadTo@LiquidBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@H1E@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 41 0F B6 C6 48 8B 4D ? 48 33 CC E8 ? ? ? ? 48 81 C4 ? ? ? ? 41 5F 41 5E 41 5D"
+# xref call site in LiquidBlock::_tick
+pattern = "E8 ? ? ? ? 80 7D ? ? 75 ? 8B 43 ? FF C8"
 rip_relative = true
 rip_offset = 1
 
@@ -284,7 +306,8 @@ rip_offset = 1
 name = "?_loadMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 48 8B 4C 24 ? 48 33 CC E8 ? ? ? ? 48 81 C4 ? ? ? ? 41 5F C3"
+# xref call site in Level::getMapSavedData
+pattern = "E8 ? ? ? ? 48 8B 4C 24 ? 48 31 E1 48 3B 0D ? ? ? ? 74 ? E8 ? ? ? ? CC CC CC 56 48 83 EC"
 rip_relative = true
 rip_offset = 1
 
@@ -292,7 +315,8 @@ rip_offset = 1
 name = "?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 48 89 45 ? 48 85 C0 74 ? 48 8D 4F"
+# xref call site in MinecraftCommands::runCommand
+pattern = "E8 ? ? ? ? 48 85 C0 74 ? 48 89 C7 48 8D 5D ? 48 89 D9 31 D2"
 rip_relative = true
 rip_offset = 1
 
@@ -300,7 +324,8 @@ rip_offset = 1
 name = "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 48 8B 4B ? 48 85 C9 74 ? ? ? 48 8D 54 24"
+# xref call site in DeferredCommand::execute
+pattern = "E8 ? ? ? ? 48 8B 4E ? 48 85 C9 74 ? 8B 44 24"
 rip_relative = true
 rip_offset = 1
 
@@ -308,7 +333,8 @@ rip_offset = 1
 name = "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 90 48 83 BD ? ? ? ? ? 0F 84 ? ? ? ? FF 15"
+# xref call site in NetworkStatistics ctor
+pattern = "E8 ? ? ? ? 48 83 7D ? ? 0F 84 ? ? ? ? 45 31 E4"
 rip_relative = true
 rip_offset = 1
 
@@ -316,63 +342,66 @@ rip_offset = 1
 name = "?knockback@Mob@@UEAAXPEAVActor@@HMMAEBUKnockbackParameters@@@Z"
 relative = false
 extra = 0
-pattern = "F3 0F 11 4C 24 ? E8 ? ? ? ? 48 8D 4B ? 48 83 C4"
-rip_relative = true
-rip_offset = 7
+# function prologue (sole non-vtable call site not unique)
+pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 0F 28 F3"
 
 [[signatures]]
 name = "?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z"
 relative = false
 extra = 0
-pattern = "45 33 C9 4C 8B C7 48 8D 94 24 ? ? ? ? E8 ? ? ? ? 48"
-rip_relative = true
-rip_offset = 15
+# function prologue (call sites are tail-call thunks)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 45 89 CD"
 
 [[signatures]]
 name = "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z"
 relative = false
 extra = 0
-pattern = "40 55 53 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 45 0F B6 F1 44 88 4C 24"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 44 88 CB 4D 89 C7 48 89 D7 48 89 8D"
 
 [[signatures]]
 name = "?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z"
 relative = false
 extra = 0
-pattern = "48 8B C4 48 89 58 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D A8 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78 ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4C 8B F2 48 8B F1 45 33 E4"
+# function prologue
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 D7 48 89 CE E8"
 
 [[signatures]]
 name = "?completeUsingItem@Player@@QEAAXXZ"
 relative = false
 extra = 0
-pattern = "83 FA ? 75 ? 48 8B 49 ? E9"
+# xref call site in Player::normalTick
+pattern = "E8 ? ? ? ? EB ? 48 89 F1 E8 ? ? ? ? 48 89 F1 E8"
 rip_relative = true
-rip_offset = 10
+rip_offset = 1
 
 [[signatures]]
 name = "?drop@Player@@UEAA_NAEBVItemStack@@_N@Z"
 relative = false
 extra = 0
-pattern = "48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 45 0F B6 E0 4C 8B F2 48 8B F9"
+# function prologue
+pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 44 89 C3 48 89 D7 48 89 CE E8"
 
 [[signatures]]
 name = "?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@@Z"
 relative = false
 extra = 0
-pattern = "48 8B C4 48 89 58 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 68 ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78 ? 44 0F 29 40 ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 45 ? 4C 8B FA 4C 8B F1"
+# function prologue
+pattern = "55 41 57 41 56 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 48 89 D7 48 89 CE 48 8D 15"
 
 [[signatures]]
 name = "?stopSleepInBed@Player@@UEAAX_N0@Z"
 relative = false
 extra = 0
-pattern = "44 0F B6 C7 40 0F B6 D6 48 8B CB E8 ? ? ? ? 48 8B"
-rip_relative = true
-rip_offset = 12
+# function prologue (sole non-vtable call site not unique)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 45 89 C6"
 
 [[signatures]]
 name = "?take@Player@@QEAA_NAEAVActor@@HH@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 84 C0 74 ? ? ? ? 48 8B CB 48 8B 40 ? FF 15 ? ? ? ? 48 8B 74 24"
+# xref call site in AbstractArrow::playerTouch
+pattern = "E8 ? ? ? ? 84 C0 74 ? 48 8B 06 48 8B 40 ? 48 89 F1 FF 15 ? ? ? ? 48 8D 05"
 rip_relative = true
 rip_offset = 1
 
@@ -380,21 +409,22 @@ rip_offset = 1
 name = "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z"
 relative = false
 extra = 0
-pattern = "40 55 53 56 57 41 56 48 8D 6C 24 ? 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 45 ? 41 8B F1 45 0F B6 F0"
+# function prologue
+pattern = "41 57 41 56 56 57 55 53 48 81 EC ? ? ? ? 44 0F 29 8C 24 ? ? ? ? 44 0F 29 84 24 ? ? ? ? 0F 29 BC 24 ? ? ? ? 0F 29 B4 24 ? ? ? ? 44 89 CF"
 
 [[signatures]]
 name = "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z"
 relative = false
 extra = 0
-pattern = "8B 8F ? ? ? ? 48 8B D3 E8 ? ? ? ? 48 8B 5C 24 ? 48 83 C4"
-rip_relative = true
-rip_offset = 10
+# function prologue (sole call site is a tail-call thunk)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 48 89 D6 4C 8D 6A"
 
 [[signatures]]
 name = "?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 8B D8 EB ? 33 DB ? ? ? 48 8B 8F"
+# xref call site in RakNetConnector::host
+pattern = "E8 ? ? ? ? 83 F8 ? 0F 92 C3"
 rip_relative = true
 rip_offset = 1
 
@@ -402,13 +432,15 @@ rip_offset = 1
 name = "?createSources@RepositoryFactory@@UEBA?AV?$shared_ptr@VRepositorySources@@@std@@AEBVIResourcePackRepository@@@Z"
 relative = false
 extra = 0
-pattern = "48 89 5C 24 ? 55 56 57 41 56 41 57 48 81 EC ? ? ? ? 49 8B D8 48 8B F2 48 89 54 24"
+# function prologue
+pattern = "55 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 C7 48 89 D6 4C 8D 35"
 
 [[signatures]]
 name = "?initializePackSource@RepositorySources@@QEAAXAEAVPackSourceFactory@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 0F 57 C0 0F 11 45 ? 48 8B 8F"
+# xref call site in RepositoryLoading async lambda
+pattern = "E8 ? ? ? ? 0F 57 C0 0F 29 44 24 ? 48 8B 47"
 rip_relative = true
 rip_offset = 1
 
@@ -416,15 +448,15 @@ rip_offset = 1
 name = "?deserialize@ResourcePackStack@@SA?AV?$unique_ptr@VResourcePackStack@@U?$default_delete@VResourcePackStack@@@std@@@std@@AEAV?$basic_istream@DU?$char_traits@D@std@@@3@AEBV?$not_null@V?$NonOwnerPointer@$$CBVIResourcePackRepository@@@Bedrock@@@gsl@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 90 48 8D 8D ? ? ? ? E8 ? ? ? ? ? 8B 45 ? 80 78"
-rip_relative = true
-rip_offset = 1
+# function prologue (call sites in large fns not unique)
+pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4C 89 4D ? 4C 89 C7 48 89 D6 48 89 CB B9"
 
 [[signatures]]
 name = "?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 48 8D 45 ? 48 89 44 24 ? 4C 89 75 ? B9"
+# xref call site in SayCommand execute lambda
+pattern = "E8 ? ? ? ? 48 8B 55 ? 48 83 FA ? 72"
 rip_relative = true
 rip_offset = 1
 
@@ -432,7 +464,8 @@ rip_offset = 1
 name = "?createBlockDescriptor@ScriptBlockUtils@ScriptModuleMinecraft@@YA?AVBlockDescriptor@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$unordered_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@U?$hash@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@U?$equal_to@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@@std@@@2@@std@@@5@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 90 49 8B 4E ? ? ? ? 49 8D 56"
+# xref call site in ScriptBlock::matches
+pattern = "E8 ? ? ? ? 48 8B 4F ? 48 83 C7 ? 48 8B 01"
 rip_relative = true
 rip_offset = 1
 
@@ -440,27 +473,29 @@ rip_offset = 1
 name = "?_validateLoginPacket@ServerNetworkHandler@@EEAA?AV?$optional@UPlayerAuthenticationInfo@@@std@@AEBVNetworkIdentifier@@AEBVLoginPacket@@@Z"
 relative = false
 extra = 0
-pattern = "40 55 53 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4D 8B E9 4D 8B E0 4C 8B FA 4C 8B F1"
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 CE 4C 89 C3 48 89 D6 48 89 CF 48 8B 01"
 
 [[signatures]]
 name = "?disconnectClientWithMessage@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@@Z"
 relative = false
 extra = 0
-pattern = "45 8B C8 45 33 C0 E8 ? ? ? ? 90 48 8B 54 24"
-rip_relative = true
-rip_offset = 7
+# function prologue (call sites not unique)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 44 89 C3 48 89 D6"
 
 [[signatures]]
 name = "?initializeServer@ServerInstance@@QEAA_N$$QEAUServerInstanceInitArguments@@@Z"
 relative = false
 extra = 0
-pattern = "48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? B8 ? ? ? ? E8 ? ? ? ? 48 2B E0 0F 29 B4 24 ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 4C 8B EA "
+# function prologue
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 B8 ? ? ? ? E8 ? ? ? ? 48 29 C4 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 49 89 D5"
 
 [[signatures]]
 name = "?tryToLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@AEBUPlayerAuthenticationInfo@@@Z"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 44 0F B6 ? 84 C0 75 ? 48 8B ? ? 05 00 00"
+# xref call site in VanillaServerNetworkHandler::handle
+pattern = "E8 ? ? ? ? 41 88 C7 89 C2"
 rip_relative = true
 rip_offset = 1
 
@@ -468,30 +503,35 @@ rip_offset = 1
 name = "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 48 8B F8 48 8B CE E8 ? ? ? ? 80 3D"
+# xref call site in ServerNetworkHandler::sendSubClientLoginMessageLocal
+pattern = "E8 ? ? ? ? 80 3D ? ? ? ? ? 75 ? 4C 89 F9"
 rip_relative = true
-rip_offset = 12
+rip_offset = 1
 
 [[signatures]]
 name = "?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z"
 relative = false
 extra = 0
-pattern = "48 89 5C 24 ? 57 48 83 EC ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 44 24 ? 8B DA 48 8B F9 8B 41"
+# function prologue
+pattern = "55 56 57 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 89 D7 48 89 CE 48 8D 55 ? E8 ? ? ? ? 48 8B 05"
 
 [[signatures]]
 name = "?_tickServerPlayerMovementCorrectionSystem@ServerPlayerMovementCorrectionSystem@@YAXAEBVStrictEntityContext@@AEBUServerPlayerCurrentMovementComponent@@AEBVUserEntityIdentifierComponent@@AEAUServerPlayerMovementComponent@@V?$Optional@$$CBUPassengerComponent@@@@AEAUStateVectorComponent@@AEBV?$ViewT@VStrictEntityContext@@$$CBUActorRotationComponent@@VActorOwnerComponent@@VReplayStateComponent@@UStateVectorComponent@@V?$Optional@$$CBUBoatMovementComponent@@@@@@@Z"
 relative = false
 extra = 0
-pattern = "48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 57 41 54 41 55 41 56 41 57 48 81 EC ? ? ? ? 48 8B 84 24"
+# function prologue
+pattern = "41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 4C 89 CB 4C 89 C7 48 89 D6"
 
 [[signatures]]
 name = "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z"
 relative = false
 extra = 0
-pattern = "48 8B C4 48 89 58 ? 48 89 70 ? 55 57 41 54 41 56 41 57 48 8D 68 ? 48 81 EC ? ? ? ? 0F 29 70 ? 4D 8B F1"
+# function prologue
+pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4C 89 4D ? 4C 89 C6"
 
 [[signatures]]
 name = "?updateWeather@WeatherManager@@QEAAXMHMH@Z"
 relative = false
 extra = 0
-pattern = "48 8B C4 55 53 56 57 41 54 41 55 41 56 41 57 48 8D 68 ? 48 81 EC ? ? ? ? 0F 29 70 ? 0F 29 78 ? 44 0F 29 40 ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 45 ? 0F 28 F3"
+# function prologue
+pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 95"
