@@ -5328,6 +5328,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 </ul>
 <h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
 <ul>
+<li><strong>BREAKING</strong>: <code>Server.getLevel()</code> (<code>server.level</code>) now returns a <code>Level</code> reference and throws (raises in Python) if the level has not been loaded yet, instead of returning a nullable pointer / <code>None</code>. Access it only once the level is available.</li>
 <li><strong>BREAKING</strong>: Moved <code>EffectType</code> from the <code>endstone.effect</code> module to <code>endstone.potion</code> (<code>endstone.potion.EffectType</code>), mirroring Bukkit. The <code>endstone.effect</code> submodule has been removed; update imports accordingly. In C++, the header moved from <code>endstone/effect/effect_type.h</code> to <code>endstone/potion/effect_type.h</code>.</li>
 <li><strong>BREAKING</strong>: Replaced <code>Dimension::Type</code> enum with <code>DimensionId</code>, a namespaced identifier that supports custom
   dimensions. Use <code>Dimension.OVERWORLD</code>, <code>Dimension.NETHER</code>, <code>Dimension.THE_END</code> constants or look up by identifier.

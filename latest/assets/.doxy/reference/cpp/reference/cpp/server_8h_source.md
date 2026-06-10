@@ -101,7 +101,7 @@ public:
 
     [[nodiscard]] virtual Scheduler &getScheduler() const = 0;
 
-    [[nodiscard]] virtual Level *getLevel() const = 0;
+    [[nodiscard]] virtual Level &getLevel() const = 0;
 
     [[nodiscard]] virtual std::vector<Player *> getOnlinePlayers() const = 0;
 

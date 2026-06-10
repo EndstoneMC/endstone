@@ -82,7 +82,7 @@ _Represents a server implementation._
 | virtual [**IpBanList**](classendstone_1_1IpBanList.md) & | [**getIpBanList**](#function-getipbanlist) () const = 0<br>_Gets the IP ban list._  |
 | virtual [**ItemFactory**](classendstone_1_1ItemFactory.md) & | [**getItemFactory**](#function-getitemfactory) () const = 0<br>_Gets the instance of the item factory._  |
 | virtual [**Language**](classendstone_1_1Language.md) & | [**getLanguage**](#function-getlanguage) () const = 0<br>_Gets the current language interface used by the server._  |
-| virtual [**Level**](classendstone_1_1Level.md) \* | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the server level._  |
+| virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the server level._  |
 | virtual [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const = 0<br>_Returns the primary logger associated with this server instance._  |
 | virtual [**MapView**](classendstone_1_1MapView.md) \* | [**getMap**](#function-getmap) (std::int64\_t id) const = 0<br>_Gets the map from the given item ID._  |
 | virtual [**int**](classendstone_1_1Identifier.md) | [**getMaxPlayers**](#function-getmaxplayers) () const = 0<br>_Get the maximum amount of players which can login to this server._  |
@@ -861,7 +861,7 @@ virtual Language & endstone::Server::getLanguage () const = 0
 
 _Gets the server level._ 
 ```C++
-virtual Level * endstone::Server::getLevel () const = 0
+virtual Level & endstone::Server::getLevel () const = 0
 ```
 
 
@@ -872,6 +872,13 @@ virtual Level * endstone::Server::getLevel () const = 0
 
 the server level 
 
+
+
+
+**Exception:**
+
+
+* `std::runtime_error` if the level has not been loaded yet 
 
 
 
