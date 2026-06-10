@@ -14,6 +14,7 @@
 * `#include <format>`
 * `#include <memory>`
 * `#include <numbers>`
+* `#include "endstone/util/pointers.h"`
 * `#include "endstone/util/result.h"`
 * `#include "endstone/util/vector.h"`
 

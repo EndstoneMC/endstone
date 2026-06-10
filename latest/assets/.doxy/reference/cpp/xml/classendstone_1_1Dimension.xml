@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classendstone_1_1Dimension" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Dimension</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; Dimension &gt;</basecompoundref>
     <includes refid="dimension_8h" local="no">endstone/level/dimension.h</includes>
     <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1Dimension_1a99f35a38b77ed0d0927993dab3d588ef" prot="public" static="yes" constexpr="yes" mutable="no">
@@ -119,6 +120,25 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="64" column="20"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Dimension_1abadc4470e26e3d89b6b1f7ba2fb23ff5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Dimension::isValid</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isValid</name>
+        <qualifiedname>endstone::Dimension::isValid</qualifiedname>
+        <briefdescription>
+<para>Checks whether this dimension is still valid (loaded). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> handle can outlive the underlying dimension if it is unloaded; this returns false once that happens, after which accessing the dimension throws.</para>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput> if the dimension is still loaded, <computeroutput>false</computeroutput> otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/dimension.h" line="74" column="19"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1a3dee0a686f00cf7c2c861a798ccf2346" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
         <definition>virtual std::unique_ptr&lt; Block &gt; endstone::Dimension::getBlockAt</definition>
@@ -172,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="74" column="30"/>
+        <location file="include/endstone/level/dimension.h" line="84" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1afd372293472494681775452163da7aed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
@@ -203,7 +223,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="82" column="30"/>
+        <location file="include/endstone/level/dimension.h" line="92" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1a444efcebbf833e779384449f781a10c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
@@ -246,7 +266,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="91" column="18"/>
+        <location file="include/endstone/level/dimension.h" line="101" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1a59ce26e75b00ffc1b6a3dff6ab35331c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
@@ -289,7 +309,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="100" column="30"/>
+        <location file="include/endstone/level/dimension.h" line="110" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1aaf801dc0b5f2d696178b5770d7466d79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
@@ -320,7 +340,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="108" column="30"/>
+        <location file="include/endstone/level/dimension.h" line="118" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1a065a2b1242a809b89dd1502b2ad828b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref> &gt; &gt;</type>
@@ -338,7 +358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="115" column="26"/>
+        <location file="include/endstone/level/dimension.h" line="125" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &amp;</type>
@@ -381,7 +401,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="125" column="19"/>
+        <location file="include/endstone/level/dimension.h" line="135" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1a0106dd8b17e3394081568a0ba631cb26" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
@@ -424,7 +444,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="134" column="20"/>
+        <location file="include/endstone/level/dimension.h" line="144" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1aabf69434e780cefd4856459196439fe1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> * &gt;</type>
@@ -442,7 +462,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="141" column="26"/>
+        <location file="include/endstone/level/dimension.h" line="151" column="26"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -450,7 +470,29 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/level/dimension.h" line="37" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="37" bodyend="142"/>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::Dimension</label>
+        <link refid="classendstone_1_1Dimension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; Dimension &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::Dimension</label>
+        <link refid="classendstone_1_1Dimension"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; Dimension &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/level/dimension.h" line="37" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="37" bodyend="152"/>
     <listofallmembers>
       <member refid="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>dropItem</name></member>
       <member refid="classendstone_1_1Dimension_1aabf69434e780cefd4856459196439fe1" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getActors</name></member>
@@ -463,6 +505,7 @@
       <member refid="classendstone_1_1Dimension_1a541fd7f166a3d746dde92b57e4843f6a" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getLevel</name></member>
       <member refid="classendstone_1_1Dimension_1a065a2b1242a809b89dd1502b2ad828b6" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getLoadedChunks</name></member>
       <member refid="classendstone_1_1Dimension_1ab1287961d58e20d3ac2d66240a232e8b" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getTranslationKey</name></member>
+      <member refid="classendstone_1_1Dimension_1abadc4470e26e3d89b6b1f7ba2fb23ff5" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>isValid</name></member>
       <member refid="classendstone_1_1Dimension_1a726839b7867bac84ebe5633eafedd341" prot="public" virt="non-virtual"><scope>endstone::Dimension</scope><name>Nether</name></member>
       <member refid="classendstone_1_1Dimension_1a99f35a38b77ed0d0927993dab3d588ef" prot="public" virt="non-virtual"><scope>endstone::Dimension</scope><name>Overworld</name></member>
       <member refid="classendstone_1_1Dimension_1a0106dd8b17e3394081568a0ba631cb26" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>spawnActor</name></member>

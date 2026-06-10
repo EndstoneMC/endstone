@@ -29,6 +29,7 @@
 #include <memory>
 #include <numbers>
 
+#include "endstone/util/pointers.h"
 #include "endstone/util/result.h"
 #include "endstone/util/vector.h"
 
@@ -40,15 +41,17 @@ class Dimension;
 class Location {
 public:
     template <std::convertible_to<float> T>
-    Location(Dimension &dimension, T x, T y, T z, const float pitch = 0.0, const float yaw = 0.0)
-        : dimension_(&dimension), x_(static_cast<float>(x)), y_(static_cast<float>(y)), z_(static_cast<float>(z)),
-          pitch_(pitch), yaw_(yaw)
+    Location(const Nullable<Dimension> &dimension, T x, T y, T z, const float pitch = 0.0, const float yaw = 0.0)
+        : dimension_(dimension.get()), x_(static_cast<float>(x)), y_(static_cast<float>(y)),
+          z_(static_cast<float>(z)), pitch_(pitch), yaw_(yaw)
     {
     }
 
-    void setDimension(Dimension &dimension) { dimension_ = &dimension; }
+    void setDimension(const Nullable<Dimension> &dimension) { dimension_ = dimension.get(); }
 
-    [[nodiscard]] Dimension &getDimension() const { return *dimension_; }
+    [[nodiscard]] Nullable<Dimension> getDimension() const;
+
+    [[nodiscard]] bool isDimensionLoaded() const;
 
     [[nodiscard]] std::unique_ptr<Block> getBlock() const;
 
@@ -180,9 +183,10 @@ public:
     bool operator==(const Location &other) const noexcept
     {
         constexpr static float eps = 1e-6F;
-        return dimension_ == other.dimension_ && (std::fabs(x_ - other.x_) <= eps) &&
-               (std::fabs(y_ - other.y_) <= eps) && (std::fabs(z_ - other.z_) <= eps) &&
-               (std::fabs(pitch_ - other.pitch_) <= eps) && (std::fabs(yaw_ - other.yaw_) <= eps);
+        return !dimension_.owner_before(other.dimension_) && !other.dimension_.owner_before(dimension_) &&
+               (std::fabs(x_ - other.x_) <= eps) && (std::fabs(y_ - other.y_) <= eps) &&
+               (std::fabs(z_ - other.z_) <= eps) && (std::fabs(pitch_ - other.pitch_) <= eps) &&
+               (std::fabs(yaw_ - other.yaw_) <= eps);
     }
 
     bool operator!=(const Location &other) const noexcept { return !(*this == other); }
@@ -213,7 +217,7 @@ public:
     }
 
 private:
-    Dimension *dimension_;
+    std::weak_ptr<Dimension> dimension_;
     float x_;
     float y_;
     float z_;
@@ -227,8 +231,13 @@ struct std::formatter<endstone::Location> : std::formatter<std::string_view> {
     template <typename FormatContext>
     auto format(const endstone::Location &self, FormatContext &ctx) const -> format_context::iterator
     {
-        return std::format_to(ctx.out(), "Location(dimension={},x={},y={},z={},pitch={},yaw={})", self.getDimension(),
-                              self.getX(), self.getY(), self.getZ(), self.getPitch(), self.getYaw());
+        if (self.isDimensionLoaded()) {
+            return std::format_to(ctx.out(), "Location(dimension={},x={},y={},z={},pitch={},yaw={})",
+                                  *self.getDimension(), self.getX(), self.getY(), self.getZ(), self.getPitch(),
+                                  self.getYaw());
+        }
+        return std::format_to(ctx.out(), "Location(dimension=null,x={},y={},z={},pitch={},yaw={})", self.getX(),
+                              self.getY(), self.getZ(), self.getPitch(), self.getYaw());
     }
 };
 ```

@@ -52,20 +52,21 @@ _Represents a 3-dimensional location in a dimension within a level._
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Location**](#function-location) ([**Dimension**](classendstone_1_1Dimension.md) & dimension, [**T**](classendstone_1_1Identifier.md) x, [**T**](classendstone_1_1Identifier.md) y, [**T**](classendstone_1_1Identifier.md) z, [**const**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) pitch=0.0, [**const**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) yaw=0.0) <br> |
+|   | [**Location**](#function-location) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; & dimension, [**T**](classendstone_1_1Identifier.md) x, [**T**](classendstone_1_1Identifier.md) y, [**T**](classendstone_1_1Identifier.md) z, [**const**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) pitch=0.0, [**const**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) yaw=0.0) <br> |
 |  [**float**](classendstone_1_1Identifier.md) | [**distance**](#function-distance) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) const<br>_Get the distance between this location and another._  |
 |  [**float**](classendstone_1_1Identifier.md) | [**distanceSquared**](#function-distancesquared) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) const<br>_Get the squared distance between this location and another._  |
 |  std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlock**](#function-getblock) () const<br>_Gets the block at the represented location._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getBlockX**](#function-getblockx) () const<br>_Gets the floored value of the X component, indicating the block that this location is contained with._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getBlockY**](#function-getblocky) () const<br>_Gets the floored value of the Y component, indicating the block that this location is contained with._  |
 |  [**int**](classendstone_1_1Identifier.md) | [**getBlockZ**](#function-getblockz) () const<br>_Gets the floored value of the Z component, indicating the block that this location is contained with._  |
-|  [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const<br>_Gets the dimension that this location resides in._  |
+|  [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; | [**getDimension**](#function-getdimension) () const<br>_Gets the dimension that this location resides in._  |
 |  [**Vector**](classendstone_1_1Vector.md) | [**getDirection**](#function-getdirection) () const<br>_Gets a unit-vector pointing in the direction that this_ [_**Location**_](classendstone_1_1Location.md) _is facing._ |
 |  [**float**](classendstone_1_1Identifier.md) | [**getPitch**](#function-getpitch) () const<br>_Gets the pitch of this location, measured in degrees._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**getX**](#function-getx) () const<br>_Gets the x-coordinate of this location._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**getY**](#function-gety) () const<br>_Gets the y-coordinate of this location._  |
 |  [**float**](classendstone_1_1Identifier.md) | [**getYaw**](#function-getyaw) () const<br>_Gets the yaw of this location, measured in degrees._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**getZ**](#function-getz) () const<br>_Gets the z-coordinate of this location._  |
+|  [**bool**](classendstone_1_1Identifier.md) | [**isDimensionLoaded**](#function-isdimensionloaded) () const<br>_Checks if the dimension in this location is present and still loaded._  |
 |  [**float**](classendstone_1_1Identifier.md) | [**length**](#function-length) () const<br>_Gets the magnitude of the location, defined as sqrt(x^2+y^2+z^2)._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**float**](classendstone_1_1Identifier.md) | [**lengthSquared**](#function-lengthsquared) () const<br>_Gets the magnitude of the location squared._  |
 |   | [**operator Vector**](#function-operator-vector) () noexcept const<br> |
@@ -76,7 +77,7 @@ _Represents a 3-dimensional location in a dimension within a level._
 |  [**Location**](classendstone_1_1Location.md) & | [**operator-=**](#function-operator-) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) <br> |
 |  [**Location**](classendstone_1_1Location.md) & | [**operator-=**](#function-operator-_1) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & other) <br> |
 |  [**bool**](classendstone_1_1Identifier.md) | [**operator==**](#function-operator_4) ([**const**](classendstone_1_1Identifier.md) [**Location**](classendstone_1_1Location.md) & other) noexcept const<br> |
-|  [**void**](classendstone_1_1Identifier.md) | [**setDimension**](#function-setdimension) ([**Dimension**](classendstone_1_1Dimension.md) & dimension) <br>_Sets the dimension that this position resides in._  |
+|  [**void**](classendstone_1_1Identifier.md) | [**setDimension**](#function-setdimension) ([**const**](classendstone_1_1Identifier.md) [**Nullable**](classendstone_1_1Nullable.md)&lt; [**Dimension**](classendstone_1_1Dimension.md) &gt; & dimension) <br>_Sets the dimension that this location resides in._  |
 |  [**Location**](classendstone_1_1Location.md) & | [**setDirection**](#function-setdirection) ([**const**](classendstone_1_1Identifier.md) [**Vector**](classendstone_1_1Vector.md) & vector) <br>_Sets the yaw and pitch to point in the direction of the vector._  |
 |  [**void**](classendstone_1_1Identifier.md) | [**setPitch**](#function-setpitch) ([**float**](classendstone_1_1Identifier.md) pitch) <br>_Sets the pitch of this location, measured in degrees._  |
 |  [**constexpr**](classendstone_1_1Identifier.md) [**void**](classendstone_1_1Identifier.md) | [**setX**](#function-setx) ([**T**](classendstone_1_1Identifier.md) x) <br>_Sets the x-coordinate of this location._  |
@@ -128,7 +129,7 @@ _Represents a 3-dimensional location in a dimension within a level._
 ```C++
 template<std::convertible_to< float > T>
 inline endstone::Location::Location (
-    Dimension & dimension,
+    const  Nullable < Dimension > & dimension,
     T x,
     T y,
     T z,
@@ -316,17 +317,27 @@ block Z
 
 _Gets the dimension that this location resides in._ 
 ```C++
-inline Dimension & endstone::Location::getDimension () const
+inline Nullable < Dimension > endstone::Location::getDimension () const
 ```
 
+
+
+The dimension is held by a weak reference, so this does not keep the dimension loaded.
 
 
 
 
 **Returns:**
 
-[**Dimension**](classendstone_1_1Dimension.md) that contains this location 
+[**Dimension**](classendstone_1_1Dimension.md) that contains this location, or null if it is not set 
 
+
+
+
+**Exception:**
+
+
+* `std::invalid_argument` when the dimension has been unloaded 
 
 
 
@@ -476,6 +487,31 @@ inline constexpr  float endstone::Location::getZ () const
 **Returns:**
 
 z-coordinate 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function isDimensionLoaded 
+
+_Checks if the dimension in this location is present and still loaded._ 
+```C++
+inline bool endstone::Location::isDimensionLoaded () const
+```
+
+
+
+
+
+**Returns:**
+
+true if the dimension is present and loaded, otherwise false 
 
 
 
@@ -664,10 +700,10 @@ inline bool endstone::Location::operator== (
 
 ### function setDimension 
 
-_Sets the dimension that this position resides in._ 
+_Sets the dimension that this location resides in._ 
 ```C++
 inline void endstone::Location::setDimension (
-    Dimension & dimension
+    const  Nullable < Dimension > & dimension
 ) 
 ```
 
@@ -678,7 +714,7 @@ inline void endstone::Location::setDimension (
 **Parameters:**
 
 
-* `dimension` New dimension that this position resides in 
+* `dimension` New dimension that this location resides in, or null 
 
 
 

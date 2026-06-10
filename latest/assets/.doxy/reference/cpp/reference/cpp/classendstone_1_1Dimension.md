@@ -14,6 +14,7 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 
 
 
+Inherits the following classes: std::enable_shared_from_this< Dimension >
 
 
 
@@ -70,6 +71,7 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the level to which this dimension belongs._  |
 | virtual std::vector&lt; std::unique\_ptr&lt; [**Chunk**](classendstone_1_1Chunk.md) &gt; &gt; | [**getLoadedChunks**](#function-getloadedchunks) () = 0<br>_Gets a list of all loaded Chunks._  |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isValid**](#function-isvalid) () const = 0<br>_Checks whether this dimension is still valid (loaded)._  |
 | virtual [**Actor**](classendstone_1_1Actor.md) \* | [**spawnActor**](#function-spawnactor) ([**Location**](classendstone_1_1Location.md) location, [**ActorTypeId**](classendstone_1_1Identifier.md) type) = 0<br>_Creates an actor at the given_ [_**Location**_](classendstone_1_1Location.md) _._ |
 | virtual  | [**~Dimension**](#function-dimension) () = default<br> |
 
@@ -474,6 +476,34 @@ virtual std::string endstone::Dimension::getTranslationKey () const = 0
 **Returns:**
 
 the translation key 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function isValid 
+
+_Checks whether this dimension is still valid (loaded)._ 
+```C++
+virtual bool endstone::Dimension::isValid () const = 0
+```
+
+
+
+A [**Dimension**](classendstone_1_1Dimension.md) handle can outlive the underlying dimension if it is unloaded; this returns false once that happens, after which accessing the dimension throws.
+
+
+
+
+**Returns:**
+
+`true` if the dimension is still loaded, `false` otherwise 
 
 
 

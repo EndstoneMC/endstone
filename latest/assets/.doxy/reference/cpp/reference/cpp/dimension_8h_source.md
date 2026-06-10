@@ -41,7 +41,7 @@ namespace endstone {
 class Dimension;
 using DimensionId = Identifier<Dimension>;
 
-class Dimension {
+class Dimension : public std::enable_shared_from_this<Dimension> {
 public:
     static constexpr auto Overworld = DimensionId::minecraft("overworld");
     static constexpr auto Nether = DimensionId::minecraft("nether");
@@ -54,6 +54,8 @@ public:
     [[nodiscard]] virtual std::string getTranslationKey() const = 0;
 
     [[nodiscard]] virtual Level &getLevel() const = 0;
+
+    [[nodiscard]] virtual bool isValid() const = 0;
 
     [[nodiscard]] virtual std::unique_ptr<Block> getBlockAt(int x, int y, int z) const = 0;
 
@@ -74,15 +76,40 @@ public:
     [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
 };
 
+inline Nullable<Dimension> Location::getDimension() const
+{
+    auto dimension = dimension_.lock();
+    if (!dimension) {
+        // The wrapper is gone: tell "never set" (empty weak_ptr) apart from a wrapper that has expired.
+        const std::weak_ptr<Dimension> unset;
+        const bool was_set = dimension_.owner_before(unset) || unset.owner_before(dimension_);
+        Preconditions::checkArgument(!was_set, "Dimension unloaded");
+        return nullptr;
+    }
+    // The wrapper is alive, but the underlying dimension it points to may have been unloaded.
+    Preconditions::checkArgument(dimension->isValid(), "Dimension unloaded");
+    return dimension;
+}
+
+inline bool Location::isDimensionLoaded() const
+{
+    const auto dimension = dimension_.lock();
+    return dimension && dimension->isValid();
+}
+
 inline std::unique_ptr<Block> Location::getBlock() const
 {
-    return getDimension().getBlockAt(*this);
+    return getDimension().value().getBlockAt(*this);
 }
 
 inline float Location::distanceSquared(const Location &other) const
 {
-    Preconditions::checkArgument(dimension_ == other.dimension_, "Cannot measure distance between {} and {}.",
-                                 dimension_->getId(), other.dimension_->getId());
+    const auto dimension = getDimension();
+    const auto other_dimension = other.getDimension();
+    Preconditions::checkArgument(dimension != nullptr && other_dimension != nullptr,
+                                 "Cannot measure distance to a null dimension.");
+    Preconditions::checkArgument(dimension == other_dimension, "Cannot measure distance between {} and {}.",
+                                 dimension.value().getId(), other_dimension.value().getId());
     return ((x_ - other.x_) * (x_ - other.x_)) + ((y_ - other.y_) * (y_ - other.y_)) +
            ((z_ - other.z_) * (z_ - other.z_));
 }

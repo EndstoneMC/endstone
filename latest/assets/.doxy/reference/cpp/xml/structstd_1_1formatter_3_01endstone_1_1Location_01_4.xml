@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="371" column="10" bodyfile="include/endstone/level/location.h" bodystart="371" bodyend="375"/>
+        <location file="include/endstone/level/location.h" line="383" column="10" bodyfile="include/endstone/level/location.h" bodystart="383" bodyend="392"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -60,7 +60,7 @@
         <label>std::formatter&lt; std::string_view &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/level/location.h" line="369" column="1" bodyfile="include/endstone/level/location.h" bodystart="369" bodyend="376"/>
+    <location file="include/endstone/level/location.h" line="381" column="1" bodyfile="include/endstone/level/location.h" bodystart="381" bodyend="393"/>
     <listofallmembers>
       <member refid="structstd_1_1formatter_3_01endstone_1_1Location_01_4_1adda8e499876fea07fb9681dbb1f3b79f" prot="public" virt="non-virtual"><scope>std::formatter&lt; endstone::Location &gt;</scope><name>format</name></member>
     </listofallmembers>
