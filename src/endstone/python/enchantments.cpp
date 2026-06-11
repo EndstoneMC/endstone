@@ -183,7 +183,7 @@ void init_enchantments(py::module_ &m)
         The `Enchantment`, or `None` if not found.
 )doc", py::return_value_policy::reference)
         .def("__str__", [](const Enchantment &self) { return std::string(self.getId()); })
-        .def("__hash__", [](const Enchantment &self) { return std::hash<EnchantmentId>{}(self.getId()); })
+        .def("__hash__", [](const Enchantment &self) { return py::hash(py::str(std::string(self.getId()))); })
         .def(py::self == py::self)
         .def(py::self != py::self)
         .def(py::self == std::string_view())
