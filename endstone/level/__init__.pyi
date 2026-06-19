@@ -156,6 +156,50 @@ class Dimension:
         A list of all loaded `Chunk`s.
         """
         ...
+    def is_chunk_loaded(self, x: int, z: int) -> bool:
+        """
+        Checks if the `Chunk` at the given coordinates is loaded.
+
+        Args:
+            x: X-coordinate of the chunk.
+            z: Z-coordinate of the chunk.
+
+        Returns:
+            ``True`` if the chunk is loaded, otherwise ``False``.
+        """
+        ...
+    def load_chunk(self, x: int, z: int) -> bool:
+        """
+        Requests the `Chunk` at the given coordinates to be loaded, and keeps it loaded until unloaded again.
+
+        Unlike Java Edition, Bedrock has no synchronous chunk load: this registers a plugin-owned ticket for the chunk,
+        honoured on the next server tick (so the chunk may not be available right away). The chunk stays loaded and ticking
+        until ``unload_chunk`` is called or the server restarts. Intended for keeping a handful of chunks resident, not for
+        loading large regions.
+
+        Args:
+            x: X-coordinate of the chunk.
+            z: Z-coordinate of the chunk.
+
+        Returns:
+            ``True`` if the ticket was registered (or already present), otherwise ``False``.
+        """
+        ...
+    def unload_chunk(self, x: int, z: int) -> bool:
+        """
+        Releases the plugin-owned ticket that ``load_chunk`` placed on the `Chunk` at the given coordinates.
+
+        This only removes Endstone's own ticket; the chunk is unloaded once nothing else keeps it loaded (a nearby player,
+        the spawn area, etc.), so it is a no-op in effect while the chunk is still in use.
+
+        Args:
+            x: X-coordinate of the chunk.
+            z: Z-coordinate of the chunk.
+
+        Returns:
+            ``True`` once the ticket has been released.
+        """
+        ...
     def drop_item(self, location: Location, item: ItemStack) -> Item:
         """
         Drops an item at the specified `Location`.

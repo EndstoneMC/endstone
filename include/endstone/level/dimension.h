@@ -125,6 +125,42 @@ public:
     [[nodiscard]] virtual std::vector<std::unique_ptr<Chunk>> getLoadedChunks() = 0;
 
     /**
+     * Checks if the Chunk at the given coordinates is loaded.
+     *
+     * @param x X-coordinate of the chunk
+     * @param z Z-coordinate of the chunk
+     * @return `true` if the chunk is loaded, otherwise `false`
+     */
+    [[nodiscard]] virtual bool isChunkLoaded(int x, int z) const = 0;
+
+    /**
+     * Requests the Chunk at the given coordinates to be loaded, and keeps it loaded until it is unloaded again.
+     *
+     * Unlike Java Edition, Bedrock has no synchronous chunk load: this registers a plugin-owned ticking ticket for the
+     * chunk, which is honoured on the next server tick (so the chunk may not be available within this call). The chunk
+     * is then kept loaded and ticking until removed with `unloadChunk()`, the server restarts, or the ticket limit is
+     * reached. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.
+     *
+     * @param x X-coordinate of the chunk
+     * @param z Z-coordinate of the chunk
+     * @return `true` if the ticket was registered (or already present), otherwise `false`
+     */
+    virtual bool loadChunk(int x, int z) = 0;
+
+    /**
+     * Releases the plugin-owned ticket that `loadChunk()` placed on the Chunk at the given coordinates.
+     *
+     * This only removes Endstone's own ticket; it never affects `/tickingarea`s or other holders. The chunk is unloaded
+     * once nothing else keeps it loaded (a nearby player, the spawn area, etc.), so this is a no-op in effect while the
+     * chunk is still in use.
+     *
+     * @param x X-coordinate of the chunk
+     * @param z Z-coordinate of the chunk
+     * @return `true` once the ticket has been released
+     */
+    virtual bool unloadChunk(int x, int z) = 0;
+
+    /**
      * Drops an item at the specified Location.
      *
      * @param location Location to drop the item

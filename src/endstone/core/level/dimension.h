@@ -35,6 +35,9 @@ public:
     [[nodiscard]] std::unique_ptr<Block> getHighestBlockAt(int x, int z) const override;
     [[nodiscard]] std::unique_ptr<Block> getHighestBlockAt(Location location) const override;
     [[nodiscard]] std::vector<std::unique_ptr<Chunk>> getLoadedChunks() override;
+    [[nodiscard]] bool isChunkLoaded(int x, int z) const override;
+    bool loadChunk(int x, int z) override;
+    bool unloadChunk(int x, int z) override;
     [[nodiscard]] Item &dropItem(Location location, const ItemStack &item) override;
     [[nodiscard]] Actor *spawnActor(Location location, ActorTypeId type) override;
     [[nodiscard]] std::vector<Actor *> getActors() const override;

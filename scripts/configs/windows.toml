@@ -549,3 +549,17 @@ relative = false
 extra = 0
 # function prologue
 pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 95"
+
+[[signatures]]
+name = "?addArea@TickingAreasManager@@QEAA?AW4AddTickingAreaStatus@@UDimensionType@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVBlockPos@@HW4AreaLimitCheck@1@_NW4TickingAreaLoadMode@@AEAVLevelStorage@@@Z"
+relative = false
+extra = 0
+# function prologue
+pattern = "41 57 41 56 56 57 53 48 81 EC 80 00 00 00 8B 84 24 D8 00 00 00 44 0F B6 94 24 E0 00 00 00 44 0F B6 9C 24 E8 00 00 00 48 8B B4 24 F0 00 00 00"
+
+[[signatures]]
+name = "?removePendingAreaByName@TickingAreasManager@@QEAA?AV?$vector@UTickingAreaDescription@@V?$allocator@UTickingAreaDescription@@@std@@@std@@UDimensionType@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@AEAVLevelStorage@@@Z"
+relative = false
+extra = 0
+# function prologue (extended past the shared prologue at 0x11aa20 to disambiguate)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC A8 00 00 00 48 8D AC 24 80 00 00 00 0F 29 75 10 48 C7 45 08 FE FF FF FF 4C 89 CE 44 89 45 FC 0F 57 F6 0F 11 32"

@@ -104,6 +104,44 @@ void init_level(py::module_ &m, py::classh<Level> &level, py::classh<Dimension> 
         Highest non-empty block.
 )doc")
         .def_property_readonly("loaded_chunks", &Dimension::getLoadedChunks, "A list of all loaded `Chunk`s.")
+        .def("is_chunk_loaded", &Dimension::isChunkLoaded, py::arg("x"), py::arg("z"), R"doc(
+    Checks if the `Chunk` at the given coordinates is loaded.
+
+    Args:
+        x: X-coordinate of the chunk.
+        z: Z-coordinate of the chunk.
+
+    Returns:
+        ``True`` if the chunk is loaded, otherwise ``False``.
+)doc")
+        .def("load_chunk", &Dimension::loadChunk, py::arg("x"), py::arg("z"), R"doc(
+    Requests the `Chunk` at the given coordinates to be loaded, and keeps it loaded until unloaded again.
+
+    Unlike Java Edition, Bedrock has no synchronous chunk load: this registers a plugin-owned ticket for the chunk,
+    honoured on the next server tick (so the chunk may not be available right away). The chunk stays loaded and ticking
+    until ``unload_chunk`` is called or the server restarts. Intended for keeping a handful of chunks resident, not for
+    loading large regions.
+
+    Args:
+        x: X-coordinate of the chunk.
+        z: Z-coordinate of the chunk.
+
+    Returns:
+        ``True`` if the ticket was registered (or already present), otherwise ``False``.
+)doc")
+        .def("unload_chunk", &Dimension::unloadChunk, py::arg("x"), py::arg("z"), R"doc(
+    Releases the plugin-owned ticket that ``load_chunk`` placed on the `Chunk` at the given coordinates.
+
+    This only removes Endstone's own ticket; the chunk is unloaded once nothing else keeps it loaded (a nearby player,
+    the spawn area, etc.), so it is a no-op in effect while the chunk is still in use.
+
+    Args:
+        x: X-coordinate of the chunk.
+        z: Z-coordinate of the chunk.
+
+    Returns:
+        ``True`` once the ticket has been released.
+)doc")
         .def("drop_item", &Dimension::dropItem, py::arg("location"), py::arg("item"),
              py::return_value_policy::reference, R"doc(
     Drops an item at the specified `Location`.

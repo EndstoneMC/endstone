@@ -126,6 +126,7 @@ add_library(bedrock STATIC
         world/level/saveddata/maps/map_decoration.cpp
         world/level/saveddata/maps/map_item_tracked_actor.cpp
         world/level/saveddata/map_item_saved_data.cpp
+        world/level/ticking/ticking_areas_manager.cpp
         world/scores/objective.cpp
         world/scores/scoreboard.cpp
         world/scores/scoreboard_id.cpp

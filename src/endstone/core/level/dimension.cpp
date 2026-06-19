@@ -14,8 +14,11 @@
 
 #include "endstone/core/level/dimension.h"
 
+#include <fmt/format.h>
+
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/world/level/block/bedrock_block_names.h"
+#include "bedrock/world/level/ticking/ticking_areas_manager.h"
 #include "endstone/core/actor/item.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/inventory/item_stack.h"
@@ -23,6 +26,15 @@
 #include "endstone/core/level/level.h"
 
 namespace endstone::core {
+
+namespace {
+// Deterministic, namespaced name for the plugin-owned ticking area that backs loadChunk/unloadChunk for a chunk.
+std::string getChunkTicketName(int x, int z)
+{
+    return fmt::format("endstone_{}_{}", x, z);
+}
+}  // namespace
+
 EndstoneDimension::EndstoneDimension(WeakRef<::Dimension> dimension, EndstoneLevel &level)
     : dimension_(std::move(dimension)), level_(level)
 {
@@ -87,6 +99,33 @@ std::vector<std::unique_ptr<Chunk>> EndstoneDimension::getLoadedChunks()
         }
     }
     return chunks;
+}
+
+bool EndstoneDimension::isChunkLoaded(int x, int z) const
+{
+    const auto chunk = getHandle().getChunkSource().getExistingChunk(ChunkPos(x, z));
+    return chunk && chunk->getState() >= ChunkState::Loaded;
+}
+
+bool EndstoneDimension::loadChunk(int x, int z)
+{
+    auto &level = level_.getHandle();
+    // Pin the chunk with a non-persistent, plugin-owned ticking area (radius 0 == this chunk only). AreaLimitCheck::None
+    // skips the vanilla standalone-area cap. Processed on the next level update, so the chunk is not ready immediately.
+    const auto status = level.getTickingAreasMgr().addArea(getHandle().getDimensionId(), getChunkTicketName(x, z),
+                                                           BlockPos(x * 16, 0, z * 16), 0,
+                                                           TickingAreasManager::AreaLimitCheck::None, false,
+                                                           TickingAreaLoadMode::Default, level.getLevelStorage());
+    return status == AddTickingAreaStatus::Success || status == AddTickingAreaStatus::ConflictingName;
+}
+
+bool EndstoneDimension::unloadChunk(int x, int z)
+{
+    auto &level = level_.getHandle();
+    level.getTickingAreasMgr().removePendingAreaByName(getHandle().getDimensionId(), getChunkTicketName(x, z),
+                                                       level.getLevelStorage());
+    getHandle().flushLevelChunkGarbageCollector();
+    return true;
 }
 
 Item &EndstoneDimension::dropItem(const Location location, const ItemStack &item)
