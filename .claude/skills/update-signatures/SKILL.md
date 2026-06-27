@@ -341,19 +341,23 @@ silently resolve to a **wrong offset** - a false positive that is worse than a
 clean miss (which at least fails loudly). Verify every resolved entry, then fix
 both buckets.
 
-### Verify a "success" - confirm the function, NOT just the resolve
+### Verify a "success" - DECOMPILE every resolved entry
 
 Run with the **old named DB and the new (unnamed/no-PDB) DB both open** (two
-GUI-MCP instances; `list_instances` / `select_instance`). For each resolved
-entry, `VA = 0x140000000 + dumped RVA`; confirm the function there really is the
-intended one. **Judge by behaviour, not size** - a function can grow 2-3x or
-shrink in one version from inlining and still be correct (size-delta alone once
-flagged 13 of 25 as "wrong"; pseudocode confirmed only 5). The full
-equivalence-judgement craft - recompilation-invariant tells (constants, callees,
-caller identity, logic), how a wrong match reads categorically differently, and
-the no-baseline lambda case - lives in **locate-function**; reuse it here.
-`func_profile(include_lists:true)` is the cheap workhorse; reach for `decompile`
-only to settle an ambiguous case.
+GUI-MCP instances; `list_instances` / `select_instance`). For **every** resolved
+entry (the dumper's "successes" too, not just the failures), `VA = 0x140000000 +
+dumped RVA`, then **`decompile` the function there and confirm its behaviour
+matches the old namesake** - the actual logic, distinctive constants, args/return
+shape, named call graph. A stale pattern can silently resolve to a *wrong*
+function (worse than a clean miss, which fails loudly), so every one must be read.
+
+**Do NOT confirm by size, string-overlap, vtable-slot index, address
+neighbourhood, or pattern-uniqueness** - each has silently lied on a real refresh
+(a plausible-size wrong match; a slot that drifted to a stub; a right function in
+an unexpected cluster). Those are triage hints at most; the decompile is the
+verdict. The full equivalence-judgement craft (recompilation-invariant tells, how
+a wrong match reads categorically differently, the no-baseline lambda case) lives
+in **locate-function**; `func_profile` only narrows candidates - it never confirms.
 
 ### Fix a stale/wrong pattern - UNION first, else REPLACE
 

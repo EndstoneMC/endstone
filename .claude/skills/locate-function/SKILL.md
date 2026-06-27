@@ -187,17 +187,38 @@ VanillaStates init's intrusive-list prepend; `Enchant::mEnchants` via
 EDUCATION_METADATA_FILE` via the inline `"education.json"` build.) Any rip ref to
 a given global computes the same address, so a first-match ref is fine.
 
-## Confirm the target (always)
+## Confirm the target — DECOMPILE it (ALWAYS)
 
-Resolve the candidate's `VA = 0x140000000 + RVA` and diff it against the old
-namesake. Size **may** differ (inlining); what should line up is **args / return
-shape / own callees / distinctive constants / control-flow shape**. For a
-call-site or string anchor, confirm the resolve **TARGET**, not just that a
-pattern is unique: a unique pattern at the *wrong* call still yields a wrong
-address. Compute `target = (E8_addr + 5) + sign_extend(rel32)` and check it equals
-the function's entry VA (for a first-match pattern, confirm the *lowest-address*
-match resolves there). Every relocate recipe ends with "confirm vs the old named
-DB."
+**Confirmation means decompiling the candidate and matching its BEHAVIOUR to the
+old named DB. Nothing else counts.** Read the pseudocode and check the
+recompilation-invariant tells: the actual computation/math, distinctive constants
+(FNV bases, magic divisors, a `599` cook-time, `1004` LevelEvent, `0.8f`/`2.6f`),
+the args/return shape, and the named call graph. Confirm the resolve **TARGET**,
+not just that a pattern is unique - a unique pattern at the *wrong* call still
+yields a wrong address (`target = (E8_addr + 5) + sign_extend(rel32)`; for a
+first-match pattern confirm the *lowest-address* match).
+
+**The following are NOT confirmation — each one silently lied during a real
+refresh; do not substitute any of them for decompiling:**
+- **Size / size-ratio.** A wrong function often has a plausible size, and inlining
+  makes the right one grow 2-3x. (A `0x117`-byte hit was the *wrong* getBurnDuration
+  candidate; `tryGetStateFromLegacyData` looked wrong by size yet was right.)
+- **String overlap.** Only clears string-bearing functions; a no-string function or
+  a generic-prologue false match has nothing to compare.
+- **Vtable-slot index.** NOT version-stable — it drifts to a base-class stub
+  (`PistonBlockActor::tick`'s old slot became a 1-byte stub; the real tick was found
+  by content). Re-align by neighbour identity, then **decompile the slot you pick**.
+- **Address neighbourhood / cluster.** Clusters move between builds
+  (`tryGetStateFromLegacyData` resolved into the campfire cluster and was correct).
+- **A unique byte pattern.** Uniqueness proves the bytes are rare, not that they are
+  the intended function.
+
+So the rule is: locate → **decompile the candidate** → confirm the behaviour matches
+the old named DB → only then trust it. When refreshing across a bump, decompile
+**every** resolved entry (successes included), not just the failures: a stale
+pattern can silently resolve to the wrong function, and unlike a clean miss that
+fails loudly, a wrong resolve is invisible until you read the code. Every relocate
+recipe ends with "confirm vs the old named DB."
 
 ## Pitfalls (each cost real time)
 
