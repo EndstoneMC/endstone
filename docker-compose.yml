@@ -1,14 +1,30 @@
-version: '3'
+name: endstone
+
 services:
   endstone:
-    build: .
-    container_name: endstone
-    command: endstone -y
+    build:
+      context: .
     image: endstone/endstone:latest
-    ports:
-      - "19132:19132/udp"
+    container_name: endstone
     restart: unless-stopped
+
+    # Keep STDIN open and allocate a TTY so the Bedrock server console works
+    # when you run `docker attach endstone`.
     stdin_open: true
     tty: true
+
+    # Give the Bedrock server time to save the world before it is killed.
+    stop_grace_period: 15s
+
+    ports:
+      - "19132:19132/udp"  # IPv4 game port
+      - "19133:19133/udp"  # IPv6 game port
+
+    environment:
+      PUID: ${PUID:-1000}
+      PGID: ${PGID:-1000}
+      TZ: ${TZ:-UTC}
+
     volumes:
-      - ./bedrock_server:/home/endstone/bedrock_server:rw
+      # Persist the world, plugins and configuration on the host.
+      - ./data:/data

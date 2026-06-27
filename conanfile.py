@@ -8,6 +8,7 @@ from conan.tools.cmake import CMake, CMakeDeps, CMakeToolchain, cmake_layout
 
 
 class EndstoneRecipe(ConanFile):
+    build_policy = "never"
     name = "endstone"
     package_type = "library"
     license = "Apache-2.0"
