@@ -211,6 +211,70 @@ ABI edits are easy to get subtly wrong - a wrong vtable slot or member offset
 corrupts memory silently, caught by neither a compile nor a PR review. Build
 and test iteratively; do not batch many unverified ABI edits.
 
+## Detecting vtable changes without symbols (Linux RTTI)
+
+The header diff tells you *which* `src/bedrock` classes changed, but for a vtable
+you often want to confirm directly against the binary whether a virtual was
+**added / removed / reordered**, and at exactly which slot. The Linux BDS binary
+strips function names but keeps **RTTI**, so every polymorphic class has a
+`_ZTV<len><Class>` vtable and `_ZTI<len><Class>` typeinfo even in a fresh,
+PDB-less DB. That is enough to diff the layout between the new DB and the old
+named reference DB **without any virtual-function names** (the slot targets are
+`sub_` in *both* DBs - even the "named" reference only has RTTI symbols, not the
+virtuals). Run everything below through the ida-pro `py_eval` (see
+[[reference_idalib_mcp_quirks]]); note that in `py_eval` two top-level `def`s
+cannot call each other (exec scope) - nest helpers in one function.
+
+1. **Walk the vtable from its address point.** Resolve `_ZTV<len><Class>`, skip
+   each `(offset_to_top, _ZTI<len><Class>)` header pair, then collect qwords
+   while the target sits in an executable segment
+   (`ida_segment.getseg(q).perm & 1`) or is `__cxa_pure_virtual`; stop at the
+   first non-pointer / next typeinfo. **Do not gate on `ida_funcs.get_func`** -
+   the fresh DB has not defined most vtable targets as functions yet, so it
+   stops the walk early; exec-segment membership works regardless of analysis.
+2. **Length per class brackets the change.** A primary vtable lays out
+   `[base virtuals][derived adds]` in order, so dumping each class's *own*
+   `_ZTV` length localises any net add/remove to one class. For a hierarchy,
+   the most-derived concrete class (e.g. `ServerPlayer` covers
+   `Actor -> Mob -> Player -> ServerPlayer`) gives the whole chain in one read.
+   Equal length on every level = no net change (but still verify order, below).
+3. **Structural fingerprint** confirms no same-count shuffle, name-free: tag each
+   slot `P` = `__cxa_pure_virtual`, `T` = this-adjusting thunk (`48 83 ef` /
+   `48 81 ef` = `sub rdi`), `R` = repeats previous target (shared-stub runs -
+   the "null sub" landmarks), `.` = normal. Identical tag strings across DBs ⇒
+   no reshuffle of those regions.
+4. **Localise the exact slot by signature alignment.** Per slot, build a
+   recompilation-robust signature - decode the first ~6 instructions
+   (`ida_ua.decode_insn`) keeping mnemonic + operand register classes but
+   **dropping immediates and displacements** (which shift with addresses). Bridge
+   the two IDA processes via a temp file: dump the old DB's per-slot signatures
+   to JSON, switch DBs, recompute, and `difflib.SequenceMatcher` the two lists.
+   `insert`/`delete` opcodes are the real structural change; `replace` opcodes
+   are just functions whose body changed at the same slot - ignore them.
+5. **Confirm by decompile, never by the heuristic alone** (see
+   [[feedback_decompile_to_confirm]]). Decompile the boundary in both DBs: the
+   shifted neighbour (`NEW[slot+1]`) must match `OLD[slot]`, and the inserted
+   `NEW[slot]` is often *referenced by* its shifted neighbour (e.g. a new
+   per-position helper that the shifted loop calls via `vtbl+offset`) - that
+   back-reference is the tightest possible confirmation.
+6. **Map the slot to the Endstone declaration, then validate locally.** Count
+   the header's virtuals (dtor = 2 slots; each overload = 1; skip commented-out;
+   honour `#ifdef __linux__`) plus any base class's slots. **Anchor the count**
+   on a virtual whose address you know in both versions (a hooked one from the
+   toml) - its slot must equal your predicted index. Beware: an Endstone header
+   may omit Linux-only virtuals (the `#blameMojang` ones), so the *cumulative*
+   count can be short of the real vtable; do **not** trust it globally. Instead
+   decompile the few slots *around* the change and match them to the header's
+   neighbouring declarations (a const/non-const overload pair returning the same
+   `this+N` subobject is an unmistakable anchor). If the local sequence lines up,
+   the insert point in the header is pinned regardless of any global gap.
+7. **Add the placeholder.** Only the slot *count* matters for ABI - a single
+   non-dtor `virtual void <name>() = 0;` occupies exactly one slot whatever its
+   signature. Name it as a clearly-marked placeholder (don't invent a Mojang
+   name) and comment the observed signature/behaviour for later identification.
+   If you cannot confirm the change is on *both* platforms, match the existing
+   `#ifdef __linux__` pattern rather than risk shifting the Windows vtable.
+
 # Finish
 
 Re-run the dumper until all symbols resolve (or remaining `0`s are understood).

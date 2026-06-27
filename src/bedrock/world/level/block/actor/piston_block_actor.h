@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/world/level/block/actor/block_actor.h"
+#include "bedrock/world/level/block/actor/vanilla_block_actor.h"
 
 enum class PistonState : char {
     Retracted = 0,
@@ -23,7 +23,7 @@ enum class PistonState : char {
     Retracting = 3,
 };
 
-class PistonBlockActor : public BlockActor {
+class PistonBlockActor : public VanillaBlockActor {
 public:
     ENDSTONE_HOOK void tick(BlockSource &region) override;
 

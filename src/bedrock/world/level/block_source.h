@@ -56,6 +56,7 @@ public:
     [[nodiscard]] virtual Material const &getMaterial(BlockPos const &) const = 0;
     [[nodiscard]] virtual Material const &getMaterial(int, int, int) const = 0;
     [[nodiscard]] virtual bool hasBorderBlock(BlockPos) const = 0;
+    virtual void bedrock_1_26_32_block_source_v15() = 0;  // 1.26.32: new slot
     [[nodiscard]] virtual bool hasChunksAt(Bounds const &, bool) const = 0;
     [[nodiscard]] virtual bool hasChunksAt(BlockPos const &, int, bool) const = 0;
     [[nodiscard]] virtual bool hasChunksAt(AABB const &, bool) const = 0;
@@ -125,6 +126,7 @@ public:
     virtual void postGameEvent(Actor *, const GameEvent &, const BlockPos &, const Block *) = 0;
     virtual void fireBlockChanged(const BlockPos &, uint32_t, const Block &, const Block &, int,
                                   BlockChangedEventTarget, const ActorBlockSyncMessage *, Actor *) = 0;
+    virtual void bedrock_1_26_32_block_source_v65() = 0;  // 1.26.32: new slot
     virtual void blockEvent(const BlockPos &, int, int) = 0;
 };
 

@@ -125,7 +125,8 @@ public:
     BlockType(const std::string &, int, const Material &);
 
     virtual ~BlockType() = default;
-    [[nodiscard]] virtual std::shared_ptr<BlockActor> newBlockEntity(BlockPos const &, Block const &) const = 0;
+    // 1.26.32: newBlockEntity removed from vtable
+    // [[nodiscard]] virtual std::shared_ptr<BlockActor> newBlockEntity(BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual Block const *getNextBlockPermutation(Block const &) const = 0;
     bool hasTag(const HashedString &) const;
     bool hasTag(const HashType64 &) const;
