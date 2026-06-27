@@ -1,4 +1,4 @@
-version = "1.26.30"
+version = "1.26.32"
 platform = "linux"
 executable = "bedrock_server"
 filename = "bedrock_server"
@@ -15,6 +15,12 @@ rip_offset = 3
 name = "Enchant::mEnchants"
 relative = false
 extra = 0
+# 1. find bytes "65 6E 63 68 61 6E 74 6D 65 6E 74 2E 70 72 6F 74 65 63 74 2E 61 6C 6C 00"
+#    = "enchantment.protect.all\0" (unique); its lone data xref is inside Enchant::initEnchants (the huge
+#    function that registers every Enchant)
+# 2. near its top initEnchants resets the Enchant::mEnchants vector (std::vector<std::unique_ptr<Enchant>>)
+#    then push_backs each enchant; that rip-relative vector load is mEnchants
+# 3. confirm vs the old named DB (also read by Enchant::isCompatibleWith)
 pattern = "48 8B 1D ? ? ? ? 48 8B 2D ? ? ? ? 49 89 EE"
 rip_relative = true
 rip_offset = 10
@@ -28,51 +34,68 @@ rip_relative = true
 rip_offset = 11
 
 [[signatures]]
-# 3 Player teleportTo
 name = "_ZN5Actor10teleportToERK4Vec3biib"
 relative = false
 extra = 0
+# 1. locate Player::teleportTo by its label "3 Player teleportTo" (see that entry)
+# 2. Player::teleportTo calls the base Actor::teleportTo (a direct call, forwarding the Vec3/bool/int args) -
+#    follow that call to the target
+# 3. confirm vs the old named DB
 pattern = "E8 ? ? ? ? 48 8B BB ? ? ? ? ? ? ? FF 90 ? ? ? ? 84 C0 0F 85 ? ? ? ? 48 8B 93"
 rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-# commands.agent.createagent.failed
 name = "_ZN12ActorFactory18createSpawnedActorERK25ActorDefinitionIdentifierP5ActorRK4Vec3RK4Vec2"
 relative = false
 extra = 0
+# 1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 61 67 65 6E 74 2E 63 72 65 61 74 65 61 67 65 6E 74 2E 66 61 69 6C 65 64 00"
+#    = "commands.agent.createagent.failed\0" (unique); its xrefs are the two agent createAgent functions
+# 2. follow either createAgent's call to this function - it spawns the agent actor and returns an OwnerPtr<EntityContext>
+# 3. confirm vs the old named DB
 pattern = "E8 ? ? ? ? F6 84 24 ? ? ? ? ? 4D 89 EC"
 rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-# Batched Network TaskGroup
 name = "_ZN18BatchedNetworkPeer10sendPacketERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEN11NetworkPeer11ReliabilityE15Compressibility"
 relative = false
 extra = 0
+# 1. BatchedNetworkPeer's vtable is RTTI-named `_ZTV18BatchedNetworkPeer` (IDA labels it "vtable for
+#    BatchedNetworkPeer"); on Linux RTTI is enabled, so go straight to the vtable
+# 2. read sendPacket's slot index in `_ZTV18BatchedNetworkPeer` in the old named DB and take the same slot in
+#    the new vtable (cross-check the neighbouring slots)
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 89 CD 49 89 F6 48 89 FB 48 83 C7"
 
 [[signatures]]
-# Batched Network TaskGroup
 name = "_ZN18BatchedNetworkPeer14_receivePacketERNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_10shared_ptrINS0_6chrono10time_pointINS9_12steady_clockENS9_8durationIxNS0_5ratioILl1ELl1000000000EEEEEEEEE"
 relative = false
 extra = 0
-pattern = "41 57 41 56 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 48 8B 8F"
+# 1. use BatchedNetworkPeer's RTTI vtable `_ZTV18BatchedNetworkPeer` (see sendPacket)
+# 2. read _receivePacket's slot index in it in the old named DB (a few past sendPacket) and take the same slot
+#    in the new vtable
+pattern = "41 56 53 48 81 EC ? ? ? ? 49 89 F6 48 89 FB 48 8B 8F ? ? ? ?"
 
 [[signatures]]
-# Server stop requested.
 name = "_ZN10BedrockLog10LogDetails7_log_vaE9LogAreaIDjPKciiS3_P13__va_list_tag"
 relative = false
 extra = 0
+# 1. find "Server stop requested." (a message logged through the diagnostic chain); its xref is the `lea` at
+#    that log call, and the `call` after the arg-setup targets Bedrock::Diagnostics::log
+# 2. walk its single-call forwarders down: Diagnostics::log -> a jmp thunk -> BedrockLog::log_va -> _log_va
+#    (two log_va overloads exist; take the one the thunk calls)
+# 3. confirm each hop vs the old named DB (the "{}:{:03}" formatter is the tell)
 pattern = "E8 ? ? ? ? 48 83 C4 ? FF 43"
 rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-# No block descriptor to resolve during deferred resolution
 name = "_ZN15BlockDescriptor13ResolveHelper7resolveEb"
 relative = false
 extra = 0
+# 1. search the ASCII bytes of "No block descriptor to resolve during deferred resolution" + a 00 terminator (unique)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? 4C 89 E7 E8 ? ? ? ? 8B 6B"
 rip_relative = true
 rip_offset = 1
@@ -81,12 +104,24 @@ rip_offset = 1
 name = "_ZNK9BlockType25tryGetStateFromLegacyDataEt"
 relative = false
 extra = 0
+# 1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 69 76 65 2E 69 74 65 6D 2E 6E 6F 74 46 6F 75 6E 64 00"
+#    = "commands.give.item.notFound\0" (unique - both its xrefs are in the caller CommandItem::createInstance)
+# 2. follow createInstance's call to this function (its only large callee, ~0xbb5): it is a legacy-data ->
+#    Block CACHE - a hashtable keyed by the u16 legacy value, building the "minecraft:" name + resolving the
+#    block on a miss, so it reads like a hashtable insert/lookup (NOT a plain switch - don't reject it for that)
+# 3. confirm by behaviour, not address neighbourhood (it may sit in a cluster next to unrelated functions)
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 F5 49 89 FE 4C 8D AF"
 
 [[signatures]]
 name = "_ZNK9BlockType14spawnResourcesER11BlockSourceRK8BlockPosRK5BlockR7IRandomRK20ResourceDropsContext"
 relative = false
 extra = 0
+# 1. find ExperienceOrb::spawnOrbs by its XP-split breakpoints - the immediates 2477, 1237, 617, 307, 149,
+#    73, 37, 17, 7; the lone function holding ALL of them is spawnOrbs
+# 2. spawnResources is the spawnOrbs caller that first calls getResourceDrops + a popResource loop, then
+#    builds the Vec3 from the integer BlockPos at the call site (converting pos->x/z), and follows spawnOrbs
+#    with the ResourceDropsContext visitor (other callers pass an actor's float position)
+# 3. confirm vs the old named DB (also reached from LeavesBlock::randomTick)
 pattern = "E8 ? ? ? ? 48 8B 9B ? ? ? ? 48 8D 3D"
 rip_relative = true
 rip_offset = 1
@@ -95,42 +130,60 @@ rip_offset = 1
 name = "_ZNK17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE"
 relative = false
 extra = 0
+# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 6D 6F 76 69 6E 67 62 6C 6F 63 6B 00" = "minecraft:movingblock\0"
+#    (take the xref in MinecraftCommands::initBlockEnum, not the one in VanillaItems::registerItems)
+# 2. in initBlockEnum that string is copied right after the forEachBlockType call, so the `call` just before
+#    the copy is the target (a function_ref is passed by reference)
+# 3. confirm vs the old named DB
 pattern = "E8 ? ? ? ? ? ? ? 4C 8B BB ? ? ? ? 48 89 DF"
 rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-# 00 80 3e b2 9d ef 3e 00 00 80 3e 00 00 80 3e b2 9d
 name = "_ZN18CampfireBlockActor14_finishCookingER11BlockSourcei"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 49 8B 45 ? 4C 89 EF BE ? ? ? ? FF 50 ? 85 C0"
-rip_relative = true
-rip_offset = 1
+# 1. CampfireBlockActor::tick gates cooking on the cook-time constant 599: `if (cookingProgress >= 599)
+#    _finishCooking(this, blockSource, slot)`. find the block-actor tick (~0xae0) that compares a value to 599
+#    (cmp imm 0x257) - that is CampfireBlockActor::tick (the lowercase "campfire"/"soul_campfire" tag strings
+#    are a DEAD END: they live in a unity init that also builds the ActorDamageCause map, a decoy)
+# 2. _finishCooking is that tick's small (~0x3a0) single-caller callee: it indexes the cooking slot
+#    (this + (slot << 7) + 200), spawns the cooked-result ItemActor at the block centre (+0.5), resets that
+#    slot's cook timer (+712), and clears the slot
+# 3. confirm vs the old named DB (member, takes BlockSource& + int slot)
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 D5 49 89 F6 48 89 FB 48 8B 06 48 89 F7 31 F6"
 
 [[signatures]]
-# commands.generic.blocked_edu
 name = "_ZNK7Command3runERK13CommandOriginR13CommandOutput"
 relative = false
 extra = 0
+# 1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 65 6E 65 72 69 63 2E 62 6C 6F 63 6B 65 64 5F 65 64 75 00"
+#    = "commands.generic.blocked_edu\0" (unique; the plain "commands.generic.disabled" key it also uses is shared)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? 41 39 5F ? 74"
 rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-# OriginType
 name = "_ZN19CommandOriginLoader4loadERK11CompoundTagR11ServerLevel"
 relative = false
 extra = 0
+# 1. find bytes "54 61 72 67 65 74 4F 74 68 65 72 00" = "TargetOther\0" (unique NBT key; "OriginType" also works)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? 48 8D 7C 24 ? ? 89 ? 4C 89 F2 E8 ? ? ? ? 4C 8B 74 24"
 rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-# commands.ability.description
 name = "_ZN15CommandRegistry13addEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorIS6_NS4_IS6_EEEE"
 relative = false
 extra = 0
+# 1. locate registerCommand or registerAlias first (both string-locatable - see their entries)
+# 2. among their callers (per-command setup functions) several also call addEnumValues for enum-typed args
+# 3. addEnumValues is the call taking an enum name + a vector<string> of values (returns an int symbol id)
+# 4. confirm vs the old named DB
 pattern = "E8 ? ? ? ? 41 89 C4 4C 8B 74 24 ? 4D 85 F6"
 rip_relative = true
 rip_offset = 1
@@ -139,6 +192,10 @@ rip_offset = 1
 name = "_ZN15CommandRegistry13registerAliasENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES6_"
 relative = false
 extra = 0
+# 1. find bytes "52 65 67 69 73 74 65 72 20 43 6F 6D 6D 61 6E 64 20 3C 7B 7D 3E 20 41 6C 69 61 73 20 3C 7B 7D 3E 00"
+#    = "Register Command <{}> Alias <{}>\0" (unique)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? F6 84 24 ? ? ? ? ? 75 ? F6 84 24 ? ? ? ? ? 75 ? 0F B6 05"
 rip_relative = true
 rip_offset = 1
@@ -147,6 +204,10 @@ rip_offset = 1
 name = "_ZN15CommandRegistry15registerCommandERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEPKc22CommandPermissionLevel11CommandFlagSC_"
 relative = false
 extra = 0
+# 1. find bytes "52 65 67 69 73 74 65 72 20 43 6F 6D 6D 61 6E 64 20 3C 7B 7D 3E 00" = "Register Command <{}>\0"
+#    (the trailing 00 is essential - without it this is a prefix of registerAlias's superset string; unique)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "41 B8 40 00 00 00 41 B9 80 00 00 00 E8 ? ? ? ? F6 44 24"
 rip_relative = true
 rip_offset = 13
@@ -155,15 +216,24 @@ rip_offset = 13
 name = "_ZN15CommandRegistry24registerOverloadInternalERNS_9SignatureERNS_8OverloadE"
 relative = false
 extra = 0
+# 1. locate CommandRegistry via registerCommand / registerAlias. registerOverloadInternal is the member that,
+#    for each CommandParameterData in an overload, resolves its enum / soft-enum / postfix / chained-subcommand
+#    name to a symbol id, then calls setupOverloadRules and bumps the signature ruleCounter
+# 2. it is reached from the CommandRegistry::registerOverload<...> template instances; setupOverloadRules and
+#    addPostfix are its near-unique callees
+# 3. confirm vs the old named DB
 pattern = "E8 ? ? ? ? 4C 89 E0 48 83 C4 ? 5B 41 5C 41 5D 41 5E 41 5F 5D C3 E8 ? ? ? ? 4D 89 6C 24"
 rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-# INVALID_CHAINED_SUBCOMMAND
 name = "_ZNK15CommandRegistry14symbolToStringENS_6SymbolE"
 relative = false
 extra = 0
+# 1. find bytes "49 4E 56 41 4C 49 44 5F 43 48 41 49 4E 45 44 5F 53 55 42 43 4F 4D 4D 41 4E 44 00"
+#    = "INVALID_CHAINED_SUBCOMMAND\0" (unique)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? 48 8D 74 24 ? 4C 8D 44 24"
 rip_relative = true
 rip_offset = 1
@@ -172,6 +242,11 @@ rip_offset = 1
 name = "_ZNK15CommandRegistry26serializeAvailableCommandsEv"
 relative = false
 extra = 0
+# 1. AvailableCommandsPacket's vtable is RTTI-named `_ZTV23AvailableCommandsPacket`
+# 2. xref its address point (`_ZTV23AvailableCommandsPacket + 0x10`): the code xrefs are the packet's
+#    ctors/dtor plus the functions that build it inline; serializeAvailableCommands is the large builder that
+#    constructs an AvailableCommandsPacket and returns it (not the tiny ctor/dtor/getName)
+# 3. confirm vs the old named DB
 pattern = "E8 ? ? ? ? ? ? ? 4C 89 FF 48 89 DE 4C 89 E2 31 C9"
 rip_relative = true
 rip_offset = 1
@@ -188,12 +263,20 @@ rip_offset = 1
 name = "_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb"
 relative = false
 extra = 0
+# 1. CraftingDataPacket's vtable is RTTI-named `_ZTV18CraftingDataPacket`
+# 2. xref its address point (`+ 0x10`): the code xrefs are the ctor, the dtor, and prepareFromRecipes - the
+#    large builder that constructs the packet inline and returns a unique_ptr<CraftingDataPacket>
+# 3. take the large non-ctor/dtor one
+# 4. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 94 24 ? ? ? ? 48 89 F3"
 
 [[signatures]]
 name = "_ZN15DedicatedServer5startERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKN7Bedrock19ActivationArgumentsE"
 relative = false
 extra = 0
+# 1. find bytes "53 74 61 72 74 69 6E 67 20 53 65 72 76 65 72 00" = "Starting Server\0" (unique)
+# 2. its lone data xref is a `lea` inside this function (logged at startup, just above the "Version: %s" log)
+# 3. walk up to the prologue (its sole caller is main)
 pattern = "E8 ? ? ? ? 89 C5 48 8D BC 24 ? ? ? ? E8 ? ? ? ? ? ? ? 48 89 DF"
 rip_relative = true
 rip_offset = 1
@@ -202,6 +285,11 @@ rip_offset = 1
 name = "_ZN9Explosion7explodeER7IRandom"
 relative = false
 extra = 0
+# 1. Level's vtable is RTTI-named `_ZTV5Level`; it declares two adjacent explode virtuals - the full-param one
+#    and the tiny Level::explode(Explosion&) - read their slot indices in the old named DB
+# 2. step into the tiny Level::explode(Explosion&): it bails on client-side, gets the IRandom, then tail-calls
+#    Explosion::explode(explosion, random) - that call is the target
+# 3. confirm vs the old named DB (member of Explosion, takes IRandom&, returns bool)
 pattern = "E8 ? ? ? ? 89 C3 48 8B 7C 24 ? 48 85 FF 74 ? 66 66 66 66 66 2E 0F 1F 84 00"
 rip_relative = true
 rip_offset = 1
@@ -210,12 +298,21 @@ rip_offset = 1
 name = "_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef"
 relative = false
 extra = 0
+# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 66 75 65 6C 00" = "minecraft:fuel\0" (unique); on linux it is
+#    referenced directly inside getBurnDuration (the FuelItemComponent identifier, built inline)
+# 2. among the "minecraft:fuel" referrers, getBurnDuration is the small one (~0x117) returning
+#    fmaxf(1.0, burnInterval * componentDuration / 10.0)
+# 3. confirm vs the old named DB (static, takes ItemStackBase& + float, returns float)
 pattern = "41 56 53 50 0F 57 C9 80 7F"
 
 [[signatures]]
 name = "_ZNK4Item12readUserDataER13ItemStackBaseR10IDataInputR20ReadOnlyBinaryStream"
 relative = false
 extra = 0
+# 1. Item's vtable is RTTI-named `_ZTV4Item`
+# 2. read readUserData's slot index in `_ZTV4Item` in the old named DB and take the same slot in the new
+#    vtable (it tail-calls _loadBlocksForCanPlaceOnCanDestroy)
+# 3. confirm vs the old named DB
 pattern = "E8 ? ? ? ? 48 89 DF E8 ? ? ? ? 49 89 46 ? 48 83 C4"
 rip_relative = true
 rip_offset = 1
@@ -224,6 +321,11 @@ rip_offset = 1
 name = "_ZN12ItemInstance7fromTagERK11CompoundTag"
 relative = false
 extra = 0
+# 1. find bytes "62 75 79 41 00" = "buyA\0" and "62 75 79 42 00" = "buyB\0" (both unique, both xref into the
+#    caller MerchantRecipe::load)
+# 2. MerchantRecipe::load reads the buyA/buyB child tags and calls this on each - the `call` right after a
+#    buyA/buyB tag lookup is the target
+# 3. confirm vs the old named DB (static, takes a CompoundTag, returns an ItemInstance)
 pattern = "E8 ? ? ? ? 4C 8D AC 24 ? ? ? ? 4C 89 EF 4C 89 F6 E8 ? ? ? ? 48 8D 05"
 rip_relative = true
 rip_offset = 1
@@ -232,12 +334,22 @@ rip_offset = 1
 name = "_ZNK12ItemRegistry12lookupByNameERiNSt3__117basic_string_viewIcNS1_11char_traitsIcEEEE"
 relative = false
 extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 FB 4D 85 C0 74 ? 48 89 D5"
+# 1. find "Item craft into name is empty." + a 00 (unique; lone xref is Shareable::setCraftInto)
+# 2. setCraftInto calls ItemRegistryRef::lookupByName (assert "ItemRegistryRef cannot access ItemRegistry...")
+# 3. that calls the two-int wrapper ItemRegistry::lookupByName (small), which calls the TARGET then reads the
+#    item id (Item::getId)
+# 4. the TARGET is that delegated call - ItemRegistry::lookupByName (the large name->item hash lookup, many callers)
+# 5. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 FB 4D 85 C0"
 
 [[signatures]]
 name = "_ZN13ItemStackBase34_loadBlocksForCanPlaceOnCanDestroyERNSt3__16vectorIPK9BlockTypeNS0_9allocatorIS4_EEEERKNS0_12basic_stringIcNS0_11char_traitsIcEENS5_IcEEEE"
 relative = false
 extra = 0
+# 1. locate Item::readUserData first (see that entry)
+# 2. readUserData reads the CanPlaceOn/CanDestroy block-name lists and calls _loadBlocksForCanPlaceOnCanDestroy
+#    on each (the call right after an IDataInput::readString) - follow that call
+# 3. confirm vs the old named DB (static, takes a vector<const BlockType*>& and a string&)
 pattern = "E8 ? ? ? ? 89 C5 ? ? ? ? 75 ? F6 84 24"
 rip_relative = true
 rip_offset = 1
@@ -246,27 +358,47 @@ rip_offset = 1
 name = "_ZN13ItemStackBase8_setItemEib"
 relative = false
 extra = 0
+# 1. find bytes "57 61 73 50 69 63 6B 65 64 55 70 00" = "WasPickedUp\0" (unique); its lone data xref is a
+#    `lea` inside ItemStackBase::_loadItem
+# 2. a few instructions above that lea, _loadItem calls _setItem with the bool arg set - that call is the target
+# 3. confirm vs the old named DB (member, takes an int slot + bool)
 pattern = "E8 ? ? ? ? E8 ? ? ? ? 48 89 43 ? 80 7B"
 rip_relative = true
 rip_offset = 1
 
-# name is arbitrary, this is actually hooking a lambda function
 [[signatures]]
 name = "_ZN20InventoryTransaction23executeWorldInteractionEPvR6PlayerRK15InventoryAction"
 relative = false
 extra = 0
+# 1. the name is arbitrary - this entry hooks a lambda (_Func_impl<lambda>::_Do_call), not a real method, so
+#    it will NOT resolve by name
+# 2. there is no string/xref recipe: verify the existing pattern still matches uniquely and keep it, else
+#    re-cut by hand against the inventory-transaction interaction lambda
 pattern = "41 57 41 56 53 8B 42"
 
 [[signatures]]
 name = "_ZN11LeavesBlock10randomTickERN11BlockEvents20BlockRandomTickEventE"
 relative = false
 extra = 0
+# 1. anchor the radius-4 leaf-decay neighbour scan by the flood-fill bound 1331 (0x533) - it appears ~10x as
+#    `if (idx >= 1331) break` bounds checks indexing an 11x11x11 grid; the lone function with a cluster of them
+#    is the decay scan
+# 2. on linux LeavesBlock::randomTick is the handler directly: it runs that decay scan and, when a leaf decays,
+#    calls BlockType::spawnResources then sets the block to Air - it is the spawnResources caller in the
+#    leaf-decay cluster (registered as LeavesBlock's BlockRandomTickEvent handler)
+# 3. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 FC 48 BB"
 
 [[signatures]]
 name = "_ZN5Level4tickEv"
 relative = false
 extra = 0
+# 1. find the unique string "Minecraft update" (a profiler scope label; its lone code xref is Minecraft::update,
+#    the main server update loop)
+# 2. inside Minecraft::update the per-tick sim loop calls GameSession::tick; GameSession::tick is tiny and its
+#    main body is Level::tick(mLevel) followed by the network handlers' onTick - that Level::tick call is the target
+# 3. Level::tick is the Level-vtable anchor other entries lean on (explode, updateWeather)
+# 4. confirm vs the old named DB
 pattern = "E8 ? ? ? ? 48 8B 7B ? 48 85 FF 74 ? ? ? ? FF 90"
 rip_relative = true
 rip_offset = 1
@@ -275,9 +407,17 @@ rip_offset = 1
 name = "_ZNK11LiquidBlock12_trySpreadToER11BlockSourceRK8BlockPosiS4_h"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 44 89 EF 8B 74 24"
-rip_relative = true
-rip_offset = 1
+# 1. locate BlockType::spawnResources (the static drop-spawner; see that entry). Block::spawnResources is its
+#    tiny (~0x60) forwarder whose ONLY callee is BlockType::spawnResources - and that forwarder's LONE caller
+#    is LiquidBlock::_trySpreadTo. so: spawnResources -> its tiny single-callee forwarder -> the forwarder's
+#    lone caller is _trySpreadTo (the fizz/string routes are dead ends in 1.26.32 - emitFizzParticle is now a
+#    vtable-only virtual, and the cluster has no usable strings)
+# 2. confirm by its body (protected LiquidBlock spreader, called by LiquidBlock::_tick): a getMinHeight guard,
+#    hasBlock, same-material bail, a type-6 bail, _isLiquidBlocking, then for a drops-bearing block it calls
+#    Block::spawnResources with a ResourceDropsContext (the packed 0x3F80000000000003 = 1.0f + flags), resolves
+#    and setBlocks the spread liquid, and runs liquidSpreadCausesSpawn; _spread is inlined into it (grew ~0x385 -> ~0x454)
+# 3. confirm vs the old named DB (protected, args (BlockSource&, const BlockPos&, int, const BlockPos&, uchar))
+pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 45 89 CD 4D 89 C4 89 4C 24 ? 48 89 D3"
 
 [[signatures]]
 name = "_ZN14MapDataManager15getMapSavedDataE13ActorUniqueID"
@@ -289,6 +429,11 @@ pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 48 89 FB 48 89 74 2
 name = "_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE"
 relative = false
 extra = 0
+# 1. locate run@Command first (string-locatable - see its entry)
+# 2. find run@Command's call site inside MinecraftCommands::runCommand - a tiny function that compiles then
+#    runs: compileCommand(...) -> null-check -> CommandOutput ctor -> Command::run(cmd, ...)
+# 3. compileCommand is the FIRST call there; its returned Command* is null-checked then passed to the run call
+# 4. confirm vs the old named DB
 pattern = " E8 ? ? ? ? 48 89 44 24 ? 48 8B BC 24 ? ? ? ? 4C 39 FF"
 rip_relative = true
 rip_offset = 1
@@ -297,6 +442,10 @@ rip_offset = 1
 name = "_ZNK17MinecraftCommands14executeCommandER14CommandContextb"
 relative = false
 extra = 0
+# 1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 65 6E 65 72 69 63 2E 69 6E 76 61 6C 69 64 4F 72 69 67 69 6E 00"
+#    = "commands.generic.invalidOrigin\0" (unique)
+# 2. its lone data xref is a `lea` inside this function (it also calls Command::run)
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? 89 C5 E9 ? ? ? ? 49 8B 7F"
 rip_relative = true
 rip_offset = 1
@@ -305,47 +454,77 @@ rip_offset = 1
 name = "_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 48 83 BC 24 ? ? ? ? ? 0F 84 ? ? ? ? 41 89 DE"
-rip_relative = true
-rip_offset = 1
+# 1. AvailableCommandsPacket's vtable is RTTI-named `_ZTV23AvailableCommandsPacket`; among its address-point
+#    xrefs is the bare default ctor (??0AvailableCommandsPacket)
+# 2. the bare ctor's ONE caller is make_packet<AvailableCommandsPacket>, whose ONE caller is this function
+#    (the big MinecraftPacketIds -> packet factory switch)
+# 3. confirm vs the old named DB
+pattern = "53 48 89 FB 81 FE ? ? ? ? 77 ?"
 
 [[signatures]]
 name = "_ZN3Mob9knockbackEP5ActoriffRK19KnockbackParameters"
 relative = false
 extra = 0
-pattern = "55 41 56 53 48 81 EC ? ? ? ? 49 89 CE 0F 29 4C 24"
+# 1. Player's vtable is RTTI-named `_ZTV6Player`; knockback is a Mob virtual inherited into Player's vtable
+#    (Mob's own vtable is `_ZTV3Mob`)
+# 2. read knockback's slot index in `_ZTV6Player` in the old named DB and take the same slot in the new vtable
+# 3. confirm vs the old named DB (damps motion + applies knockback rules)
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 CF 0F 29 4C 24 ?"
 
 [[signatures]]
 name = "_ZN13NetworkSystem4sendERK17NetworkIdentifierRK6Packet11SubClientId"
 relative = false
 extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 CD 48 89 D3 49 89 F6"
+# 1. find bytes "48 65 61 64 65 72 20 44 61 74 61 00" = "Header Data\0" (a writeString label; referenced here
+#    AND in NetworkSystem::sendToMultiple)
+# 2. tell them apart: sendToMultiple loops over an id vector (back-edge); this one (send) is straight-line for
+#    a single id
+# 3. confirm by diffing both vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 CD 48 89 D3 49 89 F6 49 89 FF 48 8D 7C 24 ?"
 
 [[signatures]]
 name = "_ZN4Pack10createPackERK15IPackIOProviderRK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEP16PackSourceReportRKN4Core4PathE"
 relative = false
 extra = 0
-pattern = "E8 ? ? ? ? 48 83 C4 ? F6 44 24 ? ? 4C 8B ? 24"
-rip_relative = true
-rip_offset = 1
+# 1. find bytes "Cannot determine which pack manifest to use: Multiple manifests found at the same directory
+#    level in the pack's folder hierarchy.\0" (unique)
+# 2. its lone data xref is a `lea` inside Pack::createPackMetadata
+# 3. createPackMetadata's larger of two callers is Pack::createPack (the static factory returning
+#    unique_ptr<Pack>); it sits immediately before createPackMetadata in .text
+# 4. confirm: builds a pack-context struct, calls createPackMetadata, allocs a 24-byte report, copies manifest
+#    fields (offsets 296/312/320/328/336), stores packType@+180 / packOrigin@+176, returns unique_ptr<Pack>
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4D 89 CC 44 89 44 24 ? 89 CB 49 89 D5 49 89 F6 49 89 FF 48 C7 07 00 00 00 00"
 
 [[signatures]]
-# BA 53 00 00 00 ? ? FF FF FF FF
 name = "_ZN16PistonBlockActor4tickER11BlockSource"
 relative = false
 extra = 0
+# 1. PistonBlockActor's vtable is RTTI-named `_ZTV16PistonBlockActor`
+# 2. the RTTI slot index is NOT version-stable - it DRIFTED (the 1.26.20 slot now holds a base-class stub in
+#    1.26.32), so don't trust a stored slot. read the WHOLE vtable and pick tick as the lone huge override
+#    (~0x14xx, 0 direct callers = pure virtual) in the PistonBlockActor code cluster (near load) - by content,
+#    not slot index
+# 3. confirm tick by its body: piston state machine over PistonState 0/1/2/3, stepping mProgress by +/-0.5
+#    toward 1.0f / 0.0, building a moving-block AABB and calling _moveCollidedEntities / _spawnBlocks
+# 4. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? ? 89 ? FF 47 ? ? 89 F5"
 
 [[signatures]]
 name = "_ZN6Player10teleportToERK4Vec3biib"
 relative = false
 extra = 0
+# 1. find bytes "33 20 50 6C 61 79 65 72 20 74 65 6C 65 70 6F 72 74 54 6F 00" = "3 Player teleportTo\0" (unique)
+# 2. its lone data xref (a validateVec3Position label arg) is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 45 89 CC 44 89 C5 41 89 CE"
 
 [[signatures]]
 name = "_ZN6Player14stopSleepInBedEbb"
 relative = false
 extra = 0
+# 1. find bytes "33 20 73 74 6F 70 53 6C 65 65 70 20 62 65 64 20 70 6F 73 00" = "3 stopSleep bed pos\0" (unique)
+# 2. its lone data xref (a validateVec3Position label arg) is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "0F B6 D3 4C 89 F7 E8 ? ? ? ?"
 rip_relative = true
 rip_offset = 7
@@ -354,13 +533,20 @@ rip_offset = 7
 name = "_ZN6Player15startSleepInBedERK8BlockPos"
 relative = false
 extra = 0
+# 1. find bytes "31 20 73 74 61 72 74 53 6C 65 65 70 49 6E 42 65 64 00" = "1 startSleepInBed\0" (unique)
+# 2. its lone data xref (a validateBlockPos label arg) is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 49 89 F6 48 89 FB 41 BD ? ? ? ? 48 8D 35"
 
 [[signatures]]
-# find stopUsingItem and then xref
 name = "_ZN6Player17completeUsingItemEv"
 relative = false
 extra = 0
+# 1. CompletedUsingItemPacket's vtable is RTTI-named `_ZTV24CompletedUsingItemPacket`
+# 2. among its address-point xrefs (ctor/dtor + builder), Player::completeUsingItem is the builder in the
+#    Player code cluster: it constructs the packet from the in-use item, sends it, and ends by calling
+#    Player::stopUsingItem
+# 3. confirm vs the old named DB (Player member, no args, returns void)
 pattern = "83 F8 01 0F 84 ? ? ? ? 85 C0 75 ? 48 8B BF "
 rip_relative = true
 rip_offset = 5
@@ -369,12 +555,19 @@ rip_offset = 5
 name = "_ZN6Player4dropERK9ItemStackb"
 relative = false
 extra = 0
+# 1. Player's vtable is RTTI-named `_ZTV6Player` (IDA: "vtable for Player")
+# 2. read drop's slot index in `_ZTV6Player` in the old named DB and take the same slot in the new vtable
+# 3. confirm vs the old named DB (player item-drop)
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 FB 48 8B BF ? ? ? ? 48 85 FF 0F 84 ? ? ? ? 49 89 F6 89 D5"
 
 [[signatures]]
 name = "_ZN6Player4takeER5Actorii"
 relative = false
 extra = 0
+# 1. TakeItemActorPacket's vtable is RTTI-named `_ZTV19TakeItemActorPacket`
+# 2. among its address-point xrefs, Player::take is the builder in the Player code cluster: it gets both
+#    actors' runtime ids, constructs the packet and sends it
+# 3. confirm vs the old named DB (Player member, args (Actor&, int, int))
 pattern = "E8 ? ? ? ? 84 C0 74 ? ? ? ? 48 89 DF 5B 41 5C"
 rip_relative = true
 rip_offset = 1
@@ -383,12 +576,19 @@ rip_offset = 1
 name = "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj"
 relative = false
 extra = 0
+# 1. search the ASCII bytes of "sendto failed with code %s (%i) for char %i and length %i for %s." + a 00 (unique)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 55 41 54 53 48 83 EC ? 48 89 F3 8B AF"
 
 [[signatures]]
 name = "_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE"
 relative = false
 extra = 0
+# 1. find "Port [%d] may be in use by another process. Free up port and re-run" + a 00 (unique; logged by
+#    peerStartup when the bind fails), or the "LogIPSupport" label it also references
+# 2. its data xref is a `lea` inside RakPeerHelper::peerStartup (it logs IPv4/IPv6 support then starts the peer)
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? 83 F8 ? 40 0F 92 C5"
 rip_relative = true
 rip_offset = 1
@@ -397,12 +597,24 @@ rip_offset = 1
 name = "_ZNK17RepositoryFactory13createSourcesERK23IResourcePackRepository"
 relative = false
 extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 D3 49 89 FD 48 8D 3D"
+# 1. RepositoryFactory's vtable is RTTI-named `_ZTV17RepositoryFactory`
+# 2. createSources is slot 1 (address-point order: deleting dtor, createSources, createIO); read the index in
+#    the old named DB to be sure
+# 3. confirm by its body: lock AppPlatform, RepositorySourceOptions::create, make_shared<RepositorySources>
+# 4. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 D7 49 89 FD 48 8D 3D ? ? ? ?"
 
 [[signatures]]
 name = "_ZN17RepositorySources20initializePackSourceER17PackSourceFactory"
 relative = false
 extra = 0
+# 1. find the unique string "Resource Repository Async Group"; its lone data xref is a `lea` inside the
+#    ResourcePackRepository ctor, which make_unique's that TaskGroup just above the target call
+# 2. below, the ctor makes two back-to-back member calls: RepositorySources::initializePackSource(mSources,
+#    mPackSourceFactory) then the RefreshQueue initialize; initializePackSource is the FIRST of the pair
+# 3. confirm initializePackSource by its body (rebuilds the pack-source tree via repeated
+#    createCompositePackSource + createInPackagePackSource)
+# 4. confirm vs the old named DB
 pattern = "E8 ? ? ? ? 4C 8B A3 ? ? ? ? 48 8B AB ? ? ? ? 4C 8B 7D"
 rip_relative = true
 rip_offset = 1
@@ -411,6 +623,11 @@ rip_offset = 1
 name = "_ZN17ResourcePackStack11deserializeERNSt3__113basic_istreamIcNS0_11char_traitsIcEEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK23IResourcePackRepositoryEEEENS0_8optionalINS0_12basic_stringIcS3_NS0_9allocatorIcEEEEEE"
 relative = false
 extra = 0
+# 1. find bytes "73 75 62 70 61 63 6B 00" = "subpack\0" (unique); referenced inside
+#    ResourceHelper::deserializePackStackEntry (anchor on subpack, not the shared "pack_id" key)
+# 2. deserializePackStackEntry is reached from the pack-id loop; on linux ResourcePackStack::deserialize is the
+#    thin static wrapper that drives it (returns unique_ptr<ResourcePackStack> from an istream)
+# 3. confirm vs the old named DB (direct callers ServerInstance::initializeServer + FileArchiver::_exportLevelFiles)
 pattern = "E8 ? ? ? ? 48 8B 84 24 ? ? ? ? 48 C7 84 24 ? ? ? ? ? ? ? ? 48 8B BC 24 ? ? ? ? 48 89 84 24 ? ? ? ? 48 85 FF 74 ? ? ? ? FF 50 ? 48 8B BC 24"
 rip_relative = true
 rip_offset = 1
@@ -419,6 +636,11 @@ rip_offset = 1
 name = "_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level"
 relative = false
 extra = 0
+# 1. find bytes "63 68 61 74 2E 74 79 70 65 2E 61 6E 6E 6F 75 6E 63 65 6D 65 6E 74 00" = "chat.type.announcement\0"
+#    (referenced here AND in SayCommand::execute)
+# 2. tell them apart: the two are a caller/callee pair (execute calls this one), so the target is the callee,
+#    and the smaller of the two
+# 3. confirm by diffing both vs the old named DB
 pattern = "E8 ? ? ? ? F6 84 24 ? ? ? ? ? 75 ? 48 8B 44 24 ? 48 89 44 24"
 rip_relative = true
 rip_offset = 1
@@ -427,6 +649,11 @@ rip_offset = 1
 name = "_ZN21ScriptModuleMinecraft16ScriptBlockUtils21createBlockDescriptorENSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEENS1_8optionalINS1_13unordered_mapIS7_NS1_7variantIJiS7_bEEENS1_4hashIS7_EENS1_8equal_toIS7_EENS5_INS1_4pairIKS7_SB_EEEEEEEE"
 relative = false
 extra = 0
+# 1. search the bytes of "Failed to resolve block " followed by a quote (22) and 00 (unique); its xref is in
+#    ScriptBlockPermutation::resolve
+# 2. resolve builds the descriptor then tries to resolve it - createBlockDescriptor is the call taking the
+#    script block-name string + optional<map> states and returning a BlockDescriptor (above the error path)
+# 3. confirm vs the old named DB
 pattern = "E8 ? ? ? ? 80 BC 24 ? ? ? ? ? 75 ? 48 8D BC 24 ? ? ? ? E8 ? ? ? ? 49 89 EF"
 rip_relative = true
 rip_offset = 1
@@ -435,12 +662,18 @@ rip_offset = 1
 name = "_ZN14ServerInstance16initializeServerEO27ServerInstanceInitArguments"
 relative = false
 extra = 0
+# 1. find "Experiment(s) active: " + a 00 (unique; logged by initializeServer when experiments are on)
+# 2. its data xref is a `lea` inside ServerInstance::initializeServer
+# 3. walk up to the prologue (it calls ResourcePackStack::deserialize)
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 FE 48 89 74 24 ? 48 8D 9E"
 
 [[signatures]]
 name = "_ZN20ServerNetworkHandler15tryToLoadPlayerER12ServerPlayerRK17ConnectionRequestRK24PlayerAuthenticationInfo"
 relative = false
 extra = 0
+# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 70 6C 61 79 65 72 2E 30 00" = "minecraft:player.0\0" (unique)
+# 2. its data xrefs are `lea`s inside this function
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? 89 C5 84 C0 75 ? 49 8B 84 24"
 rip_relative = true
 rip_offset = 1
@@ -449,12 +682,20 @@ rip_offset = 1
 name = "_ZN20ServerNetworkHandler20_validateLoginPacketERK17NetworkIdentifierRK11LoginPacket"
 relative = false
 extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 CC 48 89 D3 49 89 F6 49 89 FF ? ? ? 48 89 F7"
+# 1. find bytes "72 65 61 6C 6D 73 00" = "realms\0"; the referenced copy's xref is inside this function (which
+#    reads a cluster of short auth keys: auth/uuid/xid/realms/pid/nid)
+# 2. walk up to the prologue
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 49 89 CC 49 89 D7 49 89 F6 48 89 FB 48 8B 06 48 89 F7 48 89 D6"
 
 [[signatures]]
 name = "_ZN20ServerNetworkHandler24updateServerAnnouncementEv"
 relative = false
 extra = 0
+# 1. find bytes "25 6D 75 6C 74 69 70 6C 61 79 65 72 2E 70 6C 61 79 65 72 2E 6C 65 66 74 00" = "%multiplayer.player.left\0"
+#    (unique); its lone data xref is in ServerNetworkHandler::_onPlayerLeft
+# 2. _onPlayerLeft refreshes the announcement when a player leaves, so updateServerAnnouncement is a this-only
+#    call below the string's use
+# 3. confirm vs the old named DB
 pattern = "E8 ? ? ? ? 80 3D ? ? ? ? ? 75 ? 4C 89 E7"
 rip_relative = true
 rip_offset = 1
@@ -463,15 +704,12 @@ rip_offset = 1
 name = "_ZN20ServerNetworkHandler27disconnectClientWithMessageERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EE"
 relative = false
 extra = 0
+# 1. find "%s has been kicked for flooding the chat." + a 00 (unique); its lone xref is the chat-flood lambda,
+#    where it is the format arg to a diagnostic log call - NOT the disconnect itself
+# 2. disconnectClientWithMessage is the next handler call below that log call: it loads the handler this-ptr and
+#    sets the NetworkIdentifier + a DisconnectFailReason
+# 3. confirm vs the old named DB
 pattern = "E8 ? ? ? ? 48 8D 9C 24 ? ? ? ? 80 7C 24 ? ? 75"
-rip_relative = true
-rip_offset = 1
-
-[[signatures]]
-name = "_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent"
-relative = false
-extra = 0
-pattern = "E8 ? ? ? ? 84 C0 0F 84 ? ? ? ? 48 8D BC 24 ? ? ? ? 48 8D 74 24 ? 48 8D 54 24"
 rip_relative = true
 rip_offset = 1
 
@@ -479,22 +717,41 @@ rip_offset = 1
 name = "_ZN12ServerPlayer15changeDimensionE13DimensionType"
 relative = false
 extra = 0
+# 1. ServerPlayer's vtable is RTTI-named `_ZTV12ServerPlayer`
+# 2. read changeDimension's slot index in `_ZTV12ServerPlayer` in the old named DB and take the same slot in
+#    the new vtable
+# 3. confirm vs the old named DB (builds a ChangeDimensionRequest + requestPlayerChangeDimension)
 pattern = "53 48 83 EC ? 89 F2 48 89 FB 48 8B 4F"
 
 [[signatures]]
 name = "_ZN36ServerPlayerMovementCorrectionSystem41_tickServerPlayerMovementCorrectionSystemERK19StrictEntityContextRK36ServerPlayerCurrentMovementComponentRK29UserEntityIdentifierComponentR29ServerPlayerMovementComponent8OptionalIK18PassengerComponentER20StateVectorComponentRK5ViewTIS0_JK22ActorRotationComponent19ActorOwnerComponent20ReplayStateComponentSF_SB_IK21BoatMovementComponentEEE"
 relative = false
 extra = 0
+# 1. CorrectPlayerMovePredictionPacket's vtable is RTTI-named `_ZTV33CorrectPlayerMovePredictionPacket`
+# 2. among its address-point xrefs is ServerPlayerMovementCorrectionSystem::_afterMovementSimulation (the
+#    builder that constructs the packet); its lone caller is _tickServerPlayerMovementCorrectionSystem
+# 3. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4D 89 CF 48 89 4C 24"
 
 [[signatures]]
 name = "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE"
 relative = false
 extra = 0
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 8C 24 ? ? ? ? 49 89 D6 49 89 FC"
+# 1. find a scoreboard NBT/criteria key this ctor reads - e.g. "LastUniqueID" or "Criteria" (the LevelStorage
+#    "scoreboard" read path is inlined into the ctor); its data xref lands in the ctor body
+# 2. the ctor is the one whose TOP calls the base Scoreboard::Scoreboard ctor, then stores the ServerScoreboard
+#    vtable into this, stores the LevelStorage* arg, and wires the GameplayUserManager NonOwnerPointer (4th arg)
+# 3. confirm vs the old named DB (args: CommandSoftEnumRegistry, LevelStorage*, not_null<NonOwnerPointer<...>>);
+#    sole caller is ServerLevel::_initializeScoreboard
+pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 48 89 8C 24 ? ? ? ? 49 89 D6 48 89 FB"
 
 [[signatures]]
 name = "_ZN14WeatherManager13updateWeatherEfifi"
 relative = false
 extra = 0
+# 1. Level's vtable is RTTI-named `_ZTV5Level`; Level::updateWeather is a slot in it
+# 2. read updateWeather's slot index in `_ZTV5Level` in the old named DB and take the same slot in the new
+#    vtable -> a thunk that tail-jumps to WeatherManager::updateWeather
+# 3. follow the thunk's jmp to WeatherManager::updateWeather and walk to its prologue
+# 4. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 54 53 48 81 EC ? ? ? ? 89 D5 0F 29 4C 24"
