@@ -1,6 +1,6 @@
 ---
 name: update-signatures
-description: Refresh stale byte-pattern signatures in scripts/configs/{windows,linux}.toml so a pattern-only dump_symbols scan resolves every entry, using the ida-pro idalib MCP. Use when the pattern scan misses after a BDS update, or when asked to "update/refresh the signatures", "fix the stale [[signatures]]", or "regenerate the byte patterns".
+description: Refresh stale byte-pattern signatures in scripts/configs/{windows,linux}.toml so a pattern-only dump_symbols scan resolves every entry, using the ida-pro idalib MCP. Use when the pattern scan misses after a BDS update, or when asked to "update/refresh the signatures", "fix the stale [[signatures]]", or "regenerate the byte patterns". To first LOCATE a function from scratch in a no-PDB DB, see the locate-function skill.
 ---
 
 # Update the byte-pattern signatures in the symbol configs
@@ -14,6 +14,15 @@ with the **ida-pro idalib MCP**, leaving already-matching ones untouched.
 
 This is the pattern-only counterpart to `bump-bds` Phase 1: that one re-dumps via
 the PDB; this one re-cuts the byte patterns themselves.
+
+> **Locating vs cutting.** This skill is the **cut-the-pattern** half: classify
+> staleness, regenerate direct/rip/data patterns, pick the most survivable form,
+> verify with `dump_symbols`. To first **locate** a function whose pattern went
+> stale or missing in a fresh, unnamed, no-PDB DB - find its address from scratch
+> by following the numbered locate recipe in the comment block above its entry -
+> use the **locate-function** skill, then return here to cut the byte pattern
+> from the confirmed address. (The locate recipes, vtable-slot maps, string
+> anchors, inlining-drift, and the "improvise, don't bail" craft all live there.)
 
 ## Inputs
 
@@ -213,12 +222,38 @@ offset in the diff).
 
 ### Choosing between a call-site pattern and the direct prologue
 
-**Prefer the direct prologue unless the call-site pattern is enough shorter to
-be worth it - and the bar depends on safety.** A direct prologue can only *miss*
-→ `0` → a loud `consteval` compile error, whereas a **non-unique (first-match)**
-call-site pattern can **silently mis-resolve** to a wrong non-zero address if a
-future build reorders a same-idiom call below the true caller (the hazard
-`bump-bds` warns about). So:
+**The one rule of thumb: pick the pattern most likely to SURVIVE the next BDS
+build.** Everything below serves that. Two levers move survival:
+- **Shorter is better.** Every wildcarded-operand byte is still a fixed opcode
+  byte that a recompile can change; the more fixed bytes, the higher the chance
+  one shifts and breaks the match. Minimise length - never carry a pattern longer
+  than needed for uniqueness, and trim long `xmm`-save prologues especially.
+- **E8 (a `call`/`jmp` site) recovers better.** A call-site pattern keys off the
+  *caller's* surrounding bytes + a wildcarded rel32; even when the target's own
+  prologue is reshuffled by register allocation / frame-size / inlining (which it
+  is, almost every build), the call idiom and its anchor often persist, so the
+  pattern re-resolves. A direct prologue is hostage to exactly the bytes that
+  churn most. So a **short UNIQUE E8 beats a direct prologue** even at comparable
+  length - prefer it.
+
+But survival also means **not mis-resolving**: a direct prologue can only *miss*
+→ `0` → a loud `consteval` error, whereas a **non-unique (first-match)** call-site
+can **silently resolve to the wrong address** if a future build reorders a
+same-idiom call below the true caller. A short E8 only helps survival if it is
+**unique** (or its first `.text` match is provably the target). So the working
+order: **shortest UNIQUE E8 > minimal-unique direct prologue > long anything**.
+Keep the direct prologue when (a) the function is a **virtual / thunk-only**
+target (vtable-dispatched, no `E8` call site exists - confirm via `xrefs_to`:
+all-`data` xrefs, or the lone code caller is a tiny `0x5`/`0x34` thunk), (b) the
+call site is followed by a **generic idiom** (shared_ptr/NonOwnerPointer release
+chains, the security-cookie epilogue, bare member-load+cmp) that won't go unique
+without an over-long pattern, or (c) the shortest unique E8 is **longer** than the
+prologue. (Seen this run: `_trySpreadTo` 40B prologue → 14B unique E8;
+`getBurnDuration`/`resolve@ResolveHelper` ~0x40 xmm prologues → ~22-24B unique E8;
+but `getActorName`/`lookupByName` E8s came out *longer* than the prologue, and
+`createPack`/`prepareFromRecipes`/`deserialize`/`createSpawnedActor` had only
+generic call sites - all kept direct.) The older "⅓-shorter" thresholds below are
+just this principle quantified:
 
 - **Unique** call-site pattern (single `find_bytes` match): no mis-resolve risk -
   keep it when it is at least **~⅓ shorter** than the prologue.
@@ -248,7 +283,9 @@ instructions are rip-relative `mov`/`lea` (`48 8B 0D`, `48 8B 1D`, `48 8D 3D`,
 the first bytes). These have few xrefs, so `find_xref_signatures(<address>)` also
 works if you prefer. (If the VA isn't known, find it via
 `list_globals(filter:"*mEnchants*")` etc., or `find_xref_signatures("<pretty
-name>")`.)
+name>")`.) Any rip ref to a given global computes the same address, so a
+first-match ref is fine. To find the global itself from scratch in a no-PDB DB
+(via its initializer), see **locate-function**.
 
 ## Special cases
 
@@ -271,6 +308,10 @@ found (the user wants this on every entry you touch). Place it right before
 - direct via escape hatch: `# function prologue (<one-line reason>)`, e.g.
   `# function prologue (call sites not unique within 32)`.
 - data global: `# rip-relative load in <Caller>`.
+
+The numbered-step comment block above an entry is the from-scratch locate recipe -
+keep it; it is authored/followed via the **locate-function** skill, not
+regenerated here.
 
 ## Finish - verify and summarize
 
@@ -300,40 +341,19 @@ silently resolve to a **wrong offset** - a false positive that is worse than a
 clean miss (which at least fails loudly). Verify every resolved entry, then fix
 both buckets.
 
-### Verify a "success" - by pseudocode, NOT size
+### Verify a "success" - confirm the function, NOT just the resolve
 
 Run with the **old named DB and the new (unnamed/no-PDB) DB both open** (two
 GUI-MCP instances; `list_instances` / `select_instance`). For each resolved
-entry, `VA = 0x140000000 + dumped RVA`; compare that new-version function to the
-old namesake:
-
-- **Judge equivalence by what the function DOES, not its size.** A function can
-  grow 2-3x (or shrink) across one version from inlining / different compile
-  flags - that is NOT a different function. `knockback`, `createSources`,
-  `serializeAvailableCommands`, `tryGetStateFromLegacyData`, `start`, `peerStartup`
-  each grew ~2-3x and gained dozens of `operator new`/assert boilerplate strings
-  purely from inlining, yet are all correct. Size-delta alone flagged 13 of 25 as
-  "wrong"; pseudocode confirmed only **5**.
-- **Confirm identity by recompilation-invariant tells** (all visible in the
-  pseudocode): distinctive **constants** (FNV bases `0x..cbf29ce484222325`, magic
-  divisors `0x8e38e38e38e38e39`), **caller_count / caller identity** (called by
-  `main` ⇒ `DedicatedServer::start`; 16 `_registerOverload<...>` callers ⇒
-  `registerOverloadInternal`), and the **actual logic** (does it damp motion +
-  apply knockback rules? build a 712-byte object of empty strings into a
-  `shared_ptr`?).
-- **A wrong match is notably different in pseudocode:** `describe` → a 3-line
-  stub; `forEachBlockType` → a registry-teardown loop; `registerCommand` → a
-  red-black-tree lookup; `_sendMessage` → an NBT "Direction" parser;
-  `createBlockDescriptor` → a `JUMPOUT` into mid-code.
-- **No baseline by name?** Some entries hook a lambda (`executeWorldInteraction`)
-  whose mangled name isn't in the old DB. Don't give up - `find_bytes` the entry's
-  **own pattern** against the old binary to get the old-version target, then
-  compare. (Here both resolve to the same `_Func_impl<lambda>::_Do_call`.)
-- `func_profile(include_lists:true)` returns strings+callees+constants+caller_count
-  in a compact payload - the cheap workhorse; reach for full `decompile` only to
-  settle an ambiguous case. A `func_profile` "Not a function" can be a fresh-DB
-  analysis gap, not a bad offset (e.g. `randomTick`'s tail-call thunk) - check the
-  bytes (`get_bytes`) before condemning it.
+entry, `VA = 0x140000000 + dumped RVA`; confirm the function there really is the
+intended one. **Judge by behaviour, not size** - a function can grow 2-3x or
+shrink in one version from inlining and still be correct (size-delta alone once
+flagged 13 of 25 as "wrong"; pseudocode confirmed only 5). The full
+equivalence-judgement craft - recompilation-invariant tells (constants, callees,
+caller identity, logic), how a wrong match reads categorically differently, and
+the no-baseline lambda case - lives in **locate-function**; reuse it here.
+`func_profile(include_lists:true)` is the cheap workhorse; reach for `decompile`
+only to settle an ambiguous case.
 
 ### Fix a stale/wrong pattern - UNION first, else REPLACE
 
@@ -381,24 +401,14 @@ refresh-time notes on top:
   rcx,[this]; lea rdx,[&fnref]; call` - anchor pre-call, extend one post-call insn
   for uniqueness.
 
-### Rename as you recover (decorated names)
+### Locating the function first
 
-As you identify a function - the target OR any helper you walk through (a caller, a
-callee, the lambda behind a `function_ref`) - **rename it in the new DB to its
-decorated/mangled name** (`rename` tool, the full `?name@Scope@@...` string). The
-DB starts all-`sub_`; every name you set makes the next `xrefs_to`/`func_profile`
-readable and compounds. e.g. recovering `_sendMessage@SayCommand` also identifies
-and names its caller `execute@SayCommand`; the `forEachBlockType` hunt names
-`initBlockEnum`.
-
-### Locate an entry by structural prologue search
-
-To find a function's new-version entry with no string/xref handle, take its
-**old-version prologue**, `?`-mask the frame size + `[rbp+disp]`/`lea` immediates,
-and `find_bytes` the opcode skeleton in the new DB. Multiple hits → disambiguate by
-**caller_count / caller identity** (`forEachBlockType`: 2 prologue matches; the real
-one had ~13 callers incl. `initBlockEnum`, the decoy had 1). Then anchor the actual
-pattern on a call site (rip) or the prologue (direct) per the form rule above.
+If an entry is **stale/missing and the function must be re-found from scratch**
+(no current address to cut from), that is the **locate-function** skill: it
+follows the numbered locate recipe (string anchors, indirect caller/callee hops,
+magic-constant anchors, packet vtables, vtable-slot maps, data-global
+initializers) and improvises past inlining / vtable drift. Locate + confirm
+there, then come back to this skill to cut and verify the byte pattern.
 
 ### Neutralize a confirmed-wrong pattern you can't re-find yet
 
@@ -406,183 +416,12 @@ If an entry is confirmed wrong but you can't re-cut it this pass, replace its
 `pattern` with an obvious hex-speak **sentinel** that cannot match, so it fails
 *visibly* (`Pattern not found`) instead of silently mis-resolving to a wrong
 offset. Use a recognizable placeholder, e.g. `0B 50 1E 7E DE CE A5 ED`
-("OBSOLETE DECEASED"). Keep the `# Relocate` block above it - that block is the
-recipe for the eventual re-find.
-
-## Locating a function with no usable pattern - string anchors
-
-When a function has no stable byte pattern (every call site churns, the prologue
-keeps shifting), or you must bootstrap a *fresh, unnamed* DB with no PDB at all,
-relocate it by a **unique string it references**. The recipe a human/agent runs
-in the new DB:
-
-1. The function references a distinctive string literal (an error/log message, a
-   self-naming validation label, a command/translation key, an NBT key).
-2. Search the binary for that string's bytes **including the `00` terminator**
-   (the null pins the *end*, so a longer string sharing the prefix won't match).
-3. The string's **data xref** is a `lea`/`mov` inside the target function - walk
-   up to the prologue. Like the call-site patterns, the match need only *resolve
-   to the target*; a first match that lands in the right function is enough.
-
-This is the byproduct stored as the `# Relocate (unnamed DB, string method): ...`
-comment blocks in `scripts/configs/windows.toml` - one per entry where it works.
-
-### Triaging which functions can use it (at scale)
-
-Drive the named DB (GUI MCP attached to a PDB-named `.i64`, or idalib) with
-`func_profile`, **not** full `decompile` - 66 pseudocode dumps exhaust context:
-
-1. **Filter cheaply:** `func_profile(queries:[...], include_lists:false)` returns
-   `string_ref_count` per function in a tiny payload. `0` -> **no string** (fall
-   back to call-site/vtable).
-2. **Inspect strings:** for the nonzero ones, `func_profile(include_lists:true)`
-   returns the `strings` list (addr/length/text - the body's string refs without
-   the pseudocode noise). Judge each:
-   - **Usable (unique):** self-naming validation labels (`"1 startSleepInBed"`),
-     specific content-log/error messages (`"No block descriptor to resolve
-     during deferred resolution"`), command/translation keys, NBT keys.
-   - **NOT usable (generic boilerplate):** `NonOwnerPointer` asserts
-     (`"Accessing a null NonOwnerPointer"`, the `D:\a\_work\1\s\...` file paths,
-     `"T *Bedrock::NonOwnerPointer<...>::_get()..."`), `"%s"` / `"\n"`,
-     `BinaryStream::writeString` field labels (`"Data"`) - referenced by hundreds
-     of functions, so they identify nothing. A high `string_ref_count` is often
-     *all* boilerplate.
-3. **Verify the candidate:** `find_bytes("<hex> 00")` returns a single match (or a
-   first match that resolves to the target); `xrefs_to(stringAddr)` shows its
-   (lone) data xref inside the target function. Only then write the comment.
-
-### Indirect: reach a no-string function through a string-locatable caller
-
-A function with no usable string is still locatable if a **string-locatable
-function calls it** - locate the caller by its string, then follow the call to
-the target. Common for **virtual base methods**: a derived override carries a
-self-naming validation label and calls its base down the class hierarchy.
-
-Worked example - `Actor::teleportTo` (`string_ref_count = 0`):
-- `Player::teleportTo` has the unique label `"3 Player teleportTo"` (single
-  `find_bytes` match, single xref, a `validateVec3Position` arg) -> locate it.
-- It calls the base `Mob::teleportTo`, a 5-byte `jmp` thunk that tail-jumps to
-  `Actor::teleportTo` -> follow the call/thunk to the target.
-
-So even a `0`-string virtual often has a one/two-hop path from a string-bearing
-derived override or sibling. Confirm the final call target's address equals the
-symbol's RVA before trusting it. This is the tier between a direct string and the
-vtable/call-site fallback.
-
-**Down a forwarder chain (deep utility, e.g. a logger).** When the target is a
-widely-used helper reached only through forwarders, anchor on a string at a
-*call site* of the chain's entry and walk **down** to it - the same string
-locates both the function that *contains* it and the *call target* it feeds.
-`_log_va` (`BedrockLog`) has no string and sits at the bottom of the diagnostic
-log chain. A log site like `start@DedicatedServer` does
-`Bedrock::Diagnostics::log(area, .., "DedicatedServer::start", 412, "Starting
-Server")`; the strings are `lea`'d right before the `call`, so a message
-string's xref *is* that call site and the `call` target is `Diagnostics::log` ->
-its single-call forwarders run `Diagnostics::log -> 5-byte jmp thunk ->
-BedrockLog::log_va -> _log_va`. Anchor on the **message** (`"Starting Server"`),
-not the function-name label (`"DedicatedServer::start"` only stays unique with
-its trailing `00` - it prefixes the anonymous-`operator()` string). Watch for
-overloads (two `log_va`s here - take the one the thunk calls) and confirm every
-hop against the old named DB.
-
-**Anchor on a sibling call.** When F has no string and no string-bearing caller,
-but it shares a small caller with an *already-locatable* function G (the two are
-called adjacently there), locate G first, find that shared caller through G's
-xref, and F is the neighbouring `call`. e.g. `MinecraftCommands::compileCommand`
-has no string, but `MinecraftCommands::runCommand` is tiny -
-`compileCommand(...) -> null-check -> CommandOutput ctor -> Command::run(cmd,
-...)`; `run@Command` is string-locatable, so locate it, step up to `runCommand`,
-and `compileCommand` is the first call (its returned `Command*` is what feeds the
-`run` call). This chains an anchor you already have into one you don't.
-
-**Via a packet/object vtable (RTTI-name string).** A class whose `getName()`
-returns its own name string is locatable through its vtable - and so are its
-ctor and the ctor's callers. e.g. `serializeAvailableCommands` builds an
-`AvailableCommandsPacket`: search `"AvailableCommandsPacket"` -> its code xref is
-the tiny `getName` virtual -> `getName`'s address is a *slot* in the packet
-vtable (its data xref) -> walk up to the vtable start -> xref that to the ctors
-that store it into `this`. Here the payload ctor's lone caller *is*
-`serializeAvailableCommands`; the bare ctor feeds `make_packet<T>` whose lone
-caller is `MinecraftPackets::createPacket`. So one RTTI-name string unlocks the
-packet's `getName`, vtable, ctors, and their (often single) callers - reuse it
-for any `*Packet` whose builder/factory you need. **The essence is the vtable:**
-the ctor is often *inlined* into the builder, so xref the **vtable start**
-directly - its code xrefs are the ctor, the dtor, and any function that stores
-the vtable inline; pick the non-ctor/dtor one. e.g. `prepareFromRecipes` builds a
-`CraftingDataPacket` inline (shows up as a vtable xref), and
-`_tickServerPlayerMovementCorrectionSystem` is reached 3 hops down a
-`CorrectPlayerMovePredictionPacket` payload ctor -> `_afterMovementSimulation` ->
-the tick.
-
-**Vtable as a slot map (class virtuals).** Once *one* virtual of a class is
-located (by any tactic above), its address is a slot in the class vtable - so you
-have the vtable. Every *other* virtual of that class is then a fixed slot whose
-index barely drifts between versions: read the target's slot **from the old named
-DB** (relative to your anchor virtual) and take the same slot in the new vtable.
-e.g. `drop@Player` / `changeDimension@ServerPlayer` carry no string, but
-`Player`/`ServerPlayer` have string-located virtuals (`teleportTo@Player`,
-`startSleepInBed`) to anchor the vtable; in 1.26.20 `drop`'s slot is ~0x2F8 above
-`teleportTo`'s, the same offset in the Player and derived ServerPlayer vtables.
-Cross-check the neighbouring slots against the old DB to absorb any drift from
-inserted virtuals. This is the most general tactic - any class with one located
-virtual exposes all the rest.
-
-### Disambiguating when a string maps to >1 function
-
-A string may not be a clean 1:1 locator: `find_bytes` can return several copies,
-or `xrefs_to` can show it referenced by 2+ functions. The relocate comment must
-be resolvable **inside the new unnamed DB** - so never disambiguate by a *named
-callee* (there it is just `sub_...`). You normally run this with the **old named
-DB open beside the new one**, so resolve the ambiguity by **structural
-similarity** against the old DB, using only name-independent tells:
-
-- **Unreferenced copies drop out.** Of N `find_bytes` matches, only those with a
-  code xref are candidates (`"realms"`: 3 byte-matches, but 2 are tails of
-  neighbouring strings with zero xrefs - only the referenced one counts).
-- **Caller/callee pairing.** If the two referencing functions are a caller/callee
-  pair, that orders them (`"chat.type.announcement"`: `execute` calls
-  `_sendMessage`, so the target is the *callee*, also the smaller).
-- **Control-flow shape / size.** A loop/back-edge vs straight-line, function size,
-  basic-block count (`"Header Data"`: `sendToMultiple` loops an id vector; `send`
-  is straight-line for one id).
-- **vtable presence.** A virtual override has a data xref from a vtable; a static
-  helper does not.
-
-Then confirm the survivor by diffing it against the old named DB (size +
-call-graph). Tag the comment `- N xrefs` so the next person knows it is not a
-clean 1:1 hit. Do **not** lean on a `Named::callee` as the deciding cue.
-
-### Writing the relocate comment so an agent can actually follow it
-
-Format each block as **numbered steps** (`1.`, `2.`, ...), and for the
-caller->target hop give **local landmarks at the call site**, not just "it calls
-the target". In a large caller "somewhere it calls X" is unfollowable; pin the
-exact `call` with concrete nearby cues, e.g.:
-
-- a **store of a specific constant** right after the call (`mov dword [rsi+N],
-  <imm>` - a type tag / enum), or the call sits between two recognisable stores;
-- the call is **inside an `if` comparing to a specific value** (a distinctive
-  `cmp .., <imm>` / branch);
-- a distinctive **immediate / enum value** loaded for an argument just before it.
-
-Close with a **structural similarity check**: the resolved target should match
-the old named DB's function (size, args, return shape, its own callees). That
-turns "diff against the old DB" into a concrete confirmation, and is how you tell
-the right `call` from a sibling call in the same caller.
-
-### String-anchor gotchas
-
-- **`get_string` can under-report length** - IDA may define the string item
-  shorter than the real literal (it showed `"1 startSleepIn"` for
-  `"1 startSleepInBed"`). Author the hex from `get_bytes(stringAddr, N)`, reading
-  past the visible end to the `00` - not from the string item.
-- **Three buckets:** unique-string (write the `# Relocate` block) - generic-only
-  (has strings, none usable) - none. The latter two fall back to a call-site
-  pattern in a named caller or the vtable slot (e.g. `Actor::teleportTo` is a
-  virtual with no string -> locate via its vtable entry, or the `lea`-anchored
-  call site in `Agent::teleportTo` it already uses).
+("OBSOLETE DECEASED"). Keep the numbered locate-recipe comment block above it -
+that block is the recipe for the eventual re-find (see **locate-function**).
 
 ## Record findings here
 
-Append durable, tooling-level lessons (idalib quirks, new escape hatches) to the
-gotchas above. Keep per-version specifics in commit messages / CHANGELOG.
+Append durable, tooling-level lessons (idalib quirks, new escape hatches, pattern
+survival rules) to the gotchas above. Keep per-version specifics in commit
+messages / CHANGELOG. From-scratch locate craft (anchors, vtable maps, inlining
+drift) belongs in **locate-function**.

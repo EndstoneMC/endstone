@@ -7,16 +7,14 @@ filename = "bedrock_server"
 name = "BlockState::StateListNode::mHead"
 relative = false
 extra = 0
-# Relocate (unnamed DB, data global - intrusive list head, via a state name in its initializer):
-#   1. find bytes "63 6F 6E 64 69 74 69 6F 6E 61 6C 5F 62 69 74 00" = "conditional_bit\0" (unique); its lone
-#      data xref is in a giant unity static-initializer (_GLOBAL__sub_I_unity_*) that constructs the
-#      VanillaStates BlockStates and links each into the StateListNode list
-#   2. right by the ConditionalBit HashedString construction the init does the intrusive prepend:
-#      `v = mHead; if (mHead) mHead->mPrev = &ConditionalBit.mNode; node.mNext = v; mHead = &node` - the
-#      rip-relative load/store of that head pointer is BlockState::StateListNode::mHead
-#   3. confirm vs the old named DB (cross-check: the same global is the list head walked by
-#      BlockState::forEachState and updated by the CustomBlockStateVariant ctor / state atexit destructors)
-# rip-relative ref in a StateListNode state ctor, intrusive-list prepend (first match - every match references the same mHead)
+# 1. find bytes "63 6F 6E 64 69 74 69 6F 6E 61 6C 5F 62 69 74 00" = "conditional_bit\0" (unique); its lone
+#    data xref is in a giant unity static-initializer (_GLOBAL__sub_I_unity_*) that constructs the
+#    VanillaStates BlockStates and links each into the StateListNode list
+# 2. right by the ConditionalBit HashedString construction the init does the intrusive prepend:
+#    `v = mHead; if (mHead) mHead->mPrev = &ConditionalBit.mNode; node.mNext = v; mHead = &node` - the
+#    rip-relative load/store of that head pointer is BlockState::StateListNode::mHead
+# 3. confirm vs the old named DB (cross-check: the same global is the list head walked by
+#    BlockState::forEachState and updated by the CustomBlockStateVariant ctor / state atexit destructors)
 pattern = "48 39 0D ? ? ? ? 74 ? 48 8B 0D ? ? ? ? 48 85 C0 74 ? 48 89 01 48 8B 05 ? ? ? ? 48 8B 0D"
 rip_relative = true
 rip_offset = 3
@@ -25,16 +23,14 @@ rip_offset = 3
 name = "Enchant::mEnchants"
 relative = false
 extra = 0
-# Relocate (unnamed DB, data global - via its initializer):
-#   1. find bytes "65 6E 63 68 61 6E 74 6D 65 6E 74 2E 70 72 6F 74 65 63 74 2E 61 6C 6C 00"
-#      = "enchantment.protect.all\0" (unique); its lone data xref is inside Enchant::initEnchants (the huge
-#      ~0x36ce function that registers every Enchant)
-#   2. initEnchants references the Enchant::mEnchants global (a std::vector<std::unique_ptr<Enchant>>) near
-#      its top - it resets the vector then push_backs each enchant; that rip-relative vector load is
-#      mEnchants (cross-check: the same global is read by the tiny Enchant::isCompatibleWith and freed by
-#      the mEnchants atexit destructor)
-#   3. confirm the global vs the old named DB (std::vector<std::unique_ptr<Enchant>>)
-# rip-relative load at the top of Enchant::initEnchants (the mEnchants vector clear loop)
+# 1. find bytes "65 6E 63 68 61 6E 74 6D 65 6E 74 2E 70 72 6F 74 65 63 74 2E 61 6C 6C 00"
+#    = "enchantment.protect.all\0" (unique); its lone data xref is inside Enchant::initEnchants (the huge
+#    ~0x36ce function that registers every Enchant)
+# 2. initEnchants references the Enchant::mEnchants global (a std::vector<std::unique_ptr<Enchant>>) near
+#    its top - it resets the vector then push_backs each enchant; that rip-relative vector load is
+#    mEnchants (cross-check: the same global is read by the tiny Enchant::isCompatibleWith and freed by
+#    the mEnchants atexit destructor)
+# 3. confirm the global vs the old named DB (std::vector<std::unique_ptr<Enchant>>)
 pattern = "48 8B 1D ? ? ? ? 48 8B 3D ? ? ? ? 48 39 FB 75 ? EB"
 rip_relative = true
 rip_offset = 3
@@ -43,103 +39,88 @@ rip_offset = 3
 name = "?getI18n@@YAAEAVI18n@@XZ"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via the I18nImpl singleton ctor):
-#   1. find bytes "70 61 63 6B 2E 64 65 73 63 72 69 70 74 69 6F 6E 00" = "pack.description\0" (unique); its
-#      lone data xref is inside I18nImpl::I18nImpl, which seeds the default manifest-localization keys
-#   2. I18nImpl::I18nImpl has two callers; getI18n is the tiny one (~0x86) that thread-safe-initializes a
-#      static I18nImpl (Init_thread_header/footer + atexit) and returns its fixed address - the I18n
-#      singleton accessor (the other caller, Localization::_replaceUTCDateTimeIdentifier, is large)
-#   3. confirm the target vs the old named DB (returns I18n&, i.e. the static I18nImpl)
-# function prologue (first match)
+# 1. find bytes "70 61 63 6B 2E 64 65 73 63 72 69 70 74 69 6F 6E 00" = "pack.description\0" (unique); its
+#    lone data xref is inside I18nImpl::I18nImpl, which seeds the default manifest-localization keys
+# 2. I18nImpl::I18nImpl has two callers; getI18n is the tiny one (~0x86) that thread-safe-initializes a
+#    static I18nImpl (Init_thread_header/footer + atexit) and returns its fixed address - the I18n
+#    singleton accessor (the other caller, Localization::_replaceUTCDateTimeIdentifier, is large)
+# 3. confirm the target vs the old named DB (returns I18n&, i.e. the static I18nImpl)
 pattern = "55 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 8B 05 ? ? ? ? 8B 0D ? ? ? ? 65 48 8B 14 25 ? ? ? ? 48 8B 0C CA 3B 81 ? ? ? ? 7F ? 48 8D 05 ? ? ? ? 48 83 C4 ? 5D C3"
 
 [[signatures]]
 name = "?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - has no string of its own):
-#   1. locate Player::teleportTo by its label "3 Player teleportTo" (see that entry)
-#   2. follow its base teleportTo call -> a 5-byte jmp thunk (Mob::teleportTo) -> Actor::teleportTo
-#   3. fallback: the call site below in Agent::teleportTo
-# function prologue
+# 1. locate Player::teleportTo by its label "3 Player teleportTo" (see that entry)
+# 2. follow its base teleportTo call -> a 5-byte jmp thunk (Mob::teleportTo) -> Actor::teleportTo
+# 3. fallback: the call site below in Agent::teleportTo
 pattern = "41 57 41 56 41 54 56 57 55 53 48 81 EC ? ? ? ? 44 0F 29 94 24 ? ? ? ? 44 0F 29 8C 24 ? ? ? ? 44 0F 29 84 24 ? ? ? ? 0F 29 BC 24 ? ? ? ? 0F 29 74 24 ? 48 89 D7 48 89 CE 45 84 C0"
 
 [[signatures]]
 name = "?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own):
-#   1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 61 67 65 6E 74 2E 63 72 65 61 74 65 61 67 65 6E 74 2E 66 61 69 6C 65 64 00"
-#      = "commands.agent.createagent.failed\0" (unique); its xrefs are in the two agent createAgent functions
-#      (both call createSpawnedActor)
-#   2. follow either createAgent's call to this function - it spawns the agent actor and returns an
-#      OwnerPtr<EntityContext>
-#   3. confirm the callee vs the old named DB
-# function prologue, union (1.26.20+1.26.32)
+# 1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 61 67 65 6E 74 2E 63 72 65 61 74 65 61 67 65 6E 74 2E 66 61 69 6C 65 64 00"
+#    = "commands.agent.createagent.failed\0" (unique); its xrefs are in the two agent createAgent functions
+#    (both call createSpawnedActor)
+# 2. follow either createAgent's call to this function - it spawns the agent actor and returns an
+#    OwnerPtr<EntityContext>
+# 3. confirm the callee vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? FE FF FF FF 4C 89 CF 4C 89 C3 48 89 D6 49 89 CE 4C 8B"
 
 [[signatures]]
 name = "?sendPacket@BatchedNetworkPeer@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Reliability@NetworkPeer@@W4Compressibility@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, vtable slot):
-#   1. find bytes "42 61 74 63 68 65 64 20 4E 65 74 77 6F 72 6B 20 54 61 73 6B 47 72 6F 75 70 00"
-#      = "Batched Network TaskGroup\0" (unique); its lone xref is the make_unique<TaskGroup> name arg inside
-#      BatchedNetworkPeer::BatchedNetworkPeer (the ctor)
-#   2. the ctor's first member store `this->__vftable = &BatchedNetworkPeer::vftable` gives the vtable
-#   3. sendPacket is the 2nd slot (offset +0x08); cross-check the slot index against the old named DB
-# function prologue
+# 1. find bytes "42 61 74 63 68 65 64 20 4E 65 74 77 6F 72 6B 20 54 61 73 6B 47 72 6F 75 70 00"
+#    = "Batched Network TaskGroup\0" (unique); its lone xref is the make_unique<TaskGroup> name arg inside
+#    BatchedNetworkPeer::BatchedNetworkPeer (the ctor)
+# 2. the ctor's first member store `this->__vftable = &BatchedNetworkPeer::vftable` gives the vtable
+# 3. sendPacket is the 2nd slot (offset +0x08); cross-check the slot index against the old named DB
 pattern = "55 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 CB 48 89 D7"
 
 [[signatures]]
 name = "?_receivePacket@BatchedNetworkPeer@@MEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, vtable slot):
-#   1. reach BatchedNetworkPeer's vtable the same way as sendPacket above (the "Batched Network TaskGroup"
-#      string -> ctor -> __vftable store)
-#   2. _receivePacket is the 9th slot (offset +0x40), a few slots past sendPacket; cross-check the slot
-#      index against the old named DB
-# function prologue
+# 1. reach BatchedNetworkPeer's vtable the same way as sendPacket above (the "Batched Network TaskGroup"
+#    string -> ctor -> __vftable store)
+# 2. _receivePacket is the 9th slot (offset +0x40), a few slots past sendPacket; cross-check the slot
+#    index against the old named DB
 pattern = "41 56 56 57 53 48 81 EC ? ? ? ? 48 89 D7 48 89 CE 48 8B 91 ? ? ? ? 48 8B 89 ? ? ? ? 48 39 CA 0F 85 ? ? ? ? 48 8B 4E ? 48 8D 5E ? 48 8B 01 48 8B 40 ? 48 89 DA FF 15"
 
 [[signatures]]
 name = "?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, no string of its own - via a string-anchored CALL SITE): _log_va is the bottom of
-#   the diagnostic-log forwarder chain.
-#   1. find "Starting Server" (the message logged by start@DedicatedServer); its xref is the `lea` at that
-#      log call, and the `call` after the arg-setup targets Bedrock::Diagnostics::log
-#   2. walk its single-call forwarders down: Diagnostics::log -> a 5-byte jmp thunk -> BedrockLog::log_va
-#      -> _log_va (two log_va overloads exist; take the one the thunk calls)
-#   3. confirm each hop vs the old named DB
-# function prologue
+# 1. find "Starting Server" (the message logged by start@DedicatedServer); its xref is the `lea` at that
+#    log call, and the `call` after the arg-setup targets Bedrock::Diagnostics::log
+# 2. walk its single-call forwarders down: Diagnostics::log -> a 5-byte jmp thunk -> BedrockLog::log_va
+#    -> _log_va (two log_va overloads exist; take the one the thunk calls)
+# 3. confirm each hop vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 CE 44 89 85 ? ? ? ? 89 95 ? ? ? ? 48 89 CE 48 8B 95"
 
 [[signatures]]
 name = "?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. search the ASCII bytes of "No block descriptor to resolve during deferred resolution" + a 00
-#      terminator (unique in the binary)
-#   2. its lone data xref is a `lea` inside this function
-#   3. walk up to the prologue
-# function prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 0F 29 75 ? 48 C7 45 ? FE FF FF FF 89 D0 48 89 CE 48 8B 11"
+# 1. search the ASCII bytes of "No block descriptor to resolve during deferred resolution" + a 00
+#    terminator (unique in the binary)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
+pattern = "E8 ? ? ? ? 48 8B 4D ? E8 ? ? ? ? 48 83 C6 ? 48 89 F0 48 83 C4"
+rip_relative = true
+rip_offset = 1
 
 [[signatures]]
 name = "?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own):
-#   1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 69 76 65 2E 69 74 65 6D 2E 6E 6F 74 46 6F 75 6E 64 00"
-#      = "commands.give.item.notFound\0" (unique - both its xrefs are in the caller CommandItem::createInstance)
-#   2. follow createInstance's call to this function - the legacy block-state resolver (takes a u16 legacy
-#      data value, returns a const Block*)
-#   3. confirm the callee vs the old named DB (size/args/return-shape)
-# xref call site in CommandBlockName::resolveBlock
+# 1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 69 76 65 2E 69 74 65 6D 2E 6E 6F 74 46 6F 75 6E 64 00"
+#    = "commands.give.item.notFound\0" (unique - both its xrefs are in the caller CommandItem::createInstance)
+# 2. follow createInstance's call to this function - the legacy block-state resolver (takes a u16 legacy
+#    data value, returns a const Block*)
+# 3. confirm the callee vs the old named DB (size/args/return-shape)
 pattern = "E8 ? ? ? ? 48 85 C0 74 ? 48 89 46 ? 0F 57 C0"
 rip_relative = true
 rip_offset = 1
@@ -148,16 +129,14 @@ rip_offset = 1
 name = "?spawnResources@BlockType@@QEBAXAEAVBlockSource@@AEBVBlockPos@@AEBVBlock@@AEAVIRandom@@AEBUResourceDropsContext@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, magic-constant anchor on a callee):
-#   1. find ExperienceOrb::spawnOrbs by its XP-split breakpoints - the immediates 2477, 1237, 617, 307,
-#      149, 73, 37, 17, 7 (and the 12000 cap / divide-by-13 path). Searching one constant may hit several
-#      functions; the lone function that contains ALL of them is spawnOrbs (an immediate-search winnowing)
-#   2. spawnResources is one of spawnOrbs' callers: the short one that first calls getResourceDrops + a
-#      popResource loop, then builds the Vec3 arg by converting the integer BlockPos at the call site
-#      (cvtepi32_ps on pos->x, separate load of pos->z) - other callers pass an actor's float position -
-#      and follows spawnOrbs with a guarded indirect call (the ResourceDropsContext visitor)
-#   3. confirm the shape vs the old named DB
-# xref call site in BaseRailBlock::tick
+# 1. find ExperienceOrb::spawnOrbs by its XP-split breakpoints - the immediates 2477, 1237, 617, 307,
+#    149, 73, 37, 17, 7 (and the 12000 cap / divide-by-13 path). Searching one constant may hit several
+#    functions; the lone function that contains ALL of them is spawnOrbs (an immediate-search winnowing)
+# 2. spawnResources is one of spawnOrbs' callers: the short one that first calls getResourceDrops + a
+#    popResource loop, then builds the Vec3 arg by converting the integer BlockPos at the call site
+#    (cvtepi32_ps on pos->x, separate load of pos->z) - other callers pass an actor's float position -
+#    and follows spawnOrbs with a guarded indirect call (the ResourceDropsContext visitor)
+# 3. confirm the shape vs the old named DB
 pattern = "E8 ? ? ? ? 48 8B 7F ? 0F 57 C0 0F 29 44 24"
 rip_relative = true
 rip_offset = 1
@@ -166,13 +145,11 @@ rip_offset = 1
 name = "?forEachBlockType@BlockTypeRegistry@@QEBAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own):
-#   1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 6D 6F 76 69 6E 67 62 6C 6F 63 6B 00" = "minecraft:movingblock\0"
-#      (2 xrefs - take the one in MinecraftCommands::initBlockEnum, the other is VanillaItems::registerItems)
-#   2. landmark: in initBlockEnum that string is strcpy'd right after the forEachBlockType call, so the
-#      `call` just before the strcpy is the target
-#   3. confirm vs the old named DB
-# xref call site in initBlockEnum (the function_ref-passing call before the movingblock copy), unique
+# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 6D 6F 76 69 6E 67 62 6C 6F 63 6B 00" = "minecraft:movingblock\0"
+#    (2 xrefs - take the one in MinecraftCommands::initBlockEnum, the other is VanillaItems::registerItems)
+# 2. landmark: in initBlockEnum that string is strcpy'd right after the forEachBlockType call, so the
+#    `call` just before the strcpy is the target
+# 3. confirm vs the old named DB
 pattern = "48 8D 85 ? ? ? ? 48 89 45 ? 48 8D 0D ? ? ? ? 48 8D 55 ? E8 ? ? ? ? 0F 29 B5 20 01 00 00"
 rip_relative = true
 rip_offset = 23
@@ -181,31 +158,27 @@ rip_offset = 23
 name = "?_finishCooking@CampfireBlockActor@@AEAAXAEAVBlockSource@@H@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, paired-tag globals):
-#   1. the CAMPFIRE_TAG / SOUL_CAMPFIRE_TAG HashedString globals are zero-init, built at runtime by a
-#      unity initializer that calls HashedString::HashedString(&global, "campfire") and (..., "soul_campfire")
-#      back to back (alongside "furnace"/"blast_furnace"/"smoker"). find the literal "soul_campfire" (more
-#      distinctive than "campfire"); its lone code xref is that initializer, whose store right after the
-#      ctor call gives the SOUL_CAMPFIRE_TAG global address (the next ctor up gives CAMPFIRE_TAG)
-#   2. data-xref either tag global: only 3 functions reference both. _finishCooking is the largest - it
-#      picks CAMPFIRE_TAG vs SOUL_CAMPFIRE_TAG by block type, calls Recipes::getFurnaceRecipeResult on the
-#      cooking-slot item, then spawns the result ItemStack via a guarded indirect call (the sibling
-#      getCampfireTag is a tiny one-of-two selector; _addFurnaceRecipeResults registers recipes)
-#   3. confirm the shape vs the old named DB
-# function prologue
+# 1. the CAMPFIRE_TAG / SOUL_CAMPFIRE_TAG HashedString globals are zero-init, built at runtime by a
+#    unity initializer that calls HashedString::HashedString(&global, "campfire") and (..., "soul_campfire")
+#    back to back (alongside "furnace"/"blast_furnace"/"smoker"). find the literal "soul_campfire" (more
+#    distinctive than "campfire"); its lone code xref is that initializer, whose store right after the
+#    ctor call gives the SOUL_CAMPFIRE_TAG global address (the next ctor up gives CAMPFIRE_TAG)
+# 2. data-xref either tag global: only 3 functions reference both. _finishCooking is the largest - it
+#    picks CAMPFIRE_TAG vs SOUL_CAMPFIRE_TAG by block type, calls Recipes::getFurnaceRecipeResult on the
+#    cooking-slot item, then spawns the result ItemStack via a guarded indirect call (the sibling
+#    getCampfireTag is a tiny one-of-two selector; _addFurnaceRecipeResults registers recipes)
+# 3. confirm the shape vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 45 89 C6 48 89 D7"
 
 [[signatures]]
 name = "?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 65 6E 65 72 69 63 2E 64 69 73 61 62 6C 65 64 2E 65 64 69 74 6F 72 4C 6F 63 6B 65 64 00"
-#      = "commands.generic.disabled.editorLocked\0" (unique; the plain "commands.generic.disabled" key it
-#      also uses is shared, so pick the .editorLocked one)
-#   2. its lone data xref is a `lea` inside this function
-#   3. walk up to the prologue
-# xref call site in executeCommand, unique
+# 1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 65 6E 65 72 69 63 2E 64 69 73 61 62 6C 65 64 2E 65 64 69 74 6F 72 4C 6F 63 6B 65 64 00"
+#    = "commands.generic.disabled.editorLocked\0" (unique; the plain "commands.generic.disabled" key it
+#    also uses is shared, so pick the .editorLocked one)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? 8B 85 ? ? ? ? 85 C0 48 8D 0D"
 rip_relative = true
 rip_offset = 1
@@ -214,49 +187,41 @@ rip_offset = 1
 name = "?load@CommandOriginLoader@@SA?AV?$unique_ptr@VCommandOrigin@@U?$default_delete@VCommandOrigin@@@std@@@std@@AEBVCompoundTag@@AEAVServerLevel@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "54 61 72 67 65 74 4F 74 68 65 72 00" = "TargetOther\0" (unique NBT key)
-#   2. its lone data xref is a `lea` inside this function
-#   3. walk up to the prologue
-# function prologue
+# 1. find bytes "54 61 72 67 65 74 4F 74 68 65 72 00" = "TargetOther\0" (unique NBT key)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 44 0F 29 95 ? ? ? ? 44 0F 29 4D ? 44 0F 29 45 ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? FE FF FF FF 4C 89 C7 48 89 D3 48 89 CE"
 
 [[signatures]]
 name = "?addEnumValues@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; anchor on a sibling call):
-#   1. locate registerCommand or registerAlias first (both string-locatable - see their entries)
-#   2. among their callers (per-command setup@XxxCommand functions), several also call addEnumValues for
-#      enum-typed args - e.g. setup@HelpCommand calls registerAlias AND addEnumValues
-#   3. in such a setup, addEnumValues is the call taking an enum name + a vector<string> of values (returns
-#      an int symbol id)
-#   4. confirm the callee vs the old named DB
-# function prologue (shorter than the string-anchored call-site pattern)
+# 1. locate registerCommand or registerAlias first (both string-locatable - see their entries)
+# 2. among their callers (per-command setup@XxxCommand functions), several also call addEnumValues for
+#    enum-typed args - e.g. setup@HelpCommand calls registerAlias AND addEnumValues
+# 3. in such a setup, addEnumValues is the call taking an enum name + a vector<string> of values (returns
+#    an int symbol id)
+# 4. confirm the callee vs the old named DB
 pattern = "55 41 57 41 56 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 48 89 D6 48 89 CF 0F 57 C0 0F 29 45 ? 48 C7 45 ? ? ? ? ? 49 8B 18"
 
 [[signatures]]
 name = "?registerAlias@CommandRegistry@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "52 65 67 69 73 74 65 72 20 43 6F 6D 6D 61 6E 64 20 3C 7B 7D 3E 20 41 6C 69 61 73 20 3C 7B 7D 3E 00"
-#      = "Register Command <{}> Alias <{}>\0" (unique)
-#   2. its lone data xref is a `lea` inside this function
-#   3. walk up to the prologue
-# function prologue (first-match call site only ~⅓ shorter; direct is safer)
+# 1. find bytes "52 65 67 69 73 74 65 72 20 43 6F 6D 6D 61 6E 64 20 3C 7B 7D 3E 20 41 6C 69 61 73 20 3C 7B 7D 3E 00"
+#    = "Register Command <{}> Alias <{}>\0" (unique)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 48 C7 45 ? FE FF FF FF 49 89 CF 48 8B 42 10 48 83"
 
 [[signatures]]
 name = "?registerCommand@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBDW4CommandPermissionLevel@@UCommandFlag@@3@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "52 65 67 69 73 74 65 72 20 43 6F 6D 6D 61 6E 64 20 3C 7B 7D 3E 00" = "Register Command <{}>\0"
-#      (the trailing 00 is essential - without it this is a prefix of registerAlias's superset string; unique)
-#   2. its lone data xref is a `lea` inside this function
-#   3. walk up to the prologue
-# pre-call arg-setup at a registerCommand call site, first match resolves to target
+# 1. find bytes "52 65 67 69 73 74 65 72 20 43 6F 6D 6D 61 6E 64 20 3C 7B 7D 3E 00" = "Register Command <{}>\0"
+#    (the trailing 00 is essential - without it this is a prefix of registerAlias's superset string; unique)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "4C 8D 05 ? ? ? ? 48 8D 95 ? ? ? ? 48 8B 8D ? ? ? ? 41 B1 ? E8 ? ? ? ? 48 8B 85"
 rip_relative = true
 rip_offset = 25
@@ -265,16 +230,14 @@ rip_offset = 25
 name = "?registerOverloadInternal@CommandRegistry@@AEAAXAEAUSignature@1@AEAUOverload@1@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, no string of its own; CommandRegistry cluster + distinctive callees):
-#   1. locate CommandRegistry via registerCommand / registerAlias ("Register Command <{}>" - see those
-#      entries). registerOverloadInternal is the member that, for each CommandParameterData in an overload,
-#      resolves its enum / soft-enum / postfix / chained-subcommand NAME to a symbol id by _Find in
-#      mEnumLookup / mSoftEnumLookup / mChainedSubcommandLookup (tagging with 0x300000 / 0x4100000 / postfix
-#      / 0x8100000 bits), then calls CommandRegistry::setupOverloadRules and bumps signature->ruleCounter
-#   2. it is reached from the CommandRegistry::registerOverload<...> template instances (the capture-all
-#      call site below); setupOverloadRules and addPostfix are its near-unique callees
-#   3. confirm vs the old named DB
-# capture-all: _registerOverload template instance call site (first match resolves to target)
+# 1. locate CommandRegistry via registerCommand / registerAlias ("Register Command <{}>" - see those
+#    entries). registerOverloadInternal is the member that, for each CommandParameterData in an overload,
+#    resolves its enum / soft-enum / postfix / chained-subcommand NAME to a symbol id by _Find in
+#    mEnumLookup / mSoftEnumLookup / mChainedSubcommandLookup (tagging with 0x300000 / 0x4100000 / postfix
+#    / 0x8100000 bits), then calls CommandRegistry::setupOverloadRules and bumps signature->ruleCounter
+# 2. it is reached from the CommandRegistry::registerOverload<...> template instances (the capture-all
+#    call site below); setupOverloadRules and addPostfix are its near-unique callees
+# 3. confirm vs the old named DB
 pattern = "E8 ? ? ? ? 48 8B 4D ? 48 8B 01 48 85 C0 74 ? 48 8B 40 ? FF 15"
 rip_relative = true
 rip_offset = 1
@@ -283,16 +246,14 @@ rip_offset = 1
 name = "?serializeAvailableCommands@CommandRegistry@@QEBA?AVAvailableCommandsPacket@@XZ"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via the vtable of the packet it builds):
-#   1. find bytes "41 76 61 69 6C 61 62 6C 65 43 6F 6D 6D 61 6E 64 73 50 61 63 6B 65 74 00"
-#      = "AvailableCommandsPacket\0" (unique); its code xref is AvailableCommandsPacket::getName (a tiny
-#      virtual that returns that string_view)
-#   2. getName's address is a slot in the AvailableCommandsPacket vtable - take that vtable (getName's data
-#      xref), walk up to the vtable start, and xref it to the ctors that store it into `this`
-#   3. the payload ctor (...@VAvailableCommandsPacketPayload@@@Z) has exactly ONE caller - this function
-#      (the bare default ctor instead feeds make_packet -> MinecraftPackets::createPacket)
-#   4. confirm vs the old named DB
-# xref call site in ServerNetworkHandler::sendLoginMessageLocal
+# 1. find bytes "41 76 61 69 6C 61 62 6C 65 43 6F 6D 6D 61 6E 64 73 50 61 63 6B 65 74 00"
+#    = "AvailableCommandsPacket\0" (unique); its code xref is AvailableCommandsPacket::getName (a tiny
+#    virtual that returns that string_view)
+# 2. getName's address is a slot in the AvailableCommandsPacket vtable - take that vtable (getName's data
+#    xref), walk up to the vtable start, and xref it to the ctors that store it into `this`
+# 3. the payload ctor (...@VAvailableCommandsPacketPayload@@@Z) has exactly ONE caller - this function
+#    (the bare default ctor instead feeds make_packet -> MinecraftPackets::createPacket)
+# 4. confirm vs the old named DB
 pattern = "E8 ? ? ? ? 49 8B 06 48 8B 40 ? 4C 89 F1 48 89 F2 49 89 D8 45 31 C9"
 rip_relative = true
 rip_offset = 1
@@ -301,12 +262,10 @@ rip_offset = 1
 name = "?symbolToString@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@VSymbol@1@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "49 4E 56 41 4C 49 44 5F 43 48 41 49 4E 45 44 5F 53 55 42 43 4F 4D 4D 41 4E 44 00"
-#      = "INVALID_CHAINED_SUBCOMMAND\0" (unique)
-#   2. its lone data xref is a `lea` inside this function
-#   3. walk up to the prologue
-# xref call site in run@Command, first match resolves to target
+# 1. find bytes "49 4E 56 41 4C 49 44 5F 43 48 41 49 4E 45 44 5F 53 55 42 43 4F 4D 4D 41 4E 44 00"
+#    = "INVALID_CHAINED_SUBCOMMAND\0" (unique)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? 48 8B 07 48 8B 40 30 48 89 F9 FF 15"
 rip_relative = true
 rip_offset = 1
@@ -315,44 +274,36 @@ rip_offset = 1
 name = "?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - 2 caller levels, no string of its own):
-#   1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 74 70 2E 6E 6F 74 53 61 6D 65 44 69 6D 65 6E 73 69 6F 6E 00"
-#      = "commands.tp.notSameDimension\0" (unique; lone xref is in TeleportCommand::execute)
-#   2. in TeleportCommand::execute it builds a CommandOutputParameter from an Actor for that message
-#   3. landmark: that CommandOutputParameter(Actor) ctor is tiny - it `call`s getActorName, then stores a
-#      small constant tag (mov dword [rsi+N], imm) and returns rsi; getActorName is the call right before
-#      that store+return
-#   4. sanity-check the target vs the old named DB: small, takes an Actor, returns its std::string name
-# xref call site in CommandOutputParameter ctor
-pattern = "E8 ? ? ? ? C7 46 ? ? ? ? ? 48 89 F0 48 83 C4 ? 5E C3 CC CC CC 56 57"
-rip_relative = true
-rip_offset = 1
+# 1. find SpreadPlayersCommand::execute via its strings "commands.spreadplayers.success" /
+#    "commands.generic.num.tooSmall" (its lone code xref is in execute)
+# 2. among execute's callees, getActorName is the one taking an Actor and returning its localized
+#    std::string name: checks isInstanceOf@ActorClassTree, reads the RedactableString name tag via two
+#    Actor vtable slots, else builds the display name (buildActorDisplayName) and localizes it - note
+#    getI18n is INLINED here (the I18nImpl singleton lazy-init: guard + I18nImpl ctor + atexit), the tell
+# 3. confirm vs the old named DB (CommandUtils::getActorName, 11 callers incl. SpreadPlayers/Teleport execute)
+pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 48 89 D3 48 89 CE 48 89 D1 BA ? ? ? ? E8"
 
 [[signatures]]
 name = "?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via the packet vtable, ctor inlined):
-#   1. find bytes "43 72 61 66 74 69 6E 67 44 61 74 61 50 61 63 6B 65 74 00" = "CraftingDataPacket\0" (unique)
-#      -> its code xref is getName@CraftingDataPacket (tiny virtual), whose address is a slot in the
-#      CraftingDataPacket vtable
-#   2. xref the vtable START (no separate ctor to chase - it is inlined here): the code xrefs are the ctor,
-#      the dtor, and THIS function, which builds the packet inline and stores the vtable ptr
-#   3. this function is the non-ctor/dtor one (returns a unique_ptr<CraftingDataPacket>, larger)
-#   4. confirm vs the old named DB
-# function prologue
+# 1. find bytes "43 72 61 66 74 69 6E 67 44 61 74 61 50 61 63 6B 65 74 00" = "CraftingDataPacket\0" (unique)
+#    -> its code xref is getName@CraftingDataPacket (tiny virtual), whose address is a slot in the
+#    CraftingDataPacket vtable
+# 2. xref the vtable START (no separate ctor to chase - it is inlined here): the code xrefs are the ctor,
+#    the dtor, and THIS function, which builds the packet inline and stores the vtable ptr
+# 3. this function is the non-ctor/dtor one (returns a unique_ptr<CraftingDataPacket>, larger)
+# 4. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 44 88 85 ? ? ? ? 48 89 D7 48 89 8D ? ? ? ? 48 8B 0D"
 
 [[signatures]]
 name = "?start@DedicatedServer@@QEAA?AW4ServerExitCode@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActivationArguments@Bedrock@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "53 74 61 72 74 69 6E 67 20 53 65 72 76 65 72 00" = "Starting Server\0" (unique; prefer this
-#      over the "DedicatedServer::start" label, which prefixes the anonymous-operator() string)
-#   2. its lone data xref is a `lea` inside this function
-#   3. walk up to the prologue
-# xref call site in main
+# 1. find bytes "53 74 61 72 74 69 6E 67 20 53 65 72 76 65 72 00" = "Starting Server\0" (unique; prefer this
+#    over the "DedicatedServer::start" label, which prefixes the anonymous-operator() string)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? 89 C6 48 8D 8D ? ? ? ? E8 ? ? ? ? 48 8D 4D"
 rip_relative = true
 rip_offset = 1
@@ -361,18 +312,16 @@ rip_offset = 1
 name = "?explode@Explosion@@QEAA_NAEAVIRandom@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via Level's vtable):
-#   1. anchor Level's vtable via Level::tick (see that entry) - tick is a Level virtual, so its address is
-#      a slot in Level's vtable; from tick's data xref walk up to the vtable start
-#   2. Level declares two adjacent explode virtuals - Level::explode(BlockSource,Actor*,Vec3,float,...) and
-#      the tiny Level::explode(Explosion&); locate their slots by cross-checking the index against the old
-#      named DB
-#   3. step into the tiny Level::explode(Explosion&) (~0x39 bytes): it bails out on mIsClientSide, calls
-#      Level::getIRandom, then tail-calls Explosion::explode(explosion, random) - that call is the target
-#      (the full-param overload also calls it, right before freeing the Explosion's vectors - the byte
-#      pattern below matches that second call site)
-#   4. confirm the callee vs the old named DB (member of Explosion, takes IRandom&, returns bool)
-# capture-all: Level::explode call site (first match resolves to target)
+# 1. anchor Level's vtable via Level::tick (see that entry) - tick is a Level virtual, so its address is
+#    a slot in Level's vtable; from tick's data xref walk up to the vtable start
+# 2. Level declares two adjacent explode virtuals - Level::explode(BlockSource,Actor*,Vec3,float,...) and
+#    the tiny Level::explode(Explosion&); locate their slots by cross-checking the index against the old
+#    named DB
+# 3. step into the tiny Level::explode(Explosion&) (~0x39 bytes): it bails out on mIsClientSide, calls
+#    Level::getIRandom, then tail-calls Explosion::explode(explosion, random) - that call is the target
+#    (the full-param overload also calls it, right before freeing the Explosion's vectors - the byte
+#    pattern below matches that second call site)
+# 4. confirm the callee vs the old named DB (member of Explosion, takes IRandom&, returns bool)
 pattern = "E8 ? ? ? ? 89 C6 48 8B 4D ? 48 85 C9 74 ? 48 8B 55 ? 48 29 CA 48 81 FA"
 rip_relative = true
 rip_offset = 1
@@ -381,17 +330,17 @@ rip_offset = 1
 name = "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via the fuel-component identifier):
-#   1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 66 75 65 6C 00" = "minecraft:fuel\0" (unique); its lone
-#      data xref is inside FuelItemComponent::getIdentifier (a Meyers singleton building the component-name
-#      HashedString)
-#   2. getIdentifier has several callers (mostly cereal component registration/binding); getBurnDuration is
-#      the small one (~0xc2) that first calls ItemStackBase::getComponentItem, then getIdentifier to fetch
-#      the item's FuelItemComponent, computes fmaxf(1.0, burnInterval * dur / 10.0), and otherwise falls
-#      back to FurnaceBlockActor::getItemBurnDuration
-#   3. confirm the target vs the old named DB (static, takes ItemStackBase& + float, returns float)
-# function prologue
-pattern = "55 56 57 48 83 EC ? 48 8D 6C 24 ? 0F 29 75 ? 48 C7 45 ? ? ? ? ? 0F 57 C0 80 79 ? ? 0F 85 ? ? ? ? 48 89 CE 48 8B 41 ? 48 85 C0 0F 84 ? ? ? ? 48 83 38 ? 0F 84 ? ? ? ? 0F 28 F1 48 89 F1 E8"
+# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 66 75 65 6C 00" = "minecraft:fuel\0" (unique); its lone
+#    data xref is inside FuelItemComponent::getIdentifier (a Meyers singleton building the component-name
+#    HashedString)
+# 2. getIdentifier has several callers (mostly cereal component registration/binding); getBurnDuration is
+#    the small one (~0xc2) that first calls ItemStackBase::getComponentItem, then getIdentifier to fetch
+#    the item's FuelItemComponent, computes fmaxf(1.0, burnInterval * dur / 10.0), and otherwise falls
+#    back to FurnaceBlockActor::getItemBurnDuration
+# 3. confirm the target vs the old named DB (static, takes ItemStackBase& + float, returns float)
+pattern = "E8 ? ? ? ? 40 B6 ? 0F 57 C9 0F 2E C1 0F 87 ? ? ? ? 83 FB ? 0F 85"
+rip_relative = true
+rip_offset = 1
 
 [[signatures]]
 # name is arbitrary, this is actually hooking a lambda function
@@ -404,30 +353,26 @@ pattern = "56 57 53 48 83 EC ? 41 8B 40"
 name = "?readUserData@Item@@UEBAXAEAVItemStackBase@@AEAVIDataInput@@AEAVReadOnlyBinaryStream@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via a sibling Item vtable slot):
-#   1. the static std::string globals ItemStackBase::TAG_DISPLAY ("display") and TAG_DISPLAY_NAME ("Name")
-#      sit adjacent in .data; TAG_DISPLAY_NAME has a handful of data xrefs (getRedactedCustomName,
-#      hasCustomHoverName, setCustomName, resetHoverName)
-#   2. Item::hasCustomHoverName is the tiny (~0x91) virtual among them: it calls CompoundTag::getCompound
-#      with TAG_DISPLAY ("display") then CompoundTag::contains with TAG_DISPLAY_NAME ("Name"), returning bool
-#   3. hasCustomHoverName's address is a slot in Item's vtable (its remaining data xrefs are the per-item
-#      vtables); in that vtable readUserData sits two slots below hasCustomHoverName, past
-#      Item::buildEffectDescriptionName - cross-check the slot index against the old named DB
-#   4. confirm vs the old named DB (Item virtual; the lone code caller of the base is ShieldItem::readUserData)
-# function prologue
+# 1. the static std::string globals ItemStackBase::TAG_DISPLAY ("display") and TAG_DISPLAY_NAME ("Name")
+#    sit adjacent in .data; TAG_DISPLAY_NAME has a handful of data xrefs (getRedactedCustomName,
+#    hasCustomHoverName, setCustomName, resetHoverName)
+# 2. Item::hasCustomHoverName is the tiny (~0x91) virtual among them: it calls CompoundTag::getCompound
+#    with TAG_DISPLAY ("display") then CompoundTag::contains with TAG_DISPLAY_NAME ("Name"), returning bool
+# 3. hasCustomHoverName's address is a slot in Item's vtable (its remaining data xrefs are the per-item
+#    vtables); in that vtable readUserData sits two slots below hasCustomHoverName, past
+#    Item::buildEffectDescriptionName - cross-check the slot index against the old named DB
+# 4. confirm vs the old named DB (Item virtual; the lone code caller of the base is ShieldItem::readUserData)
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4D 89 CE 4C 89 C7 48 89 D6 4C 89 C1 E8 ? ? ? ? 66 85 C0 0F 84 ? ? ? ? 0F B7 C0 3D"
 
 [[signatures]]
 name = "?fromTag@ItemInstance@@SA?AV1@AEBVCompoundTag@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own):
-#   1. find bytes "62 75 79 41 00" = "buyA\0" and "62 75 79 42 00" = "buyB\0" (both unique, both xref into
-#      the caller MerchantRecipe::load - that pair pins the function)
-#   2. landmark: MerchantRecipe::load reads the "buyA"/"buyB" child tags and calls this on each to build the
-#      trade ItemInstances - so the `call` right after a buyA/buyB tag lookup is the target
-#   3. confirm the callee vs the old named DB (static, takes a CompoundTag, returns an ItemInstance)
-# xref call site in MerchantRecipe::load, unique
+# 1. find bytes "62 75 79 41 00" = "buyA\0" and "62 75 79 42 00" = "buyB\0" (both unique, both xref into
+#    the caller MerchantRecipe::load - that pair pins the function)
+# 2. landmark: MerchantRecipe::load reads the "buyA"/"buyB" child tags and calls this on each to build the
+#    trade ItemInstances - so the `call` right after a buyA/buyB tag lookup is the target
+# 3. confirm the callee vs the old named DB (static, takes a CompoundTag, returns an ItemInstance)
 pattern = "E8 ? ? ? ? 48 8D 4D ? 48 89 F2 E8 ? ? ? ? 48 89 F1 E8"
 rip_relative = true
 rip_offset = 1
@@ -436,85 +381,77 @@ rip_offset = 1
 name = "?lookupByName@ItemRegistry@@AEBA?AV?$WeakPtr@VItem@@@@AEAHV?$basic_string_view@DU?$char_traits@D@std@@@std@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own):
-#   1. find the caller ItemRegistry::_tryCreateItem by the message "To use item '{}', use json format
-#      version {} or higher" (search its ASCII bytes + a 00 terminator; unique, lone xref in _tryCreateItem)
-#   2. follow _tryCreateItem's call to this function (an item-name lookup returning a WeakPtr<Item>)
-#   3. confirm the callee vs the old named DB
-# xref call site in ItemRegistry::lookupByName overload
-pattern = "E8 ? ? ? ? 48 8B 5D ? 48 85 DB 74 ? 48 8B 0B 48 85 C9 74 ? E8 ? ? ? ? 98"
-rip_relative = true
-rip_offset = 1
+# 1. find bytes "Item craft into name is empty.\0" (unique; lone xref is Shareable::setCraftInto)
+# 2. setCraftInto calls ItemRegistryRef::lookupByName (recognizable by its assert "ItemRegistryRef cannot
+#    access ItemRegistry - attempt to lock weak_ptr returned null!")
+# 3. ItemRegistryRef::lookupByName calls the AEAH0 two-int wrapper ItemRegistry::lookupByName (small): that
+#    wrapper calls the TARGET, then reads the item id (Item::getId / +0xAA)
+# 4. the TARGET is that delegated call - ItemRegistry::lookupByName (AEAH, single int&): the large
+#    name->item hash lookup (~0x4b0, many callers)
+# 5. confirm vs the old named DB
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 49 89 D7 49 83 79 ? ? 0F 84"
 
 [[signatures]]
 name = "?_loadBlocksForCanPlaceOnCanDestroy@ItemStackBase@@CA_NAEAV?$vector@PEBVBlockType@@V?$allocator@PEBVBlockType@@@std@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via the deserialize-components lambda):
-#   1. locate Item::readUserData first (see that entry); its tail makes two back-to-back calls to the
-#      deserialize lambda ItemStackBase::deserializeComponents::_lambda_0_::operator() - passing the item's
-#      mCanPlaceOn then mCanDestroy block-name vectors - followed by ItemStackBase::_updateCompareHashes
-#   2. step into either lambda: it reads an int count, then loops { IDataInput::readString(&block);
-#      _loadBlocksForCanPlaceOnCanDestroy(vec, &block); free block; } - the target is the call right after
-#      readString
-#   3. confirm the callee vs the old named DB (static, takes a vector<const BlockType*>& and a string&,
-#      returns _N)
-# function prologue
+# 1. locate Item::readUserData first (see that entry); its tail makes two back-to-back calls to the
+#    deserialize lambda ItemStackBase::deserializeComponents::_lambda_0_::operator() - passing the item's
+#    mCanPlaceOn then mCanDestroy block-name vectors - followed by ItemStackBase::_updateCompareHashes
+# 2. step into either lambda: it reads an int count, then loops { IDataInput::readString(&block);
+#    _loadBlocksForCanPlaceOnCanDestroy(vec, &block); free block; } - the target is the call right after
+#    readString
+# 3. confirm the callee vs the old named DB (static, takes a vector<const BlockType*>& and a string&,
+#    returns _N)
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 48 89 D3 48 89 CE 0F 57 C0 0F 29 45 ? 48 C7 45 ? ? ? ? ? 48 C7 45"
 
 [[signatures]]
 name = "?_setItem@ItemStackBase@@AEAA_NH_N@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via a string-anchored CALL SITE):
-#   1. find bytes "57 61 73 50 69 63 6B 65 64 55 70 00" = "WasPickedUp\0" (unique); its lone data xref is a
-#      `lea` inside ItemStackBase::_loadItem
-#   2. a few instructions above that lea, _loadItem calls _setItem with the bool arg set: the sequence is
-#      `mov r8b, 1; call _setItem; xor eax, eax; ...; mov word [rsi+N], ax` then the WasPickedUp lea - that
-#      call is the target
-#   3. confirm the callee vs the old named DB (member, takes an int slot + bool, returns _N)
-# function prologue
+# 1. find bytes "57 61 73 50 69 63 6B 65 64 55 70 00" = "WasPickedUp\0" (unique); its lone data xref is a
+#    `lea` inside ItemStackBase::_loadItem
+# 2. a few instructions above that lea, _loadItem calls _setItem with the bool arg set: the sequence is
+#    `mov r8b, 1; call _setItem; xor eax, eax; ...; mov word [rsi+N], ax` then the WasPickedUp lea - that
+#    call is the target
+# 3. confirm the callee vs the old named DB (member, takes an int slot + bool, returns _N)
 pattern = "55 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 C3 89 D7"
 
 [[signatures]]
 name = "?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, 8-byte tail-call thunk; string-free cluster - via the 1331 flood-fill constant):
-#   1. the leaf-decay cluster has no strings. Anchor the radius-4 neighbour scan
-#      DecayingBlocksUtil::_shouldDecay<4>: it floods an 11x11x11 grid (radius 4 -> 2*4+3 = 11), indexing a
-#      stack byte array as [121*x + 11*y + z + 665], so it carries the magic constant 1331 (0x533) ~10 times
-#      as bounds checks (`if (idx >= 1331) break`). Search the immediate 1331 - the lone function holding a
-#      cluster of ~10 hits is _shouldDecay<4> (the scattered single hits elsewhere are unrelated). Cross-
-#      confirm: it tests each neighbour against the VanillaBlockTypeGroups Log / Wood / DecayingBlocks group
-#      vectors (the DecayingBlocks vector is referenced by only two functions, this and runDecay)
-#   2. walk the single-caller chain UP: _shouldDecay<4> is called only by _tryDecay<4> (the real handler -
-#      spawnResources then setBlock to Air), which is called only by the 5-byte thunk tryDecay<4>, which is
-#      called only by the 8-byte thunk LeavesBlock::randomTick (`mov rcx, rdx; jmp tryDecay<4>`) - registered
-#      as LeavesBlock's BlockRandomTickEvent handler in the LeavesBlock ctor
-#   3. confirm vs the old named DB
-# function prologue (tail-call thunk)
+# 1. the leaf-decay cluster has no strings. Anchor the radius-4 neighbour scan
+#    DecayingBlocksUtil::_shouldDecay<4>: it floods an 11x11x11 grid (radius 4 -> 2*4+3 = 11), indexing a
+#    stack byte array as [121*x + 11*y + z + 665], so it carries the magic constant 1331 (0x533) ~10 times
+#    as bounds checks (`if (idx >= 1331) break`). Search the immediate 1331 - the lone function holding a
+#    cluster of ~10 hits is _shouldDecay<4> (the scattered single hits elsewhere are unrelated). Cross-
+#    confirm: it tests each neighbour against the VanillaBlockTypeGroups Log / Wood / DecayingBlocks group
+#    vectors (the DecayingBlocks vector is referenced by only two functions, this and runDecay)
+# 2. walk the single-caller chain UP: _shouldDecay<4> is called only by _tryDecay<4> (the real handler -
+#    spawnResources then setBlock to Air), which is called only by the 5-byte thunk tryDecay<4>, which is
+#    called only by the 8-byte thunk LeavesBlock::randomTick (`mov rcx, rdx; jmp tryDecay<4>`) - registered
+#    as LeavesBlock's BlockRandomTickEvent handler in the LeavesBlock ctor
+# 3. confirm vs the old named DB
 pattern = "48 89 D1 E9 ? ? ? ? CC CC CC CC CC CC CC CC 56 57 53 48 83 EC ? 4C 89 C6"
 
 [[signatures]]
 name = "?tick@Level@@UEAAXXZ"
 relative = false
 extra = 0
-# Relocate (unnamed DB, Level virtual - no string of its own; via the Minecraft::update caller chain):
-#   1. find the unique string "Minecraft update" (a profiler scope label; its lone code xref is
-#      Minecraft::update, the main server update loop, which opens a "Minecraft update" ProfileSectionGroup
-#      via CreateScopeToken at its top)
-#   2. inside Minecraft::update the per-tick sim loop calls GameSession::tick - the `if (mGameSession)
-#      <call>` right after mGameCallbacks->onBeforeSimTick (it appears twice, in the normal and
-#      catch-up branches; either reaches the same GameSession::tick)
-#   3. GameSession::tick is tiny: it null/validity-checks mLevel and checks Level::getTearingDown, then its
-#      main body is Level::tick(mLevel) followed by the network handlers' onTick - that Level::tick call is
-#      the target (the pattern below is that call site: call Level::tick, then load mServerNetworkHandler)
-#   4. Level::tick is itself the Level-vtable anchor other entries lean on (Explosion::explode, updateWeather)
-#   5. confirm vs the old named DB (distinctive body: brackets the virtual _subTick between
-#      LevelEventCoordinator::sendLevelTickStart/End, then writes getOptimizationVersion()->tickID into the
-#      entt CurrentTickComponent)
-# xref call site in GameSession::tick
+# 1. find the unique string "Minecraft update" (a profiler scope label; its lone code xref is
+#    Minecraft::update, the main server update loop, which opens a "Minecraft update" ProfileSectionGroup
+#    via CreateScopeToken at its top)
+# 2. inside Minecraft::update the per-tick sim loop calls GameSession::tick - the `if (mGameSession)
+#    <call>` right after mGameCallbacks->onBeforeSimTick (it appears twice, in the normal and
+#    catch-up branches; either reaches the same GameSession::tick)
+# 3. GameSession::tick is tiny: it null/validity-checks mLevel and checks Level::getTearingDown, then its
+#    main body is Level::tick(mLevel) followed by the network handlers' onTick - that Level::tick call is
+#    the target (the pattern below is that call site: call Level::tick, then load mServerNetworkHandler)
+# 4. Level::tick is itself the Level-vtable anchor other entries lean on (Explosion::explode, updateWeather)
+# 5. confirm vs the old named DB (distinctive body: brackets the virtual _subTick between
+#    LevelEventCoordinator::sendLevelTickStart/End, then writes getOptimizationVersion()->tickID into the
+#    entt CurrentTickComponent)
 pattern = "E8 ? ? ? ? 48 8B 4E ? 48 85 C9 74 ? 48 8B 41"
 rip_relative = true
 rip_offset = 1
@@ -523,18 +460,21 @@ rip_offset = 1
 name = "?_trySpreadTo@LiquidBlock@@IEBAXAEAVBlockSource@@AEBVBlockPos@@H1E@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string-free cluster - via the lava fizz emitter + a single-caller edge):
-#   1. the whole LiquidBlock spread cluster has no strings; anchor on LiquidBlockBase::emitFizzParticle - it
-#      is recognizable by firing LevelEvent 1004 (Fizz) at the block centre then looping 8x to spawn smoke
-#      particles with velocity ((rand - rand) * 0.8 + 2.6) * 1000 (the float immediates 0.8f=0x3F4CCCCD and
-#      2.6f=0x40266666), gated on requiresTntExplodeGameRuleEnabled
-#   2. emitFizzParticle has three callers - LiquidBlock::_tick, _trySpreadTo, and LiquidBlockBase::_solidify;
-#      _trySpreadTo is the small (~0x262) one that ALSO calls LiquidBlock::_spread (whose ONLY caller is
-#      _trySpreadTo) plus LiquidBlock::_isLiquidBlocking and Block::spawnResources
-#   3. confirm vs the old named DB: protected (IEBA), args (BlockSource&, const BlockPos&, int, const
-#      BlockPos&, uchar), void return; its sole caller is LiquidBlock::_tick (where the pattern below lives)
-# xref call site in LiquidBlock::_tick
-pattern = "E8 ? ? ? ? 80 7D ? ? 75 ? 8B 43 ? FF C8"
+# 1. the whole LiquidBlock spread cluster has no strings; anchor on LiquidBlockBase::emitFizzParticle - it
+#    is recognizable by firing LevelEvent 1004 (Fizz) at the block centre then looping 8x to spawn smoke
+#    particles with velocity ((rand - rand) * 0.8 + 2.6) * 1000 (the float immediates 0.8f=0x3F4CCCCD and
+#    2.6f=0x40266666), gated on requiresTntExplodeGameRuleEnabled
+# 2. find emitFizzParticle fast by its LevelEvent-1004 broadcast `mov r8w, 0x3EC; call [rip]`
+#    (bytes "66 41 B8 EC 03 FF 15"); of its hits the real one is a ~0x243 fn with 3 callers
+# 3. emitFizzParticle's three callers = LiquidBlock::_tick (big), _trySpreadTo, LiquidBlockBase::_solidify;
+#    _trySpreadTo is the middle one - the one called ONLY by _tick that ALSO drops Block::spawnResources
+#    (via ResourceDropsContext) and checks liquidSpreadCausesSpawn. NOTE: it grew ~0x262 -> ~0x525 in
+#    1.26.32 because LiquidBlock::_spread is now INLINED into it (so _spread is no longer a separate
+#    callee/edge); confirm by content: getMinHeight/hasBlock guard, getLiquidBlock material vs mMaterial,
+#    type-6 bail, _isLiquidBlocking, lava->emitFizzParticle, spread-tail setBlock
+# 4. confirm vs the old named DB: protected (IEBA), args (BlockSource&, const BlockPos&, int, const
+#    BlockPos&, uchar), void return
+pattern = "E8 ? ? ? ? 41 39 FC 74 ? 41 39 FD 75 ?"
 rip_relative = true
 rip_offset = 1
 
@@ -542,28 +482,24 @@ rip_offset = 1
 name = "?_loadMapData@MapDataManager@@IEAAPEAVMapItemSavedData@@AEBUActorUniqueID@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via the serialization-key helper):
-#   1. find bytes "6D 61 70 5F 00" = "map_\0"; its data xref(s) land in MapItemSavedData::getSerializationKey
-#      (the only function that references it - it prepends "map_" to the stringified ActorUniqueID)
-#   2. getSerializationKey has exactly two callers: MapItemSavedData::save (writes) and _loadMapData (reads)
-#      - _loadMapData is the one that, right after the key call, feeds it to LevelStorage::loadData then
-#      NbtIo::readOrGetEmpty and constructs + deserializes a MapItemSavedData (emplacing it into mMapData)
-#   3. confirm the callee vs the old named DB (member, takes an ActorUniqueID&, returns MapItemSavedData*)
-# function prologue
+# 1. find bytes "6D 61 70 5F 00" = "map_\0"; its data xref(s) land in MapItemSavedData::getSerializationKey
+#    (the only function that references it - it prepends "map_" to the stringified ActorUniqueID)
+# 2. getSerializationKey has exactly two callers: MapItemSavedData::save (writes) and _loadMapData (reads)
+#    - _loadMapData is the one that, right after the key call, feeds it to LevelStorage::loadData then
+#    NbtIo::readOrGetEmpty and constructs + deserializes a MapItemSavedData (emplacing it into mMapData)
+# 3. confirm the callee vs the old named DB (member, takes an ActorUniqueID&, returns MapItemSavedData*)
 pattern = "55 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 0F 57 C0 0F 29 45 ? 48 C7 45 ? ? ? ? ? 48 C7 45 ? ? ? ? ? 4C 8B 71 ? 4D 85 F6 0F 84"
 
 [[signatures]]
 name = "?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; anchor on a sibling call):
-#   1. locate run@Command first - it is string-locatable (see its entry, "commands.generic.disabled.editorLocked")
-#   2. find run@Command's xref call site inside MinecraftCommands::runCommand - a tiny function that compiles
-#      then runs: compileCommand(...) -> null-check -> CommandOutput ctor -> Command::run(cmd, ...)
-#   3. compileCommand is the FIRST call there; its returned Command* is the value that is null-checked and
-#      then passed to the run call
-#   4. confirm the callee vs the old named DB
-# xref call site in MinecraftCommands::runCommand, unique
+# 1. locate run@Command first - it is string-locatable (see its entry, "commands.generic.disabled.editorLocked")
+# 2. find run@Command's xref call site inside MinecraftCommands::runCommand - a tiny function that compiles
+#    then runs: compileCommand(...) -> null-check -> CommandOutput ctor -> Command::run(cmd, ...)
+# 3. compileCommand is the FIRST call there; its returned Command* is the value that is null-checked and
+#    then passed to the run call
+# 4. confirm the callee vs the old named DB
 pattern = "E8 ? ? ? ? 48 85 C0 74 ? C7 45 ? 00 00 00 00 0F 57 C0 0F 11 45"
 rip_relative = true
 rip_offset = 1
@@ -572,54 +508,46 @@ rip_offset = 1
 name = "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 65 6E 65 72 69 63 2E 69 6E 76 61 6C 69 64 4F 72 69 67 69 6E 00"
-#      = "commands.generic.invalidOrigin\0" (unique)
-#   2. its lone data xref is a `lea` inside this function
-#   3. walk up to the prologue
-# function prologue
+# 1. find bytes "63 6F 6D 6D 61 6E 64 73 2E 67 65 6E 65 72 69 63 2E 69 6E 76 61 6C 69 64 4F 72 69 67 69 6E 00"
+#    = "commands.generic.invalidOrigin\0" (unique)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 44 89 CE 48 89 95 ? ? ? ? 48 89 8D ? ? ? ? 4C 89 85 ? ? ? ? 49 8B 48 20 48 8B 01 48 8B 80 A8 00 00 00"
 
 [[signatures]]
 name = "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via a packet vtable -> make_packet):
-#   1. find bytes "41 76 61 69 6C 61 62 6C 65 43 6F 6D 6D 61 6E 64 73 50 61 63 6B 65 74 00"
-#      = "AvailableCommandsPacket\0" (unique) -> its code xref is AvailableCommandsPacket::getName, whose
-#      address is a slot in the AvailableCommandsPacket vtable (see serializeAvailableCommands for this hop)
-#   2. xref the vtable to the bare default ctor ??0AvailableCommandsPacket@@QEAA@XZ
-#   3. the default ctor has ONE caller: make_packet<AvailableCommandsPacket>; make_packet has ONE caller:
-#      this function (the big MinecraftPacketIds -> packet factory)
-#   4. confirm vs the old named DB
-# function prologue (the large MinecraftPacketIds switch - jump-table dispatch, cmp edx,<count>; movsxd from table)
+# 1. find bytes "41 76 61 69 6C 61 62 6C 65 43 6F 6D 6D 61 6E 64 73 50 61 63 6B 65 74 00"
+#    = "AvailableCommandsPacket\0" (unique) -> its code xref is AvailableCommandsPacket::getName, whose
+#    address is a slot in the AvailableCommandsPacket vtable (see serializeAvailableCommands for this hop)
+# 2. xref the vtable to the bare default ctor ??0AvailableCommandsPacket@@QEAA@XZ
+# 3. the default ctor has ONE caller: make_packet<AvailableCommandsPacket>; make_packet has ONE caller:
+#    this function (the big MinecraftPacketIds -> packet factory)
+# 4. confirm vs the old named DB
 pattern = "56 48 83 EC ? 48 89 CE 81 FA ? ? ? ? 77 ? 89 D0 48 8D 0D ? ? ? ? 48 63 04 81 48 01 C8 FF E0 0F 57 C0 0F 11 06 48 89 F0 48 83 C4 ? 5E C3 48 89 F1 E8 ? ? ? ? EB ? 48 89 F1 E8"
 
 [[signatures]]
 name = "?knockback@Mob@@UEAAXPEAVActor@@HMMAEBUKnockbackParameters@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, Mob vtable slot - no string of its own):
-#   1. knockback is a Mob virtual (UEAA). Player derives from Mob, so Player's vtable carries Mob's slots -
-#      anchor it via teleportTo@Player ("3 Player teleportTo"), whose address is a slot in that vtable
-#   2. in the OLD named DB, read knockback's slot relative to teleportTo's (in 1.26.20 it is +0x3A0 above
-#      teleportTo's slot)
-#   3. read the same slot in the new vtable -> Mob::knockback (ServerPlayer::knockback is a 5-byte thunk to it)
-#   4. confirm vs the old named DB
-# function prologue
+# 1. knockback is a Mob virtual (UEAA). Player derives from Mob, so Player's vtable carries Mob's slots -
+#    anchor it via teleportTo@Player ("3 Player teleportTo"), whose address is a slot in that vtable
+# 2. in the OLD named DB, read knockback's slot relative to teleportTo's (in 1.26.20 it is +0x3A0 above
+#    teleportTo's slot)
+# 3. read the same slot in the new vtable -> Mob::knockback (ServerPlayer::knockback is a 5-byte thunk to it)
+# 4. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 0F 28 F3 44 89 C3 48 89 D7 48 89 CE 4C 8B A5 ? ? ? ? 48 85 D2 74 ? 41 80 7C 24"
 
 [[signatures]]
 name = "?send@NetworkSystem@@QEAAXAEBVNetworkIdentifier@@AEBVPacket@@W4SubClientId@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method - 2 xrefs):
-#   1. find bytes "48 65 61 64 65 72 20 44 61 74 61 00" = "Header Data\0" (a BinaryStream::writeString label;
-#      referenced here AND in NetworkSystem::sendToMultiple)
-#   2. tell them apart (name-independent): sendToMultiple loops over an id vector (back-edge); this one
-#      (send) is straight-line for a single id
-#   3. confirm by diffing both vs the old named DB
-# pre-jmp in LoopbackPacketSender::sendToClient tail-call thunk (unique)
+# 1. find bytes "48 65 61 64 65 72 20 44 61 74 61 00" = "Header Data\0" (a BinaryStream::writeString label;
+#    referenced here AND in NetworkSystem::sendToMultiple)
+# 2. tell them apart (name-independent): sendToMultiple loops over an id vector (back-edge); this one
+#    (send) is straight-line for a single id
+# 3. confirm by diffing both vs the old named DB
 pattern = "48 8B 4E ? 48 83 C1 ? 48 83 C4 ? 5B 5D 5F 5E E9 ? ? ? ?"
 rip_relative = true
 rip_offset = 17
@@ -628,92 +556,86 @@ rip_offset = 17
 name = "?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVIPackIOProvider@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@PEAVPackSourceReport@@AEBVPath@Core@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, no string of its own; via the education-metadata path global):
-#   1. Pack::EDUCATION_METADATA_FILE is a Core::PathBuffer global = "education.json", zero in the static
-#      image and built inline by a Pack-paths unity initializer (_GLOBAL__sub_I_unity_*) via two movabs
-#      immediates 0x6F69746163756465 ("educatio") + 0x6E6F736A2E6E6F69 ("ion.json"); land on that init via
-#      its real strcpy literals "pack_manifest.json\0" / "lock_template_options" / "base_game_version" (or
-#      the Mario/LittleBigPlanet pack UUIDs it also builds) - the store target of the "education.json" build
-#      is the EDUCATION_METADATA_FILE global
-#   2. that global's only reader (besides the init and its atexit dtor) is Pack::createPackMetadata, which
-#      loads it as an SSO string then calls accessStrategy->getAsset + EducationMetadataUtils::parse
-#   3. createPackMetadata has two callers; Pack::createPack is the large static factory (~0x802, returns
-#      unique_ptr<Pack>) - the other is a PackSource load lambda
-#   4. confirm vs the old named DB
-# function prologue
+# 1. Pack::EDUCATION_METADATA_FILE is a Core::PathBuffer global = "education.json", zero in the static
+#    image and built inline by a Pack-paths unity initializer (_GLOBAL__sub_I_unity_*) via two movabs
+#    immediates 0x6F69746163756465 ("educatio") + 0x6E6F736A2E6E6F69 ("ion.json"); land on that init via
+#    its real strcpy literals "pack_manifest.json\0" / "lock_template_options" / "base_game_version" (or
+#    the Mario/LittleBigPlanet pack UUIDs it also builds) - the store target of the "education.json" build
+#    is the EDUCATION_METADATA_FILE global
+# 2. that global's only reader (besides the init and its atexit dtor) is Pack::createPackMetadata, which
+#    loads it as an SSO string then calls accessStrategy->getAsset + EducationMetadataUtils::parse
+# 3. createPackMetadata has two callers; Pack::createPack is the large static factory (~0x802, returns
+#    unique_ptr<Pack>) - the other is a PackSource load lambda
+# 4. confirm vs the old named DB
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 45 88 CD 4D 89 C6 48 89 D7 48 89 8D ? ? ? ? 48 C7 01"
 
 [[signatures]]
 name = "?tick@PistonBlockActor@@UEAAXAEAVBlockSource@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, PistonBlockActor vtable slot - no string of its own; via the load NBT key):
-#   1. find the unique NBT key "LastProgress" (a PistonBlockActor serialization key); its lone data xref is
-#      a `lea` inside PistonBlockActor::load (the piston block-actor deserializer - reads Progress /
-#      LastProgress / State / NewState / Sticky / AttachedBlocks)
-#   2. load is a virtual: its address is a slot in the PistonBlockActor vtable (its other data xrefs are
-#      that vtable + the RTTI locator). tick sits +0x40 (8 slots) below load's slot in the same vtable
-#      (1.26.20 offset; cross-check the neighbours against the old named DB)
-#   3. confirm tick by its body: it drives the piston animation - advances this->mProgress toward 1.0
-#      (FLOAT_1_0) / 0.0 in +/-0.5 steps and flips the Expanding<->Expanded / Retracting<->Retracted state
-#      machine, posting GameEventRegistry::pistonExtend / pistonContract on a state change
-#   4. confirm vs the old named DB (PistonBlockActor virtual, takes BlockSource&, returns void)
-# function prologue
-pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 D7 48 89 CE E8"
+# 1. find the unique NBT key "LastProgress" (a PistonBlockActor serialization key); its lone data xref is
+#    a `lea` inside PistonBlockActor::load (the piston block-actor deserializer - reads Progress /
+#    LastProgress / State / NewState / Sticky / AttachedBlocks)
+# 2. load is a virtual: its address is a slot in the PistonBlockActor vtable (its other data xrefs are
+#    that vtable + the RTTI locator). DO NOT use a fixed slot offset - it drifted hard (load+0x40 in
+#    1.26.20 -> load+0x108 in 1.26.32, base virtuals inserted between). Instead read the WHOLE primary
+#    vtable: base-class slots repeat one shared stub address, while PistonBlockActor's own overrides
+#    point into the piston code cluster (same neighbourhood as load). tick is the lone HUGE override
+#    (~0x141e, 0 direct callers = pure virtual); func_profile the override addrs and pick it by size
+# 3. confirm tick by its body: piston state machine over PistonState 0/1/2/3, stepping this->mProgress
+#    (float member @ +0xB4) by +/-0.5 toward 1.0f (0x3F800000) / 0.0; the giveaway arm is
+#    `mState != Expanding(1) else { next = Expanded(2); if (mProgress < 1.0f) advance }`; builds a
+#    moving-block AABB from getFacingDir offsets and calls _moveCollidedEntities / _spawnBlocks
+# 4. confirm vs the old named DB (PistonBlockActor virtual, takes BlockSource&, returns void)
+# 5. skip the string route - the piston block ids are runtime-init HashedStrings (referenced only by block
+#    registration as stack temps), so string -> global -> tick never connects; the vtable scan is the way
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 CE FF 41 ? 48 89 D7 48 8D 59 ? F6 41 ? ? 74 ? 48 8B 07 48 8B 80 ? ? ? ? 48 89 F9 48 89 DA FF 15"
 
 [[signatures]]
 name = "?completeUsingItem@Player@@QEAAXXZ"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via the packet it builds):
-#   1. find bytes "43 6F 6D 70 6C 65 74 65 64 55 73 69 6E 67 49 74 65 6D 50 61 63 6B 65 74 00"
-#      = "CompletedUsingItemPacket\0"; its code/data xref is getName@CompletedUsingItemPacket (a tiny ~0x16
-#      virtual returning that string_view; the other xref is the cereal binder)
-#   2. getName's address is a slot in the CompletedUsingItemPacket vtable; from getName's data xref walk to
-#      the vtable start, then xref the vtable to its ctors and take the payload ctor
-#      CompletedUsingItemPacket::CompletedUsingItemPacket(CompletedUsingItemPacketPayload)
-#   3. that payload ctor has exactly ONE caller - Player::completeUsingItem - which builds the packet from
-#      the in-use item's id and sends it via mPacketSender->sendToClient (it also fires
-#      ItemEventCoordinator::sendEvent and ends by calling Player::stopUsingItem)
-#   4. confirm vs the old named DB (Player member, no args, returns void)
-# function prologue (first match)
+# 1. find bytes "43 6F 6D 70 6C 65 74 65 64 55 73 69 6E 67 49 74 65 6D 50 61 63 6B 65 74 00"
+#    = "CompletedUsingItemPacket\0"; its code/data xref is getName@CompletedUsingItemPacket (a tiny ~0x16
+#    virtual returning that string_view; the other xref is the cereal binder)
+# 2. getName's address is a slot in the CompletedUsingItemPacket vtable; from getName's data xref walk to
+#    the vtable start, then xref the vtable to its ctors and take the payload ctor
+#    CompletedUsingItemPacket::CompletedUsingItemPacket(CompletedUsingItemPacketPayload)
+# 3. that payload ctor has exactly ONE caller - Player::completeUsingItem - which builds the packet from
+#    the in-use item's id and sends it via mPacketSender->sendToClient (it also fires
+#    ItemEventCoordinator::sendEvent and ends by calling Player::stopUsingItem)
+# 4. confirm vs the old named DB (Player member, no args, returns void)
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 CE 48 8D B9 ? ? ? ? 48 8D 9D ? ? ? ? 48 89 D9 E8 ? ? ? ? 4C 8D 35 ? ? ? ? 4C 89 B5 ? ? ? ? 48 89 D9 48 89 FA E8 ? ? ? ? 48 8B 46 ? 4C 8B 68"
 
 [[signatures]]
 name = "?drop@Player@@UEAA_NAEBVItemStack@@_N@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, Player vtable slot - no string of its own):
-#   1. drop is a Player virtual (UEAA). Anchor Player's vtable via a string-located Player virtual - e.g.
-#      teleportTo@Player ("3 Player teleportTo") or startSleepInBed; that function's address is a slot in
-#      Player's vtable (its data xref), which gives you the vtable
-#   2. in the OLD named DB, read drop's slot index relative to that anchor (in 1.26.20 drop's slot is +0x2F8
-#      / ~95 entries above teleportTo's, in both the Player and derived ServerPlayer vtables)
-#   3. read the same slot in the new DB's Player vtable -> drop@Player; virtual order barely drifts per version
-#   4. confirm vs the old named DB (the neighbouring slots should line up)
-# function prologue
+# 1. drop is a Player virtual (UEAA). Anchor Player's vtable via a string-located Player virtual - e.g.
+#    teleportTo@Player ("3 Player teleportTo") or startSleepInBed; that function's address is a slot in
+#    Player's vtable (its data xref), which gives you the vtable
+# 2. in the OLD named DB, read drop's slot index relative to that anchor (in 1.26.20 drop's slot is +0x2F8
+#    / ~95 entries above teleportTo's, in both the Player and derived ServerPlayer vtables)
+# 3. read the same slot in the new DB's Player vtable -> drop@Player; virtual order barely drifts per version
+# 4. confirm vs the old named DB (the neighbouring slots should line up)
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 48 89 CE 48 8B 89 ? ? ? ? 48 85 C9 0F 84 ? ? ? ? 8B 41 ? 66 0F 1F 44 00"
 
 [[signatures]]
 name = "?startSleepInBed@Player@@UEAA?AW4BedSleepingResult@@AEBVBlockPos@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "31 20 73 74 61 72 74 53 6C 65 65 70 49 6E 42 65 64 00" = "1 startSleepInBed\0" (unique)
-#   2. its lone data xref (a validateBlockPos label arg) is a `lea` inside this function
-#   3. walk up to the prologue
-# function prologue
+# 1. find bytes "31 20 73 74 61 72 74 53 6C 65 65 70 49 6E 42 65 64 00" = "1 startSleepInBed\0" (unique)
+# 2. its lone data xref (a validateBlockPos label arg) is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 44 0F 29 55 ? 44 0F 29 4D ? 44 0F 29 45 ? 0F 29 7D ? 0F 29 75 ? 48 C7 45 ? FE FF FF FF 48 89 D7 48 89 CE"
 
 [[signatures]]
 name = "?stopSleepInBed@Player@@UEAAX_N0@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "33 20 73 74 6F 70 53 6C 65 65 70 20 62 65 64 20 70 6F 73 00" = "3 stopSleep bed pos\0" (unique)
-#   2. its lone data xref (a validateVec3Position label arg) is a `lea` inside this function
-#   3. walk up to the prologue
-# pre-call arg-setup in ServerPlayer::stopSleepInBed (unique)
+# 1. find bytes "33 20 73 74 6F 70 53 6C 65 65 70 20 62 65 64 20 70 6F 73 00" = "3 stopSleep bed pos\0" (unique)
+# 2. its lone data xref (a validateVec3Position label arg) is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "FF 15 ? ? ? ? 48 89 F9 89 F2 41 89 D8 E8 ? ? ? ?"
 rip_relative = true
 rip_offset = 15
@@ -722,17 +644,15 @@ rip_offset = 15
 name = "?take@Player@@QEAA_NAEAVActor@@HH@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, no string of its own; via the pickup packet it builds):
-#   1. find bytes "54 61 6B 65 49 74 65 6D 41 63 74 6F 72 50 61 63 6B 65 74 00" = "TakeItemActorPacket\0";
-#      its code/data xref is getName@TakeItemActorPacket (a tiny virtual returning that string_view; the
-#      other xref is the cereal binder)
-#   2. getName's address is a slot in the TakeItemActorPacket vtable; from getName's data xref walk to the
-#      vtable start, then xref it to the ctor TakeItemActorPacket(ActorRuntimeID, ActorRuntimeID)
-#   3. that ctor has exactly ONE caller - Player::take - which calls Actor::getRuntimeID on both the picker
-#      and the picked-up actor, builds the packet and sends it via the picked-up actor's block-source/level
-#      visitor (it also reads VanillaItemNames::Arrow and fires ActorEventCoordinator::sendEvent)
-#   4. confirm vs the old named DB (Player member, args (Actor&, int, int), returns bool)
-# xref call site in AbstractArrow::playerTouch
+# 1. find bytes "54 61 6B 65 49 74 65 6D 41 63 74 6F 72 50 61 63 6B 65 74 00" = "TakeItemActorPacket\0";
+#    its code/data xref is getName@TakeItemActorPacket (a tiny virtual returning that string_view; the
+#    other xref is the cereal binder)
+# 2. getName's address is a slot in the TakeItemActorPacket vtable; from getName's data xref walk to the
+#    vtable start, then xref it to the ctor TakeItemActorPacket(ActorRuntimeID, ActorRuntimeID)
+# 3. that ctor has exactly ONE caller - Player::take - which calls Actor::getRuntimeID on both the picker
+#    and the picked-up actor, builds the packet and sends it via the picked-up actor's block-source/level
+#    visitor (it also reads VanillaItemNames::Arrow and fires ActorEventCoordinator::sendEvent)
+# 4. confirm vs the old named DB (Player member, args (Actor&, int, int), returns bool)
 pattern = "E8 ? ? ? ? 84 C0 74 ? 48 8B 06 48 8B 40 ? 48 89 F1 FF 15 ? ? ? ? 48 8D 05"
 rip_relative = true
 rip_offset = 1
@@ -741,35 +661,29 @@ rip_offset = 1
 name = "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "33 20 50 6C 61 79 65 72 20 74 65 6C 65 70 6F 72 74 54 6F 00" = "3 Player teleportTo\0" (unique)
-#   2. its lone data xref (a validateVec3Position label arg) is a `lea` inside this function
-#   3. walk up to the prologue
-# function prologue
+# 1. find bytes "33 20 50 6C 61 79 65 72 20 74 65 6C 65 70 6F 72 74 54 6F 00" = "3 Player teleportTo\0" (unique)
+# 2. its lone data xref (a validateVec3Position label arg) is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "41 57 41 56 56 57 55 53 48 81 EC ? ? ? ? 44 0F 29 9C 24 ? ? ? ? 44 0F 29 94 24 ? ? ? ? 44 0F 29 8C 24 ? ? ? ? 66 44 0F 7F 84 24"
 
 [[signatures]]
 name = "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. search the ASCII bytes of "sendto failed with code %s (%i) for char %i and length %i for %s.\n"
-#      + a 00 terminator (unique)
-#   2. its lone data xref is a `lea` inside this function
-#   3. walk up to the prologue
-# function prologue (sole call site is a tail-call thunk)
+# 1. search the ASCII bytes of "sendto failed with code %s (%i) for char %i and length %i for %s.\n"
+#    + a 00 terminator (unique)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? FE FF FF FF 48 89 D6 48 89 CB 48 8B 89 ? ? ? ? 48 85 C9 74"
 
 [[signatures]]
 name = "?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "52 61 6B 50 65 65 72 48 65 6C 70 65 72 3A 3A 70 65 65 72 53 74 61 72 74 75 70 00"
-#      = "RakPeerHelper::peerStartup\0" (the function's own name as a log string; unique)
-#   2. its lone data xref is a `lea` inside this function
-#   3. walk up to the prologue
-# xref call site in RakNetConnector::host
+# 1. find bytes "52 61 6B 50 65 65 72 48 65 6C 70 65 72 3A 3A 70 65 65 72 53 74 61 72 74 75 70 00"
+#    = "RakPeerHelper::peerStartup\0" (the function's own name as a log string; unique)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? 83 F8 ? 0F 92 C3"
 rip_relative = true
 rip_offset = 1
@@ -778,41 +692,37 @@ rip_offset = 1
 name = "?createSources@RepositoryFactory@@UEBA?AV?$shared_ptr@VRepositorySources@@@std@@AEBVIResourcePackRepository@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, RepositoryFactory vtable slot - no string of its own; via the ResourcePackRepository ctor):
-#   1. reach the ResourcePackRepository ctor via the unique string "Resource Repository Async Group" (see
-#      initializePackSource@RepositorySources for that anchor)
-#   2. in the ctor, when the supplied IRepositoryFactory arg is null, it `operator new(8)` a default
-#      RepositoryFactory, stores &RepositoryFactory::vftable into it (-> mFactory), then immediately makes a
-#      virtual call through that vtable's SLOT 1 to build the shared_ptr<RepositorySources> that becomes
-#      mSources - that callee is createSources
-#   3. so take RepositoryFactory's vtable (slot 0 = the deleting dtor, may show ICF-folded with an unrelated
-#      empty dtor; slot 1 = createSources; slot 2 = createIO@RepositoryFactory); slot 1 is the target
-#   4. confirm by its body: lock_shared ServiceLocator<AppPlatform>, RepositorySourceOptions::create(
-#      repository, platform), then make_shared<RepositorySources>(options); confirm vs the old named DB
-# function prologue
+# 1. reach the ResourcePackRepository ctor via the unique string "Resource Repository Async Group" (see
+#    initializePackSource@RepositorySources for that anchor)
+# 2. in the ctor, when the supplied IRepositoryFactory arg is null, it `operator new(8)` a default
+#    RepositoryFactory, stores &RepositoryFactory::vftable into it (-> mFactory), then immediately makes a
+#    virtual call through that vtable's SLOT 1 to build the shared_ptr<RepositorySources> that becomes
+#    mSources - that callee is createSources
+# 3. so take RepositoryFactory's vtable (slot 0 = the deleting dtor, may show ICF-folded with an unrelated
+#    empty dtor; slot 1 = createSources; slot 2 = createIO@RepositoryFactory); slot 1 is the target
+# 4. confirm by its body: lock_shared ServiceLocator<AppPlatform>, RepositorySourceOptions::create(
+#    repository, platform), then make_shared<RepositorySources>(options); confirm vs the old named DB
 pattern = "55 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 C7 48 89 D6 4C 8D 35"
 
 [[signatures]]
 name = "?initializePackSource@RepositorySources@@QEAAXAEAVPackSourceFactory@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, no string of its own; via the ResourcePackRepository ctor):
-#   1. find the unique string "Resource Repository Async Group" (the async TaskGroup name); its lone data
-#      xref is a `lea` inside the ResourcePackRepository ctor, which make_unique's that TaskGroup ~20 insns
-#      above the target call
-#   2. just below, the ctor makes two back-to-back member calls: RepositorySources::initializePackSource(
-#      mSources, mPackSourceFactory) then ResourcePackRepositoryRefreshQueue::initialize(mRefresher, _,
-#      mTaskGroup). initializePackSource is the FIRST of the pair - the second (whose lone caller is this
-#      ctor) pins it; RefreshQueue::initialize is itself recognizable by the pretty-function task label
-#      "ResourcePackRepositoryRefreshQueue::initialize(TaskGroup &)::(anonymous class)::operator()(
-#      PreviousTasks &) const"
-#   3. confirm initializePackSource by its body: it rebuilds the pack-source tree via repeated
-#      PackSourceFactory::createCompositePackSource (mWorldPackSource / mPremiumWorldTemplatePackSource /
-#      mTempWorldTemplatePackSource / mCachePackSource / mPackSource) plus two createInPackagePackSource
-#      calls (args 6 and 4). NOTE: it has a second caller, a RepositoryLoading async lambda - the pattern
-#      below matches that call site, not the ctor one
-#   4. confirm vs the old named DB
-# xref call site in RepositoryLoading async lambda
+# 1. find the unique string "Resource Repository Async Group" (the async TaskGroup name); its lone data
+#    xref is a `lea` inside the ResourcePackRepository ctor, which make_unique's that TaskGroup ~20 insns
+#    above the target call
+# 2. just below, the ctor makes two back-to-back member calls: RepositorySources::initializePackSource(
+#    mSources, mPackSourceFactory) then ResourcePackRepositoryRefreshQueue::initialize(mRefresher, _,
+#    mTaskGroup). initializePackSource is the FIRST of the pair - the second (whose lone caller is this
+#    ctor) pins it; RefreshQueue::initialize is itself recognizable by the pretty-function task label
+#    "ResourcePackRepositoryRefreshQueue::initialize(TaskGroup &)::(anonymous class)::operator()(
+#    PreviousTasks &) const"
+# 3. confirm initializePackSource by its body: it rebuilds the pack-source tree via repeated
+#    PackSourceFactory::createCompositePackSource (mWorldPackSource / mPremiumWorldTemplatePackSource /
+#    mTempWorldTemplatePackSource / mCachePackSource / mPackSource) plus two createInPackagePackSource
+#    calls (args 6 and 4). NOTE: it has a second caller, a RepositoryLoading async lambda - the pattern
+#    below matches that call site, not the ctor one
+# 4. confirm vs the old named DB
 pattern = "E8 ? ? ? ? 0F 57 C0 0F 29 44 24 ? 48 8B 47"
 rip_relative = true
 rip_offset = 1
@@ -821,29 +731,29 @@ rip_offset = 1
 name = "?deserialize@ResourcePackStack@@SA?AV?$unique_ptr@VResourcePackStack@@U?$default_delete@VResourcePackStack@@@std@@@std@@AEAV?$basic_istream@DU?$char_traits@D@std@@@3@AEBV?$not_null@V?$NonOwnerPointer@$$CBVIResourcePackRepository@@@Bedrock@@@gsl@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, 3-hop call chain - no string of its own):
-#   1. find bytes "73 75 62 70 61 63 6B 00" = "subpack" (unique); referenced INSIDE
-#      ResourceHelper::deserializePackStackEntry - more distinctive than the "pack_id" key it also reads
-#      ("pack_id" has a 2nd instance passed AS the param, so anchor on subpack, not pack_id)
-#   2. deserializePackStackEntry (~500 insns in 1.26.32; hashes the pack_id value with a salt into a UUID
-#      PackInstanceId) is xref'd by ResourcePackStackAnon::forEachPackId
-#   3. forEachPackId's lone caller is ResourcePackStack::deserialize; walk to its prologue
-#   4. confirm vs the old named DB (small static returning unique_ptr<ResourcePackStack> from an istream;
-#      old prologue ends `mov rbx,rcx; mov ecx,0x28`). NOTE: hops 2-3 need IDA auto-analysis complete
-# function prologue
-pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4C 89 4D ? 4C 89 C7 48 89 D6 48 89 CB B9"
+# 1. find bytes "73 75 62 70 61 63 6B 00" = "subpack" (unique); referenced INSIDE
+#    ResourceHelper::deserializePackStackEntry - more distinctive than the "pack_id" key it also reads
+#    ("pack_id" has a 2nd instance passed AS the param, so anchor on subpack, not pack_id)
+# 2. deserializePackStackEntry (~500 insns in 1.26.32; hashes the pack_id value with a salt into a UUID
+#    PackInstanceId) is xref'd by the forEachPackId loop
+# 3. in 1.26.20 forEachPackId is a separate ResourcePackStackAnon helper whose lone caller is
+#    deserialize; in 1.26.32 forEachPackId is INLINED into deserialize, so the chain SHORTENS - the
+#    loop's caller IS deserialize directly (it parses the istream via Json::Reader::parse, reads
+#    "pack_id", logs "Configured pack (id: {}, version: {}) was not found and was ignored"). The size
+#    balloons (named 0x15e -> 0xa74) from absorbing the helper
+# 4. confirm vs the old named DB: static returning unique_ptr<ResourcePackStack> from an istream; its
+#    direct callers are ServerInstance::initializeServer + FileArchiver::_exportLevelFiles
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 66 44 0F 29 85 ? ? ? ? 66 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 8D ? ? ? ? 4C 89 C7 48 89 D6 49 89 CE 48 8B 0D ? ? ? ? 48 8B 01 48 8B 40 ? BA ? ? ? ? FF 15"
 
 [[signatures]]
 name = "?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method - 2 xrefs):
-#   1. find bytes "63 68 61 74 2E 74 79 70 65 2E 61 6E 6E 6F 75 6E 63 65 6D 65 6E 74 00" = "chat.type.announcement\0"
-#      (referenced here AND in SayCommand::execute)
-#   2. tell them apart (name-independent): the two are a caller/callee pair (execute calls this one), so the
-#      target is the *callee*, and the smaller of the two
-#   3. confirm by diffing both vs the old named DB
-# xref call site in SayCommand execute lambda, unique
+# 1. find bytes "63 68 61 74 2E 74 79 70 65 2E 61 6E 6E 6F 75 6E 63 65 6D 65 6E 74 00" = "chat.type.announcement\0"
+#    (referenced here AND in SayCommand::execute)
+# 2. tell them apart (name-independent): the two are a caller/callee pair (execute calls this one), so the
+#    target is the *callee*, and the smaller of the two
+# 3. confirm by diffing both vs the old named DB
 pattern = "48 89 74 24 20 48 8D 55 ? 48 89 F9 4D 89 E8 4C 8B 4D ? E8"
 rip_relative = true
 rip_offset = 20
@@ -852,13 +762,11 @@ rip_offset = 20
 name = "?createBlockDescriptor@ScriptBlockUtils@ScriptModuleMinecraft@@YA?AVBlockDescriptor@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$unordered_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@U?$hash@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@U?$equal_to@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@@std@@@2@@std@@@5@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own):
-#   1. find bytes "46 61 69 6C 65 64 20 74 6F 20 72 65 73 6F 6C 76 65 20 62 6C 6F 63 6B 20 22 00"
-#      = "Failed to resolve block \"\0" (unique); its xref is in ScriptBlockPermutation::resolve
-#   2. resolve builds the descriptor then tries to resolve it - createBlockDescriptor is the call taking the
-#      script block-name string + optional<map> states and returning a BlockDescriptor (above the error path)
-#   3. confirm the callee vs the old named DB
-# xref call site in ScriptBlockPermutation::resolve, first match resolves to target
+# 1. find bytes "46 61 69 6C 65 64 20 74 6F 20 72 65 73 6F 6C 76 65 20 62 6C 6F 63 6B 20 22 00"
+#    = "Failed to resolve block \"\0" (unique); its xref is in ScriptBlockPermutation::resolve
+# 2. resolve builds the descriptor then tries to resolve it - createBlockDescriptor is the call taking the
+#    script block-name string + optional<map> states and returning a BlockDescriptor (above the error path)
+# 3. confirm the callee vs the old named DB
 pattern = "E8 ? ? ? ? 48 8D 4D ? E8 ? ? ? ? 48 8B BD ? ? ? ? 48 85 C0 0F 84"
 rip_relative = true
 rip_offset = 1
@@ -867,27 +775,23 @@ rip_offset = 1
 name = "?_validateLoginPacket@ServerNetworkHandler@@EEAA?AV?$optional@UPlayerAuthenticationInfo@@@std@@AEBVNetworkIdentifier@@AEBVLoginPacket@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "72 65 61 6C 6D 73 00" = "realms\0" - 3 byte-matches, but only ONE has a code xref (the
-#      other two are unreferenced string tails)
-#   2. that lone code xref's `lea` is inside this function (which reads a cluster of short auth keys:
-#      auth/uuid/xid/realms/pid/nid)
-#   3. walk up to the prologue
-# function prologue
+# 1. find bytes "72 65 61 6C 6D 73 00" = "realms\0" - 3 byte-matches, but only ONE has a code xref (the
+#    other two are unreferenced string tails)
+# 2. that lone code xref's `lea` is inside this function (which reads a cluster of short auth keys:
+#    auth/uuid/xid/realms/pid/nid)
+# 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 CE 4C 89 C3 48 89 D6 48 89 CF 48 8B 01"
 
 [[signatures]]
 name = "?disconnectClientWithMessage@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own):
-#   1. find bytes "25 73 20 68 61 73 20 62 65 65 6E 20 6B 69 63 6B 65 64 20 66 6F 72 20 66 6C 6F 6F 64 69 6E 67 20 74 68 65 20 63 68 61 74 2E 00"
-#      = "%s has been kicked for flooding the chat." (unique); its lone xref is in the chat-flood lambda,
-#      where it is lea'd as the FORMAT string for a Bedrock::Diagnostics::log call - NOT the disconnect itself
-#   2. disconnectClientWithMessage is the next handler this-call BELOW that log call (~0x56 down): it loads
-#      the handler this-ptr from a stack slot, sets rdx = the NetworkIdentifier and r9d = a DisconnectFailReason imm
-#   3. confirm vs the old named DB
-# pre-call arg-setup in the chat-flood lambda, unique
+# 1. find bytes "25 73 20 68 61 73 20 62 65 65 6E 20 6B 69 63 6B 65 64 20 66 6F 72 20 66 6C 6F 6F 64 69 6E 67 20 74 68 65 20 63 68 61 74 2E 00"
+#    = "%s has been kicked for flooding the chat." (unique); its lone xref is in the chat-flood lambda,
+#    where it is lea'd as the FORMAT string for a Bedrock::Diagnostics::log call - NOT the disconnect itself
+# 2. disconnectClientWithMessage is the next handler this-call BELOW that log call (~0x56 down): it loads
+#    the handler this-ptr from a stack slot, sets rdx = the NetworkIdentifier and r9d = a DisconnectFailReason imm
+# 3. confirm vs the old named DB
 pattern = "48 8B 8D ? ? ? ? 48 89 FA 41 B9 ? ? ? ? E8"
 rip_relative = true
 rip_offset = 17
@@ -896,24 +800,20 @@ rip_offset = 17
 name = "?initializeServer@ServerInstance@@QEAA_N$$QEAUServerInstanceInitArguments@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "53 65 72 76 65 72 49 6E 73 74 61 6E 63 65 20 54 68 72 65 61 64 00" = "ServerInstance Thread\0"
-#      (unique; prefer this message over the "ServerInstance::initializeServer" label, which byte-matches 5
-#      strings/lambda names and is only unique with its trailing 00)
-#   2. its lone data xref is a `lea` inside this function
-#   3. walk up to the prologue
-# function prologue
+# 1. find bytes "53 65 72 76 65 72 49 6E 73 74 61 6E 63 65 20 54 68 72 65 61 64 00" = "ServerInstance Thread\0"
+#    (unique; prefer this message over the "ServerInstance::initializeServer" label, which byte-matches 5
+#    strings/lambda names and is only unique with its trailing 00)
+# 2. its lone data xref is a `lea` inside this function
+# 3. walk up to the prologue
 pattern = "55 41 57 41 56 41 55 41 54 56 57 53 B8 ? ? ? ? E8 ? ? ? ? 48 29 C4 48 8D AC 24 80 00 00 00 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 48 89 95 ? ? ? ? 48 8D 9A 30 05 00 00"
 
 [[signatures]]
 name = "?tryToLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@AEBUPlayerAuthenticationInfo@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, string method):
-#   1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 70 6C 61 79 65 72 2E 30 00" = "minecraft:player.0\0" (unique)
-#   2. its data xrefs (both of them) are `lea`s inside this function
-#   3. walk up to the prologue
-# xref call site in VanillaServerNetworkHandler::handle, unique
+# 1. find bytes "6D 69 6E 65 63 72 61 66 74 3A 70 6C 61 79 65 72 2E 30 00" = "minecraft:player.0\0" (unique)
+# 2. its data xrefs (both of them) are `lea`s inside this function
+# 3. walk up to the prologue
 pattern = "E8 ? ? ? ? 84 C0 74 ? 44 0F B6 BB ? ? ? ?"
 rip_relative = true
 rip_offset = 1
@@ -922,76 +822,66 @@ rip_offset = 1
 name = "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own):
-#   1. find bytes "25 6D 75 6C 74 69 70 6C 61 79 65 72 2E 70 6C 61 79 65 72 2E 6C 65 66 74 00"
-#      = "%multiplayer.player.left\0" (unique); its lone data xref is in ServerNetworkHandler::_onPlayerLeft
-#   2. _onPlayerLeft refreshes the announcement when a player leaves, so updateServerAnnouncement is called
-#      somewhere below that string's use (a this-only call: lea rcx,[this]; call)
-#   3. confirm vs the old named DB
-#   Alt: locate serializeAvailableCommands (string-locatable); in its caller sendLoginMessageLocal,
-#   updateServerAnnouncement is the very FIRST call (just above _sendLevelData/_sendAdditionalLevelData).
-# function prologue
+# 1. find bytes "25 6D 75 6C 74 69 70 6C 61 79 65 72 2E 70 6C 61 79 65 72 2E 6C 65 66 74 00"
+#    = "%multiplayer.player.left\0" (unique); its lone data xref is in ServerNetworkHandler::_onPlayerLeft
+# 2. _onPlayerLeft refreshes the announcement when a player leaves, so updateServerAnnouncement is called
+#    somewhere below that string's use (a this-only call: lea rcx,[this]; call)
+# 3. alt route if that direct call is gone (it was removed in 1.26.32): locate serializeAvailableCommands
+#    (string-locatable); in its caller sendLoginMessageLocal, updateServerAnnouncement is the very FIRST
+#    call (just above _sendLevelData/_sendAdditionalLevelData)
+# 4. confirm vs the old named DB
 pattern = "41 57 41 56 41 55 41 54 56 57 55 53 48 83 EC ? 80 B9 ? ? ? ? ? 0F 85 ? ? ? ? 48 89 CE 48 83 B9 ? ? ? ? ? 0F 84 ? ? ? ? 48 83 BE ? ? ? ? ? 75 ? 48 8D 05 ? ? ? ? 48 89 44 24"
 
 [[signatures]]
 name = "?changeDimension@ServerPlayer@@UEAAXUDimensionType@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, ServerPlayer vtable slot - no string of its own):
-#   1. changeDimension is a ServerPlayer virtual (UEAA). Anchor the ServerPlayer vtable via an inherited
-#      string-located virtual - teleportTo@Player ("3 Player teleportTo") appears in it (ServerPlayer does
-#      not override teleportTo, so that slot points at Player::teleportTo); this gives you the vtable
-#   2. in the OLD named DB, read changeDimension's slot relative to teleportTo's (in 1.26.20 it is +0x220
-#      / ~68 entries above teleportTo's slot, i.e. between teleportTo and drop)
-#   3. read the same slot in the new DB's ServerPlayer vtable -> changeDimension@ServerPlayer
-#   4. confirm vs the old named DB (neighbouring slots should line up)
-# function prologue
+# 1. changeDimension is a ServerPlayer virtual (UEAA). Anchor the ServerPlayer vtable via an inherited
+#    string-located virtual - teleportTo@Player ("3 Player teleportTo") appears in it (ServerPlayer does
+#    not override teleportTo, so that slot points at Player::teleportTo); this gives you the vtable
+# 2. in the OLD named DB, read changeDimension's slot relative to teleportTo's (in 1.26.20 it is +0x220
+#    / ~68 entries above teleportTo's slot, i.e. between teleportTo and drop)
+# 3. read the same slot in the new DB's ServerPlayer vtable -> changeDimension@ServerPlayer
+# 4. confirm vs the old named DB (neighbouring slots should line up)
 pattern = "55 56 57 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 89 D7 48 89 CE 48 8D 55 ? E8 ? ? ? ? 48 8B 86 ? ? ? ? 8B 48 ? 89 4D ? 48 8B 00 48 89 45 ? 8B 55 ? C7 45"
 
 [[signatures]]
 name = "?_tickServerPlayerMovementCorrectionSystem@ServerPlayerMovementCorrectionSystem@@YAXAEBVStrictEntityContext@@AEBUServerPlayerCurrentMovementComponent@@AEBVUserEntityIdentifierComponent@@AEAUServerPlayerMovementComponent@@V?$Optional@$$CBUPassengerComponent@@@@AEAUStateVectorComponent@@AEBV?$ViewT@VStrictEntityContext@@$$CBUActorRotationComponent@@VActorOwnerComponent@@VReplayStateComponent@@UStateVectorComponent@@V?$Optional@$$CBUBoatMovementComponent@@@@@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via a packet vtable, 3 hops):
-#   1. find bytes "43 6F 72 72 65 63 74 50 6C 61 79 65 72 4D 6F 76 65 50 72 65 64 69 63 74 69 6F 6E 50 61 63 6B 65 74 00"
-#      = "CorrectPlayerMovePredictionPacket\0" (unique) -> its code xref is getName (tiny virtual), whose
-#      address is a slot in the CorrectPlayerMovePredictionPacket vtable
-#   2. xref the vtable to the payload ctor (...@UCorrectPlayerMovePredictionPacketPayload@@@Z); its lone
-#      caller is ServerPlayerMovementCorrectionSystem::_afterMovementSimulation
-#   3. _afterMovementSimulation's lone caller is this function (_tickServerPlayerMovementCorrectionSystem)
-#   4. confirm vs the old named DB
-# function prologue
+# 1. find bytes "43 6F 72 72 65 63 74 50 6C 61 79 65 72 4D 6F 76 65 50 72 65 64 69 63 74 69 6F 6E 50 61 63 6B 65 74 00"
+#    = "CorrectPlayerMovePredictionPacket\0" (unique) -> its code xref is getName (tiny virtual), whose
+#    address is a slot in the CorrectPlayerMovePredictionPacket vtable
+# 2. xref the vtable to the payload ctor (...@UCorrectPlayerMovePredictionPacketPayload@@@Z); its lone
+#    caller is ServerPlayerMovementCorrectionSystem::_afterMovementSimulation
+# 3. _afterMovementSimulation's lone caller is this function (_tickServerPlayerMovementCorrectionSystem)
+# 4. confirm vs the old named DB
 pattern = "41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 4C 89 C7 48 89 D6 48 8B 02 48 89 84 24 ? ? ? ? 0F 57 F6 0F 11 B4 24 ? ? ? ? 0F 11 B4 24 ? ? ? ? 48 C7 84 24"
 
 [[signatures]]
 name = "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, indirect - no string of its own; via the base ctor's default-criteria global):
-#   1. find bytes "64 75 6D 6D 79 00 00 00 00 00 00 00 00 00 00 00 05 00 00 00 00 00 00 00 0F" = the inline-SSO
-#      std::string Scoreboard::DEFAULT_CRITERIA ("dummy", size 5, cap 15) (unique - it stores "dummy" inline,
-#      not via a separate literal)
-#   2. its lone data xref is inside Scoreboard::Scoreboard (the base ctor), which passes it by address to
-#      Scoreboard::createObjectiveCriteria(this, &DEFAULT_CRITERIA, 0, Integer) just before _initCoordinator
-#   3. ServerScoreboard::ServerScoreboard is the small (~0x3d4) caller whose FIRST call is that
-#      Scoreboard::Scoreboard base ctor (it then stores the ServerScoreboard vtable, news a 5.0s BasicTimer
-#      save timer, wires the GameplayUserManager, and calls _readFromLevelStorage); the other caller,
-#      Level::initialize, is huge and calls the base ctor deep inside
-#   4. confirm vs the old named DB (ctor: CommandSoftEnumRegistry, LevelStorage*, not_null<NonOwnerPointer<GameplayUserManager>>)
-# function prologue
-pattern = "55 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 45 ? ? ? ? ? 4C 89 4D ? 4C 89 C6"
+# 1. find bytes "73 63 6F 72 65 62 6F 61 72 64 00" = standalone "scoreboard\0" (unique) - the LevelStorage
+#    DB key _readFromLevelStorage loads. In 1.26.32 _readFromLevelStorage + deserialize@ServerScoreboard are
+#    inlined into the ctor, so this key now lives inside the ctor itself
+# 2. its data xrefs are the read path (this ctor), the write path (serialize/_writeToLevelStorage), and a
+#    /scoreboard command fn. The ctor is the one whose TOP calls the base Scoreboard::Scoreboard ctor, then
+#    `lea rax, <ServerScoreboard vtable>; mov [this], rax` (the vtable store), stores the LevelStorage* arg
+#    (+0x308) and wires the GameplayUserManager NonOwnerPointer (the r9/4th arg), before the inlined NBT
+#    read ("DisplayObjectives" / "LastUniqueID" / "dummy" default criteria)
+# 3. confirm vs the old named DB (ctor args: CommandSoftEnumRegistry, LevelStorage*, not_null<NonOwnerPointer<GameplayUserManager>>); caller_count 1 = ServerLevel::_initializeScoreboard. Size ballooned 0x3d4 -> 0x3032 from the inlining
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4C 89 4D ? 4C 89 C6 48 89 CF E8"
 
 [[signatures]]
 name = "?updateWeather@WeatherManager@@QEAAXMHMH@Z"
 relative = false
 extra = 0
-# Relocate (unnamed DB, Level vtable slot - no string of its own):
-#   1. Level::updateWeather is a Level virtual; anchor the Level vtable via Level::tick (a resolved Level
-#      virtual) - Level::tick's address is a slot in the Level vtable
-#   2. in the OLD named DB Level::updateWeather's slot is +0x778 above Level::tick's; read the same slot in
-#      the new Level vtable -> Level::updateWeather, a 12-byte thunk (mov rcx,[rcx+<WeatherManager off>]; jmp)
-#   3. its tail-jmp (E9) target is WeatherManager::updateWeather; walk to its prologue
-#   4. confirm vs the old named DB (neighbouring slots line up). The thunk's member offset (0x718 in 1.26.32)
-#      is a fragile fallback anchor - prefer the vtable slot, which cross-checks against the neighbours
-# function prologue
+# 1. Level::updateWeather is a Level virtual; anchor the Level vtable via Level::tick (a resolved Level
+#    virtual) - Level::tick's address is a slot in the Level vtable
+# 2. in the OLD named DB Level::updateWeather's slot is +0x778 above Level::tick's; read the same slot in
+#    the new Level vtable -> Level::updateWeather, a 12-byte thunk (mov rcx,[rcx+<WeatherManager off>]; jmp)
+# 3. its tail-jmp (E9) target is WeatherManager::updateWeather; walk to its prologue
+# 4. confirm vs the old named DB (neighbouring slots line up). The thunk's member offset (0x718 in 1.26.32)
+#    is a fragile fallback anchor - prefer the vtable slot, which cross-checks against the neighbours
 pattern = "55 41 57 41 56 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 80 00 00 00 44 0F 29 95 ? ? ? ? 44 0F 29 8D ? ? ? ? 44 0F 29 85 ? ? ? ? 0F 29 BD ? ? ? ? 0F 29 75 ? 48 C7 45 ? FE FF FF FF 0F 28 F3"
