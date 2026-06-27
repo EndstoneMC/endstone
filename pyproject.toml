@@ -1,5 +1,5 @@
 [build-system]
-requires = ["conan-py-build"]
+requires = ["conan-py-build", "cmake"]
 build-backend = "conan_py_build.build"
 
 [project]
