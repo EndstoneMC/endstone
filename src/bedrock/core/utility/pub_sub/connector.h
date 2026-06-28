@@ -14,18 +14,18 @@
 
 #pragma once
 
-#include <functional>
 #include <optional>
 
 #include "bedrock/core/utility/pub_sub/publisher_config.h"
 #include "bedrock/core/utility/pub_sub/subscription.h"
+#include "bedrock/platform/brstd/move_only_function.h"
 
 namespace Bedrock::PubSub {
 
 template <typename Signature>
 class Connector {
 public:
-    using FunctionType = std::function<Signature>;
+    using FunctionType = brstd::move_only_function<Signature>;
 
     template <typename Fn>
     Subscription connect(const Fn &fn, ConnectPosition at, ContextType &&context)

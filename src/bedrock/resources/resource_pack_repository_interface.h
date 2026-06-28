@@ -38,6 +38,7 @@ public:
     [[nodiscard]] virtual PackSourceReport const *getPackLoadingReport() const = 0;
     [[nodiscard]] virtual std::shared_ptr<ResourcePack> getEditorPack() const = 0;
     [[nodiscard]] virtual std::shared_ptr<ResourcePack> getVanillaPack() const = 0;
+    virtual void bedrock_1_26_32_repository_v15() = 0;  // 1.26.32: new slot
     virtual bool setServicePacks(std::vector<PackIdVersion>) = 0;
     virtual void addServicePacksToStack(ResourcePackStack &) const = 0;
     virtual void addCachedResourcePacks(ContentKeyMap const *) = 0;
@@ -56,6 +57,8 @@ public:
     [[nodiscard]] virtual Core::HeapPathBuffer getDevelopmentBehaviorPacksPath() const = 0;
     [[nodiscard]] virtual Core::HeapPathBuffer getDevelopmentSkinPacksPath() const = 0;
     [[nodiscard]] virtual Core::HeapPathBuffer getTreatmentPacksPath() const = 0;
+    virtual void bedrock_1_26_32_repository_v34a() = 0;  // 1.26.32: new slot
+    virtual void bedrock_1_26_32_repository_v34b() = 0;  // 1.26.32: new slot
     virtual void refreshPacks() = 0;
     virtual Bedrock::Threading::Async<void> refreshPacksAsync() = 0;
     virtual void requestReloadUserPacks() = 0;
