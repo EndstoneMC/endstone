@@ -76,8 +76,8 @@ extra = 0
 #    = "Batched Network TaskGroup\0" (unique); its lone xref is the make_unique<TaskGroup> name arg inside
 #    BatchedNetworkPeer::BatchedNetworkPeer (the ctor)
 # 2. the ctor's first member store `this->__vftable = &BatchedNetworkPeer::vftable` gives the vtable
-# 3. sendPacket is the 2nd slot (offset +0x08); cross-check the slot index against the old named DB
-pattern = "55 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 44 89 CB 48 89 D7"
+# 3. sendPacket is the 2nd slot (offset +0x08); cross-check the slot index against the old named DB.
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? FE FF FF FF 44 89 CB 48 89 D7 48 89 CE 48 83 C1 18"
 
 [[signatures]]
 name = "?_receivePacket@BatchedNetworkPeer@@MEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z"

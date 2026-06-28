@@ -19,7 +19,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     {"?createSpawnedActor@ActorFactory@@QEAA?AV?$OwnerPtr@VEntityContext@@@@AEBUActorDefinitionIdentifier@@PEAVActor@@AEBVVec3@@AEBVVec2@@@Z", 26978560},
     // BatchedNetworkPeer
     {"?_receivePacket@BatchedNetworkPeer@@MEAA?AW4DataStatus@NetworkPeer@@AEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$shared_ptr@V?$time_point@Usteady_clock@chrono@std@@V?$duration@_JU?$ratio@$00$0DLJKMKAA@@std@@@23@@chrono@std@@@5@@Z", 5598976},
-    {"?sendPacket@BatchedNetworkPeer@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Reliability@NetworkPeer@@W4Compressibility@@@Z", 7201664},
+    {"?sendPacket@BatchedNetworkPeer@@UEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@W4Reliability@NetworkPeer@@W4Compressibility@@@Z", 5598496},
     // BedrockLog::LogDetails
     {"?_log_va@LogDetails@BedrockLog@@AEAAXW4LogAreaID@@IPEBDHH1PEAD@Z", 21810592},
     // BlockDescriptor::ResolveHelper
