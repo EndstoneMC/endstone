@@ -106,7 +106,8 @@ protected:
 private:
     GameCallbacks &callbacks_;  // +144
     Bedrock::NonOwnerPointer<ILevel> level_;
-    ServerNetworkSystem &network_;
+    Bedrock::NonOwnerPointer<void *> unknown_176_;  // +176, new in 1.26.32
+    ServerNetworkSystem &network_;                  // +200
     PrivateKeyManager &server_keys_;
     ServerLocator &server_locator_;
     gsl::not_null<PacketSender *> packet_sender_;  // +200
