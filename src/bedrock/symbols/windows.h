@@ -108,7 +108,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbol
     // ServerInstance
     {"?initializeServer@ServerInstance@@QEAA_N$$QEAUServerInstanceInitArguments@@@Z", 10894480},
     // ServerNetworkHandler
-    {"?_validateLoginPacket@ServerNetworkHandler@@EEAA?AV?$optional@UPlayerAuthenticationInfo@@@std@@AEBVNetworkIdentifier@@AEBVLoginPacket@@@Z", 32878048},
+    {"?_validateLoginPacket@ServerNetworkHandler@@EEAA?AV?$optional@UPlayerAuthenticationInfo@@@std@@AEBVNetworkIdentifier@@AEBVLoginPacket@@@Z", 7645264},
     {"?disconnectClientWithMessage@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@@Z", 7557648},
     {"?tryToLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@AEBUPlayerAuthenticationInfo@@@Z", 7739040},
     {"?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ", 7627552},

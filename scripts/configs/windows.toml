@@ -775,12 +775,12 @@ rip_offset = 1
 name = "?_validateLoginPacket@ServerNetworkHandler@@EEAA?AV?$optional@UPlayerAuthenticationInfo@@@std@@AEBVNetworkIdentifier@@AEBVLoginPacket@@@Z"
 relative = false
 extra = 0
-# 1. find bytes "72 65 61 6C 6D 73 00" = "realms\0" - 3 byte-matches, but only ONE has a code xref (the
-#    other two are unreferenced string tails)
-# 2. that lone code xref's `lea` is inside this function (which reads a cluster of short auth keys:
-#    auth/uuid/xid/realms/pid/nid)
-# 3. walk up to the prologue
-pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 48 C7 85 ? ? ? ? ? ? ? ? 4D 89 CE 4C 89 C3 48 89 D6 48 89 CF 48 8B 01"
+# 1. find bytes "72 65 61 6C 6D 73 00" = "realms\0" - the lone code xref (others are string tails) is the
+#    serverType == "realms" check inside this function (reads auth keys auth/uuid/xid/realms/pid/nid)
+# 2. walk up to the prologue. The arg-shuffle after the frame setup is codegen-volatile: 1.26.20 was
+#    4C89C3/4889D6/4889CF, 1.26.30 is 4C89C7/4989D4/4889CB - re-derive per version, else the pattern
+#    false-matches an unrelated function that kept the old shuffle (the 1.26.20 pattern hit sub @0x1F5ADE0)
+pattern = "55 41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 48 8D AC 24 ? ? ? ? 0F 29 B5 ? ? ? ? 48 C7 85 ? ? ? ? FE FF FF FF 4D 89 CE 4C 89 C7 49 89 D4 48 89 CB 48 8B 01"
 
 [[signatures]]
 name = "?disconnectClientWithMessage@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@@Z"
