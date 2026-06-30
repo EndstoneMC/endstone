@@ -34,7 +34,7 @@ patches:
       patch_description: "Disable all optional RakNet plugins"
       patch_type: "conan"
     - patch_file: "patches/4.081-mojang-define-overrides.patch"
-      patch_description: "Mojang RakNet define overrides (protocol version 11, 20 internal IDs)"
+      patch_description: "Mojang RakNet define overrides (protocol version 11, 20 internal IDs, MTU 1600)"
       patch_type: "conan"
 
 mojang_vtable_patches:
@@ -44,5 +44,5 @@ mojang_vtable_patches:
     patch_type: "conan"
   "r26u3":
     patch_file: "patches/4.081-mojang-rakpeer-vtable-r26u3.patch"
-    patch_description: "Mojang RakPeerInterface vtable for BDS 1.26.30 (r26u3); 7 virtuals removed vs r26u2"
+    patch_description: "Mojang RakPeerInterface vtable + RakPeer member layout for BDS 1.26.30 (r26u3); 7 virtuals removed vs r26u2, shadowBanList placeholder aligns rakPeerMutexes at +656 (offlinePingResponse_Mutex +696)"
     patch_type: "conan"

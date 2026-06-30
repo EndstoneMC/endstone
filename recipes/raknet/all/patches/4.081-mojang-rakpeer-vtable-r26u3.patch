@@ -1,4 +1,4 @@
-Mojang RakPeerInterface vtable (BDS 1.26.30)
+Mojang RakPeerInterface vtable + RakPeer member layout (BDS 1.26.30)
 
 --- a/Source/RakPeerInterface.h
 +++ b/Source/RakPeerInterface.h
@@ -129,3 +129,11 @@ Mojang RakPeerInterface vtable (BDS 1.26.30)
  
  	// --------------------------------------------------------------------------------------------Major Low Level Functions - Functions needed by most users--------------------------------------------------------------------------------------------
  	/// \brief Starts the network threads and opens the listen port.
+@@ -805,6 +812,7 @@
+ 		offlinePingResponse_Mutex,
+ 		NUMBER_OF_RAKPEER_MUTEXES
+ 	};
++	void *shadowBanList;  // Mojang ABI placeholder (std::unique_ptr<ShadowBanList>)
+ 	SimpleMutex rakPeerMutexes[ NUMBER_OF_RAKPEER_MUTEXES ];
+ 	///RunUpdateCycle is not thread safe but we don't need to mutex calls. Just skip calls if it is running already
+ 
