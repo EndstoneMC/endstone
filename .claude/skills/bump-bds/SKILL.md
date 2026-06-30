@@ -274,7 +274,9 @@ between each - see *Editing src/bedrock correctly*):
    layout changes*). An AV in an accessor/`_get`/`_setControlBlock`/`unique_ptr`
    deref means a field is read at the wrong offset; clean misbehaviour with no
    fault (e.g. a hook whose argument is garbage) often means a hook landed on the
-   wrong function.
+   wrong function. A `std::_Throw_bad_variant_access` thrown from a
+   `Script<...>GameplayHandler::handleEvent*` (`event.visit(...)`) is an
+   event-variant drift (*Detecting event-variant changes*).
 
 ## Finding a new symbol / offset without a header diff
 
@@ -456,6 +458,93 @@ Usually crash-driven.
    - Confirm by decompile, never by size/heuristic alone
      ([[feedback_decompile_to_confirm]]); the tightest confirmation is a shifted
      neighbour whose new offset equals the old member's offset.
+
+## Detecting event-variant changes (std::variant traps)
+
+Gameplay events reach Endstone through a `std::variant` wrapper -
+`EventVariantImpl<Details::ValueOrRef<const E>...>` (aliased `ConstEventVariant`/
+`MutableEventVariant`): `LevelGameplayEvent<void>`,
+`PlayerGameplayEvent<CoordinatorResult>`, etc. Endstone hooks a
+`Script<...>GameplayHandler::handleEventN` and calls `event.visit(visitor)`
+(`std::visit`). Drift in the variant's alternatives surfaces as
+**`std::_Throw_bad_variant_access`** at that `event.visit` line - the C++ EH
+`0xe06d7363` -> `std::terminate` -> `STATUS_FATAL_APP_EXIT 0x40000015`, and the
+process exits via crashpad's NoDump code `0xFFFF7001` (or a heap status). It only
+fires when a *covered* event actually dispatches: on an idle, pack-less server the
+script gameplay handler may not run until shutdown's `LevelStartLeaveGameEvent`,
+so **"runs fine, crashes on `stop`" is the classic symptom** - not a startup
+crash, even when the size-driving alternative (e.g. a scripting world-init event)
+never fires.
+
+**MSVC `std::variant` layout is the whole game.** Storage = `max(sizeof(alt))`;
+the discriminant `_Which` (1 byte for <=255 alts) sits **immediately after the
+storage** (`offset = sizeof(variant) - pad`). Each `ValueOrRef<const T>` is
+`union{const T*; const T value}` + `bool is_pointer_`, so its size is
+`max(8,sizeof(T))+1` padded and `is_pointer_` lands at the value size. `std::visit`
+reads `_Which`; an out-of-range value (or the `0xFF` valueless sentinel) throws -
+NatVis prints `[valueless_by_exception]`. Two drifts cause it; separate them
+before fixing:
+
+- **Size drift** - an alternative's struct changed size, moving `max(sizeof(alt))`
+  and therefore the `_Which` offset. Endstone (built with the old size) reads
+  `_Which` at the stale offset -> garbage index. Latent for *every* event.
+- **Set drift** - an alternative inserted/removed/reordered. Size can be
+  *unchanged* (if the size driver is untouched), but a new alternative's index is
+  out of range for Endstone's shorter variant, and any reorder mis-maps existing
+  indices.
+
+**Read the truth from the BDS dispatch + extractor, no symbols needed.** The
+caller of the hooked `handleEvent` (the frame above your hook in the crash stack;
+crash-report addresses are object-relative, so `imagebase + RVA` lands directly in
+the DB) does, right after the vcall:
+
+```
+movsx rdx, byte ptr [rcx+OFF]   ; OFF = real _Which offset = real storage size
+inc   rdx
+call  <extractor>(dest, _Which+1, event)
+```
+
+- **`OFF` = the real storage size** - compare to Endstone's `sizeof(variant)-1` /
+  `BEDROCK_STATIC_ASSERT_SIZE`; differ => size drift.
+- The **extractor switches on `_Which+1`, one `case` per alternative** (`case 0`
+  is the valueless stub) - case count = alternative count; compare to the
+  `ConstEventVariant<...>` arity => set drift.
+- Each case's leading `cmp byte ptr [r8+K], 0/1 ; jz ; mov r8,[r8]` is the
+  `ValueOrRef` ptr-vs-value test, so **`K` = that alternative's value size**; the
+  largest `K` across cases is the **size driver** - the only alternative that sets
+  the variant size.
+- **Fingerprint each case to name it:** `_InterlockedIncrement` on a control block
+  counts the `WeakRef`/`NonOwnerPointer` members; `memcpy` + a `0xAAAA...AB`
+  size-multiply = `std::string`/`std::vector` fields. Match (size, ref count,
+  field shape) to Endstone's known alternatives - matches are existing (read off
+  their new index), unmatched cases are the inserts (their case index = the
+  insertion point). An event whose case carries *no* `WeakRef` refcount cannot be
+  an existing player/actor event that holds one - that mismatch is how you prove a
+  removal, not just a move.
+- **Diff against the previous *named* DB's extractor** - same routine, but its
+  per-alternative copy-ctors carry demangled `ValueOrRef<...>` type names, so it
+  labels every old slot; diffing the two case lists names the existing slots and
+  isolates the new ones.
+
+**Fix.** Mirror the new alternative list (order included) in the
+`ConstEventVariant<...>`. The `visitor` matches by *type* (`std::is_same_v`), so
+the events Endstone actually handles only need to be **present as the right type** -
+their exact index is not memorised, but the total **count** and the **size driver**
+must be right. Exploit that:
+
+- A **non-size-driver** alternative may be left empty (`struct E {};`) or a named
+  placeholder (`struct UnknownEvent0 {};`) - it still occupies one slot, and an
+  empty struct's `ValueOrRef` (16 B) never drives the size. This restores the
+  count / order / `_Which` offset without baking in an unconfirmed layout.
+- Only the **size driver** (largest `K`) needs a byte-exact body; confirm with
+  `BEDROCK_STATIC_ASSERT_SIZE`. After a size-drift fix the driver can become a
+  *different* alternative - recompute which one it is.
+- **Confirm live**: breakpoint the hooked `handleEvent`, copy `byte
+  [event+OFF_real]` into `byte [event+OFF_endstone]`, and continue - if the
+  `bad_variant_access` then vanishes across a full start/stop, the offset/size
+  mismatch is proven (cdb on the injected `bedrock_server.exe`; lldb needs a
+  matching `python3xx.dll`). Confirm by decompile, never size alone
+  ([[feedback_decompile_to_confirm]]).
 
 ## Placeholders and discipline
 
