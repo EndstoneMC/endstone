@@ -459,6 +459,64 @@ Usually crash-driven.
      ([[feedback_decompile_to_confirm]]); the tightest confirmation is a shifted
      neighbour whose new offset equals the old member's offset.
 
+## Detecting cereal-packet layout changes (the cereal manager)
+
+Once a packet is migrated to **cereal** serialization, its `write(BinaryStream&)`
+and `toString` virtuals stop touching members - `write` is a thin wrapper that
+builds a default `ReflectionCtx` and tail-calls the ctx serializer, the real work
+runs through a reflection visitor, and `toString` is a stub (pre-migration) or
+reflection (post). **Do not decompile them for layout - they are not oracles.**
+The oracle is the packet's **cereal manager** (its type-erased op function), plus
+the `SerializationMode` accessors.
+
+1. **Find the manager.** Each cerealized packet has one `switch`-on-`int`
+   function (a `switch 5 cases` jumptable) wired into the packet at construction
+   (`*(obj+16) = <manager>` in the ctor / `make_shared` builder) and referencing
+   the packet vtable `off_<vtable>`. Its cases:
+   - **case 1/2 = copy/move-construct** -> a faithful **memberwise copy** (exact
+     offsets *and* widths).
+   - **case 4 = clone** -> `operator new(SIZE)` then the same copy (authoritative
+     object size).
+   - case 0 = type descriptor / entt type-name; case 3 = compare. Ignore both.
+2. **Read the ASSEMBLY of case 1/2, never the decompile.** Hex-Rays mixes pointer
+   units (`v4[7]` vs `*(v4+38)`) and hides widths; the asm is exact:
+   - `movss [dst+off]` = 4-byte float; `mov eax,[src+off]; mov [dst+off],eax` =
+     4-byte; `mov rax,...` = 8-byte; `movups xmm...` = 16-byte block / inlined
+     sub-object.
+   - `movzx eax, byte [src+off]; mov [dst+off], al` = a **1-byte** member.
+     **Adjacent 1-byte stores at consecutive offsets** = a member that *narrowed*
+     (e.g. a 4-byte enum -> 1 byte).
+   - `lea [src+off]; lea [dst+off]; call <helper>` = a non-trivial member
+     (string / vector / `RedactableString`) at `off`.
+   - A member present in the old layout but with **no store** in the new copy =
+     **removed**.
+3. **`operator new(N)` in case 4 = the size.** Compare to
+   `BEDROCK_STATIC_ASSERT_SIZE`. Beware: 8-byte alignment rounding can keep
+   `sizeof` *unchanged* while members narrowed / dropped / were added - never
+   trust size alone, read the copy.
+4. **`get`/`setSerializationMode` betray a cereal-only migration.** Pre-migration
+   both are stubs (Windows: COMDAT-folded onto `disallowBatching`'s address;
+   Linux: literal `return 0` / nullsub). Post-migration the packet **overrides**
+   them: the vtable slots become `mov eax,[this+OFF]` / `mov [this+OFF],reg`, and
+   `OFF` is a **new 4-byte `SerializationMode` member** (init `CerealOnly`=5).
+   Find the slot via the PDB-anchored `_read` slot (Windows) / RTTI (Linux) and
+   confirm `OFF` equals the copy's last store.
+5. **Cross-check the wire with protocol-docs.** The cereal field set == the
+   serialized fields; `EndstoneMC/protocol-docs` (`<branch>/packets/<Name>.json`)
+   lists them in order, mapping the copy's offsets to names and flagging
+   added/removed wire fields. A field can leave the wire *and* the struct together
+   (dropped bools), or appear (a second `FilteredName` once a `RedactableString`
+   serialises both halves).
+
+Worked example: **BossEventPacket @ 1.26.32** - migrated to cereal-only;
+`color`/`overlay` narrowed 4B->1B, both `darken`/`fog` bools removed, a
+`SerializationMode` member added at the tail, `sizeof` held at 168/152 purely by
+alignment. Proven entirely from the manager copy (`movzx byte` pairs + the
+trailing `SerializationMode` store) and `operator new(0xA8/0x98)`; the vtable was
+**unchanged** (cereal migration is data-only - verify it separately,
+*Detecting vtable changes*). See [[project_bosseventpacket_changed_1_26_32]];
+confirm by asm, never by size ([[feedback_decompile_to_confirm]]).
+
 ## Detecting event-variant changes (std::variant traps)
 
 Gameplay events reach Endstone through a `std::variant` wrapper -
