@@ -17,8 +17,11 @@
 #include <BitStream.h>
 #include <MessageIdentifiers.h>
 #include <PluginInterface2.h>
+#include <RakPeer.h>
 
+#include <memory>
 #include <ranges>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -62,7 +65,7 @@ static endstone::ServerListPingEvent callServerListPingEvent(endstone::SocketAdd
     return event;
 }
 
-RakNet::RakPeerInterface *gRakPeer = nullptr;
+RakNet::RakPeer *gRakPeer = nullptr;
 
 bool handleIncomingDatagram(RakNet::RNS2RecvStruct *recv)
 {
@@ -138,9 +141,48 @@ RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer,
     ConnectionDefinition new_def = def;
     if (peer && purpose == PeerPurpose::Gameplay) {
         new_def.max_num_connections = SharedConstants::NetworkDefaultMaxConnections;
-        peer->SetLimitIPConnectionFrequency(true);  // limit connections from the same ip in 100 milliseconds.
+        // peer->SetLimitIPConnectionFrequency(true);  // limit connections from the same ip in 100 milliseconds.
         peer->SetIncomingDatagramEventHandler(handleIncomingDatagram);
-        gRakPeer = peer;
+        gRakPeer = static_cast<RakNet::RakPeer *>(peer);
     }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, new_def, purpose);
+}
+
+namespace RakNet {
+struct ShadowBanList {};
+}  // namespace RakNet
+
+[[noreturn]] static void rakPeerLinkStub(const char *name)
+{
+    throw std::runtime_error(std::string("RakNet::RakPeer::") + name + " is a link stub and must never be called");
+}
+
+// RakPeer's vtable still emits slots for these Mojang overrides (BDS 1.26.30); only the real BDS RakPeer runs.
+void RakNet::RakPeer::InitializeConfiguration(std::unique_ptr<RakNet::ShadowBanList>)
+{
+    rakPeerLinkStub("InitializeConfiguration");
+}
+bool RakNet::RakPeer::SetApplicationHandshakeCompleted(RakNet::AddressOrGUID)
+{
+    rakPeerLinkStub("SetApplicationHandshakeCompleted");
+}
+void RakNet::RakPeer::SetAllowUnconnectedPings(bool)
+{
+    rakPeerLinkStub("SetAllowUnconnectedPings");
+}
+bool RakNet::RakPeer::GetAllowUnconnectedPings() const
+{
+    rakPeerLinkStub("GetAllowUnconnectedPings");
+}
+void RakNet::RakPeer::resetMyGUID()
+{
+    rakPeerLinkStub("resetMyGUID");
+}
+unsigned int RakNet::RakPeer::GetNumberOfAdapters()
+{
+    rakPeerLinkStub("GetNumberOfAdapters");
+}
+RakNet::NetworkAdapter &RakNet::RakPeer::GetLocalAdapter(unsigned int)
+{
+    rakPeerLinkStub("GetLocalAdapter");
 }
