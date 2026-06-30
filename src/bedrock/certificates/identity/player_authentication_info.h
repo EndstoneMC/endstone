@@ -32,6 +32,7 @@ struct PlayerAuthenticationInfo {
     std::string nintendo_id;
     std::string psn_id;
     std::string tenant_id;
+    std::string unknown_1;  // TODO(fixme): find out where and what
     std::string xbox_live_name;
     std::string nintendo_name;
     std::string play_station_name;
@@ -39,4 +40,5 @@ struct PlayerAuthenticationInfo {
     std::string public_key;
     mce::UUID authenticated_uuid;
     bool is_host;
+    std::string unknown_2;  // TODO(fixme): find out where and what
 };
