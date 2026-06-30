@@ -7,8 +7,8 @@ from conan.tools.cmake import CMake, CMakeDeps, CMakeToolchain, cmake_layout
 from conan.tools.files import (
     apply_conandata_patches,
     copy,
-    export_conandata_patches,
     get,
+    patch,
     rmdir,
 )
 
@@ -22,24 +22,25 @@ class RakNetConan(ConanFile):
     topics = ("networking", "udp", "games", "raknet")
     package_type = "library"
 
-    exports_sources = "cmake/*"
-
-    def export_sources(self):
-        export_conandata_patches(self)
+    exports_sources = "cmake/*", "patches/*"
 
     settings = "os", "arch", "compiler", "build_type"
     options = {
         "shared": [True, False],
         "fPIC": [True, False],
+        "minecraft_version": ["r26u2", "r26u3"],
     }
     default_options = {
         "shared": False,
         "fPIC": True,
+        "minecraft_version": "r26u3",
     }
 
     def config_options(self):
         if self.settings.os == "Windows":
             del self.options.fPIC
+        if "mojang" not in str(self.version):
+            del self.options.minecraft_version
 
     def configure(self):
         if self.options.shared:
@@ -72,6 +73,9 @@ class RakNetConan(ConanFile):
         CMakeDeps(self).generate()
 
     def build(self):
+        if self.version == "4.081-mojang":
+            vtable = self.conan_data["mojang_vtable_patches"][str(self.options.minecraft_version)]
+            patch(self, patch_file=os.path.join(self.export_sources_folder, vtable["patch_file"]))
         cmake = CMake(self)
         cmake.configure()
         cmake.build()

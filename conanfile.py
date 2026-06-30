@@ -24,6 +24,7 @@ class EndstoneRecipe(ConanFile):
         "fPIC": True,
         "boost/*:header_only": True,
         "date/*:header_only": True,
+        "raknet/*:minecraft_version": "r26u3",
     }
 
     exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*"
