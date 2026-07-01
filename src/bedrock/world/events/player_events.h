@@ -277,16 +277,19 @@ struct PlayerGameplayEvent<void>
           PlayerInputPermissionCategoryChangeEvent> {};
 static_assert(sizeof(PlayerGameplayEvent<void>) == 384);
 
-// TODO(fixme): figure out what these new events are in 1.26.30
-struct UnknownEvent0 {};
-struct UnknownEvent1 {};
-struct UnknownEvent2 {};
-struct UnknownEvent3 {};
+// 1.26.32: four command-event alternatives inserted after PlayerSayCommandEvent. They are
+// non-size-drivers (the variant size is driven by PlayerInteractWithBlockBeforeEvent), so they are
+// modeled as empty placeholders — Endstone doesn't handle them and the visitor matches by type.
+struct PlayerTellCommandEvent {};
+struct PlayerTellRawCommandEvent {};
+struct PlayerTitleCommandEvent {};
+struct PlayerTitleRawCommandEvent {};
 
 template <>
 struct PlayerGameplayEvent<CoordinatorResult>
-    : ConstEventVariant<UnknownEvent0, UnknownEvent1, UnknownEvent2, UnknownEvent3, PlayerSayCommandEvent,
-                        PlayerGetExperienceOrbEvent, PlayerInteractEvent, PlayerInteractWithEntityBeforeEvent,
+    : ConstEventVariant<PlayerSayCommandEvent, PlayerTellCommandEvent, PlayerTellRawCommandEvent,
+                        PlayerTitleCommandEvent, PlayerTitleRawCommandEvent, PlayerGetExperienceOrbEvent,
+                        PlayerInteractEvent, PlayerInteractWithEntityBeforeEvent,
                         PlayerInteractWithBlockBeforeEvent> {};
 BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<CoordinatorResult>, 232, 232);
 

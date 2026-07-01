@@ -17,6 +17,7 @@
 #include <functional>
 #include <map>
 #include <optional>
+#include <variant>
 
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/utility/pub_sub/publisher.h"
@@ -34,30 +35,8 @@ public:
         Float = 3,
     };
 
-    union Value {
-        bool bool_val;
-        int int_val;
-        float float_val;
-        Value() = default;
-        Value(const bool val) : bool_val(val) {}
-        Value(const int val) : int_val(val) {}
-        Value(const float val) : float_val(val) {}
-        Value &operator=(const bool val)
-        {
-            bool_val = val;
-            return *this;
-        }
-        Value &operator=(const int val)
-        {
-            int_val = val;
-            return *this;
-        }
-        Value &operator=(const float val)
-        {
-            float_val = val;
-            return *this;
-        }
-    };
+    // std::monostate stands in for the empty cereal::NullType (layout-identical)
+    using Value = std::variant<std::monostate, bool, int, float>;
 
     using TagDataNotFoundCallback = std::function<void(GameRule &, const BaseGameVersion &, const CompoundTag &)>;
     using ValidateValueCallback = std::function<bool(const Value &, class ValidationError *)>;
@@ -66,7 +45,8 @@ public:
     GameRule();
     [[nodiscard]] bool getBool() const
     {
-        return value_.bool_val;
+        const auto *value = std::get_if<bool>(&value_);
+        return value != nullptr && *value;
     }
 
 private:
@@ -87,7 +67,7 @@ private:
     CommandValueRedirectCallback command_value_redirect_converter_;
     std::optional<int> command_value_redirect_target_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(GameRule, 272, 216);
+BEDROCK_STATIC_ASSERT_SIZE(GameRule, 280, 224);
 
 struct GameRuleId : NewType<int> {
     GameRuleId() = default;
