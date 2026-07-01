@@ -724,16 +724,6 @@ extra = 0
 pattern = "53 48 83 EC ? 89 F2 48 89 FB 48 8B 4F"
 
 [[signatures]]
-name = "_ZN36ServerPlayerMovementCorrectionSystem41_tickServerPlayerMovementCorrectionSystemERK19StrictEntityContextRK36ServerPlayerCurrentMovementComponentRK29UserEntityIdentifierComponentR29ServerPlayerMovementComponent8OptionalIK18PassengerComponentER20StateVectorComponentRK5ViewTIS0_JK22ActorRotationComponent19ActorOwnerComponent20ReplayStateComponentSF_SB_IK21BoatMovementComponentEEE"
-relative = false
-extra = 0
-# 1. CorrectPlayerMovePredictionPacket's vtable is RTTI-named `_ZTV33CorrectPlayerMovePredictionPacket`
-# 2. among its address-point xrefs is ServerPlayerMovementCorrectionSystem::_afterMovementSimulation (the
-#    builder that constructs the packet); its lone caller is _tickServerPlayerMovementCorrectionSystem
-# 3. confirm vs the old named DB
-pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 4D 89 CF 48 89 4C 24"
-
-[[signatures]]
 name = "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageN3gsl8not_nullIN7Bedrock15NonOwnerPointerI19GameplayUserManagerEEEE"
 relative = false
 extra = 0

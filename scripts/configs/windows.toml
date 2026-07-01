@@ -846,19 +846,6 @@ extra = 0
 pattern = "55 56 57 48 83 EC ? 48 8D 6C 24 ? 48 C7 45 ? ? ? ? ? 89 D7 48 89 CE 48 8D 55 ? E8 ? ? ? ? 48 8B 86 ? ? ? ? 8B 48 ? 89 4D ? 48 8B 00 48 89 45 ? 8B 55 ? C7 45"
 
 [[signatures]]
-name = "?_tickServerPlayerMovementCorrectionSystem@ServerPlayerMovementCorrectionSystem@@YAXAEBVStrictEntityContext@@AEBUServerPlayerCurrentMovementComponent@@AEBVUserEntityIdentifierComponent@@AEAUServerPlayerMovementComponent@@V?$Optional@$$CBUPassengerComponent@@@@AEAUStateVectorComponent@@AEBV?$ViewT@VStrictEntityContext@@$$CBUActorRotationComponent@@VActorOwnerComponent@@VReplayStateComponent@@UStateVectorComponent@@V?$Optional@$$CBUBoatMovementComponent@@@@@@@Z"
-relative = false
-extra = 0
-# 1. find bytes "43 6F 72 72 65 63 74 50 6C 61 79 65 72 4D 6F 76 65 50 72 65 64 69 63 74 69 6F 6E 50 61 63 6B 65 74 00"
-#    = "CorrectPlayerMovePredictionPacket\0" (unique) -> its code xref is getName (tiny virtual), whose
-#    address is a slot in the CorrectPlayerMovePredictionPacket vtable
-# 2. xref the vtable to the payload ctor (...@UCorrectPlayerMovePredictionPacketPayload@@@Z); its lone
-#    caller is ServerPlayerMovementCorrectionSystem::_afterMovementSimulation
-# 3. _afterMovementSimulation's lone caller is this function (_tickServerPlayerMovementCorrectionSystem)
-# 4. confirm vs the old named DB
-pattern = "41 57 41 56 41 55 41 54 56 57 53 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 4C 89 C7 48 89 D6 48 8B 02 48 89 84 24 ? ? ? ? 0F 57 F6 0F 11 B4 24 ? ? ? ? 0F 11 B4 24 ? ? ? ? 48 C7 84 24"
-
-[[signatures]]
 name = "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@V?$not_null@V?$NonOwnerPointer@VGameplayUserManager@@@Bedrock@@@gsl@@@Z"
 relative = false
 extra = 0
