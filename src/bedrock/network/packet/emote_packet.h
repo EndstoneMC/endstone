@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/cerealize/core/serialization_mode.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 
 class EmotePacket : public Packet {
@@ -42,4 +43,5 @@ public:
     std::string xuid;
     std::string platform_id;
     uint8_t flags;
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};
 };

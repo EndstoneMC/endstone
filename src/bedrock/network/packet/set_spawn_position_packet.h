@@ -18,6 +18,7 @@
 
 #include "bedrock/network/network_block_position.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/cerealize/core/serialization_mode.h"
 
 enum class SpawnPositionType : int {
     PlayerRespawn = 0,
@@ -30,5 +31,6 @@ public:
     SpawnPositionType spawn_pos_type;
     DimensionType dimension_type;
     NetworkBlockPosition spawn_block_pos;
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};
 };
-static_assert(sizeof(SetSpawnPositionPacket) == 80);
+static_assert(sizeof(SetSpawnPositionPacket) == 88);

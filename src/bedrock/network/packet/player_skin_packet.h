@@ -17,6 +17,7 @@
 #include <string>
 
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/cerealize/core/serialization_mode.h"
 #include "bedrock/platform/uuid.h"
 #include "bedrock/world/actor/player/serialized_skin.h"
 
@@ -26,4 +27,5 @@ public:
     SerializedSkinRef skin;
     std::string localized_new_skin_name;
     std::string localized_old_skin_name;
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};
 };

@@ -17,6 +17,5 @@
 struct FallDistanceComponent {
     float value;
     bool ignores_fall_damage;
-    bool accumulates_fall_distance;
     bool spawn_particles_when_hitting_ground;
 };

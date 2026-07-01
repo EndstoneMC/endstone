@@ -39,17 +39,17 @@ enum class PacketCompressionAlgorithm : std::uint16_t {
 
 struct NetworkSettingOptions {
     NetworkSettingOptions();
-    NetworkSettingOptions(uint16_t, PacketCompressionAlgorithm, int, float, bool, bool);
+    NetworkSettingOptions(uint16_t, PacketCompressionAlgorithm, std::uint8_t, float, bool, bool);
     uint16_t compression_threshold;
     PacketCompressionAlgorithm compression_algorithm;
     bool client_throttle_enabled;
-    int client_throttle_threshold;
+    std::uint8_t client_throttle_threshold;
     float client_throttle_scalar;
     bool raknet_join_flood_protection_enabled;
     bool encryption_disabled;
     DevConnectionQuality dev_connection_quality;
 };
-static_assert(sizeof(NetworkSettingOptions) == 24);
+static_assert(sizeof(NetworkSettingOptions) == 20);
 
 class NetworkPeer {
 public:

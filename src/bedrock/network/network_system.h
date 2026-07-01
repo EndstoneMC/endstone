@@ -81,6 +81,7 @@ private:
     std::unique_ptr<NetworkStatistics> network_statistics_;
     bool websockets_enabled_;
     NetworkSettingOptions network_setting_options_;
+    bool raw_recording_enabled_;
     gsl::not_null<std::unique_ptr<cereal::ReflectionCtx>> reflection_ctx_;             // +512
     gsl::not_null<std::unique_ptr<IPacketSerializationController>> packet_overrides_;  // +520
     gsl::not_null<std::unique_ptr<

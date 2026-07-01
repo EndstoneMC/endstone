@@ -19,4 +19,5 @@ struct ActorWalkAnimationComponent {
     float walk_anim_speed_old;
     float walk_anim_speed;
     float walk_anim_pos;
+    float movement_this_tick;
 };
