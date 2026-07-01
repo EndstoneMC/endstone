@@ -19,7 +19,7 @@
 
 #include "bedrock/bedrock.h"
 
-enum class AbilitiesIndex : std::int16_t {
+enum class AbilitiesIndex : std::int8_t {
     Invalid = -1,
     Build = 0,
     Mine = 1,

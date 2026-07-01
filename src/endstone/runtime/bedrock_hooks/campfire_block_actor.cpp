@@ -14,7 +14,7 @@
 
 void CampfireBlockActor::_finishCooking(::BlockSource &region, int slot)
 {
-    if (region.canDoBlockDrops()) {
+    if (region.canDoBlockDrops(nullptr)) {
         const auto &block = region.getBlock(this->position_);
         auto tag = CAMPFIRE_TAG;
         if (block.getName() == VanillaBlockTypeIds::SoulCampfire) {

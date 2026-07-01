@@ -16,33 +16,8 @@
 
 #include <cstdint>
 
-enum class BossEventUpdateType : std::uint8_t {
-    Add = 0,
-    PlayerAdded = 1,
-    Remove = 2,
-    PlayerRemoved = 3,
-    UpdatePercent = 4,
-    UpdateName = 5,
-    UpdateProperties = 6,
-    UpdateStyle = 7,
-    Query = 8,
-};
-
-enum class BossBarColor : std::uint8_t {
-    PINK = 0,
-    BLUE = 1,
-    RED = 2,
-    GREEN = 3,
-    YELLOW = 4,
-    PURPLE = 5,
-    REBECCA_PURPLE = 6,
-    WHITE = 7,
-};
-
-enum class BossBarOverlay : std::uint8_t {
-    PROGRESS = 0,
-    NOTCHED_6 = 1,
-    NOTCHED_10 = 2,
-    NOTCHED_12 = 3,
-    NOTCHED_20 = 4,
+enum class ItemStackNetResult : std::uint8_t {
+    Success = 0,
+    Error = 1,
+    CannotDropItem = 59,
 };

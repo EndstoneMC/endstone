@@ -113,7 +113,7 @@ extra = 0
 pattern = "55 41 57 41 56 41 55 41 54 53 48 81 EC ? ? ? ? 89 F5 49 89 FE 4C 8D AF"
 
 [[signatures]]
-name = "_ZNK9BlockType14spawnResourcesER11BlockSourceRK8BlockPosRK5BlockR7IRandomRK20ResourceDropsContext"
+name = "_ZNK9BlockType14spawnResourcesER11BlockSourceRK8BlockPosRK5BlockR7IRandomRK20ResourceDropsContextPK5Actor"
 relative = false
 extra = 0
 # 1. find ExperienceOrb::spawnOrbs by its XP-split breakpoints - the immediates 2477, 1237, 617, 307, 149,
@@ -633,7 +633,7 @@ rip_relative = true
 rip_offset = 1
 
 [[signatures]]
-name = "_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level"
+name = "_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level"
 relative = false
 extra = 0
 # 1. find bytes "63 68 61 74 2E 74 79 70 65 2E 61 6E 6E 6F 75 6E 63 65 6D 65 6E 74 00" = "chat.type.announcement\0"
