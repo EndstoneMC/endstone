@@ -448,8 +448,8 @@ public:
     virtual GameRules &getGameRules() = 0;
     [[nodiscard]] virtual bool hasStartWithMapEnabled() const = 0;
     [[nodiscard]] virtual bool isEditorWorld() const = 0;
+    [[nodiscard]] virtual bool getAllowAnonymousBlockDropsInEditorWorlds() const = 0;
     [[nodiscard]] virtual bool isHardcore() const = 0;
-    virtual void bedrock_1_26_32_level_v346() = 0;  // 1.26.32: new slot
     virtual Abilities &getDefaultAbilities() = 0;
     virtual PermissionsHandler &getDefaultPermissions() = 0;
     [[nodiscard]] virtual PermissionsHandler const &getDefaultPermissions() const = 0;

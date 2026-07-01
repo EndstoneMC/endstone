@@ -10,7 +10,7 @@
 
 namespace endstone::runtime {
 
-static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbols = {{
+static constexpr std::array<std::pair<std::string_view, std::size_t>, 65> symbols = {{
     {"BlockState::StateListNode::mHead", 199508112},
     {"Enchant::mEnchants", 199688464},
     // Actor
@@ -25,7 +25,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbol
     // BlockDescriptor::ResolveHelper
     {"?resolve@ResolveHelper@BlockDescriptor@@QEAAX_N@Z", 41161872},
     // BlockType
-    {"?spawnResources@BlockType@@QEBAXAEAVBlockSource@@AEBVBlockPos@@AEBVBlock@@AEAVIRandom@@AEBUResourceDropsContext@@@Z", 62023712},
+    {"?spawnResources@BlockType@@QEBAXAEAVBlockSource@@AEBVBlockPos@@AEBVBlock@@AEAVIRandom@@AEBUResourceDropsContext@@PEBVActor@@@Z", 62023712},
     {"?tryGetStateFromLegacyData@BlockType@@QEBAPEBVBlock@@G@Z", 62014400},
     // BlockTypeRegistry
     {"?forEachBlockType@BlockTypeRegistry@@QEBAXV?$function_ref@$$A6A_NAEBVBlockType@@@Z$$A6A_N0@Z@brstd@@@Z", 42843984},
@@ -63,6 +63,8 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbol
     // ItemStackBase
     {"?_loadBlocksForCanPlaceOnCanDestroy@ItemStackBase@@CA_NAEAV?$vector@PEBVBlockType@@V?$allocator@PEBVBlockType@@@std@@@std@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z", 24867568},
     {"?_setItem@ItemStackBase@@AEAA_NH_N@Z", 24828720},
+    // ItemStackRequestActionHandler
+    {"?_handleRemove@ItemStackRequestActionHandler@@QEAA?AW4ItemStackNetResult@@AEBVItemStackRequestActionTransferBase@@AEAVItemStack@@W4RemoveType@1@@Z", 34271216},
     // LeavesBlock
     {"?randomTick@LeavesBlock@@QEBAXAEAVBlockRandomTickEvent@BlockEvents@@@Z", 69881808},
     // Level
@@ -102,7 +104,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbol
     // ResourcePackStack
     {"?deserialize@ResourcePackStack@@SA?AV?$unique_ptr@VResourcePackStack@@U?$default_delete@VResourcePackStack@@@std@@@std@@AEAV?$basic_istream@DU?$char_traits@D@std@@@3@AEBV?$not_null@V?$NonOwnerPointer@$$CBVIResourcePackRepository@@@Bedrock@@@gsl@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@@Z", 9443136},
     // SayCommand
-    {"?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z", 91591312},
+    {"?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z", 91591312},
     // ScriptModuleMinecraft::ScriptBlockUtils
     {"?createBlockDescriptor@ScriptBlockUtils@ScriptModuleMinecraft@@YA?AVBlockDescriptor@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$unordered_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@U?$hash@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@U?$equal_to@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@@std@@@2@@std@@@5@@Z", 94600048},
     // ServerInstance

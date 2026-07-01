@@ -131,14 +131,14 @@ bool ActorDamageSource::isFallDamage() const
     }
 }
 
-std::pair<std::string, std::vector<std::string>> ActorDamageSource::getDeathMessage(std::string dead_name,
+std::pair<std::string, std::vector<std::string>> ActorDamageSource::getDeathMessage(const std::string &dead_name,
                                                                                     Actor *dead) const
 {
     std::pair<std::string, std::vector<std::string>> result;
     switch (cause_) {
     case ActorDamageCause::Suffocation: {
         result.first = "death.attack.inWall";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Fall: {
@@ -148,102 +148,102 @@ std::pair<std::string, std::vector<std::string>> ActorDamageSource::getDeathMess
         else {
             result.first = "death.attack.fall";
         }
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Fire: {
         result.first = "death.attack.inFire";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::FireTick: {
         result.first = "death.attack.onFire";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Lava: {
         result.first = "death.attack.lava";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Drowning: {
         result.first = "death.attack.drown";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::BlockExplosion: {
         result.first = "death.attack.explosion.by.bed";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::EntityExplosion: {
         result.first = "death.attack.explosion";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Void: {
         result.first = "death.attack.outOfWorld";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Magic: {
         result.first = "death.attack.magic";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Wither: {
         result.first = "death.attack.wither";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Starve: {
         result.first = "death.attack.starve";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Anvil: {
         result.first = "death.attack.anvil";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::FlyIntoWall: {
         result.first = "death.attack.flyIntoWall";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Fireworks: {
         result.first = "death.attack.fireworks";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Lightning: {
         result.first = "death.attack.lightningBolt";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Freezing: {
         result.first = "death.attack.freeze";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Stalactite: {
         result.first = "death.attack.stalactite";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::Stalagmite: {
         result.first = "death.attack.stalagmite";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     case ActorDamageCause::SonicBoom: {
         result.first = "death.attack.sonicBoom";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     default: {
         result.first = "death.attack.generic";
-        result.second = {std::move(dead_name)};
+        result.second = {dead_name};
         break;
     }
     }
@@ -303,6 +303,12 @@ ActorCategory ActorDamageSource::getDamagingEntityCategories() const
 std::unique_ptr<ActorDamageSource> ActorDamageSource::clone() const
 {
     return std::make_unique<ActorDamageSource>(*this);
+}
+
+std::pair<std::string, std::vector<std::string>> ActorDamageSource::_getDeathMessageInternal(
+    const std::string &dead_name, Actor *dead) const
+{
+    return getDeathMessage(dead_name, dead);
 }
 
 const Block &ActorDamageByBlockSource::getBlock() const

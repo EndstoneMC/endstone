@@ -332,7 +332,7 @@ public:
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] float getThickness() const;
     void spawnResources(BlockSource &region, const BlockPos &pos, const Block &block, IRandom &randomize,
-                        const ResourceDropsContext &resource_drops_context) const;
+                        const ResourceDropsContext &resource_drops_context, const Actor *actor_context) const;
     ResourceDrops getResourceDrops(const Block &block, IRandom &random,
                                    const ResourceDropsContext &resource_drops_context) const;
     static ItemActor *popResource(BlockSource &region, const BlockPos &pos, const ItemStack &item_stack);

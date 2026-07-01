@@ -26,7 +26,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbol
     // BlockDescriptor::ResolveHelper
     {"_ZN15BlockDescriptor13ResolveHelper7resolveEb", 192626672},
     // BlockType
-    {"_ZNK9BlockType14spawnResourcesER11BlockSourceRK8BlockPosRK5BlockR7IRandomRK20ResourceDropsContext", 191415440},
+    {"_ZNK9BlockType14spawnResourcesER11BlockSourceRK8BlockPosRK5BlockR7IRandomRK20ResourceDropsContextPK5Actor", 191415440},
     {"_ZNK9BlockType25tryGetStateFromLegacyDataEt", 191407072},
     // BlockTypeRegistry
     {"_ZNK17BlockTypeRegistry16forEachBlockTypeEN5brstd12function_refIFbRK9BlockTypeES5_EE", 196796192},
@@ -103,7 +103,7 @@ static constexpr std::array<std::pair<std::string_view, std::size_t>, 64> symbol
     // ResourcePackStack
     {"_ZN17ResourcePackStack11deserializeERNSt3__113basic_istreamIcNS0_11char_traitsIcEEEERKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK23IResourcePackRepositoryEEEENS0_8optionalINS0_12basic_stringIcS3_NS0_9allocatorIcEEEEEE", 141331760},
     // SayCommand
-    {"_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level", 142338544},
+    {"_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level", 142338544},
     // ScriptModuleMinecraft::ScriptBlockUtils
     {"_ZN21ScriptModuleMinecraft16ScriptBlockUtils21createBlockDescriptorENSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEENS1_8optionalINS1_13unordered_mapIS7_NS1_7variantIJiS7_bEEENS1_4hashIS7_EENS1_8equal_toIS7_EENS5_INS1_4pairIKS7_SB_EEEEEEEE", 130182944},
     // ServerInstance

@@ -33,6 +33,8 @@ public:
     void setCause(ActorDamageCause cause);
     [[nodiscard]] const std::string &getDeathMessageOverride() const;
     void setDeathMessageOverride(const std::string &death_message_override);
+    // 1.26.32: de-virtualized; now a non-virtual wrapper that calls the virtual _getDeathMessageInternal
+    [[nodiscard]] std::pair<std::string, std::vector<std::string>> getDeathMessage(const std::string &, Actor *) const;
 
     virtual ~ActorDamageSource() = default;
     [[nodiscard]] virtual bool isEntitySource() const;
@@ -44,7 +46,6 @@ public:
     [[nodiscard]] virtual bool isReducedByArmorReduction() const;
     [[nodiscard]] virtual bool isFallingBlockDamage() const;
     [[nodiscard]] virtual bool isFallDamage() const;
-    [[nodiscard]] virtual std::pair<std::string, std::vector<std::string>> getDeathMessage(std::string, Actor *) const;
     [[nodiscard]] virtual bool getIsCreative() const;
     [[nodiscard]] virtual bool getIsWorldBuilder() const;
     [[nodiscard]] virtual ActorUniqueID getEntityUniqueID() const;
@@ -56,6 +57,9 @@ public:
     [[nodiscard]] virtual ActorType getDamagingEntityType() const;
     [[nodiscard]] virtual ActorCategory getDamagingEntityCategories() const;
     [[nodiscard]] virtual std::unique_ptr<ActorDamageSource> clone() const;
+    // 1.26.32: new virtual appended after clone; getDeathMessage() dispatches here
+    [[nodiscard]] virtual std::pair<std::string, std::vector<std::string>> _getDeathMessageInternal(
+        const std::string &, Actor *) const;
 
 private:
     ActorDamageCause cause_;
@@ -68,8 +72,9 @@ public:
     ActorDamageByBlockSource(const Block &, ActorDamageCause);
     [[nodiscard]] const Block &getBlock() const;
     [[nodiscard]] bool isBlockSource() const override;
-    [[nodiscard]] std::pair<std::string, std::vector<std::string>> getDeathMessage(std::string, Actor *) const override;
     [[nodiscard]] std::unique_ptr<ActorDamageSource> clone() const override;
+    [[nodiscard]] std::pair<std::string, std::vector<std::string>> _getDeathMessageInternal(const std::string &,
+                                                                                            Actor *) const override;
 
 private:
     const Block *block_;  // +16

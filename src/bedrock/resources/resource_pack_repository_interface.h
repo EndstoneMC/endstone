@@ -38,9 +38,9 @@ public:
     [[nodiscard]] virtual PackSourceReport const *getPackLoadingReport() const = 0;
     [[nodiscard]] virtual std::shared_ptr<ResourcePack> getEditorPack() const = 0;
     [[nodiscard]] virtual std::shared_ptr<ResourcePack> getVanillaPack() const = 0;
-    virtual void bedrock_1_26_32_repository_v15() = 0;  // 1.26.32: new slot
     virtual bool setServicePacks(std::vector<PackIdVersion>) = 0;
     virtual void addServicePacksToStack(ResourcePackStack &) const = 0;
+    virtual void addSystemPacksToStack(ResourcePackStack &) const = 0;  // 1.26.32: new slot
     virtual void addCachedResourcePacks(ContentKeyMap const *) = 0;
     virtual void addWorldResourcePacks(Core::Path const &) = 0;
     virtual void addPremiumWorldTemplateResourcePacks(Core::Path const &, ContentIdentity const &) = 0;

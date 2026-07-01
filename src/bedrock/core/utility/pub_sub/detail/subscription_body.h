@@ -14,11 +14,11 @@
 
 #pragma once
 
-#include <functional>
 #include <memory>
 
 #include "bedrock/core/container/intrusive_list.h"
 #include "bedrock/core/utility/pub_sub/detail/return_policy.h"
+#include "bedrock/platform/brstd/move_only_function.h"
 #include "bedrock/core/utility/pub_sub/publisher_config.h"
 #include "bedrock/core/utility/pub_sub/return_policy_type.h"
 
@@ -48,7 +48,7 @@ class SubscriptionBody<Return(Xs...), PolicyType> : public SubscriptionBodyBase 
 public:
     using ReturnPolicy = ReturnPolicy<Return, PolicyType>;
     using ReturnType = typename ReturnPolicy::ReturnType;
-    using FunctionType = std::function<ReturnType(Xs...)>;
+    using FunctionType = brstd::move_only_function<ReturnType(Xs...)>;
 
 protected:
     FunctionType function_;  // +64

@@ -35,6 +35,11 @@ enum class ItemVersion : int {
     None = 2,
 };
 
+enum class ItemRegistrationOrder : std::uint8_t {
+    SplitByVersion = 0,
+    Unified = 1,
+};
+
 class ItemRegistry : public std::enable_shared_from_this<ItemRegistry> {
 public:
     static const std::int16_t START_ITEM_ID = 256;
@@ -60,7 +65,7 @@ private:
 
     gsl::not_null<std::unique_ptr<cereal::ReflectionCtx>> cereal_context_;
     Bedrock::NonOwnerPointer<LinkedAssetValidator> validator_;
-    void *unknown_;  // +48, std::unique_ptr added in 1.26.32
+    void *document_loader_;  // gsl::not_null<std::unique_ptr<ItemLoaderTraits::Loader>>, +48, new in 1.26.32
     ItemRegistryMap item_registry_;  // +56
     std::unordered_map<int, WeakPtr<Item>> id_to_item_map_;
     std::unordered_map<HashedString, WeakPtr<Item>> name_to_item_map_;
@@ -82,10 +87,10 @@ private:
         finished_init_server_publisher_;
     std::shared_ptr<std::atomic<int>> can_update_tags_;
     ItemRegistryMap dead_item_registry_;
-    void *unknown_936_;                                                   // +936, new in 1.26.32
-    std::unordered_map<std::size_t, std::pair<std::string, WeakPtr<Item>>> unknown_944_;  // +944, new in 1.26.32
+    bool add_to_pre_registry_;                                            // +936, new in 1.26.32
+    std::unordered_map<HashedString, SharedPtr<Item>> hardcoded_vanilla_item_pre_registry_;  // +944, new in 1.26.32
+    ItemRegistrationOrder item_registration_order_;                      // new in 1.26.32
     BaseGameVersion world_base_game_version_;
-    void *unknown_1040_;                                                  // +1040, new in 1.26.32
     bool check_for_item_world_compatibility_;
     std::shared_ptr<std::mutex> compatibility_check_mutex_;
     std::unique_ptr<CreativeItemRegistry> creative_item_registry_;

@@ -69,7 +69,7 @@ float BlockType::getThickness() const
 }
 
 void BlockType::spawnResources(BlockSource &region, const BlockPos &pos, const Block &block, IRandom &randomize,
-                               const ResourceDropsContext &resource_drops_context) const
+                               const ResourceDropsContext &resource_drops_context, const Actor *actor_context) const
 {
     // auto [items, experience_count] = getResourceDrops(block, randomize, resource_drops_context);
     // for (const auto &item : items) {
@@ -77,12 +77,13 @@ void BlockType::spawnResources(BlockSource &region, const BlockPos &pos, const B
     // }
     // ExperienceOrb::spawnOrbs(region, pos, experience_count, ExperienceOrb::DropType::FromBlock, nullptr);
     // spawnAfterBreak(region, block, pos, resource_drops_context);
-    BEDROCK_CALL(&BlockType::spawnResources, this, region, pos, block, randomize, resource_drops_context);
+    BEDROCK_CALL(&BlockType::spawnResources, this, region, pos, block, randomize, resource_drops_context,
+                 actor_context);
 }
 
 ItemActor *BlockType::popResource(BlockSource &region, const BlockPos &pos, const ItemStack &item_stack)
 {
-    if (!region.canDoBlockDrops() || item_stack.getCount() == 0) {
+    if (!region.canDoBlockDrops(nullptr) || item_stack.getCount() == 0) {
         return nullptr;
     }
     auto &random = region.getLevel().getThreadRandom();

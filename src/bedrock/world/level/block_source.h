@@ -32,6 +32,7 @@
 #include "bedrock/world/level/dimension/dimension_type.h"
 #include "bedrock/world/level/level_seed.h"
 
+class Actor;
 class ILevel;
 class Level;
 class Material;
@@ -118,8 +119,8 @@ public:
     [[nodiscard]] virtual bool isSolidBlockingBlock(int, int, int) const = 0;
     [[nodiscard]] virtual bool areChunksFullyLoaded(BlockPos const &, int) const = 0;
     virtual bool mayPlace(const Block &, const BlockPos &, FacingID, Actor *, bool, Vec3) = 0;
-    [[nodiscard]] virtual bool canDoBlockDrops() const = 0;
-    [[nodiscard]] virtual bool canDoContainedItemDrops() const = 0;
+    [[nodiscard]] virtual bool canDoBlockDrops(const Actor *instigating_actor) const = 0;
+    [[nodiscard]] virtual bool canDoContainedItemDrops(const Actor *instigating_actor) const = 0;
     [[nodiscard]] virtual bool isInstaticking(BlockPos const &) const = 0;
     virtual bool checkBlockDestroyPermissions(Actor &, const BlockPos &, const ItemStackBase &, bool) = 0;
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
