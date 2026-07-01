@@ -109,11 +109,10 @@ public:
 private:
     static constexpr std::uint32_t MAX_STATE_BITS = 16;
 
-    std::uint32_t end_bit_;          // +0
+    std::uint32_t variation_count_;  // +0
     std::uint32_t num_bits_;         // +4
-    std::uint32_t variation_count_;  // +8
+    std::uint32_t end_bit_;          // +8
     std::uint32_t mask_;             // +12
-    bool initialised_;               // +16
-    BlockState *state_;              // +24
+    BlockState *state_;              // +16
 };
-static_assert(sizeof(BlockStateInstance) == 32);
+static_assert(sizeof(BlockStateInstance) == 24);
