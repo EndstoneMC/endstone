@@ -50,12 +50,6 @@ public:
     virtual void loadChunk(LevelChunk &, bool) = 0;
     virtual void postProcessMobsAt(BlockSource &, int, int, Random &) = 0;
     virtual void postProcessMobsAt(BlockSource &, const BoundingBox &) const = 0;
-    virtual void deleteAllChunkData(std::unordered_set<ChunkPos> chunks_to_delete,
-                                    std::function<void()> completion_callback,
-                                    std::shared_ptr<ChunkDeletionMetadata> metadata);
-    virtual void deleteStoredChunkData(std::unordered_set<ChunkPos> chunks_to_delete,
-                                       std::function<void()> completion_callback,
-                                       std::shared_ptr<ChunkDeletionMetadata> metadata);
     virtual bool saveLiveChunk(LevelChunk &) = 0;
     virtual void writeEntityChunkTransfer(LevelChunk &) = 0;
     virtual void writeEntityChunkTransfersToUnloadedChunk(const ChunkKey &,

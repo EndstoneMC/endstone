@@ -25,7 +25,6 @@ public:
     struct Entry {
         mce::UUID uuid;
         std::optional<std::string> xuid;
-        std::string blocked_message;
         Duration duration;
     };
 
