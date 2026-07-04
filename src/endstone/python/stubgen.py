@@ -111,11 +111,34 @@ class Pybind11Support(Extension):
         obj.members.update(ordered)
 
     def on_attribute_instance(self, *, node, attr: Attribute, agent, **kwargs) -> None:
-        """Drop attribute docstrings inherited from the value's type, not user-written."""
+        """Strip inherited docstrings and attach pybind11 property setters/deleters.
+
+        Both need the live object -- the value's type doc, and the property's
+        ``fset`` / ``fdel`` callables (which griffe never records) -- so neither
+        can be done at render time.
+        """
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
+        # Drop docstrings inherited from the value's type rather than user-written.
         if attr.docstring is not None and attr.docstring.value == type(node.obj).__doc__:
             attr.docstring = None
+        # griffe records only a property's getter; recreate its setter/deleter
+        # from the live descriptor so they appear in the stub. Firing
+        # on_function_instance lets a future signature parser process them too.
+        if "property" not in attr.labels:
+            return
+        if fset := getattr(node.obj, "fset", None):
+            fset_node = ObjectNode(fset, node.name, node)
+            attr.setter = Function(name=node.name, docstring=agent._get_docstring(fset_node), parent=agent.current)
+            attr.labels.add("writable")
+            agent.extensions.call("on_instance", node=fset_node, obj=attr.setter, agent=agent)
+            agent.extensions.call("on_function_instance", node=fset_node, func=attr.setter, agent=agent)
+        if fdel := getattr(node.obj, "fdel", None):
+            fdel_node = ObjectNode(fdel, node.name, node)
+            attr.deleter = Function(name=node.name, docstring=agent._get_docstring(fdel_node), parent=agent.current)
+            attr.labels.add("deletable")
+            agent.extensions.call("on_instance", node=fdel_node, obj=attr.deleter, agent=agent)
+            agent.extensions.call("on_function_instance", node=fdel_node, func=attr.deleter, agent=agent)
 
 
 def load(module_name: str) -> Module:
@@ -492,6 +515,11 @@ class StubGen:
         if setter is not None:
             self.write_ln(f"@{attr.name}.setter")
             self._put_single_func(setter)
+
+        deleter = getattr(attr, "deleter", None)
+        if deleter is not None:
+            self.write_ln(f"@{attr.name}.deleter")
+            self._put_single_func(deleter)
 
     # ---- values / attributes ----
 
