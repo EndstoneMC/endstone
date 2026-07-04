@@ -40,8 +40,7 @@ from griffe import (
     ParameterKind,
 )
 
-# Standard attributes found on modules / classes that should never appear in a
-# stub. Ported from nanobind's stubgen (minus the nanobind-only entries).
+# Various standard attributes found in modules, classes, etc.
 SKIP_LIST = {
     "__doc__",
     "__module__",
@@ -85,11 +84,7 @@ class Pybind11Support(Extension):
     """Umbrella griffe extension for pybind11 quirks"""
 
     def on_module_instance(self, *, node, mod: Module, agent, **kwargs) -> None:
-        """Force griffe to inspect pybind11 submodules that share the parent binary.
-
-        They all point ``__file__`` at the same ``.pyd`` / ``.so``, which griffe
-        skips as on-disk; dropping it makes griffe inspect them inline.
-        """
+        """Force griffe to inspect pybind11 submodules that share the parent's binary."""
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
         for child in node.children:
@@ -111,20 +106,13 @@ class Pybind11Support(Extension):
         obj.members.update(ordered)
 
     def on_attribute_instance(self, *, node, attr: Attribute, agent, **kwargs) -> None:
-        """Strip inherited docstrings and attach pybind11 property setters/deleters.
-
-        Both need the live object -- the value's type doc, and the property's
-        ``fset`` / ``fdel`` callables (which griffe never records) -- so neither
-        can be done at render time.
-        """
+        """Strip inherited docstrings and attach property setters/deleters."""
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
-        # Drop docstrings inherited from the value's type rather than user-written.
+        # Drop docstrings inherited from the value's type.
         if attr.docstring is not None and attr.docstring.value == type(node.obj).__doc__:
             attr.docstring = None
-        # griffe records only a property's getter; recreate its setter/deleter
-        # from the live descriptor so they appear in the stub. Firing
-        # on_function_instance lets a future signature parser process them too.
+        # griffe records only the getter; rebuild setter/deleter from the descriptor.
         if "property" not in attr.labels:
             return
         if fset := getattr(node.obj, "fset", None):
@@ -151,7 +139,7 @@ def load(module_name: str) -> Module:
 
 
 # --------------------------------------------------------------------------- #
-#  Pattern files (ported verbatim in spirit from nanobind)                     #
+#  Pattern files                                                               #
 # --------------------------------------------------------------------------- #
 
 
@@ -264,8 +252,7 @@ class StubGen:
         self._output.write("\n")
 
     def format_docstr(self, docstr: str, depth: int) -> str:
-        # ruff/black stub style: docstrings are always the expanded block form,
-        # with ``"""`` on its own line, regardless of length.
+        # Always the expanded block form (ruff stub style).
         docstr = textwrap.dedent(docstr).strip()
         raw = ""
         if "''" in docstr or "\\" in docstr:
@@ -345,18 +332,14 @@ class StubGen:
         return "Any"
 
     def _render_value(self, value, owner=None) -> str:
-        # Values are rendered verbatim -- never run ``simplify()`` over them, or
-        # a dotted substring inside a string literal (e.g. ``'minecraft:player.hunger'``)
-        # would be mis-read as a module reference and pull in a bogus import.
+        # Rendered verbatim; simplify() must not touch a literal (a dotted
+        # substring like 'minecraft:player.hunger' would import a bogus module).
         s = str(value)
-        # pybind11 native-enum values arrive as opaque reprs like
-        # ``<GameMode.ADVENTURE: 2>`` -- both the name and the int live in the
-        # string, so recover them here (no live object needed).
+        # pybind11 native-enum value, e.g. <GameMode.ADVENTURE: 2>.
         if m := _ENUM_RE.fullmatch(s):
             qualified, number = m.group("enum"), m.group("value")
             enum_class = qualified.rsplit(".", 1)[0]
-            # The member's own definition (inside its enum class) -> its int
-            # value; a reference from elsewhere (export_values) -> the name.
+            # Member definition -> its int value; a reference -> the enum name.
             if (
                 owner is not None
                 and owner.parent is not None
@@ -383,8 +366,7 @@ class StubGen:
             return
         if self._is_private(name) and not self.include_private:
             return
-        # pybind11 gives non-constructible classes a default __init__ whose
-        # docstring is object.__init__'s; drop it like the reference filter.
+        # Drop pybind11's default __init__ (carries object.__init__'s docstring).
         if (
             obj.kind == Kind.FUNCTION
             and name == "__init__"
@@ -403,8 +385,7 @@ class StubGen:
                 self.put_property(obj)
             else:
                 self.put_value(obj)
-        # MODULE members are emitted as separate files by the driver; other
-        # kinds (type-alias) are rare for pybind11 and skipped for now.
+        # Submodules are emitted as separate files by the driver.
 
     # ---- class ----
 
@@ -463,8 +444,7 @@ class StubGen:
 
     def _signature_str(self, func: Function) -> str:
         params = list(func.parameters)
-        # griffe couldn't recover a signature (pybind11 hides it in the
-        # docstring; recovering it is a follow-up extension) -> permissive stub.
+        # No signature recovered (pybind11 hides it in the docstring).
         if not params:
             inner = "*args, **kwargs"
         else:

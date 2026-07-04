@@ -83,6 +83,12 @@ pytest tests/endstone/python
 - Line length: 120 characters
 - Enabled rules: I (isort), F (pyflakes)
 
+### Comments (all languages)
+- Keep comments terse and human. Default to no comment; when one is warranted, one short line.
+- No multi-line explanations, rationale, design-decision narration, or parenthetical asides.
+- Do not leave "LLM notes" — comments that explain why a change was made, reference the development process, or restate what the code plainly does.
+- Match the comment density and verbosity of the surrounding or original code (e.g. a port stays as terse as its upstream).
+
 ## Architecture
 
 ### Source Structure
