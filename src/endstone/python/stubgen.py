@@ -1,36 +1,18 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "griffe",
+# ]
+# ///
 
 """
 stubgen.py: pybind11 stub generation tool (griffe-backed)
 
 This is a rewrite of nanobind's ``stubgen.py``. It keeps nanobind's overall
 design -- a ``StubGen`` class with ``put_*`` methods that walk a module and
-emit ``.pyi`` text *directly* into a buffer (no Jinja, no intermediate AST of
-our own) -- but replaces nanobind's live-object introspection with griffe.
-
-Why griffe:
------------
-
-In nanobind's original, ``put()`` did double duty: it *discovered* structure by
-introspecting live Python objects (``type()`` dispatch, ``inspect.signature``,
-walking ``__dict__``) *and* rendered it. griffe already builds a typed object
-tree (Modules -> Classes -> Functions / Attributes, with ``.parameters``,
-``.annotation``, ``.bases``, ``.members`` in definition order) from the same
-runtime inspection. So the whole discovery half of nanobind disappears and
-``StubGen`` collapses to a pure renderer: ``put(obj)`` dispatches on
-``obj.kind`` and prints.
-
-Scope of this step:
--------------------
-
-This is the *engine swap only*. griffe is the loader / data model; the two
-inlined extensions below are pure loading plumbing (make griffe inspect
-pybind11 submodules that share the parent ``.pyd``; restore definition order).
-No pybind11 *signature* recovery is done yet -- pybind11 hides real signatures
-in docstrings, and parsing those back into typed parameters is a follow-up set
-of griffe extensions. Until then, functions whose signature griffe can't see
-render with a ``(*args, **kwargs) -> typing.Any`` fallback, exactly the
-"unknown signature" state the nanobind baseline was in.
+emit ``.pyi`` text *directly* into a buffer, but replaces nanobind's object
+introspection with griffe.
 """
 
 import argparse
@@ -49,8 +31,6 @@ from griffe import (
     Attribute,
     Class,
     Extension,
-    ExprAttribute,
-    ExprName,
     Function,
     Inspector,
     Kind,
@@ -58,40 +38,57 @@ from griffe import (
     Object,
     ObjectNode,
     ParameterKind,
-    Visitor,
 )
 
 # Standard attributes found on modules / classes that should never appear in a
 # stub. Ported from nanobind's stubgen (minus the nanobind-only entries).
 SKIP_LIST = {
-    "__doc__", "__module__", "__name__", "__new__", "__builtins__",
-    "__cached__", "__path__", "__spec__", "__loader__", "__package__",
-    "__class_getitem__", "__orig_bases__", "__file__", "__dict__",
-    "__weakref__", "__format__", "__firstlineno__", "__static_attributes__",
-    "__annotations__", "__annotate__", "__annotate_func__", "__qualname__",
+    "__doc__",
+    "__module__",
+    "__name__",
+    "__new__",
+    "__builtins__",
+    "__cached__",
+    "__path__",
+    "__spec__",
+    "__loader__",
+    "__package__",
+    "__class_getitem__",
+    "__orig_bases__",
+    "__file__",
+    "__dict__",
+    "__weakref__",
+    "__format__",
+    "__firstlineno__",
+    "__static_attributes__",
+    "__annotations__",
+    "__annotate__",
+    "__annotate_func__",
+    "__qualname__",
     "_pybind11_conduit_v1_",
     # Auto-generated enum attributes synthesized by type checkers.
-    "_new_member_", "_use_args_", "_member_names_", "_member_map_",
-    "_value2member_map_", "_hashable_values_", "_unhashable_values_",
-    "_unhashable_values_map_", "_value_repr_", "_generate_next_value_",
+    "_new_member_",
+    "_use_args_",
+    "_member_names_",
+    "_member_map_",
+    "_value2member_map_",
+    "_hashable_values_",
+    "_unhashable_values_",
+    "_unhashable_values_map_",
+    "_value_repr_",
+    "_generate_next_value_",
 }
 
 
-# --------------------------------------------------------------------------- #
-#  griffe loading plumbing (pybind11-aware, but no signature recovery)         #
-# --------------------------------------------------------------------------- #
-
-
-class Pybind11SubmoduleSupport(Extension):
-    """Force griffe to inspect pybind11 submodules that share the parent binary.
-
-    griffe skips any submodule whose ``__file__`` is set, assuming it lives on
-    disk. Every pybind11 submodule's ``__file__`` points to the same ``.pyd`` /
-    ``.so`` as its parent, so griffe would never inspect them. Drop ``__file__``
-    from those submodules so griffe treats them as in-memory and inspects them.
-    """
+class Pybind11Support(Extension):
+    """Umbrella griffe extension for pybind11 quirks"""
 
     def on_module_instance(self, *, node, mod: Module, agent, **kwargs) -> None:
+        """Force griffe to inspect pybind11 submodules that share the parent binary.
+
+        They all point ``__file__`` at the same ``.pyd`` / ``.so``, which griffe
+        skips as on-disk; dropping it makes griffe inspect them inline.
+        """
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
         for child in node.children:
@@ -102,16 +99,8 @@ class Pybind11SubmoduleSupport(Extension):
             if getattr(child.obj, "__file__", None) == getattr(node.obj, "__file__", None):
                 delattr(child.obj, "__file__")
 
-
-class MemberOrderFix(Extension):
-    """Restore definition order of members.
-
-    ``inspect.getmembers`` (which griffe uses) returns members alphabetically.
-    Re-sort them to match ``__dict__`` insertion order, i.e. the order the
-    author defined them in C++.
-    """
-
     def on_members(self, *, node, obj: Object, agent, **kwargs) -> None:
+        """Restore ``__dict__`` (definition) order; griffe's ``getmembers`` sorts alphabetically."""
         if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
             return
         ordered = {}
@@ -123,7 +112,7 @@ class MemberOrderFix(Extension):
 
 def load(module_name: str) -> Module:
     """Load a module into a griffe tree with the pybind11 loading plumbing."""
-    extensions = griffe.load_extensions(Pybind11SubmoduleSupport, MemberOrderFix)
+    extensions = griffe.load_extensions(Pybind11Support)
     module = griffe.load(module_name, extensions=extensions)
     if not isinstance(module, Module):
         raise ValueError(f"{module_name!r} is not a module")
@@ -275,7 +264,7 @@ class StubGen:
         prefix = self.top.path
         if full == prefix:
             return prefix, ""
-        rest = full[len(prefix) + 1:]
+        rest = full[len(prefix) + 1 :]
         segs = rest.split(".")
         node, mod_path, i = self.top, prefix, 0
         while i < len(segs) and segs[i] in node.modules:
@@ -334,10 +323,7 @@ class StubGen:
     # ---- dispatch ----
 
     def _is_private(self, name: str) -> bool:
-        return (
-            len(name) > 2
-            and ((name[0] == "_" and name[1] != "_") or (name[-1] == "_" and name[-2] != "_"))
-        )
+        return len(name) > 2 and ((name[0] == "_" and name[1] != "_") or (name[-1] == "_" and name[-2] != "_"))
 
     def put(self, obj) -> None:
         if isinstance(obj, Alias):
@@ -553,17 +539,17 @@ def _iter_modules(mod: Module):
 
 def _target_file(mod: Module, top: Module, out_dir: Path) -> Path:
     top_parent = top.path.rsplit(".", 1)[0] if "." in top.path else ""
-    rel = mod.path[len(top_parent) + 1:] if top_parent else mod.path
+    rel = mod.path[len(top_parent) + 1 :] if top_parent else mod.path
     segs = rel.split(".")
     if mod.modules:  # package -> its own directory + __init__.pyi
         return out_dir.joinpath(*segs) / "__init__.pyi"
     return out_dir.joinpath(*segs[:-1]) / (segs[-1] + ".pyi")
 
 
-def render_module(top: Module, mod: Module, opt: argparse.Namespace,
-                  patterns: List[ReplacePattern]) -> str:
+def render_module(top: Module, mod: Module, opt: argparse.Namespace, patterns: List[ReplacePattern]) -> str:
     sg = StubGen(
-        top, mod,
+        top,
+        mod,
         include_docstrings=opt.include_docstrings,
         include_private=opt.include_private,
         patterns=patterns,
@@ -578,26 +564,58 @@ def parse_options(args: List[str]) -> argparse.Namespace:
         prog="python -m endstone.python.stubgen",
         description="Generate stubs for pybind11 extensions (griffe-backed).",
     )
-    parser.add_argument("-o", "--output-file", dest="output_file", default=None,
-                        metavar="FILE", help="write the stub to this file (single module)")
-    parser.add_argument("-O", "--output-dir", dest="output_dir", default=None,
-                        metavar="PATH", help="write stubs under this directory")
-    parser.add_argument("-m", "--module", action="append", dest="modules", default=[],
-                        metavar="MODULE", help="module to generate a stub for (repeatable)")
-    parser.add_argument("-r", "--recursive", action="store_true", dest="recursive",
-                        default=False, help="recurse into submodules")
-    parser.add_argument("-p", "--pattern-file", dest="pattern_file", default=None,
-                        metavar="FILE", help="apply the given pattern file")
-    parser.add_argument("-P", "--include-private", action="store_true",
-                        dest="include_private", default=False,
-                        help="include single-underscore private members")
-    parser.add_argument("-D", "--exclude-docstrings", action="store_false",
-                        dest="include_docstrings", default=True,
-                        help="exclude docstrings from the generated stub")
-    parser.add_argument("-M", "--marker-file", action="append", dest="marker_file",
-                        default=[], metavar="FILE", help="also emit a marker file (e.g. py.typed)")
-    parser.add_argument("-q", "--quiet", action="store_true", default=False,
-                        help="suppress progress output")
+    parser.add_argument(
+        "-o",
+        "--output-file",
+        dest="output_file",
+        default=None,
+        metavar="FILE",
+        help="write the stub to this file (single module)",
+    )
+    parser.add_argument(
+        "-O", "--output-dir", dest="output_dir", default=None, metavar="PATH", help="write stubs under this directory"
+    )
+    parser.add_argument(
+        "-m",
+        "--module",
+        action="append",
+        dest="modules",
+        default=[],
+        metavar="MODULE",
+        help="module to generate a stub for (repeatable)",
+    )
+    parser.add_argument(
+        "-r", "--recursive", action="store_true", dest="recursive", default=False, help="recurse into submodules"
+    )
+    parser.add_argument(
+        "-p", "--pattern-file", dest="pattern_file", default=None, metavar="FILE", help="apply the given pattern file"
+    )
+    parser.add_argument(
+        "-P",
+        "--include-private",
+        action="store_true",
+        dest="include_private",
+        default=False,
+        help="include single-underscore private members",
+    )
+    parser.add_argument(
+        "-D",
+        "--exclude-docstrings",
+        action="store_false",
+        dest="include_docstrings",
+        default=True,
+        help="exclude docstrings from the generated stub",
+    )
+    parser.add_argument(
+        "-M",
+        "--marker-file",
+        action="append",
+        dest="marker_file",
+        default=[],
+        metavar="FILE",
+        help="also emit a marker file (e.g. py.typed)",
+    )
+    parser.add_argument("-q", "--quiet", action="store_true", default=False, help="suppress progress output")
 
     opt = parser.parse_args(args)
     if not opt.modules:
