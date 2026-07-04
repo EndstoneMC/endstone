@@ -105,6 +105,20 @@ def _valid_sig(sig: str) -> bool:
         return False
 
 
+def _local_class_names(mod: Module) -> set:
+    # Classes defined in the module, including nested ones. pybind11 refers to
+    # same-module classes/enums by short name, so these must never be imported.
+    names: set = set()
+    stack = [mod]
+    while stack:
+        obj = stack.pop()
+        for name, member in obj.members.items():
+            if not isinstance(member, Alias) and member.kind == Kind.CLASS:
+                names.add(name)
+                stack.append(member)
+    return names
+
+
 def _extract_signatures(docstring) -> Optional[List[tuple]]:
     """Parse pybind11 signature(s) from a docstring, mirroring nanobind's __nb_signature__.
 
@@ -326,7 +340,7 @@ class StubGen:
         # ``from <module> import <name>`` entries:
         self._import_from: dict[str, set[str]] = {}
 
-        self.prefix = mod.path  # dotted path of the object currently being rendered
+        self._local_names = _local_class_names(mod)
 
     # ---- output primitives ----
 
@@ -406,7 +420,11 @@ class StubGen:
             self._need_from(mod_name, cls_name)
             return cls_name
 
-        # Generic external: import the module, keep the fully-qualified name.
+        # A same-module class/enum referenced by short name (pybind11 drops the
+        # package prefix, e.g. RenderType.INTEGER) is already in scope; keep bare.
+        if full.split(".", 1)[0] in self._local_names:
+            return full
+
         self._need_import_module(mod_name)
         return full
 
