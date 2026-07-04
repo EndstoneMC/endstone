@@ -14,10 +14,9 @@
 
 #pragma once
 
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/script_deferred_event_listener.h"
+#include <string>
 
-class ScriptDeferredEventCoordinator : public EventCoordinatorPimpl<ScriptDeferredEventListener> {
-    // std::unique_ptr<Bedrock::PubSub::Publisher<void(ScriptDeferredFlushTracker &)>>
-    void *flush_coroutine_publisher_;
+struct PlayerPartyInfo {
+    std::string party_id;
+    bool is_leader;
 };

@@ -61,9 +61,9 @@ struct PlayerDestroyBlockEvent {
     gsl::not_null<const Block *> block;
 };
 struct PlayerSayCommandEvent {
-    WeakRef<EntityContext> player;
+    std::string sender;
     std::string message;
-    // TODO(fixme): size changed?
+    std::optional<std::string> filtered_message;
 };
 struct PlayerUseNameTagEvent {
     WeakRef<EntityContext> player;

@@ -67,11 +67,12 @@ private:
     ChunkSource *generator_;
     LevelChunkTicking::Entity tmp_ticking_entity_;
     std::optional<LevelChunkFormat> loaded_format_;
+    bool had_serialized_entities_;
     std::string serialized_entities_buffer_;
     std::string failed_serialized_entities_buffer_;
-    bool had_serialized_entities_;
     std::vector<void *> unresolved_actor_links_;
     std::atomic<ChunkState> load_state_;
+    std::atomic<bool> is_current_load_state_indeterminate_;
     ChunkTerrainDataState terrain_data_state_;
     ChunkDebugDisplaySavedState debug_display_saved_state_;
     ChunkCachedDataState cached_data_state_;

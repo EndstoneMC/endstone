@@ -418,6 +418,7 @@ private:
     std::unordered_set<int> allow_empty_symbols_;                                                // +792
     CommandOverrideFunctor command_override_functor_;
     std::unique_ptr<CommandRunStats> command_run_stats_;
+    void *auto_complete_player_mention_;  // AutoCompletePlayerList function pointer
 };
 
 enum class CommandParameterOption : std::uint8_t {

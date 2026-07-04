@@ -22,6 +22,8 @@
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/network_peer.h"
 
+class IPacketSecurityController;
+
 class NetworkConnection {
 public:
     enum class Type : int {
@@ -64,4 +66,5 @@ private:
     bool disconnected_;
     bool should_close_connection_;  // +377
     bool encryption_disabled_;
+    std::shared_ptr<IPacketSecurityController> packet_security_controller_;
 };

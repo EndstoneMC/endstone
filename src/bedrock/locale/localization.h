@@ -32,4 +32,5 @@ private:
     Map strings_;
     Map case_sensitive_cache_;
     Bedrock::Threading::SharedMutex case_sensitive_cache_mutex_;
+    bool may_contain_identifier_;
 };
