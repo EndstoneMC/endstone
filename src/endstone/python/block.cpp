@@ -31,8 +31,15 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .value("EAST", BlockFace::East)
         .finalize();
 
-    py::class_<BlockType>(m, "BlockType", "Represents a block type.")
-        .def_property_readonly("id", &BlockType::getId, "Return the identifier of this block type.")
+    // Register the class handles up front so their mutual references (e.g.
+    // BlockType::createBlockData -> BlockData, BlockData::getType -> BlockType)
+    // resolve to Python names instead of C++ names in the generated signatures.
+    auto block_type = py::class_<BlockType>(m, "BlockType", "Represents a block type.");
+    auto block_data = py::class_<BlockData>(m, "BlockData", "Represents the data related to a live block");
+    auto block_state = py::class_<BlockState>(
+        m, "BlockState", "Represents a captured state of a block, which will not update automatically.");
+
+    block_type.def_property_readonly("id", &BlockType::getId, "Return the identifier of this block type.")
         .def_property_readonly("translation_key", &BlockType::getTranslationKey,
                                "Get the translation key, suitable for use in a translation component.")
         .def_property_readonly("has_item_type", &BlockType::hasItemType,
@@ -44,14 +51,12 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .def("__str__", &BlockType::getId)
         .def("__repr__", [](const BlockType &self) { return fmt::format("BlockType({})", self.getId()); });
 
-    py::class_<BlockData>(m, "BlockData", "Represents the data related to a live block")
-        .def_property_readonly("type", &BlockData::getType, "Get the block type represented by this block data.")
+    block_data.def_property_readonly("type", &BlockData::getType, "Get the block type represented by this block data.")
         .def_property_readonly("block_states", &BlockData::getBlockStates, "Gets the block states for this block.")
         .def_property_readonly("runtime_id", &BlockData::getRuntimeId, "Gets the runtime id for this block.")
         .def("__str__", [](const BlockData &self) { return fmt::format("{}", self); });
 
-    py::class_<BlockState>(m, "BlockState",
-                           "Represents a captured state of a block, which will not update automatically.")
+    block_state
         .def_property_readonly("block", &BlockState::getBlock, "Gets the block represented by this block state.")
         .def_property("type", &BlockState::getType, &BlockState::setType, "Gets or sets the type of this block state.")
         .def_property("data", &BlockState::getData, &BlockState::setData, "Gets or sets the data for this block state.")
