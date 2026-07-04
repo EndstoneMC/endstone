@@ -45,6 +45,7 @@ class ActorDefinitionDiffList;
 class ActorDefinitionGroup;
 class ActorEvent;
 class ActorInteraction;
+class ActorRotationComponent;
 class ActorSpawnRuleGroup;
 class ActorUnloadedChunkTransferEntry;
 class AllowList;
