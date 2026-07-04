@@ -6,13 +6,12 @@
       "type": "debugpy",
       "request": "launch",
       "module": "endstone",
-      "console": "integratedTerminal",
-      "cwd": "${workspaceFolder}/bedrock_server",
       "args": [
         "--server-folder",
         ".",
         "--interactive",
       ],
+      "cwd": "${workspaceFolder}/bedrock_server",
       "justMyCode": false,
     },
     {
