@@ -2,6 +2,7 @@
 os={{ detect_api.detect_os() }}
 arch={{ detect_api.detect_arch() }}
 build_type=Release
+&:build_type=RelWithDebInfo
 {% if platform.system() == "Windows" %}
 {% set compiler, version, _ = detect_api.detect_msvc_compiler() %}
 compiler={{ compiler }}
