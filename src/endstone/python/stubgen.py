@@ -53,6 +53,7 @@ SKIP_LIST = {
     "__spec__",
     "__loader__",
     "__package__",
+    "__class__",
     "__class_getitem__",
     "__orig_bases__",
     "__file__",
@@ -108,6 +109,13 @@ class Pybind11Support(Extension):
             if k in obj.members:
                 ordered[k] = obj.members.pop(k)
         obj.members.update(ordered)
+
+    def on_attribute_instance(self, *, node, attr: Attribute, agent, **kwargs) -> None:
+        """Drop attribute docstrings inherited from the value's type, not user-written."""
+        if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
+            return
+        if attr.docstring is not None and attr.docstring.value == type(node.obj).__doc__:
+            attr.docstring = None
 
 
 def load(module_name: str) -> Module:
@@ -182,6 +190,9 @@ _SEP_BEFORE = r"(?<![\\B\.])"
 _SEP_AFTER = r"(?![\\B\.])"
 _IDENT = r"[^\d\W]\w*"
 _ID_SEQ = re.compile(_SEP_BEFORE + "((?:" + _IDENT + r"\.)+)(" + _IDENT + r")\b" + _SEP_AFTER)
+
+# pybind11 native-enum value repr, e.g. ``<GameMode.ADVENTURE: 2>``.
+_ENUM_RE = re.compile(r"<(?P<enum>\w+(?:\.\w+)+): (?P<value>-?\d+)>")
 
 
 class StubGen:
@@ -310,12 +321,28 @@ class StubGen:
         self._need_from("typing", "Any")
         return "Any"
 
-    def _render_value(self, value) -> str:
+    def _render_value(self, value, owner=None) -> str:
         # Values are rendered verbatim -- never run ``simplify()`` over them, or
         # a dotted substring inside a string literal (e.g. ``'minecraft:player.hunger'``)
         # would be mis-read as a module reference and pull in a bogus import.
         s = str(value)
-        # Opaque repr (e.g. pybind11 enum ``<Enum.X: 1>``) -> placeholder.
+        # pybind11 native-enum values arrive as opaque reprs like
+        # ``<GameMode.ADVENTURE: 2>`` -- both the name and the int live in the
+        # string, so recover them here (no live object needed).
+        if m := _ENUM_RE.fullmatch(s):
+            qualified, number = m.group("enum"), m.group("value")
+            enum_class = qualified.rsplit(".", 1)[0]
+            # The member's own definition (inside its enum class) -> its int
+            # value; a reference from elsewhere (export_values) -> the name.
+            if (
+                owner is not None
+                and owner.parent is not None
+                and owner.parent.kind == Kind.CLASS
+                and owner.parent.name == enum_class
+            ):
+                return number
+            return self.simplify(qualified)
+        # Any other opaque repr -> placeholder.
         if "<" in s or ">" in s or "\n" in s:
             return "..."
         return s
@@ -332,6 +359,15 @@ class StubGen:
         if name in SKIP_LIST:
             return
         if self._is_private(name) and not self.include_private:
+            return
+        # pybind11 gives non-constructible classes a default __init__ whose
+        # docstring is object.__init__'s; drop it like the reference filter.
+        if (
+            obj.kind == Kind.FUNCTION
+            and name == "__init__"
+            and obj.docstring is not None
+            and obj.docstring.value == object.__init__.__doc__
+        ):
             return
 
         kind = obj.kind
@@ -350,7 +386,12 @@ class StubGen:
     # ---- class ----
 
     def put_type(self, cls: Class) -> None:
-        bases = [self.simplify(str(b)) for b in cls.bases if str(b) != "object"]
+        # Skip pybind11 implementation-detail bases.
+        bases = [
+            self.simplify(str(b))
+            for b in cls.bases
+            if str(b) not in {"object", "pybind11_builtins.pybind11_object"}
+        ]
         header = "class " + cls.name
         if bases:
             header += "(" + ", ".join(bases) + ")"
@@ -459,7 +500,7 @@ class StubGen:
         if attr.annotation is not None:
             line += ": " + self.type_str(attr.annotation)
         if attr.value is not None:
-            line += " = " + self._render_value(attr.value)
+            line += " = " + self._render_value(attr.value, attr)
         else:
             line += " = ..."
         self.write_ln(line)
