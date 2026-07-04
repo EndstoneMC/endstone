@@ -16,6 +16,7 @@ introspection with griffe.
 """
 
 import argparse
+import ast
 import io
 import re
 import sys
@@ -79,9 +80,74 @@ SKIP_LIST = {
     "_generate_next_value_",
 }
 
+# pybind11 native-enum value repr, e.g. <GameMode.ADVENTURE: 2>.
+_ENUM_RE = re.compile(r"<(?P<enum>\w+(?:\.\w+)+): (?P<value>-?\d+)>")
+
+# A pybind11 docstring signature line: "[N. ][name](args)[ -> ret]".
+_PYBIND_SIG_RE = re.compile(
+    r"^\s*(?:(?P<num>\d+)\.\s+)?(?P<name>[A-Za-z_]\w*)?\((?P<args>.*)\)\s*(?:->\s*(?P<ret>.+?))?\s*$"
+)
+
+
+def _clean_sig_args(name: Optional[str], args: str) -> str:
+    args = _ENUM_RE.sub(r"\g<enum>", args)
+    if name is None:
+        return re.sub(r"^arg0:\s*[\w.]+", "self", args)
+    return re.sub(r"^self:\s*[\w.]+", "self", args)
+
+
+def _valid_sig(sig: str) -> bool:
+    # pybind11 docstrings can carry non-Python types (e.g. C++ "endstone::Foo").
+    try:
+        ast.parse(f"def _{sig[4:]}: ...")
+        return True
+    except SyntaxError:
+        return False
+
+
+def _extract_signatures(docstring) -> Optional[List[tuple]]:
+    """Parse pybind11 signature(s) from a docstring, mirroring nanobind's __nb_signature__.
+
+    Returns a list of (sig, doc, defaults) where sig is "def (args) -> ret".
+    pybind11 inlines defaults into the text, so defaults is always None.
+    """
+    lines = docstring.lines
+    if not lines:
+        return None
+    head = _PYBIND_SIG_RE.match(lines[0])
+    if head is None:
+        return None
+    if len(lines) >= 2 and lines[1].strip() == "Overloaded function.":
+        entries: List[tuple] = []
+        doc_start = 2
+        for i in range(2, len(lines)):
+            m = _PYBIND_SIG_RE.match(lines[i])
+            if m and m.group("ret") and m.group("num") == str(len(entries) + 1):
+                if entries:
+                    entries[-1] = (entries[-1][0], "\n".join(lines[doc_start:i]).strip() or None, None)
+                sig = f"def ({_clean_sig_args(m.group('name'), m.group('args'))}) -> {m.group('ret').strip()}"
+                if not _valid_sig(sig):
+                    raise ValueError(f"unparseable signature {sig[4:]!r}")
+                entries.append((sig, None, None))
+                doc_start = i + 1
+        if not entries:
+            return None
+        entries[-1] = (entries[-1][0], "\n".join(lines[doc_start:]).strip() or None, None)
+        return entries
+    if head.group("ret") is None:
+        return None
+    sig = f"def ({_clean_sig_args(head.group('name'), head.group('args'))}) -> {head.group('ret').strip()}"
+    if not _valid_sig(sig):
+        raise ValueError(f"unparseable signature {sig[4:]!r}")
+    return [(sig, "\n".join(lines[1:]).strip() or None, None)]
+
 
 class Pybind11Support(Extension):
     """Umbrella griffe extension for pybind11 quirks"""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.errors: List[str] = []
 
     def on_module_instance(self, *, node, mod: Module, agent, **kwargs) -> None:
         """Force griffe to inspect pybind11 submodules that share the parent's binary."""
@@ -115,6 +181,11 @@ class Pybind11Support(Extension):
         # griffe records only the getter; rebuild setter/deleter from the descriptor.
         if "property" not in attr.labels:
             return
+        fget = getattr(node.obj, "fget", None)
+        if fget is not None and fget.__doc__:
+            m = _PYBIND_SIG_RE.match(fget.__doc__.splitlines()[0])
+            if m is not None and m.group("ret"):
+                attr.annotation = m.group("ret").strip()
         if fset := getattr(node.obj, "fset", None):
             fset_node = ObjectNode(fset, node.name, node)
             attr.setter = Function(name=node.name, docstring=agent._get_docstring(fset_node), parent=agent.current)
@@ -128,11 +199,30 @@ class Pybind11Support(Extension):
             agent.extensions.call("on_instance", node=fdel_node, obj=attr.deleter, agent=agent)
             agent.extensions.call("on_function_instance", node=fdel_node, func=attr.deleter, agent=agent)
 
+    def on_function_instance(self, *, node, func: Function, agent, **kwargs) -> None:
+        """Parse the docstring signature(s) into func._pybind11_signature_ (see __nb_signature__)."""
+        if not isinstance(node, ObjectNode) or not isinstance(agent, Inspector):
+            return
+        if not func.docstring:
+            return
+        try:
+            sigs = _extract_signatures(func.docstring)
+        except ValueError as e:
+            self.errors.append(f"{func.path}: {e}")
+            return
+        if sigs is not None:
+            func._pybind11_signature_ = sigs
+            func.docstring = None
+
 
 def load(module_name: str) -> Module:
     """Load a module into a griffe tree with the pybind11 loading plumbing."""
-    extensions = griffe.load_extensions(Pybind11Support)
-    module = griffe.load(module_name, extensions=extensions)
+    support = Pybind11Support()
+    module = griffe.load(module_name, extensions=griffe.load_extensions(support))
+    # Hooks collect errors here rather than raise; griffe mangles exceptions
+    # thrown inside a hook into a generic ImportError.
+    if support.errors:
+        raise ValueError(f"{module_name}:\n  " + "\n  ".join(support.errors))
     if not isinstance(module, Module):
         raise ValueError(f"{module_name!r} is not a module")
     return module
@@ -202,9 +292,6 @@ _SEP_AFTER = r"(?![\\B\.])"
 _IDENT = r"[^\d\W]\w*"
 _ID_SEQ = re.compile(_SEP_BEFORE + "((?:" + _IDENT + r"\.)+)(" + _IDENT + r")\b" + _SEP_AFTER)
 
-# pybind11 native-enum value repr, e.g. ``<GameMode.ADVENTURE: 2>``.
-_ENUM_RE = re.compile(r"<(?P<enum>\w+(?:\.\w+)+): (?P<value>-?\d+)>")
-
 
 class StubGen:
     """Render one griffe ``Module`` to ``.pyi`` text.
@@ -250,6 +337,11 @@ class StubGen:
         if line and not line.isspace():
             self._output.write("    " * self.depth + line)
         self._output.write("\n")
+
+    def _replace_tail(self, num_chars: int, replacement: str) -> None:
+        self._output.seek(self._output.tell() - num_chars)
+        self._output.truncate()
+        self._output.write(replacement)
 
     def format_docstr(self, docstr: str, depth: int) -> str:
         # Always the expanded block form (ruff stub style).
@@ -415,22 +507,56 @@ class StubGen:
     # ---- functions ----
 
     def put_function(self, func: Function) -> None:
-        overloads = func.overloads or []
-        if overloads:
-            for overload in overloads:
-                self._need_from("typing", "overload")
-                self.write_ln("@overload")
-                self._put_single_func(overload)
+        if getattr(func, "_pybind11_signature_", None):
+            self.put_py_func(func)
         else:
-            self._put_single_func(func)
+            self._put_griffe_func(func)
 
-    def _put_single_func(self, func: Function) -> None:
-        labels = func.labels
-        if "staticmethod" in labels:
+    def put_py_func(self, func: Function) -> None:
+        sigs = func._pybind11_signature_
+        if len(sigs) == 1:
+            self.put_py_overload(func, sigs[0])
+            return
+        # Overloaded: keep a shared docstring only on its last occurrence.
+        last_idx: dict = {}
+        for i, s in enumerate(sigs):
+            if s[1] is not None:
+                last_idx[s[1]] = i
+        for i, s in enumerate(sigs):
+            if s[1] is not None and last_idx[s[1]] != i:
+                s = (s[0], None, s[2])
+            self._need_from("typing", "overload")
+            self.write_ln("@overload")
+            self.put_py_overload(func, s)
+
+    def put_py_overload(self, func: Function, sig: tuple) -> None:
+        sig_str, docstr = sig[0], sig[1]
+        if sig_str.startswith("def (") and func.name:
+            sig_str = "def " + func.name + sig_str[4:]
+        paren = sig_str.find("(")
+        sig_str = sig_str[:paren] + self.simplify(sig_str[paren:])
+        if "staticmethod" in func.labels:
             self.write_ln("@staticmethod")
-        if "classmethod" in labels:
+        if "classmethod" in func.labels:
             self.write_ln("@classmethod")
+        for line in sig_str.split("\n"):
+            self.write_ln(line)
+        if not docstr or not self.include_docstrings:
+            self._replace_tail(1, ": ...\n")
+        else:
+            self._replace_tail(1, ":\n")
+            self.depth += 1
+            self.put_docstr(docstr)
+            self.depth -= 1
+        self.write("\n")
 
+    def _put_griffe_func(self, func: Function) -> None:
+        # Non-pybind functions (e.g. inherited buffer-protocol slots) whose
+        # signature griffe recovered via inspect.signature.
+        if "staticmethod" in func.labels:
+            self.write_ln("@staticmethod")
+        if "classmethod" in func.labels:
+            self.write_ln("@classmethod")
         sig = self._signature_str(func)
         docstr = func.docstring.value if func.docstring else None
         if docstr and self.include_docstrings:
@@ -444,11 +570,7 @@ class StubGen:
 
     def _signature_str(self, func: Function) -> str:
         params = list(func.parameters)
-        # No signature recovered (pybind11 hides it in the docstring).
-        if not params:
-            inner = "*args, **kwargs"
-        else:
-            inner = self._params_str(params)
+        inner = self._params_str(params) if params else "*args, **kwargs"
         ret = self.type_str(func.returns) if func.returns is not None else self.any_type()
         return f"({inner}) -> {ret}"
 
@@ -494,12 +616,12 @@ class StubGen:
         setter = getattr(attr, "setter", None)
         if setter is not None:
             self.write_ln(f"@{attr.name}.setter")
-            self._put_single_func(setter)
+            self.put_function(setter)
 
         deleter = getattr(attr, "deleter", None)
         if deleter is not None:
             self.write_ln(f"@{attr.name}.deleter")
-            self._put_single_func(deleter)
+            self.put_function(deleter)
 
     # ---- values / attributes ----
 
