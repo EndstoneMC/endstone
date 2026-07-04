@@ -14,6 +14,10 @@
 
 #pragma once
 
+#include <memory>
+
+#include "bedrock/core/utility/basic_timer.h"
+#include "bedrock/forward.h"
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
@@ -40,7 +44,7 @@ public:
     [[nodiscard]] bool isClientSide() const override;
 
 private:
-    void *save_timer_;                                                              // +784 (+552)
+    std::unique_ptr<BasicTimer> save_timer_;                                        // +784 (+552)
     LevelStorage *level_storage_;                                                   // +792 (+560)
     bool is_dirty_;                                                                 // +800 (+568)
     Bedrock::NotNullNonOwnerPtr<GameplayUserManager> gameplay_user_manager_;        // +808 (+576)

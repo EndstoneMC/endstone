@@ -73,7 +73,7 @@ protected:
     float amount_;
     AttributeBuffType type_;
     std::shared_ptr<ActorDamageSource> source_;
-    std::optional<HurtEffectsSettings> hurt_effects_settings_;  // new in 1.26.32
+    std::optional<HurtEffectsSettings> hurt_effects_settings_;
     std::shared_ptr<Amplifier> value_amplifier_;
     std::shared_ptr<Amplifier> duration_amplifier_;
     float scale_;

@@ -125,8 +125,6 @@ public:
     BlockType(const std::string &, int, const Material &);
 
     virtual ~BlockType() = default;
-    // 1.26.32: newBlockEntity removed from vtable
-    // [[nodiscard]] virtual std::shared_ptr<BlockActor> newBlockEntity(BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual Block const *getNextBlockPermutation(Block const &) const = 0;
     bool hasTag(const HashedString &) const;
     bool hasTag(const HashType64 &) const;
@@ -366,7 +364,7 @@ private:
     std::string creative_group_;        // +312
     float thickness_;                   // +344
     float translucency_;                // +348
-    std::uint8_t unknown_352_;          // +352  TODO: 1-byte enum (0/1/2/4, liquid=2); maybe creative_item_category_?
+    SharedTypes::CreativeItemCategory creative_category_;  // +352
     BlockActorType block_entity_type_;  // +353
     BlockRenderLayer render_layer_;     // +354
     bool fancy_ : 1;

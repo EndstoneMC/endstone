@@ -14,9 +14,11 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 
 #include "bedrock/core/container/enum_set.h"
+#include "bedrock/forward.h"
 #include "bedrock/safety/redactable_string.h"
 #include "bedrock/world/actor/actor_terrain_interlock_data.h"
 #include "bedrock/world/item/save_context.h"
@@ -45,6 +47,6 @@ public:
 protected:
     BlockPos position_;          // +8
     const BlockActorType type_;  // +20
-    void *dynamic_properties_;   // +24  TODO: real type (saved as "minecraft:block_entity_dynamic_properties")
+    std::unique_ptr<BlockActorDynamicPropertiesComponent> dynamic_properties_;  // +24
 };
 BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 32, 32);

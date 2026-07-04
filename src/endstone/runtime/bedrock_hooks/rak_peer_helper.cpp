@@ -157,7 +157,6 @@ struct ShadowBanList {};
     throw std::runtime_error(std::string("RakNet::RakPeer::") + name + " is a link stub and must never be called");
 }
 
-// RakPeer's vtable still emits slots for these Mojang overrides (BDS 1.26.30); only the real BDS RakPeer runs.
 void RakNet::RakPeer::InitializeConfiguration(std::unique_ptr<RakNet::ShadowBanList>)
 {
     rakPeerLinkStub("InitializeConfiguration");

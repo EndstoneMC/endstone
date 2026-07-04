@@ -33,7 +33,6 @@ public:
     void setCause(ActorDamageCause cause);
     [[nodiscard]] const std::string &getDeathMessageOverride() const;
     void setDeathMessageOverride(const std::string &death_message_override);
-    // 1.26.32: de-virtualized; now a non-virtual wrapper that calls the virtual _getDeathMessageInternal
     [[nodiscard]] std::pair<std::string, std::vector<std::string>> getDeathMessage(const std::string &, Actor *) const;
 
     virtual ~ActorDamageSource() = default;
@@ -57,7 +56,6 @@ public:
     [[nodiscard]] virtual ActorType getDamagingEntityType() const;
     [[nodiscard]] virtual ActorCategory getDamagingEntityCategories() const;
     [[nodiscard]] virtual std::unique_ptr<ActorDamageSource> clone() const;
-    // 1.26.32: new virtual appended after clone; getDeathMessage() dispatches here
     [[nodiscard]] virtual std::pair<std::string, std::vector<std::string>> _getDeathMessageInternal(
         const std::string &, Actor *) const;
 

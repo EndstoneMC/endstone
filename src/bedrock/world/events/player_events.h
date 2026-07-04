@@ -277,9 +277,6 @@ struct PlayerGameplayEvent<void>
           PlayerInputPermissionCategoryChangeEvent> {};
 static_assert(sizeof(PlayerGameplayEvent<void>) == 384);
 
-// 1.26.32: four command-event alternatives inserted after PlayerSayCommandEvent. They are
-// non-size-drivers (the variant size is driven by PlayerInteractWithBlockBeforeEvent), so they are
-// modeled as empty placeholders — Endstone doesn't handle them and the visitor matches by type.
 struct PlayerTellCommandEvent {};
 struct PlayerTellRawCommandEvent {};
 struct PlayerTitleCommandEvent {};

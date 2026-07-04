@@ -36,6 +36,7 @@
 #include "bedrock/server/commands/minecraft_commands.h"
 #include "bedrock/server/deny_list.h"
 #include "bedrock/server/server_player.h"
+#include "bedrock/server/server_player_loader.h"
 #include "bedrock/server/server_text_settings.h"
 #include "bedrock/world/events/server_network_events.h"
 #include "bedrock/world/game_callbacks.h"
@@ -106,7 +107,7 @@ protected:
 private:
     GameCallbacks &callbacks_;  // +144
     Bedrock::NonOwnerPointer<ILevel> level_;
-    Bedrock::NonOwnerPointer<void *> unknown_176_;  // +176, new in 1.26.32
+    ServerPlayerLoader player_loader_;  // +176
     ServerNetworkSystem &network_;                  // +200
     PrivateKeyManager &server_keys_;
     ServerLocator &server_locator_;

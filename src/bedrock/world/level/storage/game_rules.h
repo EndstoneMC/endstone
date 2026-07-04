@@ -35,7 +35,6 @@ public:
         Float = 3,
     };
 
-    // std::monostate stands in for the empty cereal::NullType (layout-identical)
     using Value = std::variant<std::monostate, bool, int, float>;
 
     using TagDataNotFoundCallback = std::function<void(GameRule &, const BaseGameVersion &, const CompoundTag &)>;
