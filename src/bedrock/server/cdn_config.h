@@ -28,5 +28,6 @@ public:
 private:
     void _readConfigFile(const Core::Path &);
     std::vector<std::pair<std::string, std::string>> pack_cdn_urls_;
+    Core::Path path_;
 };
-static_assert(sizeof(CDNConfig) == 48);
+static_assert(sizeof(CDNConfig) == 80);
