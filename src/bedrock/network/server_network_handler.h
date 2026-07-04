@@ -125,7 +125,7 @@ private:
     Bedrock::NonOwnerPointer<TextFilteringProcessor> text_filtering_processor_;
     std::unique_ptr<ClientBlobCache::Server::ActiveTransfersManager> client_cache_manager_;
     std::unordered_map<std::uint64_t, std::string> server_storage_for_clients_connecting_attempt_;
-    std::unordered_map<std::string, NonceWithTTL> player_nonces_;
+    std::unordered_map<std::string, Social::Nonce> player_nonces_;
     std::unique_ptr<ClassroomModeNetworkHandler> companion_handler_;
     Bedrock::Threading::Mutex validate_player_mutex_;
     bool allow_incoming_;

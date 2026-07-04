@@ -14,10 +14,15 @@
 
 #pragma once
 
+#include <memory>
+
+#include "bedrock/core/utility/pub_sub/publisher.h"
+#include "bedrock/forward.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/events/script_deferred_event_listener.h"
 
 class ScriptDeferredEventCoordinator : public EventCoordinatorPimpl<ScriptDeferredEventListener> {
-    // std::unique_ptr<Bedrock::PubSub::Publisher<void(ScriptDeferredFlushTracker &)>>
-    void *flush_coroutine_publisher_;
+    std::unique_ptr<
+        Bedrock::PubSub::Publisher<void(ScriptDeferredFlushTracker &), Bedrock::PubSub::ThreadModel::MultiThreaded>>
+        flush_coroutine_publisher_;
 };
