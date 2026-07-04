@@ -30,7 +30,7 @@ class Item;
 class ItemRegistryRef;
 
 struct ItemLoaderTraits {
-    struct Loader;
+    struct Loader {};
 };
 
 enum class ItemVersion : int {

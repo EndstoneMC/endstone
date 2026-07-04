@@ -57,7 +57,7 @@ public:
     [[nodiscard]] virtual Material const &getMaterial(BlockPos const &) const = 0;
     [[nodiscard]] virtual Material const &getMaterial(int, int, int) const = 0;
     [[nodiscard]] virtual bool hasBorderBlock(BlockPos) const = 0;
-    virtual void bedrock_1_26_32_block_source_v15() = 0;
+    [[nodiscard]] virtual bool hasChunk(ChunkPos const &, bool) const = 0;
     [[nodiscard]] virtual bool hasChunksAt(Bounds const &, bool) const = 0;
     [[nodiscard]] virtual bool hasChunksAt(BlockPos const &, int, bool) const = 0;
     [[nodiscard]] virtual bool hasChunksAt(AABB const &, bool) const = 0;

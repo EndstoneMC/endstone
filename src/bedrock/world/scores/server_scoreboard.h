@@ -16,7 +16,6 @@
 
 #include <memory>
 
-#include "bedrock/core/utility/basic_timer.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/storage/level_storage.h"
