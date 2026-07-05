@@ -28,4 +28,8 @@ constexpr int TicksPerMinute = TicksPerSecond * 60;
 constexpr int TotalTrialTicks = TicksPerMinute * 90;
 constexpr uint8_t NetworkMaxSubClients = 4;
 constexpr int NetworkDefaultMaxConnections = 200;  // Endstone: 40 -> 200
+constexpr int MajorVersion = 1;
+constexpr int MinorVersion = 26;
+constexpr int PatchVersion = 32;
+constexpr int NetworkProtocolVersion = 1001;
 }  // namespace SharedConstants

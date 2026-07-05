@@ -30,6 +30,7 @@ pybind11_add_module(_python MODULE
         util.cpp
 )
 target_link_libraries(_python PRIVATE endstone::endstone pybind11::module)
+target_include_directories(_python PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_compile_definitions(_python PUBLIC PYBIND11_DETAILED_ERROR_MESSAGES)
 
 if (WIN32)
