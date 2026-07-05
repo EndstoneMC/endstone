@@ -22,6 +22,3 @@ tools.cmake.cmaketoolchain:generator=Ninja
 tools.build:compiler_executables={"c": "clang-cl", "cpp": "clang-cl"}
 sentry-native/*:tools.build:compiler_executables={"c": "cl", "cpp": "cl"}
 {% endif %}
-
-[tool_requires]
-ninja/[*]
