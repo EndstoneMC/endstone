@@ -1,0 +1,48 @@
+sources:
+  "4.081":
+    url: "https://github.com/facebookarchive/RakNet/archive/1a169895a900c9fc4841c556e16514182b75faf8.tar.gz"
+    sha256: "79d42a4daef9201ba93a4204257d740ffa6d225e37805b8a3b915c350b721144"
+  "4.081-mojang":
+    url: "https://github.com/facebookarchive/RakNet/archive/1a169895a900c9fc4841c556e16514182b75faf8.tar.gz"
+    sha256: "79d42a4daef9201ba93a4204257d740ffa6d225e37805b8a3b915c350b721144"
+
+patches:
+  "4.081":
+    - patch_file: "patches/4.081-fix-gettimeofday-include.patch"
+      patch_description: "Fix malformed `#include < time.h >` (spaces inside angle brackets) that modern preprocessors reject."
+      patch_type: "portability"
+    - patch_file: "patches/4.081-linux-portability.patch"
+      patch_description: "Add <netdb.h> and LinuxStrings.h to the POSIX socket include block (getaddrinfo, hostent, _stricmp shim)."
+      patch_type: "portability"
+    - patch_file: "patches/4.081-enable-ipv6.patch"
+      patch_description: "Enable RAKNET_SUPPORT_IPV6"
+      patch_type: "conan"
+    - patch_file: "patches/4.081-disable-plugins.patch"
+      patch_description: "Disable all optional RakNet plugins"
+      patch_type: "conan"
+  "4.081-mojang":
+    - patch_file: "patches/4.081-fix-gettimeofday-include.patch"
+      patch_description: "Fix malformed `#include < time.h >` (spaces inside angle brackets) that modern preprocessors reject."
+      patch_type: "portability"
+    - patch_file: "patches/4.081-linux-portability.patch"
+      patch_description: "Add <netdb.h> and LinuxStrings.h to the POSIX socket include block (getaddrinfo, hostent, _stricmp shim)."
+      patch_type: "portability"
+    - patch_file: "patches/4.081-enable-ipv6.patch"
+      patch_description: "Enable RAKNET_SUPPORT_IPV6"
+      patch_type: "conan"
+    - patch_file: "patches/4.081-disable-plugins.patch"
+      patch_description: "Disable all optional RakNet plugins"
+      patch_type: "conan"
+    - patch_file: "patches/4.081-mojang-define-overrides.patch"
+      patch_description: "Mojang RakNet define overrides (protocol version 11, 20 internal IDs, MTU 1600)"
+      patch_type: "conan"
+
+mojang_vtable_patches:
+  "r26u2":
+    patch_file: "patches/4.081-mojang-rakpeer-vtable-r26u2.patch"
+    patch_description: "Mojang RakPeerInterface vtable for BDS 1.26.20 (r26u2)"
+    patch_type: "conan"
+  "r26u3":
+    patch_file: "patches/4.081-mojang-rakpeer-vtable-r26u3.patch"
+    patch_description: "Mojang RakPeerInterface vtable + RakPeer member layout for BDS 1.26.30 (r26u3); 7 virtuals removed vs r26u2, shadowBanList placeholder aligns rakPeerMutexes at +656 (offlinePingResponse_Mutex +696)"
+    patch_type: "conan"

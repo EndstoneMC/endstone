@@ -40,6 +40,7 @@ public:
     [[nodiscard]] virtual std::shared_ptr<ResourcePack> getVanillaPack() const = 0;
     virtual bool setServicePacks(std::vector<PackIdVersion>) = 0;
     virtual void addServicePacksToStack(ResourcePackStack &) const = 0;
+    virtual void addSystemPacksToStack(ResourcePackStack &) const = 0;
     virtual void addCachedResourcePacks(ContentKeyMap const *) = 0;
     virtual void addWorldResourcePacks(Core::Path const &) = 0;
     virtual void addPremiumWorldTemplateResourcePacks(Core::Path const &, ContentIdentity const &) = 0;
@@ -56,6 +57,8 @@ public:
     [[nodiscard]] virtual Core::HeapPathBuffer getDevelopmentBehaviorPacksPath() const = 0;
     [[nodiscard]] virtual Core::HeapPathBuffer getDevelopmentSkinPacksPath() const = 0;
     [[nodiscard]] virtual Core::HeapPathBuffer getTreatmentPacksPath() const = 0;
+    [[nodiscard]] virtual Core::HeapPathBuffer getSystemResourcePacksPath() const = 0;
+    [[nodiscard]] virtual Core::HeapPathBuffer getSystemBehaviorPacksPath() const = 0;
     virtual void refreshPacks() = 0;
     virtual Bedrock::Threading::Async<void> refreshPacksAsync() = 0;
     virtual void requestReloadUserPacks() = 0;

@@ -14,10 +14,22 @@
 
 #include "endstone/core/command/defaults/ban_ip_command.h"
 
+// suppress the min/max macros and Win32 surface that <SocketIncludes.h> drags in via <windows.h>
+#ifdef _WIN32
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#endif
+
+#include <SocketIncludes.h>
+
 #include <string>
 #include <vector>
 
-#include "bedrock/deps/raknet/socket_includes.h"
+#include "endstone/core/player.h"
 #include "endstone/core/server.h"
 
 namespace endstone::core {

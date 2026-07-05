@@ -1,12 +1,14 @@
 import os
+import sys
 
 from conan import ConanFile
 from conan.errors import ConanInvalidConfiguration
 from conan.tools.build import check_min_cppstd
-from conan.tools.cmake import CMakeDeps, CMakeToolchain, cmake_layout
+from conan.tools.cmake import CMake, CMakeDeps, CMakeToolchain, cmake_layout
 
 
 class EndstoneRecipe(ConanFile):
+    build_policy = "never"
     name = "endstone"
     package_type = "library"
     license = "Apache-2.0"
@@ -22,6 +24,7 @@ class EndstoneRecipe(ConanFile):
         "fPIC": True,
         "boost/*:header_only": True,
         "date/*:header_only": True,
+        "raknet/*:minecraft_version": "r26u3",
     }
 
     exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*"
@@ -60,6 +63,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("ms-gsl/4.2.0")
         self.requires("nlohmann_json/3.12.0")
         self.requires("pybind11/3.0.1")
+        self.requires("raknet/4.081-mojang")
         self.requires("replxx/0.0.4")
         self.requires("sentry-native/0.14.0")
         self.requires("spdlog/1.15.3")
@@ -102,4 +106,17 @@ class EndstoneRecipe(ConanFile):
             tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = True
         sentry_bin = os.path.join(self.dependencies["sentry-native"].package_folder, "bin")
         tc.variables["SENTRY_NATIVE_BIN_DIR"] = sentry_bin.replace("\\", "/")
+        # Pin pybind11's Python search to the interpreter running conan-py-build
+        python_root = sys.base_exec_prefix.replace("\\", "/")
+        tc.variables["Python_ROOT_DIR"] = python_root
+        tc.variables["Python3_ROOT_DIR"] = python_root
         tc.generate()
+
+    def build(self):
+        cmake = CMake(self)
+        cmake.configure()
+        cmake.build()
+
+    def package(self):
+        cmake = CMake(self)
+        cmake.install(component="endstone_wheel")

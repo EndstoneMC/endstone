@@ -27,7 +27,8 @@
 void BedrockLog::LogDetails::_log_va(LogAreaID area, unsigned int priority, const char * /*function*/, int /*line*/,
                                      MessasgeId /*message_id*/, const char *format, va_list args)
 {
-    if ((area == LogAreaID::Database || area == LogAreaID::System) && priority <= Bedrock::LogLevel::Info) {
+    if ((area == LogAreaID::Database || area == LogAreaID::System) &&
+        priority <= static_cast<unsigned int>(Bedrock::LogLevel::Type::Info)) {
         // Suppress logs from DBStorage and from ContentLog with unknown area (mapped to System)
         return;
     }
@@ -35,16 +36,16 @@ void BedrockLog::LogDetails::_log_va(LogAreaID area, unsigned int priority, cons
     static auto &logger = endstone::core::LoggerFactory::getLogger("");
     endstone::Logger::Level log_level;
     switch (priority) {
-    case Bedrock::LogLevel::Verbose:
+    case static_cast<unsigned int>(Bedrock::LogLevel::Type::Verbose):
         log_level = endstone::Logger::Level::Debug;
         break;
-    case Bedrock::LogLevel::Info:
+    case static_cast<unsigned int>(Bedrock::LogLevel::Type::Info):
         log_level = endstone::Logger::Level::Info;
         break;
-    case Bedrock::LogLevel::Warning:
+    case static_cast<unsigned int>(Bedrock::LogLevel::Type::Warning):
         log_level = endstone::Logger::Level::Warning;
         break;
-    case Bedrock::LogLevel::Error:
+    case static_cast<unsigned int>(Bedrock::LogLevel::Type::Error):
         log_level = endstone::Logger::Level::Error;
         break;
     default:

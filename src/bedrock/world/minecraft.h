@@ -65,10 +65,10 @@ private:
     std::unique_ptr<DefaultCommandsContextProvider> default_commands_context_provider_;
     std::unique_ptr<MinecraftCommands> commands_;
     std::unique_ptr<GameSession> game_session_;
-    void *game_test_level_listener_;
-    void *game_test_;
-    void *sim_timer_;
-    void *real_timer_;
+    std::unique_ptr<GameTestLevelListener> game_test_level_listener_;
+    std::unique_ptr<MinecraftGameTest> game_test_;
+    Timer &sim_timer_;
+    Timer &real_timer_;
     ClientOrServerNetworkSystemRef network_;
     PacketSender *packet_sender_;
     SubClientId client_sub_id_;

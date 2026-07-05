@@ -1,0 +1,19 @@
+POSIX socket include fixes
+
+Add <netdb.h> and "LinuxStrings.h" to the POSIX include block in
+SocketIncludes.h. This makes getaddrinfo()/freeaddrinfo()/hostent and the
+_stricmp shim available to every TU that ultimately pulls in this header,
+which covers both RakNetTypes.cpp (IPv6 FromString path) and
+RakNetSocket2.cpp (which inlines all the *_Berkley*.cpp implementations).
+
+--- a/Source/SocketIncludes.h
++++ b/Source/SocketIncludes.h
+@@ -58,6 +58,8 @@
+ 	#include <arpa/inet.h>
+ 	#include <unistd.h>
+ 	#include <fcntl.h>
++	#include <netdb.h>
++	#include "LinuxStrings.h"
+
+ 	#ifdef __native_client__
+ 		#include "ppapi/cpp/private/net_address_private.h"

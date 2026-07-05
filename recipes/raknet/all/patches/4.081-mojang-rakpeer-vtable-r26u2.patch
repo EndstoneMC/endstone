@@ -1,0 +1,92 @@
+Mojang RakPeerInterface vtable additions
+
+--- a/Source/RakPeerInterface.h
++++ b/Source/RakPeerInterface.h
+@@ -24,6 +24,7 @@
+ #include "DS_List.h"
+ #include "RakNetSmartPtr.h"
+ #include "RakNetSocket2.h"
++#include <memory>
+ 
+ namespace RakNet
+ {
+@@ -35,6 +36,12 @@
+ struct RakNetBandwidth;
+ class RouterInterface;
+ class NetworkIDManager;
++struct ShadowBanList;
++struct NetworkAdapter;
++
++struct RakPeerConfiguration {
++	bool useJoinfloodProtection;
++};
+ 
+ /// The primary interface for RakNet, RakPeer contains all major functions for the library.
+ /// See the individual functions for what the class can do.
+@@ -47,6 +54,7 @@
+ 
+ 	///Destructor
+ 	virtual ~RakPeerInterface()	{}
++	virtual void InitializeConfiguration(std::unique_ptr<ShadowBanList>)=0;
+ 
+ 	// --------------------------------------------------------------------------------------------Major Low Level Functions - Functions needed by most users--------------------------------------------------------------------------------------------
+ 	/// \brief Starts the network threads, opens the listen port.
+@@ -163,6 +171,7 @@
+ 	/// \param[in] disconnectionNotificationPriority Priority to send ID_DISCONNECTION_NOTIFICATION on.
+ 	/// If you set it to 0 then the disconnection notification won't be sent
+ 	virtual void Shutdown( unsigned int blockDuration, unsigned char orderingChannel=0, PacketPriority disconnectionNotificationPriority=LOW_PRIORITY )=0;
++	virtual bool SetApplicationHandshakeCompleted(AddressOrGUID)=0;
+ 
+ 	/// Returns if the network thread is running
+ 	/// \return true if the network thread is running, false otherwise
+@@ -330,6 +339,7 @@
+ 	/// \param[in] connectionSocketIndex Index into the array of socket descriptors passed to socketDescriptors in RakPeer::Startup() to send on.
+ 	/// \return true on success, false on failure (unknown hostname)
+ 	virtual bool Ping( const char* host, unsigned short remotePort, bool onlyReplyOnAcceptingConnections, unsigned connectionSocketIndex=0 )=0;
++	virtual void SendNatTraversalMessage(const SystemAddress)=0;
+ 
+ 	/// Returns the average of all ping times read for the specific system or -1 if none read yet
+ 	/// \param[in] systemAddress Which system we are referring to
+@@ -357,6 +367,8 @@
+ 	/// Returns 0 if the system is unknown
+ 	/// \param[in] systemIdentifier Which system we are referring to
+ 	virtual RakNet::Time GetClockDifferential( const AddressOrGUID systemIdentifier )=0;
++	virtual void SetAllowUnconnectedPings(bool)=0;
++	virtual bool GetAllowUnconnectedPings(void) const=0;
+ 
+ 	// --------------------------------------------------------------------------------------------Static Data Functions - Functions dealing with API defined synchronized memory--------------------------------------------------------------------------------------------
+ 	/// Sets the data to send along with a LAN server discovery or offline ping reply.
+@@ -392,6 +404,7 @@
+ 
+ 	/// Return my own GUID
+ 	virtual const RakNetGUID GetMyGUID(void) const=0;
++	virtual void resetMyGUID(void)=0;
+ 
+ 	/// Return the address bound to a socket at the specified index
+ 	virtual SystemAddress GetMyBoundAddress(const int socketIndex=0)=0;
+@@ -436,6 +449,8 @@
+ 	/// \param[in] target Which system to get this for.  UNASSIGNED_SYSTEM_ADDRESS to get the default
+ 	/// \return The current MTU size
+ 	virtual int GetMTUSize( const SystemAddress target ) const=0;
++	virtual unsigned int GetNumberOfAdapters(void)=0;
++	virtual NetworkAdapter& GetLocalAdapter(unsigned int)=0;
+ 
+ 	/// Returns the number of IP addresses this system has internally. Get the actual addresses from GetLocalIP()
+ 	virtual unsigned GetNumberOfAddresses( void )=0;
+--- a/Source/RakPeer.h
++++ b/Source/RakPeer.h
+@@ -62,6 +62,14 @@
+ 
+ 	///Destructor
+ 	virtual ~RakPeer();
++	void InitializeConfiguration(std::unique_ptr<ShadowBanList>);
++	bool SetApplicationHandshakeCompleted(AddressOrGUID);
++	void SendNatTraversalMessage(const SystemAddress);
++	void SetAllowUnconnectedPings(bool);
++	bool GetAllowUnconnectedPings(void) const;
++	void resetMyGUID(void);
++	unsigned int GetNumberOfAdapters(void);
++	NetworkAdapter& GetLocalAdapter(unsigned int);
+ 
+ 	// --------------------------------------------------------------------------------------------Major Low Level Functions - Functions needed by most users--------------------------------------------------------------------------------------------
+ 	/// \brief Starts the network threads and opens the listen port.

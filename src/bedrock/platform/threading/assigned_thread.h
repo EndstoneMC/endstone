@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <atomic>
 #include <thread>
 
 #include "bedrock/bedrock.h"
@@ -25,7 +26,10 @@ public:
     [[nodiscard]] bool isOnThread() const;
 
 private:
+    static const std::size_t MAX_CHILDREN = 8;
     std::thread::id assigned_id_;
+    AssignedThread *children_[MAX_CHILDREN];
+    std::atomic<std::size_t> child_count_;
 };
 
 }  // namespace Bedrock::Threading

@@ -14,9 +14,11 @@
 
 #pragma once
 
+#include <cstdint>
+
 namespace SharedTypes {
 
-enum class CreativeItemCategory : int {
+enum class CreativeItemCategory : std::uint8_t {
     All = 0,
     Construction = 1,
     Nature = 2,

@@ -1,0 +1,19 @@
+Mojang RakNet define overrides (protocol version 11, 20 internal IDs, MTU 1600)
+
+--- a/Source/RakNetDefinesOverrides.h
++++ b/Source/RakNetDefinesOverrides.h
+@@ -9,4 +9,6 @@
+  */
+ 
+ // USER EDITABLE FILE
++#define MAXIMUM_NUMBER_OF_INTERNAL_IDS 20
++#define MAXIMUM_MTU_SIZE 1600
+ 
+--- a/Source/RakNetVersion.h
++++ b/Source/RakNetVersion.h
+@@ -16,4 +16,4 @@
+ 
+ // What compatible protocol version RakNet is using. When this value changes, it indicates this version of RakNet cannot connection to an older version.
+ // ID_INCOMPATIBLE_PROTOCOL_VERSION will be returned on connection attempt in this case
+-#define RAKNET_PROTOCOL_VERSION 6
++#define RAKNET_PROTOCOL_VERSION 11

@@ -1,15 +1,7 @@
 name: 'Set up Conan'
-description: 'Install Conan and optionally run `conan install` for the given build type.'
+description: 'Install Conan and optionally run `conan install` using the repo default profile.'
 
 inputs:
-  build-type:
-    description: 'CMake build type (Release, Debug, RelWithDebInfo)'
-    required: false
-    default: 'Release'
-  profile:
-    description: 'Conan profile name. Empty auto-picks from runner.os.'
-    required: false
-    default: ''
   python-version:
     description: 'Python version to set up'
     required: false
@@ -38,12 +30,4 @@ runs:
       if: inputs.install-dependencies == 'true'
       shell: bash
       run: |
-        profile="${{ inputs.profile }}"
-        if [ -z "$profile" ]; then
-          case "$RUNNER_OS" in
-            Linux)   profile=linux ;;
-            Windows) profile=windows ;;
-            *) echo "::error::No tracked profile for RUNNER_OS=$RUNNER_OS" && exit 1 ;;
-          esac
-        fi
-        conan install . -pr:a "$profile" --build=missing -s build_type=${{ inputs.build-type }}
+        conan install . --build=missing

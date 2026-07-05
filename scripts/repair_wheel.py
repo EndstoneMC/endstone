@@ -1,3 +1,12 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#     "auditwheel==6.2.0",
+#     "patchelf>=0.14; sys_platform == 'linux'",
+#     "sentry-cli",
+# ]
+# ///
 import argparse
 import os
 import platform

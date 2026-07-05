@@ -14,9 +14,19 @@
 
 #pragma once
 
+#ifdef _WIN32
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+#endif
+
+#include <RakNetTypes.h>
+#include <RakPeerInterface.h>
+
 #include "bedrock/bedrock.h"
-#include "bedrock/deps/raknet/rak_peer_interface.h"
-#include "bedrock/deps/raknet/raknet_types.h"
 #include "bedrock/network/connection_definition.h"
 
 class RakPeerHelper {

@@ -15,9 +15,11 @@
 #pragma once
 
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/cerealize/core/serialization_mode.h"
 #include "bedrock/network/packet/types/world/actor/serialized_abilities_data.h"
 
 class UpdateAbilitiesPacket : public Packet {
 public:
     SerializedAbilitiesData data;
+    SerializationMode serialization_mode{SerializationMode::CerealOnly};
 };

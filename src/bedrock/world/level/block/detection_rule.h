@@ -36,4 +36,5 @@ struct DetectionRule {
     BlockedDirections stop_flow_directions;
     LiquidReaction on_liquid_touches;
     LiquidType liquid_type;
+    bool clip_against_collider;
 };

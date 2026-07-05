@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/world/level/block/actor/block_actor.h"
+#include "bedrock/world/level/block/actor/vanilla_block_actor.h"
 
 enum class PistonState : char {
     Retracted = 0,
@@ -23,14 +23,14 @@ enum class PistonState : char {
     Retracting = 3,
 };
 
-class PistonBlockActor : public BlockActor {
+class PistonBlockActor : public VanillaBlockActor {
 public:
     ENDSTONE_HOOK void tick(BlockSource &region) override;
 
 private:
     void _tryFixupStickyPistonArm(BlockSource &region);
 
-    bool sticky_;  // +184
+    bool sticky_;  // +224
     float progress_;
     float last_progress_;
     bool was_pushed_backward_by_a_non_sticky_piston_;
@@ -39,7 +39,7 @@ private:
     PistonState state_;
     PistonState new_state_;
     bool verify_arm_;
-    bool should_verify_arm_type_;  // +202
+    bool should_verify_arm_type_;
     std::vector<BlockPos> attached_blocks_;
     std::optional<std::vector<BlockPos>> future_client_attached_blocks_;
     std::vector<BlockPos> break_blocks_;

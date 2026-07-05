@@ -33,16 +33,17 @@ EndstoneLevel::EndstoneLevel(::Level &level) : server_(EndstoneServer::getInstan
     level.getOrCreateDimension(VanillaDimensions::Overworld);
     level.getOrCreateDimension(VanillaDimensions::Nether);
     level.getOrCreateDimension(VanillaDimensions::TheEnd);
-    auto add_dimension = [this](::Dimension &dimension) {
-        dimensions_[dimension.getDimensionId().value] =
-            std::make_unique<EndstoneDimension>(dimension.getWeakRef(), *this);
-    };
     level.forEachDimension([&](::Dimension &dimension) {
-        add_dimension(dimension);
+        addDimension(dimension);
         return true;
     });
     level.getDimensionManager().getOnNewDimensionCreatedConnector().connect(
-        [&](::Dimension &dimension) { add_dimension(dimension); }, Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
+        [&](::Dimension &dimension) { addDimension(dimension); }, Bedrock::PubSub::ConnectPosition::AtBack, nullptr);
+}
+
+void EndstoneLevel::addDimension(::Dimension &dimension)
+{
+    dimensions_[dimension.getDimensionId().value] = std::make_unique<EndstoneDimension>(dimension.getWeakRef(), *this);
 }
 
 std::string EndstoneLevel::getName() const

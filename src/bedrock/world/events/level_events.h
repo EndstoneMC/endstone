@@ -58,13 +58,7 @@ struct LevelWeatherChangedEvent {
     int rain_time;
     int lightning_time;
 };
-struct ScriptingWorldInitializeEvent {
-    Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptPropertyRegistry> registry;
-    Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptBlockComponentRegistry> block_component_registry;
-    Scripting::StrongTypedObjectHandle<ScriptModuleMinecraft::ScriptItemComponentRegistry> item_component_registry;
-    Scripting::WeakLifetimeScope scope;
-    bool final_event;
-};
+struct ScriptingWorldInitializeEvent {};
 struct LevelTickingAreaFinishedLoadingEvent {
     mce::UUID id;
 };

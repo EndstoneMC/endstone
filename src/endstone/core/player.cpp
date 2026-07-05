@@ -14,13 +14,15 @@
 
 #include "endstone/core/player.h"
 
+#include <RakPeerInterface.h>
+
 #include <magic_enum/magic_enum.hpp>
 #include <nlohmann/json.hpp>
 
-#include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/clientbound_map_item_data_packet.h"
+#include "bedrock/network/packet/correct_player_move_prediction_packet.h"
 #include "bedrock/network/packet/emote_packet.h"
 #include "bedrock/network/packet/mob_equipment_packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
@@ -36,10 +38,12 @@
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/build_platform.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/actor/provider/actor_offset.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/block/block.h"
 #include "endstone/color_format.h"
 #include "endstone/core/base64.h"
+#include "endstone/core/entity/components/flag_components.h"
 #include "endstone/core/form/form_codec.h"
 #include "endstone/core/game_mode.h"
 #include "endstone/core/inventory/item_stack.h"
@@ -56,6 +60,8 @@
 #include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_item_held_event.h"
 #include "endstone/event/player/player_join_event.h"
+#include "endstone/event/player/player_jump_event.h"
+#include "endstone/event/player/player_move_event.h"
 #include "endstone/event/player/player_skin_change_event.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
@@ -757,6 +763,58 @@ bool EndstonePlayer::handlePacket(Packet &packet)
             }
             ++it;
         }
+
+        auto &actor = getHandle();
+        const auto pos = actor.getPosition();
+        const auto rot = actor.getRotation();
+        const auto delta = pk.pos - pos;
+        const auto delta_angle = pk.rot - rot;
+        const auto on_ground = actor.isOnGround();
+
+        const Location from = getLocation();
+        const auto height_offset = ActorOffset::getHeightOffset(actor.getEntity());
+        const Location to{getDimension(), pk.pos.x, pk.pos.y - height_offset, pk.pos.z, pk.rot.x, pk.rot.y};
+
+        if (pk.getInput(PlayerAuthInputPacket::InputData::Jumping) && on_ground && delta.y > 0.0F) {
+            PlayerJumpEvent e{*this, from, to};
+            getServer().getPluginManager().callEvent(e);
+            if (e.isCancelled()) {
+                actor.addOrRemoveComponent<InternalTeleportFlagComponent>(true);
+                teleport(from);
+                return false;
+            }
+        }
+
+        // Prevent intensive event calls on tiny movement using the thresholds from Spigot
+        if (delta.lengthSquared() > 1.0F / 256 || delta_angle.lengthSquared() > 10.0F) {
+            PlayerMoveEvent e{*this, from, to};
+            getServer().getPluginManager().callEvent(e);
+            if (e.isCancelled()) {
+                if (delta_angle.lengthSquared() > 0.0F) {
+                    actor.addOrRemoveComponent<InternalTeleportFlagComponent>(true);
+                    teleport(from);
+                }
+                else {
+                    auto correction =
+                        MinecraftPackets::createPacket(MinecraftPacketIds::CorrectPlayerMovePredictionPacket);
+                    auto &payload = static_cast<CorrectPlayerMovePredictionPacket &>(*correction).payload;
+                    payload.pos = pos;
+                    payload.pos_delta = Vec3::ZERO;
+                    payload.vehicle_rotation = Vec2::ZERO;
+                    payload.vehicle_angular_velocity = std::nullopt;
+                    payload.tick = pk.client_tick;
+                    payload.on_ground = on_ground;
+                    payload.prediction_type = RewindType::Player;
+                    actor.sendNetworkPacket(*correction);
+                }
+                return false;
+            }
+            if (to != e.getTo()) {
+                actor.addOrRemoveComponent<InternalTeleportFlagComponent>(true);
+                teleport(e.getTo());
+                return false;
+            }
+        }
         return true;
     }
     default:
@@ -861,10 +919,9 @@ void EndstonePlayer::doFirstSpawn()
     updateCommands();
 }
 
-void EndstonePlayer::initFromConnectionRequest(
-    std::variant<std::reference_wrapper<const ::ConnectionRequest>,
-                 std::reference_wrapper<const ::SubClientConnectionRequest>>
-        request)
+void EndstonePlayer::initFromConnectionRequest(std::variant<std::reference_wrapper<const ::ConnectionRequest>,
+                                                            std::reference_wrapper<const ::SubClientConnectionRequest>>
+                                                   request)
 {
     std::visit(
         [&](auto &&ref) {

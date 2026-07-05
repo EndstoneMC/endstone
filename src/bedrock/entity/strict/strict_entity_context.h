@@ -15,7 +15,6 @@
 #pragma once
 
 #include "bedrock/entity/entity_id.h"
-#include "bedrock/entity/gamerefs_entity/entity_registry.h"
 
 class StrictEntityContext {
 public:
@@ -25,5 +24,4 @@ public:
 private:
     EntityId entity_id_;         // +0
     std::uint32_t registry_id_;  // +4
-    EntityRegistry *registry_;   // +8
 };

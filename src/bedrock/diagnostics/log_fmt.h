@@ -35,7 +35,7 @@ struct formatter<Bedrock::LogLevel> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Bedrock::LogLevel &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return fmt::format_to(ctx.out(), "{}", std::string(magic_enum::enum_name(val)));
+        return fmt::format_to(ctx.out(), "{}", std::string(magic_enum::enum_name(val.getType())));
     }
 };
 }  // namespace fmt

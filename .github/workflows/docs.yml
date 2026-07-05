@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - develop
     tags:
       - 'v*'
     paths:
@@ -43,7 +43,7 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install -r docs/requirements.txt
-      - if: github.ref == 'refs/heads/main'
+      - if: github.ref == 'refs/heads/develop'
         run: mike deploy --push latest
       - if: startsWith(github.ref, 'refs/tags/')
         run: |

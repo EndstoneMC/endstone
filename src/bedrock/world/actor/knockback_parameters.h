@@ -14,10 +14,21 @@
 
 #pragma once
 
+#include <cstdint>
+
+enum class ExtraKnockbackApproach : std::uint8_t {
+    ReapplyDefault = 0,
+    MultiplyReduced = 1,
+};
+
 struct KnockbackParameters {
     float horizontal_power;
     float vertical_power;
     float vertical_velocity_cap;
     float scale_previous_velocity;
     bool scale_with_damage;
+    bool slow_down_attacker;
+    bool check_legacy_pre_nether_update_knockback;
+    float extra_knockback_power;
+    ExtraKnockbackApproach extra_knockback_approach;
 };

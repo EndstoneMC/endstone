@@ -1,7 +1,6 @@
-extensions/*
+extensions/plugins/*
 migrations/*
 p/*
-profiles/default
 *.db
 global.conf
 settings.yml

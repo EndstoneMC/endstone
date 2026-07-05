@@ -14,7 +14,9 @@
 
 #pragma once
 
-enum class BossEventUpdateType :int{
+#include <cstdint>
+
+enum class BossEventUpdateType : std::uint8_t {
     Add = 0,
     PlayerAdded = 1,
     Remove = 2,
@@ -26,7 +28,7 @@ enum class BossEventUpdateType :int{
     Query = 8,
 };
 
-enum class BossBarColor :int {
+enum class BossBarColor : std::uint8_t {
     PINK = 0,
     BLUE = 1,
     RED = 2,
@@ -37,7 +39,7 @@ enum class BossBarColor :int {
     WHITE = 7,
 };
 
-enum class BossBarOverlay :int {
+enum class BossBarOverlay : std::uint8_t {
     PROGRESS = 0,
     NOTCHED_6 = 1,
     NOTCHED_10 = 2,

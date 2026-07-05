@@ -14,7 +14,9 @@
 
 #pragma once
 
-enum class Flip {
+#include <cstdint>
+
+enum class Flip : std::uint8_t {
     None = 0,
     RotateCW = 1,
     RotateCCW = 2,

@@ -108,7 +108,7 @@ void LeavesBlock::_die(BlockSource &region, const BlockPos &pos) /*const*/
 
     auto &random = region.getLevel().getRandom();
     const auto &block = region.getBlock(pos);
-    block.spawnResources(region, pos, random, ResourceDropsContext::fromOtherCause(region, pos));
+    block.spawnResources(region, pos, random, ResourceDropsContext::fromOtherCause(region, pos), nullptr);
     const auto &air = static_cast<const endstone::core::EndstoneBlockType &>(
                           server.getRegistry<endstone::BlockType>().getOrThrow(endstone::BlockType::Air))
                           .getHandle()

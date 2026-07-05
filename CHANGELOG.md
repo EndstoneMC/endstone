@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added support for BDS version 1.26.32.
+
 ### Changed
 
 - **BREAKING**: Standalone bundles now ship for both Windows (`endstone-<version>-windows-x86_64.zip`) and Linux (`endstone-<version>-linux-x86_64.zip`), and use [uv](https://docs.astral.sh/uv/) to provision Python on demand instead of shipping a Python interpreter. The included `start.cmd` / `start.sh` installs uv on first run if it isn't already on `PATH`, then launches the server via `uv run` against the bundled wheel. The old `bin/python/` directory is gone; the server folder (`./bedrock_server/`) is unchanged.
@@ -17,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed a crash on startup when a behavior pack registered a custom command whose name contained non-ASCII characters, such as Turkish letters (#406).
 - Fixed a crash (`resource deadlock would occur`) when reloading the server or cancelling tasks while an asynchronous task scheduled with `run_task_timer_async`/`run_task_later_async` was pending. The plugin no longer fails to re-enable after `/reload` (#351).
 - Fixed scheduled tasks ignoring their delay when registered during plugin enable or `ServerLoadEvent` on a world that has already been played for a while — they now correctly wait for the requested delay instead of running immediately on the first tick (#317).
 

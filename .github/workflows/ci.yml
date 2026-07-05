@@ -8,11 +8,27 @@ on:
       - synchronize
       - reopened
       - ready_for_review
+    paths: &code-paths
+      - 'src/**'
+      - 'include/**'
+      - 'endstone/**'
+      - 'tests/**'
+      - 'recipes/**'
+      - 'scripts/**'
+      - 'CMakeLists.txt'
+      - 'conanfile.py'
+      - 'pyproject.toml'
+      - 'codecov.yml'
+      - '.conan2/**'
+      - '.conanrc'
+      - '.github/workflows/ci.yml'
+      - '.github/actions/**'
   push:
     branches:
       - main
       - develop
       - v*
+    paths: *code-paths
 
 permissions: read-all
 
@@ -57,12 +73,11 @@ jobs:
 
       - name: Build with CMake
         run: |
-          cd build/Release
-          cmake ../.. -G Ninja -DCMAKE_TOOLCHAIN_FILE="generators/conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=Release
-          cmake --build .
+          cmake --preset conan-relwithdebinfo
+          cmake --build --preset conan-relwithdebinfo
 
       - name: Run Tests
-        run: ctest --test-dir build/Release
+        run: ctest --preset conan-relwithdebinfo
 
   coverage:
     name: Coverage
@@ -82,32 +97,23 @@ jobs:
         uses: lukka/get-cmake@latest
 
       - name: Restore Conan cache
-        id: conan-cache
         uses: ./.github/actions/conan-cache/restore
-        with:
-          build-type: Debug
 
       - name: Set up Conan
         uses: ./.github/actions/setup-conan
         with:
-          build-type: Debug
+          install-dependencies: 'false'
+
+      - name: Install dependencies (Endstone=Debug, deps=Release)
+        run: conan install . --build=missing -s "&:build_type=Debug"
 
       - name: Build with CMake
         run: |
-          cd build/Debug
-          cmake ../.. -G Ninja -DCMAKE_TOOLCHAIN_FILE="generators/conan_toolchain.cmake" -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
-          cmake --build .
+          cmake --preset conan-debug -DCODE_COVERAGE=ON
+          cmake --build --preset conan-debug
 
       - name: Run Tests
-        run: ctest --test-dir build/Debug
-
-      - name: Save Conan cache
-        if: |
-          (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-          && steps.conan-cache.outputs.cache-hit != 'true'
-        uses: ./.github/actions/conan-cache/save
-        with:
-          build-type: Debug
+        run: ctest --preset conan-debug
 
       - name: Generate Coverage Report
         run: |
@@ -115,6 +121,6 @@ jobs:
           gcovr -r . --filter src/endstone_core/ --gcov-executable "llvm-cov gcov" --xml coverage.xml build/Debug
 
       - name: Upload Coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

@@ -15,9 +15,9 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
-#include "bedrock/world/level/block/actor/block_actor.h"
+#include "bedrock/world/level/block/actor/vanilla_block_actor.h"
 
-class FurnaceBlockActor : public BlockActor {
+class FurnaceBlockActor : public VanillaBlockActor {
 public:
     static float getBurnDuration(class ItemStackBase const &item_instance, float burn_interval);
 };

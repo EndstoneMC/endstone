@@ -1,6 +1,6 @@
 [build-system]
-requires = ["scikit-build-core-conan"]
-build-backend = "scikit_build_core_conan.build"
+requires = ["conan-py-build", "cmake"]
+build-backend = "conan_py_build.build"
 
 [project]
 name = "endstone"
@@ -9,7 +9,7 @@ description = "Endstone offers a plugin API for Bedrock Dedicated Servers, suppo
 readme = "README.md"
 requires-python = ">=3.10"
 keywords = ["plugin", "python", "minecraft", "bedrock"]
-license = { file = "LICENSE" }
+license-files = ["LICENSE"]
 classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
@@ -56,32 +56,20 @@ Issues = "https://github.com/EndstoneMC/endstone/issues"
 [project.scripts]
 endstone = "endstone.cli:main"
 
-[tool.scikit-build]
-build-dir = "build/{wheel_tag}"
-cmake.args = ["-G Ninja"]
-cmake.build-type = "RelWithDebInfo"
-cmake.define = { BUILD_TESTING = "OFF" }
-wheel.packages = ["endstone"]
-wheel.license-files = ["LICENSE"]
-install.components = ["endstone_wheel"]
-install.strip = false
-metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
-sdist.include = ["endstone/_version.py"]
+[tool.conan-py-build]
+extra-arguments = [
+    "-s=&:build_type=RelWithDebInfo",
+    "-c=tools.build:skip_test=True",
+]
 
-[tool.scikit-build-core-conan]
-build = ["missing", "m4/*"]
-settings-all = ["build_type=Release", "&:build_type=RelWithDebInfo"]
+[tool.conan-py-build.wheel]
+packages = ["endstone"]
 
-[[tool.scikit-build-core-conan.overrides]]
-if.platform-system = "win32"
-profile-all = "windows"
-
-[[tool.scikit-build-core-conan.overrides]]
-if.platform-system = "linux"
-profile-all = "linux"
+[tool.conan-py-build.version]
+provider = "setuptools_scm"
 
 [tool.setuptools_scm]
-write_to = "endstone/_version.py"
+version_file = "endstone/_version.py"
 version_scheme = "guess-next-dev"
 local_scheme = "no-local-version"
 
@@ -92,14 +80,16 @@ addopts = ["--ignore=tests/endstone_test"]
 [tool.ruff]
 line-length = 120
 lint.extend-select = ["I", "F"]
+# keep generated .pyi LF on every OS so ruff doesn't emit CRLF on Windows
+format.line-ending = "lf"
 
 [tool.cibuildwheel]
 skip = ["pp*"]
 test-command = "pytest {package}/tests --ignore={package}/tests/endstone_test"
 test-requires = "pytest"
 repair-wheel-command = [
-    "pip install auditwheel==6.2.0 sentry-cli",
-    'python scripts/repair_wheel.py -o endstone -p endstone -w {dest_dir} {wheel}',
+    "pip install uv",
+    'uv run --script scripts/repair_wheel.py -o endstone -p endstone -w {dest_dir} {wheel}',
 ]
 
 [tool.cibuildwheel.linux]
