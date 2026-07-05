@@ -334,6 +334,11 @@ class StubGen:
         self.depth = 0
         self._output = io.StringIO()
 
+        # Fully-qualified path of the object currently being rendered; a nested
+        # type is emitted by its short name within its enclosing scope (see
+        # _process_name). Mirrors nanobind's StubGen.prefix.
+        self.prefix = mod.path
+
         # Imports discovered while rendering the body.
         # ``import <module>`` entries:
         self._import_modules: set[str] = set()
@@ -412,6 +417,12 @@ class StubGen:
         if full == prefix or full.startswith(prefix + "."):
             mod_path, qual = self._split_internal(full)
             if mod_path == self.mod.path:
+                # Strip the enclosing-class prefix so a nested type renders by
+                # its short name within that class's body (mirrors nanobind).
+                scope = self.prefix[len(self.mod.path) + 1 :]
+                enclosing = scope.rpartition(".")[0]
+                if enclosing and qual.startswith(enclosing + "."):
+                    qual = qual[len(enclosing) + 1 :]
                 return qual or full
             self._need_import_module(mod_path)
             return full
@@ -485,17 +496,22 @@ class StubGen:
         ):
             return
 
-        kind = obj.kind
-        if kind == Kind.CLASS:
-            self.put_type(obj)
-        elif kind == Kind.FUNCTION:
-            self.put_function(obj)
-        elif kind == Kind.ATTRIBUTE:
-            if "property" in obj.labels:
-                self.put_property(obj)
-            else:
-                self.put_value(obj)
-        # Submodules are emitted as separate files by the driver.
+        old_prefix = self.prefix
+        self.prefix = self.prefix + (("." + name) if name else "")
+        try:
+            kind = obj.kind
+            if kind == Kind.CLASS:
+                self.put_type(obj)
+            elif kind == Kind.FUNCTION:
+                self.put_function(obj)
+            elif kind == Kind.ATTRIBUTE:
+                if "property" in obj.labels:
+                    self.put_property(obj)
+                else:
+                    self.put_value(obj)
+            # Submodules are emitted as separate files by the driver.
+        finally:
+            self.prefix = old_prefix
 
     # ---- class ----
 
