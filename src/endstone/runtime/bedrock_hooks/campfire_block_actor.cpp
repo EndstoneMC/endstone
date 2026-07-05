@@ -1,12 +1,10 @@
 #include "bedrock/world/level/block/actor/campfire_block_actor.h"
 
 #include "bedrock/world/events/gameevents/game_event.h"
-#include "bedrock/world/level/block/bedrock_block_names.h"
 #include "bedrock/world/level/block/furnace_types.h"
 #include "bedrock/world/level/block/vanilla_block_type_ids.h"
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/level.h"
-#include "bedrock/world/level/spawner.h"
 #include "endstone/core/block/block.h"
 #include "endstone/core/inventory/item_stack.h"
 #include "endstone/core/server.h"
