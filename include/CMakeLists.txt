@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(endstone LANGUAGES CXX)
+project(endstone VERSION 0.11.5 LANGUAGES CXX)
 
 include(FetchContent)
 
@@ -23,9 +23,17 @@ if (NOT expected-lite_FOUND)
     FetchContent_MakeAvailable(expected-lite)
 endif ()
 
+# A git version (passed by conanfile.py) overrides the project() fallback at build time.
+if (NOT DEFINED ENDSTONE_VERSION_FULL)
+    set(ENDSTONE_VERSION_FULL "${PROJECT_VERSION}")
+endif ()
+configure_file(endstone/version.h.in "${CMAKE_CURRENT_BINARY_DIR}/generated/endstone/version.h" @ONLY)
+
 add_library(endstone INTERFACE)
 add_library(endstone::endstone ALIAS endstone)
-target_include_directories(endstone INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(endstone INTERFACE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/generated>)
 target_link_libraries(endstone INTERFACE fmt::fmt nonstd::expected-lite)
 
 function(endstone_add_plugin target_name)

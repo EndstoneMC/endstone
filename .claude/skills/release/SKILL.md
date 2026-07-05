@@ -66,23 +66,27 @@ from `main`. Compute the next version:
 - Default = previous tag's patch + 1 (e.g. `v0.11.3` -> `0.11.4`).
 - For a minor/major bump (`0.12.0`, `1.0.0`), the user must have said so.
 
-Verify all version-touching files match. The `bump-bds` flow updates
-`include/endstone/detail.h` but typically misses other surfaces - check
-each one and edit it inline if it's stale.
+Verify all version-touching files match. The `bump-bds` flow updates the BDS
+macros in `include/endstone/detail.h` but typically misses other surfaces -
+check each one and edit it inline if it's stale.
 
 ```shell
-grep -E 'ENDSTONE_VERSION_(MAJOR|MINOR|PATCH)|MINECRAFT_VERSION_(MAJOR|MINOR|PATCH)|NETWORK_PROTOCOL_VERSION' include/endstone/detail.h
+grep -E 'project\(endstone VERSION' include/CMakeLists.txt
+grep -E 'MINECRAFT_VERSION_(MAJOR|MINOR|PATCH)|NETWORK_PROTOCOL_VERSION' include/endstone/detail.h
 grep -E 'minecraft-v[0-9]+\.[0-9]+_\(Bedrock\)' README.md
 ```
 
 Checklist:
 
-1. **`include/endstone/detail.h`** must have:
-   - `ENDSTONE_VERSION_PATCH` = the patch number being released
+1. **`include/CMakeLists.txt`** `project(endstone VERSION x.y.z ...)` = the
+   version being released. This is the fallback; the wheel build overrides
+   `ENDSTONE_VERSION` with the exact setuptools_scm version, but the numeric
+   major/minor/patch and `ENDSTONE_API_VERSION` come from here.
+2. **`include/endstone/detail.h`** must have:
    - `MINECRAFT_VERSION_MAJOR/MINOR/PATCH` = the supported BDS version
    - `NETWORK_PROTOCOL_VERSION` = the BDS network protocol version
    If any are stale, edit the macros directly.
-2. **`README.md` Minecraft badge**
+3. **`README.md` Minecraft badge**
    (`https://img.shields.io/badge/minecraft-vNN.NN_(Bedrock)-black`) must
    match `MINECRAFT_VERSION_MINOR.MINECRAFT_VERSION_PATCH` from
    `detail.h`. Update with `Edit` if stale - the badge URL is the only

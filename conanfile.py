@@ -102,6 +102,8 @@ class EndstoneRecipe(ConanFile):
         CMakeDeps(self).generate()
 
         tc = CMakeToolchain(self)
+        if self.version:
+            tc.variables["ENDSTONE_VERSION_FULL"] = str(self.version)
         if self._with_devtools:
             tc.variables["ENDSTONE_ENABLE_DEVTOOLS"] = True
         sentry_bin = os.path.join(self.dependencies["sentry-native"].package_folder, "bin")
