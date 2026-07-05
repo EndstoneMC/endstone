@@ -620,9 +620,7 @@ class StubGen:
     def put_type(self, cls: Class) -> None:
         # Skip pybind11 implementation-detail bases.
         bases = [
-            self.simplify(str(b))
-            for b in cls.bases
-            if str(b) not in {"object", "pybind11_builtins.pybind11_object"}
+            self.simplify(str(b)) for b in cls.bases if str(b) not in {"object", "pybind11_builtins.pybind11_object"}
         ]
         header = "class " + cls.name
         if bases:

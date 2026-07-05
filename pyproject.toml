@@ -79,9 +79,7 @@ addopts = ["--ignore=tests/endstone_test"]
 
 [tool.ruff]
 line-length = 120
-lint.extend-select = ["I", "F"]
-# keep generated .pyi LF on every OS so ruff doesn't emit CRLF on Windows
-format.line-ending = "lf"
+lint.extend-select = ["I", "E", "F"]
 
 [tool.cibuildwheel]
 skip = ["pp*"]
