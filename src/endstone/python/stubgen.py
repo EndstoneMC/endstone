@@ -138,8 +138,8 @@ def _local_class_names(mod: Module) -> set:
 def _extract_signatures(docstring) -> Optional[List[tuple]]:
     """Parse pybind11 signature(s) from a docstring, mirroring nanobind's __nb_signature__.
 
-    Returns a list of (sig, doc, defaults) where sig is "def (args) -> ret".
-    pybind11 inlines defaults into the text, so defaults is always None.
+    Returns a list of (sig, doc) where sig is "def (args) -> ret"; pybind11
+    inlines default values into the signature text.
     """
     lines = docstring.lines
     if not lines:
@@ -154,22 +154,22 @@ def _extract_signatures(docstring) -> Optional[List[tuple]]:
             m = _PYBIND_SIG_RE.match(lines[i])
             if m and m.group("ret") and m.group("num") == str(len(entries) + 1):
                 if entries:
-                    entries[-1] = (entries[-1][0], "\n".join(lines[doc_start:i]).strip() or None, None)
+                    entries[-1] = (entries[-1][0], "\n".join(lines[doc_start:i]).strip() or None)
                 sig = f"def ({_clean_sig_args(m.group('name'), m.group('args'))}) -> {m.group('ret').strip()}"
                 if not _valid_sig(sig):
                     raise ValueError(f"unparseable signature {sig[4:]!r}")
-                entries.append((sig, None, None))
+                entries.append((sig, None))
                 doc_start = i + 1
         if not entries:
             return None
-        entries[-1] = (entries[-1][0], "\n".join(lines[doc_start:]).strip() or None, None)
+        entries[-1] = (entries[-1][0], "\n".join(lines[doc_start:]).strip() or None)
         return entries
     if head.group("ret") is None:
         return None
     sig = f"def ({_clean_sig_args(head.group('name'), head.group('args'))}) -> {head.group('ret').strip()}"
     if not _valid_sig(sig):
         raise ValueError(f"unparseable signature {sig[4:]!r}")
-    return [(sig, "\n".join(lines[1:]).strip() or None, None)]
+    return [(sig, "\n".join(lines[1:]).strip() or None)]
 
 
 class Pybind11Support(Extension):
@@ -337,6 +337,7 @@ class StubGen:
         *,
         include_docstrings: bool = True,
         include_private: bool = False,
+        include_values: bool = True,
         patterns: Optional[List[ReplacePattern]] = None,
         quiet: bool = True,
     ) -> None:
@@ -344,6 +345,7 @@ class StubGen:
         self.mod = mod
         self.include_docstrings = include_docstrings
         self.include_private = include_private
+        self.include_values = include_values
         self.patterns = patterns or []
         self.quiet = quiet
 
@@ -356,10 +358,10 @@ class StubGen:
         self.prefix = mod.path
 
         # Imports discovered while rendering the body.
-        # ``import <module>`` entries:
-        self._import_modules: set[str] = set()
-        # ``from <module> import <name>`` entries:
-        self._import_from: dict[str, set[str]] = {}
+        # ``import <module>`` entries (module -> optional alias):
+        self._import_modules: dict[str, Optional[str]] = {}
+        # ``from <module> import <name>`` entries (module -> {name: bound name}):
+        self._import_from: dict[str, dict[str, str]] = {}
 
         self._local_names = _local_class_names(mod)
 
@@ -392,11 +394,25 @@ class StubGen:
 
     # ---- imports / name resolution ----
 
-    def _need_import_module(self, module: str) -> None:
-        self._import_modules.add(module)
+    def import_object(self, module: str, name: Optional[str] = None, as_name: Optional[str] = None) -> str:
+        """Register an import, avoiding collisions with local names (mirrors nanobind).
 
-    def _need_from(self, module: str, name: str) -> None:
-        self._import_from.setdefault(module, set()).add(name)
+        With ``name`` None the whole module is imported; otherwise ``name`` is
+        imported from ``module``, underscore-prefixed if it would shadow a member
+        defined in this module. Returns the name actually bound in the stub.
+        """
+        if name is None:
+            self._import_modules.setdefault(module, as_name)
+            return as_name or module
+        binds = self._import_from.setdefault(module, {})
+        if name in binds:
+            return binds[name]
+        bound = as_name if as_name else name
+        if not as_name:
+            while bound in self.mod.members:
+                bound = "_" + bound
+        binds[name] = bound
+        return bound
 
     def check_party(self, module: str) -> int:
         """0 = stdlib, 1 = third-party, 2 = first-party (same top package)."""
@@ -440,19 +456,18 @@ class StubGen:
                 if enclosing and qual.startswith(enclosing + "."):
                     qual = qual[len(enclosing) + 1 :]
                 return qual or full
-            self._need_import_module(mod_path)
+            self.import_object(mod_path)
             return full
 
         if mod_name in ("typing", "typing_extensions", "collections.abc"):
-            self._need_from(mod_name, cls_name)
-            return cls_name
+            return self.import_object(mod_name, cls_name)
 
         # A same-module class/enum referenced by short name (pybind11 drops the
         # package prefix, e.g. RenderType.INTEGER) is already in scope; keep bare.
         if full.split(".", 1)[0] in self._local_names:
             return full
 
-        self._need_import_module(mod_name)
+        self.import_object(mod_name)
         return full
 
     def simplify(self, s: str) -> str:
@@ -465,8 +480,7 @@ class StubGen:
         return self.simplify(str(annotation))
 
     def any_type(self) -> str:
-        self._need_from("typing", "Any")
-        return "Any"
+        return self.import_object("typing", "Any")
 
     def _render_value(self, value, owner=None) -> str:
         # Rendered verbatim; simplify() must not touch a literal (a dotted
@@ -485,8 +499,15 @@ class StubGen:
             ):
                 return number
             return self.simplify(qualified)
-        # Any other opaque repr -> placeholder.
-        if "<" in s or ">" in s or "\n" in s:
+        # An opaque repr, or a value suppressed via --exclude-values -- but keep
+        # enum members, which nanobind never abbreviates.
+        enum_member = (
+            owner is not None
+            and owner.parent is not None
+            and owner.parent.kind == Kind.CLASS
+            and any("enum." in str(b) for b in owner.parent.bases)
+        )
+        if (not self.include_values and not enum_member) or "<" in s or ">" in s or "\n" in s:
             return "..."
         return s
 
@@ -494,6 +515,65 @@ class StubGen:
 
     def _is_private(self, name: str) -> bool:
         return len(name) > 2 and ((name[0] == "_" and name[1] != "_") or (name[-1] == "_" and name[-2] != "_"))
+
+    def apply_pattern(self, query: str, obj) -> bool:
+        """Apply the first pattern-file entry whose query matches (mirrors nanobind)."""
+        match = None
+        pattern = None
+        for pattern in self.patterns:
+            match = pattern.query.search(query)
+            if match:
+                break
+        if not match or not pattern:
+            return False
+        for line in pattern.lines:
+            ls = line.strip()
+            if ls == "\\doc":
+                doc = None
+                sigs = getattr(obj, "_pybind11_signature_", None)
+                if sigs:
+                    for s in sigs:
+                        doc = s[1]
+                        if doc:
+                            break
+                elif obj is not None and getattr(obj, "docstring", None) is not None:
+                    doc = obj.docstring.value
+                self.depth += 1
+                if doc and self.include_docstrings:
+                    self.put_docstr(doc)
+                else:
+                    self.write_ln("...")
+                self.depth -= 1
+                continue
+            elif ls.startswith("\\from "):
+                items = ls[5:].split(" import ")
+                if len(items) != 2:
+                    raise RuntimeError(f"Could not parse import declaration {ls}")
+                for item in items[1].strip("()").split(","):
+                    item_list = item.split(" as ")
+                    import_module, import_name = items[0].strip(), item_list[0].strip()
+                    import_as = item_list[1].strip() if len(item_list) > 1 else None
+                    self.import_object(import_module, import_name, import_as)
+                continue
+            elif ls.startswith("\\import "):
+                for mod in ls[7:].split(","):
+                    items = mod.split(" as ")
+                    if len(items) == 1:
+                        modname, as_name = items[0].strip(), None
+                    elif len(items) == 2:
+                        modname, as_name = [i.strip() for i in items]
+                    else:
+                        raise RuntimeError(f"Could not parse import declaration {mod}")
+                    self.import_object(modname, None, as_name=as_name)
+                continue
+            groups = match.groups()
+            for i in reversed(range(len(groups))):
+                line = line.replace(f"\\{i + 1}", groups[i])
+            for k, v in match.groupdict().items():
+                line = line.replace(f"\\{k}", v)
+            self.write_ln(line)
+        pattern.matches += 1
+        return True
 
     def put(self, obj) -> None:
         if isinstance(obj, Alias):
@@ -515,6 +595,8 @@ class StubGen:
         old_prefix = self.prefix
         self.prefix = self.prefix + (("." + name) if name else "")
         try:
+            if self.apply_pattern(self.prefix, obj):
+                return
             kind = obj.kind
             if kind == Kind.CLASS:
                 self.put_type(obj)
@@ -547,8 +629,10 @@ class StubGen:
         body_start = self._output.tell()
         if cls.docstring and self.include_docstrings and cls.docstring.value:
             self.put_docstr(cls.docstring.value)
+        self.apply_pattern(self.prefix + ".__prefix__", None)
         for member in cls.members.values():
             self.put(member)
+        self.apply_pattern(self.prefix + ".__suffix__", None)
         if self._output.tell() == body_start:
             self.write_ln("...")
         self.depth -= 1
@@ -574,9 +658,9 @@ class StubGen:
                 last_idx[s[1]] = i
         for i, s in enumerate(sigs):
             if s[1] is not None and last_idx[s[1]] != i:
-                s = (s[0], None, s[2])
-            self._need_from("typing", "overload")
-            self.write_ln("@overload")
+                s = (s[0], None)
+            overload = self.import_object("typing", "overload")
+            self.write_ln(f"@{overload}")
             self.put_py_overload(func, s)
 
     def put_py_overload(self, func: Function, sig: tuple) -> None:
@@ -691,16 +775,20 @@ class StubGen:
     # ---- assembly ----
 
     def render(self) -> None:
+        self.apply_pattern(self.prefix + ".__prefix__", None)
         for member in self.mod.members.values():
             if isinstance(member, Alias) or member.kind == Kind.MODULE:
                 continue
             self.put(member)
+        self.apply_pattern(self.prefix + ".__suffix__", None)
 
     def _imports_block(self) -> str:
         groups: List[List[str]] = [[], [], []]
-        for module in self._import_modules:
-            groups[self.check_party(module)].append(f"import {module}")
-        for module, names in self._import_from.items():
+        for module, alias in self._import_modules.items():
+            stmt = f"import {module} as {alias}" if alias else f"import {module}"
+            groups[self.check_party(module)].append(stmt)
+        for module, binds in self._import_from.items():
+            names = [name if bound == name else f"{name} as {bound}" for name, bound in binds.items()]
             joined = ", ".join(sorted(names))
             groups[self.check_party(module)].append(f"from {module} import {joined}")
 
@@ -773,6 +861,7 @@ def render_module(top: Module, mod: Module, opt: argparse.Namespace, patterns: L
         mod,
         include_docstrings=opt.include_docstrings,
         include_private=opt.include_private,
+        include_values=not opt.exclude_values,
         patterns=patterns,
         quiet=opt.quiet,
     )
@@ -836,6 +925,22 @@ def parse_options(args: List[str]) -> argparse.Namespace:
         metavar="FILE",
         help="also emit a marker file (e.g. py.typed)",
     )
+    parser.add_argument(
+        "-i",
+        "--import",
+        action="append",
+        dest="imports",
+        default=[],
+        metavar="PATH",
+        help="add the directory to the Python import path (repeatable)",
+    )
+    parser.add_argument(
+        "--exclude-values",
+        action="store_true",
+        dest="exclude_values",
+        default=False,
+        help="force the use of ... for values",
+    )
     parser.add_argument("-q", "--quiet", action="store_true", default=False, help="suppress progress output")
 
     opt = parser.parse_args(args)
@@ -850,6 +955,9 @@ def parse_options(args: List[str]) -> argparse.Namespace:
 
 def main(args: Optional[List[str]] = None) -> None:
     opt = parse_options(sys.argv[1:] if args is None else args)
+
+    for path in opt.imports:
+        sys.path.insert(0, path)
 
     patterns = load_pattern_file(opt.pattern_file) if opt.pattern_file else []
 
