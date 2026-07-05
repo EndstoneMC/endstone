@@ -27,29 +27,29 @@ class Vec3;
 
 class IVanillaMainBlockActorComponent {
 public:
-    virtual BlockActorType getBlockActorType() const = 0;
+    [[nodiscard]] virtual BlockActorType getBlockActorType() const = 0;
     virtual Container *getContainer() = 0;
-    virtual const Container *getContainer() const = 0;
+    [[nodiscard]] virtual const Container *getContainer() const = 0;
     virtual void eraseLootTable() = 0;
-    virtual std::string getName() const = 0;
+    [[nodiscard]] virtual std::string getName() const = 0;
     virtual std::string getImmersiveReaderText(BlockSource &) = 0;
-    virtual bool canRenderCustomName() const = 0;
-    virtual bool hasCustomName() const = 0;
-    virtual const Bedrock::Safety::RedactableString &getCustomName() const = 0;
+    [[nodiscard]] virtual bool canRenderCustomName() const = 0;
+    [[nodiscard]] virtual bool hasCustomName() const = 0;
+    [[nodiscard]] virtual const Bedrock::Safety::RedactableString &getCustomName() const = 0;
     virtual void setCustomName(const Bedrock::Safety::RedactableString &) = 0;
-    virtual bool isCustomNameSaved() const = 0;
-    virtual Bedrock::Safety::RedactableString getDisplayName() const = 0;
-    virtual bool hasFilteredNameTag() const = 0;
-    virtual std::string getFilteredNameTag() const = 0;
+    [[nodiscard]] virtual bool isCustomNameSaved() const = 0;
+    [[nodiscard]] virtual Bedrock::Safety::RedactableString getDisplayName() const = 0;
+    [[nodiscard]] virtual bool hasFilteredNameTag() const = 0;
+    [[nodiscard]] virtual std::string getFilteredNameTag() const = 0;
     virtual void setFilteredNameTag(const std::string &) = 0;
-    virtual std::vector<std::string> getUgcStrings(const CompoundTag &) const = 0;
-    virtual std::vector<std::string> getFilteredUgcStrings(const CompoundTag &) const = 0;
+    [[nodiscard]] virtual std::vector<std::string> getUgcStrings(const CompoundTag &) const = 0;
+    [[nodiscard]] virtual std::vector<std::string> getFilteredUgcStrings(const CompoundTag &) const = 0;
     virtual void setUgcStrings(CompoundTag &, const std::vector<std::string> &) const = 0;
     virtual void setFilteredUgcStrings(CompoundTag &, const std::vector<std::string> &) const = 0;
-    virtual bool validateData(const CompoundTag &) const = 0;
+    [[nodiscard]] virtual bool validateData(const CompoundTag &) const = 0;
     virtual void fixupOnLoad(LevelChunk &) = 0;
     virtual void setChanged() = 0;
-    virtual bool isChanged() const = 0;
+    [[nodiscard]] virtual bool isChanged() const = 0;
     virtual void onChanged(BlockSource &) = 0;
 
 protected:
@@ -60,20 +60,20 @@ protected:
 class IVanillaRenderBlockActorComponent {
 public:
     virtual BlockActor &getBlockActor() = 0;
-    virtual const BlockActor &getBlockActor() const = 0;
-    virtual const BlockPos &getBlockActorPosition() const = 0;
-    virtual BlockActorType getBlockActorType() const = 0;
-    virtual BlockActorRendererId getRendererId() const = 0;
-    virtual bool isPermanentlyRendered() const = 0;
-    virtual bool isWithinRenderDistance(const Vec3 &) const = 0;
-    virtual bool hasAlphaLayer() const = 0;
+    [[nodiscard]] virtual const BlockActor &getBlockActor() const = 0;
+    [[nodiscard]] virtual const BlockPos &getBlockActorPosition() const = 0;
+    [[nodiscard]] virtual BlockActorType getBlockActorType() const = 0;
+    [[nodiscard]] virtual BlockActorRendererId getRendererId() const = 0;
+    [[nodiscard]] virtual bool isPermanentlyRendered() const = 0;
+    [[nodiscard]] virtual bool isWithinRenderDistance(const Vec3 &) const = 0;
+    [[nodiscard]] virtual bool hasAlphaLayer() const = 0;
     virtual float getShadowRadius(BlockSource &) const = 0;
-    virtual bool isInWorld() const = 0;
+    [[nodiscard]] virtual bool isInWorld() const = 0;
     virtual IVanillaRenderBlockActorComponent *getCrackEntity(BlockSource &, const BlockPos &) = 0;
-    virtual const AABB &getAABB() const = 0;
+    [[nodiscard]] virtual const AABB &getAABB() const = 0;
     virtual void setAABB(const AABB &) = 0;
     virtual ActorTerrainInterlockData &getEntityTerrainInterlockData() = 0;
-    virtual const ActorTerrainInterlockData &getEntityTerrainInterlockDataConst() const = 0;
+    [[nodiscard]] virtual const ActorTerrainInterlockData &getEntityTerrainInterlockDataConst() const = 0;
 
 protected:
     virtual void _resetAABB() = 0;
@@ -82,11 +82,11 @@ protected:
 class IVanillaTickBlockActorComponent {
 public:
     virtual BlockActor &getBlockActor() = 0;
-    virtual const BlockActor &getBlockActor() const = 0;
-    virtual const BlockPos &getBlockActorPosition() const = 0;
-    virtual BlockActorType getBlockActorType() const = 0;
+    [[nodiscard]] virtual const BlockActor &getBlockActor() const = 0;
+    [[nodiscard]] virtual const BlockPos &getBlockActorPosition() const = 0;
+    [[nodiscard]] virtual BlockActorType getBlockActorType() const = 0;
     virtual void tick(BlockSource &) = 0;
-    virtual int getTickCount() const = 0;
+    [[nodiscard]] virtual int getTickCount() const = 0;
 };
 
 class VanillaBlockActor : public BlockActor,
@@ -94,10 +94,8 @@ class VanillaBlockActor : public BlockActor,
                           public IVanillaRenderBlockActorComponent,
                           public IVanillaTickBlockActorComponent {
 public:
-    virtual void tick(BlockSource &) = 0;
-
-    void setChanged() { properties_.insert(BlockActor::Property::Changed); }
-    [[nodiscard]] bool isChanged() const { return properties_.contains(BlockActor::Property::Changed); }
+    void setChanged() override { properties_.insert(BlockActor::Property::Changed); }
+    [[nodiscard]] bool isChanged() const override { return properties_.contains(BlockActor::Property::Changed); }
 
 protected:
     int tick_count_;                                    // +56
