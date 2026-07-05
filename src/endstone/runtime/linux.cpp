@@ -24,6 +24,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <string_view>
 #include <unordered_map>
 
 namespace {
@@ -94,6 +95,12 @@ const std::unordered_map<std::string, void *> &get_detours()
 
         char *name = elf_strptr(elf, shdr.sh_link, sym.st_name);
         if (name == nullptr) {
+            return;
+        }
+
+        // Skip compiler-generated adjustor thunks (non-virtual, virtual, covariant)
+        std::string_view sym_name = name;
+        if (sym_name.starts_with("_ZTh") || sym_name.starts_with("_ZTv") || sym_name.starts_with("_ZTc")) {
             return;
         }
 
