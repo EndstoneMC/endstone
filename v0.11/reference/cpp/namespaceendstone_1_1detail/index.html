@@ -10,7 +10,7 @@
         <meta name="author" content="Vincent Wu">
       
       
-        <link rel="canonical" href="https://endstone.dev/v0.11.4/reference/cpp/namespaceendstone_1_1detail/">
+        <link rel="canonical" href="https://endstone.dev/v0.11/reference/cpp/namespaceendstone_1_1detail/">
       
       
       
@@ -2646,6 +2646,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-fp_cast_2" class="md-nav__link">
+      <span class="md-ellipsis">
+        function fp_cast
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-getserver" class="md-nav__link">
       <span class="md-ellipsis">
         function getServer
@@ -2708,7 +2721,7 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>Return</strong></a>(*)(Arg...)</td>
-<td style="text-align: left;"><a href="#variable-fp_cast"><strong>fp_cast</strong></a>  <br><em>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)</em></td>
+<td style="text-align: left;"><a href="#variable-fp_cast"><strong>fp_cast</strong></a>  <br></td>
 </tr>
 </tbody>
 </table>
@@ -2730,6 +2743,10 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-fp_cast"><strong>fp_cast</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Return</strong></a>(Class::*)(Args...) fp) <br><em>Cast a member function pointer to void pointer.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;"><a href="../classendstone_1_1Identifier/"><strong>auto</strong></a></td>
+<td style="text-align: left;"><a href="#function-fp_cast"><strong>fp_cast</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>Return</strong></a>(Class::*)(Arg...), <a href="../classendstone_1_1Identifier/"><strong>void</strong></a> * address) <br><em>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)</em></td>
+</tr>
+<tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Server/"><strong>Server</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getserver"><strong>getServer</strong></a> () <br></td>
 </tr>
@@ -2737,9 +2754,8 @@ For latest updates join the chat on
 </table>
 <h2 id="public-attributes-documentation">Public Attributes Documentation<a class="headerlink" href="#public-attributes-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="variable-fp_cast">variable fp_cast<a class="headerlink" href="#variable-fp_cast" title="Permanent link">&para;</a></h3>
-<p><em>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Return</span><span class="p">(</span><span class="n">Class</span><span class="o">::*</span><span class="p">)(</span><span class="n">Arg</span><span class="p">...)</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">fp_cast</span><span class="p">(</span><span class="n">Return</span><span class="p">(</span><span class="n">Class</span><span class="o">::*</span><span class="n">fp</span><span class="p">)(</span><span class="n">Arg</span><span class="p">...)</span><span class="w"> </span><span class="k">const</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">address</span><span class="p">);</span>
-</span></code></pre></div></p>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">Return</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="n">Arg</span><span class="p">...)</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">fp_cast</span><span class="p">(</span><span class="n">Return</span><span class="p">(</span><span class="o">*</span><span class="n">fp</span><span class="p">)(</span><span class="n">Arg</span><span class="p">...),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">func</span><span class="p">);</span>
+</span></code></pre></div>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-fp_cast">function fp_cast<a class="headerlink" href="#function-fp_cast" title="Permanent link">&para;</a></h3>
@@ -2796,8 +2812,18 @@ For latest updates join the chat on
 <p>A void pointer to the constant member function. </p>
 <hr>
 
+<h3 id="function-fp_cast_2">function fp_cast<a class="headerlink" href="#function-fp_cast_2" title="Permanent link">&para;</a></h3>
+<p><em>Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Return</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">Class</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Arg</span><span class="o">&gt;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">auto</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">fp_cast</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">Return</span><span class="w"> </span><span class="p">(</span><span class="n">Class</span><span class="o">::*</span><span class="p">)(</span><span class="n">Arg</span><span class="p">...),</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">address</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<hr>
+
 <h3 id="function-getserver">function getServer<a class="headerlink" href="#function-getserver" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">getServer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">detail</span><span class="o">::</span><span class="n">getServer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
 </span></code></pre></div>
 <p>Gets the current <a href="../classendstone_1_1Server/"><strong>Server</strong></a> singleton</p>
 <p><strong>Returns:</strong></p>

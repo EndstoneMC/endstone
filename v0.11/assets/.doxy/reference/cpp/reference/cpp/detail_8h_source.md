@@ -24,11 +24,16 @@
 
 #pragma once
 
+#include <cstring>
 #include <stdexcept>
 
 #if defined(_WIN32) || defined(_WIN64)
+#ifndef NOMINMAX
 #define NOMINMAX
+#endif
+#ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
+#endif
 #include <Windows.h>
 #else
 #include <dlfcn.h>
@@ -36,30 +41,7 @@
 #include <cstddef>
 #endif
 
-#define ENDSTONE_STRINGIFY(x) #x
-#define ENDSTONE_TOSTRING(x)  ENDSTONE_STRINGIFY(x)
-
-#define ENDSTONE_VERSION_MAJOR 0
-#define ENDSTONE_VERSION_MINOR 11
-#define ENDSTONE_VERSION_PATCH 4
-
-#define NETWORK_PROTOCOL_VERSION 975
-
-#define ENDSTONE_API_VERSION ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)
-
-#ifndef ENDSTONE_VERSION
-#define ENDSTONE_VERSION                      \
-    ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) \
-    "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_PATCH)
-#endif
-
-#define MINECRAFT_VERSION_MAJOR 1
-#define MINECRAFT_VERSION_MINOR 26
-#define MINECRAFT_VERSION_PATCH 20
-
-#ifndef MINECRAFT_VERSION
-#define MINECRAFT_VERSION ENDSTONE_TOSTRING(MINECRAFT_VERSION_MINOR) "." ENDSTONE_TOSTRING(MINECRAFT_VERSION_PATCH)
-#endif
+#include <endstone/version.h>
 
 namespace endstone {
 class Server;
@@ -68,62 +50,51 @@ namespace detail {
 template <typename Return, typename... Args>
 void *fp_cast(Return (*fp)(Args...))
 {
-    union {
-        Return (*p)(Args...);
-        void *v;
-    } temp;
-    temp.p = fp;
-    return temp.v;
+    void *v;
+    std::memcpy(&v, &fp, sizeof(v));
+    return v;
 }
 
 template <typename Return, typename Class, typename... Args>
 void *fp_cast(Return (Class::*fp)(Args...))
 {
-    union {
-        Return (Class::*p)(Args...);
-        void *v;
-    } temp;
-    temp.p = fp;
-    return temp.v;
+    void *v;
+    std::memcpy(&v, &fp, sizeof(v));
+    return v;
 }
 
 template <typename Return, typename Class, typename... Args>
 void *fp_cast(Return (Class::*fp)(Args...) const)
 {
-    union {
-        Return (Class::*p)(Args...) const;
-        void *v;
-    } temp;
-    temp.p = fp;
-    return temp.v;
+    void *v;
+    std::memcpy(&v, &fp, sizeof(v));
+    return v;
 }
 
 template <typename Return, typename... Arg>
 Return (*fp_cast(Return (*fp)(Arg...), void *func))(Arg...)
 {
-    return *reinterpret_cast<decltype(&fp)>(&func);
+    Return (*result)(Arg...);
+    std::memcpy(&result, &func, sizeof(result));
+    return result;
 }
 
 template <typename Return, typename Class, typename... Arg>
-Return (Class::*fp_cast(Return (Class::*fp)(Arg...), void *address))(Arg...)
+auto fp_cast(Return (Class::*)(Arg...), void *address)
 {
-    struct {  // https://doi.org/10.1145/3660779
-        void *ptr;
-        std::size_t adj = 0;
-    } temp;
-    temp.ptr = address;
-    return *reinterpret_cast<decltype(&fp)>(&temp);
+    Return (Class::*result)(Arg...);
+    std::memset(&result, 0, sizeof(result));
+    std::memcpy(&result, &address, sizeof(address));
+    return result;
 }
 
 template <typename Return, typename Class, typename... Arg>
-Return (Class::*fp_cast(Return (Class::*fp)(Arg...) const, void *address))(Arg...) const
+auto fp_cast(Return (Class::*)(Arg...) const, void *address)
 {
-    struct {  // https://doi.org/10.1145/3660779
-        void *ptr;
-        std::size_t adj = 0;
-    } temp;
-    temp.ptr = address;
-    return *reinterpret_cast<decltype(&fp)>(&temp);
+    Return (Class::*result)(Arg...) const;
+    std::memset(&result, 0, sizeof(result));
+    std::memcpy(&result, &address, sizeof(address));
+    return result;
 }
 
 inline Server &getServer()
