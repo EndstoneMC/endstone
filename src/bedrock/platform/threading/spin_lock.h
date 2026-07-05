@@ -18,14 +18,6 @@
 #include <system_error>
 #include <thread>
 
-#ifndef NO_UNIQUE_ADDRESS
-#ifdef _MSC_VER
-#define NO_UNIQUE_ADDRESS [[msvc::no_unique_address]]
-#else
-#define NO_UNIQUE_ADDRESS [[no_unique_address]]
-#endif
-#endif
-
 class SpinLockImpl {
     static const uint32_t LOOP_LIMIT_BEFORE_YIELD = 3000;
 
@@ -38,13 +30,13 @@ public:
     {
         std::size_t current_thread_id = thread_hasher_(std::this_thread::get_id());
 
-        if (owner_thread_ == no_thread_id_) {
-            owner_thread_ = current_thread_id;
+        std::size_t expected = no_thread_id_;
+        if (owner_thread_.compare_exchange_strong(expected, current_thread_id)) {
             owner_ref_count_ = 1;
             return true;
         }
 
-        if (owner_thread_ != current_thread_id || owner_ref_count_ == -2) {
+        if (expected != current_thread_id || owner_ref_count_ == -2) {
             return false;
         }
 
@@ -55,14 +47,16 @@ public:
     void lock()
     {
         std::size_t current_thread_id = thread_hasher_(std::this_thread::get_id());
+
+        std::size_t expected = no_thread_id_;
+        if (owner_thread_.compare_exchange_strong(expected, current_thread_id)) {
+            owner_ref_count_ = 1;
+            return;
+        }
+
         int i = LOOP_LIMIT_BEFORE_YIELD;
         while (true) {
-            if (owner_thread_ == no_thread_id_) {
-                owner_thread_ = current_thread_id;
-                break;
-            }
-
-            if (owner_thread_ == current_thread_id && owner_ref_count_ != -2) {
+            if (expected == current_thread_id && owner_ref_count_ != -2) {
                 ++owner_ref_count_;
                 return;
             }
@@ -73,8 +67,13 @@ public:
             else {
                 std::this_thread::yield();
             }
+
+            expected = no_thread_id_;
+            if (owner_thread_.compare_exchange_strong(expected, current_thread_id)) {
+                owner_ref_count_ = 1;
+                return;
+            }
         }
-        owner_ref_count_ = 1;
     }
 
     void unlock()
@@ -95,9 +94,8 @@ public:
     }
 
 private:
-    NO_UNIQUE_ADDRESS std::hash<std::thread::id> thread_hasher_{};  // +0 (empty)
-    const std::size_t no_thread_id_;                               // +0
-    std::atomic<std::size_t> owner_thread_;                        // +8
-    std::uint32_t owner_ref_count_{0};                             // +16
+    std::hash<std::thread::id> thread_hasher_{};  // +0
+    std::uint32_t owner_ref_count_{0};            // +4
+    const std::size_t no_thread_id_;              // +8
+    std::atomic<std::size_t> owner_thread_;       // +16
 };
-static_assert(sizeof(SpinLockImpl) == 24);

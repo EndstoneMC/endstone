@@ -1,4 +1,5 @@
 import errno
+import filecmp
 import fnmatch
 import hashlib
 import logging
@@ -171,12 +172,12 @@ class Bootstrap:
         for name in handler_files:
             src = endstone_dir / name
             dst = self.server_path / name
-            if dst.exists():
-                continue
             try:
+                if dst.exists() and filecmp.cmp(src, dst, shallow=False):
+                    continue
                 shutil.copy2(src, dst)
             except Exception as e:
-                raise RuntimeError(f"Failed to copy {src} -> {dst}: {e}")
+                self._logger.warning(f"Failed to update crash handler '{name}': {e}")
 
         # create or update the config file
         ref = importlib_resources.files("endstone") / "config" / "endstone.default.toml"

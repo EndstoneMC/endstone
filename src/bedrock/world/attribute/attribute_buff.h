@@ -14,8 +14,11 @@
 
 #pragma once
 
+#include <optional>
+
 #include "bedrock/world/actor/actor_damage_cause.h"
 #include "bedrock/world/actor/actor_damage_source.h"
+#include "bedrock/world/actor/hurt_effects_settings.h"
 #include "bedrock/world/attribute/amplifier.h"
 
 enum class AttributeBuffType : int {
@@ -49,6 +52,10 @@ public:
     {
         return *source_;
     }
+    [[nodiscard]] const std::optional<HurtEffectsSettings> &getHurtEffectsSettings() const
+    {
+        return hurt_effects_settings_;
+    }
     bool operator==(const AttributeBuff &) const;
     void setValueAmplifier(std::shared_ptr<Amplifier>);
     void setAmplificationAmount(int, float);
@@ -61,11 +68,12 @@ public:
 
 protected:
     AttributeBuff(float, int, AttributeBuffType);
-    AttributeBuff(float, int, const ActorDamageSource &, AttributeBuffType);
+    AttributeBuff(float, int, const ActorDamageSource &, AttributeBuffType, const std::optional<HurtEffectsSettings> &);
 
     float amount_;
     AttributeBuffType type_;
     std::shared_ptr<ActorDamageSource> source_;
+    std::optional<HurtEffectsSettings> hurt_effects_settings_;
     std::shared_ptr<Amplifier> value_amplifier_;
     std::shared_ptr<Amplifier> duration_amplifier_;
     float scale_;
@@ -73,13 +81,13 @@ protected:
     size_t id_;
     int operand_;
 };
-static_assert(sizeof(AttributeBuff) == 88);
+static_assert(sizeof(AttributeBuff) == 120);
 
 class InstantaneousAttributeBuff : public AttributeBuff {
 public:
     InstantaneousAttributeBuff(float, AttributeBuffType);
-    InstantaneousAttributeBuff(float, const ActorDamageSource &);
+    InstantaneousAttributeBuff(float, const ActorDamageSource &, const std::optional<HurtEffectsSettings> &);
     [[nodiscard]] bool isInstantaneous() const override;
     [[nodiscard]] bool isSerializable() const override;
 };
-static_assert(sizeof(InstantaneousAttributeBuff) == 88);
+static_assert(sizeof(InstantaneousAttributeBuff) == 120);

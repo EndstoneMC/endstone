@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <functional>
+
 #include <fmt/format.h>
 #include <magic_enum/magic_enum.hpp>
 
@@ -35,20 +37,11 @@ public:
         WorldInteraction_Random = 1,
     };
 
-    [[nodiscard]] InventorySourceType getType() const
-    {
-        return type_;
-    }
+    [[nodiscard]] InventorySourceType getType() const { return type_; }
 
-    [[nodiscard]] ContainerID getContainerId() const
-    {
-        return container_id_;
-    }
+    [[nodiscard]] ContainerID getContainerId() const { return container_id_; }
 
-    [[nodiscard]] std::uint32_t getFlags() const
-    {
-        return flags_;
-    }
+    [[nodiscard]] std::uint32_t getFlags() const { return flags_; }
 
 private:
     InventorySource(ContainerID);
@@ -59,6 +52,11 @@ private:
     InventorySourceFlags flags_;
 };
 static_assert(sizeof(InventorySource) == 12);
+
+template <>
+struct std::hash<InventorySource> {
+    std::size_t operator()(const InventorySource &source) const noexcept;
+};
 
 template <>
 struct fmt::formatter<InventorySource> : formatter<string_view> {

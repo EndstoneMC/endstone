@@ -36,6 +36,7 @@
 #include "bedrock/server/commands/minecraft_commands.h"
 #include "bedrock/server/deny_list.h"
 #include "bedrock/server/server_player.h"
+#include "bedrock/server/server_player_loader.h"
 #include "bedrock/server/server_text_settings.h"
 #include "bedrock/world/events/server_network_events.h"
 #include "bedrock/world/game_callbacks.h"
@@ -106,7 +107,8 @@ protected:
 private:
     GameCallbacks &callbacks_;  // +144
     Bedrock::NonOwnerPointer<ILevel> level_;
-    ServerNetworkSystem &network_;
+    ServerPlayerLoader player_loader_;  // +176
+    ServerNetworkSystem &network_;                  // +200
     PrivateKeyManager &server_keys_;
     ServerLocator &server_locator_;
     gsl::not_null<PacketSender *> packet_sender_;  // +200
@@ -124,7 +126,7 @@ private:
     Bedrock::NonOwnerPointer<TextFilteringProcessor> text_filtering_processor_;
     std::unique_ptr<ClientBlobCache::Server::ActiveTransfersManager> client_cache_manager_;
     std::unordered_map<std::uint64_t, std::string> server_storage_for_clients_connecting_attempt_;
-    std::unordered_map<std::string, NonceWithTTL> player_nonces_;
+    std::unordered_map<std::string, Social::Nonce> player_nonces_;
     std::unique_ptr<ClassroomModeNetworkHandler> companion_handler_;
     Bedrock::Threading::Mutex validate_player_mutex_;
     bool allow_incoming_;

@@ -196,11 +196,6 @@ std::string get_filename_formatted_date_time()
 
 sentry_value_t on_crash(const sentry_ucontext_t *ctx, const sentry_value_t event, void * /*closure*/)
 {
-    if (!should_print(ctx)) {
-        sentry_value_decref(event);
-        return sentry_value_new_null();
-    }
-
     const auto stacktrace = cpptrace::generate_trace();
     print_crash_message(std::cerr, ctx);
     print_stacktrace(std::cerr, stacktrace);
@@ -234,6 +229,8 @@ CrashHandler::CrashHandler()
     sentry_options_set_release(options, std::string(release).c_str());
     sentry_options_set_on_crash(options, on_crash, nullptr);
     sentry_options_set_environment(options, is_dev ? "development" : "production");
+    sentry_options_set_enable_logs(options, 0);
+    sentry_options_set_enable_metrics(options, 0);
     sentry_init(options);
 }
 

@@ -22,9 +22,9 @@ How it works:
   4. Group results by C++ scope and write a per-platform symbols file.
 
 With `--pdb`, a Windows config's symbols are resolved by name from a PDB
-instead (via `pdbtool` -- install it with `cargo install pdbtool`). Names with
-no public record in the PDB -- lambdas, function-local statics -- fall back to
-a byte-pattern scan of the PE (read next to the PDB, or downloaded).
+instead, via the Windows DbgHelp API (dbghelp.dll -- no external tool). Names
+the PDB can't pin to a unique address -- ICF-folded or overloaded functions --
+fall back to a byte-pattern scan of the PE (read next to the PDB, or downloaded).
 
 The signature configs live in `scripts/configs/` next to this script. Each
 scanned config writes `src/bedrock/symbols/<platform>.h`, a `std::array` of
@@ -35,7 +35,10 @@ when bumping BDS.
 Dependencies are declared inline (PEP 723) and resolved by uv into an ephemeral
 environment -- no manual install. Bump each config's `version` key first, then
 pass the platform config(s) to scan:
-    # Both platforms
+    # Both platforms (defaults to configs/windows.toml + configs/linux.toml)
+    uv run --script scripts/dump_symbols.py
+
+    # Same, explicit
     uv run --script scripts/dump_symbols.py scripts/configs/windows.toml scripts/configs/linux.toml
 
     # Windows only
@@ -61,11 +64,10 @@ import hashlib
 import logging
 import os
 import re
-import shutil
 import struct
-import subprocess
 import sys
 from collections import defaultdict
+from ctypes import wintypes
 from dataclasses import dataclass
 from pathlib import Path
 from zipfile import ZipFile
@@ -81,6 +83,9 @@ import tomlkit
 SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
 OUTPUT_DIR = REPO_ROOT / "src" / "bedrock" / "symbols"
+CONFIGS_DIR = SCRIPT_DIR / "configs"
+# Scanned when no config is passed on the command line.
+DEFAULT_CONFIGS = (CONFIGS_DIR / "windows.toml", CONFIGS_DIR / "linux.toml")
 
 # --- BDS download -------------------------------------------------------------
 
@@ -357,64 +362,46 @@ def scan_signatures(section: lief.Section, config: dict) -> dict[str, int]:
     return result
 
 
-# --- PDB symbol lookup --------------------------------------------------------
+# --- PDB symbol lookup (DbgHelp) ----------------------------------------------
 
-# Symbol offsets are read from a PDB with Microsoft's `pdbtool` (from the pdb-rs
-# project, https://github.com/microsoft/pdb-rs -- `cargo install pdbtool`). It
-# dumps the public symbol table in seconds, where dbghelp takes minutes on a
-# large PDB. PDBs are a Windows-only debug format, all that --pdb targets.
+# Symbols are resolved from the PDB with the Windows DbgHelp API (dbghelp.dll,
+# part of Windows -- no external tool). A single `SymEnumSymbols` pass buckets
+# every function by its undecorated `Scope::method` name; a config entry
+# resolves when exactly one address carries that name. Overloaded functions
+# share an undecorated name, so those are disambiguated with `SymFromName` (an
+# exact mangled lookup, cheap once the enumeration has loaded the symbols).
+# Anything the PDB can't pin to one address -- ICF-folded or overloaded
+# non-public functions -- falls back to a byte-pattern scan of the PE.
 
-# `pdbtool dump <pdb> psi` line: "... S_PUB32: [ssss:oooooooo], flags: ..., NAME"
-_PUBLIC_RE = re.compile(r"S_PUB32: \[([0-9a-fA-F]+):([0-9a-fA-F]+)\], flags: [0-9a-fA-F]+, (.+)")
-# `pdbtool dump <pdb> sections` line: "s [ssss:00000000] rva: rrrrrrrr + ..."
-_SECTION_RE = re.compile(r"^s \[([0-9a-fA-F]+):[0-9a-fA-F]+\] rva: ([0-9a-fA-F]+) ")
+_MAX_SYM_NAME = 2000
+_SYMOPT_FAIL_CRITICAL_ERRORS = 0x00000200
+_SYMOPT_EXACT_SYMBOLS = 0x00000400
+_SYMOPT_NO_PROMPTS = 0x00080000
 _UNDNAME_NAME_ONLY = 0x1000
 
 
-def _find_pdbtool() -> str:
-    """Locate the pdbtool executable on PATH or in the default cargo bin dir."""
-    found = shutil.which("pdbtool")
-    if found:
-        return found
-    cargo_bin = Path.home() / ".cargo" / "bin" / "pdbtool.exe"
-    if cargo_bin.is_file():
-        return str(cargo_bin)
-    raise click.ClickException("pdbtool not found -- install it with `cargo install pdbtool`")
+class _SYMBOL_INFO(ctypes.Structure):
+    # DbgHelp SYMBOL_INFO; `Name` is a trailing variable-length buffer.
+    _fields_ = [
+        ("SizeOfStruct", wintypes.ULONG),
+        ("TypeIndex", wintypes.ULONG),
+        ("Reserved", ctypes.c_ulonglong * 2),
+        ("Index", wintypes.ULONG),
+        ("Size", wintypes.ULONG),
+        ("ModBase", ctypes.c_ulonglong),
+        ("Flags", wintypes.ULONG),
+        ("Value", ctypes.c_ulonglong),
+        ("Address", ctypes.c_ulonglong),
+        ("Register", wintypes.ULONG),
+        ("Scope", wintypes.ULONG),
+        ("Tag", wintypes.ULONG),
+        ("NameLen", wintypes.ULONG),
+        ("MaxNameLen", wintypes.ULONG),
+        ("Name", ctypes.c_char * 1),
+    ]
 
 
-def _pdbtool_lines(pdbtool: str, pdb_path: Path, command: str):
-    """Run `pdbtool dump <pdb> <command>` and yield its stdout lines."""
-    proc = subprocess.Popen(
-        [pdbtool, "--quiet", "dump", str(pdb_path), command],
-        stdout=subprocess.PIPE,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-    )
-    try:
-        yield from proc.stdout
-    finally:
-        proc.stdout.close()
-        if proc.wait() != 0:
-            raise click.ClickException(f"pdbtool dump {command} failed for {pdb_path}")
-
-
-def _load_public_symbols(pdbtool: str, pdb_path: Path) -> dict[str, int]:
-    """Return {decorated name -> RVA} for every public symbol in the PDB."""
-    section_rva = {}
-    for line in _pdbtool_lines(pdbtool, pdb_path, "sections"):
-        match = _SECTION_RE.match(line)
-        if match:
-            section_rva[int(match.group(1), 16)] = int(match.group(2), 16)
-
-    publics = {}
-    for line in _pdbtool_lines(pdbtool, pdb_path, "psi"):
-        match = _PUBLIC_RE.search(line)
-        if match:
-            base = section_rva.get(int(match.group(1), 16))
-            if base is not None:
-                publics[match.group(3).rstrip()] = base + int(match.group(2), 16)
-    return publics
+_NAME_OFFSET = _SYMBOL_INFO.Name.offset
 
 
 def _undecorate(name: str) -> str:
@@ -425,25 +412,105 @@ def _undecorate(name: str) -> str:
     return ""
 
 
-def _scan_pe_fallback(pdb_path: Path, config: dict, unresolved: list, result: dict[str, int]) -> None:
-    """
-    Byte-pattern scan the PE for `unresolved` config entries -- symbols the PDB
-    has no public record of (lambdas, function-local statics). Updates `result`
-    in place. The PE is read from next to the PDB when present, else downloaded.
-    """
-    exe_name = str(config.get("executable", "bedrock_server.exe"))
-    local_exe = pdb_path.parent / exe_name
-    if local_exe.is_file():
-        logger.info(f"Byte-pattern fallback for {len(unresolved)} symbol(s) via {local_exe}")
-        raw = local_exe.read_bytes()
-    else:
-        logger.info(f"Byte-pattern fallback for {len(unresolved)} symbol(s); downloading PE")
-        zip_path = download_server(str(config["version"]), "windows")
-        with ZipFile(zip_path, "r") as zf:
-            with zf.open(exe_name) as fh:
-                raw = fh.read()
+class _PdbSymbols:
+    """A DbgHelp session over a PDB + its PE, for resolving symbols by name."""
 
-    text_section = lief.parse(raw).get_section(".text")
+    def __init__(self, pdb_path: Path, pe_path: Path) -> None:
+        self._dh = ctypes.WinDLL("dbghelp.dll")
+        kernel32 = ctypes.WinDLL("kernel32.dll")
+        kernel32.GetCurrentProcess.restype = wintypes.HANDLE
+        self._dh.SymSetOptions.argtypes = [wintypes.DWORD]
+        self._dh.SymSetOptions.restype = wintypes.DWORD
+        self._dh.SymInitialize.argtypes = [wintypes.HANDLE, wintypes.LPCSTR, wintypes.BOOL]
+        self._dh.SymInitialize.restype = wintypes.BOOL
+        self._dh.SymLoadModuleEx.argtypes = [
+            wintypes.HANDLE, wintypes.HANDLE, wintypes.LPCSTR, wintypes.LPCSTR,
+            ctypes.c_ulonglong, wintypes.DWORD, ctypes.c_void_p, wintypes.DWORD,
+        ]
+        self._dh.SymLoadModuleEx.restype = ctypes.c_ulonglong
+        self._dh.SymFromName.argtypes = [wintypes.HANDLE, wintypes.LPCSTR, ctypes.POINTER(_SYMBOL_INFO)]
+        self._dh.SymFromName.restype = wintypes.BOOL
+        self._enum_cb = ctypes.WINFUNCTYPE(
+            wintypes.BOOL, ctypes.POINTER(_SYMBOL_INFO), wintypes.ULONG, ctypes.c_void_p
+        )
+        self._dh.SymEnumSymbols.argtypes = [
+            wintypes.HANDLE, ctypes.c_ulonglong, wintypes.LPCSTR, self._enum_cb, ctypes.c_void_p,
+        ]
+        self._dh.SymEnumSymbols.restype = wintypes.BOOL
+        self._dh.SymCleanup.argtypes = [wintypes.HANDLE]
+        self._dh.SymCleanup.restype = wintypes.BOOL
+
+        self._proc = kernel32.GetCurrentProcess()
+        self._dh.SymSetOptions(_SYMOPT_EXACT_SYMBOLS | _SYMOPT_FAIL_CRITICAL_ERRORS | _SYMOPT_NO_PROMPTS)
+        if not self._dh.SymInitialize(self._proc, str(pdb_path.parent).encode(), False):
+            raise click.ClickException(f"SymInitialize failed for {pdb_path}")
+        self._base = self._dh.SymLoadModuleEx(self._proc, None, str(pe_path).encode(), None, 0, 0, None, 0)
+        if self._base == 0:
+            self._dh.SymCleanup(self._proc)
+            raise click.ClickException(f"SymLoadModuleEx failed for {pe_path}")
+
+    def enum_named(self, wanted: set[bytes]) -> dict[bytes, set[int]]:
+        """
+        One pass over every module symbol, returning {name -> {RVA}} for symbols
+        whose (undecorated) name is in `wanted`. A `NameLen` pre-check skips the
+        string copy for the millions of non-matching symbols.
+        """
+        want_lens = {len(name) for name in wanted}
+        found: dict[bytes, set[int]] = defaultdict(set)
+        base = self._base
+
+        @self._enum_cb
+        def callback(psym, _size, _ctx):
+            sym = psym.contents
+            if sym.NameLen in want_lens:
+                name = ctypes.string_at(ctypes.addressof(sym) + _NAME_OFFSET, sym.NameLen)
+                if name in wanted:
+                    found[name].add(sym.Address - base)
+            return True
+
+        self._dh.SymEnumSymbols(self._proc, base, b"*", callback, None)
+        return found
+
+    def address_of(self, name: str) -> int | None:
+        """RVA of the symbol with this exact (mangled) name, or None."""
+        buffer = (ctypes.c_byte * (ctypes.sizeof(_SYMBOL_INFO) + _MAX_SYM_NAME))()
+        sym = ctypes.cast(buffer, ctypes.POINTER(_SYMBOL_INFO))
+        sym.contents.SizeOfStruct = ctypes.sizeof(_SYMBOL_INFO)
+        sym.contents.MaxNameLen = _MAX_SYM_NAME
+        if self._dh.SymFromName(self._proc, name.encode(), sym):
+            return sym.contents.Address - self._base
+        return None
+
+    def close(self) -> None:
+        self._dh.SymCleanup(self._proc)
+
+
+def _locate_pe(pdb_path: Path, config: dict) -> Path:
+    """Path to the Windows PE -- next to the PDB, else downloaded and extracted."""
+    exe_name = str(config.get("executable", "bedrock_server.exe"))
+    local = pdb_path.parent / exe_name
+    if local.is_file():
+        return local
+    logger.info(f"{exe_name} not found next to the PDB; downloading")
+    zip_path = download_server(str(config["version"]), "windows")
+    dest = zip_path.parent / exe_name
+    if not dest.is_file():
+        with ZipFile(zip_path, "r") as zf:
+            zf.extract(exe_name, zip_path.parent)
+    return dest
+
+
+def _scan_pe_fallback(
+    pdb_path: Path, config: dict, unresolved: list, result: dict[str, int]
+) -> None:
+    """
+    Byte-pattern scan the PE for `unresolved` config entries -- functions the
+    PDB can't pin to one address (ICF-folded, or overloaded non-publics).
+    Updates `result` in place.
+    """
+    pe_path = _locate_pe(pdb_path, config)
+    logger.info(f"Byte-pattern fallback for {len(unresolved)} symbol(s) via {pe_path}")
+    text_section = lief.parse(pe_path.read_bytes()).get_section(".text")
     if text_section is None:
         raise click.ClickException("No .text section in the PE for the byte-pattern fallback")
 
@@ -462,40 +529,53 @@ def scan_pdb(pdb_path: Path, config: dict) -> dict[str, int]:
     """
     Resolve every config symbol by name from a PDB, returning name -> RVA.
 
-    Each entry's `name` is looked up in the PDB's public symbol table. Names the
-    PDB has no public record for -- lambdas, function-local statics -- fall back
-    to a byte-pattern scan of the PE via `find_signature`. Symbols that neither
-    path resolves map to 0.
+    A single DbgHelp `SymEnumSymbols` pass matches each entry by its undecorated
+    name; overloaded names (shared undecorated form) are disambiguated by their
+    exact mangled name. Functions the PDB can't pin to one address -- ICF-folded,
+    or overloaded non-publics -- fall back to a byte-pattern scan of the PE.
+    Symbols that no path resolves map to 0.
     """
     if sys.platform != "win32":
-        raise click.ClickException("--pdb requires Windows; PDB lookup uses pdbtool and dbghelp")
+        raise click.ClickException("--pdb requires Windows; PDB lookup uses the DbgHelp API")
 
     names = [str(entry["name"]) for entry in config["signatures"]]
-    pdbtool = _find_pdbtool()
-    logger.info(f"Reading public symbols from {pdb_path.name} via pdbtool")
-    publics = _load_public_symbols(pdbtool, pdb_path)
-    logger.info(f"Loaded {len(publics)} public symbols; resolving {len(names)}")
+    pe_path = _locate_pe(pdb_path, config)
+    logger.info(f"Loading {pdb_path.name} via DbgHelp")
+    syms = _PdbSymbols(pdb_path, pe_path)
+    result = {name: 0 for name in names}
+    try:
+        # Match every entry by its undecorated name in a single enumeration.
+        pretty = {name: (_undecorate(name) or name).encode() for name in names}
+        logger.info(f"Scanning module symbols for {len(names)} entries")
+        addrs = syms.enum_named(set(pretty.values()))
 
-    result = {name: publics.get(name, 0) for name in names}
+        ambiguous = []
+        for name in names:
+            hits = addrs.get(pretty[name], set())
+            if len(hits) == 1:
+                result[name] = next(iter(hits))
+            elif len(hits) > 1:
+                ambiguous.append(name)
 
-    # Data symbols are listed by their pretty `Scope::member` name, not a
-    # mangled key. Undecorate the few publics with a matching leaf to find them.
-    misses = [n for n, rva in result.items() if rva == 0 and not n.startswith("?")]
-    if misses:
-        leaf_prefixes = tuple(f"?{n.rsplit('::', 1)[-1]}@" for n in misses)
-        wanted = set(misses)
-        for decorated, rva in publics.items():
-            if decorated.startswith(leaf_prefixes) and _undecorate(decorated) in wanted:
-                result[_undecorate(decorated)] = rva
+        # Overloaded names resolve to several addresses; pick the exact one by
+        # its mangled name (fast now that the enumeration has loaded symbols).
+        for name in ambiguous:
+            rva = syms.address_of(name)
+            if rva is not None:
+                result[name] = rva
+            else:
+                logger.warning(
+                    f"Ambiguous symbol with no public record: {name} "
+                    f"({_undecorate(name)}) -- leaving for byte-pattern fallback"
+                )
+    finally:
+        syms.close()
 
     for name in names:
-        rva = result[name]
-        if rva:
-            logger.info(f"Found symbol: {name} => 0x{rva:x}")
-        else:
-            logger.error(f"Symbol not found in PDB: {name}")
+        if result[name]:
+            logger.info(f"Found symbol: {name} => 0x{result[name]:x}")
 
-    # Names the PDB has no public record for fall back to a byte-pattern scan.
+    # Anything the PDB can't pin to one address falls back to a byte-pattern scan.
     unresolved = [entry for entry in config["signatures"] if result[str(entry["name"])] == 0]
     if unresolved:
         _scan_pe_fallback(pdb_path, config, unresolved, result)
@@ -512,7 +592,6 @@ def scan_pdb(pdb_path: Path, config: dict) -> dict[str, int]:
 @click.argument(
     "inputs",
     nargs=-1,
-    required=True,
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
 )
 @click.option(
@@ -521,18 +600,14 @@ def scan_pdb(pdb_path: Path, config: dict) -> dict[str, int]:
     type=click.Path(exists=True, dir_okay=False, path_type=Path),
     default=None,
     help="PDB for the Windows binary. When given, the windows config's symbols "
-    "are resolved by name from the PDB; names the PDB lacks fall back to a "
-    "byte-pattern scan of the PE (read next to the PDB, or downloaded).",
+    "are resolved by name from the PDB via DbgHelp; names it can't pin uniquely "
+    "fall back to a byte-pattern scan of the PE (read next to the PDB, or downloaded).",
 )
-@click.option(
-    "--dry-run",
-    is_flag=True,
-    default=False,
-    help="Scan and report how many signatures resolve, without writing the "
-    "symbols header. Handy for checking how a config's patterns hold against a "
-    "different BDS version (bump the config 'version' and dry-run it).",
-)
-def main(inputs: tuple[Path, ...], pdb_path: Path | None, dry_run: bool) -> None:
+def main(inputs: tuple[Path, ...], pdb_path: Path | None) -> None:
+    if not inputs:
+        inputs = DEFAULT_CONFIGS
+        logger.info("No config given; scanning default configs: windows.toml, linux.toml")
+
     for config_path in inputs:
         with config_path.open("r") as f:
             config = tomlkit.load(f)
@@ -546,7 +621,9 @@ def main(inputs: tuple[Path, ...], pdb_path: Path | None, dry_run: bool) -> None
             sigs = scan_pdb(pdb_path, config)
         else:
             if pdb_path is not None:
-                logger.warning(f"--pdb applies only to a windows config; scanning {config_path} by signature")
+                logger.warning(
+                    f"--pdb applies only to a windows config; scanning {config_path} by signature"
+                )
 
             zip_path = download_server(version, platform)
 
@@ -575,15 +652,8 @@ def main(inputs: tuple[Path, ...], pdb_path: Path | None, dry_run: bool) -> None
             group_by_scope[get_scope(name)][name] = offset
 
         output_file = OUTPUT_DIR / f"{platform}.h"
-        if dry_run:
-            resolved = sum(1 for v in sigs.values() if v != 0)
-            logger.info(
-                f"Dry run for BDS {version} ({platform}): {resolved}/{len(sigs)} "
-                f"signatures resolved; not writing {output_file}"
-            )
-        else:
-            write_symbols_header(output_file, platform, version, group_by_scope)
-            logger.info(f"Wrote {output_file}")
+        write_symbols_header(output_file, platform, version, group_by_scope)
+        logger.info(f"Wrote {output_file}")
 
 
 # --- Header writer ------------------------------------------------------------
@@ -616,7 +686,9 @@ def write_symbols_header(
     lines.append("")
     lines.append("namespace endstone::runtime {")
     lines.append("")
-    lines.append(f"static constexpr std::array<std::pair<std::string_view, std::size_t>, {non_zero}> symbols = {{{{")
+    lines.append(
+        f"static constexpr std::array<std::pair<std::string_view, std::size_t>, {non_zero}> symbols = {{{{"
+    )
     for scope, scoped_sigs in sorted(group_by_scope.items(), key=lambda x: x[0] or ""):
         if scope is not None:
             lines.append(f"    // {scope}")

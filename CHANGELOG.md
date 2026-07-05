@@ -27,7 +27,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a `Container` block state for reading and modifying the contents of container blocks such as chests, barrels, hoppers, dispensers, droppers, shulker boxes, and furnaces. `block.capture_state()` now returns a `Container` for these blocks, exposing the block's items via `container.inventory`.
 - Added a `Biome` type and `Block.biome` for reading the biome at a block. Biomes can be looked up by name with `Biome.get("minecraft:plains")` and enumerated via `server.get_registry(Biome)`.
 - Added an effect API: `Mob.add_effect()`, `Mob.remove_effect()`, `Mob.has_effect()`, `Mob.get_effect()`, and `Mob.active_effects` apply, remove, and query a living entity's status effects (speed, regeneration, poison, etc.). Effects are described by the new `Effect` type, carrying an effect type, duration in ticks, amplifier, and ambient/particles/icon display flags.
-- Added a chunk loading API: `Dimension.load_chunk()`, `Dimension.unload_chunk()`, and `Dimension.is_chunk_loaded()`. `load_chunk()` keeps a chunk loaded for as long as your plugin needs it (taking effect on the next tick), and `unload_chunk()` releases it again so it can unload once nothing else (a nearby player, the spawn area, etc.) is keeping it loaded.
 
 ### Changed
 
@@ -61,6 +60,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed plugin manager destruction order causing access violations on shutdown.
 - Fixed a crash (`resource deadlock would occur`) when reloading the server or cancelling tasks while an asynchronous task scheduled with `run_task_timer_async`/`run_task_later_async` was pending. The plugin no longer fails to re-enable after `/reload` (#351).
 - Fixed scheduled tasks ignoring their delay when registered during plugin enable or `ServerLoadEvent` on a world that has already been played for a while — they now correctly wait for the requested delay instead of running immediately on the first tick (#317).
+
+## [0.11.5] - 2026-07-05
+
+### Added
+
+- Added support for BDS version 1.26.32.
+
+### Changed
+
+- **BREAKING**: Standalone bundles now ship for both Windows (`endstone-<version>-windows-x86_64.zip`) and Linux (`endstone-<version>-linux-x86_64.zip`), and use [uv](https://docs.astral.sh/uv/) to provision Python on demand instead of shipping a Python interpreter. The included `start.cmd` / `start.sh` installs uv on first run if it isn't already on `PATH`, then launches the server via `uv run` against the bundled wheel. The old `bin/python/` directory is gone; the server folder (`./bedrock_server/`) is unchanged.
+- **BREAKING**: Removed `scripts/autoinstall.sh`. The Linux bundle's `start.sh` now provisions Python via uv on any distro without sudo, superseding the script's apt/dnf/pacman bootstrap.
+
+### Fixed
+
+- Fixed a crash on startup when a behavior pack registered a custom command whose name contained non-ASCII characters, such as Turkish letters (#406).
+- Fixed a crash (`resource deadlock would occur`) when reloading the server or cancelling tasks while an asynchronous task scheduled with `run_task_timer_async`/`run_task_later_async` was pending. The plugin no longer fails to re-enable after `/reload` (#351).
+- Fixed scheduled tasks ignoring their delay when registered during plugin enable or `ServerLoadEvent` on a world that has already been played for a while — they now correctly wait for the requested delay instead of running immediately on the first tick (#317).
+- Fixed a use-after-free crash, reliably reproducible after `/reload`, when a client was disconnected on a connection the server was already closing — the connection-closed teardown no longer runs twice over freed objects (#395).
+- Fixed a server crash on Linux when a campfire finished cooking an item.
 
 ## [0.11.4] - 2026-05-25
 
@@ -1101,7 +1119,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
 
-[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.4...HEAD
+[Unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.11.5...HEAD
+[0.11.5]: https://github.com/EndstoneMC/endstone/compare/v0.11.4...v0.11.5
 [0.11.4]: https://github.com/EndstoneMC/endstone/compare/v0.11.3...v0.11.4
 [0.11.3]: https://github.com/EndstoneMC/endstone/compare/v0.11.2...v0.11.3
 [0.11.2]: https://github.com/EndstoneMC/endstone/compare/v0.11.1...v0.11.2

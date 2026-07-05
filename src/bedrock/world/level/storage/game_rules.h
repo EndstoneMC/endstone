@@ -15,13 +15,16 @@
 #pragma once
 
 #include <functional>
+#include <map>
+#include <optional>
 #include <variant>
 
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/utility/pub_sub/publisher.h"
-#include "bedrock/network/packet/cerealize/schema/dynamic/dynamic_value.h"
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/util/new_type.h"
+
+class CompoundTag;
 
 class GameRule {
 public:
@@ -32,15 +35,17 @@ public:
         Float = 3,
     };
 
-    using Value = std::variant<cereal::NullType, bool, int, float>;
+    using Value = std::variant<std::monostate, bool, int, float>;
 
-    using TagDataNotFoundCallback = std::function<void(GameRule &, const BaseGameVersion &)>;
+    using TagDataNotFoundCallback = std::function<void(GameRule &, const BaseGameVersion &, const CompoundTag &)>;
     using ValidateValueCallback = std::function<bool(const Value &, class ValidationError *)>;
+    using CommandValueRedirectCallback = std::function<Value(const Value &)>;
 
     GameRule();
     [[nodiscard]] bool getBool() const
     {
-        return std::get<bool>(value_);
+        const auto *value = std::get_if<bool>(&value_);
+        return value != nullptr && *value;
     }
 
 private:
@@ -55,8 +60,13 @@ private:
     bool can_be_modified_by_player_;
     TagDataNotFoundCallback tag_not_found_callback_;
     ValidateValueCallback validate_value_callback_;
+    std::map<std::string, int> command_enum_names_;
+    int min_command_version_;
+    int max_command_version_;
+    CommandValueRedirectCallback command_value_redirect_converter_;
+    std::optional<int> command_value_redirect_target_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(GameRule, 184, 144);
+BEDROCK_STATIC_ASSERT_SIZE(GameRule, 280, 240);
 
 struct GameRuleId : NewType<int> {
     GameRuleId() = default;

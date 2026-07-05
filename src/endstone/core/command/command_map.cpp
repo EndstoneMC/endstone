@@ -15,6 +15,7 @@
 #include "endstone/core/command/command_map.h"
 
 #include <algorithm>
+#include <cctype>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -66,7 +67,7 @@ bool EndstoneCommandMap::dispatch(CommandSender &sender, std::string command_lin
 
     // get the command by name
     auto name = args[0];
-    std::ranges::transform(name, name.begin(), ::tolower);
+    std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     const std::shared_ptr<Command> command = getCommand(name);
     if (!command) {
         sender.sendErrorMessage(Translatable("commands.generic.unknown", {args[0]}));
@@ -119,7 +120,7 @@ void EndstoneCommandMap::clearCommands()
 
 std::shared_ptr<Command> EndstoneCommandMap::getCommand(std::string name) const
 {
-    std::ranges::transform(name, name.begin(), ::tolower);
+    std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     // Try to find the custom command we've registered
     if (const auto it = custom_commands_.find(name); it != custom_commands_.end()) {
         return it->second;
@@ -164,7 +165,7 @@ void EndstoneCommandMap::setPluginCommands()
     std::vector<std::string> plugin_names;
     for (auto *plugin : plugins) {
         auto name = plugin->getName();
-        std::ranges::transform(name, name.begin(), ::tolower);
+        std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
         plugin_names.emplace_back(name);
 
         auto commands = plugin->getDescription().getCommands();
@@ -178,7 +179,7 @@ void EndstoneCommandMap::setPluginCommands()
 
 void EndstoneCommandMap::unregisterCommand(std::string name)
 {
-    std::ranges::transform(name, name.begin(), ::tolower);
+    std::ranges::transform(name, name.begin(), [](unsigned char c) { return std::tolower(c); });
     auto &registry = getHandle().getRegistry();
     const auto *signature = registry.findCommand(name);
     if (!signature) {

@@ -2,6 +2,7 @@
 os={{ detect_api.detect_os() }}
 arch={{ detect_api.detect_arch() }}
 build_type=Release
+&:build_type=RelWithDebInfo
 {% if platform.system() == "Windows" %}
 {% set compiler, version, _ = detect_api.detect_msvc_compiler() %}
 compiler={{ compiler }}
@@ -19,6 +20,7 @@ compiler.cppstd=20
 tools.cmake.cmaketoolchain:generator=Ninja
 {% if platform.system() == "Windows" %}
 tools.build:compiler_executables={"c": "clang-cl", "cpp": "clang-cl"}
+sentry-native/*:tools.build:compiler_executables={"c": "cl", "cpp": "cl"}
 {% endif %}
 
 [tool_requires]

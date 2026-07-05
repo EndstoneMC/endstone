@@ -5,9 +5,7 @@ ARG PYTHON_VERSION=3.13
 # ──────────────────────────────────────────────────────────────────────────────
 # Build stage
 #
-# Bullseye is intentional here: its glibc 2.31 is what lets auditwheel tag the
-# wheels as manylinux_2_31 (see AUDITWHEEL_PLAT). The runtime stage below uses a
-# newer Debian release — do not "align" the two without checking the wheel tag.
+# Bullseye's glibc 2.31 is what tags the wheels manylinux_2_31, so keep it.
 # ──────────────────────────────────────────────────────────────────────────────
 FROM python:${PYTHON_VERSION}-slim-bullseye AS builder
 
@@ -37,11 +35,7 @@ ENV CC=clang \
 # Define working directory for the source code.
 WORKDIR /usr/src/endstone
 
-# Install C++ dependencies with Conan first so this layer is cached across
-# source-only changes. .conanrc points conan at the project-local .conan2/
-# home, whose remotes.json registers the EndstoneMC Cloudsmith remote that
-# hosts funchook and other recipes not on conancenter; profiles/default.jinja
-# carries the compiler/libcxx/generator settings for both Linux and Windows.
+# install C++ deps first so this layer caches across source-only changes
 COPY .conanrc .conanrc
 COPY .conan2/remotes.json .conan2/remotes.json
 COPY .conan2/profiles/default .conan2/profiles/default
@@ -82,9 +76,8 @@ ENV PYTHONUNBUFFERED=1 \
     PGID=1000 \
     TZ=UTC
 
-# Install runtime dependencies and create the unprivileged service user. The
-# entrypoint remaps this user to PUID/PGID at startup, then drops to it via gosu.
-# libcurl4 provides libcurl.so.4, which the Bedrock server binary links against.
+# runtime deps and the unprivileged service user
+# libcurl4 provides libcurl.so.4 for the Bedrock server binary
 RUN apt-get update -y -qq \
     && apt-get install -y -qq --no-install-recommends gosu tzdata libcurl4 \
     && apt-get clean -y -qq \

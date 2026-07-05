@@ -95,7 +95,7 @@ private:
     struct vtable_base<DerivedType::MoveOnly> {
         void (*move_to)(storage &, storage &);
         void (*destroy)(storage &);
-        Return (*invoke)(const storage &);
+        Return (*invoke)(const storage &, Xs &&...);
     };
 
     template <>

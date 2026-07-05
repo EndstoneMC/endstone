@@ -110,10 +110,10 @@ enum class BlockProperty : std::uint64_t {
 class BlockType {
 public:
     struct NameInfo {
-        HashedString raw_name;             // +0
-        std::string namespace_name;        // +48
-        HashedString full_name;            // +80
-        HashedString pre_flattening_name;  // +128
+        HashedString raw_name;            // +0
+        std::string namespace_name;       // +48
+        HashedString full_name;           // +80
+        std::string pre_flattening_name;  // +128
     };
     static constexpr int UPDATE_NEIGHBORS = 1;
     static constexpr int UPDATE_CLIENTS = 2;
@@ -127,7 +127,6 @@ public:
     BlockType(const std::string &, int, const Material &);
 
     virtual ~BlockType() = default;
-    [[nodiscard]] virtual std::shared_ptr<BlockActor> newBlockEntity(BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual Block const *getNextBlockPermutation(Block const &) const = 0;
     bool hasTag(const HashedString &) const;
     bool hasTag(const HashType64 &) const;
@@ -333,7 +332,7 @@ public:
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] float getThickness() const;
     void spawnResources(BlockSource &region, const BlockPos &pos, const Block &block, IRandom &randomize,
-                        const ResourceDropsContext &resource_drops_context) const;
+                        const ResourceDropsContext &resource_drops_context, const Actor *actor_context) const;
     ResourceDrops getResourceDrops(const Block &block, IRandom &random,
                                    const ResourceDropsContext &resource_drops_context) const;
     static ItemActor *popResource(BlockSource &region, const BlockPos &pos, const ItemStack &item_stack);
@@ -360,69 +359,64 @@ public:
     std::string description_id;  // +8
 
 private:
-    BlockComponentStorage components_;  // +40
-    NameInfo name_info_;                // +160
-    BlockProperty properties_;
-    bool fancy_;
-    BlockRenderLayer render_layer_;
-    bool render_layer_can_render_as_opaque_;
-    BlockActorType block_entity_type_;
-    float thickness_;
-    bool can_slide_;
-    bool can_react_to_neighbors_during_instatick_;
-    // bool is_interaction_;
-    float gravity_;
-    const Material &material_;
-    bool falling_;
-    float particle_quantity_scalar_;
-    SharedTypes::CreativeItemCategory creative_item_category_;
-    std::string creative_group_;
-    bool is_hidden_in_commands_;
-    bool allows_runes_;
-    bool can_be_broken_from_falling_;
-    bool can_be_original_surface_;
-    bool solid_;
-    bool pushes_out_items_;
-    bool ignore_block_for_inside_cube_renderer_;
-    bool is_trapdoor_;
-    bool is_door_;
-    bool is_opaque_full_block_;
-    float translucency_;
-    bool should_random_tick_extra_layer_;
-    bool is_mob_piece_;
-    bool can_be_extra_block_;
-    bool can_propagate_brightness_;
+    const Material &material_;          // +40
+    BlockComponentStorage components_;  // +48
+    NameInfo name_info_;                // +144
+    BlockProperty properties_;          // +304
+    std::string creative_group_;        // +312
+    float thickness_;                   // +344
+    float translucency_;                // +348
+    SharedTypes::CreativeItemCategory creative_category_;  // +352
+    BlockActorType block_entity_type_;  // +353
+    BlockRenderLayer render_layer_;     // +354
+    bool fancy_ : 1;
+    bool render_layer_can_render_as_opaque_ : 1;
+    bool can_slide_ : 1;
+    bool can_react_to_neighbors_during_instatick_ : 1;
+    bool falling_ : 1;
+    bool is_hidden_in_commands_ : 1;
+    bool allows_runes_ : 1;
+    bool can_be_broken_from_falling_ : 1;
+    bool can_be_original_surface_ : 1;
+    bool solid_ : 1;
+    bool pushes_out_items_ : 1;
+    bool ignore_block_for_inside_cube_renderer_ : 1;
+    bool is_trapdoor_ : 1;
+    bool is_door_ : 1;
+    bool is_opaque_full_block_ : 1;
+    bool should_random_tick_extra_layer_ : 1;
+    bool is_mob_piece_ : 1;
+    bool can_be_extra_block_ : 1;
+    bool can_propagate_brightness_ : 1;
+    bool is_vanilla_ : 1;
+    bool data_driven_vanilla_blocks_and_items_enabled_ : 1;
+    bool requires_correct_tool_for_drops_ : 1;
 
 protected:
-    Brightness light_block_;
-    Brightness light_emission_;
-    Color map_color_;  // +416
-    float friction_;
-    NoteBlockInstrument note_block_instrument_;
-    TintMethod tint_method_;
-    bool return_default_block_on_unidentified_block_state_;
+    Brightness light_block_;                                 // +358
+    Brightness light_emission_;                              // +359
+    Color map_color_;                                        // +360
+    float friction_;                                         // +376
+    TintMethod tint_method_;                                 // +380
+    bool return_default_block_on_unidentified_block_state_;  // +381
 
 private:
-    NewBlockID id_;  // +442
-    BaseGameVersion min_required_game_version_;
-    bool is_vanilla_;
-    std::vector<HashedString> tags_;
-    bool data_driven_vanilla_blocks_and_items_enabled_;
-    AABB visual_shape_;
-    std::int32_t bits_used_;
-    std::int32_t total_bits_used_;
-    std::map<std::uint64_t, BlockStateInstance> states_;  // +640
-    std::unordered_map<HashedString, std::uint64_t> state_name_map_;
-    std::size_t creative_enum_state_;
-    std::vector<std::unique_ptr<Block>> block_permutations_;  // +728
-    Block *default_state_;
-    std::vector<std::unique_ptr<void *>> get_placement_block_callbacks_;
-    Core::Cache<std::uint16_t, const Block *> legacy_data_lookup_table_;
-    std::unique_ptr<void *> block_state_group_;
-    std::unique_ptr<void *> resource_drops_strategy_;
-    IntRange experience_drop_;
-    bool requires_correct_tool_for_drops_;
-    BlockComponentStorage net_ease_component_storage_;
+    NewBlockID id_;                                                       // +382
+    BaseGameVersion min_required_game_version_;                           // +384
+    std::vector<HashedString> tags_;                                      // +416
+    AABB visual_shape_;                                                   // +440
+    std::int32_t bits_used_;                                              // +464
+    std::int32_t total_bits_used_;                                        // +468
+    std::map<std::uint64_t, BlockStateInstance> states_;                  // +472
+    std::unordered_map<HashedString, std::uint64_t> state_name_map_;      // +488
+    std::vector<std::unique_ptr<Block>> block_permutations_;              // +552
+    Block *default_state_;                                                // +576
+    std::vector<std::unique_ptr<void *>> get_placement_block_callbacks_;  // +584
+    Core::Cache<std::uint16_t, const Block *> legacy_data_lookup_table_;  // +608
+    std::unique_ptr<void *> block_state_group_;                           // +680
+    std::unique_ptr<void *> resource_drops_strategy_;                     // +688
+    IntRange experience_drop_;                                            // +696
+    BlockComponentStorage net_ease_component_storage_;                    // +704
 
 public:
     struct AlteredStateCollection {
@@ -439,5 +433,5 @@ public:
     };
 
 private:
-    std::vector<std::shared_ptr<AlteredStateCollection>> altered_state_collections_;
+    std::vector<std::shared_ptr<AlteredStateCollection>> altered_state_collections_;  // +800
 };

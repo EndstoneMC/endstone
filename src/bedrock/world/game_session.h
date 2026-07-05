@@ -25,8 +25,7 @@ class GameSession {
 public:
     GameSession(ClientNetworkSystem &, std::unique_ptr<NetEventCallback>, LoopbackPacketSender &, SubClientId);
     GameSession(ServerNetworkSystem &, std::unique_ptr<ServerNetworkHandler>, LoopbackPacketSender &,
-                std::unique_ptr<NetEventCallback>, std::pair<std::unique_ptr<Level>, OwnerPtr<EntityContext>>,
-                SubClientId);
+                std::pair<std::unique_ptr<Level>, OwnerPtr<EntityContext>>, SubClientId);
 
     [[nodiscard]] Bedrock::NonOwnerPointer<ServerNetworkHandler> getServerNetworkHandler() const;
     [[nodiscard]] Level *getLevel() const;
@@ -37,7 +36,6 @@ private:
     Bedrock::NonOwnerPointer<Level> level_;                            // +48
     std::unique_ptr<ServerNetworkHandler> server_network_handler_;     // +64
     std::unique_ptr<NetEventCallback> legacy_client_network_handler_;  // +72
-    std::unique_ptr<NetEventCallback> client_network_handler_;         // +80
-    LoopbackPacketSender &loopback_packet_sender_;                     // +88
-    SubClientId client_sub_id_;                                        // +96
+    LoopbackPacketSender &loopback_packet_sender_;                     // +80
+    SubClientId client_sub_id_;                                        // +88
 };

@@ -162,8 +162,7 @@ void EndstoneBossBar::send(BossEventUpdateType event_type, Player &player)
     pk->health_percent = progress_;
     pk->color = static_cast<BossBarColor>(color_);
     pk->overlay = static_cast<BossBarOverlay>(style_);
-    pk->darken_screen = hasFlag(BarFlag::DarkenSky);
-    pk->create_world_fog = hasFlag(BarFlag::CreateFog);
+    // BarFlag::DarkenSky / CreateFog dropped from BossEventPacket in BDS 1.26.32 (cereal-only migration)
     handle.sendNetworkPacket(*packet);
 }
 

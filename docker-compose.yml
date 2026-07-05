@@ -8,8 +8,7 @@ services:
     container_name: endstone
     restart: unless-stopped
 
-    # Keep STDIN open and allocate a TTY so the Bedrock server console works
-    # when you run `docker attach endstone`.
+    # keep STDIN open + a TTY so the server console works under `docker attach`
     stdin_open: true
     tty: true
 

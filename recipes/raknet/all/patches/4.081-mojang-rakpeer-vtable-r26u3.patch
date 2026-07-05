@@ -1,0 +1,139 @@
+Mojang RakPeerInterface vtable + RakPeer member layout (BDS 1.26.30)
+
+--- a/Source/RakPeerInterface.h
++++ b/Source/RakPeerInterface.h
+@@ -24,6 +24,7 @@
+ #include "DS_List.h"
+ #include "RakNetSmartPtr.h"
+ #include "RakNetSocket2.h"
++#include <memory>
+ 
+ namespace RakNet
+ {
+@@ -35,6 +36,12 @@
+ struct RakNetBandwidth;
+ class RouterInterface;
+ class NetworkIDManager;
++struct ShadowBanList;
++struct NetworkAdapter;
++
++struct RakPeerConfiguration {
++	bool useJoinfloodProtection;
++};
+ 
+ /// The primary interface for RakNet, RakPeer contains all major functions for the library.
+ /// See the individual functions for what the class can do.
+@@ -47,6 +54,7 @@
+ 
+ 	///Destructor
+ 	virtual ~RakPeerInterface()	{}
++	virtual void InitializeConfiguration(std::unique_ptr<ShadowBanList>)=0;
+ 
+ 	// --------------------------------------------------------------------------------------------Major Low Level Functions - Functions needed by most users--------------------------------------------------------------------------------------------
+ 	/// \brief Starts the network threads, opens the listen port.
+@@ -163,6 +171,7 @@
+ 	/// \param[in] disconnectionNotificationPriority Priority to send ID_DISCONNECTION_NOTIFICATION on.
+ 	/// If you set it to 0 then the disconnection notification won't be sent
+ 	virtual void Shutdown( unsigned int blockDuration, unsigned char orderingChannel=0, PacketPriority disconnectionNotificationPriority=LOW_PRIORITY )=0;
++	virtual bool SetApplicationHandshakeCompleted(AddressOrGUID)=0;
+ 
+ 	/// Returns if the network thread is running
+ 	/// \return true if the network thread is running, false otherwise
+@@ -270,7 +279,6 @@
+ 	/// Cancel a pending connection attempt
+ 	/// If we are already connected, the connection stays open
+ 	/// \param[in] target Which system to cancel
+-	virtual void CancelConnectionAttempt( const SystemAddress target )=0;
+ 
+ 	/// Given a systemAddress, returns an index from 0 to the maximum number of players allowed - 1.
+ 	/// \param[in] systemAddress The SystemAddress we are referring to
+@@ -281,7 +289,6 @@
+ 	/// Given an index, will return a SystemAddress.
+ 	/// \param[in] index Index should range between 0 and the maximum number of players allowed - 1.
+ 	/// \return The SystemAddress
+-	virtual SystemAddress GetSystemAddressFromIndex( unsigned int index )=0;
+ 
+ 	/// Same as GetSystemAddressFromIndex but returns RakNetGUID
+ 	/// \param[in] index Index should range between 0 and the maximum number of players allowed - 1.
+@@ -314,7 +321,6 @@
+ 	/// Enable or disable allowing frequent connections from the same IP adderss
+ 	/// This is a security measure which is disabled by default, but can be set to true to prevent attackers from using up all connection slots
+ 	/// \param[in] b True to limit connections from the same ip to at most 1 per 100 milliseconds.
+-	virtual void SetLimitIPConnectionFrequency(bool b)=0;
+ 
+ 	// --------------------------------------------------------------------------------------------Pinging Functions - Functions dealing with the automatic ping mechanism--------------------------------------------------------------------------------------------
+ 	/// Send a ping to the specified connected system.
+@@ -357,6 +363,8 @@
+ 	/// Returns 0 if the system is unknown
+ 	/// \param[in] systemIdentifier Which system we are referring to
+ 	virtual RakNet::Time GetClockDifferential( const AddressOrGUID systemIdentifier )=0;
++	virtual void SetAllowUnconnectedPings(bool)=0;
++	virtual bool GetAllowUnconnectedPings(void) const=0;
+ 
+ 	// --------------------------------------------------------------------------------------------Static Data Functions - Functions dealing with API defined synchronized memory--------------------------------------------------------------------------------------------
+ 	/// Sets the data to send along with a LAN server discovery or offline ping reply.
+@@ -370,7 +378,6 @@
+ 	/// \param[out] data A pointer to a copy of the data passed to \a SetOfflinePingResponse()
+ 	/// \param[out] length A pointer filled in with the length parameter passed to SetOfflinePingResponse()
+ 	/// \sa SetOfflinePingResponse
+-	virtual void GetOfflinePingResponse( char **data, unsigned int *length )=0;
+ 
+ 	//--------------------------------------------------------------------------------------------Network Functions - Functions dealing with the network in general--------------------------------------------------------------------------------------------
+ 	/// Return the unique address identifier that represents you or another system on the the network and is based on your local IP / port.
+@@ -383,7 +390,6 @@
+ 	/// \brief Sets your internal IP address, for platforms that do not support reading it, or to override a value
+ 	/// \param[in] systemAddress. The address to set. Use SystemAddress::FromString() if you want to use a dotted string
+ 	/// \param[in] index When you have multiple internal IDs, which index to set?
+-	virtual void SetInternalID(SystemAddress systemAddress, int index=0)=0;
+ 
+ 	/// Return the unique address identifier that represents you on the the network and is based on your externalIP / port
+ 	/// (the IP / port the specified player uses to communicate with you)
+@@ -392,6 +398,7 @@
+ 
+ 	/// Return my own GUID
+ 	virtual const RakNetGUID GetMyGUID(void) const=0;
++	virtual void resetMyGUID(void)=0;
+ 
+ 	/// Return the address bound to a socket at the specified index
+ 	virtual SystemAddress GetMyBoundAddress(const int socketIndex=0)=0;
+@@ -419,7 +426,6 @@
+ 	/// Returns false if system address was not found or client public key is not known
+ 	/// \param[in] input The RakNetGUID of the system
+ 	/// \param[in] client_public_key The connected client's public key is copied to this address.  Buffer must be cat::EasyHandshake::PUBLIC_KEY_BYTES bytes in length.
+-	virtual bool GetClientPublicKeyFromSystemAddress( const SystemAddress input, char *client_public_key ) const=0;
+ 
+ 	/// Set the time, in MS, to use before considering ourselves disconnected after not being able to deliver a reliable message.
+ 	/// Default time is 10,000 or 10 seconds in release and 30,000 or 30 seconds in debug.
+@@ -436,6 +442,8 @@
+ 	/// \param[in] target Which system to get this for.  UNASSIGNED_SYSTEM_ADDRESS to get the default
+ 	/// \return The current MTU size
+ 	virtual int GetMTUSize( const SystemAddress target ) const=0;
++	virtual unsigned int GetNumberOfAdapters(void)=0;
++	virtual NetworkAdapter& GetLocalAdapter(unsigned int)=0;
+ 
+ 	/// Returns the number of IP addresses this system has internally. Get the actual addresses from GetLocalIP()
+ 	virtual unsigned GetNumberOfAddresses( void )=0;
+--- a/Source/RakPeer.h
++++ b/Source/RakPeer.h
+@@ -62,6 +62,13 @@
+ 
+ 	///Destructor
+ 	virtual ~RakPeer();
++	void InitializeConfiguration(std::unique_ptr<ShadowBanList>);
++	bool SetApplicationHandshakeCompleted(AddressOrGUID);
++	void SetAllowUnconnectedPings(bool);
++	bool GetAllowUnconnectedPings(void) const;
++	void resetMyGUID(void);
++	unsigned int GetNumberOfAdapters(void);
++	NetworkAdapter& GetLocalAdapter(unsigned int);
+ 
+ 	// --------------------------------------------------------------------------------------------Major Low Level Functions - Functions needed by most users--------------------------------------------------------------------------------------------
+ 	/// \brief Starts the network threads and opens the listen port.
+@@ -805,6 +812,7 @@
+ 		offlinePingResponse_Mutex,
+ 		NUMBER_OF_RAKPEER_MUTEXES
+ 	};
++	void *shadowBanList;  // Mojang ABI placeholder (std::unique_ptr<ShadowBanList>)
+ 	SimpleMutex rakPeerMutexes[ NUMBER_OF_RAKPEER_MUTEXES ];
+ 	///RunUpdateCycle is not thread safe but we don't need to mutex calls. Just skip calls if it is running already
+ 

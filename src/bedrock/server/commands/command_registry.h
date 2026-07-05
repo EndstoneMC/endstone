@@ -28,6 +28,7 @@
 #include <fmt/format.h>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/forward.h"
 #include "bedrock/core/utility/type_id.h"
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/platform/brstd/copyable_function.h"
@@ -417,6 +418,8 @@ private:
     std::unordered_set<int> allow_empty_symbols_;                                                // +792
     CommandOverrideFunctor command_override_functor_;
     std::unique_ptr<CommandRunStats> command_run_stats_;
+    std::string (*auto_complete_player_mention_)(const std::string &, const PlayerListEntries &,
+                                                 AutoCompleteInformation &);
 };
 
 enum class CommandParameterOption : std::uint8_t {

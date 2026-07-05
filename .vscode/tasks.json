@@ -2,59 +2,81 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Install",
+            "label": "Conan: Install",
+            "type": "process",
+            "command": "conan",
+            "args": [
+                "install",
+                ".",
+                "-of",
+                "build/conan_out",
+                "--build=missing"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake: Configure",
+            "type": "cmake",
+            "command": "configure",
+            "preset": "conan-relwithdebinfo",
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake: Copy compile_commands.json",
             "type": "shell",
-            "command": "rm -rf ./build/package && uv pip install -U . -C build-dir=./build -v",
+            "command": "cp -f \"${workspaceFolder}/build/conan_out/build/RelWithDebInfo/compile_commands.json\" \"${workspaceFolder}/compile_commands.json\"",
             "windows": {
-                "command": "Remove-Item -Recurse -Force .\\build\\package -ErrorAction SilentlyContinue; uv pip install -U . -C build-dir=./build -v"
+                "command": "Copy-Item -LiteralPath \"${workspaceFolder}/build/conan_out/build/RelWithDebInfo/compile_commands.json\" -Destination \"${workspaceFolder}/compile_commands.json\" -Force"
             },
             "options": {
                 "cwd": "${workspaceFolder}"
             },
+            "problemMatcher": []
+        },
+        {
+            "label": "Project: configure",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Conan: Install",
+                "CMake: Configure",
+                "CMake: Copy compile_commands.json"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Project: Build",
+            "type": "cmake",
+            "command": "build",
+            "preset": "conan-relwithdebinfo",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "dedicated",
-                "clear": true
-            }
+            "problemMatcher": "$gcc"
         },
         {
-            "label": "Run",
+            "label": "Project: Install",
             "type": "shell",
-            "command": "uv run --no-project endstone",
+            "command": "rm -rf build/package && uv pip install -U . -C build-dir=./build --verbose",
+            "windows": {
+                "command": "Remove-Item -Recurse -Force build/package; uv pip install -U . -C build-dir=./build --verbose"
+            },
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "dependsOn": "Install",
-            "dependsOrder": "sequence",
-            "isBackground": true,
-            "problemMatcher": {
-                "pattern": [
-                    {
-                        "regexp": "^never-matches-anything$"
-                    }
-                ],
-                "background": {
-                    "activeOnStart": true,
-                    "beginsPattern": "^.+$",
-                    "endsPattern": "^.+$"
-                }
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Scripts: Dump Symbols",
+            "type": "shell",
+            "command": "uv run --script dump_symbols.py",
+            "options": {
+                "cwd": "${workspaceFolder}/scripts"
             },
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": true,
-                "panel": "dedicated",
-                "clear": false
-            }
+            "problemMatcher": []
         }
     ]
 }

@@ -40,7 +40,7 @@ private:
     BlockPos block_{BlockPos::ZERO};
     Vec3 pos_{Vec3::ZERO};
     WeakEntityRef entity_{nullptr};
-    AABB entity_aabb_{0, 0, 0, 0, 0, 0};
+    AABB entity_aabb_{};
     bool is_hit_liquid_{false};
     FacingID liquid_facing_{0};
     BlockPos liquid_{BlockPos::ZERO};

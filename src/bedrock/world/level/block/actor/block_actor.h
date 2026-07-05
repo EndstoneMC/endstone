@@ -14,20 +14,18 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
-#include <vector>
 
 #include "bedrock/core/container/enum_set.h"
+#include "bedrock/forward.h"
 #include "bedrock/safety/redactable_string.h"
 #include "bedrock/world/actor/actor_terrain_interlock_data.h"
 #include "bedrock/world/item/save_context.h"
 #include "bedrock/world/level/block/actor/block_actor_type.h"
 #include "bedrock/world/level/block/block.h"
 
-class Container;
-class IConstBlockSource;
 class ILevel;
-class PistonBlockActor;
 
 class BlockActor {
 public:
@@ -43,58 +41,12 @@ public:
 
     BlockActor(BlockActorType, const BlockPos &, const std::string &);
     virtual ~BlockActor() = default;
-    virtual void load(ILevel &, const CompoundTag &, DataLoadHelper &) = 0;
-    virtual bool save(CompoundTag &, const SaveContext &) const = 0;
-    virtual bool saveItemInstanceData(CompoundTag &, const SaveContext &) const = 0;
-    virtual void saveBlockData(CompoundTag &, BlockSource &) const = 0;
-    virtual void loadBlockData(const CompoundTag &, BlockSource &, DataLoadHelper &) = 0;
-    virtual void onCustomTagLoadDone(BlockSource &) = 0;
-    [[nodiscard]] virtual bool isPermanentlyRendered() const = 0;
-    [[nodiscard]] virtual bool isWithinRenderDistance(const Vec3 &) const = 0;
-    virtual void tick(BlockSource &) = 0;
-    virtual void onChanged(BlockSource &) = 0;
-    virtual void onPlace(BlockSource &) = 0;
-    virtual void onMove() = 0;
-    virtual void onRemoved(BlockSource &) = 0;
-    [[nodiscard]] virtual bool isPreserved(BlockSource &) const = 0;
-    virtual bool shouldPreserve(BlockSource &) = 0;
-    virtual void triggerEvent(int, int) = 0;
-    virtual void onNeighborChanged(BlockSource &, const BlockPos &) = 0;
-    [[nodiscard]] virtual float getShadowRadius(BlockSource &) const = 0;
-    [[nodiscard]] virtual bool hasAlphaLayer() const = 0;
-    virtual BlockActor *getCrackEntity(BlockSource &, const BlockPos &) = 0;
-    [[nodiscard]] virtual AABB getCollisionShape(const IConstBlockSource &) const = 0;
-    virtual void getDebugText(std::vector<std::string> &, const BlockPos &, const BlockSource *) const = 0;
-    [[nodiscard]] virtual const Bedrock::Safety::RedactableString &getCustomName() const = 0;
-    [[nodiscard]] virtual std::string getName() const = 0;
-    virtual void setFilteredNameTag(const std::string &) = 0;
-    virtual void setCustomName(const Bedrock::Safety::RedactableString &) = 0;
-    virtual std::string getImmersiveReaderText(BlockSource &) = 0;
-    virtual PistonBlockActor *getOwningPiston(BlockSource &) = 0;
-    [[nodiscard]] virtual const PistonBlockActor *getOwningPiston(BlockSource &) const = 0;
-    virtual Container *getContainer() = 0;
-    [[nodiscard]] virtual const Container *getContainer() const = 0;
-
-    void setChanged() { properties_.insert(Property::Changed); }
-
-    [[nodiscard]] bool isChanged() const { return properties_.contains(Property::Changed); }
 
     [[nodiscard]] BlockActorType getType() const { return type_; }
 
-    int tick_count;
-
 protected:
-    int repair_cost_;
-    BlockPos position_;
-    AABB bb_;
-    BlockActorRendererId renderer_id_;
-    const BlockActorType type_;
-    Properties properties_;
-    Bedrock::Safety::RedactableString custom_name_;
-    std::string filtered_custom_name_;
-    ActorTerrainInterlockData terrain_interlock_data_;
-
-    // private:
-    //     bool changed_;
+    BlockPos position_;          // +8
+    const BlockActorType type_;  // +20
+    std::unique_ptr<BlockActorDynamicPropertiesComponent> dynamic_properties_;  // +24
 };
-BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 184, 160);
+BEDROCK_STATIC_ASSERT_SIZE(BlockActor, 32, 32);

@@ -14,8 +14,7 @@
 
 #include "endstone/core/command/defaults/ban_ip_command.h"
 
-// <SocketIncludes.h> pulls in <winsock2.h>/<windows.h>; keep their min()/max()
-// macros and extra Win32 surface out of the translation unit.
+// suppress the min/max macros and Win32 surface that <SocketIncludes.h> drags in via <windows.h>
 #ifdef _WIN32
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN

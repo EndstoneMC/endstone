@@ -32,6 +32,7 @@
 #include "bedrock/world/level/dimension/dimension_type.h"
 #include "bedrock/world/level/level_seed.h"
 
+class Actor;
 class ILevel;
 class Level;
 class Material;
@@ -56,6 +57,7 @@ public:
     [[nodiscard]] virtual Material const &getMaterial(BlockPos const &) const = 0;
     [[nodiscard]] virtual Material const &getMaterial(int, int, int) const = 0;
     [[nodiscard]] virtual bool hasBorderBlock(BlockPos) const = 0;
+    [[nodiscard]] virtual bool hasChunk(ChunkPos const &, bool) const = 0;
     [[nodiscard]] virtual bool hasChunksAt(Bounds const &, bool) const = 0;
     [[nodiscard]] virtual bool hasChunksAt(BlockPos const &, int, bool) const = 0;
     [[nodiscard]] virtual bool hasChunksAt(AABB const &, bool) const = 0;
@@ -117,14 +119,15 @@ public:
     [[nodiscard]] virtual bool isSolidBlockingBlock(int, int, int) const = 0;
     [[nodiscard]] virtual bool areChunksFullyLoaded(BlockPos const &, int) const = 0;
     virtual bool mayPlace(const Block &, const BlockPos &, FacingID, Actor *, bool, Vec3) = 0;
-    [[nodiscard]] virtual bool canDoBlockDrops() const = 0;
-    [[nodiscard]] virtual bool canDoContainedItemDrops() const = 0;
+    [[nodiscard]] virtual bool canDoBlockDrops(const Actor *instigating_actor) const = 0;
+    [[nodiscard]] virtual bool canDoContainedItemDrops(const Actor *instigating_actor) const = 0;
     [[nodiscard]] virtual bool isInstaticking(BlockPos const &) const = 0;
     virtual bool checkBlockDestroyPermissions(Actor &, const BlockPos &, const ItemStackBase &, bool) = 0;
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
     virtual void postGameEvent(Actor *, const GameEvent &, const BlockPos &, const Block *) = 0;
     virtual void fireBlockChanged(const BlockPos &, uint32_t, const Block &, const Block &, int,
                                   BlockChangedEventTarget, const ActorBlockSyncMessage *, Actor *) = 0;
+    virtual void fireBlockEntityChanged(BlockActor &) = 0;
     virtual void blockEvent(const BlockPos &, int, int) = 0;
 };
 

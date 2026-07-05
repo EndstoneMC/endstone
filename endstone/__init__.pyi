@@ -969,6 +969,8 @@ class Skin:
         """
         ...
 
+__minecraft_version__ = "26.32"
+
 class Registry(typing.Generic[_T]):
     """
     Presents a registry

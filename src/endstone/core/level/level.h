@@ -45,6 +45,8 @@ public:
     [[nodiscard]] ::Level &getHandle() const;
 
 private:
+    void addDimension(::Dimension &dimension);
+
     EndstoneServer &server_;
     ::Level &level_;
     std::map<int, std::shared_ptr<Dimension>> dimensions_;
