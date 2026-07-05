@@ -101,19 +101,12 @@ jobs:
           CIBW_BUILD: ${{ matrix.python-tag }}-${{ matrix.platform }}
           CIBW_BUILD_VERBOSITY: 1
           CIBW_ENVIRONMENT_PASS_LINUX: "SENTRY_AUTH_TOKEN"
-          # cibuildwheel copies the project into the Linux container
-          # rather than bind-mounting it, so conan writes to
-          # /project/.conan2 (per .conanrc) are isolated from the host
-          # and lost on container cleanup. Bind-mount the workspace's
-          # .conan2 over the container's /project/.conan2 so packages
-          # persist to the host for actions/cache to save.
+          # bind-mount .conan2 so conan packages survive the CIBW container and reach the host cache
           CIBW_CONTAINER_ENGINE: "docker; create_args: --volume ${{ github.workspace }}/.conan2:/project/.conan2"
 
       - name: Reclaim ownership of project-local Conan home (Linux)
         if: always() && runner.os == 'Linux'
-        # The volume-mounted .conan2 is written by root inside the
-        # container; hand it back to the runner user so actions/cache
-        # can save it.
+        # .conan2 is written by root in the container, so hand it back for the cache to save
         run: sudo chown -R "$(id -u):$(id -g)" .conan2
 
       - name: Save Conan cache

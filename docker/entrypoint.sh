@@ -1,16 +1,10 @@
 #!/usr/bin/env bash
-#
-# Container entrypoint for the Endstone server.
-#
-# Remaps the unprivileged "endstone" user to the host-provided PUID/PGID so that
-# files written to the bind-mounted /data volume stay owned by the right user,
-# then drops privileges and runs the given command.
+# Container entrypoint: remap the endstone user to PUID/PGID so /data stays host-owned, then drop privileges.
 set -euo pipefail
 
 DATA_DIR="/data"
 
-# If the container was started as a non-root user (e.g. `docker run --user`),
-# we cannot remap ids or fix ownership — just run the command as that user.
+# started as non-root: can't remap ids, so run the command as-is
 if [ "$(id -u)" -ne 0 ]; then
     exec "$@"
 fi
@@ -25,8 +19,7 @@ if [ "$(id -u endstone)" != "$PUID" ]; then
     usermod -o -u "$PUID" endstone
 fi
 
-# Take ownership of the data directory. Only chown files that are not already
-# owned by the service user, so this stays fast even for large worlds.
+# chown only files not already owned by endstone, so large worlds stay fast
 mkdir -p "$DATA_DIR"
 find "$DATA_DIR" \! -user endstone -exec chown endstone:endstone {} + || true
 

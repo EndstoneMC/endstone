@@ -31,9 +31,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .value("EAST", BlockFace::East)
         .finalize();
 
-    // Register the class handles up front so their mutual references (e.g.
-    // BlockType::createBlockData -> BlockData, BlockData::getType -> BlockType)
-    // resolve to Python names instead of C++ names in the generated signatures.
+    // register class handles up front so cross-references render as Python names in the stubs
     auto block_type = py::class_<BlockType>(m, "BlockType", "Represents a block type.");
     auto block_data = py::class_<BlockData>(m, "BlockData", "Represents the data related to a live block");
     auto block_state = py::class_<BlockState>(

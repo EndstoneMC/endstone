@@ -80,8 +80,7 @@ addopts = ["--ignore=tests/endstone_test"]
 [tool.ruff]
 line-length = 120
 lint.extend-select = ["I", "F"]
-# Keep generated stubs LF on every OS (matches .gitattributes eol=lf); otherwise
-# ruff formats the .pyi with CRLF on Windows and git flags them as modified.
+# keep generated .pyi LF on every OS so ruff doesn't emit CRLF on Windows
 format.line-ending = "lf"
 
 [tool.cibuildwheel]
