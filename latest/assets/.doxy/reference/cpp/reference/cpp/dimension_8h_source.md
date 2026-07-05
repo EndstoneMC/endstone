@@ -69,6 +69,12 @@ public:
 
     [[nodiscard]] virtual std::vector<std::unique_ptr<Chunk>> getLoadedChunks() = 0;
 
+    [[nodiscard]] virtual bool isChunkLoaded(int x, int z) const = 0;
+
+    virtual bool loadChunk(int x, int z) = 0;
+
+    virtual bool unloadChunk(int x, int z) = 0;
+
     [[nodiscard]] virtual Item &dropItem(Location location, const ItemStack &item) = 0;
 
     [[nodiscard]] virtual Actor *spawnActor(Location location, ActorTypeId type) = 0;

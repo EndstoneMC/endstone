@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="58" column="15" bodyfile="include/endstone/level/dimension.h" bodystart="154" bodyend="167"/>
+        <location file="include/endstone/level/location.h" line="58" column="15" bodyfile="include/endstone/level/dimension.h" bodystart="190" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a653e0a6c08b5f87def96e83387e69cb4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
@@ -210,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="65" column="11" bodyfile="include/endstone/level/dimension.h" bodystart="169" bodyend="173"/>
+        <location file="include/endstone/level/location.h" line="65" column="11" bodyfile="include/endstone/level/dimension.h" bodystart="205" bodyend="209"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a8854bf92ad004cab6557d0249547c2d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="72" column="22" bodyfile="include/endstone/level/dimension.h" bodystart="175" bodyend="178"/>
+        <location file="include/endstone/level/location.h" line="72" column="22" bodyfile="include/endstone/level/dimension.h" bodystart="211" bodyend="214"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a5ba25937640328506266b859ef860a64" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -702,7 +702,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/location.h" line="265" column="12" bodyfile="include/endstone/level/dimension.h" bodystart="180" bodyend="190"/>
+        <location file="include/endstone/level/location.h" line="265" column="12" bodyfile="include/endstone/level/dimension.h" bodystart="216" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Location_1a253139f4781dfc8a8ee7c1363d7745a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref> &amp;</type>

@@ -521,6 +521,7 @@
 * **insert\_or\_assign** ([**endstone::CompoundTag**](classendstone_1_1CompoundTag.md))
 * **isReadOnly** ([**endstone::Criteria**](classendstone_1_1Criteria.md))
 * **isIndirect** ([**endstone::DamageSource**](classendstone_1_1DamageSource.md))
+* **isChunkLoaded** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **id** ([**endstone::DimensionCreator**](classendstone_1_1DimensionCreator.md))
 * **isAmbient** ([**endstone::Effect**](classendstone_1_1Effect.md))
 * **isInfinite** ([**endstone::Effect**](classendstone_1_1Effect.md))
@@ -575,6 +576,7 @@
 
 ## l
 
+* **loadChunk** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **Label** ([**endstone::Label**](classendstone_1_1Label.md))
 * **LevelEvent** ([**endstone::LevelEvent**](classendstone_1_1LevelEvent.md))
 * **ListTag** ([**endstone::ListTag**](classendstone_1_1ListTag.md))
@@ -917,6 +919,7 @@
 
 * **update** ([**endstone::BlockState**](classendstone_1_1BlockState.md))
 * **unregisterFrom** ([**endstone::Command**](classendstone_1_1Command.md))
+* **unloadChunk** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **unregister** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::ServiceManager**](classendstone_1_1ServiceManager.md))
 * **unsetPermission** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **updateCommands** ([**endstone::Player**](classendstone_1_1Player.md))

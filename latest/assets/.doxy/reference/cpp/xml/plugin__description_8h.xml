@@ -66,16 +66,20 @@
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
       </node>
-      <node id="32">
+      <node id="34">
         <label>endstone/event/event.h</label>
         <link refid="event_8h_source"/>
-        <childnode refid="24" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="35">
         <label>endstone/event/event_priority.h</label>
         <link refid="event__priority_8h_source"/>
       </node>
@@ -127,7 +131,7 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="27">
+      <node id="29">
         <label>endstone/permissions/permission.h</label>
         <link refid="permission_8h_source"/>
         <childnode refid="2" relation="include">
@@ -136,7 +140,7 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
@@ -144,9 +148,9 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
       <node id="19">
@@ -157,7 +161,7 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="31">
         <label>endstone/permissions/permission_default.h</label>
         <link refid="permission__default_8h_source"/>
       </node>
@@ -182,19 +186,19 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="36">
         <label>endstone/plugin/plugin_load_order.h</label>
         <link refid="plugin__load__order_8h_source"/>
       </node>
-      <node id="30">
+      <node id="32">
         <label>endstone/plugin/plugin_manager.h</label>
         <link refid="plugin__manager_8h_source"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -204,9 +208,9 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -224,16 +228,22 @@
       <node id="2">
         <label>algorithm</label>
       </node>
-      <node id="26">
+      <node id="27">
         <label>cstddef</label>
       </node>
-      <node id="25">
+      <node id="24">
+        <label>cstring</label>
+      </node>
+      <node id="26">
         <label>dlfcn.h</label>
+      </node>
+      <node id="28">
+        <label>endstone/version.h</label>
       </node>
       <node id="6">
         <label>format</label>
       </node>
-      <node id="31">
+      <node id="33">
         <label>functional</label>
       </node>
       <node id="9">
@@ -242,7 +252,7 @@
       <node id="22">
         <label>nonstd/expected.hpp</label>
       </node>
-      <node id="24">
+      <node id="25">
         <label>stdexcept</label>
       </node>
       <node id="3">
@@ -254,7 +264,7 @@
       <node id="18">
         <label>typeinfo</label>
       </node>
-      <node id="28">
+      <node id="30">
         <label>unordered_map</label>
       </node>
       <node id="15">
@@ -390,7 +400,7 @@
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::replace(name_.begin(),<sp/>name_.end(),<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;_&apos;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>version_<sp/>=<sp/>std::move(version);</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>full_name_<sp/>=<sp/>std::format(</highlight><highlight class="stringliteral">&quot;{}<sp/>v{}&quot;</highlight><highlight class="normal">,<sp/>name_,<sp/>version_);</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>api_version_<sp/>=<sp/>ENDSTONE_API_VERSION;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>api_version_<sp/>=<sp/><ref refid="classendstone_1_1Identifier" kindref="compound">ENDSTONE_API_VERSION</ref>;</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61" refid="classendstone_1_1PluginDescription_1a5a2f39ff668525dfa077122be1596328" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[<ref refid="classendstone_1_1Identifier" kindref="compound">nodiscard</ref>]]<sp/>std::string<sp/><ref refid="classendstone_1_1PluginDescription_1a5a2f39ff668525dfa077122be1596328" kindref="member">getName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>name_;<sp/>}</highlight></codeline>

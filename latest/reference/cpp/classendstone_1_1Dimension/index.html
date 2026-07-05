@@ -2819,6 +2819,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-ischunkloaded" class="md-nav__link">
+      <span class="md-ellipsis">
+        function isChunkLoaded
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-isvalid" class="md-nav__link">
       <span class="md-ellipsis">
         function isValid
@@ -2832,9 +2845,35 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-loadchunk" class="md-nav__link">
+      <span class="md-ellipsis">
+        function loadChunk
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-spawnactor" class="md-nav__link">
       <span class="md-ellipsis">
         function spawnActor
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-unloadchunk" class="md-nav__link">
+      <span class="md-ellipsis">
+        function unloadChunk
       </span>
     </a>
 
@@ -2979,11 +3018,23 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-ischunkloaded"><strong>isChunkLoaded</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z) const = 0<br><em>Checks if the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates is loaded.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
 <td style="text-align: left;"><a href="#function-isvalid"><strong>isValid</strong></a> () const = 0<br><em>Checks whether this dimension is still valid (loaded).</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-loadchunk"><strong>loadChunk</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z) = 0<br><em>Requests the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates to be loaded, and keeps it loaded until it is unloaded again.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> *</td>
 <td style="text-align: left;"><a href="#function-spawnactor"><strong>spawnActor</strong></a> (<a href="../classendstone_1_1Location/"><strong>Location</strong></a> location, <a href="../classendstone_1_1Identifier/"><strong>ActorTypeId</strong></a> type) = 0<br><em>Creates an actor at the given</em> <a href="../classendstone_1_1Location/"><em><strong>Location</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Identifier/"><strong>bool</strong></a></td>
+<td style="text-align: left;"><a href="#function-unloadchunk"><strong>unloadChunk</strong></a> (<a href="../classendstone_1_1Identifier/"><strong>int</strong></a> x, <a href="../classendstone_1_1Identifier/"><strong>int</strong></a> z) = 0<br><em>Releases the plugin-owned ticket that</em> <code>loadChunk()</code> <em>placed on the</em><a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -3141,21 +3192,54 @@ For latest updates join the chat on
 <p>the translation key </p>
 <hr>
 
+<h3 id="function-ischunkloaded">function isChunkLoaded<a class="headerlink" href="#function-ischunkloaded" title="Permanent link">&para;</a></h3>
+<p><em>Checks if the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates is loaded.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">isChunkLoaded</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code> X-coordinate of the chunk </li>
+<li><code>z</code> Z-coordinate of the chunk </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><code>true</code> if the chunk is loaded, otherwise <code>false</code> </p>
+<hr>
+
 <h3 id="function-isvalid">function isValid<a class="headerlink" href="#function-isvalid" title="Permanent link">&para;</a></h3>
 <p><em>Checks whether this dimension is still valid (loaded).</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">isValid</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">isValid</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>A <a href="./"><strong>Dimension</strong></a> handle can outlive the underlying dimension if it is unloaded; this returns false once that happens, after which accessing the dimension throws.</p>
 <p><strong>Returns:</strong></p>
 <p><code>true</code> if the dimension is still loaded, <code>false</code> otherwise </p>
 <hr>
 
+<h3 id="function-loadchunk">function loadChunk<a class="headerlink" href="#function-loadchunk" title="Permanent link">&para;</a></h3>
+<p><em>Requests the</em> <a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates to be loaded, and keeps it loaded until it is unloaded again.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">loadChunk</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p>Unlike Java Edition, Bedrock has no synchronous chunk load: this registers a plugin-owned ticking ticket for the chunk, which is honoured on the next server tick (so the chunk may not be available within this call). The chunk is then kept loaded and ticking until removed with <code>unloadChunk()</code>, the server restarts, or the ticket limit is reached. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code> X-coordinate of the chunk </li>
+<li><code>z</code> Z-coordinate of the chunk </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><code>true</code> if the ticket was registered (or already present), otherwise <code>false</code> </p>
+<hr>
+
 <h3 id="function-spawnactor">function spawnActor<a class="headerlink" href="#function-spawnactor" title="Permanent link">&para;</a></h3>
 <p><em>Creates an actor at the given</em> <a href="../classendstone_1_1Location/"><em><strong>Location</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">spawnActor</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span><span class="p">,</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="n">ActorTypeId</span><span class="w"> </span><span class="n">type</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">spawnActor</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span><span class="p">,</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="n">ActorTypeId</span><span class="w"> </span><span class="n">type</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3166,8 +3250,25 @@ For latest updates join the chat on
 <p>Resulting <a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> of this method </p>
 <hr>
 
+<h3 id="function-unloadchunk">function unloadChunk<a class="headerlink" href="#function-unloadchunk" title="Permanent link">&para;</a></h3>
+<p><em>Releases the plugin-owned ticket that</em> <code>loadChunk()</code> <em>placed on the</em><a href="../classendstone_1_1Chunk/"><em><strong>Chunk</strong></em></a> <em>at the given coordinates.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">unloadChunk</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p>This only removes Endstone's own ticket; it never affects <code>/tickingarea</code>s or other holders. The chunk is unloaded once nothing else keeps it loaded (a nearby player, the spawn area, etc.), so this is a no-op in effect while the chunk is still in use.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>x</code> X-coordinate of the chunk </li>
+<li><code>z</code> Z-coordinate of the chunk </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><code>true</code> once the ticket has been released </p>
+<hr>
+
 <h3 id="function-dimension">function ~Dimension<a class="headerlink" href="#function-dimension" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::~</span><span class="n">Dimension</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::~</span><span class="n">Dimension</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 

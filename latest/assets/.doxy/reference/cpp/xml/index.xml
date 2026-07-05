@@ -807,6 +807,9 @@
     <member refid="classendstone_1_1Dimension_1a59ce26e75b00ffc1b6a3dff6ab35331c" kind="function"><name>getHighestBlockAt</name></member>
     <member refid="classendstone_1_1Dimension_1aaf801dc0b5f2d696178b5770d7466d79" kind="function"><name>getHighestBlockAt</name></member>
     <member refid="classendstone_1_1Dimension_1a065a2b1242a809b89dd1502b2ad828b6" kind="function"><name>getLoadedChunks</name></member>
+    <member refid="classendstone_1_1Dimension_1ae5c461371c826a47b3f7cbd060ca9edc" kind="function"><name>isChunkLoaded</name></member>
+    <member refid="classendstone_1_1Dimension_1ae6267ee9775ae738c3ee34d23f77a4fb" kind="function"><name>loadChunk</name></member>
+    <member refid="classendstone_1_1Dimension_1ad609a49160461ba607ca1b0702419538" kind="function"><name>unloadChunk</name></member>
     <member refid="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" kind="function"><name>dropItem</name></member>
     <member refid="classendstone_1_1Dimension_1a0106dd8b17e3394081568a0ba631cb26" kind="function"><name>spawnActor</name></member>
     <member refid="classendstone_1_1Dimension_1aabf69434e780cefd4856459196439fe1" kind="function"><name>getActors</name></member>
@@ -2858,9 +2861,10 @@
   <compound refid="namespaceendstone_1_1core" kind="namespace"><name>endstone::core</name>
   </compound>
   <compound refid="namespaceendstone_1_1detail" kind="namespace"><name>endstone::detail</name>
-    <member refid="detail_8h_1af3be710d43440fb182f40428a8ed98dc" kind="variable"><name>fp_cast</name></member>
+    <member refid="detail_8h_1aaafbe643bff247c7b278b6b70eb12953" kind="variable"><name>fp_cast</name></member>
     <member refid="detail_8h_1a299e6b6b258696a822a5df0b72a3fa37" kind="function"><name>fp_cast</name></member>
     <member refid="detail_8h_1acf4444f81858c5237ba18a115b01108e" kind="function"><name>fp_cast</name></member>
+    <member refid="detail_8h_1af83da4fec3c079e4ffa8c6145c1ee256" kind="function"><name>fp_cast</name></member>
     <member refid="detail_8h_1aecf7182420334f85f53fac02ff6ca4c6" kind="function"><name>getServer</name></member>
     <member refid="format_8h_1a2b4e26cb3a0bd4ab7f195af6db0356ec" kind="function"><name>quoted</name></member>
     <member refid="format_8h_1a0fd5d820edbc381835bfa26afc697ad4" kind="function"><name>join</name></member>
@@ -2985,18 +2989,6 @@
   <compound refid="damage__source_8h" kind="file"><name>damage_source.h</name>
   </compound>
   <compound refid="detail_8h" kind="file"><name>detail.h</name>
-    <member refid="detail_8h_1a5293e6d0f7cb888f6ac099548191fc09" kind="define"><name>ENDSTONE_STRINGIFY</name></member>
-    <member refid="detail_8h_1a8eef1a1b39f5be9d7fdb63f61f6e6f41" kind="define"><name>ENDSTONE_TOSTRING</name></member>
-    <member refid="detail_8h_1ad775ac2522a4205f4c0defcd1015c422" kind="define"><name>ENDSTONE_VERSION_MAJOR</name></member>
-    <member refid="detail_8h_1a47af324054528678a066e32d3b2c8d0c" kind="define"><name>ENDSTONE_VERSION_MINOR</name></member>
-    <member refid="detail_8h_1a1a384214544c4bcb200df812e5ac2bc9" kind="define"><name>ENDSTONE_VERSION_PATCH</name></member>
-    <member refid="detail_8h_1a7b84625b64bb02bf3d457c00053d4037" kind="define"><name>NETWORK_PROTOCOL_VERSION</name></member>
-    <member refid="detail_8h_1a4b2c4ab328be64dd58f83fcfca8cc2e0" kind="define"><name>ENDSTONE_API_VERSION</name></member>
-    <member refid="detail_8h_1a76f9d8327a86f30b035bd7638c69ae92" kind="define"><name>ENDSTONE_VERSION</name></member>
-    <member refid="detail_8h_1a39152d3820ea011eabb0fab37be187f1" kind="define"><name>MINECRAFT_VERSION_MAJOR</name></member>
-    <member refid="detail_8h_1a46e1c4a8288cedb15ba0b66506e3cbcc" kind="define"><name>MINECRAFT_VERSION_MINOR</name></member>
-    <member refid="detail_8h_1ab5ab678dbebc4266524cc369b4cf7634" kind="define"><name>MINECRAFT_VERSION_PATCH</name></member>
-    <member refid="detail_8h_1a3c68e4ff339423244580011bee4b7e0f" kind="define"><name>MINECRAFT_VERSION</name></member>
   </compound>
   <compound refid="enchantment_8h" kind="file"><name>enchantment.h</name>
   </compound>

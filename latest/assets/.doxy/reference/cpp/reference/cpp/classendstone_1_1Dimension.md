@@ -71,8 +71,11 @@ Inherits the following classes: std::enable_shared_from_this< Dimension >
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the level to which this dimension belongs._  |
 | virtual std::vector&lt; std::unique\_ptr&lt; [**Chunk**](classendstone_1_1Chunk.md) &gt; &gt; | [**getLoadedChunks**](#function-getloadedchunks) () = 0<br>_Gets a list of all loaded Chunks._  |
 | virtual std::string | [**getTranslationKey**](#function-gettranslationkey) () const = 0<br>_Get the translation key, suitable for use in a translation component._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**isChunkLoaded**](#function-ischunkloaded) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) z) const = 0<br>_Checks if the_ [_**Chunk**_](classendstone_1_1Chunk.md) _at the given coordinates is loaded._ |
 | virtual [**bool**](classendstone_1_1Identifier.md) | [**isValid**](#function-isvalid) () const = 0<br>_Checks whether this dimension is still valid (loaded)._  |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**loadChunk**](#function-loadchunk) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) z) = 0<br>_Requests the_ [_**Chunk**_](classendstone_1_1Chunk.md) _at the given coordinates to be loaded, and keeps it loaded until it is unloaded again._ |
 | virtual [**Actor**](classendstone_1_1Actor.md) \* | [**spawnActor**](#function-spawnactor) ([**Location**](classendstone_1_1Location.md) location, [**ActorTypeId**](classendstone_1_1Identifier.md) type) = 0<br>_Creates an actor at the given_ [_**Location**_](classendstone_1_1Location.md) _._ |
+| virtual [**bool**](classendstone_1_1Identifier.md) | [**unloadChunk**](#function-unloadchunk) ([**int**](classendstone_1_1Identifier.md) x, [**int**](classendstone_1_1Identifier.md) z) = 0<br>_Releases the plugin-owned ticket that_ `loadChunk()` _placed on the_[_**Chunk**_](classendstone_1_1Chunk.md) _at the given coordinates._ |
 | virtual  | [**~Dimension**](#function-dimension) () = default<br> |
 
 
@@ -487,6 +490,42 @@ the translation key
 
 
 
+### function isChunkLoaded 
+
+_Checks if the_ [_**Chunk**_](classendstone_1_1Chunk.md) _at the given coordinates is loaded._
+```C++
+virtual bool endstone::Dimension::isChunkLoaded (
+    int x,
+    int z
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `x` X-coordinate of the chunk 
+* `z` Z-coordinate of the chunk 
+
+
+
+**Returns:**
+
+`true` if the chunk is loaded, otherwise `false` 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function isValid 
 
 _Checks whether this dimension is still valid (loaded)._ 
@@ -504,6 +543,45 @@ A [**Dimension**](classendstone_1_1Dimension.md) handle can outlive the underlyi
 **Returns:**
 
 `true` if the dimension is still loaded, `false` otherwise 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function loadChunk 
+
+_Requests the_ [_**Chunk**_](classendstone_1_1Chunk.md) _at the given coordinates to be loaded, and keeps it loaded until it is unloaded again._
+```C++
+virtual bool endstone::Dimension::loadChunk (
+    int x,
+    int z
+) = 0
+```
+
+
+
+Unlike Java Edition, Bedrock has no synchronous chunk load: this registers a plugin-owned ticking ticket for the chunk, which is honoured on the next server tick (so the chunk may not be available within this call). The chunk is then kept loaded and ticking until removed with `unloadChunk()`, the server restarts, or the ticket limit is reached. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.
+
+
+
+
+**Parameters:**
+
+
+* `x` X-coordinate of the chunk 
+* `z` Z-coordinate of the chunk 
+
+
+
+**Returns:**
+
+`true` if the ticket was registered (or already present), otherwise `false` 
 
 
 
@@ -540,6 +618,45 @@ virtual Actor * endstone::Dimension::spawnActor (
 **Returns:**
 
 Resulting [**Actor**](classendstone_1_1Actor.md) of this method 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function unloadChunk 
+
+_Releases the plugin-owned ticket that_ `loadChunk()` _placed on the_[_**Chunk**_](classendstone_1_1Chunk.md) _at the given coordinates._
+```C++
+virtual bool endstone::Dimension::unloadChunk (
+    int x,
+    int z
+) = 0
+```
+
+
+
+This only removes Endstone's own ticket; it never affects `/tickingarea`s or other holders. The chunk is unloaded once nothing else keeps it loaded (a nearby player, the spawn area, etc.), so this is a no-op in effect while the chunk is still in use.
+
+
+
+
+**Parameters:**
+
+
+* `x` X-coordinate of the chunk 
+* `z` Z-coordinate of the chunk 
+
+
+
+**Returns:**
+
+`true` once the ticket has been released 
 
 
 

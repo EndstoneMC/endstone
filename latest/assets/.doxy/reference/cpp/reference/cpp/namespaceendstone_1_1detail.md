@@ -40,7 +40,7 @@
 
 | Type | Name |
 | ---: | :--- |
-|  [**Return**](classendstone_1_1Identifier.md)(\*)(Arg...) | [**fp\_cast**](#variable-fp_cast)  <br>_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)._  |
+|  [**Return**](classendstone_1_1Identifier.md)(\*)(Arg...) | [**fp\_cast**](#variable-fp_cast)  <br> |
 
 
 
@@ -63,6 +63,7 @@
 | ---: | :--- |
 |  [**void**](classendstone_1_1Identifier.md) \* | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(\*)(Args...) fp) <br>_Cast a function pointer to void pointer._  |
 |  [**void**](classendstone_1_1Identifier.md) \* | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(Class::\*)(Args...) fp) <br>_Cast a member function pointer to void pointer._  |
+|  [**auto**](classendstone_1_1Identifier.md) | [**fp\_cast**](#function-fp_cast) ([**Return**](classendstone_1_1Identifier.md)(Class::\*)(Arg...), [**void**](classendstone_1_1Identifier.md) \* address) <br>_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)_  |
 |  [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () <br>_Gets the current_ [_**Server**_](classendstone_1_1Server.md) _singleton._ |
 |  [**JoinView**](structendstone_1_1detail_1_1JoinView.md)&lt; [**It**](classendstone_1_1Identifier.md), [**Sentinel**](classendstone_1_1Identifier.md) &gt; | [**join**](#function-join) ([**It**](classendstone_1_1Identifier.md) begin, [**Sentinel**](classendstone_1_1Identifier.md) end, std::string\_view sep) <br> |
 |  [**auto**](classendstone_1_1Identifier.md) | [**join**](#function-join) ([**const**](classendstone_1_1Identifier.md) [**Range**](classendstone_1_1Identifier.md) & range, std::string\_view sep) <br> |
@@ -102,9 +103,8 @@
 
 ### variable fp\_cast 
 
-_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)._ 
 ```C++
-Return(Class::*)(Arg...) endstone::detail::fp_cast(Return(Class::*fp)(Arg...) const, void *address);
+Return(*)(Arg...) endstone::detail::fp_cast(Return(*fp)(Arg...), void *func);
 ```
 
 
@@ -224,6 +224,24 @@ A void pointer to the constant member function.
 
 
         
+
+<hr>
+
+
+
+### function fp\_cast 
+
+_Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)_ 
+```C++
+template<typename Return, typename Class, typename... Arg>
+auto endstone::detail::fp_cast (
+    Return (Class::*)(Arg...),
+    void * address
+) 
+```
+
+
+
 
 <hr>
 

@@ -360,6 +360,137 @@
         </inbodydescription>
         <location file="include/endstone/level/dimension.h" line="125" column="26"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Dimension_1ae5c461371c826a47b3f7cbd060ca9edc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Dimension::isChunkLoaded</definition>
+        <argsstring>(int x, int z) const =0</argsstring>
+        <name>isChunkLoaded</name>
+        <qualifiedname>endstone::Dimension::isChunkLoaded</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Checks if the <ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref> at the given coordinates is loaded. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>X-coordinate of the chunk </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z-coordinate of the chunk </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the chunk is loaded, otherwise <computeroutput>false</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/dimension.h" line="134" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Dimension_1ae6267ee9775ae738c3ee34d23f77a4fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Dimension::loadChunk</definition>
+        <argsstring>(int x, int z)=0</argsstring>
+        <name>loadChunk</name>
+        <qualifiedname>endstone::Dimension::loadChunk</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Requests the <ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref> at the given coordinates to be loaded, and keeps it loaded until it is unloaded again. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Unlike Java Edition, Bedrock has no synchronous chunk load: this registers a plugin-owned ticking ticket for the chunk, which is honoured on the next server tick (so the chunk may not be available within this call). The chunk is then kept loaded and ticking until removed with <computeroutput><ref refid="classendstone_1_1Dimension_1ad609a49160461ba607ca1b0702419538" kindref="member">unloadChunk()</ref></computeroutput>, the server restarts, or the ticket limit is reached. Intended for keeping a handful of chunks resident; it is not suited to loading large regions.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>X-coordinate of the chunk </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z-coordinate of the chunk </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> if the ticket was registered (or already present), otherwise <computeroutput>false</computeroutput> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/dimension.h" line="148" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Dimension_1ad609a49160461ba607ca1b0702419538" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Identifier" kindref="compound">bool</ref></type>
+        <definition>virtual bool endstone::Dimension::unloadChunk</definition>
+        <argsstring>(int x, int z)=0</argsstring>
+        <name>unloadChunk</name>
+        <qualifiedname>endstone::Dimension::unloadChunk</qualifiedname>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Identifier" kindref="compound">int</ref></type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Releases the plugin-owned ticket that <computeroutput><ref refid="classendstone_1_1Dimension_1ae6267ee9775ae738c3ee34d23f77a4fb" kindref="member">loadChunk()</ref></computeroutput> placed on the <ref refid="classendstone_1_1Chunk" kindref="compound">Chunk</ref> at the given coordinates. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This only removes Endstone&apos;s own ticket; it never affects <computeroutput>/tickingarea</computeroutput>s or other holders. The chunk is unloaded once nothing else keeps it loaded (a nearby player, the spawn area, etc.), so this is a no-op in effect while the chunk is still in use.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>X-coordinate of the chunk </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z-coordinate of the chunk </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><computeroutput>true</computeroutput> once the ticket has been released </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/level/dimension.h" line="161" column="18"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Item" kindref="compound">Item</ref> &amp;</type>
         <definition>virtual Item &amp; endstone::Dimension::dropItem</definition>
@@ -401,7 +532,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="135" column="19"/>
+        <location file="include/endstone/level/dimension.h" line="171" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1a0106dd8b17e3394081568a0ba631cb26" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *</type>
@@ -444,7 +575,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="144" column="20"/>
+        <location file="include/endstone/level/dimension.h" line="180" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Dimension_1aabf69434e780cefd4856459196439fe1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> * &gt;</type>
@@ -462,7 +593,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/level/dimension.h" line="151" column="26"/>
+        <location file="include/endstone/level/dimension.h" line="187" column="26"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -492,7 +623,7 @@
         <label>std::enable_shared_from_this&lt; Dimension &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/level/dimension.h" line="37" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="37" bodyend="152"/>
+    <location file="include/endstone/level/dimension.h" line="37" column="1" bodyfile="include/endstone/level/dimension.h" bodystart="37" bodyend="188"/>
     <listofallmembers>
       <member refid="classendstone_1_1Dimension_1af0bd0493f3c931570be2c063b12576b9" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>dropItem</name></member>
       <member refid="classendstone_1_1Dimension_1aabf69434e780cefd4856459196439fe1" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getActors</name></member>
@@ -505,11 +636,14 @@
       <member refid="classendstone_1_1Dimension_1a541fd7f166a3d746dde92b57e4843f6a" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getLevel</name></member>
       <member refid="classendstone_1_1Dimension_1a065a2b1242a809b89dd1502b2ad828b6" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getLoadedChunks</name></member>
       <member refid="classendstone_1_1Dimension_1ab1287961d58e20d3ac2d66240a232e8b" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>getTranslationKey</name></member>
+      <member refid="classendstone_1_1Dimension_1ae5c461371c826a47b3f7cbd060ca9edc" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>isChunkLoaded</name></member>
       <member refid="classendstone_1_1Dimension_1abadc4470e26e3d89b6b1f7ba2fb23ff5" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>isValid</name></member>
+      <member refid="classendstone_1_1Dimension_1ae6267ee9775ae738c3ee34d23f77a4fb" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>loadChunk</name></member>
       <member refid="classendstone_1_1Dimension_1a726839b7867bac84ebe5633eafedd341" prot="public" virt="non-virtual"><scope>endstone::Dimension</scope><name>Nether</name></member>
       <member refid="classendstone_1_1Dimension_1a99f35a38b77ed0d0927993dab3d588ef" prot="public" virt="non-virtual"><scope>endstone::Dimension</scope><name>Overworld</name></member>
       <member refid="classendstone_1_1Dimension_1a0106dd8b17e3394081568a0ba631cb26" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>spawnActor</name></member>
       <member refid="classendstone_1_1Dimension_1a578cf42cbf66c4b659b662f729e5c0ae" prot="public" virt="non-virtual"><scope>endstone::Dimension</scope><name>TheEnd</name></member>
+      <member refid="classendstone_1_1Dimension_1ad609a49160461ba607ca1b0702419538" prot="public" virt="pure-virtual"><scope>endstone::Dimension</scope><name>unloadChunk</name></member>
       <member refid="classendstone_1_1Dimension_1a24406b7020898c1be0ce62e57ffce62d" prot="public" virt="virtual"><scope>endstone::Dimension</scope><name>~Dimension</name></member>
     </listofallmembers>
   </compounddef>
