@@ -215,7 +215,11 @@ class Pybind11Support(Extension):
         if fget is not None and fget.__doc__:
             m = _PYBIND_SIG_RE.match(fget.__doc__.splitlines()[0])
             if m is not None and m.group("ret"):
-                attr.annotation = m.group("ret").strip()
+                # Keep the fully-qualified string; assigning attr.annotation lets
+                # griffe round-trip it (str -> Expr -> str) and drop the module
+                # prefix, so a cross-module type like endstone._python.command.Command
+                # would collapse to a bare, unresolved "Command".
+                attr._pybind11_annotation_ = m.group("ret").strip()
         if fset := getattr(node.obj, "fset", None):
             fset_node = ObjectNode(fset, node.name, node)
             attr.setter = Function(name=node.name, docstring=agent._get_docstring(fset_node), parent=agent.current)
@@ -735,7 +739,8 @@ class StubGen:
     # ---- properties ----
 
     def put_property(self, attr: Attribute) -> None:
-        ret = self.type_str(attr.annotation) if attr.annotation is not None else self.any_type()
+        ann = getattr(attr, "_pybind11_annotation_", None) or attr.annotation
+        ret = self.type_str(ann) if ann is not None else self.any_type()
         self.write_ln("@property")
         docstr = attr.docstring.value if attr.docstring else None
         if docstr and self.include_docstrings:
