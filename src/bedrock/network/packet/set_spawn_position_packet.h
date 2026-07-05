@@ -33,4 +33,4 @@ public:
     NetworkBlockPosition spawn_block_pos;
     SerializationMode serialization_mode{SerializationMode::CerealOnly};
 };
-static_assert(sizeof(SetSpawnPositionPacket) == 88);
+BEDROCK_STATIC_ASSERT_SIZE(SetSpawnPositionPacket, 88, 80);

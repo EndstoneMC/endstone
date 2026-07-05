@@ -66,7 +66,7 @@ private:
     CommandValueRedirectCallback command_value_redirect_converter_;
     std::optional<int> command_value_redirect_target_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(GameRule, 280, 224);
+BEDROCK_STATIC_ASSERT_SIZE(GameRule, 280, 240);
 
 struct GameRuleId : NewType<int> {
     GameRuleId() = default;

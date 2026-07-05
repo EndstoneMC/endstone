@@ -30,4 +30,4 @@ private:
     std::vector<std::pair<std::string, std::string>> pack_cdn_urls_;
     Core::Path path_;
 };
-static_assert(sizeof(CDNConfig) == 80);
+BEDROCK_STATIC_ASSERT_SIZE(CDNConfig, 80, 72);
